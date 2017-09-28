@@ -1,4 +1,4 @@
-/*! elementor - v1.6.3 - 06-08-2017 */
+/*! elementor - v1.7.3 - 11-09-2017 */
 @-webkit-keyframes placeholder-section {
   0% {
     height: 0;
@@ -75,8 +75,9 @@ body.elementor-editor-active .elementor.elementor-edit-mode .elementor-element.e
   -webkit-animation-fill-mode: none !important;
           animation-fill-mode: none !important; }
 
-#elementor .elementor-editor-element-settings {
-  word-break: normal; }
+#elementor ul.elementor-editor-element-settings {
+  word-break: normal;
+  padding: 0; }
 
 #elementor .gallery {
   opacity: 1; }

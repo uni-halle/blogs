@@ -5,20 +5,52 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+/**
+ * Button Widget
+ */
 class Widget_Button extends Widget_Base {
 
+	/**
+	 * Retrieve button widget name.
+	 *
+	 * @access public
+	 *
+	 * @return string Widget name.
+	 */
 	public function get_name() {
 		return 'button';
 	}
 
+	/**
+	 * Retrieve button widget title.
+	 *
+	 * @access public
+	 *
+	 * @return string Widget title.
+	 */
 	public function get_title() {
 		return __( 'Button', 'elementor' );
 	}
 
+	/**
+	 * Retrieve button widget icon.
+	 *
+	 * @access public
+	 *
+	 * @return string Widget icon.
+	 */
 	public function get_icon() {
 		return 'eicon-button';
 	}
 
+	/**
+	 * Retrieve button sizes.
+	 *
+	 * @access public
+	 * @static
+	 *
+	 * @return array An array containing button sizes.
+	 */
 	public static function get_button_sizes() {
 		return [
 			'xs' => __( 'Extra Small', 'elementor' ),
@@ -29,6 +61,13 @@ class Widget_Button extends Widget_Base {
 		];
 	}
 
+	/**
+	 * Register button widget controls.
+	 *
+	 * Adds different input fields to allow the user to change and customize the widget settings.
+	 *
+	 * @access protected
+	 */
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'section_button',
@@ -61,7 +100,6 @@ class Widget_Button extends Widget_Base {
 				'type' => Controls_Manager::TEXT,
 				'default' => __( 'Click me', 'elementor' ),
 				'placeholder' => __( 'Click me', 'elementor' ),
-				'dynamic' => [],
 			]
 		);
 
@@ -331,6 +369,13 @@ class Widget_Button extends Widget_Base {
 		$this->end_controls_section();
 	}
 
+	/**
+	 * Render button widget output on the frontend.
+	 *
+	 * Written in PHP and used to generate the final HTML.
+	 *
+	 * @access protected
+	 */
 	protected function render() {
 		$settings = $this->get_settings();
 
@@ -368,6 +413,13 @@ class Widget_Button extends Widget_Base {
 		<?php
 	}
 
+	/**
+	 * Render button widget output in the editor.
+	 *
+	 * Written as a Backbone JavaScript template and used to generate the live preview.
+	 *
+	 * @access protected
+	 */
 	protected function _content_template() {
 		?>
 		<div class="elementor-button-wrapper">
@@ -385,6 +437,11 @@ class Widget_Button extends Widget_Base {
 		<?php
 	}
 
+	/**
+	 * Render button widget text.
+	 *
+	 * @access protected
+	 */
 	protected function render_text() {
 		$settings = $this->get_settings();
 		$this->add_render_attribute( 'content-wrapper', 'class', 'elementor-button-content-wrapper' );

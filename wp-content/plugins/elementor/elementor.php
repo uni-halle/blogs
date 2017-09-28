@@ -2,10 +2,10 @@
 /**
  * Plugin Name: Elementor
  * Description: The most advanced frontend drag & drop page builder. Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design.
- * Plugin URI: https://elementor.com/
+ * Plugin URI: https://elementor.com/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
  * Author: Elementor.com
- * Version: 1.6.3
- * Author URI: https://elementor.com/
+ * Version: 1.7.3
+ * Author URI: https://elementor.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash
  *
  * Text Domain: elementor
  *
@@ -27,13 +27,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'ELEMENTOR_VERSION', '1.6.3' );
-define( 'ELEMENTOR_PREVIOUS_STABLE_VERSION', '1.5.5' );
+define( 'ELEMENTOR_VERSION', '1.7.3' );
+define( 'ELEMENTOR_PREVIOUS_STABLE_VERSION', '1.6.5' );
 
 define( 'ELEMENTOR__FILE__', __FILE__ );
 define( 'ELEMENTOR_PLUGIN_BASE', plugin_basename( ELEMENTOR__FILE__ ) );
-define( 'ELEMENTOR_URL', plugins_url( '/', ELEMENTOR__FILE__ ) );
 define( 'ELEMENTOR_PATH', plugin_dir_path( ELEMENTOR__FILE__ ) );
+
+if ( defined( 'ELEMENTOR_TESTS' ) && ELEMENTOR_TESTS ) {
+	define( 'ELEMENTOR_URL', 'file://' . ELEMENTOR_PATH );
+} else {
+	define( 'ELEMENTOR_URL', plugins_url( '/', ELEMENTOR__FILE__ ) );
+}
+
 define( 'ELEMENTOR_MODULES_PATH', plugin_dir_path( ELEMENTOR__FILE__ ) . '/modules' );
 define( 'ELEMENTOR_ASSETS_URL', ELEMENTOR_URL . 'assets/' );
 
@@ -45,7 +51,7 @@ if ( ! version_compare( PHP_VERSION, '5.4', '>=' ) ) {
 	add_action( 'admin_notices', 'elementor_fail_wp_version' );
 } else {
 	// Fix language if the `get_user_locale` is difference from the `get_locale
-	if ( isset( $_REQUEST['action']  ) && 0 === strpos( $_REQUEST['action'], 'elementor' ) ) {
+	if ( isset( $_REQUEST['action'] ) && 0 === strpos( $_REQUEST['action'], 'elementor' ) ) {
 		add_action( 'set_current_user', function() {
 			global $current_user;
 			$current_user->locale = get_locale();
@@ -53,6 +59,11 @@ if ( ! version_compare( PHP_VERSION, '5.4', '>=' ) ) {
 
 		// Fix for Polylang
 		define( 'PLL_AJAX_ON_FRONT', true );
+
+		add_action( 'pll_pre_init', function( $polylang ) {
+			$post_language = $polylang->model->post->get_language( $_REQUEST['post'], 'locale' );
+			$_REQUEST['lang'] = $post_language->locale;
+		} );
 	}
 
 	require( ELEMENTOR_PATH . 'includes/plugin.php' );
@@ -77,7 +88,8 @@ function elementor_load_plugin_textdomain() {
  * @return void
  */
 function elementor_fail_php_version() {
-	$message = esc_html__( 'Elementor requires PHP version 5.4+, plugin is currently NOT ACTIVE.', 'elementor' );
+	/* translators: %s: PHP version */
+	$message = sprintf( esc_html__( 'Elementor requires PHP version %s+, plugin is currently NOT ACTIVE.', 'elementor' ), '5.4' );
 	$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
 	echo wp_kses_post( $html_message );
 }

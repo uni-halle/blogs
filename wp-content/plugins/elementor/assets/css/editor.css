@@ -1,4 +1,4 @@
-/*! elementor - v1.6.3 - 06-08-2017 */
+/*! elementor - v1.7.3 - 11-09-2017 */
 @charset "UTF-8";
 .dialog-widget {
   position: fixed;
@@ -93,10 +93,25 @@ body.admin-bar .dialog-close-button {
 .dialog-alert-widget .dialog-buttons-wrapper > button {
   width: 100%; }
 
-.elementor-video-wrapper {
+.elementor-aspect-ratio-219 .elementor-fit-aspect-ratio {
+  padding-bottom: 42.8571%; }
+
+.elementor-aspect-ratio-169 .elementor-fit-aspect-ratio {
+  padding-bottom: 56.25%; }
+
+.elementor-aspect-ratio-43 .elementor-fit-aspect-ratio {
+  padding-bottom: 75%; }
+
+.elementor-aspect-ratio-32 .elementor-fit-aspect-ratio {
+  padding-bottom: 66.6666%; }
+
+.elementor-aspect-ratio-11 .elementor-fit-aspect-ratio {
+  padding-bottom: 100%; }
+
+.elementor-fit-aspect-ratio {
   position: relative;
   height: 0; }
-  .elementor-video-wrapper iframe {
+  .elementor-fit-aspect-ratio iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -858,6 +873,8 @@ select {
       -webkit-transition: all 0.5s;
       -o-transition: all 0.5s;
       transition: all 0.5s; }
+      .elementor-panel .elementor-header-button .elementor-icon.eicon-menu-bar {
+        font-size: 18px; }
       .elementor-panel .elementor-header-button .elementor-icon:hover {
         color: #d5dadf; }
   .elementor-panel #elementor-panel-header-title {
@@ -2078,7 +2095,8 @@ body.elementor-editor-preview #elementor-mode-switcher {
           align-items: center;
   border: 1px solid #d5dadf;
   padding: 10px 15px;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  font-size: 11px; }
   .elementor-revision-item:hover:not(.elementor-revision-current-preview) {
     background-color: rgba(230, 233, 236, 0.3); }
   .elementor-revision-item:not(:hover) .elementor-revision-item__tools-delete {
@@ -2102,9 +2120,6 @@ body.elementor-editor-preview #elementor-mode-switcher {
   .elementor-revision-item__tools-delete {
     cursor: pointer; }
 
-.elementor-revision-date {
-  font-size: 11px; }
-
 .elementor-revision-meta {
   padding-top: 5px;
   font-size: 10px;
@@ -2112,6 +2127,49 @@ body.elementor-editor-preview #elementor-mode-switcher {
 
 .elementor-revision-current-preview {
   background-color: #e6e9ec; }
+
+.elementor-history-item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #d5dadf;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  font-size: 11px;
+  line-height: 1.4;
+  cursor: pointer; }
+  .elementor-history-item:hover {
+    background-color: rgba(230, 233, 236, 0.3); }
+    .elementor-history-item:hover .elementor-history-item__icon .fa:before {
+      content: '\f1da'; }
+  .elementor-history-item-applied {
+    color: #a4afb7; }
+  .elementor-history-item-current {
+    background: #e6e9ec;
+    cursor: inherit; }
+    .elementor-history-item-current .elementor-history-item__icon .fa:before, .elementor-history-item-current:hover .elementor-history-item__icon .fa:before {
+      content: '\f00c'; }
+  .elementor-history-item__details {
+    width: 95%; }
+  .elementor-history-item__title {
+    font-weight: bold; }
+  .elementor-history-item__subtitle, .elementor-history-item__action {
+    font-weight: lighter; }
+  .elementor-history-item__action {
+    font-style: italic;
+    text-decoration: underline; }
+  .elementor-history-item .__icon {
+    float: right; }
+
+.elementor-history-revisions-message {
+  font-size: 11px;
+  text-align: center;
+  padding: 5px 0; }
 
 #elementor-preview {
   background-color: #333;
@@ -2136,6 +2194,7 @@ body.elementor-editor-preview #elementor-mode-switcher {
   transition: all .5s ease 0s; }
   .elementor-device-desktop #elementor-preview-responsive-wrapper {
     min-width: 1025px;
+    margin: 0 auto;
     width: 100%;
     height: 100%; }
   .elementor-device-tablet #elementor-preview-responsive-wrapper {
@@ -2245,29 +2304,6 @@ body.elementor-editor-preview #elementor-mode-switcher {
   left: 0;
   border-right-style: solid;
   border-left: none; }
-
-#elementor-introduction .dialog-widget-header {
-  padding: 40px 0 0; }
-
-#elementor-introduction .dialog-widget-content {
-  width: 700px;
-  max-width: 100%; }
-
-#elementor-introduction .elementor-video-wrapper {
-  padding-bottom: 62.4%; }
-
-#elementor-introduction .dialog-message {
-  margin-top: 40px; }
-
-#elementor-introduction-title {
-  color: #9b0a46;
-  font-size: 27px;
-  font-weight: bold; }
-
-#elementor-introduction-subtitle {
-  margin-top: 12px;
-  font-size: 16px;
-  color: #a4afb7; }
 
 #elementor-template-library-modal .dialog-widget-content {
   width: 990px;

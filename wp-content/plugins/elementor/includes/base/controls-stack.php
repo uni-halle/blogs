@@ -21,14 +21,16 @@ abstract class Controls_Stack {
 	 *
 	 * @var null|array
 	 */
-	private $_current_section = null;
+	private $_current_section;
 
 	/**
 	 * Holds the current tab while render a set of controls tabs
 	 *
 	 * @var null|array
 	 */
-	protected $_current_tab = null;
+	private $_current_tab;
+
+	private $injection_point;
 
 	abstract public function get_name();
 
@@ -57,6 +59,14 @@ abstract class Controls_Stack {
 		}
 
 		return $haystack;
+	}
+
+	public function get_current_section() {
+		return $this->_current_section;
+	}
+
+	public function get_current_tab() {
+		return $this->_current_tab;
 	}
 
 	public function get_controls( $control_id = null ) {
@@ -95,24 +105,57 @@ abstract class Controls_Stack {
 		return array_intersect_key( $this->get_settings(), $this->get_controls() );
 	}
 
-	public function add_control( $id, array $args, $overwrite = false ) {
+	public function add_control( $id, array $args, $options = [] ) {
+		$default_options = [
+			'overwrite' => false,
+			'position' => null,
+		];
+
+		$options = array_merge( $default_options, $options );
+
+		if ( $options['position'] ) {
+			$this->start_injection( $options['position'] );
+		}
+
+		if ( $this->injection_point ) {
+			$options['index'] = $this->injection_point['index']++;
+		}
+
 		if ( empty( $args['type'] ) || ! in_array( $args['type'], [ Controls_Manager::SECTION, Controls_Manager::WP_WIDGET ] ) ) {
-			if ( null !== $this->_current_section ) {
+			$target_section_args = $this->_current_section;
+
+			$target_tab = $this->_current_tab;
+
+			if ( $this->injection_point ) {
+				$target_section_args = $this->injection_point['section'];
+
+				if ( ! empty( $this->injection_point['tab'] ) ) {
+					$target_tab = $this->injection_point['tab'];
+				}
+			}
+
+			if ( null !== $target_section_args ) {
 				if ( ! empty( $args['section'] ) || ! empty( $args['tab'] ) ) {
 					_doing_it_wrong( __CLASS__ . '::' . __FUNCTION__, 'Cannot redeclare control with `tab` or `section` args inside section. - ' . esc_html( $id ), '1.0.0' );
 				}
 
-				$args = array_replace_recursive( $this->_current_section, $args);
+				$args = array_replace_recursive( $target_section_args, $args );
 
-				if ( null !== $this->_current_tab ) {
-					$args = array_merge( $args, $this->_current_tab );
+				if ( null !== $target_tab ) {
+					$args = array_merge( $args, $target_tab );
 				}
-			} elseif ( empty( $args['section'] ) ) {
+			} elseif ( empty( $args['section'] ) && ( ! $options['overwrite'] || is_wp_error( Plugin::$instance->controls_manager->get_control_from_stack( $this->get_unique_name(), $id ) ) ) ) {
 				wp_die( __CLASS__ . '::' . __FUNCTION__ . ': Cannot add a control outside of a section (use `start_controls_section`).' );
 			}
 		}
 
-		return Plugin::$instance->controls_manager->add_control_to_stack( $this, $id, $args, $overwrite );
+		if ( $options['position'] ) {
+			$this->end_injection();
+		}
+
+		unset( $options['position'] );
+
+		return Plugin::$instance->controls_manager->add_control_to_stack( $this, $id, $args, $options );
 	}
 
 	public function remove_control( $control_id ) {
@@ -123,14 +166,86 @@ abstract class Controls_Stack {
 		return Plugin::$instance->controls_manager->update_control_in_stack( $this, $control_id, $args );
 	}
 
-	final public function add_group_control( $group_name, array $args = [] ) {
+	final public function get_position_info( array $position ) {
+		$default_position = [
+			'type' => 'control',
+			'at' => 'after',
+		];
+
+		if ( ! empty( $position['type'] ) && 'section' === $position['type'] ) {
+			$default_position['at'] = 'end';
+		}
+
+		$position = array_merge( $default_position, $position );
+
+		if (
+			'control' === $position['type'] && in_array( $position['at'], [ 'start', 'end' ] ) ||
+			'section' === $position['type'] && in_array( $position['at'], [ 'before', 'after' ] )
+		) {
+			_doing_it_wrong( __CLASS__ . '::' . __FUNCTION__, 'Invalid position arguments. Use `before` / `after` for control or `start` / `end` for section.', '1.7.0' );
+
+			return false;
+		}
+
+		$registered_controls = Plugin::$instance->controls_manager->get_element_stack( $this )['controls'];
+
+		$controls_keys = array_keys( $registered_controls );
+
+		$target_control_index = array_search( $position['of'], $controls_keys );
+
+		if ( false == $target_control_index ) {
+			return false;
+		}
+
+		$target_section_index = $target_control_index;
+
+		while( Controls_Manager::SECTION !== $registered_controls[ $controls_keys[ $target_section_index ] ]['type'] ) {
+			$target_section_index--;
+		}
+
+		if ( 'section' === $position['type'] ) {
+			$target_control_index++;
+
+			if ( 'end' === $position['at'] ) {
+				while( Controls_Manager::SECTION !== $registered_controls[ $controls_keys[ $target_control_index ] ]['type'] ) {
+					if ( ++$target_control_index >= count( $registered_controls ) ) {
+						break;
+					}
+				}
+			}
+		}
+
+		$target_control = $registered_controls[ $controls_keys[ $target_control_index ] ];
+
+		if ( 'after' === $position['at'] ) {
+			$target_control_index++;
+		}
+
+		$section_id = $registered_controls[ $controls_keys[ $target_section_index ] ]['name'];
+
+		$position_info = [
+			'index' => $target_control_index,
+			'section' => $this->get_section_args( $section_id ),
+		];
+
+		if ( ! empty( $target_control['tabs_wrapper'] ) ) {
+			$position_info['tab'] = [
+				'tabs_wrapper' => $target_control['tabs_wrapper'],
+				'inner_tab' => $target_control['inner_tab'],
+			];
+		}
+
+		return $position_info;
+	}
+
+	final public function add_group_control( $group_name, array $args = [], array $options = [] ) {
 		$group = Plugin::$instance->controls_manager->get_control_groups( $group_name );
 
 		if ( ! $group ) {
 			wp_die( __CLASS__ . '::' . __FUNCTION__ . ': Group `' . $group_name . '` not found.' );
 		}
 
-		$group->add_controls( $this, $args );
+		$group->add_controls( $this, $args, $options );
 	}
 
 	final public function get_scheme_controls() {
@@ -177,12 +292,22 @@ abstract class Controls_Stack {
 		return $stack['tabs'];
 	}
 
-	final public function add_responsive_control( $id, array $args, $overwrite = false ) {
+	final public function add_responsive_control( $id, array $args, $options = [] ) {
+		$args['responsive'] = [];
+
 		$devices = [
 			self::RESPONSIVE_DESKTOP,
 			self::RESPONSIVE_TABLET,
 			self::RESPONSIVE_MOBILE,
 		];
+
+		if ( isset( $args['devices'] ) ) {
+			$devices = array_intersect( $devices, $args['devices'] );
+
+			$args['responsive']['devices'] = $devices;
+
+			unset( $args['devices'] );
+		}
 
 		if ( isset( $args['default'] ) ) {
 			$args['desktop_default'] = $args['default'];
@@ -207,9 +332,7 @@ abstract class Controls_Stack {
 				$control_args['prefix_class'] = sprintf( $args['prefix_class'], $device_to_replace );
 			}
 
-			$control_args['responsive'] = [
-				'max' => $device_name,
-			];
+			$control_args['responsive']['max'] = $device_name;
 
 			if ( isset( $control_args['min_affected_device'] ) ) {
 				if ( ! empty( $control_args['min_affected_device'][ $device_name ] ) ) {
@@ -229,12 +352,16 @@ abstract class Controls_Stack {
 
 			$id_suffix = self::RESPONSIVE_DESKTOP === $device_name ? '' : '_' . $device_name;
 
-			$this->add_control( $id . $id_suffix, $control_args, $overwrite );
+			if ( ! empty( $options['overwrite'] ) ) {
+				$this->update_control( $id . $id_suffix, $control_args );
+			} else {
+				$this->add_control( $id . $id_suffix, $control_args, $options );
+			}
 		}
 	}
 
 	final public function update_responsive_control( $id, array $args ) {
-		$this->add_responsive_control( $id, $args, true );
+		$this->add_responsive_control( $id, $args, [ 'overwrite' => true ] );
 	}
 
 	final public function remove_responsive_control( $id ) {
@@ -350,11 +477,11 @@ abstract class Controls_Stack {
 			$condition_sub_key = $condition_key_parts[2];
 			$is_negative_condition = ! ! $condition_key_parts[3];
 
-			$instance_value = $values[ $pure_condition_key ];
-
-			if ( null === $instance_value ) {
+			if ( ! isset( $values[ $pure_condition_key ] ) || null === $values[ $pure_condition_key ] ) {
 				return false;
 			}
+
+			$instance_value = $values[ $pure_condition_key ];
 
 			if ( $condition_sub_key ) {
 				if ( ! isset( $instance_value[ $condition_sub_key ] ) ) {
@@ -399,6 +526,10 @@ abstract class Controls_Stack {
 
 		$this->_current_section = $this->get_section_args( $section_id );
 
+		if ( $this->injection_point ) {
+			$this->injection_point['section'] = $this->_current_section;
+		}
+
 		do_action( 'elementor/element/after_section_start', $this, $section_id, $args );
 		do_action( 'elementor/element/' . $this->get_name() . '/' . $section_id . '/after_section_start', $this, $args );
 	}
@@ -435,6 +566,10 @@ abstract class Controls_Stack {
 		$this->_current_tab = [
 			'tabs_wrapper' => $tabs_id,
 		];
+
+		if ( $this->injection_point ) {
+			$this->injection_point['tab'] = $this->_current_tab;
+		}
 	}
 
 	public function end_controls_tabs() {
@@ -452,10 +587,26 @@ abstract class Controls_Stack {
 		$this->add_control( $tab_id, $args );
 
 		$this->_current_tab['inner_tab'] = $tab_id;
+
+		if ( $this->injection_point ) {
+			$this->injection_point['tab']['inner_tab'] = $this->_current_tab['inner_tab'];
+		}
 	}
 
 	public function end_controls_tab() {
 		unset( $this->_current_tab['inner_tab'] );
+	}
+
+	final public function start_injection( array $position ) {
+		if ( $this->injection_point ) {
+			wp_die( 'A controls injection is already opened. Please close current injection before starting a new one (use `end_injection`).' );
+		}
+
+		$this->injection_point = $this->get_position_info( $position );
+	}
+
+	final public function end_injection() {
+		$this->injection_point = null;
 	}
 
 	final public function set_settings( $key, $value = null ) {
@@ -506,7 +657,7 @@ abstract class Controls_Stack {
 
 		$section_args_keys = [ 'tab', 'condition' ];
 
-		$args = array_intersect_key( $section_control, array_flip( $section_args_keys ));
+		$args = array_intersect_key( $section_control, array_flip( $section_args_keys ) );
 
 		$args['section'] = $section_id;
 
