@@ -1,0 +1,9 @@
+.aesop-video-component .aesop-video-component-caption {
+  color: #b3b3b3;
+}
+.aesop-video-component .aesop-component-caption {
+  color: #333;
+  padding: 0.25rem 0.75rem;
+  background: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+}
