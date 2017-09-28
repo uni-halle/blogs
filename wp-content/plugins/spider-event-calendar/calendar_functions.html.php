@@ -882,10 +882,9 @@ $row=$wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spiderca
 							<div id="<?php echo user_can_richedit() ? 'postdivrich' : 'postdiv'; ?>" class="postarea"><?php the_editor(stripslashes($row->description),"description","title" ); ?>
 							</div>
 							<?php }else{
-							if(isset($row->description)) $desc1 = $row->description;
-							else $desc1 = "";
-							wp_editor($desc1, "description"); }?>
-						
+
+							$desc1 = ( isset($row->description) ? $row->description : "" );
+							wp_editor($desc1, "description", array('teeny' => TRUE)); } ?>						
 					  </div>
                     </div></td>	
                         
@@ -916,40 +915,21 @@ $row=$wpdb->get_row($wpdb->prepare ("SELECT * FROM " . $wpdb->prefix . "spiderca
 	}
 
 	
-function html_upcoming_widget($rows, $pageNav, $sort){
-	require_once("spidercalendar_upcoming_events_widget.php");
-	 global $wpdb;
-	 $input_id=esc_html($_GET['id_input']);
-	 $w_id = esc_html($_GET['w_id']);
-	 $tbody_id='event'.$w_id;
-	 $calendar_id=esc_html($_GET['upcalendar_id']);
-	 ?><html>
+function html_upcoming_widget($rows, $pageNav, $sort){ 
+  require_once("spidercalendar_upcoming_events_widget.php");
+  global $wpdb;
+  $input_id=esc_html($_GET['id_input']);
+  $w_id = esc_html($_GET['w_id']);
+  $tbody_id='event'.$w_id;
+  $calendar_id=esc_html($_GET['upcalendar_id']); ?>
+ <html>
   <head>
-  <link rel="stylesheet" id="thickbox-css" href="<?php echo plugins_url("elements/calendar-jos.css", __FILE__) ?>" type="text/css" media="all">
- <?php   wp_print_scripts("Canlendar_upcoming");
+  <link rel="stylesheet" href="<?php echo get_option("siteurl"); ?>/wp-admin/load-styles.php?c=1&amp;load%5B%5D=dashicons,common,forms,list-tables" type="text/css" media="all">
+  <link rel="stylesheet" id="calendar-jos" href="<?php echo plugins_url("elements/calendar-jos.css", __FILE__) ?>" type="text/css" media="all">  
+ <?php wp_print_scripts("Canlendar_upcoming");
   wp_print_scripts("calendnar-setup_upcoming");
   wp_print_scripts("calenndar_function_upcoming");
  ?>
- 
-  <style>
-    .calendar .button {
-      display: table-cell !important;
-    }
-	
-	.wd_button{
-		border: 1px solid #D5D5D5 !important;
-		border-radius: 10px;
-		width: 30px;
-		height: 25px;
-	}
-	}
-	input[type=checkbox]:checked:before,
-	th.sorted.asc .sorting-indicator:before, th.desc:hover span.sorting-indicator:before,
-	th.sorted.desc .sorting-indicator:before, th.asc:hover span.sorting-indicator:before{
-		content: close-quote !important;
-	}
-	
-  </style>
   <script language="javascript">
 	function ordering(name, as_or_desc) {
       document.getElementById('asc_or_desc').value = as_or_desc;
@@ -977,125 +957,63 @@ function html_upcoming_widget($rows, $pageNav, $sort){
       }
     }
 	
-	
 	function isChecked(isitchecked){
-	if (isitchecked == true){
-		document.adminForm.boxchecked.value++;
+		if (isitchecked == true){
+			document.adminForm.boxchecked.value++;
+		}
+		else {
+			document.adminForm.boxchecked.value--;
+		}
 	}
-	else {
-		document.adminForm.boxchecked.value--;
-	}
-}
-	
 	
 	function checkAll( n, fldName ) {
-
-  if (!fldName) {
-
-     fldName = 'cb';
-
-  }
-
-	var f = document.admin_form;
-
-	var c = f.toggle.checked;
-
-	var n2 = 0;
-
-	for (i=0; i < n; i++) {
-
-		cb = eval( 'f.' + fldName + '' + i );
-
-		if (cb) {
-
-			cb.checked = c;
-
-			n2++;
-
-		}
-
-	}
-
-	if (c) {
-
-		document.admin_form.boxchecked.value = n2;
-
-	} else {
-
-		document.admin_form.boxchecked.value = 0;
-
-	}
-
-}
-
-
-	
-
-function select_events()
-
-{
-	var id =[];
-	var title =[];
-
-	for(i=0; i<<?php echo count($rows)?>; i++)
-		if(document.getElementById("p"+i))
-			if(document.getElementById("p"+i).checked)
-			{
-				id.push(document.getElementById("p"+i).value);
-				title.push(document.getElementById("title_"+i).value);
-				
+	  if (!fldName) {
+		 fldName = 'cb';
+	  }
+		var f = document.admin_form;
+		var c = f.toggle.checked;
+		var n2 = 0;
+		for (i=0; i < n; i++) {
+			cb = eval( 'f.' + fldName + '' + i );
+			if (cb) {
+				cb.checked = c;
+				n2++;
 			}
-	window.parent.jSelectEvents('<?php echo $input_id ?>','<?php echo $tbody_id ?>','<?php echo $w_id ?>',id, title);
+		}
+		if (c) {
+			document.admin_form.boxchecked.value = n2;
+		} else {
+			document.admin_form.boxchecked.value = 0;
+		}
 	}
+	function select_events(){
+		var id =[];
+		var title =[];
 
-		
+		for(i=0; i<<?php echo count($rows)?>; i++)
+			if(document.getElementById("p"+i))
+				if(document.getElementById("p"+i).checked)
+				{
+					id.push(document.getElementById("p"+i).value);
+					title.push(document.getElementById("title_"+i).value);		
+				}
+		window.parent.jSelectEvents('<?php echo $input_id ?>','<?php echo $tbody_id ?>','<?php echo $w_id ?>',id, title);
+	}	
   </script>
-<?php
-
-
-  if(get_bloginfo( 'version' )>3.3){
-
-	?>
-
-<link rel="stylesheet" href="<?php echo bloginfo("url") ?>/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load=admin-bar,wp-admin&amp;ver=7f0753feec257518ac1fec83d5bced6a" type="text/css" media="all">
-
-<?php
-
-}
-
-else
-
-{
-
-	?>
-
- <link rel="stylesheet" href="<?php echo bloginfo("url") ?>/wp-admin/load-styles.php?c=1&amp;dir=ltr&amp;load=global,wp-admin&amp;ver=aba7495e395713976b6073d5d07d3b17" type="text/css" media="all">
-
- <?php
-
-}
-
-?>
-
-<link rel="stylesheet" id="thickbox-css" href="<?php echo bloginfo('url')?>/wp-includes/js/thickbox/thickbox.css?ver=20111117" type="text/css" media="all">
-
-<!---- <link rel="stylesheet" id="colors-css" href="<?php echo bloginfo('url')?>/wp-admin/css/colors-classic.css?ver=20111206" type="text/css" media="all"> --->
 </head>
   <body>
-    <form method="post" onKeyPress="doNothing()" action="<?php echo admin_url('admin-ajax.php') ?>?action=upcoming&id_input=<?php echo $input_id;?>&upcalendar_id=<?php echo $calendar_id;?>&w_id=<?php echo $w_id;?>" id="admin_form" name="admin_form">
-    <table cellspacing="10" width="100%">
-    
-    <tr>
-      <td width="100%"><h2>Event Manager</h2></td></td>
-	  <td align="right" width="100%">
-
-                <button onClick="select_events();" style="width:98px; height:34px; background:url(<?php echo plugins_url('',__FILE__) ?>/front_end/images/add_but.png) no-repeat;border:none;cursor:pointer;">&nbsp;</button>			
-           </td>
-    </tr>
-  </table>
+    <form method="post" onKeyPress="doNothing()" action="<?php echo admin_url('admin-ajax.php') ?>?action=upcoming&id_input=<?php echo $input_id;?>&upcalendar_id=<?php echo $calendar_id;?>&w_id=<?php echo $w_id;?>" id="admin_form" name="admin_form" class="upcoming_table">
+		<table cellspacing="10" width="100%"> 
+			<tr>
+			  <td width="100%"><h2>Event Manager</h2></td></td>
+			  <td align="right" width="100%">
+						<button onClick="select_events();" style="width:98px; height:34px; background:url(<?php echo plugins_url('',__FILE__) ?>/front_end/images/add_but.png) no-repeat;border:none;cursor:pointer;">&nbsp;</button>			
+				   </td>
+			</tr>
+	    </table>
   <?php
   if (isset($_POST['serch_or_not']) && ($_POST['serch_or_not'] == "search")) {
-    $serch_value = esc_js(esc_html(stripslashes($_POST['search_events_by_title'])));
+    $serch_value = $_POST['search_events_by_title'];
   }
   else {
     $serch_value = "";
@@ -1120,15 +1038,15 @@ else
   print_html_nav($pageNav['total'], $pageNav['limit'], $serch_fields);
   ?>
   <style>
-   .sorting-indicator {
-		width: 7px;
-		height: 4px;
-		margin-top: 8px;
-		margin-left: 7px;
-		background-image: url('images/sort.gif');
-		background-repeat: no-repeat;
-	}
-	.wd_button{
+  .sorting-indicator {
+width: 7px;
+height: 4px;
+margin-top: 8px;
+margin-left: 7px;
+background-image: url('images/sort.gif');
+background-repeat: no-repeat;
+}
+.wd_button{
 		border: 1px solid #D5D5D5 !important;
 		border-radius: 10px;
 		width: 30px;
@@ -1198,6 +1116,7 @@ else
 <?php
 die();
 }
+
 	
 // Events.
 function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name) {
@@ -1771,7 +1690,8 @@ ON " . $wpdb->prefix . "spidercalendar_event.category=" . $wpdb->prefix . "spide
 						<?php the_editor(stripslashes(""),"text_for_date","title" ); ?>
 						</div>
 						<?php }else{
-						 wp_editor("", "text_for_date"); }?>
+						 wp_editor("", "text_for_date", array('teeny' => TRUE)); }?>
+
 					  </div>
                     </div>
                   </td>
@@ -2299,9 +2219,9 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
 							<div id="<?php echo user_can_richedit() ? 'postdivrich' : 'postdiv'; ?>" class="postarea"><?php the_editor(stripslashes($row->description),"text_for_date","title" ); ?>
 							</div>
 							<?php }else{
-							if(isset($row->text_for_date)) $desc1 = $row->text_for_date;
-							else $desc1 = "";
-							wp_editor($desc1, "text_for_date"); }?>
+
+							$desc1 = ( isset($row->text_for_date) ? $row->text_for_date : "" );
+							wp_editor($desc1, "text_for_date", array('teeny' => TRUE)); } ?>
 						</div>
                     </div>
                   </td>

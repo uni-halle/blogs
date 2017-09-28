@@ -4,7 +4,7 @@ Donate link: https://web-dorado.com/products/wordpress-calendar.html
 Tags: calendar, date, event, event calendar, events, events calendar, meeting, organizer, recurring, reservation, responsive, schedule, calendars, event manager, calendar widget, event registration, event management, agenda,  holiday calendar , scheduling, free calendar, Calender, upcoming events , event widget , event list, calendar localization, editorial calendar, Interactive Calendar, news calendar, appointment, event tracking, event organizer, upcoming events widget, event page, event bookings, recurring events, conference, dates, times, venue, responsive calendar, seminar, summit, facebook integration, widget, online calendar, calendar shortcode, events list, custom calendar, google calendar, event subscription, ical, facebook event calendar, event filter, calendar manager, online reservation, booking calendar, event booking, reservation calendar, customizable calendar, upcoming events calendar, events feed, event ticketing, rsvp, tickets, bookings 
 Requires at least: 3.4  
 Tested up to: 4.8   
-Stable tag: 1.5.54
+Stable tag: 1.5.55
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -150,6 +150,10 @@ Vietnamese (vi)
 
 
 == Changelog ==
+
+= 1.5.55 =
+Fixed: Load admin styles only on calendar pages   
+Changed: Introducing brand new free Backup WD plugin  
 
 = 1.5.54 =
 Fixed: Network activate issue    

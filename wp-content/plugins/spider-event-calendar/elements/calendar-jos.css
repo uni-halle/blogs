@@ -420,6 +420,22 @@ html.thickbox_open{
 	table-layout: auto;
 }
 
+#TB_ajaxWindowTitle{
+	height: 0 !important;
+}
+
+.upcoming_table{
+	padding: 10px 30px;
+}
+
+.upcoming_table .widefat .check-column{
+	padding: 10px 0 4px;
+}
+
+.upcoming_table th span.sorting-indicator{
+	background-image: none;
+}
+
 @media screen and (max-width: 768px) {
 	.wdc_calendar #cal_event p:not(.ev_name){
 		 display: block; /* Fallback for non-webkit */
