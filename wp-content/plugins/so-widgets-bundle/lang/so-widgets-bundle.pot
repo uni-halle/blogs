@@ -2085,6 +2085,10 @@ msgstr ""
 msgid "Amount of spacing between images."
 msgstr ""
 
+#: tmp/widgets/image-grid/image-grid.php:151, tmp/widgets/image/image.php:187
+msgid "Add a Lightbox to your images with %sSiteOrigin Premium%s"
+msgstr ""
+
 #: tmp/widgets/image/image.php:13
 msgid "SiteOrigin Image"
 msgstr ""
@@ -2309,6 +2313,10 @@ msgstr ""
 msgid "Mobile Layout"
 msgstr ""
 
+#: tmp/widgets/simple-masonry/simple-masonry.php:223
+msgid "Add a Lightbox to your masonry images with %sSiteOrigin Premium%s"
+msgstr ""
+
 #: tmp/widgets/slider/slider.php:15
 msgid "SiteOrigin Slider"
 msgstr ""
@@ -2327,6 +2335,10 @@ msgstr ""
 
 #: tmp/widgets/slider/slider.php:96
 msgid "Controls"
+msgstr ""
+
+#: tmp/widgets/slider/slider.php:266
+msgid "Add a Lightbox to your image slides with %sSiteOrigin Premium%s"
 msgstr ""
 
 #: tmp/widgets/social-media-buttons/data/networks.php:5

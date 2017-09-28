@@ -2,8 +2,8 @@
 Tags: bundle, widget, button, slider, image, carousel, price table, google maps, tinymce, social links
 Requires at least: 4.2
 Tested up to: 4.8.1
-Stable tag: 1.9.9
-Build time: 2017-08-31T10:00:26+02:00
+Stable tag: 1.9.10
+Build time: 2017-09-14T08:47:54+02:00
 License: GPLv3 or later
 Contributors: gpriday, braam-genis
 Donate link: https://siteorigin.com/downloads/contribution/
@@ -53,6 +53,10 @@ The SiteOrigin Widgets Bundle is the perfect platform to build widgets for your 
 3. An example of the button widget.
 
 == Changelog ==
+
+= 1.9.10 - 14 September 2017 =
+* TinyMCE field: fixed issue with filter for TinyMCE plugins.
+* Added teaser messages for SiteOrigin Premium addons.
 
 = 1.9.9 - 31 August 2017 =
 * Avoid using relative paths in asset URLs.
