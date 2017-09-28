@@ -1,9 +1,9 @@
 === Page Builder by SiteOrigin ===
 Tags: page builder, responsive, widget, widgets, builder, page, admin, gallery, content, cms, pages, post, css, layout, grid
 Requires at least: 4.4
-Tested up to: 4.8
-Stable tag: 2.5.10
-Build time: 2017-08-04T10:38:11+02:00
+Tested up to: 4.8.1
+Stable tag: 2.5.11
+Build time: 2017-08-24T10:14:15+02:00
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://siteorigin.com/downloads/contribution/
@@ -96,7 +96,12 @@ We've tried to ensure that Page Builder is compatible with most plugin widgets. 
 
 == Changelog ==
 
-= 2.5.9 - 4 August 2017 =
+= 2.5.11 - 24 August 2017 =
+* Prevent creating multiple new entries in post meta every time a post is previewed.
+* Avoid using relative asset URLs which may break caching plugins.
+* Import custom widget class from HTML.
+
+= 2.5.10 - 4 August 2017 =
 * Fixed WP widget wrappers broken by WP4.8.1 changes.
 
 = 2.5.9 - 27 July 2017 =

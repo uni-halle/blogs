@@ -29,53 +29,57 @@
       display: block; }
     #siteorigin-learn #siteorigin-learn-dialog .poster-wrapper .play-button {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 640px;
-      height: 38px;
+      top: 50%;
+      left: 50%;
+      width: 80px;
+      height: 80px;
+      margin-top: -40px;
+      margin-left: -40px;
       transition: opacity 0.35s;
-      opacity: 0.90; }
+      opacity: 0; }
     #siteorigin-learn #siteorigin-learn-dialog .poster-wrapper:hover .play-button {
       opacity: 1; }
   #siteorigin-learn #siteorigin-learn-dialog .video-iframe, #siteorigin-learn #siteorigin-learn-dialog .video-iframe iframe {
     width: 640px;
     height: 360px;
     display: block; }
+  #siteorigin-learn #siteorigin-learn-dialog .learn-title {
+    text-align: center;
+    font-size: 1.5em;
+    color: #474747;
+    font-weight: normal;
+    margin: 25px 0 20px 0; }
   #siteorigin-learn #siteorigin-learn-dialog .learn-description {
     color: #666;
     font-weight: 300;
-    margin: 25px auto;
+    margin: 20px auto;
+    width: 80%;
     text-align: center; }
   #siteorigin-learn #siteorigin-learn-dialog .signup-form {
     display: flex;
     align-items: flex-end;
-    padding: 15px 20px;
+    padding: 20px;
     background-color: #f8f8f8;
     border: 1px solid #e0e0e0;
     margin-top: 25px; }
     #siteorigin-learn #siteorigin-learn-dialog .signup-form .form-field {
-      flex: 2.5;
+      flex: 2;
       margin-right: 20px; }
       #siteorigin-learn #siteorigin-learn-dialog .signup-form .form-field label {
-        color: #777;
+        color: #666;
         display: block;
         margin-bottom: 8px;
         text-align: center;
-        font-size: 0.85em;
+        font-size: 0.9em;
         font-weight: 500; }
-        @media (max-height: 900px) {
-          #siteorigin-learn #siteorigin-learn-dialog .signup-form .form-field label {
-            display: none; } }
       #siteorigin-learn #siteorigin-learn-dialog .signup-form .form-field input {
         padding: 6px 8px;
         font-weight: 500;
         color: #555; }
     #siteorigin-learn #siteorigin-learn-dialog .signup-form .form-submit {
-      flex: 1.5; }
+      flex: 1; }
       #siteorigin-learn #siteorigin-learn-dialog .signup-form .form-submit input {
-        margin-bottom: 1px;
-        padding: 3px 8px;
-        height: auto; }
+        margin-bottom: 3px; }
     #siteorigin-learn #siteorigin-learn-dialog .signup-form input {
       width: 100%;
       display: block; }
