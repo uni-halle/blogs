@@ -1149,7 +1149,7 @@ if ( ! function_exists( 'aesop_shortcodes' ) ) {
 						'tip'  => __( 'Display an optional heading to be used within the Collection component.', 'aesop-core' )
 					),
 					'collection'    => array(
-						'type'  => 'select',
+						'type'  => 'select_multiple',
 						'values' => aesop_option_get_categories(),
 						'default'  => '',
 						'desc'   => __( 'Category', 'aesop-core' ),
