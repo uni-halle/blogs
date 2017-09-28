@@ -2,9 +2,9 @@
 Contributors: Cryout Creations
 Donate link: https://www.cryoutcreations.eu/donate/
 Tags: theme, admin
-Requires at least: 4.0
-Tested up to: 4.8.0
-Stable tag: 0.5.8
+Requires at least: 4.2
+Tested up to: 4.8.1
+Stable tag: 0.5.8.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -49,6 +49,10 @@ You do not need this plugin if you use do not use any of the listed themes.
 3. Navigate to Appearance > [Theme] Settings to access the restored theme settings page. 
 
 == Changelog ==
+
+= 0.5.8.1 = 
+* Fixed compatibility mode malfunctioning
+* Fixed misssing theme images in compatibility mode info
 
 = 0.5.8 =
 * Added meta links

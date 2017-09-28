@@ -9,19 +9,19 @@ $url = plugin_dir_url( dirname(__FILE__) ) . 'media';
 		<h2><?php _e('Cryout Serious Theme Settings Status', 'cryout-theme-settings') ?></h2>
 
 			<?php if ($this->status == 1): ?>
-			<div class="updated"><p>Current active (or parent) theme is: <strong><?php echo $theme_name; ?></strong>.
+			<div class="notice updated"><p>Current active (or parent) theme is: <strong><?php echo $theme_name; ?></strong>.
 				The plugin is <strong style="color: #008000;">active</strong>.<br>
 				<br>
 				Go <a href="<?php echo $theme_page_url ?>"><strong>configure <?php echo $theme_name ?></strong></a>.
 				</p></div>
 			<?php elseif ($this->status == 4): ?>
-			<div class="updated"><p>Current active (or parent) theme is: <strong><?php echo $theme_name; ?></strong> and you are running WordPress 4.4 or newer.
+			<div class="notice updated"><p>Current active (or parent) theme is: <strong><?php echo $theme_name; ?></strong> and you are running WordPress 4.4 or newer.
 				The plugin is <strong style="color: #008000;">active</strong> in compatibility mode.<br>
 				<br>
 				Go <a href="<?php echo $theme_page_url ?>"><strong>configure <?php echo $theme_name ?></strong></a>.
 				</p></div>
 			<?php else: ?>
-			<div class="error"><p>
+			<div class="notice error"><p>
 			<?php
 				switch ($this->status):
 					case 5:
@@ -53,8 +53,8 @@ $url = plugin_dir_url( dirname(__FILE__) ) . 'media';
 			</p></div>
 			<?php endif; ?>
 			<?php if ($this->renamed_theme) :?>
-			<div class="error">
-				<p>The plugin has detected that you have renamed the theme folder - this will limit your ability to update the theme.<br>
+			<div class="notice error">
+				<p style="font-size: 1.4em; ">The plugin has detected that you have renamed the theme folder - this will limit your ability to update the theme.<br>
 				If you need to customize the theme code, we strongly recommend creating a <a href="http://www.cryoutcreations.eu/wordpress-themes/wordpress-tutorials/wordpress-child-themes" target="_blank">child theme</a>.</p>
 			</div>
 			<?php endif; ?>
@@ -79,10 +79,10 @@ $url = plugin_dir_url( dirname(__FILE__) ) . 'media';
 								<p>If you are using a different theme or a theme version not listed here this plugin will not activate.</p>
 							<?php } else { ?>
 								<p>
-								This plugin will restore the settings page to working condition on WordPress 4.4-RC1 and newer with:
-								<ul>	<li><a href="http://wordpress.org/themes/mantra" target="_blank">Mantra</a> versions 2.0 - 2.4.1.1</li>
-								<li><a href="http://wordpress.org/themes/parabola" target="_blank">Parabola</a> versions 0.9 - 1.5.1</li>
-								<li><a href="http://wordpress.org/themes/tempera" target="_blank">Tempera</a> versions 0.9 - 1.3.3</li>		</ul>
+								This plugin restores the settings page to working condition on WordPress 4.4-RC1 and newer with:
+								<ul>	<li><a href="http://wordpress.org/themes/mantra" target="_blank"><img src="<?php echo $url . '/mantra.jpg'; ?>" /><span>Mantra</span></a> versions 2.0 - 2.4.1.1</li>
+								<li><a href="http://wordpress.org/themes/parabola" target="_blank"><img src="<?php echo $url . '/parabola.jpg'; ?>" /><span>Parabola</span></a> versions 0.9 - 1.5.1</li>
+								<li><a href="http://wordpress.org/themes/tempera" target="_blank"><img src="<?php echo $url . '/tempera.jpg'; ?>" /><span>Tempera</span></a> versions 0.9 - 1.3.3</li>		</ul>
 								</p>
 								<p>If you are using a different theme or a theme version not listed here this plugin will not activate.</p>
 							<?php } ?>

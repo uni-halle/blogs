@@ -1,5 +1,9 @@
 /* About page styling */
 
+div.notice p {
+	font-size: 1.2em;
+}
+
 #post-body-content ul {
     display: inline-block;
     margin-bottom: 2em;
