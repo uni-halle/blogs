@@ -3,7 +3,7 @@ Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Tested up to: 4.8
-Stable tag: 1.6.1
+Stable tag: 1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,6 +124,7 @@ You can put the shortcode in a text widget, though not all themes support use of
 If a regular text widget doesn't work, put the shortcode in a <a href="https://wordpress.org/plugins/black-studio-tinymce-widget/">Visual Editor Widget</a>.
 
 = What are the classes for styling the list of events? =
+
 By default the plugin does not include styling. Events are listed in ul li tags with appropriate classes for styling with a bit of CSS.
 
 * ul class="ecs-event-list"
@@ -153,6 +154,9 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 3. Many settings you can use in the shortcode to change what details appear in the events listing
 
 == Upgrade Notice ==
+
+= 1.7 =
+* Adds structured data to the shortcode output (great for SEO and people finding your events)
 
 = 1.6.1 =
 * Added ecs-featured-event class if event is featured
@@ -222,6 +226,9 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 1.7 =
+* Adds structured data to the shortcode output (great for SEO and people finding your events)
 
 = 1.6.1 =
 * Added ecs-featured-event class if event is featured

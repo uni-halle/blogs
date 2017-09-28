@@ -2,11 +2,11 @@
 /***
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
- Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin (Free Version) by Modern Tribe</a>.
- Version: 1.6.1
+ Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin by Modern Tribe</a>.
+ Version: 1.7
  Author: Event Calendar Newsletter
- Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
- Contributors: Brainchild Media Group, Reddit user miahelf, tallavic, hejeva2
+ Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode
+ Contributors: brianhogg
  License: GPL2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
  Text Domain: the-events-calendar-shortcode
@@ -38,7 +38,7 @@ class Events_Calendar_Shortcode
 	 *
 	 * @since 1.0.0
 	 */
-	const VERSION = '1.6.1';
+	const VERSION = '1.7';
 
 	private $admin_page = null;
 
@@ -57,6 +57,7 @@ class Events_Calendar_Shortcode
 		add_action( 'admin_menu', array( $this, 'add_menu_page' ), 1000 );
 		add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), array( $this, 'add_action_links' ) );
 		add_shortcode( 'ecs-list-events', array( $this, 'ecs_fetch_events' ) );
+		add_filter( 'ecs_ending_output', array( $this, 'add_event_schema_json' ), 10, 3 );
 		add_action( 'plugins_loaded', array( $this, 'load_languages' ) );
 
 	} // END __construct()
@@ -77,7 +78,7 @@ class Events_Calendar_Shortcode
 		if ( current_user_can( 'activate_plugins' ) ) {
 			$url = 'plugin-install.php?tab=plugin-information&plugin=the-events-calendar&TB_iframe=true';
 			$title = __( 'The Events Calendar', 'tribe-events-ical-importer' );
-			echo '<div class="error"><p>' . sprintf( esc_html( __( 'To begin using The Events Calendar Shortcode, please install the latest version of %sThe Events Calendar%s and add an event.', 'the-events-calendar-shortcode' ) ), '<a href="' . esc_url( $url ) . '" class="thickbox" title="' . esc_attr( $title ) . '">', '</a>' ) . '</p></div>';
+			echo '<div class="error"><p>' . sprintf( esc_html( __( 'To begin using %s, please install the latest version of %s%s%s and add an event.', 'the-events-calendar-shortcode' ) ), 'The Events Calendar Shortcode', '<a href="' . esc_url( $url ) . '" class="thickbox" title="' . esc_attr( $title ) . '">', 'The Events Calendar', '</a>' ) . '</p></div>';
 		}
 	}
 
@@ -258,11 +259,12 @@ class Events_Calendar_Shortcode
 			'meta_query' => apply_filters( 'ecs_get_meta_query', array( $atts['meta_date'] ), $atts, $meta_date_date, $meta_date_compare ),
 		), $atts, $meta_date_date, $meta_date_compare ) );
 
-		if ( $posts ) {
+		if ( $posts or apply_filters( 'ecs_always_show', false, $atts ) ) {
+			$output = apply_filters( 'ecs_beginning_output', $output, $posts, $atts );
 			$output .= apply_filters( 'ecs_start_tag', '<ul class="ecs-event-list">', $atts );
 			$atts['contentorder'] = explode( ',', $atts['contentorder'] );
 
-			foreach( $posts as $post ) {
+			foreach( (array) $posts as $post ) {
 				setup_postdata( $post );
 				$event_output = '';
 				$category_slugs = array();
@@ -340,6 +342,7 @@ class Events_Calendar_Shortcode
 				$output .= apply_filters( 'ecs_single_event_output', $event_output, $atts, $post );
 			}
 			$output .= apply_filters( 'ecs_end_tag', '</ul>', $atts );
+			$output = apply_filters( 'ecs_ending_output', $output, $posts, $atts );
 
 			if( self::isValid( $atts['viewall'] ) ) {
 				$output .= apply_filters( 'ecs_view_all_events_tag_start', '<span class="ecs-all-events">', $atts ) .
@@ -353,6 +356,12 @@ class Events_Calendar_Shortcode
 
 		wp_reset_query();
 
+		return $output;
+	}
+
+	public function add_event_schema_json( $output, $posts, $atts ) {
+		if ( $posts and class_exists( 'Tribe__Events__JSON_LD__Event' ) and ( ! defined( 'DOING_AJAX' ) or ! DOING_AJAX ) )
+			$output .= Tribe__Events__JSON_LD__Event::instance()->get_markup( $posts );
 		return $output;
 	}
 
