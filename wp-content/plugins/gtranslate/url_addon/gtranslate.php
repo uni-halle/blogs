@@ -1,4 +1,6 @@
 <?php
+error_reporting(0);
+
 include 'config.php';
 
 if(!isset($_GET['glang']) or !isset($_GET['gurl']))
@@ -27,6 +29,8 @@ if(isset($get_params['gurl']))
 if(count($get_params)) {
     $page_url .= '?' . http_build_query($get_params);
 }
+
+$main_lang = isset($data['default_language']) ? $data['default_language'] : $main_lang;
 
 if($glang == $main_lang) {
     $page_url = preg_replace('/^[\/]+/', '/', $page_url);
@@ -165,8 +169,10 @@ $headers_sent = '';
 foreach($response_headers as $header) {
     if(!empty($header) and !preg_match('/Content\-Length|Transfer\-Encoding|Content\-Encoding|Link/i', $header)) {
 
-        if(preg_match('/^Location:/i', $header))
+        if(preg_match('/^Location:/i', $header)) {
             $header = str_ireplace($host, $_SERVER['HTTP_HOST'] . '/' . $glang, $header);
+            $header = str_ireplace('Location: /', 'Location: /' . $glang . '/', $header);
+        }
 
         $headers_sent .= $header;
         header($header, false);

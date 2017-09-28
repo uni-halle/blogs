@@ -4,7 +4,7 @@ Author: Edvard Ananyan
 Tags: translate wordpress, multilingual, translate, translation, language, bilingual, localization, translation proxy, i18n, l10n, localisation, multilanguage, google translate
 Requires at least: 2.8.1
 Tested up to: 4.8
-Stable tag: 2.8.27
+Stable tag: 2.8.28
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
@@ -217,6 +217,13 @@ You need to go to the language you want to edit, for instance, French: http://do
 7. Settings page
 
 == Changelog ==
+
+= 2.8.28 =
+* Changed static content paths to be relative to scheme
+* Added "notranslate" class for dropdown widget look
+* Added drodpown select wrapper id for easy CSS styling
+* PHP URL rewriting added for some environments without .htaccess support: pantheon, flywheel, etc
+* Fixed issue in url addon related to relative path location redirects
 
 = 2.8.27 =
 * Fixed issue for some mobile phones related to nice looking dropdown selector staying open

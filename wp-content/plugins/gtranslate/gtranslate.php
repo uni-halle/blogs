@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: https://gtranslate.io/?xyz=998
 Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="https://wordpress.org/support/plugin/gtranslate">GTranslate Support</a>.
-Version: 2.8.27
+Version: 2.8.28
 Author: Edvard Ananyan
 Author URI: https://gtranslate.io
 Text Domain: gtranslate
@@ -200,7 +200,7 @@ class GTranslate extends WP_Widget {
         wp_enqueue_script('jquery-effects-core');
 
         $site_url = site_url();
-        $wp_plugin_url = plugins_url() . '/gtranslate';
+        $wp_plugin_url = preg_replace('/^https?:/i', '', plugins_url() . '/gtranslate');
 
         extract($data);
 
@@ -378,10 +378,7 @@ function RefreshDoWidgetCode() {
                 widget_preview += '<br />';
             else
                 widget_preview += ' ';
-            if(native_language_names)
-                widget_preview += '<select onchange="doGTranslate(this);" class="notranslate">';
-            else
-                widget_preview += '<select onchange="doGTranslate(this);">';
+            widget_preview += '<select onchange="doGTranslate(this);" class="notranslate" id="gtranslate_selector">';
 
             widget_preview += '<option value="">Select Language</option>';
             jQuery.each(language_codes2, function(i, val) {
@@ -1165,7 +1162,7 @@ EOT;
 
                         <p><?php _e('Prices starting from <b>$3.99/month</b>!', 'gtranslate'); ?></p>
 
-                        <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank"><?php _e('15 day free trial', 'gtranslate'); ?></a> | <a href="https://gtranslate.io/?xyz=998#faq" target="_blank"><?php _e('FAQ', 'gtranslate'); ?></a> | <a href="https://gtranslate.io/?xyz=998#contact" target="_blank"><?php _e('Live Chat', 'gtranslate'); ?></a>
+                        <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank" class="button-primary"><?php _e('Try Now (15 days free)', 'gtranslate'); ?></a> <a href="https://gtranslate.io/?xyz=998#faq" target="_blank" class="button-primary"><?php _e('FAQ', 'gtranslate'); ?></a> <a href="https://gtranslate.io/?xyz=998#contact" target="_blank" class="button-primary"><?php _e('Live Chat', 'gtranslate'); ?></a>
                     </div>
                 </div>
             </div>
@@ -1731,6 +1728,29 @@ if(is_admin()) {
 $data = get_option('GTranslate');
 GTranslate::load_defaults($data);
 
+if($data['pro_version']) { // gtranslate redirect rules with PHP (for environments with no .htaccess support (pantheon, flywheel, etc.), usually .htaccess rules override this)
+
+    @list($request_uri, $query_params) = explode('?', $_SERVER['REQUEST_URI']);
+
+    if(preg_match('/^\/(af|sq|am|ar|hy|az|eu|be|bn|bs|bg|ca|ceb|ny|zh-CN|zh-TW|co|hr|cs|da|nl|en|eo|et|tl|fi|fr|fy|gl|ka|de|el|gu|ht|ha|haw|iw|hi|hmn|hu|is|ig|id|ga|it|ja|jw|kn|kk|km|ko|ku|ky|lo|la|lv|lt|lb|mk|mg|ms|ml|mt|mi|mr|mn|my|ne|no|ps|fa|pl|pt|pa|ro|ru|sm|gd|sr|st|sn|sd|si|sk|sl|so|es|su|sw|sv|tg|ta|te|th|tr|uk|ur|uz|vi|cy|xh|yi|yo|zu)\/(af|sq|am|ar|hy|az|eu|be|bn|bs|bg|ca|ceb|ny|zh-CN|zh-TW|co|hr|cs|da|nl|en|eo|et|tl|fi|fr|fy|gl|ka|de|el|gu|ht|ha|haw|iw|hi|hmn|hu|is|ig|id|ga|it|ja|jw|kn|kk|km|ko|ku|ky|lo|la|lv|lt|lb|mk|mg|ms|ml|mt|mi|mr|mn|my|ne|no|ps|fa|pl|pt|pa|ro|ru|sm|gd|sr|st|sn|sd|si|sk|sl|so|es|su|sw|sv|tg|ta|te|th|tr|uk|ur|uz|vi|cy|xh|yi|yo|zu)\/(.*)$/', $request_uri, $matches)) {
+        header('Location: ' . '/' . $matches[1] . '/' . $matches[3] . (empty($query_params) ? '' : '?'.$query_params), true, 301);
+        exit;
+    } // #1 redirect double language codes /es/en/...
+
+    if(preg_match('/^\/(af|sq|am|ar|hy|az|eu|be|bn|bs|bg|ca|ceb|ny|zh-CN|zh-TW|co|hr|cs|da|nl|en|eo|et|tl|fi|fr|fy|gl|ka|de|el|gu|ht|ha|haw|iw|hi|hmn|hu|is|ig|id|ga|it|ja|jw|kn|kk|km|ko|ku|ky|lo|la|lv|lt|lb|mk|mg|ms|ml|mt|mi|mr|mn|my|ne|no|ps|fa|pl|pt|pa|ro|ru|sm|gd|sr|st|sn|sd|si|sk|sl|so|es|su|sw|sv|tg|ta|te|th|tr|uk|ur|uz|vi|cy|xh|yi|yo|zu)$/', $request_uri)) {
+        header('Location: ' . $request_uri . '/' . (empty($query_params) ? '' : '?'.$query_params), true, 301);
+        exit;
+    } // #2 add trailing slash
+
+    if(preg_match('/^\/(af|sq|am|ar|hy|az|eu|be|bn|bs|bg|ca|ceb|ny|zh-CN|zh-TW|co|hr|cs|da|nl|en|eo|et|tl|fi|fr|fy|gl|ka|de|el|gu|ht|ha|haw|iw|hi|hmn|hu|is|ig|id|ga|it|ja|jw|kn|kk|km|ko|ku|ky|lo|la|lv|lt|lb|mk|mg|ms|ml|mt|mi|mr|mn|my|ne|no|ps|fa|pl|pt|pa|ro|ru|sm|gd|sr|st|sn|sd|si|sk|sl|so|es|su|sw|sv|tg|ta|te|th|tr|uk|ur|uz|vi|cy|xh|yi|yo|zu)\/(.*)/', $request_uri, $matches)) {
+        $_GET['glang'] = $matches[1];
+        $_GET['gurl'] = rawurldecode($matches[2]);
+
+        require_once dirname(__FILE__) . '/url_addon/gtranslate.php';
+        exit;
+    } // #3 proxy translation
+}
+
 if(!empty($data['show_in_menu'])) {
     add_filter('wp_nav_menu_items', 'gtranslate_menu_item', 10, 2);
     function gtranslate_menu_item($items, $args) {
@@ -1740,7 +1760,7 @@ if(!empty($data['show_in_menu'])) {
         if($args->theme_location == $data['show_in_menu']) {
             if($data['widget_look'] == 'dropdown_with_flags') {
                 $items .= '<li style="position:relative;" class="menu-item menu-item-gtranslate">';
-                $items .= '<div style="position:absolute;">';
+                $items .= '<div style="position:absolute;" id="gtranslate_wrapper">';
                 $items .= GTranslate::get_widget_code(false);
                 $items .= '</div>';
                 $items .= '</li>';
@@ -1792,14 +1812,14 @@ if($data['floating_language_selector'] != 'no' and !is_admin()) {
             $vertical_location = '5%';
 
         switch($data['floating_language_selector']) {
-            case 'top_left': $html = '<div style="position:fixed;top:'.$vertical_location.';left:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
-            case 'top_left_sticky': $html = '<div style="position:absolute;top:'.$vertical_location.';left:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
-            case 'top_right': $html = '<div style="position:fixed;top:'.$vertical_location.';right:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
-            case 'top_right_sticky': $html = '<div style="position:absolute;top:'.$vertical_location.';right:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
-            case 'bottom_left': $html = '<div style="position:fixed;bottom:'.$vertical_location.';left:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
-            case 'bottom_left_sticky': $html = '<div style="position:absolute;bottom:'.$vertical_location.';left:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
-            case 'bottom_right': $html = '<div style="position:fixed;bottom:'.$vertical_location.';right:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
-            case 'bottom_right_sticky': $html = '<div style="position:absolute;bottom:'.$vertical_location.';right:8%;z-index:999999;">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'top_left': $html = '<div style="position:fixed;top:'.$vertical_location.';left:8%;z-index:999999;" id="gtranslate_wrapper">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'top_left_sticky': $html = '<div style="position:absolute;top:'.$vertical_location.';left:8%;z-index:999999;" id="gtranslate_wrapper">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'top_right': $html = '<div style="position:fixed;top:'.$vertical_location.';right:8%;z-index:999999;" id="gtranslate_wrapper">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'top_right_sticky': $html = '<div style="position:absolute;top:'.$vertical_location.';right:8%;z-index:999999;" id="gtranslate_wrapper">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'bottom_left': $html = '<div style="position:fixed;bottom:'.$vertical_location.';left:8%;z-index:999999;" id="gtranslate_wrapper">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'bottom_left_sticky': $html = '<div style="position:absolute;bottom:'.$vertical_location.';left:8%;z-index:999999;" id="gtranslate_wrapper">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'bottom_right': $html = '<div style="position:fixed;bottom:'.$vertical_location.';right:8%;z-index:999999;" id="gtranslate_wrapper">'.GTranslate::get_widget_code(false).'</div>'; break;
+            case 'bottom_right_sticky': $html = '<div style="position:absolute;bottom:'.$vertical_location.';right:8%;z-index:999999;" id="gtranslate_wrapper">'.GTranslate::get_widget_code(false).'</div>'; break;
             default: $html = ''; break;
         }
 
