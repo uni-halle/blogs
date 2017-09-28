@@ -103,10 +103,10 @@ if (!empty($_GET['range'])) {
 			text-overflow: ellipsis;
 		}
 		#zusatzinformationen {
-			overflow: hidden;
 			margin-top: 1.5pt;
 		  line-height: 1.2em;
 		  max-height: 2.2em;
+			overflow: hidden;
 		}
 		#hinweis {
 			display: inline-block;
@@ -168,17 +168,13 @@ foreach ( $posts as $post ) {
 			foreach ($fields['autoren'] as $key => $value) { $autoren[] = $fields['autoren'][$key]['name']; }
 			echo '<span class="attribut">' . (count($autoren) > 1 ? 'Autoren' : 'Autor') . '</span><span class="wert">' . implode(', ', $autoren) . '</span>';
 			// Untertitel
-			/* if ($fields['untertitel']) {
+			if ($fields['untertitel']) {
 			echo '<span class="attribut">Untertitel</span><span class="wert">' . $fields['untertitel'] . '</span>';
-      } */
+      }
 			// Erscheinungsjahr
 			if ($fields['erscheinungsjahr']) {
 				echo '<span class="attribut">Jahr</span><span class="wert">' . $fields['erscheinungsjahr'] . '</span>';
 			}
-			// Bibliografische Angaben
-			/* foreach ($fields['bibliografischeangaben'] as $key => $value) {
-			echo '<span class="attribut">' . $fields['bibliografischeangaben'][$key]['attribut'] . '</span><span class="wert">' . $fields['bibliografischeangaben'][$key]['wert'] . '</span>';
-		  }; */
 			// Zusatzinformationen
 			foreach ($fields['zusatzinformationen'] as $key => $value) {
 				echo '<span class="attribut">' . $fields['zusatzinformationen'][$key]['attribut'] . '</span><span class="wert">' . $fields['zusatzinformationen'][$key]['wert'] . '</span>';

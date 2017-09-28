@@ -1,4 +1,7 @@
 <?php
+// Standardrouten entfernen
+remove_action('rest_api_init', 'create_initial_rest_routes', 99);
+remove_action('rest_api_init', 'wp_oembed_register_route');
 
 // Javascript für das Backend
 function backendFormJavascript() {

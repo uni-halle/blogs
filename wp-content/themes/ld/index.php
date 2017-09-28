@@ -17,7 +17,7 @@ if ($_GET['kategorie']) {
 	$filterQuery[] = array (
 		'key'	=> 'kategorie',
 		'value' => $_GET['kategorie'],
-		'compare'	=> '=',
+		'compare'	=> '='
 	);
 }
 if ($_GET['s']) {
@@ -26,44 +26,91 @@ if ($_GET['s']) {
 		array (
 			'key'	=> 'artikelnummer',
 			'value' => (isValidArticleNumber($_GET['s']) ? str_replace('#', '', $_GET['s']) : ''),
-			'compare'	=> '=',
+			'compare'	=> '='
 		),
 		array (
 			'key'	=> 'autoren_%_name',
 			'value' => $_GET['s'],
-			'compare'	=> 'LIKE',
+			'compare'	=> 'LIKE'
 		),
 		array (
 			'key'	=> 'titel',
 			'value' => $_GET['s'],
-			'compare'	=> 'LIKE',
+			'compare'	=> 'LIKE'
 		),
 		array (
 			'key'	=> 'untertitel',
 			'value' => $_GET['s'],
-			'compare'	=> 'LIKE',
+			'compare'	=> 'LIKE'
 		),
 		array (
 			'key'	=> 'erscheinungsjahr',
 			'value' => $_GET['s'],
-			'compare'	=> '=',
+			'compare'	=> '='
 		),
 		array (
 			'key'	=> 'bibliografischeangaben_%_wert',
 			'value' => $_GET['s'],
-			'compare'	=> 'LIKE',
+			'compare'	=> 'LIKE'
 		),
 		array (
 			'key'	=> 'bezeichnung',
 			'value' => $_GET['s'],
-			'compare'	=> 'LIKE',
+			'compare'	=> 'LIKE'
 		),
 		array (
 			'key'	=> 'zusatzinformationen_%_wert',
 			'value' => $_GET['s'],
-			'compare'	=> 'LIKE',
+			'compare'	=> 'LIKE'
+		),
+		array (
+			'key'	=> 'ort',
+			'value' => $_GET['s'],
+			'compare'	=> 'LIKE'
 		)
 	);
+}
+if ($_GET['ausleihe']) {
+  switch ($_GET['ausleihe']){
+		case ('ja'):
+			$filterQuery[] = array (
+				'relation' => 'AND',
+				array (
+					'key'	=> 'status',
+					'value' => '1',
+					'compare'	=> '='
+				),
+				array (
+					'relation' => 'OR',
+					array (
+						'key'	=> 'entleiher',
+						'value' => '',
+						'compare'	=> 'NOT EXISTS'
+					),
+					array (
+						'key'	=> 'entleiher',
+						'value' => '',
+						'compare'	=> '='
+					)
+				)
+			);
+			break;
+		case ('nein'):
+			$filterQuery[] = array (
+				'relation' => 'AND',
+				array (
+					'key'	=> 'status',
+					'value' => '1',
+					'compare'	=> '='
+				),
+				array (
+					'key'	=> 'entleiher',
+					'value' => array(''),
+					'compare'	=> 'NOT IN'
+				)
+			);
+			break;
+  }
 }
 
 $args = array (
@@ -100,7 +147,7 @@ $countPosts = count($posts);
 
 				<div class="row">
 
-				<div class="col-sm-4">
+				<div class="col-sm-3">
                 <!-- Select multiple-->
                 <div class="form-group">
                   <label>Kategorie</label>
@@ -125,11 +172,23 @@ $countPosts = count($posts);
         </div>
 				</div>
 
-				<div class="col-sm-8">
+				<div class="col-sm-6">
 					<div class="form-group">
-                  <label>Suchbegriff</label>
-                  <input type="text" class="form-control" name="s" value="<?php echo ($_GET['s'] ? $_GET['s'] : ''); ?>">
-                </div>
+            <label>Suchbegriff</label>
+            <input type="text" class="form-control" name="s" value="<?php echo ($_GET['s'] ? $_GET['s'] : ''); ?>">
+          </div>
+				</div>
+
+				<div class="col-sm-3">
+					<!-- Select multiple-->
+					<div class="form-group">
+						<label>Verfügbarkeit</label>
+						<select class="form-control" name="ausleihe">
+							<option value="">Alle Artikel</option>
+							<option value="ja" <?php echo (($_GET['ausleihe'] == 'ja') ? ' selected' : ''); ?> >Verfügbare Artikel</option>
+							<option value="nein" <?php echo (($_GET['ausleihe'] == 'nein') ? ' selected' : ''); ?> >Ausgeliehene Artikel</option>
+					  </select>
+				  </div>
 				</div>
 
 				</div>
@@ -168,6 +227,11 @@ $countPosts = count($posts);
 		<?php else : ?>
 		<?php endif; ?>
 		<?php wp_reset_query(); ?>
+
+		<!-- Button -->
+		<div>
+			<a href="<?php echo '/export?list=' . implode(',', $postList); ?>" target="export" class="btn btn-default<?php if($countPosts == 0) { echo ' disabled'; } ?>" role="button">Artikel exportieren</a>
+		</div>
 
       </div>
       <!-- /.col -->
