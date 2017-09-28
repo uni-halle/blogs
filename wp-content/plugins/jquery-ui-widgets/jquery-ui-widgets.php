@@ -3,7 +3,7 @@
 Plugin Name: jQuery UI Widgets
 Plugin URI: http://wordpress.org/plugins/jquery-ui-widgets/
 Description: Simple, clean, and flexible way to add jQuery UI widgets to your site pages.
-Version: 0.50
+Version: 0.60
 Author: David Gwyer
 Author URI: http://www.wpgoplugins.com
 License: GPLv2
@@ -332,10 +332,9 @@ function jquiw_render_form() {
 		.pcdm.dashicons-no { color: red; }
 	</style>
 	<div class="wrap">
-		<h2><?php _e( 'jQuery UI Widgets Options', 'jquery-ui-widgets' ); ?></h2>
-
-		<div class="notice" style="border: 2px #32cd32 solid;margin: 20px 0;">
-			<p><a style="color:#32cd32;" href="https://wpgoplugins.com/plugins/jquery-ui-widgets-pro/" target="_blank"><strong>jQuery UI Widgets PRO</strong></a> is now available! Access great new features. <b>Try risk free today with our 100% money back guarantee!</b></p>
+		<div style="display:flex;justify-content: space-between;">
+			<h2 style="font-size: 23px;"><?php _e( 'jQuery UI Widgets Options', 'jquery-ui-widgets' ); ?></h2>
+			<div><a target="_blank" title="We love to develop WordPress plugins!" alt="WPGO Plugins Site" href="https://wpgoplugins.com/"><img src="<?php echo plugins_url(); ?>/wp-content-filter/images/wpgo_plugins_logo.png"></a></div>
 		</div>
 
 		<form method="post" action="options.php">
@@ -350,7 +349,45 @@ function jquiw_render_form() {
 					height:   14px;
 				}
 			</style>
+
 			<table class="form-table">
+				<tr valign="top">
+					<th scope="row">Like the plugin?</th>
+					<td colspan="3">
+						<p>Then why not upgrade to Pro and access powerful additional features. Try risk free today with our <span style="font-weight: bold;">100% money back guarantee!</span></p>
+						<div style="margin-top:10px;"><input class="button" type="button" value="Upgrade to Pro" onClick="window.open('https://wpgoplugins.com/plugins/jquery-ui-widgets-pro/')"></div>
+					</td>
+				</tr>
+
+				<tr valign="top">
+					<th scope="row">Read all about it!</th>
+					<td colspan="3">
+						<p>Signup to our plugin newsletter for news and updates about our latest work, and what's coming.</p>
+						<div style="margin-top:10px;"><input class="button" type="button" value="Subscribe here..." onClick="window.open('http://eepurl.com/bXZmmD')"></div>
+					</td>
+				</tr>
+
+				<tr valign="top">
+					<th scope="row">Buy me a coffee?</th>
+					<td colspan="3">
+						<p>If you use this FREE Plugin on your website <b><em>please</em></b> consider making a <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FHPU3ZABJAX5U" target="_blank">donation</a> to support continued development. Thank you.<span style="margin-left:5px;" class="dashicons dashicons-smiley"></span></p>
+					</td>
+				</tr>
+
+				<tr valign="top">
+					<th scope="row">Keep in touch...</th>
+					<td colspan="3">
+						<div>
+							<span><a href="http://www.twitter.com/dgwyer" title="Follow us on Twitter" target="_blank"><img src="<?php echo plugins_url(); ?>/wp-content-filter/images/twitter.png" /></a></span>
+							<span><a href="https://www.facebook.com/wpgoplugins/" title="Our Facebook page" target="_blank"><img src="<?php echo plugins_url(); ?>/wp-content-filter/images/facebook.png" /></a></span>
+							<span><a href="https://www.youtube.com/channel/UCWzjTLWoyMgtIfpDgJavrTg" title="View our YouTube channel" target="_blank"><img src="<?php echo plugins_url(); ?>/wp-content-filter/images/yt.png" /></a></span>
+							<span><a style="text-decoration:none;" title="Need help with ANY aspect of WordPress? We're here to help!" href="https://wpgoplugins.com/need-help-with-wordpress/" target="_blank"><span style="margin-left:-2px;color:#d41515;font-size:39px;line-height:32px;width:39px;height:39px;" class="dashicons dashicons-sos"></span></a></span>
+						</div>
+					</td>
+				</tr>
+
+				<tr valign="top"><td colspan="2"><hr></td></tr>
+
 				<tr valign="top">
 					<th scope="row"><?php _e( 'Custom jQuery Code', 'jquery-ui-widgets' ); ?></th>
 					<td colspan="3">
@@ -592,19 +629,6 @@ function jquiw_render_form() {
 			</p>
 		</form>
 
-		<div style="margin-top:15px;">
-			<p style="margin-bottom:10px;">If you use this FREE Plugin on your website <b><em>please</em></b> consider making a <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FHPU3ZABJAX5U" target="_blank">donation</a> to support continued development. Thank you.<span style="margin-left:5px;" class="dashicons dashicons-smiley"></span></p>
-		</div>
-
-		<div style="clear:both;">
-			<span><a href="http://www.twitter.com/dgwyer" title="Follow us on Twitter" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/twitter.png" /></a></span>
-			<span><a href="https://www.facebook.com/wpgoplugins/" title="Our Facebook page" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/facebook.png" /></a></span>
-			<span><a href="https://www.youtube.com/channel/UCWzjTLWoyMgtIfpDgJavrTg" title="View our YouTube channel" target="_blank"><img src="<?php echo plugins_url(); ?>/jquery-ui-widgets/images/yt.png" /></a></span>
-			<span><a style="text-decoration:none;" title="Need help with ANY aspect of WordPress? We're here to help!" href="https://wpgoplugins.com/need-help-with-wordpress/" target="_blank"><span style="margin-left:-2px;color:#d41515;font-size:39px;line-height:32px;width:39px;height:39px;" class="dashicons dashicons-sos"></span></a></span>
-			<span style="margin-left:20px;"><input class="button" style="vertical-align:12px;" type="button" value="Visit Our Site" onClick="window.open('http://www.wpgoplugins.com')"></span>
-			<span style="margin-left:3px;"><input class="button" style="vertical-align:12px;" type="button" value="Subscribe (free)" title="Signup today for all the latest plugin news and updates!" onClick="window.open('http://eepurl.com/bXZmmD')"></span>
-		</div>
-
 	</div>
 <?php
 }
@@ -626,10 +650,13 @@ function jquiw_plugin_action_links( $links, $file ) {
 function jquiw_plugin_settings_link( $links, $file ) {
 
 	if ( $file == plugin_basename( __FILE__ ) ) {
-		$posk_links = '<a style="color:limegreen;" href="https://wpgoplugins.com/plugins/jquery-ui-widgets-pro/" target="_blank" title="Upgrade to Pro - 100% money back guarantee"><span class="dashicons dashicons-awards"></span></a> | ';
-		$posk_links .= '<a href="' . get_admin_url() . 'options-general.php?page=jquery-ui-widgets/jquery-ui-widgets.php">' . __( 'Settings' ) . '</a>';
-		/* Make the 'Settings' link appear first. */
-		array_unshift( $links, $posk_links );
+		$pccf_links = '<a href="' . get_admin_url() . 'options-general.php?page=jquery-ui-widgets/jquery-ui-widgets.php">' . __( 'Settings' ) . '</a>';
+		array_unshift( $links, $pccf_links );
+	}
+
+	if ( $file == plugin_basename( __FILE__ ) ) {
+		$pccf_links = '<a style="color:#d54e21;" href="https://wpgoplugins.com/plugins/jquery-ui-widgets-pro/" target="_blank" title="Go PRO - 100% money back guarantee"><span class="dashicons dashicons-megaphone"></span></a>';
+		array_push( $links, $pccf_links );
 	}
 
 	return $links;

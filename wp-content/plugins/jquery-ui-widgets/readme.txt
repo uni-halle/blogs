@@ -3,7 +3,7 @@ Contributors: dgwyer
 Tags: jQuery UI, jQuery, tabs, accordion, dialog, UI, admin, enqueue, themeroller, styles, themes, widgets, effects, interactions, custom code, customization
 Requires at least: 3.5
 Tested up to: 4.8
-Stable tag: 0.50
+Stable tag: 0.60
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,10 @@ Usage:
 11. Add license key to receive automatic plugin updates. (Pro only)
 
 == Changelog ==
+
+*0.60*
+
+* Plugin settings page updated.
 
 *0.50*
 
