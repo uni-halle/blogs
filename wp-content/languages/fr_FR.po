@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.8.x package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-07-25 06:42:50+0000\n"
+"PO-Revision-Date: 2017-08-26 13:28:48+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -791,7 +791,7 @@ msgstr "Le terme ne peut pas être supprimé."
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:399
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:505
 msgid "Cannot set parent term, taxonomy is not hierarchical."
-msgstr "Impossible de définir un terme parent, la taxinomie n’est pas hiérarchique."
+msgstr "Impossible de définir un terme parent, la taxonomie n’est pas hiérarchique."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:305
 msgid "Term does not exist."
@@ -799,11 +799,11 @@ msgstr "Le terme n’existe pas."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:268
 msgid "The title for the taxonomy."
-msgstr "Le titre pour la taxinomie."
+msgstr "Le titre pour la taxonomie."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:286
 msgid "Types associated with the taxonomy."
-msgstr "Le type associé avec la taxinomie."
+msgstr "Le type associé avec la taxonomie."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:240
 msgid "The title for the post type."
@@ -1238,7 +1238,7 @@ msgstr "En-tête du média"
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:295
 msgid "REST base route for the taxonomy."
-msgstr "Route de base REST pour la taxinomie."
+msgstr "Route de base REST pour la taxonomie."
 
 #. translators: %s: add new page label
 #: wp-includes/class-wp-customize-control.php:620
@@ -1758,19 +1758,19 @@ msgstr "Le mot de passe pour cet article, s’il est protégé par un mot de pas
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:262
 msgid "Human-readable labels for the taxonomy for various contexts."
-msgstr "Libellés lisibles par un humain pour la taxinomie dans divers contextes."
+msgstr "Libellés lisibles par un humain pour la taxonomie dans divers contextes."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:256
 msgid "Whether or not the taxonomy should have children."
-msgstr "Définit si la taxinomie doit avoir des enfants ou non."
+msgstr "Définit si la taxonomie doit avoir des enfants ou non."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:250
 msgid "A human-readable description of the taxonomy."
-msgstr "Une description de la taxinomie lisible par l’humain."
+msgstr "Une description de la taxonomie lisible par l’humain."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:244
 msgid "All capabilities used by the taxonomy."
-msgstr "Toutes les capacités utilisées par la taxinomie."
+msgstr "Toutes les capacités utilisées par la taxonomie."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1227
 msgid "An alphanumeric identifier for the user."
@@ -2981,7 +2981,7 @@ msgstr "<strong>ERREUR</strong> : le champ e-mail est vide."
 
 #: wp-includes/taxonomy.php:426
 msgid "Unregistering a built-in taxonomy is not allowed"
-msgstr "Vous ne pouvez supprimer une taxinomie interne"
+msgstr "Vous ne pouvez supprimer une taxonomie interne"
 
 #: wp-includes/script-loader.php:538
 msgid "Drag boxes here"
@@ -3242,7 +3242,7 @@ msgstr "L’identifiant du terme est partagé par plusieurs taxinomies"
 
 #: wp-includes/taxonomy.php:1128 wp-includes/taxonomy.php:1210
 msgid "Term meta cannot be added to terms that are shared between taxonomies."
-msgstr "Les méta de termes ne peuvent pas être ajoutés à des termes partagés entre plusieurs taxinomies."
+msgstr "Les méta de termes ne peuvent pas être ajoutés à des termes partagés entre plusieurs taxonomies."
 
 #. translators: month name, genitive
 #: wp-includes/class-wp-locale.php:183
@@ -4630,7 +4630,7 @@ msgstr "L’installation a bien été terminée."
 
 #: wp-includes/taxonomy.php:380 wp-includes/taxonomy.php:381
 msgid "Taxonomy names must be between 1 and 32 characters in length."
-msgstr "Un nom de taxinomie doit comporter entre 1 et 32 caractères."
+msgstr "Un nom de taxonomie doit comporter entre 1 et 32 caractères."
 
 #: wp-includes/taxonomy.php:3489
 msgid "Could not split shared term."
@@ -4865,7 +4865,7 @@ msgstr "Les valeurs suivantes ne décrivent pas une date valide : mois de %1$s, 
 
 #: wp-includes/taxonomy.php:2059
 msgid "A term with the name provided already exists in this taxonomy."
-msgstr "Un terme avec ce nom et cet identifiant existe déjà dans cette taxinomie."
+msgstr "Un terme avec ce nom et cet identifiant existe déjà dans cette taxonomie."
 
 #. translators: %s: database access abstraction class, usually wpdb or a class
 #. extending wpdb
@@ -7145,7 +7145,7 @@ msgstr "Retirer"
 #: wp-includes/class-wp-xmlrpc-server.php:2219
 #: wp-includes/class-wp-xmlrpc-server.php:2314
 msgid "Sorry, you are not allowed to assign terms in this taxonomy."
-msgstr "Désolé, vous n’avez pas l’autorisation d’assigner des termes à cette taxinomie."
+msgstr "Désolé, vous n’avez pas l’autorisation d’assigner des termes à cette taxonomie."
 
 #: wp-includes/class-wp-xmlrpc-server.php:2105
 msgid "Sorry, deleting the term failed."
@@ -7154,7 +7154,7 @@ msgstr "Désolé, la suppression du terme a échoué."
 #: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:90
 #: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:150
 msgid "Sorry, you are not allowed to manage terms in this taxonomy."
-msgstr "Désolé, vous n’avez pas l’autorisation de gérer les termes de cette taxinomie."
+msgstr "Désolé, vous n’avez pas l’autorisation de gérer les termes de cette taxonomie."
 
 #: wp-includes/class-wp-xmlrpc-server.php:2043
 msgid "Sorry, editing the term failed."
@@ -7162,7 +7162,7 @@ msgstr "Désolé, la modification du terme a échoué."
 
 #: wp-includes/class-wp-xmlrpc-server.php:2017
 msgid "This taxonomy is not hierarchical so you can't set a parent."
-msgstr "Cette taxinomie n’est pas hiérarchisée, donc vous ne pouvez pas créer de parent."
+msgstr "Cette taxonomie n’est pas hiérarchisée, donc vous ne pouvez pas créer de parent."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1455
 #: wp-includes/class-wp-xmlrpc-server.php:2002
@@ -7173,7 +7173,7 @@ msgstr "ID du terme non valide."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:150
 msgid "Sorry, you are not allowed to edit terms in this taxonomy."
-msgstr "Désolé, vous n’avez pas l’autorisation de modifier les termes de cette taxinomie."
+msgstr "Désolé, vous n’avez pas l’autorisation de modifier les termes de cette taxonomie."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1927
 #: wp-includes/class-wp-xmlrpc-server.php:2026
@@ -7185,11 +7185,11 @@ msgstr "Le terme parent n’existe pas."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1918
 msgid "This taxonomy is not hierarchical."
-msgstr "Cette taxinomie n’est pas hiérarchique."
+msgstr "Cette taxonomie n’est pas hiérarchique."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1904
 msgid "Sorry, you are not allowed to create terms in this taxonomy."
-msgstr "Désolé, vous n’avez pas l’autorisation de créer des termes dans cette taxinomie."
+msgstr "Désolé, vous n’avez pas l’autorisation de créer des termes dans cette taxonomie."
 
 #: wp-includes/class-wp-tax-query.php:565
 #: wp-includes/class-wp-tax-query.php:572 wp-includes/class-wp-term.php:179
@@ -7206,7 +7206,7 @@ msgstr "Désolé, vous n’avez pas l’autorisation de créer des termes dans c
 #: wp-includes/taxonomy.php:1952 wp-includes/taxonomy.php:2215
 #: wp-includes/taxonomy.php:2358 wp-includes/taxonomy.php:2559
 msgid "Invalid taxonomy."
-msgstr "Taxinomie non valide."
+msgstr "Taxonomie non valide."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1914
 #: wp-includes/class-wp-xmlrpc-server.php:2012
@@ -7365,7 +7365,7 @@ msgstr "Désolé, vous n’avez pas l’autorisation d’ajouter un terme à l�
 
 #: wp-includes/class-wp-xmlrpc-server.php:1493
 msgid "Ambiguous term name used in a hierarchical taxonomy. Please use term ID instead."
-msgstr "Un nom de terme est ambigu pour cette taxinomie hiérarchisée. Veuillez utiliser l’identifiant du terme à la place."
+msgstr "Un nom de terme est ambigu pour cette taxonomie hiérarchisée. Veuillez utiliser l’identifiant du terme à la place."
 
 #: wp-includes/class-wp-xmlrpc-server.php:3160
 msgid "Sorry, you are not allowed to delete a category."
@@ -7973,7 +7973,7 @@ msgstr "Blavatar"
 #. translators: %s: taxonomy name
 #: wp-includes/post.php:3349
 msgid "Invalid taxonomy: %s."
-msgstr "Taxinomie non valide : %s"
+msgstr "Taxonomie non valide : %s"
 
 #: wp-includes/taxonomy.php:112
 msgid "Link Category"
@@ -8355,7 +8355,7 @@ msgstr "Cette action a été désactivée par l’administrateur."
 
 #: wp-signup.php:889
 msgid "You are logged in already. No need to register again!"
-msgstr "Vous êtes déjà connecté. Inutile de vous inscrire à nouveau !"
+msgstr "Vous êtes déjà connecté·e. Inutile de vous inscrire à nouveau !"
 
 #. translators: %s: login URL
 #: wp-signup.php:854
@@ -8544,7 +8544,7 @@ msgstr "Une réponse à %s"
 
 #: wp-includes/widgets/class-wp-widget-tag-cloud.php:166
 msgid "Taxonomy:"
-msgstr "Taxinomie :"
+msgstr "Taxonomie :"
 
 #: wp-includes/taxonomy.php:99
 msgid "Navigation Menu"

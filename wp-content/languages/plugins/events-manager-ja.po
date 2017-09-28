@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Events Manager - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-07-18 08:07:14+0000\n"
+"PO-Revision-Date: 2017-09-10 07:28:32+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -54,6 +54,14 @@ msgstr "スケジュール変更の取り消し"
 #: templates/forms/event/recurring-when.php:19
 msgid "Current Recurrence Pattern: %s"
 msgstr "現在の繰り返し規則: %s"
+
+#: templates/forms/event/bookings.php:152
+msgid "Modify Recurring Event Tickets "
+msgstr "繰り返しイベントのチケットを編集"
+
+#: templates/emails/bookingsummary.php:61
+msgid "Surcharges (After Taxes)"
+msgstr "手数料(税加算後)"
 
 #: templates/emails/bookingsummary.php:38
 msgid "Surcharges Before Taxes"

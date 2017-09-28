@@ -1,0 +1,67 @@
+# Translation of Plugins - BE Subpages Widget - Stable (latest release) in German
+# This file is distributed under the same license as the Plugins - BE Subpages Widget - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-09-08 07:07:22+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - BE Subpages Widget - Stable (latest release)\n"
+
+#. Author of the plugin/theme
+msgid "Bill Erickson"
+msgstr "Bill Erickson"
+
+#. Description of the plugin/theme
+msgid "Lists subpages of the current section"
+msgstr "Unterseiten des aktuellen Bereichs aufführen"
+
+#. #-#-#-#-#  tmp-be-subpages-widget.pot (BE Subpages Widget 1.6)  #-#-#-#-#
+#. Plugin URI of the plugin/theme
+#. #-#-#-#-#  tmp-be-subpages-widget.pot (BE Subpages Widget 1.6)  #-#-#-#-#
+#. Author URI of the plugin/theme
+msgid "http://www.billerickson.net"
+msgstr "http://www.billerickson.net"
+
+#. Plugin Name of the plugin/theme
+msgid "BE Subpages Widget"
+msgstr "BE Subpages Widget"
+
+#: be-subpages-widget.php:218
+msgid "only if &quot;Include the current page's subpages&quot; is checked"
+msgstr "nur wenn &quot;Schließe die Unterseiten der aktuellen Seite ein&quot; ausgewählt ist"
+
+#: be-subpages-widget.php:218
+msgid "Nest sub-page &lt;ul&gt; inside parent &lt;li&gt;"
+msgstr "&lt;ul&gt; der Unterseiten in &lt;li&gt; der Elternseite verschachteln"
+
+#: be-subpages-widget.php:213
+msgid "Include the current page's subpages"
+msgstr "Unterseiten der aktuellen Seite einschließen"
+
+#: be-subpages-widget.php:208
+msgid "only if \"use top level page\" is checked"
+msgstr "nur wenn \"Hauptseite verwenden“ ausgewählt ist"
+
+#: be-subpages-widget.php:208
+msgid "Make title a link"
+msgstr "Titel in Link ändern"
+
+#: be-subpages-widget.php:203
+msgid "Use top level page as section title."
+msgstr "Hauptseite als Bereichstitel verwenden."
+
+#: be-subpages-widget.php:197
+msgid "Title:"
+msgstr "Titel:"
+
+#: be-subpages-widget.php:38
+msgid "Subpages Widget"
+msgstr "Unterseiten-Widget"
+
+#: be-subpages-widget.php:37
+msgid "Lists current section subpages"
+msgstr "Führt die Unterseiten des aktuellen Bereichs auf"

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Broken Link Checker - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-06-26 00:36:24+0000\n"
+"PO-Revision-Date: 2017-09-11 23:32:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,14 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ja_JP\n"
 "Project-Id-Version: Plugins - Broken Link Checker - Stable (latest release)\n"
+
+#: core/core.php:1431
+msgid "Enter the keys of acf fields you want to check (one per line). If a field contains HTML code, prefix its name with <code>html:</code>. For example, <code>html:field_586a3eaa4091b</code>."
+msgstr "チェックしたい acf フィールドの名前を入れてください。一行に1個ずつです。もし html コードを許容するフィールドなら、前に <code>html:</code> を付けてください。例えば <code>html:field_586a3eaa4091b</code> のように。"
+
+#: core/core.php:111
+msgid "Every 10 minutes"
+msgstr "10分毎"
 
 #. Plugin URI of the plugin/theme
 msgid "https://wordpress.org/plugins/broken-link-checker/"
@@ -281,7 +289,7 @@ msgstr[0] "%dヶ月前"
 #: includes/utility-class.php:262
 msgid "%d month"
 msgid_plural "%d months"
-msgstr[0] "%d分"
+msgstr[0] "%dか月"
 
 #: includes/utility-class.php:259
 msgid "%d day ago"

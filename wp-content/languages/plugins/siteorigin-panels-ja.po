@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Page Builder by SiteOrigin - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-05-06 08:33:06+0000\n"
+"PO-Revision-Date: 2017-06-27 07:51:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -966,7 +966,7 @@ msgstr "全幅レイアウトに使用されるコンテナー。"
 
 #: settings/settings.php:261
 msgid "Full Width Container"
-msgstr "全幅コンテナ"
+msgstr "全幅コンテナー"
 
 #: settings/settings.php:255
 msgid "Default spacing between columns in each row."

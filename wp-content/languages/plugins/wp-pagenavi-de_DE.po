@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP-PageNavi - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-04-01 15:23:55+0000\n"
+"PO-Revision-Date: 2017-08-30 16:45:18+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,7 +25,7 @@ msgstr "Lester 'GaMerZ' Chan"
 
 #. Description of the plugin/theme
 msgid "Adds a more advanced paging navigation to your WordPress blog"
-msgstr "Fügt deiner WordPress-Website eine verbesserte Seiten-Navigation hinzu"
+msgstr "Fügt deiner WordPress-Website eine verbesserte Seitennavigation hinzu"
 
 #. Plugin URI of the plugin/theme
 msgid "http://lesterchan.net/portfolio/programming/php/"
@@ -69,7 +69,7 @@ msgstr "Einstellungen <strong>gespeichert</strong>."
 
 #: admin.php:158
 msgid "Page Navigation Options"
-msgstr "Seiten-Navigations-Optionen"
+msgstr "Seitennavigations-Optionen"
 
 #: admin.php:153
 msgid "For example, if mutiple is 5, it will show: 5, 10, 15, 20, 25"
@@ -89,7 +89,7 @@ msgstr "Zum Beispiel stellt WP-PageNavi dies so dar: Seiten 1, 2, 3, 4, 5, 10, 2
 
 #: admin.php:142
 msgid "Larger page numbers are in addition to the normal page numbers. They are useful when there are many pages of posts."
-msgstr "Große Seitenzahlen sind ein Zusatz zu den normalen Seitenzahlen. Sie sind nützlich, wenn es viele Beitrags-Seiten gibt."
+msgstr "Große Seitenzahlen sind ein Zusatz zu den normalen Seitenzahlen. Sie sind nützlich, wenn es viele Beitragsseiten gibt."
 
 #: admin.php:137
 msgid "Number Of Larger Page Numbers To Show"
@@ -109,7 +109,7 @@ msgstr "Seitennavigation immer anzeigen"
 
 #: admin.php:117
 msgid "Drop-down List"
-msgstr "Drop-Down Liste"
+msgstr "Drop-Down-Liste"
 
 #: admin.php:117
 msgid "Normal"
@@ -117,7 +117,7 @@ msgstr "Normal"
 
 #: admin.php:114
 msgid "Page Navigation Style"
-msgstr "Seiten-Navigations-Stil"
+msgstr "Seitennavigations-Stil"
 
 #: admin.php:110 admin.php:125
 msgid "No"
@@ -137,7 +137,7 @@ msgstr "Leere Felder deaktivieren den Teil der Navigation."
 
 #: admin.php:100
 msgid "Page Navigation Text"
-msgstr "Seiten-Navigations-Text"
+msgstr "Seitennavigations-Text"
 
 #: admin.php:93
 msgid "Text For Next ..."
