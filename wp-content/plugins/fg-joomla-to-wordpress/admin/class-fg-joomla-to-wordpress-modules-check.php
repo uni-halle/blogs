@@ -165,6 +165,10 @@ if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', false) ) {
 					'fg-joomla-to-wordpress-premium-community-builder-module/fgj2wp-community-builder.php',
 					sprintf($message_addon, __('Community Builder data', 'fg-joomla-to-wordpress'), $premium_url, $premium_url . 'community-builder/', __('Community Builder add-on', 'fg-joomla-to-wordpress'))
 				),
+				array('rsblog_posts', 10,
+					'fg-joomla-to-wordpress-premium-rsblog-module/fgj2wp-rsblog.php',
+					sprintf($message_addon, __('some RSBlog posts', 'fg-joomla-to-wordpress'), $premium_url, $premium_url . 'rsblog/', __('RSBlog add-on', 'fg-joomla-to-wordpress'))
+				),
 			);
 			foreach ( $modules as $module ) {
 				list($table, $count, $plugin, $message) = $module;

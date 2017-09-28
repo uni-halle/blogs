@@ -68,8 +68,12 @@ class FG_Joomla_to_WordPress {
 	 */
 	public function __construct() {
 
+		if ( defined( 'FGJ2WP_PLUGIN_VERSION' ) ) {
+			$this->version = FGJ2WP_PLUGIN_VERSION;
+		} else {
+			$this->version = '1.0.0';
+		}
 		$this->plugin_name = 'fg-joomla-to-wordpress';
-		$this->version = '3.31.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
