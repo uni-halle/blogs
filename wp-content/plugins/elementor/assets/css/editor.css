@@ -1,4 +1,4 @@
-/*! elementor - v1.7.3 - 11-09-2017 */
+/*! elementor - v1.7.6 - 26-09-2017 */
 @charset "UTF-8";
 .dialog-widget {
   position: fixed;
@@ -1371,7 +1371,8 @@ select {
     text-transform: uppercase; }
   .elementor-panel .elementor-control-type-media .elementor-control-media-image {
     height: 100%;
-    background-size: cover; }
+    background-size: cover;
+    background-position: center; }
   .elementor-panel .elementor-control-type-dimensions .elementor-control-dimensions {
     overflow: hidden; }
   .elementor-panel .elementor-control-type-dimensions li {

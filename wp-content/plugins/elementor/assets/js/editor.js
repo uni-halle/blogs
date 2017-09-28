@@ -1,4 +1,4 @@
-/*! elementor - v1.7.3 - 11-09-2017 */
+/*! elementor - v1.7.6 - 26-09-2017 */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var HandleAddDuplicateBehavior;
 
@@ -6984,7 +6984,9 @@ ColumnView = BaseElementView.extend( {
 	childViewContainer: '> .elementor-column-wrap > .elementor-widget-wrap',
 
 	behaviors: function() {
-		var behaviors = {
+		var behaviors = BaseElementView.prototype.behaviors.apply( this, arguments );
+
+		_.extend( behaviors, {
 			Sortable: {
 				behaviorClass: require( 'elementor-behaviors/sortable' ),
 				elChildType: 'widget'
@@ -6998,7 +7000,7 @@ ColumnView = BaseElementView.extend( {
 			HandleAddMode: {
 				behaviorClass: require( 'elementor-behaviors/duplicate' )
 			}
-		};
+		} );
 
 		return elementor.hooks.applyFilters( 'elements/column/behaviors', behaviors, this );
 	},
@@ -7441,10 +7443,6 @@ ControlBaseItemView = Marionette.CompositeView.extend( {
 
 		if ( ! _.isEmpty( modelClasses ) ) {
 			classes += ' ' + modelClasses;
-		}
-
-		if ( ! _.isEmpty( this.model.get( 'section' ) ) ) {
-			classes += ' elementor-control-under-section';
 		}
 
 		if ( ! _.isEmpty( responsive ) ) {
@@ -9433,7 +9431,9 @@ SectionView = BaseElementView.extend( {
 	childViewContainer: '> .elementor-container > .elementor-row',
 
 	behaviors: function() {
-		var behaviors = {
+		var behaviors = BaseElementView.prototype.behaviors.apply( this, arguments );
+
+		_.extend( behaviors, {
 			Sortable: {
 				behaviorClass: require( 'elementor-behaviors/sortable' ),
 				elChildType: 'column'
@@ -9444,7 +9444,7 @@ SectionView = BaseElementView.extend( {
 			HandleAddMode: {
 				behaviorClass: require( 'elementor-behaviors/duplicate' )
 			}
-		};
+		} );
 
 		return elementor.hooks.applyFilters( 'elements/section/behaviors', behaviors, this );
 	},
@@ -10812,8 +10812,6 @@ var	Manager = function() {
 		addHotKeys();
 
 		elementor.hooks.addFilter( 'elements/base/behaviors', addBehaviors );
-		elementor.hooks.addFilter( 'elements/column/behaviors', addBehaviors );
-		elementor.hooks.addFilter( 'elements/section/behaviors', addBehaviors );
 		elementor.hooks.addFilter( 'elements/base-section-container/behaviors', addCollectionBehavior );
 
 		elementor.channels.data
