@@ -1,9 +1,10 @@
 === WPMU Plugin Stats ===
-Contributors: cfoellmann, MadtownLems, DeannaS, kgraeme
+Contributors: wpstoreio, cfoellmann, MadtownLems
 Tags: WPMU, Wordpress Mu, Wordpress Multiuser, Plugin Stats , multisite, network, stats, usage
 Requires at least: 3.8
-Tested up to: 4.1
-Stable tag: 2.2.0
+Tested up to: 4.8.1
+Requires PHP: 5.3
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,18 +12,23 @@ Gives network admins an easy way to see what plugins are actively used on the si
 
 == Description ==
 
-This plugin give you a count and the listing of sites using your installed plugins.
+This plugin gives you a count and the listing of sites using your installed plugins.
 
 Usage data is cached in a Transient (non-autoloading) but the data collection process can be a very expensive operation depending on plugin and (especially) site count.
 Check the [FAQ](https://wordpress.org/plugins/wpmu-plugin-stats/faq/ "Frequently Asked Questions") for more details on caching.
 
-** Requires a WordPress Multisite Installation **
-* JavaScript needs to be enabled to see the list of sites using a plugin *
+> __Requires a WordPress Multisite Installation__
+
+> JavaScript needs to be enabled to see the list of sites using a plugin
+
+### Other Multisite Plugins ###
+* [WPMU Theme Usage Info](https://wordpress.org/plugins/wpmu-theme-usage-info/)
+* [WPMU Plugin Manager](https://wordpress.org/plugins/wpmu-plugin-manager/)
 
 = Development =
 
-* GitHub Repository: [wpmu-plugin-stats](https://github.com/wp-repository/wpmu-plugin-stats)
-* Issue-Tracker: [GitHub Issue Tracker](https://github.com/wp-repository/wpmu-theme-usage-info/issues) **Please use the Issue-Tracker at GitHub!!**
+* GitHub Repository: [wpmu-plugin-stats](https://github.com/WPStore/wpmu-plugin-stats)
+* Issue-Tracker: [GitHub Issue Tracker](https://github.com/WPStore/wpmu-plugin-stats/issues) **Please use the Issue-Tracker at GitHub!!**
 * Translation: [https://www.transifex.com/projects/p/wpmu-plugin-stats/](https://www.transifex.com/projects/p/wpmu-plugin-stats/)
 
 == Installation ==
@@ -45,7 +51,7 @@ Check the [FAQ](https://wordpress.org/plugins/wpmu-plugin-stats/faq/ "Frequently
 
 = Hooks =
 
-[Filter] `wpmu_plugin_stats_refresh` - Manually set the expiration time of the data (Transient)
+ - [Filter] `wpmu_plugin_stats_refresh` - Manually set the expiration time of the data (Transient)
 
 == Screenshots ==
 
@@ -59,7 +65,11 @@ You need to reactivate by clicking "Network Activate". No data is lost.
 
 == Changelog ==
 
-= 2.1 (2015-01-15) =
+= 2.3 (2017-09-12) =
+ * FIX javascript error causing UI issues (props @LafColITS)
+ * minor code cleanup
+
+= 2.2 (2015-01-15) =
  * Integrated data into 'plugins.php' table
  * Moved from storing data in option to transient
  * Changed main filename resulting in a deactivation after update

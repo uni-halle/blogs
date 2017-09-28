@@ -1,26 +1,28 @@
 <?php
 /**
- * @author    Christian Foellmann & Jason Lemahieu and Kevin Graeme (Cooperative Extension Technology Services)
- * @copyright Copyright (c) 2014 - 2015 Christian Foellmann (http://christian.foellmann.de)
+ * @author    WPStore.io <code@wpstore.io>
+ * @copyright Copyright (c) 2017 WPStore.io (http://www.wpstore.io)
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GPLv2
- * @package   WP-Repository\WPMU_Plugin_Stats
- * @version   2.2.0
+ * @package   WPStore\Plugins\WPMU_Plugin_Stats
+ * @version   2.3.0
  */
 /*
 Plugin Name: WPMU Plugin Stats
-Plugin URI: https://wordpress.org/plugins/wpmu-plugin-stats/
+Plugin URI:  https://wordpress.org/plugins/wpmu-plugin-stats/
 Description: Gives network admins an easy way to see what plugins are actively used on the sites of a multisite installation
-Version: 2.2.0
-Author: Christian Foellmann & Jason Lemahieu
-License: GPLv2 or later
+Version:     2.3.0
+Author:      WPStore.io
+Author URI:  https://www.wpstore.io
+Donate link: https://www.wpstore.io/donate
+License:     GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: wpmu-plugin-stats
 Domain Path: /languages
-Network: true
+Network:     true
 
 	WPMU Plugin Stats
-
-	Copyright (C) 2014 - 2015 Christian Foellmann (http://christian.foellmann.de)
+	Copyright (C) 2017 WPStore.io (http://www.wpstore.io)
+	Copyright (C) 2014 - 2017 Christian Foellmann (http://christian.foellmann.de)
 	Copyright (C) 2009 - 2013 Jason Lemahieu and Kevin Graeme (Cooperative Extension Technology Services)
 	Cooperative Extension Technology Services
 	University of Wisconsin-Extension
@@ -39,8 +41,12 @@ Network: true
 	along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+namespace WPStore\Plugins;
+
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 'No direct access! This plugin requires WordPress to be loaded.' );
+}
 
 /**
  * Main class to run the plugin
@@ -56,7 +62,7 @@ class WPMU_Plugin_Stats {
 	 *
 	 * @var string $version
 	 */
-	public $version = '2.2.0';
+	public $version = '2.3.0';
 
 	/**
 	 * Constructor
@@ -134,9 +140,9 @@ class WPMU_Plugin_Stats {
 
 	/**
 	 * Add the 'Usage' column to WP_Plugins_List_Table (network)
-	 * 
+	 *
 	 * @since 2.1.0
-	 * 
+	 *
 	 * @param  array The columns array of the table
 	 * @return array
 	 */
@@ -150,15 +156,14 @@ class WPMU_Plugin_Stats {
 
 	/**
 	 * Output the stats data for the plugins
-	 * 
+	 *
 	 * @param  string $column_name
 	 * @param  string $plugin_file
-	 * @param  array  $plugin_data
-	 * @return string HTML output for the column
+	 * @param  array $plugin_data
+	 *
+	 * @return string|null HTML output for the column
 	 */
 	public function column_active( $column_name, $plugin_file, $plugin_data ) {
-
-		if ( 'active' === $column_name ) {
 
 			$network_data   = get_site_transient( 'plugin_stats_data' );
 			$network_active = is_plugin_active_for_network( $plugin_file );
@@ -181,7 +186,7 @@ class WPMU_Plugin_Stats {
 				printf(
 					_n( 'Active on %2$s %1$d site %3$s', 'Active on %2$s %1$d sites %3$s', $active_count, 'wpmu-plugin-stats' ),
 					$active_count,
-					"<a href=\"javascript:;\" onClick=\"jQuery('#siteslist_{$id}').toggle(400);\">",
+					"<a href=\"javascript:;\" onClick=\"jQuery('ul[id*=\'siteslist_{$id}\']').toggle(400);\">",
 					'</a>'
 				);
 
@@ -196,7 +201,6 @@ class WPMU_Plugin_Stats {
 				}
 				echo '</ul>';
 			}
-		} // END if 'active' column
 
 	} // END column_active()
 
@@ -204,6 +208,7 @@ class WPMU_Plugin_Stats {
 	 * Fetch sites and the active plugins for every single site
 	 *
 	 * @todo If wp_is_large_network() this function could time out
+     * @todo Maybe use 'WP Object Cache' https://codex.wordpress.org/Class_Reference/WP_Object_Cache
 	 * @since 1.0.0
 	 *
 	 * @global object $wpdb
@@ -221,7 +226,7 @@ class WPMU_Plugin_Stats {
 		foreach ( $sites as $site ) {
 			switch_to_blog( $site->blog_id );
 
-			if ( constant( 'VHOST' ) == 'yes' ) {
+			if ( constant( 'VHOST' ) === 'yes' ) {
 				$siteurl = $site->domain;
 			} else {
 				$siteurl = trailingslashit( $site->domain . $site->path );
@@ -331,7 +336,7 @@ class WPMU_Plugin_Stats {
  *
  * @since 2.1.0
  *
- * @var object $wpmu_plugin_stats Holds the instantiated class {@uses WPMU_Plugin_Stats}
+ * @return null|WPMU_Plugin_Stats
  */
 function WPMU_Plugin_Stats() {
 	return WPMU_Plugin_Stats::instance();
