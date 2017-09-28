@@ -17,29 +17,6 @@ class AAM_Backend_Feature_Redirect extends AAM_Backend_Feature_Abstract {
     
     /**
      * 
-     */
-    public function save() {
-        $param = AAM_Core_Request::post('param');
-        $value = stripslashes(AAM_Core_Request::post('value'));
-        
-        AAM_Backend_View::getSubject()->getObject('redirect')->save($param, $value);
-        
-        return json_encode(array('status' => 'success'));
-    }
-    
-    /**
-     * 
-     * @return type
-     */
-    public function reset() {
-        $subject = AAM_Backend_View::getSubject();
-        $subject->getObject('redirect')->reset();
-        
-        return json_encode(array('status' => 'success')); 
-    }
-    
-    /**
-     * 
      * @return type
      */
     public function isDefault() {

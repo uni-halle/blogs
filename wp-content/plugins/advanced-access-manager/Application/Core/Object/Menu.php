@@ -56,7 +56,9 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
         global $menu, $submenu;
         
         foreach ($menu as $id => $item) {
-            if ($this->has('menu-' . $item[2])) {
+            // cover scenario like with Visual Composer where landing page
+            // is defined dynamically
+            if ($this->has('menu-' . $item[2]) || $this->has($item[2])) {
                 unset($menu[$id]);
             }
 

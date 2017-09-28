@@ -28,6 +28,17 @@ class AAM_Backend_Feature_Extension extends AAM_Backend_Feature_Abstract {
     public static function getTemplate() {
         return 'extension.phtml';
     }
+
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function check() {
+        AAM::cron();
+
+        return json_encode(array('status' => 'success'));
+    }
     
     /**
      * Install an extension

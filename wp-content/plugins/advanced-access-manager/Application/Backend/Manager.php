@@ -88,6 +88,10 @@ class AAM_Backend_Manager {
         //control admin area
         add_action('admin_init', array($this, 'adminInit'));
         
+        //register login widget
+        add_action('widgets_init', array($this, 'registerLoginWidget'));
+        add_action('wp_ajax_nopriv_aamlogin', array($this, 'handleLogin'));
+        
         //register backend hooks and filters
         if (AAM_Core_Config::get('backend-access-control', true)) {
             AAM_Backend_Filter::register();
@@ -95,6 +99,17 @@ class AAM_Backend_Manager {
         
         //register CodePinch affiliate
         AAM_Backend_View_CodePinch::bootstrap();
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function handleLogin() {
+        $login = AAM_Core_Login::getInstance();
+
+        echo json_encode($login->execute());
+        exit;
     }
     
     /**
@@ -135,6 +150,10 @@ class AAM_Backend_Manager {
         }
         
         return $text;
+    }
+    
+    public function registerLoginWidget() {
+        register_widget('AAM_Backend_Widget_Login');
     }
     
     /**

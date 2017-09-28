@@ -111,7 +111,7 @@ final class AAM_Core_API {
      * 
      * @access public
      */
-    public static function cURL($url, $send_cookies = TRUE, $params = array()) {
+    public static function cURL($url, $send_cookies = TRUE, $params = array(), $timeout = 20) {
         $header = array('User-Agent' => AAM_Core_Request::server('HTTP_USER_AGENT'));
 
         $cookies = AAM_Core_Request::cookie(null, array());
@@ -132,7 +132,7 @@ final class AAM_Core_API {
             'method'  => 'POST',
             'body'    => $params,
             'cookies' => $requestCookies,
-            'timeout' => 10
+            'timeout' => $timeout
         ));
     }
     

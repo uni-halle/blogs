@@ -87,7 +87,7 @@ class AAM_Backend_Feature_Utility  extends AAM_Backend_Feature_Abstract {
         
         return json_encode(array(
             'status'  => 'success',
-            'content' => base64_encode($exporter->run())
+            'content' => base64_encode(json_encode($exporter->run()))
         ));
     }
     

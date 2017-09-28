@@ -27,7 +27,7 @@ class AAM_Core_Cache {
      * 
      * @access protected 
      */
-    protected static $cache = false;
+    protected static $cache = array();
     
     /**
      * Update cache flag
@@ -134,7 +134,9 @@ class AAM_Core_Cache {
      */
     public static function bootstrap() {
         if (!AAM::isAAM()) {
-            self::$cache = AAM::getUser()->readOption(self::CACHE_OPTION);
+            $cache = AAM::getUser()->readOption(self::CACHE_OPTION);
+            self::$cache = (is_array($cache) ? $cache : array());
+            
             add_action('shutdown', 'AAM_Core_Cache::save');
         }
     }

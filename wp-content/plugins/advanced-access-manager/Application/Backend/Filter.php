@@ -472,6 +472,13 @@ class AAM_Backend_Filter {
                     break;
                     
                 default:
+                    $allCaps = apply_filters(
+                            'aam-check-user-cap-filter', 
+                            $allCaps, 
+                            $metaCaps, 
+                            $args, 
+                            $this
+                    );
                     break;
             }
         } elseif (is_a($post, 'WP_Post')) {
@@ -487,6 +494,13 @@ class AAM_Backend_Filter {
                     break;
                 
                 default:
+                    $allCaps = apply_filters(
+                            'aam-check-user-cap-filter', 
+                            $allCaps, 
+                            $metaCaps, 
+                            $args, 
+                            $this
+                    );
                     break;
             }
         }

@@ -182,15 +182,23 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
         //save and return the result of operation
         return update_user_option($this->getId(), self::AAM_CAPKEY, $caps);
     }
-    
-    /**
-     * 
-     * @return type
-     */
-    public function resetCapabilities() {
-        return delete_user_option($this->getId(), self::AAM_CAPKEY);
-    }
 
+    /**
+     * Undocumented function
+     *
+     * @param string $object
+     * @return void
+     */
+    public function resetObject($object) {
+        if ($object == 'capability') {
+            $result = delete_user_option($this->getId(), self::AAM_CAPKEY);
+        } else {
+            $result = $this->deleteOption($object);
+        }
+
+        return result;
+    }
+    
     /**
      * Update user's option
      * 

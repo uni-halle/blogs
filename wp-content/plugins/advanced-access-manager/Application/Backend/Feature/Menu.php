@@ -16,21 +16,6 @@
 class AAM_Backend_Feature_Menu extends AAM_Backend_Feature_Abstract {
 
     /**
-     * Reset menu settings
-     * 
-     * @return string
-     * 
-     * @access public
-     */
-    public function reset() {
-        $object = AAM_Backend_View::getSubject()->getObject('menu');
-        
-        return json_encode(array(
-            'status' => ($object->reset() ? 'success' : 'failure')
-        ));
-    }
-
-    /**
      * Get subject's menu
      * 
      * Based on the list of capabilities that current subject has, prepare

@@ -30,33 +30,6 @@ class AAM_Backend_Feature_Security extends AAM_Backend_Feature_Abstract {
     }
     
     /**
-     * Save AAM utility options
-     * 
-     * @return string
-     *
-     * @access public
-     */
-    public function save() {
-        $param = AAM_Core_Request::post('param');
-        $value = stripslashes(AAM_Core_Request::post('value'));
-        
-        AAM_Core_Config::set($param, $value);
-        
-        return json_encode(array('status' => 'success'));
-    }
-    
-    /**
-     * 
-     * @return type
-     */
-    public function getOptionList() {
-        $filename = dirname(__FILE__) . '/../View/SecurityOptionList.php';
-        $options  = include $filename;
-        
-        return apply_filters('aam-security-option-list-filter', $options);
-    }
-    
-    /**
      * Register Contact/Hire feature
      * 
      * @return void

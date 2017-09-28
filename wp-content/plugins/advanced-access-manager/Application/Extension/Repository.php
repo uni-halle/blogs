@@ -212,7 +212,11 @@ class AAM_Extension_Repository {
             foreach ($list as $id => &$item) {
                 //get premium license from the stored license index
                 if (empty($item['license'])) {
-                    if (!empty($index[$id]['license'])) {
+                    // TODO - Fix bug with EXTENDED license
+                    if (!empty($index[$id . '_EXTENDED']['license'])) {
+                        $item['license'] = $index[$id . '_EXTENDED']['license'];
+                        $item['expire']  = (isset($index[$id . '_EXTENDED']['expire']) ? $index[$id . '_EXTENDED']['expire'] : null);
+                    } elseif (!empty($index[$id]['license'])) {
                         $item['license'] = $index[$id]['license'];
                         $item['expire']  = (isset($index[$id]['expire']) ? $index[$id]['expire'] : null);
                     } else {

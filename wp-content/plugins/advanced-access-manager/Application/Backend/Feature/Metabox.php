@@ -16,18 +16,6 @@
 class AAM_Backend_Feature_Metabox extends AAM_Backend_Feature_Abstract {
 
     /**
-     * 
-     * @return type
-     */
-    public function reset() {
-        $object = AAM_Backend_View::getSubject()->getObject('metabox');
-        
-        return json_encode(array(
-            'status' => ($object->reset() ? 'success' : 'failure')
-        ));
-    }
-    
-    /**
      * @inheritdoc
      */
     public static function getAccessOption() {

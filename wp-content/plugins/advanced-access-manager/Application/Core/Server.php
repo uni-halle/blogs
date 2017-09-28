@@ -26,6 +26,27 @@ final class AAM_Core_Server {
      * Fallback endpoint
      */
     const FALLBACK_URL = 'http://rest.vasyltech.com/v1';
+    
+    /**
+     * Fetch the extension list
+     * 
+     * Fetch the extension list with versions from the server
+     * 
+     * @return array
+     * 
+     * @access public
+     */
+    public static function register() {
+        //prepare check params
+        $params = array(
+            'domain'  => parse_url(site_url(), PHP_URL_HOST), 
+            'version' => AAM_Core_API::version(),
+            'uid'     => AAM_Core_API::getOption('aam-uid', null, 'site'),
+            'email'   => AAM_Core_API::getOption('admin_email')
+        );
+        
+        self::send('/register', $params);
+    }
 
     /**
      * Fetch the extension list
@@ -126,14 +147,14 @@ final class AAM_Core_Server {
      * 
      * @access protected
      */
-    protected static function send($request, $params) {
+    protected static function send($request, $params, $timeout = 20) {
         $response = self::parseResponse(
-                AAM_Core_API::cURL(self::SERVER_URL . $request, false, $params)
+                AAM_Core_API::cURL(self::SERVER_URL . $request, false, $params, $timeout)
         );
         
         if (empty($response) || is_wp_error($response)) {
             $response = self::parseResponse(
-                AAM_Core_API::cURL(self::FALLBACK_URL . $request, false, $params)
+                AAM_Core_API::cURL(self::FALLBACK_URL . $request, false, $params, $timeout)
             );
         }
         

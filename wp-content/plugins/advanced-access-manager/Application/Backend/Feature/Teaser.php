@@ -17,29 +17,6 @@ class AAM_Backend_Feature_Teaser extends AAM_Backend_Feature_Abstract {
     
     /**
      * 
-     */
-    public function save() {
-        $param = AAM_Core_Request::post('param');
-        $value = AAM_Core_Request::post('value');
-        
-        AAM_Backend_View::getSubject()->getObject('teaser')->save($param, $value);
-        
-        return json_encode(array('status' => 'success'));
-    }
-    
-    /**
-     * 
-     * @return type
-     */
-    public function reset() {
-        $subject = AAM_Backend_View::getSubject();
-        $subject->getObject('teaser')->reset();
-        
-        return json_encode(array('status' => 'success')); 
-    }
-    
-    /**
-     * 
      * @return type
      */
     public function isDefault() {

@@ -20,13 +20,21 @@ class AAM_Core_Importer {
      * @var type 
      */
     protected $input = null;
+
+    /**
+     * Undocumented variable
+     *
+     * @var [type]
+     */
+    protected $blog = null;
     
     /**
      * 
      * @param type $input
      */
-    public function __construct($input) {
+    public function __construct($input, $blog = null) {
         $this->input = json_decode($input);
+        $this->blog  = (is_null($blog) ? get_current_blog_id() : $blog);
     }
     
     /**
@@ -49,17 +57,30 @@ class AAM_Core_Importer {
         return 'success';
     }
     
+    /**
+     * Undocumented function
+     *
+     * @param [type] $data
+     * @return void
+     */
     protected function insertOptions($data) {
         global $wpdb;
         
         foreach($data as $key => $value) {
-            update_option(
-                    preg_replace('/^_/', $wpdb->prefix, $key), 
-                    $this->prepareValue($value)
+            AAM_Core_API::updateOption(
+                preg_replace('/^_/', $wpdb->get_blog_prefix($this->blog), $key),
+                $this->prepareValue($value),
+                $this->blog
             );
         }
     }
     
+    /**
+     * Undocumented function
+     *
+     * @param [type] $data
+     * @return void
+     */
     protected function insertUsermeta($data) {
         global $wpdb;
         
@@ -67,14 +88,20 @@ class AAM_Core_Importer {
             foreach($set as $key => $value) {
                 update_user_meta(
                         $id, 
-                        preg_replace('/^_/', $wpdb->prefix, $key), 
+                        preg_replace('/^_/', $wpdb->get_blog_prefix($this->blog), $key), 
                         $this->prepareValue($value)
                 );
             }
         }
     }
     
-     protected function insertPostmeta($data) {
+    /**
+     * Undocumented function
+     *
+     * @param [type] $data
+     * @return void
+     */
+    protected function insertPostmeta($data) {
         global $wpdb;
          
         foreach($data as $id => $set) {
@@ -88,6 +115,12 @@ class AAM_Core_Importer {
         }
     }
     
+    /**
+     * Undocumented function
+     *
+     * @param [type] $value
+     * @return void
+     */
     protected function prepareValue($value) {
         if (is_serialized($value)) {
             $value = unserialize($value);

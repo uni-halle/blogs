@@ -12,7 +12,7 @@
  * 
  * @package AAM
  * @author Vasyl Martyniuk <vasyl@vasyltech.com>
- * @todo Deprecated - Remove in May 2017
+ * @todo Deprecated - Remove in May 2018
  */
 final class AAM_Core_ConfigPress {
 

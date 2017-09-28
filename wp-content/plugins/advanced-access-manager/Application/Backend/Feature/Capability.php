@@ -130,18 +130,6 @@ class AAM_Backend_Feature_Capability extends AAM_Backend_Feature_Abstract {
     }
     
     /**
-     * 
-     * @return type
-     */
-    public function reset() {
-        $subject = AAM_Backend_View::getSubject();
-        
-        return json_encode(array(
-            'status' => ($subject->resetCapabilities() ? 'success' : 'failure')
-        ));
-    }
-    
-    /**
      * @inheritdoc
      */
     public static function getAccessOption() {

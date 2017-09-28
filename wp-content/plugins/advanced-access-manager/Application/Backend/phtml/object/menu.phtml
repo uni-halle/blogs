@@ -7,16 +7,14 @@
                 </p>
             </div>
         </div>
-        <?php if ($this->isOverwritten()) { ?>
         <div class="row">
             <div class="col-xs-12">
-                <div class="aam-overwrite">
+                <div class="aam-overwrite" id="aam-menu-overwrite" style="display: <?php echo ($this->isOverwritten() ? 'block' : 'none'); ?>">
                     <span><i class="icon-check"></i> <?php echo __('Settings are customized', AAM_KEY); ?></span>
-                    <span><a href="#" id="menu-reset" class="btn btn-xs btn-danger"><?php echo __('Reset To Default', AAM_KEY); ?></a>
+                    <span><a href="#" id="menu-reset" class="btn btn-xs btn-primary"><?php echo __('Reset To Default', AAM_KEY); ?></a>
                 </div>
             </div>
         </div>
-        <?php } ?>
 
         <div class="panel-group" id="admin-menu" role="tablist" aria-multiselectable="true">
             <?php

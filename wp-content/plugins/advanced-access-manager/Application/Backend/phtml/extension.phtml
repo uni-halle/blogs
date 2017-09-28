@@ -27,6 +27,7 @@
             <ul class="nav nav-tabs" role="tablist">
                 <?php if(count($commercial)) { ?><li role="presentation" class="active"><a href="#premium-extensions" aria-controls="premium-extensions" role="tab" data-toggle="tab"><i class='icon-basket'></i> <?php echo __('Premium', AAM_KEY); ?></a></li><?php } ?>
                 <?php if(count($free)) { ?><li role="presentation" <?php echo (!count($commercial) ? 'class="active"' : ''); ?>><a href="#free-extensions" aria-controls="free-extensions" role="tab" data-toggle="tab"><i class='icon-download-cloud'></i> <?php echo __('Free', AAM_KEY); ?></a></li><?php } ?>
+                <li class="aam-update-check"><a href="#" id="aam-update-check"><i class='icon-arrows-cw'></i> <?php echo __('Check for Updates', AAM_KEY); ?></a></li>
             </ul>
 
             <!-- Tab panes -->

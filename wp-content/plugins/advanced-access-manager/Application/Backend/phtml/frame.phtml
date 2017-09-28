@@ -16,7 +16,7 @@
         <?php $object = AAM_Backend_Feature_Post::getCurrentObject(); ?>
     </head>
 
-    <body>
+    <body id="aam-container">
         <div class="row" style="margin: 10px 0 0 0;">
             <div class="col-sm-4" style="padding: 0;">
                 <div class="panel panel-default" style="border-radius:0;">
@@ -95,7 +95,7 @@
                 </div>
             </div>
             
-            <div class="col-sm-8">
+            <div class="col-sm-8" id="post-content">
                 <div class="aam-overwrite hidden" id="post-overwritten">
                     <span><i class="icon-check"></i> <?php echo __('Settings are customized', AAM_KEY); ?></span>
                     <span><a href="#" id="post-reset" class="btn btn-xs btn-primary" style="margin-top: -4px;"><?php echo __('Reset To Default', AAM_KEY); ?></a></span>

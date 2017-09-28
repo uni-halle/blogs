@@ -43,7 +43,7 @@ return array(
     'Manage Access' => __('Manage Access', AAM_KEY),
     'Edit' => __('Edit', AAM_KEY),
     'Manage Role' => __('Manage Role', AAM_KEY),
-    'Edit Role Name' => __('Edit Role Name', AAM_KEY),
+    'Edit Role' => __('Edit Role', AAM_KEY),
     'Delete Role' => __('Delete Role', AAM_KEY),
     'Manage User' => __('Manage User', AAM_KEY),
     'Edit User' => __('Edit User', AAM_KEY),

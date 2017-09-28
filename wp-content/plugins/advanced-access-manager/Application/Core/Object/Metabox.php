@@ -135,13 +135,12 @@ class AAM_Core_Object_Metabox extends AAM_Core_Object {
         return $this->getSubject()->updateOption($option, 'metabox');
     }
     
-     /**
+    /**
      * 
      */
     public function reset() {
         return $this->getSubject()->deleteOption('metabox');
     }
-
 
     /**
      *

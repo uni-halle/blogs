@@ -17,30 +17,6 @@ class AAM_Backend_Feature_LogoutRedirect extends AAM_Backend_Feature_Abstract {
     
     /**
      * 
-     */
-    public function save() {
-        $param   = AAM_Core_Request::post('param');
-        $value   = AAM_Core_Request::post('value');
-        $subject = AAM_Backend_View::getSubject();
-        
-        $subject->getObject('logoutRedirect')->save($param, $value);
-        
-        return json_encode(array('status' => 'success'));
-    }
-    
-    /**
-     * 
-     * @return type
-     */
-    public function reset() {
-        $subject = AAM_Backend_View::getSubject();
-        $subject->getObject('logoutRedirect')->reset();
-        
-        return json_encode(array('status' => 'success')); 
-    }
-    
-    /**
-     * 
      * @return type
      */
     public function isDefault() {

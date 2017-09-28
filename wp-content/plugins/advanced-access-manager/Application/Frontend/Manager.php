@@ -38,13 +38,12 @@ class AAM_Frontend_Manager {
      */
     public function __construct() {
         if (AAM_Core_Config::get('frontend-access-control', true)) {
-            //login hook
-            add_action('wp_login', array($this, 'login'), 10, 2);
-            add_action('wp_logout', array($this, 'logout'));
-        
             //control WordPress frontend
             add_action('wp', array($this, 'wp'), 999);
             add_action('404_template', array($this, 'themeRedirect'), 999);
+            
+            //support login widget
+            add_action('wp_enqueue_scripts', array($this, 'printJavascript'));
             
             if (AAM_Core_Config::get('check-post-visibility', true)) {
             //filter navigation pages & taxonomies
@@ -60,8 +59,6 @@ class AAM_Frontend_Manager {
             add_filter('sidebars_widgets', array($this, 'widgetFilter'), 999);
             //get control over commenting stuff
             add_filter('comments_open', array($this, 'commentOpen'), 10, 2);
-            //user login control
-            add_filter('wp_authenticate_user', array($this, 'authenticate'), 1, 2);
             
             //password protected filter
             add_filter('post_password_required', array($this, 'isProtected'), 10, 2);
@@ -75,9 +72,6 @@ class AAM_Frontend_Manager {
             //core AAM filter
             add_filter('aam-object-filter', array($this, 'getObject'), 10, 4);
             
-            //login process
-            add_filter('login_message', array($this, 'loginMessage'));
-            
             //manage password check expiration
             add_filter('post_password_expires', array($this, 'postPasswordExpires'));
             
@@ -85,12 +79,12 @@ class AAM_Frontend_Manager {
             $this->checkAdminBar();
         }
         
+        //register login widget
+        add_action('widgets_init', array($this, 'registerLoginWidget'));
+        
         if (AAM_Core_Request::get('action') == 'aam-auth') {
             $this->doubleAuthentication();
         }
-        
-        //security controls
-        add_action('login_form_login', array($this, 'loginSubmit'), 1);
     }
     
     /**
@@ -110,20 +104,28 @@ class AAM_Frontend_Manager {
     
     /**
      * 
-     * @param type $message
-     * @return type
      */
-    public function loginMessage($message) {
-        $redirect = AAM_Core_Request::get('aam-redirect');
+    public function registerLoginWidget() {
+        register_widget('AAM_Backend_Widget_Login');
+    }
+    
+    /**
+     * Print javascript libraries
+     *
+     * @return void
+     *
+     * @access public
+     */
+    public function printJavascript() {
+        wp_enqueue_script('aam-login', AAM_MEDIA . '/js/aam-login.js');
+
+        //add plugin localization
+        $locals = array(
+            'nonce'   => wp_create_nonce('aam_ajax'),
+            'ajaxurl' => admin_url('admin-ajax.php')
+        );
         
-        if (empty($message) && ($redirect == 'login')) {
-            $message = AAM_Core_Config::get(
-                'redirect.login.message', 
-                '<p class="message">' . __('Access denied. Please login to get access.', AAM_KEY) . '</p>'
-            );
-        }
-        
-        return $message;
+        wp_localize_script('aam-login', 'aamLocal', $locals);
     }
     
     /**
@@ -151,178 +153,6 @@ class AAM_Frontend_Manager {
         }
         
         return $object;
-    }
-    
-    /**
-     * 
-     */
-    public function loginSubmit() {
-        //Login Timeout
-        if (AAM_Core_Config::get('login-timeout', false)) {
-            @sleep(intval(AAM_Core_Config::get('security.login.timeout', 1)));
-        }
-        
-        //Brute Force Lockout
-        if (AAM_Core_Config::get('brute-force-lockout', false)) {
-            $this->updateLoginCounter(1);
-        }
-    }
-    
-    /**
-     * 
-     * @param type $username
-     * @param type $user
-     */
-    public function login($username, $user = null) {
-        if (is_a($user, 'WP_User')) {
-            $this->updateLoginCounter(-1);
-            
-            AAM_Core_API::deleteOption('aam-user-switch-' . $user->ID);
-            
-            $subject = new AAM_Core_Subject_User($user->ID);
-            $object  = $subject->getObject('loginRedirect');
-            
-            //if Login redirect is defined
-            $type = $object->get('login.redirect.type');
-            
-            if (!empty($type) && $type !== 'default') {
-                $redirect = $object->get("login.redirect.{$type}");
-                AAM_Core_API::redirect($redirect);
-            }
-        }
-    }
-    
-    /**
-     * 
-     */
-    public function logout() {
-        $object = AAM::getUser()->getObject('logoutRedirect');
-        $type   = $object->get('logout.redirect.type');
-        
-        if (!empty($type) && $type !== 'default') {
-            $redirect = $object->get("logout.redirect.{$type}");
-            AAM_Core_API::redirect($redirect);
-        }
-    }
-    
-    /**
-     * 
-     * @param type $increment
-     */
-    protected function updateLoginCounter($increment) {
-        $attempts = get_transient('aam-login-attemtps');
-        
-        if ($attempts !== false) {
-            $timeout = get_option('_transient_timeout_aam-login-attemtps') - time();
-            $attempts = intval($attempts) + $increment;
-        } else {
-            $attempts = 1;
-            $timeout = strtotime(
-                '+' . AAM_Core_Config::get('security.login.period', '2 minutes')
-            ) - time();
-        }
-        
-        if ($attempts >= AAM_Core_Config::get('security.login.attempts', 20)) {
-            wp_safe_redirect(site_url('index.php'));
-            exit;
-        } else {
-            set_transient('aam-login-attemtps', $attempts, $timeout);
-        }
-    }
-    
-    /**
-     * Control User Block flag
-     *
-     * @param WP_Error $user
-     *
-     * @return WP_Error|WP_User
-     *
-     * @access public
-     */
-    public function authenticate($user) {
-        if (is_a($user, 'WP_User') && $user->user_status == 1) {
-            $user = new WP_Error();
-            
-            $message  = '[ERROR]: User is locked. Please contact your website ';
-            $message .= 'administrator.';
-            
-            $user->add(
-                'authentication_failed', 
-                AAM_Backend_View_Helper::preparePhrase($message, 'strong')
-            );
-        } elseif (AAM_Core_Config::get('login-ip-track', false)) {
-            $baseIp = get_user_meta($user->ID, 'aam-login-ip', true);
-            $token  = get_transient("aam-user-{$user->ID}-login-token");
-            $ip     = AAM_Core_Request::server('REMOTE_ADDR');
-            $utoken = AAM_Core_Request::cookie('aam-login-token');
-            
-            if (empty($baseIp)) {
-                update_user_meta($user->ID, 'aam-login-ip', $ip);
-            }
-            
-            if (empty($token)) {
-                $token = sha1(srand(time()));
-                setcookie('aam-login-token', $token, time() + 1209600 , '/');
-                set_transient("aam-user-{$user->ID}-login-token", $token, 1209600);
-            }
-            
-            if (!empty($baseIp) && ($token != $utoken) && ($baseIp != $ip)) {
-                $key = get_password_reset_key($user);
-                update_user_meta($user->ID, 'aam-login-key', $key);
-                
-                if ( is_multisite() ) {
-                    $blogname = get_network()->site_name;
-                } else {
-                    $blogname = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
-                }
-
-        	$title = sprintf( __('[%s] Double Authentication'), $blogname );
-                
-                $message  = sprintf(__('Someone was trying to login from the different IP address %s:'), $ip) . "\r\n\r\n";
-                $message .= sprintf(__('Website: %s'), network_home_url( '/' )) . "\r\n";
-                $message .= sprintf(__('Username: %s'), $user->user_login) . "\r\n\r\n";
-                $message .= __('Visit the following address to authorize the login:') . "\r\n\r\n";
-                $message .= '<' . network_site_url("index.php?action=aam-auth&key={$key}&login={$user->user_login}") . ">\r\n";
-                
-                wp_mail($user->user_email, $title, $message);
-                
-                $user = new WP_Error();
-            
-                $message  = '[ERROR]: Double authentication is required. ';
-                $message .= 'Please check your email or enter username and ';
-                $message .= 'password again to resend the email.';
-
-                $user->add(
-                    'authentication_failed', 
-                    AAM_Backend_View_Helper::preparePhrase($message, 'strong')
-                );
-            }
-        }
-
-        return $user;
-    }
-    
-    /**
-     * 
-     */
-    protected function doubleAuthentication() {
-        $login = AAM_Core_Request::get('login');
-        $key   = AAM_Core_Request::get('key');
-        $user  = get_user_by('login', $login);
-        
-        if (is_a($user, 'WP_User')) {
-            $stored = get_user_meta($user->ID, 'aam-login-key', true);
-            
-            if ($stored == $key) {
-                update_user_meta($user->ID, 'aam-login-ip', AAM_Core_Request::server('REMOTE_ADDR'));
-                delete_user_meta($user->ID, 'aam-login-key');
-                wp_safe_redirect(site_url('wp-login.php'));
-                exit;
-            }
-        }
-        
-        wp_safe_redirect(site_url('index.php'));
-        exit;
     }
     
     /**
@@ -491,7 +321,7 @@ class AAM_Frontend_Manager {
     public function thePosts($posts) {
         $current = $this->getCurrentPost();
         
-        if (is_array($posts)) {
+        if (is_array($posts) && !$this->isMainWP()) {
             foreach ($posts as $i => $post) {
                 if ($current && ($current->ID == $post->ID)) { continue; }
                 
@@ -585,7 +415,7 @@ class AAM_Frontend_Manager {
      * @param type $query
      */
     public function preparePostQuery($query) {
-        if ($this->skip === false) {
+        if (($this->skip === false) && $this->isMainWP()) {
             $this->skip = true;
             $filtered   = AAM_Core_API::getFilteredPostList($query);
             $this->skip = false;
@@ -599,6 +429,27 @@ class AAM_Frontend_Manager {
                 $query->query_vars['post__not_in'] = $filtered;
             }
         }
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @return boolean
+     */
+    protected function isMainWP() {
+        $result = false;
+
+        foreach(debug_backtrace() as $level) {
+            $class = (isset($level['class']) ? $level['class'] : null);
+            $func  = (isset($level['function']) ? $level['function'] : null);
+
+            if ($class == 'WP' && $func == 'main') {
+                $result = true;
+                break;
+            }
+        }
+
+        return $result;
     }
 
     /**

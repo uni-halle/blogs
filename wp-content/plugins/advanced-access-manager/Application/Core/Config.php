@@ -65,7 +65,22 @@ class AAM_Core_Config {
             $response = self::readConfigPress($option, $default);
         }
         
-        return apply_filters('aam-filter-config-get', $response, $option);
+        return self::normalize(
+                apply_filters('aam-filter-config-get', $response, $option
+        ));
+    }
+    
+    /**
+     * 
+     * @param type $setting
+     * @return type
+     */
+    protected static function normalize($setting) {
+        return str_replace(
+                array('{ABSPATH}'),
+                array(ABSPATH),
+                $setting
+        );
     }
     
     /**

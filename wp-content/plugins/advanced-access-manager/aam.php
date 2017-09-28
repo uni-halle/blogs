@@ -3,7 +3,7 @@
 /**
   Plugin Name: Advanced Access Manager
   Description: All you need to manage access to your WordPress website
-  Version: 4.9
+  Version: 4.9.3
   Author: Vasyl Martyniuk <vasyl@vasyltech.com>
   Author URI: https://vasyltech.com
 
@@ -141,6 +141,9 @@ class AAM {
             
             //load media control
             AAM_Core_Media::bootstrap();
+            
+            //login control
+            AAM_Core_Login::bootstrap();
         }
 
         return self::$_instance;
@@ -157,7 +160,6 @@ class AAM {
      */
     public static function cron() {
         $extensions = AAM_Core_API::getOption('aam-extensions', null, 'site');
-        
         if (!empty($extensions)) {
             //grab the server extension list
             AAM_Core_API::updateOption(
@@ -189,6 +191,9 @@ class AAM {
         if (file_exists($dirname) === false) {
             @mkdir($dirname, fileperms( ABSPATH ) & 0777 | 0755);
         }
+
+        //register plugin
+        AAM_Core_Server::register();
     }
 
     /**

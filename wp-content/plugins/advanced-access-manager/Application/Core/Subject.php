@@ -225,6 +225,16 @@ abstract class AAM_Core_Subject {
     public function save($param, $value, $object, $objectId = 0) {
         return $this->getObject($object, $objectId)->save($param, $value);
     }
+
+    /**
+     * Undocumented function
+     *
+     * @param string $object
+     * @return void
+     */
+    public function resetObject($object) {
+        return $this->deleteOption($object);
+    }
     
     /**
      *

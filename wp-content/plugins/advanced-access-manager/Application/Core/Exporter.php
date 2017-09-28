@@ -20,6 +20,13 @@ class AAM_Core_Exporter {
      * @var type 
      */
     protected $config = array();
+
+    /**
+     * Undocumented variable
+     *
+     * @var [type]
+     */
+    protected $blog = null;
     
     /**
      *
@@ -37,8 +44,9 @@ class AAM_Core_Exporter {
      * 
      * @param type $config
      */
-    public function __construct($config) {
+    public function __construct($config, $blog = null) {
         $this->config = $config;
+        $this->blog   = ($blog ? $blog : get_current_blog_id());
     }
     
     /**
@@ -66,7 +74,7 @@ class AAM_Core_Exporter {
             }
         }
         
-        return json_encode($this->output);
+        return $this->output;
     }
     
     /**
@@ -76,16 +84,21 @@ class AAM_Core_Exporter {
      */
     protected function exportSystem($features) {
         global $wpdb;
-        
+
         foreach($features as $feature) {
             if ($feature == 'roles') {
                 $this->add('_user_roles', serialize(
-                    AAM_Core_API::getOption($wpdb->get_blog_prefix() . 'user_roles')
+                    AAM_Core_API::getOption(
+                        $wpdb->get_blog_prefix($this->blog) . 'user_roles',
+                        array(),
+                        $this->blog
+                    )
                 ));
             } elseif ($feature == 'utilities') {
-                $this->add(AAM_Core_Config::OPTION, serialize(AAM_Core_API::getOption(
-                        AAM_Core_Config::OPTION
-                )));
+                $this->add(
+                    AAM_Core_Config::OPTION, 
+                    serialize(AAM_Core_API::getOption(AAM_Core_Config::OPTION)
+                ));
             } else {
                 do_action('aam-export', 'system', $feature, $this);
             }

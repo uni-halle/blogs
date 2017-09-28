@@ -99,15 +99,19 @@ class AAM_Shortcode_Strategy_Content implements AAM_Shortcode_Strategy_Interface
      */
     protected function check($user, $conditions) {
         $match = false;
+        $auth  = get_current_user_id();
         
         foreach($conditions as $condition) {
-            if (preg_match('/^[\d\.*\-]+$/', $condition)) {
+            if (($condition == 'authenticated') && $auth) {
+                $match = true;
+            } else if (preg_match('/^[\d\.*\-]+$/', $condition)) {
                 $match = $this->checkIP(
                         $condition, AAM_Core_Request::server('REMOTE_ADDR')
                 );
             } else {
                 $match = in_array($condition, $user);
             }
+            
             if ($match) {
                 break;
             }

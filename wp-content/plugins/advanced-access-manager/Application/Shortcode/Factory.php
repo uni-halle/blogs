@@ -28,7 +28,7 @@ class AAM_Shortcode_Factory {
      * @param type $content
      */
     public function __construct($args, $content) {
-        $context = !empty($args['context']) ? $args['context'] : null;
+        $context = !empty($args['context']) ? $args['context'] : 'content';
         
         $classname = 'AAM_Shortcode_Strategy_' . ucfirst($context);
         

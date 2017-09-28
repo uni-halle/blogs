@@ -78,7 +78,7 @@ class AAM_Core_Compatibility {
      * @return type
      */
     public static function getConfig() {
-        $config = AAM_Core_API::getOption('aam-utilities', array());
+        $config = AAM_Core_API::getOption('aam-utilities', array(), 'site');
         
         foreach(array_keys((is_array($config) ? $config : array())) as $option) {
             if (strpos($option, 'frontend.redirect') !== false) {
