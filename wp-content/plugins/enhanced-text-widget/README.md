@@ -17,13 +17,12 @@ An enhanced version of the default text widget where you may have Text, HTML, CS
 
 * For help use [wordpress.org](http://wordpress.org/support/plugin/enhanced-text-widget/)
 * Fork or contribute on [Github](https://github.com/bostondv/enhanced-text-widget/)
-* Visit [our website](http://pomelodesign.com/) for more
 * Follow me on [Twitter](http://twitter.com/bostondv/)
 * View my other [WordPress Plugins](http://profiles.wordpress.org/bostondv/)
 
 ## Support
 
-Did you enjoy this plugin? Please [donate to support ongoing development](http://pomelodesign.com/donate/). Your contribution would be greatly appreciated.
+Enjoy this plugin? [Send a tip to support development](http://bostondv.com/tips/).
 
 ## Installation
 
@@ -47,6 +46,9 @@ This adds a CSS class parameter to each widget.
 This is the initial release.
 
 ## Changelog ==
+
+### 1.4.6
+* Tested up to WordPress 4.8
 
 ### 1.4.5
 * Adds option to hide empty widgets
@@ -93,4 +95,4 @@ This is the initial release.
 
 ## About
 
-Written by Boston Dell-Vandenberg of [Pomelo Design](http://www.pomelodesign.com). Pomelo Design is a web and mobile app development agency based in Toronto, Canada.
+Made with <3 by [Boston Dell-Vandenberg](http://bostondv.com/).

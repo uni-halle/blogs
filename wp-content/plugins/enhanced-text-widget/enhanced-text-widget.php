@@ -3,9 +3,9 @@
 Plugin Name: Enhanced Text Widget
 Plugin URI: http://wordpress.org/plugins/enhanced-text-widget/
 Description: An enhanced version of the default text widget where you may have Text, HTML, CSS, JavaScript, Flash, Shortcodes, and/or PHP as content with linkable widget title.
-Version: 1.4.5
+Version: 1.4.6
 Author: Boston Dell-Vandenberg
-Author URI: http://pomelodesign.com/
+Author URI: http://bostondv.com/
 Text Domain: enhancedtext
 Domain Path: /languages/
 License: MIT
@@ -171,7 +171,7 @@ class EnhancedTextWidget extends WP_Widget {
         </p>
 
         <p class="etw-credits">
-            <?php _e('Enjoy this plugin? Please <a href="http://pomelodesign.com/donate/" target="_blank">donate to support development</a>.', 'enhancedtext'); ?>
+            <?php _e('Enjoy this plugin? <a href="http://bostondv.com/tips/" target="_blank">Send a tip to support development</a>.', 'enhancedtext'); ?>
         </p>
 
 <?php
