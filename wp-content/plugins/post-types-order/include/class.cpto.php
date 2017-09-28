@@ -459,7 +459,7 @@
                         }
                         else
                             {
-                                $capability = 'install_plugins';  
+                                $capability = 'manage_options';  
                             }
                     
                     foreach( $post_types as $post_type_name ) 
