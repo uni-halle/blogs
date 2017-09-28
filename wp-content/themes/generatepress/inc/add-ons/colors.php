@@ -61,6 +61,8 @@ function generate_get_color_defaults()
 		'h1_color' => '',
 		'h2_color' => '',
 		'h3_color' => '',
+		'h4_color' => '',
+		'h5_color' => '',
 		'sidebar_widget_background_color' => '#ffffff',
 		'sidebar_widget_text_color' => '',
 		'sidebar_widget_link_color' => '',
@@ -84,7 +86,11 @@ function generate_get_color_defaults()
 		'form_button_background_color' => '#666666',
 		'form_button_background_color_hover' => '#3f3f3f',
 		'form_button_text_color' => '#ffffff',
-		'form_button_text_color_hover' => '#ffffff'
+		'form_button_text_color_hover' => '#ffffff',
+		'back_to_top_background_color' => 'rgba( 0,0,0,0.4 )',
+		'back_to_top_background_color_hover' => 'rgba( 0,0,0,0.6 )',
+		'back_to_top_text_color' => '#ffffff',
+		'back_to_top_text_color_hover' => '#ffffff',
 	);
 	
 	return apply_filters( 'generate_color_option_defaults', $generate_color_defaults );
@@ -254,9 +260,17 @@ function generate_advanced_css()
 	$css->set_selector( 'h2' );
 	$css->add_property( 'color', esc_attr( $generate_settings[ 'h2_color' ] ) );
 	
-	// H1 color
+	// H3 color
 	$css->set_selector( 'h3' );
 	$css->add_property( 'color', esc_attr( $generate_settings[ 'h3_color' ] ) );
+	
+	// H4 color
+	$css->set_selector( 'h4' );
+	$css->add_property( 'color', esc_attr( $generate_settings[ 'h4_color' ] ) );
+	
+	// H5 color
+	$css->set_selector( 'h5' );
+	$css->add_property( 'color', esc_attr( $generate_settings[ 'h5_color' ] ) );
 	
 	// Sidebar widgets
 	if ( 'no-sidebar' !== generate_get_layout() ) {
@@ -317,13 +331,13 @@ function generate_advanced_css()
 	$css->add_property( 'color', esc_attr( $generate_settings[ 'footer_link_hover_color' ] ) );
 	
 	// Form input
-	$css->set_selector( 'input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],textarea' );
+	$css->set_selector( 'input[type="text"],input[type="email"],input[type="url"],input[type="password"],input[type="search"],input[type="tel"],input[type="number"],textarea' );
 	$css->add_property( 'color', esc_attr( $generate_settings[ 'form_text_color' ] ) );
 	$css->add_property( 'background-color', esc_attr( $generate_settings[ 'form_background_color' ] ) );
 	$css->add_property( 'border-color', esc_attr( $generate_settings[ 'form_border_color' ] ) );
 	
 	// Form input on focus
-	$css->set_selector( 'input[type="text"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="search"]:focus,textarea:focus' );
+	$css->set_selector( 'input[type="text"]:focus,input[type="email"]:focus,input[type="url"]:focus,input[type="password"]:focus,input[type="search"]:focus,input[type="tel"]:focus,input[type="number"]:focus,textarea:focus' );
 	$css->add_property( 'color', esc_attr( $generate_settings[ 'form_text_color_focus' ] ) );
 	$css->add_property( 'background-color', esc_attr( $generate_settings[ 'form_background_color_focus' ] ) );
 	$css->add_property( 'border-color', esc_attr( $generate_settings[ 'form_border_color_focus' ] ) );
@@ -337,6 +351,17 @@ function generate_advanced_css()
 	$css->set_selector( 'button:hover,html input[type="button"]:hover,input[type="reset"]:hover,input[type="submit"]:hover,.button:hover,button:focus,html input[type="button"]:focus,input[type="reset"]:focus,input[type="submit"]:focus,.button:focus' );
 	$css->add_property( 'color', esc_attr( $generate_settings[ 'form_button_text_color_hover' ] ) );
 	$css->add_property( 'background-color', esc_attr( $generate_settings[ 'form_button_background_color_hover' ] ) );
+	
+	if ( '' !== generate_get_setting( 'back_to_top' ) ) {
+		// Back to top button
+		$css->set_selector( '.generate-back-to-top,.generate-back-to-top:visited' );
+		$css->add_property( 'background-color', esc_attr( $generate_settings['back_to_top_background_color'] ) );
+		$css->add_property( 'color', esc_attr( $generate_settings['back_to_top_text_color'] ) );
+		
+		$css->set_selector( '.generate-back-to-top:hover,.generate-back-to-top:focus' );
+		$css->add_property( 'background-color', esc_attr( $generate_settings['back_to_top_background_color_hover'] ) );
+		$css->add_property( 'color', esc_attr( $generate_settings['back_to_top_text_color_hover'] ) );
+	}
 	
 	// Allow us to hook CSS into our output
 	do_action( 'generate_colors_css', $css );

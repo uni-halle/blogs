@@ -8,7 +8,7 @@
 // No direct access, please
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'GENERATE_VERSION', '1.3.48' );
+define( 'GENERATE_VERSION', '1.4' );
 define( 'GENERATE_URI', get_template_directory_uri() );
 define( 'GENERATE_DIR', get_template_directory() );
 
@@ -286,7 +286,7 @@ function generate_scripts()
 	// Font Awesome
 	$icon_essentials = apply_filters( 'generate_fontawesome_essentials', false );
 	$icon_essentials = ( $icon_essentials ) ? '-essentials' : false;
-	wp_enqueue_style( "fontawesome{$icon_essentials}", get_template_directory_uri() . "/css/font-awesome{$icon_essentials}{$suffix}.css", false, '4.7', 'all' );
+	wp_enqueue_style( "font-awesome{$icon_essentials}", get_template_directory_uri() . "/css/font-awesome{$icon_essentials}{$suffix}.css", false, '4.7', 'all' );
 	
 	// IE 8
 	wp_enqueue_style( 'generate-ie', get_template_directory_uri() . "/css/ie{$suffix}.css", array( 'generate-style-grid' ), GENERATE_VERSION, 'all' );
@@ -294,6 +294,23 @@ function generate_scripts()
 	
 	// Add our mobile navigation
 	wp_enqueue_script( 'generate-navigation', get_template_directory_uri() . "/js/navigation{$suffix}.js", array( 'jquery' ), GENERATE_VERSION, true );
+	
+	// Clone our navigation below the header on mobile if it's in a sidebar
+	if ( function_exists( 'wp_add_inline_script' ) && ( 'nav-left-sidebar' == generate_get_navigation_location() || 'nav-right-sidebar' == generate_get_navigation_location() ) ) {
+		wp_add_inline_script( 'generate-navigation', "var target, nav, clone;
+			nav = document.getElementById( 'site-navigation' );
+			if ( nav ) {
+				clone = nav.cloneNode( true );
+				clone.className += ' sidebar-nav-mobile';
+				target = document.getElementById( 'masthead' );
+				if ( target ) {
+					target.insertAdjacentHTML( 'afterend', clone.outerHTML );
+				} else {
+					document.body.insertAdjacentHTML( 'afterbegin', clone.outerHTML )
+				}
+			}"
+		);
+	}
 	
 	// Add our hover or click dropdown menu scripts
 	$click = ( 'click' == $generate_settings[ 'nav_dropdown_type' ] || 'click-arrow' == $generate_settings[ 'nav_dropdown_type' ] ) ? '-click' : '';
@@ -307,11 +324,6 @@ function generate_scripts()
 	// Add the back to top script if it's enabled
 	if ( 'enable' == $generate_settings['back_to_top'] ) {
 		wp_enqueue_script( 'generate-back-to-top', get_template_directory_uri() . "/js/back-to-top{$suffix}.js", array( 'jquery' ), GENERATE_VERSION, true );
-	}
-	
-	// Move the navigation from below the content on mobile to below the header if it's in a sidebar
-	if ( 'nav-left-sidebar' == generate_get_navigation_location() || 'nav-right-sidebar' == generate_get_navigation_location() ) {
-		wp_enqueue_script( 'generate-move-navigation', get_template_directory_uri() . "/js/move-navigation{$suffix}.js", array( 'jquery' ), GENERATE_VERSION, true );
 	}
 	
 	// IE 8
@@ -496,6 +508,12 @@ function generate_base_css()
 	// Content margin if there's no title
 	if ( ! generate_show_title() ) {
 		$css->set_selector( '.page .entry-content' )->add_property( 'margin-top', '0px' );
+		
+		if ( is_single() ) {
+			if ( ! apply_filters( 'generate_post_author', true ) && ! apply_filters( 'generate_post_date', true ) ) {
+				$css->set_selector( '.single .entry-content' )->add_property( 'margin-top', '0px' );
+			}
+		}
 	}
 	
 	// Allow us to hook CSS into our output

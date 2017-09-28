@@ -65,13 +65,21 @@ function generate_get_default_fonts( $filter = true )
 		'widget_title_font_weight' => 'normal',
 		'widget_title_font_transform' => 'none',
 		'widget_title_font_size' => '20',
+		'widget_title_separator' => '30',
 		'widget_content_font_size' => '17',
+		'font_buttons' => 'inherit',
+		'font_buttons_category' => '',
+		'font_buttons_variants' => '',
+		'buttons_font_weight' => 'normal',
+		'buttons_font_transform' => 'none',
+		'buttons_font_size' => '',
 		'font_heading_1' => 'inherit',
 		'font_heading_1_category' => '',
 		'font_heading_1_variants' => '',
 		'heading_1_weight' => '300',
 		'heading_1_transform' => 'none',
 		'heading_1_font_size' => '40',
+		'heading_1_line_height' => '1.2', // em
 		'mobile_heading_1_font_size' => '30',
 		'font_heading_2' => 'inherit',
 		'font_heading_2_category' => '',
@@ -79,6 +87,7 @@ function generate_get_default_fonts( $filter = true )
 		'heading_2_weight' => '300',
 		'heading_2_transform' => 'none',
 		'heading_2_font_size' => '30',
+		'heading_2_line_height' => '1.2', // em
 		'mobile_heading_2_font_size' => '25',
 		'font_heading_3' => 'inherit',
 		'font_heading_3_category' => '',
@@ -86,7 +95,27 @@ function generate_get_default_fonts( $filter = true )
 		'heading_3_weight' => 'normal',
 		'heading_3_transform' => 'none',
 		'heading_3_font_size' => '20',
-		'footer_font_size' => '15'
+		'heading_3_line_height' => '1.2', // em
+		'font_heading_4' => 'inherit',
+		'font_heading_4_category' => '',
+		'font_heading_4_variants' => '',
+		'heading_4_weight' => 'normal',
+		'heading_4_transform' => 'none',
+		'heading_4_font_size' => '',
+		'heading_4_line_height' => '', // em
+		'font_heading_5' => 'inherit',
+		'font_heading_5_category' => '',
+		'font_heading_5_variants' => '',
+		'heading_5_weight' => 'normal',
+		'heading_5_transform' => 'none',
+		'heading_5_font_size' => '',
+		'heading_5_line_height' => '', // em
+		'font_footer' => 'inherit',
+		'font_footer_category' => '',
+		'font_footer_variants' => '',
+		'footer_weight' => 'normal',
+		'footer_transform' => 'none',
+		'footer_font_size' => '15',
 	);
 	
 	if ( $filter )
@@ -126,6 +155,10 @@ function generate_font_css()
 	$h1_family = generate_get_font_family_css( 'font_heading_1', 'generate_settings', generate_get_default_fonts() );
 	$h2_family = generate_get_font_family_css( 'font_heading_2', 'generate_settings', generate_get_default_fonts() );
 	$h3_family = generate_get_font_family_css( 'font_heading_3', 'generate_settings', generate_get_default_fonts() );
+	$h4_family = generate_get_font_family_css( 'font_heading_4', 'generate_settings', generate_get_default_fonts() );
+	$h5_family = generate_get_font_family_css( 'font_heading_5', 'generate_settings', generate_get_default_fonts() );
+	$footer_family = generate_get_font_family_css( 'font_footer', 'generate_settings', generate_get_default_fonts() );
+	$buttons_family = generate_get_font_family_css( 'font_buttons', 'generate_settings', generate_get_default_fonts() );
 	
 	// Body
 	$css->set_selector( 'body, button, input, select, textarea' );
@@ -184,17 +217,29 @@ function generate_font_css()
 	$css->add_property( 'font-weight', esc_attr( $generate_settings[ 'widget_title_font_weight' ] ), $og_defaults[ 'widget_title_font_weight' ] );
 	$css->add_property( 'text-transform', esc_attr( $generate_settings[ 'widget_title_font_transform' ] ), $og_defaults[ 'widget_title_font_transform' ] );
 	$css->add_property( 'font-size', absint( $generate_settings[ 'widget_title_font_size' ] ), $og_defaults[ 'widget_title_font_size' ], 'px' );
+	$css->add_property( 'margin-bottom', absint( $generate_settings['widget_title_separator'] ), absint( $og_defaults['widget_title_separator'] ), 'px' );
 	
 	// Widget font size
 	$css->set_selector( '.sidebar .widget, .footer-widgets .widget' );
 	$css->add_property( 'font-size', absint( $generate_settings['widget_content_font_size'] ), $og_defaults['widget_content_font_size'], 'px' );
 	
+	// Form button
+	$css->set_selector( 'button:not(.menu-toggle),html input[type="button"],input[type="reset"],input[type="submit"],.button,.button:visited' );
+	$css->add_property( 'font-family', $og_defaults[ 'font_buttons' ] !== $generate_settings[ 'font_buttons' ] ? $buttons_family : null );
+	$css->add_property( 'font-weight', esc_attr( $generate_settings[ 'buttons_font_weight' ] ), $og_defaults[ 'buttons_font_weight' ] );
+	$css->add_property( 'text-transform', esc_attr( $generate_settings[ 'buttons_font_transform' ] ), $og_defaults[ 'buttons_font_transform' ] );
+	
+	if ( '' !== $generate_settings[ 'buttons_font_size' ] ) {
+		$css->add_property( 'font-size', absint( $generate_settings[ 'buttons_font_size' ] ), $og_defaults[ 'buttons_font_size' ], 'px' );
+	}
+
 	// H1
 	$css->set_selector( 'h1' );
 	$css->add_property( 'font-family', $og_defaults[ 'font_heading_1' ] !== $generate_settings[ 'font_heading_1' ] ? $h1_family : null );
 	$css->add_property( 'font-weight', esc_attr( $generate_settings[ 'heading_1_weight' ] ), $og_defaults[ 'heading_1_weight' ] );
 	$css->add_property( 'text-transform', esc_attr( $generate_settings[ 'heading_1_transform' ] ), $og_defaults[ 'heading_1_transform' ] );
 	$css->add_property( 'font-size', absint( $generate_settings[ 'heading_1_font_size' ] ), $og_defaults[ 'heading_1_font_size' ], 'px' );
+	$css->add_property( 'line-height', floatval( $generate_settings['heading_1_line_height'] ), $og_defaults['heading_1_line_height'], 'em' );
 	
 	// H2
 	$css->set_selector( 'h2' );
@@ -202,6 +247,7 @@ function generate_font_css()
 	$css->add_property( 'font-weight', esc_attr( $generate_settings[ 'heading_2_weight' ] ), $og_defaults[ 'heading_2_weight' ] );
 	$css->add_property( 'text-transform', esc_attr( $generate_settings[ 'heading_2_transform' ] ), $og_defaults[ 'heading_2_transform' ] );
 	$css->add_property( 'font-size', absint( $generate_settings[ 'heading_2_font_size' ] ), $og_defaults[ 'heading_2_font_size' ], 'px' );
+	$css->add_property( 'line-height', floatval( $generate_settings['heading_2_line_height'] ), $og_defaults['heading_2_line_height'], 'em' );
 	
 	// H3
 	$css->set_selector( 'h3' );
@@ -209,9 +255,41 @@ function generate_font_css()
 	$css->add_property( 'font-weight', esc_attr( $generate_settings[ 'heading_3_weight' ] ), $og_defaults[ 'heading_3_weight' ] );
 	$css->add_property( 'text-transform', esc_attr( $generate_settings[ 'heading_3_transform' ] ), $og_defaults[ 'heading_3_transform' ] );
 	$css->add_property( 'font-size', absint( $generate_settings[ 'heading_3_font_size' ] ), $og_defaults[ 'heading_3_font_size' ], 'px' );
+	$css->add_property( 'line-height', floatval( $generate_settings['heading_3_line_height'] ), $og_defaults['heading_3_line_height'], 'em' );
+	
+	// H4
+	$css->set_selector( 'h4' );
+	$css->add_property( 'font-family', $og_defaults[ 'font_heading_4' ] !== $generate_settings[ 'font_heading_4' ] ? $h4_family : null );
+	$css->add_property( 'font-weight', esc_attr( $generate_settings[ 'heading_4_weight' ] ), $og_defaults[ 'heading_4_weight' ] );
+	$css->add_property( 'text-transform', esc_attr( $generate_settings[ 'heading_4_transform' ] ), $og_defaults[ 'heading_4_transform' ] );
+	
+	if ( '' !== $generate_settings[ 'heading_4_font_size' ] ) {
+		$css->add_property( 'font-size', absint( $generate_settings[ 'heading_4_font_size' ] ), $og_defaults[ 'heading_4_font_size' ], 'px' );
+	}
+	
+	if ( '' !== $generate_settings[ 'heading_4_line_height' ] ) {
+		$css->add_property( 'line-height', floatval( $generate_settings['heading_4_line_height'] ), $og_defaults['heading_4_line_height'], 'em' );
+	}
+	
+	// H5
+	$css->set_selector( 'h5' );
+	$css->add_property( 'font-family', $og_defaults[ 'font_heading_5' ] !== $generate_settings[ 'font_heading_5' ] ? $h5_family : null );
+	$css->add_property( 'font-weight', esc_attr( $generate_settings[ 'heading_5_weight' ] ), $og_defaults[ 'heading_5_weight' ] );
+	$css->add_property( 'text-transform', esc_attr( $generate_settings[ 'heading_5_transform' ] ), $og_defaults[ 'heading_5_transform' ] );
+	
+	if ( '' !== $generate_settings[ 'heading_5_font_size' ] ) {
+		$css->add_property( 'font-size', absint( $generate_settings[ 'heading_5_font_size' ] ), $og_defaults[ 'heading_5_font_size' ], 'px' );
+	}
+	
+	if ( '' !== $generate_settings['heading_5_line_height'] ) {
+		$css->add_property( 'line-height', floatval( $generate_settings['heading_5_line_height'] ), $og_defaults['heading_5_line_height'], 'em' );
+	}
 	
 	// Footer
 	$css->set_selector( '.site-info' );
+	$css->add_property( 'font-family', $og_defaults[ 'font_footer' ] !== $generate_settings[ 'font_footer' ] ? $footer_family : null );
+	$css->add_property( 'font-weight', esc_attr( $generate_settings[ 'footer_weight' ] ), $og_defaults[ 'footer_weight' ] );
+	$css->add_property( 'text-transform', esc_attr( $generate_settings[ 'footer_transform' ] ), $og_defaults[ 'footer_transform' ] );
 	$css->add_property( 'font-size', absint( $generate_settings['footer_font_size'] ), $og_defaults['footer_font_size'], 'px' );
 	
 	// Mobile
@@ -277,9 +355,13 @@ function generate_enqueue_google_fonts() {
 		'font_site_tagline',
 		'font_navigation',
 		'font_widget_title',
+		'font_buttons',
 		'font_heading_1',
 		'font_heading_2',
-		'font_heading_3'
+		'font_heading_3',
+		'font_heading_4',
+		'font_heading_5',
+		'font_footer',
 	);
 	
 	// Create our Google Fonts array
