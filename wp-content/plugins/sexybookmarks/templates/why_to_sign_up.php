@@ -12,7 +12,7 @@
       <li><?php echo sprintf(__('Earnings Dashboard', 'shareaholic')); ?></li>
       <li><?php echo sprintf(__('...lots more!', 'shareaholic')); ?></li>
     </ul>
-    <a href="<?php echo esc_url(admin_url("admin.php?shareaholic_redirect_url=https://shareaholic.com/signup/")); ?>" target="_blank" class="btn btn-info btn-lg" role="button" style="font-size: 16px;"><?php echo sprintf(__('Shareaholic Dashboard', 'shareaholic')); ?></a>
+    <a href="<?php echo esc_url(admin_url("admin.php?shareaholic_redirect_url=shareaholic.com/signup/")); ?>" target="_blank" class="btn btn-info btn-lg" role="button" style="font-size: 16px;"><?php echo sprintf(__('Shareaholic Dashboard', 'shareaholic')); ?></a>
     <p class="signuppromo_note">
       <?php echo sprintf(__("Already have a Shareaholic account? Click the button above to log in.", 'shareaholic')); ?>
     </p>

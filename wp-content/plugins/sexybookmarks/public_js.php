@@ -22,6 +22,7 @@ class ShareaholicPublicJS {
         'local_recs_url' => admin_url('admin-ajax.php') . '?action=shareaholic_permalink_related'
       )
     );
+    
     $disable_share_counts_api = ShareaholicUtilities::get_option('disable_internal_share_counts_api');
     $share_counts_connect_check = ShareaholicUtilities::get_option('share_counts_connect_check');
 
@@ -30,7 +31,20 @@ class ShareaholicPublicJS {
         $base_settings['endpoints']['share_counts_url'] = admin_url('admin-ajax.php') . '?action=shareaholic_share_counts_api';
       }
     }
-
+    
+    // Used by Share Count Recovery feature
+    if (is_singular()) {
+      global $post;
+      $author_id = $post->post_author;
+      
+      $base_settings['url_components']['year'] = date('Y', strtotime($post->post_date));
+      $base_settings['url_components']['monthnum'] = date('m', strtotime($post->post_date));
+      $base_settings['url_components']['day'] = date('d', strtotime($post->post_date));
+      $base_settings['url_components']['post_id'] = "$post->ID";
+      $base_settings['url_components']['postname'] = $post->post_name;
+      $base_settings['url_components']['author'] = get_the_author_meta('user_nicename', $author_id);
+    }
+    
     return $base_settings;
   }
 

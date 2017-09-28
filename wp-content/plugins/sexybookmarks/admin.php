@@ -72,6 +72,12 @@ JQUERY;
     
     if ($redirect_url != NULL) {
       
+      // Support redirect URLs with no scheme; default to httpS
+      $parsed = parse_url($redirect_url);
+      if (empty($parsed['scheme'])) {
+        $redirect_url = 'https://' . ltrim($redirect_url);
+      }
+
       // exit if redirect is not to shareaholic.com
       $redirect_url_host = parse_url($redirect_url, PHP_URL_HOST);
       
@@ -548,11 +554,13 @@ JQUERY;
    public static function welcome_email() {
      // check whether email has been sent
      if (ShareaholicUtilities::get_option('welcome_email_sent') != true) {
-       ShareaholicAdmin::send_welcome_email();
        // set flag that the email has been sent
        ShareaholicUtilities::update_options(array('welcome_email_sent' => true));
+       // send email
+       ShareaholicAdmin::send_welcome_email();
      }
    }
+  
   
   /**
    * This function is in charge of sending the "get started" email
@@ -562,7 +570,7 @@ JQUERY;
     $api_key = ShareaholicUtilities::get_option('api_key');
     $payment_url = 'https://shareaholic.com/user-settings/payments';
     $shr_wp_dashboard_url = admin_url('admin.php?page=shareaholic-settings');
-    $sign_up_link = 'https://shareaholic.com/publisher_tools/'.ShareaholicUtilities::get_option('api_key').'/websites/edit/?verification_key='.ShareaholicUtilities::get_option('verification_key');    
+    $sign_up_link = esc_url(admin_url("admin.php?shareaholic_redirect_url=shareaholic.com/signup/"));    
     $to = get_bloginfo('admin_email');
     $subject = 'Thank you for installing Shareaholic for WordPress!';
     $message = "
@@ -572,9 +580,9 @@ JQUERY;
         
     <p><strong>Step 1. Customize to your needs</strong><br /><br />
     
-    Personalize the various apps (ex. Share Buttons and Related Content) to match your website using the \"Customize\" buttons in your <a href='$shr_wp_dashboard_url'>Shareaholic App Manager in WordPress</a>, then choose where you want them to appear on your website using the checkboxes!
+    Personalize the various apps (ex. Share Buttons and Related Content) to match your website design using the \"Customize\" buttons in your <a href='$shr_wp_dashboard_url'>Shareaholic App Manager in WordPress</a>, then choose where you want them to appear on your website using the checkboxes!
             
-    <p><strong>Step 2: Get your free Shareaholic account</strong><br /><br />
+    <p><strong>Step 2: Create your free Shareaholic account</strong><br /><br />
     
     This will enable you to add more features like Analytics, Floating Share Buttons, Share Buttons for Images, Follow Buttons and more. <strong><a href='$sign_up_link'>Click here to sign-up</a></strong>, or <a href='$sign_up_link'>login to an existing Shareaholic account</a> and we'll automatically sync the plugin settings with your account.</p>
     
@@ -586,12 +594,12 @@ JQUERY;
 
     <p>Let's get started,<br /><br />
     
-    The Shareaholic Customer Happiness Team<br />
+    The Shareaholic Team<br />
     <a href='http://support.shareaholic.com'>support.shareaholic.com</a><br /><br />
     <img width='200' height='36' src='https://shareaholic.com/assets/layouts/shareaholic-logo.png' alt='Shareaholic' title='Shareaholic' /><br />
     <p style='font-size:12px;color:#C3C2C2;'>This is an automated, one-time e-mail sent by your WordPress CMS directly to the website admin</p><br />
     <img width='0' height='0' src='https://www.google-analytics.com/collect?v=1&tid=UA-12964573-6&cid=$api_key&t=event&ec=email&ea=open&el=$site_url-$api_key&cs=lifecycle&cm=email&cn=wp_welcome_email' />";
-    
+        
     $headers = "From: Shareaholic <hello@shareaholic.com>\r\n";
     $headers.= "Reply-To: Customer Happiness <hello@shareaholic.com>\r\n";
     $headers.= "X-Mailer: PHP/" . phpversion() . "\r\n";

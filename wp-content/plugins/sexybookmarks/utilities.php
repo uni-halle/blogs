@@ -121,7 +121,7 @@ class ShareaholicUtilities {
 
    	$wp_admin_bar->add_menu(array(
    		'id' => 'wp_shareaholic_adminbar_menu',
-   		'title' => __('Shareaholic', 'shareaholic'),
+   		'title' => __('Grow', 'shareaholic'),
    		'href' => esc_url(admin_url('admin.php?page=shareaholic-settings')),
    	));
 
@@ -145,7 +145,7 @@ class ShareaholicUtilities {
    	$wp_admin_bar->add_menu(array(
    		'parent' => 'wp_shareaholic_adminbar_menu',
    		'id' => 'wp_shareaholic_adminbar_submenu-general',
-   		'title' => __('Website Settings', 'shareaholic'),
+   		'title' => __('Dashboard', 'shareaholic'),
    		'href' => 'https://shareaholic.com/publisher_tools/'.self::get_option('api_key').'/websites/edit/?verification_key='.self::get_option('verification_key'),
    		'meta' => Array( 'target' => '_blank' )
    	));

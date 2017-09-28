@@ -23,7 +23,7 @@
       </div>
   
       <div class="app">
-        <p><a href="<?php echo esc_url(admin_url("admin.php?shareaholic_redirect_url=https://shareaholic.com/signup/")); ?>" target="_blank" class="btn btn-info btn-block" role="button" style="font-size: 14px;"><?php echo sprintf(__('Shareaholic Dashboard', 'shareaholic')); ?></a>
+        <p><a href="<?php echo esc_url(admin_url("admin.php?shareaholic_redirect_url=shareaholic.com/signup/")); ?>" target="_blank" class="btn btn-info btn-block" role="button" style="font-size: 14px;"><?php echo sprintf(__('Shareaholic Dashboard', 'shareaholic')); ?></a>
         </p>
         <p>
           <?php echo sprintf(__('Configure Apps such as Floating Share buttons, Social Share Count Recovery, Follow buttons, Share Buttons for Images, Monetization Dashboard, EU Cookie Consent bar, and more from the dashboard.', 'shareaholic')); ?>

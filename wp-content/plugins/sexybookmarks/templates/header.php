@@ -1,6 +1,6 @@
 <!-- Header - start -->
 <div id="shr-header-container"></div>
-<script type="text/javascript" src="//dsms0mj1bbhn4.cloudfront.net/ui-header/main.js"></script>
+<script type="text/javascript" src="//dsms0mj1bbhn4.cloudfront.net/ui-header/loader.js"></script>
 <!-- Header - end -->
 
 <script>
