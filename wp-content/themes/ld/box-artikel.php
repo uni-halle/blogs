@@ -72,11 +72,6 @@ switch ($fields['status']) {
             <div class="box-footer">
               <div class="pull-right">
                 <?php
-                /*
-                if (current_user_can('editor') || current_user_can('administrator')) {
-                  echo '<a href="/wp-admin/post.php?post=' . get_the_ID() . '&action=edit" target="backend" class="btn btn-default btn-flat" role="button">Artikel bearbeiten</a>';
-                }
-                */
                 if ($fields['status'] == '1') {
                   if (!$fields['entleiher']) {
                     echo '<a href="/checkout?i=' . $fields['artikelnummer'] . '&c=1" class="btn btn-default btn-flat" role="button">Ausleihen</a>';

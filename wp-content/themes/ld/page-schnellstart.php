@@ -64,7 +64,6 @@ $result = $wpdb->get_results(
 $statistics['meine'] = $result[0]->meine;
 ?>
 
-
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>

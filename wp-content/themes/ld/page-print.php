@@ -188,14 +188,14 @@ foreach ( $posts as $post ) {
 ?>
 		</div>
 		<div class="qr">
-			<img src="http://chart.apis.google.com/chart?chs=500x500&cht=qr&chld=L|0&chl=https://stuff.llz.uni-halle.de/checkout?i=<?php echo $fields['artikelnummer']; ?>">
+			<img src="http://chart.apis.google.com/chart?chs=500x500&cht=qr&chld=L|0&chl=<?php bloginfo('url'); ?>/checkout?i=<?php echo $fields['artikelnummer']; ?>">
 			Ausleihe
 		</div>
 		<div class="qr">
-			<img src="http://chart.apis.google.com/chart?chs=500x500&cht=qr&chld=L|0&chl=https://stuff.llz.uni-halle.de/checkin?i=<?php echo $fields['artikelnummer']; ?>">
+			<img src="http://chart.apis.google.com/chart?chs=500x500&cht=qr&chld=L|0&chl=<?php bloginfo('url'); ?>/checkin?i=<?php echo $fields['artikelnummer']; ?>">
 			Rücknahme
 		</div>
-		<div id="hinweis">Artikel scannen oder mit Artikelnummer <span class="wert"><?php echo $fields['artikelnummer']; ?></span> auf Webseite stuff.llz.uni-halle.de ausleihen.<br><br></div>
+		<div id="hinweis">Artikel scannen oder mit Artikelnummer <span class="wert"><?php echo $fields['artikelnummer']; ?></span> auf Webseite <?php bloginfo('url'); ?> ausleihen.<br><br></div>
 </div>
 <?php
 }
