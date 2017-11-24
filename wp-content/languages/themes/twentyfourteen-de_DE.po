@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Themes - Twenty Fourteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-04-11 09:34:44+0000\n"
+"PO-Revision-Date: 2017-10-22 18:06:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Themes - Twenty Fourteen\n"
 
@@ -17,7 +17,7 @@ msgstr "In 2014 lässt dich unser Standard-Theme eine adaptive Magazin-Website m
 
 #. Template Name of the plugin/theme
 msgid "Full Width Page"
-msgstr "Seite mit voller Breite"
+msgstr "Seite in ganzer Breite"
 
 #. Template Name of the plugin/theme
 msgid "Contributor Page"
@@ -156,7 +156,7 @@ msgstr "&larr; Zurück"
 
 #: inc/featured-content.php:431
 msgid "Don&rsquo;t display tag on front end."
-msgstr "Schlagwort nicht auf der Webseite anzeigen."
+msgstr "Schlagwort nicht auf der Website anzeigen."
 
 #: inc/featured-content.php:426
 msgid "Tag Name"
@@ -174,7 +174,7 @@ msgstr "Mit <a href=\"%s\">Beitragsbildern</a> kannst du die Gestaltung deiner W
 msgid "The home page features your choice of up to 6 posts prominently displayed in a grid or slider, controlled by a <a href=\"%1$s\">tag</a>; you can change the tag and layout in <a href=\"%2$s\">Appearance &rarr; Customize</a>. If no posts match the tag, <a href=\"%3$s\">sticky posts</a> will be displayed instead."
 msgstr "Die Startseite stellt deine Auswahl von bis zu 6 Beiträgen anhand eines <a href=\"%1$s\">Schlagworts</a> prominent in einem Raster oder Slider dar; Schlagwort und Layout kannst du unter <a href=\"%2$s\">Design &rarr; Anpassen</a> ändern. Wenn dem Schlagwort noch kein Beitrag zugeordnet ist, werden stattdessen <a href=\"%3$s\">oben gehaltene Beiträge</a> dargestellt."
 
-#. #-#-#-#-#  twentyfourteen.pot (Twenty Fourteen 1.8)  #-#-#-#-#
+#. #-#-#-#-#  twentyfourteen.pot (Twenty Fourteen 2.0)  #-#-#-#-#
 #. Theme Name of the plugin/theme
 #: inc/customizer.php:142
 msgid "Twenty Fourteen"
@@ -246,11 +246,11 @@ msgstr "Primäres Menü"
 msgid "Search"
 msgstr "Suchen"
 
-#: functions.php:498
+#: functions.php:523
 msgid "Page %s"
 msgstr "Seite %s"
 
-#: functions.php:379
+#: functions.php:404
 msgid "%d Article"
 msgid_plural "%d Articles"
 msgstr[0] "%d Beitrag"
@@ -432,7 +432,7 @@ msgstr "Wie es aussieht, wurde an dieser Stelle nichts gefunden. Möglicherweise
 msgid "Not Found"
 msgstr "Nichts gefunden"
 
-#. #-#-#-#-#  twentyfourteen.pot (Twenty Fourteen 1.8)  #-#-#-#-#
+#. #-#-#-#-#  twentyfourteen.pot (Twenty Fourteen 2.0)  #-#-#-#-#
 #. Author URI of the plugin/theme
 #: footer.php:21
 msgid "https://wordpress.org/"

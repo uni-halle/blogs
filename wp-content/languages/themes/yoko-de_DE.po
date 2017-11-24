@@ -1,38 +1,39 @@
-# Translation of Yoko in German
-# This file is distributed under the same license as the Yoko package.
+# Translation of Themes - Yoko in German
+# This file is distributed under the same license as the Themes - Yoko package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-05-31 08:36:35+0000\n"
+"PO-Revision-Date: 2017-10-06 01:37:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/2.1.0-alpha\n"
-"Project-Id-Version: Yoko\n"
-
-#. Theme Name of the plugin/theme
-msgid "Yoko"
-msgstr "Yoko"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Themes - Yoko\n"
 
 #. Description of the plugin/theme
 msgid "Yoko is a modern three-column blog theme. A responsive layout optimizes the theme for mobile devices like tablet pcs and modern smartphones (the layout switches to a two- or one-column layout depending on the screen size the theme is viewed on). To make your blog post more flexible you can use different kinds of post formats such as gallery, image, video, aside, link or quotes. To customize the theme you can choose your own background, link color, logo and header image. Yoko also comes with a custom social links widget and shortcodes for text columns, info boxes and highlighted text."
 msgstr "Yoko ist ein modernes dreispaltiges Blog-Theme. Ein responsives Layout optimiert das Theme für Mobilgeräte wie Tablets und Smartphones (das Layout wechselt zu zwei. oder einspaltiger Darstellung, abhängig von der Bildschirmgröße des benutzten Geräts). Um deine Blogbeiträge flexibler zu machen, kannst du verschiedene Beitragsformate wie z.B. Galerie, Bild, Video, Kurzmitteilung, Link oder Zitat wählen. Um das Theme zu individualisieren, kannst du deinen eigenen Hintergrund, eigene Linkfarbe, Logo und Header-Bild festlegen. Außerdem enthält Yoko ein eigenes Widget für Social-Links sowie Shortcodes für Spaltenaufteilung, Infoboxen und hervorgehobenen Text."
 
+#. Theme Name of the plugin/theme
+msgid "Yoko"
+msgstr "Yoko"
+
 #. Template Name of the plugin/theme
 msgid "Full-width, no sidebar"
 msgstr "Volle Breite, keine Seitenleiste"
 
-#: single.php:23
-msgid "&larr; Previous Post"
-msgstr "&larr; Vorheriger Beitrag"
+#: tag.php:18
+msgid "Tag Archives: %s"
+msgstr "Schlagwort-Archive: %s"
 
 #: single.php:24
 msgid "Next Post  &rarr;"
 msgstr "Nächster Beitrag &rarr;"
 
-#: tag.php:18
-msgid "Tag Archives: %s"
-msgstr "Schlagwort-Archive: %s"
+#: single.php:23
+msgid "&larr; Previous Post"
+msgstr "&larr; Vorheriger Beitrag"
 
 #: search.php:42
 msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
@@ -46,21 +47,21 @@ msgstr "Es konnte nichts gefunden werden."
 msgid "Search Results for: %s"
 msgstr "Suchergebnisse für: %s"
 
-#: inc/theme-options.php:65
-msgid "Custom Logo Image URL"
-msgstr "URL deines Logos"
-
-#: inc/theme-options.php:68
-msgid "Upload your own logo image"
-msgstr "Lade dein eigenes Logobild hoch"
+#: inc/theme-options.php:73
+msgid "Save Options"
+msgstr "Einstellungen speichern"
 
 #: inc/theme-options.php:68
 msgid " using the WordPress Media Library and insert the URL here"
 msgstr "nutze die WordPress-Mediathek und füge deine Logobild-URL hier ein"
 
-#: inc/theme-options.php:73
-msgid "Save Options"
-msgstr "Einstellungen speichern"
+#: inc/theme-options.php:68
+msgid "Upload your own logo image"
+msgstr "Lade dein eigenes Logobild hoch"
+
+#: inc/theme-options.php:65
+msgid "Custom Logo Image URL"
+msgstr "URL deines Logos"
 
 #: inc/theme-options.php:51
 msgid "Options saved"
@@ -94,169 +95,169 @@ msgstr "Trackbacks sind geschlossen, aber du kannst <a class=\"comment-link\" hr
 msgid "Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
 msgstr "Kommentare sind geschlossen, aber du kannst einen Trackback hinterlassen: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback-URL für deinen Beitrag\" rel=\"trackback\">Trackback-URL</a>."
 
-#: functions.php:578
-msgid "Twitter Text:"
-msgstr "Twitter-Text:"
-
-#: functions.php:579
-msgid "Twitter  URL:"
-msgstr "Twitter-URL:"
-
-#: functions.php:580
-msgid "Facebook Text:"
-msgstr "Facebook-Text:"
-
-#: functions.php:581
-msgid "Facebook URL:"
-msgstr "Facebook-URL:"
-
-#: functions.php:582
-msgid "Google+ Text:"
-msgstr "Google+-Text"
-
-#: functions.php:583
-msgid "Google+ URL:"
-msgstr "Google+-URL:"
-
-#: functions.php:584
-msgid "Pinterest Text:"
-msgstr "Pinterest-Text:"
-
-#: functions.php:585
-msgid "Pinterest URL:"
-msgstr "Pinterest-URL:"
-
-#: functions.php:586
-msgid "Vimeo Text:"
-msgstr "Vimeo-Text:"
-
-#: functions.php:587
-msgid "Vimeo URL:"
-msgstr "Vimeo-URL:"
-
-#: functions.php:589
-msgid "YouTube Text:"
-msgstr "YouTube-Text:"
-
-#: functions.php:590
-msgid "YouTube URL:"
-msgstr "YouTube-URL:"
-
-#: functions.php:592
-msgid "Instagram Text:"
-msgstr "Instagram-Text:"
-
-#: functions.php:593
-msgid "Instagram URL:"
-msgstr "Instagram-URL:"
-
-#: functions.php:594
-msgid "Flickr Text:"
-msgstr "Flickr-Text:"
-
-#: functions.php:595
-msgid "Flickr URL:"
-msgstr "Flickr-URL:"
-
-#: functions.php:596
-msgid "Dribbble Text:"
-msgstr "Dribbble-Text:"
-
-#: functions.php:597
-msgid "Dribbble URL:"
-msgstr "Dribbble-URL:"
-
-#: functions.php:598
-msgid "GitHub Text:"
-msgstr "GitHub-Text:"
-
-#: functions.php:599
-msgid "GitHub URL:"
-msgstr "GitHub-URL:"
-
-#: functions.php:601
-msgid "Foursquare Text:"
-msgstr "Foursquare-Text:"
-
-#: functions.php:602
-msgid "Foursquare URL:"
-msgstr "Foursquare-URL:"
-
-#: functions.php:603
-msgid "WordPress Text:"
-msgstr "WordPress-Text:"
-
-#: functions.php:604
-msgid "WordPress URL:"
-msgstr "WordPress-URL:"
-
-#: functions.php:605
-msgid "Xing Text:"
-msgstr "Xing-Text:"
-
-#: functions.php:606
-msgid "Xing URL:"
-msgstr "Xing-URL:"
-
-#: functions.php:608
-msgid "LinkedIn Text:"
-msgstr "LinkedIn-Text:"
-
-#: functions.php:609
-msgid "LinkedIn URL:"
-msgstr "LinkedIn-URL:"
-
-#: functions.php:610
-msgid "Delicious Text:"
-msgstr "Delicious-Text:"
-
-#: functions.php:611
-msgid "Delicious URL:"
-msgstr "Delicious-URL:"
-
-#: functions.php:613
-msgid "RSS Text:"
-msgstr "RSS-Text:"
-
-#: functions.php:615
-msgid "RSS  URL:"
-msgstr "RSS-URL:"
-
-#: image.php:22
-msgid "&larr; Previous Image"
-msgstr "&larr; Vorheriges Bild"
+#: image.php:75
+msgid "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr "<a class=\"comment-link\" href=\"#respond\" title=\"Kommentar schreiben\">Schreibe einen Kommentar</a> oder ein Trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback-URL für deinen Beitrag\" rel=\"trackback\">Trackback-URL</a>."
 
 #: image.php:23
 msgid "Next Image &rarr;"
 msgstr "Nächstes Bild &rarr;"
 
-#: image.php:75
-msgid "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
-msgstr "<a class=\"comment-link\" href=\"#respond\" title=\"Kommentar schreiben\">Schreibe einen Kommentar</a> oder ein Trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback-URL für deinen Beitrag\" rel=\"trackback\">Trackback-URL</a>."
+#: image.php:22
+msgid "&larr; Previous Image"
+msgstr "&larr; Vorheriges Bild"
 
-#: functions.php:405
-msgid "Link to your social profiles like twitter, facebook or flickr."
-msgstr "Linke auf deine Online-Profile wie Twitter, Facebook oder Flickr."
+#: functions.php:615
+msgid "RSS  URL:"
+msgstr "RSS-URL:"
+
+#: functions.php:613
+msgid "RSS Text:"
+msgstr "RSS-Text:"
+
+#: functions.php:611
+msgid "Delicious URL:"
+msgstr "Delicious-URL:"
+
+#: functions.php:610
+msgid "Delicious Text:"
+msgstr "Delicious-Text:"
+
+#: functions.php:609
+msgid "LinkedIn URL:"
+msgstr "LinkedIn-URL:"
+
+#: functions.php:608
+msgid "LinkedIn Text:"
+msgstr "LinkedIn-Text:"
+
+#: functions.php:606
+msgid "Xing URL:"
+msgstr "Xing-URL:"
+
+#: functions.php:605
+msgid "Xing Text:"
+msgstr "Xing-Text:"
+
+#: functions.php:604
+msgid "WordPress URL:"
+msgstr "WordPress-URL:"
+
+#: functions.php:603
+msgid "WordPress Text:"
+msgstr "WordPress-Text:"
+
+#: functions.php:602
+msgid "Foursquare URL:"
+msgstr "Foursquare-URL:"
+
+#: functions.php:601
+msgid "Foursquare Text:"
+msgstr "Foursquare-Text:"
+
+#: functions.php:599
+msgid "GitHub URL:"
+msgstr "GitHub-URL:"
+
+#: functions.php:598
+msgid "GitHub Text:"
+msgstr "GitHub-Text:"
+
+#: functions.php:597
+msgid "Dribbble URL:"
+msgstr "Dribbble-URL:"
+
+#: functions.php:596
+msgid "Dribbble Text:"
+msgstr "Dribbble-Text:"
+
+#: functions.php:595
+msgid "Flickr URL:"
+msgstr "Flickr-URL:"
+
+#: functions.php:594
+msgid "Flickr Text:"
+msgstr "Flickr-Text:"
+
+#: functions.php:593
+msgid "Instagram URL:"
+msgstr "Instagram-URL:"
+
+#: functions.php:592
+msgid "Instagram Text:"
+msgstr "Instagram-Text:"
+
+#: functions.php:590
+msgid "YouTube URL:"
+msgstr "YouTube-URL:"
+
+#: functions.php:589
+msgid "YouTube Text:"
+msgstr "YouTube-Text:"
+
+#: functions.php:587
+msgid "Vimeo URL:"
+msgstr "Vimeo-URL:"
+
+#: functions.php:586
+msgid "Vimeo Text:"
+msgstr "Vimeo-Text:"
+
+#: functions.php:585
+msgid "Pinterest URL:"
+msgstr "Pinterest-URL:"
+
+#: functions.php:584
+msgid "Pinterest Text:"
+msgstr "Pinterest-Text:"
+
+#: functions.php:583
+msgid "Google+ URL:"
+msgstr "Google+-URL:"
+
+#: functions.php:582
+msgid "Google+ Text:"
+msgstr "Google+-Text"
+
+#: functions.php:581
+msgid "Facebook URL:"
+msgstr "Facebook-URL:"
+
+#: functions.php:580
+msgid "Facebook Text:"
+msgstr "Facebook-Text:"
+
+#: functions.php:579
+msgid "Twitter  URL:"
+msgstr "Twitter-URL:"
+
+#: functions.php:578
+msgid "Twitter Text:"
+msgstr "Twitter-Text:"
 
 #: functions.php:577
 msgid "Title:"
 msgstr "Titel:"
 
-#: functions.php:318
-msgid "Sidebar 1"
-msgstr "Sidebar 1"
+#: functions.php:405
+msgid "Link to your social profiles like twitter, facebook or flickr."
+msgstr "Linke auf deine Online-Profile wie Twitter, Facebook oder Flickr."
 
-#: functions.php:327
-msgid "Sidebar 2"
-msgstr "Sidebar 2"
+#: functions.php:356
+msgid "Search"
+msgstr "Suchen"
 
 #: functions.php:329
 msgid "An second sidebar area"
 msgstr "Ein zweiter Sidebar-Bereich"
 
-#: functions.php:356
-msgid "Search"
-msgstr "Suchen"
+#: functions.php:327
+msgid "Sidebar 2"
+msgstr "Sidebar 2"
+
+#: functions.php:318
+msgid "Sidebar 1"
+msgstr "Sidebar 1"
 
 #: functions.php:306
 msgid "(Edit)"
@@ -275,25 +276,14 @@ msgstr "Dein Kommentar wartet auf Freischaltung."
 msgid "%1$s at %2$s"
 msgstr "%1$s um %2$s"
 
-#. translators: header image description
-#: functions.php:145
-msgid "Ginko"
-msgstr "Ginkgo"
+#: functions.php:277
+msgid "%s"
+msgstr "%s"
 
 #. translators: header image description
-#: functions.php:151
-msgid "Flowers"
-msgstr "Blumen"
-
-#. translators: header image description
-#: functions.php:157
-msgid "Plant"
-msgstr "Hauswurz"
-
-#. translators: header image description
-#: functions.php:163
-msgid "Sailing"
-msgstr "Segelboote"
+#: functions.php:175
+msgid "Seagull"
+msgstr "Seemöwe"
 
 #. translators: header image description
 #: functions.php:169
@@ -301,13 +291,33 @@ msgid "Cape"
 msgstr "Kap"
 
 #. translators: header image description
-#: functions.php:175
-msgid "Seagull"
-msgstr "Seemöwe"
+#: functions.php:163
+msgid "Sailing"
+msgstr "Segelboote"
 
-#: functions.php:277
-msgid "%s"
-msgstr "%s"
+#. translators: header image description
+#: functions.php:157
+msgid "Plant"
+msgstr "Hauswurz"
+
+#. translators: header image description
+#: functions.php:151
+msgid "Flowers"
+msgstr "Blumen"
+
+#. translators: header image description
+#: functions.php:145
+msgid "Ginko"
+msgstr "Ginkgo"
+
+#: functions.php:103
+msgid "Primary Navigation"
+msgstr "Primäre Navigation"
+
+#: functions.php:39
+msgctxt "Droid Serif font: on or off"
+msgid "on"
+msgstr "on"
 
 #. Translators: If there are characters in your language that are not supported
 #. by PT Sans or Raleway translate this to 'off'. Do not translate into your
@@ -317,26 +327,22 @@ msgctxt "Droid Sans font: on or off"
 msgid "on"
 msgstr "An"
 
-#: functions.php:39
-msgctxt "Droid Serif font: on or off"
-msgid "on"
-msgstr "on"
-
-#: functions.php:103
-msgid "Primary Navigation"
-msgstr "Primäre Navigation"
+#: footer.php:12
+msgid "Top"
+msgstr "Oben"
 
 #: footer.php:11
 msgid "Theme: %1$s by %2$s"
 msgstr "Theme: %1$s von %2$s"
 
-#: footer.php:12
-msgid "Top"
-msgstr "Oben"
+#: content-single.php:47
+msgid "Author: %s"
+msgstr "Autor: %s"
 
-#: content-gallery.php:19 content-gallery.php:24 content-gallery.php:42
-msgid "View the pictures &rarr;"
-msgstr "Alle Bilder anschauen &rarr;"
+#: content-image.php:16 content-link.php:11 content-quote.php:17
+#: content-single.php:25 content-video.php:16 content.php:27
+msgid "Continue Reading &rarr;"
+msgstr "Weiterlesen &rarr;"
 
 #: content-gallery.php:45
 msgid "This gallery contains <a %1$s>%2$s photo</a>."
@@ -344,14 +350,14 @@ msgid_plural "This gallery contains <a %1$s>%2$s photos</a>"
 msgstr[0] "Diese Galerie enthält <a %1$s>%2$s Bild</a>."
 msgstr[1] "Diese Galerie enthält <a %1$s>%2$s Bilder</a>"
 
-#: content-image.php:16 content-link.php:11 content-quote.php:17
-#: content-single.php:25 content-video.php:16 content.php:27
-msgid "Continue Reading &rarr;"
-msgstr "Weiterlesen &rarr;"
+#: content-gallery.php:19 content-gallery.php:24 content-gallery.php:42
+msgid "View the pictures &rarr;"
+msgstr "Alle Bilder anschauen &rarr;"
 
-#: content-single.php:47
-msgid "Author: %s"
-msgstr "Autor: %s"
+#: content-gallery.php:12 content-gallery.php:46 content-image.php:12
+#: content-video.php:12 content.php:20
+msgid "Permalink to %s"
+msgstr "Permanentlink zu %s"
 
 #: content-aside.php:29 content-gallery.php:64 content-image.php:28
 #: content-link.php:22 content-page.php:18 content-quote.php:29
@@ -360,28 +366,23 @@ msgstr "Autor: %s"
 msgid "Edit &rarr;"
 msgstr "Bearbeiten &rarr;"
 
-#: content-gallery.php:12 content-gallery.php:46 content-image.php:12
-#: content-video.php:12 content.php:20
-msgid "Permalink to %s"
-msgstr "Permanentlink zu %s"
-
 #: content-aside.php:28 content-gallery.php:63 content-image.php:27
 #: content-link.php:21 content-quote.php:28 content-single.php:39
 #: content-video.php:27 content.php:39
 msgid "Permalink "
 msgstr "permalink"
 
-#: content-aside.php:22 content-gallery.php:57 content-image.php:21
-#: content-link.php:15 content-quote.php:22 content-single.php:33
-#: content-video.php:21 content.php:33
-msgid "Categories: %2$s"
-msgstr "Kategorien: %2$s"
-
 #: content-aside.php:26 content-gallery.php:61 content-image.php:25
 #: content-link.php:19 content-quote.php:26 content-single.php:37
 #: content-video.php:25 content.php:37
 msgid "Tags: %2$s"
 msgstr "Schlagwörter: %2$s"
+
+#: content-aside.php:22 content-gallery.php:57 content-image.php:21
+#: content-link.php:15 content-quote.php:22 content-single.php:33
+#: content-video.php:21 content.php:33
+msgid "Categories: %2$s"
+msgstr "Kategorien: %2$s"
 
 #: content-aside.php:18 content-gallery.php:53 content-image.php:17
 #: content-page.php:17 content-quote.php:18 content-single.php:28
@@ -402,29 +403,29 @@ msgstr "% Kommentare"
 #: content-aside.php:13 content-gallery.php:14 content-image.php:13
 #: content-quote.php:13 content-single.php:18 content-video.php:13
 #: content.php:16 image.php:18
-msgid "0 comments"
-msgstr "Keine Kommentare"
+msgid "1 Comment"
+msgstr "1 Kommentar"
 
 #: content-aside.php:13 content-gallery.php:14 content-image.php:13
 #: content-quote.php:13 content-single.php:18 content-video.php:13
 #: content.php:16 image.php:18
-msgid "1 Comment"
-msgstr "1 Kommentar"
+msgid "0 comments"
+msgstr "Keine Kommentare"
 
-#: comments.php:60
-msgid "<p class=\"comment-notes\">Required fields are marked <span class=\"required\">*</span>.</p>"
-msgstr "<p class=\"comment-notes\">Pflichtfelder sind mit <span class=\"required\">*</span> markiert.</p>"
+#: content-aside.php:12 content-gallery.php:13 content-image.php:13
+#: content-quote.php:12 content-single.php:18 content-video.php:13
+#: content.php:15 image.php:18
+msgid "by"
+msgstr "von"
 
 #: comments.php:62
 msgctxt "noun"
 msgid "Message <span class=\"required\">*</span>"
 msgstr "Nachricht <span class=\"required\">*</span>"
 
-#: content-aside.php:12 content-gallery.php:13 content-image.php:13
-#: content-quote.php:12 content-single.php:18 content-video.php:13
-#: content.php:15 image.php:18
-msgid "by"
-msgstr "nach"
+#: comments.php:60
+msgid "<p class=\"comment-notes\">Required fields are marked <span class=\"required\">*</span>.</p>"
+msgstr "<p class=\"comment-notes\">Pflichtfelder sind mit <span class=\"required\">*</span> markiert.</p>"
 
 #: comments.php:53
 msgid "Comments are closed."
@@ -434,13 +435,13 @@ msgstr "Kommentare sind geschlossen."
 msgid "Newer Comments &rarr;"
 msgstr "Neuere Kommentare &rarr;"
 
-#: comments.php:29
-msgid "Leave a reply &rarr;"
-msgstr "Schreibe einen Kommentar &rarr;"
-
 #: comments.php:36
 msgid "&larr; Older Comments"
 msgstr "&larr; Ältere Kommentare"
+
+#: comments.php:29
+msgid "Leave a reply &rarr;"
+msgstr "Schreibe einen Kommentar &rarr;"
 
 #: comments.php:26
 msgid "One Comment"
@@ -452,13 +453,13 @@ msgstr[1] "%1$s Kommentare"
 msgid "This post is password protected. Enter the password to view any comments."
 msgstr "Dieser Beitrag ist passwortgeschützt. Um Kommentare anschauen zu können, musst du das Passwort angeben."
 
-#: author.php:16
-msgid "Author Archives: <span class=\"vcard\">%s</span>"
-msgstr "Alle Beiträge von: <span class=\"vcard\">%s</span>"
-
 #: category.php:14
 msgid "Category Archives: %s"
 msgstr "Archiv der Kategorie: %s"
+
+#: author.php:16
+msgid "Author Archives: <span class=\"vcard\">%s</span>"
+msgstr "Alle Beiträge von: <span class=\"vcard\">%s</span>"
 
 #: archive.php:35 author.php:32 category.php:29 index.php:23 search.php:30
 #: tag.php:35
@@ -478,14 +479,14 @@ msgstr "Die Seite konnte nicht gefunden werden, vielleicht hilft die Suchfunktio
 msgid "Not Found"
 msgstr "Seite nicht gefunden"
 
+#. Author URI of the plugin/theme
+msgid "https://www.elmastudio.de/en/"
+msgstr "https://www.elmastudio.de/en/"
+
 #. Theme URI of the plugin/theme
-msgid "http://www.elmastudio.de/wordpress-themes/yoko/"
-msgstr "https://wordpress.org/themes/yoko"
+msgid "https://www.elmastudio.de/en/themes/yoko/"
+msgstr "https://www.elmastudio.de/en/themes/yoko/"
 
 #. Author of the plugin/theme
 msgid "Elmastudio"
 msgstr "Elmastudio"
-
-#. Author URI of the plugin/theme
-msgid "http://www.elmastudio.de/en/themes/"
-msgstr "http://www.elmastudio.de/wordpress-themes/"

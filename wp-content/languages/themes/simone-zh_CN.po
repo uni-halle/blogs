@@ -1,0 +1,394 @@
+# Translation of Themes - Simone in Chinese (China)
+# This file is distributed under the same license as the Themes - Simone package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-10-29 09:10:54+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Themes - Simone\n"
+
+#. Theme Name of the plugin/theme
+msgid "Simone"
+msgstr "Simone"
+
+#. Template Name of the plugin/theme
+msgid "Page with no sidebar"
+msgstr "没有边栏的页面"
+
+#: search.php:16
+msgid "Search Results for: %s"
+msgstr "%s的搜索结果"
+
+#: inc/template-tags.php:126
+msgctxt "Public posted on date"
+msgid "F jS, Y"
+msgstr "F j, Y"
+
+#: inc/template-tags.php:128
+msgctxt "Public modified on date"
+msgid "F jS, Y"
+msgstr "F j, Y"
+
+#. Translators: Text wrapped in mobile-hide class is hidden on wider screens.
+#: inc/template-tags.php:131
+msgctxt "mobile-hide class is used to hide connecting elements like \"on\" and \".\" on wider screens."
+msgid "<span class=\"byline\">Written by %1$s</span><span class=\"mobile-hide\"> on </span><span class=\"posted-on\">%2$s</span><span class=\"mobile-hide\">.</span>"
+msgstr "<span class=\"byline\">作者%1$s</span><span class=\"mobile-hide\">，发布于 </span><span class=\"posted-on\">%2$s</span><span class=\"mobile-hide\">。</span>"
+
+#: inc/template-tags.php:105
+msgid "Next Image"
+msgstr "下一图片"
+
+#: inc/template-tags.php:104
+msgid "Previous Image"
+msgstr "上一图片"
+
+#: inc/template-tags.php:83
+msgid "Next Post:"
+msgstr "下篇文章："
+
+#: inc/template-tags.php:82
+msgid "Previous Post:"
+msgstr "上篇文章："
+
+#: inc/template-tags.php:79 inc/template-tags.php:101
+msgid "Post navigation"
+msgstr "文章导航"
+
+#: inc/template-tags.php:54
+msgid "Posts navigation"
+msgstr "文章导航"
+
+#: inc/template-tags.php:46
+msgid "Next &rarr;"
+msgstr "下一个 &rarr;"
+
+#: inc/template-tags.php:45
+msgid "&larr; Previous"
+msgstr "&larr; 上一个"
+
+#: inc/extras.php:63
+msgid "Page %s"
+msgstr "第%s页"
+
+#: inc/customizer.php:137
+msgid "Full content"
+msgstr "全部内容"
+
+#: inc/customizer.php:136
+msgid "Excerpt"
+msgstr "摘要"
+
+#: inc/customizer.php:132
+msgid "Archive display"
+msgstr "归档显示"
+
+#: inc/customizer.php:133
+msgid "Display excerpts or full content with optional \"More\" tag in the blog index and archive pages."
+msgstr "在博客索引和归档页中使用\"More\"标签，可以控制只显示摘录或全部内容。"
+
+#: inc/customizer.php:108
+msgid "Right sidebar"
+msgstr "边栏在右侧"
+
+#: inc/customizer.php:107
+msgid "Left sidebar"
+msgstr "边栏在左侧"
+
+#: inc/customizer.php:82
+msgid "Change the default display options for the theme."
+msgstr "改变主题的默认显示方式"
+
+#: inc/customizer.php:104
+msgid "Sidebar position"
+msgstr "边栏位置"
+
+#: inc/customizer.php:80
+msgid "Theme Options"
+msgstr "主题选项"
+
+#: inc/customizer.php:67
+msgid "Link Color"
+msgstr "链接颜色"
+
+#: inc/customizer.php:47
+msgid "Header Color"
+msgstr "页眉颜色"
+
+#: inc/author-box.php:65
+msgid "All posts by %s"
+msgstr "所有由%s发布的文章"
+
+#: inc/author-box.php:52
+msgid "Facebook"
+msgstr "Facebook"
+
+#: inc/author-box.php:52
+msgid "Like %s on Facebook"
+msgstr "在脸书中赞%s"
+
+#: inc/author-box.php:49
+msgid "Google+"
+msgstr "Google+"
+
+#: inc/author-box.php:49
+msgid "Add %s to your Google+ circles"
+msgstr "把%s加到你的Google+圈子"
+
+#: inc/author-box.php:46
+msgid "Twitter"
+msgstr "Twitter"
+
+#. translators: May be followed by another sentence. There is a space after the
+#. punctuation mark.
+#: inc/author-box.php:29
+msgid "One article and counting. "
+msgstr "已发布一篇文章。"
+
+#. translators: May be followed by another sentence. There is a space after the
+#. punctuation mark.
+#: inc/author-box.php:34
+msgid "%s articles and counting. "
+msgstr "已发布%s篇文章。"
+
+#: inc/author-box.php:44
+msgid "Follow %s on social media: "
+msgstr "在社交媒体上关注%s"
+
+#: inc/author-box.php:46
+msgid "Follow %s on Twitter"
+msgstr "在推特上关注%s"
+
+#: inc/author-box.php:21
+msgid "About %s"
+msgstr "关于%s"
+
+#: image.php:25
+msgid "Featured in: "
+msgstr "特色："
+
+#: image.php:26
+msgid "Full size image: "
+msgstr "全尺寸图像："
+
+#: image.php:27
+msgid "Edit attachment post"
+msgstr "编辑附件"
+
+#: inc/author-box.php:10
+msgid "Hide Author Bio"
+msgstr "隐藏作者信息"
+
+#: header.php:52
+msgid "Search"
+msgstr "搜索"
+
+#: header.php:46
+msgid "Menu"
+msgstr "菜单"
+
+#: header.php:24
+msgid "Skip to content"
+msgstr "跳至正文"
+
+#: functions.php:104
+msgid "Sidebar"
+msgstr "边栏"
+
+#: functions.php:75
+msgid "Social Menu"
+msgstr "社交菜单"
+
+#: functions.php:74
+msgid "Primary Menu"
+msgstr "主菜单"
+
+#: footer.php:29
+msgid "mor10.com"
+msgstr "mor10.com"
+
+#. translators: %1$s = text link: Simone, URL:
+#. http:wordpress.org/themes/simone/, %2$s = text link: mor10.com, URL:
+#. http:mor10.com/
+#: footer.php:27
+msgid "Theme: %1$s by %2$s"
+msgstr "主题: %1$s 制作: %2$s"
+
+#: footer.php:21
+msgid "WordPress"
+msgstr "WordPress"
+
+#. translators: %s = text link: WordPress, URL: http:wordpress.org/
+#: footer.php:20
+msgid "Proudly powered by %s"
+msgstr "自豪地采用%s"
+
+#: content.php:91
+msgid "Continue Reading"
+msgstr "继续阅读"
+
+#: content.php:91
+msgid "Continue Reading "
+msgstr "继续阅读"
+
+#: content.php:72 content.php:89
+msgctxt "First part of \"Read *article title* in title tag of Read more link"
+msgid "Read "
+msgstr "阅读"
+
+#: content.php:72 content.php:89
+msgid "Read <span aria-hidden=\"true\">the article</span>"
+msgstr "阅读"
+
+#: content.php:13 content.php:26
+msgid "Read "
+msgstr "阅读"
+
+#: content-single.php:38 content.php:57
+msgid "% Comments"
+msgstr "%条评论"
+
+#: content-single.php:38 content.php:57
+msgid "1 Comment"
+msgstr "一条评论"
+
+#: content-single.php:38 content.php:57
+msgid "Leave a comment"
+msgstr "留下评论"
+
+#. translators: used between list items, there is a space after the comma
+#: content-single.php:25 content.php:43
+msgid ", "
+msgstr "、"
+
+#: content-page.php:27 content-single.php:50 image.php:48
+msgid "Pages:"
+msgstr "页面："
+
+#: content-none.php:56
+msgid "Most recent posts:"
+msgstr "最新文章："
+
+#: content-none.php:45
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr "我们可能无法找到您需要的内容。或许搜索功能可以帮到您。"
+
+#: content-none.php:35
+msgid "You seem to be lost. To find what you are looking for check out the most recent articles below or try a search:"
+msgstr "友情提示：请浏览最新文章或使用网站的搜索。"
+
+#: content-none.php:40
+msgid "Nothing matched your search terms. Check out the most recent articles below or try searching for something else:"
+msgstr "没有符合您搜索条件的结果。请浏览最新文章 或 换其它关键词再试。"
+
+#: content-none.php:31
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr "准备好发布第一篇文章了？<a href=\"%1$s\">从这里开始</a>。"
+
+#: content-none.php:22
+msgid "Nothing Found"
+msgstr "未找到"
+
+#: content-none.php:16
+msgid "Page not available"
+msgstr "页面不存在"
+
+#. translators: %s = search query
+#: content-none.php:20
+msgid "Nothing found for %s"
+msgstr "没有找到： %s"
+
+#: content-aside.php:17 content-page.php:32 content-single.php:42
+#: content.php:61
+msgid "Edit"
+msgstr "编辑"
+
+#: comments.php:59
+msgid "Comments are closed."
+msgstr "评论已关闭。"
+
+#: comments.php:49
+msgid "Newer Comments"
+msgstr "较新评论"
+
+#: comments.php:48
+msgid "Older Comments"
+msgstr "较早评论"
+
+#: comments.php:47
+msgid "Comment navigation"
+msgstr "评论导航"
+
+#: comments.php:29
+msgctxt "comments title"
+msgid "One comment:"
+msgid_plural "%1$s comments:"
+msgstr[0] "%1$s条评论："
+
+#: archive.php:45
+msgid "Archives"
+msgstr "归档"
+
+#: archive.php:42
+msgid "Asides"
+msgstr "旁白"
+
+#: archive.php:39
+msgctxt "yearly archives date format"
+msgid "Y"
+msgstr "Y年"
+
+#: archive.php:39
+msgctxt "archive for a year"
+msgid "Posts from %s"
+msgstr "%s的文章"
+
+#: archive.php:36
+msgctxt "monthly archives date format"
+msgid "F Y"
+msgstr "Y年m月"
+
+#: archive.php:36
+msgctxt "archive for a month"
+msgid "Posts from %s"
+msgstr "%s的文章"
+
+#: archive.php:33
+msgctxt "Daily archives date format"
+msgid "F j, Y"
+msgstr "Y年n月j日"
+
+#: archive.php:33
+msgctxt "archive for a day"
+msgid "Posts from %s"
+msgstr "%s的文章"
+
+#: archive.php:29
+msgid "Author: %s"
+msgstr "作者：%s"
+
+#. translators: %s = single category title
+#: archive.php:22
+msgid "Posts in the %s category:"
+msgstr "在%s目录中的文章:"
+
+#. translators: %s = single tag title
+#: archive.php:26
+msgid "Posts with the %s tag"
+msgstr "带有%s标签的文章"
+
+#. Author URI of the plugin/theme
+msgid "http://mor10.com/"
+msgstr "http://mor10.com/"
+
+#. Author of the plugin/theme
+msgid "Morten Rand-Hendriksen"
+msgstr "Morten Rand-Hendriksen"
+
+#. Theme URI of the plugin/theme
+msgid "http://mor10.com/simone-wordpress-theme/"
+msgstr "http://mor10.com/simone-wordpress-theme/"

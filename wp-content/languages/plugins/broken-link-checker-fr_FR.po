@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Broken Link Checker - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-09-23 11:20:25+0000\n"
+"PO-Revision-Date: 2017-10-01 17:45:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1052,7 +1052,7 @@ msgstr "(Aucun)"
 
 #: includes/admin/links-page-js.php:64 includes/admin/links-page-js.php:653
 msgid "Wait..."
-msgstr "Attendez..."
+msgstr "Attendez…"
 
 #: includes/admin/db-upgrade.php:97
 msgid "Failed to delete old DB tables. Database error : %s"
@@ -1232,7 +1232,7 @@ msgstr "Aucun lien détecté."
 
 #: core/core.php:2860
 msgid "Searching your blog for links..."
-msgstr "Recherche des liens de votre blog..."
+msgstr "Recherche des liens de votre blog…"
 
 #: core/core.php:2853
 msgid "Detected %1$s in %2$s."
@@ -1240,7 +1240,7 @@ msgstr "%1$s parmi %2$s."
 
 #: core/core.php:2847
 msgid "Detected %1$s in %2$s and still searching..."
-msgstr "%1$s parmi %2$s. Recherche toujours en cours..."
+msgstr "%1$s parmi %2$s. Recherche toujours en cours…"
 
 #: core/core.php:2841
 msgctxt "for the \"Detected X unique URLs in Y links\" message"
@@ -1780,4 +1780,4 @@ msgstr "[Erreur réseau]"
 
 #: core/core.php:172 includes/admin/links-page-js.php:45
 msgid "Loading..."
-msgstr "Chargement..."
+msgstr "Chargement…"

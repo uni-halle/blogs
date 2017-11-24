@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Broken Link Checker - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-08-01 19:08:03+0000\n"
+"PO-Revision-Date: 2017-10-16 07:30:00+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1287,7 +1287,7 @@ msgstr "Das darfst du nicht!"
 
 #: core/core.php:2366
 msgid "Color-code status codes"
-msgstr "Farb-Code Status Codes"
+msgstr "Status-Codes farblich markieren"
 
 #: core/core.php:2357
 msgid "Highlight links broken for at least %s days"
@@ -1543,7 +1543,7 @@ msgstr "Link-Monitor"
 
 #: core/core.php:1063
 msgid "Links that take longer than this to load will be marked as broken."
-msgstr "Links die länger zum laden brauchen als hier eingetragen, gelten als fehlerhaft."
+msgstr "Links, die länger zum Laden brauchen als hier eingetragen, gelten als fehlerhaft."
 
 #: core/core.php:1054 core/core.php:1141 core/core.php:3463
 msgid "%s seconds"
@@ -1606,7 +1606,7 @@ msgstr "Vorschläge"
 #: core/core.php:908
 msgctxt "\"Link tweaks\" settings"
 msgid "These settings only apply to the content of posts, not comments or custom fields."
-msgstr "Diese Einstellungen gelten nur für den Inhalt der Beiträge, keine Kommentare oder benutzerdefinierte Felder."
+msgstr "Diese Einstellungen gelten nur für den Inhalt der Beiträge, nicht für Kommentare oder benutzerdefinierte Felder."
 
 #: core/core.php:902
 msgid "Stop search engines from following broken links"

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Image Widget - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-09-26 13:25:07+0000\n"
+"PO-Revision-Date: 2017-09-30 07:52:30+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Plugins - Image Widget - Stable (latest release)\n"
+
+#: image-widget.php:566
+msgid "<p class=\"dashicons-before dashicons-format-gallery\"><strong>Image Widget Plus</strong> - Add lightbox, slideshow, and random image widgets. <strong><a href=\"%s\" target=\"_blank\">Find out how!</a></strong></p>"
+msgstr "<p class=\"dashicons-before dashicons-format-gallery\"><strong>Image Widget Plus</strong> - Füge Lightbox, Slideshow und zufällige Bild Widgets hinzu. <strong><a href=\"%s\" target=\"_blank\">Finde heraus, wie!</a></strong></p>"
 
 #. Description of the plugin/theme
 msgid "A simple image widget that uses the native WordPress media manager to add image widgets to your site. <strong><a href=\"http://m.tri.be/19my\">Image Widget Plus</a> - Multiple images, slider and more.</strong>"

@@ -1,15 +1,15 @@
-# Translation of Plugins - MailPoet Newsletters - Stable (latest release) in German
-# This file is distributed under the same license as the Plugins - MailPoet Newsletters - Stable (latest release) package.
+# Translation of Plugins - MailPoet 2 - Stable (latest release) in German
+# This file is distributed under the same license as the Plugins - MailPoet 2 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-10-18 14:38:28+0000\n"
+"PO-Revision-Date: 2017-10-19 21:07:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
-"Project-Id-Version: Plugins - MailPoet Newsletters - Stable (latest release)\n"
+"Project-Id-Version: Plugins - MailPoet 2 - Stable (latest release)\n"
 
 #. Author of the plugin/theme
 msgid "MailPoet"
@@ -809,7 +809,7 @@ msgstr "Formular bearbeiten"
 
 #: views/back/config.php:1755
 msgid "User choice: %s"
-msgstr "Benutzerwahl: %s"
+msgstr "Benutzerauswahl: %s"
 
 #: views/back/config.php:1750
 msgid "No list specified"
@@ -3249,7 +3249,7 @@ msgstr "Jetzt verlängern"
 
 #: helpers/licence.php:118
 msgid "There's no license for \"%1$s\". If you're Premium, add this domain in your [link]account manager[/link]."
-msgstr "Es gibt keine Lizenz für \"%s\". Falls Du die Premium-Version hast, füge diese Domain in Deinem[link]account manager[/link] hinzu."
+msgstr "Es gibt keine Lizenz für \"%1$s\". Falls du die Premium-Version verwendest, füge diese Domain deiner [link]Kontenverwaltung[/link] hinzu."
 
 #: helpers/licence.php:115
 msgid "Your website doesn't seem to have a license! Log into your [link]account manager[/link] to add a license for this website."
@@ -3653,7 +3653,7 @@ msgstr "Verbergen!"
 
 #: helpers/back.php:357
 msgid "[link]Find out[/link] how you can improve this."
-msgstr "[link]Erfahre [/link], wie Du diese verbessern können."
+msgstr "[link]Erfahre[/link], wie du diese verbessern kannst."
 
 #: helpers/back.php:357
 msgid "Tired of waiting more than 48h to send your emails?"
@@ -3753,11 +3753,11 @@ msgstr "Fehler beim Überprüfen der Felder"
 
 #: core/base.php:1631
 msgid "[link]Dismiss[/link] this notice."
-msgstr "[link]Ablehnen[/link] dieses Hinweises."
+msgstr "Diesen Hinweis [link]verwerfen[/link]."
 
 #: core/base.php:1629
 msgid "[link]Read how to update your version of PHP.[/link]"
-msgstr "[link]Lese, wie Du Deine Version von PHP aktualisierst.[/link]"
+msgstr "[link]Lese, wie du deine PHP-Version aktualisierst.[/link]"
 
 #: core/base.php:1627
 msgid "Your version of PHP is outdated. If you don't upgrade soon, new versions of MailPoet won't work."
@@ -4268,7 +4268,7 @@ msgstr "Schliessen"
 
 #: controllers/back/campaigns.php:2644
 msgid "Upload stopped."
-msgstr "Hochladen gestoppt."
+msgstr "Upload gestoppt"
 
 #: controllers/back/campaigns.php:2643
 msgid "File canceled."
@@ -4292,7 +4292,7 @@ msgstr "Bitte versuche, diese Datei mit dem %1$sBrowser-Uploader%2$s hochzuladen
 
 #: controllers/back/campaigns.php:2638
 msgid "Upload failed."
-msgstr "Upload-Fehler."
+msgstr "Upload fehlgeschlagen"
 
 #: controllers/back/campaigns.php:2637
 msgid "HTTP error."
@@ -5078,7 +5078,7 @@ msgstr "Danke!"
 
 #: classes/WJ_Utils.php:61
 msgid "If you want to use a Gmail address, you need to send with Gmail. Check <a id=\"tip-send-with\" href=\"%s\">sending settings</a>."
-msgstr "Wenn Du eine Google Mail-Adresse verwenden möchten, musst Du mit Gmail senden. Überprüfe die <a id=\"tip-send-with\" href=\"%s\"> Sendeeinstellungen </ a>."
+msgstr "Wenn du eine GMail-Adresse verwenden möchtest, musst du mit Gmail senden. Überprüfe die <a id=\"tip-send-with\" href=\"%s\">Sendeeinstellungen</ a>."
 
 #: classes/WJ_Utils.php:60
 msgid "Use an email from your domain, like <strong>info@%s</strong> to avoid the spam folder, or even be blocked."

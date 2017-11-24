@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Akismet - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-03-09 16:12:54+0000\n"
+"PO-Revision-Date: 2017-10-28 10:55:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,122 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Plugins - Akismet - Stable (latest release)\n"
+
+#: class.akismet.php:209
+msgid "Comment discarded."
+msgstr "Kommentar verworfen."
+
+#: class.akismet-rest-api.php:132
+msgid "This site's API key is hardcoded and cannot be deleted."
+msgstr "Der API-Schlüssel ist im Code festgeschrieben und kann nicht gelöscht werden."
+
+#: class.akismet-rest-api.php:116
+msgid "The value provided is not a valid and registered API key."
+msgstr "Der eingegebene Wert ist kein gültiger und registrierter API-Schlüssel."
+
+#: class.akismet-rest-api.php:110
+msgid "This site's API key is hardcoded and cannot be changed via the API."
+msgstr "Der API-Schlüssel ist im Code festgeschrieben und kann nicht über die API verändert werden."
+
+#: class.akismet-rest-api.php:71 class.akismet-rest-api.php:80
+msgid "The time period for which to retrieve stats. Options: 60-days, 6-months, all"
+msgstr "Der Zeitraum, in dem Statistiken empfangen werden sollen. Optionen: 60 Tage, 6 Monate, alle."
+
+#: class.akismet-rest-api.php:27
+msgid "A 12-character Akismet API key. Available at akismet.com/get/"
+msgstr "Ein Akismet API-Schlüssel aus 12 Zeichen. Erhältich auf akismet.com/get/"
+
+#: class.akismet-admin.php:373
+msgid "(%1$s%)"
+msgstr "(%1$s%)"
+
+#: views/start.php:96
+msgid "Manual Configuration"
+msgstr "Manuelle Konfiguration"
+
+#. Plugin Name of the plugin/theme
+msgid "Akismet Anti-Spam"
+msgstr "Akismet Anti-Spam"
+
+#: views/stats.php:4
+msgid "Akismet Settings"
+msgstr "Akismet-Einstellungen"
+
+#: views/start.php:90
+msgid "Connect with API key"
+msgstr "Mit API-Schlüssel verbinden"
+
+#: views/start.php:84
+msgid "(What is an API key?)"
+msgstr "(Was ist ein API-Schlüssel?)"
+
+#: views/start.php:83
+msgid "Or enter an API key"
+msgstr "Oder gebe einen API-Schlüssel ein"
+
+#: views/start.php:67
+msgid "Or sign up with a different email address"
+msgstr "Oder melde dich mit einer anderen E-Mail-Adresse an"
+
+#: views/start.php:31 views/start.php:63
+msgid "You are connected as %s."
+msgstr "Du bist als %s verbunden."
+
+#: views/start.php:28 views/start.php:60
+msgid "Connect with Jetpack"
+msgstr "Mit Jetpack verbinden"
+
+#: views/start.php:21 views/start.php:35 views/start.php:54
+msgid "Connect via Jetpack"
+msgstr "Mit Jetpack verbinden"
+
+#: views/start.php:14
+msgid "Select one of the options below to get started."
+msgstr "Wähle eine der nachfolgenden Optionen aus."
+
+#: views/start.php:13
+msgid "Eliminate spam from your site"
+msgstr "Beseitige Spam von deiner Website"
+
+#: views/notice.php:99
+msgid "Akismet is now protecting your site from spam. Happy blogging!"
+msgstr "Akismet schützt deine Website ab sofort vor Spam. Fröhliches Bloggen!"
+
+#: views/notice.php:8
+msgid "Set up your Akismet account"
+msgstr "Richte dein Akismet-Konto ein"
+
+#: views/config.php:26
+msgid "Detailed Stats"
+msgstr "Detaillierte Statistiken"
+
+#: views/config.php:22
+msgid "Statistics"
+msgstr "Statistiken"
+
+#: class.akismet-admin.php:1007
+msgid "%s comment was caught as spam."
+msgid_plural "%s comments were caught as spam."
+msgstr[0] "%s Kommentar wurde als Spam erkannt."
+msgstr[1] "%s Kommentare wurden als Spam erkannt."
+
+#: class.akismet-admin.php:1004
+msgid "No comments were caught as spam."
+msgstr "Es wurden keine Kommentare als Spam erkannt."
+
+#: class.akismet-admin.php:1000
+msgid "Akismet checked %s comment."
+msgid_plural "Akismet checked %s comments."
+msgstr[0] "Akismet überprüfte %s Kommentar."
+msgstr[1] "Akismet überprüfte %s Kommentare."
+
+#: class.akismet-admin.php:997
+msgid "There were no comments to check. Akismet will only check comments in the Pending queue."
+msgstr "Es gab keine Kommentare zu überprüfen. Akismet prüft ausschließlich Kommentare, die sich in der Warteschlange befinden."
+
+#: class.akismet-admin.php:372
+msgid "Checking for Spam"
+msgstr "Auf Spam prüfen"
 
 #: class.akismet.php:451
 msgid "Comment not found."

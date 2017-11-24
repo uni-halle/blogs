@@ -2,16 +2,24 @@
 # This file is distributed under the same license as the Plugins - Simple Lightbox - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-10-04 20:25:14+0000\n"
+"PO-Revision-Date: 2017-10-13 18:40:24+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Plugins - Simple Lightbox - Development (trunk)\n"
 
-#: controller.php:362
+#: controller.php:262
+msgid "Group menu items separately"
+msgstr "Menüelemente separat gruppieren"
+
+#: controller.php:257
+msgid "Enable for Menus"
+msgstr "Für Menüs aktivieren"
+
+#: controller.php:369
 msgid "Feedback &amp; Support"
 msgstr "Feedback &amp; Support"
 
@@ -104,154 +112,154 @@ msgstr "<strong class=\"%1$s\">Hinweis:</strong> Bei diesem Update handelt es si
 msgid "The settings have been reset"
 msgstr "Die Einstellungen wurden zurückgesetzt"
 
-#: controller.php:352
+#: controller.php:359
 msgid "Get Support &amp; Provide Feedback"
 msgstr "Unterstützung &amp; Feedback"
 
-#: controller.php:348
+#: controller.php:355
 msgid "<p>Simple Lightbox thrives on your feedback!</p><p>Click the button below to <strong>get help</strong>, <strong>request a feature</strong>, or <strong>provide some feedback</strong>!</p>"
 msgstr "<p>Simple Lightbox würde sich über dein Feedback freuen!</p><p>Klicke auf den folgenden Button, um <strong>Unterstützung zu erhalten</strong>, <strong>ein Feature vorzuschlagen</strong>, oder <strong>Feedback zu geben</strong>!</p>"
 
-#: controller.php:338
+#: controller.php:345
 msgid "Settings were not reset"
 msgstr "Einstellungen wurden nicht zurückgesetzt"
 
-#: controller.php:337
+#: controller.php:344
 msgid "Settings have been reset"
 msgstr "Einstellungen wurden zurückgesetzt"
 
-#: controller.php:336
+#: controller.php:343
 msgid "Are you sure you want to reset settings?"
 msgstr "Möchtest Du die Einstellungen wirklich zurücksetzen?"
 
-#: controller.php:335
+#: controller.php:342
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: controller.php:330
+#: controller.php:337
 msgid "Feedback & Support"
 msgstr "Feedback & Support"
 
-#: controller.php:321
+#: controller.php:328
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: controller.php:320
+#: controller.php:327
 msgid "Lightbox Settings"
 msgstr "Lightbox Einstellungen"
 
-#: controller.php:319
+#: controller.php:326
 msgid "Lightbox"
 msgstr "Lightbox"
 
-#: controller.php:269
+#: controller.php:276
 msgid "Slideshow status format"
 msgstr "Diashow Status-Format"
 
-#: controller.php:268
+#: controller.php:275
 msgid "Stop Slideshow button"
 msgstr "Button zum Beenden der Diashow"
 
-#: controller.php:267
+#: controller.php:274
 msgid "Start Slideshow button"
 msgstr "Button zum Starten der Diashow"
 
-#: controller.php:266
+#: controller.php:273
 msgid "Previous Item button"
 msgstr "Button für voriges Element"
 
-#: controller.php:265
+#: controller.php:272
 msgid "Next Item button"
 msgstr "Button für nächstes Element"
 
-#: controller.php:264
+#: controller.php:271
 msgid "Close button"
 msgstr "Button zum Schließen"
 
-#: controller.php:263
+#: controller.php:270
 msgid "Loading indicator"
 msgstr "Lade-Indikator"
 
-#: controller.php:262
+#: controller.php:269
 msgid "Enable default title"
 msgstr "Standard-Titel aktivieren"
 
-#: controller.php:261
+#: controller.php:268
 msgid "Overlay Opacity (0 - 1)"
 msgstr "Overlay Deckkraft (0-1)"
 
-#: controller.php:260
+#: controller.php:267
 msgid "Loop through items"
 msgstr "In Schleife anzeigen"
 
-#: controller.php:259
+#: controller.php:266
 msgid "Slide Duration (Seconds)"
 msgstr "Zeit pro Bild (Sekunden)"
 
-#: controller.php:258
+#: controller.php:265
 msgid "Start Slideshow Automatically"
 msgstr "Diashow automatisch starten"
 
-#: controller.php:257
+#: controller.php:264
 msgid "Enable animations"
 msgstr "Animationen aktivieren"
 
-#: controller.php:256
+#: controller.php:263
 msgid "Resize lightbox to fit in window"
 msgstr "Lightbox an Fenstergröße anpassen"
 
-#: controller.php:255
+#: controller.php:261
 msgid "Group widget items separately"
 msgstr "Widget Elemente separat gruppieren"
 
-#: controller.php:254
+#: controller.php:260
 msgid "Group gallery items separately"
 msgstr "Galerie Elemente separat gruppieren"
 
-#: controller.php:253
+#: controller.php:259
 msgid "Group items by Post (e.g. on pages with multiple posts)"
 msgstr "Elemente nach Beitrag gruppieren (z.B. auf Seiten mit mehreren Beiträgen)"
 
-#: controller.php:252
+#: controller.php:258
 msgid "Group items (for displaying as a slideshow)"
 msgstr "Elemente gruppieren (als Diahow darstellen)"
 
-#: controller.php:251
+#: controller.php:256
 msgid "Enable for Widgets"
 msgstr "Für Wirdgets aktivieren"
 
-#: controller.php:250
+#: controller.php:255
 msgid "Enable on Archive Pages (tags, categories, etc.)"
 msgstr "Auf Archiv-Seiten aktivieren (Tags, Kategorien, etc.)"
 
-#: controller.php:249
+#: controller.php:254
 msgid "Enable on Pages"
 msgstr "Auf Seiten aktivieren"
 
-#: controller.php:248
+#: controller.php:253
 msgid "Enable on Single Posts"
 msgstr "Für einzelne Beiträge aktivieren"
 
-#: controller.php:247
+#: controller.php:252
 msgid "Enable on Home page"
 msgstr "Auf Startseite aktivieren"
 
-#: controller.php:246
+#: controller.php:251
 msgid "Enable Lightbox Functionality"
 msgstr "Lightbox aktivieren"
 
-#: controller.php:243
+#: controller.php:248
 msgid "Labels"
 msgstr "Formularfeld-Beschriftungen"
 
-#: controller.php:242
+#: controller.php:247
 msgid "UI"
 msgstr "UI"
 
-#: controller.php:241
+#: controller.php:246
 msgid "Grouping"
 msgstr "Gruppierung"
 
-#: controller.php:240
+#: controller.php:245
 msgid "Activation"
 msgstr "Aktivierung"
