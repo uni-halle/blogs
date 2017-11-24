@@ -12,19 +12,19 @@ top:0px;}
 
 .css_form_text {font-weight:normal;}
 
-.css_form_namefield {border:1px solid #0088cc;
+.css_form_namefield {border:1px solid #8EA251;
 width:150px;
 color:#000000;}
 
-.css_form_emailfield {border:1px solid #0088cc;
+.css_form_emailfield {border:1px solid #8EA251;
 width:150px;
 color:#000000;}
 
-.css_form_urlfield {border:1px solid #0088cc;
+.css_form_urlfield {border:1px solid #8EA251;
 width:150px;
 color:#000000;}
 
-.css_form_additional_option {border:1px solid #0088cc;
+.css_form_additional_option {border:1px solid #8EA251;
 width:150px;
 color:#000000;}
 
@@ -32,21 +32,21 @@ color:#000000;}
 padding:5px 0px 0px 0px;
 margin:0px 0px;}
 
-.css_form_messagefield {border:1px solid #0088cc;
-width:80%;
+.css_form_messagefield {border:1px solid #8EA251;
+width:80{ed3a268c232c946ffaee32608579f66efda791023c7624bab8395132d62f5a3b};
 height:150px;
 color:#000000;}
 
 .css_form_antispamtext {text-align:center;}
 
-.css_form_antispamcontent {border:1px solid #0088cc;}
+.css_form_antispamcontent {border:1px solid #8EA251;}
 
 .css_form_antispamcontent_position {text-align:center;
 padding:5px 0px;
 margin:0px 0px;}
 
 .css_form_antispam_inputfield {width:60px;
-border:1px solid #0088cc;
+border:1px solid #8EA251;
 color:#000000;}
 
 .css_form_submit {color:#000000;}
@@ -71,12 +71,12 @@ left:0;}
 
 .css_navigation_totalcount {font-size:11px;
 left:0px;
-width:95%;
+width:80{ed3a268c232c946ffaee32608579f66efda791023c7624bab8395132d62f5a3b};
 text-align:center;
 padding:0px 0px 5px 10px;}
 
 .css_navigation_overview {left:0px;
-width:95%;
+width:80{ed3a268c232c946ffaee32608579f66efda791023c7624bab8395132d62f5a3b};
 text-align:center;
 padding:0px 0px 15px 12px;}
 
@@ -92,7 +92,7 @@ text-decoration:none;
 font-weight:bold;}
 
 .css_navigation_char_position {left:0px;
-width:95%;
+width:80{ed3a268c232c946ffaee32608579f66efda791023c7624bab8395132d62f5a3b};
 padding:0px 0px 0px 10px;
 margin:0px 0px 20px 0px;
 text-align:center;}
@@ -117,25 +117,25 @@ border:0px;}
 width:15px;
 border:0px;}
 
-.css_post_separator {border: 1px solid #0088cc;
+.css_post_separator {border: 1px solid #EEEEEE;
 height:1px;
-width:35%;
+width:30{ed3a268c232c946ffaee32608579f66efda791023c7624bab8395132d62f5a3b};
 text-align:left;
 margin:0px 0px 0px 0px;}
 
 .css_post_message {font-size:11px;
 margin:5px 0px 0px 0px;}
 
-.css_form_embedded {width:95%;
-border:1px solid #0088cc;
+.css_form_embedded {width:80{ed3a268c232c946ffaee32608579f66efda791023c7624bab8395132d62f5a3b};
+border:1px solid #8EA251;
 font-size:12px;
 text-align:left;
 padding:0px 10px;
 margin:0px 0px 0px 0px;
 line-height:1.4em;}
 
-.css_post_embedded {width:95%;
-border:1px solid #0088cc;
+.css_post_embedded {width:80{ed3a268c232c946ffaee32608579f66efda791023c7624bab8395132d62f5a3b};
+border:1px solid #8EA251;
 font-size:12px;
 text-align:left;
 padding:10px 10px;
