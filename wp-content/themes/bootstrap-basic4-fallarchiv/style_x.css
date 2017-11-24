@@ -1,0 +1,386 @@
+/*
+Theme Name: Fallarchiv
+Theme URI:
+Description: Fallarchiv
+Author: 
+Author URI: 
+Template: bootstrap-basic4
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ Tags: Theme Name Child Theme
+*/
+
+body {
+/* 	font-family: 'Open Sans', sans-serif; */
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 300; 
+	font-size: 1rem;
+	background-color: #f8f8f8; 
+}
+/*
+p {
+	font-family: 'Lora', serif;
+}
+*/
+.h1, h1 {
+    font-size: 1.5rem;
+}
+.h4, h4 {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+}
+.h5, h5 {
+    font-size: 0.9rem;
+    text-transform: none;
+    letter-spacing: 0.1em;
+    font-weight: 300;
+}
+.h6, h6 {
+    font-size: 0.8rem;
+    text-transform: none;
+    font-weight: 300;
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4 {
+    font-family: inherit;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	font-weight: 300;
+}
+a {
+	color: #568923;
+}
+a:hover {
+ 	color: #008aa3; 
+	text-decoration: none;
+}
+#sidebar-left {
+	background-color: #f8f8f8; 
+	padding-left: 0;
+	padding-right: 0;
+}
+
+#sidebar-right {
+ 	background-color: #f8f8f8; 
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.site-branding {
+	background-color: #fff;
+	padding: 20px 20px 10px 20px;
+}
+.site-title {
+	margin-top: 0;
+}
+.links {
+	float: left;
+}
+.rechts {
+	float: right;
+}
+
+
+.site-title-heading {
+	text-align: center;
+	font-size: 2.5em;
+	font-weight: 300;
+	letter-spacing: 0.1em;
+}
+.site-description {
+	margin-bottom: 10px;
+	text-align: center;
+}
+.row-with-vspace {
+    margin-top: 0;
+	margin-bottom: 0;
+}
+.page-header {
+    margin-bottom: 40px;
+}
+.klein {
+	font-size: 0.8em;
+}
+
+
+
+.table {
+	display: table;
+    width: 90% ;
+}
+
+li {
+	list-style: none;
+}
+ul {
+	padding: 0;
+	margin-bottom: 0;
+}
+.table {
+	margin-bottom: 0;
+}
+
+.main-navigation{
+	border-top: 1px solid #aaa;
+	border-bottom: 1px solid #aaa;
+}
+.page-title {
+	font-size: 1em;
+}
+
+#menu-themenschwerpunkte {
+	font-size: 0.9em;
+}
+
+.sub-menu {
+	font-size: 0.9em;
+}
+.tags-links, .cat-links {
+	font-size:0.8em;
+}
+
+#fall {
+		background-color: #fff;
+		border: 1px solid #ccc;
+		padding: 20px;
+}
+#main .post, #main .page {
+		background-color: #fff;
+		border: 1px solid #ccc;
+		padding: 20px;
+		margin-bottom: 10px;
+}
+#reply-title, .comments-title {
+	font-size: 1.1em;
+}
+#main .post .entry-header .entry-meta {
+    font-size: 0.9rem;
+    line-height: 1.1em;
+    color: #999;
+}
+#main .post .entry-header .entry-meta a {
+    color: #999;
+}
+.entry-meta {
+    font-size: 0.9rem;
+    line-height: 1.1em;
+    color: #999;
+}
+.entry-meta a {
+    color: #999;
+}
+.center{
+	justify-content: center;
+	align-content: center;
+}
+blockquote {
+	margin-left: 20px;
+	font-style: italic;
+}
+.fokus {
+/* 	font-weight: 700; */
+	text-transform: uppercase;
+}
+.page-item.active .page-link {
+    background-color: #568923;
+    border-color: #568923;
+    }
+.page-link {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: #568923;
+    }
+.btn-primary {
+    background-color: #568923;
+    border-color: #568923;
+    }
+.btn-primary:hover {
+    background-color: #008aa3; 
+    border-color: #008aa3; 
+    }
+    .form-control{
+	    background-color: #fafafa;
+	}
+	
+.dropdown-item.active, .dropdown-item:active {
+	background-color:#f8f9fa;
+	color: #212529;
+}
+.navbar {
+	justify-content: center;
+}
+
+.bg-light {
+    background-color: #ffffff !important;
+}
+
+.col-md-12 {
+	padding-right: 0;
+	padding-left: 0;
+}
+.menu-item {
+	float: left;
+    list-style: none;
+    margin: 0 20px 0 10px;
+    padding: 0;
+
+}
+
+
+/*
+.searchandfilter label {
+    display: inline-block;
+    margin-bottom: 0;
+    font-size: 0.8em;
+}
+*/
+#finden {
+
+}
+/* Anpassung Bootstrap Accordion*/
+#accordion {
+	margin-bottom: 20px;
+}
+.card-block {
+	padding: 0 0 20px 12px;
+	}
+#headingZero, .es {
+	background-color: #f8f8f8;
+}
+.card {
+    border: none;
+    border-radius: 0;
+    }
+.card-header {
+    padding: .5rem .5rem 0 0;
+    background-color: #ffffff;
+    }
+.col-3 {
+	padding-right: 0
+}
+
+/* Anpassung Kommentar Link */
+.btn-light {
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+.btn-light:hover {
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+.btn-sm {
+	padding:0 0 0 10px;
+}
+/* Seite Menü Schriftgröße */
+#menu-arbeitsfelder {
+	font-size: 0.9em;
+}
+#menu-basisinfo {
+	font-size: 0.9em;
+}
+#menu-fallinfo {
+	font-size: 0.9em;
+}
+
+/* Menü Unterpunkte ein-aus-klappen (+ Javascript)*/
+
+.menu li ul {
+    display: none;
+}
+
+/*	Anpassung Top Menu 3. Ebene */
+nav:after {
+    clear: left;
+    content: "";
+}
+
+nav li {
+    float: left;
+    list-style: none;
+    margin: 0 0 0 20px;
+    padding: 0;
+    position: relative;
+}
+/* Unternavigation ausblenden */
+
+nav ul ul {
+/*     display: none; */
+    visibility:hidden;
+    opacity:0;
+    position: absolute;
+    -webkit-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;
+/*
+    font-size: 0em;
+    z-index: -100; 
+    top: 2.5em;
+    margin: 0;
+    padding: 0;
+
+*/
+}
+
+nav ul li ul {
+    width: 300px;    
+}
+
+
+/*  Unternavigation einblenden */
+
+nav ul li:hover ul {
+/*     display: block; */
+    font: inherit;
+    z-index: 3;
+    visibility:visible;
+    opacity:1;
+}
+
+nav ul ul li {
+    float: none;
+    margin-bottom: 0;
+}
+
+nav a,
+nav span {
+    background-color: #ffffff;
+    display: block;
+    margin: 0 0 0 20px;
+    padding: 0 0 6px 20px;
+    text-decoration: none;
+    /* Breite den in li enthaltenen Elementen zuweisen */
+    width: 100%;
+    -webkit-transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in;
+}
+
+nav ul ul a,
+nav ul ul span {
+/*     border-radius: 10px; */
+}
+/* aktuelle Unterseite kennzeichnen */
+
+nav a:focus,
+nav a:hover,
+nav span {
+    color: ##008aa3; 
+    background-color: #ffffff;
+}
+
+/*
+nav a:focus,
+nav a:hover {
+    margin-top: 0;
+    padding: 1em 0.4em 0.4em;
+}
+
+nav ul ul a:hover {
+    margin: 0.6em 0 0 0;
+    padding: 0.4em;
+}
+*/
+/* aktuelle Unterseite kennzeichnen */
+
+nav ul ul span {
+    background-color: #ffffff;
+    color: ##008aa3;
+}
