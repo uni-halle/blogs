@@ -3,7 +3,7 @@
  Plugin Name: The Events Calendar Shortcode
  Plugin URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode/
  Description: An addon to add shortcode functionality for <a href="http://wordpress.org/plugins/the-events-calendar/">The Events Calendar Plugin by Modern Tribe</a>.
- Version: 1.7
+ Version: 1.7.1
  Author: Event Calendar Newsletter
  Author URI: https://eventcalendarnewsletter.com/the-events-calendar-shortcode
  Contributors: brianhogg
@@ -38,7 +38,7 @@ class Events_Calendar_Shortcode
 	 *
 	 * @since 1.0.0
 	 */
-	const VERSION = '1.7';
+	const VERSION = '1.7.1';
 
 	private $admin_page = null;
 
@@ -149,7 +149,7 @@ class Events_Calendar_Shortcode
 			'past' => null,
 			'venue' => 'false',
 			'author' => null,
-			'message' => 'There are no upcoming events at this time.',
+			'message' => 'There are no upcoming %s at this time.',
 			'key' => 'End Date',
 			'order' => 'ASC',
 			'orderby' => 'startdate',
@@ -238,10 +238,17 @@ class Events_Calendar_Shortcode
 			$month_enddate = date( "Y-m-01", strtotime( "+1 month", strtotime( $month_startdate ) ) );
 
 			$atts['meta_date'] = array(
+				'relation' => 'AND',
 				array(
 					'key' => $atts['key'],
-					'value' => array($month_startdate, $month_enddate),
-					'compare' => 'BETWEEN',
+					'value' => $month_startdate,
+					'compare' => '>=',
+					'type' => 'DATETIME'
+				),
+				array(
+					'key' => $atts['key'],
+					'value' => $month_enddate,
+					'compare' => '<',
 					'type' => 'DATETIME'
 				)
 			);
@@ -264,7 +271,7 @@ class Events_Calendar_Shortcode
 			$output .= apply_filters( 'ecs_start_tag', '<ul class="ecs-event-list">', $atts );
 			$atts['contentorder'] = explode( ',', $atts['contentorder'] );
 
-			foreach( (array) $posts as $post ) {
+			foreach( (array) $posts as $post_index => $post ) {
 				setup_postdata( $post );
 				$event_output = '';
 				$category_slugs = array();
@@ -339,7 +346,7 @@ class Events_Calendar_Shortcode
 					}
 				}
 				$event_output .= apply_filters( 'ecs_event_end_tag', '</li>', $atts, $post );
-				$output .= apply_filters( 'ecs_single_event_output', $event_output, $atts, $post );
+				$output .= apply_filters( 'ecs_single_event_output', $event_output, $atts, $post, $post_index, $posts );
 			}
 			$output .= apply_filters( 'ecs_end_tag', '</ul>', $atts );
 			$output = apply_filters( 'ecs_ending_output', $output, $posts, $atts );
@@ -351,7 +358,7 @@ class Events_Calendar_Shortcode
 			}
 
 		} else { //No Events were Found
-			$output .= apply_filters( 'ecs_no_events_found_message', translate( $atts['message'], 'tribe-events-calendar' ), $atts );
+			$output .= apply_filters( 'ecs_no_events_found_message', sprintf( translate( $atts['message'], 'the-events-calendar' ), tribe_get_event_label_plural_lowercase() ), $atts );
 		} // endif
 
 		wp_reset_query();

@@ -2,8 +2,8 @@
 Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
-Tested up to: 4.8
-Stable tag: 1.7
+Tested up to: 4.9
+Stable tag: 1.7.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,7 +40,7 @@ With this plugin, just add the shortcode on a page to display a list of your eve
 <blockquote>
 <h4>Additional options and benefits in the pro version</h4>
 <ul>
-<li>design - Shows <a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode#designs?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-design&utm_content=description" target="_blank">improved design by default</a>, 'compact' for a more compact listing, 'calendar' for a monthly calendar view, or 'grouped' to group events by day</li>
+<li>design - Shows <a href="https://eventcalendarnewsletter.com/the-events-calendar-shortcode/?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-design&utm_content=description#designs" target="_blank">improved design by default</a>, 'compact' for a more compact listing, 'calendar' for a monthly calendar view, 'columns' to show events horizontally in columns, or 'grouped' to group events by day</li>
 <li>days - Specify how many days in the future, for example [ecs-list-events days="1"] for one day or [ecs-list-events days="7"] for one week</li>
 <li>date - Show only events for a specific day [ecs-list-events date='2017-04-16']</li>
 <li>tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.</li>
@@ -98,7 +98,7 @@ You can then add the `[ecs-list-events]` shortcode to the page or post you want 
 
 With [The Events Calendar Shortcode PRO](https://eventcalendarnewsletter.com/the-events-calendar-shortcode?utm_source=wordpress.org&utm_medium=link&utm_campaign=tecs-readme-faq-options&utm_content=description) you also get the following options:
 
-* design - Shows improved design by default. Set to 'standard' for the regular one, 'compact' for a more compact listing, 'calendar' for a monthly calendar view, or 'grouped' to group events by day
+* design - Shows improved design by default. Set to 'standard' for the regular one, 'compact' for a more compact listing, 'calendar' for a monthly calendar view, 'columns' to show a horizontal/columns/photo view, or 'grouped' to group events by day
 * days - Specify how many days in the future, for example `[ecs-list-events days="1"]` for one day or `[ecs-list-events days="7"]` for one week
 * tag - Filter by one or more tags.  Use commas when you want to filter by multiple tags.
 * id - Show a single event, useful for displaying details of the event on a blog post or page
@@ -154,6 +154,10 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 3. Many settings you can use in the shortcode to change what details appear in the events listing
 
 == Upgrade Notice ==
+
+= 1.7.1 =
+* Fix for month option where there's an all-day event the first day of the next month
+* Fix for "There are no events" string not being translated automatically into other languages
 
 = 1.7 =
 * Adds structured data to the shortcode output (great for SEO and people finding your events)
@@ -226,6 +230,10 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 1.7.1 =
+* Fix for month option where there's an all-day event the first day of the next month
+* Fix for "There are no events" string not being translated automatically into other languages
 
 = 1.7 =
 * Adds structured data to the shortcode output (great for SEO and people finding your events)
