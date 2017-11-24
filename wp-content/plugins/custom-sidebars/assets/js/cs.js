@@ -1,4 +1,4 @@
-/*! Custom Sidebars - v3.0.9
+/*! Custom Sidebars - v3.1.1
  * https://premium.wpmudev.org/project/custom-sidebars-pro/
  * Copyright (c) 2017; * Licensed GPLv2+ */
 /*global window:false */
@@ -635,7 +635,8 @@ window.csSidebars = null;
 				ajax.reset()
 					.data({
 						'do': 'get',
-						'sb': data.id
+						'sb': data.id,
+                        '_wpnonce': csSidebarsData._wpnonce_get
 					})
 					.ondone( set_values )
 					.load_json();

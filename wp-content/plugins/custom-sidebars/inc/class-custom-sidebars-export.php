@@ -1,5 +1,6 @@
 <?php
 
+
 add_action( 'cs_init', array( 'CustomSidebarsExport', 'instance' ) );
 
 /**
@@ -271,6 +272,22 @@ class CustomSidebarsExport extends CustomSidebars {
 	 * @since  2.0
 	 */
 	private function download_export_file() {
+		/**
+		 * check nonce
+		 */
+		if (
+			! isset( $_POST['_wpnonce'] )
+			|| ! wp_verify_nonce( $_POST['_wpnonce'], 'custom-sidebars-export' )
+		) {
+			$req = (object) array(
+				'status' => 'ERR',
+			);
+			$req = self::req_err(
+				$req,
+				__( 'You do not have permission for export sidebars.', 'custom-sidebars' )
+			);
+			self::json_response( $req );
+		}
 		$data = $this->get_export_data();
 		$filename = 'sidebars.' . date( 'Y-m-d.H-i-s' ) . '.json';
 		$option = defined( 'JSON_PRETTY_PRINT' )? JSON_PRETTY_PRINT : null;
@@ -308,6 +325,23 @@ class CustomSidebarsExport extends CustomSidebars {
 	 * @return object Updated response object.
 	 */
 	private function read_import_file( $req ) {
+		/**
+		 * check nonce
+		 */
+		if (
+			! isset( $_POST['_wpnonce'] )
+			|| ! wp_verify_nonce( $_POST['_wpnonce'], 'custom-sidebars-import' )
+		) {
+			$req = (object) array(
+				'status' => 'ERR',
+			);
+			$req = self::req_err(
+				$req,
+				__( 'You do not have permission for export sidebars.', 'custom-sidebars' )
+			);
+			self::json_response( $req );
+		}
+
 		if ( is_array( $_FILES['data'] ) ) {
 			switch ( $_FILES['data']['error'] ) {
 				case UPLOAD_ERR_OK:
@@ -376,6 +410,23 @@ class CustomSidebarsExport extends CustomSidebars {
 	 * @return object Updated response object.
 	 */
 	private function prepare_import_data( $req ) {
+		/**
+		 * check nonce
+		 */
+		if (
+			! isset( $_POST['_wpnonce'] )
+			|| ! wp_verify_nonce( $_POST['_wpnonce'], 'custom-sidebars-import' )
+		) {
+			$req = (object) array(
+				'status' => 'ERR',
+			);
+			$req = self::req_err(
+				$req,
+				__( 'You do not have permission for import sidebars.', 'custom-sidebars' )
+			);
+			self::json_response( $req );
+		}
+
 		$data = json_decode( base64_decode( @$_POST['import_data'] ), true );
 
 		if (
@@ -648,40 +699,39 @@ class CustomSidebarsExport extends CustomSidebars {
 		$def_sidebars = wp_get_sidebars_widgets();
 		$widget_list = array();
 		$orig_POST = $_POST;
-		// First replace existing sidebars.
-		foreach ( $data['widgets'] as $sb_id => $sidebar ) {
-			// --- 1. Remove all widgets from the sidebar
-
-			// @see wp-admin/includes/ajax-actions.php : function wp_ajax_save_widget()
-			// Empty the sidebar, in case it contains widgets.
-			$old_widgets = @$def_sidebars[ $sb_id ];
-			$def_sidebars[ $sb_id ] = array();
-			wp_set_sidebars_widgets( $def_sidebars );
-
-			// Also remove the widget-instances from wp-option table.
-			if ( ! is_array( $old_widgets ) ) {
-				$old_widgets = array();
-			}
-			foreach ( $old_widgets as $widget_id ) {
-				$id_base = preg_replace( '/-[0-9]+$/', '', $widget_id );
-				$_POST = array(
-					'sidebar' => $sb_id,
-					'widget-' . $id_base => array(),
-					'the-widget-id' => $widget_id,
-					'delete_widget' => '1',
-				);
-				$this->_refresh_widget_settings( $id_base );
-			}
-
-			// --- 2. Import the new widgets to the sidebar
-
-			foreach ( $sidebar as $class => $widget ) {
-				$widget_base = $widget['id_base'];
-				$widget_name = $this->_add_new_widget( $widget_base, $widget['settings'] );
-
-				if ( ! empty( $widget_name ) ) {
-					$def_sidebars[ $sb_id ][] = $widget_name;
-					$widget_count += 1;
+		/**
+		 * First replace existing sidebars.
+		 */
+		if ( isset( $data['widgets'] ) && is_array( $data['widgets'] ) ) {
+			foreach ( $data['widgets'] as $sb_id => $sidebar ) {
+				// --- 1. Remove all widgets from the sidebar
+				// @see wp-admin/includes/ajax-actions.php : function wp_ajax_save_widget()
+				// Empty the sidebar, in case it contains widgets.
+				$old_widgets = @$def_sidebars[ $sb_id ];
+				$def_sidebars[ $sb_id ] = array();
+				wp_set_sidebars_widgets( $def_sidebars );
+				// Also remove the widget-instances from wp-option table.
+				if ( ! is_array( $old_widgets ) ) {
+					$old_widgets = array();
+				}
+				foreach ( $old_widgets as $widget_id ) {
+					$id_base = preg_replace( '/-[0-9]+$/', '', $widget_id );
+					$_POST = array(
+						'sidebar' => $sb_id,
+						'widget-' . $id_base => array(),
+						'the-widget-id' => $widget_id,
+						'delete_widget' => '1',
+					);
+					$this->_refresh_widget_settings( $id_base );
+				}
+				// --- 2. Import the new widgets to the sidebar
+				foreach ( $sidebar as $class => $widget ) {
+					$widget_base = $widget['id_base'];
+					$widget_name = $this->_add_new_widget( $widget_base, $widget['settings'] );
+					if ( ! empty( $widget_name ) ) {
+						$def_sidebars[ $sb_id ][] = $widget_name;
+						$widget_count += 1;
+					}
 				}
 			}
 		}
