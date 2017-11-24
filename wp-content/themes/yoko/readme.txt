@@ -6,10 +6,16 @@ For a detailed documentation and support please visit: http://www.elmastudio.de/
 Changelog:
 ------------------------------------------------------------------------------------------------------------
 
+Version 1.2.2 - 03th October 2017
+-----------------------------------
+- Enhancement: Updated theme tags
+- Enhancement: Updated author and theme URL in stylesheet
+- Enhancement: Added additional classes to stylesheet
+- Enhancement: Updated screenshot.png
+
 Version 1.2.1 - 8th February 2015
 -----------------------------------
 - Enhancement: Added fallback for the theme_mod custom color in functions.php
-
 
 Version 1.2 - 3rd February 2015
 -----------------------------------
@@ -50,18 +56,18 @@ Version 1.0.4 - 31th May 2011
 --------------------------------
 - Added dropdown menu styles for the main navigation (see style.css line 257-285).
 - Bugfix in fullwidth page template file full-width-page.php and style.css (line 844) so the footer does not
-  collapse into the page content on fullwidth pages.
+	collapse into the page content on fullwidth pages.
 - Added an if-statement for "has_post_thumbnail" in content.php and content-sinlge.php so there won't be an
-  empty link-tag if there is no thumbnail picture attached to a post.
+	empty link-tag if there is no thumbnail picture attached to a post.
 - Added the french theme translation files into the languages folder (thanks to http://www.wptrads.fr/theme/yoko/
-  for the theme translation).
+	for the theme translation).
 - Changed the thumbnail image feature in header.php (line 62), so the post thumbnail images will be able to
-  resize in smaller browser screens, if thumbnail images are shown as header images in single posts.
+	resize in smaller browser screens, if thumbnail images are shown as header images in single posts.
 - Changed the thumbnail size for the function the_post_thumbnail in content.php and content.single.php to "thumbnail".
 - Created the new folder "includes" for the theme-options files. Also added a Colorpicker to select the custom
-  link color.
+	link color.
 - Added Shortcodes for two, three and four column text, highlighted text and info boxes (see the theme documentation
-  for details).
+	for details).
 
 
 Version 1.0.3 - 8th May 2011
@@ -75,7 +81,7 @@ Version 1.0.2 - 28th April 2011
 Version 1.0.1 - 27th April 2011
 --------------------------------
 - bug fix in header.php. Clearing div so header layout won't break if there is no header image activated in
-  the theme.
+	the theme.
 
 Version 1.0 - 26th April 2011
 --------------------------------

@@ -1,12 +1,15 @@
 /*
 Theme Name: Yoko
-Theme URI: http://www.elmastudio.de/wordpress-themes/yoko/
+Theme URI: https://www.elmastudio.de/en/themes/yoko/
+Author: Elmastudio
+Author URI: https://www.elmastudio.de/en/
 Description: Yoko is a modern three-column blog theme. A responsive layout optimizes the theme for mobile devices like tablet pcs and modern smartphones (the layout switches to a two- or one-column layout depending on the screen size the theme is viewed on). To make your blog post more flexible you can use different kinds of post formats such as gallery, image, video, aside, link or quotes. To customize the theme you can choose your own background, link color, logo and header image. Yoko also comes with a custom social links widget and shortcodes for text columns, info boxes and highlighted text.
 
-Author: Elmastudio
-Author URI: http://www.elmastudio.de/en/themes/
-Version: 1.2.1
-Tags: light, three-columns, right-sidebar, responsive-layout, custom-colors, custom-header, custom-background, custom-menu, theme-options, threaded-comments, sticky-post, translation-ready
+Version: 1.2.2
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: yoko
+Tags: three-columns, right-sidebar, custom-colors, custom-header, custom-background, custom-menu, theme-options, threaded-comments, sticky-post, translation-ready
 
 License: GNU/GPL Version 2 or later
 License URI: http://www.gnu.org/licenses/gpl.html
@@ -15,8 +18,8 @@ License URI: http://www.gnu.org/licenses/gpl.html
 /* Reset
 --------------------------------------------- */
 /* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
+	 v2.0 | 20110126
+	 License: none (public domain)
 */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -64,6 +67,17 @@ blockquote:before, blockquote:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+
+/* Text meant only for screen readers. */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	word-wrap: normal !important;
+	/* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
 
 /* General Structure and Styles
