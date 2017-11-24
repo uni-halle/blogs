@@ -3,7 +3,7 @@
 Plugin Name: 	Visual Form Builder
 Plugin URI:		https://wordpress.org/plugins/visual-form-builder/
 Description: 	Dynamically build forms using a simple interface. Forms include jQuery validation, a basic logic-based verification system, and entry tracking.
-Version: 		2.9.3
+Version: 		2.9.4
 Author:			Matthew Muro
 Author URI: 	http://matthewmuro.com
 Text Domain: 	visual-form-builder
@@ -11,7 +11,7 @@ Domain Path:	/languages/
 */
 
 // Version number to output as meta tag
-define( 'VFB_VERSION', '2.9.3' );
+define( 'VFB_VERSION', '2.9.4' );
 
 /*
 This program is free software; you can redistribute it and/or modify
@@ -203,7 +203,6 @@ class Visual_Form_Builder{
 			);
 			update_option( 'vfb_dashboard_widget_options', $widget_options );
 		}
-
 	}
 
 	/**
@@ -261,6 +260,13 @@ class Visual_Form_Builder{
 		$entries_detail = new VisualFormBuilder_Entries_Detail();
 	}
 
+
+	/**
+	 * include_forms_list function.
+	 *
+	 * @access public
+	 * @return void
+	 */
 	public function include_forms_list() {
 		global $forms_list;
 
@@ -324,7 +330,7 @@ class Visual_Form_Builder{
 
 		$forms = $wpdb->get_var( "SELECT COUNT(*) FROM {$this->form_table_name}" );
 
-		if ( !$forms ) :
+		if ( !$forms ) {
 			echo sprintf(
 				'<p>%1$s <a href="%2$s">%3$s</a></p>',
 				__( 'You currently do not have any forms.', 'visual-form-builder' ),
@@ -333,18 +339,18 @@ class Visual_Form_Builder{
 			);
 
 			return;
-		endif;
+		}
 
 		$entries = $wpdb->get_results( $wpdb->prepare( "SELECT forms.form_title, entries.entries_id, entries.form_id, entries.sender_name, entries.sender_email, entries.date_submitted FROM $this->form_table_name AS forms INNER JOIN $this->entries_table_name AS entries ON entries.form_id = forms.form_id ORDER BY entries.date_submitted DESC LIMIT %d", $total_items ) );
 
-		if ( !$entries ) :
+		if ( !$entries ) {
 			echo sprintf( '<p>%1$s</p>', __( 'You currently do not have any entries.', 'visual-form-builder' ) );
-		else :
+		}
+		else {
 
 			$content = '';
 
-			foreach ( $entries as $entry ) :
-
+			foreach ( $entries as $entry ) {
 				$content .= sprintf(
 					'<li><a href="%1$s">%4$s</a> via <a href="%2$s">%5$s</a> <span class="rss-date">%6$s</span><cite>%3$s</cite></li>',
 					esc_url( add_query_arg( array( 'action' => 'view', 'entry' => absint( $entry->entries_id ) ), admin_url( 'admin.php?page=vfb-entries' ) ) ),
@@ -354,12 +360,10 @@ class Visual_Form_Builder{
 					esc_html( $entry->form_title ),
 					date( "$date_format $time_format", strtotime( $entry->date_submitted ) )
 				);
-
-			endforeach;
+			}
 
 			echo "<div class='rss-widget'><ul>$content</ul></div>";
-
-		endif;
+		}
 	}
 
 	/**
@@ -397,7 +401,7 @@ class Visual_Form_Builder{
 	 *
 	 * @since 1.0
 	 */
-	public function help(){
+	public function help() {
 		$screen = get_current_screen();
 
 		$screen->add_help_tab( array(
@@ -484,7 +488,7 @@ class Visual_Form_Builder{
 	 *
 	 * @since 1.0
 	 */
-	public function screen_options(){
+	public function screen_options() {
 		$screen = get_current_screen();
 
 		$page_main		= $this->_admin_pages[ 'vfb' ];
@@ -525,7 +529,7 @@ class Visual_Form_Builder{
 	 *
 	 * @since 1.0
 	 */
-	public function save_screen_options( $status, $option, $value ){
+	public function save_screen_options( $status, $option, $value ) {
 
 		if ( $option == 'vfb_entries_per_page' )
 			return $value;
@@ -1195,17 +1199,22 @@ class Visual_Form_Builder{
 			$wpdb->insert( $this->field_table_name, $data );
 
 			// If a parent field, save the old ID and the new ID to update new parent ID
-			if ( in_array( $field->field_type, array( 'fieldset', 'section', 'verification' ) ) )
+			if ( in_array( $field->field_type, array( 'fieldset', 'section', 'verification' ) ) ) {
 				$parents[ $field->field_id ] = $wpdb->insert_id;
+			}
 
-			if ( $override == $field->field_id )
+			if ( $override == $field->field_id ) {
 				$wpdb->update( $this->form_table_name, array( 'form_email_from_override' => $wpdb->insert_id ), array( 'form_id' => $new_form_selected ) );
+			}
 
-			if ( $from_name == $field->field_id )
+
+			if ( $from_name == $field->field_id ) {
 				$wpdb->update( $this->form_table_name, array( 'form_email_from_name_override' => $wpdb->insert_id ), array( 'form_id' => $new_form_selected ) );
+			}
 
-			if ( $notify == $field->field_id )
+			if ( $notify == $field->field_id ) {
 				$wpdb->update( $this->form_table_name, array( 'form_notification_email' => $wpdb->insert_id ), array( 'form_id' => $new_form_selected ) );
+			}
 		}
 
 		// Loop through our parents and update them to their new IDs
@@ -1226,7 +1235,6 @@ class Visual_Form_Builder{
 	 * @return void
 	 */
 	public function save_settings() {
-
 		if ( !isset( $_POST['action'] ) || !isset( $_GET['page'] ) )
 			return;
 
@@ -1257,16 +1265,16 @@ class Visual_Form_Builder{
 
 		$data = array();
 
-		foreach ( $_POST['order'] as $k ) :
-			if ( 'root' !== $k['item_id'] && !empty( $k['item_id'] ) ) :
+		foreach ( $_POST['order'] as $k ) {
+			if ( 'root' !== $k['item_id'] && !empty( $k['item_id'] ) ) {
 				$data[] = array(
 					'field_id' 	=> $k['item_id'],
 					'parent' 	=> $k['parent_id']
 				);
-			endif;
-		endforeach;
+			}
+		}
 
-		foreach ( $data as $k => $v ) :
+		foreach ( $data as $k => $v ) {
 			// Update each field with it's new sequence and parent ID
 			$wpdb->update( $this->field_table_name, array(
 				'field_sequence'	=> $k,
@@ -1274,7 +1282,7 @@ class Visual_Form_Builder{
 				array( 'field_id' => $v['field_id'] ),
 				'%d'
 			);
-		endforeach;
+		}
 
 		die(1);
 	}

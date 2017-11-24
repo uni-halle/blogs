@@ -8,12 +8,15 @@ $referrer 		= ( isset( $_POST['_wp_http_referer'] ) ) ? esc_html( $_POST['_wp_ht
 $wp_get_referer = wp_get_referer();
 
 // If the verification is set to required, run validation check
-if ( true == $required && !empty( $secret_field ) ) :
-	if ( !empty( $honeypot ) )
+if ( true == $required && !empty( $secret_field ) ) {
+	if ( !empty( $honeypot ) ) {
 		wp_die( __( 'Security check: hidden spam field should be blank.' , 'visual-form-builder'), '', array( 'back_link' => true ) );
-	if ( !is_numeric( $_POST[ $secret_field ] ) || strlen( $_POST[ $secret_field ] ) !== 2 )
+	}
+
+	if ( !is_numeric( $_POST[ $secret_field ] ) || strlen( $_POST[ $secret_field ] ) !== 2 ) {
 		wp_die( __( 'Security check: failed secret question. Please try again!' , 'visual-form-builder'), '', array( 'back_link' => true ) );
-endif;
+	}
+}
 
 // Basic security check before moving any further
 if ( !isset( $_POST['vfb-submit'] ) )
