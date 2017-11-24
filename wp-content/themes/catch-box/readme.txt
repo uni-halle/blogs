@@ -77,6 +77,10 @@ dark, light, blue, white, black, gray, one-column, two-columns, left-sidebar, ri
 
 == Change Log ==
 
+= 4.7.3 (Released: October 11, 2017) =
+* Updated: French translation by Capronnier luc
+* HTML structure in archive page
+
 = 4.7.2 (Released: August 23, 2017) =
 * Added: goodreads, github and vk Social Icons
 * Bug Fixed: Missed string internationalization

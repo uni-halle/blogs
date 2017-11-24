@@ -2,10 +2,10 @@
 # This file is distributed under the  GNU General Public License.
 msgid ""
 msgstr ""
-"Project-Id-Version: Catch Box 4.6.2\n"
+"Project-Id-Version: Catch Box 4.7.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-05 10:54+0545\n"
-"PO-Revision-Date: 2017-09-05 10:54+0545\n"
+"POT-Creation-Date: 2017-10-11 14:14+0545\n"
+"PO-Revision-Date: 2017-10-11 14:14+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: D'CLIC, L Capronnier <contact@dclic.info, lcapronnier@yahoo."
 "Com>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../404.php:14
@@ -93,7 +93,7 @@ msgstr ""
 #, php-format
 msgctxt "comments title"
 msgid "One Reply to &ldquo;%s&rdquo;"
-msgstr ""
+msgstr "Une réponse à &ldquo;%s&rdquo;"
 
 #: ../comments.php:56 ../comments.php:76
 msgid "Comment navigation"
@@ -487,23 +487,21 @@ msgstr "Meetup"
 
 #: ../functions.php:882 ../inc/customizer/customizer.php:642
 msgid "Goodreads"
-msgstr ""
+msgstr "Goodreads"
 
 #: ../functions.php:888 ../inc/customizer/customizer.php:652
 msgid "Github"
-msgstr ""
+msgstr "Github"
 
 #: ../functions.php:894 ../inc/customizer/customizer.php:662
 msgid "VK"
-msgstr ""
+msgstr "VK"
 
 #: ../functions.php:975
 msgid "Scroll Up"
 msgstr "Défiler vers le haut"
 
 #: ../functions.php:1009
-#, fuzzy
-#| msgid "Skip to primary content"
 msgid "Skip to content"
 msgstr "Aller au contenu principal"
 
@@ -1086,24 +1084,20 @@ msgid "Archives"
 msgstr "Archives"
 
 #: ../single.php:26
-#, fuzzy
-#| msgid "Next <span class=\"meta-nav\">&rarr;</span>"
 msgid "Next <span class=\"nav-icon\">&rarr;</span>"
-msgstr "Suivant <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Suivant <span class=\"nav-icon\">&rarr;</span>"
 
 #: ../single.php:27
 msgid "Next post:"
-msgstr ""
+msgstr "Article suivant&nbsp;:"
 
 #: ../single.php:29
-#, fuzzy
-#| msgid "<span class=\"meta-nav\">&larr;</span> Previous"
 msgid "<span class=\"nav-icon\">&larr;</span> Previous"
-msgstr "<span class=\"meta-nav\">&larr;</span> Précédent"
+msgstr "<span class=\"nav-icon\">&larr;</span> Précédent"
 
 #: ../single.php:30
 msgid "Previous post:"
-msgstr ""
+msgstr "Article précédent&nbsp;:"
 
 #: ../tag.php:16
 #, php-format
