@@ -58,14 +58,16 @@
         },
 		
 		// Show hide foote link URL
-		toggleFooterLinkUrl: function(item) {
+		toggleCatSelection: function(item) {
             var cat = jQuery(item).find("option:selected").attr('value');
 			var panel = item.parentElement.parentElement.parentElement.parentElement;
             if(cat == '0') {
-                jQuery(panel).find('.categoryposts-data-panel-footer-footerLink').show();
+				jQuery(panel).find('.categoryPosts-title_link').hide();
+				jQuery(panel).find('.categoryPosts-title_link_url').show();
             }
             else {
-                jQuery(panel).find('.categoryposts-data-panel-footer-footerLink').hide();
+				jQuery(panel).find('.categoryPosts-title_link').show();
+				jQuery(panel).find('.categoryPosts-title_link_url').hide();
             }	
         },
 
@@ -151,7 +153,7 @@ jQuery(document).ready( function () {
 		jQuery('.cwp_default_thumb_remove').off('click').on('click', function () { // remove default thumb
 			cwp_namespace.removeDefaultThumbnailSelection(this);
 		});
-    // refresh panels to state before the refresh
+		// refresh panels to state before the refresh
         var id = jQuery(element).attr('id');
         if (cwp_namespace.open_panels.hasOwnProperty(id)) {
             var o = cwp_namespace.open_panels[id];
@@ -169,10 +171,9 @@ jQuery(document).ready( function () {
 	jQuery('.cwp_default_thumb_remove').off('click').on('click', function () { // remove default thumb
 		cwp_namespace.removeDefaultThumbnailSelection(this);
 	});
-	
-	jQuery('.categoryposts-data-panel-filter-cat').on('change', function () { // for widgets page
-		cwp_namespace.toggleFooterLinkUrl(this);
+
+	jQuery('.categoryposts-data-panel-filter-cat').on('change', function () { // change category filter
+		cwp_namespace.toggleCatSelection(this);
 	});
-	
 });
 
