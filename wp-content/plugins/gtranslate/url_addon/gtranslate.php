@@ -201,7 +201,7 @@ if(isset($_GET['language_edit'])) {
     $html = str_replace('/tdn-bin/', $protocol . '://' . $_SERVER['HTTP_HOST'] . '/' . $glang . '/tdn-bin/', $html);
 }
 
-if(function_exists('gzencode') and isset($return_gz) and $return_gz)
+if(function_exists('gzencode') and isset($return_gz) and $return_gz and zlib_get_coding_type() == false)
     echo gzencode($html);
 else
     echo $html;

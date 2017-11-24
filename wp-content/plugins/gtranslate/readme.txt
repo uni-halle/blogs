@@ -1,10 +1,10 @@
 === Translate Wordpress with GTranslate ===
 Contributors: edo888
-Author: Edvard Ananyan
+Author: Translate AI Multilingual Solutions
 Tags: translate wordpress, multilingual, translate, translation, language, bilingual, localization, translation proxy, i18n, l10n, localisation, multilanguage, google translate
 Requires at least: 2.8.1
 Tested up to: 4.8
-Stable tag: 2.8.28
+Stable tag: 2.8.32
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
@@ -13,7 +13,7 @@ Translate WordPress with Google Translate multilanguage plugin to make your webs
 
 == Description ==
 
-GTranslate plugin uses Google Translate automatic translation service to **translate wordpress** site with Google power and make it **multilingual**. With 103 available languages your site will be available to more than 99% of internet users. Our paid versions are **fully SEO compatible** which will **increase your international traffic and sales**. GTranslate is a budget multilingual WordPress solution which combines automatic and human translations to save money and is easy to implement.
+GTranslate plugin uses Google Translate automatic translation service to **translate wordpress** site with Google power and make it **multilingual**. With 103 available languages your site will be available to more than 99% of internet users. Our paid versions are **fully SEO compatible** which will **increase your international traffic and sales**. This translate plugin is a budget multilingual WordPress solution which combines automatic and human translations to save money and is easy to implement.
 
 GTranslate is a leading website translation services provider since 2008 and powers more than 500.000 multilingual websites worldwide.
 
@@ -35,13 +35,16 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 * Themes and plugins translation
 * Right to left language support
 * Google language translator widget
+* Auto-switch language based on browser defined language
 * Available styles Dropdown, Flags, Flags with dropdown, Nice dropdown with flags, Flags with language names, Flags with language codes, Language names, Language codes, Globe, Popup
 * Floating language selector
 * Language bar with flags in menu
 * WooCommerce shop translation
 * Multilanguage
 * Multilingual language names in native alphabet
+* Multilingual interface
 * Alternative flags for Quebec, Canada, USA, Brazil, Mexico, Argentina, Colombia
+* Lazy loading for language flags to boost performance
 
 **Paid Features**
 
@@ -217,6 +220,21 @@ You need to go to the language you want to edit, for instance, French: http://do
 7. Settings page
 
 == Changelog ==
+
+= 2.8.32 =
+* New feature: auto switch language based on browser language settigns
+* Minor fixes: Greek name in native alphabet, Flag size option for Globe Widget look, vertical position in pixels
+
+= 2.8.31 =
+* Removed email and name from Intercom chat
+
+= 2.8.30 =
+* Fixed issue with double gzip compression when zlib.output_compression is on
+
+= 2.8.29 =
+* Lazy image loading added for popup and nice dropdown look
+* Fixed languages list hiding issue on narrow screens
+* Fixed popup widget look issue for mobile devices
 
 = 2.8.28 =
 * Changed static content paths to be relative to scheme
