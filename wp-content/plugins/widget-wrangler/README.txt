@@ -1,13 +1,16 @@
 === Widget Wrangler ===
 Contributors: daggerhart
 Tags: widget, admin, widgets, administration, sidebar, manage
-Requires at least: 3
-Tested up to: 4.5
+Requires at least: 4
+Requires PHP: 5.3
+Tested up to: 4.9
 Stable tag: trunk
 
 A plugin for managing the display of widgets on a page by page basis. Using widgets as a post type.
 
 == Description ==
+
+**As of version 2.3, Widget Wrangler requires PHP 5.3 or higher**
 
 Widget Wrangler is a plugin for WordPress that gives administrators a clean interface for managing widgets on a page by page basis.  On each page, you can control what widgets appear where.
 
@@ -18,19 +21,15 @@ Widget Wrangler provides the following features:
 * Custom Widget templates
 * Control Widget visibility on any page (or post type)
 * Control Widget visibility globally (Display Logic)
-* Alter WP Sidebar HTML
+* Alter WordPress Sidebar HTML
 * Shortcodes for Widgets
 * Compatible with almost any existing WordPress Widget
 * Hide Widget Titles
 * Automatic Theme Setup
 
-= Screencasts =
+= Widget Wrangler Setup Screencast =
 
 http://www.youtube.com/watch?v=oW2NgtwUuHE
-
-* [Getting Started Screencast](http://youtu.be/oW2NgtwUuHE) *same as above
-* [Basic Examples w/ Advanced Parsing Screencast](http://screencast.com/t/NjI2NDYzY)
-* [Templating & PHP](http://screencast.com/t/YmI2Mjg1NT)
 
 
 == Installation ==
@@ -98,6 +97,32 @@ When you Copy a WordPress widget, it creates a new widget post in the Widget Wra
 1. Widget Wrangler Corral Widget
 
 == Changelog ==
+
+= 2.3.5 =
+
+* Bug fix: Older installations may have their settings data serialized multiple times.
+
+= 2.3.4 =
+
+* Bug fix: Changing the Preset on an individual page did not save correctly.
+* Dev experience: Storing a copy of the page widgets within the global $widget_wrangler object for backwards compatibility.
+
+= 2.3.3 =
+
+* PHP 5.3 support fix: Removing instance of short array syntax.
+
+= 2.3.2 =
+
+* Admin screen bug fix
+
+= 2.3.1 =
+
+* Improved UI
+* Significant rewrite of codebase
+* New documentation admin page
+* Fix: Widget preview using ajax to prevent widget form errors
+* Bug fix: Warning on activation
+
 
 = 2.2.4 =
 
@@ -318,4 +343,4 @@ Initial Release
 
 == Upgrade Notice ==
 
-2.2.4 Custom Presets, Manage widgets on taxonomies. Bug fix select box in sortable widgets. Bug fix hidden widgets in wrangler.
+2.3.5 Bug fix with settings data when upgrading from older versions. Bug fix when changing Preset on an individual page/post. NOTICE: Widget Wrangler now requires PHP 5.3+

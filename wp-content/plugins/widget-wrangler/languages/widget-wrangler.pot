@@ -1,277 +1,859 @@
-# Copyright (C) 2015 Widget Wrangler
+# Copyright (C) 2017 Widget Wrangler
 # This file is distributed under the same license as the Widget Wrangler package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Widget Wrangler 2.2.2\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/widget-wrangler\n"
-"POT-Creation-Date: 2015-06-03 11:30:30+00:00\n"
+"Project-Id-Version: Widget Wrangler 2.3.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/widget-wrangler\n"
+"POT-Creation-Date: 2017-09-18 01:07:48+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: admin/admin-clone.php:84
-msgid "Cloned from"
+#. #-#-#-#-#  widgetwrangler.pot (Widget Wrangler 2.3.0)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: admin/Admin.php:100 admin/TaxonomyTermUi.php:73 admin/TaxonomyUi.php:112
+#: widget-wrangler.php:166
+msgid "Widget Wrangler"
 msgstr ""
 
-#: admin/admin-clone.php:119
-msgid "Copy a Widget"
+#: admin/AdminPage.php:49
+msgid "Page Title"
 msgstr ""
 
-#: admin/admin-clone.php:120
-msgid ""
-"Here you can copy (instantiate) an existing WordPress widget into Widget "
-"Wrangler."
+#: admin/AdminPage.php:237
+msgid "%s"
 msgstr ""
 
-#: admin/admin-clone.php:121
+#: admin/AdminPage.php:332
+msgid "Something went wrong, please refresh the page and try again."
+msgstr ""
+
+#: admin/AdminPageClones.php:15
+msgid "Copy WordPress Widgets to Widget Wrangler"
+msgstr ""
+
+#: admin/AdminPageClones.php:22
+msgid "Copy WP Widgets"
+msgstr ""
+
+#: admin/AdminPageClones.php:37
+msgid "Here you can copy an existing WordPress widget into Widget Wrangler."
+msgstr ""
+
+#: admin/AdminPageClones.php:38
 msgid ""
 "Click on the title of the widget you would like to copy, fill in the "
 "widget's form according to your needs and click 'Create'. This will create "
 "an instance of the chosen widget in Widget Wrangler."
 msgstr ""
 
-#: admin/admin-corrals.php:138
+#: admin/AdminPageClones.php:103
+msgid "Create"
+msgstr ""
+
+#: admin/AdminPageClones.php:156
+msgid "Cloned from"
+msgstr ""
+
+#: admin/AdminPageClones.php:179
+msgid "New copy of the following widget created: "
+msgstr ""
+
+#: admin/AdminPageCorrals.php:14
 msgid "Widget Corrals"
 msgstr ""
 
-#: admin/admin-corrals.php:140
-msgid ""
-"A Corral is an arbitrary group of widgets. WordPress and previous Widget "
-"Wrangler versions call them 'sidebars', but they are ultimately not limited "
-"by that terminology."
+#: admin/AdminPageCorrals.php:21 admin/AdminPageDocumentation.php:98
+#: admin/AdminPageDocumentation.php:280
+msgid "Corrals"
 msgstr ""
 
-#: admin/admin-corrals.php:143
+#: admin/AdminPageCorrals.php:36
+msgid ""
+"A Corral is container for widgets. They are separate from sidebars to "
+"provide greater flexibility. For example you could have one or many Corrals "
+"within a theme sidebar."
+msgstr ""
+
+#: admin/AdminPageCorrals.php:37
 msgid "In general, you probably want at least one corral per theme sidebar."
 msgstr ""
 
-#: admin/admin-corrals.php:149
+#: admin/AdminPageCorrals.php:65
+msgid "Create Corral"
+msgstr ""
+
+#: admin/AdminPageCorrals.php:70
+msgid "Corral Name"
+msgstr ""
+
+#: admin/AdminPageCorrals.php:86
+msgid "Error: No corral name given."
+msgstr ""
+
+#: admin/AdminPageCorrals.php:91 admin/AdminPageCorrals.php:211
+msgid "New corral created: "
+msgstr ""
+
+#: admin/AdminPageCorrals.php:122
+msgid "Save order"
+msgstr ""
+
+#: admin/AdminPageCorrals.php:147
+msgid "Corrals have been reordered."
+msgstr ""
+
+#: admin/AdminPageCorrals.php:165 admin/AdminPagePresets.php:174
+msgid "Update"
+msgstr ""
+
+#: admin/AdminPageCorrals.php:175 admin/AdminPagePresets.php:187
+msgid "Name"
+msgstr ""
+
+#: admin/AdminPageCorrals.php:181
+msgid "Slug"
+msgstr ""
+
+#: admin/AdminPageCorrals.php:198
+msgid "Previous corral name not found."
+msgstr ""
+
+#: admin/AdminPageCorrals.php:202
+msgid "No new corral name found."
+msgstr ""
+
+#: admin/AdminPageCorrals.php:206
+msgid "No corral slug found."
+msgstr ""
+
+#: admin/AdminPageCorrals.php:229 admin/AdminPagePresets.php:253
+msgid "Delete"
+msgstr ""
+
+#: admin/AdminPageCorrals.php:232
+msgid "Are you sure you want to delete this corral?"
+msgstr ""
+
+#: admin/AdminPageCorrals.php:248
+msgid "Corral data missing."
+msgstr ""
+
+#: admin/AdminPageCorrals.php:253
+msgid "Corral deleted: "
+msgstr ""
+
+#: admin/AdminPageCorrals.php:267
+msgid "Create New Corral"
+msgstr ""
+
+#: admin/AdminPageCorrals.php:275
+msgid "Sort Corrals"
+msgstr ""
+
+#: admin/AdminPageCorrals.php:285
 msgid "Edit existing Corrals"
 msgstr ""
 
-#: admin/admin-corrals.php:152
+#: admin/AdminPageCorrals.php:287
 msgid ""
 "Warning! If you change a corral's slug, widgets currently assigned to that "
 "corral will need to be reassigned."
 msgstr ""
 
-#: admin/admin-corrals.php:159
-msgid "No Corrals defined"
+#: admin/AdminPageDocumentation.php:11
+msgid "Widget Wrangler Documentation"
 msgstr ""
 
-#: admin/admin-corrals.php:178
-msgid "Update"
+#: admin/AdminPageDocumentation.php:18
+msgid "Documentation"
 msgstr ""
 
-#: admin/admin-corrals.php:181
-msgid "Name"
+#: admin/AdminPageDocumentation.php:78
+msgid "Table of Contents"
 msgstr ""
 
-#: admin/admin-corrals.php:185
-msgid "Slug"
+#: admin/AdminPageDocumentation.php:83
+msgid "Getting Started"
 msgstr ""
 
-#: admin/admin-corrals.php:194 admin/admin-presets.php:408
-msgid "Delete"
+#: admin/AdminPageDocumentation.php:84
+msgid "General overview of Widget Wrangler."
 msgstr ""
 
-#: admin/admin-corrals.php:194
-msgid "Are you sure you want to delete this corral?"
+#: admin/AdminPageDocumentation.php:88
+msgid "Setup"
 msgstr ""
 
-#: admin/admin-corrals.php:218
-msgid "Create New Corral"
+#: admin/AdminPageDocumentation.php:89
+msgid "First steps for using Widget Wrangler."
 msgstr ""
 
-#: admin/admin-corrals.php:222
-msgid "Corral Name"
+#: admin/AdminPageDocumentation.php:93 admin/AdminPagePresets.php:351
+#: admin/TaxonomyTermUi.php:78 admin/TaxonomyUi.php:133
+msgid "Widgets"
 msgstr ""
 
-#: admin/admin-corrals.php:224
-msgid "Create Corral"
+#: admin/AdminPageDocumentation.php:94
+msgid "The new widget post_type."
 msgstr ""
 
-#: admin/admin-corrals.php:230
-msgid "Sort Corrals"
+#: admin/AdminPageDocumentation.php:99
+msgid "Arbitrary groups of widgets."
 msgstr ""
 
-#: admin/admin-corrals.php:236
-msgid "Save Order"
+#: admin/AdminPageDocumentation.php:103 admin/AdminPagePresets.php:15
+#: admin/AdminPagePresets.php:22 admin/AdminPagePresets.php:317
+msgid "Presets"
 msgstr ""
 
-#: admin/admin-presets.php:249
-msgid "Widget Preset"
+#: admin/AdminPageDocumentation.php:104
+msgid "Reusable set of widgets in corrals."
 msgstr ""
 
-#: admin/admin-presets.php:252
-msgid "- No Preset -"
-msgstr ""
-
-#: admin/admin-presets.php:267
-msgid ""
-"Select the Widget Preset you would like to control widgets on this page. To "
-"allow this page to control its own widgets, select '- No Preset -'. If you "
-"select a preset and then rearrange widgets, this page will convert itself to "
-"'- No Preset -' on save."
-msgstr ""
-
-#: admin/admin-presets.php:309
-msgid "Edit Preset"
-msgstr ""
-
-#: admin/admin-presets.php:353
-msgid "Create New Preset"
-msgstr ""
-
-#: admin/admin-presets.php:376
-msgid "Name:"
-msgstr ""
-
-#: admin/admin-presets.php:380
-msgid "Type:"
-msgstr ""
-
-#: admin/admin-presets.php:398 admin/sortable.php:39
-msgid "Widget changes will not be updated until you save."
-msgstr ""
-
-#: admin/admin-settings.php:153
-msgid "General"
-msgstr ""
-
-#: admin/admin-settings.php:154
-msgid "Setup how Widget Wrangler works with other WordPress content."
-msgstr ""
-
-#: admin/admin-settings.php:158
-msgid "Post Type"
-msgstr ""
-
-#: admin/admin-settings.php:159
-msgid ""
-"Post type settings control the widget post_type registered by this plugin."
-msgstr ""
-
-#: admin/admin-settings.php:163
-msgid "Tools"
-msgstr ""
-
-#: admin/admin-settings.php:164
-msgid "Actions that will modify Widget Wrangler data."
-msgstr ""
-
-#: admin/admin-settings.php:168
-msgid "Pro License"
-msgstr ""
-
-#: admin/admin-settings.php:169
-msgid ""
-"Widget Wrangler Pro provides new features for site developers that can "
-"drastically increase efficiency in widget management for complex sites or "
-"needs."
-msgstr ""
-
-#: admin/admin-settings.php:180
-msgid "Post Types"
-msgstr ""
-
-#: admin/admin-settings.php:181
-msgid "Select which post types can control widgets individually."
-msgstr ""
-
-#: admin/admin-settings.php:187
-msgid "Taxonomies"
-msgstr ""
-
-#: admin/admin-settings.php:188
-msgid "Select which taxonomies can control widgets individually."
-msgstr ""
-
-#: admin/admin-settings.php:195
+#: admin/AdminPageDocumentation.php:108 admin/AdminPageSettings.php:82
 msgid "Theme Compatibility"
 msgstr ""
 
-#: admin/admin-settings.php:201
-msgid "tinyMCE Shortcode Button"
+#: admin/AdminPageDocumentation.php:109
+msgid "Attempt to render widgets using the Sidebar HTML."
 msgstr ""
 
-#: admin/admin-settings.php:208
-msgid "HTML Override Elements"
+#: admin/AdminPageDocumentation.php:113
+msgid "Widget Templates"
 msgstr ""
 
-#: admin/admin-settings.php:209
+#: admin/AdminPageDocumentation.php:118
+msgid "Altered Sidebars"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:145
+msgid "Overview"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:146
 msgid ""
-"Allowed elements for override a widget's html output.  Place one element per "
-"line."
+"It's important to understand that Widget Wrangler creates a new Post Type in "
+"WordPress of the post_type \"widget\". Since WordPress already has a concept "
+"called \"widgets\" this can be confusing. To counter this confusion, the "
+"widgets that come with WordPress should always be called \"WordPress widgets"
+"\", while Widget Wrangler widgets will just be called \"widgets\"."
 msgstr ""
 
-#: admin/admin-settings.php:217
+#: admin/AdminPageDocumentation.php:148
+msgid "Terminology"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:150 includes/wp-widget-ww-widget.php:67
+#: includes/wp-widget-ww-widget.php:82 widget-wrangler.php:168
+msgid "Widget"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:152
+msgid "A Post in WordPress of the post_type <code>widget</code>"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:154 includes/wp-widget-ww-corral.php:83
+msgid "Corral"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:156
+msgid "A group of Widgets."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:158
+msgid "WordPress Widget"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:160
 msgid ""
-"This version of Widget Wrangler has been upgraded from 1.x. If you have "
-"created templates with the previous version, you should leave this checked."
+"A class widget in the WordPress system that you can manage by visiting to "
+"following location on the administrator dashboard: Appearance > Widgets"
 msgstr ""
 
-#: admin/admin-settings.php:219
+#: admin/AdminPageDocumentation.php:162
+msgid "Sidebar"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:164
 msgid ""
-"This version of Widget Wrangler was not upgraded from 1.x, you should not "
-"need this setting."
+"A group of WordPress widgets. Sidebars are defined by the WordPress theme."
 msgstr ""
 
-#: admin/admin-settings.php:223
-msgid "Legacy Template Suggestions"
+#: admin/AdminPageDocumentation.php:166 admin/SortableWidgetsUi.php:122
+msgid "Preset"
 msgstr ""
 
-#: admin/admin-settings.php:232
-msgid "Capabilities"
-msgstr ""
-
-#: admin/admin-settings.php:239
-msgid "Exclude from search"
-msgstr ""
-
-#: admin/admin-settings.php:260 admin/admin-settings.php:559
-msgid "Setup Theme"
-msgstr ""
-
-#: admin/admin-settings.php:263
+#: admin/AdminPageDocumentation.php:168
 msgid ""
-"If you click this button, Widget Wrangler will create a Corral for each "
-"WordPress sidebar you have, and place a Widget Wrangler Corral Widget into "
-"each WordPress Sidebar."
+"A saved set of corrals with widgets in them. Presets are reusable throughout "
+"the site."
 msgstr ""
 
-#: admin/admin-settings.php:268
-msgid "Mass Reset"
+#: admin/AdminPageDocumentation.php:172
+msgid "Introduction Video"
 msgstr ""
 
-#: admin/admin-settings.php:271
+#: admin/AdminPageDocumentation.php:174
+msgid "This video is over 4 years old, but the steps are the same."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:185
+msgid "Theme Setup"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:186
 msgid ""
-"If you click this button, all pages will lose their assigned widget settings "
-"and will fall back on the default preset."
+"The easiest and most common way to setup Widget Wrangler is to create a "
+"Corral within each of your theme Sidebars. Since this setup is so common, "
+"there is a button on the plugin Settings page that will do this for you "
+"automatically."
 msgstr ""
 
-#: admin/admin-settings.php:276
-msgid "Reset settings to default"
+#: admin/AdminPageDocumentation.php:187
+msgid "Single click setup"
 msgstr ""
 
-#: admin/admin-settings.php:279
+#: admin/AdminPageDocumentation.php:189
 msgid ""
-"If you click this button, Widget Wrangler settings will be reset to their "
-"default state.  This will not affect Corral or Widget data."
+"To this manually, you would perform the following things for each of your "
+"theme Sidebars:"
 msgstr ""
 
-#: admin/admin-settings.php:286
-msgid "License Key"
+#: admin/AdminPageDocumentation.php:192
+msgid ""
+"Visit <a href=\"edit.php?post_type=widget&page=corrals\">Widget Wrangler > "
+"Corrals</a>, and create a new Corral."
 msgstr ""
 
-#: admin/admin-settings.php:289
-msgid "Enter your license key below."
+#: admin/AdminPageDocumentation.php:193
+msgid "Create a new Corral."
 msgstr ""
 
-#: admin/admin-settings.php:482
+#: admin/AdminPageDocumentation.php:194
+msgid "Visit Appearance > Widgets"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:195
+msgid ""
+"Add a new <span class=\"ww-highlight\">Widget Wrangler - Corral</span> "
+"widget to one of your theme Sidebars. In the settings for that WordPress "
+"Widget, select the Corral you just created."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:198
+msgid ""
+"For example, if your theme has two Sidebars named \"Blog Sidebar\" and "
+"\"Footer 1\", you would do the following things:"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:201
+msgid "Create a new Corral named \"Right Sidebar\"."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:202
+msgid "Create a new Corral named \"Footer 1\"."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:203
+msgid ""
+"On Appearance > Widgets, add a <span class=\"ww-highlight\">Widget Wrangler "
+"- Corral</span> WordPress Widget to the \"Blog Sidebar\" and in its settings "
+"choose the Corral named \"Right Sidebar\""
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:204
+msgid ""
+"On Appearance > Widgets, add a <span class=\"ww-highlight\">Widget Wrangler "
+"- Corral</span> WordPress Widget to the \"Footer 1\" and in its settings "
+"choose the Corral named \"Footer 1\""
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:207
+msgid "The results should look like this"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:208
+msgid "Corral WordPress Widgets in Sidebars"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:217
+msgid "Post Type - Widget"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:218
+msgid ""
+"Widget Wrangler widgets are just like Posts and Pages in WordPress. This "
+"means your widgets have a WYSIWYG editor, file attachments, any other "
+"feature a Post might have."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:219
+msgid "Actually, there are two types of Widget Wrangler widgets:"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:221 admin/AdminPageDocumentation.php:303
+msgid "Standard"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:223
+msgid ""
+"Standard widgets are normal content. They have titles, the WYSIWYG editor, "
+"featured image, file attachements, and any other feature a Post might have."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:224
+msgid ""
+"To create a Standard widget, visit <a href=\"post-new.php?post_type=widget"
+"\">Widget Wrangler > Add New Widget</a> on the administrator dashboard."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:226
+msgid "Clone"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:228
+msgid ""
+"A Clone widget is an instance of a WordPress Widget that is being controlled "
+"by Widget Wrangler. It has the same settings the original WordPress Widget "
+"has."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:229
+msgid ""
+"To create a Clone widget, visit <a href=\"edit.php?"
+"post_type=widget&page=clone\">Widget Wrangler > Copy WP Widget</a> on the "
+"administrator dashboard. Then configure the widget you would like to copy "
+"and save it."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:232
+msgid "Widget Features"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:233
+msgid ""
+"Both standard and clone widgets have to following features and settings."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:235 admin/WidgetPostType.php:117
+msgid "Shortcodes"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:237
+msgid ""
+"Any widget can be placed on a Post or Page by using its shortcode. The "
+"Shortcodes can be used with either the widget ID or slug. Example: "
+"<code>[ww_widget slug=\"my-widget-slug\"]</code>"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:239
+msgid "Hide widget title"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:241
+msgid "Disable the widget title when it is shown to users."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:243
+msgid "Hide widget from Wrangler"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:245
+msgid ""
+"Disable the widget from appearing on the form when placing widgets. This is "
+"useful for widgets that are only meant to be used as shortcodes."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:247 admin/WidgetPostType.php:99
+#: admin/WidgetPostType.php:399
+msgid "Display Logic"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:249
+msgid ""
+"You can use custom PHP code to determine if a widget should be shown on a "
+"page."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:251
+msgid "Custom Template Suggestion"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:253
+msgid ""
+"Provide the name of a widget template that will be used to render the widget."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:256
+msgid "Standard widgets have the following additional settings."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:258
+msgid "Automatic Paragraphs"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:260
+msgid ""
+"Automatically add paragraph HTML to the widget content when it is rendered. "
+"This makes it act more like Posts and Pages."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:262 admin/WidgetPostType.php:92
+#: admin/WidgetPostType.php:115
+msgid "Advanced Parsing"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:264
+msgid "Replace the content of the widget with custom PHP code."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:266
+msgid "Template Advanced Parsing"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:268
+msgid ""
+"Allow the custom PHP from the Advanced parsing area to be rendered within "
+"the normal widget template. This requires that the PHP in the Advanced "
+"Parsing area to return an array with \"title\" and \"content\" keys."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:271
+msgid ""
+"More help is available for each feature within meta boxes on the Widget edit "
+"page."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:281
+msgid ""
+"A Corral is a container for widgets. On their own, they don't do anything "
+"special."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:282
+msgid ""
+"When editing a WordPress Page you can chose which widgets are assigned each "
+"corral. Then when the corral is shown, the widgets assigned to the corral "
+"for the Page being viewed will be displayed."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:283
+msgid ""
+"The most common way to use Corrals is to place one within each WordPress "
+"Sidebar, but there is nothing stopping you from using more Corrals within a "
+"Sidebar if you want or need to."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:293
+msgid "Presets - Saved Set of Widgets"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:294
+msgid ""
+"A Preset is a saved configuration of widgets within Corrals that are "
+"reusable anywhere in Widget Wrangler. You can create new Presets by visiting "
+"<a href=\"edit.php?post_type=widget&page=presets\">Widget Wrangler > "
+"Presets</a> and clicking the <span class=\"ww-highlight\">Create New Preset</"
+"span> button."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:295
+msgid "There are two types of Presets:"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:297
+msgid "Core"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:299
+msgid ""
+"Core presets come pre-installed with Widget Wrangler and cannot be deleted."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:300
+msgid ""
+"The <span class=\"ww-highlight\">Default</span> preset is used to determine "
+"the widgets to be shown by default on any given page. When widgets are not "
+"configured specifically for a page, the Default preset is shown."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:301
+msgid ""
+"The <span class=\"ww-highlight\">Posts Page</span> preset is used to "
+"determine the widgets to be shown on the WordPress Blog page."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:305
+msgid ""
+"Standard Presets can be created and deleted as desired by the site "
+"administrator."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:308
+msgid ""
+"When you change the widgets withing a Preset, all Pages using that Preset "
+"will get updated."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:309
+msgid ""
+"Generally speaking, you can manage all your site widgets with Presets, and "
+"not need to change widgets on every Page. This is the ideal way to use "
+"Widget Wrangler as it is much easier to maintain and there is less room for "
+"error."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:318
+msgid "Setting - Theme Compatibility"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:319
+msgid "Enabled by default on new installations."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:320
+msgid ""
+"With theme compatibility enabled Widget Wrangler will attempt to wrap "
+"widgets within the appropriate Sidebar HTML. This occurs when a widget "
+"appears within a WordPress Sidebar through use of the <span class=\"ww-"
+"highlight\">Widget Wrangler - Corral</span> and <span class=\"ww-highlight"
+"\">Widget Wrangler - Widget</span> WordPress Widgets."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:321
+msgid ""
+"Sidebar HTML is defined when the sidebar is registered by the theme. If you "
+"are a theme developer, you will recognize these as: <code>$before_widget</"
+"code>, <code>$before_title</code>, <code>$after_title</code>, <code>"
+"$after_widget</code>."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:322
+msgid ""
+"If you are a theme developer and want to control widget output with "
+"templates in your theme, this setting is not necessary. You will still need "
+"to register Sidebars in your theme, but the Side HTML will not ever be used."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:331
+msgid "Alter Sidebar HTML"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:332
+msgid ""
+"This utility allows you to override the HTML for the theme WordPress "
+"Sidebar. It uses the same variables as the Sidebar uses when being "
+"registered: <code>$before_widget</code>, <code>$before_title</code>, <code>"
+"$after_title</code>, <code>$after_widget</code> "
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:333
+msgid ""
+"This feature is only available when the Theme Compatibility setting is "
+"enabled. You can access it by visting <a href=\"edit.php?"
+"post_type=widget&page=sidebars\">Widget Wrangler > Sidebars</a>"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:339 admin/WidgetPostType.php:100
+msgid "Templates"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:340
+msgid ""
+"Widget Wrangler uses a custom templating system that allows for highly "
+"granular control over the HTML for widgets. When a widget is being displayed "
+"Widget Wrangler searches for the appropriate template to use in order of "
+"priority."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:341
+msgid ""
+"It first looks within the current active theme folder for template files "
+"matching any suggestions for the widget, and if no suggestion is found, it "
+"will default to the widget.php template provided by the plugin."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:342
+msgid ""
+"The default <span class=\"ww-highlight\">template suggestions</span> are as "
+"follows:"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:353
+msgid ""
+"The first template found for a widget is the one used to render the widget. "
+"This means that more specific the template name will take precedence over "
+"the more general ones."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:354
+msgid "Creating Templates"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:355
+msgid "You can create templates in your theme by following these steps:"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:357
+msgid ""
+"Locate the default template within the plugin files. Generally this can be "
+"located at <code>wp-content/plugins/widget-wrangler/templates/widget-1x.php</"
+"code> relative to your WordPress installation."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:359
+msgid ""
+"Copy the contents of that template to a new file within your theme. The new "
+"file should follow the naming convention seen in the above list of template "
+"suggestions."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:360
+msgid ""
+"For example, if you have a corral named \"Footer\" and you give the new "
+"template the name of <code>widget--corral_footer.php</code>, that template "
+"will be used to render any widget within the \"Footer\" Corral."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:363
+msgid ""
+"You can also provide each widget with an arbitrary <span class=\"ww-highlight"
+"\">custom template suggestion</span>. For example, say you want to make it "
+"very easy to remove all wrapping HTML from a widget:"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:366
+msgid ""
+"Create a new widget template named <code>widget-nowrapper.php</code> with "
+"the contents of:"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:368
+msgid ""
+"Then edit the widget you would like to use that template for and type in "
+"<code>nowrapper</code> as the <span class=\"ww-highlight\">Custom Template "
+"Suggestion</span> setting."
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:371
+msgid "Starter Widget Template"
+msgstr ""
+
+#: admin/AdminPageDocumentation.php:372
+msgid ""
+"This template is a great place to get started when creating a new widget "
+"template. This is an exact copy of the template found at <code>wp-content/"
+"plugins/widget-wrangler/templates/widget-1x.php</code>."
+msgstr ""
+
+#: admin/AdminPagePresets.php:37
+msgid ""
+"Presets are pre-configured sets of Widgets assigned to Corrals. This makes a "
+"collection of widgets reusable on many pages without having to edit them "
+"individually."
+msgstr ""
+
+#: admin/AdminPagePresets.php:38
+msgid ""
+"If you edit a preset here, the updates will apply to all pages using the "
+"preset."
+msgstr ""
+
+#: admin/AdminPagePresets.php:70 admin/AdminPagePresets.php:210
+#: admin/AdminPagePresets.php:278
+msgid "Error: No preset id."
+msgstr ""
+
+#: admin/AdminPagePresets.php:74 admin/AdminPagePresets.php:214
+#: admin/AdminPagePresets.php:282
+msgid "Error: No preset variety."
+msgstr ""
+
+#: admin/AdminPagePresets.php:97
+msgid "Preset updated."
+msgstr ""
+
+#: admin/AdminPagePresets.php:120
+msgid "Variety"
+msgstr ""
+
+#: admin/AdminPagePresets.php:125
+msgid "Create New Preset"
+msgstr ""
+
+#: admin/AdminPagePresets.php:139 admin/AdminPagePresets.php:218
+msgid "Error: Missing data."
+msgstr ""
+
+#: admin/AdminPagePresets.php:153
+msgid "New Preset Created."
+msgstr ""
+
+#: admin/AdminPagePresets.php:194 admin/WidgetPostType.php:113
+msgid "Type"
+msgstr ""
+
+#: admin/AdminPagePresets.php:232
+msgid "Updated preset name to "
+msgstr ""
+
+#: admin/AdminPagePresets.php:235
+msgid "Error: Preset not found"
+msgstr ""
+
+#: admin/AdminPagePresets.php:256
+msgid "Are you sure you want to delete this preset?"
+msgstr ""
+
+#: admin/AdminPagePresets.php:286
+msgid "Error: You cannot delete a plugin provided preset."
+msgstr ""
+
+#: admin/AdminPagePresets.php:295
+msgid "Preset deleted."
+msgstr ""
+
+#: admin/AdminPagePresets.php:329
+msgid "Create New"
+msgstr ""
+
+#: admin/AdminPagePresets.php:358
+msgid "Save Preset"
+msgstr ""
+
+#: admin/AdminPageSettings.php:14 admin/AdminPageSettings.php:21
+msgid "Settings"
+msgstr ""
+
+#: admin/AdminPageSettings.php:36
+msgid "Site settings for Widget Wrangler"
+msgstr ""
+
+#: admin/AdminPageSettings.php:63
+msgid "Save settings"
+msgstr ""
+
+#: admin/AdminPageSettings.php:68
+msgid "Post Types"
+msgstr ""
+
+#: admin/AdminPageSettings.php:69
+msgid "Select which post types can control widgets individually."
+msgstr ""
+
+#: admin/AdminPageSettings.php:75
+msgid "Taxonomies"
+msgstr ""
+
+#: admin/AdminPageSettings.php:76
+msgid "Select which taxonomies can control widgets individually."
+msgstr ""
+
+#: admin/AdminPageSettings.php:83
 msgid ""
 "If checked, widgets will include WordPress sidebar settings for the "
 "registered sidebar.  ie, $before_widget, $before_title, $after_title, "
@@ -279,549 +861,648 @@ msgid ""
 "administration page for managing the current theme's registered sidebar html."
 msgstr ""
 
-#: admin/admin-settings.php:491
-msgid "Enable tinyMCE shortcode button"
+#: admin/AdminPageSettings.php:89
+msgid "Exclude from search"
 msgstr ""
 
-#: admin/admin-settings.php:500
-msgid "Enable template suggestions from Widget Wrangler 1.x"
-msgstr ""
-
-#: admin/admin-settings.php:514
-msgid "Simple"
-msgstr ""
-
-#: admin/admin-settings.php:514
-msgid ""
-"Widgets can be Created and Edited by anyone who can edit Posts.  Anyone who "
-"can edit a Page can change the Widgets displayed on that Page."
-msgstr ""
-
-#: admin/admin-settings.php:521
-msgid "Advanced"
-msgstr ""
-
-#: admin/admin-settings.php:521
-msgid "Change the capability_type for this post_type."
-msgstr ""
-
-#: admin/admin-settings.php:523
-msgid ""
-"This is primarily for incorporating third party permission systems. A simple "
-"use of this setting would be to change the Capability Type to 'page'.  This "
-"would make it so that only users who can create and edit pages may create "
-"and edit widgets."
-msgstr ""
-
-#: admin/admin-settings.php:526
-msgid "Capability Type"
-msgstr ""
-
-#: admin/admin-settings.php:535
+#: admin/AdminPageSettings.php:90
 msgid "If checked, widgets will be excluded from search results."
 msgstr ""
 
-#: admin/admin-settings.php:544
-msgid "Rewrite slug"
+#: admin/AdminPageSettings.php:95
+msgid "Widget post type capability"
 msgstr ""
 
-#: admin/admin-settings.php:549
-msgid "Query var"
+#: admin/AdminPageSettings.php:96
+msgid "This is primarily for incorporating third party permission systems."
 msgstr ""
 
-#: admin/admin-settings.php:559
+#: admin/AdminPageSettings.php:97
+msgid "Leave blank to use default post capabilities."
+msgstr ""
+
+#: admin/AdminPageSettings.php:103
+msgid "Legacy Template Suggestions"
+msgstr ""
+
+#: admin/AdminPageSettings.php:104
 msgid ""
-"Are you sure you want to reset your WordPress sidebars and widget wrangler "
+"This version of Widget Wrangler has been upgraded from 1.x. If you have "
+"created templates with the previous version, you should leave this checked."
+msgstr ""
+
+#: admin/AdminPageSettings.php:110
+msgid "Deprecated: Enable overriding widget HTML from the Post UI."
+msgstr ""
+
+#: admin/AdminPageSettings.php:111
+msgid "This is a deprecated feature that is only here for legacy systems."
+msgstr ""
+
+#: admin/AdminPageSettings.php:117
+msgid "Deprecated: HTML Override Elements"
+msgstr ""
+
+#: admin/AdminPageSettings.php:118
+msgid ""
+"Allowed elements for override a widget's html output.  Place one element per "
+"line."
+msgstr ""
+
+#: admin/AdminPageSettings.php:134 admin/AdminPageSettings.php:136
+msgid "Setup Theme"
+msgstr ""
+
+#: admin/AdminPageSettings.php:135
+msgid ""
+"If you click this button, Widget Wrangler will create a Corral for each "
+"WordPress sidebar you have, and place a Widget Wrangler Corral Widget into "
+"each WordPress Sidebar."
+msgstr ""
+
+#: admin/AdminPageSettings.php:139
+msgid ""
+"Are you sure you want to replace the WordPress widgets in your sidebars with "
 "corrals?"
 msgstr ""
 
-#: admin/admin-settings.php:567
+#: admin/AdminPageSettings.php:150
+msgid "Mass Reset"
+msgstr ""
+
+#: admin/AdminPageSettings.php:151
+msgid ""
+"If you click this button, all pages will lose their assigned widget settings "
+"and will fall back on the default preset."
+msgstr ""
+
+#: admin/AdminPageSettings.php:152
 msgid "Reset All Widgets to Default"
 msgstr ""
 
-#: admin/admin-settings.php:567
-msgid "Are you sure you want to Reset widget settings on all pages?"
+#: admin/AdminPageSettings.php:155
+msgid ""
+"Are you sure you want to set all post and page widget settings back to the "
+"default preset?"
 msgstr ""
 
-#: admin/admin-settings.php:575
+#: admin/AdminPageSettings.php:166 admin/AdminPageSettings.php:168
 msgid "Reset Settings"
 msgstr ""
 
-#: admin/admin-settings.php:575
-msgid "Are you sure you want to Reset Settings?"
-msgstr ""
-
-#: admin/admin-settings.php:585
-msgid "active"
-msgstr ""
-
-#: admin/admin-settings.php:585
-msgid "inactive"
-msgstr ""
-
-#: admin/admin-settings.php:587
-msgid "Activate License"
-msgstr ""
-
-#: admin/admin-settings.php:590
-msgid "Deactivate License"
-msgstr ""
-
-#: admin/admin-settings.php:604
-msgid "About Widget Wrangler Pro"
-msgstr ""
-
-#: admin/admin-settings.php:606
+#: admin/AdminPageSettings.php:167
 msgid ""
-"Widget Wrangler Pro offers new features for a whole new level of control "
-"over your widgets.  Manage the widgets on archive (category) pages, create "
-"as many presets as you want, and many more!"
+"If you click this button, Widget Wrangler settings will be reset to their "
+"default state.  This will not affect Corral or Widget data."
 msgstr ""
 
-#: admin/admin-settings.php:607
-msgid "View Pro Features"
+#: admin/AdminPageSettings.php:171
+msgid "Are you sure you want to reset the plugin settings back to default?"
 msgstr ""
 
-#: admin/admin-settings.php:629
-msgid "Widget Wrangler %s Settings"
+#: admin/AdminPageSettings.php:179
+msgid "General"
 msgstr ""
 
-#: admin/admin-settings.php:645
-msgid "Widget Wrangler %s"
+#: admin/AdminPageSettings.php:180
+msgid "Setup how Widget Wrangler works with other WordPress content."
 msgstr ""
 
-#: admin/admin-sidebars.php:88
-msgid "Alter Sidebar"
+#: admin/AdminPageSettings.php:188
+msgid "Tools"
 msgstr ""
 
-#: admin/admin-sidebars.php:92
-msgid "Before Widget"
+#: admin/AdminPageSettings.php:189
+msgid "Actions that will modify Widget Wrangler data."
 msgstr ""
 
-#: admin/admin-sidebars.php:96
-msgid "Before Title"
+#: admin/AdminPageSettings.php:210
+msgid "Widget data on all posts have been deleted."
 msgstr ""
 
-#: admin/admin-sidebars.php:100
-msgid "After Title"
+#: admin/AdminPageSettings.php:222
+msgid "Settings have been reset to default."
 msgstr ""
 
-#: admin/admin-sidebars.php:104
-msgid "After Widget"
+#: admin/AdminPageSettings.php:245
+msgid "Settings saved."
 msgstr ""
 
-#: admin/admin-sidebars.php:109
-msgid "View Original"
+#: admin/AdminPageSettings.php:294
+msgid "New corrals created: "
 msgstr ""
 
-#: admin/admin-sidebars.php:132
-msgid "Wordpress Sidebars"
+#: admin/AdminPageSettings.php:297
+msgid ""
+"No new corrals created. Appropriate Corrals have been assigned to their "
+"sidebars."
 msgstr ""
 
-#: admin/admin-sidebars.php:133
-msgid "Alter existing sidebars registered by the current theme."
+#: admin/AdminPageSettings.php:336
+msgid "edit"
 msgstr ""
 
-#: admin/admin-sidebars.php:139
+#: admin/AdminPageSidebars.php:15
+msgid "Theme Sidebars"
+msgstr ""
+
+#: admin/AdminPageSidebars.php:22
+msgid "Sidebars"
+msgstr ""
+
+#: admin/AdminPageSidebars.php:37
+msgid "Modify the sidebar output registered by the current theme."
+msgstr ""
+
+#: admin/AdminPageSidebars.php:68
+msgid "Error: Form data missing or malformed."
+msgstr ""
+
+#: admin/AdminPageSidebars.php:81
+msgid "Sidebars modified."
+msgstr ""
+
+#: admin/AdminPageSidebars.php:102
 msgid "Update Sidebars"
 msgstr ""
 
-#. #-#-#-#-#  widget-wrangler.pot (Widget Wrangler 2.2.2)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#: admin/admin-taxonomies.php:125 admin/admin-taxonomies.php:203
-#: common/wp-posttype-widget.php:58
-msgid "Widget Wrangler"
+#: admin/AdminPageSidebars.php:126
+msgid "Alter Sidebar"
 msgstr ""
 
-#: admin/admin-taxonomies.php:126
+#: admin/AdminPageSidebars.php:133
+msgid "Before Widget"
+msgstr ""
+
+#: admin/AdminPageSidebars.php:141
+msgid "Before Title"
+msgstr ""
+
+#: admin/AdminPageSidebars.php:149
+msgid "After Title"
+msgstr ""
+
+#: admin/AdminPageSidebars.php:157
+msgid "After Widget"
+msgstr ""
+
+#: admin/AdminPageSidebars.php:167
+msgid "View Original"
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:83
+msgid "Widget changes will not be updated until you save."
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:103
+msgid "No preset selected. This page is wrangling widgets on its own."
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:108
+msgid "This page is currently using the Preset: "
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:123
+msgid ""
+"Select the Preset you would like to control widgets on this page, or select "
+"\"- No Preset -\" to allow this page to control its own widgets."
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:124
+msgid "- No Preset -"
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:130
+msgid "Add Widget"
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:132
+msgid "- Select a Widget -"
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:137
+msgid "- Select a Corral -"
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:140
+msgid "Add"
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:141
+msgid ""
+"Select a widget you would like to add, and the corral where you would like "
+"to add it then click the \"Add\" button."
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:215
+msgid "draft"
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:220
+msgid "display logic"
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:225
+msgid "(no title) - Slug: %1$s - ID: %2$s"
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:265
+msgid "No Widgets in this corral."
+msgstr ""
+
+#: admin/SortableWidgetsUi.php:297
+msgid "Remove"
+msgstr ""
+
+#: admin/TaxonomyTermUi.php:74
+msgid "for this term only"
+msgstr ""
+
+#: admin/TaxonomyUi.php:113
 msgid ""
 "Here you can override the default widgets for all terms in this taxonomy."
 msgstr ""
 
-#: admin/admin-taxonomies.php:132
+#: admin/TaxonomyUi.php:121
+msgid "Set taxonomy default widgets"
+msgstr ""
+
+#: admin/TaxonomyUi.php:122
+msgid ""
+"Enable these widgets as the default widgets for terms in this taxonomy. If "
+"not checked, these widgets will never be displayed."
+msgstr ""
+
+#: admin/TaxonomyUi.php:127
 msgid "Save Widgets"
 msgstr ""
 
-#: admin/admin-taxonomies.php:144
-msgid "Enable these widgets as the default widgets for terms in this taxonomy."
+#: admin/TaxonomyUi.php:149
+msgid "Missing taxonomy data."
 msgstr ""
 
-#: admin/admin-taxonomies.php:203
-msgid "for this term only"
+#: admin/TaxonomyUi.php:158
+msgid "Success."
 msgstr ""
 
-#: admin/sortable.php:109
-msgid "draft"
-msgstr ""
-
-#: admin/sortable.php:114
-msgid "display logic"
-msgstr ""
-
-#: admin/sortable.php:119
-msgid "(no title) - Slug: %1$s - ID: %2$s"
-msgstr ""
-
-#: admin/sortable.php:159
-msgid "No Widgets in this corral."
-msgstr ""
-
-#: admin/sortable.php:191
-msgid "Remove"
-msgstr ""
-
-#: admin/sortable.php:214
-msgid "Add Widget"
-msgstr ""
-
-#: admin/sortable.php:217
-msgid "Select a Widget"
-msgstr ""
-
-#: admin/sortable.php:223
-msgid "Select a Corral"
-msgstr ""
-
-#: admin/sortable.php:228
-msgid "Add Widget to Corral"
-msgstr ""
-
-#: admin/sortable.php:230
-msgid ""
-"Select a widget you would like to add, and the corral where you would like "
-"to add it. Click the button Add Widget to Corral."
-msgstr ""
-
-#: admin/widget-wrangler-admin.php:191 admin/widget-wrangler-admin.php:192
-msgid "%s"
-msgstr ""
-
-#: common/wp-posttype-widget.php:59
-msgid "All Widgets"
-msgstr ""
-
-#: common/wp-posttype-widget.php:60 common/wp-widget-ww-widget.php:58
-#: common/wp-widget-ww-widget.php:73
-msgid "Widget"
-msgstr ""
-
-#: common/wp-posttype-widget.php:61 common/wp-posttype-widget.php:62
-msgid "Add New Widget"
-msgstr ""
-
-#: common/wp-posttype-widget.php:63
-msgid "Edit Widget"
-msgstr ""
-
-#: common/wp-posttype-widget.php:64
-msgid "New Widget"
-msgstr ""
-
-#: common/wp-posttype-widget.php:65
-msgid "View Widget"
-msgstr ""
-
-#: common/wp-posttype-widget.php:66
-msgid "Search Widgets"
-msgstr ""
-
-#: common/wp-posttype-widget.php:67
-msgid "No widgets found"
-msgstr ""
-
-#: common/wp-posttype-widget.php:68
-msgid "No widgets found in Trash"
-msgstr ""
-
-#: common/wp-posttype-widget.php:139
+#: admin/WidgetPostType.php:88
 msgid "Widget Form"
 msgstr ""
 
-#: common/wp-posttype-widget.php:140 common/wp-posttype-widget.php:145
-#: common/wp-posttype-widget.php:603
-msgid "Display Logic"
-msgstr ""
-
-#: common/wp-posttype-widget.php:144
+#: admin/WidgetPostType.php:91
 msgid "Options"
 msgstr ""
 
-#: common/wp-posttype-widget.php:147
-msgid "Advanced Help"
+#: admin/WidgetPostType.php:96
+msgid "Override HTML Output"
 msgstr ""
 
-#: common/wp-posttype-widget.php:148
+#: admin/WidgetPostType.php:101
+msgid "Details"
+msgstr ""
+
+#: admin/WidgetPostType.php:102
 msgid "Widget Preview"
 msgstr ""
 
-#: common/wp-posttype-widget.php:158
+#: admin/WidgetPostType.php:112
 msgid "Widget Title"
 msgstr ""
 
-#: common/wp-posttype-widget.php:159
-msgid "Type"
-msgstr ""
-
-#: common/wp-posttype-widget.php:160
+#: admin/WidgetPostType.php:114
 msgid "Description"
 msgstr ""
 
-#: common/wp-posttype-widget.php:161
-msgid "Rewrite Output"
+#: admin/WidgetPostType.php:116
+msgid "Status"
 msgstr ""
 
-#: common/wp-posttype-widget.php:162
-msgid "Shortcode"
+#: admin/WidgetPostType.php:275
+msgid "Post ID"
 msgstr ""
 
-#: common/wp-posttype-widget.php:298
-msgid "Hide the Widget's title on display"
+#: admin/WidgetPostType.php:276
+msgid "Shortcode by ID"
 msgstr ""
 
-#: common/wp-posttype-widget.php:303 common/wp-posttype-widget.php:448
-msgid "Hide the Widget from the drag and drop Wrangler."
+#: admin/WidgetPostType.php:277
+msgid "Shortcode by slug"
 msgstr ""
 
-#: common/wp-posttype-widget.php:304 common/wp-posttype-widget.php:449
+#: admin/WidgetPostType.php:296
+msgid "Automatically add paragraphs to the widget content."
+msgstr ""
+
+#: admin/WidgetPostType.php:302
+msgid "Hide this widget title on output."
+msgstr ""
+
+#: admin/WidgetPostType.php:308
+msgid "Hide this widget from the drag and drop Wrangler."
+msgstr ""
+
+#: admin/WidgetPostType.php:309 admin/WidgetPostType.php:441
 msgid ""
 "This is useful for widgets that are only meant to be used as shortcodes."
 msgstr ""
 
-#: common/wp-posttype-widget.php:361
-msgid "Preview Corral Context"
+#: admin/WidgetPostType.php:327
+msgid "Enable advanced parsing"
 msgstr ""
 
-#: common/wp-posttype-widget.php:362
-msgid ""
-"This setting only affects the preview on this page, and helps provide "
-"accurate template suggestions."
+#: admin/WidgetPostType.php:333
+msgid "Template the advanced parsing area"
 msgstr ""
 
-#: common/wp-posttype-widget.php:364
-msgid "No Corral"
+#: admin/WidgetPostType.php:349 admin/WidgetPostType.php:397
+msgid "Help & Hints"
 msgstr ""
 
-#: common/wp-posttype-widget.php:375
-msgid ""
-"This preview does not include your theme's CSS stylesheet, nor corral or "
-"sidebar styling."
-msgstr ""
-
-#: common/wp-posttype-widget.php:382
-msgid "Your widget may contain some broken or malformed html."
-msgstr ""
-
-#: common/wp-posttype-widget.php:382
-msgid ""
-"Wordpress balanced the tags in this preview in an attempt to prevent the "
-"page from breaking, but it will not do so on normal widget display."
-msgstr ""
-
-#: common/wp-posttype-widget.php:386
-msgid "View Output HTML"
-msgstr ""
-
-#: common/wp-posttype-widget.php:439
-msgid "Post ID"
-msgstr ""
-
-#: common/wp-posttype-widget.php:441
-msgid "Automatically add Paragraphs to this Widget's Content"
-msgstr ""
-
-#: common/wp-posttype-widget.php:444
-msgid "Hide this widget's title on output."
-msgstr ""
-
-#: common/wp-posttype-widget.php:454
-msgid "Advanced Parsing"
-msgstr ""
-
-#: common/wp-posttype-widget.php:457
-msgid "Enable Advanced Parsing"
-msgstr ""
-
-#: common/wp-posttype-widget.php:461
-msgid "Template the Advanced Parsing Area"
-msgstr ""
-
-#: common/wp-posttype-widget.php:461
-msgid "Do not use with Cloned Widgets.  Details below"
-msgstr ""
-
-#: common/wp-posttype-widget.php:472
-msgid "Override HTML Output"
-msgstr ""
-
-#: common/wp-posttype-widget.php:473
-msgid ""
-"Alter the html output of a templated widget.  Doesn't apply to advanced "
-"parsing unless templating is selected."
-msgstr ""
-
-#: common/wp-posttype-widget.php:475
-msgid ""
-"Override the HTML output of this widget with the values below.  This will "
-"take precendence over theme compatibility."
-msgstr ""
-
-#: common/wp-posttype-widget.php:479
-msgid "Wrapper Element"
-msgstr ""
-
-#: common/wp-posttype-widget.php:483
-msgid "Wrapper ID"
-msgstr ""
-
-#: common/wp-posttype-widget.php:487
-msgid "Wrapper Classes"
-msgstr ""
-
-#: common/wp-posttype-widget.php:488 common/wp-posttype-widget.php:497
-#: common/wp-posttype-widget.php:506
-msgid "Separate multiple classes with spaces."
-msgstr ""
-
-#: common/wp-posttype-widget.php:492
-msgid "Title Element"
-msgstr ""
-
-#: common/wp-posttype-widget.php:496
-msgid "Title Classes"
-msgstr ""
-
-#: common/wp-posttype-widget.php:501
-msgid "Content Element"
-msgstr ""
-
-#: common/wp-posttype-widget.php:505
-msgid "Content Classes"
-msgstr ""
-
-#: common/wp-posttype-widget.php:530
-msgid "Enable Display Logic"
-msgstr ""
-
-#: common/wp-posttype-widget.php:533
-msgid "Site-wide raw PHP logic for displaying this widget"
-msgstr ""
-
-#: common/wp-posttype-widget.php:587
+#: admin/WidgetPostType.php:351
 msgid "In the Advanced Parsing area you can"
 msgstr ""
 
-#: common/wp-posttype-widget.php:589
-msgid "Use PHP tags ( &lt;?php and ?&gt; are required )"
+#: admin/WidgetPostType.php:353
+msgid "Use of PHP tags ( %s and %s are required )"
 msgstr ""
 
-#: common/wp-posttype-widget.php:590
-msgid "Use {{title}} or $widget->post_title to insert the widget's title"
+#: admin/WidgetPostType.php:354
+msgid "Use %s or %s to insert the widget's title"
 msgstr ""
 
-#: common/wp-posttype-widget.php:591
-msgid "Use {{content}} or $widget->post_content to insert the widget's content"
+#: admin/WidgetPostType.php:355
+msgid "Use %s or %s to insert the widget's content"
 msgstr ""
 
-#: common/wp-posttype-widget.php:592
+#: admin/WidgetPostType.php:356
 msgid ""
-"Access the $widget object for more widget data (see provided template for "
+"Access the %s object for more widget data (see provided template for "
 "examples)"
 msgstr ""
 
-#: common/wp-posttype-widget.php:593
+#: admin/WidgetPostType.php:357
 msgid ""
-"Access the $post object for data concerning the page being displayed (see "
+"Access the %s object for data concerning the page being displayed (see "
 "provided template for examples)"
 msgstr ""
 
-#: common/wp-posttype-widget.php:595
+#: admin/WidgetPostType.php:359
 msgid "Templating Advanced Parsed Widgets"
 msgstr ""
 
-#: common/wp-posttype-widget.php:597
+#: admin/WidgetPostType.php:361
 msgid ""
 "To template an advanced parsed widget you must return an associative array "
 "with a title and content string."
 msgstr ""
 
-#: common/wp-posttype-widget.php:598
+#: admin/WidgetPostType.php:362
 msgid "Example"
 msgstr ""
 
-#: common/wp-posttype-widget.php:605
-msgid "Do NOT use &lt;?php and ?&gt; tags.  This field is for raw PHP."
+#: admin/WidgetPostType.php:381
+msgid "Enable display logic"
 msgstr ""
 
-#: common/wp-posttype-widget.php:606
+#: admin/WidgetPostType.php:387
+msgid "Site-wide raw PHP logic for displaying this widget"
+msgstr ""
+
+#: admin/WidgetPostType.php:401
+msgid "Do NOT use %s and %s tags.  This field is for raw PHP."
+msgstr ""
+
+#: admin/WidgetPostType.php:402
 msgid "Evaluate boolean true or false with php. Defaults to TRUE."
 msgstr ""
 
-#: common/wp-posttype-widget.php:607
+#: admin/WidgetPostType.php:403
 msgid ""
 "For simple logic, execute your conditions directly.  (For example, use "
-"Wordpress Conditional Tags such as 'is_search()' or 'is_404()' )."
+"WordPress Conditional Tags such as %s or %s)."
 msgstr ""
 
-#: common/wp-posttype-widget.php:608
+#: admin/WidgetPostType.php:404
 msgid "For complex logic, return TRUE or FALSE as needed."
 msgstr ""
 
-#: common/wp-posttype-widget.php:614
+#: admin/WidgetPostType.php:405
+msgid "More Conditional Tags"
+msgstr ""
+
+#: admin/WidgetPostType.php:434
+msgid "Hide the widget title on display"
+msgstr ""
+
+#: admin/WidgetPostType.php:440
+msgid "Hide the widget from the drag and drop Wrangler."
+msgstr ""
+
+#: admin/WidgetPostType.php:454
+msgid "Placeholder"
+msgstr ""
+
+#: admin/WidgetPostType.php:461
+msgid "Instance details"
+msgstr ""
+
+#: admin/WidgetPostType.php:475
+msgid ""
+"Alter the html output of a templated widget.  Doesn't apply to advanced "
+"parsing unless templating is selected."
+msgstr ""
+
+#: admin/WidgetPostType.php:479
+msgid "- None -"
+msgstr ""
+
+#: admin/WidgetPostType.php:490
+msgid "Override HTML"
+msgstr ""
+
+#: admin/WidgetPostType.php:491
+msgid ""
+"The values below will determine HTML output. This will override theme "
+"compatibility for this widget."
+msgstr ""
+
+#: admin/WidgetPostType.php:497
+msgid "Wrapper Element"
+msgstr ""
+
+#: admin/WidgetPostType.php:504
+msgid "Wrapper ID"
+msgstr ""
+
+#: admin/WidgetPostType.php:510
+msgid "Wrapper Classes"
+msgstr ""
+
+#: admin/WidgetPostType.php:511 admin/WidgetPostType.php:525
+#: admin/WidgetPostType.php:539
+msgid "Separate multiple classes with spaces."
+msgstr ""
+
+#: admin/WidgetPostType.php:517
+msgid "Title Element"
+msgstr ""
+
+#: admin/WidgetPostType.php:524
+msgid "Title Classes"
+msgstr ""
+
+#: admin/WidgetPostType.php:531
+msgid "Content Element"
+msgstr ""
+
+#: admin/WidgetPostType.php:538
+msgid "Content Classes"
+msgstr ""
+
+#: admin/WidgetPostType.php:615
 msgid "Custom template suggestion"
 msgstr ""
 
-#: common/wp-posttype-widget.php:616
+#: admin/WidgetPostType.php:616
 msgid "Define a custom template name for this widget."
 msgstr ""
 
-#: common/wp-posttype-widget.php:618
+#: admin/WidgetPostType.php:617
+msgid "The resulting filename will be: "
+msgstr ""
+
+#: admin/WidgetPostType.php:623
+msgid "Help & Suggestions"
+msgstr ""
+
+#: admin/WidgetPostType.php:626
 msgid "Lowercase alphanumeric characters, dashes and underscores are allowed."
 msgstr ""
 
-#: common/wp-posttype-widget.php:619
+#: admin/WidgetPostType.php:627
 msgid "Uppercase characters will be converted to lowercase."
 msgstr ""
 
-#: common/wp-posttype-widget.php:620
+#: admin/WidgetPostType.php:628
 msgid "If defined, the custom suggestion will take precedence."
 msgstr ""
 
-#: common/wp-posttype-widget.php:624
+#: admin/WidgetPostType.php:631
 msgid "Template Suggestions"
 msgstr ""
 
-#: common/wp-posttype-widget.php:625
+#: admin/WidgetPostType.php:632
 msgid ""
 "Corral specific templates will not be detected here unless you set the "
 "'Preview Corral Context' in the preview pane."
 msgstr ""
 
-#: common/wp-posttype-widget.php:630
+#: admin/WidgetPostType.php:637
 msgid "Found template location"
 msgstr ""
 
-#: common/wp-widget-ww-corral.php:17
-msgid "A single Widget Wrangler Corral (Sidebar)"
+#: admin/WidgetPostType.php:642
+msgid "Starter Template"
 msgstr ""
 
-#: common/wp-widget-ww-corral.php:23
+#: admin/WidgetPostType.php:643
+msgid ""
+"You can copy this template to your theme with one of the suggested file "
+"names above. The file name chosen determines what widgets your new template "
+"will apply to."
+msgstr ""
+
+#: admin/WidgetPostType.php:644
+msgid ""
+"For example, if your file name includes the corral slug, then the template "
+"will only apply to widgets in that corral. If your file name includes the "
+"widget ID or slug, then the template will only apply to that widget."
+msgstr ""
+
+#: admin/WidgetPostType.php:671
+msgid "Preview Corral Context"
+msgstr ""
+
+#: admin/WidgetPostType.php:672
+msgid ""
+"This setting only affects the preview on this page, and helps provide "
+"accurate template suggestions."
+msgstr ""
+
+#: admin/WidgetPostType.php:673
+msgid ""
+"This preview does not include your theme stylesheet, nor corral or sidebar "
+"styling."
+msgstr ""
+
+#: admin/WidgetPostType.php:695
+msgid "Widget not found"
+msgstr ""
+
+#: admin/WidgetPostType.php:740
+msgid "Your widget may contain some broken or malformed html."
+msgstr ""
+
+#: admin/WidgetPostType.php:741
+msgid ""
+"Wordpress balanced the tags in this preview in an attempt to prevent the "
+"page from breaking, but it will not do so on normal widget display."
+msgstr ""
+
+#: admin/WidgetPostType.php:746
+msgid "View Output HTML"
+msgstr ""
+
+#: includes/wp-widget-ww-corral.php:18
+msgid "A single Widget Wrangler Corral"
+msgstr ""
+
+#: includes/wp-widget-ww-corral.php:24
 msgid "Widget Wrangler - Corral"
 msgstr ""
 
-#: common/wp-widget-ww-corral.php:56
+#: includes/wp-widget-ww-corral.php:73
 msgid "Widget Wrangler Corral"
 msgstr ""
 
-#: common/wp-widget-ww-corral.php:65
-msgid "Corral"
-msgstr ""
-
-#: common/wp-widget-ww-widget.php:17
+#: includes/wp-widget-ww-widget.php:21
 msgid "A single Widget Wrangler Widget"
 msgstr ""
 
-#: common/wp-widget-ww-widget.php:23
+#: includes/wp-widget-ww-widget.php:27
 msgid "Widget Wrangler - Widget"
+msgstr ""
+
+#: widget-wrangler.php:167
+msgid "All Widgets"
+msgstr ""
+
+#: widget-wrangler.php:169 widget-wrangler.php:170
+msgid "Add New Widget"
+msgstr ""
+
+#: widget-wrangler.php:171
+msgid "Edit Widget"
+msgstr ""
+
+#: widget-wrangler.php:172
+msgid "New Widget"
+msgstr ""
+
+#: widget-wrangler.php:173
+msgid "View Widget"
+msgstr ""
+
+#: widget-wrangler.php:174
+msgid "Search Widgets"
+msgstr ""
+
+#: widget-wrangler.php:175
+msgid "No widgets found"
+msgstr ""
+
+#: widget-wrangler.php:176
+msgid "No widgets found in Trash"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

@@ -157,7 +157,6 @@ function tw_process_template(&$template){
     $caller = array_shift($bt);
 
     // set the function caller's file
-    // @TODO: instead, find a way to set the default path to where the hook was set
     $template['default_path'] = dirname($caller['file']);
   }
   

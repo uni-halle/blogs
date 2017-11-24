@@ -1,304 +1,245 @@
 /****************************************************
- * Common
+ * WP overrides
  ****************************************************/
-#ww-page-top {
-	text-align: right;
-	margin-bottom: 16px;
-	padding-right: 1%;
+
+.wrap > h2:first-child {
+    padding-bottom: 12px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+.wrap > h2:first-child + .description {
+    margin: 0 0 12px;
 }
 
-.ww-admin-tab-links {
-  width: 20%;
-  float: left;
-  margin-right: 1%;
+div.notice {
+    border-left-width: 10px;
 }
-.ww-admin-tab-links .ww-admin-tab-list {
-	float: none;
-	width: 100%;
-	border-top: 1px solid #eee;
-  background: #fff;
+div.notice p {
+    font-size: 1.1em;
 }
-.ww-admin-tab-links a {
+
+/****************************************************
+ * Common
+ ****************************************************/
+
+.ww-danger {
+    color: #a00;
+    border-color: #a00;
 }
-.ww-admin-tab-links .active a {
-  background: none repeat scroll 0 0 #1E8CBE;
-  color: #fff;
-  font-weight: bold;
-  text-decoration: none;
+
+.ww-box {
+    margin: 12px 0 25px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    color: #333;
 }
-.ww-admin-tab {
-  float: left;
-  width: 74%;
+
+.ww-box .ww-box {
+    margin: 0;
 }
-.ww-admin-tab .ww-admin-tab-inner {
-  padding: 0 2% 16px;
+
+.ww-box.description {
+    border-left-width: 10px;
 }
-ul.ww-admin-tab-list {
-  float: left;
-  width: 20%;
-  margin: 0 1% 0 0;
+
+.ww-box.description p {
+    font-size: 1.1em;
 }
-ul.ww-admin-tab-list li {
-  padding: 0px;
-  margin: 0px;
+
+.ww-box > * {
+    margin: 0;
+    padding: 16px;
 }
-ul.ww-admin-tab-list li a {
-  display: block;
-  padding: 0px 6px;
-  line-height: 24px;
-  border-bottom: 1px solid #bbb;
+
+.ww-box > h3 {
+    border-bottom: 1px solid #bbb;
 }
-ul.ww-admin-tab-list li.ui-state-active a {
-  background-color: #fff;
+
+.ww-box .form-table th {
+    width: auto;
+    white-space: nowrap;
 }
-ul.ww-admin-tab-list .ww-admin-tab-list-title {
-	margin: 0;
-  padding: 0px;
+.ww-box .form-table td {
+    width: 100%;
 }
-hr.ww-hr {
-	border: none;
-	border-bottom: 1px solid #bbb;
-	margin: 8px 0px;
+
+.ww-box .regular-text {
+    width: 100%;
 }
-.ww-options-hidden {
-  display: none;
+
+.ww-box-toggle > h3:before {
+    display: block;
+    float: right;
+    content: "\f140";
+    font: 400 20px/1 dashicons;
+    cursor: pointer;
 }
+
 .ww-clear-gone {
-  display: block;
-  float: none;
-  clear: both;
-  height: 0px;
-  line-height: 0px;
-  font-size: 0px;
+    display: block;
+    float: none;
+    clear: both;
+    height: 0px;
+    line-height: 0px;
+    font-size: 0px;
 }
-.ww-checkboxes {
-	
-}
-.ww-checkbox {
-	display: block;
-	font-size: 1em;
-	line-height: 2em;
-	padding-left: 1px;
-}
-.ww-checkbox input {
-	margin-top: -1px;
-}
-.ww-textarea-meta {
-	position: relative;
-}
-.ww-textarea-meta,
-.ww-textarea-meta textarea {
-	font-family: monospace;
-}
+
 .ajax-working {
-	/*background: transparent url('../images/throbber.gif') top left no-repeat;*/
-  background-position: top left;
-  float: none;
-	height: 16px;
-	width: 16px;
-	line-height: 16px;
-	font-size: 16px;
-	padding: 0px;
-	margin: 0px;
-	display: none;
+    float: none;
 }
-#ww-post-edit-message {
-	visibility: hidden;
-	padding: 4px 8px;
-	margin: 6px 0px 12px;
-	background: #FFFFEE;
-	border: 2px solid #FFFF66;
-	font: italic normal 11px/22px "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
-	color: #333;
+
+.ww-pull-right {
+    display: block;
+    float: right;
+}
+
+.ww-pull-right-box-out {
+    display: block !important;
+    float: right;
+    margin-top: 11px !important;
+    margin-right: 11px !important;
+}
+
+.ww-columns:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+.ww-column { width: 48% }
+.ww-column:first-child { float: left; }
+.ww-column:nth-child(2) { float: right; }
+
+.ww-column.col-25 { width: 24%; }
+.ww-column.col-75 { width: 74%; }
+
+@media screen and (max-width: 600px) {
+    .ww-columns .ww-column {
+        width: 100%;
+        float: none;
+        clear: both;
+    }
+}
+
+.ww-list-links, .ww-list-links li {
+    padding: 0;
+    margin: 0;
+}
+
+.ww-list-links a {
+    display: block;
+    padding: 6px 12px;
+}
+
+.ww-list-links a:hover {
+    background: #fafafa;
+}
+
+.ww-list-links li.active a {
+    background: #0074A2;
+    color: #fff;
+    font-weight: bold;
+}
+
+.toggle-next-content {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.togglable-content {
+    display: none;
+}
+
+pre.code {
+    overflow-x: scroll;
+    background: #fafafa;
+    border: 1px solid #bbb;
+    padding: 6px;
+    font-size: 0.9em;
+}
+
+.list {
+    list-style: disc;
+    padding-left: 16px;
+}
+
+a.anchor {
+    display: block;
+    position: relative;
+    top: -50px;
+    visibility: hidden;
+}
+.ww-highlight {
+    display: inline-block;
+    background: #efefef;
+    font-weight: bold;
+    padding: 0 2px;
+    border-bottom: 1px solid #bbb;
 }
 /******************************************************
  * Corrals
  *****************************************************/
-#ww-corral-page {
-  width: 98%;
-}
-#ww-corral-page td {
-  width: 50%;
-  vertical-align: top;
-}
-#ww-corral-page ul {
-}
-#ww-corrals-edit h4 {
-  margin: 0px;
-  padding: 7px 12px;
-	cursor: default;
-}
-#ww-corral-page .description {
-  width: 350px;
-  font: bold 11px/14px monopreset;
-  margin-bottom: 12px;
-}
-#ww-corral-page .widget-top {
-  cursor: default;
-}
-#ww-corral-page .widget-top h4 {
-  margin: 0;
-  padding: 12px 6px;
-}
-.ww-corral-edit {
-  float: right;
-  padding: 6px 4px;
-  cursor: pointer;
-  color:#21759B;
-  text-decoration: underline;
-}
-.ww-corral-details label {
-  font-family: monopreset;
-}
-.ww-corral-details .ww-text {
-  width: 84%;
-}
+
 #ww-corrals-sort-list {
-	background: #eee;
+    float: none;
+    clear: both;
+    padding: 12px 0;
 }
-.ww-corral-sort-submit {
-  margin-top: 24px;
-}
-.ww-delete-corral {
-}
-li.ww-corral-item {
-  margin-bottom: 24px;
-}
-.ww-widgets-holder-wrap .widgets-holder-wrap {
-  border: none;
-  box-shadow: none;
-}
-.ww-corral-item label {
-	cursor: default;
+.ww-sortable-corral {
+    background: linear-gradient(to top, #F9F9F9, #FFFFFF) repeat scroll 0 0 #FFFFFF;
+    background-image: url('../images/drag_handle.png');
+    background-repeat: no-repeat;
+    background-position: 12px center;
+    padding-left: 24px;
+    cursor: move;
 }
 
-/* displaying sort*/
-/******************************************************
- * Presets
- *****************************************************/
-#presets-add-new {
-  margin-top: 24px;
-  background: #fff;
+/****************************************************
+ * Fields
+ ****************************************************/
+
+.ww-field-label {
+    font-weight: bold;
 }
-#preset-data {
-  padding: 6px 6px 12px;
-  border-bottom: 1px solid #bbb;
-  border-top: 1px solid #bbb;
-  background: #fff;
-}
-#preset-action {
-  
-}
-#preset-terms {
-  padding: 6px 12px;
-  border-bottom: 1px solid #bbb;
-}
-#preset-terms .description {
-  color: red;
-}
-#preset-name {
-  font-weight: bold;
-}
-#preset-name .detail{
-  padding: 3px;
-}
-#preset-name label {
-  display: block;
-  float: left;
-  width: 52px;
-}
-#preset-widgets {
-  padding: 6px;
-  background: #fff;
+.ww-field-wrapper {
+    padding: 5px 0;
 }
 
-label.ww-preset-checkbox {
-  display: block;
-  margin: 3px 0px;
-  padding: 3px;
+.ww-field-type-textarea {
+    display: block;
+    margin: 12px 0 0;
+    min-height: 4em;
+    width: 100%;
 }
-label.ww-preset-checkbox input {
-  margin-right: 6px;
-}
-.preset-checkboxes {
-  border: 1px solid #bbb;
-  background: #fff;
-  margin: 4px;
-  padding: 6px;
-  height: 100px;
-  overflow-y: scroll;
-}
-.ww-presets {
-	padding: 12px 0px 16px;
-}
-.ww-inner {
-	padding: 12px;
-}
-#ww-add-new-widget h2 {
-	margin: 0;
-}
-#ww-post-preset, #ww-add-new-widget { border-bottom: 1px solid #666;padding-top: 8px; }
-#ww-post-preset p { padding-left: 20px; }
 
-#ww-post-preset .description {
-	padding: 12px 20px;
+@media screen and (max-width: 600px) {
+    .ww-field-inline {
+        display: block;
+        width: 100%;
+    }
 }
-.ww-setting-checkbox-label {
-  display: inline-block;
-  padding: 4px;
-}
-.ww-setting-checkbox-container.is-child {
-  padding-left: 24px;
-}
-.ww-preset-terms-form-taxonomy h4 {
-}
-.ww-preset-terms-form-taxonomy-checkboxes {
-  border: 1px solid #bbb;
-  padding: 4px 8px;
-  background: #eee;
-  height: 120px;
-  overflow: scroll;
-}
-#ww-add-taxonomy {
-  color: #0074A2;
-  padding-left: 32px;
-  font-size: 16px;
-}
+
 /******************************************************
  * Widgets
  *****************************************************/
-#all-widgets {
-  font: normal 18px/20px Arial;
-}
-#all-widgets table {
-  border: 1px solid #000;
-  width: 98%;
-}
-#all-widgets table th {
-  background-color: #444;
-  color: #fff;
-  padding: 4px 6px;
-}
-#all-widgets table td {
-  font: normal 18px/20px Arial;
-  padding: 8px 12px;
-  border-bottom: 1px solid #666;
-}
-#all-widgets th.default {width: 42px; font: normal 12px serif;}
-#all-widgets td.default {width: 42px; text-align: center;}
-#all-widgets td.ewid { font-size: 14px; text-align: center; }
-#all-widgets td.title { font-weight: bold; width: 60%; }
-#all-widgets td.name { font-size: 16px;}
-#all-widgets td.edit { text-align: center;}
 
+.template-suggestions {
+    font-family: Consolas,Monaco,monospace;
+    border-top: 1px solid #eee;
+}
 
-#ww_admin_meta_box h3.hndle {
-  line-height: 18px;
+.template-suggestions .item {
+    margin: 0;
+    padding: 2px 6px;
+    border-bottom: 1px solid #eee;
 }
-#ww_admin_meta_box h3.hndle span img {
-  float: left;
-  margin-right: 8px;
+
+.template-suggestions .found {
+    background: #ffb;
 }
+
 .ww-widget-postid {
   float: right;
   text-align: center;
@@ -308,6 +249,7 @@ label.ww-preset-checkbox input {
   -moz-border-radius: 4px;
   padding: 4px;
 }
+
 .ww-widget-postid span {
   display: block;
   font-size: 22px;
@@ -316,299 +258,114 @@ label.ww-preset-checkbox input {
   background: #fff;
   padding: 4px 6px;
 }
-.ww-template-suggestions {
-}
-.ww-template-suggestion {
-	font-family: monospace;
-}
-.ww-template-suggestion.found {
-	font-weight: bold;
-}
-.ww-found-template-location {
-	font: normal 11px monospace;
-}
-#ww-advanced-field {
-  padding: 0px 0px 12px;
-}
-#ww-advanced-template {
-  padding: 4px 0px;
-}
-#ww-advanced-template .ww-adv-template-description{
-  padding: 8px 16px;
-  font-style: italic;
-}
-#ww-advanced-help {
-	margin: 16px 0px 12px 1px;
-}
-.ww-advanced-help-title {
-	border: 1px solid #bbb;
-  background: linear-gradient(to top, #FBFBFB, #FFFFFF) repeat scroll 0 0 #FFFFFF;
-	padding: 6px 12px;
-}
-.ww-advanced-help-title h4 {
-	margin: 0px;
-}
-.ww-advanced-help-description {
-	border: 1px solid #bbb;
-	background: #fff;
-	padding-bottom: 12px;
-  padding-left: 12px;
-  color: #444;
-}
-.ww-advanced-help-description h4 {
-	margin: 16px 0 6px 0;
-	border-bottom: 1px solid #bbb;
-}
-.ww-advanced-help-description ul  {
-	padding: 4px 4px 4px 24px;	
-}
-.ww-advanced-help-description ul li {
-  list-style: disc;
-  list-style-type: disc;
-  list-style-position: outside;
-  font: normal 11px Arial;
-  color: #555;
-}
-.ww-options-group h4 {
-  padding: 6px 12px 6px 0px;
-	margin: 0px;
-}
-.ww-adv-template.ww-checkbox {
-	border-bottom: 1px solid #bbb;
-	margin-bottom: 12px;
-}
-#ww-preview-widget {
-	margin-top: 12px;
-	border-top: 1px solid #999;
-	padding: 12px 4px;
-}
-#ww-preview-html-toggle {
-  color: #0074A2;
-  cursor: pointer;
-}
-#ww-preview-html-content {
-  width: 100%;
-  overflow: scroll;
-  min-height: 250px;
-}
-.php-advanced-textarea {
-	width: 100%;
-}
-.ww-override-html div label {
-  font-weight: bold;
-}
-/******************************************************
- * Clones
- *****************************************************/
-.ww-clone-widgets {
-  width: 300px;
-  float: left;
-  margin: 0px 0px 0px 24px;
-}
-.ww-clone-widgets .widget-title{
-  cursor: pointer;
-}
-.ww-clone-widgets h4 {
-  
-}
-.ww-clone-submit {
-  display: block;
-  width: auto;
-  margin: 4px 0px 0px auto;
-}
-.widget-title-action {
-  float: right;
-}
-div.widget-action {
-  display: block;
-  height: 42px;
-  width: 32px;
-  cursor: pointer;
-  /*background:transparent url('../images/menu-bits.gif') no-repeat scroll 0px -106px;*/
-}
-.widget-inside {
-  display: none;
-  padding: 6px 12px;
-}
-.ww-clone-form {
-  margin-top: 32px;
-}
 
 /******************************************************
  * Sortable Widgets
  *****************************************************/
-#ww-active-items,
-#ww-disabled-items {
-  margin: 8px 0px;
-}
-#ww-active-items li {
-  background: #fff;
-}
-#ww-disabled-items li {
-  background: linear-gradient(to top, #E9E9E9, #EFEFEF) repeat scroll 0 0 #EFEFEF;
-	background-image: url('../images/drag_handle.png');
-	background-repeat: no-repeat;
-	background-position: 4px center;
-}
-.ww-sortable-corral-wrapper{
-  
-}
-.ww-sortable-corral-wrapper h4 {
-  
-}
-.ww-sortable-widgets-corral-title {
-	margin-bottom: 12px;
-}
-li.ww-item,
-li.ww-corral-sort-item{
-  background: linear-gradient(to top, #F9F9F9, #FFFFFF) repeat scroll 0 0 #FFFFFF;
-	background-image: url('../images/drag_handle.png');
-	background-repeat: no-repeat;
-	background-position: 4px center;
-	font-size: 12px;
-	line-height: 34px;
-	font-weight: bold;
-	height: 34px;
-	padding: 0px 12px 0px 30px;
-	margin: 0px;
-	overflow: hidden;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-	border-radius: 3px 3px 3px 3px;
-	box-shadow: 0 1px 0 #FFFFFF inset;
-	cursor: move;
-	color: #222222;
-	box-shadow: 0 1px 0 #FFFFFF;
-	text-shadow: 0 1px 0 #FFFFFF;
-}
-li.ww-item:hover {
-	background-color: #f9f9f9;
-}
 
-.ww-widget-weight {
-  display: none;
-  float: right;
-  margin-top: 5px;
-}
-#ww-disabled-items .ww-widget-weight {
-  display: none;
-}
-#ww-active-items li:hover {
-  cursor: n-resize;
-}
-#ww-disabled-items,
 .ww-sortable {
-  min-height: 20px;
-  height: auto !important;
-  height: 20px;
-  border: 2px dashed #eee;
-	background: #eee url('../images/empty-bg.png') repeat;
-	margin-top: 4px;
+    min-height: 20px;
+    padding: 1px;
+    background: #eee url('../images/empty-bg.png') repeat;
 }
 
-li.ww-item.ww-dragging,
-#ww-disabled-items li.ww-item.ww-dragging {
-  background: #ffffe5;
-	background-image: url('../images/drag_handle.png');
-	background-repeat: no-repeat;
-	background-position: 4px center;
+.ww-no-widgets {
+    padding: 6px;
+    margin: 0;
+    border: 2px dashed #eee;
+    background: transparent url('../images/empty-bg.png') repeat;
+}
+
+.ww-no-widgets p {
+    padding: 4px;
+    margin: 0;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid #eee;
+}
+
+li.ww-item {
+    background: linear-gradient(to top, #F9F9F9, #FFFFFF) repeat scroll 0 0 #FFFFFF;
+    background-image: url('../images/drag_handle.png');
+    background-repeat: no-repeat;
+    background-position: 4px center;
+    line-height: 36px;
+    font-weight: bold;
+    padding: 0px 12px 0px 30px;
+    margin: 0px;
+    overflow: hidden;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    cursor: move;
+    color: #222222;
+    box-shadow: 0 1px 0 #FFFFFF;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+
+li.ww-item:hover {
+    background-color: #fafafa;
+}
+
+li.ww-item.ww-dragging {
+    background-color: #ffffe5 !important;
+    background-image: url('../images/drag_handle.png');
+    background-repeat: no-repeat;
+    background-position: 4px center;
 }
 
 .ww-item select {
-  display: block;
-  float: right;
-  margin: 3px 0 0 0;
-}
-.ww-no-widgets {
-	font-size: 12px;
-	line-height: 32px;
-	font-weight: bold;
-	height: 32px;
-	padding: 0px 12px 0px 30px;
-	margin: 0px;
-	background: transparent url('../images/empty-bg.png') repeat;
-}
-h4.ww-sortable-widgets-corral-title{
-	margin: 0;
-  padding: 12px 6px 6px;
-	border-bottom: 1px solid #bbb;
-	font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
-	font-size: 1.1em;
+    display: block;
+    float: right;
+    margin: 3px 0 0 0;
 }
 
+.ww-widget-weight {
+    display: none;
+    float: right;
+    margin-top: 5px;
+}
+
+.form-top .description {
+    padding-left: 12px;
+    border-left: 5px solid #eee;
+    margin: 16px 12px;
+}
+#ww-edited-message { display: none; }
+#ww-edited-message p {
+    margin: 0;
+    padding: 12px 16px;
+    border: 1px solid #cc0;
+    border-left-width: 10px;
+}
+#ww_admin_meta_box > h2 img {
+    display: block;
+    float: left;
+    margin-right: 8px;
+}
 /******************************************************
- * Settings
+ * Documentation
  *****************************************************/
-.wrap .ww-setting-button-bad{
-  color: #aaa;
-}
-.ww-admin-top{
-  width: 95%;
-}
-.ww-top-right-save{
-  padding: 0px;
-  margin: 0px;
-  display: block;
-  float: right;
-}
-.ww-setting-column {
-  float: left;
-  width: 46%;
-  margin-right: 3%;
-}
-h2.ww-setting-title{
-  padding: 6px 12px;
-  border-top: 1px solid #bbb;
-  border-bottom: 1px solid #bbb;
-}
-div.ww-setting-content {
-  padding: 6px 12px 24px;
-}
-#ww-mass-reset {
-  float: none;
-  clear: both;
-  margin-top: 64px;
-  border-top: 2px solid darkred;
-}
-.ww-settings-field label.ww-corral-checkbox {
-	display: block;
-	float: left;
-	clear: left;
-	padding: 2px 0px 6px;
-}
-.ww-settings-field label.ww-corral-checkbox input {
-	margin-top: -1px;
-}
-.ww-settings-roles {
-  padding: 8px 24px;
-}
 
-/*
- * Sidebar Alter
- */
-.ww-alter-sidebar-field {
-  min-height: 40px;
-  clear: left;
+.ww-docs .col-75 .ww-box {
+    max-width: 750px;
 }
-.ww-alter-sidebar-field label {
-  font-weight: bold;
-  display: block;
-  float: left;
-  clear: left;
-  width: 14%;
+.ww-docs .ww-box > * {
+    padding: 16px 32px;
 }
-.ww-alter-sidebar-field input[type=text] {
-  width: 85%;
+.ww-docs .ww-box {
+    padding-bottom: 16px;
 }
-
-/*
- * TinyMCE
- */
-/* trouble with long lists */
-.mce-widget-wrangler-tinymce-button,
-body.widget-wrangler-tinymce-button .mce-floatpanel.mce-menu.mce-fixed{
-  position: absolute !important;
+.ww-docs .ww-box,
+.ww-docs .ww-box p {
+    font-size: 15px;
 }
-i.mce-i-widget-wrangler-button-icon {
-  background: transparent url('../images/wrangler_icon.png') center center no-repeat;
+.ww-docs .ww-box ol,
+.ww-docs .ww-box ul {
+    margin-left: 24px;
+    line-height: 1.5;
+}
+.ww-docs .ww-box dt {
+    font-weight: bold;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #fafafa;
+    margin-bottom: 6px;
 }
