@@ -1,8 +1,8 @@
 <?php
-if ( !defined( 'FOUNDATION_SETTING_DOMAIN' ) ) {
-    define( 'FOUNDATION_SETTING_DOMAIN', 'foundation' );
+if ( ! defined( 'FOUNDATION_SETTING_DOMAIN' ) ) {
+	define( 'FOUNDATION_SETTING_DOMAIN', 'foundation' );
 }
-if ( ( !wptouch_is_controlled_network() || ( wptouch_is_controlled_network() && is_network_admin() ) ) && !defined( 'WPTOUCH_IS_FREE' ) ) {
+if ( ( ! wptouch_is_controlled_network() || ( wptouch_is_controlled_network() && is_network_admin() ) ) && ! defined( 'WPTOUCH_IS_FREE' ) ) {
 	add_filter( 'wptouch_admin_page_render_wptouch-admin-general-settings', 'wptouch_render_updates_page' );
 }
 
@@ -36,7 +36,7 @@ function wptouch_render_updates_page( $page_options ) {
 					false,
 					WPTOUCH_SETTING_BASIC,
 					'4.0'
-				)
+				),
 			),
 			$page_options
 		);
@@ -70,10 +70,10 @@ function wptouch_render_general_page( $page_options ) {
 		false
 	);
 
-	if ( defined( 'WPTOUCH_IS_FREE' ) ){
-		$display_text = wptouchize_it( __( 'If disabled WPtouch Pro will be off for visitors but can be configured.' , 'wptouch-pro' ) );
+	if ( defined( 'WPTOUCH_IS_FREE' ) ) {
+		$display_text = wptouchize_it( __( 'If disabled WPtouch Pro will be off for visitors but can be configured.', 'wptouch-pro' ) );
 	} else {
-		$display_text = wptouchize_it( __( 'If disabled WPtouch Pro will be off for visitors but can be configured in the Customizer.' , 'wptouch-pro' ) );
+		$display_text = wptouchize_it( __( 'If disabled WPtouch Pro will be off for visitors but can be configured in the Customizer.', 'wptouch-pro' ) );
 	}
 
 	wptouch_add_page_section(
@@ -92,14 +92,14 @@ function wptouch_render_general_page( $page_options ) {
 			wptouch_add_pro_setting(
 				'list',
 				'url_filter_behaviour',
-				__( 'URL filtering' , 'wptouch-pro' ),
+				__( 'URL filtering', 'wptouch-pro' ),
 				false,
 				WPTOUCH_SETTING_BASIC,
 				'3.5.3',
 				array(
-					'disabled' => wptouchize_it( __( 'Show WPtouch Pro for all URLs' , 'wptouch-pro' ) ),
-					'exclude_urls' => wptouchize_it( __( 'Exclude WPtouch Pro on these URLs', 'wptouch-pro' ) ),
-					'exclusive_urls' => wptouchize_it( __( 'Only show WPtouch Pro on these URLs', 'wptouch-pro' ) )
+					'disabled'       => wptouchize_it( __( 'Show WPtouch Pro for all URLs', 'wptouch-pro' ) ),
+					'exclude_urls'   => wptouchize_it( __( 'Exclude WPtouch Pro on these URLs', 'wptouch-pro' ) ),
+					'exclusive_urls' => wptouchize_it( __( 'Only show WPtouch Pro on these URLs', 'wptouch-pro' ) ),
 				)
 			),
 			wptouch_add_pro_setting(
@@ -117,7 +117,7 @@ function wptouch_render_general_page( $page_options ) {
 				false,
 				WPTOUCH_SETTING_BASIC,
 				'3.5.3'
-			)
+			),
 		),
 		$page_options
 	);
@@ -131,9 +131,9 @@ function wptouch_render_general_page( $page_options ) {
 			WPTOUCH_SETTING_BASIC,
 			'3.0',
 			array(
-				'none' => __( 'WordPress Reading Settings', 'wptouch-pro' ),
+				'none'   => __( 'WordPress Reading Settings', 'wptouch-pro' ),
 				'select' => __( 'Redirect to a page', 'wptouch-pro' ),
-				'custom' => _x( 'Redirect to a custom URL', 'Refers to a custom landing page', 'wptouch-pro' )
+				'custom' => _x( 'Redirect to a custom URL', 'Refers to a custom landing page', 'wptouch-pro' ),
 			)
 		),
 		wptouch_add_setting(
@@ -151,7 +151,7 @@ function wptouch_render_general_page( $page_options ) {
 			false,
 			WPTOUCH_SETTING_BASIC,
 			'3.0'
-		)
+		),
 	);
 
 	$landing_settings = apply_filters( 'foundation_settings_pages', $landing_settings );
@@ -189,16 +189,16 @@ function wptouch_render_general_page( $page_options ) {
 		WPTOUCH_ADMIN_SETUP_GENERAL,
 		__( 'Page Zoom', 'wptouch-pro' ),
 		'foundation-zoom',
-			array(
-				wptouch_add_setting(
-					'checkbox',
-					'allow_zoom',
-					__( 'Allow mobile browser zooming', 'wptouch-pro' ),
-					wptouchize_it( __( 'By default WPtouch Pro disables browser zooming.' ) ),
-					WPTOUCH_SETTING_BASIC,
-					'2.0'
-				)
+		array(
+			wptouch_add_setting(
+				'checkbox',
+				'allow_zoom',
+				__( 'Allow mobile browser zooming', 'wptouch-pro' ),
+				wptouchize_it( __( 'By default WPtouch Pro disables browser zooming.' ) ),
+				WPTOUCH_SETTING_BASIC,
+				'2.0'
 			),
+		),
 		$page_options,
 		FOUNDATION_SETTING_DOMAIN
 	);
@@ -223,43 +223,55 @@ function wptouch_render_general_page( $page_options ) {
 		sprintf( __( 'Find your ID from the %siTunes Link Maker%s.', 'wptouch-pro' ), '<a href="http://itunes.apple.com/linkmaker/" target="_blank">', '</a>' )
 	);
 
+	$analytics_settings = array(
+		wptouch_add_pro_setting(
+			'list',
+			'analytics_embed_method',
+			__( 'Analytics Code', 'wptouch-pro' ),
+			false,
+			WPTOUCH_SETTING_BASIC,
+			'4.0',
+			array(
+				'disabled' => __( 'None', 'wptouch-pro' ),
+				'simple'   => 'Google Analytics',
+				'custom'   => __( 'Custom', 'wptouch-pro' ),
+			)
+		),
+
+		wptouch_add_pro_setting(
+			'text',
+			'analytics_google_id',
+			__( 'Site ID', 'wptouch-pro' ),
+			false,
+			WPTOUCH_SETTING_BASIC,
+			'3.0'
+		),
+
+		wptouch_add_pro_setting(
+			'textarea',
+			'custom_stats_code',
+			'',
+			false,
+			WPTOUCH_SETTING_BASIC,
+			'3.0'
+		),
+
+	);
+
+	/**
+	 * Filter WPtouch Pro analytics section settings.
+	 *
+	 * @since 4.3.17
+	 *
+	 * @param array $analytics_settings Existing analytics section settings.
+	 */
+	$analytics_settings = apply_filters( 'wptouch_pro_analytics_settings', $analytics_settings );
+
 	wptouch_add_page_section(
 		WPTOUCH_ADMIN_SETUP_GENERAL,
 		__( 'Analytics', 'wptouch-pro' ),
 		'setup-custom-code',
-		array(
-			wptouch_add_pro_setting(
-				'list',
-				'analytics_embed_method',
-				__( 'Analytics Code', 'wptouch-pro' ),
-				false,
-				WPTOUCH_SETTING_BASIC,
-				'4.0',
-				array(
-					'disabled' => __( 'None', 'wptouch-pro' ),
-					'simple' => 'Google Analytics',
-					'custom' => __( 'Custom', 'wptouch-pro' )
-				)
-			),
-
-			wptouch_add_pro_setting(
-				'text',
-				'analytics_google_id',
-				__( 'Site ID', 'wptouch-pro' ),
-				false,
-				WPTOUCH_SETTING_BASIC,
-				'3.0'
-			),
-
-			wptouch_add_pro_setting(
-				'textarea',
-				'custom_stats_code',
-				false,
-				false,
-				WPTOUCH_SETTING_BASIC,
-				'3.0'
-			)
-		),
+		$analytics_settings,
 		$page_options,
 		'wptouch_pro'
 	);
@@ -276,7 +288,7 @@ function wptouch_render_general_page( $page_options ) {
 				false,
 				WPTOUCH_SETTING_BASIC,
 				'3.0'
-			)
+			),
 		),
 		$page_options,
 		'wptouch_pro'
@@ -303,7 +315,7 @@ function wptouch_render_general_page( $page_options ) {
 				false,
 				WPTOUCH_SETTING_BASIC,
 				'3.0'
-			)
+			),
 		),
 		$page_options,
 		'wptouch_pro'
@@ -336,7 +348,7 @@ function wptouch_render_compat_page( $page_options ) {
 				wptouchize_it( __( 'Filters out shortcodes from displaying when WPtouch Pro is active.', 'wptouch-pro' ) ),
 				WPTOUCH_SETTING_BASIC,
 				'3.0'
-			)
+			),
 		),
 		$page_options,
 		'wptouch_pro'
@@ -362,23 +374,23 @@ function wptouch_render_compat_page( $page_options ) {
 
 	$page_options = apply_filters( 'wptouch_settings_compat', $page_options );
 
-    if ( !defined( 'WPTOUCH_IS_FREE' ) ) {
-    	wptouch_add_page_section(
-    		WPTOUCH_ADMIN_SETUP_COMPAT,
-    		__( 'Active Plugins', 'wptouch-pro' ),
-    		'setup-general-plugin-compat',
-    		array(
-    			wptouch_add_pro_setting(
-    				'custom',
-    				'plugin-compat'
-    			)
-    		),
-    		$page_options,
-    		'wptouch_pro',
-    		false,
-    		wptouchize_it( __( 'Attempts to disable plugins for mobile visitors. Some plugins don‘t support this feature due to the way they load in WordPress.', 'wptouch-pro' ) )
-    	);
-    }
+	if ( ! defined( 'WPTOUCH_IS_FREE' ) ) {
+		wptouch_add_page_section(
+			WPTOUCH_ADMIN_SETUP_COMPAT,
+			__( 'Active Plugins', 'wptouch-pro' ),
+			'setup-general-plugin-compat',
+			array(
+				wptouch_add_pro_setting(
+					'custom',
+					'plugin-compat'
+				),
+			),
+			$page_options,
+			'wptouch_pro',
+			false,
+			wptouchize_it( __( 'Attempts to disable plugins for mobile visitors. Some plugins don‘t support this feature due to the way they load in WordPress.', 'wptouch-pro' ) )
+		);
+	}
 
 	return $page_options;
 }
@@ -516,7 +528,7 @@ function wptouch_render_devices_page( $page_options ) {
 					false,
 					WPTOUCH_SETTING_BASIC,
 					'4.0'
-				)
+				),
 			),
 			$page_options,
 			'wptouch_pro',
@@ -537,7 +549,7 @@ function wptouch_render_devices_page( $page_options ) {
 				__( 'You can enter partial i.e. "nokia" or full agent strings', 'wptouch-pro' ),
 				WPTOUCH_SETTING_BASIC,
 				'3.0'
-			)
+			),
 		),
 		$page_options,
 		'wptouch_pro'
@@ -561,7 +573,7 @@ function wptouch_render_menu_page( $page_options ) {
 				false,
 				WPTOUCH_SETTING_BASIC,
 				'4.0'
-			)
+			),
 		),
 		$page_options,
 		'wptouch_pro'
@@ -587,7 +599,7 @@ function wptouch_render_menu_page( $page_options ) {
 				__( 'Adds the ability to associate icons with menu items', 'wptouch-pro' ) . ' (in WordPress Appearance->Menus)',
 				WPTOUCH_SETTING_BASIC,
 				'3.0'
-			)
+			),
 		) ),
 		$page_options,
 		'wptouch_pro'
@@ -601,7 +613,7 @@ function wptouch_render_menu_page( $page_options ) {
 			wptouch_add_setting(
 				'custom',
 				'installed_icon_sets'
-			)
+			),
 		),
 		$page_options
 	);
@@ -618,7 +630,7 @@ function wptouch_render_menu_page( $page_options ) {
 			wptouch_add_setting(
 				'custom',
 				'custom_icon_management'
-			)
+			),
 		),
 		$page_options
 	);
@@ -628,7 +640,7 @@ function wptouch_render_menu_page( $page_options ) {
 
 function wptouch_add_custom_menus( $menu_array ) {
 	$menus = get_terms( 'nav_menu', array( 'hide_empty' => false ) );
-	foreach( $menus as $key => $menu ) {
+	foreach ( $menus as $key => $menu ) {
 		$menu_array[ $menu->term_id ] = $menu->name;
 	}
 
@@ -639,13 +651,13 @@ function wptouch_get_custom_menu_list( $include_wp_pages = true, $include_none =
 	$custom_menu = array();
 
 	if ( $include_wp_pages ) {
-		$custom_menu[ 'wp' ] = __( 'WordPress Pages', 'wptouch-pro' );
+		$custom_menu['wp'] = __( 'WordPress Pages', 'wptouch-pro' );
 	}
 
 	$custom_menu = wptouch_add_custom_menus( $custom_menu );
 
 	if ( $include_none ) {
-		$custom_menu[ 'none' ] = __( 'None', 'wptouch-pro' );
+		$custom_menu['none'] = __( 'None', 'wptouch-pro' );
 	}
 
 	return $custom_menu;
@@ -663,7 +675,7 @@ function wptouch_render_theme_customize_page( $page_options ) {
 			wptouch_add_setting(
 				'custom',
 				'customizing_in_customizer'
-			)
+			),
 		),
 		$page_options
 	);
@@ -685,7 +697,7 @@ function wptouch_render_themes( $page_options ) {
 			wptouch_add_setting(
 				'custom',
 				'theme-browser'
-			)
+			),
 		),
 		$page_options
 	);
@@ -706,7 +718,7 @@ function wptouch_render_addons( $page_options ) {
 			wptouch_add_setting(
 				'custom',
 				'extension-browser'
-			)
+			),
 		),
 		$page_options
 	);
@@ -716,6 +728,7 @@ function wptouch_render_addons( $page_options ) {
 
 function wptouch_render_addon_settings( $page_options ) {
 	$page_options = apply_filters( 'wptouch_addon_options', $page_options );
+
 	return $page_options;
 }
 
@@ -729,7 +742,7 @@ function wptouch_render_subscribe_to_updates( $page_options ) {
 			wptouch_add_setting(
 				'custom',
 				'free-newsletter-signup'
-			)
+			),
 		),
 		$page_options
 	);

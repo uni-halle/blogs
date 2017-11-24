@@ -316,6 +316,17 @@ li#customize-control-blogname, li#customize-control-blogdescription {
 
 /* @end */
 
+/* @group Selectlist */
+
+.customize-control-selectlist {
+	max-height: 200px;
+	padding: 10px;
+	border: 1px solid #b4b9be;
+	overflow-y: scroll;
+}
+
+/* @end */
+
 @media all and (max-height: 820px) {
 	#customize-preview.tablet {
 		margin-top: -550px;

@@ -167,7 +167,7 @@ $merging_setting = false;
 function wptouch_customizer_merge_setting( $domain, $setting, $value ) {
 	require_once( WPTOUCH_DIR . '/core/admin-load.php' );
 
-	global $merging_setting;	
+	global $merging_setting;
 	global $wptouch_pro;
 	global $options_domains;
 
@@ -191,7 +191,7 @@ function wptouch_customizer_merge_setting( $domain, $setting, $value ) {
 					set_theme_mod( 'wptouch_' . $setting, $value );
 				}
 			}
-		} 
+		}
 		$merging_setting = false;
 	}
 
@@ -319,48 +319,7 @@ function wptouch_customizer_setup( $wp_customize ) {
 
 	if ( wptouch_is_customizing_mobile() ) {
 		// We're in the customizer and editing the mobile theme.
-
-		class WPtouch_Customize_Control_Multiple_Checkbox extends WP_Customize_Control {
-
-			/**
-			* The type of customize control being rendered.
-			*/
-			public $type = 'checklist';
-
-			/**
-			* Displays the multiple select on the customize screen.
-			*/
-			public function render_content() {
-				if ( empty( $this->choices ) )
-					return; ?>
-
-				<?php if ( !empty( $this->label ) ) : ?>
-					<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
-				<?php endif; ?>
-
-				<?php if ( !empty( $this->description ) ) : ?>
-					<span class="description customize-control-description"><?php echo $this->description; ?></span>
-				<?php endif; ?>
-
-				<?php $multi_values = !is_array( $this->value() ) ? explode( ',', $this->value() ) : $this->value(); ?>
-
-				<ul>
-					<?php foreach ( $this->choices as $value => $label ) : ?>
-
-						<li>
-							<label>
-								<input type="checkbox" value="<?php echo esc_attr( $value ); ?>" <?php checked( in_array( $value, $multi_values ) ); ?> />
-								<?php echo esc_html( $label ); ?>
-							</label>
-						</li>
-
-					<?php endforeach; ?>
-				</ul>
-
-				<input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr( implode( ',', $multi_values ) ); ?>" />
-		<?php
-			}
-		}
+		require_once( WPTOUCH_DIR . '/admin/customizer/wptouch-customize-control-multiple-checkbox.php' );
 
 		// Prepare to set defaults; we'll need Foundation defaults for sure, but we'll load others as needed.
 		$defaults = array(
@@ -581,8 +540,6 @@ function wptouch_customizer_scripts() {
 			true
 		);
 
-
-
 		global $wptouch_pro;
 		$theme = $wptouch_pro->get_current_theme_info();
 		$pro_or_free = ( !defined( 'WPTOUCH_IS_FREE' ) ) ? 'yes' : 'no';
@@ -591,7 +548,7 @@ function wptouch_customizer_scripts() {
 			'device_tags' => $theme->tags,
 			'settings_url' => admin_url( 'admin.php?page=wptouch-admin-general-settings' ),
 			'wptouch_is_pro' => $pro_or_free,
-			'mobile_preview' => wptouch_is_customizing_mobile()
+			'mobile_preview' => wptouch_is_customizing_mobile(),
 		);
 
 		wp_localize_script( 'wptouch-theme-customizer-js', 'WPtouchCustomizer', $customizer_params );
@@ -786,7 +743,7 @@ function wptouch_customizer_begin_theme_override() {
 	global $wptouch_queued_items;
 
 	if ( $wptouch_queued_items == 0 ) {
-		add_filter( 'pre_option_stylesheet', 'wptouch_get_current_theme_name', 50 );	
+		add_filter( 'pre_option_stylesheet', 'wptouch_get_current_theme_name', 50 );
 	}
 
 	$wptouch_queued_items++;
@@ -798,7 +755,7 @@ function wptouch_customizer_end_theme_override() {
 	$wptouch_queued_items--;
 
 	if ( $wptouch_queued_items == 0 ) {
-		remove_filter( 'pre_option_stylesheet', 'wptouch_get_current_theme_name', 50 );	
+		remove_filter( 'pre_option_stylesheet', 'wptouch_get_current_theme_name', 50 );
 	}
 }
 

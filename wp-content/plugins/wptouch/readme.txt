@@ -2,8 +2,8 @@
 Contributors: wptouch, sureswiftcapital, duanestorey, dalemugford, adamdipardo, oxymoron
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 4.2
-Stable tag: 4.3.19
-Tested up to: 4.7
+Stable tag: 4.3.21
+Tested up to: 4.8.2
 License: GPLv2
 
 Make your WordPress website mobile-friendly with just a few clicks.
@@ -32,6 +32,14 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 6. Theme settings
 
 == Changelog ==
+
+= Version 4.3.21 (October 6, 2017) =
+
+* Fixed: Output of script tags within the customizer custom footer content area.
+
+= Version 4.3.20 (October 5, 2017) =
+
+* Fixed: Prevent stripping of form input elements from the additional footer html content entered in the customizer.
 
 = Version 4.3.19 (August 21, 2017) =
 
@@ -276,10 +284,6 @@ You can install *WPtouch* directly from the WordPress admin. Visit the *Plugins 
 
 Once you have installed and activated WPtouch, visit the admin page via the sidebar menu to customize your WPtouch installation's appearance.
 
-= Caching Plugin Configuration =
-
-Please note that if you are using a caching plugin like W3 Total Cache or WP Super Cache, you will have to do additional configuration, otherwise you may occasionally see the mobile site in a desktop browser and the desktop site in a mobile browser. These changes are outlined in the user manual which is accessible in the WPtouch admin.
-
 = User Manual =
 
 You can download the user manual from within the WPtouch administration panel, or [download the WPtouch manual here](). It contains information on how to configure WPtouch.  Please note that if you are using a caching plugin, you will need to perform additional steps for WPtouch to work as expected.
@@ -332,13 +336,13 @@ In the free version, the newest changes have more to do with under the hood impr
 
 = What's Next? =
 
-We've got theme and feature updates planned into 2016 based on feedback from our users, but that's all we'll share!
+We've got theme and feature updates planned based on feedback from our users, but that's all we'll share!
 
-== Other Notes ==
+= What if I'm using a caching plugin? =
 
 If you are using a caching plugin, you will need to configure it to work properly with WPtouch. If your caching plugin is not configured, or not configured properly, you will most encounter inconsistent behaviour where WPtouch shows for desktop visitors, or mobile visitors see your desktop site.
 
-= W3 Total Cache =
+**W3 Total Cache**
 
 1. If you have “Browser Cache” enabled, please disable ‘Set expires header' in the Browser cache settings to prevent Desktop/Mobile switch link issues.
 2. Go to the “Page Cache” settings under the Performance tab.
@@ -356,7 +360,7 @@ Scroll down to the “Rejected User Agents” field and paste the list of WPtouc
 
 Ensure that W3 Total Cache is selected in the plugins list in the Compatibility section of the WPtouch admin panel.
 
-= WP Super Cache =
+**WP Super Cache**
 
 Note: The native support for the free version of WPtouch found in WP Super Cache (under the “Plugins” tab) must be disabled to prevent conflicts in WPtouch.
 
@@ -366,13 +370,13 @@ Note: The native support for the free version of WPtouch found in WP Super Cache
 4. In the “Contents” tab, click “Delete Cache” and “Delete Expired” to delete pages that were likely cached before adding the new list of rejected user agents.
 5. Ensure that WP Super Cache is selected in the plugins list in the Compatibility section of the WPtouch admin panel.
 
-= WP Rocket =
+**WP Rocket**
 
 In the "Basic Options" of WP Rocket's settings page, make sure "Enable caching for mobile devices." is deselected. Ensure that WP Rocket is selected in the plugins list in the Compatibility section of the WPtouch admin panel.
 
 Please see the user manual for additional information.
 
-= WP Engine =
+**WP Engine**
 
 Please contact WPEngine and ask them to exclude the user agents found in the “User agent list for configuring cache plugins“.
 
