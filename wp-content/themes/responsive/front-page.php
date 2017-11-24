@@ -40,7 +40,8 @@ if ( 'posts' == get_option( 'show_on_front' ) && $responsive_options['front_page
 	$template = get_post_meta( get_option( 'page_on_front' ), '_wp_page_template', true );
 	$template = ( $template == 'default' ) ? 'index.php' : $template;
 	locate_template( $template, true );
-} else {
+} 
+else {
 	get_header();
 
 	get_template_part( 'template-parts/featured-area' );

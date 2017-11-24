@@ -143,8 +143,7 @@ function responsive_theme_options_do_page() {
 																	  array(
 																		  'title' => __( 'Home Page', 'responsive' ),
 																		  'id'    => 'home_page'
-																	  )
-																  ,
+																	  ),																	
 																	  array(
 																		  'title' => __( 'Default Layouts', 'responsive' ),
 																		  'id'    => 'layouts'
@@ -177,8 +176,7 @@ function responsive_theme_options_do_page() {
 				array(
 						'title' => __( 'Home Page', 'responsive' ),
 						'id'    => 'home_page'
-				)
-				,
+				),				
 				array(
 						'title' => __( 'Default Layouts', 'responsive' ),
 						'id'    => 'layouts'
@@ -228,6 +226,15 @@ function responsive_theme_options_do_page() {
 				'placeholder' => ''
 			),
 			array(
+					'title'       => __( 'Enable Sticky Header?', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'checkbox',
+					'id'          => 'sticky-header',
+					'description' => __( 'Check to enable', 'responsive' ),
+					'placeholder' => ''
+			),
+			array(
 				'title'       => __( 'Enable Featured images?', 'responsive' ),
 				'subtitle'    => '',
 				'heading'     => '',
@@ -255,7 +262,8 @@ function responsive_theme_options_do_page() {
 				'placeholder' => '',
 				'options'     => array(
 						'default-layout'  => __( 'Default', 'responsive' ),
-						'full-width-layout' => __( 'Full Width Layout', 'responsive' )
+						'full-width-layout' => __( 'Full Width Layout', 'responsive' ),
+						'full-width-no-box'  => __('Full Width Without boxes','responsive')
 				)
 			),
 			array(
@@ -393,6 +401,23 @@ function responsive_theme_options_do_page() {
 				'id'          => 'front_page',
 				'description' => sprintf( __( 'Overrides the WordPress %1sfront page option%2s', 'responsive' ), '<a href="options-reading.php">', '</a>' ),
 				'placeholder' => ''
+			),
+			array(
+					'title'       => __( 'Enable Slider on Home Page', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'checkbox',
+					'id'          => 'enable_slider',
+					'description' => '' ,
+					'placeholder' => ''
+			),
+			array(
+					'title'       => __( 'Slidedeck shortcode', 'responsive' ),
+					'subtitle'    => '',
+					'id'          => 'home_slider',
+					'heading'     => '',
+					'type'        => 'text',
+					'description' => __( 'Create slider using Slidedeck', 'responsive' ),
 			),
 			array(
 				'title'       => __( 'Headline', 'responsive' ),
@@ -619,8 +644,16 @@ function responsive_theme_options_do_page() {
 					'placeholder' => '',
 					'options'     => Responsive_Options::options_posts()
 			),
+			array(
+					'title'       => __( 'Click to disable home page widgets', 'responsive' ),
+					'subtitle'    => '',
+					'heading'     => '',
+					'type'        => 'checkbox',
+					'id'          => 'home-widgets',					
+					'placeholder' => ''
+			),
 			
-		),
+		),		
 		'layouts' => array(
 			array(
 				'title'       => __( 'Default Static Page Layout', 'responsive' ),
@@ -650,7 +683,7 @@ function responsive_theme_options_do_page() {
 				'id'          => 'blog_posts_index_layout_default',
 				'description' => '',
 				'placeholder' => '',
-				'options'     => Responsive_Options::valid_layouts()
+				'options'     => Responsive_Options::blog_valid_layouts()
 			)
 
 		),
@@ -761,6 +794,15 @@ function responsive_theme_options_do_page() {
 				'type'        => 'text',
 				'id'          => 'foursquare_uid',
 				'description' => __( 'Enter your foursquare URL', 'responsive' ),
+				'placeholder' => ''
+			),
+			array(
+				'title'       => __( 'Email Address', 'responsive' ),
+				'subtitle'    => '',
+				'heading'     => '',
+				'type'        => 'text',
+				'id'          => 'email_uid',
+				'description' => __( 'Enter your Email Address', 'responsive' ),
 				'placeholder' => ''
 			)
 
@@ -881,6 +923,7 @@ function responsive_theme_options_validate( $input ) {
 		$input['yelp_uid']                    = esc_url_raw( $input['yelp_uid'] );
 		$input['vimeo_uid']                   = esc_url_raw( $input['vimeo_uid'] );
 		$input['foursquare_uid']              = esc_url_raw( $input['foursquare_uid'] );
+		$input['email_uid']                   = sanitize_email( $input['email_uid'] );
 		$input['responsive_inline_css']       = wp_kses_stripslashes( isset($input['responsive_inline_css']) );
 		$input['responsive_inline_js_head']   = wp_kses_stripslashes( $input['responsive_inline_js_head'] );
 		$input['responsive_inline_js_footer'] = wp_kses_stripslashes( $input['responsive_inline_js_footer'] );

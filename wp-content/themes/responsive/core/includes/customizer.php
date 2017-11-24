@@ -30,6 +30,13 @@ function responsive_customize_register( $wp_customize ) {
 		'settings'              => 'responsive_theme_options[override_woo]',
 		'type'                  => 'checkbox'
 	) );
+	$wp_customize->add_setting( 'responsive_theme_options[sticky-header]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
+	$wp_customize->add_control( 'res_sticky-header', array(
+			'label'                 => __( 'Enable Sticky Header?', 'responsive' ),
+			'section'               => 'theme_elements',
+			'settings'              => 'responsive_theme_options[sticky-header]',
+			'type'                  => 'checkbox'
+	) );
 	$wp_customize->add_setting( 'responsive_theme_options[featured_images]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
 	$wp_customize->add_control( 'res_featured_images', array(
 		'label'                 => __( 'Enable featured images?', 'responsive' ),
@@ -52,7 +59,8 @@ function responsive_customize_register( $wp_customize ) {
 			'type'                  => 'select',
 			'choices'               => array(
 								'default-layout'  => __('Default','responsive'),
-					            'full-width-layout' => __('Full Width Layout','responsive'),   
+					            'full-width-layout' => __('Full Width Layout','responsive'),
+								'full-width-no-box'  => __('Full Width Without boxes','responsive'),
 							)	 
 			));
 	$wp_customize->add_setting( 'responsive_theme_options[cta_button]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
@@ -89,6 +97,26 @@ function responsive_customize_register( $wp_customize ) {
 /*--------------------------------------------------------------
 	// Home Page
 --------------------------------------------------------------*/
+	$args = array(
+			'type'         => 'post',
+			'orderby'      => 'name',
+			'order'        => 'ASC',
+			'hide_empty'   => 1,
+			'hierarchical' => 1,
+			'taxonomy'     => 'category',
+	);
+	$option_categories = array();
+	$category_lists = get_categories( $args );
+	$option_categories[''] = esc_html( __( 'Choose Category', 'responsive' ) );
+	foreach ( $category_lists as $category ) {
+		$option_categories[ $category->term_id ] = $category->name;
+	}
+	
+	$option_all_post_cat = array();
+	foreach( $category_lists as $category ){
+		$option_all_post_cat[$category->term_id] = $category->name;
+	}
+	
 	/* Option list of all post */
 	$options_posts = array();
 	$options_posts_obj = get_posts('posts_per_page=-1');
@@ -108,6 +136,22 @@ function responsive_customize_register( $wp_customize ) {
 		'settings'              => 'responsive_theme_options[front_page]',
 		'type'                  => 'checkbox',
 		'description'           => __( 'Overrides the WordPress front page option', 'responsive' )
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[enable_slider]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
+	$wp_customize->add_control( 'enable_slider', array(
+			'label'                 => __( 'Enable Slider on Home Page', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[enable_slider]',
+			'type'                  => 'checkbox',			
+	) );
+	$wp_customize->add_setting( 'responsive_theme_options[home_slider]', array( 'sanitize_callback' => 'sanitize_text_field','transport' => 'postMessage', 'type' => 'option' ) );
+	//$wp_customize->add_setting( 'responsive_theme_options[contact_content]', array( 'sanitize_callback' => 'sanitize_text_field','transport' => 'postMessage', 'type' => 'option' ) );
+	$wp_customize->add_control( 'home_slider', array(
+			'label'                 => __( 'Slidedeck shortcode', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[home_slider]',
+			'description'           => __( 'Create slider using Slidedeck', 'responsive' ),
+			'type'                  => 'text',			
 	) );
 	$wp_customize->add_setting( 'responsive_theme_options[home_headline]', array( 'sanitize_callback' => 'sanitize_text_field', 'transport' => 'postMessage','default' => __( 'HAPPINESS', 'responsive' ), 'type' => 'option' ));
 	$wp_customize->add_control( 'res_home_headline', array(
@@ -175,7 +219,8 @@ function responsive_customize_register( $wp_customize ) {
 		'type'                  => 'textarea',
 		'description'           => __( 'Paste your shortcode, video or image source', 'responsive' ),
                 'priority'              => 20
-	) );
+	) );	
+	
 	$wp_customize->add_setting( 'responsive_theme_options[about]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
 	$wp_customize->add_control( 'about', array(
 			'label'                 => __( 'Enable About Section', 'responsive' ),
@@ -339,9 +384,16 @@ function responsive_customize_register( $wp_customize ) {
 			'choices'               => $options_posts,
 			'priority' => 40
 	) );
+	$wp_customize->add_setting( 'responsive_theme_options[home-widgets]', array( 'sanitize_callback' => 'responsive_sanitize_checkbox', 'type' => 'option' ) );
+	$wp_customize->add_control( 'home-widgets', array(
+			'label'                 => __( 'Click to disable home page widgets', 'responsive' ),
+			'section'               => 'home_page',
+			'settings'              => 'responsive_theme_options[home-widgets]',
+			'type'                  => 'checkbox',			
+			'priority' => 41
+	) );
 	
 	
-
 /*--------------------------------------------------------------
 	// Default Layouts
 --------------------------------------------------------------*/
@@ -366,15 +418,37 @@ function responsive_customize_register( $wp_customize ) {
 		'type'                  => 'select',
 		'choices'               => Responsive_Options::valid_layouts()
 	) );
-	$wp_customize->add_setting( 'responsive_theme_options[blog_posts_index_layout_default]', array( 'sanitize_callback' => 'responsive_sanitize_default_layouts', 'type' => 'option' ) );
+	$wp_customize->add_setting( 'responsive_theme_options[blog_posts_index_layout_default]', array( 'sanitize_callback' => 'responsive_sanitize_blog_default_layouts', 'type' => 'option' ) );
 	$wp_customize->add_control( 'res_hblog_posts_index_layout_default', array(
 		'label'                 => __( 'Default Blog Posts Index Layout', 'responsive' ),
 		'section'               => 'default_layouts',
 		'settings'              => 'responsive_theme_options[blog_posts_index_layout_default]',
 		'type'                  => 'select',
-		'choices'               => Responsive_Options::valid_layouts()
+		'choices'               => Responsive_Options::blog_valid_layouts()
 	) );
+	
 
+
+/* Blog page setting */
+	$wp_customize->add_section( 'blog_page', array(
+			'title'    => __( 'Blog page Settings', 'responsive' ),			
+	) );
+	$wp_customize->add_setting( 'exclude_post_cat', array( 'sanitize_callback' => 'responsive_sanitize_multiple_checkboxes') );
+	$wp_customize->add_control(
+			new responsive_Customize_Control_Checkbox_Multiple(
+					$wp_customize,
+					'exclude_post_cat',
+					array(
+							'section'       => 'blog_page',
+							'label'         => __( 'Exclude Categories from Blog page', 'responsive' ),
+							'description'   => __( 'Please choose the post categories that should not be displayed on the blog page' ),
+							'settings'      => 'exclude_post_cat',
+							'choices'       => $option_all_post_cat
+					)
+			)
+	);	
+	
+	
 /*--------------------------------------------------------------
 	// SOCIAL MEDIA SECTION
 --------------------------------------------------------------*/
@@ -492,6 +566,12 @@ function responsive_customize_register( $wp_customize ) {
 		'section'           => 'responsive_social_media',
 		'settings'          => 'responsive_theme_options[foursquare_uid]'
 	) ) );
+	$wp_customize->add_setting( 'responsive_theme_options[email_uid]' , array( 'sanitize_callback' => 'sanitize_email', 'type' => 'option' ));
+	$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'email_uid', array(
+			'label'             => __( 'Email Address', 'responsive' ),
+			'section'           => 'responsive_social_media',
+			'settings'          => 'responsive_theme_options[email_uid]'
+	) ) );
         
         /**
  * Validates the Call to Action Button styles
@@ -520,7 +600,8 @@ function responsive_validate_site_layout( $input ) {
 	
 	$valid = array(
 			'default-layout' => 'Default',
-			'full-width-layout' => 'Full Width Layout'
+			'full-width-layout' => 'Full Width Layout',
+			'full-width-no-box' =>'Full Width Without boxes' 
 	);
 
 	if( array_key_exists( $input, $valid ) ) {
@@ -696,8 +777,23 @@ function responsive_sanitize_default_layouts( $input ) {
 	$option = Responsive_Options::valid_layouts();
 	if ( array_key_exists( $input, $option ) ) {	
 		$output = $input;	
+	}
+	
+	return $output;
+}
+function responsive_sanitize_blog_default_layouts( $input ) {
+	$output = '';
+	$option = Responsive_Options::blog_valid_layouts();	
+	if ( array_key_exists( $input, $option ) ) {		
+		$output = $input;
 	}	
 	return $output;
+}
+function responsive_sanitize_multiple_checkboxes( $values ) {
+
+	$multi_values = !is_array( $values ) ? explode( ',', $values ) : $values;	
+	
+	return !empty( $multi_values ) ? array_map( 'sanitize_text_field', $multi_values ) : array();
 }
 
 

@@ -22,7 +22,7 @@ Template Name:  Landing Page (no menu)
  */
 
 get_header(); ?>
-
+<div id="content-outer">
 <div id="content-full" class="grid col-940">
 
 	<?php if ( have_posts() ) : ?>
@@ -60,5 +60,5 @@ get_header(); ?>
 	?>
 
 </div><!-- end of #content-full -->
-
+</div>
 <?php get_footer(); ?>

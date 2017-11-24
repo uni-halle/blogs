@@ -21,7 +21,7 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 
 get_header(); ?>
-
+<div id="content-outer">
 <div id="content" class="<?php echo esc_attr( implode( ' ', responsive_get_content_classes() ) ); ?>" role="main">
 
 	<?php get_template_part( 'loop-header', get_post_type() ); ?>
@@ -89,4 +89,5 @@ get_header(); ?>
 </div><!-- end of #content -->
 
 <?php get_sidebar(); ?>
+</div>
 <?php get_footer(); ?>

@@ -22,6 +22,7 @@ if ( !defined( 'ABSPATH' ) ) {
 
 get_header(); ?>
 
+<div id="content-outer">
 <div id="content" class="grid col-620" role="main">
 
 	<?php if ( have_posts() ) : ?>
@@ -69,4 +70,5 @@ get_header(); ?>
 </div><!-- end of #content -->
 
 <?php get_sidebar(); ?>
+</div>
 <?php get_footer(); ?>

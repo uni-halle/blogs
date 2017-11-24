@@ -52,6 +52,11 @@
 	.show-980 {
 		display: block;
 	}
+	.full-width-no-box #testimonial_div .section_title {padding-top: 17px;}
+	#about_div .section_title::after {margin: 0 auto;top:40px;}
+	#about_div .section_title {text-align: center;}
+	#about_div .about-content {text-align: center;}
+	#about_div .about_cta {margin-top: 0;}
 	.contact_div .contact_right {margin-left: 0%;}
 	.contact_right p {margin: 0;}
 	.contact_div .contact_left, .contact_div .contact_right {text-align: center;}
@@ -142,7 +147,13 @@
 		text-align: left;
 		cursor: pointer;
 	}
-
+	#about_div .about_text {
+		padding: 0 20px 0 20px;
+	}
+	#about_div .about_cta {margin-top: 0;}
+	#about_div .section_title {
+		padding-left:20px; 
+	}	
 	.js .main-nav .menu li.current_page_item,
 	.js .menu .current_page_item a,
 	.js .menu .current-menu-item a {
@@ -258,6 +269,7 @@
 
 	#footer .social-icons {
 		padding-bottom: 10px;
+		padding-top:10px;
 		text-align: center;
 	}
 	.powered {text-align:center;padding: 0;}

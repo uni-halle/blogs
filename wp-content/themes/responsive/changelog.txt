@@ -8,6 +8,22 @@ Changelog Legend:
 [x] = Deleted
 [!] = Bugs
 
+(10/26/17) - Added New Feature - Version 3.6
+[+] Option added to filter categories from Blog page
+[+] Option added to enable/disable home page widgets
+[*] Improved single post design
+
+(10/09/17) - Added New Feature - Version 3.5
+[+] Sticky header option added
+[+] Email social option added
+[+] New Blog layout with 3 Column added
+[*] Improved scroll to top button look
+[*] Changed About box look
+
+(09/29/17) - Added New Feature - Version 3.4
+[+] Added Full-width Without Boxes Site layout option
+[+] Added option to include SlideDeck slider on home page
+
 (09/13/17) - Added New Feature - Version 3.3
 [+] Added Full-width Site layout option
 
