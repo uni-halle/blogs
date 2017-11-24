@@ -1,0 +1,326 @@
+@font-face {
+  $font-path: 'https://d15r06k2ko210l.cloudfront.net/assets/os-icon-font';
+
+  font-family: "os-icon-font";
+  font-style: normal;
+  font-weight: normal;
+  src: url("#{$font-path}.eot#iefix") format("embedded-opentype"),
+  url("#{$font-path}.ttf") format("truetype"),
+  url("#{$font-path}.woff") format("woff"),
+  url("#{$font-path}.svg#os-icon-font") format("svg");
+}
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'os-icon-font' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-os-form-address:before {
+  content: "\e900";
+}
+.icon-os-form-email:before {
+  content: "\e901";
+}
+.icon-os-form-name:before {
+  content: "\e902";
+}
+.icon-os-form-phone:before {
+  content: "\e903";
+}
+.icon-os-common-arrow-left2:before {
+  content: "\e904";
+}
+.icon-os-common-arrow-right2:before {
+  content: "\e905";
+}
+.icon-os-reports-list:before {
+  content: "\e906";
+}
+.icon-os-reports-personality:before {
+  content: "\e907";
+}
+.icon-os-reports-poll:before {
+  content: "\e908";
+}
+.icon-os-reports-set:before {
+  content: "\e909";
+}
+.icon-os-widget-slideshow:before {
+  content: "\e90a";
+}
+.icon-os-reports-trivia:before {
+  content: "\e90b";
+}
+.icon-os-widget-form:before {
+  content: "\e963";
+}
+.icon-os-common-up:before {
+  content: "\e90c";
+}
+.icon-os-layout-image-poll:before {
+  content: "\e90d";
+}
+.icon-os-common-arrow-left:before {
+  content: "\e90e";
+}
+.icon-os-common-arrow-right:before {
+  content: "\e90f";
+}
+.icon-os-form-user:before {
+  content: "\e910";
+}
+.icon-os-sn-pinterest:before {
+  content: "\e911";
+}
+.icon-os-sn-reddit:before {
+  content: "\e912";
+}
+.icon-os-sn-whatsapp:before {
+  content: "\e913";
+}
+.icon-os-brand-logo-small:before {
+  content: "\e914";
+}
+.icon-os-brand-logo:before {
+  content: "\e915";
+}
+.icon-os-common-addnew:before {
+  content: "\e916";
+}
+.icon-os-common-checkbox-blank:before {
+  content: "\e917";
+}
+.icon-os-common-checkbox-checked:before {
+  content: "\e918";
+}
+.icon-os-common-close:before {
+  content: "\e919";
+}
+.icon-os-common-date:before {
+  content: "\e91a";
+}
+.icon-os-common-dot:before {
+  content: "\e91b";
+}
+.icon-os-common-down:before {
+  content: "\e91c";
+}
+.icon-os-common-help:before {
+  content: "\e91d";
+}
+.icon-os-common-link:before {
+  content: "\e91e";
+}
+.icon-os-common-menu-dd-closed:before {
+  content: "\e91f";
+}
+.icon-os-common-menu-dd-open:before {
+  content: "\e920";
+}
+.icon-os-common-menu-medium:before {
+  content: "\e921";
+}
+.icon-os-common-menu:before {
+  content: "\e922";
+}
+.icon-os-common-minimize:before {
+  content: "\e923";
+}
+.icon-os-common-more:before {
+  content: "\e924";
+}
+.icon-os-common-plus:before {
+  content: "\e925";
+}
+.icon-os-common-poll:before {
+  content: "\e926";
+}
+.icon-os-common-search:before {
+  content: "\e927";
+}
+.icon-os-common-settings:before {
+  content: "\e928";
+}
+.icon-os-common-tip:before {
+  content: "\e929";
+}
+.icon-os-filter-all:before {
+  content: "\e92a";
+}
+.icon-os-filter-facebook:before {
+  content: "\e92b";
+}
+.icon-os-filter-female:before {
+  content: "\e92c";
+}
+.icon-os-filter-friends:before {
+  content: "\e92d";
+}
+.icon-os-filter-gplus:before {
+  content: "\e92e";
+}
+.icon-os-filter-hidden:before {
+  content: "\e92f";
+}
+.icon-os-filter-male:before {
+  content: "\e930";
+}
+.icon-os-filter-public:before {
+  content: "\e931";
+}
+.icon-os-filter-seperator:before {
+  content: "\e932";
+}
+.icon-os-filter-twitter:before {
+  content: "\e933";
+}
+.icon-os-form-check:before {
+  content: "\e934";
+}
+.icon-os-form-drag:before {
+  content: "\e935";
+}
+.icon-os-form-error:before {
+  content: "\e936";
+}
+.icon-os-form-image:before {
+  content: "\e937";
+}
+.icon-os-form-success:before {
+  content: "\e938";
+}
+.icon-os-form-video:before {
+  content: "\e939";
+}
+.icon-os-hp-engagement:before {
+  content: "\e93a";
+}
+.icon-os-hp-insights:before {
+  content: "\e93b";
+}
+.icon-os-hp-revenue:before {
+  content: "\e93c";
+}
+.icon-os-hp-traffic:before {
+  content: "\e93d";
+}
+.icon-os-layout-h2h:before {
+  content: "\e93e";
+}
+.icon-os-layout-mc:before {
+  content: "\e93f";
+}
+.icon-os-layout-thumbnails:before {
+  content: "\e940";
+}
+.icon-os-menu-content:before {
+  content: "\e941";
+}
+.icon-os-menu-placements:before {
+  content: "\e942";
+}
+.icon-os-menu-reports:before {
+  content: "\e943";
+}
+.icon-os-menu-revenue:before {
+  content: "\e944";
+}
+.icon-os-pinterest:before {
+  content: "\e945";
+}
+.icon-os-poll-client:before {
+  content: "\e946";
+}
+.icon-os-poll-voter:before {
+  content: "\e947";
+}
+.icon-os-quiz-correct:before {
+  content: "\e948";
+}
+.icon-os-quiz-restart:before {
+  content: "\e949";
+}
+.icon-os-quiz-wrong:before {
+  content: "\e94a";
+}
+.icon-os-report-contacts:before {
+  content: "\e94b";
+}
+.icon-os-report-discovery:before {
+  content: "\e94c";
+}
+.icon-os-report-revenue:before {
+  content: "\e94d";
+}
+.icon-os-report-stats:before {
+  content: "\e94e";
+}
+.icon-os-report-time:before {
+  content: "\e94f";
+}
+.icon-os-report-views:before {
+  content: "\e950";
+}
+.icon-os-reports-emails:before {
+  content: "\e951";
+}
+.icon-os-reports-polls:before {
+  content: "\e952";
+}
+.icon-os-reports-revenue:before {
+  content: "\e953";
+}
+.icon-os-reports-sets:before {
+  content: "\e954";
+}
+.icon-os-reports-time:before {
+  content: "\e955";
+}
+.icon-os-reports-traffic:before {
+  content: "\e956";
+}
+.icon-os-reports-votes:before {
+  content: "\e957";
+}
+.icon-os-set-arrow-left:before {
+  content: "\e958";
+}
+.icon-os-set-arrow-right:before {
+  content: "\e959";
+}
+.icon-os-sn-embed:before {
+  content: "\e95a";
+}
+.icon-os-sn-facebook:before {
+  content: "\e95b";
+}
+.icon-os-sn-gplus:before {
+  content: "\e95c";
+}
+.icon-os-sn-tumblr:before {
+  content: "\e95d";
+}
+.icon-os-sn-twitter:before {
+  content: "\e95e";
+}
+.icon-os-status-closed:before {
+  content: "\e95f";
+}
+.icon-os-status-draft:before {
+  content: "\e960";
+}
+.icon-os-status-open:before {
+  content: "\e961";
+}
+.icon-os-status-published:before {
+  content: "\e962";
+}

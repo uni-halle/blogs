@@ -1,0 +1,86 @@
+@use autoprefixer;
+
+// This file adopted from tingle.js package (v0.11.0) (dist/tingle.css file)
+
+.opinionstage-content-popup {
+  &.tingle-modal {
+    * {
+      box-sizing: border-box;
+    }
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 159900; // same z-index uses WP media modal popup
+    display: flex;
+    visibility: hidden;
+    flex-direction: column;
+    align-items: center;
+    padding: 4vh;
+    overflow: hidden;
+    background: rgba(0, 0, 0, .8);
+    opacity: 0;
+    cursor: pointer;
+    transition: transform .2s ease;
+  }
+
+  // modal
+  .tingle-modal-box {
+    position: relative;
+    flex-shrink: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    max-width: 945px;
+    min-width: 875px;
+    width: 70%;
+    height: 92vh;
+    background: #fff;
+    opacity: 1;
+    cursor: auto;
+    transition: transform .3s cubic-bezier(.175, .885, .32, 1.275);
+    transform: scale(.8);
+  }
+
+  .tingle-modal-box__content {
+    padding: 0;
+  }
+
+  // state
+  &.tingle-modal--visible {
+    visibility: visible;
+    opacity: 1;
+
+    .tingle-modal-box {
+      transform: scale(1);
+    }
+  }
+
+  // responsive
+  @media (max-width : 540px) {
+    .tingle-modal-box {
+      width: auto;
+    }
+
+    &.tingle-modal {
+      top: 60px;
+      display: block;
+      width: 100%;
+    }
+
+    &.tingle-modal--overflow {
+      padding: 0;
+    }
+  }
+}
+
+// attached to body tag
+.tingle-enabled {
+  overflow: hidden;
+  height: 100%;
+
+  .tingle-content-wrapper {
+    filter: blur(15px);
+  }
+}
