@@ -8,12 +8,10 @@ Most important : enjoy it!
 
 
 ######## Demo, Documentation, FAQs and Support #########
-* DEMO : http://demo.presscustomizr.com/
+* DEMO : https://demo.presscustomizr.com/
 * DOCUMENTATION : http://docs.presscustomizr.com/collection/76-customizr-theme
 * FAQs : http://docs.presscustomizr.com/category/90-faq-and-common-issues
-* SUPPORT : https://wordpress.org/support/theme/customizr
-* SNIPPETS : http://presscustomizr.com/code-snippets/
-* HOOKS API : http://presscustomizr.com/customizr/hooks-api/
+* SUPPORT FORUM : https://wordpress.org/support/theme/customizr
 
 
 
@@ -40,6 +38,27 @@ The exceptions to this license are as follows:
 
 
 #######################  Changelog ######################
+= 4.0.9 October 9th 2017 =
+* Fix : global skin CSS not printed when no custom header skin. Fixes #1215.
+* Fix : various html fixes like duplicated ids or data attributes
+* Fix : featured pages not translated by wpml. Fixes #1205
+* Fix : don't update the defaults when wp_installing()
+* Fix : preview error on singulars. Fixes #1194
+* Fix : typo in customizer controls
+* Fix : slider caption elements, default Fittext minsizes too high. Fixes #1191
+* Fix : link whole slide not including the caption. Fixes #1140
+* Fix : colors of the search form in dark overlay. Fixes #1185
+* Fix : closing slide's title h1 html tag. Fixes #1188
+* Fix : hamburger too dark on hover. fixes #1200
+* Fix : hamburger lines taking a 2px height randomly
+* Fix : logo / title stays shrinked when slowly scrolling up. fixes #1199. fixes #1192
+* Imp : slider bullets closer to the bottom and margin set in em
+* Imp : improve ol/ul margins in .tc-content-inner (.entry-content). Fixes #1183. Also slightly improve the cite element style.
+* Imp : set shrinked logo height with max-height instead of height => to inherit the animation
+* Imp : snaked submenu caret moved and rotated on the relevant side when "snaking"
+* Updated : footer credit links to customizr theme page instead of presscustomizr home page
+* Added : header custom back/fore-ground color options in modern style
+
 = 4.0.8 September 17th 2017 =
 * Fix: handle user's singular featured image height in singular. Fixes #1166.
 * Fix: correct horizontal positioning of the primary navbar menu. Fixes #1175.
