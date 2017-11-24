@@ -3,8 +3,8 @@ Contributors: wpchefgadget, alanft
 Donate link: http://www.justgiving.com/widgetlogic_cancerresearchuk
 Tags: widget, admin, conditional tags, filter, context
 Requires at least: 3.0
-Tested up to: 4.8
-Stable tag: 5.8.2
+Tested up to: 4.9
+Stable tag: 5.9.0
 License: GPLv2 or later
 
 Widget Logic lets you control on which pages widgets appear using WP's conditional tags. It also adds a 'widget_content' filter.
@@ -118,6 +118,10 @@ Tighten up your definitions with PHPs 'logical AND' &&, for example:
 2. The plugin options are at the foot of the usual widget admin page… `widget_content` filter, `wp_reset_query` option, 'load logic point' and 'evaluate more than once'. You can also export and import your site's WL options as a plain text file for a quick backup/restore and to help troubleshoot issues.
 
 == Changelog ==
+
+= 5.9.0 =
+
+wp_reset_query works better under certain conditions.
 
 = 5.8.2 =
 The code has been adapted to work on the servers with restricted <?=
