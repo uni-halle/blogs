@@ -382,7 +382,7 @@ if ( !class_exists('FG_Joomla_to_WordPress_Admin', false) ) {
 			$data = $this->plugin_options;
 
 			$data['title'] = __('Import Joomla (FG)', 'fg-joomla-to-wordpress');
-			$data['description'] = __('This plugin will import sections, categories, posts, medias (images, attachments) and web links from a Joomla database into WordPress.<br />Compatible with Joomla versions 1.5 to 3.6.', 'fg-joomla-to-wordpress');
+			$data['description'] = __('This plugin will import sections, categories, posts, medias (images, attachments) and web links from a Joomla database into WordPress.', 'fg-joomla-to-wordpress');
 			$data['description'] .= "<br />\n" . sprintf(__('For any issue, please read the <a href="%s" target="_blank">FAQ</a> first.', 'fg-joomla-to-wordpress'), $this->faq_url);
 			$data['database_info'] = $this->get_database_info();
 
@@ -1891,6 +1891,7 @@ SQL;
 			}
 
 			$basename = basename($new_filename);
+			$basename = sanitize_file_name($basename);
 			$new_full_filename = $upload_path . '/' . $basename;
 
 //			print "Copy \"$old_filename\" => $new_full_filename<br />";
@@ -2098,6 +2099,11 @@ SQL;
 						if ( preg_match('/(align="|float: )(left|right)/', $new_link, $matches) ) {
 							$alignment = 'align' . $matches[2];
 						}
+						if ( preg_match('/width="(\d+)"/', $new_link, $matches) ) {
+							$width = $matches[1];
+						} else {
+							$width = '';
+						}
 						if ( preg_match_all('#(src|href)="(.*?)"#i', $new_link, $matches, PREG_SET_ORDER) ) {
 							$caption = '';
 							foreach ( $matches as $match ) {
@@ -2128,7 +2134,7 @@ SQL;
 													if ( preg_match('/title="(.*?)"/', $link['old_link'], $matches_caption) ) {
 														$caption_value = str_replace('%', '%%', $matches_caption[1]);
 														$align_value = ($alignment != '')? $alignment : 'alignnone';
-														$caption = '[caption id="attachment_' . $media['attachment_id'] . '" align="' . $align_value . '"' . $width_assertion . ']%s' . $caption_value . '[/caption]';
+														$caption = '[caption id="attachment_' . $media['attachment_id'] . '" align="' . $align_value . '" width="' . $width . '"]%s' . $caption_value . '[/caption]';
 													}
 												}
 
