@@ -551,6 +551,10 @@ function czr_fn_header_desktop_option_map() {
                           'type'          => 'checkbox' ,
                           'priority'      => 10,
                           'notice'    => __( 'You can display a topbar above the header including various blocks like a menu, your social links, the search icon or the WooCommerce cart.' , 'customizr' ),
+                          'ubq_section'   => array(
+                              'section' => 'menu_locations',
+                              'priority' => '0'
+                          )
         ),
         'tc_social_in_header' =>  array(
                           'default'       => 1,
@@ -574,7 +578,7 @@ function czr_fn_header_desktop_option_map() {
         ),
         'tc_header_desktop_tagline' => array(
                           'default'   => 'brand_below',
-                          'label'     => sprintf( '%1$s : %2$s', __('Desktop devices', 'customizr' ) , __( 'set the tagline location' , 'customizr' ) ),
+                          'label'     => sprintf( __('Desktop devices : %s', 'customizr' ) , __( 'set the tagline location' , 'customizr' ) ),
                           //'title'     => sprintf( '%1$s %2$s', __( 'Header settings for', 'customizr' ) , __('Desktop devices', 'customizr' ) ),
                           'control'   => 'CZR_controls' ,
                           'section'   => 'header_desktop_sec',
@@ -595,22 +599,24 @@ function czr_fn_header_desktop_option_map() {
 
         'tc_header_desktop_search' => array(
                           'default'   => 'navbar',
-                          'label'     => sprintf( '%1$s : %2$s', __('Desktop devices', 'customizr' ) , __( 'set the search button location' , 'customizr' ) ),
+                          'title'     => __( 'Search Icon', 'customizr' ),
+                          'label'     => sprintf( __('Desktop devices : %s', 'customizr' ) , __( 'set the search icon location' , 'customizr' ) ),
                           'control'   => 'CZR_controls' ,
                           'section'   => 'header_desktop_sec',
                           'type'      => 'select',
                           'choices'   => array(
                               'none'          => __( 'Do not display', 'customizr'),
                               'topbar'        => __( 'Display in the topbar', 'customizr'),
-                              'navbar'        => __( 'Display in the primary navbar', 'customizr')
+                              'navbar'        => __( 'Display in the main header section', 'customizr')
                           ),
                           'priority'  => 15,
+                          'notice'    => __( 'If you want to display the search icon in your topbar, make sure the topbar is displayed by checking "Display a topbar" above.' , 'customizr' )
 
         ),
 
         'tc_header_desktop_wc_cart' => array(
                           'default'   => 'topbar',
-                          'label'     => sprintf( '%1$s : %2$s', __('Desktop devices', 'customizr' ) , sprintf('<span class="dashicons dashicons-cart"></span> %s', __( "Display the shopping cart in the header" , "customizr" ) ) ),
+                          'label'     => sprintf( __('Desktop devices : %s', 'customizr' ) , sprintf('<span class="dashicons dashicons-cart"></span> %s', __( "Display the shopping cart in the header" , "customizr" ) ) ),
                           'control'   => 'CZR_controls' ,
                           'section'   => 'header_desktop_sec',
                           'notice'    => __( "WooCommerce: check to display a cart icon showing the number of items in your cart next to your header's tagline.", 'customizr' ),
@@ -618,7 +624,7 @@ function czr_fn_header_desktop_option_map() {
                           'choices'   => array(
                               'none'          => __( 'Do not display', 'customizr'),
                               'topbar'        => __( 'Display in the topbar', 'customizr'),
-                              'navbar'        => __( 'Display in the primary navbar', 'customizr')
+                              'navbar'        => __( 'Display in the main header section', 'customizr')
                           ),
                           'priority'  => 20,
                           'active_callback' => apply_filters( 'tc_woocommerce_options_enabled', '__return_false' )
@@ -627,7 +633,8 @@ function czr_fn_header_desktop_option_map() {
         'tc_header_desktop_sticky' => array(
                           'default'   => 'stick_up',
                           'control'   => 'CZR_controls',
-                          'label'     => sprintf( '%1$s : %2$s', __('Desktop devices', 'customizr' ) , __('set the header visibility on scroll', 'customizr') ),
+                          'title'     => __( 'Behaviour on scroll', 'customizr' ),
+                          'label'     => sprintf( __('Desktop devices : %s', 'customizr' ) , __('set the header visibility on scroll', 'customizr') ),
                           'section'   => 'header_desktop_sec',
                           'type'      => 'select',
                           'choices'   => array(
@@ -641,12 +648,12 @@ function czr_fn_header_desktop_option_map() {
         'tc_header_desktop_to_stick' => array(
                           'default'   => 'primary',
                           'control'   => 'CZR_controls',
-                          'label'     => sprintf( '%1$s : %2$s', __('Desktop devices', 'customizr' ) , __('select the header block to stick on scroll', 'customizr') ),
+                          'label'     => sprintf( __('Desktop devices : %s', 'customizr' ) , __('select the header block to stick on scroll', 'customizr') ),
                           'section'   => 'header_desktop_sec',
                           'type'      => 'select',
                           'choices'   => array(
                               'topbar'        => __( 'Topbar', 'customizr'),
-                              'primary'       => __( 'Primary navbar', 'customizr'),
+                              'primary'       => __( 'Main header section', 'customizr'),
                           ),
                           'priority'  => 30,
         ),
@@ -677,7 +684,7 @@ function czr_fn_header_mobile_option_map() {
         'tc_header_mobile_menu_layout' => array(
                           'default'   => 'mobile_menu',
                           'control'   => 'CZR_controls',
-                          'title'     => sprintf( '%1$s %2$s', __( 'Header settings for', 'customizr' ) , __('Mobile devices', 'customizr' ) ),
+                          'title'     => sprintf( __( 'Header settings for %s', 'customizr' ) , __('Mobile devices', 'customizr' ) ),
                           'label'     => sprintf( '%1$s : %2$s', __( 'Mobile devices', 'customizr' ) , __( 'Select the menu(s) to use for mobile devices', 'customizr') ),
                           'section'   => 'header_mobile_sec',
                           'type'      => 'select',
@@ -711,12 +718,18 @@ function czr_fn_header_mobile_option_map() {
         ),
 
         'tc_header_mobile_search' => array(
-                          'default'   => 1,
-                          'label'     => sprintf( '%1$s : %2$s', __('Mobile devices', 'customizr' )  , __( 'Display a search button in the header' , 'customizr' ) ),
+                          'default'   => czr_fn_user_started_before_version( '4.0.12', '2.0.17' ) ? 'menu' : 'navbar',
+                          'title'     => __( 'Search Icon', 'customizr' ),
+                          'label'     => sprintf( '%1$s : %2$s', __('Mobile devices', 'customizr' )  , __( 'display a search icon in the header' , 'customizr' ) ),
                           'control'   => 'CZR_controls' ,
                           'section'   => 'header_mobile_sec',
-                          'type'      => 'checkbox',
-                          'priority'  => 28,
+                          'type'      => 'select',
+                          'choices'   => array(
+                              'none'          => __( 'Do not display', 'customizr'),
+                              'navbar'        => __( 'Always visible in the mobile topbar', 'customizr'),
+                              'menu'          => __( 'Revealed in the expanded mobile menu', 'customizr'),
+                          ),
+                          'priority'  => 30,
 
         ),
         'tc_header_mobile_wc_cart' => array(
@@ -733,6 +746,7 @@ function czr_fn_header_mobile_option_map() {
         'tc_header_mobile_sticky' => array(
                           'default'   => 'stick_up',
                           'control'   => 'CZR_controls',
+                          'title'     => __( 'Behaviour on scroll', 'customizr' ),
                           'label'     => sprintf( '%1$s : %2$s', __('Mobile devices', 'customizr' ) , __('header menu visibility on scroll', 'customizr') ),
                           'section'   => 'header_mobile_sec',
                           'type'      => 'select',
@@ -1091,7 +1105,19 @@ function czr_fn_front_page_option_map( $get_default = null ) {
                             ),
                             'priority'      => 51
           ),
-
+          'tc_home_slider_dots'  =>  array(
+                            'default'       => 'on',
+                            'control'     => 'CZR_controls' ,
+                            'label'         => __( "Display navigation dots" , 'customizr' ),
+                            'section'       => 'frontpage_sec',
+                            'type'        => 'select' ,
+                            'choices'     => array(
+                                    'on'       => __( 'Yes' , 'customizr'),
+                                    'off'      => __( 'No' , 'customizr'),
+                            ),
+                            'priority'      => 51,
+                            'notice'        => __( 'When this option is checked, navigation dots are displayed at the bottom of the home slider.', 'customizr' )
+          ),
           'tc_slider_default_height' => array(
                             'default'       => 500,
                             'sanitize_callback' => 'czr_fn_sanitize_number',
@@ -1137,7 +1163,7 @@ function czr_fn_front_page_option_map( $get_default = null ) {
                                     1 => __( 'Enable' , 'customizr' ),
                                     0 => __( 'Disable' , 'customizr' ),
                             ),
-                            'priority'        => 55,
+                            'priority'        => 59,
           ),
 
           //display featured page images
@@ -1197,6 +1223,7 @@ function czr_fn_layout_option_map( $get_default = null ) {
 
           //Post sidebar layout
           'tc_sidebar_post_layout'  =>  array(
+                          'control'     => 'CZR_controls' ,
                           'default'       => 'l' ,//Default sidebar layout is on the left
                           'label'       => __( 'Choose the posts default layout' , 'customizr' ),
                           'section'     => 'post_layout_sec' ,
@@ -1204,38 +1231,76 @@ function czr_fn_layout_option_map( $get_default = null ) {
                           'choices'   => $get_default ? null : czr_fn_layout_choices(),
                           'priority'      => 30
           ),
-
-          //Post per page
-          'posts_per_page'  =>  array(
-                          'default'     => get_option( 'posts_per_page' ),
-                          'sanitize_callback' => 'czr_fn_sanitize_number',
-                          'control'     => 'CZR_controls' ,
-                          'title'         => __( 'Global Post Lists Settings' , 'customizr' ),
-                          'label'         => __( 'Maximum number of posts per page' , 'customizr' ),
-                          'section'       => 'post_lists_sec' ,
-                          'type'          => 'number' ,
-                          'step'        => 1,
-                          'min'         => 1,
-                          'priority'       => 10,
-                          'notice'      => __( 'This option defines the maximum number of posts or search results displayed in any list of posts of your website : blog page, archive page, search page. If the number of items to displayed is greater than your setting, the theme will automatically add a pagination link block at the bottom of the page.' , 'customizr' ),
-          ),
-
           //Page sidebar layout
           'tc_sidebar_page_layout'  =>  array(
-                            'default'       => 'l' ,//Default sidebar layout is on the left
-                            'label'       => __( 'Choose the pages default layout' , 'customizr' ),
-                            'section'     => 'post_layout_sec' ,
-                            'type'        => 'select' ,
-                            'choices'   => $get_default ? null : czr_fn_layout_choices(),
-                            'priority'       => 40,
-                            'notice'    => sprintf('<br/> %s<br/>%s',
-                                sprintf( __("The above layout options will set your layout globally for your post and pages. But you can also define the layout for each post and page individually. Learn how in the %s.", "customizr"),
-                                    sprintf('<a href="%1$s" title="%2$s" target="_blank">%2$s<span style="font-size: 17px;" class="dashicons dashicons-external"></span></a>' , esc_url('http://docs.presscustomizr.com/article/107-customizr-theme-options-pages-and-posts-layout'), __("Customizr theme documentation" , "customizr" )
-                                    )
-                                ),
-                                sprintf( __("If you need to change the layout design of the front page, then open the 'Front Page' section above this one.", "customizr") )
-                            )
+                          'control'     => 'CZR_controls',
+                          'default'       => 'l' ,//Default sidebar layout is on the left
+                          'label'       => __( 'Choose the pages default layout' , 'customizr' ),
+                          'section'     => 'post_layout_sec' ,
+                          'type'        => 'select' ,
+                          'choices'   => $get_default ? null : czr_fn_layout_choices(),
+                          'priority'       => 40,
+                          'notice'    => sprintf('<br/> %s<br/>%s',
+                              sprintf( __("The above layout options will set your layout globally for your post and pages. But you can also define the layout for each post and page individually. Learn how in the %s.", "customizr"),
+                                  sprintf('<a href="%1$s" title="%2$s" target="_blank">%2$s<span style="font-size: 17px;" class="dashicons dashicons-external"></span></a>' , esc_url('http://docs.presscustomizr.com/article/107-customizr-theme-options-pages-and-posts-layout'), __("Customizr theme documentation" , "customizr" )
+                                  )
+                              ),
+                              sprintf( __("If you need to change the layout design of the front page, then open the 'Front Page' section above this one.", "customizr") )
+                          )
           ),
+          //Page sidebar layout
+          'tc_single_author_block_location' =>  array(
+                          'control'     => 'CZR_controls',
+                          'default'     => czr_fn_user_started_before_version( '4.0.12', '2.0.17' ) ? 'below_main_content' : 'below_post_content',//Default sidebar layout is on the left
+                          'title'       => __( 'Pages & Posts default sections locations', 'customizr'),
+                          'label'       => __( 'Author Infos location' , 'customizr' ),
+                          'section'     => 'post_layout_sec' ,
+                          'type'        => 'select' ,
+                          'choices'     => array(
+                            'below_post_content'  => __( 'Right after the post content', 'customizr' ),
+                            'below_main_content'  => __( 'After the content and sidebars columns', 'customizr' )
+                          ),
+                          'priority'    => 50,
+                          'ubq_section'   => array(
+                              'section' => 'single_posts_sec',
+                              'priority' => '50'
+                           )
+          ),
+          //Page sidebar layout
+          'tc_single_related_posts_block_location' =>  array(
+                          'control'     => 'CZR_controls',
+                          'default'     => czr_fn_user_started_before_version( '4.0.12', '2.0.17' ) ? 'below_main_content' : 'below_post_content',//Default sidebar layout is on the left
+                          'label'       => __( 'Related Posts location' , 'customizr' ),
+                          'section'     => 'post_layout_sec' ,
+                          'type'        => 'select' ,
+                          'choices'     => array(
+                            'below_post_content'  => __( 'Right after the post content', 'customizr' ),
+                            'below_main_content'  => __( 'After the content and sidebars columns', 'customizr' )
+                          ),
+                          'priority'    => 52,
+                          'ubq_section'   => array(
+                              'section' => 'single_posts_sec',
+                              'priority' => '50'
+                           )
+          ),
+          //Page sidebar layout
+          'tc_singular_comments_block_location' =>  array(
+                          'control'     => 'CZR_controls',
+                          'default'     => czr_fn_user_started_before_version( '4.0.12', '2.0.17' ) ? 'below_main_content' : 'below_post_content',//Default sidebar layout is on the left
+                          'label'       => __( 'Comments location' , 'customizr' ),
+                          'section'     => 'post_layout_sec' ,
+                          'type'        => 'select' ,
+                          'choices'     => array(
+                            'below_post_content'  => __( 'Right after the post content', 'customizr' ),
+                            'below_main_content'  => __( 'After the content and sidebars columns', 'customizr' )
+                          ),
+                          'priority'     => 54,
+                          'ubq_section'   => array(
+                              'section' => 'single_posts_sec',
+                              'priority' => '50'
+                           )
+          ),
+
   );//end of layout_options
 
 }
@@ -1253,6 +1318,24 @@ function czr_fn_post_list_option_map( $get_default = null ) {
   }
 
   return array(
+          //Post per page
+          'posts_per_page'  =>  array(
+                          'default'     => get_option( 'posts_per_page' ),
+                          'sanitize_callback' => 'czr_fn_sanitize_number',
+                          'control'     => 'CZR_controls' ,
+                          'title'         => __( 'Global Post Lists Settings' , 'customizr' ),
+                          'label'         => __( 'Maximum number of posts per page' , 'customizr' ),
+                          'section'       => 'post_lists_sec' ,
+                          'type'          => 'number' ,
+                          'step'        => 1,
+                          'min'         => 1,
+                          'priority'       => 10,
+                          'notice'      => __( 'This option defines the maximum number of posts or search results displayed in any list of posts of your website : blog page, archive page, search page. If the number of items to displayed is greater than your setting, the theme will automatically add a pagination link block at the bottom of the page.' , 'customizr' ),
+                          'ubq_section'   => array(
+                              'section' => 'frontpage_sec',
+                              'priority' => '200'
+                           )
+          ),
           'tc_post_list_excerpt_length'  =>  array(
                             'default'       => 50,
                             'sanitize_callback' => 'czr_fn_sanitize_number',
@@ -1262,7 +1345,11 @@ function czr_fn_post_list_option_map( $get_default = null ) {
                             'type'          => 'number' ,
                             'step'          => 1,
                             'min'           => 0,
-                            'priority'      => 23
+                            'priority'      => 23,
+                            'ubq_section'   => array(
+                                'section' => 'frontpage_sec',
+                                'priority' => '210'
+                             )
           ),
           'tc_post_list_show_thumb'  =>  array(
                             'default'       => 1,
@@ -2026,6 +2113,19 @@ function czr_fn_performance_option_map( $get_default = null ) {
                             'type'        => 'checkbox',
                             'priority'    => 20,
                             'notice'      => __('Check this option to delay the loading of non visible images. Images below the viewport will be loaded dynamically on scroll. This can boost performances by reducing the weight of long web pages with images.' , 'customizr')
+          ),
+          'tc_slider_img_smart_load'  =>  array(
+                            'default'       => czr_fn_user_started_before_version( '4.0.10', '2.0.15' ) ? 0 : 1,
+                            'label'       => __( 'Lazy load the images in sliders' , 'customizr' ),
+                            'control'     =>  'CZR_controls',
+                            'section'     => 'performances_sec',
+                            'type'        => 'checkbox',
+                            'priority'    => 30,
+                            'notice'      => __('Check this option to delay the loading of non visible images in sliders. This can greatly improve the speed of your website.' , 'customizr'),
+                            'ubq_section'   => array(
+                                'section' => 'frontpage_sec',
+                                'priority' => '57'
+                            )
           )
   );
 }
@@ -2106,7 +2206,13 @@ function czr_fn_style_option_map( $get_default = null ) {
                                   'modern'      => __( 'Modern' , 'customizr' ),
                                   'classic'     => __( 'Classical' , 'customizr' ),
                             ),
-                            'notice'      => ! is_child_theme() ? $_notice :  sprintf( '%1$s <br/><br/> %2$s', $_notice, __( "Add the the following code to your wp-config.php file to switch between the classical and modern styles : <br/>define( 'CZR_MODERN_STYLE', true );.<br/><br/>The two styles can use different template files. If you have overriden templates in your child theme, it is recommended to switch style in a staging site before production.", 'customizr' ) )
+                            'notice'      => ! is_child_theme() ? $_notice :  sprintf( '%1$s <br/><br/> %2$s <br/>%3$s',
+                                $_notice,
+                                sprintf( __( 'You are using a child theme. This option must be changed from the parent theme. Activate the parent from %s.', 'customizr' ),
+                                    sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'themes.php' ), __( 'Appearance > themes', 'customizr') )
+                                ),
+                                __("The two styles can use different template files, that's why it is recommended to change the style option from the parent and test your child theme in a staging site before production.", 'customizr' )
+                            )
           )
 
   );
@@ -2361,7 +2467,7 @@ function czr_fn_popul_section_map( $_sections ) {
                         //'description' =>  __( 'Set up front page options' , 'customizr' ),
                         'section_class' => 'CZR_Customize_Sections',
                         'panel'   => '',//tc-content-panel',
-                        'active_callback' => 'czr_fn_is_home',
+                        //'active_callback' => 'czr_fn_is_home',
                         'ubq_panel'   => array(
                             'panel' => 'tc-content-panel',
                             'priority' => '10'

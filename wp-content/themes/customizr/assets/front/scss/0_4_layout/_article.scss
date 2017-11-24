@@ -383,12 +383,40 @@ section.post-related-articles {
     .entry-meta {
       margin: 0;
     }
-
-}
-
-
-
-
+    //adapt the post-title font-size when the related posts are inside the #content wrapper
+    //@see option tc_single_related_posts_block_location
+    @include media-breakpoint-down(md) {
+      .col-md-6 & {
+        .entry-title {
+            font-size: 2em;
+        }
+      }
+    }
+    //@media (min-width: 992px)
+    @include media-breakpoint-up(lg) {
+      .col-md-6 & {
+        .grid-container__square-mini .czr-related-post {
+          padding: 5px;
+        }
+      }
+      .col-md-6 & {
+        .grid__item {
+          -webkit-flex-wrap: wrap !important;
+          -ms-flex-wrap: wrap !important;
+          flex-wrap: wrap !important;
+        }
+      }
+      .col-md-6 & {
+        .grid__item section {
+          -webkit-box-flex: 0;
+          -webkit-flex: 0 0 100%;
+          -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+      }
+    }
+}//section.post-related-articles
 
 
 
@@ -509,6 +537,7 @@ section.post-related-articles {
   }
   @at-root .comment-link {
     color: $black;
+    padding-bottom: 2px;
     @extend .semi-bold;
     @include underlined_nocolor( 2px );
   }
@@ -550,7 +579,21 @@ section.post-related-articles {
 
 .comment-list li.comment { margin-top:$base-line-height*2; padding-top:$base-line-height*2; border-top:1px solid $grey-light; }
 .comment-list li.comment.depth-1:first-of-type { border:0; margin-top: 0 }
-.comment-list ul.children    { margin-left: calc(3em + #{$base-line-height});   }
+.comment-list ul.children {
+  margin-left: calc(3em + #{$base-line-height});
+  //adapt the threaded comments margin when the comments block is inside the #content wrapper
+  //@see option tc_single_related_posts_block_location
+  .col-md-6 &, .col-md-9 & {
+    margin-left: calc( 1.5em + #{$base-line-height} );
+  }
+}
+//adapt the threaded comments font-size when the comments block is inside the #content wrapper
+//@see option tc_single_related_posts_block_location
+.comment-list .comment-content {
+    .col-md-6 &, .col-md-9 & {
+        font-size: 1em;
+    }
+}
 .pingback-list li.pingback {
   margin-top:$base-line-height; padding-top:$base-line-height;
   border-top: 1px solid $grey-lightest;
@@ -634,5 +677,28 @@ section.post-content { margin-top:0; }
     span::after, span::before {
       background-color: $black;
     }
+  }
+  //lighter for entry-footer links like author, published, updated
+  .entry-footer &:not(.btn) {
+    color: $grey-mid-light;
+  }
+}
+//attachment image
+//navigation
+.attachment-image-navigation {
+  margin: 2em 0 1em;
+  //align icon edges
+  .icn-left-open-big:before {
+    margin-left: -.2em;
+  }
+  .icn-right-open-big:before {
+    margin-right: -.2em;
+  }
+}
+//center the figure = image + caption
+.attachment-image-figure {
+  margin: auto;
+  .entry-media__holder {
+    display: inline-block;
   }
 }

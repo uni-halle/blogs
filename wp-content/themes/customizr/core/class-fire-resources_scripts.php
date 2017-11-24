@@ -17,7 +17,7 @@ if ( ! class_exists( 'CZR_resources_scripts' ) ) :
          function __construct () {
               self::$instance =& $this;
 
-              $this->_resouces_version        = CZR_DEBUG_MODE || CZR_DEV_MODE ? CUSTOMIZR_VER . time() : CUSTOMIZR_VER;
+              $this->_resouces_version        = CZR_DEBUG_MODE || CZR_DEV_MODE || CZR_REFRESH_ASSETS ? CUSTOMIZR_VER . time() : CUSTOMIZR_VER;
               $this->_minify_js               = CZR_DEBUG_MODE || CZR_DEV_MODE ? false : true ;
 
 
@@ -209,9 +209,9 @@ if ( ! class_exists( 'CZR_resources_scripts' ) ) :
                );
 
                if ( $this -> czr_fn_load_concatenated_front_scripts() ) {
-                     if ( $this -> czr_fn_is_lightbox_required() ) {
-                           $this -> czr_fn_enqueue_script( 'tc-mfp' );
-                     }
+                     // if ( $this -> czr_fn_is_lightbox_required() ) {
+                     //       $this -> czr_fn_enqueue_script( 'tc-mfp' );
+                     // }
                      //!!tc-scripts includes underscore, tc-js-arraymap-proto
                      $this -> czr_fn_enqueue_script( 'tc-scripts' );
                }
@@ -225,17 +225,17 @@ if ( ! class_exists( 'CZR_resources_scripts' ) ) :
                      'tc-js-arraymap-proto',
                      //libs
                      'tc-bootstrap',
-                     'tc-smoothscroll',
+                     'tc-smoothscroll',//fired if  $('body').hasClass( 'czr-infinite-scroll-on' ) || ( CZRParams.SmoothScroll && CZRParams.SmoothScroll.Enabled && ! czrapp.base.matchMedia( 1024 )
                      'tc-outline',
                      'tc-waypoints',
-                     'tc-mcs',
-                     'tc-flickity',
+                     //'tc-mcs',//mCustomScrollBar will be loaded on demand
+                     //'tc-flickity',//flickity will be loaded when needed
                      'tc-vivus',
                      'tc-raf',
                   ) );
 
-                  if ( $this -> czr_fn_is_lightbox_required() )
-                        $this -> czr_fn_enqueue_script( 'tc-mfp' );
+                  // if ( $this -> czr_fn_is_lightbox_required() )
+                  //       $this -> czr_fn_enqueue_script( 'tc-mfp' );
 
                   //plugins and main front
                   $this -> czr_fn_enqueue_script( array(
@@ -260,14 +260,11 @@ if ( ! class_exists( 'CZR_resources_scripts' ) ) :
                global $wp_query;
                $has_post_comments   = ( 0 != $wp_query -> post_count && comments_open() && get_comments_number() != 0 ) ? true : false;
 
-               //adds the jquery effect library if smooth scroll is enabled => easeOutExpo effect
-               $anchor_smooth_scroll        = ( false != esc_attr( czr_fn_opt( 'tc_link_scroll') ) ) ? 'easeOutExpo' : 'linear';
-
                if ( false != esc_attr( czr_fn_opt( 'tc_link_scroll') ) )
                      wp_enqueue_script('jquery-effects-core');
 
-               $anchor_smooth_scroll_exclude =  apply_filters( 'czr_anchor_smoothscroll_excl' , array(
 
+               $anchor_smooth_scroll_exclude =  apply_filters( 'czr_anchor_smoothscroll_excl' , array(
                    'simple' => array( '[class*=edd]' , '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[class*=upme]', '[class*=um-]' ),
                    'deep'   => array(
                      'classes' => array(),
@@ -276,19 +273,21 @@ if ( ! class_exists( 'CZR_resources_scripts' ) ) :
 
                ));
 
-
-               $smooth_scroll_enabled = apply_filters('tc_enable_smoothscroll', ! wp_is_mobile() && 1 == esc_attr( czr_fn_opt( 'tc_smoothscroll') ) );
+               $smooth_scroll_enabled = apply_filters('tc_enable_smoothscroll', czr_fn_is_checked( 'tc_smoothscroll') );
                $smooth_scroll_options = apply_filters('tc_smoothscroll_options', array( 'touchpadSupport' => false ) );
 
                //smart load
                $smart_load_enabled    = esc_attr( czr_fn_opt( 'tc_img_smart_load' ) );
                $smart_load_opts       = apply_filters( 'tc_img_smart_load_options' , array(
-
                        'parentSelectors' => array(
-                           '[class*=grid-container], .article-container', '.__before_main_wrapper', '.widget-front', '.post-related-articles', '.tc-singular-thumbnail-wrapper'
+                            '[class*=grid-container], .article-container',
+                            '.__before_main_wrapper',
+                            '.widget-front',
+                            '.post-related-articles',
+                            '.tc-singular-thumbnail-wrapper'
                        ),
                        'opts'     => array(
-                           'excludeImg' => array( '.tc-holder-img' )
+                            'excludeImg' => array( '.tc-holder-img' )
                        )
 
                ));
@@ -310,11 +309,22 @@ if ( ! class_exists( 'CZR_resources_scripts' ) ) :
                   $this -> czr_fn_load_concatenated_front_scripts() ? 'tc-scripts' : 'tc-js-params',
                   'CZRParams',
                   apply_filters( 'tc_customizr_script_params' , array(
+
+                      'assetsPath'      => czr_fn_get_theme_file_url( CZR_ASSETS_PREFIX . 'front/' ),
+
                       '_disabled'          => apply_filters( 'czr_disabled_front_js_parts', array() ),
                       'centerSliderImg'   => esc_attr( czr_fn_opt( 'tc_center_slider_img') ),
-                      'SmoothScroll'      => array( 'Enabled' => $smooth_scroll_enabled, 'Options' => $smooth_scroll_options ),
-                      'anchorSmoothScroll'         => $anchor_smooth_scroll,
+
+                      'isLightBoxEnabled'  => $this -> czr_fn_is_lightbox_required(),
+
+                      'SmoothScroll'      => array(
+                          'Enabled' => $smooth_scroll_enabled,
+                          'Options' => $smooth_scroll_options,
+                      ),
+
+                      'isAnchorScrollEnabled'     => czr_fn_is_checked( 'tc_link_scroll' ), // also adds the jquery effect library if smooth scroll is enabled => easeOutExpo effect
                       'anchorSmoothScrollExclude' => $anchor_smooth_scroll_exclude,
+
                       'timerOnScrollAllBrowsers' => apply_filters( 'tc_timer_on_scroll_for_all_browser' , true), //<= if false, for ie only
 
                       'centerAllImg'          => 1,
@@ -331,8 +341,10 @@ if ( ! class_exists( 'CZR_resources_scripts' ) ) :
                       'dropcapWhere'      => array( 'post' => esc_attr( czr_fn_opt( 'tc_post_dropcap' ) ) , 'page' => esc_attr( czr_fn_opt( 'tc_page_dropcap' ) ) ),
                       'dropcapMinWords'     => esc_attr( czr_fn_opt( 'tc_dropcap_minwords' ) ),
                       'dropcapSkipSelectors'  => apply_filters( 'tc_dropcap_skip_selectors' , array( 'tags' => array('IMG' , 'IFRAME', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'BLOCKQUOTE', 'UL', 'OL'), 'classes' => array('btn') , 'id' => array() ) ),
+
                       'imgSmartLoadEnabled' => $smart_load_enabled,
                       'imgSmartLoadOpts'    => $smart_load_opts,
+                      'imgSmartLoadsForSliders' => czr_fn_is_checked( 'tc_slider_img_smart_load' ),
 
                       'pluginCompats'       => apply_filters( 'tc_js_params_plugin_compat', array() ),
                       'isWPMobile' => wp_is_mobile(),
@@ -457,7 +469,7 @@ if ( ! class_exists( 'CZR_resources_scripts' ) ) :
                      $_handle,
                      sprintf( '%1$s%2$s%3$s', CZR_BASE_URL , $_params['path'], $_filename ),
                      $_params['dependencies'],
-                     $this->_resouces_version,
+                     $this-> _resouces_version,
                      apply_filters( "tc_load_{$_handle}_in_footer", $_params['in_footer'] )
                );
          }
@@ -482,7 +494,9 @@ if ( ! class_exists( 'CZR_resources_scripts' ) ) :
          * @since v3.3+
          */
          function czr_fn_load_concatenated_front_scripts() {
-               return apply_filters( 'tc_load_concatenated_front_scripts' , ! defined('CZR_DEV')  || ( defined('CZR_DEV') && false == CZR_DEV ) );
+              if ( defined( 'CZR_DEBUG_MODE' ) && true === CZR_DEBUG_MODE )
+                return false;
+              return apply_filters( 'tc_load_concatenated_front_scripts' , ! defined('CZR_DEV')  || ( defined('CZR_DEV') && false == CZR_DEV ) );
          }
 
 

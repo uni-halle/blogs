@@ -88,7 +88,12 @@
 [class*=grid-container__masonry] article {
   margin-bottom: 20px
 }
-.comments__link { white-space: nowrap; }
+.comments__link {
+  white-space: nowrap;
+  .czr-related-post .post-info & {
+    font-size: 0.65rem;
+  }
+}
 .grid-title_size {
   line-height:1.4;
   font-size: 1.9em;
@@ -218,12 +223,13 @@ a.czr-format-link {
     align-items: center;
     @extend .service-font;
     .post-info  {
-      color: $grey;
+      color: $grey-mid-light;
+      line-height: 1.55em;
       position: relative;
       a {
         @extend .semi-bold;
       }
-      @extend .small;
+      @extend .very-small;
     }
 }
 
@@ -345,7 +351,9 @@ a.czr-format-link {
       .tc-thumbnail { display: none; }
     }
   }
-
+  p {
+    word-break: break-word;
+  }
 }
 
 //
@@ -597,16 +605,16 @@ a.czr-format-link {
 //IT's AVAILABLE ONLY FOR MASONRY & ALTERNATE
 [class*=grid-container__] .full-image {
   .entry-footer .post-info{
-    font-size: 1em;
+    @extend .very-small;//was font-size: 1em;
   }
   .entry-footer .col, a:not(.bg-link) { z-index: 2; position: relative; }
 
   .bg-link {
-    background: rgba($black, 0.25);
+    background: rgba($black, 0.30);
   }
 
   &.hover .bg-link {
-    background: rgba($black, 0.35);
+    background: rgba($black, 0.40);
   }
   .entry-media__holder {
     z-index: 2;
@@ -656,6 +664,7 @@ a.czr-format-link {
       .post-info {
         margin-top: $base-line-height;
         padding-top: $base-line-height/2;
+        margin-bottom: 0.5em;//<= otherwise the slider nav dots won't be visible. Overrides the default margin-bottom: -1em; for .grid .entry-footer .post-info {}
       }
     }
   }

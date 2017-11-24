@@ -84,7 +84,7 @@
                     do_action( '__before_loop' );
 
                     if ( ! czr_fn_is_home_empty() ) {
-                        if ( have_posts() ) {
+                        if ( have_posts() && ! is_404() ) {
                             //Problem to solve : we want to be able to inject any loop item ( grid-wrapper, alternate, etc ... ) in the loop model
                             //=> since it's not set yet, it has to be done now.
                             //How to do it ?
@@ -128,30 +128,30 @@
                               czr_fn_render_template( 'content/no-results/404' );
                         }
                     }//not home empty
+
+                    /*
+                     * Optionally attached to this hook :
+                     * - In single posts:
+                     *   - Author bio | 10
+                     *   - Related posts | 20
+                     * - In posts and pages
+                     *   - Comments | 30
+                     */
                     do_action( '__after_loop' );
                   ?>
                 </div>
 
-                <?php do_action('__after_content'); ?>
-
-
-                <?php if ( czr_fn_is_registered_or_possible('single_author_info') || czr_fn_is_registered_or_possible('related_posts') || czr_fn_is_registered_or_possible('comments') ) : ?>
-                  <div class="col-12 singular-info-wrapper order-md-last">
-                    <?php
-                      if ( czr_fn_is_registered_or_possible('single_author_info') )
-                         czr_fn_render_template( 'content/singular/authors/author_info' );
-
-                      if ( czr_fn_is_registered_or_possible('related_posts') )
-                        czr_fn_render_template( 'modules/related-posts/related_posts' );
-
-                      if ( czr_fn_is_registered_or_possible('comments') )
-                        czr_fn_render_template( 'content/singular/comments/comments' );
-
-                    ?>
-                  </div>
-                <?php endif ?>
-
                 <?php
+                  /*
+                   * Optionally attached to this hook :
+                   * - In single posts:
+                   *   - Author bio | 10
+                   *   - Related posts | 20
+                   * - In posts and pages
+                   *   - Comments | 30
+                   */
+                  do_action( '__after_content' );
+
                   /*
                   * SIDEBARS
                   */

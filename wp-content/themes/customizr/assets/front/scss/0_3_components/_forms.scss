@@ -149,9 +149,9 @@ input[type=number] {
 //and the comment reply
 form.czr-form {
   &.search-form {
-    label { 
-      @include clearfix; 
-      width: 100% 
+    label {
+      @include clearfix;
+      width: 100%
     }
   }
 
@@ -169,13 +169,13 @@ form.czr-form {
       }
       width: 2em;
       height: 2em;
-      
+
       &::before {
         margin: 0;
       }
     }
   }
- 
+
 
   input:not([type='submit']):not([type='button']):not([type='number']):not([type='checkbox']):not([type='radio']), textarea {
     outline: none;
@@ -187,11 +187,13 @@ form.czr-form {
     @include box-shadow_none;
     width: 100%;
     background: transparent;
+    #czr-comments & {
+      background: #fff;
+      padding: 0.5rem;
+    }
   }
-
-
-  fieldset { 
-    margin-top: 3em 
+  fieldset {
+    margin-top: 3em
   }
 
   .czr-focus {
@@ -202,6 +204,8 @@ form.czr-form {
     label {
         display: block;
         position: absolute;
+        z-index: 1;
+        color: $grey-mid-light;
         @include transition(transform 0.3s ease);
         span {
           @if ( true == $is_rtl ) {
@@ -227,13 +231,16 @@ form.czr-form {
           @include transition(transform 0.3s ease);
           @include transform(translateY(-110%));
         }
+        #czr-comments & {
+          padding: 0.5rem;
+        }
     }
 
-    .czr-focusable { 
-      transition: all 600ms; 
+    .czr-focusable {
+      transition: all 600ms;
     }
-    &:not(.in-focus) > .czr-focusable { 
-      color: transparent; 
+    &:not(.in-focus) > .czr-focusable {
+      color: transparent;
     }
 
     &.in-focus > label {
@@ -242,8 +249,8 @@ form.czr-form {
       color: $grey;
 
       /* search form */
-      i.icn-search { 
-        @include opacity(0); 
+      i.icn-search {
+        @include opacity(0);
       }
       i.icn-close {
         @include opacity(1);

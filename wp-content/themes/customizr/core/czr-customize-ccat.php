@@ -78,6 +78,9 @@ if ( ! class_exists( 'CZR_customize' ) ) :
       if ( class_exists('CZR_Customize_Cropped_Image_Control') )
         $manager -> register_control_type( 'CZR_Customize_Cropped_Image_Control' );
 
+      if ( class_exists('CZR_Customize_Code_Editor_Control') )
+        $manager -> register_control_type( 'CZR_Customize_Code_Editor_Control' );
+
       if ( class_exists('CZR_Customize_Panels') )
         $manager -> register_panel_type( 'CZR_Customize_Panels');
 
@@ -239,23 +242,8 @@ if ( ! class_exists( 'CZR_customize' ) ) :
 
       //MOVE THE CUSTOM CSS SECTION (introduced in 4.7) INTO THE ADVANCED PANEL
       if ( is_object( $wp_customize->get_section( 'custom_css' ) ) ) {
-
           $wp_customize -> get_section( 'custom_css' ) -> panel = 'tc-advanced-panel';
           $wp_customize -> get_section( 'custom_css' ) -> priority = 10;
-
-
-        //CHANGE CUSTOM_CSS DEFAULT
-        $custom_css_setting_id = sprintf( 'custom_css[%s]', get_stylesheet() );
-        if ( is_object( $wp_customize->get_setting( $custom_css_setting_id ) ) ) {
-          $original = $wp_customize->get_setting( $custom_css_setting_id )->default;
-          $new_def = sprintf( "%s\n%s\n%s\n*/",
-              substr( $original, 0, strlen($original) - 2),
-              __( "Use this field to test small chunks of CSS code. For important CSS customizations, it is recommended to modify the style.css file of a child theme." , 'customizr' ),
-              'http' . esc_url( '//codex.wordpress.org/Child_Themes' )
-          );
-          $wp_customize->get_setting( $custom_css_setting_id )->default = $new_def;
-        }
-
       }
     }
 
@@ -353,7 +341,11 @@ if ( ! class_exists( 'CZR_customize' ) ) :
                 'dst_width',
                 'dst_height',
 
-                'ubq_section'
+                'ubq_section',
+
+                //for the code editor
+                'code_type',
+                'input_attrs'
 
           )
       );
@@ -1088,7 +1080,7 @@ if ( ! class_exists( 'CZR_controls' ) ) :
                 $sliders          = czr_fn_opt( 'tc_sliders' );
 
                 if ( empty( $sliders ) ) {
-                  printf('<div class="czr-notice" style="width:99%; padding: 5px;"><p class="description">%1$s<br/><a class="button-primary" href="%2$s" target="_blank">%3$s</a><br/><span class="tc-notice">%4$s <a href="%5$s" title="%6$s" target="_blank">%6$s</a></span></p>',
+                  printf('<div class="czr-notice" style="width:99%; padding: 5px;"><span class="czr-notice">%1$s<br/><a class="button-primary" href="%2$s" target="_blank">%3$s</a><br/><span class="tc-notice">%4$s <a href="%5$s" title="%6$s" target="_blank">%6$s</a></span></span>',
                     __("You haven't create any slider yet. Go to the media library, edit your images and add them to your sliders.", "customizr" ),
                     admin_url( 'upload.php?mode=list' ),
                     __( 'Create a slider' , 'customizr' ),
@@ -1354,6 +1346,56 @@ if ( class_exists('WP_Customize_Cropped_Image_Control') && ! class_exists( 'CZR_
         }//end overload
 
     }
+
+    /**
+    * Render a JS template for the content of the media control.
+    *
+    * @since 3.4.19
+    * @package      Customizr
+    *
+    * @Override
+    * @see WP_Customize_Control::content_template()
+    */
+    public function content_template() {
+      ?>
+      <# if ( data.title ) { #>
+          <h3 class="czr-customizr-title">{{{ data.title }}}</h3>
+        <# } #>
+          <?php parent::content_template(); ?>
+        <# if ( data.notice ) { #>
+          <span class="czr-notice">{{{ data.notice }}}</span>
+        <# } #>
+      <?php
+    }
+  }//end class
+endif;
+?><?php
+/*
+*/
+if ( class_exists('WP_Customize_Code_Editor_Control') && ! class_exists( 'CZR_Customize_Code_Editor_Control' ) ) :
+  class CZR_Customize_Code_Editor_Control extends WP_Customize_Code_Editor_Control {
+
+    public $type = 'czr_code_editor';
+    public $title;
+    public $notice;
+
+    /**
+     * Refresh the parameters passed to the JavaScript via JSON.
+     *
+     * @see WP_Customize_Control::json()
+     *
+     * @return array Array of parameters passed to the JavaScript.
+     */
+    public function json() {
+        $json = parent::json();
+        if ( is_array( $json ) ) {
+            $json['title']  = !empty( $this -> title )  ? esc_html( $this -> title ) : '';
+            $json['notice'] = !empty( $this -> notice ) ?           $this -> notice  : '';
+        }
+
+        return $json;
+    }
+
 
     /**
     * Render a JS template for the content of the media control.

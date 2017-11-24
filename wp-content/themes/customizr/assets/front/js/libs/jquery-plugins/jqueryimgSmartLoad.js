@@ -26,7 +26,7 @@
           defaults = {
                 load_all_images_on_first_scroll : false,
                 attribute : [ 'data-src', 'data-srcset', 'data-sizes' ],
-                excludeImg : [''],
+                excludeImg : [],
                 threshold : 200,
                 fadeIn_options : { duration : 400 },
                 delaySmartLoadEvent : 0,
@@ -42,10 +42,11 @@
             this.element = element;
             this.options = $.extend( {}, defaults, options) ;
             //add .tc-smart-load-skip to the excludeImg
-            if ( _.isArray( this.options.excludeImg ) )
-              this.options.excludeImg.push( '.'+skipImgClass );
-            else
-              this.options.excludeImg = [ '.'+skipImgClass ];
+            if ( _.isArray( this.options.excludeImg ) ) {
+                  this.options.excludeImg.push( '.'+skipImgClass );
+            } else {
+                  this.options.excludeImg = [ '.'+skipImgClass ];
+            }
 
             this._defaults = defaults;
             this._name = pluginName;
@@ -66,7 +67,9 @@
                   //avoid intersecting cointainers to parse the same images
                   .addClass( skipImgClass )
                   //attach action to the load event
-                  .bind( 'load_img', {}, function() { self._load_img(this); });
+                  .bind( 'load_img', {}, function() {
+                        self._load_img(this);
+                  });
 
             //the scroll event gets throttled with the requestAnimationFrame
             $(window).scroll( function( _evt ) { self._better_scroll_event_handler( $_imgs, _evt ); } );
@@ -105,7 +108,9 @@
                 //get the visible images list
                 _visible_list = $_imgs.filter( function( ind, _img ) { return self._is_visible( _img ,  _evt ); } );
             //trigger load_img event for visible images
-            _visible_list.map( function( ind, _img ) { $(_img).trigger( 'load_img' );  } );
+            _visible_list.map( function( ind, _img ) {
+                  $(_img).trigger( 'load_img' );
+            });
       };
 
 
@@ -153,13 +158,12 @@
                   .removeAttr( this.options.attribute.join(' ') )
                   .attr( 'sizes' , _sizes )
                   .attr( 'srcset' , _src_set )
-                  .attr('src', _src )
+                  .attr( 'src', _src )
                   .load( function () {
                         //prevent executing this twice on an already smartloaded img
                         if ( ! $_img.hasClass('tc-smart-loaded') ) {
                               $_img.fadeIn(self.options.fadeIn_options).addClass('tc-smart-loaded');
                         }
-
                         //Following would be executed twice if needed, as some browsers at the
                         //first execution of the load callback might still have not actually loaded the img
 
@@ -182,6 +186,8 @@
                         }
 
                         $_img.trigger('smartload');
+                        //flag to avoid double triggering
+                        $_img.data('czr-smart-loaded', true );
                   });//<= create a load() fn
             //http://stackoverflow.com/questions/1948672/how-to-tell-if-an-image-is-loaded-or-cached-in-jquery
             if ( $_img[0].complete ) {

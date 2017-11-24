@@ -389,16 +389,16 @@ if ( ! class_exists( 'CZR_init' ) ) :
 
           //Default 404 content
           $this -> content_404        = array(
-              'quote'             => __( 'Speaking the Truth in times of universal deceit is a revolutionary act.' , 'customizr' ),
-              'author'            => __( 'George Orwell' , 'customizr' ),
-              'text'              => __( 'Sorry, but the requested page is not found. You might try a search below.' , 'customizr' )
+              'quote'             => '',
+              'author'            => '',
+              'text'              => ''
           );
 
           //Default no search result content
           $this -> content_no_results = array(
-              'quote'             => __( 'Success is the ability to go from one failure to another with no loss of enthusiasm...' , 'customizr' ),
-              'author'            => __( 'Sir Winston Churchill' , 'customizr' ),
-              'text'              => __( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.' , 'customizr' )
+              'quote'             => '',
+              'author'            => '',
+              'text'              => ''
           );
 
           //add classes to body tag : fade effect on link hover, is_customizing. Since v3.2.0
@@ -1463,11 +1463,20 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
           $_main_item_class = 'current-menu-item';
         }
 
+        // fix for: https://github.com/presscustomizr/customizr/issues/1223
+        // WC_Cart::get_cart_url is <strong>deprecated</strong> since version 2.5! Use wc_get_cart_url instead.
+        //
+        if ( function_exists( 'wc_get_cart_url' ) ) {
+            $wc_cart_url = esc_url( wc_get_cart_url() );
+        } else {
+            $wc_cart_url = esc_url( WC()->cart->get_cart_url() );
+        }
+
        ?>
        <div class="tc-wc-menu tc-open-on-hover span1">
          <ul class="tc-wc-header-cart nav tc-hover-menu">
            <li class="<?php echo esc_attr( $_main_item_class ); ?> menu-item">
-             <a class="cart-contents" href="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" title="<?php _e( 'View your shopping cart', 'customizr' ); ?>">
+             <a class="cart-contents" href="<?php echo $wc_cart_url; ?>" title="<?php _e( 'View your shopping cart', 'customizr' ); ?>">
                <span class="count btn-link tc-wc-count"><?php echo $_cart_count ? $_cart_count : '' ?></span>
             </a>
             <?php
@@ -2082,6 +2091,7 @@ class CZR_utils_settings_map {
                   'czr_fn_navigation_option_map',
                   //CONTENT
                   'czr_fn_front_page_option_map',
+                  'czr_fn_layout_option_map',
                   'czr_fn_post_metas_option_map',
                   'czr_fn_post_list_option_map',
                   'czr_fn_comment_option_map',
@@ -2725,6 +2735,30 @@ class CZR_utils_settings_map {
             //to unset
             $_to_unset = array(
                   'tc_home_slider_overlay',
+                  'tc_home_slider_dots'
+            );
+
+            foreach ( $_to_unset as $key ) {
+                  unset( $_map[ $key ] );
+            }
+            return $_map;
+      }
+
+
+      /*-----------------------------------------------------------------------------------------------------
+                                     PAGES AND POST LAYOUT SETTINGS
+      ------------------------------------------------------------------------------------------------------*/
+      function czr_fn_layout_option_map( $_map, $get_default = null ){
+
+            if ( !is_array( $_map ) || empty( $_map ) ) {
+                  return $_map;
+            }
+
+            //to unset
+            $_to_unset = array(
+                  'tc_single_author_block_location',
+                  'tc_single_related_posts_block_location',
+                  'tc_singular_comments_block_location'
             );
 
             foreach ( $_to_unset as $key ) {
@@ -3283,7 +3317,7 @@ if ( ! class_exists( 'CZR_init_retro_compat' ) ) :
       //only if user is logged in
       //then each routine has to decide what to do also depending on the user started before
       if ( is_user_logged_in() && current_user_can( 'edit_theme_options' ) ) {
-        $theme_options            = czr_fn_get_admin_option(CZR_THEME_OPTIONS);
+        $theme_options            = czr_fn_get_unfiltered_theme_options();
         $_to_update               = false;
 
         if ( ! empty( $theme_options ) ) {
@@ -3623,11 +3657,10 @@ if ( ! class_exists( 'CZR_utils' ) ) :
           $tc_specific_post_layout    = false;
           $is_singular_layout         = false;
 
-          if ( apply_filters( 'tc_is_post_layout', is_single( $post_id ), $post_id ) ) {
+          if ( apply_filters( 'tc_is_post_layout', is_single( $post_id ), $post_id ) || czr_fn_is_attachment_image() ) {
             $tc_sidebar_default_layout  = esc_attr( $__options['tc_sidebar_post_layout'] );
             $is_singular_layout = true;
-          }
-          elseif ( apply_filters( 'tc_is_page_layout', is_page( $post_id ), $post_id ) ) {
+          } elseif ( apply_filters( 'tc_is_page_layout', is_page( $post_id ), $post_id ) ) {
             $tc_sidebar_default_layout  = esc_attr( $__options['tc_sidebar_page_layout'] );
             $is_singular_layout = true;
           }
@@ -3644,12 +3677,16 @@ if ( ! class_exists( 'CZR_utils' ) ) :
           //The following lines set the post specific layout if any, and if not keeps the default layout previously defined
           $tc_specific_post_layout    = false;
 
-          //if we are displaying an attachement, we use the parent post/page layout
+          //if we are displaying an attachement, we use the parent post/page layout by default
+          //=> but if the attachment has a layout, it will win.
           if ( isset($post) && is_singular() && 'attachment' == $post->post_type ) {
-            $tc_specific_post_layout  = esc_attr( get_post_meta( $post->post_parent , $key = 'layout_key' , $single = true ) );
+            $tc_specific_post_layout  = esc_attr( get_post_meta( $post_id, $key = 'layout_key' , $single = true ) );
+            if ( ! $tc_specific_post_layout ) {
+                $tc_specific_post_layout  = esc_attr( get_post_meta( $post->post_parent , $key = 'layout_key' , $single = true ) );
+            }
           }
           //for a singular post or page OR for the posts page
-          elseif ( $is_singular_layout || is_singular() || $wp_query -> is_posts_page )
+          elseif ( $is_singular_layout || is_singular() || czr_fn_is_attachment_image() || $wp_query -> is_posts_page )
             $tc_specific_post_layout  = esc_attr( get_post_meta( $post_id, $key = 'layout_key' , $single = true ) );
 
 
@@ -3824,6 +3861,7 @@ if ( ! class_exists( 'CZR_resources' ) ) :
       private $_resources_version;
 
 	    function __construct () {
+
 	        self::$instance =& $this;
 
           $this->_resouces_version = CZR_DEBUG_MODE || CZR_DEV_MODE ? CUSTOMIZR_VER . time() : CUSTOMIZR_VER;
@@ -3850,6 +3888,8 @@ if ( ! class_exists( 'CZR_resources' ) ) :
 
           //stores the front scripts map in a property
           $this -> tc_script_map = $this -> czr_fn_get_script_map();
+
+          add_filter( 'czr_style_note_content', array( $this,  'czr_fn_get_style_note_content' ) );
 	    }//construct
 
 
@@ -4066,9 +4106,9 @@ if ( ! class_exists( 'CZR_resources' ) ) :
   	    $right_sb_class     = sprintf( '.%1$s.right.tc-sidebar', (false != $sidebar_layout) ? $sidebar_layout : 'span3' );
 
         //Style switcher note
-        $is_style_switch_note_on = czr_fn_is_pro() && czr_fn_user_can_see_customize_notices_on_front() && ! czr_fn_is_customizing() && ! czr_fn_isprevdem();
-        $style_switcher_note_content = '';
-        if ( $is_style_switch_note_on && czr_fn_user_started_before_version( '4.0.0', '2.0.0' ) ) {
+        $is_style_switch_note_on = ! is_multisite() && czr_fn_user_can_see_customize_notices_on_front() && ! czr_fn_is_customizing() && ! czr_fn_isprevdem();
+        $style_note_content = '';
+        if ( $is_style_switch_note_on && ! czr_fn_is_ms() && false === czr_fn_opt( 'tc_style', CZR_THEME_OPTIONS, false ) ) { //false for not default
             $tc_custom_css = esc_html( czr_fn_opt( 'tc_custom_css') );
             $tc_custom_css = trim( $tc_custom_css );
             $wp_custom_css = '';
@@ -4083,7 +4123,7 @@ if ( ! class_exists( 'CZR_resources' ) ) :
                 $is_style_switch_note_on && ! CZR_IS_MODERN_STYLE && ! is_child_theme() && 'dismissed' != get_transient( 'czr_style_switch_note_status' )
             );
             if ( $is_style_switch_note_on ) {
-                $style_switcher_note_content = apply_filters( 'czr_style_switcher_note_content', '' );
+                $style_note_content = apply_filters( 'czr_style_note_content', '' );
             }
         }
 
@@ -4118,8 +4158,11 @@ if ( ! class_exists( 'CZR_resources' ) ) :
                 'dropcapWhere'      => array( 'post' => esc_attr( czr_fn_opt( 'tc_post_dropcap' ) ) , 'page' => esc_attr( czr_fn_opt( 'tc_page_dropcap' ) ) ),
                 'dropcapMinWords'     => esc_attr( czr_fn_opt( 'tc_dropcap_minwords' ) ),
                 'dropcapSkipSelectors'  => apply_filters( 'tc_dropcap_skip_selectors' , array( 'tags' => array('IMG' , 'IFRAME', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'BLOCKQUOTE', 'UL', 'OL'), 'classes' => array('btn', 'tc-placeholder-wrap' ) , 'id' => array() ) ),
+
                 'imgSmartLoadEnabled' => $smart_load_enabled,
                 'imgSmartLoadOpts'    => $smart_load_opts,
+                'imgSmartLoadsForSliders' => czr_fn_is_checked( 'tc_slider_img_smart_load' ),
+
                 'goldenRatio'         => apply_filters( 'tc_grid_golden_ratio' , 1.618 ),
                 'gridGoldenRatioLimit' => esc_attr( czr_fn_opt( 'tc_grid_thumb_height' ) ),
                 'isSecondMenuEnabled'  => czr_fn_is_secondary_menu_enabled(),
@@ -4155,7 +4198,7 @@ if ( ! class_exists( 'CZR_resources' ) ) :
                 'frontNotifications' => array(
                       'styleSwitcher' => array(
                           'enabled' => $is_style_switch_note_on,
-                          'content' => $style_switcher_note_content,
+                          'content' => $style_note_content,
                           'dismissAction' => 'dismiss_style_switcher_note_front',
                           'ajaxUrl' => admin_url( 'admin-ajax.php' )
                       )
@@ -4547,13 +4590,46 @@ if ( ! class_exists( 'CZR_resources' ) ) :
       }
 
       /* ------------------------------------------------------------------------- *
-       *  STYLE SWITCH NOTE
+       *  STYLE NOTE
       /* ------------------------------------------------------------------------- */
-      //hook : czr_ajax_dismiss_style_switcher_note_front
-      function czr_fn_dismiss_style_switcher_note_front() {
-          set_transient( 'czr_style_switch_note_status', 'dismissed' , 60*60*24*365*20 );//20 years of peace
-          wp_send_json_success( array( 'status_note' => 'dismissed' ) );
-      }
+      //hook : 'czr_style_note_content'
+      //This function is invoked only when :
+      //1) czr_fn_user_started_before_version( '4.0.0', '2.0.0' )
+      //2) AND if the note can be displayed : czr_fn_user_can_see_customize_notices_on_front() && ! czr_fn_is_customizing() && ! czr_fn_isprevdem() && 'dismissed' != get_transient( 'czr_style_switch_note_status' )
+      //It returns a welcome note html string that will be localized in the front js
+      //@return html string
+      function czr_fn_get_style_note_content() {
+        // beautify notice text using some defaults the_content filter callbacks
+        // => turns emoticon :D into an svg
+        foreach ( array( 'wptexturize', 'convert_smilies', 'wpautop') as $callback ) {
+          if ( function_exists( $callback ) )
+              add_filter( 'czr_front_style_switch_note_html', $callback );
+        }
+        ob_start();
+          ?>
+              <?php
+                  printf( '<br/><p>%1$s</p>',
+                      sprintf( __('Quick tip : you can choose between two styles for the Customizr theme. Give it a try %s', 'customizr'),
+                          sprintf( '<a href="%1$s">%2$s</a>',
+                              czr_fn_get_customizer_url( array( 'control' => 'tc_style', 'section' => 'style_sec') ),
+                              __('in the live customizer.', 'customizr')
+                          )
+                      )
+                  );
+              ?>
+
+          <?php
+        $html = ob_get_contents();
+        if ($html) ob_end_clean();
+        return $html; //apply_filters('czr_front_style_switch_note_html', $html );
+    }
+
+
+    //hook : czr_ajax_dismiss_style_switcher_note_front
+    function czr_fn_dismiss_style_switcher_note_front() {
+        set_transient( 'czr_style_switch_note_status', 'dismissed' , 60*60*24*365*20 );//20 years of peace
+        wp_send_json_success( array( 'status_note' => 'dismissed' ) );
+    }
   }//end of CZR_ressources
 endif;
 

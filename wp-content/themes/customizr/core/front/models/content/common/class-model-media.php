@@ -187,8 +187,12 @@ class CZR_media_model_class extends CZR_Model {
 
             }
 
-            $post_id     = $this->post_id;
-            $media_type  = 'all' != $this->media_type ? $this->media_type : $this->post_format;
+            $post_id                 = $this->post_id;
+            $media_type              = 'all' != $this->media_type ? $this->media_type : $this->post_format;
+
+            if ( 'gallery' == $media_type && ! apply_filters( 'czr_allow_gallery_carousel_in_post_lists', false ) ) {
+                  $media_type        = ''; //<-fall back on the standard post format
+            }
 
             switch ( $media_type ) {
 
@@ -240,7 +244,7 @@ class CZR_media_model_class extends CZR_Model {
                   break;
 
                   //24/07/2017 gallery post format is buggy removed for now
-                  /*
+                  //19/10/2017 gallery carousel introduced in pro
                   case 'gallery' :
 
 
@@ -256,16 +260,16 @@ class CZR_media_model_class extends CZR_Model {
                               return;
 
                         $_instance->czr_fn_setup ( array(
-
-                                    'post_id'          => $post_id,
-                                    'has_lightbox'     => $this->has_lightbox
+                              'post_id'          => $post_id,
+                              'has_lightbox'     => $this->has_lightbox,
+                              'size'             => $this->thumb_size ? $this->thumb_size : 'full'
 
                         ));
 
                         $this->czr_fn__setup_media_to_render( $media = $_instance->czr_fn_get_raw_media(), $media_template = 'content/common/media/gallery', $model_id = $_instance->czr_fn_get_property( 'id' ) );
 
                   break;
-                  */
+
                   default:
 
                         $_instance = $this -> czr_fn__get_instance_from_model_array( array(
@@ -332,26 +336,28 @@ class CZR_media_model_class extends CZR_Model {
 
 
 
-
+      //The centering css class will be used to target the container in which we will use the jQuery center image plugin
+      //'image_centering'       => esc_attr( czr_fn_opt( 'tc_center_img' ) ) ? 'js-centering' : 'css-centering',
       protected function czr_fn__setup_media_wrapper() {
 
             if ( in_array( $this -> media_template, array( 'content/common/media/thumbnail', 'content/common/media/gallery' ) ) ) {
-
                   /* Add centering class */
                   switch ( $this -> image_centering ) {
-
                         case 'css-centering' :
-
                               $centering_class = 'css-centering';
                         break;
 
                         case 'no-js-centering' :
                               $centering_class = 'no-centering';
-
                         break;
 
+                        // js-centering case is the default
+                        // for gallery carousel, we don't want to js center all hidden cell items => too expensive
+                        // => that's why we flag with this class 'granular-js-centering', which will be excluded from the default js treatment on front
+                        // var $wrappersOfCenteredImagesCandidates = $('.widget-front .tc-thumbnail, .js-centering.entry-media__holder, .js-centering.entry-media__wrapper');
+                        // @see jquery_plugins.part.js
                         default :
-                              $centering_class = 'js-centering';
+                              $centering_class = false === strpos( $this -> media_template, 'gallery') ? 'js-centering' : 'granular-js-centering';
                         break;
                   }
 
@@ -363,7 +369,7 @@ class CZR_media_model_class extends CZR_Model {
 
                   $this->czr_fn_set_property( 'inner_wrapper_class', $inner_wrapper_class );
 
-            }else {
+            } else {
 
                   /* Set availability of background link */
                   $this->czr_fn_set_property( 'has_permalink', false );

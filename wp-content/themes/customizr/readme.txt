@@ -1,5 +1,5 @@
 ###################### Copyright ######################
-Customizr is a free WordPress theme designed by Nicolas Guillaume in Nice, France. (http://presscustomizr.com)
+Customizr is a free WordPress theme designed by Nicolas Guillaume in Nice, France. (https://presscustomizr.com)
 Feel free to use, modify and redistribute this theme as you like.
 You may remove any copyright references (unless required by third party components) and crediting is not necessary, but much appreciated... ;-D.
 Customizr is distributed under the terms of the GNU GPL v2.0 or later
@@ -16,28 +16,65 @@ Most important : enjoy it!
 
 
 ####################### Licenses #######################
-Unless otherwise specified, all the theme files, scripts and images
-are licensed under GNU General Public License version 2, see file license.txt.
-The exceptions to this license are as follows:
-* Bootstrap by Twitter <http://twitter.github.com/bootstrap/>, and the Glyphicons Halflings set <http://www.glyphicons.com/> in inc/assets/img/glyphicons-halflings.., are licensed under the GPL-compatible [http://www.apache.org/licenses/LICENSE-2.0 Apache License v2.0]
-* bootstrap-carousel.js v2.3.0 is licensed under the Apache License
-* holder.js v1.9 is licensed under the Apache License
-* modernizr.js is dual licensed under the BSD and MIT licenses
-* HTML5 Shiv v3.7.0 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
-* jqueryIphonecheck.js is copyrighted by Thomas Reynolds, licensed GPL & MIT
-* jquery.fancybox-1.3.4.js is dual licensed under the MIT and GPL licenses
-* retina.min.js is copyrighted by Imulus, LLC, Ben Atkin, and other contributors and licensed under MIT
-* iCheck v1.0.1 by Damir Sultanov, http://git.io/arlzeA, MIT Licensed
-* selecter v3.0.9 - 2014-02-10, Copyright 2014 Ben Plum, MIT Licensed
-* stepper v3.0.5 - 2014-02-06, Copyright 2014 Ben Plum, MIT Licensed
-* Hammer.JS - v2.0.4 - Copyright (c) 2014 Jorik Tangelder, MIT license
-* SmoothScroll - v1.3.8 (Balazs Galambosi), MIT license
-* Icon Set: Font Awesome is licensed under SIL OFL 1.1 and MIT License
-* The images screenshot.png, and all images under inc/admin/img/ are creations of Nicolas Guillaume and licensed under GPL v2+, or licensed under CC0 and found on pixabay.com or unsplash.com
-* The image slider-loader.gif is released under the WTFPL license (http://www.wtfpl.net/, GPL compatible), generated on http://ajaxload.info/
+Customizr is distributed under the terms of the [GNU GPL v2.0 or later](http://www.gnu.org/licenses/gpl-3.0.en.html)
+All images included in the theme are either created for the theme and inheriting its license, or licensed under CC0.
+All other theme assets like scripts, stylesheets are licensed under GNU General Public License version 2, see file license.txt, or GPL compatible licenses like MIT, WTFPL.
+See headers of each files for further details.
 
 
-#######################  Changelog ######################
+####################### Changelog ######################
+= 4.0.13 November 20th 2017 =
+* Fix : WP 4.9 Code Editor issue could impact the custom css customizer option when checking errors in the code
+
+= 4.0.12 November 15th 2017 =
+* Fix: post/page layout meta box must show the contextualized default layout. fixes #1266
+* Fix: fix header/overlay search label not custom skinned. fixes #1295
+* Fix: fix potential slider captions overlapping on page load. fixes #1293
+* Imp : more precis title of the topbar menu
+* Imp: add new options to control the singular blocks location. author box (single post), related posts (single post), comments ( single posts and pages )
+* Imp: add mobile header search location option
+
+= 4.0.11 November 6th 2017 =
+* Fix : label padding for comment text area applied to other inputs. Fixes #1287
+* Fix : input white background applied to unwanted selectors. fixes #1288
+* Fix : mCustomScrollbar => the scrollers are positionned at the bottom on the first instantiation. Fixes #1285
+
+= 4.0.10 November 4th 2017 =
+* Fix : WooCommerce, make wc-cart header button act like a dropdown only when displaying the wc-cart widget (so not when displayed in the mobile header). fixes #1274
+* Fix : Some Woocommerce form layout issues. fixes #1243
+* Fix : WP 4.9 compatibility => in WP v4.9, the control options are not wrapped in the params property but passed directly instead
+* Fix : image description in attachment not correctly displayed. fixes #1231
+* Fix : single attachment date meta should not be a link. fixes #1233
+* Fix : added missing retina (x2) placeholder images
+* Fix : don't collapse mobile mene when scrolling fixes #1226
+* Fix : slider caption text size still too big on mobile. fixes #1235
+* Fix : update the way we get woocommerce cart url according to the new api + backward compatibility. fixes #1223
+* Fix : fix possible wrong responsive images URL for sliders in multisite installs. fixes #1247
+* Fix : remove the active callback of the front page content section in the customizer. Fixes #1252
+* Fix : WP4.9 compat customizer additional CSS default. fixes #1255
+* Fix : hover style on comment date links. Fixes #1114
+* Fix : if comments are displayed by the user ( option is checked ) always show comment history, even if comment are closed. Fixes #1253
+* Fix : removed no results and 404 quotations, probably wrongly attributed to authors. Fixes #1142
+* Fix : make sure the 404 content is always displayed when is_404() even if have_posts() is true. Fixes #1260
+* Imp : color style of the comment text area. Fixes #1268.
+* Imp : better the way to store when the user started using the theme
+* Imp : performance improvement by implementing lazyloading for the main slider. Images are loaded when the become visible. New specific option in advanced > performance
+* Imp : always close the mobile menu expanded when resizing
+* Imp : increased the .comment_link font-size in related posts
+* Imp : an anchor 'linear' scroll effect can be set by adding the attribute data-anchor-link="true" to a link
+* Imp : add custom page template for the modern style. fixes #1209
+* Imp : footer credits translation strings and link title.
+* Imp : footer colophon is now text-align:center for smartphones in portrait mode <=> media-breakpoint-down(xs)
+* Imp : bulleted and numbered lists formatting. Second line should be indented to the start of the text of the first line. added more space before and around. fixes #1102 #1183 #1224 #1228
+* Imp : wraps the_content() in the div.czr-wp-the-content element in the templates printing the wp content : singulars ( including attachment ) and plain post grid
+* Imp : add specific model and templates to render the post attachment of type image content
+* Imp : slider nav dots made smaller for mobiles @media-breakpoint-down(xs)
+* Imp : better styling for post metas. Fixes #1113
+* Added : a layout field meta box option for attachments. => if the layout is not set for a particular attachment, it will be inherited from the parent ( which is the current behaviour )
+* Added : the anchor scroll for the comment link in single posts
+* Added : new option to control the visibility of the slider navigation bullets. Implement #1207
+* Added : Doc search in the theme admin page "About Customizr"
+
 = 4.0.9 October 9th 2017 =
 * Fix : global skin CSS not printed when no custom header skin. Fixes #1215.
 * Fix : various html fixes like duplicated ids or data attributes

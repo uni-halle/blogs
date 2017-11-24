@@ -6,17 +6,15 @@
  */
 ?>
 <article <?php echo czr_fn_get_the_singular_article_selectors() ?> <?php czr_fn_echo( 'element_attributes' ) ?>>
-  <?php do_action( '__before_content' ) ?>
+  <?php do_action( '__before_content_inner' ) ?>
   <?php
   czr_fn_render_template( 'content/singular/headings/regular_page_heading' );
   ?>
   <div class="post-entry tc-content-inner">
     <section class="post-content entry-content <?php czr_fn_echo( 'element_class' ) ?>" >
-      <?php
-
-      the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>' , 'customizr' ) );
-
-      ?>
+      <div class="czr-wp-the-content">
+        <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>' , 'customizr' ) ); ?>
+      </div>
       <footer class="post-footer clearfix">
         <?php
           czr_fn_link_pages();
@@ -36,5 +34,5 @@
       </footer>
     </section><!-- .entry-content -->
   </div><!-- .post-entry -->
-  <?php do_action( '__after_content' ) ?>
+  <?php do_action( '__after_content_inner' ) ?>
 </article>

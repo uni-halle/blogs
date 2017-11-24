@@ -32,7 +32,10 @@ endif;
 if ( ! function_exists( 'czr_fn_is_ms' ) ) {
       function czr_fn_is_ms() {
           $is_modern_style = true;
-          if ( ! czr_fn_isprevdem() ) {
+          //if defined( 'CZR_IS_MODERN_STYLE' ), declared in core/init.php, let's use it.
+          if (  defined( 'CZR_IS_MODERN_STYLE' ) ) {
+              $is_modern_style = CZR_IS_MODERN_STYLE;
+          } else if ( ! czr_fn_isprevdem() ) {
               $_czr_modern_style_option_value = czr_fn_opt( 'tc_style', CZR_THEME_OPTIONS, false );//false for no default
 
               switch ( $_czr_modern_style_option_value ) {
@@ -45,9 +48,11 @@ if ( ! function_exists( 'czr_fn_is_ms' ) ) {
                   break;
 
                 default :
-                  //the modern option is not set
-                  //=> if version is > 4.0 for free or 2.0 for free, it is true for a fresh install
-                  //free to free or pro to pro
+                  //'tc_style' OPTION STYLE NOT SET YET => WHAT DO WE DO ?
+                  //1) FRESH INSTALL ( not an update )
+                  //=> modern if free version is > 4.0 and pro > 2.0
+                  //=> If pro fresh install, we know that the user started with the current pro version. But the user may have upgraded from free for which he/she started before 4.0
+                  //  => that's why we need to know when he started with the free to decide
                   if ( CZR_IS_PRO ) {
                       //if user started using the pro before 2.0
                       if ( czr_fn_user_started_before_version( '4.0.0' , '2.0.0', 'pro' ) ) {
@@ -65,8 +70,6 @@ if ( ! function_exists( 'czr_fn_is_ms' ) ) {
 
               if ( isset( $_GET['czr_ms'] ) && true == $_GET['czr_ms'] && !czr_fn_is_pro() ) {
                 $is_modern_style = true;
-              } else {
-                $is_modern_style = defined( 'CZR_MODERN_STYLE' ) ? CZR_MODERN_STYLE : $is_modern_style;
               }
           }
           return apply_filters( 'czr_is_modern_style', $is_modern_style );
@@ -142,10 +145,13 @@ if ( ! function_exists( 'czr_fn_setup_constants' ) ):
         if( ! defined( 'CZR_IS_PRO' ) )               define( 'CZR_IS_PRO' , czr_fn_is_pro() );
 
         //IS DEBUG MODE
-        if( ! defined( 'CZR_DEBUG_MODE' ) )           define( 'CZR_DEBUG_MODE', ( defined('WP_DEBUG') && true === WP_DEBUG ) );
+        if( ! defined( 'CZR_DEBUG_MODE' ) )           define( 'CZR_DEBUG_MODE', ( defined('WP_DEBUG') && true === WP_DEBUG ) || ( isset( $_GET['czr_debug'] ) && 1 == $_GET['czr_debug'] ) );
 
         //IS DEV MODE
         if( ! defined( 'CZR_DEV_MODE' ) )             define( 'CZR_DEV_MODE', ( defined('CZR_DEV') && true === CZR_DEV ) );
+
+        //REFRESH ASSETS MODE => Will load javascript assets with a timestamp
+        if( ! defined( 'CZR_REFRESH_ASSETS' ) )       define( 'CZR_REFRESH_ASSETS', ( isset( $_GET['czr_refresh'] ) && 1 == $_GET['czr_refresh'] ) );
 
         //retro compat for FPU and WFC plugins
 
@@ -219,17 +225,75 @@ endif;
 
 
 
-if ( ! ( function_exists( 'czr_fn_get_admin_option' ) ) ) :
+if ( ! ( function_exists( 'czr_fn_get_unfiltered_theme_options' ) ) ) :
 //@return an array of options
-function czr_fn_get_admin_option( $option_group = null ) {
-    $option_group           = is_null($option_group) ? CZR_THEME_OPTIONS : $option_group;
+//This is mostly a copy of the built-in get_option with the difference that
+//1) by default retrieves only the theme options
+//2) removes the "pre_option_{$name}", "default_option_{$name}", "option_{$name}" filters
+//3) doesn't care about the special case when $option in array array('siteurl', 'home', 'category_base', 'tag_base'),
+//   as they are out of scope here
+//
+// The filter suppression is specially needed due to:
+// a) avoid plugins (qtranslate, other lang plugins) filtering the theme options value, which might mess theme options when we update the options on front
+// (e.g. to set the defaults, or to perform our retro compat options updates, or either to set the user started before option)
+// b) speed up the theme option retrieval when we are sure we don't need the theme options to be filtered in any case
+function czr_fn_get_unfiltered_theme_options( $option = null, $default = array() ) {
+    $option           = is_null($option) ? CZR_THEME_OPTIONS : $option;
 
-    //here we could hook a callback to remove all the filters on "option_{CZR_THEME_OPTIONS}"
-    do_action( "czr_before_getting_option_{$option_group}" );
-    $options = get_option( $option_group, array() );
-    //here we could hook a callback to re-add all the filters on "option_{CZR_THEME_OPTIONS}"
-    do_action( "czr_after_getting_option_{$option_group}" );
-    return $options;
+    global $wpdb;
+
+    $option_group = trim( $option);
+
+    if ( empty( $option ) )
+        return false;
+
+    if ( defined( 'WP_SETUP_CONFIG' ) )
+        return false;
+
+    if ( ! wp_installing() ) {
+        // prevent non-existent options from triggering multiple queries
+        $notoptions = wp_cache_get( 'notoptions', 'options' );
+        if ( isset( $notoptions[ $option ] ) ) {
+            return $default;
+        }
+
+        $alloptions = wp_load_alloptions();
+
+        if ( isset( $alloptions[$option] ) ) {
+            $value = $alloptions[$option];
+        } else {
+            $value = wp_cache_get( $option, 'options' );
+
+            if ( false === $value ) {
+                $row = $wpdb->get_row( $wpdb->prepare( "SELECT option_value FROM $wpdb->options WHERE option_name = %s LIMIT 1", $option ) );
+
+                // Has to be get_row instead of get_var because of funkiness with 0, false, null values
+                if ( is_object( $row ) ) {
+                    $value = $row->option_value;
+                    wp_cache_add( $option, $value, 'options' );
+                } else { // option does not exist, so we must cache its non-existence
+                    if ( ! is_array( $notoptions ) ) {
+                         $notoptions = array();
+                    }
+                    $notoptions[$option] = true;
+                    wp_cache_set( 'notoptions', $notoptions, 'options' );
+
+                    return $default;
+                }
+            }
+        }
+    } else {
+        $suppress = $wpdb->suppress_errors();
+        $row = $wpdb->get_row( $wpdb->prepare( "SELECT option_value FROM $wpdb->options WHERE option_name = %s LIMIT 1", $option ) );
+        $wpdb->suppress_errors( $suppress );
+        if ( is_object( $row ) ) {
+            $value = $row->option_value;
+        } else {
+            return $default;
+        }
+    }
+
+    return maybe_unserialize( $value );
 }
 endif;
 
@@ -304,16 +368,17 @@ if ( ! function_exists( 'czr_fn_is_pro' ) ) {
 */
 function czr_fn_is_child() {
     // get themedata version wp 3.4+
-    if ( function_exists( 'wp_get_theme' ) ) {
-      //get WP_Theme object of customizr
-      $tc_theme       = wp_get_theme();
-      //define a boolean if using a child theme
-      return $tc_theme -> parent() ? true : false;
-    }
-    else {
-      $tc_theme       = call_user_func('get_' .'theme_data', get_stylesheet_directory().'/style.css' );
-      return ! empty($tc_theme['Template']) ? true : false;
-    }
+    // if ( function_exists( 'wp_get_theme' ) ) {
+    //   //get WP_Theme object of customizr
+    //   $tc_theme       = wp_get_theme();
+    //   //define a boolean if using a child theme
+    //   return $tc_theme -> parent() ? true : false;
+    // }
+    // else {
+    //   $tc_theme       = call_user_func('get_' .'theme_data', get_stylesheet_directory().'/style.css' );
+    //   return ! empty($tc_theme['Template']) ? true : false;
+    // }
+    return is_child_theme();
 }
 
 /**
@@ -574,8 +639,9 @@ function czr_fn_generate_theme_setting_list() {
 * @since Customizr 3.4+
 */
 function czr_fn_set_option( $option_name , $option_value, $option_group = null ) {
-    $option_group           = is_null($option_group) ? CZR_THEME_OPTIONS : $option_group;
-    $_options               = czr_fn_get_admin_option( $option_group );
+    //Always make sure we have an option group, otherwise nothing will be written
+    $option_group           = is_null( $option_group ) ? CZR_THEME_OPTIONS : $option_group;
+    $_options               = czr_fn_get_unfiltered_theme_options( $option_group );
     $_options[$option_name] = $option_value;
 
     update_option( $option_group, $_options );
@@ -621,7 +687,168 @@ function czr_fn_is_option_excluded_from_ctx( $opt_name ) {
     return in_array( $opt_name, czr_fn_get_ctx_excluded_options() );
 }
 
+/**
+* Boolean helper
+* We are in a scenario when we need to use the transient value previouly used to store the user_started_using_the_theme infos, in order to write them in the theme options
+* Those infos must be structured this way {string}|{string}. Example : 'with|4.0.2'
+*
+* @return bool
+*/
+function czr_is_valid_user_started_infos( $user_started_infos_candidate ) {
+    if ( ! is_string( $user_started_infos_candidate ) )
+      return;
 
+    $exploded = explode('|', $user_started_infos_candidate );
+    //$exploded array must have exactly 2 entries
+    // (
+    //     [0] => with
+    //     [1] => 4.0.2
+    // )
+    if ( 2 != count( $exploded ) )
+      return;
+    //the first entry can only be 'with' or 'before'
+    if ( ! in_array( $exploded[0], array('with', 'before') ) )
+      return;
+    //the second string entry must be a string and be a version. Let's check that it includes at least one dot.
+    if ( ! is_string( $exploded[1] ) || false === strpos( $exploded[1], '.') )
+      return;
+
+    return true;
+}
+
+
+/**
+* Set a theme option which stores at which theme version started using it
+*
+* @package Customizr
+*/
+function czr_fn_setup_started_using_theme_option_and_constants() {
+    do_action( 'czr_before_setting_started_using_theme' );
+
+    $to_update_user_started_using_theme     = false;
+
+    $free_transient_or_option               = 'started_using_customizr';
+    $pro_transient_or_option                = 'started_using_customizr_pro';
+
+
+    // get_unfiltered_theme_options
+    $theme_options                          = czr_fn_get_unfiltered_theme_options();//returns an empty array as default
+
+    $is_customizr_free_or_pro_fresh_install = 1 >= count( $theme_options );
+
+
+    //we are sure we have to set the user started using theme if it's a fresh install
+    if ( $is_customizr_free_or_pro_fresh_install ) {
+        $to_update_user_started_using_theme    = true;
+
+        $transient_or_option                   = CZR_IS_PRO ? $pro_transient_or_option : $free_transient_or_option;
+        $theme_options[ $transient_or_option ] = sprintf('%s|%s' , 'with', CUSTOMIZR_VER );
+    }
+    else {
+        //This is needed in any case because we might be in an a case were we are updating from an older customizr-free to a new customizr-pro
+        //Do we have to set the user started using the free theme in the theme options?
+        if ( ! array_key_exists( $free_transient_or_option, $theme_options ) ) {
+
+            //check the free transient
+            //THERE CAN BE A TRANSIENT SET, if yes, use that value
+            $transient_free_value = esc_attr( get_transient( $free_transient_or_option ) );
+            //let's make sure that the saved transient is a clean candidate to be saved in the theme options
+            if ( czr_is_valid_user_started_infos( $transient_free_value ) ) {
+                $to_update_user_started_using_theme = true;
+                $user_started_using_free_theme_value        = $transient_free_value;
+                $theme_options[ $free_transient_or_option ] = $user_started_using_free_theme_value;
+            } else {
+                //use the last_update_notice set in the theme options
+                $has_already_installed_free           = array_key_exists( 'last_update_notice', $theme_options );
+                $free_infos                           = $has_already_installed_free ? $theme_options['last_update_notice'] : '__not_set__';
+                $last_update_notice_free_version      = '__not_set__';
+                if ( is_array( $free_infos ) && array_key_exists( 'version', $free_infos ) ) {
+                    $last_update_notice_free_version = $free_infos['version'];
+                }
+
+                //When to update the user started using the free theme?
+                //1) Is not pro version
+                //or
+                //2) If CZR_IS_PRO, update the user started using the FREE theme only if the last_update_notice is present
+                //if not, we have no clue
+                if ( CZR_IS_PRO && $has_already_installed_free || ! CZR_IS_PRO ) {
+                    $to_update_user_started_using_theme = true;
+                    //we are in the case of a free user updating the free theme but has previously cleaned the transients in db
+                    //=> we consider that this user started with the last update notice free version.
+                    //Which is a better approximation than before ( @see the way the function czr_fn_user_started_before_version() works )
+                    //we fallback on the current theme version
+                    $user_started_using_free_theme_value  = sprintf( '%s|%s',
+                      'with',
+                      ( $has_already_installed_free && '__not_set__' != $last_update_notice_free_version ) ? $last_update_notice_free_version : CUSTOMIZR_VER
+                    );
+
+                    //set it
+                    $theme_options[ $free_transient_or_option ] = $user_started_using_free_theme_value;
+                }
+            }
+
+
+        }
+
+        //Do we have to set the user started using the pro theme in the theme options?
+        if ( CZR_IS_PRO && ! array_key_exists( $pro_transient_or_option, $theme_options ) ) {
+
+            $to_update_user_started_using_theme = true;
+
+            //THERE CAN BE A TRANSIENT SET, if yes, use that value
+            $transient_pro_value = esc_attr( get_transient( $pro_transient_or_option ) );
+            //let's make sure that the saved transient is a clean candidate to be saved in the theme options
+            if ( czr_is_valid_user_started_infos( $transient_pro_value ) ) {
+                $user_started_using_pro_theme_value       = $transient_pro_value;
+            } else {
+
+                //this might be :
+                //1) a free user updating to pro => with
+                //2) a free user updating and has cleaned transient (edge case but possible ) => before
+                //3) a pro user updating and has cleaned transient ( edge also ) => before
+                //How do make the difference between 1) and ( 2 or 3 )
+                //=> we need something written by the pro => the last update notice in options
+                $is_already_pro_user  = array_key_exists( 'last_update_notice_pro', $theme_options );
+                $is_pro_fresh_install = ! $is_already_pro_user;
+
+                if ( $is_already_pro_user ) {
+                    $pro_infos            = $theme_options['last_update_notice_pro'];
+                    $is_pro_fresh_install = is_array( $pro_infos ) && array_key_exists( 'version', $pro_infos ) && $pro_infos['version'] == CUSTOMIZR_VER;
+                }
+
+                $user_started_with_this_version = $is_pro_fresh_install;
+                if ( $is_already_pro_user && ! $is_pro_fresh_install ) {
+                    $user_started_with_this_version = false;
+                }
+
+                //if already pro user, we are in the case of the transient that have been cleaned in db
+                //if not, then it's a free user upgrading to pro
+                $user_started_using_pro_theme_value  = sprintf('%s|%s' , $user_started_with_this_version ? 'with' : 'before', CUSTOMIZR_VER );
+            }
+
+            $theme_options[ $pro_transient_or_option ] = $user_started_using_pro_theme_value;
+        }
+    }
+
+    //maybe update the db value, if the user can edit theme options
+    if ( $to_update_user_started_using_theme && is_user_logged_in() && current_user_can('edit_theme_options') ) {
+        update_option( CZR_THEME_OPTIONS, $theme_options );
+        //do we want at this point remove the transients?
+        //delete_transient( $free_transient_or_option );
+        //delete_transient( $pro_transient_or_option );
+    }
+
+
+    //set constants that we can use throughout the theme without having to access the options every time
+    if ( ! defined( 'CZR_USER_STARTED_USING_FREE_THEME' ) ) {
+        define( 'CZR_USER_STARTED_USING_FREE_THEME',  isset( $theme_options[ $free_transient_or_option ] ) ? esc_attr( $theme_options[ $free_transient_or_option ] ) : false );
+    }
+    if ( ! defined( 'CZR_USER_STARTED_USING_PRO_THEME' ) ) {
+        define( 'CZR_USER_STARTED_USING_PRO_THEME',  isset( $theme_options[ $pro_transient_or_option ] ) ? esc_attr( $theme_options[ $pro_transient_or_option ] ) : false );
+    }
+
+    do_action( 'czr_after_setting_started_using_theme' );
+}
 
 
 
@@ -639,10 +866,16 @@ function czr_fn_user_started_before_version( $_czr_ver, $_pro_ver = null, $what_
         $_ispro = 'pro' == $what_to_check;
     }
 
-    //the transient is set in CZR___::czr_fn_init_properties()
-    $_trans = $_ispro ? 'started_using_customizr_pro' : 'started_using_customizr';
 
-    if ( ! get_transient( $_trans ) )
+    //these constants are set in czr_fn_setup_started_using_theme_option_and_constants()
+    //called by init-base.php at the very start of the theme bootstrap, after base constants are set
+    if ( $_ispro ) {
+        $user_started_using_theme_value = defined( 'CZR_USER_STARTED_USING_PRO_THEME' ) ? CZR_USER_STARTED_USING_PRO_THEME : false;
+    }else {
+        $user_started_using_theme_value = defined( 'CZR_USER_STARTED_USING_FREE_THEME' ) ? CZR_USER_STARTED_USING_FREE_THEME : false;
+    }
+
+    if ( ! $user_started_using_theme_value )
       return false;
 
     $_ver   = $_ispro ? $_pro_ver : $_czr_ver;
@@ -651,7 +884,7 @@ function czr_fn_user_started_before_version( $_czr_ver, $_pro_ver = null, $what_
       return false;
 
 
-    $_start_version_infos = explode('|', esc_attr( get_transient( $_trans ) ) );
+    $_start_version_infos = explode('|', $user_started_using_theme_value );
 
     if ( ! is_array( $_start_version_infos ) )
       return false;
@@ -680,12 +913,13 @@ function czr_fn_user_started_with_current_version() {
     if ( czr_fn_is_pro() )
       return;
 
-    $_trans = 'started_using_customizr';
-    //the transient is set in CZR___::czr_fn_init_properties()
-    if ( ! get_transient( $_trans ) )
+    //this constant is set in czr_fn_setup_started_using_theme_option_and_constants()
+    //called by init-base.php at the very start of the theme bootstrap, after base constants are set
+    $user_started_using_theme_value = ( defined( 'CZR_USER_STARTED_USING_FREE_THEME' ) ) ? CZR_USER_STARTED_USING_FREE_THEME : false ;
+    if ( ! $user_started_using_theme_value )
       return false;
 
-    $_start_version_infos = explode( '|', esc_attr( get_transient( $_trans ) ) );
+    $_start_version_infos = explode( '|', $user_started_using_theme_value );
 
     //make sure we're good at this point
     if ( ! is_string( CUSTOMIZR_VER ) || ! is_array( $_start_version_infos ) || count( $_start_version_infos ) < 2 )
@@ -1256,6 +1490,12 @@ function czr_fn_is_list_of_posts() {
       && ! is_admin()
     );
 }
+
+//@return bool : whether the current post is an attachment and an image mime type
+function czr_fn_is_attachment_image() {
+    return apply_filters( 'czr_fn_is_attachment_image', is_attachment() && wp_attachment_is_image() );
+}
+
 
 /*-----------------------------------------------------------
 /* PREVIOUSLY IN inc/czr-init-ccat.php (class-fire-utils_settings_map.php) and core/functions-ccat.php

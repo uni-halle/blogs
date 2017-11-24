@@ -1801,19 +1801,12 @@ if ( ! class_exists( 'CZR_404' ) ) :
           if ( !is_404() )
               return;
 
-          $content_404    = apply_filters( 'tc_404', CZR_init::$instance -> content_404 );
-
           echo apply_filters( 'tc_404_content',
-              sprintf('<div class="%1$s"><div class="entry-content %2$s">%3$s</div>%4$s</div>',
-                  apply_filters( 'tc_404_wrapper_class', 'tc-content span12 format-quote' ),
-                  apply_filters( 'tc_404_content_icon', 'format-icon' ),
-                  sprintf('<blockquote><p>%1$s</p><cite>%2$s</cite></blockquote><p>%3$s</p>%4$s',
-                                call_user_func( '__' , $content_404['quote'] , 'customizr' ),
-                                call_user_func( '__' , $content_404['author'] , 'customizr' ),
-                                call_user_func( '__' , $content_404['text'] , 'customizr' ),
-                                get_search_form( $echo = false )
-                  ),
-                  apply_filters( 'tc_no_results_separator', '<hr class="featurette-divider '.current_filter().'">' )
+              sprintf('<div class="%1$s"><div class="entry-content"><p>%2$s</p> %3$s</div>%4$s</div>',
+                  'tc-content span12',
+                  __( 'Sorry, but the requested page is not found. You might try a search below.' , 'customizr' ),
+                  get_search_form( $echo = false ),
+                  '<hr class="featurette-divider '.current_filter().'">'
               )
           );
       }
@@ -3503,16 +3496,17 @@ if ( ! class_exists( 'CZR_comments' ) ) :
         $_bool = ( post_password_required() || czr_fn__f( '__is_home' ) || ! is_singular() )  ? false : true;
 
         //2) if user has enabled comment for this specific post / page => true
-        //@todo contx : update default value user's value)
         $_bool = ( 'closed' != $post -> comment_status ) ? true : $_bool;
 
         //3) check global user options for pages and posts
-        if ( is_page() )
+        if ( is_page() ) {
           $_bool = 1 == esc_attr( czr_fn_opt( 'tc_page_comments' )) && $_bool;
-        else
+        } else {
           $_bool = 1 == esc_attr( czr_fn_opt( 'tc_post_comments' )) && $_bool;
-      } else
+        }
+      } else {
         $_bool = false;
+      }
 
       return apply_filters( 'tc_are_comments_enabled', $_bool );
     }
@@ -4548,19 +4542,12 @@ if ( ! class_exists( 'CZR_no_results' ) ) :
           if ( !is_search() || (is_search() && 0 != $wp_query -> post_count) )
               return;
 
-          $content_no_results    = apply_filters( 'tc_no_results', CZR_init::$instance -> content_no_results );
-
           echo apply_filters( 'tc_no_result_content',
-              sprintf('<div class="%1$s"><div class="entry-content %2$s">%3$s</div>%4$s</div>',
-                  apply_filters( 'tc_no_results_wrapper_class', 'tc-content span12 format-quote' ),
-                  apply_filters( 'tc_no_results_content_icon', 'format-icon' ),
-                  sprintf('<blockquote><p>%1$s</p><cite>%2$s</cite></blockquote><p>%3$s</p>%4$s',
-                                call_user_func( '__' , $content_no_results['quote'] , 'customizr' ),
-                                call_user_func( '__' , $content_no_results['author'] , 'customizr' ),
-                                call_user_func( '__' , $content_no_results['text'] , 'customizr' ),
-                                get_search_form( $echo = false )
-                  ),
-                  apply_filters( 'tc_no_results_separator', '<hr class="featurette-divider '.current_filter().'">' )
+              sprintf('<div class="%1$s"><div class="entry-content"><p>%2$s</p> %3$s</div>%4$s</div>',
+                  'tc-content span12',
+                  __( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'customizr' ),
+                  get_search_form( $echo = false ),
+                  '<hr class="featurette-divider '.current_filter().'">'
               )//end sprintf
           );//end filter
       }
@@ -8292,6 +8279,10 @@ class CZR_slider {
       }
     $slide_background       = wp_get_attachment_image( $id, $img_size, false, $slide_background_attr );
 
+    if ( czr_fn_is_checked( 'tc_slider_img_smart_load' ) ) {
+        $slide_background = czr_fn_parse_imgs( $slide_background ); //<- to prepare the img smartload
+    }
+
     //adds all values to the slide array only if the content exists (=> handle the case when an attachment has been deleted for example). Otherwise go to next slide.
     if ( !isset($slide_background) || empty($slide_background) )
       return;
@@ -8372,6 +8363,10 @@ class CZR_slider {
 
     //background image
     $slide_background       = apply_filters( 'tc_posts_slide_background', $slide_background, $ID );
+    if ( czr_fn_is_checked( 'tc_slider_img_smart_load' ) ) {
+        $slide_background = czr_fn_parse_imgs( $slide_background ); //<- to prepare the img smartload
+    }
+
 
     // we don't want to show slides with no image
     if ( ! $slide_background )
@@ -9760,9 +9755,8 @@ if ( ! class_exists( 'CZR_footer_main' ) ) :
                                   )
                               ),
                               apply_filters( 'tc_credit_link',
-                                  sprintf( '<span class="tc-credits-text">%1$s</span> %2$s &middot;',
-                                      __('Designed with', 'customizr'),
-                                      sprintf( '<a href="%1$s">%2$s</a>', esc_url( CZR_WEBSITE . 'customizr' ), __('the Customizr theme', 'customizr') )
+                                  sprintf( '<span class="tc-credits-text">%1$s </span> &middot;',
+                                      sprintf( __('Designed with the %s', 'customizr'), sprintf( '<a class="czr-designer-link" href="%1$s" title="%2$s">%2$s</a>', esc_url( CZR_WEBSITE . 'customizr' ), __('Customizr theme', 'customizr') ) )
                                   )
                               )
   					   )

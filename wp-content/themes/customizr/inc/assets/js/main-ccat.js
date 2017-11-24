@@ -655,6 +655,52 @@ var czrapp = czrapp || {};
               var self = this;
               setTimeout( function(){ self.emit('centerImages'); }, delay || 300 );
             },
+
+            centerInfinity : function() {
+                  var centerInfiniteImagesClassicStyle = function( collection, _container ) {
+                        var   $_container = $(_container);
+
+                        if ( 'object' !== typeof collection || 1 > $_container.length) {
+                              return;
+                        }
+                        _.each( collection, function( elementSelector ) {
+                              var $_img = $(  elementSelector + ' .thumb-wrapper', $_container ).centerImages( {
+                                    enableCentering : 1 == czrapp.localized.centerAllImg,
+                                    enableGoldenRatio : false,
+                                    disableGRUnder : 0,//<= don't disable golden ratio when responsive
+                                    oncustom : [ 'simple_load']
+                              }).find( 'img' );
+
+                              if ( $_img.length < 1 ) {
+                                    $_img = $( elementSelector + ' .tc-rectangular-thumb',  $_container ).centerImages( {
+                                          enableCentering : 1 == czrapp.localized.centerAllImg,
+                                          enableGoldenRatio : true,
+                                          goldenRatioVal : czrapp.localized.goldenRatio || 1.618,
+                                          disableGRUnder : 0,//<= don't disable golden ratio when responsive
+                                          oncustom : [ 'simple_load']
+                                    }).find( 'img' );
+                              }
+                              if ( $_img.length < 1 ) {
+                                    $_img = $( elementSelector + ' .tc-grid-figure', $_container ).centerImages( {
+                                          enableCentering : 1 == czrapp.localized.centerAllImg,
+                                          oncustom : [ 'simple_load'],
+                                          enableGoldenRatio : true,
+                                          goldenRatioVal : czrapp.localized.goldenRatio || 1.618,
+                                          goldenRatioLimitHeightTo : czrapp.localized.gridGoldenRatioLimit || 350
+                                    }).find( 'img' );
+                              }
+                              czrapp.methods.Base.triggerSimpleLoad( $_img );
+                        });
+                  };//end centerInfiniteImagesClassicStyle
+                  czrapp.$_body.on( 'post-load', function( e, response ) {
+                        if ( 'success' == response.type && response.collection && response.container ) {
+                              centerInfiniteImagesClassicStyle(
+                                  response.collection,
+                                  '#'+response.container //_container
+                              );
+                        }
+                  } );
+            },
             imgSmartLoad : function() {
               var smartLoadEnabled = 1 == TCParams.imgSmartLoadEnabled,
                   _where           = TCParams.imgSmartLoadOpts.parentSelectors.join();
@@ -729,7 +775,7 @@ var czrapp = czrapp || {};
                   $( this ).centerImages( {
                     enableCentering : 1 == TCParams.centerSliderImg,
                     imgSel : '.czr-item .carousel-image img',
-                    oncustom : ['customizr.slid', 'simple_load'],
+                    oncustom : ['customizr.slid', 'simple_load', 'smartload'],
                     defaultCSSVal : { width : '100%' , height : 'auto' },
                     useImgAttr : true
                   });
@@ -802,12 +848,106 @@ var czrapp = czrapp || {};
 
 
             fireSliders : function(name, delay, hover) {
-              var _name   = name || TCParams.SliderName,
-                  _delay  = delay || TCParams.SliderDelay;
-                  _hover  = hover || TCParams.SliderHover;
+              var self = this,
+                  _name   = name || TCParams.SliderName,
+                  _delay  = delay || TCParams.SliderDelay,
+                  _hover  = hover || TCParams.SliderHover,
+                  _cellSelector = '.czr-item',
+                  _cssLoaderClass = 'tc-css-loader',
+                  _css_loader = '<div class="' + _cssLoaderClass + ' tc-mr-loader" style="display:none"><div></div><div></div><div></div></div>';
 
-              if ( 0 === _name.length )
+              if ( 0 === _name.length || 1 > self.$_sliders.length )
                 return;
+              if ( czrapp.localized.imgSmartLoadsForSliders ) {
+                    self.$_sliders.addClass('disable-transitions-for-smartload');
+                    self.$_sliders.find( _cellSelector + '.active').imgSmartLoad().data( 'czr_smartLoaded', true );
+
+                    var _maybeRemoveLoader = function( $_cell ) {
+                          $_cell.find('.czr-css-loader').fadeOut( {
+                                duration: 'fast',
+                                done : function() { $(this).remove();}
+                          } );
+                    };
+
+
+                    var _smartLoadCellImg = function( _event_ ) {
+                          _event_ = _event_ || 'czr-smartloaded';
+                          var $_cell = this;
+                          if ( 1 > $_cell.find('img[data-src], img[data-smartload]').length )
+                            return;
+                          if ( ! $_cell.data( 'czr_smartLoaded' ) ) {
+                                if ( 1 > $_cell.find('.czr-css-loader').length ) {
+                                      $_cell.append( _css_loader ).find('.czr-css-loader').fadeIn( 'slow' );
+                                }
+                                $_cell.imgSmartLoad().data( 'czr_smartLoaded', true ).addClass( _event_ );
+                                $_cell.data( 'czr_loader_timer' , $.Deferred( function() {
+                                      var self = this;
+                                      _.delay( function() {
+                                            self.resolve();
+                                      }, 2000 );
+                                      return this.promise();
+                                }) );
+                                $_cell.data( 'czr_loader_timer' ).done( function() {
+                                      _maybeRemoveLoader( $_cell );
+                                });
+                          }
+                    };
+                    self.$_sliders.data( 'czr_smartload_scheduled', $.Deferred().done( function() {
+                          self.$_sliders.addClass('czr-smartload-scheduled');
+                    }) );
+                    var _isSliderDataSetup = function() {
+                          return 1 <= self.$_sliders.length && ! _.isUndefined( self.$_sliders.data( 'czr_smartload_scheduled' ) );
+                    };
+                    self.$_sliders.data( 'czr_schedule_select',
+                          $.Deferred( function() {
+                                var dfd = this;
+                                self.$_sliders.parent().one( 'customizr.slide click' , function( event ) {
+                                      dfd.resolve();
+                                } );
+                          }).done( function() {
+                                if ( ! _isSliderDataSetup() || 'resolved' == self.$_sliders.data( 'czr_smartload_scheduled' ).state() )
+                                    return;
+
+                                self.$_sliders.find( _cellSelector ).each( function() {
+                                      _smartLoadCellImg.call( $(this), 'czr-smartloaded-on-select' );
+                                });
+                                self.$_sliders.data( 'czr_smartload_scheduled').resolve();
+                          })
+                    );//data( 'czr_schedule_select' )
+                    self.$_sliders.data( 'czr_schedule_scroll_resize',
+                          $.Deferred( function() {
+                                var dfd = this;
+                                czrapp.$_window.one( 'scroll resize', function() {
+                                      _.delay( function() { dfd.resolve(); }, 5000 );
+                                });
+                          }).done( function() {
+                                if ( ! _isSliderDataSetup() || 'resolved' == self.$_sliders.data( 'czr_smartload_scheduled' ).state() )
+                                    return;
+
+                                self.$_sliders.find( _cellSelector ).each( function() {
+                                      _smartLoadCellImg.call( $(this), 'czr-smartloaded-on-scroll' );
+                                });
+                                self.$_sliders.data( 'czr_smartload_scheduled').resolve();
+                          })
+                    );//data( 'czr_schedule_scroll_resize' )
+                    self.$_sliders.data( 'czr_schedule_autoload',
+                          $.Deferred( function() {
+                                var dfd = this;
+                                _.delay( function() { dfd.resolve(); }, 10000 );
+                          }).done( function() {
+                                if ( ! _isSliderDataSetup() || 'resolved' == self.$_sliders.data( 'czr_smartload_scheduled' ).state() )
+                                    return;
+
+                                self.$_sliders.find( _cellSelector ).each( function() {
+                                      _smartLoadCellImg.call( $(this), 'czr-auto-smartloaded' );
+                                });
+                                self.$_sliders.data( 'czr_smartload_scheduled').resolve();
+                          })
+                    );
+                    self.$_sliders.on( 'smartload', _cellSelector , function() {
+                          _maybeRemoveLoader( $(this) );
+                    });
+              }//if czrapp.localized.imgSmartLoadsForSliders
 
               if ( 0 !== _delay.length && ! _hover ) {
                 this.$_sliders.czrCarousel({
@@ -1053,7 +1193,7 @@ var czrapp = czrapp || {};
             dropdownMenuEventsHandler : function() {
               var $dropdown_ahrefs    = $('.tc-open-on-click .menu-item.menu-item-has-children > a[href!="#"]'),
                   $dropdown_submenus  = $('.tc-open-on-click .dropdown .dropdown-submenu');
-              $dropdown_ahrefs.on('tap click', function(evt) {
+              $dropdown_ahrefs.on('click', function(evt) {
                 if ( ( $(this).next('.dropdown-menu').css('visibility') != 'hidden' &&
                         $(this).next('.dropdown-menu').is(':visible')  &&
                         ! $(this).parent().hasClass('dropdown-submenu') ) ||
@@ -1064,7 +1204,7 @@ var czrapp = czrapp || {};
               $dropdown_submenus.each(function(){
                 var $parent = $(this),
                     $children = $parent.children('[data-toggle="dropdown"]');
-                $children.on('tap click', function(){
+                $children.on('click', function(){
                     var submenu   = $(this).next('.dropdown-menu'),
                         openthis  = false;
                     if ( ! $parent.hasClass('open') ) {
@@ -1209,6 +1349,7 @@ var czrapp = czrapp || {};
               var self = this,
                   _hasCandidate = false;
               czrapp.frontNotificationVisible = new czrapp.Value( false );
+              czrapp.frontNotificationRendered = false;
               _.each( czrapp.localized.frontNotifications, function( _notification, _id ) {
                     if ( ! _.isUndefined( czrapp.frontNotification ) )
                       return;
@@ -1238,6 +1379,9 @@ var czrapp = czrapp || {};
               var self = this,
                   dfd = $.Deferred();
 
+              if ( czrapp.frontNotificationRendered && czrapp.frontNotificationVisible() )
+                return dfd.resolve().promise();
+
               var _hideAndDestroy = function() {
                     return $.Deferred( function() {
                           var _dfd_ = this,
@@ -1246,6 +1390,8 @@ var czrapp = czrapp || {};
                                 $notifWrap.css( { bottom : '-100%' } );
                                 _.delay( function() {
                                       $notifWrap.remove();
+                                      czrapp.$_body.find('#tc-footer-btt-wrapper').fadeIn('slow');
+                                      czrapp.frontNotificationRendered = false;
                                       _dfd_.resolve();
                                 }, 450 );// consistent with css transition: all 0.45s ease-in-out;
                           } else {
@@ -1273,6 +1419,8 @@ var czrapp = czrapp || {};
                           if ( 1 == $footer.length && ! _.isEmpty( _notifHtml ) ) {
                                 $.when( $footer.append( _wrapHtml ) ).done( function() {
                                     $(this).find( '.note-content').prepend( _notifHtml );
+                                    czrapp.$_body.find('#tc-footer-btt-wrapper').fadeOut('slow');
+                                    czrapp.frontNotificationRendered = true;
                                 });
 
                                 _.delay( function() {
@@ -2167,6 +2315,7 @@ var czrapp = czrapp || {};
                       ctor : czrapp.Base.extend( czrapp.methods.JQPlugins ),
                       ready : [
                             'centerImagesWithDelay',
+                            'centerInfinity',
                             'imgSmartLoad',
                             'dropCaps',
                             'extLinks',
