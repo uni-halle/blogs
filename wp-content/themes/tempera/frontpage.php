@@ -48,14 +48,14 @@ function tempera_frontpage() {
 			<?php
 			// First FrontPage Title
 			if($tempera_fronttext1) {?><div id="front-text1"> <h2><?php echo do_shortcode($tempera_fronttext1) ?> </h2></div><?php }
-			if($tempera_fronttext3) {?><div id="front-text3"> <?php echo do_shortcode($tempera_fronttext3) ?> </div><?php }
+			if($tempera_fronttext3) {?><div id="front-text3"> <?php echo force_balance_tags( do_shortcode($tempera_fronttext3) ) ?> </div><?php }
 
 			tempera_ppcolumns();
 
 			// Second FrontPage title
 			if($tempera_fronttext2) {?><div id="front-text2"> <h2><?php echo do_shortcode($tempera_fronttext2) ?> </h2></div><?php }
 			// Frontpage second text area
-			if($tempera_fronttext4) {?><div id="front-text4"> <?php echo do_shortcode($tempera_fronttext4) ?> </div><?php }
+			if($tempera_fronttext4) {?><div id="front-text4"> <?php echo force_balance_tags( do_shortcode($tempera_fronttext4) ) ?> </div><?php }
 
 			remove_filter( 'excerpt_length', 'tempera_excerpt_length_slider', 999 );
 			remove_filter( 'excerpt_more', 'tempera_excerpt_more_slider', 999 );

@@ -324,7 +324,7 @@ endfor; ?>
 ////////// HEADER IMAGE //////////
 ?>
 #branding { height:<?php echo HEADER_IMAGE_HEIGHT; ?>px; }
-<?php if ($tempera_hratio) { ?> @media (max-width: 1920px) {#branding, #bg_image { height:auto; max-width:100%; min-height:inherit !important; } } <?php } ?>
+<?php if ($tempera_hratio) { ?> @media (max-width: 1920px) {#branding, #bg_image { height:auto; max-width:100%; min-height:inherit !important; display: block; } } <?php } ?>
 </style>
 <?php
 	$tempera_custom_styling = ob_get_contents();

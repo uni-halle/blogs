@@ -250,7 +250,7 @@ function tempera_page_fn() {
   }?>
 
 
-<div class="wrap"><!-- Admin wrap page -->
+<div class="wrap cryout-admin"><!-- Admin wrap page -->
 <h2 id="empty-placeholder-heading-for-wp441-notice-forced-move"></h2>
 <?php
 if ( isset( $_GET['settings-updated'] ) ) {

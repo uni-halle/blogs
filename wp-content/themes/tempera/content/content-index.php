@@ -6,6 +6,8 @@
  * @subpackage Tempera
  * @since Tempera 1.1
  */
+ 
+$temperas = tempera_get_theme_options();
 
 ?>
 
@@ -23,7 +25,6 @@
 					get_template_part( 'content/content', get_post_format() );
 
 				endwhile;
-
 				if ( $temperas['tempera_pagination']=="Enable" ) tempera_pagination(); else tempera_content_nav( 'nav-below' );
 
 			else : ?>

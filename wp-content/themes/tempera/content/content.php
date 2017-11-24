@@ -8,8 +8,7 @@
  */
 
 $temperas = tempera_get_theme_options();
-cryout_before_article_hook(); 
-?>
+	cryout_before_article_hook(); ?>
 
 	<article id="post-<?php the_ID(); ?>" <?php post_class( (( is_sticky() && is_page_template() )?'sticky':'') ); ?>>
 				
@@ -61,5 +60,5 @@ cryout_before_article_hook();
 		</footer>
 	</article><!-- #post-<?php the_ID(); ?> -->
 	
-	
-<?php cryout_after_article_hook(); ?>
+	<?php 
+	cryout_after_article_hook();

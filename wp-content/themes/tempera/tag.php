@@ -17,15 +17,8 @@ get_header(); ?>
 			<?php if ( have_posts() ) : ?>
 
 				<header class="page-header">
-					<h1 class="page-title"><?php
-						printf( __( 'Tag Archives: %s', 'tempera' ), '<span>' . single_tag_title( '', false ) . '</span>' );
-					?></h1>
-
-					<?php
-						$tag_description = tag_description();
-						if ( ! empty( $tag_description ) )
-							echo apply_filters( 'tag_archive_meta', '<div class="tag-archive-meta">' . $tag_description . '</div>' );
-					?>
+					<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
+					<?php the_archive_description( '<div class="taxonomy-description">', '</div>' ); ?>
 				</header>
 
 				<?php /* Start the Loop */ ?>

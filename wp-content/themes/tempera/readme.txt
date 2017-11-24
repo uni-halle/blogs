@@ -4,8 +4,8 @@ Copyright 2013-17 Cryout Creations
 
 Author: Cryout Creations
 Requires at least: 4.0
-Tested up to: 4.8.0
-Stable tag: 1.6.1.2
+Tested up to: 4.9
+Stable tag: 1.6.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://www.cryoutcreations.eu/donate/
@@ -106,6 +106,17 @@ Spanish - Carlol, HacKan
 
 
 == Changelog ==
+
+= 1.6.2 =
+* Fixed search icon in menus vertical alignment on IE 10-11
+* Fixed footer menu search separators vertical alignment on IE 9+
+* Added HTML markup correction on presentation page extra text areas
+* Switched to using the_archive_title() and the_archive_description() for section titles and descriptions in archive.php, author.php, category.php, tag.php
+* Fixed header image forced aspect ratio option adding unnecessary margin between header and menu
+* Fixed editor styling option not controlling style.css enqueue
+* Fixed notice of undefined variable in content-index.php
+* Fixed 'Category page with intro' page template pagination not working when set on static home page
+* Improved admin styling to correct overlapping dashboard elements outside of theme's page
 
 = 1.6.1.2 =
 * Removed border and added padding to submit and reset inputs and buttons

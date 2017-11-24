@@ -30,6 +30,7 @@ Template Name: Category page with intro
 	<br />
 	<?php
 	$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+	$paged = (get_query_var('page')) ? get_query_var('page') : $paged;
 	if (is_numeric($slug)&&($slug>0)):
 		$the_query = new WP_Query( 'cat='.$slug.'&post_status=publish&orderby=date&order=desc&posts_per_page='.get_option('posts_per_page').'&paged=' . $paged );
 	else:

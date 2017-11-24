@@ -39,8 +39,8 @@ get_header(); ?>
 						<?php echo get_avatar( get_the_author_meta( 'user_email' ), apply_filters( 'tempera_author_bio_avatar_size', 60 ) ); ?>
 					</div><!-- #author-avatar -->
 					<div id="author-description">
-						<h1 class="page-title"><?php echo esc_attr( get_the_author() ); ?></h1>
-						<?php the_author_meta( 'description' ); ?>
+						<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
+						<?php the_archive_description( '<div class="taxonomy-description">', '</div>' ); ?>
 					</div><!-- #author-description	-->
 				</header><!-- #entry-author-info -->
 				<?php endif; ?>

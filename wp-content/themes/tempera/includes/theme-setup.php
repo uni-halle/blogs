@@ -46,9 +46,11 @@ if ( ! function_exists( 'tempera_setup' ) ):
  * functions.php file.
  */
 function tempera_setup() {
+	
+	global $temperas;
 
 	// This theme styles the visual editor with editor-style.css to match the theme style.
-	add_editor_style( "styles/editor-style.css" );
+	if ($temperas['tempera_editorstyle']) add_editor_style( "styles/editor-style.css" );
 	
 	// Support title tag since WP 4.1
 	add_theme_support( 'title-tag' );
@@ -89,7 +91,6 @@ function tempera_setup() {
 	// This theme allows users to set a custom background
 	add_theme_support( 'custom-background' );
 
-	global $temperas;
 	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'tempera_header_image_width', $temperas['tempera_totalSize'] ) );
 	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'tempera_header_image_height', (int)$temperas['tempera_hheight']) );
 	

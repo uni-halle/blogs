@@ -4,7 +4,7 @@ Theme URI: https://www.cryoutcreations.eu/wordpress-themes/tempera
 Description: We had to follow a very strict recipe to get Tempera just right. We started with a very solid framework of over 200 settings, added a very light user interface, threw in a couple of mobiles and tablets to give it that responsive elasticity, added over 50 fonts, weren't satisfied so we poured all the Google fonts into the mix, then scattered 12 widget areas for consistency, dissolved a slider and unlimited columns into a customizable Presentation Page then mixed it in as well. We then sprinkled all post formats, 8 layouts including magazine and blog, powdered 40+ social icons and even blended in a customizable top bar for extra density. We also made it translation ready and gave it RTL language support for some cultural diversity. The secret ingredient was love and we might've spilled too much of that. But now Tempera has just the right feel and the right texture and is exactly what your empty WordPress canvas needs. NEW! Tempera now comes in 16 different flavors with preset color schemes!
 Author: Cryout Creations
 Author URI: https://www.cryoutcreations.eu
-Version: 1.6.1.2
+Version: 1.6.2
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Tags: one-column, two-columns, three-columns, right-sidebar, left-sidebar, footer-widgets, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, front-page-post-form, full-width-template,  microformats, post-formats, rtl-language-support,  sticky-post, theme-options, threaded-comments, translation-ready, blog, e-commerce, education, entertainment, food-and-drink, news
@@ -740,21 +740,21 @@ a:visited  {
 	position: relative;
 	display: block;
 	float: left;
-	margin: 0 5px;
+	padding: 0 0.8em;
 	text-align: center;
 	white-space: nowrap;
-	padding-right: 10px;
 }
 
 .footermenu ul li:after {
 	font-size: .8em;
 	content: "/";
-	top: 50%;
 	right: 0;
     margin: auto;
     position: absolute;
+	line-height: 2;
+	/* top: 50%;
 	-webkit-transform: translateY(-50%);
-	transform: translateY(-50%);
+	transform: translateY(-50%); */
 }
 
 .footermenu ul li:last-child:after {
@@ -886,8 +886,8 @@ body.tempera-topbarfixed.admin-bar #topbar { top: 32px; }
 	padding: 10px 0;
 }
 
-.page-header .category-archive-meta {
-	padding-top: 5px;
+.taxonomy-description {
+	margin-top: 0.5em;
 }
 
 #content .page-title {
@@ -1125,6 +1125,7 @@ span.edit-link {
 #author-info #author-description {
 	float: left;
 	margin: 0 0 0 104px;
+	padding: 0 10px;
 }
 
 #entry-author-info {
@@ -1967,7 +1968,7 @@ input[type="search"]::-webkit-search-decoration {
 .menu-header-search .searchsubmit {
 	font-size: .85em;
 	line-height: 39px;
-	height: auto;
+	height: 39px;
 	color: inherit;
 	opacity: 1;
 }
@@ -1987,7 +1988,7 @@ input[type="search"]::-webkit-search-decoration {
 	border: 0;
 	font-size: .85em;;
 	line-height: 39px;
-	height: auto;
+	height: 39px;
 	opacity: 0;
 	border-radius: 0;
 	color: inherit;
@@ -2039,7 +2040,7 @@ li.menu-footer-search .searchform:after {
 li.menu-footer-search .searchform .s {
 	font-size: inherit;
 	line-height: inherit;
-	height: auto;
+	height: 25px;
 	border: none;
 	border-bottom: 1px solid #CCC;
 	border-radius: 0;
@@ -2053,7 +2054,7 @@ li.menu-footer-search .searchform .s:hover {
 li.menu-footer-search .searchsubmit {
 	font-size: inherit;
 	line-height: inherit;
-	height: auto;
+	height: 25px;
 	width: auto;
 	opacity: .5;
 	right: -5px;
