@@ -35,9 +35,9 @@ add_action( 'wp_ajax_nopriv_cpajax_load_next_page', 'cpajax_infinite_scroll_load
 
 
 /**
- * Get context in which to enable this plugin
+ * Get context in which to enable this plugin.
  *
- * @return void
+ * @since 3.4
  */
 function cpajax_enable_plugin() {
 
@@ -61,9 +61,9 @@ function cpajax_enable_plugin() {
 
 
 /**
- * Add our plugin javascripts
+ * Add our plugin javascripts.
  *
- * @return void
+ * @since 3.4
  */
 function cpajax_add_javascripts() {
 
@@ -99,6 +99,19 @@ function cpajax_add_javascripts() {
 
 	// get translations array
 	$vars['cpajax_lang'] = cpajax_localise();
+
+	// comment refresh interval, in milliseconds
+	$vars['cpajax_comment_refresh_interval'] = 5000;
+
+	/**
+	 * Allow Javascript vars to be filtered.
+	 *
+	 * @since 3.9.6
+	 *
+	 * @param array $vars The existing localisation array.
+	 * @return array $vars The modified localisation array.
+	 */
+	$vars = apply_filters( 'cpajax_javascript_vars', $vars );
 
 	// default to minified scripts
 	$debug_state = commentpress_minified();
@@ -140,9 +153,11 @@ function cpajax_add_javascripts() {
 
 
 /**
- * Enable translation in the Javascript
+ * Enable translation in the Javascript.
  *
- * @return array $translations The array of translations to pass to the script
+ * @since 3.4
+ *
+ * @return array $translations The array of translations to pass to the script.
  */
 function cpajax_localise() {
 
@@ -180,7 +195,7 @@ function cpajax_localise() {
 /**
  * Validate that the plugin can be activated
  *
- * @return bool $allowed True if the plugin can activate, false otherwise
+ * @return bool $allowed True if the plugin can activate, false otherwise.
  */
 function cpajax_plugin_can_activate() {
 
@@ -214,9 +229,9 @@ function cpajax_plugin_can_activate() {
 
 
 /**
- * Get new comments in response to an ajax request
+ * Get new comments in response to an AJAX request.
  *
- * @return void
+ * @since 3.4
  */
 function cpajax_get_new_comments() {
 
@@ -332,9 +347,11 @@ function cpajax_get_new_comments() {
 
 
 /**
- * Get comment depth
+ * Get comment depth.
  *
- * @return int $depth The depth of the comment in a thread
+ * @since 3.4
+ *
+ * @return int $depth The depth of the comment in a thread.
  */
 function cpajax_get_comment_depth( $comment, $depth ) {
 
@@ -364,11 +381,13 @@ function cpajax_get_comment_depth( $comment, $depth ) {
 
 
 /**
- * Add "reassign" button to comment utilities
+ * Add "reassign" button to comment utilities.
  *
- * @param str $edit_button The existing edit button HTML
- * @param array $comment The comment  this edit button applies to
- * @return str $edit_button The modified edit button HTML
+ * @since 3.4
+ *
+ * @param str $edit_button The existing edit button HTML.
+ * @param array $comment The comment  this edit button applies to.
+ * @return str $edit_button The modified edit button HTML.
  */
 function cpajax_add_reassign_button( $edit_button, $comment ) {
 
@@ -409,9 +428,9 @@ function cpajax_add_reassign_button( $edit_button, $comment ) {
 
 
 /**
- * Change a comment's text-signature
+ * Change a comment's text-signature.
  *
- * @return void
+ * @since 3.4
  */
 function cpajax_reassign_comment() {
 
@@ -464,9 +483,9 @@ function cpajax_reassign_comment() {
 
 
 /**
- * Store text signature for all children of a comment
+ * Store text signature for all children of a comment.
  *
- * @return void
+ * @since 3.4
  */
 function cpajax_reassign_comment_children( $comment_id, $text_sig, &$comment_ids ) {
 
@@ -500,10 +519,12 @@ function cpajax_reassign_comment_children( $comment_id, $text_sig, &$comment_ids
 
 
 /**
- * Retrieve comment children
+ * Retrieve comment children.
  *
- * @param int $comment_id The numeric ID of the comment
- * @return array $children The array of child comments
+ * @since 3.4
+ *
+ * @param int $comment_id The numeric ID of the comment.
+ * @return array $children The array of child comments.
  */
 function cpajax_get_children(
 
@@ -534,9 +555,9 @@ function cpajax_get_children(
 
 
 /**
- * Add Infinite Scroll Javascript
+ * Add Infinite Scroll Javascript.
  *
- * @return void
+ * @since 3.4
  */
 function cpajax_infinite_scroll_scripts() {
 
@@ -585,9 +606,9 @@ function cpajax_infinite_scroll_scripts() {
 
 
 /**
- * Load the next page
+ * Load the next page.
  *
- * @return void
+ * @since 3.4
  */
 function cpajax_infinite_scroll_load_next_page() {
 
