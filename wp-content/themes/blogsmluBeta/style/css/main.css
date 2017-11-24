@@ -719,8 +719,9 @@ h5 {
 }
 
 #blogname {
-	padding-top: 60px;
+	padding-top: 30px;
 	clear: both;
+  visibility: hidden;
 }
 
 #header h2, #header h2 a {
@@ -2933,7 +2934,8 @@ span.wpcf7-list-item {
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	box-shadow: none;
-	padding: 0;}
+	padding: 0;
+}
 
 .social_share_privacy_area li span {
 	
