@@ -74,6 +74,11 @@ class WYSIJA_view_front_widget_nl extends WYSIJA_view_front {
 		wp_print_scripts('wysija-front-subscribers');
 		wp_print_scripts('jquery-ui-datepicker');
 
+		$helperUser=WYSIJA::get('user','helper');
+		if($helperUser->isCaptchaEnabled()) {
+			wp_print_scripts( 'wysija-recaptcha' );
+		}
+
 		$scripts_html .= ob_get_contents();
 		ob_end_clean();
 
@@ -102,10 +107,17 @@ class WYSIJA_view_front_widget_nl extends WYSIJA_view_front {
 
 	function display($title='',$params,$echo=true,$iframe=false){
 
+		$helperUser=WYSIJA::get('user','helper');
+
 		if ( ! $iframe ){
 			wp_enqueue_script( 'wysija-validator-lang' );
 			wp_enqueue_script( 'wysija-validator' );
 			wp_enqueue_script( 'wysija-front-subscribers' );
+
+			if($helperUser->isCaptchaEnabled()) {
+				wp_enqueue_script( 'wysija-recaptcha' );
+			}
+
 			wp_enqueue_style( 'validate-engine-css' );
 		}
 		$data = '';
@@ -212,8 +224,14 @@ class WYSIJA_view_front_widget_nl extends WYSIJA_view_front {
 				$list_fields_hidden='<input type="hidden" name="wysija[user_list][list_ids]" value="'.$list_exploded.'" />';
 			}
 
+			$captcha_field = '';
+			if($helperUser->isCaptchaEnabled()) {
+				$captcha_key = htmlspecialchars($model_config->getValue('recaptcha_key'));
+				$captcha_field = '<div class="g-recaptcha" data-sitekey="'.$captcha_key.'" data-size="compact"></div>';
+			}
+
 			$submit_value = (!empty($params['submit'])) ? $params['submit'] : __('Submit', WYSIJA);
-			$submitbutton=$list_fields.'<input type="submit" '.$disabled_submit.' class="wysija-submit wysija-submit-field" name="submit" value="'.esc_attr($submit_value).'"/>';
+			$submitbutton=$list_fields.$captcha_field.'<input type="submit" '.$disabled_submit.' class="wysija-submit wysija-submit-field" name="submit" value="'.esc_attr($submit_value).'"/>';
 			$dataCf=$this->customFields($params,$form_id_real,$submitbutton);
 
 			if($dataCf){

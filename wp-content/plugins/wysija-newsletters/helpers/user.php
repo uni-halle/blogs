@@ -102,8 +102,44 @@ class WYSIJA_help_user extends WYSIJA_object {
             }
         }
 
-
         return true;
+    }
+
+    function isCaptchaEnabled() {
+      $config = WYSIJA::get('config', 'model');
+      return $config->getValue('recaptcha');
+    }
+
+    function verifyCaptcha($data) {
+      $config = WYSIJA::get('config', 'model');
+
+      if(!$this->isCaptchaEnabled()) {
+        return true;
+      }
+
+      if(isset($data['g-recaptcha-response'])) {
+        $response = json_decode(
+          wp_remote_retrieve_body(
+            wp_remote_post(
+              'https://www.google.com/recaptcha/api/siteverify',
+              array(
+                'body' => array(
+                  'secret' => $config->getValue('recaptcha_secret'),
+                  'response' => $data['g-recaptcha-response']
+                )
+              )
+            )
+          ),
+          true
+        );
+
+        if(!empty($response["success"])) {
+          return true;
+        }
+      }
+
+      $this->error( __( 'Please enter CAPTCHA correctly.' , WYSIJA ) , true);
+      return false;
     }
 
     /**
@@ -383,6 +419,63 @@ class WYSIJA_help_user extends WYSIJA_object {
         }
 
         return $user_id;
+    }
+
+    function throttleRepeatedSubscriptions() {
+      $model_subscriber_ip = WYSIJA::get('subscriber_ip', 'model');
+
+      $subscription_limit_enabled = apply_filters('wysija_subscription_limit_enabled', true);
+
+      $subscription_limit_window = apply_filters('wysija_subscription_limit_window', DAY_IN_SECONDS);
+      $subscription_limit_base = apply_filters('wysija_subscription_limit_base', MINUTE_IN_SECONDS);
+
+      $subscriber_ip = $this->getIPForThrottling();
+
+      if ($subscription_limit_enabled && !is_user_logged_in()) {
+        if (!empty($subscriber_ip)) {
+          $subscription_count = $model_subscriber_ip->query(
+            'get_row',
+            'SELECT COUNT(*) as row_count FROM ' . $model_subscriber_ip->getSelectTableName() . '
+             WHERE `ip` = "' . $subscriber_ip . '" AND `created_at` >= NOW() - INTERVAL ' . (int) $subscription_limit_window . ' SECOND'
+          );
+
+          if (isset($subscription_count['row_count']) && $subscription_count['row_count'] > 0) {
+            $timeout = $subscription_limit_base * pow(2, $subscription_count['row_count'] - 1);
+            $existing_user = $model_subscriber_ip->query(
+              'get_row',
+              'SELECT COUNT(*) as row_count
+               FROM ' . $model_subscriber_ip->getSelectTableName() . '
+               WHERE `ip` = "' . $subscriber_ip . '" AND `created_at` >= NOW() - INTERVAL ' . (int) $timeout . ' SECOND LIMIT 1'
+            );
+            if (!empty($existing_user['row_count'])) {
+              $this->error( sprintf(__( 'You need to wait %s seconds before subscribing again.' , WYSIJA ), $timeout) , true);
+              return false;
+            }
+          }
+        }
+      }
+
+      // Purge old IP addresses
+      $model_subscriber_ip->query(
+        'DELETE FROM ' . $model_subscriber_ip->getSelectTableName() . '
+        WHERE `created_at` < NOW() - INTERVAL ' . (int) $subscription_limit_window . ' SECOND'
+      );
+
+      return true;
+    }
+
+    function storeSubscriberIP() {
+      global $wpdb;
+
+      $model_subscriber_ip = WYSIJA::get('subscriber_ip', 'model');
+      $subscriber_ip = $this->getIPForThrottling();
+
+      if (!empty($subscriber_ip)) {
+        $wpdb->insert(
+          $model_subscriber_ip->getSelectTableName(),
+          array('ip' => $subscriber_ip)
+        );
+      }
     }
 
     /**
@@ -1036,6 +1129,17 @@ class WYSIJA_help_user extends WYSIJA_object {
         if (empty($ip))
             $ip = '127.0.0.1';
         return strip_tags($ip);
+    }
+
+    // More secure IP check
+    function getIPForThrottling() {
+        $ip = '';
+
+        if (!empty($_SERVER['REMOTE_ADDR']) AND strlen($_SERVER['REMOTE_ADDR']) > 6) {
+            $ip = strip_tags($_SERVER['REMOTE_ADDR']);
+        }//endif
+
+        return $ip;
     }
 
     /**

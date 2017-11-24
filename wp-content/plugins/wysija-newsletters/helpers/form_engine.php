@@ -713,6 +713,9 @@ class WYSIJA_help_form_engine extends WYSIJA_object {
         $helper_render_engine = WYSIJA::get('render_engine', 'helper');
         $helper_render_engine->setTemplatePath(WYSIJA_EDITOR_TOOLS);
 
+        $model_config = WYSIJA::get('config','model');
+        $helperUser = WYSIJA::get('user','helper');
+
         $blocks = $this->get_data('body');
 
         if(empty($blocks)) return '';
@@ -729,6 +732,11 @@ class WYSIJA_help_form_engine extends WYSIJA_object {
                 if($user_email && is_string($user_email) && is_user_logged_in() && !current_user_can('switch_themes') && !is_admin()) {
                     $block['value'] = $user_email;
                 }
+            }
+
+            // special case for a submit button
+            if($block['type'] === 'submit' && $helperUser->isCaptchaEnabled()) {
+                $block['params']['recaptcha_key'] = htmlspecialchars($model_config->getValue('recaptcha_key'));
             }
 
             // set field name 'prefix' depending whether it's a custom field or not
@@ -808,6 +816,8 @@ class WYSIJA_help_form_engine extends WYSIJA_object {
                 $helper_toolbox = WYSIJA::get('toolbox','helper');
                 $wp_language_code = $helper_toolbox->get_language_code();
 
+                $helperUser=WYSIJA::get('user','helper');
+
                 $wysija_version = WYSIJA::get_version();
                 $scripts_to_include = '<!--START Scripts : this is the script part you can add to the header of your theme-->'."\n";
                 $scripts_to_include .= '<script type="text/javascript" src="'.includes_url().'js/jquery/jquery.js'.'?ver='.$wysija_version.'"></script>'."\n";
@@ -824,6 +834,11 @@ class WYSIJA_help_form_engine extends WYSIJA_object {
                 /* ]]> */
                 </script>';
                 $scripts_to_include .= '<script type="text/javascript" src="'.WYSIJA_URL.'js/front-subscribers.js?ver='.$wysija_version.'"></script>'."\n";
+
+                if($helperUser->isCaptchaEnabled()) {
+                  $scripts_to_include .= '<script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>'."\n";
+                }
+
                 $scripts_to_include .= '<!--END Scripts-->'."\n"."\n";
 
                 //enqueue the scripts

@@ -14,7 +14,7 @@ class WYSIJA_help_update extends WYSIJA_object {
 			'2.3.3','2.3.4',
 			'2.4', '2.4.1', '2.4.3','2.4.4',
 			'2.5','2.5.2','2.5.5','2.5.9.6', '2.5.9.7',
-			'2.6', '2.6.0.8', '2.6.15'
+			'2.6', '2.6.0.8', '2.6.15', '2.7.15'
 		);
 	}
 
@@ -497,6 +497,27 @@ class WYSIJA_help_update extends WYSIJA_object {
                             }
                             return true;
                          break;
+
+			case '2.7.15':
+				$queries = array();
+
+				// Subscriber IPs table.
+				$queries[] = 'CREATE TABLE IF NOT EXISTS `[wysija]subscriber_ips` ('.
+          '`ip` varchar(45) NOT NULL,'.
+          '`created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,'.
+          'PRIMARY KEY  (`created_at`, `ip`),'.
+          'KEY ip (`ip`)'.
+					') /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci*/';
+
+				$errors = $this->run_update_queries( $queries );
+
+				if ( $errors ) {
+					$this->error( implode( $errors, "\n" ) );
+					return false;
+				}
+
+				return true;
+				break;
 
 			default:
 				return false;

@@ -291,6 +291,13 @@ class WYSIJA_help_back extends WYSIJA_help{
             $helperConflicts=WYSIJA::get('conflicts','helper');
             $helperConflicts->resolve($conflictingPlugins);
         }
+
+        // WP 4.9 script conflicts
+        global $wp_version;
+        if(version_compare( $wp_version, '4.9', '>=' )) {
+          $helperConflicts=WYSIJA::get('conflicts','helper');
+          $helperConflicts->resolveScriptConflicts();
+        }
     }
 
     /**
@@ -342,8 +349,10 @@ class WYSIJA_help_back extends WYSIJA_help{
         $truelinkhelp = '<p>'.str_replace($finds,$replace,$linkcontent).'</p>';
         $truelinkhelp .= '<p>'.__('MailPoet Version: ',WYSIJA).'<strong>'.WYSIJA::get_version().'</strong></p>';
 
+        $red_dot = is_plugin_active('mailpoet/mailpoet.php') ? '' : ' <span class="update-plugins"><span class="update-count">1</span></span>';
+
         $this->menus=array(
-            'campaigns'=>array('title'=>'MailPoet'. ' <span class="update-plugins"><span class="update-count">1</span></span>'),
+            'campaigns'=>array('title'=>'MailPoet'. $red_dot),
             'subscribers'=>array('title'=>__('Subscribers',WYSIJA)), // if the key "subscribers" is changed, please change in the filter "wysija_menus" as well.
             'config'=>array('title'=>__('Settings',WYSIJA)),
             'premium'=>array('title'=>__('Premium',WYSIJA)),
@@ -555,7 +564,7 @@ class WYSIJA_help_back extends WYSIJA_help{
         if(get_user_option('rich_editing') == 'true') {
          add_filter("mce_external_plugins", array($this,"addRichPlugin"));
          add_filter('mce_buttons', array($this,'addRichButton1'),999);
-         $myStyleUrl = "../../plugins/wysija-newsletters/css/tmce/style.css";
+         $myStyleUrl = WYSIJA_URL."css/tmce/style.css";
          add_editor_style($myStyleUrl);
          //add_filter('tiny_mce_before_init', array($this,'TMCEinnercss'),12 );
          wp_enqueue_style('custom_TMCE_admin_css', WYSIJA_URL.'css/tmce/panelbtns.css');

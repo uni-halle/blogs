@@ -42,8 +42,12 @@ class WYSIJA_control_front_subscribers extends WYSIJA_control_front{
 
         $helperUser=WYSIJA::get('user','helper');
         if(!$helperUser->checkData($data))return false;
+        if(!$helperUser->verifyCaptcha($data))return false;
+        if(!$helperUser->throttleRepeatedSubscriptions()) return false;
 
-        $helperUser->addSubscriber($data);
+        if($helperUser->addSubscriber($data)) {
+          $helperUser->storeSubscriberIP();
+        }
 
         return true;
     }
@@ -138,5 +142,4 @@ class WYSIJA_control_front_subscribers extends WYSIJA_control_front{
         echo $subscription_form;
         exit;
     }
-
 }

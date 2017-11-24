@@ -2607,7 +2607,6 @@ class WYSIJA_control_back_campaigns extends WYSIJA_control_back {
 	}
 
 	function special_new_wordp_upload() {
-
 		wp_enqueue_script('wysija-plupload-handlers', WYSIJA_URL . 'js/jquery/pluploadHandler.js', array('plupload-all', 'jquery'));
 		$uploader_l10n = array(
 			'queue_limit_exceeded' => __('You have attempted to queue too many files.'),
@@ -2644,61 +2643,6 @@ class WYSIJA_control_back_campaigns extends WYSIJA_control_back {
 
 		$errors = array();
 		return wp_iframe(array($this->viewObj, 'popup_new_wp_upload'), $errors);
-	}
-
-	function special_wordp_upload() {
-
-		wp_enqueue_script('swfupload-all');
-		wp_enqueue_script('swfupload-handlers');
-		wp_enqueue_script('wysija-upload-handlers', WYSIJA_URL . "js/jquery/uploadHandlers.js");
-		wp_enqueue_script('image-edit');
-		wp_enqueue_script('set-post-thumbnail');
-		wp_enqueue_style('imgareaselect');
-
-		$errors = array();
-		$id = 0;
-		if (isset($_GET['flash']))
-			$_GET['flash'] = 1;
-		if (isset($_POST['html-upload']) && !empty($_FILES)) {
-			// Upload File button was clicked
-			$id = media_handle_upload('async-upload', $_REQUEST['post_id']);
-			unset($_FILES);
-			if (is_wp_error($id)) {
-				$errors['upload_error'] = $id;
-				$id = false;
-			}
-		}
-
-		if (!empty($_POST['insertonlybutton'])) {
-			$href = $_POST['insertonly']['href'];
-			if (!empty($href) && !strpos($href, '://'))
-				$href = "http://$href";
-
-			$title = esc_attr($_POST['insertonly']['title']);
-			if (empty($title))
-				$title = basename($href);
-			if (!empty($title) && !empty($href))
-				$html = "<a href='" . esc_url($href) . "' >$title</a>";
-			$html = apply_filters('file_send_to_editor_url', $html, esc_url_raw($href), $title);
-			return media_send_to_editor($html);
-		}
-
-		if (!empty($_POST)) {
-			$return = media_upload_form_handler();
-
-			if (is_string($return))
-				return $return;
-			if (is_array($return))
-				$errors = $return;
-		}
-
-		if (isset($_POST['save'])) {
-			$errors['upload_notice'] = __('Saved.', WYSIJA);
-			return media_upload_gallery();
-		}
-
-
-		return wp_iframe(array($this->viewObj, 'popup_wp_upload'), $errors);
 	}
 
 	function _checkEmailExists($emailId) {

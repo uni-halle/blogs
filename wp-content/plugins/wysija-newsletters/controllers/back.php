@@ -557,14 +557,8 @@ class WYSIJA_control_back extends WYSIJA_control{
         if(!isset($this->iframeTabs)) {
 
 
-            //if wp version includes plupload then let's use it
-            if(version_compare(get_bloginfo('version'), '3.3.0')>= 0){
-                $this->iframeTabs=array(
+            $this->iframeTabs=array(
             'special_new_wordp_upload'=>__('Upload',WYSIJA));
-            }else{
-                $this->iframeTabs=array(
-            'special_wordp_upload'=>__('Upload',WYSIJA));
-            }
 
             $this->iframeTabs['special_wysija_browse']=__('Newsletter Images',WYSIJA);
             $this->iframeTabs['special_wordp_browse']=__('WordPress Posts\' Images',WYSIJA);

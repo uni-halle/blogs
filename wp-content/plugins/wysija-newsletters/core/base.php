@@ -19,7 +19,7 @@ class WYSIJA_object{
 	 * Static variable holding core MailPoet's version
 	 * @var array
 	 */
-	static $version = '2.7.12.1';
+	static $version = '2.8';
 
 	function __construct(){}
 
@@ -361,6 +361,11 @@ class WYSIJA_help extends WYSIJA_object{
 		wp_register_script('wysija-admin-ajax', WYSIJA_URL.'js/admin-ajax.js',array(),WYSIJA::get_version());
 		wp_register_script('wysija-admin-ajax-proto', WYSIJA_URL.'js/admin-ajax-proto.js',array(),WYSIJA::get_version());
 		wp_register_script( 'mailpoet-global', WYSIJA_URL.'js/admin-global.js', array( 'jquery', 'underscore' ), WYSIJA::get_version() );
+
+		$helperUser=WYSIJA::get('user','helper');
+		if($helperUser->isCaptchaEnabled()) {
+			wp_register_script( 'wysija-recaptcha', 'https://www.google.com/recaptcha/api.js' );
+		}
 
 		if(defined('WYSIJA_SIDE') && WYSIJA_SIDE=='front')  wp_enqueue_style('validate-engine-css');
 

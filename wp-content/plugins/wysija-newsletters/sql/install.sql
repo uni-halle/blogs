@@ -194,3 +194,12 @@ CREATE TABLE IF NOT EXISTS `custom_field` (
   `settings` text DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci*/;
+
+-- QUERY ---
+
+CREATE TABLE IF NOT EXISTS `subscriber_ips` (
+  `ip` varchar(45) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY  (`created_at`, `ip`),
+  KEY ip (`ip`)
+) /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci*/;

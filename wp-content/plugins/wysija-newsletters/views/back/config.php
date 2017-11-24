@@ -1202,6 +1202,26 @@ class WYSIJA_view_back_config extends WYSIJA_view_back {
 			'label'			   => __('Industry', WYSIJA),
 			'desc'				=> __('Select your industry.', WYSIJA) );
 
+		$advanced_fields ['recaptcha'] = array(
+			'type'	 => 'radio',
+			'values'   => array( true	=> __('Yes', WYSIJA), false   => __('No', WYSIJA) ),
+			'label' => __('Enable reCAPTCHA', WYSIJA),
+			'desc'  => __('Use reCAPTCHA to protect MailPoet subscription forms. [link]Sign up for an API key pair here[/link].', WYSIJA),
+      'link' => '<a target="_blank" href="https://www.google.com/recaptcha/admin">'
+		);
+
+		$advanced_fields ['recaptcha_key'] = array(
+			'rowclass' => 'recaptcha',
+			'type'  => 'input',
+			'label' => __('reCAPTCHA site key', WYSIJA),
+			'desc' => __('Used in the HTML code your site serves to users.', WYSIJA) );
+
+		$advanced_fields ['recaptcha_secret'] = array(
+			'rowclass' => 'recaptcha',
+			'type'  => 'input',
+			'label' => __('reCAPTCHA secret key', WYSIJA),
+			'desc' => __('Used for communication between your site and Google. Be sure to keep it a secret.', WYSIJA) );
+
 		$super_advanced_fields ['subscribers_count'] = array(
 			'type'  => 'subscribers_count',
 			'label' => __('Shortcode to display total number of subscribers', WYSIJA),
