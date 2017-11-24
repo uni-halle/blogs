@@ -1,9 +1,9 @@
 === SiteOrigin Widgets Bundle ===
 Tags: bundle, widget, button, slider, image, carousel, price table, google maps, tinymce, social links
 Requires at least: 4.2
-Tested up to: 4.8.1
-Stable tag: 1.9.10
-Build time: 2017-09-14T08:47:54+02:00
+Tested up to: 4.9
+Stable tag: 1.11.0
+Build time: 2017-11-07T09:54:35+02:00
 License: GPLv3 or later
 Contributors: gpriday, braam-genis
 Donate link: https://siteorigin.com/downloads/contribution/
@@ -53,6 +53,36 @@ The SiteOrigin Widgets Bundle is the perfect platform to build widgets for your 
 3. An example of the button widget.
 
 == Changelog ==
+
+= 1.11.0 - 7 November 2017 =
+* New Tabs widget!
+* Contact: mention it's possible to send to multiple emails.
+* Features: Fixes margin causing extended page.
+* Presets field.
+* Accordion: Add Repeater Label Title.
+* Hero: ability to select an image size.
+* TinyMCE field: Remember last selected editor.
+* Add rel="noopener noreferrer" for all 3rd party/unknown links.
+* Social Media Buttons Widget: comply WCAG 2.4.4
+
+= 1.10.2 - 20 October 2017 =
+* Fix for links sometimes not working in slider widgets.
+* Fix multi-measurement field labels.
+
+= 1.10.1 - 13 October 2017 =
+* Fix subwidget fields initializion when not contained in a section.
+* TinyMCE field: fix initialization in repeaters.
+
+= 1.10.0 - 11 October 2017 =
+* New Accordion widget!
+* Prevent multiple initialization of media field.
+* Use correct path for widget banner when defined in a theme.
+* Video: Added option to show/hide related YouTube videos at end of video.
+* Slider: Handle links inside slider frames first and then allow processing of frame background clicks.
+* Give repeated fields in widget fields unique ids for state handling.
+* New multi-measurement field.
+* Widget Manager Path Comparison fix. (allows for settings to work)
+* Button: Use `esc_js` instead of `esc_attr` for onclick.
 
 = 1.9.10 - 14 September 2017 =
 * TinyMCE field: fixed issue with filter for TinyMCE plugins.

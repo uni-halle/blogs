@@ -2,7 +2,7 @@
 /*
 Plugin Name: SiteOrigin Widgets Bundle
 Description: A collection of all widgets, neatly bundled into a single plugin. It's also a framework to code your own widgets on top of.
-Version: 1.9.10
+Version: 1.11.0
 Text Domain: so-widgets-bundle
 Domain Path: /lang
 Author: SiteOrigin
@@ -12,7 +12,7 @@ License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 */
 
-define('SOW_BUNDLE_VERSION', '1.9.10');
+define('SOW_BUNDLE_VERSION', '1.11.0');
 define('SOW_BUNDLE_BASE_FILE', __FILE__);
 
 // Allow JS suffix to be pre-set
@@ -382,7 +382,7 @@ class SiteOrigin_Widgets_Bundle {
 
 		$widget_objects = $this->get_widget_objects();
 
-		$widget_path = empty( $_GET['id'] ) ? false : WP_PLUGIN_DIR . $_GET['id'];
+		$widget_path = empty( $_GET['id'] ) ? false : wp_normalize_path( WP_PLUGIN_DIR ) . $_GET['id'];
 
 		$widget_object = empty( $widget_objects[ $widget_path ] ) ? false : $widget_objects[ $widget_path ];
 		
@@ -424,7 +424,7 @@ class SiteOrigin_Widgets_Bundle {
 		}
 
 		$widget_objects = $this->get_widget_objects();
-		$widget_path = empty( $_GET['id'] ) ? false : WP_PLUGIN_DIR . $_GET['id'];
+		$widget_path = empty( $_GET['id'] ) ? false : wp_normalize_path( WP_PLUGIN_DIR ) . $_GET['id'];
 		$widget_object = empty( $widget_objects[ $widget_path ] ) ? false : $widget_objects[ $widget_path ];
 		
 		if ( empty( $widget_object ) || ! $widget_object->has_form( 'settings' ) ) {
@@ -640,8 +640,9 @@ class SiteOrigin_Widgets_Bundle {
 
 		foreach( $folders as $folder ) {
 
-			$files = glob( $folder . '*/*.php' );
+			$files = glob( wp_normalize_path( $folder ) . '*/*.php' );
 			foreach ($files as $file) {
+				$file = wp_normalize_path( $file );
 				include_once $file;
 
 				$widget_class = $manager->get_class_from_path( $file );
@@ -726,7 +727,7 @@ class SiteOrigin_Widgets_Bundle {
 	function plugin_action_links($links){
 		unset( $links['edit'] );
 		$links['manage'] = '<a href="' . admin_url('plugins.php?page=so-widgets-plugins') . '">'.__('Manage Widgets', 'so-widgets-bundle').'</a>';
-		$links['support'] = '<a href="https://siteorigin.com/thread/" target="_blank">'.__('Support', 'so-widgets-bundle').'</a>';
+		$links['support'] = '<a href="https://siteorigin.com/thread/" target="_blank" rel="noopener noreferrer">'.__('Support', 'so-widgets-bundle').'</a>';
 		return $links;
 	}
 
