@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Regenerate Thumbnails - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-09-19 05:28:10+0000\n"
+"PO-Revision-Date: 2017-11-03 14:09:50+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -46,7 +46,7 @@ msgstr "Échec en raison d’une erreur inconnue."
 
 #: regenerate-thumbnails.php:416
 msgid "The originally uploaded image file cannot be found at %s"
-msgstr "L’image originalement téléchargée est introuvable sur %s"
+msgstr "L’image originalement téléversée est introuvable sur %s"
 
 #: regenerate-thumbnails.php:411
 msgid "Your user account doesn't have permission to resize images"
@@ -74,7 +74,7 @@ msgstr "Vous pouvez regénérer des images spécifiques (plutôt que toutes les 
 
 #: regenerate-thumbnails.php:376
 msgid "Use this tool to regenerate thumbnails for all images that you have uploaded to your blog. This is useful if you've changed any of the thumbnail dimensions on the <a href='%s'>media settings page</a>. Old thumbnails will be kept to avoid any broken images due to hard-coded URLs."
-msgstr "Cet outil permet de regénérer les miniatures de toutes les images téléchargées sur votre site. Ceci est très utile si vous changez une des dimensions de miniature sur la page <a href='%s'>Réglages > Médias</a>. Les anciennes miniatures seront conservées pour éviter tout problème causé par les URL codées en dur."
+msgstr "Cet outil permet de regénérer les miniatures de toutes les images téléversées sur votre site. Ceci est très utile si vous changez une des tailles de miniature sur la page <a href='%s'>Réglages > Médias</a>. Les anciennes miniatures seront conservées pour éviter tout problème causé par les URL codées en dur."
 
 #: regenerate-thumbnails.php:334
 msgid "The resize request was abnormally terminated (ID %s). This is likely due to the image exceeding available memory or some other type of fatal error."

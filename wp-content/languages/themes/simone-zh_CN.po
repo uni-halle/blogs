@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Simone package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-10-29 09:10:54+0000\n"
+"PO-Revision-Date: 2017-11-14 17:14:47+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,6 +14,10 @@ msgstr ""
 #. Theme Name of the plugin/theme
 msgid "Simone"
 msgstr "Simone"
+
+#. Description of the plugin/theme
+msgid "Simone is a responsive, accessible, high-resolution theme featuring custom header and custom link colors, large images, and easy to read typography that scales to fit all screens. Other features include keyboard accessible navigation, optional social menu, sidebar- and footer widgets, no-sidebar page template, Aside post format, and collapsible author profile box. Simone is translation ready and ships in English with translations in Catalan, Chinese (simplified), Dutch, Finnish, French, German, Hungarian, Italian, Norwegian Bokmål, Persian, Russian, Spanish, Swedish, and Turkish."
+msgstr "Simone是一个响应灵敏，易接近，高分辨率的主题，具有自定义标题和自定义链接颜色，大图像和易于阅读的排版，可适应所有屏幕。 其他功能包括键盘访问导航，可选的社交菜单，侧边栏和页脚小工具，无侧边栏模板，日志格式和可折叠作者个人资料框。 Simone翻译准备并用英文翻译加泰罗尼亚文，中文（简体），荷兰文，芬兰文，法文，德文，匈牙利文，意大利文，挪威文，波兰文，俄文，西班牙文，瑞典文和土耳其文。"
 
 #. Template Name of the plugin/theme
 msgid "Page with no sidebar"
@@ -194,6 +198,14 @@ msgstr "菜单"
 #: header.php:24
 msgid "Skip to content"
 msgstr "跳至正文"
+
+#: functions.php:114
+msgid "Footer widget area appears, not surprisingly, in the footer of the site."
+msgstr "不出所料，页脚小工具区在站点页脚区域出现。"
+
+#: functions.php:113
+msgid "Footer Widget"
+msgstr "页脚小工具"
 
 #: functions.php:104
 msgid "Sidebar"

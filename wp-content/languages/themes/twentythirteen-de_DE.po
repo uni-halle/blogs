@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Thirteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-10-22 18:02:31+0000\n"
+"PO-Revision-Date: 2017-11-11 15:38:44+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -242,8 +242,8 @@ msgstr "Kommentar-Navigation"
 msgctxt "comments title"
 msgid "One thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
-msgstr[0] "Ein Gedanke zu &#8222;%2$s&8220;"
-msgstr[1] "%1$s Gedanken zu &#8222;%2$s&8220;"
+msgstr[0] "Ein Gedanke zu &#8222;%2$s&#8220;"
+msgstr[1] "%1$s Gedanken zu &#8222;%2$s&#8220;"
 
 #: category.php:19
 msgid "Category Archives: %s"
@@ -299,7 +299,7 @@ msgstr "Ups, diesen Inhalt gibt es wohl nicht."
 msgid "Not Found"
 msgstr "Seite nicht gefunden"
 
-#. #-#-#-#-#  twentythirteen.pot (Twenty Thirteen 2.2)  #-#-#-#-#
+#. #-#-#-#-#  twentythirteen.pot (Twenty Thirteen 2.3)  #-#-#-#-#
 #. Author URI of the plugin/theme
 #: footer.php:19
 msgid "https://wordpress.org/"

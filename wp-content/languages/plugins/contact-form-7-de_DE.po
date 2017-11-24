@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Contact Form 7 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-10-31 09:58:44+0000\n"
+"PO-Revision-Date: 2017-11-02 09:27:17+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,23 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Plugins - Contact Form 7 - Stable (latest release)\n"
+
+#: admin/includes/welcome-panel.php:37
+msgid "Your donation will help encourage and support the plugin&#8217;s continued development and better user support."
+msgstr "Deine Spende wird dazu beitragen, die fortlaufende Entwicklung des Plugins und eine bessere Benutzerunterstützung zu fördern und zu unterstützen."
+
+#: admin/includes/welcome-panel.php:35
+msgid "making a donation"
+msgstr "eine Spende"
+
+#. translators: %s: link labeled 'making a donation'
+#: admin/includes/welcome-panel.php:35
+msgid "If you enjoy using Contact Form 7 and find it useful, please consider %s."
+msgstr "Wenn du gerne Contact Form 7 nutzt und es nützlich findest dann mache doch %s. "
+
+#: admin/includes/welcome-panel.php:33
+msgid "It is hard to continue development and support for this plugin without contributions from users like you."
+msgstr "Es ist schwer, die Entwicklung und den Support für dieses Plugin ohne Beiträge von Nutzern wie dir fortzusetzen."
 
 #: includes/contact-form.php:294 includes/contact-form.php:673
 msgid "This contact form is available only for logged in users."
@@ -299,7 +316,7 @@ msgstr "Du hast nicht die Berechtigung, die Konfiguration zu validieren."
 
 #: includes/controller.php:64
 msgid "Please verify that you are not a robot."
-msgstr "Bitte bestätigen Sie, dass Sie keine Maschine sind."
+msgstr "Bitte bestätige, dass du keine Maschine bist."
 
 #: modules/recaptcha.php:467
 msgid "Compact"
@@ -746,7 +763,7 @@ msgstr "Kontrollkästchen"
 
 #: modules/really-simple-captcha.php:346
 msgid "This contact form contains CAPTCHA fields, but the necessary libraries (GD and FreeType) are not available on your server."
-msgstr "Dieses Kontaktformular enthält Captcha-Felder, aber die benötigten Bibliotheken (GD und FreeType) sind nicht auf Ihrem Server verfügbar."
+msgstr "Dieses Kontaktformular enthält Captcha-Felder, aber die benötigten Bibliotheken (GD und FreeType) sind nicht auf deinem Server verfügbar. "
 
 #: modules/really-simple-captcha.php:340
 msgid "This contact form contains CAPTCHA fields, but the temporary folder for the files (%s) does not exist or is not writable. You can create the folder or change its permission manually."
@@ -778,7 +795,7 @@ msgstr "Captcha"
 
 #: modules/really-simple-captcha.php:217
 msgid "Your entered code is incorrect."
-msgstr "Ihr eingegebener Code ist falsch."
+msgstr "Dein eingegebener Code ist falsch."
 
 #: modules/really-simple-captcha.php:215
 msgid "The code that sender entered does not match the CAPTCHA"
@@ -914,11 +931,11 @@ msgstr "Senden"
 
 #: includes/contact-form-template.php:41
 msgid "Your Message"
-msgstr "Ihre Nachricht"
+msgstr "Deine Nachricht"
 
 #: includes/contact-form-template.php:39
 msgid "Your Email"
-msgstr "Ihre E-Mail-Adresse"
+msgstr "Deine E-Mail-Adresse"
 
 #: includes/contact-form-template.php:37
 msgid "(required)"
@@ -926,7 +943,7 @@ msgstr "(Pflichtfeld)"
 
 #: includes/contact-form-template.php:38
 msgid "Your Name"
-msgstr "Ihr Name"
+msgstr "Dein Name"
 
 #. translators: %s: title of form-tag like 'email' or 'checkboxes'
 #: admin/includes/tag-generator.php:45
@@ -967,7 +984,7 @@ msgstr "Ein Formular-Tag ist ein Shortcode in eckigen Klammern, den du in Formul
 
 #: admin/includes/help-tabs.php:73
 msgid "<strong>Additional Settings</strong> provides a place where you can customize the behavior of this contact form by adding code snippets."
-msgstr "<strong>Weitere Einstellungen</strong> - Ändern Sie das Verhalten des Kontaktformulars, indem Sie Code-Snippets hinzufügen."
+msgstr "<strong>Weitere Einstellungen</strong> - Ändere das Verhalten des Kontaktformulars, indem du Code-Snippets hinzufügst."
 
 #: admin/includes/help-tabs.php:72
 msgid "In <strong>Messages</strong>, you can edit various types of messages used for this contact form. These messages are relatively short messages, like a validation error message you see when you leave a required field blank."

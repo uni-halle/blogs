@@ -1,0 +1,1008 @@
+# Translation of Themes - Catch Box in French (France)
+# This file is distributed under the same license as the Themes - Catch Box package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-11-10 12:43:55+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: fr\n"
+"Project-Id-Version: Themes - Catch Box\n"
+
+#. Description of the plugin/theme
+msgid "Catch Box is simple, lightweight, box shaped, and adaptable WordPress Theme for bloggers and professionals. It is based on HTML5, CSS3 and Responsive Web Design to view in various devices. 10 Best Reasons to use Catch Box Theme. 1. Responsive Web Design, 2. Custom Menus (Primary, Secondary and Footer menus), 3. Theme Options for light, dark, blue, green, red, brown and orange color scheme, custom link colors, three layout choices, two content choices between excerpt and content option in homepage, feed redirection, custom css styles, 4. Featured Sliders where you can define number of slides and post IDs, 5. Social Links (Facebook, Twitter, RSS, Linkedin, Pinterest, etc), 6. Webmaster Tools (Google, Yahoo and Bing site verification ID, Header and Footer codes), 7. Custom Backgrounds, 8. Custom Header, 9. Catchbox Adspace widget to add any type of Advertisements, and 10. Support popular plugins. Multilingual Ready (WPML) and also currently translated in Brazilian Portuguese, Spanish, Danish, German, French, Polish, Czech, Croatian, Italian, Swedish, Russian, Arabic, Serbian, Dutch, Persian, Hungarian, Slovak, Japanese, Bosnian, Catalan, Romanian, Ukrainian and Lithuanian languages. Theme Support at https://catchthemes.com/support/"
+msgstr "Catch Box est simple, léger, en forme de boîte, et c'est un thème WordPress adaptable pour les bloggers et les professionnels. Il est basé sur HTML5, CSS3 et une conception 'responsive' afin de s'afficher sur différents appareils. Les 10 meilleures raisons d'utiliser le thème Catch Box sont. 1. Design Web Responsive , 2. Menus personnalisés (Menus principal, secondaire et et dans le pied de page), 3. Options du thème pour des jeux de couleurs claires, sombres, bleues, vertes, rouges, brunes et oranges, les couleurs des liens personnalisés, trois choix de disposition, deux choix pour le contenu dans la page d’accueil (extrait et complet), la redirection de flux , les styles personnalisés de css, 4. Diaporama où vous pouvez définir le nombre de diapos et les identifiants des articles, 5. Les liens sociaux (Facebook, Twitter, RSS, Linkedin, Pinterest, etc.) 7. Outils personnalisés pour les webmasters  (codes de l'ID de vérification Google, Yahoo et Bing, codes pour l'en-tête et le pied de page), 7. Fond personnalisé, 8. En-tête personnalisé, 9. Widgets Catchbox Adspace pour ajouter tout type de publicités et 10. Prendre en charge les extensions populaires. Prêt pour un site multilingue (WPML) et également traduit en brésilien, espagnol, danois, allemand, français, polonais, tchèque, croate, italien, suédois, russe, arabe, serbe, néerlandais, persan, hongrois, slovaque, japonais, bosniaque, catalan , roumain, ukrainien et lituanien. Support du thème sur https://catchthemes.com/support/"
+
+#. Theme Name of the plugin/theme
+msgid "Catch Box"
+msgstr "Catch Box"
+
+#: single.php:30
+msgid "Previous post:"
+msgstr "Article précédent&nbsp;:"
+
+#: single.php:27
+msgid "Next post:"
+msgstr "Article suivant&nbsp;:"
+
+#: functions.php:1009
+msgid "Skip to content"
+msgstr "Aller au contenu principal"
+
+#: functions.php:894 inc/customizer/customizer.php:662
+msgid "VK"
+msgstr "VK"
+
+#: functions.php:888 inc/customizer/customizer.php:652
+msgid "Github"
+msgstr "Github"
+
+#: functions.php:882 inc/customizer/customizer.php:642
+msgid "Goodreads"
+msgstr "Goodreads"
+
+#. translators: %s: post title
+#: comments.php:36
+msgctxt "comments title"
+msgid "One Reply to &ldquo;%s&rdquo;"
+msgstr "Une réponse à &ldquo;%s&rdquo;"
+
+#. translators: 1: number of comments, 2: post title
+#: comments.php:40
+msgctxt "comments title"
+msgid "%1$s Reply to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Replies to &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s commentaire à propos de &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s commentaires à propos de &ldquo;%2$s&rdquo;"
+
+#: inc/customizer/customizer.php:316
+msgid "Check to enable footer mobile menu"
+msgstr "Cocher pour activer le menu dans le bas de page pour les mobiles"
+
+#: inc/customizer/customizer.php:306
+msgid "Check to enable secondary mobile menu"
+msgstr "Cocher pour activer le menu secondaire pour les mobiles"
+
+#: inc/customizer/customizer.php:66
+msgid "Mobile Menu Options"
+msgstr "Options du menu pour les mobiles"
+
+#: functions.php:639
+msgid "collapse child menu"
+msgstr "refermer le menu enfant"
+
+#: functions.php:638
+msgid "expand child menu"
+msgstr "ouvrir le menu enfant"
+
+#: inc/customizer/upgrade-button/class-customize.php:77
+msgid "Upgrade Now"
+msgstr "Mettre à jour maintenant"
+
+#: inc/customizer/upgrade-button/class-customize.php:76
+msgid "Catch Box Pro"
+msgstr "Catch Box Pro"
+
+#: inc/customizer/customizer.php:932
+msgid "Refresh the customizer page after saving to view reset effects"
+msgstr "Mettre à jour la page de personnalisation après l'enregistrement pour voir les effets de la réinitialisation"
+
+#: inc/customizer/customizer.php:711
+msgid "Below Header Content"
+msgstr "En dessous de l'entête du contenu"
+
+#: inc/customizer/customizer.php:709
+msgid "Above Header Content"
+msgstr "Au dessus de l'entête du contenu"
+
+#: inc/customizer/customizer.php:702
+msgid "Header Image Location"
+msgstr "Position de l'image d'entête"
+
+#: inc/customizer/customizer.php:710
+msgid "Between Site Title-Logo"
+msgstr "Entre le titre du site et le logo"
+
+#: inc/customizer/customizer.php:113
+msgid "Custom Color Options"
+msgstr "Options pour les couleurs personnalisées"
+
+#: inc/customizer/customizer.php:108
+msgid "Basic Colors"
+msgstr "Couleurs de base"
+
+#: inc/customizer/customizer.php:102
+msgid "Colors"
+msgstr "Couleurs"
+
+#: inc/customizer/customizer.php:56
+msgid "Search Text Settings"
+msgstr "Paramètres du texte pour la recherche"
+
+#: inc/catchbox-metabox.php:84
+msgid "Sidebar Layout Options"
+msgstr "Options de la mise en page des barres"
+
+#: inc/catchbox-metabox.php:68
+msgid "No Sidebar, One Column"
+msgstr "Pas de barre latérale, une colonne"
+
+#: inc/catchbox-metabox.php:62
+msgid "Left sidebar"
+msgstr "Barre latérale à gauche"
+
+#: inc/catchbox-metabox.php:56
+msgid "Right sidebar"
+msgstr "Barre de  droite"
+
+#: inc/catchbox-metabox.php:50
+msgid "Default Layout Set in <a href=\"%s\">Theme Settings</a>"
+msgstr "Mise en page définie dans les <a href=\"%s\">Paramètres du thème</a>"
+
+#: inc/catchbox-metabox.php:31 inc/catchbox-metabox.php:37
+msgid "Catch Box Options"
+msgstr "Options de Catch Box"
+
+#: functions.php:975
+msgid "Scroll Up"
+msgstr "Défiler vers le haut"
+
+#: inc/customizer/customizer.php:338
+msgid "Check to disable scroll up"
+msgstr "Cocher pour désactiver le défilement vers le haut"
+
+#: inc/customizer/customizer.php:76
+msgid "Scroll Up Options"
+msgstr "Options du défilement vers le haut"
+
+#: functions.php:876 inc/customizer/customizer.php:632
+msgid "Meetup"
+msgstr "Meetup"
+
+#: functions.php:836
+msgid "AIM"
+msgstr "AIM"
+
+#: functions.php:801
+msgid "YouTube"
+msgstr "YouTube"
+
+#: functions.php:791
+msgid "Linkedin"
+msgstr "Linkedin"
+
+#: functions.php:786
+msgid "Google Plus"
+msgstr "Google Plus"
+
+#: searchform.php:17
+msgctxt "submit button"
+msgid "Search"
+msgstr "Recherche"
+
+#: searchform.php:14 searchform.php:15
+msgctxt "label"
+msgid "Search for:"
+msgstr "Recherche&nbsp;:"
+
+#: functions.php:772
+msgid "Footer Social Links Menu"
+msgstr "Menu pour les liens sociaux dans le pied de page"
+
+#: content-aside.php:34 content.php:56 functions.php:287
+msgid "Continue reading %s"
+msgstr "Continuer la lecture %s"
+
+#: inc/catchbox-menus.php:82
+msgid "Menu"
+msgstr "Menu"
+
+#: inc/customizer/customizer.php:888 inc/customizer/customizer.php:899
+msgid "Important Links"
+msgstr "Liens importants"
+
+#: inc/customizer/customizer.php:878
+msgid "Check to reset all settings to default"
+msgstr "Valider pour remettre toutes les valeurs par défauts des paramètres"
+
+#: inc/customizer/customizer.php:868
+msgid "Reset all settings"
+msgstr "Réinitialiser tous les paramètres"
+
+#: inc/customizer/customizer.php:866
+msgid "Caution: Reset all settings to default. Refresh the page after save to view full effects."
+msgstr "Attention&nbsp;: remettre tous les paramètres par défaut. Recharger la page après l'enregistrement pour en voir les effets."
+
+#: inc/customizer/customizer.php:851
+msgid "#%s Featured Post ID"
+msgstr "#%s ID de l'article présenté"
+
+#: inc/customizer/customizer.php:686
+msgid "Here you can put scripts from Google, Facebook etc. which will load on Footer"
+msgstr "Ici vous pouvez ajouter des scripts provenant de Google, Facebook, ... qui seront chargés dans le pied de page"
+
+#: inc/customizer/customizer.php:675
+msgid "Here you can put scripts from Google, Facebook etc. which will load on Header"
+msgstr "Ici vous pouvez ajouter des scripts provenant de Google, Facebook, ... qui seront chargés dans l'entête"
+
+#: inc/customizer/customizer.php:502
+msgid "deviantART"
+msgstr "deviantART"
+
+#: inc/customizer/customizer.php:492
+msgid "RSS"
+msgstr "RSS"
+
+#: inc/customizer/customizer.php:452
+msgid "Google+"
+msgstr "Google+"
+
+#: inc/customizer/customizer.php:398
+msgid "Transition Delay (in seconds)"
+msgstr "Délai de transition (secondes)"
+
+#: inc/customizer/customizer.php:375
+msgid "Transition Effect"
+msgstr "Effet de transition"
+
+#: inc/customizer/customizer.php:360
+msgid "Customizer page needs to be refreshed after saving if number of slides is changed"
+msgstr "La page de personnalisation doit être rechargée après l'enregistrement si le nombre de slides a changé"
+
+#: inc/customizer/customizer.php:350
+msgid "Check to Exclude Slider posts from Homepage posts"
+msgstr "Valider pour exclure les articles du diaporama de ceux affichés sur la page principale"
+
+#: inc/customizer/customizer.php:268
+msgid "Feed Redirect url"
+msgstr "URL de redirection du flux"
+
+#: inc/customizer/customizer.php:134 inc/customizer/customizer.php:139
+msgid "Webmaster Tools falls under Plugins Territory according to Theme Review Guidelines in WordPress.org. This feature will be depreciated in future versions from Catch Box free version. If you want this feature, then you can add <a href=\"%s\">Catch Web Tools</a>  plugin."
+msgstr "Les outils du webmaster sont maintenant du ressort des extensions selon \"Theme Review Guidelines\" dans WordPress.org. Cette fonction sera supprimée dans les prochaines versions gratuites. Si vous souhaitez ces fonctions, vous pouvez ajouter l'extension <a href=\"%s\">Catch Web Tools</a>"
+
+#: inc/customizer/customizer.php:126
+msgid "Predefined Social Icons"
+msgstr "Icônes prédéfinies des réseaux sociaux"
+
+#: inc/customizer/customizer.php:122
+msgid "Add your social links here"
+msgstr "Ajouter vos liens vers les réseaux sociaux ici"
+
+#: inc/customizer/customizer.php:84 inc/customizer/customizer.php:85
+msgid "Featured Slider"
+msgstr "Diaporama "
+
+#: inc/customizer/customizer.php:41 inc/customizer/customizer.php:240
+msgid "Content Layout"
+msgstr "Format du contenu"
+
+#: inc/customizer/customizer.php:32
+msgid "Basic theme Options"
+msgstr "Options de base du thème"
+
+#: inc/customizer/customizer-custom-controls.php:34
+msgid "Review"
+msgstr "Revoir"
+
+#: inc/customizer/customizer-custom-controls.php:30
+msgid "Donate Now"
+msgstr "Faire un don maintenant"
+
+#: inc/customizer/customizer-custom-controls.php:26
+msgid "Changelog"
+msgstr "Modifications"
+
+#: inc/widgets.php:73
+msgid "CT: Adspace Widget"
+msgstr "CT&nbsp;: Widget Adspace"
+
+#. Template Name of the plugin/theme
+msgid "Full Width Disable Sidebar Template"
+msgstr "Pleine Largeur Désactiver le Modèle avec Barre Latérale"
+
+#. Template Name of the plugin/theme
+msgid "Disable Sidebar Template"
+msgstr "Désactiver la barre latérale"
+
+#. Template Name of the plugin/theme
+msgid "Blog Template"
+msgstr "Modèle Blog"
+
+#: tag.php:16
+msgid "Tag Archives: %s"
+msgstr "Archives des mots-clés&nbsp;: %s"
+
+#: single.php:26
+msgid "Next <span class=\"nav-icon\">&rarr;</span>"
+msgstr "Suivant <span class=\"nav-icon\">&rarr;</span>"
+
+#: single.php:29
+msgid "<span class=\"nav-icon\">&larr;</span> Previous"
+msgstr "<span class=\"nav-icon\">&larr;</span> Précédent"
+
+#: sidebar.php:38
+msgid "Archives"
+msgstr "Archives"
+
+#: sidebar.php:32
+msgid "By default it will load Search and Archives widgets as shown below. You can add widget to this area by visiting your <a href=\"%s\">Widgets Panel</a> which will replace default widgets."
+msgstr "Par défaut, il chargera les widget de recherche et d'archives comme montrer ci-dessous. Vous pouvez ajouter des widgets dans cette zone en allant sur la <a href=\"%s\">configuration des widgets</a>  qui remplacera les widgets par défaut."
+
+#: sidebar.php:31
+msgid "This is the Primary Sidebar Widget Area if you are using a two column site layout option."
+msgstr "Il s'agit de la zone principale de widget pour la barre latérale si vous utiliser le format de site avec deux colonnes."
+
+#: sidebar.php:24 sidebar.php:29
+msgid "Primary Sidebar Widget Area"
+msgstr "Zone principale de widget pour la barre latérale"
+
+#: inc/default-options.php:134
+msgid "Search"
+msgstr "Recherche"
+
+#: search.php:43
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr "Désolé, aucun résultat n'a été trouvé pour votre recherche. Veuillez essayer de saisir des mots-clés différents."
+
+#: search.php:15
+msgid "Search Results for: %s"
+msgstr "Résultats de la recherche pour&nbsp;: %s"
+
+#: inc/widgets.php:111
+msgid "Alt text:"
+msgstr "Texte alternatif&nbsp;"
+
+#: inc/widgets.php:107
+msgid "Link URL:"
+msgstr "Lien URL&nbsp;:"
+
+#: inc/widgets.php:103
+msgid "Image Url:"
+msgstr "Image Url&nbsp;:"
+
+#: inc/widgets.php:97
+msgid "Ad Code:"
+msgstr "Ad Code&nbsp;:"
+
+#: inc/widgets.php:92
+msgid "Title (optional):"
+msgstr "Titre (optionnel)&nbsp;:"
+
+#: inc/widgets.php:74
+msgid "Use this widget to add any type of Ad as a widget. "
+msgstr "Utiliser ce widget pour ajouter n'importe qu'elle publicité comme un widget."
+
+#: inc/default-options.php:236
+msgid "All Rights Reserved"
+msgstr "Tous Droits Réservés"
+
+#: inc/default-options.php:236
+msgid "Copyright"
+msgstr "Copyright"
+
+#: inc/default-options.php:214
+msgid "Theme: Catch Box by "
+msgstr "Thème&nbsp;: Catch Box par "
+
+#: inc/default-options.php:204
+msgid "WordPress"
+msgstr "WordPress"
+
+#: inc/default-options.php:183
+msgid "Y"
+msgstr "Y"
+
+#: inc/customizer/customizer.php:685
+msgid "Code to display on Footer"
+msgstr "Code à afficher dans le pied de page"
+
+#: inc/customizer/customizer.php:674
+msgid "Code to display on Header"
+msgstr "Code à afficher dans l'entête"
+
+#: functions.php:871 inc/customizer/customizer.php:622
+msgid "Xing"
+msgstr "Xing"
+
+#: functions.php:861 inc/customizer/customizer.php:602
+msgid "Soundcloud"
+msgstr "Soundcloud"
+
+#: functions.php:856 inc/customizer/customizer.php:592
+msgid "Skype"
+msgstr "Skype"
+
+#: functions.php:851 inc/customizer/customizer.php:582
+msgid "Instagram"
+msgstr "Instagram"
+
+#: functions.php:846 inc/customizer/customizer.php:572
+msgid "Slideshare"
+msgstr "Slideshare"
+
+#: functions.php:841 inc/customizer/customizer.php:562
+msgid "Flickr"
+msgstr "Flickr"
+
+#: inc/customizer/customizer.php:552
+msgid "Aim"
+msgstr "Aim"
+
+#: functions.php:831 inc/customizer/customizer.php:542
+msgid "MySpace"
+msgstr "MySpace"
+
+#: functions.php:826 inc/customizer/customizer.php:532
+msgid "Dribbble"
+msgstr "Dribbble"
+
+#: functions.php:821 inc/customizer/customizer.php:522
+msgid "Vimeo"
+msgstr "Vimeo"
+
+#: functions.php:816 inc/customizer/customizer.php:512
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: functions.php:811
+msgid "Deviantart"
+msgstr "Deviantart"
+
+#: functions.php:806
+msgid "RSS Feed"
+msgstr "RSS Feed"
+
+#: inc/customizer/customizer.php:482
+msgid "Youtube"
+msgstr "Youtube"
+
+#: functions.php:796 inc/customizer/customizer.php:472
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: inc/customizer/customizer.php:462
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: inc/customizer/customizer.php:414
+msgid "Transition Length"
+msgstr "Durée de la transition"
+
+#: inc/customizer/customizer.php:393
+msgid "shuffle"
+msgstr "Aléatoire"
+
+#: inc/customizer/customizer.php:392
+msgid "cover"
+msgstr "Couverture"
+
+#: inc/customizer/customizer.php:391
+msgid "blindZ"
+msgstr "Cacher Z"
+
+#: inc/customizer/customizer.php:390
+msgid "blindY"
+msgstr "Cacher Y"
+
+#: inc/customizer/customizer.php:389
+msgid "blindX"
+msgstr "Cacher X"
+
+#: inc/customizer/customizer.php:388
+msgid "scrollRight"
+msgstr "Défiler vers la droite"
+
+#: inc/customizer/customizer.php:387
+msgid "scrollLeft"
+msgstr "Défiler vers la gauche"
+
+#: inc/customizer/customizer.php:386
+msgid "scrollDown"
+msgstr "Défiler vers le bas"
+
+#: inc/customizer/customizer.php:385
+msgid "scrollUp"
+msgstr "Défiler vers le haut"
+
+#: inc/customizer/customizer.php:384
+msgid "wipe"
+msgstr "Essuyer"
+
+#: inc/customizer/customizer.php:383
+msgid "fade"
+msgstr "Palir"
+
+#: inc/customizer/customizer.php:94
+msgid "Slider Effect Options"
+msgstr "Paramétrage des effets du diaporama"
+
+#: inc/customizer/customizer.php:359
+msgid "Number of Slides"
+msgstr "Nombre de slides"
+
+#: inc/customizer/customizer.php:89
+msgid "Slider Options"
+msgstr "Options du diaporama"
+
+#: inc/customizer/customizer.php:133 inc/customizer/customizer.php:138
+msgid "Webmaster Tools"
+msgstr "Outils du Webmaster"
+
+#: inc/customizer/customizer.php:121
+msgid "Social Links"
+msgstr "Liens pour les réseaux sociaux"
+
+#: functions.php:781 inc/customizer/customizer.php:442
+msgid "Twitter"
+msgstr "Twitter"
+
+#: functions.php:776 inc/customizer/customizer.php:432
+msgid "Facebook"
+msgstr "Facebook"
+
+#: inc/customizer/customizer-custom-controls.php:18
+msgid "Theme Instructions"
+msgstr "Mode d'emploi du thème"
+
+#: inc/customizer/customizer-custom-controls.php:22
+msgid "Support"
+msgstr "Support"
+
+#. #-#-#-#-#  catch-box.pot (Catch Box 4.7.3)  #-#-#-#-#
+#. Author of the plugin/theme
+#: inc/default-options.php:225
+msgid "Catch Themes"
+msgstr "Thèmes Catch"
+
+#: inc/customizer/customizer.php:297
+msgid "Check to Disable"
+msgstr "Cocher pour désactiver"
+
+#: inc/customizer/customizer.php:279
+msgid "Check to move above the Header/Logo Image"
+msgstr "Cocher pour déplacer au dessus de l'entête/image de logo"
+
+#: inc/default-options.php:109
+msgid "Show full content"
+msgstr "Montrer tout le contenu"
+
+#: inc/default-options.php:105
+msgid "Show excerpt"
+msgstr "Montrer le résumé"
+
+#. #-#-#-#-#  catch-box.pot (Catch Box 4.7.3)  #-#-#-#-#
+#. Template Name of the plugin/theme
+#: inc/default-options.php:88
+msgid "One-column, no sidebar"
+msgstr "Une colonne, pas de barre de côté"
+
+#: inc/default-options.php:83
+msgid "Content on right"
+msgstr "Contenu sur la droite"
+
+#: inc/default-options.php:78
+msgid "Content on left"
+msgstr "Contenu sur la gauche"
+
+#: inc/default-options.php:59
+msgid "Orange"
+msgstr "Orange"
+
+#: inc/default-options.php:54
+msgid "Brown"
+msgstr "Brun"
+
+#: inc/default-options.php:49
+msgid "Red"
+msgstr "Rouge"
+
+#: inc/default-options.php:44
+msgid "Green"
+msgstr "Vert"
+
+#: inc/default-options.php:39
+msgid "Blue"
+msgstr "Bleu"
+
+#: inc/default-options.php:34
+msgid "Dark"
+msgstr "Foncé"
+
+#: inc/default-options.php:29
+msgid "Light"
+msgstr "Pale"
+
+#: inc/customizer/customizer.php:31
+msgid "Theme Options"
+msgstr "Options du thème"
+
+#: inc/customizer/customizer.php:71 inc/customizer/customizer.php:326
+msgid "Custom CSS Styles"
+msgstr "Personnalisation des styles CSS"
+
+#: inc/customizer/customizer.php:61
+msgid "Disable Search in Header"
+msgstr "Supprimer la recherche dans l'entête"
+
+#: inc/customizer/customizer.php:287
+msgid "Default Display Text in Search"
+msgstr "Texte par défaut dans la zone de recherche"
+
+#: inc/customizer/customizer.php:51
+msgid "Feed Redirect URL"
+msgstr "URL de redirection du flux"
+
+#: inc/customizer/customizer.php:46 inc/customizer/customizer.php:252
+msgid "Excerpt Length in Words"
+msgstr "Longueur du résumé (en mots)"
+
+#: inc/customizer/customizer.php:36 inc/customizer/customizer.php:229
+msgid "Default Layout"
+msgstr "Disposition par défaut"
+
+#: inc/customizer/customizer.php:219
+msgid "Link Color"
+msgstr "Couleur des liens"
+
+#: inc/customizer/customizer.php:208
+msgid "Color Scheme"
+msgstr "Ensemble de couleurs"
+
+#: image.php:27
+msgid "<span class=\"meta-prep meta-prep-entry-date\">Published </span> <span class=\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span> at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
+msgstr "<span class=\"meta-prep meta-prep-entry-date\">Publié </span> <span class=\"entry-date\"><abbr class=\"published\" title=\"%1$s\">%2$s</abbr></span> à <a href=\"%3$s\" title=\"Lien vers l'image en pleine taille\">%4$s &times; %5$s</a> dans <a href=\"%6$s\" title=\"Revenir à %7$s\" rel=\"gallery\">%8$s</a>"
+
+#: image.php:17
+msgid "Next &rarr;"
+msgstr "Suivant &rarr;"
+
+#: image.php:16
+msgid "&larr; Previous"
+msgstr "&larr; Précédent"
+
+#: image.php:15
+msgid "Image navigation"
+msgstr "Navigation dans les images"
+
+#: inc/catchbox-menus.php:127
+msgid "Secondary menu"
+msgstr "Menu secondaire"
+
+#: inc/catchbox-menus.php:104
+msgid "Primary menu"
+msgstr "Menu principal"
+
+#: functions.php:716 functions.php:866 inc/customizer/customizer.php:612
+msgid "Email"
+msgstr "E-mail"
+
+#: functions.php:714
+msgid "Name"
+msgstr "Nom"
+
+#: functions.php:590
+msgid "ID"
+msgstr "ID"
+
+#: functions.php:517
+msgid "<span class=\"sep\">Posted on </span><a href=\"%1$s\" title=\"%2$s\" rel=\"bookmark\"><time class=\"entry-date updated\" datetime=\"%3$s\" pubdate>%4$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by </span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s\" rel=\"author\">%7$s</a></span></span>"
+msgstr "<span class=\"sep\">Posté le </span><a href=\"%1$s\" title=\"%2$s\" rel=\"bookmark\"><time class=\"entry-date updated\" datetime=\"%3$s\" pubdate>%4$s</time></a><span class=\"by-author\"> <span class=\"sep\"> par </span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%5$s\" title=\"%6$s\" rel=\"author\">%7$s</a></span></span>"
+
+#: functions.php:498
+msgid "Reply <span>&darr;</span>"
+msgstr "Répondre <span>&darr;</span>"
+
+#: functions.php:489
+msgid "Your comment is awaiting moderation."
+msgstr "Votre commentaire est en attente de modération."
+
+#. translators: 1: date, 2: time
+#: functions.php:480
+msgid "%1$s at %2$s"
+msgstr "%1$s à  %2$s"
+
+#. translators: 1: comment author, 2: date and time
+#: functions.php:474
+msgid "%1$s on %2$s <span class=\"says\">said:</span>"
+msgstr "%1$s dans %2$s <span class=\"says\">a dit&nbsp;:</span>"
+
+#: functions.php:457
+msgid "Pingback:"
+msgstr "Rétroliens&nbsp;:"
+
+#: functions.php:351 functions.php:380 page-blog.php:53
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Articles plus récents <span class=\"meta-nav\">&rarr;</span>"
+
+#: functions.php:350 functions.php:379 page-blog.php:52
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> Articles plus anciens"
+
+#: functions.php:342 functions.php:371 page-blog.php:44
+msgid "Post navigation"
+msgstr "Navigation dans les articles"
+
+#: inc/widgets.php:52
+msgid "Footer Area Three"
+msgstr "Zone 3 de pied de page"
+
+#: inc/widgets.php:42
+msgid "Footer Area Two"
+msgstr "Zone 2 de pied de page"
+
+#: inc/widgets.php:34 inc/widgets.php:44 inc/widgets.php:54
+msgid "An optional widget area for your site footer"
+msgstr "Une zone optionnelle pour le pied de page de votre site"
+
+#: inc/widgets.php:32
+msgid "Footer Area One"
+msgstr "Zone 1 de pied de page"
+
+#: inc/widgets.php:23
+msgid "Main Sidebar"
+msgstr "Colonne latérale"
+
+#. translators: header image description
+#: inc/custom-header.php:43
+msgid "Mountain"
+msgstr "Montagne"
+
+#. translators: header image description
+#: inc/custom-header.php:37
+msgid "Flower"
+msgstr "Fleur"
+
+#. translators: header image description
+#: inc/custom-header.php:31
+msgid "Garden"
+msgstr "Jardin"
+
+#: functions.php:144 inc/catchbox-menus.php:163 inc/catchbox-menus.php:172
+msgid "Footer Menu"
+msgstr "Menu de bas de page"
+
+#: functions.php:143 inc/catchbox-menus.php:92 inc/catchbox-menus.php:126
+msgid "Secondary Menu"
+msgstr "Menu secondaire"
+
+#: functions.php:142 inc/catchbox-menus.php:102
+msgid "Primary Menu"
+msgstr "Menu principal"
+
+#: inc/catchbox-menus.php:173
+msgid "Footer menu"
+msgstr "Menu du bas de page"
+
+#: content.php:15
+msgid "Featured"
+msgstr "Mis en avant"
+
+#: content-status.php:15
+msgid "Status"
+msgstr "Statut"
+
+#: content-single.php:80
+msgid "View all posts by %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Voir tous les articles par %s <span class=\"meta-nav\">&rarr;</span>"
+
+#: content-single.php:51
+msgid "This entry was posted by <a href=\"%6$s\">%5$s</a>. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Cet article a été posté par <a href=\"%6$s\">%5$s</a>. Enregistrer le <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalien</a>."
+
+#: content-single.php:49
+msgid "This entry was posted in %1$s by <a href=\"%6$s\">%5$s</a>. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Cet article a été posté dans %1$s par <a href=\"%6$s\">%5$s</a> . Enregistrer le <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalien</a>."
+
+#: content-single.php:47
+msgid "This entry was posted in %1$s and tagged %2$s by <a href=\"%6$s\">%5$s</a>. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Cet article a été posté dans %1$s et marqué comme %2$s par <a href=\"%6$s\">%5$s</a> . Enregistrer le <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalien</a>."
+
+#: content-single.php:21 content.php:26
+msgid "% Comments &darr;"
+msgstr "% commentaires &darr;"
+
+#: content-single.php:21 content.php:26
+msgid "1 Comment &darr;"
+msgstr "1 commentaire &darr;"
+
+#: content-single.php:21 content.php:26
+msgid "No Comments &darr;"
+msgstr "Aucun commentaire &darr;"
+
+#: content-quote.php:14
+msgid "Quote"
+msgstr "Citation"
+
+#: content-link.php:16
+msgid "Link"
+msgstr "Lien"
+
+#: content-image.php:42 functions.php:523
+msgid "View all posts by %s"
+msgstr "Voir tous les articles par %s"
+
+#: content-image.php:37
+msgid "<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s\" pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> by </span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
+msgstr "<a href=\"%1$s\" rel=\"bookmark\"><time class=\"entry-date\" datetime=\"%2$s\" pubdate>%3$s</time></a><span class=\"by-author\"> <span class=\"sep\"> par </span> <span class=\"author vcard\"><a class=\"url fn n\" href=\"%4$s\" title=\"%5$s\" rel=\"author\">%6$s</a></span></span>"
+
+#: content-image.php:15
+msgid "Image"
+msgstr "Image"
+
+#: content-gallery.php:82 content-image.php:62 content-quote.php:64
+#: content.php:93
+msgid "<span class=\"%1$s\">Tagged</span> %2$s"
+msgstr "<span class=\"%1$s\">Marqué comme</span> %2$s"
+
+#: content-gallery.php:70 content-image.php:54 content-quote.php:52
+#: content.php:81
+msgid "<span class=\"%1$s\">Posted in</span> %2$s"
+msgstr "<span class=\"%1$s\">Posté dans</span> %2$s"
+
+#: content-gallery.php:45
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgid_plural "This gallery contains <a %1$s>%2$s photos</a>."
+msgstr[0] "Cet album contient <a %1$s>%2$s photo</a>."
+msgstr[1] "Cet album contient <a %1$s>%2$s photos</a>."
+
+#: content-gallery.php:16
+msgid "Gallery"
+msgstr "Album"
+
+#: content-featured.php:38
+msgid "This entry was posted in %1$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Cet article a été posté dans %1$s. Enregistrer le <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalien</a>."
+
+#: content-featured.php:36
+msgid "This entry was posted in %1$s and tagged %2$s. Bookmark the <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>."
+msgstr "Cet article a été posté dans %1$s et marqué comme %2$s. Vous pouvez utiliser ce <a href=\"%3$s\" title=\"Permalink to %4$s\" rel=\"bookmark\">permalien</a> pour l'ajouter aux favoris."
+
+#. translators: used between list items, there is a space after the comma
+#: content-featured.php:34 content-featured.php:43 content-gallery.php:66
+#: content-gallery.php:76 content-image.php:50 content-image.php:59
+#: content-quote.php:48 content-quote.php:58 content-single.php:42
+#: content-single.php:45 content.php:77 content.php:87
+msgid ", "
+msgstr ", "
+
+#: content-aside.php:56 content-featured.php:50 content-gallery.php:94
+#: content-image.php:71 content-link.php:48 content-page.php:27
+#: content-quote.php:76 content-single.php:64 content-status.php:49
+#: content.php:106 functions.php:457 functions.php:485 image.php:97
+msgid "Edit"
+msgstr "Modifier"
+
+#: content-aside.php:54 content-gallery.php:91 content-image.php:67
+#: content-link.php:46 content-quote.php:73 content-status.php:47
+#: content.php:103
+msgid "<b>%</b> Replies"
+msgstr "<b>%</b> commentaires"
+
+#: content-aside.php:54 content-gallery.php:91 content-image.php:67
+#: content-link.php:46 content-quote.php:73 content-status.php:47
+#: content.php:103
+msgid "<b>1</b> Reply"
+msgstr "<b>1</b> commentaire"
+
+#: content-aside.php:54 content-gallery.php:91 content-image.php:67
+#: content-link.php:46 content-quote.php:73 content-status.php:47
+#: content.php:103
+msgid "Leave a reply"
+msgstr "Publier un commentaire"
+
+#: content-aside.php:41 content-featured.php:23 content-gallery.php:53
+#: content-image.php:26 content-link.php:33 content-page.php:19
+#: content-quote.php:35 content-single.php:31 content-status.php:34
+#: content.php:63 image.php:87
+msgid "Pages:"
+msgstr "Pages&nbsp;:"
+
+#: content-gallery.php:30 content-image.php:24 content-link.php:31
+#: content-quote.php:33 content-status.php:32
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "Lire la suite <span class=\"meta-nav\">&rarr;</span>"
+
+#: content-aside.php:20 content-image.php:18 content-link.php:20
+#: content-quote.php:22 content-status.php:19
+msgctxt "comments number"
+msgid "%"
+msgstr "%"
+
+#: content-aside.php:20 content-image.php:18 content-link.php:20
+#: content-quote.php:22 content-status.php:19
+msgctxt "comments number"
+msgid "1"
+msgstr "1"
+
+#: content-aside.php:20 content-image.php:18 content-link.php:20
+#: content-quote.php:22 content-status.php:19
+msgid "Reply"
+msgstr "Répondre"
+
+#: content-aside.php:16
+msgid "Aside"
+msgstr "De côté"
+
+#: content-aside.php:15 content-featured.php:14 content-gallery.php:15
+#: content-gallery.php:46 content-image.php:14 content-link.php:15
+#: content-quote.php:13 content-status.php:14 content.php:14 content.php:17
+#: content.php:45
+msgid "Permalink to %s"
+msgstr "Permalien pour %s"
+
+#: comments.php:88
+msgid "Comments are closed."
+msgstr "Les commentaires sont désactivés."
+
+#: comments.php:58 comments.php:78
+msgid "Newer Comments &rarr;"
+msgstr "Commentaires les plus récents &rarr;"
+
+#: comments.php:57 comments.php:77
+msgid "&larr; Older Comments"
+msgstr "&larr; Commentaires les plus anciens"
+
+#: comments.php:56 comments.php:76
+msgid "Comment navigation"
+msgstr "Navigation dans les commentaires"
+
+#: comments.php:17
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "Un mot de passe est requis pour afficher cette page. Veuillez saisir le mot de passe pour voir tous les commentaires."
+
+#: category.php:16
+msgid "Category Archives: %s"
+msgstr "Archives des catégories&nbsp;: %s"
+
+#: author.php:44 content-single.php:76
+msgid "About %s"
+msgstr "A propos de %s"
+
+#: author.php:25
+msgid "Author Archives: %s"
+msgstr "Archives des auteurs&nbsp;: %s"
+
+#: archive.php:50 author.php:73 category.php:49 index.php:36 page-blog.php:71
+#: tag.php:49
+msgid "Apologies, but no results were found for the requested archive. Perhaps searching will help find a related post."
+msgstr "Désolé, aucun résultat n'a été trouvé dans l'archive. Peut-être pouvez-vous effectuer une recherche pour trouver un article correspondant."
+
+#: archive.php:46 author.php:69 category.php:45 index.php:32 page-blog.php:67
+#: search.php:39 tag.php:45
+msgid "Nothing Found"
+msgstr "Aucun résultat"
+
+#: 404.php:22
+msgid "Check for a mis-typed URL error, then press the refresh button on your browser or Use the search box below."
+msgstr "Vérifiez qu'il n'y a pas d'erreur dans l'URL saisie, puis cliquez sur le bouton actualiser ou utilisez la boîte de recherche ci-dessous."
+
+#: 404.php:21
+msgid "Please try the following options instead:"
+msgstr "Veuillez essayer les solutions ci-dessous&nbsp;:"
+
+#: 404.php:20
+msgid "You have typed the web address incorrectly, or the page you were looking for may have been moved, updated or deleted."
+msgstr "Vous avez tapé une adresse incorrecte, ou la page que vous cherchez a peut-être été déplacée, mise à jour ou supprimée."
+
+#: 404.php:19
+msgid "This might be because:"
+msgstr "Cela peut être dû à&nbsp;:"
+
+#: 404.php:18
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for."
+msgstr "Il semble que l'on ne peut pas trouver ce que vous recherchez."
+
+#: 404.php:14
+msgid "Error 404 - Page Not Found."
+msgstr "Erreur 404 - Page introuvable."
+
+#. Theme URI of the plugin/theme
+msgid "https://catchthemes.com/themes/catch-box/"
+msgstr "https://catchthemes.com/themes/catchbox"
+
+#. Author URI of the plugin/theme
+msgid "https://catchthemes.com/"
+msgstr "https://catchthemes.com/"

@@ -1,14 +1,15 @@
-# Translation of Twenty Fifteen in German
-# This file is distributed under the same license as the Twenty Fifteen package.
+# Translation of Themes - Twenty Fifteen in German
+# This file is distributed under the same license as the Themes - Twenty Fifteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-04-06 17:36:15+0000\n"
+"PO-Revision-Date: 2017-11-16 16:33:17+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/2.1.0-alpha\n"
-"Project-Id-Version: Twenty Fifteen\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Themes - Twenty Fifteen\n"
 
 #. Description of the plugin/theme
 msgid "Our 2015 default theme is clean, blog-focused, and designed for clarity. Twenty Fifteen's simple, straightforward typography is readable on a wide variety of screen sizes, and suitable for multiple languages. We designed it using a mobile-first approach, meaning your content takes center-stage, regardless of whether your visitors arrive by smartphone, tablet, laptop, or desktop computer."
@@ -17,6 +18,12 @@ msgstr "Unser Standard-Theme für 2015 ist reduziert, stellt das Bloggen in den 
 #. Theme Name of the plugin/theme
 msgid "Twenty Fifteen"
 msgstr "Twenty Fifteen"
+
+#. translators: %s: post title
+#: comments.php:31
+msgctxt "comments title"
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr "Ein Gedanke zu &#8222;%s&#8220;"
 
 #. translators: %s: post title
 #: inc/template-tags.php:123
@@ -122,26 +129,26 @@ msgstr "Standard"
 msgid "Header and Sidebar Background Color"
 msgstr "Header- und Seitenleisten-Hintergrundfarbe"
 
-#: inc/customizer.php:59
-msgid "Header and Sidebar Text Color"
-msgstr "Header- und Seitenleisten-Textfarbe"
-
 #: inc/customizer.php:60 inc/customizer.php:76 inc/customizer.php:81
 msgid "Applied to the header on small screens and the sidebar on wide screens."
 msgstr "Das Header-Bild wird bei diesem Theme bei kleinen Bildschirmen (Mobil-Geräte) auf den Header angewandt und bei großen Bildschirmen (Desktop) auf die Seitenleiste."
+
+#: inc/customizer.php:59
+msgid "Header and Sidebar Text Color"
+msgstr "Header- und Seitenleisten-Textfarbe"
 
 #: inc/customizer.php:44
 msgid "Base Color Scheme"
 msgstr "Basis-Farbschema"
 
+#: inc/back-compat.php:37 inc/back-compat.php:47 inc/back-compat.php:60
+msgid "Twenty Fifteen requires at least WordPress version 4.1. You are running version %s. Please upgrade and try again."
+msgstr "Twenty Fifteen erfordert mindestens WordPress in der Version 4.1. Sie benutzen Version %s. Bitte aktualisieren Sie WordPress und versuchen Sie es noch einmal."
+
 #: image.php:84
 msgctxt "Parent post link"
 msgid "<span class=\"meta-nav\">Published in</span><span class=\"post-title\">%title</span>"
 msgstr "<span class=\"meta-nav\">Veröffentlicht in</span><span class=\"post-title\">%title</span>"
-
-#: inc/back-compat.php:37 inc/back-compat.php:47 inc/back-compat.php:60
-msgid "Twenty Fifteen requires at least WordPress version 4.1. You are running version %s. Please upgrade and try again."
-msgstr "Twenty Fifteen erfordert mindestens WordPress in der Version 4.1. Sie benutzen Version %s. Bitte aktualisieren Sie WordPress und versuchen Sie es noch einmal."
 
 #: image.php:24
 msgid "Next Image"
@@ -159,18 +166,18 @@ msgstr "Menü und Widgets"
 msgid "Skip to content"
 msgstr "Springe zum Inhalt"
 
-#: functions.php:270
+#: functions.php:283
 msgid "collapse child menu"
 msgstr "Untermenü verbergen"
 
-#: functions.php:269
+#: functions.php:282
 msgid "expand child menu"
 msgstr "Untermenü anzeigen"
 
 #. Translators: To add an additional character subset specific to your
 #. language, translate this to 'greek', 'cyrillic', 'devanagari' or
 #. 'vietnamese'. Do not translate into your own language.
-#: functions.php:199
+#: functions.php:212
 msgctxt "Add new subset (greek, cyrillic, devanagari, vietnamese)"
 msgid "no-subset"
 msgstr "no-subset"
@@ -178,7 +185,7 @@ msgstr "no-subset"
 #. Translators: If there are characters in your language that are not supported
 #. by Inconsolata, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:191
+#: functions.php:204
 msgctxt "Inconsolata font: on or off"
 msgid "on"
 msgstr "on"
@@ -186,7 +193,7 @@ msgstr "on"
 #. Translators: If there are characters in your language that are not supported
 #. by Noto Serif, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:183
+#: functions.php:196
 msgctxt "Noto Serif font: on or off"
 msgid "on"
 msgstr "on"
@@ -194,16 +201,16 @@ msgstr "on"
 #. Translators: If there are characters in your language that are not supported
 #. by Noto Sans, translate this to 'off'. Do not translate into your own
 #. language.
-#: functions.php:175
+#: functions.php:188
 msgctxt "Noto Sans font: on or off"
 msgid "on"
 msgstr "on"
 
-#: functions.php:149
+#: functions.php:162
 msgid "Add widgets here to appear in your sidebar."
 msgstr "Widgets hier hinzufügen, um sie in die Seitenleiste einzubauen."
 
-#: functions.php:147
+#: functions.php:160
 msgid "Widget Area"
 msgstr "Widgetbereich"
 
@@ -219,7 +226,7 @@ msgstr "Primäres Menü"
 msgid "Proudly powered by %s"
 msgstr "Stolz präsentiert von %s"
 
-#. #-#-#-#-#  twentyfifteen.pot (Twenty Fifteen 1.6)  #-#-#-#-#
+#. #-#-#-#-#  twentyfifteen.pot (Twenty Fifteen 1.9)  #-#-#-#-#
 #. Author URI of the plugin/theme
 #: footer.php:25
 msgid "https://wordpress.org/"
@@ -255,13 +262,14 @@ msgstr "Seiten:"
 msgid "Continue reading %s"
 msgstr "%s weiterlesen"
 
-#: comments.php:53
+#: comments.php:69
 msgid "Comments are closed."
 msgstr "Kommentare sind geschlossen."
 
-#: comments.php:28
+#. translators: 1: number of comments, 2: post title
+#: comments.php:35
 msgctxt "comments title"
-msgid "One thought on &ldquo;%2$s&rdquo;"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] "Ein Gedanke zu &#8222;%2$s&#8220;"
 msgstr[1] "%1$s Gedanken zu &#8222;%2$s&#8220;"

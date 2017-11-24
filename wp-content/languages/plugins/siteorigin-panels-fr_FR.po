@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Page Builder by SiteOrigin - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-04-09 18:36:43+0000\n"
+"PO-Revision-Date: 2017-11-04 22:42:32+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -555,7 +555,7 @@ msgstr "Activer"
 
 #: tpl/js-templates.php:383
 msgid "Do you want to browse the Prebuilt Layouts directory?"
-msgstr "Voulez-vous parcourir le répertoire des mise en page pré-définis ?"
+msgstr "Voulez-vous parcourir le répertoire des mises en page prédéfinies ?"
 
 #: tpl/js-templates.php:365
 msgid "Clone: %s"
@@ -721,7 +721,7 @@ msgstr "Le widget 1{%1$s} n'est pas disponible. S.V.P. essayer de trouver et ins
 
 #: siteorigin-panels.php:1305
 msgid "Save and reload this page to start using the widget after you've installed it."
-msgstr "Sauvegarder et recharger cette page pour commencer à utiliser le widget après l'avoir installé."
+msgstr "Enregistrez et rechargez cette page pour commencer à utiliser le widget après l’avoir installé."
 
 #: siteorigin-panels.php:1299
 msgid "You need to install 1{%1$s} to use the widget 2{%2$s}."
@@ -774,7 +774,7 @@ msgstr "Résultats de recherche pour :"
 #. TRANSLATORS: A standard confirmation message
 #: siteorigin-panels.php:376 tpl/js-templates.php:85
 msgid "Are you sure?"
-msgstr "Etes-vous sûr?"
+msgstr "Confirmez-vous ?"
 
 #. TRANSLATORS: This is the title for a widget called "Layout Builder"
 #: siteorigin-panels.php:374
@@ -795,7 +795,7 @@ msgstr "Chargement de la mise en page prédéfinie"
 
 #: siteorigin-panels.php:369
 msgid "Are you sure you want to overwrite your current content? This can be undone in the builder history."
-msgstr "Etes-vous sûr de vouloir remplacer votre contenu actuel? Cela peut être annulée dans l'historique du Builder."
+msgstr "Confirmez-vous vouloir remplacer votre contenu actuel ? Cela peut être annulé dans l’historique du constructeur."
 
 #: siteorigin-panels.php:365
 msgid "Prebuilt layout loaded"
@@ -1350,7 +1350,7 @@ msgstr "Vous pouvez toujours cloner les pages existantes."
 
 #: inc/admin-actions.php:77
 msgid "Your theme doesn't have any prebuilt layouts."
-msgstr "Votre thème n'a pas de mises en page prédéfinies."
+msgstr "Votre thème n’a aucune mise en page prédéfinie."
 
 #: inc/admin-actions.php:68
 msgid "No description"
