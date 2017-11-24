@@ -26,65 +26,46 @@
 
 namespace WP_Typography\UI;
 
+use WP_Typography\Data_Storage\Options;
+
 /**
- * HTML <input> element.
+ * HTML <textarea> element.
  */
-class Submit_Input extends Input {
-	/**
-	 * Optional HTML class for buttons.
-	 *
-	 * @var string
-	 */
-	protected $button_class;
+class Textarea extends Control {
 
 	/**
-	 * Create a new input control object.
+	 * Create a new textarea control object.
 	 *
-	 * @param string $option_group Application-specific prefix.
-	 * @param string $id           Control ID (equivalent to option name). Required.
-	 * @param array  $args {
+	 * @param Options $options      Options API handler.
+	 * @param string  $id           Control ID (equivalent to option name). Required.
+	 * @param array   $args {
 	 *    Optional and required arguments.
 	 *
 	 *    @type string      $tab_id       Tab ID. Required.
 	 *    @type string      $section      Section ID. Required.
 	 *    @type string|int  $default      The default value. Required, but may be an empty string.
-	 *    @type string      $button_class Required.
-	 *    @type string|null $short        Optional. Short label. Default null.
+	 *    @type string      $short        Optional. Short label.
 	 *    @type string|null $label        Optional. Label content with the position of the control marked as %1$s. Default null.
 	 *    @type string|null $help_text    Optional. Help text. Default null.
-	 *    @type bool        $inline_help  Optional. Display help inline. Default false.
 	 *    @type array       $attributes   Optional. Default [],
 	 * }
 	 *
 	 * @throws \InvalidArgumentException Missing argument.
 	 */
-	public function __construct( $option_group, $id, array $args ) {
-		$args = $this->prepare_args( $args, [ 'tab_id', 'default', 'button_class' ] );
+	public function __construct( Options $options, $id, array $args ) {
+		$args = $this->prepare_args( $args, [ 'tab_id', 'default' ] );
 
-		parent::__construct( 'submit', $option_group, $id, $args['tab_id'], $args['section'], $args['default'], $args['short'], $args['label'], $args['help_text'], $args['inline_help'], $args['attributes'] );
-
-		$this->button_class = $args['button_class'];
+		parent::__construct( $options, $id, $args['tab_id'], $args['section'], $args['default'], $args['short'], $args['label'], $args['help_text'], false, $args['attributes'] );
 	}
 
 	/**
-	 * Markup ID and class(es).
+	 * Retrieves the control-specific HTML markup.
 	 *
-	 * @return string
+	 * @var string
 	 */
-	protected function id_and_class_markup() {
-		// To avoid duplicate IDs and to add some pretty styling.
-		return 'name="' . \esc_attr( $this->id ) . '" class="' . \esc_attr( $this->button_class ) . '"';
-	}
+	protected function get_element_markup() {
+		$value = \esc_textarea( $this->get_value() );
 
-	/**
-	 * Markup the control itself.
-	 *
-	 * @param string|null $label           Translated label (or null).
-	 * @param string|null $help_text       Translated help text (or null).
-	 *
-	 * @return string
-	 */
-	protected function control_markup( $label, $help_text ) {
-		return '%1$s';
+		return "<textarea class=\"large-text\" {$this->get_id_and_class_markup()}>{$value}</textarea>";
 	}
 }

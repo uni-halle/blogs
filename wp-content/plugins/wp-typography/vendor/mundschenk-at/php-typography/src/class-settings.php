@@ -5,19 +5,19 @@
  *  Copyright 2014-2017 Peter Putzer.
  *  Copyright 2009-2011 KINGdesk, LLC.
  *
- *  This program is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public License
- *  as published by the Free Software Foundation; either version 2
- *  of the License, or (at your option) any later version.
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *  You should have received a copy of the GNU General Public License along
+ *  with this program; if not, write to the Free Software Foundation, Inc.,
+ *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
  *  ***
  *
@@ -37,7 +37,7 @@ use \PHP_Typography\Settings\Quote_Style;
  *
  * @since 4.0.0
  */
-class Settings implements \ArrayAccess {
+class Settings implements \ArrayAccess, \JsonSerializable {
 
 	/**
 	 * The current no-break narrow space character.
@@ -77,12 +77,16 @@ class Settings implements \ArrayAccess {
 	/**
 	 * An array containing all self-closing HTML5 tags.
 	 *
+	 * @deprecated 5.2.0 Not used anymore, will be removed in 6.0.0.
+	 *
 	 * @var array
 	 */
 	protected $self_closing_tags = [];
 
 	/**
 	 * A array of tags we should never touch.
+	 *
+	 * @deprecated 5.2.0 Use DOM::inappropriate_tags() if necessary. Will be removed in 6.0.0.
 	 *
 	 * @var array
 	 */
@@ -187,6 +191,24 @@ class Settings implements \ArrayAccess {
 	}
 
 	/**
+	 * Provides a JSON serialization of the settings.
+	 *
+	 * @return mixed
+	 */
+	public function jsonSerialize() {
+		return array_merge(
+			$this->data,
+			[
+				'no_break_narrow_space'  => $this->no_break_narrow_space,
+				'primary_quotes'         => "{$this->primary_quote_style->open()}|{$this->primary_quote_style->close()}",
+				'secondary_quotes'       => "{$this->secondary_quote_style->open()}|{$this->secondary_quote_style->close()}",
+				'dash_style'             => "{$this->dash_style->interval_dash()}|{$this->dash_style->interval_space()}|{$this->dash_style->parenthetical_dash()}|{$this->dash_style->parenthetical_space()}",
+				'custom_units'           => $this->custom_units,
+			]
+		);
+	}
+
+	/**
 	 * Retrieves the current non-breaking narrow space character (either the
 	 * regular non-breaking space &nbsp; or the the true non-breaking narrow space &#8239;).
 	 *
@@ -246,10 +268,10 @@ class Settings implements \ArrayAccess {
 		$this->secondary_quote_style = new Settings\Simple_Quotes( U::SINGLE_QUOTE_OPEN, U::SINGLE_QUOTE_CLOSE );
 
 		// Set up some arrays for quick HTML5 introspection.
-		$this->self_closing_tags = array_filter( array_keys( \Masterminds\HTML5\Elements::$html5 ), function( $tag ) {
-			return \Masterminds\HTML5\Elements::isA( $tag, \Masterminds\HTML5\Elements::VOID_TAG );
-		} );
-		$this->inappropriate_tags = [ 'iframe', 'textarea', 'button', 'select', 'optgroup', 'option', 'map', 'style', 'head', 'title', 'script', 'applet', 'object', 'param' ];
+		$this->self_closing_tags  = array_filter( array_keys( \Masterminds\HTML5\Elements::$html5 ), function( $tag ) {
+				return \Masterminds\HTML5\Elements::isA( $tag, \Masterminds\HTML5\Elements::VOID_TAG );
+			} );
+		$this->inappropriate_tags = array_flip( DOM::inappropriate_tags() );
 
 		if ( $set_defaults ) {
 			$this->set_defaults();
@@ -291,6 +313,7 @@ class Settings implements \ArrayAccess {
 		$this->set_dewidow();
 		$this->set_max_dewidow_length();
 		$this->set_max_dewidow_pull();
+		$this->set_dewidow_word_number();
 		$this->set_wrap_hard_hyphens();
 		$this->set_url_wrap();
 		$this->set_email_wrap();
@@ -367,8 +390,7 @@ class Settings implements \ArrayAccess {
 		// Ensure that we pass only lower-case tag names to XPath.
 		$tags = array_filter( array_map( 'strtolower', Strings::maybe_split_parameters( $tags ) ), 'ctype_alnum' );
 
-		// Self closing tags shouldn't be in $tags.
-		$this->data['ignoreTags'] = array_unique( array_merge( array_diff( $tags, $this->self_closing_tags ), $this->inappropriate_tags ) );
+		$this->data['ignoreTags'] = array_unique( array_merge( $tags, $this->inappropriate_tags ) );
 	}
 
 	/**
@@ -799,6 +821,17 @@ class Settings implements \ArrayAccess {
 	}
 
 	/**
+	 * Sets the maximum number of words considered for dewidowing.
+	 *
+	 * @param int $number Defaults to 1. Only 1, 2 and 3 are valid.
+	 */
+	public function set_dewidow_word_number( $number = 1 ) {
+		$number = ( $number > 3 || $number < 1 ) ? 1 : $number;
+
+		$this->data['dewidowWordNumber'] = $number;
+	}
+
+	/**
 	 * Sets the maximum length of pulled text to keep widows company.
 	 *
 	 * @param int $length Defaults to 5. Trying to set the value to less than 2 resets the length to the default.
@@ -1011,14 +1044,17 @@ class Settings implements \ArrayAccess {
 	/**
 	 * Retrieves a unique hash value for the current settings.
 	 *
-	 * @param int $max_length The maximum number of bytes returned. Optional. Default 16.
+	 * @since 5.2.0 The new parameter $raw_output has been added.
+	 *
+	 * @param int  $max_length Optional. The maximum number of bytes returned (0 for unlimited). Default 16.
+	 * @param bool $raw_output Optional. Wether to return raw binary data for the hash. Default true.
 	 *
 	 * @return string A binary hash value for the current settings limited to $max_length.
 	 */
-	public function get_hash( $max_length = 16 ) {
-		$hash = md5( json_encode( $this->data ), true );
+	public function get_hash( $max_length = 16, $raw_output = true ) {
+		$hash = md5( json_encode( $this ), $raw_output );
 
-		if ( $max_length < strlen( $hash ) ) {
+		if ( $max_length < strlen( $hash ) && $max_length > 0 ) {
 			$hash = substr( $hash, 0, $max_length );
 		}
 

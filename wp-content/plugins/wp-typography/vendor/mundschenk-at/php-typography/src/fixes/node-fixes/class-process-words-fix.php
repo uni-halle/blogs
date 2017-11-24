@@ -4,19 +4,19 @@
  *
  *  Copyright 2017 Peter Putzer.
  *
- *  This program is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public License
- *  as published by the Free Software Foundation; either version 2
- *  of the License, or (at your option) any later version.
+ *  This program is free software; you can redistribute it and/or modify modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *  You should have received a copy of the GNU General Public License along
+ *  with this program; if not, write to the Free Software Foundation, Inc.,
+ *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
  *  ***
  *
@@ -29,7 +29,7 @@ namespace PHP_Typography\Fixes\Node_Fixes;
 use \PHP_Typography\Text_Parser;
 use \PHP_Typography\Settings;
 use \PHP_Typography\DOM;
-use \PHP_Typography\Hyphenator_Cache;
+use \PHP_Typography\Hyphenator\Cache;
 use \PHP_Typography\Fixes\Token_Fix;
 use \PHP_Typography\Fixes\Token_Fixes\Hyphenate_Fix;
 
@@ -125,9 +125,9 @@ class Process_Words_Fix extends Abstract_Node_Fix {
 	/**
 	 * Sets the hyphenator cache for all registered token fixes (that require one).
 	 *
-	 * @param Hyphenator_Cache $cache A cache instance.
+	 * @param Cache $cache A hyphenator cache instance.
 	 */
-	public function update_hyphenator_cache( Hyphenator_Cache $cache ) {
+	public function update_hyphenator_cache( Cache $cache ) {
 		foreach ( $this->token_fixes as $fix ) {
 			if ( $fix instanceof Hyphenate_Fix ) {
 				$fix->set_hyphenator_cache( $cache );

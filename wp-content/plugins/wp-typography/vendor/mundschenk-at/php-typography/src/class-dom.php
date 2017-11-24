@@ -5,19 +5,19 @@
  *  Copyright 2014-2017 Peter Putzer.
  *  Copyright 2009-2011 KINGdesk, LLC.
  *
- *  This program is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public License
- *  as published by the Free Software Foundation; either version 2
- *  of the License, or (at your option) any later version.
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *  You should have received a copy of the GNU General Public License along
+ *  with this program; if not, write to the Free Software Foundation, Inc.,
+ *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
  *  ***
  *
@@ -26,6 +26,8 @@
  */
 
 namespace PHP_Typography;
+
+use \Masterminds\HTML5\Elements;
 
 /**
  * Some static methods for DOM manipulation.
@@ -42,17 +44,41 @@ abstract class DOM {
 	private static $block_tags;
 
 	/**
-	 * Retrieves an array of block tag names.
+	 * An array of tags that should never be modified.
+	 *
+	 * @var array
+	 */
+	private static $inappropriate_tags;
+
+	const ADDITIONAL_INAPPROPRIATE_TAGS = [
+		'button',
+		'select',
+		'optgroup',
+		'option',
+		'map',
+		'head',
+		'applet',
+		'object',
+		'svg',
+		'math',
+	];
+
+	/**
+	 * Retrieves an array of block tags.
 	 *
 	 * @param bool $reset Optional. Default false.
 	 *
-	 * @return array
+	 * @return array {
+	 *         An array of boolean values indexed by tagname.
+	 *
+	 *         @type bool $tag `true` if the tag is a block tag.
+	 * }
 	 */
 	public static function block_tags( $reset = false ) {
 		if ( empty( self::$block_tags ) || $reset ) {
 			self::$block_tags = array_merge(
-				array_flip( array_filter( array_keys( \Masterminds\HTML5\Elements::$html5 ), function( $tag ) {
-					return \Masterminds\HTML5\Elements::isA( $tag, \Masterminds\HTML5\Elements::BLOCK_TAG );
+				array_flip( array_filter( array_keys( Elements::$html5 ), function( $tag ) {
+					return Elements::isA( $tag, Elements::BLOCK_TAG );
 				} ) ),
 				array_flip( [ 'li', 'td', 'dt' ] ) // not included as "block tags" in current HTML5-PHP version.
 			);
@@ -61,6 +87,32 @@ abstract class DOM {
 		return self::$block_tags;
 	}
 
+	/**
+	 * Retrieves an array of tags that we should never touch.
+	 *
+	 * @param bool $reset Optional. Default false.
+	 *
+	 * @return array {
+	 *         An array of boolean values indexed by tagname.
+	 *
+	 *         @type bool $tag `true` if the tag should never be modified in any way.
+	 * }
+	 */
+	public static function inappropriate_tags( $reset = false ) {
+		if ( empty( self::$inappropriate_tags ) || $reset ) {
+			self::$inappropriate_tags = array_flip( array_merge(
+				array_filter( array_keys( Elements::$html5 ), function( $tag ) {
+					return
+						Elements::isA( $tag, Elements::VOID_TAG ) ||
+						Elements::isA( $tag, Elements::TEXT_RAW ) ||
+						Elements::isA( $tag, Elements::TEXT_RCDATA );
+				} ),
+				self::ADDITIONAL_INAPPROPRIATE_TAGS
+			) );
+		}
+
+		return self::$inappropriate_tags;
+	}
 
 	/**
 	 * Converts \DOMNodeList to array;

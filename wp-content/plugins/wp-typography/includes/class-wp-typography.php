@@ -25,13 +25,27 @@
  *  @license http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-use \WP_Typography\Settings\Multilingual;
-use \PHP_Typography\PHP_Typography;
-use \PHP_Typography\Hyphenator_Cache;
-use \PHP_Typography\Settings;
+use WP_Typography\Data_Storage\Cache;
+use WP_Typography\Data_Storage\Options;
+use WP_Typography\Data_Storage\Transients;
+
+use WP_Typography\Components\Admin_Interface;
+use WP_Typography\Components\Common;
+use WP_Typography\Components\Multilingual_Support;
+use WP_Typography\Components\Plugin_Component;
+use WP_Typography\Components\Public_Interface;
+use WP_Typography\Components\Setup;
+
+use WP_Typography\Settings\Plugin_Configuration as Config;
+
+use PHP_Typography\PHP_Typography;
+use PHP_Typography\Settings;
+use PHP_Typography\Hyphenator\Cache as Hyphenator_Cache;
 
 /**
  * Main wp-Typography plugin class. All WordPress specific code goes here.
+ *
+ * @api
  */
 class WP_Typography {
 
@@ -43,25 +57,11 @@ class WP_Typography {
 	private $version;
 
 	/**
-	 * A byte-encoded version number used as part of the key for transient caching
-	 *
-	 * @var string $version_hash
-	 */
-	private $version_hash;
-
-	/**
-	 * The result of plugin_basename() for the main plugin file (relative from plugins folder).
-	 *
-	 * @var string $local_plugin_path
-	 */
-	private $local_plugin_path;
-
-	/**
 	 * A hash containing the various plugin settings.
 	 *
 	 * @var array
 	 */
-	protected $options;
+	private $config;
 
 	/**
 	 * The PHP_Typography instance doing the actual work.
@@ -85,20 +85,31 @@ class WP_Typography {
 	protected $hyphenator_cache;
 
 	/**
-	 * The transients set by the plugin (to clear on update).
+	 * An abstraction of the WordPress transients API.
 	 *
-	 * @var array A hash with the transient keys set by the plugin stored as ( $key => true ).
+	 * @since 5.1.0
+	 *
+	 * @var Transients
 	 */
-	private $transients = [];
+	private $transients;
 
 	/**
-	 * The cache keys set by the plugin (to clear on update).
+	 * An abstraction of the WordPress object cache.
 	 *
-	 * @since 3.5.0
+	 * @since 5.1.0
 	 *
-	 * @var array A hash with the cache keys set by the plugin stored as ( $key => true ).
+	 * @var Cache
 	 */
-	private $cache_keys = [];
+	private $cache;
+
+	/**
+	 * An abstraction of the WordPress Options API.
+	 *
+	 * @since 5.1.0
+	 *
+	 * @var Options
+	 */
+	private $options;
 
 	/**
 	 * The PHP_Typography configuration is not changed after initialization, so the settings hash can be cached.
@@ -115,32 +126,11 @@ class WP_Typography {
 	private $default_settings;
 
 	/**
-	 * Whether the default settings have already been localized.
+	 * The plugin components in order of execution.
 	 *
-	 * @var bool
+	 * @var Plugin_Component[]
 	 */
-	private $default_settings_localized = false;
-
-	/**
-	 * The admin side handler object.
-	 *
-	 * @var WP_Typography_Admin
-	 */
-	private $admin;
-
-	/**
-	 * The multlingual support object.
-	 *
-	 * @var Multilingual
-	 */
-	private $multilingual;
-
-	/**
-	 * The priority for our filter hooks.
-	 *
-	 * @var int
-	 */
-	private $filter_priority = 9999;
+	private $plugin_components = [];
 
 	/**
 	 * The singleton instance.
@@ -152,24 +142,43 @@ class WP_Typography {
 	/**
 	 * Sets up a new WP_Typography object.
 	 *
-	 * @param string                    $version  The full plugin version string (e.g. "3.0.0-beta.2").
-	 * @param string                    $basename Optional. The result of plugin_basename() for the main plugin file. Default 'wp-typography/wp-typography.php'.
-	 * @param \WP_Typography_Admin|null $admin    Optional. Default null (which means a private instance will be created).
-	 * @param Multilingual|null         $multi    Optional. Default null (which means a private instance will be created).
+	 * @since 5.1.0 Optional parameters $transients, $cache, $options, $setup, $public_if added.
+	 *
+	 * @param string               $version     The full plugin version string (e.g. "3.0.0-beta.2").
+	 * @param Setup                $setup       Required.
+	 * @param Common               $common      Required.
+	 * @param Admin_Interface      $admin       Required.
+	 * @param Public_Interface     $public_if   Required.
+	 * @param Multilingual_Support $multi       Required.
+	 * @param Transients           $transients  Required.
+	 * @param Cache                $cache       Required.
+	 * @param Options              $options     Required.
 	 */
-	public function __construct( $version, $basename = 'wp-typography/wp-typography.php', WP_Typography_Admin $admin = null, Multilingual $multi = null ) {
+	public function __construct( $version, Setup $setup, Common $common, Admin_Interface $admin, Public_Interface $public_if, Multilingual_Support $multi, Transients $transients, Cache $cache, Options $options ) {
 		// Basic set-up.
-		$this->version           = $version;
-		$this->version_hash      = $this->hash_version_string( $version );
-		$this->local_plugin_path = $basename;
-		$this->transients        = get_option( 'typo_transient_keys', [] );
-		$this->cache_keys        = get_option( 'typo_cache_keys', [] );
+		$this->version = $version;
 
-		// Initialize admin interface handler.
-		$this->admin             = ( null === $admin ) ? new WP_Typography_Admin( $basename, $this ) : $admin;
+		// Initialize cache handlers.
+		$this->transients = $transients;
+		$this->cache      = $cache;
+
+		// Initialize Options API handler.
+		$this->options = $options;
+
+		// Initialize activation/deactivation handler.
+		$this->plugin_components[] = $setup;
+
+		// Initialize common component.
+		$this->plugin_components[] = $common;
 
 		// Initialize multilingual support.
-		$this->multilingual      = ( null === $multi ) ? new Multilingual( $this ) : $multi;
+		$this->plugin_components[] = $multi;
+
+		// Initialize public interface handler.
+		$this->plugin_components[] = $public_if;
+
+		// Initialize admin interface handler.
+		$this->plugin_components[] = $admin;
 	}
 
 	/**
@@ -179,20 +188,10 @@ class WP_Typography {
 		// Set plugin singleton.
 		self::set_instance( $this );
 
-		// Ensure that our translations are loaded.
-		add_action( 'plugins_loaded', [ $this, 'plugins_loaded' ] );
-
-		// Load settings.
-		add_action( 'init', [ $this, 'init' ] );
-
-		// Also run the backend UI.
-		$this->admin->run();
-
-		// Enable multilingual support.
-		$this->multilingual->run();
-
-		// Keep default settings.
-		$this->default_settings = $this->admin->get_default_settings();
+		// Run all the plugin components.
+		foreach ( $this->plugin_components as $component ) {
+			$component->run( $this );
+		}
 	}
 
 	/**
@@ -200,7 +199,7 @@ class WP_Typography {
 	 *
 	 * @since 5.0.0
 	 *
-	 * @param WP_Typography|null $instance Only used for plugin initialization. Don't ever pass a value in user code.
+	 * @param WP_Typography $instance Only used for plugin initialization. Don't ever pass a value in user code.
 	 *
 	 * @throws BadMethodCallException Thrown when WP_Typography::set_instance after plugin initialization.
 	 */
@@ -261,7 +260,7 @@ class WP_Typography {
 	 * @return string[] An array in the form of ( $language_code => $language ).
 	 */
 	public function load_hyphenation_languages() {
-		return $this->load_languages( "typo_hyphenate_languages_{$this->version_hash}", [ PHP_Typography::class, 'get_hyphenation_languages' ], 'hyphenate' );
+		return $this->load_languages( 'hyphenate_languages', [ PHP_Typography::class, 'get_hyphenation_languages' ], 'hyphenate' );
 	}
 
 	/**
@@ -284,7 +283,7 @@ class WP_Typography {
 	 * @return string[] An array in the form of ( $language_code => $language ).
 	 */
 	public function load_diacritic_languages() {
-		return $this->load_languages( "typo_diacritic_languages_{$this->version_hash}", [ PHP_Typography::class, 'get_diacritic_languages' ], 'diacritic' );
+		return $this->load_languages( 'diacritic_languages', [ PHP_Typography::class, 'get_diacritic_languages' ], 'diacritic' );
 	}
 
 	/**
@@ -298,7 +297,7 @@ class WP_Typography {
 	 */
 	protected function load_languages( $cache_key, callable $get_language_list, $type ) {
 		// Try to load hyphenation language list from cache.
-		$languages = $this->get_cache( $cache_key, $found );
+		$languages = $this->cache->get( $cache_key, $found );
 
 		// Dynamically generate the list of hyphenation language patterns.
 		if ( false === $found || ! is_array( $languages ) ) {
@@ -315,7 +314,7 @@ class WP_Typography {
 			$duration = apply_filters( 'typo_language_list_caching_duration', WEEK_IN_SECONDS, "{$type}_languages" );
 
 			// Cache translated hyphenation languages.
-			$this->set_cache( $cache_key, $languages, $duration );
+			$this->cache->set( $cache_key, $languages, $duration );
 		}
 
 		return $languages;
@@ -407,56 +406,23 @@ class WP_Typography {
 	}
 
 	/**
-	 * Loads the settings from the option table.
+	 * Retrieves the plugin configuration.
+	 *
+	 * @return array
 	 */
-	public function init() {
-
-		// Restore defaults if necessary.
-		if ( get_option( 'typo_restore_defaults' ) ) {  // any truthy value will do.
-			$this->set_default_options( true );
+	public function get_config() {
+		if ( empty( $this->config ) ) {
+			$config = $this->options->get( Options::CONFIGURATION );
+			if ( is_array( $config ) ) {
+				$this->config = $config;
+			} else {
+				// The configuration array has been corrupted.
+				$this->set_default_options( true );
+			}
 		}
 
-		// Clear cache if necessary.
-		if ( get_option( 'typo_clear_cache' ) ) {  // any truthy value will do.
-			$this->clear_cache();
-		}
-
-		// Load settings.
-		foreach ( array_keys( $this->default_settings ) as $key ) {
-			$this->options[ $key ] = get_option( $key );
-		}
-
-		// Enable multilingual support.
-		if ( $this->options['typo_enable_multilingual_support'] ) {
-			add_filter( 'typo_settings', [ $this->multilingual, 'automatic_language_settings' ] );
-		}
-
-		// Disable wptexturize filter if it conflicts with our settings.
-		if ( $this->options['typo_smart_characters'] && ! is_admin() ) {
-			add_filter( 'run_wptexturize', '__return_false' );
-
-			// Ensure that wptexturize is actually off by forcing a re-evaluation (some plugins call it too early).
-			wptexturize( ' ', true ); // Argument must not be empty string!
-		}
-
-		// Apply our filters.
-		if ( ! is_admin() ) {
-			$this->add_content_filters();
-
-			// Save hyphenator cache on exit, if necessary.
-			add_action( 'shutdown', [ $this, 'save_hyphenator_cache_on_shutdown' ], 10 );
-		}
-
-		// Save cache and transient keys on shutdown.
-		add_action( 'shutdown', [ $this, 'save_cache_keys_on_shutdown' ], 99 );
-
-		// Add CSS Hook styling.
-		add_action( 'wp_head', [ $this, 'add_wp_head' ] );
-
-		// Optionally enable clipboard clean-up.
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+		return $this->config;
 	}
-
 
 	/**
 	 * Retrieves the internal Settings object for the preferences set via the
@@ -470,143 +436,29 @@ class WP_Typography {
 
 		// Initialize Settings instance.
 		if ( empty( $this->typo_settings ) ) {
-			$transient = 'typo_php_settings_' . md5( wp_json_encode( $this->options ) ) . '_' . $this->version_hash;
-			$this->typo_settings = $this->maybe_fix_object( get_transient( $transient ) );
+			$config    = $this->get_config();
+			$transient = 'php_settings_' . md5( wp_json_encode( $config ) );
+			$settings  = $this->transients->get_large_object( $transient );
 
-			if ( ! $this->typo_settings instanceof Settings ) {
+			if ( ! $settings instanceof Settings ) {
 				// OK, we have to initialize the PHP_Typography instance manually.
-				$this->typo_settings = new Settings( false );
+				$settings = new Settings( false );
 
 				// Load our options into the Settings instance.
-				$this->init_settings_from_options( $this->typo_settings );
+				$this->init_settings_from_options( $settings, $config );
 
 				// Try again next time.
-				$this->cache_object( $transient, $this->typo_settings );
+				$this->transients->cache_object( $transient, $settings, 'settings' );
 			}
 
+			// Settings should be good now, so let's use them.
+			$this->typo_settings = $settings;
+
 			// Settings won't be touched again, so cache the hash.
-			$this->cached_settings_hash = $this->typo_settings->get_hash( 32 );
+			$this->cached_settings_hash = $this->typo_settings->get_hash( 32, false );
 		}
 
 		return $this->typo_settings;
-	}
-
-	/**
-	 * Adds content filter handlers.
-	 */
-	public function add_content_filters() {
-		/**
-		 * Filters the priority used for wp-Typography's text processing filters.
-		 *
-		 * When NextGen Gallery is detected, the priority is set to PHP_INT_MAX.
-		 *
-		 * @since 3.2.0
-		 *
-		 * @param int $priority The filter priority. Default 9999.
-		 */
-		$priority = apply_filters( 'typo_filter_priority', $this->filter_priority );
-
-		// Add filters for "full" content.
-		/**
-		 * Disables automatic filtering by wp-Typography.
-		 *
-		 * @since 3.6.0
-		 *
-		 * @param bool   $disable      Whether to disable automatic filtering. Default false.
-		 * @param string $filter_group Which filters to disable. Possible values 'content', 'heading', 'title', 'acf'.
-		 */
-		if ( ! apply_filters( 'typo_disable_filtering', false, 'content' ) ) {
-			$this->enable_content_filters( $priority );
-		}
-
-		// Add filters for headings.
-		/** This filter is documented in class-wp-typography.php */
-		if ( ! apply_filters( 'typo_disable_filtering', false, 'heading' ) ) {
-			$this->enable_heading_filters( $priority );
-		}
-
-		// Extra care needs to be taken with the <title> tag.
-		/** This filter is documented in class-wp-typography.php */
-		if ( ! apply_filters( 'typo_disable_filtering', false, 'title' ) ) {
-			$this->enable_title_filters( $priority );
-		}
-
-		// Add filters for third-party plugins.
-		/** This filter is documented in class-wp-typography.php */
-		if ( class_exists( 'acf' ) && function_exists( 'acf_get_setting' ) && ! apply_filters( 'typo_disable_filtering', false, 'acf' ) ) {
-			$this->enable_acf_filters( $priority );
-		}
-	}
-
-	/**
-	 * Enable the content (body) filters.
-	 *
-	 * @param int $priority Filter priority.
-	 */
-	private function enable_content_filters( $priority ) {
-		add_filter( 'comment_author',    [ $this, 'process' ], $priority );
-		add_filter( 'comment_text',      [ $this, 'process' ], $priority );
-		add_filter( 'comment_text',      [ $this, 'process' ], $priority );
-		add_filter( 'the_content',       [ $this, 'process' ], $priority );
-		add_filter( 'term_name',         [ $this, 'process' ], $priority );
-		add_filter( 'term_description',  [ $this, 'process' ], $priority );
-		add_filter( 'link_name',         [ $this, 'process' ], $priority );
-		add_filter( 'the_excerpt',       [ $this, 'process' ], $priority );
-		add_filter( 'the_excerpt_embed', [ $this, 'process' ], $priority );
-		add_filter( 'widget_text',       [ $this, 'process' ], $priority );
-	}
-
-	/**
-	 * Enable the heading filters.
-	 *
-	 * @param int $priority Filter priority.
-	 */
-	private function enable_heading_filters( $priority ) {
-		add_filter( 'the_title',            [ $this, 'process_title' ], $priority );
-		add_filter( 'single_post_title',    [ $this, 'process_title' ], $priority );
-		add_filter( 'single_cat_title',     [ $this, 'process_title' ], $priority );
-		add_filter( 'single_tag_title',     [ $this, 'process_title' ], $priority );
-		add_filter( 'single_month_title',   [ $this, 'process_title' ], $priority );
-		add_filter( 'single_month_title',   [ $this, 'process_title' ], $priority );
-		add_filter( 'nav_menu_attr_title',  [ $this, 'process_title' ], $priority );
-		add_filter( 'nav_menu_description', [ $this, 'process_title' ], $priority );
-		add_filter( 'widget_title',         [ $this, 'process_title' ], $priority );
-		add_filter( 'list_cats',            [ $this, 'process_title' ], $priority );
-	}
-
-	/**
-	 * Enable the title (not heading) filters.
-	 *
-	 * @param int $priority Filter priority.
-	 */
-	private function enable_title_filters( $priority ) {
-		add_filter( 'wp_title',             [ $this, 'process_feed' ],        $priority ); // WP < 4.4.
-		add_filter( 'document_title_parts', [ $this, 'process_title_parts' ], $priority );
-		add_filter( 'wp_title_parts',       [ $this, 'process_title_parts' ], $priority ); // WP < 4.4.
-	}
-
-	/**
-	 * Enable the Advanced Custom Fields (https://www.advancedcustomfields.com) filters.
-	 *
-	 * @param int $priority Filter priority.
-	 */
-	private function enable_acf_filters( $priority ) {
-		$acf_version = intval( acf_get_setting( 'version' ) );
-
-		if ( 5 === $acf_version ) {
-			// Advanced Custom Fields Pro (version 5).
-			$acf_prefix = 'acf/format_value';
-		} elseif ( 4 === $acf_version ) {
-			// Advanced Custom Fields (version 4).
-			$acf_prefix = 'acf/format_value_for_api';
-		}
-
-		// Other ACF versions (i.e. < 4) are not supported.
-		if ( ! empty( $acf_prefix ) ) {
-			add_filter( "{$acf_prefix}/type=wysiwyg",  [ $this, 'process' ],       $priority );
-			add_filter( "{$acf_prefix}/type=textarea", [ $this, 'process' ],       $priority );
-			add_filter( "{$acf_prefix}/type=text",     [ $this, 'process_title' ], $priority );
-		}
 	}
 
 	/**
@@ -691,19 +543,19 @@ class WP_Typography {
 		$settings = apply_filters( 'typo_settings', $settings );
 
 		// Caclulate hash if necessary.
-		$hash = isset( $hash ) ? $hash : $settings->get_hash();
+		$hash = isset( $hash ) ? $hash : $settings->get_hash( 32, false );
 
 		// Enable feed mode?
 		$feed = $force_feed || is_feed();
 
-		// Construct transient key.
-		$key  = 'typo_' . base64_encode( md5( $text, true ) . $hash ) . ( $feed ? 'f' : '' ) . ( $is_title ? 't' : 's' ) . $this->version_hash;
+		// Construct cache key.
+		$key = 'frag_' . md5( $text ) . '_' . $hash . '_' . ( $feed ? 'f' : '' ) . ( $is_title ? 't' : 's' );
 
 		// Retrieve cached text.
 		$found          = false;
-		$processed_text = $this->get_cache( $key, $found );
+		$processed_text = $this->cache->get( $key, $found );
 
-		if ( ! $found ) {
+		if ( empty( $found ) ) {
 			$typo = $this->get_typography_instance();
 
 			if ( $feed ) { // Feed readers are strange sometimes.
@@ -722,90 +574,10 @@ class WP_Typography {
 			$duration = apply_filters( 'typo_processed_text_caching_duration', DAY_IN_SECONDS );
 
 			// Save text fragment for later.
-			$this->set_cache( $key, $processed_text, $duration );
+			$this->cache->set( $key, $processed_text, $duration );
 		}
 
 		return $processed_text;
-	}
-
-	/**
-	 * Sets a transient and stores the key for clean-up.
-	 *
-	 * @param string $transient The transient key. Maximum length depends on WordPress version (for WP < 4.4 it is 45 characters).
-	 * @param mixed  $value     The value to store.
-	 * @param int    $duration  Optional. The duration in seconds. Default 1 second.
-	 *
-	 * @return bool True if the transient could be set successfully.
-	 */
-	public function set_transient( $transient, $value, $duration = 1 ) {
-		$result = set_transient( $transient, $value, $duration );
-
-		if ( $result ) {
-			// Store $transient as keys to prevent duplicates.
-			$this->transients[ $transient ] = true;
-		}
-
-		return $result;
-	}
-
-	/**
-	 * Sets an entry in the cache and stores the key.
-	 *
-	 * @param string $key       The cache key.
-	 * @param mixed  $value     The value to store.
-	 * @param int    $duration  Optional. The duration in seconds. Default 0 (no expiration).
-	 *
-	 * @return bool True if the cache could be set successfully.
-	 */
-	public function set_cache( $key, $value, $duration = 0 ) {
-		$result = wp_cache_set( $key, $value, 'wp-typography', $duration );
-
-		if ( $result ) {
-			// Store as keys to prevent duplicates.
-			$this->cache_keys[ $key ] = true;
-		}
-
-		return $result;
-	}
-
-	/**
-	 * Retrieves a cached value.
-	 *
-	 * @param string $key   The cache key.
-	 * @param bool   $found Whether the key was found in the cache. Disambiguates a return of false as a storable value. Passed by reference.
-	 *
-	 * @return mixed
-	 */
-	public function get_cache( $key, &$found ) {
-		return wp_cache_get( $key, 'wp-typography', false, $found );
-	}
-
-	/**
-	 * Cache the given object under the transient name.
-	 *
-	 * @param  string $transient Required.
-	 * @param  mixed  $object    Required.
-	 */
-	protected function cache_object( $transient, $object ) {
-		/**
-		 * Filters whether the PHP_Typography engine state should be cached.
-		 *
-		 * @since 4.2.0
-		 *
-		 * @param bool $enabled Defaults to true.
-		 */
-		if ( apply_filters( 'typo_php_typography_caching_enabled', true ) ) {
-			/**
-			 * Filters the caching duration for the PHP_Typography engine state.
-			 *
-			 * @since 3.2.0
-			 *
-			 * @param int $duration The duration in seconds. Defaults to 0 (no expiration).
-			 */
-			$duration = apply_filters( 'typo_php_typography_caching_duration', 0 );
-
-			$this->set_transient( $transient, $object, $duration );
-		}
 	}
 
 	/**
@@ -813,33 +585,39 @@ class WP_Typography {
 	 */
 	protected function get_typography_instance() {
 
+		// Retrieve options.
+		$config = $this->get_config();
+
 		// Initialize PHP_Typography instance.
 		if ( empty( $this->typo ) ) {
-			$transient = 'typo_php_' . md5( wp_json_encode( $this->options ) ) . '_' . $this->version_hash;
-			$this->typo = $this->maybe_fix_object( get_transient( $transient ) );
+			$transient = 'php_' . md5( wp_json_encode( $config ) );
+			$typo      = $this->transients->get_large_object( $transient );
 
-			if ( ! $this->typo instanceof PHP_Typography ) {
+			if ( ! $typo instanceof PHP_Typography ) {
 				// OK, we have to initialize the PHP_Typography instance manually.
-				$this->typo = new PHP_Typography( PHP_Typography::INIT_NOW );
+				$typo = new PHP_Typography( PHP_Typography::INIT_NOW );
 
 				// Try again next time.
-				$this->cache_object( $transient, $this->typo );
+				$this->transients->cache_object( $transient, $typo, 'typography' );
 			}
+
+			$this->typo = $typo;
 		}
 
 		// Also cache hyphenators (the pattern tries are expensive to build).
-		if ( $this->options['typo_enable_hyphenation'] && empty( $this->hyphenator_cache ) ) {
-			$transient = 'typo_php_hyphenator_cache_' . $this->version_hash;
-			$this->hyphenator_cache = $this->maybe_fix_object( get_transient( $transient ) );
+		if ( $config[ Config::ENABLE_HYPHENATION ] && empty( $this->hyphenator_cache ) ) {
+			$transient        = 'php_hyphenator_cache';
+			$hyphenator_cache = $this->transients->get_large_object( $transient );
 
-			if ( ! $this->hyphenator_cache instanceof Hyphenator_Cache ) {
-				$this->hyphenator_cache = $this->typo->get_hyphenator_cache();
+			if ( ! $hyphenator_cache instanceof Hyphenator_Cache ) {
+				$hyphenator_cache = $this->typo->get_hyphenator_cache();
 
 				// Try again next time.
-				$this->cache_object( $transient, $this->hyphenator_cache );
+				$this->transients->cache_object( $transient, $hyphenator_cache, 'hyphenator_cache' );
 			}
 
 			// Let's use it!
+			$this->hyphenator_cache = $hyphenator_cache;
 			$this->typo->set_hyphenator_cache( $this->hyphenator_cache );
 		}
 
@@ -850,50 +628,44 @@ class WP_Typography {
 	 * Save hyphenator cache for the next request.
 	 */
 	public function save_hyphenator_cache_on_shutdown() {
-		if ( $this->options['typo_enable_hyphenation'] && ! empty( $this->hyphenator_cache ) ) {
-			$this->cache_object( 'typo_php_hyphenator_cache_' . $this->version_hash, $this->hyphenator_cache );
+		if ( ! empty( $this->hyphenator_cache ) && $this->hyphenator_cache->has_changed() ) {
+			$this->transients->cache_object( 'php_hyphenator_cache', $this->hyphenator_cache, 'hyphenator_cache' );
 		}
-	}
-
-	/**
-	 * Save cache and transient keys for the next request.
-	 */
-	public function save_cache_keys_on_shutdown() {
-		update_option( 'typo_transient_keys', $this->transients );
-		update_option( 'typo_cache_keys',     $this->cache_keys );
 	}
 
 	/**
 	 * Initializes the Settings object for PHP_Typography from the plugin options.
 	 *
-	 * @param Settings $s Required.
+	 * @param Settings $s      The settings instance to initialize.
+	 * @param array    $config The array of configuration entries.
 	 */
-	protected function init_settings_from_options( Settings $s ) {
-		// Load configuration variables into our PHP_Typography class.
-		$s->set_tags_to_ignore( $this->options['typo_ignore_tags'] );
-		$s->set_classes_to_ignore( $this->options['typo_ignore_classes'] );
-		$s->set_ids_to_ignore( $this->options['typo_ignore_ids'] );
+	protected function init_settings_from_options( Settings $s, array $config ) {
 
-		if ( $this->options['typo_smart_characters'] ) {
-			$s->set_smart_dashes( $this->options['typo_smart_dashes'] );
-			$s->set_smart_dashes_style( $this->options['typo_smart_dashes_style'] );
-			$s->set_smart_ellipses( $this->options['typo_smart_ellipses'] );
-			$s->set_smart_math( $this->options['typo_smart_math'] );
+		// Load configuration variables into our PHP_Typography class.
+		$s->set_tags_to_ignore( $config[ Config::IGNORE_TAGS ] );
+		$s->set_classes_to_ignore( $config[ Config::IGNORE_CLASSES ] );
+		$s->set_ids_to_ignore( $config[ Config::IGNORE_IDS ] );
+
+		if ( $config[ Config::SMART_CHARACTERS ] ) {
+			$s->set_smart_dashes( $config[ Config::SMART_DASHES ] );
+			$s->set_smart_dashes_style( $config[ Config::SMART_DASHES_STYLE ] );
+			$s->set_smart_ellipses( $config[ Config::SMART_ELLIPSES ] );
+			$s->set_smart_math( $config[ Config::SMART_MATH ] );
 
 			// Note: smart_exponents was grouped with smart_math for the WordPress plugin,
 			// but does not have to be done that way for other ports.
-			$s->set_smart_exponents( $this->options['typo_smart_math'] );
-			$s->set_smart_fractions( $this->options['typo_smart_fractions'] );
-			$s->set_smart_ordinal_suffix( $this->options['typo_smart_ordinals'] );
-			$s->set_smart_marks( $this->options['typo_smart_marks'] );
-			$s->set_smart_quotes( $this->options['typo_smart_quotes'] );
+			$s->set_smart_exponents( $config[ Config::SMART_MATH ] );
+			$s->set_smart_fractions( $config[ Config::SMART_FRACTIONS ] );
+			$s->set_smart_ordinal_suffix( $config[ Config::SMART_ORDINALS ] );
+			$s->set_smart_marks( $config[ Config::SMART_MARKS ] );
+			$s->set_smart_quotes( $config[ Config::SMART_QUOTES ] );
 
-			$s->set_smart_diacritics( $this->options['typo_smart_diacritics'] );
-			$s->set_diacritic_language( $this->options['typo_diacritic_languages'] );
-			$s->set_diacritic_custom_replacements( $this->options['typo_diacritic_custom_replacements'] );
+			$s->set_smart_diacritics( $config[ Config::SMART_DIACRITICS ] );
+			$s->set_diacritic_language( $config[ Config::DIACRITIC_LANGUAGES ] );
+			$s->set_diacritic_custom_replacements( $config[ Config::DIACRITIC_CUSTOM_REPLACEMENTS ] );
 
-			$s->set_smart_quotes_primary( $this->options['typo_smart_quotes_primary'] );
-			$s->set_smart_quotes_secondary( $this->options['typo_smart_quotes_secondary'] );
+			$s->set_smart_quotes_primary( $config[ Config::SMART_QUOTES_PRIMARY ] );
+			$s->set_smart_quotes_secondary( $config[ Config::SMART_QUOTES_SECONDARY ] );
 		} else {
 			$s->set_smart_dashes( false );
 			$s->set_smart_ellipses( false );
@@ -906,41 +678,59 @@ class WP_Typography {
 			$s->set_smart_diacritics( false );
 		}
 
-		$s->set_single_character_word_spacing( $this->options['typo_single_character_word_spacing'] );
-		$s->set_dash_spacing( $this->options['typo_dash_spacing'] );
-		$s->set_fraction_spacing( $this->options['typo_fraction_spacing'] );
-		$s->set_unit_spacing( $this->options['typo_unit_spacing'] );
-		$s->set_numbered_abbreviation_spacing( $this->options['typo_numbered_abbreviations_spacing'] );
-		$s->set_french_punctuation_spacing( $this->options['typo_french_punctuation_spacing'] );
-		$s->set_units( $this->options['typo_units'] );
-		$s->set_space_collapse( $this->options['typo_space_collapse'] );
-		$s->set_dewidow( $this->options['typo_prevent_widows'] );
-		$s->set_max_dewidow_length( $this->options['typo_widow_min_length'] );
-		$s->set_max_dewidow_pull( $this->options['typo_widow_max_pull'] );
-		$s->set_wrap_hard_hyphens( $this->options['typo_wrap_hyphens'] );
-		$s->set_email_wrap( $this->options['typo_wrap_emails'] );
-		$s->set_url_wrap( $this->options['typo_wrap_urls'] );
-		$s->set_min_after_url_wrap( $this->options['typo_wrap_min_after'] );
-		$s->set_style_ampersands( $this->options['typo_style_amps'] );
-		$s->set_style_caps( $this->options['typo_style_caps'] );
-		$s->set_style_numbers( $this->options['typo_style_numbers'] );
-		$s->set_style_hanging_punctuation( $this->options['typo_style_hanging_punctuation'] );
-		$s->set_style_initial_quotes( $this->options['typo_style_initial_quotes'] );
-		$s->set_initial_quote_tags( $this->options['typo_initial_quote_tags'] );
+		// Space control.
+		$s->set_single_character_word_spacing( $config[ Config::SINGLE_CHARACTER_WORD_SPACING ] );
+		$s->set_dash_spacing( $config[ Config::DASH_SPACING ] );
+		$s->set_fraction_spacing( $config[ Config::FRACTION_SPACING ] );
+		$s->set_unit_spacing( $config[ Config::UNIT_SPACING ] );
+		$s->set_numbered_abbreviation_spacing( $config[ Config::NUMBERED_ABBREVIATIONS_SPACING ] );
+		$s->set_french_punctuation_spacing( $config[ Config::FRENCH_PUNCTUATION_SPACING ] );
+		$s->set_units( $config[ Config::UNITS ] );
+		$s->set_space_collapse( $config[ Config::SPACE_COLLAPSE ] );
+		$s->set_dewidow( $config[ Config::PREVENT_WIDOWS ] );
+		$s->set_max_dewidow_length( $config[ Config::WIDOW_MIN_LENGTH ] );
+		$s->set_max_dewidow_pull( $config[ Config::WIDOW_MAX_PULL ] );
 
-		if ( $this->options['typo_enable_hyphenation'] ) {
-			$s->set_hyphenation( $this->options['typo_enable_hyphenation'] );
-			$s->set_hyphenate_headings( $this->options['typo_hyphenate_headings'] );
-			$s->set_hyphenate_all_caps( $this->options['typo_hyphenate_caps'] );
-			$s->set_hyphenate_title_case( $this->options['typo_hyphenate_title_case'] );
-			$s->set_hyphenate_compounds( $this->options['typo_hyphenate_compounds'] );
-			$s->set_hyphenation_language( $this->options['typo_hyphenate_languages'] );
-			$s->set_min_length_hyphenation( $this->options['typo_hyphenate_min_length'] );
-			$s->set_min_before_hyphenation( $this->options['typo_hyphenate_min_before'] );
-			$s->set_min_after_hyphenation( $this->options['typo_hyphenate_min_after'] );
-			$s->set_hyphenation_exceptions( $this->options['typo_hyphenate_exceptions'] );
+		/**
+		 * Filters whether to use the NARROW NO-BREAK SPACE character (U+202F, &#8239;)
+		 * where appropriate.
+		 *
+		 * Historically, browser and/or font support for this character has been limited,
+		 * so by default it is replaced by the normal (non-narrow) NO-BREAK SPACE (U+00A0, &nbsp;).
+		 *
+		 * @since 5.1.0
+		 *
+		 * @param bool $enable Default false.
+		 */
+		$s->set_true_no_break_narrow_space( apply_filters( 'typo_narrow_no_break_space', false ) );
+
+		// Line wrapping.
+		$s->set_wrap_hard_hyphens( $config[ Config::WRAP_HYPHENS ] );
+		$s->set_email_wrap( $config[ Config::WRAP_EMAILS ] );
+		$s->set_url_wrap( $config[ Config::WRAP_URLS ] );
+		$s->set_min_after_url_wrap( $config[ Config::WRAP_MIN_AFTER ] );
+
+		// CSS hooks.
+		$s->set_style_ampersands( $config[ Config::STYLE_AMPS ] );
+		$s->set_style_caps( $config[ Config::STYLE_CAPS ] );
+		$s->set_style_numbers( $config[ Config::STYLE_NUMBERS ] );
+		$s->set_style_hanging_punctuation( $config[ Config::STYLE_HANGING_PUNCTUATION ] );
+		$s->set_style_initial_quotes( $config[ Config::STYLE_INITIAL_QUOTES ] );
+		$s->set_initial_quote_tags( $config[ Config::INITIAL_QUOTE_TAGS ] );
+
+		if ( $config[ Config::ENABLE_HYPHENATION ] ) {
+			$s->set_hyphenation( $config[ Config::ENABLE_HYPHENATION ] );
+			$s->set_hyphenate_headings( $config[ Config::HYPHENATE_HEADINGS ] );
+			$s->set_hyphenate_all_caps( $config[ Config::HYPHENATE_CAPS ] );
+			$s->set_hyphenate_title_case( $config[ Config::HYPHENATE_TITLE_CASE ] );
+			$s->set_hyphenate_compounds( $config[ Config::HYPHENATE_COMPOUNDS ] );
+			$s->set_hyphenation_language( $config[ Config::HYPHENATE_LANGUAGES ] );
+			$s->set_min_length_hyphenation( $config[ Config::HYPHENATE_MIN_LENGTH ] );
+			$s->set_min_before_hyphenation( $config[ Config::HYPHENATE_MIN_BEFORE ] );
+			$s->set_min_after_hyphenation( $config[ Config::HYPHENATE_MIN_AFTER ] );
+			$s->set_hyphenation_exceptions( $config[ Config::HYPHENATE_EXCEPTIONS ] );
 		} else { // save some cycles.
-			$s->set_hyphenation( $this->options['typo_enable_hyphenation'] );
+			$s->set_hyphenation( $config[ Config::ENABLE_HYPHENATION ] );
 		}
 
 		/**
@@ -952,7 +742,7 @@ class WP_Typography {
 		 *
 		 * @param bool $ignore Default false.
 		 */
-		$s->set_ignore_parser_errors( $this->options['typo_ignore_parser_errors'] || apply_filters( 'typo_ignore_parser_errors', false ) );
+		$s->set_ignore_parser_errors( $config[ Config::IGNORE_PARSER_ERRORS ] || apply_filters( 'typo_ignore_parser_errors', false ) );
 
 		// Make parser errors filterable on an individual level.
 		$s->set_parser_errors_handler( [ $this, 'parser_errors_handler' ] );
@@ -964,18 +754,26 @@ class WP_Typography {
 	 * @param bool $force_defaults Optional. Default false.
 	 */
 	public function set_default_options( $force_defaults = false ) {
+		$update = $force_defaults;
+
 		// Grab configuration variables.
 		foreach ( $this->get_default_options() as $key => $default ) {
 			// Set or update the options with the default value if necessary.
-			if ( $force_defaults || ! is_string( get_option( $key ) ) ) {
-				update_option( $key, $default );
+			if ( $force_defaults || ! isset( $this->config[ $key ] ) ) {
+				$this->config[ $key ] = $default;
+				$update               = true;
 			}
+		}
+
+		// Update stored options.
+		if ( $update ) {
+			$this->options->set( Options::CONFIGURATION, $this->config );
 		}
 
 		if ( $force_defaults ) {
 			// Push the reset switch.
-			update_option( 'typo_restore_defaults', false );
-			update_option( 'typo_clear_cache', false );
+			$this->options->delete( Options::RESTORE_DEFAULTS );
+			$this->options->delete( Options::CLEAR_CACHE );
 		}
 	}
 
@@ -985,9 +783,15 @@ class WP_Typography {
 	 * @return array
 	 */
 	public function get_default_options() {
-		if ( ! $this->default_settings_localized ) {
-			$this->default_settings = $this->multilingual->filter_defaults( $this->default_settings );
-			$this->default_settings_localized = true;
+		if ( empty( $this->default_settings ) ) {
+			/**
+			 * Filters the default settings used to initialize the plugin.
+			 *
+			 * @since 5.1.0
+			 *
+			 * @param array $defaults The default settings indexed by their configuration key.
+			 */
+			$this->default_settings = (array) apply_filters( 'typo_plugin_defaults', wp_list_pluck( Config::get_defaults(), 'default' ) );
 		}
 
 		return $this->default_settings;
@@ -997,18 +801,10 @@ class WP_Typography {
 	 * Clears all transients set by the plugin.
 	 */
 	public function clear_cache() {
-		// Delete all our transients.
-		foreach ( array_keys( $this->transients ) as $transient ) {
-			delete_transient( $transient );
-		}
-		// ... as well as cache keys.
-		foreach ( array_keys( $this->cache_keys ) as $key ) {
-			wp_cache_delete( $key, 'wp-typography' );
-		}
+		$this->transients->invalidate();
+		$this->cache->invalidate();
 
-		$this->transients = [];
-		$this->cache_keys = [];
-		update_option( 'typo_clear_cache', false );
+		$this->options->delete( Options::CLEAR_CACHE );
 	}
 
 	/**
@@ -1027,34 +823,6 @@ class WP_Typography {
 		 * @param array $errors An array of error messages.
 		 */
 		return apply_filters( 'typo_handle_parser_errors', $errors );
-	}
-
-	/**
-	 * Prints CSS and JS depending on plugin options.
-	 */
-	public function add_wp_head() {
-		if ( $this->options['typo_style_css_include'] && '' !== trim( $this->options['typo_style_css'] ) ) {
-			echo '<style type="text/css">' . "\r\n";
-			echo esc_html( $this->options['typo_style_css'] ) . "\r\n";
-			echo "</style>\r\n";
-		}
-
-		if ( $this->options['typo_hyphenate_safari_font_workaround'] ) {
-			echo "<style type=\"text/css\">body {-webkit-font-feature-settings: \"liga\";font-feature-settings: \"liga\";-ms-font-feature-settings: normal;}</style>\r\n";
-		}
-	}
-
-	/**
-	 * Loads translations and checks for other plugins.
-	 */
-	public function plugins_loaded() {
-		// Load our translations.
-		load_plugin_textdomain( 'wp-typography', false, dirname( $this->local_plugin_path ) . '/translations/' );
-
-		// Check for NextGEN Gallery and use insane filter priority if activated.
-		if ( class_exists( 'C_NextGEN_Bootstrap' ) ) {
-			$this->filter_priority = PHP_INT_MAX;
-		}
 	}
 
 	/**
@@ -1096,39 +864,11 @@ class WP_Typography {
 	/**
 	 * Retrieves the plugin version hash.
 	 *
+	 * @deprecated 5.1.0
+	 *
 	 * @return string
 	 */
 	public function get_version_hash() {
-		return $this->version_hash;
-	}
-
-	/**
-	 * Enqueues frontend JavaScript files.
-	 */
-	public function enqueue_scripts() {
-		if ( $this->options['typo_hyphenate_clean_clipboard'] ) {
-			// Set up file suffix.
-			$suffix = SCRIPT_DEBUG ? '' : '.min';
-
-			wp_enqueue_script( 'jquery-selection',                plugin_dir_url( $this->local_plugin_path ) . "js/jquery.selection$suffix.js", [ 'jquery' ],                     $this->version, true );
-			wp_enqueue_script( 'wp-typography-cleanup-clipboard', plugin_dir_url( $this->local_plugin_path ) . "js/clean_clipboard$suffix.js",  [ 'jquery', 'jquery-selection' ], $this->version, true );
-		}
-	}
-
-	/**
-	 * Fix object cache implementations sumetimes returning __PHP_Incomplete_Class.
-	 *
-	 * Based on http://stackoverflow.com/a/1173769/6646342.
-	 *
-	 * @param  object $object An object that should have been unserialized, but may be of __PHP_Incomplete_Class.
-	 *
-	 * @return object         The object with its real class.
-	 */
-	protected function maybe_fix_object( $object ) {
-		if ( ! is_object( $object ) && 'object' === gettype( $object ) ) {
-			$object = unserialize( serialize( $object ) ); // @codingStandardsIgnoreLine
-		}
-
-		return $object;
+		return $this->hash_version_string( $this->version );
 	}
 }

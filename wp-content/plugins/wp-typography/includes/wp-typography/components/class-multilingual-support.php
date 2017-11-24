@@ -24,28 +24,29 @@
  *  @license http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace WP_Typography\Settings;
+namespace WP_Typography\Components;
 
-use \WP_Typography;
-use \PHP_Typography\Settings;
-use \PHP_Typography\Settings\Dash_Style;
-use \PHP_Typography\Settings\Quote_Style;
+use WP_Typography;
+
+use WP_Typography\Settings\Basic_Locale_Settings;
+use WP_Typography\Settings\Locale_Settings;
+use WP_Typography\Settings\Plugin_Configuration as Config;
+
+use PHP_Typography\Settings;
+use PHP_Typography\Settings\Dash_Style;
+use PHP_Typography\Settings\Quote_Style;
 
 /**
- * Multilingual support for wp-Typography.
+ * Multilingual_Support support for wp-Typography.
  *
  * @since 5.0.0
  *
  * @author Peter Putzer <github@mundschenk.at>
  */
-class Multilingual {
+class Multilingual_Support implements Plugin_Component {
 
-	/**
-	 * The plugin instance.
-	 *
-	 * @var WP_Typography
-	 */
-	protected $plugin;
+	const MATCH_TYPE_HYPHENATION = 'hyphenation';
+	const MATCH_TYPE_DIACRITIC   = 'diacritic';
 
 	/**
 	 * An array of Locale_Settings.
@@ -55,19 +56,62 @@ class Multilingual {
 	protected $locales = [];
 
 	/**
-	 * Creates a new instance.
+	 * The list of available hyhphenation languages.
 	 *
-	 * @param WP_Typography $plugin The main plugin instance.
+	 * @var string[]
 	 */
-	public function __construct( WP_Typography $plugin ) {
-		$this->plugin = $plugin;
-	}
+	protected $hyphenation_languages;
+
+	/**
+	 * The list of available diacritics replacement languages.
+	 *
+	 * @var string[]
+	 */
+	protected $diacritic_languages;
+
+	/**
+	 * The plugin instance used for setting transients.
+	 *
+	 * @var \WP_Typography
+	 */
+	protected $plugin;
 
 	/**
 	 * Set up the various hooks for multilingual support.
+	 *
+	 * @param WP_Typography $plugin The main plugin instance.
 	 */
-	public function run() {
+	public function run( WP_Typography $plugin ) {
+		// Store plugin reference.
+		$this->plugin = $plugin;
+
+		// Initialize locales.
 		$this->locales = $this->initialize_locale_settings();
+
+		// Enable multilingual support.
+		\add_action( 'plugins_loaded', [ $this, 'add_plugin_defaults_filter' ] );
+		\add_action( 'init',           [ $this, 'enable_automatic_language_settings' ] );
+	}
+
+	/**
+	 * Adds a filter for the plugin defaults.
+	 */
+	public function add_plugin_defaults_filter() {
+		// Translation of language names is irrelevant here.
+		$this->hyphenation_languages = $this->plugin->load_hyphenation_languages();
+		$this->diacritic_languages   = $this->plugin->load_diacritic_languages();
+
+		// Filter the defaults.
+		\add_filter( 'typo_plugin_defaults', [ $this, 'filter_defaults' ] );
+	}
+
+	/**
+	 * Enable multilingual settings.
+	 */
+	public function enable_automatic_language_settings() {
+		if ( $this->plugin->get_config()[ Config::ENABLE_MULTILINGUAL_SUPPORT ] ) {
+			add_filter( 'typo_settings', [ $this, 'automatic_language_settings' ] );
+		}
 	}
 
 	/**
@@ -119,7 +163,7 @@ class Multilingual {
 		list( $locale, $language, $country, $modifier ) = $this->get_current_locale();
 
 		// Adjust hyphenation language.
-		$hyphenation_language_match = $this->match_language( $this->plugin->load_hyphenation_languages(), $locale, $language, 'hyphenation' );
+		$hyphenation_language_match = $this->match_language( $this->hyphenation_languages, $locale, $language, self::MATCH_TYPE_HYPHENATION );
 		if ( ! empty( $hyphenation_language_match ) ) {
 			$settings->set_hyphenation_language( $hyphenation_language_match );
 		} else {
@@ -127,7 +171,7 @@ class Multilingual {
 		}
 
 		// Adjust diacritics replacement language.
-		$diacritics_language_match  = $this->match_language( $this->plugin->load_diacritic_languages(), $locale, $language, 'diacritic' );
+		$diacritics_language_match = $this->match_language( $this->diacritic_languages, $locale, $language, self::MATCH_TYPE_DIACRITIC );
 		if ( ! empty( $diacritics_language_match ) ) {
 			$settings->set_diacritic_language( $diacritics_language_match );
 		} else {
@@ -164,17 +208,17 @@ class Multilingual {
 		}
 
 		// Adjust hyphenation language.
-		$hyphenation_language_match = $this->match_language( $this->plugin->load_hyphenation_languages(), "$language-$country", $language, 'hyphenation' );
+		$hyphenation_language_match = $this->match_language( $this->hyphenation_languages, "$language-$country", $language, self::MATCH_TYPE_HYPHENATION );
 		if ( ! empty( $hyphenation_language_match ) ) {
-			$defaults['typo_hyphenate_languages'] = $hyphenation_language_match;
+			$defaults[ Config::HYPHENATE_LANGUAGES ] = $hyphenation_language_match;
 		} else {
-			$defaults['typo_enable_hyphenation'] = false;
+			$defaults[ Config::ENABLE_HYPHENATION ] = false;
 		}
 
 		// Adjust diacritics replacement language.
-		$diacritics_language_match  = $this->match_language( $this->plugin->load_diacritic_languages(), "$language-$country", $language, 'diacritics' );
+		$diacritics_language_match = $this->match_language( $this->diacritic_languages, "$language-$country", $language, self::MATCH_TYPE_DIACRITIC );
 		if ( ! empty( $diacritics_language_match ) ) {
-			$defaults['typo_diacritic_languages'] = $diacritics_language_match;
+			$defaults[ Config::DIACRITIC_LANGUAGES ] = $diacritics_language_match;
 		}
 
 		return $defaults;

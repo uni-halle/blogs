@@ -5,19 +5,19 @@
  *  Copyright 2014-2017 Peter Putzer.
  *  Copyright 2009-2011 KINGdesk, LLC.
  *
- *  This program is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public License
- *  as published by the Free Software Foundation; either version 2
- *  of the License, or (at your option) any later version.
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *  You should have received a copy of the GNU General Public License along
+ *  with this program; if not, write to the Free Software Foundation, Inc.,
+ *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
  *  ***
  *
@@ -28,7 +28,7 @@
 namespace PHP_Typography\Fixes\Token_Fixes;
 
 use \PHP_Typography\Fixes\Token_Fix;
-use \PHP_Typography\Hyphenator_Cache;
+use \PHP_Typography\Hyphenator\Cache;
 use \PHP_Typography\RE;
 use \PHP_Typography\Settings;
 use \PHP_Typography\Text_Parser;
@@ -58,10 +58,10 @@ class Wrap_URLs_Fix extends Hyphenate_Fix {
 	/**
 	 * Creates a new fix instance.
 	 *
-	 * @param Hyphenator_Cache|null $cache           Optional. Default null.
-	 * @param bool                  $feed_compatible Optional. Default false.
+	 * @param Cache|null $cache           Optional. Default null.
+	 * @param bool       $feed_compatible Optional. Default false.
 	 */
-	public function __construct( Hyphenator_Cache $cache = null, $feed_compatible = false ) {
+	public function __construct( Cache $cache = null, $feed_compatible = false ) {
 		parent::__construct( $cache, Token_Fix::OTHER, $feed_compatible );
 
 		// Combined URL pattern.

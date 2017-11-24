@@ -26,17 +26,19 @@
 
 namespace WP_Typography\UI;
 
+use WP_Typography\Data_Storage\Options;
+
 /**
  * HTML <input> element.
  */
-class Checkbox_Input extends Input {
+class Number_Input extends Input {
 
 	/**
 	 * Create a new input control object.
 	 *
-	 * @param string $option_group Application-specific prefix.
-	 * @param string $id           Control ID (equivalent to option name). Required.
-	 * @param array  $args {
+	 * @param Options $options      Options API handler.
+	 * @param string  $id           Control ID (equivalent to option name). Required.
+	 * @param array   $args {
 	 *    Optional and required arguments.
 	 *
 	 *    @type string      $tab_id       Tab ID. Required.
@@ -51,10 +53,10 @@ class Checkbox_Input extends Input {
 	 *
 	 * @throws \InvalidArgumentException Missing argument.
 	 */
-	public function __construct( $option_group, $id, array $args ) {
+	public function __construct( Options $options, $id, array $args ) {
 		$args = $this->prepare_args( $args, [ 'tab_id', 'default' ] );
 
-		parent::__construct( 'checkbox', $option_group, $id, $args['tab_id'], $args['section'], $args['default'], $args['short'], $args['label'], $args['help_text'], $args['inline_help'], $args['attributes'] );
+		parent::__construct( $options, 'number', $id, $args['tab_id'], $args['section'], $args['default'], $args['short'], $args['label'], $args['help_text'], $args['inline_help'], $args['attributes'] );
 	}
 
 	/**
@@ -64,7 +66,8 @@ class Checkbox_Input extends Input {
 	 *
 	 * @return string
 	 */
-	protected function value_markup( $value ) {
-		return "value='1' " . \checked( $value, true, false );
+	protected function get_value_markup( $value ) {
+		// Include 0 values.
+		return 'value="' . \esc_attr( $value ) . '" ';
 	}
 }

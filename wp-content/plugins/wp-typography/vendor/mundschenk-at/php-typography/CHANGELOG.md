@@ -1,9 +1,29 @@
 # Change History
 
+## 5.2.1 - October 27, 2017
+*   _Bugfix_: Dewidow didn't honor narrow spaces.
+
+## 5.2.0 - September 30, 2017
+*   _Change_: `Hyphenator_Cache` has been moved to `Hyphenator\Cache`.
+*   _Change_: New method `has_changed` for `Hyphenator\Cache`.
+*   _Change_: Properties `Settings::inappropriate_tags` and `Settings::self_closing_tags` have been deprecated.
+*   _Bugfix_: Settings hash omitted some properties (props @shimikano).
+
+## 5.1.0 - September 10, 2017
+
+*   _Feature_: New hyphenation language "Swiss-German (Traditional)" added.
+*   _Feature_: Dewidowing can now be applied to the final 1–3 words.
+*   _Change_: Started adding some benchmarks.
+*   _Change_: Updated HTML5 parser (html5-php) to 2.3.0:
+    -   Tokenizer performance improved by 20 percent.
+    -   Various small bugfixes.
+
 ## 5.0.2. - August 28, 2017
+
 *   _Bugfix_: Fatal error on PHP 5.6.x (caused by using `__METHOD__` as a variable function) fixed.
 
 ## 5.0.1. - August 26, 2017
+
 *   _Bugfix_: Hyphenator caching was not really working.
 
 ## 5.0.0. - August 13, 2017
@@ -81,7 +101,7 @@ _Skipped._
 
 *   _Feature_: Added "Latin (Liturgical)" as a new hyphenation language.
 *   _Change_: Updated list of valid top-level domains.
-*   _Change_:_ Updated HTML5 parser (html5-php) to 2.2.2.
+*   _Change_: Updated HTML5 parser (html5-php) to 2.2.2.
 *   _Bugfix_: Custom hyphenations with more than one hyphenation point were not working properly.
 *   _Bugfix_: The `min_after` hyphenation setting was off by one.
 *   _Bugfix_: Fractions did not play nice with prime symbols.

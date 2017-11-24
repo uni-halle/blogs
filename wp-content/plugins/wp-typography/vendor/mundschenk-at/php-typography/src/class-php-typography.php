@@ -5,19 +5,19 @@
  *  Copyright 2014-2017 Peter Putzer.
  *  Copyright 2009-2011 KINGdesk, LLC.
  *
- *  This program is free software; you can redistribute it and/or
- *  modify it under the terms of the GNU General Public License
- *  as published by the Free Software Foundation; either version 2
- *  of the License, or (at your option) any later version.
+ *  This program is free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
  *
- *  You should have received a copy of the GNU General Public License
- *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *  You should have received a copy of the GNU General Public License along
+ *  with this program; if not, write to the Free Software Foundation, Inc.,
+ *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
  *  ***
  *
@@ -85,7 +85,7 @@ class PHP_Typography {
 	/**
 	 * The hyphenator cache.
 	 *
-	 * @var Hyphenator_Cache
+	 * @var Hyphenator\Cache
 	 */
 	protected $hyphenator_cache;
 
@@ -381,7 +381,7 @@ class PHP_Typography {
 	 * @param \DOMNode  $initial_node The starting node of the XPath query.
 	 * @param Settings  $settings     The settings to apply.
 	 *
-	 * @return array An array of \DOMNode (can be empty).
+	 * @return \DOMNode[] An array of \DOMNode (can be empty).
 	 */
 	public function query_tags_to_ignore( \DOMXPath $xpath, \DOMNode $initial_node, Settings $settings ) {
 		$elements = [];
@@ -466,22 +466,22 @@ class PHP_Typography {
 	/**
 	 * Retrieves the hyphenator cache.
 	 *
-	 * @return Hyphenator_Cache
+	 * @return Hyphenator\Cache
 	 */
 	public function get_hyphenator_cache() {
 		if ( ! isset( $this->hyphenator_cache ) ) {
-			$this->hyphenator_cache = new Hyphenator_Cache();
+			$this->hyphenator_cache = new Hyphenator\Cache();
 		}
 
 		return $this->hyphenator_cache;
 	}
 
 	/**
-	 * Injects an existing Hyphenator_Cache (to facilitate persistent language caching).
+	 * Injects an existing Hyphenator\Cache (to facilitate persistent language caching).
 	 *
-	 * @param Hyphenator_Cache $cache A hyphenator cache instance.
+	 * @param Hyphenator\Cache $cache A hyphenator cache instance.
 	 */
-	public function set_hyphenator_cache( Hyphenator_Cache $cache ) {
+	public function set_hyphenator_cache( Hyphenator\Cache $cache ) {
 		$this->hyphenator_cache = $cache;
 
 		// Change hyphenator cache for existing node fixes.
@@ -532,7 +532,7 @@ class PHP_Typography {
 	 *
 	 * @param string $path The path in which to look for language plugin files.
 	 *
-	 * @return array An array in the form ( $language_code => $language_name ).
+	 * @return string[] An array in the form ( $language_code => $language_name ).
 	 */
 	private static function get_language_plugin_list( $path ) {
 		$language_name_pattern = '/"language"\s*:\s*((".+")|(\'.+\'))\s*,/';
@@ -562,9 +562,10 @@ class PHP_Typography {
 	/**
 	 * Retrieves the list of valid hyphenation languages.
 	 *
-	 * The language names are translation-ready but not translated yet.
+	 * Note that this method reads all the language files on disc, so you should
+	 * cache the results if possible.
 	 *
-	 * @return array An array in the form of ( LANG_CODE => LANGUAGE ).
+	 * @return string[] An array in the form of ( LANG_CODE => LANGUAGE ).
 	 */
 	public static function get_hyphenation_languages() {
 		return self::get_language_plugin_list( __DIR__ . '/lang/' );
@@ -573,9 +574,10 @@ class PHP_Typography {
 	/**
 	 * Retrieves the list of valid diacritic replacement languages.
 	 *
-	 * The language names are translation-ready but not translated yet.
+	 * Note that this method reads all the language files on disc, so you should
+	 * cache the results if possible.
 	 *
-	 * @return array An array in the form of ( LANG_CODE => LANGUAGE ).
+	 * @return string[] An array in the form of ( LANG_CODE => LANGUAGE ).
 	 */
 	public static function get_diacritic_languages() {
 		return self::get_language_plugin_list( __DIR__ . '/diacritics/' );

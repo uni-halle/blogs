@@ -4,12 +4,16 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd7a0b51ebf9c8d2bc6e5ada218ba33af
+class ComposerStaticInitbbbad3ac64c4c35c793cfa79d06a3765
 {
     public static $prefixLengthsPsr4 = array (
         'M' => 
         array (
             'Masterminds\\' => 12,
+        ),
+        'D' => 
+        array (
+            'Dice\\' => 5,
         ),
     );
 
@@ -18,9 +22,14 @@ class ComposerStaticInitd7a0b51ebf9c8d2bc6e5ada218ba33af
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
         ),
+        'Dice\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/level-2/dice',
+        ),
     );
 
     public static $classMap = array (
+        'Dice\\Dice' => __DIR__ . '/..' . '/level-2/dice/Dice.php',
         'Masterminds\\HTML5' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5.php',
         'Masterminds\\HTML5\\Elements' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Elements.php',
         'Masterminds\\HTML5\\Entities' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Entities.php',
@@ -78,6 +87,7 @@ class ComposerStaticInitd7a0b51ebf9c8d2bc6e5ada218ba33af
         'PHP_Typography\\Fixes\\Token_Fixes\\Wrap_Hard_Hyphens_Fix' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/token-fixes/class-wrap-hard-hyphens-fix.php',
         'PHP_Typography\\Fixes\\Token_Fixes\\Wrap_URLs_Fix' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/token-fixes/class-wrap-urls-fix.php',
         'PHP_Typography\\Hyphenator' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/class-hyphenator.php',
+        'PHP_Typography\\Hyphenator\\Cache' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/hyphenator/class-cache.php',
         'PHP_Typography\\Hyphenator\\Trie_Node' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/hyphenator/class-trie-node.php',
         'PHP_Typography\\Hyphenator_Cache' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/class-hyphenator-cache.php',
         'PHP_Typography\\PHP_Typography' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/class-php-typography.php',
@@ -94,29 +104,40 @@ class ComposerStaticInitd7a0b51ebf9c8d2bc6e5ada218ba33af
         'PHP_Typography\\Text_Parser\\Token' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/text-parser/class-token.php',
         'PHP_Typography\\U' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/class-u.php',
         'WP_Typography' => __DIR__ . '/../..' . '/includes/class-wp-typography.php',
-        'WP_Typography\\Settings\\Abstract_Locale_Settings' => __DIR__ . '/../..' . '/includes/settings/class-abstract-locale-settings.php',
-        'WP_Typography\\Settings\\Basic_Locale_Settings' => __DIR__ . '/../..' . '/includes/settings/class-basic-locale-settings.php',
-        'WP_Typography\\Settings\\Locale_Settings' => __DIR__ . '/../..' . '/includes/settings/class-locale-settings.php',
-        'WP_Typography\\Settings\\Multilingual' => __DIR__ . '/../..' . '/includes/settings/class-multilingual.php',
-        'WP_Typography\\UI\\Checkbox_Input' => __DIR__ . '/../..' . '/includes/ui/class-checkbox-input.php',
-        'WP_Typography\\UI\\Control' => __DIR__ . '/../..' . '/includes/ui/class-control.php',
-        'WP_Typography\\UI\\Hidden_Input' => __DIR__ . '/../..' . '/includes/ui/class-hidden-input.php',
-        'WP_Typography\\UI\\Input' => __DIR__ . '/../..' . '/includes/ui/class-input.php',
-        'WP_Typography\\UI\\Number_Input' => __DIR__ . '/../..' . '/includes/ui/class-number-input.php',
-        'WP_Typography\\UI\\Select' => __DIR__ . '/../..' . '/includes/ui/class-select.php',
-        'WP_Typography\\UI\\Submit_Input' => __DIR__ . '/../..' . '/includes/ui/class-submit-input.php',
-        'WP_Typography\\UI\\Textarea' => __DIR__ . '/../..' . '/includes/ui/class-textarea.php',
-        'WP_Typography_Admin' => __DIR__ . '/../..' . '/includes/class-wp-typography-admin.php',
+        'WP_Typography\\Components\\Admin_Interface' => __DIR__ . '/../..' . '/includes/wp-typography/components/class-admin-interface.php',
+        'WP_Typography\\Components\\Common' => __DIR__ . '/../..' . '/includes/wp-typography/components/class-common.php',
+        'WP_Typography\\Components\\Multilingual_Support' => __DIR__ . '/../..' . '/includes/wp-typography/components/class-multilingual-support.php',
+        'WP_Typography\\Components\\Plugin_Component' => __DIR__ . '/../..' . '/includes/wp-typography/components/class-plugin-component.php',
+        'WP_Typography\\Components\\Public_Interface' => __DIR__ . '/../..' . '/includes/wp-typography/components/class-public-interface.php',
+        'WP_Typography\\Components\\Setup' => __DIR__ . '/../..' . '/includes/wp-typography/components/class-setup.php',
+        'WP_Typography\\Data_Storage\\Abstract_Cache' => __DIR__ . '/../..' . '/includes/wp-typography/data-storage/class-abstract-cache.php',
+        'WP_Typography\\Data_Storage\\Cache' => __DIR__ . '/../..' . '/includes/wp-typography/data-storage/class-cache.php',
+        'WP_Typography\\Data_Storage\\Options' => __DIR__ . '/../..' . '/includes/wp-typography/data-storage/class-options.php',
+        'WP_Typography\\Data_Storage\\Transients' => __DIR__ . '/../..' . '/includes/wp-typography/data-storage/class-transients.php',
+        'WP_Typography\\Settings\\Abstract_Locale_Settings' => __DIR__ . '/../..' . '/includes/wp-typography/settings/class-abstract-locale-settings.php',
+        'WP_Typography\\Settings\\Basic_Locale_Settings' => __DIR__ . '/../..' . '/includes/wp-typography/settings/class-basic-locale-settings.php',
+        'WP_Typography\\Settings\\Locale_Settings' => __DIR__ . '/../..' . '/includes/wp-typography/settings/class-locale-settings.php',
+        'WP_Typography\\Settings\\Plugin_Configuration' => __DIR__ . '/../..' . '/includes/wp-typography/settings/class-plugin-configuration.php',
+        'WP_Typography\\UI\\Checkbox_Input' => __DIR__ . '/../..' . '/includes/wp-typography/ui/class-checkbox-input.php',
+        'WP_Typography\\UI\\Control' => __DIR__ . '/../..' . '/includes/wp-typography/ui/class-control.php',
+        'WP_Typography\\UI\\Hidden_Input' => __DIR__ . '/../..' . '/includes/wp-typography/ui/class-hidden-input.php',
+        'WP_Typography\\UI\\Input' => __DIR__ . '/../..' . '/includes/wp-typography/ui/class-input.php',
+        'WP_Typography\\UI\\Number_Input' => __DIR__ . '/../..' . '/includes/wp-typography/ui/class-number-input.php',
+        'WP_Typography\\UI\\Sections' => __DIR__ . '/../..' . '/includes/wp-typography/ui/class-sections.php',
+        'WP_Typography\\UI\\Select' => __DIR__ . '/../..' . '/includes/wp-typography/ui/class-select.php',
+        'WP_Typography\\UI\\Submit_Input' => __DIR__ . '/../..' . '/includes/wp-typography/ui/class-submit-input.php',
+        'WP_Typography\\UI\\Tabs' => __DIR__ . '/../..' . '/includes/wp-typography/ui/class-tabs.php',
+        'WP_Typography\\UI\\Textarea' => __DIR__ . '/../..' . '/includes/wp-typography/ui/class-textarea.php',
+        'WP_Typography_Factory' => __DIR__ . '/../..' . '/includes/class-wp-typography-factory.php',
         'WP_Typography_Requirements' => __DIR__ . '/../..' . '/includes/class-wp-typography-requirements.php',
-        'WP_Typography_Setup' => __DIR__ . '/../..' . '/includes/class-wp-typography-setup.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd7a0b51ebf9c8d2bc6e5ada218ba33af::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd7a0b51ebf9c8d2bc6e5ada218ba33af::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitd7a0b51ebf9c8d2bc6e5ada218ba33af::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitbbbad3ac64c4c35c793cfa79d06a3765::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitbbbad3ac64c4c35c793cfa79d06a3765::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitbbbad3ac64c4c35c793cfa79d06a3765::$classMap;
 
         }, null, ClassLoader::class);
     }
