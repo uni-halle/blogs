@@ -14,10 +14,10 @@ class URE_Protect_Admin {
     private $lib = null;
     private $user_to_check = null;  // cached list of user IDs, who has Administrator role     	 
     
-    public function __construct($lib) {
+    public function __construct() {
         global $pagenow;
         
-        $this->lib = $lib;
+        $this->lib = URE_Lib::get_instance();
         $this->user_to_check = array();
         
         // Exclude administrator role from edit list.
@@ -158,20 +158,20 @@ class URE_Protect_Admin {
      * @param  type $user_query
      */
     public function exclude_administrators($user_query) {
-
-        global $wpdb, $current_user;
+        global $wpdb;
         
         if (!$this->is_protection_applicable()) { // block the user edit stuff only
             return;
         }
 
         // get user_id of users with 'Administrator' role  
+        $current_user_id = get_current_user_id();
         $tableName = $this->lib->get_usermeta_table_name();
         $meta_key = $wpdb->prefix . 'capabilities';
         $admin_role_key = '%"administrator"%';
         $query = "SELECT user_id
               FROM $tableName
-              WHERE user_id!={$current_user->ID} AND meta_key='{$meta_key}' AND meta_value like '{$admin_role_key}'";
+              WHERE user_id!={$current_user_id} AND meta_key='{$meta_key}' AND meta_value like '{$admin_role_key}'";
         $ids_arr = $wpdb->get_col($query);
         if (is_array($ids_arr) && count($ids_arr) > 0) {
             $ids = implode(',', $ids_arr);
@@ -181,12 +181,41 @@ class URE_Protect_Admin {
     // end of exclude_administrators()
 
     
+    
+    private function extract_view_quantity($text) {
+        $match = array();
+        $result = preg_match('#\((.*?)\)#', $text, $match);
+        if ($result) {
+            $quantity = $match[1];
+        } else {
+            $quantity = 0;
+        }
+        
+        return $quantity;
+    }
+    // end of extract_view_quantity()
+    
+    
     /*
      * Exclude view of users with Administrator role
      * 
      */
     public function exclude_admins_view($views) {
 
+        if (!isset($views['administrator'])) {
+            return $views;
+        }
+        
+        if (isset($views['all'])) {        
+            // Decrease quant of all users to the quant of hidden admins
+            $admins_orig = $this->extract_view_quantity($views['administrator']);
+            $admins_int = str_replace(',', '', $admins_orig);
+            $all_orig = $this->extract_view_quantity($views['all']);
+            $all_orig_int = str_replace(',', '', $all_orig);
+            $all_new = $all_orig_int - $admins_int;
+            $views['all'] = str_replace($all_orig, $all_new, $views['all']);
+        }
+        
         unset($views['administrator']);
 
         return $views;
