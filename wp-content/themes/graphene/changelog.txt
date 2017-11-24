@@ -4,9 +4,31 @@ https://www.graphene-theme.com/
 
 CHANGELOG
 
-Version 2.0.5
-	* [TODO] Implement img tag for header image on mobile devices so that there's no need to specify the header height, which can vary greatly
-	* [TODO] Add option for slider to only display posts with featured image
+Version 2.1.2
+	* Fixed: Inconsistent header height with varying screen sizes
+	* Fixed: Current commenter's name not automatically filled in comment form
+	* Fixed: Incorrect $content_width being set if using customised column width
+	* Fixed: Homepage pane image sizing
+
+Version 2.1.1
+	* Fixed: Header image does not appear when using a custom header image
+	* Fixed: Incorrect positioning of the header image link 
+	* Updated: All language files now include updated strings
+
+Version 2.1
+	* Added: Option to customize slider height on mobile devices
+	* Added: Slider image link to post
+	* Added: Second level for footer menu
+	* Added: Home link in default menu
+	* Added: Option for slider to only display posts with featured image
+	* Added: graphene_defaults filter hook
+	* Fixed: Non-responsive header image on mobile devices
+	* Fixed: New header images aspect ratio do not match default header aspect ratio
+	* Fixed: Slider post content was being displayed instead of slider post title when using full content mode
+	* Fixed: Incorrect copyright text setting name
+	* Fixed: Incorrect slider image width when using one-column layout or full-width slider
+	* Fixed: Compatibility issue with Booking Calendar plugin
+	* Fixed: Slider exceed container when using full-width slider in mobile view
 
 Version 2.0.4
 	* Fixed: Header title and menu toggle appears missing when using light coloured header bars

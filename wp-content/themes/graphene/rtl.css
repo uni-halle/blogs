@@ -321,6 +321,18 @@ h3#reply-title .fa {
 .footer-menu-wrap {
 	text-align: left;
 }
+.footer-menu-wrap .menu > li {
+	padding-left: 0;
+	margin-left: 0;
+	padding-right: 10px;
+	margin-right: 10px;
+}
+.footer-menu-wrap .menu > li.menu-item-has-children {
+    text-align: right;
+}
+.footer-menu-wrap .sub-menu {
+    text-align: right;
+}
 #back-to-top {
 	right: auto;
 	left: 20px;

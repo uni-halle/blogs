@@ -2,7 +2,7 @@
 Theme Name: 	Graphene
 Theme URI: 		https://www.graphene-theme.com/graphene-theme/
 Description: 	We believe that every theme should facilitate creative writing, not hinder it. We also believe that each site should have the opportunity to be unique. Since the beginning, we have listened to countless suggestions and requests for features that really matter. Here's a theme that's user-friendly, feature-packed, and endlessly customisable, for both beginners and advanced creators. Feel at home with more than 40 languages and backed with active community support, where questions, ideas and suggestions are always welcomed.
-Version: 		2.0.4
+Version: 		2.1.2
 Author: 		Graphene Themes Solutions
 Author URI: 	https://www.graphene-theme.com/
 Tags: 			one-column, two-columns, three-columns, right-sidebar, left-sidebar, custom-colors, custom-header, custom-background, custom-menu, editor-style, theme-options, threaded-comments, sticky-post, translation-ready, rtl-language-support, post-formats, featured-image-header, featured-images, full-width-template, microformats
@@ -221,9 +221,18 @@ abbr[title] {
 }
 #header {
 	text-align: center;
-    height: 250px;
+    max-height: 250px;
 	position: relative;
 	overflow: hidden;
+}
+#header img {
+    width: 100%;
+    height: auto;
+}
+#header {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: none;
 }
 #header .sidebar-wrap {
     position: static
@@ -252,11 +261,6 @@ abbr[title] {
     top: 75%;
     position: absolute;
     color: #ffffff;
-}
-#header {
-    background-size: cover;
-    background-position: center center;
-    background-repeat: none;
 }
 .navbar-header {
     float: none;
@@ -288,6 +292,8 @@ abbr[title] {
 #header_img_link {
 	display: block;
 	position: absolute;
+    top: 0;
+    left: 0;
 	text-decoration: none;
 	width: 100%;
     height: 100%;
@@ -486,6 +492,15 @@ abbr[title] {
 }
 .full-width-slider.bottom-slider .carousel-indicators {
     display: none;
+}
+.carousel .permalink-overlay {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
 }
 .carousel-control {
     border-radius: 50px;
@@ -761,10 +776,14 @@ now override the 3.3 new styles for modern browsers & apply opacity
     color: #6b3589;
     text-shadow: none;
 }
+.post .date.with-year .day {
+    padding: 3px 0;
+}
 .post .date .year {
-	font: bold 10px tahoma;
+    padding-bottom: 3px;
+    font-size: 10px;
+    line-height: 10px;
 	color: #000;
-	margin-top: 3px;
 }
 .post-title,
 .post-title a {
@@ -1773,12 +1792,27 @@ h3.author-post-list .fa {
 	font-size: 14px;
     text-align: right;
 }
-.footer-menu-wrap li {
+.footer-menu-wrap .menu > li {
 	display: inline-block;
-	zoom: 1;
 	padding-left: 10px;
 	margin-left: 10px;
     vertical-align: top;
+}
+.footer-menu-wrap .menu > li.menu-item-has-children {
+    text-align: left;
+}
+.footer-menu-wrap .sub-menu {
+    list-style: none;
+    text-align: left;
+    font-size: 12px;
+    font-weight: normal;
+    text-transform: none;
+}
+.footer-menu-wrap .sub-menu a {
+    opacity: 0.7;
+}
+.footer-menu-wrap .sub-menu a:hover {
+    opacity: 1;
 }
 .printonly {
     display: none;

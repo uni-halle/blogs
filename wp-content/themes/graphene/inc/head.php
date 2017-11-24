@@ -160,16 +160,14 @@ function graphene_get_custom_style(){
 	if ( $font_style ) { $style .= '.entry-content, .sidebar, .comment-entry { '.$font_style.' }'; }
 	
 	/* Slider */
-	if ( $graphene_settings['slider_height'] ) {
+	if ( $graphene_settings['slider_height'] || $graphene_settings['slider_height_mobile'] ) {
 		$style .= '.carousel, .carousel .item{height:'.$graphene_settings['slider_height'].'px;}';
-	}
-	if ( $graphene_settings['slider_full_width'] ) {
-		$style .= '#content .featured_slider, .container_16 #content .slider_post {width:' . graphene_grid_width( '', 16 ) . 'px;}';
+		$style .= '@media (max-width: 767px) {.carousel, .carousel .item{height:'.$graphene_settings['slider_height_mobile'].'px;}}';
 	}
 	
 	/* Header image height */
-	if ( $graphene_settings['header_img_height'] != $graphene_defaults['header_img_height'] ){
-		$style .= '#header{height:'. HEADER_IMAGE_HEIGHT .'px;}';
+	if ( $graphene_settings['header_img_height'] && $graphene_settings['header_img_height'] != $graphene_defaults['header_img_height'] ){
+		$style .= '#header{max-height:'. HEADER_IMAGE_HEIGHT .'px;}';
 	}
 		
 	// Link style

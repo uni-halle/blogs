@@ -88,7 +88,7 @@ function graphene_walker_nav_menu_start_el( $item_output, $item, $depth, $args )
 	}
 	
 	/* Chevron for dropdown menu */
-	if ( in_array( 'menu-item-has-children', $classes ) && $max_depth > 1 ) {
+	if ( in_array( 'menu-item-has-children', $classes ) && $max_depth > 1 && $args->theme_location != 'footer-menu' ) {
 		if ( $depth == 0 ) $item_output = preg_replace( '/(<a\s[^>]*[^>]*>)(.*)(<\/a>)/siU', '$1$2 <i class="fa fa-chevron-down"></i>$3', $item_output );
 		else $item_output = preg_replace( '/(<a\s[^>]*[^>]*>)(.*)(<\/a>)/siU', '$1$2 <i class="fa fa-chevron-right"></i>$3', $item_output );
 	}
@@ -207,39 +207,38 @@ graphene_Menu_Item_Custom_Fields::init();
  * Custom default menu based on wp_page_menu
  */
 function graphene_page_menu( $args = array() ) {
-	$defaults = array('sort_column' => 'menu_order, post_title', 'menu_class' => 'menu', 'echo' => true, 'link_before' => '', 'link_after' => '');
-	$args = wp_parse_args( $args, $defaults );
+	$defaults = array(
+		'sort_column' 	=> 'menu_order, post_title',
+		'menu_class' 	=> 'menu',
+		'echo' 			=> true,
+		'link_before' 	=> '',
+		'link_after' 	=> ''
+	);
+	$args = apply_filters( 'wp_page_menu_args', wp_parse_args( $args, $defaults ) );
 
-	$args = apply_filters( 'wp_page_menu_args', $args );
 	$menu = '';
 	$list_args = $args;
 
-	// Show Home in the menu
-	if ( ! empty($args['show_home']) ) {
-		if ( true === $args['show_home'] || '1' === $args['show_home'] || 1 === $args['show_home'] )
-			$text = __( 'Home', 'graphene' );
-		else
-			$text = $args['show_home'];
-		$class = '';
-		if ( is_front_page() && !is_paged() )
-			$class = 'class="current_page_item"';
-		$menu .= '<li ' . $class . '><a href="' . esc_url( home_url( '/' ) ) . '">' . $args['link_before'] . $text . $args['link_after'] . '</a></li>';
-		// If the front page is a page, add it to the exclude list
-		if (get_option('show_on_front') == 'page') {
-			if ( !empty( $list_args['exclude'] ) ) {
-				$list_args['exclude'] .= ',';
-			} else {
-				$list_args['exclude'] = '';
-			}
-			$list_args['exclude'] .= get_option('page_on_front');
-		}
+	/* Add Home link to the menu */
+	$text = __( 'Home', 'graphene' );
+	$class = '';
+	
+	if ( is_front_page() && !is_paged() ) $class = 'class="current_page_item"';
+	$menu .= '<li ' . $class . '><a href="' . esc_url( home_url( '/' ) ) . '">' . $args['link_before'] . $text . $args['link_after'] . '</a></li>';
+	
+	/* If the front page is a page, add it to the exclude list */
+	if ( get_option( 'show_on_front' ) == 'page' ) {
+		if ( ! empty( $list_args['exclude'] ) ) $list_args['exclude'] .= ',';
+		else $list_args['exclude'] = '';
+
+		$list_args['exclude'] .= get_option( 'page_on_front' );
 	}
 
 	$list_args['echo'] = false;
 	$list_args['title_li'] = '';
-	$menu .= str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages($list_args) );
+	$menu .= str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages( $list_args ) );
 
-	if ( $menu ) $menu = '<ul class="' . esc_attr($args['menu_class']) . '">' . $menu . '</ul>';
+	if ( $menu ) $menu = '<ul class="' . esc_attr( $args['menu_class'] ) . '">' . $menu . '</ul>';
 
 	$menu = apply_filters( 'wp_page_menu', $menu, $args );
 	if ( $args['echo'] ) echo $menu;

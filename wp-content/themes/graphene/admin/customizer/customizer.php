@@ -139,7 +139,8 @@ function graphene_get_customizer_transport_settings(){
 	$settings = array(
 		'header_img_height',
 		'slider_height',
-		'copyright_text',
+		'slider_height_mobile',
+		'copy_text',
 
 		'container_width',
 		'column_width',
@@ -237,7 +238,7 @@ function graphene_get_customizer_validator_settings(){
 	$validator_settings['front_page_blog_columns']	= 'absint';
 	
 	/* Footer options */
-	$validator_settings['copyright_text'] 	= 'wp_kses_post';
+	$validator_settings['copy_text'] 	= 'wp_kses_post';
 	
 	/* Excerpt options */
 	$validator_settings['excerpt_html_tags'] = 'trim';

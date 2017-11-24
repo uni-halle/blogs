@@ -56,6 +56,24 @@ jQuery(document).ready(function ($) {
 	/* Show the panel description by default */
 	$('#sub-accordion-panel-graphene-colours .customize-panel-description').show();
 
+	/* Hide slider options until they're needed */
+	grapheneHideSliderControls();
+	$('#customize-control-graphene_settings-slider_type select').on('change', grapheneHideSliderControls );
+
+	function grapheneHideSliderControls(){
+		$('#customize-control-graphene_settings-slider_specific_posts, \
+		#customize-control-graphene_settings-slider_specific_categories, \
+		#customize-control-graphene_settings-slider_exclude_categories, \
+		#customize-control-graphene_settings-slider_random_category_posts').hide();
+
+		sliderPosts = $('#customize-control-graphene_settings-slider_type select').val();
+		if ( sliderPosts == 'posts_pages' ) $('#customize-control-graphene_settings-slider_specific_posts').show();
+		if ( sliderPosts == 'categories' ) 
+			$('#customize-control-graphene_settings-slider_specific_categories, \
+				#customize-control-graphene_settings-slider_exclude_categories, \
+				#customize-control-graphene_settings-slider_random_category_posts').show();
+	}
+
 
 	/**
 	 * jQuery UI Sliders for columns width

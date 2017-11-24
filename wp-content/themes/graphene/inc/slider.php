@@ -62,12 +62,12 @@ function graphene_slider(){
 		                <?php endif; ?>
 
 		                <?php if ( $graphene_settings['slider_display_style'] == 'full-post' ) : ?>
-		                	<h3 class="slider-post-title"><?php the_content(); ?></h3>
+		                	<h2 class="slider_post_title"><a href="<?php echo $slider_link_url; ?>"><?php the_title(); ?></a></h2>
 		                	<?php the_content(); ?>
 	                	<?php else : ?>
 						    <div class="carousel-caption">
 						    	<h2 class="slider_post_title"><a href="<?php echo $slider_link_url; ?>"><?php the_title(); ?></a></h2>
-					    		<?php the_excerpt(); ?>
+					    		<div class="slider_post_excerpt"><?php the_excerpt(); ?></div>
 
 					    		<?php do_action( 'graphene_slider_postentry' ); ?>
 						    </div>
@@ -215,21 +215,22 @@ function graphene_get_slider_posts(){
 	$slider_post_type = apply_filters( 'graphene_slider_post_type', $slider_post_type );
 		
 	/* Get the number of posts to show */
-	$postcount = ( $graphene_settings['slider_postcount'] ) ? $graphene_settings['slider_postcount'] : 5 ;
+	$postcount = $graphene_settings['slider_postcount'];
 		
 	$args = array( 
-				'posts_per_page'	=> $postcount,
-				'orderby' 			=> 'menu_order date',
-				'order' 			=> 'DESC',
-				'suppress_filters' 	=> 0,
-				'post_type' 		=> $slider_post_type,
-				'ignore_sticky_posts' => 1, // otherwise the sticky posts show up undesired
-				 );		
+		'posts_per_page'	=> $postcount,
+		'orderby' 			=> 'menu_order date',
+		'order' 			=> 'DESC',
+		'suppress_filters' 	=> 0,
+		'post_type' 		=> $slider_post_type,
+		'ignore_sticky_posts' => 1, // otherwise the sticky posts show up undesired
+	);		
 	
+	/* Get the slider content to display */
 	if ( $slidertype && $slidertype == 'random' ) {
 		$args = array_merge( $args, array( 'orderby' => 'rand' ) );
 	}		
-	if ( $slidertype && $slidertype == 'posts_pages' ) {                    
+	if ( $slidertype && $slidertype == 'posts_pages' && $graphene_settings['slider_specific_posts'] ) {                    
 		$post_ids = $graphene_settings['slider_specific_posts'];
 		$post_ids = preg_split("/[\s]*[,][\s]*/", $post_ids, -1, PREG_SPLIT_NO_EMPTY); // post_ids are comma separated, the query needs a array
 		$post_ids = graphene_object_id( $post_ids );
@@ -240,9 +241,19 @@ function graphene_get_slider_posts(){
 		$cats = graphene_object_id( $cats, 'category' );
 		$args = array_merge( $args, array( 'category__in' => $cats ) );
 		
-		if ( $graphene_settings['slider_random_category_posts'] )
-			$args = array_merge( $args, array( 'orderby' => 'rand' ) );
+		if ( $graphene_settings['slider_random_category_posts'] ) $args = array_merge( $args, array( 'orderby' => 'rand' ) );
 	}
+
+	/* Get only posts with featured image */
+	if ( $graphene_settings['slider_with_image_only'] ) {
+		$args['meta_query'][] = array(
+			'key'		=> '_thumbnail_id',
+			'compare'	=> 'EXISTS'
+		);
+	}
+
+	if ( isset( $args['meta_query'] ) && count( $args['meta_query'] ) > 1 ) $args['meta_query']['relation'] = 'AND';
+
 	
 	/* Get the posts */
 	$sliderposts = new WP_Query( apply_filters( 'graphene_slider_args', $args ) );

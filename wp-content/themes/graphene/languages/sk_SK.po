@@ -2,356 +2,35 @@
 # This file is distributed under the same license as the Graphene package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2012-10-16 19:14+0100\n"
+"Project-Id-Version: Graphene\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-05 07:04+0800\n"
+"PO-Revision-Date: 2017-11-05 07:11+0800\n"
+"Last-Translator: Martin Kucharik <neuro.kucharik@gmail.com>\n"
+"Language-Team: \n"
+"Language: sk_SK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Poedit 1.5.4\n"
-"Project-Id-Version: Graphene\n"
-"POT-Creation-Date: \n"
-"Last-Translator: Martin Kucharik <neuro.kucharik@gmail.com>\n"
-"Language-Team: \n"
-
-#: comments.php:94
-msgid ""
-"You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags "
-"and attributes: %s"
-msgstr ""
-"Môžte používať nasledujúce <abbr title=\"HyperText Markup Language\">HTML</"
-"abbr> tagy a vlastnosti: %s"
-
-#: comments.php:99
-msgid "Your email address will not be published."
-msgstr "Vaša emailová adresa nebude uverejnená."
-
-#: comments.php:102 functions.php:927
-msgid "Submit Comment"
-msgstr "Odoslať komentár"
-
-#: footer.php:47
-msgid ""
-"Except where otherwise noted, content on this site is licensed under a <a "
-"href=\"http://creativecommons.org/licenses/by-nc-nd/3.0/\">Creative Commons "
-"Licence</a>."
-msgstr ""
-"Ak nie je uvedené inak, obsah na tejto stránke spadá pod <a href=\"http://"
-"creativecommons.org/licenses/by-nc-nd/3.0/\">Creative Commons Licence</a>."
-
-#: footer.php:59
-msgid "Valid XHTML 1.0 Strict"
-msgstr "Stránka je validná XHTML 1.0 Strict"
-
-#: footer.php:60
-msgid "Valid CSS"
-msgstr "Validné CSS"
-
-#: footer.php:60
-msgid "Valid CSS Level 2.1"
-msgstr "Validné CSS Level 2.1"
-
-#: footer.php:82
-msgid "%1$s uses %2$s theme by %3$s."
-msgstr "%1$s používa %2$s tému."
-
-#: functions.php:178
-msgid "Header Menu"
-msgstr "Menu v hlavičke"
-
-#: functions.php:179
-msgid "Secondary Menu"
-msgstr "Druhotné menu"
-
-#: functions.php:222
-msgid "Header image by Syahir Hakim"
-msgstr "Titulný obrázok vytvoril Syahir Hakim"
-
-#: functions.php:228
-msgid ""
-"This is the default Graphene theme header image, cropped from image by "
-"Quantin Houyoux at sxc.hu"
-msgstr ""
-
-#: functions.php:234 functions.php:240 functions.php:246 functions.php:252
-#: functions.php:258
-msgid "Header image cropped from image by Ilco at sxc.hu"
-msgstr ""
-
-#: functions.php:470
-msgid "Home"
-msgstr "Domov"
-
-#: functions.php:508
-msgid " says:"
-msgstr "hovorí:"
-
-#: functions.php:514
-msgid "%1$s at %2$s"
-msgstr "%1$s, %2$s"
-
-#: functions.php:516
-msgid "Edit comment"
-msgstr "Upraviť komentár"
-
-#: functions.php:520
-msgid "Reply"
-msgstr "Odpoveď"
-
-#: functions.php:531
-msgid "Your comment is awaiting moderation."
-msgstr "Váš komentár čaká na schválenie."
-
-#: functions.php:624
-msgid "Sidebar Widget Area"
-msgstr "Bočná plocha na Wigdety"
-
-#: functions.php:626
-msgid ""
-"The first sidebar widget area (available in two and three column layouts)."
-msgstr ""
-"Prvá bočná plocha widgetov (dostupná v dvoj-, alebo trojstĺpcovom rozložení)"
-
-#: functions.php:634
-msgid "Sidebar Two Widget Area"
-msgstr "Druhá bočná plocha widgetov"
-
-#: functions.php:636
-msgid ""
-"The second sidebar widget area (only available in three column layouts)."
-msgstr "Druhá bočná plocha widgetov (dostupná iba ako trojstĺpcová)"
-
-#: functions.php:644
-msgid "Footer Widget Area"
-msgstr "Widgety v pätičke"
-
-#: functions.php:646
-msgid ""
-"The footer widget area. Leave empty to disable. Set the number of columns to "
-"display at the theme's Display Options page."
-msgstr ""
-"Priestor pre widgety v päte stránky. Nechajte prázdny, ak ho nechcete "
-"používať. Nastavte počet stĺpcov v nastaveniach zobrazenia témy."
-
-#: functions.php:662
-msgid "Front Page Sidebar Widget Area"
-msgstr "Bočná lišta pre widgety úvodnej stránky"
-
-#: functions.php:664
-msgid ""
-"The first sidebar widget area that will only be displayed on the front page."
-msgstr "Prvá bočná lišta pre widgery, ktorá sa zobrazí len na úvodnej stránke."
-
-#: functions.php:672
-msgid "Front Page Sidebar Two Widget Area"
-msgstr "Druhá bočná lišta (sidebar) pre widgety na úvodnej stránke"
-
-#: functions.php:674
-msgid ""
-"The second sidebar widget area that will only be displayed on the front page."
-msgstr ""
-"Druhá bočná lišta pre widgety (sidebar) sa zobrazí len na úvodnej stránke."
-
-#: functions.php:684
-msgid "Front Page Footer Widget Area"
-msgstr "Widgety v päte úvodnej stránky"
-
-#: functions.php:686
-msgid ""
-"The footer widget area that will only be displayed on the front page. Leave "
-"empty to disable. Set the number of columns to display at the theme's "
-"Display Options page."
-msgstr ""
-"Priestor pre widgety v päte stránky sa zobrazí len na úvodnej stránke. "
-"Nechajte prázdny ak ho chcete vypnúť. Nastavte počet stĺpcov na zobrazenie v "
-"nastaveniach zobrazenia témy"
-
-#: functions.php:697
-msgid "Header Widget Area"
-msgstr "Priestor pre widgety v hlavičke"
-
-#: functions.php:699
-msgid "The header widget area."
-msgstr "Priestor pre widgety v hlavičke"
-
-#: functions.php:726
-msgid "Display the latest Twitter status updates."
-msgstr "Zobraziť posledné statusy z Twittera."
-
-#: functions.php:751
-msgid "Follow me on Twitter"
-msgstr "Čítajte nás Twitter"
-
-#: functions.php:788
-msgid "Latest tweets"
-msgstr "Najnovšie tweety"
-
-#: functions.php:793
-msgid "Title:"
-msgstr "Nadpis:"
-
-#: functions.php:797
-msgid "Twitter Username:"
-msgstr "Twitter login:"
-
-#: functions.php:801
-msgid "Number of tweets to display:"
-msgstr "Počet tweetov na zobrazenie:"
-
-#: functions.php:835
-msgid "Graphene Options"
-msgstr "Možnosti Graphene"
-
-#: functions.php:839
-msgid "Graphene FAQs"
-msgstr "Graphene FAQ"
-
-#: functions.php:908
-msgid "Name:"
-msgstr "Meno:"
-
-#: functions.php:909
-msgid "Email:"
-msgstr "Email:"
-
-#: functions.php:910
-msgid "Website:"
-msgstr "Web:"
-
-#: functions.php:920
-msgid "Message:"
-msgstr "Správa:"
-
-#: functions.php:948
-msgid "Continue reading &raquo;"
-msgstr "Chcem vedieť viac &raquo;"
-
-#: functions.php:995
-msgid "Older posts &laquo;"
-msgstr "Staršie &laquo;"
-
-#: functions.php:996
-msgid "&raquo; Newer posts"
-msgstr "&raquo; Novšie"
-
-#: functions.php:1169
-msgid "View full post"
-msgstr "Zobraziť celý článok."
-
-#: functions.php:1304
-msgid ""
-"<strong>ERROR: You must supply the post ID to get the image from as an "
-"argument when calling the graphene_get_post_image() function.</strong>"
-msgstr ""
-"<strong>CHYBA: Musíte vložiť ID príspevku na získanie obrázku vo funkcii "
-"graphene_get_post_image() function.</strong>"
-
-#: header.php:65
-msgid "Subscribe to RSS feed"
-msgstr "Odoberať RSS"
-
-#: header.php:108 header.php:117
-msgid "Go back to the front page"
-msgstr "Späť na úvodnú stránku"
-
-#: loop-author.php:23
-msgid "Author's details"
-msgstr "O autorovi"
-
-#: loop-author.php:25
-msgid "<strong>Name:</strong> %1$s %2$s"
-msgstr "<strong>Meno:</strong> %1$s %2$s"
-
-#: loop-author.php:26
-msgid "<strong>Date registered:</strong> %1$s"
-msgstr "<strong>Dátum registrácie:</strong> %1$s"
-
-#: loop-author.php:35
-msgid "Biography"
-msgstr "Životopis"
-
-#: loop-author.php:53
-msgid "Latest posts"
-msgstr "Posledné príspevky"
-
-#: loop-author.php:56 loop-author.php:90 search-404.php:24
-msgid "Permalink Link to %s"
-msgstr "Permalink odkaz na %s"
-
-#: loop-author.php:56 loop-author.php:90 loop-children.php:69 loop.php:40
-msgid "(No title)"
-msgstr "(Žiadny nadpis)"
-
-#: loop-author.php:85
-msgid "Most commented posts"
-msgstr "Najviac komentované príspevky"
-
-#: loop-author.php:90 loop.php:127
-msgid "Leave comment"
-msgstr "Pridať komentár"
-
-#: loop-children.php:69 loop-children.php:77 loop.php:40
-msgid "Permalink to %s"
-msgstr "Trvalý odkaz na %s"
-
-#: loop-children.php:77
-msgid "View page &raquo;"
-msgstr "Zobraziť stránku &raquo;"
-
-#: loop.php:58
-msgid "Edit post"
-msgstr "Upraviť príspevok"
-
-#: loop.php:76
-msgid "by"
-msgstr "od"
-
-#: loop.php:91
-msgid "Read the rest of this entry &raquo;"
-msgstr "Prečítajte si viac &raquo;"
-
-#: loop.php:105
-msgid "<div class=\"link-pages\"><p><strong>Pages:</strong> "
-msgstr "<div class=\"link-pages\"><p><strong>Stránky:</strong> "
-
-#: loop.php:115
-msgid "Tags:"
-msgstr "Kľúčové slová:"
-
-#: loop.php:115
-msgid "This post has no tag"
-msgstr "Tento článok nemá žiadne kľúčové slová"
-
-#: loop.php:140
-msgid "About the author"
-msgstr "O autorovi"
-
-#: loop.php:180
-msgid "Not found"
-msgstr "Nenašlo sa"
-
-#: loop.php:185
-msgid ""
-"Sorry, but you are looking for something that isn't here. Wanna try a search?"
-msgstr ""
-"Prepáčte, ale pokúšate sa zobraziť obsah, ktorý tu nie je. Čo tak skúsiť "
-"hľadanie?"
-
-#: loop.php:187
-msgid ""
-"Sorry, but no results were found for that keyword. Wanna try an alternative "
-"keyword search?"
-msgstr "Prepáčte, ale k tomu kľúčovému slovu sa nenašli žiadne výsledky."
-
-#: search-404.php:3
+"X-Generator: Poedit 2.0.4\n"
+
+#: 404.php:23
+#, fuzzy, php-format
+#| msgid "Search results for: <span>%s</span>"
+msgid "Searching for: <span>%s</span>"
+msgstr "Odkazy nájdete pre: <span>%s</span>"
+
+#: 404.php:29 search-404.php:3
 msgid "Error 404 - Page Not Found"
 msgstr "Stránka sa nenašla"
 
-#: search-404.php:5
+#: 404.php:31 search-404.php:5
 msgid ""
 "Sorry, I've looked everywhere but I can't find the page you're looking for."
 msgstr "Hľadali sme všade, no hľadanú stránku sme nenašli :-("
 
-#: search-404.php:6
+#: 404.php:32 search-404.php:6
 msgid ""
 "If you follow the link from another website, I may have removed or renamed "
 "the page some time ago. You may want to try searching for the page:"
@@ -359,70 +38,43 @@ msgstr ""
 "Ak ste sa sem dostali z inej internetovej stránky, asi sa odkaz na stránke "
 "presunul. Skúste hľadať priamo na stránke:"
 
-#: search-404.php:14
-msgid "Suggested results"
-msgstr "Vhodné výsledky"
-
-#: search-404.php:18
-msgid ""
-"I've done a courtesy search for the term %s for you. See if you can find "
-"what you're looking for in the list below:"
+#: 404.php:40
+msgid "Automated search"
 msgstr ""
-"Pri hľadaní sme %s  sme našli nejaké odkazy, možno tu nájdete to, čo ste "
-"hľadali:"
 
-#: search-404.php:35
+#: 404.php:43
+#, php-format
+msgid "Searching for the terms <strong>%s</strong> ..."
+msgstr ""
+
+#: admin/ajax-handler.php:9 admin/ajax-handler.php:33 admin/ajax-handler.php:51
 msgid ""
-"<strong>Sorry, couldn't find anything.</strong> Try searching for "
-"alternative terms using the search form above."
-msgstr "<strong>Bohužiaľ sa nič nenašlo.</strong>Skúste hľadať podobné výrazy."
+"Sorry, but you don't have the necessary permission to modify theme options."
+msgstr ""
 
-#: search.php:11
-msgid "Search results for: <span>%s</span>"
-msgstr "Odkazy nájdete pre: <span>%s</span>"
+#: admin/ajax-handler.php:20
+#, fuzzy
+#| msgid "Settings saved."
+msgid "Options saved."
+msgstr "Nastavenia uložené."
 
-#: searchform.php:3 searchform.php:4
-msgid "Search"
-msgstr "Hľadať"
+#: admin/ajax-handler.php:84
+msgid "Colour preset deleted."
+msgstr ""
 
-#: sidebar-two.php:36 sidebar.php:42
-msgid "Meta"
-msgstr "Meta"
+#: admin/ajax-handler.php:84
+msgid "Colour preset saved."
+msgstr ""
 
-#: sidebar-two.php:41 sidebar.php:47
-msgid "Posts RSS"
-msgstr "RSS kanál"
-
-#: sidebar-two.php:42 sidebar.php:48
-msgid "Comments RSS"
-msgstr "RSS kanál komentárov"
-
-#: sidebar-two.php:44 sidebar.php:50
-msgid "Powered by %s"
-msgstr "Služu poskytuje %s"
-
-#: sidebar-two.php:44 sidebar.php:50
-msgid ""
-"Powered by WordPress, state-of-the-art semantic personal publishing platform."
-msgstr "Službu poskytuje WordPress"
-
-#: sidebar-two.php:49 sidebar.php:35
-msgid "Archives"
-msgstr "Staršie články"
-
-#: tag.php:14
-msgid "Tag Archive: <span>%s</span>"
-msgstr "Archív tagov: <span>%s</span>"
-
-#: admin/custom-fields.php:15
+#: admin/custom-fields.php:14
 msgid "Graphene post-specific options"
 msgstr "Možnosti príspevkov Graphene"
 
-#: admin/custom-fields.php:16
+#: admin/custom-fields.php:15
 msgid "Graphene page-specific options"
 msgstr "Možnosti stránok Graphene"
 
-#: admin/custom-fields.php:82
+#: admin/custom-fields.php:92
 msgid ""
 "These settings will only be applied to this particular post or page you're "
 "editing. They will override the global settings set in the Graphene Options "
@@ -432,374 +84,1086 @@ msgstr ""
 "upravujete. Nahradia tak globálne nastavenia zobrazenia a možností témy "
 "Graphene."
 
-#: admin/custom-fields.php:83
+#: admin/custom-fields.php:93
 msgid "Slider options"
 msgstr "Možnosti posuvníka"
 
-#: admin/custom-fields.php:87 admin/options.php:201
+#: admin/custom-fields.php:97 admin/customizer/options-general.php:144
 msgid "Slider image"
 msgstr "Obrázok posuvníka"
 
-#: admin/custom-fields.php:91 admin/custom-fields.php:117
+#: admin/custom-fields.php:101 admin/custom-fields.php:136
+#: admin/custom-fields.php:150
 msgid "Use global setting"
 msgstr "Použiť globálne nastavenia"
 
-#: admin/custom-fields.php:92 admin/options.php:205
+#: admin/custom-fields.php:102 admin/customizer/options-general.php:146
 msgid "Don't show image"
 msgstr "Nezobrazovať obrázok"
 
-#: admin/custom-fields.php:93 admin/options.php:206
+#: admin/custom-fields.php:103
 msgid "Featured Image"
 msgstr "Featured obrázok"
 
-#: admin/custom-fields.php:94 admin/options.php:207
+#: admin/custom-fields.php:104 admin/customizer/options-general.php:148
 msgid "First image in post"
 msgstr "Prvý obrázok príspevku"
 
-#: admin/custom-fields.php:95 admin/options.php:208
+#: admin/custom-fields.php:105
 msgid "Custom URL"
 msgstr "Užívateľské URL"
 
-#: admin/custom-fields.php:101 admin/options.php:214
+#: admin/custom-fields.php:111
 msgid "Custom slider image URL"
 msgstr "URL na užívateľký obrázok posuvníka"
 
-#: admin/custom-fields.php:105 admin/options.php:218
+#: admin/custom-fields.php:115
 msgid ""
 "Make sure you select Custom URL in the slider image option above to use this "
 "custom url."
 msgstr ""
 "Uistite sa, že ste vybrali užívateľské URL v možnostiach obrázku posuvníka."
 
-#: admin/custom-fields.php:109
+#: admin/custom-fields.php:120
+#, fuzzy
+#| msgid "Custom slider image URL"
+msgid "Custom slider URL"
+msgstr "URL na užívateľký obrázok posuvníka"
+
+#: admin/custom-fields.php:124
+msgid "Use this to override the link that is used in the slider."
+msgstr ""
+
+#: admin/custom-fields.php:128
 msgid "Display options"
 msgstr "Nastavenia zobrazenia"
 
-#: admin/custom-fields.php:113
+#: admin/custom-fields.php:132
 msgid "AddThis Social Sharing button"
 msgstr "Tlačidlo sociálnych sietí AddThis"
 
-#: admin/custom-fields.php:118
+#: admin/custom-fields.php:137
 msgid "Show button"
 msgstr "Zobraziť tlačidlo"
 
-#: admin/custom-fields.php:119
+#: admin/custom-fields.php:138
 msgid "Hide button"
 msgstr "Nezobrazovať tlačidlo"
 
-#: admin/faq.php:12
-msgid "Graphene's Frequently Asked Questions"
-msgstr "Často kladené otázky pre Graphene"
+#: admin/custom-fields.php:146 admin/customizer/options-display.php:99
+msgid "Post date display"
+msgstr "Zobrazenie dátumu príspevku"
 
-#: admin/faq.php:15
-msgid "Where should I go for the theme's support?"
-msgstr "Kde mám hľadať podporu témy"
+#: admin/custom-fields.php:151 admin/customizer/options-display.php:101
+msgid "Hidden"
+msgstr "Skryté"
 
-#: admin/faq.php:16
-msgid ""
-"Please direct all support requests for the theme at the theme's <a href="
-"\"http://forum.khairul-syahir.com/forum/graphene-wordpress-theme\">Support "
-"Forum</a>."
-msgstr ""
-"Adresujte všetky otázky a žiadosti o pomoc ohľadom témy Graphene na <a href="
-"\"http://forum.khairul-syahir.com/forum/graphene-wordpress-theme\">Support "
-"Forum</a>."
+#: admin/custom-fields.php:152
+msgid "As an icon (without the year)"
+msgstr "Ako ikonu (bez roku)"
 
-#: admin/faq.php:19
-msgid "The post's featured image is replacing my header image. Help!"
-msgstr "Featured obrázok nahradzuje obrázok hlavičky. Pomoc!"
+#: admin/custom-fields.php:153
+msgid "As an icon (including the year)"
+msgstr "Ako ikonu (vrátane roku)"
 
-#: admin/faq.php:20
-msgid ""
-"This is actually one of the theme's features, based on the feature in the "
-"default TwentyTen theme. Any featured image that has a size of greater than "
-"or equal to the theme's header image size (900 x 198 pixels) will replace "
-"the header image when the post/page that featured image is assigned to is "
-"being displayed. It enables you to have different header image for different "
-"posts and/or pages."
-msgstr ""
+#: admin/custom-fields.php:154
+msgid "As inline text"
+msgstr "Ako inline text"
 
-#: admin/faq.php:21
-msgid ""
-"If you want to disable this feature, simply tick the <em>Disable Featured "
-"Image replacing header image</em> option in the <a href=\"themes.php?"
-"page=graphene_options&tab=display\">Graphene Options</a> page, under Display "
-"> Header Display Options."
-msgstr ""
-"If you want to disable this feature, simply tick the <em>Disable Featured "
-"Image replacing header image</em> option in the <a href=\"themes.php?"
-"page=graphene_options&tab=display\">Graphene Options</a> page, under Display "
-"> Header Display Options."
+#: admin/custom-fields.php:162
+#, fuzzy
+#| msgid "Favicon options"
+msgid "Navigation options"
+msgstr "Možnosti Favicon"
 
-#: admin/faq.php:24
-msgid "Can I modify Graphene to my heart's content without paying anything?"
-msgstr "Môžem si upraviť Graphene bez nutnosti niečo platiť?"
-
-#: admin/faq.php:25
-msgid ""
-"The Graphene Wordpress theme, along with all the other themes in the "
-"Wordpress.org Official Free Themes Directory, is released under the GNU "
-"General Public License (GPL) Version 2. The full text of that licence is "
-"included with the theme in the <code>licence.txt</code> file in the theme's "
-"folder. Releasing the theme under that licence means, among others, that you "
-"are <em>free to modify the theme in any way for any purpose (including "
-"commercial)</em> without any obligation to the theme's author. However, if "
-"you decide to redistribute the theme, the licence dictates that you must "
-"release the theme under the same licence, GPLv2."
+#: admin/custom-fields.php:166 admin/customizer/controls.php:293
+#: admin/customizer/controls.php:343
+msgid "Description"
 msgstr ""
 
-#: admin/faq.php:26
+#: admin/custom-fields.php:170
 msgid ""
-"But of course, the author would always appreciate <a href=\"themes.php?"
-"page=graphene_options\">donations</a> to support ongoing and future "
-"developments of the theme."
+"Only required if you need a description in the navigation menu and you are "
+"not using a custom menu."
 msgstr ""
 
-#: admin/faq.php:29
+#: admin/customizer/controls.php:140
 msgid ""
-"If the theme is released under GPLv2, what is this Creative Commons licence "
-"in the theme's footer?"
+"This option enables you to place virtually any content anywhere in the "
+"theme, by attaching widget areas to the theme's action hooks."
 msgstr ""
 
-#: admin/faq.php:30
+#: admin/customizer/controls.php:141
 msgid ""
-"The Creative Commons licence is a popular licence nowadays that are used by "
-"a lot of web-based content authors to licence their work such that it "
-"protects their intellectual property but in the same time allows its free "
-"distribution. It is included with the theme simply to make it easy for the "
-"theme's users to make use of the licence for the content they publish. Theme "
-"users can remove it altogether via the theme's Options page should they wish "
-"not to use it."
+"All action hooks available in the Graphene Theme are listed below. Click on "
+"the filename to display all the action hooks available in that file. Then, "
+"tick the checkbox next to an action hook to make a widget area available for "
+"that action hook."
 msgstr ""
 
-#: admin/faq.php:31
+#: admin/customizer/controls.php:142
+#, php-format
 msgid ""
-"Put simply, <em>it is not the licence that is applied for the theme itself</"
-"em>, but just for the website's content should the theme user wants to use "
-"it."
+"To see a visual map showing where each action hook in Graphene is located, "
+"visit this page: %s"
 msgstr ""
 
-#: admin/faq.php:34
-msgid "Is the theme compatible with this plugin or that plugin?"
-msgstr "Je táto téma kompatibilná s týmto alebo tamtým pluginom?"
+#: admin/customizer/controls.php:142
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Graphene Action Hooks Map"
+msgstr "Možnosti Graphene"
 
-#: admin/faq.php:35
-msgid ""
-"I don't know. With so many plugins available for Wordpress, there's no way "
-"that I (or anybody else for that matter) can test for compatibility for all "
-"of them. Having said that, the theme is built with all the necessary "
-"Wordpress components included with it, so chances are most plugins will be "
-"compatible with the theme."
+#: admin/customizer/controls.php:152
+msgid "Click to show/hide the action hooks for this file"
 msgstr ""
-"Neviem. Pre Wordpress existujú tisícky pluginov, takže nikto neotestuje "
-"všetky možné kombinácie pluginov."
 
-#: admin/faq.php:36
-msgid ""
-"My suggestion is to just install the plugin and try it. If you stumble into "
-"problem, ask for support from the plugin author first. If the plugin author "
-"says that it's a problems with the theme, you know where to find support."
+#: admin/customizer/controls.php:193
+msgid "Container width"
 msgstr ""
-"Doporučujem nainštalovať plugin a vyskúšať ho. Ak sa objaví problém, obráťte "
-"sa najskôr na autora pluginu. Ak autor pluginu tvrdí, že problém je v téme "
-"Graphene, viete kde hľadať podporu - asi na stránke fóra Graphene :-)"
 
-#: admin/options.php:42 admin/uninstall.php:23
-msgid "Uninstall Graphene"
-msgstr "Odinštalovať Graphene"
-
-#: admin/options.php:43
-msgid ""
-"Please confirm that you would like to uninstall the Graphene theme. All of "
-"the theme's options in the database will be deleted."
+#: admin/customizer/controls.php:202
+msgid "Columns width (two-column mode)"
 msgstr ""
-"Prosím potvrďte, že chcete odinštalovať tému Graphene. Všetky nastavenia "
-"budú vymazané."
 
-#: admin/options.php:44
-msgid "This action is not reversible."
+#: admin/customizer/controls.php:204 admin/customizer/controls.php:224
+msgid "Content"
+msgstr ""
+
+#: admin/customizer/controls.php:208
+msgid "Sidebar"
+msgstr ""
+
+#: admin/customizer/controls.php:218
+msgid "Columns width (three-column mode)"
+msgstr ""
+
+#: admin/customizer/controls.php:220
+msgid "Left sidebar"
+msgstr ""
+
+#: admin/customizer/controls.php:228
+msgid "Right sidebar"
+msgstr ""
+
+#: admin/customizer/controls.php:269 admin/customizer/controls.php:334
+#, fuzzy
+#| msgid "Custom URL"
+msgid "Custom"
+msgstr "Užívateľské URL"
+
+#: admin/customizer/controls.php:298 admin/customizer/controls.php:348
+msgid "URL"
+msgstr ""
+
+#: admin/customizer/controls.php:302
+msgid "Leave the URL empty to use the default RSS URL."
+msgstr ""
+
+#: admin/customizer/controls.php:308 admin/customizer/controls.php:353
+#, fuzzy
+#| msgid "Favicon URL"
+msgid "Icon URL"
+msgstr "Favicon URL"
+
+#: admin/customizer/controls.php:312 admin/customizer/controls.php:358
+msgid "Icon name"
+msgstr ""
+
+#: admin/customizer/controls.php:317 admin/customizer/customizer.php:38
+#: inc/comments.php:184
+msgid "Delete"
+msgstr ""
+
+#: admin/customizer/controls.php:318
+msgid "Drag and drop to reorder"
+msgstr ""
+
+#: admin/customizer/controls.php:324 admin/customizer/controls.php:362
+msgid "Add social profile"
+msgstr ""
+
+#: admin/customizer/controls.php:328
+msgid "Choose type"
+msgstr ""
+
+#: admin/customizer/controls.php:377
+msgid ""
+"Reset all of the theme's settings to their default values. Custom Header, "
+"Custom Menus, and other WordPress settings won't be affected."
+msgstr ""
+
+#: admin/customizer/controls.php:378
+#, fuzzy
+#| msgid "This action is not reversible."
+msgid "<strong>WARNING:</strong> This action is not reversible."
 msgstr "Tento krok sa nedá vrátiť späť!"
 
-#: admin/options.php:48 admin/options.php:146
-msgid "Uninstall Theme"
-msgstr "Odinštalovať tému"
+#: admin/customizer/controls.php:380
+#, fuzzy
+#| msgid "This action is not reversible."
+msgid "Confirm to reset settings? This action is not reversible."
+msgstr "Tento krok sa nedá vrátiť späť!"
 
-#: admin/options.php:60
-msgid "Graphene Theme Options"
-msgstr "Možnosti témy Graphene"
+#: admin/customizer/controls.php:380 admin/customizer/options-utilities.php:13
+#, fuzzy
+#| msgid "Use global setting"
+msgid "Reset settings"
+msgstr "Použiť globálne nastavenia"
 
-#: admin/options.php:62
-msgid ""
-"These are the global settings for the theme. You may override some of the "
-"settings in individual posts and pages."
-msgstr ""
-"Toto sú globálne nastavenia témy. Niektoré z nich môžete neskôr nahradiť "
-"individuálnymi nastaveniami príspevkov a stránok."
-
-#: admin/options.php:66
-msgid "Settings saved."
-msgstr "Nastavenia uložené."
-
-#: admin/options.php:73
-msgid "General"
-msgstr "Všeobecné"
-
-#: admin/options.php:74
-msgid "Display"
-msgstr "Zobrazenie"
-
-#: admin/options.php:106
-msgid "Save Options"
-msgstr "Uložiť možnosti"
-
-#: admin/options.php:118
-msgid "Support the developer"
-msgstr "Podporiť tvorcu"
-
-#: admin/options.php:121
-msgid ""
-"Developing this awesome theme took a lot of effort and time, months and "
-"months of continuous voluntary unpaid work. If you like this theme or if you "
-"are using it for commercial websites, please consider a donation to the "
-"developer to help support future updates and development."
-msgstr ""
-"Vytvorenie tejto témy stálo mnoho času a úsilia, mesiace a mesiace "
-"dobrovoľnej a nikým nezaplatenej práce. Ak ste si obľúbili túto tému, alebo "
-"ak ju používate na komerčné účely, zvážte prosím príspevok tvorcovi, aby ste "
-"pomohli ju ďalej inovovať a zlepšovať."
-
-#: admin/options.php:136
-msgid "Uninstall theme"
-msgstr "Odinštalovať tému"
-
-#: admin/options.php:139
-msgid ""
-"<strong>Be careful!</strong> Uninstalling the theme will remove all of the "
-"theme's options from the database. Do this only if you decide not to use the "
-"theme anymore."
-msgstr ""
-"<strong>Pozor!</strong> Ak odinštalujete túto tému, stratíte všetky "
-"nastavenia. Použite túto možnosť len v prípade, že tému už neplánujete nikdy "
-"využívať."
-
-#: admin/options.php:140
-msgid ""
-"If you just want to try another theme, there is no need to uninstall this "
-"theme. Simply activate the other theme in the Appearance > Themes admin page."
-msgstr ""
-"Ak chcete len vyskúšať inú tému, nemusíte túto odinštalovať. Len aktivujte "
-"novú tému v Appearance > Themes na nástenke."
-
-#: admin/options.php:141
-msgid ""
-"Note that uninstalling this theme <strong>does not remove</strong> the "
-"theme's files. To delete the files after you have uninstalled this theme, go "
-"to Appearances > Themes and delete the theme from there."
+#: admin/customizer/controls.php:400 admin/customizer/options-utilities.php:38
+msgid "Export settings"
 msgstr ""
 
-#: admin/options.php:168
-msgid "Slider Options"
+#: admin/customizer/controls.php:422 admin/customizer/options-utilities.php:32
+msgid "Import settings"
+msgstr ""
+
+#: admin/customizer/customizer.php:35
+msgid "Oops, nothing found."
+msgstr ""
+
+#: admin/customizer/customizer.php:37
+msgid "Please select the exported Graphene options file to import."
+msgstr ""
+
+#: admin/customizer/customizer.php:39
+msgid "(optional)"
+msgstr ""
+
+#: admin/customizer/customizer.php:40
+msgid "Link"
+msgstr ""
+
+#: admin/customizer/customizer.php:41
+msgid "Please select a settings file to import."
+msgstr ""
+
+#: admin/customizer/customizer.php:95
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Graphene: General"
+msgstr "Možnosti Graphene"
+
+#: admin/customizer/customizer.php:99
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Graphene: Display"
+msgstr "Možnosti Graphene"
+
+#: admin/customizer/customizer.php:103
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Graphene: Colours"
+msgstr "Možnosti Graphene"
+
+#: admin/customizer/customizer.php:104
+msgid ""
+"Changing colours for your website involves a lot more than just trial and "
+"error. Simply mixing and matching colours without regard to their "
+"compatibility may do more damage than good to your site's aesthetics."
+msgstr ""
+
+#: admin/customizer/customizer.php:104
+#, php-format
+msgid ""
+"It's generally a good idea to stick to colours from colour pallettes that "
+"are aesthetically pleasing. Try the %s website for a kickstart on some "
+"colour palettes you can use."
+msgstr ""
+
+#: admin/customizer/customizer.php:108
+#, fuzzy
+#| msgid "Graphene FAQs"
+msgid "Graphene: Advanced"
+msgstr "Graphene FAQ"
+
+#: admin/customizer/customizer.php:112
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Graphene: Utilities"
+msgstr "Možnosti Graphene"
+
+#: admin/customizer/options-advanced.php:13
+msgid "Custom <head> Tags"
+msgstr ""
+
+#: admin/customizer/options-advanced.php:20
+msgid "Code to insert into the <head> element"
+msgstr ""
+
+#: admin/customizer/options-advanced.php:31
+#, fuzzy
+#| msgid "Footer Widget Area"
+msgid "Action Hooks Widget Areas"
+msgstr "Widgety v pätičke"
+
+#: admin/customizer/options-colours.php:13
+#, fuzzy
+#| msgid "Top bar"
+msgid "Top Bar"
+msgstr "Horná lišta"
+
+#: admin/customizer/options-colours.php:19
+#: admin/customizer/options-colours.php:207
+msgid "Background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:26
+#, fuzzy
+#| msgid "Secondary Menu"
+msgid "Primary Menu"
+msgstr "Druhotné menu"
+
+#: admin/customizer/options-colours.php:34
+#: admin/customizer/options-colours.php:57
+msgid "Background (default state)"
+msgstr ""
+
+#: admin/customizer/options-colours.php:35
+#: admin/customizer/options-colours.php:58
+msgid "Text (default state)"
+msgstr ""
+
+#: admin/customizer/options-colours.php:36
+#: admin/customizer/options-colours.php:59
+#, fuzzy
+#| msgid "Background image and excerpt"
+msgid "Background (active state)"
+msgstr "Obrázok pozadia a úryvok"
+
+#: admin/customizer/options-colours.php:37
+#: admin/customizer/options-colours.php:60
+msgid "Text (active state)"
+msgstr ""
+
+#: admin/customizer/options-colours.php:38
+#: admin/customizer/options-colours.php:61
+#, fuzzy
+#| msgid "Dropdown menu item width"
+msgid "Dropdown menu text (default state)"
+msgstr "Šírka položky v dropdown menu"
+
+#: admin/customizer/options-colours.php:39
+#: admin/customizer/options-colours.php:62
+#, fuzzy
+#| msgid "Dropdown menu item width"
+msgid "Dropdown menu text (active state)"
+msgstr "Šírka položky v dropdown menu"
+
+#: admin/customizer/options-colours.php:48 inc/setup.php:95
+msgid "Secondary Menu"
+msgstr "Druhotné menu"
+
+#: admin/customizer/options-colours.php:56
+#, fuzzy
+#| msgid "Top bar"
+msgid "Top border"
+msgstr "Horná lišta"
+
+#: admin/customizer/options-colours.php:71
+#: admin/customizer/options-general.php:65
+#, fuzzy
+#| msgid "Slider image"
+msgid "Slider"
+msgstr "Obrázok posuvníka"
+
+#: admin/customizer/options-colours.php:76
+#, fuzzy
+#| msgid "Slider options"
+msgid "Slider caption background"
 msgstr "Možnosti posuvníka"
 
-#: admin/options.php:174
-msgid "Category to show in slider"
-msgstr "Kategórie, ktoré sa budú zobrazovať v posuvníku"
+#: admin/customizer/options-colours.php:85
+#, fuzzy
+#| msgid "Slider options"
+msgid "Slider caption text"
+msgstr "Možnosti posuvníka"
 
-#: admin/options.php:175
+#: admin/customizer/options-colours.php:94
+#, fuzzy
+#| msgid "Footer Widget Area"
+msgid "Content Area"
+msgstr "Widgety v pätičke"
+
+#: admin/customizer/options-colours.php:102
+msgid "Main content wrapper background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:103
+msgid "Post and pages content background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:104
+msgid "Post meta and footer border"
+msgstr ""
+
+#: admin/customizer/options-colours.php:105
+msgid "Content text"
+msgstr ""
+
+#: admin/customizer/options-colours.php:106
+#, fuzzy
+#| msgid "As inline text"
+msgid "Title text"
+msgstr "Ako inline text"
+
+#: admin/customizer/options-colours.php:107
+msgid "Links"
+msgstr ""
+
+#: admin/customizer/options-colours.php:108
+msgid "Links (hover)"
+msgstr ""
+
+#: admin/customizer/options-colours.php:109
+msgid "Sticky posts border"
+msgstr ""
+
+#: admin/customizer/options-colours.php:110
+#, fuzzy
+#| msgid "Hide post comment count"
+msgid "Child pages content background"
+msgstr "Nezobrazovať počet komentárov"
+
+#: admin/customizer/options-colours.php:119
+msgid "Widgets"
+msgstr ""
+
+#: admin/customizer/options-colours.php:127
+msgid "Widget item background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:128
+msgid "Widget item list border"
+msgstr ""
+
+#: admin/customizer/options-colours.php:129
+msgid "Widget header border"
+msgstr ""
+
+#: admin/customizer/options-colours.php:138
+msgid "Buttons and Labels"
+msgstr ""
+
+#: admin/customizer/options-colours.php:146
+msgid "Button background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:147
+msgid "Button text"
+msgstr ""
+
+#: admin/customizer/options-colours.php:148
+msgid "Label background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:149
+msgid "Label text"
+msgstr ""
+
+#: admin/customizer/options-colours.php:158
+msgid "Archives"
+msgstr "Staršie články"
+
+#: admin/customizer/options-colours.php:166
+msgid "Archive label background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:167
+msgid "Archive label border"
+msgstr ""
+
+#: admin/customizer/options-colours.php:168
+msgid "Archive label label colour"
+msgstr ""
+
+#: admin/customizer/options-colours.php:169
+msgid "Archive label text colour"
+msgstr ""
+
+#: admin/customizer/options-colours.php:178
+#: admin/customizer/options-general.php:301
+#, fuzzy
+#| msgid "Comments RSS"
+msgid "Comments"
+msgstr "RSS kanál komentárov"
+
+#: admin/customizer/options-colours.php:186
+msgid "Comments background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:187
+#, fuzzy
+#| msgid "Comments RSS"
+msgid "Comments border"
+msgstr "RSS kanál komentárov"
+
+#: admin/customizer/options-colours.php:188
+msgid "Comments box shadow"
+msgstr ""
+
+#: admin/customizer/options-colours.php:189
+#, fuzzy
+#| msgid "Comments RSS"
+msgid "Comments text"
+msgstr "RSS kanál komentárov"
+
+#: admin/customizer/options-colours.php:190
+#, fuzzy
+#| msgid "No comment yet"
+msgid "Author comments border"
+msgstr "Zatiaľ žiadne komentáre"
+
+#: admin/customizer/options-colours.php:199
+#: admin/customizer/options-general.php:513
+#, fuzzy
+#| msgid "Footer Options"
+msgid "Footer"
+msgstr "Možnosti päty"
+
+#: admin/customizer/options-colours.php:208
+msgid "Normal text"
+msgstr ""
+
+#: admin/customizer/options-colours.php:209
+#, fuzzy
+#| msgid "As inline text"
+msgid "Link text"
+msgstr "Ako inline text"
+
+#: admin/customizer/options-display.php:13
+#, fuzzy
+#| msgid "Column mode"
+msgid "Columns Layout"
+msgstr "Režim stĺpcov"
+
+#: admin/customizer/options-display.php:20
+msgid "Container style"
+msgstr ""
+
+#: admin/customizer/options-display.php:22
+msgid "Boxed"
+msgstr ""
+
+#: admin/customizer/options-display.php:23
+msgid "Full width"
+msgstr ""
+
+#: admin/customizer/options-display.php:30
+msgid "Layout"
+msgstr ""
+
+#: admin/customizer/options-display.php:32
+msgid "One column"
+msgstr ""
+
+#: admin/customizer/options-display.php:33
+msgid "Two columns, right sidebar"
+msgstr ""
+
+#: admin/customizer/options-display.php:34
+msgid "Two columns, left sidebar"
+msgstr ""
+
+#: admin/customizer/options-display.php:35
+msgid "Three columns, right sidebars"
+msgstr ""
+
+#: admin/customizer/options-display.php:36
+msgid "Three columns, left sidebars"
+msgstr ""
+
+#: admin/customizer/options-display.php:37
+msgid "Three columns, left & right sidebars"
+msgstr ""
+
+#: admin/customizer/options-display.php:45
+#, fuzzy
+#| msgid "Column mode"
+msgid "Columns Width"
+msgstr "Režim stĺpcov"
+
+#: admin/customizer/options-display.php:47
+msgid "Leave values empty to reset to the default values."
+msgstr ""
+
+#: admin/customizer/options-display.php:62
+msgid "Posts Elements"
+msgstr ""
+
+#: admin/customizer/options-display.php:69
+msgid "Hide post author"
+msgstr "Nezobrazovať autora príspevku"
+
+#: admin/customizer/options-display.php:75
+msgid "Hide post categories"
+msgstr "Nezobrazovať kategórie príspevkov"
+
+#: admin/customizer/options-display.php:81
+msgid "Hide post tags"
+msgstr "Nezobrazovať tagy príspevkov"
+
+#: admin/customizer/options-display.php:87
+msgid "Hide post comment count"
+msgstr "Nezobrazovať počet komentárov"
+
+#: admin/customizer/options-display.php:93
+#, fuzzy
+#| msgid "Hide post author"
+msgid "Hide author bio"
+msgstr "Nezobrazovať autora príspevku"
+
+#: admin/customizer/options-display.php:102
+msgid "Icon"
+msgstr ""
+
+#: admin/customizer/options-display.php:103
+#, fuzzy
+#| msgid "As an icon (without the year)"
+msgid "Icon with year"
+msgstr "Ako ikonu (bez roku)"
+
+#: admin/customizer/options-display.php:104
+#, fuzzy
+#| msgid "As inline text"
+msgid "Inline text"
+msgstr "Ako inline text"
+
+#: admin/customizer/options-display.php:112
+msgid "Excerpts"
+msgstr ""
+
+#: admin/customizer/options-display.php:119
+#, fuzzy
+#| msgid "Show excerpts in front page"
+msgid "Show excerpts in Front Page"
+msgstr "Zobrazovať ukážky na úvodnej stránke"
+
+#: admin/customizer/options-display.php:125
+msgid "Show full content in archive pages"
+msgstr ""
+
+#: admin/customizer/options-display.php:131
+msgid "Show More link for manual excerpts"
+msgstr "Zobraziť odkaz VIAC v ručných excerptoch"
+
+#: admin/customizer/options-display.php:137
+msgid "Keep these HTML tags in excerpts"
+msgstr ""
+
+#: admin/customizer/options-display.php:138
 msgid ""
-"All posts within the category selected here will be displayed on the slider. "
-"Usage example: create a new category \"Featured\" and assign all posts to be "
-"displayed on the slider to that category, and then select that category here."
+"Enter the HTML tags you'd like to retain in excerpts. For example, enter "
+"<code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> to retain <code>&lt;p&gt;</code>, "
+"<code>&lt;ul&gt;</code>, and <code>&lt;li&gt;</code> HTML tags."
+msgstr ""
+
+#: admin/customizer/options-display.php:149
+#, fuzzy
+#| msgid "Miscellaneous Display Options"
+msgid "Miscellaneous"
+msgstr "Rôzne nastavenia zobrazenia"
+
+#: admin/customizer/options-display.php:157
+msgid "Disable custom editor styles"
+msgstr ""
+
+#: admin/customizer/options-general.php:13
+#, fuzzy
+#| msgid "Header Menu"
+msgid "Header"
+msgstr "Menu v hlavičke"
+
+#: admin/customizer/options-general.php:20
+#, fuzzy
+#| msgid "Disable slider"
+msgid "Disable Top Bar"
+msgstr "Vypnúť posuvník"
+
+#: admin/customizer/options-general.php:26
+msgid "Use light-coloured header bars"
+msgstr "Použiť svetlú verziu titulnej lišty (header)"
+
+#: admin/customizer/options-general.php:32
+msgid "Link header image to front page"
+msgstr "Prepojiť titulný obrázok na úvodnú stránku"
+
+#: admin/customizer/options-general.php:33
+msgid ""
+"Check this if you disable the header texts and want the header image to be "
+"linked to the front page."
+msgstr ""
+
+#: admin/customizer/options-general.php:39
+msgid "Disable Featured Image replacing header image"
+msgstr "Vypnúť nahradenie obrázka hlavičky Featured obrázkom"
+
+#: admin/customizer/options-general.php:40
+msgid ""
+"Check this to prevent the posts Featured Image replacing the header image "
+"regardless of the featured image dimension."
+msgstr ""
+
+#: admin/customizer/options-general.php:46
+#, fuzzy
+#| msgid "Header Widget Area"
+msgid "Header image height"
+msgstr "Priestor pre widgety v hlavičke"
+
+#: admin/customizer/options-general.php:53
+msgid "Search box location"
+msgstr "Umiestnenie boxu vyhľadávania"
+
+#: admin/customizer/options-general.php:55
+msgid "Top bar"
+msgstr "Horná lišta"
+
+#: admin/customizer/options-general.php:56
+msgid "Navigation bar"
+msgstr "Navigačná lišta"
+
+#: admin/customizer/options-general.php:57
+#, fuzzy
+#| msgid "--Disabled--"
+msgid "Disabled"
+msgstr "--Vypnuté--"
+
+#: admin/customizer/options-general.php:72
+msgid "Disable slider"
+msgstr "Vypnúť posuvník"
+
+#: admin/customizer/options-general.php:78
+msgid "Extend slider to full width of theme"
+msgstr ""
+
+#: admin/customizer/options-general.php:84
+#, fuzzy
+#| msgid "Slider options"
+msgid "Slider content"
+msgstr "Možnosti posuvníka"
+
+#: admin/customizer/options-general.php:86
+msgid "Show latest posts"
+msgstr "Zobrazovať posledné príspevky"
+
+#: admin/customizer/options-general.php:87
+msgid "Show random posts"
+msgstr "Zobrazovať náhodné príspevky"
+
+#: admin/customizer/options-general.php:88
+#: admin/customizer/options-general.php:268
+msgid "Show specific posts/pages"
+msgstr ""
+
+#: admin/customizer/options-general.php:89
+#, fuzzy
+#| msgid "Hide post categories"
+msgid "Show posts from categories"
+msgstr "Nezobrazovať kategórie príspevkov"
+
+#: admin/customizer/options-general.php:96
+msgid "Include posts with featured image only"
+msgstr ""
+
+#: admin/customizer/options-general.php:102
+#: admin/customizer/options-general.php:293
+#, fuzzy
+#| msgid "Post date display"
+msgid "Posts and/or pages to display"
+msgstr "Zobrazenie dátumu príspevku"
+
+#: admin/customizer/options-general.php:103
+#: admin/customizer/options-general.php:294
+msgid ""
+"Enter ID of posts and/or pages to be displayed, separated by comma.<br / "
+">Applicable only if \"Show specific posts/pages\" is selected above.<br /"
+">Example: <code>1,13,45,33</code>"
+msgstr ""
+
+#: admin/customizer/options-general.php:113
+#, fuzzy
+#| msgid "Post date display"
+msgid "Categories to display"
+msgstr "Zobrazenie dátumu príspevku"
+
+#: admin/customizer/options-general.php:116
+#, fuzzy
+#| msgid ""
+#| "All posts within the category selected here will be displayed on the "
+#| "slider. Usage example: create a new category \"Featured\" and assign all "
+#| "posts to be displayed on the slider to that category, and then select "
+#| "that category here."
+msgid ""
+"All posts within the categories selected here will be displayed on the "
+"slider. Usage example: create a new category \"Featured\" and assign all "
+"posts to be displayed on the slider to that category, and then select that "
+"category here."
 msgstr ""
 "Všetky príspevky z kategórie sa budú zobrazovať v posuvníku. Napr. si "
 "vytvorte kategóriu \"Featured\" a vložte do nej príspevky, ktoré chcete "
 "zobraziť - tieto sa potom budú zobrazovať v posuvníku."
 
-#: admin/options.php:179
-msgid "Show latest posts"
-msgstr "Zobrazovať posledné príspevky"
+#: admin/customizer/options-general.php:118
+#: admin/customizer/options-general.php:244
+#: admin/customizer/options-general.php:286
+#, fuzzy
+#| msgid "Hide post categories"
+msgid "Select categories"
+msgstr "Nezobrazovať kategórie príspevkov"
 
-#: admin/options.php:180
-msgid "Show random posts"
-msgstr "Zobrazovať náhodné príspevky"
+#: admin/customizer/options-general.php:125
+#, fuzzy
+#| msgid "Author's posts listings"
+msgid "Exclude the categories from posts listing"
+msgstr "Prehľad príspevkov autora"
 
-#: admin/options.php:193
+#: admin/customizer/options-general.php:131
+msgid "Show posts from categories in random order"
+msgstr ""
+
+#: admin/customizer/options-general.php:137
 msgid "Number of posts to display"
 msgstr "Počet príspevkov na zobrazenie"
 
-#: admin/options.php:223
+#: admin/customizer/options-general.php:138
+msgid "posts"
+msgstr ""
+
+#: admin/customizer/options-general.php:147
+#, fuzzy
+#| msgid "Featured Image"
+msgid "Featured image"
+msgstr "Featured obrázok"
+
+#: admin/customizer/options-general.php:149
+#, fuzzy
+#| msgid "Custom slider image URL"
+msgid "Custom image"
+msgstr "URL na užívateľký obrázok posuvníka"
+
+#: admin/customizer/options-general.php:154
+#, fuzzy
+#| msgid "Custom slider image URL"
+msgid "Custom slider image"
+msgstr "URL na užívateľký obrázok posuvníka"
+
+#: admin/customizer/options-general.php:157
+#, fuzzy
+#| msgid ""
+#| "Make sure you select Custom URL in the slider image option above to use "
+#| "this custom url."
+msgid ""
+"Make sure you select \"Custom image\" in the slider image option above to "
+"use this image."
+msgstr ""
+"Uistite sa, že ste vybrali užívateľské URL v možnostiach obrázku posuvníka."
+
+#: admin/customizer/options-general.php:163
 msgid "Slider display style"
 msgstr "Štýl zobrazenia posuvníka"
 
-#: admin/options.php:227
-msgid "Thumbnail and excerpt"
-msgstr "Miniatúra a úryvok"
-
-#: admin/options.php:228
+#: admin/customizer/options-general.php:165
 msgid "Background image and excerpt"
 msgstr "Obrázok pozadia a úryvok"
 
-#: admin/options.php:229
+#: admin/customizer/options-general.php:166
 msgid "Full post content"
 msgstr "Celý obsah príspevku"
 
-#: admin/options.php:235
+#: admin/customizer/options-general.php:173
 msgid "Slider height"
 msgstr "Výska posuvníka"
 
-#: admin/options.php:243
+#: admin/customizer/options-general.php:174
+#: admin/customizer/options-general.php:181
+msgid "px"
+msgstr ""
+
+#: admin/customizer/options-general.php:180
+#, fuzzy
+#| msgid "Slider height"
+msgid "Slider height (mobile)"
+msgstr "Výska posuvníka"
+
+#: admin/customizer/options-general.php:187
 msgid "Slider speed"
 msgstr "Rýchlosť posuvníka"
 
-#: admin/options.php:246
+#: admin/customizer/options-general.php:188
 msgid "milliseconds"
 msgstr "milisekúnd"
 
-#: admin/options.php:247
-msgid "This is the duration that each slider item will be shown"
+#: admin/customizer/options-general.php:189
+#, fuzzy
+#| msgid "This is the duration that each slider item will be shown"
+msgid "This is the duration that each slider item will be shown."
 msgstr "Toto je dĺžka zobrazenia každého príspevku v posuvníku"
 
-#: admin/options.php:252
+#: admin/customizer/options-general.php:195
 msgid "Move slider to bottom of page"
 msgstr "Presunúť posuvníka do päty stránky"
 
-#: admin/options.php:258
-msgid "Disable slider"
-msgstr "Vypnúť posuvník"
+#: admin/customizer/options-general.php:202
+msgid "Infinite Scroll"
+msgstr ""
 
-#: admin/options.php:271
-msgid "Front Page Options"
+#: admin/customizer/options-general.php:209
+msgid "Enable for posts"
+msgstr ""
+
+#: admin/customizer/options-general.php:215
+#, fuzzy
+#| msgid "Leave comment"
+msgid "Enable for comments"
+msgstr "Pridať komentár"
+
+#: admin/customizer/options-general.php:221
+msgid "Loading method"
+msgstr ""
+
+#: admin/customizer/options-general.php:223
+msgid "Auto-load"
+msgstr ""
+
+#: admin/customizer/options-general.php:224
+msgid "Click-to-load"
+msgstr ""
+
+#: admin/customizer/options-general.php:232
+#, fuzzy
+#| msgid "Front Page Options"
+msgid "Front Page"
 msgstr "Možnosti úvodnej stránky"
 
-#: admin/options.php:277
+#: admin/customizer/options-general.php:239
 msgid "Front page posts categories"
 msgstr "Kategórie príspevkov úvodnej stránky"
 
-#: admin/options.php:279
+#: admin/customizer/options-general.php:242
+#, fuzzy
+#| msgid ""
+#| "Only posts that belong to the categories selected here will be displayed "
+#| "on the front page. Does not affect Static Front Page."
 msgid ""
 "Only posts that belong to the categories selected here will be displayed on "
-"the front page. Does not affect Static Front Page."
+"the front page. Works only if not using Static Front Page."
 msgstr ""
 "Iba príspevky z tejto kategórie sa budú zobrazovať na úvodnej stránke. Toto "
 "nastavenie neovplyvní statickú úvodnú stránku."
 
-#: admin/options.php:284
-msgid "--Disabled--"
-msgstr "--Vypnuté--"
+#: admin/customizer/options-general.php:252
+msgid "Home Page Panes"
+msgstr ""
 
-#: admin/options.php:292
-msgid "You may select multiple categories by holding down the CTRL key."
-msgstr "Môžte zvoliť viacero kategórii stlačením CTRL."
+#: admin/customizer/options-general.php:259
+msgid "Disable homepage panes"
+msgstr ""
 
-#: admin/options.php:304
-msgid "Widget Area Options"
+#: admin/customizer/options-general.php:265
+msgid "Type of content to show"
+msgstr ""
+
+#: admin/customizer/options-general.php:267
+msgid "Latest posts"
+msgstr "Posledné príspevky"
+
+#: admin/customizer/options-general.php:275
+#, fuzzy
+#| msgid "Number of posts to display"
+msgid "Number of posts"
+msgstr "Počet príspevkov na zobrazenie"
+
+#: admin/customizer/options-general.php:281
+#, fuzzy
+#| msgid "Category to show in slider"
+msgid "Categories to show latest posts from"
+msgstr "Kategórie, ktoré sa budú zobrazovať v posuvníku"
+
+#: admin/customizer/options-general.php:284
+#, fuzzy
+#| msgid ""
+#| "Only posts that belong to the categories selected here will be displayed "
+#| "on the front page. Does not affect Static Front Page."
+msgid ""
+"Only posts that belong to the categories selected here will be displayed in "
+"the home page panes."
+msgstr ""
+"Iba príspevky z tejto kategórie sa budú zobrazovať na úvodnej stránke. Toto "
+"nastavenie neovplyvní statickú úvodnú stránku."
+
+#: admin/customizer/options-general.php:308
+#, fuzzy
+#| msgid "Comments RSS"
+msgid "Commenting"
+msgstr "RSS kanál komentárov"
+
+#: admin/customizer/options-general.php:309
+msgid ""
+"Overrides the global WordPress Discussion Setting called \"Allow people to "
+"post comments on new articles\" and also the \"Allow comments\" option for "
+"individual posts/pages."
+msgstr ""
+
+#: admin/customizer/options-general.php:311
+#, fuzzy
+#| msgid "Use global setting"
+msgid "Use WordPress settings"
+msgstr "Použiť globálne nastavenia"
+
+#: admin/customizer/options-general.php:312
+msgid "Disable for pages"
+msgstr ""
+
+#: admin/customizer/options-general.php:313
+#, fuzzy
+#| msgid "Disable slider"
+msgid "Disable completely"
+msgstr "Vypnúť posuvník"
+
+#: admin/customizer/options-general.php:321
+msgid "Child Pages"
+msgstr ""
+
+#: admin/customizer/options-general.php:328
+msgid "Hide parent box if content is empty"
+msgstr ""
+
+#: admin/customizer/options-general.php:334
+msgid "Disable contextual navigation in the sidebar"
+msgstr ""
+
+#: admin/customizer/options-general.php:340
+msgid "Child page listings"
+msgstr ""
+
+#: admin/customizer/options-general.php:342
+#, fuzzy
+#| msgid "Show button"
+msgid "Show listing"
+msgstr "Zobraziť tlačidlo"
+
+#: admin/customizer/options-general.php:343
+#, fuzzy
+#| msgid "Hide post tags"
+msgid "Hide listing"
+msgstr "Nezobrazovať tagy príspevkov"
+
+#: admin/customizer/options-general.php:344
+msgid "Show only if parent is empty"
+msgstr ""
+
+#: admin/customizer/options-general.php:352
+#, fuzzy
+#| msgid "Widget Area Options"
+msgid "Widget Areas"
 msgstr "Možnosti priestoru pre widgety"
 
-#: admin/options.php:307
-msgid "Header widget area"
-msgstr "Priestor pre widgety v hlavičke"
+#: admin/customizer/options-general.php:359
+msgid "Enable header widget area"
+msgstr "Zapnúť priestor pre widgety v hlavičke"
 
-#: admin/options.php:308
+#: admin/customizer/options-general.php:360
 msgid ""
 "<strong>Important:</strong> This widget area is unstyled, as it is often "
 "used for advertisement banners, etc. If you enable it, make sure you style "
@@ -809,519 +1173,383 @@ msgstr ""
 "často používa napr. na zobrazenie reklamy. Ak ho chcete použiť, nezabudnite "
 "ho upraviť prostredníctvom užívateľského CSS štýlu."
 
-#: admin/options.php:312
-msgid "Enable header widget area"
-msgstr "Zapnúť priestor pre widgety v hlavičke"
-
-#: admin/options.php:321
-msgid "Alternate Widgets"
-msgstr "Striedať widgety"
-
-#: admin/options.php:322
-msgid ""
-"You can enable the theme to show different widget areas in the front page "
-"than the rest of the website. If you enable this option, additional widget "
-"areas that will only be displayed on the front page will be added to the "
-"Widget settings page."
-msgstr ""
-"Tu môžete povoliť zobrazovanie rôznych priestorov pre widgety na úvodnej "
-"stránky a na zvyšku webu. Ak označíte túto možnosť, ďalšie priestory pre "
-"widgety určené na úvodnú stránku sa zobrazia v možnostiach nastavenia "
-"widgetov."
-
-#: admin/options.php:325
-msgid "Enable alternate front page sidebar widget area"
+#: admin/customizer/options-general.php:366
+#, fuzzy
+#| msgid "Enable alternate front page sidebar widget area"
+msgid "Enable alternative sidebar widget area in front page."
 msgstr "Povoliť odlišnú bočnú lištu (sidebar) pre widgets na úvodnej stránke"
 
-#: admin/options.php:329
-msgid "Enable alternate front page footer widget area"
+#: admin/customizer/options-general.php:372
+#, fuzzy
+#| msgid "Enable alternate front page footer widget area"
+msgid "Enable alternative footer widget area in front page."
 msgstr "Povoliť odlišnú pätu na úvodnej stránke"
 
-#: admin/options.php:330
-msgid ""
-"You can also specify different column counts for the front page footer "
-"widget and the rest-of-site footer widget if you enable this option."
+#: admin/customizer/options-general.php:378
+msgid "Divide footer widget area into this number of columns"
 msgstr ""
-"Zaškrtnutím môžete špecifikovať rôzne počty stĺpcov pre pätu úvodnej stránky "
-"a pre ostatné stránky."
 
-#: admin/options.php:343
-msgid "Feed Options"
-msgstr "Nastavenia RSS"
+#: admin/customizer/options-general.php:384
+msgid "Divide alternative footer widget area into this number of columns"
+msgstr ""
 
-#: admin/options.php:348
-msgid "Hide feed icon"
-msgstr "Nezobrazovať ikonu RSS"
+#: admin/customizer/options-general.php:391
+msgid "Social Profiles"
+msgstr ""
 
-#: admin/options.php:352
-msgid "Use custom feed URL"
-msgstr "Použiť užívateľské URL feedu RSS."
+#: admin/customizer/options-general.php:398
+msgid "Open social media links in new window"
+msgstr ""
 
-#: admin/options.php:355
-msgid "This custom feed URL will replace the default Wordpress RSS feed URL."
-msgstr "Toto URL nahradí pôvodnú adresu RSS stránky (systému) Wordpress."
+#: admin/customizer/options-general.php:403
+msgid "Social profiles"
+msgstr ""
 
-#: admin/options.php:367
-msgid "Social Sharing Buttons"
+#: admin/customizer/options-general.php:410
+#, fuzzy
+#| msgid "Social Sharing Buttons"
+msgid "Social Sharing"
 msgstr "Tlačidlá sociálnych sietí"
 
-#: admin/options.php:372
-msgid "Show social sharing button"
+#: admin/customizer/options-general.php:417
+#, fuzzy
+#| msgid "Show social sharing button"
+msgid "Show social sharing buttons"
 msgstr "Zobraziť tlačidlo sociálnych sietí"
 
-#: admin/options.php:376
-msgid "Show in Pages as well?"
-msgstr "Zobraziť aj na stránkach?"
+#: admin/customizer/options-general.php:423
+msgid "Include static Pages"
+msgstr ""
 
-#: admin/options.php:381
-msgid "Your social sharing button code"
+#: admin/customizer/options-general.php:429
+msgid "Include home and archive pages"
+msgstr ""
+
+#: admin/customizer/options-general.php:435
+msgid "Buttons location"
+msgstr ""
+
+#: admin/customizer/options-general.php:437
+msgid "Bottom of posts"
+msgstr ""
+
+#: admin/customizer/options-general.php:438
+#, fuzzy
+#| msgid "Show random posts"
+msgid "Top of posts"
+msgstr "Zobrazovať náhodné príspevky"
+
+#: admin/customizer/options-general.php:439
+#, fuzzy
+#| msgid "Show random posts"
+msgid "Top and bottom of posts"
+msgstr "Zobrazovať náhodné príspevky"
+
+#: admin/customizer/options-general.php:446
+#, fuzzy
+#| msgid "Your social sharing button code"
+msgid "Social sharing buttons code"
 msgstr "Kód tlačidla sociálnych sietí"
 
-#: admin/options.php:382
+#: admin/customizer/options-general.php:447
 msgid ""
 "You can use codes from any popular social sharing sites, like Facebook, "
 "Digg, AddThis, etc."
 msgstr "Môžte vložiť kódy z obľúbených sociálnych sietí."
 
-#: admin/options.php:396
-msgid "Adsense Options"
-msgstr "Možnosti Adsense"
+#: admin/customizer/options-general.php:458
+msgid "Ads"
+msgstr ""
 
-#: admin/options.php:402
-msgid "Show Adsense advertising"
-msgstr "Zobrazovať reklamy Adsense"
+#: admin/customizer/options-general.php:465
+#, fuzzy
+#| msgid "Show random posts"
+msgid "Show ads"
+msgstr "Zobrazovať náhodné príspevky"
 
-#: admin/options.php:408
-msgid "Show ads on front page as well"
-msgstr "Zobrazovať reklamy na úvodnej stránke"
+#: admin/customizer/options-general.php:471
+msgid "Include Front Page"
+msgstr ""
 
-#: admin/options.php:414
-msgid "Your Adsense code"
+#: admin/customizer/options-general.php:477
+#, fuzzy
+#| msgid "Your Adsense code"
+msgid "Ads code"
 msgstr "Váš kód Adsense"
 
-#: admin/options.php:427
-msgid "Google Analytics Options"
-msgstr "Možnosti Google Analytics"
-
-#: admin/options.php:430
-msgid ""
-"<strong>Note:</strong> the theme now places the Google Analytics script in "
-"the <code>&lt;head&gt;</code> element to better support the new asynchronous "
-"Google Analytics script. Please make sure you update your script to use the "
-"new asynchronous script from Google Analytics."
+#: admin/customizer/options-general.php:488
+msgid "Analytics"
 msgstr ""
 
-#: admin/options.php:433
-msgid "Enable Google Analytics tracking"
+#: admin/customizer/options-general.php:495
+#, fuzzy
+#| msgid "Enable Google Analytics tracking"
+msgid "Enable analytics tracking"
 msgstr "Zapnúť sledovanie Google Analytics"
 
-#: admin/options.php:437
-msgid "Google Analytics tracking code"
+#: admin/customizer/options-general.php:501
+#, fuzzy
+#| msgid "Google Analytics tracking code"
+msgid "Analytics code"
 msgstr "Kód sledovania Google Analytics"
 
-#: admin/options.php:438
+#: admin/customizer/options-general.php:502
+#, php-format
 msgid ""
-"Make sure you include the full tracking code (including the <code>&lt;"
-"script&gt;</code> and <code>&lt;/script&gt;</code> tags) and not just the "
-"<code>UA-#######-#</code> code."
+"The analytics code will be added inside the %s element of all pages in this "
+"site."
 msgstr ""
-"Vložte úplný tracking kód (vrátane <code>&lt;script&gt;</code> and "
-"<code>&lt;/script&gt;</code> tags) a nielen <code>UA-#######-#</code> code."
 
-#: admin/options.php:451
-msgid "Footer Options"
-msgstr "Možnosti päty"
-
-#: admin/options.php:456
-msgid "Show Creative Commons logo"
-msgstr "Zobraziť logo Creative Commons"
-
-#: admin/options.php:461
+#: admin/customizer/options-general.php:520
 msgid "Copyright text (html allowed)"
 msgstr "Text copyright (povolené html)"
 
-#: admin/options.php:462
-msgid ""
-"If this field is empty, the following default copyright text will be "
-"displayed:"
-msgstr "Ak je toto pole prázdne, bude zobrazený nasledujúci  copyright:"
-
-#: admin/options.php:468
+#: admin/customizer/options-general.php:530
 msgid "Do not show copyright info"
 msgstr "Nezobrazovať copyright"
 
-#: admin/options.php:488
-msgid "Header Display Options"
-msgstr "Nastavenia zobrazenia hlavičky (header)"
-
-#: admin/options.php:494
-msgid "Use light-coloured header bars"
-msgstr "Použiť svetlú verziu titulnej lišty (header)"
-
-#: admin/options.php:500
-msgid "Link header image to front page"
-msgstr "Prepojiť titulný obrázok na úvodnú stránku"
-
-#: admin/options.php:503
-msgid ""
-"Check this if you disable the header texts and want the header image to be "
-"linked to the front page."
+#: admin/customizer/options-general.php:536
+msgid "Disable \"Return to top\" button"
 msgstr ""
 
-#: admin/options.php:508
-msgid "Disable Featured Image replacing header image"
-msgstr "Vypnúť nahradenie obrázka hlavičky Featured obrázkom"
-
-#: admin/options.php:511
-msgid ""
-"Check this to prevent the posts Featured Image replacing the header image "
-"regardless of the featured image dimension."
+#: admin/customizer/options-general.php:543
+msgid "Print"
 msgstr ""
 
-#: admin/options.php:516
-msgid "Use random header image"
-msgstr "Použiť náhodný titulný obrázok (header)"
-
-#: admin/options.php:520
-msgid ""
-"Check this to show a random header image (random image taken from the "
-"available default header images)."
-msgstr ""
-"Označte na zobrazenie náhodného titulného obrázku (vybraného zo dostupných "
-"štandardných titulných obrázkov)."
-
-#: admin/options.php:521
-msgid ""
-"<strong>Note:</strong> only works on pages where a specific header image is "
-"not defined."
-msgstr ""
-"<strong>Poznámka:</strong> funguje správne len na stránkach, ktoré nemajú "
-"špecifikovaný titulný obrázok (header)"
-
-#: admin/options.php:526
-msgid "Hide the top bar"
-msgstr "Nezobrazovať vrchnú lištu"
-
-#: admin/options.php:532
-msgid "Search box location"
-msgstr "Umiestnenie boxu vyhľadávania"
-
-#: admin/options.php:536
-msgid "Top bar"
-msgstr "Horná lišta"
-
-#: admin/options.php:537
-msgid "Navigation bar"
-msgstr "Navigačná lišta"
-
-#: admin/options.php:550
-msgid "Column Options"
-msgstr "Možnosti stĺpcov"
-
-#: admin/options.php:556
-msgid "Column mode"
-msgstr "Režim stĺpcov"
-
-#: admin/options.php:606
-msgid "Posts Display Options"
-msgstr "Nastavenia zobrazenia príspevkov"
-
-#: admin/options.php:612
-msgid "Show excerpts in front page"
-msgstr "Zobrazovať ukážky na úvodnej stránke"
-
-#: admin/options.php:618
-msgid "Hide post author"
-msgstr "Nezobrazovať autora príspevku"
-
-#: admin/options.php:624
-msgid "Post date display"
-msgstr "Zobrazenie dátumu príspevku"
-
-#: admin/options.php:628
-msgid "Hidden"
-msgstr "Skryté"
-
-#: admin/options.php:629
-msgid "As an icon (without the year)"
-msgstr "Ako ikonu (bez roku)"
-
-#: admin/options.php:630
-msgid "As an icon (including the year)"
-msgstr "Ako ikonu (vrátane roku)"
-
-#: admin/options.php:631
-msgid "As inline text"
-msgstr "Ako inline text"
-
-#: admin/options.php:633
-msgid ""
-"Note: displaying date as inline text allows more space for the content area, "
-"especially useful for a three-column layout configuration."
-msgstr ""
-"Poznámka: zobrazovanie dátumu ako inline textu ponechá viac priestoru v "
-"časti pre obsah - vhodné najmä pre trojstĺpcové nastavenie."
-
-#: admin/options.php:638
-msgid "Hide post categories"
-msgstr "Nezobrazovať kategórie príspevkov"
-
-#: admin/options.php:644
-msgid "Hide post tags"
-msgstr "Nezobrazovať tagy príspevkov"
-
-#: admin/options.php:650
-msgid "Hide post comment count"
-msgstr "Nezobrazovať počet komentárov"
-
-#: admin/options.php:651
-msgid ""
-"Only affects posts listing (such as the front page) and not single post view."
-msgstr ""
-"Ovplyvní len zobrazenie zoznamu príspevkov a nie zobrazenie samotných "
-"príspevkov."
-
-#: admin/options.php:656
-msgid "Show post author's gravatar"
-msgstr "Zobraziť profilový obrázok autora príspevku"
-
-#: admin/options.php:660
-msgid "Show post author's info"
-msgstr "Zobraziť info o autorovi príspevku"
-
-#: admin/options.php:664
-msgid "Show More link for manual excerpts"
-msgstr "Zobraziť odkaz VIAC v ručných excerptoch"
-
-#: admin/options.php:677
-msgid "Comments Display Options"
-msgstr "Nastavenia zobrazenia komentárov"
-
-#: admin/options.php:683
-msgid "Hide allowed tags in comment form"
-msgstr "Nezobrazovať povolené tagy vo formulároch komentárov"
-
-#: admin/options.php:696
-msgid "Text Style Options"
-msgstr "Možnosti štýlu textu"
-
-#: admin/options.php:699
-msgid ""
-"Note that these are CSS properties, so any valid CSS values for each "
-"particular property can be used."
+#: admin/customizer/options-general.php:550
+msgid "Clean up single posts and pages when printing"
 msgstr ""
 
-#: admin/options.php:700
-msgid "Some example CSS properties values:"
-msgstr ""
+#: admin/customizer/options-general.php:556
+#, fuzzy
+#| msgid "Show button"
+msgid "Show print button"
+msgstr "Zobraziť tlačidlo"
 
-#: admin/options.php:703
-msgid "Text font:"
-msgstr ""
-
-#: admin/options.php:707
-msgid "Text size and line height:"
-msgstr ""
-
-#: admin/options.php:711
-msgid "Text weight:"
-msgstr ""
-
-#: admin/options.php:715
-msgid "Text style:"
-msgstr ""
-
-#: admin/options.php:719
-msgid "Text colour:"
-msgstr ""
-
-#: admin/options.php:723 admin/options.php:864 admin/options.php:893
-msgid "Leave field empty to use the default value."
-msgstr ""
-
-#: admin/options.php:725
-msgid "Header Text"
-msgstr ""
-
-#: admin/options.php:729
-msgid "Title text font"
-msgstr ""
-
-#: admin/options.php:735
-msgid "Title text size"
-msgstr ""
-
-#: admin/options.php:741
-msgid "Title text weight"
-msgstr ""
-
-#: admin/options.php:747
-msgid "Title text line height"
-msgstr ""
-
-#: admin/options.php:753
-msgid "Title text style"
-msgstr ""
-
-#: admin/options.php:762
-msgid "Description text font"
-msgstr ""
-
-#: admin/options.php:768
-msgid "Description text size"
-msgstr ""
-
-#: admin/options.php:774
-msgid "Description text weight"
-msgstr ""
-
-#: admin/options.php:780
-msgid "Description text line height"
-msgstr ""
-
-#: admin/options.php:786
-msgid "Description text style"
-msgstr ""
-
-#: admin/options.php:792
-msgid "Content Text"
-msgstr ""
-
-#: admin/options.php:796
-msgid "Text font"
-msgstr ""
-
-#: admin/options.php:802
-msgid "Text size"
-msgstr ""
-
-#: admin/options.php:808
-msgid "Text line height"
-msgstr ""
-
-#: admin/options.php:814
-msgid "Text colour"
-msgstr ""
-
-#: admin/options.php:820
-msgid "Link Text"
-msgstr ""
-
-#: admin/options.php:824
-msgid "Link colour (normal state)"
-msgstr ""
-
-#: admin/options.php:830
-msgid "Link colour (visited state)"
-msgstr ""
-
-#: admin/options.php:836
-msgid "Link colour (hover state)"
-msgstr ""
-
-#: admin/options.php:842
-msgid "Text decoration (normal state)"
-msgstr ""
-
-#: admin/options.php:848
-msgid "Text decoration (hover state)"
-msgstr ""
-
-#: admin/options.php:861
-msgid "Footer Widget Display Options"
-msgstr "Možnosti zobrazenia widgetov v päte"
-
-#: admin/options.php:869
-msgid "Number of columns to display"
-msgstr "Počet stĺpcov, ktorý sa má zobraziť"
-
-#: admin/options.php:876
-msgid "Number of columns to display for front page footer widget"
-msgstr "Počet stĺpcov, ktorý sa má zobraziť v päte úvodnej stránky"
-
-#: admin/options.php:890
-msgid "Navigation Menu Display Options"
-msgstr "Možnosti zobrazenia navigačného menu"
-
-#: admin/options.php:898
-msgid "Dropdown menu item width"
-msgstr "Šírka položky v dropdown menu"
-
-#: admin/options.php:911
-msgid "Miscellaneous Display Options"
-msgstr "Rôzne nastavenia zobrazenia"
-
-#: admin/options.php:914
-msgid "Site title options"
-msgstr "Možnosti titulov (nadpisov) stránky"
-
-#: admin/options.php:915
-msgid ""
-"Use these tags to customise your own site title structure: <code>#site-name</"
-"code>, <code>#site-desc</code>, <code>#post-title</code>"
-msgstr ""
-"Použite tieto tagy na úpravu štruktúry titulov (nadpisov): <code>#site-name</"
-"code>, <code>#site-desc</code>, <code>#post-title</code>"
-
-#: admin/options.php:919
-msgid "Custom front page site title"
-msgstr "Vlastný názov webu na titulnej stránke"
-
-#: admin/options.php:923
-msgid ""
-"Defaults to <code>#site-name &raquo; #site-desc</code>. The <code>#post-"
-"title</code> tag cannot be used here."
-msgstr ""
-"Defaults to <code>#site-name &raquo; #site-desc</code>. The <code>#post-"
-"title</code> tag cannot be used here."
-
-#: admin/options.php:928
-msgid "Custom content pages site title"
-msgstr "Titulok stránok custom content"
-
-#: admin/options.php:932
-msgid "Defaults to <code>#post-title &raquo; #site-name</code>."
-msgstr "Nastaví štandardne <code>#post-title &raquo; #site-name</code>."
-
-#: admin/options.php:937
-msgid "Favicon options"
-msgstr "Možnosti Favicon"
-
-#: admin/options.php:941
-msgid "Favicon URL"
-msgstr "Favicon URL"
-
-#: admin/options.php:945
-msgid ""
-"Simply enter the full URL to your favicon file here to enable favicon. Make "
-"sure you include the <code>http://</code> in front of the URL as well."
-msgstr ""
-"Vložte URL adresu súboru favicon. Adresa musí obsahovať i <code>http://</"
-"code>."
-
-#: admin/options.php:957
-msgid "Custom CSS"
-msgstr "Vlastný CSS štýl"
-
-#: admin/options.php:962
-msgid "Custom CSS styles"
-msgstr "Vlastné CSS štýly"
-
-#: admin/options.php:964
-msgid ""
-"You can enter your own CSS codes below to modify any other aspects of the "
-"theme's appearance that is not included in the options."
-msgstr ""
-"Tu môžete vložiť vlastný CSS kód, aby ste upravili tie prvky témy, ktoré nie "
-"je možné upraviť v nastaveniach."
-
-#: admin/uninstall.php:24
-msgid "Theme uninstalled. Redirecting to %s"
-msgstr "Téma bola odinštalovaná. Presmerované na %s"
-
-#: admin/uninstall.php:32
+#: admin/customizer/options-import.php:44 admin/uninstall.php:32
 msgid "ERROR: You are not authorised to perform that operation"
 msgstr "Chyba: Nemáte oprávnenie na vykonanie tejto operácie"
+
+#: admin/customizer/options-import.php:64
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+
+#: admin/customizer/options-import.php:70
+msgid "Import Graphene Theme Colour Presets"
+msgstr ""
+
+#: admin/customizer/options-import.php:73
+msgid ""
+"Choose a Graphene theme's colour presets export file from your computer:"
+msgstr ""
+
+#: admin/customizer/options-import.php:74
+#, php-format
+msgid "Maximum size: %s"
+msgstr ""
+
+#: admin/customizer/options-import.php:81
+msgid "Upload file and import"
+msgstr ""
+
+#: admin/customizer/options-import.php:100
+msgid "Export Graphene Theme Colour Presets"
+msgstr ""
+
+#: admin/customizer/options-import.php:103
+msgid "Please select the colour presets to be exported."
+msgstr ""
+
+#: admin/customizer/options-import.php:113
+msgid "Export colour presets"
+msgstr ""
+
+#: admin/customizer/options-import.php:114
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "&laquo; Return to Graphene Options"
+msgstr "Možnosti Graphene"
+
+#: admin/customizer/options-import.php:132
+#, fuzzy
+#| msgid "ERROR: You are not authorised to perform that operation"
+msgid "Authorisation checks failed to perform this operation."
+msgstr "Chyba: Nemáte oprávnenie na vykonanie tejto operácie"
+
+#: admin/customizer/options-import.php:154
+msgid "Could not read uploaded file. Please check the file and try again."
+msgstr ""
+
+#: admin/customizer/options-import.php:158
+msgid ""
+"Uploaded file does not contain any setting to import. Please check and try "
+"again."
+msgstr ""
+
+#: admin/customizer/options-import.php:159
+msgid ""
+"The uploaded file does not contain valid Graphene options. Please check and "
+"try again."
+msgstr ""
+
+#: admin/customizer/options-utilities.php:19
+msgid "Reset theme settings"
+msgstr ""
+
+#: admin/customizer/options-utilities.php:26
+msgid "Import & export settings"
+msgstr ""
+
+#: admin/customizer/options-utilities.php:33
+msgid ""
+"Import Graphene settings to replace all current Graphene settings on this "
+"website."
+msgstr ""
+
+#: admin/customizer/options-utilities.php:39
+msgid ""
+"Export Graphene settings so that you can import them later on as a backup, "
+"or replicate settings on other websites."
+msgstr ""
+
+#: admin/customizer/options-utilities.php:46
+#, fuzzy
+#| msgid "Use global setting"
+msgid "Legacy settings"
+msgstr "Použiť globálne nastavenia"
+
+#: admin/customizer/options-utilities.php:53
+msgid "Export legacy Graphene settings"
+msgstr ""
+
+#: admin/customizer/options-utilities.php:54
+msgid ""
+"Export legacy Graphene settings in case you need to roll back from Graphene "
+"2.0."
+msgstr ""
+
+#: admin/db-updater.php:247
+#, fuzzy, php-format
+#| msgid "Follow me on Twitter"
+msgid "Follow %s on Twitter"
+msgstr "Čítajte nás Twitter"
+
+#: admin/db-updater.php:258
+#, php-format
+msgid "Visit %s's Facebook page"
+msgstr ""
+
+#: admin/feature-pointers.php:9
+msgid "Where are all the options?!"
+msgstr ""
+
+#: admin/feature-pointers.php:10
+msgid "We've decided to clean things up!"
+msgstr ""
+
+#: admin/feature-pointers.php:11
+msgid ""
+"We know how too many options can really be daunting to new users, so we've "
+"hidden them."
+msgstr ""
+
+#: admin/feature-pointers.php:12
+msgid ""
+"But no worries! If you're a seasoned user of the Graphene theme, or whenever "
+"you feel ready to further customise your site, just click on the \"Show all "
+"options\" link, and they will magically appear to you."
+msgstr ""
+
+#: admin/options-defaults.php:80
+#, fuzzy, php-format
+#| msgid "Subscribe to RSS feed"
+msgid "Subscribe to %s's RSS feed"
+msgstr "Odoberať RSS"
+
+#: admin/options-defaults.php:165
+msgid "Default"
+msgstr ""
+
+#: admin/options-defaults.php:169
+msgid "Dream Magnet"
+msgstr ""
+
+#: admin/options-defaults.php:173
+msgid "Curiosity Killed"
+msgstr ""
+
+#: admin/options-defaults.php:177
+msgid "Zesty Orange"
+msgstr ""
+
+#: admin/options-init.php:51
+msgid "Graphene Options"
+msgstr "Možnosti Graphene"
+
+#: admin/options-init.php:110
+msgid "Template preview not found."
+msgstr ""
+
+#: admin/options-init.php:113
+msgid "default"
+msgstr ""
+
+#: admin/options-init.php:172 admin/options-init.php:176
+msgid "Theme default"
+msgstr ""
+
+#: admin/options-init.php:217
+msgid "Learn more about this feature set"
+msgstr ""
+
+#: admin/options-init.php:218
+msgid "Documentation"
+msgstr ""
+
+#: admin/options.php:26
+#, fuzzy, php-format
+#| msgid "%1$s at %2$s"
+msgid "Version %1$s, by %2$s"
+msgstr "%1$s, %2$s"
+
+#: admin/options.php:32
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Customise Graphene settings"
+msgstr "Možnosti Graphene"
+
+#: admin/options.php:37
+msgid "Get community support"
+msgstr ""
+
+#: admin/options.php:42
+msgid ""
+"Graphene theme is a labour of love, but it could not survive on love alone. "
+"Help support the theme and ensure its continuous development."
+msgstr ""
+
+#: admin/options.php:43
+msgid "Make a contribution"
+msgstr ""
+
+#: admin/options.php:47
+msgid "News and announcement"
+msgstr ""
+
+#: admin/options.php:56
+msgid "No news items."
+msgstr ""
+
+#: admin/uninstall.php:23
+msgid "Uninstall Graphene"
+msgstr "Odinštalovať Graphene"
+
+#: admin/uninstall.php:24
+#, php-format
+msgid "Theme uninstalled. Redirecting to %s"
+msgstr "Téma bola odinštalovaná. Presmerované na %s"
 
 #: admin/user.php:7
 msgid "Graphene-specific User Profile Information"
@@ -1335,21 +1563,27 @@ msgstr "Tieto nastavenia sa použijú iba pri téme Graphene."
 msgid "Author profile image URL"
 msgstr "URL adresa profilového obrázka"
 
-#: admin/user.php:13
+#: admin/user.php:14
+#, fuzzy, php-format
+#| msgid ""
+#| "You can specify the image to be displayed as the author's profile image "
+#| "in the Author's page. If no URL is defined here, the author's <a href="
+#| "\"http://www.gravatar.com\">Gravatar</a> will be used."
 msgid ""
 "You can specify the image to be displayed as the author's profile image in "
-"the Author's page. If no URL is defined here, the author's <a href=\"http://"
-"www.gravatar.com\">Gravatar</a> will be used."
+"the Author's page. If no URL is defined here, the author's %s will be used."
 msgstr ""
 "Môžete určiť, čo bude zobrazované ako váš profilový obrázok na stránke o "
 "autorovi. Ak nevložíte žiadne URL, bude použitý: <a href=\"http://www."
 "gravatar.com\">Gravatar</a>"
 
-#: admin/user.php:17
-msgid "Please enter the URL to your profile image."
+#: admin/user.php:19
+#, fuzzy, php-format
+#| msgid "Please enter the URL to your profile image."
+msgid "Please enter the full URL (including %s) to your profile image."
 msgstr "Zadajte URL vášho profilového obrázku."
 
-#: admin/user.php:17
+#: admin/user.php:19
 msgid ""
 "<strong>Important: </strong>Image width must be less than or equal to "
 "<strong>150px</strong>."
@@ -1357,63 +1591,1047 @@ msgstr ""
 "<strong>Dôležité: </strong>Šírka obrázka musí byť menej než alebo "
 "presne<strong>150px</strong>."
 
-#: archive.php:25
-msgid "Daily Archive: <span>%s</span>"
-msgstr "Denný archív: <span>%s</span>"
+#: admin/user.php:24
+msgid "Hide email"
+msgstr ""
 
-#: archive.php:27
-msgid "Monthly Archive: <span>%s</span>"
-msgstr "Mesačný archív: <span>%s</span>"
+#: admin/user.php:28
+msgid "Remove email address from your author bio."
+msgstr ""
 
-#: archive.php:29
+#: admin/user.php:33
+msgid "Current location"
+msgstr ""
+
+#: admin/user.php:38
+msgid ""
+"Will be displayed on your front-facing author profile page. Recommended to "
+"use \"City, Country\" format, e.g. \"Lisbon, Portugal\"."
+msgstr ""
+
+#: admin/user.php:43
+msgid "Social media URLs"
+msgstr ""
+
+#: archive.php:24 archive.php:26 archive.php:30
+#, fuzzy, php-format
+#| msgid "Archives"
+msgid "%s archive"
+msgstr "Staršie články"
+
+#: archive.php:28
 msgid "F Y"
 msgstr "F Y"
 
-#: archive.php:31
-msgid "Yearly Archive: <span>%s</span>"
-msgstr "Ročný archív: <span>%s</span>"
-
-#: archive.php:33 category.php:14
-msgid "Category Archive: <span>%s</span>"
-msgstr "Archív kategórii: <span>%s</span>"
-
-#: archive.php:35
+#: archive.php:32
 msgid "Blog Archive"
 msgstr "Archív blogu"
 
-#: author.php:33
-msgid "Author's posts listings"
+#: author.php:32
+#, fuzzy
+#| msgid "Author's posts listings"
+msgid "Author's posts"
 msgstr "Prehľad príspevkov autora"
 
-#: comments.php:19
+#: category.php:13
+#, fuzzy, php-format
+#| msgid "Category Archive: <span>%s</span>"
+msgid "Category: <span>%s</span>"
+msgstr "Archív kategórii: <span>%s</span>"
+
+#: comments.php:25
 msgid ""
 "This post is password protected. Enter the password to view any comments."
 msgstr "Tento článok je zaheslovaný. Ak chcete vidieť komentáre zadajte heslo."
 
-#: comments.php:40
-msgid "No comment yet"
-msgstr "Zatiaľ žiadne komentáre"
+#: comments.php:50 inc/loop.php:818 loop-author.php:58
+#, fuzzy, php-format
+#| msgid "% comments"
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] "% komentárov"
+msgstr[1] "% komentárov"
+msgstr[2] "% komentárov"
 
-#: comments.php:40 loop-author.php:90 loop.php:127
-msgid "1 comment"
-msgstr "1 komentár"
+#: comments.php:52
+#, fuzzy, php-format
+#| msgid "% pings"
+msgid "%s ping"
+msgid_plural "%s pings"
+msgstr[0] "% pingov"
+msgstr[1] "% pingov"
+msgstr[2] "% pingov"
 
-#: comments.php:40 loop-author.php:90 loop.php:127
-msgid "% comments"
-msgstr "% komentárov"
+#: comments.php:82
+#, fuzzy
+#| msgid "Edit comment"
+msgid "Skip to comment form"
+msgstr "Upraviť komentár"
 
-#: comments.php:41
-msgid "No ping yet"
-msgstr "Zatiaľ žiadny ping"
-
-#: comments.php:41
-msgid "1 ping"
-msgstr "1 ping"
-
-#: comments.php:41
-msgid "% pings"
-msgstr "% pingov"
-
-#: comments.php:79
+#: comments.php:124
 msgid "Comments have been disabled."
 msgstr "Komentáre sú vypnuté"
+
+#: comments.php:138
+msgid "Your email address will not be published."
+msgstr "Vaša emailová adresa nebude uverejnená."
+
+#: comments.php:141
+msgid "Submit Comment"
+msgstr "Odoslať komentár"
+
+#: footer.php:74
+#, php-format
+msgid "Made with %1$s by %2$s."
+msgstr ""
+
+#: footer.php:76
+#, fuzzy
+#| msgid "Graphene Theme Options"
+msgid "Graphene Themes"
+msgstr "Možnosti témy Graphene"
+
+#: header.php:30
+msgid "Toggle search form"
+msgstr ""
+
+#: header.php:60 header.php:98
+msgid "Go back to the front page"
+msgstr "Späť na úvodnú stránku"
+
+#: header.php:81
+msgid "Toggle navigation"
+msgstr ""
+
+#: inc/comments.php:25
+msgid "Your comment is awaiting moderation."
+msgstr "Váš komentár čaká na schválenie."
+
+#: inc/comments.php:54
+#, fuzzy
+#| msgid "Name:"
+msgid "Name"
+msgstr "Meno:"
+
+#: inc/comments.php:58
+#, fuzzy
+#| msgid "Email:"
+msgid "Email"
+msgstr "Email:"
+
+#: inc/comments.php:62
+#, fuzzy
+#| msgid "Site title options"
+msgid "Website (optional)"
+msgstr "Možnosti titulov (nadpisov) stránky"
+
+#: inc/comments.php:88
+#, fuzzy
+#| msgid "Message:"
+msgid "Your message"
+msgstr "Správa:"
+
+#: inc/comments.php:184
+#, fuzzy
+#| msgid "Leave comment"
+msgid "Delete this comment"
+msgstr "Pridať komentár"
+
+#: inc/comments.php:186
+msgid "Mark this comment as spam"
+msgstr ""
+
+#: inc/comments.php:186
+msgid "Spam"
+msgstr ""
+
+#: inc/comments.php:213
+#, fuzzy
+#| msgid "Leave comment"
+msgid "Fetch more comments"
+msgstr "Pridať komentár"
+
+#: inc/comments.php:258
+#, php-format
+msgid "%1$s on %2$s <span class=\"time\">at %3$s</span>"
+msgstr ""
+
+#: inc/comments.php:263
+msgid "Author"
+msgstr ""
+
+#: inc/comments.php:271
+msgid "Reply"
+msgstr "Odpoveď"
+
+#: inc/functions.php:184
+#, php-format
+msgid "Visit %1$s's %2$s page"
+msgstr ""
+
+#: inc/functions.php:327
+#, php-format
+msgid ""
+"You haven't placed any widget into this widget area. Go to %1$s and place "
+"some widgets in the widget area called %2$s."
+msgstr ""
+
+#: inc/functions.php:327
+msgid "WP Admin > Appearance > Widgets"
+msgstr ""
+
+#: inc/functions.php:328
+msgid "This notice will not be displayed to your site's visitors."
+msgstr ""
+
+#: inc/infinite-scroll.php:98 inc/scripts.php:73
+msgid "Load more"
+msgstr ""
+
+#: inc/loop.php:99
+msgid "Continue reading &raquo;"
+msgstr "Chcem vedieť viac &raquo;"
+
+#: inc/loop.php:220
+msgid "&laquo; Prev"
+msgstr ""
+
+#: inc/loop.php:221
+#, fuzzy
+#| msgid "View page &raquo;"
+msgid "Next &raquo;"
+msgstr "Zobraziť stránku &raquo;"
+
+#: inc/loop.php:235
+msgid "Pages:"
+msgstr ""
+
+#: inc/loop.php:573
+#, php-format
+msgid "Print this %s"
+msgstr ""
+
+#: inc/loop.php:597
+#, fuzzy, php-format
+#| msgid "Permalink to %s"
+msgid "Return to %s"
+msgstr "Trvalý odkaz na %s"
+
+#: inc/loop.php:727
+#, fuzzy, php-format
+#| msgid "%1$s at %2$s"
+msgid "By %1$s in %2$s"
+msgstr "%1$s, %2$s"
+
+#: inc/loop.php:728
+#, php-format
+msgid "Filed under %2$s"
+msgstr ""
+
+#: inc/loop.php:729
+#, php-format
+msgid "By %s"
+msgstr ""
+
+#: inc/loop.php:810
+#, fuzzy
+#| msgid "Tags:"
+msgid "Tags"
+msgstr "Kľúčové slová:"
+
+#: inc/loop.php:817
+msgid "Leave comment"
+msgstr "Pridať komentár"
+
+#: inc/loop.php:916
+msgid "In this section"
+msgstr ""
+
+#: inc/menus.php:135
+msgid "FontAwesome Icon Name"
+msgstr ""
+
+#: inc/menus.php:178
+#, php-format
+msgid "Choose from 580+ %s"
+msgstr ""
+
+#: inc/menus.php:178
+msgid "available icons"
+msgstr ""
+
+#: inc/menus.php:223
+msgid "Home"
+msgstr "Domov"
+
+#: inc/menus.php:295
+#, fuzzy, php-format
+#| msgid "(No title)"
+msgid "#%d (no title)"
+msgstr "(Žiadny nadpis)"
+
+#: inc/panes.php:70 inc/panes.php:85 loop-author.php:58 loop-children.php:45
+#: loop.php:17 loop.php:43
+#, php-format
+msgid "Permalink to %s"
+msgstr "Trvalý odkaz na %s"
+
+#: inc/panes.php:85
+msgid "Read more"
+msgstr ""
+
+#: inc/scripts.php:80
+#, php-format
+msgid "Fetching %1$s of %2$s items left ..."
+msgstr ""
+
+#: inc/scripts.php:84
+#, php-format
+msgid "Fetching %1$s of %2$s item left ..."
+msgid_plural "Fetching %1$s of %2$s items left ..."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: inc/scripts.php:89
+msgid "All loaded!"
+msgstr ""
+
+#: inc/scripts.php:93 inc/scripts.php:97
+#, php-format
+msgid "Fetching %1$s of %2$s comments left ..."
+msgid_plural "Fetching %1$s of %2$s comments left ..."
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: inc/scripts.php:102
+#, fuzzy
+#| msgid "% comments"
+msgid "All comments loaded!"
+msgstr "% komentárov"
+
+#: inc/setup.php:94
+msgid "Header Menu"
+msgstr "Menu v hlavičke"
+
+#: inc/setup.php:96
+#, fuzzy
+#| msgid "Footer Options"
+msgid "Footer Menu"
+msgstr "Možnosti päty"
+
+#: inc/setup.php:146
+msgid "Forest"
+msgstr ""
+
+#: inc/setup.php:151
+msgid "Mountains"
+msgstr ""
+
+#: inc/setup.php:156
+msgid "Road"
+msgstr ""
+
+#: inc/setup.php:160
+msgid "Header image by Syahir Hakim"
+msgstr "Titulný obrázok vytvoril Syahir Hakim"
+
+#: inc/setup.php:164
+msgid ""
+"This is the default Graphene theme header image, cropped from image by "
+"Quantin Houyoux at sxc.hu"
+msgstr ""
+
+#: inc/setup.php:168 inc/setup.php:172 inc/setup.php:176 inc/setup.php:180
+#: inc/setup.php:184
+msgid "Header image cropped from image by Ilco at sxc.hu"
+msgstr ""
+
+#: inc/setup.php:205
+msgid "Graphene - Sidebar One"
+msgstr ""
+
+#: inc/setup.php:207
+#, fuzzy
+#| msgid ""
+#| "The first sidebar widget area that will only be displayed on the front "
+#| "page."
+msgid ""
+"The first sidebar widget area (will always be displayed on the right hand "
+"side)."
+msgstr "Prvá bočná lišta pre widgery, ktorá sa zobrazí len na úvodnej stránke."
+
+#: inc/setup.php:214
+msgid "Graphene - Sidebar Two"
+msgstr ""
+
+#: inc/setup.php:216
+#, fuzzy
+#| msgid ""
+#| "The second sidebar widget area that will only be displayed on the front "
+#| "page."
+msgid ""
+"The second sidebar widget area (will always be displayed on the left hand "
+"side)."
+msgstr ""
+"Druhá bočná lišta pre widgety (sidebar) sa zobrazí len na úvodnej stránke."
+
+#: inc/setup.php:234
+#, fuzzy
+#| msgid "Graphene FAQs"
+msgid "Graphene - Footer"
+msgstr "Graphene FAQ"
+
+#: inc/setup.php:236
+msgid ""
+"The footer widget area. Leave empty to disable. Set the number of columns to "
+"display at the theme's Display Options page."
+msgstr ""
+"Priestor pre widgety v päte stránky. Nechajte prázdny, ak ho nechcete "
+"používať. Nastavte počet stĺpcov v nastaveniach zobrazenia témy."
+
+#: inc/setup.php:251
+msgid "Graphene - Sidebar One (Front Page)"
+msgstr ""
+
+#: inc/setup.php:253
+msgid ""
+"The first sidebar widget area that will only be displayed on the front page."
+msgstr "Prvá bočná lišta pre widgery, ktorá sa zobrazí len na úvodnej stránke."
+
+#: inc/setup.php:260
+msgid "Graphene - Sidebar Two (Front Page)"
+msgstr ""
+
+#: inc/setup.php:262
+msgid ""
+"The second sidebar widget area that will only be displayed on the front page."
+msgstr ""
+"Druhá bočná lišta pre widgety (sidebar) sa zobrazí len na úvodnej stránke."
+
+#: inc/setup.php:271
+msgid "Graphene - Footer (Front Page)"
+msgstr ""
+
+#: inc/setup.php:273
+msgid ""
+"The footer widget area that will only be displayed on the front page. Leave "
+"empty to disable. Set the number of columns to display at the theme's "
+"Display Options page."
+msgstr ""
+"Priestor pre widgety v päte stránky sa zobrazí len na úvodnej stránke. "
+"Nechajte prázdny ak ho chcete vypnúť. Nastavte počet stĺpcov na zobrazenie v "
+"nastaveniach zobrazenia témy"
+
+#: inc/setup.php:283
+#, fuzzy
+#| msgid "Graphene FAQs"
+msgid "Graphene - Header"
+msgstr "Graphene FAQ"
+
+#: inc/setup.php:285
+msgid "The header widget area."
+msgstr "Priestor pre widgety v hlavičke"
+
+#: inc/setup.php:302
+#, php-format
+msgid ""
+"Dynamically added widget area. This widget area is attached to the %s action "
+"hook."
+msgstr ""
+
+#: inc/slider.php:61
+#, fuzzy
+#| msgid "View full post"
+msgid "View post"
+msgstr "Zobraziť celý článok."
+
+#: loop-author.php:58 loop-children.php:45 loop-page.php:5 loop-page.php:16
+#: loop-single.php:16 loop.php:4 loop.php:18
+msgid "(No title)"
+msgstr "(Žiadny nadpis)"
+
+#: loop-author.php:65
+msgid "Most commented posts"
+msgstr "Najviac komentované príspevky"
+
+#: loop-not-found.php:3
+msgid "Not found"
+msgstr "Nenašlo sa"
+
+#: loop-not-found.php:8
+msgid ""
+"Sorry, but you are looking for something that isn't here. Wanna try a search?"
+msgstr ""
+"Prepáčte, ale pokúšate sa zobraziť obsah, ktorý tu nie je. Čo tak skúsiť "
+"hľadanie?"
+
+#: loop-not-found.php:10
+msgid ""
+"Sorry, but no results were found for that keyword. Wanna try an alternative "
+"keyword search?"
+msgstr "Prepáčte, ale k tomu kľúčovému slovu sa nenašli žiadne výsledky."
+
+#: loop-page.php:42 loop-single.php:44 loop.php:74
+#, fuzzy
+#| msgid "Permalink to %s"
+msgid "Permanent link to this article:"
+msgstr "Trvalý odkaz na %s"
+
+#: loop.php:36
+#, fuzzy
+#| msgid "Continue reading &raquo;"
+msgid "Continue reading"
+msgstr "Chcem vedieť viac &raquo;"
+
+#: search-404.php:17
+#, php-format
+msgid "Found %1$s search result for keyword: %2$s"
+msgid_plural "Found %1$s search results for keyword: %2$s"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: search-404.php:26
+msgid "Suggested results"
+msgstr "Vhodné výsledky"
+
+#: search-404.php:31
+#, fuzzy, php-format
+#| msgid ""
+#| "I've done a courtesy search for the term %s for you. See if you can find "
+#| "what you're looking for in the list below:"
+msgid ""
+"I've done a courtesy search for the term %1$s for you and found a total of "
+"%2$s result. See if you can find what you're looking for below."
+msgid_plural ""
+"I've done a courtesy search for the term %1$s for you and found a total of "
+"%2$s results. See if you can find what you're looking for below."
+msgstr[0] ""
+"Pri hľadaní sme %s  sme našli nejaké odkazy, možno tu nájdete to, čo ste "
+"hľadali:"
+msgstr[1] ""
+"Pri hľadaní sme %s  sme našli nejaké odkazy, možno tu nájdete to, čo ste "
+"hľadali:"
+msgstr[2] ""
+"Pri hľadaní sme %s  sme našli nejaké odkazy, možno tu nájdete to, čo ste "
+"hľadali:"
+
+#: search-404.php:52
+msgid ""
+"<strong>Sorry, couldn't find anything.</strong> Try searching for "
+"alternative terms using the search form above."
+msgstr "<strong>Bohužiaľ sa nič nenašlo.</strong>Skúste hľadať podobné výrazy."
+
+#: search.php:18
+#, fuzzy, php-format
+#| msgid "%1$s at %2$s"
+msgid "%1$d result for %2$s"
+msgid_plural "%1$d results for %2$s"
+msgstr[0] "%1$s, %2$s"
+msgstr[1] "%1$s, %2$s"
+msgstr[2] "%1$s, %2$s"
+
+#: searchform.php:3
+msgid "Search"
+msgstr "Hľadať"
+
+#: sidebar-two.php:28
+msgid "Front Page Sidebar Two Widget Area"
+msgstr "Druhá bočná lišta (sidebar) pre widgety na úvodnej stránke"
+
+#: sidebar-two.php:30
+msgid "Sidebar Two Widget Area"
+msgstr "Druhá bočná plocha widgetov"
+
+#: sidebar.php:28
+msgid "Front Page Sidebar Widget Area"
+msgstr "Bočná lišta pre widgety úvodnej stránky"
+
+#: sidebar.php:30
+msgid "Sidebar Widget Area"
+msgstr "Bočná plocha na Wigdety"
+
+#: tag.php:13
+#, fuzzy, php-format
+#| msgid "Tag Archive: <span>%s</span>"
+msgid "Tag: <span>%s</span>"
+msgstr "Archív tagov: <span>%s</span>"
+
+#: taxonomy.php:15
+#, fuzzy, php-format
+#| msgid "%1$s at %2$s"
+msgid "%1$s: %2$s"
+msgstr "%1$s, %2$s"
+
+#: template-onecolumn.php:10
+msgid "One column, no sidebar"
+msgstr ""
+
+#: template-threecolumnscenter.php:11
+msgid "Three columns, sidebar left and right"
+msgstr ""
+
+#: template-threecolumnsleft.php:13
+msgid "Three columns, sidebars on the right"
+msgstr ""
+
+#: template-threecolumnsright.php:13
+msgid "Three columns, sidebars on the left"
+msgstr ""
+
+#: template-twocolumnsleft.php:13
+msgid "Two columns, sidebar on the right"
+msgstr ""
+
+#: template-twocolumnsright.php:13
+msgid "Two columns, sidebar on the left"
+msgstr ""
+
+#~ msgid ""
+#~ "You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> "
+#~ "tags and attributes: %s"
+#~ msgstr ""
+#~ "Môžte používať nasledujúce <abbr title=\"HyperText Markup Language"
+#~ "\">HTML</abbr> tagy a vlastnosti: %s"
+
+#~ msgid ""
+#~ "Except where otherwise noted, content on this site is licensed under a <a "
+#~ "href=\"http://creativecommons.org/licenses/by-nc-nd/3.0/\">Creative "
+#~ "Commons Licence</a>."
+#~ msgstr ""
+#~ "Ak nie je uvedené inak, obsah na tejto stránke spadá pod <a href=\"http://"
+#~ "creativecommons.org/licenses/by-nc-nd/3.0/\">Creative Commons Licence</a>."
+
+#~ msgid "Valid XHTML 1.0 Strict"
+#~ msgstr "Stránka je validná XHTML 1.0 Strict"
+
+#~ msgid "Valid CSS"
+#~ msgstr "Validné CSS"
+
+#~ msgid "Valid CSS Level 2.1"
+#~ msgstr "Validné CSS Level 2.1"
+
+#~ msgid "%1$s uses %2$s theme by %3$s."
+#~ msgstr "%1$s používa %2$s tému."
+
+#~ msgid " says:"
+#~ msgstr "hovorí:"
+
+#~ msgid ""
+#~ "The first sidebar widget area (available in two and three column layouts)."
+#~ msgstr ""
+#~ "Prvá bočná plocha widgetov (dostupná v dvoj-, alebo trojstĺpcovom "
+#~ "rozložení)"
+
+#~ msgid ""
+#~ "The second sidebar widget area (only available in three column layouts)."
+#~ msgstr "Druhá bočná plocha widgetov (dostupná iba ako trojstĺpcová)"
+
+#~ msgid "Front Page Footer Widget Area"
+#~ msgstr "Widgety v päte úvodnej stránky"
+
+#~ msgid "Display the latest Twitter status updates."
+#~ msgstr "Zobraziť posledné statusy z Twittera."
+
+#~ msgid "Latest tweets"
+#~ msgstr "Najnovšie tweety"
+
+#~ msgid "Title:"
+#~ msgstr "Nadpis:"
+
+#~ msgid "Twitter Username:"
+#~ msgstr "Twitter login:"
+
+#~ msgid "Number of tweets to display:"
+#~ msgstr "Počet tweetov na zobrazenie:"
+
+#~ msgid "Website:"
+#~ msgstr "Web:"
+
+#~ msgid "Older posts &laquo;"
+#~ msgstr "Staršie &laquo;"
+
+#~ msgid "&raquo; Newer posts"
+#~ msgstr "&raquo; Novšie"
+
+#~ msgid ""
+#~ "<strong>ERROR: You must supply the post ID to get the image from as an "
+#~ "argument when calling the graphene_get_post_image() function.</strong>"
+#~ msgstr ""
+#~ "<strong>CHYBA: Musíte vložiť ID príspevku na získanie obrázku vo funkcii "
+#~ "graphene_get_post_image() function.</strong>"
+
+#~ msgid "Author's details"
+#~ msgstr "O autorovi"
+
+#~ msgid "<strong>Name:</strong> %1$s %2$s"
+#~ msgstr "<strong>Meno:</strong> %1$s %2$s"
+
+#~ msgid "<strong>Date registered:</strong> %1$s"
+#~ msgstr "<strong>Dátum registrácie:</strong> %1$s"
+
+#~ msgid "Biography"
+#~ msgstr "Životopis"
+
+#~ msgid "Permalink Link to %s"
+#~ msgstr "Permalink odkaz na %s"
+
+#~ msgid "Edit post"
+#~ msgstr "Upraviť príspevok"
+
+#~ msgid "by"
+#~ msgstr "od"
+
+#~ msgid "Read the rest of this entry &raquo;"
+#~ msgstr "Prečítajte si viac &raquo;"
+
+#~ msgid "<div class=\"link-pages\"><p><strong>Pages:</strong> "
+#~ msgstr "<div class=\"link-pages\"><p><strong>Stránky:</strong> "
+
+#~ msgid "This post has no tag"
+#~ msgstr "Tento článok nemá žiadne kľúčové slová"
+
+#~ msgid "About the author"
+#~ msgstr "O autorovi"
+
+#~ msgid "Meta"
+#~ msgstr "Meta"
+
+#~ msgid "Posts RSS"
+#~ msgstr "RSS kanál"
+
+#~ msgid "Powered by %s"
+#~ msgstr "Služu poskytuje %s"
+
+#~ msgid ""
+#~ "Powered by WordPress, state-of-the-art semantic personal publishing "
+#~ "platform."
+#~ msgstr "Službu poskytuje WordPress"
+
+#~ msgid "Graphene's Frequently Asked Questions"
+#~ msgstr "Často kladené otázky pre Graphene"
+
+#~ msgid "Where should I go for the theme's support?"
+#~ msgstr "Kde mám hľadať podporu témy"
+
+#~ msgid ""
+#~ "Please direct all support requests for the theme at the theme's <a href="
+#~ "\"http://forum.khairul-syahir.com/forum/graphene-wordpress-theme"
+#~ "\">Support Forum</a>."
+#~ msgstr ""
+#~ "Adresujte všetky otázky a žiadosti o pomoc ohľadom témy Graphene na <a "
+#~ "href=\"http://forum.khairul-syahir.com/forum/graphene-wordpress-theme"
+#~ "\">Support Forum</a>."
+
+#~ msgid "The post's featured image is replacing my header image. Help!"
+#~ msgstr "Featured obrázok nahradzuje obrázok hlavičky. Pomoc!"
+
+#~ msgid ""
+#~ "If you want to disable this feature, simply tick the <em>Disable Featured "
+#~ "Image replacing header image</em> option in the <a href=\"themes.php?"
+#~ "page=graphene_options&tab=display\">Graphene Options</a> page, under "
+#~ "Display > Header Display Options."
+#~ msgstr ""
+#~ "If you want to disable this feature, simply tick the <em>Disable Featured "
+#~ "Image replacing header image</em> option in the <a href=\"themes.php?"
+#~ "page=graphene_options&tab=display\">Graphene Options</a> page, under "
+#~ "Display > Header Display Options."
+
+#~ msgid "Can I modify Graphene to my heart's content without paying anything?"
+#~ msgstr "Môžem si upraviť Graphene bez nutnosti niečo platiť?"
+
+#~ msgid "Is the theme compatible with this plugin or that plugin?"
+#~ msgstr "Je táto téma kompatibilná s týmto alebo tamtým pluginom?"
+
+#~ msgid ""
+#~ "I don't know. With so many plugins available for Wordpress, there's no "
+#~ "way that I (or anybody else for that matter) can test for compatibility "
+#~ "for all of them. Having said that, the theme is built with all the "
+#~ "necessary Wordpress components included with it, so chances are most "
+#~ "plugins will be compatible with the theme."
+#~ msgstr ""
+#~ "Neviem. Pre Wordpress existujú tisícky pluginov, takže nikto neotestuje "
+#~ "všetky možné kombinácie pluginov."
+
+#~ msgid ""
+#~ "My suggestion is to just install the plugin and try it. If you stumble "
+#~ "into problem, ask for support from the plugin author first. If the plugin "
+#~ "author says that it's a problems with the theme, you know where to find "
+#~ "support."
+#~ msgstr ""
+#~ "Doporučujem nainštalovať plugin a vyskúšať ho. Ak sa objaví problém, "
+#~ "obráťte sa najskôr na autora pluginu. Ak autor pluginu tvrdí, že problém "
+#~ "je v téme Graphene, viete kde hľadať podporu - asi na stránke fóra "
+#~ "Graphene :-)"
+
+#~ msgid ""
+#~ "Please confirm that you would like to uninstall the Graphene theme. All "
+#~ "of the theme's options in the database will be deleted."
+#~ msgstr ""
+#~ "Prosím potvrďte, že chcete odinštalovať tému Graphene. Všetky nastavenia "
+#~ "budú vymazané."
+
+#~ msgid "Uninstall Theme"
+#~ msgstr "Odinštalovať tému"
+
+#~ msgid ""
+#~ "These are the global settings for the theme. You may override some of the "
+#~ "settings in individual posts and pages."
+#~ msgstr ""
+#~ "Toto sú globálne nastavenia témy. Niektoré z nich môžete neskôr nahradiť "
+#~ "individuálnymi nastaveniami príspevkov a stránok."
+
+#~ msgid "General"
+#~ msgstr "Všeobecné"
+
+#~ msgid "Display"
+#~ msgstr "Zobrazenie"
+
+#~ msgid "Save Options"
+#~ msgstr "Uložiť možnosti"
+
+#~ msgid "Support the developer"
+#~ msgstr "Podporiť tvorcu"
+
+#~ msgid ""
+#~ "Developing this awesome theme took a lot of effort and time, months and "
+#~ "months of continuous voluntary unpaid work. If you like this theme or if "
+#~ "you are using it for commercial websites, please consider a donation to "
+#~ "the developer to help support future updates and development."
+#~ msgstr ""
+#~ "Vytvorenie tejto témy stálo mnoho času a úsilia, mesiace a mesiace "
+#~ "dobrovoľnej a nikým nezaplatenej práce. Ak ste si obľúbili túto tému, "
+#~ "alebo ak ju používate na komerčné účely, zvážte prosím príspevok "
+#~ "tvorcovi, aby ste pomohli ju ďalej inovovať a zlepšovať."
+
+#~ msgid "Uninstall theme"
+#~ msgstr "Odinštalovať tému"
+
+#~ msgid ""
+#~ "<strong>Be careful!</strong> Uninstalling the theme will remove all of "
+#~ "the theme's options from the database. Do this only if you decide not to "
+#~ "use the theme anymore."
+#~ msgstr ""
+#~ "<strong>Pozor!</strong> Ak odinštalujete túto tému, stratíte všetky "
+#~ "nastavenia. Použite túto možnosť len v prípade, že tému už neplánujete "
+#~ "nikdy využívať."
+
+#~ msgid ""
+#~ "If you just want to try another theme, there is no need to uninstall this "
+#~ "theme. Simply activate the other theme in the Appearance > Themes admin "
+#~ "page."
+#~ msgstr ""
+#~ "Ak chcete len vyskúšať inú tému, nemusíte túto odinštalovať. Len "
+#~ "aktivujte novú tému v Appearance > Themes na nástenke."
+
+#~ msgid "Slider Options"
+#~ msgstr "Možnosti posuvníka"
+
+#~ msgid "Thumbnail and excerpt"
+#~ msgstr "Miniatúra a úryvok"
+
+#~ msgid "You may select multiple categories by holding down the CTRL key."
+#~ msgstr "Môžte zvoliť viacero kategórii stlačením CTRL."
+
+#~ msgid "Header widget area"
+#~ msgstr "Priestor pre widgety v hlavičke"
+
+#~ msgid "Alternate Widgets"
+#~ msgstr "Striedať widgety"
+
+#~ msgid ""
+#~ "You can enable the theme to show different widget areas in the front page "
+#~ "than the rest of the website. If you enable this option, additional "
+#~ "widget areas that will only be displayed on the front page will be added "
+#~ "to the Widget settings page."
+#~ msgstr ""
+#~ "Tu môžete povoliť zobrazovanie rôznych priestorov pre widgety na úvodnej "
+#~ "stránky a na zvyšku webu. Ak označíte túto možnosť, ďalšie priestory pre "
+#~ "widgety určené na úvodnú stránku sa zobrazia v možnostiach nastavenia "
+#~ "widgetov."
+
+#~ msgid ""
+#~ "You can also specify different column counts for the front page footer "
+#~ "widget and the rest-of-site footer widget if you enable this option."
+#~ msgstr ""
+#~ "Zaškrtnutím môžete špecifikovať rôzne počty stĺpcov pre pätu úvodnej "
+#~ "stránky a pre ostatné stránky."
+
+#~ msgid "Feed Options"
+#~ msgstr "Nastavenia RSS"
+
+#~ msgid "Hide feed icon"
+#~ msgstr "Nezobrazovať ikonu RSS"
+
+#~ msgid "Use custom feed URL"
+#~ msgstr "Použiť užívateľské URL feedu RSS."
+
+#~ msgid ""
+#~ "This custom feed URL will replace the default Wordpress RSS feed URL."
+#~ msgstr "Toto URL nahradí pôvodnú adresu RSS stránky (systému) Wordpress."
+
+#~ msgid "Show in Pages as well?"
+#~ msgstr "Zobraziť aj na stránkach?"
+
+#~ msgid "Adsense Options"
+#~ msgstr "Možnosti Adsense"
+
+#~ msgid "Show Adsense advertising"
+#~ msgstr "Zobrazovať reklamy Adsense"
+
+#~ msgid "Show ads on front page as well"
+#~ msgstr "Zobrazovať reklamy na úvodnej stránke"
+
+#~ msgid "Google Analytics Options"
+#~ msgstr "Možnosti Google Analytics"
+
+#~ msgid ""
+#~ "Make sure you include the full tracking code (including the <code>&lt;"
+#~ "script&gt;</code> and <code>&lt;/script&gt;</code> tags) and not just the "
+#~ "<code>UA-#######-#</code> code."
+#~ msgstr ""
+#~ "Vložte úplný tracking kód (vrátane <code>&lt;script&gt;</code> and "
+#~ "<code>&lt;/script&gt;</code> tags) a nielen <code>UA-#######-#</code> "
+#~ "code."
+
+#~ msgid "Show Creative Commons logo"
+#~ msgstr "Zobraziť logo Creative Commons"
+
+#~ msgid ""
+#~ "If this field is empty, the following default copyright text will be "
+#~ "displayed:"
+#~ msgstr "Ak je toto pole prázdne, bude zobrazený nasledujúci  copyright:"
+
+#~ msgid "Header Display Options"
+#~ msgstr "Nastavenia zobrazenia hlavičky (header)"
+
+#~ msgid "Use random header image"
+#~ msgstr "Použiť náhodný titulný obrázok (header)"
+
+#~ msgid ""
+#~ "Check this to show a random header image (random image taken from the "
+#~ "available default header images)."
+#~ msgstr ""
+#~ "Označte na zobrazenie náhodného titulného obrázku (vybraného zo "
+#~ "dostupných štandardných titulných obrázkov)."
+
+#~ msgid ""
+#~ "<strong>Note:</strong> only works on pages where a specific header image "
+#~ "is not defined."
+#~ msgstr ""
+#~ "<strong>Poznámka:</strong> funguje správne len na stránkach, ktoré nemajú "
+#~ "špecifikovaný titulný obrázok (header)"
+
+#~ msgid "Hide the top bar"
+#~ msgstr "Nezobrazovať vrchnú lištu"
+
+#~ msgid "Column Options"
+#~ msgstr "Možnosti stĺpcov"
+
+#~ msgid "Posts Display Options"
+#~ msgstr "Nastavenia zobrazenia príspevkov"
+
+#~ msgid ""
+#~ "Note: displaying date as inline text allows more space for the content "
+#~ "area, especially useful for a three-column layout configuration."
+#~ msgstr ""
+#~ "Poznámka: zobrazovanie dátumu ako inline textu ponechá viac priestoru v "
+#~ "časti pre obsah - vhodné najmä pre trojstĺpcové nastavenie."
+
+#~ msgid ""
+#~ "Only affects posts listing (such as the front page) and not single post "
+#~ "view."
+#~ msgstr ""
+#~ "Ovplyvní len zobrazenie zoznamu príspevkov a nie zobrazenie samotných "
+#~ "príspevkov."
+
+#~ msgid "Show post author's gravatar"
+#~ msgstr "Zobraziť profilový obrázok autora príspevku"
+
+#~ msgid "Show post author's info"
+#~ msgstr "Zobraziť info o autorovi príspevku"
+
+#~ msgid "Comments Display Options"
+#~ msgstr "Nastavenia zobrazenia komentárov"
+
+#~ msgid "Hide allowed tags in comment form"
+#~ msgstr "Nezobrazovať povolené tagy vo formulároch komentárov"
+
+#~ msgid "Text Style Options"
+#~ msgstr "Možnosti štýlu textu"
+
+#~ msgid "Footer Widget Display Options"
+#~ msgstr "Možnosti zobrazenia widgetov v päte"
+
+#~ msgid "Number of columns to display"
+#~ msgstr "Počet stĺpcov, ktorý sa má zobraziť"
+
+#~ msgid "Number of columns to display for front page footer widget"
+#~ msgstr "Počet stĺpcov, ktorý sa má zobraziť v päte úvodnej stránky"
+
+#~ msgid "Navigation Menu Display Options"
+#~ msgstr "Možnosti zobrazenia navigačného menu"
+
+#~ msgid ""
+#~ "Use these tags to customise your own site title structure: <code>#site-"
+#~ "name</code>, <code>#site-desc</code>, <code>#post-title</code>"
+#~ msgstr ""
+#~ "Použite tieto tagy na úpravu štruktúry titulov (nadpisov): <code>#site-"
+#~ "name</code>, <code>#site-desc</code>, <code>#post-title</code>"
+
+#~ msgid "Custom front page site title"
+#~ msgstr "Vlastný názov webu na titulnej stránke"
+
+#~ msgid ""
+#~ "Defaults to <code>#site-name &raquo; #site-desc</code>. The <code>#post-"
+#~ "title</code> tag cannot be used here."
+#~ msgstr ""
+#~ "Defaults to <code>#site-name &raquo; #site-desc</code>. The <code>#post-"
+#~ "title</code> tag cannot be used here."
+
+#~ msgid "Custom content pages site title"
+#~ msgstr "Titulok stránok custom content"
+
+#~ msgid "Defaults to <code>#post-title &raquo; #site-name</code>."
+#~ msgstr "Nastaví štandardne <code>#post-title &raquo; #site-name</code>."
+
+#~ msgid ""
+#~ "Simply enter the full URL to your favicon file here to enable favicon. "
+#~ "Make sure you include the <code>http://</code> in front of the URL as "
+#~ "well."
+#~ msgstr ""
+#~ "Vložte URL adresu súboru favicon. Adresa musí obsahovať i <code>http://</"
+#~ "code>."
+
+#~ msgid "Custom CSS"
+#~ msgstr "Vlastný CSS štýl"
+
+#~ msgid "Custom CSS styles"
+#~ msgstr "Vlastné CSS štýly"
+
+#~ msgid ""
+#~ "You can enter your own CSS codes below to modify any other aspects of the "
+#~ "theme's appearance that is not included in the options."
+#~ msgstr ""
+#~ "Tu môžete vložiť vlastný CSS kód, aby ste upravili tie prvky témy, ktoré "
+#~ "nie je možné upraviť v nastaveniach."
+
+#~ msgid "Daily Archive: <span>%s</span>"
+#~ msgstr "Denný archív: <span>%s</span>"
+
+#~ msgid "Monthly Archive: <span>%s</span>"
+#~ msgstr "Mesačný archív: <span>%s</span>"
+
+#~ msgid "Yearly Archive: <span>%s</span>"
+#~ msgstr "Ročný archív: <span>%s</span>"
+
+#~ msgid "1 comment"
+#~ msgstr "1 komentár"
+
+#~ msgid "No ping yet"
+#~ msgstr "Zatiaľ žiadny ping"
+
+#~ msgid "1 ping"
+#~ msgstr "1 ping"

@@ -4,7 +4,7 @@
  * is available for any setting, these defaults will be used.
  */
 global $graphene_defaults;
-$graphene_defaults = array(
+$graphene_defaults = apply_filters( 'graphene_defaults', array(
 	/* Theme's DB version */
 	'db_version' 		=> '1.3',
 	
@@ -31,11 +31,13 @@ $graphene_defaults = array(
     'slider_specific_categories'=> '',
 	'slider_exclude_categories'	=> false,
 	'slider_random_category_posts' => false,
-	'slider_postcount' 			=> '',
+	'slider_postcount' 			=> 5,
+	'slider_with_image_only'	=> false,
 	'slider_img' 				=> 'featured_image', // disabled | featured_image | post_image | custom_url
 	'slider_display_style' 		=> 'bgimage-excerpt', // thumbnail-excerpt | bgimage-excerpt | full-post
 	'slider_imgurl' 			=> '',
-	'slider_height' 			=> '400',
+	'slider_height' 			=> 400,
+	'slider_height_mobile'		=> 250,
 	'slider_speed' 				=> 7000,
 	'slider_position' 			=> false,
 	'slider_disable'			=> false,
@@ -269,4 +271,4 @@ $graphene_defaults = array(
 	/* Miscellaneous switches and vars */
 	'disable_credit' 			=> false,
 	'template_dir'				=> get_template_directory(),
-);
+) );

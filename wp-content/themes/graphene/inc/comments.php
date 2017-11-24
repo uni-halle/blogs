@@ -51,7 +51,7 @@ function graphene_comment_form_fields(){
 	$fields =  array( 
 		'author' => '<div class="form-group col-sm-4">
 						<label for="author" class="sr-only"></label>
-						<input type="text" class="form-control"' . $aria_req . ' id="author" name="author" value="" placeholder="' . esc_attr__( 'Name', 'graphene' ) . '" />
+						<input type="text" class="form-control"' . $aria_req . ' id="author" name="author" value="' . esc_attr( $commenter['comment_author'] ) . '" placeholder="' . esc_attr__( 'Name', 'graphene' ) . '" />
 					</div>',
 		'email'  => '<div class="form-group col-sm-4">
 						<label for="email" class="sr-only"></label>

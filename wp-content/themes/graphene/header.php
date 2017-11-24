@@ -52,7 +52,8 @@
                     $header_img = str_replace( 'http', 'https', $header_img );
                 }
             ?>
-            <div id="header" class="row" style="background-image:url(<?php echo $header_img; ?>);">
+            <div id="header" class="row">
+                <?php echo graphene_get_image_html( $header_img, array( HEADER_IMAGE_WIDTH, $graphene_settings['header_img_height'] ) ); ?>
             	
                 <?php 
         			if ( ! is_front_page() && $graphene_settings['link_header_img'] ) {

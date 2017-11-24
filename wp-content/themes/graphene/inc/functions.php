@@ -61,6 +61,30 @@ function graphene_get_header_image_alt( $image_src ){
 
 
 /**
+ * Get the HTML tag for image
+ *
+ * @package Graphene
+ * @since 2.1
+ */
+function graphene_get_image_html( $image_src_or_id, $size = '' ){
+	global $graphene_settings;
+	
+	if ( ! is_numeric( $image_src_or_id ) ) {
+		$image_id = graphene_get_attachment_id_from_src( $image_src_or_id );
+
+		if ( ! $image_id ) {
+			$html = '<img src="' . $image_src_or_id . '" alt="" />';
+			return $html;
+		}
+	
+	} else $image_id = $image_src_or_id;
+
+	$image = wp_get_attachment_image( $image_id, $size );
+	return $image;
+}
+
+
+/**
  * This functions adds additional classes to the <body> element. The additional classes
  * are added by filtering the WordPress body_class() function.
 */

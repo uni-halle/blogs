@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Graphene theme for WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-19 10:53+0800\n"
+"POT-Creation-Date: 2017-11-05 07:04+0800\n"
 "PO-Revision-Date: 2013-08-24 12:12+0800\n"
 "Last-Translator: Syahir Hakim <syahir@khairul-syahir.com>\n"
 "Language-Team: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "graphene\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 2.0.1\n"
+"X-Generator: Poedit 2.0.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: 404.php:23
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Slider options"
 msgstr ""
 
-#: admin/custom-fields.php:97 admin/customizer/options-general.php:138
+#: admin/custom-fields.php:97 admin/customizer/options-general.php:144
 msgid "Slider image"
 msgstr ""
 
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Use global setting"
 msgstr ""
 
-#: admin/custom-fields.php:102 admin/customizer/options-general.php:140
+#: admin/custom-fields.php:102 admin/customizer/options-general.php:146
 msgid "Don't show image"
 msgstr ""
 
@@ -102,7 +102,7 @@ msgstr ""
 msgid "Featured Image"
 msgstr ""
 
-#: admin/custom-fields.php:104 admin/customizer/options-general.php:142
+#: admin/custom-fields.php:104 admin/customizer/options-general.php:148
 msgid "First image in post"
 msgstr ""
 
@@ -527,7 +527,7 @@ msgid "Archive label text colour"
 msgstr ""
 
 #: admin/customizer/options-colours.php:178
-#: admin/customizer/options-general.php:288
+#: admin/customizer/options-general.php:301
 msgid "Comments"
 msgstr ""
 
@@ -552,7 +552,7 @@ msgid "Author comments border"
 msgstr ""
 
 #: admin/customizer/options-colours.php:199
-#: admin/customizer/options-general.php:500
+#: admin/customizer/options-general.php:513
 msgid "Footer"
 msgstr ""
 
@@ -760,7 +760,7 @@ msgid "Show random posts"
 msgstr ""
 
 #: admin/customizer/options-general.php:88
-#: admin/customizer/options-general.php:255
+#: admin/customizer/options-general.php:268
 msgid "Show specific posts/pages"
 msgstr ""
 
@@ -769,23 +769,27 @@ msgid "Show posts from categories"
 msgstr ""
 
 #: admin/customizer/options-general.php:96
-#: admin/customizer/options-general.php:280
+msgid "Include posts with featured image only"
+msgstr ""
+
+#: admin/customizer/options-general.php:102
+#: admin/customizer/options-general.php:293
 msgid "Posts and/or pages to display"
 msgstr ""
 
-#: admin/customizer/options-general.php:97
-#: admin/customizer/options-general.php:281
+#: admin/customizer/options-general.php:103
+#: admin/customizer/options-general.php:294
 msgid ""
 "Enter ID of posts and/or pages to be displayed, separated by comma.<br / "
 ">Applicable only if \"Show specific posts/pages\" is selected above.<br /"
 ">Example: <code>1,13,45,33</code>"
 msgstr ""
 
-#: admin/customizer/options-general.php:107
+#: admin/customizer/options-general.php:113
 msgid "Categories to display"
 msgstr ""
 
-#: admin/customizer/options-general.php:110
+#: admin/customizer/options-general.php:116
 msgid ""
 "All posts within the categories selected here will be displayed on the "
 "slider. Usage example: create a new category \"Featured\" and assign all "
@@ -793,342 +797,347 @@ msgid ""
 "category here."
 msgstr ""
 
-#: admin/customizer/options-general.php:112
-#: admin/customizer/options-general.php:231
-#: admin/customizer/options-general.php:273
+#: admin/customizer/options-general.php:118
+#: admin/customizer/options-general.php:244
+#: admin/customizer/options-general.php:286
 msgid "Select categories"
 msgstr ""
 
-#: admin/customizer/options-general.php:119
+#: admin/customizer/options-general.php:125
 msgid "Exclude the categories from posts listing"
 msgstr ""
 
-#: admin/customizer/options-general.php:125
+#: admin/customizer/options-general.php:131
 msgid "Show posts from categories in random order"
 msgstr ""
 
-#: admin/customizer/options-general.php:131
+#: admin/customizer/options-general.php:137
 msgid "Number of posts to display"
 msgstr ""
 
-#: admin/customizer/options-general.php:132
+#: admin/customizer/options-general.php:138
 msgid "posts"
 msgstr ""
 
-#: admin/customizer/options-general.php:141
+#: admin/customizer/options-general.php:147
 msgid "Featured image"
 msgstr ""
 
-#: admin/customizer/options-general.php:143
+#: admin/customizer/options-general.php:149
 msgid "Custom image"
 msgstr ""
 
-#: admin/customizer/options-general.php:148
+#: admin/customizer/options-general.php:154
 msgid "Custom slider image"
 msgstr ""
 
-#: admin/customizer/options-general.php:151
+#: admin/customizer/options-general.php:157
 msgid ""
 "Make sure you select \"Custom image\" in the slider image option above to "
 "use this image."
 msgstr ""
 
-#: admin/customizer/options-general.php:157
+#: admin/customizer/options-general.php:163
 msgid "Slider display style"
 msgstr ""
 
-#: admin/customizer/options-general.php:159
+#: admin/customizer/options-general.php:165
 msgid "Background image and excerpt"
 msgstr ""
 
-#: admin/customizer/options-general.php:160
+#: admin/customizer/options-general.php:166
 msgid "Full post content"
 msgstr ""
 
-#: admin/customizer/options-general.php:167
+#: admin/customizer/options-general.php:173
 msgid "Slider height"
 msgstr ""
 
-#: admin/customizer/options-general.php:168
+#: admin/customizer/options-general.php:174
+#: admin/customizer/options-general.php:181
 msgid "px"
 msgstr ""
 
-#: admin/customizer/options-general.php:174
+#: admin/customizer/options-general.php:180
+msgid "Slider height (mobile)"
+msgstr ""
+
+#: admin/customizer/options-general.php:187
 msgid "Slider speed"
 msgstr ""
 
-#: admin/customizer/options-general.php:175
+#: admin/customizer/options-general.php:188
 msgid "milliseconds"
 msgstr ""
 
-#: admin/customizer/options-general.php:176
+#: admin/customizer/options-general.php:189
 msgid "This is the duration that each slider item will be shown."
 msgstr ""
 
-#: admin/customizer/options-general.php:182
+#: admin/customizer/options-general.php:195
 msgid "Move slider to bottom of page"
 msgstr ""
 
-#: admin/customizer/options-general.php:189
+#: admin/customizer/options-general.php:202
 msgid "Infinite Scroll"
 msgstr ""
 
-#: admin/customizer/options-general.php:196
+#: admin/customizer/options-general.php:209
 msgid "Enable for posts"
 msgstr ""
 
-#: admin/customizer/options-general.php:202
+#: admin/customizer/options-general.php:215
 msgid "Enable for comments"
 msgstr ""
 
-#: admin/customizer/options-general.php:208
+#: admin/customizer/options-general.php:221
 msgid "Loading method"
 msgstr ""
 
-#: admin/customizer/options-general.php:210
+#: admin/customizer/options-general.php:223
 msgid "Auto-load"
 msgstr ""
 
-#: admin/customizer/options-general.php:211
+#: admin/customizer/options-general.php:224
 msgid "Click-to-load"
 msgstr ""
 
-#: admin/customizer/options-general.php:219
+#: admin/customizer/options-general.php:232
 msgid "Front Page"
 msgstr ""
 
-#: admin/customizer/options-general.php:226
+#: admin/customizer/options-general.php:239
 msgid "Front page posts categories"
 msgstr ""
 
-#: admin/customizer/options-general.php:229
+#: admin/customizer/options-general.php:242
 msgid ""
 "Only posts that belong to the categories selected here will be displayed on "
 "the front page. Works only if not using Static Front Page."
 msgstr ""
 
-#: admin/customizer/options-general.php:239
+#: admin/customizer/options-general.php:252
 msgid "Home Page Panes"
 msgstr ""
 
-#: admin/customizer/options-general.php:246
+#: admin/customizer/options-general.php:259
 msgid "Disable homepage panes"
 msgstr ""
 
-#: admin/customizer/options-general.php:252
+#: admin/customizer/options-general.php:265
 msgid "Type of content to show"
 msgstr ""
 
-#: admin/customizer/options-general.php:254
+#: admin/customizer/options-general.php:267
 msgid "Latest posts"
 msgstr ""
 
-#: admin/customizer/options-general.php:262
+#: admin/customizer/options-general.php:275
 msgid "Number of posts"
 msgstr ""
 
-#: admin/customizer/options-general.php:268
+#: admin/customizer/options-general.php:281
 msgid "Categories to show latest posts from"
 msgstr ""
 
-#: admin/customizer/options-general.php:271
+#: admin/customizer/options-general.php:284
 msgid ""
 "Only posts that belong to the categories selected here will be displayed in "
 "the home page panes."
 msgstr ""
 
-#: admin/customizer/options-general.php:295
+#: admin/customizer/options-general.php:308
 msgid "Commenting"
 msgstr ""
 
-#: admin/customizer/options-general.php:296
+#: admin/customizer/options-general.php:309
 msgid ""
 "Overrides the global WordPress Discussion Setting called \"Allow people to "
 "post comments on new articles\" and also the \"Allow comments\" option for "
 "individual posts/pages."
 msgstr ""
 
-#: admin/customizer/options-general.php:298
+#: admin/customizer/options-general.php:311
 msgid "Use WordPress settings"
 msgstr ""
 
-#: admin/customizer/options-general.php:299
+#: admin/customizer/options-general.php:312
 msgid "Disable for pages"
 msgstr ""
 
-#: admin/customizer/options-general.php:300
+#: admin/customizer/options-general.php:313
 msgid "Disable completely"
 msgstr ""
 
-#: admin/customizer/options-general.php:308
+#: admin/customizer/options-general.php:321
 msgid "Child Pages"
 msgstr ""
 
-#: admin/customizer/options-general.php:315
+#: admin/customizer/options-general.php:328
 msgid "Hide parent box if content is empty"
 msgstr ""
 
-#: admin/customizer/options-general.php:321
+#: admin/customizer/options-general.php:334
 msgid "Disable contextual navigation in the sidebar"
 msgstr ""
 
-#: admin/customizer/options-general.php:327
+#: admin/customizer/options-general.php:340
 msgid "Child page listings"
 msgstr ""
 
-#: admin/customizer/options-general.php:329
+#: admin/customizer/options-general.php:342
 msgid "Show listing"
 msgstr ""
 
-#: admin/customizer/options-general.php:330
+#: admin/customizer/options-general.php:343
 msgid "Hide listing"
 msgstr ""
 
-#: admin/customizer/options-general.php:331
+#: admin/customizer/options-general.php:344
 msgid "Show only if parent is empty"
 msgstr ""
 
-#: admin/customizer/options-general.php:339
+#: admin/customizer/options-general.php:352
 msgid "Widget Areas"
 msgstr ""
 
-#: admin/customizer/options-general.php:346
+#: admin/customizer/options-general.php:359
 msgid "Enable header widget area"
 msgstr ""
 
-#: admin/customizer/options-general.php:347
+#: admin/customizer/options-general.php:360
 msgid ""
 "<strong>Important:</strong> This widget area is unstyled, as it is often "
 "used for advertisement banners, etc. If you enable it, make sure you style "
 "it to your needs using the Custom CSS option."
 msgstr ""
 
-#: admin/customizer/options-general.php:353
+#: admin/customizer/options-general.php:366
 msgid "Enable alternative sidebar widget area in front page."
 msgstr ""
 
-#: admin/customizer/options-general.php:359
+#: admin/customizer/options-general.php:372
 msgid "Enable alternative footer widget area in front page."
 msgstr ""
 
-#: admin/customizer/options-general.php:365
+#: admin/customizer/options-general.php:378
 msgid "Divide footer widget area into this number of columns"
 msgstr ""
 
-#: admin/customizer/options-general.php:371
+#: admin/customizer/options-general.php:384
 msgid "Divide alternative footer widget area into this number of columns"
 msgstr ""
 
-#: admin/customizer/options-general.php:378
+#: admin/customizer/options-general.php:391
 msgid "Social Profiles"
 msgstr ""
 
-#: admin/customizer/options-general.php:385
+#: admin/customizer/options-general.php:398
 msgid "Open social media links in new window"
 msgstr ""
 
-#: admin/customizer/options-general.php:390
+#: admin/customizer/options-general.php:403
 msgid "Social profiles"
 msgstr ""
 
-#: admin/customizer/options-general.php:397
+#: admin/customizer/options-general.php:410
 msgid "Social Sharing"
 msgstr ""
 
-#: admin/customizer/options-general.php:404
+#: admin/customizer/options-general.php:417
 msgid "Show social sharing buttons"
 msgstr ""
 
-#: admin/customizer/options-general.php:410
+#: admin/customizer/options-general.php:423
 msgid "Include static Pages"
 msgstr ""
 
-#: admin/customizer/options-general.php:416
+#: admin/customizer/options-general.php:429
 msgid "Include home and archive pages"
 msgstr ""
 
-#: admin/customizer/options-general.php:422
+#: admin/customizer/options-general.php:435
 msgid "Buttons location"
 msgstr ""
 
-#: admin/customizer/options-general.php:424
+#: admin/customizer/options-general.php:437
 msgid "Bottom of posts"
 msgstr ""
 
-#: admin/customizer/options-general.php:425
+#: admin/customizer/options-general.php:438
 msgid "Top of posts"
 msgstr ""
 
-#: admin/customizer/options-general.php:426
+#: admin/customizer/options-general.php:439
 msgid "Top and bottom of posts"
 msgstr ""
 
-#: admin/customizer/options-general.php:433
+#: admin/customizer/options-general.php:446
 msgid "Social sharing buttons code"
 msgstr ""
 
-#: admin/customizer/options-general.php:434
+#: admin/customizer/options-general.php:447
 msgid ""
 "You can use codes from any popular social sharing sites, like Facebook, "
 "Digg, AddThis, etc."
 msgstr ""
 
-#: admin/customizer/options-general.php:445
+#: admin/customizer/options-general.php:458
 msgid "Ads"
 msgstr ""
 
-#: admin/customizer/options-general.php:452
+#: admin/customizer/options-general.php:465
 msgid "Show ads"
 msgstr ""
 
-#: admin/customizer/options-general.php:458
+#: admin/customizer/options-general.php:471
 msgid "Include Front Page"
 msgstr ""
 
-#: admin/customizer/options-general.php:464
+#: admin/customizer/options-general.php:477
 msgid "Ads code"
 msgstr ""
 
-#: admin/customizer/options-general.php:475
+#: admin/customizer/options-general.php:488
 msgid "Analytics"
 msgstr ""
 
-#: admin/customizer/options-general.php:482
+#: admin/customizer/options-general.php:495
 msgid "Enable analytics tracking"
 msgstr ""
 
-#: admin/customizer/options-general.php:488
+#: admin/customizer/options-general.php:501
 msgid "Analytics code"
 msgstr ""
 
-#: admin/customizer/options-general.php:489
+#: admin/customizer/options-general.php:502
 #, php-format
 msgid ""
 "The analytics code will be added inside the %s element of all pages in this "
 "site."
 msgstr ""
 
-#: admin/customizer/options-general.php:507
+#: admin/customizer/options-general.php:520
 msgid "Copyright text (html allowed)"
 msgstr ""
 
-#: admin/customizer/options-general.php:517
+#: admin/customizer/options-general.php:530
 msgid "Do not show copyright info"
 msgstr ""
 
-#: admin/customizer/options-general.php:523
+#: admin/customizer/options-general.php:536
 msgid "Disable \"Return to top\" button"
 msgstr ""
 
-#: admin/customizer/options-general.php:530
+#: admin/customizer/options-general.php:543
 msgid "Print"
 msgstr ""
 
-#: admin/customizer/options-general.php:537
+#: admin/customizer/options-general.php:550
 msgid "Clean up single posts and pages when printing"
 msgstr ""
 
-#: admin/customizer/options-general.php:543
+#: admin/customizer/options-general.php:556
 msgid "Show print button"
 msgstr ""
 
@@ -1261,24 +1270,24 @@ msgid ""
 "options\" link, and they will magically appear to you."
 msgstr ""
 
-#: admin/options-defaults.php:78
+#: admin/options-defaults.php:80
 #, php-format
 msgid "Subscribe to %s's RSS feed"
 msgstr ""
 
-#: admin/options-defaults.php:163
+#: admin/options-defaults.php:165
 msgid "Default"
 msgstr ""
 
-#: admin/options-defaults.php:167
+#: admin/options-defaults.php:169
 msgid "Dream Magnet"
 msgstr ""
 
-#: admin/options-defaults.php:171
+#: admin/options-defaults.php:173
 msgid "Curiosity Killed"
 msgstr ""
 
-#: admin/options-defaults.php:175
+#: admin/options-defaults.php:177
 msgid "Zesty Orange"
 msgstr ""
 
@@ -1468,11 +1477,11 @@ msgstr ""
 msgid "Toggle search form"
 msgstr ""
 
-#: header.php:59 header.php:97
+#: header.php:60 header.php:98
 msgid "Go back to the front page"
 msgstr ""
 
-#: header.php:80
+#: header.php:81
 msgid "Toggle navigation"
 msgstr ""
 
@@ -1525,23 +1534,23 @@ msgstr ""
 msgid "Reply"
 msgstr ""
 
-#: inc/functions.php:160
+#: inc/functions.php:184
 #, php-format
 msgid "Visit %1$s's %2$s page"
 msgstr ""
 
-#: inc/functions.php:303
+#: inc/functions.php:327
 #, php-format
 msgid ""
 "You haven't placed any widget into this widget area. Go to %1$s and place "
 "some widgets in the widget area called %2$s."
 msgstr ""
 
-#: inc/functions.php:303
+#: inc/functions.php:327
 msgid "WP Admin > Appearance > Widgets"
 msgstr ""
 
-#: inc/functions.php:304
+#: inc/functions.php:328
 msgid "This notice will not be displayed to your site's visitors."
 msgstr ""
 
@@ -1615,11 +1624,11 @@ msgstr ""
 msgid "available icons"
 msgstr ""
 
-#: inc/menus.php:220
+#: inc/menus.php:223
 msgid "Home"
 msgstr ""
 
-#: inc/menus.php:297
+#: inc/menus.php:295
 #, php-format
 msgid "#%d (no title)"
 msgstr ""
@@ -1736,7 +1745,7 @@ msgid ""
 msgstr ""
 
 #: inc/setup.php:260
-msgid "Grapehen - Sidebar Two (Front Page)"
+msgid "Graphene - Sidebar Two (Front Page)"
 msgstr ""
 
 #: inc/setup.php:262
