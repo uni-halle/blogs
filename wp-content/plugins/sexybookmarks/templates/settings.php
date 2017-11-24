@@ -23,7 +23,7 @@
       </div>
   
       <div class="app">
-        <p><a href="<?php echo esc_url(admin_url("admin.php?shareaholic_redirect_url=shareaholic.com/signup/")); ?>" target="_blank" class="btn btn-info btn-block" role="button" style="font-size: 14px;"><?php echo sprintf(__('Shareaholic Dashboard', 'shareaholic')); ?></a>
+        <p><a href="<?php echo esc_url(admin_url("admin.php?shareaholic_redirect_url=shareaholic.com/signup/")); ?>" target="_blank" class="btn btn-warning btn-block" role="button" style="font-size: 14px;"><?php echo sprintf(__('Shareaholic Dashboard', 'shareaholic')); ?></a>
         </p>
         <p>
           <?php echo sprintf(__('Configure Apps such as Floating Share buttons, Social Share Count Recovery, Follow buttons, Share Buttons for Images, Monetization Dashboard, EU Cookie Consent bar, and more from the dashboard.', 'shareaholic')); ?>
@@ -31,9 +31,9 @@
       </div>
 
       <div class="app">
-        <h2><i class="icon icon-share_buttons"></i> <?php echo sprintf(__('Share Buttons', 'shareaholic')); ?></h2>
+        <h2><i class="icon icon-share_buttons"></i> <?php echo sprintf(__('In-Page Share Buttons', 'shareaholic')); ?></h2>
         <p>
-          <?php echo sprintf(__('Pick where you want your share buttons to be displayed. Click "customize" to customize look & feel, themes, share counters, alignment, and more.', 'shareaholic')); ?>
+          <?php echo sprintf(__('Pick where you want your in-page share buttons to be displayed. Click "customize" to customize look & feel, themes, share counters, alignment, and more.', 'shareaholic')); ?>
         </p>
     
         <?php foreach(array('post', 'page', 'index', 'category') as $page_type) { ?>
@@ -58,7 +58,17 @@
           <?php } ?>
         </fieldset>
         <?php } ?>
-    
+        
+        <div class='fieldset-footer'>
+          <p>
+            <input type="checkbox" id="share_buttons_excerpts" name="shareaholic[share_buttons_display_on_excerpts]" class="check"  
+            <?php if (isset($settings["share_buttons_display_on_excerpts"])) { ?>
+              <?php echo ($settings["share_buttons_display_on_excerpts"] == 'on' ? 'checked' : '') ?>
+            <?php } ?>>
+            <label for="share_buttons_excerpts">Display on excerpts</label>
+          </p>
+        </div>
+        
         <div class='fieldset-footer'>
           <p>
             Brand your shares with your @Twitterhandle, pick your favorite URL shortener, share buttons for images, etc.
@@ -74,7 +84,6 @@
         <p>
           <?php echo sprintf(__('Pick where you want the app to be displayed. Click "Customize" to customize look & feel, themes, block lists, etc.', 'shareaholic')); ?>
         </p>
-        <p>
         <?php foreach(array('post', 'page', 'index', 'category') as $page_type) { ?>
           <?php foreach(array('below') as $position) { ?>
             <?php if (isset($settings['location_name_ids']['recommendations']["{$page_type}_{$position}_content"])) { ?>
@@ -97,7 +106,17 @@
               <?php } ?>
           </fieldset>
         <?php } ?>
-        </p>
+        
+        <div class='fieldset-footer'>
+          <p>
+            <input type="checkbox" id="recommendations_excerpts" name="shareaholic[recommendations_display_on_excerpts]" class="check"  
+            <?php if (isset($settings["recommendations_display_on_excerpts"])) { ?>
+              <?php echo ($settings["recommendations_display_on_excerpts"] == 'on' ? 'checked' : '') ?>
+            <?php } ?>>
+            <label for="recommendations_excerpts">Display on excerpts</label>
+          </p>
+        </div>
+
         <div class='fieldset-footer'>
           <p>
             Re-sync your content, exclude pages from being recommended, etc.

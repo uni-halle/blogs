@@ -1,9 +1,9 @@
 === Shareaholic | share buttons, related posts, social analytics & more ===
 Contributors: shareaholic
-Tags: share buttons, related content, cookie compliance, eu cookie law, shareaholic, shareholic, sexybookmarks, recommendations, cookie consent, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, floating share buttons, analytics, social media, social plugin, facebook, twitter, google plus, google bookmarks, gmail, linkedin, pinterest, reddit, tumblr, evernote, digg, delicious, stumbleupon, printfriendly, fancy, amazon, xing, vk, yahoo, mister wong, viadeo, odnoklassniki box.net, diigo, yammer, ycombinator, hotmail, instapaper, mixi, arto, whatsapp, hootsuite, inbound.org, plurk, aim, buffer, meneame, pinboard.in, stumpedia, bitly, blogger, yummly, izeby, kaboodle, weibo, instagram, tinyurl,  typepad, weheartit, flipboard, pocket, wanelo, fark, wykop, symphony, kindle, houzz, youtube, sms, onenote, google classroom, disqus, spotify, zillow, feedly, kik, line, livejournal, baidu
+Tags: share buttons, related content, cookie compliance, eu cookie law, shareaholic, shareholic, sexybookmarks, recommendations, cookie consent, email button, social sharing, social bookmarking, share image, image sharing, follow buttons, floated share buttons, floating share buttons, analytics, social media, social plugin, GDPR compliance, GDPR, facebook, twitter, google plus, google bookmarks, gmail, linkedin, pinterest, reddit, tumblr, evernote, digg, delicious, stumbleupon, printfriendly, fancy, amazon, xing, vk, yahoo, mister wong, viadeo, odnoklassniki box.net, diigo, yammer, ycombinator, hotmail, instapaper, mixi, arto, whatsapp, hootsuite, inbound.org, plurk, aim, buffer, meneame, pinboard.in, stumpedia, bitly, blogger, yummly, izeby, kaboodle, weibo, instagram, tinyurl,  typepad, weheartit, flipboard, pocket, wanelo, fark, wykop, symphony, kindle, houzz, youtube, sms, onenote, google classroom, disqus, spotify, zillow, feedly, kik, line, livejournal, baidu
 Requires at least: 3.0
-Tested up to: 4.8
-Stable tag: 8.4.4
+Tested up to: 4.9
+Stable tag: 8.6.1
 
 World's leading all-in-one Content Amplification Platform that helps grow your site traffic, engagement, conversions & monetization for FREE.
 
@@ -195,6 +195,28 @@ Please see here: [Shareaholic Helpdesk](http://support.shareaholic.com/hc/en-us)
 Please see here: [Usage & Installation Instructions](http://support.shareaholic.com/hc/en-us/categories/200101476-WordPress-Plugin)
 
 == Changelog ==
+= 8.6.1 (2017-11-07) =
+* New: Option to show or hide share buttons, related content, etc on excerpts
+
+= 8.6.0 (2017-11-03) =
+* Huge localization update! We (and the entire WordPress community) would appreciate your help in translating Shareaholic into your language! It is quite simple and fast. ([How-To Instructions here](https://translate.wordpress.org/projects/wp-plugins/shareaholic))
+
+= 8.5.3 (2017-10-28) =
+* Critical Update: It has come to our notice that some hosting companies are **incorrectly** flagging "index.html" as malware. This is a standard file and there is absolutely no reason to panic or be concerned. This update fixes the cause of the false positive. Please upgrade ASAP as a precaution.
+
+= 8.5.2 (2017-10-27) =
+* Bugfix: Show [Social Share Count Recovery](https://blog.shareaholic.com/recover-social-share-counts-https/) notice only on specific admin pages
+* Various performance updates and bug fixes
+
+= 8.5.1 (2017-10-23) =
+* Bugfix: Fixed misalignment issue with Floated Share Buttons
+* Bugfix: Fixed issue with single page apps (JavaScript rendered pages) not updating share count on page change
+* Various performance updates and bug fixes
+
+= 8.5.0 (2017-10-02) =
+* Enhancement: **[Social Share Count Recovery](https://blog.shareaholic.com/recover-social-share-counts-https/)** - adds support to recover social share counts in case where permalink structure changes
+* Various performance updates
+
 = 8.4.4 (2017-09-21) =
 * Another critical bugfix for users of the SG Optimizer plugin (SiteGround hosting). This update will seamlessly allow you to re-activate Shareaholic.
 
@@ -659,8 +681,26 @@ Please see here: [Usage & Installation Instructions](http://support.shareaholic.
 * Show Related Posts data status
 
 == Upgrade Notice ==
+= 8.6.1 =
+New option to show or hide share buttons, related content, etc on excerpts
+
+= 8.6.0 =
+Huge localization update!
+
+= 8.5.3 =
+Some hosting companies are incorrectly flagging "index.html" as malware. This is a standard file and there is absolutely no reason to panic or be concerned. This update fixes the cause of the false positive. Please upgrade ASAP as a precaution.
+
+= 8.5.2 =
+Various performance updates and bug fixes
+
+= 8.5.1 =
+Various performance updates and bug fixes
+
+= 8.5.0 =
+Various enhancements and Social Share Count Recovery in cases where permalink structure changes 
+
 = 8.4.4 =
-* Another critical bugfix for users of the SG Optimizer plugin (SiteGround hosting). This update will seamlessly allow you to re-activate Shareaholic.
+Another critical bugfix for users of the SG Optimizer plugin (SiteGround hosting). This update will seamlessly allow you to re-activate Shareaholic.
 
 = 8.4.3 =
 Critical bugfix for users of SG Optimizer plugin
@@ -688,12 +728,3 @@ New Tools Badge! Introducing a brand new way to launch the Shareaholic Console w
 
 = 8.0.1 =
 Version 8 is here bringing with it a brand new revamped and streamlined UI!
-
-= 7.10.1.0 =
-New: Share Count Recovery feature! Don't lose your hard work. Recover your social proof.
-
-= 7.9.0.0 =
-This is a major update with lots of new features and enhancements that you'll love!
-
-= 7.8.0.6 =
-Various enhancements

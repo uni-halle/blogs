@@ -400,11 +400,30 @@ JQUERY;
           $_POST[$app] = array();
         }
       }
-
+        
+      foreach (array('share_buttons_display_on_excerpts', 'recommendations_display_on_excerpts') as $setting) {
+        if (isset($settings[$setting]) &&
+            !isset($_POST['shareaholic'][$setting]) &&
+            $settings[$setting] == 'on') {
+          $_POST['shareaholic'][$setting] = 'off';
+        } elseif (!isset($_POST['shareaholic'][$setting])) {
+          $_POST['shareaholic'][$setting] = array();
+        }
+      }
+      
+      // Save "Locations" related preferences
       ShareaholicUtilities::update_options(array(
         'share_buttons' => $_POST['share_buttons'],
-        'recommendations' => $_POST['recommendations'],
+        'recommendations' => $_POST['recommendations']
       ));
+      
+      // Save "Excerpts" related preferences
+      if (isset($_POST['shareaholic']['share_buttons_display_on_excerpts'])) {
+        ShareaholicUtilities::update_options(array('share_buttons_display_on_excerpts' => $_POST['shareaholic']['share_buttons_display_on_excerpts']));
+      }
+      if (isset($_POST['shareaholic']['recommendations_display_on_excerpts'])) {
+        ShareaholicUtilities::update_options(array('recommendations_display_on_excerpts' => $_POST['shareaholic']['recommendations_display_on_excerpts']));
+      }
 
       ShareaholicUtilities::log_event("UpdatedSettings");
       // clear cache after settings update
@@ -612,11 +631,12 @@ JQUERY;
     }
   }
 
-  public static function admin_notices() {
-    global $pagenow;
-    if ($pagenow == 'options-permalink.php') {
-      $css_class = 'error';
-      $message = 'WARNING: Updating your permalink structure will reset the social share counts for your pages. <a href="https://shareaholic.com/plans">Upgrade to Shareaholic Premium</a> to enable <a href="https://support.shareaholic.com/hc/en-us/articles/115002083586">Share Count Recovery</a>.';
+  public static function admin_notices() {    
+    $current_screen = get_current_screen();
+    
+    if ($current_screen->id === 'options-permalink' || $current_screen->id === 'options-general') {
+      $css_class = 'notice notice-warning is-dismissible';
+      $message = 'WARNING: Updating your URL or permalink structure will reset the social share counts for your pages. <a href="https://shareaholic.com/plans">Upgrade to Shareaholic Premium</a> to enable <a href="https://support.shareaholic.com/hc/en-us/articles/115002083586">Share Count Recovery</a>.';
       echo "<div class='$css_class'><p style='font-weight: bold;'>";
       _e($message, 'Shareaholic');
       echo '</p></div>';

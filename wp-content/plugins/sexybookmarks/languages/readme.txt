@@ -22,7 +22,7 @@ Shareaholic is used all over the world. Our goal is to support Shareaholic in th
 
 == How to translate Shareaholic into your own language ==
 
-We would appreciate your help in translating Shareaholic into even more languages! It doesn’t take much to get started. Thanks so much! Instructions: https://shareaholic.com/tools/wordpress/translate
+We would appreciate your help in translating Shareaholic into even more languages! It doesn’t take much to get started. Thanks so much! Instructions: https://translate.wordpress.org/projects/wp-plugins/shareaholic
 
 == Notes ==
 

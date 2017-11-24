@@ -330,7 +330,7 @@ class ShareaholicPublic {
   }
 	
   /**
-   * This static function inserts the shareaholic canvas at the end of the post
+   * This static function inserts the shareaholic canvas in a post
    *
    * @param  string $content the wordpress content
    * @return string          the content
@@ -340,23 +340,26 @@ class ShareaholicPublic {
     $settings = ShareaholicUtilities::get_settings();
     $page_type = ShareaholicUtilities::page_type();
     foreach (array('share_buttons', 'recommendations') as $app) {
+      
+      // check Excerpt prefs
+      if ('the_excerpt' == current_filter() && isset($settings["{$app}_display_on_excerpts"]) && $settings["{$app}_display_on_excerpts"] == 'off') {
+        return $content; 
+      }
+        
+      // check individual post prefs
       if (!get_post_meta($post->ID, "shareaholic_disable_{$app}", true)) {
-        if (isset($settings[$app]["{$page_type}_above_content"]) &&
-            $settings[$app]["{$page_type}_above_content"] == 'on') {
-          // share_buttons_post_above_content
+        // check if ABOVE location is turned on
+        if (isset($settings[$app]["{$page_type}_above_content"]) && $settings[$app]["{$page_type}_above_content"] == 'on') {
           $id = $settings['location_name_ids'][$app]["{$page_type}_above_content"];
           $content = self::canvas($id, $app, "{$page_type}_above_content") . $content;
         }
-
-        if (isset($settings[$app]["{$page_type}_below_content"]) &&
-            $settings[$app]["{$page_type}_below_content"] == 'on') {
-          // share_buttons_post_below_content
+        // check if BELOW location is turned on
+        if (isset($settings[$app]["{$page_type}_below_content"]) && $settings[$app]["{$page_type}_below_content"] == 'on') {
           $id = $settings['location_name_ids'][$app]["{$page_type}_below_content"];
           $content .= self::canvas($id, $app, "{$page_type}_below_content");
         }
       }
     }
-
     // something that uses the_content hook must return the $content
     return $content;
   }

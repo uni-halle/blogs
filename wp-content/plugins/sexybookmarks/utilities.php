@@ -87,6 +87,8 @@ class ShareaholicUtilities {
       'disable_internal_share_counts_api' => 'on',
       'api_key' => '',
       'verification_key' => '',
+      'recommendations_display_on_excerpts' => 'on',
+      'share_buttons_display_on_excerpts' => 'on'
     );
   }
 
@@ -331,6 +333,16 @@ class ShareaholicUtilities {
    */
   public static function perform_update() {
     
+    // Set plugin defaults, if not already set
+    $settings = ShareaholicUtilities::get_settings();
+    
+    if (empty($settings["share_buttons_display_on_excerpts"]) || !isset($settings["share_buttons_display_on_excerpts"])) {
+      ShareaholicUtilities::update_options(array('share_buttons_display_on_excerpts' => 'on'));
+    }
+    if (empty($settings["recommendations_display_on_excerpts"]) || !isset($settings["recommendations_display_on_excerpts"])) {
+      ShareaholicUtilities::update_options(array('recommendations_display_on_excerpts' => 'on'));
+    }
+        
     if (!self::is_locked('perform_update')) {
       self::set_lock('perform_update');
       
@@ -411,7 +423,7 @@ class ShareaholicUtilities {
     } elseif ($env === 'staging') {
       return '//d2062rwknz205x.cloudfront.net/' . $asset;
     } else {
-      return '//dsms0mj1bbhn4.cloudfront.net/' . $asset;
+      return '//apps.shareaholic.com/' . $asset;
     }
   }
 
@@ -437,7 +449,7 @@ class ShareaholicUtilities {
     } elseif (preg_match('/stageaholic/', Shareaholic::URL)) {
       return 'https://d2062rwknz205x.cloudfront.net/' . $asset;
     } else {
-      return 'https://dsms0mj1bbhn4.cloudfront.net/' . $asset;
+      return 'https://apps.shareaholic.com/' . $asset;
     }
   }
 

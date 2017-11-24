@@ -22,7 +22,7 @@
   <div class="sidebar_links">  
     <ul>
       <li><a href="http://support.shareaholic.com/" target="_blank"><?php _e('Shareaholic Helpdesk', 'shareaholic'); ?></a></li>
-      <li><a href="https://shareaholic.com/tools/wordpress/translations" target="_blank"><?php _e('Submit a new or updated language translation', 'shareaholic'); ?></a></li>
+      <li><a href="https://translate.wordpress.org/projects/wp-plugins/shareaholic" target="_blank"><?php _e('Submit a new or updated language translation', 'shareaholic'); ?></a></li>
       <li><a href="https://shareaholic.com/tools/browser/" target="_blank"><?php _e('Get the Shareaholic Browser Extension to share content from anywhere on the web', 'shareaholic'); ?></a></li>
       <li><a href="https://support.shareaholic.com/hc/en-us/categories/200185046-Website-Monetization-Apps?utm_source=wp_plugin&utm_medium=appsett&utm_campaign=psa_faq" target="_blank"><?php _e('Monetization Options', 'shareaholic'); ?></a></li>
     </ul>
