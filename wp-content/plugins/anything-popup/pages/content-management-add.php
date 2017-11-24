@@ -155,11 +155,11 @@ if ($pop_error_found == FALSE && strlen($pop_success) > 0)
       <h3><?php _e('Add details', 'anything-popup'); ?></h3>
       
 		<label for="tag-a"><?php _e('Window width', 'anything-popup'); ?></label>
-		<input name="pop_width" type="text" id="pop_width" value="" size="20" maxlength="3" />
-		<p><?php _e('Enter your popup window width.', 'anything-popup'); ?> (Ex: 300)</p>
+		<input name="pop_width" type="text" id="pop_width" value="500" size="20" maxlength="3" />
+		<p><?php _e('Enter your popup window width.', 'anything-popup'); ?> (Ex: 500)</p>
 		
 		<label for="tag-a"><?php _e('Window height', 'anything-popup'); ?></label>
-		<input name="pop_height" type="text" id="pop_height" value="" size="20" maxlength="3" />
+		<input name="pop_height" type="text" id="pop_height" value="250" size="20" maxlength="3" />
 		<p><?php _e('Enter your popup window height.', 'anything-popup'); ?> (Ex: 250)</p>
 		
 		<label for="tag-a"><?php _e('Header color', 'anything-popup'); ?></label>
