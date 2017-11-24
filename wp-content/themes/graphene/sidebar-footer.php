@@ -12,7 +12,7 @@ if (((!$graphene_settings['alt_home_footerwidget'] || !is_front_page()) && is_ac
     
     <?php do_action('graphene_before_bottomsidebar'); ?>
     
-    <div id="sidebar_bottom" class="sidebar clearfix">
+    <div id="sidebar_bottom" class="sidebar row">
         
         <?php do_action('graphene_bottomsidebar'); ?>
 		

@@ -62,21 +62,31 @@ global $graphene_settings;
 
 <div id="comments" class="<?php echo $class; ?>">
     <?php if ( $comments_num ) : ?>
-    	<h4 class="comments current"><?php if ($graphene_tabbed_comment) {echo '<a href="#">'.$comment_count.'</a>';} else {echo $comment_count;}?></h4>
+    	<h4 class="comments current">
+            <?php 
+                if ( $graphene_tabbed_comment ) echo '<a href="#"><i class="fa fa-comments-o"></i> ' . $comment_count . '</a>';
+                else echo '<i class="fa fa-comments-o"></i> ' . $comment_count;
+            ?>
+        </h4>
 	<?php endif; ?>
     <?php if ( $pings_num ) : ?>
-	    <h4 class="pings"><?php if ($graphene_tabbed_comment) {echo '<a href="#">'.$ping_count.'</a>';} else {echo $ping_count;}?></h4>
+	    <h4 class="pings">
+            <?php 
+                if ( $graphene_tabbed_comment ) echo '<a href="#"><i class="fa fa-feed"></i> ' . $ping_count . '</a>';
+                else echo '<a href="#"><i class="fa fa-feed"></i> ' . $ping_count;
+            ?>
+        </h4>
     <?php endif; ?>
     
     <?php if ( ( ( $is_paginated && get_option( 'comments_per_page' ) > 3 ) || ! $is_paginated ) && ( $comments_num > 3 || $pings_num > 6 ) ) : ?>
-    	<p class="comment-form-jump"><a href="#respond"><?php _e( 'Skip to comment form', 'graphene' ); ?></a> &darr;</p>
+    	<p class="comment-form-jump"><a href="#respond" class="btn btn-sm"><?php _e( 'Skip to comment form', 'graphene' ); ?> <i class="fa fa-arrow-circle-down"></i></a></p>
 	<?php endif; ?>
 
 	<?php do_action( 'graphene_before_comments' ); ?>
 
 	<?php if ( $comments_num || $allcomments_num ) : ?>
     <div class="comments-list-wrapper">
-        <ol class="clearfix" id="comments_list">
+        <ol class="clearfix comments-list" id="comments_list">
             <?php
             /* Loop through and list the comments. Tell wp_list_comments()
              * to use graphene_comment() to format the comments.
@@ -93,7 +103,7 @@ global $graphene_settings;
     <?php endif; ?>
     
     <?php if ( $pings_num ) : ?>
-        <ol class="clearfix<?php if (!$comments_num) echo ' display-block'; ?>" id="pings_list">
+        <ol class="clearfix<?php if (!$comments_num) echo ' display-block'; ?> pings-list" id="pings_list">
             <?php
             /* Loop through and list the pings. Use the same callback function as
              * listing comments above, graphene_comment() to format the pings.
@@ -111,7 +121,7 @@ global $graphene_settings;
 <?php /* Display comments disabled message if there's already comments, but commenting is disabled */ ?>
 <?php if ( ! comments_open() && have_comments() ) : ?>
 	<div id="respond">
-		<h3 id="reply-title"><?php _e( 'Comments have been disabled.', 'graphene' ); ?></h3>
+		<h3 id="reply-title"><i class="fa fa-comment-o"></i> <?php _e( 'Comments have been disabled.', 'graphene' ); ?></h3>
         <?php do_action( 'graphene_comments_disabled' ); ?>
     </div>
 <?php endif; ?>
@@ -124,22 +134,15 @@ global $graphene_settings;
 		<?php do_action( 'graphene_before_commentform' );
         
         /* Get the comment form. */ 
-        
-        $allowedtags = '';
-		if ( ! $graphene_settings['hide_allowedtags'] ){
-			$allowedtags .= '<p class="form-allowed-tags">';
-            $allowedtags .= sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s', 'graphene' ), '<code>' . allowed_tags() . '</code>' );
-			$allowedtags .=	'</p>';
-		}
-        
         $args = array(
-                    'comment_notes_after'  	=> apply_filters( 'graphene_comment_allowedtags', $allowedtags ),
-                    'id_form'              	=> 'commentform',
-                    'label_submit'         	=> __( 'Submit Comment', 'graphene' ),
-                     );
+            'comment_notes_before'  => '<p  class="comment-notes">' . __( 'Your email address will not be published.', 'graphene' ) . '</p>',
+            'comment_notes_after'  	=> '',
+            'id_form'              	=> 'commentform',
+            'label_submit'         	=> __( 'Submit Comment', 'graphene' ),
+        );
         comment_form( apply_filters( 'graphene_comment_form_args', $args ) ); 
     
         do_action( 'graphene_after_commentform' );  ?>
 	</div>
     
-<?php endif; // Ends the comment status ?>
+<?php endif; // Ends the comment status 

@@ -10,7 +10,7 @@ get_header();
 
     <h1 class="page-title archive-title">
         <?php
-            printf( __( 'Category Archive: <span>%s</span>', 'graphene' ), single_cat_title( '', false ) );
+            printf( __( 'Category: <span>%s</span>', 'graphene' ), single_cat_title( '', false ) );
         ?>
     </h1>
     

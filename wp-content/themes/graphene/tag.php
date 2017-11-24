@@ -10,7 +10,7 @@ get_header();
 
     <h1 class="page-title archive-title">
         <?php
-            printf(__('Tag Archive: <span>%s</span>', 'graphene'), single_tag_title('', false));
+            printf(__('Tag: <span>%s</span>', 'graphene'), single_tag_title('', false));
         ?>
     </h1>
     

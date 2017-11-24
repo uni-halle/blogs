@@ -29,7 +29,7 @@ get_header(); ?>
     
     <?php do_action( 'graphene_before_authorpostlist' ); ?>
     
-    <h3 class="author-post-list"><?php _e("Author's posts listings", 'graphene'); ?></h3>
+    <h3 class="author-post-list"><i class="fa fa-user-circle"></i> <?php _e("Author's posts", 'graphene'); ?></h3>
     
     <div class="entries-wrapper">
     <?php 

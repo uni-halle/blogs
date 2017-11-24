@@ -1,0 +1,103 @@
+.wp-full-overlay-sidebar { 
+	width: 500px;
+} 
+.wp-full-overlay.expanded { 
+	margin-left: 500px;
+}
+.CodeMirror {
+	height: 200px;
+}
+.CodeMirror-code {
+	font-size: 11px;
+	line-height: 16px;
+}
+#customize-control-graphene_settings-custom_css .CodeMirror {
+	height: 400px;
+}
+.customize-control .graphene-text input {
+	width: auto !important;
+}
+.customize-control select[multiple] {
+	width: 100%;
+	min-height: 150px;
+}
+.customize-control-radio label img {
+	vertical-align: middle;
+}
+#sub-accordion-section-graphene-general-front-page {
+	min-height: 600px;
+}
+#sub-accordion-section-graphene-display-columns-width input[type="text"] {
+	width: auto;
+}
+#sub-accordion-section-graphene-display-columns-width .customize-control-title {
+	display: block;
+	clear: both;
+	padding: 20px 0 10px;
+}
+.width-wrap-left,
+.width-wrap-center {
+	float: left;
+}
+.width-wrap-center {
+	margin-left: 28%;
+}
+.width-wrap-right {
+	float: right;
+}
+.input-slider {
+	padding-top: 10px;
+	clear: both;
+}
+.hide {
+	display: none;
+}
+.graphene-social-profile {
+	padding: 10px;
+	border: 1px solid #ddd;
+	background: #fff;
+	position: relative;
+}
+.graphene-social-profile .customize-control-title .fa {
+	font-size: 24px;
+	padding-right: 5px;
+}
+.status-icon {
+	font-size: 18px;
+	margin-left: 5px;
+}
+.status-icon.fa-check {
+	color: #4CAF50;
+}
+.graphene-social-profile .delete,
+.graphene-social-profile .move {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 16px;
+}
+.graphene-social-profile .delete {
+	right: 35px;
+}
+.graphene-social-profile .move {
+	cursor: move;
+}
+.customize-control .inline-field label {
+	clear: both;
+	width: 20%;
+	display: inline-block;
+}
+.customize-control .inline-field input[type="text"],
+.customize-control .inline-field select {
+	display: inline-block;
+	width: 79%;
+	margin: 4px 0 0 0;
+}
+.add-social-profile {
+	padding: 10px;
+	margin-top: 40px;
+	border: 1px dashed #ccc;
+}
+.add-social-profile .button {
+	margin-top: 10px;
+}

@@ -14,9 +14,9 @@ get_header(); ?>
         	<h1 class="page-title archive-title">
 				<?php
                     global $wp_query;
-                    /* translators: %1$s is the number of results found, %2$s is the search term */
-                    printf( _n( 'Found %1$s search result for keyword: %2$s', 
-                                'Found %1$s search results for keyword: %2$s', $wp_query->found_posts, 'graphene'), 
+                    /* translators: %1$d is the number of results found, %2$s is the search term */
+                    printf( _n( '%1$d result for %2$s', 
+                                '%1$d results for %2$s', $wp_query->found_posts, 'graphene'), 
                             number_format_i18n( $wp_query->found_posts ), 
                             '<span>' . get_search_query() . '</span>' 
                     );

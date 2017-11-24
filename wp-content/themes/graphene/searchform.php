@@ -1,10 +1,9 @@
-<form id="searchform" class="searchform" method="get" action="<?php echo get_home_url(); ?>">
-    <p class="clearfix default_searchform">
-        <input type="text" name="s" 
-        	onblur="if (this.value == '') {this.value = '<?php _e('Search','graphene'); ?>';}" 
-            onfocus="if (this.value == '<?php _e('Search','graphene'); ?>') {this.value = '';}" 
-            value="<?php if ( $term = get_search_query() ) echo esc_attr( $term ); else _e( 'Search', 'graphene' ); ?>" />
-        <button type="submit"><span><?php _e('Search', 'graphene'); ?></span></button>
-    </p>
+<form class="searchform" method="get" action="<?php echo get_home_url(); ?>">
+	<div class="input-group">
+	    <input type="text" name="s" class="form-control" placeholder="<?php esc_attr_e( 'Search', 'graphene' ); ?>">
+	    <span class="input-group-btn">
+	    	<button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+	    </span>
+    </div>
     <?php do_action('graphene_search_form'); ?>
 </form>

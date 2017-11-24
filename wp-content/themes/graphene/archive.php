@@ -21,13 +21,13 @@ if ( have_posts() )
 
     <h1 class="page-title archive-title">
         <?php if ( is_day() ) : ?>
-            <?php printf( __( 'Daily Archive: %s', 'graphene' ), '<span>' . get_the_date() . '</span>' ); ?>
+            <?php printf( __( '%s archive', 'graphene' ), '<span>' . get_the_date() . '</span>' ); ?>
         <?php elseif ( is_month() ) : ?>
-            <?php printf( __( 'Monthly Archive: %s', 'graphene' ), 
+            <?php printf( __( '%s archive', 'graphene' ), 
             /* translators: F will be replaced with month, and Y will be replaced with year, so "F Y" in English would be replaced with something like "June 2008". */
             '<span>' . get_the_date( __( 'F Y', 'graphene' ) ) . '</span>' ); ?>
         <?php elseif ( is_year() ) : ?>
-            <?php printf(__( 'Yearly Archive: %s', 'graphene' ), '<span>' . get_the_date( 'Y' ) . '</span>' ); ?>
+            <?php printf(__( '%s archive', 'graphene' ), '<span>' . get_the_date( 'Y' ) . '</span>' ); ?>
         <?php else : ?>
             <?php _e( 'Blog Archive', 'graphene' ); ?>
         <?php endif; ?>

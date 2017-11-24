@@ -1,0 +1,70 @@
+.wrap {
+	max-width: 1000px;
+	margin: 0 20px;
+}
+.header img {
+	float: right;
+	margin-left: 40px;
+}
+.header h2 {
+	font-size: 32px;
+	line-height: normal;
+	font-weight: 400;
+	margin-bottom: 20px;
+}
+.header p {
+	font-size: 16px;
+	line-height: 1.5em;
+	color: #888;
+	text-shadow: 1px 1px 1px #fff;
+}
+.content {
+	margin-top: 40px;
+}
+.section {
+	clear: both;
+	padding: 40px 0;
+	overflow: auto;
+	border-top: 1px solid #ddd;
+}
+.section h3 {
+	margin-top: 0;
+	font-size: 1.5em;
+}
+.alignleft {
+	margin-right: 40px;
+}
+.alignright {
+	margin-left: 40px;
+}
+.section .button,
+.section .button:hover,
+.section .button:focus {
+	background: #83B0B0;
+	background: linear-gradient(#8EB7B7,#83B0B0);
+	border: none;
+	border-radius: 3px;
+	padding: 9px 20px 10px;
+	color: #fff;
+	font-weight: 600;
+	text-shadow: 1px 1px 0 #555;
+	text-shadow: 1px 1px 0 rgba(50,50,50,0.3);
+	height: auto;
+}
+.section .button .fa {
+	margin: 0 5px;
+}
+.panel-50 {
+	width: 50%;
+	text-align: center;
+	padding: 20px 10%;
+	margin: 0;
+	float: left;
+	box-sizing: border-box;
+}
+.panel-50:first-child {
+	border-right: 1px solid #ddd;
+}
+.section .icon .fa {
+	font-size: 64px;
+}

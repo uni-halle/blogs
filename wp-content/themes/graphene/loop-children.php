@@ -25,19 +25,19 @@ if ( $graphene_settings['child_page_listing'] == 'show_always' ||
 
     if ( $pages->have_posts() ) :
     ?>
-    <div <?php graphene_grid( 'child-pages-wrap', 16, 11, 8, true ); ?>>
+    <div class="child-pages-wrap">
         <?php while ( $pages->have_posts() ) : $pages->the_post(); ?>
         <div class="post child-page page" id="page-<?php the_ID(); ?>">
             <div class="entry">
                     <div class="entry-content clearfix">
                     <?php /* The post thumbnail */
-                    if ( has_post_thumbnail( get_the_ID() ) ) {
-                        echo '<div class="excerpt-thumb"><a href="' . get_permalink( get_the_ID() ) . '">';
-                        echo get_the_post_thumbnail( get_the_ID(), apply_filters( 'graphene_excerpt_thumbnail_size', 'thumbnail' ) );
-                        echo '</a></div>';
-                    } else {
-                        echo graphene_get_post_image( get_the_ID(), apply_filters( 'graphene_excerpt_thumbnail_size', 'thumbnail' ), 'excerpt' );	
-                    }
+                        if ( has_post_thumbnail( get_the_ID() ) ) {
+                            echo '<div class="excerpt-thumb"><a href="' . get_permalink( get_the_ID() ) . '">';
+                            echo get_the_post_thumbnail( get_the_ID(), apply_filters( 'graphene_excerpt_thumbnail_size', 'thumbnail' ) );
+                            echo '</a></div>';
+                        } else {
+                            echo graphene_get_post_image( get_the_ID(), apply_filters( 'graphene_excerpt_thumbnail_size', 'thumbnail' ), 'excerpt' );	
+                        }
                     ?>
 
                     <?php /* The title */ ?>
@@ -49,9 +49,6 @@ if ( $graphene_settings['child_page_listing'] == 'show_always' ||
 	                    the_excerpt();
 						do_action( 'graphene_child_page_content' );
                     ?>
-
-                    <?php /* View page link */ ?>
-                    <p><a href="<?php the_permalink(); ?>" class="block-button" rel="bookmark" title="<?php printf( esc_attr__( 'Permalink to %s', 'graphene' ), get_the_title() ); ?>"><?php _e( 'View page &raquo;', 'graphene' ); ?></a></p>
                 </div>
             </div>
         </div>

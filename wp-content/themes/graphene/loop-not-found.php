@@ -1,4 +1,4 @@
-<div <?php graphene_grid( 'post page', 16, 11, 8, true ); ?>>
+<div <?php graphene_grid( 'post page', 12 ); ?>>
 	<div class="entry clearfix">
         <h2 class="post-title entry-title"><?php _e('Not found','graphene'); ?></h2>
         <div class="entry-content">

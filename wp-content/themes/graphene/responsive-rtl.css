@@ -1,0 +1,63 @@
+/**
+ * Responsive stylesheet for right-to-left (RTL) language support
+*/
+
+/* Extra small devices (phones, less than 768px) */
+
+/* Extra small devices (phones, less than 768px) */
+@media (max-width: 767px) {
+	.header_title {
+		text-align: right;
+	}
+	#footer .footer-menu-wrap {
+		text-align: center;
+	}
+	.rtl .entry-content .excerpt-thumb img, 
+	.rtl .child-page .excerpt-thumb img {
+		float: none;
+		margin: 0;
+	}
+	.comment-meta .comment-avatar {
+		float: right;
+		margin-right: 0;
+		margin-left: 10px;
+	}
+	.rtl .post-nav-top .previous,
+	.rtl .post-nav-top .next-post {
+		float: none;
+		text-align: center;
+	}
+	.rtl .author-entry .avatar {
+		float: none;
+	}
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+	
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+	
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199px) {
+	
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+	
+}

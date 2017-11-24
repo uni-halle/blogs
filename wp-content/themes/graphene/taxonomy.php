@@ -12,7 +12,7 @@ get_header();
         <?php
             $tax = get_taxonomy( get_query_var( 'taxonomy' ) );
             /* translators: %1$s will be replaced by the taxonomy singular name, %2$s will be replaced by the term title */
-            printf( __( '%1$s Archive: %2$s', 'graphene' ), $tax->labels->singular_name, '<span>' . single_term_title( '', false ) . '</span>' );
+            printf( __( '%1$s: %2$s', 'graphene' ), $tax->labels->singular_name, '<span>' . single_term_title( '', false ) . '</span>' );
         ?>
     </h1>
     

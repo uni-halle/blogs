@@ -25,6 +25,16 @@ function graphene_update_db(){
 			$current_settings = get_option( 'graphene_settings', array() );
 		}
 	}
+
+	if ( $current_settings && array_key_exists( 'db_version', $current_settings ) ) {
+		if ( $current_settings['db_version'] === '1.2' ) {
+			set_transient( '_graphene_welcome_screen_redirect', true, 30 );
+			graphene_update_db_to_1_3();
+			$current_settings = get_option( 'graphene_settings', array() );
+		}
+	}
+
+	// disect_it( $current_settings );
 }
 
 function graphene_update_db_to_1_0(){
@@ -304,7 +314,93 @@ function graphene_update_db_to_1_2(){
         );
     }    
     
-    update_option('graphene_settings', $graphene_settings);        
+    update_option('graphene_settings', $graphene_settings);
+}
+
+
+/**
+ * Migrate options from previous versions
+ */
+function graphene_update_db_to_1_3(){
+
+	global $graphene_defaults;
+
+	$graphene_settings = get_option( 'graphene_settings', array() );
+	update_option( 'graphene_legacy_settings', $graphene_settings );
+
+    $graphene_settings['db_version'] = '1.3';
+
+    /* Migrate our custom CSS option to WordPress native custom CSS feature */
+	if ( isset( $graphene_settings['custom_css'] ) ) {
+
+		$theme = wp_get_theme();
+		$css = wp_get_custom_css( $theme->stylesheet );
+		$css .= PHP_EOL . $graphene_settings['custom_css'];
+
+		wp_update_custom_css_post( $css );
+	}
+
+	/* Migrate option for infinite scroll method */
+	if ( isset( $graphene_settings['inf_scroll_click'] ) ) {
+		$graphene_settings['inf_scroll_method'] = 'click';
+	}
+
+	/* Convert option for homepage panes post type */
+	if ( isset( $graphene_settings['show_post_type'] ) && $graphene_settings['show_post_type'] == 'cat-latest-posts' ) {
+		$graphene_settings['show_post_type'] = 'latest-posts';
+	}
+
+	/* Migrate options with modified field name */
+	$field_map = array(
+		'top_bar_top_bg'				=> 'top_bar_bg',
+		'menu_primary_top_bg' 			=> 'menu_primary_bg',
+		'menu_primary_active_top_bg'	=> 'menu_primary_active_bg',
+		'menu_sec_dd_top_bg'			=> 'menu_sec_dd_bg',
+		'bg_content_wrapper'			=> 'content_wrapper_bg',
+		'bg_content'					=> 'content_bg',
+		'bg_meta_border'				=> 'meta_border',
+		'bg_sticky_content'				=> 'sticky_border',
+		'bg_child_page_content'			=> 'child_page_content_bg',
+		'bg_widget_item'				=> 'widget_item_bg',
+		'bg_widget_list'				=> 'widget_list',
+		'bg_widget_header_border'		=> 'widget_header_border',
+		'bg_button'						=> 'button_bg',
+		'bg_button_label'				=> 'button_label',
+		'bg_archive_left'				=> 'archive_bg',
+		'bg_archive_label'				=> 'archive_label',
+		'bg_archive_text'				=> 'archive_text',
+		'bg_comments'					=> 'comments_bg',
+		'bg_author_comments_border'		=> 'author_comments_border',
+	);
+	foreach ( $field_map as $old_field => $new_field ){
+		if ( isset( $graphene_settings[$old_field] ) ) {
+			$graphene_settings[$new_field] = $graphene_settings[$old_field];
+			unset( $graphene_settings[$old_field] );
+		}
+	}
+
+	/* Remove values for options that are no longer available */
+	foreach ( $graphene_settings as $key => $value ){
+		if ( ! array_key_exists( $key, $graphene_defaults ) ) unset( $graphene_settings[$key] );
+		elseif ( ( $graphene_defaults[$key] === $value || $value === '' ) && $key != 'db_version' ) {
+			unset( $graphene_settings[$key] );
+		}
+	}
+
+	/* Convert the column width settings */
+	if ( isset( $graphene_settings['container_width'] ) && $graphene_settings['container_width'] <= $graphene_defaults['container_width'] ) unset( $graphene_settings['container_width'] );
+	if ( isset( $graphene_settings['grid_width'] ) ) unset( $graphene_settings['grid_width'] );
+	if ( isset( $graphene_settings['gutter_width'] ) ) unset( $graphene_settings['gutter_width'] );
+	if ( isset( $graphene_settings['column_width'] ) ) {
+		foreach ( $graphene_settings['column_width'] as $column_mode => $cols_width ) {
+			$total_width = array_sum( $cols_width );
+			foreach ( $cols_width as $col => $col_width ) {
+				$graphene_settings['column_width'][$column_mode][$col] = round( $col_width / $total_width * 12 );
+			}
+		}
+	}
+
+	update_option( 'graphene_settings', $graphene_settings );
 }
 
 
