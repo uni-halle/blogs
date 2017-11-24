@@ -919,7 +919,13 @@ module.exports = panels.view.dialog.extend({
 
 		if (!_.isUndefined(this.model)) {
 			// Set the initial value of the
-			this.$('input.so-row-field').val(this.model.get('cells').length);
+			this.$( 'input[name="cells"].so-row-field' ).val( this.model.get( 'cells' ).length );
+			if ( this.model.has( 'ratio' ) ) {
+				this.$( 'select[name="ratio"].so-row-field' ).val( this.model.get( 'ratio' ) );
+			}
+			if ( this.model.has( 'ratio_direction' ) ) {
+				this.$( 'select[name="ratio_direction"].so-row-field' ).val( this.model.get( 'ratio_direction' ) );
+			}
 		}
 
 		this.$('input.so-row-field').keyup(function () {
@@ -944,11 +950,19 @@ module.exports = panels.view.dialog.extend({
 		// Set the rows to be a copy of the model
 		this.row = {
 			cells: this.model.get('cells').clone(),
-			style: {}
+			style: {},
+			ratio: this.model.get('ratio'),
+			ratio_direction: this.model.get('ratio_direction'),
 		};
 
 		// Set the initial value of the cell field.
-		this.$('input.so-row-field').val(this.model.get('cells').length);
+		this.$( 'input[name="cells"].so-row-field' ).val( this.model.get( 'cells' ).length );
+		if ( this.model.has( 'ratio' ) ) {
+			this.$( 'select[name="ratio"].so-row-field' ).val( this.model.get( 'ratio' ) );
+		}
+		if ( this.model.has( 'ratio_direction' ) ) {
+			this.$( 'select[name="ratio_direction"].so-row-field' ).val( this.model.get( 'ratio_direction' ) );
+		}
 
 		this.clearCellStylesCache();
 
@@ -1340,7 +1354,7 @@ module.exports = panels.view.dialog.extend({
 				this.$('.row-set-form input[name="cells"]').val(f.cells);
 			}
 
-			this.$('.row-set-form input[name="ratio"]').val(f.ratio);
+			this.$('.row-set-form select[name="ratio"]').val(f.ratio);
 
 			var cells = [];
 			var cellCountChanged = (
@@ -1384,6 +1398,9 @@ module.exports = panels.view.dialog.extend({
 					cell.set('weight', cellWeight);
 				}
 			}.bind(this));
+			
+			this.row.ratio = f.ratio;
+			this.row.ratio_direction = f.direction;
 
 			if (cellCountChanged) {
 				this.regenerateRowPreview();
@@ -1436,7 +1453,9 @@ module.exports = panels.view.dialog.extend({
 
 		// Set the cells
 		if (!_.isEmpty(this.model)) {
-			this.model.setCells(this.row.cells);
+			this.model.setCells( this.row.cells );
+			this.model.set( 'ratio', this.row.ratio );
+			this.model.set( 'ratio_direction', this.row.ratio_direction );
 		}
 
 		// Update the row styles if they've loaded
@@ -1840,7 +1859,7 @@ module.exports = panels.view.dialog.extend( {
 
 } );
 
-},{"../view/widgets/js-widget":30}],10:[function(require,module,exports){
+},{"../view/widgets/js-widget":31}],10:[function(require,module,exports){
 var panels = window.panels, $ = jQuery;
 
 module.exports = panels.view.dialog.extend( {
@@ -2482,21 +2501,22 @@ jQuery( function ( $ ) {
 		field,
 		form,
 		builderConfig;
-
-	if ( $( '#siteorigin-panels-metabox' ).length && $( 'form#post' ).length ) {
+	
+	var $panelsMetabox = $( '#siteorigin-panels-metabox' );
+	form = $( 'form#post' );
+	if ( $panelsMetabox.length && form.length ) {
 		// This is usually the case when we're in the post edit interface
-		container = $( '#siteorigin-panels-metabox' );
-		field = $( '#siteorigin-panels-metabox .siteorigin-panels-data-field' );
-		form = $( 'form#post' );
+		container = $panelsMetabox;
+		field = $panelsMetabox.find( '.siteorigin-panels-data-field' );
 
 		builderConfig = {
 			editorType: 'tinyMCE',
 			postId: $( '#post_ID' ).val(),
 			editorId: '#content',
-			builderType: $( '#siteorigin-panels-metabox' ).data( 'builder-type' ),
-			builderSupports: $( '#siteorigin-panels-metabox' ).data( 'builder-supports' ),
+			builderType: $panelsMetabox.data( 'builder-type' ),
+			builderSupports: $panelsMetabox.data( 'builder-supports' ),
 			loadOnAttach: panelsOptions.loadOnAttach && $( '#auto_draft' ).val() == 1,
-			loadLiveEditor: $( '#siteorigin-panels-metabox' ).data('live-editor') == 1,
+			loadLiveEditor: $panelsMetabox.data('live-editor') == 1,
 			liveEditorPreview: container.data('preview-url')
 		};
 	}
@@ -2662,6 +2682,14 @@ module.exports = Backbone.Model.extend({
 
 				if ( ! _.isUndefined( data.grids[i].style ) ) {
 					rowAttrs.style = data.grids[i].style;
+				}
+
+				if ( ! _.isUndefined( data.grids[i].ratio) ) {
+					rowAttrs.ratio = data.grids[i].ratio;
+				}
+
+				if ( ! _.isUndefined( data.grids[i].ratio_direction) ) {
+					rowAttrs.ratio_direction = data.grids[i].ratio_direction
 				}
 
 				if ( ! _.isUndefined( data.grids[i].color_label) ) {
@@ -2835,6 +2863,8 @@ module.exports = Backbone.Model.extend({
 			data.grids.push( {
 				cells: row.get('cells').length,
 				style: row.get( 'style' ),
+				ratio: row.get('ratio'),
+				ratio_direction: row.get('ratio_direction'),
 				color_label: row.get( 'color_label' ),
 				label: row.get( 'label' ),
 			} );
@@ -2959,6 +2989,8 @@ module.exports = Backbone.Model.extend({
 				panels_data.grids.push( {
 					cells: $cells.length,
 					style: $row.data( 'style' ),
+					ratio: $row.data( 'ratio' ),
+					ratio_direction: $row.data( 'ratio-direction' ),
 					color_label: $row.data( 'color-label' ),
 					label: $row.data( 'label' ),
 				} );
@@ -4069,9 +4101,10 @@ module.exports = Backbone.View.extend( {
 		// Move the panels box into a tab of the content editor
 		metabox.insertAfter( '#wp-content-wrap' ).hide().addClass( 'attached-to-editor' );
 
-		// Switch to the Page Builder interface as soon as we load the page if there are widgets
+		// Switch to the Page Builder interface as soon as we load the page if there are widgets or the normal editor
+		// isn't supported.
 		var data = this.model.get( 'data' );
-		if ( ! _.isEmpty( data.widgets ) || ! _.isEmpty( data.grids ) ) {
+		if ( ! _.isEmpty( data.widgets ) || ! _.isEmpty( data.grids ) || ! this.supports( 'revertToEditor' ) ) {
 			this.displayAttachedBuilder( { confirm: false } );
 		}
 
@@ -7057,11 +7090,41 @@ module.exports = Backbone.View.extend( {
 } );
 
 },{}],30:[function(require,module,exports){
+var $ = jQuery;
+
+var customHtmlWidget = {
+	addWidget: function( idBase, widgetContainer, widgetId ) {
+		var component = wp.customHtmlWidgets;
+		
+		var fieldContainer = $( '<div></div>' );
+		var syncContainer = widgetContainer.find( '.widget-content:first' );
+		syncContainer.before( fieldContainer );
+
+		var widgetControl = new component.CustomHtmlWidgetControl( {
+			el: fieldContainer,
+			syncContainer: syncContainer,
+		} );
+
+		widgetControl.initializeEditor();
+		
+		// HACK: To ensure CodeMirror resize for the gutter.
+		widgetControl.editor.codemirror.refresh();
+		
+		return widgetControl;
+	}
+};
+
+module.exports = customHtmlWidget;
+
+},{}],31:[function(require,module,exports){
+var customHtmlWidget = require( './custom-html-widget' );
 var mediaWidget = require( './media-widget' );
 var textWidget = require( './text-widget' );
 
 var jsWidget = {
+	CUSTOM_HTML: 'custom_html',
 	MEDIA_AUDIO: 'media_audio',
+	MEDIA_GALLERY: 'media_gallery',
 	MEDIA_IMAGE: 'media_image',
 	MEDIA_VIDEO: 'media_video',
 	TEXT: 'text',
@@ -7071,7 +7134,11 @@ var jsWidget = {
 		var widget;
 
 		switch ( idBase ) {
+			case this.CUSTOM_HTML:
+				widget = customHtmlWidget;
+				break;
 			case this.MEDIA_AUDIO:
+			case this.MEDIA_GALLERY:
 			case this.MEDIA_IMAGE:
 			case this.MEDIA_VIDEO:
 				widget = mediaWidget;
@@ -7087,7 +7154,7 @@ var jsWidget = {
 
 module.exports = jsWidget;
 
-},{"./media-widget":31,"./text-widget":32}],31:[function(require,module,exports){
+},{"./custom-html-widget":30,"./media-widget":32,"./text-widget":33}],32:[function(require,module,exports){
 var $ = jQuery;
 
 var mediaWidget = {
@@ -7127,7 +7194,7 @@ var mediaWidget = {
 
 module.exports = mediaWidget;
 
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 var $ = jQuery;
 
 var textWidget = {

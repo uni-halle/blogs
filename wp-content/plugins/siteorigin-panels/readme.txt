@@ -1,9 +1,9 @@
 === Page Builder by SiteOrigin ===
 Tags: page builder, responsive, widget, widgets, builder, page, admin, gallery, content, cms, pages, post, css, layout, grid
 Requires at least: 4.4
-Tested up to: 4.8.1
-Stable tag: 2.5.12
-Build time: 2017-09-14T09:46:30+02:00
+Tested up to: 4.9
+Stable tag: 2.5.16
+Build time: 2017-11-22T14:19:27+02:00
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://siteorigin.com/downloads/contribution/
@@ -96,7 +96,29 @@ We've tried to ensure that Page Builder is compatible with most plugin widgets. 
 
 == Changelog ==
 
-= 2.5.11 - 14 September 2017 =
+= 2.5.16 - 22 November 2017 =
+* Disabled the Content Cache feature until we've resolved all issues and conflicts.
+
+= 2.5.15 - 17 November 2017 =
+* Don't use deprecated `load` event jQuery function shortcut.
+* Immediately switch to Page Builder if `revertToEditor` feature isn't supported.
+* Fix switching between standard editor and Page Builder.
+* Removed some duplicated jQuery selectors.
+* Prevent error with invalid plugin action links.
+* Add compatibility for new WP core Custom HTML and Media Gallery widgets.
+
+= 2.5.14 - 6 November 2017 =
+* Content Cache: Add Enqueue hook to allow 3rd parties to enqueue cache friendly assets.
+* Added raw_panels_data flag for layout imports.
+* Save ratio and ratio_direction as row attributes.
+* Add rel="noopener noreferrer" for all 3rd party/unknown links.
+
+= 2.5.13 - 29 September 2017 =
+* Always enqueue parallax when in cache mode.
+* Skip saving post meta for revisions in previews.
+* Cast post types as string when adding meta boxes.
+
+= 2.5.12 - 14 September 2017 =
 * Learn: fixed broken image.
 * Prevent JS error when PB active alongside Elementor.
 * Disabling DFW mode no longer hides PB.
