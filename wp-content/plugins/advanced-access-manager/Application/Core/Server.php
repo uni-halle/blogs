@@ -62,8 +62,7 @@ final class AAM_Core_Server {
         $params = array(
             'domain'  => parse_url(site_url(), PHP_URL_HOST), 
             'version' => AAM_Core_API::version(),
-            'uid'     => AAM_Core_API::getOption('aam-uid', null, 'site'),
-            'email'   => AAM_Core_API::getOption('admin_email')
+            'uid'     => AAM_Core_API::getOption('aam-uid', null, 'site')
         );
         
         $response = self::send('/check', $params);
@@ -113,31 +112,6 @@ final class AAM_Core_Server {
         return $result;
     }
     
-    /**
-     * Subscribe to updates
-     * 
-     * @param string $email
-     * 
-     * @return array
-     * 
-     * @access public
-     */
-    public static function subscribe($email) {
-        $response = self::send('/subscribe', array('email' => $email));
-        
-        if (!is_wp_error($response)) {
-            if ($response->error === true) {
-                $result = new WP_Error($response->code, $response->message);
-            } else {
-                $result = $response;
-            }
-        } else {
-            $result = $response;
-        }
-
-        return $result;
-    }
-
     /**
      * Send request
      * 

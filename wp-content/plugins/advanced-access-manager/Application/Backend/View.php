@@ -225,32 +225,6 @@ class AAM_Backend_View {
      * 
      * @return type
      */
-    public function subscribe() {
-        $email = filter_var(
-                AAM_Core_Request::post('email'), FILTER_VALIDATE_EMAIL
-        );
-        
-        if ($email) {
-            $response = AAM_Core_Server::subscribe($email);
-        } else {
-            $response = array(
-                'status' => 'failure', 'reason' => __('Invalid Email', AAM_KEY)
-            );
-        }
-        
-        if (is_wp_error($response)) {
-            $response = array(
-                'status' => 'failure', 'reason' => $response->get_error_message()
-            );
-        }
-        
-        return json_encode($response);
-    }
-    
-    /**
-     * 
-     * @return type
-     */
     public function switchToUser() {
         $response = array(
                 'status' => 'failure', 

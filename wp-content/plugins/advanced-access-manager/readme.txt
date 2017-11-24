@@ -3,7 +3,7 @@ Contributors: vasyltech
 Tags: access, role, user, capability, page access, post access, comments, security, login redirect, brute force attack, double authentication, membership, backend lockdown, wp-admin, 404, activity tracking
 Requires at least: 3.8
 Tested up to: 4.8.1
-Stable tag: 4.9.4
+Stable tag: 4.9.5.2
 
 Manage access to your website for any user, role or visitors for both frontend and backend.
 
@@ -101,6 +101,21 @@ Check our [help page](https://aamplugin.com/help) to find out more about AAM.
 11. Improve your website security
 
 == Changelog ==
+
+= 4.9.5.2 =
+* Fixed compatibility with PHP 5.3 or lower
+
+= 4.9.5.1 =
+* Fixed the bug with media access
+* Improved UI
+
+= 4.9.5 =
+* Improved user experience with AAM UI
+* Removed Welcome message
+* Fixed bug with media access
+* Added filter for AAM shordcodes so other plugins can hook to AAM
+* Optimized AAM javascript
+* Removed subscription box to reduce "UI noise" as more features are coming
 
 = 4.9.4 =
 * Significantly improved Admin Menu access management

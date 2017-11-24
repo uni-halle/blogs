@@ -45,14 +45,6 @@ class AAM_Core_Media {
      */
     protected function __construct() {
         if (AAM_Core_Request::get('aam-media')) {
-            if (AAM_Core_Request::get('debug')) {
-                file_put_contents(
-                        dirname(__FILE__) . '/debug.log', 
-                        print_r(AAM_Core_Request::server(), 1) . "\n", 
-                        FILE_APPEND
-                );
-            }
-            
             $this->initialize();
             
             if (AAM_Core_Config::get('media-access-control', false)) {
@@ -77,7 +69,7 @@ class AAM_Core_Media {
         $root    = AAM_Core_Request::server('DOCUMENT_ROOT');
         
         $this->request     = str_replace('\\', '/', $root . $request);
-        $this->request_uri = $request;
+        $this->request_uri = preg_replace('/\?.*$/', '', $request);
     }
     
     /**
@@ -142,16 +134,20 @@ class AAM_Core_Media {
         }
         
         //normalize path and strip all unexpected trails. Thanks to Antonius Hegyes
-        $path = preg_replace('/\?.*$/', '', $path);
+        $path  = preg_replace('/\?.*$/', '', $path);
+        $rpath = preg_replace('/\?.*$/', '', $this->request_uri);
+        
+        //finally replace the filename with requested filename
+        $request = str_replace(basename($path), basename($rpath), $path);
         
         if (empty($mime)) {
             if (function_exists('mime_content_type')) {
-                $mime = mime_content_type($path);
+                $mime = mime_content_type($request);
             }
         }
         
         @header('Content-Type: ' . (empty($mime) ? $type : $mime));
-        echo file_get_contents($path);
+        echo file_get_contents($request);
         exit;
     }
     

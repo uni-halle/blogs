@@ -36,7 +36,7 @@ class AAM_Shortcode_Factory {
             $this->strategy = new $classname($args, $content);
         } else {
             $this->strategy = apply_filters(
-                    'aam-shortcode-context-filter', null, $args, $content
+                    'aam-shortcode-filter', null, $context, $args, $content
             );
         }
     }

@@ -215,10 +215,10 @@ class AAM_Extension_Repository {
                     // TODO - Fix bug with EXTENDED license
                     if (!empty($index[$id . '_EXTENDED']['license'])) {
                         $item['license'] = $index[$id . '_EXTENDED']['license'];
-                        $item['expire']  = (isset($index[$id . '_EXTENDED']['expire']) ? $index[$id . '_EXTENDED']['expire'] : null);
+                        $item['expire']  = (isset($index[$id . '_EXTENDED']['expire']) ? date('Y-m-d', strtotime($index[$id . '_EXTENDED']['expire'])) : null);
                     } elseif (!empty($index[$id]['license'])) {
                         $item['license'] = $index[$id]['license'];
-                        $item['expire']  = (isset($index[$id]['expire']) ? $index[$id]['expire'] : null);
+                        $item['expire']  = (isset($index[$id]['expire']) ? date('Y-m-d', strtotime($index[$id]['expire'])) : null);
                     } else {
                         $item['license'] = '';
                     }

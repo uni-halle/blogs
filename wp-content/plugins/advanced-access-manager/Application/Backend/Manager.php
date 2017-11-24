@@ -425,7 +425,6 @@ class AAM_Backend_Manager {
             'ajaxurl' => admin_url('admin-ajax.php'),
             'url' => array(
                 'site'     => admin_url('index.php'),
-                'jsbase'   => AAM_MEDIA . '/js',
                 'editUser' => admin_url('user-edit.php'),
                 'addUser'  => admin_url('user-new.php')
             ),

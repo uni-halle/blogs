@@ -116,7 +116,8 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
                     get_edit_post_link($record->ID, 'link'),
                     'post',
                     (!empty($record->post_title) ? $record->post_title : 'Reference To: ' . $record->post_name),
-                    apply_filters('aam-post-row-actions-filter', 'manage,edit', $record)
+                    apply_filters('aam-post-row-actions-filter', 'manage,edit', $record),
+                    //get_post_permalink($record)
                 );
             } else { //term
                 $response['data'][] = array(
@@ -150,14 +151,20 @@ class AAM_Backend_Feature_Post extends AAM_Backend_Feature_Abstract {
         //first retrieve all hierarchical terms that belong to Post Type
         if ($paging['terms']) {
             $list = $this->retrieveTermList(
-                    $this->getTypeTaxonomies($type), $s, $paging['term_offset'], $paging['terms']
+                    $this->getTypeTaxonomies($type), 
+                    $s, 
+                    $paging['term_offset'], 
+                    $paging['terms']
             );
         }
         
         //retrieve all posts
         if ($paging['posts']) {
             $list = array_merge(
-                $list, $this->retrievePostList($type, $s, $paging['post_offset'], $paging['posts'])
+                $list, 
+                $this->retrievePostList(
+                        $type, $s, $paging['post_offset'], $paging['posts']
+                )
             );
         }
         
