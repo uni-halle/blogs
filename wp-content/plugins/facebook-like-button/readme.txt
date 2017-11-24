@@ -2,8 +2,8 @@
 Contributors: AhmedGeek
 Tags: facebook, like, button, recommendations, opengraph, seo, recommend, sharing, social, pressgraph
 Requires at least: 2.5
-Tested up to: 4.5.2
-Stable tag: 6.0.8
+Tested up to: 4.8.2
+Stable tag: 6.0.12
 License: GPL2
 
 Add Facebook Like Button to your website with ton of customization options, and make your website OpenGraph ready without you writing a 1 line of code.
@@ -43,6 +43,9 @@ You can customize the shortcode (button) using the following attributes:
 
 
 == Changelog ==
+
+= 6.0.10 =
+* Adding HTTPS migration option to restore missing likes after adding an SSL certificate to the website.
 
 = 6.0.9 =
 * Fixing problem with og:image missing url attribute.
@@ -434,3 +437,6 @@ Bugs Fixed.
 
 = 6.0.9 =
 * Fixing problem with og:image missing url attribute.
+
+= 6.0.10 =
+* Adding HTTPS migration option to restore missing likes after adding an SSL certificate to the website.

@@ -41,6 +41,7 @@ class migrationManager{
 				"font" => "font",
 				"include_share" => "include_share",
 				"kid_restricted" => "kid_restricted",
+				"https_migration" => "https_migration",
 				"didUpdateOptions" => "didUpdateOptions"
 
 

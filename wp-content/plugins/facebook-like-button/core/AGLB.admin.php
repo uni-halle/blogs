@@ -9,11 +9,11 @@ namespace AGPressGraph;
  */
  
 class adminManager{
-	public $coreDirPath;
+	public static $coreDirPath;
 	public $page_sections = array();
 
 	public function __construct(){
-		$coreDirPath = plugin_dir_path(__FILE__);
+		self::$coreDirPath = plugin_dir_path(__FILE__);
 	}
 	
 	
@@ -89,6 +89,9 @@ class adminManager{
 		add_settings_field( "AGPressGraph_like_kid_restricted", "Kid Restricted Site?", 
 		array(__CLASS__, "AGPressGraph_like_kid_restricted_callback"), "AGPressGraphGeneral", "AGPressGraphLike_general" );
 
+		add_settings_field( "AGPressGraph_like_https_migration", "Enable HTTPS migration mode",
+			array(__CLASS__, "AGPressGraph_like_https_migration_callback"), "AGPressGraphGeneral", "AGPressGraphLike_general" );
+
 
 
 		//Assign Layout Settings Fields
@@ -129,7 +132,7 @@ class adminManager{
 	 * @return void
 	 */
 	public function likeSettingsPageLayout(){
-		include_once($coreDirPath . "layout/likeButtonSettingsPage.php");
+		include_once(self::$coreDirPath . "layout/likeButtonSettingsPage.php");
 	}
 	
 	/**
@@ -311,6 +314,17 @@ class adminManager{
 		$AGPressGraph_like_kid_restricted = get_option('AGPressGraph_like_kid_restricted');
 		?><input type="checkbox" name="AGPressGraph_like_kid_restricted" value="true" <?php checked("true", $AGPressGraph_like_kid_restricted) ?> /><?php
 	}
+
+	/**
+	 * AGPressGraph_like_https_migration_callback function.
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function AGPressGraph_like_https_migration_callback() {
+		$AGPressGraph_like_https_migration = get_option('AGPressGraph_like_https_migration');
+		?><input type="checkbox" name="AGPressGraph_like_https_migration" value="true" <?php checked("true", $AGPressGraph_like_https_migration) ?> /><?php
+    }
 	
 	/**
 	 * AGPressGraph_like_layout_callback function.
@@ -479,15 +493,13 @@ class adminManager{
 	 */
 	public function AGPressGraphLikeLivePreviewMetaBoxCallback(){
 		  global $AGFBButtons;
-	      include_once($coreDirPath . "layout/facebookSDK.php");
-	      
-	      
+	      include_once(self::$coreDirPath . "layout/facebookSDK.php");
 	      
 	      ?>
 	      
 	      	<div id="AGLBTheButton">
 		      	
-		      	<?php $AGFBButtons = new theButtons(); $AGFBButtons->buttonWithOptions("http://ahmedgeek.com");?>
+		      	<?php $AGFBButtons = new theButtons(); $AGFBButtons->buttonWithOptions("https://ahmedgeek.com");?>
 		      	
 	      	</div>
 	      	<br />
@@ -586,17 +598,9 @@ class adminManager{
 	public function upgradeNotice(){
 		?>
 	    <div class="update-nag">
-	        <p><b>PressGraph <i>(Formerly Facebook Like Button)</i>:</b> been updated to version 6.0, and that requires you to update the plugin <a href="<?php echo admin_url('admin.php?page=AGPressGraph&updateFromNotice=true'); ?>">settings</a>.</p>
+	        <p><b><?_e("PressGraph (Facebook Like):", "pressgraph")?></b> <?php _e("version 6.0 has been installed, and that requires you to update the plugin's", "pressgraph"); ?> <a href="<?php echo admin_url('admin.php?page=AGPressGraph&updateFromNotice=true'); ?>"><?php _e("settings", "pressgraph"); ?></a>.</p>
 	    </div>
 	    <?php
-	}
-	
-	public function sellingNotice(){
-		?>
-	    <div class="update-nag">
-	        <p><b>PressGraph <i>(Formerly Facebook Like Button)</i>:</b> Is to be sold (Source, Rights) if you're interested please contact me at <a href="mailto:me@ahmedgeek.com">me@ahmedgeek.com</a> or <a href="<?php echo admin_url('admin.php?page=AGPressGraph&fromSellingNotice=true'); ?>">dismiss</a> this message.</p>
-	    </div>
-		<?php
 	}
 
 }
