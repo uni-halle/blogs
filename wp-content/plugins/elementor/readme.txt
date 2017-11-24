@@ -2,9 +2,9 @@
 Contributors: pojo.me, KingYes, ariel.k, jzaltzberg, mati1000, pojosh, yehudah
 Tags: page builder, editor, landing page, drag-and-drop, elementor, visual editor, wysiwyg, design, maintenance mode, coming soon, under construction, website builder, landing page builder, front-end builder
 Requires at least: 4.5
-Tested up to: 4.8
+Tested up to: 4.9
 Requires PHP: 5.4
-Stable tag: 1.7.6
+Stable tag: 1.8.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -19,35 +19,35 @@ It's about time for a live page builder, with no limits of design. A page builde
 It's time for **[Elementor Page Builder](https://elementor.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)**.
 
 = Faster. Much faster. =
-Instant reaction was a key feature we wanted to achieve. And we did. Instant drag & drop, instant live edit, instant page load. The speed of Elementor is not matched by any other page builder, free or paid. This makes the interface fun and easy to work with, as well as reduces the time it takes to design.
+Instant reaction was a key feature we wanted to achieve. And we did. Instant drag & drop page builder, instant live edit, instant page load. The speed of Elementor is not matched by any other page builder, free or paid. This makes the interface fun and easy to work with, as well as reduces the time it takes to design.
 
 = Live design. Truly live. =
-Never again work on the backend and guess what the frontend will look like. With Elementor, you edit the page and simultaneously see exactly how it looks like. Elementor features live editing that is truly live, with no need to press update or go to preview mode.
+Never again work on the backend and guess what the frontend will look like. With Elementor page builder, you edit the page and simultaneously see exactly how it looks like. Elementor features live design & inline editing, so the whole process of writing and designing is done directly on the page, with no need to press update or go to preview mode.
 
 = Surprises you won’t see anywhere else. =
-With Elementor's unique features, you can create websites that have that certain 'designer touch'. Among these features are: Box Shadows, Background Overlays, Hover Effects, Headline Effects, Animations, Shape Dividers, Gradient Backgrounds and much more.
+With Elementor's unique features, you can create websites that have that certain 'designer touch'. Among our page builder features are: Box Shadows, Background Overlays, Hover Effects, Headline Effects, Animations, Shape Dividers, Gradient Backgrounds and much more.
 
-= Template Library =
-We've added **Library**, which includes a collection of 100+ beautiful templates, made for you by our top notch designers. You can also save your own pages and sections, and reuse them on different pages, or export them to whole different websites.
+= Template Library. =
+We've added [Template Library](https://library.elementor.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme), which includes a collection of 100+ beautiful WordPress templates, made for you by our top notch designers. You can save and reuse them on different pages, or export them to whole different websites with our page builder.
 
-= Mobile Editing =
-Elementor Page Builder comes with an exclusive toolset, that lets you create truly a responsive website in a whole new and visual way. From different font size per device, to reverse column ordering, this is the most powerful solution for creating perfect mobile pages.
+= Mobile First. Mobile Editing. =
+Elementor Page Builder comes with an exclusive toolset, that lets you create truly a responsive website in a whole new and visual way. From different font size, padding and margin per device, to reverse column ordering, this is the most powerful mobile page builder for creating perfect responsive websites.
 
-= Full History Log: Undo / Redo Actions & Revisions =
-Undo and redo any action you make by clicking on Ctrl / Cmd + Z, or by browsing through the complete list of actions. Want to go back ever further? Switch to Revisions to view a complete list of all earlier saved versions of the page.
+= Undo / Redo & Revision History. =
+Our page builder includes undo and redo for any action you make. Click on Ctrl / Cmd + Z, or browse through the complete list of actions. Want to go back ever further? Switch to Revisions to view a complete list of all earlier saved versions of the page.
 
-= Canvas - Blank Page Template =
+= Canvas. A Blank Page Template for Landing Pages. =
 Design your entire page in the page builder. No header, no footer, just Elementor. This is perfect for landing pages and coming soon pages. Canvas works on any theme, and lets you get rid of the header area so you get a blank template to work on.
 
-= New! Maintenance Mode =
-Need to get your site offline for maintenance? Use Elementor's built in Maintenance Mode & Coming Soon feature to show your visitors an under construction / coming soon page.
+= Built-in Maintenance Mode & Under Construction. =
+Need to get your site offline for maintenance? Use Elementor page builder's built in Maintenance Mode & Coming Soon feature to show your visitors an under construction / coming soon page.
 
-= Get More With Elementor Pro =
+= Try Elementor Pro. The Best Page Builder For WordPress. =
 If you thought Elementor is full of useful features, check out Elementor Pro! Elementor Pro extends the basic features even further, and allows you to control your entire website with Elementor.
 
-Design forms live on the frontend, customize your blog posts visually, incorporate slides, WooCommerce, global widgets, custom CSS and much more. [Upgrade now to Elementor Pro!](https://elementor.com/pro/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
+Design [forms](https://elementor.com/pro-v140-form-integrations/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)  live on the frontend, customize your blog posts visually, incorporate slides, WooCommerce, global widgets, custom CSS and much more. [Upgrade now to Elementor Pro!](https://elementor.com/pro/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
 
-= 28 widgets and counting =
+= 28 free widgets and counting =
 We packed 28 of the most useful widgets into our page builder. True, that's way more than we had to offer, but we wanted to spare no widget from you, so you can reach the top of your design capabilities.
 
 - **Heading**. Add eye-catching headlines.
@@ -84,7 +84,7 @@ We packed 28 of the most useful widgets into our page builder. True, that's way 
 We've integrated RTL and multi language support within the framework of our page builder, so you get a translated panel out of the box, as well as RTL typography support, and developer options to add even more languages.
 
 = Developer API. =
-Elementor is free and open source. It's the perfect page builder plugin to be extended and integrated further. It was created and developed with the developer in mind, and we have already seen some truly remarkable addons already developed.
+Elementor page builder is free and open source. It's the perfect page builder plugin to be extended and integrated further. It was created and developed with the developer in mind, and we have already seen some truly remarkable addons already developed.
 We have created an extensive [API documentation](https://github.com/pojome/elementor/tree/master/docs), to help you get started and learn just how to integrate with Elementor.
 
 = Translations =
@@ -111,13 +111,13 @@ If you want to contribute, go to our [Elementor GitHub Repository](https://githu
 You can also add a new language via [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/elementor). We've built a short guide explaining [how to translate and localize the plugin](https://go.elementor.com/translate/).
 
 = Documentation and Support =
-
 - For documentation and tutorials go to our [Documentation](https://docs.elementor.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 - If you have any more questions, visit our support on the [Plugin's Forum](https://wordpress.org/support/plugin/elementor).
 - For more information about features, FAQs and documentation, check out our website at [Elementor Page Builder](https://elementor.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 
 = Liked Elementor? =
-- Check out our recently featured page on [Product Hunt](https://www.producthunt.com/tech/elementor).
+- Join our [Facebook Group](https://www.facebook.com/groups/Elementors/).
+- Learn from our tutorials on [Youtube Channel](https://www.youtube.com/c/elementor).
 - Or rate us on [WordPress](https://wordpress.org/support/plugin/elementor/reviews/?filter=5/#new-post) :)
 
 == Installation ==
@@ -184,7 +184,81 @@ No. Elementor supports WordPress 4.5 or greater, and is compatible with PHP 5.4 
 
 == Changelog ==
 
-= 1.7.6 - 24.09.2017 =
+= 1.8.5 - 19.11.2017 =
+* Fix! – Compatibility with the WordPress 4.9 native widgets ([#2763](https://github.com/pojome/elementor/issues/2763))
+* Fix! - Removed related videos from background video in some cases ([#2372](https://github.com/pojome/elementor/issues/2372))
+* Fix! - Element inside similar element conflict ([#2760](https://github.com/pojome/elementor/issues/2760))
+* Fix! - Responsive alignment in Icon List widget
+
+= 1.8.4 - 14.11.2017 =
+* Fix! - Accordion open/close icon ([#2740](https://github.com/pojome/elementor/issues/2740))
+* Fix! - Color control does not allow more than 7 characters ([#2737](https://github.com/pojome/elementor/issues/2737))
+* Fix! - Button wrap on Safari browser
+* Fix! - Print duplicate styles when Print Method set to Internal Embedding
+
+= 1.8.3 - 11.11.2017 =
+* Fix! – Added nonce to export template action ([Topic](https://wordpress.org/support/topic/importation-error-in-library-elementor-8-2/))
+* Fix! - Native WordPress widgets stopped working ([#2732](https://github.com/pojome/elementor/issues/2732))
+
+= 1.8.2 - 09.11.2017 =
+* Fix! - Added nonce to export template action ([#2722](https://github.com/pojome/elementor/issues/2722))
+* Fix! - Changes nonce key for third party plugins
+
+= 1.8.1 - 09.11.2017 =
+* Fix! - Bug loading Editor templates in some server configurations ([#2712](https://github.com/pojome/elementor/issues/2712))
+* Fix! - Added parameter to overwrite control recursively ([#2702](https://github.com/pojome/elementor/issues/2702))
+* Fix! - Patched nonce validation for all library actions
+* Fix! - Glitch with Tabs widget on touch screen
+* Fix! - Glitch with Button wrap on small screens
+
+= 1.8.0 - 07.11.2017 =
+* New! - Inline Editing added to all text, textarea & TinyMCE controls ([#437](https://github.com/pojome/elementor/issues/437))
+* New! - Added auto complete for code editor (Custom CSS & HTML widget) ([#2416](https://github.com/pojome/elementor/issues/2416))
+* New! – Added more icons to Social Icons widget: Telegram & OK ([#2670](https://github.com/pojome/elementor/issues/2670))
+* New! - Set focus to search bar when you click on widget button in the panel ([#2333](https://github.com/pojome/elementor/issues/2333))
+* Tweak! - Added `soft wrap` for code editor
+* Tweak! - Better accessibility for Tabs, Toggle & Accordion widgets
+* Tweak! - Added option to disable the widget on-change rendering
+* Tweak! - Improved error dialogs for better handling cases when the editor fails to load.
+* Tweak! - Rename Global Colors & Fonts to Default Colors and Default Fonts for better clarify
+* Tweak! - Update Google Fonts list with more then 10 new fonts
+* Tweak! - Eicons v2.5.0 updated
+* Tweak! - Added an "Elementor" post state for post table
+* Tweak! - Added responsive control for Icon Box (Space & Size)
+* Tweak! - Added compatibility and support for WP Color in WordPress 4.9 ([#2550](https://github.com/pojome/elementor/issues/2550))
+* Tweak! - Better nonce handling/renewing to avoid timeouts
+* Tweak! – Added compatibility for the future release of Elementor
+* Fix! - Icon List widget alignment with RTL
+* Fix! - Render element on unknown control changed
+* Fix! - Conflict `elementor-clickable` element with editor lightbox
+* Fix! - Handle download media/gallery inside repeater control for export/import
+
+= 1.7.12 - 24.10.2017 =
+* Fix! - Stay in the same tab settings after saving
+* Fix! - Refresh heartbeat token when nonce is expired
+* Fix! - Space for mobile in Image Box widget ([#2586](https://github.com/pojome/elementor/issues/2586))
+* Fix! - Added visual indication for disabled swiper nav arrow button
+* Fix! - Color picker alignment for extended panel ([#2548](https://github.com/pojome/elementor/issues/2548))
+
+= 1.7.11 - 04.10.2017 =
+* Fix! - `options is undefined` error when using select2
+
+= 1.7.10 - 03.10.2017 =
+* Fix! - Extend of Icon control for Social Icons widget
+
+= 1.7.9 - 03.10.2017 =
+* Fix! - Bug loading editor in Windows server
+
+= 1.7.8 - 03.10.2017 =
+* Fix! - Font and Icon controls that got effected by previous update
+
+= 1.7.7 - 03.10.2017 =
+* Tweak! - If current value is not in the options show it as `Unknown value` for Select2 control
+* Fix! - Import all template types by WordPress Importer
+* Fix! - Pagination color default for carousels
+* Fix! - Bug loading editor in some server configurations
+
+= 1.7.6 - 26.09.2017 =
 * Tweak! - Changed video lightbox width for tablet to 100%
 * Tweak! - Changed Vimeo placeholder for the Video widget
 * Tweak! - Added `vh` unit support for control base

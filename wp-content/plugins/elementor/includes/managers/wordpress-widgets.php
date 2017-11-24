@@ -7,6 +7,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class WordPress_Widgets_Manager {
 
+	/**
+	 * @since 1.5.0
+	 * @access public
+	*/
 	public function __construct() {
 		if ( version_compare( get_bloginfo( 'version' ), '4.8', '<' ) ) {
 			return;
@@ -16,11 +20,16 @@ class WordPress_Widgets_Manager {
 		add_action( 'elementor/editor/footer', [ $this, 'footer' ] );
 	}
 
+	/**
+	 * @since 1.5.0
+	 * @access public
+	*/
 	public function before_enqueue_scripts() {
 		global $wp_scripts;
 
 		$suffix = Utils::is_script_debug() ? '' : '.min';
 
+		// TODO: after WP >= 4.9 - it's no needed, Keep for Backward compatibility.
 		$wp_scripts->add( 'media-widgets', "/wp-admin/js/widgets/media-widgets$suffix.js", array( 'jquery', 'media-models', 'media-views' ) );
 		$wp_scripts->add_inline_script( 'media-widgets', 'wp.mediaWidgets.init();', 'after' );
 
@@ -32,10 +41,15 @@ class WordPress_Widgets_Manager {
 
 		wp_enqueue_style( 'widgets' );
 		wp_enqueue_style( 'media-views' );
+		// End TODO.
 
 		do_action( 'admin_print_scripts-widgets.php' );
 	}
 
+	/**
+	 * @since 1.5.0
+	 * @access public
+	*/
 	public function footer() {
 		do_action( 'admin_footer-widgets.php' );
 	}

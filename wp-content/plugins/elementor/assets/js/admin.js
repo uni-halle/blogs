@@ -1,4 +1,4 @@
-/*! elementor - v1.7.6 - 26-09-2017 */
+/*! elementor - v1.8.5 - 19-11-2017 */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 ( function( $ ) {
 	'use strict';
@@ -57,7 +57,9 @@
 						$wpTitle.val( 'Elementor #' + $( '#post_ID' ).val() );
 					}
 
-					wp.autosave.server.triggerSave();
+					if ( wp.autosave ) {
+						wp.autosave.server.triggerSave();
+					}
 
 					self.animateLoader();
 
@@ -252,14 +254,13 @@
 
 			this.cache.$activeSettingsTab.removeClass( 'nav-tab-active' );
 
-			var $activeTab = this.cache.$settingsTabs.filter( '#elementor-settings-' + tabName ),
-				$form = $activePage.parents( 'form' );
+			var $activeTab = this.cache.$settingsTabs.filter( '#elementor-settings-' + tabName );
 
 			$activePage.addClass( 'elementor-active' );
 
 			$activeTab.addClass( 'nav-tab-active' );
 
-			$form.attr( 'action', 'options.php#elementor-settings-' + tabName  );
+			this.cache.$settingsForm.attr( 'action', 'options.php#' + tabName  );
 
 			this.cache.$activeSettingsPage = $activePage;
 
