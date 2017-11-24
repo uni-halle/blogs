@@ -18,7 +18,7 @@ function infogr_media_button($editor_id) {
     $button_class = 'infogr_btn_old';
   }
 
-  printf('<span class="%s" id="%s">%s</span>', $button_class, 'call_infogr_popup', __('Add From Infogram', 'infogram'));
+  printf('<span class="%s" id="%s">%s</span>', $button_class, 'call_infogr_popup', __('Add Infogram', 'infogram'));
 }
 
 /* Check for dashboard page */
@@ -40,7 +40,7 @@ function infogr_media_popup_content() {
   <div id="infogr_media_popup">
     <div class="infogr_inner">
       <span id="close_infogr_popup"></span>
-      <div class="infogr_popup_content loader">      
+      <div class="infogr_popup_content loader">
       </div>
       <div class="infogr-popup-footer">
         <!-- add embed form -->
@@ -74,16 +74,18 @@ function infogr_add_media_popup() {
 
     $embed = str_replace("https://infogram.com/", "", $infographic->url);
 
-    $start_pos = strpos($infographic->embed_responsive, 'embed.js?')+9;
+    $start_pos = strpos($infographic->embed_responsive, 'embed.js?') + 9;
     $end_pos = strpos($infographic->embed_responsive, '" type');
 
-    $code = substr($infographic->embed_responsive, $start_pos,$end_pos-$start_pos);
+    $code = substr($infographic->embed_responsive, $start_pos, $end_pos-$start_pos);
 
     $settings = ($infographic->published !== true) ? array(' disabled'.$clear) : array($clear,$embed,$code);
 
+    $title = htmlspecialchars($infographic->title, ENT_QUOTES, 'UTF-8');
+
     $out .= '<div class="infographic'.$settings[0].'" data-embed="'.$settings[1].'" data-code="'.$settings[2].'">
           <img src="'.$infographic->thumbnail_url.'">
-          <h4>'.$infographic->title.'</h4>
+          <h4>'.$title.'</h4>
           <div class="infogr-hover"><span class="infogr-h-add">Embed</span></div>
         </div>';
   }

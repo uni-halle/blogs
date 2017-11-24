@@ -1,9 +1,9 @@
 === Infogram - Add charts, maps and infographics ===
 Contributors: Infogram
 Tags: infographics, charts
-Requires at least: 3.0.1
+Requires at least: 3.0.2
 Tested up to: 4.5.3
-Stable tag: 1.5.1
+Stable tag: 1.5.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -13,7 +13,7 @@ Infogram lets you quickly and easily create interactive and responsive data visu
 
 Make beautiful animated charts, graphs and reports online - no coding skills required.
 
-Infogram is a data visualization tool that helps you create interactive charts, infographics and maps. It is used by marketing teams, newsrooms, bloggers and students all over the world. 
+Infogram is a data visualization tool that helps you create interactive charts, infographics and maps. It is used by marketing teams, newsrooms, bloggers and students all over the world.
 Our charts and infographics are fully responsive by default which means they automatically adapt and are optimized to mobile devices of any screen size.
 
 We offer a wide range of high-quality template designs and visually-balanced pre-set colors, making data visualization fast and easy, so you can focus on the data while we handle the design.
@@ -28,7 +28,7 @@ The Infogram WordPress plugin:
 
 [Join Infogram](https://infogram.com/?utm_source=wordpress&utm_campaign=plugin&utm_content=page) and discover a whole new way to present data on your website! It's free!
 
-[youtube https://www.youtube.com/watch?v=NdnroM2bbAk]
+[youtube https://www.youtube.com/watch?v=bxNuaYcPNMo]
 
 == Installation ==
 1. Install Infogram either via the WordPress.org plugin directory, or by uploading the files to your server `/wp-content/plugins/` directory
