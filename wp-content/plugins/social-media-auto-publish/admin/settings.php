@@ -73,7 +73,6 @@ if(isset($_POST['fb']))
 	$applsecretold=get_option('xyz_smap_application_secret');
 	//$fbidold=get_option('xyz_smap_fb_id');
 	$posting_method=intval($_POST['xyz_smap_po_method']);
-	$xyz_smap_caption_for_fb_attachment=intval($_POST['xyz_smap_caption_for_fb_attachment']);
 	$posting_permission=intval($_POST['xyz_smap_post_permission']);
 	$app_name=sanitize_text_field($_POST['xyz_smap_application_name']);
 	$appid=sanitize_text_field($_POST['xyz_smap_application_id']);
@@ -122,7 +121,6 @@ if(isset($_POST['fb']))
 		update_option('xyz_smap_post_permission',$posting_permission);
 		update_option('xyz_smap_application_secret',$appsecret);
 		//update_option('xyz_smap_fb_id',$fbid);
-		update_option('xyz_smap_caption_for_fb_attachment',$xyz_smap_caption_for_fb_attachment);
 		
 		update_option('xyz_smap_po_method',$posting_method);
 		update_option('xyz_smap_message',$messagetopost);
@@ -391,7 +389,6 @@ function drpdisplay()
 	$appsecret=get_option('xyz_smap_application_secret');
 	//$fbid=get_option('xyz_smap_fb_id');
 	$posting_method=get_option('xyz_smap_po_method');
-	$xyz_smap_caption_for_fb_attachment=get_option('xyz_smap_caption_for_fb_attachment');
 	$posting_message=get_option('xyz_smap_message');
 	if($af==1 && $appid!="" && $appsecret!="")
 	{
@@ -438,9 +435,10 @@ function drpdisplay()
 
 		<b>Note :</b> You have to create a Facebook application before filling the following details.
 		<b><a href="https://developers.facebook.com/apps" target="_blank">Click here</a></b> to create new Facebook application. 
-		<br>In the application page in facebook, navigate to <b>Apps > Settings > Edit settings > Website > Site URL</b>. Set the site url as : 
+	<br>In the application page in facebook, navigate to <b>Apps >Add Product > Facebook Login >Quickstart >Web > Site URL</b>. Set the site url as : 
 		<span style="color: red;"><?php echo  (is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST']; ?></span>
-<br>For detailed step by step instructions <b><a href="http://help.xyzscripts.com/docs/social-media-auto-publish/faq/how-can-i-create-facebook-application/" target="_blank">Click here</a></b>.
+		<br>And then navigate to <b>Apps > Facebook Login > Settings</b>. Set the Valid OAuth redirect URIs as :<br>
+		<span style="color: red;"> <?php echo admin_url('admin.php?page=social-media-auto-publish-settings&auth=1'); ?> </span><br>For detailed step by step instructions <b><a href="http://help.xyzscripts.com/docs/social-media-auto-publish/faq/how-can-i-create-facebook-application/" target="_blank">Click here</a></b>.
 	</div>
 
 	</td>
@@ -511,13 +509,6 @@ function drpdisplay()
 		<textarea id="xyz_smap_message"  name="xyz_smap_message" style="height:80px !important;" ><?php if($ms4==""){ 
 								echo esc_textarea(get_option('xyz_smap_message'));}?></textarea>
 	</td></tr>
-	   <tr valign="top">
-	    <td>Caption for attachments while posting to facebook</td>
-	    <td><select name="xyz_smap_caption_for_fb_attachment" id="xyz_smap_caption_for_fb_attachment">
-           <option value ="1" <?php if($xyz_smap_caption_for_fb_attachment=='1') echo 'selected'; ?> >Site hostname </option>
-           <option value ="2" <?php if($xyz_smap_caption_for_fb_attachment=='2') echo 'selected'; ?> >Site title </option>
-          </select>
-		
 	
 				<tr valign="top">
 					<td>Posting method

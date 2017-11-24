@@ -54,7 +54,6 @@ function smap_install_free()
 	add_option('xyz_smap_current_appln_token', '');
 	add_option('xyz_smap_af', '1'); //authorization flag
 	add_option('xyz_smap_pages_ids','-1');
-	add_option('xyz_smap_caption_for_fb_attachment', 1);
 	
 	add_option('xyz_smap_twconsumer_secret', '');
 	add_option('xyz_smap_twconsumer_id','');

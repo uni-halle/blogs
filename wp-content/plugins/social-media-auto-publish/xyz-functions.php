@@ -200,7 +200,7 @@ if (!function_exists("xyz_wp_fbap_attachment_metas")) {
 		$og_datas = new DOMDocument();
 		@$og_datas->loadHTML('<?xml encoding="UTF-8">'.$aprv_me_data);
 		$xpath = new DOMXPath($og_datas);
-		if(isset($attachment['name']))
+		/* if(isset($attachment['name']))
 		{
 			$ogmetaContentAttributeNodes_tit = $xpath->query("/html/head/meta[@property='og:title']/@content");
 
@@ -214,7 +214,7 @@ if (!function_exists("xyz_wp_fbap_attachment_metas")) {
 				// 				$content_title=utf8_decode($content_title);
 			if($name!='')
 				$attachment['name']=$name;
-		}
+		} */
 		if(isset($attachment['actions']))
 		{
 			if(isset($attachment['actions']['name']))
@@ -237,7 +237,7 @@ if (!function_exists("xyz_wp_fbap_attachment_metas")) {
 				$attachment['actions']['link']=$url;
 			}
 		}
-		if(isset($attachment['description']))
+	/* 	if(isset($attachment['description']))
 		{
 			$ogmetaContentAttributeNodes_desc = $xpath->query("/html/head/meta[@property='og:description']/@content");
 			foreach($ogmetaContentAttributeNodes_desc as $ogmetaContentAttributeNode_desc) {
@@ -249,7 +249,7 @@ if (!function_exists("xyz_wp_fbap_attachment_metas")) {
 				// 				$content_desc=utf8_decode($content_desc);
 			if($description_li!='')
 				$attachment['description']=$description_li;
-		}
+		} */
 		/*if(isset($attachment['picture']))
 		 {
 		$ogmetaContentAttributeNodes_img = $xpath->query("/html/head/meta[@property='og:image']/@content");

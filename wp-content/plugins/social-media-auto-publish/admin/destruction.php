@@ -38,7 +38,6 @@ function smap_free_destroy()
 	delete_option('xyz_smap_current_appln_token');
 	delete_option('xyz_smap_af');
 	delete_option('xyz_smap_pages_ids');
-	delete_option('xyz_smap_caption_for_fb_attachment');
 	
 		
 	delete_option('xyz_smap_twconsumer_secret');

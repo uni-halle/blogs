@@ -87,7 +87,8 @@ function xyz_link_publish($post_ID) {
 		$_POST=$_POST_CPY;
 		return ;
 	
-	} else if (isset($_POST['_inline_edit']) AND (get_option('xyz_smap_default_selection_edit') == 0) ) {
+	} else if(( (isset($_POST['_inline_edit'])) || (isset($_REQUEST['bulk_edit'])) ) && (get_option('xyz_smap_default_selection_edit') == 0) ) {
+		
 		$_POST=$_POST_CPY;
 		return;
 	}
@@ -288,14 +289,8 @@ function xyz_link_publish($post_ID) {
 			$image_found=0;
 		
 		$name = $postpp->post_title;
-		$xyz_smap_caption_for_fb_attachment=get_option('xyz_smap_caption_for_fb_attachment');
-		
-		if($xyz_smap_caption_for_fb_attachment==1)
-			$caption=$_SERVER['HTTP_HOST'];
-			else
-			$caption=get_bloginfo('title');
-			$caption = html_entity_decode($caption, ENT_QUOTES, get_bloginfo('charset'));
-
+		$caption=get_bloginfo('title');
+		$caption = html_entity_decode($caption, ENT_QUOTES, get_bloginfo('charset'));
 		
 		if($tit_flag==1)
 			$name = apply_filters('the_title', $name);
@@ -355,12 +350,8 @@ function xyz_link_publish($post_ID) {
 					$attachment = array('message' => $message5,
 							'access_token' => $acces_token,
 							'link' => $link,
-							'name' => $name,
-							'caption' => $caption,
-							'description' => $descriptionfb_li,
 							'actions' => json_encode(array('name' => $name,
-							'link' => $link)),
-							'picture' => $attachmenturl
+							'link' => $link))
 
 					);
 				}
@@ -369,11 +360,6 @@ function xyz_link_publish($post_ID) {
 					$attachment = array('message' => $message5,
 							'access_token' => $acces_token,
 							'link' => $link,
-							'name' => $name,
-							'caption' => $caption,
-							'description' => $descriptionfb_li,
-							'picture' => $attachmenturl
-
 
 					);
 				}
