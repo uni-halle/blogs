@@ -3,12 +3,12 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: https://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.5.55
+Version: 1.5.56
 Author: WebDorado
-Author URI: https://web-dorado.com
+Author URI: https://web-dorado.com/wordpress-plugins-bundle.html
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
-$wd_spider_calendar_version="1.5.55";
+$wd_spider_calendar_version="1.5.56";
 // LANGUAGE localization.
 function sp_calendar_language_load() {
   load_plugin_textdomain('sp_calendar', FALSE, basename(dirname(__FILE__)) . '/languages');
@@ -1353,7 +1353,7 @@ function upgrade_pro_sp($text = false){
                     </a>
                 </div>            
                 <div class="wd-cell wd-cell-valign-middle">
-                    <a href="https://web-dorado.com/products/wordpress-calendar.html" target="_blank">
+                    <a href="https://web-dorado.com/files/fromSpiderCalendarWP.php" target="_blank">
                     <?php _e("UPGRADE TO PAID VERSION", "sp_calendar"); ?>
                      </a> 
                 </div>
@@ -1470,6 +1470,36 @@ if (!function_exists('spcal_bp_install_notice')) {
     update_option('wd_bk_notice_status', '1', 'no');
   }
   add_action('wp_ajax_wd_bp_dismiss', 'spcal_bp_install_notice_status');
+}
+
+
+add_filter("plugin_row_meta", 'spidercal_add_plugin_meta_links', 10, 2);
+
+function spidercal_add_plugin_meta_links($meta_fields, $file){
+
+  if(plugin_basename(__FILE__) == $file) {
+
+    $meta_fields[] = "<a href='https://wordpress.org/support/plugin/spider-event-calendar/' target='_blank'>Support Forum</a>";
+    $meta_fields[] = "<a href='https://wordpress.org/support/plugin/spider-event-calendar/reviews#new-post' target='_blank' title='Rate'>
+            <i class='spidercal-rate-stars'>"
+      . "<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>"
+      . "<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>"
+      . "<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>"
+      . "<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>"
+      . "<svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-star'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>"
+      . "</i></a>";
+
+    $stars_color = "#ffb900";
+
+    echo "<style>"
+      . ".spidercal-rate-stars{display:inline-block;color:" . $stars_color . ";position:relative;top:3px;}"
+      . ".spidercal-rate-stars svg{fill:" . $stars_color . ";}"
+      . ".spidercal-rate-stars svg:hover{fill:" . $stars_color . "}"
+      . ".spidercal-rate-stars svg:hover ~ svg{fill:none;}"
+      . "</style>";
+  }
+
+  return $meta_fields;
 }
 
 function spidercal_activate($networkwide){
