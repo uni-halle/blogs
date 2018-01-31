@@ -26,9 +26,10 @@
 
 namespace PHP_Typography\Fixes\Node_Fixes;
 
-use \PHP_Typography\DOM;
-use \PHP_Typography\Settings;
-use \PHP_Typography\U;
+use PHP_Typography\DOM;
+use PHP_Typography\Settings;
+use PHP_Typography\Strings;
+use PHP_Typography\U;
 
 /**
  * Adds a narrow no-break space before
@@ -44,10 +45,9 @@ use \PHP_Typography\U;
  * @since 5.0.0
  */
 class French_Punctuation_Spacing_Fix extends Abstract_Node_Fix {
-	// Regular expressions.
-	const INSERT_NARROW_SPACE               = '/(\w+(?:\s?»)?)(\s?)([?!])(\s|\Z)/u';
+	// Regular expressions with mandatary Unicode modifier.
+	const INSERT_NARROW_SPACE               = '/(\w+(?:\s?»)?)(\s?)([?!;])(\s|\Z)/u';
 	const INSERT_FULL_SPACE                 = '/(\w+(?:\s?»)?)(\s?)(:)(\s|\Z)/u';
-	const INSERT_SPACE_BEFORE_SEMICOLON     = '/(\w+(?:\s?»)?)(\s?)((?<!&amp|&gt|&lt);)(\s|\Z)/u';
 	const INSERT_SPACE_AFTER_OPENING_QUOTE  = '/(\s|\A)(«)(\s?)(\w+)/u';
 	const INSERT_SPACE_BEFORE_CLOSING_QUOTE = '/(\w+[.?!]?)(\s?)(»)(\s|[.?!:]|\Z)/u';
 
@@ -69,24 +69,18 @@ class French_Punctuation_Spacing_Fix extends Abstract_Node_Fix {
 		// Need to get context of adjacent characters outside adjacent inline tags or HTML comment
 		// if we have adjacent characters add them to the text.
 		$previous_character = DOM::get_prev_chr( $textnode );
-		if ( '' !== $previous_character ) {
-			$textnode->data = $previous_character . $textnode->data;
-		}
+		$next_character     = DOM::get_next_chr( $textnode );
+		$node_data          = "{$previous_character}{$textnode->data}"; // $next_character is not included on purpose.
+		$f                  = Strings::functions( "{$node_data}{$next_character}" ); // Include $next_character for determining encodiing.
 
-		$textnode->data = preg_replace( self::INSERT_SPACE_BEFORE_CLOSING_QUOTE, '$1' . $no_break_narrow_space . '$3$4', $textnode->data );
-		$textnode->data = preg_replace( self::INSERT_NARROW_SPACE,               '$1' . $no_break_narrow_space . '$3$4', $textnode->data );
-		$textnode->data = preg_replace( self::INSERT_FULL_SPACE,                 '$1' . U::NO_BREAK_SPACE . '$3$4',      $textnode->data );
-		$textnode->data = preg_replace( self::INSERT_SPACE_BEFORE_SEMICOLON,     '$1' . $no_break_narrow_space . '$3$4', $textnode->data );
+		$node_data = \preg_replace( self::INSERT_SPACE_BEFORE_CLOSING_QUOTE, '$1' . $no_break_narrow_space . '$3$4', $node_data );
+		$node_data = \preg_replace( self::INSERT_NARROW_SPACE,               '$1' . $no_break_narrow_space . '$3$4', $node_data );
+		$node_data = \preg_replace( self::INSERT_FULL_SPACE,                 '$1' . U::NO_BREAK_SPACE . '$3$4',      $node_data );
 
 		// The next rule depends on the following characters as well.
-		$next_character = DOM::get_next_chr( $textnode );
-		if ( '' !== $next_character ) {
-			$textnode->data = $textnode->data . $next_character;
-		}
-
-		$textnode->data = preg_replace( self::INSERT_SPACE_AFTER_OPENING_QUOTE,  '$1$2' . $no_break_narrow_space . '$4', $textnode->data );
+		$node_data = \preg_replace( self::INSERT_SPACE_AFTER_OPENING_QUOTE,  '$1$2' . $no_break_narrow_space . '$4', "{$node_data}{$next_character}" );
 
 		// If we have adjacent characters remove them from the text.
-		$textnode->data = self::remove_adjacent_characters( $textnode->data, $previous_character, $next_character );
+		$textnode->data = self::remove_adjacent_characters( $node_data, $f['strlen'], $f['substr'], $f['strlen']( $previous_character ), $f['strlen']( $next_character ) );
 	}
 }

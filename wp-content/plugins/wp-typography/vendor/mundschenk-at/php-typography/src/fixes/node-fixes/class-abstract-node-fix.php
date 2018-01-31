@@ -26,9 +26,9 @@
 
 namespace PHP_Typography\Fixes\Node_Fixes;
 
-use \PHP_Typography\Fixes\Node_Fix;
-use \PHP_Typography\Settings;
-use \PHP_Typography\Strings;
+use PHP_Typography\Fixes\Node_Fix;
+use PHP_Typography\Settings;
+use PHP_Typography\Strings;
 
 /**
  * All fixes that apply to textnodes should implement this interface.
@@ -79,25 +79,27 @@ abstract class Abstract_Node_Fix implements Node_Fix {
 	 * Remove adjacent characters from given string.
 	 *
 	 * @since 4.2.2
+	 * @since 5.1.3 $prev_char and $next_char replaced with $prev_length and $next_length
+	 *              to support multi-characters replacements.
+	 * @since 6.0.0 New required parameters for strlen() and substr() added.
 	 *
-	 * @param  string $string    The string.
-	 * @param  string $prev_char Optional. Default ''. The removed character is not required to be the same.
-	 * @param  string $next_char Optional. Default ''. The removed character is not required to be the same.
+	 * @param  string   $string      The string.
+	 * @param  callable $strlen A strlen()-type function.
+	 * @param  callable $substr A substr()-type function.
+	 * @param  int      $prev_length Optional. Default 0. The number of characters to remove at the beginning.
+	 * @param  int      $next_length Optional. Default 0. The number of characters to remove at the end.
 	 *
-	 * @return string            The string without `$prev_char` and `$next_char`.
+	 * @return string              The string without the characters from adjacent nodes.
 	 */
-	protected static function remove_adjacent_characters( $string, $prev_char = '', $next_char = '' ) {
-		// Use the most efficient string functions.
-		$func = Strings::functions( $string );
-
+	protected static function remove_adjacent_characters( $string, callable $strlen, callable $substr, $prev_length = 0, $next_length = 0 ) {
 		// Remove previous character.
-		if ( '' !== $prev_char ) {
-			$string = $func['substr']( $string, 1, $func['strlen']( $string ) );
+		if ( $prev_length > 0 ) {
+			$string = $substr( $string, $prev_length, $strlen( $string ) );
 		}
 
 		// Remove next character.
-		if ( '' !== $next_char ) {
-			$string = $func['substr']( $string, 0, $func['strlen']( $string ) - 1 );
+		if ( $next_length > 0 ) {
+			$string = $substr( $string, 0, $strlen( $string ) - $next_length );
 		}
 
 		return $string;

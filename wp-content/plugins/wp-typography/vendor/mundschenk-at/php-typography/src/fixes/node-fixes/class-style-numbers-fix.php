@@ -26,8 +26,8 @@
 
 namespace PHP_Typography\Fixes\Node_Fixes;
 
-use \PHP_Typography\Settings;
-use \PHP_Typography\DOM;
+use PHP_Typography\Settings;
+use PHP_Typography\DOM;
 
 /**
  * Wraps numbers in <span class="numbers"> (even numbers that appear inside a word,
@@ -43,10 +43,6 @@ use \PHP_Typography\DOM;
  */
 class Style_Numbers_Fix extends Simple_Style_Fix {
 
-	const REGEX           = '/([0-9]+)/u';
-	const SETTINGS_SWITCH = 'styleNumbers';
-
-
 	/**
 	 * Creates a new node fix with a class.
 	 *
@@ -54,6 +50,6 @@ class Style_Numbers_Fix extends Simple_Style_Fix {
 	 * @param bool   $feed_compatible Optional. Default false.
 	 */
 	public function __construct( $css_class, $feed_compatible = false ) {
-		parent::__construct( self::REGEX, self::SETTINGS_SWITCH, $css_class, $feed_compatible );
+		parent::__construct( '/([0-9]+)/S', 'styleNumbers', $css_class, $feed_compatible );
 	}
 }

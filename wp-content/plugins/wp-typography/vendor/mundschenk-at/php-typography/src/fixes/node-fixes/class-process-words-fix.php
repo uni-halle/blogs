@@ -26,12 +26,12 @@
 
 namespace PHP_Typography\Fixes\Node_Fixes;
 
-use \PHP_Typography\Text_Parser;
-use \PHP_Typography\Settings;
-use \PHP_Typography\DOM;
-use \PHP_Typography\Hyphenator\Cache;
-use \PHP_Typography\Fixes\Token_Fix;
-use \PHP_Typography\Fixes\Token_Fixes\Hyphenate_Fix;
+use PHP_Typography\Text_Parser;
+use PHP_Typography\Settings;
+use PHP_Typography\DOM;
+use PHP_Typography\Hyphenator\Cache;
+use PHP_Typography\Fixes\Token_Fix;
+use PHP_Typography\Fixes\Token_Fixes\Hyphenate_Fix;
 
 /**
  * Tokenizes the content of a textnode and process the individual words separately.
@@ -71,8 +71,8 @@ class Process_Words_Fix extends Abstract_Node_Fix {
 	 */
 	public function apply( \DOMText $textnode, Settings $settings, $is_title = false ) {
 		// Lazy-load text parser.
-		$text_parser  = $this->get_text_parser();
-		$tokens = [];
+		$text_parser = $this->get_text_parser();
+		$tokens      = [];
 
 		// Set up parameters for word categories.
 		$mixed_caps       = empty( $settings['hyphenateAllCaps'] ) ? Text_Parser::ALLOW_ALL_CAPS : Text_Parser::NO_ALL_CAPS;

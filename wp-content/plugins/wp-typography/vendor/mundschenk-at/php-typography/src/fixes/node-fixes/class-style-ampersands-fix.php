@@ -26,26 +26,21 @@
 
 namespace PHP_Typography\Fixes\Node_Fixes;
 
-use \PHP_Typography\Settings;
-use \PHP_Typography\DOM;
+use PHP_Typography\Settings;
+use PHP_Typography\DOM;
 
 /**
  * Wraps ampersands in <span class="amp"> (i.e. H&amp;J becomes H<span class="amp">&amp;</span>J),
  * if enabled.
  *
  * Call after style_caps so H&amp;J becomes <span class="caps">H<span class="amp">&amp;</span>J</span>.
- * Note that all standalone ampersands were previously converted to &amp;.
- * Only call if you are certain that no html tags have been injected containing "&amp;".
  *
  * @author Peter Putzer <github@mundschenk.at>
  *
  * @since 5.0.0
+ * @since 6.0.0 The replacement now assumes decoded ampersands (i.e. plain "&" instead of "&amp;").
  */
 class Style_Ampersands_Fix extends Simple_Style_Fix {
-
-	const REGEX           = '/(\&amp\;)/u';
-	const SETTINGS_SWITCH = 'styleAmpersands';
-
 
 	/**
 	 * Creates a new node fix with a class.
@@ -54,6 +49,6 @@ class Style_Ampersands_Fix extends Simple_Style_Fix {
 	 * @param bool   $feed_compatible Optional. Default false.
 	 */
 	public function __construct( $css_class, $feed_compatible = false ) {
-		parent::__construct( self::REGEX, self::SETTINGS_SWITCH, $css_class, $feed_compatible );
+		parent::__construct( '/(&)/S', 'styleAmpersands', $css_class, $feed_compatible );
 	}
 }

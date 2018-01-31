@@ -27,8 +27,8 @@
 
 namespace PHP_Typography\Fixes\Node_Fixes;
 
-use \PHP_Typography\Settings;
-use \PHP_Typography\DOM;
+use PHP_Typography\Settings;
+use PHP_Typography\DOM;
 
 /**
  * Applies smart ordinal suffix (if enabled).
@@ -73,6 +73,6 @@ class Smart_Ordinal_Suffix_Fix extends Abstract_Node_Fix {
 			return;
 		}
 
-		$textnode->data = preg_replace( "/\b(\d+)(st|nd|rd|th)\b/", $this->replacement, $textnode->data );
+		$textnode->data = \preg_replace( "/\b(\d+)(st|nd|rd|th)\b/S", $this->replacement, $textnode->data );
 	}
 }

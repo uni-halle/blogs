@@ -27,11 +27,11 @@
 
 namespace PHP_Typography\Fixes\Node_Fixes;
 
-use \PHP_Typography\DOM;
-use \PHP_Typography\RE;
-use \PHP_Typography\Settings;
-use \PHP_Typography\Strings;
-use \PHP_Typography\U;
+use PHP_Typography\DOM;
+use PHP_Typography\RE;
+use PHP_Typography\Settings;
+use PHP_Typography\Strings;
+use PHP_Typography\U;
 
 /**
  * Prevents widows (if enabled).
@@ -42,8 +42,9 @@ use \PHP_Typography\U;
  */
 class Dewidow_Fix extends Abstract_Node_Fix {
 	const SPACE_BETWEEN = '[\s]+'; // \s includes all special spaces (but not ZWSP) with the u flag.
-	const WIDOW = '[\w\p{M}\-' . U::ZERO_WIDTH_SPACE . U::SOFT_HYPHEN . ']+?'; // \w includes all alphanumeric Unicode characters but not composed characters.
+	const WIDOW         = '[\w\p{M}\-' . U::ZERO_WIDTH_SPACE . U::SOFT_HYPHEN . ']+?'; // \w includes all alphanumeric Unicode characters but not composed characters.
 
+	// Mandatory UTF-8 modifer.
 	const REGEX_START = '/
 		(?:
 			\A
@@ -114,29 +115,29 @@ class Dewidow_Fix extends Abstract_Node_Fix {
 		}
 
 		// Do what we have to do.
-		return preg_replace_callback( self::REGEX_START . ( $word_number - 1 ) . self::REGEX_END, function( array $widow ) use ( $func, $max_pull, $max_length, $word_number, $narrow_space ) {
+		return \preg_replace_callback( self::REGEX_START . ( $word_number - 1 ) . self::REGEX_END, function( array $widow ) use ( $func, $max_pull, $max_length, $word_number, $narrow_space ) {
 
 			// If we are here, we know that widows are being protected in some fashion
 			// with that, we will assert that widows should never be hyphenated or wrapped
 			// as such, we will strip soft hyphens and zero-width-spaces.
 			$widow['widow']    = self::strip_breaking_characters( $widow['widow'] );
-			$widow['trailing'] = self::strip_breaking_characters( self::make_space_nonbreaking( $widow['trailing'], $func['u'] ) );
+			$widow['trailing'] = self::strip_breaking_characters( self::make_space_nonbreaking( $widow['trailing'], $narrow_space, $func['u'] ) );
 
 			if (
 				// Eject if widows neighbor is proceeded by a no break space (the pulled text would be too long).
-				'' === $widow['space_before'] || strstr( U::NO_BREAK_SPACE, $widow['space_before'] ) ||
+				'' === $widow['space_before'] || false !== \strpos( $widow['space_before'], U::NO_BREAK_SPACE ) ||
 
 				// Eject if widows neighbor length exceeds the max allowed or widow length exceeds max allowed.
 				$func['strlen']( $widow['neighbor'] ) > $max_pull || $func['strlen']( $widow['widow'] ) > $max_length ||
 
 				// Never replace thin and hair spaces with &nbsp;.
-				U::THIN_SPACE === $widow['space_between'] || U::HAIR_SPACE === $widow['space_between'] || U::NO_BREAK_NARROW_SPACE === $widow['space_between']
+				self::is_narrow_space( $widow['space_between'] )
 			) {
 				return $widow['space_before'] . $widow['neighbor'] . $this->dewidow( $widow['space_between'] . $widow['widow'] . $widow['trailing'], $func, $max_pull, $max_length, $word_number - 1, $narrow_space );
 			}
 
 			// Let's protect some widows!
-			return $widow['space_before'] . $widow['neighbor'] . U::NO_BREAK_SPACE . self::make_space_nonbreaking( $widow['widow'], $narrow_space ) . $widow['trailing'];
+			return $widow['space_before'] . $widow['neighbor'] . U::NO_BREAK_SPACE . self::make_space_nonbreaking( $widow['widow'], $narrow_space, $func['u'] ) . $widow['trailing'];
 		}, $text );
 	}
 
@@ -148,7 +149,20 @@ class Dewidow_Fix extends Abstract_Node_Fix {
 	 * @return string
 	 */
 	protected static function strip_breaking_characters( $string ) {
-		return str_replace( [ U::ZERO_WIDTH_SPACE, U::SOFT_HYPHEN ], '', $string );
+		return \str_replace( [ U::ZERO_WIDTH_SPACE, U::SOFT_HYPHEN ], '', $string );
+	}
+
+	/**
+	 * Is the given string one of the narrow space characters?
+	 *
+	 * @since 6.0.0
+	 *
+	 * @param  string $string The whitespace to test.
+	 *
+	 * @return bool
+	 */
+	protected static function is_narrow_space( $string ) {
+		return U::THIN_SPACE === $string || U::HAIR_SPACE === $string || U::NO_BREAK_NARROW_SPACE === $string;
 	}
 
 	/**
@@ -156,20 +170,23 @@ class Dewidow_Fix extends Abstract_Node_Fix {
 	 *
 	 * @param  string $string       Required.
 	 * @param  string $narrow_space The narrow no-break space character.
+	 * @param  string $u            Either 'u' or the empty string.
 	 *
 	 * @return string
 	 */
-	protected static function make_space_nonbreaking( $string, $narrow_space ) {
-		return preg_replace( [
-			'/\s*' . U::THIN_SPACE . '\s*/u',
-			'/\s*' . U::NO_BREAK_NARROW_SPACE . '\s*/u',
-			'/\s+/u',
-			'/' . self::MASKED_NARROW_SPACE . '/',
-		], [
-			self::MASKED_NARROW_SPACE,
-			self::MASKED_NARROW_SPACE,
-			U::NO_BREAK_SPACE,
-			$narrow_space,
-		], $string );
+	protected static function make_space_nonbreaking( $string, $narrow_space, $u ) {
+		return \preg_replace(
+			[
+				'/\s*' . U::THIN_SPACE . '\s*/u',
+				'/\s*' . U::NO_BREAK_NARROW_SPACE . '\s*/u',
+				"/\\s+/$u",
+				'/' . self::MASKED_NARROW_SPACE . "/$u",
+			], [
+				self::MASKED_NARROW_SPACE,
+				self::MASKED_NARROW_SPACE,
+				U::NO_BREAK_SPACE,
+				$narrow_space,
+			], $string
+		);
 	}
 }

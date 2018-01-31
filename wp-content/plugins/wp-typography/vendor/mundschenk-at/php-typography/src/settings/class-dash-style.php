@@ -26,8 +26,8 @@
 
 namespace PHP_Typography\Settings;
 
-use \PHP_Typography\Settings;
-use \PHP_Typography\U;
+use PHP_Typography\Settings;
+use PHP_Typography\U;
 
 /**
  * A factory class for different dash styles.
@@ -46,7 +46,7 @@ abstract class Dash_Style {
 	/**
 	 * "International" dash style (using en dashes).
 	 */
-	const INTERNATIONAL  = 'international';
+	const INTERNATIONAL = 'international';
 
 	/**
 	 * Available dash styles.
@@ -112,7 +112,7 @@ abstract class Dash_Style {
 	 *
 	 * @return Dashes|null Returns null in case of an invalid $style parameter.
 	 */
-	public static function get_styled_dashes( $style, Settings $settings ) {
+	public static function get_styled_dashes( $style, /** Currently unused. @scrutinizer ignore-unused */ Settings $settings ) {
 		if ( isset( self::$styles[ $style ] ) ) {
 			return new Simple_Dashes(
 				self::$styles[ $style ][ self::_PARENTHETICAL ],

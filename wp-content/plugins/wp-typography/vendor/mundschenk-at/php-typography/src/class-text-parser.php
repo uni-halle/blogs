@@ -89,6 +89,7 @@ class Text_Parser {
 				)
 			)
 		'; // required modifiers: x (multiline pattern) i (case insensitive) u (utf8).
+
 	const _SPACE = '(?:\s|' . self::_HTML_SPACING . ')+'; // required modifiers: x (multiline pattern) i (case insensitive) $utf8.
 
 	/**
@@ -127,6 +128,7 @@ class Text_Parser {
 				)
 			)
 		'; // required modifiers: x (multiline pattern) i (case insensitive) u (utf8).
+
 	const _PUNCTUATION = '
 	(?:
 		(?:
@@ -139,7 +141,6 @@ class Text_Parser {
 		)+
 	)
 	';// required modifiers: x (multiline pattern) i (case insensitive) u (utf8).
-
 
 	/**
 	 * Letter connectors allowed in words
@@ -259,9 +260,9 @@ class Text_Parser {
 	/**
 	 * The current strtoupper function to use (either 'strtoupper' or 'mb_strtoupper').
 	 *
-	 * @var callable|null
+	 * @var callable
 	 */
-	private $current_strtoupper = null;
+	private $current_strtoupper = 'strtoupper';
 
 	/**
 	 * The tokenized text.
@@ -271,20 +272,6 @@ class Text_Parser {
 	 * }
 	 */
 	private $text = [];
-
-	/**
-	 * An array of various regex components (not complete patterns).
-	 *
-	 * @var array $components
-	 */
-	private $components = [];
-
-	/**
-	 * An array of regex patterns.
-	 *
-	 * @var array $regex
-	 */
-	private $regex = [];
 
 	/**
 	 * Creates a new parser object.
@@ -300,12 +287,12 @@ class Text_Parser {
 	 * @return bool Returns `true` on successful completion, `false` otherwise.
 	 */
 	public function load( $raw_text ) {
-		if ( ! is_string( $raw_text ) ) {
+		if ( ! \is_string( $raw_text ) ) {
 			return false; // we have an error, abort.
 		}
 
 		// Abort if a simple string exceeds 500 characters (security concern).
-		if ( preg_match( self::_RE_MAX_STRING_LENGTH, $raw_text ) ) {
+		if ( \preg_match( self::_RE_MAX_STRING_LENGTH, $raw_text ) ) {
 			return false;
 		}
 
@@ -317,7 +304,7 @@ class Text_Parser {
 		$this->current_strtoupper = $str_functions['strtoupper'];
 
 		// Tokenize the raw text parts.
-		$this->text = self::tokenize( preg_split( self::_RE_ANY_TEXT, $raw_text, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY ) );
+		$this->text = self::tokenize( /** RE correct. @scrutinizer ignore-type */ \preg_split( self::_RE_ANY_TEXT, $raw_text, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY ) );
 
 		// The token array should never be empty.
 		return ! empty( $this->text );
@@ -335,11 +322,11 @@ class Text_Parser {
 		$index  = 0;
 
 		foreach ( $parts as $part ) {
-			if ( preg_match( self::_RE_SPACE, $part ) ) {
+			if ( \preg_match( self::_RE_SPACE, $part ) ) {
 				$tokens[ $index ] = new Token( $part, Token::SPACE );
-			} elseif ( preg_match( self::_RE_PUNCTUATION, $part ) ) {
+			} elseif ( \preg_match( self::_RE_PUNCTUATION, $part ) ) {
 				$tokens[ $index ] = new Token( $part, Token::PUNCTUATION );
-			} elseif ( preg_match( self::_RE_WORD, $part ) ) {
+			} elseif ( \preg_match( self::_RE_WORD, $part ) ) {
 				// Make sure that things like email addresses and URLs are not broken up
 				// into words and punctuation not preceeded by an 'other'.
 				self::parse_ambiguous_token( Token::WORD, $part, $tokens, $index );
@@ -368,19 +355,19 @@ class Text_Parser {
 		// Make sure that things like email addresses and URLs are not broken up incorrectly.
 		if ( self::is_preceeded_by( Token::OTHER, $tokens, $index ) || ( Token::OTHER === $expected_type && self::is_preceeded_by( Token::WORD, $tokens, $index ) ) ) {
 			$index--;
-			$old_part = $tokens[ $index ]->value;
+			$old_part         = $tokens[ $index ]->value;
 			$tokens[ $index ] = new Token( $old_part . $part, Token::OTHER );
 
-		// Not preceeded by a non-space + punctuation.
-		} elseif ( self::is_preceeded_by( Token::PUNCTUATION, $tokens, $index ) && self::is_not_preceeded_by( Token::SPACE, $tokens, $index, 2 ) ) {
-			$old_part   = $tokens[ $index - 1 ]->value;
-			$older_part = $tokens[ $index - 2 ]->value;
+		} // Not preceeded by a non-space + punctuation.
+		elseif ( self::is_preceeded_by( Token::PUNCTUATION, $tokens, $index ) && self::is_not_preceeded_by( Token::SPACE, $tokens, $index, 2 ) ) {
+			$old_part             = $tokens[ $index - 1 ]->value;
+			$older_part           = $tokens[ $index - 2 ]->value;
 			$tokens[ $index - 2 ] = new Token( $older_part . $old_part . $part, Token::OTHER );
 			unset( $tokens[ $index - 1 ] );
 			$index = $index - 2;
 
-		// All good.
-		} else {
+		} // All good.
+		else {
 			$tokens[ $index ] = new Token( $part, $expected_type );
 		}
 	}
@@ -447,7 +434,6 @@ class Text_Parser {
 	 */
 	public function clear() {
 		$this->text = [];
-		$this->current_strtoupper = null;
 	}
 
 	/**
@@ -499,7 +485,7 @@ class Text_Parser {
 	 */
 	public function get_words( $abc = self::ALLOW_ALL_LETTERS, $caps = self::ALLOW_ALL_CAPS, $comps = self::ALLOW_COMPOUNDS ) {
 		// Return early if no text has been loaded.
-		if ( ! isset( $this->text ) || ! is_callable( $this->current_strtoupper ) ) {
+		if ( empty( $this->text ) ) {
 			return []; // abort.
 		}
 
@@ -508,10 +494,11 @@ class Text_Parser {
 
 		foreach ( $this->get_type( Token::WORD ) as $index => $token ) {
 
-			if ( $this->conforms_to_letters_policy( $token, $abc ) &&
-				 $this->conforms_to_caps_policy( $token, $caps ) &&
-				 $this->conforms_to_compounds_policy( $token, $comps ) ) {
-
+			if (
+				$this->conforms_to_letters_policy( $token, $abc ) &&
+				$this->conforms_to_caps_policy( $token, $caps ) &&
+				$this->conforms_to_compounds_policy( $token, $comps )
+			) {
 				$tokens[ $index ] = $token;
 			}
 		}
@@ -529,7 +516,7 @@ class Text_Parser {
 	 */
 	protected function conforms_to_letters_policy( Token $token, $policy ) {
 		return $this->check_policy( $token, $policy, self::ALLOW_ALL_LETTERS, self::REQUIRE_ALL_LETTERS, self::NO_ALL_LETTERS, function( $value ) {
-			return preg_replace( self::_RE_HTML_LETTER_CONNECTORS, '', $value );
+			return \preg_replace( self::_RE_HTML_LETTER_CONNECTORS, '', $value );
 		} );
 	}
 
@@ -542,9 +529,7 @@ class Text_Parser {
 	 * @return bool
 	 */
 	protected function conforms_to_caps_policy( Token $token, $policy ) {
-		return $this->check_policy( $token, $policy, self::ALLOW_ALL_CAPS, self::REQUIRE_ALL_CAPS, self::NO_ALL_CAPS, function( $value ) {
-			return call_user_func( $this->current_strtoupper, $value );
-		} );
+		return $this->check_policy( $token, $policy, self::ALLOW_ALL_CAPS, self::REQUIRE_ALL_CAPS, self::NO_ALL_CAPS, $this->current_strtoupper );
 	}
 
 	/**
@@ -557,7 +542,7 @@ class Text_Parser {
 	 */
 	protected function conforms_to_compounds_policy( Token $token, $policy ) {
 		return $this->check_policy( $token, $policy, self::ALLOW_COMPOUNDS, self::NO_COMPOUNDS, self::REQUIRE_COMPOUNDS, function( $value ) {
-			return preg_replace( '/-/S', '', $value );
+			return \preg_replace( '/-/S', '', $value );
 		} );
 	}
 
@@ -582,9 +567,8 @@ class Text_Parser {
 
 		$transformed = $transform_token( $token->value );
 
-		return
-			( $equal_policy === $policy && $transformed === $token->value ) ||
-			( $non_equal_policy === $policy && $transformed !== $token->value );
+		return ( $equal_policy === $policy && $transformed === $token->value )
+			|| ( $non_equal_policy === $policy && $transformed !== $token->value );
 	}
 
 	/**

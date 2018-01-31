@@ -26,8 +26,8 @@
 
 namespace PHP_Typography\Fixes\Node_Fixes;
 
-use \PHP_Typography\Settings;
-use \PHP_Typography\DOM;
+use PHP_Typography\Settings;
+use PHP_Typography\DOM;
 
 /**
  * Applies smart diacritics (if enabled).
@@ -50,13 +50,15 @@ class Smart_Diacritics_Fix extends Abstract_Node_Fix {
 			return; // abort.
 		}
 
-		if ( ! empty( $settings['diacriticReplacement'] ) &&
-			 ! empty( $settings['diacriticReplacement']['patterns'] ) &&
-			 ! empty( $settings['diacriticReplacement']['replacements'] ) ) {
+		if (
+			! empty( $settings['diacriticReplacement'] ) &&
+			! empty( $settings['diacriticReplacement']['patterns'] ) &&
+			! empty( $settings['diacriticReplacement']['replacements'] )
+		) {
 
 			// Uses "word" => "replacement" pairs from an array to make fast preg_* replacements.
-			$replacements = $settings['diacriticReplacement']['replacements'];
-			$textnode->data = preg_replace_callback( $settings['diacriticReplacement']['patterns'], function( $match ) use ( $replacements ) {
+			$replacements   = $settings['diacriticReplacement']['replacements'];
+			$textnode->data = \preg_replace_callback( $settings['diacriticReplacement']['patterns'], function( $match ) use ( $replacements ) {
 				if ( isset( $replacements[ $match[0] ] ) ) {
 					return $replacements[ $match[0] ];
 				} else {

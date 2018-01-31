@@ -2,7 +2,7 @@
 /**
  *  This file is part of wp-Typography.
  *
- *  Copyright 2014-2017 Peter Putzer.
+ *  Copyright 2014-2018 Peter Putzer.
  *  Copyright 2009-2011 KINGdesk, LLC.
  *
  *  This program is free software; you can redistribute it and/or
@@ -118,6 +118,9 @@ class Public_Interface implements Plugin_Component {
 		// Apply our filters.
 		$this->add_content_filters();
 
+		// Grab body classes via hook.
+		\add_filter( 'body_class', [ $this->plugin, 'filter_body_class' ], $this->filter_priority );
+
 		// Add CSS Hook styling.
 		\add_action( 'wp_head', [ $this, 'add_wp_head' ] );
 
@@ -148,9 +151,10 @@ class Public_Interface implements Plugin_Component {
 		 * Disables automatic filtering by wp-Typography.
 		 *
 		 * @since 3.6.0
+		 * @since 5.2.0 WooCommerce support added ($filter_group 'woocommerce').
 		 *
 		 * @param bool   $disable      Whether to disable automatic filtering. Default false.
-		 * @param string $filter_group Which filters to disable. Possible values 'content', 'heading', 'title', 'acf'.
+		 * @param string $filter_group Which filters to disable. Possible values 'content', 'heading', 'title', 'acf', 'woocommerce'.
 		 */
 		if ( ! \apply_filters( 'typo_disable_filtering', false, 'content' ) ) {
 			$this->enable_content_filters( $priority );
@@ -172,6 +176,10 @@ class Public_Interface implements Plugin_Component {
 		/** This filter is documented in class-wp-typography.php */
 		if ( \class_exists( 'acf' ) && \function_exists( 'acf_get_setting' ) && ! \apply_filters( 'typo_disable_filtering', false, 'acf' ) ) {
 			$this->enable_acf_filters( $priority );
+		}
+		/** This filter is documented in class-wp-typography.php */
+		if ( \class_exists( 'WooCommerce' ) && ! \apply_filters( 'typo_disable_filtering', false, 'woocommerce' ) ) {
+			$this->enable_woocommerce_filters( $priority );
 		}
 	}
 
@@ -250,6 +258,24 @@ class Public_Interface implements Plugin_Component {
 			\add_filter( "{$acf_prefix}/type=textarea", [ $this->plugin, 'process' ],       $priority );
 			\add_filter( "{$acf_prefix}/type=text",     [ $this->plugin, 'process_title' ], $priority );
 		}
+	}
+
+	/**
+	 * Enable the WooCommerce (https://github.com/woocommerce/woocommerce) filters.
+	 *
+	 * @param int $priority Filter priority.
+	 */
+	private function enable_woocommerce_filters( $priority ) {
+		// Page descriptions.
+		\add_filter( 'woocommerce_format_content', [ $this->plugin, 'process' ], $priority );
+
+		// Shop notices.
+		\add_filter( 'woocommerce_add_error',      [ $this->plugin, 'process' ], $priority );
+		\add_filter( 'woocommerce_add_success',    [ $this->plugin, 'process' ], $priority );
+		\add_filter( 'woocommerce_add_notice',     [ $this->plugin, 'process' ], $priority );
+
+		// Demo store banner.
+		\add_filter( 'woocommerce_demo_store',     [ $this->plugin, 'process' ], $priority );
 	}
 
 	/**

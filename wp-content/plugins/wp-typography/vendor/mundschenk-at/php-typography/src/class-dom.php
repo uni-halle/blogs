@@ -27,7 +27,7 @@
 
 namespace PHP_Typography;
 
-use \Masterminds\HTML5\Elements;
+use Masterminds\HTML5\Elements;
 
 /**
  * Some static methods for DOM manipulation.
@@ -76,11 +76,11 @@ abstract class DOM {
 	 */
 	public static function block_tags( $reset = false ) {
 		if ( empty( self::$block_tags ) || $reset ) {
-			self::$block_tags = array_merge(
-				array_flip( array_filter( array_keys( Elements::$html5 ), function( $tag ) {
+			self::$block_tags = \array_merge(
+				\array_flip( \array_filter( \array_keys( Elements::$html5 ), function( $tag ) {
 					return Elements::isA( $tag, Elements::BLOCK_TAG );
 				} ) ),
-				array_flip( [ 'li', 'td', 'dt' ] ) // not included as "block tags" in current HTML5-PHP version.
+				\array_flip( [ 'li', 'td', 'dt' ] ) // not included as "block tags" in current HTML5-PHP version.
 			);
 		}
 
@@ -100,12 +100,11 @@ abstract class DOM {
 	 */
 	public static function inappropriate_tags( $reset = false ) {
 		if ( empty( self::$inappropriate_tags ) || $reset ) {
-			self::$inappropriate_tags = array_flip( array_merge(
-				array_filter( array_keys( Elements::$html5 ), function( $tag ) {
-					return
-						Elements::isA( $tag, Elements::VOID_TAG ) ||
-						Elements::isA( $tag, Elements::TEXT_RAW ) ||
-						Elements::isA( $tag, Elements::TEXT_RCDATA );
+			self::$inappropriate_tags = \array_flip( \array_merge(
+				\array_filter( \array_keys( Elements::$html5 ), function( $tag ) {
+					return Elements::isA( $tag, Elements::VOID_TAG )
+						|| Elements::isA( $tag, Elements::TEXT_RAW )
+						|| Elements::isA( $tag, Elements::TEXT_RCDATA );
 				} ),
 				self::ADDITIONAL_INAPPROPRIATE_TAGS
 			) );
@@ -125,7 +124,7 @@ abstract class DOM {
 		$out = [];
 
 		foreach ( $list as $node ) {
-			$out[ spl_object_hash( $node ) ] = $node;
+			$out[ \spl_object_hash( $node ) ] = $node;
 		}
 
 		return $out;
@@ -169,12 +168,12 @@ abstract class DOM {
 		}
 
 		// Ensure we always have an array of classnames.
-		if ( ! is_array( $classnames ) ) {
+		if ( ! \is_array( $classnames ) ) {
 			$classnames = [ $classnames ];
 		}
 
 		if ( $tag->hasAttribute( 'class' ) ) {
-			$tag_classes = array_flip( explode( ' ', $tag->getAttribute( 'class' ) ) );
+			$tag_classes = \array_flip( \explode( ' ', $tag->getAttribute( 'class' ) ) );
 
 			foreach ( $classnames as $classname ) {
 				if ( isset( $tag_classes[ $classname ] ) ) {
@@ -228,7 +227,7 @@ abstract class DOM {
 			$func = Strings::functions( $textnode->data );
 
 			if ( ! empty( $func ) ) {
-				return preg_replace( '/\p{C}/Su', '', $func['substr']( $textnode->data, $position, $length ) );
+				return \preg_replace( '/\p{C}/Su', '', $func['substr']( $textnode->data, $position, $length ) );
 			}
 		}
 
@@ -275,9 +274,7 @@ abstract class DOM {
 	 * @return \DOMText|null Null if $node is a block-level element or no text sibling exists.
 	 */
 	private static function get_adjacent_textnode( callable $iterate, callable $get_adjacent_parent, \DOMNode $node = null ) {
-		if ( ! isset( $node ) ) {
-			return null;
-		} elseif ( $node instanceof \DOMElement && isset( self::$block_tags[ $node->tagName ] ) ) {
+		if ( ! isset( $node ) || self::is_block_tag( $node ) ) {
 			return null;
 		}
 
@@ -286,16 +283,32 @@ abstract class DOM {
 		 *
 		 * @var \DOMText|null
 		 */
-		$adjacent      = null;
+		$adjacent = null;
+
+		/**
+		 * The initial node.
+		 *
+		 * @var \DOMNode|null
+		 */
 		$iterated_node = $node;
 
 		// Iterate to find adjacent node.
 		while ( null !== $iterated_node && null === $adjacent ) {
+			/**
+			 * Let's try the next node.
+			 *
+			 * @var \DOMNode|null
+			 */
 			$adjacent = $iterate( $iterated_node );
 		}
 
 		// Last ressort.
 		if ( null === $adjacent ) {
+			/**
+			 * The parent node.
+			 *
+			 * @var \DOMNode|null
+			 */
 			$adjacent = $get_adjacent_parent( $node->parentNode );
 		}
 
@@ -346,10 +359,9 @@ abstract class DOM {
 
 		if ( $node instanceof \DOMText ) {
 			return $node;
-		} elseif ( ! $node instanceof \DOMElement ) {
-			// Return null if $node is neither \DOMText nor \DOMElement.
-			return null;
-		} elseif ( $recursive && isset( self::$block_tags[ $node->tagName ] ) ) {
+		} elseif ( ! $node instanceof \DOMElement || $recursive && self::is_block_tag( $node ) ) {
+			// Return null if $node is neither \DOMText nor \DOMElement or
+			// when we are recursing and already at the block level.
 			return null;
 		}
 
@@ -363,7 +375,7 @@ abstract class DOM {
 
 			while ( $index >= 0 && $index < $max && null === $edge_textnode ) {
 				$edge_textnode = $get_textnode( $children->item( $index ), true );
-				$index += $incrementor;
+				$index        += $incrementor;
 			}
 		}
 
@@ -383,7 +395,7 @@ abstract class DOM {
 			return null;
 		}
 
-		while ( ! isset( self::$block_tags[ $parent->tagName ] ) && $parent->parentNode instanceof \DOMElement ) {
+		while ( ! self::is_block_tag( $parent ) && $parent->parentNode instanceof \DOMElement ) {
 			/**
 			 * The parent is sure to be a \DOMElement.
 			 *
@@ -410,6 +422,19 @@ abstract class DOM {
 		} else {
 			return '';
 		}
+	}
+
+	/**
+	 * Determines if a node is a block tag.
+	 *
+	 * @since 6.0.0
+	 *
+	 * @param  \DOMNode $node Required.
+	 *
+	 * @return bool
+	 */
+	public static function is_block_tag( \DOMNode $node ) {
+		return $node instanceof \DOMElement && isset( self::$block_tags[ $node->tagName ] );
 	}
 }
 

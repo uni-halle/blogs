@@ -48,6 +48,17 @@ class Multilingual_Support implements Plugin_Component {
 	const MATCH_TYPE_HYPHENATION = 'hyphenation';
 	const MATCH_TYPE_DIACRITIC   = 'diacritic';
 
+	const LANGUAGE_ALIASES = [
+		'bal' => 'ca',
+		'oci' => 'oc',
+		'ory' => 'or',
+		'tuk' => 'tk',
+	];
+	const LOCALE_ALIASES   = [
+		'el'    => 'el-Mono',
+		'el-po' => 'el-Poly',
+	];
+
 	/**
 	 * An array of Locale_Settings.
 	 *
@@ -163,7 +174,7 @@ class Multilingual_Support implements Plugin_Component {
 		list( $locale, $language, $country, $modifier ) = $this->get_current_locale();
 
 		// Adjust hyphenation language.
-		$hyphenation_language_match = $this->match_language( $this->hyphenation_languages, $locale, $language, self::MATCH_TYPE_HYPHENATION );
+		$hyphenation_language_match = $this->match_language( $this->hyphenation_languages, "$language-$country", $language, self::MATCH_TYPE_HYPHENATION );
 		if ( ! empty( $hyphenation_language_match ) ) {
 			$settings->set_hyphenation_language( $hyphenation_language_match );
 		} else {
@@ -171,7 +182,7 @@ class Multilingual_Support implements Plugin_Component {
 		}
 
 		// Adjust diacritics replacement language.
-		$diacritics_language_match = $this->match_language( $this->diacritic_languages, $locale, $language, self::MATCH_TYPE_DIACRITIC );
+		$diacritics_language_match = $this->match_language( $this->diacritic_languages, "$language-$country", $language, self::MATCH_TYPE_DIACRITIC );
 		if ( ! empty( $diacritics_language_match ) ) {
 			$settings->set_diacritic_language( $diacritics_language_match );
 		} else {
@@ -346,7 +357,7 @@ class Multilingual_Support implements Plugin_Component {
 	 * @return array {
 	 *         The locale and its components.
 	 *
-	 *         @type string $locale   A locale string like de_DE_formal.
+	 *         @type string $locale   A locale string like de-DE-formal.
 	 *         @type string $language A two- or three-letter language code (e.g. 'de').
 	 *         @type string $country  A two-letter country code (e.g. 'DE').
 	 *         @type string $modifier An optional modifier string (e.g. 'formal'). Default ''.
@@ -374,7 +385,7 @@ class Multilingual_Support implements Plugin_Component {
 		$second_dash = strpos( $locale, '_', $first_dash + 1 );
 		$modifier    = false !== $second_dash ? substr( $locale, $second_dash + 1 ) : '';
 
-		return [ $locale, $language, $country, $modifier ];
+		return [ str_replace( '_', '-', $locale ), $language, $country, $modifier ];
 	}
 
 	/**
@@ -407,6 +418,10 @@ class Multilingual_Support implements Plugin_Component {
 			return $result;
 		}
 
+		// Normalize language & locale.
+		$language = self::normalize( $language, self::LANGUAGE_ALIASES );
+		$locale   = self::normalize( $locale, self::LOCALE_ALIASES );
+
 		// Short-circuit if there are direct matches.
 		if ( isset( $languages[ $locale ] ) ) {
 			return $locale;
@@ -431,5 +446,17 @@ class Multilingual_Support implements Plugin_Component {
 		}
 
 		return $result;
+	}
+
+	/**
+	 * Normalizes the a language or locale given an alias array.
+	 *
+	 * @param  string   $key     Either a language or a locale.
+	 * @param  string[] $aliases A mapping array.
+	 *
+	 * @return string
+	 */
+	protected static function normalize( $key, array $aliases ) {
+		return isset( $aliases[ $key ] ) ? $aliases[ $key ] : $key;
 	}
 }

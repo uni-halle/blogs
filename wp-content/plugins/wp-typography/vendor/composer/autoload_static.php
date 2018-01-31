@@ -4,7 +4,10 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitbbbad3ac64c4c35c793cfa79d06a3765
+use Composer\AutoloadWPTypography\ClassLoader as ClassLoaderWPTypography;
+
+
+class ComposerStaticInitWPTypography
 {
     public static $prefixLengthsPsr4 = array (
         'M' => 
@@ -50,8 +53,8 @@ class ComposerStaticInitbbbad3ac64c4c35c793cfa79d06a3765
         'Masterminds\\HTML5\\Serializer\\OutputRules' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/OutputRules.php',
         'Masterminds\\HTML5\\Serializer\\RulesInterface' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/RulesInterface.php',
         'Masterminds\\HTML5\\Serializer\\Traverser' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/Traverser.php',
-        'PHP_Typography\\Arrays' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/class-arrays.php',
         'PHP_Typography\\DOM' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/class-dom.php',
+        'PHP_Typography\\Fixes\\Default_Registry' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/class-default-registry.php',
         'PHP_Typography\\Fixes\\Node_Fix' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/class-node-fix.php',
         'PHP_Typography\\Fixes\\Node_Fixes\\Abstract_Node_Fix' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/node-fixes/class-abstract-node-fix.php',
         'PHP_Typography\\Fixes\\Node_Fixes\\Classes_Dependent_Fix' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/node-fixes/class-classes-dependent-fix.php',
@@ -79,6 +82,7 @@ class ComposerStaticInitbbbad3ac64c4c35c793cfa79d06a3765
         'PHP_Typography\\Fixes\\Node_Fixes\\Style_Initial_Quotes_Fix' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/node-fixes/class-style-initial-quotes-fix.php',
         'PHP_Typography\\Fixes\\Node_Fixes\\Style_Numbers_Fix' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/node-fixes/class-style-numbers-fix.php',
         'PHP_Typography\\Fixes\\Node_Fixes\\Unit_Spacing_Fix' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/node-fixes/class-unit-spacing-fix.php',
+        'PHP_Typography\\Fixes\\Registry' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/class-registry.php',
         'PHP_Typography\\Fixes\\Token_Fix' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/class-token-fix.php',
         'PHP_Typography\\Fixes\\Token_Fixes\\Abstract_Token_Fix' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/token-fixes/class-abstract-token-fix.php',
         'PHP_Typography\\Fixes\\Token_Fixes\\Hyphenate_Compounds_Fix' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/token-fixes/class-hyphenate-compounds-fix.php',
@@ -89,7 +93,6 @@ class ComposerStaticInitbbbad3ac64c4c35c793cfa79d06a3765
         'PHP_Typography\\Hyphenator' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/class-hyphenator.php',
         'PHP_Typography\\Hyphenator\\Cache' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/hyphenator/class-cache.php',
         'PHP_Typography\\Hyphenator\\Trie_Node' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/hyphenator/class-trie-node.php',
-        'PHP_Typography\\Hyphenator_Cache' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/class-hyphenator-cache.php',
         'PHP_Typography\\PHP_Typography' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/class-php-typography.php',
         'PHP_Typography\\RE' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/class-re.php',
         'PHP_Typography\\Settings' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/class-settings.php',
@@ -132,13 +135,13 @@ class ComposerStaticInitbbbad3ac64c4c35c793cfa79d06a3765
         'WP_Typography_Requirements' => __DIR__ . '/../..' . '/includes/class-wp-typography-requirements.php',
     );
 
-    public static function getInitializer(ClassLoader $loader)
+    public static function getInitializer(ClassLoaderWPTypography $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitbbbad3ac64c4c35c793cfa79d06a3765::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitbbbad3ac64c4c35c793cfa79d06a3765::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitbbbad3ac64c4c35c793cfa79d06a3765::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitWPTypography::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitWPTypography::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitWPTypography::$classMap;
 
-        }, null, ClassLoader::class);
+        }, null, ClassLoaderWPTypography::class);
     }
 }

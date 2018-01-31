@@ -27,8 +27,8 @@
 
 namespace PHP_Typography;
 
-use \PHP_Typography\Settings\Dash_Style;
-use \PHP_Typography\Settings\Quote_Style;
+use PHP_Typography\Settings\Dash_Style;
+use PHP_Typography\Settings\Quote_Style;
 
 /**
  * Store settings for the PHP_Typography class.
@@ -75,24 +75,6 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 	protected $data = [];
 
 	/**
-	 * An array containing all self-closing HTML5 tags.
-	 *
-	 * @deprecated 5.2.0 Not used anymore, will be removed in 6.0.0.
-	 *
-	 * @var array
-	 */
-	protected $self_closing_tags = [];
-
-	/**
-	 * A array of tags we should never touch.
-	 *
-	 * @deprecated 5.2.0 Use DOM::inappropriate_tags() if necessary. Will be removed in 6.0.0.
-	 *
-	 * @var array
-	 */
-	protected $inappropriate_tags = [];
-
-	/**
 	 * The current dash style.
 	 *
 	 * @var Settings\Dashes
@@ -102,10 +84,17 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 	/**
 	 * Sets up a new Settings object.
 	 *
+	 * @since 6.0.0 If $set_defaults is `false`, the settings object is not fully
+	 *              initialized unless `set_smart_quotes_primary`,
+	 *              `set_smart_quotes_secondary`, `set_smart_dashes_style` and
+	 *              `set_true_no_break_narrow_space` are called explicitly.
+	 *
 	 * @param bool $set_defaults If true, set default values for various properties. Defaults to true.
 	 */
 	public function __construct( $set_defaults = true ) {
-		$this->init( $set_defaults );
+		if ( $set_defaults ) {
+			$this->set_defaults();
+		}
 	}
 
 	/**
@@ -154,9 +143,7 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 	 * @param mixed  $value  The settings value.
 	 */
 	public function offsetSet( $offset, $value ) {
-		if ( is_null( $offset ) ) {
-			$this->data[] = $value;
-		} else {
+		if ( ! empty( $offset ) ) {
 			$this->data[ $offset ] = $value;
 		}
 	}
@@ -196,14 +183,14 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 	 * @return mixed
 	 */
 	public function jsonSerialize() {
-		return array_merge(
+		return \array_merge(
 			$this->data,
 			[
-				'no_break_narrow_space'  => $this->no_break_narrow_space,
-				'primary_quotes'         => "{$this->primary_quote_style->open()}|{$this->primary_quote_style->close()}",
-				'secondary_quotes'       => "{$this->secondary_quote_style->open()}|{$this->secondary_quote_style->close()}",
-				'dash_style'             => "{$this->dash_style->interval_dash()}|{$this->dash_style->interval_space()}|{$this->dash_style->parenthetical_dash()}|{$this->dash_style->parenthetical_space()}",
-				'custom_units'           => $this->custom_units,
+				'no_break_narrow_space' => $this->no_break_narrow_space,
+				'primary_quotes'        => "{$this->primary_quote_style->open()}|{$this->primary_quote_style->close()}",
+				'secondary_quotes'      => "{$this->secondary_quote_style->open()}|{$this->secondary_quote_style->close()}",
+				'dash_style'            => "{$this->dash_style->interval_dash()}|{$this->dash_style->interval_space()}|{$this->dash_style->parenthetical_dash()}|{$this->dash_style->parenthetical_space()}",
+				'custom_units'          => $this->custom_units,
 			]
 		);
 	}
@@ -252,30 +239,6 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 	 */
 	public function custom_units() {
 		return $this->custom_units;
-	}
-
-	/**
-	 * Initialize the PHP_Typography object.
-	 *
-	 * @param bool $set_defaults If true, set default values for various properties. Defaults to true.
-	 */
-	private function init( $set_defaults = true ) {
-		$this->no_break_narrow_space = U::NO_BREAK_SPACE;  // used in unit spacing - can be changed to 8239 via set_true_no_break_narrow_space.
-
-		$this->dash_style = new Settings\Simple_Dashes( U::EM_DASH, U::THIN_SPACE, U::EN_DASH, U::THIN_SPACE );
-
-		$this->primary_quote_style   = new Settings\Simple_Quotes( U::DOUBLE_QUOTE_OPEN, U::DOUBLE_QUOTE_CLOSE );
-		$this->secondary_quote_style = new Settings\Simple_Quotes( U::SINGLE_QUOTE_OPEN, U::SINGLE_QUOTE_CLOSE );
-
-		// Set up some arrays for quick HTML5 introspection.
-		$this->self_closing_tags  = array_filter( array_keys( \Masterminds\HTML5\Elements::$html5 ), function( $tag ) {
-				return \Masterminds\HTML5\Elements::isA( $tag, \Masterminds\HTML5\Elements::VOID_TAG );
-			} );
-		$this->inappropriate_tags = array_flip( DOM::inappropriate_tags() );
-
-		if ( $set_defaults ) {
-			$this->set_defaults();
-		}
 	}
 
 	/**
@@ -357,13 +320,11 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 	/**
 	 * Sets an optional handler for parser errors. Invalid callbacks will be silently ignored.
 	 *
+	 * @since 6.0.0. callable type is enforced via typehinting.
+	 *
 	 * @param callable|null $handler Optional. A callable that takes an array of error strings as its parameter. Default null.
 	 */
-	public function set_parser_errors_handler( $handler = null ) {
-		if ( ! empty( $handler ) && ! is_callable( $handler ) ) {
-			return; // Invalid handler, abort.
-		}
-
+	public function set_parser_errors_handler( callable $handler = null ) {
 		$this->data['parserErrorsHandler'] = $handler;
 	}
 
@@ -390,7 +351,7 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 		// Ensure that we pass only lower-case tag names to XPath.
 		$tags = array_filter( array_map( 'strtolower', Strings::maybe_split_parameters( $tags ) ), 'ctype_alnum' );
 
-		$this->data['ignoreTags'] = array_unique( array_merge( $tags, $this->inappropriate_tags ) );
+		$this->data['ignoreTags'] = array_unique( array_merge( $tags, array_flip( DOM::inappropriate_tags() ) ) );
 	}
 
 	/**
@@ -508,7 +469,7 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 			$object = $get_style( $style, $this );
 		}
 
-		if ( ! $object instanceof $expected_class ) {
+		if ( ! \is_object( $object ) || ! $object instanceof $expected_class ) {
 			throw new \DomainException( "Invalid $description style $style." );
 		}
 
@@ -568,10 +529,10 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 		}
 
 		$this->data['diacriticLanguage'] = $lang;
-		$language_file_name = dirname( __FILE__ ) . '/diacritics/' . $lang . '.json';
+		$language_file_name              = \dirname( __FILE__ ) . '/diacritics/' . $lang . '.json';
 
-		if ( file_exists( $language_file_name ) ) {
-			$diacritics_file = json_decode( file_get_contents( $language_file_name ), true );
+		if ( \file_exists( $language_file_name ) ) {
+			$diacritics_file              = \json_decode( \file_get_contents( $language_file_name ), true );
 			$this->data['diacriticWords'] = $diacritics_file['diacritic_words'];
 		} else {
 			unset( $this->data['diacriticWords'] );
@@ -587,16 +548,16 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 	 *                                          or a string formatted `"needle"=>"replacement","needle"=>"replacement",...
 	 */
 	public function set_diacritic_custom_replacements( $custom_replacements = [] ) {
-		if ( ! is_array( $custom_replacements ) ) {
+		if ( ! \is_array( $custom_replacements ) ) {
 			$custom_replacements = $this->parse_diacritics_replacement_string( $custom_replacements );
 		}
 
-		$this->data['diacriticCustomReplacements'] = Arrays::array_map_assoc( function( $key, $replacement ) {
-			$key         = strip_tags( trim( $key ) );
-			$replacement = strip_tags( trim( $replacement ) );
+		$this->data['diacriticCustomReplacements'] = self::array_map_assoc( function( $key, $replacement ) {
+			$key         = \strip_tags( \trim( $key ) );
+			$replacement = \strip_tags( \trim( $replacement ) );
 
 			if ( ! empty( $key ) && ! empty( $replacement ) ) {
-				return [ $key, $replacement ];
+				return [ $key => $replacement ];
 			} else {
 				return [];
 			}
@@ -613,20 +574,45 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 	 * @return array
 	 */
 	private function parse_diacritics_replacement_string( $custom_replacements ) {
-		return Arrays::array_map_assoc( function( $key, $replacement ) {
-
+		return self::array_map_assoc( function( $key, $replacement ) {
 			// Account for single and double quotes in keys ...
-			if ( preg_match( '/("|\')((?:(?!\1).)+)(?:\1\s*=>)/', $replacement, $match ) ) {
+			if ( \preg_match( '/("|\')((?:(?!\1).)+)(?:\1\s*=>)/', $replacement, $match ) ) {
 				$key = $match[2];
 			}
 
 			// ... and values.
-			if ( preg_match( '/(?:=>\s*("|\'))((?:(?!\1).)+)(?:\1)/', $replacement, $match ) ) {
+			if ( \preg_match( '/(?:=>\s*("|\'))((?:(?!\1).)+)(?:\1)/', $replacement, $match ) ) {
 				$replacement = $match[2];
 			}
 
-			return [ $key, $replacement ];
-		}, preg_split( '/,/', $custom_replacements, -1, PREG_SPLIT_NO_EMPTY ) );
+			return [ $key => $replacement ];
+		}, /** RE correct. @scrutinizer ignore-type */ \preg_split( '/,/', $custom_replacements, -1, PREG_SPLIT_NO_EMPTY ) );
+	}
+
+	/**
+	 * Provides an array_map implementation with control over resulting array's keys.
+	 *
+	 * Based on https://gist.github.com/jasand-pereza/84ecec7907f003564584.
+	 *
+	 * @since 6.0.0
+	 *
+	 * @param  callable $callback A callback function that needs to return [ $key => $value ] pairs.
+	 * @param  array    $array    The array.
+	 *
+	 * @return array
+	 */
+	protected static function array_map_assoc( callable $callback, array $array ) {
+		$new = [];
+
+		foreach ( $array as $k => $v ) {
+			$u = $callback( $k, $v );
+
+			if ( ! empty( $u ) ) {
+				$new[ \key( $u ) ] = \current( $u );
+			}
+		}
+
+		return $new;
 	}
 
 	/**
@@ -636,7 +622,7 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 	 * when the custom replacements are updated.
 	 */
 	private function update_diacritics_replacement_arrays() {
-		$patterns = [];
+		$patterns     = [];
 		$replacements = [];
 
 		if ( ! empty( $this->data['diacriticCustomReplacements'] ) ) {
@@ -662,7 +648,7 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 	private function parse_diacritics_rules( array $diacritics_rules, array &$patterns, array &$replacements ) {
 
 		foreach ( $diacritics_rules as $needle => $replacement ) {
-			$patterns[] = '/\b(?<!\w[' . U::NO_BREAK_SPACE . U::SOFT_HYPHEN . '])' . $needle . '\b(?![' . U::NO_BREAK_SPACE . U::SOFT_HYPHEN . ']\w)/u';
+			$patterns[]              = '/\b(?<!\w[' . U::NO_BREAK_SPACE . U::SOFT_HYPHEN . '])' . $needle . '\b(?![' . U::NO_BREAK_SPACE . U::SOFT_HYPHEN . ']\w)/u';
 			$replacements[ $needle ] = $replacement;
 		}
 	}
@@ -751,9 +737,11 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 	/**
 	 * Enables/disables extra whitespace before certain punction marks, as is the French custom.
 	 *
-	 * @param bool $on Optional. Default true.
+	 * @since 6.0.0 The default value is now `false`.`
+	 *
+	 * @param bool $on Optional. Default false.
 	 */
-	public function set_french_punctuation_spacing( $on = true ) {
+	public function set_french_punctuation_spacing( $on = false ) {
 		$this->data['frenchPunctuationSpacing'] = $on;
 	}
 
@@ -776,9 +764,9 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 		// Update components & regex pattern.
 		foreach ( $units as $index => $unit ) {
 			// Escape special chars.
-			$units[ $index ] = preg_replace( '#([\[\\\^\$\.\|\?\*\+\(\)\{\}])#', '\\\\$1', $unit );
+			$units[ $index ] = \preg_replace( '#([\[\\\^\$\.\|\?\*\+\(\)\{\}])#', '\\\\$1', $unit );
 		}
-		$this->custom_units = implode( '|', $units );
+		$this->custom_units  = \implode( '|', $units );
 		$this->custom_units .= ( $this->custom_units ) ? '|' : '';
 	}
 
@@ -932,12 +920,12 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 	 */
 	public function set_initial_quote_tags( $tags = [ 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'blockquote', 'li', 'dd', 'dt' ] ) {
 		// Make array if handed a list of tags as a string.
-		if ( ! is_array( $tags ) ) {
-			$tags = preg_split( '/[^a-z0-9]+/', $tags, -1, PREG_SPLIT_NO_EMPTY );
+		if ( ! \is_array( $tags ) ) {
+			$tags = \preg_split( '/[^a-z0-9]+/', $tags, -1, PREG_SPLIT_NO_EMPTY );
 		}
 
 		// Store the tag array inverted (with the tagName as its index for faster lookup).
-		$this->data['initialQuoteTags'] = array_change_key_case( array_flip( $tags ), CASE_LOWER );
+		$this->data['initialQuoteTags'] = \array_change_key_case( \array_flip( /** Array. @scrutinizer ignore-type */ $tags ), CASE_LOWER );
 	}
 
 	/**
@@ -1052,10 +1040,10 @@ class Settings implements \ArrayAccess, \JsonSerializable {
 	 * @return string A binary hash value for the current settings limited to $max_length.
 	 */
 	public function get_hash( $max_length = 16, $raw_output = true ) {
-		$hash = md5( json_encode( $this ), $raw_output );
+		$hash = \md5( \json_encode( $this ), $raw_output );
 
-		if ( $max_length < strlen( $hash ) && $max_length > 0 ) {
-			$hash = substr( $hash, 0, $max_length );
+		if ( $max_length < \strlen( $hash ) && $max_length > 0 ) {
+			$hash = \substr( $hash, 0, $max_length );
 		}
 
 		return $hash;

@@ -26,9 +26,9 @@
 
 namespace PHP_Typography\Fixes\Node_Fixes;
 
-use \PHP_Typography\DOM;
-use \PHP_Typography\Settings;
-use \PHP_Typography\U;
+use PHP_Typography\DOM;
+use PHP_Typography\Settings;
+use PHP_Typography\U;
 
 /**
  * Wraps words of all caps (may include numbers) in <span class="caps"> if enabled.
@@ -42,31 +42,31 @@ use \PHP_Typography\U;
  */
 class Style_Caps_Fix extends Simple_Style_Fix {
 	/*
-	 // \p{Lu} equals upper case letters and should match non english characters; since PHP 4.4.0 and 5.1.0
-	 // for more info, see http://www.regextester.com/pregsyntax.html#regexp.reference.unicode
-	 $this->components['styleCaps']  = '
-	 (?<![\w\-_'.U::ZERO_WIDTH_SPACE.U::SOFT_HYPHEN.'])
-	 # negative lookbehind assertion
-	 (
-	 (?:							# CASE 1: " 9A "
-	 [0-9]+					# starts with at least one number
-	 \p{Lu}					# must contain at least one capital letter
-	 (?:\p{Lu}|[0-9]|\-|_|'.U::ZERO_WIDTH_SPACE.'|'.U::SOFT_HYPHEN.')*
-	 # may be followed by any number of numbers capital letters, hyphens, underscores, zero width spaces, or soft hyphens
-	 )
-	 |
-	 (?:							# CASE 2: " A9 "
-	 \p{Lu}					# starts with capital letter
-	 (?:\p{Lu}|[0-9])		# must be followed a number or capital letter
-	 (?:\p{Lu}|[0-9]|\-|_|'.U::ZERO_WIDTH_SPACE.'|'.U::SOFT_HYPHEN.')*
-	 # may be followed by any number of numbers capital letters, hyphens, underscores, zero width spaces, or soft hyphens
+	// \p{Lu} equals upper case letters and should match non english characters; since PHP 4.4.0 and 5.1.0
+	// for more info, see http://www.regextester.com/pregsyntax.html#regexp.reference.unicode
+	$this->components['styleCaps']  = '
+	(?<![\w\-_'.U::ZERO_WIDTH_SPACE.U::SOFT_HYPHEN.'])
+	# negative lookbehind assertion
+	(
+	(?:							# CASE 1: " 9A "
+	[0-9]+					# starts with at least one number
+	\p{Lu}					# must contain at least one capital letter
+	(?:\p{Lu}|[0-9]|\-|_|'.U::ZERO_WIDTH_SPACE.'|'.U::SOFT_HYPHEN.')*
+	# may be followed by any number of numbers capital letters, hyphens, underscores, zero width spaces, or soft hyphens
+	)
+	|
+	(?:							# CASE 2: " A9 "
+	\p{Lu}					# starts with capital letter
+	(?:\p{Lu}|[0-9])		# must be followed a number or capital letter
+	(?:\p{Lu}|[0-9]|\-|_|'.U::ZERO_WIDTH_SPACE.'|'.U::SOFT_HYPHEN.')*
+	# may be followed by any number of numbers capital letters, hyphens, underscores, zero width spaces, or soft hyphens
 
-	 )
-	 )
-	 (?![\w\-_'.U::ZERO_WIDTH_SPACE.U::SOFT_HYPHEN.'])
-	 # negative lookahead assertion
-	 '; // required modifiers: x (multiline pattern) u (utf8)
-	 */
+	)
+	)
+	(?![\w\-_'.U::ZERO_WIDTH_SPACE.U::SOFT_HYPHEN.'])
+	# negative lookahead assertion
+	'; // required modifiers: x (multiline pattern) u (utf8)
+	*/
 
 	// Servers with PCRE compiled without "--enable-unicode-properties" fail at \p{Lu} by returning an empty string (this leaving the screen void of text
 	// thus are testing this alternative.
@@ -90,9 +90,7 @@ class Style_Caps_Fix extends Simple_Style_Fix {
 			)
 		)
 		(?![\w\-_' . U::ZERO_WIDTH_SPACE . U::SOFT_HYPHEN . ']) # negative lookahead assertion
-	/xu';
-
-	const SETTINGS_SWITCH = 'styleCaps';
+	/Sxu';
 
 	/**
 	 * Creates a new node fix with a class.
@@ -101,6 +99,6 @@ class Style_Caps_Fix extends Simple_Style_Fix {
 	 * @param bool   $feed_compatible Optional. Default false.
 	 */
 	public function __construct( $css_class, $feed_compatible = false ) {
-		parent::__construct( self::REGEX, self::SETTINGS_SWITCH, $css_class, $feed_compatible );
+		parent::__construct( self::REGEX, 'styleCaps', $css_class, $feed_compatible );
 	}
 }

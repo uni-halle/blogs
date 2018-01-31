@@ -26,8 +26,8 @@
 
 namespace PHP_Typography\Fixes\Node_Fixes;
 
-use \PHP_Typography\Settings;
-use \PHP_Typography\DOM;
+use PHP_Typography\Settings;
+use PHP_Typography\DOM;
 
 /**
  * An abstract base class for adding simple wrapping spans to style certain elements.
@@ -72,23 +72,25 @@ abstract class Simple_Style_Fix extends Classes_Dependent_Fix {
 	public function __construct( $regex, $settings_switch, $css_class, $feed_compatible = false ) {
 		parent::__construct( $css_class, $feed_compatible );
 
-		$this->regex = $regex;
+		$this->regex           = $regex;
 		$this->settings_switch = $settings_switch;
-		$this->css_class = $css_class;
+		$this->css_class       = $css_class;
 	}
 
 	/**
 	 * Apply the fix to a given textnode.
 	 *
+	 * @since 6.0.0 The method was accidentally made public and is now protected.
+	 *
 	 * @param \DOMText $textnode Required.
 	 * @param Settings $settings Required.
 	 * @param bool     $is_title Optional. Default false.
 	 */
-	public function apply_internal( \DOMText $textnode, Settings $settings, $is_title = false ) {
+	protected function apply_internal( \DOMText $textnode, Settings $settings, $is_title = false ) {
 		if ( empty( $settings[ $this->settings_switch ] ) ) {
 			return;
 		}
 
-		$textnode->data = preg_replace( $this->regex, '<span class="' . $this->css_class . '">$1</span>', $textnode->data );
+		$textnode->data = \preg_replace( $this->regex, '<span class="' . $this->css_class . '">$1</span>', $textnode->data );
 	}
 }
