@@ -3,8 +3,8 @@ Contributors: 		lopo
 Donate link: 		https://duplicate-post.lopo.it/
 Tags: 				duplicate post, copy, clone
 Requires at least: 	3.6
-Tested up to: 		4.7
-Stable tag: 		3.2
+Tested up to: 		4.9
+Stable tag: 		3.2.1
 License: 			GPLv2 or later
 License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -76,6 +76,9 @@ If Duplicate Post is still in English, or if there are some untraslated strings,
 
 == Upgrade Notice ==
 
+= 3.2.1 =
+Fixes some problems with Multisite, WPML, revisions
+
 = 3.2 =
 new website + WPML compatibility + various fixes
 
@@ -137,6 +140,12 @@ Some users have experienced a fatal error when upgrading to v1.1: this may fix i
 New features and customization, WP 3.0 compatibility: you should upgrade if you want to copy Custom Posts with Custom Taxonomies.
 
 == Changelog ==
+
+= 3.2.1 (2017-11-25) =
+* Fixing some issues of the 3.* trunk before major redesign
+* Fixes issue when upgrading on multisite
+* Improved compatibility with WPML + page builders, thanks to WPML team
+* Prevents creating a revision immediately after the cloning
 
 = 3.2 (2017-04-04) =
 * new website with extensive documentation
@@ -291,4 +300,3 @@ If you find this useful and if you want to contribute, there are three ways:
    1. You can [write me](https://duplicate-post.lopo.it/contact) and submit your bug reports, suggestions and requests for features;
    2. If you want to translate it to your language (there are just a few lines of text), you can use the [translation project](https://translate.wordpress.org/projects/wp-plugins/duplicate-post);
    3. Using the plugin is free, but if you want you can support my efforts by donating with PayPal [here](https://duplicate-post.lopo.it/donate)
-
