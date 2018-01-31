@@ -140,7 +140,7 @@ jQuery(document).ready(function($) {
 <div id="powerpress_admin_header">
 <h2><?php echo __('Blubrry PowerPress Settings', 'powerpress'); ?></h2> 
 	<span class="powerpress-mode"><?php echo __('Advanced Mode', 'powerpress'); ?>
-		&nbsp; <a href="<?php echo admin_url("admin.php?page=". powerpress_admin_get_page() ."&amp;mode=simple"); ?>" id="powerpress_advanced_mode_button" class="button-primary button-blubrry"><?php echo __('Switch to Simple Mode', 'powerpress'); ?></a>
+		&nbsp; <a href="<?php echo admin_url("admin.php?page=". urlencode(powerpress_admin_get_page()) ."&amp;mode=simple"); ?>" id="powerpress_advanced_mode_button" class="button-primary button-blubrry"><?php echo __('Switch to Simple Mode', 'powerpress'); ?></a>
 	</span>
 </div>
 
@@ -513,13 +513,33 @@ function powerpressadmin_edit_entry_options($General)
 						<em><strong><?php echo __('If conflicting values are present the directories will use the default ordering.', 'powerpress'); ?></strong></em><br />
 						<em><strong><?php echo __('This feature only applies to the default podcast feed and Custom Podcast Channel feeds added by PowerPress.', 'powerpress'); ?></strong></em>
 					
-					<input type="hidden" name="General[episode_box_itunes_title]' value="0" />
-					<p style="margin-top: 15px;"><label><input id="episode_box_itunes_title" class="episode_box_option" name="General[episode_box_itunes_title]" type="checkbox" value="1"<?php if( !empty($General['episode_box_itunes_title']) ) echo ' checked'; ?> /> <?php echo __('iTunes Episode Title Field', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
+					<?php  if( empty($General['ios11_fields']) || $General['ios11_fields'] == 2 ) { ?>
+					<p><label><select name="General[ebititle]" class="bpp_input_sm">
+<?php
+$linkoptions = array('false'=>__('Hide Field', 'powerpress'),
+		1=>__('Show Field', 'powerpress') );
+	
+while( list($value,$desc) = each($linkoptions) )
+	echo "\t<option value=\"$value\"". ( !empty($General['episode_box_itunes_title']) && $General['episode_box_itunes_title'] == $value ?' selected':''). ">$desc</option>\n";
+	
+?>
+</select> <?php echo __('iTunes Episode Title Field', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
 						<em><strong><?php echo __('Specify iTunes episode title separate from podcast feed title.', 'powerpress'); ?></strong></em>
+					<?php } // end episode_box_itunes_title ?>
 					
-					<input type="hidden" name="General[episode_box_itunes_nst]' value="0" />
-					<p style="margin-top: 15px;"><label><input id="episode_box_itunes_nst" class="episode_box_option" name="General[episode_box_itunes_nst]" type="checkbox" value="1"<?php if( !empty($General['episode_box_itunes_nst']) ) echo ' checked'; ?> /> <?php echo __('iTunes Episode Number, Season and Type Fields', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
+					<?php  if( empty($General['ios11_fields']) || $General['ios11_fields'] == 4 ) { ?>
+					<p><label><select name="General[ebinst]" class="bpp_input_sm">
+<?php
+$linkoptions = array('false'=>__('Hide Field', 'powerpress'),
+		1=>__('Show Field', 'powerpress') );
+	
+while( list($value,$desc) = each($linkoptions) )
+	echo "\t<option value=\"$value\"". ( !empty($General['episode_box_itunes_nst']) && $General['episode_box_itunes_nst'] == $value ?' selected':''). ">$desc</option>\n";
+	
+?>
+</select> <?php echo __('iTunes Episode Number, Season and Type Fields', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
 						<em><strong><?php echo __('Enter specifics about episode including episode number, season number and type (full, trailer, or bonus).', 'powerpress'); ?></strong></em>	
+				<?php } // end episode_box_itunes_title ?>
 				
 					<p style="margin-top: 15px;"><label><input id="episode_box_feature_in_itunes" class="episode_box_option" name="General[episode_box_feature_in_itunes]" type="checkbox" value="1"<?php if( !empty($General['episode_box_feature_in_itunes']) ) echo ' checked'; ?> /> <?php echo __('Feature Episode in iTunes and Google Play Music', 'powerpress'); ?></label>
 						(<?php echo __('Display selected episode at top of your iTunes and Google Play Music directory listings', 'powerpress'); ?>)</p>
@@ -1208,10 +1228,8 @@ function powerpressadmin_appearance($General=false, $Feed = false)
 		</li>
 	</ul>
 	<p><input name="General[display_player_excerpt]" type="checkbox" value="1" <?php if( !empty($General['display_player_excerpt']) ) echo 'checked '; ?>/> <?php echo __('Display player / links:', 'powerpress'); ?> <a href="http://codex.wordpress.org/Template_Tags/the_excerpt" title="<?php echo __('WordPress Excerpts', 'powerpress'); ?>" target="_blank"><?php echo __('WordPress Excerpts', 'powerpress'); ?></a>  (<?php echo __('e.g. search results', 'powerpress'); ?>)</p>
-	
 	<input type="hidden" name="General[hide_player_more]" value="0" />
 	<p><input name="General[hide_player_more]" type="checkbox" value="1" <?php if( !empty($General['hide_player_more']) ) echo 'checked '; ?>/> <?php echo __('Hide player / links:', 'powerpress'); ?> <a href="https://en.support.wordpress.com/more-tag/" title="<?php echo __('Read More tagged posts', 'powerpress'); ?>" target="_blank"><?php echo __('Read More tagged posts', 'powerpress'); ?></a></p>
-	
 </td>
 </tr>
 </table>

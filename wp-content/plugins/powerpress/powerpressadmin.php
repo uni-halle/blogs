@@ -113,7 +113,7 @@ function powerpress_admin_init()
 		powerpress_page_message_add_error( __('The WP OS FLV plugin is not compatible with Blubrry PowerPress.', 'powerpress') );
 	
 	// Security step, we must be in a powerpress/* page...
-	if( isset($_GET['page']) && strstr($_GET['page'], 'powerpress/' ) !== false )
+	if( isset($_GET['page']) && ( strstr($_GET['page'], 'powerpress/' ) !== false || strstr($_GET['page'], 'powerpressadmin_' ) !== false ) )
 	{
 		// Save settings here
 		if( isset($_POST[ 'Feed' ]) || isset($_POST[ 'General' ])  )
@@ -1324,6 +1324,20 @@ function powerpress_admin_init()
 					powerpress_page_message_add_notice( sprintf( __('Plugins Update Cache cleared successfully. You may now to go the %s page to see the latest plugin versions.', 'powerpress'), '<a href="'. admin_url() .'plugins.php" title="'.  __('Manage Plugins', 'powerpress') .'">'.  __('Manage Plugins', 'powerpress') .'</a>') );
 					
 				}; break;
+				case 'powerpress-ios11-fields': {
+					check_admin_referer('powerpress-ios11-fields');
+					
+					$General = array('ios11_fields'=> (!empty($_REQUEST['variation'])? $_REQUEST['variation'] : '0') );
+					powerpress_save_settings($General);
+					powerpress_page_message_add_notice( 'iOS 11 program level fields changed.' );
+				}; break;
+				case 'powerpress-beta-features': {
+					check_admin_referer('powerpress-beta-features');
+					
+					$General = array('powerpress-beta-features'=> (!empty($_REQUEST['feature'])? $_REQUEST['feature'] : '0') );
+					powerpress_save_settings($General);
+					powerpress_page_message_add_notice( __('PowerPress Beta features have been updated.', 'powerpress') );
+				}; break;
 			}
 		}
 		
@@ -1412,6 +1426,21 @@ function powerpress_save_settings($SettingsNew=false, $field = 'powerpress_gener
 		// We can unset settings that are set to their defaults to save database size...
 		if( $field == 'powerpress_general' )
 		{
+			// Switch the settings over to the actual field name (to fix FCGI mode problem with older versions of PHP.
+			if( isset($Settings['ebititle']) ) {
+				if( $Settings['ebititle'] == 'false')
+					$Settings['ebititle'] = 0;
+				$Settings['episode_box_itunes_title'] = $Settings['ebititle'];
+				unset($Settings['ebititle']);
+			}
+			
+			if( isset($Settings['ebinst']) ) {
+			if( $Settings['ebinst'] == 'false')
+					$Settings['ebinst'] = 0;
+				$Settings['episode_box_itunes_nst'] = $Settings['ebinst'];
+				unset($Settings['ebinst']);
+			}
+			
 			if( isset($Settings['episode_box_embed'] ) && $Settings['episode_box_embed'] == 0 )
 				unset($Settings['episode_box_embed']);
 			if( isset($Settings['embed_replace_player'] ) && $Settings['embed_replace_player'] == 0 )
@@ -1755,13 +1784,13 @@ function powerpress_admin_menu()
 			if( isset($ToBeSaved['blubrry_hosting']) )
 				$Powerpress['blubrry_hosting'] = $ToBeSaved['blubrry_hosting'];
 		}
-		$parent_slug = 'powerpress/powerpressadmin_basic.php';
-		add_menu_page(__('PowerPress', 'powerpress'), __('PowerPress', 'powerpress'), POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_basic.php', 'powerpress_admin_page_basic', powerpress_get_root_url() . 'powerpress_ico.png');
+		$parent_slug = 'powerpressadmin_basic';
+		add_menu_page(__('PowerPress', 'powerpress'), __('PowerPress', 'powerpress'), POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpressadmin_basic', 'powerpress_admin_page_basic', powerpress_get_root_url() . 'powerpress_ico.png');
 			$parent_slug = apply_filters('powerpress_submenu_parent_slug', $parent_slug );
 			
-			add_submenu_page($parent_slug, __('PowerPress Settings', 'powerpress'), __('Settings', 'powerpress'), POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_basic.php', 'powerpress_admin_page_basic' );
+			add_submenu_page($parent_slug, __('PowerPress Settings', 'powerpress'), __('Settings', 'powerpress'), POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpressadmin_basic', 'powerpress_admin_page_basic' );
 			
-			add_options_page( __('PowerPress', 'powerpress'), __('PowerPress', 'powerpress'), POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_basic.php', 'powerpress_admin_page_basic');
+			add_options_page( __('PowerPress', 'powerpress'), __('PowerPress', 'powerpress'), POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpressadmin_basic', 'powerpress_admin_page_basic');
 			
 			add_submenu_page($parent_slug, __('Import podcast feed from SoundCloud, LibSyn, PodBean or other podcast service.', 'powerpress'), __('Import Podcast', 'powerpress'), POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_import_feed.php', 'powerpress_admin_page_import_feed');
 			add_submenu_page($parent_slug, __('Migrate media files to Blubrry Podcast Media Hosting with only a few clicks.', 'powerpress'), __('Migrate Media', 'powerpress'), POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_migrate.php', 'powerpress_admin_page_migrate');
@@ -1953,32 +1982,32 @@ function powerpress_edit_post($post_ID, $post)
 					$ToSerialize['author'] = stripslashes($Powerpress['author']);
 				// iTunes Explicit
 				if( isset($Powerpress['explicit']) && trim($Powerpress['explicit']) != '' ) 
-					$ToSerialize['explicit'] = $Powerpress['explicit'];
+					$ToSerialize['explicit'] = stripslashes($Powerpress['explicit']);
 				// Google Play Explicit
 				if( isset($Powerpress['gp_explicit']) && trim($Powerpress['gp_explicit']) == '1' )
-					$ToSerialize['gp_explicit'] = $Powerpress['gp_explicit'];
+					$ToSerialize['gp_explicit'] = stripslashes($Powerpress['gp_explicit']);
 				// iTunes CC
 				if( isset($Powerpress['cc']) && trim($Powerpress['cc']) != '' ) 
-					$ToSerialize['cc'] = $Powerpress['cc'];
+					$ToSerialize['cc'] = stripslashes($Powerpress['cc']);
 				// iTunes Episode image
 				if( isset($Powerpress['itunes_image']) && trim($Powerpress['itunes_image']) != '' ) 
-					$ToSerialize['itunes_image'] = $Powerpress['itunes_image'];
+					$ToSerialize['itunes_image'] = stripslashes($Powerpress['itunes_image']);
 					
 				if( isset($Powerpress['episode_title']) && trim($Powerpress['episode_title']) != '' ) 
-					$ToSerialize['episode_title'] = $Powerpress['episode_title'];
+					$ToSerialize['episode_title'] = stripslashes($Powerpress['episode_title']);
 				if( isset($Powerpress['episode_no']) && trim($Powerpress['episode_no']) != '' ) 
-					$ToSerialize['episode_no'] = $Powerpress['episode_no'];
+					$ToSerialize['episode_no'] = stripslashes($Powerpress['episode_no']);
 				if( isset($Powerpress['season']) && trim($Powerpress['season']) != '' ) 
-					$ToSerialize['season'] = $Powerpress['season'];
+					$ToSerialize['season'] = stripslashes($Powerpress['season']);
 				if( isset($Powerpress['episode_type']) && trim($Powerpress['episode_type']) != '' ) 
-					$ToSerialize['episode_type'] = $Powerpress['episode_type'];
+					$ToSerialize['episode_type'] = stripslashes($Powerpress['episode_type']);
 			
 				// order
 				if( isset($Powerpress['order']) && trim($Powerpress['order']) != '' ) 
-					$ToSerialize['order'] = $Powerpress['order'];
+					$ToSerialize['order'] = stripslashes($Powerpress['order']);
 				// always
 				if( isset($Powerpress['always']) && trim($Powerpress['always']) != '' ) 
-					$ToSerialize['always'] = $Powerpress['always'];
+					$ToSerialize['always'] = stripslashes($Powerpress['always']);
 				// iTunes Block
 				if( isset($Powerpress['block']) && $Powerpress['block'] == '1' ) 
 					$ToSerialize['block'] = 1;
@@ -3046,14 +3075,14 @@ add_action('edit_category_form', 'powerpress_edit_category_form');
 function powerpress_admin_page_header($page=false, $nonce_field = 'powerpress-edit', $page_type='')
 {
 	if( !$page )
-		$page = 'powerpress/powerpressadmin_basic.php';
+		$page = 'powerpressadmin_basic';
 ?>
 <div class="wrap" id="powerpress_settings">
 <?php
 	if( $nonce_field )
 	{
 ?>
-<form enctype="multipart/form-data" method="post" action="<?php echo admin_url( 'admin.php?page='.$page) ?>">
+<form enctype="multipart/form-data" method="post" action="<?php echo admin_url( 'admin.php?page='. urlencode($page) ) ?>">
 <?php
 		wp_nonce_field($nonce_field);
 	}
@@ -3373,7 +3402,13 @@ function powerpress_remote_fopen($url, $basic_auth = false, $post_args = array()
 		curl_setopt($curl, CURLOPT_URL, $url);
 		curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($curl, CURLOPT_HEADER, 0);
-		if ( !ini_get('safe_mode') && !ini_get('open_basedir') )
+		
+		if ( version_compare( PHP_VERSION, '5.3.0') < 0 && !ini_get('safe_mode') )
+		{
+			curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true); // Follow location redirection
+			curl_setopt($curl, CURLOPT_MAXREDIRS, 12); // Location redirection limit
+		}
+		else if ( !ini_get('open_basedir') )
 		{
 			curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true); // Follow location redirection
 			curl_setopt($curl, CURLOPT_MAXREDIRS, 12); // Location redirection limit
@@ -4546,7 +4581,7 @@ function powerpressadmin_community_highlighted($items=8)
 function powerpress_admin_plugin_action_links( $links, $file )
 {
 	if( preg_match('/powerpress\.php$/', $file)  )
-		$links[] = '<a href="'. admin_url("admin.php?page=powerpress/powerpressadmin_basic.php")  .'">'. __('Settings', 'powerpress') .'</a>' ;
+		$links[] = '<a href="'. admin_url("admin.php?page=powerpressadmin_basic")  .'">'. __('Settings', 'powerpress') .'</a>' ;
 	return $links;
 }
 add_filter( 'plugin_action_links', 'powerpress_admin_plugin_action_links', 10, 2 );
@@ -4571,7 +4606,7 @@ function powerpress_admin_get_page()
 {
 	if( !empty($_REQUEST['page']) )
 		return $_REQUEST['page'];
-	return 'powerpress/powerpressadmin_basic.php';
+	return 'powerpressadmin_basic';
 }
 
 function powerpress_review_message()

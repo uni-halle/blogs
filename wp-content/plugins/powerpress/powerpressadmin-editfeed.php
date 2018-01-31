@@ -69,12 +69,14 @@ function powerpress_languages()
 	$langs['in'] = __('Indonesian', 'powerpress');
 	$langs['ga'] = __('Irish', 'powerpress');
 	$langs['it'] = __('Italian', 'powerpress');
+	$langs['hi'] = __('Hindi', 'powerpress');
 	$langs['it-it'] = __('Italian (Italy)', 'powerpress');
 	$langs['it-ch'] = __('Italian (Switzerland)', 'powerpress');
 	$langs['ja'] = __('Japanese', 'powerpress');
 	$langs['ko'] = __('Korean', 'powerpress');
 	$langs['mk'] = __('Macedonian', 'powerpress');
 	$langs['no'] = __('Norwegian', 'powerpress');
+	$langs['pa'] = __('Punjabi', 'powerpress');
 	$langs['pl'] = __('Polish', 'powerpress');
 	$langs['pt'] = __('Portuguese', 'powerpress');
 	$langs['pt-br'] = __('Portuguese (Brazil)', 'powerpress');
@@ -391,6 +393,8 @@ function powerpressadmin_edit_feed_general($FeedSettings, $General)
 		
 	while( list($feed_slug, $feed_title) = each($Feeds) )
 	{
+		if( empty($feed_title) )
+			$feed_title = $feed_slug;
 		$edit_link = admin_url( 'admin.php?page=powerpress/powerpressadmin_customfeeds.php&amp;action=powerpress-editfeed&amp;feed_slug=') . $feed_slug;
 ?>
 <p><?php echo $feed_title; ?>: <a href="<?php echo get_feed_link($feed_slug); ?>" title="<?php echo $feed_title; ?>" target="_blank"><?php echo get_feed_link($feed_slug); ?></a>
@@ -417,7 +421,7 @@ function powerpressadmin_edit_feed_general($FeedSettings, $General)
 <th scope="row">
 <?php echo __('Feed Discovery', 'powerpress'); ?></th>
 <td>
-<p style="margin-top: 10px;"><label><input type="checkbox" name="General[feed_links]" value="1" <?php if( !empty($General['feed_links']) && $General['feed_links'] == 1 ) echo 'checked '; ?>/> <?php echo __('Include podcast feed links in HTML headers.', 'powerpress'); ?></label></p>
+<p style="margin-top: 10px;"><label><input type="checkbox" name="General[feed_links]" value="1" <?php if( !empty($General['feed_links']) && $General['feed_links'] == 1 ) echo 'checked '; ?>/> <?php echo __('Exclude podcast feed links in HTML headers.', 'powerpress'); ?></label></p>
 <p><?php echo __('Adds "feed discovery" links to your web site\'s headers allowing web browsers and feed readers to auto-detect your podcast feeds.', 'powerpress'); ?></p>
 </td>
 </tr>
@@ -983,6 +987,7 @@ while( list($value,$desc) = each($explicit) )
 </td>
 </tr>
 
+<?php  if( empty($General['ios11_fields']) || $General['ios11_fields'] == 1 ) {  ?>
 <tr valign="top">
 <th scope="row">
 <?php echo __('iTunes Type', 'powerpress'); ?> 
@@ -1006,6 +1011,7 @@ while( list($value,$desc) = each($types) )
 			</p>
 </td>
 </tr>
+<?php } // end type ?>
 </table>
 
 <?php if( !empty($General['advanced_mode_2']) ) { ?>

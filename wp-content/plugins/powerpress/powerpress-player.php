@@ -1337,6 +1337,15 @@ function powerpressplayer_build_blubrryaudio($media_url, $EpisodeData=array(), $
 	// media URL is all we need., as long as it's hosted at blubrry.com...
 	if( preg_match('/content\.blubrry\.com/', $media_url) )
 	{
+	    $playerSettings = get_option('powerpress_bplayer');
+        $hash = '';
+        if(!empty($playerSettings)) {
+	        $hash = 'darkOrLight-'.$playerSettings['playerstyle']."&shownotes-".$playerSettings['showtext']."&shownotesBackground-".$playerSettings['showbg'];
+	        $hash .= "&download-".$playerSettings['downloadcolortext']."&downloadBackground-".$playerSettings['downloadbgcolor'];
+	        $hash .= "&subscribe-".$playerSettings['textsubscribe']."&subscribeBackground-".$playerSettings['subscribebg']."&share-".$playerSettings['textshare']."&shareBackground-".$playerSettings['bgshare'];
+            $hash = str_replace('#','',$hash);  //remove # symbol from hex colors
+            $hash = '#'.$hash;
+        }
 		if( !empty($EpisodeData['episode_id']) ) {
 			$url = '//player.blubrry.com/?podcast_id='. intval($EpisodeData['episode_id']);
 		} else {
@@ -1354,6 +1363,7 @@ function powerpressplayer_build_blubrryaudio($media_url, $EpisodeData=array(), $
 			}
 
 		}
+		$url = $url.$hash;
 		return '<iframe src="'. $url .'" scrolling="no" width="100%" height="138px" frameborder="0"></iframe>';
 	}
 	
@@ -1362,7 +1372,7 @@ function powerpressplayer_build_blubrryaudio($media_url, $EpisodeData=array(), $
 
 function powerpressplayer_build_blubrryaudio_by_id($directory_episode_id)
 {
-	return '<iframe src="//player.blubrry.com?podcast_id='. $directory_episode_id .'" scrolling="no" width="100%" height="138px" frameborder="0"></iframe>';
+	return '<iframe src="//player.blubrry.com?podcast_id='. $directory_episode_id .'" id="playeriframe" scrolling="no" width="100%" height="138px" frameborder="0"></iframe>';
 }
 
 /*

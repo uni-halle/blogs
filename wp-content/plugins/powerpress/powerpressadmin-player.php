@@ -38,5 +38,10 @@ function powerpress_admin_players_init()
 			powerpress_page_message_add_notice( __('Audio Player settings saved successfully.', 'powerpress') );
 		
 		}; break;
+		case 'powerpress_bplayer':{   //blubrry player
+			$SaveSettings = $_POST['BBPlayer'];
+			powerpress_save_settings($SaveSettings, 'powerpress_bplayer');
+			powerpress_page_message_add_notice( __('Blubrry Player settings saved successfully.', 'powerpress') );
+		}; break;
 	}
 }

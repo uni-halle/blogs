@@ -83,7 +83,7 @@ jQuery(document).ready(function($) {
 <div id="powerpress_admin_header">
 <h2><?php echo __('Blubrry PowerPress Settings', 'powerpress'); ?></h2> 
 <span class="powerpress-mode"><?php echo __('Simple Mode', 'powerpress'); ?>
-	&nbsp; <a href="<?php echo admin_url("admin.php?page=powerpress/powerpressadmin_basic.php&amp;mode=advanced"); ?>" id="powerpress_advanced_mode_button" class="button-primary  button-blubrry"><?php echo __('Switch to Advanced Mode', 'powerpress'); ?></a>
+	&nbsp; <a href="<?php echo admin_url("admin.php?page=". urlencode(powerpress_admin_get_page()) ."&amp;mode=advanced"); ?>" id="powerpress_advanced_mode_button" class="button-primary  button-blubrry"><?php echo __('Switch to Advanced Mode', 'powerpress'); ?></a>
 </span>
 </div>
 

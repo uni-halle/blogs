@@ -2,8 +2,9 @@
 Contributors: amandato, blubrry
 Tags: podcasting, podcast, podcaster, powerpress, itunes, google play music, google play, enclosure, professional, apple, apple tv, ipad, iphone, soundcloud, squarespace, youtube, viddler, ustream, podcasting, audio, video, rss2, feed, player, media, rss, mp3, music, embed, feedburner, statistics, stats, flv, flash, id3, episodes, blubrry, mp4, m4v, wordpressmu, mu, wordpress mu, multisite, multi site, mediacaster, post, plugin, posts, simple, social, dashboard, TSG, Buzzsprout, MTR, WP-boxCast, CastMyBlog, tgs podcasting,  simple podcasting, seriously simple podcasting, seriously-simple-podcasting, serious, seriously, ssp, podlove, podcast.de, clammr, clammr radio, audio player, stitcher, tunein, show, shows, series, docs, documentation, support, free, add-ons, extensions, addons, libsyn, libsyn-podcasting, podbean, podomatic, spreaker
 Requires at least: 3.6
-Tested up to: 4.8.1
-Stable tag: 7.1.1
+Requires PHP: 5.2
+Tested up to: 4.9.1
+Stable tag: 7.2
 Donate link: https://www.patreon.com/blubrry?ty=h
 License: GPLv2 or later
 
@@ -233,6 +234,24 @@ To install Blubrry PowerPress manually, follow these steps:
 = Fan of PowerPress and want to show your support? =
 If you are a fan of PowerPress, we would greatly appreciate it if you could take a moment and [leave us a review on WordPress.org](https://wordpress.org/support/plugin/powerpress/reviews/?rate=5#new-post). Your support is greatly appreciated!
 
+= 7.2 =
+* Released on 12/13/2017
+* Added code to allow customization of Blubrry player style and colors.
+* Added code to set no-cache headers in AJAX calls.
+* Updated code to fixed bug where new iTunes episode title field may not save with some web hosting platforms using mod security with PHP 5.x. (Thanks @glark, Karren, and others for helping us fix the issue!)
+* Changed the menu slug name for editing PowerPress settings.
+* Removed safe mode logic for older versions of PHP. (Thanks @BrentO for reporting)
+* Added logic to support feeds with bbpress. (Thanks @mubashiriqbal for bringing to our attention!)
+* Added missing argument for get_post_type_object() in  powerpress-subscribe (Thanks John for bring to our attention)
+* Added disable iOS 11 field options under tools to help diagnose issue with some websites that show a 404 page when editing settings since the iOS11 fields were introduced.
+* Changed the names of the new iOS11 fields that were getting caught by Mod Security for some users.
+* Fixed bug with Taxonomy podcasting statistics redirects not being compatible with versions of WordPress older than 4.5 (Thanks @fmnowling for bringing to our attention!)
+* iTunes Maximizer option 11+ older episodes now includes the iTunes summary by default to reflect changes with iOS11. (Thanks Daniel Lewis for the suggestion!)
+* Fixed link to powerpress translation page which was returning 404
+* Added CastFeedValidator.com links for validating podcast feeds.
+* Added Hindi and Punjabi to list of Podcast feed langauges (Thanks @blueblast for requesting the languages to be added)
+
+
 = 7.1.1 =
 * Released on 08/24/2017
 * NOTE: There is no urgency to update to this version unless you can benefit from bug fixes listed.
@@ -248,7 +267,7 @@ If you are a fan of PowerPress, we would greatly appreciate it if you could take
 = 7.1 =
 * Released on 7/11/2017
 * Added support for iOS 11!
-* iTunes type added, specifcy episodic or serial for your podcast program (for iOS 11).
+* iTunes type added, specify episodic or serial for your podcast program (for iOS 11).
 * iTunes episode title, number, season and type added for your episodes (for iOS 11).
 * Subscribe on iTunes changed to Subscribe on Apple Podcasts, links have been enhanced to highlight episodes.
 * Blubrry Podcast Media Hosting and HTTPS: Media URLs are now automatically converted to HTTPS.

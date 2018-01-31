@@ -127,15 +127,3 @@
 </table>
 
 <br />
-
-
-
-
-<h3 style="margin-bottom: 15px;"><?php echo __('Want your own iOS and Android podcast apps?', 'powerpress'); ?></h3>
-<p style="margin: 0  0 0 220px; font-size: 120%;">
-	<?php echo __('Blubrry has partnered with Reactor by AppPresser to provide iOS and Android apps for PowerPress powered podcasts. With Reactor, you are able to build, design and retain control of your app to highlight your podcast content, and provide access to value-add content from your website.', 'powerpress'); ?>
-</p>
-<p style="margin: 15px 0 0 220px; font-size: 120%;">
-	<strong><?php echo '<a href="http://create.blubrry.com/resources/partners/reactor-ios-android-podcast-apps-powerpress/" target="_blank">'. __('Learn More about Reactor iOS and Android podcast apps for PowerPress', 'powerpress') .'</a>'; ?></strong>
-</p>
-<br />

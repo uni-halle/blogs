@@ -170,7 +170,7 @@ function powerpresssubscribe_get_settings($ExtraData, $detect_category=true)
 					{
 						$Settings['title'] = $Settings['title'];
 						if( empty($Settings['title']) ) {
-							$obj = get_post_type_object( );
+							$obj = get_post_type_object($post_type);
 							if( !empty($obj->labels->singular_name) )
 								$Settings['title'] = $obj->labels->singular_name;
 						}

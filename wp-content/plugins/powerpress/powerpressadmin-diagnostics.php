@@ -12,7 +12,7 @@
 		$powerpress_diags['detecting_media']['warning'] = false;
 		$powerpress_diags['detecting_media']['allow_url_fopen'] = (ini_get( 'allow_url_fopen' ) != false); // fopen
 		$powerpress_diags['detecting_media']['curl'] = function_exists( 'curl_init' ); // cURL
-		$powerpress_diags['detecting_media']['message2'] = ''; // if ( !ini_get('safe_mode') && !ini_get('open_basedir') )
+		$powerpress_diags['detecting_media']['message2'] = ''; // if ( !ini_get('open_basedir') )
 		$powerpress_diags['detecting_media']['message3'] = ''; // ssl checks
 		
 		// Testing:
@@ -25,17 +25,7 @@
 			if( $powerpress_diags['detecting_media']['allow_url_fopen'] )
 				$powerpress_diags['detecting_media']['message'] .= ' '. __('Your web server is also configured with the php.ini setting \'allow_url_fopen\' enabled, but the cURL library takes precedence.', 'powerpress');
 			
-			if( ini_get('safe_mode') && ini_get('open_basedir') )
-			{
-				$powerpress_diags['detecting_media']['warning'] = true;
-				$powerpress_diags['detecting_media']['message2'] = __('Warning: Both php.ini settings \'safe_mode\' and \'open_basedir\' will prevent the cURL library from following redirects in URLs.', 'powerpress');
-			}
-			else if( ini_get('safe_mode') )
-			{
-				$powerpress_diags['detecting_media']['warning'] = true;
-				$powerpress_diags['detecting_media']['message2'] = __('Warning: The php.ini setting \'safe_mode\' will prevent the cURL library from following redirects in URLs.', 'powerpress');
-			}
-			else if( ini_get('open_basedir') )
+			if( ini_get('open_basedir') )
 			{
 				$powerpress_diags['detecting_media']['warning'] = true;
 				$powerpress_diags['detecting_media']['message2'] = __('Warning: The php.ini setting \'open_basedir\' will prevent the cURL library from following redirects in URLs.', 'powerpress');
@@ -143,17 +133,17 @@
 		}
 		$powerpress_diags['system_info']['memory_used'] = 0;
 		
-		if( version_compare($powerpress_diags['system_info']['php_version'], '5.4') > -1 )
+		if( version_compare($powerpress_diags['system_info']['php_version'], '7.0') > -1 )
 		{
 			$powerpress_diags['system_info']['message'] = sprintf( __('Your version of PHP (%s) is OK!', 'powerpress'), $powerpress_diags['system_info']['php_version'] );
 		}
-		else if( version_compare($powerpress_diags['system_info']['php_version'], '5.3') > -1 )
+		else if( version_compare($powerpress_diags['system_info']['php_version'], '5.4') > -1 )
 		{
-			$powerpress_diags['system_info']['message'] = sprintf( __('Your version of PHP (%s) is OK, though PHP 5.4 or newer is recommended.', 'powerpress'), $powerpress_diags['system_info']['php_version'] );
+			$powerpress_diags['system_info']['message'] = sprintf( __('Your version of PHP (%s) is OK, though PHP 7.0 or newer is recommended.', 'powerpress'), $powerpress_diags['system_info']['php_version'] );
 		}
 		else
 		{
-			$powerpress_diags['system_info']['message'] = sprintf( __('Your version of PHP (%s) will work, but PHP 5.4 or newer is recommended.', 'powerpress'), $powerpress_diags['system_info']['php_version'] );
+			$powerpress_diags['system_info']['message'] = sprintf( __('Your version of PHP (%s) will work, but PHP 7.0 or newer is recommended.', 'powerpress'), $powerpress_diags['system_info']['php_version'] );
 		}
 		
 		$used = 0;
@@ -238,7 +228,6 @@
 		if( !empty($wpmu_version) )
 				$message .= __('WordPress MU Version:', 'powerpress') .' '. $wpmu_version . "<br />\n";
 		$message .= __('System:', 'powerpress') .' '. $_SERVER['SERVER_SOFTWARE'] . "<br />\n";
-		$message .= __('Safe node:', 'powerpress') .' '. ( ini_get('safe_mode')?'true':'false') ."<br />\n";
 		$message .= __('Open basedir:', 'powerpress') .' '. ini_get('open_basedir') ."<br />\n";
 		
 		// Crutial PowerPress Settings

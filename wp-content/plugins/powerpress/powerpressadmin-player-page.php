@@ -124,8 +124,9 @@ function powerpress_admin_players($type='audio')
 	$Video['mediaelement-video'] = 'http://media.blubrry.com/blubrry/content.blubrry.com/blubrry/MediaElement_video.mp4';
 		
 		wp_enqueue_style( 'wp-color-picker' );
-		
-		if( $type == 'video' && function_exists('add_videojs_header') )
+    	wp_enqueue_script( 'wp-color-picker');
+
+	if( $type == 'video' && function_exists('add_videojs_header') )
 			add_videojs_header();
 ?>
 <link rel="stylesheet" href="<?php echo powerpress_get_root_url(); ?>3rdparty/colorpicker/css/colorpicker.css" type="text/css" />
@@ -157,10 +158,55 @@ function UpdatePlayerPreview(name, value)
 	if( typeof(update_audio_player) != "undefined" ) // Update the 1 px out player...
 		update_audio_player();
 }
-				
+
 jQuery(document).ready(function($) {
-	
-	jQuery('.color_preview').ColorPicker({
+    generatePlayerHash();
+
+    function generatePlayerHash(){
+        var time = $("input.time-form").val();
+        if(time==='') {
+            time = '0';
+        }
+        var darkorlightval = $("input[name='BBPlayer[playerstyle]']:checked").val();
+        var color1=$('input[name="BBPlayer[showbg]"]').val();
+        var color2=$('input[name="BBPlayer[downloadbgcolor]"]').val();
+        var color3=$('input[name="BBPlayer[subscribebg]"]').val();
+        var color4=$('input[name="BBPlayer[bgshare]"]').val();
+        var fontcolor1 = $('input[name="BBPlayer[showtext]"]').val();
+        var fontcolor2 = $('input[name="BBPlayer[downloadcolortext]"]').val();
+        var fontcolor3 = $('input[name="BBPlayer[textsubscribe]"]').val();
+        var fontcolor4 = $('input[name="BBPlayer[textshare]"]').val();
+        var addition = '#time-'+time+"&darkOrLight-"+darkorlightval+"&shownotes-"+fontcolor1.substring(1)+"&shownotesBackground-"+color1.substring(1)+
+            "&download-"+fontcolor2.substring(1)+"&downloadBackground-"+color2.substring(1)+"&subscribe-"+fontcolor3.substring(1)+"&subscribeBackground-"+color3.substring(1)+
+            "&share-"+fontcolor4.substring(1)+"&shareBackground-"+color4.substring(1);
+
+        document.getElementById('player_iframe_div').innerHTML ='<iframe src="//player.blubrry.com?podcast_id=12559710' + addition + '" id="playeriframe" scrolling="no" width="100%" height="138px" frameborder="0"></iframe>';
+    }
+
+    function restoreDefaultColors(){
+        document.getElementById('player_iframe_div').innerHTML ='<iframe src="//player.blubrry.com?podcast_id=12559710" id="playeriframe" scrolling="no" width="100%" height="138px" frameborder="0"></iframe>';
+
+        $('input[name="BBPlayer[downloadbgcolor]"]').wpColorPicker('color',"#003366");
+        $('input[name="BBPlayer[downloadcolortext]"]').wpColorPicker('color',"#ffffff");
+        $('input[name="BBPlayer[subscribebg]"]').wpColorPicker('color',"#fb8c00");
+        $('input[name="BBPlayer[textsubscribe]"]').wpColorPicker('color',"#ffffff");
+        $('input[name="BBPlayer[bgshare]"]').wpColorPicker('color', "#1976d2");
+        $('input[name="BBPlayer[textshare]"]').wpColorPicker('color',"#ffffff");
+        $('input[name="BBPlayer[showbg]"]').wpColorPicker('color',"#444444");
+        $('input[name="BBPlayer[showtext]"]').wpColorPicker('color',"#ffffff");
+
+        $("input:radio[name='BBPlayer[playerstyle]'][value='light']").prop('checked', true);
+    }
+
+        jQuery('.color-field').wpColorPicker({
+//            change: function(){
+//            }
+        });
+
+    document.getElementById("previewButton").addEventListener ("click", generatePlayerHash);
+    document.getElementById("restoreDefaultsButton").addEventListener ("click", restoreDefaultColors);
+
+    jQuery('.color_preview').ColorPicker({
 		onSubmit: function(hsb, hex, rgb, el) {
 			jQuery(el).css({ 'background-color' : '#' + hex });
 			jQuery(el).ColorPickerHide();
@@ -409,7 +455,7 @@ table.html5formats tr > td:first-child {
 		switch( $General['player'] )
 		{
 			case 'audio-player': {
-			
+
 				$PlayerSettings = powerpress_get_settings('powerpress_audio-player');
 				if($PlayerSettings == ""):
 					$PlayerSettings = array(
@@ -965,35 +1011,197 @@ function audio_player_defaults()
 
 <?php
 			}; break;
-		
-		case 'blubrryaudio' : {
-		
-?>
-<p><?php echo __('Configure Blubrry Audio Player', 'powerpress'); ?></p>
-<table class="form-table">
-	<tr valign="top">
-		<th scope="row">
-			<?php echo __('Preview of Player', 'powerpress'); ?>
-		</th>
-		<td>
-			<?php print_blubrry_player_demo(); ?>
-			
-			<!-- <p><input name="General[itunes_image_audio]" type="hidden" value="0"/><input name="General[itunes_image_audio]" type="checkbox" value="1" <?php echo ( !empty($General['itunes_image_audio'])?'checked':''); ?> /> <?php echo __('Use episode iTunes image if set', 'powerpress'); ?> </p> -->
-			
-			<p>
-				<?php echo __('Episode level iTunes image if set will be displayed in the player. The URLs to the images must be https:// in order to appear on social networking sites.', 'powerpress'); ?>
-			</p>
-			
-			<p><input name="General[episode_box_itunes_image]" type="hidden" value="0" /><input name="General[episode_box_itunes_image]" type="checkbox" value="1" <?php echo ( !empty($General['episode_box_itunes_image']) ?'checked':''); ?> /> <?php echo __('Display iTunes episode image field', 'powerpress'); ?> </p>
-			<p><input name="General[bp_episode_image]" type="hidden" value="0" /><input name="General[bp_episode_image]" type="checkbox" value="1" <?php echo ( !empty($General['bp_episode_image']) ?'checked':''); ?> /> <?php echo __('Use iTunes episode image with player', 'powerpress'); ?> </p>
-		</td>
-	</tr>
 
-</table>  
+        case 'blubrryaudio' : {   //TODO
+	        $BBplayerSettings = powerpress_get_settings('powerpress_bplayer');
+	        if (empty($BBplayerSettings)) {
+		        $BBplayerSettings = array(
+			        'showbg' => '#444444',
+			        'showtext' => '#ffffff',
+			        'downloadbgcolor' => '#003366',
+			        'downloadcolortext' => '#ffffff',
+			        'subscribebg' => '#fb8c00',
+			        'textsubscribe' => '#ffffff',
+			        'bgshare' => '#1976d2',
+			        'textshare' => '#ffffff',
+			        'playerstyle' => 'light'
+		        );
+	        }
+	        ?>
 
-<?php
 
-		}; break;
+            <div id="tab_play" class="powerpress_tab bbplayer_settings" style="padding-left: 3%; padding-right: 3%">
+                <h2 style="font-size: 2em;"> <?php echo __('Blubrry Player', 'powerpress'); ?> </h2>
+                <p>
+		            <?php echo __('Note: The Blubrry Audio Player is only available to Blubrry Hosting Customers.', 'powerpress'); ?>
+                </p>
+                <p>
+		            <?php echo __('Shownotes and Download options are not displayed initially.', 'powerpress'); ?>
+                </p>
+                <div id="player_iframe_div"
+                     style="border: 1px solid #000000; height: 138px; box-shadow: inset 0 0 10px black, 0 0 6px black; margin: 20px 0;">
+			        <?php  //print_blubrry_player_demo(); ?>
+                </div>
+                <br>
+
+                <table class="form-table">
+                    <tr>
+                        <td>
+                            <a href="#" id="previewButton"
+                               style="font-weight: bold; color: #1976d2; font-size: 12px"><?php echo __('Preview Changes', 'powerpress'); ?></a>
+
+                        </td>
+                        <td>
+                            <a href="#" id="restoreDefaultsButton"
+                               style="font-weight: bold; color: #1976d2; font-size: 12px"><?php echo __('Restore Default Colors', 'powerpress'); ?></a>
+
+                        </td>
+                    </tr>
+                    <h3 style="font-size: 2em; margin-bottom: 5px; color: #23282d; font-weight: 500"><?php echo __('Player Customization Settings', 'powerpress'); ?></h3>
+
+                    <tr valign="top" style="margin-bottom: -15px;">
+                        <th scope="row">
+                            <h3>   <?php echo __('Buttons', 'powerpress'); ?> </h3>
+                        </th>
+
+                        <th scope="row">
+                            <h3>  <?php echo __('Background Color', 'powerpress'); ?> </h3>
+                        </th>
+
+                        <th scope="row">
+                            <h3>   <?php echo __('Font Color', 'powerpress'); ?> </h3>
+                        </th>
+
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row">
+					        <?php echo __('Shownotes/Embed Button', 'powerpress'); ?>
+                        </th>
+                        <td>
+
+                            <div class="color_control">
+                                <input type="text" style="width: 100px;" id="shownotesbg" name="BBPlayer[showbg]"
+                                       class="color-field"
+                                       value="<?php echo esc_attr($BBplayerSettings['showbg']); ?>"
+                                       maxlength="20"/>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="color_control">
+                                <input type="text" style="width: 100px;" id="showtext"
+                                       name="BBPlayer[showtext]" class="color-field"
+                                       value="<?php echo esc_attr($BBplayerSettings['showtext']); ?>"
+                                       maxlength="20"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row">
+					        <?php echo __('Download Button', 'powerpress'); ?>
+                        </th>
+                        <td>
+                            <div class="color_control">
+                                <input type="text" style="width: 100px;" id="downloadbgcolor"
+                                       name="BBPlayer[downloadbgcolor]"
+                                       class="color-field"
+                                       value="<?php echo esc_attr($BBplayerSettings['downloadbgcolor']); ?>"
+                                       maxlength="20"/>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="color_control">
+                                <input type="text" style="width: 100px;" id="downloadcolortext"
+                                       name="BBPlayer[downloadcolortext]"
+                                       class="color-field"
+                                       value="<?php echo esc_attr($BBplayerSettings['downloadcolortext']); ?>"
+                                       maxlength="20"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row">
+					        <?php echo __('Subscribe Button', 'powerpress'); ?>
+                        </th>
+                        <td>
+                            <div class="color_control">
+                                <input type="text" style="width: 100px;" id="subscribebg" name="BBPlayer[subscribebg]"
+                                       class="color-field"
+                                       value="<?php echo esc_attr($BBplayerSettings['subscribebg']); ?>"
+                                       maxlength="20"/>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="color_control">
+                                <input type="text" style="width: 100px;" id="textsubscribe"
+                                       name="BBPlayer[textsubscribe]" class="color-field"
+                                       value="<?php echo esc_attr($BBplayerSettings['textsubscribe']); ?>"
+                                       maxlength="20"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr valign="top">
+                        <th scope="row">
+					        <?php echo __('Share Button', 'powerpress'); ?>
+                        </th>
+                        <td>
+                            <div class="color_control">
+                                <input type="text" style="width: 100px;" id="bgshare" name="BBPlayer[bgshare]"
+                                       class="color-field"
+                                       value="<?php echo esc_attr($BBplayerSettings['bgshare']); ?>"
+                                       maxlength="20"/>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="color_control">
+                                <input type="text" style="width: 100px;" id="textshare" name="BBPlayer[textshare]"
+                                       class="color-field"
+                                       value="<?php echo esc_attr($BBplayerSettings['textshare']); ?>"
+                                       maxlength="20"/>
+                            </div>
+                        </td>
+
+                    </tr>
+
+                    <tr valign="top">
+                        <br>
+
+                        <th scope="row">
+                            <h3><?php echo __('Player Style', 'powerpress'); ?> </h3>
+                        </th>
+                        <td>
+                            <input type="radio" name="BBPlayer[playerstyle]" id="selectlight"
+                                   value="light" <?php echo ($BBplayerSettings['playerstyle'] == 'light') ? 'checked = true' : ''; ?>>
+                            <label for="selectlight" style="font-size:14px;">Light (default)</label>
+                        </td>
+                        <td>
+                            <input type="radio" name="BBPlayer[playerstyle]" id="selectdark"
+                                   value="dark" <?php echo ($BBplayerSettings['playerstyle'] == 'dark') ? 'checked = true' : ''; ?> >
+                            <label for="selectdark" style="font-size:14px;">Dark</label>
+                        </td>
+                    </tr>
+
+                    <!-- <p><input name="General[itunes_image_audio]" type="hidden" value="0"/><input name="General[itunes_image_audio]" type="checkbox" value="1" <?php echo(!empty($General['itunes_image_audio']) ? 'checked' : ''); ?> /> <?php echo __('Use episode iTunes image if set', 'powerpress'); ?> </p> -->
+                </table>
+                <h3><?php echo __('Episode Image', 'powerpress'); ?></h3>
+
+                <p>
+			        <?php echo __('If the option is checked and an episode level iTunes image is set, it will be used for the player instead of the coverart. The URLs to the images must be https:// in order to appear on social networking sites.', 'powerpress'); ?>
+                </p>
+
+                <p><input name="General[episode_box_itunes_image]" type="hidden" value="0"/><input
+                            name="General[episode_box_itunes_image]" type="checkbox"
+                            value="1" <?php echo(!empty($General['episode_box_itunes_image']) ? 'checked' : ''); ?> /> <?php echo __('Display field for entering iTunes episode image ', 'powerpress'); ?>
+                </p>
+                <p><input name="General[bp_episode_image]" type="hidden" value="0"/><input
+                            name="General[bp_episode_image]" type="checkbox"
+                            value="1" <?php echo(!empty($General['bp_episode_image']) ? 'checked' : ''); ?> /> <?php echo __('Use iTunes episode image with player', 'powerpress'); ?>
+                </p>
+            </div>
+            <input type="hidden" name="action" value="powerpress_bplayer"/>
+
+	        <?php
+        };break;
+
 		case 'mediaelement-audio': {
 				$SupportUploads = powerpressadmin_support_uploads();
 				

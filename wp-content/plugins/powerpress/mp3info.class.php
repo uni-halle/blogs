@@ -166,7 +166,7 @@
 		*/
 		function Download($url, $RedirectCount = 0)
 		{
-			if( !ini_get( 'allow_url_fopen' ) && !function_exists( 'curl_init' ) )
+			if( !$this->ini_get( 'allow_url_fopen' ) && !function_exists( 'curl_init' ) )
 			{
 				$this->SetError( __('Your server must either have the php.ini setting \'allow_url_fopen\' enabled or have the PHP cURL library installed in order to continue.', 'powerpress') );
 				return false;
@@ -336,7 +336,7 @@
 		function DownloadCurl($url, $RedirectCount = 0)
 		{
 			// In case we are dealing with a restriction with a server that does not allow cURL to do redirects itself...
-			if ( ini_get('safe_mode') || ini_get('open_basedir') )
+			if ( $this->ini_get('safe_mode') || $this->ini_get('open_basedir') )
 			{
 				if( $RedirectCount > $this->m_RedirectLimit )
 				{
@@ -366,7 +366,7 @@
 					curl_setopt($curl, CURLOPT_CAINFO, ABSPATH . WPINC . '/certificates/ca-bundle.crt');
 			}
 			
-			if ( !ini_get('safe_mode') && !ini_get('open_basedir') )
+			if ( !$this->ini_get('safe_mode') && !$this->ini_get('open_basedir') )
 			{
 				curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
 				curl_setopt($curl, CURLOPT_MAXREDIRS, $this->m_RedirectLimit);
@@ -382,7 +382,7 @@
 			$HttpCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 			$ContentType = curl_getinfo($curl, CURLINFO_CONTENT_TYPE);
 			$ErrorMsg = curl_error($curl);
-			if ( !ini_get('safe_mode') && !ini_get('open_basedir') )
+			if ( !$this->ini_get('safe_mode') && !$this->ini_get('open_basedir') )
 				$this->m_RedirectCount = curl_getinfo($curl, CURLINFO_REDIRECT_COUNT);
 			
 			if( $HttpCode < 200 || $HttpCode > 250 )
@@ -392,7 +392,7 @@
 					case 301:
 					case 302:
 					case 307: {
-						if ( !ini_get('safe_mode') && !ini_get('open_basedir') )
+						if ( !$this->ini_get('safe_mode') && !$this->ini_get('open_basedir') )
 						{
 							$this->SetError( sprintf( __('Media URL exceeded redirect limit of %d (cURL).', 'powerpress'), $this->m_RedirectLimit) );
 						}
@@ -477,7 +477,7 @@
 						curl_setopt($curl, CURLOPT_CAINFO, ABSPATH . WPINC . '/certificates/ca-bundle.crt');
 				}
 				
-				if ( !ini_get('safe_mode') && !ini_get('open_basedir') )
+				if ( !$this->ini_get('safe_mode') && !$this->ini_get('open_basedir') )
 				{
 					curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
 					curl_setopt($curl, CURLOPT_MAXREDIRS, $this->m_RedirectLimit);
@@ -504,7 +504,7 @@
 				curl_setopt($curl, CURLOPT_HEADER, false); // header will be at output
 				curl_setopt($curl, CURLOPT_NOBODY, false );
 				curl_setopt($curl, CURLOPT_WRITEFUNCTION, array($this, 'remoteread_curl_writefunc') );
-				if ( !ini_get('safe_mode') && !ini_get('open_basedir') )
+				if ( !$this->ini_get('safe_mode') && !$this->ini_get('open_basedir') )
 				{
 					curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
 					curl_setopt($curl, CURLOPT_MAXREDIRS, $this->m_RedirectLimit);
@@ -718,6 +718,18 @@
 			}
 			
 			return false;
+		}
+		
+		private function ini_get($field)
+		{
+			switch( $field ) {
+				case 'safe_mode': {
+					if( version_compare( PHP_VERSION, '5.3.0') >= 0 ) { // If php 5.3+
+						return false;
+					}
+				}; break;
+			}
+			return ini_get($field);
 		}
 		
 		private function _load_id3lib()

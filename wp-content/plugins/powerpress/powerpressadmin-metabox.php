@@ -370,7 +370,7 @@ function powerpress_meta_box($object, $box)
 <?php
 		}
 		
-		$DoNST = ( !empty($ExtraData['episode_no']) || !empty($ExtraData['episode_season']) || !empty($ExtraData['episode_type']) || !empty($GeneralSettings['episode_box_itunes_nst']) );
+		$DoNST = ( !empty($ExtraData['episode_no']) || !empty($ExtraData['season']) || !empty($ExtraData['episode_type']) || !empty($GeneralSettings['episode_box_itunes_nst']) );
 		if( $DoNST ) {
 			echo '<div class="powerpress_row">';
 			echo '<label>'. __('iTunes Episode', 'powerpress') .'</label>';
@@ -379,8 +379,8 @@ function powerpress_meta_box($object, $box)
 			if( empty($ExtraData['episode_no']) ) {
 				$ExtraData['episode_no'] = '';
 			}
-			if( empty($ExtraData['episode_season']) ) {
-				$ExtraData['episode_season'] = '';
+			if( empty($ExtraData['season']) ) {
+				$ExtraData['season'] = '';
 			}
 			if( empty($ExtraData['episode_type']) ) {
 				$ExtraData['episode_type'] = '';

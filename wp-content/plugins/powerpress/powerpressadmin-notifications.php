@@ -175,11 +175,11 @@ if( powerpressadmin_notifications_appropriate() ) {
 		$message .= __('iTunes Update, February, 2016 - Blubrry PowerPress', 'powerpress');
 		$message .= '</h3>';
 		$message .= __('Apple now recommends using a 3000 x 3000 pixel JPG or PNG in the RGB color space in a compressed format. Saving your image as a JPG with your favorite image editing software should automatically compress your image to optimize for mobile devices.', 'powerpress');
-		$message .= ' &mdash; <a href="'.  admin_url("admin.php?page=powerpress/powerpressadmin_basic.php#tab7") .'">'. __('Update Now', 'powerpress') .'</a>';
+		$message .= ' &mdash; <a href="'.  admin_url("admin.php?page=powerpressadmin_basic#tab7") .'">'. __('Update Now', 'powerpress') .'</a>';
 		$message .= ' | <a href="http://www.powerpresspodcast.com/2016/02/19/new-itunes-podcast-directory-recommendations-february-2016/" target="_blank">'. __('Learn More', 'powerpress') .'</a>';
 		$message .= "\n\n";
 		$message .= __('Apple has changed the iTunes explicit setting. <strong>You <i>must</i> now select "clean" or "explicit"</strong> - the \'no\' option is no longer available', 'powerpress');
-		$message .= ' &mdash; <a href="'.  admin_url("admin.php?page=powerpress/powerpressadmin_basic.php#tab5") .'">'. __('Update Now', 'powerpress') .'</a>';
+		$message .= ' &mdash; <a href="'.  admin_url("admin.php?page=powerpressadmin_basic#tab5") .'">'. __('Update Now', 'powerpress') .'</a>';
 		$message .= ' | <a href="http://www.powerpresspodcast.com/2016/02/19/new-itunes-podcast-directory-recommendations-february-2016/" target="_blank">'. __('Learn More', 'powerpress') .'</a>';
 		$message .= "\n\n";
 		$message .= __('Podcast submissions to the iTunes podcast directory are now managed by the new <a href="https://podcastsconnect.apple.com/" target="_blank">Podcast Connect</a> website. The new website allows you to submit new podcasts, as well as refresh, hide and delete your current podcast listings.', 'powerpress');

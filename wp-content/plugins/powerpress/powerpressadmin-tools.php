@@ -153,11 +153,48 @@
 <th scope="row"><?php echo __('Translations', 'powerpress'); ?></th> 
 <td>
 	<p style="margin-top: 5px;"><strong>
-		<a href="http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/translating-powerpress/" target="_blank"><?php echo __('Translate PowerPress to your language', 'powerpress'); ?></a>
+		<a href="https://create.blubrry.com/resources/powerpress/powerpress-language/translate-powerpress/" target="_blank"><?php echo __('Translate PowerPress to your language', 'powerpress'); ?></a>
 	</strong></p>
 </td>
 </tr>
 
+<tr valign="top">
+<th scope="row"><?php echo __('iOS 11 Fields', 'powerpress'); ?></th> 
+<td>
+	<?php
+	$ios11_fields_url = admin_url() . wp_nonce_url("admin.php?page=powerpress/powerpressadmin_tools.php&amp;action=powerpress-ios11-fields", 'powerpress-ios11-fields');
+	
+	?>
+	<p>
+		Since PowerPress 7.1 and the addition of 3 new fields for iOS 11, some web sites that use PHP in FastCGI mode are experiencing 404 or 500 error pages when saving PowerPress settings.
+	  Use the options below to turn off these fields to avoid the errors and help us determine which of the new fields is causing the issue.
+	</p>
+	<p style="margin-top: 5px;">&bull; <strong><a href="<?php echo $ios11_fields_url; ?>&amp;variation=0"><?php echo __('Show all iOS 11 program fields', 'powerpress'); ?></a></strong> <?php echo (empty($General['ios11_fields'])? ' (selected)' : '' ); ?></p>
+	<p style="margin-top: 5px;">&bull; <strong><a href="<?php echo $ios11_fields_url; ?>&amp;variation=1"><?php echo __('Show itunes type field only', 'powerpress'); ?></a></strong><?php echo (!empty($General['ios11_fields']) && $General['ios11_fields'] == 1? ' (selected)' : '' ); ?></p>
+	<p style="margin-top: 5px;">&bull; <strong><a href="<?php echo $ios11_fields_url; ?>&amp;variation=2"><?php echo __('Show itunes title episode box field only', 'powerpress'); ?></a></strong><?php echo (!empty($General['ios11_fields']) && $General['ios11_fields'] == 2? ' (selected)' : '' ); ?></p>
+	<p style="margin-top: 5px;">&bull; <strong><a href="<?php echo $ios11_fields_url; ?>&amp;variation=4"><?php echo __('Show itunes number, season and episode type episode box field only', 'powerpress'); ?></a><?php echo (!empty($General['ios11_fields']) && $General['ios11_fields'] == 4? ' (selected)' : '' ); ?></strong></p>
+	<p style="margin-top: 5px;">&bull; <strong><a href="<?php echo $ios11_fields_url; ?>&amp;variation=8"><?php echo __('Show no iOS 11 program fields', 'powerpress'); ?></a></strong><?php echo (!empty($General['ios11_fields']) && $General['ios11_fields'] == 8? ' (selected)' : '' ); ?></p>
+	
+</td>
+</tr>
+
+<tr valign="top">
+<th scope="row"><?php echo __('PowerPress Beta Features', 'powerpress'); ?></th> 
+<td>
+	<?php
+	$powerpress_beta_url = admin_url() . wp_nonce_url("admin.php?page=powerpress/powerpressadmin_tools.php&amp;action=powerpress-beta-features", 'powerpress-beta-features');
+	
+	?>
+	<h4 style="margin-top: 8px;">Post to Social</h4>
+	<p>
+		Post to Social allows Blubrry podcast hosting customers to post to Twitter, Facebook and Google+ right from their WordPress site. Please go to https://www.blubrry.com, sign-in then go to the Post to Social settings in your blubrry account to setup.
+	</p>
+	<p>
+		This feature is currently in beta testing and planned for production use in January, 2018.
+	</p>
+	<p style="margin-top: 5px;"><strong><a href="<?php echo $powerpress_beta_url; ?>&amp;feature=<?php echo (!empty($General['powerpress-beta-features'])?'0':'1'); ?>"><?php echo (!empty($General['powerpress-beta-features'])? __('Disable Beta Features', 'powerpress') : __('Enable Beta Features', 'powerpress') ); ?></a></strong></p>
+</td>
+</tr>
 
 <tr valign="top">
 <th scope="row"><?php echo __('Diagnostics', 'powerpress'); ?></th> 

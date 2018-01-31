@@ -207,7 +207,7 @@ function powerpress_dashboard_stats_content()
 	}
 	else if( empty($content) )
 	{
-		$content = sprintf(__('Error: A network or authentication error occurred. To verify your account, click the link &quot;click here to configure Blubrry Statistics and Hosting services&quot; found in the %s tab.', 'powerpress'), '<a href="'. admin_url("admin.php?page=powerpress/powerpressadmin_basic.php") .'#tab2">'.__('Services &amp; Statistics'.'</a>', 'powerpress') );
+		$content = sprintf(__('Error: A network or authentication error occurred. To verify your account, click the link &quot;click here to configure Blubrry Statistics and Hosting services&quot; found in the %s tab.', 'powerpress'), '<a href="'. admin_url("admin.php?page=powerpressadmin_basic") .'#tab2">'.__('Services &amp; Statistics'.'</a>', 'powerpress') );
 	}
 	
 ?>

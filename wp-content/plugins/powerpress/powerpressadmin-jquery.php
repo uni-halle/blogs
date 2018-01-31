@@ -617,7 +617,7 @@ function DeleteMedia(File)
 <h2><?php echo __('Blubrry Services', 'powerpress'); ?></h2>
 <p style="text-align: center;"><strong><?php echo __('Settings Saved Successfully!', 'powerpress'); ?></strong></p>
 <p style="text-align: center;">
-	<a href="<?php echo admin_url("admin.php?page=powerpress/powerpressadmin_basic.php"); ?>" onclick="self.parent.tb_remove(); return false;" target="_top"><?php echo __('Close', 'powerpress'); ?></a>
+	<a href="<?php echo admin_url("admin.php?page=powerpressadmin_basic"); ?>" onclick="self.parent.tb_remove(); return false;" target="_top"><?php echo __('Close', 'powerpress'); ?></a>
 </p>
 <script type="text/javascript"><!--
 
@@ -878,6 +878,12 @@ self.parent.tb_remove();
 
 function powerpress_admin_jquery_header($title, $jquery = false)
 {
+	header( "Expires: Mon, 26 Jul 1997 05:00:00 GMT" );
+	header( "Last-Modified: " . gmdate( "D, d M Y H:i:s" ) . "GMT" );
+	header( 'Cache-Control: no-store, no-cache, must-revalidate' );
+	header( 'Cache-Control: post-check=0, pre-check=0', false );
+	header( 'Pragma: no-cache' );
+	
 	$other = false;
 	if( $jquery )
 		add_thickbox(); // we use the thckbox for some settings

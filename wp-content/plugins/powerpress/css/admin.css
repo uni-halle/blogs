@@ -432,7 +432,13 @@ a.pp-expand-section:visited {
 	content: ' \25BC';
 	content: '-';
 }
-
+.bbplayer_settings .form-table th{
+	padding-bottom: 0;
+}
+.bbplayer_settings h3{
+	color: #003366;
+	font-weight: bold;
+}
 /* buttons */
 .wp-core-ui  .button-blubrry {
 	background: #1976D2;
