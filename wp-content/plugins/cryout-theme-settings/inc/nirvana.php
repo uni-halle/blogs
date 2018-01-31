@@ -1,4 +1,7 @@
 <?php
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) exit;
+
 if (function_exists('nirvana_init_fn')):
 	add_action('admin_init', 'nirvana_init_fn');
 	add_action('nirvana_before_righty', 'nirvana_extra');

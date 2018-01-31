@@ -1,9 +1,14 @@
+<?php 
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) exit; 
+?>
 	<div id="latest-themes" class="postbox">
 		<h3 class="hndle"> Our latest free themes </h3>
 		<div id="slider">
 			<a href="#" class="control_next">></a>
 			<a href="#" class="control_prev"><</a>
 			<ul>
+				<li><a href="https://www.cryoutcreations.eu/wordpress-themes/kahuna" target="_blank"><span>Kahuna WordPress Theme</span><img src="<?php echo $url ?>/kahuna.jpg"></a></li>
 				<li><a href="https://www.cryoutcreations.eu/wordpress-themes/anima" target="_blank"><span>Anima WordPress Theme</span><img src="<?php echo $url ?>/anima.jpg"></a></li>
 				<li><a href="https://www.cryoutcreations.eu/wordpress-themes/septera" target="_blank"><span>Septera WordPress Theme</span><img src="<?php echo $url ?>/septera.jpg"></a></li>
 				<li><a href="https://www.cryoutcreations.eu/wordpress-themes/verbosa" target="_blank"><span>Verbosa WordPress Theme</span><img src="<?php echo $url ?>/verbosa.jpg"></a></li>
@@ -16,7 +21,7 @@
 		<div title="Click to toggle" class="handlediv"><br /></div>
 		<h3 class="hndle"> Need help? </h3>
 		<div class="inside">
-			<a href="https://www.cryoutcreations.eu/pricing" target="_blank"><img src="<?php echo $url ?>/priority-support.jpg' ?>"></a>
+			<a href="https://www.cryoutcreations.eu/pricing" target="_blank"><img src="<?php echo $url ?>/priority-support.jpg'"></a>
 		</div><!--inside-->
 	</div>
 	

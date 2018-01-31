@@ -1,4 +1,7 @@
 <?php
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) exit;
+
 if (function_exists('parabola_init_fn')):
 	add_action('admin_init', 'parabola_init_fn');
 	add_action('parabola_before_righty', 'parabola_extra');

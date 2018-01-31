@@ -1,4 +1,7 @@
 <?php
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) exit;
+
 if (function_exists('tempera_init_fn')):
 	add_action('admin_init', 'tempera_init_fn');
 	add_action('tempera_before_righty', 'tempera_extra');

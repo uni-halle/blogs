@@ -1,4 +1,7 @@
 <?php
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) exit;
+
 $theme_page_url = admin_url( 'themes.php?page=' . $this->current_theme['slug'] . '-page' );
 $theme_slug = $this->current_theme['slug'];
 $theme_name = ucwords($this->current_theme['slug']);

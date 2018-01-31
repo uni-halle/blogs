@@ -1,9 +1,13 @@
 <?php
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) exit;
+
 if (function_exists('mantra_init_fn')):
 	add_action('admin_init', 'mantra_init_fn');
+	add_action('mantra_before_righty', 'mantra_extra');
 endif;
 
-function mantra_theme_settings_restore($class='') { 
+function mantra_theme_settings_restore($class='') {
 	global $cryout_theme_settings;
 ?>
 		<form name="mantra_form" action="options.php" method="post" enctype="multipart/form-data">
@@ -19,3 +23,8 @@ function mantra_theme_settings_restore($class='') {
 		</form>
 <?php
 } // mantra_theme_settings_buttons()
+
+function mantra_extra() {
+	$url = plugin_dir_url( dirname(__FILE__) ) . '/media';
+	include_once( plugin_dir_path( __FILE__ ) . 'extra.php' );
+} // mantra_extra()

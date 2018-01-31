@@ -3,8 +3,8 @@ Contributors: Cryout Creations
 Donate link: https://www.cryoutcreations.eu/donate/
 Tags: theme, admin
 Requires at least: 4.2
-Tested up to: 4.8.1
-Stable tag: 0.5.8.1
+Tested up to: 4.9.1
+Stable tag: 0.5.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -50,9 +50,16 @@ You do not need this plugin if you use do not use any of the listed themes.
 
 == Changelog ==
 
+= 0.5.9 =
+* Extended support for Mantra 3.0
+* Fixed missing "need help" image on some browsers due to typo
+* Added direct access check to all php files
+* Updated themes information
+* Bumped supported WordPress version to 4.9.1
+
 = 0.5.8.1 = 
 * Fixed compatibility mode malfunctioning
-* Fixed misssing theme images in compatibility mode info
+* Fixed missing theme images in compatibility mode info
 
 = 0.5.8 =
 * Added meta links
