@@ -1,6 +1,9 @@
 Theme Name: ColorWay
 
 ========================
+* Version 3.4.8
+***************************************
+1. Theme URI and footer link updated.
 
 * Version 3.4.7
 ***************************************

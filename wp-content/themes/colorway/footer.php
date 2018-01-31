@@ -52,7 +52,7 @@
         </div>
         <div class="grid_10 omega">
             <div class="right-navi">               
-                <p><a href="<?php echo esc_url('http://www.inkthemes.com'); ?>"  rel="nofollow"><?php _e('Colorway Wordpress Theme</a> by InkThemes.com', 'colorway'); ?></p>
+                <p><a href="<?php echo esc_url('https://www.inkthemes.com/market/colorway-wp-theme/'); ?>" rel="nofollow"><?php _e('Colorway Wordpress Theme</a> by InkThemes.com', 'colorway'); ?></p>
             </div> 
         </div>
     </div>
