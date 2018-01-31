@@ -2,8 +2,8 @@
 Contributors: wptouch, sureswiftcapital, duanestorey, dalemugford, adamdipardo, oxymoron
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 4.2
-Stable tag: 4.3.21
-Tested up to: 4.8.2
+Stable tag: 4.3.23
+Tested up to: 4.9
 License: GPLv2
 
 Make your WordPress website mobile-friendly with just a few clicks.
@@ -32,6 +32,15 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 6. Theme settings
 
 == Changelog ==
+
+= Version 4.3.23 (Dec 27, 2017) =
+
+* Fixed: URL typo.
+* Updated: Logic for script output in customizer custom footer content.
+
+= Version 4.3.22 (Nov 16, 2017) =
+
+* New Feature: Live view of customizer additional CSS field content.
 
 = Version 4.3.21 (October 6, 2017) =
 

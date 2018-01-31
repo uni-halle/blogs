@@ -286,9 +286,12 @@ function foundation_handle_footer() {
 
 		if ( strip_tags( $message ) == $message ) {
 			$output_message = '<p>' . $message . '</p>';
+		} elseif ( 1 === preg_match( '/<script[\s\S]*?>[\s\S]*?<\/script>/', $message, $matches ) ) {
+			$output_message = preg_replace( array( '/\\\"/', "/\\\'/" ), array( "'", '"' ), $message );
 		} else {
 			$output_message = $message;
 		}
+
 
 		$allowed_tags                           = wp_kses_allowed_html( 'post' );
 		$allowed_tags['form']['autocomplete']   = true;
@@ -1156,7 +1159,7 @@ function wptouch_fdn_hierarchical_cat_list( $num, $include_count = true, $taxono
 			$posts_page = ( 'page' == get_option( 'show_on_front' ) && get_option( 'page_for_posts' ) ) ? get_permalink( get_option( 'page_for_posts' ) ) : home_url( '/' );
 			$posts_page = esc_url( $posts_page );
 			if ( 'list' == $r['style'] ) {
-				$output .= '<li class="cat-item-all"><a href="$posts_pageEXTERNAL_FRAGMENT">$show_option_all</a></li>';
+				$output .= '<li class="cat-item-all"><a href="$posts_page">$show_option_all</a></li>';
 			} else {
 				$output .= "<a href='$posts_page'>$show_option_all</a>";
 			}

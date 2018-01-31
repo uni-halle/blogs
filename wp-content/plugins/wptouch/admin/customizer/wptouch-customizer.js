@@ -156,6 +156,22 @@
 
 		// Fire a change to deal with Customizer controlof .change()
 		$( '#customize-theme-controls' ).find( 'input[type="checkbox"], select' ).trigger( 'wptouch.customizerReady' );
+
+		// Live preview changes to custom css (Additional CSS) field.
+		$( '.customize-control-code_editor textarea.code' ).on( 'change wptouch.customizerReady', function( e ) {
+			$( '.customize-custom-css-styles' ).remove();
+			var customCss = $( this ).val(),
+				customCssContents = '<style class="customize-custom-css-styles" type="text/css">' + customCss + '</style>';
+			$( '#customize-preview iframe' )
+				.contents()
+				.find( '.customize-custom-css-styles' )
+				.remove()
+				.end()
+				.find( 'head' )
+				.append(
+					customCssContents
+				);
+		} );
 	}
 
 	function wptouchCustomizerChecklist() {

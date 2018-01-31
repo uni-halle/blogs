@@ -333,7 +333,7 @@ function wptouch_customizer_setup( $wp_customize ) {
 
 		if ( wptouch_can_show_page( 'colors' ) ) {
 			// Again, colours are a special case and are handled separately
-			if ( foundation_has_theme_colors() ) {
+			if ( function_exists( 'foundation_has_theme_colors' ) ) {
 				$colors = foundation_get_theme_colors();
 
 				foreach( $colors as $color ) {
