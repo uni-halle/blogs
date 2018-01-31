@@ -122,7 +122,7 @@ class M_NextGen_Data extends C_Base_Module
 			$retval = preg_replace( '@<(script|style)[^>]*?>.*?</\\1>@si', '', $retval );
 			$retval= preg_replace('/[\r\n\t ]+/', ' ', $retval);
 		}
-		$retval = preg_replace("/\\son[^\\s=]+=/", '', $retval);
+		$retval = preg_replace("/(\\s)?on[^\\s=]+=/", '', $retval);
 
 		return $retval;
 	}

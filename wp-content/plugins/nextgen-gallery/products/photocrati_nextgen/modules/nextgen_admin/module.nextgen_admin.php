@@ -101,6 +101,7 @@ class M_NextGen_Admin extends C_Base_Module
 	{
         // Register scripts
         add_action('init', array($this, 'register_scripts'), 9);
+        add_action('init', array($this, 'init_wizards'), 5);
 
 		// Provides menu options for managing NextGEN Settings
 		add_action('admin_menu', array($this, 'add_menu_pages'), 999);
@@ -496,7 +497,6 @@ class M_NextGen_Admin extends C_Base_Module
 
 	function initialize()
 	{
-		$this->init_wizards();
 	}
 
 	/**

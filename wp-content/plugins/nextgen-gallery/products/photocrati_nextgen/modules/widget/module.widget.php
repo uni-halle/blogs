@@ -37,9 +37,14 @@ class M_Widget extends C_Base_Module
      */
     function _register_hooks()
     {
-         add_action('widgets_init', create_function('', 'return register_widget("C_Widget_Gallery");'));
-         add_action('widgets_init', create_function('', 'return register_widget("C_Widget_MediaRSS");'));
-         add_action('widgets_init', create_function('', 'return register_widget("C_Widget_Slideshow");'));
+    	add_action('widgets_init', array($this, 'register_widgets'));
+    }
+
+    function register_widgets()
+    {
+	    register_widget("C_Widget_Gallery");
+	    register_widget("C_Widget_MediaRSS");
+	    register_widget("C_Widget_Slideshow");
     }
 
     function get_type_list()
