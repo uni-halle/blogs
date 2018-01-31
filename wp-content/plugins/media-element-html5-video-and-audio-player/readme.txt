@@ -2,9 +2,9 @@
 Contributors: johndyer
 Donate link: http://mediaelementjs.com/
 Tags: html5, video, audio, player, flash, mp4, mp3, ogg, webm, wmv, captions, subtitles, websrt, srt, accessible, Silverlight, javascript,
-Requires at least: 2.8
-Tested up to: 4.8
-Stable tag: 2.23.5
+Requires at least: 2.9
+Tested up to: 4.9
+Stable tag: 4.2.8
 
 MediaElement.js is an HTML5 video and audio player with Flash fallback and captions. Supports IE, Firefox, Opera, Safari, Chrome and iPhone, iPad, Android.
 
@@ -155,6 +155,9 @@ View <a href="http://mediaelementjs.com/">MediaElementjs.com</a> for more inform
 3. Use the `[video]` or `[audio]` shortcode in your post or page with the options on the front page.
 
 == Changelog ==
+
+= 4.2.8 =
+* Updating to latest 4.x version
 
 = 2.23.5 =
 * Updating to final version of 2.x line (Wordpress 4.9 will have the 4.x branch)

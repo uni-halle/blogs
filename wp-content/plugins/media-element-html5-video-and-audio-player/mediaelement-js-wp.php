@@ -1,7 +1,7 @@
 <?php
 /**
  * @package MediaElementJS
- * @version 2.23.5
+ * @version 4.2.8
  */
 
 /*
@@ -9,7 +9,7 @@ Plugin Name: MediaElement.js - HTML5 Audio and Video
 Plugin URI: http://mediaelementjs.com/
 Description: Video and audio plugin for WordPress built on MediaElement.js HTML5 video and audio player library. Embeds media in your post or page using HTML5 with Flash or Silverlight fallback support for non-HTML5 browsers. Video support: MP4, Ogg, WebM, WMV. Audio support: MP3, WMA, WAV
 Author: John Dyer
-Version: 2.23.5
+Version: 4.2.8
 Author URI: http://j.hn/
 License: MIT
 */
@@ -64,8 +64,6 @@ function mejs_create_menu() {
 
 function mejs_register_settings() {
 	//register our settings
-	register_setting( 'mep_settings', 'mep_video_skin' );
-
 	register_setting( 'mep_settings', 'mep_default_video_height' );
 	register_setting( 'mep_settings', 'mep_default_video_width' );
 	register_setting( 'mep_settings', 'mep_default_video_type' );
@@ -112,18 +110,6 @@ function mejs_settings_page() {
 			</th>
 			<td >
 				<input name="mep_default_video_type" type="text" id="mep_default_video_type" value="<?php echo get_option('mep_default_video_type'); ?>" /> <span class="description">such as "video/mp4"</span>
-			</td>
-		</tr>
-		<tr valign="top">
-			<th scope="row">
-				<label for="mep_video_skin">Video Skin</label>
-			</th>
-			<td >
-				<select name="mep_video_skin" id="mep_video_skin">
-					<option value="" <?php echo (get_option('mep_video_skin') == '') ? ' selected' : ''; ?>>Default</option>
-					<option value="wmp" <?php echo (get_option('mep_video_skin') == 'wmp') ? ' selected' : ''; ?>>WMP</option>
-					<option value="ted" <?php echo (get_option('mep_video_skin') == 'ted') ? ' selected' : ''; ?>>TED</option>
-				</select>
 			</td>
 		</tr>
 	</table>
@@ -180,7 +166,7 @@ define('MEDIAELEMENTJS_DIR', WP_PLUGIN_URL.'/media-element-html5-video-and-audio
 function mejs_add_scripts(){
     if (!is_admin()){
         // the scripts
-        wp_enqueue_script("mediaelementjs-scripts", MEDIAELEMENTJS_DIR ."mediaelement-and-player.min.js", array('jquery'), "2.1.3", false);
+        wp_enqueue_script("mediaelementjs-scripts", MEDIAELEMENTJS_DIR ."v4/mediaelement-and-player.min.js", array(), "4.2.8", false);
     }
 }
 add_action('wp_print_scripts', 'mejs_add_scripts');
@@ -189,11 +175,8 @@ add_action('wp_print_scripts', 'mejs_add_scripts');
 function mejs_add_styles(){
     if (!is_admin()){
         // the style
-        wp_enqueue_style("mediaelementjs-styles", MEDIAELEMENTJS_DIR ."mediaelementplayer.css");
-
-        if (get_option('mep_video_skin') != '') {
-			wp_enqueue_style("mediaelementjs-skins", MEDIAELEMENTJS_DIR ."mejs-skins.css");
-		}
+        wp_enqueue_style("mediaelementjs-styles", MEDIAELEMENTJS_DIR ."v4/mediaelementplayer.min.css");
+        wp_enqueue_style("mediaelementjs-styles-legacy", MEDIAELEMENTJS_DIR ."v4/mediaelementplayer-legacy.min.css");
     }
 }
 add_action('wp_print_styles', 'mejs_add_styles');
@@ -248,7 +231,6 @@ function mejs_media_shortcode($tagName, $atts){
 		'height' => get_option('mep_default_'.$tagName.'_height'),
 		'type' => get_option('mep_default_'.$tagName.'_type'),
 		'preload' => 'none',
-		'skin' => get_option('mep_video_skin'),
 		'autoplay' => '',
 		'loop' => '',
 
@@ -433,10 +415,6 @@ function mejs_media_shortcode($tagName, $atts){
 		{$wmv_source}
 		{$ogg_source}
 		{$captions_source}
-		<object width="{$width}" height="{$height}" type="application/x-shockwave-flash" data="{$dir}flashmediaelement.swf">
-			<param name="movie" value="{$dir}flashmediaelement.swf" />
-			<param name="flashvars" value="controls=true&amp;file={$flash_src}" />
-		</object>
 	</{$tagName}>
 <script type="text/javascript">
 jQuery(document).ready(function($) {
@@ -471,8 +449,6 @@ add_shortcode('video', 'mejs_video_shortcode');
 add_shortcode('mejsvideo', 'mejs_video_shortcode');
 
 function mejs_init() {
-
-	wp_enqueue_script( 'jquery' );
 
 }
 
