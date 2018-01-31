@@ -9,11 +9,11 @@
 
 ?>
 <?php $max_width = ( 'fade' === $slider_settings['animation'] ) ? 'max-width:' . $slider_settings['slider_width'] : ''; ?>
-
-<div class="fusion-slider-container fusion-slider-<?php the_ID(); ?> <?php echo esc_attr( $slider_class ); ?>-container" style="height:<?php echo esc_attr( $slider_settings['slider_height'] ); ?>;max-width:<?php echo esc_attr( $slider_settings['slider_width'] ); ?>;">
+<?php $container_class = ( $slider_class ) ? $slider_class . '-container' : ''; ?>
+<div id="fusion-slider-<?php echo esc_attr( $slider_settings['slider_id'] ); ?>" class="fusion-slider-container fusion-slider-<?php the_ID(); ?><?php echo esc_attr( $container_class ); ?>" style="height:<?php echo esc_attr( $slider_settings['slider_height'] ); ?>;max-width:<?php echo esc_attr( $slider_settings['slider_width'] ); ?>;">
 	<style type="text/css" scoped="scoped">
-	.fusion-slider-<?php the_ID(); ?> .flex-direction-nav a {
 		<?php
+		echo '#fusion-slider-' . esc_attr( $slider_settings['slider_id'] ) . ' .flex-direction-nav a {';
 		if ( $slider_settings['nav_box_width'] ) {
 			echo 'width:' . esc_attr( $slider_settings['nav_box_width'] ) . ';';
 		}
@@ -24,13 +24,14 @@
 		if ( $slider_settings['nav_arrow_size'] ) {
 			echo 'font-size:' . esc_attr( $slider_settings['nav_arrow_size'] ) . ';';
 		}
+		echo '}';
 		?>
-	}
 	</style>
 	<div class="fusion-slider-loading"><?php esc_attr_e( 'Loading...', 'fusion-core' ); ?></div>
 	<div class="tfs-slider flexslider main-flex<?php echo esc_attr( $slider_class ); ?>" style="max-width:<?php echo esc_attr( $slider_settings['slider_width'] ); ?>;" <?php echo $slider_data; // WPCS: XSS ok. ?>>
-		<ul class="slides" style="<?php echo esc_attr( $max_width ) ?>;">
-			<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+		<ul class="slides" style="<?php echo esc_attr( $max_width ); ?>;">
+			<?php while ( $query->have_posts() ) : ?>
+				<?php $query->the_post(); ?>
 				<?php
 				$metadata = get_metadata( 'post', get_the_ID() );
 				$background_image = '';
@@ -138,10 +139,20 @@
 					$background_class = 'self-hosted-video-bg';
 				}
 
+				$heading_size = 2;
+				if ( isset( $metadata['pyre_heading_size'][0] ) && $metadata['pyre_heading_size'][0] ) {
+					$heading_size = $metadata['pyre_heading_size'][0];
+				}
+
 				$heading_font_size = 'font-size:60px;line-height:80px;';
 				if ( isset( $metadata['pyre_heading_font_size'][0] ) && $metadata['pyre_heading_font_size'][0] ) {
 					$line_height       = $metadata['pyre_heading_font_size'][0] * 1.2;
 					$heading_font_size = 'font-size:' . $metadata['pyre_heading_font_size'][0] . 'px;line-height:' . $line_height . 'px;';
+				}
+
+				$caption_size = 3;
+				if ( isset( $metadata['pyre_caption_size'][0] ) && $metadata['pyre_caption_size'][0] ) {
+					$caption_size = $metadata['pyre_caption_size'][0];
 				}
 
 				$caption_font_size = 'font-size: 24px;line-height:38px;';
@@ -178,6 +189,10 @@
 					}
 				}
 
+				if ( ! isset( $metadata['scroll_down_indicator_color'][0] ) ) {
+					$metadata['scroll_down_indicator_color'][0] = '#ffffff';
+				}
+
 				$data_display = 'cover';
 				if ( isset( $metadata['pyre_video_display'][0] ) && 'contain' === $metadata['pyre_video_display'][0] ) {
 					$data_display = 'contain';
@@ -189,14 +204,14 @@
 							<?php if ( isset( $metadata['pyre_heading'][0] ) && $metadata['pyre_heading'][0] ) : ?>
 								<div class="heading <?php echo ( $heading_bg ) ? 'with-bg' : ''; ?>">
 									<div class="fusion-title-sc-wrapper<?php echo esc_attr( $heading_title_sc_wrapper_class ); ?>" style="<?php echo esc_html( $heading_bg ); ?>">
-										<?php echo do_shortcode( '[fusion_title size="2" content_align="' . $metadata['pyre_content_alignment'][0] . '" sep_color="' . $metadata['pyre_heading_color'][0] . '" margin_top="0px" margin_bottom="0px" style_type="' . $metadata['pyre_heading_separator'][0] . '" style_tag="' . $heading_styles . '"]' . do_shortcode( $metadata['pyre_heading'][0] ) . '[/fusion_title]' ); ?>
+										<?php echo do_shortcode( '[fusion_title size="' . $heading_size . '" content_align="' . $metadata['pyre_content_alignment'][0] . '" sep_color="' . $metadata['pyre_heading_color'][0] . '" margin_top="0px" margin_bottom="0px" style_type="' . $metadata['pyre_heading_separator'][0] . '" style_tag="' . $heading_styles . '"]' . do_shortcode( $metadata['pyre_heading'][0] ) . '[/fusion_title]' ); ?>
 									</div>
 								</div>
 							<?php endif; ?>
 							<?php if ( isset( $metadata['pyre_caption'][0] ) && $metadata['pyre_caption'][0] ) : ?>
 								<div class="caption <?php echo ( $caption_bg ) ? 'with-bg' : ''; ?>">
 									<div class="fusion-title-sc-wrapper<?php echo esc_attr( $caption_title_sc_wrapper_class ); ?>" style="<?php echo esc_attr( $caption_bg ); ?>">
-										<?php echo do_shortcode( '[fusion_title size="3" content_align="' . $metadata['pyre_content_alignment'][0] . '" sep_color="' . $metadata['pyre_caption_color'][0] . '" margin_top="0px" margin_bottom="0px" style_type="' . $metadata['pyre_caption_separator'][0] . '" style_tag="' . $caption_styles . '"]' . do_shortcode( $metadata['pyre_caption'][0] ) . '[/fusion_title]' ); ?>
+										<?php echo do_shortcode( '[fusion_title size="' . $caption_size . '" content_align="' . $metadata['pyre_content_alignment'][0] . '" sep_color="' . $metadata['pyre_caption_color'][0] . '" margin_top="0px" margin_bottom="0px" style_type="' . $metadata['pyre_caption_separator'][0] . '" style_tag="' . $caption_styles . '"]' . do_shortcode( $metadata['pyre_caption'][0] ) . '[/fusion_title]' ); ?>
 									</div>
 								</div>
 							<?php endif; ?>
@@ -212,6 +227,9 @@
 							<?php endif; ?>
 						</div>
 					</div>
+					<?php if ( isset( $slider_settings['scroll_down_indicator'] ) && $slider_settings['scroll_down_indicator'] ) : ?>
+						<a class="tfs-scroll-down-indicator fusion-one-page-text-link" href="#main" style="opacity:0;color:<?php echo esc_attr( $slider_settings['scroll_down_indicator_color'] ); ?>;"></a>
+					<?php endif; ?>
 					<?php if ( isset( $metadata['pyre_link_type'][0] ) && 'full' === $metadata['pyre_link_type'][0] && isset( $metadata['pyre_slide_link'][0] ) && $metadata['pyre_slide_link'][0] ) : ?>
 						<a href="<?php echo esc_url_raw( $metadata['pyre_slide_link'][0] ); ?>" class="overlay-link" <?php echo ( isset( $metadata['pyre_slide_target'][0] ) && 'yes' === $metadata['pyre_slide_target'][0] ) ? 'target="_blank" rel="noopener noreferrer"' : ''; ?> aria-label="<?php the_title(); ?>"></a>
 					<?php endif; ?>
@@ -247,7 +265,7 @@
 								</div>
 							</div>
 						<?php endif; ?>
-						<?php if ( isset( $metadata['pyre_type'][0] ) && isset( $metadata['pyre_vimeo_id'][0] ) &&  'vimeo' === $metadata['pyre_type'][0] && $metadata['pyre_vimeo_id'][0] ) : ?>
+						<?php if ( isset( $metadata['pyre_type'][0] ) && isset( $metadata['pyre_vimeo_id'][0] ) && 'vimeo' === $metadata['pyre_type'][0] && $metadata['pyre_vimeo_id'][0] ) : ?>
 							<div style="position: absolute; top: 0; left: 0; <?php echo esc_attr( $video_zindex ); ?> width: 100%; height: 100%" data-mute="<?php echo esc_attr( $data_mute ); ?>" data-vimeo-video-id="<?php echo esc_attr( $metadata['pyre_vimeo_id'][0] ); ?>" data-video-aspect-ratio="<?php echo esc_attr( $aspect_ratio ); ?>">
 								<iframe src="https://player.vimeo.com/video/<?php echo esc_attr( $metadata['pyre_vimeo_id'][0] ); ?>?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&amp;badge=0<?php echo esc_attr( $vimeo_attributes ); ?>" height="100%" width="100%" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 							</div>

@@ -81,6 +81,8 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 				add_filter( 'fusion_attr_portfolio-shortcode-carousel', array( $this, 'carousel_attr' ) );
 				add_filter( 'fusion_attr_portfolio-shortcode-slideshow', array( $this, 'slideshow_attr' ) );
 				add_filter( 'fusion_attr_portfolio-shortcode-filter-link', array( $this, 'filter_link_attr' ) );
+				add_filter( 'fusion_attr_portfolio-fusion-portfolio-content-wrapper', array( $this, 'portfolio_content_wrapper_attr' ) );
+				add_filter( 'fusion_attr_portfolio-fusion-content-sep', array( $this, 'content_sep_attr' ) );
 
 				add_shortcode( 'fusion_portfolio', array( $this, 'render' ) );
 				fusion_portfolio_scripts();
@@ -100,47 +102,63 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 
 				global $fusion_settings, $fusion_library;
 
+				if ( ! isset( $args['portfolio_layout_padding'] ) ) {
+					$padding_values = array();
+					$padding_values['top']    = ( isset( $args['padding_top'] ) && '' !== $args['padding_top'] ) ? $args['padding_top'] : Fusion_Sanitize::size( $fusion_settings->get( 'portfolio_archive_layout_padding', 'top' ) );
+					$padding_values['right']  = ( isset( $args['padding_right'] ) && '' !== $args['padding_right'] ) ? $args['padding_right'] : Fusion_Sanitize::size( $fusion_settings->get( 'portfolio_archive_layout_padding', 'right' ) );
+					$padding_values['bottom'] = ( isset( $args['padding_bottom'] ) && '' !== $args['padding_bottom'] ) ? $args['padding_bottom'] : Fusion_Sanitize::size( $fusion_settings->get( 'portfolio_archive_layout_padding', 'bottom' ) );
+					$padding_values['left']   = ( isset( $args['padding_left'] ) && '' !== $args['padding_left'] ) ? $args['padding_left'] : Fusion_Sanitize::size( $fusion_settings->get( 'portfolio_archive_layout_padding', 'left' ) );
+
+					$args['portfolio_layout_padding'] = implode( ' ', $padding_values );
+				}
+
 				$defaults = apply_filters(
 					'fusion_portfolio_default_parameter',
 					FusionBuilder::set_shortcode_defaults(
 						array(
-							'animation_direction'      => 'left',
-							'animation_offset'         => $fusion_settings->get( 'animation_offset' ),
-							'animation_speed'          => '',
-							'animation_type'           => '',
-							'autoplay'                 => 'no',
-							'text_layout'              => 'unboxed',
-							'pull_by'                  => '',
-							'cat_slug'                 => '',
-							'tag_slug'                 => '',
-							'exclude_tags'             => '',
-							'carousel_layout'          => 'title_on_rollover',
-							'class'                    => '',
-							'column_spacing'           => $fusion_settings->get( 'portfolio_column_spacing' ),
-							'columns'                  => 3,
-							'content_length'           => 'excerpt',
-							'excerpt_length'           => $fusion_settings->get( 'portfolio_excerpt_length' ),
-							'excerpt_words'            => '',  // Deprecated.
-							'exclude_cats'             => '',
-							'filters'                  => 'yes',
-							'hide_on_mobile'           => fusion_builder_default_visibility( 'string' ),
-							'id'                       => '',
-							'layout'                   => 'carousel',
-							'mouse_scroll'             => 'no',
-							'number_posts'             => $fusion_settings->get( 'portfolio_items' ),
-							'offset'                   => '',
-							'one_column_text_position' => 'below',
-							'pagination_type'          => 'none',
-							'hide_url_params'          => 'off',
-							'picture_size'             => $fusion_settings->get( 'portfolio_featured_image_size' ),
-							'portfolio_layout_padding' => '',
-							'portfolio_text_alignment' => 'left',
-							'portfolio_title_display'  => 'all',
-							'scroll_items'             => '',
-							'show_nav'                 => 'yes',
-							'strip_html'               => 'yes',
-
-							'boxed_text'               => '', // Deprecated.
+							'animation_direction'       => 'left',
+							'animation_offset'          => $fusion_settings->get( 'animation_offset' ),
+							'animation_speed'           => '',
+							'animation_type'            => '',
+							'autoplay'                  => 'no',
+							'carousel_layout'           => 'title_on_rollover',
+							'cat_slug'                  => '',
+							'class'                     => '',
+							'column_spacing'            => $fusion_settings->get( 'portfolio_column_spacing' ),
+							'columns'                   => 3,
+							'content_length'            => 'excerpt',
+							'grid_box_color'            => $fusion_settings->get( 'timeline_bg_color' ),
+							'grid_element_color'        => $fusion_settings->get( 'timeline_color' ),
+							'grid_separator_color'      => $fusion_settings->get( 'grid_separator_color' ),
+							'grid_separator_style_type' => $fusion_settings->get( 'grid_separator_style_type' ),
+							'equal_heights'             => 'no',
+							'excerpt_length'            => $fusion_settings->get( 'portfolio_excerpt_length' ),
+							'excerpt_words'             => '',  // Deprecated.
+							'exclude_cats'              => '',
+							'exclude_tags'              => '',
+							'filters'                   => 'yes',
+							'hide_on_mobile'            => fusion_builder_default_visibility( 'string' ),
+							'hide_url_params'           => 'off',
+							'id'                        => '',
+							'layout'                    => 'carousel',
+							'mouse_scroll'              => 'no',
+							'number_posts'              => $fusion_settings->get( 'portfolio_items' ),
+							'offset'                    => '',
+							'one_column_text_position'  => 'below',
+							'order'                     => 'DESC',
+							'orderby'                   => 'date',
+							'pagination_type'           => 'none',
+							'picture_size'              => $fusion_settings->get( 'portfolio_featured_image_size' ),
+							'portfolio_layout_padding'  => '',
+							'portfolio_text_alignment'  => 'left',
+							'portfolio_title_display'   => 'all',
+							'pull_by'                   => '',
+							'scroll_items'              => '',
+							'show_nav'                  => 'yes',
+							'strip_html'                => 'yes',
+							'tag_slug'                  => '',
+							'text_layout'               => 'unboxed',
+							'boxed_text'                => '', // Deprecated.
 						),
 						$args
 					)
@@ -293,6 +311,8 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 					'paged'          => $paged,
 					'posts_per_page' => $number_posts,
 					'has_password'   => false,
+					'orderby'        => $orderby,
+					'order'          => $order,
 				);
 
 				if ( $defaults['offset'] ) {
@@ -442,11 +462,13 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 							} elseif ( $fusion_settings->get( 'featured_image_placeholder' ) || has_post_thumbnail() ) {
 								// Get the post image.
 								if ( 'full' === $this->image_size && class_exists( 'Avada' ) && property_exists( Avada(), 'images' ) ) {
-									Avada()->images->set_grid_image_meta( array(
-										'layout' => 'portfolio_full',
-										'columns' => $columns,
-										'gutter_width' => $column_spacing,
-									) );
+									Avada()->images->set_grid_image_meta(
+										array(
+											'layout' => 'portfolio_full',
+											'columns' => $columns,
+											'gutter_width' => $column_spacing,
+										)
+									);
 								}
 								$image = fusion_render_first_featured_image_markup( get_the_ID(), $this->image_size, get_permalink( get_the_ID() ), true, false, false, 'default', $show_title, '', $gallery_id );
 								if ( class_exists( 'Avada' ) && property_exists( Avada(), 'images' ) ) {
@@ -535,9 +557,9 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 
 									if ( 'no_text' !== $text_layout && 'boxed' === $text_layout &&
 										class_exists( 'Fusion_Sanitize' ) && class_exists( 'Fusion_Color' ) &&
-										'transparent' !== Fusion_Sanitize::color( $fusion_settings->get( 'timeline_color' ) ) &&
-										'0' != Fusion_Color::new_color( $fusion_settings->get( 'timeline_color' ) )->alpha ) {
-
+										'transparent' !== Fusion_Sanitize::color( self::$args['grid_element_color'] ) &&
+										'0' != Fusion_Color::new_color( self::$args['grid_element_color'] )->alpha
+									) {
 										$masonry_column_offset = ' - ' . ( (int) $column_spacing / 2 ) . 'px';
 										if ( 'fusion-element-portrait' === $element_orientation_class ) {
 											$masonry_column_offset = ' + 4px';
@@ -568,11 +590,13 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 
 								// Get the post image.
 								if ( 'full' === $this->image_size && class_exists( 'Avada' ) && property_exists( Avada(), 'images' ) ) {
-									Avada()->images->set_grid_image_meta( array(
-										'layout' => 'portfolio_full',
-										'columns' => $responsive_images_columns,
-										'gutter_width' => $column_spacing,
-									) );
+									Avada()->images->set_grid_image_meta(
+										array(
+											'layout' => 'portfolio_full',
+											'columns' => $responsive_images_columns,
+											'gutter_width' => $column_spacing,
+										)
+									);
 								}
 								$image = fusion_render_first_featured_image_markup( get_the_ID(), $this->image_size, $permalink, true, false, false, 'default', 'default', '', $gallery_id, 'yes', false, $masonry_attributes );
 								if ( class_exists( 'Avada' ) && property_exists( Avada(), 'images' ) ) {
@@ -595,7 +619,7 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 								if ( $categories ) {
 									$the_cats = get_the_term_list( get_the_ID(), 'portfolio_category', '', ', ', '' );
 									if ( $the_cats ) {
-										$post_terms = '<h4>' . $the_cats . '</h4>';
+										$post_terms = '<div class="fusion-portfolio-meta">' . $the_cats . '</div>';
 									}
 								}
 
@@ -612,14 +636,7 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 
 								// For boxed layouts add a content separator if there is a post content.
 								if ( 'boxed' === $text_layout && $stripped_content && 'masonry' !== self::$args['layout'] ) {
-									$separator_styles_array = explode( '|', $fusion_settings->get( 'separator_style_type' ) );
-									$separator_styles = '';
-
-									foreach ( $separator_styles_array as $separator_style ) {
-										$separator_styles .= ' sep-' . $separator_style;
-									}
-
-									$separator = '<div class="fusion-content-sep' . $separator_styles . '"></div>';
+									$separator = '<div ' . FusionBuilder::attributes( 'portfolio-fusion-content-sep' ) . '></div>';
 								}
 
 								// On one column layouts render the "Learn More" and "View Project" buttons.
@@ -636,7 +653,8 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 									}
 
 									// Wrap buttons.
-									$buttons = '<div ' . FusionBuilder::attributes( 'fusion-portfolio-buttons' ) . '>' . $learn_more_button . $view_project_button . '</div>';
+									$button_span_class = ( 'yes' === $fusion_settings->get( 'button_span' ) ) ? ' fusion-portfolio-buttons-full' : '';
+									$buttons = '<div ' . FusionBuilder::attributes( 'fusion-portfolio-buttons' . $button_span_class ) . '>' . $learn_more_button . $view_project_button . '</div>';
 
 								}
 
@@ -659,7 +677,7 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 								$post_separator = '<div class="fusion-clearfix"></div><div class="fusion-separator sep-double"></div>';
 							}
 
-							$portfolio_posts .= '<article ' . FusionBuilder::attributes( 'fusion-portfolio-post ' . $post_classes ) . '><div ' . FusionBuilder::attributes( 'fusion-portfolio-content-wrapper' ) . '>' . $rich_snippets . $image . $post_content . '</div>' . apply_filters( 'fusion_portfolio_grid_post_separator', $post_separator ) . '</article>';
+							$portfolio_posts .= '<article ' . FusionBuilder::attributes( 'fusion-portfolio-post ' . $post_classes ) . '><div ' . FusionBuilder::attributes( 'portfolio-fusion-portfolio-content-wrapper' ) . '>' . $rich_snippets . $image . $post_content . '</div>' . apply_filters( 'fusion_portfolio_grid_post_separator', $post_separator ) . '</article>';
 						} // End if().
 					} // End if().
 				} // End while().
@@ -696,9 +714,11 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 						// Check if the "All" filter should be displayed.
 						$first_filter = true;
 						if ( 'yes-without-all' !== $filters ) {
-							$filter = '<li role="menuitem" ' . FusionBuilder::attributes( 'fusion-filter fusion-filter-all fusion-active' ) . '><a ' . FusionBuilder::attributes( 'portfolio-shortcode-filter-link', array(
-								'data-filter' => '*',
-							) ) . '>' . esc_attr__( 'All', 'fusion-core' ) . '</a></li>';
+							$filter = '<li role="menuitem" ' . FusionBuilder::attributes( 'fusion-filter fusion-filter-all fusion-active' ) . '><a ' . FusionBuilder::attributes(
+								'portfolio-shortcode-filter-link', array(
+									'data-filter' => '*',
+								)
+							) . '>' . esc_attr__( 'All', 'fusion-core' ) . '</a></li>';
 							$first_filter = false;
 						}
 
@@ -719,9 +739,11 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 												$first_filter = false;
 											}
 
-											$filter .= '<li role="menuitem" ' . FusionBuilder::attributes( 'fusion-filter fusion-hidden' . $active_class ) . '><a ' . FusionBuilder::attributes( 'portfolio-shortcode-filter-link', array(
-												'data-filter' => '.' . urldecode( $portfolio_tag->slug ),
-											) ) . '>' . $portfolio_tag->name . '</a></li>';
+											$filter .= '<li role="menuitem" ' . FusionBuilder::attributes( 'fusion-filter fusion-hidden' . $active_class ) . '><a ' . FusionBuilder::attributes(
+												'portfolio-shortcode-filter-link', array(
+													'data-filter' => '.' . urldecode( $portfolio_tag->slug ),
+												)
+											) . '>' . $portfolio_tag->name . '</a></li>';
 										}
 									} else {
 										// Display all tags.
@@ -732,9 +754,11 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 											$first_filter = false;
 										}
 
-										$filter .= '<li role="menuitem" ' . FusionBuilder::attributes( 'fusion-filter fusion-hidden' . $active_class ) . '><a ' . FusionBuilder::attributes( 'portfolio-shortcode-filter-link', array(
-											'data-filter' => '.' . urldecode( $portfolio_tag->slug ),
-										) ) . '>' . $portfolio_tag->name . '</a></li>';
+										$filter .= '<li role="menuitem" ' . FusionBuilder::attributes( 'fusion-filter fusion-hidden' . $active_class ) . '><a ' . FusionBuilder::attributes(
+											'portfolio-shortcode-filter-link', array(
+												'data-filter' => '.' . urldecode( $portfolio_tag->slug ),
+											)
+										) . '>' . $portfolio_tag->name . '</a></li>';
 									}
 								}
 							} // End foreach().
@@ -755,9 +779,11 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 												$first_filter = false;
 											}
 
-											$filter .= '<li role="menuitem" ' . FusionBuilder::attributes( 'fusion-filter fusion-hidden' . $active_class ) . '><a ' . FusionBuilder::attributes( 'portfolio-shortcode-filter-link', array(
-												'data-filter' => '.' . urldecode( $portfolio_category->slug ),
-											) ) . '>' . $portfolio_category->name . '</a></li>';
+											$filter .= '<li role="menuitem" ' . FusionBuilder::attributes( 'fusion-filter fusion-hidden' . $active_class ) . '><a ' . FusionBuilder::attributes(
+												'portfolio-shortcode-filter-link', array(
+													'data-filter' => '.' . urldecode( $portfolio_category->slug ),
+												)
+											) . '>' . $portfolio_category->name . '</a></li>';
 										}
 									} else {
 										// Display all categories.
@@ -768,9 +794,11 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 											$first_filter = false;
 										}
 
-										$filter .= '<li role="menuitem" ' . FusionBuilder::attributes( 'fusion-filter fusion-hidden' . $active_class ) . '><a ' . FusionBuilder::attributes( 'portfolio-shortcode-filter-link', array(
-											'data-filter' => '.' . urldecode( $portfolio_category->slug ),
-										) ) . '>' . $portfolio_category->name . '</a></li>';
+										$filter .= '<li role="menuitem" ' . FusionBuilder::attributes( 'fusion-filter fusion-hidden' . $active_class ) . '><a ' . FusionBuilder::attributes(
+											'portfolio-shortcode-filter-link', array(
+												'data-filter' => '.' . urldecode( $portfolio_category->slug ),
+											)
+										) . '>' . $portfolio_category->name . '</a></li>';
 									}
 								}
 							} // End foreach().
@@ -804,13 +832,12 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 							$infinite_pagination = true;
 						}
 
-						ob_start();
-						fusion_pagination( $portfolio_query->max_num_pages, $range = 2, $portfolio_query, $infinite_pagination );
-						$pagination .= ob_get_contents();
-						ob_get_clean();
+						$pagination .= fusion_pagination( $portfolio_query->max_num_pages, 2, $portfolio_query, $infinite_pagination );
 					}
 
-					$portfolio_posts = '<article class="fusion-portfolio-post fusion-grid-sizer"></article>' . $portfolio_posts;
+					if ( 'masonry' === $layout ) {
+						$portfolio_posts = '<article class="fusion-portfolio-post fusion-grid-sizer"></article>' . $portfolio_posts;
+					}
 
 					// Put it all together.
 					$html = $styling . '<div ' . FusionBuilder::attributes( 'portfolio-shortcode' ) . '>' . $filter_wrapper . $styles . '<div ' . FusionBuilder::attributes( 'portfolio-shortcode-portfolio-wrapper' ) . '>' . $portfolio_posts . '</div>' . $pagination . '</div>';
@@ -834,9 +861,11 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 
 				global $fusion_settings;
 
-				$attr = fusion_builder_visibility_atts( self::$args['hide_on_mobile'], array(
-					'class' => 'fusion-recent-works fusion-portfolio-element fusion-portfolio fusion-portfolio-' . $this->portfolio_counter . ' fusion-portfolio-' . self::$args['layout'] . ' fusion-portfolio-paging-' . self::$args['pagination_type'],
-				) );
+				$attr = fusion_builder_visibility_atts(
+					self::$args['hide_on_mobile'], array(
+						'class' => 'fusion-recent-works fusion-portfolio-element fusion-portfolio fusion-portfolio-' . $this->portfolio_counter . ' fusion-portfolio-' . self::$args['layout'] . ' fusion-portfolio-paging-' . self::$args['pagination_type'],
+					)
+				);
 
 				$attr['data-id'] = '-rw-' . $this->portfolio_counter;
 
@@ -855,6 +884,12 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 
 						if ( '1' === self::$args['columns'] && 'floated' === self::$args['one_column_text_position'] ) {
 							$attr['class'] .= ' fusion-portfolio-text-floated';
+						}
+
+						if ( 'grid' === self::$args['layout'] ) {
+							if ( 'yes' === self::$args['equal_heights'] ) {
+								$attr['class'] .= ' fusion-portfolio-equal-heights';
+							}
 						}
 					}
 
@@ -888,12 +923,14 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 
 				// Add animation classes.
 				if ( self::$args['animation_type'] ) {
-					$animations = FusionBuilder::animations( array(
-						'type'      => self::$args['animation_type'],
-						'direction' => self::$args['animation_direction'],
-						'speed'     => self::$args['animation_speed'],
-						'offset'    => self::$args['animation_offset'],
-					) );
+					$animations = FusionBuilder::animations(
+						array(
+							'type'      => self::$args['animation_type'],
+							'direction' => self::$args['animation_direction'],
+							'speed'     => self::$args['animation_speed'],
+							'offset'    => self::$args['animation_offset'],
+						)
+					);
 
 					$attr = array_merge( $attr, $animations );
 
@@ -961,21 +998,55 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 						$attr['style'] .= 'left:0px;';
 						$attr['style'] .= 'right:0px;';
 					}
-
-					$attr['style'] .= 'z-index:1;';
-					$attr['style'] .= 'position:absolute;';
-					$attr['style'] .= 'margin:0;';
-
-					$color = Fusion_Color::new_color( $fusion_settings->get( 'timeline_bg_color' ) );
+					$color = Fusion_Color::new_color( self::$args['grid_box_color'] );
 					$color_css = $color->to_css( 'rgba' );
 					if ( 0 === $color->alpha ) {
 						$color_css = $color->to_css( 'rgb' );
 					}
 					$attr['style'] .= 'background-color:' . $color_css . ';';
+					$attr['style'] .= 'z-index:1;';
+					$attr['style'] .= 'position:absolute;';
+					$attr['style'] .= 'margin:0;';
+
+				} elseif ( 'grid' === self::$args['layout'] && 'boxed' === self::$args['text_layout'] ) {
+					$color = Fusion_Color::new_color( self::$args['grid_box_color'] );
+					$color_css = $color->to_css( 'rgba' );
+					$attr['style'] .= 'background-color:' . $color_css . ';';
 				}
 
 				return $attr;
 
+			}
+
+			/**
+			 * Builds the portfolio-content-wrapper attributes array.
+			 *
+			 * @access public
+			 * @since 1.3
+			 * @return array
+			 */
+			public function portfolio_content_wrapper_attr() {
+				$attr = array(
+					'class' => 'fusion-portfolio-content-wrapper',
+				);
+				$attr['style'] = '';
+
+				if ( 'grid' === self::$args['layout'] || 'masonry' === self::$args['layout'] ) {
+					$element_color = Fusion_Color::new_color( self::$args['grid_element_color'] );
+					if ( 'boxed' !== self::$args['text_layout'] || 0 === $element_color->alpha || 'transparent' === self::$args['grid_element_color'] ) {
+						$attr['style'] .= 'border:none;';
+					} else {
+						$attr['style'] .= 'border:1px solid ' . self::$args['grid_element_color'] . ';border-bottom-width:3px;';
+					}
+				}
+
+				if ( 'grid' === self::$args['layout'] && 'boxed' === self::$args['text_layout'] ) {
+					$color = Fusion_Color::new_color( self::$args['grid_box_color'] );
+					$color_css = $color->to_css( 'rgba' );
+					$attr['style'] .= 'background-color:' . $color_css . ';';
+				}
+
+				return $attr;
 			}
 
 			/**
@@ -1031,6 +1102,39 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 
 				return $attr;
 
+			}
+
+			/**
+			 * Adds attributes to the content separator.
+			 *
+			 * @since 1.3
+			 * @access public
+			 * @return array
+			 */
+			public function content_sep_attr() {
+
+				global $fusion_library;
+
+				$attr = array(
+					'class' => 'fusion-content-sep',
+					'style' => 'border-color:' . self::$args['grid_separator_color'] . ';',
+				);
+
+				$separator_styles_array = explode( '|', self::$args['grid_separator_style_type'] );
+				$separator_styles = '';
+
+				foreach ( $separator_styles_array as $separator_style ) {
+					$separator_styles .= ' sep-' . $separator_style;
+				}
+
+				$border_color = Fusion_Color::new_color( self::$args['grid_separator_color'] );
+				if ( 0 === $border_color->alpha || 'transparent' === self::$args['grid_separator_color'] ) {
+					$attr['class'] .= ' sep-transparent';
+				}
+
+				$attr['class'] .= $separator_styles;
+
+				return $attr;
 			}
 
 			/**
@@ -1091,12 +1195,15 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 			 * @return void
 			 */
 			public function get_post_content() {
-				$excerpt = 'no';
-				if ( 'excerpt' === strtolower( self::$args['content_length'] ) ) {
-					$excerpt = 'yes';
-				}
 
-				echo fusion_get_post_content( '', $excerpt, self::$args['excerpt_length'], self::$args['strip_html'] ); // WPCS: XSS ok.
+				if ( 'no_text' !== self::$args['content_length'] ) {
+					$excerpt = 'no';
+					if ( 'excerpt' === strtolower( self::$args['content_length'] ) ) {
+						$excerpt = 'yes';
+					}
+
+					echo fusion_get_post_content( '', $excerpt, self::$args['excerpt_length'], self::$args['strip_html'] ); // WPCS: XSS ok.
+				}
 			}
 
 			/**
@@ -1116,25 +1223,25 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 
 				return array(
 					'portfolio_shortcode_section' => array(
-						'label'       => esc_html__( 'Portfolio Element', 'fusion-core' ),
+						'label'       => esc_attr__( 'Portfolio Element', 'fusion-core' ),
 						'description' => '',
 						'id'          => 'portfolio_shortcode_section',
 						'type'        => 'sub-section',
 						'fields'      => array(
 							'portfolio_featured_image_size' => array(
-								'label'       => esc_html__( 'Portfolio Featured Image Size', 'Avada' ),
-								'description' => esc_html__( 'Controls if the featured image size is fixed (cropped) or auto (full image ratio) for portfolio elements. IMPORTANT: Fixed works best with a standard 940px site width. Auto works best with larger site widths.', 'Avada' ),
+								'label'       => esc_attr__( 'Portfolio Featured Image Size', 'fusion-core' ),
+								'description' => esc_attr__( 'Controls if the featured image size is fixed (cropped) or auto (full image ratio) for portfolio elements. IMPORTANT: Fixed works best with a standard 940px site width. Auto works best with larger site widths.', 'fusion-core' ),
 								'id'          => 'portfolio_featured_image_size',
 								'default'     => 'cropped',
 								'type'        => 'radio-buttonset',
 								'choices'     => array(
-									'cropped' => esc_html__( 'Fixed', 'Avada' ),
-									'full'    => esc_html__( 'Auto', 'Avada' ),
+									'cropped' => esc_attr__( 'Fixed', 'fusion-core' ),
+									'full'    => esc_attr__( 'Auto', 'fusion-core' ),
 								),
 							),
 							'portfolio_column_spacing' => array(
-								'label'       => esc_html__( 'Portfolio Column Spacing', 'Avada' ),
-								'description' => esc_html__( 'Controls the column spacing for portfolio elements.', 'Avada' ),
+								'label'       => esc_attr__( 'Portfolio Column Spacing', 'fusion-core' ),
+								'description' => esc_attr__( 'Controls the column spacing for portfolio elements.', 'fusion-core' ),
 								'id'          => 'portfolio_column_spacing',
 								'default'     => '20',
 								'type'        => 'slider',
@@ -1145,8 +1252,8 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 								),
 							),
 							'portfolio_items' => array(
-								'label'       => esc_html__( 'Number of Portfolio Items Per Page', 'Avada' ),
-								'description' => esc_html__( 'Controls the number of posts that display per page for portfolio elements. Set to -1 to display all. Set to 0 to use the number of posts from Settings > Reading.', 'Avada' ),
+								'label'       => esc_attr__( 'Number of Portfolio Items Per Page', 'fusion-core' ),
+								'description' => esc_attr__( 'Controls the number of posts that display per page for portfolio elements. Set to -1 to display all. Set to 0 to use the number of posts from Settings > Reading.', 'fusion-core' ),
 								'id'          => 'portfolio_items',
 								'default'     => '10',
 								'type'        => 'slider',
@@ -1157,31 +1264,32 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 								),
 							),
 							'portfolio_text_layout' => array(
-								'label'       => esc_html__( 'Portfolio Text Layout', 'Avada' ),
-								'description' => esc_html__( 'Controls if the portfolio text content is displayed boxed or unboxed or is completely disabled for portfolio elements.', 'Avada' ),
+								'label'       => esc_attr__( 'Portfolio Text Layout', 'fusion-core' ),
+								'description' => esc_attr__( 'Controls if the portfolio text content is displayed boxed or unboxed or is completely disabled for portfolio elements.', 'fusion-core' ),
 								'id'          => 'portfolio_text_layout',
 								'default'     => 'unboxed',
 								'type'        => 'radio-buttonset',
 								'choices'     => array(
-									'no_text' => esc_html__( 'No Text', 'Avada' ),
-									'boxed'   => esc_html__( 'Boxed', 'Avada' ),
-									'unboxed' => esc_html__( 'Unboxed', 'Avada' ),
+									'no_text' => esc_attr__( 'No Text', 'fusion-core' ),
+									'boxed'   => esc_attr__( 'Boxed', 'fusion-core' ),
+									'unboxed' => esc_attr__( 'Unboxed', 'fusion-core' ),
 								),
 							),
 							'portfolio_content_length' => array(
-								'label'       => esc_html__( 'Portfolio Content Display', 'Avada' ),
-								'description' => esc_html__( 'Controls if the portfolio content displays an excerpt or full content for portfolio elements.', 'Avada' ),
+								'label'       => esc_attr__( 'Portfolio Text Display', 'fusion-core' ),
+								'description' => esc_attr__( 'Choose how to display the post excerpt for portfolio elements.', 'fusion-core' ),
 								'id'          => 'portfolio_content_length',
 								'default'     => 'excerpt',
 								'type'        => 'radio-buttonset',
 								'choices'     => array(
-									'excerpt'      => esc_html__( 'Excerpt', 'Avada' ),
-									'full_content' => esc_html__( 'Full Content', 'Avada' ),
+									'no_text'      => esc_attr__( 'No Text', 'fusion-core' ),
+									'excerpt'      => esc_attr__( 'Excerpt', 'fusion-core' ),
+									'full_content' => esc_attr__( 'Full Content', 'fusion-core' ),
 								),
 							),
 							'portfolio_excerpt_length' => array(
-								'label'       => esc_html__( 'Excerpt Length', 'Avada' ),
-								'description' => esc_html__( 'Controls the number of words in the excerpts for portfolio elements.', 'Avada' ),
+								'label'       => esc_attr__( 'Excerpt Length', 'fusion-core' ),
+								'description' => esc_attr__( 'Controls the number of words in the excerpts for portfolio elements.', 'fusion-core' ),
 								'id'          => 'portfolio_excerpt_length',
 								'default'     => '10',
 								'type'        => 'slider',
@@ -1199,40 +1307,40 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 								),
 							),
 							'portfolio_strip_html_excerpt' => array(
-								'label'       => esc_html__( 'Strip HTML from Excerpt', 'Avada' ),
-								'description' => esc_html__( 'Turn on to strip HTML content from the excerpt for portfolio elements.', 'Avada' ),
+								'label'       => esc_attr__( 'Strip HTML from Excerpt', 'fusion-core' ),
+								'description' => esc_attr__( 'Turn on to strip HTML content from the excerpt for portfolio elements.', 'fusion-core' ),
 								'id'          => 'portfolio_strip_html_excerpt',
 								'default'     => '1',
 								'type'        => 'switch',
 							),
 							'portfolio_title_display' => array(
-								'label'       => esc_html__( 'Portfolio Title Display', 'Avada' ),
-								'description' => esc_html__( 'Controls what displays with the portfolio post title for portfolio elements.', 'Avada' ),
+								'label'       => esc_attr__( 'Portfolio Title Display', 'fusion-core' ),
+								'description' => esc_attr__( 'Controls what displays with the portfolio post title for portfolio elements.', 'fusion-core' ),
 								'id'          => 'portfolio_title_display',
 								'default'     => 'all',
 								'type'        => 'select',
 								'choices'     => array(
-									'all'     => esc_html__( 'Title and Categories', 'Avada' ),
-									'title'   => esc_html__( 'Only Title', 'Avada' ),
-									'cats'    => esc_html__( 'Only Categories', 'Avada' ),
-									'none'    => esc_html__( 'None', 'Avada' ),
+									'all'     => esc_attr__( 'Title and Categories', 'fusion-core' ),
+									'title'   => esc_attr__( 'Only Title', 'fusion-core' ),
+									'cats'    => esc_attr__( 'Only Categories', 'fusion-core' ),
+									'none'    => esc_attr__( 'None', 'fusion-core' ),
 								),
 							),
 							'portfolio_text_alignment' => array(
-								'label'       => esc_html__( 'Portfolio Text Alignment', 'Avada' ),
-								'description' => esc_html__( 'Controls the alignment of the portfolio title, categories and excerpt text when using the Portfolio Text layouts in portfolio elements.', 'Avada' ),
+								'label'       => esc_attr__( 'Portfolio Text Alignment', 'fusion-core' ),
+								'description' => esc_attr__( 'Controls the alignment of the portfolio title, categories and excerpt text when using the Portfolio Text layouts in portfolio elements.', 'fusion-core' ),
 								'id'          => 'portfolio_text_alignment',
 								'default'     => 'left',
 								'type'        => 'radio-buttonset',
 								'choices'     => array(
-									'left'     => esc_html__( 'Left', 'Avada' ),
-									'center'   => esc_html__( 'Center', 'Avada' ),
-									'right'    => esc_html__( 'Right', 'Avada' ),
+									'left'     => esc_attr__( 'Left', 'fusion-core' ),
+									'center'   => esc_attr__( 'Center', 'fusion-core' ),
+									'right'    => esc_attr__( 'Right', 'fusion-core' ),
 								),
 							),
 							'portfolio_layout_padding' => array(
-								'label'       => esc_html__( 'Portfolio Text Layout Padding', 'Avada' ),
-								'description' => esc_html__( 'Controls the padding for the portfolio text layout when using boxed mode in portfolio elements.', 'Avada' ),
+								'label'       => esc_attr__( 'Portfolio Text Layout Padding', 'fusion-core' ),
+								'description' => esc_attr__( 'Controls the padding for the portfolio text layout when using boxed mode in portfolio elements.', 'fusion-core' ),
 								'id'          => 'portfolio_layout_padding',
 								'choices'     => array(
 									'top'     => true,
@@ -1257,20 +1365,20 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 								),
 							),
 							'portfolio_pagination_type' => array(
-								'label'       => esc_html__( 'Pagination Type', 'Avada' ),
-								'description' => esc_html__( 'Controls the pagination type for portfolio elements.', 'Avada' ),
+								'label'       => esc_attr__( 'Pagination Type', 'fusion-core' ),
+								'description' => esc_attr__( 'Controls the pagination type for portfolio elements.', 'fusion-core' ),
 								'id'          => 'portfolio_pagination_type',
 								'default'     => 'pagination',
 								'type'        => 'radio-buttonset',
 								'choices'     => array(
-									'pagination'       => esc_html__( 'Pagination', 'Avada' ),
-									'infinite_scroll'  => esc_html__( 'Infinite Scroll', 'Avada' ),
-									'load_more_button' => esc_html__( 'Load More Button', 'Avada' ),
+									'pagination'       => esc_attr__( 'Pagination', 'fusion-core' ),
+									'infinite_scroll'  => esc_attr__( 'Infinite Scroll', 'fusion-core' ),
+									'load_more_button' => esc_attr__( 'Load More Button', 'fusion-core' ),
 								),
 							),
 							'portfolio_load_more_posts_button_bg_color' => array(
-								'label'       => esc_html__( 'Load More Posts Button Color', 'Avada' ),
-								'description' => esc_html__( 'Controls the background color of the load more button for ajax post loading for portfolio elements.', 'Avada' ),
+								'label'       => esc_attr__( 'Load More Posts Button Color', 'fusion-core' ),
+								'description' => esc_attr__( 'Controls the background color of the load more button for ajax post loading for portfolio elements.', 'fusion-core' ),
 								'id'          => 'portfolio_load_more_posts_button_bg_color',
 								'default'     => '#ebeaea',
 								'type'        => 'color-alpha',
@@ -1291,12 +1399,7 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 
 				global $wp_version, $content_media_query, $six_fourty_media_query, $three_twenty_six_fourty_media_query, $ipad_portrait_media_query, $fusion_settings, $dynamic_css_helpers, $fusion_library;
 
-				$elements = array(
-					'.fusion-portfolio .fusion-portfolio-boxed .fusion-portfolio-post-wrapper',
-					'.fusion-portfolio .fusion-portfolio-boxed .fusion-content-sep',
-					'.fusion-portfolio-one .fusion-portfolio-boxed .fusion-portfolio-post-wrapper',
-				);
-				$css['global'][ $dynamic_css_helpers->implode( $elements ) ]['border-color'] = $fusion_library->sanitize->color( $fusion_settings->get( 'sep_color' ) );
+				$css['global']['.fusion-portfolio.fusion-portfolio-boxed .fusion-portfolio-content-wrapper']['border-color'] = $fusion_library->sanitize->color( $fusion_settings->get( 'timeline_color' ) );
 
 				$css['global']['.fusion-filters .fusion-filter.fusion-active a']['color'] = $fusion_library->sanitize->color( $fusion_settings->get( 'primary_color' ) );
 				$css['global']['.fusion-filters .fusion-filter.fusion-active a']['border-color'] = $fusion_library->sanitize->color( $fusion_settings->get( 'primary_color' ) );
@@ -1354,557 +1457,757 @@ function fusion_element_portfolio() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'       => esc_attr__( 'Portfolio', 'fusion-core' ),
-		'shortcode'  => 'fusion_portfolio',
-		'icon'       => 'fusiona-insertpicture',
-		'preview'    => FUSION_CORE_PATH . '/shortcodes/previews/fusion-portfolio-preview.php',
-		'preview_id' => 'fusion-builder-block-module-portfolio-preview-template',
-		'params'     => array(
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Layout', 'fusion-core' ),
-				'description' => esc_attr__( 'Select the layout for the element.', 'fusion-core' ),
-				'param_name'  => 'layout',
-				'value'       => array(
-					'carousel'       => esc_attr__( 'Carousel', 'fusion-core' ),
-					'grid'           => esc_attr__( 'Grid', 'fusion-core' ),
-					'masonry'        => esc_attr__( 'Masonry', 'fusion-core' ),
+	fusion_builder_map(
+		array(
+			'name'       => esc_attr__( 'Portfolio', 'fusion-core' ),
+			'shortcode'  => 'fusion_portfolio',
+			'icon'       => 'fusiona-insertpicture',
+			'preview'    => FUSION_CORE_PATH . '/shortcodes/previews/fusion-portfolio-preview.php',
+			'preview_id' => 'fusion-builder-block-module-portfolio-preview-template',
+			'params'     => array(
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Layout', 'fusion-core' ),
+					'description' => esc_attr__( 'Select the layout for the element.', 'fusion-core' ),
+					'param_name'  => 'layout',
+					'value'       => array(
+						'carousel' => esc_attr__( 'Carousel', 'fusion-core' ),
+						'grid'     => esc_attr__( 'Grid', 'fusion-core' ),
+						'masonry'  => esc_attr__( 'Masonry', 'fusion-core' ),
+					),
+					'default'     => 'carousel',
 				),
-				'default'     => 'carousel',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Picture Size', 'fusion-core' ),
-				'description' => __( 'fixed = width and height will be fixed <br />auto = width and height will adjust to the image.', 'fusion-core' ),
-				'param_name'  => 'picture_size',
-				'value'       => array(
-					'default' => esc_attr__( 'Default', 'fusion-core' ),
-					'fixed'   => esc_attr__( 'Fixed', 'fusion-core' ),
-					'auto'    => esc_attr__( 'Auto', 'fusion-core' ),
-				),
-				'default'     => 'default',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'masonry',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Picture Size', 'fusion-core' ),
+					'description' => __( 'fixed = width and height will be fixed <br />auto = width and height will adjust to the image.', 'fusion-core' ),
+					'param_name'  => 'picture_size',
+					'value'       => array(
+						'default' => esc_attr__( 'Default', 'fusion-core' ),
+						'fixed'   => esc_attr__( 'Fixed', 'fusion-core' ),
+						'auto'    => esc_attr__( 'Auto', 'fusion-core' ),
+					),
+					'default'     => 'default',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'masonry',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Text Layout', 'fusion-core' ),
-				'description' => esc_attr__( 'Controls if the portfolio text content is displayed boxed or unboxed or is completely disabled.', 'fusion-core' ),
-				'param_name'  => 'text_layout',
-				'value'       => array(
-					'default' => esc_attr__( 'Default', 'fusion-core' ),
-					'no_text' => esc_attr__( 'No Text', 'fusion-core' ),
-					'boxed'   => esc_attr__( 'Boxed', 'fusion-core' ),
-					'unboxed' => esc_attr__( 'Unboxed', 'fusion-core' ),
-				),
-				'default'     => 'default',
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Columns', 'fusion-core' ),
-				'description' => __( 'Select the number of columns to display. With Carousel layout this specifies the maximum amount of columns. <strong>IMPORTANT:</strong> Masonry layout does not work with 1 column.', 'fusion-core' ),
-				'param_name'  => 'columns',
-				'value'       => '3',
-				'min'         => '1',
-				'max'         => '6',
-				'step'        => '1',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Content Position', 'fusion-core' ),
-				'description' => __( 'Select if title, terms and excerpts should be displayed below or next to the featured images.', 'fusion-core' ),
-				'param_name'  => 'one_column_text_position',
-				'default'     => 'below',
-				'value'       => array(
-					'below'   => esc_attr__( 'Below image', 'fusion-core' ),
-					'floated' => esc_attr__( 'Next to Image', 'fusion-core' ),
-				),
-				'dependency'  => array(
-					array(
-						'element'  => 'columns',
-						'value'    => '1',
-						'operator' => '==',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Text Layout', 'fusion-core' ),
+					'description' => esc_attr__( 'Controls if the portfolio text content is displayed boxed or unboxed or is completely disabled.', 'fusion-core' ),
+					'param_name'  => 'text_layout',
+					'value'       => array(
+						'default' => esc_attr__( 'Default', 'fusion-core' ),
+						'no_text' => esc_attr__( 'No Text', 'fusion-core' ),
+						'boxed'   => esc_attr__( 'Boxed', 'fusion-core' ),
+						'unboxed' => esc_attr__( 'Unboxed', 'fusion-core' ),
 					),
-					array(
-						'element'  => 'layout',
-						'value'    => 'grid',
-						'operator' => '==',
+					'default'     => 'default',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Column Spacing', 'fusion-core' ),
-				'description' => esc_attr__( 'Insert the amount of spacing between portfolio items without "px". ex: 7.', 'fusion-core' ),
-				'param_name'  => 'column_spacing',
-				'value'       => '20',
-				'min'         => '0',
-				'max'         => '300',
-				'step'        => '1',
-				'default'     => $fusion_settings->get( 'portfolio_column_spacing' ),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Posts Per Page', 'fusion-core' ),
-				'description' => esc_attr__( 'Select number of posts per page.  Set to -1 to display all. Set to 0 to use number of posts from Settings > Reading.', 'fusion-core' ),
-				'param_name'  => 'number_posts',
-				'value'       => '8',
-				'min'         => '-1',
-				'max'         => '25',
-				'step'        => '1',
-				'default'     => $fusion_settings->get( 'portfolio_items' ),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Portfolio Title Display', 'fusion-core' ),
-				'description' => esc_attr__( 'Controls what displays with the portfolio post title.', 'fusion-core' ),
-				'param_name'  => 'portfolio_title_display',
-				'value'       => array(
-					'default' => esc_attr__( 'Default', 'fusion-core' ),
-					'all'     => esc_attr__( 'Title and Categories', 'fusion-core' ),
-					'title'   => esc_attr__( 'Only Title', 'fusion-core' ),
-					'cats'    => esc_attr__( 'Only Categories', 'fusion-core' ),
-					'none'    => esc_attr__( 'None', 'fusion-core' ),
-				),
-				'default'     => 'all',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'carousel',
-						'operator' => '!=',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Grid Box Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the background color for the grid boxes. For grid layout this option will only work in boxed mode.', 'fusion-builder' ),
+					'param_name'  => 'grid_box_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'timeline_bg_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'text_layout',
+							'value'    => 'no_text',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Portfolio Text Alignment', 'fusion-core' ),
-				'description' => esc_attr__( 'Controls the alignment of the portfolio title, categories and excerpt text when using the Portfolio Text layouts.', 'fusion-core' ),
-				'param_name'  => 'portfolio_text_alignment',
-				'value'       => array(
-					'default' => esc_attr__( 'Default', 'fusion-core' ),
-					'left'    => esc_attr__( 'Left', 'fusion-core' ),
-					'center'  => esc_attr__( 'Center', 'fusion-core' ),
-					'right'   => esc_attr__( 'Right', 'fusion-core' ),
-				),
-				'default'     => 'left',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'carousel',
-						'operator' => '!=',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Grid Element Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the color of borders/date box/timeline dots and arrows for the grid boxes.', 'fusion-builder' ),
+					'param_name'  => 'grid_element_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'timeline_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'text_layout',
+							'value'    => 'unboxed',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'text_layout',
+							'value'    => 'no_text',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'dimension',
-				'heading'     => esc_attr__( 'Portfolio Text Layout Padding ', 'fusion-core' ),
-				'description' => esc_attr__( 'Controls the padding for the portfolio text layout when using boxed mode. Enter values including any valid CSS unit, ex: 25px, 25px, 25px, 25px.', 'fusion-core' ),
-				'param_name'  => 'portfolio_layout_padding',
-				'dependency'  => array(
-					array(
-						'element'  => 'text_layout',
-						'value'    => 'unboxed',
-						'operator' => '!=',
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Grid Separator Style', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the line style of grid separators.', 'fusion-builder' ),
+					'param_name'  => 'grid_separator_style_type',
+					'value'       => array(
+						''              => esc_attr__( 'Default', 'fusion-builder' ),
+						'none'          => esc_attr__( 'No Style', 'fusion-builder' ),
+						'single|solid'  => esc_attr__( 'Single Border Solid', 'fusion-builder' ),
+						'double|solid'  => esc_attr__( 'Double Border Solid', 'fusion-builder' ),
+						'single|dashed' => esc_attr__( 'Single Border Dashed', 'fusion-builder' ),
+						'double|dashed' => esc_attr__( 'Double Border Dashed', 'fusion-builder' ),
+						'single|dotted' => esc_attr__( 'Single Border Dotted', 'fusion-builder' ),
+						'double|dotted' => esc_attr__( 'Double Border Dotted', 'fusion-builder' ),
+						'shadow'        => esc_attr__( 'Shadow', 'fusion-builder' ),
 					),
-					array(
-						'element'  => 'layout',
-						'value'    => 'carousel',
-						'operator' => '!=',
-					),
-				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Filters', 'fusion-core' ),
-				'description' => esc_attr__( 'Choose to show or hide the category filters.', 'fusion-core' ),
-				'param_name'  => 'filters',
-				'value'       => array(
-					'yes'             => esc_attr__( 'Yes', 'fusion-core' ),
-					'yes-without-all' => __( 'Yes without "All"', 'fusion-core' ),
-					'no'              => esc_attr__( 'No', 'fusion-core' ),
-				),
-				'default'     => 'yes',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'carousel',
-						'operator' => '!=',
-					),
-				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Pull Posts By', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to show posts by category or tag.', 'fusion-builder' ),
-				'param_name'  => 'pull_by',
-				'default'     => 'category',
-				'value'       => array(
-					'category' => esc_attr__( 'Category', 'fusion-builder' ),
-					'tag'      => esc_attr__( 'Tag', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'multiple_select',
-				'heading'     => esc_attr__( 'Categories', 'fusion-core' ),
-				'description' => esc_attr__( 'Select categories or leave blank for all.', 'fusion-core' ),
-				'param_name'  => 'cat_slug',
-				'value'       => fusion_builder_shortcodes_categories( 'portfolio_category' ),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'pull_by',
-						'value'    => 'tag',
-						'operator' => '!=',
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'masonry',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'text_layout',
+							'value'    => 'unboxed',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'text_layout',
+							'value'    => 'no_text',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'multiple_select',
-				'heading'     => esc_attr__( 'Exclude Categories', 'fusion-core' ),
-				'description' => esc_attr__( 'Select categories to exclude.', 'fusion-core' ),
-				'param_name'  => 'exclude_cats',
-				'value'       => fusion_builder_shortcodes_categories( 'portfolio_category' ),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'pull_by',
-						'value'    => 'tag',
-						'operator' => '!=',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Grid Separator Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the line style color of grid separators.', 'fusion-builder' ),
+					'param_name'  => 'grid_separator_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'grid_separator_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'masonry',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'text_layout',
+							'value'    => 'unboxed',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'text_layout',
+							'value'    => 'no_text',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'multiple_select',
-				'heading'     => esc_attr__( 'Tags', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select a tag or leave blank for all.', 'fusion-builder' ),
-				'param_name'  => 'tag_slug',
-				'value'       => function_exists( 'fusion_builder_shortcodes_tags' ) ? fusion_builder_shortcodes_tags( 'portfolio_tags' ) : array(),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'pull_by',
-						'value'    => 'category',
-						'operator' => '!=',
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Columns', 'fusion-core' ),
+					'description' => __( 'Select the number of columns to display. With Carousel layout this specifies the maximum amount of columns. <strong>IMPORTANT:</strong> Masonry layout does not work with 1 column.', 'fusion-core' ),
+					'param_name'  => 'columns',
+					'value'       => '3',
+					'min'         => '1',
+					'max'         => '6',
+					'step'        => '1',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Content Position', 'fusion-core' ),
+					'description' => __( 'Select if title, terms and excerpts should be displayed below or next to the featured images.', 'fusion-core' ),
+					'param_name'  => 'one_column_text_position',
+					'default'     => 'below',
+					'value'       => array(
+						'below'   => esc_attr__( 'Below image', 'fusion-core' ),
+						'floated' => esc_attr__( 'Next to Image', 'fusion-core' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'columns',
+							'value'    => '1',
+							'operator' => '==',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'grid',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'multiple_select',
-				'heading'     => esc_attr__( 'Exclude Tags', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select a tag to exclude.', 'fusion-builder' ),
-				'param_name'  => 'exclude_tags',
-				'value'       => function_exists( 'fusion_builder_shortcodes_tags' ) ? fusion_builder_shortcodes_tags( 'portfolio_tags' ) : array(),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'pull_by',
-						'value'    => 'category',
-						'operator' => '!=',
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Column Spacing', 'fusion-core' ),
+					'description' => esc_attr__( 'Insert the amount of spacing between portfolio items without "px". ex: 7.', 'fusion-core' ),
+					'param_name'  => 'column_spacing',
+					'value'       => '20',
+					'min'         => '0',
+					'max'         => '300',
+					'step'        => '1',
+					'default'     => $fusion_settings->get( 'portfolio_column_spacing' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Equal Heights', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set to yes to display grid boxes with equal heights per row.', 'fusion-builder' ),
+					'param_name'  => 'equal_heights',
+					'default'     => 'no',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'grid',
+							'operator' => '==',
+						),
+						array(
+							'element'  => 'columns',
+							'value'    => 1,
+							'operator' => '>',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Pagination Type', 'fusion-core' ),
-				'description' => esc_attr__( 'Choose the type of pagination.', 'fusion-core' ),
-				'param_name'  => 'pagination_type',
-				'default'     => 'none',
-				'value'       => array(
-					'default'          => esc_attr__( 'Default', 'fusion-core' ),
-					'pagination'       => esc_attr__( 'Pagination', 'fusion-core' ),
-					'infinite'         => esc_attr__( 'Infinite Scrolling', 'fusion-core' ),
-					'load-more-button' => esc_attr__( 'Load More Button', 'fusion-core' ),
-					'none'             => esc_attr__( 'None', 'fusion-core' ),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Posts Per Page', 'fusion-core' ),
+					'description' => esc_attr__( 'Select number of posts per page.  Set to -1 to display all. Set to 0 to use number of posts from Settings > Reading.', 'fusion-core' ),
+					'param_name'  => 'number_posts',
+					'value'       => '',
+					'min'         => '-1',
+					'max'         => '25',
+					'step'        => '1',
+					'default'     => $fusion_settings->get( 'portfolio_items' ),
 				),
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'carousel',
-						'operator' => '!=',
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Portfolio Title Display', 'fusion-core' ),
+					'description' => esc_attr__( 'Controls what displays with the portfolio post title.', 'fusion-core' ),
+					'param_name'  => 'portfolio_title_display',
+					'value'       => array(
+						'default' => esc_attr__( 'Default', 'fusion-core' ),
+						'all'     => esc_attr__( 'Title and Categories', 'fusion-core' ),
+						'title'   => esc_attr__( 'Only Title', 'fusion-core' ),
+						'cats'    => esc_attr__( 'Only Categories', 'fusion-core' ),
+						'none'    => esc_attr__( 'None', 'fusion-core' ),
+					),
+					'default'     => 'all',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Hide URL Parameter', 'fusion-core' ),
-				'description' => esc_attr__( 'Turn on to remove portfolio category parameters in single post URLs. These are mainly used for single item pagination within selected categories.', 'fusion-core' ),
-				'param_name'  => 'hide_url_params',
-				'default'     => 'off',
-				'value'       => array(
-					'on'  => esc_attr__( 'On', 'fusion-core' ),
-					'off' => esc_attr__( 'Off', 'fusion-core' ),
-				),
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'carousel',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Portfolio Text Alignment', 'fusion-core' ),
+					'description' => esc_attr__( 'Controls the alignment of the portfolio title, categories and excerpt text when using the Portfolio Text layouts.', 'fusion-core' ),
+					'param_name'  => 'portfolio_text_alignment',
+					'value'       => array(
+						'default' => esc_attr__( 'Default', 'fusion-core' ),
+						'left'    => esc_attr__( 'Left', 'fusion-core' ),
+						'center'  => esc_attr__( 'Center', 'fusion-core' ),
+						'right'   => esc_attr__( 'Right', 'fusion-core' ),
+					),
+					'default'     => 'left',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Post Offset', 'fusion-core' ),
-				'description' => esc_attr__( 'The number of posts to skip. ex: 1.', 'fusion-core' ),
-				'param_name'  => 'offset',
-				'value'       => '0',
-				'min'         => '0',
-				'max'         => '25',
-				'step'        => '1',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Content Display', 'fusion-core' ),
-				'description' => esc_attr__( 'Choose to display an excerpt or full content.', 'fusion-core' ),
-				'param_name'  => 'content_length',
-				'value'       => array(
-					'default'      => esc_attr__( 'Default', 'fusion-core' ),
-					'excerpt'      => esc_attr__( 'Excerpt', 'fusion-core' ),
-					'full_content' => esc_attr__( 'Full Content', 'fusion-core' ),
-				),
-				'default'     => 'excerpt',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'carousel',
-						'operator' => '!=',
+				array(
+					'type'             => 'dimension',
+					'remove_from_atts' => true,
+					'heading'          => esc_attr__( 'Portfolio Text Layout Padding ', 'fusion-core' ),
+					'description'      => esc_attr__( 'Controls the padding for the portfolio text layout when using boxed mode. Enter values including any valid CSS unit, ex: 25px, 25px, 25px, 25px.', 'fusion-core' ),
+					'param_name'       => 'portfolio_layout_padding',
+					'value'            => array(
+						'padding_top'    => '',
+						'padding_right'  => '',
+						'padding_bottom' => '',
+						'padding_left'   => '',
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'text_layout',
+							'value'    => 'unboxed',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Excerpt Length', 'fusion-core' ),
-				'description' => esc_attr__( 'Insert the number of words/characters you want to show in the excerpt.', 'fusion-core' ),
-				'param_name'  => 'excerpt_length',
-				'value'       => '10',
-				'min'         => '0',
-				'max'         => '500',
-				'step'        => '1',
-				'default'     => $fusion_settings->get( 'excerpt_length_portfolio' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'content_length',
-						'value'    => 'full_content',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Filters', 'fusion-core' ),
+					'description' => esc_attr__( 'Choose to show or hide the category filters.', 'fusion-core' ),
+					'param_name'  => 'filters',
+					'value'       => array(
+						'yes'             => esc_attr__( 'Yes', 'fusion-core' ),
+						'yes-without-all' => __( 'Yes without "All"', 'fusion-core' ),
+						'no'              => esc_attr__( 'No', 'fusion-core' ),
 					),
-					array(
-						'element'  => 'layout',
-						'value'    => 'carousel',
-						'operator' => '!=',
+					'default'     => 'yes',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Strip HTML', 'fusion-core' ),
-				'description' => esc_attr__( 'Strip HTML from the post excerpt.', 'fusion-core' ),
-				'param_name'  => 'strip_html',
-				'value'       => array(
-					'default' => esc_attr__( 'Default', 'fusion-core' ),
-					'yes'     => esc_attr__( 'Yes', 'fusion-core' ),
-					'no'      => esc_attr__( 'No', 'fusion-core' ),
-				),
-				'default'     => 'yes',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'carousel',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'content_length',
-						'value'    => 'full_content',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Pull Posts By', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show posts by category or tag.', 'fusion-builder' ),
+					'param_name'  => 'pull_by',
+					'default'     => 'category',
+					'value'       => array(
+						'category' => esc_attr__( 'Category', 'fusion-builder' ),
+						'tag'      => esc_attr__( 'Tag', 'fusion-builder' ),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Carousel Layout', 'fusion-core' ),
-				'description' => esc_attr__( 'Choose to show titles on rollover image, or below image.', 'fusion-core' ),
-				'param_name'  => 'carousel_layout',
-				'value'       => array(
-					'title_below_image' => esc_attr__( 'Title below image', 'fusion-core' ),
-					'title_on_rollover' => esc_attr__( 'Title on rollover', 'fusion-core' ),
-				),
-				'default'     => 'title_on_rollover',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'carousel',
-						'operator' => '==',
+				array(
+					'type'        => 'multiple_select',
+					'heading'     => esc_attr__( 'Categories', 'fusion-core' ),
+					'description' => esc_attr__( 'Select categories or leave blank for all.', 'fusion-core' ),
+					'param_name'  => 'cat_slug',
+					'value'       => fusion_builder_shortcodes_categories( 'portfolio_category' ),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'pull_by',
+							'value'    => 'tag',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Carousel Scroll Items', 'fusion-core' ),
-				'description' => esc_attr__( 'Insert the amount of items to scroll. Leave empty to scroll number of visible items.', 'fusion-core' ),
-				'param_name'  => 'scroll_items',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'carousel',
-						'operator' => '==',
+				array(
+					'type'        => 'multiple_select',
+					'heading'     => esc_attr__( 'Exclude Categories', 'fusion-core' ),
+					'description' => esc_attr__( 'Select categories to exclude.', 'fusion-core' ),
+					'param_name'  => 'exclude_cats',
+					'value'       => fusion_builder_shortcodes_categories( 'portfolio_category' ),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'pull_by',
+							'value'    => 'tag',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Carousel Autoplay', 'fusion-core' ),
-				'description' => esc_attr__( 'Choose to autoplay the carousel.', 'fusion-core' ),
-				'param_name'  => 'autoplay',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-core' ),
-					'no'  => esc_attr__( 'No', 'fusion-core' ),
-				),
-				'default'     => 'no',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'carousel',
-						'operator' => '==',
+				array(
+					'type'        => 'multiple_select',
+					'heading'     => esc_attr__( 'Tags', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select a tag or leave blank for all.', 'fusion-builder' ),
+					'param_name'  => 'tag_slug',
+					'value'       => function_exists( 'fusion_builder_shortcodes_tags' ) ? fusion_builder_shortcodes_tags( 'portfolio_tags' ) : array(),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'pull_by',
+							'value'    => 'category',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Carousel Show Navigation', 'fusion-core' ),
-				'description' => esc_attr__( 'Choose to show navigation buttons on the carousel.', 'fusion-core' ),
-				'param_name'  => 'show_nav',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-core' ),
-					'no'  => esc_attr__( 'No', 'fusion-core' ),
-				),
-				'default'     => 'yes',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'carousel',
-						'operator' => '==',
+				array(
+					'type'        => 'multiple_select',
+					'heading'     => esc_attr__( 'Exclude Tags', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select a tag to exclude.', 'fusion-builder' ),
+					'param_name'  => 'exclude_tags',
+					'value'       => function_exists( 'fusion_builder_shortcodes_tags' ) ? fusion_builder_shortcodes_tags( 'portfolio_tags' ) : array(),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'pull_by',
+							'value'    => 'category',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Carousel Mouse Scroll', 'fusion-core' ),
-				'description' => esc_attr__( 'Choose to enable mouse drag control on the carousel.', 'fusion-core' ),
-				'param_name'  => 'mouse_scroll',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-core' ),
-					'no'  => esc_attr__( 'No', 'fusion-core' ),
-				),
-				'default'     => 'no',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'carousel',
-						'operator' => '==',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Pagination Type', 'fusion-core' ),
+					'description' => esc_attr__( 'Choose the type of pagination.', 'fusion-core' ),
+					'param_name'  => 'pagination_type',
+					'default'     => 'default',
+					'value'       => array(
+						'default'          => esc_attr__( 'Default', 'fusion-core' ),
+						'pagination'       => esc_attr__( 'Pagination', 'fusion-core' ),
+						'infinite'         => esc_attr__( 'Infinite Scrolling', 'fusion-core' ),
+						'load-more-button' => esc_attr__( 'Load More Button', 'fusion-core' ),
+						'none'             => esc_attr__( 'None', 'fusion-core' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Animation Type', 'fusion-core' ),
-				'description' => esc_attr__( 'Select the type of animation to use on the element.', 'fusion-core' ),
-				'param_name'  => 'animation_type',
-				'value'       => fusion_builder_available_animations(),
-				'default'     => '',
-				'group'       => esc_attr__( 'Animation', 'fusion-core' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Direction of Animation', 'fusion-core' ),
-				'description' => esc_attr__( 'Select the incoming direction for the animation.', 'fusion-core' ),
-				'param_name'  => 'animation_direction',
-				'value'       => array(
-					'down'   => esc_attr__( 'Top', 'fusion-core' ),
-					'right'  => esc_attr__( 'Right', 'fusion-core' ),
-					'up'     => esc_attr__( 'Bottom', 'fusion-core' ),
-					'left'   => esc_attr__( 'Left', 'fusion-core' ),
-					'static' => esc_attr__( 'Static', 'fusion-core' ),
-				),
-				'default'     => 'left',
-				'group'       => esc_attr__( 'Animation', 'fusion-core' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Hide URL Parameter', 'fusion-core' ),
+					'description' => esc_attr__( 'Turn on to remove portfolio category parameters in single post URLs. These are mainly used for single item pagination within selected categories.', 'fusion-core' ),
+					'param_name'  => 'hide_url_params',
+					'default'     => 'off',
+					'value'       => array(
+						'on'  => esc_attr__( 'On', 'fusion-core' ),
+						'off' => esc_attr__( 'Off', 'fusion-core' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Speed of Animation', 'fusion-core' ),
-				'description' => esc_attr__( 'Type in speed of animation in seconds (0.1 - 1).', 'fusion-core' ),
-				'param_name'  => 'animation_speed',
-				'min'         => '0.1',
-				'max'         => '1',
-				'step'        => '0.1',
-				'value'       => '0.3',
-				'group'       => esc_attr__( 'Animation', 'fusion-core' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Post Offset', 'fusion-core' ),
+					'description' => esc_attr__( 'The number of posts to skip. ex: 1.', 'fusion-core' ),
+					'param_name'  => 'offset',
+					'value'       => '0',
+					'min'         => '0',
+					'max'         => '25',
+					'step'        => '1',
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Order By', 'fusion-builder' ),
+					'description' => esc_attr__( 'Defines how portfolios should be ordered.', 'fusion-builder' ),
+					'param_name'  => 'orderby',
+					'default'     => 'date',
+					'value'       => array(
+						'date'          => esc_attr__( 'Date', 'fusion-builder' ),
+						'title'         => esc_attr__( 'Post Title', 'fusion-builder' ),
+						'menu_order'    => esc_attr__( 'Portfolio Order', 'fusion-builder' ),
+						'name'          => esc_attr__( 'Post Slug', 'fusion-builder' ),
+						'author'        => esc_attr__( 'Author', 'fusion-builder' ),
+						'comment_count' => esc_attr__( 'Number of Comments', 'fusion-builder' ),
+						'modified'      => esc_attr__( 'Last Modified', 'fusion-builder' ),
+						'rand'          => esc_attr__( 'Random', 'fusion-builder' ),
 					),
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Offset of Animation', 'fusion-core' ),
-				'description' => esc_attr__( 'Controls when the animation should start.', 'fusion-core' ),
-				'param_name'  => 'animation_offset',
-				'value'       => array(
-					''                => esc_attr__( 'Default', 'fusion-core' ),
-					'top-into-view'   => esc_attr__( 'Top of element hits bottom of viewport', 'fusion-core' ),
-					'top-mid-of-view' => esc_attr__( 'Top of element hits middle of viewport', 'fusion-core' ),
-					'bottom-in-view'  => esc_attr__( 'Bottom of element enters viewport', 'fusion-core' ),
-				),
-				'default'     => '',
-				'group'       => esc_attr__( 'Animation', 'fusion-core' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Order', 'fusion-builder' ),
+					'description' => esc_attr__( 'Defines the sorting order of portfolios.', 'fusion-builder' ),
+					'param_name'  => 'order',
+					'default'     => 'DESC',
+					'value'       => array(
+						'DESC' => esc_attr__( 'Descending', 'fusion-builder' ),
+						'ASC'  => esc_attr__( 'Ascending', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'orderby',
+							'value'    => 'rand',
+							'operator' => '!=',
+						),
 					),
 				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Text Display', 'fusion-core' ),
+					'description' => esc_attr__( 'Choose how to display the post excerpt.', 'fusion-core' ),
+					'param_name'  => 'content_length',
+					'value'       => array(
+						'default'      => esc_attr__( 'Default', 'fusion-core' ),
+						'no_text'      => esc_attr__( 'No Text', 'fusion-core' ),
+						'excerpt'      => esc_attr__( 'Excerpt', 'fusion-core' ),
+						'full_content' => esc_attr__( 'Full Content', 'fusion-core' ),
+					),
+					'default'     => 'excerpt',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'text_layout',
+							'value'    => 'no_text',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Excerpt Length', 'fusion-core' ),
+					'description' => esc_attr__( 'Insert the number of words/characters you want to show in the excerpt.', 'fusion-core' ),
+					'param_name'  => 'excerpt_length',
+					'value'       => '10',
+					'min'         => '0',
+					'max'         => '500',
+					'step'        => '1',
+					'default'     => $fusion_settings->get( 'excerpt_length_portfolio' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'content_length',
+							'value'    => 'no_text',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'content_length',
+							'value'    => 'full_content',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Strip HTML', 'fusion-core' ),
+					'description' => esc_attr__( 'Strip HTML from the post excerpt.', 'fusion-core' ),
+					'param_name'  => 'strip_html',
+					'value'       => array(
+						'default' => esc_attr__( 'Default', 'fusion-core' ),
+						'yes'     => esc_attr__( 'Yes', 'fusion-core' ),
+						'no'      => esc_attr__( 'No', 'fusion-core' ),
+					),
+					'default'     => 'yes',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'content_length',
+							'value'    => 'no_text',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Carousel Layout', 'fusion-core' ),
+					'description' => esc_attr__( 'Choose to show titles on rollover image, or below image.', 'fusion-core' ),
+					'param_name'  => 'carousel_layout',
+					'value'       => array(
+						'title_below_image' => esc_attr__( 'Title below image', 'fusion-core' ),
+						'title_on_rollover' => esc_attr__( 'Title on rollover', 'fusion-core' ),
+					),
+					'default'     => 'title_on_rollover',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Carousel Scroll Items', 'fusion-core' ),
+					'description' => esc_attr__( 'Insert the amount of items to scroll. Leave empty to scroll number of visible items.', 'fusion-core' ),
+					'param_name'  => 'scroll_items',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Carousel Autoplay', 'fusion-core' ),
+					'description' => esc_attr__( 'Choose to autoplay the carousel.', 'fusion-core' ),
+					'param_name'  => 'autoplay',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-core' ),
+						'no'  => esc_attr__( 'No', 'fusion-core' ),
+					),
+					'default'     => 'no',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Carousel Show Navigation', 'fusion-core' ),
+					'description' => esc_attr__( 'Choose to show navigation buttons on the carousel.', 'fusion-core' ),
+					'param_name'  => 'show_nav',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-core' ),
+						'no'  => esc_attr__( 'No', 'fusion-core' ),
+					),
+					'default'     => 'yes',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Carousel Mouse Scroll', 'fusion-core' ),
+					'description' => esc_attr__( 'Choose to enable mouse drag control on the carousel.', 'fusion-core' ),
+					'param_name'  => 'mouse_scroll',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-core' ),
+						'no'  => esc_attr__( 'No', 'fusion-core' ),
+					),
+					'default'     => 'no',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'carousel',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Animation Type', 'fusion-core' ),
+					'description' => esc_attr__( 'Select the type of animation to use on the element.', 'fusion-core' ),
+					'param_name'  => 'animation_type',
+					'value'       => fusion_builder_available_animations(),
+					'default'     => '',
+					'group'       => esc_attr__( 'Animation', 'fusion-core' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Direction of Animation', 'fusion-core' ),
+					'description' => esc_attr__( 'Select the incoming direction for the animation.', 'fusion-core' ),
+					'param_name'  => 'animation_direction',
+					'value'       => array(
+						'down'   => esc_attr__( 'Top', 'fusion-core' ),
+						'right'  => esc_attr__( 'Right', 'fusion-core' ),
+						'up'     => esc_attr__( 'Bottom', 'fusion-core' ),
+						'left'   => esc_attr__( 'Left', 'fusion-core' ),
+						'static' => esc_attr__( 'Static', 'fusion-core' ),
+					),
+					'default'     => 'left',
+					'group'       => esc_attr__( 'Animation', 'fusion-core' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Speed of Animation', 'fusion-core' ),
+					'description' => esc_attr__( 'Type in speed of animation in seconds (0.1 - 1).', 'fusion-core' ),
+					'param_name'  => 'animation_speed',
+					'min'         => '0.1',
+					'max'         => '1',
+					'step'        => '0.1',
+					'value'       => '0.3',
+					'group'       => esc_attr__( 'Animation', 'fusion-core' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Offset of Animation', 'fusion-core' ),
+					'description' => esc_attr__( 'Controls when the animation should start.', 'fusion-core' ),
+					'param_name'  => 'animation_offset',
+					'value'       => array(
+						''                => esc_attr__( 'Default', 'fusion-core' ),
+						'top-into-view'   => esc_attr__( 'Top of element hits bottom of viewport', 'fusion-core' ),
+						'top-mid-of-view' => esc_attr__( 'Top of element hits middle of viewport', 'fusion-core' ),
+						'bottom-in-view'  => esc_attr__( 'Bottom of element enters viewport', 'fusion-core' ),
+					),
+					'default'     => '',
+					'group'       => esc_attr__( 'Animation', 'fusion-core' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-core' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-core' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-core' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-core' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-core' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-core' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-core' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-core' ),
+				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-core' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-core' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-core' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-core' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-core' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-core' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-core' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-core' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'wp_loaded', 'fusion_element_portfolio' );

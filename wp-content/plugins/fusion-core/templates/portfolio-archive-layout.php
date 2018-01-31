@@ -9,6 +9,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'Direct script access denied.' );
 }
+if ( ! class_exists( 'Avada' ) ) {
+	exit( 'This feature requires the Avada theme.' );
+}
 ?>
 <?php
 global $wp_query, $fusion_library;
@@ -17,6 +20,8 @@ global $wp_query, $fusion_library;
 $portfolio_layout_setting       = Avada()->settings->get( 'portfolio_archive_layout' );
 $portfolio_one_column_text_pos  = Avada()->settings->get( 'portfolio_archive_one_column_text_position' );
 $portfolio_text_layout          = Avada()->settings->get( 'portfolio_archive_text_layout' );
+$portfolio_content_length       = Avada()->settings->get( 'portfolio_archive_content_length' );
+$portfolio_text_alignment       = Avada()->settings->get( 'portfolio_archive_text_alignment' );
 $portfolio_columns_int          = Avada()->settings->get( 'portfolio_archive_columns' );
 $portfolio_column_spacing       = Avada()->settings->get( 'portfolio_archive_column_spacing' );
 $portfolio_pagination_type      = Avada()->settings->get( 'portfolio_archive_pagination_type' );
@@ -51,7 +56,7 @@ switch ( $portfolio_columns_int ) {
 $portfolio_layout         = 'fusion-portfolio-' . $portfolio_columns;
 
 // Set the portfolio main classes.
-$portfolio_classes[] = 'fusion-portfolio';
+$portfolio_classes[] = 'fusion-portfolio fusion-portfolio-archive';
 $portfolio_classes[] = 'fusion-portfolio-layout-' . $portfolio_layout_setting;
 $portfolio_classes[] = $portfolio_layout;
 
@@ -68,6 +73,7 @@ if ( 'one' === $portfolio_columns ) {
 if ( 'no_text' !== $portfolio_text_layout ) {
 	$portfolio_classes[]   = 'fusion-portfolio-' . $portfolio_text_layout;
 	$portfolio_classes[] = 'fusion-portfolio-text';
+	$portfolio_classes[] = 'fusion-portfolio-text-' . $portfolio_text_alignment;
 }
 
 // Add class if rollover is enabled.
@@ -96,7 +102,7 @@ $post_featured_image_size_dimensions = avada_get_image_size_dimensions( $portfol
 
 // Get the column spacing.
 $column_spacing_class = ' fusion-col-spacing';
-$column_spacing = ' style="padding:' . $portfolio_column_spacing / 2 . 'px;"';
+$column_spacing = ' style="padding:' . ( (int) ( $portfolio_column_spacing / 2 ) ) . 'px;"';
 
 if ( 'one' === $portfolio_columns && 'grid' === $portfolio_layout_setting ) {
 	$column_spacing_class = $column_spacing = '';
@@ -107,6 +113,10 @@ if ( 'load_more_button' === $portfolio_pagination_type ) {
 	$portfolio_classes[] = 'fusion-portfolio-paging-load-more-button';
 } else if ( 'infinite_scroll' === $portfolio_pagination_type ) {
 	$portfolio_classes[] = 'fusion-portfolio-paging-infinite';
+}
+
+if ( Avada()->settings->get( 'portfolio_equal_heights' ) && 'grid' === $portfolio_layout_setting ) {
+	$portfolio_classes[] = 'fusion-portfolio-equal-heights';
 }
 
 // Get the correct ID of the archive.
@@ -139,9 +149,13 @@ if ( 'no_text' !== $portfolio_text_layout ) {
 	<?php endif; ?>
 
 	<div class="fusion-portfolio-wrapper" data-picturesize="<?php echo ( 'full' !== $portfolio_image_size ) ? 'fixed' : 'auto'; ?>" data-pages="<?php echo esc_attr( $wp_query->max_num_pages ); ?>">
-		<article class="fusion-portfolio-post fusion-grid-sizer"></article>
 
-		<?php while ( have_posts() ) : the_post(); ?>
+		<?php if ( 'masonry' === $portfolio_layout_setting ) : ?>
+		<article class="fusion-portfolio-post fusion-grid-sizer"></article>
+		<?php endif; ?>
+
+		<?php while ( have_posts() ) : ?>
+			<?php the_post(); ?>
 
 			<?php if ( Avada()->settings->get( 'featured_image_placeholder' ) || has_post_thumbnail() ) : ?>
 				<?php
@@ -244,11 +258,13 @@ if ( 'no_text' !== $portfolio_text_layout ) {
 						<?php else : ?>
 							<?php
 							if ( 'full' === $portfolio_image_size && class_exists( 'Avada' ) && property_exists( Avada(), 'images' ) ) {
-								Avada()->images->set_grid_image_meta( array(
-									'layout' => 'portfolio_full',
-									'columns' => $responsive_images_columns,
-									'gutter_width' => $portfolio_column_spacing,
-								) );
+								Avada()->images->set_grid_image_meta(
+									array(
+										'layout'       => 'portfolio_full',
+										'columns'      => $responsive_images_columns,
+										'gutter_width' => $portfolio_column_spacing,
+									)
+								);
 							}
 							// @codingStandardsIgnoreLine
 							echo fusion_render_first_featured_image_markup( $post->ID, $portfolio_image_size, get_permalink( $post->ID ), true, false, false, 'default', 'default', '', '', 'yes', false, $masonry_attributes );
@@ -288,7 +304,7 @@ if ( 'no_text' !== $portfolio_text_layout ) {
 								?>
 								<?php
 								if ( $categories ) {
-									echo '<h4>' . get_the_term_list( $post->ID, 'portfolio_category', '', ', ', '' ) . '</h4>';
+									echo '<div class="fusion-portfolio-meta">' . get_the_term_list( $post->ID, 'portfolio_category', '', ', ', '' ) . '</div>';
 								}
 								?>
 								<?php echo fusion_render_rich_snippets_for_pages( false ); // WPCS: XSS ok. ?>
@@ -297,13 +313,18 @@ if ( 'no_text' !== $portfolio_text_layout ) {
 								 * For boxed layouts add a content separator if there is a post content and either categories or title is used.
 								 */
 								?>
-								<?php if ( 'masonry' !== $portfolio_layout_setting && 'boxed' === $portfolio_text_layout && '0' !== fusion_get_portfolio_excerpt_length( $post->ID ) && ( $title || $categories ) ) : ?>
+								<?php if ( 'masonry' !== $portfolio_layout_setting && 'boxed' === $portfolio_text_layout && '0' !== fusion_get_portfolio_excerpt_length( $post->ID ) && 'no_text' !== $portfolio_content_length && ( $title || $categories ) ) : ?>
 									<?php
-									$separator_styles_array = explode( '|', $fusion_settings->get( 'separator_style_type' ) );
+									$separator_styles_array = explode( '|', $fusion_settings->get( 'grid_separator_style_type' ) );
 									$separator_styles = '';
 
 									foreach ( $separator_styles_array as $separator_style ) {
 										$separator_styles .= ' sep-' . $separator_style;
+									}
+
+									$border_color = Fusion_Color::new_color( $fusion_settings->get( 'grid_separator_color' ) );
+									if ( 0 === $border_color->alpha || 'transparent' === $fusion_settings->get( 'grid_separator_color' ) ) {
+										$separator_styles .= ' sep-transparent';
 									}
 									?>
 									<div class="fusion-content-sep<?php echo esc_attr( $separator_styles ); ?>"></div>
@@ -325,7 +346,8 @@ if ( 'no_text' !== $portfolio_text_layout ) {
 									 */
 									?>
 									<?php if ( 'one' === $portfolio_columns && 'grid' === $portfolio_layout_setting ) : ?>
-										<div class="fusion-portfolio-buttons">
+										<?php $button_span_class = ( 'yes' === $fusion_settings->get( 'button_span' ) ) ? ' fusion-portfolio-buttons-full' : ''; ?>
+										<div class="fusion-portfolio-buttons<?php echo $button_span_class; ?>">
 											<?php
 											/**
 											 * Render "Learn More" button.
@@ -384,7 +406,7 @@ if ( 'no_text' !== $portfolio_text_layout ) {
 	 * Render the pagination.
 	 */
 	?>
-	<?php fusion_pagination( '', 2 ); ?>
+	<?php echo fusion_pagination( '', 2 ); // WPCS: XSS ok. ?>
 	<?php
 	/**
 	 * If infinite scroll with "load more" button is used.

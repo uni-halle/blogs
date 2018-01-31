@@ -58,26 +58,84 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 			 */
 			public function render( $args, $content = '' ) {
 
-				global $fusion_settings;
+				global $fusion_settings, $fusion_library;
 
 				$defaults = FusionBuilder::set_shortcode_defaults(
 					array(
-						'hide_on_mobile' => fusion_builder_default_visibility( 'string' ),
-						'class'          => '',
-						'id'             => '',
-						'cats_slug'      => '',
-						'exclude_cats'   => '',
-						'featured_image' => $fusion_settings->get( 'faq_featured_image' ),
-						'filters'        => $fusion_settings->get( 'faq_filters' ),
+						'hide_on_mobile'   => fusion_builder_default_visibility( 'string' ),
+						'class'            => '',
+						'id'               => '',
+						'cats_slug'        => '',
+						'exclude_cats'     => '',
+						'order'            => 'DESC',
+						'orderby'          => 'date',
+						'featured_image'   => $fusion_settings->get( 'faq_featured_image' ),
+						'filters'          => $fusion_settings->get( 'faq_filters' ),
+						'type'             => ( '' !== $fusion_settings->get( 'faq_accordion_type' ) ) ? $fusion_settings->get( 'faq_accordion_type' ) : 'accordions',
+						'boxed_mode'       => ( '' !== $fusion_settings->get( 'faq_accordion_boxed_mode' ) ) ? $fusion_settings->get( 'faq_accordion_boxed_mode' ) : 'no',
+						'border_size'      => intval( $fusion_settings->get( 'faq_accordion_border_size' ) ) . 'px',
+						'border_color'     => ( '' !== $fusion_settings->get( 'faq_accordian_border_color' ) ) ? $fusion_settings->get( 'faq_accordian_border_color' ) : '#cccccc',
+						'background_color' => ( '' !== $fusion_settings->get( 'faq_accordian_background_color' ) ) ? $fusion_settings->get( 'faq_accordian_background_color' ) : '#ffffff',
+						'hover_color'      => ( '' !== $fusion_settings->get( 'faq_accordian_hover_color' ) ) ? $fusion_settings->get( 'faq_accordian_hover_color' ) : $fusion_library->sanitize->color( $fusion_settings->get( 'primary_color' ) ),
+						'divider_line'     => $fusion_settings->get( 'faq_accordion_divider_line' ),
+						'icon_size'        => ( '' !== $fusion_settings->get( 'faq_accordion_icon_size' ) ) ? $fusion_settings->get( 'faq_accordion_icon_size' ) : '13px',
+						'icon_color'       => ( '' !== $fusion_settings->get( 'faq_accordian_icon_color' ) ) ? $fusion_settings->get( 'faq_accordian_icon_color' ) : '#ffffff',
+						'icon_boxed_mode'  => ( '' !== $fusion_settings->get( 'faq_accordion_icon_boxed' ) ) ? $fusion_settings->get( 'faq_accordion_icon_boxed' ) : 'no',
+						'icon_alignment'   => ( '' !== $fusion_settings->get( 'faq_accordion_icon_align' ) ) ? $fusion_settings->get( 'faq_accordion_icon_align' ) : 'left',
 					), $args
 				);
 
-				$defaults['cat_slugs'] = $defaults['cats_slug'];
+				$defaults['border_size'] = FusionBuilder::validate_shortcode_attr_value( $defaults['border_size'], 'px' );
+				$defaults['icon_size']   = FusionBuilder::validate_shortcode_attr_value( $defaults['icon_size'], 'px' );
+				$defaults['cat_slugs']   = $defaults['cats_slug'];
 
 				// @codingStandardsIgnoreLine
 				extract( $defaults );
 
 				self::$args = $defaults;
+
+				$style_tag = $styles = '';
+
+				if ( '1' == self::$args['boxed_mode'] || 'yes' === self::$args['boxed_mode'] ) {
+
+					if ( ! empty( self::$args['hover_color'] ) ) {
+						$styles .= '#accordian-' . $this->faq_counter . ' .fusion-panel:hover{ background-color: ' . self::$args['hover_color'] . ' }';
+					}
+
+					$styles .= ' #accordian-' . $this->faq_counter . ' .fusion-panel {';
+
+					if ( ! empty( self::$args['border_color'] ) ) {
+						$styles .= ' border-color:' . self::$args['border_color'] . ';';
+					}
+
+					if ( ! empty( self::$args['border_size'] ) ) {
+						$styles .= ' border-width:' . self::$args['border_size'] . ';';
+					}
+
+					if ( ! empty( self::$args['background_color'] ) ) {
+						$styles .= ' background-color:' . self::$args['background_color'] . ';';
+					}
+
+					$styles .= ' }';
+				}
+
+				if ( ! empty( self::$args['icon_size'] ) ) {
+					$styles .= '.fusion-accordian  #accordian-' . $this->faq_counter . ' .panel-title a .fa-fusion-box:before{ font-size: ' . self::$args['icon_size'] . ';}';
+				}
+
+				if ( ! empty( self::$args['icon_color'] ) ) {
+					$styles .= '.fusion-accordian  #accordian-' . $this->faq_counter . ' .panel-title a .fa-fusion-box{ color: ' . self::$args['icon_color'] . ';}';
+				}
+
+				if ( ! empty( self::$args['icon_alignment'] ) && 'right' === self::$args['icon_alignment'] ) {
+					$styles .= '.fusion-accordian  #accordian-' . $this->faq_counter . '.fusion-toggle-icon-right .fusion-toggle-heading{ margin-right: ' . FusionBuilder::validate_shortcode_attr_value( intval( self::$args['icon_size'] ) + 18, 'px' ) . ';}';
+				}
+
+				if ( $styles ) {
+
+					$style_tag = '<style type="text/css" scoped="scoped">' . $styles . '</style>';
+
+				}
 
 				// Transform $cat_slugs to array.
 				if ( $cat_slugs ) {
@@ -100,6 +158,8 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 					'post_type'      => 'avada_faq',
 					'posts_per_page' => -1,
 					'has_password'   => false,
+					'orderby'        => $orderby,
+					'order'          => $order,
 				);
 
 				// Check if the are categories that should be excluded.
@@ -140,7 +200,8 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 
 				$class = fusion_builder_visibility_atts( $hide_on_mobile, $class );
 
-				$html = '<div class="fusion-faq-shortcode ' . $class . '">';
+				$html  = $style_tag;
+				$html .= '<div class="fusion-faq-shortcode ' . $class . '">';
 
 				// Setup the filters.
 				$faq_terms = get_terms( 'faq_category' );
@@ -190,13 +251,24 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 					return fusion_builder_placeholder( 'avada_faq', 'FAQ posts' );
 				}
 
+				$wrapper_classes = '';
+
+				if ( 'right' == self::$args['icon_alignment'] ) {
+					$wrapper_classes .= ' fusion-toggle-icon-right';
+				}
+
+				if ( '0' == self::$args['icon_boxed_mode'] || 'no' === self::$args['icon_boxed_mode'] ) {
+					$wrapper_classes .= ' fusion-toggle-icon-unboxed';
+				}
+
 				$html .= '<div class="fusion-faqs-wrapper">';
 				$html .= '<div class="accordian fusion-accordian">';
-				$html .= '<div class="panel-group" id="accordian-' . $this->faq_counter . '">';
+				$html .= '<div class="panel-group ' . $wrapper_classes . '" id="accordian-' . $this->faq_counter . '">';
 
 				$this_post_id = get_the_ID();
 
-				while ( $faq_items->have_posts() ) :  $faq_items->the_post();
+				while ( $faq_items->have_posts() ) :
+					$faq_items->the_post();
 
 					// If used on a faq item itself, thzis is needed to prevent an infinite loop.
 					if ( get_the_ID() === $this_post_id ) {
@@ -205,6 +277,7 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 
 					// Get all terms of the post and it as classes; needed for filtering.
 					$post_classes = '';
+					$item_classes = '';
 					$post_id = get_the_ID();
 					$post_terms = get_the_terms( $post_id, 'faq_category' );
 					if ( $post_terms ) {
@@ -213,14 +286,25 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 						}
 					}
 
-					$html .= '<div class="fusion-panel panel-default fusion-faq-post ' . $post_classes . '">';
+					if ( '1' == self::$args['boxed_mode'] || 'yes' === self::$args['boxed_mode'] ) {
+						$item_classes .= ' fusion-toggle-no-divider fusion-toggle-boxed-mode';
+					} elseif ( '0' == self::$args['divider_line'] || 'no' === self::$args['divider_line'] ) {
+						$item_classes .= ' fusion-toggle-no-divider';
+					}
+
+					$html .= '<div class="fusion-panel' . $item_classes . ' panel-default fusion-faq-post ' . $post_classes . '">';
 					// Get the rich snippets for the post.
 					$html .= avada_render_rich_snippets_for_pages();
 
 					$html .= '<div class="panel-heading">';
 					$html .= '<h4 class="panel-title toggle">';
-					$html .= '<a data-toggle="collapse" class="collapsed" data-parent="#accordian-' . $this->faq_counter . '" data-target="#collapse-' . $this->faq_counter . '-' . $post_id . '" href="#collapse-' . $this->faq_counter . '-' . $post_id . '">';
-					$html .= '<div class="fusion-toggle-icon-wrapper"><i class="fa-fusion-box"></i></div>';
+					if ( 'toggles' === self::$args['type'] ) {
+						$html .= '<a data-toggle="collapse" class="collapsed" data-target="#collapse-' . $this->faq_counter . '-' . $post_id . '" href="#collapse-' . $this->faq_counter . '-' . $post_id . '">';
+					} else {
+						$html .= '<a data-toggle="collapse" class="collapsed" data-parent="#accordian-' . $this->faq_counter . '" data-target="#collapse-' . $this->faq_counter . '-' . $post_id . '" href="#collapse-' . $this->faq_counter . '-' . $post_id . '">';
+					}
+
+					$html .= '<div class="fusion-toggle-icon-wrapper"><div class="fusion-toggle-icon-wrapper-main"><div class="fusion-toggle-icon-wrapper-sub"><i class="fa-fusion-box"></i></div></div></div>';
 					$html .= '<div class="fusion-toggle-heading">' . get_the_title() . '</div>';
 					$html .= '</a>';
 					$html .= '</h4>';
@@ -289,6 +373,8 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 			 */
 			public function add_options() {
 
+				global $fusion_settings, $fusion_library;
+
 				if ( ! class_exists( 'Fusion_Settings' ) ) {
 					return;
 				}
@@ -322,6 +408,148 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 									'no'              => esc_html__( 'Hide', 'fusion-core' ),
 								),
 								'option_name' => $option_name,
+							),
+							'faq_accordion_type' => array(
+								'label'       => esc_html__( 'FAQs in Toggles or Accordions', 'fusion-builder' ),
+								'description' => esc_html__( 'Toggles allow several items to be open at a time. Accordions only allow one item to be open at a time.', 'fusion-builder' ),
+								'id'          => 'faq_accordion_type',
+								'default'     => 'accordions',
+								'type'        => 'radio-buttonset',
+								'choices'     => array(
+									'toggles'    => esc_html__( 'Toggles', 'fusion-builder' ),
+									'accordions' => esc_html__( 'Accordions', 'fusion-builder' ),
+								),
+							),
+							'faq_accordion_boxed_mode' => array(
+								'label'       => esc_html__( 'FAQ Items in Boxed Mode', 'fusion-builder' ),
+								'description' => esc_html__( 'Turn on to display items in boxed mode. FAQ Item divider line must be disabled for this option to work.', 'fusion-builder' ),
+								'id'          => 'faq_accordion_boxed_mode',
+								'default'     => '0',
+								'type'        => 'switch',
+							),
+							'faq_accordion_border_size' => array(
+								'label'       => esc_html__( 'FAQ Item Boxed Mode Border Width', 'fusion-builder' ),
+								'description' => esc_html__( 'Controls the border size of the FAQ item.', 'fusion-builder' ),
+								'id'          => 'faq_accordion_border_size',
+								'default'     => '1',
+								'type'        => 'slider',
+								'required'    => array(
+									array(
+										'setting'  => 'faq_accordion_boxed_mode',
+										'operator' => '!=',
+										'value'    => '0',
+									),
+								),
+								'choices'     => array(
+									'min'  => '0',
+									'max'  => '20',
+									'step' => '1',
+								),
+							),
+							'faq_accordian_border_color' => array(
+								'label'       => esc_html__( 'FAQ Item Boxed Mode Border Color', 'fusion-builder' ),
+								'description' => esc_html__( 'Controls the border color of the FAQ item.', 'fusion-builder' ),
+								'id'          => 'faq_accordian_border_color',
+								'default'     => '#cccccc',
+								'type'        => 'color-alpha',
+								'required'    => array(
+									array(
+										'setting'  => 'faq_accordion_boxed_mode',
+										'operator' => '!=',
+										'value'    => '0',
+									),
+								),
+							),
+							'faq_accordian_background_color' => array(
+								'label'       => esc_html__( 'FAQ Item Boxed Mode Background Color', 'fusion-builder' ),
+								'description' => esc_html__( 'Controls the background color of the FAQ item.', 'fusion-builder' ),
+								'id'          => 'faq_accordian_background_color',
+								'default'     => '#ffffff',
+								'type'        => 'color-alpha',
+								'required'    => array(
+									array(
+										'setting'  => 'faq_accordion_boxed_mode',
+										'operator' => '!=',
+										'value'    => '0',
+									),
+								),
+							),
+							'faq_accordian_hover_color' => array(
+								'label'       => esc_html__( 'FAQ Item Boxed Mode Background Hover Color', 'fusion-builder' ),
+								'description' => esc_html__( 'Controls the background hover color of the FAQ item.', 'fusion-builder' ),
+								'id'          => 'faq_accordian_hover_color',
+								'default'     => '#f9f9f9',
+								'type'        => 'color-alpha',
+								'required'    => array(
+									array(
+										'setting'  => 'faq_accordion_boxed_mode',
+										'operator' => '!=',
+										'value'    => '0',
+									),
+								),
+							),
+							'faq_accordion_divider_line' => array(
+								'label'       => esc_html__( 'FAQ Item Divider Line', 'fusion-builder' ),
+								'description' => esc_html__( 'Turn on to display a divider line between each item.', 'fusion-builder' ),
+								'id'          => 'faq_accordion_divider_line',
+								'default'     => '1',
+								'type'        => 'switch',
+								'required'    => array(
+									array(
+										'setting'  => 'faq_accordion_boxed_mode',
+										'operator' => '!=',
+										'value'    => '1',
+									),
+								),
+							),
+							'faq_accordian_inactive_color' => array(
+								'label'       => esc_html__( 'FAQ Item Inactive Box Color', 'fusion-builder' ),
+								'description' => esc_html__( 'Controls the color of the inactive FAQ box.', 'fusion-builder' ),
+								'id'          => 'faq_accordian_inactive_color',
+								'default'     => '#333333',
+								'type'        => 'color-alpha',
+							),
+							'faq_accordian_active_color' => array(
+								'label'       => esc_html__( 'FAQ Item Active Box Color', 'fusion-builder' ),
+								'description' => esc_html__( 'Controls the color of the active FAQ box.', 'fusion-builder' ),
+								'id'          => 'faq_accordian_active_color',
+								'default'     => $fusion_library->sanitize->color( $fusion_settings->get( 'primary_color' ) ),
+								'type'        => 'color-alpha',
+							),
+							'faq_accordion_icon_size' => array(
+								'label'       => esc_html__( 'FAQ Item Icon Size', 'fusion-builder' ),
+								'description' => esc_html__( 'Set the size of the icon.', 'fusion-builder' ),
+								'id'          => 'faq_accordion_icon_size',
+								'default'     => '13',
+								'min'         => '1',
+								'max'         => '40',
+								'step'        => '1',
+								'type'        => 'slider',
+							),
+							'faq_accordian_icon_color' => array(
+								'label'       => esc_html__( 'FAQ Item Icon Color', 'fusion-builder' ),
+								'description' => esc_html__( 'Controls the color of icon in FAQ box.', 'fusion-builder' ),
+								'id'          => 'faq_accordian_icon_color',
+								'default'     => '#ffffff',
+								'type'        => 'color-alpha',
+							),
+							'faq_accordion_icon_boxed' => array(
+								'label'       => esc_html__( 'FAQ Item Icon Boxed Mode', 'fusion-builder' ),
+								'description' => esc_html__( 'Turn on to display icon in boxed mode.', 'fusion-builder' ),
+								'id'          => 'faq_accordion_icon_boxed',
+								'default'     => '1',
+								'type'        => 'switch',
+							),
+							'faq_accordion_icon_align' => array(
+								'label'       => esc_html__( 'FAQ Item Icon Alignment', 'fusion-builder' ),
+								'description' => esc_html__( 'Controls the alignment of the icon.', 'fusion-builder' ),
+								'id'          => 'faq_accordion_icon_align',
+								'default'     => 'left',
+								'type'        => 'radio-buttonset',
+								'choices'     => array(
+									'left'    => esc_html__( 'Left', 'fusion-builder' ),
+									'right'   => esc_html__( 'Right', 'fusion-builder' ),
+								),
 							),
 						),
 					),
@@ -378,79 +606,270 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
  * @since 1.0
  */
 function fusion_element_faq() {
-	fusion_builder_map( array(
-		'name'       => esc_attr__( 'FAQ', 'fusion-core' ),
-		'shortcode'  => 'fusion_faq',
-		'icon'       => 'fa fa-lg fa-info-circle',
-		'preview'    => FUSION_CORE_PATH . '/shortcodes/previews/fusion-faq-preview.php',
-		'preview_id' => 'fusion-builder-block-module-faq-preview-template',
-		'params'     => array(
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Display Filters', 'fusion-core' ),
-				'description' => esc_attr__( 'Display the FAQ filters.', 'fusion-core' ),
-				'param_name'  => 'filters',
-				'value'       => array(
-					''                => esc_attr__( 'Default', 'fusion-core' ),
-					'yes'             => esc_attr__( 'Show', 'fusion-core' ),
-					'yes-without-all' => __( 'Show without "All"', 'fusion-core' ),
-					'no'              => esc_attr__( 'Hide', 'fusion-core' ),
+	global $fusion_settings;
+	fusion_builder_map(
+		array(
+			'name'       => esc_attr__( 'FAQ', 'fusion-core' ),
+			'shortcode'  => 'fusion_faq',
+			'icon'       => 'fa fa-lg fa-info-circle',
+			'preview'    => FUSION_CORE_PATH . '/shortcodes/previews/fusion-faq-preview.php',
+			'preview_id' => 'fusion-builder-block-module-faq-preview-template',
+			'params'     => array(
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Display Filters', 'fusion-core' ),
+					'description' => esc_attr__( 'Display the FAQ filters.', 'fusion-core' ),
+					'param_name'  => 'filters',
+					'value'       => array(
+						''                => esc_attr__( 'Default', 'fusion-core' ),
+						'yes'             => esc_attr__( 'Show', 'fusion-core' ),
+						'yes-without-all' => __( 'Show without "All"', 'fusion-core' ),
+						'no'              => esc_attr__( 'Hide', 'fusion-core' ),
+					),
+					'default'     => '',
 				),
-				'default'     => '',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Display Featured Images', 'fusion-core' ),
-				'description' => esc_attr__( 'Display the FAQ featured images.', 'fusion-core' ),
-				'param_name'  => 'featured_image',
-				'value'       => array(
-					''    => esc_attr__( 'Default', 'fusion-core' ),
-					'yes' => esc_attr__( 'Yes', 'fusion-core' ),
-					'no'  => esc_attr__( 'No', 'fusion-core' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Display Featured Images', 'fusion-core' ),
+					'description' => esc_attr__( 'Display the FAQ featured images.', 'fusion-core' ),
+					'param_name'  => 'featured_image',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-core' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-core' ),
+						'no'  => esc_attr__( 'No', 'fusion-core' ),
+					),
+					'default'     => '',
 				),
-				'default'     => '',
+				array(
+					'type'        => 'multiple_select',
+					'heading'     => esc_attr__( 'Categories', 'fusion-core' ),
+					'description' => esc_attr__( 'Select categories to include or leave blank for all.', 'fusion-core' ),
+					'param_name'  => 'cats_slug',
+					'value'       => fusion_builder_shortcodes_categories( 'faq_category' ),
+					'default'     => '',
+				),
+				array(
+					'type'        => 'multiple_select',
+					'heading'     => esc_attr__( 'Exclude Categories', 'fusion-core' ),
+					'description' => esc_attr__( 'Select categories to exclude.', 'fusion-core' ),
+					'param_name'  => 'exclude_cats',
+					'value'       => fusion_builder_shortcodes_categories( 'faq_category' ),
+					'default'     => '',
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Order By', 'fusion-builder' ),
+					'description' => esc_attr__( 'Defines how FAQs should be ordered.', 'fusion-builder' ),
+					'param_name'  => 'orderby',
+					'default'     => 'date',
+					'value'       => array(
+						'date'          => esc_attr__( 'Date', 'fusion-builder' ),
+						'title'         => esc_attr__( 'Post Title', 'fusion-builder' ),
+						'menu_order'    => esc_attr__( 'FAQ Order', 'fusion-builder' ),
+						'name'          => esc_attr__( 'Post Slug', 'fusion-builder' ),
+						'author'        => esc_attr__( 'Author', 'fusion-builder' ),
+						'comment_count' => esc_attr__( 'Number of Comments', 'fusion-builder' ),
+						'modified'      => esc_attr__( 'Last Modified', 'fusion-builder' ),
+						'rand'          => esc_attr__( 'Random', 'fusion-builder' ),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Order', 'fusion-builder' ),
+					'description' => esc_attr__( 'Defines the sorting order of FAQs.', 'fusion-builder' ),
+					'param_name'  => 'order',
+					'default'     => 'DESC',
+					'value'       => array(
+						'DESC' => esc_attr__( 'Descending', 'fusion-builder' ),
+						'ASC'  => esc_attr__( 'Ascending', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'orderby',
+							'value'    => 'rand',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Toggles or Accordions', 'fusion-builder' ),
+					'description' => esc_attr__( 'Toggles allow several items to be open at a time. Accordions only allow one item to be open at a time.', 'fusion-builder' ),
+					'param_name'  => 'type',
+					'value'       => array(
+						''           => esc_attr__( 'Default', 'fusion-builder' ),
+						'toggles'    => esc_attr__( 'Toggles', 'fusion-builder' ),
+						'accordions' => esc_attr__( 'Accordions', 'fusion-builder' ),
+					),
+					'default' => '',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Boxed Mode', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to display FAQs items in boxed mode.', 'fusion-builder' ),
+					'param_name'  => 'boxed_mode',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default' => '',
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Boxed Mode Border Width', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set the border width for FAQ item. In pixels.', 'fusion-builder' ),
+					'param_name'  => 'border_size',
+					'value'       => $fusion_settings->get( 'faq_accordion_border_size' ),
+					'default'     => $fusion_settings->get( 'faq_accordion_border_size' ),
+					'min'         => '0',
+					'max'         => '20',
+					'step'        => '1',
+					'dependency'  => array(
+						array(
+							'element'  => 'boxed_mode',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Boxed Mode Border Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set the border color for FAQ item.', 'fusion-builder' ),
+					'param_name'  => 'border_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'faq_accordian_border_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'boxed_mode',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'border_size',
+							'value'    => '0',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Boxed Mode Background Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set the background color for FAQ item.', 'fusion-builder' ),
+					'param_name'  => 'background_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'accordian_background_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'boxed_mode',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Boxed Mode Background Hover Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set the background hover color for FAQ item.', 'fusion-builder' ),
+					'param_name'  => 'hover_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'faq_accordian_hover_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'boxed_mode',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Divider Line', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to display a divider line between each item.', 'fusion-builder' ),
+					'param_name'  => 'divider_line',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default' => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'boxed_mode',
+							'value'    => 'yes',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'heading'     => esc_html__( 'FAQ Item Icon Size', 'fusion-builder' ),
+					'description' => esc_html__( 'Set the size of the icon. In pixels (px), ex: 13px.', 'fusion-builder' ),
+					'param_name'  => 'icon_size',
+					'default'     => $fusion_settings->get( 'faq_accordion_icon_size' ),
+					'min'         => '1',
+					'max'         => '40',
+					'step'        => '1',
+					'type'        => 'range',
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'FAQ Item Icon Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set the color of icon in toggle box.', 'fusion-builder' ),
+					'param_name'  => 'icon_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'faq_accordian_icon_color' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'FAQ Icon Boxed Mode', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to display icon in boxed mode.', 'fusion-builder' ),
+					'param_name'  => 'icon_boxed_mode',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default' => '',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'FAQ Icon Alignment', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the alignment of FAQ icon.', 'fusion-builder' ),
+					'param_name'  => 'icon_alignment',
+					'value'       => array(
+						''       => esc_attr__( 'Default', 'fusion-builder' ),
+						'left'   => esc_attr__( 'Left', 'fusion-builder' ),
+						'right'  => esc_attr__( 'Right', 'fusion-builder' ),
+					),
+					'default' => '',
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-core' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-core' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-core' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-core' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-core' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-core' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-core' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-core' ),
+				),
 			),
-			array(
-				'type'        => 'multiple_select',
-				'heading'     => esc_attr__( 'Categories', 'fusion-core' ),
-				'description' => esc_attr__( 'Select categories to include or leave blank for all.', 'fusion-core' ),
-				'param_name'  => 'cats_slug',
-				'value'       => fusion_builder_shortcodes_categories( 'faq_category' ),
-				'default'     => '',
-			),
-			array(
-				'type'        => 'multiple_select',
-				'heading'     => esc_attr__( 'Exclude Categories', 'fusion-core' ),
-				'description' => esc_attr__( 'Select categories to exclude.', 'fusion-core' ),
-				'param_name'  => 'exclude_cats',
-				'value'       => fusion_builder_shortcodes_categories( 'faq_category' ),
-				'default'     => '',
-			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-core' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-core' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-core' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-core' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-core' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-core' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-core' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-core' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'wp_loaded', 'fusion_element_faq' );

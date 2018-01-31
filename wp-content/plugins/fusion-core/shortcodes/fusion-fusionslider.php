@@ -110,10 +110,14 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 					$content_max_width = 'max-width:' . $slider_settings['slider_content_width'];
 				}
 
+				$orderby = ( isset( $slider_settings['orderby'] ) ) ? $slider_settings['orderby'] : 'date';
+				$order   = ( isset( $slider_settings['order'] ) ) ? $slider_settings['order'] : 'DESC';
 				$args = array(
 					'post_type'        => 'slide',
 					'posts_per_page'   => -1,
 					'suppress_filters' => 0,
+					'orderby'          => $orderby,
+					'order'            => $order,
 				);
 				$args['tax_query'][] = array(
 					'taxonomy' => 'slide-page',
@@ -144,7 +148,8 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 						<div <?php echo FusionBuilder::attributes( 'fusion-slider-container' ); // WPCS: XSS ok. ?>>
 							<ul class="slides">
 								<?php
-								while ( $query->have_posts() ) :  $query->the_post();
+								while ( $query->have_posts() ) :
+									$query->the_post();
 									$metadata = get_metadata( 'post', get_the_ID() );
 
 									$background_image = '';
@@ -253,10 +258,20 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 										$background_class = 'self-hosted-video-bg';
 									}
 
+									$heading_size = 2;
+									if ( isset( $metadata['pyre_heading_size'][0] ) && $metadata['pyre_heading_size'][0] ) {
+										$heading_size = $metadata['pyre_heading_size'][0];
+									}
+
 									$heading_font_size = 'font-size:60px;line-height:80px;';
 									if ( isset( $metadata['pyre_heading_font_size'][0] ) && $metadata['pyre_heading_font_size'][0] ) {
 										$line_height       = $metadata['pyre_heading_font_size'][0] * 1.2;
 										$heading_font_size = 'font-size:' . $metadata['pyre_heading_font_size'][0] . 'px;line-height:' . $line_height . 'px;';
+									}
+
+									$caption_size = 3;
+									if ( isset( $metadata['pyre_caption_size'][0] ) && $metadata['pyre_caption_size'][0] ) {
+										$caption_size = $metadata['pyre_caption_size'][0];
 									}
 
 									$caption_font_size = 'font-size: 24px;line-height:38px;';
@@ -294,19 +309,19 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 									}
 								?>
 									<li data-mute="<?php echo esc_attr( $data_mute ); ?>" data-loop="<?php echo esc_attr( $data_loop ); ?>" data-autoplay="<?php echo esc_attr( (string) $data_autoplay ); ?>">
-										<div class="slide-content-container slide-content-<?php if ( isset( $metadata['pyre_content_alignment'][0] ) && $metadata['pyre_content_alignment'][0] ) { echo esc_attr( $metadata['pyre_content_alignment'][0] ); } ?>" style="display: none;">
+										<div class="slide-content-container slide-content-<?php echo ( isset( $metadata['pyre_content_alignment'][0] ) && $metadata['pyre_content_alignment'][0] ) ? esc_attr( $metadata['pyre_content_alignment'][0] ) : ''; ?>" style="display: none;">
 											<div class="slide-content" style="<?php echo esc_attr( $content_max_width ); ?>">
 												<?php if ( isset( $metadata['pyre_heading'][0] ) && $metadata['pyre_heading'][0] ) : ?>
 													<div class="heading <?php echo ( $heading_bg ) ? 'with-bg' : ''; ?>">
 														<div class="fusion-title-sc-wrapper<?php echo esc_attr( $heading_title_sc_wrapper_class ); ?>" style="<?php echo esc_attr( $heading_bg ); ?>">
-															<?php echo do_shortcode( '[fusion_title size="2" content_align="' . $metadata['pyre_content_alignment'][0] . '" sep_color="' . $metadata['pyre_heading_color'][0] . '" margin_top="0px" margin_bottom="0px" style_type="' . $metadata['pyre_heading_separator'][0] . '" style_tag="' . $heading_styles . '"]' . do_shortcode( $metadata['pyre_heading'][0] ) . '[/fusion_title]' ); ?>
+															<?php echo do_shortcode( '[fusion_title size="' . $heading_size . '" content_align="' . $metadata['pyre_content_alignment'][0] . '" sep_color="' . $metadata['pyre_heading_color'][0] . '" margin_top="0px" margin_bottom="0px" style_type="' . $metadata['pyre_heading_separator'][0] . '" style_tag="' . $heading_styles . '"]' . do_shortcode( $metadata['pyre_heading'][0] ) . '[/fusion_title]' ); ?>
 														</div>
 													</div>
 												<?php endif; ?>
 												<?php if ( isset( $metadata['pyre_caption'][0] ) && $metadata['pyre_caption'][0] ) : ?>
 													<div class="caption <?php echo ( $caption_bg ) ? 'with-bg' : ''; ?>">
 														<div class="fusion-title-sc-wrapper<?php echo esc_attr( $caption_title_sc_wrapper_class ); ?>" style="<?php echo esc_attr( $caption_bg ); ?>">
-															<?php echo do_shortcode( '[fusion_title size="3" content_align="' . $metadata['pyre_content_alignment'][0] . '" sep_color="' . $metadata['pyre_caption_color'][0] . '" margin_top="0px" margin_bottom="0px" style_type="' . $metadata['pyre_caption_separator'][0] . '" style_tag="' . $caption_styles . '"]' . do_shortcode( $metadata['pyre_caption'][0] ) . '[/fusion_title]' ); ?>
+															<?php echo do_shortcode( '[fusion_title size="' . $caption_size . '" content_align="' . $metadata['pyre_content_alignment'][0] . '" sep_color="' . $metadata['pyre_caption_color'][0] . '" margin_top="0px" margin_bottom="0px" style_type="' . $metadata['pyre_caption_separator'][0] . '" style_tag="' . $caption_styles . '"]' . do_shortcode( $metadata['pyre_caption'][0] ) . '[/fusion_title]' ); ?>
 														</div>
 													</div>
 												<?php endif; ?>
@@ -358,7 +373,7 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 													</div>
 												</div>
 											<?php endif; ?>
-											<?php if ( isset( $metadata['pyre_type'][0] ) && isset( $metadata['pyre_vimeo_id'][0] ) &&  'vimeo' === $metadata['pyre_type'][0] && $metadata['pyre_vimeo_id'][0] ) : ?>
+											<?php if ( isset( $metadata['pyre_type'][0] ) && isset( $metadata['pyre_vimeo_id'][0] ) && 'vimeo' === $metadata['pyre_type'][0] && $metadata['pyre_vimeo_id'][0] ) : ?>
 												<div style="position: absolute; top: 0; left: 0; <?php echo esc_attr( $video_zindex ); ?> width: 100%; height: 100%" data-mute="<?php echo esc_attr( $data_mute ); ?>" data-vimeo-video-id="<?php echo esc_attr( $metadata['pyre_vimeo_id'][0] ); ?>" data-video-aspect-ratio="<?php echo esc_attr( $aspect_ratio ); ?>">
 													<iframe src="https://player.vimeo.com/video/<?php echo $metadata['pyre_vimeo_id'][0]; // WPCS: XSS ok. ?>?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff&amp;badge=0&amp;title=0<?php echo $vimeo_attributes; // WPCS: XSS ok. ?>" height="100%" width="100%" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 												</div>
@@ -370,7 +385,8 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 							</ul>
 						</div>
 					</div>
-				<?php endif;
+				<?php endif; ?>
+				<?php
 
 				$html = ob_get_clean();
 
@@ -387,9 +403,11 @@ if ( function_exists( 'fusion_is_element_enabled' ) && fusion_is_element_enabled
 			 */
 			public function wrapper_attr() {
 
-				$attr = fusion_builder_visibility_atts( self::$parent_args['hide_on_mobile'], array(
-					'class' => 'fusion-slider-container',
-				) );
+				$attr = fusion_builder_visibility_atts(
+					self::$parent_args['hide_on_mobile'], array(
+						'class' => 'fusion-slider-container',
+					)
+				);
 
 				$term_details = get_term_by( 'slug', self::$parent_args['name'], 'slide-page' );
 
@@ -459,45 +477,47 @@ function fusion_element_fusionslider() {
 	if ( ! class_exists( 'Fusion_Slider' ) ) {
 		return;
 	}
-	fusion_builder_map( array(
-		'name'       => esc_attr__( 'Fusion Slider', 'fusion-core' ),
-		'shortcode'  => 'fusion_fusionslider',
-		'icon'       => 'fusiona-TFicon',
-		'preview'    => FUSION_CORE_PATH . '/shortcodes/previews/fusion-fusion-slider-preview.php',
-		'preview_id' => 'fusion-builder-block-module-fusion-slider-preview-template',
-		'params'     => array(
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Slider Name', 'fusion-core' ),
-				'description' => esc_attr__( 'Select the slider you want to use.  The options will appear as the slider name next to the number of slides in brackets.', 'fusion-core' ),
-				'param_name'  => 'name',
-				'value'       => FusionCore_Plugin::get_fusion_sliders(),
-				'default'     => '',
+	fusion_builder_map(
+		array(
+			'name'       => esc_attr__( 'Fusion Slider', 'fusion-core' ),
+			'shortcode'  => 'fusion_fusionslider',
+			'icon'       => 'fusiona-TFicon',
+			'preview'    => FUSION_CORE_PATH . '/shortcodes/previews/fusion-fusion-slider-preview.php',
+			'preview_id' => 'fusion-builder-block-module-fusion-slider-preview-template',
+			'params'     => array(
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Slider Name', 'fusion-core' ),
+					'description' => esc_attr__( 'Select the slider you want to use.  The options will appear as the slider name next to the number of slides in brackets.', 'fusion-core' ),
+					'param_name'  => 'name',
+					'value'       => FusionCore_Plugin::get_fusion_sliders(),
+					'default'     => '',
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-core' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-core' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-core' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-core' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-core' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-core' ),
+				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-core' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-core' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-core' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-core' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-core' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-core' ),
-			),
-		),
-	) );
+		)
+	);
 }
 
 // Priority 20 to make sure its loaded after setup_fusion_slider.

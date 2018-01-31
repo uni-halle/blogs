@@ -3,7 +3,7 @@
  * Plugin Name: Fusion Core
  * Plugin URI: http://theme-fusion.com
  * Description: ThemeFusion Core Plugin for ThemeFusion Themes
- * Version: 3.2.1
+ * Version: 3.3.0
  * Author: ThemeFusion
  * Author URI: http://theme-fusion.com
  *
@@ -33,7 +33,7 @@ if ( ! class_exists( 'FusionCore_Plugin' ) ) {
 		 * @since   1.0.0
 		 * @var  string
 		 */
-		const VERSION = '3.2.1';
+		const VERSION = '3.3.0';
 
 		/**
 		 * Instance of the class.
@@ -98,6 +98,14 @@ if ( ! class_exists( 'FusionCore_Plugin' ) ) {
 			// Check if Fusion Core has been updated.  Delay until after theme is available.
 			add_action( 'after_setup_theme',  array( $this, 'versions_compare' ) );
 
+			// Exclude post type from Events Calendar.
+			add_filter( 'tribe_tickets_settings_post_types', array( $this, 'fusion_core_exclude_post_type' ) );
+
+			// Set Fusion Builder dependencies.
+			add_filter( 'fusion_builder_option_dependency', array( $this, 'set_builder_dependencies' ), 10, 3 );
+
+			// Map Fusion Builder descriptions.
+			add_filter( 'fusion_builder_map_descriptions', array( $this, 'map_builder_descriptions' ), 10, 1 );
 		}
 
 		/**
@@ -122,7 +130,7 @@ if ( ! class_exists( 'FusionCore_Plugin' ) ) {
 
 			// If the single instance hasn't been set yet, set it now.
 			if ( null === self::$instance ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 
@@ -174,10 +182,16 @@ if ( ! class_exists( 'FusionCore_Plugin' ) ) {
 		 *
 		 * @access public
 		 * @since 3.1.6
+		 * @param string $select_slider_label Sets a "Add Slider" label at the beginning of the array.
 		 * @return array
 		 */
-		public static function get_fusion_sliders() {
+		public static function get_fusion_sliders( $add_select_slider_label = '' ) {
 			$slides_array    = array();
+
+			if ( $add_select_slider_label ) {
+				$slides_array[''] = esc_html( $add_select_slider_label );
+			}
+
 			$slides          = array();
 			$slides          = get_terms( 'slide-page' );
 			if ( $slides && ! isset( $slides->errors ) ) {
@@ -372,7 +386,7 @@ if ( ! class_exists( 'FusionCore_Plugin' ) ) {
 			);
 
 			// Elastic Slider.
-			if ( $fusion_settings_array['status_eslider'] ) {
+			if ( ! class_exists( 'Fusion_Settings' ) || '0' !== $fusion_settings_array['status_eslider'] ) {
 				register_post_type(
 					'themefusion_elastic',
 					array(
@@ -519,6 +533,351 @@ if ( ! class_exists( 'FusionCore_Plugin' ) ) {
 				update_option( 'fusion_core_version', self::VERSION );
 			}
 		}
+
+		/**
+		 * Return post types to exclude from events calendar.
+		 *
+		 * @since 3.3.0
+		 * @access public
+		 * @param array $all_post_types All allowed post types in events calendar.
+		 * @return array
+		 */
+		public function fusion_core_exclude_post_type( $all_post_types ) {
+
+			unset( $all_post_types['slide'] );
+			unset( $all_post_types['themefusion_elastic'] );
+
+			return $all_post_types;
+		}
+
+		/**
+		 * Set builder element dependencies, for those which involve EO.
+		 *
+		 * @since  3.3.0
+		 * @param  array  $dependencies currently active dependencies.
+		 * @param  string $shortcode name of shortcode.
+		 * @param  string $option name of option.
+		 * @return array  dependency checks.
+		 */
+		public function set_builder_dependencies( $dependencies, $shortcode, $option ) {
+
+			global $fusion_settings;
+			if ( ! $fusion_settings ) {
+				$fusion_settings = Fusion_Settings::get_instance();
+			}
+
+			$shortcode_option_map = array();
+
+			// Portfolio.
+			$shortcode_option_map['grid_element_color']['fusion_portfolio'][] = array(
+				'check' => array(
+					'element-global' => 'portfolio_text_layout',
+					'value' => 'no_text',
+					'operator' => '==',
+				),
+				'output' => array(
+					'element' => 'text_layout',
+					'value' => 'default',
+					'operator' => '!=',
+				),
+			);
+			$shortcode_option_map['grid_box_color']['fusion_portfolio'][] = array(
+				'check' => array(
+					'element-global' => 'portfolio_text_layout',
+					'value' => 'boxed',
+					'operator' => '!=',
+				),
+				'output' => array(
+					'element' => 'text_layout',
+					'value' => 'default',
+					'operator' => '!=',
+				),
+			);
+			$shortcode_option_map['grid_separator_style_type']['fusion_portfolio'][] = array(
+				'check' => array(
+					'element-global' => 'portfolio_text_layout',
+					'value' => 'boxed',
+					'operator' => '!=',
+				),
+				'output' => array(
+					'element' => 'text_layout',
+					'value' => 'default',
+					'operator' => '!=',
+				),
+			);
+			$shortcode_option_map['grid_separator_color']['fusion_portfolio'][] = array(
+				'check' => array(
+					'element-global' => 'portfolio_text_layout',
+					'value' => 'boxed',
+					'operator' => '!=',
+				),
+				'output' => array(
+					'element' => 'text_layout',
+					'value' => 'default',
+					'operator' => '!=',
+				),
+			);
+			$shortcode_option_map['portfolio_layout_padding']['fusion_portfolio'][] = array(
+				'check' => array(
+					'element-global' => 'portfolio_text_layout',
+					'value' => 'unboxed',
+					'operator' => '==',
+				),
+				'output' => array(
+					'element' => 'text_layout',
+					'value' => 'default',
+					'operator' => '!=',
+				),
+			);
+			$shortcode_option_map['excerpt_length']['fusion_portfolio'][] = array(
+				'check' => array(
+					'element-global' => 'portfolio_content_length',
+					'value' => 'full_content',
+					'operator' => '==',
+				),
+				'output' => array(
+					'element' => 'content_length',
+					'value' => 'default',
+					'operator' => '!=',
+				),
+			);
+			$shortcode_option_map['excerpt_length']['fusion_portfolio'][] = array(
+				'check' => array(
+					'element-global' => 'portfolio_content_length',
+					'value' => 'excerpt',
+					'operator' => '!=',
+				),
+				'output' => array(
+					'element' => 'content_length',
+					'value' => 'default',
+					'operator' => '!=',
+				),
+			);
+
+			$shortcode_option_map['strip_html']['fusion_portfolio'][] = array(
+				'check' => array(
+					'element-global' => 'portfolio_content_length',
+					'value' => 'full_content',
+					'operator' => '==',
+				),
+				'output' => array(
+					'element' => 'content_length',
+					'value' => 'default',
+					'operator' => '!=',
+				),
+			);
+
+			// FAQs.
+			$shortcode_option_map['divider_line']['fusion_faq'][] = array(
+				'check' => array(
+					'element-global' => 'faq_accordion_boxed_mode',
+					'value' => '1',
+					'operator' => '==',
+				),
+				'output' => array(
+					'element' => 'boxed_mode',
+					'value' => '',
+					'operator' => '!=',
+				),
+			);
+			$shortcode_option_map['border_size']['fusion_faq'][] = array(
+				'check' => array(
+					'element-global' => 'faq_accordion_boxed_mode',
+					'value' => '0',
+					'operator' => '==',
+				),
+				'output' => array(
+					'element' => 'boxed_mode',
+					'value' => '',
+					'operator' => '!=',
+				),
+			);
+			$shortcode_option_map['border_color']['fusion_faq'][] = array(
+				'check' => array(
+					'element-global' => 'faq_accordion_boxed_mode',
+					'value' => '0',
+					'operator' => '==',
+				),
+				'output' => array(
+					'element' => 'boxed_mode',
+					'value' => '',
+					'operator' => '!=',
+				),
+			);
+			$shortcode_option_map['background_color']['fusion_faq'][] = array(
+				'check' => array(
+					'element-global' => 'faq_accordion_boxed_mode',
+					'value' => '0',
+					'operator' => '==',
+				),
+				'output' => array(
+					'element' => 'boxed_mode',
+					'value' => '',
+					'operator' => '!=',
+				),
+			);
+			$shortcode_option_map['hover_color']['fusion_faq'][] = array(
+				'check' => array(
+					'element-global' => 'faq_accordion_boxed_mode',
+					'value' => '0',
+					'operator' => '==',
+				),
+				'output' => array(
+					'element' => 'boxed_mode',
+					'value' => '',
+					'operator' => '!=',
+				),
+			);
+
+			// If has TO related dependency, do checks.
+			if ( isset( $shortcode_option_map[ $option ][ $shortcode ] ) && is_array( $shortcode_option_map[ $option ][ $shortcode ] ) ) {
+				foreach ( $shortcode_option_map[ $option ][ $shortcode ] as $option_check ) {
+					$option_value = $fusion_settings->get( $option_check['check']['element-global'] );
+					$pass = false;
+
+					// Check the result of check.
+					if ( '==' == $option_check['check']['operator'] ) {
+						$pass = ( $option_value == $option_check['check']['value'] ) ? true : false;
+					}
+					if ( '!=' == $option_check['check']['operator'] ) {
+						$pass = ( $option_value != $option_check['check']['value'] ) ? true : false;
+					}
+
+					// If check passes then add dependency for checking.
+					if ( $pass ) {
+						$dependencies[] = $option_check['output'];
+					}
+				}
+			}
+			return $dependencies;
+		}
+
+		/**
+		 * Returns equivalent global information for FB param.
+		 *
+		 * @since 3.3.0
+		 * @param array $shortcode_option_map Shortcodes description map array.
+		 */
+		public function map_builder_descriptions( $shortcode_option_map ) {
+
+			// Portfolio.
+			$shortcode_option_map['portfolio_layout_padding']['fusion_portfolio'] = array(
+				'theme-option' => 'portfolio_layout_padding',
+				'subset'       => array( 'top', 'right', 'bottom', 'left' ),
+			);
+			$shortcode_option_map['picture_size']['fusion_portfolio'] = array(
+				'theme-option' => 'portfolio_featured_image_size',
+				'type'         => 'select',
+			);
+			$shortcode_option_map['text_layout']['fusion_portfolio'] = array(
+				'theme-option' => 'portfolio_text_layout',
+				'type'         => 'select',
+			);
+			$shortcode_option_map['portfolio_text_alignment']['fusion_portfolio'] = array(
+				'theme-option' => 'portfolio_text_alignment',
+				'type'         => 'select',
+			);
+			$shortcode_option_map['column_spacing']['fusion_portfolio'] = array(
+				'theme-option' => 'portfolio_column_spacing',
+				'type'         => 'range',
+			);
+			$shortcode_option_map['number_posts']['fusion_portfolio'] = array(
+				'theme-option' => 'portfolio_items',
+				'type'         => 'range',
+			);
+			$shortcode_option_map['pagination_type']['fusion_portfolio'] = array(
+				'theme-option' => 'portfolio_pagination_type',
+				'type'         => 'select',
+			);
+			$shortcode_option_map['content_length']['fusion_portfolio'] = array(
+				'theme-option' => 'portfolio_content_length',
+				'type'         => 'select',
+			);
+			$shortcode_option_map['excerpt_length']['fusion_portfolio'] = array(
+				'theme-option' => 'portfolio_excerpt_length',
+				'type'         => 'range',
+			);
+			$shortcode_option_map['portfolio_title_display']['fusion_portfolio'] = array(
+				'theme-option' => 'portfolio_title_display',
+				'type'         => 'select',
+			);
+			$shortcode_option_map['strip_html']['fusion_portfolio'] = array(
+				'theme-option' => 'portfolio_strip_html_excerpt',
+				'type'         => 'yesno',
+			);
+			$shortcode_option_map['grid_box_color']['fusion_portfolio'] = array(
+				'theme-option' => 'timeline_bg_color',
+				'reset'        => true,
+			);
+			$shortcode_option_map['grid_element_color']['fusion_portfolio'] = array(
+				'theme-option' => 'timeline_color',
+				'reset'        => true,
+			);
+			$shortcode_option_map['grid_separator_style_type']['fusion_portfolio'] = array(
+				'theme-option' => 'grid_separator_style_type',
+				'type'         => 'select',
+			);
+			$shortcode_option_map['grid_separator_color']['fusion_portfolio'] = array(
+				'theme-option' => 'grid_separator_color',
+				'reset'        => true,
+			);
+
+			// FAQs.
+			$shortcode_option_map['featured_image']['fusion_faq'] = array(
+				'theme-option' => 'faq_featured_image',
+				'type'         => 'yesno',
+			);
+			$shortcode_option_map['filters']['fusion_faq'] = array(
+				'theme-option' => 'faq_filters',
+				'type'         => 'select',
+			);
+			$shortcode_option_map['type']['fusion_faq'] = array(
+				'theme-option' => 'faq_accordion_type',
+				'type'         => 'select',
+			);
+			$shortcode_option_map['divider_line']['fusion_faq'] = array(
+				'theme-option' => 'faq_accordion_divider_line',
+				'type'         => 'yesno',
+			);
+			$shortcode_option_map['boxed_mode']['fusion_faq'] = array(
+				'theme-option' => 'faq_accordion_boxed_mode',
+				'type'         => 'yesno',
+			);
+			$shortcode_option_map['border_size']['fusion_faq'] = array(
+				'theme-option' => 'faq_accordion_border_size',
+				'type'         => 'range',
+			);
+			$shortcode_option_map['border_color']['fusion_faq'] = array(
+				'theme-option' => 'faq_accordian_border_color',
+				'reset'        => true,
+			);
+			$shortcode_option_map['background_color']['fusion_faq'] = array(
+				'theme-option' => 'faq_accordian_background_color',
+				'reset'        => true,
+			);
+			$shortcode_option_map['hover_color']['fusion_faq'] = array(
+				'theme-option' => 'faq_accordian_hover_color',
+				'reset'        => true,
+			);
+			$shortcode_option_map['icon_size']['fusion_faq'] = array(
+				'theme-option' => 'faq_accordion_icon_size',
+				'type'         => 'range',
+			);
+			$shortcode_option_map['icon_boxed_mode']['fusion_faq'] = array(
+				'theme-option' => 'faq_accordion_icon_boxed',
+				'type'         => 'yesno',
+			);
+			$shortcode_option_map['icon_alignment']['fusion_faq'] = array(
+				'theme-option' => 'faq_accordion_icon_align',
+				'type'         => 'select',
+			);
+			$shortcode_option_map['icon_color']['fusion_faq'] = array(
+				'theme-option' => 'faq_accordian_icon_color',
+				'reset'        => true,
+			);
+
+			return $shortcode_option_map;
+		}
 	}
 } // End if().
 
@@ -640,15 +999,128 @@ function fusion_core_reset_patcher_counter() {
  */
 function fusion_core_patcher_activation() {
 	if ( class_exists( 'Fusion_Patcher' ) ) {
-		new Fusion_Patcher( array(
-			'context'     => 'fusion-core',
-			'version'     => FusionCore_Plugin::VERSION,
-			'name'        => 'Fusion-Core',
-			'parent_slug' => 'avada',
-			'page_title'  => esc_attr__( 'Fusion Patcher', 'fusion-core' ),
-			'menu_title'  => esc_attr__( 'Fusion Patcher', 'fusion-core' ),
-			'classname'   => 'FusionCore_Plugin',
-		) );
+		new Fusion_Patcher(
+			array(
+				'context'     => 'fusion-core',
+				'version'     => FusionCore_Plugin::VERSION,
+				'name'        => 'Fusion-Core',
+				'parent_slug' => 'avada',
+				'page_title'  => esc_attr__( 'Fusion Patcher', 'fusion-core' ),
+				'menu_title'  => esc_attr__( 'Fusion Patcher', 'fusion-core' ),
+				'classname'   => 'FusionCore_Plugin',
+			)
+		);
 	}
 }
 add_action( 'after_setup_theme', 'fusion_core_patcher_activation', 17 );
+
+/**
+ * Add content filter if WPTouch is active.
+ *
+ * @access public
+ * @since 3.1.1
+ * @return void
+ */
+function fusion_wptouch_compatiblity() {
+	global $wptouch_pro;
+	if ( true === $wptouch_pro->is_mobile_device ) {
+		add_filter( 'the_content', 'fusion_remove_orphan_shortcodes', 0 );
+	}
+}
+add_action( 'wptouch_pro_loaded', 'fusion_wptouch_compatiblity', 11 );
+
+/**
+ * Add custom thumnail column.
+ *
+ * @since 5.3
+ * @access public
+ * @param array $existing_columns Array of existing columns.
+ * @return array The modified columns array.
+ */
+function fusion_wp_list_add_column( $existing_columns ) {
+
+	$columns = array(
+		'cb'           => $existing_columns['cb'],
+		'tf_thumbnail' => '<span class="dashicons dashicons-format-image"></span>',
+	);
+
+	return array_merge( $columns, $existing_columns );
+}
+// Add thumbnails to blog, portfolio, FAQs, Fusion Slider and Elastic Slider.
+add_filter( 'manage_post_posts_columns', 'fusion_wp_list_add_column', 10 );
+add_filter( 'manage_avada_portfolio_posts_columns', 'fusion_wp_list_add_column', 10 );
+add_filter( 'manage_avada_faq_posts_columns', 'fusion_wp_list_add_column', 10 );
+add_filter( 'manage_slide_posts_columns', 'fusion_wp_list_add_column', 10 );
+add_filter( 'manage_themefusion_elastic_posts_columns', 'fusion_wp_list_add_column', 10 );
+
+/**
+ * Renders the contents of the thumbnail column.
+ *
+ * @since 5.3
+ * @access public
+ * @param string $column current column name.
+ * @param int    $post_id cureent post ID.
+ * @return void
+ */
+function fusion_add_thumbnail_in_column( $column, $post_id ) {
+	switch ( $column ) {
+		case 'tf_thumbnail':
+			echo '<a href="' . get_edit_post_link( $post_id ) . '">'; // WPCS: XSS ok.
+			if ( has_post_thumbnail( $post_id ) ) {
+				echo  get_the_post_thumbnail( $post_id, 'thumbnail' );
+			} else {
+				echo '<img src="data:image/png;base64,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">';
+			}
+			echo '</a>';
+
+			break;
+	}
+}
+add_action( 'manage_post_posts_custom_column' , 'fusion_add_thumbnail_in_column', 10, 2 );
+add_action( 'manage_avada_portfolio_posts_custom_column' , 'fusion_add_thumbnail_in_column', 10, 2 );
+add_action( 'manage_avada_faq_posts_custom_column' , 'fusion_add_thumbnail_in_column', 10, 2 );
+add_action( 'manage_slide_posts_custom_column' , 'fusion_add_thumbnail_in_column', 10, 2 );
+add_action( 'manage_themefusion_elastic_posts_custom_column' , 'fusion_add_thumbnail_in_column', 10, 2 );
+
+/**
+ * Removes unregistered shortcodes.
+ *
+ * @access public
+ * @since 3.1.1
+ * @param string $content item content.
+ * @return string
+ */
+function fusion_remove_orphan_shortcodes( $content ) {
+
+	if ( false === strpos( $content, '[fusion' ) ) {
+		return $content;
+	}
+
+	global $shortcode_tags;
+
+	// Check for active shortcodes.
+	$active_shortcodes = ( is_array( $shortcode_tags ) && ! empty( $shortcode_tags ) ) ? array_keys( $shortcode_tags ) : array();
+
+	// Avoid "/" chars in content breaks preg_replace.
+	$unique_string_one   = md5( microtime() );
+	$content             = str_replace( '[/fusion_', $unique_string_one, $content );
+
+	$unique_string_two   = md5( microtime() + 1 );
+	$content             = str_replace( '/fusion_', $unique_string_two, $content );
+	$content             = str_replace( $unique_string_one, '[/fusion_', $content );
+
+	if ( ! empty( $active_shortcodes ) ) {
+		// Be sure to keep active shortcodes.
+		$keep_active = implode( '|', $active_shortcodes );
+		$content     = preg_replace( '~(?:\[/?)(?!(?:' . $keep_active . '))[^/\]]+/?\]~s', '', $content );
+	} else {
+		// Strip all shortcodes.
+		$content = preg_replace( '~(?:\[/?)[^/\]]+/?\]~s', '', $content );
+
+	}
+
+	// Set "/" back to its place.
+	$content = str_replace( $unique_string_two, '/' ,$content );
+
+	return $content;
+}
