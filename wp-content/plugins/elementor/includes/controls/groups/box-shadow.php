@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Box shadow control.
+ * Elementor box shadow control.
  *
  * A base control for creating box shadow control. Displays input fields to define
  * the box shadow.
@@ -54,7 +54,7 @@ class Group_Control_Box_Shadow extends Group_Control_Base {
 	 *
 	 * Get box shadow control type.
 	 *
-	 * @since 1.2.2
+	 * @since 1.0.0
 	 * @access public
 	 * @static
 	 *
@@ -76,14 +76,6 @@ class Group_Control_Box_Shadow extends Group_Control_Base {
 	 */
 	protected function init_fields() {
 		$controls = [];
-
-		$controls['box_shadow_type'] = [
-			'label' => _x( 'Box Shadow', 'Box Shadow Control', 'elementor' ),
-			'type' => Controls_Manager::SWITCHER,
-			'return_value' => 'yes',
-			'separator' => 'before',
-			'render_type' => 'ui',
-		];
 
 		$controls['box_shadow'] = [
 			'label' => _x( 'Box Shadow', 'Box Shadow Control', 'elementor' ),
@@ -111,5 +103,19 @@ class Group_Control_Box_Shadow extends Group_Control_Base {
 		];
 
 		return $controls;
+	}
+
+	/**
+	 * @since 1.9.0
+	 * @access protected
+	 */
+	protected function get_default_options() {
+		return [
+			'popover' => [
+				'starter_title' => _x( 'Box Shadow', 'Box Shadow Control', 'elementor' ),
+				'starter_name' => 'box_shadow_type',
+				'starter_value' => 'yes',
+			],
+		];
 	}
 }

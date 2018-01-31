@@ -6,11 +6,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Button Widget
+ * Elementor button widget.
+ *
+ * Elementor widget that displays a button with the ability to controll every
+ * aspect of the button design.
+ *
+ * @since 1.0.0
  */
 class Widget_Button extends Widget_Base {
 
 	/**
+	 * Get widget name.
+	 *
 	 * Retrieve button widget name.
 	 *
 	 * @since 1.0.0
@@ -23,6 +30,8 @@ class Widget_Button extends Widget_Base {
 	}
 
 	/**
+	 * Get widget title.
+	 *
 	 * Retrieve button widget title.
 	 *
 	 * @since 1.0.0
@@ -35,6 +44,8 @@ class Widget_Button extends Widget_Base {
 	}
 
 	/**
+	 * Get widget icon.
+	 *
 	 * Retrieve button widget icon.
 	 *
 	 * @since 1.0.0
@@ -47,7 +58,9 @@ class Widget_Button extends Widget_Base {
 	}
 
 	/**
-	 * Retrieve button sizes.
+	 * Get button sizes.
+	 *
+	 * Retrieve an array of button sizes for the button widget.
 	 *
 	 * @since 1.0.0
 	 * @access public
@@ -113,7 +126,7 @@ class Widget_Button extends Widget_Base {
 			[
 				'label' => __( 'Link', 'elementor' ),
 				'type' => Controls_Manager::URL,
-				'placeholder' => 'http://your-link.com',
+				'placeholder' => __( 'https://your-link.com', 'elementor' ),
 				'default' => [
 					'url' => '#',
 				],
@@ -227,7 +240,6 @@ class Widget_Button extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'typography',
-				'label' => __( 'Typography', 'elementor' ),
 				'scheme' => Scheme_Typography::TYPOGRAPHY_4,
 				'selector' => '{{WRAPPER}} a.elementor-button, {{WRAPPER}} .elementor-button',
 			]
@@ -317,7 +329,7 @@ class Widget_Button extends Widget_Base {
 		$this->add_control(
 			'hover_animation',
 			[
-				'label' => __( 'Animation', 'elementor' ),
+				'label' => __( 'Hover Animation', 'elementor' ),
 				'type' => Controls_Manager::HOVER_ANIMATION,
 			]
 		);
@@ -330,7 +342,6 @@ class Widget_Button extends Widget_Base {
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'border',
-				'label' => __( 'Border', 'elementor' ),
 				'placeholder' => '1px',
 				'default' => '1px',
 				'selector' => '{{WRAPPER}} .elementor-button',
@@ -361,7 +372,7 @@ class Widget_Button extends Widget_Base {
 		$this->add_control(
 			'text_padding',
 			[
-				'label' => __( 'Text Padding', 'elementor' ),
+				'label' => __( 'Padding', 'elementor' ),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', 'em', '%' ],
 				'selectors' => [
@@ -429,15 +440,20 @@ class Widget_Button extends Widget_Base {
 	 */
 	protected function _content_template() {
 		?>
+		<#
+		view.addRenderAttribute( 'text', 'class', 'elementor-button-text' );
+
+		view.addInlineEditingAttributes( 'text', 'none' );
+		#>
 		<div class="elementor-button-wrapper">
 			<a class="elementor-button elementor-size-{{ settings.size }} elementor-animation-{{ settings.hover_animation }}" href="{{ settings.link.url }}">
 				<span class="elementor-button-content-wrapper">
 					<# if ( settings.icon ) { #>
 					<span class="elementor-button-icon elementor-align-icon-{{ settings.icon_align }}">
-						<i class="{{ settings.icon }}"></i>
+						<i class="{{ settings.icon }}" aria-hidden="true"></i>
 					</span>
 					<# } #>
-					<span class="elementor-button-text elementor-inline-editing" data-elementor-setting-key="text" data-elementor-inline-editing-toolbar="none">{{{ settings.text }}}</span>
+					<span {{{ view.getRenderAttributeString( 'text' ) }}}>{{{ settings.text }}}</span>
 				</span>
 			</a>
 		</div>
@@ -445,6 +461,8 @@ class Widget_Button extends Widget_Base {
 	}
 
 	/**
+	 * Render button text.
+	 *
 	 * Render button widget text.
 	 *
 	 * @since 1.5.0
@@ -463,7 +481,7 @@ class Widget_Button extends Widget_Base {
 		<span <?php echo $this->get_render_attribute_string( 'content-wrapper' ); ?>>
 			<?php if ( ! empty( $settings['icon'] ) ) : ?>
 			<span <?php echo $this->get_render_attribute_string( 'icon-align' ); ?>>
-				<i class="<?php echo esc_attr( $settings['icon'] ); ?>"></i>
+				<i class="<?php echo esc_attr( $settings['icon'] ); ?>" aria-hidden="true"></i>
 			</span>
 			<?php endif; ?>
 			<span <?php echo $this->get_render_attribute_string( 'text' ); ?>><?php echo $settings['text']; ?></span>

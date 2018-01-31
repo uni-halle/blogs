@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Background control.
+ * Elementor background control.
  *
  * A base control for creating background control. Displays input fields to define
  * the background color, background image, background gradiant or background video.
@@ -73,7 +73,7 @@ class Group_Control_Background extends Group_Control_Base {
 	 *
 	 * Get background control type.
 	 *
-	 * @since 1.2.2
+	 * @since 1.0.0
 	 * @access public
 	 * @static
 	 *
@@ -85,9 +85,9 @@ class Group_Control_Background extends Group_Control_Base {
 
 	/**
 	 * Retrieve background types.
-	 * 
+	 *
 	 * Gat available background types.
-	 * 
+	 *
 	 * @since 1.2.2
 	 * @access public
 	 * @static
@@ -366,7 +366,7 @@ class Group_Control_Background extends Group_Control_Base {
 			'label' => _x( 'Video Link', 'Background Control', 'elementor' ),
 			'type' => Controls_Manager::TEXT,
 			'placeholder' => 'https://www.youtube.com/watch?v=9uOETcuFjbE',
-			'description' => __( 'Insert YouTube link or video file (mp4 is recommended)', 'elementor' ),
+			'description' => __( 'YouTube link or video file (mp4 is recommended).', 'elementor' ),
 			'label_block' => true,
 			'default' => '',
 			'condition' => [
@@ -377,7 +377,7 @@ class Group_Control_Background extends Group_Control_Base {
 
 		$fields['video_fallback'] = [
 			'label' => _x( 'Background Fallback', 'Background Control', 'elementor' ),
-			'description' => __( 'This cover image will replace the background video on mobile or tablet.', 'elementor' ),
+			'description' => __( 'This cover image will replace the background video on mobile and tablet devices.', 'elementor' ),
 			'type' => Controls_Manager::MEDIA,
 			'label_block' => true,
 			'condition' => [
@@ -394,7 +394,7 @@ class Group_Control_Background extends Group_Control_Base {
 
 	/**
 	 * Retrieve child default args.
-	 * 
+	 *
 	 * Get the default arguments for all the child controls for a specific group
 	 * control.
 	 *
@@ -462,5 +462,15 @@ class Group_Control_Background extends Group_Control_Base {
 		$fields['background']['options'] = $choose_types;
 
 		return parent::prepare_fields( $fields );
+	}
+
+	/**
+	 * @since 1.9.0
+	 * @access protected
+	 */
+	protected function get_default_options() {
+		return [
+			'popover' => false,
+		];
 	}
 }

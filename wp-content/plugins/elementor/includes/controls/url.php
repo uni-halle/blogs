@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * URL control.
+ * Elementor URL control.
  *
  * A base control for creating url control. Displays a URL input with the
  * ability to set the target of the link to `_blank` to open in a new tab.
@@ -147,7 +147,7 @@ class Control_URL extends Control_Base_Multiple {
 			<div class="elementor-control-input-wrapper">
 				<input id="<?php echo $control_uid; ?>" type="url" class="elementor-input" data-setting="url" placeholder="{{ data.placeholder }}" />
 				<label for="<?php echo $more_input_control_uid; ?>" class="elementor-control-url-more tooltip-target" data-tooltip="<?php _e( 'Link Options', 'elementor' ); ?>">
-					<i class="fa fa-cog"></i>
+					<i class="fa fa-cog" aria-hidden="true"></i>
 				</label>
 				<input id="<?php echo $more_input_control_uid; ?>" type="checkbox" class="elementor-control-url-more-input">
 				<div class="elementor-control-url-more-options">

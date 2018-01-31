@@ -4,7 +4,7 @@
  * Description: The most advanced frontend drag & drop page builder. Create high-end, pixel perfect websites at record speeds. Any theme, any page, any design.
  * Plugin URI: https://elementor.com/?utm_source=wp-plugins&utm_campaign=plugin-uri&utm_medium=wp-dash
  * Author: Elementor.com
- * Version: 1.8.5
+ * Version: 1.9.3
  * Author URI: https://elementor.com/?utm_source=wp-plugins&utm_campaign=author-uri&utm_medium=wp-dash
  *
  * Text Domain: elementor
@@ -27,8 +27,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-define( 'ELEMENTOR_VERSION', '1.8.5' );
-define( 'ELEMENTOR_PREVIOUS_STABLE_VERSION', '1.7.12' );
+define( 'ELEMENTOR_VERSION', '1.9.3' );
+define( 'ELEMENTOR_PREVIOUS_STABLE_VERSION', '1.8.12' );
 
 define( 'ELEMENTOR__FILE__', __FILE__ );
 define( 'ELEMENTOR_PLUGIN_BASE', plugin_basename( ELEMENTOR__FILE__ ) );
@@ -70,7 +70,9 @@ if ( ! version_compare( PHP_VERSION, '5.4', '>=' ) ) {
 }
 
 /**
- * Load gettext translate for our text domain.
+ * Load Elementor textdomain.
+ *
+ * Load gettext translate for Elementor text domain.
  *
  * @since 1.0.0
  *
@@ -81,7 +83,9 @@ function elementor_load_plugin_textdomain() {
 }
 
 /**
- * Show in WP Dashboard notice about the plugin is not activated (PHP version).
+ * Elementor admin notice for minimum PHP version.
+ *
+ * Warning when the site doesn't have the minimum required PHP version.
  *
  * @since 1.0.0
  *
@@ -95,14 +99,16 @@ function elementor_fail_php_version() {
 }
 
 /**
- * Show in WP Dashboard notice about the plugin is not activated (WP version).
+ * Elementor admin notice for minimum WordPress version.
+ *
+ * Warning when the site doesn't have the minimum required WordPress version.
  *
  * @since 1.5.0
  *
  * @return void
  */
 function elementor_fail_wp_version() {
-	/* translators: %s: WP version */
+	/* translators: %s: WordPress version */
 	$message = sprintf( esc_html__( 'Elementor requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT ACTIVE.', 'elementor' ), '4.5' );
 	$html_message = sprintf( '<div class="error">%s</div>', wpautop( $message ) );
 	echo wp_kses_post( $html_message );

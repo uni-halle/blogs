@@ -10,6 +10,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 abstract class Source_Base {
 
+	private $user_meta;
+
 	/**
 	 * @abstract
 	 * @since 1.0.0
@@ -80,6 +82,64 @@ abstract class Source_Base {
 	}
 
 	/**
+	 * @since 1.9.0
+	 * @access public
+	 */
+	public function mark_as_favorite( $template_id, $favorite = true ) {
+		$favorites_templates = $this->get_user_meta( 'favorites' );
+
+		if ( ! $favorites_templates ) {
+			$favorites_templates = [];
+		}
+
+		if ( $favorite ) {
+			$favorites_templates[ $template_id ] = $favorite;
+		} elseif ( isset( $favorites_templates[ $template_id ] ) ) {
+			unset( $favorites_templates[ $template_id ] );
+		}
+
+		return $this->update_user_meta( 'favorites', $favorites_templates );
+	}
+
+	/**
+	 * @since 1.9.0
+	 * @access public
+	 */
+	public function get_user_meta( $item = null ) {
+		if ( null === $this->user_meta ) {
+			$this->user_meta = get_user_meta( get_current_user_id(), $this->get_user_meta_prefix(), true );
+		}
+
+		if ( ! $this->user_meta ) {
+			$this->user_meta = [];
+		}
+
+		if ( $item ) {
+			if ( isset( $this->user_meta[ $item ] ) ) {
+				return $this->user_meta[ $item ];
+			}
+
+			return null;
+		}
+
+		return $this->user_meta;
+	}
+
+	/**
+	 * @since 1.9.0
+	 * @access public
+	 */
+	public function update_user_meta( $key, $value ) {
+		$meta = $this->get_user_meta();
+
+		$meta[ $key ] = $value;
+
+		$this->user_meta = $meta;
+
+		return update_user_meta( get_current_user_id(), $this->get_user_meta_prefix(), $meta );
+	}
+
+	/**
 	 * @since 1.0.0
 	 * @access protected
 	*/
@@ -89,6 +149,14 @@ abstract class Source_Base {
 
 			return $element;
 		} );
+	}
+
+	/**
+	 * @since 1.9.0
+	 * @access protected
+	 */
+	protected function get_user_meta_prefix() {
+		return 'elementor_library_' . $this->get_id();
 	}
 
 	/**

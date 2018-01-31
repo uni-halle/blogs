@@ -205,7 +205,7 @@ abstract class Settings_Page {
 						$active_class = ' nav-tab-active';
 					}
 
-					echo "<a id='elementor-settings-tab-$tab_id' class='nav-tab$active_class' href='#tab-$tab_id'>$tab[label]</a>";
+					echo "<a id='elementor-settings-tab-{$tab_id}' class='nav-tab{$active_class}' href='#tab-{$tab_id}'>{$tab['label']}</a>";
 				}
 				?>
 			</div>
@@ -224,13 +224,13 @@ abstract class Settings_Page {
 						$active_class = ' elementor-active';
 					}
 
-					echo "<div id='tab-$tab_id' class='elementor-settings-form-page$active_class'>";
+					echo "<div id='tab-{$tab_id}' class='elementor-settings-form-page{$active_class}'>";
 
 					foreach ( $tab['sections'] as $section_id => $section ) {
 						$full_section_id = 'elementor_' . $section_id . '_section';
 
 						if ( ! empty( $section['label'] ) ) {
-							echo "<h2>$section[label]</h2>";
+							echo "<h2>{$section['label']}</h2>";
 						}
 
 						if ( ! empty( $section['callback'] ) ) {
@@ -262,7 +262,20 @@ abstract class Settings_Page {
 		if ( null === $this->tabs ) {
 			$this->tabs = $this->create_tabs();
 
-			do_action( 'elementor/admin/after_create_settings/' . static::PAGE_ID, $this );
+			$page_id = static::PAGE_ID;
+
+			/**
+			 * After create settings.
+			 *
+			 * Fires after the settings are created in Elementor admin page.
+			 *
+			 * The dynamic portion of the hook name, `$page_id`, refers to the current page ID.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param Settings_Page $this The settings page.
+			 */
+			do_action( "elementor/admin/after_create_settings/{$page_id}", $this );
 		}
 	}
 }

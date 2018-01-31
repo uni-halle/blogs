@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Base group control.
+ * Elementor base group control.
  *
  * A base control for creating group control.
  *
@@ -18,13 +18,56 @@ abstract class Group_Control_Base implements Group_Control_Interface {
 	/**
 	 * Arguments.
 	 *
-	 * Holds all the base group control arguments.
+	 * Holds all the group control arguments.
 	 *
 	 * @access private
 	 *
 	 * @var array Group control arguments.
 	 */
 	private $args = [];
+
+	/**
+	 * Options.
+	 *
+	 * Holds all the group control options.
+	 *
+	 * Currently supports only the popover options.
+	 *
+	 * @access private
+	 *
+	 * @var array Group control options.
+	 */
+	private $options;
+
+	/**
+	 * Retrieve options.
+	 *
+	 * Get group control options. If options are not set, it will initialize default options.
+	 *
+	 * @since 1.9.0
+	 * @access public
+	 *
+	 * @param array $option Optional. Single option.
+	 *
+	 * @return mixed Group control options. If option parameter was not specified, it will
+	 *               return an array of all the options. If single option specified, it will
+	 *               return the option value or `null` if option does not exists.
+	 */
+	final public function get_options( $option = null ) {
+		if ( null === $this->options ) {
+			$this->init_options();
+		}
+
+		if ( $option ) {
+			if ( isset( $this->options[ $option ] ) ) {
+				return $this->options[ $option ];
+			}
+
+			return null;
+		}
+
+		return $this->options;
+	}
 
 	/**
 	 * Add new controls to stack.
@@ -63,6 +106,10 @@ abstract class Group_Control_Base implements Group_Control_Interface {
 			unset( $options['position'] );
 		}
 
+		if ( $this->get_options( 'popover' ) ) {
+			$this->start_popover( $element );
+		}
+
 		foreach ( $filtered_fields as $field_id => $field_args ) {
 			// Add the global group args to the control
 			$field_args = $this->add_group_args_to_field( $field_id, $field_args );
@@ -79,6 +126,10 @@ abstract class Group_Control_Base implements Group_Control_Interface {
 			}
 		}
 
+		if ( $this->get_options( 'popover' ) ) {
+			$element->end_popover();
+		}
+
 		if ( $has_injection ) {
 			$element->end_injection();
 		}
@@ -92,7 +143,7 @@ abstract class Group_Control_Base implements Group_Control_Interface {
 	 * @since 1.0.0
 	 * @access public
 	 *
-	 * @return array Control arguments.
+	 * @return array Group control arguments.
 	 */
 	final public function get_args() {
 		return $this->args;
@@ -149,16 +200,31 @@ abstract class Group_Control_Base implements Group_Control_Interface {
 		return 'elementor-group-control-' . static::get_type() . ' elementor-group-control';
 	}
 
-	// TODO: Temp - Make it abstract
 	/**
 	 * Init fields.
 	 *
 	 * Initialize group control fields.
 	 *
+	 * @abstract
 	 * @since 1.2.2
 	 * @access protected
 	 */
-	protected function init_fields() {}
+	abstract protected function init_fields();
+
+	/**
+	 * Retrieve default options.
+	 *
+	 * Get the default options of the group control. Used to return the
+	 * default options while initializing the group control.
+	 *
+	 * @since 1.9.0
+	 * @access protected
+	 *
+	 * @return array Default group control options.
+	 */
+	protected function get_default_options() {
+		return [];
+	}
 
 	/**
 	 * Retrieve child default arguments.
@@ -197,22 +263,6 @@ abstract class Group_Control_Base implements Group_Control_Interface {
 
 		if ( ! empty( $args['exclude'] ) ) {
 			$fields = array_diff_key( $fields, array_flip( $args['exclude'] ) );
-		}
-
-		foreach ( $fields as $field_key => $field ) {
-			if ( empty( $field['condition'] ) ) {
-				continue;
-			}
-
-			foreach ( $field['condition'] as $condition_key => $condition_value ) {
-				preg_match( '/^\w+/', $condition_key, $matches );
-
-				if ( empty( $fields[ $matches[0] ] ) ) {
-					unset( $fields[ $field_key ] );
-
-					continue 2;
-				}
-			}
 		}
 
 		return $fields;
@@ -290,6 +340,27 @@ abstract class Group_Control_Base implements Group_Control_Interface {
 	}
 
 	/**
+	 * Init options.
+	 *
+	 * Initializing group control options.
+	 *
+	 * @since 1.9.0
+	 * @access private
+	 */
+	private function init_options() {
+		$default_options = [
+			'popover' => [
+				'starter_name' => 'popover_toggle',
+				'starter_value' => 'custom',
+				'starter_title' => '',
+				'toggle_type' => 'switcher',
+			],
+		];
+
+		$this->options = array_replace_recursive( $default_options, $this->get_default_options() );
+	}
+
+	/**
 	 * Init arguments.
 	 *
 	 * Initializing group control base class.
@@ -298,8 +369,6 @@ abstract class Group_Control_Base implements Group_Control_Interface {
 	 * @access private
 	 *
 	 * @param array $args Group control settings value.
-	 *
-	 * @return array Control default settings.
 	 */
 	private function init_args( $args ) {
 		$this->args = array_merge( $this->get_default_args(), $this->get_child_default_args(), $args );
@@ -400,5 +469,41 @@ abstract class Group_Control_Base implements Group_Control_Interface {
 		}
 
 		return $selectors;
+	}
+
+	/**
+	 * Start popover.
+	 *
+	 * Starts a group controls popover.
+	 *
+	 * @since 1.9.1
+	 * @access private
+	 * @param Controls_Stack $element Element.
+	 */
+	private function start_popover( Controls_Stack $element ) {
+		$popover_options = $this->get_options( 'popover' );
+
+		$settings = $this->get_args();
+
+		if ( ! empty( $settings['label'] ) ) {
+			$label = $settings['label'];
+		} else {
+			$label = $popover_options['starter_title'];
+		}
+
+		$control_params = [
+			'type' => Controls_Manager::POPOVER_TOGGLE,
+			'label' => $label,
+			'toggle_type' => $popover_options['toggle_type'],
+			'return_value' => $popover_options['starter_value'],
+		];
+
+		if ( ! empty( $settings['condition'] ) ) {
+			$control_params['condition'] = $settings['condition'];
+		}
+
+		$element->add_control( $this->get_controls_prefix() . $popover_options['starter_name'], $control_params );
+
+		$element->start_popover();
 	}
 }

@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Image Size control.
+ * Elementor image size control.
  *
  * A base control for creating image size control. Displays input fields to define
  * one of the default image sizes (thumbnail, medium, medium_large, large) or set
@@ -60,7 +60,7 @@ class Group_Control_Image_Size extends Group_Control_Base {
 	 *
 	 * Get image size control type.
 	 *
-	 * @since 1.2.2
+	 * @since 1.0.0
 	 * @access public
 	 * @static
 	 *
@@ -81,7 +81,7 @@ class Group_Control_Image_Size extends Group_Control_Base {
 	 *
 	 * @param array  $settings    {
 	 *     Control settings.
-	 * 
+	 *
 	 *     @type array  $image           {
 	 *         Optional. Image data.
 	 *
@@ -275,7 +275,7 @@ class Group_Control_Image_Size extends Group_Control_Base {
 			'type' => Controls_Manager::IMAGE_DIMENSIONS,
 			'description' => __( 'You can crop the original image size to any custom size. You can also set a single value for height or width in order to keep the original size ratio.', 'elementor' ),
 			'condition' => [
-				'size' => [ 'custom' ],
+				'size' => 'custom',
 			],
 			'separator' => 'none',
 		];
@@ -358,5 +358,15 @@ class Group_Control_Image_Size extends Group_Control_Base {
 		}
 
 		return $image_sizes;
+	}
+
+	/**
+	 * @since 1.9.0
+	 * @access protected
+	 */
+	protected function get_default_options() {
+		return [
+			'popover' => false,
+		];
 	}
 }

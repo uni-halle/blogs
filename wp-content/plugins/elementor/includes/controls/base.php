@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Base control.
+ * Elementor base control.
  *
  * A base control for creating controls in the panel. Each control accepts all
  * the params listed below.
@@ -121,7 +121,7 @@ abstract class Base_Control {
 	 *
 	 * Get the control settings or a specific setting value.
 	 *
-	 * @since 1.0.0
+	 * @since 1.5.0
 	 * @access public
 	 *
 	 * @param string $setting_key Optional. Specific key to return from the
@@ -181,7 +181,7 @@ abstract class Base_Control {
 	 * template. The variables for the class are available using `data` JS
 	 * object.
 	 *
-	 * @since 1.0.0
+	 * @since 1.5.0
 	 * @access public
 	 */
 	final public function print_template() {

@@ -6,11 +6,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Google Maps Widget
+ * Elementor google maps widget.
+ *
+ * Elementor widget that displays an embeded google map.
+ *
+ * @since 1.0.0
  */
 class Widget_Google_Maps extends Widget_Base {
 
 	/**
+	 * Get widget name.
+	 *
 	 * Retrieve google maps widget name.
 	 *
 	 * @since 1.0.0
@@ -23,6 +29,8 @@ class Widget_Google_Maps extends Widget_Base {
 	}
 
 	/**
+	 * Get widget title.
+	 *
 	 * Retrieve google maps widget title.
 	 *
 	 * @since 1.0.0
@@ -35,6 +43,8 @@ class Widget_Google_Maps extends Widget_Base {
 	}
 
 	/**
+	 * Get widget icon.
+	 *
 	 * Retrieve google maps widget icon.
 	 *
 	 * @since 1.0.0
@@ -156,7 +166,7 @@ class Widget_Google_Maps extends Widget_Base {
 
 		printf(
 			'<div class="elementor-custom-embed"><iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=%s&amp;t=m&amp;z=%d&amp;output=embed&amp;iwloc=near"></iframe></div>',
-			urlencode( $settings['address'] ),
+			rawurlencode( $settings['address'] ),
 			absint( $settings['zoom']['size'] )
 		);
 	}

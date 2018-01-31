@@ -6,11 +6,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Icon List Widget
+ * Elementor icon list widget.
+ *
+ * Elementor widget that displays a bullet list with any chosen icons and texts.
+ *
+ * @since 1.0.0
  */
 class Widget_Icon_List extends Widget_Base {
 
 	/**
+	 * Get widget name.
+	 *
 	 * Retrieve icon list widget name.
 	 *
 	 * @since 1.0.0
@@ -23,6 +29,8 @@ class Widget_Icon_List extends Widget_Base {
 	}
 
 	/**
+	 * Get widget title.
+	 *
 	 * Retrieve icon list widget title.
 	 *
 	 * @since 1.0.0
@@ -35,6 +43,8 @@ class Widget_Icon_List extends Widget_Base {
 	}
 
 	/**
+	 * Get widget icon.
+	 *
 	 * Retrieve icon list widget icon.
 	 *
 	 * @since 1.0.0
@@ -47,6 +57,8 @@ class Widget_Icon_List extends Widget_Base {
 	}
 
 	/**
+	 * Get widget categories.
+	 *
 	 * Retrieve the list of categories the icon list widget belongs to.
 	 *
 	 * Used to determine where to display the widget in the editor.
@@ -116,10 +128,10 @@ class Widget_Icon_List extends Widget_Base {
 						'label' => __( 'Link', 'elementor' ),
 						'type' => Controls_Manager::URL,
 						'label_block' => true,
-						'placeholder' => __( 'http://your-link.com', 'elementor' ),
+						'placeholder' => __( 'https://your-link.com', 'elementor' ),
 					],
 				],
-				'title_field' => '<i class="{{ icon }}"></i> {{{ text }}}',
+				'title_field' => '<i class="{{ icon }}" aria-hidden="true"></i> {{{ text }}}',
 			]
 		);
 
@@ -142,7 +154,7 @@ class Widget_Icon_List extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'space_between',
 			[
 				'label' => __( 'Space Between', 'elementor' ),
@@ -370,7 +382,6 @@ class Widget_Icon_List extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			[
 				'name' => 'icon_typography',
-				'label' => __( 'Typography', 'elementor' ),
 				'selector' => '{{WRAPPER}} .elementor-icon-list-item',
 				'scheme' => Scheme_Typography::TYPOGRAPHY_3,
 			]
@@ -419,7 +430,7 @@ class Widget_Icon_List extends Widget_Base {
 					if ( $item['icon'] ) :
 					?>
 						<span class="elementor-icon-list-icon">
-							<i class="<?php echo esc_attr( $item['icon'] ); ?>"></i>
+							<i class="<?php echo esc_attr( $item['icon'] ); ?>" aria-hidden="true"></i>
 						</span>
 					<?php endif; ?>
 					<span <?php echo $this->get_render_attribute_string( $repeater_setting_key ); ?>><?php echo $item['text']; ?></span>
@@ -449,15 +460,21 @@ class Widget_Icon_List extends Widget_Base {
 		<ul class="elementor-icon-list-items">
 			<#
 			if ( settings.icon_list ) {
-				_.each( settings.icon_list, function( item, index ) { #>
+				_.each( settings.icon_list, function( item, index ) {
+					var iconTextKey = view.getRepeaterSettingKey( 'text', 'icon_list', index );
+
+					view.addRenderAttribute( iconTextKey, 'class', 'elementor-icon-list-text' );
+
+					view.addInlineEditingAttributes( iconTextKey );
+					#>
 					<li class="elementor-icon-list-item">
 						<# if ( item.link && item.link.url ) { #>
 							<a href="{{ item.link.url }}">
 						<# } #>
 						<span class="elementor-icon-list-icon">
-							<i class="{{ item.icon }}"></i>
+							<i class="{{ item.icon }}" aria-hidden="true"></i>
 						</span>
-						<span class="elementor-icon-list-text elementor-inline-editing" data-elementor-setting-key="icon_list.{{{ index }}}.text">{{{ item.text }}}</span>
+						<span {{{ view.getRenderAttributeString( iconTextKey ) }}}>{{{ item.text }}}</span>
 						<# if ( item.link && item.link.url ) { #>
 							</a>
 						<# } #>

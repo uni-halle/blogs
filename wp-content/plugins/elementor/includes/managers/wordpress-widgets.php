@@ -5,12 +5,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+/**
+ * Elementor WordPress widgets manager class.
+ *
+ * Elementor WordPress widgets manager handler class is responsible for
+ * registering and initializing all the supported controls, both regular
+ * controls and the group controls.
+ *
+ * @since 1.5.0
+ */
 class WordPress_Widgets_Manager {
 
 	/**
+	 * WordPress widgets manager constructor.
+	 *
+	 * Initializing the WordPress widgets manager in Elementor editor.
+	 *
 	 * @since 1.5.0
 	 * @access public
-	*/
+	 */
 	public function __construct() {
 		if ( version_compare( get_bloginfo( 'version' ), '4.8', '<' ) ) {
 			return;
@@ -21,9 +34,16 @@ class WordPress_Widgets_Manager {
 	}
 
 	/**
+	 * Before enqueue scripts.
+	 *
+	 * Prints custom scripts required to run WordPress widgets in Elementor
+	 * editor.
+	 *
+	 * Fired by `elementor/editor/before_enqueue_scripts` action.
+	 *
 	 * @since 1.5.0
 	 * @access public
-	*/
+	 */
 	public function before_enqueue_scripts() {
 		global $wp_scripts;
 
@@ -43,14 +63,22 @@ class WordPress_Widgets_Manager {
 		wp_enqueue_style( 'media-views' );
 		// End TODO.
 
+		/** This action is documented in wp-admin/admin-header.php */
 		do_action( 'admin_print_scripts-widgets.php' );
 	}
 
 	/**
+	 * WordPress widgets footer.
+	 *
+	 * Prints WordPress widgets scripts in Elementor editor footer.
+	 *
+	 * Fired by `elementor/editor/footer` action.
+	 *
 	 * @since 1.5.0
 	 * @access public
-	*/
+	 */
 	public function footer() {
+		/** This action is documented in wp-admin/admin-footer.php */
 		do_action( 'admin_footer-widgets.php' );
 	}
 }

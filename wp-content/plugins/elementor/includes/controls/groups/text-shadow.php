@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Text shadow control.
+ * Elementor text shadow control.
  *
  * A base control for creating text shadow control. Displays input fields to define
  * the text shadow.
@@ -77,13 +77,6 @@ class Group_Control_Text_Shadow extends Group_Control_Base {
 	protected function init_fields() {
 		$controls = [];
 
-		$controls['text_shadow_type'] = [
-			'label' => _x( 'Text Shadow', 'Text Shadow Control', 'elementor' ),
-			'type' => Controls_Manager::SWITCHER,
-			'return_value' => 'yes',
-			'render_type' => 'ui',
-		];
-
 		$controls['text_shadow'] = [
 			'label' => _x( 'Text Shadow', 'Text Shadow Control', 'elementor' ),
 			'type' => Controls_Manager::TEXT_SHADOW,
@@ -96,5 +89,19 @@ class Group_Control_Text_Shadow extends Group_Control_Base {
 		];
 
 		return $controls;
+	}
+
+	/**
+	 * @since 1.9.0
+	 * @access protected
+	 */
+	protected function get_default_options() {
+		return [
+			'popover' => [
+				'starter_title' => _x( 'Text Shadow', 'Text Shadow Control', 'elementor' ),
+				'starter_name' => 'text_shadow_type',
+				'starter_value' => 'yes',
+			],
+		];
 	}
 }

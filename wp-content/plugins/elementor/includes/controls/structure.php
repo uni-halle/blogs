@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Structure control.
+ * Elementor structure control.
  *
  * A base control for creating structure control. A private control for section
  * columns structure.
@@ -78,7 +78,10 @@ class Control_Structure extends Base_Data_Control {
 				<div class="elementor-control-structure-preset elementor-control-structure-current-preset">
 					{{{ elementor.presetsFactory.getPresetSVG( currentPreset.preset, 233, 72, 5 ).outerHTML }}}
 				</div>
-				<div class="elementor-control-structure-reset"><i class="fa fa-undo"></i><?php _e( 'Reset Structure', 'elementor' ); ?></div>
+				<div class="elementor-control-structure-reset">
+					<i class="fa fa-undo" aria-hidden="true"></i>
+					<?php _e( 'Reset Structure', 'elementor' ); ?>
+				</div>
 				<#
 				var morePresets = getMorePresets();
 

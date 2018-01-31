@@ -18,6 +18,10 @@ class Model extends BaseModel {
 	 */
 	private $post;
 
+	/**
+	 * @since 1.6.0
+	 * @access public
+	 */
 	public function __construct( array $data = [] ) {
 		$this->post = get_post( $data['id'] );
 
@@ -28,28 +32,44 @@ class Model extends BaseModel {
 		parent::__construct( $data );
 	}
 
+	/**
+	 * @since 1.6.0
+	 * @access public
+	 */
 	public function get_name() {
 		return 'page-settings';
 	}
 
+	/**
+	 * @since 1.6.0
+	 * @access public
+	 */
 	public function get_unique_name() {
 		return $this->get_name() . '-' . $this->post->ID;
 	}
 
+	/**
+	 * @since 1.6.0
+	 * @access public
+	 */
 	public function get_css_wrapper_selector() {
 		return 'body.elementor-page-' . $this->get_id();
 	}
 
+	/**
+	 * @since 1.6.0
+	 * @access public
+	 */
 	public function get_panel_page_settings() {
 		return [
-			'title' => __( 'Page Settings', 'elementor' ),
-			'menu' => [
-				'icon' => 'fa fa-cog',
-				'beforeItem' => 'clear-page',
-			],
+			'title' => __( 'Document Settings', 'elementor' ),
 		];
 	}
 
+	/**
+	 * @since 1.6.0
+	 * @access public
+	 */
 	public function on_export( $element_data ) {
 		if ( ! empty( $element_data['settings']['template'] ) && Manager::TEMPLATE_CANVAS !== $element_data['settings']['template'] ) {
 			unset( $element_data['settings']['template'] );
@@ -58,11 +78,15 @@ class Model extends BaseModel {
 		return $element_data;
 	}
 
+	/**
+	 * @since 1.6.0
+	 * @access protected
+	 */
 	protected function _register_controls() {
 		$this->start_controls_section(
 			'section_page_settings',
 			[
-				'label' => __( 'Page Settings', 'elementor' ),
+				'label' => __( 'Document Settings', 'elementor' ),
 				'tab' => Controls_Manager::TAB_SETTINGS,
 			]
 		);
@@ -91,14 +115,29 @@ class Model extends BaseModel {
 				'type' => Controls_Manager::SWITCHER,
 				'label_off' => __( 'No', 'elementor' ),
 				'label_on' => __( 'Yes', 'elementor' ),
-				// translators: %s: Setting Page link
-				'description' => sprintf( __( 'Not working? You can set a different selector for the title in the <a href="%s" target="_blank">Settings page</a>.', 'elementor' ), Settings::get_url() ),
+				'description' => sprintf(
+					/* translators: %s: Setting Page URL */
+					__( 'Not working? You can set a different selector for the title in the <a href="%s" target="_blank">Settings page</a>.', 'elementor' ),
+					Settings::get_url() . '#tab-style'
+				),
 				'selectors' => [
 					'{{WRAPPER}} ' . $page_title_selector => 'display: none',
 				],
 				'export' => '__return_true',
 			]
 		);
+
+		if ( post_type_supports( $this->post->post_type, 'excerpt' ) ) {
+			$this->add_control(
+				'post_excerpt',
+				[
+					'label' => __( 'Excerpt', 'elementor' ),
+					'type' => Controls_Manager::TEXTAREA,
+					'default' => $this->post->post_excerpt,
+					'label_block' => true,
+				]
+			);
+		}
 
 		if ( Manager::is_cpt_custom_templates_supported() ) {
 			require_once ABSPATH . '/wp-admin/includes/template.php';
@@ -125,7 +164,7 @@ class Model extends BaseModel {
 
 		$post_type_object = get_post_type_object( $this->post->post_type );
 
-		$can_publish = current_user_can( $post_type_object->cap->publish_posts );
+		$can_publish = $post_type_object && current_user_can( $post_type_object->cap->publish_posts );
 
 		if ( 'publish' === $this->post->post_status || 'private' === $this->post->post_status || $can_publish ) {
 			$this->add_control(
@@ -138,6 +177,17 @@ class Model extends BaseModel {
 				]
 			);
 		}
+
+		$this->add_control(
+			'clear_page',
+			[
+				'type' => Controls_Manager::BUTTON,
+				'label' => __( 'Delete All Content', 'elementor' ),
+				'text' => __( 'Delete', 'elementor' ),
+				'button_type' => 'warning',
+				'event' => 'elementor:clearPage',
+			]
+		);
 
 		$this->end_controls_section();
 
@@ -153,7 +203,6 @@ class Model extends BaseModel {
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'background',
-				'label' => __( 'Background', 'elementor' ),
 				'fields_options' => [
 					'__all' => [
 						'export' => '__return_true',

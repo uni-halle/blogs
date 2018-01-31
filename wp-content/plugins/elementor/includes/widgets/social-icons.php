@@ -6,11 +6,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Social Icons Widget
+ * Elementor social icons widget.
+ *
+ * Elementor widget that displays icons to social pages like Facebook and Twitter.
+ *
+ * @since 1.0.0
  */
 class Widget_Social_Icons extends Widget_Base {
 
 	/**
+	 * Get widget name.
+	 *
 	 * Retrieve social icons widget name.
 	 *
 	 * @since 1.0.0
@@ -23,6 +29,8 @@ class Widget_Social_Icons extends Widget_Base {
 	}
 
 	/**
+	 * Get widget title.
+	 *
 	 * Retrieve social icons widget title.
 	 *
 	 * @since 1.0.0
@@ -35,6 +43,8 @@ class Widget_Social_Icons extends Widget_Base {
 	}
 
 	/**
+	 * Get widget icon.
+	 *
 	 * Retrieve social icons widget icon.
 	 *
 	 * @since 1.0.0
@@ -47,6 +57,8 @@ class Widget_Social_Icons extends Widget_Base {
 	}
 
 	/**
+	 * Get widget categories.
+	 *
 	 * Retrieve the list of categories the social icons widget belongs to.
 	 *
 	 * Used to determine where to display the widget in the editor.
@@ -119,10 +131,13 @@ class Widget_Social_Icons extends Widget_Base {
 							'fa fa-linkedin',
 							'fa fa-medium',
 							'fa fa-odnoklassniki',
+							'fa fa-meetup',
 							'fa fa-pinterest',
 							'fa fa-product-hunt',
 							'fa fa-reddit',
+							'fa fa-rss',
 							'fa fa-shopping-cart',
+							'fa fa-skype',
 							'fa fa-slideshare',
 							'fa fa-snapchat',
 							'fa fa-soundcloud',
@@ -152,7 +167,7 @@ class Widget_Social_Icons extends Widget_Base {
 						'default' => [
 							'is_external' => 'true',
 						],
-						'placeholder' => __( 'http://your-link.com', 'elementor' ),
+						'placeholder' => __( 'https://your-link.com', 'elementor' ),
 					],
 				],
 				'title_field' => '<i class="{{ social }}"></i> {{{ social.replace( \'fa fa-\', \'\' ).replace( \'-\', \' \' ).replace( /\b\w/g, function( letter ){ return letter.toUpperCase() } ) }}}',
@@ -401,7 +416,7 @@ class Widget_Social_Icons extends Widget_Base {
 		$this->add_control(
 			'hover_animation',
 			[
-				'label' => __( 'Animation', 'elementor' ),
+				'label' => __( 'Hover Animation', 'elementor' ),
 				'type' => Controls_Manager::HOVER_ANIMATION,
 			]
 		);
@@ -445,6 +460,7 @@ class Widget_Social_Icons extends Widget_Base {
 				}
 				?>
 				<a class="elementor-icon elementor-social-icon elementor-social-icon-<?php echo $social . $class_animation; ?>" <?php echo $this->get_render_attribute_string( $link_key ); ?>>
+					<span class="elementor-screen-only"><?php echo ucwords( $social ); ?></span>
 					<i class="<?php echo $item['social']; ?>"></i>
 				</a>
 			<?php } ?>
@@ -467,6 +483,7 @@ class Widget_Social_Icons extends Widget_Base {
 				var link = item.link ? item.link.url : '',
 					social = item.social.replace( 'fa fa-', '' ); #>
 				<a class="elementor-icon elementor-social-icon elementor-social-icon-{{ social }} elementor-animation-{{ settings.hover_animation }}" href="{{ link }}">
+					<span class="elementor-screen-only">{{{ social }}}</span>
 					<i class="{{ item.social }}"></i>
 				</a>
 			<# } ); #>
