@@ -39,7 +39,11 @@ class WPSEO_Link_Reindex_Post_Service {
 	 * @return array The unprocessed posts.
 	 */
 	protected function get_unprocessed_posts() {
-		return WPSEO_Link_Query::get_unprocessed_posts( WPSEO_Link_Utils::get_public_post_types() );
+		$post_types = apply_filters( 'wpseo_link_count_post_types', WPSEO_Post_Type::get_accessible_post_types() );
+		if ( ! is_array( $post_types ) ) {
+			return array();
+		}
+		return WPSEO_Link_Query::get_unprocessed_posts( $post_types );
 	}
 
 	/**
@@ -48,7 +52,7 @@ class WPSEO_Link_Reindex_Post_Service {
 	 * @return bool True when the tables are accessible.
 	 */
 	protected function is_processable() {
-		return WPSEO_Link_Table_Accessible::check_table_is_accessible() && WPSEO_Meta_Table_Accessible::is_accessible();
+		return WPSEO_Link_Table_Accessible::is_accessible() && WPSEO_Meta_Table_Accessible::is_accessible();
 	}
 
 	/**

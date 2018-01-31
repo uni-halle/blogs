@@ -20,7 +20,7 @@ if ( filter_input( INPUT_GET, 'intro' ) ) {
 $options = get_option( 'wpseo' );
 
 if ( isset( $_GET['allow_tracking'] ) && check_admin_referer( 'wpseo_activate_tracking', 'nonce' ) ) {
-	$options['yoast_tracking'] = ( $_GET['allow_tracking'] == 'yes' );
+	$options['yoast_tracking'] = ( $_GET['allow_tracking'] === 'yes' );
 	update_option( 'wpseo', $options );
 
 	if ( isset( $_SERVER['HTTP_REFERER'] ) ) {
@@ -49,7 +49,7 @@ if ( is_array( $options['blocking_files'] ) && count( $options['blocking_files']
 			echo '<br/>', '<code>', esc_html( $file ), '</code>';
 		}
 		unset( $file );
-		echo '<br><button type="button" data-nonce="', esc_js( wp_create_nonce( 'wpseo-blocking-files' ) ), '" class="button">', esc_html__( 'Fix it', 'wordpress-seo' ), '</button>';
+		echo '<br><button type="button" data-nonce="', esc_attr( wp_create_nonce( 'wpseo-blocking-files' ) ), '" class="button">', esc_html__( 'Fix it', 'wordpress-seo' ), '</button>';
 		echo '</p></div>';
 	}
 }
