@@ -42,9 +42,18 @@ html
 };
 function add_create_comment_link($content) {
 	$link=get_permalink();
-	$commentCount=wp_count_comments()->approved;
+	global $post;
+	$commentCount=$post->comment_count;
+	/*$commentCount=wp_count_comments($post->id)->approved;
+	$pinfo=print_r($post,true);
+	$content.="<!--- $pinfo --->";*/
+	switch($commentCount) {
+		case 1: $commentCount="ein Kommentar"; break;
+		case 0: $commentCount="noch keine";
+		default: $commentCount.=" Kommentare";
+	}
 	return $content.<<<html
- <a href="$link#comments" class="rel relComments">Bisher $commentCount Kommentar(e)</a>
+ <a href="$link#comments" class="rel relComments">Bisher $commentCount</a>
 html
 //.$content
 ;
