@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Graphene theme for WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-05 07:04+0800\n"
+"POT-Creation-Date: 2017-11-24 16:21+0800\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Zadizanst <zadizanst@gmail.com>\n"
 "Language-Team: \n"
@@ -470,7 +470,7 @@ msgstr "مینوی کردنەوە بۆ خوارەوە (دۆخی بنەڕەتی)"
 msgid "Dropdown menu text (active state)"
 msgstr "مینوی کردنەوە بۆ خوارەوە (دۆخی دەست لەسەر ڕاگیراو و چالاک)"
 
-#: admin/customizer/options-colours.php:48 inc/setup.php:95
+#: admin/customizer/options-colours.php:48 inc/setup.php:97
 msgid "Secondary Menu"
 msgstr "مینوی دووەمی"
 
@@ -861,7 +861,9 @@ msgstr ""
 "بگرێتەوە بێئەوەی پەیوەندی بە قەبارەی وێنەی وێنەکاریەکەوە هەبێت."
 
 #: admin/customizer/options-general.php:46
-msgid "Header image height"
+#, fuzzy
+#| msgid "Header image height"
+msgid "Header image max height"
 msgstr "به‌رزی وێنه‌ی سەرپەڕە"
 
 #: admin/customizer/options-general.php:53
@@ -1569,7 +1571,7 @@ msgstr "ویکی دۆکۆمێنتەکان"
 #: admin/options.php:26
 #, fuzzy, php-format
 #| msgid "%1$s at %2$s"
-msgid "Version %1$s, by %2$s"
+msgid "Version %1$s by %2$s"
 msgstr "%1$s کاتژمێر %2$s"
 
 #: admin/options.php:32
@@ -1845,9 +1847,9 @@ msgstr "ئه‌م تێبنی یه‌ له‌ ماڵپه‌ڕه‌كه‌تدا �
 msgid "Load more"
 msgstr "زیاتر بخوێنەرەوە"
 
-#: inc/loop.php:99
-msgid "Continue reading &raquo;"
-msgstr "زیاتر بخوێنەرەوە &raquo;"
+#: inc/loop.php:99 loop.php:36
+msgid "Continue reading"
+msgstr "زیاتر بخوێنەرەوە"
 
 #: inc/loop.php:220
 #, fuzzy
@@ -1906,24 +1908,24 @@ msgstr "بۆچوون بنوسە"
 msgid "In this section"
 msgstr ""
 
-#: inc/menus.php:135
+#: inc/menus.php:136
 msgid "FontAwesome Icon Name"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 #, php-format
 msgid "Choose from 580+ %s"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 msgid "available icons"
 msgstr ""
 
-#: inc/menus.php:223
+#: inc/menus.php:224
 msgid "Home"
 msgstr "سەرەکی"
 
-#: inc/menus.php:295
+#: inc/menus.php:296
 #, fuzzy, php-format
 #| msgid "(No title)"
 msgid "#%d (no title)"
@@ -1974,31 +1976,31 @@ msgstr[1] "دەرخستنی %1$s  بابەتی زیاتر لەکۆی %2$s باب
 msgid "All comments loaded!"
 msgstr "سنووری سه‌رووی بۆچوونه‌كانی نووسه‌ر"
 
-#: inc/setup.php:94
+#: inc/setup.php:96
 msgid "Header Menu"
 msgstr "مینوی سەرپەڕە"
 
-#: inc/setup.php:96
+#: inc/setup.php:98
 msgid "Footer Menu"
 msgstr "مینوی پێپەڕە"
 
-#: inc/setup.php:146
+#: inc/setup.php:148
 msgid "Forest"
 msgstr ""
 
-#: inc/setup.php:151
+#: inc/setup.php:153
 msgid "Mountains"
 msgstr ""
 
-#: inc/setup.php:156
+#: inc/setup.php:158
 msgid "Road"
 msgstr ""
 
-#: inc/setup.php:160
+#: inc/setup.php:162
 msgid "Header image by Syahir Hakim"
 msgstr "وێنەی سەرپەڕە لەلایەن سەیاهیر حەکیمەوە"
 
-#: inc/setup.php:164
+#: inc/setup.php:166
 msgid ""
 "This is the default Graphene theme header image, cropped from image by Quantin Houyoux at "
 "sxc.hu"
@@ -2006,35 +2008,35 @@ msgstr ""
 "ئەمە وێنەی سەرپەڕەی بنەڕەتی ڕووکاری گرافینە، کە لە وێنەیەکی دروستکراو لە لایەن کوانتین لە "
 "sxc.hu ەوە بڕڕاوە."
 
-#: inc/setup.php:168 inc/setup.php:172 inc/setup.php:176 inc/setup.php:180 inc/setup.php:184
+#: inc/setup.php:170 inc/setup.php:174 inc/setup.php:178 inc/setup.php:182 inc/setup.php:186
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "وێنەی سەرپەڕە کە لە وێنەیەکی دروستکراو لەلایەن ئیلکۆ لە sxc.hu بڕڕاوە"
 
-#: inc/setup.php:205
+#: inc/setup.php:207
 #, fuzzy
 #| msgid "Graphene Theme news"
 msgid "Graphene - Sidebar One"
 msgstr "نوێکاریەکانی ڕووکاری گرافین"
 
-#: inc/setup.php:207
+#: inc/setup.php:209
 msgid "The first sidebar widget area (will always be displayed on the right hand side)."
 msgstr "ناوچەی ویجیتی لاتەنیشتی یەکەم ( هەمیشە لە لای ڕاستدا دەردەکەوێت)."
 
-#: inc/setup.php:214
+#: inc/setup.php:216
 msgid "Graphene - Sidebar Two"
 msgstr ""
 
-#: inc/setup.php:216
+#: inc/setup.php:218
 msgid "The second sidebar widget area (will always be displayed on the left hand side)."
 msgstr "ناوچەی ویجیتی لا تەنیشتی دووەم ( هەمیشە لە لای چەپدا دەردەکەوێت)."
 
-#: inc/setup.php:234
+#: inc/setup.php:236
 #, fuzzy
 #| msgid "Graphene FAQs"
 msgid "Graphene - Footer"
 msgstr "پرسیارە هەمیشە دووبارەبووەکانی ڕووکاری گرافین"
 
-#: inc/setup.php:236
+#: inc/setup.php:238
 msgid ""
 "The footer widget area. Leave empty to disable. Set the number of columns to display at "
 "the theme's Display Options page."
@@ -2042,27 +2044,27 @@ msgstr ""
 "ناوچەی ویجیتی ژێرپەڕە. بۆ ناچالاککردنی بەبەتاڵی جێی بهێڵە. ژمارەی ئەو ستوونانە دیاری بکە "
 "کە دەتەوێت لە پەڕەی ڕێکخستنەکانی نیشاندانی ڕووکارەکەدا دەربکەوێت."
 
-#: inc/setup.php:251
+#: inc/setup.php:253
 msgid "Graphene - Sidebar One (Front Page)"
 msgstr ""
 
-#: inc/setup.php:253
+#: inc/setup.php:255
 msgid "The first sidebar widget area that will only be displayed on the front page."
 msgstr "ناوچەی ویجیتی لا تەنیشتی یەکەم کە تەنها لە پەڕەی سەرەکیدا دەردەکەوێت"
 
-#: inc/setup.php:260
+#: inc/setup.php:262
 msgid "Graphene - Sidebar Two (Front Page)"
 msgstr ""
 
-#: inc/setup.php:262
+#: inc/setup.php:264
 msgid "The second sidebar widget area that will only be displayed on the front page."
 msgstr "ناوچەی ویجیتی لا تەنیشتی دووەم کە تەنها لە پەڕەی سەرەکیدا دەردەکەوێت"
 
-#: inc/setup.php:271
+#: inc/setup.php:273
 msgid "Graphene - Footer (Front Page)"
 msgstr ""
 
-#: inc/setup.php:273
+#: inc/setup.php:275
 msgid ""
 "The footer widget area that will only be displayed on the front page. Leave empty to "
 "disable. Set the number of columns to display at the theme's Display Options page."
@@ -2071,17 +2073,17 @@ msgstr ""
 "بهێڵە. ژمارەی ئەو ستوونانە دیاری بکە کە دەتەوێت لە پەڕەی ڕێکخستنەکانی نیشاندانی "
 "ڕووکارەکەدا دەربکەوێت."
 
-#: inc/setup.php:283
+#: inc/setup.php:285
 #, fuzzy
 #| msgid "Graphene Theme"
 msgid "Graphene - Header"
 msgstr "ڕووکاری گرافین"
 
-#: inc/setup.php:285
+#: inc/setup.php:287
 msgid "The header widget area."
 msgstr "ناوچەی ویجیتی سەرپەڕە."
 
-#: inc/setup.php:302
+#: inc/setup.php:304
 #, php-format
 msgid "Dynamically added widget area. This widget area is attached to the %s action hook."
 msgstr ""
@@ -2123,18 +2125,12 @@ msgstr ""
 msgid "Permanent link to this article:"
 msgstr "بەستەری هەمیشەیی بۆ ئەم بابەتە: "
 
-#: loop.php:36
-#, fuzzy
-#| msgid "Continue reading &raquo;"
-msgid "Continue reading"
-msgstr "زیاتر بخوێنەرەوە &raquo;"
-
 #: search-404.php:17
 #, php-format
 msgid "Found %1$s search result for keyword: %2$s"
 msgid_plural "Found %1$s search results for keyword: %2$s"
-msgstr[0] "%1$s ئەنجامی گەڕان بۆ وشەکانی %2$ دۆزرایەوە"
-msgstr[1] "%1$ ئەنجامی گەڕان بۆ وشەکانی %2$ دۆزرایەوە"
+msgstr[0] ""
+msgstr[1] ""
 
 #: search-404.php:26
 msgid "Suggested results"
@@ -2226,6 +2222,9 @@ msgstr "دوو ستوون لەگەڵ تەنیشتی لای ڕاست"
 #: template-twocolumnsright.php:13
 msgid "Two columns, sidebar on the left"
 msgstr "دوو ستوون لەگەڵ تەنیشتی لای چەپ"
+
+#~ msgid "Continue reading &raquo;"
+#~ msgstr "زیاتر بخوێنەرەوە &raquo;"
 
 #~ msgid "Daily Archive: %s"
 #~ msgstr "ئەرشیفی ڕۆژانە:  %s"

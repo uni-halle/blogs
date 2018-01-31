@@ -236,7 +236,7 @@
 		text-align: center;
 		padding: 10px 15px;
 		margin: -15px 0 10px;
-		background: #2F2733;
+		background: rgba(255,255,255,0.05);
 	}
 	.footer-menu-wrap li {
 		padding: 0 5px;
@@ -275,7 +275,9 @@
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-	
+	.footer-widget-col-5 .sidebar-wrap {
+	    width: 20% !important;
+	}
 }
 
 /* Medium devices (desktops, 992px and up) */

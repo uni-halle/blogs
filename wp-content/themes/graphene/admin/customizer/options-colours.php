@@ -165,7 +165,7 @@ function graphene_customizer_colour_options( $wp_customize ){
 		'options'	=> array(
             'archive_bg'        => array( 'label' => __( 'Archive label background', 'graphene' ) ),
 		    'archive_border'    => array( 'label' => __( 'Archive label border', 'graphene' ) ),
-		    'archive_label'     => array( 'label' => __( 'Archive label label colour', 'graphene' ) ),
+		    'archive_label'     => array( 'label' => __( 'Archive label title colour', 'graphene' ) ),
 		    'archive_text'      => array( 'label' => __( 'Archive label text colour', 'graphene' ) ),
 		)
 	);
@@ -204,9 +204,13 @@ function graphene_customizer_colour_options( $wp_customize ){
 		'type'		=> 'colour',
 		'section'	=> 'graphene-colours-footer',
 		'options'	=> array(
-            'footer_bg'      => array( 'label' => __( 'Background', 'graphene' ) ),
-			'footer_text'    => array( 'label' => __( 'Normal text', 'graphene' ) ),
-			'footer_link'    => array( 'label' => __( 'Link text', 'graphene' ) ),
+            'footer_bg'      		=> array( 'label' => __( 'Background', 'graphene' ) ),
+			'footer_text'    		=> array( 'label' => __( 'Normal text', 'graphene' ) ),
+			'footer_link'    		=> array( 'label' => __( 'Link text', 'graphene' ) ),
+			'footer_widget_bg'      => array( 'label' => __( 'Widget area background', 'graphene' ) ),
+			'footer_widget_border'  => array( 'label' => __( 'Widget area border', 'graphene' ) ),
+			'footer_widget_text'    => array( 'label' => __( 'Widget area text', 'graphene' ) ),
+			'footer_widget_link'    => array( 'label' => __( 'Widget area link text', 'graphene' ) ),
 		)
 	);
 	graphene_add_customizer_options( $options, $wp_customize );

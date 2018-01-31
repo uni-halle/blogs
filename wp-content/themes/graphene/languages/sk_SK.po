@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Graphene\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-05 07:04+0800\n"
-"PO-Revision-Date: 2017-11-05 07:11+0800\n"
+"POT-Creation-Date: 2017-11-24 16:21+0800\n"
+"PO-Revision-Date: 2017-11-24 16:34+0800\n"
 "Last-Translator: Martin Kucharik <neuro.kucharik@gmail.com>\n"
 "Language-Team: \n"
 "Language: sk_SK\n"
@@ -451,7 +451,7 @@ msgstr "Šírka položky v dropdown menu"
 msgid "Dropdown menu text (active state)"
 msgstr "Šírka položky v dropdown menu"
 
-#: admin/customizer/options-colours.php:48 inc/setup.php:95
+#: admin/customizer/options-colours.php:48 inc/setup.php:97
 msgid "Secondary Menu"
 msgstr "Druhotné menu"
 
@@ -808,7 +808,7 @@ msgstr ""
 #: admin/customizer/options-general.php:46
 #, fuzzy
 #| msgid "Header Widget Area"
-msgid "Header image height"
+msgid "Header image max height"
 msgstr "Priestor pre widgety v hlavičke"
 
 #: admin/customizer/options-general.php:53
@@ -1511,7 +1511,7 @@ msgstr ""
 #: admin/options.php:26
 #, fuzzy, php-format
 #| msgid "%1$s at %2$s"
-msgid "Version %1$s, by %2$s"
+msgid "Version %1$s by %2$s"
 msgstr "%1$s, %2$s"
 
 #: admin/options.php:32
@@ -1788,9 +1788,9 @@ msgstr ""
 msgid "Load more"
 msgstr ""
 
-#: inc/loop.php:99
-msgid "Continue reading &raquo;"
-msgstr "Chcem vedieť viac &raquo;"
+#: inc/loop.php:99 loop.php:36
+msgid "Continue reading"
+msgstr "Chcem vedieť viac"
 
 #: inc/loop.php:220
 msgid "&laquo; Prev"
@@ -1847,24 +1847,24 @@ msgstr "Pridať komentár"
 msgid "In this section"
 msgstr ""
 
-#: inc/menus.php:135
+#: inc/menus.php:136
 msgid "FontAwesome Icon Name"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 #, php-format
 msgid "Choose from 580+ %s"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 msgid "available icons"
 msgstr ""
 
-#: inc/menus.php:223
+#: inc/menus.php:224
 msgid "Home"
 msgstr "Domov"
 
-#: inc/menus.php:295
+#: inc/menus.php:296
 #, fuzzy, php-format
 #| msgid "(No title)"
 msgid "#%d (no title)"
@@ -1911,48 +1911,48 @@ msgstr[2] ""
 msgid "All comments loaded!"
 msgstr "% komentárov"
 
-#: inc/setup.php:94
+#: inc/setup.php:96
 msgid "Header Menu"
 msgstr "Menu v hlavičke"
 
-#: inc/setup.php:96
+#: inc/setup.php:98
 #, fuzzy
 #| msgid "Footer Options"
 msgid "Footer Menu"
 msgstr "Možnosti päty"
 
-#: inc/setup.php:146
+#: inc/setup.php:148
 msgid "Forest"
 msgstr ""
 
-#: inc/setup.php:151
+#: inc/setup.php:153
 msgid "Mountains"
 msgstr ""
 
-#: inc/setup.php:156
+#: inc/setup.php:158
 msgid "Road"
 msgstr ""
 
-#: inc/setup.php:160
+#: inc/setup.php:162
 msgid "Header image by Syahir Hakim"
 msgstr "Titulný obrázok vytvoril Syahir Hakim"
 
-#: inc/setup.php:164
+#: inc/setup.php:166
 msgid ""
 "This is the default Graphene theme header image, cropped from image by "
 "Quantin Houyoux at sxc.hu"
 msgstr ""
 
-#: inc/setup.php:168 inc/setup.php:172 inc/setup.php:176 inc/setup.php:180
-#: inc/setup.php:184
+#: inc/setup.php:170 inc/setup.php:174 inc/setup.php:178 inc/setup.php:182
+#: inc/setup.php:186
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr ""
 
-#: inc/setup.php:205
+#: inc/setup.php:207
 msgid "Graphene - Sidebar One"
 msgstr ""
 
-#: inc/setup.php:207
+#: inc/setup.php:209
 #, fuzzy
 #| msgid ""
 #| "The first sidebar widget area that will only be displayed on the front "
@@ -1962,11 +1962,11 @@ msgid ""
 "side)."
 msgstr "Prvá bočná lišta pre widgery, ktorá sa zobrazí len na úvodnej stránke."
 
-#: inc/setup.php:214
+#: inc/setup.php:216
 msgid "Graphene - Sidebar Two"
 msgstr ""
 
-#: inc/setup.php:216
+#: inc/setup.php:218
 #, fuzzy
 #| msgid ""
 #| "The second sidebar widget area that will only be displayed on the front "
@@ -1977,13 +1977,13 @@ msgid ""
 msgstr ""
 "Druhá bočná lišta pre widgety (sidebar) sa zobrazí len na úvodnej stránke."
 
-#: inc/setup.php:234
+#: inc/setup.php:236
 #, fuzzy
 #| msgid "Graphene FAQs"
 msgid "Graphene - Footer"
 msgstr "Graphene FAQ"
 
-#: inc/setup.php:236
+#: inc/setup.php:238
 msgid ""
 "The footer widget area. Leave empty to disable. Set the number of columns to "
 "display at the theme's Display Options page."
@@ -1991,30 +1991,30 @@ msgstr ""
 "Priestor pre widgety v päte stránky. Nechajte prázdny, ak ho nechcete "
 "používať. Nastavte počet stĺpcov v nastaveniach zobrazenia témy."
 
-#: inc/setup.php:251
+#: inc/setup.php:253
 msgid "Graphene - Sidebar One (Front Page)"
 msgstr ""
 
-#: inc/setup.php:253
+#: inc/setup.php:255
 msgid ""
 "The first sidebar widget area that will only be displayed on the front page."
 msgstr "Prvá bočná lišta pre widgery, ktorá sa zobrazí len na úvodnej stránke."
 
-#: inc/setup.php:260
+#: inc/setup.php:262
 msgid "Graphene - Sidebar Two (Front Page)"
 msgstr ""
 
-#: inc/setup.php:262
+#: inc/setup.php:264
 msgid ""
 "The second sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "Druhá bočná lišta pre widgety (sidebar) sa zobrazí len na úvodnej stránke."
 
-#: inc/setup.php:271
+#: inc/setup.php:273
 msgid "Graphene - Footer (Front Page)"
 msgstr ""
 
-#: inc/setup.php:273
+#: inc/setup.php:275
 msgid ""
 "The footer widget area that will only be displayed on the front page. Leave "
 "empty to disable. Set the number of columns to display at the theme's "
@@ -2024,17 +2024,17 @@ msgstr ""
 "Nechajte prázdny ak ho chcete vypnúť. Nastavte počet stĺpcov na zobrazenie v "
 "nastaveniach zobrazenia témy"
 
-#: inc/setup.php:283
+#: inc/setup.php:285
 #, fuzzy
 #| msgid "Graphene FAQs"
 msgid "Graphene - Header"
 msgstr "Graphene FAQ"
 
-#: inc/setup.php:285
+#: inc/setup.php:287
 msgid "The header widget area."
 msgstr "Priestor pre widgety v hlavičke"
 
-#: inc/setup.php:302
+#: inc/setup.php:304
 #, php-format
 msgid ""
 "Dynamically added widget area. This widget area is attached to the %s action "
@@ -2078,12 +2078,6 @@ msgstr "Prepáčte, ale k tomu kľúčovému slovu sa nenašli žiadne výsledky
 #| msgid "Permalink to %s"
 msgid "Permanent link to this article:"
 msgstr "Trvalý odkaz na %s"
-
-#: loop.php:36
-#, fuzzy
-#| msgid "Continue reading &raquo;"
-msgid "Continue reading"
-msgstr "Chcem vedieť viac &raquo;"
 
 #: search-404.php:17
 #, php-format
@@ -2188,6 +2182,9 @@ msgstr ""
 #: template-twocolumnsright.php:13
 msgid "Two columns, sidebar on the left"
 msgstr ""
+
+#~ msgid "Continue reading &raquo;"
+#~ msgstr "Chcem vedieť viac &raquo;"
 
 #~ msgid ""
 #~ "You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> "

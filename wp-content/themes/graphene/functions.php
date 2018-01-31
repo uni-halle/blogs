@@ -40,3 +40,9 @@ require( GRAPHENE_ROOTDIR . '/inc/compat.php' 			);
 require( GRAPHENE_ROOTDIR . '/inc/functions.php' 		);
 require( GRAPHENE_ROOTDIR . '/inc/setup.php' 			);
 require( GRAPHENE_ROOTDIR . '/vendors/menu-item-custom-fields/menu-item-custom-fields.php' );
+
+
+/**
+ * Graphene Plus
+ */
+if ( file_exists( GRAPHENE_ROOTDIR . '/plus/setup.php' ) ) include( GRAPHENE_ROOTDIR . '/plus/setup.php' );

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Graphene 1.1.1.1 theme for WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-05 07:04+0800\n"
-"PO-Revision-Date: 2017-11-05 07:10+0800\n"
+"POT-Creation-Date: 2017-11-24 16:21+0800\n"
+"PO-Revision-Date: 2017-11-24 16:32+0800\n"
 "Last-Translator: Syahir Hakim <syahir@khairul-syahir.com>\n"
 "Language-Team: Dariusz Francuz <francuzpm@gmail.com>, Agard Khaardin "
 "<AgardKhaardin@gmail.com> <francuzpm@gmail.com>\n"
@@ -482,7 +482,7 @@ msgstr "Szerokość Opuszczanego Menu"
 msgid "Dropdown menu text (active state)"
 msgstr "Pokazać na stronie głównej i w archiwum?"
 
-#: admin/customizer/options-colours.php:48 inc/setup.php:95
+#: admin/customizer/options-colours.php:48 inc/setup.php:97
 msgid "Secondary Menu"
 msgstr "Menu poboczne"
 
@@ -876,7 +876,9 @@ msgstr ""
 "zastępował obraz w nagłówku bez wzgledu na wymiary obrazu reprezentacyjnego."
 
 #: admin/customizer/options-general.php:46
-msgid "Header image height"
+#, fuzzy
+#| msgid "Header image height"
+msgid "Header image max height"
 msgstr "Wysokośc obrazka nagłówka"
 
 #: admin/customizer/options-general.php:53
@@ -1614,7 +1616,7 @@ msgstr "Dokumentacja Wiki"
 #: admin/options.php:26
 #, fuzzy, php-format
 #| msgid "%1$s at %2$s"
-msgid "Version %1$s, by %2$s"
+msgid "Version %1$s by %2$s"
 msgstr "%1$s na %2$s"
 
 #: admin/options.php:32
@@ -1898,9 +1900,9 @@ msgstr "To ostrzeżenie nie będzie widoczne dla gości na Twojej stronie."
 msgid "Load more"
 msgstr "Czytaj więcej"
 
-#: inc/loop.php:99
-msgid "Continue reading &raquo;"
-msgstr "Kontynuuj czytanie &raquo;"
+#: inc/loop.php:99 loop.php:36
+msgid "Continue reading"
+msgstr "Kontynuuj czytanie"
 
 #: inc/loop.php:220
 #, fuzzy
@@ -1959,24 +1961,24 @@ msgstr "Pozostaw komentarz"
 msgid "In this section"
 msgstr ""
 
-#: inc/menus.php:135
+#: inc/menus.php:136
 msgid "FontAwesome Icon Name"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 #, php-format
 msgid "Choose from 580+ %s"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 msgid "available icons"
 msgstr ""
 
-#: inc/menus.php:223
+#: inc/menus.php:224
 msgid "Home"
 msgstr "Strona główna"
 
-#: inc/menus.php:295
+#: inc/menus.php:296
 #, fuzzy, php-format
 #| msgid "(No title)"
 msgid "#%d (no title)"
@@ -2023,31 +2025,31 @@ msgstr[2] ""
 msgid "All comments loaded!"
 msgstr "Górne obramowanie komentarzy autora"
 
-#: inc/setup.php:94
+#: inc/setup.php:96
 msgid "Header Menu"
 msgstr "Menu nagłówka"
 
-#: inc/setup.php:96
+#: inc/setup.php:98
 msgid "Footer Menu"
 msgstr "Opcje Stopki"
 
-#: inc/setup.php:146
+#: inc/setup.php:148
 msgid "Forest"
 msgstr ""
 
-#: inc/setup.php:151
+#: inc/setup.php:153
 msgid "Mountains"
 msgstr ""
 
-#: inc/setup.php:156
+#: inc/setup.php:158
 msgid "Road"
 msgstr ""
 
-#: inc/setup.php:160
+#: inc/setup.php:162
 msgid "Header image by Syahir Hakim"
 msgstr "Obrazek w nagłówku stworzył Syahir Hakim"
 
-#: inc/setup.php:164
+#: inc/setup.php:166
 msgid ""
 "This is the default Graphene theme header image, cropped from image by "
 "Quantin Houyoux at sxc.hu"
@@ -2055,18 +2057,18 @@ msgstr ""
 "To jest domyślny obrazek w nagłówku motywu Graphene, wycięty z obrazu  "
 "Quantin'a Houyoux'a na sxc.hu"
 
-#: inc/setup.php:168 inc/setup.php:172 inc/setup.php:176 inc/setup.php:180
-#: inc/setup.php:184
+#: inc/setup.php:170 inc/setup.php:174 inc/setup.php:178 inc/setup.php:182
+#: inc/setup.php:186
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "Obrazek w nagłówku wycięty z obrazu Ilco na sxc.hu"
 
-#: inc/setup.php:205
+#: inc/setup.php:207
 #, fuzzy
 #| msgid "Graphene Theme news"
 msgid "Graphene - Sidebar One"
 msgstr "Graphene nowości"
 
-#: inc/setup.php:207
+#: inc/setup.php:209
 msgid ""
 "The first sidebar widget area (will always be displayed on the right hand "
 "side)."
@@ -2074,11 +2076,11 @@ msgstr ""
 "Pierwszy pasek boczny widget( będzie zawsze wyświetlany tylko po prawej "
 "stronie)."
 
-#: inc/setup.php:214
+#: inc/setup.php:216
 msgid "Graphene - Sidebar Two"
 msgstr ""
 
-#: inc/setup.php:216
+#: inc/setup.php:218
 msgid ""
 "The second sidebar widget area (will always be displayed on the left hand "
 "side)."
@@ -2086,13 +2088,13 @@ msgstr ""
 "Drugi pasek boczny widget ( będzie zawsze wyświetlany tylko po lewej "
 "stronie)."
 
-#: inc/setup.php:234
+#: inc/setup.php:236
 #, fuzzy
 #| msgid "Graphene FAQs"
 msgid "Graphene - Footer"
 msgstr "Graphene FAQ"
 
-#: inc/setup.php:236
+#: inc/setup.php:238
 msgid ""
 "The footer widget area. Leave empty to disable. Set the number of columns to "
 "display at the theme's Display Options page."
@@ -2101,31 +2103,31 @@ msgstr ""
 "wyświetlanych kolumn można ustawić w Opcjach Motywu w części dotyczącej "
 "wyświetlania stron."
 
-#: inc/setup.php:251
+#: inc/setup.php:253
 msgid "Graphene - Sidebar One (Front Page)"
 msgstr ""
 
-#: inc/setup.php:253
+#: inc/setup.php:255
 msgid ""
 "The first sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "Pierwszy pasek boczny widget będzie wyświetlany tylko na stronie głównej."
 
-#: inc/setup.php:260
+#: inc/setup.php:262
 msgid "Graphene - Sidebar Two (Front Page)"
 msgstr ""
 
-#: inc/setup.php:262
+#: inc/setup.php:264
 msgid ""
 "The second sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "Drugi pasek boczny widget, które będą wyświatlane tylko na stronie głównej."
 
-#: inc/setup.php:271
+#: inc/setup.php:273
 msgid "Graphene - Footer (Front Page)"
 msgstr ""
 
-#: inc/setup.php:273
+#: inc/setup.php:275
 msgid ""
 "The footer widget area that will only be displayed on the front page. Leave "
 "empty to disable. Set the number of columns to display at the theme's "
@@ -2135,17 +2137,17 @@ msgstr ""
 "Liczbę wyświetlanych kolumn można ustawić w Opcjach Motywu w części "
 "dotyczącej wyświetlania stron."
 
-#: inc/setup.php:283
+#: inc/setup.php:285
 #, fuzzy
 #| msgid "Graphene Theme"
 msgid "Graphene - Header"
 msgstr "Motyw Graphene"
 
-#: inc/setup.php:285
+#: inc/setup.php:287
 msgid "The header widget area."
 msgstr "Obszar widgetu nagłówka."
 
-#: inc/setup.php:302
+#: inc/setup.php:304
 #, php-format
 msgid ""
 "Dynamically added widget area. This widget area is attached to the %s action "
@@ -2187,12 +2189,6 @@ msgstr "Przepraszam, brak wyników dla tego słowa. Chcesz spróbować inne? "
 #: loop-page.php:42 loop-single.php:44 loop.php:74
 msgid "Permanent link to this article:"
 msgstr "Permalink do tego artykułu:"
-
-#: loop.php:36
-#, fuzzy
-#| msgid "Continue reading &raquo;"
-msgid "Continue reading"
-msgstr "Kontynuuj czytanie &raquo;"
 
 #: search-404.php:17
 #, fuzzy, php-format
@@ -2308,6 +2304,9 @@ msgstr "Dwie kolumny (z paskiem bocznym po prawej)"
 #| msgid "Two columns (with sidebar left)"
 msgid "Two columns, sidebar on the left"
 msgstr "Dwie kolumny (z paskiem bocznym po lewej)"
+
+#~ msgid "Continue reading &raquo;"
+#~ msgstr "Kontynuuj czytanie &raquo;"
 
 #~ msgid "Daily Archive: %s"
 #~ msgstr "Archiwum dzienne: %s"

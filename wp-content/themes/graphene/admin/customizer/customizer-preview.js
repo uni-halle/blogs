@@ -236,5 +236,17 @@ jQuery(document).ready(function($) {
 	wp.customize('graphene_settings[footer_link]', function(value){ value.bind(function(to){
 		$('#graphene-preview-css').append('#footer a, #footer a:visited {color: ' + to + '}');
 	});	});
+	wp.customize('graphene_settings[footer_widget_bg]', function(value){ value.bind(function(to){
+		$('#graphene-preview-css').append('#sidebar_bottom {background: ' + to + ';}');
+	});	});
+	wp.customize('graphene_settings[footer_widget_border]', function(value){ value.bind(function(to){
+		$('#graphene-preview-css').append('#sidebar_bottom {border-color: ' + to + ';}');
+	});	});
+	wp.customize('graphene_settings[footer_widget_text]', function(value){ value.bind(function(to){
+		$('#graphene-preview-css').append('#sidebar_bottom {color: ' + to + ';}');
+	});	});
+	wp.customize('graphene_settings[footer_widget_link]', function(value){ value.bind(function(to){
+		$('#graphene-preview-css').append('#sidebar_bottom a, #sidebar_bottom a:visited {color: ' + to + '}');
+	});	});
 
 });

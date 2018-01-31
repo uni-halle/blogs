@@ -33,7 +33,7 @@ $graphene_defaults = apply_filters( 'graphene_defaults', array(
 	'slider_random_category_posts' => false,
 	'slider_postcount' 			=> 5,
 	'slider_with_image_only'	=> false,
-	'slider_img' 				=> 'featured_image', // disabled | featured_image | post_image | custom_url
+	'slider_img' 				=> 'post_image', // disabled | featured_image | post_image | custom_url
 	'slider_display_style' 		=> 'bgimage-excerpt', // thumbnail-excerpt | bgimage-excerpt | full-post
 	'slider_imgurl' 			=> '',
 	'slider_height' 			=> 400,
@@ -226,6 +226,10 @@ $graphene_defaults = apply_filters( 'graphene_defaults', array(
 	'footer_bg' 				=> '#1f1a22',
 	'footer_text'				=> '#bcb4c1',
 	'footer_link' 				=> '#ffffff',
+	'footer_widget_bg' 			=> '#f9f9f9',
+	'footer_widget_border'		=> '#eeeeee',
+	'footer_widget_text'		=> '#4a474b',
+	'footer_widget_link' 		=> '#783d98',
 	
 	/* Comments colour options */
 	'comments_bg' 				=> '#ffffff',

@@ -4,6 +4,27 @@ https://www.graphene-theme.com/
 
 CHANGELOG
 
+Version 2.2
+	* Added: Colour customisation options for footer widget area
+	* Added: Automatically select best image available for display of individual posts and slider
+	* Added: CTA button to contribute to theme's translation if user is using languages other than English (US)
+	* Added: Option to use custom author image as comments avatar
+	* Added: Back-to-top button fades out when user reached the bottom of page
+	* Added: Translations migrated to GlotPress for the following languages: Dutch, Czech, Spanish, Deutsch, Chinese (China), Albanian, Japanese
+	* Fixed: Gravatar for registered users not using the user account email address
+	* Fixed: Options import file validation failed if import file has no database version info
+
+Version 2.1.3
+	* Added: graphene_header widget hook now appears above the header image instead of after
+	* Added: Translations migrated to GlotPress for the following languages: Romanian, Swedish, Turkish, Croatian, Italian, English (UK)
+	* Fixed: Update all language files for "Continue Reading" string
+	* Fixed: Graphene action hooks map site reinstated
+	* Fixed: PHP notice when using default menu
+	* Fixed: Collapsing Categories plugin conflict with Bootstrap styling
+	* Fixed: Alternative front page footer widget area missing columns
+	* Fixed: Site administrator in WordPress Multisite can't access theme settings in Customizer
+	* Fixed: Empty space in footer widget area when set to 5 columns
+
 Version 2.1.2
 	* Fixed: Inconsistent header height with varying screen sizes
 	* Fixed: Current commenter's name not automatically filled in comment form

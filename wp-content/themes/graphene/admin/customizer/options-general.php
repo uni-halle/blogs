@@ -144,8 +144,8 @@ function graphene_customizer_general_options( $wp_customize ){
 		'label' 	=> __( 'Slider image', 'graphene' ),
 		'choices'	=> array(
 			'disabled'		=> __( "Don't show image", 'graphene' ),
+			'post_image'	=> __( 'Best image available from post', 'graphene' ),
 			'featured_image'=> __( 'Featured image', 'graphene' ),
-			'post_image'	=> __( 'First image in post', 'graphene' ),
 			'custom_url'	=> __( 'Custom image', 'graphene' ),
 		),
 	) );

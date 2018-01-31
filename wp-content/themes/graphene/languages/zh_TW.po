@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Graphene chinese zh_TW (version 1.1.3a)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-05 07:04+0800\n"
-"PO-Revision-Date: 2017-11-05 07:14+0800\n"
+"POT-Creation-Date: 2017-11-24 16:21+0800\n"
+"PO-Revision-Date: 2017-11-24 16:37+0800\n"
 "Last-Translator: NavCore <navcore@gmail.com>\n"
 "Language-Team: \n"
 "Language: zh_TW\n"
@@ -12,8 +12,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e;_n;esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 2.0.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -475,7 +475,7 @@ msgstr "下拉菜單寬度"
 msgid "Dropdown menu text (active state)"
 msgstr "下拉菜單寬度"
 
-#: admin/customizer/options-colours.php:48 inc/setup.php:95
+#: admin/customizer/options-colours.php:48 inc/setup.php:97
 msgid "Secondary Menu"
 msgstr "次級選單"
 
@@ -861,7 +861,7 @@ msgstr "選擇此項防止以任意大小特色圖片替换頂部圖片。"
 #: admin/customizer/options-general.php:46
 #, fuzzy
 #| msgid "Header Widget Area"
-msgid "Header image height"
+msgid "Header image max height"
 msgstr "頂部 widget區"
 
 #: admin/customizer/options-general.php:53
@@ -1599,7 +1599,7 @@ msgstr "評論的選項"
 #: admin/options.php:26
 #, fuzzy, php-format
 #| msgid "%1$s at %2$s"
-msgid "Version %1$s, by %2$s"
+msgid "Version %1$s by %2$s"
 msgstr "%1$s 在 %2$s"
 
 #: admin/options.php:32
@@ -1744,7 +1744,6 @@ msgstr "本文受密碼保護。請輸入密碼查看評論。"
 msgid "%s comment"
 msgid_plural "%s comments"
 msgstr[0] "% 條評論"
-msgstr[1] "% 條評論"
 
 #: comments.php:52
 #, fuzzy, php-format
@@ -1752,7 +1751,6 @@ msgstr[1] "% 條評論"
 msgid "%s ping"
 msgid_plural "%s pings"
 msgstr[0] "%個PING"
-msgstr[1] "%個PING"
 
 #: comments.php:82
 #, fuzzy
@@ -1861,7 +1859,7 @@ msgstr "回覆"
 #: inc/functions.php:184
 #, php-format
 msgid "Visit %1$s's %2$s page"
-msgstr "訪問%1$s 的網頁"
+msgstr ""
 
 #: inc/functions.php:327
 #, php-format
@@ -1884,9 +1882,9 @@ msgstr ""
 msgid "Load more"
 msgstr "閱讀更多"
 
-#: inc/loop.php:99
-msgid "Continue reading &raquo;"
-msgstr "繼續閱讀 &raquo;"
+#: inc/loop.php:99 loop.php:36
+msgid "Continue reading"
+msgstr "繼續閱讀"
 
 #: inc/loop.php:220
 #, fuzzy
@@ -1947,24 +1945,24 @@ msgstr "發表評論"
 msgid "In this section"
 msgstr ""
 
-#: inc/menus.php:135
+#: inc/menus.php:136
 msgid "FontAwesome Icon Name"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 #, php-format
 msgid "Choose from 580+ %s"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 msgid "available icons"
 msgstr ""
 
-#: inc/menus.php:223
+#: inc/menus.php:224
 msgid "Home"
 msgstr "首頁"
 
-#: inc/menus.php:295
+#: inc/menus.php:296
 #, fuzzy, php-format
 #| msgid "(No title)"
 msgid "#%d (no title)"
@@ -1990,7 +1988,6 @@ msgstr ""
 msgid "Fetching %1$s of %2$s item left ..."
 msgid_plural "Fetching %1$s of %2$s items left ..."
 msgstr[0] ""
-msgstr[1] ""
 
 #: inc/scripts.php:89
 msgid "All loaded!"
@@ -2001,7 +1998,6 @@ msgstr ""
 msgid "Fetching %1$s of %2$s comments left ..."
 msgid_plural "Fetching %1$s of %2$s comments left ..."
 msgstr[0] ""
-msgstr[1] ""
 
 #: inc/scripts.php:102
 #, fuzzy
@@ -2009,49 +2005,49 @@ msgstr[1] ""
 msgid "All comments loaded!"
 msgstr "% 條評論"
 
-#: inc/setup.php:94
+#: inc/setup.php:96
 msgid "Header Menu"
 msgstr "標題選單"
 
-#: inc/setup.php:96
+#: inc/setup.php:98
 msgid "Footer Menu"
 msgstr "底部選項"
 
-#: inc/setup.php:146
+#: inc/setup.php:148
 msgid "Forest"
 msgstr ""
 
-#: inc/setup.php:151
+#: inc/setup.php:153
 msgid "Mountains"
 msgstr ""
 
-#: inc/setup.php:156
+#: inc/setup.php:158
 msgid "Road"
 msgstr ""
 
-#: inc/setup.php:160
+#: inc/setup.php:162
 msgid "Header image by Syahir Hakim"
 msgstr "標題圖片是由 Syahir Hakim設計"
 
-#: inc/setup.php:164
+#: inc/setup.php:166
 msgid ""
 "This is the default Graphene theme header image, cropped from image by "
 "Quantin Houyoux at sxc.hu"
 msgstr ""
 "這是 Graphene預設主題標題圖片,  由 sxc.hu Quantin Houyoux的圖案裁剪而成"
 
-#: inc/setup.php:168 inc/setup.php:172 inc/setup.php:176 inc/setup.php:180
-#: inc/setup.php:184
+#: inc/setup.php:170 inc/setup.php:174 inc/setup.php:178 inc/setup.php:182
+#: inc/setup.php:186
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "標題圖片由sxc.hu Ilco設計的圖片裁剪而成"
 
-#: inc/setup.php:205
+#: inc/setup.php:207
 #, fuzzy
 #| msgid "Graphene Theme"
 msgid "Graphene - Sidebar One"
 msgstr "Graphene 佈景主題選項"
 
-#: inc/setup.php:207
+#: inc/setup.php:209
 #, fuzzy
 #| msgid ""
 #| "The first sidebar widget area that will only be displayed on the front "
@@ -2061,11 +2057,11 @@ msgid ""
 "side)."
 msgstr "第一個邊欄 widget區將只會顯示在首頁。"
 
-#: inc/setup.php:214
+#: inc/setup.php:216
 msgid "Graphene - Sidebar Two"
 msgstr ""
 
-#: inc/setup.php:216
+#: inc/setup.php:218
 #, fuzzy
 #| msgid ""
 #| "The second sidebar widget area that will only be displayed on the front "
@@ -2075,42 +2071,42 @@ msgid ""
 "side)."
 msgstr "第二邊欄 widget區將只會顯示在首頁。"
 
-#: inc/setup.php:234
+#: inc/setup.php:236
 #, fuzzy
 #| msgid "Graphene FAQs"
 msgid "Graphene - Footer"
 msgstr "Graphene 常問的問題"
 
-#: inc/setup.php:236
+#: inc/setup.php:238
 msgid ""
 "The footer widget area. Leave empty to disable. Set the number of columns to "
 "display at the theme's Display Options page."
 msgstr ""
 "底部 widget。留空預設為關閉。設置欄目數字，這將顯示在主題選項相應區域。"
 
-#: inc/setup.php:251
+#: inc/setup.php:253
 msgid "Graphene - Sidebar One (Front Page)"
 msgstr ""
 
-#: inc/setup.php:253
+#: inc/setup.php:255
 msgid ""
 "The first sidebar widget area that will only be displayed on the front page."
 msgstr "第一個邊欄 widget區將只會顯示在首頁。"
 
-#: inc/setup.php:260
+#: inc/setup.php:262
 msgid "Graphene - Sidebar Two (Front Page)"
 msgstr ""
 
-#: inc/setup.php:262
+#: inc/setup.php:264
 msgid ""
 "The second sidebar widget area that will only be displayed on the front page."
 msgstr "第二邊欄 widget區將只會顯示在首頁。"
 
-#: inc/setup.php:271
+#: inc/setup.php:273
 msgid "Graphene - Footer (Front Page)"
 msgstr ""
 
-#: inc/setup.php:273
+#: inc/setup.php:275
 msgid ""
 "The footer widget area that will only be displayed on the front page. Leave "
 "empty to disable. Set the number of columns to display at the theme's "
@@ -2119,17 +2115,17 @@ msgstr ""
 "底部 widget 只會顯示在首頁。留空預設為關閉。設置欄目數字，這將顯示在主題選項"
 "相應區域。"
 
-#: inc/setup.php:283
+#: inc/setup.php:285
 #, fuzzy
 #| msgid "Graphene Theme"
 msgid "Graphene - Header"
 msgstr "Graphene 佈景主題選項"
 
-#: inc/setup.php:285
+#: inc/setup.php:287
 msgid "The header widget area."
 msgstr "頂部 widget區。"
 
-#: inc/setup.php:302
+#: inc/setup.php:304
 #, php-format
 msgid ""
 "Dynamically added widget area. This widget area is attached to the %s action "
@@ -2170,18 +2166,11 @@ msgstr "抱歉，未找到任何與關鍵字匹配的信息。要試試其他關
 msgid "Permanent link to this article:"
 msgstr "永久的鏈接到此文章:"
 
-#: loop.php:36
-#, fuzzy
-#| msgid "Continue reading &raquo;"
-msgid "Continue reading"
-msgstr "繼續閱讀 &raquo;"
-
 #: search-404.php:17
 #, php-format
 msgid "Found %1$s search result for keyword: %2$s"
 msgid_plural "Found %1$s search results for keyword: %2$s"
 msgstr[0] ""
-msgstr[1] ""
 
 #: search-404.php:26
 msgid "Suggested results"
@@ -2199,7 +2188,6 @@ msgid_plural ""
 "I've done a courtesy search for the term %1$s for you and found a total of "
 "%2$s results. See if you can find what you're looking for below."
 msgstr[0] "我已經為您做了個 %s 搜尋. 看一下您尋找的是否就在以下列表:"
-msgstr[1] "我已經為您做了個 %s 搜尋. 看一下您尋找的是否就在以下列表:"
 
 #: search-404.php:52
 msgid ""
@@ -2213,7 +2201,6 @@ msgstr "<strong>抱歉, 找不到任何對應資料.</strong>. 請由上方搜�
 msgid "%1$d result for %2$s"
 msgid_plural "%1$d results for %2$s"
 msgstr[0] "%1$s 在 %2$s"
-msgstr[1] "%1$s 在 %2$s"
 
 #: searchform.php:3
 msgid "Search"
@@ -2270,6 +2257,9 @@ msgstr ""
 #: template-twocolumnsright.php:13
 msgid "Two columns, sidebar on the left"
 msgstr ""
+
+#~ msgid "Continue reading &raquo;"
+#~ msgstr "繼續閱讀 &raquo;"
 
 #~ msgid "Daily Archive: <span>%s</span>"
 #~ msgstr "當日歸檔: <span>%s</span>"

@@ -100,8 +100,14 @@ body {
 	text-shadow: 1px 1px 0 rgba(50,50,50,0.3);
 	height: auto;
 }
+.panel .button.purple {
+	background: #4D3E7C;
+	background: linear-gradient(#4D3E7C,#604D99);
+}
 .panel .button .fa {
 	margin-right: 5px;
+	font-size: 20px;
+	vertical-align: middle;
 }
 
 /* Extra small devices (phones, less than 768px) */

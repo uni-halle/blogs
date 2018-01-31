@@ -88,7 +88,8 @@ function graphene_walker_nav_menu_start_el( $item_output, $item, $depth, $args )
 	}
 	
 	/* Chevron for dropdown menu */
-	if ( in_array( 'menu-item-has-children', $classes ) && $max_depth > 1 && $args->theme_location != 'footer-menu' ) {
+	$theme_location = ( is_object( $args ) ) ? $args->theme_location : $args['theme_location'];
+	if ( in_array( 'menu-item-has-children', $classes ) && $max_depth > 1 && $theme_location != 'footer-menu' ) {
 		if ( $depth == 0 ) $item_output = preg_replace( '/(<a\s[^>]*[^>]*>)(.*)(<\/a>)/siU', '$1$2 <i class="fa fa-chevron-down"></i>$3', $item_output );
 		else $item_output = preg_replace( '/(<a\s[^>]*[^>]*>)(.*)(<\/a>)/siU', '$1$2 <i class="fa fa-chevron-right"></i>$3', $item_output );
 	}

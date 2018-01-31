@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Graphene 1.0 theme for WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-05 07:04+0800\n"
-"PO-Revision-Date: 2017-11-05 07:10+0800\n"
+"POT-Creation-Date: 2017-11-24 16:21+0800\n"
+"PO-Revision-Date: 2017-11-24 16:32+0800\n"
 "Last-Translator: Syahir Hakim <syahir@khairul-syahir.com>\n"
 "Language-Team: Syahir Hakim <syahir@khairul-syahir.com>\n"
 "Language: ms_MY\n"
@@ -463,7 +463,7 @@ msgstr "Lebar item menu dropdown"
 msgid "Dropdown menu text (active state)"
 msgstr "Paparkan di halaman-halaman arkib?"
 
-#: admin/customizer/options-colours.php:48 inc/setup.php:95
+#: admin/customizer/options-colours.php:48 inc/setup.php:97
 msgid "Secondary Menu"
 msgstr "Menu kedua"
 
@@ -853,7 +853,7 @@ msgstr ""
 
 #: admin/customizer/options-general.php:46
 #, fuzzy
-msgid "Header image height"
+msgid "Header image max height"
 msgstr "Gunakan imej kepala yang dipilih secara rawak"
 
 #: admin/customizer/options-general.php:53
@@ -1586,7 +1586,7 @@ msgstr "Tetapan Komen"
 #: admin/options.php:26
 #, fuzzy, php-format
 #| msgid "%1$s at %2$s"
-msgid "Version %1$s, by %2$s"
+msgid "Version %1$s by %2$s"
 msgstr "%1$s pada %2$s"
 
 #: admin/options.php:32
@@ -1863,9 +1863,9 @@ msgstr ""
 msgid "Load more"
 msgstr "Baca lagi"
 
-#: inc/loop.php:99
-msgid "Continue reading &raquo;"
-msgstr "Teruskan membaca &raquo;"
+#: inc/loop.php:99 loop.php:36
+msgid "Continue reading"
+msgstr "Teruskan membaca"
 
 #: inc/loop.php:220
 #, fuzzy
@@ -1924,24 +1924,24 @@ msgstr "Tulis komen"
 msgid "In this section"
 msgstr ""
 
-#: inc/menus.php:135
+#: inc/menus.php:136
 msgid "FontAwesome Icon Name"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 #, php-format
 msgid "Choose from 580+ %s"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 msgid "available icons"
 msgstr ""
 
-#: inc/menus.php:223
+#: inc/menus.php:224
 msgid "Home"
 msgstr "Muka Utama"
 
-#: inc/menus.php:295
+#: inc/menus.php:296
 #, fuzzy, php-format
 #| msgid "(No title)"
 msgid "#%d (no title)"
@@ -1983,32 +1983,32 @@ msgstr[0] ""
 msgid "All comments loaded!"
 msgstr "Tetapan Komen"
 
-#: inc/setup.php:94
+#: inc/setup.php:96
 msgid "Header Menu"
 msgstr "Menu Kepala"
 
-#: inc/setup.php:96
+#: inc/setup.php:98
 #, fuzzy
 msgid "Footer Menu"
 msgstr "Menu Kepala"
 
-#: inc/setup.php:146
+#: inc/setup.php:148
 msgid "Forest"
 msgstr ""
 
-#: inc/setup.php:151
+#: inc/setup.php:153
 msgid "Mountains"
 msgstr ""
 
-#: inc/setup.php:156
+#: inc/setup.php:158
 msgid "Road"
 msgstr ""
 
-#: inc/setup.php:160
+#: inc/setup.php:162
 msgid "Header image by Syahir Hakim"
 msgstr "Imej kepala oleh Syahir Hakim"
 
-#: inc/setup.php:164
+#: inc/setup.php:166
 msgid ""
 "This is the default Graphene theme header image, cropped from image by "
 "Quantin Houyoux at sxc.hu"
@@ -2016,40 +2016,40 @@ msgstr ""
 "Ini adalah imej kepala asal bagi tema Graphene, dipotong daripada imej asal "
 "oleh Quantin Houyoux di sxc.hu"
 
-#: inc/setup.php:168 inc/setup.php:172 inc/setup.php:176 inc/setup.php:180
-#: inc/setup.php:184
+#: inc/setup.php:170 inc/setup.php:174 inc/setup.php:178 inc/setup.php:182
+#: inc/setup.php:186
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "Imej kepala dipotong daripada imej asal oleh Ilco di sxc.hu"
 
-#: inc/setup.php:205
+#: inc/setup.php:207
 #, fuzzy
 #| msgid "Graphene Theme news"
 msgid "Graphene - Sidebar One"
 msgstr "Berita Tema Graphene"
 
-#: inc/setup.php:207
+#: inc/setup.php:209
 msgid ""
 "The first sidebar widget area (will always be displayed on the right hand "
 "side)."
 msgstr ""
 
-#: inc/setup.php:214
+#: inc/setup.php:216
 msgid "Graphene - Sidebar Two"
 msgstr ""
 
-#: inc/setup.php:216
+#: inc/setup.php:218
 msgid ""
 "The second sidebar widget area (will always be displayed on the left hand "
 "side)."
 msgstr ""
 
-#: inc/setup.php:234
+#: inc/setup.php:236
 #, fuzzy
 #| msgid "Graphene FAQs"
 msgid "Graphene - Footer"
 msgstr "FAQs Graphene"
 
-#: inc/setup.php:236
+#: inc/setup.php:238
 msgid ""
 "The footer widget area. Leave empty to disable. Set the number of columns to "
 "display at the theme's Display Options page."
@@ -2057,31 +2057,31 @@ msgstr ""
 "Bahagian widget kekaki. Tinggalkan kosong untuk batalkan paparan. Tetapkan "
 "bilangan lajur di muka Tetapan Paparan tema."
 
-#: inc/setup.php:251
+#: inc/setup.php:253
 msgid "Graphene - Sidebar One (Front Page)"
 msgstr ""
 
-#: inc/setup.php:253
+#: inc/setup.php:255
 msgid ""
 "The first sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "Bahagian widget sidebar pertama yang hanya akan dipaparkan di muka hadapan."
 
-#: inc/setup.php:260
+#: inc/setup.php:262
 msgid "Graphene - Sidebar Two (Front Page)"
 msgstr ""
 
-#: inc/setup.php:262
+#: inc/setup.php:264
 msgid ""
 "The second sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "Bahagian widget sidebar kedua yang hanya akan dipaparkan di muka hadapan."
 
-#: inc/setup.php:271
+#: inc/setup.php:273
 msgid "Graphene - Footer (Front Page)"
 msgstr ""
 
-#: inc/setup.php:273
+#: inc/setup.php:275
 msgid ""
 "The footer widget area that will only be displayed on the front page. Leave "
 "empty to disable. Set the number of columns to display at the theme's "
@@ -2091,17 +2091,17 @@ msgstr ""
 "Tinggalkan kosong untuk batalkan paparan. Tetapkan bilangan lajur di muka "
 "Tetapan Paparan tema."
 
-#: inc/setup.php:283
+#: inc/setup.php:285
 #, fuzzy
 #| msgid "Graphene Theme"
 msgid "Graphene - Header"
 msgstr "Tema Graphene"
 
-#: inc/setup.php:285
+#: inc/setup.php:287
 msgid "The header widget area."
 msgstr "Bahagian widget di pengepala."
 
-#: inc/setup.php:302
+#: inc/setup.php:304
 #, php-format
 msgid ""
 "Dynamically added widget area. This widget area is attached to the %s action "
@@ -2145,12 +2145,6 @@ msgstr ""
 #: loop-page.php:42 loop-single.php:44 loop.php:74
 msgid "Permanent link to this article:"
 msgstr "Capaian kekal kepada artikel ini:"
-
-#: loop.php:36
-#, fuzzy
-#| msgid "Continue reading &raquo;"
-msgid "Continue reading"
-msgstr "Teruskan membaca &raquo;"
 
 #: search-404.php:17
 #, fuzzy, php-format
@@ -2245,6 +2239,9 @@ msgstr ""
 #: template-twocolumnsright.php:13
 msgid "Two columns, sidebar on the left"
 msgstr ""
+
+#~ msgid "Continue reading &raquo;"
+#~ msgstr "Teruskan membaca &raquo;"
 
 #~ msgid "Daily Archive: %s"
 #~ msgstr "Arkib Harian: %s"

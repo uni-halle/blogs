@@ -112,6 +112,7 @@ function graphene_add_customizer_controls( $wp_customize ) {
 			</label>
             
             <script type="text/javascript">
+            	if ( typeof CodeMirror.fromTextArea === "undefined" ) CodeMirror = wp.CodeMirror;
 				var <?php echo $setting_name; ?>CM = CodeMirror.fromTextArea(document.getElementById( "<?php echo $setting_name; ?>"), {
 					mode			: '<?php echo $this->mode; ?>',
 					lineNumbers		: true,

@@ -310,6 +310,9 @@ function graphene_get_custom_colours( $hook_suffix = '', $force_all = false ){
 		$colours = array(
 			'footer_bg|footer_text' => '#footer, .graphene-footer{background-color:%1$s;color:%2$s}',
 			'footer_link'			=> '#footer a, #footer a:visited {color: %s}',
+			'footer_widget_bg|footer_widget_border' => '#sidebar_bottom {background:%1$s;border-color:%2$s}',
+			'footer_widget_text' => '#sidebar_bottom {color:%1$s;}',
+			'footer_widget_link' => '#sidebar_bottom a, #sidebar_bottom a:visited {color:%1$s;}',
 		);
 		$style .= graphene_build_style( $colours );
 

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Urdu translation for the Graphene theme\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-05 07:04+0800\n"
-"PO-Revision-Date: 2017-11-05 07:14+0800\n"
+"POT-Creation-Date: 2017-11-24 16:21+0800\n"
+"PO-Revision-Date: 2017-11-24 16:36+0800\n"
 "Last-Translator: Syahir Hakim <syahir@khairul-syahir.com>\n"
 "Language-Team: Mohsin Khawaja <khmohsin1@gmail.com>\n"
 "Language: ur_PK\n"
@@ -441,7 +441,7 @@ msgstr "ڈراپ ڈاؤن مینو اشیاء کی چوڑائی"
 msgid "Dropdown menu text (active state)"
 msgstr "ڈراپ ڈاؤن مینو اشیاء کی چوڑائی"
 
-#: admin/customizer/options-colours.php:48 inc/setup.php:95
+#: admin/customizer/options-colours.php:48 inc/setup.php:97
 msgid "Secondary Menu"
 msgstr "ثانوی مینو"
 
@@ -826,7 +826,7 @@ msgstr "اس سے بچنے کے خطوط نمایاں تصویر کے طول و 
 #: admin/customizer/options-general.php:46
 #, fuzzy
 #| msgid "Header Widget Area"
-msgid "Header image height"
+msgid "Header image max height"
 msgstr "ہیڈر ویجیٹ ایریا"
 
 #: admin/customizer/options-general.php:53
@@ -1511,7 +1511,7 @@ msgstr "تبصرے کے اختیارات"
 #: admin/options.php:26
 #, fuzzy, php-format
 #| msgid "%1$s at %2$s"
-msgid "Version %1$s, by %2$s"
+msgid "Version %1$s by %2$s"
 msgstr "%1$s, a las %2$s"
 
 #: admin/options.php:32
@@ -1781,9 +1781,9 @@ msgstr ""
 msgid "Load more"
 msgstr "مزید پڑھیں"
 
-#: inc/loop.php:99
-msgid "Continue reading &raquo;"
-msgstr "پڑھنے جاری رکھیں &raquo;"
+#: inc/loop.php:99 loop.php:36
+msgid "Continue reading"
+msgstr "پڑھنے جاری رکھیں"
 
 #: inc/loop.php:220
 #, fuzzy
@@ -1843,24 +1843,24 @@ msgstr "چھوڑ دو تبصرہ"
 msgid "In this section"
 msgstr ""
 
-#: inc/menus.php:135
+#: inc/menus.php:136
 msgid "FontAwesome Icon Name"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 #, php-format
 msgid "Choose from 580+ %s"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 msgid "available icons"
 msgstr ""
 
-#: inc/menus.php:223
+#: inc/menus.php:224
 msgid "Home"
 msgstr "ہوم"
 
-#: inc/menus.php:295
+#: inc/menus.php:296
 #, fuzzy, php-format
 #| msgid "(No title)"
 msgid "#%d (no title)"
@@ -1904,91 +1904,91 @@ msgstr[1] ""
 msgid "All comments loaded!"
 msgstr "% تبصرے"
 
-#: inc/setup.php:94
+#: inc/setup.php:96
 msgid "Header Menu"
 msgstr "ہیڈر مینو"
 
-#: inc/setup.php:96
+#: inc/setup.php:98
 msgid "Footer Menu"
 msgstr "فوٹر مینو"
 
-#: inc/setup.php:146
+#: inc/setup.php:148
 msgid "Forest"
 msgstr ""
 
-#: inc/setup.php:151
+#: inc/setup.php:153
 msgid "Mountains"
 msgstr ""
 
-#: inc/setup.php:156
+#: inc/setup.php:158
 msgid "Road"
 msgstr ""
 
-#: inc/setup.php:160
+#: inc/setup.php:162
 msgid "Header image by Syahir Hakim"
 msgstr "شیاہرحاکم کی طرف سے ہیڈر کی تصویر"
 
-#: inc/setup.php:164
+#: inc/setup.php:166
 msgid "This is the default Graphene theme header image, cropped from image by Quantin Houyoux at sxc.hu"
 msgstr "یہ پہلے سے طے شدہ گرافین تھیم کا ہیڈر ایمیج ہے جو کہsxc.hu پر کوانٹم ہویوس سے لی ہے"
 
-#: inc/setup.php:168 inc/setup.php:172 inc/setup.php:176 inc/setup.php:180 inc/setup.php:184
+#: inc/setup.php:170 inc/setup.php:174 inc/setup.php:178 inc/setup.php:182 inc/setup.php:186
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "  ہیڈر امیج sxc.hu پر الکو سے لیا گیا ہے"
 
-#: inc/setup.php:205
+#: inc/setup.php:207
 #, fuzzy
 #| msgid "Graphene Theme"
 msgid "Graphene - Sidebar One"
 msgstr " تھیم گرافین"
 
-#: inc/setup.php:207
+#: inc/setup.php:209
 #, fuzzy
 #| msgid "The first sidebar widget area that will only be displayed on the front page."
 msgid "The first sidebar widget area (will always be displayed on the right hand side)."
 msgstr "پہلی سائڈبار ویجیٹ ایریا جو کہ صرف سامنے کے صفحے پر دکھایا جائے گا."
 
-#: inc/setup.php:214
+#: inc/setup.php:216
 msgid "Graphene - Sidebar Two"
 msgstr ""
 
-#: inc/setup.php:216
+#: inc/setup.php:218
 #, fuzzy
 #| msgid "The second sidebar widget area that will only be displayed on the front page."
 msgid "The second sidebar widget area (will always be displayed on the left hand side)."
 msgstr "دوسری سائڈبار ویجیٹ ایریا جو کہ صرف سامنے کے صفحے پر دکھایا جائے گا."
 
-#: inc/setup.php:234
+#: inc/setup.php:236
 #, fuzzy
 #| msgid "Graphene FAQs"
 msgid "Graphene - Footer"
 msgstr "اکثر پوچھے جانے والے سوالات گرافین میں"
 
-#: inc/setup.php:236
+#: inc/setup.php:238
 msgid "The footer widget area. Leave empty to disable. Set the number of columns to display at the theme's Display Options page."
 msgstr "فوٹر ویجیٹ ایریا. غیر فعال خالی چھوڑ دیں. کالموں کی تعداد موضوع کے ڈسپلے کے اختیارات کے صفحے پر ظاہر کرنے کے لئے مقرر کریں."
 
-#: inc/setup.php:251
+#: inc/setup.php:253
 msgid "Graphene - Sidebar One (Front Page)"
 msgstr ""
 
-#: inc/setup.php:253
+#: inc/setup.php:255
 msgid "The first sidebar widget area that will only be displayed on the front page."
 msgstr "پہلی سائڈبار ویجیٹ ایریا جو کہ صرف سامنے کے صفحے پر دکھایا جائے گا."
 
-#: inc/setup.php:260
+#: inc/setup.php:262
 msgid "Graphene - Sidebar Two (Front Page)"
 msgstr ""
 
-#: inc/setup.php:262
+#: inc/setup.php:264
 msgid "The second sidebar widget area that will only be displayed on the front page."
 msgstr "دوسری سائڈبار ویجیٹ ایریا جو کہ صرف سامنے کے صفحے پر دکھایا جائے گا."
 
-#: inc/setup.php:271
+#: inc/setup.php:273
 msgid "Graphene - Footer (Front Page)"
 msgstr ""
 
-#: inc/setup.php:273
+#: inc/setup.php:275
 msgid ""
 "The footer widget area that will only be displayed on the front page. Leave empty to disable. Set the number of columns to display at the theme's Display "
 "Options page."
@@ -1996,17 +1996,17 @@ msgstr ""
 "فوٹر ویجیٹ ایریا جو کہ صرف سامنے کے صفحے پر دکھایا جائے گا. غیر فعال خالی چھوڑ دیں. کالموں کی تعداد موضوع کے ڈسپلے کے اختیارات کے صفحے پر ظاہر کرنے کے لئے "
 "مقرر کریں."
 
-#: inc/setup.php:283
+#: inc/setup.php:285
 #, fuzzy
 #| msgid "Graphene Theme"
 msgid "Graphene - Header"
 msgstr " تھیم گرافین"
 
-#: inc/setup.php:285
+#: inc/setup.php:287
 msgid "The header widget area."
 msgstr "ہیڈر ویجیٹ ایریا..."
 
-#: inc/setup.php:302
+#: inc/setup.php:304
 #, php-format
 msgid "Dynamically added widget area. This widget area is attached to the %s action hook."
 msgstr "متحرک طور پر ایڈ کیے وجیٹ ایریا۔ یہ وجیٹ ایریا سیکشن%s کے ساتھ اٹیچ ہوتے ہی"
@@ -2040,12 +2040,6 @@ msgstr "معاف کیجئے گا، لیکن اس مطلوبہ الفاظ کے ل
 #: loop-page.php:42 loop-single.php:44 loop.php:74
 msgid "Permanent link to this article:"
 msgstr "اس مضمون کے لئے مستقل لنک :"
-
-#: loop.php:36
-#, fuzzy
-#| msgid "Continue reading &raquo;"
-msgid "Continue reading"
-msgstr "پڑھنے جاری رکھیں &raquo;"
 
 #: search-404.php:17
 #, php-format
@@ -2145,6 +2139,9 @@ msgstr "دو کالموں (سائڈبار حق کے ساتھ)"
 #| msgid "Two columns (with sidebar left)"
 msgid "Two columns, sidebar on the left"
 msgstr "دو کالموں (سائڈبار بائیں کے ساتھ)"
+
+#~ msgid "Continue reading &raquo;"
+#~ msgstr "پڑھنے جاری رکھیں &raquo;"
 
 #~ msgid "Daily Archive: <span>%s</span>"
 #~ msgstr "روزنامہ محفوظ شدہ دستاويزات : <span>%s</span>"

@@ -280,5 +280,7 @@ jQuery(document).ready(function ($) {
 	/**
 	 * Import theme files
 	 */
-
+	 $('form.graphene-import').submit(function(e){
+	 	$('.status-icon', this).removeClass('hide');
+	 });
 });

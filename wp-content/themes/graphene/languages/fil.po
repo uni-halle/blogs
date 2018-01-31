@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Graphene 1.0 theme for WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-05 07:04+0800\n"
-"PO-Revision-Date: 2017-11-05 07:08+0800\n"
+"POT-Creation-Date: 2017-11-24 16:21+0800\n"
+"PO-Revision-Date: 2017-11-24 16:28+0800\n"
 "Last-Translator: Mikael <mikael@husplushave.dk>\n"
 "Language-Team: \n"
 "Language: fil\n"
@@ -493,7 +493,7 @@ msgstr "Lapad ng Bagay sa Dropdown Menu"
 msgid "Dropdown menu text (active state)"
 msgstr "Lapad ng Bagay sa Dropdown Menu"
 
-#: admin/customizer/options-colours.php:48 inc/setup.php:95
+#: admin/customizer/options-colours.php:48 inc/setup.php:97
 msgid "Secondary Menu"
 msgstr "Pumapangalawa na Talaan"
 
@@ -902,7 +902,9 @@ msgstr ""
 "sukat ng tinatampok na larawan."
 
 #: admin/customizer/options-general.php:46
-msgid "Header image height"
+#, fuzzy
+#| msgid "Header image height"
+msgid "Header image max height"
 msgstr "Taas ng larawan ng header"
 
 #: admin/customizer/options-general.php:53
@@ -1656,7 +1658,7 @@ msgstr "Wiki ng mga Kasulatan"
 #: admin/options.php:26
 #, fuzzy, php-format
 #| msgid "%1$s at %2$s"
-msgid "Version %1$s, by %2$s"
+msgid "Version %1$s by %2$s"
 msgstr "%1$s sa %2$s"
 
 #: admin/options.php:32
@@ -1954,9 +1956,9 @@ msgstr "Ang paunawa ay hindi ipakikita sa mga bisita ng iyong site."
 msgid "Load more"
 msgstr "Magbasa nang higit pa"
 
-#: inc/loop.php:99
-msgid "Continue reading &raquo;"
-msgstr "Pagpatuloy ang pagbabasa &raquo;"
+#: inc/loop.php:99 loop.php:36
+msgid "Continue reading"
+msgstr "Pagpatuloy ang pagbabasa"
 
 #: inc/loop.php:220
 #, fuzzy
@@ -2016,24 +2018,24 @@ msgstr "Mag-iwan ng komento"
 msgid "In this section"
 msgstr ""
 
-#: inc/menus.php:135
+#: inc/menus.php:136
 msgid "FontAwesome Icon Name"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 #, php-format
 msgid "Choose from 580+ %s"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 msgid "available icons"
 msgstr ""
 
-#: inc/menus.php:223
+#: inc/menus.php:224
 msgid "Home"
 msgstr "Home"
 
-#: inc/menus.php:295
+#: inc/menus.php:296
 #, fuzzy, php-format
 #| msgid "(No title)"
 msgid "#%d (no title)"
@@ -2078,31 +2080,31 @@ msgstr[1] ""
 msgid "All comments loaded!"
 msgstr "Itaas na gilid ng mga komento ng May-Akda"
 
-#: inc/setup.php:94
+#: inc/setup.php:96
 msgid "Header Menu"
 msgstr "Talaan para sa Header"
 
-#: inc/setup.php:96
+#: inc/setup.php:98
 msgid "Footer Menu"
 msgstr "Talaan ng Footer"
 
-#: inc/setup.php:146
+#: inc/setup.php:148
 msgid "Forest"
 msgstr ""
 
-#: inc/setup.php:151
+#: inc/setup.php:153
 msgid "Mountains"
 msgstr ""
 
-#: inc/setup.php:156
+#: inc/setup.php:158
 msgid "Road"
 msgstr ""
 
-#: inc/setup.php:160
+#: inc/setup.php:162
 msgid "Header image by Syahir Hakim"
 msgstr "Imahe ng header ni Syahir Hakim"
 
-#: inc/setup.php:164
+#: inc/setup.php:166
 msgid ""
 "This is the default Graphene theme header image, cropped from image by "
 "Quantin Houyoux at sxc.hu"
@@ -2110,41 +2112,41 @@ msgstr ""
 "Ito ang default na imahe ng header ng tema ng Graphene, It ay hango sa imahe "
 "ni Quantin Houyoux at sxc.hu."
 
-#: inc/setup.php:168 inc/setup.php:172 inc/setup.php:176 inc/setup.php:180
-#: inc/setup.php:184
+#: inc/setup.php:170 inc/setup.php:174 inc/setup.php:178 inc/setup.php:182
+#: inc/setup.php:186
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "Imahe ng header hango sa imahe ni Ilco sa sxc.hu"
 
-#: inc/setup.php:205
+#: inc/setup.php:207
 #, fuzzy
 #| msgid "Graphene Theme news"
 msgid "Graphene - Sidebar One"
 msgstr "Mga Balita tungkol sa Tema ng Graphene"
 
-#: inc/setup.php:207
+#: inc/setup.php:209
 msgid ""
 "The first sidebar widget area (will always be displayed on the right hand "
 "side)."
 msgstr "Ang unang sidebar widget area (ang laging ipakikita sa kanang bahagi)."
 
-#: inc/setup.php:214
+#: inc/setup.php:216
 msgid "Graphene - Sidebar Two"
 msgstr ""
 
-#: inc/setup.php:216
+#: inc/setup.php:218
 msgid ""
 "The second sidebar widget area (will always be displayed on the left hand "
 "side)."
 msgstr ""
 "Ang pangalawang sidebar widget area (ang ipakikita lagi sa kaliwang gilid)."
 
-#: inc/setup.php:234
+#: inc/setup.php:236
 #, fuzzy
 #| msgid "Graphene FAQs"
 msgid "Graphene - Footer"
 msgstr "Mga Madalas itanong tungkol sa Graphene"
 
-#: inc/setup.php:236
+#: inc/setup.php:238
 msgid ""
 "The footer widget area. Leave empty to disable. Set the number of columns to "
 "display at the theme's Display Options page."
@@ -2152,32 +2154,32 @@ msgstr ""
 "Ang area ng footer widget. Iwanang walang laman para huwag paganahin. I-set "
 "ang bilang ng hanay na ipakikita sa pahina ng Display Options."
 
-#: inc/setup.php:251
+#: inc/setup.php:253
 msgid "Graphene - Sidebar One (Front Page)"
 msgstr ""
 
-#: inc/setup.php:253
+#: inc/setup.php:255
 msgid ""
 "The first sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "Ang area ng unang sidebar widget lamang ang siyang ipakikita sa unang pahina."
 
-#: inc/setup.php:260
+#: inc/setup.php:262
 msgid "Graphene - Sidebar Two (Front Page)"
 msgstr ""
 
-#: inc/setup.php:262
+#: inc/setup.php:264
 msgid ""
 "The second sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "Ang pangalawang sidebar widget area ang siya lamang ipakikita sa unang "
 "pahina."
 
-#: inc/setup.php:271
+#: inc/setup.php:273
 msgid "Graphene - Footer (Front Page)"
 msgstr ""
 
-#: inc/setup.php:273
+#: inc/setup.php:275
 msgid ""
 "The footer widget area that will only be displayed on the front page. Leave "
 "empty to disable. Set the number of columns to display at the theme's "
@@ -2187,17 +2189,17 @@ msgstr ""
 "walang laman para ipawalang gana. I-set ang bilang ng column na ipakikita sa "
 "pahina ng pagpipilian ng Display ng temang ito."
 
-#: inc/setup.php:283
+#: inc/setup.php:285
 #, fuzzy
 #| msgid "Graphene Theme"
 msgid "Graphene - Header"
 msgstr "Tema ng Graphene"
 
-#: inc/setup.php:285
+#: inc/setup.php:287
 msgid "The header widget area."
 msgstr "Ang area ng header widget."
 
-#: inc/setup.php:302
+#: inc/setup.php:304
 #, php-format
 msgid ""
 "Dynamically added widget area. This widget area is attached to the %s action "
@@ -2243,12 +2245,6 @@ msgstr ""
 #: loop-page.php:42 loop-single.php:44 loop.php:74
 msgid "Permanent link to this article:"
 msgstr "Permanenteng koneksyon para sa artikulo na ito:"
-
-#: loop.php:36
-#, fuzzy
-#| msgid "Continue reading &raquo;"
-msgid "Continue reading"
-msgstr "Pagpatuloy ang pagbabasa &raquo;"
 
 #: search-404.php:17
 #, fuzzy, php-format
@@ -2363,6 +2359,9 @@ msgstr "Dalawang hanay (na may sidebar sa kanan)"
 #| msgid "Two columns (with sidebar left)"
 msgid "Two columns, sidebar on the left"
 msgstr "Dalawang hanay (na may sidebar sa kaliwa)"
+
+#~ msgid "Continue reading &raquo;"
+#~ msgstr "Pagpatuloy ang pagbabasa &raquo;"
 
 #~ msgid "Daily Archive: %s"
 #~ msgstr "Araw-araw na Archive: %s"

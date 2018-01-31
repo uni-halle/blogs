@@ -2,7 +2,7 @@
 Theme Name: 	Graphene
 Theme URI: 		https://www.graphene-theme.com/graphene-theme/
 Description: 	We believe that every theme should facilitate creative writing, not hinder it. We also believe that each site should have the opportunity to be unique. Since the beginning, we have listened to countless suggestions and requests for features that really matter. Here's a theme that's user-friendly, feature-packed, and endlessly customisable, for both beginners and advanced creators. Feel at home with more than 40 languages and backed with active community support, where questions, ideas and suggestions are always welcomed.
-Version: 		2.1.2
+Version: 		2.2
 Author: 		Graphene Themes Solutions
 Author URI: 	https://www.graphene-theme.com/
 Tags: 			one-column, two-columns, three-columns, right-sidebar, left-sidebar, custom-colors, custom-header, custom-background, custom-menu, editor-style, theme-options, threaded-comments, sticky-post, translation-ready, rtl-language-support, post-formats, featured-image-header, featured-images, full-width-template, microformats
@@ -298,10 +298,6 @@ abbr[title] {
 	width: 100%;
     height: 100%;
 }
-#header .sidebar-wrap {
-	position: absolute;
-	z-index: 50;
-}
 .sidebar-wrap #searchsubmit {
 	float: right;
 	margin-top: 10px;
@@ -311,6 +307,12 @@ abbr[title] {
 }
 .entry-content .searchform {
     margin-top: 20px;
+}
+#graphene-dynamic-widget-graphene_header {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 10;
 }
 
 
@@ -810,7 +812,6 @@ now override the 3.3 new styles for modern browsers & apply opacity
 	width: 185px;
 }
 .post-meta {
-    font-family: 'Lato', sans-serif;
     font-size: 14px;
 }
 .custom-meta {
@@ -2513,4 +2514,19 @@ button[type="submit"] {
     background-color: #4F2D69;
     border-color: #3C1C54;
     color: #fff;
+}
+
+/**
+ * Collapsing Categories plugin
+ */
+.widget_collapscat ul.collapsing,
+.widget_collapscat li.collapsing {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+.widget_collapscat .collapsing {
+    height: auto;    
+}
+.widget_collapscat .expandable .collapse {
+    display: inline;
 }

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Graphene 1.0 theme for WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-05 07:04+0800\n"
-"PO-Revision-Date: 2017-11-05 07:06+0800\n"
+"POT-Creation-Date: 2017-11-24 16:21+0800\n"
+"PO-Revision-Date: 2017-11-24 16:26+0800\n"
 "Last-Translator: Henrik Wahlqvist <henrik@wahlqvist.dk>\n"
 "Language-Team: \n"
 "Language: da_DK\n"
@@ -569,7 +569,7 @@ msgid "Dropdown menu text (active state)"
 msgstr "Dropdown menu (valgt og mus over)"
 
 # @ graphene
-#: admin/customizer/options-colours.php:48 inc/setup.php:95
+#: admin/customizer/options-colours.php:48 inc/setup.php:97
 msgid "Secondary Menu"
 msgstr "Sekundær Menu"
 
@@ -1036,7 +1036,9 @@ msgstr ""
 
 # @ graphene
 #: admin/customizer/options-general.php:46
-msgid "Header image height"
+#, fuzzy
+#| msgid "Header image height"
+msgid "Header image max height"
 msgstr "Header billede højde"
 
 # @ graphene
@@ -1881,7 +1883,7 @@ msgstr "Dokumentation Wiki"
 #: admin/options.php:26
 #, fuzzy, php-format
 #| msgid "%1$s at %2$s"
-msgid "Version %1$s, by %2$s"
+msgid "Version %1$s by %2$s"
 msgstr "%1$s på %2$s"
 
 # @ graphene
@@ -2201,9 +2203,9 @@ msgid "Load more"
 msgstr "Læs mere"
 
 # @ graphene
-#: inc/loop.php:99
-msgid "Continue reading &raquo;"
-msgstr "Læs mere &raquo;"
+#: inc/loop.php:99 loop.php:36
+msgid "Continue reading"
+msgstr "Læs mere"
 
 # @ graphene
 #: inc/loop.php:220
@@ -2271,26 +2273,26 @@ msgstr "Efterlad kommentar"
 msgid "In this section"
 msgstr ""
 
-#: inc/menus.php:135
+#: inc/menus.php:136
 msgid "FontAwesome Icon Name"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 #, php-format
 msgid "Choose from 580+ %s"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 msgid "available icons"
 msgstr ""
 
 # @ graphene
-#: inc/menus.php:223
+#: inc/menus.php:224
 msgid "Home"
 msgstr "Forside"
 
 # @ graphene
-#: inc/menus.php:295
+#: inc/menus.php:296
 #, fuzzy, php-format
 #| msgid "(No title)"
 msgid "#%d (no title)"
@@ -2345,34 +2347,34 @@ msgid "All comments loaded!"
 msgstr "Forfatter kommentarer øverste kant"
 
 # @ graphene
-#: inc/setup.php:94
+#: inc/setup.php:96
 msgid "Header Menu"
 msgstr "Header Menu"
 
 # @ graphene
-#: inc/setup.php:96
+#: inc/setup.php:98
 msgid "Footer Menu"
 msgstr "Sidefod Menu"
 
-#: inc/setup.php:146
+#: inc/setup.php:148
 msgid "Forest"
 msgstr ""
 
-#: inc/setup.php:151
+#: inc/setup.php:153
 msgid "Mountains"
 msgstr ""
 
-#: inc/setup.php:156
+#: inc/setup.php:158
 msgid "Road"
 msgstr ""
 
 # @ graphene
-#: inc/setup.php:160
+#: inc/setup.php:162
 msgid "Header image by Syahir Hakim"
 msgstr "Header billede af Syahir Hakim"
 
 # @ graphene
-#: inc/setup.php:164
+#: inc/setup.php:166
 msgid ""
 "This is the default Graphene theme header image, cropped from image by "
 "Quantin Houyoux at sxc.hu"
@@ -2381,45 +2383,45 @@ msgstr ""
 "Quantin Houyoux på sxc.hu"
 
 # @ graphene
-#: inc/setup.php:168 inc/setup.php:172 inc/setup.php:176 inc/setup.php:180
-#: inc/setup.php:184
+#: inc/setup.php:170 inc/setup.php:174 inc/setup.php:178 inc/setup.php:182
+#: inc/setup.php:186
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr "Header billede beskåret af billedet fra ILCO på sxc.hu"
 
 # @ graphene
-#: inc/setup.php:205
+#: inc/setup.php:207
 #, fuzzy
 #| msgid "Graphene Theme news"
 msgid "Graphene - Sidebar One"
 msgstr "Graphene Theme nyheder"
 
 # @ graphene
-#: inc/setup.php:207
+#: inc/setup.php:209
 msgid ""
 "The first sidebar widget area (will always be displayed on the right hand "
 "side)."
 msgstr "Det første sidebar widget-område (vil altid blive vist på højre side)."
 
-#: inc/setup.php:214
+#: inc/setup.php:216
 msgid "Graphene - Sidebar Two"
 msgstr ""
 
 # @ graphene
-#: inc/setup.php:216
+#: inc/setup.php:218
 msgid ""
 "The second sidebar widget area (will always be displayed on the left hand "
 "side)."
 msgstr "Det andet sidebar widget-område (vil altid blive vist i venstre side)."
 
 # @ graphene
-#: inc/setup.php:234
+#: inc/setup.php:236
 #, fuzzy
 #| msgid "Graphene FAQs"
 msgid "Graphene - Footer"
 msgstr "Graphene FAQs"
 
 # @ graphene
-#: inc/setup.php:236
+#: inc/setup.php:238
 msgid ""
 "The footer widget area. Leave empty to disable. Set the number of columns to "
 "display at the theme's Display Options page."
@@ -2427,32 +2429,32 @@ msgstr ""
 "Sidefoden widget-området. Efterlad tom for at deaktivere. Indstil antallet af "
 "kolonner, der skal udstilles på temaet Skærm Valg side."
 
-#: inc/setup.php:251
+#: inc/setup.php:253
 msgid "Graphene - Sidebar One (Front Page)"
 msgstr ""
 
 # @ graphene
-#: inc/setup.php:253
+#: inc/setup.php:255
 msgid ""
 "The first sidebar widget area that will only be displayed on the front page."
 msgstr "Det første sidebar Widget område, der kun vil blive vist på forsiden."
 
-#: inc/setup.php:260
+#: inc/setup.php:262
 msgid "Graphene - Sidebar Two (Front Page)"
 msgstr ""
 
 # @ graphene
-#: inc/setup.php:262
+#: inc/setup.php:264
 msgid ""
 "The second sidebar widget area that will only be displayed on the front page."
 msgstr "Det andet sidebar Widget område, der vil kun blive vist på forsiden."
 
-#: inc/setup.php:271
+#: inc/setup.php:273
 msgid "Graphene - Footer (Front Page)"
 msgstr ""
 
 # @ graphene
-#: inc/setup.php:273
+#: inc/setup.php:275
 msgid ""
 "The footer widget area that will only be displayed on the front page. Leave "
 "empty to disable. Set the number of columns to display at the theme's Display "
@@ -2463,19 +2465,19 @@ msgstr ""
 "indstillings side."
 
 # @ graphene
-#: inc/setup.php:283
+#: inc/setup.php:285
 #, fuzzy
 #| msgid "Graphene Theme"
 msgid "Graphene - Header"
 msgstr "Graphene Theme"
 
 # @ graphene
-#: inc/setup.php:285
+#: inc/setup.php:287
 msgid "The header widget area."
 msgstr "Header Widget området."
 
 # @ graphene
-#: inc/setup.php:302
+#: inc/setup.php:304
 #, php-format
 msgid ""
 "Dynamically added widget area. This widget area is attached to the %s action "
@@ -2528,13 +2530,6 @@ msgstr ""
 #: loop-page.php:42 loop-single.php:44 loop.php:74
 msgid "Permanent link to this article:"
 msgstr "Permanent link til denne artikel:"
-
-# @ graphene
-#: loop.php:36
-#, fuzzy
-#| msgid "Continue reading &raquo;"
-msgid "Continue reading"
-msgstr "Læs mere &raquo;"
 
 # @ graphene
 #: search-404.php:17
@@ -2647,6 +2642,10 @@ msgstr "To kolonner, med sidebar til højre"
 #: template-twocolumnsright.php:13
 msgid "Two columns, sidebar on the left"
 msgstr "To kolonner, med sidebar til venstre"
+
+# @ graphene
+#~ msgid "Continue reading &raquo;"
+#~ msgstr "Læs mere &raquo;"
 
 # @ graphene
 #~ msgid "Graphene's Frequently Asked Questions"

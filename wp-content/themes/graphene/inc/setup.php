@@ -273,7 +273,7 @@ function graphene_widgets_init() {
 			register_sidebar(array( 'name' => __( 'Graphene - Footer (Front Page)', 'graphene' ),
 				'id' => 'home-footer-widget-area',
 				'description' => __( "The footer widget area that will only be displayed on the front page. Leave empty to disable. Set the number of columns to display at the theme's Display Options page.", 'graphene' ),
-				'before_widget' => '<div id="%1$s" class="sidebar-wrap clearfix %2$s">',
+				'before_widget' => '<div id="%1$s" class="sidebar-wrap clearfix %2$s ' . $cols . '">',
 				'after_widget' => '</div>',
 				'before_title' => "<h3>",
 				'after_title' => "</h3>",

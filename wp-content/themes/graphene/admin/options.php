@@ -23,7 +23,7 @@ function graphene_options(){
     	<div class="header">
             <img src="<?php echo GRAPHENE_ROOTURI; ?>/admin/images/graphene-logo.png" alt="Graphene" width="115" height="83" />
             <h2>Graphene</h2>
-            <p class="ver"><?php printf( __( 'Version %1$s, by %2$s', 'graphene' ), $theme_data->Version, $theme_data->Author ); ?></p>
+            <p class="ver"><?php printf( __( 'Version %1$s by %2$s', 'graphene' ), $theme_data->Version, $theme_data->Author ); ?></p>
         </div>
 
         <div class="panels">
@@ -34,13 +34,34 @@ function graphene_options(){
 
             <div class="panel panel-50 support">
                 <p class="icon"><i class="fa fa-comments-o"></i></p>
-                <p><a class="button" href="https://forum.graphene-theme.com/"><?php _e( 'Get community support', 'graphene' ); ?></a></p>
+                <p>
+                    <a class="button" href="https://forum.graphene-theme.com/"><?php _e( 'Get community support', 'graphene' ); ?></a>
+                    <a class="button purple" href="https://www.graphene-theme.com/priority-support/"><?php _e( 'Get Priority Support', 'graphene' ); ?></a>
+                </p>
             </div>
 
             <div class="panel panel-50 contribute">
                 <p class="icon"><i class="fa fa-heart-o"></i></p>
                 <p><?php _e( 'Graphene theme is a labour of love, but it could not survive on love alone. Help support the theme and ensure its continuous development.', 'graphene' ); ?></p>
-                <p><a class="button" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CBWQL2T6B797J"><i class="fa fa-paypal"></i> <?php _e( 'Make a contribution', 'graphene' ); ?></a></p>
+                <p>
+                    <a class="button" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CBWQL2T6B797J"><i class="fa fa-paypal"></i> <?php _e( 'Make a contribution', 'graphene' ); ?></a>
+
+                    <?php 
+                        $locale = get_locale();
+                        if ( $locale != 'en_US' ) {
+                            require_once( ABSPATH . 'wp-admin/includes/translation-install.php' );
+                            $translations = wp_get_available_translations();
+                            
+                            if ( $translations[$locale] ) {
+                                $translation = $translations[$locale];
+                                $lang_code = ( stripos( $translation['native_name'], '(' ) !== false ) ? strtolower( str_replace( '_', '-', $translation['language'] ) ) : $translation['iso'][1];
+                                $url = esc_url( sprintf( 'https://translate.wordpress.org/locale/%s/default/wp-themes/graphene', $lang_code ) );
+                                echo '<a class="button purple" href="' . $url . '"><i class="fa fa-globe"></i>  ' . sprintf( __( 'Help translate into %s', 'graphene' ), $translation['native_name'] ) . '</a>';
+                            }
+                            
+                        }
+                    ?>
+                </p>
             </div>
 
             <div class="panel panel-50 news">

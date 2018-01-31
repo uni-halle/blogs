@@ -96,7 +96,7 @@ if ( ! function_exists( 'graphene_continue_reading_link' ) ) :
 function graphene_continue_reading_link() {
 	global $graphene_in_slider;
 	if ( ! is_page() && ! $graphene_in_slider ) {
-		$more_link_text = __( 'Continue reading &raquo;', 'graphene' );
+		$more_link_text = __( 'Continue reading', 'graphene' );
 		return '</p><p><a class="more-link btn" href="' . get_permalink() . '">' . $more_link_text . '</a>';
 	}
 }
@@ -363,32 +363,25 @@ function graphene_get_post_image( $post_id = NULL, $size = 'thumbnail', $context
 	if ( $post_id == NULL )	return;
 	
 	/* Get the images */
-	$images = get_children( array( 
-							'post_type' 		=> 'attachment',
-							'post_mime_type' 	=> 'image',
-							'post_parent' 	 	=> $post_id,
-							'orderby'			=> 'menu_order',
-							'order'				=> 'ASC',
-							'numberposts'		=> 1,
-								 ), ARRAY_A );
+	$image = graphene_get_best_post_image( $post_id, $size );
 	$html = '';
 	
 	/* Returns generic image if there is no image to show */
-	if ( empty( $images ) && $context != 'excerpt' && ! $urlonly ) {
+	if ( ! $image && $context != 'excerpt' && ! $urlonly ) {
 		$html .= apply_filters( 'graphene_generic_slider_img', '' ); // For backward compatibility
 		$html .= apply_filters( 'graphene_generic_post_img', '' );
-	}
 	
-	/* Build the <img> tag if there is an image */
-	foreach ( $images as $image ){
-		if (!$urlonly) {
-			if ( $context == 'excerpt' ) {$html .= '<div class="excerpt-thumb">';};
-			$html .= '<a href="'.get_permalink( $post_id).'">';
-			$html .= wp_get_attachment_image( $image['ID'], $size);
+	} else {
+
+		/* Build the <img> tag if there is an image */
+		if ( ! $urlonly ) {
+			if ( $context == 'excerpt' ) $html .= '<div class="excerpt-thumb">';
+			$html .= '<a href="' . get_permalink( $post_id ) . '">';
+			$html .= wp_get_attachment_image( $image['id'], $size );
 			$html .= '</a>';
-			if ( $context == 'excerpt' ) {$html .= '</div>';};
+			if ( $context == 'excerpt' ) $html .= '</div>';
 		} else {
-			$html = wp_get_attachment_image_src( $image['ID'], $size);
+			$html = $image['url'];
 		}
 	}
 	
@@ -396,6 +389,172 @@ function graphene_get_post_image( $post_id = NULL, $size = 'thumbnail', $context
 	return $html;
 }
 endif;
+
+
+/**
+ * Check if there is usable image in the post
+ */
+function graphene_has_post_image( $post_id = '' ){
+	/* Get the post ID if not provided */
+	if ( ! $post_id ) $post_id = get_the_ID();
+	
+	if ( has_post_thumbnail( $post_id ) ) return true;
+	if ( get_attached_media( 'image', $post_id ) ) return true;
+	if ( get_post_gallery( $post_id, false ) ) return true;
+	
+	return false;
+}
+
+
+/**
+ * Get the best available post image based on requested size
+ */
+function graphene_get_best_post_image( $post_id = '', $size = 'thumbnail' ){
+	global $graphene_settings, $content_width;
+
+	/* Get the requested dimension */
+	$size = apply_filters( 'graphene_post_image_size', $size, $post_id );
+	if ( ! is_array( $size ) ) {
+		$dimension = graphene_get_image_sizes( $size );
+		if ( $dimension ) {
+			$width = $dimension['width'];
+			$height = $dimension['height'];
+		} else {
+			$width = $content_width;
+			$height = floor( 0.5625 * $content_width ); // Defaults to 16:9 aspect ratio
+		}
+	} else {
+		$width = $size[0];
+		$height = $size[1];
+	}
+	
+	/* Get the post ID if not provided */
+	if ( ! $post_id ) $post_id = get_the_ID();
+	
+	/* Get and return the cached result if available */
+	$cached_images = get_post_meta( $post_id, '_graphene_post_images', true );
+	if ( $cached_images ) {
+		if ( array_key_exists( $width . 'x' . $height, $cached_images ) ) return $cached_images[$width . 'x' . $height];
+	} else {
+		$cached_images = array();
+	}
+	
+	$images = array();
+	$image_ids = array();
+	
+	/* Check if the post has a featured image */
+	if ( has_post_thumbnail( $post_id ) ) {
+		$image_id = get_post_thumbnail_id( $post_id );
+		$image = wp_get_attachment_image_src( $image_id, $size );
+		if ( $image ) {
+			$images[] = array(
+				'id'			=> $image_id,
+				'featured'		=> true,
+				'url'			=> $image[0],
+				'width'			=> $image[1],
+				'height'		=> $image[2],
+				'aspect_ratio'	=> $image[1] / $image[2]
+			);
+			$image_ids[] = $image_id;
+		}
+	}
+	
+	/* Get other images uploaded to the post */
+	$media = get_attached_media( 'image', $post_id );
+	if ( $media ) {
+		foreach ( $media as $image ) {
+			$image_id = $image->ID;
+			$image = wp_get_attachment_image_src( $image_id, $size );
+			if ( $image ) {
+				$images[] = array(
+					'id'			=> $image_id,
+					'featured'		=> false,
+					'url'			=> $image[0],
+					'width'			=> $image[1],
+					'height'		=> $image[2],
+					'aspect_ratio'	=> $image[1] / $image[2]
+				);
+				$image_ids[] = $image_id;
+			}
+		}
+	}
+	
+	/* Get the images from galleries in the post */
+	$galleries = get_post_galleries( $post_id, false );
+	if ( $galleries ) {
+		foreach ( $galleries as $gallery ) {
+			if ( ! array_key_exists( 'ids', $gallery ) ) continue;
+			$gallery_images = explode( ',', $gallery['ids'] );
+			foreach ( $gallery_images as $image_id ) {
+				if ( in_array( $image_id, $image_ids ) ) continue;
+				$image = wp_get_attachment_image_src( $image_id, $size );
+				if ( $image ) {
+					$images[] = array(
+						'id'			=> $image_id,
+						'featured'		=> false,
+						'url'			=> $image[0],
+						'width'			=> $image[1],
+						'height'		=> $image[2],
+						'aspect_ratio'	=> $image[1] / $image[2]
+					);
+					$image_ids[] = $image_id;
+				} 
+			}
+		}
+	}
+	
+	/* Score the images for best match to the requested size */
+	$weight = array(
+		'dimension'		=> 1.5,
+		'aspect_ratio'	=> 1,
+		'featured_image'=> 1
+	);
+	$target_aspect = $width / $height;
+	
+	foreach ( $images as $key => $image ) {
+		
+		$score = 0.0;
+		
+		/* Aspect ratio */
+		if ( $image['aspect_ratio'] > $target_aspect ) $score += ( $target_aspect / $image['aspect_ratio'] ) * $weight['aspect_ratio'];
+		else $score += ( $image['aspect_ratio'] / $target_aspect ) * $weight['aspect_ratio'];
+		
+		/* Dimension: ( width ratio + height ratio ) / 2 */
+		$dim_score = min( array( ( $image['width'] / $width ), 1 ) ) + min( array( ( $image['height'] / $height ), 1 ) );
+		$score += ( $dim_score / 2 ) * $weight['dimension'];
+		
+		/* Featured image */
+		if ( $image['featured'] ) $score += $weight['featured_image'];
+		
+		$images[$key]['score'] = $score;
+	}
+	
+	/* Sort the images based on the score */
+	usort( $images, 'graphene_sort_array_key_score' );
+	
+	$images = apply_filters( 'graphene_get_post_image', $images, $size, $post_id );
+	
+	if ( $images ) {
+		$cached_images = array_merge( $cached_images, array( $width . 'x' . $height => $images[0] ) );
+		update_post_meta( $post_id, '_graphene_post_images', $cached_images );
+		return $images[0];
+	} else {
+		$cached_images = array_merge( $cached_images, array( $width . 'x' . $height => false ) );
+		update_post_meta( $post_id, '_graphene_post_images', $cached_images );
+		return false;
+	}
+}
+
+
+/**
+ * Clear the post image cache when post is updated
+ */
+function graphene_clear_post_image_cache( $post_id ){
+	if ( wp_is_post_revision( $post_id ) ) return;
+	
+	delete_post_meta( $post_id, '_graphene_post_images' );
+}
+add_action( 'save_post', 'graphene_clear_post_image_cache' );
 
 
 /**

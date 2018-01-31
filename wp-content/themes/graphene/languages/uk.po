@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Graphene 1.4 theme for WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-05 07:04+0800\n"
-"PO-Revision-Date: 2017-11-05 07:13+0800\n"
+"POT-Creation-Date: 2017-11-24 16:21+0800\n"
+"PO-Revision-Date: 2017-11-24 16:35+0800\n"
 "Last-Translator: Lisovuy Igor <mustangturbo@yandex.ru>\n"
 "Language-Team: Leiste <blog@leiste.de>\n"
 "Language: uk_UA\n"
@@ -13,8 +13,9 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_n;esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: D:/[MyVault]/MyProjects/[Websites]/wordpress-theme-test/"
 "site/wp-content/themes/graphene\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 2.0.4\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -493,7 +494,7 @@ msgstr "Ширина випадаючого меню"
 msgid "Dropdown menu text (active state)"
 msgstr "Ширина випадаючого меню"
 
-#: admin/customizer/options-colours.php:48 inc/setup.php:95
+#: admin/customizer/options-colours.php:48 inc/setup.php:97
 msgid "Secondary Menu"
 msgstr "Вторинне меню"
 
@@ -884,7 +885,7 @@ msgstr ""
 #: admin/customizer/options-general.php:46
 #, fuzzy
 #| msgid "Header widget area"
-msgid "Header image height"
+msgid "Header image max height"
 msgstr "Приховати панель для віджетів"
 
 #: admin/customizer/options-general.php:53
@@ -1633,7 +1634,7 @@ msgstr "Параметри коментарів"
 #: admin/options.php:26
 #, fuzzy, php-format
 #| msgid "%1$s at %2$s"
-msgid "Version %1$s, by %2$s"
+msgid "Version %1$s by %2$s"
 msgstr "%1$s на %2$s"
 
 #: admin/options.php:32
@@ -1788,6 +1789,7 @@ msgid "%s comment"
 msgid_plural "%s comments"
 msgstr[0] "%s коментарів"
 msgstr[1] "%s коментарів"
+msgstr[2] ""
 
 #: comments.php:52
 #, fuzzy, php-format
@@ -1796,6 +1798,7 @@ msgid "%s ping"
 msgid_plural "%s pings"
 msgstr[0] "% пінгів"
 msgstr[1] "% пінгів"
+msgstr[2] ""
 
 #: comments.php:82
 #, fuzzy
@@ -1922,13 +1925,11 @@ msgid "This notice will not be displayed to your site's visitors."
 msgstr ""
 
 #: inc/infinite-scroll.php:98 inc/scripts.php:73
-#, fuzzy
-#| msgid "Read more"
 msgid "Load more"
 msgstr "Читати далі"
 
-#: inc/loop.php:99
-msgid "Continue reading &raquo;"
+#: inc/loop.php:99 loop.php:36
+msgid "Continue reading"
 msgstr ""
 
 #: inc/loop.php:220
@@ -1989,24 +1990,24 @@ msgstr "Залишити коментар"
 msgid "In this section"
 msgstr ""
 
-#: inc/menus.php:135
+#: inc/menus.php:136
 msgid "FontAwesome Icon Name"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 #, php-format
 msgid "Choose from 580+ %s"
 msgstr ""
 
-#: inc/menus.php:178
+#: inc/menus.php:179
 msgid "available icons"
 msgstr ""
 
-#: inc/menus.php:223
+#: inc/menus.php:224
 msgid "Home"
 msgstr "Домашня сторінка"
 
-#: inc/menus.php:295
+#: inc/menus.php:296
 #, fuzzy, php-format
 #| msgid "(No title)"
 msgid "#%d (no title)"
@@ -2034,6 +2035,7 @@ msgid "Fetching %1$s of %2$s item left ..."
 msgid_plural "Fetching %1$s of %2$s items left ..."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: inc/scripts.php:89
 msgid "All loaded!"
@@ -2045,36 +2047,37 @@ msgid "Fetching %1$s of %2$s comments left ..."
 msgid_plural "Fetching %1$s of %2$s comments left ..."
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: inc/scripts.php:102
 msgid "All comments loaded!"
 msgstr ""
 
-#: inc/setup.php:94
+#: inc/setup.php:96
 msgid "Header Menu"
 msgstr "Заголовне меню"
 
-#: inc/setup.php:96
+#: inc/setup.php:98
 msgid "Footer Menu"
 msgstr "Нижнє меню"
 
-#: inc/setup.php:146
+#: inc/setup.php:148
 msgid "Forest"
 msgstr ""
 
-#: inc/setup.php:151
+#: inc/setup.php:153
 msgid "Mountains"
 msgstr ""
 
-#: inc/setup.php:156
+#: inc/setup.php:158
 msgid "Road"
 msgstr ""
 
-#: inc/setup.php:160
+#: inc/setup.php:162
 msgid "Header image by Syahir Hakim"
 msgstr "Головна сторінка розроблена Syahir Hakim"
 
-#: inc/setup.php:164
+#: inc/setup.php:166
 msgid ""
 "This is the default Graphene theme header image, cropped from image by "
 "Quantin Houyoux at sxc.hu"
@@ -2082,19 +2085,19 @@ msgstr ""
 "Це заголовна сторінка Graphene theme за умовчанням, що кадрується із "
 "зображення зробленого Quantin Houyoux на sxc.h"
 
-#: inc/setup.php:168 inc/setup.php:172 inc/setup.php:176 inc/setup.php:180
-#: inc/setup.php:184
+#: inc/setup.php:170 inc/setup.php:174 inc/setup.php:178 inc/setup.php:182
+#: inc/setup.php:186
 msgid "Header image cropped from image by Ilco at sxc.hu"
 msgstr ""
 "Заголовна сторінка, що кадрується із зображення зробленого Ilco на sxc.hu"
 
-#: inc/setup.php:205
+#: inc/setup.php:207
 #, fuzzy
 #| msgid "Graphene Theme"
 msgid "Graphene - Sidebar One"
 msgstr "Graphene Theme"
 
-#: inc/setup.php:207
+#: inc/setup.php:209
 #, fuzzy
 #| msgid ""
 #| "The first sidebar widget area that will only be displayed on the front "
@@ -2106,11 +2109,11 @@ msgstr ""
 "Перша бічна панель для віджетів, яка відображатиметься тільки на головній "
 "сторінці."
 
-#: inc/setup.php:214
+#: inc/setup.php:216
 msgid "Graphene - Sidebar Two"
 msgstr ""
 
-#: inc/setup.php:216
+#: inc/setup.php:218
 #, fuzzy
 #| msgid ""
 #| "The second sidebar widget area that will only be displayed on the front "
@@ -2121,13 +2124,13 @@ msgid ""
 msgstr ""
 "Друга панель для віджетів відображатиметься тільки на головній сторінці."
 
-#: inc/setup.php:234
+#: inc/setup.php:236
 #, fuzzy
 #| msgid "Graphene FAQs"
 msgid "Graphene - Footer"
 msgstr "FAQs по Graphene"
 
-#: inc/setup.php:236
+#: inc/setup.php:238
 msgid ""
 "The footer widget area. Leave empty to disable. Set the number of columns to "
 "display at the theme's Display Options page."
@@ -2135,32 +2138,32 @@ msgstr ""
 "Нижня панель для віджетів. Залиште порожній, щоб відключити. Встановіть "
 "число стовпців для відображення на сторінці відображення теми в Options"
 
-#: inc/setup.php:251
+#: inc/setup.php:253
 msgid "Graphene - Sidebar One (Front Page)"
 msgstr ""
 
-#: inc/setup.php:253
+#: inc/setup.php:255
 msgid ""
 "The first sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "Перша бічна панель для віджетів, яка відображатиметься тільки на головній "
 "сторінці."
 
-#: inc/setup.php:260
+#: inc/setup.php:262
 msgid "Graphene - Sidebar Two (Front Page)"
 msgstr ""
 
-#: inc/setup.php:262
+#: inc/setup.php:264
 msgid ""
 "The second sidebar widget area that will only be displayed on the front page."
 msgstr ""
 "Друга панель для віджетів відображатиметься тільки на головній сторінці."
 
-#: inc/setup.php:271
+#: inc/setup.php:273
 msgid "Graphene - Footer (Front Page)"
 msgstr ""
 
-#: inc/setup.php:273
+#: inc/setup.php:275
 msgid ""
 "The footer widget area that will only be displayed on the front page. Leave "
 "empty to disable. Set the number of columns to display at the theme's "
@@ -2170,17 +2173,17 @@ msgstr ""
 "Залиште порожній, щоб відключити. Встановіть число стовпців для відображення "
 "на сторінці відображення теми в Options"
 
-#: inc/setup.php:283
+#: inc/setup.php:285
 #, fuzzy
 #| msgid "Graphene Theme"
 msgid "Graphene - Header"
 msgstr "Graphene Theme"
 
-#: inc/setup.php:285
+#: inc/setup.php:287
 msgid "The header widget area."
 msgstr "Головна панель для віджетів"
 
-#: inc/setup.php:302
+#: inc/setup.php:304
 #, php-format
 msgid ""
 "Dynamically added widget area. This widget area is attached to the %s action "
@@ -2229,16 +2232,13 @@ msgstr ""
 msgid "Permanent link to this article:"
 msgstr ""
 
-#: loop.php:36
-msgid "Continue reading"
-msgstr ""
-
 #: search-404.php:17
 #, php-format
 msgid "Found %1$s search result for keyword: %2$s"
 msgid_plural "Found %1$s search results for keyword: %2$s"
 msgstr[0] ""
 msgstr[1] ""
+msgstr[2] ""
 
 #: search-404.php:26
 msgid "Suggested results"
@@ -2261,6 +2261,7 @@ msgstr[0] ""
 msgstr[1] ""
 " Я здійснив для вас безкоштовний пошук по терміну %s.Можливо, ви знайдете "
 "те, що шукаєте в списку нижче:"
+msgstr[2] ""
 
 #: search-404.php:52
 msgid ""
@@ -2277,6 +2278,7 @@ msgid "%1$d result for %2$s"
 msgid_plural "%1$d results for %2$s"
 msgstr[0] "%1$s на %2$s"
 msgstr[1] "%1$s на %2$s"
+msgstr[2] ""
 
 #: searchform.php:3
 msgid "Search"

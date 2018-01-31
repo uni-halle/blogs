@@ -149,7 +149,11 @@ jQuery(document).ready(function($) {
         var scrollTrigger = 100, // px
             backToTop = function () {
                 var scrollTop = $(window).scrollTop();
-                if (scrollTop > scrollTrigger) {
+                var pageHeight = $(document).height() - $(window).height();
+
+               	if ( scrollTop == pageHeight ) {
+               		$(backtotop).removeClass('show');
+               	} else if (scrollTop > scrollTrigger) {
                     $(backtotop).addClass('show');
                 } else {
                     $(backtotop).removeClass('show');

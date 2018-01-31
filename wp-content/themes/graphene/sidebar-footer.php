@@ -7,12 +7,15 @@
  */
 global $graphene_settings;
 
+if ( is_front_page() && $graphene_settings['alt_home_footerwidget'] ) $columns = $graphene_settings['alt_footerwidget_column'];
+else $columns = $graphene_settings['footerwidget_column'];
+
 if (((!$graphene_settings['alt_home_footerwidget'] || !is_front_page()) && is_active_sidebar('footer-widget-area')) 
 	|| ($graphene_settings['alt_home_footerwidget'] && is_active_sidebar('home-footer-widget-area') && is_front_page())) : ?>
     
     <?php do_action('graphene_before_bottomsidebar'); ?>
     
-    <div id="sidebar_bottom" class="sidebar row">
+    <div id="sidebar_bottom" class="sidebar row footer-widget-col-<?php echo $columns; ?>">
         
         <?php do_action('graphene_bottomsidebar'); ?>
 		

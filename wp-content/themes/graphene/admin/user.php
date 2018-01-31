@@ -17,6 +17,10 @@ function graphene_show_custom_user_fields($user){ global $current_user; ?>
             	<input type="text" name="author_imgurl" id="author_imgurl" value="<?php echo esc_attr( get_user_meta( $user->ID, 'graphene_author_imgurl', true ) ); ?>" size="50" /><br />
                 <?php /* translators: %s will be replaced by 'http://' wrapped in <code> tags */ ?>
                 <span class="description"><?php printf( __( 'Please enter the full URL (including %s) to your profile image.', 'graphene' ), '<code>http://</code>' ); ?><br /> <?php _e( '<strong>Important: </strong>Image width must be less than or equal to <strong>150px</strong>.', 'graphene' ); ?></span>
+                
+                <br /><br />
+                <input type="checkbox" name="graphene_author_imgurl_as_avatar" id="graphene_author_imgurl_as_avatar" value="1" <?php checked( get_user_meta( $user->ID, 'graphene_author_imgurl_as_avatar', true ), true ); ?> /> 
+                <label for="graphene_author_imgurl_as_avatar"><?php _e( 'Use this image as your comments avatar', 'graphene' ); ?></label>
             </td>
         </tr>
         <tr>
@@ -84,6 +88,9 @@ function graphene_save_custom_user_fields( $user_id ){
 	// Updates the custom field and save it as a user meta
 	update_user_meta( $user_id, 'graphene_author_imgurl', $_POST['author_imgurl'] );
     update_user_meta( $user_id, 'graphene_author_location', $_POST['graphene_author_location'] );
+
+    $custom_avatar = ( isset( $_POST['graphene_author_imgurl_as_avatar'] ) ) ? true : false;
+    update_user_meta( $user_id, 'graphene_author_imgurl_as_avatar', $custom_avatar );
 
     $hide_email = ( isset( $_POST['graphene_author_hide_email'] ) ) ? true : false;
     update_user_meta( $user_id, 'graphene_author_hide_email', $hide_email );

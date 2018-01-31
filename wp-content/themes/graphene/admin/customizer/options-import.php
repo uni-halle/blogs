@@ -123,7 +123,7 @@ function graphene_export_colour_presets(){
  */
 function graphene_import_file() {
 	if ( ! isset( $_REQUEST['graphene-import'] ) ) return;
-    global $graphene_settings;
+    global $graphene_settings, $graphene_defaults;
     
     /* Check authorisation */
     $authorised = true;
@@ -156,10 +156,10 @@ function graphene_import_file() {
 	/* Check that the file data is Graphene settings */
 	$settings = json_decode( $data, true );
 	if ( ! $settings ) wp_die( __( 'Uploaded file does not contain any setting to import. Please check and try again.', 'graphene' ) );
-	if ( ! isset( $settings['db_version'] ) ) wp_die( __( 'The uploaded file does not contain valid Graphene options. Please check and try again.', 'graphene' ) );
+	if ( ! array_intersect_key( $settings, $graphene_defaults ) ) wp_die( __( 'The uploaded file does not contain valid Graphene options. Please check and try again.', 'graphene' ) );
 
 	/* Update the settings if everything checks out */
-	$settings = array_merge( $graphene_settings, $settings );
 	update_option( 'graphene_settings', $settings );
+	$graphene_settings = graphene_get_settings();
 }
-add_action( 'admin_init', 'graphene_import_file' ); 
+add_action( 'init', 'graphene_import_file' ); 
