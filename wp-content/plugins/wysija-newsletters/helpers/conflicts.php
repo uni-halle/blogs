@@ -106,12 +106,12 @@ class WYSIJA_help_conflicts extends WYSIJA_object{
      }
 
     function resolveScriptConflicts() {
-      // WP 4.9 mediaelement scripts conflicts with the MP2 editor
+      // WP 4.9 mediaelement script conflicts with the MP2 editor
       $dequeue_scripts = function () {
-        wp_dequeue_script('media-editor');
-        wp_dequeue_script('media-audiovideo');
-        wp_dequeue_script('mce-view');
+        wp_deregister_script('mediaelement');
       };
-      add_action('wp_enqueue_media', $dequeue_scripts, PHP_INT_MAX);
+      add_action('wp_print_scripts', $dequeue_scripts, PHP_INT_MAX);
+      add_action('admin_print_footer_scripts', $dequeue_scripts, PHP_INT_MAX);
+      add_action('admin_footer', $dequeue_scripts, PHP_INT_MAX);
     }
 }

@@ -3,7 +3,7 @@ Contributors: wysija
 Tags: newsletter, email, welcome email, post notification, autoresponder, signup, subscription, SMTP
 Requires at least: 3.5
 Tested up to: 4.9
-Stable tag: 2.8
+Stable tag: 2.8.1
 Send newsletters post notifications or autoresponders from WordPress easily, and beautifully. Start to capture subscribers with our widget now.
 
 == Description ==
@@ -112,6 +112,10 @@ Our [support site](https://www.mailpoet.com/support) has plenty of articles and 
 7. Importing subscribers with a CSV.
 
 == Changelog ==
+
+= 2.8.1 - 2017-11-28 =
+* Added poll and discounts
+* Fixed editor sidebar missing if plugins enqueue the mediaelement script on WP 4.9
 
 = 2.8 - 2017-11-20 =
 * Added support for ReCaptcha to protect subscription forms from automated abuse

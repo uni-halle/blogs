@@ -116,41 +116,22 @@ class WYSIJA_control_back_campaigns extends WYSIJA_control_back {
 		}
 
         $this->data['sections'][] = array(
-          'title' => __("We're changing. So should you.", WYSIJA),
           'format' => 'title-content',
           'paragraphs' => array('
-<iframe src="https://player.vimeo.com/video/223581490" width="640" height="360" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
 <ul style="list-style: disc inside none">
-  <li>'.$this->viewObj->replace_link_shortcode(__("[link]Read the FAQ[/link] on what's going to happen to this current version of MailPoet (version 2)", WYSIJA), 'http://www.mailpoet.com/faq-mailpoet-version-2/').'</li>
-  <li>'.__('MailPoet version 3 is completely rewritten', WYSIJA).'</li>
-  <li>'.__('New email designer', WYSIJA).'</li>
-  <li>'.__('Responsive templates', WYSIJA).'</li>
-  <li>'.__('Fast user interface', WYSIJA).'</li>
-  <li>'.__('Same easy configuration', WYSIJA).'</li>
-  <li>'.__('Weekly releases', WYSIJA).'</li>
-  <li>'.__('Version 2 and 3 can live side by side', WYSIJA).'</li>
-  <li><a href="http://beta.docs.mailpoet.com/article/189-comparison-of-mailpoet-2-and-3?utm_source=mp2&amp;utm_medium=welcomeupdate&amp;utm_campaign=comparison">'.__('Comparison table of both versions', WYSIJA).'</a></li>
-  <li>'.$this->viewObj->replace_link_shortcode(__('Try [link]the online demo[/link]', WYSIJA), 'http://demo3.mailpoet.com/launch/?utm_source=mp2&amp;utm_medium=updatewelcome&amp;utm_campaign=demo3').'</li>
-  <li>'.__('Multisite works, but not officially supported. Please test MailPoet 3 on a staging server', WYSIJA).'</li>
-  <li>'.__('Right-to-left languages works, but can be improved', WYSIJA).'</li>
-  <li>'.
-  $this->viewObj->replace_link_shortcode(
-    $this->viewObj->replace_link_shortcode(
-      __('Get in touch in the [link]forums[/link] for further help. Customers can reach via our [link]support page[/link]', WYSIJA),
-      'https://wordpress.org/support/plugin/wysija-newsletters'
-    ),
-    'https://www.mailpoet.com/support/'
-  ).'</li>
+  <li><a href="http://beta.docs.mailpoet.com/article/234-video-overview?utm_source=mp2&utm_campaign=whatsnew">'.__("View the 2-minute video", WYSIJA).'</a></li>
+  <li><a href="https://www.mailpoet.com/faq-mailpoet-version-2/?utm_source=mp2&utm_campaign=whatsnew">'.__("Read the FAQ", WYSIJA).'</a></li>
+  <li><a href="http://beta.docs.mailpoet.com/article/189-comparison-of-mailpoet-2-and-3?utm_source=mp2&utm_campaign=whatsnew">'.__('Comparison table of both versions', WYSIJA).'</a></li>
+  <li><a href="http://demo.mailpoet.com?utm_source=mp2&utm_campaign=whatsnew">'.__('Try the online demo', WYSIJA).'</li>
 </ul>
-<br>
-<h3 style="font-size: 25px; color: #626262; font-weight: 600;"><strong>'.__('Comes with a 1-click migration tool:', WYSIJA).'</strong></h3>
-<ul style="list-style: disc inside none"> 
-  <li>'.__('Your subscribers, lists, forms and settings will be migrated', WYSIJA).'</li>
-  <li>'.__('Automatic emails will not be migrated', WYSIJA).'</li>
-  <li>'.__('Archive of sent emails will not be migrated', WYSIJA).'</li>
-  <li>'.__('Your statistics will not be migrated', WYSIJA).'</li>
-</ul>
+<br/>
 <a class="button-primary" href="plugin-install.php?s=mailpoet&tab=search&type=author">'.__('Download MailPoet 3 now', WYSIJA).'</a>
+
+<!-- poll -->
+<div><br/><br/></div>
+<style type="text/css">.pds-box { margin: 0 !important; }</style>
+<script type="text/javascript" charset="utf-8" src="https://secure.polldaddy.com/p/9882029.js"></script>
+<noscript><a href="https://polldaddy.com/poll/9882029/">I\'m not switching to the new MailPoet 3 because...</a></noscript>
           ')
         );
 

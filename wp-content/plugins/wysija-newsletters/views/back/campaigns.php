@@ -2655,6 +2655,13 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 
 						<h1><?php echo __('Try the new (and much better) MailPoet now', WYSIJA); ?></h1>
 
+            <div class="updated" style="display: block !important;"><p><?php
+            echo $this->replace_link_shortcode(
+                  __('Save up to $100 on the <b>new MailPoet</b> before the end of the year. [link]See pricing[/link].', WYSIJA),
+                  'https://account.mailpoet.com'
+                );
+            ?></p></div>
+
 						<div class="about-text" style="visibility:hidden"><?php echo $data['abouttext'] ?></div>
 						<?php
 						foreach ($data['sections'] as $section) {
@@ -2770,43 +2777,23 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 				$is_network_admin = WYSIJA::current_user_can('manage_network');
 
         $data['sections'][] = array(
-          'title' => __("We're changing. So should you.", WYSIJA),
+          'title' => __("Try the new version 3 today.", WYSIJA),
           'format' => 'title-content',
           'content' => '
-<iframe src="https://player.vimeo.com/video/223581490" width="640" height="360" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
-<ul>
-<li>'.$this->replace_link_shortcode(__("[link]Read the FAQ[/link] on what's going to happen to this current version of MailPoet (version 2)", WYSIJA), 'http://www.mailpoet.com/faq-mailpoet-version-2/').'</li>
-<li>'.__('MailPoet version 3 is completely rewritten', WYSIJA).'</li>
-<li>'.__('New email designer', WYSIJA).'</li>
-<li>'.__('Responsive templates', WYSIJA).'</li>
-<li>'.__('Fast user interface', WYSIJA).'</li>
-<li>'.__('Same easy configuration', WYSIJA).'</li>
-<li>'.__('Weekly releases', WYSIJA).'</li>
-<li>'.__('Version 2 and 3 can live side by side', WYSIJA).'</li>
-<li><a href="http://beta.docs.mailpoet.com/article/189-comparison-of-mailpoet-2-and-3?utm_source=mp2&amp;utm_medium=welcomeupdate&amp;utm_campaign=comparison">'.__('Comparison table of both versions', WYSIJA).'</a></li>
-<li>'.$this->replace_link_shortcode(__('Try [link]the online demo[/link]', WYSIJA), 'http://demo3.mailpoet.com/launch/?utm_source=mp2&amp;utm_medium=updatewelcome&amp;utm_campaign=demo3').'</li>
-<li>'.__('Multisite works, but not officially supported. Please test MailPoet 3 on a staging server', WYSIJA).'</li>
-<li>'.__('Right-to-left languages works, but can be improved', WYSIJA).'</li>
-<li>'.
-$this->replace_link_shortcode(
-  $this->replace_link_shortcode(
-    __('Get in touch in the [link]forums[/link] for further help. Customers can reach via our [link]support page[/link]', WYSIJA),
-    'https://wordpress.org/support/plugin/wysija-newsletters'
-  ),
-  'https://www.mailpoet.com/support/'
-).'</li>
+<ul style="list-style: disc inside none">
+  <li><a href="http://beta.docs.mailpoet.com/article/234-video-overview?utm_source=mp2&utm_campaign=whatsnew">'.__("View the 2-minute video", WYSIJA).'</a></li>
+  <li><a href="https://www.mailpoet.com/faq-mailpoet-version-2/?utm_source=mp2&utm_campaign=whatsnew">'.__("Read the FAQ", WYSIJA).'</a></li>
+  <li><a href="http://beta.docs.mailpoet.com/article/189-comparison-of-mailpoet-2-and-3?utm_source=mp2&utm_campaign=whatsnew">'.__('Comparison table of both versions', WYSIJA).'</a></li>
+  <li><a href="http://demo.mailpoet.com?utm_source=mp2&utm_campaign=whatsnew">'.__('Try the online demo', WYSIJA).'</li>
 </ul>
-<br>
-<h3><strong>'.__('Comes with a 1-click migration tool:', WYSIJA).'</strong></h3>
-<ul> 
-  <li>'.__('Your subscribers, lists, forms and settings will be migrated', WYSIJA).'</li>
-  <li>'.__('Automatic emails will not be migrated', WYSIJA).'</li>
-  <li>'.__('Archive of sent emails will not be migrated', WYSIJA).'</li>
-  <li>'.__('Your statistics will not be migrated', WYSIJA).'</li>
-  
-  
-</ul>
+<br/>
 <a class="button-primary" href="plugin-install.php?s=mailpoet&tab=search&type=author">'.__('Download MailPoet 3 now', WYSIJA).'</a>
+
+<!-- poll -->
+<div><br/><br/></div>
+<style type="text/css">.pds-box { margin: 0 !important; }</style>
+<script type="text/javascript" charset="utf-8" src="https://secure.polldaddy.com/p/9882029.js"></script>
+<noscript><a href="https://polldaddy.com/poll/9882029/">I\'m not switching to the new MailPoet 3 because...</a></noscript>
           '
         );
 
@@ -2887,14 +2874,11 @@ $this->replace_link_shortcode(
 
 					<h1><?php echo sprintf(__('You\'ve updated to %1$s', WYSIJA), '<span class="version">MailPoet '.WYSIJA::get_version())."</span>"; ?></h1>
 
-          <div class="error"><p><?php
+          <div class="updated"><p><?php
             echo $this->replace_link_shortcode(
-                    $this->replace_link_shortcode(
-                      __('Having spam issues with MailPoet 2 subscription forms? Upgrade to [link]MailPoet 3[/link] or [link]enable Captcha[/link].', WYSIJA),
-                      admin_url('plugin-install.php?s=mailpoet&tab=search&type=author')
-                    ),
-                    admin_url('admin.php?page=wysija_config#tab-advanced')
-                  );
+                  __('Save up to $100 on the <b>new MailPoet</b> before the end of the year. [link]See pricing[/link].', WYSIJA),
+                  'https://account.mailpoet.com'
+                );
             ?></p></div>
 
 					<div class="about-text"><?php echo $data['abouttext'] ?></div>
