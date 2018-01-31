@@ -1,0 +1,21 @@
+/* FILE: main/content/__post-format-gallery.scss */
+
+//
+// Post format: Gallery
+//
+
+
+
+
+
+.format-gallery {
+
+	.entry-media-gallery-image {
+
+		&:not(.slick-slide):not(:first-child) {
+			display: none;
+		}
+
+	}
+
+}
