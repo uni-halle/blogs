@@ -18,6 +18,7 @@
      * @returns {undefined}
      */
     function UI() {
+        
         /**
          * Role List Interface
          * 
@@ -48,7 +49,7 @@
                     dataType: 'json',
                     data: {
                         action: 'aam',
-                        sub_action: 'Role.getList',
+                        sub_action: 'Subject_Role.getList',
                         _ajax_nonce: aamLocal.nonce,
                         exclude: exclude
                     },
@@ -77,6 +78,21 @@
                     }
                 });
             }
+            
+            /**
+             * 
+             * @param {type} container
+             * @returns {undefined}
+             */
+            function resetForm(container) {
+                $('input,select', container).each(function() {
+                    if ($(this).attr('type') === 'checkbox') {
+                        $(this).prop('checked', false);
+                    } else {
+                        $(this).val('');
+                    }
+                });
+            }
 
             //initialize the role list table
             $('#role-list').DataTable({
@@ -92,7 +108,7 @@
                     dataType: 'json',
                     data: {
                         action: 'aam',
-                        sub_action: 'Role.getTable',
+                        sub_action: 'Subject_Role.getTable',
                         _ajax_nonce: aamLocal.nonce
                     }
                 },
@@ -106,12 +122,13 @@
                     infoFiltered: ''
                 },
                 initComplete: function () {
-                    if (!aam.isUI() && parseInt(aamLocal.caps.create_roles)) {
+                    if (!aam.isUI() && aamLocal.caps.create_roles) {
                         var create = $('<a/>', {
                             'href': '#',
                             'class': 'btn btn-primary'
                         }).html('<i class="icon-plus"></i> ' + aam.__('Create'))
                         .bind('click', function () {
+                            resetForm('#add-role-modal .modal-body');
                             $('#add-role-modal').modal('show');
                         });
 
@@ -131,7 +148,11 @@
                     var expire = (data[5] ? '; <i class="icon-clock"></i>' : '');
                     $('td:eq(0)', row).append(
                         $('<i/>', {'class': 'aam-row-subtitle'}).html(
-                            aam.__('Users') + ': <b>' + parseInt(data[1]) + '</b>; ID: <b>' + data[0] + '</b>' + expire
+                            aam.applyFilters(
+                                'role-subtitle', 
+                                aam.__('Users') + ': <b>' + parseInt(data[1]) + '</b>; ID: <b>' + data[0] + '</b>' + expire,
+                                data
+                            )
                         )
                     );
 
@@ -158,7 +179,7 @@
                                             $('i.icon-cog', container).attr(
                                                 'class', 'aam-row-action icon-spin4 animate-spin'
                                             );
-                                            aam.fetchContent();
+                                            aam.fetchContent('main');
                                             $('i.icon-spin4', container).attr(
                                                 'class', 'aam-row-action icon-cog text-muted'
                                             );
@@ -177,13 +198,17 @@
                                     $(container).append($('<i/>', {
                                         'class': 'aam-row-action icon-pencil text-warning'
                                     }).bind('click', function () {
+                                        resetForm('#edit-role-modal .modal-body');
                                         $('#edit-role-btn').data('role', data[0]);
                                         $('#edit-role-name').val(data[2]);
                                         $('#edit-role-expiration').val(data[5]);
                                         $('#edit-role-modal').modal('show');
                                         fetchRoleList(data[0]);
+                                        
                                         //TODO - Rerwite JavaScript to support $.aam 
                                         $.aamEditRole = data;
+                                        
+                                        aam.triggerHook('edit-role-modal', data);
                                     }).attr({
                                         'data-toggle': "tooltip",
                                         'title': aam.__('Edit Role')
@@ -278,15 +303,17 @@
 
                 var data = {
                     action: 'aam',
-                    sub_action: 'Role.add',
+                    sub_action: 'Subject_Role.add',
                     _ajax_nonce: aamLocal.nonce
                 };
 
                 $('input,select', '#add-role-modal .modal-body').each(function() {
-                    if ($(this).attr('type') === 'checkbox') {
-                        data[$(this).attr('name')] = $(this).prop('checked') ? 1 : 0;
-                    } else {
-                        data[$(this).attr('name')] = $.trim($(this).val());
+                    if ($(this).attr('name')) {
+                        if ($(this).attr('type') === 'checkbox') {
+                            data[$(this).attr('name')] = $(this).prop('checked') ? 1 : 0;
+                        } else {
+                            data[$(this).attr('name')] = $.trim($(this).val());
+                        }
                     }
                 });
 
@@ -307,7 +334,7 @@
                                     response.role.name, 
                                     response.role.level
                                 );
-                                aam.fetchContent();
+                                aam.fetchContent('main');
                                 $('#add-role-modal').modal('hide');
                             } else {
                                 aam.notification(
@@ -323,7 +350,7 @@
                         }
                     });
                 } else {
-                    $('input,select', '#add-role-modal .modal-body').focus().parent().addClass('has-error');
+                    $('input[name="name"]', '#add-role-modal').focus().parent().addClass('has-error');
                 }
             });
 
@@ -335,14 +362,20 @@
 
                 var data = {
                     action: 'aam',
-                    sub_action: 'Role.edit',
+                    sub_action: 'Subject_Role.edit',
                     _ajax_nonce: aamLocal.nonce,
                     subject: 'role',
                     subjectId: $(_this).data('role')
                 };
 
                 $('input,select', '#edit-role-modal .modal-body').each(function() {
-                    data[$(this).attr('name')] = $.trim($(this).val());
+                    if ($(this).attr('name')) {
+                        if ($(this).attr('type') === 'checkbox') {
+                            data[$(this).attr('name')] = $(this).prop('checked') ? 1 : 0;
+                        } else {
+                            data[$(this).attr('name')] = $.trim($(this).val());
+                        }
+                    }
                 });
 
                 if (data.name) {
@@ -384,7 +417,7 @@
                     dataType: 'json',
                     data: {
                         action: 'aam',
-                        sub_action: 'Role.delete',
+                        sub_action: 'Subject_Role.delete',
                         _ajax_nonce: aamLocal.nonce,
                         subject: 'role',
                         subjectId: $(_this).data('role')
@@ -466,7 +499,7 @@
                     dataType: 'json',
                     data: {
                         action: 'aam',
-                        sub_action: 'User.block',
+                        sub_action: 'Subject_User.block',
                         _ajax_nonce: aamLocal.nonce,
                         subject: 'user',
                         subjectId: id
@@ -548,7 +581,7 @@
                     dataType: 'json',
                     data: {
                         action: 'aam',
-                        sub_action: 'User.getTable',
+                        sub_action: 'Subject_User.getTable',
                         _ajax_nonce: aamLocal.nonce
                     }
                 },
@@ -562,7 +595,7 @@
                     infoFiltered: ''
                 },
                 initComplete: function () {
-                    if (!aam.isUI()  && parseInt(aamLocal.caps.create_users)) {
+                    if (!aam.isUI() && aamLocal.caps.create_users) {
                         var create = $('<a/>', {
                             'href': '#',
                             'class': 'btn btn-primary'
@@ -607,7 +640,7 @@
 
                                         if (!aam.isUI()) {
                                             $('i.icon-cog', container).attr('class', 'aam-row-action icon-spin4 animate-spin');
-                                            aam.fetchContent();
+                                            aam.fetchContent('main');
                                             $('i.icon-spin4', container).attr('class', 'aam-row-action icon-cog text-muted');
                                         } else {
                                             $.aam.loadAccessForm($('#load-post-object-type').val(), $('#load-post-object').val(), $(this));
@@ -726,7 +759,7 @@
                     $('i.icon-cog', $(this)).attr('class', 'icon-spin4 animate-spin');
 
                     if (!aam.isUI()) {
-                        aam.fetchContent();
+                        aam.fetchContent('main');
                         $('i.icon-spin4', $(this)).attr('class', 'icon-cog');
                     } else {
                         $.aam.loadAccessForm($('#load-post-object-type').val(), $('#load-post-object').val(), null, function () {
@@ -756,7 +789,7 @@
                     aam.setSubject('default', null, aam.__('All Users, Roles and Visitor'), 0);
                     $('i.icon-cog', $(this)).attr('class', 'icon-spin4 animate-spin');
                     if (!aam.isUI()) {
-                        aam.fetchContent();
+                        aam.fetchContent('main');
                         $('i.icon-spin4', $(this)).attr('class', 'icon-cog');
                     } else {
                         $.aam.loadAccessForm($('#load-post-object-type').val(), $('#load-post-object').val(), null, function () {
@@ -790,7 +823,7 @@
                     dataType: 'json',
                     data: {
                         action: 'aam',
-                        sub_action: 'Menu.save',
+                        sub_action: 'Main_Menu.save',
                         subject: aam.getSubject().type,
                         subjectId: aam.getSubject().id,
                         _ajax_nonce: aamLocal.nonce,
@@ -859,14 +892,21 @@
 
                     $('input[type="checkbox"]', '#admin-menu').each(function () {
                         $(this).bind('click', function () {
+                            var _this = $(this);
+                            
                             aam.save(
-                                $(this).data('menu-id'),
-                                $(this).attr('checked') ? 1 : 0,
+                                _this.data('menu-id'),
+                                _this.attr('checked') ? 1 : 0,
                                 'menu',
                                 null,
                                 function(result) {
                                     if (result.status === 'success') {
                                         $('#aam-menu-overwrite').show();
+                                        if (_this.attr('checked')) {
+                                            _this.next().attr('data-original-title', aam.__('Uncheck to allow'));
+                                        } else {
+                                            _this.next().attr('data-original-title', aam.__('Check to restrict'));
+                                        }
                                     }
                                 }
                             );
@@ -904,7 +944,7 @@
                     dataType: 'html',
                     data: {
                         action: 'aam',
-                        sub_action: 'Metabox.getContent',
+                        sub_action: 'Main_Metabox.getContent',
                         _ajax_nonce: aamLocal.nonce,
                         subject: aam.getSubject().type,
                         subjectId: aam.getSubject().id
@@ -933,21 +973,21 @@
                             dataType: 'json',
                             data: {
                                 action: 'aam',
-                                sub_action: 'Metabox.refreshList',
+                                sub_action: 'Main_Metabox.refreshList',
                                 _ajax_nonce: aamLocal.nonce
                             },
                             beforeSend: function () {
                                 $('i', '#refresh-metabox-list').attr(
-                                        'class', 'icon-spin4 animate-spin'
-                                        );
+                                    'class', 'icon-spin4 animate-spin'
+                                );
                             },
                             success: function (response) {
                                 if (response.status === 'success') {
                                     getContent();
                                 } else {
                                     aam.notification(
-                                            'danger', aam.__('Failed to retrieve mataboxes')
-                                            );
+                                        'danger', aam.__('Failed to retrieve mataboxes')
+                                    );
                                 }
                             },
                             error: function () {
@@ -967,7 +1007,7 @@
                             dataType: 'json',
                             data: {
                                 action: 'aam',
-                                sub_action: 'Metabox.initURL',
+                                sub_action: 'Main_Metabox.initURL',
                                 _ajax_nonce: aamLocal.nonce,
                                 url: $('#init-url').val()
                             },
@@ -1001,6 +1041,7 @@
 
                     $('input[type="checkbox"]', '#metabox-list').each(function () {
                         $(this).bind('click', function () {
+                            var _this = $(this);
                             aam.save(
                                 $(this).data('metabox'),
                                 $(this).attr('checked') ? 1 : 0,
@@ -1009,6 +1050,12 @@
                                 function(result) {
                                     if (result.status === 'success') {
                                         $('#aam-metabox-overwrite').show();
+                                        
+                                        if (_this.attr('checked')) {
+                                            _this.next().attr('data-original-title', aam.__('Uncheck to show'));
+                                        } else {
+                                            _this.next().attr('data-original-title', aam.__('Check to hide'));
+                                        }
                                     }
                                 }
                             );
@@ -1079,7 +1126,7 @@
                             type: 'POST',
                             data: {
                                 action: 'aam',
-                                sub_action: 'Capability.getTable',
+                                sub_action: 'Main_Capability.getTable',
                                 _ajax_nonce: aamLocal.nonce,
                                 subject: aam.getSubject().type,
                                 subjectId: aam.getSubject().id
@@ -1186,7 +1233,7 @@
                                 dataType: 'json',
                                 data: {
                                     action: 'aam',
-                                    sub_action: 'Capability.add',
+                                    sub_action: 'Main_Capability.add',
                                     _ajax_nonce: aamLocal.nonce,
                                     capability: capability,
                                     subject: aam.getSubject().type,
@@ -1231,7 +1278,7 @@
                                 dataType: 'json',
                                 data: {
                                     action: 'aam',
-                                    sub_action: 'Capability.update',
+                                    sub_action: 'Main_Capability.update',
                                     _ajax_nonce: aamLocal.nonce,
                                     capability: $(this).attr('data-cap'),
                                     updated: cap
@@ -1269,7 +1316,7 @@
                             dataType: 'json',
                             data: {
                                 action: 'aam',
-                                sub_action: 'Capability.delete',
+                                sub_action: 'Main_Capability.delete',
                                 _ajax_nonce: aamLocal.nonce,
                                 subject: aam.getSubject().type,
                                 subjectId: aam.getSubject().id,
@@ -1328,6 +1375,12 @@
             var filter = {
                 type: null
             };
+            
+            /**
+             * 
+             * @type type
+             */
+            var objectAccess = {};
 
             /**
              * 
@@ -1343,7 +1396,7 @@
                     dataType: 'json',
                     data: {
                         action: 'aam',
-                        sub_action: 'Post.save',
+                        sub_action: 'Main_Post.save',
                         _ajax_nonce: aamLocal.nonce,
                         subject: aam.getSubject().type,
                         subjectId: aam.getSubject().id,
@@ -1404,7 +1457,7 @@
                 $('.aam-overlay', container).show();
 
                 //reset data preview elements
-                $('[data-preview]', container).text('');
+                $('.option-preview', container).text('');
 
                 $('.aam-row-action', container).each(function () {
                     $(this).attr({
@@ -1439,7 +1492,6 @@
                             }
                         );
                     });
-
                 });
 
                 $.ajax(aamLocal.ajaxurl, {
@@ -1447,7 +1499,7 @@
                     dataType: 'json',
                     data: {
                         action: 'aam',
-                        sub_action: 'Post.getAccess',
+                        sub_action: 'Main_Post.getAccess',
                         _ajax_nonce: aamLocal.nonce,
                         type: object,
                         id: id,
@@ -1459,19 +1511,20 @@
                         $(btn).attr('class', 'aam-row-action icon-spin4 animate-spin');
                     },
                     success: function (response) {
+                        objectAccess = response;
+                        
                         //iterate through each property
                         for (var property in response.access) {
-                            var checked  = (parseInt(response.access[property]) ? 'text-danger icon-check' : 'text-muted icon-check-empty');
                             var checkbox = $('[data-property="' + property + '"]', container);
-
+                            
                             if (checkbox.length) {
+                                var cname = (parseInt(response.access[property]) ? 'text-danger icon-check' : 'text-muted icon-check-empty');
                                 checkbox.attr({
-                                    'class': 'aam-row-action ' + checked
+                                    'class': 'aam-row-action ' + cname
                                 });
                             } else {
-                                $('[data-preview="' + property + '"]', container).prop('data-original-value', response.access[property]);
-                                $('[data-preview="' + property + '"]', container).html(
-                                        preparePreview(response.access[property])
+                                $('.option-preview[data-ref="' + property + '"]').html(
+                                        response.preview[property]
                                 );
                             }
                         }
@@ -1523,23 +1576,6 @@
 
             /**
              * 
-             * @param {type} text
-             * @returns {String}
-             */
-            function preparePreview(preview) {
-                if (typeof preview === 'string') { 
-                    preview = preview.replace(/<\/?[^>]+(>|$)/g, "");
-
-                    if (preview.length > 25) {
-                        preview = preview.substring(0, 22)  + '...';
-                    }
-                }
-
-                return preview;
-            }
-
-            /**
-             * 
              * @returns {undefined}
              */
             function initialize() {
@@ -1559,7 +1595,7 @@
                             type: 'POST',
                             data: function (data) {
                                 data.action = 'aam';
-                                data.sub_action = 'Post.getTable';
+                                data.sub_action = 'Main_Post.getTable';
                                 data._ajax_nonce = aamLocal.nonce;
                                 data.subject = aam.getSubject().type;
                                 data.subjectId = aam.getSubject().id;
@@ -1709,7 +1745,7 @@
                             dataType: 'json',
                             data: {
                                 action: 'aam',
-                                sub_action: 'Post.reset',
+                                sub_action: 'Main_Post.reset',
                                 _ajax_nonce: aamLocal.nonce,
                                 type: type,
                                 id: id,
@@ -1738,189 +1774,56 @@
                     //load referenced post
                     if ($('#load-post-object').val()) {
                         $.aam.loadAccessForm(
-                                $('#load-post-object-type').val(), 
-                                $('#load-post-object').val()
+                            $('#load-post-object-type').val(), 
+                            $('#load-post-object').val()
                         );
                     }
-
-                    $('.change-password').each(function() {
+                    
+                    $('.advanced-post-option').each(function() {
+                       $(this).bind('click', function() {
+                           var container = $(this).attr('href');
+                           var option = objectAccess.access[$(this).data('ref')];
+                           var field  = $($('.extended-post-access-btn', container).data('field'));
+                           
+                           //add attributes to the .extended-post-access-btn
+                           $('.extended-post-access-btn', container).attr({
+                               'data-ref': $(this).data('ref'),
+                               'data-preview': $(this).data('preview')
+                           });
+                           
+                           //set field value
+                           field.val(option);
+                       });
+                    });
+                    
+                    $('.extended-post-access-btn').each(function() {
                         $(this).bind('click', function() {
-                            var password = $('#' + $(this).attr('data-preview-id')).text();
-
-                            if (password !== '') {
-                                $('#password-value').val(password);
-                            } else {
-                                $('#password-value').val('');
-                            }
-
-                            $('#change-password-btn').attr({
-                                'data-ref': $(this).attr('data-ref'),
-                                'data-preview-id': $(this).attr('data-preview-id')
-                            });
-
-                            $('#password-modal').modal('show');
-                        });
-                    });
-
-                    $('#change-password-btn').bind('click', function() {
-                        var _this = $(this);
-                        _this.text(aam.__('Saving...'));
-
-                        var password = $('#password-value').val();
-                        save(
-                            _this.attr('data-ref'),
-                            password,
-                            _this.attr('data-type'),
-                            _this.attr('data-id'),
-                            function(response) {
-                                if (response.status === 'success') {
-                                    var preview = $('#' + _this.attr('data-preview-id'));
-                                    var action  = $('.aam-row-action', preview.parent().parent().parent());
-
-                                    preview.html(password ? password : '');
-
-                                    if ($(action).hasClass('icon-check-empty')) {
-                                        action.trigger('click');
+                           var _this = $(this);
+                           var label = _this.text();
+                           var value = $(_this.data('field')).val();
+                           
+                           _this.text(aam.__('Saving...'));
+                           
+                           save(
+                                _this.attr('data-ref'),
+                                value,
+                                _this.attr('data-type'),
+                                _this.attr('data-id'),
+                                function(response) {
+                                    if (response.status === 'success') {
+                                        objectAccess.access[_this.attr('data-ref')] = value;
+                                        $(_this.attr('data-preview')).html(response.preview);
+                                        var tr = $(_this.attr('data-preview')).parent().parent().parent();
+                                        if ($('.aam-row-action', tr).hasClass('icon-check-empty')) {
+                                            $('.aam-row-action', tr).trigger('click');
+                                        }
                                     }
+                                    $(_this.data('modal')).modal('hide');
+
+                                    _this.text(label);
                                 }
-                                $('#password-modal').modal('hide');
-
-                                _this.text(aam.__('Set'));
-                            }
-                        );
-                    });
-
-                    $('.change-location').each(function() {
-                        $(this).bind('click', function() {
-                            var location = $('#' + $(this).attr('data-preview-id')).text();
-
-                            if (location !== '') {
-                                $('#location-value').val(location);
-                            } else {
-                                $('#location-value').val('');
-                            }
-
-                            $('#change-location-btn').attr({
-                                'data-ref': $(this).attr('data-ref'),
-                                'data-preview-id': $(this).attr('data-preview-id')
-                            });
-
-                            $('#location-modal').modal('show');
+                            );
                         });
-                    });
-
-                    $('#change-location-btn').bind('click', function() {
-                        var _this = $(this);
-                        _this.text(aam.__('Saving...'));
-
-                        var redirect = $('#location-value').val();
-                        save(
-                            _this.attr('data-ref'),
-                            redirect,
-                            _this.attr('data-type'),
-                            _this.attr('data-id'),
-                            function(response) {
-                                if (response.status === 'success') {
-                                    var preview = $('#' + _this.attr('data-preview-id'));
-                                    var action  = $('.aam-row-action', preview.parent().parent().parent());
-
-                                    preview.html(redirect ? redirect : '');
-
-                                    if ($(action).hasClass('icon-check-empty')) {
-                                        action.trigger('click');
-                                    }
-                                }
-                                $('#location-modal').modal('hide');
-                                _this.text(aam.__('Set'));
-                            }
-                        );
-                    });
-
-                    $('.change-expiration').each(function() {
-                        $(this).bind('click', function() {
-                            var expiration = $('#' + $(this).attr('data-preview-id')).text();
-
-                            if (expiration !== '') {
-                                $('#expiration-value').val(expiration);
-                            } else {
-                                $('#expiration-value').val('');
-                            }
-
-                            $('#change-expiration-btn').attr({
-                                'data-ref': $(this).attr('data-ref'),
-                                'data-preview-id': $(this).attr('data-preview-id')
-                            });
-
-                            $('#expiration-modal').modal('show');
-                        });
-                    });
-
-                    $('#change-expiration-btn').bind('click', function() {
-                        var _this = $(this);
-                        _this.text(aam.__('Saving...'));
-
-                        var expires  = $('#expiration-value').val();
-                        save(
-                            _this.attr('data-ref'),
-                            expires,
-                            _this.attr('data-type'),
-                            _this.attr('data-id'),
-                            function(response) {
-                                if (response.status === 'success') {
-                                    var preview = $('#' + _this.attr('data-preview-id'));
-                                    var action  = $('.aam-row-action', preview.parent().parent().parent());
-                                    preview.html(response.value);
-
-                                    if ($(action).hasClass('icon-check-empty')) {
-                                        action.trigger('click');
-                                    }
-                                }
-                                $('#expiration-modal').modal('hide');
-                                _this.text(aam.__('Set'));
-                            }
-                        );
-                    });
-
-                    $('.change-teaser').each(function() {
-                        $(this).bind('click', function() {
-                            var teaser = $('#' + $(this).attr('data-preview-id')).prop('data-original-value');
-                            $('#teaser-value').val(teaser);
-
-                            $('#change-teaser-btn').attr({
-                                'data-ref': $(this).attr('data-ref'),
-                                'data-preview-id': $(this).attr('data-preview-id')
-                            });
-
-                            $('#teaser-modal').modal('show');
-                        });
-                    });
-
-                    $('#change-teaser-btn').bind('click', function() {
-                        var _this = $(this);
-                        _this.text(aam.__('Saving...'));
-
-                        var teaser = $('#teaser-value').val();
-                        save(
-                            _this.attr('data-ref'),
-                            teaser,
-                            _this.attr('data-type'),
-                            _this.attr('data-id'),
-                            function(response) {
-                                if (response.status === 'success') {
-                                    var preview = $('#' + _this.attr('data-preview-id'));
-                                    var action  = $('.aam-row-action', preview.parent().parent().parent());
-
-                                    preview.prop('data-original-value', teaser);
-                                    preview.html(preparePreview(teaser));
-
-                                    if ($(action).hasClass('icon-check-empty')) {
-                                        action.trigger('click');
-                                    }
-                                }
-                                $('#teaser-modal').modal('hide');
-                                _this.text(aam.__('Save'));
-                            }
-                        );
                     });
                 }
             }
@@ -2058,7 +1961,7 @@
                             );
                         });
                     });
-
+                    
                     $('#login-redirect-reset').bind('click', function () {
                         aam.reset('loginRedirect');
                     });
@@ -2125,58 +2028,9 @@
                             );
                         });
                     });
-
+                    
                     $('#logout-redirect-reset').bind('click', function () {
                         aam.reset('logoutRedirect');
-                    });
-                }
-            }
-
-            aam.addHook('init', initialize);
-
-        })(jQuery);
-
-        /**
-         * Teaser Interface
-         * 
-         * @param {jQuery} $
-         * 
-         * @returns {void}
-         */
-        (function ($) {
-
-            /**
-             * 
-             * @returns {undefined}
-             */
-            function initialize() {
-                var container = '#teaser-content';
-
-                if ($(container).length) {
-                    $('input, textarea', container).each(function () {
-                        $(this).bind('change', function () {
-                            if ($(this).is('input[type="checkbox"]')) {
-                                var val = $(this).prop('checked') ? $(this).val() : 0;
-                            } else {
-                                val = $.trim($(this).val());
-                            }
-                            //save redirect type
-                            aam.save(
-                                $(this).attr('name'), 
-                                val, 
-                                'teaser', 
-                                null,
-                                function(result) {
-                                    if (result.status === 'success') {
-                                        $('#aam-teaser-overwrite').show();
-                                    }
-                                }
-                            );
-                        });
-                    });
-
-                    $('#teaser-reset').bind('click', function () {
-                        aam.reset('teaser');
                     });
                 }
             }
@@ -2206,7 +2060,7 @@
                     dataType: 'json',
                     data: {
                         action: 'aam',
-                        sub_action: '404Redirect.save',
+                        sub_action: 'Main_404Redirect.save',
                         _ajax_nonce: aamLocal.nonce,
                         subject: aam.getSubject().type,
                         subjectId: aam.getSubject().id,
@@ -2266,10 +2120,11 @@
 
             /**
              * 
-             * @param {*} data 
-             * @param {*} completeCallback 
+             * @param {type} data
+             * @param {type} cb
+             * @returns {undefined}
              */
-            function downloadExtension(data, completeCallback) {
+            function downloadExtension(data, cb) {
                 $.ajax(aamLocal.ajaxurl, {
                     type: 'POST',
                     dataType: 'json',
@@ -2277,7 +2132,7 @@
                     success: function (response) {
                         if (response.status === 'success') {
                             setTimeout(function () {
-                                location.reload();
+                                aam.fetchContent('extensions');
                             }, 500);
                         } else {
                             aam.notification('danger', aam.__(response.error));
@@ -2292,7 +2147,36 @@
                         aam.notification('danger', aam.__('Application error'));
                     },
                     complete: function() {
-                        completeCallback();
+                        cb();
+                    }
+                });
+            }
+            
+            /**
+             * 
+             * @param {type} data
+             * @returns {undefined}
+             */
+            function updateStatus(data) {
+                $.ajax(aamLocal.ajaxurl, {
+                    type: 'POST',
+                    dataType: 'json',
+                    data: data,
+                    success: function (response) {
+                        if (response.status === 'success') {
+                            aam.notification(
+                                'success', 
+                                aam.__('Extension status was updated successfully')
+                            );
+                        } else {
+                            aam.notification('danger', aam.__(response.error));
+                        }
+                    },
+                    error: function () {
+                        aam.notification('danger', aam.__('Application error'));
+                    },
+                    complete: function () {
+                        aam.fetchContent('extensions');
                     }
                 });
             }
@@ -2310,14 +2194,14 @@
                             dataType: 'json',
                             data: {
                                 action: 'aam',
-                                sub_action: 'Extension.check',
+                                sub_action: 'Extension_Manager.check',
                                 _ajax_nonce: aamLocal.nonce,
                             },
                             beforeSend: function () {
                                 $('#aam-update-check i').attr('class', 'icon-spin4 animate-spin');
                             },
                             complete: function () {
-                                location.reload();
+                                aam.fetchContent('extensions');
                             }
                         });
                     });
@@ -2338,7 +2222,7 @@
                         $('i', _this).attr('class', 'icon-spin4 animate-spin');
                         downloadExtension({
                             action: 'aam',
-                            sub_action: 'Extension.install',
+                            sub_action: 'Extension_Manager.install',
                             _ajax_nonce: aamLocal.nonce,
                             license: $('#extension-key').val()
                         }, function() {
@@ -2354,11 +2238,41 @@
                             $('i', _this).attr('class', 'icon-spin4 animate-spin');
                             downloadExtension({
                                 action: 'aam',
-                                sub_action: 'Extension.update',
+                                sub_action: 'Extension_Manager.update',
                                 _ajax_nonce: aamLocal.nonce,
                                 extension: _this.data('product')
                             }, function() {
                                 $('i', _this).attr('class', 'icon-arrows-cw');
+                            });
+                        });
+                    });
+                    
+                    //deactivate extension
+                    $('.aam-deactivate-extension').each(function() {
+                        $(this).bind('click', function () {
+                            var _this = $(this);
+
+                            $('i', _this).attr('class', 'icon-spin4 animate-spin');
+                            updateStatus({
+                                action: 'aam',
+                                sub_action: 'Extension_Manager.deactivate',
+                                _ajax_nonce: aamLocal.nonce,
+                                extension: _this.data('product')
+                            });
+                        });
+                    });
+                    
+                    //activet extension
+                    $('.aam-activate-extension').each(function() {
+                        $(this).bind('click', function () {
+                            var _this = $(this);
+
+                            $('i', _this).attr('class', 'icon-spin4 animate-spin');
+                            updateStatus({
+                                action: 'aam',
+                                sub_action: 'Extension_Manager.activate',
+                                _ajax_nonce: aamLocal.nonce,
+                                extension: _this.data('product')
                             });
                         });
                     });
@@ -2371,7 +2285,7 @@
                             $('i', _this).attr('class', 'icon-spin4 animate-spin');
                             downloadExtension({
                                 action: 'aam',
-                                sub_action: 'Extension.install',
+                                sub_action: 'Extension_Manager.install',
                                 _ajax_nonce: aamLocal.nonce,
                                 license: _this.data('license')
                             }, function() {
@@ -2414,6 +2328,7 @@
              * 
              * @param {type} param
              * @param {type} value
+             * @param {type} reload
              * @returns {undefined}
              */
             function save(param, value) {
@@ -2422,7 +2337,7 @@
                     dataType: 'json',
                     data: {
                         action: 'aam',
-                        sub_action: 'Utility.save',
+                        sub_action: 'Settings_Manager.save',
                         _ajax_nonce: aamLocal.nonce,
                         param: param,
                         value: value
@@ -2438,14 +2353,17 @@
              * @returns {undefined}
              */
             function initialize() {
-                if ($('#utilities-content').length) {
+                if ($('.aam-feature.settings').length) {
                     $('[data-toggle="toggle"]').bootstrapToggle();
 
-                    $('input[type="checkbox"]', '#utilities-content').bind('change', function () {
-                        save($(this).attr('name'), ($(this).prop('checked') ? 1 : 0));
+                    $('input[type="checkbox"]', '.aam-feature.settings').bind('change', function () {
+                        save(
+                            $(this).attr('name'), 
+                            ($(this).prop('checked') ? 1 : 0)
+                        );
                     });
 
-                    $('input[type="text"]', '#utilities-content').bind('change', function() {
+                    $('input[type="text"]', '.aam-feature.settings').bind('change', function() {
                         save($(this).attr('name'), $(this).val());
                     });
 
@@ -2455,15 +2373,18 @@
                             dataType: 'json',
                             data: {
                                 action: 'aam',
-                                sub_action: 'Utility.clear',
+                                sub_action: 'Settings_Tools.clear',
                                 _ajax_nonce: aamLocal.nonce
                             },
                             beforeSend: function() {
                                 $('#clear-settings').prop('disabled', true);
+                                $('#clear-settings').text(aam.__('Wait...'));
                             },
-                            success: function (response) {
+                            success: function(response) {
                                 if (response.status === 'success') {
-                                    location.reload();
+                                    aam.notification('success', aam.__('All settings were cleared successfully'));
+                                } else {
+                                    aam.notification('danger', response.reason);
                                 }
                             },
                             error: function () {
@@ -2471,6 +2392,8 @@
                             },
                             complete: function() {
                                 $('#clear-settings').prop('disabled', false);
+                                $('#clear-settings').text(aam.__('Clear'));
+                                $('#clear-settings-modal').modal('hide');
                             }
                         });
                     });
@@ -2481,15 +2404,18 @@
                             dataType: 'json',
                             data: {
                                 action: 'aam',
-                                sub_action: 'Utility.clearCache',
+                                sub_action: 'Settings_Tools.clearCache',
                                 _ajax_nonce: aamLocal.nonce
                             },
                             beforeSend: function() {
                                 $('#clear-cache').prop('disabled', true);
+                                $('#clear-cache').text(aam.__('Wait...'));
                             },
-                            success: function (response) {
+                            success: function(response) {
                                 if (response.status === 'success') {
-                                    location.reload();
+                                    aam.notification('success', aam.__('The cache was cleared successfully'));
+                                } else {
+                                    aam.notification('danger', response.reason);
                                 }
                             },
                             error: function () {
@@ -2497,6 +2423,7 @@
                             },
                             complete: function() {
                                 $('#clear-cache').prop('disabled', false);
+                                $('#clear-cache').text(aam.__('Clear'));
                             }
                         });
                     });
@@ -2507,12 +2434,13 @@
                             dataType: 'json',
                             data: {
                                 action: 'aam',
-                                sub_action: 'Utility.export',
+                                sub_action: 'Settings_Tools.export',
                                 _ajax_nonce: aamLocal.nonce
                             },
                             beforeSend: function () {
+                                $('#export-aam').prop('disabled', true);
                                 $('#export-aam').attr('data-lable', $('#export-aam').text());
-                                $('#export-aam').html('<i class="icon-spin4 animate-spin"></i>');
+                                $('#export-aam').text(aam.__('Wait...'));
                             },
                             success: function(response) {
                                 if (response.status === 'success') {
@@ -2527,7 +2455,8 @@
                                 aam.notification('danger', aam.__('Application Error'));
                             },
                             complete: function () {
-                                $('#export-aam').html($('#export-aam').attr('data-lable'));
+                                $('#export-aam').prop('disabled', false);
+                                $('#export-aam').text($('#export-aam').attr('data-lable'));
                             }
                         });
                     });
@@ -2557,17 +2486,18 @@
                                         dataType: 'json',
                                         data: {
                                             action: 'aam',
-                                            sub_action: 'Utility.import',
+                                            sub_action: 'Settings_Tools.import',
                                             _ajax_nonce: aamLocal.nonce,
                                             json: json
                                         },
                                         beforeSend: function () {
+                                            $('#import-aam').prop('disabled', true);
                                             $('#import-aam').attr('data-lable', $('#import-aam').text());
-                                            $('#import-aam').html('<i class="icon-spin4 animate-spin"></i>');
+                                            $('#import-aam').text(aam.__('Wait...'));
                                         },
                                         success: function(response) {
                                             if (response.status === 'success') {
-                                                aam.notification('success', 'Data Imported Successfully');
+                                                aam.notification('success', 'All settings were imported successfully');
                                             // location.reload();
                                             } else {
                                                 aam.notification('danger', aam.__('Invalid data format'));
@@ -2577,6 +2507,7 @@
                                             aam.notification('danger', aam.__('Application Error'));
                                         },
                                         complete: function () {
+                                            $('#import-aam').prop('disabled', false);
                                             $('#import-aam').html($('#import-aam').attr('data-lable'));
                                         }
                                     });
@@ -2596,9 +2527,8 @@
             aam.addHook('init', initialize);
 
         })(jQuery);
-
         
-        aam.fetchContent(); //fetch default AAM content
+        aam.fetchContent('main'); //fetch default AAM content
     }
 
     /**
@@ -2616,6 +2546,11 @@
          * Different UI hooks
          */
         this.hooks = {};
+        
+        /**
+         * Content filters
+         */
+        this.filters = {};
     }
     
     /**
@@ -2645,7 +2580,7 @@
      * 
      * @returns {undefined}
      */
-    AAM.prototype.fetchContent = function () {
+    AAM.prototype.fetchContent = function (uiType) {
         var _this = this;
         
         //referred object ID like post, page or any custom post type
@@ -2658,6 +2593,7 @@
             data: {
                 action: 'aamc',
                 _ajax_nonce: aamLocal.nonce,
+                uiType: uiType,
                 subject: this.getSubject().type,
                 subjectId: this.getSubject().id,
                 oid: object ? object[1] : null,
@@ -2688,6 +2624,16 @@
                 }
 
                 item.trigger('click');
+                
+                $('.aam-sidebar .metabox-holder').hide();
+                $('.aam-sidebar .shared-metabox').show();
+                $('.aam-sidebar .' + uiType + '-metabox').show();
+                
+                if (uiType !== 'main') { //hide subject and user/role manager
+                    $('#aam-subject-banner').hide();
+                } else {
+                    $('#aam-subject-banner').show();
+                }
             }
         });
     };
@@ -2722,6 +2668,40 @@
                 this.hooks[name][i].call(this, params);
             }
         }
+    };
+    
+    /**
+     * Add UI filter
+     * 
+     * @param {String}   name
+     * @param {Function} callback
+     * 
+     * @returns {void}
+     */
+    AAM.prototype.addFilter = function (name, callback) {
+        if (typeof this.filters[name] === 'undefined') {
+            this.filters[name] = new Array();
+        }
+
+        this.filters[name].push(callback);
+    };
+
+    /**
+     * Apply UI filters
+     * 
+     * @param {String} name
+     * @param {Object} params
+     * 
+     * @returns {void}
+     */
+    AAM.prototype.applyFilters = function (name, result, params) {
+        if (typeof this.filters[name] !== 'undefined') {
+            for (var i in this.filters[name]) {
+                result = this.filters[name][i].call(this, result, params);
+            }
+        }
+        
+        return result;
     };
     
     /**
@@ -2768,6 +2748,14 @@
                 'container' : 'body'
             });
             $(this).tooltip('show');
+        });
+        
+        $('.aam-area').each(function() {
+           $(this).bind('click', function() {
+               $('.aam-area').removeClass('text-danger');
+               $(this).addClass('text-danger');
+               aam.fetchContent($(this).data('type')); 
+           });
         });
 
         // preventDefault for all links with # href
@@ -2896,7 +2884,7 @@
                 object: object
             },
             success: function () {
-                aam.fetchContent();
+                aam.fetchContent('main');
             },
             error: function () {
                 aam.notification('danger', aam.__('Application error'));

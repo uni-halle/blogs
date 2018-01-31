@@ -57,7 +57,7 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
     public function __get($name) {
         $post = $this->getPost();
         
-        return (property_exists($post, $name) ? $post->$name : null);
+        return (is_object($post) && property_exists($post, $name) ? $post->$name : null);
     }
 
     /**
@@ -102,7 +102,7 @@ class AAM_Core_Object_Post extends AAM_Core_Object {
         $this->setOption($option);
         
         //if result is empty, simply cache the false to speed-up
-        AAM_Core_Cache::set($subject, $chname, (empty($option) ? false : $option));
+        AAM_Core_Cache::set($chname, (empty($option) ? false : $option));
     }
     
     /**

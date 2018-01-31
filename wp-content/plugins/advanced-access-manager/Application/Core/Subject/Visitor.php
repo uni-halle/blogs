@@ -71,4 +71,20 @@ class AAM_Core_Subject_Visitor extends AAM_Core_Subject {
         return AAM_Core_Subject_Default::getInstance();
     }
 
+    /**
+     * 
+     * @return type
+     */
+    public function getName() {
+        return __('Anonymous', AAM_KEY);
+    }
+    
+    /**
+     * 
+     * @return boolean
+     */
+    public function isVisitor() {
+        return true;
+    }
+    
 }

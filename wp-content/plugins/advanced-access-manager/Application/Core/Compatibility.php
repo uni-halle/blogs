@@ -22,6 +22,7 @@ class AAM_Core_Compatibility {
     public static function initExtensions() {
         //block deprecated extensions from loading
         define('AAM_UTILITIES', '99');
+        define('AAM_ROLE_FILTER', '99');
         define('AAM_POST_FILTER', '99');
         define('AAM_REDIRECT', '99');
         define('AAM_CONTENT_TEASER', '99');
@@ -30,7 +31,7 @@ class AAM_Core_Compatibility {
         
         //caching filter & action
         add_filter(
-            'aam-read-cache-filter', 'AAM_Core_Compatibility::readCache', 10, 3
+            'aam-read-cache-filter', 'AAM_Core_Compatibility::readCache', 10, 2
         );
         
         //utilities option
@@ -41,11 +42,10 @@ class AAM_Core_Compatibility {
      * 
      * @param type $value
      * @param type $option
-     * @param type $subject
      * @return type
      */
-    public static function readCache($value, $option, $subject) {
-        return AAM_Core_Cache::get($option);
+    public static function readCache($value, $option) {
+        return AAM_Core_Cache::get($option, $value);
     }
     
     /**

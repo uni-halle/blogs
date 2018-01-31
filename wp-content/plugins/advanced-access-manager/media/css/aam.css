@@ -97,6 +97,10 @@
 .icon-circle-thin:before { content: '\f1db' !important; } /* 'ï' */
 .icon-clone:before { content: '\f24d' !important; } /* 'ï' */
 .icon-rss:before { content: '\f09e' !important; } /* 'ï' */
+.icon-dollar:before { content: '\f155' !important; } /* '' */
+.icon-cubes:before { content: '\f1b3' !important; } /* 'ï³' */
+.icon-cog-alt:before { content: '\e80d' !important; } /* 'î ' */
+.icon-wrench:before { content: '\e80e' !important; } /* 'î ' */
 
 .animate-spin {
     -moz-animation: spin 2s infinite linear;
@@ -352,18 +356,6 @@ a.btn:focus, a.btn:active {
     border-radius: 0;
 }
 
-.btn-codepinch {
-    background-color: #EC4F7C;
-    border-color: #EC4F7C;
-    color: #FFFFFF;
-}
-
-.btn-codepinch:hover, .btn-codepinch:focus {
-    background-color: #f0ad4e;
-    border-color: #eea236;
-    color: #fff;
-}
-
 .btn-right {
     float: right;
     margin-bottom: 10px;
@@ -549,7 +541,7 @@ input[type=radio]:checked + label:before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(169, 68, 66, 0.2);
+    background-color: rgba(255, 255, 255, 0.4);
     z-index: 9999;
 }
 
@@ -703,6 +695,15 @@ input[type=radio]:checked + label:before {
     background-color: #5cb85c;
 }
 
+.aam-divider {
+    width: 60%;
+    margin: 15px auto;
+}
+
+.aam-submenu-item {
+    padding: 2px 15px 0px 15px;
+}
+
 .aam-submenu-item .aam-menu-capability {
     display: block;
     margin-top: -4px;
@@ -711,6 +712,8 @@ input[type=radio]:checked + label:before {
 .aam-submenu-item label {
     display: inline-block;
     width: 80%;
+    font-size: 0.9em;
+    font-weight: 500;
 }
 
 .aam-feature {
@@ -769,38 +772,6 @@ input[type=radio]:checked + label:before {
     padding: 10px;
 }
 
-.aam-extension-installed {
-    border: 1px solid transparent;
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.42857;
-    margin-bottom: 0;
-    padding: 6px 12px;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-    background-color: #666666;
-    color: #FFFFFF;
-    width: 100%;
-}
-
-.aam-extension-inactive {
-    border: 1px solid transparent;
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.42857;
-    margin-bottom: 0;
-    padding: 6px 12px;
-    text-align: center;
-    vertical-align: middle;
-    white-space: nowrap;
-    background-color: #D9534F;
-    color: #FFFFFF;
-    width: 100%;
-}
-
 .aam-update-check {
     float:right !important;
 }
@@ -814,9 +785,9 @@ input[type=radio]:checked + label:before {
 }
 
 .aam-setting-title, .aam-extension-title { 
-    font-size: 1.2em; 
+    font-size: 1.4em; 
     line-height: 1em;
-    font-weight: 700; 
+    font-weight: 500; 
     display: block;
 }
 
@@ -832,8 +803,13 @@ input[type=radio]:checked + label:before {
 .aam-setting-description, .aam-extension-description {
     font-size: 0.9em;
     text-align: justify;
+    margin-top: 5px !important;
     line-height: 1.4;
     color: #666666;
+}
+
+.aam-extension-description {
+    font-size: 1.1em;
 }
 
 .aam-help-menu.active {
@@ -949,8 +925,18 @@ input[type=radio]:checked + label:before {
     display: block;
     letter-spacing: 1px;
     font-weight: 700;
+    margin-top: 7px;
     text-transform: uppercase;
     text-align: center;
+}
+
+.extension-container {
+    padding: 10px 15px;
+}
+
+.highlighted-italic i {
+    color: #a94442;
+    font-weight: 700;
 }
 
 .aam-error-list {
@@ -1065,6 +1051,18 @@ input[type=radio]:checked + label:before {
  .toggle.btn-xs{min-width:35px;min-height:22px}
  .toggle-on.btn-xs{padding-right:12px}
  .toggle-off.btn-xs{padding-left:12px}
+ 
+ /* Autocomplete */
+ .autocomplete-suggestions {
+    text-align: left; cursor: default; border: 1px solid #ccc; border-top: 0; background: #fff; box-shadow: -1px 1px 3px rgba(0,0,0,.1);
+
+    /* core styles should not be changed */
+    position: absolute; display: none; z-index: 9999; max-height: 254px; overflow: hidden; overflow-y: auto; box-sizing: border-box;
+}
+.autocomplete-suggestion { position: relative; padding: 0 .6em; line-height: 23px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 1.02em; color: #333; }
+.autocomplete-suggestion b { font-weight: normal; color: #1f8dd6; }
+.autocomplete-suggestion.selected { background: #f0f0f0; }
+
 
 /* COVER KNOWN CSS ISSUES CASED BY OTHER PLUGINS OR THEMES */
 

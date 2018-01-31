@@ -43,7 +43,7 @@ class AAM_Core_Object_LoginRedirect extends AAM_Core_Object {
         if (empty($option)) {
              //inherit from parent subject
             $option = $this->getSubject()->inheritFromParent('loginredirect');
-        } elseif (method_exists($this, 'setOverwritten')) { //TODO - Support legacy
+        } else {
             $this->setOverwritten(true);
         }
         

@@ -50,17 +50,4 @@ class AAM_Backend_View_Helper {
         $value = '/\\' . ($index % 2 ? ']' : '[') . '/';
     }
     
-    /**
-     * Conver string to readable
-     * 
-     * @param string $text
-     * 
-     * @return string
-     * 
-     * @access public
-     */
-    public static function getHumanText($text) {
-        return implode(' ', array_map('ucfirst', explode('_', $text)));
-    }
-
 }

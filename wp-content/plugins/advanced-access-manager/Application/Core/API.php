@@ -151,7 +151,7 @@ final class AAM_Core_API {
         } elseif(isset($wp_roles)) {
             $roles = $wp_roles;
         } else {
-            $roles = $wp_roles = new WP_Roles();
+            $roles = new WP_Roles();
         }
         
         return $roles;
@@ -215,7 +215,7 @@ final class AAM_Core_API {
     public static function capabilityExists($cap) {
         $caps = self::getAllCapabilities();
         
-        return (isset($caps[$cap]) ? true : false);
+        return (is_scalar($cap) && array_key_exists($cap, $caps) ? true : false);
     }
     
     /**
@@ -231,25 +231,29 @@ final class AAM_Core_API {
      * @access public
      */
     public static function reject($area = 'frontend', $args = array()) {
-        $object = AAM::getUser()->getObject('redirect');
-        $type   = $object->get("{$area}.redirect.type");
-        
-        if (!empty($type) && ($type == 'login')) {
-            $redirect = add_query_arg(
-                    array('aam-redirect' => 'login'), 
-                    wp_login_url(AAM_Core_Request::server('REQUEST_URI'))
-            );
-        } elseif (!empty($type) && ($type != 'default')) {
-            $redirect = $object->get("{$area}.redirect.{$type}");
-        } else { //ConfigPress setup
-            $redirect = AAM_Core_Config::get(
-                   "{$area}.access.deny.redirect", __('Access Denied', AAM_KEY)
-            );
+        if (AAM_Core_Request::server('REQUEST_METHOD') != 'POST') {
+            $object = AAM::getUser()->getObject('redirect');
+            $type   = $object->get("{$area}.redirect.type");
+
+            if (!empty($type) && ($type == 'login')) {
+                $redirect = add_query_arg(
+                        array('aam-redirect' => 'login'), 
+                        wp_login_url(AAM_Core_Request::server('REQUEST_URI'))
+                );
+            } elseif (!empty($type) && ($type != 'default')) {
+                $redirect = $object->get("{$area}.redirect.{$type}");
+            } else { //ConfigPress setup
+                $redirect = AAM_Core_Config::get(
+                       "{$area}.access.deny.redirect", __('Access Denied', AAM_KEY)
+                );
+            }
+
+            do_action('aam-rejected-action', $area, $args);
+
+            self::redirect($redirect, $args);
+        } else {
+            wp_die(-1);
         }
-        
-        do_action('aam-rejected-action', $area, $args);
-        
-        self::redirect($redirect, $args);
     }
     
     /**
@@ -263,7 +267,8 @@ final class AAM_Core_API {
      * @access public
      */
     public static function redirect($rule, $args = null) {
-        if (filter_var($rule, FILTER_VALIDATE_URL)) {
+        $path = parse_url($rule);
+        if ($path && !empty($path['host'])) {
             wp_redirect($rule, 307);
         } elseif (preg_match('/^[\d]+$/', $rule)) {
             wp_safe_redirect(get_page_link($rule), 307);
@@ -351,6 +356,15 @@ final class AAM_Core_API {
             }
         }
         
+        if (is_single()) {
+            $post = self::getCurrentPost();
+            $in   = ($post ? array_search($post->ID, $filtered) : false);
+            
+            if ($in !== false) {
+                $filtered = array_splice($filtered, $in, 1);
+            }
+        }
+        
         return (is_array($filtered) ? $filtered : array());
     }
     
@@ -387,8 +401,8 @@ final class AAM_Core_API {
                         $cache[] = $post->ID;
                     }
                     
-                    AAM_Core_Cache::set(AAM::getUser(), $key . '_checked', $checked);
-                    AAM_Core_Cache::set(AAM::getUser(), $key, $cache);
+                    AAM_Core_Cache::set($key . '_checked', $checked);
+                    AAM_Core_Cache::set($key, $cache);
                     $counter++;
                 }
             } else {
@@ -421,6 +435,37 @@ final class AAM_Core_API {
         }
         
         return $type;
+    }
+    
+    /**
+     * Get current post
+     * 
+     * @global type $wp_query
+     * 
+     * @return WP_Post|null
+     */
+    public static function getCurrentPost() {
+        global $wp_query, $post;
+        
+        $res = null;
+        
+        if (!empty($wp_query->queried_object)) {
+            $res = $wp_query->queried_object;
+        } elseif (!empty($wp_query->post)) {
+            $res = $wp_query->post;
+        } elseif (!empty($wp_query->query['name']) && !empty($wp_query->posts)) {
+            //Important! Cover the scenario of NOT LIST but ALLOW READ
+            foreach($wp_query->posts as $post) {
+                if ($post->post_name == $wp_query->query['name']) {
+                    $res = $post;
+                    break;
+                }
+            }
+        }
+        
+        $user = AAM::getUser();
+        
+        return (is_a($res, 'WP_Post') ? $user->getObject('post', $res->ID) : null);
     }
     
 }

@@ -41,7 +41,7 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
     /**
      * Filter Menu List
      * 
-     * Keep in mind that this funciton only filter the menu items but do not
+     * Keep in mind that this function only filter the menu items but do not
      * restrict access to them. You have to explore roles and capabilities to
      * control the full access to menus.
      *
@@ -57,11 +57,12 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
 
         foreach ($menu as $id => $item) {
             if (!empty($submenu[$item[2]])) {
-                $subs = $this->filterSubmenu($item[2]);
+                // Cover the scenario when there are some dynamic submenus
+                $subs = $this->filterSubmenu($item, ($this->has('menu-' . $item[2])));
             } else {
                 $subs = array();
             }
-
+            
             // cover scenario like with Visual Composer where landing page
             // is defined dynamically
             if ($this->has('menu-' . $item[2])) {
@@ -75,7 +76,7 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
                 }
             }
         }
-
+        
         // remove duplicated separators
         $count = 0;
         foreach ($menu as $id => $item) {
@@ -107,28 +108,68 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
     /**
      * Filter submenu
      * 
-     * @param string $parent
+     * @param array &$parent
+     * @param bool  $deny_all
      * 
      * @return void
      * 
      * @access protected
+     * 
      * @global array $menu
      * @global array $submenu
      */
-    protected function filterSubmenu($parent) {
+    protected function filterSubmenu(&$parent, $deny_all = false) {
         global $submenu;
 
         $filtered = array();
 
-        foreach ($submenu[$parent] as $id => $item) {
-            if ($this->has($this->normalizeItem($item[2]))) {
-                unset($submenu[$parent][$id]);
+        foreach ($submenu[$parent[2]] as $id => $item) {
+            if ($deny_all || $this->has($this->normalizeItem($item[2]))) {
+                unset($submenu[$parent[2]][$id]);
             } else {
-                $filtered[] = $submenu[$parent][$id];
+                $filtered[] = $submenu[$parent[2]][$id];
             }
+        }
+        
+        if (count($filtered)) { //make sure that the parent points to the first sub
+            $values    = array_values($filtered);
+            $parent[2] = $values[0][2];
         }
 
         return $filtered;
+    }
+    
+    /**
+     * Get parent menu
+     * 
+     * @param string $search
+     * 
+     * @return string|bool
+     * 
+     * @access protected
+     * @global array $submenu
+     */
+    protected function getParentMenu($search) {
+        global $submenu;
+        
+        $result = null;
+        
+        //if (is_array($submenu)) {
+            foreach($submenu as $parent => $subs) {
+                foreach($subs as $sub) {
+                    if ($sub[2] == $search) {
+                        $result = $parent;
+                        break;
+                    }
+                }
+
+                if ($result !== null) {
+                    break;
+                }
+            }
+        //}
+        
+        return $result;
     }
 
     /**
@@ -142,27 +183,45 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
      * 
      * @access public
      */
-    public function has($menu) {
+    public function has($menu, $both = false) {
         //decode URL in case of any special characters like &amp;
         $decoded = htmlspecialchars_decode($menu);
         $options = $this->getOption();
+        $parent  = $this->getParentMenu($decoded);
         
-        return !empty($options[$decoded]);
+        // Step #1. Check if menu is directly restricted
+        $direct = !empty($options[$decoded]);
+        
+        // Step #2. Check if whole branch is restricted
+        $branch = ($both && !empty($options['menu-' . $decoded]));
+        
+        // Step #3. Check if dynamic submenu is restricted because of whole branch
+        $indirect = ($parent && !empty($options['menu-' . $parent]));
+        
+        return $direct || $branch || $indirect;
     }
 
     /**
-     * @inheritdoc
+     * Save menu option
+     * 
+     * @return bool
+     * 
+     * @access public
      */
-    public function save($menu, $granted) {
-        $option = $this->getOption();
-        $option[$menu] = $granted;
-        $this->setOption($option);
-
-        return $this->getSubject()->updateOption($option, 'menu');
+    public function save($item = null, $value = null) {
+        if (!is_null($item)) { // keep it compatible with main Manager.save
+            $this->updateOptionItem($item, $value);
+        }
+        
+        return $this->getSubject()->updateOption($this->getOption(), 'menu');
     }
     
     /**
+     * Reset default settings
      * 
+     * @return bool
+     * 
+     * @access public
      */
     public function reset() {
         return $this->getSubject()->deleteOption('menu');

@@ -24,12 +24,10 @@ abstract class AAM_Backend_Feature_Abstract {
      * @throws Exception
      */
     public function __construct() {
-        if (is_admin()) {
-            $capability = AAM_Backend_View::getAAMCapability();
-            
-            if (!AAM::getUser()->hasCapability($capability)) {
-                wp_die(__('Access Denied', AAM_KEY));
-            }
+        if (!AAM::getUser()->hasCapability('aam_manager')) {
+            AAM_Core_API::reject(
+                'backend', array('hook' => 'aam_manager')
+            );
         }
     }
     
@@ -47,20 +45,6 @@ abstract class AAM_Backend_Feature_Abstract {
         ob_end_clean();
 
         return $content;
-    }
-    
-    /**
-     * Get access option
-     * 
-     * This function exists only to support implementation for PHP 5.2 cause later
-     * static binding has been introduced only in PHP 5.3.0
-     * 
-     * @return string
-     * 
-     * @access public
-     */
-    public static function getAccessOption() { 
-        return ''; 
     }
     
     /**

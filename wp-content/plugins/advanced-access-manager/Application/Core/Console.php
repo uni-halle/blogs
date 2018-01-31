@@ -26,12 +26,13 @@ class AAM_Core_Console {
      * @access private 
      * @static 
      */
-    private static $_warnings = array();
+    private static $_messages = array();
 
     /**
      * Add new warning
      * 
      * @param string $message
+     * @param stirng $args...
      * 
      * @return void
      * 
@@ -39,19 +40,20 @@ class AAM_Core_Console {
      * @static
      */
     public static function add($message) {
-        self::$_warnings[] = $message;
-    }
-
-    /**
-     * Check if there is any warning during execution
-     * 
-     * @return boolean
-     * 
-     * @access public
-     * @static
-     */
-    public static function hasIssues() {
-        return (count(self::$_warnings) ? true : false);
+        //prepare search patterns
+        $num    = func_num_args();
+        $search = ($num > 1 ? array_fill(0, ($num - 1) * 2, null) : array());
+        
+        array_walk($search, 'AAM_Core_Console::walk');
+        
+        $replace = array();
+        foreach (array_slice(func_get_args(), 1) as $key) {
+            array_push($replace, "<{$key}>", "</{$key}>");
+        }
+        
+        self::$_messages[] = preg_replace(
+                $search, $replace, __($message, AAM_KEY), 1
+        );
     }
 
     /**
@@ -62,8 +64,8 @@ class AAM_Core_Console {
      * @access public
      * @static
      */
-    public static function getWarnings() {
-        return self::$_warnings;
+    public static function getAll() {
+        return self::$_messages;
     }
     
     /**
@@ -71,7 +73,20 @@ class AAM_Core_Console {
      * @return type
      */
     public static function count() {
-        return count(self::$_warnings);
+        return count(self::$_messages);
+    }
+    
+    /**
+     * Replace place holders with markup
+     * 
+     * @param string $value
+     * @param int    $index
+     * 
+     * @access protected
+     * @static
+     */
+    protected static function walk(&$value, $index) {
+        $value = '/\\' . ($index % 2 ? ']' : '[') . '/';
     }
 
 }

@@ -25,15 +25,6 @@ class AAM_Backend_View {
     private static $_instance = null;
 
     /**
-     * Current Subject
-     * 
-     * @var AAM_Core_Subject
-     * 
-     * @access private
-     */
-    private static $_subject = null;
-
-    /**
      * Construct the view object
      * 
      * @return void
@@ -41,34 +32,22 @@ class AAM_Backend_View {
      * @access protected
      */
     protected function __construct() {
-        if (AAM_Core_Request::request('subject')) {
-            $classname = 'AAM_Core_Subject_' . ucfirst(
-                            AAM_Core_Request::request('subject')
-            );
-            if (class_exists($classname)) {
-                $this->setSubject(new $classname(
-                    stripslashes(AAM_Core_Request::request('subjectId'))
-                ));
-            }
-        }
-
         //register default features
-        AAM_Backend_Feature_Menu::register();
-        AAM_Backend_Feature_Metabox::register();
-        AAM_Backend_Feature_Capability::register();
-        AAM_Backend_Feature_Post::register();
-        AAM_Backend_Feature_Redirect::register();
-        AAM_Backend_Feature_Teaser::register();
-        AAM_Backend_Feature_LoginRedirect::register();
-        AAM_Backend_Feature_LogoutRedirect::register();
-        AAM_Backend_Feature_Extension::register();
-        AAM_Backend_Feature_Security::register();
-        AAM_Backend_Feature_Utility::register();
-        AAM_Backend_Feature_Contact::register();
-        AAM_Backend_Feature_404Redirect::register();
+        AAM_Backend_Feature_Main_Menu::register();
+        AAM_Backend_Feature_Main_Metabox::register();
+        AAM_Backend_Feature_Main_Capability::register();
+        AAM_Backend_Feature_Main_Post::register();
+        AAM_Backend_Feature_Main_Redirect::register();
+        AAM_Backend_Feature_Main_LoginRedirect::register();
+        AAM_Backend_Feature_Main_LogoutRedirect::register();
+        AAM_Backend_Feature_Main_404Redirect::register();
+        
+        AAM_Backend_Feature_Settings_Core::register();
+        AAM_Backend_Feature_Settings_Content::register();
+        AAM_Backend_Feature_Settings_Tools::register();
         
         //feature registration hook
-        do_action('aam-feature-registration');
+        do_action('aam-feature-registration-action');
     }
 
     /**
@@ -158,20 +137,29 @@ class AAM_Backend_View {
         }
         
         return apply_filters(
-                'aam-ajax-filter', $response, $this->getSubject(), $action
+                'aam-ajax-filter', 
+                $response, 
+                AAM_Backend_Subject::getInstance()->get(), 
+                $action
         );
     }
     
     /**
      * Render the Main Control Area
      *
+     * @param string $type
+     * 
      * @return void
      *
      * @access public
      */
-    public function renderContent() {
+    public function renderContent($type = 'main') {
         ob_start();
-        require_once(dirname(__FILE__) . '/phtml/main-panel.phtml');
+        if ($type == 'extensions') {
+            AAM_Backend_Feature_Extension_Manager::getInstance()->render();
+        } else {
+            require_once(dirname(__FILE__) . '/phtml/main-panel.phtml');
+        }
         $content = ob_get_contents();
         ob_end_clean();
 
@@ -206,9 +194,11 @@ class AAM_Backend_View {
         $objectId = intval(AAM_Core_Request::post('objectId', 0));
         
         $param = AAM_Core_Request::post('param');
-        $value = AAM_Core_Request::post('value');
+        $value = filter_input(INPUT_POST, 'value');
         
-        $result = $this->getSubject()->save($param, $value, $object, $objectId);
+        $result = AAM_Backend_Subject::getInstance()->save(
+                $param, $value, $object, $objectId
+        );
 
         return json_encode(array('status' => ($result ? 'success' : 'failure')));
     }
@@ -218,7 +208,9 @@ class AAM_Backend_View {
      * @return type
      */
     public function reset() {
-        return $this->getSubject()->resetObject(AAM_Core_Request::post('object'));
+        return AAM_Backend_Subject::getInstance()->resetObject(
+                AAM_Core_Request::post('object')
+        );
     }
     
     /**
@@ -231,7 +223,7 @@ class AAM_Backend_View {
                 'reason' => 'You are not allowed to switch to this user'
         );
         
-        if (self::userCan('aam_switch_users')) { 
+        if (current_user_can('aam_switch_users')) { 
             $user  = new WP_User(AAM_Core_Request::post('user'));
             $max   = AAM_Core_API::maxLevel(wp_get_current_user()->allcaps);
 
@@ -251,59 +243,6 @@ class AAM_Backend_View {
         return json_encode($response);
     }
     
-    /**
-     * 
-     * @param type $capability
-     * @return type
-     */
-    public static function userCan($capability) {
-        if (AAM_Core_API::capabilityExists($capability)) {
-            $can = AAM::getUser()->hasCapability($capability);
-        } else {
-            $can = AAM::getUser()->hasCapability(self::getAAMCapability());
-        }
-        
-        return ($can ? 1 : 0);
-    }
-    
-    /**
-     * 
-     * @return type
-     */
-    public static function getAAMCapability() {
-        if (AAM_Core_API::capabilityExists('aam_manager')) {
-            $cap = 'aam_manager';
-        } else {
-            $cap = AAM_Core_Config::get('page.capability', 'administrator');
-        }
-        
-        return $cap;
-    }
-    
-    /**
-     * Get Subject
-     * 
-     * @return AAM_Core_Subject
-     * 
-     * @access public
-     */
-    public static function getSubject() {
-        return self::$_subject;
-    }
-
-    /**
-     * Set Subject
-     * 
-     * @param AAM_Core_Subject $subject
-     * 
-     * @return void
-     * 
-     * @access public
-     */
-    protected function setSubject(AAM_Core_Subject $subject) {
-        self::$_subject = $subject;
-    }
-
     /**
      * Get instance of itself
      * 

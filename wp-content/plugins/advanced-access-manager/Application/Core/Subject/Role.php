@@ -186,4 +186,28 @@ class AAM_Core_Subject_Role extends AAM_Core_Subject {
         );
     }
     
+    /**
+     * 
+     * @return type
+     */
+    public function getName() {
+        return $this->name;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getMaxLevel() {
+        return AAM_Core_API::maxLevel($this->capabilities);
+    }
+    
+    /**
+     * 
+     * @return boolean
+     */
+    public function isRole() {
+        return true;
+    }
+    
 }

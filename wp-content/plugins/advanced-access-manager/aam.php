@@ -3,7 +3,7 @@
 /**
   Plugin Name: Advanced Access Manager
   Description: All you need to manage access to your WordPress website
-  Version: 4.9.5.2
+  Version: 5.0.7
   Author: Vasyl Martyniuk <vasyl@vasyltech.com>
   Author URI: https://vasyltech.com
 
@@ -47,17 +47,12 @@ class AAM {
      * @access protected
      */
     protected function __construct() {
-        $uid = get_current_user_id();
-        
-        //initialize the user subject
-        if ($uid) {
-            $this->setUser(new AAM_Core_Subject_User($uid));
+        //initialize current subject
+        if (is_user_logged_in()) {
+            $this->setUser(new AAM_Core_Subject_User(get_current_user_id()));
         } else {
             $this->setUser(new AAM_Core_Subject_Visitor(''));
         }
-        
-        //load AAM core config
-        AAM_Core_Config::bootstrap();
     }
 
     /**
@@ -118,20 +113,12 @@ class AAM {
             //load AAM cache
             AAM_Core_Cache::bootstrap();
             
+            //load AAM core config
+            AAM_Core_Config::bootstrap();
+            
             //load all installed extension
             AAM_Extension_Repository::getInstance()->load();
             
-            //check if user is locked
-            if (get_current_user_id() && AAM::getUser()->user_status == 1) {
-                wp_logout();
-            }
-            
-            //check if user's role expired
-            $expire = get_user_option('aam-role-expires');
-            if ($expire && ($expire <= time())) {
-                AAM::getUser()->restoreRoles();
-            }
-
             //bootstrap the correct interface
             if (is_admin()) {
                 AAM_Backend_Manager::bootstrap();
@@ -143,7 +130,9 @@ class AAM {
             AAM_Core_Media::bootstrap();
             
             //login control
-            AAM_Core_Login::bootstrap();
+            if (AAM_Core_Config::get('secure-login', true)) {
+                AAM_Core_Login::bootstrap();
+            }
         }
 
         return self::$_instance;
@@ -160,6 +149,7 @@ class AAM {
      */
     public static function cron() {
         $extensions = AAM_Core_API::getOption('aam-extensions', null, 'site');
+        
         if (!empty($extensions)) {
             //grab the server extension list
             AAM_Core_API::updateOption(
@@ -179,21 +169,11 @@ class AAM {
         global $wp_version;
         
         //check PHP Version
-        if (version_compare(PHP_VERSION, '5.2') == -1) {
-            exit(__('PHP 5.2 or higher is required.', AAM_KEY));
+        if (version_compare(PHP_VERSION, '5.2.3') == -1) {
+            exit(__('PHP 5.2.3 or higher is required.', AAM_KEY));
         } elseif (version_compare($wp_version, '3.8') == -1) {
             exit(__('WP 3.8 or higher is required.', AAM_KEY));
         }
-
-        //create an wp-content/aam folder if does not exist
-        $dirname = WP_CONTENT_DIR . '/aam';
-        
-        if (file_exists($dirname) === false) {
-            @mkdir($dirname, fileperms( ABSPATH ) & 0777 | 0755);
-        }
-
-        //register plugin
-        AAM_Core_Server::register();
     }
 
     /**
@@ -229,7 +209,6 @@ if (defined('ABSPATH')) {
     );
     define('AAM_KEY', 'advanced-access-manager');
     define('AAM_EXTENSION_BASE', WP_CONTENT_DIR . '/aam/extension');
-    define('AAM_CODEPINCH_AFFILIATE_CODE', 'H2K31P8H');
     
     //register autoloader
     require (dirname(__FILE__) . '/autoloader.php');

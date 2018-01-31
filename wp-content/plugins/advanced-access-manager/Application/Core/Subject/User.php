@@ -36,6 +36,27 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
     protected $parent = null;
     
     /**
+     * 
+     * @param type $id
+     */
+    public function __construct($id) {
+        parent::__construct($id);
+        
+        if (get_current_user_id() == $id) {
+            //check if user is locked
+            if ($this->user_status == 1) {
+                wp_logout();
+            }
+
+            //check if user's role expired
+            $expire = get_user_option('aam-role-expires');
+            if ($expire && ($expire <= time())) {
+                $this->restoreRoles();
+            }
+        }
+    }
+    
+    /**
      * Block User
      *
      * @return boolean
@@ -196,7 +217,7 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
             $result = $this->deleteOption($object);
         }
 
-        return result;
+        return $result;
     }
     
     /**
@@ -293,5 +314,31 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
     public function getUID() {
         return self::UID;
     }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function getName() {
+        $display = $this->display_name;
+        
+        return ($display ? $display : $this->user_nicename);
+    }
 
+    /**
+     * 
+     * @return type
+     */
+    public function getMaxLevel() {
+        return AAM_Core_API::maxLevel($this->allcaps);
+    }
+    
+    /**
+     * 
+     * @return boolean
+     */
+    public function isUser() {
+        return true;
+    }
+    
 }

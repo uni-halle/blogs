@@ -23,11 +23,6 @@ final class AAM_Core_Server {
     const SERVER_URL = 'https://aamplugin.com/api/v1';
     
     /**
-     * Fallback endpoint
-     */
-    const FALLBACK_URL = 'http://rest.vasyltech.com/v1';
-    
-    /**
      * Fetch the extension list
      * 
      * Fetch the extension list with versions from the server
@@ -41,8 +36,7 @@ final class AAM_Core_Server {
         $params = array(
             'domain'  => parse_url(site_url(), PHP_URL_HOST), 
             'version' => AAM_Core_API::version(),
-            'uid'     => AAM_Core_API::getOption('aam-uid', null, 'site'),
-            'email'   => AAM_Core_API::getOption('admin_email')
+            'uid'     => AAM_Core_API::getOption('aam-uid', null, 'site')
         );
         
         self::send('/register', $params);
@@ -68,7 +62,7 @@ final class AAM_Core_Server {
         $response = self::send('/check', $params);
         $result   = array();
         
-        if (!is_wp_error($response)) {
+        if (!is_wp_error($response) && is_object($response)) {
             //WP Error Fix bug report
             if ($response->error !== true && !empty($response->products)) {
                 $result = $response->products;
@@ -121,16 +115,12 @@ final class AAM_Core_Server {
      * 
      * @access protected
      */
-    protected static function send($request, $params, $timeout = 20) {
+    protected static function send($request, $params, $timeout = 10) {
         $response = self::parseResponse(
-                AAM_Core_API::cURL(self::SERVER_URL . $request, false, $params, $timeout)
+                AAM_Core_API::cURL(
+                        self::SERVER_URL . $request, false, $params, $timeout
+                )
         );
-        
-        if (empty($response) || is_wp_error($response)) {
-            $response = self::parseResponse(
-                AAM_Core_API::cURL(self::FALLBACK_URL . $request, false, $params, $timeout)
-            );
-        }
         
         return $response;
     }
