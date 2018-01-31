@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ruleset name="WP Approve User">
+	<file>.</file>
+
+	<!-- Exclude JS/CSS files. -->
+	<exclude-pattern>*.[s]?css</exclude-pattern>
+	<exclude-pattern>*.js</exclude-pattern>
+
+	<!-- Show sniff codes -->
+	<arg value="s"/>
+
+	<rule ref="WordPress">
+		<exclude name="Generic.PHP.NoSilencedErrors.Discouraged" />
+	</rule>
+	<rule ref="WordPress-Docs" />
+
+	<rule ref="WordPress.VIP.SuperGlobalInputUsage.AccessDetected">
+		<exclude-pattern>wp-author-slug\.php</exclude-pattern>
+	</rule>
+
+	<!-- Whitelist classes for select sniffs. -->
+	<rule ref="WordPress.Files.FileName">
+		<properties>
+			<property name="custom_test_class_whitelist" type="array" value="Obenland_Wp_Plugins_V4"/>
+		</properties>
+	</rule>
+</ruleset>

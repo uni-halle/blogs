@@ -3,8 +3,8 @@ Contributors: obenland
 Tags: security, slug, author, author archive, url, permalink
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=XVPLJZ3VH4GCN
 Requires at least: 3.0
-Tested up to: 4.0
-Stable tag: 1.3.0
+Tested up to: 5.0
+Stable tag: 2
 
 Add a layer of security and prevent your login name from being shown in the author archive's URL.
 
@@ -24,6 +24,11 @@ towards your friendly URLs with using your display name.
 
 
 == Changelog ==
+
+= 2 =
+* Maintenance release.
+* Updated code to adhere to WordPress Coding Standards.
+* Tested with WordPress 5.0.
 
 = 1.3.0 =
 * Maintenance release.

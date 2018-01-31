@@ -1,35 +1,31 @@
 <?php
-/** wp-author-slug.php
- *
+/**
  * Plugin Name: WP Author Slug
  * Plugin URI:  http://en.wp.obenland.it/wp-author-slug/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-author-slug
  * Description: Rewrites the author url to NOT display the username but the display name
- * Version:     1.3.0
+ * Version:     2
  * Author:      Konstantin Obenland
  * Author URI:  http://en.wp.obenland.it/?utm_source=wordpress&utm_medium=plugin&utm_campaign=wp-author-slug
  * Text Domain: wp-author-slug
  * Domain Path: /lang
  * License:     GPLv2
+ *
+ * @package WP Author Slug
  */
 
-
-if ( ! class_exists( 'Obenland_Wp_Plugins_v300' ) ) {
-	require_once( 'obenland-wp-plugins.php' );
+if ( ! class_exists( 'Obenland_Wp_Plugins_V4' ) ) {
+	require_once 'obenland-wp-plugins.php';
 }
-
 
 register_activation_hook( __FILE__, array(
 	'Obenland_Wp_Author_Slug',
-	'activation'
+	'activation',
 ) );
 
-
-class Obenland_Wp_Author_Slug extends Obenland_Wp_Plugins_v300 {
-
-
-	///////////////////////////////////////////////////////////////////////////
-	// METHODS, PUBLIC
-	///////////////////////////////////////////////////////////////////////////
+/**
+ * Class Obenland_Wp_Author_Slug.
+ */
+class Obenland_Wp_Author_Slug extends Obenland_Wp_Plugins_V4 {
 
 	/**
 	 * Constructor.
@@ -37,15 +33,13 @@ class Obenland_Wp_Author_Slug extends Obenland_Wp_Plugins_v300 {
 	 * @author Konstantin Obenland
 	 * @since  1.1 - 03.04.2011
 	 * @access public
-	 *
-	 * @return Obenland_Wp_Author_Slug
 	 */
 	public function __construct() {
 		parent::__construct( array(
 			'textdomain'     => 'wp-author-slug',
 			'plugin_path'    => __FILE__,
 			'donate_link_id' => 'XVPLJZ3VH4GCN',
-		));
+		) );
 
 		$this->hook( 'pre_user_nicename' );
 	}
@@ -64,7 +58,7 @@ class Obenland_Wp_Author_Slug extends Obenland_Wp_Plugins_v300 {
 	 * @return void
 	 */
 	public static function activation() {
-		$users = get_users(array(
+		$users = get_users( array(
 			'blog_id' => '',
 			'fields'  => array( 'ID', 'display_name' ),
 		) );
@@ -94,17 +88,15 @@ class Obenland_Wp_Author_Slug extends Obenland_Wp_Plugins_v300 {
 	 * @return string The sanitized nicename.
 	 */
 	public function pre_user_nicename( $name ) {
+		// phpcs:disable WordPress.VIP.ValidatedSanitizedInput, WordPress.CSRF.NonceVerification.NoNonceVerification
 		if ( $_REQUEST['display_name'] ) {
 			$name = sanitize_title( $_REQUEST['display_name'] );
 		}
+		// phpcs:enable WordPress.VIP.ValidatedSanitizedInput, WordPress.CSRF.NonceVerification.NoNonceVerification
 
 		return $name;
 	}
 }  // End of class Obenland_Wp_Author_Slug.
 
 
-new Obenland_Wp_Author_Slug;
-
-
-/* End of file wp-author-slug.php */
-/* Location: ./wp-content/plugins/wp-author-slug/wp-author-slug.php */
+new Obenland_Wp_Author_Slug();
