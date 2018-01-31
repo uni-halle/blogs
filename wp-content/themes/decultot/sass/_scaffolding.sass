@@ -1,6 +1,9 @@
 body
 	font: $font
 
+.page-title, .entry-title, .main-navigation
+	font-family: $font-family
+
 hr
 	height: 2px
 	background-color: $gray-lighter
@@ -20,8 +23,9 @@ hr
 	padding-left: 0 !important
 	padding-right: 0 !important
 
-.home .site-main > article
-	margin-bottom: 5px !important
+.home
+	.site-main > article
+		margin-bottom: 5px !important
 
 .entry-header, .entry-content
 	margin: 0 !important
@@ -52,7 +56,7 @@ video, iframe
 	article
 		position: relative
 		margin-bottom: $v-margin-p
-		padding: 2em 0 1em
+		padding: 2em 0 95px
 		border-top: $border
 		//&.category-aktuelles, &.category-news
 		//	height: 240px
@@ -65,20 +69,42 @@ video, iframe
 		.read-more
 			a
 				display: block
-				padding: $v-margin-p 0 0
+				padding: 1em 0 0
 
-	.attachment-post-thumbnail
+		figure
+			height: 0
+			overflow: hidden
+			padding-bottom: 66.66667%
+			margin-bottom: 20px
+
+	.attachment-post-thumbnail, .attachment-medium
 		width: 100%
 		display: block
+		//margin-bottom: $v-margin-p
+
+#archive_articles
+	.page-header
 		margin-bottom: $v-margin-p
-
-#archive_articles .page-header
-	margin-bottom: $v-margin-p
-	padding-top: 0
-
+		padding-top: 0
 
 article
 	+hyphens()
+
+
+section.abschnitt
+	margin-top: 40px
+	padding-top: 40px
+	border-top: $border
+
+.section-posts
+	+flexbox()
+	flex-wrap: wrap
+	//justify-content: space-between
+
+.excerpt-div
+	position: absolute
+	bottom: 0
+	width: 100%
 
 
 h1.entry-title
@@ -198,6 +224,31 @@ h1.entry-title
 
 #projektinfo
 	margin: $v-margin-section 0
+
+
+
+#ehemalige
+	.read-more
+		margin-top: 1em
+
+	&.open
+		.ehemalige-toggle h2
+			color: $text-black
+
+		.mehr
+			display: none
+		.weniger
+			display: inline
+
+
+
+#ehemalige_posts
+	display: none
+
+.weniger
+	display: none
+
+
 
 
 .col

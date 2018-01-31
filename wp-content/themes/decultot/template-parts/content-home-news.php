@@ -10,7 +10,7 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php
-	if ( has_post_thumbnail() ) : ?>
+	if (has_post_thumbnail()) : ?>
 		<figure>
 			<?php the_post_thumbnail('medium'); ?>
 		</figure>
@@ -20,20 +20,22 @@
 
 		<?php
 
-			the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' );
+		the_title(sprintf('<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url(get_permalink())), '</a></h3>');
 
 		?>
 
 	</header><!-- .entry-header -->
 
-	<?php
-		$post_excerpt = get_the_excerpt();
-		if ( '' != $post_excerpt ) {
-			echo $post_excerpt;
-		}
-
-	?>
-
-	<p class="read-more"><a href="<?php the_permalink() ?>"><?php _e('mehr', 'dct'); ?></a></p>
+	<div class="excerpt-div">
+		<p class="excerpt">
+			<?php
+			$post_excerpt = get_the_excerpt();
+			if ('' != $post_excerpt) {
+				echo $post_excerpt;
+			}
+			?>
+		</p>
+		<p class="read-more"><a href="<?php the_permalink() ?>"><?php _e('mehr', 'dct'); ?></a></p>
+	</div>
 
 </article><!-- #post-## -->

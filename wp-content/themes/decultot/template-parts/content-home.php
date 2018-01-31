@@ -57,7 +57,7 @@
 		<h2><?php echo $title; ?></h2>
 <!--		<h2>--><?php //echo get_cat_name($catID);?><!--</h2>-->
 
-		<div id="home_articles" class="archive cf">
+		<div id="home_articles" class="archive section-posts">
 			<!--				<h2>--><?php //_e('Letzte Nachrichten'); ?><!--</h2>-->
 			<?php
 			// Start the Loop.
@@ -79,7 +79,7 @@
 
 			?>
 
-		</div>	<!-- #archive_articles -->
+		</div>	<!-- #home_articles -->
 
 		<?php
 //	endif;

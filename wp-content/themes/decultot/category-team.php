@@ -29,7 +29,7 @@ get_header(); ?>
 						</h1>
 					</header><!-- .page-header -->
 
-					<div id="articles" class="cf">
+					<div id="articles" class="section-posts">
 
 						<?php
 						// Start the Loop.
@@ -82,17 +82,55 @@ get_header(); ?>
 			endif;
 			?>
 
-			<div id="hilfsmitarbeiter">
+			<section id="hilfsmitarbeiter">
 				<?php
-								if (ICL_LANGUAGE_CODE === 'de') $id = 1050; // live
-//				if (ICL_LANGUAGE_CODE === 'de') $id = 734; // development
+				if (ICL_LANGUAGE_CODE === 'de') $id = 1050; // live
 				else $id = 2103; // live
-//				else $id = 741; // development
 				$post = get_post($id);
 
 				echo do_shortcode($post->post_content);
 				?>
-			</div>
+			</section>
+
+			<?php
+			$catID = ICL_LANGUAGE_CODE === 'de' ? 16 : 17;
+			$args = array(
+					'post_type' => 'post',
+					'cat' => $catID
+			);
+			$ehemalige = new WP_Query($args);
+
+			// Start the Loop.
+			if ($ehemalige->have_posts()) :
+
+				?>
+
+				<section id="ehemalige" class="abschnitt archive">
+					<a href="javascript:void(0);" class="ehemalige-toggle">
+						<h2><?php _e('Ehemalige MitarbeiterInnen', 'dct'); ?></h2>
+					</a>
+
+					<div id="ehemalige_posts">
+						<div class="section-posts">
+							<?php
+							while ($ehemalige->have_posts()) : $ehemalige->the_post();
+
+								get_template_part('template-parts/content');
+
+							endwhile;
+							?>
+						</div>
+					</div>
+
+					<p class="read-more">
+						<a href="javascript:void(0);" class="ehemalige-toggle">
+							<span class="mehr"><?php _e('anzeigen', 'dct'); ?></span>
+							<span class="weniger"><?php _e('schliessen', 'dct'); ?></span>
+						</a>
+					</p>
+
+				</section>  <!-- #ehemalige -->
+			<?php endif; ?>
 
 
 		</main><!-- .site-main -->

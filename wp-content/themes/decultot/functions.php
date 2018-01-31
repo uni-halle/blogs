@@ -4,9 +4,9 @@
 
 if( ! function_exists( 'add_dct_styles' ) ) {
 	function add_dct_styles() {
-		wp_enqueue_style('style-dct', get_theme_root_uri().'/decultot/css/decultot.css');
+		wp_enqueue_style('style-dct', get_theme_root_uri().'/decultot/css/decultot.css?v=171220_1039');
 		wp_enqueue_script('script-mfp', get_theme_root_uri().'/decultot/js/jquery.magnific-popup.min.js');
-		wp_enqueue_script('script-dct', get_theme_root_uri().'/decultot/js/decultot.js');
+		wp_enqueue_script('script-dct', get_theme_root_uri().'/decultot/js/decultot.js?v=171212_0917');
 	}
 }
 add_action('wp_enqueue_scripts', 'add_dct_styles', 11);
@@ -78,7 +78,7 @@ if ( !function_exists('dct_video') ) {
 		return $video;
 	}
 }
-add_shortcode( 'video', 'dct_video' );
+add_shortcode( 'home_video', 'dct_video' );
 
 // endregion ADD SHORTCODES
 
@@ -141,6 +141,28 @@ function future_permalink( $permalink, $post, $leavename, $sample = false ) {
 add_filter( 'post_link', 'future_permalink', 10, 3 );
 // custom post types
 add_filter( 'post_type_link', 'future_permalink', 10, 4 );
+
+
+add_filter('icl_ls_languages', 'wpml_ls_filter',10,1);
+function wpml_ls_filter($languages) {
+	global $wpdb, $post, $sitepress;
+	$trid = $wpdb->get_var("SELECT trid FROM {$wpdb->prefix}icl_translations WHERE element_id='{$post->ID}' AND element_type LIKE 'post_post'");
+	if(ICL_LANGUAGE_CODE=='en'){
+		$ttrid = $wpdb->get_var("SELECT element_id FROM {$wpdb->prefix}icl_translations WHERE trid='{$trid}' AND element_type LIKE 'post_post' AND source_language_code LIKE '".ICL_LANGUAGE_CODE."'");
+	}
+	else
+	{
+		$ttrid = $wpdb->get_var("SELECT element_id FROM {$wpdb->prefix}icl_translations WHERE trid='{$trid}' AND element_type LIKE 'post_post' AND source_language_code IS NULL");
+	}
+
+	if($post->post_status=='future'){
+		foreach($languages as $lang_code => $language){
+			$languages[$lang_code]['url'] = get_permalink($ttrid);
+		}
+	}
+
+	return $languages;
+}
 
 
 function new_join($pjoin){

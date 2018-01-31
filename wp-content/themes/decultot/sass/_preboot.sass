@@ -36,6 +36,7 @@ $red: #ED1C24
 $bg: #FFFFFF
 $bg-gray: #f7f7f7
 $text: $gray
+$text-black: #4d4d4d
 $text-blue: $blue
 $link: $red
 
@@ -105,3 +106,25 @@ $desk_width: 1024px
 //
 // For IE 6/7 only
 // Include this rule to trigger hasLayout and contain floats.
+
+
+@mixin flexbox()
+	display: -webkit-box
+	display: -moz-box
+	display: -ms-flexbox
+	display: -webkit-flex
+	display: flex
+
+@mixin flex($values)
+	-webkit-box-flex: $values
+	-moz-box-flex:  $values
+	-webkit-flex:  $values
+	-ms-flex:  $values
+	flex:  $values
+
+@mixin order($val)
+	-webkit-box-ordinal-group: $val
+	-moz-box-ordinal-group: $val
+	-ms-flex-order: $val
+	-webkit-order: $val
+	order: $val

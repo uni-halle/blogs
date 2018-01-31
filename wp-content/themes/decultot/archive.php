@@ -29,7 +29,7 @@ get_header(); ?>
 						</h1>
 					</header><!-- .page-header -->
 
-					<div id="articles" class="cf">
+					<div id="articles" class="section-posts">
 
 						<?php
 						// Start the Loop.

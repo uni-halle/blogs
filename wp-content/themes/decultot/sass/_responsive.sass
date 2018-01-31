@@ -17,7 +17,7 @@
 			width: 47.5%
 			margin-right: 5%
 			//height: 450px
-			float: left
+			//float: left
 			overflow: hidden
 			&:nth-child(2n)
 				margin-right: 0
@@ -121,9 +121,9 @@
 		article
 			width: 30.4433%
 			margin-right: 4.33%
-			h2, p.excerpt
+			p.excerpt
 				overflow: hidden
-				height: 70px
+				height: 3.5em
 			&:nth-child(2n)
 				margin-right: 4.33%
 			&:nth-child(3n)
@@ -131,11 +131,18 @@
 			&:nth-child(3)
 				border-top: none
 
-		&.category-5, &.category-9, &.category-6, &.category-10
-			article
-				h2, p.excerpt
-					overflow: hidden
-					height: 105px
+		//&.category-5, &.category-9, &.category-6, &.category-10
+		//	article
+		//		h2, p.excerpt
+		//			overflow: hidden
+		//			height: 105px
+
+
+@media only screen and (min-width: 910px)
+
+	.home .entry-content p
+		width: 75%
+
 
 @media only screen and (min-width: 1000px)
 
@@ -148,9 +155,7 @@
 		max-width: $content-max-width
 		margin: auto
 
-
-
-		//article
+	//article
 		//	&.category-aktuelles, &.category-news
 		//		height: 300px
 
@@ -170,5 +175,6 @@
 			margin-bottom: 0
 
 
-@media only screen and (min-width: $desk_width)
-
+@media screen and (min-width: 61.5625em)
+	.entry-title
+		margin-bottom: 1.05em !important

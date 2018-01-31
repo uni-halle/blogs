@@ -116,8 +116,8 @@ footer.site-footer .footer-nav a:hover, footer.site-footer .footer-nav a:focus {
 #lang_sel_list a.lang_sel_sel, #lang_sel_list a:visited.lang_sel_sel { color: #999; cursor: default; }
 #lang_sel_list a.lang_sel_other:hover, #lang_sel_list a.lang_sel_other:focus, #lang_sel_list a:visited.lang_sel_other:hover, #lang_sel_list a:visited.lang_sel_other:focus { color: #ED1C24; }
 
-.page-header { margin: 0 0 50px; border: none; }
-.page-header h1 { font-size: 1.93em; }
+.page-header, section header { margin: 0 0 50px; border: none; }
+.page-header h1, section header h1 { font-size: 1.93em; }
 
 @media only screen and (min-width: 910px) { .site-header-main { padding-bottom: 70px; }
   #site_branding { margin-top: 0; }
@@ -148,15 +148,22 @@ video, iframe { max-width: 100%; height: auto; }
 
 #home_articles h3.entry-title { font-size: 1.25em !important; }
 
-.archive article { position: relative; margin-bottom: 20px; padding: 2em 0 1em; border-top: 1px solid #bfbfbf; }
+.archive article { position: relative; margin-bottom: 20px; padding: 2em 0 95px; border-top: 1px solid #bfbfbf; }
 .archive article:first-child { border-top: none; }
 .archive article p { margin: 0; }
-.archive article .read-more a { display: block; padding: 20px 0 0; }
-.archive .attachment-post-thumbnail, .archive .attachment-medium { width: 100%; display: block; margin-bottom: 20px; }
+.archive article .read-more a { display: block; padding: 1em 0 0; }
+.archive article figure { height: 0; overflow: hidden; padding-bottom: 66.66667%; margin-bottom: 20px; }
+.archive .attachment-post-thumbnail, .archive .attachment-medium { width: 100%; display: block; }
 
 #archive_articles .page-header { margin-bottom: 20px; padding-top: 0; }
 
 article { -moz-hyphens: auto; -ms-hyphens: auto; -webkit-hyphens: auto; hyphens: auto; }
+
+section.abschnitt { margin-top: 40px; padding-top: 40px; border-top: 1px solid #bfbfbf; }
+
+.section-posts { display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; flex-wrap: wrap; }
+
+.excerpt-div { position: absolute; bottom: 0; width: 100%; }
 
 h1.entry-title { margin-bottom: 40px; font-size: 1.93em; }
 
@@ -195,6 +202,15 @@ h1.entry-title { margin-bottom: 40px; font-size: 1.93em; }
 
 #projektinfo { margin: 50px 0; }
 
+#ehemalige .read-more { margin-top: 1em; }
+#ehemalige.open .ehemalige-toggle h2 { color: #4d4d4d; }
+#ehemalige.open .mehr { display: none; }
+#ehemalige.open .weniger { display: inline; }
+
+#ehemalige_posts { display: none; }
+
+.weniger { display: none; }
+
 .col { padding-bottom: 20px; }
 
 .full-width .vc_col-sm-8 { width: 60%; }
@@ -216,7 +232,7 @@ h1.entry-title { margin-bottom: 40px; font-size: 1.93em; }
 
 @media only screen and (max-width: 889px) { .full-width .vc_col-sm-4, .full-width .vc_col-sm-8 { float: none; width: 100%; } }
 @media only screen and (min-width: 480px) { #footer_icons figure { width: 25%; }
-  .archive article { width: 47.5%; margin-right: 5%; float: left; overflow: hidden; }
+  .archive article { width: 47.5%; margin-right: 5%; overflow: hidden; }
   .archive article:nth-child(2n) { margin-right: 0; }
   .archive article:nth-child(2) { border-top: none; }
   .col { float: left; }
@@ -245,17 +261,18 @@ h1.entry-title { margin-bottom: 40px; font-size: 1.93em; }
   .gallery-columns-4 .gallery-item:nth-child(3n) { margin-right: 3%; }
   .gallery-columns-4 .gallery-item:nth-child(4n) { margin-right: 0; } }
 @media only screen and (min-width: 850px) { .archive article { width: 30.4433%; margin-right: 4.33%; }
-  .archive article h2, .archive article p.excerpt { overflow: hidden; height: 70px; }
+  .archive article p.excerpt { overflow: hidden; height: 3.5em; }
   .archive article:nth-child(2n) { margin-right: 4.33%; }
   .archive article:nth-child(3n) { margin-right: 0; }
-  .archive article:nth-child(3) { border-top: none; }
-  .archive.category-5 article h2, .archive.category-5 article p.excerpt, .archive.category-9 article h2, .archive.category-9 article p.excerpt, .archive.category-6 article h2, .archive.category-6 article p.excerpt, .archive.category-10 article h2, .archive.category-10 article p.excerpt { overflow: hidden; height: 105px; } }
+  .archive article:nth-child(3) { border-top: none; } }
+@media only screen and (min-width: 910px) { .home .entry-content p { width: 75%; } }
 @media only screen and (min-width: 1000px) { #site_description p, .site-header-main { margin: 0 auto; }
   #content, .center-content { width: 100%; max-width: 960px; margin: auto; }
   .galerie { margin: 70px 0; }
   #footer_icons figure { height: 150px; }
   #footer_icons figure img { width: auto; max-width: 100%; }
   #menu-footer-menu li { margin-bottom: 0; } }
+@media screen and (min-width: 61.5625em) { .entry-title { margin-bottom: 1.05em !important; } }
 .mfp-bg { top: 0; left: 0; width: 100%; height: 100%; z-index: 1042; overflow: hidden; position: fixed; background: #0b0b0b; opacity: 0.8; filter: alpha(opacity=80); }
 
 .mfp-wrap { top: 0; left: 0; width: 100%; height: 100%; z-index: 1043; position: fixed; outline: none; -webkit-backface-visibility: hidden; }
@@ -395,3 +412,5 @@ img.mfp-img { width: auto; max-width: 100%; height: auto; display: block; line-h
 .mfp-open .mfp-figure { -webkit-animation-name: fadeIn; -moz-animation-name: fadeIn; -o-animation-name: fadeIn; animation-name: fadeIn; -webkit-animation-duration: 0.5s; -moz-animation-duration: 0.5s; -ms-animation-duration: 0.5s; -o-animation-duration: 0.5s; animation-duration: 0.5s; -webkit-animation-fill-mode: both; -moz-animation-fill-mode: both; -ms-animation-fill-mode: both; -o-animation-fill-mode: both; animation-fill-mode: both; -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -ms-backface-visibility: hidden; }
 
 .mfp-zoom-in.mfp-removing .mfp-figure { -webkit-animation-name: none; -moz-animation-name: none; -o-animation-name: none; animation-name: none; -webkit-animation-duration: 0; -moz-animation-duration: 0; -ms-animation-duration: 0; -o-animation-duration: 0; animation-duration: 0; -webkit-animation-fill-mode: none; -moz-animation-fill-mode: none; -ms-animation-fill-mode: none; -o-animation-fill-mode: none; animation-fill-mode: none; }
+
+/*# sourceMappingURL=decultot.css.map */
