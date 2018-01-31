@@ -100,12 +100,12 @@ class Fusion_Widget_Facebook_Page extends WP_Widget {
 					var $container_width = jQuery( '.<?php echo esc_attr( $args['widget_id'] ); ?>' ).width();
 
 					if ( 1 > $container_width ) {
-						$container_width = <?php echo esc_attr( $widget_width );?>;
+						$container_width = <?php echo esc_attr( $widget_width ); ?>;
 					}
 
 					if ( $container_width != jQuery('.<?php echo esc_attr( $args['widget_id'] ); ?> .fb-page' ).data( 'width' ) ) {
 						jQuery('.<?php echo esc_attr( $args['widget_id'] ); ?> .fb-page' ).attr( 'data-width', $container_width );
-						FB.XFBML.parse();
+						FB.XFBML.parse( jQuery( '.<?php echo esc_attr( $args['widget_id'] ); ?>' ) );
 					}
 				}
 			}
@@ -114,7 +114,8 @@ class Fusion_Widget_Facebook_Page extends WP_Widget {
 			<div class="fb-like-box-container <?php echo esc_attr( $args['widget_id'] ); ?>" id="fb-root">
 				<div class="fb-page" data-href="<?php echo esc_url_raw( $page_url ); ?>" data-width="<?php echo esc_attr( $widget_width ); ?>" data-adapt-container-width="true" data-small-header="<?php echo esc_attr( $small_header ); ?>" data-height="<?php echo esc_attr( $height ); ?>" data-hide-cover="<?php echo esc_attr( $show_header ); ?>" data-show-facepile="<?php echo esc_attr( $show_faces ); ?>" data-show-posts="<?php echo esc_attr( $show_stream ); ?>"></div>
 			</div>
-		<?php endif;
+		<?php
+		endif;
 
 		echo $after_widget; // WPCS: XSS ok.
 
@@ -169,7 +170,8 @@ class Fusion_Widget_Facebook_Page extends WP_Widget {
 			'small_header' => false,
 		);
 
-		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
+		$instance = wp_parse_args( (array) $instance, $defaults );
+		?>
 
 		<h4 style="line-height: 1.6em;"><?php esc_attr_e( 'IMPORTANT: Please create a Facebook App and use its ID for features like sharing.', 'Avada' ); ?> <a href="https://developers.facebook.com/docs/apps/register" target="_blank" rel="noopener noreferrer"><?php esc_attr_e( 'See Instructions.', 'Avada' ); ?></a></h4>
 

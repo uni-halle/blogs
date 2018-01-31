@@ -109,23 +109,21 @@ class Avada_Layout_bbPress extends Avada_Layout {
 
 			<?php do_action( 'bbp_theme_after_topic_author_admin_details' ); ?>
 
-		<?php endif;
+		<?php
+		endif;
 	}
 
 	/**
 	 * Render the search form.
 	 */
 	public function add_search_form() {
-
-		if ( bbp_allow_search() ) :  ?>
-
+		?>
+		<?php if ( bbp_allow_search() ) : ?>
 			<div class="bbp-search-form">
-
 				<?php bbp_get_template_part( 'form', 'search' ); ?>
-
 			</div>
-
-		<?php endif;
+		<?php endif; ?>
+		<?php
 	}
 
 	/**
@@ -156,10 +154,11 @@ class Avada_Layout_bbPress extends Avada_Layout {
 	 * Open the additional container wrapper for the top pagination.
 	 */
 	public function open_pagination_wrapper() {
-
-		if ( 0 == $this->pagination_counter ) : ?>
+		?>
+		<?php if ( 0 == $this->pagination_counter ) : ?>
 			<div class="top-pagination">
-		<?php endif;
+		<?php endif; ?>
+		<?php
 
 	}
 
@@ -167,8 +166,8 @@ class Avada_Layout_bbPress extends Avada_Layout {
 	 * Close the additional container for the top pagination.
 	 */
 	public function close_pagination_wrapper() {
-
-		if ( 0 == $this->pagination_counter ) :  ?>
+		?>
+		<?php if ( 0 == $this->pagination_counter ) : ?>
 			</div>
 			<div class="fusion-clearfix"></div>
 
@@ -186,10 +185,10 @@ class Avada_Layout_bbPress extends Avada_Layout {
 					<div class="fusion-clearfix"></div>
 
 				</div><!-- .bbp-header -->
-			<?php endif;
+			<?php endif; ?>
 
-		endif;
-
+		<?php endif; ?>
+		<?php
 		$this->pagination_counter++;
 
 	}
@@ -235,9 +234,9 @@ class Avada_Layout_bbPress extends Avada_Layout {
 		$bbp = bbpress();
 
 		$pagination_links = $bbp->reply_query->pagination_links;
-		$permalink		  = get_permalink( $bbp->current_topic_id );
-		$max_num_pages	  = $bbp->reply_query->max_num_pages;
-		$paged			  = $bbp->reply_query->paged;
+		$permalink        = get_permalink( $bbp->current_topic_id );
+		$max_num_pages    = $bbp->reply_query->max_num_pages;
+		$paged            = $bbp->reply_query->paged;
 
 		$pagination_links = str_replace( 'page-numbers current', 'current', $pagination_links );
 		$pagination_links = str_replace( 'page-numbers', 'inactive', $pagination_links );

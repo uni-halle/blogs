@@ -36,8 +36,9 @@ if ( 'page' === $screen->post_type ) {
 		'show_first_featured_image',
 		esc_attr__( 'Disable First Featured Image', 'Avada' ),
 		array(
-			'no'  => esc_attr__( 'No', 'Avada' ),
 			'yes' => esc_attr__( 'Yes', 'Avada' ),
+			'no'  => esc_attr__( 'No', 'Avada' ),
+
 		),
 		esc_html__( 'Disable the 1st featured image on page.', 'Avada' )
 	);

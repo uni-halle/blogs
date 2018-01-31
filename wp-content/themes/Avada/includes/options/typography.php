@@ -288,7 +288,7 @@ function avada_options_section_typography( $sections ) {
 								'id'          => 'name',
 								'default'     => '',
 								'type'        => 'text',
-								'class'		  => 'avada-custom-font-name',
+								'class'       => 'avada-custom-font-name',
 							),
 							'woff' => array(
 								'label'       => 'WOFF',

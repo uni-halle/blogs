@@ -65,7 +65,7 @@ $this->select(
 );
 
 if ( method_exists( 'FusionCore_Plugin', 'get_fusion_sliders' ) ) {
-	$slides_array = FusionCore_Plugin::get_fusion_sliders();
+	$slides_array = FusionCore_Plugin::get_fusion_sliders( esc_html__( 'Select a slider', 'Avada' ) );
 
 	$this->select(
 		'wooslider',
@@ -142,6 +142,7 @@ $this->radio_buttonset(
 		'above'   => esc_attr__( 'Above', 'Avada' ),
 	),
 	sprintf( esc_html__( 'Select if the slider shows below or above the header. Only works for top header position. %s', 'Avada' ), Avada()->settings->get_default_description( 'slider_position', '', 'select' ) ),
+	'',
 	array(
 		array(
 			'field'      => 'slider_type',
@@ -160,6 +161,7 @@ $this->radio_buttonset(
 		'no'      => esc_attr__( 'No', 'Avada' ),
 	),
 	sprintf( esc_html__( 'Choose to enable or disable Avada styles for Slider Revolution. %s', 'Avada' ), Avada()->settings->get_default_description( 'avada_rev_styles', '', 'reverseyesno' ) ),
+	'',
 	array(
 		array(
 			'field'      => 'slider_type',

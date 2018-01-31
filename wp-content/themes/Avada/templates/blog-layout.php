@@ -11,7 +11,9 @@
  */
 
 // Do not allow directly accessing this file.
-if ( ! defined( 'ABSPATH' ) ) { exit( 'Direct script access denied.' ); }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit( 'Direct script access denied.' );
+}
 
 global $wp_query;
 
@@ -38,8 +40,12 @@ if ( 'grid' === $blog_layout || 'masonry' === $blog_layout ) {
 	$container_class .= 'fusion-blog-layout-' . $blog_layout . ' ';
 }
 
-if ( ! Avada()->settings->get( 'post_meta' ) ) {
+if ( ! Avada()->settings->get( 'post_meta' ) || ( ! Avada()->settings->get( 'post_meta_author' ) && ! Avada()->settings->get( 'post_meta_date' ) && ! Avada()->settings->get( 'post_meta_cats' ) && ! Avada()->settings->get( 'post_meta_tags' ) && ! Avada()->settings->get( 'post_meta_comments' ) && ! Avada()->settings->get( 'post_meta_read' ) ) ) {
 	$container_class .= 'fusion-no-meta-info ';
+}
+
+if ( Avada()->settings->get( 'blog_equal_heights' ) && 'grid' === $blog_layout ) {
+	$container_class .= 'fusion-blog-equal-heights ';
 }
 
 // Set class for scrolling type.
@@ -91,7 +97,8 @@ if ( is_search() && Avada()->settings->get( 'search_results_per_page' ) ) {
 		<?php endif; ?>
 
 		<?php // Start the main loop. ?>
-		<?php while ( have_posts() ) : the_post(); ?>
+		<?php while ( have_posts() ) : ?>
+			<?php the_post(); ?>
 			<?php
 			// Set the time stamps for timeline month/year check.
 			$alignment_class = '';
@@ -184,11 +191,13 @@ if ( is_search() && Avada()->settings->get( 'search_results_per_page' ) ) {
 				);
 
 				// Get the post image.
-				Avada()->images->set_grid_image_meta( array(
-					'layout' => 'portfolio_full',
-					'columns' => $responsive_images_columns,
-					'gutter_width' => $masonry_columns_spacing,
-				));
+				Avada()->images->set_grid_image_meta(
+					array(
+						'layout' => 'portfolio_full',
+						'columns' => $responsive_images_columns,
+						'gutter_width' => $masonry_columns_spacing,
+					)
+				);
 
 				$permalink = get_permalink( $post->ID );
 
@@ -266,7 +275,7 @@ if ( is_search() && Avada()->settings->get( 'search_results_per_page' ) ) {
 
 						<?php if ( 'masonry' !== $blog_layout && ( Avada()->settings->get( 'post_meta' ) && ( Avada()->settings->get( 'post_meta_author' ) || Avada()->settings->get( 'post_meta_date' ) || Avada()->settings->get( 'post_meta_cats' ) || Avada()->settings->get( 'post_meta_tags' ) || Avada()->settings->get( 'post_meta_comments' ) || Avada()->settings->get( 'post_meta_read' ) ) ) && 0 < Avada()->settings->get( 'excerpt_length_blog' ) ) : ?>
 							<?php
-							$separator_styles_array = explode( '|', Avada()->settings->get( 'separator_style_type' ) );
+							$separator_styles_array = explode( '|', Avada()->settings->get( 'grid_separator_style_type' ) );
 							$separator_styles = '';
 
 							foreach ( $separator_styles_array as $separator_style ) {
@@ -379,7 +388,7 @@ if ( is_search() && Avada()->settings->get( 'search_results_per_page' ) ) {
 	</div>
 	<?php endif; ?>
 <?php // Get the pagination. ?>
-<?php fusion_pagination( '', 2 ); ?>
+<?php echo fusion_pagination( '', 2 ); // WPCS: XSS ok. ?>
 </div>
 <?php
 

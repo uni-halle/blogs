@@ -95,41 +95,11 @@ function avada_options_section_footer( $sections ) {
 							),
 							'footer_sticky'                        => array(
 								esc_html__( 'Sticky Footer', 'Avada' ),
-								esc_html__( 'This enables a sticky footer. The entire footer area will always be "below the fold". On very short pages, it makes sure that the footer sticks at the bottom, just above the fold. IMPORTANT: "Sticky Footer Height" field must be filled in and this will not work properly when using a Left or Right Side Header layout and the side header is larger than the viewport.', 'Avada' ),
+								esc_html__( 'This enables a sticky footer. The entire footer area will always be "below the fold". On very short pages, it makes sure that the footer sticks at the bottom, just above the fold. IMPORTANT: This will not work properly when using a Left or Right Side Header layout and the side header is larger than the viewport.', 'Avada' ),
 							),
 							'footer_sticky_with_parallax_bg_image' => array(
 								esc_html__( 'Sticky Footer and Parallax Background Image', 'Avada' ),
-								esc_html__( 'This enables a sticky footer together with a parallax effect on the background image. The entire footer area will always be "below the fold". IMPORTANT: "Sticky Footer Height" field must be filled in.', 'Avada' ),
-							),
-						),
-					),
-					'footer_sticky_height' => array(
-						'label'       => esc_html__( 'Sticky Footer Height', 'Avada' ),
-						'description' => sprintf( esc_html__( 'The entire height of the footer area (widgets + copyright) %1$s View tutorial here %2$s. Set a static height in px to enable sticky footer effect. Set to 0 to disable.', 'Avada' ), '<a href="https://theme-fusion.com/avada-doc/footer-special-effects/" target="_blank" rel="noopener noreferrer">', '</a>' ),
-						'id'          => 'footer_sticky_height',
-						'default'     => '0',
-						'type'        => 'slider',
-						'choices'     => array(
-							'min'  => '0',
-							'step' => '1',
-							'max'  => '700',
-							'edit' => 'yes',
-						),
-						'required'    => array(
-							array(
-								'setting'  => 'footer_special_effects',
-								'operator' => '!=',
-								'value'    => 'none',
-							),
-							array(
-								'setting'  => 'footer_special_effects',
-								'operator' => '!=',
-								'value'    => 'footer_parallax_effect',
-							),
-							array(
-								'setting'  => 'footer_special_effects',
-								'operator' => '!=',
-								'value'    => 'footer_area_bg_parallax',
+								esc_html__( 'This enables a sticky footer together with a parallax effect on the background image. The entire footer area will always be "below the fold".', 'Avada' ),
 							),
 						),
 					),
@@ -334,7 +304,7 @@ function avada_options_section_footer( $sections ) {
 						'id'          => 'footer_100_width',
 						'default'     => '0',
 						'type'        => 'switch',
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'footer_widgets',
@@ -366,7 +336,7 @@ function avada_options_section_footer( $sections ) {
 							'right'   => '0px',
 						),
 						'type'        => 'spacing',
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'footer_widgets',
@@ -546,7 +516,7 @@ function avada_options_section_footer( $sections ) {
 							'letter-spacing' => '0',
 							'color'          => '#dddddd',
 						),
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'footer_widgets',
@@ -566,7 +536,7 @@ function avada_options_section_footer( $sections ) {
 						'id'          => 'footer_text_color',
 						'default'     => '#8C8989',
 						'type'        => 'color',
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'footer_widgets',
@@ -586,7 +556,7 @@ function avada_options_section_footer( $sections ) {
 						'id'          => 'footer_link_color',
 						'default'     => '#BFBFBF',
 						'type'        => 'color',
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'footer_widgets',
@@ -606,7 +576,7 @@ function avada_options_section_footer( $sections ) {
 						'id'          => 'footer_link_color_hover',
 						'default'     => ( isset( $settings['primary_color'] ) && ! empty( $settings['primary_color'] ) ) ? $settings['primary_color'] : '#ffffff',
 						'type'        => 'color',
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'footer_widgets',

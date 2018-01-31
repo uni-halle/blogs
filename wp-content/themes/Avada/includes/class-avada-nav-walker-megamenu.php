@@ -209,16 +209,14 @@ if ( ! class_exists( 'Avada_Nav_Walker_Megamenu' ) ) {
 
 					<?php do_action( 'wp_nav_menu_item_custom_fields', $item_id, $item, $depth, $args ); ?>
 
-					<p class="field-move hide-if-no-js description description-wide">
-						<label>
-							<span><?php esc_attr_e( 'Move', 'Avada' ); ?></span>
-							<a href="#" class="menus-move menus-move-up" data-dir="up"><?php esc_attr_e( 'Up one', 'Avada' ); ?></a>
-							<a href="#" class="menus-move menus-move-down" data-dir="down"><?php esc_attr_e( 'Down one', 'Avada' ); ?></a>
-							<a href="#" class="menus-move menus-move-left" data-dir="left"></a>
-							<a href="#" class="menus-move menus-move-right" data-dir="right"></a>
-							<a href="#" class="menus-move menus-move-top" data-dir="top"><?php esc_attr_e( 'To the top', 'Avada' ); ?></a>
-						</label>
-					</p>
+					<fieldset class="field-move hide-if-no-js description description-wide">
+						<span class="field-move-visual-label" aria-hidden="true"><?php esc_attr_e( 'Move', 'Avada' ); ?></span>
+						<button type="button" class="button-link menus-move menus-move-up" data-dir="up"><?php esc_attr_e( 'Up one', 'Avada' ); ?></button>
+						<button type="button" class="button-link menus-move menus-move-down" data-dir="down"><?php esc_attr_e( 'Down one', 'Avada' ); ?></button>
+						<button type="button" class="button-link menus-move menus-move-left" data-dir="left"></button>
+						<button type="button" class="button-link menus-move menus-move-right" data-dir="right"></button>
+						<button type="button" class="button-link menus-move menus-move-top" data-dir="top"><?php esc_attr_e( 'To the top', 'Avada' ); ?></button>
+					</fieldset>
 
 					<div class="menu-item-actions description-wide submitbox">
 						<?php if ( 'custom' != $item->type && false !== $original_title ) : ?>

@@ -1,1 +1,1 @@
-jQuery(document).ready(function(a){jQuery(".fusion-alert .close").click(function(a){a.preventDefault(),jQuery(this).parent().slideUp()})});
+jQuery(document).ready(function(){jQuery(".fusion-alert .close").click(function(a){a.preventDefault(),jQuery(this).parent().slideUp()})});

@@ -199,7 +199,7 @@ function avada_options_section_contact( $sections ) {
 						'label'       => esc_html__( 'Google Map Dimensions', 'Avada' ),
 						'description' => esc_html__( 'Controls the width and height of the google map. NOTE: height does not accept percentage value.', 'Avada' ),
 						'id'          => 'gmap_dimensions',
-						'units'		  => false,
+						'units'       => false,
 						'default'     => array(
 							'width'   => '100%',
 							'height'  => '415px',
@@ -396,7 +396,7 @@ function avada_options_section_contact( $sections ) {
 					),
 					'map_overlay_color' => array(
 						'label'           => esc_html__( 'Map Overlay Color', 'Avada' ),
-						'description'     => esc_html__( 'Custom styling setting only. Controls the overlay color for the map.', 'Avada' ),
+						'description'     => esc_html__( 'Custom styling setting only. Pick any overlaying color for the map besides pure black or white. Works best with "roadmap" type.', 'Avada' ),
 						'id'              => 'map_overlay_color',
 						'default'         => ( isset( $settings['primary_color'] ) ) ? $settings['primary_color'] : '#a0ce4e',
 						'type'            => 'color-alpha',
@@ -446,11 +446,6 @@ function avada_options_section_contact( $sections ) {
 						'type'            => 'textarea',
 						'active_callback' => array( 'Avada_Options_Conditionals', 'is_contact' ),
 						'required'    => array(
-							array(
-								'setting'  => 'map_infobox_styling',
-								'operator' => '==',
-								'value'    => 'custom',
-							),
 							array(
 								'setting'  => 'map_styling',
 								'operator' => '==',

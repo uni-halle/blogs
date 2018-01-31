@@ -539,8 +539,8 @@ class Avada_AvadaRedux_Migration extends Avada_Migrate {
 			if ( isset( $field['type'] ) && isset( $field['id'] ) && 'slider' == $field['type'] ) {
 				$initial_value = ( isset( $options[ $field['id'] ] ) ) ? $options[ $field['id'] ] : 'UNDEFINED';
 
-				$min  = ( isset( $field['choices'] ) && isset( $field['choices']['min'] ) )  ? intval( $field['choices']['min'] )  : 0;
-				$max  = ( isset( $field['choices'] ) && isset( $field['choices']['max'] ) )  ? intval( $field['choices']['max'] )  : 100;
+				$min  = ( isset( $field['choices'] ) && isset( $field['choices']['min'] ) ) ? intval( $field['choices']['min'] ) : 0;
+				$max  = ( isset( $field['choices'] ) && isset( $field['choices']['max'] ) ) ? intval( $field['choices']['max'] ) : 100;
 				$step = ( isset( $field['choices'] ) && isset( $field['choices']['step'] ) ) ? $field['choices']['step'] : 1;
 
 				if ( isset( $options[ $field['id'] ] ) && '' != $options[ $field['id'] ] ) {
@@ -676,10 +676,12 @@ class Avada_AvadaRedux_Migration extends Avada_Migrate {
 					$value = $options[ $field['id'] ];
 				}
 				// Hack for fields that used to inherit their value from the primary color.
-				if ( in_array( $field['id'], array(
-					'content_box_hover_animation_accent_color',
-					'map_overlay_color',
-				) ) && '' == $value ) {
+				if ( in_array(
+					$field['id'], array(
+						'content_box_hover_animation_accent_color',
+						'map_overlay_color',
+					)
+				) && '' == $value ) {
 					$value = $options['primary_color'];
 				}
 				if ( is_array( $value ) ) {
@@ -1321,13 +1323,17 @@ class Avada_AvadaRedux_Migration extends Avada_Migrate {
 				// If we're using a retina image then use that instead,
 				// and set the retina checkbox to 1.
 				if ( isset( $options['custom_icon_image_retina'] ) && ! empty( $options['custom_icon_image_retina'] ) ) {
-					$new_social['custom_source'][ $custom_icon_key ] = $this->single_media_file( array(
-						'id' => 'custom_icon_image_retina',
-					) );
+					$new_social['custom_source'][ $custom_icon_key ] = $this->single_media_file(
+						array(
+							'id' => 'custom_icon_image_retina',
+						)
+					);
 				} else {
-					$new_social['custom_source'][ $custom_icon_key ] = $this->single_media_file( array(
-						'id' => 'custom_icon_image',
-					) );
+					$new_social['custom_source'][ $custom_icon_key ] = $this->single_media_file(
+						array(
+							'id' => 'custom_icon_image',
+						)
+					);
 				}
 			}
 		} // End if().

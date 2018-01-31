@@ -103,44 +103,6 @@ class Fusion_Builder_Filters {
 	public function set_builder_dependencies( $dependencies, $shortcode, $option ) {
 		$shortcode_option_map = array();
 
-		// Portfolio.
-		$shortcode_option_map['portfolio_layout_padding']['fusion_portfolio'][] = array(
-			'check' => array(
-				'theme-option' => 'portfolio_text_layout',
-				'value' => 'unboxed',
-				'operator' => '==',
-			),
-			'output' => array(
-				'element' => 'boxed_text',
-				'value' => 'default',
-				'operator' => '!=',
-			),
-		);
-		$shortcode_option_map['excerpt_length']['fusion_portfolio'][] = array(
-			'check' => array(
-				'theme-option' => 'portfolio_content_length',
-				'value' => 'Full Content',
-				'operator' => '==',
-			),
-			'output' => array(
-				'element' => 'content_length',
-				'value' => 'default',
-				'operator' => '!=',
-			),
-		);
-		$shortcode_option_map['strip_html']['fusion_portfolio'][] = array(
-			'check' => array(
-				'theme-option' => 'portfolio_content_length',
-				'value' => 'Full Content',
-				'operator' => '==',
-			),
-			'output' => array(
-				'element' => 'content_length',
-				'value' => 'default',
-				'operator' => '!=',
-			),
-		);
-
 		// Sharing box.
 		$shortcode_option_map['icons_boxed_radius']['fusion_sharing'][] = array(
 			'check' => array(
@@ -201,7 +163,7 @@ class Fusion_Builder_Filters {
 	function add_builder_import_title( $title ) {
 		// Check registration.
 		if ( ! Avada()->registration->is_registered() ) {
-			return sprintf( esc_attr__( 'Your product must be registered to receive Avada demo pages. Go to the %s tab to complete registration.', 'Avada' ), '<a href="' . admin_url( 'admin.php?page=avada' ) . '">' . esc_attr__( 'Product Registration', 'Avada' ) . '</a>' );
+			return sprintf( esc_attr__( 'Your product must be registered to receive Avada demo pages. Go to the %s tab to complete registration.', 'Avada' ), '<a href="' . admin_url( 'admin.php?page=avada-registration' ) . '">' . esc_attr__( 'Product Registration', 'Avada' ) . '</a>' );
 		}
 
 		// Check we can download the demos.

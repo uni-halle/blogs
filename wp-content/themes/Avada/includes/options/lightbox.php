@@ -140,6 +140,11 @@ function avada_options_section_lightbox( $sections ) {
 						'operator' => '==',
 						'value'    => '1',
 					),
+					array(
+						'setting'  => 'lightbox_skin',
+						'operator' => '!=',
+						'value'    => 'parade',
+					),
 				),
 			),
 			'lightbox_gallery' => array(

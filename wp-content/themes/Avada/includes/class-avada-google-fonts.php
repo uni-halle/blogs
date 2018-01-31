@@ -139,6 +139,7 @@ if ( ! class_exists( 'Avada_Google_Fonts' ) ) {
 			$fields  = array(
 				'footer_headings_typography',
 				'nav_typography',
+				'mobile_menu_typography',
 				'button_typography',
 				'body_typography',
 				'h1_typography',
@@ -281,10 +282,12 @@ if ( ! class_exists( 'Avada_Google_Fonts' ) ) {
 				$this->subsets = array_unique( $this->subsets );
 			}
 
-			$this->link = add_query_arg( array(
-				'family' => str_replace( '%2B', '+', urlencode( implode( '|', $link_fonts ) ) ),
-				'subset' => urlencode( implode( ',', $this->subsets ) ),
-			), 'https://fonts.googleapis.com/css' );
+			$this->link = add_query_arg(
+				array(
+					'family' => str_replace( '%2B', '+', urlencode( implode( '|', $link_fonts ) ) ),
+					'subset' => urlencode( implode( ',', $this->subsets ) ),
+				), 'https://fonts.googleapis.com/css'
+			);
 
 		}
 

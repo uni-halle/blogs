@@ -172,7 +172,7 @@ $this->text(
 
 $this->radio_buttonset(
 	'link_icon_target',
-	esc_attr__( 'Open Post Links In New Window', 'Avada' ),
+	esc_attr__( 'Open Portfolio Links In New Window', 'Avada' ),
 	array(
 		'default' => esc_attr__( 'Default', 'Avada' ),
 		'no'      => esc_attr__( 'No', 'Avada' ),

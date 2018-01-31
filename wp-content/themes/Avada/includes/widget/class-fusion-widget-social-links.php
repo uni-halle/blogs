@@ -70,7 +70,7 @@ class Fusion_Widget_Social_Links extends WP_Widget {
 					$icon_key = 'custom_' . $index;
 					$i++;
 					$custom_icons[ $icon_key ] = array(
-						'label' => 'Custom ' . $i . ' (' . $theme_options_array['custom_title'][ $index ] . ')',
+						'label' => $theme_options_array['custom_title'][ $index ],
 						'color' => '',
 					);
 				}
@@ -90,6 +90,11 @@ class Fusion_Widget_Social_Links extends WP_Widget {
 	public function widget( $args, $instance ) {
 
 		extract( $args );
+
+		if ( ! is_array( $instance ) ) {
+			$instance = array();
+		}
+
 		$title     = apply_filters( 'widget_title', isset( $instance['title'] ) ? $instance['title'] : '' );
 		$add_class = '';
 		$style     = '';
@@ -129,7 +134,7 @@ class Fusion_Widget_Social_Links extends WP_Widget {
 			$style .= 'border-radius:' . $instance['boxed_icon_radius'] . ';';
 		}
 
-		if ( isset( $instance['boxed_icon'] )  && 'Yes' === $instance['boxed_icon'] && isset( $instance['boxed_icon_padding'] ) && isset( $instance['boxed_icon_padding'] ) ) {
+		if ( isset( $instance['boxed_icon'] ) && 'Yes' === $instance['boxed_icon'] && isset( $instance['boxed_icon_padding'] ) && isset( $instance['boxed_icon_padding'] ) ) {
 			$style .= 'padding:' . $instance['boxed_icon_padding'] . ';';
 		}
 
@@ -209,7 +214,7 @@ class Fusion_Widget_Social_Links extends WP_Widget {
 				foreach ( $custom_icon_indices as $name => $index ) {
 
 					$network_icon_height = $to_social_networks['custom_source'][ $index ]['height'];
-					$network_icon_width	= $to_social_networks['custom_source'][ $index ]['width'];
+					$network_icon_width = $to_social_networks['custom_source'][ $index ]['width'];
 					$network_link = $to_social_networks['url'][ $index ];
 
 					// Check if different URL is set for this custom icon in the widget.  If so, use that instead.
@@ -219,11 +224,11 @@ class Fusion_Widget_Social_Links extends WP_Widget {
 					}
 
 					$social_networks_ordered[ $index ] = array(
-						'network_name'			=> $to_social_networks['custom_title'][ $index ],
-						'network_icon'			=> $to_social_networks['custom_source'][ $index ]['url'],
-						'network_icon_height'	=> $network_icon_height,
-						'network_icon_width'	=> $network_icon_width,
-						'network_link'			=> $network_link,
+						'network_name'          => $to_social_networks['custom_title'][ $index ],
+						'network_icon'          => $to_social_networks['custom_source'][ $index ]['url'],
+						'network_icon_height'   => $network_icon_height,
+						'network_icon_width'    => $network_icon_width,
+						'network_link'          => $network_link,
 					);
 				}
 			}
@@ -383,7 +388,7 @@ class Fusion_Widget_Social_Links extends WP_Widget {
 		$instance['show_custom']        = isset( $new_instance['show_custom'] ) ? $new_instance['show_custom'] : '';
 		$instance['fb_link']            = isset( $new_instance['fb_link'] ) ? $new_instance['fb_link'] : '';
 		$instance['flickr_link']        = isset( $new_instance['flickr_link'] ) ? $new_instance['flickr_link'] : '';
-		$instance['rss_link']           = isset( $new_instance['rss_link'] ) ? $new_instance['twitter_link'] : '';
+		$instance['rss_link']           = isset( $new_instance['rss_link'] ) ? $new_instance['rss_link'] : '';
 		$instance['twitter_link']       = isset( $new_instance['twitter_link'] ) ? $new_instance['twitter_link'] : '';
 		$instance['vimeo_link']         = isset( $new_instance['vimeo_link'] ) ? $new_instance['vimeo_link'] : '';
 		$instance['youtube_link']       = isset( $new_instance['youtube_link'] ) ? $new_instance['youtube_link'] : '';

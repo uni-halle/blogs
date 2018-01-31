@@ -209,7 +209,7 @@ class Avada_Images extends Fusion_Images {
 				$logo_url = set_url_scheme( Avada()->settings->get( str_replace( '_retina', '', $logo_option_name ), 'url' ) );
 			}
 
-			$logo_attachment_data = self::get_attachment_data_from_url( $logo_url );
+			$logo_attachment_data = $this->get_attachment_data_from_url( $logo_url );
 
 			if ( $logo_attachment_data ) {
 				// For the main retina logo, we have to set the sizes correctly, for all others they are correct.
@@ -224,6 +224,110 @@ class Avada_Images extends Fusion_Images {
 		}
 
 		return $logo_data;
+	}
+
+	/**
+	 * Get normal and retina logo images in srcset.
+	 *
+	 * @since 5.3
+	 * @param string $normla_logo The name of the normal logo option.
+	 * @param string $retina_logo The name of the retina logo option.
+	 * @return array The logo data.
+	 */
+	public function get_logo_image_srcset( $normla_logo, $retina_logo ) {
+
+		$logo_srcset_data = array(
+			'url'       => '',
+			'srcset'    => '',
+			'style'     => '',
+			'is_retina' => false,
+			'width'     => '',
+			'height'    => '',
+		);
+
+		$logo_url                     = set_url_scheme( Avada()->settings->get( $normla_logo, 'url' ) );
+		$logo_srcset_data['srcset']   = $logo_url . ' 1x';
+
+		// Get retina logo, if default one is not set.
+		if ( '' === $logo_url ) {
+			$logo_url                      = set_url_scheme( Avada()->settings->get( $retina_logo, 'url' ) );
+			$logo_data                     = self::get_logo_data( $retina_logo );
+			$logo_srcset_data['style']     = '';
+			$logo_srcset_data['srcset']    = $logo_url . ' 1x';
+			$logo_srcset_data['url']       = $logo_url;
+
+			if ( '' !== $logo_data['width'] ) {
+				$logo_srcset_data['style'] = ' style="max-height:' . $logo_data['height'] . 'px;height:auto;"';
+			}
+		} else {
+			$logo_data = Avada()->images->get_logo_data( $normla_logo );
+			$logo_srcset_data['style']     = '';
+			$logo_srcset_data['url']       = $logo_url;
+			$logo_srcset_data['is_retina'] = false;
+		}
+
+		$logo_srcset_data['width']  = $logo_data['width'];
+		$logo_srcset_data['height'] = $logo_data['height'];
+
+		if ( Avada()->settings->get( $retina_logo, 'url' ) && '' !== Avada()->settings->get( $retina_logo, 'url' ) && '' !== Avada()->settings->get( $retina_logo, 'width' ) && '' !== Avada()->settings->get( $retina_logo, 'height' ) ) {
+			$retina_logo                   = set_url_scheme( Avada()->settings->get( $retina_logo, 'url' ) );
+			$logo_srcset_data['srcset']   .= ', ' . $retina_logo . ' 2x';
+			$logo_srcset_data['is_retina'] = $retina_logo;
+
+			if ( '' !== $logo_data['width'] ) {
+				$logo_srcset_data['style'] = ' style="max-height:' . $logo_data['height'] . 'px;height:auto;"';
+			}
+		}
+		return $logo_srcset_data;
+	}
+
+	/**
+	 * Action to output a placeholder image.
+	 *
+	 * @param  string $featured_image_size     Size of the featured image that should be emulated.
+	 *
+	 * @return void
+	 */
+	public function render_placeholder_image( $featured_image_size = 'full' ) {
+		global $_wp_additional_image_sizes;
+
+		if ( in_array( $featured_image_size, array( 'full', 'fixed' ) ) ) {
+			$height = apply_filters( 'avada_set_placeholder_image_height', '150' );
+			$width  = '1500px';
+		} else {
+			// @codingStandardsIgnoreStart
+			@$height = $_wp_additional_image_sizes[ $featured_image_size ]['height'];
+			@$width  = $_wp_additional_image_sizes[ $featured_image_size ]['width'] . 'px';
+			// @codingStandardsIgnoreEnd
+		}
+		?>
+		<div class="fusion-placeholder-image" data-origheight="<?php echo esc_attr( $height ); ?>" data-origwidth="<?php echo esc_attr( $width ); ?>" style="height:<?php echo esc_attr( $height ); ?>px;width:<?php echo esc_attr( $width ); ?>;"></div>
+		<?php
+	}
+
+	/**
+	 * Returns the image class according to aspect ratio.
+	 *
+	 * @param  array $attachment The attachment.
+	 * @return string The image class.
+	 */
+	public function get_image_orientation_class( $attachment ) {
+
+		$sixteen_to_nine_ratio = 1.77;
+
+		if ( ! isset( $attachment[1] ) || ! isset( $attachment[2] ) || empty( $attachment[1] ) || empty( $attachment[2] ) ) {
+			return 'fusion-image-grid';
+		}
+
+		// Landscape.
+		if ( $attachment[1] / $attachment[2] > $sixteen_to_nine_ratio ) {
+			return 'fusion-image-landscape';
+		}
+
+		// Portrait.
+		if ( $attachment[2] / $attachment[1] > $sixteen_to_nine_ratio ) {
+			return 'fusion-image-portrait';
+		}
 	}
 }
 

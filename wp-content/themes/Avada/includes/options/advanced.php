@@ -89,7 +89,7 @@ function avada_options_section_advanced( $sections ) {
 					),
 					'pw_jpeg_quality' => array(
 						'label'       => esc_html__( 'WordPress jpeg Quality', 'Avada' ),
-						'description' => sprintf( esc_html__( 'Controls the quality of the generated image sizes for every uploaded image. Ranges between 0 and 100 percent. Higher values lead to better image qualities but also higher file sizes. NOTE: After changing this value, please install and run the %s plugin once.', 'Avada' ), '<a href="' . admin_url( 'plugin-install.php?tab=plugin-information&amp;plugin=regenerate-thumbnails&amp;TB_iframe=true&amp;width=830&amp;height=472' ) . '" class="thickbox" title="' . esc_html__( 'Regenerate Thumbnails', 'Avada' ) . '">' . esc_html__( 'Regenerate Thumbnails', 'Avada' ) . '</a>' ),
+						'description' => sprintf( esc_html__( 'Controls the quality of the generated image sizes for every uploaded image. Ranges between 0 and 100 percent. Higher values lead to better image qualities but also higher file sizes. NOTE: After changing this value, please install and run the %s plugin once.', 'Avada' ), '<a target="_blank" href="' . admin_url( 'plugin-install.php?s=Regenerate+Thumbnails&tab=search&type=term' ) . '" title="' . esc_html__( 'Regenerate Thumbnails', 'Avada' ) . '">' . esc_html__( 'Regenerate Thumbnails', 'Avada' ) . '</a>' ),
 						'id'          => 'pw_jpeg_quality',
 						'default'     => '82',
 						'type'        => 'slider',
@@ -313,7 +313,7 @@ function avada_options_section_advanced( $sections ) {
 						'id'          => 'reset_caches_button',
 						'default'     => '',
 						'type'        => 'raw',
-						'content'     => '<a class="button button-secondary" href="#" onclick="fusionResetCaches(event);" target="_self" >' . esc_attr__( 'Reset Fusion Caches', 'Avada' ) . '</a>',
+						'content'     => '<a class="button button-secondary" href="#" onclick="fusionResetCaches(event);" target="_self" >' . esc_attr__( 'Reset Fusion Caches', 'Avada' ) . '</a><span class="spinner fusion-spinner"></span>',
 						'full_width'  => false,
 					),
 				),

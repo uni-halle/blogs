@@ -41,10 +41,12 @@ if ( 'Wide' == Avada()->settings->get( 'layout' ) ) {
 	);
 }
 
-$page_bg_color = Fusion_Color::new_color( array(
-	'color' => Avada()->settings->get( 'bg_color' ),
-	'fallback' => '#ffffff',
-) );
+$page_bg_color = Fusion_Color::new_color(
+	array(
+		'color' => Avada()->settings->get( 'bg_color' ),
+		'fallback' => '#ffffff',
+	)
+);
 $this->color(
 	'page_bg_color',
 	esc_attr__( 'Background Color', 'Avada' ),
@@ -76,6 +78,7 @@ $this->radio_buttonset(
 		'yes' => esc_attr__( 'Yes', 'Avada' ),
 	),
 	esc_html__( 'Choose to have the background image display at 100%.', 'Avada' ),
+	'',
 	$boxed_dependency
 );
 
@@ -95,10 +98,12 @@ $this->select(
 // Dependency check for wide mode.
 $wide_dependency = array();
 
-$content_bg_color = Fusion_Color::new_color( array(
-	'color' => Avada()->settings->get( 'content_bg_color' ),
-	'fallback' => '#ffffff',
-) );
+$content_bg_color = Fusion_Color::new_color(
+	array(
+		'color' => Avada()->settings->get( 'content_bg_color' ),
+		'fallback' => '#ffffff',
+	)
+);
 $this->color(
 	'wide_page_bg_color',
 	esc_attr__( 'Background Color', 'Avada' ),
@@ -130,6 +135,7 @@ $this->radio_buttonset(
 		'yes' => esc_attr__( 'Yes', 'Avada' ),
 	),
 	esc_html__( 'Choose to have the background image display at 100%.', 'Avada' ),
+	'',
 	$wide_dependency
 );
 

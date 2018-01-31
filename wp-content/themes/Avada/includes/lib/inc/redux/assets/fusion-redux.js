@@ -216,13 +216,38 @@ jQuery( document ).ready( function() {
 	});
 
 	jQuery( '#fusionredux-import' ).on( 'click', function( e ) {
+
+		var loader = '<span class="spinner" style="visibility: visible;float: none;display: inline-block;"></span>';
+ 		e.preventDefault();
+
+ 		if ( '' !== jQuery( '#import-code-value' ).val() || '' !== jQuery( '#import-link-value' ).val() ) {
+ 			jQuery( loader ).insertAfter( jQuery( this ) );
+ 		}
+
 		jQuery.ajax({
 			type:     'post',
 			dataType: 'json',
 			url:       ajaxurl,
 			data: {
-				action: 'custom_option_import',
-				data: jQuery( '#import-code-value' ).val()
+				action: 'custom_option_import_code',
+ 					security: jQuery( '#ajaxsecurity' ).val(),
+ 					data: { import_code: jQuery( '#import-code-value' ).val(), import_link: jQuery( '#import-link-value' ).val() }
+			},
+			success: function( result ) {
+				if ( 'success' == result.status ) {
+					jQuery.ajax({
+						type:     'post',
+						dataType: 'json',
+						url:       ajaxurl,
+						data: {
+							action: 'custom_option_import',
+							data: jQuery( '#import-code-value' ).val()
+						},
+						success: function() {
+							window.location = window.location;
+						}
+					});
+				}
 			}
 		});
 	});

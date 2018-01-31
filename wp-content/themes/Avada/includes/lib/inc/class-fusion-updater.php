@@ -133,7 +133,7 @@ final class Fusion_Updater {
 		if ( isset( $transient->checked ) && class_exists( 'Avada' ) ) {
 
 			// Get the installed version of Avada.
-			$current_avada_version = Avada::get_normalized_theme_version();
+			$current_avada_version = Fusion_Helper::normalize_version( Avada::get_theme_version() );
 
 			// Get the themes from the Envato API.
 			$themes = $this->registration->envato_api()->themes();
@@ -152,7 +152,7 @@ final class Fusion_Updater {
 				}
 			}
 
-			if ( version_compare( $current_avada_version, $latest_avada['version'], '<' ) ) {
+			if ( version_compare( $current_avada_version, Fusion_Helper::normalize_version( $latest_avada['version'] ), '<' ) ) {
 				$transient->response[ $latest_avada['name'] ] = array(
 					'theme'       => $latest_avada['name'],
 					'new_version' => $latest_avada['version'],

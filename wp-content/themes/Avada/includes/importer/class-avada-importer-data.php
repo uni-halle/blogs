@@ -68,6 +68,8 @@ class Avada_Importer_Data {
 			return;
 		}
 
+		mb_internal_encoding( 'UTF-8' );
+
 		// Set the demo's $demo property.
 		$this->demo = $demo;
 
@@ -194,7 +196,7 @@ class Avada_Importer_Data {
 
 		// Attempt to manually extract the zip file first. Required for fptext method.
 		if ( class_exists( 'ZipArchive' ) ) {
-			$zip = new ZipArchive;
+			$zip = new ZipArchive();
 			if ( true === $zip->open( $folder_path . 'data.zip' ) ) {
 				$zip->extractTo( $folder_path );
 				$zip->close();
@@ -266,12 +268,12 @@ class Avada_Importer_Data {
 		// since static assets don't require https anyway.
 		$xml_content = str_replace(
 			$home_url . '/wp-content/',
-			'http://avada.theme-fusion.com/' . $demo . '/wp-content/',
+			'https://avada.theme-fusion.com/' . $demo . '/wp-content/',
 			$xml_content
 		);
 
 		// Take care of assets.
-		$xml_content = preg_replace_callback( '/(?<=<wp:meta_value><!\[CDATA\[)(https?:\/\/avada.theme-fusion.com)+(.*?)(?=]]><)/', 'fusion_fs_importer_replace_url', $xml_content );
+		$xml_content = preg_replace_callback( '/(?<=<wp:meta_value><!\[CDATA\[).*(https?:\/\/avada.theme-fusion.com)+(.*?)(?=]]><)/', 'fusion_fs_importer_replace_url', $xml_content );
 
 		// Replace URLs in the JSON file.
 		$json_content = str_replace(

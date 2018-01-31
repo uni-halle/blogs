@@ -60,14 +60,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<div class="fusion-column col-lg-4 col-md-4 col-sm-4 useful-links">
 						<h3><?php esc_html_e( 'Helpful Links:', 'Avada' ); ?></h3>
 						<?php $circle_class = ( Avada()->settings->get( 'checklist_circle' ) ) ? 'circle-yes' : 'circle-no'; ?>
-						<?php wp_nav_menu( array(
-							'theme_location' => '404_pages',
-							'depth'          => 1,
-							'container'      => false,
-							'menu_class'     => 'error-menu list-icon list-icon-arrow ' . $circle_class,
-							'echo'           => 1,
-							'item_spacing'   => 'discard',
-						) ); ?>
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => '404_pages',
+								'depth'          => 1,
+								'container'      => false,
+								'menu_class'     => 'error-menu list-icon list-icon-arrow ' . $circle_class,
+								'echo'           => 1,
+								'item_spacing'   => 'discard',
+							)
+						);
+						?>
 					</div>
 					<div class="fusion-column col-lg-4 col-md-4 col-sm-4">
 						<h3><?php esc_html_e( 'Try again', 'Avada' ); ?></h3>
@@ -80,6 +84,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php endif; ?>
 </section>
 <?php do_action( 'avada_after_content' ); ?>
-<?php get_footer();
+<?php
+get_footer();
 
 /* Omit closing PHP tag to avoid "Headers already sent" issues. */

@@ -147,6 +147,8 @@ final class Fusion_Patcher_Cache {
 		}
 		Fusion_Patcher_Checker::reset_cache();
 		delete_site_transient( $this->transient_name );
+		delete_site_option( 'fusion_applied_patches' );
+		delete_site_option( 'fusion_failed_patches' );
 		delete_site_transient( Fusion_Patcher_Checker::$transient_name );
 	}
 }

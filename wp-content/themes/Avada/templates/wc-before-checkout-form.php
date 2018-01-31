@@ -15,10 +15,10 @@ global $woocommerce;
 
 <ul class="woocommerce-side-nav woocommerce-checkout-nav">
 	<li class="is-active"><a data-name="col-1" href="#"><?php esc_attr_e( 'Billing Address', 'Avada' ); ?></a></li>
-	<?php if ( WC()->cart->needs_shipping() && ! WC()->cart->ship_to_billing_address_only() ) : ?>
+	<?php if ( WC()->cart->needs_shipping() && ! wc_ship_to_billing_address_only() ) : ?>
 		<li><a data-name="col-2" href="#"><?php esc_attr_e( 'Shipping Address', 'Avada' ); ?></a></li>
 	<?php elseif ( apply_filters( 'woocommerce_enable_order_notes_field', get_option( 'woocommerce_enable_order_comments', 'yes' ) === 'yes' ) ) : ?>
-		<?php if ( ! WC()->cart->needs_shipping() || WC()->cart->ship_to_billing_address_only() ) : ?>
+		<?php if ( ! WC()->cart->needs_shipping() || wc_ship_to_billing_address_only() ) : ?>
 			<li><a data-name="col-2" href="#"><?php esc_attr_e( 'Additional Information', 'Avada' ); ?></a></li>
 		<?php endif; ?>
 	<?php endif; ?>

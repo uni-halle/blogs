@@ -82,6 +82,8 @@ class Avada_Admin {
 		$this->set_theme_version();
 		$this->set_theme_object();
 
+		$this->register_product_envato_hosted();
+
 		add_action( 'wp_before_admin_bar_render', array( $this, 'add_wp_toolbar_menu' ) );
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		add_action( 'admin_init', array( $this, 'init_permalink_settings' ) );
@@ -123,6 +125,11 @@ class Avada_Admin {
 		add_filter( 'tgmpa_load', array( $this, 'enable_tgmpa' ), 10 );
 
 		add_action( 'wp_ajax_fusion_install_plugin', array( $this, 'ajax_install_plugin' ) );
+
+		// Add taxonomy meta boxes.
+		if ( function_exists( 'update_term_meta' ) ) {
+			add_action( 'wp_loaded', array( $this, 'avada_taxonomy_meta' ) );
+		}
 	}
 
 	/**
@@ -245,9 +252,11 @@ class Avada_Admin {
 			}
 
 			if ( ! is_admin() ) {
-				$this->add_wp_toolbar_menu_item( $avada_parent_menu_title, false, admin_url( 'admin.php?page=avada' ), array(
-					'class' => 'avada-menu',
-				), 'avada' );
+				$this->add_wp_toolbar_menu_item(
+					$avada_parent_menu_title, false, admin_url( 'admin.php?page=avada' ), array(
+						'class' => 'avada-menu',
+					), 'avada'
+				);
 			}
 
 			if ( ! $registration_complete ) {
@@ -300,13 +309,15 @@ class Avada_Admin {
 			); // External links open in new tab/window.
 			$meta = array_merge( $meta, $custom_meta );
 
-			$wp_admin_bar->add_node( array(
-				'parent' => $parent,
-				'id'     => $id,
-				'title'  => $title,
-				'href'   => $href,
-				'meta'   => $meta,
-			) );
+			$wp_admin_bar->add_node(
+				array(
+					'parent' => $parent,
+					'id'     => $id,
+					'title'  => $title,
+					'href'   => $href,
+					'meta'   => $meta,
+				)
+			);
 		}
 
 	}
@@ -388,7 +399,7 @@ class Avada_Admin {
 			if ( isset( $_GET['avada-deactivate'] ) && 'deactivate-plugin' === $_GET['avada-deactivate'] ) {
 				check_admin_referer( 'avada-deactivate', 'avada-deactivate-nonce' );
 
-				$plugins = TGM_Plugin_Activation::$instance->plugins;
+				$plugins = Avada_TGM_Plugin_Activation::$instance->plugins;
 
 				foreach ( $plugins as $plugin ) {
 					if ( isset( $_GET['plugin'] ) && $plugin['slug'] == $_GET['plugin'] ) {
@@ -399,7 +410,7 @@ class Avada_Admin {
 			if ( isset( $_GET['avada-activate'] ) && 'activate-plugin' === $_GET['avada-activate'] ) {
 				check_admin_referer( 'avada-activate', 'avada-activate-nonce' );
 
-				$plugins = TGM_Plugin_Activation::$instance->plugins;
+				$plugins = Avada_TGM_Plugin_Activation::$instance->plugins;
 
 				foreach ( $plugins as $plugin ) {
 					if ( isset( $_GET['plugin'] ) && $plugin['slug'] == $_GET['plugin'] ) {
@@ -428,12 +439,17 @@ class Avada_Admin {
 
 				check_admin_referer( 'avada-activate', 'avada_activate_nonce' );
 
-				$plugins = TGM_Plugin_Activation::$instance->plugins;
+				$plugins = Avada_TGM_Plugin_Activation::$instance->plugins;
 
 				foreach ( $plugins as $plugin ) {
 					if ( isset( $_GET['plugin'] ) && $plugin['slug'] === $_GET['plugin'] ) {
 						$result   = activate_plugin( $plugin['file_path'] );
 						$response = array();
+
+						// Make sure woo setup won't run after this.
+						if ( 'woocommerce' == $_GET['plugin'] ) {
+							delete_transient( '_wc_activation_redirect' );
+						}
 
 						if ( ! is_wp_error( $result ) ) {
 							$response['message'] = 'plugin activated';
@@ -497,7 +513,7 @@ class Avada_Admin {
 
 			$plugins_callback = array( $this, 'plugins_tab' );
 			if ( isset( $_GET['tgmpa-install'] ) || isset( $_GET['tgmpa-update'] ) ) {
-				require_once $this->includes_path . '/class-tgm-plugin-activation.php';
+				require_once $this->includes_path . '/class-avada-tgm-plugin-activation.php';
 				remove_action( 'admin_notices', array( $GLOBALS['tgmpa'], 'notices' ) );
 				$plugins_callback = array( $GLOBALS['tgmpa'], 'install_plugins_page' );
 			}
@@ -508,8 +524,11 @@ class Avada_Admin {
 
 			$welcome_screen = $avada_menu_page_creation_method( 'Avada', 'Avada', 'edit_theme_options', 'avada', array( $this, 'welcome_screen' ), 'dashicons-fusiona-logo', '2.111111' );
 
-			$registration  = $avada_submenu_page_creation_method( 'avada', esc_attr__( 'Registration', 'Avada' ), esc_attr__( 'Registration', 'Avada' ), 'manage_options', 'avada-registration', array( $this, 'registration_tab' ) );
-			$support       = $avada_submenu_page_creation_method( 'avada', esc_attr__( 'Support', 'Avada' ), esc_attr__( 'Support', 'Avada' ), 'manage_options', 'avada-support', array( $this, 'support_tab' ) );
+			if ( ! defined( 'ENVATO_HOSTED_SITE' ) ) {
+				$registration  = $avada_submenu_page_creation_method( 'avada', esc_attr__( 'Registration', 'Avada' ), esc_attr__( 'Registration', 'Avada' ), 'manage_options', 'avada-registration', array( $this, 'registration_tab' ) );
+				$support       = $avada_submenu_page_creation_method( 'avada', esc_attr__( 'Support', 'Avada' ), esc_attr__( 'Support', 'Avada' ), 'manage_options', 'avada-support', array( $this, 'support_tab' ) );
+			}
+
 			$faqs          = $avada_submenu_page_creation_method( 'avada', esc_attr__( 'FAQ', 'Avada' ), esc_attr__( 'FAQ', 'Avada' ), 'edit_theme_options', 'avada-faq', array( $this, 'faq_tab' ) );
 			$demos         = $avada_submenu_page_creation_method( 'avada', esc_attr__( 'Demos', 'Avada' ), esc_attr__( 'Demos', 'Avada' ), 'manage_options', 'avada-demos', array( $this, 'demos_tab' ) );
 			$plugins       = $avada_submenu_page_creation_method( 'avada', esc_attr__( 'Plugins', 'Avada' ), esc_attr__( 'Plugins', 'Avada' ), 'install_plugins', 'avada-plugins', $plugins_callback );
@@ -521,8 +540,11 @@ class Avada_Admin {
 			}
 
 			add_action( 'admin_print_scripts-' . $welcome_screen, array( $this, 'welcome_screen_scripts' ) );
-			add_action( 'admin_print_scripts-' . $registration, array( $this, 'registration_screen_scripts' ) );
-			add_action( 'admin_print_scripts-' . $support, array( $this, 'support_screen_scripts' ) );
+			if ( ! defined( 'ENVATO_HOSTED_SITE' ) ) {
+				add_action( 'admin_print_scripts-' . $registration, array( $this, 'registration_screen_scripts' ) );
+				add_action( 'admin_print_scripts-' . $support, array( $this, 'support_screen_scripts' ) );
+			}
+
 			add_action( 'admin_print_scripts-' . $faqs, array( $this, 'faq_screen_scripts' ) );
 			add_action( 'admin_print_scripts-' . $demos, array( $this, 'demos_screen_scripts' ) );
 			add_action( 'admin_print_scripts-' . $plugins, array( $this, 'plugins_screen_scripts' ) );
@@ -642,13 +664,19 @@ class Avada_Admin {
 			</div>
 		<?php endif; ?>
 		<div class="about-text">
-			<?php printf( __( 'Avada is now installed and ready to use! Get ready to build something beautiful. Please <a href="%1$s" target="%2$s">register your purchase</a> to get automatic theme updates, import Avada demos and install premium plugins. Check out the <a href="%3$s">Support tab</a> to learn how to receive product support. We hope you enjoy it!', 'fusion-builder' ), esc_url_raw( admin_url( 'admin.php?page=avada-registration' ) ), '_blank', esc_url_raw( admin_url( 'admin.php?page=avada-support' ) ) ); // WPCS: XSS ok. ?>
+			<?php if ( ! defined( 'ENVATO_HOSTED_SITE' ) ) : ?>
+				<?php printf( __( 'Avada is now installed and ready to use! Get ready to build something beautiful. Please <a href="%1$s" target="%2$s">register your purchase</a> to get automatic theme updates, import Avada demos and install premium plugins. Check out the <a href="%3$s">Support tab</a> to learn how to receive product support. We hope you enjoy it!', 'Avada' ), esc_url( admin_url( 'admin.php?page=avada-registration' ) ), '_blank', esc_url( admin_url( 'admin.php?page=avada-support' ) ) ); // WPCS: XSS ok. ?>
+			<?php else : ?>
+				<?php printf( __( 'Avada is now installed and ready to use! Get ready to build something beautiful. Through your registration on the Envato hosted platform, you can now get automatic theme updates, import Avada demos and install premium plugins. Check out the <a href="%s" target="_blank">Envato Hosted Support Policy</a> to learn how to receive support through the Envato hosted support team. We hope you enjoy it!', 'Avada' ), esc_url( 'https://envatohosted.zendesk.com/hc/en-us/articles/115001666945-Envato-Hosted-Support-Policy' ) ); // WPCS: XSS ok. ?>
+			<?php endif; ?>
 		</div>
 		<div class="avada-logo"><span class="avada-version"><?php esc_attr_e( 'Version', 'Avada' ); ?> <?php echo esc_attr( $this->theme_version ); ?></span></div>
 		<h2 class="nav-tab-wrapper">
 			<a href="<?php echo esc_url_raw( ( 'welcome' === $screen ) ? '#' : admin_url( 'admin.php?page=avada' ) ); ?>" class="<?php echo ( 'welcome' === $screen ) ? 'nav-tab-active' : ''; ?> nav-tab"><?php esc_attr_e( 'Welcome', 'Avada' ); ?></a>
-			<a href="<?php echo esc_url_raw( ( 'registration' === $screen ) ? '#' : admin_url( 'admin.php?page=avada-registration' ) ); ?>" class="<?php echo ( 'registration' === $screen ) ? 'nav-tab-active' : ''; ?> nav-tab"><?php esc_attr_e( 'Registration', 'Avada' ); ?></a>
-			<a href="<?php echo esc_url_raw( ( 'support' === $screen ) ? '#' : admin_url( 'admin.php?page=avada-support' ) ); ?>" class="<?php echo ( 'support' === $screen ) ? 'nav-tab-active' : ''; ?> nav-tab"><?php esc_attr_e( 'Support', 'Avada' ); ?></a>
+			<?php if ( ! defined( 'ENVATO_HOSTED_SITE' ) ) : ?>
+				<a href="<?php echo esc_url_raw( ( 'registration' === $screen ) ? '#' : admin_url( 'admin.php?page=avada-registration' ) ); ?>" class="<?php echo ( 'registration' === $screen ) ? 'nav-tab-active' : ''; ?> nav-tab"><?php esc_attr_e( 'Registration', 'Avada' ); ?></a>
+				<a href="<?php echo esc_url_raw( ( 'support' === $screen ) ? '#' : admin_url( 'admin.php?page=avada-support' ) ); ?>" class="<?php echo ( 'support' === $screen ) ? 'nav-tab-active' : ''; ?> nav-tab"><?php esc_attr_e( 'Support', 'Avada' ); ?></a>
+			<?php endif; ?>
 			<a href="<?php echo esc_url_raw( ( 'faqs' === $screen ) ? '#' : admin_url( 'admin.php?page=avada-faq' ) ); ?>" class="<?php echo ( 'faqs' === $screen ) ? 'nav-tab-active' : ''; ?> nav-tab"><?php esc_attr_e( 'FAQ', 'Avada' ); ?></a>
 			<a href="<?php echo esc_url_raw( ( 'demos' === $screen ) ? '#' : admin_url( 'admin.php?page=avada-demos' ) ); ?>" class="<?php echo ( 'demos' === $screen ) ? 'nav-tab-active' : ''; ?> nav-tab"><?php esc_attr_e( 'Demos', 'Avada' ); ?></a>
 			<a href="<?php echo esc_url_raw( ( 'plugins' === $screen ) ? '#' : admin_url( 'admin.php?page=avada-plugins' ) ); ?>" class="<?php echo ( 'plugins' === $screen ) ? 'nav-tab-active' : ''; ?> nav-tab"><?php esc_attr_e( 'Plugins', 'Avada' ); ?></a>
@@ -719,8 +747,11 @@ class Avada_Admin {
 				wp_enqueue_script( 'slider_preview', trailingslashit( Avada::$template_dir_url ) . 'assets/admin/js/fusion-builder-slider-preview.js', array(), $version, true );
 			}
 
-			if ( 'nav-menus.php' == $pagenow ) {
+			if ( 'nav-menus.php' == $pagenow || 'widgets.php' == $pagenow ) {
 				wp_dequeue_script( 'tribe-events-select2' );
+				wp_dequeue_script( 'tribe-select2' );
+				wp_deregister_script( 'tribe-select2' );
+
 				wp_enqueue_style(
 					'select2-css',
 					Avada::$template_dir_url . '/assets/admin/css/select2.css',
@@ -741,9 +772,11 @@ class Avada_Admin {
 				wp_enqueue_script( 'wp-color-picker-alpha', trailingslashit( Avada::$template_dir_url ) . 'assets/admin/js/wp-color-picker-alpha.js', array( 'wp-color-picker', 'jquery-color' ), $version );
 				wp_enqueue_style( 'fontawesome', FUSION_LIBRARY_URL . '/assets/fonts/fontawesome/font-awesome.css', array(), $version );
 				wp_enqueue_script( 'fusion-menu-options', trailingslashit( Avada::$template_dir_url ) . 'assets/admin/js/fusion-menu-options.js', array( 'select2-js' ), $version, true );
-				wp_localize_script( 'fusion-menu-options', 'fusionMenuConfig', array(
-					'fontawesomeicons' => fusion_get_icons_array(),
-				) );
+				wp_localize_script(
+					'fusion-menu-options', 'fusionMenuConfig', array(
+						'fontawesomeicons' => fusion_get_icons_array(),
+					)
+				);
 			}
 		} // End if().
 
@@ -869,7 +902,7 @@ class Avada_Admin {
 
 		// We have a repo plugin.
 		if ( ! $item['version'] ) {
-			$item['version'] = TGM_Plugin_Activation::$instance->does_plugin_have_update( $item['slug'] );
+			$item['version'] = Avada_TGM_Plugin_Activation::$instance->does_plugin_have_update( $item['slug'] );
 		}
 
 		$disable_class = '';
@@ -877,7 +910,7 @@ class Avada_Admin {
 		$fusion_builder_action = '';
 
 		if ( 'fusion-builder' === $item['slug'] && false !== get_option( 'avada_previous_version' ) ) {
-			$fusion_core_version = TGM_Plugin_Activation::$instance->get_installed_version( TGM_Plugin_Activation::$instance->plugins['fusion-core']['slug'] );
+			$fusion_core_version = Avada_TGM_Plugin_Activation::$instance->get_installed_version( Avada_TGM_Plugin_Activation::$instance->plugins['fusion-core']['slug'] );
 
 			if ( version_compare( $fusion_core_version, '3.0', '<' ) ) {
 				$disable_class = ' disabled fusion-builder';
@@ -893,20 +926,22 @@ class Avada_Admin {
 		// We need to display the 'Install' hover link.
 		if ( ! isset( $installed_plugins[ $item['file_path'] ] ) ) {
 			if ( ! $disable_class ) {
-				$url = esc_url( wp_nonce_url(
-					add_query_arg(
-						array(
-							'page'          => rawurlencode( TGM_Plugin_Activation::$instance->menu ),
-							'plugin'        => rawurlencode( $item['slug'] ),
-							'plugin_name'   => rawurlencode( $item['sanitized_plugin'] ),
-							'tgmpa-install' => 'install-plugin',
-							'return_url'    => 'fusion_plugins',
+				$url = esc_url(
+					wp_nonce_url(
+						add_query_arg(
+							array(
+								'page'          => rawurlencode( Avada_TGM_Plugin_Activation::$instance->menu ),
+								'plugin'        => rawurlencode( $item['slug'] ),
+								'plugin_name'   => rawurlencode( $item['sanitized_plugin'] ),
+								'tgmpa-install' => 'install-plugin',
+								'return_url'    => 'fusion_plugins',
+							),
+							Avada_TGM_Plugin_Activation::$instance->get_tgmpa_url()
 						),
-						TGM_Plugin_Activation::$instance->get_tgmpa_url()
-					),
-					'tgmpa-install',
-					'tgmpa-nonce'
-				) );
+						'tgmpa-install',
+						'tgmpa-nonce'
+					)
+				);
 			} else {
 				$url = '#';
 			}
@@ -919,15 +954,17 @@ class Avada_Admin {
 			}
 		} elseif ( is_plugin_inactive( $item['file_path'] ) ) {
 			// We need to display the 'Activate' hover link.
-			$url = esc_url( add_query_arg(
-				array(
-					'plugin'               => rawurlencode( $item['slug'] ),
-					'plugin_name'          => rawurlencode( $item['sanitized_plugin'] ),
-					'avada-activate'       => 'activate-plugin',
-					'avada-activate-nonce' => wp_create_nonce( 'avada-activate' ),
-				),
-				admin_url( 'admin.php?page=avada-plugins' )
-			) );
+			$url = esc_url(
+				add_query_arg(
+					array(
+						'plugin'               => rawurlencode( $item['slug'] ),
+						'plugin_name'          => rawurlencode( $item['sanitized_plugin'] ),
+						'avada-activate'       => 'activate-plugin',
+						'avada-activate-nonce' => wp_create_nonce( 'avada-activate' ),
+					),
+					admin_url( 'admin.php?page=avada-plugins' )
+				)
+			);
 
 			$actions = array(
 				'activate' => '<a href="' . $url . '" class="button button-primary"' . $data_version . ' title="' . sprintf( esc_attr__( 'Activate %s', 'Avada' ), $item['sanitized_plugin'] ) . '">' . esc_attr__( 'Activate' , 'Avada' ) . '</a>',
@@ -938,13 +975,13 @@ class Avada_Admin {
 			$url = wp_nonce_url(
 				add_query_arg(
 					array(
-						'page'          => rawurlencode( TGM_Plugin_Activation::$instance->menu ),
+						'page'          => rawurlencode( Avada_TGM_Plugin_Activation::$instance->menu ),
 						'plugin'        => rawurlencode( $item['slug'] ),
 						'tgmpa-update'  => 'update-plugin',
 						'version'       => rawurlencode( $item['version'] ),
 						'return_url'    => 'fusion_plugins',
 					),
-					TGM_Plugin_Activation::$instance->get_tgmpa_url()
+					Avada_TGM_Plugin_Activation::$instance->get_tgmpa_url()
 				),
 				'tgmpa-update',
 				'tgmpa-nonce'
@@ -956,15 +993,17 @@ class Avada_Admin {
 				'update' => '<a href="' . $url . '" class="button button-primary' . $disable_class . '" title="' . sprintf( esc_attr__( 'Update %s', 'Avada' ), $item['sanitized_plugin'] ) . '">' . esc_attr__( 'Update', 'Avada' ) . '</a>',
 			);
 		} elseif ( is_plugin_active( $item['file_path'] ) ) {
-			$url = esc_url( add_query_arg(
-				array(
-					'plugin'                 => rawurlencode( $item['slug'] ),
-					'plugin_name'            => rawurlencode( $item['sanitized_plugin'] ),
-					'avada-deactivate'       => 'deactivate-plugin',
-					'avada-deactivate-nonce' => wp_create_nonce( 'avada-deactivate' ),
-				),
-				admin_url( 'admin.php?page=avada-plugins' )
-			) );
+			$url = esc_url(
+				add_query_arg(
+					array(
+						'plugin'                 => rawurlencode( $item['slug'] ),
+						'plugin_name'            => rawurlencode( $item['sanitized_plugin'] ),
+						'avada-deactivate'       => 'deactivate-plugin',
+						'avada-deactivate-nonce' => wp_create_nonce( 'avada-deactivate' ),
+					),
+					admin_url( 'admin.php?page=avada-plugins' )
+				)
+			);
 			$actions = array(
 				'deactivate' => '<a href="' . $url . '" class="button button-primary" title="' . sprintf( esc_attr__( 'Deactivate %s', 'Avada' ), $item['sanitized_plugin'] ) . '">' . esc_attr__( 'Deactivate', 'Avada' ) . '</a>',
 			);
@@ -985,7 +1024,7 @@ class Avada_Admin {
 	 */
 	public function edit_tgmpa_action_links( $action_links, $item_slug, $item, $view_context ) {
 		if ( 'fusion-builder' === $item_slug && 'install' === $view_context ) {
-			$fusion_core_version = TGM_Plugin_Activation::$instance->get_installed_version( TGM_Plugin_Activation::$instance->plugins['fusion-core']['slug'] );
+			$fusion_core_version = Avada_TGM_Plugin_Activation::$instance->get_installed_version( Avada_TGM_Plugin_Activation::$instance->plugins['fusion-core']['slug'] );
 
 			if ( version_compare( $fusion_core_version, '3.0', '<' ) ) {
 				$action_links['install'] = '<span class="avada-not-installable" style="color:#555555;">' . esc_attr__( 'Fusion Builder will be installable, once Fusion Core plugin is updated.', 'Avada' ) . '<span class="screen-reader-text">' . esc_attr__( 'Fusion Builder', 'Avada' ) . '</span></span>';
@@ -1003,7 +1042,7 @@ class Avada_Admin {
 	 * @return array The action link(s) for a required plugin.
 	 */
 	public function edit_tgmpa_notice_action_links( $action_links ) {
-		$fusion_core_version = TGM_Plugin_Activation::$instance->get_installed_version( TGM_Plugin_Activation::$instance->plugins['fusion-core']['slug'] );
+		$fusion_core_version = Avada_TGM_Plugin_Activation::$instance->get_installed_version( Avada_TGM_Plugin_Activation::$instance->plugins['fusion-core']['slug'] );
 		$current_screen = get_current_screen();
 
 		if ( 'avada_page_avada-plugins' == $current_screen->id ) {
@@ -1074,7 +1113,7 @@ class Avada_Admin {
 		$input_name     = 'avada_' . $args['taxonomy'] . '_slug';
 		$placeholder    = $args['taxonomy'];
 		?>
-		<input name="<?php echo esc_attr( $input_name ); ?>" type="text" class="regular-text code" value="<?php echo ( isset( $permalinks[ $permalink_base ] ) ) ? esc_attr( $permalinks[ $permalink_base ] ) : ''; ?>" placeholder="<?php echo esc_attr( $placeholder ) ?>" />
+		<input name="<?php echo esc_attr( $input_name ); ?>" type="text" class="regular-text code" value="<?php echo ( isset( $permalinks[ $permalink_base ] ) ) ? esc_attr( $permalinks[ $permalink_base ] ) : ''; ?>" placeholder="<?php echo esc_attr( $placeholder ); ?>" />
 		<?php
 	}
 
@@ -1108,11 +1147,43 @@ class Avada_Admin {
 				$permalinks = array();
 			}
 
-			$permalinks['portfolio_category_base']	= untrailingslashit( $portfolio_category_slug );
-			$permalinks['portfolio_skills_base']	= untrailingslashit( $portfolio_skills_slug );
-			$permalinks['portfolio_tags_base']		= untrailingslashit( $portfolio_tags_slug );
+			$permalinks['portfolio_category_base'] = untrailingslashit( $portfolio_category_slug );
+			$permalinks['portfolio_skills_base']   = untrailingslashit( $portfolio_skills_slug );
+			$permalinks['portfolio_tags_base']     = untrailingslashit( $portfolio_tags_slug );
 
 			update_option( 'avada_permalinks', $permalinks );
+		}
+	}
+
+	/**
+	 * Check for Envato hosted and register product.
+	 *
+	 * @since 5.3
+	 *
+	 * @access public
+	 * @return void
+	 */
+	public function register_product_envato_hosted() {
+		if ( defined( 'ENVATO_HOSTED_SITE' ) && ENVATO_HOSTED_SITE && defined( 'SUBSCRIPTION_CODE' ) && ! Avada()->registration->is_registered() ) {
+
+			$license_status = Avada()->remote_install->validate_envato_hosted_subscription_code();
+
+			$registration_args = Avada()->registration->get_args();
+			$product_id        = sanitize_key( $registration_args['name'] );
+
+			$registration_array = array(
+				$product_id => $license_status,
+				'scopes' => array(),
+			);
+			update_option( 'fusion_registered', $registration_array );
+
+			$registration_array = array(
+				$product_id => array(
+					'token' => SUBSCRIPTION_CODE,
+				),
+			);
+
+			update_option( 'fusion_registration', $registration_array );
 		}
 	}
 
@@ -1225,6 +1296,228 @@ class Avada_Admin {
 			'plugin_install_failed' => __( 'Plugin install failed. Please try Again.', 'Avada' ),
 			'plugin_active'         => __( 'Active', 'Avada' ),
 		);
+	}
+
+	/**
+	 * Add meta boxes to taxonomies
+	 *
+	 * @access public
+	 * @since 3.1.1
+	 * @return void
+	 */
+	function avada_taxonomy_meta() {
+		global $fusion_settings, $pagenow;
+
+		if ( ! ( 'term.php' === $pagenow || 'edit-tags.php' === $pagenow || ( wp_doing_ajax() && ! empty( $_REQUEST['action'] ) && 'add-tag' === $_REQUEST['action'] ) ) ) {
+			return;
+		}
+
+		// Get array of available sliders.
+		$sliders_array = avada_get_available_sliders_array();
+
+		// Include Tax meta class.
+		include_once Avada::$template_dir_path . '/includes/class-avada-taxonomy-meta.php';
+
+		// Where to add meta fields.
+		$args = array(
+			'screens' => apply_filters( 'fusion_tax_meta_allowed_screens', array( 'category', 'portfolio_category', 'faq_category', 'product_cat', 'tribe_events_cat', 'post_tag', 'portfolio_tags', 'product_tag', 'topic-tag', 'portfolio_skills' ) ),
+		);
+
+		// Init taxonomy meta boxes.
+		$avada_meta = new Avada_Taxonomy_Meta( $args );
+
+		// Add fields.
+		$avada_meta->header(
+			'fusion_tax_heading',
+			array(
+				'value' => __( 'Fusion Taxonomy Options','Avada' ),
+				'class' => 'avada-tax-heading avada-tax-heading-edit',
+			)
+		);
+
+		$avada_meta->select(
+			'slider_type',
+			array(
+				'no'      => __( 'No Slider','Avada' ),
+				'layer'   => __( 'LayerSlider','Avada' ),
+				'flex'    => __( 'Fusion Slider','Avada' ),
+				'rev'     => __( 'Slider Revolution','Avada' ),
+				'elastic' => __( 'Elastic Slider','Avada' ),
+			),
+			array(
+				'name'    => __( 'Slider Type ','Avada' ),
+				'default' => 'no',
+				'class'   => 'avada-sliders-selection',
+				'desc'    => __( 'Select the type of slider that displays.', 'Avada' ),
+			)
+		);
+
+		$avada_meta->select(
+			'fusion_tax_slider',
+			$sliders_array['layer_sliders'],
+			array(
+				'name'       => __( 'Select LayerSlider ','Avada' ),
+				'default'    => 0,
+				'class'      => 'avada-sliders-group avada-layer-slider',
+				'desc'       => __( 'Select the unique name of the slider.', 'Avada' ),
+				'dependency' => array(
+					array(
+						'field'      => 'slider_type',
+						'value'      => 'layer',
+						'comparison' => '==',
+					),
+				),
+			)
+		);
+
+		$avada_meta->select(
+			'fusion_tax_wooslider',
+			$sliders_array['fusion_sliders'],
+			array(
+				'name'       => __( 'Select Fusion Slider ','Avada' ),
+				'default'    => 0,
+				'class'      => 'avada-sliders-group avada-flex-slider',
+				'desc'       => __( 'Select the unique name of the slider.', 'Avada' ),
+				'dependency' => array(
+					array(
+						'field'      => 'slider_type',
+						'value'      => 'flex',
+						'comparison' => '==',
+					),
+				),
+			)
+		);
+
+		$avada_meta->select(
+			'fusion_tax_revslider',
+			$sliders_array['rev_sliders'],
+			array(
+				'name'       => __( 'Select Slider Revolution Slider','Avada' ),
+				'default'    => 0,
+				'class'      => 'avada-sliders-group avada-rev-slider',
+				'desc'       => __( 'Select the unique name of the slider.', 'Avada' ),
+				'dependency' => array(
+					array(
+						'field'      => 'slider_type',
+						'value'      => 'rev',
+						'comparison' => '==',
+					),
+				),
+			)
+		);
+
+		$avada_meta->select(
+			'fusion_tax_elasticslider',
+			$sliders_array['elastic_sliders'],
+			array(
+				'name'       => __( 'Select Elastic Slider','Avada' ),
+				'default'    => 0,
+				'class'      => 'avada-sliders-group avada-elastic-slider',
+				'desc'       => __( 'Select the unique name of the slider.', 'Avada' ),
+				'dependency' => array(
+					array(
+						'field'      => 'slider_type',
+						'value'      => 'elastic',
+						'comparison' => '==',
+					),
+				),
+			)
+		);
+
+		$avada_meta->buttonset(
+			'slider_position',
+			array(
+				'default' => __( 'Default', 'Avada' ),
+				'below'   => __( 'Below', 'Avada' ),
+				'above'   => __( 'Above', 'Avada' ),
+			),
+			array(
+				'name'       => __( 'Slider Position','Avada' ),
+				'default'    => 'default',
+				'class'      => 'avada-sliders-group avada-slider-buttonset',
+				/* translators: The "Fusion Theme Options" link. */
+				'desc'       => sprintf( esc_attr__( 'Select if the slider shows below or above the header. Only works for top header position. %s', 'Avada' ), Avada()->settings->get_default_description( 'slider_position', '', 'select' ) ),
+				'dependency' => array(
+					array(
+						'field'      => 'slider_type',
+						'value'      => 'no',
+						'comparison' => '!=',
+					),
+				),
+			)
+		);
+
+		$avada_meta->text(
+			'main_padding_top',
+			array(
+				'name' => __( 'Page Content Top Padding','Avada' ),
+				/* translators: The "Fusion Theme Options" link. */
+				'desc' => sprintf( esc_attr__( 'In pixels ex: 20px. %s', 'Avada' ), Avada()->settings->get_default_description( 'main_padding', 'top' ) ),
+			)
+		);
+
+		$avada_meta->text(
+			'main_padding_bottom',
+			array(
+				'name' => __( 'Page Content Bottom Padding','Avada' ),
+				/* translators: The "Fusion Theme Options" link. */
+				'desc' => sprintf( esc_attr__( 'In pixels ex: 20px. %s', 'Avada' ), Avada()->settings->get_default_description( 'main_padding', 'bottom' ) ),
+			)
+		);
+
+		$avada_meta->colorpicker(
+			'header_bg_color',
+			array(
+				'name'    => __( 'Header Background Color','Avada' ),
+				'default' => Avada()->settings->get( 'header_bg_color' ),
+				/* translators: The "Fusion Theme Options" link. */
+				'desc'    => sprintf( esc_attr__( 'Controls the background color for the header. Hex code or rgba value, ex: #000. %s', 'Avada' ), Avada()->settings->get_default_description( 'header_bg_color' ) ),
+			)
+		);
+
+		$avada_meta->image(
+			'page_title_bg',
+			array(
+				'name' => __( 'Page Title Bar Background','Avada' ),
+				/* translators: The "Fusion Theme Options" link. */
+				'desc' => sprintf( esc_attr__( 'Select an image to use for the page title bar background. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_bg', 'url' ) ),
+			)
+		);
+
+		$avada_meta->image(
+			'page_title_bg_retina',
+			array(
+				'name'       => __( 'Page Title Bar Background Retina','Avada' ),
+				/* translators: The "Fusion Theme Options" link. */
+				'desc'       => sprintf( esc_attr__( 'Select an image to use for retina devices. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_bg_retina', 'url' ) ),
+				'dependency' => array(
+					array(
+						'field'      => 'page_title_bg',
+						'value'      => '',
+						'comparison' => '!=',
+					),
+				),
+			)
+		);
+
+		$avada_meta->text(
+			'page_title_height',
+			array(
+				'name' => __( 'Page Title Bar Height','Avada' ),
+				/* translators: The "Fusion Theme Options" link. */
+				'desc' => sprintf( esc_attr__( 'Set the height of the page title bar. In pixels ex: 100px. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_height' ) ),
+			)
+		);
+
+		$avada_meta->text(
+			'page_title_mobile_height',
+			array(
+				'name' => __( 'Page Title Bar Mobile Height','Avada' ),
+				/* translators: The "Fusion Theme Options" link. */
+				'desc' => sprintf( esc_attr__( 'Set the height of the page title bar on mobile. In pixels ex: 100px. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_mobile_height' ) ),
+			)
+		);
+
 	}
 }
 

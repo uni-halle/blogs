@@ -72,7 +72,7 @@ final class Fusion_Dynamic_JS {
 
 		// If JS compiler is disabled, or if WP_SCRIPT_DEBUG is set to true load separate files.
 		$settings = Fusion_Settings::get_instance();
-		if ( '0' === $settings->get( 'js_compiler' ) || ( defined( 'WP_SCRIPT_DEBUG' ) && WP_SCRIPT_DEBUG ) ) {
+		if ( ( defined( 'FUSION_DISABLE_COMPILERS' ) && FUSION_DISABLE_COMPILERS ) || '0' === $settings->get( 'js_compiler' ) || ( defined( 'WP_SCRIPT_DEBUG' ) && WP_SCRIPT_DEBUG ) ) {
 			new Fusion_Dynamic_JS_Separate( $this );
 			return;
 		}

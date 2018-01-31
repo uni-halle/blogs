@@ -141,14 +141,14 @@ function avada_register_required_and_recommended_plugins() {
 	 * end of each line for what each argument will be.
 	 */
 	$config = array(
-		'domain'        	=> $theme_text_domain,
-		'default_path'  	=> '',
-		'parent_slug' 		=> 'avada',
-		'menu'            	=> 'avada-plugins',
-		'has_notices'     	=> true,
-		'is_automatic'    	=> true,
-		'message'         	=> '',
-		'strings'         	=> array(
+		'domain'            => $theme_text_domain,
+		'default_path'      => '',
+		'parent_slug'       => 'avada',
+		'menu'              => 'avada-plugins',
+		'has_notices'       => true,
+		'is_automatic'      => true,
+		'message'           => '',
+		'strings'           => array(
 			'page_title'                      => __( 'Install/Update Required Plugins', 'Avada' ),
 			'menu_title'                      => __( 'Install Plugins', 'Avada' ),
 			'installing'                      => __( 'Installing Plugin: %s', 'Avada' ), // %1$s = plugin name
@@ -168,11 +168,11 @@ function avada_register_required_and_recommended_plugins() {
 			'return'                          => __( 'Return to Required Plugins Installer', 'Avada' ),
 			'plugin_activated'                => __( 'Plugin activated successfully.', 'Avada' ),
 			'complete'                        => __( 'All plugins installed and activated successfully. %s', 'Avada' ), // %1$s = dashboard link
-			'nag_type'                        => 'error',// Determines admin notice type - can only be 'updated' or 'error'
+			'nag_type'                        => 'error', // Determines admin notice type - can only be 'updated' or 'error'
 		),
 	);
 
-	tgmpa( $plugins, $config );
+	avada_tgmpa( $plugins, $config );
 }
 add_action( 'tgmpa_register', 'avada_register_required_and_recommended_plugins' );
 

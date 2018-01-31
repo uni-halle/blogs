@@ -91,7 +91,7 @@ class Avada_Demo_Remove {
 				$this->content_tracker->remove_demo();
 
 				// Reset all caches. Deletes downloaded demo data as well.
-				avada_reset_all_cache();
+				avada_reset_all_caches();
 
 				echo 'demo removed';
 			} else {
@@ -142,9 +142,10 @@ class Avada_Demo_Remove {
 			$post_types = array(
 				'post',
 				'page',
+				'fusion_element',
+				'fusion_template',
 				'avada_faq',
 				'avada_portfolio',
-				'fusion_element',
 				'attachment',
 				'nav_menu_item',
 				'product',
@@ -194,6 +195,14 @@ class Avada_Demo_Remove {
 
 		if ( ! empty( $history_terms ) ) {
 			foreach ( $history_terms as $k => $t ) {
+
+				if ( 'element_category' === $t['taxonomy'] ) {
+					$term = get_term( $t['term_id'], $t['taxonomy'] );
+
+					if ( ! is_wp_error( $term ) && ! empty( $term->count ) ) {
+						continue;
+					}
+				}
 
 				wp_delete_term( $t['term_id'], $t['taxonomy'] );
 				unset( $history_terms[ $k ] );
@@ -371,8 +380,22 @@ class Avada_Demo_Remove {
 		}
 
 		if ( $this->content_tracker->get( 'nav_menu_locations' ) ) {
+
+			$menu_locations = maybe_unserialize( $this->content_tracker->get( 'nav_menu_locations' ) );
+
+			foreach ( $menu_locations as $location => $menu_id ) {
+
+				if ( 0 === $menu_id ) {
+					continue;
+				}
+
+				if ( ! term_exists( (int) $menu_id, 'nav_menu' ) ) {
+					unset( $menu_locations[ $location ] );
+				}
+			}
+
 			// Menu items are removed with the rest of the content.
-			set_theme_mod( 'nav_menu_locations', $this->content_tracker->get( 'nav_menu_locations' ) );
+			set_theme_mod( 'nav_menu_locations', $menu_locations );
 		}
 
 		$this->content_tracker->reset_stage( 'general_data' );

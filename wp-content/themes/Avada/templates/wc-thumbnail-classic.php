@@ -31,9 +31,11 @@ if ( Avada()->settings->get( 'woocommerce_disable_crossfade_effect' ) ) {
 	if ( ! empty( $gallery ) ) {
 		$gallery          = explode( ',', $gallery );
 		$first_image_id   = $gallery[0];
-		$attachment_image = wp_get_attachment_image( $first_image_id, $size, false, array(
-			'class' => 'hover-image',
-		) );
+		$attachment_image = wp_get_attachment_image(
+			$first_image_id, $size, false, array(
+				'class' => 'hover-image',
+			)
+		);
 	}
 }
 $thumb_image = get_the_post_thumbnail( $id, $size );

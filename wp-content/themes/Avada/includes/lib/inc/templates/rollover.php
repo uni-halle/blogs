@@ -36,7 +36,7 @@ $portfolio_link_icon_target = apply_filters( 'fusion_builder_portfolio_link_icon
 $post_permalink = ( ! $post_permalink ) ? get_permalink( $post_id ) : $post_permalink;
 
 // Check if theme options are used as base or if there is an override for post categories.
-if ( 'default' == $display_post_categories ) {
+if ( 'default' === $display_post_categories ) {
 	$display_post_categories = fusion_library()->get_option( 'cats_image_rollover' );
 } elseif ( 'enable' === $display_post_categories ) {
 	$display_post_categories = true;
@@ -206,7 +206,7 @@ $link_target = ( 'yes' === $link_icon_target || 'yes' === $post_links_target || 
 		<?php if ( class_exists( 'WooCommerce' ) && $woocommerce->cart && 'product' === get_post_type( $post_id ) ) : ?>
 			<?php $icon_class = ( $in_cart ) ? 'fusion-icon-check-square-o' : 'fusion-icon-spinner'; ?>
 			<div class="cart-loading">
-				<a href="<?php echo esc_url_raw( $woocommerce->cart->get_cart_url() ); ?>">
+				<a href="<?php echo esc_url_raw( wc_get_cart_url() ); ?>">
 					<i class="<?php echo esc_attr( $icon_class ); ?>"></i>
 					<div class="view-cart"><?php esc_html_e( 'View Cart', 'Avada' ); ?></div>
 				</a>

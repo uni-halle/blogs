@@ -75,9 +75,11 @@ class Fusion_Patcher_Client {
 		$url = add_query_arg( $args, self::$remote_patches_uri );
 
 		// Get the server response.
-		$response = wp_remote_get( $url, array(
-			'user-agent' => 'fusion-patcher-client',
-		) );
+		$response = wp_remote_get(
+			$url, array(
+				'user-agent' => 'fusion-patcher-client',
+			)
+		);
 
 		// Return false if we couldn't get to the server.
 		if ( is_wp_error( $response ) ) {

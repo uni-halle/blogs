@@ -109,7 +109,7 @@ function avada_options_section_header( $sections ) {
 							'Navigation'   => esc_html__( 'Navigation', 'Avada' ),
 							'Leave Empty'  => esc_html__( 'Leave Empty', 'Avada' ),
 						),
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'header_position',
@@ -150,7 +150,7 @@ function avada_options_section_header( $sections ) {
 							'Navigation'   => esc_html__( 'Navigation', 'Avada' ),
 							'Leave Empty'  => esc_html__( 'Leave Empty', 'Avada' ),
 						),
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'header_position',
@@ -192,7 +192,7 @@ function avada_options_section_header( $sections ) {
 							'Banner'             => esc_html__( 'Banner', 'Avada' ),
 							'None'               => esc_html__( 'Leave Empty', 'Avada' ),
 						),
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'header_position',
@@ -212,7 +212,7 @@ function avada_options_section_header( $sections ) {
 						'id'          => 'header_number',
 						'default'     => 'Call Us Today! 1.555.555.555',
 						'type'        => 'text',
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'header_position',
@@ -247,7 +247,7 @@ function avada_options_section_header( $sections ) {
 						'id'          => 'header_email',
 						'default'     => 'info@yourdomain.com',
 						'type'        => 'text',
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'header_position',
@@ -282,7 +282,7 @@ function avada_options_section_header( $sections ) {
 						'id'          => 'header_tagline',
 						'default'     => 'Insert Tagline Here',
 						'type'        => 'textarea',
-						'class'		  => 'fusion-gutter-and-or-and',
+						'class'       => 'fusion-gutter-and-or-and',
 						'required'    => array(
 							array(
 								'setting'  => 'header_v4_content',
@@ -535,7 +535,7 @@ function avada_options_section_header( $sections ) {
 						'id'          => 'header_border_color',
 						'default'     => '#e5e5e5',
 						'type'        => 'color-alpha',
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'header_position',
@@ -597,7 +597,7 @@ function avada_options_section_header( $sections ) {
 						'choices'     => array(
 							'units' => array( 'px', 'em' ),
 						),
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'header_position',
@@ -617,7 +617,7 @@ function avada_options_section_header( $sections ) {
 						'id'          => 'tagline_font_color',
 						'default'     => '#747474',
 						'type'        => 'color',
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'header_position',
@@ -690,7 +690,7 @@ function avada_options_section_header( $sections ) {
 						'label'       => esc_html__( 'Sticky Header Animation', 'Avada' ),
 						'description' => esc_html__( 'Turn on to allow the sticky header to animate to a smaller height when activated. Only works with header v1 - v3, v6 and v7.', 'Avada' ),
 						'id'          => 'header_sticky_shrinkage',
-						'default'     => '1',
+						'default'     => '0',
 						'type'        => 'switch',
 						'required'    => array(
 							array(
@@ -772,7 +772,7 @@ function avada_options_section_header( $sections ) {
 						'description' => esc_html__( 'Controls the color for main menu text in the sticky header.', 'Avada' ),
 						'id'          => 'header_sticky_menu_color',
 						'type'        => 'color',
-						'default'     => ( isset( $settings['menu_first_color'] ) && ! empty( $settings['menu_first_color'] ) ) ? $settings['menu_first_color'] : '#333333',
+						'default'     => ( isset( $settings['nav_typography']['color'] ) && ! empty( $settings['nav_typography']['color'] ) ) ? $settings['nav_typography']['color'] : '#333333',
 						'required'    => array(
 							array(
 								'setting'  => 'header_sticky',
@@ -809,7 +809,7 @@ function avada_options_section_header( $sections ) {
 						'label'       => esc_html__( 'Sticky Header Navigation Font Size', 'Avada' ),
 						'description' => esc_html__( 'Controls the font size of the menu items in the sticky header.', 'Avada' ),
 						'id'          => 'header_sticky_nav_font_size',
-						'default'     => ( isset( $settings['nav_font_size'] ) && ! empty( $settings['nav_font_size'] ) ) ? $settings['nav_font_size'] : '14px',
+						'default'     => ( isset( $settings['nav_typography']['font-size'] ) && ! empty( $settings['nav_typography']['font-size'] ) ) ? $settings['nav_typography']['font-size'] : '14px',
 						'type'        => 'dimension',
 						'choices'     => array(
 							'units' => array( 'px', 'em' ),

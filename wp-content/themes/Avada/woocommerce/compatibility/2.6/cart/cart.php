@@ -15,7 +15,7 @@ wc_print_notices();
 
 do_action( 'woocommerce_before_cart' ); ?>
 
-<form action="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" method="post">
+<form action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 
 <?php do_action( 'woocommerce_before_cart_table' ); ?>
 
@@ -114,7 +114,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 		?>
 		<tr class="avada-cart-actions">
 			<td colspan="6" class="actions">
-			
+
 				<?php if ( wc_coupons_enabled() ) { ?>
 					<div class="coupon">
 
@@ -122,7 +122,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 						<?php do_action( 'woocommerce_cart_coupon' ); ?>
 					</div>
-				<?php } ?>				
+				<?php } ?>
 
 				<input type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update Cart', 'woocommerce' ); ?>" />
 

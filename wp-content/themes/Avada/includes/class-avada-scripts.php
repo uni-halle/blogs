@@ -238,7 +238,7 @@ class Avada_Scripts {
 				'avada-sliding-bar',
 				$js_folder_url . '/general/avada-sliding-bar.js',
 				$js_folder_path . '/general/avada-sliding-bar.js',
-				array( 'jquery', 'jquery-easing' ),
+				array( 'modernizr', 'jquery', 'jquery-easing' ),
 				self::$version,
 				true,
 			);
@@ -384,7 +384,7 @@ class Avada_Scripts {
 				$js_folder_url . '/library/jquery.nicescroll.js',
 				$js_folder_path . '/library/jquery.nicescroll.js',
 				array( 'jquery' ),
-				'3.5.0',
+				'3.7.4',
 				true,
 			);
 			$scripts[] = array(
@@ -433,7 +433,7 @@ class Avada_Scripts {
 			Fusion_Dynamic_CSS::enqueue_style( Avada::$template_dir_path . '/assets/css/shared.min.css', Avada::$template_dir_url . '/assets/css/shared.min.css' );
 		}
 
-		if ( Avada()->settings->get( 'status_lightbox' )  && ! class_exists( 'FusionBuilder' ) ) {
+		if ( Avada()->settings->get( 'status_lightbox' ) && ! class_exists( 'FusionBuilder' ) ) {
 			Fusion_Dynamic_CSS::enqueue_style( Avada::$template_dir_path . '/assets/css/ilightbox.min.css', Avada::$template_dir_url . '/assets/css/ilightbox.min.css' );
 		}
 
@@ -482,8 +482,8 @@ class Avada_Scripts {
 					'sticky_header_shrinkage'    => Avada()->settings->get( 'header_sticky_shrinkage' ),
 					'nav_height'                 => (int) Avada()->settings->get( 'nav_height' ),
 					'nav_highlight_border'       => ( 'bar' === Avada()->settings->get( 'menu_highlight_style' ) ) ? (int) Avada()->settings->get( 'nav_highlight_border' ) : '0',
-					'logo_margin_top'            => Avada()->settings->get( 'logo_margin', 'top' ),
-					'logo_margin_bottom'         => Avada()->settings->get( 'logo_margin', 'bottom' ),
+					'logo_margin_top'            => ( '' !== Avada()->settings->get( 'logo', 'url' ) || '' !== Avada()->settings->get( 'logo_retina', 'url' ) ) ? Avada()->settings->get( 'logo_margin', 'top' ) : '0px',
+					'logo_margin_bottom'         => ( '' !== Avada()->settings->get( 'logo', 'url' ) || '' !== Avada()->settings->get( 'logo_retina', 'url' ) ) ? Avada()->settings->get( 'logo_margin', 'bottom' ) : '0px',
 					'layout_mode'                => strtolower( $layout ),
 					'header_padding_top'         => Avada()->settings->get( 'header_padding', 'top' ),
 					'header_padding_bottom'      => Avada()->settings->get( 'header_padding', 'bottom' ),
@@ -561,21 +561,7 @@ class Avada_Scripts {
 				'avadaSideHeaderVars',
 				array(
 					'side_header_break_point' => (int) Avada()->settings->get( 'side_header_break_point' ),
-					'layout_mode'             => strtolower( $layout ),
-					'boxed_offset_top'        => Avada()->settings->get( 'margin_offset', 'top' ),
-					'boxed_offset_bottom'     => Avada()->settings->get( 'margin_offset', 'bottom' ),
-					'offset_scroll'           => Avada()->settings->get( 'offset_scroll' ),
 					'footer_special_effects'  => Avada()->settings->get( 'footer_special_effects' ),
-				),
-			),
-			array(
-				'avada-side-header-height',
-				'avadaSideHeaderHeightVars',
-				array(
-					'side_header_break_point' => (int) Avada()->settings->get( 'side_header_break_point' ),
-					'layout_mode'             => strtolower( $layout ),
-					'boxed_offset_top'        => Avada()->settings->get( 'margin_offset', 'top' ),
-					'boxed_offset_bottom'     => Avada()->settings->get( 'margin_offset', 'bottom' ),
 				),
 			),
 			array(
@@ -787,7 +773,7 @@ class Avada_Scripts {
 	 */
 	public function admin_styles() {
 
-		$font_url = untrailingslashit( FUSION_LIBRARY_URL ) . '/assets/fonts/icomoon';
+		$font_url = FUSION_LIBRARY_URL . '/assets/fonts/icomoon';
 		$font_url = str_replace( array( 'http://', 'https://' ), '//', $font_url );
 		?>
 		<style type="text/css">

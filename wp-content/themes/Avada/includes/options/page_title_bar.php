@@ -40,7 +40,7 @@ function avada_options_section_page_title_bar( $sections ) {
 				'fields'      => array(
 					'page_title_bar' => array(
 						'label'       => esc_html__( 'Page Title Bar', 'Avada' ),
-						'description' => esc_html__( 'Controls how the page title bar displays. ', 'Avada' ),
+						'description' => esc_html__( 'Controls how the page title bar displays.', 'Avada' ),
 						'id'          => 'page_title_bar',
 						'default'     => 'bar_and_content',
 						'choices'     => array(

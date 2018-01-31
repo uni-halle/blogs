@@ -34,11 +34,11 @@ function fusion_builder_redux_shortcode_styling( $sections ) {
 			'icon'     => 'el-icon-cog',
 			'fields'   => array(
 				'shortcode_styling' => array(
-						'label'       => '',
-						'description' => '<div class="fusion-redux-important-notice">' . sprintf( __( '<strong>IMPORTANT NOTE:</strong> Fusion Builder Elements settigns are moved to Fusion Builder Elements options panel <a href="%s" target="_blank">here</a>.', 'Avada' ), admin_url( 'admin.php?page=fusion-element-options' ) ) . '</div>',
-						'id'          => 'shortcode_styling',
-						'type'        => 'custom',
-						'option_name' => $option_name,
+					'label'       => '',
+					'description' => '<div class="fusion-redux-important-notice">' . sprintf( __( '<strong>IMPORTANT NOTE:</strong> Fusion Builder Elements settigns are moved to Fusion Builder Elements options panel <a href="%s" target="_blank">here</a>.', 'Avada' ), admin_url( 'admin.php?page=fusion-element-options' ) ) . '</div>',
+					'id'          => 'shortcode_styling',
+					'type'        => 'custom',
+					'option_name' => $option_name,
 				),
 			),
 		);

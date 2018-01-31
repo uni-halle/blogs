@@ -15,7 +15,6 @@
   -webkit-box-shadow: none !important;
 }
 .transition {
-  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
 .select3-drop {
@@ -31,12 +30,12 @@
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
 }
-.select3-drop.select3-drop-active.select3-drop-above,
-.select3-drop.select3-drop-active {
+.select3-drop.select3-drop-active,
+.select3-drop.select3-drop-active.select3-drop-above {
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
-.admin-color-fresh .select3-drop.select3-drop-active.select3-drop-above,
-.admin-color-fresh .select3-drop.select3-drop-active {
+.admin-color-fresh .select3-drop.select3-drop-active,
+.admin-color-fresh .select3-drop.select3-drop-active.select3-drop-above {
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 .select3-drop .select3-results {
@@ -241,8 +240,8 @@
   padding-left: 0;
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-sidebar .fusionredux-group-menu > li.active > a:after,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-sidebar .fusionredux-group-menu li.activeChild > a:after,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-sidebar .fusionredux-group-menu > li.fusion-section-hover > a:after {
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-sidebar .fusionredux-group-menu > li.fusion-section-hover > a:after,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-sidebar .fusionredux-group-menu li.activeChild > a:after {
   right: 0;
   border: 9px solid transparent;
   content: " ";
@@ -271,7 +270,7 @@
 }
 .fusionredux-container #fusionredux-form-wrapper .fusion-redux-sidebar-head .fusion-redux-logo {
   display: inline-block;
-  background-image: url($themefusion_logo);
+  background-image: url("$themefusion_logo");
   background-size: contain;
   background-repeat: no-repeat;
   height: 110px;
@@ -300,11 +299,11 @@
   padding: 8px;
   width: 100%;
 }
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main input:not([type="radio"]),
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main select,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .select3-container .select3-choice,
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .button,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .meida_upload_button {
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .meida_upload_button,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .select3-container .select3-choice,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main input:not([type="radio"]),
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main select {
   height: 31px;
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .select3-container.select3-allowclear .select3-choice .select3-chosen {
@@ -354,7 +353,6 @@
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-field[data-id="header_layout"] ul.fusionredux-image-select li {
   float: right;
   max-width: 50%;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-field[data-id="header_layout"] ul.fusionredux-image-select li:hover {
@@ -437,28 +435,7 @@
   background-color: $color_accent_2 !important;
   color: $color_text_menu_top_level_active !important;
 }
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .wp-color-result {
-  height: 31px;
-  box-sizing: border-box;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .wp-color-result:after {
-  line-height: 29px;
-  border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-  -webkit-border-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .wp-picker-container {
-  padding-top: 0;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .wp-picker-container .wp-picker-input-wrap input {
-  height: 31px;
-}
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .select_wrapper {
-  max-width: -webkit-calc(50% - 10px) !important;
   max-width: calc(50% - 10px) !important;
   min-width: 160px !important;
   height: 67px;
@@ -479,159 +456,6 @@
   margin-left: 0 !important;
   padding: 0 10px !important;
 }
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container {
-  padding: 0;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-color-result,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-color-result,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .wp-color-result {
-  box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color input[type="text"],
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha input[type="text"],
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container input[type="text"] {
-  width: 127px !important;
-  margin: 0 3px !important;
-  -webkit-transition: none;
-  transition: none;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color input.wp-picker-default,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha input.wp-picker-default,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container input.wp-picker-default {
-  font-size: 12px;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-palette-container,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-palette-container,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-palette-container {
-  width: 250px !important;
-  bottom: 8px;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-palette-container .iris-palette,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-palette-container .iris-palette,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-palette-container .iris-palette {
-  width: 19px !important;
-  height: 19px !important;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker {
-  width: -webkit-calc(100% - 2px) !important;
-  width: calc(100% - 2px) !important;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker .iris-square,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker .iris-square,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker .iris-square,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker .iris-slider,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker .iris-slider,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker .iris-slider,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker .iris-square-inner,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker .iris-square-inner,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker .iris-square-inner,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker .iris-palette,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker .iris-palette,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker .iris-palette {
-  box-shadow: none !important;
-  -webkit-box-shadow: none !important;
-  border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-  -webkit-border-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  border: 1px solid #e7e7e7;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker .iris-square-inner,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker .iris-square-inner,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker .iris-square-inner,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker .iris-palette,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker .iris-palette,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker .iris-palette {
-  box-sizing: border-box;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker .iris-square-inner,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker .iris-square-inner,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker .iris-square-inner {
-  border: none;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker .iris-picker-inner .iris-square,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker .iris-picker-inner .iris-square,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker .iris-picker-inner .iris-square {
-  margin: 0;
-  width: 247px !important;
-  height: 198px !important;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker .iris-picker-inner .iris-square-value,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker .iris-picker-inner .iris-square-value,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker .iris-picker-inner .iris-square-value {
-  height: 0 !important;
-  width: 0 !important;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker .iris-picker-inner > .iris-strip,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker .iris-picker-inner > .iris-strip,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker .iris-picker-inner > .iris-strip {
-  width: 25px !important;
-  left: 10px;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker .iris-picker-inner > .iris-strip.iris-alpha-slider,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker .iris-picker-inner > .iris-strip.iris-alpha-slider,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker .iris-picker-inner > .iris-strip.iris-alpha-slider {
-  margin-left: 23px !important;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker .iris-picker-inner > .iris-strip .iris-slider-offset,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker .iris-picker-inner > .iris-strip .iris-slider-offset,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker .iris-picker-inner > .iris-strip .iris-slider-offset {
-  top: 14px;
-  bottom: 0;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker .iris-picker-inner > .iris-strip .ui-slider-handle,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker .iris-picker-inner > .iris-strip .ui-slider-handle,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker .iris-picker-inner > .iris-strip .ui-slider-handle {
-  width: 23px;
-  border: 4px solid #fff !important;
-  border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-  -webkit-border-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .iris-picker .iris-picker-inner > .iris-strip .ui-slider-handle:before,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .iris-picker .iris-picker-inner > .iris-strip .ui-slider-handle:before,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .iris-picker .iris-picker-inner > .iris-strip .ui-slider-handle:before {
-  border-radius: 0 !important;
-  -moz-border-radius: 0 !important;
-  -webkit-border-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-color-result,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-color-result,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .wp-color-result {
-  margin-bottom: 1px;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-color-result > span,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-color-result > span,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-typography-container .wp-picker-container .wp-color-result > span {
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-active input[type="text"] {
-  width: 174px !important;
-  margin: 0 3px !important;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-active .iris-picker .iris-picker-inner > .iris-strip {
-  left: 10px;
-  margin-left: 0 !important;
-}
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-active .iris-picker .iris-picker-inner > .iris-alpha-slider {
-  margin-left: 23px !important;
-}
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-repeater .fusionredux-repeater-accordion-repeater .ui-accordion-content,
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-repeater .fusionredux-repeater-accordion-repeater h3.ui-accordion-header {
   box-shadow: none !important;
@@ -650,6 +474,203 @@
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-repeater .fusionredux-repeater-accordion-repeater h4 {
   margin: 5px 0;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container {
+  width: 317px;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container.wp-picker-active,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-active,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container.wp-picker-active {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container.wp-picker-active .wp-picker-input-wrap,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-active .wp-picker-input-wrap,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container.wp-picker-active .wp-picker-input-wrap {
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 200px;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container.wp-picker-active .wp-picker-input-wrap label,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-active .wp-picker-input-wrap label,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container.wp-picker-active .wp-picker-input-wrap label {
+  width: 100%;
+  padding-right: 3px;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container.wp-picker-active .wp-picker-input-wrap input[type="text"],
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-active .wp-picker-input-wrap input[type="text"],
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container.wp-picker-active .wp-picker-input-wrap input[type="text"] {
+  margin-right: 5px;
+  width: 100% !important;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .wp-picker-holder,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .wp-picker-holder,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .wp-picker-holder {
+  width: 100%;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-picker,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-picker,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-picker {
+  width: 100% !important;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-picker .iris-palette,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-picker .iris-palette,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-picker .iris-palette,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-picker .iris-slider,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-picker .iris-slider,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-picker .iris-slider,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-picker .iris-square,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-picker .iris-square,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-picker .iris-square,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-picker .iris-square-inner,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-picker .iris-square-inner,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-picker .iris-square-inner {
+  box-shadow: none;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-picker .iris-palette,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-picker .iris-palette,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-picker .iris-palette,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-picker .iris-slider,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-picker .iris-slider,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-picker .iris-slider,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-picker .iris-square,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-picker .iris-square,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-picker .iris-square {
+  border: 1px solid #ddd;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-picker .iris-square-inner,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-picker .iris-square-inner,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-picker .iris-square-inner {
+  border-radius: 0;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-picker .iris-picker-inner,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-picker .iris-picker-inner,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-picker .iris-picker-inner {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-picker .iris-picker-inner .iris-slider,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-picker .iris-picker-inner .iris-slider,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-picker .iris-picker-inner .iris-slider {
+  width: 25px !important;
+  margin-left: 15px !important;
+  height: 100% !important;
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-picker .iris-picker-inner .iris-slider .ui-slider-handle,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-picker .iris-picker-inner .iris-slider .ui-slider-handle,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-picker .iris-picker-inner .iris-slider .ui-slider-handle {
+  margin-bottom: -8px;
+  right: 0;
+  left: -3px;
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-picker .iris-picker-inner .iris-square,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-picker .iris-picker-inner .iris-square,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-picker .iris-picker-inner .iris-square {
+  width: calc(100% - 45px) !important;
+  margin-right: 0;
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-picker.iris-border,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-picker.iris-border,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-picker.iris-border {
+  padding-bottom: 30px !important;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-palette-container,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-palette-container,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-palette-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: calc(100% - 45px) !important;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-palette-container > .iris-palette,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-palette-container > .iris-palette,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-palette-container > .iris-palette {
+  border: 1px solid #e7e7e7;
+  margin-left: 2px !important;
+  margin-right: 0 !important;
+  width: 19px !important;
+  height: 19px !important;
+  border-radius: 0 !important;
+  -moz-border-radius: 0 !important;
+  -webkit-border-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container .iris-palette-container > .iris-palette:first-child,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container .iris-palette-container > .iris-palette:first-child,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container .iris-palette-container > .iris-palette:first-child {
+  margin-left: 0 !important;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container.wp-picker-alpha-container,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-alpha-container,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container.wp-picker-alpha-container {
+  width: 365px;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container.wp-picker-alpha-container .iris-picker .iris-square,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-alpha-container .iris-picker .iris-square,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container.wp-picker-alpha-container .iris-picker .iris-square {
+  width: calc(100% - 85px) !important;
+  margin-right: 15px;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container.wp-picker-alpha-container .iris-palette-container > .iris-palette,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-alpha-container .iris-palette-container > .iris-palette,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container.wp-picker-alpha-container .iris-palette-container > .iris-palette {
+  width: 20px !important;
+  height: 20px !important;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container.wp-picker-alpha-container .iris-palette-container > .iris-palette:first-child,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-alpha-container .iris-palette-container > .iris-palette:first-child,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container.wp-picker-alpha-container .iris-palette-container > .iris-palette:first-child {
+  margin-left: 0 !important;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container.wp-picker-alpha-container .wp-picker-input-wrap,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-alpha-container .wp-picker-input-wrap,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container.wp-picker-alpha-container .wp-picker-input-wrap {
+  width: 249px;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container.wp-picker-alpha-container .wp-picker-input-wrap label input[type="text"],
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-alpha-container .wp-picker-input-wrap label input[type="text"],
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container.wp-picker-alpha-container .wp-picker-input-wrap label input[type="text"] {
+  width: 100% !important;
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .upload_button_div .button {
   border-radius: 0;
@@ -725,7 +746,6 @@
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-spacing .field-spacing-input {
   margin-right: 5px !important;
-  width: -webkit-calc(25% - 5px);
   width: calc(25% - 5px);
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-spacing .field-spacing-input.input-append .add-on,
@@ -761,7 +781,6 @@
   padding-bottom: 3px;
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-spacing .field-spacing-input input.mini[type="text"] {
-  width: -webkit-calc(100% - 33px);
   width: calc(100% - 33px);
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main #fusionredux-defaults-section {
@@ -777,15 +796,15 @@
   line-height: 30px;
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .button-secondary,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .ui-button,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .cb-enable,
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .cb-disable,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .ui-icon,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .ui-spinner-button,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main input,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .cb-enable,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .select3-arrow,
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .select3-choice,
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .select3-drop,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .select3-arrow {
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .ui-button,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .ui-icon,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .ui-spinner-button,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main input {
   border-radius: 0 !important;
   -moz-border-radius: 0 !important;
   -webkit-border-radius: 0 !important;
@@ -795,7 +814,6 @@
   border-top-right-radius: 0 !important;
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
-  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .button-primary,
@@ -810,9 +828,9 @@
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .ui-buttonset .ui-button:last-child {
   border-right: 1px solid;
 }
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main input:not(.button-primary),
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .select3-choice,
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .select3-drop,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main input:not(.button-primary),
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main textarea {
   border-radius: 0 !important;
   -moz-border-radius: 0 !important;
@@ -824,17 +842,16 @@
   background: #f4f2f2 !important;
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
-  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main input:not(.button-primary):active,
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .select3-choice:active,
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .select3-drop:active,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main input:not(.button-primary):active,
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main textarea:active,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main input:not(.button-primary):focus,
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .select3-choice:focus,
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .select3-drop:focus,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main input:not(.button-primary):focus,
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main textarea:focus {
   border: 1px solid rgba(0, 0, 0, 0.11);
 }
@@ -852,7 +869,6 @@
   background: #f4f2f2 !important;
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
-  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
   border-left: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -923,8 +939,7 @@
   margin-right: 25px;
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-slider .fusionredux-slider-container {
-  margin: 10px 0 10px 0;
-  width: -webkit-calc(100% - 130px);
+  margin: 10px 0;
   width: calc(100% - 130px);
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-slider-container.noUi-target.noUi-connect {
@@ -951,8 +966,8 @@
   background-image: none !important;
   box-shadow: none !important;
 }
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-slider-container .noUi-handle:before,
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-slider-container .noUi-handle:after {
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-slider-container .noUi-handle:after,
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-slider-container .noUi-handle:before {
   content: none;
   display: none;
 }
@@ -993,7 +1008,6 @@
   *z-index: -1;
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-slider-container .noUi-state-tap .noUi-origin {
-  -webkit-transition: left 0.3s, top 0.3s;
   transition: left 0.3s, top 0.3s;
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-slider-container .noUi-state-drag * {
@@ -1010,7 +1024,6 @@
   top: -5px;
   cursor: ew-resize;
   border-radius: 100%;
-  -webkit-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   border: 1px solid;
 }
@@ -1034,11 +1047,11 @@
   height: 2px;
   background: #c8c8c8;
 }
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-slider-container .noUi-origin[style^="left: 0"] .noUi-handle {
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-slider-container .noUi-origin[style^="left:0"] .noUi-handle {
   background-color: #fff;
   border: 2px solid #c8c8c8;
 }
-.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-slider-container .noUi-origin[style^="left: 0"] .noUi-handle.noUi-active {
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-slider-container .noUi-origin[style^="left:0"] .noUi-handle.noUi-active {
   border-width: 1px;
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-slider-container .noUi-target {
@@ -1426,18 +1439,18 @@
 .fusionredux-container #fusionredux-form-wrapper #info-h6_typography_info + table tbody tr:nth-child(2) fieldset {
   padding-bottom: 0;
 }
-.fusionredux-container #fusionredux-form-wrapper #info-h1_typography_info + table tbody tr:nth-child(3) fieldset,
-.fusionredux-container #fusionredux-form-wrapper #info-h2_typography_info + table tbody tr:nth-child(3) fieldset,
-.fusionredux-container #fusionredux-form-wrapper #info-h3_typography_info + table tbody tr:nth-child(3) fieldset,
-.fusionredux-container #fusionredux-form-wrapper #info-h4_typography_info + table tbody tr:nth-child(3) fieldset,
-.fusionredux-container #fusionredux-form-wrapper #info-h5_typography_info + table tbody tr:nth-child(3) fieldset,
-.fusionredux-container #fusionredux-form-wrapper #info-h6_typography_info + table tbody tr:nth-child(3) fieldset,
 .fusionredux-container #fusionredux-form-wrapper #info-h1_typography_info + table tbody tr:nth-child(3) .fusionredux_field_th,
 .fusionredux-container #fusionredux-form-wrapper #info-h2_typography_info + table tbody tr:nth-child(3) .fusionredux_field_th,
 .fusionredux-container #fusionredux-form-wrapper #info-h3_typography_info + table tbody tr:nth-child(3) .fusionredux_field_th,
 .fusionredux-container #fusionredux-form-wrapper #info-h4_typography_info + table tbody tr:nth-child(3) .fusionredux_field_th,
 .fusionredux-container #fusionredux-form-wrapper #info-h5_typography_info + table tbody tr:nth-child(3) .fusionredux_field_th,
-.fusionredux-container #fusionredux-form-wrapper #info-h6_typography_info + table tbody tr:nth-child(3) .fusionredux_field_th {
+.fusionredux-container #fusionredux-form-wrapper #info-h6_typography_info + table tbody tr:nth-child(3) .fusionredux_field_th,
+.fusionredux-container #fusionredux-form-wrapper #info-h1_typography_info + table tbody tr:nth-child(3) fieldset,
+.fusionredux-container #fusionredux-form-wrapper #info-h2_typography_info + table tbody tr:nth-child(3) fieldset,
+.fusionredux-container #fusionredux-form-wrapper #info-h3_typography_info + table tbody tr:nth-child(3) fieldset,
+.fusionredux-container #fusionredux-form-wrapper #info-h4_typography_info + table tbody tr:nth-child(3) fieldset,
+.fusionredux-container #fusionredux-form-wrapper #info-h5_typography_info + table tbody tr:nth-child(3) fieldset,
+.fusionredux-container #fusionredux-form-wrapper #info-h6_typography_info + table tbody tr:nth-child(3) fieldset {
   padding-top: 0;
 }
 .fusionredux-container #fusionredux-form-wrapper .fusionredux-notice-field {
@@ -1540,7 +1553,6 @@
 }
 .fusionredux-container .fusion_theme_options-custom_fonts fieldset.fusionredux-field[data-id="custom_fonts"] fieldset.fusionredux-container-media input[type="text"] {
   display: inline-block;
-  max-width: -webkit-calc(100% - 80px);
   max-width: calc(100% - 80px);
   float: left;
   height: 31px;
@@ -1553,9 +1565,9 @@
 .fusionredux-container .fusion_theme_options-custom_fonts fieldset.fusionredux-field[data-id="custom_fonts"] fieldset.fusionredux-container-media .upload_button_div span {
   margin-top: 0;
 }
+.fusionredux-container .notice-green,
 .fusionredux-container .notice-red,
-.fusionredux-container .notice-yellow,
-.fusionredux-container .notice-green {
+.fusionredux-container .notice-yellow {
   padding-left: 50px;
   padding-right: 50px;
 }
@@ -1563,7 +1575,6 @@
   border: 1px solid #dedede;
 }
 .fusion-redux-search .fusionredux-sidebar {
-  -webkit-transition: all 250ms ease-in-out;
   transition: all 250ms ease-in-out;
   opacity: 0.2;
 }
@@ -1573,25 +1584,25 @@
 .fusionredux-container-image_select ul.fusionredux-image-select li {
   padding-right: 5px;
 }
-.fusionredux-container-image_select .fusionredux-image-select img,
-.fusionredux-container-image_select .fusionredux-image-select-selected img,
 .fusionredux-container-image_select .fusionredux-image-select .tiles,
-.fusionredux-container-image_select .fusionredux-image-select-selected .tiles {
+.fusionredux-container-image_select .fusionredux-image-select img,
+.fusionredux-container-image_select .fusionredux-image-select-selected .tiles,
+.fusionredux-container-image_select .fusionredux-image-select-selected img {
   border-width: 1px;
 }
 .fusionredux-container-image_select .fusionredux-image-select-selected img {
   border-width: 3px !important;
 }
-.fusion-redux-important-notice,
-.fusion-colors-important-notice {
+.fusion-colors-important-notice,
+.fusion-redux-important-notice {
   position: relative;
   padding: 2em;
   font-style: italic;
   font-size: 1.1em;
   line-height: 1.5;
 }
-.fusion-redux-important-notice:before,
-.fusion-colors-important-notice:before {
+.fusion-colors-important-notice:before,
+.fusion-redux-important-notice:before {
   content: "";
   background: $color_accent_1;
   opacity: 0.1;
@@ -1601,12 +1612,12 @@
   top: 0;
   left: 0;
 }
-.fusion-redux-important-notice strong,
-.fusion-colors-important-notice strong {
+.fusion-colors-important-notice strong,
+.fusion-redux-important-notice strong {
   color: $color_accent_1;
 }
-.fusion-redux-important-notice a,
-.fusion-colors-important-notice a {
+.fusion-colors-important-notice a,
+.fusion-redux-important-notice a {
   position: relative;
 }
 .fusion-tooltip.qtip-rounded {
@@ -1624,7 +1635,7 @@
 }
 .fusionredux-main .fusionredux-option-image {
   max-width: 425px;
-  margin-right: 0px;
+  margin-right: 0;
   box-sizing: border-box;
 }
 .fusion_theme_options-custom_color_scheme_options .fusionredux_field_th {
@@ -1636,22 +1647,20 @@
 .fusion-custom-color-scheme .color-toggle {
   height: auto;
   opacity: 1;
-  -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
 .fusion-custom-color-scheme .color-toggle.color-hidden {
-  height: 0px;
+  height: 0;
   overflow: hidden;
   opacity: 0;
-  padding-top: 0px;
-  -webkit-transition: all 0.5s ease;
+  padding-top: 0;
   transition: all 0.5s ease;
 }
 .fusion-custom-color-scheme textarea {
   height: 140px;
 }
 .form-table td .fusion-custom-color-scheme p {
-  margin: 0 0 1em 0;
+  margin: 0 0 1em;
 }
 .fusion-custom-color-scheme > div {
   padding-top: 25px;
@@ -1688,7 +1697,7 @@
   width: 180px;
 }
 #fusionredux-form-wrapper .fusionredux-main .custom_color_save_button {
-  margin-top: 0px;
+  margin-top: 0;
 }
 #fusionredux-form-wrapper .fusionredux-main #fusion-save-custom-color .custom_color_save_button {
   margin-top: 1px;
@@ -1703,7 +1712,6 @@
   width: 100px!important;
   text-align: center;
   background: #f4f2f2 !important;
-  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
   border: 1px solid rgba(0, 0, 0, 0.05);
   margin: 1px;
@@ -1726,7 +1734,6 @@
     float: none;
   }
   .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-spacing .field-spacing-input {
-    width: -webkit-calc(35% - 5px);
     width: calc(35% - 5px);
   }
   .fusionredux_field_search {
@@ -1741,8 +1748,8 @@
   }
 }
 @media only screen and (max-width: 1200px) {
-  .fusionredux-container #fusionredux-form-wrapper .form-table th,
   .fusionredux-container #fusionredux-form-wrapper .form-table td,
+  .fusionredux-container #fusionredux-form-wrapper .form-table th,
   .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-field[data-id="header_layout"] .fusionredux_field_th {
     display: block;
     width: 100% !important;
@@ -1772,9 +1779,6 @@
     height: 17px !important;
     margin-left: 1.4px !important;
   }
-  .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-active input[type="text"] {
-    width: 127px !important;
-  }
 }
 @media only screen and (max-width: 1030px) {
   .fusionredux-container .fusionredux-action_bar .spinner {
@@ -1793,15 +1797,6 @@
   }
   .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .wp-color-result {
     height: 43px;
-  }
-  .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-active .wp-picker-input-wrap {
-    margin-top: 9px;
-  }
-  .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-active .wp-picker-input-wrap input {
-    margin-top: 0;
-  }
-  .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color_alpha .wp-picker-container.wp-picker-active input[type="text"] {
-    margin-left: 0 !important;
   }
 }
 @media only screen and (max-width: 720px) {
@@ -1909,10 +1904,10 @@
 .rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-repeater .fusionredux-repeaters-remove {
   float: left;
 }
-.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .ui-accordion .ui-accordion-header .ui-icon,
-.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .control-section-fusionredux .ui-accordion .ui-accordion-header .ui-icon,
 .rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .control-panel-fusionredux .ui-accordion .ui-accordion-header .ui-icon,
-.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-metabox .ui-accordion .ui-accordion-header .ui-icon {
+.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .control-section-fusionredux .ui-accordion .ui-accordion-header .ui-icon,
+.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-metabox .ui-accordion .ui-accordion-header .ui-icon,
+.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .ui-accordion .ui-accordion-header .ui-icon {
   left: auto;
   right: 0.5em;
 }
@@ -1933,8 +1928,8 @@
 .rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .ui-buttonset .ui-button {
   border-right: 1px solid;
 }
-.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-spacing .field-spacing-input.input-prepend .add-on,
-.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-spacing .field-spacing-input.input-append .add-on {
+.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-spacing .field-spacing-input.input-append .add-on,
+.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-spacing .field-spacing-input.input-prepend .add-on {
   float: right;
   border-style: solid solid solid none !important;
   border-width: 1px 1px 1px medium !important;
@@ -1946,8 +1941,8 @@
   margin-right: 0;
 }
 .rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-sidebar .fusionredux-group-menu > li.active > a:after,
-.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-sidebar .fusionredux-group-menu li.activeChild > a:after,
-.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-sidebar .fusionredux-group-menu > li.fusion-section-hover > a:after {
+.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-sidebar .fusionredux-group-menu > li.fusion-section-hover > a:after,
+.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-sidebar .fusionredux-group-menu li.activeChild > a:after {
   left: 0;
   right: auto;
   border-color: transparent transparent transparent #fff;
@@ -1976,20 +1971,17 @@
   margin-left: 10px;
   margin-right: 0;
 }
-.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-field-container .ui-buttonset,
-.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-field-container .input_wrapper {
+.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-field-container .input_wrapper,
+.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-field-container .ui-buttonset {
   margin-left: 7px;
   margin-right: 0;
 }
 .rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-field-container .select_wrapper {
-  margin-left: 10px;
+  margin-left: 10px !important;
   margin-right: 0 !important;
 }
-.rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-field-container .wp-picker-container {
-  float: right;
-}
 .rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-field-container .input-prepend {
-  margin-left: 7px;
+  margin-left: 7px !important;
   margin-right: 0 !important;
 }
 .rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-field-container .fusionredux-image-select li {
@@ -1997,7 +1989,6 @@
   padding-right: 0;
 }
 .rtl .fusionredux-container #fusionredux-form-wrapper .fusionredux-field-container .field-spacing-input.input-prepend {
-  width: -webkit-calc(45% - 5px);
   width: calc(45% - 5px);
 }
 .rtl .fusionredux-container .fusionredux-action_bar .spinner {
@@ -2018,8 +2009,40 @@
   font-size: 10px;
   right: 40px;
 }
-.fusionredux-main .fusionredux-accordion-field .fusionredux-element-highlight {
-  top: -webkit-calc(50% - 12px);
+.fusionredux-main .fusionredux-element-highlight .fusionredux-accordion-field .fusionredux-element-highlight {
   top: calc(50% - 12px);
   right: 70px;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .button .wp-color-result-text {
+  height: 100%;
+  line-height: 30px;
+  border-radius: 0;
+}
+.fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-typography .wp-picker-container.wp-picker-active .wp-picker-input-wrap label {
+  padding-right: 15px;
+  margin-top: 0 !important;
+}
+.fusion-colorpicker-legacy .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container.wp-picker-active .wp-picker-input-wrap {
+  padding-left: 10px;
+  width: 190px;
+}
+.fusion-colorpicker-legacy .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .fusionredux-container-color .wp-picker-container.wp-picker-active .wp-picker-input-wrap input[type="text"] {
+  height: 32px;
+}
+.fusion-colorpicker-legacy .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .wp-picker-input-wrap input[type="text"] {
+  height: 32px;
+}
+.fusion-colorpicker-legacy .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .wp-picker-container .wp-color-result {
+  height: 31px;
+}
+.fusion-colorpicker-legacy .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .wp-picker-container .wp-color-result:after {
+  height: 31px;
+  line-height: 30.5px;
+  border-radius: 0;
+}
+.fusion-colorpicker-legacy .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .wp-picker-container.wp-picker-alpha-container .wp-picker-input-wrap {
+  width: 240px;
+}
+.fusion-colorpicker-legacy .fusionredux-container #fusionredux-form-wrapper .fusionredux-main .wp-picker-container.wp-picker-alpha-container .wp-picker-input-wrap input[type="text"] {
+  height: 32px;
 }

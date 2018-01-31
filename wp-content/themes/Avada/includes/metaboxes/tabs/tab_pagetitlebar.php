@@ -14,6 +14,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'Direct script access denied.' );
 }
 
+if ( ! function_exists( 'get_current_screen' ) ) {
+	include_once ABSPATH . 'wp-admin/includes/screen.php';
+}
+$screen = get_current_screen();
+
+// Regular PTB TO.
+$page_title_option_name = 'page_title_bar';
+
+if ( get_the_id() === (int) get_option( 'page_for_posts' ) ) {
+
+	// Blog page PTB.
+	$page_title_option_name = 'blog_show_page_title_bar';
+} elseif ( is_object( $screen ) && 'edit' === $screen->parent_base && 'post' === $screen->post_type ) {
+
+	// Blog archive/post PTB.
+	$page_title_option_name = 'blog_page_title_bar';
+}
+
+$page_title_default = Avada()->settings->get_default_description( $page_title_option_name, '', 'select' );
+$page_title_option  = Avada()->settings->get( $page_title_option_name );
+
 $this->select(
 	'page_title',
 	esc_attr__( 'Page Title Bar', 'Avada' ),
@@ -23,7 +44,7 @@ $this->select(
 		'yes_without_bar' => esc_attr__( 'Show Content Only', 'Avada' ),
 		'no'              => esc_attr__( 'Hide', 'Avada' ),
 	),
-	sprintf( esc_html__( 'Choose to show or hide the page title bar. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_bar', '', 'select' ) )
+	sprintf( esc_html__( 'Choose to show or hide the page title bar. %s', 'Avada' ), $page_title_default )
 );
 
 // Dependency check that page title bar not hidden.
@@ -34,7 +55,7 @@ $page_title_dependency = array(
 		'comparison' => '!=',
 	),
 );
-if ( 'hide' === Avada()->settings->get( 'page_title_bar' ) ) {
+if ( 'hide' === $page_title_option ) {
 	$page_title_dependency[] = array(
 		'field'      => 'page_title',
 		'value'      => 'default',
@@ -52,6 +73,7 @@ $this->radio_buttonset(
 		'none'        => esc_attr__( 'None', 'Avada' ),
 	),
 	sprintf( esc_html__( 'Choose to display the breadcrumbs, search bar or none. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_bar_bs', '', 'select' ) ),
+	'',
 	$page_title_dependency
 );
 
@@ -64,6 +86,7 @@ $this->radio_buttonset(
 		'no'      => esc_attr__( 'Hide', 'Avada' ),
 	),
 	sprintf( esc_html__( 'Choose to show or hide the page title bar text. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_bar_text', '', 'showhide' ) ),
+	'',
 	$page_title_dependency
 );
 
@@ -91,6 +114,7 @@ $this->radio_buttonset(
 		'right'   => esc_attr__( 'Right', 'Avada' ),
 	),
 	sprintf( esc_attr__( 'Choose the title and subhead text alignment. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_alignment', '', 'select' ) ),
+	'',
 	$page_title_text_dependency
 );
 
@@ -149,6 +173,7 @@ $this->radio_buttonset(
 		'no'      => esc_attr__( 'No', 'Avada' ),
 	),
 	sprintf( esc_html__( 'Choose to set the page title content to 100&#37; of the browser width. Select "No" for site width. Only works with wide layout mode. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_100_width', '', 'yesno' ) ),
+	'',
 	$page_title_dependency
 );
 
@@ -173,7 +198,7 @@ $page_title_bg_dependency[] = array(
 	'value'      => 'yes_without_bar',
 	'comparison' => '!=',
 );
-if ( 'content_only' == Avada()->settings->get( 'page_title_bar' ) ) {
+if ( 'content_only' == $page_title_option ) {
 	$page_title_bg_dependency[] = array(
 		'field'      => 'page_title',
 		'value'      => 'default',
@@ -181,10 +206,12 @@ if ( 'content_only' == Avada()->settings->get( 'page_title_bar' ) ) {
 	);
 }
 
-$ptb_bg_color = Fusion_Color::new_color( array(
-	'color' => Avada()->settings->get( 'page_title_bg_color' ),
-	'fallback' => '#F6F6F6',
-) );
+$ptb_bg_color = Fusion_Color::new_color(
+	array(
+		'color' => Avada()->settings->get( 'page_title_bg_color' ),
+		'fallback' => '#F6F6F6',
+	)
+);
 $this->color(
 	'page_title_bar_bg_color',
 	esc_attr__( 'Page Title Bar Background Color', 'Avada' ),
@@ -194,10 +221,12 @@ $this->color(
 	$ptb_bg_color->color
 );
 
-$ptb_border_color = Fusion_Color::new_color( array(
-	'color' => Avada()->settings->get( 'page_title_border_color' ),
-	'fallback' => '#d2d3d4',
-) );
+$ptb_border_color = Fusion_Color::new_color(
+	array(
+		'color' => Avada()->settings->get( 'page_title_border_color' ),
+		'fallback' => '#d2d3d4',
+	)
+);
 $this->color(
 	'page_title_bar_borders_color',
 	esc_attr__( 'Page Title Bar Borders Color', 'Avada' ),
@@ -210,7 +239,7 @@ $this->color(
 $this->upload(
 	'page_title_bar_bg',
 	esc_attr__( 'Page Title Bar Background', 'Avada' ),
-	sprintf( esc_html__( 'Select an image to use for the page title bar background. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_bg', 'thumbnail' ) ),
+	sprintf( esc_html__( 'Select an image to use for the page title bar background. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_bg', 'url' ) ),
 	$page_title_bg_dependency
 );
 
@@ -224,7 +253,7 @@ $retina_dependency[] = array(
 $this->upload(
 	'page_title_bar_bg_retina',
 	esc_attr__( 'Page Title Bar Background Retina', 'Avada' ),
-	sprintf( esc_html__( 'Select an image to use for retina devices. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_bg_retina', 'thumbnail' ) ),
+	sprintf( esc_html__( 'Select an image to use for retina devices. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_bg_retina', 'url' ) ),
 	$retina_dependency
 );
 $this->radio_buttonset(
@@ -236,6 +265,7 @@ $this->radio_buttonset(
 		'yes'     => esc_attr__( 'Yes', 'Avada' ),
 	),
 	sprintf( esc_html__( 'Choose to have the background image display at 100&#37;. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_bg_full', '', 'yesno' ) ),
+	'',
 	$retina_dependency
 );
 
@@ -248,6 +278,7 @@ $this->radio_buttonset(
 		'yes'     => esc_attr__( 'Yes', 'Avada' ),
 	),
 	sprintf( esc_html__( 'Choose a parallax scrolling effect for the background image. %s', 'Avada' ), Avada()->settings->get_default_description( 'page_title_bg_parallax', '', 'yesno' ) ),
+	'',
 	$retina_dependency
 );
 

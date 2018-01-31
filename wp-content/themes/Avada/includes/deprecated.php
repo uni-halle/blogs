@@ -87,8 +87,8 @@ if ( ! function_exists( 'avada_get_slider_type' ) ) {
 	 * This is simply a wrapper for the get_slider_type method in the Avada_Helper class
 	 * Kept for backwards-compatibility
 	 */
-	function avada_get_slider_type( $post_id ) {
-		return Avada_Helper::get_slider_type( $post_id );
+	function avada_get_slider_type( $post_id, $is_archive = false ) {
+		return Avada_Helper::get_slider_type( $post_id, $is_archive );
 	}
 }
 

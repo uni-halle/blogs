@@ -18,12 +18,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 <section id="content" <?php Avada()->layout->add_class( 'content_class' ); ?> <?php Avada()->layout->add_style( 'content_style' ); ?>>
 	<?php if ( Avada()->settings->get( 'blog_pn_nav' ) ) : ?>
 		<div class="single-navigation clearfix">
-			<?php previous_post_link( '%link', esc_html__( 'Previous', 'Avada' ) ); ?>
-			<?php next_post_link( '%link', esc_html__( 'Next', 'Avada' ) ); ?>
+			<div class="fusion-single-navigation-wrapper">
+				<?php previous_post_link( '%link', esc_html__( 'Previous', 'Avada' ) ); ?>
+				<?php next_post_link( '%link', esc_html__( 'Next', 'Avada' ) ); ?>
+			</div>
 		</div>
 	<?php endif; ?>
 
-	<?php if ( have_posts() ) : the_post(); ?>
+	<?php if ( have_posts() ) : ?>
+		<?php the_post(); ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class( 'post' ); ?>>
 			<?php $full_image = ''; ?>
 			<?php if ( 'above' == Avada()->settings->get( 'blog_post_title' ) ) : ?>
@@ -46,40 +49,39 @@ if ( ! defined( 'ABSPATH' ) ) {
 									</li>
 								<?php endif; ?>
 								<?php if ( has_post_thumbnail() && 'yes' != get_post_meta( $post->ID, 'pyre_show_first_featured_image', true ) ) : ?>
-									<?php $attachment_image = wp_get_attachment_image_src( get_post_thumbnail_id(), 'full' ); ?>
-									<?php $attachment_data  = wp_get_attachment_metadata( get_post_thumbnail_id() ); ?>
-									<?php $alt_tag          = esc_attr( get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) ); ?>
-									<li>
-										<?php if ( Avada()->settings->get( 'status_lightbox' ) && Avada()->settings->get( 'status_lightbox_single' ) ) : ?>
-											<a href="<?php echo esc_url_raw( $full_image[0] ); ?>" rel="prettyPhoto[gallery<?php the_ID(); ?>]" title="<?php echo esc_attr( get_post_field( 'post_excerpt', get_post_thumbnail_id() ) ); ?>" data-title="<?php echo esc_attr( get_post_field( 'post_title', get_post_thumbnail_id() ) ); ?>" data-caption="<?php echo esc_attr( get_post_field( 'post_excerpt', get_post_thumbnail_id() ) ); ?>">
-												<?php /* translators: The link. */ ?>
-												<span class="screen-reader-text"><?php printf( esc_attr__( 'Go to "%s"', 'Avada' ), get_the_title( $post ) ); ?></span>
-												<img src="<?php echo esc_url_raw( $attachment_image[0] ); ?>" alt="<?php echo esc_attr( $alt_tag ); ?>" role="presentation" />
-											</a>
-										<?php else : ?>
-											<img src="<?php echo esc_url_raw( $attachment_image[0] ); ?>" alt="<?php echo esc_attr( $alt_tag ); ?>" role="presentation" />
-										<?php endif; ?>
-									</li>
+									<?php $attachment_data = Avada()->images->get_attachment_data( get_post_thumbnail_id() ); ?>
+									<?php if ( is_array( $attachment_data ) ) : ?>
+										<li>
+											<?php if ( Avada()->settings->get( 'status_lightbox' ) && Avada()->settings->get( 'status_lightbox_single' ) ) : ?>
+												<a href="<?php echo esc_url_raw( $attachment_data['url'] ); ?>" rel="prettyPhoto[gallery<?php the_ID(); ?>]" title="<?php echo esc_attr( $attachment_data['caption_attribute'] ); ?>" data-title="<?php echo esc_attr( $attachment_data['title_attribute'] ); ?>" data-caption="<?php echo esc_attr( $attachment_data['caption_attribute'] ); ?>">
+													<?php /* translators: The link. */ ?>
+													<span class="screen-reader-text"><?php printf( esc_attr__( 'Go to "%s"', 'Avada' ), get_the_title( $post ) ); ?></span>
+													<img src="<?php echo esc_url_raw( $attachment_data['url'] ); ?>" alt="<?php echo esc_attr( $attachment_data['alt'] ); ?>" role="presentation" />
+												</a>
+											<?php else : ?>
+												<img src="<?php echo esc_url_raw( $attachment_data['url'] ); ?>" alt="<?php echo esc_attr( $attachment_data['alt'] ); ?>" role="presentation" />
+											<?php endif; ?>
+										</li>
+									<?php endif; ?>
 								<?php endif; ?>
 								<?php $i = 2; ?>
 								<?php while ( $i <= Avada()->settings->get( 'posts_slideshow_number' ) ) : ?>
 									<?php $attachment_new_id = fusion_get_featured_image_id( 'featured-image-' . $i, 'post' ); ?>
 									<?php if ( $attachment_new_id ) : ?>
-										<?php $attachment_image = wp_get_attachment_image_src( $attachment_new_id, 'full' ); ?>
-										<?php $full_image       = wp_get_attachment_image_src( $attachment_new_id, 'full' ); ?>
-										<?php $attachment_data  = wp_get_attachment_metadata( $attachment_new_id ); ?>
-										<?php $alt_tag          = esc_attr( get_post_meta( $attachment_new_id, '_wp_attachment_image_alt', true ) ); ?>
-										<li>
-											<?php if ( Avada()->settings->get( 'status_lightbox' ) && Avada()->settings->get( 'status_lightbox_single' ) ) : ?>
-												<a href="<?php echo esc_url_raw( $full_image[0] ); ?>" rel="prettyPhoto[gallery<?php the_ID(); ?>]" title="<?php echo esc_attr( get_post_field( 'post_excerpt', $attachment_new_id ) ); ?>" data-title="<?php echo esc_attr( get_post_field( 'post_title', $attachment_new_id ) ); ?>" data-caption="<?php echo esc_attr( get_post_field( 'post_excerpt', $attachment_new_id ) ); ?>">
-													<?php /* translators: The link. */ ?>
-													<span class="screen-reader-text"><?php printf( esc_attr__( 'Go to "%s"', 'Avada' ), get_the_title( $post ) ); ?></span>
-													<img src="<?php echo esc_url_raw( $attachment_image[0] ); ?>" alt="<?php echo esc_attr( $alt_tag ); ?>" role="presentation" />
-												</a>
-											<?php else : ?>
-												<img src="<?php echo esc_url_raw( $attachment_image[0] ); ?>" alt="<?php echo esc_attr( $alt_tag ); ?>" role="presentation" />
-											<?php endif; ?>
-										</li>
+										<?php $attachment_data = Avada()->images->get_attachment_data( $attachment_new_id ); ?>
+										<?php if ( is_array( $attachment_data ) ) : ?>
+											<li>
+												<?php if ( Avada()->settings->get( 'status_lightbox' ) && Avada()->settings->get( 'status_lightbox_single' ) ) : ?>
+													<a href="<?php echo esc_url_raw( $attachment_data['url'] ); ?>" rel="prettyPhoto[gallery<?php the_ID(); ?>]" title="<?php echo esc_attr( $attachment_data['caption_attribute'] ); ?>" data-title="<?php echo esc_attr( $attachment_data['title_attribute'] ); ?>" data-caption="<?php echo esc_attr( $attachment_data['caption_attribute'] ); ?>">
+														<?php // Translators: The link. ?>
+														<span class="screen-reader-text"><?php printf( esc_attr__( 'Go to "%s"', 'Avada' ), get_the_title( $post ) ); ?></span>
+														<img src="<?php echo esc_url_raw( $attachment_data['url'] ); ?>" alt="<?php echo esc_attr( $attachment_data['alt'] ); ?>" role="presentation" />
+													</a>
+												<?php else : ?>
+													<img src="<?php echo esc_url_raw( $attachment_data['url'] ); ?>" alt="<?php echo esc_attr( $attachment_data['alt'] ); ?>" role="presentation" />
+												<?php endif; ?>
+											</li>
+										<?php endif; ?>
 									<?php endif; ?>
 									<?php $i++; ?>
 								<?php endwhile; ?>
@@ -99,7 +101,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php echo avada_render_post_metadata( 'single' ); // WPCS: XSS ok. ?>
 				<?php if ( Avada()->settings->get( 'social_sharing_box' ) ) : ?>
 
-					<?php $sharingbox_social_icon_options = array(
+					<?php
+					$sharingbox_social_icon_options = array(
 						'sharingbox'        => 'yes',
 						'icon_colors'       => Avada()->settings->get( 'sharing_social_links_icon_color' ),
 						'box_colors'        => Avada()->settings->get( 'sharing_social_links_box_color' ),
@@ -111,7 +114,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 						'description'       => wp_strip_all_tags( get_the_title( $post->ID ), true ),
 						'link'              => get_permalink( $post->ID ),
 						'pinterest_image'   => ( $full_image ) ? $full_image[0] : '',
-					); ?>
+					);
+					?>
 					<div class="fusion-sharing-box fusion-single-sharing-box share-box">
 						<h4><?php esc_html_e( 'Share This Story, Choose Your Platform!', 'Avada' ); ?></h4>
 						<?php echo Avada()->social_sharing->render_social_icons( $sharingbox_social_icon_options ); // WPCS: XSS ok. ?>
@@ -148,6 +152,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php endif; ?>
 </section>
 <?php do_action( 'avada_after_content' ); ?>
-<?php get_footer();
+<?php
+get_footer();
 
 /* Omit closing PHP tag to avoid "Headers already sent" issues. */

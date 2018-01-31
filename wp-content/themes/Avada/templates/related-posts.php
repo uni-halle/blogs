@@ -62,7 +62,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				 * Loop through related posts.
 				 */
 				?>
-				<?php while ( $related_posts->have_posts() ) : $related_posts->the_post(); ?>
+				<?php while ( $related_posts->have_posts() ) : ?>
+					<?php $related_posts->the_post(); ?>
 					<?php $post_id = get_the_ID(); ?>
 					<li class="fusion-carousel-item"<?php echo $carousel_item_css; // WPCS: XSS ok. ?>>
 						<div class="fusion-carousel-item-wrapper">
@@ -73,10 +74,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 								$display_post_title = 'disable';
 							}
 							if ( 'auto' === $data_image_size ) {
-								Avada()->images->set_grid_image_meta( array(
-									'layout' => 'related-posts',
-									'columns' => Avada()->settings->get( 'related_posts_columns' ),
-								) );
+								Avada()->images->set_grid_image_meta(
+									array(
+										'layout' => 'related-posts',
+										'columns' => Avada()->settings->get( 'related_posts_columns' ),
+									)
+								);
 							}
 							echo fusion_render_first_featured_image_markup( $post_id, $featured_image_size, get_permalink( $post_id ), true, false, false, 'disable', $display_post_title, 'related' ); // WPCS: XSS ok.
 							Avada()->images->set_grid_image_meta( array() );
@@ -120,6 +123,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div><!-- fusion-carousel -->
 </section><!-- related-posts -->
 
-<?php wp_reset_postdata();
+<?php
+wp_reset_postdata();
 
 /* Omit closing PHP tag to avoid "Headers already sent" issues. */

@@ -85,6 +85,14 @@ class Avada_Template {
 			if ( Avada()->settings->get( 'posts_global_sidebar' ) ) {
 				$sidebar_1 = ( 'None' !== Avada()->settings->get( 'posts_sidebar' ) ) ? array( Avada()->settings->get( 'posts_sidebar' ) ) : '';
 				$sidebar_2 = ( 'None' !== Avada()->settings->get( 'posts_sidebar_2' ) ) ? array( Avada()->settings->get( 'posts_sidebar_2' ) ) : '';
+			} else {
+				if ( isset( $sidebar_1[0] ) && 'default_sidebar' === $sidebar_1[0] ) {
+					$sidebar_1 = array( ( 'None' !== Avada()->settings->get( 'posts_sidebar' ) ) ? Avada()->settings->get( 'posts_sidebar' ) : '' );
+				}
+
+				if ( isset( $sidebar_2[0] ) && 'default_sidebar' === $sidebar_2[0] ) {
+					$sidebar_2 = array( ( 'None' !== Avada()->settings->get( 'posts_sidebar_2' ) ) ? Avada()->settings->get( 'posts_sidebar_2' ) : '' );
+				}
 			}
 
 			if ( class_exists( 'Tribe__Events__Main' ) && Avada_Helper::tribe_is_event( $c_page_id ) && Avada()->settings->get( 'pages_global_sidebar' ) ) {
@@ -96,12 +104,28 @@ class Avada_Template {
 			if ( Avada()->settings->get( 'portfolio_global_sidebar' ) ) {
 				$sidebar_1 = ( 'None' !== Avada()->settings->get( 'portfolio_sidebar' ) ) ? array( Avada()->settings->get( 'portfolio_sidebar' ) ) : '';
 				$sidebar_2 = ( 'None' !== Avada()->settings->get( 'portfolio_sidebar_2' ) ) ? array( Avada()->settings->get( 'portfolio_sidebar_2' ) ) : '';
+			} else {
+				if ( isset( $sidebar_1[0] ) && 'default_sidebar' === $sidebar_1[0] ) {
+					$sidebar_1 = array( ( 'None' !== Avada()->settings->get( 'portfolio_sidebar' ) ) ? Avada()->settings->get( 'portfolio_sidebar' ) : '' );
+				}
+
+				if ( isset( $sidebar_2[0] ) && 'default_sidebar' === $sidebar_2[0] ) {
+					$sidebar_2 = array( ( 'None' !== Avada()->settings->get( 'portfolio_sidebar_2' ) ) ? Avada()->settings->get( 'portfolio_sidebar_2' ) : '' );
+				}
 			}
 		} elseif ( is_singular( 'product' ) || ( class_exists( 'WooCommerce' ) && is_shop() ) ) {
 
 			if ( Avada()->settings->get( 'woo_global_sidebar' ) ) {
 				$sidebar_1 = ( 'None' !== Avada()->settings->get( 'woo_sidebar' ) ) ? array( Avada()->settings->get( 'woo_sidebar' ) ) : '';
 				$sidebar_2 = ( 'None' !== Avada()->settings->get( 'woo_sidebar_2' ) ) ? array( Avada()->settings->get( 'woo_sidebar_2' ) ) : '';
+			} else {
+				if ( isset( $sidebar_1[0] ) && 'default_sidebar' === $sidebar_1[0] ) {
+					$sidebar_1 = array( ( 'None' !== Avada()->settings->get( 'woo_sidebar' ) ) ? Avada()->settings->get( 'woo_sidebar' ) : '' );
+				}
+
+				if ( isset( $sidebar_2[0] ) && 'default_sidebar' === $sidebar_2[0] ) {
+					$sidebar_2 = array( ( 'None' !== Avada()->settings->get( 'woo_sidebar_2' ) ) ? Avada()->settings->get( 'woo_sidebar_2' ) : '' );
+				}
 			}
 		} elseif ( ( is_page() || is_page_template() ) && ( ! is_page_template( '100-width.php' ) && ! is_page_template( 'blank.php' ) ) ) {
 
@@ -110,12 +134,28 @@ class Avada_Template {
 				$sidebar_1 = ( 'None' !== Avada()->settings->get( 'pages_sidebar' ) ) ? array( Avada()->settings->get( 'pages_sidebar' ) ) : '';
 				$sidebar_2 = ( 'None' !== Avada()->settings->get( 'pages_sidebar_2' ) ) ? array( Avada()->settings->get( 'pages_sidebar_2' ) ) : '';
 
+			} else {
+				if ( isset( $sidebar_1[0] ) && 'default_sidebar' === $sidebar_1[0] ) {
+					$sidebar_1 = array( ( 'None' !== Avada()->settings->get( 'pages_sidebar' ) ) ? Avada()->settings->get( 'pages_sidebar' ) : '' );
+				}
+
+				if ( isset( $sidebar_2[0] ) && 'default_sidebar' === $sidebar_2[0] ) {
+					$sidebar_2 = array( ( 'None' !== Avada()->settings->get( 'pages_sidebar_2' ) ) ? Avada()->settings->get( 'pages_sidebar_2' ) : '' );
+				}
 			}
 		} elseif ( is_singular( 'tribe_events' ) ) {
 
 			if ( Avada()->settings->get( 'ec_global_sidebar' ) ) {
 				$sidebar_1 = ( 'None' !== Avada()->settings->get( 'ec_sidebar' ) ) ? array( Avada()->settings->get( 'ec_sidebar' ) ) : '';
 				$sidebar_2 = ( 'None' !== Avada()->settings->get( 'ec_sidebar_2' ) ) ? array( Avada()->settings->get( 'ec_sidebar_2' ) ) : '';
+			} else {
+				if ( isset( $sidebar_1[0] ) && 'default_sidebar' === $sidebar_1[0] ) {
+					$sidebar_1 = array( ( 'None' !== Avada()->settings->get( 'ec_sidebar' ) ) ? Avada()->settings->get( 'ec_sidebar' ) : '' );
+				}
+
+				if ( isset( $sidebar_2[0] ) && 'default_sidebar' === $sidebar_2[0] ) {
+					$sidebar_2 = array( ( 'None' !== Avada()->settings->get( 'ec_sidebar_2' ) ) ? Avada()->settings->get( 'ec_sidebar_2' ) : '' );
+				}
 			}
 		} elseif ( is_singular( 'tribe_venue' ) || is_singular( 'tribe_organizer' ) ) {
 
@@ -128,12 +168,12 @@ class Avada_Template {
 			$sidebar_2 = Avada()->settings->get( 'blog_archive_sidebar_2' );
 		}
 
-		if ( is_archive() && ( ! Avada_Helper::is_buddypress() && ! Avada_Helper::is_bbpress() && ( class_exists( 'WooCommerce' ) && ! is_shop() ) || ! class_exists( 'WooCommerce' ) ) && ! is_post_type_archive( 'avada_portfolio' ) && ! is_tax( 'portfolio_category' ) && ! is_tax( 'portfolio_skills' )  && ! is_tax( 'portfolio_tags' ) && ! is_tax( 'product_cat' ) && ! is_tax( 'product_tag' ) ) {
+		if ( is_archive() && ( ! Avada_Helper::is_buddypress() && ! Avada_Helper::is_bbpress() && ( class_exists( 'WooCommerce' ) && ! is_shop() ) || ! class_exists( 'WooCommerce' ) ) && ! is_post_type_archive( 'avada_portfolio' ) && ! is_tax( 'portfolio_category' ) && ! is_tax( 'portfolio_skills' ) && ! is_tax( 'portfolio_tags' ) && ! is_tax( 'product_cat' ) && ! is_tax( 'product_tag' ) ) {
 			$sidebar_1 = Avada()->settings->get( 'blog_archive_sidebar' );
 			$sidebar_2 = Avada()->settings->get( 'blog_archive_sidebar_2' );
 		}
 
-		if ( is_post_type_archive( 'avada_portfolio' ) || is_tax( 'portfolio_category' ) || is_tax( 'portfolio_skills' )  || is_tax( 'portfolio_tags' ) ) {
+		if ( is_post_type_archive( 'avada_portfolio' ) || is_tax( 'portfolio_category' ) || is_tax( 'portfolio_skills' ) || is_tax( 'portfolio_tags' ) ) {
 			$sidebar_1 = Avada()->settings->get( 'portfolio_archive_sidebar' );
 			$sidebar_2 = Avada()->settings->get( 'portfolio_archive_sidebar_2' );
 		}
@@ -158,6 +198,14 @@ class Avada_Template {
 			} else {
 				$sidebar_1 = get_post_meta( $c_page_id, 'sbg_selected_sidebar_replacement', true );
 				$sidebar_2 = get_post_meta( $c_page_id, 'sbg_selected_sidebar_2_replacement', true );
+
+				if ( isset( $sidebar_1[0] ) && 'default_sidebar' === $sidebar_1[0] ) {
+					$sidebar_1 = array( ( 'None' !== Avada()->settings->get( 'ppbress_sidebar' ) ) ? Avada()->settings->get( 'ppbress_sidebar' ) : '' );
+				}
+
+				if ( isset( $sidebar_2[0] ) && 'default_sidebar' === $sidebar_2[0] ) {
+					$sidebar_2 = array( ( 'None' !== Avada()->settings->get( 'ppbress_sidebar_2' ) ) ? Avada()->settings->get( 'ppbress_sidebar_2' ) : '' );
+				}
 			}
 		}
 
@@ -217,6 +265,9 @@ class Avada_Template {
 			$classes[] = 'body_blank';
 		}
 
+		if ( Avada()->settings->get( 'header_sticky' ) ) {
+			$classes[] = 'fusion-sticky-header';
+		}
 		if ( ! Avada()->settings->get( 'header_sticky_tablet' ) ) {
 			$classes[] = 'no-tablet-sticky-header';
 		}
@@ -243,8 +294,9 @@ class Avada_Template {
 		}
 
 		$page_bg_layout = get_post_meta( $c_page_id, 'pyre_page_bg_layout', true );
-		if ( ( 'Boxed' === Avada()->settings->get( 'layout' ) && 'default' === $page_bg_layout ) || 'boxed' === $page_bg_layout ) {
+		if ( ( 'Boxed' === Avada()->settings->get( 'layout' ) && ( ! $page_bg_layout || 'default' === $page_bg_layout ) ) || 'boxed' === $page_bg_layout ) {
 			$classes[] = 'layout-boxed-mode';
+			$classes[] = 'layout-boxed-mode-' . Avada()->settings->get( 'scroll_offset' );
 		} else {
 			$classes[] = 'layout-wide-mode';
 		}
@@ -253,7 +305,7 @@ class Avada_Template {
 			$classes[] = 'has-sidebar';
 		}
 
-		if ( is_array( $sidebar_1 ) && $sidebar_1[0] && is_array( $sidebar_2 ) && $sidebar_2[0] && ! Avada_Helper::is_buddypress() && ! Avada_Helper::is_bbpress() && ! is_page_template( '100-width.php' )  && ! is_page_template( 'blank.php' ) && ( ! class_exists( 'WooCommerce' ) || ( class_exists( 'WooCommerce' ) && ! is_cart() && ! is_checkout() && ! is_account_page() && ! ( get_option( 'woocommerce_thanks_page_id' ) && is_page( get_option( 'woocommerce_thanks_page_id' ) ) ) ) ) ) {
+		if ( is_array( $sidebar_1 ) && $sidebar_1[0] && is_array( $sidebar_2 ) && $sidebar_2[0] && ! Avada_Helper::is_buddypress() && ! Avada_Helper::is_bbpress() && ! is_page_template( '100-width.php' ) && ! is_page_template( 'blank.php' ) && ( ! class_exists( 'WooCommerce' ) || ( class_exists( 'WooCommerce' ) && ! is_cart() && ! is_checkout() && ! is_account_page() && ! ( get_option( 'woocommerce_thanks_page_id' ) && is_page( get_option( 'woocommerce_thanks_page_id' ) ) ) ) ) ) {
 			$classes[] = 'double-sidebars';
 		}
 
@@ -274,7 +326,7 @@ class Avada_Template {
 			}
 		}
 
-		if ( is_archive() && ( ! ( class_exists( 'BuddyPress' ) && Avada_Helper::is_buddypress() ) && ! ( class_exists( 'bbPress' ) && Avada_Helper::is_bbpress() ) && ( class_exists( 'WooCommerce' ) && ! is_shop() ) || ! class_exists( 'WooCommerce' ) ) && ! is_tax( 'portfolio_category' ) && ! is_tax( 'portfolio_skills' )  && ! is_tax( 'portfolio_tags' ) && ! is_tax( 'product_cat' ) && ! is_tax( 'product_tag' ) ) {
+		if ( is_archive() && ( ! ( class_exists( 'BuddyPress' ) && Avada_Helper::is_buddypress() ) && ! ( class_exists( 'bbPress' ) && Avada_Helper::is_bbpress() ) && ( class_exists( 'WooCommerce' ) && ! is_shop() ) || ! class_exists( 'WooCommerce' ) ) && ! is_tax( 'portfolio_category' ) && ! is_tax( 'portfolio_skills' ) && ! is_tax( 'portfolio_tags' ) && ! is_tax( 'product_cat' ) && ! is_tax( 'product_tag' ) ) {
 			if ( 'None' !== $sidebar_1 ) {
 				$classes[] = 'has-sidebar';
 			}
@@ -283,7 +335,7 @@ class Avada_Template {
 			}
 		}
 
-		if ( is_tax( 'portfolio_category' ) || is_tax( 'portfolio_skills' )  || is_tax( 'portfolio_tags' ) ) {
+		if ( is_tax( 'portfolio_category' ) || is_tax( 'portfolio_skills' ) || is_tax( 'portfolio_tags' ) ) {
 			if ( 'None' !== $sidebar_1 ) {
 				$classes[] = 'has-sidebar';
 			}
@@ -364,6 +416,10 @@ class Avada_Template {
 
 		if ( class_exists( 'WooCommerce' ) ) {
 			$classes[] = 'fusion-woo-product-design-' . Avada()->settings->get( 'woocommerce_product_box_design' );
+
+			if ( Avada()->settings->get( 'woocommerce_equal_heights' ) && ( Avada()->settings->get( 'woocommerce_shop_page_columns' ) > 1 || Avada()->settings->get( 'woocommerce_related_columns' ) > 1 || Avada()->settings->get( 'woocommerce_archive_page_columns' ) > 1 ) ) {
+				$classes[] = 'fusion-woocommerce-equal-heights';
+			}
 		}
 
 		$classes[] = 'mobile-menu-design-' . Avada()->settings->get( 'mobile_menu_design' );
@@ -375,6 +431,14 @@ class Avada_Template {
 		} else {
 			$classes[] = 'fusion-hide-pagination-text';
 		}
+
+		$classes[] = 'fusion-header-layout-' . Avada()->settings->get( 'header_layout' );
+
+		$classes[] = ( Avada()->settings->get( 'responsive' ) ) ? 'avada-responsive' : 'avada-not-responsive';
+
+		$footer_fx_class  = 'avada-footer-fx-';
+		$footer_fx_class .= str_replace( array( 'footer_area_', 'footer_', '_' ), array( '', '', '-' ), Avada()->settings->get( 'footer_special_effects' ) );
+		$classes[] = $footer_fx_class;
 
 		return $classes;
 	}
@@ -390,25 +454,32 @@ class Avada_Template {
 	public function comment_template( $comment, $args, $depth ) {
 		?>
 		<?php $add_below = ''; ?>
-		<li <?php comment_class(); ?> id="comment-<?php comment_ID() ?>">
+		<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
 			<div class="the-comment">
 				<div class="avatar"><?php echo get_avatar( $comment, 54 ); ?></div>
 				<div class="comment-box">
 					<div class="comment-author meta">
 						<strong><?php echo get_comment_author_link(); ?></strong>
-						<?php printf( esc_attr__( '%1$s at %2$s', 'Avada' ), get_comment_date(),  get_comment_time() ); ?><?php edit_comment_link( __( ' - Edit', 'Avada' ),'  ','' ); ?><?php comment_reply_link( array_merge( $args, array(
-							'reply_text' => __( ' - Reply', 'Avada' ),
-							'add_below' => 'comment',
-							'depth' => $depth,
-							'max_depth' => $args['max_depth'],
-						) ) ); ?>
+						<?php printf( esc_attr__( '%1$s at %2$s', 'Avada' ), get_comment_date(),  get_comment_time() ); ?><?php edit_comment_link( __( ' - Edit', 'Avada' ),'  ','' ); ?>
+										<?php
+										comment_reply_link(
+											array_merge(
+												$args, array(
+													'reply_text' => __( ' - Reply', 'Avada' ),
+													'add_below' => 'comment',
+													'depth' => $depth,
+													'max_depth' => $args['max_depth'],
+												)
+											)
+										);
+						?>
 					</div>
 					<div class="comment-text">
 						<?php if ( '0' == $comment->comment_approved ) : ?>
 							<em><?php esc_attr_e( 'Your comment is awaiting moderation.', 'Avada' ); ?></em>
 							<br />
 						<?php endif; ?>
-						<?php comment_text() ?>
+						<?php comment_text(); ?>
 					</div>
 				</div>
 			</div>
@@ -439,10 +510,10 @@ class Avada_Template {
 	 * @param string     $content_align The content alignment.
 	 */
 	public function title_template( $content = '', $size = '2', $content_align = 'left' ) {
-		$margin_top	    = Avada()->settings->get( 'title_margin', 'top' );
-		$margin_bottom	= Avada()->settings->get( 'title_margin', 'bottom' );
+		$margin_top     = Avada()->settings->get( 'title_margin', 'top' );
+		$margin_bottom  = Avada()->settings->get( 'title_margin', 'bottom' );
 		$sep_color      = Avada()->settings->get( 'title_border_color' );
-		$style_type	    = Avada()->settings->get( 'title_style_type' );
+		$style_type     = Avada()->settings->get( 'title_style_type' );
 		$size_array     = array(
 			'1' => 'one',
 			'2' => 'two',

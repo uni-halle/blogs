@@ -93,7 +93,7 @@
 						<p class="description">
 							<?php echo esc_html( apply_filters( 'fusionredux-import-main-description', __( 'Important: Only Fusion 4.0+ theme options can be imported. You cannot import theme options from Fusion versions older than 4.0.', 'Avada' ) ) ) ?>
 						</p>
-					</div>					
+					</div>
 					<p>
 						<a href="javascript:void(0);" id="fusionredux-import-code-button" class="button-secondary">
 							<?php
@@ -136,6 +136,7 @@
 				<?php
 				// $this->parent->args['opt_name'] is sanitized in the FusionReduxFramework class, no need to re-sanitize it.
 				$link = esc_url( admin_url( 'admin-ajax.php?action=fusionredux_download_options-' . $this->parent->args['opt_name'] . '&secret=' . $secret ) );
+				$export_link = esc_url( admin_url( 'admin-ajax.php?action=fusionredux_link_options-' . $this->parent->args['opt_name'] . '&secret=' . $secret ) );
 				?>
 					<p>
 						<a href="javascript:void(0);" id="fusionredux-export-code-copy" class="button-secondary"><?php esc_html_e( 'Copy Data', 'Avada' ) ?></a>
@@ -145,7 +146,7 @@
 
 					<p></p>
 					<textarea class="large-text noUpdate" id="fusionredux-export-code" rows="2"></textarea>
-					<textarea class="large-text noUpdate" id="fusionredux-export-link-value" data-url="<?php echo $link; ?>" rows="2"><?php echo $link; ?></textarea>
+					<textarea class="large-text noUpdate" id="fusionredux-export-link-value" data-url="<?php echo $export_link; ?>" rows="2"><?php echo $export_link; ?></textarea>
 
 				<?php
 			}

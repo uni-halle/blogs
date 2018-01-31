@@ -31,7 +31,7 @@ if ( ! class_exists( 'Avada_Featured_Image' ) ) {
 		 * @var array
 		 */
 		private $defaults = array(
-			'id'		   => 'featured-image-2',
+			'id'           => 'featured-image-2',
 			'post_type'    => 'page',
 			'name'         => 'Featured Image 2',
 			'label_set'    => 'Set featured image 2',
@@ -98,9 +98,11 @@ if ( ! class_exists( 'Avada_Featured_Image' ) ) {
 			$remove_image_css  = ' style="display:none;"';
 
 			if ( $image_id ) {
-				$preview_image = wp_get_attachment_image( $image_id, array( 266, 266 ), false, array(
-					'class' => 'fusion-preview-image',
-				) );
+				$preview_image = wp_get_attachment_image(
+					$image_id, array( 266, 266 ), false, array(
+						'class' => 'fusion-preview-image',
+					)
+				);
 				$remove_image_css = '';
 			} else {
 				$preview_image = '<img class="fusion-preview-image" src="">';

@@ -11,7 +11,9 @@
 
 ( function( $ ) {
 
-	"use strict";
+	'use strict';
+
+	var fusionMegamenu;
 
 	jQuery( document ).ready( function() {
 
@@ -19,6 +21,7 @@
 		fusionMegamenu.menuItemMouseup();
 		fusionMegamenu.megamenuStatusUpdate();
 		fusionMegamenu.updateMegamenuFields();
+		fusionMegamenu.megamenuFullwidthUpdate();
 
 		// Setup automatic thumbnail handling.
 		jQuery( '#post-body' ).on( 'click', '.avada-remove-button', function( event ) {
@@ -35,7 +38,7 @@
 	});
 
 	// "Extending" wpNavMenu.
-	var fusionMegamenu = {
+	fusionMegamenu = {
 
 		menuItemMouseup: function() {
 			jQuery( document ).on( 'mouseup', '.menu-item-bar', function( event, ui ) {

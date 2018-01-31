@@ -43,7 +43,8 @@ class Avada_Layout {
 	 */
 	public function __construct() {
 
-		add_action( 'wp', array( $this, 'add_sidebar' ), 20 );
+		add_action( 'wp', array( $this, 'add_sidebars' ), 20 );
+		add_action( 'wp', array( $this, 'add_no_sidebar_layout_styling' ), 20 );
 		add_filter( 'is_hundred_percent_template', array( $this, 'is_hundred_percent_template' ), 10, 2 );
 		add_filter( 'fusion_is_hundred_percent_template', array( $this, 'is_hundred_percent_template' ), 10, 2 );
 
@@ -54,22 +55,30 @@ class Avada_Layout {
 	 *
 	 * @return void
 	 */
-	public function add_sidebar() {
-		// Get the sidebars and assign to public variable.
-		$this->sidebars = $this->get_sidebar_settings( $this->sidebar_options() );
+	public function add_sidebars() {
 
-		// Set styling to content and sidebar divs.
-		$this->layout_structure_styling( $this->sidebars );
+		$load_sidebars = false;
 
 		// Append sidebar to after content div.
 		if ( Avada()->template->has_sidebar() && ! Avada()->template->double_sidebars() ) {
-			add_action( 'avada_after_content', array( $this, 'append_sidebar_single' ) );
+			add_action( 'fusion_after_content', array( $this, 'append_sidebar_single' ) );
+			$load_sidebars = true;
 		} elseif ( Avada()->template->double_sidebars() ) {
-			add_action( 'avada_after_content', array( $this, 'append_sidebar_double' ) );
-		} elseif ( ! Avada()->template->has_sidebar() && ( ( is_page_template( 'side-navigation.php' ) && 0 !== get_queried_object_id() ) || is_singular( 'tribe_events' ) ) ) {
-			add_action( 'avada_after_content', array( $this, 'append_sidebar_single' ) );
+			add_action( 'fusion_after_content', array( $this, 'append_sidebar_double' ) );
+			$load_sidebars = true;
+		} elseif ( ! Avada()->template->has_sidebar() && ( is_page_template( 'side-navigation.php' ) || is_singular( 'tribe_events' ) ) ) {
+			add_action( 'fusion_after_content', array( $this, 'append_sidebar_single' ) );
+			$load_sidebars = true;
 		}
 
+		if ( $load_sidebars ) {
+			// Get the sidebars and assign to public variable.
+			$this->sidebars = $this->get_sidebar_settings( $this->sidebar_options() );
+
+			// Set styling to content and sidebar divs.
+			$this->add_sidebar_layout_styling( $this->sidebars );
+
+		}
 	}
 	/**
 	 * Get sidebar settings based on the page type.
@@ -246,6 +255,14 @@ class Avada_Layout {
 			$sidebar_2 = array( ( 'None' !== $sidebar_options['sidebar_2'] ) ? $sidebar_options['sidebar_2'] : '' );
 
 			$sidebar_position = $sidebar_position_theme_option;
+		} else {
+			if ( isset( $sidebar_1[0] ) && 'default_sidebar' === $sidebar_1[0] ) {
+				$sidebar_1 = array( ( 'None' !== $sidebar_options['sidebar_1'] ) ? $sidebar_options['sidebar_1'] : '' );
+			}
+
+			if ( isset( $sidebar_2[0] ) && 'default_sidebar' === $sidebar_2[0] ) {
+				$sidebar_2 = array( ( 'None' !== $sidebar_options['sidebar_2'] ) ? $sidebar_options['sidebar_2'] : '' );
+			}
 		}
 
 		// If sidebar position is default OR no entry in database exists.
@@ -317,12 +334,31 @@ class Avada_Layout {
 	}
 
 	/**
-	 * Apply inline styling and classes to the structure.
+	 * Apply inline styling and classes to the layout structure when no sidebars are used.
+	 *
+	 * @since 5.3
+	 * @access public
+	 * @return void
+	 */
+	public function add_no_sidebar_layout_styling() {
+
+		// Check for sidebar location and apply styling to the content or sidebar div.
+		if ( ! Avada()->template->has_sidebar() && ! ( ( is_page_template( 'side-navigation.php' ) && 0 !== get_queried_object_id() ) || is_singular( 'tribe_events' ) ) ) {
+			add_filter( 'fusion_content_style', array( $this, 'full_width_content_style' ) );
+
+			if ( is_archive() || is_home() ) {
+				add_filter( 'fusion_content_class', array( $this, 'full_width_content_class' ) );
+			}
+		}
+	}
+
+	/**
+	 * Apply inline styling and classes to the layout structure when sidebars are used.
 	 *
 	 * @param array $sidebars The sidebars array.
 	 * @return void
 	 */
-	public function layout_structure_styling( $sidebars ) {
+	public function add_sidebar_layout_styling( $sidebars ) {
 
 		// Add sidebar class.
 		add_filter( 'fusion_sidebar_1_class', array( $this, 'sidebar_class' ) );
@@ -626,11 +662,6 @@ class Avada_Layout {
 			// Site width is using %.
 			if ( false !== strpos( $site_width, '%' ) ) {
 				$site_width = Avada_Helper::percent_to_pixels( $site_width );
-
-				// Subtract side header width from remaining content width.
-				$side_header_width = ( 'Top' === Avada()->settings->get( 'header_position' ) ) ? 0 : intval( Avada()->settings->get( 'side_header_width' ) );
-				$site_width -= $side_header_width;
-
 			} elseif ( false !== strpos( $site_width, 'rem' ) ) {
 				// Site width is using rems.
 				$site_width = Fusion_Sanitize::number( $site_width ) * 16;
@@ -638,15 +669,17 @@ class Avada_Layout {
 				// Site width is using ems.
 				$site_width = Avada_Helper::ems_to_pixels( $site_width );
 			}
+
+			// Subtract side header width from remaining content width.
+			if ( 'Boxed' === Avada()->settings->get( 'layout' ) && 'Top' !== Avada()->settings->get( 'header_position' ) ) {
+				$site_width = intval( $site_width ) - intval( Avada()->settings->get( 'side_header_width' ) );
+			}
 		} else {
 			// Fallback to 1100px.
 			$site_width = 1100;
 		}
 
-		// Make sure its an int (wont be if px).
-		$site_width = intval( $site_width );
-
-		$site_width -= 2 * (int) $page_padding;
+		$site_width = intval( $site_width ) - 2 * intval( $page_padding );
 
 		/**
 		 * Sidebars width.

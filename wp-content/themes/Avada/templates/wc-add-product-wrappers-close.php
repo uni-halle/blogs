@@ -12,6 +12,5 @@
 
 ?>
 		</div>
-		<div class="fusion-content-sep"></div>
 	</div>
 </div>

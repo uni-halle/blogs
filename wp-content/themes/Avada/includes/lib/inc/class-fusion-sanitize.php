@@ -19,10 +19,11 @@ class Fusion_Sanitize {
 	/**
 	 * Sanitize values like for example 10px, 30% etc.
 	 *
-	 * @param  string $value The value to sanitize.
-	 * @return  string
+	 * @param string       $value         The value to sanitize.
+	 * @param false|string $fallback_unit A fallback unit to use in case no unit is found.
+	 * @return string
 	 */
-	public static function size( $value ) {
+	public static function size( $value, $fallback_unit = false ) {
 
 		// Trim the value.
 		$value = trim( $value );
@@ -41,7 +42,11 @@ class Fusion_Sanitize {
 			return $value;
 		}
 
-		return self::number( $value ) . self::get_unit( $value );
+		$unit = self::get_unit( $value );
+		if ( $fallback_unit && '' === $unit ) {
+			$unit = ( true === $fallback_unit ) ? 'px' : $fallback_unit;
+		}
+		return self::number( $value ) . $unit;
 
 	}
 
@@ -80,10 +85,10 @@ class Fusion_Sanitize {
 	 * Adds a specified unit to a unitless value and keeps the value unchanged if a unit is present.
 	 * A forced unit replace can also be done.
 	 *
-	 * @param string $value			A value like a margin setting etc., with or without unit.
-	 * @param string $unit  		A unit that should be appended to unitless values.
+	 * @param string $value         A value like a margin setting etc., with or without unit.
+	 * @param string $unit          A unit that should be appended to unitless values.
 	 * @param string $unit_handling 'add': only add $unit if $value is unitless.
-	 *								'force_replace': replace the unit of $value with $unit.
+	 *                              'force_replace': replace the unit of $value with $unit.
 	 */
 	public static function get_value_with_unit( $value, $unit = 'px', $unit_handling = 'add' ) {
 
@@ -210,8 +215,8 @@ class Fusion_Sanitize {
 	/**
 	 * Strips the alpha value from an RGBA color string.
 	 *
-	 * @param 	string $rgba	The RGBA color string.
-	 * @return  string			The corresponding RGB string.
+	 * @param   string $rgba    The RGBA color string.
+	 * @return  string          The corresponding RGB string.
 	 */
 	public static function rgba_to_rgb( $rgba ) {
 		$color_obj = Fusion_Color::new_color( $rgba );
@@ -324,6 +329,10 @@ class Fusion_Sanitize {
 		// Figure out what we're dealing with.
 		foreach ( $values as $key => $value ) {
 
+			if ( 'auto' === $value || 'inherit' === $value || 'initial' === $value ) {
+				continue;
+			}
+
 			// Trim the value.
 			$value = trim( $value );
 			$values[ $key ] = $value;
@@ -396,5 +405,40 @@ class Fusion_Sanitize {
 			$iteration++;
 		}// End foreach().
 		return 'calc(' . $result . ')';
+	}
+
+	/**
+	 * Takes any valid CSS unit and converts to pixels.
+	 *
+	 * @static
+	 * @access public
+	 * @since 1.3.0
+	 * @param string     $value          The CSS value.
+	 * @param string|int $body_font_size The body font-size, used to calculate em/rem.
+	 * @param string|int $screen_size    In pixels.
+	 * @return string
+	 */
+	public static function units_to_px( $value, $body_font_size = 16, $screen_size = 1600 ) {
+
+		$number = self::number( $value );
+		$units  = self::get_unit( $value );
+
+		// Return the value as-is if in pixels.
+		if ( 'px' === $units ) {
+			return $value;
+		}
+
+		// Calculate size if em/rem.
+		if ( 'em' === $units || 'rem' === $units ) {
+			return intval( $number * $body_font_size ) . 'px';
+		}
+
+		// Calculate size if using percent (%).
+		if ( '%' === $units ) {
+			return intval( $number * $screen_size / 100 ) . 'px';
+		}
+
+		// Fallback to the value as-is.
+		return $value;
 	}
 }

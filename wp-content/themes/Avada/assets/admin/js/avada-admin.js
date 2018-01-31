@@ -1,12 +1,11 @@
+/* global avadaAdminL10nStrings, ajaxurl, DemoImportNonce, allTags */
 this.imagePreview = function() {
-	jQuery( '.theme' ).hover( function( e ) {
-			jQuery( this ).find( '.screenshot-hover' )
-				.css( 'visibility', 'visible' );
-		},
-		function() {
-			jQuery( this ).find( '.screenshot-hover' )
-				.css( 'visibility', 'visible' );
-		});
+	jQuery( '.theme' ).hover( function() {
+		jQuery( this ).find( '.screenshot-hover' ).css( 'visibility', 'visible' );
+	},
+	function() {
+		jQuery( this ).find( '.screenshot-hover' ).css( 'visibility', 'visible' );
+	} );
 };
 
 // Starting the script on page load.
@@ -66,10 +65,9 @@ jQuery( document ).ready( function() {
 					}
 
 					report = report + '' + theName + ': ' + theValue + '\n';
-				});
-
+				} );
 			}
-		});
+		} );
 
 		try {
 			jQuery( '#debug-report' ).slideDown();
@@ -80,24 +78,24 @@ jQuery( document ).ready( function() {
 		}
 
 		return false;
-	});
+	} );
 
 	jQuery( '#copy-for-support' ).tipTip({
-		'attribute':  'data-tip',
+		'attribute': 'data-tip',
 		'activation': 'click',
-		'fadeIn':     50,
-		'fadeOut':    50,
-		'delay':      0
-	});
+		'fadeIn': 50,
+		'fadeOut': 50,
+		'delay': 0
+	} );
 
 	jQuery( 'body' ).on( 'copy', '#copy-for-support', function( e ) {
 		e.clipboardData.clearData();
 		e.clipboardData.setData( 'text/plain', jQuery( '#debug-report textarea' ).val() );
 		e.preventDefault();
-	});
-});
+	} );
+} );
 
-jQuery( document ).ready( function( e ) {
+jQuery( document ).ready( function() {
 
 	var importedLabel,
 	    importStagesLength,
@@ -117,7 +115,6 @@ jQuery( document ).ready( function( e ) {
 
 		// If clicked on import data button.
 		jQuery( '.button-install-demo' ).on( 'click', function( e ) {
-			var selectedDemo = demoType;
 
 			importNotifications = {
 				'classic': avadaAdminL10nStrings.classic,
@@ -176,14 +173,12 @@ jQuery( document ).ready( function( e ) {
 			jQuery.post( ajaxurl, data, function( response ) {
 				var importLabel;
 
-				if ( 'content' == data.importStages[0] ) {
+				if ( 'content' === data.importStages[0] ) {
 
 					jQuery.each( jQuery( '#import-' + data.demoType + ' input:checkbox[data-type=content]:checked' ), function( ) {
-
 						jQuery( this ).prop( 'disabled', true );
-
 						jQuery( '#remove-' + data.demoType + ' input:checkbox[value=' + jQuery( this ).val() + ']' ).prop( 'checked', true );
-					});
+					} );
 				} else {
 					jQuery( '#import-' + data.demoType + ' input:checkbox[value=' + data.importStages[0] + ']' ).prop( 'disabled', true );
 					jQuery( '#remove-' + data.demoType + ' input:checkbox[value=' + data.importStages[0] + ']' ).prop( 'checked', true );
@@ -232,10 +227,10 @@ jQuery( document ).ready( function( e ) {
 						}, 4000 );
 					}
 				}
-			}).fail( function( xhr, textStatus, errorThrown ) {
+			} ).fail( function( xhr, textStatus, errorThrown ) {
 				var message;
 
-				if ( 'Request Timeout' == errorThrown ) {
+				if ( 'Request Timeout' === errorThrown ) {
 					message = avadaAdminL10nStrings.error_timeout;
 				} else {
 					message = avadaAdminL10nStrings.error_php_limits;
@@ -264,8 +259,7 @@ jQuery( document ).ready( function( e ) {
 
 		prepareDemoImport = function() {
 
-			var selectedDemo     = demoType,
-			    allImport        = false,
+			var allImport        = false,
 			    fetchAttachments = false,
 			    data,
 			    importArray,
@@ -286,18 +280,16 @@ jQuery( document ).ready( function( e ) {
 						if ( -1 === importArray.indexOf( 'content' ) ) {
 							importArray.push( 'content' );
 						}
-
 					} else {
 						importArray.push( this.value );
 					}
-
 				}
 
 				if ( 'all' === this.value ) {
 					this.disabled = true;
 					allImport = true;
 				}
-			});
+			} );
 
 			// If 'all' is selected menus should be imported and home page set (which is done at the end of the process).
 			if ( -1 !== importArray.indexOf( 'all' ) ) {
@@ -343,7 +335,7 @@ jQuery( document ).ready( function( e ) {
 
 			jQuery.post( ajaxurl, data, function( $response ) {
 
-				if ( 'content' == data.removeStages[0] ) {
+				if ( 'content' === data.removeStages[0] ) {
 
 					jQuery.each( jQuery( '#remove-' + data.demoType + ' input:checkbox[data-type=content]:checked' ), function( ) {
 
@@ -448,7 +440,7 @@ jQuery( document ).ready( function( e ) {
 
 		});
 
-		jQuery( '.demo-import-form input:checkbox' ).on( 'change', function( e ) {
+		jQuery( '.demo-import-form input:checkbox' ).on( 'change', function() {
 
 			var form = jQuery( this ).closest( 'form' );
 
@@ -502,7 +494,7 @@ jQuery( document ).ready( function( e ) {
 
 		});
 
-		jQuery( '.demo-remove-form input:checkbox[value="uninstall"]' ).on( 'change', function( e ) {
+		jQuery( '.demo-remove-form input:checkbox[value="uninstall"]' ).on( 'change', function() {
 
 			if ( jQuery( this ).is( ':checked' ) ) {
 				jQuery( '.button-uninstall-demo[data-demo-id="' + demoType + '"]' ).css( 'display', 'flex' );
@@ -519,8 +511,7 @@ jQuery( document ).ready( function( e ) {
 					}
 				});
 			}
-
-		});
+		} );
 
 		jQuery( '.button-install-open-modal' ).on( 'click', function( e ) {
 			e.preventDefault();
@@ -571,7 +562,7 @@ jQuery( document ).ready( function( e ) {
 					jQuery( this ).addClass( 'button-primary' );
 
 					// Hide all demos except the ones corresponding to the tag we selected.
-					jQuery( '.avada-demo-themes .theme' ).each( function() {
+					jQuery( '.avada-demo-themes .fusion-admin-box' ).each( function() {
 						var demo     = this,
 						    demoTags = jQuery( this ).data( 'tags' ).split( ',' );
 
@@ -599,7 +590,7 @@ jQuery( document ).ready( function( e ) {
 		findOne = function( haystack, arr ) {
 			return arr.some(function( v ) {
 				return haystack.indexOf( v ) >= 0;
-		    });
+			});
 		};
 
 	}
@@ -638,13 +629,16 @@ jQuery( document ).ready( function( e ) {
 	jQuery( '.demo-required-plugins .activate a' ).on( 'click', function( e ) {
 
 		var $this = jQuery( this ),
-			data = {
+		    data = {
 				action: 'fusion_activate_plugin',
 				avada_activate: 'activate-plugin',
 				plugin: $this.data( 'plugin' ),
 				plugin_name: $this.data( 'plugin_name' ),
 				avada_activate_nonce: $this.data( 'nonce' )
-			};
+		    };
+
+		// Disable parallel plugin install
+		jQuery( '#demo-modal-' + demoType ).addClass( 'plugin-install-in-progress' );
 
 		$this.addClass( 'installing' );
 
@@ -662,6 +656,7 @@ jQuery( document ).ready( function( e ) {
 			}
 
 			$this.removeClass( 'installing' );
+			jQuery( '#demo-modal-' + demoType ).removeClass( 'plugin-install-in-progress' );
 		}, 'json' );
 
 		e.preventDefault();
@@ -670,14 +665,14 @@ jQuery( document ).ready( function( e ) {
 	jQuery( '.demo-required-plugins .install a' ).on( 'click', function( e ) {
 
 		var $this = jQuery( this ),
-			data = {
+		    data = {
 				action: 'fusion_install_plugin',
 				avada_activate: 'activate-plugin',
 				plugin: $this.data( 'plugin' ),
 				plugin_name: $this.data( 'plugin_name' ),
 				avada_activate_nonce: $this.data( 'nonce' ),
 				page: 'install-required-plugins'
-			};
+		    };
 
 		// 'page' arg needed so 'avada_get_required_and_recommened_plugins' sets proper plugin URL.
 

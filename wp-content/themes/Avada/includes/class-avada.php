@@ -162,22 +162,22 @@ class Avada {
 		'fusion_core' => array(
 			'slug'    => 'fusion-core',
 			'name'    => 'Fusion Core',
-			'version' => '3.2.1',
+			'version' => '3.3.0',
 		),
 		'fusion_builder' => array(
 			'slug'    => 'fusion-builder',
 			'name'    => 'Fusion Builder',
-			'version' => '1.2.1',
+			'version' => '1.3.0',
 		),
 		'layer_slider' => array(
 			'slug'    => 'LayerSlider',
 			'name'    => 'LayerSlider WP',
-			'version' => '6.5.5',
+			'version' => '6.6.3',
 		),
 		'slider_revolution' => array(
 			'slug'    => 'revslider',
 			'name'    => 'Slider Revolution',
-			'version' => '5.4.5.1',
+			'version' => '5.4.6.3.1',
 		),
 	);
 
@@ -340,18 +340,20 @@ class Avada {
 
 		// Instantiate secondary classes.
 		$this->settings       = Avada_Settings::get_instance();
-		$this->registration   = new Fusion_Product_Registration( array(
-			'type'    => 'theme',
-			'name'    => 'Avada',
-			'bundled' => array(
-				'Fusion Core',
-				'Fusion Builder',
-			),
-			'bundled-versions' => array(
-				'Fusion Core'    => self::$bundled_plugins['fusion_core']['version'],
-				'Fusion Builder' => self::$bundled_plugins['fusion_builder']['version'],
-			),
-		) );
+		$this->registration   = new Fusion_Product_Registration(
+			array(
+				'type'    => 'theme',
+				'name'    => 'Avada',
+				'bundled' => array(
+					'Fusion Core',
+					'Fusion Builder',
+				),
+				'bundled-versions' => array(
+					'Fusion Core'    => self::$bundled_plugins['fusion_core']['version'],
+					'Fusion Builder' => self::$bundled_plugins['fusion_builder']['version'],
+				),
+			)
+		);
 		$this->init           = new Avada_Init();
 		$this->social_sharing = new Avada_Social_Sharing();
 		$this->template       = new Avada_Template();

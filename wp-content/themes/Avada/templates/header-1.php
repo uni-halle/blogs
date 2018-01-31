@@ -17,7 +17,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="fusion-header-sticky-height"></div>
 <div class="fusion-header">
 	<div class="fusion-row">
+		<?php if ( 'flyout' === Avada()->settings->get( 'mobile_menu_design' ) ) : ?>
+			<div class="fusion-header-has-flyout-menu-content">
+		<?php endif; ?>
 		<?php avada_logo(); ?>
 		<?php avada_main_menu(); ?>
+		<?php if ( 'flyout' === Avada()->settings->get( 'mobile_menu_design' ) ) : ?>
+			</div>
+		<?php endif; ?>
 	</div>
 </div>

@@ -31,12 +31,14 @@ if ( ! function_exists( 'fusion_get_related_posts' ) ) {
 			return $query;
 		}
 
-		$args = wp_parse_args( $args, array(
-			'category__in'        => wp_get_post_categories( $post_id ),
-			'ignore_sticky_posts' => 0,
-			'posts_per_page'      => $number_posts,
-			'post__not_in'        => array( $post_id ),
-		) );
+		$args = wp_parse_args(
+			$args, array(
+				'category__in'        => wp_get_post_categories( $post_id ),
+				'ignore_sticky_posts' => 0,
+				'posts_per_page'      => $number_posts,
+				'post__not_in'        => array( $post_id ),
+			)
+		);
 
 		// If placeholder images are disabled,
 		// add the _thumbnail_id meta key to the query to only retrieve posts with featured images.
@@ -80,19 +82,21 @@ if ( ! function_exists( 'fusion_get_custom_posttype_related_posts' ) ) {
 		}
 
 		if ( ! empty( $item_array ) ) {
-			$args = wp_parse_args( $args, array(
-				'ignore_sticky_posts' => 0,
-				'posts_per_page'      => $number_posts,
-				'post__not_in'        => array( $post_id ),
-				'post_type'           => 'avada_' . $post_type,
-				'tax_query'           => array(
-					array(
-						'field'    => 'id',
-						'taxonomy' => $post_type . '_category',
-						'terms'    => $item_array,
+			$args = wp_parse_args(
+				$args, array(
+					'ignore_sticky_posts' => 0,
+					'posts_per_page'      => $number_posts,
+					'post__not_in'        => array( $post_id ),
+					'post_type'           => 'avada_' . $post_type,
+					'tax_query'           => array(
+						array(
+							'field'    => 'id',
+							'taxonomy' => $post_type . '_category',
+							'terms'    => $item_array,
+						),
 					),
-				),
-			) );
+				)
+			);
 
 			// If placeholder images are disabled, add the _thumbnail_id meta key to the query to only retrieve posts with featured images.
 			if ( ! Avada()->settings->get( 'featured_image_placeholder' ) ) {
@@ -137,85 +141,6 @@ if ( ! function_exists( 'fusion_attr' ) ) {
 	}
 }
 
-if ( ! function_exists( 'fusion_pagination' ) ) {
-	/**
-	 * Number based pagination
-	 *
-	 * @param string  $pages           Maximum number of pages.
-	 * @param integer $range           Our range.
-	 * @param string  $current_query   The current query.
-	 * @param bool    $infinite_scroll Whether we want infinite scroll or not.
-	 * @return void
-	 */
-	function fusion_pagination( $pages = '', $range = 2, $current_query = '', $infinite_scroll = false ) {
-		$showitems = ( $range * 2 ) + 1;
-
-		if ( '' == $current_query ) {
-			global $paged;
-			if ( empty( $paged ) ) {
-				$paged = 1;
-			}
-		} else {
-			$paged = $current_query->query_vars['paged'];
-		}
-
-		if ( '' == $pages ) {
-			if ( '' == $current_query ) {
-				global $wp_query;
-				$pages = $wp_query->max_num_pages;
-				if ( ! $pages ) {
-					$pages = 1;
-				}
-			} else {
-				$pages = $current_query->max_num_pages;
-			}
-		}
-		?>
-
-		<?php if ( 1 != $pages ) : ?>
-			<?php if ( $infinite_scroll || ( 'Pagination' != Avada()->settings->get( 'blog_pagination_type' ) && ( is_home() || is_search() || ( 'post' == get_post_type() && ( is_author() || is_archive() ) ) ) ) || ( 'pagination' !== Avada()->settings->get( 'portfolio_archive_pagination_type' ) && ( is_post_type_archive( 'avada_portfolio' ) || is_tax( 'portfolio_category' ) || is_tax( 'portfolio_skills' )  || is_tax( 'portfolio_tags' ) ) ) ) : ?>
-				<div class="fusion-infinite-scroll-trigger"></div>
-				<div class='pagination infinite-scroll clearfix' style="display:none;">
-			<?php else : ?>
-				<div class='pagination clearfix'>
-			<?php endif; ?>
-
-			<?php if ( 1 < $paged ) : ?>
-				<a class="pagination-prev" href="<?php echo esc_url_raw( get_pagenum_link( $paged - 1 ) ); ?>">
-					<span class="page-prev"></span>
-					<span class="page-text"><?php esc_html_e( 'Previous', 'Avada' ); ?></span>
-				</a>
-			<?php endif; ?>
-
-			<?php for ( $i = 1; $i <= $pages; $i++ ) : ?>
-				<?php if ( 1 != $pages && ( ! ( $i >= $paged + $range + 1 || $i <= $paged - $range - 1 ) || $pages <= $showitems ) ) : ?>
-					<?php if ( $paged == $i ) : ?>
-						<span class="current"><?php echo (int) $i; ?></span>
-					<?php else : ?>
-						<a href="<?php echo esc_url_raw( get_pagenum_link( $i ) ); ?>" class="inactive"><?php echo (int) $i; ?></a>
-					<?php endif; ?>
-				<?php endif; ?>
-			<?php endfor; ?>
-
-			<?php if ( $paged < $pages ) : ?>
-				<a class="pagination-next" href="<?php echo esc_url_raw( get_pagenum_link( $paged + 1 ) ); ?>">
-					<span class="page-text"><?php esc_html_e( 'Next', 'Avada' ); ?></span>
-					<span class="page-next"></span>
-				</a>
-			<?php endif; ?>
-
-			</div>
-			<?php
-			// Needed for Theme check.
-			ob_start();
-			posts_nav_link();
-			ob_get_clean();
-			?>
-		<?php endif;
-
-	}
-} // End if().
-
 if ( ! function_exists( 'fusion_breadcrumbs' ) ) {
 	/**
 	 * Render the breadcrumbs with help of class-breadcrumbs.php.
@@ -234,7 +159,7 @@ if ( ! function_exists( 'fusion_strip_unit' ) ) {
 	 *
 	 * @param  string $value The value with or without unit.
 	 * @param  string $unit_to_strip The unit to be stripped.
-	 * @return string	the value without a unit.
+	 * @return string   the value without a unit.
 	 */
 	function fusion_strip_unit( $value, $unit_to_strip = 'px' ) {
 		$value_length = strlen( $value );

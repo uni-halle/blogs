@@ -66,7 +66,7 @@ function avada_set_builder_classes( $default_elements, $class ) {
 		$elements[] = '.woocommerce.add_to_cart_inline .button';
 	}
 	if ( class_exists( 'Tribe__Events__Main' ) ) {
-		$elements[] = '#tribe-bar-form .tribe-bar-submit input[type=submit]';
+		$elements[] = '#tribe-events-bar .tribe-bar-filters .tribe-bar-filters-inner .tribe-bar-submit input[type=submit]';
 		$elements[] = '#tribe-events .tribe-events-button';
 		$elements[] = '#tribe_events_filter_control #tribe_events_filters_toggle';
 		$elements[] = '#tribe_events_filter_control #tribe_events_filters_reset';
@@ -426,7 +426,6 @@ function avada_add_fb_styling( $css ) {
 			$css['global'][ $dynamic_css_helpers->implode( $elements ) ]['border-color'] = Fusion_Sanitize::color( $fusion_settings->get( 'title_border_color' ) );
 			$css['global']['.product-images .crossfade-images']['background'] = Fusion_Sanitize::color( $fusion_settings->get( 'title_border_color' ) );
 			$elements = array(
-				'.products .product-list-view',
 				'.fusion-menu-cart-item img',
 				'.quantity',
 				'.quantity .minus',
@@ -435,6 +434,9 @@ function avada_add_fb_styling( $css ) {
 				'.woocommerce form.checkout #customer_details .col-2',
 			);
 			$css['global'][ $dynamic_css_helpers->implode( $elements ) ]['border-color'] = Fusion_Sanitize::color( $fusion_settings->get( 'sep_color' ) );
+
+			$css['global']['.products .product-list-view']['border-color'] = Fusion_Sanitize::color( $fusion_settings->get( 'timeline_color' ) );
+
 			$elements = array(
 				'.fusion-content-widget-area .widget_layered_nav li.chosen a',
 				'.fusion-content-widget-area .widget_layered_nav li.chosen a:before',
@@ -518,15 +520,6 @@ function avada_add_fb_styling( $css ) {
 			'.single-navigation',
 			'.project-content .project-info .project-info-box',
 			'.post .fusion-meta-info',
-			'.fusion-blog-layout-grid .post .post-wrapper',
-			'.fusion-blog-layout-grid .post .fusion-content-sep',
-			'.fusion-portfolio.fusion-portfolio-boxed .fusion-content-sep',
-			'.fusion-blog-layout-grid .post .flexslider',
-			'.fusion-layout-timeline .post',
-			'.fusion-layout-timeline .post .fusion-content-sep',
-			'.fusion-layout-timeline .post .flexslider',
-			'.fusion-timeline-date',
-			'.fusion-timeline-arrow',
 			'.fusion-counters-box .fusion-counter-box .counter-box-border',
 			'tr td',
 			'.table',
@@ -671,6 +664,14 @@ function avada_add_fb_styling( $css ) {
 		if ( class_exists( 'GFForms' ) ) {
 			$css['global']['.gform_wrapper .gsection']['border-bottom'] = '1px dotted ' . Fusion_Sanitize::color( $fusion_settings->get( 'sep_color' ) );
 		}
+
+		$elements = array(
+			'.fusion-blog-layout-grid .post .fusion-content-sep',
+			'.fusion-portfolio.fusion-portfolio-boxed .fusion-content-sep',
+			'.fusion-layout-timeline .post .fusion-content-sep',
+		);
+		$css['global'][ $dynamic_css_helpers->implode( $elements ) ]['border-color'] = Fusion_Sanitize::color( $fusion_settings->get( 'grid_separator_color' ) );
+
 		if ( $fusion_settings->get( 'checklist_icons_color' ) ) {
 			$elements = array(
 				'.fusion-body .error-menu li:before',
@@ -687,7 +688,7 @@ function avada_add_fb_styling( $css ) {
 			);
 			$css['global'][ $dynamic_css_helpers->implode( $elements ) ]['background-color'] = Fusion_Sanitize::color( $fusion_settings->get( 'countdown_background_color' ) );
 			$elements = array(
-				'.tribe-countdown-timer .tribe-countdown-number'
+				'.tribe-countdown-timer .tribe-countdown-number',
 			);
 			$css['global'][ $dynamic_css_helpers->implode( $elements ) ]['background-color'] = Fusion_Sanitize::color( $fusion_settings->get( 'countdown_counter_box_color' ) );
 			$elements = array(

@@ -222,7 +222,7 @@ class Fusion_Dynamic_CSS {
 		if ( ! $this->mode || null === $this->mode ) {
 			$this->set_mode();
 		}
-		return $this->mode;
+		return ( defined( 'FUSION_DISABLE_COMPILERS' ) && FUSION_DISABLE_COMPILERS ) ? 'inline' : $this->mode;
 
 	}
 
@@ -560,7 +560,7 @@ class Fusion_Dynamic_CSS {
 	 */
 	public function icomoon_css( $css ) {
 
-		$font_url = untrailingslashit( FUSION_LIBRARY_URL ) . '/assets/fonts/icomoon';
+		$font_url = FUSION_LIBRARY_URL . '/assets/fonts/icomoon';
 		$font_url = set_url_scheme( $font_url );
 
 		$css .= '@font-face {';

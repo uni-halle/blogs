@@ -59,7 +59,16 @@ global $post;
 			</div><!-- .tribe-events-event-meta -->
 			<?php do_action( 'tribe_events_after_the_meta' ); ?>
 
-			<div class="fusion-content-sep"></div>
+			<?php
+			$separator_styles_array = explode( '|', Avada()->settings->get( 'grid_separator_style_type' ) );
+			$separator_styles = '';
+
+			foreach ( $separator_styles_array as $separator_style ) {
+				$separator_styles .= ' sep-' . $separator_style;
+			}
+			?>
+
+			<div class="fusion-content-sep<?php echo esc_attr( $separator_styles ); ?>"></div>
 
 			<!-- Event Content -->
 			<?php do_action( 'tribe_events_before_the_content' ); ?>

@@ -85,7 +85,7 @@ function avada_woocommerce_h3_typography( $typography_elements ) {
 		$typography_elements['color'][]  = '.woocommerce-container .product-title';
 		$typography_elements['family'][] = '.woocommerce-container .product-title';
 		$typography_elements['size'][]   = '.woocommerce-container .product-title';
-		$typography_elements['size'][]   = 'p.demo_store';
+		$typography_elements['size'][]   = 'p.woocommerce-store-notice';
 		$typography_elements['size'][]   = 'body #wrapper h2.woocommerce-loop-category__title';
 
 		$typography_elements['color'][]  = '.woocommerce-tabs .entry-content h3';

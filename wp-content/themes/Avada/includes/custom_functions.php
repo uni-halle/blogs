@@ -42,13 +42,19 @@ if ( ! function_exists( 'avada_get_slider' ) ) {
 	/**
 	 * Get the slider type.
 	 *
-	 * @param int    $post_id The post ID.
-	 * @param string $type    The slider type.
+	 * @param int    $post_id    The post ID.
+	 * @param string $type       The slider type.
+	 * @param bool   $is_archive Whether archive page.
 	 * @return  string
 	 */
-	function avada_get_slider( $post_id, $type ) {
+	function avada_get_slider( $post_id, $type, $is_archive = false ) {
 		$type = Avada_Helper::slider_name( $type );
-		return ( $type ) ? get_post_meta( $post_id, 'pyre_' . $type, true ) : false;
+		if ( $is_archive ) {
+			$fusion_taxonomy_options = get_term_meta( $post_id, 'fusion_taxonomy_options', true );
+			return ( $type ) ? Avada_Helper::get_fusion_tax_meta( $fusion_taxonomy_options, 'fusion_tax_' . $type ) : false;
+		} else {
+			return ( $type ) ? get_post_meta( $post_id, 'pyre_' . $type, true ) : false;
+		}
 	}
 }
 
@@ -56,11 +62,13 @@ if ( ! function_exists( 'avada_slider' ) ) {
 	/**
 	 * Slider.
 	 *
-	 * @param int $post_id The post ID.
+	 * @param int  $post_id The post ID.
+	 * @param bool $is_archive Whether archive page.
 	 */
-	function avada_slider( $post_id ) {
-		$slider_type = avada_get_slider_type( $post_id );
-		$slider      = avada_get_slider( $post_id, $slider_type );
+	function avada_slider( $post_id, $is_archive = false ) {
+
+		$slider_type = avada_get_slider_type( $post_id, $is_archive );
+		$slider      = avada_get_slider( $post_id, $slider_type, $is_archive );
 
 		if ( $slider ) {
 			$slider_name = Avada_Helper::slider_name( $slider_type );
@@ -249,28 +257,33 @@ if ( ! function_exists( 'avada_current_page_title_bar' ) ) {
 		$page_title_bar_contents = avada_get_page_title_bar_contents( $post_id );
 		$page_title = get_post_meta( $post_id, 'pyre_page_title', true );
 
-		if ( ( ! is_archive() || class_exists( 'WooCommerce' ) && is_shop() ) &&
-			 ! is_search()
-		) {
-			if ( 'yes' === $page_title || 'yes_without_bar' === $page_title || ( 'hide' !== Avada()->settings->get( 'page_title_bar' ) && 'no' !== $page_title ) ) {
-				if ( ! is_home() || ! is_front_page() || Avada()->settings->get( 'blog_show_page_title_bar' ) ) {
-					if ( is_home() && get_post_meta( $post_id, 'pyre_page_title', true ) == 'default' && ! Avada()->settings->get( 'blog_show_page_title_bar' ) ) {
-						return;
-					}
-					avada_page_title_bar( $page_title_bar_contents[0], $page_title_bar_contents[1], $page_title_bar_contents[2] );
-				}
-			}
-		} else {
-			if ( is_home() && Avada()->settings->get( 'blog_show_page_title_bar' ) ) {
+		// Which TO to check for.
+		$page_title_option = Avada()->settings->get( 'page_title_bar' );
+
+		if ( is_home() ) {
+
+			// Blog designated page.
+			$page_title_option = Avada()->settings->get( 'blog_show_page_title_bar' );
+		} elseif ( is_tag() || is_category() || is_author() || is_date() || is_singular( 'post' ) ) {
+
+			// Blog archive or post.
+			$page_title_option = Avada()->settings->get( 'blog_page_title_bar' );
+		}
+
+		// Check if archive or WooCommerce shop page.
+		if ( ( ! is_archive() || class_exists( 'WooCommerce' ) && is_shop() ) && ! is_search() ) {
+
+			// Check that combination of page option and TO means page title bar should show.
+			if ( 'yes' === $page_title || 'yes_without_bar' === $page_title || ( 'hide' !== $page_title_option && 'no' !== $page_title ) ) {
 				avada_page_title_bar( $page_title_bar_contents[0], $page_title_bar_contents[1], $page_title_bar_contents[2] );
-			} else {
-				if ( 'hide' != Avada()->settings->get( 'page_title_bar' ) ) {
-					avada_page_title_bar( $page_title_bar_contents[0], $page_title_bar_contents[1], $page_title_bar_contents[2] );
-				}
 			}
+
+			// No page option to check for so just check that TO is not set to hide.
+		} else if ( 'hide' !== $page_title_option ) {
+			avada_page_title_bar( $page_title_bar_contents[0], $page_title_bar_contents[1], $page_title_bar_contents[2] );
 		}
 	}
-}
+} // End if().
 
 if ( ! function_exists( 'avada_backend_check_new_bbpress_post' ) ) {
 	/**

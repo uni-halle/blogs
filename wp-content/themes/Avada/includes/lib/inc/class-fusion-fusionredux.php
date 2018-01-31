@@ -323,14 +323,16 @@ class Fusion_FusionRedux {
 			return;
 		}
 
-		FusionRedux::setSection( $this->key, array(
-			'title'      => ( isset( $section['label'] ) ) ? $section['label'] : '',
-			'id'         => $section['id'],
-			'desc'       => ( isset( $section['description'] ) ) ? $section['description'] : '',
-			'highlight'  => ( isset( $section['highlight'] ) ) ? $section['highlight'] : '',
-			'icon'       => ( isset( $section['icon'] ) ) ? $section['icon'] : 'el el-home',
-			'class'      => ( isset( $section['class'] ) ) ? $section['class'] : '',
-		) );
+		FusionRedux::setSection(
+			$this->key, array(
+				'title'      => ( isset( $section['label'] ) ) ? $section['label'] : '',
+				'id'         => $section['id'],
+				'desc'       => ( isset( $section['description'] ) ) ? $section['description'] : '',
+				'highlight'  => ( isset( $section['highlight'] ) ) ? $section['highlight'] : '',
+				'icon'       => ( isset( $section['icon'] ) ) ? $section['icon'] : 'el el-home',
+				'class'      => ( isset( $section['class'] ) ) ? $section['class'] : '',
+			)
+		);
 	}
 
 	/**
@@ -439,16 +441,16 @@ class Fusion_FusionRedux {
 
 				if ( in_array( $field['id'], $font_size_dimension_fields, true ) ) {
 					$args['validate_callback'] = 'fusion_fusionredux_validate_font_size';
-					$args['subtitle'] = sprintf( esc_html__( '%1$s Enter value including CSS unit (px, em, rem), ex: %2$s.', 'Avada' ), $args['subtitle'], $field['default'] );
+					$args['subtitle'] = sprintf( esc_attr__( '%1$s Enter value including CSS unit (px, em, rem), ex: %2$s.', 'Avada' ), $args['subtitle'], $field['default'] );
 				} else {
-					$args['subtitle'] = sprintf( esc_html__( '%1$s Enter value including any valid CSS unit, ex: %2$s.', 'Avada' ), $args['subtitle'], $field['default'] );
+					$args['subtitle'] = sprintf( esc_attr__( '%1$s Enter value including any valid CSS unit, ex: %2$s.', 'Avada' ), $args['subtitle'], $field['default'] );
 				}
 				break;
 			case 'dimensions':
 				if ( 'lightbox_video_dimensions' === $field['id'] || 'menu_arrow_size' === $field['id'] ) {
-					$args['subtitle'] = sprintf( esc_html__( '%1$s In pixels, ex: %2$s.', 'Avada' ), $args['subtitle'], implode( ', ', $field['default'] ) );
+					$args['subtitle'] = sprintf( esc_attr__( '%1$s In pixels, ex: %2$s.', 'Avada' ), $args['subtitle'], implode( ', ', $field['default'] ) );
 				} else {
-					$args['subtitle'] = sprintf( esc_html__( '%1$s Enter values including any valid CSS unit, ex: %2$s.', 'Avada' ), $args['subtitle'], implode( ', ', $field['default'] ) );
+					$args['subtitle'] = sprintf( esc_attr__( '%1$s Enter values including any valid CSS unit, ex: %2$s.', 'Avada' ), $args['subtitle'], implode( ', ', $field['default'] ) );
 				}
 				$args['validate_callback'] = 'fusion_fusionredux_validate_dimensions';
 				break;
@@ -459,7 +461,7 @@ class Fusion_FusionRedux {
 				$args['right']  = ( isset( $field['choices'] ) && isset( $field['choices']['right'] ) ) ? true : false;
 				$args['validate_callback'] = 'fusion_fusionredux_validate_dimensions';
 				$default = is_array( $field['default'] ) ? implode( ', ', $field['default'] ) : $field['default'];
-				$args['subtitle'] = sprintf( esc_html__( '%1$s Enter values including any valid CSS unit, ex: %2$s.', 'Avada' ), $args['subtitle'], $default );
+				$args['subtitle'] = sprintf( esc_attr__( '%1$s Enter values including any valid CSS unit, ex: %2$s.', 'Avada' ), $args['subtitle'], $default );
 				break;
 			case 'number':
 				$args['type'] = 'spinner';
@@ -485,7 +487,7 @@ class Fusion_FusionRedux {
 
 				// @codingStandardsIgnoreLine
 				if ( ! in_array( $field['id'], $not_in_pixels ) ) {
-					$args['subtitle'] = $args['subtitle'] . ' ' . esc_html__( 'In pixels.', 'Avada' );
+					$args['subtitle'] = $args['subtitle'] . ' ' . esc_attr__( 'In pixels.', 'Avada' );
 				}
 
 				if ( isset( $field['choices'] ) && isset( $field['choices']['min'] ) ) {
@@ -718,7 +720,7 @@ class Fusion_FusionRedux {
 				$option_type = esc_attr__( 'Builder', 'Avada' );
 			}
 
-			$correlation_link = '  <span class="fusion-hover-description"><a href="https://theme-fusion.com/avada-doc/options/how-options-work/" target="_blank" rel="noopener noreferrer">' . sprintf( __( 'This option has a dependency for a corresponding %s Option.', 'Avada' ), $option_type ) . '</a></span>';
+			$correlation_link = '  <span class="fusion-hover-description"><a href="https://theme-fusion.com/avada-doc/options/how-options-work/" target="_blank" rel="noopener noreferrer">' . sprintf( __( 'This is a dependent option that always stays visible because other %s Options can utilize it.', 'Avada' ), $option_type ) . '</a></span>';
 
 			$args['subtitle'] .= $correlation_link;
 			foreach ( $args['required'] as $key => $requirement ) {
@@ -767,8 +769,8 @@ class Fusion_FusionRedux {
 	public function enqueue() {
 		$vars = array(
 			'option_name'        => $this->args['option_name'],
-			'theme_skin'         => esc_html__( 'Theme Skin', 'Avada' ),
-			'color_scheme'       => esc_html__( 'Color Scheme', 'Avada' ),
+			'theme_skin'         => esc_attr__( 'Theme Skin', 'Avada' ),
+			'color_scheme'       => esc_attr__( 'Color Scheme', 'Avada' ),
 			'theme_options_name' => ( class_exists( 'Avada' ) ) ? Avada::get_option_name() : 'fusion_theme_options',
 		);
 		wp_register_script( 'fusion-redux-custom-js', trailingslashit( FUSION_LIBRARY_URL ) . 'inc/redux/assets/fusion-redux.js', array( 'jquery' ), time(), true );
@@ -1177,7 +1179,7 @@ class Fusion_FusionRedux {
 	 * @return string
 	 */
 	public function reset_message_l10n() {
-		return esc_html__( 'Are you sure? This will reset all saved options to the default Avada Classic theme options. This does not reset them to any other demo that you may have imported.', 'Avada' );
+		return esc_attr__( 'Are you sure? This will reset all saved options to the default Avada Classic theme options. This does not reset them to any other demo that you may have imported.', 'Avada' );
 	}
 
 	/**
@@ -1187,7 +1189,7 @@ class Fusion_FusionRedux {
 	 * @return string
 	 */
 	public function reset_section_message_l10n() {
-		return esc_html__( 'Are you sure? This will reset all saved options to the default Avada Classic theme options for this section. This does not reset them to any other demo that you may have imported.', 'Avada' );
+		return esc_attr__( 'Are you sure? This will reset all saved options to the default Avada Classic theme options for this section. This does not reset them to any other demo that you may have imported.', 'Avada' );
 	}
 
 	/**
@@ -1197,7 +1199,7 @@ class Fusion_FusionRedux {
 	 * @return string
 	 */
 	public function fusionredux_import_file_description_l10n() {
-		return esc_html__( 'Copy the contents of the json file and paste it below. Then click "Import" to restore your setings.', 'Avada' );
+		return esc_attr__( 'Copy the contents of the json file and paste it below. Then click "Import" to restore your setings.', 'Avada' );
 	}
 
 	/**

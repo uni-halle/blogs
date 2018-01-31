@@ -44,9 +44,9 @@ $this->radio_buttonset(
 	'portfolio_width_100',
 	esc_html__( 'Use 100% Width Page', 'Avada' ),
 	array(
-		'default' 	=> esc_attr__( 'Default', 'Avada' ),
-		'no'  		=> esc_attr__( 'No', 'Avada' ),
-		'yes' 		=> esc_attr__( 'Yes', 'Avada' ),
+		'default'   => esc_attr__( 'Default', 'Avada' ),
+		'no'        => esc_attr__( 'No', 'Avada' ),
+		'yes'       => esc_attr__( 'Yes', 'Avada' ),
 	),
 	sprintf( esc_html__( 'Choose to set this post to 100&#37; browser width. %s', 'Avada' ), Avada()->settings->get_default_description( 'blog_width_100', '', 'yesno' ) )
 );
@@ -101,7 +101,7 @@ if ( 'avada_faq' !== $screen->post_type ) {
 
 	$this->radio_buttonset(
 		'post_links_target',
-		esc_html__( 'Open Post Links In New Window', 'Avada' ),
+		esc_html__( 'Open Blog Links In New Window', 'Avada' ),
 		array(
 			'no'  => esc_attr__( 'No', 'Avada' ),
 			'yes' => esc_attr__( 'Yes', 'Avada' ),

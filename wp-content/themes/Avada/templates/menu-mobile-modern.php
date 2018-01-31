@@ -24,14 +24,20 @@ $displayed_menu = get_post_meta( $c_page_id, 'pyre_displayed_menu', true );
 			<a href="#" class="fusion-icon fusion-icon-bars" aria-label="<?php esc_attr_e( 'Toggle mobile menu', 'Avada' ); ?>"></a>
 		<?php endif; ?>
 
-		<?php if ( ( 'v4' == Avada()->settings->get( 'header_layout' ) || 'Top' != Avada()->settings->get( 'header_position' ) )  && ( 'Tagline And Search' == $header_content_3 || 'Search' == $header_content_3 ) ) : ?>
+		<?php if ( ( 'v4' == Avada()->settings->get( 'header_layout' ) || 'Top' != Avada()->settings->get( 'header_position' ) ) && ( 'Tagline And Search' == $header_content_3 || 'Search' == $header_content_3 ) ) : ?>
 			<a href="#" class="fusion-icon fusion-icon-search" aria-label="<?php esc_attr_e( 'Toggle mobile search', 'Avada' ); ?>"></a>
+		<?php endif; ?>
+
+		<?php if ( 'menu' === Avada()->settings->get( 'slidingbar_toggle_style' ) && Avada()->settings->get( 'mobile_slidingbar_widgets' ) ) : ?>
+			<?php $sliding_bar_label = esc_attr__( 'Toggle Sliding Bar', 'Avada' ); ?>
+			<a href="#" class="fusion-icon fusion-icon-sliding-bar" aria-label="<?php echo $sliding_bar_label; ?>"></a>
 		<?php endif; ?>
 
 		<?php if ( class_exists( 'WooCommerce' ) && Avada()->settings->get( 'woocommerce_cart_link_main_nav' ) ) : ?>
 			<a href="<?php echo esc_url_raw( get_permalink( get_option( 'woocommerce_cart_page_id' ) ) ); ?>" class="fusion-icon fusion-icon-shopping-cart"  aria-label="<?php esc_attr_e( 'Toggle mobile cart', 'Avada' ); ?>"></a>
 		<?php endif; ?>
 	</div>
-<?php endif;
+<?php
+endif;
 
 /* Omit closing PHP tag to avoid "Headers already sent" issues. */

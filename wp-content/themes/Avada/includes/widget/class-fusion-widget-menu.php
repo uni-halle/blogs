@@ -60,7 +60,7 @@ class Fusion_Widget_Menu extends WP_Widget {
 
 		echo '<style type="text/css">';
 
-		echo '#' . esc_attr( $this->id ) . ' > .fusion-widget-menu ul{';
+		echo '#' . esc_attr( $this->id ) . '{';
 		echo 'text-align:' . esc_attr( strtolower( $instance['alignment'] ) ) . ';';
 		echo '}';
 
@@ -98,9 +98,9 @@ class Fusion_Widget_Menu extends WP_Widget {
 		echo '</style>';
 
 		$nav_menu_args = array(
-			'fallback_cb' 	  => '',
-			'menu'        	  => $nav_menu,
-			'depth'		  	  => -1,
+			'fallback_cb'     => '',
+			'menu'            => $nav_menu,
+			'depth'           => -1,
 			'container_class' => 'fusion-widget-menu',
 			'container'       => 'nav',
 			'item_spacing'    => 'discard',
@@ -129,13 +129,13 @@ class Fusion_Widget_Menu extends WP_Widget {
 
 		$instance = $old_instance;
 
-		$instance['nav_menu']				= isset( $new_instance['nav_menu'] ) ? $new_instance['nav_menu'] : '';
-		$instance['alignment']				= isset( $new_instance['alignment'] ) ? $new_instance['alignment'] : '';
-		$instance['menu_padding']  			= isset( $new_instance['menu_padding'] ) ? $new_instance['menu_padding'] : '';
-		$instance['menu_link_color']    	= isset( $new_instance['menu_link_color'] ) ? $new_instance['menu_link_color'] : '';
+		$instance['nav_menu']               = isset( $new_instance['nav_menu'] ) ? $new_instance['nav_menu'] : '';
+		$instance['alignment']              = isset( $new_instance['alignment'] ) ? $new_instance['alignment'] : '';
+		$instance['menu_padding']           = isset( $new_instance['menu_padding'] ) ? $new_instance['menu_padding'] : '';
+		$instance['menu_link_color']        = isset( $new_instance['menu_link_color'] ) ? $new_instance['menu_link_color'] : '';
 		$instance['menu_link_hover_color']  = isset( $new_instance['menu_link_hover_color'] ) ? $new_instance['menu_link_hover_color'] : '';
-		$instance['sep_text']      			= isset( $new_instance['sep_text'] ) ? $new_instance['sep_text'] : '';
-		$instance['font_size']      		= isset( $new_instance['font_size'] ) ? $new_instance['font_size'] : '';
+		$instance['sep_text']               = isset( $new_instance['sep_text'] ) ? $new_instance['sep_text'] : '';
+		$instance['font_size']              = isset( $new_instance['font_size'] ) ? $new_instance['font_size'] : '';
 
 		return $instance;
 
@@ -150,13 +150,13 @@ class Fusion_Widget_Menu extends WP_Widget {
 	function form( $instance ) {
 
 		$defaults = array(
-			'nav_menu' 				=> '',
-			'alignment'				=> 'Left',
-			'menu_padding'  		=> '25px',
-			'menu_link_color'    	=> '#ccc',
+			'nav_menu'              => '',
+			'alignment'             => 'Left',
+			'menu_padding'          => '25px',
+			'menu_link_color'       => '#ccc',
 			'menu_link_hover_color' => '#fff',
-			'sep_text'      		=> '|',
-			'font_size'				=> '14px',
+			'sep_text'              => '|',
+			'font_size'             => '14px',
 		);
 		$instance = wp_parse_args( (array) $instance, $defaults );
 
@@ -168,7 +168,7 @@ class Fusion_Widget_Menu extends WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'nav_menu' ) ); ?>"><?php esc_attr_e( 'Select Menu:', 'Avada' ); ?></label>
 			<select id="<?php echo esc_attr( $this->get_field_id( 'nav_menu' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'nav_menu' ) ); ?>" class="widefat" style="width:100%;">
-				<option value="0"><?php esc_attr_e( '&mdash; Select &mdash;' ); ?></option>
+				<option value="0">&mdash; <?php esc_attr_e( 'Select', 'Avada' ); ?> &mdash;</option>
 				<?php foreach ( $menus as $menu ) : ?>
 					<option value="<?php echo esc_attr( $menu->slug ); ?>" <?php selected( $nav_menu, $menu->slug ); ?>>
 						<?php echo esc_html( $menu->name ); ?>
@@ -179,9 +179,9 @@ class Fusion_Widget_Menu extends WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'alignment' ) ); ?>"><?php esc_attr_e( 'Alignment:', 'Avada' ); ?></label>
 			<select id="<?php echo esc_attr( $this->get_field_id( 'alignment' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'alignment' ) ); ?>" class="widefat" style="width:100%;">
-				<option value="Left" <?php if ( 'Left' == $instance['alignment'] ) { echo 'selected="selected"'; } ?>><?php esc_attr_e( 'Left', 'Avada' ); ?></option>
-				<option value="Center" <?php if ( 'Center' == $instance['alignment'] ) { echo 'selected="selected"'; } ?>><?php esc_attr_e( 'Center', 'Avada' ); ?></option>
-				<option value="Right" <?php if ( 'Right' == $instance['alignment'] ) { echo 'selected="selected"'; } ?>><?php esc_attr_e( 'Right', 'Avada' ); ?></option>
+				<option value="Left" <?php echo ( 'Left' == $instance['alignment'] ) ? 'selected="selected"' : ''; ?>><?php esc_attr_e( 'Left', 'Avada' ); ?></option>
+				<option value="Center" <?php echo ( 'Center' == $instance['alignment'] ) ? 'selected="selected"' : ''; ?>><?php esc_attr_e( 'Center', 'Avada' ); ?></option>
+				<option value="Right" <?php echo ( 'Right' == $instance['alignment'] ) ? 'selected="selected"' : ''; ?>><?php esc_attr_e( 'Right', 'Avada' ); ?></option>
 			</select>
 		</p>
 		<p>

@@ -98,7 +98,7 @@ class Avada_GoogleMap {
 	 * Function to apply attributes to HTML tags.
 	 * Devs can override attributes in a child theme by using the correct slug
 	 *
-	 * @param  string $slug	   Slug to refer to the HTML tag.
+	 * @param  string $slug    Slug to refer to the HTML tag.
 	 * @param  array  $attributes Attributes for HTML tag.
 	 * @return string
 	 */
@@ -128,7 +128,7 @@ class Avada_GoogleMap {
 	 *
 	 * @param  array  $args    Shortcode parameters.
 	 * @param  string $content Content between shortcode.
-	 * @return string		   HTML output.
+	 * @return string          HTML output.
 	 */
 	function render_map( $args, $content = '' ) {
 
@@ -147,7 +147,7 @@ class Avada_GoogleMap {
 				'icon'                     => '',
 				'infobox'                  => '',
 				'infobox_background_color' => '',
-				'infobox_content'		   => '',
+				'infobox_content'          => '',
 				'infobox_text_color'       => '',
 				'map_style'                => '',
 				'overlay_color'            => '',
@@ -169,7 +169,7 @@ class Avada_GoogleMap {
 
 		if ( $address ) {
 			$addresses       = explode( '|', $address );
-			$infobox_content = ( ! in_array( $map_style, array( 'default', 'theme' ) ) && 'default' !== $infobox ) ? html_entity_decode( $infobox_content ) : '' ;
+			$infobox_content = ( ! in_array( $map_style, array( 'default', 'theme' ) ) ) ? html_entity_decode( $infobox_content ) : '' ;
 
 			$infobox_content_array = ( $infobox_content ) ? explode( '|', $infobox_content ) : '';
 			$icon_array            = ( $icon && 'default' !== $infobox ) ? explode( '|', $icon ) : '';
@@ -180,13 +180,13 @@ class Avada_GoogleMap {
 
 			$num_of_addresses = count( $addresses );
 
-			if ( $icon && false === strpos( $icon, '|' )  && 'default' !== $infobox ) {
+			if ( $icon && false === strpos( $icon, '|' ) && 'default' !== $infobox ) {
 				for ( $i = 0; $i < $num_of_addresses; $i++ ) {
 					$icon_array[ $i ] = $icon;
 				}
 			}
 
-			if ( 'theme' == $map_style ) {
+			if ( 'theme' === $map_style ) {
 
 				$map_style                = 'custom';
 				$icon                     = 'theme';
@@ -197,7 +197,7 @@ class Avada_GoogleMap {
 				$overlay_color            = Avada()->settings->get( 'primary_color' );
 				$brightness_level         = $this->calc_color_brightness( Avada()->settings->get( 'primary_color' ) );
 				$infobox_text_color       = ( $brightness_level > 140 ) ? '#fff' : '#747474';
-			} elseif ( 'custom' == $map_style ) {
+			} elseif ( 'custom' === $map_style ) {
 				$overlay_color = Avada()->settings->get( 'map_overlay_color' );
 				$color_obj = Fusion_Color::new_color( $overlay_color );
 				if ( '0' == $color_obj->alpha ) {
@@ -208,7 +208,7 @@ class Avada_GoogleMap {
 				}
 			}
 
-			if ( 'theme' == $icon && 'custom' == $map_style ) {
+			if ( 'theme' === $icon && 'custom' === $map_style ) {
 				for ( $i = 0; $i < $num_of_addresses; $i++ ) {
 					$icon_array[ $i ] = Avada::$template_dir_url . '/assets/images/avada_map_marker.png';
 				}
@@ -302,6 +302,7 @@ class Avada_GoogleMap {
 				var map_<?php echo esc_attr( $map_id ); ?>;
 				var markers = [];
 				var counter = 0;
+				var fusionMapNonce = '<?php echo wp_create_nonce( 'avada_admin_ajax' ); // WPCS: XSS ok. ?>';
 				function fusion_run_map_<?php echo esc_attr( $map_id ); ?>() {
 					jQuery('#<?php echo esc_attr( $map_id ); ?>').fusion_maps({
 						<?php // @codingStandardsIgnoreLine ?>

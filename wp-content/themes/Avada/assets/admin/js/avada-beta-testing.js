@@ -2,7 +2,7 @@ var $avadaVersion;
 window.$versionSuffix = ' rc1';
 
 if ( window.jQuery ) {
-	jQuery( document ).ready( function( e ) {
+	jQuery( document ).ready( function() {
 
 		// Main logos
 		jQuery( '.avada-logo .avada-version' ).text( jQuery( '.avada-logo .avada-version' ).text() + window.$versionSuffix );
@@ -14,7 +14,7 @@ if ( window.jQuery ) {
 		// Avada Plugins page
 		jQuery( '.avada-install-plugins' ).find( '.fusion-admin-box:nth-child(1), .fusion-admin-box:nth-child(2)' ).each( function() {
 			var $versionContainer = jQuery( this ).find( '.plugin-info' ),
-				$html = $versionContainer.html().replace( '|', window.$versionSuffix + ' |' );
+			    $html = $versionContainer.html().replace( '|', window.$versionSuffix + ' |' );
 
 			$versionContainer.html( $html );
 		});
@@ -22,7 +22,7 @@ if ( window.jQuery ) {
 		// WP Plugins page
 		jQuery( 'table.plugins #the-list' ).find( '[data-slug="fusion-core"], [data-slug="fusion-builder"]' ).each( function() {
 			var $versionContainer = jQuery( this ).find( '.plugin-version-author-uri' ),
-				$html = $versionContainer.html().replace( '| By', window.$versionSuffix + ' | By' );
+			    $html = $versionContainer.html().replace( '| By', window.$versionSuffix + ' | By' );
 
 			$versionContainer.html( $html );
 		});

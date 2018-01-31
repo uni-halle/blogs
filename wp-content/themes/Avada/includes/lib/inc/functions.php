@@ -158,9 +158,9 @@ if ( ! function_exists( 'fusion_render_post_metadata' ) ) {
 
 				// Check if rich snippets are enabled.
 				if ( fusion_library()->get_option( 'disable_date_rich_snippet_pages' ) && fusion_library()->get_option( 'disable_rich_snippet_author' ) ) {
-					$metadata .= sprintf( esc_html__( 'By %s', 'Avada' ), '<span class="vcard"><span class="fn">' . $author_post_link . '</span></span>' );
+					$metadata .= sprintf( esc_attr__( 'By %s', 'Avada' ), '<span class="vcard"><span class="fn">' . $author_post_link . '</span></span>' );
 				} else {
-					$metadata .= sprintf( esc_html__( 'By %s', 'Avada' ), '<span class="vcard"><span class="fn">' . $author_post_link . '</span></span>' );
+					$metadata .= sprintf( esc_attr__( 'By %s', 'Avada' ), '<span class="vcard"><span class="fn">' . $author_post_link . '</span></span>' );
 				}
 				$metadata .= '<span class="fusion-inline-sep">|</span>';
 			} else { // If author meta data won't be visible, render just the invisible author rich snippet.
@@ -467,7 +467,7 @@ if ( ! function_exists( 'fusion_get_post_content_excerpt' ) ) {
 	 *
 	 * @param  string  $limit      Maximum number of words or chars to be displayed in excerpt.
 	 * @param  boolean $strip_html Set to TRUE to strip HTML tags from excerpt.
-	 * @return string 				The custom excerpt.
+	 * @return string               The custom excerpt.
 	 **/
 	function fusion_get_post_content_excerpt( $limit = 285, $strip_html ) {
 		global $more;
@@ -641,12 +641,14 @@ if ( ! function_exists( 'fusion_link_pages' ) ) {
 	 * Pages links.
 	 */
 	function fusion_link_pages() {
-		wp_link_pages( array(
-			'before'      => '<div class="page-links"><span class="page-links-title">' . esc_html__( 'Pages:', 'Avada' ) . '</span>',
-			'after'       => '</div>',
-			'link_before' => '<span class="page-number">',
-			'link_after'  => '</span>',
-		) );
+		wp_link_pages(
+			array(
+				'before'      => '<div class="page-links"><span class="page-links-title">' . esc_html__( 'Pages:', 'Avada' ) . '</span>',
+				'after'       => '</div>',
+				'link_before' => '<span class="page-number">',
+				'link_after'  => '</span>',
+			)
+		);
 	}
 }
 
@@ -659,6 +661,7 @@ if ( ! function_exists( 'fusion_cached_query' ) ) {
 	 * @return object
 	 */
 	function fusion_cached_query( $args ) {
+
 		$query_id   = md5( maybe_serialize( $args ) );
 		$query = wp_cache_get( $query_id, 'fusion_library' );
 		if ( false === $query ) {
@@ -668,6 +671,20 @@ if ( ! function_exists( 'fusion_cached_query' ) ) {
 		return $query;
 	}
 }
+
+if ( ! function_exists( 'fusion_flush_object_cache' ) ) {
+	/**
+	 * Deletes WP object cache.
+	 *
+	 * @since 1.2
+	 * @return void
+	 */
+	function fusion_flush_object_cache() {
+		wp_cache_flush();
+	}
+}
+add_action( 'save_post', 'fusion_flush_object_cache' );
+add_action( 'delete_post', 'fusion_flush_object_cache' );
 
 if ( ! function_exists( 'fusion_cached_get_posts' ) ) {
 	/**
@@ -769,3 +786,83 @@ if ( ! function_exists( 'fusion_get_featured_image_id' ) ) {
 		return Fusion_Featured_Image::get_featured_image_id( $image_id, $post_type, $post_id );
 	}
 }
+
+if ( ! function_exists( 'fusion_pagination' ) ) {
+	/**
+	 * Number based pagination.
+	 *
+	 * @since 1.3
+	 * @param string|int $pages           Maximum number of pages.
+	 * @param integer    $range           Our range.
+	 * @param string     $current_query   The current query.
+	 * @param bool       $infinite_scroll Whether we want infinite scroll or not.
+	 * @return string                     The pagination markup.
+	 */
+	function fusion_pagination( $pages = '', $range = 2, $current_query = '', $infinite_scroll = false ) {
+		global $paged, $wp_query;
+
+		$showitems = ( $range * 2 ) + 1;
+
+		if ( '' === $current_query ) {
+			$paged = ( empty( $paged ) ) ? 1 : $paged;
+		} else {
+			$paged = $current_query->query_vars['paged'];
+		}
+
+		if ( '' === $pages ) {
+			if ( '' === $current_query ) {
+				$pages = $wp_query->max_num_pages;
+				$pages = ( ! $pages ) ? 1 : $pages;
+			} else {
+				$pages = $current_query->max_num_pages;
+			}
+		}
+		$pages    = intval( $pages );
+		$paged    = intval( $paged );
+		$page_max = min( $pages, $showitems );
+		$output   = '';
+
+		if ( 1 !== $pages ) {
+			if ( $infinite_scroll || ( 'Pagination' !== Avada()->settings->get( 'blog_pagination_type' ) && ( is_home() || is_search() || ( 'post' === get_post_type() && ( is_author() || is_archive() ) ) ) ) || ( 'pagination' !== Avada()->settings->get( 'portfolio_archive_pagination_type' ) && ( is_post_type_archive( 'avada_portfolio' ) || is_tax( 'portfolio_category' ) || is_tax( 'portfolio_skills' ) || is_tax( 'portfolio_tags' ) ) ) ) {
+				$output .= '<div class="fusion-infinite-scroll-trigger"></div>';
+				$output .= '<div class="pagination infinite-scroll clearfix" style="display:none;">';
+			} else {
+				$output .= '<div class="pagination clearfix">';
+			}
+
+			if ( 1 < $paged ) {
+				$output .= '<a class="pagination-prev" href="' . esc_url( get_pagenum_link( $paged - 1 ) ) . '">';
+					$output .= '<span class="page-prev"></span>';
+					$output .= '<span class="page-text">' . esc_html__( 'Previous', 'Avada' ) . '</span>';
+				$output .= '</a>';
+			}
+
+			for ( $i = 1; $i <= $page_max; $i++ ) {
+				if ( 1 != $pages && ( ! ( $i >= $paged + $range + 1 || $i <= $paged - $range - 1 ) || $pages <= $showitems ) ) {
+					if ( $paged === $i ) {
+						$output .= '<span class="current">' . absint( $i ) . '</span>';
+					} else {
+						$output .= '<a href="' . esc_url( get_pagenum_link( $i ) ) . '" class="inactive">' . absint( $i ) . '</a>';
+					}
+				}
+			}
+
+			if ( $paged < $pages ) {
+				$output .= '<a class="pagination-next" href="' . esc_url( get_pagenum_link( $paged + 1 ) ) . '">';
+					$output .= '<span class="page-text">' . esc_html__( 'Next', 'Avada' ) . '</span>';
+					$output .= '<span class="page-next"></span>';
+				$output .= '</a>';
+			}
+
+			$output .= '</div>';
+			$output .= '<div class="fusion-clearfix"></div>';
+		}
+
+		return $output;
+
+		// Needed for Theme check.
+		ob_start();
+		posts_nav_link();
+		ob_get_clean();
+	}
+} // End if().

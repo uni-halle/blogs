@@ -47,13 +47,15 @@ class Avada_Multiple_Featured_Images {
 		while ( $i <= Avada()->settings->get( 'posts_slideshow_number' ) ) {
 
 			foreach ( $post_types as $post_type ) {
-				new Fusion_Featured_Image( array(
-					'id'           => 'featured-image-' . $i,
-					'post_type'    => $post_type,
-					'name'         => sprintf( __( 'Featured image %s', 'Avada' ), $i ),
-					'label_set'	   => sprintf( __( 'Set featured image %s', 'Avada' ), $i ),
-					'label_remove' => sprintf( __( 'Remove featured image %s', 'Avada' ), $i ),
-				) );
+				new Fusion_Featured_Image(
+					array(
+						'id'           => 'featured-image-' . $i,
+						'post_type'    => $post_type,
+						'name'         => sprintf( __( 'Featured image %s', 'Avada' ), $i ),
+						'label_set'    => sprintf( __( 'Set featured image %s', 'Avada' ), $i ),
+						'label_remove' => sprintf( __( 'Remove featured image %s', 'Avada' ), $i ),
+					)
+				);
 			}
 
 			$i++;

@@ -166,8 +166,13 @@ class Avada_Contact {
 	 * @access private
 	 */
 	private function process_message() {
-		// @codingStandardsIgnoreLine
-		$message = ( isset( $_POST['msg'] ) ) ? esc_textarea( wp_unslash( $_POST['msg'] ) ) : '';
+		// @codingStandardsIgnoreStart
+		if ( function_exists( 'sanitize_textarea_field' ) ) {
+			$message = ( isset( $_POST['msg'] ) ) ? sanitize_textarea_field( wp_unslash( $_POST['msg'] ) ) : '';
+		} else {
+			$message = ( isset( $_POST['msg'] ) ) ? wp_unslash( $_POST['msg'] ) : '';
+		}
+		// @codingStandardsIgnoreEnd
 		if ( '' == $message || esc_html__( 'Message', 'Avada' ) == $message ) {
 			$this->has_error = true;
 		} else {

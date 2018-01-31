@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	$demos = Avada_Importer_Data::get_data();
 	$all_tags = array(
-		'all' => esc_attr__( 'All Demos' ),
+		'all' => esc_attr__( 'All Demos', 'Avada' ),
 	);
 
 	foreach ( $demos as $demo => $demo_details ) {
@@ -49,7 +49,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	}
 
 	// Check which recommended plugins are installed and activated.
-	$plugin_dependencies = TGM_Plugin_Activation::$instance->plugins;
+	$plugin_dependencies = Avada_TGM_Plugin_Activation::$instance->plugins;
 
 	foreach ( $plugin_dependencies as $key => $plugin ) {
 		$plugin_dependencies[ $key ]['active']    = is_plugin_active( $plugin['file_path'] );
@@ -207,8 +207,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 						$demo_import_badge = __( 'Partial Import', 'Avada' );
 					}
 					?>
-					<div class="fusion-admin-box">
-						<div id="theme-demo-<?php echo esc_attr( strtolower( $demo ) ); ?>" class="theme" data-tags="<?php echo esc_attr( implode( ',', $tags ) ); ?>">
+					<div class="fusion-admin-box" data-tags="<?php echo esc_attr( implode( ',', $tags ) ); ?>">
+						<div id="theme-demo-<?php echo esc_attr( strtolower( $demo ) ); ?>" class="theme">
 							<div class="theme-wrapper">
 								<div class="theme-screenshot">
 									<img src="" <?php echo ( ! empty( $demo_details['previewImage'] ) ) ? 'data-src="' . esc_url_raw( $demo_details['previewImage'] ) . '"' : ''; ?> <?php echo ( ! empty( $demo_details['previewImageRetina'] ) ) ? 'data-src-retina="' . esc_url_raw( $demo_details['previewImageRetina'] ) . '"' : ''; ?>>
@@ -328,15 +328,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 											<div class="demo-update-modal-status-bar-progress-bar"></div>
 
 											<a class="button-install-demo" data-demo-id="<?php echo esc_attr( strtolower( $demo ) ); ?>" href="#">
-												<?php echo esc_html__( 'Import', 'Avada' ); ?>
+												<?php esc_attr_e( 'Import', 'Avada' ); ?>
 											</a>
 
 											<a class="button-uninstall-demo" data-demo-id="<?php echo esc_attr( strtolower( $demo ) ); ?>" href="#">
-												<?php echo esc_html__( 'Remove', 'Avada' ); ?>
+												<?php esc_attr_e( 'Remove', 'Avada' ); ?>
 											</a>
 
 											<a class="button-done-demo demo-update-modal-close" href="#">
-												<?php echo esc_html__( 'Done', 'Avada' ); ?>
+												<?php esc_attr_e( 'Done', 'Avada' ); ?>
 											</a>
 										</div>
 									</div>

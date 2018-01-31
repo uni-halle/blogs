@@ -37,12 +37,13 @@ class Fusion_Image_Resizer {
 			'resize' => true,
 		);
 		$settings = wp_parse_args( $data, $defaults );
+
 		if ( empty( $settings['url'] ) ) {
 			return;
 		}
 		// Generate the @2x file if retina is enabled.
 		if ( $settings['retina'] ) {
-			self::_resize( $settings['url'], $settings['width'], $settings['height'], $settings['crop'], true );
+			return self::_resize( $settings['url'], $settings['width'], $settings['height'], $settings['crop'], true );
 		}
 		return self::_resize( $settings['url'], $settings['width'], $settings['height'], $settings['crop'], false );
 	}
@@ -64,22 +65,42 @@ class Fusion_Image_Resizer {
 			return new WP_Error( 'no_image_url', __( 'No image URL has been entered.', 'Avada' ), $url );
 		}
 		// Get default size from database.
-		$width  = ( $width )  ? $width  : get_option( 'thumbnail_size_w' );
+		$width  = ( $width ) ? $width : get_option( 'thumbnail_size_w' );
 		$height = ( $height ) ? $height : get_option( 'thumbnail_size_h' );
 		// Allow for different retina sizes.
 		$retina = ( true === $retina ) ? 2 : $retina;
 		$retina = $retina ? $retina : 1;
 		// Get the image file path.
 		$upload_dir_paths = wp_upload_dir();
+		$upload_dir_paths_baseurl = $upload_dir_paths['baseurl'];
+
+		if ( substr( $url, 0, 2 ) === '//' ) {
+			$upload_dir_paths_baseurl = set_url_scheme( $upload_dir_paths_baseurl );
+		}
 
 		// Make sure the upload path base directory exists in the attachment URL, to verify that we're working with a media library image.
-		if ( false !== strpos( $url, $upload_dir_paths['baseurl'] ) ) {
+		if ( false !== strpos( $url, $upload_dir_paths_baseurl ) ) {
+
 			// If this is the URL of an auto-generated thumbnail, get the URL of the original image.
-			$attachment_url = preg_replace( '/-\d+x\d+(?=\.(jpg|jpeg|png|gif)$)/i', '', $url );
+			$attachment_url = preg_replace( '/-\d+x\d+(?=\.(jpg|jpeg|png|gif|tiff|svg)$)/i', '', $url );
+
 			// Remove the upload path base directory from the attachment URL.
-			$attachment_url = str_replace( $upload_dir_paths['baseurl'] . '/', '', $attachment_url );
-			// Run a custom database query to get the attachment ID from the modified attachment URL.
+			$attachment_url = str_replace( $upload_dir_paths_baseurl . '/', '', $attachment_url );
+
+			// Run a custom database query to get the attachment ID from the modified attachment URL. @codingStandardsIgnoreLine
 			$attachment_id = $wpdb->get_var( $wpdb->prepare( "SELECT wposts.ID FROM $wpdb->posts wposts, $wpdb->postmeta wpostmeta WHERE wposts.ID = wpostmeta.post_id AND wpostmeta.meta_key = '_wp_attached_file' AND wpostmeta.meta_value = '%s' AND wposts.post_type = 'attachment'", $attachment_url ) );
+
+			// If the image contains -\d+x\d part as original file name, the above did not yield an attachment ID, so let's try with the original name.
+			if ( ! $attachment_id ) {
+				// Remove the upload path base directory from the attachment URL.
+				$attachment_url = str_replace( $upload_dir_paths_baseurl . '/', '', $url );
+
+				// Run a custom database query to get the attachment ID from the modified attachment URL. @codingStandardsIgnoreLine
+				$attachment_id = $wpdb->get_var( $wpdb->prepare( "SELECT wposts.ID FROM $wpdb->posts wposts, $wpdb->postmeta wpostmeta WHERE wposts.ID = wpostmeta.post_id AND wpostmeta.meta_key = '_wp_attached_file' AND wpostmeta.meta_value = '%s' AND wposts.post_type = 'attachment'", $attachment_url ) );
+			}
+
+			$wpml_object_id = apply_filters( 'wpml_object_id', $attachment_id, 'attachment' );
+			$attachment_id = $wpml_object_id ? $wpml_object_id : $attachment_id;
 			// Get the file path.
 			$file_path = get_attached_file( $attachment_id );
 		}

@@ -19,7 +19,7 @@ if ( get_option( 'woocommerce_enable_shipping_calc' ) === 'no' || ! WC()->cart->
 
 <?php do_action( 'woocommerce_before_shipping_calculator' ); ?>
 
-<form class="woocommerce-shipping-calculator" action="<?php echo esc_url( WC()->cart->get_cart_url() ); ?>" method="post">
+<form class="woocommerce-shipping-calculator" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 
 	<h2><span href="#" class="shipping-calculator-button"><?php esc_attr_e( 'Calculate shipping', 'woocommerce' ); ?></span>
 	</h2>
@@ -37,7 +37,7 @@ if ( get_option( 'woocommerce_enable_shipping_calc' ) === 'no' || ! WC()->cart->
 			</select>
 		</p>
 
-		<div class="<?php if ( Avada()->settings->get( 'avada_styles_dropdowns' ) ) : ?>avada-select-parent fusion-layout-column fusion-one-half fusion-spacing-yes<?php endif; ?>">
+		<div class="<?php echo ( Avada()->settings->get( 'avada_styles_dropdowns' ) ) ? 'avada-select-parent fusion-layout-column fusion-one-half fusion-spacing-yes' : ''; ?>">
 			<?php
 			$current_cc = WC()->customer->get_shipping_country();
 			$current_r  = WC()->customer->get_shipping_state();
@@ -92,6 +92,7 @@ if ( get_option( 'woocommerce_enable_shipping_calc' ) === 'no' || ! WC()->cart->
 	</div>
 </form>
 
-<?php do_action( 'woocommerce_after_shipping_calculator' );
+<?php
+do_action( 'woocommerce_after_shipping_calculator' );
 
 /* Omit closing PHP tag to avoid "Headers already sent" issues. */

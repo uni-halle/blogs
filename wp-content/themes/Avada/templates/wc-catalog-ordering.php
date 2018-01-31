@@ -66,66 +66,68 @@ $pc = ! empty( $params['product_count'] ) ? $params['product_count'] : $per_page
 ?>
 
 <div class="catalog-ordering clearfix">
-	<div class="orderby-order-container">
-		<ul class="orderby order-dropdown">
-			<li>
-				<span class="current-li">
-					<span class="current-li-content">
-						<a aria-haspopup="true"><?php printf( esc_html__( 'Sort by %s', 'Avada' ), '<strong>' . esc_attr( $order_string ) . '</strong>' ); ?></a>
+	<?php if ( Avada()->settings->get( 'woocommerce_avada_ordering' ) ) : ?>
+		<div class="orderby-order-container">
+			<ul class="orderby order-dropdown">
+				<li>
+					<span class="current-li">
+						<span class="current-li-content">
+							<a aria-haspopup="true"><?php printf( esc_html__( 'Sort by %s', 'Avada' ), '<strong>' . esc_attr( $order_string ) . '</strong>' ); ?></a>
+						</span>
 					</span>
-				</span>
-				<ul>
-					<li class="<?php echo ( 'menu_order' === $pob ) ? 'current' : ''; ?>">
-						<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_orderby', 'default' ) ); ?>"><?php printf( esc_html__( 'Sort by %s', 'Avada' ), '<strong>' . esc_attr__( 'Default Order', 'Avada' ) . '</strong>' ); ?></a>
-					</li>
-					<li class="<?php echo ( 'name' === $pob ) ? 'current' : ''; ?>">
-						<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_orderby', 'name' ) ); ?>"><?php printf( esc_html__( 'Sort by %s', 'Avada' ), '<strong>' . esc_attr__( 'Name', 'Avada' ) . '</strong>' ); ?></a>
-					</li>
-					<li class="<?php echo ( 'price' === $pob || 'price-desc' === $pob ) ? 'current' : ''; ?>">
-						<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_orderby', 'price' ) ); ?>"><?php printf( esc_html__( 'Sort by %s', 'Avada' ), '<strong>' . esc_attr__( 'Price', 'Avada' ) . '</strong>' ); ?></a>
-					</li>
-					<li class="<?php echo ( 'date' === $pob ) ? 'current' : ''; ?>">
-						<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_orderby', 'date' ) ); ?>"><?php printf( esc_html__( 'Sort by %s', 'Avada' ), '<strong>' . esc_attr__( 'Date', 'Avada' ) . '</strong>' ); ?></a>
-					</li>
-					<li class="<?php echo ( 'popularity' === $pob ) ? 'current' : ''; ?>">
-						<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_orderby', 'popularity' ) ); ?>"><?php printf( esc_html__( 'Sort by %s', 'Avada' ), '<strong>' . esc_attr__( 'Popularity', 'Avada' ) . '</strong>' ); ?></a>
-					</li>
-					<?php if ( 'no' !== get_option( 'woocommerce_enable_review_rating' ) ) : ?>
-						<li class="<?php echo ( 'rating' === $pob ) ? 'current' : ''; ?>">
-							<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_orderby', 'rating' ) ); ?>"><?php printf( esc_html__( 'Sort by %s', 'Avada' ), '<strong>' . esc_attr__( 'Rating', 'Avada' ) . '</strong>' ); ?></a>
+					<ul>
+						<li class="<?php echo ( 'menu_order' === $pob ) ? 'current' : ''; ?>">
+							<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_orderby', 'default' ) ); ?>"><?php printf( esc_html__( 'Sort by %s', 'Avada' ), '<strong>' . esc_attr__( 'Default Order', 'Avada' ) . '</strong>' ); ?></a>
 						</li>
+						<li class="<?php echo ( 'name' === $pob ) ? 'current' : ''; ?>">
+							<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_orderby', 'name' ) ); ?>"><?php printf( esc_html__( 'Sort by %s', 'Avada' ), '<strong>' . esc_attr__( 'Name', 'Avada' ) . '</strong>' ); ?></a>
+						</li>
+						<li class="<?php echo ( 'price' === $pob || 'price-desc' === $pob ) ? 'current' : ''; ?>">
+							<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_orderby', 'price' ) ); ?>"><?php printf( esc_html__( 'Sort by %s', 'Avada' ), '<strong>' . esc_attr__( 'Price', 'Avada' ) . '</strong>' ); ?></a>
+						</li>
+						<li class="<?php echo ( 'date' === $pob ) ? 'current' : ''; ?>">
+							<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_orderby', 'date' ) ); ?>"><?php printf( esc_html__( 'Sort by %s', 'Avada' ), '<strong>' . esc_attr__( 'Date', 'Avada' ) . '</strong>' ); ?></a>
+						</li>
+						<li class="<?php echo ( 'popularity' === $pob ) ? 'current' : ''; ?>">
+							<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_orderby', 'popularity' ) ); ?>"><?php printf( esc_html__( 'Sort by %s', 'Avada' ), '<strong>' . esc_attr__( 'Popularity', 'Avada' ) . '</strong>' ); ?></a>
+						</li>
+						<?php if ( 'no' !== get_option( 'woocommerce_enable_review_rating' ) ) : ?>
+							<li class="<?php echo ( 'rating' === $pob ) ? 'current' : ''; ?>">
+								<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_orderby', 'rating' ) ); ?>"><?php printf( esc_html__( 'Sort by %s', 'Avada' ), '<strong>' . esc_attr__( 'Rating', 'Avada' ) . '</strong>' ); ?></a>
+							</li>
+						<?php endif; ?>
+					</ul>
+				</li>
+			</ul>
+
+			<ul class="order">
+				<?php if ( isset( $po ) ) : ?>
+					<?php if ( 'desc' === $po ) : ?>
+						<li class="desc"><a aria-label="<?php esc_attr_e( 'Ascending order', 'Avada' ); ?>" aria-haspopup="true" href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_order', 'asc' ) ); ?>"><i class="fusion-icon-arrow-down2 icomoon-up"></i></a></li>
+					<?php else : ?>
+						<li class="asc"><a aria-label="<?php esc_attr_e( 'Descending order', 'Avada' ); ?>" aria-haspopup="true" href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_order', 'desc' ) ); ?>"><i class="fusion-icon-arrow-down2"></i></a></li>
 					<?php endif; ?>
+				<?php endif; ?>
+			</ul>
+		</div>
+
+		<ul class="sort-count order-dropdown">
+			<li>
+				<span class="current-li"><a aria-haspopup="true"><?php printf( __( 'Show <strong>%s Products</strong>', 'Avada' ), (int) $per_page ); // WPCS: XSS ok. ?></a></span>
+				<ul>
+					<li class="<?php echo ( $pc == $per_page ) ? 'current' : ''; ?>">
+						<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_count', $per_page ) ); ?>"><?php printf( __( 'Show <strong>%s Products</strong>', 'Avada' ), (int) $per_page ); // WPCS: XSS ok. ?></a>
+					</li>
+					<li class="<?php echo ( $pc == $per_page * 2 ) ? 'current' : ''; ?>">
+						<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_count', $per_page * 2 ) ); ?>"><?php printf( __( 'Show <strong>%s Products</strong>', 'Avada' ), (int) $per_page * 2 ); // WPCS: XSS ok. ?></a>
+					</li>
+					<li class="<?php echo ( $pc == $per_page * 3 ) ? 'current' : ''; ?>">
+						<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_count', $per_page * 3 ) ); ?>"><?php printf( __( 'Show <strong>%s Products</strong>', 'Avada' ), (int) $per_page * 3 ); // WPCS: XSS ok. ?></a>
+					</li>
 				</ul>
 			</li>
 		</ul>
-
-		<ul class="order">
-			<?php if ( isset( $po ) ) : ?>
-				<?php if ( 'desc' === $po ) : ?>
-					<li class="desc"><a aria-label="<?php esc_attr_e( 'Ascending order', 'Avada' ); ?>" aria-haspopup="true" href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_order', 'asc' ) ); ?>"><i class="fusion-icon-arrow-down2 icomoon-up"></i></a></li>
-				<?php else : ?>
-					<li class="asc"><a aria-label="<?php esc_attr_e( 'Descending order', 'Avada' ); ?>" aria-haspopup="true" href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_order', 'desc' ) ); ?>"><i class="fusion-icon-arrow-down2"></i></a></li>
-				<?php endif; ?>
-			<?php endif; ?>
-		</ul>
-	</div>
-
-	<ul class="sort-count order-dropdown">
-		<li>
-			<span class="current-li"><a aria-haspopup="true"><?php printf( __( 'Show <strong>%s Products</strong>', 'Avada' ), (int) $per_page ); // WPCS: XSS ok. ?></a></span>
-			<ul>
-				<li class="<?php echo ( $pc == $per_page ) ? 'current' : ''; ?>">
-					<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_count', $per_page ) ); ?>"><?php printf( __( 'Show <strong>%s Products</strong>', 'Avada' ), (int) $per_page ); // WPCS: XSS ok. ?></a>
-				</li>
-				<li class="<?php echo ( $pc == $per_page * 2 ) ? 'current' : ''; ?>">
-					<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_count', $per_page * 2 ) ); ?>"><?php printf( __( 'Show <strong>%s Products</strong>', 'Avada' ), (int) $per_page * 2 ); // WPCS: XSS ok. ?></a>
-				</li>
-				<li class="<?php echo ( $pc == $per_page * 3 ) ? 'current' : ''; ?>">
-					<a href="<?php echo esc_url_raw( fusion_add_url_parameter( $query_string, 'product_count', $per_page * 3 ) ); ?>"><?php printf( __( 'Show <strong>%s Products</strong>', 'Avada' ), (int) $per_page * 3 ); // WPCS: XSS ok. ?></a>
-				</li>
-			</ul>
-		</li>
-	</ul>
+	<?php endif; ?>
 
 	<?php $woocommerce_toggle_grid_list = Avada()->settings->get( 'woocommerce_toggle_grid_list' ); ?>
 	<?php $product_view = 'grid'; ?>
@@ -135,7 +137,6 @@ $pc = ! empty( $params['product_count'] ) ? $params['product_count'] : $per_page
 			<?php $product_view = $params['product_view']; ?>
 		<?php endif; ?>
 	<?php endif; ?>
-
 	<?php if ( $woocommerce_toggle_grid_list ) : ?>
 		<ul class="fusion-grid-list-view">
 			<li class="fusion-grid-view-li<?php echo ( 'grid' === $product_view ) ? ' active-view' : ''; ?>">

@@ -37,10 +37,12 @@ if ( empty( $author_description ) ) {
 	</div>
 	<div class="fusion-author-info">
 		<h3 class="fusion-author-title<?php echo ( Avada()->settings->get( 'disable_date_rich_snippet_pages' ) && Avada()->settings->get( 'disable_rich_snippet_author' )  ) ? ' vcard' : ''; ?>">
-			<?php printf(
+			<?php
+			printf(
 				esc_html__( 'About %s', 'Avada' ),
 				( Avada()->settings->get( 'disable_date_rich_snippet_pages' ) && Avada()->settings->get( 'disable_rich_snippet_author' ) ) ? '<span class="fn">' . esc_attr( $author_name ) . '</span>' : esc_attr( $author_name )
-			); ?>
+			);
+			?>
 			<?php // If user can edit his profile, offer a link for it. ?>
 			<?php if ( current_user_can( 'edit_users' ) || get_current_user_id() == $author_id ) : ?>
 				<span class="fusion-edit-profile">(<a href="<?php echo esc_url_raw( admin_url( 'profile.php?user_id=' . $author_id ) ); ?>"><?php esc_attr_e( 'Edit profile', 'Avada' ); ?></a>)</span>

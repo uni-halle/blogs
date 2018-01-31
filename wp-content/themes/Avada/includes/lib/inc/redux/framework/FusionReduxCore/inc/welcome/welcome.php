@@ -101,7 +101,7 @@
 		}
 
 		public function change_wp_footer() {
-			echo __( 'If you like <strong>FusionRedux</strong> please leave us a <a href="https://wordpress.org/support/view/plugin-reviews/fusionredux-framework?filter=5#postform" target="_blank" class="fusionredux-rating-link" data-rated="Thanks :)">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating. A huge thank you from FusionRedux in advance!', 'Avada' );
+			_e( 'If you like <strong>FusionRedux</strong> please leave us a <a href="https://wordpress.org/support/view/plugin-reviews/fusionredux-framework?filter=5#postform" target="_blank" class="fusionredux-rating-link" data-rated="Thanks :)">&#9733;&#9733;&#9733;&#9733;&#9733;</a> rating. A huge thank you from FusionRedux in advance!', 'Avada' );
 		}
 
 		public function support_hash() {

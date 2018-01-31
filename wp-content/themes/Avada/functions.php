@@ -14,7 +14,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'Direct script access denied.' );
 }
 
-define( 'AVADA_VERSION', '5.2.1' );
+if ( ! defined( 'AVADA_VERSION' ) ) {
+	define( 'AVADA_VERSION', '5.3' );
+}
 
 /**
  * Include Fusion-Library.
@@ -124,6 +126,21 @@ new Avada_Multiple_Featured_Images();
 new Avada_Sidebars();
 
 /**
+ * Instantiate Avada_Admin_Notices.
+ */
+new Avada_Admin_Notices();
+
+/**
+ * Instantiate Avada_Widget_style.
+ */
+new Avada_Widget_Style();
+
+/**
+ * Instantiate Avada_Page_Options.
+ */
+new Avada_Page_Options();
+
+/**
  * Instantiate Avada_Portfolio.
  * This is only needed on the frontend, doesn't do anything for the dashboard.
  */
@@ -172,33 +189,45 @@ if ( ! is_admin() && class_exists( 'Tribe__Events__Main' ) ) {
 /**
  * Conditionally Instantiate Avada_AvadaRedux.
  */
-$load_avadaredux = false;
+$load_avadaredux   = false;
+$load_avada_gfonts = true;
 if ( is_admin() && isset( $_GET['page'] ) && 'avada_options' === $_GET['page'] ) {
-	$load_avadaredux = true;
+	$load_avadaredux   = true;
+	$load_avada_gfonts = false;
 }
 $http_referer = ( isset( $_SERVER['HTTP_REFERER'] ) ) ? esc_url_raw( wp_unslash( $_SERVER['HTTP_REFERER'] ) ) : '';
 if ( false !== strpos( $http_referer, 'avada_options' ) ) {
-	$load_avadaredux = true;
+	$load_avadaredux   = true;
+	$load_avada_gfonts = true;
+}
+// @codingStandardsIgnoreLine WordPress.VIP.ValidatedSanitizedInput.InputNotValidated
+$avadaredux_export = ( isset( $_GET['action'] ) && 'fusionredux_link_options-fusion_options' === $_GET['action'] && '' !== $_GET['secret'] ) ? true : false;
+if ( $avadaredux_export ) {
+	$load_avadaredux   = true;
+	$load_avada_gfonts = false;
 }
 
 if ( $load_avadaredux ) {
-	new Avada_AvadaRedux( array(
-		'is_language_all'      => Avada::get_language_is_all(),
-		'option_name'          => Avada::get_option_name(),
-		'original_option_name' => Avada::get_original_option_name(),
-		'version'              => Avada()->get_theme_version(),
-		'textdomain'           => 'Avada',
-		'disable_dependencies' => (bool) ( '0' === Avada()->settings->get( 'dependencies_status' ) ),
-		'display_name'         => 'Avada',
-		'menu_title'           => __( 'Theme Options', 'Avada' ),
-		'page_title'           => __( 'Theme Options', 'Avada' ),
-		'global_variable'      => 'fusion_fusionredux_options',
-		'page_parent'          => 'themes.php',
-		'page_slug'            => 'avada_options',
-		'menu_type'            => 'submenu',
-		'page_permissions'     => 'edit_theme_options',
-	) );
-} elseif ( ! is_admin() ) {
+	new Avada_AvadaRedux(
+		array(
+			'is_language_all'      => Avada::get_language_is_all(),
+			'option_name'          => Avada::get_option_name(),
+			'original_option_name' => Avada::get_original_option_name(),
+			'version'              => Avada()->get_theme_version(),
+			'textdomain'           => 'Avada',
+			'disable_dependencies' => (bool) ( '0' === Avada()->settings->get( 'dependencies_status' ) ),
+			'display_name'         => 'Avada',
+			'menu_title'           => __( 'Theme Options', 'Avada' ),
+			'page_title'           => __( 'Theme Options', 'Avada' ),
+			'global_variable'      => 'fusion_fusionredux_options',
+			'page_parent'          => 'themes.php',
+			'page_slug'            => 'avada_options',
+			'menu_type'            => 'submenu',
+			'page_permissions'     => 'edit_theme_options',
+		)
+	);
+}
+if ( ! is_admin() && $load_avada_gfonts ) {
 	new Avada_Google_Fonts();
 }
 
@@ -207,7 +236,7 @@ if ( $load_avadaredux ) {
  * We only need this while on the dashboard.
  */
 if ( is_admin() ) {
-	require_once Avada::$template_dir_path . '/includes/class-tgm-plugin-activation.php';
+	require_once Avada::$template_dir_path . '/includes/class-avada-tgm-plugin-activation.php';
 	require_once Avada::$template_dir_path . '/includes/avada-tgm.php';
 }
 
@@ -333,10 +362,10 @@ add_action( 'admin_head', 'avada_custom_admin_styles' );
 function avada_admin_notice() {
 	?>
 
-	<?php if ( version_compare( PHP_VERSION, '5.3.0' ) < 0 ) : ?>
-		<div id="low-php-version-error" class="notice notice-error">
+	<?php if ( version_compare( PHP_VERSION, '5.3.0' ) < 0 && Avada_Admin_Notices::is_admin_notice_active( 'old-php-notice' ) ) : ?>
+		<div id="low-php-version-error" avada-data-dismissible="old-php-notice" class="notice notice-error is-dismissible">
 			<?php /* translators: Link to WordPress requirements page. */ ?>
-			<p><?php printf( esc_attr__( 'Your server runs on an old version of PHP 5.2. It is recommended you update to %s or greater.', 'Avada' ), '<a href="https://wordpress.org/about/requirements/" target="_blank">PHP 7</a>' ); ?></p>
+			<p><?php esc_attr_e( 'Your server runs an old version of PHP 5.2. To ensure optimal performance and security we strongly encourage you to update your system soon. Avada will end support for PHP 5.2 and below when Avada 6.0 is released.', 'Avada' ); ?></p>
 		</div>
 	<?php endif; ?>
 
@@ -406,10 +435,10 @@ function avada_woo_product( $atts ) {
 
 	if ( version_compare( WC_VERSION, '3.0', '<' ) ) {
 		$args['meta_query'][] = array(
-				'key'     => '_visibility',
-				'value'   => array( 'catalog', 'visible' ),
-				'compare' => 'IN',
-			);
+			'key'     => '_visibility',
+			'value'   => array( 'catalog', 'visible' ),
+			'compare' => 'IN',
+		);
 	} else {
 		$args['tax_query'][] = WC()->query->get_tax_query();
 	}
@@ -433,20 +462,21 @@ function avada_woo_product( $atts ) {
 	}
 
 	$products = fusion_cached_query( $args );
-
-	if ( $products->have_posts() ) : ?>
+	?>
+	<?php if ( $products->have_posts() ) : ?>
 
 		<?php woocommerce_product_loop_start(); ?>
 
-			<?php while ( $products->have_posts() ) : $products->the_post(); ?>
-
+			<?php while ( $products->have_posts() ) : ?>
+				<?php $products->the_post(); ?>
 				<?php fusion_wc_get_template_part( 'content', 'product' ); ?>
 
 			<?php endwhile; // End of the loop. ?>
 
 		<?php woocommerce_product_loop_end(); ?>
 
-	<?php endif;
+	<?php
+	endif;
 
 	wp_reset_postdata();
 
@@ -568,9 +598,13 @@ function avada_login_fail( $url = '', $raw_url = '', $user = '' ) {
 			if ( ! empty( $referer ) && ! strstr( $referer, 'wp-login' ) && ! strstr( $referer, 'wp-admin' ) ) {
 				if ( is_wp_error( $user ) ) {
 					// Let's append some information (login=failed) to the URL for the theme to use.
-					wp_safe_redirect( add_query_arg( array(
-						'login' => 'failed',
-					), $referer ) );
+					wp_safe_redirect(
+						add_query_arg(
+							array(
+								'login' => 'failed',
+							), $referer
+						)
+					);
 				} else {
 					wp_safe_redirect( $referer );
 				}
@@ -613,19 +647,21 @@ add_action( 'layerslider_ready', 'avada_layerslider_ready' );
  * Istantiate the auto-patcher tool.
  */
 global $avada_patcher;
-$avada_patcher = new Fusion_Patcher( array(
-	'context'     => 'avada',
-	'version'     => Avada::get_theme_version(),
-	'name'        => 'Avada',
-	'parent_slug' => 'avada',
-	'page_title'  => esc_attr__( 'Fusion Patcher', 'Avada' ),
-	'menu_title'  => esc_attr__( 'Fusion Patcher', 'Avada' ),
-	'classname'   => 'Avada',
-	'bundled'     => array(
-		'fusion-builder',
-		'fusion-core',
-	),
-) );
+$avada_patcher = new Fusion_Patcher(
+	array(
+		'context'     => 'avada',
+		'version'     => Avada::get_theme_version(),
+		'name'        => 'Avada',
+		'parent_slug' => 'avada',
+		'page_title'  => esc_attr__( 'Fusion Patcher', 'Avada' ),
+		'menu_title'  => esc_attr__( 'Fusion Patcher', 'Avada' ),
+		'classname'   => 'Avada',
+		'bundled'     => array(
+			'fusion-builder',
+			'fusion-core',
+		),
+	)
+);
 
 /**
  * During updates sometimes there are changes that will break a site.
@@ -748,18 +784,22 @@ if ( class_exists( 'FusionBuilder' ) ) {
 }
 
 /**
- * Reset all cache on theme activation.
+ * Reset all Fusion Caches.
  *
  * @since 5.1
+ *
+ * @param array $delete_cache An array of caches to delete.
  */
-function avada_reset_all_cache() {
+function avada_reset_all_caches( $delete_cache = array() ) {
 	// Reset fusion-caches.
 	if ( ! class_exists( 'Fusion_Cache' ) ) {
 		include_once Avada::$template_dir_path . '/includes/lib/inc/class-fusion-cache.php';
 	}
 
 	$fusion_cache = new Fusion_Cache();
-	$fusion_cache->reset_all_caches();
+	$fusion_cache->reset_all_caches( $delete_cache );
+
+	wp_cache_flush();
 }
 
 /**

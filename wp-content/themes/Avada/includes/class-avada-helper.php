@@ -80,11 +80,15 @@ class Avada_Helper {
 	 *
 	 * @static
 	 * @access  public
-	 * @param  int $post_id The post ID.
+	 * @param  int  $post_id The post ID.
+	 * @param  bool $is_archive Whethere archive page..
 	 * @return  string
 	 */
-	public static function get_slider_type( $post_id ) {
-		return get_post_meta( $post_id, 'pyre_slider_type', true );
+	public static function get_slider_type( $post_id, $is_archive = false ) {
+		if ( true === $is_archive ) {
+			$fusion_taxonomy_options = get_term_meta( $post_id, 'fusion_taxonomy_options', true );
+		}
+		return ( true === $is_archive ? self::get_fusion_tax_meta( $fusion_taxonomy_options, 'slider_type' ) : get_post_meta( $post_id, 'pyre_slider_type', true ) );
 	}
 
 	/**
@@ -347,6 +351,23 @@ class Avada_Helper {
 	}
 
 	/**
+	 * Check if we're on a bbPress tag archive page.
+	 *
+	 * @static
+	 * @access public
+	 * @since 5.3
+	 * @return bool
+	 */
+	public static function bbp_is_topic_tag() {
+
+		if ( function_exists( 'bbp_is_topic_tag' ) ) {
+			return (bool) bbp_is_topic_tag();
+		}
+		return false;
+
+	}
+
+	/**
 	 * Check if we're on a bbPress search-results page.
 	 *
 	 * @static
@@ -400,6 +421,20 @@ class Avada_Helper {
 		}
 		return false;
 
+	}
+
+	/**
+	 * Retrieves metadata for a term.
+	 *
+	 * @static
+	 * @access public
+	 * @since 5.3
+	 * @param array  $fusion_taxonomy_options array of all taxonomy options.
+	 * @param string $option_name             name of option.
+	 * @return string
+	 */
+	public static function get_fusion_tax_meta( $fusion_taxonomy_options = array(), $option_name ) {
+		return isset( $fusion_taxonomy_options[ $option_name ] ) ? $fusion_taxonomy_options[ $option_name ] : '';
 	}
 }
 

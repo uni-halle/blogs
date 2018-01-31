@@ -91,25 +91,23 @@ function avada_options_section_woocommerce( $sections ) {
 							'step' => 1,
 						),
 					),
-					'disable_woo_gallery' => ( class_exists( 'WooCommerce' ) || Avada::$is_updating ) ? array(
+					'disable_woo_gallery' => array(
 						'label'           => esc_html__( 'Avada\'s WooCommerce Product Gallery Slider', 'Avada' ),
 						'description'     => esc_html__( 'Turn on to enable Avada\'s product gallery slider.', 'Avada' ),
 						'id'              => 'disable_woo_gallery',
 						'default'         => '1',
 						'type'            => 'switch',
 						'active_callback' => array( 'Avada_Options_Conditionals', 'is_woo' ),
-					) : array(),
-					'woocommerce_single_gallery_size' => ( class_exists( 'WooCommerce' ) || Avada::$is_updating ) ? array(
+					),
+					'woocommerce_single_gallery_size' => array(
 						'label'       => esc_html__( 'WooCommerce Product Gallery Size', 'Avada' ),
-						'description' => ( $wc_version_greater_than_3 ) ?
-						__( 'Controls the size of the single product page image gallery. For the image gallery zoom feature to work, the images you upload must be larger than the gallery size you select for this option. <strong>Important:</strong> When this option is changed, you may need to adjust the Single Product Image size setting in WooCommerce Settings to make sure that one is larger and also regenerate thumbnails. <a href="http://theme-fusion.com/avada-doc/woocommerce-single-product-gallery/" target="_blank">See this post for more information.</a><br/>', 'Avada' ) :
-						__( 'Controls the size of the single product page image gallery.', 'Avada' ),
+						'description' => ( $wc_version_greater_than_3 ) ? __( 'Controls the size of the single product page image gallery. For the image gallery zoom feature to work, the images you upload must be larger than the gallery size you select for this option. <strong>Important:</strong> When this option is changed, you may need to adjust the Single Product Image size setting in WooCommerce Settings to make sure that one is larger and also regenerate thumbnails. <a href="http://theme-fusion.com/avada-doc/woocommerce-single-product-gallery/" target="_blank">See this post for more information.</a><br/>', 'Avada' ) : esc_attr__( 'Controls the size of the single product page image gallery.', 'Avada' ),
 						'id'          => 'woocommerce_single_gallery_size',
 						'default'     => '500px',
 						'type'        => 'dimension',
 						'choices'     => array( 'px' ),
-					) : array(),
-					'woocommerce_gallery_thumbnail_columns' => ( ( ( class_exists( 'WooCommerce' ) && $wc_version_greater_than_3 ) || Avada::$is_updating ) ) ? array(
+					),
+					'woocommerce_gallery_thumbnail_columns' => ( $wc_version_greater_than_3 ) ? array(
 						'label'           => esc_html__( 'WooCommerce Product Gallery Thumbnails Columns', 'Avada' ),
 						'description'     => esc_html__( 'Controls the number of columns of the single product page image gallery thumbnails. In order to avoid blurry thumbnails, make sure the Product Thumbnails size setting in WooCommerce Settings is large enough. It has to be at least WooCommerce Product Gallery Size setting divided by this number of columns.', 'Avada' ),
 						'id'              => 'woocommerce_gallery_thumbnail_columns',
@@ -121,7 +119,7 @@ function avada_options_section_woocommerce( $sections ) {
 							'step' => 1,
 						),
 					) : array(),
-					'enable_woo_gallery_zoom' => (  class_exists( 'WooCommerce' ) && $wc_version_greater_than_3 ) ? array(
+					'enable_woo_gallery_zoom' => ( $wc_version_greater_than_3 ) ? array(
 						'label'           => esc_html__( 'WooCommerce Product Gallery Zoom', 'Avada' ),
 						'description'     => __( 'Turn on to enable the WooCommerce gallery zoom feature. Important: Every product image you use must be larger than the gallery container for zoom to work correctly.<br/><a href="http://theme-fusion.com/avada-doc/woocommerce-single-product-gallery/" target="_blank">See this post for more information.</a>', 'Avada' ),
 						'id'              => 'enable_woo_gallery_zoom',
@@ -162,7 +160,7 @@ function avada_options_section_woocommerce( $sections ) {
 						'id'              => 'woocommerce_acc_link_main_nav',
 						'default'         => '0',
 						'type'            => 'switch',
-						'class'		  => 'fusion-or-gutter',
+						'class'       => 'fusion-or-gutter',
 						'required'    => array(
 							array(
 								'setting'  => 'header_position',
@@ -196,7 +194,7 @@ function avada_options_section_woocommerce( $sections ) {
 						'id'              => 'woocommerce_acc_link_top_nav',
 						'default'         => '1',
 						'type'            => 'switch',
-						'class'		      => 'fusion-or-gutter',
+						'class'           => 'fusion-or-gutter',
 						'required'        => array(
 							array(
 								'setting'  => 'header_position',
@@ -231,8 +229,8 @@ function avada_options_section_woocommerce( $sections ) {
 						'id'              => 'woocommerce_cart_link_top_nav',
 						'default'         => '1',
 						'type'            => 'switch',
-						'class'		      => 'fusion-or-gutter',
-						'required'    	  => array(
+						'class'           => 'fusion-or-gutter',
+						'required'        => array(
 							array(
 								'setting'  => 'header_position',
 								'operator' => '!=',
@@ -274,6 +272,17 @@ function avada_options_section_woocommerce( $sections ) {
 						'default'         => '1',
 						'type'            => 'switch',
 					),
+					'woocommerce_product_view' => array(
+						'type'        => 'radio-buttonset',
+						'label'       => esc_html__( 'WooCommerce Product Default View', 'Avada' ),
+						'description' => esc_html__( 'Sets the default product view for shop page and product archive pages.', 'Avada' ),
+						'id'          => 'woocommerce_product_view',
+						'default'     => 'grid',
+						'choices'     => array(
+							'grid' => esc_html__( 'Grid', 'Avada' ),
+							'list' => esc_html__( 'List', 'Avada' ),
+						),
+					),
 					'woo_acc_msg_1' => array(
 						'label'           => esc_html__( 'WooCommerce Account Area Message 1', 'Avada' ),
 						'description'     => esc_html__( 'Controls the text that displays in the first message box on the account page.', 'Avada' ),
@@ -308,6 +317,13 @@ function avada_options_section_woocommerce( $sections ) {
 							'clean'   => esc_html__( 'Clean', 'Avada' ),
 						),
 					),
+					'woocommerce_equal_heights' => array(
+						'label'       => esc_html__( 'Equal Heights', 'Avada' ),
+						'description' => esc_html__( 'Turn on to display grid boxes with equal heights per row.', 'Avada' ),
+						'id'          => 'woocommerce_equal_heights',
+						'default'     => 0,
+						'type'        => 'switch',
+					),
 					'woocommerce_product_tab_design' => array(
 						'label'           => esc_html__( 'WooCommerce Tab Design', 'Avada' ),
 						'description'     => esc_html__( 'Controls the design of all WooCommerce tabs.', 'Avada' ),
@@ -339,8 +355,8 @@ function avada_options_section_woocommerce( $sections ) {
 						'id'              => 'woo_dropdown_bg_color',
 						'default'         => '#fbfaf9',
 						'type'            => 'color-alpha',
-						'class'		      => 'fusion-or-gutter',
-						'required'    	  => array(
+						'class'           => 'fusion-or-gutter',
+						'required'        => array(
 							array(
 								'setting'  => 'header_position',
 								'operator' => '!=',
@@ -359,8 +375,8 @@ function avada_options_section_woocommerce( $sections ) {
 						'id'              => 'woo_dropdown_text_color',
 						'default'         => '#333333',
 						'type'            => 'color',
-						'class'		      => 'fusion-or-gutter',
-						'required'    	  => array(
+						'class'           => 'fusion-or-gutter',
+						'required'        => array(
 							array(
 								'setting'  => 'header_position',
 								'operator' => '!=',
@@ -379,8 +395,8 @@ function avada_options_section_woocommerce( $sections ) {
 						'id'              => 'woo_dropdown_border_color',
 						'default'         => '#dbdbdb',
 						'type'            => 'color-alpha',
-						'class'		      => 'fusion-or-gutter',
-						'required'    	  => array(
+						'class'           => 'fusion-or-gutter',
+						'required'        => array(
 							array(
 								'setting'  => 'header_position',
 								'operator' => '!=',
@@ -399,8 +415,8 @@ function avada_options_section_woocommerce( $sections ) {
 						'id'              => 'woo_cart_bg_color',
 						'default'         => '#fafafa',
 						'type'            => 'color-alpha',
-						'class'		      => 'fusion-or-gutter',
-						'required'    	  => array(
+						'class'           => 'fusion-or-gutter',
+						'required'        => array(
 							array(
 								'setting'  => 'header_position',
 								'operator' => '!=',

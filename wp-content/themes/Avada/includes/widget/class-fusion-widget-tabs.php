@@ -56,8 +56,8 @@ class Fusion_Widget_Tabs extends WP_Widget {
 		$comments           = isset( $instance['comments'] ) ? $instance['comments'] : '3';
 		$tags_count         = isset( $instance['tags'] ) ? $instance['tags'] : 3;
 		$show_popular_posts = isset( $instance['show_popular_posts'] ) ? true : false;
-		$show_recent_posts  = isset( $instance['show_recent_posts'] )  ? true : false;
-		$show_comments      = isset( $instance['show_comments'] )      ? true : false;
+		$show_recent_posts  = isset( $instance['show_recent_posts'] ) ? true : false;
+		$show_comments      = isset( $instance['show_comments'] ) ? true : false;
 
 		$count_tabs = (int) $show_popular_posts + (int) $show_recent_posts + (int) $show_comments ;
 
@@ -106,11 +106,12 @@ class Fusion_Widget_Tabs extends WP_Widget {
 
 							<ul class="news-list">
 								<?php if ( $popular_posts->have_posts() ) : ?>
-									<?php while ( $popular_posts->have_posts() ) : $popular_posts->the_post(); ?>
+									<?php while ( $popular_posts->have_posts() ) : ?>
+										<?php $popular_posts->the_post(); ?>
 										<li>
 											<?php if ( has_post_thumbnail() ) : ?>
 												<div class="image">
-													<a href="<?php the_permalink(); ?>" aria-label="<?php the_title(); ?>"><?php the_post_thumbnail( 'recent-works-thumbnail' ); ?></a>
+													<a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'recent-works-thumbnail' ); ?></a>
 												</div>
 											<?php endif; ?>
 
@@ -140,7 +141,8 @@ class Fusion_Widget_Tabs extends WP_Widget {
 
 							<ul class="news-list">
 								<?php if ( $recent_posts->have_posts() ) : ?>
-									<?php while ( $recent_posts->have_posts() ) : $recent_posts->the_post(); ?>
+									<?php while ( $recent_posts->have_posts() ) : ?>
+										<?php $recent_posts->the_post(); ?>
 										<li>
 											<?php if ( has_post_thumbnail() ) : ?>
 												<div class="image">
@@ -252,13 +254,14 @@ class Fusion_Widget_Tabs extends WP_Widget {
 			'orderby'            => esc_attr__( 'Highest Comments', 'Avada' ),
 		);
 
-		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
+		$instance = wp_parse_args( (array) $instance, $defaults );
+		?>
 
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>"><?php esc_attr_e( 'Popular Posts Order By:', 'Avada' ); ?></label>
 			<select id="<?php echo esc_attr( $this->get_field_id( 'orderby' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'orderby' ) ); ?>" class="widefat" style="width:100%;">
-				<option <?php if ( esc_attr__( 'Highest Comments', 'Avada' ) == $instance['orderby'] ) { echo 'selected="selected"'; } ?>><?php esc_attr_e( 'Highest Comments', 'Avada' ); ?></option>
-				<option <?php if ( esc_attr__( 'Highest Views', 'Avada' ) == $instance['orderby'] ) { echo 'selected="selected"'; } ?>><?php esc_attr_e( 'Highest Views', 'Avada' ); ?></option>
+				<option <?php echo ( esc_attr__( 'Highest Comments', 'Avada' ) == $instance['orderby'] ) ? 'selected="selected"' : ''; ?>><?php esc_attr_e( 'Highest Comments', 'Avada' ); ?></option>
+				<option <?php echo ( esc_attr__( 'Highest Views', 'Avada' ) == $instance['orderby'] ) ? 'selected="selected"' : ''; ?>><?php esc_attr_e( 'Highest Views', 'Avada' ); ?></option>
 			</select>
 		</p>
 		<p>

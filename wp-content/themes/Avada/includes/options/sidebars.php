@@ -93,7 +93,7 @@ function avada_options_section_sidebars( $sections ) {
 						'type'        => 'color-alpha',
 					),
 					'sidebar_widget_bg_color' => array(
-						'label'       => esc_html__( 'Sidebar Widget Title Background Color', 'Avada' ),
+						'label'       => esc_html__( 'Sidebar Widget Heading Background Color', 'Avada' ),
 						'description' => esc_html__( 'Controls the background color of the widget title box. If left transparent the widget title will be unboxed.', 'Avada' ),
 						'id'          => 'sidebar_widget_bg_color',
 						'default'     => 'rgba(255,255,255,0)',

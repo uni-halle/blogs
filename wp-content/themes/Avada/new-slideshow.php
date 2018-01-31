@@ -28,7 +28,8 @@ $featured_image_height = get_post_meta( $post->ID, 'pyre_fimg_height', true );
 
 ?>
 
-<?php if ( 'Grid' !== $layout && 'masonry' !== $layout && 'Timeline' !== $layout ) {
+<?php
+if ( 'Grid' !== $layout && 'masonry' !== $layout && 'Timeline' !== $layout ) {
 	$styles = '';
 
 	if ( $featured_image_width && 'auto' !== $featured_image_width ) {
@@ -98,26 +99,30 @@ $video = get_post_meta( get_the_ID(), 'pyre_video', true );
 					}
 				}
 
-				Avada()->images->set_grid_image_meta( array(
-					'layout' => strtolower( $layout ),
-					'columns' => $responsive_images_columns,
-					'gutter_width' => Avada()->settings->get( 'blog_grid_column_spacing' ),
-				) );
+				Avada()->images->set_grid_image_meta(
+					array(
+						'layout' => strtolower( $layout ),
+						'columns' => $responsive_images_columns,
+						'gutter_width' => Avada()->settings->get( 'blog_grid_column_spacing' ),
+					)
+				);
 			} elseif ( 'Timeline' === $layout ) {
-				Avada()->images->set_grid_image_meta( array(
-					'layout' => strtolower( $layout ),
-					'columns' => '2',
-				) );
+				Avada()->images->set_grid_image_meta(
+					array(
+						'layout' => strtolower( $layout ),
+						'columns' => '2',
+					)
+				);
 			} elseif ( false !== strpos( $layout, 'large' ) && 'full' === $size ) {
-				Avada()->images->set_grid_image_meta( array(
-					'layout' => strtolower( $layout ),
-					'columns' => '1',
-				) );
+				Avada()->images->set_grid_image_meta(
+					array(
+						'layout' => strtolower( $layout ),
+						'columns' => '1',
+					)
+				);
 			}
 			?>
 			<?php if ( has_post_thumbnail() ) : ?>
-				<?php $full_image      = wp_get_attachment_image_src( $thumbnail_id, 'full' ); ?>
-				<?php $attachment_data = wp_get_attachment_metadata( $thumbnail_id ); ?>
 				<?php if ( is_search() ) : ?>
 					<li><?php echo fusion_render_first_featured_image_markup( $post->ID, $size, $permalink, false, false, true ); // WPCS: XSS ok. ?></li>
 				<?php else : ?>
@@ -129,28 +134,24 @@ $video = get_post_meta( get_the_ID(), 'pyre_video', true );
 				<?php $attachment_id = fusion_get_featured_image_id( 'featured-image-' . $i, 'post' ); ?>
 				<?php if ( $attachment_id ) : ?>
 					<?php $attachment_image = wp_get_attachment_image_src( $attachment_id, $size ); ?>
-					<?php $full_image       = wp_get_attachment_image_src( $attachment_id, 'full' ); ?>
-					<?php $attachment_data  = wp_get_attachment_metadata( $attachment_id ); ?>
+					<?php $attachment_data = Avada()->images->get_attachment_data( $attachment_id ); ?>
 					<?php if ( is_array( $attachment_data ) ) : ?>
 						<li>
 							<div class="fusion-image-wrapper">
-								<a href="<?php the_permalink(); ?>" aria-label="<?php the_title(); ?>">
+								<a href="<?php the_permalink(); ?>" aria-label="<?php the_title_attribute(); ?>">
 									<?php
-									$image_markup = '<img src="' . $attachment_image[0] . '" alt="' . $attachment_data['image_meta']['title'] . '" class="wp-image-' . $attachment_id . '" role="presentation"/>';
+									$image_markup = '<img src="' . $attachment_image[0] . '" alt="' . $attachment_data['alt'] . '" class="wp-image-' . $attachment_id . '" role="presentation"/>';
 									$image_markup = Avada()->images->edit_grid_image_src( $image_markup, get_the_ID(), $attachment_id, $size );
-
-									if ( function_exists( 'wp_make_content_images_responsive' ) ) {
-										echo wp_make_content_images_responsive( $image_markup ); // WPCS: XSS ok.
-									} else {
-										echo $image_markup; // WPCS: XSS ok.
-									}
 									?>
+									<?php if ( function_exists( 'wp_make_content_images_responsive' ) ) : ?>
+										<?php echo wp_make_content_images_responsive( $image_markup ); // WPCS: XSS ok. ?>
+									<?php else : ?>
+										<?php echo $image_markup; // WPCS: XSS ok. ?>
+									<?php endif; ?>
 								</a>
-								<a style="display:none;" href="<?php echo esc_url_raw( $full_image[0] ); ?>" data-rel="iLightbox[gallery<?php echo (int) $post->ID; ?>]"  title="<?php echo esc_attr( get_post_field( 'post_excerpt', $attachment_id ) ); ?>" data-title="<?php echo esc_attr( get_post_field( 'post_title', $attachment_id ) ); ?>" data-caption="<?php echo esc_attr( get_post_field( 'post_excerpt', $attachment_id ) ); ?>">
-									<?php
-									$alt_tag = get_post_meta( $attachment_id, '_wp_attachment_image_alt', true );
-									if ( $alt_tag ) : ?>
-										<img style="display:none;" alt="<?php echo esc_attr( $alt_tag ); ?>" role="presentation" />
+								<a style="display:none;" href="<?php echo esc_url_raw( $attachment_data['url'] ); ?>" data-rel="iLightbox[gallery<?php echo (int) $post->ID; ?>]"  title="<?php echo esc_attr( $attachment_data['caption_attribute'] ); ?>" data-title="<?php echo esc_attr( $attachment_data['title_attribute'] ); ?>" data-caption="<?php echo esc_attr( $attachment_data['caption_attribute'] ); ?>">
+									<?php if ( $attachment_data['alt'] ) : ?>
+										<img style="display:none;" alt="<?php echo esc_attr( $attachment_data['alt'] ); ?>" role="presentation" />
 									<?php endif; ?>
 								</a>
 							</div>
@@ -162,6 +163,7 @@ $video = get_post_meta( get_the_ID(), 'pyre_video', true );
 			<?php Avada()->images->set_grid_image_meta( array() ); ?>
 		</ul>
 	</div>
-<?php endif;
+<?php
+endif;
 
 /* Omit closing PHP tag to avoid "Headers already sent" issues. */

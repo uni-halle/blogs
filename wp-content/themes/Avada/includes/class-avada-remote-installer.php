@@ -49,7 +49,11 @@ class Avada_Remote_installer {
 	 * @return false|string    Returns false if invalid.
 	 *                         If valid, then returns a nonce from the remote server.
 	 */
-	private function _get_nonce( $download, $token ) {
+	private function _get_nonce( $download, $token = false ) {
+
+		// Tweak for Envato Hosted.
+		$is_envato_hosted = (bool) ( defined( 'ENVATO_HOSTED_SITE' ) && ENVATO_HOSTED_SITE && defined( 'SUBSCRIPTION_CODE' ) && SUBSCRIPTION_CODE );
+		$token = ( $is_envato_hosted ) ? SUBSCRIPTION_CODE : $token;
 
 		// Get any existing copy of our transient data.
 		$saved_nonce = get_transient( 'avada_ri_' . $download . $token );
@@ -57,9 +61,13 @@ class Avada_Remote_installer {
 			// It wasn't there, so regenerate the data and save the transient.
 			$avada_version = Avada::get_theme_version();
 			$url           = $this->api_url . '?avada_action=request_download&item_name=' . rawurlencode( $download ) . '&token=' . $token . '&ver=' . $avada_version;
-			$response      = wp_remote_get( $url, array(
-				'user-agent' => 'avada-user-agent',
-			) );
+			$url .= ( $is_envato_hosted ) ? '&envato-hosted=true' : '';
+
+			$response      = wp_remote_get(
+				$url, array(
+					'user-agent' => 'avada-user-agent',
+				)
+			);
 			$body          = wp_remote_retrieve_body( $response );
 
 			// Check for errors.
@@ -99,10 +107,11 @@ class Avada_Remote_installer {
 	 *
 	 * @access public
 	 * @since 5.0.0
-	 * @param string $download The plugin to download.
+	 * @param string       $download The plugin to download.
+	 * @param string|false $token    Force-use a token, or use default if false.
 	 * @return string|false
 	 */
-	public function get_package( $download ) {
+	public function get_package( $download, $token = false ) {
 
 		// Try to get a cached response.
 		$download_src = get_transient( 'avada_remote_installer_package_' . $download );
@@ -112,9 +121,11 @@ class Avada_Remote_installer {
 			return $download_src;
 		}
 
+		$token = ( ! $token ) ? Avada()->registration->get_token() : $token;
+
 		// Source is not cached, retrieve it and cache it.
 		// Check for token and then install if it's valid.
-		$nonces = $this->_get_nonce( $download,  Avada()->registration->get_token() );
+		$nonces = $this->_get_nonce( $download, $token );
 
 		$registered = ( ! in_array( $download, array( 'Fusion Builder', 'Fusion Core' ), true ) ) ? Avada()->registration->is_registered() : true;
 
@@ -134,6 +145,23 @@ class Avada_Remote_installer {
 		}
 
 		// Something went wrong, return false.
+		return false;
+	}
+
+	/**
+	 * Gets the download URL for a plugin.
+	 *
+	 * @since 5.3
+	 * @access public
+	 * @return bool True if subscription code is valid, false otherwise.
+	 */
+	public function validate_envato_hosted_subscription_code() {
+		$nonce = $this->_get_nonce( 'Avada' );
+
+		if ( is_array( $nonce ) ) {
+			return true;
+		}
+
 		return false;
 	}
 }

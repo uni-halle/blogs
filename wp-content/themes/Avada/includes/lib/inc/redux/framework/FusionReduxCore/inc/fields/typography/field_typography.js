@@ -105,7 +105,9 @@
                                 change: function( e, ui ) {
                                     $( this ).val( ui.color.toString() );
                                     fusionredux.field_objects.typography.select( $( this ).parents( '.fusionredux-container-typography:first' ) );
-                                }
+                                },
+
+                                palettes: ['#000000', '#ffffff', '#f44336', '#E91E63', '#03A9F4', '#00BCD4', '#8BC34A', '#FFEB3B', '#FFC107', '#FF9800', '#607D8B']
                             }
                         );
 

@@ -245,6 +245,7 @@ function avada_get_h1_typography_elements() {
 		'.fusion-page-title-bar h1',
 		'.fusion-modal h1',
 		'.fusion-widget-area h1',
+		'.fusion-title h1',
 	);
 	// CSS classes that inherit h1 color.
 	$typography_elements['color'] = array(
@@ -370,7 +371,6 @@ function avada_get_h4_typography_elements() {
 	$typography_elements['size'] = array(
 		// 'h4',
 		'.post-content h4',
-		'.fusion-portfolio-post .fusion-portfolio-content h4',
 		'.fusion-rollover .fusion-rollover-content .fusion-rollover-title',
 		'.fusion-carousel-title',
 		'#wrapper .fusion-tabs-widget .tab-holder .tabs li a',
@@ -412,6 +412,7 @@ function avada_get_h4_typography_elements() {
 		'.fusion-image-wrapper .fusion-rollover .fusion-rollover-content .fusion-rollover-title a',
 		'.fusion-modal h4',
 		'.fusion-content-widget-area h4',
+		'.fusion-title h4',
 	);
 
 	$typography_elements['line-height'] = array(
@@ -454,6 +455,7 @@ function avada_get_h5_typography_elements() {
 		'.post-content h5',
 		'.fusion-modal h5',
 		'.fusion-widget-area h5',
+		'.fusion-title h5',
 	);
 
 	return $typography_elements;
@@ -490,6 +492,7 @@ function avada_get_h6_typography_elements() {
 		'.post-content h6',
 		'.fusion-modal h6',
 		'.fusion-widget-area h6',
+		'.fusion-title h6',
 	);
 
 	return $typography_elements;

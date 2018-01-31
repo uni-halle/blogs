@@ -13,7 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <?php get_header(); ?>
 <section id="content" <?php Avada()->layout->add_class( 'content_class' ); ?> <?php Avada()->layout->add_style( 'content_style' ); ?>>
-	<?php if ( have_posts() ) : the_post(); ?>
+	<?php if ( have_posts() ) : ?>
+		<?php the_post(); ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php echo fusion_render_rich_snippets_for_pages(); // WPCS: XSS ok. ?>
 			<?php if ( ! post_password_required( $post->ID ) ) : ?>
@@ -44,6 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php endif; ?>
 </section>
 <?php do_action( 'avada_after_content' ); ?>
-<?php get_footer();
+<?php
+get_footer();
 
 /* Omit closing PHP tag to avoid "Headers already sent" issues. */

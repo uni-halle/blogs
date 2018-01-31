@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php echo $secondary_content; // WPCS: XSS ok. ?>
 					</div>
 				<?php endif; ?>
-			<?php endif;?>
+			<?php endif; ?>
 
 		</div>
 	</div>

@@ -31,11 +31,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</tr>
 			</tbody>
 		</div>
-		<h3 class="screen-reader-text"><?php esc_attr_e( 'Avada Versions', 'Avada' ); ?></h3>
+		<h3 class="screen-reader-text"><?php esc_attr_e( 'Avada Version History', 'Avada' ); ?></h3>
 		<table class="widefat" cellspacing="0">
 			<thead>
 				<tr>
-					<th colspan="3" data-export-label="Avada Versions"><?php esc_attr_e( 'Avada Versions', 'Avada' ); ?></th>
+					<th colspan="3" data-export-label="Avada Versions"><?php esc_attr_e( 'Avada Version History', 'Avada' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -71,58 +71,81 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php echo $previous_version; // WPCS: XSS ok. ?>
 					</td>
 				</tr>
-				<?php
-				$show_400_migration = false;
-				$force_hide_400_migration = false;
-				$show_500_migration = false;
-				$versions_count = count( $previous_versions_array );
-				if ( isset( $previous_versions_array[ $versions_count - 1 ] ) && isset( $previous_versions_array[ $versions_count - 2 ] ) ) {
-					if ( version_compare( $previous_versions_array[ $versions_count - 1 ], '4.0.0', '>=' ) && version_compare( $previous_versions_array[ $versions_count - 2 ], '4.0.0', '<=' ) ) {
-						$force_hide_400_migration = true;
+			</tbody>
+		</table>
+		<?php
+		$show_400_migration = false;
+		$force_hide_400_migration = false;
+		$show_500_migration = false;
+		$versions_count = count( $previous_versions_array );
+		if ( isset( $previous_versions_array[ $versions_count - 1 ] ) && isset( $previous_versions_array[ $versions_count - 2 ] ) ) {
+			if ( version_compare( $previous_versions_array[ $versions_count - 1 ], '4.0.0', '>=' ) && version_compare( $previous_versions_array[ $versions_count - 2 ], '4.0.0', '<=' ) ) {
+				$force_hide_400_migration = true;
+			}
+		}
+		$previous_version = get_option( 'avada_previous_version', false );
+		if ( false !== $previous_version && ! empty( $previous_version ) ) {
+			if ( is_array( $previous_version ) ) {
+				foreach ( $previous_version as $ver ) {
+					$ver = Avada_Helper::normalize_version( $ver );
+					if ( $ver && ! empty( $ver ) && version_compare( $ver, '4.0.0', '<' ) ) {
+						$show_400_migration = true;
+						$last_pre_4_version = $ver;
 					}
-				}
-				$previous_version = get_option( 'avada_previous_version', false );
-				if ( false !== $previous_version && ! empty( $previous_version ) ) {
-					if ( is_array( $previous_version ) ) {
-						foreach ( $previous_version as $ver ) {
-							$ver = Avada_Helper::normalize_version( $ver );
-							if ( $ver && ! empty( $ver ) && version_compare( $ver, '4.0.0', '<' ) ) {
-								$show_400_migration = true;
-								$last_pre_4_version = $ver;
-							}
 
-							if ( $ver && ! empty( $ver ) && version_compare( $ver, '5.0.0', '<' ) ) {
-								$show_500_migration = true;
-								$last_pre_5_version = $ver;
-							}
-							$last_version = $ver;
-						}
-					} else {
-						$previous_version = Avada_Helper::normalize_version( $previous_version );
-						if ( version_compare( $previous_version, '4.0.0', '<' ) ) {
-							$show_400_migration = true;
-							$last_pre_4_version = $previous_version;
-						}
-
-						if ( version_compare( $previous_version, '5.0.0', '<' ) ) {
-							$show_500_migration = true;
-							$last_pre_5_version = $previous_version;
-						}
-						$last_version = $previous_version;
+					if ( $ver && ! empty( $ver ) && version_compare( $ver, '5.0.0', '<' ) ) {
+						$show_500_migration = true;
+						$last_pre_5_version = $ver;
 					}
+					$last_version = $ver;
 				}
-				?>
+			} else {
+				$previous_version = Avada_Helper::normalize_version( $previous_version );
+				if ( version_compare( $previous_version, '4.0.0', '<' ) ) {
+					$show_400_migration = true;
+					$last_pre_4_version = $previous_version;
+				}
+
+				if ( version_compare( $previous_version, '5.0.0', '<' ) ) {
+					$show_500_migration = true;
+					$last_pre_5_version = $previous_version;
+				}
+				$last_version = $previous_version;
+			}
+		}
+
+		// Display Avada conversions if available.
+		if ( ( $show_400_migration && ! $force_hide_400_migration ) || $show_500_migration ) {
+		?>
+			<h3 class="screen-reader-text"><?php esc_attr_e( 'Avada Conversion Controls', 'Avada' ); ?></h3>
+			<table class="widefat" cellspacing="0">
+				<thead>
+					<tr>
+						<th colspan="3" data-export-label="Avada Versions"><?php esc_attr_e( 'Avada Conversion Controls', 'Avada' ); ?></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="3">
+							<p style="padding: 15px 0;">
+								<?php printf( __( '<strong style="color:red;">IMPORTANT:</strong> Updating to Avada 4.0 and 5.0 requires a conversion process to ensure your content is compatible with the new version. This is an automatic process that happens upon update. In rare situations, you may need to rerun conversion if there was an issue through the automatic process. The controls below allow you to do this if needed. Please <a href="%s" target="_blank">contact our support team</a> through a ticket if you have any questions or need assistance.', 'Avada' ), 'https://theme-fusion.com/avada-doc/getting-started/avada-theme-support/' ); // WPCS: XSS ok.?>
+							</p>
+						</td>
+					</tr>
 				<?php if ( $show_400_migration && false === $force_hide_400_migration ) : ?>
 					<?php $latest_version     = ( empty( $last_version ) || ! $last_version ) ? esc_attr__( 'Previous Version', 'Avada' ) : sprintf( esc_attr__( 'Version %s', 'Avada' ), esc_attr( $last_version ) ); ?>
 					<?php $last_pre_4_version = ( isset( $last_pre_4_version ) ) ? $last_pre_4_version : $latest_version; ?>
 					<tr>
-						<td><?php esc_attr_e( 'Avada 4.0 Conversion:', 'Avada' ); ?></td>
+						<td>
+							<?php esc_attr_e( 'Avada 4.0 Conversion:', 'Avada' ); ?>
+							<div><a href="https://theme-fusion.com/knowledgebase/avada-v4-migration/"><?php esc_attr_e( 'Learn More', 'Avada' ); ?></a></div>
+						</td>
 						<td class="help">&nbsp;</td>
 						<td>
 							<table class="widefat fusion-conversion-button">
 								<tr>
 									<td style="width:auto;"><?php printf( esc_attr__( 'Rerun Theme Options Conversion from version %s to version 4.0 manually.', 'Avada' ), esc_attr( $last_pre_4_version ) ); ?></td>
-									<td style="min-width:140px;"><a class="button button-small button-primary" style="display:block;width:100%;text-align:center;" id="avada-manual-400-migration-trigger" href="#"><?php esc_attr_e( 'Run Conversion', 'Avada' ); ?></a></td>
+									<td style="width:140px;"><a class="button button-small button-primary" style="display:block;width:100%;text-align:center;" id="avada-manual-400-migration-trigger" href="#"><?php esc_attr_e( 'Run Conversion', 'Avada' ); ?></a></td>
 								</tr>
 							</table>
 						</td>
@@ -132,13 +155,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php $latest_version     = ( empty( $last_version ) || ! $last_version ) ? esc_attr__( 'Previous Version', 'Avada' ) : sprintf( esc_attr__( 'Version %s', 'Avada' ), $last_version ); ?>
 					<?php $last_pre_5_version = ( isset( $last_pre_5_version ) ) ? $last_pre_5_version : $latest_version; ?>
 					<tr>
-						<td><?php esc_attr_e( 'Avada 5.0 Conversion:', 'Avada' ); ?></td>
+						<td>
+							<?php esc_attr_e( 'Avada 5.0 Conversion:', 'Avada' ); ?>
+							<div><a href="https://theme-fusion.com/fb-doc/technical/converting-fusion-builder-pages/"><?php esc_attr_e( 'Learn More', 'Avada' ); ?></a></div>
+						</td>
 						<td class="help">&nbsp;</td>
 						<td>
 							<table class="widefat fusion-conversion-button">
 								<tr>
 									<td style="width:auto;"><?php printf( esc_attr__( 'Rerun Shortcode Conversion from version %s to version 5.0 manually.', 'Avada' ), esc_attr( $last_pre_5_version ) ); ?></td>
-									<td style="min-width:140px;"><a class="button button-small button-primary" style="display:block;width:100%;text-align:center;" id="avada-manual-500-migration-trigger" href="#"><?php esc_attr_e( 'Run Conversion', 'Avada' ); ?></a></td>
+									<td style="width:140px;"><a class="button button-small button-primary" style="display:block;width:100%;text-align:center;" id="avada-manual-500-migration-trigger" href="#"><?php esc_attr_e( 'Run Conversion', 'Avada' ); ?></a></td>
 								</tr>
 								<?php
 								$option_name = Avada::get_option_name();
@@ -147,11 +173,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 									$backup = get_option( 'avada_theme_options_500_backup', false );
 								}
 								?>
-								<?php if ( false !== get_option( 'fusion_core_unconverted_posts_converted', false ) ) : ?>
-									<?php if ( false !== $backup || false !== get_option( 'scheduled_avada_fusionbuilder_migration_cleanups', false ) ) : ?>
+								<?php if ( false !== get_option( 'fusion_core_unconverted_posts_converted', true ) ) : ?>
+									<?php if ( false !== $backup || false !== get_option( 'scheduled_avada_fusionbuilder_migration_cleanups', true ) ) : ?>
 										<tr>
-											<td style="width:auto;"><?php esc_attr_e( 'Revert Fusion-Builder Conversion', 'Avada' ); ?></td>
-											<td style="min-width:140px;"><a class="button button-small button-primary" style="display:block;width:100%;text-align:center;" id="avada-manual-500-migration-revert-trigger" href="#"><?php esc_attr_e( 'Revert Conversion', 'Avada' ); ?></a></td>
+											<td style="width:auto;"><?php esc_attr_e( 'Revert Fusion Builder Conversion.', 'Avada' ); ?></td>
+											<td style="width:140px;"><a class="button button-small button-primary" style="display:block;width:100%;text-align:center;" id="avada-manual-500-migration-revert-trigger" href="#"><?php esc_attr_e( 'Revert Conversion', 'Avada' ); ?></a></td>
 										</tr>
 									<?php endif; ?>
 								<?php endif; ?>
@@ -166,14 +192,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 												<?php if ( false !== get_option( 'avada_migration_cleanup_id', false ) ) : ?>
 													<?php
 													// The post types we'll need to check.
-													$post_types = apply_filters( 'fusion_builder_shortcode_migration_post_types', array(
-														'page',
-														'post',
-														'avada_faq',
-														'avada_portfolio',
-														'product',
-														'tribe_events',
-													) );
+													$post_types = apply_filters(
+														'fusion_builder_shortcode_migration_post_types', array(
+															'page',
+															'post',
+															'avada_faq',
+															'avada_portfolio',
+															'product',
+															'tribe_events',
+														)
+													);
 													foreach ( $post_types as $key => $post_type ) {
 														if ( ! post_type_exists( $post_type ) ) {
 															unset( $post_types[ $key ] );
@@ -203,7 +231,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 											<?php endif; ?>
 										</td>
 										<?php if ( isset( $show_remove_backups_button ) && true === $show_remove_backups_button ) : ?>
-											<td style="min-width:140px;">
+											<td style="width:140px;">
 												<a class="button button-small button-primary" style="display:block;width:100%;text-align:center;" id="avada-remove-500-migration-backups" href="#"><?php esc_attr_e( 'Remove Backups', 'Avada' ); ?></a>
 											</td>
 										<?php endif; ?>
@@ -216,6 +244,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<?php endif; ?>
 			</tbody>
 		</table>
+		<?php
+		} // End if().
+		?>
 
 		<h3 class="screen-reader-text"><?php esc_attr_e( 'WordPress Environment', 'Avada' ); ?></h3>
 		<table class="widefat" cellspacing="0">
@@ -396,8 +427,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</tr>
 					<tr>
 						<td data-export-label="SUHOSIN Installed"><?php esc_attr_e( 'SUHOSIN Installed:', 'Avada' ); ?></td>
-						<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Suhosin is an advanced protection system for PHP installations. It was designed to protect your servers on the one hand against a number of well known problems in PHP applications and on the other hand against potential unknown vulnerabilities within these applications or the PHP core itself.
-		If enabled on your server, Suhosin may need to be configured to increase its data submission limits.', 'Avada'  ) . '">[?]</a>'; ?></td>
+						<td class="help">
+							<a href="#" class="help_tip" data-tip="<?php esc_attr_e( 'Suhosin is an advanced protection system for PHP installations. It was designed to protect your servers on the one hand against a number of well known problems in PHP applications and on the other hand against potential unknown vulnerabilities within these applications or the PHP core itself. If enabled on your server, Suhosin may need to be configured to increase its data submission limits.', 'Avada' ); ?>">[?]</a>
+						</td>
 						<td><?php echo extension_loaded( 'suhosin' ) ? '&#10004;' : '&ndash;'; ?></td>
 					</tr>
 					<?php if ( extension_loaded( 'suhosin' ) ) :  ?>
@@ -474,7 +506,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<tr>
 							<td data-export-label="Suhosin Post Max Value Length"><?php esc_attr_e( 'Suhosin Post Max Value Length:', 'Avada' ); ?></td>
 							<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Defines the maximum length of a variable that is registered through a POST request.', 'Avada' ) . '">[?]</a>'; ?></td>
-							<td><?php
+							<td>
+							<?php
 								$suhosin_max_value_length = ini_get( 'suhosin.post.max_value_length' );
 								$recommended_max_value_length = 2000000;
 
@@ -483,7 +516,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 							} else {
 								echo '<mark class="yes">' . esc_attr( $suhosin_max_value_length ) . '</mark>';
 							}
-							?></td>
+							?>
+							</td>
 						</tr>
 					<?php endif; ?>
 				<?php endif; ?>
@@ -513,20 +547,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<tr>
 					<td data-export-label="WP Remote Get"><?php esc_attr_e( 'WP Remote Get:', 'Avada' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Avada uses this method to communicate with different APIs, e.g. Google, Twitter, Facebook.', 'Avada' ) . '">[?]</a>'; ?></td>
-					<?php $response = wp_safe_remote_get( 'https://build.envato.com/api/', array(
-						'decompress' => false,
-						'user-agent' => 'avada-remote-get-test',
-					) ); ?>
+					<?php
+					$response = wp_safe_remote_get(
+						'https://build.envato.com/api/', array(
+							'decompress' => false,
+							'user-agent' => 'avada-remote-get-test',
+						)
+					);
+					?>
 					<td><?php echo ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_get() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://build.envato.com/api/ is not blocked.</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="WP Remote Post"><?php esc_attr_e( 'WP Remote Post:', 'Avada' ); ?></td>
 					<td class="help"><?php echo '<a href="#" class="help_tip" data-tip="' . esc_attr__( 'Avada uses this method to communicate with different APIs, e.g. Google, Twitter, Facebook.', 'Avada' ) . '">[?]</a>'; ?></td>
-					<?php $response = wp_safe_remote_post( 'https://envato.com/', array(
-						'decompress' => false,
-						'user-agent' => 'avada-remote-get-test',
-					) ); ?>
-					<td><?php echo ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_post() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://envato.com/ is not blocked.</mark>'; ?></td>
+					<?php
+					$response = wp_safe_remote_post(
+						'https://www.google.com/recaptcha/api/siteverify', array(
+							'decompress' => false,
+							'user-agent' => 'avada-remote-get-test',
+						)
+					);
+					?>
+					<td><?php echo ( ! is_wp_error( $response ) && $response['response']['code'] >= 200 && $response['response']['code'] < 300 ) ? '<mark class="yes">&#10004;</mark>' : '<mark class="error">wp_remote_post() failed. Some theme features may not work. Please contact your hosting provider and make sure that https://www.google.com/recaptcha/api/siteverify is not blocked.</mark>'; ?></td>
 				</tr>
 				<tr>
 					<td data-export-label="GD Library"><?php esc_attr_e( 'GD Library:', 'Avada' ); ?></td>

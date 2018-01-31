@@ -41,7 +41,8 @@ $show_purchase_note = $order->has_status( apply_filters( 'woocommerce_purchase_n
 			<?php endif; ?>
 		</tfoot>
 		<tbody>
-			<?php if ( count( $order->get_items() ) > 0 ) :
+			<?php if ( count( $order->get_items() ) > 0 ) : ?>
+				<?php
 				foreach ( $order->get_items() as $item_id => $item ) :
 					// Checks for Woo < 2.7.
 					if ( version_compare( self::get_wc_version(), '2.7', '>=' ) ) {
@@ -129,7 +130,7 @@ $show_purchase_note = $order->has_status( apply_filters( 'woocommerce_purchase_n
 	<?php do_action( 'woocommerce_order_details_after_order_table', $order ); ?>
 </div>
 
-<div class="avada-customer-details woocommerce-content-box full-width">
+<section class="avada-customer-details woocommerce-content-box full-width">
 	<header>
 		<h2><?php esc_attr_e( 'Customer details', 'woocommerce' ); ?></h2>
 	</header>
@@ -144,54 +145,46 @@ $show_purchase_note = $order->has_status( apply_filters( 'woocommerce_purchase_n
 			<dt><?php esc_attr_e( 'Phone:', 'woocommerce' ); ?></dt> <dd><?php echo esc_html( $billing_phone ); ?></dd>
 		<?php endif; ?>
 
+		<?php if ( $order->get_customer_note() ) : ?>
+			<dt><?php esc_attr_e( 'Note:', 'woocommerce' ); ?></dt> <dd><?php echo wptexturize( $order->get_customer_note() ); // WPCS: XSS ok. ?></dd>
+		<?php endif; ?>
+
 		<?php
 		// Additional customer details hook.
 		do_action( 'woocommerce_order_details_after_customer_details', $order );
 		?>
 	</dl>
 
-	<?php if ( 'no' === get_option( 'woocommerce_ship_to_billing_address_only' ) && 'no' !== get_option( 'woocommerce_calc_shipping' ) ) : ?>
+	<section class="woocommerce-columns woocommerce-columns--2 woocommerce-columns--addresses col2-set addresses">
+		<div class="woocommerce-column woocommerce-column--1 woocommerce-column--billing-address col-1">
 
-		<div class="col2-set addresses">
-			<div class="col-1">
-
-	<?php endif; ?>
-
-	<header class="title">
-		<h3><?php esc_attr_e( 'Billing address', 'woocommerce' ); ?></h3>
-	</header>
-
-	<address>
-		<p>
-			<?php if ( ! $order->get_formatted_billing_address() ) : ?>
-				<?php esc_attr_e( 'N/A', 'woocommerce' ); ?>
-			<?php else : ?>
-				<?php echo $order->get_formatted_billing_address(); // WPCS: XSS ok. ?>
-			<?php endif; ?>
-		</p>
-	</address>
-
-	<?php if ( 'no' === get_option( 'woocommerce_ship_to_billing_address_only' ) && 'no' !== get_option( 'woocommerce_calc_shipping' ) ) : ?>
-
-		</div>
-		<div class="col-2">
 			<header class="title">
-				<h3><?php esc_attr_e( 'Shipping address', 'woocommerce' ); ?></h3>
+				<h3><?php esc_attr_e( 'Billing address', 'woocommerce' ); ?></h3>
 			</header>
+
 			<address>
 				<p>
-					<?php if ( ! $order->get_formatted_shipping_address() ) : ?>
-						<?php esc_attr_e( 'N/A', 'woocommerce' ); ?>
-					<?php else : ?>
-						<?php echo $order->get_formatted_shipping_address(); // WPCS: XSS ok. ?>
-					<?php endif; ?>
+					<?php $address = $order->get_formatted_billing_address(); ?>
+					<?php echo ( $address ) ? $address : esc_attr__( 'N/A', 'woocommerce' ); // WPCS: XSS ok. ?>
 				</p>
 			</address>
 		</div>
 
-	</div>
-	<?php endif; ?>
+		<?php if ( ! wc_ship_to_billing_address_only() && $order->needs_shipping_address() ) : ?>
+			<div class="woocommerce-column woocommerce-column--2 woocommerce-column--shipping-address col-2">
+				<header class="title">
+					<h3><?php esc_attr_e( 'Shipping address', 'woocommerce' ); ?></h3>
+				</header>
+				<address>
+					<p>
+						<?php $address = $order->get_formatted_shipping_address(); ?>
+						<?php echo ( $address ) ? $address : esc_attr__( 'N/A', 'woocommerce' ); // WPCS: XSS ok. ?>
+					</p>
+				</address>
+			</div>
+		<?php endif; ?>
 
+		</section>
 	<div class="clear"></div>
 
-</div>
+</section>

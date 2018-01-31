@@ -191,15 +191,35 @@ function fusion_fs_importer_replace_url( $matches ) {
 	if ( is_array( $matches ) ) {
 		foreach ( $matches as $key => $match ) {
 			if ( false !== strpos( $match, 'wp-content/uploads/sites/' ) ) {
-				$parts = explode( 'wp-content/uploads/sites/', $match );
-				if ( isset( $parts[1] ) ) {
-					$sub_parts = explode( '/', $parts[1] );
-					unset( $sub_parts[0] );
-					$parts[1] = implode( '/', $sub_parts );
 
-					// append the url to the uploads url.
-					$parts[0] = $wp_upload_dir['baseurl'];
-					return implode( '/', $parts );
+				if ( false !== $meta_arr = @unserialize( $match ) ) {
+					foreach ( $meta_arr as $k => $v ) {
+						if ( false !== strpos( $v, 'wp-content/uploads/sites/' ) ) {
+							$parts = explode( 'wp-content/uploads/sites/', $v );
+							if ( isset( $parts[1] ) ) {
+								$sub_parts = explode( '/', $parts[1] );
+								unset( $sub_parts[0] );
+								$parts[1] = implode( '/', $sub_parts );
+
+								// append the url to the uploads url.
+								$parts[0] = $wp_upload_dir['baseurl'];
+								$meta_arr[ $k ] = implode( '/', $parts );
+							}
+						}
+					}
+					return serialize( $meta_arr );
+				} else {
+					$parts = explode( 'wp-content/uploads/sites/', $match );
+					if ( isset( $parts[1] ) ) {
+						$sub_parts = explode( '/', $parts[1] );
+						unset( $sub_parts[0] );
+						$parts[1] = implode( '/', $sub_parts );
+
+						// append the url to the uploads url.
+						$parts[0] = $wp_upload_dir['baseurl'];
+
+						return implode( '/', $parts );
+					}
 				}
 			}
 		}

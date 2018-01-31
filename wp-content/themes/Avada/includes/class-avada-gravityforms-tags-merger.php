@@ -52,10 +52,12 @@ class Avada_Gravity_Forms_Tags_Merger {
 			return;
 		}
 
-		$this->_args = wp_parse_args( $args, array(
-			'auto_append_eid' => true, // Boolean or array of form IDs.
+		$this->_args = wp_parse_args(
+			$args, array(
+				'auto_append_eid' => true, // Boolean or array of form IDs.
 			'encrypt_eid'     => true,
-		));
+			)
+		);
 
 		add_filter( 'the_content', array( $this, 'replace_merge_tags' ), 1 );
 		add_filter( 'gform_replace_merge_tags', array( $this, 'replace_encrypt_entry_id_merge_tag' ), 10, 3 );
@@ -214,15 +216,19 @@ class Avada_Gravity_Forms_Tags_Merger {
 
 			preg_match_all( '/gformRedirect.+?(http.+?)(?=\'|")/', $confirmation, $matches, PREG_SET_ORDER );
 			list( $full_match, $url ) = $matches[0];
-			$redirect_url             = add_query_arg( array(
-				'eid' => $eid,
-			), $url );
+			$redirect_url             = add_query_arg(
+				array(
+					'eid' => $eid,
+				), $url
+			);
 			$confirmation             = str_replace( $url, $redirect_url, $confirmation );
 
 		} else {
-			$redirect_url             = add_query_arg( array(
-				'eid' => $eid,
-			), $confirmation['redirect'] );
+			$redirect_url             = add_query_arg(
+				array(
+					'eid' => $eid,
+				), $confirmation['redirect']
+			);
 			$confirmation['redirect'] = $redirect_url;
 		}
 

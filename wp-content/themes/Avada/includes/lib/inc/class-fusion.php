@@ -87,6 +87,8 @@ class Fusion {
 			$fusion_cache = new Fusion_Cache();
 			$fusion_cache->reset_all_caches();
 		}
+
+		add_action( 'admin_body_class', array( $this, 'admin_body_class' ) );
 	}
 
 	/**
@@ -137,13 +139,20 @@ class Fusion {
 
 		$c_page_id = get_queried_object_id();
 
-		// The woocommerce shop page.
-		if ( ! is_admin() && class_exists( 'WooCommerce' ) && ( is_shop() || is_tax( 'product_cat' ) || is_tax( 'product_tag' ) ) ) {
+		// The WooCommerce shop page.
+		if ( ! is_admin() && class_exists( 'WooCommerce' ) && is_shop() ) {
 			return get_option( 'woocommerce_shop_page_id' );
+		}
+		// The WooCommerce product_cat taxonomy page.
+		if ( ! is_admin() && class_exists( 'WooCommerce' ) && ( ! is_shop() && ( is_tax( 'product_cat' ) || is_tax( 'product_tag' ) ) ) ) {
+			return $c_page_id . '-archive'; // So that other POs do not apply to arhives if post ID matches.
 		}
 		// The homepage.
 		if ( 'posts' === get_option( 'show_on_front' ) && is_home() ) {
 			return $c_page_id;
+		}
+		if ( ! is_singular() && is_archive() ) {
+			return $c_page_id . '-archive'; // So that other POs do not apply to arhives if post ID matches.
 		}
 		if ( ! is_singular() ) {
 			return false;
@@ -206,5 +215,21 @@ class Fusion {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * Adds classes to the <body> element using admin_body_class filter.
+	 *
+	 * @access public
+	 * @since 1.3.0
+	 * @param string $classes The CSS classes.
+	 * @return string
+	 */
+	public function admin_body_class( $classes ) {
+		global $wp_version;
+		if ( version_compare( $wp_version, '4.9-beta', '<' ) ) {
+			$classes .= ' fusion-colorpicker-legacy ';
+		}
+		return $classes;
 	}
 }

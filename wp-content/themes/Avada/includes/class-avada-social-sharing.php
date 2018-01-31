@@ -111,9 +111,9 @@ class Avada_Social_Sharing extends Avada_Social_Icon {
 		if ( Avada()->settings->get( 'sharing_facebook' ) ) {
 
 			if ( ! avada_jetpack_is_mobile() ) {
-				$facebook_url = 'http://www.facebook.com/sharer.php?m2w&s=100&p&#91;url&#93;=' . $args['link'] . '&p&#91;images&#93;&#91;0&#93;=' . wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ) . '&p&#91;title&#93;=' . rawurlencode( $args['title'] );
+				$facebook_url = 'https://www.facebook.com/sharer.php?u=' . rawurlencode( $args['link'] ) . '&t=' . rawurlencode( $args['title'] );
 			} else {
-				$facebook_url = 'https://m.facebook.com/sharer.php?u=' . $args['link'];
+				$facebook_url = 'https://m.facebook.com/sharer.php?u=' . $args['link'] . '&t=' . rawurlencode( $args['title'] );
 			}
 
 			$social_links_array['facebook'] = array(
@@ -165,7 +165,7 @@ class Avada_Social_Sharing extends Avada_Social_Icon {
 
 		if ( Avada()->settings->get( 'sharing_email' ) ) {
 			$social_links_array['email'] = array(
-				'url'        => 'mailto:?subject=' . $args['title'] . '&body=' . $args['link'],
+				'url'        => 'mailto:?subject=' . rawurlencode( $args['title'] ) . '&body=' . $args['link'],
 			);
 		}
 

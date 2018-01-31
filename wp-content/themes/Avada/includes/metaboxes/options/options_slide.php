@@ -148,18 +148,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 		'heading_separator',
 		esc_attr__( 'Heading Separator', 'Avada' ),
 		array(
-			'none'				=> esc_attr__( 'None', 'Avada' ),
-			'single solid'		=> esc_attr__( 'Single Solid', 'Avada' ),
-			'single dashed'		=> esc_attr__( 'Single Dashed', 'Avada' ),
-			'single dotted'		=> esc_attr__( 'Single Dotted', 'Avada' ),
-			'double solid'	 	=> esc_attr__( 'Double Solid', 'Avada' ),
-			'double dashed'		=> esc_attr__( 'Double Dashed', 'Avada' ),
-			'double dotted'		=> esc_attr__( 'Double Dotted', 'Avada' ),
-			'underline solid'	=> esc_attr__( 'Underline Solid', 'Avada' ),
-			'underline dashed'	=> esc_attr__( 'Underline Dashed', 'Avada' ),
-			'underline dotted'	=> esc_attr__( 'Underline Dotted', 'Avada' ),
+			'none'              => esc_attr__( 'None', 'Avada' ),
+			'single solid'      => esc_attr__( 'Single Solid', 'Avada' ),
+			'single dashed'     => esc_attr__( 'Single Dashed', 'Avada' ),
+			'single dotted'     => esc_attr__( 'Single Dotted', 'Avada' ),
+			'double solid'      => esc_attr__( 'Double Solid', 'Avada' ),
+			'double dashed'     => esc_attr__( 'Double Dashed', 'Avada' ),
+			'double dotted'     => esc_attr__( 'Double Dotted', 'Avada' ),
+			'underline solid'   => esc_attr__( 'Underline Solid', 'Avada' ),
+			'underline dashed'  => esc_attr__( 'Underline Dashed', 'Avada' ),
+			'underline dotted'  => esc_attr__( 'Underline Dotted', 'Avada' ),
 		),
 		esc_html__( 'Choose the heading separator you want to use.', 'Avada' )
+	);
+	$default = sprintf( esc_html__( 'Default: %s', 'Avada' ), 'H2' );
+	$this->radio_buttonset(
+		'heading_size',
+		esc_attr__( 'Title Size', 'Avada' ),
+		array(
+			'1' => esc_attr__( 'H1', 'Avada' ),
+			'2' => esc_attr__( 'H2', 'Avada' ),
+			'3' => esc_attr__( 'H3', 'Avada' ),
+			'4' => esc_attr__( 'H4', 'Avada' ),
+			'5' => esc_attr__( 'H5', 'Avada' ),
+			'6' => esc_attr__( 'H6', 'Avada' ),
+		),
+		sprintf( esc_html__( 'Choose the title size you want to use. The size you choose will utilize the font family and letter spacing typography settings in Theme Options for that specific size. Font size is set below.  %s', 'Avada' ), '<strong>' . $default . '</strong>' ),
+		'2'
 	);
 	$default = sprintf( esc_html__( 'Default: %s', 'Avada' ), '60' );
 	$this->text(
@@ -197,18 +212,33 @@ if ( ! defined( 'ABSPATH' ) ) {
 		'caption_separator',
 		esc_attr__( 'Caption Separator', 'Avada' ),
 		array(
-			'none'				=> esc_attr__( 'None', 'Avada' ),
-			'single solid'		=> esc_attr__( 'Single Solid', 'Avada' ),
-			'single dashed'		=> esc_attr__( 'Single Dashed', 'Avada' ),
-			'single dotted'		=> esc_attr__( 'Single Dotted', 'Avada' ),
-			'double solid'	 	=> esc_attr__( 'Double Solid', 'Avada' ),
-			'double dashed'		=> esc_attr__( 'Double Dashed', 'Avada' ),
-			'double dotted'		=> esc_attr__( 'Double Dotted', 'Avada' ),
-			'underline solid'	=> esc_attr__( 'Underline Solid', 'Avada' ),
-			'underline dashed'	=> esc_attr__( 'Underline Dashed', 'Avada' ),
-			'underline dotted'	=> esc_attr__( 'Underline Dotted', 'Avada' ),
+			'none'              => esc_attr__( 'None', 'Avada' ),
+			'single solid'      => esc_attr__( 'Single Solid', 'Avada' ),
+			'single dashed'     => esc_attr__( 'Single Dashed', 'Avada' ),
+			'single dotted'     => esc_attr__( 'Single Dotted', 'Avada' ),
+			'double solid'      => esc_attr__( 'Double Solid', 'Avada' ),
+			'double dashed'     => esc_attr__( 'Double Dashed', 'Avada' ),
+			'double dotted'     => esc_attr__( 'Double Dotted', 'Avada' ),
+			'underline solid'   => esc_attr__( 'Underline Solid', 'Avada' ),
+			'underline dashed'  => esc_attr__( 'Underline Dashed', 'Avada' ),
+			'underline dotted'  => esc_attr__( 'Underline Dotted', 'Avada' ),
 		),
 		esc_html__( 'Choose the caption separator you want to use.', 'Avada' )
+	);
+	$default = sprintf( esc_html__( 'Default: %s', 'Avada' ), 'H3' );
+	$this->radio_buttonset(
+		'caption_size',
+		esc_attr__( 'Caption Size', 'Avada' ),
+		array(
+			'1' => esc_attr__( 'H1', 'Avada' ),
+			'2' => esc_attr__( 'H2', 'Avada' ),
+			'3' => esc_attr__( 'H3', 'Avada' ),
+			'4' => esc_attr__( 'H4', 'Avada' ),
+			'5' => esc_attr__( 'H5', 'Avada' ),
+			'6' => esc_attr__( 'H6', 'Avada' ),
+		),
+		sprintf( esc_html__( 'Choose the caption size you want to use. The size you choose will utilize the font family and letter spacing typography settings in Theme Options for that specific size. Font size is set below. %s', 'Avada' ), '<strong>' . $default . '</strong>' ),
+		'3'
 	);
 	$default = sprintf( esc_html__( 'Default: %s', 'Avada' ), '24' );
 	$this->text(

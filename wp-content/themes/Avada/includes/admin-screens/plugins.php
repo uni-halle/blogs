@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'Direct script access denied.' );
 }
 
-$plugins           = TGM_Plugin_Activation::$instance->plugins;
+$plugins           = Avada_TGM_Plugin_Activation::$instance->plugins;
 $installed_plugins = get_plugins();
 $wp_api_plugins    = get_site_transient( 'fusion_wordpress_org_plugins' );
 
@@ -31,9 +31,11 @@ if ( ! $wp_api_plugins ) {
 	$wp_api_plugins = array();
 	foreach ( $wp_org_plugins as $slug => $path ) {
 		$wp_api_plugins[ $slug ] = array();
-		$wp_api_plugins[ $slug ] = (array) plugins_api( 'plugin_information', array(
-			'slug' => $slug,
-		) );
+		$wp_api_plugins[ $slug ] = (array) plugins_api(
+			'plugin_information', array(
+				'slug' => $slug,
+			)
+		);
 	}
 	set_site_transient( 'fusion_wordpress_org_plugins', $wp_api_plugins, 15 * MINUTE_IN_SECONDS );
 }
@@ -43,10 +45,14 @@ if ( ! $wp_api_plugins ) {
 	<?php add_thickbox(); ?>
 	 <div class="avada-important-notice">
 		<p class="about-description">
+			<?php $premium_plugins_string = sprintf( __( 'Slider Revolution & Layer Slider are premium plugins that can be installed once your <a %1$s>product is registered</a>.', 'Avada' ), 'href="' . esc_url_raw( admin_url( 'admin.php?page=avada-registration' ) ) . '"' ); ?>
+			<?php if ( defined( 'ENVATO_HOSTED_SITE' ) && ENVATO_HOSTED_SITE ) : ?>
+				<?php $premium_plugins_string = __( 'Slider Revolution & Layer Slider are premium plugins included in Avada.', 'Avada' ); ?>
+			<?php endif; ?>
 			<?php if ( false !== get_option( 'avada_previous_version' ) ) : ?>
-				<?php printf( __( 'Fusion Core and Fusion Builder are required to use Avada. Fusion Builder can only be installed after Fusion Core is updated to version 3.0 or higher. Slider Revolution & Layer Slider are premium plugins that can be installed once your <a %1$s>product is registered</a>. The other plugins below offer design integration with Avada. You can manage the plugins from this tab. <a href="%2$s" target="_blank"> Subscribe to our newsletter</a> to be notified about new products coming in the future!', 'Avada' ), 'href="' . esc_url_raw( admin_url( 'admin.php?page=avada-registration' ) ) . '"', 'http://theme-fusion.us2.list-manage2.com/subscribe?u=4345c7e8c4f2826cc52bb84cd&id=af30829ace' ); // WPCS: XSS ok. ?>
+				<?php printf( __( 'Fusion Core and Fusion Builder are required to use Avada. Fusion Builder can only be installed after Fusion Core is updated to version 3.0 or higher. %1$s The other plugins below offer design integration with Avada. You can manage the plugins from this tab. <a href="%2$s" target="_blank"> Subscribe to our newsletter</a> to be notified about new products coming in the future!', 'Avada' ), $premium_plugins_string, 'http://theme-fusion.us2.list-manage2.com/subscribe?u=4345c7e8c4f2826cc52bb84cd&id=af30829ace' ); // WPCS: XSS ok. ?>
 			<?php else : ?>
-				<?php printf( __( 'Fusion Core and Fusion Builder are required to use Avada. Slider Revolution & Layer Slider are premium plugins that can be installed once your <a %1$s>product is registered</a>. The other plugins below offer design integration with Avada. You can manage the plugins from this tab. <a href="%2$s" target="_blank">Subscribe to our newsletter</a> to be notified about new products coming in the future!', 'Avada' ), 'href="' . esc_url_raw( admin_url( 'admin.php?page=avada-registration' ) ) . '"', 'http://theme-fusion.us2.list-manage2.com/subscribe?u=4345c7e8c4f2826cc52bb84cd&id=af30829ace' ); // WPCS: XSS ok. ?>
+				<?php printf( __( 'Fusion Core and Fusion Builder are required to use Avada. %1$s The other plugins below offer design integration with Avada. You can manage the plugins from this tab. <a href="%2$s" target="_blank">Subscribe to our newsletter</a> to be notified about new products coming in the future!', 'Avada' ), $premium_plugins_string, 'http://theme-fusion.us2.list-manage2.com/subscribe?u=4345c7e8c4f2826cc52bb84cd&id=af30829ace' ); // WPCS: XSS ok. ?>
 			<?php endif; ?>
 		</p>
 	</div>
@@ -78,7 +84,7 @@ if ( ! $wp_api_plugins ) {
 
 				// We have a repo plugin.
 				if ( ! $plugin['version'] ) {
-					$plugin['version'] = TGM_Plugin_Activation::$instance->does_plugin_have_update( $plugin['slug'] );
+					$plugin['version'] = Avada_TGM_Plugin_Activation::$instance->does_plugin_have_update( $plugin['slug'] );
 				}
 
 				if ( is_plugin_active( $file_path ) ) {

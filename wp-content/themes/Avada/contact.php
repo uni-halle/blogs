@@ -16,7 +16,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 
-<?php get_header();
+<?php
+get_header();
 
 /**
  * Instantiate the Avada_Contact class.
@@ -24,7 +25,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 $avada_contact = new Avada_Contact();
 ?>
 <section id="content" <?php Avada()->layout->add_style( 'content_style' ); ?>>
-	<?php while ( have_posts() ) : the_post(); ?>
+	<?php while ( have_posts() ) : ?>
+		<?php the_post(); ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php echo fusion_render_rich_snippets_for_pages(); // WPCS: XSS ok. ?>
 			<?php avada_featured_images_for_pages(); ?>
@@ -108,6 +110,7 @@ $avada_contact = new Avada_Contact();
 	<?php endwhile; ?>
 </section>
 <?php do_action( 'avada_after_content' ); ?>
-<?php get_footer();
+<?php
+get_footer();
 
 /* Omit closing PHP tag to avoid "Headers already sent" issues. */

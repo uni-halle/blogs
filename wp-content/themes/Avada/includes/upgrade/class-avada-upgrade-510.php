@@ -153,9 +153,11 @@ class Avada_Upgrade_510 extends Avada_Upgrade_Abstract {
 	protected function nav_menus() {
 
 		// Migrate old menus.
-		$the_query = new WP_Query( array(
-			'post_type' => 'nav_menu_item',
-		) );
+		$the_query = new WP_Query(
+			array(
+				'post_type' => 'nav_menu_item',
+			)
+		);
 		$posts = $the_query->posts;
 		$url = get_home_url();
 		$url = str_replace( 'http://', '', $url );
@@ -185,16 +187,20 @@ class Avada_Upgrade_510 extends Avada_Upgrade_Abstract {
 		$avada_registration = get_option( 'avada_registration' );
 		delete_option( 'avada_registration' );
 		if ( is_array( $avada_registration ) && isset( $avada_registration['token'] ) && ! empty( $avada_registration['token'] ) ) {
-			update_option( 'fusion_registration', array(
-				'avada' => $avada_registration,
-			) );
+			update_option(
+				'fusion_registration', array(
+					'avada' => $avada_registration,
+				)
+			);
 		}
 		$avada_registered = get_option( 'avada_registered', false );
 		delete_option( 'avada_registered' );
 		if ( $avada_registered ) {
-			update_option( 'fusion_registered', array(
-				'avada' => true,
-			) );
+			update_option(
+				'fusion_registered', array(
+					'avada' => true,
+				)
+			);
 		}
 		$sql = "DELETE FROM $wpdb->options WHERE option_name LIKE '_transient_fusion_envato_api_down%'";
 		$wpdb->query( $sql );
@@ -360,19 +366,23 @@ class Avada_Upgrade_510 extends Avada_Upgrade_Abstract {
 				if ( is_numeric( $side_header_value ) ) {
 					$side_header_value .= 'px';
 				}
-				$combined_value = Fusion_Sanitize::add_css_values( array(
-					$site_width_value,
-					$side_header_value,
-				) );
+				$combined_value = Fusion_Sanitize::add_css_values(
+					array(
+						$site_width_value,
+						$side_header_value,
+					)
+				);
 
 			}
 			if ( isset( $avada_options['layout'] ) && 'boxed' === strtolower( $avada_options['layout'] ) ) {
 				$combined_value = $combined_value ? $combined_value : $avada_options['site_width'];
 				if ( false !== strpos( $combined_value, 'px' ) && false === strpos( $combined_value, 'calc' ) ) {
-					$combined_value = Fusion_Sanitize::add_css_values( array(
-						$combined_value,
-						'60px',
-					) );
+					$combined_value = Fusion_Sanitize::add_css_values(
+						array(
+							$combined_value,
+							'60px',
+						)
+					);
 				}
 			}
 

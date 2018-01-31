@@ -90,6 +90,21 @@ function avada_options_section_portfolio( $sections ) {
 							'step' => '1',
 						),
 					),
+					'portfolio_equal_heights' => array(
+						'label'       => esc_html__( 'Equal Heights', 'Avada' ),
+						'description' => esc_html__( 'Turn on to display grid boxes with equal heights per row.', 'Avada' ),
+						'id'          => 'portfolio_equal_heights',
+						'default'     => 0,
+						'type'        => 'switch',
+						'class'       => 'fusion-or-gutter',
+						'required'    => array(
+							array(
+								'setting'  => 'portfolio_archive_layout',
+								'operator' => '=',
+								'value'    => 'grid',
+							),
+						),
+					),
 					'portfolio_archive_one_column_text_position' => array(
 						'label'       => esc_html__( 'Portfolio Archive Content Position', 'Avada' ),
 						'description' => esc_html__( 'Select if title, terms and excerpts should be displayed below or next to the featured images.', 'Avada' ),
@@ -138,14 +153,22 @@ function avada_options_section_portfolio( $sections ) {
 						),
 					),
 					'portfolio_archive_content_length' => array(
-						'label'       => esc_html__( 'Portfolio Archive Content Display', 'Avada' ),
-						'description' => esc_html__( 'Controls if the portfolio content displays an excerpt or full content for portfolio archive pages.', 'Avada' ),
+						'label'       => esc_html__( 'Portfolio Archive Text Display', 'Avada' ),
+						'description' => esc_html__( 'Choose how to display the post excerpt for portfolio archive pages.', 'Avada' ),
 						'id'          => 'portfolio_archive_content_length',
 						'default'     => 'excerpt',
 						'type'        => 'radio-buttonset',
 						'choices'     => array(
+							'no_text'      => esc_html__( 'No Text', 'Avada' ),
 							'excerpt'      => esc_html__( 'Excerpt', 'Avada' ),
 							'full_content' => esc_html__( 'Full Content', 'Avada' ),
+						),
+						'required'    => array(
+							array(
+								'setting'  => 'portfolio_archive_text_layout',
+								'operator' => '!=',
+								'value'    => 'no_text',
+							),
 						),
 					),
 					'portfolio_archive_excerpt_length' => array(
@@ -251,6 +274,13 @@ function avada_options_section_portfolio( $sections ) {
 						'default'     => 'portfolio-items',
 						'type'        => 'text',
 					),
+					'portfolio_meta_font_size' => array(
+						'label'       => esc_html__( 'Meta Data Font Size', 'Avada' ),
+						'description' => esc_html__( 'Controls the font size for meta data text.', 'Avada' ),
+						'id'          => 'portfolio_meta_font_size',
+						'default'     => '13px',
+						'type'        => 'dimension',
+					),
 				),
 			),
 			'portfolio_single_post_page_options_subsection' => array(
@@ -328,7 +358,7 @@ function avada_options_section_portfolio( $sections ) {
 						'type'        => 'switch',
 					),
 					'portfolio_link_icon_target' => array(
-						'label'       => esc_html__( 'Open Post Links In New Window', 'Avada' ),
+						'label'       => esc_html__( 'Open Portfolio Links In New Window', 'Avada' ),
 						'description' => esc_html__( 'Turn on to open the single post page, project url and copyright url links in a new window..', 'Avada' ),
 						'id'          => 'portfolio_link_icon_target',
 						'default'     => '0',

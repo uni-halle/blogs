@@ -32,6 +32,7 @@ class Avada_Init {
 		add_action( 'after_setup_theme', array( $this, 'add_theme_supports' ), 10 );
 		add_action( 'after_setup_theme', array( $this, 'register_nav_menus' ) );
 		add_action( 'after_setup_theme', array( $this, 'add_image_size' ) );
+		add_filter( 'image_size_names_choose', array( $this, 'add_image_sizes_to_media_library_dialog' ) );
 
 		if ( class_exists( 'BuddyPress' ) && ! Avada_Helper::is_buddypress() ) {
 			add_action( 'init', array( $this, 'remove_buddypress_redirection' ), 5 );
@@ -216,12 +217,36 @@ class Avada_Init {
 		add_image_size( 'blog-medium', 320, 202, true );
 		add_image_size( 'recent-posts', 700, 441, true );
 		add_image_size( 'recent-works-thumbnail', 66, 66, true );
+
 		// Image sizes used for grid layouts.
 		add_image_size( '200', 200, '', false );
 		add_image_size( '400', 400, '', false );
 		add_image_size( '600', 600, '', false );
 		add_image_size( '800', 800, '', false );
 		add_image_size( '1200', 1200, '', false );
+	}
+
+	/**
+	 * Add image sizes to WP Media Library Dialog.
+	 *
+	 * @since 5.3
+	 * @access public
+	 * @param array $sizes The image sizes already in the WP Meida Library Dialog.
+	 * @return array Image sizes for WP Media Library Dialog.
+	 */
+	public function add_image_sizes_to_media_library_dialog( $sizes ) {
+		/* translators: image size. */
+		$sizes['200'] = sprintf( esc_attr__( 'Avada Grid %s', 'Avada' ), 200 );
+		/* translators: image size. */
+		$sizes['400'] = sprintf( esc_attr__( 'Avada Grid %s', 'Avada' ), 400 );
+		/* translators: image size. */
+		$sizes['600'] = sprintf( esc_attr__( 'Avada Grid %s', 'Avada' ), 600 );
+		/* translators: image size. */
+		$sizes['800'] = sprintf( esc_attr__( 'Avada Grid %s', 'Avada' ), 800 );
+		/* translators: image size. */
+		$sizes['1200'] = sprintf( esc_attr__( 'Avada Grid %s', 'Avada' ), 1200 );
+
+		return $sizes;
 	}
 
 	/**
@@ -246,25 +271,31 @@ class Avada_Init {
 	 */
 	public function theme_activation() {
 
-		update_option( 'shop_catalog_image_size',   array(
-			'width' => 500,
-			'height' => '',
-			0,
-		) );
-		update_option( 'shop_single_image_size',    array(
-			'width' => 700,
-			'height' => '',
-			0,
-		) );
-		update_option( 'shop_thumbnail_image_size', array(
-			'width' => 120,
-			'height' => '',
-			0,
-		) );
+		update_option(
+			'shop_catalog_image_size',   array(
+				'width' => 500,
+				'height' => '',
+				0,
+			)
+		);
+		update_option(
+			'shop_single_image_size',    array(
+				'width' => 700,
+				'height' => '',
+				0,
+			)
+		);
+		update_option(
+			'shop_thumbnail_image_size', array(
+				'width' => 120,
+				'height' => '',
+				0,
+			)
+		);
 		// Delete the patcher caches.
 		delete_site_transient( 'fusion_patcher_check_num' );
 		// Delete compiled JS.
-		avada_reset_all_cache();
+		avada_reset_all_caches();
 
 	}
 
@@ -278,7 +309,7 @@ class Avada_Init {
 		// Delete the patcher caches.
 		delete_site_transient( 'fusion_patcher_check_num' );
 		// Delete compiled JS.
-		avada_reset_all_cache();
+		avada_reset_all_caches();
 
 	}
 
@@ -342,6 +373,7 @@ class Avada_Init {
 		register_widget( 'Fusion_Widget_Social_Links' );
 		register_widget( 'Fusion_Widget_Facebook_Page' );
 		register_widget( 'Fusion_Widget_Menu' );
+		register_widget( 'Fusion_Widget_Vertical_Menu' );
 
 	}
 

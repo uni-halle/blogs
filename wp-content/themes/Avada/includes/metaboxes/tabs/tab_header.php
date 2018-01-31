@@ -33,6 +33,7 @@ $this->radio_buttonset(
 		'no'      => esc_attr__( 'No', 'Avada' ),
 	),
 	sprintf( esc_html__( 'Choose to set header width to 100&#37; of the browser width. Select "No" for site width. %s', 'Avada' ), Avada()->settings->get_default_description( 'header_100_width', '', 'yesno' ) ),
+	'',
 	array(
 		array(
 			'field'      => 'display_header',
@@ -42,10 +43,12 @@ $this->radio_buttonset(
 	)
 );
 
-$header_bg_color = Fusion_Color::new_color( array(
-	'color' => Avada()->settings->get( 'header_bg_color' ),
-	'fallback' => '#ffffff',
-) );
+$header_bg_color = Fusion_Color::new_color(
+	array(
+		'color' => Avada()->settings->get( 'header_bg_color' ),
+		'fallback' => '#ffffff',
+	)
+);
 $this->color(
 	'header_bg_color',
 	esc_html__( 'Background Color', 'Avada' ),
@@ -100,6 +103,7 @@ $this->radio_buttonset(
 		'yes' => esc_attr__( 'Yes', 'Avada' ),
 	),
 	esc_html__( 'Choose to have the background image display at 100%.', 'Avada' ),
+	'',
 	array(
 		array(
 			'field'      => 'display_header',
@@ -138,9 +142,11 @@ $this->select(
 	)
 );
 
-$menus = get_terms( 'nav_menu', array(
-	'hide_empty' => false,
-) );
+$menus = get_terms(
+	'nav_menu', array(
+		'hide_empty' => false,
+	)
+);
 $menu_select['default'] = 'Default Menu';
 
 foreach ( $menus as $menu ) {

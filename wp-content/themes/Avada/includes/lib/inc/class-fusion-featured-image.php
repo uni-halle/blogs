@@ -133,9 +133,11 @@ class Fusion_Featured_Image {
 		$remove_image_css  = $preview_image_css;
 
 		if ( $image_id ) {
-			$preview_image = wp_get_attachment_image( $image_id, array( 266, 266 ), false, array(
-				'class' => 'fusion-preview-image',
-			) );
+			$preview_image = wp_get_attachment_image(
+				$image_id, array( 266, 266 ), false, array(
+					'class' => 'fusion-preview-image',
+				)
+			);
 			$remove_image_css = '';
 		} else {
 			$preview_image = '<img class="fusion-preview-image" src="">';
@@ -219,7 +221,7 @@ class Fusion_Featured_Image {
 			$post_id = get_the_ID();
 		}
 
-		return get_post_meta( $post_id, 'kd_' . $image_id . '_' . $post_type . '_id', true );
+		return apply_filters( 'wpml_object_id', get_post_meta( $post_id, 'kd_' . $image_id . '_' . $post_type . '_id', true ), 'attachment', true );
 	}
 }
 

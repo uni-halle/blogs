@@ -79,7 +79,7 @@ function avada_options_section_slideshows( $sections ) {
 				'label'       => esc_html__( 'Navigation Box Dimensions', 'Avada' ),
 				'description' => esc_html__( 'Controls the width and height of the navigation box.', 'Avada' ),
 				'id'          => 'slider_nav_box_dimensions',
-				'units'		  => false,
+				'units'       => false,
 				'default'     => array(
 					'width'   => '30px',
 					'height'  => '30px',

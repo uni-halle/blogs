@@ -191,29 +191,29 @@ class Fusion_Settings {
 		}
 
 		if ( empty( self::$saved_options ) ) {
-			self::$cached_options[ $setting ] = $this->_get( $setting, $subset, $default );
+			self::$cached_options[ $setting ] = $this->_get( $setting, false, $default );
+		}
+
+		// Cache the option as a whole on first call.
+		if ( ! isset( self::$cached_options[ $setting ] ) ) {
+			self::$cached_options[ $setting ] = $this->_get( $setting, false, $default );
 		}
 
 		// We don't need a subset.
 		if ( ! $subset || empty( $subset ) ) {
-			// Cache the value.
-			if ( ! isset( self::$cached_options[ $setting ] ) ) {
-				self::$cached_options[ $setting ] = $this->_get( $setting, false, $default );
-			}
+
 			// Return cached value.
 			return self::$cached_options[ $setting ];
 		}
 
 		// If we got this far, we need a subset.
-		if ( ! isset( self::$cached_options[ $setting ] ) || ! isset( self::$cached_options[ $setting ][ $subset ] ) ) {
-			if ( ! isset( self::$cached_options[ $setting ] ) ) {
+		if ( ! isset( self::$cached_options[ $setting ][ $subset ] ) ) {
+			if ( ! is_array( self::$cached_options[ $setting ] ) ) {
 				self::$cached_options[ $setting ] = array();
-			}
-			if ( ! isset( self::$cached_options[ $setting ] ) || ! is_array( self::$cached_options[ $setting ] ) ) {
-				self::$cached_options = array();
 			}
 			self::$cached_options[ $setting ][ $subset ] = $this->_get( $setting, $subset, $default );
 		}
+
 		// Return the cached value.
 		return self::$cached_options[ $setting ][ $subset ];
 
@@ -236,6 +236,7 @@ class Fusion_Settings {
 		$settings = self::$saved_options;
 
 		if ( is_array( $settings ) && isset( $settings[ $setting ] ) ) {
+
 			// Setting is saved so retrieve it from the db.
 			$value = apply_filters( "avada_setting_get_{$setting}", $settings[ $setting ] );
 
@@ -266,17 +267,20 @@ class Fusion_Settings {
 				}
 
 				if ( is_array( $value ) && isset( $value[ $subset ] ) ) {
+
 					// The subset is set so we can just return it. @codingStandardsIgnoreLine
 					return apply_filters( "avada_setting_get_{$setting}[{$subset}]", $value[ $subset ] );
 				} else {
 					if ( null !== $default ) {
 						return $default;
 					}
+
 					// If we've reached this point then the setting has not been set in the db.
 					// We'll need to get the default value. @codingStandardsIgnoreLine
 					return apply_filters( "avada_setting_get_{$setting}[{$subset}]", $this->get_default( $setting, $subset ) );
 				}
 			} else {
+
 				// Hack for color & color-alpha fields.
 				if ( isset( self::$options_with_id[ $setting ]['type'] ) && in_array( self::$options_with_id[ $setting ]['type'], array( 'color', 'color-alpha' ), true ) ) {
 					if ( empty( $value ) ) {
@@ -287,10 +291,12 @@ class Fusion_Settings {
 						return apply_filters( "avada_setting_get_{$setting}[{$subset}]", $this->get_default( $setting, $subset ) );
 					}
 				}
+
 				// We don't want a subset so just return the value.
 				return $value;
-			}// End if().
+			} // End if().
 		} else {
+
 			// If we've reached this point then the setting has not been set in the db.
 			// We'll need to get the default value.
 			if ( $subset ) {
@@ -304,7 +310,7 @@ class Fusion_Settings {
 				return $default;
 			}
 			return apply_filters( "avada_setting_get_{$setting}", $this->get_default( $setting ) );
-		}// End if().
+		} // End if().
 	}
 
 	/**
@@ -354,13 +360,13 @@ class Fusion_Settings {
 	/**
 	 * Gets the option value combined with relevant description.
 	 *
-	 * @since	4.1
-	 * @param	string $setting name of option.
-	 * @param	string $subset name of subset of option.
-	 * @param	string $type description of option type.
-	 * @param	string $reset option name for reset.
-	 * @param	array  $param Shortcode params declared while mapping.
-	 * @return	string $setting_description Setting description with default value link to Element Options.
+	 * @since   4.1
+	 * @param   string $setting name of option.
+	 * @param   string $subset name of subset of option.
+	 * @param   string $type description of option type.
+	 * @param   string $reset option name for reset.
+	 * @param   array  $param Shortcode params declared while mapping.
+	 * @return  string $setting_description Setting description with default value link to Element Options.
 	 */
 	public function get_default_description( $setting = null, $subset = false, $type = null, $reset = '', $param = '' ) {
 
@@ -424,27 +430,30 @@ class Fusion_Settings {
 					$setting_value = ucwords( str_replace( '_', '', $setting_value ) );
 				}
 				$setting_link = '<a href="' . $this->get_setting_link( $setting, $subset ) . '" target="_blank" rel="noopener noreferrer">' . $setting_value . '</a>';
-				$setting_description = sprintf( esc_html__( '  Default currently set to %s.', 'Avada' ), $setting_link );
+				$setting_description = sprintf( esc_attr__( '  Default currently set to %s.', 'Avada' ), $setting_link );
 				break;
 
 			case 'showhide':
 				// @codingStandardsIgnoreLine
-				$setting_value = ( 1 == $setting_value ) ? esc_html__( 'Show', 'Avada' ) : esc_html__( 'Hide', 'Avada' );
+				$setting_value = ( 1 == $setting_value ) ? esc_attr__( 'Show', 'Avada' ) : esc_attr__( 'Hide', 'Avada' );
 				$setting_link  = '<a href="' . $this->get_setting_link( $setting, $subset ) . '" target="_blank" rel="noopener noreferrer">' . $setting_value . '</a>';
-				$setting_description = sprintf( esc_html__( '  Default currently set to %s.', 'Avada' ), $setting_link );
+				$setting_description = sprintf( esc_attr__( '  Default currently set to %s.', 'Avada' ), $setting_link );
 				break;
 
 			case 'yesno':
 				// @codingStandardsIgnoreLine
-				$setting_value = ( 1 == $setting_value ) ? esc_html__( 'Yes', 'Avada' ) : esc_html__( 'No', 'Avada' );
+				$setting_value = ( 1 == $setting_value ) ? esc_attr__( 'Yes', 'Avada' ) : esc_attr__( 'No', 'Avada' );
 				$setting_link  = '<a href="' . $this->get_setting_link( $setting, $subset ) . '" target="_blank" rel="noopener noreferrer">' . $setting_value . '</a>';
-				$setting_description = sprintf( esc_html__( '  Default currently set to %s.', 'Avada' ), $setting_link );
+				$setting_description = 'status_lightbox' === $setting
+					? sprintf( esc_attr__( '  Current value set to %s.', 'Avada' ), $setting_link )
+					: sprintf( esc_attr__( '  Default currently set to %s.', 'Avada' ), $setting_link );
+
 				break;
 
 			case 'reverseyesno':
-				$setting_value = ( 1 === $setting_value || '1' === $setting_value || true === $setting_value ) ? esc_html__( 'No', 'Avada' ) : esc_html__( 'Yes', 'Avada' );
+				$setting_value = ( 1 === $setting_value || '1' === $setting_value || true === $setting_value ) ? esc_attr__( 'No', 'Avada' ) : esc_attr__( 'Yes', 'Avada' );
 				$setting_link  = '<a href="' . $this->get_setting_link( $setting, $subset ) . '" target="_blank" rel="noopener noreferrer">' . $setting_value . '</a>';
-				$setting_description = sprintf( esc_html__( '  Default currently set to %s.', 'Avada' ), $setting_link );
+				$setting_description = sprintf( esc_attr__( '  Default currently set to %s.', 'Avada' ), $setting_link );
 				break;
 
 			case 'menu':
@@ -456,26 +465,26 @@ class Fusion_Settings {
 				$setting_value = ( false !== $menu ) ? $menu->name : esc_attr__( 'none', 'Avada' );
 				$setting_link  = '<a href="' . admin_url( 'nav-menus.php?action=locations' ) . '" target="_blank" rel="noopener noreferrer">' . $setting_value . '</a>';
 
-				$setting_description = sprintf( esc_html__( '  Default currently set to %s.', 'Avada' ), $setting_link );
+				$setting_description = sprintf( esc_attr__( '  Default currently set to %s.', 'Avada' ), $setting_link );
 				break;
 
 			case 'sidebar':
 				$setting_value = ucwords( str_replace( '_', '', $setting_value ) );
 				$setting_link  = '<a href="' . $this->get_setting_link( $setting, $subset ) . '" target="_blank" rel="noopener noreferrer">' . $setting_value . '</a>';
-				$setting_description = sprintf( esc_html__( '  Global sidebar is currently active and will override selection with %s.', 'Avada' ), $setting_link );
+				$setting_description = sprintf( esc_attr__( '  Global sidebar is currently active and will override selection with %s.', 'Avada' ), $setting_link );
 				break;
 
 			case 'range':
-				$setting_description = sprintf( esc_html__( '  Default currently set to %s.', 'Avada' ), $setting_link );
+				$setting_description = sprintf( esc_attr__( '  Default currently set to %s.', 'Avada' ), $setting_link );
 				break;
 
 			case 'child':
-				$setting_description = sprintf( esc_html__( '  Leave empty for value set in parent options.  If that is also empty, the %1$s value of %2$s will be used.', 'Avada' ), apply_filters( 'fusion_options_label', esc_attr__( 'Element Options', 'Avada' ) ), $setting_link );
+				$setting_description = sprintf( esc_attr__( '  Leave empty for value set in parent options.  If that is also empty, the %1$s value of %2$s will be used.', 'Avada' ), apply_filters( 'fusion_options_label', esc_attr__( 'Element Options', 'Avada' ) ), $setting_link );
 				break;
 
 			default:
 				if ( '' !== $setting_value ) {
-					$setting_description = sprintf( esc_html__( '  Leave empty for default value of %s.', 'Avada' ), $setting_link );
+					$setting_description = sprintf( esc_attr__( '  Leave empty for default value of %s.', 'Avada' ), $setting_link );
 				} else {
 					$setting_description = sprintf( __( '  Currently no default selected. Can be set globally from the <a %1$s>%2$s</a>.', 'Avada' ), 'href="' . $this->get_setting_link( $setting, $subset ) . '" target="_blank" rel="noopener noreferrer"', apply_filters( 'fusion_options_label', esc_attr__( 'Element Options', 'Avada' ) ) );
 				}
@@ -488,10 +497,10 @@ class Fusion_Settings {
 	/**
 	 * Gets the link to the setting.
 	 *
-	 * @since	4.1
-	 * @param	string $setting name of option.
-	 * @param	string $subset name of subset of option.
-	 * @return	string URL to options page with option hash appended.
+	 * @since   4.1
+	 * @param   string $setting name of option.
+	 * @param   string $subset name of subset of option.
+	 * @return  string URL to options page with option hash appended.
 	 */
 	public function get_setting_link( $setting = null, $subset = false ) {
 
@@ -504,9 +513,9 @@ class Fusion_Settings {
 	/**
 	 * Gets the color scheme names as an array.
 	 *
-	 * @since	5.0.0
+	 * @since   5.0.0
 	 * @param   array $standard_schemes array to which we need to add custom color schemes.
-	 * @return	array of color scheme names.
+	 * @return  array of color scheme names.
 	 */
 	public function get_custom_color_schemes( $standard_schemes = array() ) {
 
@@ -522,10 +531,10 @@ class Fusion_Settings {
 	/**
 	 * Gets a value from specific custom color scheme.
 	 *
-	 * @since	5.0.0
+	 * @since   5.0.0
 	 * @param   integer $scheme_id   key of custom color scheme to check.
 	 * @param   string  $option_name option name to find value for.
-	 * @return	array of color scheme names.
+	 * @return  array of color scheme names.
 	 */
 	public function get_custom_color( $scheme_id, $option_name = false ) {
 

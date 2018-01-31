@@ -1,0 +1,800 @@
+{
+  "data": [
+    {
+      "name": "pyre_page_title",
+      "type": [
+        "local"
+      ],
+      "group": "Title Bar",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "Page Title Bar",
+        "type": "select",
+        "values": [
+          {
+            "text": "Default",
+            "value": "default"
+          },
+          {
+            "text": "Show Bar and Content",
+            "value": "yes"
+          },
+          {
+            "text": "Show Content Only",
+            "value": "yes_without_bar"
+          },
+          {
+            "text": "Hide",
+            "value": "no"
+          }
+
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_page_title_breadcrumbs_search_bar",
+      "type": [
+        "local"
+      ],
+      "group": "Title Bar",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "Breadcrumbs/Search Bar",
+        "type": "select",
+        "values": [
+          {
+            "text": "Default",
+            "value": "default"
+          },
+          {
+            "text": "Breadcrumbs",
+            "value": "breadcrumbs"
+          },
+          {
+            "text": "Searchbar",
+            "value": "searchbar"
+          },
+          {
+            "text": "None",
+            "value": "none"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_page_title_100_width",
+      "type": [
+        "local"
+      ],
+      "group": "Title Bar",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "100% Page Title Width",
+        "type": "select",
+        "values": [
+          {
+            "text": "Default",
+            "value": "default"
+          },
+          {
+            "text": "Yes",
+            "value": "yes"
+          },
+          {
+            "text": "No",
+            "value": "no"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_page_title_height",
+      "type": [
+        "local"
+      ],
+      "group": "Title Bar",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "Page Title Bar Height",
+        "type": "text",
+        "values": [
+          {
+            "value": ""
+          }
+        ]
+      },
+      "default_value": ""
+    },
+    {
+      "name": "pyre_page_title_mobile_height",
+      "type": [
+        "local"
+      ],
+      "group": "Title Bar",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "Page Title Bar Mobile Height",
+        "type": "text",
+        "values": [
+          {
+            "value": ""
+          }
+        ]
+      },
+      "default_value": ""
+    },
+    {
+      "name": "pyre_display_header",
+      "type": [
+        "local"
+      ],
+      "group": "Page Elements",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "Display Header",
+        "type": "select",
+        "values": [
+          {
+            "text": "Yes",
+            "value": "yes"
+          },
+          {
+            "text": "No",
+            "value": "no"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_sidebar_position",
+      "type": [
+        "local"
+      ],
+      "group": "Page Elements",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "Sidebar 1 Position",
+        "type": "select",
+        "values": [
+          {
+            "text": "Default",
+            "value": "default"
+          },
+          {
+            "text": "Left",
+            "value": "left"
+          },
+          {
+            "text": "Right",
+            "value": "right"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_header_100_width",
+      "type": [
+        "local"
+      ],
+      "group": "Page Elements",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "100% Header Width",
+        "type": "select",
+        "values": [
+          {
+            "text": "Default",
+            "value": "default"
+          },
+          {
+            "text": "Yes",
+            "value": "yes"
+          },
+          {
+            "text": "No",
+            "value": "no"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_show_first_featured_image",
+      "type": [
+        "local"
+      ],
+      "group": "Page Content Layout",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "Disable First Featured Image",
+        "type": "select",
+        "values": [
+          {
+            "text": "Yes",
+            "value": "yes"
+          },
+          {
+            "text": "No",
+            "value": "no"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_wide_page_bg_color",
+      "type": [
+        "local"
+      ],
+      "group": "Page Content Layout",
+      "target": [
+        "single"
+      ],
+      "target_exclude": [
+        "post"
+      ],
+      "gui": {
+        "display_name": "Background Color",
+        "type": "colorpicker"
+      },
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "pyre_portfolio_width_100",
+      "type": [
+        "local"
+      ],
+      "group": "Page Content Layout",
+      "target": [
+        "single"
+      ],
+      "target_exclude": [
+        "page"
+      ],
+      "gui": {
+        "display_name": "Use 100% Width Page",
+        "type": "select",
+        "values": [
+          {
+            "text": "Yes",
+            "value": "yes"
+          },
+          {
+            "text": "No",
+            "value": "no"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_main_top_padding",
+      "type": [
+        "local"
+      ],
+      "group": "Page Content Layout",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "Page Content Top Padding",
+        "type": "text",
+        "values": [
+          {
+            "value": ""
+          }
+        ]
+      },
+      "default_value": "0px"
+    },
+    {
+      "name": "pyre_main_bottom_padding",
+      "type": [
+        "local"
+      ],
+      "group": "Page Content Layout",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "Page Content Bottom Padding",
+        "type": "text",
+        "values": [
+          {
+            "value": ""
+          }
+        ]
+      },
+      "default_value": "0px"
+    },
+    {
+      "name": "pyre_hundredp_padding",
+      "type": [
+        "local"
+      ],
+      "group": "Page Content Layout",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "100% Width Padding",
+        "type": "text",
+        "values": [
+          {
+            "value": ""
+          }
+        ]
+      },
+      "default_value": "0px"
+    },
+    {
+      "name": "pyre_post_links_target",
+      "type": [
+        "local"
+      ],
+      "group": "Page Content Layout",
+      "target": [
+        "single"
+      ],
+      "target_exclude": [
+        "page"
+      ],
+      "gui": {
+        "display_name": "Open Post Links In New Window",
+        "type": "select",
+        "values": [
+          {
+            "text": "Yes",
+            "value": "yes"
+          },
+          {
+            "text": "No",
+            "value": "no"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_related_posts",
+      "type": [
+        "local"
+      ],
+      "group": "Page Content Layout",
+      "target": [
+        "single"
+      ],
+      "target_exclude": [
+        "page"
+      ],
+      "gui": {
+        "display_name": "Show Related Posts",
+        "type": "select",
+        "values": [
+          {
+            "text": "Default",
+            "value": "default"
+          },
+          {
+            "text": "Yes",
+            "value": "yes"
+          },
+          {
+            "text": "No",
+            "value": "no"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_share_box",
+      "type": [
+        "local"
+      ],
+      "group": "Page Content Layout",
+      "target": [
+        "single"
+      ],
+      "target_exclude": [
+        "page"
+      ],
+      "gui": {
+        "display_name": "Show Social Share Box",
+        "type": "select",
+        "values": [
+          {
+            "text": "Default",
+            "value": "default"
+          },
+          {
+            "text": "Yes",
+            "value": "yes"
+          },
+          {
+            "text": "No",
+            "value": "no"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_post_pagination",
+      "type": [
+        "local"
+      ],
+      "group": "Page Content Layout",
+      "target": [
+        "single"
+      ],
+      "target_exclude": [
+        "page"
+      ],
+      "gui": {
+        "display_name": "Show Previous/Next Pagination",
+        "type": "select",
+        "values": [
+          {
+            "text": "Default",
+            "value": "default"
+          },
+          {
+            "text": "Yes",
+            "value": "yes"
+          },
+          {
+            "text": "No",
+            "value": "no"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_author_info",
+      "type": [
+        "local"
+      ],
+      "group": "Page Content Layout",
+      "target": [
+        "single"
+      ],
+      "target_exclude": [
+        "page"
+      ],
+      "gui": {
+        "display_name": "Show Author Info Box",
+        "type": "select",
+        "values": [
+          {
+            "text": "Default",
+            "value": "default"
+          },
+          {
+            "text": "Yes",
+            "value": "yes"
+          },
+          {
+            "text": "No",
+            "value": "no"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_display_footer",
+      "type": [
+        "local"
+      ],
+      "group": "Footer",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "Display Footer Widget Area",
+        "type": "select",
+        "values": [
+          {
+            "text": "Default",
+            "value": "default"
+          },
+          {
+            "text": "Yes",
+            "value": "yes"
+          },
+          {
+            "text": "No",
+            "value": "no"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_display_copyright",
+      "type": [
+        "local"
+      ],
+      "group": "Footer",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "Display Copyright Area",
+        "type": "select",
+        "values": [
+          {
+            "text": "Default",
+            "value": "default"
+          },
+          {
+            "text": "Yes",
+            "value": "yes"
+          },
+          {
+            "text": "No",
+            "value": "no"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "pyre_footer_100_width",
+      "type": [
+        "local"
+      ],
+      "group": "Footer",
+      "target": [
+        "single"
+      ],
+      "gui": {
+        "display_name": "100% Footer Width",
+        "type": "select",
+        "values": [
+          {
+            "text": "Default",
+            "value": "default"
+          },
+          {
+            "text": "Yes",
+            "value": "yes"
+          },
+          {
+            "text": "No",
+            "value": "no"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "content_bg_color",
+      "type": [
+        "global"
+      ],
+      "global_key" : "fusion_options",
+      "group": "Page Content Layout",
+      "target": [
+        "archive"
+      ],
+      "gui": {
+        "display_name": "Main Content Background Color",
+        "type": "colorpicker"
+      },
+      "default_value": "#ffffff"
+    },
+    {
+      "name": "site_width",
+      "type": [
+        "global"
+      ],
+      "global_key" : "fusion_options",
+      "group": "Page Content Layout",
+      "target": [
+        "archive"
+      ],
+      "gui": {
+        "display_name": "Site Width",
+        "type": "text",
+        "values": [
+          {
+            "value": ""
+          }
+        ]
+      },
+      "default_value": ""
+    },
+    {
+      "name": "hundredp_padding",
+      "type": [
+        "global"
+      ],
+      "global_key" : "fusion_options",
+      "group": "Page Content Layout",
+      "target": [
+        "archive"
+      ],
+      "gui": {
+        "display_name": "100% Width Padding",
+        "type": "text",
+        "values": [
+          {
+            "value": ""
+          }
+        ]
+      },
+      "default_value": "0px"
+    },
+    {
+      "name": "page_title_bar",
+      "type": [
+        "global"
+      ],
+      "global_key" : "fusion_options",
+      "group": "Title Bar",
+      "target": [
+        "archive"
+      ],
+      "gui": {
+        "display_name": "Page Title Bar",
+        "type": "select",
+        "values": [
+          {
+            "text": "Show Bar and Content",
+            "value": "bar_and_content"
+          },
+          {
+            "text": "Show Content Only",
+            "value": "content_only"
+          },
+          {
+            "text": "Hide",
+            "value": "hide"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "page_title_100_width",
+      "type": [
+        "global"
+      ],
+      "global_key" : "fusion_options",
+      "group": "Title Bar",
+      "target": [
+        "archive"
+      ],
+      "gui": {
+        "display_name": "100% Page Title Width",
+        "type": "select",
+        "values": [
+          {
+            "text": "Yes",
+            "value": "1"
+          },
+          {
+            "text": "No",
+            "value": "0"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    },
+    {
+      "name": "page_title_height",
+      "type": [
+        "global"
+      ],
+      "global_key" : "fusion_options",
+      "group": "Title Bar",
+      "target": [
+        "archive"
+      ],
+      "gui": {
+        "display_name": "Page Title Bar Height",
+        "type": "text",
+        "values": [
+          {
+            "value": ""
+          }
+        ]
+      },
+      "default_value": ""
+    },
+    {
+      "name": "page_title_mobile_height",
+      "type": [
+        "global"
+      ],
+      "global_key" : "fusion_options",
+      "group": "Title Bar",
+      "target": [
+        "archive"
+      ],
+      "gui": {
+        "display_name": "Page Title Mobile Height",
+        "type": "text",
+        "values": [
+          {
+            "value": ""
+          }
+        ]
+      },
+      "default_value": ""
+    },
+    {
+      "name": "page_title_font_size",
+      "type": [
+        "global"
+      ],
+      "global_key" : "fusion_options",
+      "group": "Title Bar",
+      "target": [
+        "archive"
+      ],
+      "gui": {
+        "display_name": "Page Title Font Size",
+        "type": "text",
+        "values": [
+          {
+            "value": ""
+          }
+        ]
+      },
+      "default_value": ""
+    },
+    {
+      "name": "footer_widgets_center_content",
+      "type": [
+        "global"
+      ],
+      "global_key" : "fusion_options",
+      "group": "Footer",
+      "target": [
+        "single", "archive"
+      ],
+      "gui": {
+        "display_name": "Center Footer Widgets Content",
+        "type": "select",
+        "values": [
+          {
+            "text": "On",
+            "value": "1"
+          },
+          {
+            "text": "Off",
+            "value": "0"
+          }
+        ]
+      },
+      "default_value": "toolset_use_theme_setting"
+    }
+  ]
+}

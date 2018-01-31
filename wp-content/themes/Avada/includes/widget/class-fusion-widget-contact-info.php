@@ -145,7 +145,8 @@ class Fusion_Widget_Contact_Info extends WP_Widget {
 			'web'      => '',
 			'webtxt'   => '',
 		);
-		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
+		$instance = wp_parse_args( (array) $instance, $defaults );
+		?>
 
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_attr_e( 'Title:', 'Avada' ); ?></label>

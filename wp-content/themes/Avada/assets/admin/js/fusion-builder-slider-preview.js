@@ -1,3 +1,4 @@
+/* global ajaxurl */
 jQuery( document ).ready( function() {
 	jQuery( '#fusion_builder_layout' ).on( 'click', '#avada-slider-remove', function( e ) {
 		e.preventDefault();
@@ -5,21 +6,21 @@ jQuery( document ).ready( function() {
 		jQuery( '#pyre_slider_type' ).val( 'no' ).trigger( 'change' );
 		jQuery( '.fusion-builder-slider-helper' ).slideUp( 300 );
 	});
-	jQuery( '#pyre_slider_type, #pyre_slider, #pyre_wooslider, #pyre_revslider, #pyre_elasticslider, #pyre_demo_slider' ).on( 'change', function( e ) {
+	jQuery( '#pyre_slider_type, #pyre_slider, #pyre_wooslider, #pyre_revslider, #pyre_elasticslider, #pyre_demo_slider' ).on( 'change', function() {
 		var $sliderType    = jQuery( '#pyre_slider_type' ).val(),
-			$layerSlider   = jQuery( '#pyre_slider' ).val(),
-			$revSlider     = jQuery( '#pyre_revslider' ).val(),
-			$wooSlider     = jQuery( '#pyre_wooslider' ).val(),
-			$elasticSlider = jQuery( '#pyre_elasticslider' ).val(),
-			$demoSlider    = jQuery( '#pyre_demo_slider' ).val();
+		    $layerSlider   = jQuery( '#pyre_slider' ).val(),
+		    $revSlider     = jQuery( '#pyre_revslider' ).val(),
+		    $wooSlider     = jQuery( '#pyre_wooslider' ).val(),
+		    $elasticSlider = jQuery( '#pyre_elasticslider' ).val(),
+		    $demoSlider    = jQuery( '#pyre_demo_slider' ).val();
 
 		jQuery.ajax({
-			type:     'post',
+			type: 'post',
 			dataType: 'json',
-			url:       ajaxurl,
+			url: ajaxurl,
 			data: {
 				action: 'avada_slider_preview',
-				data:    {
+				data: {
 					slidertype: $sliderType,
 					layerslider: $layerSlider,
 					revslider: $revSlider,
@@ -35,7 +36,7 @@ jQuery( document ).ready( function() {
 					jQuery( '.fusion-builder-slider-helper' ).replaceWith( response.responseText.slice( 0, -1 ) );
 				}
 			},
-			success: function( response ) {
+			success: function() {
 				if ( jQuery( '.fusion-builder-slider-helper' ).length ) {
 					jQuery( '.fusion-builder-slider-helper' ).remove();
 				}

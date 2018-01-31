@@ -57,8 +57,7 @@ class Avada_Fonts {
 	 * @return string
 	 */
 	private function get_mime( $file_type ) {
-
-		$path = wp_normalize_path( get_template_directory() . '/assets/fonts/fusion-icon/fusion-icon.' . $file_type );
+		$path = FUSION_LIBRARY_URL . '/assets/fonts/icomoon/icomoon.' . $file_type;
 		if ( file_exists( $path ) && function_exists( 'mime_content_type' ) ) {
 			return mime_content_type( $path );
 		}
