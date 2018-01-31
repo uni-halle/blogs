@@ -60,7 +60,10 @@ function xyz_smap_logs()
 add_action('wp_head', 'xyz_smap_insert_og_image_tag_for_fb');
 function xyz_smap_insert_og_image_tag_for_fb(){
 
-	global $post;
+ 	global $post;
+ 	if (empty($post))
+ 		$post=get_post();
+ 	if (!empty($post)){
 	$postid= $post->ID;
 	if(isset($postid ) && $postid>0)
 	{
@@ -76,5 +79,6 @@ function xyz_smap_insert_og_image_tag_for_fb(){
 			}
 		}
 	}
+}
 }
 ?>

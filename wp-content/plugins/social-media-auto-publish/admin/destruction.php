@@ -48,6 +48,7 @@ function smap_free_destroy()
 	delete_option('xyz_smap_twpost_image_permission');
 	delete_option('xyz_smap_twaccestok_secret');
 	delete_option('xyz_smap_twmessage');
+	delete_option('xyz_smap_twtr_char_limit');
 	
 	delete_option('xyz_smap_application_lnarray');
 	delete_option('xyz_smap_ln_shareprivate');
@@ -58,7 +59,6 @@ function smap_free_destroy()
 // 	delete_option('xyz_smap_lnoauth_token');
 // 	delete_option('xyz_smap_lnoauth_secret');
 	delete_option('xyz_smap_lnpost_permission');
-	delete_option('xyz_smap_lnpost_image_permission');
 	delete_option('xyz_smap_lnaf');
 	delete_option('xyz_smap_lnmessage');
 	delete_option('xyz_smap_std_future_to_publish');

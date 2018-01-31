@@ -3,8 +3,8 @@ Contributors: f1logic
 Donate link: http://xyzscripts.com/donate/
 Tags:  social media auto publish, social media publishing, post to facebook, post to twitter, post to linkedin, social network auto publish, social media, social network, add link to facebook, add link to twitter, add link to linkedin, publish to facebook, publish to twitter, publish to linkedin
 Requires at least: 3.0
-Tested up to: 4.8.3
-Stable tag: 1.7.5
+Tested up to: 4.9.1
+Stable tag: 1.7.6
 License: GPLv2 or later
 
 Publish posts automatically to social media networks like Facebook, Twitter and LinkedIn.
@@ -31,7 +31,7 @@ The prominent features of  the social media auto publish plugin are highlighted 
 
 = Supported Social Media =
 
-The various social media supported are listed below. 
+The various social media supported are listed below.
 
     Facebook
     Twitter
@@ -56,8 +56,8 @@ The plugin offers multiple kinds of filters for contents to be published automat
     Attach post to Facebook
     Share link on Facebook
     Post to specific pages on Facebook
-    Post to Twitter with image    
-    Post to LinkedIn with image    
+    Post to Twitter with image
+    Post to LinkedIn with image
 
 
 = About =
@@ -127,13 +127,21 @@ SSL peer verification may not be functioning in your server. Please turn off SSL
 
 == Changelog ==
 
+= Social Media Auto Publish 1.7.6 =
+* Added USER_DISPLAY_NAME in message formats
+* Updated twitter character length limit 
+* Minor security issues fixed
+* Removed irrelevant configurations
+* Twitter api updated
+
 = Social Media Auto Publish 1.7.5 =
 * Compatibility with facebook API V 2.11 added
+* Minor bug fixes
 
 = Social Media Auto Publish 1.7.4 =
 * Removed Caption from {POST_CONTENT}
 * Fixed LinkedIn character length issue
-* Fixed Facebook image selection issue for 'Share a link to your blog post' and 'Attach your blog post' 
+* Fixed Facebook image selection issue for 'Share a link to your blog post' and 'Attach your blog post'
 * Fixed ssl peer verification in wp_remote_get/wp_remote_post calls
 
 = Social Media Auto Publish 1.7.3 =
@@ -156,11 +164,11 @@ SSL peer verification may not be functioning in your server. Please turn off SSL
 * Twitter 140 character exceeding issue fixed
 
 = Social Media Auto Publish 1.6.1 =
-* Fixed custom post types autopublish issue	
+* Fixed custom post types autopublish issue
 * Fixed duplicate autopublish issue
 
 = Social Media Auto Publish 1.6 =
-* Added option to enable/disable utf-8 decoding before publishing	
+* Added option to enable/disable utf-8 decoding before publishing
 * Removed unwanted configuration related to 'future_to_publish' hook
 * Removed unwanted setting "Facebook user id"
 * Postid added in autopublish logs
@@ -169,7 +177,7 @@ SSL peer verification may not be functioning in your server. Please turn off SSL
 
 = Social Media Auto Publish 1.5.2 =
 * Latest five auto publish logs for each social media account are maintained
-* Inline edit of posts will work according to the value set for "Default selection of auto publish while editing posts/pages" 
+* Inline edit of posts will work according to the value set for "Default selection of auto publish while editing posts/pages"
 * Resolved issue in fetching facebook pages in settings page (in case of more than 100 pages)
 
 = Social Media Auto Publish 1.5.1 =
@@ -177,8 +185,8 @@ SSL peer verification may not be functioning in your server. Please turn off SSL
 
 = Social Media Auto Publish 1.5 =
 * Updated Linkedin API
-* Auto publish added during quick edit 
-* Added option to enable/disable "future_to_publish" hook for handling auto publish of scheduled posts	
+* Auto publish added during quick edit
+* Added option to enable/disable "future_to_publish" hook for handling auto publish of scheduled posts
 * Added options to enable/disable "the_content", "the_excerpt", "the_title" filters on content to be auto-published
 
 = Social Media Auto Publish 1.4.3 =
@@ -223,16 +231,16 @@ SSL peer verification may not be functioning in your server. Please turn off SSL
 
 = Social Media Auto Publish 1.2 =
 * Support for user nicename in auto publish
-* A few bug fixes 
+* A few bug fixes
 
 = Social Media Auto Publish 1.1.1 =
 * Fix for multiple posting to social media
 * Fixed PHP version compatability issue for versions less than 5.3
-* A few bug fixes 
+* A few bug fixes
 
 = Social Media Auto Publish 1.1 =
 * Support for publishing to LinkedIn
-* A few bug fixes 
+* A few bug fixes
 
 = Social Media Auto Publish 1.0 =
 * First official launch.
@@ -254,7 +262,7 @@ Please read the FAQ first if you are having problems.
 = Requirements =
 
     WordPress 3.0+
-    PHP 5.4+ 
+    PHP 5.4+
 
 = Feedback =
 

@@ -171,6 +171,10 @@ if(isset($_POST['twit']))
 	$tposting_permission=intval($_POST['xyz_smap_twpost_permission']);
 	$tposting_image_permission=intval($_POST['xyz_smap_twpost_image_permission']);
 	$tmessagetopost=$_POST['xyz_smap_twmessage'];
+	$xyz_smap_twtr_char_limit=$_POST['xyz_smap_twtr_char_limit'];
+	$xyz_smap_twtr_char_limit=intval($xyz_smap_twtr_char_limit);
+	if ($xyz_smap_twtr_char_limit<140 )
+		$xyz_smap_twtr_char_limit=140;
 	if($tappid=="" && $tposting_permission==1)
 	{
 		$terf=1;
@@ -218,6 +222,7 @@ if(isset($_POST['twit']))
 		update_option('xyz_smap_twmessage',$tmessagetopost);
 		update_option('xyz_smap_twpost_permission',$tposting_permission);
 		update_option('xyz_smap_twpost_image_permission',$tposting_image_permission);
+		update_option('xyz_smap_twtr_char_limit', $xyz_smap_twtr_char_limit);
 		
 	}
 }
@@ -246,7 +251,6 @@ if(isset($_POST['linkdn']))
 	$lnposting_permission=intval($_POST['xyz_smap_lnpost_permission']);
 	$xyz_smap_ln_shareprivate=intval($_POST['xyz_smap_ln_shareprivate']);
 	$xyz_smap_ln_sharingmethod=intval($_POST['xyz_smap_ln_sharingmethod']);
-	$xyz_smap_lnpost_image_permission=intval($_POST['xyz_smap_lnpost_image_permission']);
 	if($lnappikey=="" && $lnposting_permission==1)
 	{
 		$lms1="Please fill linkedin api key";
@@ -283,7 +287,6 @@ if(isset($_POST['linkdn']))
 		update_option('xyz_smap_ln_shareprivate',$xyz_smap_ln_shareprivate);
 		update_option('xyz_smap_ln_sharingmethod',$xyz_smap_ln_sharingmethod);
 		update_option('xyz_smap_lnmessage',$lmessagetopost);
-		update_option('xyz_smap_lnpost_image_permission',$xyz_smap_lnpost_image_permission);
 		
 }	
 }
@@ -493,6 +496,7 @@ function drpdisplay()
 							of your blog.<br />{USER_NICENAME} - Insert the nicename
 							of the author.<br />{POST_ID} - Insert the ID of your post.
 							<br />{POST_PUBLISH_DATE} - Insert the publish date of your post.
+							<br />{USER_DISPLAY_NAME} - Insert the display name of the author.
 						</div></td>
 	<td>
 	<select name="xyz_smap_fb_info" id="xyz_smap_fb_info" onchange="xyz_smap_fb_info_insert(this)">
@@ -505,6 +509,7 @@ function drpdisplay()
 		<option value ="6">{USER_NICENAME}   </option>
 		<option value ="7">{POST_ID}   </option>
 		<option value ="8">{POST_PUBLISH_DATE}   </option>
+		<option value ="9">{USER_DISPLAY_NAME}   </option>
 		</select> </td></tr><tr><td>&nbsp;</td><td>
 		<textarea id="xyz_smap_message"  name="xyz_smap_message" style="height:80px !important;" ><?php if($ms4==""){ 
 								echo esc_textarea(get_option('xyz_smap_message'));}?></textarea>
@@ -732,6 +737,7 @@ function drpdisplay()
 							of your blog.<br />{USER_NICENAME} - Insert the nicename
 							of the author.<br />{POST_ID} - Insert the ID of your post.
 							<br />{POST_PUBLISH_DATE} - Insert the publish date of your post.
+							<br />{USER_DISPLAY_NAME} - Insert the display name of the author.
 						</div></td>
 	<td>
 	<select name="xyz_smap_tw_info" id="xyz_smap_tw_info" onchange="xyz_smap_tw_info_insert(this)">
@@ -744,6 +750,7 @@ function drpdisplay()
 		<option value ="6">{USER_NICENAME}   </option>
 		<option value ="7">{POST_ID}   </option>
 		<option value ="8">{POST_PUBLISH_DATE}   </option>
+		<option value ="9">{USER_DISPLAY_NAME}   </option>
 		</select> </td></tr><tr><td>&nbsp;</td><td>
 		<textarea id="xyz_smap_twmessage"  name="xyz_smap_twmessage" style="height:80px !important;" ><?php if($tms6=="") {
 								echo esc_textarea(get_option('xyz_smap_twmessage'));}?></textarea>
@@ -761,6 +768,17 @@ function drpdisplay()
 					</select>
 					</td>
 				</tr>
+				
+				<tr valign="top">
+	<td>Twitter character limit  <img src="<?php echo $heimg?>"
+							onmouseover="detdisplay('xyz_smap_tw_char_limit')" onmouseout="dethide('xyz_smap_tw_char_limit')">
+							<div id="xyz_smap_tw_char_limit" class="informationdiv" style="display: none;">
+							The character limit of tweets  is 280.<br/>
+							Use 140 for languages like Chinese, Japanese and Korean<br/> which won't get the 280 character length limit.<br />
+							</div></td>
+	<td>
+	<input id="xyz_smap_twtr_char_limit"  name="xyz_smap_twtr_char_limit" type="text" value="<?php echo get_option('xyz_smap_twtr_char_limit');?>" style="width: 200px">
+	</td></tr>
 				
 				<tr valign="top">
 					<td>Enable auto publish	posts to my twitter account
@@ -887,6 +905,7 @@ $lnaf=get_option('xyz_smap_lnaf');
 							of your blog.<br />{USER_NICENAME} - Insert the nicename
 							of the author.<br />{POST_ID} - Insert the ID of your post.
 							<br />{POST_PUBLISH_DATE} - Insert the publish date of your post.
+							<br />{USER_DISPLAY_NAME} - Insert the display name of the author.
 						</div></td>
 	<td>
 	<select name="xyz_smap_ln_info" id="xyz_smap_ln_info" onchange="xyz_smap_ln_info_insert(this)">
@@ -899,24 +918,11 @@ $lnaf=get_option('xyz_smap_lnaf');
 		<option value ="6">{USER_NICENAME}   </option>
 		<option value ="7">{POST_ID}   </option>
 		<option value ="8">{POST_PUBLISH_DATE}   </option>
+		<option value ="9">{USER_DISPLAY_NAME}   </option>
 		</select> </td></tr><tr><td>&nbsp;</td><td>
 		<textarea id="xyz_smap_lnmessage"  name="xyz_smap_lnmessage" style="height:80px !important;" ><?php if($lms3==""){echo esc_textarea(get_option('xyz_smap_lnmessage'));}?></textarea>
 	</td></tr>
 
-	<tr valign="top">
-					<td>Attach image to linkedin post
-					</td>
-					<td><select id="xyz_smap_lnpost_image_permission"
-						name="xyz_smap_lnpost_image_permission">
-							<option value="0"
-							<?php  if(get_option('xyz_smap_lnpost_image_permission')==0) echo 'selected';?>>
-								No</option>
-							<option value="1"
-							<?php  if(get_option('xyz_smap_lnpost_image_permission')==1) echo 'selected';?>>Yes</option>
-					</select>
-					</td>
-				</tr>
-				
 	<tr valign="top" id="shareprivate">
 	<input type="hidden" name="xyz_smap_ln_sharingmethod" id="xyz_smap_ln_sharingmethod" value="0">
 	<td>Share post content with</td>

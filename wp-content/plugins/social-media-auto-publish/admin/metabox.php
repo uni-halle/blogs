@@ -13,7 +13,7 @@ function xyz_smap_add_custom_box()
 	
 if(isset($_GET['action']) && $_GET['action']=="edit" && !empty($_GET['post']))  /// empty check added for fixing client scenario
 	{
-		$postid=$_GET['post'];
+		$postid=intval($_GET['post']);
 		
 		
 		$get_post_meta=get_post_meta($postid,"xyz_smap",true);
@@ -23,8 +23,7 @@ if(isset($_GET['action']) && $_GET['action']=="edit" && !empty($_GET['post']))  
 			
 		global $wpdb;
 		$table='posts';
-		$accountCount = $wpdb->query( 'SELECT * FROM '.$wpdb->prefix.$table.' WHERE id="'.$postid.'" and post_status!="draft" LIMIT 0,1' ) ;
-		
+		$accountCount = $wpdb->query($wpdb->prepare( 'SELECT * FROM '.$wpdb->prefix.$table.' WHERE id=%d and post_status!=%s LIMIT %d,%d',array($postid,'draft',0,1) )) ;
 		if($accountCount>0){
 			$GLOBALS['edit_flag']=1;
 			}
@@ -115,14 +114,12 @@ function displaycheck()
 		if(lcheckid==1)
 		{
 		
-		    document.getElementById("lnimg").style.display='';
 			document.getElementById("lnmf").style.display='';	
 			document.getElementById("lnmftarea").style.display='';	
 			document.getElementById("shareprivate").style.display='';	
 		}
 		else
 		{
-		    document.getElementById("lnimg").style.display='none';
 			document.getElementById("lnmf").style.display='none';	
 			document.getElementById("lnmftarea").style.display='none';	
 			document.getElementById("shareprivate").style.display='none';		
@@ -308,6 +305,7 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 							of your blog.<br />{USER_NICENAME} - Insert the nicename
 							of the author.<br />{POST_ID} - Insert the ID of your post.
 							<br />{POST_PUBLISH_DATE} - Insert the publish date of your post.
+							<br />{USER_DISPLAY_NAME} - Insert the display name of the author.
 						</div>
 		</td>
 	<td>
@@ -321,6 +319,7 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 		<option value ="6">{USER_NICENAME}   </option>
 		<option value ="7">{POST_ID}   </option>
 		<option value ="8">{POST_PUBLISH_DATE}   </option>
+		<option value ="9">{USER_DISPLAY_NAME}   </option>
 		</select> </td></tr>
 		
 		<tr id="fpmftarea"><td>&nbsp;</td><td>
@@ -387,6 +386,7 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 							of your blog.<br />{USER_NICENAME} - Insert the nicename
 							of the author.<br />{POST_ID} - Insert the ID of your post.
 							<br />{POST_PUBLISH_DATE} - Insert the publish date of your post.
+							<br />{USER_DISPLAY_NAME} - Insert the display name of the author.
 						</div>
 		</td>
 		
@@ -402,6 +402,7 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 		<option value ="6">{USER_NICENAME}   </option>
 		<option value ="7">{POST_ID}   </option>
 		<option value ="8">{POST_PUBLISH_DATE}   </option>
+		<option value ="9">{USER_DISPLAY_NAME}   </option>
 		</select> </td></tr>
 		
 		<tr id="twmftarea"><td>&nbsp;</td><td>
@@ -440,20 +441,6 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 		</td>
 	</tr>
 	
-	<tr valign="top" id="lnimg">
-		<td class="xyz_smap_pleft15">Attach image to linkedin post
-		</td>
-		<td><select id="xyz_smap_lnpost_image_permission" name="xyz_smap_lnpost_image_permission"
-			onchange="displaycheck()">
-				<option value="0"
-				<?php  if(get_option('xyz_smap_lnpost_image_permission')==0) echo 'selected';?>>
-					No</option>
-				<option value="1"
-				<?php  if(get_option('xyz_smap_lnpost_image_permission')==1) echo 'selected';?>>Yes</option>
-		</select>
-		</td>
-	</tr>
-	
 	<tr valign="top" id="shareprivate">
 	<input type="hidden" name="xyz_smap_ln_sharingmethod" id="xyz_smap_ln_sharingmethod" value="0">
 	<td class="xyz_smap_pleft15">Share post content with</td>
@@ -475,6 +462,7 @@ Public</option><option value="1" <?php  if(get_option('xyz_smap_ln_shareprivate'
 							of your blog.<br />{USER_NICENAME} - Insert the nicename
 							of the author.<br />{POST_ID} - Insert the ID of your post.
 							<br />{POST_PUBLISH_DATE} - Insert the publish date of your post.
+							<br />{USER_DISPLAY_NAME} - Insert the display name of the author.
 						</div>
 		</td>
 	<td>
@@ -488,6 +476,7 @@ Public</option><option value="1" <?php  if(get_option('xyz_smap_ln_shareprivate'
 		<option value ="6">{USER_NICENAME}   </option>
 		<option value ="7">{POST_ID}   </option>
 		<option value ="8">{POST_PUBLISH_DATE}   </option>
+		<option value ="9">{USER_DISPLAY_NAME}   </option>
 		</select> </td></tr>
 		
 		<tr id="lnmftarea"><td>&nbsp;</td><td>
@@ -541,7 +530,6 @@ Public</option><option value="1" <?php  if(get_option('xyz_smap_ln_shareprivate'
 				if(document.getElementById("xyz_smap_lnpost_permission"))
 				{
 					document.getElementById("xyz_smap_lnpost_permission").value=0;
-					document.getElementById("lnimg").style.display='none';
 					document.getElementById("lnmf").style.display='none';
 					document.getElementById("shareprivate").style.display='none';
 					document.getElementById("lnmftarea").style.display='none';

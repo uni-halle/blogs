@@ -154,19 +154,16 @@ function xyz_link_publish($post_ID) {
   $xyz_smap_ln_sharingmethod=get_option('xyz_smap_ln_sharingmethod');
   if(isset($_POST['xyz_smap_ln_sharingmethod']))
   $xyz_smap_ln_sharingmethod=intval($_POST['xyz_smap_ln_sharingmethod']);
-  
-
-  $post_ln_image_permission=get_option('xyz_smap_lnpost_image_permission');
-  if(isset($_POST['xyz_smap_lnpost_image_permission']))
-  	$post_ln_image_permission=intval($_POST['xyz_smap_lnpost_image_permission']);
 
     $lnaf=get_option('xyz_smap_lnaf');
 	
 	$postpp= get_post($post_ID);global $wpdb;
 	$reg_exUrl = "/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
-	$entries0 = $wpdb->get_results( 'SELECT user_nicename FROM '.$wpdb->prefix.'users WHERE ID='.$postpp->post_author);
+	$entries0 = $wpdb->get_results($wpdb->prepare( 'SELECT user_nicename,display_name FROM '.$wpdb->prefix.'users WHERE ID =%d',$postpp->post_author));
 	foreach( $entries0 as $entry ) {			
-		$user_nicename=$entry->user_nicename;}
+		$user_nicename=$entry->user_nicename;
+		$display_name=$entry->display_name;
+	}
 	
 	if ($postpp->post_status == 'publish')
 	{
@@ -343,6 +340,7 @@ function xyz_link_publish($post_ID) {
 				$message5=str_replace('{POST_ID}', $post_ID, $message5);
 				$publish_time=get_the_time('Y/m/d',$post_ID );
 				$message5=str_replace('{POST_PUBLISH_DATE}', $publish_time, $message5);
+				$message5=str_replace('{USER_DISPLAY_NAME}', $display_name, $message5);
 				$message5=str_replace("&nbsp;","",$message5);
                $disp_type="feed";
 				if($posting_method==1) //attach
@@ -575,7 +573,7 @@ function xyz_link_publish($post_ID) {
 			$substring=str_replace('{POST_ID}', $post_ID, $substring);
 			$publish_time=get_the_time('Y/m/d',$post_ID );
 			$substring=str_replace('{POST_PUBLISH_DATE}', $publish_time, $substring);
-			
+			$substring=str_replace('{USER_DISPLAY_NAME}', $display_name,$substring );
 			preg_match_all($reg_exUrl,$substring,$matches); // @ is same as /
 			
 			if(is_array($matches) && isset($matches[0]))
@@ -583,9 +581,10 @@ function xyz_link_publish($post_ID) {
 				$matches=$matches[0];
 				$final_str='';
 				$len=0;
-				$tw_max_len=140;
-				if($image_found==1)
-					$tw_max_len=140-24;
+			    $tw_max_len=get_option('xyz_smap_twtr_char_limit');
+				
+// 				if($image_found==1)
+// 					$tw_max_len=$tw_max_len-24;
 			
 			
 				foreach ($matches as $key=>$val)
@@ -645,106 +644,36 @@ function xyz_link_publish($post_ID) {
 				$substring=$final_str;
 			}
 			
-// 			$tw_publish_status=array();
-// 			$tw_publish_status_array=array();
-			//$substring=xyz_smap_premium_add_hash_tag($substring,$search);
-			//////////////////////////////
-// 			$messagetopost=str_replace("&nbsp;","",$messagetopost);
-			
-// 			preg_match_all("/{(.+?)}/i",$messagetopost,$matches);
-			
-// 			$matches1=$matches[1];$substring="";$islink=0;$issubstr=0;
-// 			$len=118;
-// 			if($image_found==1)
-// 				$len=$len-24;
-
-// 			foreach ($matches1 as $key=>$val)
-// 			{
-// 				$val="{".$val."}";
-// 				if($val=="{POST_TITLE}")
-// 				{$replace=$name;}
-// 				if($val=="{POST_CONTENT}")
-// 				{$replace=$description;}
-// 				if($val=="{PERMALINK}")
-// 				{
-// 					$replace="{PERMALINK}";$islink=1;
-// 				}
-// 				if($val=="{POST_EXCERPT}")
-// 				{$replace=$excerpt;}
-// 				if($val=="{BLOG_TITLE}")
-// 					$replace=$caption;
-
-// 				if($val=="{USER_NICENAME}")
-// 					$replace=$user_nicename;
-
-
-
-// 				$append=mb_substr($messagetopost, 0,mb_strpos($messagetopost, $val));
-
-// 				if(mb_strlen($append)<($len-mb_strlen($substring)))
-// 				{
-// 					$substring.=$append;
-// 				}
-// 				else if($issubstr==0)
-// 				{
-// 					$avl=$len-mb_strlen($substring)-4;
-// 					if($avl>0)
-// 						$substring.=mb_substr($append, 0,$avl)."...";
-						
-// 					$issubstr=1;
-
-// 				}
-
-
-
-// 				if($replace=="{PERMALINK}")
-// 				{
-// 					$chkstr=mb_substr($substring,0,-1);
-// 					if($chkstr!=" ")
-// 					{$substring.=" ".$replace;$len=$len+12;}
-// 					else
-// 					{$substring.=$replace;$len=$len+11;}
-// 				}
-// 				else
-// 				{
-						
-// 					if(mb_strlen($replace)<($len-mb_strlen($substring)))
-// 					{
-// 						$substring.=$replace;
-// 					}
-// 					else if($issubstr==0)
-// 					{
-							
-// 						$avl=$len-mb_strlen($substring)-4;
-// 						if($avl>0)
-// 							$substring.=mb_substr($replace, 0,$avl)."...";
-							
-// 						$issubstr=1;
-
-// 					}
-
-
-// 				}
-// 				$messagetopost=mb_substr($messagetopost, mb_strpos($messagetopost, $val)+strlen($val));
-					
-// 			}
-
-// 			if($islink==1)
-// 				$substring=str_replace('{PERMALINK}', $link, $substring);
-			
-	
 				
 			$twobj = new SMAPTwitterOAuth(array( 'consumer_key' => $tappid, 'consumer_secret' => $tappsecret, 'user_token' => $taccess_token, 'user_secret' => $taccess_token_secret,'curl_ssl_verifypeer'   => false));
 				
 			if($image_found==1 && $post_twitter_image_permission==1)
 			{
-				 $resultfrtw = $twobj -> request('POST', 'https://api.twitter.com/1.1/statuses/update_with_media.json', array( 'media[]' => $img, 'status' => $substring), true, true);
-				
-				if($resultfrtw!=200){
-					if($twobj->response['response']!="")
-						$tw_publish_status["statuses/update_with_media"]=print_r($twobj->response['response'], true);
-					else
-						$tw_publish_status["statuses/update_with_media"]=$resultfrtw;
+				$url = 'https://upload.twitter.com/1.1/media/upload.json';
+				$img_response = wp_remote_get($attachmenturl,array('sslverify'=> (get_option('xyz_smap_peer_verification')=='1') ? true : false) );
+				if ( is_array( $img_response ) ) {
+					$img_body = $img_response['body'];
+					$params=array('media_data' =>base64_encode($img_body));
+				$code = $twobj->request('POST', $url, $params, true,true);
+				if ($code == 200)
+				{
+					$response = json_decode($twobj->response['response']);
+					$media_ids_str = $response->media_id_string;
+					$resultfrtw = $twobj->request('POST', $twobj->url('1.1/statuses/update'), array( 'media_ids' => $media_ids_str, 'status' => $substring));
+						if($resultfrtw==200)
+						{
+							if ( $media_ids_str !='')
+								$tw_publish_status["statuses/update_with_media"]="<span style=\"color:green\">statuses/update_with_media : Success.</span>";
+								else
+									$tw_publish_status["statuses/update"]="<span style=\"color:green\">statuses/update : Success.</span>";
+						}
+						else
+							$tw_publish_status["statuses/update_with_media"]="<span style=\"color:red\">statuses/update : ".$twobj->response['response']."</span>";
+				}
+				else
+				{
+						$tw_publish_status["statuses/update_with_media"]="<span style=\"color:red\">statuses/update : ".$twobj->response['response']."</span>";
+					}
 				}
 				
 			}
@@ -811,13 +740,14 @@ function xyz_link_publish($post_ID) {
 			$publish_time=get_the_time('Y/m/d',$post_ID );
 			$message5=str_replace('{POST_PUBLISH_DATE}', $publish_time, $message5);
 			$message5=str_replace('{POST_ID}', $post_ID, $message5);
+			$message5=str_replace('{USER_DISPLAY_NAME}', $display_name, $message5);
 			$message5=str_replace("&nbsp;","",$message5);
 			$message5=xyz_smap_string_limit($message5, 700);
 		
 				$contentln['comment'] =$message5;
 				$contentln['content']['title'] = $name_li;
 				$contentln['content']['submitted-url'] = $link;
-				if($attachmenturl!="" && $post_ln_image_permission==1)
+				if($attachmenturl!="")
 				$contentln['content']['submitted-image-url'] = $attachmenturl;
 				$contentln['content']['description'] = $description_li;
 		

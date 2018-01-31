@@ -5,7 +5,10 @@ $app_secret = get_option('xyz_smap_application_secret');
 $redirecturl=admin_url('admin.php?page=social-media-auto-publish-settings&auth=1');
 // $lnredirecturl=admin_url('admin.php?page=social-media-auto-publish-settings&auth=3');
 $my_url=urlencode($redirecturl);
-
+if(isset($_POST) && isset($_POST['fb_auth'] ))
+{
+	ob_clean();
+}
 if ( xyz_smap_is_session_started() === FALSE ) session_start();
 $code="";
 if(isset($_REQUEST['code']))
