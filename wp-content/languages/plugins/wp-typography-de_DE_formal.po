@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - wp-Typography - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-14 19:26:17+0000\n"
+"PO-Revision-Date: 2018-01-05 22:10:17+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,16 +11,96 @@ msgstr ""
 "Language: de\n"
 "Project-Id-Version: Plugins - wp-Typography - Stable (latest release)\n"
 
+#: includes/_language_names.php:60
+msgctxt "language name"
+msgid "Romansh"
+msgstr "Rätoromanisch"
+
+#: includes/_language_names.php:58
+msgctxt "language name"
+msgid "Piedmontese"
+msgstr "Piemontesisch"
+
+#: includes/_language_names.php:52
+msgctxt "language name"
+msgid "Norwegian (Nynorsk)"
+msgstr "Norwegisch (Nynorsk)"
+
+#: includes/_language_names.php:50
+msgctxt "language name"
+msgid "Norwegian (Bokmål)"
+msgstr "Norwegisch (Bokmål)"
+
+#: includes/_language_names.php:47
+msgctxt "language name"
+msgid "Malayalam"
+msgstr "Malayalam"
+
+#: includes/_language_names.php:41
+msgctxt "language name"
+msgid "Kannada"
+msgstr "Kannada"
+
+#: includes/_language_names.php:40
+msgctxt "language name"
+msgid "Kurmanji"
+msgstr "Kurmandschi"
+
+#: includes/_language_names.php:32
+msgctxt "language name"
+msgid "Upper Sorbian"
+msgstr "Obersorbisch"
+
+#: includes/_language_names.php:29
+msgctxt "language name"
+msgid "Gujarati"
+msgstr "Gujarati"
+
+#: includes/_language_names.php:25
+msgctxt "language name"
+msgid "Friulan"
+msgstr "Furlanisch"
+
+#: includes/_language_names.php:19
+msgctxt "language name"
+msgid "Esperanto"
+msgstr "Esperanto"
+
+#: includes/_language_names.php:9
+msgctxt "language name"
+msgid "Church Slavonic"
+msgstr "Kirchenslawisch"
+
+#: includes/_language_names.php:6
+msgctxt "language name"
+msgid "Bengali"
+msgstr "Bengalisch"
+
+#: includes/_language_names.php:4
+msgctxt "language name"
+msgid "Belarusian"
+msgstr "Weißrussisch"
+
+#: includes/_language_names.php:3
+msgctxt "language name"
+msgid "Assamese"
+msgstr "Assamesisch"
+
+#: includes/_language_names.php:2
+msgctxt "language name"
+msgid "Amharic"
+msgstr "Amharisch"
+
 #: includes/wp-typography/ui/class-sections.php:71
 msgid "Line Wrapping"
 msgstr "Zeilenumbruch"
 
 #. translators: URL with mbstring PHP extension installation instructions
-#: includes/class-wp-typography-requirements.php:170
+#: includes/class-wp-typography-requirements.php:169
 msgid "http://www.php.net/manual/en/mbstring.installation.php"
 msgstr "http://php.net/manual/de/mbstring.installation.php"
 
-#: includes/_language_names.php:8
+#: includes/_language_names.php:13
 msgctxt "language name"
 msgid "Swiss German (Traditional)"
 msgstr "Schweizer Hochdeutsch (alte Rechtschreibung)"
@@ -51,37 +131,37 @@ msgstr "%1$s Abkürzungen mit Zahlen beieinander behalten."
 msgid "Numbered abbreviations"
 msgstr "Nummerierte Abkürzungen"
 
-#: includes/_language_names.php:55
+#: includes/_language_names.php:71
 msgctxt "language name"
 msgid "Telugu"
 msgstr "Telugu"
 
-#: includes/_language_names.php:54
+#: includes/_language_names.php:70
 msgctxt "language name"
 msgid "Tamil"
 msgstr "Tamil"
 
-#: includes/_language_names.php:42
+#: includes/_language_names.php:56
 msgctxt "language name"
 msgid "Panjabi"
 msgstr "Panjabi"
 
-#: includes/_language_names.php:41
+#: includes/_language_names.php:55
 msgctxt "language name"
 msgid "Oriya"
 msgstr "Oriya"
 
-#: includes/_language_names.php:40
+#: includes/_language_names.php:54
 msgctxt "language name"
 msgid "Occitan"
 msgstr "Okzitanisch"
 
-#: includes/_language_names.php:37
+#: includes/_language_names.php:49
 msgctxt "language name"
 msgid "Marathi"
 msgstr "Marathi"
 
-#: includes/_language_names.php:22
+#: includes/_language_names.php:30
 msgctxt "language name"
 msgid "Hindi"
 msgstr "Hindi"
@@ -344,257 +424,257 @@ msgstr "Überblick"
 msgid "%s Settings"
 msgstr "Einstellungen > %s"
 
-#: includes/_language_names.php:32
+#: includes/_language_names.php:43
 msgctxt "language name"
 msgid "Latin (Liturgical)"
 msgstr "Latein (Kirchenlatein)"
 
-#: includes/_language_names.php:60
+#: includes/_language_names.php:76
 msgctxt "language name"
 msgid "Chinese pinyin (Latin)"
 msgstr "Chinesisch (Pinyin)"
 
-#: includes/_language_names.php:59
+#: includes/_language_names.php:75
 msgctxt "language name"
 msgid "Ukrainian"
 msgstr "Ukrainisch"
 
-#: includes/_language_names.php:58
+#: includes/_language_names.php:74
 msgctxt "language name"
 msgid "Turkish"
 msgstr "Türkisch"
 
-#: includes/_language_names.php:57
+#: includes/_language_names.php:73
 msgctxt "language name"
 msgid "Turkmen"
 msgstr "Turkmenisch"
 
-#: includes/_language_names.php:56
+#: includes/_language_names.php:72
 msgctxt "language name"
 msgid "Thai"
 msgstr "Thai"
 
-#: includes/_language_names.php:53
+#: includes/_language_names.php:69
 msgctxt "language name"
 msgid "Swedish"
 msgstr "Schwedisch"
 
-#: includes/_language_names.php:52
+#: includes/_language_names.php:68
 msgctxt "language name"
 msgid "Serbian (Cyrillic)"
 msgstr "Serbisch (Kyrillisch)"
 
-#: includes/_language_names.php:51
+#: includes/_language_names.php:67
 msgctxt "language name"
 msgid "Slovenian"
 msgstr "Slowenisch"
 
-#: includes/_language_names.php:50
+#: includes/_language_names.php:66
 msgctxt "language name"
 msgid "Slovak"
 msgstr "Slowakisch"
 
-#: includes/_language_names.php:49
+#: includes/_language_names.php:65
 msgctxt "language name"
 msgid "Serbocroatian (Latin)"
 msgstr "Serbokroatisch (Lateinschrift)"
 
-#: includes/_language_names.php:48
+#: includes/_language_names.php:64
 msgctxt "language name"
 msgid "Serbocroatian (Cyrillic)"
 msgstr "Serbokroatisch (Kyrillisch)"
 
-#: includes/_language_names.php:47
+#: includes/_language_names.php:63
 msgctxt "language name"
 msgid "Sanskrit"
 msgstr "Sanskrit"
 
-#: includes/_language_names.php:46
+#: includes/_language_names.php:62
 msgctxt "language name"
 msgid "Russian"
 msgstr "Russisch"
 
-#: includes/_language_names.php:45
+#: includes/_language_names.php:61
 msgctxt "language name"
 msgid "Romanian"
 msgstr "Rumänisch"
 
-#: includes/_language_names.php:44
+#: includes/_language_names.php:59
 msgctxt "language name"
 msgid "Portuguese"
 msgstr "Portugiesisch"
 
-#: includes/_language_names.php:43
+#: includes/_language_names.php:57
 msgctxt "language name"
 msgid "Polish"
 msgstr "Polnisch"
 
-#: includes/_language_names.php:39
+#: includes/_language_names.php:53
 msgctxt "language name"
 msgid "Norwegian"
 msgstr "Norwegisch"
 
-#: includes/_language_names.php:38
+#: includes/_language_names.php:51
 msgctxt "language name"
 msgid "Dutch"
 msgstr "Niederländisch"
 
-#: includes/_language_names.php:36
+#: includes/_language_names.php:48
 msgctxt "language name"
 msgid "Mongolian (Cyrillic)"
 msgstr "Mongolisch (Kyrillisch)"
 
-#: includes/_language_names.php:35
+#: includes/_language_names.php:46
 msgctxt "language name"
 msgid "Latvian"
 msgstr "Lettisch"
 
-#: includes/_language_names.php:34
+#: includes/_language_names.php:45
 msgctxt "language name"
 msgid "Lithuanian"
 msgstr "Litauisch"
 
-#: includes/_language_names.php:33
+#: includes/_language_names.php:44
 msgctxt "language name"
 msgid "Latin"
 msgstr "Latein"
 
-#: includes/_language_names.php:31
+#: includes/_language_names.php:42
 msgctxt "language name"
 msgid "Latin (Classical)"
 msgstr "Latein (klassisch)"
 
-#: includes/_language_names.php:30
+#: includes/_language_names.php:39
 msgctxt "language name"
 msgid "Georgian"
 msgstr "Georgisch"
 
-#: includes/_language_names.php:29
+#: includes/_language_names.php:38
 msgctxt "language name"
 msgid "Italian"
 msgstr "Italienisch"
 
-#: includes/_language_names.php:28
+#: includes/_language_names.php:37
 msgctxt "language name"
 msgid "Icelandic"
 msgstr "Isländisch"
 
-#: includes/_language_names.php:27
+#: includes/_language_names.php:36
 msgctxt "language name"
 msgid "Indonesian"
 msgstr "Indonesisch"
 
-#: includes/_language_names.php:26
+#: includes/_language_names.php:35
 msgctxt "language name"
 msgid "Interlingua"
 msgstr "Interlingua"
 
-#: includes/_language_names.php:25
+#: includes/_language_names.php:34
 msgctxt "language name"
 msgid "Armenian"
 msgstr "Armenisch"
 
-#: includes/_language_names.php:24
+#: includes/_language_names.php:33
 msgctxt "language name"
 msgid "Hungarian"
 msgstr "Ungarisch"
 
-#: includes/_language_names.php:23
+#: includes/_language_names.php:31
 msgctxt "language name"
 msgid "Croatian"
 msgstr "Kroatisch"
 
-#: includes/_language_names.php:21
+#: includes/_language_names.php:28
 msgctxt "language name"
 msgid "Greek (Ancient)"
 msgstr "Griechisch (Altgriechisch)"
 
-#: includes/_language_names.php:20
+#: includes/_language_names.php:27
 msgctxt "language name"
 msgid "Galician"
 msgstr "Galicisch"
 
-#: includes/_language_names.php:19
+#: includes/_language_names.php:26
 msgctxt "language name"
 msgid "Irish"
 msgstr "Irisch"
 
-#: includes/_language_names.php:18
+#: includes/_language_names.php:24
 msgctxt "language name"
 msgid "French"
 msgstr "Französisch"
 
-#: includes/_language_names.php:17
+#: includes/_language_names.php:23
 msgctxt "language name"
 msgid "Finnish"
 msgstr "Finnisch"
 
-#: includes/_language_names.php:16
+#: includes/_language_names.php:22
 msgctxt "language name"
 msgid "Basque"
 msgstr "Baskisch"
 
-#: includes/_language_names.php:15
+#: includes/_language_names.php:21
 msgctxt "language name"
 msgid "Estonian"
 msgstr "Estnisch"
 
-#: includes/_language_names.php:14
+#: includes/_language_names.php:20
 msgctxt "language name"
 msgid "Spanish"
 msgstr "Spanisch"
 
-#: includes/_language_names.php:13 includes/_language_names.php:62
+#: includes/_language_names.php:18 includes/_language_names.php:78
 msgctxt "language name"
 msgid "English (United States)"
 msgstr "Englisch (USA)"
 
-#: includes/_language_names.php:12
+#: includes/_language_names.php:17
 msgctxt "language name"
 msgid "English (United Kingdom)"
 msgstr "Englisch (UK)"
 
-#: includes/_language_names.php:11
+#: includes/_language_names.php:16
 msgctxt "language name"
 msgid "Greek (Modern Polytonic)"
 msgstr "Griechisch (polytonisch)"
 
-#: includes/_language_names.php:10
+#: includes/_language_names.php:15
 msgctxt "language name"
 msgid "Greek (Modern Monotonic)"
 msgstr "Griechisch (monotonisch)"
 
-#: includes/_language_names.php:9 includes/_language_names.php:61
+#: includes/_language_names.php:14 includes/_language_names.php:77
 msgctxt "language name"
 msgid "German"
 msgstr "Deutsch"
 
-#: includes/_language_names.php:7
+#: includes/_language_names.php:12
 msgctxt "language name"
 msgid "German (Traditional)"
 msgstr "Deutsch (alte Rechtschreibung)"
 
-#: includes/_language_names.php:6
+#: includes/_language_names.php:11
 msgctxt "language name"
 msgid "Danish"
 msgstr "Dänisch"
 
-#: includes/_language_names.php:5
+#: includes/_language_names.php:10
 msgctxt "language name"
 msgid "Welsh"
 msgstr "Walisisch"
 
-#: includes/_language_names.php:4
+#: includes/_language_names.php:8
 msgctxt "language name"
 msgid "Czech"
 msgstr "Tschechisch"
 
-#: includes/_language_names.php:3
+#: includes/_language_names.php:7
 msgctxt "language name"
 msgid "Catalan"
 msgstr "Katalanisch"
 
-#: includes/_language_names.php:2
+#: includes/_language_names.php:5
 msgctxt "language name"
 msgid "Bulgarian"
 msgstr "Bulgarisch"
@@ -682,18 +762,18 @@ msgid "wp-Typography"
 msgstr "wp-Typography"
 
 #. translators: 1: plugin name 2: current character encoding 3: options URL
-#: includes/class-wp-typography-requirements.php:180
+#: includes/class-wp-typography-requirements.php:179
 msgid "The activated plugin %1$s requires your blog use the UTF-8 character encoding. You have set your blogs encoding to %2$s. Please deactivate this plugin, or <a href=\"%3$s\">change your character encoding to UTF-8</a>."
 msgstr "Das aktivierte Plugin %1$s benötigt die Zeichenkodierung UTF-8. Derzeit wird die Kodierung PHP %2$s verwendet. Bitte das Plugin deaktivieren oder <a href=\"%3$s\">die Zeichenkodierung auf UTF-8 ändern</a>."
 
 #. translators: 1: plugin name 2: mbstring documentation URL
-#: includes/class-wp-typography-requirements.php:167
+#: includes/class-wp-typography-requirements.php:166
 msgid "The activated plugin %1$s requires the mbstring PHP extension to be enabled on your server. Please deactivate this plugin, or <a href=\"%2$s\">enable the extension</a>."
 msgstr "Das aktivierte Plugin %1$s benötigt die PHP-Erweiterung mbstring. Bitte das Plugin deaktivieren oder <a href=\"%2$s\">die Erweiterung aktivieren</a>."
 
 #. translators: 1: plugin name 2: target PHP version number 3: actual PHP
 #. version number
-#: includes/class-wp-typography-requirements.php:154
+#: includes/class-wp-typography-requirements.php:153
 msgid "The activated plugin %1$s requires PHP %2$s or later. Your server is running PHP %3$s. Please deactivate this plugin, or upgrade your server's installation of PHP."
 msgstr "Das aktivierte Plugin %1$s benötigt PHP %2$s oder höher. Am Server wird PHP %3$s ausgeführt. Bitte das Plugin deaktivieren oder ein Upgrade der PHP-Version durchführen."
 

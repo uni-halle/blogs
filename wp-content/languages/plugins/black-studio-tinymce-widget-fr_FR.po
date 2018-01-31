@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Black Studio TinyMCE Widget - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-08-04 19:34:20+0000\n"
+"PO-Revision-Date: 2017-12-01 18:32:45+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,15 +11,21 @@ msgstr ""
 "Language: fr\n"
 "Project-Id-Version: Plugins - Black Studio TinyMCE Widget - Stable (latest release)\n"
 
+#. translators: Warning displayed when deprecated translations of the current
+#. widget are detected
+#: includes/class-compatibility-plugins.php:267
+msgid "WARNING: This widget has one or more translations made using WPML String Translation plugin, which is now a deprecated method of translating widgets, in favor of the \"Display on language\" dropdown introduced with WPML 3.8. Please migrate your existing translations by creating new widgets and selecting the language of this widget and the new ones accordingly. Finally delete the existing translations from <a href=\"%s\">WPML String Translation interface</a>."
+msgstr "AVERTISSEMENT : Ce widget a une ou plusieurs traductions générées par l’extension WPML String Translation, qui est une méthode obsolète pour traduire les widgets. Préférez l’option du choix des langues introduite dans WPML 3.8. Veuilles migrer vos traductions existantes en créant de nouveaux widgets et en sélectionnant leur langue en conséquence. Pour finir, supprimez les traductions depuis <a href=\"%s\">l’interface de WPML String Translation</a>."
+
 #. translators: warning message shown when when visual editor is disabled in
 #. current user's profile settings
-#: includes/class-admin.php:454
+#: includes/class-admin.php:460
 msgid "Visual Editor is disabled in your Profile settings. You need to enable it in order to use the Visual Editor widget at its full potential."
 msgstr "L’éditeur visuel est désactivé dans les réglages de votre profil. Vous devez l’activer pour utiliser le widget à son plein potentiel."
 
 #. Author URI of the plugin/theme
-msgid "http://www.blackstudio.it"
-msgstr "http://www.blackstudio.it"
+msgid "https://www.blackstudio.it"
+msgstr "https://www.blackstudio.it"
 
 #. Author of the plugin/theme
 msgid "Black Studio"
@@ -33,11 +39,11 @@ msgstr "Ajoute un nouveau widget « Éditeur Visuel » basé sur TinyMCE, l’
 msgid "https://wordpress.org/plugins/black-studio-tinymce-widget/"
 msgstr "https://wordpress.org/plugins/black-studio-tinymce-widget/"
 
-#: includes/class-widget.php:135
+#: includes/class-widget.php:141
 msgid "Automatically add paragraphs"
 msgstr "Créer automatiquement les paragraphes"
 
-#: includes/class-widget.php:128
+#: includes/class-widget.php:134
 msgid "Title:"
 msgstr "Titre :"
 
@@ -105,11 +111,11 @@ msgid "The Visual Editor widget allows you to insert rich text and media objects
 msgstr "Le widget « Éditeur Visuel » permet d’insérer du texte riche et des médias dans vos colonnes latérales."
 
 #. #-#-#-#-#  black-studio-tinymce-widget-code.pot (Black Studio TinyMCE Widget
-#. 2.4.2)  #-#-#-#-#
+#. 2.6.1)  #-#-#-#-#
 #. translators: title for the dismissable admin pointer tooltip (same as plugin
 #. name)
 #. #-#-#-#-#  black-studio-tinymce-widget-code.pot (Black Studio TinyMCE Widget
-#. 2.4.2)  #-#-#-#-#
+#. 2.6.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: includes/class-admin-pointer.php:165
 msgid "Black Studio TinyMCE Widget"
@@ -122,7 +128,7 @@ msgid "ERROR: Multiple instances of the Black Studio TinyMCE Widget plugin were 
 msgstr "ERREUR : Plusieurs instances de l’extension Black Studio TinyMCE Widget ont été détectées. Veuillez activer seulement une instance à la fois."
 
 #: black-studio-tinymce-widget.php:193 includes/class-admin-pointer.php:63
-#: includes/class-admin.php:72 includes/class-compatibility-plugins.php:65
+#: includes/class-admin.php:72 includes/class-compatibility-plugins.php:81
 #: includes/class-compatibility-wordpress.php:65
 #: includes/class-compatibility.php:95 includes/class-text-filters.php:71
 msgid "Cheatin&#8217; uh?"

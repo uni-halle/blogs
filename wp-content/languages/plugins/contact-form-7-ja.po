@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Contact Form 7 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-10-31 16:18:33+0000\n"
+"PO-Revision-Date: 2018-01-31 05:47:45+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,75 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ja_JP\n"
 "Project-Id-Version: Plugins - Contact Form 7 - Stable (latest release)\n"
+
+#: modules/acceptance.php:238
+msgid "Condition"
+msgstr "同意条件"
+
+#. translators: 1: 'Consented' or 'Not consented', 2: conditions
+#: modules/acceptance.php:197
+msgctxt "mail output for acceptance checkboxes"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
+
+#: modules/acceptance.php:181
+msgid "Not consented"
+msgstr "同意しない"
+
+#: modules/acceptance.php:179
+msgid "Consented"
+msgstr "同意する"
+
+#: includes/submission.php:196
+msgid "Sending mail has been aborted."
+msgstr "メールの送信が中断されました。"
+
+#: admin/includes/editor.php:211
+msgid "You can edit messages used in various situations here. For details, see %s."
+msgstr "様々な状況で用いられるメッセージをここで編集できます。詳しくは%sを参照。"
+
+#: admin/includes/editor.php:210
+msgid "Editing Messages"
+msgstr "メッセージを編集する"
+
+#: admin/includes/editor.php:209
+msgid "https://contactform7.com/editing-messages/"
+msgstr "https://contactform7.com/ja/editing-messages/"
+
+#: admin/includes/editor.php:130
+msgid "You can edit the mail template here. For details, see %s."
+msgstr "メールのテンプレートをここで編集できます。詳しくは%sを参照。"
+
+#: admin/includes/editor.php:57
+msgid "You can edit the form template here. For details, see %s."
+msgstr "フォームのテンプレートをここで編集できます。詳しくは%sを参照。"
+
+#: admin/includes/editor.php:56
+msgid "Editing Form Template"
+msgstr "フォームのテンプレートを編集する"
+
+#: admin/includes/editor.php:55
+msgid "https://contactform7.com/editing-form-template/"
+msgstr "https://contactform7.com/ja/editing-form-template/"
+
+#. translators: screen reader text
+#: admin/edit-contact-form.php:192
+msgid "(left and right arrow)"
+msgstr "(左右の矢印)"
+
+#. translators: 1: ◀ ▶ dashicon, 2: screen reader text for the dashicon
+#: admin/edit-contact-form.php:187
+msgid "%1$s %2$s keys switch panels"
+msgstr "%1$s %2$s キーでパネルを切り替え"
+
+#. translators: screen reader text
+#: admin/admin.php:326
+msgid "(configuration error)"
+msgstr "(設定エラー)"
+
+#: admin/admin.php:319
+msgid "How to resolve?"
+msgstr "解決するには?"
 
 #: admin/includes/welcome-panel.php:37
 msgid "Your donation will help encourage and support the plugin&#8217;s continued development and better user support."
@@ -28,15 +97,16 @@ msgstr "もし Contact Form 7 を使って便利だと思われたなら、ぜ�
 msgid "It is hard to continue development and support for this plugin without contributions from users like you."
 msgstr "このプラグインの開発とサポートには多大な労力が費やされており、ユーザーのみなさんからの支援なしには継続不可能です。"
 
-#: includes/contact-form.php:294 includes/contact-form.php:673
+#: includes/contact-form.php:294 includes/contact-form.php:707
 msgid "This contact form is available only for logged in users."
 msgstr "このコンタクトフォームはログインしたユーザーにのみ利用可能です。"
 
-#: includes/config-validator.php:144
+#: includes/config-validator.php:145
 msgid "Deprecated settings are used."
 msgstr "廃止予定の設定が使われている。"
 
-#: modules/really-simple-captcha.php:30
+#. translators: %s: link labeled 'Really Simple CAPTCHA'
+#: modules/really-simple-captcha.php:36
 msgid "To use CAPTCHA, you need %s plugin installed."
 msgstr "CAPTCHA を使うには %s プラグインのインストールが必要です。"
 
@@ -51,7 +121,7 @@ msgstr "リクエストしたコンタクトフォームにアクセスする権
 
 #: includes/rest-api.php:171 includes/rest-api.php:198
 #: includes/rest-api.php:247 includes/rest-api.php:276
-#: includes/rest-api.php:324
+#: includes/rest-api.php:316
 msgid "The requested contact form was not found."
 msgstr "リクエストしたコンタクトフォームが見つかりません。"
 
@@ -67,35 +137,37 @@ msgstr "既存のコンタクトフォームは作成できません。"
 msgid "You are not allowed to access contact forms."
 msgstr "コンタクトフォームにアクセスする権限がありません。"
 
-#: includes/config-validator.php:541
+#: includes/config-validator.php:549
 msgid "Attachment file does not exist at %path%."
 msgstr "添付するファイルが %path% に存在しません。"
 
-#: includes/config-validator.php:472
+#: includes/config-validator.php:480
 msgid "Invalid mailbox syntax is used in the %name% field."
 msgstr "%name% 項目に不正なメールボックス構文が見られます。"
 
-#: includes/config-validator.php:383
-msgid "Unavailable names (%names%) are used for form controls."
-msgstr "フォームコントロールに使用できない名前 (%names%) が使われています。"
+#. translators: %names%: a list of form control names
+#: includes/config-validator.php:388
+msgid "An unavailable name (%names%) is used for form controls."
+msgid_plural "Unavailable names (%names%) are used for form controls."
+msgstr[0] "フォームコントロールに使用できない名前 (%names%) が使われています。"
 
-#: includes/config-validator.php:142
+#: includes/config-validator.php:143
 msgid "There are invalid mail header fields."
 msgstr "不正なメールヘッダー項目があります。"
 
-#: includes/config-validator.php:138
+#: includes/config-validator.php:139
 msgid "HTML tags are used in a message."
 msgstr "メッセージに HTML タグが使われています。"
 
-#: includes/config-validator.php:136
+#: includes/config-validator.php:137
 msgid "Sender email address does not belong to the site domain."
 msgstr "サイトのドメインに属していないメールアドレスが送信元に設定されています。"
 
-#: includes/config-validator.php:134
+#: includes/config-validator.php:135
 msgid "Invalid mailbox syntax is used."
 msgstr "不正なメールボックス構文が使用されています。"
 
-#: includes/config-validator.php:132
+#: includes/config-validator.php:133
 msgid "There is a possible empty field."
 msgstr "項目が空になる可能性があります。"
 
@@ -105,27 +177,27 @@ msgid "%s configuration error detected"
 msgid_plural "%s configuration errors detected"
 msgstr[0] "%s件の設定エラーを検出しました"
 
-#: admin/admin.php:321
+#: admin/admin.php:323
 msgid "%d configuration errors detected in this tab panel"
 msgstr "このタブパネルに %s 個の設定エラーがあります"
 
-#: admin/admin.php:320
+#: admin/admin.php:322
 msgid "1 configuration error detected in this tab panel"
 msgstr "このタブパネルで1件の設定エラーを検出しました"
 
-#: admin/admin.php:319
+#: admin/admin.php:321
 msgid "%d configuration errors detected"
 msgstr "%d件の設定エラーを検出しました"
 
-#: admin/admin.php:318
+#: admin/admin.php:320
 msgid "1 configuration error detected"
 msgstr "1件の設定エラーを検出しました"
 
-#: admin/admin.php:505 includes/rest-api.php:138 includes/rest-api.php:214
+#: admin/admin.php:509 includes/rest-api.php:138 includes/rest-api.php:214
 msgid "There was an error saving the contact form."
 msgstr "コンタクトフォームを保存する際にエラーが発生しました。"
 
-#: includes/functions.php:355
+#: includes/functions.php:360
 msgid "%1$s is <strong>deprecated</strong> since Contact Form 7 version %2$s! Use %3$s instead."
 msgstr "%1$s の使用は Contact Form 7 バージョン %2$s から<strong>非推奨</strong>になっています! 代わりに %3$s を使ってください。"
 
@@ -168,19 +240,15 @@ msgstr "スパマーはあらゆるものを標的にします。あなたのコ
 msgid "Getting spammed? You have protection."
 msgstr "スパムが来ました? 対策ならありますよ。"
 
-#: includes/config-validator.php:140
+#: includes/config-validator.php:141
 msgid "Multiple form controls are in a single label element."
 msgstr "複数のフォームコントロールが単一の label 要素内に置かれています。"
 
-#: admin/admin.php:317
-msgid "How to correct this?"
-msgstr "修正するには?"
-
-#: admin/admin.php:424
+#: admin/admin.php:428
 msgid "FAQ about Configuration Validator"
 msgstr "設定検証についての FAQ"
 
-#: admin/admin.php:424
+#: admin/admin.php:428
 msgid "https://contactform7.com/configuration-validator-faq/"
 msgstr "https://contactform7.com/configuration-validator-faq/"
 
@@ -196,7 +264,7 @@ msgstr "URL に間違いがあります。"
 msgid "The e-mail address entered is invalid."
 msgstr "入力されたメールアドレスに間違いがあります。"
 
-#: modules/quiz.php:162
+#: modules/quiz.php:163
 msgid "The answer to the quiz is incorrect."
 msgstr "クイズの答えが正しくありません。"
 
@@ -212,19 +280,19 @@ msgstr "入力された数値が小さすぎます。"
 msgid "The number format is invalid."
 msgstr "数値の形式に間違いがあります。"
 
-#: modules/file.php:210
+#: modules/file.php:195
 msgid "There was an error uploading the file."
 msgstr "ファイルのアップロード中にエラーが発生しました。"
 
-#: modules/file.php:205
+#: modules/file.php:190
 msgid "The file is too big."
 msgstr "ファイルが大きすぎます。"
 
-#: modules/file.php:200
+#: modules/file.php:185
 msgid "You are not allowed to upload files of this type."
 msgstr "この形式のファイルはアップロードできません。"
 
-#: modules/file.php:195
+#: modules/file.php:180
 msgid "There was an unknown error uploading the file."
 msgstr "ファイルのアップロード時に不明なエラーが発生しました。"
 
@@ -275,11 +343,11 @@ msgctxt "mail subject"
 msgid "%1$s \"%2$s\""
 msgstr "%1$s \"%2$s\""
 
-#: admin/admin.php:619
+#: admin/admin.php:628
 msgid "Misconfiguration leads to mail delivery failure or other troubles. Validate your contact forms now."
 msgstr "間違った設定があるとメール配送の失敗やその他のトラブルにつながります。コンタクトフォームの設定を検証しましょう。"
 
-#: admin/admin.php:617
+#: admin/admin.php:626
 msgid "Validate Contact Form 7 Configuration"
 msgstr "Contact Form 7 の設定を検証する"
 
@@ -287,22 +355,22 @@ msgstr "Contact Form 7 の設定を検証する"
 msgid "https://contactform7.com/configuration-errors/"
 msgstr "https://contactform7.com/configuration-errors/"
 
-#: admin/admin.php:528
+#: admin/admin.php:532
 msgid "Configuration validation completed. No invalid contact form was found."
 msgstr "設定検証が完了しました。問題のあるコンタクトフォームは見つかりませんでした。"
 
 #. translators: %s: number of contact forms
-#: admin/admin.php:520
+#: admin/admin.php:524
 msgid "Configuration validation completed. An invalid contact form was found."
 msgid_plural "Configuration validation completed. %s invalid contact forms were found."
 msgstr[0] "設定検証が完了しました。問題のあるコンタクトフォームが %s 個見つかりました。"
 
-#: admin/admin.php:416
+#: admin/admin.php:420
 msgid "Validate Configuration"
 msgstr "設定検証"
 
 #. translators: %s: number of contact forms
-#: admin/admin.php:407
+#: admin/admin.php:411
 msgid "Validate %s Contact Form Now"
 msgid_plural "Validate %s Contact Forms Now"
 msgstr[0] "%s 個のコンタクトフォームを検証する"
@@ -398,7 +466,7 @@ msgstr "エラー"
 msgid "reCAPTCHA"
 msgstr "reCAPTCHA"
 
-#: modules/really-simple-captcha.php:236
+#: modules/really-simple-captcha.php:243
 msgid "CAPTCHA (Really Simple CAPTCHA)"
 msgstr "CAPTCHA (Really Simple CAPTCHA)"
 
@@ -419,7 +487,7 @@ msgid "https://contactform7.com/"
 msgstr "https://contactform7.com/"
 
 #. translators: title of your first contact form. %d: number fixed to '1'
-#: settings.php:142
+#: settings.php:143
 msgid "Contact form %d"
 msgstr "コンタクトフォーム %d"
 
@@ -536,31 +604,31 @@ msgstr "ドロップダウンメニューのためのフォームタグを生成
 msgid "drop-down menu"
 msgstr "ドロップダウンメニュー"
 
-#: modules/quiz.php:206
+#: modules/quiz.php:207
 msgid "One pipe-separated question-answer pair (e.g. The capital of Brazil?|Rio) per line."
 msgstr "一行に一対の、パイプで区切られたクイズと回答 (例: ブラジルの首都は?|リオ) を入力。"
 
-#: modules/quiz.php:201 modules/quiz.php:204
+#: modules/quiz.php:202 modules/quiz.php:205
 msgid "Questions and answers"
 msgstr "クイズと回答"
 
-#: modules/quiz.php:186
+#: modules/quiz.php:187
 msgid "Quiz"
 msgstr "クイズ"
 
-#: modules/quiz.php:186
+#: modules/quiz.php:187
 msgid "https://contactform7.com/quiz/"
 msgstr "https://contactform7.com/quiz/"
 
-#: modules/quiz.php:184
+#: modules/quiz.php:185
 msgid "Generate a form-tag for a question-answer pair. For more details, see %s."
 msgstr "クイズと回答の項目のためのフォームタグを生成します。詳しくは%sを参照。"
 
-#: modules/quiz.php:176
+#: modules/quiz.php:177
 msgid "quiz"
 msgstr "クイズ"
 
-#: modules/quiz.php:160
+#: modules/quiz.php:161
 msgid "Sender doesn't enter the correct answer to the quiz"
 msgstr "クイズに対する正しい答えが入力されなかった"
 
@@ -600,51 +668,51 @@ msgstr "数値が最小制約値より小さい"
 msgid "Number format that the sender entered is invalid"
 msgstr "入力された数値の形式が正しくない"
 
-#: modules/file.php:316
+#: modules/file.php:301
 msgid "This contact form contains file uploading fields, but the temporary folder for the files (%s) does not exist or is not writable. You can create the folder or change its permission manually."
 msgstr "このコンタクトフォームはファイルアップロード項目を含んでいますが、そのファイルのための一時フォルダ (%s) が存在しないか、あるいは書き込み可能ではありません。このフォルダを手動で作成するか、パーミッションの変更を行うと解決できるでしょう。"
 
-#: modules/file.php:290
+#: modules/file.php:275
 msgid "To attach the file uploaded through this field to mail, you need to insert the corresponding mail-tag (%s) into the File Attachments field on the Mail tab."
 msgstr "この項目からアップロードされたファイルをメールに添付するには、対応するメールタグ (%s) をメールタブ上にあるファイル添付項目に挿入する必要があります。"
 
-#: modules/file.php:262
+#: modules/file.php:247
 msgid "Acceptable file types"
 msgstr "受け入れ可能なファイル形式"
 
-#: modules/file.php:257
+#: modules/file.php:242
 msgid "File size limit (bytes)"
 msgstr "ファイルサイズの上限 (バイト)"
 
-#: modules/file.php:232
+#: modules/file.php:217
 msgid "File Uploading and Attachment"
 msgstr "ファイルのアップロードとメール添付"
 
-#: modules/file.php:232
+#: modules/file.php:217
 msgid "https://contactform7.com/file-uploading-and-attachment/"
 msgstr "https://contactform7.com/file-uploading-and-attachment/"
 
-#: modules/file.php:230
+#: modules/file.php:215
 msgid "Generate a form-tag for a file uploading field. For more details, see %s."
 msgstr "ファイルアップロード項目のためのフォームタグを生成します。詳しくは%sを参照。"
 
-#: modules/file.php:222
+#: modules/file.php:207
 msgid "file"
 msgstr "ファイル"
 
-#: modules/file.php:209
+#: modules/file.php:194
 msgid "Uploading a file fails for PHP error"
 msgstr "ファイルのアップロードが PHP のエラーにより失敗している"
 
-#: modules/file.php:204
+#: modules/file.php:189
 msgid "Uploaded file is too large"
 msgstr "アップロードされたファイルが大きすぎる"
 
-#: modules/file.php:199
+#: modules/file.php:184
 msgid "Uploaded file is not allowed for file type"
 msgstr "アップロードされたファイルが許可されたファイル形式に適合しない"
 
-#: modules/file.php:194
+#: modules/file.php:179
 msgid "Uploading a file fails for any reason"
 msgstr "ファイルのアップロードが何らかの理由により失敗している"
 
@@ -720,14 +788,14 @@ msgstr "ラベルを前に、チェックボックスを後に配置する"
 msgid "One option per line."
 msgstr "一行に一オプションを入力。"
 
-#: modules/checkbox.php:311 modules/date.php:164 modules/file.php:246
+#: modules/checkbox.php:311 modules/date.php:164 modules/file.php:231
 #: modules/number.php:172 modules/select.php:201 modules/text.php:247
 #: modules/textarea.php:150
 msgid "Required field"
 msgstr "必須項目"
 
 #: modules/checkbox.php:307 modules/checkbox.php:310 modules/date.php:160
-#: modules/date.php:163 modules/file.php:242 modules/file.php:245
+#: modules/date.php:163 modules/file.php:227 modules/file.php:230
 #: modules/number.php:163 modules/number.php:166 modules/select.php:197
 #: modules/select.php:200 modules/text.php:243 modules/text.php:246
 #: modules/textarea.php:146 modules/textarea.php:149
@@ -758,104 +826,105 @@ msgstr "ラジオボタン"
 msgid "checkboxes"
 msgstr "チェックボックス"
 
-#: modules/really-simple-captcha.php:346
+#: modules/really-simple-captcha.php:360
 msgid "This contact form contains CAPTCHA fields, but the necessary libraries (GD and FreeType) are not available on your server."
 msgstr "このコンタクトフォームは CAPTCHA の項目を含んでいますが、お使いのサーバーでは必要なライブラリ (GD および FreeType) が利用可能でありません。"
 
-#: modules/really-simple-captcha.php:340
+#: modules/really-simple-captcha.php:353
 msgid "This contact form contains CAPTCHA fields, but the temporary folder for the files (%s) does not exist or is not writable. You can create the folder or change its permission manually."
 msgstr "このコンタクトフォームは CAPTCHA の項目を含んでいますが、そのファイルのための一時フォルダ (%s) が存在しないか、あるいは書き込み可能ではありません。このフォルダを手動で作成するか、パーミッションの変更を行うと解決できるでしょう。"
 
-#: modules/really-simple-captcha.php:289
+#: modules/really-simple-captcha.php:302
 msgid "Input field settings"
 msgstr "入力項目の設定"
 
-#: modules/really-simple-captcha.php:274
+#: modules/really-simple-captcha.php:287
 msgid "Image settings"
 msgstr "画像の設定"
 
-#: modules/really-simple-captcha.php:257
+#: modules/really-simple-captcha.php:270
 msgid "https://contactform7.com/captcha/"
 msgstr "https://contactform7.com/captcha/"
 
-#: modules/really-simple-captcha.php:255
+#: modules/really-simple-captcha.php:268
 msgid "Generate form-tags for a CAPTCHA image and corresponding response input field. For more details, see %s."
 msgstr "CAPTCHA 画像とそれに対応する回答入力項目のためのフォームタグを生成します。詳しくは%sを参照。"
 
-#: modules/really-simple-captcha.php:247
+#. translators: %s: link labeled 'Really Simple CAPTCHA'
+#: modules/really-simple-captcha.php:257
 msgid "To use CAPTCHA, you first need to install and activate %s plugin."
 msgstr "CAPTCHA を使うには、まず %s プラグインをインストールし有効化する必要があります。"
 
-#: modules/really-simple-captcha.php:257 modules/recaptcha.php:223
+#: modules/really-simple-captcha.php:270 modules/recaptcha.php:223
 msgid "CAPTCHA"
 msgstr "CAPTCHA"
 
-#: modules/really-simple-captcha.php:217
+#: modules/really-simple-captcha.php:224
 msgid "Your entered code is incorrect."
 msgstr "入力されたコードが正しくありません。"
 
-#: modules/really-simple-captcha.php:215
+#: modules/really-simple-captcha.php:222
 msgid "The code that sender entered does not match the CAPTCHA"
 msgstr "入力されたコードが CAPTCHA に適合していない"
 
-#: modules/acceptance.php:195 modules/checkbox.php:357 modules/date.php:216
-#: modules/file.php:285 modules/number.php:224 modules/quiz.php:230
-#: modules/really-simple-captcha.php:309 modules/recaptcha.php:503
+#: modules/acceptance.php:272 modules/checkbox.php:357 modules/date.php:216
+#: modules/file.php:270 modules/number.php:224 modules/quiz.php:231
+#: modules/really-simple-captcha.php:322 modules/recaptcha.php:503
 #: modules/select.php:243 modules/submit.php:88 modules/text.php:311
 #: modules/textarea.php:185
 msgid "Insert Tag"
 msgstr "タグを挿入"
 
-#: modules/acceptance.php:182 modules/checkbox.php:344 modules/date.php:204
-#: modules/file.php:272 modules/number.php:212 modules/quiz.php:217
-#: modules/really-simple-captcha.php:282 modules/really-simple-captcha.php:297
+#: modules/acceptance.php:259 modules/checkbox.php:344 modules/date.php:204
+#: modules/file.php:257 modules/number.php:212 modules/quiz.php:218
+#: modules/really-simple-captcha.php:295 modules/really-simple-captcha.php:310
 #: modules/recaptcha.php:490 modules/select.php:230 modules/submit.php:75
 #: modules/text.php:298 modules/textarea.php:172
 msgid "Class attribute"
 msgstr "クラス属性"
 
-#: modules/acceptance.php:177 modules/checkbox.php:339 modules/date.php:199
-#: modules/file.php:267 modules/number.php:207 modules/quiz.php:212
-#: modules/really-simple-captcha.php:277 modules/really-simple-captcha.php:292
+#: modules/acceptance.php:254 modules/checkbox.php:339 modules/date.php:199
+#: modules/file.php:252 modules/number.php:207 modules/quiz.php:213
+#: modules/really-simple-captcha.php:290 modules/really-simple-captcha.php:305
 #: modules/recaptcha.php:485 modules/select.php:225 modules/submit.php:70
 #: modules/text.php:293 modules/textarea.php:167
 msgid "Id attribute"
 msgstr "ID 属性"
 
-#: modules/acceptance.php:171
+#: modules/acceptance.php:248
 msgid "Make this work inversely"
 msgstr "これの挙動を反対にする"
 
-#: modules/acceptance.php:170
+#: modules/acceptance.php:247
 msgid "Make this checkbox checked by default"
 msgstr "このチェックボックスをデフォルトでチェックされた状態にする"
 
-#: modules/acceptance.php:166 modules/acceptance.php:169
+#: modules/acceptance.php:243 modules/acceptance.php:246
 #: modules/checkbox.php:323 modules/checkbox.php:326 modules/select.php:212
 #: modules/select.php:215
 msgid "Options"
 msgstr "オプション"
 
-#: modules/acceptance.php:161 modules/checkbox.php:318 modules/date.php:170
-#: modules/file.php:252 modules/number.php:178 modules/quiz.php:196
-#: modules/really-simple-captcha.php:267 modules/select.php:207
+#: modules/acceptance.php:233 modules/checkbox.php:318 modules/date.php:170
+#: modules/file.php:237 modules/number.php:178 modules/quiz.php:197
+#: modules/really-simple-captcha.php:280 modules/select.php:207
 #: modules/text.php:253 modules/textarea.php:156
 msgid "Name"
 msgstr "名前"
 
-#: modules/acceptance.php:151
+#: modules/acceptance.php:223
 msgid "Acceptance Checkbox"
 msgstr "承諾確認チェックボックス"
 
-#: modules/acceptance.php:151
+#: modules/acceptance.php:223
 msgid "https://contactform7.com/acceptance-checkbox/"
 msgstr "https://contactform7.com/acceptance-checkbox/"
 
-#: modules/acceptance.php:149
+#: modules/acceptance.php:221
 msgid "Generate a form-tag for an acceptance checkbox. For more details, see %s."
 msgstr "承諾確認チェックボックスのフォームタグを生成します。詳しくは%sを参照。"
 
-#: modules/acceptance.php:141
+#: modules/acceptance.php:213
 msgid "acceptance"
 msgstr "承諾確認"
 
@@ -1040,63 +1109,59 @@ msgstr "可能な操作"
 msgid "Overview"
 msgstr "概要"
 
-#: admin/includes/editor.php:218
+#: admin/includes/editor.php:248
 msgid "You can add customization code snippets here. For details, see %s."
 msgstr "カスタマイズのためのコードをここに追加できます。詳しくは%sを参照。"
 
-#: admin/includes/editor.php:216
+#: admin/includes/editor.php:246
 msgid "https://contactform7.com/additional-settings/"
 msgstr "https://contactform7.com/additional-settings/"
 
 #: admin/includes/editor.php:194
-msgid "Edit messages used in the following situations."
-msgstr "以下の状況で使用されるメッセージを編集します。"
-
-#: admin/includes/editor.php:170
 msgid "File Attachments"
 msgstr "ファイル添付"
 
-#: admin/includes/editor.php:164
+#: admin/includes/editor.php:188
 msgid "Use HTML content type"
 msgstr "HTML 形式のメールを使用する"
 
-#: admin/includes/editor.php:162
+#: admin/includes/editor.php:186
 msgid "Exclude lines with blank mail-tags from output"
 msgstr "空のメールタグを含む行を出力から除外する"
 
-#: admin/includes/editor.php:157
+#: admin/includes/editor.php:181
 msgid "Message Body"
 msgstr "メッセージ本文"
 
-#: admin/includes/editor.php:148
+#: admin/includes/editor.php:172
 msgid "Additional Headers"
 msgstr "追加ヘッダー"
 
-#: admin/includes/editor.php:139 includes/contact-form-template.php:40
+#: admin/includes/editor.php:163 includes/contact-form-template.php:40
 msgid "Subject"
 msgstr "題名"
 
-#: admin/includes/editor.php:130
+#: admin/includes/editor.php:154
 msgid "From"
 msgstr "送信元"
 
-#: admin/includes/editor.php:121
+#: admin/includes/editor.php:145
 msgid "To"
 msgstr "送信先"
 
-#: admin/includes/editor.php:115
+#: admin/includes/editor.php:135
 msgid "In the following fields, you can use these mail-tags:"
 msgstr "以下の項目にて、これらのメールタグを利用できます:"
 
-#: admin/includes/editor.php:109
+#: admin/includes/editor.php:119
 msgid "Mail (2) is an additional mail template often used as an autoresponder."
 msgstr "メール (2) は追加のメールテンプレートで、自動返信メールによく使われます。"
 
-#: admin/includes/editor.php:75
+#: admin/includes/editor.php:85
 msgid "Use Mail (2)"
 msgstr "メール (2) を使用"
 
-#: admin/includes/editor.php:74
+#: admin/includes/editor.php:84
 msgid "Mail (2)"
 msgstr "メール (2)"
 
@@ -1138,62 +1203,57 @@ msgstr "ショートコード"
 msgid "Title"
 msgstr "タイトル"
 
-#: admin/edit-contact-form.php:216 admin/includes/editor.php:217
-#: admin/includes/editor.php:222
+#: admin/edit-contact-form.php:229 admin/includes/editor.php:247
+#: admin/includes/editor.php:252
 msgid "Additional Settings"
 msgstr "その他の設定"
 
 #. translators: %d: number of additional settings
-#: admin/edit-contact-form.php:214
+#: admin/edit-contact-form.php:227
 msgid "Additional Settings (%d)"
 msgstr "その他の設定 (%d)"
 
-#: admin/edit-contact-form.php:202 admin/includes/editor.php:192
+#: admin/edit-contact-form.php:213 admin/includes/editor.php:222
 msgid "Messages"
 msgstr "メッセージ"
 
-#: admin/edit-contact-form.php:199 admin/includes/editor.php:83
+#: admin/edit-contact-form.php:209 admin/includes/editor.php:93
 msgid "Mail"
 msgstr "メール"
 
-#: admin/edit-contact-form.php:196 admin/includes/editor.php:55
+#: admin/edit-contact-form.php:205 admin/includes/editor.php:61
 msgid "Form"
 msgstr "フォーム"
 
-#. translators: %s: ◀ ▶ dashicon
-#: admin/edit-contact-form.php:185
-msgid "%s keys switch panels"
-msgstr "%s キーでパネルを切り替えられます"
-
-#: admin/edit-contact-form.php:174 admin/includes/help-tabs.php:94
+#: admin/edit-contact-form.php:175 admin/includes/help-tabs.php:94
 msgid "Support"
 msgstr "サポート"
 
-#: admin/edit-contact-form.php:174 admin/includes/help-tabs.php:94
+#: admin/edit-contact-form.php:175 admin/includes/help-tabs.php:94
 msgid "https://contactform7.com/support/"
 msgstr "https://contactform7.com/support/"
 
-#: admin/edit-contact-form.php:173 admin/includes/help-tabs.php:93
+#: admin/edit-contact-form.php:174 admin/includes/help-tabs.php:93
 msgid "FAQ"
 msgstr "FAQ"
 
-#: admin/edit-contact-form.php:173 admin/includes/help-tabs.php:93
+#: admin/edit-contact-form.php:174 admin/includes/help-tabs.php:93
 msgid "https://contactform7.com/faq/"
 msgstr "https://contactform7.com/faq/"
 
-#: admin/edit-contact-form.php:172 admin/includes/help-tabs.php:92
+#: admin/edit-contact-form.php:173 admin/includes/help-tabs.php:92
 msgid "Docs"
 msgstr "使い方"
 
-#: admin/edit-contact-form.php:172 admin/includes/help-tabs.php:92
+#: admin/edit-contact-form.php:173 admin/includes/help-tabs.php:92
 msgid "https://contactform7.com/docs/"
 msgstr "https://contactform7.com/docs/"
 
-#: admin/edit-contact-form.php:169
+#: admin/edit-contact-form.php:170
 msgid "Information"
 msgstr "インフォメーション"
 
-#: admin/edit-contact-form.php:153
+#: admin/edit-contact-form.php:154
 msgid ""
 "You are about to delete this contact form.\n"
 "  'Cancel' to stop, 'OK' to delete."
@@ -1201,25 +1261,25 @@ msgstr ""
 "このコンタクトフォームを削除しようとしています。\n"
 "  'キャンセル' で中止、 'OK' で削除します。"
 
-#: admin/edit-contact-form.php:153
+#: admin/edit-contact-form.php:154
 #: admin/includes/class-contact-forms-list-table.php:92
 msgid "Delete"
 msgstr "削除 "
 
-#: admin/edit-contact-form.php:138
+#: admin/edit-contact-form.php:139
 #: admin/includes/class-contact-forms-list-table.php:156
 msgid "Duplicate"
 msgstr "複製"
 
-#: admin/edit-contact-form.php:124
+#: admin/edit-contact-form.php:125
 msgid "Status"
 msgstr "ステータス"
 
-#: admin/edit-contact-form.php:110
+#: admin/edit-contact-form.php:111
 msgid "You can also use this old-style shortcode:"
 msgstr "この旧式のショートコードも利用できます:"
 
-#: admin/edit-contact-form.php:103
+#: admin/edit-contact-form.php:104
 msgid "Copy this shortcode and paste it into your post, page, or text widget content:"
 msgstr "このショートコードをコピーして、投稿、固定ページ、またはテキストウィジェットの内容にペーストしてください:"
 
@@ -1227,12 +1287,12 @@ msgstr "このショートコードをコピーして、投稿、固定ページ
 msgid "Enter title here"
 msgstr "ここにタイトルを入力"
 
-#: admin/edit-contact-form.php:26 admin/edit-contact-form.php:131
+#: admin/edit-contact-form.php:26 admin/edit-contact-form.php:132
 #: modules/recaptcha.php:211
 msgid "Save"
 msgstr "保存"
 
-#: admin/admin.php:584
+#: admin/admin.php:593
 msgid "You are not allowed to edit this contact form."
 msgstr "このコンタクトフォームを編集する権限がありません。"
 
@@ -1243,6 +1303,14 @@ msgstr "https://contactform7.com/save-submitted-messages-with-flamingo/"
 #: admin/includes/welcome-panel.php:26
 msgid "https://contactform7.com/spam-filtering-with-akismet/"
 msgstr "https://contactform7.com/spam-filtering-with-akismet/"
+
+#: admin/includes/editor.php:129
+msgid "Setting Up Mail"
+msgstr "メールのセットアップ"
+
+#: admin/includes/editor.php:128
+msgid "https://contactform7.com/setting-up-mail/"
+msgstr "https://contactform7.com/ja/setting-up-mail/"
 
 #: admin/includes/welcome-panel.php:35
 msgid "https://contactform7.com/donate/"
@@ -1257,36 +1325,36 @@ msgid "Dismiss"
 msgstr "非表示にする"
 
 #. translators: 1: version of Contact Form 7, 2: version of WordPress, 3: URL
-#: admin/admin.php:565
+#: admin/admin.php:574
 msgid "<strong>Contact Form 7 %1$s requires WordPress %2$s or higher.</strong> Please <a href=\"%3$s\">update WordPress</a> first."
 msgstr "<strong>Contact Form 7 %1$s は WordPress %2$s 以降に対応しています。</strong>まず <a href=\"%3$s\">WordPress を更新</a>してください。"
 
-#: admin/admin.php:545
+#: admin/admin.php:554
 msgid "Settings"
 msgstr "設定"
 
-#: admin/admin.php:496
+#: admin/admin.php:500
 msgid "Contact form deleted."
 msgstr "コンタクトフォームが削除されました。"
 
-#: admin/admin.php:494
+#: admin/admin.php:498
 msgid "Contact form saved."
 msgstr "コンタクトフォームが保存されました。"
 
-#: admin/admin.php:492
+#: admin/admin.php:496
 msgid "Contact form created."
 msgstr "コンタクトフォームが作成されました。"
 
-#: admin/admin.php:393
+#: admin/admin.php:397
 msgid "Search Contact Forms"
 msgstr "コンタクトフォームの検索"
 
 #. translators: %s: search keywords
-#: admin/admin.php:380
+#: admin/admin.php:384
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "&#8220;%s&#8221; の検索結果"
 
-#: admin/admin.php:310
+#: admin/admin.php:312
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr "このページから離れると変更した内容が失われます。"
 
@@ -1306,11 +1374,11 @@ msgstr "この項目の編集は許可されていません。"
 msgid "Integration"
 msgstr "インテグレーション"
 
-#: admin/admin.php:47 admin/admin.php:462
+#: admin/admin.php:47 admin/admin.php:466
 msgid "Integration with Other Services"
 msgstr "他のサービスとのインテグレーション"
 
-#: admin/admin.php:37 admin/admin.php:374 admin/edit-contact-form.php:46
+#: admin/admin.php:37 admin/admin.php:378 admin/edit-contact-form.php:46
 msgid "Add New"
 msgstr "新規追加"
 
@@ -1318,7 +1386,7 @@ msgstr "新規追加"
 msgid "Add New Contact Form"
 msgstr "コンタクトフォームを追加"
 
-#: admin/admin.php:29 admin/admin.php:367 includes/contact-form.php:31
+#: admin/admin.php:29 admin/admin.php:371 includes/contact-form.php:31
 msgid "Contact Forms"
 msgstr "コンタクトフォーム"
 
@@ -1330,8 +1398,8 @@ msgstr "コンタクトフォームの編集"
 msgid "Contact"
 msgstr "お問い合わせ"
 
-#. #-#-#-#-#  contact-form-7-code.pot (Contact Form 7 4.9.1)  #-#-#-#-#
+#. #-#-#-#-#  contact-form-7-code.pot (Contact Form 7 5.0)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/admin.php:21 modules/flamingo.php:150
+#: admin/admin.php:21 modules/flamingo.php:167
 msgid "Contact Form 7"
 msgstr "Contact Form 7"

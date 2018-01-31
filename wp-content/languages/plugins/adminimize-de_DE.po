@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Adminimize - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-10-13 17:51:35+0000\n"
+"PO-Revision-Date: 2017-12-29 00:44:20+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,23 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Plugins - Adminimize - Stable (latest release)\n"
+
+#: inc-setup/import.php:69
+msgid "It is not possible to find a file in %s"
+msgstr "Es ist nicht möglich eine Datei für den Import zu finden, Pfad %s"
+
+#: inc-setup/import.php:60
+msgid "Please upload a valid .json file, Extension check. Your file have the extension %s."
+msgstr "Bitte importiere eine valide .json Datei, Datei-Erweiterungsprüfung. Deine Datei hat die Datei-Erweiterung %s."
+
+#: inc-options/menu_options.php:117
+msgid "After activation of this checkbox you will loose the easy access to the settings area inside the menu."
+msgstr "Nach dem Aktivieren dieser Option verlierst du den einfachen, sichtbaren Zugang im Menu zur Einstellungsseite des Plugin."
+
+#: inc-options/write_cp_options.php:137 inc-options/write_page_options.php:125
+#: inc-options/write_post_options.php:129
+msgid "Add New"
+msgstr "Erstellen"
 
 #: inc-options/theme_options.php:26
 msgid "For better peformance on sites with many users, you should load userlist data before making any changes in the theme options for users."
@@ -23,7 +40,7 @@ msgstr "Zeige bbPress Rollen für jeden Bereich um bbPress spezifische Einstellu
 msgid "To hide an option for a user with multiple roles, the option must be selected for every role of that user. If the option is not selected for one of the user's roles, then the item will appear."
 msgstr "Um eine Option für User mit verschiedenen Rollen auszublenden muss diese Option an jeder Rolle des Users aktiv sein. Ist die Option nicht aktiv für jede Rolle dieses Users, wird sie ignoriert und nicht entfernt."
 
-#: inc-options/minimenu.php:204
+#: inc-options/minimenu.php:197
 msgid "You have activated the Plugin for your Multisite Network. By default you will have all active menu items and plugins. The settings are for all network sites, you can set it from any site and it will be set for all network. You should also update the settings on every network site to include every custom items that might exist for each of it."
 msgstr "Du hast das Plugin für deine Multisite netzwerkweit aktiviert. Damit werden in jeder Site des Netzwerkes die Einstellungen separat pro Site generiert. Die Einstellungen werden aber für das gesamte Netzwerk gespeichert und genutzt. Du solltest eine Site nutzen um die Einstellungen zu setzen, darin sollten alle Plugin, Theme Einstellungen sein, die es in jeder Site gibt um so zentral über alle Sites zu pflegen."
 
@@ -35,15 +52,15 @@ msgstr "Aktiviere diese Option um den Zugriff auf Seiten des Backend zu erlauben
 msgid "Allow Page Access"
 msgstr "Erlaube Zugriff auf Seiten"
 
-#: inc-options/menu_options.php:131 inc-options/menu_options.php:231
+#: inc-options/menu_options.php:197
 msgid "After activate the checkbox you will loose its easy access in the menu."
 msgstr "Nach der Aktivierung dieser Checkbox verlierst du den einfachen Zugnag im Menu zu dieser Seite."
 
-#: inc-setup/helping_hands.php:199
+#: inc-setup/helping_hands.php:204
 msgid "Cheatin&#8217; uh? Sorry, you are not allowed to access this site."
 msgstr "Schummeln&#8217; was? Entschuldigung, du hast keinen Zugriff auf diese Seite."
 
-#: inc-options/menu_options.php:323
+#: inc-options/menu_options.php:289
 msgid "Possible nomination for the slug. Separate multiple nominations through a carriage return."
 msgstr "Mögliche Benennung der Titelform. Separiere mehrere Benennungen durch eine neue Zeile."
 
@@ -55,23 +72,23 @@ msgstr "Nach der aktivierung ist es möglich einige Informationen zum jeweiligen
 msgid "Active Debug Helper"
 msgstr "Aktiviere die Debug Hilfe"
 
-#: inc-options/menu_options.php:337
+#: inc-options/menu_options.php:303
 msgid "String of the custom slug."
 msgstr "Zeichenkette des benutzerspezifischen Slugs."
 
-#: inc-options/menu_options.php:309
+#: inc-options/menu_options.php:275
 msgid "It is possible to add your own slugs for menu items."
 msgstr "Es ist möglich einen eigenen Slug für Menu-Einträge hinzuzufügen."
 
-#: inc-options/menu_options.php:303
+#: inc-options/menu_options.php:269
 msgid "Custom Slug"
 msgstr "Benutzerspezifischer Slug"
 
-#: inc-options/menu_options.php:301
+#: inc-options/menu_options.php:267
 msgid "Slug"
 msgstr "URL-Anpassung"
 
-#: inc-options/menu_options.php:162
+#: inc-options/menu_options.php:148
 msgid "Custom"
 msgstr "Benutzerspezifisch"
 
@@ -111,23 +128,23 @@ msgstr "Du musst in das Frontend wechseln, in diesem aktiven Browser um die Admi
 msgid "Visually compresses the administrative meta-boxes so that more admin page content can be initially seen. The plugin that lets you hide 'unnecessary' items from the WordPress administration menu, for all roles of your install. You can also hide post meta controls on the edit-area to simplify the interface. It is possible to simplify the admin in different for all roles."
 msgstr "Visuelle Reduzierung des administrativen Bereiches auf das, was notwendig ist. Das Plugin gibt die die Möglichkeit \"unnötige\" Bereiche aus dem WordPress Adminisrationsbereich, Menus zu entfernen, getrennt für jede existierende Benutzerrolle. Du kannst außerdem diverse andere Bereiche ausblenden um das Interface zu vereinfachen. Es ist außerdem möglich eigene Optione pro Benutzerrolle zu ergänzen."
 
-#: inc-options/minimenu.php:198 inc-options/settings_notice.php:22
+#: inc-options/minimenu.php:191 inc-options/settings_notice.php:22
 msgid "To view your changes to the menu you need to navigate away from the Adminimize settings page."
 msgstr "Um die Einstellungen sichtbar zu sehen, musst du eine andere Seite besuchen, unabhängig der Adminimize-Einstellungsseite."
 
-#: inc-options/minimenu.php:193 inc-options/settings_notice.php:17
+#: inc-options/minimenu.php:186 inc-options/settings_notice.php:17
 msgid "Please note: The Adminimize settings page ignores the Menu Options below and displays the menu with all entries."
 msgstr "Beachte: Die Adminimize-Einstellungsseite ignoriert die Menu Einstellungen um alle Einträge darzustellen."
 
-#: inc-options/minimenu.php:180
+#: inc-options/minimenu.php:173
 msgid "You want to thank me? Visit my <a href=\"%1$s\">wishlist</a> or <a href=\"%2$s\">donate</a>."
 msgstr "Du willst Danke sagen? Besuche meine <a href=\"%1$s\">Wunschliste</a> oder <a href=\"%2$s\">spende</a>."
 
-#: inc-options/minimenu.php:169
+#: inc-options/minimenu.php:162
 msgid "For more hints about the functions and how to's with the possibilities of the plugin settings see the <a href=\"%s\">FAQ page</a> on the plugin site."
 msgstr "<br>Weitere Hinweise über die Funktionen und wie du vorgehen musst um die Möglichkeiten des Plugins zu nutzen findest du auf der  <a href=\"%s\">FAQ Seite</a> zum Plugin."
 
-#: inc-options/minimenu.php:160
+#: inc-options/minimenu.php:153
 msgid "Further information: Visit the <a href=\"%1$s\">plugin homepage</a> for further information or to grab the latest version of this plugin. Also see the <a href=\"%2$s\">support forum</a> for questions."
 msgstr "Weitere Informationen: Besuche die <a href=\"%1$s\">Plugin Website</a> für weitere Informationen oder um die neueste Version des Plugins zu erhalten. Besuche außerdem das <a href=\"%2$s\">Support Forum</a> für Fragen."
 
@@ -164,12 +181,12 @@ msgid "Switch to another back-end page and come back to update the options to ge
 msgstr "Wechsel auf eine andere Backend Seite und komme zurück um die Einstellungen zu aktualisieren. Im Anschluss erhälst du alle eingelesenen Einträge zur Admin Bar im Backend."
 
 #: inc-options/admin_bar.php:94 inc-options/admin_bar_frontend.php:93
-#: inc-options/menu_options.php:160
+#: inc-options/menu_options.php:146
 msgid "Group"
 msgstr "Gruppe"
 
 #: inc-options/admin_bar.php:89 inc-options/admin_bar_frontend.php:88
-#: inc-options/dashboard_options.php:121 inc-options/menu_options.php:157
+#: inc-options/dashboard_options.php:121 inc-options/menu_options.php:143
 msgid "No Title!"
 msgstr "Kein Titel!"
 
@@ -181,14 +198,6 @@ msgstr "Kein Titel!"
 #: inc-options/write_post_options.php:42
 msgid "Select all"
 msgstr "Alles auswählen"
-
-#: inc-setup/import.php:56
-msgid "Please upload a file to import"
-msgstr "Bitte laden sie eine Datei zum Importieren hoch"
-
-#: inc-setup/import.php:50
-msgid "Please upload a valid .json file"
-msgstr "Bitte wählen Sie eine gültige .json Datei zum Hochladen aus"
 
 #. Author URI of the plugin/theme
 msgid "http://bueltge.de/"
@@ -202,11 +211,11 @@ msgstr "Frank Bültge"
 msgid "https://wordpress.org/plugins/adminimize/"
 msgstr "https://wordpress.org/plugins/adminimize/"
 
-#: inc-setup/remove-admin-bar.php:314 inc-setup/remove-admin-bar.php:316
+#: inc-setup/remove-admin-bar.php:315 inc-setup/remove-admin-bar.php:317
 msgid "Site Admin"
 msgstr "Site-Admin"
 
-#: inc-setup/remove-admin-bar.php:310 inc-setup/remove-admin-bar.php:312
+#: inc-setup/remove-admin-bar.php:311 inc-setup/remove-admin-bar.php:313
 msgid "Network Admin"
 msgstr "Netwerk-Admin"
 
@@ -311,7 +320,7 @@ msgstr "Passwort und Privat-Flag"
 #: inc-options/write_cp_options.php:180 inc-options/write_page_options.php:168
 #: inc-options/write_post_options.php:167
 msgid "Author"
-msgstr "Author"
+msgstr "Autor"
 
 #: inc-options/write_cp_options.php:179 inc-options/write_page_options.php:166
 #: inc-options/write_post_options.php:166
@@ -480,20 +489,19 @@ msgstr "User-ID"
 msgid "Load User Data"
 msgstr "Lade User Daten"
 
-#: inc-options/minimenu.php:174
+#: inc-options/minimenu.php:167
 msgid "The plugin have a github repository to easy add a issue or a create a fork, pull request:"
 msgstr "Das Plugin hat ein Repository auf github für die einfache Verwaltung von Issues, Forks oder Erweiterungen durch dich."
 
-#: inc-options/minimenu.php:172
+#: inc-options/minimenu.php:165
 msgid "Report a issue on the development repository:"
 msgstr "Melde einen Fehler, Hinweis am Entwicklungsrepository:"
 
-#: inc-options/minimenu.php:152
+#: inc-options/minimenu.php:145
 msgid "Version"
 msgstr "Version"
 
-#: inc-options/minimenu.php:123 inc-options/theme_options.php:16
-#: inc-options/theme_options.php:122
+#: inc-options/theme_options.php:16 inc-options/theme_options.php:122
 msgid "Set Theme"
 msgstr "Theme zuweisen"
 
@@ -520,7 +528,7 @@ msgstr "Schreiben Einstellungen - Seiten"
 msgid "Write options - Post"
 msgstr "Schreiben Einstellungen - Beitr&auml;ge"
 
-#: inc-options/minimenu.php:30 inc-options/minimenu.php:146
+#: inc-options/minimenu.php:30 inc-options/minimenu.php:139
 msgid "About the plugin"
 msgstr "&Uuml;ber das Plugin"
 
@@ -586,7 +594,7 @@ msgstr "Wähle eine Adminimize (<em>.json</em>) Datei zum hochladen und klick <e
 msgid "Export &raquo;"
 msgstr "Exportieren &raquo;"
 
-#: inc-options/im_export_options.php:15 inc-options/minimenu.php:129
+#: inc-options/im_export_options.php:15 inc-options/minimenu.php:122
 msgid "Export/Import Options"
 msgstr "Export/Import Einstellungen"
 
@@ -629,7 +637,7 @@ msgstr "Einstellungen Löschen"
 msgid "Use this option for clean your database from all entries of this plugin. When you deactivate the plugin, the deinstall of the plugin <strong>clean not</strong> all entries in the database."
 msgstr "Nutze diese Option, um die Einstellungen f&uuml;r das Plugin in der Datenbank zu l&ouml;schen. Das Plugin entfernt die Eintr&auml;ge <strong>nicht</strong>, wenn es deaktiviert wird!"
 
-#: inc-options/deinstall_options.php:15 inc-options/minimenu.php:134
+#: inc-options/deinstall_options.php:15 inc-options/minimenu.php:127
 msgid "Uninstall Options"
 msgstr "Einstellungen deinstallieren"
 
@@ -658,7 +666,7 @@ msgid "It is possible to add your own IDs or classes from elements and tags. You
 msgstr "Es ist möglich, dass du eigene IDs und Klassen eines Elementes oder Tags hinzufügst. Du findest IDs und Klassen sehr einfach mit dem Firebug Add-on für den Firefox. Füge pro Zeile einen Wert und dazugehörigen Namen ein."
 
 #: inc-options/dashboard_options.php:150 inc-options/global_options.php:130
-#: inc-options/menu_options.php:299 inc-options/write_page_options.php:227
+#: inc-options/menu_options.php:265 inc-options/write_page_options.php:227
 #: inc-options/write_post_options.php:229
 msgid "Your own options"
 msgstr "Deine eigenen Einstellungen"
@@ -803,7 +811,7 @@ msgstr "Einstellungen Backend"
 #: inc-options/backend_options.php:256 inc-options/dashboard_options.php:208
 #: inc-options/deinstall_options.php:36 inc-options/global_options.php:180
 #: inc-options/im_export_options.php:89 inc-options/links_options.php:178
-#: inc-options/menu_options.php:354 inc-options/minimenu.php:213
+#: inc-options/menu_options.php:320 inc-options/minimenu.php:206
 #: inc-options/self_settings.php:85 inc-options/theme_options.php:130
 #: inc-options/widget_options.php:190 inc-options/wp_nav_menu_options.php:205
 #: inc-options/write_cp_options.php:326 inc-options/write_page_options.php:273
@@ -814,7 +822,7 @@ msgstr "Nach oben"
 #: inc-options/admin_bar.php:132 inc-options/admin_bar_frontend.php:136
 #: inc-options/backend_options.php:250 inc-options/dashboard_options.php:200
 #: inc-options/global_options.php:173 inc-options/links_options.php:172
-#: inc-options/menu_options.php:348 inc-options/self_settings.php:78
+#: inc-options/menu_options.php:314 inc-options/self_settings.php:78
 #: inc-options/widget_options.php:184 inc-options/wp_nav_menu_options.php:199
 #: inc-options/write_cp_options.php:320 inc-options/write_page_options.php:268
 #: inc-options/write_post_options.php:270
@@ -843,7 +851,7 @@ msgstr "Einstellung"
 #: inc-options/deinstall_options.php:14 inc-options/global_options.php:15
 #: inc-options/im_export_options.php:14 inc-options/links_options.php:15
 #: inc-options/menu_options.php:15 inc-options/minimenu.php:24
-#: inc-options/minimenu.php:145 inc-options/self_settings.php:14
+#: inc-options/minimenu.php:138 inc-options/self_settings.php:14
 #: inc-options/theme_options.php:14 inc-options/theme_options.php:15
 #: inc-options/widget_options.php:15 inc-options/wp_nav_menu_options.php:14
 #: inc-options/write_cp_options.php:21 inc-options/write_page_options.php:14
@@ -851,31 +859,27 @@ msgstr "Einstellung"
 msgid "Click to toggle"
 msgstr "Zum Umschalten klicken"
 
-#: adminimize.php:1179
-msgid "Cheatin&#8217; uh?"
-msgstr "Cheatin&#8217; uh?"
-
-#. #-#-#-#-#  adminimize-code.pot (Adminimize 1.11.3)  #-#-#-#-#
+#. #-#-#-#-#  adminimize-code.pot (Adminimize 1.11.4)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: adminimize.php:1136 inc-options/minimenu.php:19
+#: adminimize.php:1129 inc-options/minimenu.php:19
 msgid "Adminimize"
 msgstr "Adminimize"
 
-#: adminimize.php:1135
+#: adminimize.php:1128
 msgid "Adminimize Options"
 msgstr "Adminimize Einstellungen"
 
-#: adminimize.php:1121
+#: adminimize.php:1114
 msgid "Settings"
 msgstr "Settings"
 
-#: adminimize.php:1059 inc-setup/remove-admin-bar.php:63
-#: inc-setup/remove-admin-bar.php:105 inc-setup/remove-admin-bar.php:325
-#: inc-setup/remove-admin-bar.php:327
+#: adminimize.php:1057 inc-setup/remove-admin-bar.php:63
+#: inc-setup/remove-admin-bar.php:105 inc-setup/remove-admin-bar.php:326
+#: inc-setup/remove-admin-bar.php:328
 msgid "Log Out"
-msgstr "Log Out"
+msgstr "Abmelden"
 
-#: adminimize.php:528
+#: adminimize.php:532
 msgid "Dashboard"
 msgstr "Dashboard"
 

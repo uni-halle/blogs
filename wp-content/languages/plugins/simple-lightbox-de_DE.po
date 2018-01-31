@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Simple Lightbox - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-10-13 18:40:24+0000\n"
+"PO-Revision-Date: 2018-01-24 21:33:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,7 +13,7 @@ msgstr ""
 
 #: controller.php:262
 msgid "Group menu items separately"
-msgstr "Menüelemente separat gruppieren"
+msgstr "Menü-Elemente separat gruppieren"
 
 #: controller.php:257
 msgid "Enable for Menus"
@@ -25,7 +25,7 @@ msgstr "Feedback &amp; Support"
 
 #. Author URI of the plugin/theme
 msgid "http://archetyped.com"
-msgstr "http://archetyped.com"
+msgstr "https://archetyped.com"
 
 #. Author of the plugin/theme
 msgid "Archetyped"
@@ -33,7 +33,7 @@ msgstr "Archetyped"
 
 #. Description of the plugin/theme
 msgid "The highly customizable lightbox for WordPress"
-msgstr "Die anpassbare Llightbox für WordPress"
+msgstr "Die anpassbare Lightbox für WordPress"
 
 #. Plugin URI of the plugin/theme
 msgid "http://archetyped.com/tools/simple-lightbox/"
@@ -106,7 +106,7 @@ msgstr "Zugriff verweigert"
 
 #: includes/class.admin.php:645
 msgid "<strong class=\"%1$s\">Notice:</strong> This update is a <strong class=\"%1$s\">Beta version</strong>. It is highly recommended that you test the update on a test server before updating the plugin on a production server."
-msgstr "<strong class=\"%1$s\">Hinweis:</strong> Bei diesem Update handelt es sich um eine <strong class=\"%1$s\">Beta Version</strong>. Es ist dringend empfohlen, dieses Update auf einem Test Server zu testen, bevor es in Produktion eingesetzt wird."
+msgstr "<strong class=\"%1$s\">Hinweis:</strong> Bei diesem Update handelt es sich um eine <strong class=\"%1$s\">Beta Version</strong>. Es wird dringend empfohlen, dieses Update auf einem Test Server zu testen, bevor es in Produktion eingesetzt wird."
 
 #: includes/class.admin.php:644
 msgid "The settings have been reset"
@@ -114,11 +114,11 @@ msgstr "Die Einstellungen wurden zurückgesetzt"
 
 #: controller.php:359
 msgid "Get Support &amp; Provide Feedback"
-msgstr "Unterstützung &amp; Feedback"
+msgstr "Erhalte Support &amp; Gib uns Feedback"
 
 #: controller.php:355
 msgid "<p>Simple Lightbox thrives on your feedback!</p><p>Click the button below to <strong>get help</strong>, <strong>request a feature</strong>, or <strong>provide some feedback</strong>!</p>"
-msgstr "<p>Simple Lightbox würde sich über dein Feedback freuen!</p><p>Klicke auf den folgenden Button, um <strong>Unterstützung zu erhalten</strong>, <strong>ein Feature vorzuschlagen</strong>, oder <strong>Feedback zu geben</strong>!</p>"
+msgstr "<p>Simple Lightbox würde sich über dein Feedback freuen!</p><p>Klicke auf den folgenden Button, um <strong>Hilfe zu erhalten</strong>, <strong>ein Feature vorzuschlagen</strong> oder <strong>Feedback zu geben</strong>!</p>"
 
 #: controller.php:345
 msgid "Settings were not reset"
@@ -130,7 +130,7 @@ msgstr "Einstellungen wurden zurückgesetzt"
 
 #: controller.php:343
 msgid "Are you sure you want to reset settings?"
-msgstr "Möchtest Du die Einstellungen wirklich zurücksetzen?"
+msgstr "Möchtest du die Einstellungen wirklich zurücksetzen?"
 
 #: controller.php:342
 msgid "Reset"
@@ -146,7 +146,7 @@ msgstr "Einstellungen"
 
 #: controller.php:327
 msgid "Lightbox Settings"
-msgstr "Lightbox Einstellungen"
+msgstr "Lightbox-Einstellungen"
 
 #: controller.php:326
 msgid "Lightbox"
@@ -210,11 +210,11 @@ msgstr "Lightbox an Fenstergröße anpassen"
 
 #: controller.php:261
 msgid "Group widget items separately"
-msgstr "Widget Elemente separat gruppieren"
+msgstr "Widget-Elemente separat gruppieren"
 
 #: controller.php:260
 msgid "Group gallery items separately"
-msgstr "Galerie Elemente separat gruppieren"
+msgstr "Galerie-Elemente separat gruppieren"
 
 #: controller.php:259
 msgid "Group items by Post (e.g. on pages with multiple posts)"
@@ -226,7 +226,7 @@ msgstr "Elemente gruppieren (als Diahow darstellen)"
 
 #: controller.php:256
 msgid "Enable for Widgets"
-msgstr "Für Wirdgets aktivieren"
+msgstr "Für Widgets aktivieren"
 
 #: controller.php:255
 msgid "Enable on Archive Pages (tags, categories, etc.)"

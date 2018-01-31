@@ -1,0 +1,121 @@
+# Translation of Plugins - Enable Media Replace - Development (trunk) in Italian
+# This file is distributed under the same license as the Plugins - Enable Media Replace - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2017-01-19 18:44:08+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: it\n"
+"Project-Id-Version: Plugins - Enable Media Replace - Development (trunk)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://www.mansjonasson.se"
+msgstr "http://www.mansjonasson.se"
+
+#. Author of the plugin/theme
+msgid "Måns Jonasson"
+msgstr "Måns Jonasson"
+
+#. Description of the plugin/theme
+msgid "Enable replacing media files by uploading a new file in the \"Edit Media\" section of the WordPress Media Library."
+msgstr "Abilita la sostituzione dei file multimediali caricando un nuovo file nella sezione \"Modifica media\" della Libreria media di WordPress."
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.mansjonasson.se/enable-media-replace"
+msgstr "http://www.mansjonasson.se/enable-media-replace"
+
+#. Plugin Name of the plugin/theme
+msgid "Enable Media Replace"
+msgstr "Enable Media Replace"
+
+#: upload.php:84
+msgid "File type does not meet security guidelines. Try another."
+msgstr "Il tipo di file non rispetta le restrizioni di sicurezza. Riprova con un altro tipo."
+
+#: upload.php:26
+msgid "The file %1$s can not be deleted by the web server, most likely because the permissions on the file are wrong."
+msgstr "Il file %1$s non può essere cancellato dal web server, probabilmente perché le autorizzazioni per il file sono sbagliate."
+
+#: popup.php:68
+msgid "Cancel"
+msgstr "Annulla"
+
+#: popup.php:68
+msgid "Upload"
+msgstr "Carica"
+
+#: popup.php:63
+msgid "Please note that if you upload a new image, only embeds/links of the original size image will be replaced in your posts."
+msgstr "Si prega di notare che se si carica una nuova immagine, verranno sostituiti nei tuoi post solo i riferimenti incorporati delle dimensioni dell'immagine originale ."
+
+#: popup.php:62
+msgid ") will be updated to point to the new file name."
+msgstr ") saranno aggiornati per puntare al nuovo file."
+
+#: popup.php:62
+msgid "Note: If you check this option, the name and type of the file you are about to upload will replace the old file. All links pointing to the current file ("
+msgstr "Nota: Se selezioni questa opzione, il nome ed il tipo di file che stai per caricare sostituiranno quelli del file precedente. Tutti i collegamenti che puntavano al file precedente ("
+
+#: popup.php:61
+msgid "Replace the file, use new file name and update all links"
+msgstr "Sostituire il file, usare il nome del nuovo file ed aggiornare tutti i collegamenti"
+
+#: popup.php:58
+msgid ") no matter what the file you upload is called."
+msgstr ") indipendentemente dal nome del file caricato."
+
+#: popup.php:58
+msgid ") as the one you are replacing. The name of the attachment will stay the same ("
+msgstr ") di quello sostituito. Il nome dell'allegato rimarrà invariato ("
+
+#: popup.php:58
+msgid "Note: This option requires you to upload a file of the same type ("
+msgstr "Nota: Questa opzione richiede il caricamento di un file dello stesso tipo ("
+
+#: popup.php:57
+msgid "Just replace the file"
+msgstr "Sostituire semplicemente il file"
+
+#: popup.php:55
+msgid "Select media replacement type:"
+msgstr "Seleziona il tipo di sostituzione:"
+
+#: popup.php:48
+msgid "Choose a file to upload from your computer"
+msgstr "Seleziona un file da caricare dal tuo computer"
+
+#: popup.php:46
+msgid "There is no undo. Think about it!"
+msgstr "Questa operazione non è reversibile. Fai attenzione!"
+
+#: popup.php:46
+msgid "NOTE: You are about to replace the media file"
+msgstr "NOTA: Stai per sostituire il file"
+
+#: popup.php:30
+msgid "Replace Media Upload"
+msgstr "Caricamento file sostitutivo"
+
+#: popup.php:14 upload.php:3
+msgid "You do not have permission to upload files."
+msgstr "Non hai sufficienti permessi per caricare file."
+
+#: enable-media-replace.php:148
+msgid "Revised"
+msgstr "Revisionato"
+
+#: enable-media-replace.php:66
+msgid "To replace the current file, click the link and upload a replacement."
+msgstr "Per sostituire il file corrente, clicca il link e carica un file sostitutivo."
+
+#: enable-media-replace.php:66
+msgid "Upload a new file"
+msgstr "Carica un nuovo file"
+
+#: enable-media-replace.php:40 enable-media-replace.php:66
+#: enable-media-replace.php:107
+msgid "Replace media"
+msgstr "Sostituisci media"

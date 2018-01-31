@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Fifteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-16 15:50:07+0000\n"
+"PO-Revision-Date: 2018-01-02 09:02:58+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -265,6 +265,14 @@ msgstr "Continuer la lecture de %s"
 #: comments.php:69
 msgid "Comments are closed."
 msgstr "Les commentaires sont fermés."
+
+#. translators: 1: number of comments, 2: post title
+#: comments.php:35
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s réflexion au sujet de « %2$s »"
+msgstr[1] "%1$s réflexions au sujet de « %2$s »"
 
 #: author-bio.php:34
 msgid "View all posts by %s"

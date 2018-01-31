@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration - Network Admin package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-10-31 11:43:53+0000\n"
+"PO-Revision-Date: 2017-11-26 17:22:46+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +20,7 @@ msgstr "Die Konstante %s kann nicht beim Erstellen eines Netzwerks definiert sei
 msgid "You are about to delete the following sites:"
 msgstr "Sie sind dabei, die folgenden Websites zu löschen:"
 
-#: wp-admin/network/site-new.php:250
+#: wp-admin/network/site-new.php:252
 msgid "The username and a link to set the password will be mailed to this email address."
 msgstr "Der Benutzername und ein Link zum Festlegen des Passworts werden an diese E-Mail-Adresse gesendet."
 
@@ -547,7 +547,7 @@ msgstr "Sie sind dabei, folgende Themes zu entfernen:"
 msgid "Set site attributes"
 msgstr "Website-Attribute festlegen"
 
-#: wp-admin/network/settings.php:418
+#: wp-admin/network/settings.php:420
 msgid "Enable menus"
 msgstr "Menüs aktivieren"
 
@@ -566,7 +566,7 @@ msgstr "Erlaubte Dateitypen. Trennen Sie die einzelnen Typen mit einem Leerzeich
 #. translators: 1: a filename like .htaccess. 2: a file path.
 #: wp-admin/includes/network.php:548 wp-admin/includes/network.php:588
 msgid "Add the following to your %1$s file in %2$s, <strong>replacing</strong> other WordPress rules:"
-msgstr "Fügen Sie Folgendes zu Ihrer Datei %1$s in %2$s hinzu; andere WordPress-Regeln werden somit <strong>ersetzt</strong>:"
+msgstr "Fügen Sie Folgendes zu Ihrer Datei %1$s in %2$s hinzu und <strong>ersetzen</strong> Sie andere WordPress-Regeln dadurch:"
 
 #: wp-admin/network/sites.php:100 wp-admin/network/sites.php:168
 msgid "Confirm your action"
@@ -1223,7 +1223,7 @@ msgstr "Sowohl Websites, als auch Benutzerkonten können registriert werden"
 msgid "Logged in users may register new sites"
 msgstr "Angemeldete Benutzer können neue Websites registrieren"
 
-#: wp-admin/network/settings.php:396
+#: wp-admin/network/settings.php:398
 msgid "Enable administration menus"
 msgstr "Administrations-Menüs aktivieren für:"
 
@@ -1328,11 +1328,11 @@ msgstr "Maximale Dateigröße eines Uploads"
 msgid "Default Language"
 msgstr "Standardsprache"
 
-#: wp-admin/network/site-new.php:246
+#: wp-admin/network/site-new.php:248
 msgid "Admin Email"
 msgstr "Administrator E-Mail-Adresse"
 
-#: wp-admin/network/site-new.php:250
+#: wp-admin/network/site-new.php:252
 msgid "A new user will be created if the above email address is not in the database."
 msgstr "Es wird ein neuer Benutzer angelegt, sofern nicht schon ein Benutzer mit dieser E-Mail-Adresse vorhanden ist."
 
@@ -1344,7 +1344,7 @@ msgstr "Verbotene Namen für Website-Adressen"
 msgid "First Comment URL"
 msgstr "URL des ersten Kommentars"
 
-#: wp-admin/network/site-new.php:262
+#: wp-admin/network/site-new.php:264
 msgid "Add Site"
 msgstr "Website erstellen"
 
