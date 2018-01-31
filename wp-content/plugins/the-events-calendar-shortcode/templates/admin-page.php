@@ -70,6 +70,8 @@
 					<h3>orderby</h3>
 					<p><?php echo esc_html( __( 'Used to order by the end date instead of the start date.', 'the-events-calendar-shortcode' ) ); ?></p>
 						<blockquote>[ecs-list-events orderby='enddate']</blockquote>
+                    <p><?php echo esc_html( __( 'You can also use this to order by title if you wish:', 'the-events-calendar-shortcode' ) ); ?></p>
+                        <blockquote>[ecs-list-events orderby='title']</blockquote>
 					<?php do_action( 'ecs_admin_page_options_after' ); ?>
 
 				</div>
