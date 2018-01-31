@@ -1,0 +1,540 @@
+/*
+ Theme Name:   MenaLib (ULB) Entwicklung
+ Description:  Theme für Menalib-Seite (Entwicklungsversion)
+ Author:       Daniel Brenn
+ Author URI:   mailto:daniel.brenn@bibliothek.uni-halle.de
+ Template:     twentyeleven
+ Version:      1.0.0
+*/
+
+/* @see: https://codex.wordpress.org/Child_Themes */
+
+/** CUSTOM STYLES FROM HERE **/
+/* Anpassung der Seitenbreite */
+#page{
+  width: 909px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 27px;
+  margin-bottom: 27px;
+  -webkit-box-shadow: 0px 0px 5px 2px  #a1a2b3;
+-moz-box-shadow: 0px 0px 5px 2px  #a1a2b3;
+box-shadow: 0px 0px 5px 2px  #a1a2b3;
+
+}
+#respond {
+   float: left;
+}
+
+/* Headermenu */
+#access{
+  background: white;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.4);
+  border-top: 1px solid #666;
+  margin-right: 0px;
+  margin-left: 165px;
+  width: 744px;
+}
+#access div {
+	margin-left: 27px;
+}
+#access a{
+  background: white;
+  color: #666;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 12px;
+}
+#access a:hover{
+ text-decoration: underline;
+}
+#access li a {
+  text-align: right;	
+}
+
+#access li:hover > a, #access ul ul :hover > a, #access a:focus {
+    background: none;
+}
+/* Suchfeld im Headermenu */
+#branding #searchform {
+	right: 11px;
+}
+
+#branding hgroup 
+{
+
+    display: none;
+}
+
+#branding .only-search #s {
+  background-color: white;
+  border-color: #BBB;
+  color: #222;
+  width: 50%;
+  height: 12px;
+  color: #666;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 12px;
+  text-align: center;
+  background: none;
+}
+#branding .only-search #s:focus {
+  background-color: #F2F2F2;
+  width: 50%;
+  color: #666;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 12px;
+  background: none;
+}
+/* Menüleiste links */
+/* Position Menüleiste */
+/*#secondary {
+	margin-left: 0px;
+}*/
+.left-sidebar #secondary {
+	margin-left: 0px;
+	width: 165px;
+}
+.widget a {
+color: #666;
+}
+.widget a:hover{
+text-decoration: underline;
+}
+.widget {
+border-bottom: solid 1px #BBB;
+}
+.widget-title {
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 1.75;
+  text-align: right;
+}
+.widget ul li {
+    color: white;
+    text-align: right;
+}
+.widget a {
+ font-weight: normal;
+ font-family: Arial,Helvetica,sans-serif;
+ font-size: 12px;
+}
+/* Content */
+/* Menü rechts */
+#ulb_green {
+  width: 225px;
+  height: auto;
+  float: right;
+  margin-left: 672px;
+  margin-right: 10px;
+  margin-top: 58px;
+  background: #C2E28F;
+  position: absolute;
+}
+#ulb_green .widget {
+	margin-left: 5px;
+	margin-right: 5px;
+	border-bottom-color: white;
+}
+#ulb_green .widget a {
+	color: #005133;
+	
+}
+#ulb_green .widget-title {
+	color: white;
+	text-align: center;
+}
+
+/* Beitraege */
+#content {
+	margin: 0px 20px 0px 197px !important;
+	width: 440px !important;
+}
+p {
+	margin-bottom: 0px;
+}
+.entry-title, entry title a {
+  font-family: arial,helvetica,sans-serif;
+  font-size: 1.3em;
+  color: #666;
+  width: 440px;
+  font-weight: 300;
+  line-height: 1.2em;
+}
+
+article {
+	width: 440px;
+}
+.entry-content{
+  font-family: arial,helvetica,sans-serif;
+font-size: 12px;
+  text-decoration-color: black;
+ width: 440px !important;
+}
+
+.entry-content, .entry-summary 
+{
+    padding: 1.625em 0 1.625em;
+}
+
+article.feature-image.small .entry-summary p a:hover,.entry-header .comments-link a, .entry-header .comments-link a:hover, .entry-header .comments-link a:focus, .entry-header .comments-link a:active, .feature-slider a.active {
+background: none;
+  display: none;
+}
+.entry-meta a {
+	font-family: arial,helvetica,sans-serif;
+font-size: 12px;
+}
+input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="number"], textarea {
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) inset;
+}
+.entry-content td, .comment-content td {
+	padding: 6px 10px 6px 5px;
+}
+
+.lebouton {
+  min-width: 75px;
+  min-height:75px;
+  max-height: 125px;
+  max-width: 350px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background: #C2E28F;
+  text-align:center;
+  font-family: arial,helvetica,sans-serif;
+  padding: 2px 2px 2px 2px;
+  border-radius: 2px;
+}
+.lebouton a {
+	text-align:center;
+  font-family: arial,helvetica,sans-serif;
+  color: #666;
+  font-size: 15px;
+  letter-spacing: 0,2em;
+  text-decoration: none;
+}
+a:focus img[class*="align"], a:hover img[class*="align"], a:active img[class*="align"], a:focus img[class*="wp-image-"], a:hover img[class*="wp-image-"], a:active img[class*="wp-image-"], #content .gallery .gallery-icon a:focus img, #content .gallery .gallery-icon a:hover img, #content .gallery .gallery-icon a:active img {
+	background: #C2E28F;
+}
+
+.img[class*="align"], img[class*="wp-image-"], #content .gallery .gallery-icon img {
+	border: 0px;
+}
+/* Kommentare */
+.commentlist {
+	margin-left: 66px;
+	width: 440px;
+}
+.commentlist .avatar {
+	margin-left: 34px;
+}
+.commentlist > li.comment {
+	width: 330px;
+}
+.commentlist p {
+	max-width: 330px;
+	word-wrap: break-word;
+}
+/***** Plugin-spezifisches CSS *****/
+/* Veranstaltungskalender */
+.tribe-event-title{
+font-family: arial,helvetica,sans-serif;
+font-size: 11px;
+margin-right: 10px;
+}
+.tribe-event-duration{
+font-family: arial,helvetica,sans-serif;
+font-size: 10px;
+color: black;
+}
+
+.tribe-events-widget-link > a:nth-child(1){
+font-family: arial,helvetica,sans-serif;
+font-size: 11px;
+}
+li.tribe-events-list-widget-events{
+  margin-bottom: 5px !important;
+}
+.events-archive .entry-content, .events-archive .entry-header {
+	wdith: 440px;
+}
+.tribe-events-widget-link > a:nth-child(1) {
+	margin-left: 29px;
+}
+.tribe-events-list h2.tribe-events-page-title {
+	font-family: arial,helvetica,sans-serif;
+font-size: 14px;
+margin-bottom: 5px;
+}
+.tribe-events-list-separator-month span {
+		font-family: arial,helvetica,sans-serif;
+font-size: 12px;
+}
+.tribe-events-list-separator-month {
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+#tribe-events-content a, .tribe-events-event-meta a {
+		font-family: arial,helvetica,sans-serif;
+font-size: 12px;
+}
+#tribe-events .tribe-events-content p, .tribe-events-before-html p, .tribe-events-after-html p {
+			font-family: arial,helvetica,sans-serif;
+font-size: 12px;
+}
+.tribe-events-read-more {
+				font-family: arial,helvetica,sans-serif;
+font-size: 12px;
+}
+.single-tribe_events #tribe-events-content .tribe-events-event-meta dt {
+	font-family: arial,helvetica,sans-serif;
+font-size: 12px;
+}
+.single-tribe_events #tribe-events-content .tribe-events-event-meta dd {
+		font-family: arial,helvetica,sans-serif;
+font-size: 11px;
+}
+.tribe-events-meta-group .tribe-events-single-section-title {
+		font-family: arial,helvetica,sans-serif;
+font-size: 12px;
+overflow: hidden;
+}
+.tribe-events-meta-group-details > dl:nth-child(2) > dt:nth-child(5) {
+	overflow: hidden;
+	overflow-wrap: break-word;
+}
+/* Schlagwort Cloud */
+.tagcloud {
+ font-family: Arial,Helvetica,sans-serif;
+ font-size: 12px;
+ text-align: justify;
+ margin-left: 5px;
+}
+
+/* Slideshow */
+.slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image img {
+	margin-top: 5px !important;
+}
+
+/* Sprachumschalter */
+.qtranxs_widget ul {
+text-align: right;
+}
+
+/* Virtueller Katalog */
+.entry-content > form:nth-child(1) > table:nth-child(9) {
+	width: 440px;
+}
+#menainput {
+	width: 130px;
+}
+.input [type='checkbox']:checked, .input [type='checkbox']:not(:checked) {
+	
+}
+input.button:nth-child(1) {
+	position: relative;
+    background-color: #005133;
+    border: none;
+    color: #FFFFFF;
+    padding: 13px;
+    width: 65px;
+    text-align: center;
+	font-family: arial,helvetica,sans-serif;
+    font-size: 12px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+	margin-right: 5px;
+}
+
+input.button:nth-child(2) {
+	position: relative;
+    background-color: #005133;
+    border: none;
+    color: #FFFFFF;
+    padding: 13px;
+    width: 65px;
+    text-align: center;
+	font-family: arial,helvetica,sans-serif;
+    font-size: 12px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+	margin-bottom: 5px;
+}
+
+/* Kalender-Umrechnung */
+.entry-content > form:nth-child(5) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > p:nth-child(1) > input:nth-child(1) {
+    position: relative;
+    background-color: #005133;
+    border: none;
+    color: #FFFFFF;
+    padding: 13px;
+    width: 194px;
+    text-align: center;
+	font-family: arial,helvetica,sans-serif;
+    font-size: 12px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+	margin-bottom: 5px;
+}
+
+.entry-content > form:nth-child(5) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > input:nth-child(2) {
+	    position: relative;
+    background-color: #005133;
+    border: none;
+    color: #FFFFFF;
+    padding: 13px;
+    width: 194px;
+	font-family: arial,helvetica,sans-serif;
+    font-size: 12px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 8px;
+}
+.tribe-events-calendar th {
+	letter-spacing: 0px;
+	font-size: 9px;
+}
+#tribe-events-content a {
+	color: black;
+}
+.tribe-events-calendar div[id*="tribe-events-event-"] h3.tribe-events-month-event-title a {
+	font-size: 8px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+#tribe-events-content .tribe-events-tooltip h4 {
+	font-size: 10px;
+}
+.tribe-events-calendar .tribe-events-tooltip, .tribe-events-week .tribe-events-tooltip, .recurring-info-toolti {
+	display: block;
+    text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 300px;
+	padding: 0px;
+}
+
+/* Google-Map in Kontakt */
+#afmenalib {
+	margin-top: 25px;
+}
+
+/*** Wir wollen auch mobil gut aussehen ***/
+/*** ***/
+/** **/
+/* */
+@media screen and (max-width: 50em) {
+	/* Anpassung der Gesamtseite */
+	#page {
+		width: 45em;
+	}
+	/* Anpassung für den Header */
+	#branding img {
+	 width: 45em;
+	}
+	/* Anpassung für das Headermenu */
+	#access {
+    margin-left: 0px;	
+	width: 45em;
+	}
+	#access li {
+	list-style: none;
+	}
+	#access a{
+  background: white;
+  color: #666;
+ font-weight: bold;
+ letter-spacing: 0.2em;
+}
+	#branding  #searchform {
+	margin-top: 12%;	
+	}
+	/* Anpassung für den Inhalts-Bereich */
+	#content {
+	margin: 0px 2em 0px 1em !important;
+	width: 43em;
+	}
+	.entry-title, entry title a {
+font-family: arial,helvetica,sans-serif;
+font-size: 1.5em;
+color: #666;
+
+}
+article {
+	width: 35em;
+}
+.entry-content{
+  font-family: arial,helvetica,sans-serif;
+font-size: 14px;
+  text-decoration-color: black;
+ width: 35em !important;
+}
+	/* rechte Leiste weg */
+	#ulb_green {
+		display: none;
+	}
+}
+/* Suche */
+#branding #searchform {
+	right: 11px;
+}
+#branding .only-search #s {
+  background-color: white;
+  border-color: #BBB;
+  color: #222;
+  width: 50%;
+  height: 12px;
+  color: #666;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 12px;
+  text-align: center;
+  background: none;
+}
+#branding .only-search #s:focus {
+  background-color: #F2F2F2;
+  width: 50%;
+  color: #666;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 12px;
+  background: none;
+}  
+/* Anpassungen für das Theme 
+.single #author-info {
+    background: #f9f9f9;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 2.2em 0% 0 0%;
+    padding: 20px 35.4%;
+}
+#respond {
+width: auto;
+}
+.commentlist {
+width: auto;
+}
+.commentlist > li.comment {
+margin: 0px 0px 20px 102px;
+width: auto;
+}*/
+#global-footer
+{
+  /*display: none;*/
+}

@@ -1,0 +1,119 @@
+
+.entry-content h2,
+.entry-content h3
+{
+	
+}
+
+.entry-content>p
+{
+	margin-bottom: 2em;
+	
+}
+
+.entry-content a[href*='lhhal.gbv.de']:before,
+.entry-content a[href*='/opac']:before,
+.entry-content a[href*='opac.']:before,
+.entry-content a[href*='stabikat.']:before,
+.entry-content a[href*='kataloge.thulb.']:before
+
+
+{
+	content:'→';
+	padding-right: 0.2em;
+	display: inline-block;
+	vertical-align: 4%;
+	
+}
+
+.entry-content a:before
+{
+	transition: all 0.1s ease;
+}
+
+
+.entry-content a:hover:before
+{
+	transform: translate(0.2em,0em)
+}
+
+
+.entry-content .article-menu
+{
+
+
+}
+
+.entry-content .article-menu>div
+{
+
+}
+
+.entry-content .article-menu ol
+{
+	margin-bottom: 0;
+}
+
+.entry-content .article-menu div h3
+{
+
+}
+
+.entry-content .article-menu .structure,
+.entry-content .article-menu .help
+{
+	width: 100%;
+	margin-bottom: 1em;
+	padding: 1.6em;
+	padding-bottom: 1.8em;
+
+}
+
+
+.entry-content .article-menu .help
+{
+	background-color: beige; 
+}
+
+.entry-content .article-menu .help h3 
+{
+
+}
+
+.entry-content .article-menu .structure
+{
+
+
+}
+.entry-content .article-menu .structure h3 
+{
+
+}
+
+
+
+    .blink 
+    {
+      animation: blink-text 1.2s linear infinite;
+      font-weight: 700;
+    }
+
+
+
+
+@keyframes blink-text 
+{
+      25% {
+       
+       transform: translateX(0.4em); 
+      }
+      50% {
+      	
+       color: #AA0000;
+      }
+      75% {
+      	transform: translateX(-0.4em); 
+        
+      }
+}
+    

@@ -1,0 +1,30 @@
+/*
+ Theme Name:   MenaLib (ULB)
+ Description:  Theme für Menalib-Seite
+ Author:       Henry Gerlach
+ Author URI:   mailto:henry.gerlach@bibliothek.uni-halle.de
+ Template:     twentyeleven
+ Version:      1.0.1
+*/
+
+/* @see: https://codex.wordpress.org/Child_Themes */
+
+/** CUSTOM STYLES FROM HERE **/
+
+
+
+/* 
+	child-theme.css: 
+	- contains all definitions that redefine the twentyeleven theme 
+
+*/
+@import url("css/child-theme.css");
+
+
+/* 
+	post-content.css: 
+	- contains all definitions needed for posts and pages 
+	- that's the stuff you write in the Wordpress backend 
+
+*/
+@import url("css/post-content.css");
