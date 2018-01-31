@@ -1,9 +1,9 @@
 === Display Widgets ===
-Contributors: displaywidget, sswells
+Contributors: sswells
 Tags: widget, widgets, admin, show, hide, page, sidebar, content, wpmu, plugin, post, posts, content, filter, widget logic, widget context
 Requires at least: 3.1
 Tested up to: 4.3
-Stable tag: 2.05
+Stable tag: 2.7
 
 Simply hide widgets on specified pages. Adds checkboxes to each widget to either show or hide it on every site page.
 
@@ -44,7 +44,14 @@ function dw_callback_trigger(){
 
 1. The extra widget options added.
 
+== Upgrade Notice ==
+= 2.7 =
+This reverts all changes added by the 2.6 versions. This version is identical to version 2.05. Please upgrade immediately to remove code from the 2.6 series.
+
 == Changelog ==
+= 2.7 =
+* Revert all changes from 2.6 versions. This plugin is identical to 2.05, all changes have been backed out.
+
 = 2.05 =
 * Add "Text Domain" to the plugin header to enable translations
 * Add Brazilian Portuguese translation
