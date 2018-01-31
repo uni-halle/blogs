@@ -1,11 +1,11 @@
-=== Category Posts Widget ===
+﻿=== Category Posts Widget ===
 Contributors: mark-k, kometschuh, mkrdip
 Donate link: http://mkrdip.me/donate
 Tags: category, categories, posts, widget, posts widget, recent posts, category recent posts, shortcode, sidebar, excerpt, multiple widgets
 Requires at least: 2.8
 Tested up to: 4.9
-Stable tag: 4.7.4
-License: GPLv2 or later 
+Stable tag: 4.8.2
+License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Adds a widget that shows the most recent posts from a single category.
@@ -14,8 +14,8 @@ Adds a widget that shows the most recent posts from a single category.
 Category Posts Widget is a light widget designed to do one thing and do it well: display the most recent posts from a certain category.
 
 = Term and Category based Posts Widget =
-A premium version of this free widget here and available on <a href="http://tiptoppress.com/?utm_source=wordpress_org&utm_campaign=premium_widget_cpw&utm_medium=web">tiptoppress.com</a> created for big Wordpress sites.
-We've also started creating free widget extensions for the Premium Widget. The first extension is the <a href="https://wordpress.org/plugins/excerpt-extension/">Excerpt Extension</a>.
+A premium version of this free widget here and available on [tiptoppress.com](http://tiptoppress.com/?utm_source=wordpress_org&utm_campaign=premium_widget_cpw&utm_medium=web) created for big Wordpress sites.
+We've also started creating free widget Add-ons for the Premium Widget here: [Widget extensions](http://tiptoppress.com/extensions/?utm_source=wordpress_org&utm_campaign=premium_widget_cpw&utm_medium=web).
 
 = Premium features =
 * "Post List Alterations"
@@ -26,13 +26,21 @@ We've also started creating free widget extensions for the Premium Widget. The f
 * Categories, Custom Post Types, Taxonomies, Events, Products, ...
 * Full background post images
 * Mouse hover effects for post thumbnail
-* <a target="_blank" href="http://tiptoppress.com/category/extensions/?utm_source=wordpress_org&utm_campaign=premium_features_extensions&utm_medium=web">Extensions</a>
+* All Category Posts Widget features
+* E-Mail support
+* Free trail on localhost
 * E-Mail support
 * All free features
-* Free trail on localhost
-* More [examples on the demo pages](http://demo.tiptoppress.com/?utm_source=wordpress_org&utm_campaign=premium_features_demo&utm_medium=web)
+* More examples on the [demo pages](http://demo.tiptoppress.com/?utm_source=wordpress_org&utm_campaign=demo_cpw&utm_medium=web)
 
 = Features =
+* SVG icon support for post formats
+* Template to arrange the post details
+* Premade Templates
+* The Template text can be a placeholder, plain text, HTML or HTML for icons
+* New date format: Time since plublished
+* Filter by post status: Published, scheduled, private
+* New hover effect: SVG icon
 * Shortcode (Easily change all Shortcode options in the customizer).
 * Support multiple shortcodes at the same post.
 * Add option for post offset (use two or more widgets after another).
@@ -73,22 +81,22 @@ We've also started creating free widget extensions for the Premium Widget. The f
 * Use WP user profile for settings ('auto close' and if the shortcode button appears in the editor toolbar).
 
 = Documentation =
-* Full documentation on [tiptoppress.com](http://tiptoppress.com/category-posts-widget/documentation-4-7/?utm_source=wordpress_org&utm_campaign=documentation_4_7_cpw&utm_medium=web)
+* Full [documentation](http://tiptoppress.com/category-posts-widget/documentation-4-8/?utm_source=wordpress_org&utm_campaign=documentation_4_8_cpw&utm_medium=web)
 * Shortcode: Use [catposts] [in the content and edit options in the customizer](http://tiptoppress.com/use-shortcode-to-add-category-posts-widget-to-the-content/?utm_source=wordpress_org&utm_campaign=documentation_shortcode_cpw&utm_medium=web)
 * Formatting date and time: See <a target="_blank" href="https://codex.wordpress.org/Formatting_Date_and_Time">Formatting Date and Time</a>
 
 = Contribute =
-While using this plugin if you find any bug or any conflict, please submit an issue at 
-[Github](https://github.com/tiptoppress/category-posts-widget) (If possible with a pull request). 
+While using this plugin if you find any bug or any conflict, please submit an issue at
+[Github](https://github.com/tiptoppress/category-posts-widget) (If possible with a pull request).
 
 == Installation ==
 = Automatic installation =
-Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of Category Posts Widget, 
+Automatic installation is the easiest option as WordPress handles the file transfers itself and you don’t need to leave your web browser. To do an automatic install of Category Posts Widget,
 
-1. log in to your WordPress dashboard, navigate to the Plugins menu and click Add New. 
-2. In the search field type “Category Posts Widget” and click Search Plugins. 
-3. Once you’ve found plugin, you can install it by simply clicking “Install Now”. 
-4. Then, go to plugins page of WordPress admin activate the plugin. 
+1. log in to your WordPress dashboard, navigate to the Plugins menu and click Add New.
+2. In the search field type “Category Posts Widget” and click Search Plugins.
+3. Once you’ve found plugin, you can install it by simply clicking “Install Now”.
+4. Then, go to plugins page of WordPress admin activate the plugin.
 5. Now, goto the Widgets page of the Appearance section and configure the Category Posts widget.
 
 = Manual installation =
@@ -103,6 +111,16 @@ Automatic installation is the easiest option as WordPress handles the file trans
 * Version 3.0 or later version uses WordPress 2.9's built in post thumbnail functionality.
 
 == Frequently Asked Questions ==
+= Template, placeholder and post detail =
+Here You can control the [Post Detail parts](http://tiptoppress.com/category-posts-widget/documentation-4-8/#Post_details), which appears as part of the post item. All post detail will placed as placeholder. The text in the Template area can be a placeholder, plain text, HTML code or HTML code for icons.
+
+= Use SVG icons =
+For SVG icon HTML we recommend the [WordPress Dashicons](https://developer.wordpress.org/resource/dashicons/), which are included as default and can be used without any icon-font including.
+
+= How Category Posts Widget work with SiteOrigin Page Builder =
+Please add the widget with shortcode [catposts] inside a editor widget which is placed to a SiteOrigin Page Builder row.
+We also create a YouTube video: [How Category Posts Widget work with SiteOrigin Page Builder](http://tiptoppress.com/how-category-posts-widget-work-with-siteorigin-page-builder/)
+
 = Thumb and Title not able to float left =
 Check the option in the Thumbnails panels > "Show thumbnails above text".
 Then add this custom CSS:
@@ -127,13 +145,34 @@ We apologies for any headache this may cause you, but frankly it is better for y
 PHP 5.2 is very old and any support for it from the php developers had ended more then 5 years ago [php.net/eol.php](http://php.net/eol.php).
 We know there are peopel how use PHP 5.2 [wordpress.org/about/stats](https://wordpress.org/about/stats/) and we can't imagine this people will have no other problems, if they don't update.
 
+= You check the PHP version with phpversion(), but the widget don't work =
+Check also the .htaccess file, if there is an entry for an older PHP version.
+
 == Screenshots ==
-1. The widget configuration dialog.
-2. Front end of the widget using a default WordPress Theme.
-3. Use shortcode [catposts] in the content and edit options in the customizer.
+1. Front end of the widget with SVG icon support for post formats, hover effects and the Template text-area.
+2. Template to arrange the post details with placeholders.
+3. Edit the widget options with the customizer.
+4. Use shortcode [catposts] in the content.
+5. The widget configuration dialog.
+6. Widget behaviour settings for each user.
 
 == Changelog ==
 [Read more on our blog ...](http://tiptoppress.com/category/category-posts-widget?utm_source=wordpress_org&utm_campaign=changelog_cpw&utm_medium=web)
+
+= 4.8.2 - January 30th 2018 =
+* Fixed Adding the widget with the customizer only the title is shown
+* Fixed Recognize "Empty lines" > Next line is a paragraph in the Template in widget areas
+
+= 4.8.1 - January 25th 2018 =
+* Fixed Recognize "Empty lines" > Next line is a paragraph in the Template
+
+= 4.8 - January 22th 2018 =
+* SVG icon support for post formats
+* Template to arrange the post details
+* Premade Templates
+* Date format: Time since plublished
+* Filter by post status: Published, scheduled, private
+* Hover effect: SVG icon
 
 = 4.7.4 - October 21th 2017 =
 * Bugfix for filter by post status (note private)
