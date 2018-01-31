@@ -86,7 +86,7 @@ opinionstage_enqueue_js_asset('menu-page');
 						</div>
 						<div class="opinionstage-section-cell opinionstage-description-cell">
 							<div class="title">Outcome Quiz</div>
-							<div class="example">e.g. What's your most dominant trait?</div>
+							<div class="example">e.g. Where should you travel next?</div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-btn-cell">
 							<?php echo opinionstage_create_widget_link('outcome', 'opinionstage-blue-btn opinionstage-create-btn'); ?>
@@ -109,7 +109,7 @@ opinionstage_enqueue_js_asset('menu-page');
 							<div class="os-icon icon-os-widget-form"></div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-description-cell">
-							<div class="title">Contact Form</div>
+							<div class="title">Form</div>
 							<div class="example">e.g. Collect email addresses</div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-btn-cell">
@@ -240,17 +240,17 @@ opinionstage_enqueue_js_asset('menu-page');
 		<div class="opinionstage-dashboard-right">
 			<div id="opinionstage-section-help" class="opinionstage-dashboard-section">
 				<div class="opinionstage-section-header">
-					<div class="opinionstage-section-title">Help</div>
+					<div class="opinionstage-section-title">Need Help?</div>
 				</div>
 				<div class="opinionstage-section-content">
 					<div class="opinionstage-help-row">
 						<a href="http://blog.opinionstage.com/how-to-add-interactive-content-on-wordpress/?o=wp35e8" class="opinionstage-help-link" target="_blank">How to use this plugin</a>
 					</div>
 					<div class="opinionstage-help-row">
-						<?php echo opinionstage_create_link('Quiz, Survey, Form, Slideshow & List examples', 'discover', '', 'opinionstage-help-link'); ?>
+						<?php echo opinionstage_create_link('Live content examples', 'discover', '', 'opinionstage-help-link'); ?>
 					</div>
 					<div class="opinionstage-help-row">
-						<a href="http://blog.opinionstage.com/video-tutorials" class="opinionstage-help-link" target="_blank">View video tutorials</a>
+						<a href="http://blog.opinionstage.com/video-tutorials" class="opinionstage-help-link" target="_blank">View all video tutorials</a>
 					</div>
 					<div class="opinionstage-help-row">
 						<a href="https://www.opinionstage.com/dashboard/content?o=wp35e8" class="opinionstage-help-link" target="_blank">To contact us, click here and then on the chat window located on bottom/right of screen</a>
