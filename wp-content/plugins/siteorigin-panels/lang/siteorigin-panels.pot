@@ -1,4 +1,4 @@
-# Copyright (C) 2017 siteorigin-panels
+# Copyright (C) 2018 siteorigin-panels
 # This file is distributed under the same license as the siteorigin-panels package.
 msgid ""
 msgstr ""
@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
 "Last-Translator: SiteOrigin <support@siteorigin.com>\n"
 "Language-Team: SiteOrigin <support@siteorigin.com>\n"
 "X-Poedit-Basepath: ..\n"
@@ -17,51 +17,63 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: tmp/inc/admin-layouts.php:38, tmp/inc/admin-layouts.php:104
+#: tmp/inc/admin-layouts.php:40, tmp/inc/admin-layouts.php:199
 msgid "Layouts Directory"
 msgstr ""
 
-#: tmp/inc/admin-layouts.php:83
+#: tmp/inc/admin-layouts.php:163
+msgid "Invalid request."
+msgstr ""
+
+#: tmp/inc/admin-layouts.php:178
 msgid "Theme Defined Layouts"
 msgstr ""
 
-#: tmp/inc/admin-layouts.php:154
+#: tmp/inc/admin-layouts.php:249
 msgid "Clone %s"
 msgstr ""
 
-#: tmp/inc/admin-layouts.php:192
+#: tmp/inc/admin-layouts.php:287
 msgid " - Results For:"
 msgstr ""
 
-#: tmp/inc/admin-widget-dialog.php:97, tmp/widgets/widgets.php:164
+#: tmp/inc/admin-layouts.php:320
+msgid "Missing layout ID or no such layout exists"
+msgstr ""
+
+#: tmp/inc/admin-layouts.php:366
+msgid "There was a problem fetching the layout. Please try again later."
+msgstr ""
+
+#: tmp/inc/admin-widget-dialog.php:99, tmp/widgets/widgets.php:164
 msgid "Widgets Bundle"
 msgstr ""
 
-#: tmp/inc/admin-widget-dialog.php:112
+#: tmp/inc/admin-widget-dialog.php:114
 msgid "Enable more widgets in the 1{Widgets Bundle settings}."
 msgstr ""
 
-#: tmp/inc/admin-widget-dialog.php:118, tmp/inc/data/widgets-bundle.php:11, tmp/inc/data/widgets-bundle.php:23, tmp/inc/data/widgets-bundle.php:35, tmp/inc/data/widgets-bundle.php:47, tmp/inc/data/widgets-bundle.php:59, tmp/inc/data/widgets-bundle.php:71
+#: tmp/inc/admin-widget-dialog.php:120, tmp/inc/data/widgets-bundle.php:11, tmp/inc/data/widgets-bundle.php:23, tmp/inc/data/widgets-bundle.php:35, tmp/inc/data/widgets-bundle.php:47, tmp/inc/data/widgets-bundle.php:59, tmp/inc/data/widgets-bundle.php:71
 msgid "SiteOrigin Widgets Bundle"
 msgstr ""
 
-#: tmp/inc/admin-widget-dialog.php:119
+#: tmp/inc/admin-widget-dialog.php:121
 msgid "Install the 1{Widgets Bundle} to get extra widgets."
 msgstr ""
 
-#: tmp/inc/admin-widget-dialog.php:127
+#: tmp/inc/admin-widget-dialog.php:129
 msgid "Page Builder Widgets"
 msgstr ""
 
-#: tmp/inc/admin-widget-dialog.php:135
+#: tmp/inc/admin-widget-dialog.php:137
 msgid "You can enable the legacy (PB) widgets in the 1{Page Builder settings}."
 msgstr ""
 
-#: tmp/inc/admin-widget-dialog.php:143
+#: tmp/inc/admin-widget-dialog.php:145
 msgid "WordPress Widgets"
 msgstr ""
 
-#: tmp/inc/admin-widget-dialog.php:183, tmp/inc/settings.php:322
+#: tmp/inc/admin-widget-dialog.php:185, tmp/inc/settings.php:322
 msgid "Recommended Widgets"
 msgstr ""
 
@@ -73,344 +85,388 @@ msgstr ""
 msgid "Installing %s"
 msgstr ""
 
-#: tmp/inc/admin.php:123
+#: tmp/inc/admin.php:126
 msgid "Support Forum"
 msgstr ""
 
-#: tmp/inc/admin.php:124
+#: tmp/inc/admin.php:127
 msgid "Newsletter"
 msgstr ""
 
-#: tmp/inc/admin.php:127, tmp/tpl/js-templates.php:44
+#: tmp/inc/admin.php:130, tmp/tpl/js-templates.php:44
 msgid "Addons"
 msgstr ""
 
-#: tmp/inc/admin.php:140, tmp/inc/admin.php:491, tmp/inc/admin.php:1002, tmp/inc/admin.php:1007, tmp/inc/settings.php:195, tmp/tpl/js-templates.php:203
+#: tmp/inc/admin.php:143, tmp/inc/admin.php:507, tmp/inc/admin.php:1018, tmp/inc/admin.php:1023, tmp/inc/settings.php:195, tmp/tpl/js-templates.php:200
 msgid "Page Builder"
 msgstr ""
 
-#: tmp/inc/admin.php:276
+#: tmp/inc/admin.php:279
 msgid "All Widgets"
 msgstr ""
 
-#: tmp/inc/admin.php:302
+#: tmp/inc/admin.php:305
 msgid "Missing Widget"
 msgstr ""
 
-#: tmp/inc/admin.php:303
+#: tmp/inc/admin.php:306
 msgid "Page Builder doesn't know about this widget."
 msgstr ""
 
-#: tmp/inc/admin.php:307
+#: tmp/inc/admin.php:310
 msgid "%d seconds"
 msgstr ""
 
-#: tmp/inc/admin.php:309
+#: tmp/inc/admin.php:312
 msgid "%d minutes"
 msgstr ""
 
-#: tmp/inc/admin.php:311
+#: tmp/inc/admin.php:314
 msgid "%d hours"
 msgstr ""
 
-#: tmp/inc/admin.php:314
+#: tmp/inc/admin.php:317
 msgid "%d second"
 msgstr ""
 
-#: tmp/inc/admin.php:316
+#: tmp/inc/admin.php:319
 msgid "%d minute"
 msgstr ""
 
-#: tmp/inc/admin.php:318
+#: tmp/inc/admin.php:321
 msgid "%d hour"
 msgstr ""
 
-#: tmp/inc/admin.php:321
+#: tmp/inc/admin.php:324
 msgid "%s before"
 msgstr ""
 
-#: tmp/inc/admin.php:322
+#: tmp/inc/admin.php:325
 msgid "Now"
 msgstr ""
 
-#: tmp/inc/admin.php:326
+#: tmp/inc/admin.php:329
 msgid "Current"
 msgstr ""
 
-#: tmp/inc/admin.php:327
+#: tmp/inc/admin.php:330
 msgid "Original"
 msgstr ""
 
-#: tmp/inc/admin.php:328
+#: tmp/inc/admin.php:331
 msgid "Version restored"
 msgstr ""
 
-#: tmp/inc/admin.php:329
+#: tmp/inc/admin.php:332
 msgid "Converted to editor"
 msgstr ""
 
-#: tmp/inc/admin.php:333
+#: tmp/inc/admin.php:336
 msgid "Widget deleted"
 msgstr ""
 
-#: tmp/inc/admin.php:335
+#: tmp/inc/admin.php:338
 msgid "Widget added"
 msgstr ""
 
-#: tmp/inc/admin.php:337
+#: tmp/inc/admin.php:340
 msgid "Widget edited"
 msgstr ""
 
-#: tmp/inc/admin.php:339
+#: tmp/inc/admin.php:342
 msgid "Widget duplicated"
 msgstr ""
 
-#: tmp/inc/admin.php:341
+#: tmp/inc/admin.php:344
 msgid "Widget moved"
 msgstr ""
 
-#: tmp/inc/admin.php:345
+#: tmp/inc/admin.php:348
 msgid "Row deleted"
 msgstr ""
 
-#: tmp/inc/admin.php:347
+#: tmp/inc/admin.php:350
 msgid "Row added"
 msgstr ""
 
-#: tmp/inc/admin.php:349
+#: tmp/inc/admin.php:352
 msgid "Row edited"
 msgstr ""
 
-#: tmp/inc/admin.php:351
+#: tmp/inc/admin.php:354
 msgid "Row moved"
 msgstr ""
 
-#: tmp/inc/admin.php:353
+#: tmp/inc/admin.php:356
 msgid "Row duplicated"
 msgstr ""
 
-#: tmp/inc/admin.php:355
+#: tmp/inc/admin.php:358
 msgid "Row pasted"
 msgstr ""
 
-#: tmp/inc/admin.php:358
+#: tmp/inc/admin.php:361
 msgid "Cell resized"
 msgstr ""
 
-#: tmp/inc/admin.php:361
+#: tmp/inc/admin.php:364
 msgid "Prebuilt layout loaded"
 msgstr ""
 
-#: tmp/inc/admin.php:365
+#: tmp/inc/admin.php:368
 msgid "Loading prebuilt layout"
 msgstr ""
 
-#: tmp/inc/admin.php:366
+#: tmp/inc/admin.php:369
 msgid "Would you like to copy this editor's existing content to Page Builder?"
 msgstr ""
 
-#: tmp/inc/admin.php:367
+#: tmp/inc/admin.php:370
 msgid "Would you like to clear your Page Builder content and revert to using the standard visual editor?"
 msgstr ""
 
-#: tmp/inc/admin.php:369
+#: tmp/inc/admin.php:372
 msgid "Layout Builder Widget"
 msgstr ""
 
-#: tmp/inc/admin.php:371, tmp/tpl/js-templates.php:107, tmp/tpl/js-templates.php:426
+#: tmp/inc/admin.php:374, tmp/tpl/js-templates.php:104, tmp/tpl/js-templates.php:425
 msgid "Are you sure?"
 msgstr ""
 
-#: tmp/inc/admin.php:373
+#: tmp/inc/admin.php:376
 msgid "%s is ready to insert."
 msgstr ""
 
-#: tmp/inc/admin.php:377
+#: tmp/inc/admin.php:380
 msgid "Add Widget Below"
 msgstr ""
 
-#: tmp/inc/admin.php:378
+#: tmp/inc/admin.php:381
 msgid "Add Widget to Cell"
 msgstr ""
 
-#: tmp/inc/admin.php:379, tmp/tpl/js-templates.php:230
+#: tmp/inc/admin.php:382, tmp/tpl/js-templates.php:227
 msgid "Search Widgets"
 msgstr ""
 
-#: tmp/inc/admin.php:381, tmp/tpl/js-templates.php:17, tmp/tpl/js-templates.php:19
+#: tmp/inc/admin.php:384, tmp/tpl/js-templates.php:17, tmp/tpl/js-templates.php:19
 msgid "Add Row"
 msgstr ""
 
-#: tmp/inc/admin.php:382
+#: tmp/inc/admin.php:385
 msgid "Column"
 msgstr ""
 
-#: tmp/inc/admin.php:384
+#: tmp/inc/admin.php:387
 msgid "Cell Actions"
 msgstr ""
 
-#: tmp/inc/admin.php:385
+#: tmp/inc/admin.php:388
 msgid "Paste Widget"
 msgstr ""
 
-#: tmp/inc/admin.php:387
+#: tmp/inc/admin.php:390
 msgid "Widget Actions"
 msgstr ""
 
-#: tmp/inc/admin.php:388
+#: tmp/inc/admin.php:391
 msgid "Edit Widget"
 msgstr ""
 
-#: tmp/inc/admin.php:389
+#: tmp/inc/admin.php:392
 msgid "Duplicate Widget"
 msgstr ""
 
-#: tmp/inc/admin.php:390
+#: tmp/inc/admin.php:393
 msgid "Delete Widget"
 msgstr ""
 
-#: tmp/inc/admin.php:391
+#: tmp/inc/admin.php:394
 msgid "Copy Widget"
 msgstr ""
 
-#: tmp/inc/admin.php:392
+#: tmp/inc/admin.php:395
 msgid "Paste Widget Below"
 msgstr ""
 
-#: tmp/inc/admin.php:394
+#: tmp/inc/admin.php:397
 msgid "Row Actions"
 msgstr ""
 
-#: tmp/inc/admin.php:395, tmp/tpl/js-templates.php:105
+#: tmp/inc/admin.php:398, tmp/tpl/js-templates.php:102
 msgid "Edit Row"
 msgstr ""
 
-#: tmp/inc/admin.php:396, tmp/tpl/js-templates.php:106
+#: tmp/inc/admin.php:399, tmp/tpl/js-templates.php:103
 msgid "Duplicate Row"
 msgstr ""
 
-#: tmp/inc/admin.php:397, tmp/tpl/js-templates.php:107
+#: tmp/inc/admin.php:400, tmp/tpl/js-templates.php:104
 msgid "Delete Row"
 msgstr ""
 
-#: tmp/inc/admin.php:398
+#: tmp/inc/admin.php:401
 msgid "Copy Row"
 msgstr ""
 
-#: tmp/inc/admin.php:399
+#: tmp/inc/admin.php:402
 msgid "Paste Row"
 msgstr ""
 
-#: tmp/inc/admin.php:401
+#: tmp/inc/admin.php:404
 msgid "Draft"
 msgstr ""
 
-#: tmp/inc/admin.php:402
+#: tmp/inc/admin.php:405
 msgid "Untitled"
 msgstr ""
 
-#: tmp/inc/admin.php:404
+#: tmp/inc/admin.php:407
 msgid "New Row"
 msgstr ""
 
-#: tmp/inc/admin.php:405, tmp/inc/styles.php:183, tmp/tpl/js-templates.php:70
+#: tmp/inc/admin.php:408, tmp/inc/admin.php:416, tmp/inc/styles.php:183, tmp/tpl/js-templates.php:69
 msgid "Row"
 msgstr ""
 
+#: tmp/inc/admin.php:411
+msgid "Hmmm... Adding layout elements is not enabled. Please check if Page Builder has been configured to allow adding elements."
+msgstr ""
+
+#: tmp/inc/admin.php:412
+msgid "Add a {{%= items[0] %}} to get started."
+msgstr ""
+
 #: tmp/inc/admin.php:413
-msgid "Page Builder layouts"
+msgid "Add a {{%= items[0] %}} or {{%= items[1] %}} to get started."
 msgstr ""
 
 #: tmp/inc/admin.php:414
+msgid "Add a {{%= items[0] %}}, {{%= items[1] %}} or {{%= items[2] %}} to get started."
+msgstr ""
+
+#: tmp/inc/admin.php:415, tmp/inc/styles.php:316, tmp/tpl/js-templates.php:68
+msgid "Widget"
+msgstr ""
+
+#: tmp/inc/admin.php:417, tmp/tpl/js-templates.php:70
+msgid "Prebuilt Layout"
+msgstr ""
+
+#: tmp/inc/admin.php:419
+msgid "Read our %s if you need help."
+msgstr ""
+
+#: tmp/inc/admin.php:420, tmp/tpl/js-templates.php:71
+msgid "documentation"
+msgstr ""
+
+#: tmp/inc/admin.php:429
+msgid "Page Builder layouts"
+msgstr ""
+
+#: tmp/inc/admin.php:430
 msgid "Error uploading or importing file."
 msgstr ""
 
-#: tmp/inc/admin.php:572, tmp/inc/home.php:26
+#: tmp/inc/admin.php:588, tmp/inc/home.php:26
 msgid "Home Page"
 msgstr ""
 
-#: tmp/inc/admin.php:666
+#: tmp/inc/admin.php:682
 msgid "Untitled Widget"
 msgstr ""
 
-#: tmp/inc/admin.php:831
+#: tmp/inc/admin.php:847
 msgid "You need to install 1{%1$s} to use the widget 2{%2$s}."
 msgstr ""
 
-#: tmp/inc/admin.php:837
+#: tmp/inc/admin.php:853
 msgid "Save and reload this page to start using the widget after you've installed it."
 msgstr ""
 
-#: tmp/inc/admin.php:853
+#: tmp/inc/admin.php:869
 msgid "The widget 1{%1$s} is not available. Please try locate and install the missing plugin. Post on the 2{support forums} if you need help."
 msgstr ""
 
-#: tmp/inc/admin.php:1019
+#: tmp/inc/admin.php:1035
 msgid "%s Widgets"
 msgstr ""
 
-#: tmp/inc/admin.php:1065
+#: tmp/inc/admin.php:1081
 msgid "12 Page Builder Tips"
 msgstr ""
 
-#: tmp/inc/admin.php:1068
+#: tmp/inc/admin.php:1084
 msgid "Sign up to our newsletter and we'll send you this free Page Builder video course."
 msgstr ""
 
-#: tmp/inc/admin.php:1069
+#: tmp/inc/admin.php:1085
 msgid "12 tips that'll help you get the most out of Page Builder."
 msgstr ""
 
-#: tmp/inc/admin.php:1070
+#: tmp/inc/admin.php:1086
 msgid "Watch the video to find out more, then sign up below to get started."
 msgstr ""
 
-#: tmp/inc/admin.php:1071, tmp/inc/admin.php:1081
+#: tmp/inc/admin.php:1087, tmp/inc/admin.php:1097
 msgid "We'll email you a confirmation. You can unsubscribe at any time."
 msgstr ""
 
-#: tmp/inc/admin.php:1075
+#: tmp/inc/admin.php:1091
 msgid "Free Page Builder Addons"
 msgstr ""
 
-#: tmp/inc/admin.php:1078
+#: tmp/inc/admin.php:1094
 msgid "The free animations addon allows you to add beautiful animations to Page Builder elements."
 msgstr ""
 
-#: tmp/inc/admin.php:1079
+#: tmp/inc/admin.php:1095
 msgid "Sign up to our newsletter and we'll send you the addon as a free gift."
 msgstr ""
 
-#: tmp/inc/admin.php:1080
+#: tmp/inc/admin.php:1096
 msgid "Plus, we'll send you even more powerful addons, for as long as you're subscribed."
 msgstr ""
 
-#: tmp/inc/admin.php:1096
+#: tmp/inc/admin.php:1112
 msgid "Watch Intro Video"
 msgstr ""
 
-#: tmp/inc/admin.php:1097
+#: tmp/inc/admin.php:1113
 msgid "Loaded from Vimeo Servers"
 msgstr ""
 
-#: tmp/inc/admin.php:1098
+#: tmp/inc/admin.php:1114
 msgid "Please enter a valid email address."
 msgstr ""
 
-#: tmp/inc/admin.php:1100
+#: tmp/inc/admin.php:1116
 msgid "Your Name"
 msgstr ""
 
-#: tmp/inc/admin.php:1101
+#: tmp/inc/admin.php:1117
 msgid "Your Email"
 msgstr ""
 
-#: tmp/inc/admin.php:1102
+#: tmp/inc/admin.php:1118
 msgid "Sign Up"
 msgstr ""
 
-#: tmp/inc/admin.php:1103, tmp/tpl/js-templates.php:242
+#: tmp/inc/admin.php:1119, tmp/tpl/js-templates.php:239
 msgid "Close"
+msgstr ""
+
+#: tmp/inc/admin.php:1130
+msgid "Get a lightbox addon for SiteOrigin widgets"
+msgstr ""
+
+#: tmp/inc/admin.php:1134
+msgid "Get the row, cell and widget animations addon"
+msgstr ""
+
+#: tmp/inc/admin.php:1138
+msgid "Get premium email support for SiteOrigin Page Builder"
 msgstr ""
 
 #: tmp/inc/data/widgets-bundle.php:7
@@ -945,10 +1001,6 @@ msgstr ""
 msgid "Color of links inside this cell."
 msgstr ""
 
-#: tmp/inc/styles.php:316, tmp/tpl/js-templates.php:69
-msgid "Widget"
-msgstr ""
-
 #: tmp/inc/styles.php:324
 msgid "Color of text inside this widget."
 msgstr ""
@@ -1173,7 +1225,7 @@ msgstr ""
 msgid "Add Widget"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:22
+#: tmp/tpl/js-templates.php:22, tmp/tpl/js-templates.php:390
 msgid "Prebuilt Layouts"
 msgstr ""
 
@@ -1205,163 +1257,147 @@ msgstr ""
 msgid "Revert to Editor"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:68
+#: tmp/tpl/js-templates.php:67
 msgid "Add a %s, %s or %s to get started. Read our %s if you need help."
 msgstr ""
 
-#: tmp/tpl/js-templates.php:71
-msgid "Prebuilt Layout"
-msgstr ""
-
-#: tmp/tpl/js-templates.php:72
-msgid "documentation"
-msgstr ""
-
-#: tmp/tpl/js-templates.php:79
+#: tmp/tpl/js-templates.php:78
 msgid "Pro Tip"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:81
-msgid "12 tips every Page Builder user should know."
-msgstr ""
-
-#: tmp/tpl/js-templates.php:151
+#: tmp/tpl/js-templates.php:148
 msgid "Edit"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:152, tmp/tpl/js-templates.php:274, tmp/tpl/js-templates.php:359
+#: tmp/tpl/js-templates.php:149, tmp/tpl/js-templates.php:271, tmp/tpl/js-templates.php:356
 msgid "Duplicate"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:153, tmp/tpl/js-templates.php:273, tmp/tpl/js-templates.php:358
+#: tmp/tpl/js-templates.php:150, tmp/tpl/js-templates.php:270, tmp/tpl/js-templates.php:355
 msgid "Delete"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:212, tmp/tpl/js-templates.php:277, tmp/tpl/js-templates.php:366, tmp/tpl/js-templates.php:558
+#: tmp/tpl/js-templates.php:209, tmp/tpl/js-templates.php:274, tmp/tpl/js-templates.php:363, tmp/tpl/js-templates.php:557
 msgid "Done"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:226
+#: tmp/tpl/js-templates.php:223
 msgid "Add New Widget %s"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:327
+#: tmp/tpl/js-templates.php:324
 msgid "Left to Right"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:328
+#: tmp/tpl/js-templates.php:325
 msgid "Right to Left"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:339
+#: tmp/tpl/js-templates.php:336
 msgid "1{Set row layout}: %1$s columns with a ratio of %2$s going from %3$s"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:345
+#: tmp/tpl/js-templates.php:342
 msgid "Set"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:364, tmp/tpl/js-templates.php:420
+#: tmp/tpl/js-templates.php:361, tmp/tpl/js-templates.php:419
 msgid "Insert"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:384
+#: tmp/tpl/js-templates.php:381
 msgid "Page Builder Layouts"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:388
+#: tmp/tpl/js-templates.php:385
 msgid "Search"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:392
-msgid "Theme Defined"
-msgstr ""
-
-#: tmp/tpl/js-templates.php:401
+#: tmp/tpl/js-templates.php:400
 msgid "Import/Export"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:408
+#: tmp/tpl/js-templates.php:407
 msgid "Clone: %s"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:424
+#: tmp/tpl/js-templates.php:423
 msgid "Insert after"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:425
+#: tmp/tpl/js-templates.php:424
 msgid "Insert before"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:426
+#: tmp/tpl/js-templates.php:425
 msgid "Replace current"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:437
+#: tmp/tpl/js-templates.php:436
 msgid "Do you want to browse the Prebuilt Layouts directory?"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:438
+#: tmp/tpl/js-templates.php:437
 msgid "Enable"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:451
+#: tmp/tpl/js-templates.php:450
 msgid "Your search didn't return any results"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:479
+#: tmp/tpl/js-templates.php:478
 msgid "Previous"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:480
+#: tmp/tpl/js-templates.php:479
 msgid "Next"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:490
+#: tmp/tpl/js-templates.php:489
 msgid "Drop import file here"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:491
+#: tmp/tpl/js-templates.php:490
 msgid "Or"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:494
+#: tmp/tpl/js-templates.php:493
 msgid "Select Import File"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:508
+#: tmp/tpl/js-templates.php:507
 msgid "Download Layout"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:519
+#: tmp/tpl/js-templates.php:518
 msgid "Page Builder Change History"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:534
+#: tmp/tpl/js-templates.php:533
 msgid "Restore Version"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:552, tmp/tpl/js-templates.php:553
+#: tmp/tpl/js-templates.php:551, tmp/tpl/js-templates.php:552
 msgid "Collapse"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:552
+#: tmp/tpl/js-templates.php:551
 msgid "Expand"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:560
+#: tmp/tpl/js-templates.php:559
 msgid "Toggle desktop mode"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:563
+#: tmp/tpl/js-templates.php:562
 msgid "Toggle tablet mode"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:566
+#: tmp/tpl/js-templates.php:565
 msgid "Toggle mobile mode"
 msgstr ""
 
-#: tmp/tpl/js-templates.php:605
+#: tmp/tpl/js-templates.php:604
 msgid "No Results"
 msgstr ""
 

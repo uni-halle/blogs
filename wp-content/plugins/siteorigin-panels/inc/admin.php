@@ -61,6 +61,9 @@ class SiteOrigin_Panels_Admin {
 		SiteOrigin_Panels_Admin_Layouts::single();
 
 		$this->in_save_post = false;
+
+		add_filter( 'gutenberg_can_edit_post_type', array( $this, 'disable_gutenberg_for_panels_posts' ), 10, 2 );
+		add_filter( 'filter_gutenberg_meta_boxes', array( $this, 'disable_panels_for_gutenberg_posts' ) );
 	}
 
 	/**
@@ -403,7 +406,20 @@ class SiteOrigin_Panels_Admin {
 					'row' => array(
 						'add' => __( 'New Row', 'siteorigin-panels' ),
 						'edit' => __( 'Row', 'siteorigin-panels' ),
-					)
+					),
+					'welcomeMessage' => array(
+						'addingDisabled' => __( 'Hmmm... Adding layout elements is not enabled. Please check if Page Builder has been configured to allow adding elements.', 'siteorigin-panels' ),
+                        'oneEnabled' => __( 'Add a {{%= items[0] %}} to get started.', 'siteorigin-panels' ),
+                        'twoEnabled' => __( 'Add a {{%= items[0] %}} or {{%= items[1] %}} to get started.', 'siteorigin-panels' ),
+                        'threeEnabled' => __( 'Add a {{%= items[0] %}}, {{%= items[1] %}} or {{%= items[2] %}} to get started.', 'siteorigin-panels' ),
+                        'addWidgetButton' => "<a href='#' class='so-tool-button so-widget-add'>" . __( 'Widget', 'siteorigin-panels' ) . "</a>",
+                        'addRowButton' => "<a href='#' class='so-tool-button so-row-add'>" . __( 'Row', 'siteorigin-panels' ) . "</a>",
+                        'addPrebuiltButton' => "<a href='#' class='so-tool-button so-prebuilt-add'>" . __( 'Prebuilt Layout', 'siteorigin-panels' ) . "</a>",
+                        'docsMessage' => sprintf(
+                                __( 'Read our %s if you need help.', 'siteorigin-panels' ),
+                            "<a href='https://siteorigin.com/page-builder/documentation/' target='_blank' rel='noopener noreferrer'>" . __( 'documentation', 'siteorigin-panels' ) . "</a>"
+                        ),
+					),
 				),
 				'plupload'                  => array(
 					'max_file_size'       => wp_max_upload_size() . 'b',
@@ -433,7 +449,7 @@ class SiteOrigin_Panels_Admin {
 						$widget_obj->enqueue_admin_scripts();
 					}
 					do_action_ref_array( 'in_widget_form', array( &$widget_obj, &$return, array() ) );
-					ob_clean();
+					ob_end_clean();
 					
 					// Need to render templates for new WP 4.8 widgets when not on the 'widgets' screen or in the customizer.
 					if ( $this->is_js_widget( $widget_obj ) ) {
@@ -1105,4 +1121,68 @@ class SiteOrigin_Panels_Admin {
 		return $strings;
 	}
 
+	/**
+	 * Display links for various SiteOrigin addons
+	 */
+	public static function display_footer_premium_link(){
+		$links = array(
+			array(
+				'text' => __('Get a lightbox addon for SiteOrigin widgets', 'siteorigin-panels'),
+				'url' => SiteOrigin_Panels::premium_url('plugin/lightbox')
+			),
+			array(
+				'text' => __('Get the row, cell and widget animations addon', 'siteorigin-panels'),
+				'url' => SiteOrigin_Panels::premium_url('plugin/lightbox')
+			),
+			array(
+				'text' => __('Get premium email support for SiteOrigin Page Builder', 'siteorigin-panels'),
+				'url' => SiteOrigin_Panels::premium_url()
+			),
+		);
+		$link = $links[array_rand($links)];
+
+		?>
+        <a href="<?php echo esc_url( $link['url'] ) ?>" target="_blank" rel='noopener noreferrer'>
+			<?php echo esc_html( $link['text'] ) ?>.
+        </a>
+		<?php
+	}
+	
+	/**
+	 * Disable the Gutenberg editor for existing PB posts.
+	 *
+	 * @param $can_edit
+	 * @param $post_type
+	 *
+	 * @return bool
+	 */
+	public function disable_gutenberg_for_panels_posts( $can_edit, $post_type ) {
+		$screen = get_current_screen();
+		$post_types = siteorigin_panels_setting( 'post-types' );
+		$panels_data = $screen->base == 'post' ? $this->get_current_admin_panels_data() : array();
+
+		$is_panels_page = in_array( $post_type, $post_types ) && ! empty( $panels_data );
+
+		return ! $is_panels_page && $can_edit;
+	}
+	
+	/**
+	 * Disable PB when we're in the Gutenberg editor.
+	 *
+	 * @param $wp_meta_boxes
+	 *
+	 * @return mixed
+	 */
+	public function disable_panels_for_gutenberg_posts( $wp_meta_boxes ) {
+		foreach ( $wp_meta_boxes as &$locations ) {
+			foreach ( $locations as &$priorities ) {
+				foreach ( $priorities as &$boxes ) {
+					unset( $boxes['so-panels-panels'] );
+					unset( $boxes['siteorigin_page_settings'] );
+
+				}
+			}
+		}
+		return $wp_meta_boxes;
+	}
 }

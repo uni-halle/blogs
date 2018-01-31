@@ -3,7 +3,7 @@
 Plugin Name: Page Builder by SiteOrigin
 Plugin URI: https://siteorigin.com/page-builder/
 Description: A drag and drop, responsive page builder that simplifies building your website.
-Version: 2.5.16
+Version: 2.6.2
 Author: SiteOrigin
 Author URI: https://siteorigin.com
 License: GPL3
@@ -11,11 +11,11 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: http://siteorigin.com/page-builder/#donate
 */
 
-define( 'SITEORIGIN_PANELS_VERSION', '2.5.16' );
+define( 'SITEORIGIN_PANELS_VERSION', '2.6.2' );
 if ( ! defined( 'SITEORIGIN_PANELS_JS_SUFFIX' ) ) {
 	define( 'SITEORIGIN_PANELS_JS_SUFFIX', '.min' );
 }
-define( 'SITEORIGIN_PANELS_VERSION_SUFFIX', '-2516' );
+define( 'SITEORIGIN_PANELS_VERSION_SUFFIX', '-262' );
 
 require_once plugin_dir_path( __FILE__ ) . 'inc/functions.php';
 
@@ -485,7 +485,7 @@ class SiteOrigin_Panels {
 
 	static function display_learn_button() {
 		return siteorigin_panels_setting( 'display-learn' ) &&
-		       apply_filters( 'siteorigin_panels_learn', true );
+			   apply_filters( 'siteorigin_panels_learn', true );
 	}
 
 	/**
@@ -505,16 +505,19 @@ class SiteOrigin_Panels {
 			   apply_filters( 'siteorigin_premium_upgrade_teaser', true ) &&
 			   ! defined( 'SITEORIGIN_PREMIUM_VERSION' );
 	}
-	
+
 	/**
 	 * Get the premium upgrade URL
 	 *
 	 * @return string
 	 */
-	public static function premium_url() {
+	public static function premium_url( $featured_addon = false ) {
 		$ref = apply_filters( 'siteorigin_premium_affiliate_id', '' );
 		$url = 'https://siteorigin.com/downloads/premium/?featured_plugin=siteorigin-panels';
-		if( $ref ) {
+		if( ! empty( $featured_addon ) ) {
+			$url = add_query_arg( 'featured_addon', urlencode( $featured_addon ), $url );
+		}
+		if( ! empty( $ref ) ) {
 			$url = add_query_arg( 'ref', urlencode( $ref ), $url );
 		}
 		return $url;
