@@ -4,13 +4,13 @@
  * @copyright Copyright (c) 2014 - 2015 Christian Foellmann (http://christian.foellmann.de)
  * @license   http://www.gnu.org/licenses/gpl-2.0.html GPLv2
  * @package   WP-Repository\WPMU_Theme_Usage_Info
- * @version   2.0.0
+ * @version   2.1.0
  */
 /*
 Plugin Name: WPMU Theme Usage Info
 Plugin URI: https://wordpress.org/plugins/wpmu-theme-usage-info/
 Description: Provides info to network admins and users on the popularity of themes
-Version: 2.0.0
+Version: 2.1.0
 Author: Christian Foellmann & Jason Lemahieu
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -56,7 +56,7 @@ class WPMU_Theme_Usage_Info {
 	 *
 	 * @var string $version
 	 */
-	public $version = '2.0.0';
+	public $version = '2.1.0';
 
 	/**
 	 * Constructor
@@ -106,6 +106,7 @@ class WPMU_Theme_Usage_Info {
 		if ( null === $instance ) {
 			$instance = new WPMU_Theme_Usage_Info;
 			$instance->setup_actions();
+			$instance->replacement();
 		}
 
 		// Always return the instance
@@ -115,14 +116,14 @@ class WPMU_Theme_Usage_Info {
 
 	/**
 	 * Check for Transient and update appropriately
-	 * 
+	 *
 	 * @since 2.0.0
 	 */
 	public function load() {
 
 		$theme_stats_data = get_site_transient( 'theme_stats_data' );
 
-		if ( ! $theme_stats_data || isset( $_GET['manual-stats-refresh'] ) )  {
+		if ( ! $theme_stats_data || isset( $_GET['manual-stats-refresh'] ) ) {
 			$theme_stats_data = $this->generate_theme_blog_list();
 		}
 
@@ -165,9 +166,9 @@ class WPMU_Theme_Usage_Info {
 	 *
 	 * @since 3.1.0
 	 *
-	 * @param string   $column_name Name of the column.
-	 * @param string   $stylesheet  Directory name of the theme.
-	 * @param WP_Theme $theme       Current WP_Theme object.
+	 * @param string $column_name Name of the column.
+	 * @param string $stylesheet Directory name of the theme.
+	 * @param WP_Theme $theme Current WP_Theme object.
 	 */
 	public function column_active( $column_name, $stylesheet, $theme ) {
 
@@ -175,7 +176,7 @@ class WPMU_Theme_Usage_Info {
 
 			$network_data = get_site_transient( 'theme_stats_data' );
 			$data         = isset( $network_data[ $stylesheet ] ) ? $network_data[ $stylesheet ] : 0;
-			$active_count = isset( $network_data[ $stylesheet ] ) ? sizeOf( $data )              : 0;
+			$active_count = isset( $network_data[ $stylesheet ] ) ? sizeOf( $data ) : 0;
 
 			echo '<p>';
 			if ( 0 === $active_count ) {
@@ -231,27 +232,27 @@ class WPMU_Theme_Usage_Info {
 			$cto = wp_get_theme();
 			$ct  = $cto->stylesheet;
 
-			if ( constant('VHOST') == 'yes' ) {
+			if ( constant( 'VHOST' ) == 'yes' ) {
 				$siteurl = $site->domain;
 			} else {
 				$siteurl = trailingslashit( $site->domain . $site->path );
 			}
 
 			if ( array_key_exists( $ct, $processedthemes ) == false ) {
-				$sitethemes[ $ct ][0] = array(
-					'siteid' => $site->blog_id,
+				$sitethemes[ $ct ][0]   = array(
+					'siteid'  => $site->blog_id,
 					/*'path' => $path, 'domain' => $domain,*/
-					'name' => get_bloginfo('name'),
+					'name'    => get_bloginfo( 'name' ),
 					'siteurl' => $siteurl,
 				);
 				$processedthemes[ $ct ] = true;
 			} else {
 				//get the size of the current array of blogs
-				$count = sizeof( $sitethemes[ $ct ] );
+				$count                       = sizeof( $sitethemes[ $ct ] );
 				$sitethemes["$ct"][ $count ] = array(
-					'siteid' => $site->blog_id,
+					'siteid'  => $site->blog_id,
 					/* 'path' => $path, 'domain' => $domain,*/
-					'name' => get_bloginfo('name'),
+					'name'    => get_bloginfo( 'name' ),
 					'siteurl' => $siteurl,
 				);
 
@@ -263,7 +264,7 @@ class WPMU_Theme_Usage_Info {
 		ksort( $sitethemes );
 
 		$hours   = wp_is_large_network() ? 24 : 2;
-		$refresh = apply_filters( 'wpmu_theme_stats_refresh' , $hours * HOUR_IN_SECONDS );
+		$refresh = apply_filters( 'wpmu_theme_stats_refresh', $hours * HOUR_IN_SECONDS );
 
 		set_site_transient( 'theme_stats_data', $sitethemes, $refresh );
 
@@ -277,6 +278,7 @@ class WPMU_Theme_Usage_Info {
 	 * @since 2.0.0
 	 *
 	 * @param  string $prepared_themes
+	 *
 	 * @return string
 	 */
 	public function extend_overlay( $prepared_themes ) {
@@ -291,9 +293,9 @@ class WPMU_Theme_Usage_Info {
 			foreach ( $prepared_themes as $theme => $key ) {
 
 				$data         = isset( $network_data[ $theme ] ) ? $network_data[ $theme ] : 0;
-				$active_count = isset( $network_data[ $theme ] ) ? sizeOf( $data )         : 0;
+				$active_count = isset( $network_data[ $theme ] ) ? sizeOf( $data ) : 0;
 
-				$prepared_themes[ $theme ]['version'] .= ' | ' . sprintf( _n( 'Active on %2$s %1$d site %3$s', 'Active on %2$s %1$d sites %3$s', $active_count, 'wpmu-theme-usage-info' ) , $active_count, '', '' );
+				$prepared_themes[ $theme ]['version'] .= ' | ' . sprintf( _n( 'Active on %2$s %1$d site %3$s', 'Active on %2$s %1$d sites %3$s', $active_count, 'wpmu-theme-usage-info' ), $active_count, '', '' );
 
 			}
 		}
@@ -340,6 +342,55 @@ class WPMU_Theme_Usage_Info {
 		delete_site_option( 'cets_theme_info_data_freshness' );
 
 	} // END activation()
+
+	public function replacement() {
+		add_action( 'network_admin_notices', array( $this, 'notice' ) );
+	}
+
+	public function notice() {
+		if ( self::replacement_active() ) {
+			$plugin_link = self_admin_url( 'plugins.php?s=WPMU+Theme+Usage+Info&plugin_status=all' );
+			?>
+            <div class="notice notice-info">
+                <p>
+                    <code>Multisite Enhancements</code> is active. You can now remove <b>WPMU Theme Usage Info</b>. <a href="<?php echo $plugin_link; ?>">Goto Plugins</a>
+                </p>
+            </div>
+			<?php
+			return;
+		}
+		global $pagenow;
+		if ( 'themes.php' == $pagenow ) {
+			$plugin_name  = 'Multisite Enhancements';
+			$details_link = self_admin_url( 'plugin-install.php?tab=plugin-information&amp;plugin=multisite-enhancements&amp;TB_iframe=true&amp;width=600&amp;height=600' );
+			$link         = '<a href="' . esc_url( $details_link ) . '" class="thickbox open-plugin-details-modal" aria-label="' . esc_attr( sprintf( __( 'More information about %s' ), $plugin_name ) ) . '" data-title="' . esc_attr( $plugin_name ) . '">' . $plugin_name . '</a>';
+			?>
+            <div class="notice notice-info">
+                <p><b>WPMU Theme Usage Info</b> is deprecated and will remove all functionality with version 3.0 (<?php echo date_i18n( get_option( 'date_format' ), strtotime( '31.01.2018' ) ); ?>)!</p>
+                <p>You should move to <?php echo $link; ?>. Version 3 of <b>WPMU Theme Usage Info</b> will be this
+                    notice only.</p>
+            </div>
+			<?php
+			return;
+		}
+		$themes_page = network_admin_url( 'themes.php' );
+		?>
+        <div class="notice notice-info">
+            <p><b>WPMU Theme Usage Info</b> is deprecated and will remove all functionality with version 3.0 (<?php echo date_i18n( get_option( 'date_format' ), strtotime( '31.01.2018' ) ); ?>)! Go to <a href="<?php echo $themes_page; ?>"><?php _e( 'Installed Themes' ); ?></a> for
+                more details.</p>
+        </div>
+		<?php
+	}
+
+	public static function replacement_active() {
+
+		if ( class_exists( 'Multisite_Add_Theme_List' ) ) {
+			return true;
+		}
+
+		return false;
+
+	}
 
 } // END class WPMU_Theme_Usage_Info
 

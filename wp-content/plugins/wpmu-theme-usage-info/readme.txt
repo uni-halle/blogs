@@ -2,8 +2,8 @@
 Contributors: cfoellmann, MadtownLems
 Tags: Wordpress Multiuser, Themes, MU, WPMU, multisite, network, themes
 Requires at least: 3.8
-Tested up to: 4.1
-Stable tag: 2.0.0
+Tested up to: 4.9.1
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,22 +11,31 @@ Gives network admins an easy way to see what themes are actively used on the sit
 
 == Description ==
 
+> The plugin is deprecated and reaches a hard end-of-life date on 31. January 2018!
+
+= Alternative =
+You should switch to [Multisite Enhancements](https://wordpress.org/plugins/multisite-enhancements/). It provides the same functionality and is actively maintained.
+
 This plugin displays the count and the individual sites for each installed theme. It add a column to the Themes table on `wp-admin/network/themes.php`.
 
 Optionally you can display the usage count in the theme details overlay on `wp-admin/plugins.php` activated via filter described in the [FAQ](https://wordpress.org/plugins/wpmu-theme-usage-info/faq/).
 
-> __Requires a WordPress Multisite Installation__
-> JavaScript is required to toggle the list of sites using a plugin
+* __Requires a WordPress Multisite Installation__
+* JavaScript is required to toggle the list of sites using a plugin
+
+= Other Multisite Plugins =
+[WPMU Plugin Stats](https://wordpress.org/plugins/wpmu-plugin-stats/)
+[WPMU Plugin Manager](https://wordpress.org/plugins/wpmu-plugin-manager/)
 
 = Development =
 
+The plugin has reached its end-of-life. Do not use anymore.
+
 * GitHub Repository: [wp-repository](https://github.com/wp-repository) / [wpmu-theme-usage-info](https://github.com/wp-repository/wpmu-theme-usage-info)
-* Issue-Tracker: [WPMU Theme Info Issues](https://github.com/wp-repository/wpmu-theme-usage-info/issues) **Please use the Issue-Tracker at GitHub!!**
-* Translation: [Translate > WPMU Theme Usage Info](http://wp-translate.org/projects/wpmu-theme-usage-info)
 
 == Installation ==
 
-1. Install by searching "WPMU Theme Info" on Plugins > Add New > Search
+1. Install by searching "WPMU Theme Usage Info" on Plugins > Add New > Search
 2. Activate by clicking "Network Activate"
 
 == Frequently Asked Questions ==
@@ -57,6 +66,13 @@ Optionally you can display the usage count in the theme details overlay on `wp-a
 When you update to version 2.0 the plugin gets deactivated automatically.
 
 == Changelog ==
+= 3.0 (2018-01-31) =
+ * END of LIFE
+
+= 2.1 (2017-11-30) =
+ * Display deprecation notice
+ * Set end-of-life to 2018-01-31
+
 = 2.0 (2015-01-15) =
  * Integrated data into 'themes.php' table
  * Moved from storing data in option to transient
