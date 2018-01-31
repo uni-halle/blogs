@@ -6,6 +6,9 @@
  * @var string $icon_close
  */
 
+if( !empty( $instance['title'] ) ) {
+	echo $args['before_title'] . $instance['title'] . $args['after_title'];
+}
 ?>
 <div>
 	<div class="sow-accordion">

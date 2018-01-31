@@ -277,11 +277,12 @@ var sowbForms = window.sowbForms || {};
 				var $c = $$.find('.siteorigin-widget-value-slider');
 
 				$c.slider({
-					max: parseInt($input.attr('max')),
-					min: parseInt($input.attr('min')),
-					value: parseInt($input.val()),
+					max: parseFloat($input.attr('max')),
+					min: parseFloat($input.attr('min')),
+					step: parseFloat($input.attr('step')),
+					value: parseFloat($input.val()),
 					slide: function (event, ui) {
-						$input.val( parseInt( ui.value ) );
+						$input.val( parseFloat( ui.value ) );
 						$input.trigger( 'change' );
 					},
 					change: function( event, ui ) {
@@ -290,7 +291,7 @@ var sowbForms = window.sowbForms || {};
 				});
 				$input.change(function(event, data) {
 					if ( ! ( data && data.silent ) ) {
-						$c.slider( 'value', parseInt( $input.val() ) );
+						$c.slider( 'value', parseFloat( $input.val() ) );
 					}
 				});
 			});
@@ -373,8 +374,10 @@ var sowbForms = window.sowbForms || {};
 			// Setup the Builder fields
 			if (typeof jQuery.fn.soPanelsSetupBuilderWidget !== 'undefined') {
 				$fields.filter('.siteorigin-widget-field-type-builder').each(function () {
-					var $$ = $(this);
-					$$.find('> .siteorigin-page-builder-field').soPanelsSetupBuilderWidget();
+					$( this ).find( '> .siteorigin-page-builder-field' ).each( function () {
+						var $$ = $( this );
+						$$.soPanelsSetupBuilderWidget( { builderType: $$.data( 'type' ) } );
+					} );
 				});
 			}
 
@@ -539,8 +542,8 @@ var sowbForms = window.sowbForms || {};
 
 				// Update the field names for all the input items
 				$$.find('.siteorigin-widget-input').each(function (i, input) {
-					var pos = $(input).data('repeater-positions');
 					var $in = $(input);
+					var pos = $in.data('repeater-positions');
 
 					if (typeof pos !== 'undefined') {
 						var newName = $in.attr('data-original-name');
@@ -588,6 +591,9 @@ var sowbForms = window.sowbForms || {};
 				handle: '.siteorigin-widget-field-repeater-item-top',
 				items: '> .siteorigin-widget-field-repeater-item',
 				update: function () {
+					// Clear `name` attributes for radio inputs. They'll be reassigned on update.
+					// This prevents some radio inputs values being cleared during the update process.
+					$items.find( 'input[type="radio"].siteorigin-widget-input' ).attr( 'name', '' );
 					$items.trigger('updateFieldPositions');
 				},
 				sortstop: function (event, ui) {
@@ -767,7 +773,7 @@ var sowbForms = window.sowbForms || {};
 							$soWidgetField.append($inputElement.remove());
 						}
 						else {
-							var $originalInput = $item.find('[name="' + nm + '"]');
+							var $originalInput = id ? $item.find( '#' + id ) : $item.find('[name="' + nm + '"]');
 							if ($originalInput.length && $originalInput.val() != null) {
 								$inputElement.val($originalInput.val());
 							}
@@ -1089,7 +1095,7 @@ var sowbForms = window.sowbForms || {};
 			var $$ = $(this);
 			var name = /[a-zA-Z0-9\-]+\[[a-zA-Z0-9]+\]\[(.*)\]/.exec($$.attr('name'));
 
-			if (name === undefined) {
+			if ( name === undefined || name === null ) {
 				return true;
 			}
 

@@ -24,8 +24,6 @@ class SiteOrigin_Widgets_Bundle_Beaver_Builder {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_active_widgets_scripts' ) );
 		add_action( 'wp_print_footer_scripts', array( $this, 'print_footer_templates' ) );
 
-		add_filter( 'siteorigin_widgets_get_field_name', array( $this, 'bb_get_field_name' ) );
-
 		// Don't want to show the form preview button when using Beaver Builder
 		add_filter( 'siteorigin_widgets_form_show_preview_button', '__return_false' );
 	}
@@ -34,12 +32,19 @@ class SiteOrigin_Widgets_Bundle_Beaver_Builder {
 		global $wp_widget_factory;
 
 		// Beaver Builder does it's editing in the front end so enqueue required form scripts for active widgets.
+		$any_widgets_active = false;
 		foreach ( $wp_widget_factory->widgets as $class => $widget_obj ) {
 			if ( ! empty( $widget_obj ) && is_object( $widget_obj ) && is_subclass_of( $widget_obj, 'SiteOrigin_Widget' ) ) {
+				$any_widgets_active = true;
 				ob_start();
 				$widget_obj->form( array() );
 				ob_clean();
 			}
+		}
+
+		// No widgets active. :/ Let's get outta here.
+		if ( ! $any_widgets_active ) {
+			return;
 		}
 
 		if ( ! wp_script_is( 'wp-color-picker' ) ) {
@@ -86,10 +91,7 @@ class SiteOrigin_Widgets_Bundle_Beaver_Builder {
 			}
 		}
 	}
-
-	function bb_get_field_name( $name ) {
-		return preg_replace( '/\[[^\]]*\]/', '[]', $name, 1 );
-	}
+	
 }
 
 SiteOrigin_Widgets_Bundle_Beaver_Builder::single();

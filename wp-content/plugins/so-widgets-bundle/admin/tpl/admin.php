@@ -31,14 +31,14 @@
 
 					<?php
 					$banner = '';
-					$widget_dir = dirname( $widget['File'] );
+					$widget_dir = dirname( $file );
 					if( file_exists( $widget_dir . '/assets/banner.svg' ) ) {
-						$banner = str_replace( WP_CONTENT_DIR, content_url(), $widget_dir ) . '/assets/banner.svg';
+						$banner = str_replace( wp_normalize_path( WP_CONTENT_DIR ), content_url(), $widget_dir ) . '/assets/banner.svg';
 					}
 					$banner = apply_filters('siteorigin_widgets_widget_banner', $banner, $widget);
 					?>
 					<div class="so-widget-banner" data-seed="<?php echo esc_attr( substr( md5($widget['ID']), 0, 6 ) ) ?>">
-						<?php if( !empty($banner) ) : ?>
+						<?php if( !empty( $banner ) ) : ?>
 							<img src="<?php echo esc_url($banner) ?>" />
 						<?php endif; ?>
 					</div>
@@ -75,7 +75,7 @@
 						/** @var SiteOrigin_Widget $widget_object */
 						$widget_object = !empty( $widget_objects[ $file ] ) ? $widget_objects[ $file ] : false;
 						if( !empty( $widget_object ) && $widget_object->has_form( 'settings' ) ) {
-							$rel_path = str_replace( wp_normalize_path( WP_PLUGIN_DIR ), '', $file );
+							$rel_path = str_replace( wp_normalize_path( WP_CONTENT_DIR ), '', $file );
 							
 							$form_url = add_query_arg( array(
 									'id' => $rel_path,
