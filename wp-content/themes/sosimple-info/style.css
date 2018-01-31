@@ -216,3 +216,28 @@ img {
 td, th {
     border-bottom: none;
     }
+div.table { 
+      display: table; 
+      border-collapse:collapse; 
+      width:100%;
+    }
+div.tr { 
+      display:table-row; 
+    }
+div.td { 
+      display:table-cell; 
+/* 	  border:thin solid red;  */
+      padding:10px 25px 0px 0; 
+    }
+div.td25 { 
+      display:table-cell; 
+/* 	  border:thin solid red; */ 
+      padding:10px 25px 0px 0; 
+      width:25%;
+    }
+div.td70 { 
+      display:table-cell; 
+/* 	  border:thin solid blue; */ 
+      padding:10px 25px 0px 0; 
+      width:70%;
+    }

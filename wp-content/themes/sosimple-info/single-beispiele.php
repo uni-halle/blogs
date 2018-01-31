@@ -17,25 +17,29 @@ get_header(); ?>
 
 			<?php get_template_part( 'template-parts/content', 'single-beispiele' ); ?>
 
-			<table>	
-			<tr><td>Fachbereich</td><td><?php the_field('fach'); ?></td></tr>
-            <tr><td>Veranstaltung</td><td><?php the_field('veranstaltungstitel'); ?></td></tr>
-			<tr><td>Studienprogramm/e</td><td><?php the_field('studienprogramm'); ?></td></tr>
-			<tr><td>Teilnehmerzahl</td><td><?php the_field('anzahl'); ?></td></tr>
-			 <tr><td colspan="2"><hr class="blue"></td></tr>			
-			<tr><td>Ziel</td><td><?php the_field('ziel'); ?></td></tr>
-            <tr><td>Zielgruppe</td><td><?php the_field('zielgruppe'); ?></td></tr>
-            <tr><td>Werkzeug/e</td><td><?php the_field('werkzeug'); ?></td></tr>
-            <tr><td>Sammlung</td><td><?php the_field('sammlung'); ?></td></tr>
-            <tr><td>Zeitpunkt</td><td><?php the_field('zeitpunkt'); ?></td></tr>
-            <tr><td>Kommunikation</td><td><?php the_field('kommunikation'); ?></td></tr>
-            <tr><td>Leistung</td><td><?php the_field('leistung'); ?></td></tr>
-            <tr><td>Fazit</td><td><?php the_field('fazit'); ?></td></tr>
-            <tr><td colspan="2"><hr class="blue"></td></tr>		
-			<tr><td width="30%">Hochschule</td><td><?php the_field('hochschule'); ?></td></tr>
-			<tr><td>DozentIn</td><td><?php the_field('dozentin'); ?></td></tr>
-            <tr><td>Kontakt</td><td><?php the_field('kontakt'); ?></td></tr>
-			</table>
+			<div class="table">	
+			<div class="tr"><div class="td25">Fachbereich</div><div class="td70"><?php the_field('fach'); ?></div></div>
+            <div class="tr"><div class="td">Veranstaltung</div><div class="td"><?php the_field('veranstaltungstitel'); ?></div></div>
+			<div class="tr"><div class="td">Studienprogramm/e</div><div class="td"><?php the_field('studienprogramm'); ?></div></div>
+			<div class="tr"><div class="td">Teilnehmerzahl</div><div class="td"><?php the_field('anzahl'); ?></div></div>
+			</div>
+			<hr class="blue">	
+			<div class="table">			
+			<div class="tr"><div class="td25">Ziel</div><div class="td70"><?php the_field('ziel'); ?></div></div>
+            <div class="tr"><div class="td">Zielgruppe</div><div class="td"><?php the_field('zielgruppe'); ?></div></div>
+            <div class="tr"><div class="td">Werkzeug/e</div><div class="td"><?php the_field('werkzeug'); ?></div></div>
+            <div class="tr"><div class="td">Sammlung</div><div class="td"><?php the_field('sammlung'); ?></div></div>
+            <div class="tr"><div class="td">Zeitpunkt</div><div class="td"><?php the_field('zeitpunkt'); ?></div></div>
+            <div class="tr"><div class="td">Kommunikation</div><div class="td"><?php the_field('kommunikation'); ?></div></div>
+            <div class="tr"><div class="td">Leistung</div><div class="td"><?php the_field('leistung'); ?></div></div>
+            <div class="tr"><div class="td">Fazit</div><div class="td"><?php the_field('fazit'); ?></div></div>
+			</div>
+            <hr class="blue">	
+            <div class="table">		
+			<div class="tr"><div class="td25">Hochschule</div><div class="td70"><?php the_field('hochschule'); ?></div></div>
+			<div class="tr"><div class="td">DozentIn</div><div class="td"><?php the_field('dozentin'); ?></div></div>
+            <div class="tr"><div class="td">Kontakt</div><div class="td"><?php the_field('kontakt'); ?></div></div>
+			</div>
 			
 			<?php the_post_navigation(); ?>
 
