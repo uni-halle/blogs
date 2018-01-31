@@ -50,13 +50,16 @@ function cyberchimps_display_about() {
 	$theme      = wp_get_theme();
 	?>
 	<div class="about-container">
-		
-		<div class="about-info">
-			<h1><?php echo "Responsive - ".$theme['Version'] ?></h1>
+		<div>		
+			<h1 class="heading"><?php echo "Responsive - ".$theme['Version'] ?></h1>
+			<a href='https://wordpress.org/support/theme/responsive/reviews/#new-post/' target="_blank" style='margin-top: 22px'  class="button button-primary"><?php _e('Leave a star rating')?></a>
 			<?php 
 				$directory_uri = get_template_directory_uri();
 				
 			?>
+			</div>
+			
+		<div class="about-info">
 			<span><img src="<?php echo $directory_uri ?>/core/images/logo.png"></span>
 			<?php printf( __( '<p>  is based on an intuitive foundation with a fluid grid system that automatically adapts your website to mobile devices including smartphones, tablets 
  				and desktops so your website looks incredible on any device. This theme is aptly named Responsive Theme – because that is the main focus of this theme, to make sure it is fully responsive and adapts to any device seamlessly.
@@ -78,6 +81,7 @@ function cyberchimps_display_about() {
 		</table>
 		</div>
 		<div class="features">
+		<h2>Why upgrade to Pro?</h2>
 			<table class="features-table">
 			<thead>
 			<tr>
@@ -86,7 +90,7 @@ function cyberchimps_display_about() {
 				<th>Responsive Pro</th>
 			</tr>
 			<tr>
-			<td class="feature">Responsive layout <p>Works on every device</p></td>
+			<td class="feature">Responsive layout</td>
 			<td class="featureyes"><span class='dashicons-before dashicons-yes'></span></td>
 			<td class="featureyes"><span class='dashicons-before dashicons-yes'></span></td>				
 			</tr>			
@@ -191,8 +195,7 @@ function cyberchimps_display_about() {
 			<td class="featureno"><span class='dashicons-before dashicons-yes'></span></td>				
 			</tr>
 			<tr>
-			<td class="feature">Typography 
-			<p>(Supports Google Fonts , option available for changing header & text font)</p></td>
+			<td class="feature">Typography</td>
 			<td class="featureyes"><span class="dashicons-before dashicons-no-alt"></span></td>
 			<td class="featureno"><span class='dashicons-before dashicons-yes'></span></td>				
 			</tr>

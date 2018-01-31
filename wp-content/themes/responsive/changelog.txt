@@ -8,6 +8,18 @@ Changelog Legend:
 [x] = Deleted
 [!] = Bugs
 
+(01/05/18) - Changed - Version 3.9
+[*] Enhanced top menu look
+[*] Now Html is allowed in Features, Testimonial & Team section
+[*] Look and feel of social icons changed (Team section and footer) 
+
+(12/26/17) - Changed - Version 3.8
+[*] Visual Improvements to the Admin Dashboard
+
+(11/27/17) - Changed - Version 3.7
+[*] Contact form will be available only on home page 
+[*] Updated WooCommerce template
+
 (10/26/17) - Added New Feature - Version 3.6
 [+] Option added to filter categories from Blog page
 [+] Option added to enable/disable home page widgets
