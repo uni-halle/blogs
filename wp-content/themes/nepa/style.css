@@ -1,0 +1,18 @@
+/*
+ Theme Name:   Nepa Theme
+ Theme URI:    http://example.com/twenty-fifteen-child/
+ Description:  Twenty Fifteen Child Theme
+ Author:       K. Zobel
+ Author URI:   http://designring.de
+ Template:     twentyfifteen
+ Version:      0.1.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain:  twenty-fifteen-child
+ Tags:         mlu,nepa
+*/
+
+#sidebar, #main>*,#colophon{
+	box-shadow: 0 0 1em #e8e8e8;
+}
+
