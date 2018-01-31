@@ -86,6 +86,7 @@ function czr_fn_popul_setting_control_map( $_map, $get_default = null ) {
   $_settings_groups = array(
     //GLOBAL SETTINGS
     'czr_fn_site_identity_option_map',
+    'czr_fn_site_layout_option_map',
     'czr_fn_skin_option_map',
     'czr_fn_fonts_option_map',
     'czr_fn_social_option_map',
@@ -188,6 +189,81 @@ function czr_fn_site_identity_option_map( $get_default = null ) {
                             'type'        => 'checkbox' ,
                             'priority'  => 15,
                             'notice'    => __( "Uncheck this option to keep your original logo dimensions." , 'customizr')
+          ),
+
+  );
+}
+
+
+/*-----------------------------------------------------------------------------------------------------
+                              SITE LAYOUT SECTION
+------------------------------------------------------------------------------------------------------*/
+function czr_fn_site_layout_option_map( $get_default = null ) {
+  $_default_header_footer_layout = czr_fn_user_started_before_version( '4.0.14', '2.0.19' ) ? 'wide' : 'boxed';
+
+  return array(
+          'tc_site_layout'  => array(
+                            'default'   =>  'wide',
+                            'label'     =>  __( 'Site layout' , 'customizr' ),
+                            'control'   =>  'CZR_controls' ,
+                            'section'   =>  'site_layout_sec' ,
+                            'type'      => 'select',
+                            'choices'   => array(
+                              'wide'    => __( 'Wide', 'customizr' ),
+                              'boxed'   => __( 'Boxed', 'customizr' ),
+                            ),
+                            'priority'  => 1,
+          ),
+
+          'tc_header_topbar_layout'  => array(
+                            'default'   =>  $_default_header_footer_layout,
+                            'label'     =>  __( 'Header topbar layout' , 'customizr' ),
+                            'control'   =>  'CZR_controls' ,
+                            'section'   =>  'site_layout_sec' ,
+                            'type'      => 'select',
+                            'choices'   => array(
+                              'wide'    => __( 'Wide', 'customizr' ),
+                              'boxed'   => __( 'Boxed', 'customizr' ),
+                            ),
+                            'priority'  => 10,
+                            'ubq_section'   => array(
+                                  'section' => 'header_desktop_sec',
+                                  'priority' => '11'
+                            )
+          ),
+
+          'tc_header_navbar_layout'  => array(
+                            'default'   =>  $_default_header_footer_layout,
+                            'label'     =>  __( 'Main Header section layout' , 'customizr' ),
+                            'control'   =>  'CZR_controls' ,
+                            'section'   =>  'site_layout_sec' ,
+                            'type'      => 'select',
+                            'choices'   => array(
+                              'wide'    => __( 'Wide', 'customizr' ),
+                              'boxed'   => __( 'Boxed', 'customizr' ),
+                            ),
+                            'priority'  => 15,
+                            'ubq_section'   => array(
+                                  'section' => 'header_layout_sec',
+                                  'priority' => '9'
+                            ),
+          ),
+
+          'tc_footer_colophon_layout'  => array(
+                            'default'   =>  $_default_header_footer_layout,
+                            'label'     =>  __( 'Footer Credits section layout' , 'customizr' ),
+                            'control'   =>  'CZR_controls' ,
+                            'section'   =>  'site_layout_sec' ,
+                            'type'      => 'select',
+                            'choices'   => array(
+                              'wide'    => __( 'Wide', 'customizr' ),
+                              'boxed'   => __( 'Boxed', 'customizr' ),
+                            ),
+                            'priority'  => 20,
+                            'ubq_section'   => array(
+                                  'section' => 'footer_global_sec',
+                                  'priority' => '0'
+                            )
           ),
 
   );
@@ -704,6 +780,14 @@ function czr_fn_header_mobile_option_map() {
                               'priority' => '100'
                           ),
         ),
+        'tc_header_mobile_menu_dropdown_on_click'  => array(
+                          'default'   =>  1,
+                          'control'   =>  'CZR_controls' ,
+                          'label'     =>  __( 'Expand submenus on click' , 'customizr' ),
+                          'section'   =>  'header_mobile_sec',
+                          'type'      =>  'checkbox',
+                          'priority'  =>  28
+        ),
         'tc_header_mobile_tagline'  =>  array(
                           'default'       => 0,
                           'control'       => 'CZR_controls' ,
@@ -716,7 +800,6 @@ function czr_fn_header_mobile_option_map() {
                                               'priority' => '11'
                                            )
         ),
-
         'tc_header_mobile_search' => array(
                           'default'   => czr_fn_user_started_before_version( '4.0.12', '2.0.17' ) ? 'menu' : 'navbar',
                           'title'     => __( 'Search Icon', 'customizr' ),
@@ -742,7 +825,6 @@ function czr_fn_header_mobile_option_map() {
                           'priority'  => 28,
                           'active_callback' => apply_filters( 'tc_woocommerce_options_enabled', '__return_false' )
         ),
-
         'tc_header_mobile_sticky' => array(
                           'default'   => 'stick_up',
                           'control'   => 'CZR_controls',
@@ -760,7 +842,21 @@ function czr_fn_header_mobile_option_map() {
                               'section' => 'menu_locations',
                               'priority' => '120'
                           )
-        )
+        ),
+        'tc_header_mobile_search' => array(
+                          'default'   => czr_fn_user_started_before_version( '4.0.12', '2.0.17' ) ? 'menu' : 'navbar',
+                          'label'     => sprintf( '%1$s : %2$s', __('Mobile devices', 'customizr' )  , __( 'Display a search button in the header' , 'customizr' ) ),
+                          'control'   => 'CZR_controls' ,
+                          'section'   => 'header_mobile_sec',
+                          'type'      => 'select',
+                          'choices'   => array(
+                              'none'          => __( 'Do not display', 'customizr'),
+                              'navbar'        => __( 'Display in the mobile navbar', 'customizr'),
+                              'menu'          => __( 'Display in the mobile menu', 'customizr'),
+                          ),
+                          'priority'  => 30,
+
+        ),
     );
 }
 
@@ -806,6 +902,15 @@ function czr_fn_navigation_option_map( $get_default = null ) {
                                   __("create/edit menus", "customizr")
                               )
                           )
+          ),
+          'tc_side_menu_dropdown_on_click'  => array(
+                            'default'       =>  0,
+                            'control'       =>  'CZR_controls' ,
+                            'label'         =>  __( 'Expand submenus on click' , 'customizr' ),
+                            'title'         => __( 'Primary (vertical) menu design' , 'customizr'),
+                            'section'       =>  'nav' ,
+                            'type'          =>  'checkbox',
+                            'priority'      =>   40
           ),
           'tc_menu_position'  =>  array(
                             'default'       => czr_fn_user_started_before_version( '3.4.0', '1.2.0' ) ? 'pull-menu-left' : 'pull-menu-right',
@@ -1201,7 +1306,7 @@ function czr_fn_layout_option_map( $get_default = null ) {
   return array(
           //Global sidebar layout
           'tc_sidebar_global_layout' => array(
-                          'default'       => 'l' ,//Default sidebar layout is on the left
+                          'default'       => czr_fn_user_started_before_version( '4.0.14', '2.0.20' ) ? 'l' : 'f',
                           'label'         => __( 'Choose the global default layout' , 'customizr' ),
                           'section'     => 'post_layout_sec' ,
                           'type'          => 'select' ,
@@ -1234,7 +1339,7 @@ function czr_fn_layout_option_map( $get_default = null ) {
           //Page sidebar layout
           'tc_sidebar_page_layout'  =>  array(
                           'control'     => 'CZR_controls',
-                          'default'       => 'l' ,//Default sidebar layout is on the left
+                          'default'       => czr_fn_user_started_before_version( '4.0.14', '2.0.20' ) ? 'l' : 'f',
                           'label'       => __( 'Choose the pages default layout' , 'customizr' ),
                           'section'     => 'post_layout_sec' ,
                           'type'        => 'select' ,
@@ -2018,7 +2123,7 @@ function czr_fn_footer_global_settings_option_map( $get_default = null ) {
                             'control'   =>  'CZR_controls' ,
                             'section'     => 'footer_global_sec' ,
                             'type'        => 'checkbox' ,
-                            'priority'       => 0,
+                            'priority'       => 1,
                             'ubq_section'  => array(
                                                 'section' => 'socials_sec',
                                                 'priority' => '4'
@@ -2376,6 +2481,11 @@ function czr_fn_popul_section_map( $_sections ) {
                             'panel' => 'tc-header-panel',
                             'priority' => '1'
                         )
+    ),
+    'site_layout_sec'      => array(
+                        'title'     =>  __( 'Site Layout' , 'customizr' ),
+                        'priority'    =>  5,
+                        'panel'   => 'tc-global-panel'
     ),
     'skins_sec'         => array(
                         'title'     =>  __( 'Primary color of the theme' , 'customizr' ),

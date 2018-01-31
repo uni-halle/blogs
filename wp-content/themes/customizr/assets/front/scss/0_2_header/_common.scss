@@ -1,37 +1,45 @@
-header:not(.header-transparent) {
-  .header-navbars__wrapper {
+.tc-header:not(.header-transparent) {
     @include box-shadow(0px, 2px, 2px, rgba(102, 102, 102, .08));
-  }
 }
 
-.mobile-nav__nav {
-  border-top: 1px solid;
-}
 .dropdown-item:not(:last-of-type) {
   border-bottom: 0.5px solid;
 }
 
 .vertical-nav > li:not(:last-of-type),
+.tc-header,
 .topbar-navbar__wrapper,
-.header-navbars__wrapper,
 .mobile-nav__container,
+.mobile-nav__nav,
 .header-search__container {
   border-bottom: 1px solid;
 }
 
-.header-navbars__wrapper,
-.topnav-navbars__container,
-.topnav-navbars__container [class*=navbar__wrapper],
+.mobile-nav__nav {
+  border-top: 1px solid;
+}
+
+.primary-navbar__wrapper,
+.topbar-navbar__wrapper,
+.mobile-navbar__wrapper,
+.mobile-navbar__row,
 .mobile-nav__container,
 .mobile-nav__nav {
   background: inherit;
 }
-.sticky-transparent.is-sticky .mobile-nav__nav {
-  .dropdown-menu,
-  .dropdown-item:active,
-  .dropdown-item:focus,
-  .dropdown-item:hover {
-    background: none;
+
+
+.sticky-transparent.is-sticky {
+  /*.mobile-navbar__wrapper > div {
+     background: none;
+  }*/
+  .mobile-nav__nav {
+    .dropdown-menu,
+    .dropdown-item:active,
+    .dropdown-item:focus,
+    .dropdown-item:hover {
+      background: none;
+    }
   }
 }
 
@@ -51,14 +59,21 @@ header:not(.header-transparent) {
 }
 
 //menu items underline
-[class*=nav__menu] li > a > span:first-of-type {
-  @include underlined_nocolor(2px);
-}
+[class*=nav__menu] {
+  .nav__title {
+    @include underlined_nocolor(2px);
+  }
 
-& li.show:not(.dropdown-item) > a > span:first-of-type,
-&  li:not(.dropdown-item).current-active > a > span:first-of-type,
-&  li.current-menu-item > a > span:first-of-type {
-  @include underlined_highlight_before_nocolor();
+  .show:not(.dropdown-item) > .nav__link .nav__title,
+  .show:not(.dropdown-item) > .nav__link-wrapper .nav__title,
+
+  li:not(.dropdown-item).current-active > .nav__link .nav__title,
+  li:not(.dropdown-item).current-active > .nav__link-wrapper .nav__title,
+
+  .current-menu-item > .nav__link .nav__title,
+  .current-menu-item > .nav__link-wrapper .nav__title {
+    @include underlined_highlight_before_nocolor();
+  }
 }
 
 .nav__menu {
@@ -72,36 +87,31 @@ header:not(.header-transparent) {
     margin: 0 $base-line-height-fixed/3;
     padding: 0;
 
-    a {
+    .nav__link {
       overflow: hidden;
-      & > span:first-of-type {
+      padding: 0 $base-line-height-fixed/3;
+      @include display-flex();
+      @include flex-align-items-center();
+      @include flex-justify-content-between();
+
+      .nav__title {
         padding: 10px 0 5px 0;
         margin-bottom: 5px;
         //padding: $base-line-height 0 $base-line-height/2 0;
         //margin-bottom: $base-line-height/2
       }
-
-      padding: 0 $base-line-height-fixed/3;
-      @include display-flex();
-        -webkit-box-align: center;
-      -webkit-align-items: center;
-          -ms-flex-align: center;
-              align-items: center;
-        -webkit-box-pack: justify;
-        -webkit-justify-content: space-between;
-        -ms-flex-pack: justify;
-        justify-content: space-between;
-
     }
   }
 }
 
-.nav li:not(.mini_cart_item) > a {
+
+.nav li:not(.mini_cart_item) a {
   &:focus,
   &:hover {
     background: transparent !important;
   }
 }
+
 .regular-nav.nav__menu {
     margin: 0 -1*$base-line-height-fixed/1.5;
 }
@@ -117,9 +127,11 @@ header:not(.header-transparent) {
 .czr-dropdown-menu {
     display: none;
     max-width: 50vw;
-    a { white-space: normal; }
-    //the sidemenu and mobile menu should break lines
-    @at-root .vertical-nav .dropdown-menu.czr-dropdown-menu a, #mobile-nav .dropdown-menu.czr-dropdown-menu a { white-space: normal; }
+    //the sidemenu and mobile menu should NOT break lines
+    @at-root .vertical-nav .dropdown-menu.czr-dropdown-menu .nav__title {
+      word-break: break-word;// was break-all; Fixed in dec-2017 @see https://github.com/presscustomizr/customizr/issues/1339
+      white-space: normal;
+    }
 }
 
 .dropdown-menu.czr-dropdown-menu {
@@ -128,7 +140,7 @@ header:not(.header-transparent) {
     margin: 0;
     padding: 0;
     font-size: inherit;
-    a {
+    .nav__link {
         @extend .bold;
         position: relative;
         vertical-align: middle;
@@ -172,7 +184,7 @@ header:not(.header-transparent) {
         font-size:ms(0);
 
         @at-root .regular-nav .dropdown-menu .dropdown-menu {
-          top: 55%;
+          top: 15px;
         }
 
     }
@@ -208,36 +220,30 @@ header:not(.header-transparent) {
 
 // Caret
 .caret__dropdown-toggler {
-  display: none;
-
-
-    .regular-nav & {
       display: inline-block;
       width: 1.5em;
       vertical-align: middle;
       z-index: inherit;
       cursor: pointer;
       position: relative;
-    }
-
-}
-
-.caret__dropdown-toggler i {
-    display: inline-block;
-    @include transition (all 0.3s ease);
-    @include transform-style( preserve-3d );
-    @include backface-visibility( hidden );
-    @include perspective(1000px);
-    text-align: center;
-    vertical-align: baseline;
-    line-height: 0;
-    &::before {
-      line-height: inherit;
-    }
-    .menu-item.show > a > & {
-        @include transform( translateZ(0) rotate(-180deg)!important);
-        -ms-transform: rotate(-180deg)!important;
-    }
+      i {
+          display: inline-block;
+          @include transition (all 0.3s ease);
+          @include transform-style( preserve-3d );
+          @include backface-visibility( hidden );
+          @include perspective(1000px);
+          text-align: center;
+          vertical-align: baseline;
+          line-height: 0;
+          &::before {
+            line-height: inherit;
+          }
+          .menu-item.show > span > &,
+          .menu-item.show > a > & {
+              @include transform( translateZ(0) rotate(-180deg)!important);
+              -ms-transform: rotate(-180deg)!important;
+          }
+      }
 }
 
 .regular-nav {
@@ -403,16 +409,16 @@ header:not(.header-transparent) {
     width: 26px;
 }
 
-.ham-toggler-menu:not(.collapsed) .line-1 {
+.ham-toggler-menu:not(.czr-collapsed) .line-1 {
   -webkit-transform: translateY(6px) translateX(-3px) rotate(45deg);
   -moz-transform: translateY(6px) translateX(-3px) rotate(45deg);
   transform: translateY(6px) translateX(-3px) rotate(45deg);
   width: 28px;
 }
-.ham-toggler-menu:not(.collapsed) .line-2 {
+.ham-toggler-menu:not(.czr-collapsed) .line-2 {
   opacity: 0;
 }
-.ham-toggler-menu:not(.collapsed) .line-3 {
+.ham-toggler-menu:not(.czr-collapsed) .line-3 {
   -webkit-transform: translateY(-6px) translateX(-3px) rotate(-45deg);
   -moz-transform: translateY(-6px) translateX(-3px) rotate(-45deg);
   transform: translateY(-6px) translateX(-3px) rotate(-45deg);
@@ -422,17 +428,15 @@ header:not(.header-transparent) {
 // end ham
 
 .nav__search .czr-dropdown-menu {
-  width: calc( 100% - 0px );
-  padding: 0 10px;
-  margin: 0 0px;
+  width: 100%;
+  margin: 0px;
   max-width: none;
 }
 
 /* ADMIN BAR
 -------------------------------------------------- */
 #wp-admin-bar-tc-customizr-help .ab-item:before, li#wp-admin-bar-tc-customizr-help a:before {
-  font-family: "FontAwesome";
-  speak: none;
+  font-family: 'Font Awesome\ 5 Free';
   font-weight: normal;
   font-variant: normal;
   text-transform: none;

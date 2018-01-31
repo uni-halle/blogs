@@ -1,3 +1,4 @@
+
 /* ===================================================
  * jqueryCenterImages.js v1.0.0
  * ===================================================
@@ -9,7 +10,7 @@
  * Center images in a specified container
  *
  * =================================================== */
-;(function ( $, window, document, undefined ) {
+(function ( $, window ) {
       //defaults
       var pluginName = 'centerImages',
           defaults = {
@@ -96,7 +97,7 @@
 
 
       //@return void
-      Plugin.prototype._maybe_apply_golden_r = function( evt ) {
+      Plugin.prototype._maybe_apply_golden_r = function() {
             //check if options are valids
             if ( ! this.options.enableGoldenRatio || ! this.options.goldenRatioVal || 0 === this.options.goldenRatioVal )
               return;
@@ -162,7 +163,7 @@
 
 
       //@return void
-      Plugin.prototype._pre_img_cent = function( $_img, _event_ ) {
+      Plugin.prototype._pre_img_cent = function( $_img ) {
 
             var _state = this._get_current_state( $_img ),
                 self = this,
@@ -293,4 +294,4 @@
             });
       };
 
-})( jQuery, window, document );
+})( jQuery, window );

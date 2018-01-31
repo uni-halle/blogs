@@ -878,10 +878,8 @@ html.no-js [id*=czr-slider-loader-wrapper] { display: none; }
     text-align: center;
     z-index: 3;
     overflow: hidden;
-
-    // temporary centering
-    transform: translate(-50%, -50%);
-    transform: translate3d(-50%, -50%, 0);
+    @include transform( translate(-50%, -50%) );
+    @include transform( translate3d(-50%, -50%, 0) );
     top: 50%;
     left: 50%;
     position: absolute;
@@ -894,8 +892,8 @@ html.no-js [id*=czr-slider-loader-wrapper] { display: none; }
 
   @at-root .center-slides-disabled .carousel-image img {
     // temporary CSS centering
-    transform: translate(-50%, -50%);
-    transform: translate3d(-50%, -50%, 0);
+    @include transform( translate(-50%, -50%) );
+    @include transform( translate3d(-50%, -50%, 0) );
     top: 50%;
     left: 50%;
     position: absolute;
@@ -1015,8 +1013,7 @@ svg.czr-svg-placeholder {
     .comment-author a::before, .comment-link::before,
     .czr-format-link::before,
     .widget__wrapper a:hover::before, .widget-area a:hover::before,
-    [class*=nav__menu] li.show > a > span:first-of-type::before,
-    li > a > span:first-of-type:hover::before {
+    [class*=nav__menu] .nav__title::before {
         content: none !important;
     }
 }

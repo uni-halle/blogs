@@ -1,3 +1,4 @@
+
 /* ===================================================
  * jqueryimgSmartLoad.js v1.0.0
  * ===================================================
@@ -20,7 +21,7 @@
  * Requires requestAnimationFrame polyfill:
  * http://paulirish.com/2011/requestanimationframe-for-smart-animating/
  * =================================================== */
-;(function ( $, window, document, undefined ) {
+(function ( $, window ) {
       //defaults
       var pluginName = 'imgSmartLoad',
           defaults = {
@@ -104,7 +105,7 @@
       * @return : void
       */
       Plugin.prototype._maybe_trigger_load = function( $_imgs , _evt ) {
-            var self = this;
+            var self = this,
                 //get the visible images list
                 _visible_list = $_imgs.filter( function( ind, _img ) { return self._is_visible( _img ,  _evt ); } );
             //trigger load_img event for visible images
@@ -172,7 +173,7 @@
                         //Basically photon recalculates the image dimension and sets its
                         //width/height attribute once the image is smartloaded. Given the fact that those attributes are "needed" by the browser to assign the images a certain space so that when loaded the page doesn't "grow" it's height .. what's the point doing it so late?
                         if ( ( 'undefined' !== typeof $_img.attr('data-tcjp-recalc-dims')  ) && ( false !== $_img.attr('data-tcjp-recalc-dims') ) ) {
-                              var _width  = $_img.originalWidth();
+                              var _width  = $_img.originalWidth(),
                                   _height = $_img.originalHeight();
 
                               if ( 2 != _.size( _.filter( [ _width, _height ], function(num){ return _.isNumber( parseInt(num, 10) ) && num > 1; } ) ) )
@@ -206,4 +207,4 @@
                   }
             });
       };
-})( jQuery, window, document );
+})( jQuery, window );

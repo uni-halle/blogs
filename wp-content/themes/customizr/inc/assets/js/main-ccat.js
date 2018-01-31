@@ -312,7 +312,7 @@ czrapp.methods = {};
 
               to = this._setter.apply( this, arguments );
               to = this.validate( to );
-              args = _.extend( { silent : false }, _.isObject( o ) ? o : {} );
+              var args = _.extend( { silent : false }, _.isObject( o ) ? o : {} );
               if ( null === to || _.isEqual( from, to ) ) {
                     return dfd.resolveWith( self, [ to, from, o ] ).promise();
               }
@@ -329,7 +329,7 @@ czrapp.methods = {};
                     });
 
                     $.when.apply( null, _promises )
-                          .fail( function() { api.errorLog( 'A deferred callback failed in api.Value::set()'); })
+                          .fail( function() { czrapp.errorLog( 'A deferred callback failed in api.Value::set()'); })
                           .then( function() {
                                 self.callbacks.fireWith( self, [ to, from, o ] );
                                 dfd.resolveWith( self, [ to, from, o ] );
@@ -341,8 +341,7 @@ czrapp.methods = {};
               return dfd.promise( self );
         },
         silent_set : function( to, dirtyness ) {
-              var from = this._value,
-                  _save_state = api.state('saved')();
+              var from = this._value;
 
               to = this._setter.apply( this, arguments );
               to = this.validate( to );
@@ -354,7 +353,7 @@ czrapp.methods = {};
               this._dirty = ( _.isUndefined( dirtyness ) || ! _.isBoolean( dirtyness ) ) ? this._dirty : dirtyness;
 
               this.callbacks.fireWith( this, [ to, from, { silent : true } ] );
-              api.state('saved')( _save_state );
+
               return this;
         },
 
@@ -540,14 +539,14 @@ var czrapp = czrapp || {};
             matchMedia : function( _maxWidth ) {
                   if ( window.matchMedia )
                     return ( window.matchMedia("(max-width: "+_maxWidth+"px)").matches );
-                  $_window = czrapp.$_window || $(window);
+                  var $_window = czrapp.$_window || $(window);
                   return $_window.width() <= ( _maxWidth - 15 );
             },
             emitCustomEvents : function() {
 
                   var that = this;
-                  czrapp.$_window.resize( function(e) {
-                        var $_windowWidth     = czrapp.$_window.width(),
+                  czrapp.$_window.resize( function() {
+                        var //$_windowWidth     = czrapp.$_window.width(),
                             _current          = czrapp.current_device,//<= stored on last resize event or on load
                             _to               = that.getDevice();
                         czrapp.is_responsive  = that.isResponsive();
@@ -568,7 +567,7 @@ var czrapp = czrapp || {};
                   var self = this;
                   _.map( cbs, function(cb) {
                         if ( 'function' == typeof(self[cb]) ) {
-                              args = 'undefined' == typeof( args ) ? Array() : args ;
+                              args = 'undefined' == typeof( args ) ? [] : args ;
                               self[cb].apply(self, args );
                               czrapp.trigger( cb, _.object( _.keys(args), args ) );
                         }
@@ -613,7 +612,7 @@ var czrapp = czrapp || {};
                   return czrapp.$_body.hasClass('is-customizing') || ( 'undefined' !== typeof wp && 'undefined' !== typeof wp.customize );
             },
             _has_iframe : function ( $_elements ) {
-                  var that = this,
+                  var //that = this,
                       to_return = [];
                   _.each( $_elements, function( $_el, container ){
                         if ( $_el.length > 0 && $_el.find('IFRAME').length > 0 )
@@ -715,7 +714,7 @@ var czrapp = czrapp || {};
                           return $(img).is(TCParams.imgSmartLoadOpts.opts.excludeImg.join());
                         }) ): //filter
                         $( _where ).find('img');
-                    $_to_center_with_delay = $( _.filter( $_to_center, function( img ) {
+                    var $_to_center_with_delay = $( _.filter( $_to_center, function( img ) {
                         return $(img).hasClass('tc-holder-img');
                     }) );
                 setTimeout( function(){
@@ -901,7 +900,7 @@ var czrapp = czrapp || {};
                     self.$_sliders.data( 'czr_schedule_select',
                           $.Deferred( function() {
                                 var dfd = this;
-                                self.$_sliders.parent().one( 'customizr.slide click' , function( event ) {
+                                self.$_sliders.parent().one( 'customizr.slide click' , function() {
                                       dfd.resolve();
                                 } );
                           }).done( function() {
@@ -1064,7 +1063,7 @@ var czrapp = czrapp || {};
               var _excl_sels = ( TCParams.anchorSmoothScrollExclude && _.isArray( TCParams.anchorSmoothScrollExclude.simple ) ) ? TCParams.anchorSmoothScrollExclude.simple.join(',') : '',
                   self = this,
                   $_links = $('a[href^="#"]', '#content').not(_excl_sels);
-              _deep_excl = _.isObject( TCParams.anchorSmoothScrollExclude.deep ) ? TCParams.anchorSmoothScrollExclude.deep : null ;
+              var _links, _deep_excl = _.isObject( TCParams.anchorSmoothScrollExclude.deep ) ? TCParams.anchorSmoothScrollExclude.deep : null ;
               if ( _deep_excl )
                 _links = _.toArray($_links).filter( function ( _el ) {
                   return ( 2 == ( ['ids', 'classes'].filter(
@@ -1171,12 +1170,11 @@ var czrapp = czrapp || {};
               _sidebarLayout = _sidebarLayout || 'normal';
               var that = this,
                   LeftSidebarClass    = TCParams.LeftSidebarClass || '.span3.left.tc-sidebar',
-                  RightSidebarClass   = TCParams.RightSidebarClass || '.span3.right.tc-sidebar',
-                  $_WindowWidth       = czrapp.$_window.width();
+                  RightSidebarClass   = TCParams.RightSidebarClass || '.span3.right.tc-sidebar';
               that.$_content      = that.$_content || $("#main-wrapper .container .article-container");
               that.$_left         = that.$_left || $("#main-wrapper .container " + LeftSidebarClass);
               that.$_right        = that.$_right || $("#main-wrapper .container " + RightSidebarClass);
-              iframeContainers = that._has_iframe( { 'content' : this.$_content, 'left' : this.$_left } ) ;
+              var iframeContainers = that._has_iframe( { 'content' : this.$_content, 'left' : this.$_left } ) ;
 
               var leftIframe    = $.inArray('left', iframeContainers) > -1,
                   contentIframe = $.inArray('content', iframeContainers) > -1;
@@ -1193,7 +1191,7 @@ var czrapp = czrapp || {};
             dropdownMenuEventsHandler : function() {
               var $dropdown_ahrefs    = $('.tc-open-on-click .menu-item.menu-item-has-children > a[href!="#"]'),
                   $dropdown_submenus  = $('.tc-open-on-click .dropdown .dropdown-submenu');
-              $dropdown_ahrefs.on('click', function(evt) {
+              $dropdown_ahrefs.on('click', function() {
                 if ( ( $(this).next('.dropdown-menu').css('visibility') != 'hidden' &&
                         $(this).next('.dropdown-menu').is(':visible')  &&
                         ! $(this).parent().hasClass('dropdown-submenu') ) ||
@@ -1205,7 +1203,7 @@ var czrapp = czrapp || {};
                 var $parent = $(this),
                     $children = $parent.children('[data-toggle="dropdown"]');
                 $children.on('click', function(){
-                    var submenu   = $(this).next('.dropdown-menu'),
+                    var //submenu   = $(this).next('.dropdown-menu'),
                         openthis  = false;
                     if ( ! $parent.hasClass('open') ) {
                       openthis = true;
@@ -1223,10 +1221,10 @@ var czrapp = czrapp || {};
             menuButtonHover : function() {
               var $_menu_btns = $('.btn-toggle-nav');
               $_menu_btns.hover(
-                function( evt ) {
+                function() {
                   $(this).addClass('hover');
                 },
-                function( evt ) {
+                function() {
                   $(this).removeClass('hover');
                 }
               );
@@ -1288,10 +1286,11 @@ var czrapp = czrapp || {};
 
             _manageMenuSeparator : function( _to, userOption ) {
               var that = this;
-              if ( 'navbar' == _to )
+              if ( 'navbar' == _to ) {
                 $( '.secondary-menu-separator', that.$_sn_wrap).remove();
+              }
               else {
-                $_sep = $( '<li class="menu-item secondary-menu-separator"><hr class="featurette-divider"></hr></li>' );
+                var $_sep = $( '<li class="menu-item secondary-menu-separator"><hr class="featurette-divider"></hr></li>' );
 
                 switch(userOption) {
                   case 'in-sn-before' :
@@ -1322,8 +1321,7 @@ var czrapp = czrapp || {};
                 }
             },
             _has_iframe : function ( $_elements ) {
-              var that = this,
-                  to_return = [];
+              var to_return = [];
               _.map( $_elements, function( $_el, container ){
                 if ( $_el.length > 0 && $_el.find('IFRAME').length > 0 )
                   to_return.push(container);
@@ -1346,11 +1344,10 @@ var czrapp = czrapp || {};
               if ( _.isEmpty( czrapp.localized.frontNotifications ) || ! _.isObject( czrapp.localized.frontNotifications ) )
                 return;
 
-              var self = this,
-                  _hasCandidate = false;
+              var self = this;
               czrapp.frontNotificationVisible = new czrapp.Value( false );
               czrapp.frontNotificationRendered = false;
-              _.each( czrapp.localized.frontNotifications, function( _notification, _id ) {
+              _.each( czrapp.localized.frontNotifications, function( _notification ) {
                     if ( ! _.isUndefined( czrapp.frontNotification ) )
                       return;
 
@@ -1411,7 +1408,7 @@ var czrapp = czrapp || {};
                               _wrapHtml = [
                                     '<div id="bottom-front-notification">',
                                       '<div class="note-content">',
-                                        '<span class="fa fa-times close-note" title="' + czrapp.localized.i18n['Permanently dismiss'] + '"></span>',
+                                        '<span class="fas fa-times close-note" title="' + czrapp.localized.i18n['Permanently dismiss'] + '"></span>',
                                       '</div>',
                                     '</div>'
                               ].join('');
@@ -1578,7 +1575,7 @@ var czrapp = czrapp || {};
                 }
           },
           _is_sticky_enabled : function() {
-                return czrapp.$_body.hasClass('tc-sticky-header') ? true : false;
+                return czrapp.$_body.hasClass('tc-sticky-header');
           },
           _get_top_offset : function() {
                 var initialOffset   = 0,
@@ -1612,10 +1609,8 @@ var czrapp = czrapp || {};
                 else {
                   return $_el.outerHeight() || +this.customOffset[_context] || 0;
                 }
-                return;
           },
           _set_sticky_offsets : function() {
-                var self = this;
                 czrapp.$_header.css('top' , '');
                 czrapp.$_header.css('height' , 'auto' );
                 this.$_resetMarginTop.css('margin-top' , '' ).show();
@@ -1847,7 +1842,7 @@ var czrapp = czrapp || {};
               }
             },
             _is_sn_on : function() {
-              return this.$_sidenav.length > 0 ? true : false;
+              return this.$_sidenav.length > 0;
             },
             _get_initial_offset : function() {
               var _initial_offset = czrapp.$_wpadminbar.length > 0 ? czrapp.$_wpadminbar.height() : 0;
@@ -2113,7 +2108,7 @@ var czrapp = czrapp || {};
                         czrapp.errorLog( 'Error when loading ' + name + ' | ' + er );
                   }
             });
-            $(function ($) {
+            $(function () {
                   _.each( newMap, function( params, name ) {
                         if ( czrapp[ name ] && czrapp[ name ].isReady && 'resolved' == czrapp[ name ].isReady.state() )
                           return;
@@ -2149,7 +2144,8 @@ var czrapp = czrapp || {};
                 }
           });
           if ( pluginCompatParams.optimizepress_compat && pluginCompatParams.optimizepress_compat.remove_fancybox_loading ) {
-                if (typeof(opjq) !== 'undefined') {
+                  var opjq = opjq || 'undefined';
+                  if ( ! _.isUndefined( opjq ) ) {
                       opjq(document).ready( function() {
                           opjq('#fancybox-loading').remove();
                       } );
@@ -2297,7 +2293,7 @@ var czrapp = czrapp || {};
     });
 
 })(jQuery, czrapp, _ );var czrapp = czrapp || {};
-( function ( czrapp, $, _ ) {
+( function ( czrapp ) {
       czrapp.localized = TCParams || {};
       var appMap = {
                 base : {
@@ -2382,4 +2378,4 @@ var czrapp = czrapp || {};
       };//map
       czrapp.appMap( appMap , true );//true for isInitial map
 
-})( czrapp, jQuery, _ );
+})( czrapp );

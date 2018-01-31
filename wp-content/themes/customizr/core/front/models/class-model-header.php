@@ -3,7 +3,7 @@ class CZR_header_model_class extends CZR_Model {
 
   public $primary_nbwrapper_class;
   public $topbar_nbwrapper_class;
-  public $mobile_nbwrapper_class;
+  public $mobile_inner_contained_class;
 
   public $navbar_template;
 
@@ -79,7 +79,14 @@ class CZR_header_model_class extends CZR_Model {
     foreach ( $children as $child_model ) {
         CZR() -> collection -> czr_fn_register( $child_model );
     }//foreach
+
+
+    //Pro bundle: force mc_slide_top when using the site boxed layout
+    add_filter( 'pc_mc_open_effect', array( $this,  'czr_fn_maybe_force_mc_open_with_slide_top' ) );
+
   }//_construct
+
+
 
 
   /**
@@ -168,10 +175,12 @@ class CZR_header_model_class extends CZR_Model {
     * Desktop sticky header
     */
     if ( 'no_stick' != esc_attr( czr_fn_opt( 'tc_header_desktop_sticky' ) ) ) {
-      if (  'topbar' == esc_attr( czr_fn_opt( 'tc_header_desktop_to_stick' ) ) )
+      if (  'topbar' == esc_attr( czr_fn_opt( 'tc_header_desktop_to_stick' ) ) ) {
         $_desktop_topbar_navbar_class[] = 'desktop-sticky';
-      else
+      }
+      else {
         $_desktop_primary_navbar_class[] = 'desktop-sticky';
+      }
     }
 
     /*
@@ -197,15 +206,51 @@ class CZR_header_model_class extends CZR_Model {
       $element_class[] = 'czr-submenu-move';
     }
 
+
+    /**
+     * The following defines the width of the primary navbar, topbar and mobile navbar
+     * particularly useful if we want to wrap the element's header into a '.container'
+     * for different reasons like:
+     * a) we just want to align the element's header to the rest of the page (main-content's elements are wrapped in a container )
+     * b) we want to box the whole tc-page-wrap
+     * In both cases the class to use should be "container"
+     */
+
+    if ( 'boxed' == esc_attr( czr_fn_opt( 'tc_site_layout') ) ) {
+      $_desktop_topbar_navbar_container_class = $_desktop_primary_navbar_container_class  = $_mobile_navbar_container_class = 'container';
+    }
+
+    else {
+
+      $_desktop_primary_navbar_container_class = $_mobile_navbar_container_class = 'boxed' == esc_attr( czr_fn_opt( 'tc_header_navbar_layout' ) ) ? 'container' :  'container-fluid';
+
+      $_desktop_topbar_navbar_container_class = 'boxed' == esc_attr( czr_fn_opt( 'tc_header_topbar_layout' ) ) ? 'container' : 'container-fluid';
+
+    }
+
     return array_merge( $model, array(
-        'element_class'                 => array_filter( apply_filters( 'czr_header_class', $element_class ) ),
-        'navbar_template'               => $navbar_template,
-        'primary_nbwrapper_class'       => $_desktop_primary_navbar_class,
-        'topbar_nbwrapper_class'        => $_desktop_topbar_navbar_class,
-        'mobile_nbwrapper_class'        => $_mobile_navbar_class
+        'element_class'                      => array_filter( apply_filters( 'czr_header_class', $element_class ) ),
+        'navbar_template'                    => $navbar_template,
+        'primary_nbwrapper_class'            => $_desktop_primary_navbar_class,
+        'topbar_nbwrapper_class'             => $_desktop_topbar_navbar_class,
+        'mobile_nbwrapper_class'             => $_mobile_navbar_class,
+        'primary_nbwrapper_container_class'  => $_desktop_primary_navbar_container_class,
+        'topbar_nbwrapper_container_class'   => $_desktop_topbar_navbar_container_class,
+        'mobile_inner_contained_class'   => $_mobile_navbar_container_class
     ) );
   }
 
+
+
+  //Pro bundle: force mc_slide_top when using the site boxed layout
+  //hook: 'pc_mc_open_effect'
+  public function czr_fn_maybe_force_mc_open_with_slide_top( $effect ) {
+      if ( 'boxed' == esc_attr( czr_fn_opt( 'tc_site_layout') ) ) {
+          return 'mc_slide_top';
+      }
+
+      return $effect;
+  }
 
 
   /**

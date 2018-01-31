@@ -286,15 +286,7 @@ if ( ! class_exists( 'CZR___' ) ) :
             require_once( CZR_BASE . CZR_CORE_PATH . 'core-settings-map.php' );
 
             //loads utils
-            if ( CZR_DEV_MODE ) {
-                require_once( CZR_BASE . CZR_CORE_PATH . '_dev/_utils/fn-0-base.php' );
-                require_once( CZR_BASE . CZR_CORE_PATH . '_dev/_utils/fn-1-utils.php' );
-                require_once( CZR_BASE . CZR_CORE_PATH . '_dev/_utils/fn-2-query.php' );
-                require_once( CZR_BASE . CZR_CORE_PATH . '_dev/_utils/fn-3-thumbnails.php' );
-                require_once( CZR_BASE . CZR_CORE_PATH . '_dev/_utils/fn-4-colors.php' );
-            } else {
-                require_once( CZR_BASE . CZR_CORE_PATH . 'functions-ccat.php' );
-            }
+            require_once( CZR_BASE . CZR_CORE_PATH . 'functions-ccat.php' );
 
             do_action( 'czr_load' );
 
@@ -645,27 +637,6 @@ if ( ! class_exists( 'CZR___' ) ) :
             */
             $prop_value = $prop_value && is_array( $prop_value ) ? czr_fn_stringify_array( $prop_value ) : $prop_value;
             echo empty( $prop_value ) ? '' : $prop_value;
-        }
-
-        /*
-        * An handly function to print the content wrapper class
-        */
-        function czr_fn_column_content_wrapper_class() {
-            echo czr_fn_stringify_array( czr_fn_get_column_content_wrapper_class() );
-        }
-
-        /*
-        * An handly function to print the main container class
-        */
-        function czr_fn_main_container_class() {
-            echo czr_fn_stringify_array( czr_fn_get_main_container_class() );
-        }
-
-        /*
-        * An handly function to print the article containerr class
-        */
-        function czr_fn_article_container_class() {
-            echo czr_fn_stringify_array( czr_fn_get_article_container_class() );
         }
 
 

@@ -23,6 +23,36 @@ See headers of each files for further details.
 
 
 ####################### Changelog ######################
+= 4.0.16 January 16th 2018 =
+* Fix: tagline not displayed in the header. fixes #1389
+* Fix: wording typo in the featured pages description placeholder
+
+= 4.0.15 January 10th 2018 =
+* Fix: modern - fix animated underline not removable in some navigation menus. Also do not underline current menu item when the underline hover effect option is disabled. fixes #1363
+* Fix: modern - remove useless @import rules for unused gfonts. fixes #1366
+* Fix: Wp icon font-family possible override with the pro Font Customizer. Fixes #1350
+* Fix: List in wc product description missing list style type. Fixes #1354
+* Fix: slider caption not centered in ipad Mini. Fixes #1356
+* Fix: clicking menu items with children and no URL bring to 404. Fixes #1358
+* Fix: remove unwanted vertical separator before comments link in single posts. Fixes #1381
+* Improved: improve mobile menu horizontal alignment. fixes #1380
+* Improved: full page search form focus/blur on overlay open/close. fixes #1374
+* Improved: upgraded the Font Awesome icon set to its latest version. adresses #1364
+
+= 4.0.14 December 22nd 2017 =
+* Fix: decrease regular submenu top to 15px. fixes #1333
+* Fix: apply margin-bottom to the right wrapper element, as part of the fix for #1331
+* Fix: avoid adding slider metabox to attachment which are not images. fixes #1317
+* Fix: widget categories title transformed to uppercase. apply the uppercase rule only to its list items also remove the bold font-weight. fixes #1309
+* Fix: always display the comment form before comment list (if any)
+* Fix: slider cta hiding text. fixes #1299
+* Fix: related posts height after the content with two sidebars fixes #1304
+* Fix: fix search icon not appearing in the topbar. fixes #1324
+* Fix: fix WooCommerce Terms and Condition checkbox in Checkout page is not really visible. fixes #1340
+* Fix : dropdown menu-item word-break property set to break-word. Fixes #1339
+* added: a boxed layout options for the header, the content and the footer
+* added: new option to allow a menu dropdown on click for mobile menu and side menu. Enabled by default on mobile devices
+
 = 4.0.13 November 20th 2017 =
 * Fix : WP 4.9 Code Editor issue could impact the custom css customizer option when checking errors in the code
 

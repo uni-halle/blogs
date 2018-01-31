@@ -1,33 +1,42 @@
 <?php
 /*
- * @since 3.5.0
- */
-//shortcut function to echo the column content wrapper class
+* An handly function to print the page wrapper class
+*/
+//shortcut function to echo the #tc-page-wrap class
+if ( ! function_exists( 'czr_fn_page_wrapper_class' ) ) {
+      function czr_fn_page_wrapper_class() {
+            echo czr_fn_stringify_array( czr_fn_get_page_wrapper_class() );
+      }
+}
+
+/*
+* An handly function to print the content wrapper class
+*/
 if ( ! function_exists( 'czr_fn_column_content_wrapper_class' ) ) {
       function czr_fn_column_content_wrapper_class() {
-            return CZR() -> czr_fn_column_content_wrapper_class();
+            echo czr_fn_stringify_array( czr_fn_get_column_content_wrapper_class() );
       }
 }
 
+
 /*
- * @since 3.5.0
- */
-//shortcut function to echo the column content wrapper class
+* An handly function to print the main container class
+*/
 if ( ! function_exists( 'czr_fn_main_container_wrapper_class' ) ) {
       function czr_fn_main_container_class() {
-            return CZR() -> czr_fn_main_container_class();
+            echo czr_fn_stringify_array( czr_fn_get_main_container_class() );
       }
 }
 
 /*
- * @since 3.5.0
- */
-//shortcut function to echo the article container class
+* An handly function to print the article containerr class
+*/
 if ( ! function_exists( 'czr_fn_article_container_class' ) ) {
       function czr_fn_article_container_class() {
-            return CZR() -> czr_fn_article_container_class();
+            echo czr_fn_stringify_array( czr_fn_get_article_container_class() );
       }
 }
+
 
 /*
  * @since 3.5.0
@@ -458,6 +467,21 @@ function czr_fn_get_layout( $post_id , $sidebar_or_class = 'class' ) {
       return apply_filters( 'czr_screen_layout' , $czr_screen_layout[$sidebar_or_class], $post_id , $sidebar_or_class );
 }
 
+/**
+* This function returns the column content wrapper class
+*
+* @package Customizr
+*/
+function czr_fn_get_page_wrapper_class() {
+    if ( 'boxed' == esc_attr( czr_fn_opt( 'tc_site_layout') ) ) {
+        $tc_page_wrap_class = array( 'container', 'czr-boxed' );
+    } else {
+        $tc_page_wrap_class = array();
+    }
+
+    return apply_filters( 'czr_page_wrapper_class' , $tc_page_wrap_class );
+}
+
 
 /**
 * This function returns the column content wrapper class
@@ -468,6 +492,7 @@ function czr_fn_get_layout( $post_id , $sidebar_or_class = 'class' ) {
 function czr_fn_get_column_content_wrapper_class() {
     return apply_filters( 'czr_column_content_wrapper_classes' , array( 'flex-row', 'row', 'column-content-wrapper') );
 }
+
 
 /**
 * This function returns the main container class

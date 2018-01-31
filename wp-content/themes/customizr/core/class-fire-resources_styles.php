@@ -23,6 +23,8 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
             add_filter( 'czr_user_options_style'              , array( $this , 'czr_fn_maybe_write_skin_inline_css') );
             add_filter( 'czr_user_options_style'              , array( $this , 'czr_fn_maybe_write_header_custom_skin_inline_css') );
 
+            add_filter( 'czr_user_options_style'              , array( $this , 'czr_fn_maybe_write_boxed_layout_inline_css' ) );
+
             add_filter( 'czr_user_options_style'              , array( $this , 'czr_fn_write_custom_css') , apply_filters( 'czr_custom_css_priority', 9999 ) );
         }
 
@@ -30,7 +32,7 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
         //hook: after_setup_theme
         function czr_fn_setup_properties() {
 
-              $this->_resouces_version        = CZR_DEBUG_MODE || CZR_DEV_MODE ? CUSTOMIZR_VER . time() : CUSTOMIZR_VER;
+              $this->_resouces_version             = CZR_DEBUG_MODE || CZR_DEV_MODE ? CUSTOMIZR_VER . time() : CUSTOMIZR_VER;
 
               $this->_is_css_minified              = CZR_DEBUG_MODE || CZR_DEV_MODE ? false : true ;
               $this->_is_css_minified              = esc_attr( czr_fn_opt( 'tc_minified_skin' ) ) ? $this->_is_css_minified : false;
@@ -180,9 +182,10 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
                                        '.czr-overlay a:hover',
                                        '.dropdown-menu',
                                        '.tc-header .navbar-brand-sitename',
-                                       '[class*=nav__menu] li > a',
-                                       '[class*=nav__menu] .dropdown-menu a',
-                                       '[class*=nav__menu] .dropdown-item > a:hover',
+                                       '[class*=nav__menu] .nav__link',
+                                       '[class*=nav__menu] .nav__link-wrapper .caret__dropdown-toggler',
+                                       '[class*=nav__menu] .dropdown-menu .nav__link',
+                                       '[class*=nav__menu] .dropdown-item .nav__link:hover',
                                        '.tc-header form.czr-form label',
                                        '.czr-overlay form.czr-form label',
                                        ".tc-header .czr-form input:not([type='submit']):not([type='button']):not([type='number']):not([type='checkbox']):not([type='radio'])",
@@ -208,7 +211,7 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
                                  ),
                                  'background-color' => array(
                                        '.ham__toggler-span-wrapper .line',
-                                       '[class*=nav__menu] li > a > span:first-of-type::before',
+                                       '[class*=nav__menu] .nav__title::before',
                                        '.tc-header .navbar-brand-sitename.czr-underline span::after'
                                  )
                            )
@@ -219,11 +222,15 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
                                  //prop => selectors
                                  'color' => array(
                                          '.header-tagline',
-                                         '[class*=nav__menu] li > a:hover',
-                                         '[class*=nav__menu] li.show:not(.dropdown-item) > a',
-                                         '[class*=nav__menu] li:not(.dropdown-item).current-active > a',
-                                         '[class*=nav__menu] li.current-menu-item > a',
-                                         '[class*=nav__menu] .dropdown-item a',
+                                         '[class*=nav__menu] .nav__link:hover',
+                                         '[class*=nav__menu] .nav__link-wrapper .caret__dropdown-toggler:hover',
+                                         '[class*=nav__menu] .show:not(.dropdown-item) > .nav__link',
+                                         '[class*=nav__menu] .show:not(.dropdown-item) > .nav__link-wrapper .nav__link',
+                                         '[class*=nav__menu] li:not(.dropdown-item).current-active > .nav__link',
+                                         '[class*=nav__menu] li:not(.dropdown-item).current-active > .nav__link-wrapper .nav__link',
+                                         '[class*=nav__menu] .current-menu-item > .nav__link',
+                                         '[class*=nav__menu] .current-menu-item > .nav__link-wrapper .nav__link',
+                                         '[class*=nav__menu] .dropdown-item .nav__link',
                                          '.czr-overlay a',
                                          '.tc-header .socials a:hover',
                                          '.nav__utils a:hover',
@@ -232,7 +239,7 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
                                          '.czr-overlay .czr-form .form-group.in-focus label'
                                  ),
                                  'background-color' => array(
-                                         '.nav__utils .ham-toggler-menu.collapsed:hover .line',
+                                         '.nav__utils .ham-toggler-menu.czr-collapsed:hover .line',
                                  )
                            )
                      ),
@@ -242,8 +249,10 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
                                  //prop => selectors
                                  'border-color' => array(
                                          '.topbar-navbar__wrapper',
-                                         '.header-navbars__wrapper',
                                          '.dropdown-item:not(:last-of-type)'
+                                 ),
+                                 'border-bottom-color' => array(
+                                         '.tc-header',
                                  ),
                                  'outline-color' => array(
                                          '#tc-sn'
@@ -302,6 +311,7 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
                                  //prop => selectors
                                  'background-color' => array(
                                        '.dropdown-item:before',
+                                       '.vertical-nav .caret__dropdown-toggler'
                                  )
                            )
                      ),
@@ -378,8 +388,11 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
                                        '.btn-skin-h-dark.inverted:active',
                                        '.btn-skin-h-dark.inverted:focus',
                                        '.btn-skin-h-dark.inverted:hover',
-                                       '.tc-header.border-top',
+
                                  ),
+                                 'border-top-color' => array(
+                                       '.tc-header.border-top'
+                                  ),
                                  'background-color' => array(
                                        "[class*='grid-container__'] .entry-title a:hover::after",
                                        '.grid-container__classic .post-type__icon',
@@ -599,6 +612,86 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
 
                return $_css . $skin;
          }
+
+
+         //hook : czr_user_options_style
+         function czr_fn_maybe_write_boxed_layout_inline_css( $_css ) {
+               if ( 'boxed' != esc_attr( czr_fn_opt( 'tc_site_layout') ) ) {
+                     return $_css;
+               }
+               /**
+                * When we choose a boxed layout we increase the .container right and left paddings from 15px to 30px
+                * though their inner .row still have a negative right and left margin of 15px
+                * and the col-X inside will still have the left and right padding of 15px.
+                * hence to ensure the actual contained elements always have the same width ( e.g. 1110px in desktop)
+                * whether or not we're in a boxed layout, we have to increase the .container widths (for the viewports within it's defined)
+                * of 30px.
+                */
+
+
+               //get default container widths
+               /*
+               CZR_init::$instance->$css_container_width looks like:
+
+               array(
+                   //min-widths: 1200px, 992px, 768px,
+                   //xl, lg, md, sm, xs
+                   '1140', '960', '720', '540' //, no xs => 100%
+
+                   'xl' => '1140',
+                   'lg' => '960',
+                   'md' => '720',
+                   'sm' => '540'
+               )
+               */
+               $css_container_widths   = CZR_init::$instance->css_container_widths;
+
+               /*
+               CZR_init::$instance->$css_mq_breakpoints looks like:
+
+               array(
+                     'xl' => '1200',
+                     'lg' => '992',
+                     'md' => '768',
+                     'sm' => '575'
+               )
+               */
+               $css_mq_breakpoints          = CZR_init::$instance->css_mq_breakpoints;
+               $css_container               = array();
+               $container_selector          = '.czr-boxed-layout .container';
+               $glue                        = $this->_is_css_minified || esc_attr( czr_fn_opt( 'tc_minified_skin' ) ) ? '' : "\n";
+               $additional_width            = 30; //px
+
+               //Add some rules from sm up
+               //add padding
+               $css_container[]        = sprintf( '@media (min-width: %1$spx){ %2$s{ padding-right: %3$spx; padding-left:  %3$spx; } }',
+                           $css_container_widths[ 'sm' ],
+                           $container_selector,
+                           $additional_width
+               );
+
+               //define container widths
+               foreach ( array_reverse( $css_mq_breakpoints, true ) as $mq => $mq_w_width ) {
+
+                     $container_width  = $css_container_widths[ $mq ] + $additional_width;
+
+                     $css_container[]  = sprintf( '@media (min-width: %1$spx){ %2$s{ width: %3$spx } }',
+                                 $mq_w_width,
+                                 $container_selector,
+                                 $container_width
+                     );
+               }
+
+
+               //LET's GET IT ON
+               $css_container           = implode( "{$glue}{$glue}", $css_container );
+
+               return $_css . $css_container;
+
+         }
+
+
+
 
          //@return string
          public static function czr_fn_build_inline_style_from_map( $style_map = array(), $glue = '') {

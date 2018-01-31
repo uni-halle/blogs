@@ -1,5 +1,6 @@
+
 //Target the first letter of the first element found in the wrapper
-;(function ( $, window, document, undefined ) {
+(function ( $ ) {
     //defaults
     var pluginName = 'extLinks',
         defaults = {
@@ -169,4 +170,4 @@
       });
     };
 
-})( jQuery, window, document );
+})( jQuery );

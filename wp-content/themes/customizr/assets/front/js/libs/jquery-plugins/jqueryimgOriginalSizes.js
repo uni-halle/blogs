@@ -1,3 +1,4 @@
+
 /* ===================================================
  * jqueryimgOriginalSizes.js v1.0.0
  * ===================================================
@@ -15,7 +16,7 @@
  *     imgWidth  = $('img#my-img').originalWidth()
  *
  * =================================================== */
-;(function ( $, window, document, undefined ) {
+(function ( $ ) {
 
   var pluginPrefix = 'original',
       _props       = ['Width', 'Height'];
@@ -49,5 +50,5 @@
     return ( typeof _img_size === undefined ) ? false : _img_size;
   }
 
-})( jQuery, window, document );
+})( jQuery );
 

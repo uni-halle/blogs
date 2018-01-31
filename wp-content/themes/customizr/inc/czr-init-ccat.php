@@ -1555,7 +1555,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
                .tc-wc-menu .nav > li > a:before {
                  content: '\\f07a';
                  position:absolute;
-                 font-size:1.6em; left: 0;
+                 font-size:1.35em; left: 0;
                }
                .tc-header .tc-wc-menu .nav > li > a {
                  position: relative;
@@ -2613,7 +2613,8 @@ class CZR_utils_settings_map {
                   'tc_header_mobile_wc_cart',
                   'tc_header_mobile_tagline',
                   'tc_header_mobile_sticky',
-                  'tc_header_mobile_menu_layout'
+                  'tc_header_mobile_menu_layout',
+                  'tc_header_mobile_menu_dropdown_on_click'
             );
             foreach ( $_to_unset as $key ) {
                   unset( $_map[ $key ] );
@@ -2631,6 +2632,15 @@ class CZR_utils_settings_map {
 
             if ( !is_array( $_map ) || empty( $_map ) ) {
                   return $_map;
+            }
+
+            //to unset
+            $_to_unset = array(
+                  'tc_side_menu_dropdown_on_click',
+            );
+
+            foreach ( $_to_unset as $key ) {
+                  unset( $_map[ $key ] );
             }
 
 
@@ -3192,6 +3202,15 @@ class CZR_utils_settings_map {
       * hook : tc_add_section_map
       */
       function czr_fn_popul_section_map( $_sections ) {
+            //removed sections
+            //to unset
+            $_sections_to_unset = array(
+                  'site_layout_sec',
+            );
+
+            foreach ( $_sections_to_unset as $key ) {
+                  unset( $_sections[ $key ] );
+            }
 
             $_old_sections = array(
 
@@ -3903,7 +3922,7 @@ if ( ! class_exists( 'CZR_resources' ) ) :
             if ( true == czr_fn_opt( 'tc_font_awesome_icons' ) ) {
               $_path = apply_filters( 'tc_font_icons_path' , TC_BASE_URL . 'assets/shared/fonts/fa/css/' );
               wp_enqueue_style( 'customizr-fa',
-                  $_path . 'font-awesome.min.css',
+                  $_path . 'fontawesome-all.min.css',
                   array() , $this->_resouces_version, 'all' );
             }
 
@@ -5362,7 +5381,7 @@ if ( ! function_exists( 'czr_fn_render_main_header' ) ) {
 */
 if ( ! function_exists( 'czr_fn_get_tagline_text' ) ) {
   function czr_fn_get_tagline_text( $echo = true ) {
-    $tagline_text = apply_filters( 'tc_tagline_text', esc_attr__( get_bloginfo( 'description' ) ) );
+    $tagline_text = apply_filters( 'tc_tagline_text', get_bloginfo( 'description', 'display' ) );
     if ( ! $echo )
       return $tagline_text;
     echo $tagline_text;

@@ -1,3 +1,4 @@
+
 /* ===================================================
  * jqueryaddDropCap.js v1.0.1
  * ===================================================
@@ -9,7 +10,7 @@
  * Target the first letter of the first element found in the wrapper
  *
  * =================================================== */
-;(function ( $, window, document, undefined ) {
+(function ( $ ) {
   //defaults
   var pluginName = 'addDropCap',
       defaults = {
@@ -84,7 +85,7 @@
   //@return : void
   //at this stage, the target has text, no need to check it
   Plugin.prototype._may_be_add_dc = function( $_target ) {
-    var _first_el_text    = $_target.text(),
+    var // _first_el_text    = $_target.text(),
         _first_word       = '',
         _split_text       = $_target.text().replace(/ /g , '&nbsp;').split('&nbsp;');
     if ( ! _.isArray(_split_text) )
@@ -127,7 +128,7 @@
     //check if option is well formed
     if ( 'object' != typeof( this.options.skipSelectors ) )
       return true;
-    var self = this;
+    var self = this,
         _filtered = sel_types.filter( function( sel_typ ) { return false === self._is_sel_type_allowed( $_el, sel_typ ); } );
     return 0 === _filtered.length;
   };
@@ -183,7 +184,7 @@
     if ( 0 === $_el.children().length )
       return true;
 
-    var childTagName  = $_el.children().first()[0].tagName,
+    var //childTagName  = $_el.children().first()[0].tagName,
         _tagToSkip    = this.options.skipSelectors.tags,
         _filtered     = _tagToSkip.filter( function(_tag) { return 0 !== $_el.find(_tag).length;} );
 
@@ -203,7 +204,7 @@
   //@return : string
   Plugin.prototype._removeSpecChars = function( _expr , _replaceBy ) {
     _replaceBy = _replaceBy || '';
-    return 'string' == typeof(_expr) ? _expr.replace(/[^\w-\?!\u00bf-\u00ff]/g, _replaceBy ) : '';
+    return 'string' == typeof(_expr) ? _expr.replace(/[^\w-?!\u00bf-\u00ff]/g, _replaceBy ) : '';
   };
 
   //@return : string or false
@@ -224,4 +225,4 @@
           }
       });
   };
-})( jQuery, window, document );
+})( jQuery);

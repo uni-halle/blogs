@@ -2,7 +2,6 @@
 .branding__container {
 
     @extend .display-flex;
-    width: 100%;
 
     .primary-navbar__wrapper & {
       max-width: 85%;
@@ -11,6 +10,9 @@
 
     .primary-navbar__wrapper.has-horizontal-menu & {
       max-width: 33%;
+    }
+    .mobile-navbar__wrapper & {
+      position: static;
     }
 
     @at-root .branding {
@@ -81,8 +83,9 @@
         flex-shrink: 1; //ie (10 at least) doesn't consider this as default while it should
     }
     @at-root .mobile-utils__wrapper .header-search__container {
-        display: inline-block;
+        display: block;
         border-bottom: none;
+        margin: 2*$base-line-height-fixed auto;
     }
 }
 
@@ -122,7 +125,7 @@
 
 // Mobile stuff
 .header-search__container {
-    width: 100%;
+    //width: 100%;
     margin: 2*$base-line-height-fixed 0 $base-line-height-fixed 0;
     .czr-form .form-group {
         margin: 2/3 * $base-line-height-fixed 0 $base-line-height-fixed 0;
@@ -195,8 +198,8 @@
 // IS VALID ONLY WHEN THE PRIMARY NAVBAR WRAPPER IS NOT STICKY
 // that's why is handled only with CSS
 //
-.logo_centered .primary-navbar__wrapper:not(.desktop-sticky),
-.logo_centered:not(.fixed-header-on) .primary-navbar__wrapper.desktop-sticky {
+.logo_centered .primary-navbar__wrapper:not(.desktop-sticky) .primary-navbar__row,
+.logo_centered:not(.fixed-header-on) .primary-navbar__wrapper.desktop-sticky  .primary-navbar__row{
 
     -webkit-box-orient: vertical !important;
     -webkit-box-direction: normal !important;
@@ -232,8 +235,8 @@
 
                 flex-basis: auto
     }
-
-
+/*
+Since mobile and desktop navbar are different we don't need use the following classes anymore
     .navbar-toggleable-md {
         width: auto !important;
         -webkit-box-pack: center !important;
@@ -257,6 +260,7 @@
             -ms-flex-positive: 0;
                 flex-grow: 0;
     }
+*/
 }
 
 
@@ -265,8 +269,8 @@
 // Revert header (not topbar) elements order when logo right
 //
 [class*=logo_right] {
-  .mobile-navbar__wrapper,
-  .primary-navbar__wrapper,
+  .mobile-navbar__row,
+  .primary-navbar__row,
   .branding__container,
   .branding__container .flex-row,
   .primary-nav__wrapper,
@@ -297,20 +301,32 @@
 
 .mobile-sticky .mobile-nav__nav {
   position: absolute;
-  max-height: 90vh;
-  overflow: auto;
+  width: 100%;
   //shadow only when mobile menu is sticky.
   @include box-shadow( 0px, 6px, 8px, rgba(120, 120, 120, 0.9), false, 0px );
+  .mobile-nav__inner {
+    max-height: 90vh;
+    overflow: auto;
+  }
 }
 
 .fixed-header-on .mobile-sticky,
 .fixed-header-on .desktop-sticky {
   position: fixed;
   z-index: 100;
-  /* background: rgba(255, 255, 255, 0.7); */
-  width: 100%;
   top: 0;
+  width: 100%;
+
+  //this is the starting breakpoint from which the .container has a defined width
+  //we don't want to stretch the sticky elements to 100%, we just want they wrap
+  //their .container inner elements which have a well defined width.
+  @include media-breakpoint-up(sm) {
+    .czr-boxed-layout & {
+        width: auto;
+      }
+  }
 }
+
 
 // Shrink logo/title: for desktop only
 .sticky-brand-shrink-on .desktop-sticky {
@@ -373,7 +389,7 @@
   }
 
   //MORE SPACE AT THE BOTTOM WHEN EXPANDED
-  .nav__menu-wrapper {
+  .mobile-nav__inner {
      margin-bottom: 20px;
   }
 
