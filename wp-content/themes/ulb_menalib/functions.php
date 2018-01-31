@@ -321,3 +321,84 @@ return <<<FORMULAR
 FORMULAR;	
 }
 add_shortcode('anfahrt', 'add_anfahrt');*/
+
+/*
+	2017_12_18 HenryG.
+	Enable categories and tags for pages
+
+	http://spicemailer.com/wordpress/add-categories-tags-pages-wordpress/ 
+*/
+function add_taxonomies_to_pages() {
+ register_taxonomy_for_object_type( 'post_tag', 'page' );
+ register_taxonomy_for_object_type( 'category', 'page' );
+ }
+add_action( 'init', 'add_taxonomies_to_pages' );
+
+/*
+	***
+*/
+
+
+/*
+	2018_01_03 HenryG.
+	SVG Support
+
+	https://www.sitepoint.com/wordpress-svg/ 
+*/
+
+function add_file_types_to_uploads($file_types){
+
+    $new_filetypes = array();
+    $new_filetypes['svg'] = 'image/svg+xml';
+    $file_types = array_merge($file_types, $new_filetypes );
+
+    return $file_types;
+}
+add_action('upload_mimes', 'add_file_types_to_uploads');
+/*
+	***
+*/
+
+
+
+/*
+	2018_01_03 HenryG.
+	SVG Support in costum header
+	(This enables to skip the crop image function)
+
+	https://wordpress.stackexchange.com/questions/207442/how-to-use-a-svg-as-custom-header
+	function hikeitbaby_custom_header_setup()
+
+*/
+
+function menalib_custom_header_setup() {
+    add_theme_support( 'custom-header', apply_filters( 'menalib_custom_header_args', array(
+        'default-image'          => '',
+        'default-text-color'     => 'FFFFFF',
+        'width'                  => 886,
+        'height'                 => 120,
+        'flex-width'             => true,
+        'flex-height'            => true,
+        'wp-head-callback'       => 'menalib_header_style',
+        'admin-head-callback'    => 'menalib_admin_header_style',
+        'admin-preview-callback' => 'menalib_admin_header_image',
+    ) ) );
+}
+add_action( 'after_setup_theme', 'menalib_custom_header_setup' );
+
+
+
+/*
+	2018_01_24 HenryG.
+	display pages as posts
+
+
+
+add_filter( 'pre_get_posts', 'my_get_posts' );
+ function my_get_posts( $query ) {
+ if ( is_home() && false == $query->query_vars['suppress_filters'] )
+ $query->set( 'post_type', array( 'post', 'page') );
+ return $query;
+ }
+
+ */
