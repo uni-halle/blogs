@@ -19,6 +19,42 @@ if ( ! class_exists( 'FusionSC_Container' ) ) {
 		protected $args;
 
 		/**
+		 * The internal container counter.
+		 *
+		 * @access private
+		 * @since 1.3
+		 * @var int
+		 */
+		private $container_counter = 1;
+
+		/**
+		 * The counter for 100% height scroll sections.
+		 *
+		 * @access private
+		 * @since 1.3
+		 * @var int
+		 */
+		private $scroll_section_counter = 0;
+
+		/**
+		 * The counter for elements in a 100% height scroll section.
+		 *
+		 * @access private
+		 * @since 1.3
+		 * @var int
+		 */
+		private $scroll_section_element_counter = 1;
+
+		/**
+		 * Stores the navigation for a scroll section.
+		 *
+		 * @access private
+		 * @since 1.3
+		 * @var int
+		 */
+		private $scroll_section_navigation = '';
+
+		/**
 		 * Constructor.
 		 *
 		 * @access public
@@ -45,57 +81,64 @@ if ( ! class_exists( 'FusionSC_Container' ) ) {
 				$fusion_settings = Fusion_Settings::get_instance();
 			}
 			$atts = fusion_section_deprecated_args( $atts );
-			extract( FusionBuilder::set_shortcode_defaults( array(
-					'hide_on_mobile'        => fusion_builder_default_visibility( 'string' ),
-					'id'                    => '',
-					'class'                 => '',
+			extract(
+				FusionBuilder::set_shortcode_defaults(
+					array(
+						'admin_label'                           => '',
+						'hide_on_mobile'                        => fusion_builder_default_visibility( 'string' ),
+						'id'                                    => '',
+						'class'                                 => '',
 
 						// Background.
-						'background_color'      => $fusion_settings->get( 'full_width_bg_color' ),
-						'background_image'      => '',
-						'background_position'   => 'center center',
-						'background_repeat'     => 'no-repeat',
-						'background_parallax'   => 'none',
-						'parallax_speed'        => '0.3',
-						'opacity'               => '100',
-						'break_parents'         => '0',
-						'fade'                  => 'no',
+						'background_color'                      => $fusion_settings->get( 'full_width_bg_color' ),
+						'background_image'                      => '',
+						'background_position'                   => 'center center',
+						'background_repeat'                     => 'no-repeat',
+						'background_parallax'                   => 'none',
+						'parallax_speed'                        => '0.3',
+						'opacity'                               => '100',
+						'break_parents'                         => '0',
+						'fade'                                  => 'no',
 
 						// Style.
-						'hundred_percent'       => 'no',
-						'padding_bottom'        => '',
-						'padding_left'          => '',
-						'padding_right'         => '',
-						'padding_top'           => '',
-						'border_color'          => $fusion_settings->get( 'full_width_border_color' ),
-						'border_size'           => $fusion_settings->get( 'full_width_border_size' ),
-						'border_style'          => 'solid',
-						'equal_height_columns'  => 'no',
-						'data_bg_height'        => '',
-						'data_bg_width'         => '',
-						'enable_mobile'         => 'no',
-						'menu_anchor'           => '',
-						'margin_top'            => '',
-						'margin_bottom'         => '',
+						'hundred_percent'                       => 'no',
+						'hundred_percent_height'                => 'no',
+						'hundred_percent_height_scroll'         => 'no',
+						'hundred_percent_height_center_content' => 'no',
+						'padding_bottom'                        => '',
+						'padding_left'                          => '',
+						'padding_right'                         => '',
+						'padding_top'                           => '',
+						'border_color'                          => $fusion_settings->get( 'full_width_border_color' ),
+						'border_size'                           => $fusion_settings->get( 'full_width_border_size' ),
+						'border_style'                          => 'solid',
+						'equal_height_columns'                  => 'no',
+						'data_bg_height'                        => '',
+						'data_bg_width'                         => '',
+						'enable_mobile'                         => 'no',
+						'menu_anchor'                           => '',
+						'margin_top'                            => '',
+						'margin_bottom'                         => '',
 
-					// Video Background.
-					'video_mp4'             => '',
-					'video_webm'            => '',
-					'video_ogv'             => '',
-					'video_loop'            => 'yes',
-					'video_mute'            => 'yes',
-					'video_preview_image'   => '',
-					'overlay_color'         => '',
-					'overlay_opacity'       => '0.5',
-					'video_url'             => '',
-					'video_loop_refinement' => '',
-					'video_aspect_ratio'    => '16:9',
+						// Video Background.
+						'video_mp4'                             => '',
+						'video_webm'                            => '',
+						'video_ogv'                             => '',
+						'video_loop'                            => 'yes',
+						'video_mute'                            => 'yes',
+						'video_preview_image'                   => '',
+						'overlay_color'                         => '',
+						'overlay_opacity'                       => '0.5',
+						'video_url'                             => '',
+						'video_loop_refinement'                 => '',
+						'video_aspect_ratio'                    => '16:9',
 
-				), $atts
-			) );
+					), $atts
+				)
+			);
 
 			// @codingStandardsIgnoreLine
-			global $parallax_id, $fusion_fwc_type, $is_IE, $is_edge, $fusion_library;
+			global $parallax_id, $fusion_fwc_type, $is_IE, $is_edge, $fusion_library, $columns, $global_container_count;
 
 			$fusion_fwc_type = array();
 
@@ -172,9 +215,9 @@ if ( ! class_exists( 'FusionSC_Container' ) ) {
 					$video_url = fusion_builder_get_video_provider( $video_url );
 
 					if ( 'youtube' == $video_url['type'] ) {
-						$outer_html .= "<div style='visibility: hidden' id='video-" . ( $parallax_id++ ) . "' data-youtube-video-id='" . $video_url['id'] . "' data-mute='" . $video_mute . "' data-loop='" . ( 'yes' == $video_loop ? 1 : 0 ) . "' data-loop-adjustment='" . $video_loop_refinement . "' data-video-aspect-ratio='" . $video_aspect_ratio . "'><div id='video-" . ( $parallax_id++ ) . "-inner'></div></div>";
+						$outer_html .= "<div style='visibility: hidden' id='video-" . ( $parallax_id++ ) . "' data-youtube-video-id='" . $video_url['id'] . "' data-mute='" . $video_mute . "' data-loop='" . ( 'yes' == $video_loop ? 1 : 0 ) . "' data-loop-adjustment='" . $video_loop_refinement . "' data-video-aspect-ratio='" . $video_aspect_ratio . "'><div class='fusion-container-video-bg' id='video-" . ( $parallax_id++ ) . "-inner'></div></div>";
 					} elseif ( 'vimeo' == $video_url['type'] ) {
-						$outer_html .= '<div id="video-' . $parallax_id . '" data-vimeo-video-id="' . $video_url['id'] . '" data-mute="' . $video_mute . '" data-video-aspect-ratio="' . $video_aspect_ratio . '" style="visibility:hidden;"><iframe id="video-iframe-' . $parallax_id . '" src="//player.vimeo.com/video/' . $video_url['id'] . '?api=1&player_id=video-iframe-' . ( $parallax_id++ ) . '&html5=1&autopause=0&autoplay=1&badge=0&byline=0&loop=' . ( 'yes' == $video_loop ? '1' : '0' ) . '&title=0" frameborder="0"></iframe></div>';
+						$outer_html .= '<div id="video-' . $parallax_id . '" data-vimeo-video-id="' . $video_url['id'] . '" data-mute="' . $video_mute . '" data-video-aspect-ratio="' . $video_aspect_ratio . '" style="visibility:hidden;"><iframe id="video-iframe-' . $parallax_id . '" class="fusion-container-video-bg" src="//player.vimeo.com/video/' . $video_url['id'] . '?api=1&player_id=video-iframe-' . ( $parallax_id++ ) . '&html5=1&autopause=0&autoplay=1&badge=0&byline=0&loop=' . ( 'yes' == $video_loop ? '1' : '0' ) . '&title=0" frameborder="0"></iframe></div>';
 					}
 				} else {
 					$video_attributes = 'preload="auto" autoplay';
@@ -271,7 +314,7 @@ if ( ! class_exists( 'FusionSC_Container' ) ) {
 				$fade_style = '';
 				$classes .= ' faded-background';
 
-				if ( $background_parallax ) {
+				if ( 'none' !== $background_parallax ) {
 					$fade_style .= 'background-attachment:' . $background_parallax . ';';
 				}
 
@@ -321,7 +364,7 @@ if ( ! class_exists( 'FusionSC_Container' ) ) {
 				$parallax_data .= ' data-bg-height="' . esc_attr( $data_bg_height ) . '"';
 				$parallax_data .= ' data-bg-width="' . esc_attr( $data_bg_width ) . '"';
 
-				if ( 'none' != $background_parallax && 'fixed' != $background_parallax ) {
+				if ( 'none' !== $background_parallax && 'fixed' !== $background_parallax ) {
 					$parallax_helper = '<div class="fusion-bg-parallax" ' . $parallax_data . '></div>';
 				}
 
@@ -330,7 +373,7 @@ if ( ! class_exists( 'FusionSC_Container' ) ) {
 					$classes .= " fusion-parallax-{$background_parallax}";
 				}
 
-				if ( $background_parallax ) {
+				if ( 'none' !== $background_parallax ) {
 					$style .= 'background-attachment:' . $background_parallax . ';';
 				}
 			}
@@ -343,39 +386,114 @@ if ( ! class_exists( 'FusionSC_Container' ) ) {
 			if ( '100%' === $fusion_settings->get( 'site_width' ) ||
 				is_page_template( '100-width.php' ) ||
 				is_page_template( 'blank.php' ) ||
-				( '1' == FusionBuilder::get_page_option( 'portfolio_width_100', 'portfolio_width_100', $c_page_id ) || 'yes' == FusionBuilder::get_page_option( 'portfolio_width_100', 'portfolio_width_100', $c_page_id ) && 'avada_portfolio' == get_post_type( $c_page_id ) ) ||
-				'100-width.php' == $page_template ) {
+				( '1' == FusionBuilder::get_page_option( 'portfolio_width_100', 'portfolio_width_100', $c_page_id ) || 'yes' === FusionBuilder::get_page_option( 'portfolio_width_100', 'portfolio_width_100', $c_page_id ) && 'avada_portfolio' == get_post_type( $c_page_id ) ) ||
+				'100-width.php' === $page_template ) {
 				$width_100 = true;
 			}
 
 			// Hundred percent.
-			$classes .= ( 'yes' == $hundred_percent ) ? ' hundred-percent-fullwidth' : ' nonhundred-percent-fullwidth';
-			$fusion_fwc_type['content'] = ( 'yes' == $hundred_percent ) ? 'fullwidth' : 'contained';
+			$classes .= ( 'yes' === $hundred_percent ) ? ' hundred-percent-fullwidth' : ' nonhundred-percent-fullwidth';
+			$fusion_fwc_type['content'] = ( 'yes' === $hundred_percent ) ? 'fullwidth' : 'contained';
 			$fusion_fwc_type['width_100_percent'] = $width_100;
 			$fusion_fwc_type['padding'] = array( 'left' => $padding_left, 'right' => $padding_right );
 
+			// Hundred percent height.
+			$scroll_section_container = $data_attr = $active_class = $css_id = '';
+
+			if ( 'yes' === $hundred_percent_height ) {
+				$classes .= ' hundred-percent-height';
+
+				if ( 'yes' === $hundred_percent_height_center_content ) {
+					$classes .= ' hundred-percent-height-center-content';
+				}
+
+				if ( 'yes' === $hundred_percent_height_scroll ) {
+
+					if ( 1 === $this->scroll_section_element_counter ) {
+						$this->scroll_section_counter++;
+						$scroll_section_container = '<div id="fusion-scroll-section-' . $this->scroll_section_counter . '" class="fusion-scroll-section" data-section="' . $this->scroll_section_counter . '">';
+
+						$active_class .= ' active';
+					}
+
+					$classes .= ' hundred-percent-height-scrolling';
+
+					if ( '' !== $id ) {
+						$css_id = $id;
+					}
+					$id = 'fusion-scroll-section-element-' . $this->scroll_section_counter . '-' . $this->scroll_section_element_counter;
+					$data_attr = ' data-section="' . $this->scroll_section_counter . '" data-element="' . $this->scroll_section_element_counter . '"';
+
+					$this->scroll_section_navigation .= '<li><a href="#' . $id . '" class="fusion-scroll-section-link" data-name="' . $admin_label . '" data-element="' . $this->scroll_section_element_counter . '"><span class="fusion-scroll-section-link-bullet"></span></a></li>';
+
+					$this->scroll_section_element_counter++;
+				} else {
+					$classes .= ' non-hundred-percent-height-scrolling';
+				}
+			} else {
+				$classes .= ' non-hundred-percent-height-scrolling';
+			}
+
+			if ( $global_container_count === $this->container_counter || 'no' === $hundred_percent_height_scroll || 'no' === $hundred_percent_height ) {
+
+				if ( 1 < $this->scroll_section_element_counter ) {
+					$scroll_navigation_position = ( 'Right' === $fusion_settings->get( 'header_position' ) || is_rtl() ) ? 'scroll-navigation-left' : 'scroll-navigation-right';
+					$scroll_section_container   = '<nav id="fusion-scroll-section-nav-' . $this->scroll_section_counter . '" class="fusion-scroll-section-nav ' . $scroll_navigation_position . '" data-section="' . $this->scroll_section_counter . '"><ul>' . $this->scroll_section_navigation . '</ul></nav>';
+					$scroll_section_container   .= '</div>';
+				}
+
+				$this->scroll_section_element_counter = 1;
+				$this->scroll_section_navigation = '';
+			}
+
 			// Equal column height.
-			if ( 'yes' == $equal_height_columns ) {
+			if ( 'yes' === $equal_height_columns ) {
 				$classes .= ' fusion-equal-height-columns';
 			}
 
 			// Visibility classes.
-			$classes = fusion_builder_visibility_atts( $hide_on_mobile, $classes );
+			if ( 'no' === $hundred_percent_height_scroll ) {
+				$classes = fusion_builder_visibility_atts( $hide_on_mobile, $classes );
+			}
+
+			$main_content = do_shortcode( fusion_builder_fix_shortcodes( $content ) );
+
+			// Additional wrapper for content centering.
+			if ( 'yes' === $hundred_percent_height && 'yes' === $hundred_percent_height_center_content ) {
+				$main_content = '<div class="fusion-fullwidth-center-content">' . $main_content . '</div>';
+			}
 
 			// CSS inline style.
 			$style = ! empty( $style ) ? " style='{$style}'" : '';
 
 			// Custom CSS ID.
-			$id = ( '' !== $id ) ? 'id="' . esc_attr( $id ) . '"' : '';
+			$id = ( '' !== $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
 
-			$output = $parallax_helper . '<div ' . $id . ' class="' . $classes . '" ' . $style . '>' . $outer_html . do_shortcode( fusion_builder_fix_shortcodes( $content ) ) . '</div>';
+			$output = $parallax_helper . '<div' . $id . ' class="' . $classes . '" ' . $style . '>' . $outer_html . $main_content . '</div>';
 
 			// Menu anchor.
 			if ( ! empty( $menu_anchor ) ) {
 				$output = '<div id="' . $menu_anchor . '">' . $output . '</div>';
 			}
 
+			if ( 'yes' === $hundred_percent_height_scroll && 'yes' === $hundred_percent_height ) {
+
+				// Custom CSS ID.
+				$css_id = ( '' !== $css_id ) ? ' id="' . esc_attr( $css_id ) . '"' : '';
+
+				$output = '<div' . $css_id . ' class="fusion-scroll-section-element' . $active_class . '"' . $data_attr . '>' . $output . '</div>';
+			}
+
+			if ( $global_container_count === $this->container_counter && 'yes' === $hundred_percent_height_scroll && 'yes' === $hundred_percent_height ) {
+				$output = $output . $scroll_section_container;
+			} else {
+				$output = $scroll_section_container . $output;
+			}
+
 			$fusion_fwc_type = array();
+			$columns         = 0;
+
+			$this->container_counter++;
 
 			return $output;
 		}
@@ -391,6 +509,9 @@ if ( ! class_exists( 'FusionSC_Container' ) ) {
 			global $fusion_library, $fusion_settings;
 
 			$css['global']['.fusion-builder-row.fusion-row']['max-width'] = $fusion_library->sanitize->size( $fusion_settings->get( 'site_width' ) );
+
+			$css['global']['.fusion-scroll-section-nav']['background-color'] = $fusion_library->sanitize->color( $fusion_settings->get( 'container_scroll_nav_bg_color' ) );
+			$css['global']['.fusion-scroll-section-link-bullet']['background-color'] = $fusion_library->sanitize->color( $fusion_settings->get( 'container_scroll_nav_bullet_color' ) );
 
 			return $css;
 		}
@@ -458,7 +579,7 @@ if ( ! class_exists( 'FusionSC_Container' ) ) {
 						),
 						'full_width_border_size' => array(
 							'label'       => esc_html__( 'Container Border Size', 'fusion-builder' ),
-							'description' => esc_html__( 'Controls the border size of the container element.', 'fusion-builder' ),
+							'description' => esc_html__( 'Controls the top and bottom border size of the container element.', 'fusion-builder' ),
 							'id'          => 'full_width_border_size',
 							'default'     => '0',
 							'type'        => 'slider',
@@ -475,6 +596,27 @@ if ( ! class_exists( 'FusionSC_Container' ) ) {
 							'default'     => '#eae9e9',
 							'type'        => 'color-alpha',
 						),
+						'container_scroll_nav_bg_color' => array(
+							'label'       => esc_html__( 'Container 100% Height Navigation Background Color', 'fusion-builder' ),
+							'description' => esc_html__( 'Controls the background colors of the navigation area and name box when using 100% height containers.', 'fusion-builder' ),
+							'id'          => 'container_scroll_nav_bg_color',
+							'default'     => 'rgba(0, 0, 0, 0.2)',
+							'type'        => 'color-alpha',
+						),
+						'container_scroll_nav_bullet_color' => array(
+							'label'       => esc_html__( 'Container 100% Height Navigation Element Color', 'fusion-builder' ),
+							'description' => esc_html__( 'Controls the color of the navigation circles and text name when using 100% height containers.', 'fusion-builder' ),
+							'id'          => 'container_scroll_nav_bullet_color',
+							'default'     => '#eeeeee',
+							'type'        => 'color-alpha',
+						),
+						'container_hundred_percent_height_mobile' => array(
+							'label'       => esc_html__( 'Container 100% Height On Mobile', 'fusion-builder' ),
+							'description' => esc_html__( 'Turn on to enable the 100% height containers on mobile. Please note, this feature only works when your containers have minimal content. If the container has a lot of content it will overflow the screen height. In many cases, 100% height containers work well on desktop, but will need disabled on mobile.', 'fusion-builder' ),
+							'id'          => 'container_hundred_percent_height_mobile',
+							'default'     => '0',
+							'type'        => 'switch',
+						),
 					),
 				),
 			);
@@ -488,11 +630,17 @@ if ( ! class_exists( 'FusionSC_Container' ) ) {
 		 * @return void
 		 */
 		public function add_scripts() {
+			global $fusion_library, $fusion_settings;
 
-			global $fusion_settings;
 			if ( ! $fusion_settings ) {
 				$fusion_settings = Fusion_Settings::get_instance();
 			}
+
+			$is_sticky_header_transparent = 0;
+			$c_page_id = $fusion_library->get_page_id();
+			if ( 1 > Fusion_Color::new_color( $fusion_settings->get( 'header_sticky_bg_color' ) )->alpha ) {
+				 $is_sticky_header_transparent = 1;
+			 }
 
 			Fusion_Dynamic_JS::enqueue_script(
 				'fusion-container',
@@ -507,6 +655,8 @@ if ( ! class_exists( 'FusionSC_Container' ) ) {
 				'fusionContainerVars',
 				array(
 					'content_break_point' => intval( $fusion_settings->get( 'content_break_point' ) ),
+					'container_hundred_percent_height_mobile' => intval( $fusion_settings->get( 'container_hundred_percent_height_mobile' ) ),
+					'is_sticky_header_transparent' => $is_sticky_header_transparent
 				)
 			);
 		}
@@ -532,447 +682,506 @@ function fusion_builder_add_section() {
 	$default .= __( ' on default template. ', 'fusion-builder' );
 	$default .= rtrim( $fusion_settings->get_default_description( $setting . '_100', $subset, '' ), '.' );
 	$default .= __( ' on 100% width template.', 'fusion-builder' );
-	fusion_builder_map( array(
-		'name'              => esc_attr__( 'Container', 'fusion-builder' ),
-		'shortcode'         => 'fusion_builder_container',
-		'hide_from_builder' => true,
-		'params'            => array(
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Interior Content Width', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select if the interior content is contained to site width or 100% width.', 'fusion-builder' ),
-				'param_name'  => 'hundred_percent',
-				'value'       => array(
-					'yes' => esc_attr__( '100% Width', 'fusion-builder' ),
-					'no'  => esc_attr__( 'Site Width', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'              => esc_attr__( 'Container', 'fusion-builder' ),
+			'shortcode'         => 'fusion_builder_container',
+			'hide_from_builder' => true,
+			'params'            => array(
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Interior Content Width', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select if the interior content is contained to site width or 100% width.', 'fusion-builder' ),
+					'param_name'  => 'hundred_percent',
+					'value'       => array(
+						'yes' => esc_attr__( '100% Width', 'fusion-builder' ),
+						'no'  => esc_attr__( 'Site Width', 'fusion-builder' ),
+					),
+					'default'     => 'no',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
 				),
-				'default'     => 'no',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Set Columns to Equal Height', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select to set all columns that are used inside the container to have equal height.', 'fusion-builder' ),
-				'param_name'  => 'equal_height_columns',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( '100% Height', 'fusion-builder' ),
+					'description' => sprintf( __( 'Select if the container should be fixed to 100%% height of the viewport. Larger content that is taller than the screen height will be cut off, this option works best with minimal content. <strong>Important:</strong> Mobile devices are even shorter in height so this option can be disabled on mobile in <a href="%s" target="_blank" rel="noopener noreferrer">theme options</a> while still being active on desktop. When this option is used, the mobile visibility settings are disabled.', 'fusion-builder' ), $fusion_settings->get_setting_link( 'container_hundred_percent_height_mobile' ) ),
+					'param_name'  => 'hundred_percent_height',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'no',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
 				),
-				'default'     => 'no',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Name Of Menu Anchor', 'fusion-builder' ),
-				'description' => esc_attr__( 'This name will be the id you will have to use in your one page menu.', 'fusion-builder' ),
-				'param_name'  => 'menu_anchor',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Container Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the section on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Container Background Color', 'fusion-builder' ),
-				'param_name'  => 'background_color',
-				'value'       => '',
-				'description' => esc_attr__( 'Controls the background color of the container element.', 'fusion-builder' ),
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-				'default'     => $fusion_settings->get( 'full_width_bg_color' ),
-			),
-			array(
-				'type'        => 'upload',
-				'heading'     => esc_attr__( 'Background Image', 'fusion-builder' ),
-				'description' => esc_attr__( 'Upload an image to display in the background.', 'fusion-builder' ),
-				'param_name'  => 'background_image',
-				'value'       => '',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Background Position', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the postion of the background image.', 'fusion-builder' ),
-				'param_name'  => 'background_position',
-				'value'       => array(
-					'left top'      => esc_attr__( 'Left Top', 'fusion-builder' ),
-					'left center'   => esc_attr__( 'Left Center', 'fusion-builder' ),
-					'left bottom'   => esc_attr__( 'Left Bottom', 'fusion-builder' ),
-					'right top'     => esc_attr__( 'Right Top', 'fusion-builder' ),
-					'right center'  => esc_attr__( 'Right Center', 'fusion-builder' ),
-					'right bottom'  => esc_attr__( 'Right Bottom', 'fusion-builder' ),
-					'center top'    => esc_attr__( 'Center Top', 'fusion-builder' ),
-					'center center' => esc_attr__( 'Center Center', 'fusion-builder' ),
-					'center bottom' => esc_attr__( 'Center Bottom', 'fusion-builder' ),
-				),
-				'default'     => 'center center',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'background_image',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Enable 100% Height Scroll', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select to add this container to a collection of 100% height containers that share scrolling navigation.', 'fusion-builder' ),
+					'param_name'  => 'hundred_percent_height_scroll',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'no',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'hundred_percent_height',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Background Repeat', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose how the background image repeats.', 'fusion-builder' ),
-				'param_name'  => 'background_repeat',
-				'value'       => array(
-					'no-repeat' => esc_attr__( 'No Repeat', 'fusion-builder' ),
-					'repeat'    => esc_attr__( 'Repeat Vertically and Horizontally', 'fusion-builder' ),
-					'repeat-x'  => esc_attr__( 'Repeat Horizontally', 'fusion-builder' ),
-					'repeat-y'  => esc_attr__( 'Repeat Vertically', 'fusion-builder' ),
-				),
-				'default'     => 'no-repeat',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'background_image',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Center Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set to "Yes" to center the content vertically on 100% height containers.', 'fusion-builder' ),
+					'param_name'  => 'hundred_percent_height_center_content',
+					'default'     => 'yes',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'hundred_percent_height',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Fading Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to have the background image fade and blur on scroll. WARNING: Only works for images.', 'fusion-builder' ),
-				'param_name'  => 'fade',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'default'     => 'no',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'background_image',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Set Columns to Equal Height', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select to set all columns that are used inside the container to have equal height.', 'fusion-builder' ),
+					'param_name'  => 'equal_height_columns',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
 					),
+					'default'     => 'no',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Background Parallax', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose how the background image scrolls and responds. This does not work for videos and must be set to "No Parallax" for the video to show.', 'fusion-builder' ),
-				'param_name'  => 'background_parallax',
-				'value'       => array(
-					'none'  => esc_attr__( 'No Parallax (no effects)', 'fusion-builder' ),
-					'fixed' => esc_attr__( 'Fixed (fixed on desktop, non-fixed on mobile)', 'fusion-builder' ),
-					'up'    => esc_attr__( 'Up (moves up on desktop and mobile)', 'fusion-builder' ),
-					'down'  => esc_attr__( 'Down (moves down on desktop and mobile)', 'fusion-builder' ),
-					'left'  => esc_attr__( 'Left (moves left on desktop and mobile)', 'fusion-builder' ),
-					'right' => esc_attr__( 'Right (moves right on desktop and mobile)', 'fusion-builder' ),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Name Of Menu Anchor', 'fusion-builder' ),
+					'description' => esc_attr__( 'This name will be the id you will have to use in your one page menu.', 'fusion-builder' ),
+					'param_name'  => 'menu_anchor',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
 				),
-				'default'     => 'none',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'background_image',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Container Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the section on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'hundred_percent_height_scroll',
+							'value'    => 'yes',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Enable Parallax on Mobile', 'fusion-builder' ),
-				'description' => esc_attr__( 'Works for up/down/left/right only. Parallax effects would most probably cause slowdowns when your site is viewed in mobile devices. If the device width is less than 980 pixels, then it is assumed that the site is being viewed in a mobile device.', 'fusion-builder' ),
-				'param_name'  => 'enable_mobile',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
 				),
-				'default'     => 'no',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'background_image',
-						'value'    => '',
-						'operator' => '!=',
-					),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Parallax Speed', 'fusion-builder' ),
-				'description' => esc_attr__( 'The movement speed, value should be between 0.1 and 1.0. A lower number means slower scrolling speed. Higher scrolling speeds will enlarge the image more.', 'fusion-builder' ),
-				'param_name'  => 'parallax_speed',
-				'value'       => '0.3',
-				'min'         => '0',
-				'max'         => '1',
-				'step'        => '0.1',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'background_image',
-						'value'    => '',
-						'operator' => '!=',
-					),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Container Background Color', 'fusion-builder' ),
+					'param_name'  => 'background_color',
+					'value'       => '',
+					'description' => esc_attr__( 'Controls the background color of the container element.', 'fusion-builder' ),
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+					'default'     => $fusion_settings->get( 'full_width_bg_color' ),
 				),
-			),
-			array(
-				'type'        => 'uploadfile',
-				'heading'     => esc_attr__( 'Video MP4 Upload', 'fusion-builder' ),
-				'description' => esc_attr__( 'Video must be in a 16:9 aspect ratio. Add your WebM video file. WebM and MP4 format must be included to render your video with cross browser compatibility. OGV is optional.', 'fusion-builder' ),
-				'param_name'  => 'video_mp4',
-				'value'       => '',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'uploadfile',
-				'heading'     => esc_attr__( 'Video WebM Upload', 'fusion-builder' ),
-				'description' => esc_attr__( 'Video must be in a 16:9 aspect ratio. Add your WebM video file. WebM and MP4 format must be included to render your video with cross browser compatibility. OGV is optional.', 'fusion-builder' ),
-				'param_name'  => 'video_webm',
-				'value'       => '',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'uploadfile',
-				'heading'     => esc_attr__( 'Video OGV Upload', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add your OGV video file. This is optional.', 'fusion-builder' ),
-				'param_name'  => 'video_ogv',
-				'value'       => '',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'YouTube/Vimeo Video URL or ID', 'fusion-builder' ),
-				'description' => esc_attr__( "Enter the URL to the video or the video ID of your YouTube or Vimeo video you want to use as your background. If your URL isn't showing a video, try inputting the video ID instead. Ads will show up in the video if it has them.", 'fusion-builder' ),
-				'param_name'  => 'video_url',
-				'value'       => '',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Video Aspect Ratio', 'fusion-builder' ),
-				'description' => esc_attr__( 'The video will be resized to maintain this aspect ratio, this is to prevent the video from showing any black bars. Enter an aspect ratio here such as: "16:9", "4:3" or "16:10". The default is "16:9".', 'fusion-builder' ),
-				'param_name'  => 'video_aspect_ratio',
-				'value'       => '16:9',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-				'or'          => true,
-				'dependency'  => array(
-					array(
-						'element'  => 'video_mp4',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'upload',
+					'heading'     => esc_attr__( 'Background Image', 'fusion-builder' ),
+					'description' => esc_attr__( 'Upload an image to display in the background.', 'fusion-builder' ),
+					'param_name'  => 'background_image',
+					'value'       => '',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Background Position', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the postion of the background image.', 'fusion-builder' ),
+					'param_name'  => 'background_position',
+					'value'       => array(
+						'left top'      => esc_attr__( 'Left Top', 'fusion-builder' ),
+						'left center'   => esc_attr__( 'Left Center', 'fusion-builder' ),
+						'left bottom'   => esc_attr__( 'Left Bottom', 'fusion-builder' ),
+						'right top'     => esc_attr__( 'Right Top', 'fusion-builder' ),
+						'right center'  => esc_attr__( 'Right Center', 'fusion-builder' ),
+						'right bottom'  => esc_attr__( 'Right Bottom', 'fusion-builder' ),
+						'center top'    => esc_attr__( 'Center Top', 'fusion-builder' ),
+						'center center' => esc_attr__( 'Center Center', 'fusion-builder' ),
+						'center bottom' => esc_attr__( 'Center Bottom', 'fusion-builder' ),
 					),
-					array(
-						'element'  => 'video_ogv',
-						'value'    => '',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'video_webm',
-						'value'    => '',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'video_url',
-						'value'    => '',
-						'operator' => '!=',
+					'default'     => 'center center',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'background_image',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Loop Video', 'fusion-builder' ),
-				'param_name'  => 'video_loop',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'default'     => 'yes',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-				'or'          => true,
-				'dependency'  => array(
-					array(
-						'element'  => 'video_mp4',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Background Repeat', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose how the background image repeats.', 'fusion-builder' ),
+					'param_name'  => 'background_repeat',
+					'value'       => array(
+						'no-repeat' => esc_attr__( 'No Repeat', 'fusion-builder' ),
+						'repeat'    => esc_attr__( 'Repeat Vertically and Horizontally', 'fusion-builder' ),
+						'repeat-x'  => esc_attr__( 'Repeat Horizontally', 'fusion-builder' ),
+						'repeat-y'  => esc_attr__( 'Repeat Vertically', 'fusion-builder' ),
 					),
-					array(
-						'element'  => 'video_ogv',
-						'value'    => '',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'video_webm',
-						'value'    => '',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'video_url',
-						'value'    => '',
-						'operator' => '!=',
+					'default'     => 'no-repeat',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'background_image',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Mute Video', 'fusion-builder' ),
-				'param_name'  => 'video_mute',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'default'     => 'yes',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-				'or'          => true,
-				'dependency'  => array(
-					array(
-						'element'  => 'video_mp4',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Fading Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to have the background image fade and blur on scroll. WARNING: Only works for images.', 'fusion-builder' ),
+					'param_name'  => 'fade',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
 					),
-					array(
-						'element'  => 'video_ogv',
-						'value'    => '',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'video_webm',
-						'value'    => '',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'video_url',
-						'value'    => '',
-						'operator' => '!=',
+					'default'     => 'no',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'background_image',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'upload',
-				'heading'     => esc_attr__( 'Video Preview Image', 'fusion-builder' ),
-				'description' => esc_attr__( 'IMPORTANT: This field must be used for self hosted videos. Self hosted videos do not work correctly on mobile devices. The preview image will be seen in place of your video on older browsers or mobile devices.', 'fusion-builder' ),
-				'param_name'  => 'video_preview_image',
-				'value'       => '',
-				'group'       => esc_attr__( 'Background', 'fusion-builder' ),
-				'or'          => true,
-				'dependency'  => array(
-					array(
-						'element'  => 'video_mp4',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Background Parallax', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose how the background image scrolls and responds. This does not work for videos and must be set to "No Parallax" for the video to show.', 'fusion-builder' ),
+					'param_name'  => 'background_parallax',
+					'value'       => array(
+						'none'  => esc_attr__( 'No Parallax (no effects)', 'fusion-builder' ),
+						'fixed' => esc_attr__( 'Fixed (fixed on desktop, non-fixed on mobile)', 'fusion-builder' ),
+						'up'    => esc_attr__( 'Up (moves up on desktop and mobile)', 'fusion-builder' ),
+						'down'  => esc_attr__( 'Down (moves down on desktop and mobile)', 'fusion-builder' ),
+						'left'  => esc_attr__( 'Left (moves left on desktop and mobile)', 'fusion-builder' ),
+						'right' => esc_attr__( 'Right (moves right on desktop and mobile)', 'fusion-builder' ),
 					),
-					array(
-						'element'  => 'video_ogv',
-						'value'    => '',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'video_webm',
-						'value'    => '',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'video_url',
-						'value'    => '',
-						'operator' => '!=',
+					'default'     => 'none',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'background_image',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Container Border Size', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the border size of the container element. In pixels.', 'fusion-builder' ),
-				'param_name'  => 'border_size',
-				'value'       => '',
-				'min'         => '0',
-				'max'         => '50',
-				'default'     => $fusion_settings->get( 'full_width_border_size' ),
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Container Border Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the border color of the container element.', 'fusion-builder' ),
-				'param_name'  => 'border_color',
-				'value'       => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'default'     => $fusion_settings->get( 'full_width_border_color' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'border_size',
-						'value'    => '0',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Enable Parallax on Mobile', 'fusion-builder' ),
+					'description' => esc_attr__( 'Works for up/down/left/right only. Parallax effects would most probably cause slowdowns when your site is viewed in mobile devices. If the device width is less than 980 pixels, then it is assumed that the site is being viewed in a mobile device.', 'fusion-builder' ),
+					'param_name'  => 'enable_mobile',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'no',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'background_image',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Border Style', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the border style.', 'fusion-builder' ),
-				'param_name'  => 'border_style',
-				'value'       => array(
-					'solid'  => esc_attr__( 'Solid', 'fusion-builder' ),
-					'dashed' => esc_attr__( 'Dashed', 'fusion-builder' ),
-					'dotted' => esc_attr__( 'Dotted', 'fusion-builder' ),
-				),
-				'default'     => 'solid',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'border_size',
-						'value'    => '0',
-						'operator' => '!=',
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Parallax Speed', 'fusion-builder' ),
+					'description' => esc_attr__( 'The movement speed, value should be between 0.1 and 1.0. A lower number means slower scrolling speed. Higher scrolling speeds will enlarge the image more.', 'fusion-builder' ),
+					'param_name'  => 'parallax_speed',
+					'value'       => '0.3',
+					'min'         => '0',
+					'max'         => '1',
+					'step'        => '0.1',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'background_image',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'dimension',
-				'remove_from_atts' => true,
-				'heading'     => esc_attr__( 'Margin', 'fusion-builder' ),
-				'param_name'  => 'spacing',
-				'value'       => array(
-					'margin_top'    => '',
-					'margin_bottom' => '',
+				array(
+					'type'        => 'uploadfile',
+					'heading'     => esc_attr__( 'Video MP4 Upload', 'fusion-builder' ),
+					'description' => esc_attr__( 'Video must be in a 16:9 aspect ratio. Add your WebM video file. WebM and MP4 format must be included to render your video with cross browser compatibility. OGV is optional.', 'fusion-builder' ),
+					'param_name'  => 'video_mp4',
+					'value'       => '',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'uploadfile',
+					'heading'     => esc_attr__( 'Video WebM Upload', 'fusion-builder' ),
+					'description' => esc_attr__( 'Video must be in a 16:9 aspect ratio. Add your WebM video file. WebM and MP4 format must be included to render your video with cross browser compatibility. OGV is optional.', 'fusion-builder' ),
+					'param_name'  => 'video_webm',
+					'value'       => '',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'uploadfile',
+					'heading'     => esc_attr__( 'Video OGV Upload', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add your OGV video file. This is optional.', 'fusion-builder' ),
+					'param_name'  => 'video_ogv',
+					'value'       => '',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'YouTube/Vimeo Video URL or ID', 'fusion-builder' ),
+					'description' => esc_attr__( "Enter the URL to the video or the video ID of your YouTube or Vimeo video you want to use as your background. If your URL isn't showing a video, try inputting the video ID instead. Ads will show up in the video if it has them.", 'fusion-builder' ),
+					'param_name'  => 'video_url',
+					'value'       => '',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Video Aspect Ratio', 'fusion-builder' ),
+					'description' => esc_attr__( 'The video will be resized to maintain this aspect ratio, this is to prevent the video from showing any black bars. Enter an aspect ratio here such as: "16:9", "4:3" or "16:10". The default is "16:9".', 'fusion-builder' ),
+					'param_name'  => 'video_aspect_ratio',
+					'value'       => '16:9',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+					'or'          => true,
+					'dependency'  => array(
+						array(
+							'element'  => 'video_mp4',
+							'value'    => '',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'video_ogv',
+							'value'    => '',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'video_webm',
+							'value'    => '',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'video_url',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Loop Video', 'fusion-builder' ),
+					'param_name'  => 'video_loop',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+					'or'          => true,
+					'dependency'  => array(
+						array(
+							'element'  => 'video_mp4',
+							'value'    => '',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'video_ogv',
+							'value'    => '',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'video_webm',
+							'value'    => '',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'video_url',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Mute Video', 'fusion-builder' ),
+					'param_name'  => 'video_mute',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+					'or'          => true,
+					'dependency'  => array(
+						array(
+							'element'  => 'video_mp4',
+							'value'    => '',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'video_ogv',
+							'value'    => '',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'video_webm',
+							'value'    => '',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'video_url',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'upload',
+					'heading'     => esc_attr__( 'Video Preview Image', 'fusion-builder' ),
+					'description' => esc_attr__( 'IMPORTANT: This field must be used for self hosted videos. Self hosted videos do not work correctly on mobile devices. The preview image will be seen in place of your video on older browsers or mobile devices.', 'fusion-builder' ),
+					'param_name'  => 'video_preview_image',
+					'value'       => '',
+					'group'       => esc_attr__( 'Background', 'fusion-builder' ),
+					'or'          => true,
+					'dependency'  => array(
+						array(
+							'element'  => 'video_mp4',
+							'value'    => '',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'video_ogv',
+							'value'    => '',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'video_webm',
+							'value'    => '',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'video_url',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Container Border Size', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the border size of the container element. In pixels.', 'fusion-builder' ),
+					'param_name'  => 'border_size',
+					'value'       => '',
+					'min'         => '0',
+					'max'         => '50',
+					'default'     => $fusion_settings->get( 'full_width_border_size' ),
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Container Border Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the border color of the container element.', 'fusion-builder' ),
+					'param_name'  => 'border_color',
+					'value'       => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'default'     => $fusion_settings->get( 'full_width_border_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'border_size',
+							'value'    => '0',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Border Style', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the border style.', 'fusion-builder' ),
+					'param_name'  => 'border_style',
+					'value'       => array(
+						'solid'  => esc_attr__( 'Solid', 'fusion-builder' ),
+						'dashed' => esc_attr__( 'Dashed', 'fusion-builder' ),
+						'dotted' => esc_attr__( 'Dotted', 'fusion-builder' ),
+					),
+					'default'     => 'solid',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'border_size',
+							'value'    => '0',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'dimension',
+					'remove_from_atts' => true,
+					'heading'     => esc_attr__( 'Margin', 'fusion-builder' ),
+					'param_name'  => 'spacing',
+					'value'       => array(
+						'margin_top'    => '',
+						'margin_bottom' => '',
 
+					),
+					'description' => esc_attr__( 'Spacing above and below the section. In pixels. Use a number without px.', 'fusion-builder' ),
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
 				),
-				'description' => esc_attr__( 'Spacing above and below the section. In pixels. Use a number without px.', 'fusion-builder' ),
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'             => 'dimension',
-				'remove_from_atts' => true,
-				'heading'          => esc_attr__( 'Padding', 'fusion-builder' ),
-				'description'      => esc_attr__( 'In pixels or percentage, ex: 10px or 10%.', 'fusion-builder' ) . $default,
-				'param_name'       => 'dimensions',
-				'value'            => array(
-					'padding_top'    => '',
-					'padding_right'  => '',
-					'padding_bottom' => '',
-					'padding_left'   => '',
+				array(
+					'type'             => 'dimension',
+					'remove_from_atts' => true,
+					'heading'          => esc_attr__( 'Padding', 'fusion-builder' ),
+					'description'      => esc_attr__( 'In pixels or percentage, ex: 10px or 10%.', 'fusion-builder' ) . $default,
+					'param_name'       => 'dimensions',
+					'value'            => array(
+						'padding_top'    => '',
+						'padding_right'  => '',
+						'padding_bottom' => '',
+						'padding_left'   => '',
+					),
+					'group'            => esc_attr__( 'Design', 'fusion-builder' ),
 				),
-				'group'            => esc_attr__( 'Design', 'fusion-builder' ),
 			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_builder_add_section' );

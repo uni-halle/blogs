@@ -135,118 +135,120 @@ if ( fusion_is_element_enabled( 'fusion_soundcloud' ) ) {
  * @since 1.0
  */
 function fusion_element_soundcloud() {
-	fusion_builder_map( array(
-		'name'       => esc_attr__( 'Soundcloud', 'fusion-builder' ),
-		'shortcode'  => 'fusion_soundcloud',
-		'icon'       => 'fusiona-soundcloud',
-		'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-soundcloud-preview.php',
-		'preview_id' => 'fusion-builder-block-module-soundcloud-preview-template',
-		'params'     => array(
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'SoundCloud Url', 'fusion-builder' ),
-				'description' => esc_attr__( 'The SoundCloud url, ex: http://api.soundcloud.com/tracks/110813479.', 'fusion-builder' ),
-				'param_name'  => 'url',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Layout', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the layout of the soundcloud embed.', 'fusion-builder' ),
-				'param_name'  => 'layout',
-				'value'       => array(
-					'classic' => esc_attr__( 'Classic', 'fusion-builder' ),
-					'visual'  => esc_attr__( 'Visual', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'       => esc_attr__( 'Soundcloud', 'fusion-builder' ),
+			'shortcode'  => 'fusion_soundcloud',
+			'icon'       => 'fusiona-soundcloud',
+			'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-soundcloud-preview.php',
+			'preview_id' => 'fusion-builder-block-module-soundcloud-preview-template',
+			'params'     => array(
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'SoundCloud Url', 'fusion-builder' ),
+					'description' => esc_attr__( 'The SoundCloud url, ex: https://soundcloud.com/zaaali/miles-davis-kind-of-blue-26-03.', 'fusion-builder' ),
+					'param_name'  => 'url',
+					'value'       => '',
 				),
-				'default'     => 'classic',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Comments', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to display comments.', 'fusion-builder' ),
-				'param_name'  => 'comments',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Layout', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the layout of the soundcloud embed.', 'fusion-builder' ),
+					'param_name'  => 'layout',
+					'value'       => array(
+						'classic' => esc_attr__( 'Classic', 'fusion-builder' ),
+						'visual'  => esc_attr__( 'Visual', 'fusion-builder' ),
+					),
+					'default'     => 'classic',
 				),
-				'default'     => 'yes',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Related', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to display related items.', 'fusion-builder' ),
-				'param_name'  => 'show_related',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Comments', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to display comments.', 'fusion-builder' ),
+					'param_name'  => 'comments',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
 				),
-				'default'     => 'no',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show User', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to display the user who posted the item.', 'fusion-builder' ),
-				'param_name'  => 'show_user',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Related', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to display related items.', 'fusion-builder' ),
+					'param_name'  => 'show_related',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'no',
 				),
-				'default'     => 'yes',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Autoplay', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to autoplay the track.', 'fusion-builder' ),
-				'param_name'  => 'auto_play',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show User', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to display the user who posted the item.', 'fusion-builder' ),
+					'param_name'  => 'show_user',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
 				),
-				'default'     => 'no',
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the color of the element.', 'fusion-builder' ),
-				'param_name'  => 'color',
-				'value'       => '#ff7700',
-			),
-			array(
-				'type'             => 'dimension',
-				'remove_from_atts' => true,
-				'heading'          => esc_attr__( 'Dimensions', 'fusion-builder' ),
-				'description'      => esc_attr__( 'In pixels (px) or percentage (%).', 'fusion-builder' ),
-				'param_name'       => 'dimensions',
-				'value'            => array(
-					'width'  => '100%',
-					'height' => '150px',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Autoplay', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to autoplay the track.', 'fusion-builder' ),
+					'param_name'  => 'auto_play',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'no',
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the color of the element.', 'fusion-builder' ),
+					'param_name'  => 'color',
+					'value'       => '#ff7700',
+				),
+				array(
+					'type'             => 'dimension',
+					'remove_from_atts' => true,
+					'heading'          => esc_attr__( 'Dimensions', 'fusion-builder' ),
+					'description'      => esc_attr__( 'In pixels (px) or percentage (%).', 'fusion-builder' ),
+					'param_name'       => 'dimensions',
+					'value'            => array(
+						'width'  => '100%',
+						'height' => '150px',
+					),
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
 				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_soundcloud' );

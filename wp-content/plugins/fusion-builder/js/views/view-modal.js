@@ -1,3 +1,4 @@
+/* global FusionPageBuilderEvents, FusionPageBuilderViewManager, fusionAllElements, FusionPageBuilderApp, fusionHistoryManager, fusionBuilderGetContent, fusionBuilderInsertIntoEditor, fusionBuilderText, FusionPageBuilderElements */
 var FusionPageBuilder = FusionPageBuilder || {};
 
 ( function( $ ) {
@@ -90,7 +91,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 					viewSettings.view = this;
 
-					customSettingsViewName = fusionAllElements[this.model.get( 'element_type' )].custom_settings_view_name;
+					customSettingsViewName = fusionAllElements[ this.model.get( 'element_type' ) ].custom_settings_view_name;
 
 					if ( 'undefined' !== typeof customSettingsViewName && '' !== customSettingsViewName ) {
 						view = new FusionPageBuilder[ customSettingsViewName ]( viewSettings );
@@ -148,14 +149,14 @@ var FusionPageBuilder = FusionPageBuilder || {};
 				}
 
 				// If new section creation was cancelled
-				if ( true == FusionPageBuilderApp.newContainerAdded ) {
+				if ( true === FusionPageBuilderApp.newContainerAdded ) {
 					FusionPageBuilderApp.newContainerAdded = false;
 				}
 
 				// Remove each instance of tinyMCE editor from this view
 				this.$el.find( '.tinymce' ).each( function() {
 					editorID = $( this ).find( 'textarea.fusion-editor-field' ).attr( 'id' );
-						FusionPageBuilderApp.fusionBuilderMCEremoveEditor( editorID );
+					FusionPageBuilderApp.fusionBuilderMCEremoveEditor( editorID );
 				} );
 
 				// Save history state
@@ -171,16 +172,16 @@ var FusionPageBuilder = FusionPageBuilder || {};
 					// Multi element parent
 					if ( 'undefined' !== typeof this.model && 'undefined' !== typeof this.model.get( 'multi' ) && 'multi_element_parent' === this.model.get( 'multi' ) ) {
 
-						FusionPageBuilderApp.shortcodeGeneratorMultiElement = '';
+						FusionPageBuilderApp.shortcodeGeneratorMultiElement      = '';
 						FusionPageBuilderApp.shortcodeGeneratorMultiElementChild = '';
-						FusionPageBuilderApp.shortcodeGenerator = '';
+						FusionPageBuilderApp.shortcodeGenerator                  = '';
 
 						// Remove sortable UI view
-						sortableCID = this.$el.find( '.fusion-builder-option-advanced-module-settings' ).data( 'cid' );
+						sortableCID    = this.$el.find( '.fusion-builder-option-advanced-module-settings' ).data( 'cid' );
 						sortableUIView = FusionPageBuilderViewManager.getView( sortableCID );
 						sortableUIView.removeView();
 
-						sortableCID = '';
+						sortableCID    = '';
 						sortableUIView = '';
 
 					// Multi element child
@@ -191,7 +192,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 					// Regular element
 					} else {
 
-						FusionPageBuilderApp.shortcodeGenerator = '';
+						FusionPageBuilderApp.shortcodeGenerator         = '';
 						FusionPageBuilderApp.shortcodeGeneratorEditorID = '';
 					}
 
@@ -201,7 +202,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 					if ( 'undefined' !== this.model.get( 'added' ) && 'manually' === this.model.get( 'added' ) ) {
 
 						if ( 'fusion_builder_row' === this.model.get( 'element_type' ) ) {
-							parentID   = this.model.get( 'parent' ),
+							parentID   = this.model.get( 'parent' );
 							parentView = FusionPageBuilderViewManager.getView( parentID );
 
 							if ( 'undefined' !== typeof parentView ) {
@@ -216,12 +217,8 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 							// Process default parameters from shortcode
 							_.each( defaultParams, function( param ) {
-								if ( _.isObject( param.value ) ) {
-									value = param.default;
-								} else {
-									value = param.value;
-								}
-								params[param.param_name] = value;
+								value = ( _.isObject( param.value ) ) ? param['default'] : param.value;
+								params[ param.param_name ] = value;
 							} );
 
 							attributes = {
@@ -266,11 +263,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 			saveSettings: function( event ) {
 
 				var attributes,
-				    shortcode,
-				    columnCounter,
-				    table,
 				    generatedShortcode,
-				    view,
 				    editorID,
 				    functionName,
 				    sortableUIView,
@@ -301,7 +294,14 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 				// Preserve container admin label
 				if ( 'fusion_builder_container' === this.model.get( 'element_type' ) ) {
-					attributes.params.admin_label = 'undefined' !== typeof this.model.attributes.params.admin_label ? this.model.attributes.params.admin_label : '';
+					if ( 'undefined' !== typeof this.model.attributes.params.admin_label ) {
+						attributes.params.admin_label = this.model.attributes.params.admin_label;
+					}
+				}
+
+				// Preserve global elements.
+				if ( 'undefined' !== typeof this.model.attributes.params.fusion_global ) {
+					attributes.params.fusion_global = this.model.attributes.params.fusion_global;
 				}
 
 				this.$el.find( 'input, select, textarea, #fusion_builder_content_main, #fusion_builder_content_main_child, #generator_element_content, #generator_multi_child_content, #element_content' ).not( ':input[type=button], .fusion-icon-search, .category-search-field, .fusion-builder-table input, .fusion-builder-table textarea, .single-builder-dimension .fusion-builder-dimension input, .fusion-hide-from-atts' ).each( function() {
@@ -311,9 +311,9 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 					// Multi element
 					if ( $thisEl.is( '#generator_element_content' ) ||
-						 $thisEl.is( '#fusion_builder_content_main' ) ||
-						 $thisEl.is( '#element_content' ) ||
-						 $thisEl.is( '#generator_multi_child_content' ) ) {
+						$thisEl.is( '#fusion_builder_content_main' ) ||
+						$thisEl.is( '#element_content' ) ||
+						$thisEl.is( '#generator_multi_child_content' ) ) {
 						name = 'element_content';
 					} else {
 						name = $thisEl.attr( 'id' );
@@ -346,7 +346,13 @@ var FusionPageBuilder = FusionPageBuilder || {};
 							settingValue = settingValue;
 						}
 					}
-					if ( 'infobox_content' == name ) {
+
+					// Encode raw-textarea.
+					if ( $thisEl.hasClass( 'fusion-builder-raw-textarea' ) ) {
+						settingValue = FusionPageBuilderApp.base64Encode( settingValue );
+					}
+
+					if ( 'infobox_content' === name ) {
 						settingValue = _.escape( settingValue );
 					}
 					attributes.params[ name ] = settingValue;
@@ -459,7 +465,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 						// Save history state
 						if ( 'undefined' === typeof this.model.get( 'added' ) ) {
-							fusionHistoryState = fusionBuilderText.edited + ' ' + fusionAllElements[this.model.get( 'element_type' )].name + ' ' + fusionBuilderText.element;
+							window.fusionHistoryState = fusionBuilderText.edited + ' ' + fusionAllElements[this.model.get( 'element_type' )].name + ' ' + fusionBuilderText.element;
 						}
 
 						// Remove 'added' attribute from newly created elements
@@ -488,7 +494,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 						// Save history state
 						if ( 'undefined' === typeof this.model.get( 'added' ) ) {
-							fusionHistoryState = fusionBuilderText.edited + ' ' + fusionAllElements[this.model.get( 'element_type' )].name + ' ' + fusionBuilderText.element;
+							window.fusionHistoryState = fusionBuilderText.edited + ' ' + fusionAllElements[this.model.get( 'element_type' )].name + ' ' + fusionBuilderText.element;
 						}
 
 						// Remove 'added' attribute from newly created elements
@@ -521,9 +527,9 @@ var FusionPageBuilder = FusionPageBuilder || {};
 				}
 
 				if ( FusionPageBuilderApp.manuallyAdded ) {
-					FusionPageBuilderApp.shortcodeGenerator = FusionPageBuilderApp.manualGenerator;
+					FusionPageBuilderApp.shortcodeGenerator         = FusionPageBuilderApp.manualGenerator;
 					FusionPageBuilderApp.shortcodeGeneratorEditorID = FusionPageBuilderApp.manualEditor;
-					FusionPageBuilderApp.manuallyAdded = false;
+					FusionPageBuilderApp.manuallyAdded              = false;
 				}
 
 				// Remove each instance of tinyMCE editor from this view
@@ -612,12 +618,8 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 						thisEl.find( '.fusion-builder-all-modules li' ).show();
 					}
-
 				} );
 			}
-
 		} );
-
 	} );
-
 } )( jQuery );

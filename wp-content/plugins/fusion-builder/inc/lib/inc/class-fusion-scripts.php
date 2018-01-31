@@ -258,7 +258,7 @@ class Fusion_Scripts {
 				self::$js_folder_url . '/library/jquery.ilightbox.js',
 				self::$js_folder_path . '/library/jquery.ilightbox.js',
 				array( 'jquery' ),
-				'2.2',
+				'2.2.3',
 				true,
 			),
 			array(
@@ -506,7 +506,7 @@ class Fusion_Scripts {
 			'fusion-scroll-to-anchor',
 			self::$js_folder_url . '/general/fusion-scroll-to-anchor.js',
 			self::$js_folder_path . '/general/fusion-scroll-to-anchor.js',
-			array( 'jquery', 'jquery-easing' ),
+			array( 'jquery', 'jquery-easing', 'avada-menu' ),
 			'1',
 			true
 		);
@@ -573,7 +573,6 @@ class Fusion_Scripts {
 			'fusionMapsVars',
 			array(
 				'admin_ajax'       => admin_url( 'admin-ajax.php' ),
-				'admin_ajax_nonce' => wp_create_nonce( 'avada_admin_ajax' ),
 			)
 		);
 		Fusion_Dynamic_JS::localize_script(
@@ -601,6 +600,7 @@ class Fusion_Scripts {
 				'lightbox_deeplinking'     => fusion_library()->get_option( 'lightbox_deeplinking' ) ? fusion_library()->get_option( 'lightbox_deeplinking' ) : false,
 				'lightbox_path'            => fusion_library()->get_option( 'lightbox_path' ) ? fusion_library()->get_option( 'lightbox_path' ) : 'vertical',
 				'lightbox_post_images'     => fusion_library()->get_option( 'lightbox_post_images' ) ? fusion_library()->get_option( 'lightbox_post_images' ) : false,
+				'lightbox_animation_speed' => fusion_library()->get_option( 'lightbox_animation_speed' ) ? fusion_library()->get_option( 'lightbox_animation_speed' ) : false,
 			)
 		);
 		Fusion_Dynamic_JS::localize_script(
@@ -644,6 +644,7 @@ class Fusion_Scripts {
 			'fusionTypographyVars',
 			array(
 				'site_width'             => fusion_library()->get_option( 'site_width' ) ? fusion_library()->get_option( 'site_width' ) : '1100px',
+				'typography_responsive'  => fusion_library()->get_option( 'typography_responsive' ) ? true : false,
 				'typography_sensitivity' => fusion_library()->get_option( 'typography_sensitivity' ) ? fusion_library()->get_option( 'typography_sensitivity' ) : 1,
 				'typography_factor'      => fusion_library()->get_option( 'typography_factor' ) ? fusion_library()->get_option( 'typography_factor' ) : 1,
 			)

@@ -2,21 +2,34 @@
 	<# _.each( param.value, function( sub_value, sub_param ) { #>
 		<#
 		var dimension_value = ( 'undefined' !== atts.params[ sub_param ] ) ? atts.params[ sub_param ] : sub_value;
+		values = option_value.split(' ');
 		icon_class = 'fa fa-arrows-h';
 		if ( sub_param.indexOf( 'height' ) > -1 ) {
 			icon_class = 'fa fa-arrows-v';
 		}
 		if ( sub_param.indexOf( 'top' ) > -1 ) {
 			icon_class = 'dashicons dashicons-arrow-up-alt';
+			if ( 4 == values.length ) {
+				dimension_value = values[0];
+			}
 		}
 		if ( sub_param.indexOf( 'right' ) > -1 ) {
 			icon_class = 'dashicons dashicons-arrow-right-alt';
+			if ( 4 == values.length ) {
+				dimension_value = values[1];
+			}
 		}
 		if ( sub_param.indexOf( 'bottom' ) > -1 ) {
 			icon_class = 'dashicons dashicons-arrow-down-alt';
+			if ( 4 == values.length ) {
+				dimension_value = values[2];
+			}
 		}
 		if ( sub_param.indexOf( 'left' ) > -1 ) {
 			icon_class = 'dashicons dashicons-arrow-left-alt';
+			if ( 4 == values.length ) {
+				dimension_value = values[3];
+			}
 		}
 		if ( sub_param.indexOf( 'all' ) > -1 ) {
 			icon_class = 'fa fa-arrows';

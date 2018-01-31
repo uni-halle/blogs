@@ -36,39 +36,39 @@ $border_width = $fusion_settings->get( 'button_border_width' );
 	var button_icon = '';
 
 	if ( '' === params.shape ) {
-		var button_shape = '<?php echo $shape; ?>';
+		var button_shape = '<?php echo esc_attr( $shape ); ?>';
 	} else {
 		var button_shape = params.shape;
 	}
 
 	if ( '' === params.type ) {
-		var button_type = '<?php echo $type; ?>';
+		var button_type = '<?php echo esc_attr( $type ); ?>';
 	} else {
 		var button_type = params.type;
 	}
 
 	if ( '' === params.size || ! params.size ) {
-		var button_size = '<?php echo $size; ?>';
+		var button_size = '<?php echo esc_attr( $size ); ?>';
 	} else {
 		var button_size = params.size;
 	}
 
 	if ( 'default' === params.color ) {
-		var accent_color = '<?php echo $accent_color; ?>';
-		var border_width = '<?php echo $border_width; ?>';
-		var button_background = 'linear-gradient(<?php echo $gradient_top; ?>, <?php echo $gradient_bottom; ?>)';
+		var accent_color = '<?php echo esc_attr( $accent_color ); ?>';
+		var border_width = '<?php echo esc_attr( $border_width ); ?>';
+		var button_background = 'linear-gradient(<?php echo esc_attr( $gradient_top ); ?>, <?php echo esc_attr( $gradient_bottom ); ?>)';
 
 	} else if ( 'custom' === params.color ) {
-		var accent_color = ( params.accent_color ) ? params.accent_color : '<?php echo $accent_color; ?>';
+		var accent_color = ( params.accent_color ) ? params.accent_color : '<?php echo esc_attr( $accent_color ); ?>';
 
 		if ( params.border_width ) {
 			var border_width = ( -1 === params.border_width.indexOf( 'px' ) ) ? params.border_width + 'px' : params.border_width;
 		} else {
-			var border_width = '<?php echo $border_width; ?>';
+			var border_width = '<?php echo esc_attr( $border_width ); ?>';
 		}
 
-		var gradient_top = ( params.button_gradient_top_color ) ? params.button_gradient_top_color : '<?php echo $gradient_top; ?>';
-		var gradient_bottom = ( params.button_gradient_bottom_color ) ? params.button_gradient_bottom_color : '<?php echo $gradient_bottom; ?>';
+		var gradient_top = ( params.button_gradient_top_color ) ? params.button_gradient_top_color : '<?php echo esc_attr( $gradient_top ); ?>';
+		var gradient_bottom = ( params.button_gradient_bottom_color ) ? params.button_gradient_bottom_color : '<?php echo esc_attr( $gradient_bottom ); ?>';
 
 		if ( '' !== gradient_top && '' !== gradient_bottom ) {
 			var button_background = 'linear-gradient(' + gradient_top + ', ' + gradient_bottom + ')';

@@ -4,7 +4,9 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Adds the pagebuilder metabox.
@@ -36,6 +38,7 @@ function fusion_pagebuilder_meta_box() {
 	include wp_normalize_path( FUSION_BUILDER_PLUGIN_DIR . '/inc/templates/modal.php' );
 	include wp_normalize_path( FUSION_BUILDER_PLUGIN_DIR . '/inc/templates/column.php' );
 	include wp_normalize_path( FUSION_BUILDER_PLUGIN_DIR . '/inc/templates/nested-column.php' );
+	include wp_normalize_path( FUSION_BUILDER_PLUGIN_DIR . '/inc/templates/nested-column-library.php' );
 	include wp_normalize_path( FUSION_BUILDER_PLUGIN_DIR . '/inc/templates/column-library.php' );
 	include wp_normalize_path( FUSION_BUILDER_PLUGIN_DIR . '/inc/templates/element-library.php' );
 	include wp_normalize_path( FUSION_BUILDER_PLUGIN_DIR . '/inc/templates/generator-elements.php' );
@@ -62,6 +65,12 @@ function fusion_element_options_loop( $params ) {
 			<# if ( param.type == 'select' || param.type == 'multiple_select' || param.type == 'radio_button_set' || param.type == 'checkbox_button_set' ) { #>
 				<# option_value = ( 'undefined' !== typeof( atts.added ) || '' === atts.params[param.param_name] || 'undefined' === typeof(atts.params[param.param_name]) ) ? param.default : atts.params[param.param_name]; #>
 			<# }; #>
+
+			<# if ( param.type == 'raw_textarea' ) {
+				if ( FusionPageBuilderApp.base64Encode( FusionPageBuilderApp.base64Decode( option_value ) ) === option_value ) {
+					option_value = FusionPageBuilderApp.base64Decode( option_value );
+				}
+			} #>
 
 			<# if ( 'fusion_code' === atts.element_type && 1 === Number( FusionPageBuilderApp.disable_encoding ) ) {
 				if ( FusionPageBuilderApp.base64Encode( FusionPageBuilderApp.base64Decode( option_value ) ) === option_value ) {
@@ -110,6 +119,7 @@ function fusion_element_options_loop( $params ) {
 						'upload_images',
 						'dimension',
 						'code',
+						'raw_textarea',
 					);
 					?>
 					<?php

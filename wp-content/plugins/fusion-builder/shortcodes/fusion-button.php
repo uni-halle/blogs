@@ -359,12 +359,14 @@ if ( fusion_is_element_enabled( 'fusion_button' ) ) {
 				$attr = fusion_builder_visibility_atts( $this->args['hide_on_mobile'], $attr );
 
 				if ( $this->args['animation_type'] ) {
-					$animations = FusionBuilder::animations( array(
-						'type'      => $this->args['animation_type'],
-						'direction' => $this->args['animation_direction'],
-						'speed'     => $this->args['animation_speed'],
-						'offset'    => $this->args['animation_offset'],
-					) );
+					$animations = FusionBuilder::animations(
+						array(
+							'type'      => $this->args['animation_type'],
+							'direction' => $this->args['animation_direction'],
+							'speed'     => $this->args['animation_speed'],
+							'offset'    => $this->args['animation_offset'],
+						)
+					);
 
 					$attr = array_merge( $attr, $animations );
 
@@ -377,6 +379,8 @@ if ( fusion_is_element_enabled( 'fusion_button' ) ) {
 					$attr['rel'] = 'noopener noreferrer';
 				}
 
+				$this->args['link_attributes']  = ( isset( $this->args['link_attributes'] ) ) ? $this->args['link_attributes'] : '';
+				
 				// Add additional, custom link attributes correctly formatted to the anchor.
 				if ( $this->args['link_attributes'] ) {
 					$link_attributs = explode( ' ', $this->args['link_attributes'] );
@@ -534,7 +538,7 @@ if ( fusion_is_element_enabled( 'fusion_button' ) ) {
 
 				switch ( $button_size ) {
 
-					case 'small' :
+					case 'small':
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['padding']     = '9px 20px';
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['line-height'] = '14px';
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['font-size']   = '12px';
@@ -551,7 +555,7 @@ if ( fusion_is_element_enabled( 'fusion_button' ) ) {
 
 						break;
 
-					case 'medium' :
+					case 'medium':
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['padding']     = '11px 23px';
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['line-height'] = '16px';
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['font-size']   = '13px';
@@ -569,7 +573,7 @@ if ( fusion_is_element_enabled( 'fusion_button' ) ) {
 
 						break;
 
-					case 'large' :
+					case 'large':
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['padding']     = '13px 29px';
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['line-height'] = '17px';
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['font-size']   = '14px';
@@ -586,7 +590,7 @@ if ( fusion_is_element_enabled( 'fusion_button' ) ) {
 
 						break;
 
-					case 'xlarge' :
+					case 'xlarge':
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['padding']     = '17px 40px';
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['line-height'] = '21px';
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['font-size']   = '18px';
@@ -602,7 +606,7 @@ if ( fusion_is_element_enabled( 'fusion_button' ) ) {
 						$css['global']['.quantity']['width'] = '161px';
 
 						break;
-					default : // Fallback to medium.
+					default: // Fallback to medium.
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['padding']     = '11px 23px';
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['line-height'] = '16px';
 						$css['global'][ $dynamic_css_helpers->implode( $default_size_selector ) ]['font-size']   = '13px';
@@ -879,423 +883,425 @@ function fusion_element_button() {
 		'darkgray'  => esc_attr__( 'Dark Gray', 'fusion-builder' ),
 		'lightgray' => esc_attr__( 'Light Gray', 'fusion-builder' ),
 	);
-	fusion_builder_map( array(
-		'name'       => esc_attr__( 'Button', 'fusion-builder' ),
-		'shortcode'  => 'fusion_button',
-		'icon'       => 'fusiona-check-empty',
-		'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-button-preview.php',
-		'preview_id' => 'fusion-builder-block-module-button-preview-template',
-		'params'     => array(
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Button URL', 'fusion-builder' ),
-				'param_name'  => 'link',
-				'value'       => '',
-				'description' => esc_attr__( "Add the button's url ex: http://example.com.", 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Button Text', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => esc_attr__( 'Button Text', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add the text that will display on button.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Button Title Attribute', 'fusion-builder' ),
-				'param_name'  => 'title',
-				'value'       => '',
-				'description' => esc_attr__( 'Set a title attribute for the button link.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Button Target', 'fusion-builder' ),
-				'description' => esc_attr__( '_self = open in same browser tab, _blank = open in new browser tab.', 'fusion-builder' ),
-				'param_name'  => 'target',
-				'default'     => '_self',
-				'value'       => array(
-					'_self'  => esc_attr__( '_self', 'fusion-builder' ),
-					'_blank' => esc_attr__( '_blank', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'       => esc_attr__( 'Button', 'fusion-builder' ),
+			'shortcode'  => 'fusion_button',
+			'icon'       => 'fusiona-check-empty',
+			'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-button-preview.php',
+			'preview_id' => 'fusion-builder-block-module-button-preview-template',
+			'params'     => array(
+				array(
+					'type'        => 'link_selector',
+					'heading'     => esc_attr__( 'Button URL', 'fusion-builder' ),
+					'param_name'  => 'link',
+					'value'       => '',
+					'description' => esc_attr__( "Add the button's url ex: http://example.com.", 'fusion-builder' ),
 				),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Button Additional Attributes', 'fusion-builder' ),
-				'param_name'  => 'link_attributes',
-				'value'       => '',
-				'description' => esc_attr__( "Add additional attributes to the anchor tag. Separate attributes with a whitespace and use single quotes on the values, doubles don't work. If you need to add square brackets, [ ], to your attributes, please use curly brackets, { }, instead. They will be replaced correctly on the frontend. ex: rel='nofollow'.", 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Alignment', 'fusion-builder' ),
-				'description' => esc_attr__( "Select the button's alignment.", 'fusion-builder' ),
-				'param_name'  => 'alignment',
-				'default'     => '',
-				'value'       => array(
-					''       => esc_attr__( 'Text Flow', 'fusion-builder' ),
-					'left'   => esc_attr__( 'Left', 'fusion-builder' ),
-					'center' => esc_attr__( 'Center', 'fusion-builder' ),
-					'right'  => esc_attr__( 'Right', 'fusion-builder' ),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Button Text', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => esc_attr__( 'Button Text', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add the text that will display on button.', 'fusion-builder' ),
 				),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Modal Window Anchor', 'fusion-builder' ),
-				'param_name'  => 'modal',
-				'value'       => '',
-				'description' => esc_attr__( 'Add the class name of the modal window you want to open on button click.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Button Style', 'fusion-builder' ),
-				'description' => esc_attr__( "Select the button's color. Select default or color name for theme options, or select custom to use advanced color options below.", 'fusion-builder' ),
-				'param_name'  => 'color',
-				'value'       => array(
-					'default'    => esc_attr__( 'Default', 'fusion-builder' ),
-					'custom'     => esc_attr__( 'Custom', 'fusion-builder' ),
-					'green'      => esc_attr__( 'Green', 'fusion-builder' ),
-					'darkgreen'  => esc_attr__( 'Dark Green', 'fusion-builder' ),
-					'orange'     => esc_attr__( 'Orange', 'fusion-builder' ),
-					'blue'       => esc_attr__( 'Blue', 'fusion-builder' ),
-					'red'        => esc_attr__( 'Red', 'fusion-builder' ),
-					'pink'       => esc_attr__( 'Pink', 'fusion-builder' ),
-					'darkgray'   => esc_attr__( 'Dark Gray', 'fusion-builder' ),
-					'lightgray'  => esc_attr__( 'Light Gray', 'fusion-builder' ),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Button Title Attribute', 'fusion-builder' ),
+					'param_name'  => 'title',
+					'value'       => '',
+					'description' => esc_attr__( 'Set a title attribute for the button link.', 'fusion-builder' ),
 				),
-				'default'     => 'default',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Button Gradient Top Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the top color of the button background.', 'fusion-builder' ),
-				'param_name'  => 'button_gradient_top_color',
-				'value'       => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'default'     => $fusion_settings->get( 'button_gradient_top_color' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'color',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Button Target', 'fusion-builder' ),
+					'description' => esc_attr__( '_self = open in same browser tab, _blank = open in new browser tab.', 'fusion-builder' ),
+					'param_name'  => 'target',
+					'default'     => '_self',
+					'value'       => array(
+						'_self'  => esc_attr__( '_self', 'fusion-builder' ),
+						'_blank' => esc_attr__( '_blank', 'fusion-builder' ),
 					),
 				),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Button Gradient Bottom Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the bottom color of the button background.', 'fusion-builder' ),
-				'param_name'  => 'button_gradient_bottom_color',
-				'value'       => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'default'     => $fusion_settings->get( 'button_gradient_bottom_color' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'color',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Button Additional Attributes', 'fusion-builder' ),
+					'param_name'  => 'link_attributes',
+					'value'       => '',
+					'description' => esc_attr__( "Add additional attributes to the anchor tag. Separate attributes with a whitespace and use single quotes on the values, doubles don't work. If you need to add square brackets, [ ], to your attributes, please use curly brackets, { }, instead. They will be replaced correctly on the frontend. ex: rel='nofollow'.", 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Alignment', 'fusion-builder' ),
+					'description' => esc_attr__( "Select the button's alignment.", 'fusion-builder' ),
+					'param_name'  => 'alignment',
+					'default'     => '',
+					'value'       => array(
+						''       => esc_attr__( 'Text Flow', 'fusion-builder' ),
+						'left'   => esc_attr__( 'Left', 'fusion-builder' ),
+						'center' => esc_attr__( 'Center', 'fusion-builder' ),
+						'right'  => esc_attr__( 'Right', 'fusion-builder' ),
 					),
 				),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Button Gradient Top Hover Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the top hover color of the button background.', 'fusion-builder' ),
-				'param_name'  => 'button_gradient_top_color_hover',
-				'value'       => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'default'     => $fusion_settings->get( 'button_gradient_top_color_hover' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'color',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Modal Window Anchor', 'fusion-builder' ),
+					'param_name'  => 'modal',
+					'value'       => '',
+					'description' => esc_attr__( 'Add the class name of the modal window you want to open on button click.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Button Style', 'fusion-builder' ),
+					'description' => esc_attr__( "Select the button's color. Select default or color name for theme options, or select custom to use advanced color options below.", 'fusion-builder' ),
+					'param_name'  => 'color',
+					'value'       => array(
+						'default'    => esc_attr__( 'Default', 'fusion-builder' ),
+						'custom'     => esc_attr__( 'Custom', 'fusion-builder' ),
+						'green'      => esc_attr__( 'Green', 'fusion-builder' ),
+						'darkgreen'  => esc_attr__( 'Dark Green', 'fusion-builder' ),
+						'orange'     => esc_attr__( 'Orange', 'fusion-builder' ),
+						'blue'       => esc_attr__( 'Blue', 'fusion-builder' ),
+						'red'        => esc_attr__( 'Red', 'fusion-builder' ),
+						'pink'       => esc_attr__( 'Pink', 'fusion-builder' ),
+						'darkgray'   => esc_attr__( 'Dark Gray', 'fusion-builder' ),
+						'lightgray'  => esc_attr__( 'Light Gray', 'fusion-builder' ),
+					),
+					'default'     => 'default',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Button Gradient Top Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the top color of the button background.', 'fusion-builder' ),
+					'param_name'  => 'button_gradient_top_color',
+					'value'       => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'default'     => $fusion_settings->get( 'button_gradient_top_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'color',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Button Gradient Bottom Hover Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the bottom hover color of the button background.', 'fusion-builder' ),
-				'param_name'  => 'button_gradient_bottom_color_hover',
-				'value'       => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'default'     => $fusion_settings->get( 'button_gradient_bottom_color_hover' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'color',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Button Gradient Bottom Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the bottom color of the button background.', 'fusion-builder' ),
+					'param_name'  => 'button_gradient_bottom_color',
+					'value'       => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'default'     => $fusion_settings->get( 'button_gradient_bottom_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'color',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Button Accent Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the color of the button border, divider, text and icon.', 'fusion-builder' ),
-				'param_name'  => 'accent_color',
-				'value'       => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'default'     => $fusion_settings->get( 'button_accent_color' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'color',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Button Gradient Top Hover Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the top hover color of the button background.', 'fusion-builder' ),
+					'param_name'  => 'button_gradient_top_color_hover',
+					'value'       => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'default'     => $fusion_settings->get( 'button_gradient_top_color_hover' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'color',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Button Accent Hover Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the hover color of the button border, divider, text and icon.', 'fusion-builder' ),
-				'param_name'  => 'accent_hover_color',
-				'value'       => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'default'     => $fusion_settings->get( 'button_accent_hover_color' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'color',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Button Gradient Bottom Hover Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the bottom hover color of the button background.', 'fusion-builder' ),
+					'param_name'  => 'button_gradient_bottom_color_hover',
+					'value'       => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'default'     => $fusion_settings->get( 'button_gradient_bottom_color_hover' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'color',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Button Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the button type.', 'fusion-builder' ),
-				'param_name'  => 'type',
-				'default'     => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'value'       => array(
-					''     => esc_attr__( 'Default', 'fusion-builder' ),
-					'flat' => esc_attr__( 'Flat', 'fusion-builder' ),
-					'3d'   => esc_attr__( '3D', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Button Bevel Color For 3D Mode', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the bevel color of the button when using 3D button type.', 'fusion-builder' ),
-				'param_name'  => 'bevel_color',
-				'value'       => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'default'     => $fusion_settings->get( 'button_bevel_color' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'type',
-						'value'    => 'flat',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'color',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Button Accent Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the color of the button border, divider, text and icon.', 'fusion-builder' ),
+					'param_name'  => 'accent_color',
+					'value'       => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'default'     => $fusion_settings->get( 'button_accent_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'color',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Button Border Width', 'fusion-builder' ),
-				'param_name'  => 'border_width',
-				'description' => esc_attr__( 'Controls the border width. In pixels.', 'fusion-builder' ),
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'color',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Button Accent Hover Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the hover color of the button border, divider, text and icon.', 'fusion-builder' ),
+					'param_name'  => 'accent_hover_color',
+					'value'       => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'default'     => $fusion_settings->get( 'button_accent_hover_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'color',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
 					),
 				),
-				'min'         => '0',
-				'max'         => '20',
-				'step'        => '1',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'button_border_width' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Button Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the button type.', 'fusion-builder' ),
+					'param_name'  => 'type',
+					'default'     => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'value'       => array(
+						''     => esc_attr__( 'Default', 'fusion-builder' ),
+						'flat' => esc_attr__( 'Flat', 'fusion-builder' ),
+						'3d'   => esc_attr__( '3D', 'fusion-builder' ),
+					),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Button Bevel Color For 3D Mode', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the bevel color of the button when using 3D button type.', 'fusion-builder' ),
+					'param_name'  => 'bevel_color',
+					'value'       => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'default'     => $fusion_settings->get( 'button_bevel_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'type',
+							'value'    => 'flat',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'color',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Button Border Width', 'fusion-builder' ),
+					'param_name'  => 'border_width',
+					'description' => esc_attr__( 'Controls the border width. In pixels.', 'fusion-builder' ),
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'color',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
+					),
+					'min'         => '0',
+					'max'         => '20',
+					'step'        => '1',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'button_border_width' ),
 
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Button Size', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the button size.', 'fusion-builder' ),
-				'param_name'  => 'size',
-				'default'     => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'value'       => array(
-					''       => esc_attr__( 'Default', 'fusion-builder' ),
-					'small'  => esc_attr__( 'Small', 'fusion-builder' ),
-					'medium' => esc_attr__( 'Medium', 'fusion-builder' ),
-					'large'  => esc_attr__( 'Large', 'fusion-builder' ),
-					'xlarge' => esc_attr__( 'X-Large', 'fusion-builder' ),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Button Span', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls if the button spans the full width of its container.', 'fusion-builder' ),
-				'param_name'  => 'stretch',
-				'default'     => 'default',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'value'       => array(
-					'default' => esc_attr__( 'Default', 'fusion-builder' ),
-					'yes'     => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'      => esc_attr__( 'No', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Button Shape', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the button shape.', 'fusion-builder' ),
-				'param_name'  => 'shape',
-				'default'     => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'value'       => array(
-					''       => esc_attr__( 'Default', 'fusion-builder' ),
-					'square' => esc_attr__( 'Square', 'fusion-builder' ),
-					'pill'   => esc_attr__( 'Pill', 'fusion-builder' ),
-					'round'  => esc_attr__( 'Round', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'iconpicker',
-				'heading'     => esc_attr__( 'Icon', 'fusion-builder' ),
-				'param_name'  => 'icon',
-				'value'       => '',
-				'description' => esc_attr__( 'Click an icon to select, click again to deselect.', 'fusion-builder' ),
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Icon Position', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the position of the icon on the button.', 'fusion-builder' ),
-				'param_name'  => 'icon_position',
-				'value'       => array(
-					'left'  => esc_attr__( 'Left', 'fusion-builder' ),
-					'right' => esc_attr__( 'Right', 'fusion-builder' ),
-				),
-				'default'     => 'left',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'icon',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Button Size', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the button size.', 'fusion-builder' ),
+					'param_name'  => 'size',
+					'default'     => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'value'       => array(
+						''       => esc_attr__( 'Default', 'fusion-builder' ),
+						'small'  => esc_attr__( 'Small', 'fusion-builder' ),
+						'medium' => esc_attr__( 'Medium', 'fusion-builder' ),
+						'large'  => esc_attr__( 'Large', 'fusion-builder' ),
+						'xlarge' => esc_attr__( 'X-Large', 'fusion-builder' ),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Icon Divider', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to display a divider between icon and text.', 'fusion-builder' ),
-				'param_name'  => 'icon_divider',
-				'default'     => 'no',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'icon',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Button Span', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls if the button spans the full width of its container.', 'fusion-builder' ),
+					'param_name'  => 'stretch',
+					'default'     => 'default',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'value'       => array(
+						'default' => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes'     => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'      => esc_attr__( 'No', 'fusion-builder' ),
 					),
 				),
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Animation Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the type of animation to use on the element.', 'fusion-builder' ),
-				'param_name'  => 'animation_type',
-				'value'       => fusion_builder_available_animations(),
-				'default'     => '',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Direction of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the incoming direction for the animation.', 'fusion-builder' ),
-				'param_name'  => 'animation_direction',
-				'default'     => 'left',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Button Shape', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the button shape.', 'fusion-builder' ),
+					'param_name'  => 'shape',
+					'default'     => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'value'       => array(
+						''       => esc_attr__( 'Default', 'fusion-builder' ),
+						'square' => esc_attr__( 'Square', 'fusion-builder' ),
+						'pill'   => esc_attr__( 'Pill', 'fusion-builder' ),
+						'round'  => esc_attr__( 'Round', 'fusion-builder' ),
 					),
 				),
-				'value'       => array(
-					'down'   => esc_attr__( 'Top', 'fusion-builder' ),
-					'right'  => esc_attr__( 'Right', 'fusion-builder' ),
-					'up'     => esc_attr__( 'Bottom', 'fusion-builder' ),
-					'left'   => esc_attr__( 'Left', 'fusion-builder' ),
-					'static' => esc_attr__( 'Static', 'fusion-builder' ),
+				array(
+					'type'        => 'iconpicker',
+					'heading'     => esc_attr__( 'Icon', 'fusion-builder' ),
+					'param_name'  => 'icon',
+					'value'       => '',
+					'description' => esc_attr__( 'Click an icon to select, click again to deselect.', 'fusion-builder' ),
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Speed of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Type in speed of animation in seconds (0.1 - 1).', 'fusion-builder' ),
-				'param_name'  => 'animation_speed',
-				'min'         => '0.1',
-				'max'         => '1',
-				'step'        => '0.1',
-				'value'       => '0.3',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Icon Position', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the position of the icon on the button.', 'fusion-builder' ),
+					'param_name'  => 'icon_position',
+					'value'       => array(
+						'left'  => esc_attr__( 'Left', 'fusion-builder' ),
+						'right' => esc_attr__( 'Right', 'fusion-builder' ),
+					),
+					'default'     => 'left',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'icon',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Offset of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls when the animation should start.', 'fusion-builder' ),
-				'param_name'  => 'animation_offset',
-				'default'     => '',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Icon Divider', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to display a divider between icon and text.', 'fusion-builder' ),
+					'param_name'  => 'icon_divider',
+					'default'     => 'no',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'icon',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
 					),
 				),
-				'value'        => array(
-					''                => esc_attr__( 'Default', 'fusion-builder' ),
-					'top-into-view'   => esc_attr__( 'Top of element hits bottom of viewport', 'fusion-builder' ),
-					'top-mid-of-view' => esc_attr__( 'Top of element hits middle of viewport', 'fusion-builder' ),
-					'bottom-in-view'  => esc_attr__( 'Bottom of element enters viewport', 'fusion-builder' ),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Animation Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the type of animation to use on the element.', 'fusion-builder' ),
+					'param_name'  => 'animation_type',
+					'value'       => fusion_builder_available_animations(),
+					'default'     => '',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Direction of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the incoming direction for the animation.', 'fusion-builder' ),
+					'param_name'  => 'animation_direction',
+					'default'     => 'left',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+					'value'       => array(
+						'down'   => esc_attr__( 'Top', 'fusion-builder' ),
+						'right'  => esc_attr__( 'Right', 'fusion-builder' ),
+						'up'     => esc_attr__( 'Bottom', 'fusion-builder' ),
+						'left'   => esc_attr__( 'Left', 'fusion-builder' ),
+						'static' => esc_attr__( 'Static', 'fusion-builder' ),
+					),
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Speed of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Type in speed of animation in seconds (0.1 - 1).', 'fusion-builder' ),
+					'param_name'  => 'animation_speed',
+					'min'         => '0.1',
+					'max'         => '1',
+					'step'        => '0.1',
+					'value'       => '0.3',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Offset of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls when the animation should start.', 'fusion-builder' ),
+					'param_name'  => 'animation_offset',
+					'default'     => '',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+					'value'        => array(
+						''                => esc_attr__( 'Default', 'fusion-builder' ),
+						'top-into-view'   => esc_attr__( 'Top of element hits bottom of viewport', 'fusion-builder' ),
+						'top-mid-of-view' => esc_attr__( 'Top of element hits middle of viewport', 'fusion-builder' ),
+						'bottom-in-view'  => esc_attr__( 'Bottom of element enters viewport', 'fusion-builder' ),
+					),
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
 				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_button' );

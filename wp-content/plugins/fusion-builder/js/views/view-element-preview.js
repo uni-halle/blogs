@@ -1,3 +1,4 @@
+/* global fusionAllElements */
 var FusionPageBuilder = FusionPageBuilder || {};
 
 ( function( $ ) {
@@ -10,7 +11,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 			className: 'fusion_module_block_preview ',
 
 			initialize: function() {
-				this.template = FusionPageBuilder.template( $( '#' + fusionAllElements[this.model.attributes.element_type].preview_id ).html() );
+				this.template = FusionPageBuilder.template( $( '#' + fusionAllElements[ this.model.attributes.element_type ].preview_id ).html() );
 			},
 
 			render: function() {
@@ -18,9 +19,6 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 				return this;
 			}
-
 		});
-
 	});
-
 } )( jQuery );

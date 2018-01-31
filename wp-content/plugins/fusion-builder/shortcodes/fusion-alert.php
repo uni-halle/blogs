@@ -184,12 +184,14 @@ if ( fusion_is_element_enabled( 'fusion_alert' ) ) {
 				$attr['style'] .= 'border-width:' . $args['border_size'] . ';';
 
 				if ( $this->args['animation_type'] ) {
-					$animations = FusionBuilder::animations( array(
-						'type'      => $this->args['animation_type'],
-						'direction' => $this->args['animation_direction'],
-						'speed'     => $this->args['animation_speed'],
-						'offset'    => $this->args['animation_offset'],
-					) );
+					$animations = FusionBuilder::animations(
+						array(
+							'type'      => $this->args['animation_type'],
+							'direction' => $this->args['animation_direction'],
+							'speed'     => $this->args['animation_speed'],
+							'offset'    => $this->args['animation_offset'],
+						)
+					);
 
 					$attr = array_merge( $attr, $animations );
 
@@ -256,43 +258,43 @@ if ( fusion_is_element_enabled( 'fusion_alert' ) ) {
 			public function add_options() {
 				return array(
 					'alert_shortcode_section' => array(
-						'label'       => esc_html__( 'Alert Element', 'fusion-builder' ),
+						'label'       => esc_attr__( 'Alert Element', 'fusion-builder' ),
 						'description' => '',
 						'id'          => 'alert_shortcode_section',
 						'default'     => '',
 						'type'        => 'accordion',
 						'fields'      => array(
 							'info_bg_color' => array(
-								'label'       => esc_html__( 'General Background Color', 'Avada' ),
-								'description' => esc_html__( 'Set the background color for general alert boxes.', 'Avada' ),
+								'label'       => esc_attr__( 'General Background Color', 'fusion-builder' ),
+								'description' => esc_attr__( 'Set the background color for general alert boxes.', 'fusion-builder' ),
 								'id'          => 'info_bg_color',
 								'default'     => '#ffffff',
 								'type'        => 'color',
 							),
 							'danger_bg_color' => array(
-								'label'       => esc_html__( 'Error Background Color', 'Avada' ),
-								'description' => esc_html__( 'Set the background color for error alert boxes.', 'Avada' ),
+								'label'       => esc_attr__( 'Error Background Color', 'fusion-builder' ),
+								'description' => esc_attr__( 'Set the background color for error alert boxes.', 'fusion-builder' ),
 								'id'          => 'danger_bg_color',
 								'default'     => '#f2dede',
 								'type'        => 'color',
 							),
 							'success_bg_color' => array(
-								'label'       => esc_html__( 'Success Background Color', 'Avada' ),
-								'description' => esc_html__( 'Set the background color for success alert boxes.', 'Avada' ),
+								'label'       => esc_attr__( 'Success Background Color', 'fusion-builder' ),
+								'description' => esc_attr__( 'Set the background color for success alert boxes.', 'fusion-builder' ),
 								'id'          => 'success_bg_color',
 								'default'     => '#dff0d8',
 								'type'        => 'color',
 							),
 							'warning_bg_color' => array(
-								'label'       => esc_html__( 'Notice Background Color', 'Avada' ),
-								'description' => esc_html__( 'Set the background color for notice alert boxes.', 'Avada' ),
+								'label'       => esc_attr__( 'Notice Background Color', 'fusion-builder' ),
+								'description' => esc_attr__( 'Set the background color for notice alert boxes.', 'fusion-builder' ),
 								'id'          => 'warning_bg_color',
 								'default'     => '#fcf8e3',
 								'type'        => 'color',
 							),
 							'alert_box_shadow' => array(
-								'label'       => esc_html__( 'Box Shadow', 'fusion-builder' ),
-								'description' => esc_html__( 'Display a box shadow below the alert box.', 'fusion-builder' ),
+								'label'       => esc_attr__( 'Box Shadow', 'fusion-builder' ),
+								'description' => esc_attr__( 'Display a box shadow below the alert box.', 'fusion-builder' ),
 								'id'          => 'alert_box_shadow',
 								'default'     => 'no',
 								'type'        => 'radio-buttonset',
@@ -302,8 +304,8 @@ if ( fusion_is_element_enabled( 'fusion_alert' ) ) {
 								),
 							),
 							'alert_border_size' => array(
-								'label'       => esc_html__( 'Border Width', 'Avada' ),
-								'description' => esc_html__( 'Set the border width for alert boxes.', 'Avada' ),
+								'label'       => esc_attr__( 'Border Width', 'fusion-builder' ),
+								'description' => esc_attr__( 'Set the border width for alert boxes.', 'fusion-builder' ),
 								'id'          => 'alert_border_size',
 								'default'     => '1px',
 								'type'        => 'text',
@@ -340,203 +342,205 @@ function fusion_element_alert() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'            => esc_attr__( 'Alert', 'fusion-builder' ),
-		'shortcode'       => 'fusion_alert',
-		'icon'            => 'fa fa-lg fa-exclamation-triangle',
-		'preview'         => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-alert-preview.php',
-		'preview_id'      => 'fusion-builder-block-module-alert-preview-template',
-		'allow_generator' => true,
-		'params'          => array(
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Alert Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the type of alert message. Choose custom for advanced color options below.', 'fusion-builder' ),
-				'param_name'  => 'type',
-				'default'     => 'error',
-				'value'       => array(
-					'general' => esc_attr__( 'General', 'fusion-builder' ),
-					'error'   => esc_attr__( 'Error', 'fusion-builder' ),
-					'success' => esc_attr__( 'Success', 'fusion-builder' ),
-					'notice'  => esc_attr__( 'Notice', 'fusion-builder' ),
-					'custom'  => esc_attr__( 'Custom', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Accent Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Custom setting only. Set the border, text and icon color for custom alert boxes.', 'fusion-builder' ),
-				'param_name'  => 'accent_color',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'type',
-						'value'    => 'custom',
-						'operator' => '==',
+	fusion_builder_map(
+		array(
+			'name'            => esc_attr__( 'Alert', 'fusion-builder' ),
+			'shortcode'       => 'fusion_alert',
+			'icon'            => 'fa fa-lg fa-exclamation-triangle',
+			'preview'         => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-alert-preview.php',
+			'preview_id'      => 'fusion-builder-block-module-alert-preview-template',
+			'allow_generator' => true,
+			'params'          => array(
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Alert Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the type of alert message. Choose custom for advanced color options below.', 'fusion-builder' ),
+					'param_name'  => 'type',
+					'default'     => 'error',
+					'value'       => array(
+						'general' => esc_attr__( 'General', 'fusion-builder' ),
+						'error'   => esc_attr__( 'Error', 'fusion-builder' ),
+						'success' => esc_attr__( 'Success', 'fusion-builder' ),
+						'notice'  => esc_attr__( 'Notice', 'fusion-builder' ),
+						'custom'  => esc_attr__( 'Custom', 'fusion-builder' ),
 					),
 				),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Background Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Custom setting only. Set the background color for custom alert boxes.', 'fusion-builder' ),
-				'param_name'  => 'background_color',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'type',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Accent Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Custom setting only. Set the border, text and icon color for custom alert boxes.', 'fusion-builder' ),
+					'param_name'  => 'accent_color',
+					'value'       => '#808080',
+					'dependency'  => array(
+						array(
+							'element'  => 'type',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Border Width', 'fusion-builder' ),
-				'param_name'  => 'border_size',
-				'default'     => intval( $fusion_settings->get( 'alert_border_size' ) ),
-				'description' => esc_attr__( 'Custom setting only. Set the border width for custom alert boxes. In pixels.', 'fusion-builder' ),
-				'choices'     => array(
-					'min'  => '0',
-					'max'  => '20',
-					'step' => '1',
-				),
-				'dependency'  => array(
-					array(
-						'element'  => 'type',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Background Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Custom setting only. Set the background color for custom alert boxes.', 'fusion-builder' ),
+					'param_name'  => 'background_color',
+					'value'       => '#ffffff',
+					'dependency'  => array(
+						array(
+							'element'  => 'type',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
 					),
 				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Border Width', 'fusion-builder' ),
+					'param_name'  => 'border_size',
+					'default'     => intval( $fusion_settings->get( 'alert_border_size' ) ),
+					'description' => esc_attr__( 'Custom setting only. Set the border width for custom alert boxes. In pixels.', 'fusion-builder' ),
+					'choices'     => array(
+						'min'  => '0',
+						'max'  => '20',
+						'step' => '1',
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'type',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
+					),
 
-			),
-			array(
-				'type'        => 'iconpicker',
-				'heading'     => esc_attr__( 'Select Custom Icon', 'fusion-builder' ),
-				'param_name'  => 'icon',
-				'value'       => '',
-				'description' => esc_attr__( 'Click an icon to select, click again to deselect.', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'type',
-						'value'    => 'custom',
-						'operator' => '==',
+				),
+				array(
+					'type'        => 'iconpicker',
+					'heading'     => esc_attr__( 'Select Custom Icon', 'fusion-builder' ),
+					'param_name'  => 'icon',
+					'value'       => '',
+					'description' => esc_attr__( 'Click an icon to select, click again to deselect.', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'type',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Box Shadow', 'fusion-builder' ),
-				'description' => esc_attr__( 'Display a box shadow below the alert box.', 'fusion-builder' ),
-				'param_name'  => 'box_shadow',
-				'default'     => '',
-				'value'       => array(
-					''    => esc_attr__( 'Default', 'fusion-builder' ),
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'tinymce',
-				'heading'     => esc_attr__( 'Alert Content', 'fusion-builder' ),
-				'description' => esc_attr__( "Insert the alert's content.", 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => esc_html__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Animation Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the type of animation to use on the element.', 'fusion-builder' ),
-				'param_name'  => 'animation_type',
-				'value'       => fusion_builder_available_animations(),
-				'default'     => '',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Direction of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the incoming direction for the animation.', 'fusion-builder' ),
-				'param_name'  => 'animation_direction',
-				'value'       => array(
-					'down'   => esc_attr__( 'Top', 'fusion-builder' ),
-					'right'  => esc_attr__( 'Right', 'fusion-builder' ),
-					'up'     => esc_attr__( 'Bottom', 'fusion-builder' ),
-					'left'   => esc_attr__( 'Left', 'fusion-builder' ),
-					'static' => esc_attr__( 'Static', 'fusion-builder' ),
-				),
-				'default'     => 'left',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Box Shadow', 'fusion-builder' ),
+					'description' => esc_attr__( 'Display a box shadow below the alert box.', 'fusion-builder' ),
+					'param_name'  => 'box_shadow',
+					'default'     => '',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
 					),
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Speed of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Type in speed of animation in seconds (0.1 - 1).', 'fusion-builder' ),
-				'param_name'  => 'animation_speed',
-				'min'         => '0.1',
-				'max'         => '1',
-				'step'        => '0.1',
-				'value'       => '0.3',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'tinymce',
+					'heading'     => esc_attr__( 'Alert Content', 'fusion-builder' ),
+					'description' => esc_attr__( "Insert the alert's content.", 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => esc_html__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Animation Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the type of animation to use on the element.', 'fusion-builder' ),
+					'param_name'  => 'animation_type',
+					'value'       => fusion_builder_available_animations(),
+					'default'     => '',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Direction of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the incoming direction for the animation.', 'fusion-builder' ),
+					'param_name'  => 'animation_direction',
+					'value'       => array(
+						'down'   => esc_attr__( 'Top', 'fusion-builder' ),
+						'right'  => esc_attr__( 'Right', 'fusion-builder' ),
+						'up'     => esc_attr__( 'Bottom', 'fusion-builder' ),
+						'left'   => esc_attr__( 'Left', 'fusion-builder' ),
+						'static' => esc_attr__( 'Static', 'fusion-builder' ),
+					),
+					'default'     => 'left',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Offset of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls when the animation should start.', 'fusion-builder' ),
-				'param_name'  => 'animation_offset',
-				'value'       => array(
-					''                => esc_attr__( 'Default', 'fusion-builder' ),
-					'top-into-view'   => esc_attr__( 'Top of element hits bottom of viewport', 'fusion-builder' ),
-					'top-mid-of-view' => esc_attr__( 'Top of element hits middle of viewport', 'fusion-builder' ),
-					'bottom-in-view'  => esc_attr__( 'Bottom of element enters viewport', 'fusion-builder' ),
-				),
-				'default'     => '',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Speed of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Type in speed of animation in seconds (0.1 - 1).', 'fusion-builder' ),
+					'param_name'  => 'animation_speed',
+					'min'         => '0.1',
+					'max'         => '1',
+					'step'        => '0.1',
+					'value'       => '0.3',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Offset of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls when the animation should start.', 'fusion-builder' ),
+					'param_name'  => 'animation_offset',
+					'value'       => array(
+						''                => esc_attr__( 'Default', 'fusion-builder' ),
+						'top-into-view'   => esc_attr__( 'Top of element hits bottom of viewport', 'fusion-builder' ),
+						'top-mid-of-view' => esc_attr__( 'Top of element hits middle of viewport', 'fusion-builder' ),
+						'bottom-in-view'  => esc_attr__( 'Bottom of element enters viewport', 'fusion-builder' ),
+					),
+					'default'     => '',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_alert' );

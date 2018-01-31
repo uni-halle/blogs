@@ -164,8 +164,8 @@ class Fusion_Dynamic_JS_Compiler {
 				// Add a blank line after each script.
 				$content .= PHP_EOL;
 			}
-		}// End foreach().
-		return $content;
+		} // End foreach().
+		return apply_filters( 'fusion_dynamic_js_final', $content );
 	}
 
 	/**

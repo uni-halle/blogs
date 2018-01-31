@@ -28,7 +28,8 @@
 			$echo_custom_css = '';
 			if ( '' != $saved_custom_css ) {
 				$echo_custom_css = $saved_custom_css;
-			} ?>
+			}
+			?>
 			<textarea name="_fusion_builder_custom_css" id="fusion-custom-css-field" placeholder="{{ fusionBuilderText.add_css_code_here }}"><?php echo $echo_custom_css; // WPCS: XSS ok. ?></textarea>
 		</div>
 

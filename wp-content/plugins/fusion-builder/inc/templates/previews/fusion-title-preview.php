@@ -17,7 +17,7 @@ $theme_options_style = strtolower( $fusion_settings->get( 'title_style_type' ) )
 		shortcode_content = '';
 
 		if ( 'default' === params.style_type ) {
-			style_type = '<?php echo $theme_options_style; ?>';
+			style_type = '<?php echo esc_attr( $theme_options_style ); ?>';
 			style_type = style_type.replace( ' ', '_' );
 		}
 

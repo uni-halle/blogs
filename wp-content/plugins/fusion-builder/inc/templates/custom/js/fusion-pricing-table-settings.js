@@ -1,3 +1,4 @@
+/* global fusionBuilderText, FusionPageBuilderApp, fusionAllElements */
 var FusionPageBuilder = FusionPageBuilder || {};
 
 ( function( $ ) {
@@ -63,7 +64,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 				}
 
 				// Add th
-				this.$el.find( '.fusion-table-builder .fusion-builder-table thead tr' ).append( '<th align="left" class="th-' + columnID + '" data-th-id="' + columnID + '"><div class="fusion-builder-table-hold"><div class="fusion-builder-table-column-options"><strong>' + fusionBuilderText.column_title + '</strong><span class="fa fusiona-trash-o fusion-builder-table-delete-column" title="' + fusionBuilderText.delete_column + '" data-column-id="' + columnID + '" /><span class="fa fusiona-file-add fusion-builder-table-clone-column" title="' + fusionBuilderText.clone_column + '" data-column-id="' + columnID + '" /></div></div><div class="fusion-builer-table-featured"><span>' + fusionBuilderText.standout_design + '</span> <div class="fusion-form-radio-button-set ui-buttonset"><input type="hidden" value="no" class="button-set-value" /><a href="#" class="fusion-form-radio-button-set-button ui-button buttonset-item ui-state-active" data-value="no">' + fusionBuilderText.no + '</a><a href="#" class="fusion-form-radio-button-set-button ui-button buttonset-item" data-value="yes">' + fusionBuilderText.yes + '</a></div></div><div class="fusion-builder-column-title"><input type="text" placeholder="' + fusionBuilderText.head_title + '" value="" /></div></th>' );
+				this.$el.find( '.fusion-table-builder .fusion-builder-table thead tr' ).append( '<th align="left" class="th-' + columnID + '" data-th-id="' + columnID + '"><div class="fusion-builder-table-hold"><div class="fusion-builder-table-column-options"><strong>' + fusionBuilderText.column_title + '</strong><span class="fa fusiona-trash-o fusion-builder-table-delete-column" title="' + fusionBuilderText.delete_column + '" data-column-id="' + columnID + '" /><span class="fa fusiona-file-add fusion-builder-table-clone-column" title="' + fusionBuilderText.clone_column + '" data-column-id="' + columnID + '" /></div></div><div class="fusion-builder-table-featured"><span>' + fusionBuilderText.standout_design + '</span> <div class="fusion-form-radio-button-set ui-buttonset"><input type="hidden" value="no" class="button-set-value" /><a href="#" class="fusion-form-radio-button-set-button ui-button buttonset-item ui-state-active" data-value="no">' + fusionBuilderText.no + '</a><a href="#" class="fusion-form-radio-button-set-button ui-button buttonset-item" data-value="yes">' + fusionBuilderText.yes + '</a></div></div><div class="fusion-builder-column-title"><input type="text" placeholder="' + fusionBuilderText.head_title + '" value="" /></div></th>' );
 
 				// Add td
 				this.$el.find( '.fusion-table-builder .fusion-builder-table tbody tr' ).each( function() {
@@ -200,7 +201,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 				// Process default parameters from shortcode
 				_.each( defaultParams, function( param )  {
 					if ( _.isObject( param.value ) ) {
-						value = param.default;
+						value = param['default'];
 					} else {
 						value = param.value;
 					}

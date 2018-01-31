@@ -146,9 +146,11 @@ if ( fusion_is_element_enabled( 'fusion_images' ) ) {
 			 */
 			public function attr() {
 
-				$attr = fusion_builder_visibility_atts( $this->parent_args['hide_on_mobile'], array(
-					'class' => 'fusion-image-carousel fusion-image-carousel-' . $this->parent_args['picture_size'],
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->parent_args['hide_on_mobile'], array(
+						'class' => 'fusion-image-carousel fusion-image-carousel-' . $this->parent_args['picture_size'],
+					)
+				);
 
 				if ( 'yes' === $this->parent_args['lightbox'] ) {
 					$attr['class'] .= ' lightbox-enabled';
@@ -226,7 +228,7 @@ if ( fusion_is_element_enabled( 'fusion_images' ) ) {
 				$image_size = 'full';
 				if ( 'fixed' === $this->parent_args['picture_size'] ) {
 					$image_size = 'portfolio-two';
-					if ( 'six' === $this->parent_args['columns'] || 'five' === $this->parent_args['columns'] || 'four' === $this->parent_args['columns'] ) {
+					if ( '6' === $this->parent_args['columns'] || '5' === $this->parent_args['columns'] || '4' === $this->parent_args['columns'] ) {
 						$image_size = 'blog-medium';
 					}
 				}
@@ -388,163 +390,165 @@ if ( fusion_is_element_enabled( 'fusion_images' ) ) {
  * Map shortcode to Fusion Builder.
  */
 function fusion_element_images() {
-	fusion_builder_map( array(
-		'name'          => esc_attr__( 'Image Carousel', 'fusion-builder' ),
-		'shortcode'     => 'fusion_images',
-		'multi'         => 'multi_element_parent',
-		'element_child' => 'fusion_image',
-		'icon'          => 'fusiona-images',
-		'preview'       => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-image-carousel-preview.php',
-		'preview_id'    => 'fusion-builder-block-module-image-carousel-preview-template',
-		'params'        => array(
-			array(
-				'type'        => 'tinymce',
-				'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'Enter some content for this contentbox.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => '[fusion_image link="" linktarget="_self" alt="" /]',
-			),
-			array(
-				'type'             => 'multiple_upload',
-				'heading'          => esc_attr__( 'Bulk Image Upload', 'fusion-builder' ),
-				'description'      => __( 'This option allows you to select multiple images at once and they will populate into individual items. It saves time instead of adding one image at a time.', 'fusion-builder' ),
-				'param_name'       => 'multiple_upload',
-				'element_target'   => 'fusion_image',
-				'param_target'     => 'image',
-				'remove_from_atts' => true,
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Picture Size', 'fusion-builder' ),
-				'description' => __( 'fixed = width and height will be fixed <br />auto = width and height will adjust to the image.', 'fusion-builder' ),
-				'param_name'  => 'picture_size',
-				'value'       => array(
-					'fixed' => esc_attr__( 'Fixed', 'fusion-builder' ),
-					'auto'  => esc_attr__( 'Auto', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'          => esc_attr__( 'Image Carousel', 'fusion-builder' ),
+			'shortcode'     => 'fusion_images',
+			'multi'         => 'multi_element_parent',
+			'element_child' => 'fusion_image',
+			'icon'          => 'fusiona-images',
+			'preview'       => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-image-carousel-preview.php',
+			'preview_id'    => 'fusion-builder-block-module-image-carousel-preview-template',
+			'params'        => array(
+				array(
+					'type'        => 'tinymce',
+					'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Enter some content for this contentbox.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => '[fusion_image link="" linktarget="_self" alt="" /]',
 				),
-				'default'     => 'fixed',
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Hover Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the hover effect type.', 'fusion-builder' ),
-				'param_name'  => 'hover_type',
-				'value'       => array(
-					'none'    => esc_attr__( 'None', 'fusion-builder' ),
-					'zoomin'  => esc_attr__( 'Zoom In', 'fusion-builder' ),
-					'zoomout' => esc_attr__( 'Zoom Out', 'fusion-builder' ),
-					'liftup'  => esc_attr__( 'Lift Up', 'fusion-builder' ),
+				array(
+					'type'             => 'multiple_upload',
+					'heading'          => esc_attr__( 'Bulk Image Upload', 'fusion-builder' ),
+					'description'      => __( 'This option allows you to select multiple images at once and they will populate into individual items. It saves time instead of adding one image at a time.', 'fusion-builder' ),
+					'param_name'       => 'multiple_upload',
+					'element_target'   => 'fusion_image',
+					'param_target'     => 'image',
+					'remove_from_atts' => true,
 				),
-				'default'     => 'none',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Autoplay', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to autoplay the carousel.', 'fusion-builder' ),
-				'param_name'  => 'autoplay',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Picture Size', 'fusion-builder' ),
+					'description' => __( 'fixed = width and height will be fixed <br />auto = width and height will adjust to the image.', 'fusion-builder' ),
+					'param_name'  => 'picture_size',
+					'value'       => array(
+						'fixed' => esc_attr__( 'Fixed', 'fusion-builder' ),
+						'auto'  => esc_attr__( 'Auto', 'fusion-builder' ),
+					),
+					'default'     => 'fixed',
 				),
-				'default'     => 'no',
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Maximum Columns', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the number of max columns to display.', 'fusion-builder' ),
-				'param_name'  => 'columns',
-				'value'       => '5',
-				'min'         => '1',
-				'max'         => '6',
-				'step'        => '1',
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Column Spacing', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert the amount of spacing between items without "px". ex: 13.', 'fusion-builder' ),
-				'param_name'  => 'column_spacing',
-				'value'       => '13',
-				'min'         => '0',
-				'max'         => '300',
-				'step'        => '1',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Scroll Items', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert the amount of items to scroll. Leave empty to scroll number of visible items.', 'fusion-builder' ),
-				'param_name'  => 'scroll_items',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Navigation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to show navigation buttons on the carousel.', 'fusion-builder' ),
-				'param_name'  => 'show_nav',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Hover Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the hover effect type.', 'fusion-builder' ),
+					'param_name'  => 'hover_type',
+					'value'       => array(
+						'none'    => esc_attr__( 'None', 'fusion-builder' ),
+						'zoomin'  => esc_attr__( 'Zoom In', 'fusion-builder' ),
+						'zoomout' => esc_attr__( 'Zoom Out', 'fusion-builder' ),
+						'liftup'  => esc_attr__( 'Lift Up', 'fusion-builder' ),
+					),
+					'default'     => 'none',
 				),
-				'default'     => 'yes',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Mouse Scroll', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to enable mouse drag control on the carousel. IMPORTANT: For easy draggability, when mouse scroll is activated, links will be disabled.', 'fusion-builder' ),
-				'param_name'  => 'mouse_scroll',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Autoplay', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to autoplay the carousel.', 'fusion-builder' ),
+					'param_name'  => 'autoplay',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'no',
 				),
-				'default'     => 'no',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Border', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to enable a border around the images.', 'fusion-builder' ),
-				'param_name'  => 'border',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Maximum Columns', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the number of max columns to display.', 'fusion-builder' ),
+					'param_name'  => 'columns',
+					'value'       => '5',
+					'min'         => '1',
+					'max'         => '6',
+					'step'        => '1',
 				),
-				'default'     => 'yes',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Image lightbox', 'fusion-builder' ),
-				'description' => esc_attr__( 'Show image in lightbox.', 'fusion-builder' ),
-				'param_name'  => 'lightbox',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Column Spacing', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the amount of spacing between items without "px". ex: 13.', 'fusion-builder' ),
+					'param_name'  => 'column_spacing',
+					'value'       => '13',
+					'min'         => '0',
+					'max'         => '300',
+					'step'        => '1',
 				),
-				'default'     => 'no',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Scroll Items', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the amount of items to scroll. Leave empty to scroll number of visible items.', 'fusion-builder' ),
+					'param_name'  => 'scroll_items',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Navigation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show navigation buttons on the carousel.', 'fusion-builder' ),
+					'param_name'  => 'show_nav',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Mouse Scroll', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to enable mouse drag control on the carousel. IMPORTANT: For easy draggability, when mouse scroll is activated, links will be disabled.', 'fusion-builder' ),
+					'param_name'  => 'mouse_scroll',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'no',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Border', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to enable a border around the images.', 'fusion-builder' ),
+					'param_name'  => 'border',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Image lightbox', 'fusion-builder' ),
+					'description' => esc_attr__( 'Show image in lightbox. Lightbox must be enabled in Theme Options or the image will open up in the same tab by itself.', 'fusion-builder' ),
+					'param_name'  => 'lightbox',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'no',
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => __( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => __( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_images' );
 
@@ -552,53 +556,55 @@ add_action( 'fusion_builder_before_init', 'fusion_element_images' );
  * Map shortcode to Fusion Builder.
  */
 function fusion_element_fusion_image() {
-	fusion_builder_map( array(
-		'name'              => esc_attr__( 'Image', 'fusion-builder' ),
-		'description'       => esc_attr__( 'Enter some content for this textblock.', 'fusion-builder' ),
-		'shortcode'         => 'fusion_image',
-		'hide_from_builder' => true,
-		'params'            => array(
-			array(
-				'type'        => 'upload',
-				'heading'     => esc_attr__( 'Image', 'fusion-builder' ),
-				'description' => esc_attr__( 'Upload an image to display.', 'fusion-builder' ),
-				'param_name'  => 'image',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Image ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Image ID from Media Library.', 'fusion-builder' ),
-				'param_name'  => 'image_id',
-				'value'       => '',
-				'hidden'      => true,
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Image Website Link', 'fusion-builder' ),
-				'description' => esc_attr__( "Add the url to image's website. If lightbox option is enabled, you have to add the full image link to show it in the lightbox.", 'fusion-builder' ),
-				'param_name'  => 'link',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Link Target', 'fusion-builder' ),
-				'description' => __( '_self = open in same window <br />_blank = open in new window.', 'fusion-builder' ),
-				'param_name'  => 'linktarget',
-				'value'       => array(
-					'_self'  => esc_attr__( '_self', 'fusion-builder' ),
-					'_blank' => esc_attr__( '_blank', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'              => esc_attr__( 'Image', 'fusion-builder' ),
+			'description'       => esc_attr__( 'Enter some content for this textblock.', 'fusion-builder' ),
+			'shortcode'         => 'fusion_image',
+			'hide_from_builder' => true,
+			'params'            => array(
+				array(
+					'type'        => 'upload',
+					'heading'     => esc_attr__( 'Image', 'fusion-builder' ),
+					'description' => esc_attr__( 'Upload an image to display.', 'fusion-builder' ),
+					'param_name'  => 'image',
+					'value'       => '',
 				),
-				'default'     => '_self',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Image ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Image ID from Media Library.', 'fusion-builder' ),
+					'param_name'  => 'image_id',
+					'value'       => '',
+					'hidden'      => true,
+				),
+				array(
+					'type'        => 'link_selector',
+					'heading'     => esc_attr__( 'Image Website Link', 'fusion-builder' ),
+					'description' => esc_attr__( "Add the url to image's website. If lightbox option is enabled, you have to add the full image link to show it in the lightbox.", 'fusion-builder' ),
+					'param_name'  => 'link',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Link Target', 'fusion-builder' ),
+					'description' => __( '_self = open in same window <br />_blank = open in new window.', 'fusion-builder' ),
+					'param_name'  => 'linktarget',
+					'value'       => array(
+						'_self'  => esc_attr__( '_self', 'fusion-builder' ),
+						'_blank' => esc_attr__( '_blank', 'fusion-builder' ),
+					),
+					'default'     => '_self',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Image Alt Text', 'fusion-builder' ),
+					'description' => esc_attr__( 'The alt attribute provides alternative information if an image cannot be viewed.', 'fusion-builder' ),
+					'param_name'  => 'alt',
+					'value'       => '',
+				),
 			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Image Alt Text', 'fusion-builder' ),
-				'description' => esc_attr__( 'The alt attribute provides alternative information if an image cannot be viewed.', 'fusion-builder' ),
-				'param_name'  => 'alt',
-				'value'       => '',
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_fusion_image' );

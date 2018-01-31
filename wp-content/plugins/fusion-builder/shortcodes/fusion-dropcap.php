@@ -164,68 +164,70 @@ function fusion_element_dropcap() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'              => esc_attr__( 'Dropcap', 'fusion-builder' ),
-		'shortcode'         => 'fusion_dropcap',
-		'generator_only'    => true,
-		'icon'              => 'fusiona-font',
-		'params'            => array(
-			array(
-				'type'        => 'textarea',
-				'heading'     => esc_attr__( 'Dropcap Letter', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add the letter to be used as dropcap.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => 'A',
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the color of the dropcap letter. Leave blank for theme option selection.', 'fusion-builder' ),
-				'param_name'  => 'color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'dropcap_color' ),
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Boxed Dropcap', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to get a boxed dropcap.' ),
-				'param_name'  => 'boxed',
-				'value'       => array(
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'              => esc_attr__( 'Dropcap', 'fusion-builder' ),
+			'shortcode'         => 'fusion_dropcap',
+			'generator_only'    => true,
+			'icon'              => 'fusiona-font',
+			'params'            => array(
+				array(
+					'type'        => 'textarea',
+					'heading'     => esc_attr__( 'Dropcap Letter', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add the letter to be used as dropcap.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => 'A',
 				),
-				'default'     => 'no',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Box Radius', 'fusion-builder' ),
-				'param_name'  => 'boxed_radius',
-				'value'       => '',
-				'description' => esc_attr__( 'Choose the radius of the boxed dropcap. In pixels (px), ex: 1px, or "round".', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'boxed',
-						'value'    => 'yes',
-						'operator' => '==',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the color of the dropcap letter. Leave blank for theme option selection.', 'fusion-builder' ),
+					'param_name'  => 'color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'dropcap_color' ),
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Boxed Dropcap', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to get a boxed dropcap.' ),
+					'param_name'  => 'boxed',
+					'value'       => array(
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+					),
+					'default'     => 'no',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Box Radius', 'fusion-builder' ),
+					'param_name'  => 'boxed_radius',
+					'value'       => '',
+					'description' => esc_attr__( 'Choose the radius of the boxed dropcap. In pixels (px), ex: 1px, or "round".', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'boxed',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
 					),
 				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_dropcap' );

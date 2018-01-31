@@ -28,11 +28,11 @@ final class Fusion_Dynamic_JS_File extends Fusion_Dynamic_JS_Compiler {
 	/**
 	 * The Fusion_Filesystem instance of the $filename.
 	 *
-	 * @access protected
+	 * @access public
 	 * @since 1.0.0
 	 * @var null|object
 	 */
-	protected $file = null;
+	public $file = null;
 
 	/**
 	 * Constructor.
@@ -95,9 +95,11 @@ final class Fusion_Dynamic_JS_File extends Fusion_Dynamic_JS_Compiler {
 
 			if ( false === $fusion_dynamic_js_readable ) {
 				// Check for 403 / 500.
-				$response = wp_safe_remote_get( $this->file->get_url( false ), array(
-					'timeout' => 5,
-				) );
+				$response = wp_safe_remote_get(
+					$this->file->get_url( false ), array(
+						'timeout' => 5,
+					)
+				);
 				$response_code = wp_remote_retrieve_response_code( $response );
 
 				if ( 200 !== $response_code ) {
@@ -147,11 +149,11 @@ final class Fusion_Dynamic_JS_File extends Fusion_Dynamic_JS_Compiler {
 	/**
 	 * Gets the filename.
 	 *
-	 * @access protected
+	 * @access public
 	 * @since 1.0.0
 	 * @return string
 	 */
-	protected function get_filename() {
+	public function get_filename() {
 
 		$filenames = get_transient( 'fusion_dynamic_js_filenames' );
 		if ( ! is_array( $filenames ) ) {

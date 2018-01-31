@@ -73,6 +73,10 @@ if ( fusion_is_element_enabled( 'fusion_sharing' ) ) {
 
 				$defaults['icons_boxed_radius'] = FusionBuilder::validate_shortcode_attr_value( $defaults['icons_boxed_radius'], 'px' );
 
+				if ( base64_encode( base64_decode( $defaults['description'] ) ) === $defaults['description'] ) {
+					$defaults['description'] = base64_decode( $defaults['description'] );
+				}
+
 				extract( $defaults );
 
 				$this->args = $defaults;
@@ -162,9 +166,11 @@ if ( fusion_is_element_enabled( 'fusion_sharing' ) ) {
 			 */
 			public function attr() {
 
-				$attr = fusion_builder_visibility_atts( $this->args['hide_on_mobile'], array(
-					'class' => 'share-box fusion-sharing-box',
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->args['hide_on_mobile'], array(
+						'class' => 'share-box fusion-sharing-box',
+					)
+				);
 
 				if ( 'yes' == $this->args['icons_boxed'] ) {
 					$attr['class'] .= ' boxed-icons';
@@ -269,7 +275,7 @@ if ( fusion_is_element_enabled( 'fusion_sharing' ) ) {
 						// TODO: Use Jetpack's implementation instead.
 						// @codingStandardsIgnoreLine
 						if ( ! wp_is_mobile() ) {
-							$social_link = 'http://www.facebook.com/sharer.php?m2w&s=100&p&#91;url&#93;=' . $link . '&p&#91;images&#93;&#91;0&#93;=' . wp_get_attachment_url( get_post_thumbnail_id( get_the_ID() ) ) . '&p&#91;title&#93;=' . rawurlencode( $title );
+							$social_link = 'https://www.facebook.com/sharer.php?u=' . rawurlencode( $link ) . '&t=' . rawurlencode( $title );
 						}
 						break;
 
@@ -303,7 +309,7 @@ if ( fusion_is_element_enabled( 'fusion_sharing' ) ) {
 				$attr['href']   = $social_link;
 				$attr['target'] = ( $fusion_settings->get( 'social_icons_new' ) && 'mail' != $args['social_network'] ) ? '_blank' : '_self';
 
-				if ( '_blank' == $attr['target'] ) {
+				if ( '_blank' === $attr['target'] && 'facebook' !== $args['social_network'] ) {
 					$attr['rel'] = 'noopener noreferrer';
 				}
 
@@ -680,178 +686,180 @@ function fusion_element_sharing_box() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'       => esc_attr__( 'Sharing Box', 'fusion-builder' ),
-		'shortcode'  => 'fusion_sharing',
-		'icon'       => 'fusiona-share2',
-		'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-sharingbox-preview.php',
-		'preview_id' => 'fusion-builder-block-module-sharingbox-preview-template',
-		'params'     => array(
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Tagline', 'fusion-builder' ),
-				'description' => esc_attr__( 'The title tagline that will display.', 'fusion-builder' ),
-				'param_name'  => 'tagline',
-				'value'       => esc_attr__( 'Share This Story, Choose Your Platform!', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Tagline Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the text color. Leave blank for theme option selection.', 'fusion-builder' ),
-				'param_name'  => 'tagline_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'sharing_box_tagline_text_color' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'tagline',
-						'value'    => '',
-						'operator' => '!=',
+	fusion_builder_map(
+		array(
+			'name'       => esc_attr__( 'Sharing Box', 'fusion-builder' ),
+			'shortcode'  => 'fusion_sharing',
+			'icon'       => 'fusiona-share2',
+			'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-sharingbox-preview.php',
+			'preview_id' => 'fusion-builder-block-module-sharingbox-preview-template',
+			'params'     => array(
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Tagline', 'fusion-builder' ),
+					'description' => esc_attr__( 'The title tagline that will display.', 'fusion-builder' ),
+					'param_name'  => 'tagline',
+					'value'       => esc_attr__( 'Share This Story, Choose Your Platform!', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Tagline Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the text color. Leave blank for theme option selection.', 'fusion-builder' ),
+					'param_name'  => 'tagline_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'sharing_box_tagline_text_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'tagline',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Background Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the background color. ', 'fusion-builder' ),
-				'param_name'  => 'backgroundcolor',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'social_bg_color' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Title', 'fusion-builder' ),
-				'description' => esc_attr__( 'The post title that will be shared.', 'fusion-builder' ),
-				'param_name'  => 'title',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Link to Share', 'fusion-builder' ),
-				'description' => esc_attr__( 'The link that will be shared.', 'fusion-builder' ),
-				'param_name'  => 'link',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'textarea',
-				'heading'     => esc_attr__( 'Description', 'fusion-builder' ),
-				'description' => esc_attr__( 'The description that will be shared.', 'fusion-builder' ),
-				'param_name'  => 'description',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Boxed Social Icons', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to get a boxed icons. Choose default for theme option selection.', 'fusion-builder' ),
-				'param_name'  => 'icons_boxed',
-				'value'       => array(
-					''    => esc_attr__( 'Default', 'fusion-builder' ),
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Background Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the background color. ', 'fusion-builder' ),
+					'param_name'  => 'backgroundcolor',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'social_bg_color' ),
 				),
-				'default'     => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Social Icon Box Radius', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the radius of the boxed icons. In pixels (px), ex: 1px, or "round". ', 'fusion-builder' ),
-				'param_name'  => 'icons_boxed_radius',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'icons_boxed',
-						'value'    => 'no',
-						'operator' => '!=',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Title', 'fusion-builder' ),
+					'description' => esc_attr__( 'The post title that will be shared.', 'fusion-builder' ),
+					'param_name'  => 'title',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'link_selector',
+					'heading'     => esc_attr__( 'Link to Share', 'fusion-builder' ),
+					'description' => esc_attr__( 'The link that will be shared.', 'fusion-builder' ),
+					'param_name'  => 'link',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'raw_textarea',
+					'heading'     => esc_attr__( 'Description', 'fusion-builder' ),
+					'description' => esc_attr__( 'The description that will be shared.', 'fusion-builder' ),
+					'param_name'  => 'description',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Boxed Social Icons', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to get a boxed icons. Choose default for theme option selection.', 'fusion-builder' ),
+					'param_name'  => 'icons_boxed',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => '',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Social Icon Box Radius', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the radius of the boxed icons. In pixels (px), ex: 1px, or "round". ', 'fusion-builder' ),
+					'param_name'  => 'icons_boxed_radius',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'icons_boxed',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Social Icons Color Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to get a boxed icons. Choose default for theme option selection.', 'fusion-builder' ),
-				'param_name'  => 'color_type',
-				'value'       => array(
-					''       => esc_attr__( 'Default', 'fusion-builder' ),
-					'custom' => esc_attr__( 'Custom Colors', 'fusion-builder' ),
-					'brand'  => esc_attr__( 'Brand Colors', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Social Icons Color Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to get a boxed icons. Choose default for theme option selection.', 'fusion-builder' ),
+					'param_name'  => 'color_type',
+					'value'       => array(
+						''       => esc_attr__( 'Default', 'fusion-builder' ),
+						'custom' => esc_attr__( 'Custom Colors', 'fusion-builder' ),
+						'brand'  => esc_attr__( 'Brand Colors', 'fusion-builder' ),
+					),
+					'default'     => '',
 				),
-				'default'     => '',
-			),
-			array(
-				'type'        => 'textarea',
-				'heading'     => esc_attr__( 'Social Icon Custom Colors', 'fusion-builder' ),
-				'description' => esc_attr__( 'Specify the color of social icons. ', 'fusion-builder' ),
-				'param_name'  => 'icon_colors',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'color_type',
-						'value'    => 'brand',
-						'operator' => '!=',
+				array(
+					'type'        => 'textarea',
+					'heading'     => esc_attr__( 'Social Icon Custom Colors', 'fusion-builder' ),
+					'description' => esc_attr__( 'Specify the color of social icons. ', 'fusion-builder' ),
+					'param_name'  => 'icon_colors',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'color_type',
+							'value'    => 'brand',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'textarea',
-				'heading'     => esc_attr__( 'Social Icon Custom Box Colors', 'fusion-builder' ),
-				'description' => esc_attr__( 'Specify the box color of social icons. ', 'fusion-builder' ),
-				'param_name'  => 'box_colors',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'icons_boxed',
-						'value'    => 'no',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'color_type',
-						'value'    => 'brand',
-						'operator' => '!=',
+				array(
+					'type'        => 'textarea',
+					'heading'     => esc_attr__( 'Social Icon Custom Box Colors', 'fusion-builder' ),
+					'description' => esc_attr__( 'Specify the box color of social icons. ', 'fusion-builder' ),
+					'param_name'  => 'box_colors',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'icons_boxed',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'color_type',
+							'value'    => 'brand',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Social Icon Tooltip Position', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the display position for tooltips. Choose default for theme option selection.', 'fusion-builder' ),
-				'param_name'  => 'tooltip_placement',
-				'value'       => array(
-					''       => esc_attr__( 'Default', 'fusion-builder' ),
-					'top'    => esc_attr__( 'Top', 'fusion-builder' ),
-					'bottom' => esc_attr__( 'Bottom', 'fusion-builder' ),
-					'left'   => esc_attr__( 'Left', 'fusion-builder' ),
-					'Right'  => esc_attr__( 'Right', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Social Icon Tooltip Position', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the display position for tooltips. Choose default for theme option selection.', 'fusion-builder' ),
+					'param_name'  => 'tooltip_placement',
+					'value'       => array(
+						''       => esc_attr__( 'Default', 'fusion-builder' ),
+						'top'    => esc_attr__( 'Top', 'fusion-builder' ),
+						'bottom' => esc_attr__( 'Bottom', 'fusion-builder' ),
+						'left'   => esc_attr__( 'Left', 'fusion-builder' ),
+						'Right'  => esc_attr__( 'Right', 'fusion-builder' ),
+					),
+					'default'     => '',
 				),
-				'default'     => '',
+				array(
+					'type'        => 'upload',
+					'heading'     => esc_attr__( 'Choose Image to Share on Pinterest.', 'fusion-builder' ),
+					'param_name'  => 'pinterest_image',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'upload',
-				'heading'     => esc_attr__( 'Choose Image to Share on Pinterest.', 'fusion-builder' ),
-				'param_name'  => 'pinterest_image',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_sharing_box' );

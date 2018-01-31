@@ -21,6 +21,15 @@ if ( fusion_is_element_enabled( 'fusion_recent_posts' ) ) {
 			protected $args;
 
 			/**
+			 * An array of meta settings.
+			 *
+			 * @access private
+			 * @since 1.0
+			 * @var array
+			 */
+			private $meta_info_settings = array();
+
+			/**
 			 * Constructor.
 			 *
 			 * @access public
@@ -70,6 +79,11 @@ if ( fusion_is_element_enabled( 'fusion_recent_posts' ) ) {
 						'hover_type'          => 'none',
 						'layout'              => 'default',
 						'meta'                => 'yes',
+						'meta_author'         => 'no',
+						'meta_categories'     => 'no',
+						'meta_comments'       => 'yes',
+						'meta_date'           => 'yes',
+						'meta_tags'           => 'no',
 						'number_posts'        => 4,
 						'offset'              => '',
 						'strip_html'          => 'yes',
@@ -205,6 +219,20 @@ if ( fusion_is_element_enabled( 'fusion_recent_posts' ) ) {
 					$excerpt = 'no';
 				}
 
+				$defaults['meta_author']     = ( 'yes' === $defaults['meta_author'] );
+				$defaults['meta_categories'] = ( 'yes' === $defaults['meta_categories'] );
+				$defaults['meta_comments']   = ( 'yes' === $defaults['meta_comments'] );
+				$defaults['meta_date']       = ( 'yes' === $defaults['meta_date'] );
+				$defaults['meta_tags']       = ( 'yes' === $defaults['meta_tags'] );
+
+				// Set the meta info settings for later use.
+				$this->meta_info_settings['post_meta']          = $defaults['meta'];
+				$this->meta_info_settings['post_meta_author']   = $defaults['meta_author'];
+				$this->meta_info_settings['post_meta_date']     = $defaults['meta_date'];
+				$this->meta_info_settings['post_meta_cats']     = $defaults['meta_categories'];
+				$this->meta_info_settings['post_meta_tags']     = $defaults['meta_tags'];
+				$this->meta_info_settings['post_meta_comments'] = $defaults['meta_comments'];
+
 				$this->args = $defaults;
 
 				$recent_posts = fusion_cached_query( $args );
@@ -252,7 +280,7 @@ if ( fusion_is_element_enabled( 'fusion_recent_posts' ) ) {
 						$date_box = '<div ' . FusionBuilder::attributes( 'fusion-date-and-formats' ) . '><div ' . FusionBuilder::attributes( 'fusion-date-box updated' ) . '><span ' . FusionBuilder::attributes( 'fusion-date' ) . '>' . get_the_time( $fusion_settings->get( 'alternate_date_format_day' ) ) . '</span><span ' . FusionBuilder::attributes( 'fusion-month-year' ) . '>' . get_the_time( $fusion_settings->get( 'alternate_date_format_month_year' ) ) . '</span></div><div ' . FusionBuilder::attributes( 'fusion-format-box' ) . '><i ' . FusionBuilder::attributes( 'fusion-icon-' . $format_class ) . '></i></div></div>';
 					}
 
-					if ( 'yes' === $thumbnail  && 'date-on-side' !== $layout && ! post_password_required( get_the_ID() ) ) {
+					if ( 'yes' === $thumbnail && 'date-on-side' !== $layout && ! post_password_required( get_the_ID() ) ) {
 
 						if ( 'default' == $layout ) {
 							$image_size = 'recent-posts';
@@ -320,17 +348,8 @@ if ( fusion_is_element_enabled( 'fusion_recent_posts' ) ) {
 					}
 
 					if ( 'yes' == $meta ) {
-
-						$comments = $comments_link = '';
-						ob_start();
-						comments_popup_link( esc_attr__( '0 Comments', 'fusion-builder' ), esc_attr__( '1 Comment', 'fusion-builder' ), esc_attr__( '% Comments', 'fusion-builder' ) );
-						$comments_link = ob_get_contents();
-						ob_get_clean();
-
-						$comments = '<span ' . FusionBuilder::attributes( 'meta-separator' ) . '>|</span><span>' . $comments_link . '</span>';
-
-						$content .= '<p ' . FusionBuilder::attributes( 'meta' ) . '><span><span ' . FusionBuilder::attributes( 'date' ) . '>' . get_the_time( $fusion_settings->get( 'date_format' ), get_the_ID() ) . '</span></span>' . $comments . '</p>';
-
+						$meta_data = fusion_builder_render_post_metadata( 'recent_posts', $this->meta_info_settings );
+						$content .= '<p ' . FusionBuilder::attributes( 'meta' ) . '>' . $meta_data . '</p>';
 					}
 
 					if ( 'yes' === $excerpt ) {
@@ -367,9 +386,11 @@ if ( fusion_is_element_enabled( 'fusion_recent_posts' ) ) {
 			 */
 			public function attr() {
 
-				$attr = fusion_builder_visibility_atts( $this->args['hide_on_mobile'], array(
-					'class' => 'fusion-recent-posts avada-container layout-' . $this->args['layout'] . ' layout-columns-' . $this->args['columns'],
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->args['hide_on_mobile'], array(
+						'class' => 'fusion-recent-posts avada-container layout-' . $this->args['layout'] . ' layout-columns-' . $this->args['columns'],
+					)
+				);
 
 				if ( $this->args['class'] ) {
 					$attr['class'] .= ' ' . $this->args['class'];
@@ -419,12 +440,14 @@ if ( fusion_is_element_enabled( 'fusion_recent_posts' ) ) {
 				}
 
 				if ( $this->args['animation_type'] ) {
-					$animations = FusionBuilder::animations( array(
-						'type'      => $this->args['animation_type'],
-						'direction' => $this->args['animation_direction'],
-						'speed'     => $this->args['animation_speed'],
-						'offset'    => $this->args['animation_offset'],
-					) );
+					$animations = FusionBuilder::animations(
+						array(
+							'type'      => $this->args['animation_type'],
+							'direction' => $this->args['animation_direction'],
+							'speed'     => $this->args['animation_speed'],
+							'offset'    => $this->args['animation_offset'],
+						)
+					);
 
 					$attr = array_merge( $attr, $animations );
 
@@ -539,321 +562,413 @@ if ( fusion_is_element_enabled( 'fusion_recent_posts' ) ) {
  * @since 1.0
  */
 function fusion_element_recent_posts() {
-	fusion_builder_map( array(
-		'name'       => esc_attr__( 'Recent Posts', 'fusion-builder' ),
-		'shortcode'  => 'fusion_recent_posts',
-		'icon'       => 'fusiona-feather',
-		'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-recent-posts-preview.php',
-		'preview_id' => 'fusion-builder-block-module-recent-posts-preview-template',
-		'params'     => array(
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Layout', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the layout for the element.', 'fusion-builder' ),
-				'param_name'  => 'layout',
-				'value'       => array(
-					'default'            => esc_attr__( 'Standard', 'fusion-builder' ),
-					'thumbnails-on-side' => esc_attr__( 'Thumbnails on Side', 'fusion-builder' ),
-					'date-on-side'       => esc_attr__( 'Date on Side', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'       => esc_attr__( 'Recent Posts', 'fusion-builder' ),
+			'shortcode'  => 'fusion_recent_posts',
+			'icon'       => 'fusiona-feather',
+			'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-recent-posts-preview.php',
+			'preview_id' => 'fusion-builder-block-module-recent-posts-preview-template',
+			'params'     => array(
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Layout', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the layout for the element.', 'fusion-builder' ),
+					'param_name'  => 'layout',
+					'value'       => array(
+						'default'            => esc_attr__( 'Standard', 'fusion-builder' ),
+						'thumbnails-on-side' => esc_attr__( 'Thumbnails on Side', 'fusion-builder' ),
+						'date-on-side'       => esc_attr__( 'Date on Side', 'fusion-builder' ),
+					),
+					'default'     => 'default',
 				),
-				'default'     => 'default',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Hover Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the hover effect type.', 'fusion-builder' ),
-				'param_name'  => 'hover_type',
-				'value'       => array(
-					'none'    => esc_attr__( 'None', 'fusion-builder' ),
-					'zoomin'  => esc_attr__( 'Zoom In', 'fusion-builder' ),
-					'zoomout' => esc_attr__( 'Zoom Out', 'fusion-builder' ),
-					'liftup'  => esc_attr__( 'Lift Up', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Hover Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the hover effect type.', 'fusion-builder' ),
+					'param_name'  => 'hover_type',
+					'value'       => array(
+						'none'    => esc_attr__( 'None', 'fusion-builder' ),
+						'zoomin'  => esc_attr__( 'Zoom In', 'fusion-builder' ),
+						'zoomout' => esc_attr__( 'Zoom Out', 'fusion-builder' ),
+						'liftup'  => esc_attr__( 'Lift Up', 'fusion-builder' ),
+					),
+					'default'     => 'none',
 				),
-				'default'     => 'none',
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Columns', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the number of columns to display.', 'fusion-builder' ),
-				'param_name'  => 'columns',
-				'value'       => '3',
-				'min'         => '1',
-				'max'         => '6',
-				'step'        => '1',
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Posts Per Page', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select number of posts per page.  Set to -1 to display all.', 'fusion-builder' ),
-				'param_name'  => 'number_posts',
-				'value'       => '6',
-				'min'         => '-1',
-				'max'         => '25',
-				'step'        => '1',
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Post Offset', 'fusion-builder' ),
-				'description' => esc_attr__( 'The number of posts to skip. ex: 1.', 'fusion-builder' ),
-				'param_name'  => 'offset',
-				'value'       => '0',
-				'min'         => '0',
-				'max'         => '25',
-				'step'        => '1',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Pull Posts By', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to show posts by category or tag.', 'fusion-builder' ),
-				'param_name'  => 'pull_by',
-				'default'     => 'category',
-				'value'       => array(
-					'category' => esc_attr__( 'Category', 'fusion-builder' ),
-					'tag'      => esc_attr__( 'Tag', 'fusion-builder' ),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Columns', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the number of columns to display.', 'fusion-builder' ),
+					'param_name'  => 'columns',
+					'value'       => '3',
+					'min'         => '1',
+					'max'         => '6',
+					'step'        => '1',
 				),
-			),
-			array(
-				'type'        => 'multiple_select',
-				'heading'     => esc_attr__( 'Categories', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select a category or leave blank for all.', 'fusion-builder' ),
-				'param_name'  => 'cat_slug',
-				'value'       => fusion_builder_shortcodes_categories( 'category' ),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'pull_by',
-						'value'    => 'tag',
-						'operator' => '!=',
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Posts Per Page', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select number of posts per page.  Set to -1 to display all.', 'fusion-builder' ),
+					'param_name'  => 'number_posts',
+					'value'       => '6',
+					'min'         => '-1',
+					'max'         => '25',
+					'step'        => '1',
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Post Offset', 'fusion-builder' ),
+					'description' => esc_attr__( 'The number of posts to skip. ex: 1.', 'fusion-builder' ),
+					'param_name'  => 'offset',
+					'value'       => '0',
+					'min'         => '0',
+					'max'         => '25',
+					'step'        => '1',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Pull Posts By', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show posts by category or tag.', 'fusion-builder' ),
+					'param_name'  => 'pull_by',
+					'default'     => 'category',
+					'value'       => array(
+						'category' => esc_attr__( 'Category', 'fusion-builder' ),
+						'tag'      => esc_attr__( 'Tag', 'fusion-builder' ),
 					),
 				),
-			),
-			array(
-				'type'        => 'multiple_select',
-				'heading'     => esc_attr__( 'Exclude Categories', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select a category to exclude.', 'fusion-builder' ),
-				'param_name'  => 'exclude_cats',
-				'value'       => fusion_builder_shortcodes_categories( 'category' ),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'pull_by',
-						'value'    => 'tag',
-						'operator' => '!=',
+				array(
+					'type'        => 'multiple_select',
+					'heading'     => esc_attr__( 'Categories', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select a category or leave blank for all.', 'fusion-builder' ),
+					'param_name'  => 'cat_slug',
+					'value'       => fusion_builder_shortcodes_categories( 'category' ),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'pull_by',
+							'value'    => 'tag',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'multiple_select',
-				'heading'     => esc_attr__( 'Tags', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select a tag or leave blank for all.', 'fusion-builder' ),
-				'param_name'  => 'tag_slug',
-				'value'       => fusion_builder_shortcodes_tags( 'post_tag' ),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'pull_by',
-						'value'    => 'category',
-						'operator' => '!=',
+				array(
+					'type'        => 'multiple_select',
+					'heading'     => esc_attr__( 'Exclude Categories', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select a category to exclude.', 'fusion-builder' ),
+					'param_name'  => 'exclude_cats',
+					'value'       => fusion_builder_shortcodes_categories( 'category' ),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'pull_by',
+							'value'    => 'tag',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'multiple_select',
-				'heading'     => esc_attr__( 'Exclude Tags', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select a tag to exclude.', 'fusion-builder' ),
-				'param_name'  => 'exclude_tags',
-				'value'       => fusion_builder_shortcodes_tags( 'post_tag' ),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'pull_by',
-						'value'    => 'category',
-						'operator' => '!=',
+				array(
+					'type'        => 'multiple_select',
+					'heading'     => esc_attr__( 'Tags', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select a tag or leave blank for all.', 'fusion-builder' ),
+					'param_name'  => 'tag_slug',
+					'value'       => fusion_builder_shortcodes_tags( 'post_tag' ),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'pull_by',
+							'value'    => 'category',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Thumbnail', 'fusion-builder' ),
-				'description' => esc_attr__( 'Display the post featured image.', 'fusion-builder' ),
-				'param_name'  => 'thumbnail',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'default'     => 'yes',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'date-on-side',
-						'operator' => '!=',
+				array(
+					'type'        => 'multiple_select',
+					'heading'     => esc_attr__( 'Exclude Tags', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select a tag to exclude.', 'fusion-builder' ),
+					'param_name'  => 'exclude_tags',
+					'value'       => fusion_builder_shortcodes_tags( 'post_tag' ),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'pull_by',
+							'value'    => 'category',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Title', 'fusion-builder' ),
-				'description' => esc_attr__( 'Display the post title below the featured image.', 'fusion-builder' ),
-				'param_name'  => 'title',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'default'     => 'yes',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Meta', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to show all meta data.', 'fusion-builder' ),
-				'param_name'  => 'meta',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'default'     => 'yes',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Text display', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to display the post excerpt.', 'fusion-builder' ),
-				'param_name'  => 'excerpt',
-				'value'   => array(
-					'yes'   => esc_attr__( 'Excerpt', 'fusion-builder' ),
-					'full'  => esc_attr__( 'Full Content', 'fusion-builder' ),
-					'no'    => esc_attr__( 'None', 'fusion-builder' ),
-				),
-				'default'     => 'yes',
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Excerpt Length', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert the number of words/characters you want to show in the excerpt.', 'fusion-builder' ),
-				'param_name'  => 'excerpt_length',
-				'value'       => '35',
-				'min'         => '0',
-				'max'         => '500',
-				'step'        => '1',
-				'dependency'  => array(
-					array(
-						'element'  => 'excerpt',
-						'value'    => 'yes',
-						'operator' => '==',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Thumbnail', 'fusion-builder' ),
+					'description' => esc_attr__( 'Display the post featured image.', 'fusion-builder' ),
+					'param_name'  => 'thumbnail',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'date-on-side',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Strip HTML', 'fusion-builder' ),
-				'description' => esc_attr__( 'Strip HTML from the post excerpt.', 'fusion-builder' ),
-				'param_name'  => 'strip_html',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Title', 'fusion-builder' ),
+					'description' => esc_attr__( 'Display the post title below the featured image.', 'fusion-builder' ),
+					'param_name'  => 'title',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
 				),
-				'default'     => 'yes',
-				'dependency'  => array(
-					array(
-						'element'  => 'excerpt',
-						'value'    => 'yes',
-						'operator' => '==',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Meta', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show all meta data.', 'fusion-builder' ),
+					'param_name'  => 'meta',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Author Name', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show the author.', 'fusion-builder' ),
+					'param_name'  => 'meta_author',
+					'default'     => 'no',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'meta',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Animation Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the type of animation to use on the element.', 'fusion-builder' ),
-				'param_name'  => 'animation_type',
-				'value'       => fusion_builder_available_animations(),
-				'default'     => '',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Direction of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the incoming direction for the animation.', 'fusion-builder' ),
-				'param_name'  => 'animation_direction',
-				'value'       => array(
-					'down'   => esc_attr__( 'Top', 'fusion-builder' ),
-					'right'  => esc_attr__( 'Right', 'fusion-builder' ),
-					'up'     => esc_attr__( 'Bottom', 'fusion-builder' ),
-					'left'   => esc_attr__( 'Left', 'fusion-builder' ),
-					'static' => esc_attr__( 'Static', 'fusion-builder' ),
-				),
-				'default'     => 'left',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Categories', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show the categories.', 'fusion-builder' ),
+					'param_name'  => 'meta_categories',
+					'default'     => 'no',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'meta',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Speed of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Type in speed of animation in seconds (0.1 - 1).', 'fusion-builder' ),
-				'param_name'  => 'animation_speed',
-				'min'         => '0.1',
-				'max'         => '1',
-				'step'        => '0.1',
-				'value'       => '0.3',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Date', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show the date.', 'fusion-builder' ),
+					'param_name'  => 'meta_date',
+					'default'     => 'yes',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'meta',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Offset of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls when the animation should start.', 'fusion-builder' ),
-				'param_name'  => 'animation_offset',
-				'value'       => array(
-					''                => esc_attr__( 'Default', 'fusion-builder' ),
-					'top-into-view'   => esc_attr__( 'Top of element hits bottom of viewport', 'fusion-builder' ),
-					'top-mid-of-view' => esc_attr__( 'Top of element hits middle of viewport', 'fusion-builder' ),
-					'bottom-in-view'  => esc_attr__( 'Bottom of element enters viewport', 'fusion-builder' ),
-				),
-				'default'     => '',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Comment Count', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show the comments.', 'fusion-builder' ),
+					'param_name'  => 'meta_comments',
+					'default'     => 'yes',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'meta',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
 					),
 				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Tags', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show the tags.', 'fusion-builder' ),
+					'param_name'  => 'meta_tags',
+					'default'     => 'no',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'meta',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Text display', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to display the post excerpt.', 'fusion-builder' ),
+					'param_name'  => 'excerpt',
+					'value'   => array(
+						'yes'   => esc_attr__( 'Excerpt', 'fusion-builder' ),
+						'full'  => esc_attr__( 'Full Content', 'fusion-builder' ),
+						'no'    => esc_attr__( 'None', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Excerpt Length', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the number of words/characters you want to show in the excerpt.', 'fusion-builder' ),
+					'param_name'  => 'excerpt_length',
+					'value'       => '35',
+					'min'         => '0',
+					'max'         => '500',
+					'step'        => '1',
+					'dependency'  => array(
+						array(
+							'element'  => 'excerpt',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Strip HTML', 'fusion-builder' ),
+					'description' => esc_attr__( 'Strip HTML from the post excerpt.', 'fusion-builder' ),
+					'param_name'  => 'strip_html',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
+					'dependency'  => array(
+						array(
+							'element'  => 'excerpt',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Animation Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the type of animation to use on the element.', 'fusion-builder' ),
+					'param_name'  => 'animation_type',
+					'value'       => fusion_builder_available_animations(),
+					'default'     => '',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Direction of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the incoming direction for the animation.', 'fusion-builder' ),
+					'param_name'  => 'animation_direction',
+					'value'       => array(
+						'down'   => esc_attr__( 'Top', 'fusion-builder' ),
+						'right'  => esc_attr__( 'Right', 'fusion-builder' ),
+						'up'     => esc_attr__( 'Bottom', 'fusion-builder' ),
+						'left'   => esc_attr__( 'Left', 'fusion-builder' ),
+						'static' => esc_attr__( 'Static', 'fusion-builder' ),
+					),
+					'default'     => 'left',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Speed of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Type in speed of animation in seconds (0.1 - 1).', 'fusion-builder' ),
+					'param_name'  => 'animation_speed',
+					'min'         => '0.1',
+					'max'         => '1',
+					'step'        => '0.1',
+					'value'       => '0.3',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Offset of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls when the animation should start.', 'fusion-builder' ),
+					'param_name'  => 'animation_offset',
+					'value'       => array(
+						''                => esc_attr__( 'Default', 'fusion-builder' ),
+						'top-into-view'   => esc_attr__( 'Top of element hits bottom of viewport', 'fusion-builder' ),
+						'top-mid-of-view' => esc_attr__( 'Top of element hits middle of viewport', 'fusion-builder' ),
+						'bottom-in-view'  => esc_attr__( 'Bottom of element enters viewport', 'fusion-builder' ),
+					),
+					'default'     => '',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_recent_posts' );

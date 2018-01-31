@@ -1,3 +1,4 @@
+/* global tinymce, FusionPageBuilderApp, openShortcodeGenerator */
 ( function( $ ) {
 
 if ( 'undefined' !== typeof( tinymce ) ) {

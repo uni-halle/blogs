@@ -56,17 +56,19 @@ class Fusion_Builder_Options {
 		 * The array of sections by ID.
 		 * These are used in the filenames AND the function-names.
 		 */
-		$this->section_names = apply_filters( 'fusion_builder_option_section', array(
-			'globals'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/globals.php',
-			'elements'   => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/elements.php',
-			'responsive' => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/responsive.php',
-			'lightbox'   => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/lightbox.php',
-			'slideshows' => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/slideshows.php',
-			'custom_css' => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/custom_css.php',
-			'advanced'   => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/dynamic_css_js.php',
-			'rollover'   => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/rollover.php',
-			'pagination' => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/pagination.php',
-		) );
+		$this->section_names = apply_filters(
+			'fusion_builder_option_section', array(
+				'globals'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/globals.php',
+				'elements'   => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/elements.php',
+				'responsive' => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/responsive.php',
+				'lightbox'   => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/lightbox.php',
+				'slideshows' => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/slideshows.php',
+				'custom_css' => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/custom_css.php',
+				'advanced'   => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/dynamic_css_js.php',
+				'rollover'   => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/rollover.php',
+				'pagination' => FUSION_BUILDER_PLUGIN_DIR . 'inc/options/pagination.php',
+			)
+		);
 
 		// Include the section files.
 		$this->include_files();
@@ -148,8 +150,12 @@ class Fusion_Builder_Options {
 	public function fields_array() {
 
 		// Get the options object.
-		$fusion_builder_new_options = Avada::$options;
+		$fusion_builder_new_options = ( class_exists( 'Avada' ) ) ? Avada::$options : false;
 		$fields = array();
+
+		if ( ! $fusion_builder_new_options ) {
+			return array();
+		}
 
 		// Start parsing sections.
 		foreach ( $fusion_builder_new_options->sections as $section ) {

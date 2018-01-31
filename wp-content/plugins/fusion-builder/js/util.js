@@ -1,6 +1,6 @@
 var FusionPageBuilder = FusionPageBuilder || {};
 
-( function( $ ) {
+( function() {
 
 	/**
 	 * Fetch a JavaScript template for an id, and return a templating function for it.

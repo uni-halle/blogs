@@ -84,8 +84,10 @@ if ( fusion_is_element_enabled( 'fusion_title' ) ) {
 
 				if ( false !== strpos( $style_type, 'underline' ) || false !== strpos( $style_type, 'none' ) ) {
 
-					$html = sprintf( '<div %s><h%s %s>%s</h%s></div>', FusionBuilder::attributes( 'title-shortcode' ), $size,
-					FusionBuilder::attributes( 'title-shortcode-heading' ), do_shortcode( $content ), $size );
+					$html = sprintf(
+						'<div %s><h%s %s>%s</h%s></div>', FusionBuilder::attributes( 'title-shortcode' ), $size,
+						FusionBuilder::attributes( 'title-shortcode-heading' ), do_shortcode( $content ), $size
+					);
 
 				} else {
 
@@ -143,10 +145,12 @@ if ( fusion_is_element_enabled( 'fusion_title' ) ) {
 			 */
 			public function attr() {
 
-				$attr = fusion_builder_visibility_atts( $this->args['hide_on_mobile'], array(
-					'class' => 'fusion-title title',
-					'style' => '',
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->args['hide_on_mobile'], array(
+						'class' => 'fusion-title title',
+						'style' => '',
+					)
+				);
 
 				if ( strpos( $this->args['style_type'], 'underline' ) !== false ) {
 					$styles = explode( ' ', $this->args['style_type'] );
@@ -385,123 +389,125 @@ function fusion_element_title() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'            => esc_attr__( 'Title', 'fusion-builder' ),
-		'shortcode'       => 'fusion_title',
-		'icon'            => 'fusiona-H',
-		'preview'         => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-title-preview.php',
-		'preview_id'      => 'fusion-builder-block-module-title-preview-template',
-		'allow_generator' => true,
-		'params'          => array(
-			array(
-				'type'        => 'tinymce',
-				'heading'     => esc_attr__( 'Title', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert the title text.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Size', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the title size, H1-H6.', 'fusion-builder' ),
-				'param_name'  => 'size',
-				'value'       => array(
-					'1' => 'H1',
-					'2' => 'H2',
-					'3' => 'H3',
-					'4' => 'H4',
-					'5' => 'H5',
-					'6' => 'H6',
+	fusion_builder_map(
+		array(
+			'name'            => esc_attr__( 'Title', 'fusion-builder' ),
+			'shortcode'       => 'fusion_title',
+			'icon'            => 'fusiona-H',
+			'preview'         => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-title-preview.php',
+			'preview_id'      => 'fusion-builder-block-module-title-preview-template',
+			'allow_generator' => true,
+			'params'          => array(
+				array(
+					'type'        => 'tinymce',
+					'heading'     => esc_attr__( 'Title', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the title text.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
 				),
-				'default' => '1',
-				'group'   => esc_attr__( 'Design Options', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Title Alignment', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to align the heading left or right.', 'fusion-builder' ),
-				'param_name'  => 'content_align',
-				'value'       => array(
-					'left'   => esc_attr__( 'Left', 'fusion-builder' ),
-					'center' => esc_attr__( 'Center', 'fusion-builder' ),
-					'right'  => esc_attr__( 'Right', 'fusion-builder' ),
-				),
-				'default' => 'left',
-				'group'   => esc_attr__( 'Design Options', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Separator', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the kind of the title separator you want to use.', 'fusion-builder' ),
-				'param_name'  => 'style_type',
-				'value'       => array(
-					'default'          => esc_attr__( 'Default', 'fusion-builder' ),
-					'single solid'     => esc_attr__( 'Single Solid', 'fusion-builder' ),
-					'single dashed'    => esc_attr__( 'Single Dashed', 'fusion-builder' ),
-					'single dotted'    => esc_attr__( 'Single Dotted', 'fusion-builder' ),
-					'double solid'     => esc_attr__( 'Double Solid', 'fusion-builder' ),
-					'double dashed'    => esc_attr__( 'Double Dashed', 'fusion-builder' ),
-					'double dotted'    => esc_attr__( 'Double Dotted', 'fusion-builder' ),
-					'underline solid'  => esc_attr__( 'Underline Solid', 'fusion-builder' ),
-					'underline dashed' => esc_attr__( 'Underline Dashed', 'fusion-builder' ),
-					'underline dotted' => esc_attr__( 'Underline Dotted', 'fusion-builder' ),
-					'none'             => esc_attr__( 'None', 'fusion-builder' ),
-				),
-				'default' => 'default',
-				'group'   => esc_attr__( 'Design Options', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Separator Color', 'fusion-builder' ),
-				'param_name'  => 'sep_color',
-				'value'       => '',
-				'description' => esc_attr__( 'Controls the separator color. ', 'fusion-builder' ),
-				'group'       => esc_attr__( 'Design Options', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'style_type',
-						'value'    => 'none',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Size', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the title size, H1-H6.', 'fusion-builder' ),
+					'param_name'  => 'size',
+					'value'       => array(
+						'1' => 'H1',
+						'2' => 'H2',
+						'3' => 'H3',
+						'4' => 'H4',
+						'5' => 'H5',
+						'6' => 'H6',
 					),
+					'default' => '1',
+					'group'   => esc_attr__( 'Design Options', 'fusion-builder' ),
 				),
-				'default'     => $fusion_settings->get( 'title_border_color' ),
-			),
-			array(
-				'type'             => 'dimension',
-				'remove_from_atts' => true,
-				'heading'          => esc_attr__( 'Margin', 'fusion-builder' ),
-				'param_name'       => 'dimensions',
-				'value'            => array(
-					'margin_top'    => '',
-					'margin_bottom' => '',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Title Alignment', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to align the heading left or right.', 'fusion-builder' ),
+					'param_name'  => 'content_align',
+					'value'       => array(
+						'left'   => esc_attr__( 'Left', 'fusion-builder' ),
+						'center' => esc_attr__( 'Center', 'fusion-builder' ),
+						'right'  => esc_attr__( 'Right', 'fusion-builder' ),
+					),
+					'default' => 'left',
+					'group'   => esc_attr__( 'Design Options', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Separator', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the kind of the title separator you want to use.', 'fusion-builder' ),
+					'param_name'  => 'style_type',
+					'value'       => array(
+						'default'          => esc_attr__( 'Default', 'fusion-builder' ),
+						'single solid'     => esc_attr__( 'Single Solid', 'fusion-builder' ),
+						'single dashed'    => esc_attr__( 'Single Dashed', 'fusion-builder' ),
+						'single dotted'    => esc_attr__( 'Single Dotted', 'fusion-builder' ),
+						'double solid'     => esc_attr__( 'Double Solid', 'fusion-builder' ),
+						'double dashed'    => esc_attr__( 'Double Dashed', 'fusion-builder' ),
+						'double dotted'    => esc_attr__( 'Double Dotted', 'fusion-builder' ),
+						'underline solid'  => esc_attr__( 'Underline Solid', 'fusion-builder' ),
+						'underline dashed' => esc_attr__( 'Underline Dashed', 'fusion-builder' ),
+						'underline dotted' => esc_attr__( 'Underline Dotted', 'fusion-builder' ),
+						'none'             => esc_attr__( 'None', 'fusion-builder' ),
+					),
+					'default' => 'default',
+					'group'   => esc_attr__( 'Design Options', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Separator Color', 'fusion-builder' ),
+					'param_name'  => 'sep_color',
+					'value'       => '',
+					'description' => esc_attr__( 'Controls the separator color. ', 'fusion-builder' ),
+					'group'       => esc_attr__( 'Design Options', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'style_type',
+							'value'    => 'none',
+							'operator' => '!=',
+						),
+					),
+					'default'     => $fusion_settings->get( 'title_border_color' ),
+				),
+				array(
+					'type'             => 'dimension',
+					'remove_from_atts' => true,
+					'heading'          => esc_attr__( 'Margin', 'fusion-builder' ),
+					'param_name'       => 'dimensions',
+					'value'            => array(
+						'margin_top'    => '',
+						'margin_bottom' => '',
 
+					),
+					'description'      => esc_attr__( 'Spacing above and below the title. In px, em or %, e.g. 10px.', 'fusion-builder' ),
 				),
-				'description'      => esc_attr__( 'Spacing above and below the title. In px, em or %, e.g. 10px.', 'fusion-builder' ),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_title' );

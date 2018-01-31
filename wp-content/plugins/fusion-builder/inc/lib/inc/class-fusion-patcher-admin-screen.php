@@ -286,15 +286,15 @@ class Fusion_Patcher_Admin_Screen {
 				<div class="fusion-patcher-heading">
 					<p class="description">
 						<?php if ( empty( $available_patches ) ) : ?>
-							<?php printf( esc_html__( 'Fusion Patcher: Currently there are no patches available for %1$s version %2$s', 'fusion-builder' ), esc_attr( $this->patcher->get_args( 'name' ) ), esc_attr( $this->patcher->get_args( 'version' ) ) ); ?>
+							<?php printf( esc_attr__( 'Fusion Patcher: Currently there are no patches available for %1$s version %2$s', 'fusion-builder' ), esc_attr( $this->patcher->get_args( 'name' ) ), esc_attr( $this->patcher->get_args( 'version' ) ) ); ?>
 						<?php else : ?>
-							<?php printf( esc_html__( 'Fusion Patcher: The following patches are available for %1$s version %2$s', 'fusion-builder' ), esc_attr( $this->patcher->get_args( 'name' ) ), esc_attr( $this->patcher->get_args( 'version' ) ) ); ?>
+							<?php printf( esc_attr__( 'Fusion Patcher: The following patches are available for %1$s version %2$s', 'fusion-builder' ), esc_attr( $this->patcher->get_args( 'name' ) ), esc_attr( $this->patcher->get_args( 'version' ) ) ); ?>
 						<?php endif; ?>
 						<span class="fusion-auto-patcher learn-more"><a href="https://theme-fusion.com/avada-doc/avada-patcher/" target="_blank" rel="noopener noreferrer"><?php esc_attr_e( 'Learn More', 'fusion-builder' ); ?></a></span>
 					</p>
 					<?php if ( ! empty( $available_patches ) ) : ?>
 						<p class="sub-description">
-							<?php esc_html_e( 'The status column displays if a patch was applied. However, a patch can be reapplied if necessary.', 'fusion-builder' ); ?>
+							<?php esc_attr_e( 'The status column displays if a patch was applied. However, a patch can be reapplied if necessary.', 'fusion-builder' ); ?>
 						</p>
 					<?php endif; ?>
 				</div>
@@ -303,7 +303,7 @@ class Fusion_Patcher_Admin_Screen {
 						<?php if ( false !== strpos( $message_id, 'write-permissions-' ) ) : ?>
 							<?php continue; ?>
 						<?php endif; ?>
-						<p class="fusion-patcher-error"><?php echo $message;  // WPCS: XSS ok. ?></p>
+						<p class="fusion-patcher-error"><?php echo $message; // WPCS: XSS ok. ?></p>
 					<?php endforeach; ?>
 				<?php endif; ?>
 				<?php if ( ! empty( $available_patches ) ) : // Only display the table if we have patches to apply. ?>
@@ -323,7 +323,8 @@ class Fusion_Patcher_Admin_Screen {
 								<th></th>
 							</tr>
 							</tr>
-							<?php foreach ( $available_patches as $key => $patch_id ) :
+							<?php foreach ( $available_patches as $key => $patch_id ) : ?>
+								<?php
 
 								// Do not allow applying the patch initially.
 								// We'll have to check if they can later.
@@ -411,9 +412,9 @@ class Fusion_Patcher_Admin_Screen {
 										<?php else : ?>
 											<span class="button disabled button-small">
 												<?php if ( isset( $available_patches[ $key - 1 ] ) ) : ?>
-													<?php printf( esc_html__( 'Please apply patch #%s first.', 'fusion-builder' ), intval( $available_patches[ $key - 1 ] ) ); ?>
+													<?php printf( esc_attr__( 'Please apply patch #%s first.', 'fusion-builder' ), intval( $available_patches[ $key - 1 ] ) ); ?>
 												<?php else : ?>
-													<?php esc_html_e( 'Patch cannot be currently aplied.', 'fusion-builder' ); ?>
+													<?php esc_attr_e( 'Patch cannot be currently aplied.', 'fusion-builder' ); ?>
 												<?php endif; ?>
 											</span>
 										<?php endif; ?>

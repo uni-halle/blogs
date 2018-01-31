@@ -92,7 +92,9 @@
                         clear: function( e, ui ) {
                             $( this ).val( ui.color.toString() );
                             fusionredux_change( $( this ).parent().find( '.fusionredux-color-init' ) );
-                        }
+                        },
+
+                        palettes: ['#000000', '#ffffff', '#f44336', '#E91E63', '#03A9F4', '#00BCD4', '#8BC34A', '#FFEB3B', '#FFC107', '#FF9800', '#607D8B']
                     }
                 );
 

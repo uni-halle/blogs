@@ -12,7 +12,8 @@
 		</div>
 
 		<div class="fusion-builder-modal-bottom-container">
-			<a href="#" class="fusion-builder-inner-row-close"><span>{{ fusionBuilderText.save }}</span></a>
+			<a href="#" class="fusion-builder-insert-inner-column"><span class="fusiona-plus"></span> {{ fusionBuilderText.columns }}</a>
+			<a href="#" class="fusion-builder-modal-save"><span>{{ fusionBuilderText.save }}</span></a>
 			<a href="#" class="fusion-builder-inner-row-close"><span>{{ fusionBuilderText.cancel }}</span></a>
 		</div>
 		<div id="fusion-builder-row-{{ cid }}" class="fusion-builder-row-container-inner"></div>

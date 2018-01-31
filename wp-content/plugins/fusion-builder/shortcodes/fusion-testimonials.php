@@ -107,8 +107,10 @@ if ( fusion_is_element_enabled( 'fusion_testimonials' ) ) {
 					$pagination  = sprintf( '<div %s></div>', FusionBuilder::attributes( 'testimonials-shortcode-pagination' ) );
 				}
 
-				$html = sprintf( '<div %s>%s<div %s>%s</div>%s</div>', FusionBuilder::attributes( 'testimonials-shortcode' ), $styles,
-				FusionBuilder::attributes( 'testimonials-shortcode-testimonials' ), do_shortcode( $content ), $pagination );
+				$html = sprintf(
+					'<div %s>%s<div %s>%s</div>%s</div>', FusionBuilder::attributes( 'testimonials-shortcode' ), $styles,
+					FusionBuilder::attributes( 'testimonials-shortcode-testimonials' ), do_shortcode( $content ), $pagination
+				);
 
 				$this->testimonials_counter++;
 
@@ -125,9 +127,11 @@ if ( fusion_is_element_enabled( 'fusion_testimonials' ) ) {
 			 */
 			public function attr() {
 
-				$attr = fusion_builder_visibility_atts( $this->parent_args['hide_on_mobile'], array(
-					'class' => 'fusion-testimonials ' . $this->parent_args['design'] . ' fusion-testimonials-' . $this->testimonials_counter,
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->parent_args['hide_on_mobile'], array(
+						'class' => 'fusion-testimonials ' . $this->parent_args['design'] . ' fusion-testimonials-' . $this->testimonials_counter,
+					)
+				);
 
 				$attr['data-random'] = $this->parent_args['random'];
 
@@ -443,8 +447,10 @@ if ( fusion_is_element_enabled( 'fusion_testimonials' ) ) {
 				);
 
 				if ( 'image' === $this->child_args['avatar'] ) {
-					$attr['style'] = sprintf( '-webkit-border-radius: %s;-moz-border-radius: %s;border-radius: %s;',
-					$this->child_args['image_border_radius'], $this->child_args['image_border_radius'],  $this->child_args['image_border_radius'] );
+					$attr['style'] = sprintf(
+						'-webkit-border-radius: %s;-moz-border-radius: %s;border-radius: %s;',
+						$this->child_args['image_border_radius'], $this->child_args['image_border_radius'],  $this->child_args['image_border_radius']
+					);
 				}
 
 				return $attr;
@@ -598,87 +604,89 @@ function fusion_element_testimonials() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'          => esc_attr__( 'Testimonials', 'fusion-builder' ),
-		'shortcode'     => 'fusion_testimonials',
-		'multi'         => 'multi_element_parent',
-		'element_child' => 'fusion_testimonial',
-		'icon'          => 'fusiona-bubbles',
-		'preview'       => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-testimonials-preview.php',
-		'preview_id'    => 'fusion-builder-block-module-testimonials-preview-template',
-		'params'        => array(
-			array(
-				'type'        => 'tinymce',
-				'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'Enter some content for this contentbox.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => '[fusion_testimonial name="' . esc_attr__( 'Your Content Goes Here', 'fusion-builder' ) . '" avatar="male" image="" image_border_radius="" company="' . esc_attr__( 'Your Content Goes Here', 'fusion-builder' ) . '" link="" target="_self"]' . esc_attr__( 'Your Content Goes Here', 'fusion-builder' ) . '[/fusion_testimonial]',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Design', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a design for the element.', 'fusion-builder' ),
-				'param_name'  => 'design',
-				'value'       => array(
-					'classic' => esc_attr__( 'Classic', 'fusion-builder' ),
-					'clean'   => esc_attr__( 'Clean', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'          => esc_attr__( 'Testimonials', 'fusion-builder' ),
+			'shortcode'     => 'fusion_testimonials',
+			'multi'         => 'multi_element_parent',
+			'element_child' => 'fusion_testimonial',
+			'icon'          => 'fusiona-bubbles',
+			'preview'       => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-testimonials-preview.php',
+			'preview_id'    => 'fusion-builder-block-module-testimonials-preview-template',
+			'params'        => array(
+				array(
+					'type'        => 'tinymce',
+					'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Enter some content for this contentbox.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => '[fusion_testimonial name="' . esc_attr__( 'Your Content Goes Here', 'fusion-builder' ) . '" avatar="male" image="" image_border_radius="" company="' . esc_attr__( 'Your Content Goes Here', 'fusion-builder' ) . '" link="" target="_self"]' . esc_attr__( 'Your Content Goes Here', 'fusion-builder' ) . '[/fusion_testimonial]',
 				),
-				'default'     => 'classic',
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Background Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the background color. ', 'fusion-builder' ),
-				'param_name'  => 'backgroundcolor',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'testimonial_bg_color' ),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Text Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the text color. ', 'fusion-builder' ),
-				'param_name'  => 'textcolor',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'testimonial_text_color' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Random Order', 'fusion-builder' ),
-				'description' => esc_attr__( 'Turn on to display testimonials in a random order.' ),
-				'param_name'  => 'random',
-				'value'       => array(
-					''    => esc_attr__( 'Default', 'fusion-builder' ),
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Design', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a design for the element.', 'fusion-builder' ),
+					'param_name'  => 'design',
+					'value'       => array(
+						'classic' => esc_attr__( 'Classic', 'fusion-builder' ),
+						'clean'   => esc_attr__( 'Clean', 'fusion-builder' ),
+					),
+					'default'     => 'classic',
 				),
-				'default'     => '',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Background Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the background color. ', 'fusion-builder' ),
+					'param_name'  => 'backgroundcolor',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'testimonial_bg_color' ),
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Text Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the text color. ', 'fusion-builder' ),
+					'param_name'  => 'textcolor',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'testimonial_text_color' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Random Order', 'fusion-builder' ),
+					'description' => esc_attr__( 'Turn on to display testimonials in a random order.' ),
+					'param_name'  => 'random',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => '',
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_testimonials' );
 
@@ -688,103 +696,105 @@ add_action( 'fusion_builder_before_init', 'fusion_element_testimonials' );
  * @since 1.0
  */
 function fusion_element_testimonial() {
-	fusion_builder_map( array(
-		'name'              => esc_attr__( 'Testimonial', 'fusion-builder' ),
-		'shortcode'         => 'fusion_testimonial',
-		'hide_from_builder' => true,
-		'allow_generator'   => true,
-		'params'            => array(
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Name', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert the name of the person.', 'fusion-builder' ),
-				'param_name'  => 'name',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Avatar', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose which kind of Avatar to be displayed.', 'fusion-builder' ),
-				'param_name'  => 'avatar',
-				'value'       => array(
-					'male'   => esc_attr__( 'Male', 'fusion-builder' ),
-					'female' => esc_attr__( 'Female', 'fusion-builder' ),
-					'image'  => esc_attr__( 'Image', 'fusion-builder' ),
-					'none'   => esc_attr__( 'None', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'              => esc_attr__( 'Testimonial', 'fusion-builder' ),
+			'shortcode'         => 'fusion_testimonial',
+			'hide_from_builder' => true,
+			'allow_generator'   => true,
+			'params'            => array(
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Name', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the name of the person.', 'fusion-builder' ),
+					'param_name'  => 'name',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
 				),
-				'default'     => 'male',
-			),
-			array(
-				'type'        => 'upload',
-				'heading'     => esc_attr__( 'Custom Avatar', 'fusion-builder' ),
-				'description' => esc_attr__( 'Upload a custom avatar image.', 'fusion-builder' ),
-				'param_name'  => 'image',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'avatar',
-						'value'    => 'image',
-						'operator' => '==',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Avatar', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose which kind of Avatar to be displayed.', 'fusion-builder' ),
+					'param_name'  => 'avatar',
+					'value'       => array(
+						'male'   => esc_attr__( 'Male', 'fusion-builder' ),
+						'female' => esc_attr__( 'Female', 'fusion-builder' ),
+						'image'  => esc_attr__( 'Image', 'fusion-builder' ),
+						'none'   => esc_attr__( 'None', 'fusion-builder' ),
+					),
+					'default'     => 'male',
+				),
+				array(
+					'type'        => 'upload',
+					'heading'     => esc_attr__( 'Custom Avatar', 'fusion-builder' ),
+					'description' => esc_attr__( 'Upload a custom avatar image.', 'fusion-builder' ),
+					'param_name'  => 'image',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'avatar',
+							'value'    => 'image',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Border Radius', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the radius of the testimonial image. In pixels (px), ex: 1px, or "round". ', 'fusion-builder' ),
-				'param_name'  => 'image_border_radius',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'avatar',
-						'value'    => 'image',
-						'operator' => '==',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Border Radius', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the radius of the testimonial image. In pixels (px), ex: 1px, or "round". ', 'fusion-builder' ),
+					'param_name'  => 'image_border_radius',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'avatar',
+							'value'    => 'image',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Company', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert the name of the company.', 'fusion-builder' ),
-				'param_name'  => 'company',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Link', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add the url the company name will link to.', 'fusion-builder' ),
-				'param_name'  => 'link',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Link Target', 'fusion-builder' ),
-				'description' => __( '_self = open in same window <br />_blank = open in new window.', 'fusion-builder' ),
-				'param_name'  => 'target',
-				'value'       => array(
-					'_self'   => '_self',
-					'_blank'  => '_blank',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Company', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the name of the company.', 'fusion-builder' ),
+					'param_name'  => 'company',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
 				),
-				'default'     => '_self',
-				'dependency'  => array(
-					array(
-						'element'  => 'link',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'link_selector',
+					'heading'     => esc_attr__( 'Link', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add the url the company name will link to.', 'fusion-builder' ),
+					'param_name'  => 'link',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Link Target', 'fusion-builder' ),
+					'description' => __( '_self = open in same window <br />_blank = open in new window.', 'fusion-builder' ),
+					'param_name'  => 'target',
+					'value'       => array(
+						'_self'   => '_self',
+						'_blank'  => '_blank',
+					),
+					'default'     => '_self',
+					'dependency'  => array(
+						array(
+							'element'  => 'link',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
+				array(
+					'type'        => 'tinymce',
+					'heading'     => esc_attr__( 'Testimonial Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add the testimonial content.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
+				),
 			),
-			array(
-				'type'        => 'tinymce',
-				'heading'     => esc_attr__( 'Testimonial Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add the testimonial content.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_testimonial' );

@@ -1,3 +1,4 @@
+/* global fusionAllElements, FusionPageBuilderViewManager */
 var FusionPageBuilder = FusionPageBuilder || {};
 
 ( function( $ ) {
@@ -101,7 +102,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 				    updatedViews = {};
 
 				_.each( views, function( value, key ) {
-					if ( key != cid ) {
+					if ( key != cid ) { // jshint ignore:line
 						updatedViews[key] = value;
 					}
 				} );
@@ -109,7 +110,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 				this.set( { 'views': updatedViews } );
 			},
 
-			removeViews: function( cid ) {
+			removeViews: function() {
 				var updatedViews = {};
 				this.set( { 'views': updatedViews } );
 			},
@@ -129,7 +130,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 		} );
 
-		FusionPageBuilderViewManager = new FusionPageBuilder.ViewManager();
+		FusionPageBuilderViewManager = new FusionPageBuilder.ViewManager(); // jshint ignore:line
 
 	} );
 

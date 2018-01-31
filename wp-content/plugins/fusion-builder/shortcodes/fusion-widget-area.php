@@ -58,6 +58,16 @@ if ( fusion_is_element_enabled( 'fusion_widget_area' ) ) {
 					$fusion_settings = Fusion_Settings::get_instance();
 				}
 
+				if ( ! isset( $args['padding'] ) ) {
+					$padding_values = array();
+					$padding_values['top']    = ( isset( $args['padding_top'] ) && '' !== $args['padding_top'] ) ? $args['padding_top'] : '0px';
+					$padding_values['right']  = ( isset( $args['padding_right'] ) && '' !== $args['padding_right'] ) ? $args['padding_right'] : '0px';
+					$padding_values['bottom'] = ( isset( $args['padding_bottom'] ) && '' !== $args['padding_bottom'] ) ? $args['padding_bottom'] : '0px';
+					$padding_values['left']   = ( isset( $args['padding_left'] ) && '' !== $args['padding_left'] ) ? $args['padding_left'] : '0px';
+
+					$args['padding'] = implode( ' ', $padding_values );
+				}
+
 				$defaults = FusionBuilder::set_shortcode_defaults(
 					array(
 						'hide_on_mobile'   => fusion_builder_default_visibility( 'string' ),
@@ -108,9 +118,11 @@ if ( fusion_is_element_enabled( 'fusion_widget_area' ) ) {
 			 */
 			public function attr() {
 
-				$attr = fusion_builder_visibility_atts( $this->args['hide_on_mobile'], array(
-					'class' => 'fusion-widget-area fusion-widget-area-' . $this->widget_counter . ' fusion-content-widget-area',
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->args['hide_on_mobile'], array(
+						'class' => 'fusion-widget-area fusion-widget-area-' . $this->widget_counter . ' fusion-content-widget-area',
+					)
+				);
 
 				if ( $this->args['class'] ) {
 					$attr['class'] .= ' ' . $this->args['class'];
@@ -219,73 +231,81 @@ function fusion_element_widget_area() {
 		$fusion_settings = Fusion_Settings::get_instance();
 	}
 
-	fusion_builder_map( array(
-		'name'      => esc_attr__( 'Widget Area', 'fusion-builder' ),
-		'shortcode' => 'fusion_widget_area',
-		'icon'      => 'fusiona-sidebar',
-		'params'    => array(
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Widget Area Name', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the name of the widget area to display.', 'fusion-builder' ),
-				'param_name'  => 'name',
-				'value'       => FusionBuilder::fusion_get_sidebars(),
-				'default'     => '',
+	fusion_builder_map(
+		array(
+			'name'      => esc_attr__( 'Widget Area', 'fusion-builder' ),
+			'shortcode' => 'fusion_widget_area',
+			'icon'      => 'fusiona-sidebar',
+			'params'    => array(
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Widget Area Name', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the name of the widget area to display.', 'fusion-builder' ),
+					'param_name'  => 'name',
+					'value'       => FusionBuilder::fusion_get_sidebars(),
+					'default'     => '',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Widget Title Size', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the size of widget titles. In pixels ex: 18px.', 'fusion-builder' ),
+					'param_name'  => 'title_size',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'widget_area_title_size' ),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Widget Title Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the color of widget titles.', 'fusion-builder' ),
+					'param_name'  => 'title_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'widget_area_title_color' ),
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Backgound Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a background color for the widget area.', 'fusion-builder' ),
+					'param_name'  => 'background_color',
+					'value'       => '',
+				),
+				array(
+					'type'             => 'dimension',
+					'remove_from_atts' => true,
+					'heading'          => esc_attr__( 'Padding', 'fusion-builder' ),
+					'description'      => esc_attr__( 'In pixels or percentage, ex: 10px or 10%.', 'fusion-builder' ),
+					'param_name'       => 'padding',
+					'value'            => array(
+						'padding_top'    => '',
+						'padding_right'  => '',
+						'padding_bottom' => '',
+						'padding_left'   => '',
+					),
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+				),
 			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Widget Title Size', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the size of widget titles. In pixels ex: 18px.', 'fusion-builder' ),
-				'param_name'  => 'title_size',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'widget_area_title_size' ),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Widget Title Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the color of widget titles.', 'fusion-builder' ),
-				'param_name'  => 'title_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'widget_area_title_color' ),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Backgound Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a background color for the widget area.', 'fusion-builder' ),
-				'param_name'  => 'background_color',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'dimension',
-				'heading'     => esc_attr__( 'Padding', 'fusion-builder' ),
-				'description' => esc_attr__( 'In pixels or percentage, ex: 10px or 10%.', 'fusion-builder' ),
-				'param_name'  => 'padding',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-			),
-		),
-	) );
+		)
+	);
 }
 
 // Later hook to ensure the sidebars are set.

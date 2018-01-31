@@ -97,12 +97,17 @@ if ( fusion_is_element_enabled( 'fusion_accordion' ) ) {
 						'background_color'  => ( '' !== $fusion_settings->get( 'accordian_background_color' ) ) ? $fusion_settings->get( 'accordian_background_color' ) : '#ffffff',
 						'hover_color'       => ( '' !== $fusion_settings->get( 'accordian_hover_color' ) ) ? $fusion_settings->get( 'accordian_hover_color' ) : $fusion_library->sanitize->color( $fusion_settings->get( 'primary_color' ) ),
 						'type'              => ( '' !== $fusion_settings->get( 'accordion_type' ) ) ? $fusion_settings->get( 'accordion_type' ) : 'accordions',
+						'icon_alignment'    => ( '' !== $fusion_settings->get( 'accordion_icon_align' ) ) ? $fusion_settings->get( 'accordion_icon_align' ) : 'left',
+						'icon_boxed_mode'   => ( '' !== $fusion_settings->get( 'accordion_icon_boxed' ) ) ? $fusion_settings->get( 'accordion_icon_boxed' ) : 'no',
+						'icon_size'         => ( '' !== $fusion_settings->get( 'accordion_icon_size' ) ) ? $fusion_settings->get( 'accordion_icon_size' ) : '13px',
+						'icon_color'        => ( '' !== $fusion_settings->get( 'accordian_icon_color' ) ) ? $fusion_settings->get( 'accordian_icon_color' ) : '#ffffff',
 						'class'             => '',
 						'id'                => '',
 					), $args
 				);
 
 				$defaults['border_size'] = FusionBuilder::validate_shortcode_attr_value( $defaults['border_size'], 'px' );
+				$defaults['icon_size']   = FusionBuilder::validate_shortcode_attr_value( $defaults['icon_size'], 'px' );
 
 				extract( $defaults );
 
@@ -129,8 +134,21 @@ if ( fusion_is_element_enabled( 'fusion_accordion' ) ) {
 					if ( ! empty( $this->parent_args['background_color'] ) ) {
 						$styles .= ' background-color:' . $this->parent_args['background_color'] . ';';
 					}
+
+					$styles .= ' }';
 				}
-				$styles .= ' }';
+
+				if ( ! empty( $this->parent_args['icon_color'] ) ) {
+					$styles .= '.fusion-accordian  #accordion-' . get_the_ID() . '-' . $this->accordian_counter . ' .panel-title a .fa-fusion-box{ color: ' . $this->parent_args['icon_color'] . ';}';
+				}
+
+				if ( ! empty( $this->parent_args['icon_size'] ) ) {
+					$styles .= '.fusion-accordian  #accordion-' . get_the_ID() . '-' . $this->accordian_counter . ' .panel-title a .fa-fusion-box:before{ font-size: ' . $this->parent_args['icon_size'] . '; width: ' . $this->parent_args['icon_size'] . ';}';
+				}
+
+				if ( ! empty( $this->parent_args['icon_alignment'] ) && 'right' === $this->parent_args['icon_alignment'] ) {
+					$styles .= '.fusion-accordian  #accordion-' . get_the_ID() . '-' . $this->accordian_counter . '.fusion-toggle-icon-right .fusion-toggle-heading{ margin-right: ' . FusionBuilder::validate_shortcode_attr_value( intval( $this->parent_args['icon_size'] ) + 18, 'px' ) . ';}';
+				}
 
 				if ( $styles ) {
 
@@ -161,9 +179,11 @@ if ( fusion_is_element_enabled( 'fusion_accordion' ) ) {
 			 */
 			public function attr() {
 
-				$attr = fusion_builder_visibility_atts( $this->parent_args['hide_on_mobile'], array(
-					'class' => 'accordian fusion-accordian',
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->parent_args['hide_on_mobile'], array(
+						'class' => 'accordian fusion-accordian',
+					)
+				);
 
 				if ( $this->parent_args['class'] ) {
 					$attr['class'] .= ' ' . $this->parent_args['class'];
@@ -185,10 +205,20 @@ if ( fusion_is_element_enabled( 'fusion_accordion' ) ) {
 			 * @return array
 			 */
 			public function panelgroup_attr() {
-				return array(
+				$attr = array(
 					'class' => 'panel-group',
 					'id'    => 'accordion-' . get_the_ID() . '-' . $this->accordian_counter,
 				);
+
+				if ( 'right' == $this->parent_args['icon_alignment'] ) {
+					$attr['class'] .= ' fusion-toggle-icon-right';
+				}
+
+				if ( '0' == $this->parent_args['icon_boxed_mode'] || 'no' === $this->parent_args['icon_boxed_mode'] ) {
+					$attr['class'] .= ' fusion-toggle-icon-unboxed';
+				}
+
+				return $attr;
 			}
 
 			/**
@@ -461,19 +491,54 @@ if ( fusion_is_element_enabled( 'fusion_accordion' ) ) {
 									),
 								),
 							),
+							'accordion_icon_size' => array(
+								'label'       => esc_html__( 'Toggle Icon Size', 'fusion-builder' ),
+								'description' => esc_html__( 'Set the size of the icon.', 'fusion-builder' ),
+								'id'          => 'accordion_icon_size',
+								'default'     => '13',
+								'min'         => '1',
+								'max'         => '40',
+								'step'        => '1',
+								'type'        => 'slider',
+							),
+							'accordian_icon_color' => array(
+								'label'       => esc_html__( 'Toggle Icon Color', 'fusion-builder' ),
+								'description' => esc_html__( 'Controls the color of icon in toggle box.', 'fusion-builder' ),
+								'id'          => 'accordian_icon_color',
+								'default'     => '#ffffff',
+								'type'        => 'color-alpha',
+							),
+							'accordion_icon_boxed' => array(
+								'label'       => esc_html__( 'Toggle Icon Boxed Mode', 'fusion-builder' ),
+								'description' => esc_html__( 'Turn on to display toggle icon in boxed mode.', 'fusion-builder' ),
+								'id'          => 'accordion_icon_boxed',
+								'default'     => '1',
+								'type'        => 'switch',
+							),
 							'accordian_inactive_color' => array(
-								'label'       => esc_html__( 'Toggle Inactive Box Color', 'fusion-builder' ),
+								'label'       => esc_html__( 'Toggle Icon Inactive Box Color', 'fusion-builder' ),
 								'description' => esc_html__( 'Controls the color of the inactive toggle box.', 'fusion-builder' ),
 								'id'          => 'accordian_inactive_color',
 								'default'     => '#333333',
 								'type'        => 'color-alpha',
 							),
 							'accordian_active_color' => array(
-								'label'       => esc_html__( 'Toggle Active Box Color', 'fusion-builder' ),
+								'label'       => esc_html__( 'Toggle Icon Active Box Color', 'fusion-builder' ),
 								'description' => esc_html__( 'Controls the color of the active toggle box.', 'fusion-builder' ),
 								'id'          => 'accordian_active_color',
 								'default'     => $fusion_library->sanitize->color( $fusion_settings->get( 'primary_color' ) ),
 								'type'        => 'color-alpha',
+							),
+							'accordion_icon_align' => array(
+								'label'       => esc_html__( 'Toggle Icon Alignment', 'fusion-builder' ),
+								'description' => esc_html__( 'Controls the alignment of toggle icon.', 'fusion-builder' ),
+								'id'          => 'accordion_icon_align',
+								'default'     => 'left',
+								'type'        => 'radio-buttonset',
+								'choices'     => array(
+									'left'    => esc_html__( 'Left', 'fusion-builder' ),
+									'right'   => esc_html__( 'Right', 'fusion-builder' ),
+								),
 							),
 						),
 					),
@@ -514,159 +579,203 @@ function fusion_element_accordion() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'          => esc_attr__( 'Toggles', 'fusion-builder' ),
-		'shortcode'     => 'fusion_accordion',
-		'multi'         => 'multi_element_parent',
-		'element_child' => 'fusion_toggle',
-		'icon'          => 'fusiona-expand-alt',
-		'preview'       => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-toggles-preview.php',
-		'preview_id'    => 'fusion-builder-block-module-toggles-preview-template',
-		'params'        => array(
-			array(
-				'type'        => 'tinymce',
-				'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'Enter some content for this contentbox.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => '[fusion_toggle title="' . esc_attr__( 'Your Content Goes Here', 'fusion-builder' ) . '" open="no" ]' . esc_attr__( 'Your Content Goes Here', 'fusion-builder' ) . '[/fusion_toggle]',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Toggles or Accordions', 'fusion-builder' ),
-				'description' => esc_attr__( 'Toggles allow several items to be open at a time. Accordions only allow one item to be open at a time.', 'fusion-builder' ),
-				'param_name'  => 'type',
-				'value'       => array(
-					''           => esc_attr__( 'Default', 'fusion-builder' ),
-					'toggles'    => esc_attr__( 'Toggles', 'fusion-builder' ),
-					'accordions' => esc_attr__( 'Accordions', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'          => esc_attr__( 'Toggles', 'fusion-builder' ),
+			'shortcode'     => 'fusion_accordion',
+			'multi'         => 'multi_element_parent',
+			'element_child' => 'fusion_toggle',
+			'icon'          => 'fusiona-expand-alt',
+			'preview'       => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-toggles-preview.php',
+			'preview_id'    => 'fusion-builder-block-module-toggles-preview-template',
+			'params'        => array(
+				array(
+					'type'        => 'tinymce',
+					'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Enter some content for this contentbox.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => '[fusion_toggle title="' . esc_attr__( 'Your Content Goes Here', 'fusion-builder' ) . '" open="no" ]' . esc_attr__( 'Your Content Goes Here', 'fusion-builder' ) . '[/fusion_toggle]',
 				),
-				'default' => '',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Boxed Mode', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to display items in boxed mode.', 'fusion-builder' ),
-				'param_name'  => 'boxed_mode',
-				'value'       => array(
-					''    => esc_attr__( 'Default', 'fusion-builder' ),
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Toggles or Accordions', 'fusion-builder' ),
+					'description' => esc_attr__( 'Toggles allow several items to be open at a time. Accordions only allow one item to be open at a time.', 'fusion-builder' ),
+					'param_name'  => 'type',
+					'value'       => array(
+						''           => esc_attr__( 'Default', 'fusion-builder' ),
+						'toggles'    => esc_attr__( 'Toggles', 'fusion-builder' ),
+						'accordions' => esc_attr__( 'Accordions', 'fusion-builder' ),
+					),
+					'default' => '',
 				),
-				'default' => '',
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Boxed Mode Border Width', 'fusion-builder' ),
-				'description' => esc_attr__( 'Set the border width for toggle item. In pixels.', 'fusion-builder' ),
-				'param_name'  => 'border_size',
-				'value'       => $fusion_settings->get( 'accordion_border_size' ),
-				'default'     => $fusion_settings->get( 'accordion_border_size' ),
-				'min'         => '0',
-				'max'         => '20',
-				'step'        => '1',
-				'dependency'  => array(
-					array(
-						'element'  => 'boxed_mode',
-						'value'    => 'no',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Boxed Mode', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to display items in boxed mode.', 'fusion-builder' ),
+					'param_name'  => 'boxed_mode',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default' => '',
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Boxed Mode Border Width', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set the border width for toggle item. In pixels.', 'fusion-builder' ),
+					'param_name'  => 'border_size',
+					'value'       => $fusion_settings->get( 'accordion_border_size' ),
+					'default'     => $fusion_settings->get( 'accordion_border_size' ),
+					'min'         => '0',
+					'max'         => '20',
+					'step'        => '1',
+					'dependency'  => array(
+						array(
+							'element'  => 'boxed_mode',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Boxed Mode Border Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Set the border color for toggle item.', 'fusion-builder' ),
-				'param_name'  => 'border_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'accordian_border_color' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'boxed_mode',
-						'value'    => 'no',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'border_size',
-						'value'    => '0',
-						'operator' => '!=',
-					),
-				),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Boxed Mode Background Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Set the background color for toggle item.', 'fusion-builder' ),
-				'param_name'  => 'background_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'accordian_background_color' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'boxed_mode',
-						'value'    => 'no',
-						'operator' => '!=',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Boxed Mode Border Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set the border color for toggle item.', 'fusion-builder' ),
+					'param_name'  => 'border_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'accordian_border_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'boxed_mode',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'border_size',
+							'value'    => '0',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Boxed Mode Background Hover Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Set the background hover color for toggle item.', 'fusion-builder' ),
-				'param_name'  => 'hover_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'accordian_hover_color' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'boxed_mode',
-						'value'    => 'no',
-						'operator' => '!=',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Boxed Mode Background Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set the background color for toggle item.', 'fusion-builder' ),
+					'param_name'  => 'background_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'accordian_background_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'boxed_mode',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Divider Line', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to display a divider line between each item.', 'fusion-builder' ),
-				'param_name'  => 'divider_line',
-				'value'       => array(
-					''    => esc_attr__( 'Default', 'fusion-builder' ),
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'default' => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'boxed_mode',
-						'value'    => 'yes',
-						'operator' => '!=',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Boxed Mode Background Hover Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set the background hover color for toggle item.', 'fusion-builder' ),
+					'param_name'  => 'hover_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'accordian_hover_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'boxed_mode',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
 					),
 				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Divider Line', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to display a divider line between each item.', 'fusion-builder' ),
+					'param_name'  => 'divider_line',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default' => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'boxed_mode',
+							'value'    => 'yes',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'heading'     => esc_html__( 'Toggle Icon Size', 'fusion-builder' ),
+					'description' => esc_html__( 'Set the size of the icon. In pixels (px), ex: 13px.', 'fusion-builder' ),
+					'param_name'  => 'icon_size',
+					'default'     => $fusion_settings->get( 'accordion_icon_size' ),
+					'min'         => '1',
+					'max'         => '40',
+					'step'        => '1',
+					'type'        => 'range',
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Toggle Icon Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set the color of icon in toggle box.', 'fusion-builder' ),
+					'param_name'  => 'icon_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'accordian_icon_color' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Toggle Icon Boxed Mode', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to display icon in boxed mode.', 'fusion-builder' ),
+					'param_name'  => 'icon_boxed_mode',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default' => '',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Toggle Icon Alignment', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the alignment of toggle icon.', 'fusion-builder' ),
+					'param_name'  => 'icon_alignment',
+					'value'       => array(
+						''       => esc_attr__( 'Default', 'fusion-builder' ),
+						'left'   => esc_attr__( 'Left', 'fusion-builder' ),
+						'right'  => esc_attr__( 'Right', 'fusion-builder' ),
+					),
+					'default' => '',
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_accordion' );
 
@@ -676,40 +785,42 @@ add_action( 'fusion_builder_before_init', 'fusion_element_accordion' );
  * @since 1.0
  */
 function fusion_element_toggle() {
-	fusion_builder_map( array(
-		'name'              => esc_attr__( 'Toggle', 'fusion-builder' ),
-		'shortcode'         => 'fusion_toggle',
-		'hide_from_builder' => true,
-		'allow_generator'   => true,
-		'params'            => array(
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Title', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert the toggle title.', 'fusion-builder' ),
-				'param_name'  => 'title',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Open by Default', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to have the toggle open when page loads.', 'fusion-builder' ),
-				'param_name'  => 'open',
-				'value'       => array(
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'              => esc_attr__( 'Toggle', 'fusion-builder' ),
+			'shortcode'         => 'fusion_toggle',
+			'hide_from_builder' => true,
+			'allow_generator'   => true,
+			'params'            => array(
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Title', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the toggle title.', 'fusion-builder' ),
+					'param_name'  => 'title',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
 				),
-				'default'     => 'no',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Open by Default', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to have the toggle open when page loads.', 'fusion-builder' ),
+					'param_name'  => 'open',
+					'value'       => array(
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+					),
+					'default'     => 'no',
+				),
+				array(
+					'type'        => 'tinymce',
+					'heading'     => esc_attr__( 'Toggle Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the toggle content.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
+				),
 			),
-			array(
-				'type'        => 'tinymce',
-				'heading'     => esc_attr__( 'Toggle Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert the toggle content.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_toggle' );

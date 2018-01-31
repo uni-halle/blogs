@@ -1,3 +1,4 @@
+/* global FusionPageBuilderApp, fusionAllElements */
 var FusionPageBuilder = FusionPageBuilder || {};
 
 ( function( $ ) {
@@ -29,13 +30,13 @@ var FusionPageBuilder = FusionPageBuilder || {};
 				elementType = $( event.currentTarget ).data( 'type' );
 
 				// Get default options
-				defaultParams = fusionAllElements[elementType].params;
+				defaultParams = fusionAllElements[ elementType ].params;
 				params = {};
 
 				// Process default parameters from shortcode
 				_.each( defaultParams, function( param )  {
 					if ( _.isObject( param.value ) ) {
-						value = param.default;
+						value = param['default'];
 					} else {
 						value = param.value;
 					}
@@ -49,9 +50,6 @@ var FusionPageBuilder = FusionPageBuilder || {};
 					params: params
 				} ] );
 			}
-
 		} );
-
 	} );
-
 } )( jQuery );

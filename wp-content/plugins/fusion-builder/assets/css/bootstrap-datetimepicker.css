@@ -76,11 +76,11 @@
 /*CAL AND TIME FONTS*/
 @font-face {
 	font-family: 'count-down-timer';
-	src:url('../assets/fonts/count-down/count-down-timer.eot?32bexs');
-	src:url('../assets/fonts/count-down/count-down-timer.eot?#iefix32bexs') format('embedded-opentype'),
-		url('../assets/fonts/count-down/count-down-timer.woff?32bexs') format('woff'),
-		url('../assets/fonts/count-down/count-down-timer.ttf?32bexs') format('truetype'),
-		url('../assets/fonts/count-down/count-down-timer.svg?32bexs#count-down-timer') format('svg');
+	src:url('../fonts/count-down/count-down-timer.eot?32bexs');
+	src:url('../fonts/count-down/count-down-timer.eot?#iefix32bexs') format('embedded-opentype'),
+		url('../fonts/count-down/count-down-timer.woff?32bexs') format('woff'),
+		url('../fonts/count-down/count-down-timer.ttf?32bexs') format('truetype'),
+		url('../fonts/count-down/count-down-timer.svg?32bexs#count-down-timer') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }

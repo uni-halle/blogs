@@ -36,35 +36,47 @@ if ( ! class_exists( 'FusionSC_ColumnInner' ) ) {
 
 			$content_id = get_the_id();
 
-			extract( shortcode_atts(
-				array(
-					'hide_on_mobile'      => fusion_builder_default_visibility( 'string' ),
-					'class'               => '',
-					'id'                  => '',
-					'background_color'    => '',
-					'background_image'    => '',
-					'background_position' => 'left top',
-					'background_repeat'   => 'no-repeat',
-					'border_style'        => '',
-					'border_size'         => '',
-					'border_color'        => '',
-					'margin_top'          => '',
-					'margin_bottom'       => '',
-					'row_column_index'    => '',
-					'spacing'             => '4%',
-					'padding'             => '',
-					'animation_type'      => '',
-					'animation_direction' => 'left',
-					'animation_speed'     => '0.3',
-					'animation_offset'    => $fusion_settings->get( 'animation_offset' ),
-					'center_content'      => 'no',
-					'type'                => '1_3',
-					'link'                => '',
-					'hover_type'          => 'none',
-					'min_height'          => '',
-					/* 'last'                => 'no', // Deprecated. use css last-child instead. */
-				), $atts
-			) );
+			if ( ! isset( $atts['padding'] ) ) {
+				$padding_values = array();
+				$padding_values['top']    = ( isset( $atts['padding_top'] ) && '' !== $atts['padding_top'] ) ? $atts['padding_top'] : '0px';
+				$padding_values['right']  = ( isset( $atts['padding_right'] ) && '' !== $atts['padding_right'] ) ? $atts['padding_right'] : '0px';
+				$padding_values['bottom'] = ( isset( $atts['padding_bottom'] ) && '' !== $atts['padding_bottom'] ) ? $atts['padding_bottom'] : '0px';
+				$padding_values['left']   = ( isset( $atts['padding_left'] ) && '' !== $atts['padding_left'] ) ? $atts['padding_left'] : '0px';
+
+				$atts['padding'] = implode( ' ', $padding_values );
+			}
+
+			extract(
+				shortcode_atts(
+					array(
+						'hide_on_mobile'      => fusion_builder_default_visibility( 'string' ),
+						'class'               => '',
+						'id'                  => '',
+						'background_color'    => '',
+						'background_image'    => '',
+						'background_position' => 'left top',
+						'background_repeat'   => 'no-repeat',
+						'border_style'        => '',
+						'border_size'         => '',
+						'border_color'        => '',
+						'margin_top'          => '',
+						'margin_bottom'       => '',
+						'row_column_index'    => '',
+						'spacing'             => '4%',
+						'padding'             => '',
+						'animation_type'      => '',
+						'animation_direction' => 'left',
+						'animation_speed'     => '0.3',
+						'animation_offset'    => $fusion_settings->get( 'animation_offset' ),
+						'center_content'      => 'no',
+						'type'                => '1_3',
+						'link'                => '',
+						'hover_type'          => 'none',
+						'min_height'          => '',
+					 /* 'last'                => 'no', // Deprecated. use css last-child instead. */
+					), $atts
+				)
+			);
 
 			$style               = '';
 			$classes             = '';
@@ -111,51 +123,51 @@ if ( ! class_exists( 'FusionSC_ColumnInner' ) ) {
 
 			// Column size value.
 			switch ( $type ) {
-				case '1_1' :
+				case '1_1':
 					$column_size = 1;
 					$classes .= ' fusion-one-full';
 					break;
-				case '1_4' :
+				case '1_4':
 					$column_size = 0.25;
 					$classes .= ' fusion-one-fourth';
 					break;
-				case '3_4' :
+				case '3_4':
 					$column_size = 0.75;
 					$classes .= ' fusion-three-fourth';
 					break;
-				case '1_2' :
+				case '1_2':
 					$column_size = 0.50;
 					$classes .= ' fusion-one-half';
 					break;
-				case '1_3' :
+				case '1_3':
 					$column_size = 0.3333;
 					$classes .= ' fusion-one-third';
 					break;
-				case '2_3' :
+				case '2_3':
 					$column_size = 0.6666;
 					$classes .= ' fusion-two-third';
 					break;
-				case '1_5' :
+				case '1_5':
 					$column_size = 0.20;
 					$classes .= ' fusion-one-fifth';
 					break;
-				case '2_5' :
+				case '2_5':
 					$column_size = 0.40;
 					$classes .= ' fusion-two-fifth';
 					break;
-				case '3_5' :
+				case '3_5':
 					$column_size = 0.60;
 					$classes .= ' fusion-three-fifth';
 					break;
-				case '4_5' :
+				case '4_5':
 					$column_size = 0.80;
 					$classes .= ' fusion-four-fifth';
 					break;
-				case '5_6' :
+				case '5_6':
 					$column_size = 0.8333;
 					$classes .= ' fusion-five-sixth';
 					break;
-				case '1_6' :
+				case '1_6':
 					$column_size = 0.1666;
 					$classes .= ' fusion-one-sixth';
 					break;
@@ -264,8 +276,7 @@ if ( ! class_exists( 'FusionSC_ColumnInner' ) ) {
 				}
 			}
 
-			// @codingStandardsIgnoreLine
-			if ( ( ! $is_IE && ! $is_edge ) || ( 'none' !== $hover_type || ( ! empty( $hover_type ) && 'none' !== $hover_type )  || ! empty( $link ) ) ) {
+			if ( ( ! $is_IE && ! $is_edge ) || ( 'none' !== $hover_type || ( ! empty( $hover_type ) && 'none' !== $hover_type ) || ! empty( $link ) ) ) {
 				$wrapper_style_bg .= $background_image_style;
 			}
 
@@ -351,7 +362,7 @@ if ( ! class_exists( 'FusionSC_ColumnInner' ) ) {
 			}
 
 			// Visibility classes.
-			$classes .= fusion_builder_visibility_atts( $hide_on_mobile, $classes );
+			$classes = fusion_builder_visibility_atts( $hide_on_mobile, $classes );
 
 			// Hover type or link.
 			if ( ! empty( $link ) || ( 'none' !== $hover_type && ! empty( $hover_type ) ) ) {
@@ -440,287 +451,295 @@ new FusionSC_ColumnInner();
  * @since 1.0
  */
 function fusion_element_column_inner() {
-	fusion_builder_map( array(
-		'name'              => esc_attr__( 'Nested Column', 'fusion-builder' ),
-		'shortcode'         => 'fusion_builder_column_inner',
-		'hide_from_builder' => true,
-		'params'            => array(
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Column Spacing', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the margin added to the column. Enter value including any valid CSS unit, ex: 4%.', 'fusion-builder' ),
-				'param_name'  => 'spacing',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-				'value'       => '',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Center Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'Set to "Yes" to center the content vertically.', 'fusion-builder' ),
-				'param_name'  => 'center_content',
-				'default'     => 'no',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'              => esc_attr__( 'Nested Column', 'fusion-builder' ),
+			'shortcode'         => 'fusion_builder_column_inner',
+			'hide_from_builder' => true,
+			'params'            => array(
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Column Spacing', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the margin added to the column. Enter value including any valid CSS unit, ex: 4%.', 'fusion-builder' ),
+					'param_name'  => 'spacing',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+					'value'       => '',
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Hover Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the hover effect type. This will disable links and hover effects on elements inside the column.', 'fusion-builder' ),
-				'param_name'  => 'hover_type',
-				'default'     => 'none',
-				'value'       => array(
-					'none'    => esc_attr__( 'None', 'fusion-builder' ),
-					'zoomin'  => esc_attr__( 'Zoom In', 'fusion-builder' ),
-					'zoomout' => esc_attr__( 'Zoom Out', 'fusion-builder' ),
-					'liftup'  => esc_attr__( 'Lift Up', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Link URL', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add the URL the column will link to, ex: http://example.com.', 'fusion-builder' ),
-				'param_name'  => 'link',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Ignore Equal Heights', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to ignore equal heights on this column if you are using equal heights on the surrounding container.', 'fusion-builder' ),
-				'param_name'  => 'min_height',
-				'default'     => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-				'value'       => array(
-					'none' => esc_attr__( 'Yes', 'fusion-builder' ),
-					''     => esc_attr__( 'No', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Column Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the column on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Background Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the background color.', 'fusion-builder' ),
-				'param_name'  => 'background_color',
-				'value'       => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'upload',
-				'heading'     => esc_attr__( 'Background Image', 'fusion-builder' ),
-				'description' => esc_attr__( 'Upload an image to display in the background.', 'fusion-builder' ),
-				'param_name'  => 'background_image',
-				'value'       => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Background Position', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the postion of the background image.', 'fusion-builder' ),
-				'param_name'  => 'background_position',
-				'default'     => 'left top',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'background_image',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Center Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set to "Yes" to center the content vertically. Equal heights on the parent container must be turned on.', 'fusion-builder' ),
+					'param_name'  => 'center_content',
+					'default'     => 'no',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
 					),
 				),
-				'value'       => array(
-					'left top'      => esc_attr__( 'Left Top', 'fusion-builder' ),
-					'left center'   => esc_attr__( 'Left Center', 'fusion-builder' ),
-					'left bottom'   => esc_attr__( 'Left Bottom', 'fusion-builder' ),
-					'right top'     => esc_attr__( 'Right Top', 'fusion-builder' ),
-					'right center'  => esc_attr__( 'Right Center', 'fusion-builder' ),
-					'right bottom'  => esc_attr__( 'Right Bottom', 'fusion-builder' ),
-					'center top'    => esc_attr__( 'Center Top', 'fusion-builder' ),
-					'center center' => esc_attr__( 'Center Center', 'fusion-builder' ),
-					'center bottom' => esc_attr__( 'Center Bottom', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Hover Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the hover effect type. This will disable links and hover effects on elements inside the column.', 'fusion-builder' ),
+					'param_name'  => 'hover_type',
+					'default'     => 'none',
+					'value'       => array(
+						'none'    => esc_attr__( 'None', 'fusion-builder' ),
+						'zoomin'  => esc_attr__( 'Zoom In', 'fusion-builder' ),
+						'zoomout' => esc_attr__( 'Zoom Out', 'fusion-builder' ),
+						'liftup'  => esc_attr__( 'Lift Up', 'fusion-builder' ),
+					),
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Background Repeat', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose how the background image repeats.', 'fusion-builder' ),
-				'param_name'  => 'background_repeat',
-				'value'       => array(
-					'no-repeat' => esc_attr__( 'No Repeat', 'fusion-builder' ),
-					'repeat'    => esc_attr__( 'Repeat Vertically and Horizontally', 'fusion-builder' ),
-					'repeat-x'  => esc_attr__( 'Repeat Horizontally', 'fusion-builder' ),
-					'repeat-y'  => esc_attr__( 'Repeat Vertically', 'fusion-builder' ),
+				array(
+					'type'        => 'link_selector',
+					'heading'     => esc_attr__( 'Link URL', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add the URL the column will link to, ex: http://example.com.', 'fusion-builder' ),
+					'param_name'  => 'link',
+					'value'       => '',
 				),
-				'default'     => 'no-repeat',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'background_image',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Ignore Equal Heights', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to ignore equal heights on this column if you are using equal heights on the surrounding container.', 'fusion-builder' ),
+					'param_name'  => 'min_height',
+					'default'     => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+					'value'       => array(
+						'none' => esc_attr__( 'Yes', 'fusion-builder' ),
+						''     => esc_attr__( 'No', 'fusion-builder' ),
+					),
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Column Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the column on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Background Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the background color.', 'fusion-builder' ),
+					'param_name'  => 'background_color',
+					'value'       => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'upload',
+					'heading'     => esc_attr__( 'Background Image', 'fusion-builder' ),
+					'description' => esc_attr__( 'Upload an image to display in the background.', 'fusion-builder' ),
+					'param_name'  => 'background_image',
+					'value'       => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Background Position', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the postion of the background image.', 'fusion-builder' ),
+					'param_name'  => 'background_position',
+					'default'     => 'left top',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'background_image',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+					'value'       => array(
+						'left top'      => esc_attr__( 'Left Top', 'fusion-builder' ),
+						'left center'   => esc_attr__( 'Left Center', 'fusion-builder' ),
+						'left bottom'   => esc_attr__( 'Left Bottom', 'fusion-builder' ),
+						'right top'     => esc_attr__( 'Right Top', 'fusion-builder' ),
+						'right center'  => esc_attr__( 'Right Center', 'fusion-builder' ),
+						'right bottom'  => esc_attr__( 'Right Bottom', 'fusion-builder' ),
+						'center top'    => esc_attr__( 'Center Top', 'fusion-builder' ),
+						'center center' => esc_attr__( 'Center Center', 'fusion-builder' ),
+						'center bottom' => esc_attr__( 'Center Bottom', 'fusion-builder' ),
+					),
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Background Repeat', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose how the background image repeats.', 'fusion-builder' ),
+					'param_name'  => 'background_repeat',
+					'value'       => array(
+						'no-repeat' => esc_attr__( 'No Repeat', 'fusion-builder' ),
+						'repeat'    => esc_attr__( 'Repeat Vertically and Horizontally', 'fusion-builder' ),
+						'repeat-x'  => esc_attr__( 'Repeat Horizontally', 'fusion-builder' ),
+						'repeat-y'  => esc_attr__( 'Repeat Vertically', 'fusion-builder' ),
+					),
+					'default'     => 'no-repeat',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'background_image',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Border Size', 'fusion-builder' ),
+					'description' => esc_attr__( 'In pixels.', 'fusion-builder' ),
+					'param_name'  => 'border_size',
+					'value'       => '0',
+					'min'         => '0',
+					'max'         => '50',
+					'step'        => '1',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Border Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the border color.', 'fusion-builder' ),
+					'param_name'  => 'border_color',
+					'value'       => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'border_size',
+							'value'    => '0',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Border Style', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the border style.', 'fusion-builder' ),
+					'param_name'  => 'border_style',
+					'default'     => 'solid',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'border_size',
+							'value'    => '0',
+							'operator' => '!=',
+						),
+					),
+					'value'       => array(
+						'solid'  => esc_attr__( 'Solid', 'fusion-builder' ),
+						'dashed' => esc_attr__( 'Dashed', 'fusion-builder' ),
+						'dotted' => esc_attr__( 'Dotted', 'fusion-builder' ),
+					),
+				),
+				array(
+					'type'             => 'dimension',
+					'remove_from_atts' => true,
+					'heading'          => esc_attr__( 'Padding', 'fusion-builder' ),
+					'description'      => esc_attr__( 'In pixels (px), ex: 10px.', 'fusion-builder' ),
+					'param_name'       => 'padding',
+					'value'            => array(
+						'padding_top'    => '',
+						'padding_right'  => '',
+						'padding_bottom' => '',
+						'padding_left'   => '',
+					),
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+				),
+				array(
+					'type'         => 'dimension',
+					'remove_from_atts' => true,
+					'heading'     => esc_attr__( 'Margin', 'fusion-builder' ),
+					'description' => esc_attr__( 'Spacing above and below the column. In px, em or %, e.g. 10px.', 'fusion-builder' ),
+					'param_name'  => 'dimension_margin',
+					'value'       => array(
+						'margin_top'    => '',
+						'margin_bottom' => '',
+					),
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Animation Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the type of animation to use on the element.', 'fusion-builder' ),
+					'param_name'  => 'animation_type',
+					'value'       => fusion_builder_available_animations(),
+					'default'     => '',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Direction of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the incoming direction for the animation.', 'fusion-builder' ),
+					'param_name'  => 'animation_direction',
+					'default'     => 'left',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+					'value'       => array(
+						'down'   => esc_attr__( 'Top', 'fusion-builder' ),
+						'right'  => esc_attr__( 'Right', 'fusion-builder' ),
+						'up'     => esc_attr__( 'Bottom', 'fusion-builder' ),
+						'left'   => esc_attr__( 'Left', 'fusion-builder' ),
+						'static' => esc_attr__( 'Static', 'fusion-builder' ),
+					),
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Speed of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Type in speed of animation in seconds (0.1 - 1).', 'fusion-builder' ),
+					'param_name'  => 'animation_speed',
+					'min'         => '0.1',
+					'max'         => '1',
+					'step'        => '0.1',
+					'value'       => '0.3',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Offset of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls when the animation should start.', 'fusion-builder' ),
+					'param_name'  => 'animation_offset',
+					'default'     => '',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+					'value'       => array(
+						''                => esc_attr__( 'Default', 'fusion-builder' ),
+						'top-into-view'   => esc_attr__( 'Top of element hits bottom of viewport', 'fusion-builder' ),
+						'top-mid-of-view' => esc_attr__( 'Top of element hits middle of viewport', 'fusion-builder' ),
+						'bottom-in-view'  => esc_attr__( 'Bottom of element enters viewport', 'fusion-builder' ),
 					),
 				),
 			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Border Size', 'fusion-builder' ),
-				'description' => esc_attr__( 'In pixels.', 'fusion-builder' ),
-				'param_name'  => 'border_size',
-				'value'       => '0',
-				'min'         => '0',
-				'max'         => '50',
-				'step'        => '1',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Border Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the border color.', 'fusion-builder' ),
-				'param_name'  => 'border_color',
-				'value'       => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'border_size',
-						'value'    => '0',
-						'operator' => '!=',
-					),
-				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Border Style', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the border style.', 'fusion-builder' ),
-				'param_name'  => 'border_style',
-				'default'     => 'solid',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'border_size',
-						'value'    => '0',
-						'operator' => '!=',
-					),
-				),
-				'value'       => array(
-					'solid'  => esc_attr__( 'Solid', 'fusion-builder' ),
-					'dashed' => esc_attr__( 'Dashed', 'fusion-builder' ),
-					'dotted' => esc_attr__( 'Dotted', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'dimension',
-				'heading'     => esc_attr__( 'Padding', 'fusion-builder' ),
-				'description' => esc_attr__( 'In pixels (px), ex: 10px.', 'fusion-builder' ),
-				'param_name'  => 'padding',
-				'value'       => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'         => 'dimension',
-				'remove_from_atts' => true,
-				'heading'     => esc_attr__( 'Margin', 'fusion-builder' ),
-				'description' => esc_attr__( 'Spacing above and below the column. In px, em or %, e.g. 10px.', 'fusion-builder' ),
-				'param_name'  => 'dimension_margin',
-				'value'       => array(
-					'margin_top'    => '',
-					'margin_bottom' => '',
-				),
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Animation Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the type of animation to use on the element.', 'fusion-builder' ),
-				'param_name'  => 'animation_type',
-				'value'       => fusion_builder_available_animations(),
-				'default'     => '',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Direction of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the incoming direction for the animation.', 'fusion-builder' ),
-				'param_name'  => 'animation_direction',
-				'default'     => 'left',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
-					),
-				),
-				'value'       => array(
-					'down'   => esc_attr__( 'Top', 'fusion-builder' ),
-					'right'  => esc_attr__( 'Right', 'fusion-builder' ),
-					'up'     => esc_attr__( 'Bottom', 'fusion-builder' ),
-					'left'   => esc_attr__( 'Left', 'fusion-builder' ),
-					'static' => esc_attr__( 'Static', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Speed of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Type in speed of animation in seconds (0.1 - 1).', 'fusion-builder' ),
-				'param_name'  => 'animation_speed',
-				'min'         => '0.1',
-				'max'         => '1',
-				'step'        => '0.1',
-				'value'       => '0.3',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
-					),
-				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Offset of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls when the animation should start.', 'fusion-builder' ),
-				'param_name'  => 'animation_offset',
-				'default'     => '',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
-					),
-				),
-				'value'       => array(
-					''                => esc_attr__( 'Default', 'fusion-builder' ),
-					'top-into-view'   => esc_attr__( 'Top of element hits bottom of viewport', 'fusion-builder' ),
-					'top-mid-of-view' => esc_attr__( 'Top of element hits middle of viewport', 'fusion-builder' ),
-					'bottom-in-view'  => esc_attr__( 'Bottom of element enters viewport', 'fusion-builder' ),
-				),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_column_inner' );

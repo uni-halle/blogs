@@ -143,9 +143,11 @@ if ( fusion_is_element_enabled( 'fusion_social_links' ) ) {
 			 */
 			public function attr() {
 
-				$attr = fusion_builder_visibility_atts( $this->args['hide_on_mobile'], array(
-					'class' => 'fusion-social-links',
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->args['hide_on_mobile'], array(
+						'class' => 'fusion-social-links',
+					)
+				);
 
 				if ( $this->args['class'] ) {
 					$attr['class'] .= ' ' . $this->args['class'];
@@ -733,7 +735,7 @@ function fusion_element_social_links() {
 		foreach ( $custom_social_networks as $key => $custom_network ) {
 			$social_options['params'][] = array(
 				'type'        => 'textfield',
-				'heading'     => sprintf( esc_attr__( 'Custom %s Link', 'fusion-builder' ), $key + 1 ),
+				'heading'     => sprintf( esc_attr__( '%s Link', 'fusion-builder' ), $custom_network['title'] ),
 				'description' => esc_attr__( 'Insert your custom social link.', 'fusion-builder' ),
 				'param_name'  => 'custom_' . $key,
 				'value'       => '',

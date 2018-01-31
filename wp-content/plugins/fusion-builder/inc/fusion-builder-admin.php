@@ -16,6 +16,39 @@ class Fusion_Builder_Admin {
 		add_action( 'admin_menu', array( $this, 'admin_menu' ), 1 );
 		add_action( 'admin_post_save_fb_settings', array( $this, 'settings_save' ) );
 		add_filter( 'custom_menu_order', array( $this, 'reorder_submenus' ) );
+		add_action( 'admin_footer', array( $this, 'admin_footer' ), 1 );
+	}
+
+	/**
+	 * Bottom update buttons on edit screen.
+	 *
+	 * @access public
+	 */
+	public function admin_footer() {
+		global $post;
+
+		$post_type = isset( $post->post_type ) ? $post->post_type : false;
+
+		if ( post_type_supports( $post_type, 'editor' ) ) {
+			$publish_button_text     = ( isset( $post->post_status ) && 'publish' === $post->post_status ) ? esc_attr__( 'Update', 'fusion-builder' ) : esc_attr__( 'Publish', 'fusion-builder' );
+			$fusion_builder_settings = get_option( 'fusion_builder_settings', array() );
+
+			$enable_builder_sticky_publish_buttons = true;
+
+			if ( isset( $fusion_builder_settings['enable_builder_sticky_publish_buttons'] ) ) {
+				$enable_builder_sticky_publish_buttons = $fusion_builder_settings['enable_builder_sticky_publish_buttons'];
+			}
+
+			if ( ! isset( $post->ID ) || ! $enable_builder_sticky_publish_buttons ) {
+				return;
+			}
+			?>
+			<div class="fusion-builder-update-buttons">
+				<a href="#" class="button button-secondary fusion-preview" target="wp-preview-<?php echo esc_attr( $post->ID ); ?>"><?php esc_attr_e( 'Preview', 'fusion-builder' ); ?></a>
+				<a href="#" class="button button-primary fusion-update"><?php echo esc_attr( $publish_button_text ); ?></a>
+			</div>
+		<?php
+		}
 	}
 
 	/**
@@ -39,11 +72,15 @@ class Fusion_Builder_Admin {
 			add_action( 'admin_print_scripts-' . $whatsnew, array( $this, 'admin_scripts' ) );
 
 			// Add menu items if Avada is active.
-			$support  = add_submenu_page( 'fusion-builder-options', esc_attr__( 'Support', 'fusion-builder' ), esc_attr__( 'Support', 'fusion-builder' ), 'manage_options', 'fusion-builder-support', array( $this, 'support_tab' ) );
+			if ( ! defined( 'ENVATO_HOSTED_SITE' ) ) {
+				$support  = add_submenu_page( 'fusion-builder-options', esc_attr__( 'Support', 'fusion-builder' ), esc_attr__( 'Support', 'fusion-builder' ), 'manage_options', 'fusion-builder-support', array( $this, 'support_tab' ) );
+			}
 			$faq      = add_submenu_page( 'fusion-builder-options', esc_attr__( 'FAQ', 'fusion-builder' ), esc_attr__( 'FAQ', 'fusion-builder' ), 'manage_options', 'fusion-builder-faq', array( $this, 'faq_tab' ) );
 			$settings = add_submenu_page( 'fusion-builder-options', esc_attr__( 'Settings', 'fusion-builder' ), esc_attr__( 'Settings', 'fusion-builder' ), 'manage_options', 'fusion-builder-settings', array( $this, 'settings' ) );
 
-			add_action( 'admin_print_scripts-' . $support, array( $this, 'admin_scripts' ) );
+			if ( ! defined( 'ENVATO_HOSTED_SITE' ) ) {
+				add_action( 'admin_print_scripts-' . $support, array( $this, 'admin_scripts' ) );
+			}
 			add_action( 'admin_print_scripts-' . $faq, array( $this, 'admin_scripts_with_js' ) );
 			add_action( 'admin_print_scripts-' . $settings, array( $this, 'admin_scripts_with_js' ) );
 		}
@@ -174,16 +211,19 @@ class Fusion_Builder_Admin {
 		<div class="updated error registration-notice-3" style="display: none;">
 			<p><strong><?php esc_attr_e( 'Something went wrong. Please verify your details and try again.', 'fusion-builder' ); ?></strong></p>
 		</div>
-		<?php
-		if ( ! class_exists( 'Avada' ) ) {
-			?> <div class="about-text">
+		<?php if ( ! class_exists( 'Avada' ) ) : ?>
+			<div class="about-text">
 				<?php printf( __( 'Currently Fusion Builder is only licensed to be used with the Avada WordPress theme. <a href="%1$s" target="%2$s">Subscribe to our newsletter</a> to find out when it will be fully be ready to use with any theme.', 'fusion-builder' ), 'http://theme-fusion.us2.list-manage2.com/subscribe?u=4345c7e8c4f2826cc52bb84cd&id=af30829ace', '_blank' ); // WPCS: XSS ok. ?>
-			</div> <?php
-		} else {
-			?> <div class="about-text">
-				<?php printf( __( 'Fusion Builder is now installed and ready to use! Get ready to build something beautiful. Please <a href="%1$s" target="%2$s">register your purchase</a> to receive automatic updates and single page Fusion Builder Demo imports. We hope you enjoy it!', 'fusion-builder' ), admin_url( 'admin.php?page=avada-registration' ), '_blank' ); // WPCS: XSS ok. ?>
-			</div> <?php
-		} ?>
+			</div>
+		<?php else : ?>
+			<div class="about-text">
+				<?php if ( ! defined( 'ENVATO_HOSTED_SITE' ) ) : ?>
+					<?php printf( __( 'Fusion Builder is now installed and ready to use! Get ready to build something beautiful. Please <a href="%1$s" target="%2$s">register your purchase</a> to receive automatic updates and single page Fusion Builder Demo imports. We hope you enjoy it!', 'fusion-builder' ), admin_url( 'admin.php?page=avada-registration' ), '_blank' ); // WPCS: XSS ok. ?>
+				<?php else : ?>
+					<?php printf( __( 'Fusion Builder is now installed and ready to use! Get ready to build something beautiful. Through your registration on the Envato hosted platform, you can now get automatic updates and single page Fusion Builder Demo imports. Check out the <a href="%s" target="_blank">Envato Hosted Support Policy</a> to learn how to receive support through the Envato hosted support team. We hope you enjoy it!', 'Avada' ), esc_url( 'https://envatohosted.zendesk.com/hc/en-us/articles/115001666945-Envato-Hosted-Support-Policy' ) ); // WPCS: XSS ok. ?>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
 		<div class="fusion-builder-logo">
 			<span class="fusion-builder-version">
 				<?php printf( esc_attr__( 'Version %s', 'fusion-builder' ), esc_attr( FUSION_BUILDER_VERSION ) ); ?>
@@ -193,7 +233,9 @@ class Fusion_Builder_Admin {
 			<?php
 			self::admin_tab( esc_attr__( 'Welcome', 'fusion-builder' ), 'fusion-builder-options' );
 			if ( class_exists( 'Avada' ) ) {
-				self::admin_tab( esc_attr__( 'Support', 'fusion-builder' ), 'fusion-builder-support' );
+				if ( ! defined( 'ENVATO_HOSTED_SITE' ) ) {
+					self::admin_tab( esc_attr__( 'Support', 'fusion-builder' ), 'fusion-builder-support' );
+				}
 				self::admin_tab( esc_attr__( 'FAQ', 'fusion-builder' ), 'fusion-builder-faq' );
 				self::admin_tab( esc_attr__( 'Settings', 'fusion-builder' ), 'fusion-builder-settings' );
 			}

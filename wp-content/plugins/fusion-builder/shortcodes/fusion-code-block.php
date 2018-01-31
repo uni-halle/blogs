@@ -59,20 +59,22 @@ if ( fusion_is_element_enabled( 'fusion_code' ) ) {
  * @since 1.0
  */
 function fusion_element_code_block() {
-	fusion_builder_map( array(
-		'name'        => esc_attr__( 'Code Block', 'fusion-builder' ),
-		'shortcode'   => 'fusion_code',
-		'icon'        => 'fusiona-code',
-		'escape_html' => true,
-		'params'      => array(
-			array(
-				'type'        => 'code',
-				'heading'     => esc_attr__( 'Code', 'fusion-builder' ),
-				'description' => esc_attr__( 'Enter some content for this codeblock.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => '',
+	fusion_builder_map(
+		array(
+			'name'        => esc_attr__( 'Code Block', 'fusion-builder' ),
+			'shortcode'   => 'fusion_code',
+			'icon'        => 'fusiona-code',
+			'escape_html' => true,
+			'params'      => array(
+				array(
+					'type'        => 'code',
+					'heading'     => esc_attr__( 'Code', 'fusion-builder' ),
+					'description' => esc_attr__( 'Enter some content for this codeblock.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => '',
+				),
 			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_code_block' );

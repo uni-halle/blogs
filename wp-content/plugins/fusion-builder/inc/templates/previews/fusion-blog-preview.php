@@ -3,7 +3,7 @@
 
 	<?php printf( esc_html__( 'layout = %s', 'fusion-builder' ), '{{ params.layout }}' ); ?>
 	<br />
-	<# if ( 'grid' === params.blog_grid_columns ) { #>
+	<# if ( ( 'grid' === params.layout || 'masonry' === params.layout ) && '' !== params.blog_grid_columns ) { #>
 		<?php printf( esc_html__( 'columns = %s', 'fusion-builder' ), '{{ params.blog_grid_columns }}' ); ?>
 	<# } #>
 

@@ -63,28 +63,35 @@ class Fusion_Builder_Redux extends Fusion_FusionRedux {
 	 * @return array
 	 */
 	public function fusion_options_builder_soft_dependencies( $dependencies ) {
-		return array_merge( $dependencies, array(
-			'accordion_divider_line'                 => array( 'accordion_boxed_mode' ),
-			'accordion_border_size'                  => array( 'accordion_boxed_mode' ),
-			'accordian_border_color'                 => array( 'accordion_boxed_mode' ),
-			'accordian_background_color'             => array( 'accordion_boxed_mode' ),
-			'accordian_hover_color'                  => array( 'accordion_boxed_mode' ),
-			'portfolio_archive_excerpt_length'       => array( 'portfolio_archive_content_length' ),
-			'portfolio_archive_layout_padding'       => array( 'portfolio_archive_text_layout' ),
-			'social_links_icon_color'                => array( 'social_links_color_type' ),
-			'social_links_box_color'                 => array( 'social_links_boxed', 'social_links_color_type' ),
-			'social_links_boxed_radius'              => array( 'social_links_boxed' ),
-			'social_links_boxed_padding'             => array( 'social_links_boxed' ),
-			'checklist_circle_color'                 => array( 'checklist_circle' ),
-			'content_box_icon_circle_radius'         => array( 'content_box_icon_circle' ),
-			'content_box_icon_bg_color'              => array( 'content_box_icon_circle' ),
-			'content_box_icon_bg_inner_border_color' => array( 'content_box_icon_circle' ),
-			'content_box_icon_bg_inner_border_size'  => array( 'content_box_icon_circle' ),
-			'content_box_icon_bg_outer_border_color' => array( 'content_box_icon_circle' ),
-			'content_box_icon_bg_outer_border_size'  => array( 'content_box_icon_circle' ),
-			'portfolio_layout_padding'               => array( 'portfolio_text_layout' ),
-			'portfolio_excerpt_length'               => array( 'portfolio_content_length' ),
-		) );
+		return array_merge(
+			$dependencies, array(
+				'accordion_divider_line'                 => array( 'accordion_boxed_mode' ),
+				'accordion_border_size'                  => array( 'accordion_boxed_mode' ),
+				'accordian_border_color'                 => array( 'accordion_boxed_mode' ),
+				'accordian_background_color'             => array( 'accordion_boxed_mode' ),
+				'accordian_hover_color'                  => array( 'accordion_boxed_mode' ),
+				'faq_accordion_divider_line'             => array( 'faq_accordion_boxed_mode' ),
+				'faq_accordion_border_size'              => array( 'faq_accordion_boxed_mode' ),
+				'faq_accordian_border_color'             => array( 'faq_accordion_boxed_mode' ),
+				'faq_accordian_background_color'         => array( 'faq_accordion_boxed_mode' ),
+				'faq_accordian_hover_color'              => array( 'faq_accordion_boxed_mode' ),
+				'portfolio_archive_excerpt_length'       => array( 'portfolio_archive_content_length' ),
+				'portfolio_archive_layout_padding'       => array( 'portfolio_archive_text_layout' ),
+				'social_links_icon_color'                => array( 'social_links_color_type' ),
+				'social_links_box_color'                 => array( 'social_links_boxed', 'social_links_color_type' ),
+				'social_links_boxed_radius'              => array( 'social_links_boxed' ),
+				'social_links_boxed_padding'             => array( 'social_links_boxed' ),
+				'checklist_circle_color'                 => array( 'checklist_circle' ),
+				'content_box_icon_circle_radius'         => array( 'content_box_icon_circle' ),
+				'content_box_icon_bg_color'              => array( 'content_box_icon_circle' ),
+				'content_box_icon_bg_inner_border_color' => array( 'content_box_icon_circle' ),
+				'content_box_icon_bg_inner_border_size'  => array( 'content_box_icon_circle' ),
+				'content_box_icon_bg_outer_border_color' => array( 'content_box_icon_circle' ),
+				'content_box_icon_bg_outer_border_size'  => array( 'content_box_icon_circle' ),
+				'portfolio_layout_padding'               => array( 'portfolio_text_layout' ),
+				'portfolio_excerpt_length'               => array( 'portfolio_content_length' ),
+			)
+		);
 	}
 
 	/**

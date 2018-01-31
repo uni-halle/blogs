@@ -119,16 +119,18 @@ if ( fusion_is_element_enabled( 'fusion_postslider' ) ) {
 					$this->args['post_id'] = get_the_ID();
 				}
 
-				$query = fusion_cached_get_posts( array(
-					'post_type'      => 'attachment',
-					'posts_per_page' => $this->args['limit'],
-					'post_status'    => 'any',
-					'post_parent'    => $this->args['post_id'],
-					'orderby'        => 'menu_order',
-					'order'          => 'ASC',
-					'post_mime_type' => 'image',
-					'exclude'        => get_post_thumbnail_id(),
-				) );
+				$query = fusion_cached_get_posts(
+					array(
+						'post_type'      => 'attachment',
+						'posts_per_page' => $this->args['limit'],
+						'post_status'    => 'any',
+						'post_parent'    => $this->args['post_id'],
+						'orderby'        => 'menu_order',
+						'order'          => 'ASC',
+						'post_mime_type' => 'image',
+						'exclude'        => get_post_thumbnail_id(),
+					)
+				);
 
 				if ( $query ) :
 
@@ -174,16 +176,18 @@ if ( fusion_is_element_enabled( 'fusion_postslider' ) ) {
 					$this->args['post_id'] = get_the_ID();
 				}
 
-				$query = fusion_cached_get_posts( array(
-					'post_type'      => 'attachment',
-					'posts_per_page' => $this->args['limit'],
-					'post_status'    => 'any',
-					'post_parent'    => $this->args['post_id'],
-					'orderby'        => 'menu_order',
-					'order'          => 'ASC',
-					'post_mime_type' => 'image',
-					'exclude'        => get_post_thumbnail_id(),
-				) );
+				$query = fusion_cached_get_posts(
+					array(
+						'post_type'      => 'attachment',
+						'posts_per_page' => $this->args['limit'],
+						'post_status'    => 'any',
+						'post_parent'    => $this->args['post_id'],
+						'orderby'        => 'menu_order',
+						'order'          => 'ASC',
+						'post_mime_type' => 'image',
+						'exclude'        => get_post_thumbnail_id(),
+					)
+				);
 
 				if ( $query ) :
 
@@ -242,7 +246,8 @@ if ( fusion_is_element_enabled( 'fusion_postslider' ) ) {
 
 				if ( $query->have_posts() ) :
 
-					while ( $query->have_posts() ) :  $query->the_post();
+					while ( $query->have_posts() ) :
+						$query->the_post();
 
 						$image = wp_get_attachment_url( get_post_thumbnail_id() );
 						$title = get_post_field( 'post_excerpt', get_post_thumbnail_id() );
@@ -298,7 +303,8 @@ if ( fusion_is_element_enabled( 'fusion_postslider' ) ) {
 
 				if ( $query->have_posts() ) :
 
-					while ( $query->have_posts() ) :  $query->the_post();
+					while ( $query->have_posts() ) :
+						$query->the_post();
 
 						$image = wp_get_attachment_url( get_post_thumbnail_id() );
 						$title = get_post_field( 'post_excerpt', get_post_thumbnail_id() );
@@ -470,117 +476,119 @@ if ( fusion_is_element_enabled( 'fusion_postslider' ) ) {
  * @since 1.0
  */
 function fusion_element_post_slider() {
-	fusion_builder_map( array(
-		'name'       => esc_attr__( 'Post Slider', 'fusion-builder' ),
-		'shortcode'  => 'fusion_postslider',
-		'icon'       => 'fusiona-layers-alt',
-		'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-post-slider-preview.php',
-		'preview_id' => 'fusion-builder-block-module-post-slider-preview-template',
-		'params'     => array(
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Layout', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a layout style for Post Slider.', 'fusion-builder' ),
-				'param_name'  => 'layout',
-				'value'       => array(
-					'posts'              => esc_attr__( 'Posts with Title', 'fusion-builder' ),
-					'posts-with-excerpt' => esc_attr__( 'Posts with Title and Excerpt', 'fusion-builder' ),
-					'attachments'        => esc_attr__( 'Attachment Layout, Only Images Attached to Post/Page', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'       => esc_attr__( 'Post Slider', 'fusion-builder' ),
+			'shortcode'  => 'fusion_postslider',
+			'icon'       => 'fusiona-layers-alt',
+			'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-post-slider-preview.php',
+			'preview_id' => 'fusion-builder-block-module-post-slider-preview-template',
+			'params'     => array(
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Layout', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a layout style for Post Slider.', 'fusion-builder' ),
+					'param_name'  => 'layout',
+					'value'       => array(
+						'posts'              => esc_attr__( 'Posts with Title', 'fusion-builder' ),
+						'posts-with-excerpt' => esc_attr__( 'Posts with Title and Excerpt', 'fusion-builder' ),
+						'attachments'        => esc_attr__( 'Attachment Layout, Only Images Attached to Post/Page', 'fusion-builder' ),
+					),
+					'default'     => 'attachments',
 				),
-				'default'     => 'attachments',
-			),
-			array(
-				'type'             => 'uploadattachment',
-				'heading'          => esc_attr__( 'Attach Images to Post/Page Gallery', 'fusion-builder' ),
-				'description'      => esc_attr__( 'To add images to this post or page for attachments layout, navigate to "Upload Files" tab in media manager and upload new images.', 'fusion-builder' ),
-				'param_name'       => 'upload_attachments',
-				'value'            => '',
-				'remove_from_atts' => true,
-				'dependency'       => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'attachments',
-						'operator' => '==',
+				array(
+					'type'             => 'uploadattachment',
+					'heading'          => esc_attr__( 'Attach Images to Post/Page Gallery', 'fusion-builder' ),
+					'description'      => esc_attr__( 'To add images to this post or page for attachments layout, navigate to "Upload Files" tab in media manager and upload new images.', 'fusion-builder' ),
+					'param_name'       => 'upload_attachments',
+					'value'            => '',
+					'remove_from_atts' => true,
+					'dependency'       => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'attachments',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Excerpt Number of Words', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert the number of words you want to show in the excerpt.', 'fusion-builder' ),
-				'param_name'  => 'excerpt',
-				'value'       => '35',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'posts-with-excerpt',
-						'operator' => '==',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Excerpt Number of Words', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the number of words you want to show in the excerpt.', 'fusion-builder' ),
+					'param_name'  => 'excerpt',
+					'value'       => '35',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'posts-with-excerpt',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Category', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select a category of posts to display.', 'fusion-builder' ),
-				'param_name'  => 'category',
-				'value'       => fusion_builder_shortcodes_categories( 'category', true, esc_attr__( 'All', 'fusion-builder' ) ),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'attachments',
-						'operator' => '!=',
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Category', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select a category of posts to display.', 'fusion-builder' ),
+					'param_name'  => 'category',
+					'value'       => fusion_builder_shortcodes_categories( 'category', true, esc_attr__( 'All', 'fusion-builder' ) ),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'attachments',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Number of Slides', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the number of slides to display.', 'fusion-builder' ),
-				'param_name'  => 'limit',
-				'value'       => '3',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Lightbox on Click', 'fusion-builder' ),
-				'description' => esc_attr__( 'Only works on attachment layout.', 'fusion-builder' ),
-				'param_name'  => 'lightbox',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Number of Slides', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the number of slides to display.', 'fusion-builder' ),
+					'param_name'  => 'limit',
+					'value'       => '3',
 				),
-				'default'     => 'yes',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'attachments',
-						'operator' => '==',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Image Lightbox', 'fusion-builder' ),
+					'description' => esc_attr__( 'Only works on attachment layout. Lightbox must be enabled in Theme Options or the image will open up by in the same tab by itself.', 'fusion-builder' ),
+					'param_name'  => 'lightbox',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'attachments',
+							'operator' => '==',
+						),
 					),
 				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_post_slider' );

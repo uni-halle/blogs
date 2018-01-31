@@ -131,10 +131,12 @@ if ( fusion_is_element_enabled( 'fusion_separator' ) ) {
 			 */
 			public function attr() {
 
-				$attr = fusion_builder_visibility_atts( $this->args['hide_on_mobile'], array(
-					'class' => 'fusion-separator',
-					'style' => '',
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->args['hide_on_mobile'], array(
+						'class' => 'fusion-separator',
+						'style' => '',
+					)
+				);
 
 				if ( ! $this->args['width'] || '100%' == $this->args['width'] ) {
 					$attr['class'] .= ' fusion-full-width-sep';
@@ -266,7 +268,7 @@ if ( fusion_is_element_enabled( 'fusion_separator' ) ) {
 				$css['global'][ $dynamic_css_helpers->implode( $elements ) ]['border-color'] = $fusion_library->sanitize->color( $fusion_settings->get( 'sep_color' ) );
 
 				// Content separator for blog.
-				$elements = apply_filters( 'fusion_builder_element_classes', array( '.fusion-body .fusion-content-sep' ), '.fusion-body .fusion-content-sep' );
+				$elements = apply_filters( 'fusion_builder_element_classes', array( '.fusion-body .fusion-content-sep:not([class*="sep-"])' ), '.fusion-body .fusion-content-sep' );
 
 				$separator_style_type = $fusion_settings->get( 'separator_style_type' );
 				$separator_border_size = $fusion_settings->get( 'separator_border_size' ) . 'px';
@@ -382,161 +384,163 @@ function fusion_element_separator() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'       => esc_attr__( 'Separator', 'fusion-builder' ),
-		'shortcode'  => 'fusion_separator',
-		'icon'       => 'fusiona-minus',
-		'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-separator-preview.php',
-		'preview_id' => 'fusion-builder-block-module-separator-preview-template',
-		'params'     => array(
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Style', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the separator line style.', 'fusion-builder' ),
-				'param_name'  => 'style_type',
-				'value'       => array(
-					'none'          => esc_attr__( 'No Style', 'fusion-builder' ),
-					'single solid'  => esc_attr__( 'Single Border Solid', 'fusion-builder' ),
-					'double solid'  => esc_attr__( 'Double Border Solid', 'fusion-builder' ),
-					'single|dashed' => esc_attr__( 'Single Border Dashed', 'fusion-builder' ),
-					'double|dashed' => esc_attr__( 'Double Border Dashed', 'fusion-builder' ),
-					'single|dotted' => esc_attr__( 'Single Border Dotted', 'fusion-builder' ),
-					'double|dotted' => esc_attr__( 'Double Border Dotted', 'fusion-builder' ),
-					'shadow'        => esc_attr__( 'Shadow', 'fusion-builder' ),
-					'default'       => esc_attr__( 'Default', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'       => esc_attr__( 'Separator', 'fusion-builder' ),
+			'shortcode'  => 'fusion_separator',
+			'icon'       => 'fusiona-minus',
+			'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-separator-preview.php',
+			'preview_id' => 'fusion-builder-block-module-separator-preview-template',
+			'params'     => array(
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Style', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the separator line style.', 'fusion-builder' ),
+					'param_name'  => 'style_type',
+					'value'       => array(
+						'default'       => esc_attr__( 'Default', 'fusion-builder' ),
+						'none'          => esc_attr__( 'No Style', 'fusion-builder' ),
+						'single solid'  => esc_attr__( 'Single Border Solid', 'fusion-builder' ),
+						'double solid'  => esc_attr__( 'Double Border Solid', 'fusion-builder' ),
+						'single|dashed' => esc_attr__( 'Single Border Dashed', 'fusion-builder' ),
+						'double|dashed' => esc_attr__( 'Double Border Dashed', 'fusion-builder' ),
+						'single|dotted' => esc_attr__( 'Single Border Dotted', 'fusion-builder' ),
+						'double|dotted' => esc_attr__( 'Double Border Dotted', 'fusion-builder' ),
+						'shadow'        => esc_attr__( 'Shadow', 'fusion-builder' ),
+					),
+					'default'     => 'default',
 				),
-				'default'     => 'none',
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Separator Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the separator color. ', 'fusion-builder' ),
-				'param_name'  => 'sep_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'sep_color' ),
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'             => 'dimension',
-				'remove_from_atts' => true,
-				'heading'          => esc_attr__( 'Margin', 'fusion-builder' ),
-				'param_name'       => 'dimensions',
-				'value'            => array(
-					'top_margin'    => '',
-					'bottom_margin' => '',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Separator Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the separator color.', 'fusion-builder' ),
+					'param_name'  => 'sep_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'sep_color' ),
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+				),
+				array(
+					'type'             => 'dimension',
+					'remove_from_atts' => true,
+					'heading'          => esc_attr__( 'Margin', 'fusion-builder' ),
+					'param_name'       => 'dimensions',
+					'value'            => array(
+						'top_margin'    => '',
+						'bottom_margin' => '',
 
+					),
+					'description' => esc_attr__( 'Spacing above and below the separator. In px, em or %, e.g. 10px.', 'fusion-builder' ),
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
 				),
-				'description' => esc_attr__( 'Spacing above and below the separator. In px, em or %, e.g. 10px.', 'fusion-builder' ),
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Border Size', 'fusion-builder' ),
-				'param_name'  => 'border_size',
-				'value'       => '',
-				'min'         => '0',
-				'max'         => '50',
-				'step'        => '1',
-				'default'     => $fusion_settings->get( 'separator_border_size' ),
-				'description' => esc_attr__( 'In pixels. ', 'fusion-builder' ),
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'iconpicker',
-				'heading'     => esc_attr__( 'Select Icon', 'fusion-builder' ),
-				'param_name'  => 'icon',
-				'value'       => '',
-				'description' => esc_attr__( 'Click an icon to select, click again to deselect.', 'fusion-builder' ),
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Circled Icon', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to have a circle in separator color around the icon.', 'fusion-builder' ),
-				'param_name'  => 'icon_circle',
-				'value'       => array(
-					''    => esc_attr__( 'Default', 'fusion-builder' ),
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Border Size', 'fusion-builder' ),
+					'param_name'  => 'border_size',
+					'value'       => '',
+					'min'         => '0',
+					'max'         => '50',
+					'step'        => '1',
+					'default'     => $fusion_settings->get( 'separator_border_size' ),
+					'description' => esc_attr__( 'In pixels. ', 'fusion-builder' ),
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
 				),
-				'default'     => '',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'icon',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'iconpicker',
+					'heading'     => esc_attr__( 'Select Icon', 'fusion-builder' ),
+					'param_name'  => 'icon',
+					'value'       => '',
+					'description' => esc_attr__( 'Click an icon to select, click again to deselect.', 'fusion-builder' ),
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Circled Icon', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to have a circle in separator color around the icon.', 'fusion-builder' ),
+					'param_name'  => 'icon_circle',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => '',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'icon',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Circle Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the background color of the circle around the icon.', 'fusion-builder' ),
-				'param_name'  => 'icon_circle_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'icon_circle_color' ),
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'icon',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Circle Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the background color of the circle around the icon.', 'fusion-builder' ),
+					'param_name'  => 'icon_circle_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'icon_circle_color' ),
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'icon',
+							'value'    => '',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'icon_circle',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
 					),
-					array(
-						'element'  => 'icon_circle',
-						'value'    => 'no',
-						'operator' => '!=',
+				),
+				array(
+					'type'             => 'dimension',
+					'remove_from_atts' => true,
+					'heading'          => esc_attr__( 'Separator Width', 'fusion-builder' ),
+					'param_name'       => 'dimensions_width',
+					'value'            => array(
+						'width' => '',
 					),
+					'description'      => esc_attr__( 'In pixels (px or %), ex: 1px, ex: 50%. Leave blank for full width.', 'fusion-builder' ),
+					'group'            => esc_attr__( 'Design', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Alignment', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the separator alignment; only works when a width is specified.', 'fusion-builder' ),
+					'param_name'  => 'alignment',
+					'value'       => array(
+						'center' => esc_attr__( 'Center', 'fusion-builder' ),
+						'left'   => esc_attr__( 'Left', 'fusion-builder' ),
+						'right'  => esc_attr__( 'Right', 'fusion-builder' ),
+					),
+					'default'     => 'center',
+					'group'       => esc_attr__( 'Design', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
 				),
 			),
-			array(
-				'type'             => 'dimension',
-				'remove_from_atts' => true,
-				'heading'          => esc_attr__( 'Separator Width', 'fusion-builder' ),
-				'param_name'       => 'dimensions_width',
-				'value'            => array(
-					'width' => '',
-				),
-				'description'      => esc_attr__( 'In pixels (px or %), ex: 1px, ex: 50%. Leave blank for full width.', 'fusion-builder' ),
-				'group'            => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Alignment', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the separator alignment; only works when a width is specified.', 'fusion-builder' ),
-				'param_name'  => 'alignment',
-				'value'       => array(
-					'center' => esc_attr__( 'Center', 'fusion-builder' ),
-					'left'   => esc_attr__( 'Left', 'fusion-builder' ),
-					'right'  => esc_attr__( 'Right', 'fusion-builder' ),
-				),
-				'default'     => 'center',
-				'group'       => esc_attr__( 'Design', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_separator' );

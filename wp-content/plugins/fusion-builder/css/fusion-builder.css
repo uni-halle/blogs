@@ -100,8 +100,7 @@
   padding: 1em;
   background: #FFF;
   z-index: 9999;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   text-align: right;
 }
 .fusion-builder-modal-bottom-container .fusion-builder-modal-close,
@@ -116,8 +115,7 @@
   height: auto;
   display: inline-block;
   text-decoration: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .fusion-builder-modal-bottom-container .fusion-builder-modal-close:hover,
 .fusion-builder-modal-bottom-container .fusion-builder-modal-save:hover {
@@ -138,8 +136,7 @@
   height: auto;
   display: inline-block;
   text-decoration: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .fusion-builder-inner-row-close:hover {
   background: #222222;
@@ -155,8 +152,7 @@
   top: 0;
   left: 0;
   bottom: 2em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 1.5em 0 0;
   background-color: #fff;
   margin-top: 8.5em;
@@ -201,8 +197,7 @@
   height: auto;
   cursor: default !important;
   background: transparent;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
 }
 .fusion_builder_module_settings .fusion-builder-main-settings-full:not(.has-group-options) {
   margin-top: 5.4em;
@@ -301,8 +296,7 @@
   padding: 6px 15px;
   height: 34px !important;
   border-left: 1px solid #d9d9d9 !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
   border-top: none !important;
   border-bottom: none !important;
   -webkit-appearance: none;
@@ -329,8 +323,7 @@
   width: 34px;
   font-size: 12px;
   background-color: #fff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: rgba(0, 0, 0, 0.5);
   border: none;
   padding: 0;
@@ -363,8 +356,7 @@
   line-height: 1.75em;
   padding-left: 0.75em;
   padding-right: 0.75em;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   background: #f4f2f2 !important;
   border: 1px solid rgba(0, 0, 0, 0.05);
   min-height: 34px;
@@ -373,158 +365,148 @@
   height: auto;
 }
 .option-field .wp-picker-container {
-  display: inline-block;
-  position: relative;
+  width: 317px;
 }
-.option-field .wp-picker-container .button {
-  width: 111px !important;
-  margin-top: 5px !important;
-  height: auto !important;
-  padding: 3px 0 !important;
-  margin-left: 0 !important;
-}
-.option-field .wp-picker-container .wp-picker-clear {
+.option-field .wp-picker-container .wp-color-result-text {
   border-radius: 0 !important;
-  background: #f4f2f2 !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-  -webkit-transition: all 200ms ease-in-out;
-  transition: all 200ms ease-in-out;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  float: right;
-  font-size: 12px;
-  height: 36px !important;
-  width: 60px !important;
-  margin: 0 !important;
 }
-.option-field .wp-picker-container input[type=text].wp-color-picker {
-  height: 36px;
-  line-height: normal;
-  float: left;
-  width: -webkit-calc( 100% - 67px ) !important;
-  width: calc( 100% - 67px ) !important;
-  max-width: 100%;
-}
-.option-field .wp-picker-container .wp-picker-input-wrap {
-  display: none;
+.option-field .wp-picker-container.wp-picker-active {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .option-field .wp-picker-container.wp-picker-active .wp-picker-input-wrap {
-  display: block;
-  margin-left: 7px;
-  float: right;
-  width: -webkit-calc( 100% - 159px );
-  width: calc( 100% - 159px );
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 200px;
 }
-.option-field .wp-picker-container.wp-picker-active .wp-color-result {
-  width: 150px;
-  padding-left: 0 !important;
-}
-.option-field .wp-picker-container.wp-picker-active .wp-color-result:after {
-  position: absolute !important;
-  padding: 0 !important;
+.option-field .wp-picker-container.wp-picker-active .wp-picker-input-wrap label {
   width: 100%;
-  max-width: 115px !important;
+  padding-right: 3px;
+  margin-top: 0;
 }
-.option-field .wp-color-result {
-  display: inline-block;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 34px;
-  height: 34px !important;
-  min-width: 108px;
-  border-radius: 0 !important;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+.option-field .wp-picker-container.wp-picker-active .wp-picker-input-wrap input[type="text"] {
+  margin-right: 5px;
+  width: 100% !important;
 }
-.option-field .wp-color-result span {
-  border-radius: 0 !important;
-}
-.option-field .wp-color-result:after {
-  position: relative;
-  line-height: 34px !important;
-  border-radius: 0 !important;
-  font-size: 13px !important;
-  padding: 0 7px !important;
-  background: #fff !important;
-}
-.option-field .wp-picker-input-wrap {
-  display: block;
-  float: right;
-  width: 20%;
-}
-.option-field .wp-picker-input-wrap input {
+.option-field .wp-picker-container .wp-picker-holder {
   width: 100%;
-  text-align: center !important;
-  padding: 11px 0 !important;
-  display: block !important;
 }
-.option-field .wp-picker-input-wrap .fusion-color-field {
-  display: block !important;
+.option-field .wp-picker-container .iris-picker {
+  width: -webkit-calc(100% - 2px) !important;
+  width: calc(100% - 2px) !important;
 }
-.option-field .wp-picker-holder {
-  clear: both;
-  margin: 0;
-  padding-top: 4px;
-  display: block;
-  overflow: hidden;
-}
-.option-field .iris-picker .iris-square {
-  width: 251px !important;
-  height: 198px !important;
-}
-.option-field .iris-picker .iris-palette-container {
-  bottom: 8px;
-}
-.option-field .iris-picker .iris-palette {
-  width: 19px !important;
-  height: 19px !important;
-}
-.option-field .iris-picker .iris-palette,
-.option-field .iris-picker .iris-square,
-.option-field .iris-picker .iris-square-inner {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-.option-field .iris-picker .iris-palette,
-.option-field .iris-picker .iris-slider,
-.option-field .iris-picker .iris-square,
-.option-field .iris-picker .iris-square-inner {
+.option-field .wp-picker-container .iris-picker .iris-palette,
+.option-field .wp-picker-container .iris-picker .iris-slider,
+.option-field .wp-picker-container .iris-picker .iris-square,
+.option-field .wp-picker-container .iris-picker .iris-square-inner {
+  box-shadow: none;
   border: 1px solid #ddd;
-  border-radius: 0;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  border-radius: 0 !important;
 }
-.option-field .iris-picker .iris-square-value {
-  width: 0 !important;
-  right: auto!important;
-  height: 0px!important;
-  bottom: auto!important;
-  position: absolute !important;
-}
-.option-field .iris-picker .iris-square-value:focus {
-  outline: none !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-}
-.option-field .iris-picker .iris-square {
-  border: 1px solid #ddd;
-}
-.option-field .iris-picker .iris-square-inner {
+.option-field .wp-picker-container .iris-picker .iris-square-inner {
   border: none;
 }
-.option-field .iris-picker .iris-slider {
-  margin-left: 8px !important;
+.option-field .wp-picker-container .iris-picker .iris-picker-inner {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.option-field .wp-picker-container .iris-picker .iris-picker-inner .iris-slider {
   width: 25px !important;
+  margin-left: 14px !important;
+  height: 100% !important;
+  box-sizing: border-box;
 }
-.option-field .iris-picker .iris-slider .ui-slider-handle {
-  width: 23px;
-  border: 4px solid #fff !important;
+.option-field .wp-picker-container .iris-picker .iris-picker-inner .iris-slider .ui-slider-handle {
+  margin-bottom: 0;
+  right: -3px;
+  left: -3px;
   border-radius: 0 !important;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
-.option-field .iris-picker .iris-alpha-slider {
-  margin-left: 17px !important;
+.option-field .wp-picker-container .iris-picker .iris-picker-inner .iris-square {
+  width: -webkit-calc(100% - 41px) !important;
+  width: calc(100% - 41px) !important;
+  margin-right: 0;
+}
+.option-field .wp-picker-container .iris-picker.iris-border {
+  padding-bottom: 25px !important;
+}
+.option-field .wp-picker-container .iris-palette-container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.option-field .wp-picker-container .iris-palette-container > .iris-palette {
+  border: 1px solid #e7e7e7;
+  margin-left: 3.6px !important;
+  margin-right: 0 !important;
+  width: 20px !important;
+  height: 20px !important;
+  box-sizing: border-box;
+}
+.option-field .wp-picker-container .iris-palette-container > .iris-palette:first-child {
+  margin-left: 0 !important;
+}
+.option-field .wp-picker-container.wp-picker-alpha-container {
+  width: 365px;
+}
+.option-field .wp-picker-container.wp-picker-alpha-container .iris-picker .iris-square {
+  width: -webkit-calc(100% - 78px) !important;
+  width: calc(100% - 78px) !important;
+  margin-right: 14px;
+}
+.option-field .wp-picker-container.wp-picker-alpha-container .iris-palette-container > .iris-palette {
+  margin-left: 4.4px !important;
+}
+.option-field .wp-picker-container.wp-picker-alpha-container .iris-palette-container > .iris-palette:first-child {
+  margin-left: 0 !important;
+}
+.option-field .wp-picker-container.wp-picker-alpha-container .wp-picker-input-wrap {
+  width: 249px;
+}
+.option-field .wp-picker-container.wp-picker-alpha-container .wp-picker-input-wrap label input[type="text"] {
+  width: 100% !important;
+}
+.option-field .wp-color-result {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.option-field .button.wp-color-result {
+  height: 31px;
+  min-height: 31px;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.option-field .wp-color-result-text {
+  height: 100%;
+  line-height: 30px;
+}
+.option-field .wp-picker-container input[type="text"] {
+  height: 31px;
+  min-height: 31px;
+}
+.option-field .wp-picker-container input[type="button"] {
+  height: 31px;
+  min-height: 31px;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 .range .option-field input[type="text"].fusion-slider-input {
   margin-right: 25px;
@@ -553,8 +535,7 @@
   background-color: transparent !important;
   background-color: rgba(0, 0, 0, 0) !important;
   background-image: none !important;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border: none;
   border-top: 2px solid #00a0d2;
   border-radius: 0 !important;
@@ -566,8 +547,7 @@
   top: -2px;
 }
 .range .fusion-slider-container .noUi-handle {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: 12px;
   height: 12px;
   left: -10px;
@@ -579,8 +559,7 @@
   border: none !important;
   background-color: #00a0d2 !important;
   background-image: none !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
 }
 .range .fusion-slider-container .noUi-handle:after,
 .range .fusion-slider-container .noUi-handle:before {
@@ -617,14 +596,12 @@
   margin: 0;
   border-left: 1px solid #ddd;
   min-height: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .fusion-builder-main-settings-advanced .fusion-builder-module-settings li {
   padding: 2em 4.2em;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .fusion-builder-main-settings-advanced .fusion-builder-module-settings .range label {
   float: none;
@@ -700,8 +677,7 @@
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
   background: #f4f2f2 !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -723,8 +699,7 @@
 .fusion-builder-option.multiple_select .chosen-drop,
 .fusion-builder-option.multiple_select .chosen-results {
   border-radius: 0 !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
   border: none;
@@ -750,8 +725,7 @@
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
   background: #f4f2f2 !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -766,8 +740,7 @@
 .fusion-builder-option.select .chosen-container .chosen-results,
 .fusion-builder-option.select .chosen-container-single .chosen-drop {
   border-radius: 0 !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
   padding: 0 !important;
   margin: 0 !important;
   border: none;
@@ -806,12 +779,8 @@
   color: #32373c;
   width: 265px !important;
 }
-body > .mce-floatpanel {
-  z-index: 99999 !important;
-}
 .fusion-builder-modal-settings-container {
-  -webkit-box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
   position: fixed;
   top: 5%;
@@ -824,8 +793,7 @@ body > .mce-floatpanel {
   background: #FFF;
   overflow: auto;
   padding: 1em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   z-index: 99999;
 }
 .fusion-builder-modal-settings-container .ui-button {
@@ -846,8 +814,7 @@ body > .mce-floatpanel {
   line-height: normal;
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
   -webkit-transition: 0.1s linear background-image;
   transition: 0.1s linear background-image;
   overflow: visible;
@@ -865,36 +832,6 @@ body > .mce-floatpanel {
   color: #333;
   background: #f5f5f5;
 }
-.fusion-builder-modal-settings-container .option-field .ui-buttonset.hundred_percent .ui-state-active[data-value="no"] {
-  background-color: #00a0d2 !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  color: #fff;
-}
-.fusion-builder-modal-settings-container .option-field .ui-buttonset.min_height a.ui-button.buttonset-item.ui-state-active:last-child {
-  background-color: #23282d !important;
-  border-color: #767676 !important;
-  color: #eee;
-}
-.fusion-builder-modal-settings-container .ui-buttonset .ui-state-active {
-  background-image: none !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-  border-color: rgba(0, 0, 0, 0.1) !important;
-  background-color: #00a0d2 !important;
-  color: #fff;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  border-color: #0064cd #0064cd #003f81;
-}
-.fusion-builder-modal-settings-container .ui-buttonset .ui-state-active[data-value="false"],
-.fusion-builder-modal-settings-container .ui-buttonset .ui-state-active[data-value="no"],
-.fusion-builder-modal-settings-container .ui-buttonset .ui-state-active[data-value="off"] {
-  background-color: #23282d !important;
-  border-color: #767676 !important;
-  color: #eee;
-}
 .fusion-builder-modal-settings-container .fusion-builder-column-layouts li {
   padding: 0.5em;
   float: left;
@@ -903,8 +840,7 @@ body > .mce-floatpanel {
   cursor: pointer;
   border: 1px dashed #ccc;
   margin-bottom: 2em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .fusion-builder-modal-settings-container .fusion-builder-column-layouts li .fusion_builder_layout_column {
   height: 18px;
@@ -930,8 +866,7 @@ body > .mce-floatpanel {
   width: 100% !important;
   padding: 13px;
   height: 46px !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -972,8 +907,7 @@ body > .mce-floatpanel {
   border-bottom: 1px solid #ddd;
   border-top: 1px solid #ddd;
   background: #32373c;
-  -webkit-box-sizing: content-box !important;
-          box-sizing: content-box !important;
+  box-sizing: content-box !important;
 }
 .fusion-page-builder-controls {
   float: right;
@@ -1002,8 +936,7 @@ body > .mce-floatpanel {
 }
 #fusion-builder-layouts {
   display: none;
-  -webkit-box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
   position: fixed;
   top: 5%;
@@ -1016,8 +949,7 @@ body > .mce-floatpanel {
   background: #FFF;
   overflow: auto;
   padding: 1em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   z-index: 99999;
 }
 #fusion-page-builder-tabs {
@@ -1042,8 +974,7 @@ body > .mce-floatpanel {
   display: block;
 }
 #fusion-page-builder-tabs li a:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 #fusion-page-builder-tabs .fusion-builder-button:after {
   top: 100%;
@@ -1093,8 +1024,7 @@ body > .mce-floatpanel {
   display: block;
 }
 .fusion-tabs-menu li a:focus {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .fusion-tabs-menu li.inactive {
   background-color: transparent;
@@ -1160,13 +1090,11 @@ body > .mce-floatpanel {
   list-style-type: none;
   cursor: pointer;
   margin: 0 1.5% 1.5%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .fusion-builder-all-modules li:hover {
   background: #f7f7f7;
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   color: #444;
   border: 1px solid #ccc;
 }
@@ -1192,8 +1120,7 @@ body > .mce-floatpanel {
   background: #0091cd;
   float: left;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: #fff;
   border-bottom: 1px solid #fff;
   cursor: move;
@@ -1227,10 +1154,9 @@ body > .mce-floatpanel {
 .fusion_module_block {
   padding: 1.5em;
   margin-bottom: 1.5em;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   position: relative;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   float: left;
   width: 100%;
   background: #fff;
@@ -1258,13 +1184,12 @@ body > .mce-floatpanel {
   margin: 0;
 }
 .fusion_builder_row {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   float: left;
   width: 100%;
   padding: 1.5% 1.5% 38px;
   position: relative;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .fusion_builder_row.ui-sortable-placeholder {
   background: #f3f3f3;
@@ -1275,12 +1200,11 @@ body > .mce-floatpanel {
 .fusion_builder_row_inner {
   float: left;
   width: 100%;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   margin-bottom: 1.5em;
   position: relative;
   padding: 1.5em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .fusion_builder_row_inner .fusion_module_title {
   margin: 0;
@@ -1288,8 +1212,7 @@ body > .mce-floatpanel {
 .fusion_builder_row_inner .fusion-builder-row-content {
   display: none;
   cursor: auto;
-  -webkit-box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
-          box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 100px rgba(0, 0, 0, 0.5);
   border-radius: 2px;
   position: fixed;
   top: 5%;
@@ -1302,8 +1225,7 @@ body > .mce-floatpanel {
   background: #FFF;
   overflow: auto;
   padding: 1em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   z-index: 99999;
 }
 .fusion_builder_row_inner > p {
@@ -1327,7 +1249,7 @@ body > .mce-floatpanel {
   bottom: 1px;
   text-align: center;
   font-size: 1em;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 0;
   padding: 8px 0;
   text-decoration: none;
@@ -1358,8 +1280,7 @@ body > .mce-floatpanel {
 .fusion-builder-controls {
   text-decoration: none;
   z-index: 100;
-  -webkit-box-sizing: content-box !important;
-          box-sizing: content-box !important;
+  box-sizing: content-box !important;
 }
 .ui-sortable-helper {
   opacity: 0.8;
@@ -1372,10 +1293,9 @@ body > .mce-floatpanel {
 }
 .ui-sortable-placeholder {
   background: #f3f3f3 !important;
-  border: 1px dashed #ddd !important;
+  border: 1px dashed rgba(0, 0, 0, 0.1) !important;
   visibility: visible !important;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   padding-left: 0;
   padding-right: 0;
   -webkit-animation: zoomIn 0.3s 1 cubic-bezier(0.77, 0, 0.175, 1);
@@ -1399,6 +1319,7 @@ body > .mce-floatpanel {
   padding-bottom: 0;
   margin-bottom: 6em;
   margin-top: 6em;
+  text-align: left;
 }
 .fusion-builder-inner-row-controls {
   position: absolute;
@@ -1420,7 +1341,7 @@ body > .mce-floatpanel {
 .fusion-builder-inner-row-controls a {
   height: 16px;
   width: 16px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   background: #fff;
   color: #999;
   font-size: 16px;
@@ -1438,14 +1359,13 @@ body > .mce-floatpanel {
   float: none;
   text-align: center;
   margin: 2%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   position: relative;
   background: #fff;
   margin-bottom: 1em;
   display: inline-block;
   vertical-align: top;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   cursor: move;
 }
 .fusion-builder-column .fusion-builder-controls {
@@ -1484,7 +1404,7 @@ body > .mce-floatpanel {
   bottom: 0;
   text-align: center;
   font-size: 1em;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 0;
   padding: 9px 0;
   text-decoration: none;
@@ -1504,19 +1424,25 @@ body > .mce-floatpanel {
 }
 .fusion-builder-add-element {
   width: 100%;
-  border: 1px dashed #ddd;
+  border: 1px dashed #666;
   float: left;
   padding: 1em 0;
-  color: #999;
+  color: #000;
+  opacity: 0.4;
   text-decoration: none;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition-property: all;
+  transition-property: all;
 }
 .fusion-builder-add-element span {
   margin-right: 3px;
 }
 .fusion-builder-add-element:hover {
+  opacity: 1;
   color: #333;
+  border-color: rgba(102, 102, 102, 0.4);
+  -webkit-transition-property: all;
+  transition-property: all;
 }
 .fusion-builder-add-element .fusiona-plus {
   position: relative;
@@ -1538,8 +1464,8 @@ body > .mce-floatpanel {
 .fusion-builder-column-controls a {
   height: 16px;
   width: 16px;
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   color: #999;
   background: #f7f7f7;
   font-size: 16px;
@@ -1558,8 +1484,7 @@ body > .mce-floatpanel {
 .fusion-builder-row-container {
   float: left;
   width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   background: #fff;
   min-height: 180px;
   position: relative;
@@ -1676,7 +1601,7 @@ body > .mce-floatpanel {
 }
 .rtl #fusion_builder_layout .fusion-builder-column-controls a {
   border-right: none;
-  border-left: 1px solid #ddd;
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
 }
 .rtl #fusion_builder_layout .column-sizes {
   left: auto;
@@ -1696,7 +1621,7 @@ body > .mce-floatpanel {
 .rtl #fusion_builder_layout .fusion_builder_container.fusion-builder-section-folded:last-child .fusion-builder-section-add {
   left: 0 !important;
   right: auto;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
   border-left: none;
 }
 .rtl #fusion_builder_layout .fusion-page-layouts {
@@ -1717,7 +1642,7 @@ body > .mce-floatpanel {
 .rtl #fusion_builder_layout .fusion-page-layouts .fusion-page-layout .fusion-layout-buttons a {
   float: right;
   border-left: none;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 .rtl #fusion_builder_layout .fusion-page-layouts .fusion-page-layout .fusion-layout-buttons a .fusion-builder-load-template-dialog-container {
   left: auto;
@@ -1782,6 +1707,10 @@ body > .mce-floatpanel {
   padding-left: 0;
   padding-right: 1em;
 }
+.rtl .fusion_module_block .fusion-module-icon {
+  margin-left: 0.5em;
+  margin-right: 0;
+}
 .rtl .option-field {
   padding: 1.1em 10% 0 0;
 }
@@ -1818,6 +1747,10 @@ body > .mce-floatpanel {
 }
 .rtl .range .fusion-slider-container .noUi-handle {
   position: absolute;
+}
+.rtl .fusion-builder-update-buttons {
+  right: auto;
+  left: 0;
 }
 .icon_select_container {
   height: 263px;
@@ -1856,8 +1789,7 @@ body > .mce-floatpanel {
           transform: scale(1.3);
 }
 .fusion-builder-sortable-options li {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: 100%;
   border: 1px solid #ddd;
   margin: 0 0 1em;
@@ -1872,8 +1804,7 @@ body > .mce-floatpanel {
 }
 .fusion-builder-sortable-options li:hover {
   background: #f7f7f7;
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   color: #444;
 }
 .fusion-builder-sortable-options li .fusion-builder-controls {
@@ -1900,8 +1831,7 @@ body > .mce-floatpanel {
   font-weight: bold;
   padding: 0.8em 0.8em 0.8em 1em;
   display: inline-block;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 #fusion-builder-layouts-elements .fusion-page-layouts .fusion-page-layout {
   width: 30.3333%;
@@ -1909,6 +1839,12 @@ body > .mce-floatpanel {
 #fusion-builder-layouts-elements .title {
   text-transform: capitalize;
   margin: 1.5%;
+}
+.fusion-page-layouts.fusion-layout-templates .fusion-page-layout .fusion-layout-buttons {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 .fusion-page-layouts {
   width: 100%;
@@ -1927,14 +1863,15 @@ body > .mce-floatpanel {
   list-style-type: none;
   cursor: pointer;
   margin: 0 1.5% 1.5%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
 }
-.fusion-page-layouts .fusion-page-layout .fusion-layout-buttons {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  top: 0;
+.fusion-page-layouts .fusion-page-layout h4.fusion-page-layout-title {
+  width: 100%;
+  position: relative;
 }
 .fusion-page-layouts .fusion-page-layout .fusion-layout-buttons a {
   width: 40px;
@@ -1968,6 +1905,80 @@ body > .mce-floatpanel {
   left: 0;
   height: 163px;
 }
+h4.fusion-page-layout-title span.fusion-global-tooltip,
+h4.fusion_module_title span.fusion-global-tooltip {
+  display: none;
+}
+.fusion-global h4.fusion-page-layout-title,
+.fusion-global h4.fusion_module_title {
+  position: relative;
+}
+.fusion-global h4.fusion-page-layout-title span.fusion-global-tooltip,
+.fusion-global h4.fusion_module_title span.fusion-global-tooltip {
+  background: #32383c;
+  position: absolute;
+  left: 50%;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 200;
+  top: -50px;
+  white-space: nowrap;
+  display: none;
+  z-index: 9999;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+.fusion-global h4.fusion-page-layout-title span.fusion-global-tooltip:before,
+.fusion-global h4.fusion_module_title span.fusion-global-tooltip:before {
+  content: "\f0d7";
+  font-family: fontawesome;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  font-size: 30px;
+  color: #33393d;
+}
+.fusion-global h4.fusion-page-layout-title:hover span.fusion-global-tooltip,
+.fusion-global h4.fusion_module_title:hover span.fusion-global-tooltip {
+  display: block;
+}
+.fusion-global h4.fusion-page-layout-title:before,
+.fusion-global h4.fusion_module_title:before {
+  content: "\f0ac";
+  font-family: fontawesome;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  color: #444;
+  font-size: 16px;
+  margin-top: -10px;
+}
+.fusion-global h4.fusion-page-layout-title .fusion-global-tooltip-wrapper,
+.fusion-global h4.fusion_module_title .fusion-global-tooltip-wrapper {
+  position: absolute;
+  right: 14px;
+  width: 15px;
+  height: 16px;
+  top: 0;
+}
+.fusion-tabs ul.fusion-builder-all-modules li:nth-child( 3n+0 ) .fusion-global-tooltip {
+  -webkit-transform: none;
+      -ms-transform: none;
+          transform: none;
+  left: auto;
+  right: -40px;
+}
+.fusion-tabs ul.fusion-builder-all-modules li:nth-child( 3n+0 ) .fusion-global-tooltip:before {
+  right: 40px;
+  left: auto;
+  text-align: right;
+}
 .fusion-builder-add-multi-child {
   border: 1px solid #ddd;
   margin: 0 0 1em;
@@ -1989,8 +2000,7 @@ body > .mce-floatpanel {
 }
 .fusion-builder-add-multi-child:hover {
   background: #f7f7f7;
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
   color: #444;
 }
 .fusion_module_label {
@@ -2015,8 +2025,7 @@ body > .mce-floatpanel {
   max-width: none;
   max-height: 80px;
   vertical-align: middle;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .fusion_module_title {
   font-size: 1.15em;
@@ -2045,7 +2054,7 @@ body > .mce-floatpanel {
 .fusion-builder-module-controls a {
   height: 16px;
   width: 16px;
-  border: 1px solid #ddd;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   background: #f7f7f7;
   color: #999;
   font-size: 16px;
@@ -2063,6 +2072,7 @@ body > .mce-floatpanel {
   display: none;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   width: 100%;
+  box-sizing: border-box;
 }
 #fusion_builder_layout .inside {
   padding: 0;
@@ -2071,6 +2081,232 @@ body > .mce-floatpanel {
 #fusion_builder_layout .fusion-builder-column {
   margin: 20px 1.5%;
   padding: 4.5em 2em 2em;
+}
+#fusion_builder_layout .fusion-global-column:after,
+#fusion_builder_layout .fusion-global-container:after,
+#fusion_builder_layout .fusion-global-element:after {
+  content: "\f0ac";
+  font-family: fontawesome;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 25px;
+  height: 25px;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.89);
+  font-size: 16px;
+  background: #3a93ca;
+  border-radius: 5px;
+  line-height: 25px;
+  text-align: center;
+  padding: 1px 1px 0 0;
+  box-sizing: border-box;
+}
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_4:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_4:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_4:after,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_5:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_5:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_5:after,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_6:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_6:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_6:after {
+  padding: 0;
+  width: 21px;
+  height: 22px;
+  line-height: 24px;
+  font-size: 12px;
+}
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_4.fusion-builder-column-1_5:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_4.fusion-builder-column-1_5:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_4.fusion-builder-column-1_5:after,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_5.fusion-builder-column-1_5:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_5.fusion-builder-column-1_5:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_5.fusion-builder-column-1_5:after,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_6.fusion-builder-column-1_5:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_6.fusion-builder-column-1_5:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_6.fusion-builder-column-1_5:after,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_4.fusion-builder-column-1_6:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_4.fusion-builder-column-1_6:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_4.fusion-builder-column-1_6:after,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_5.fusion-builder-column-1_6:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_5.fusion-builder-column-1_6:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_5.fusion-builder-column-1_6:after,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_6.fusion-builder-column-1_6:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_6.fusion-builder-column-1_6:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_6.fusion-builder-column-1_6:after {
+  width: 17px;
+  height: 17px;
+  line-height: 18px;
+  font-size: 9px;
+  right: 1px;
+  top: 2px;
+  border-radius: 3px;
+}
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_4.fusion-builder-column-1_5 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_4.fusion-builder-column-1_5 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_4.fusion-builder-column-1_5 .fusion-global-element:after,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_5.fusion-builder-column-1_5 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_5.fusion-builder-column-1_5 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_5.fusion-builder-column-1_5 .fusion-global-element:after,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_6.fusion-builder-column-1_5 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_6.fusion-builder-column-1_5 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_6.fusion-builder-column-1_5 .fusion-global-element:after,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_4.fusion-builder-column-1_6 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_4.fusion-builder-column-1_6 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_4.fusion-builder-column-1_6 .fusion-global-element:after,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_5.fusion-builder-column-1_6 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_5.fusion-builder-column-1_6 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_5.fusion-builder-column-1_6 .fusion-global-element:after,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_6.fusion-builder-column-1_6 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_6.fusion-builder-column-1_6 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_6.fusion-builder-column-1_6 .fusion-global-element:after {
+  width: 17px;
+  height: 17px;
+  line-height: 18px;
+  font-size: 9px;
+  right: 1px;
+  top: 2px;
+  border-radius: 3px;
+}
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_4.fusion-builder-column-1_5 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_4.fusion-builder-column-1_5 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_4.fusion-builder-column-1_5 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_5.fusion-builder-column-1_5 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_5.fusion-builder-column-1_5 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_5.fusion-builder-column-1_5 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_6.fusion-builder-column-1_5 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_6.fusion-builder-column-1_5 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_6.fusion-builder-column-1_5 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_4.fusion-builder-column-1_6 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_4.fusion-builder-column-1_6 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_4.fusion-builder-column-1_6 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_5.fusion-builder-column-1_6 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_5.fusion-builder-column-1_6 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_5.fusion-builder-column-1_6 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_6.fusion-builder-column-1_6 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_6.fusion-builder-column-1_6 .fusion-builder-global-tooltip,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_6.fusion-builder-column-1_6 .fusion-builder-global-tooltip {
+  width: 17px;
+  height: 17px;
+  right: 2px;
+}
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_4 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_4 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_4 .fusion-global-element:after,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_5 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_5 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_5 .fusion-global-element:after,
+#fusion_builder_layout .fusion-builder-column.fusion-builder-column-1_6 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_column_element.fusion-builder-column-1_6 .fusion-global-element:after,
+#fusion_builder_layout .fusion_builder_container.fusion-builder-column-1_6 .fusion-global-element:after {
+  padding: 0;
+  width: 21px;
+  height: 22px;
+  line-height: 24px;
+  font-size: 12px;
+}
+#fusion_builder_layout .fusion-global-container:after {
+  top: 46px;
+}
+#fusion_builder_layout .fusion-global-container > .fusion-builder-global-tooltip {
+  right: 5px;
+  top: 46px;
+}
+#fusion_builder_layout .fusion_builder_container .fusion-global-column .fusion-global-element {
+  background: rgba(35, 106, 148, 0.05);
+}
+#fusion_builder_layout .fusion_builder_container.ui-sortable-helper .fusion-builder-section-content {
+  background: #ffffff;
+}
+#fusion_builder_layout .fusion-global-container.ui-sortable-helper .fusion-builder-section-content {
+  background: transparent;
+}
+#fusion_builder_layout .fusion-global-container .fusion-builder-column .fusion-global-element {
+  background: rgba(35, 106, 148, 0.05);
+}
+#fusion_builder_layout .fusion-builder-column.fusion-global-column,
+#fusion_builder_layout .fusion-global-container,
+#fusion_builder_layout .fusion_builder_column_element.fusion-global-element {
+  background: rgba(35, 106, 148, 0.1);
+}
+#fusion_builder_layout .fusion-builder-column.fusion-global-column .fusion-builder-module-controls-container,
+#fusion_builder_layout .fusion-global-container .fusion-builder-module-controls-container,
+#fusion_builder_layout .fusion_builder_column_element.fusion-global-element .fusion-builder-module-controls-container {
+  background: transparent;
+}
+#fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column {
+  background: rgba(35, 106, 148, 0.05);
+}
+#fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column .fusion_builder_column_element.fusion-global-element {
+  background: rgba(35, 106, 148, 0.07);
+}
+#fusion_builder_layout .fusion-global-container.fusion-builder-section-folded {
+  background: #ffffff;
+}
+#fusion_builder_layout .fusion-global-container.fusion-builder-section-folded:after,
+#fusion_builder_layout .fusion-global-container.fusion-builder-section-folded .fusion-builder-global-tooltip {
+  display: none;
+}
+#fusion_builder_layout .fusion-global-container.ui-sortable-helper:after,
+#fusion_builder_layout .fusion-global-container.ui-sortable-placeholder:after {
+  display: none;
+}
+#fusion_builder_layout .fusion_builder_column_element:not(.fusion_builder_row_inner):hover .fusion-builder-module-preview {
+  opacity: 0;
+}
+#fusion_builder_layout .fusion_builder_container .fusion-builder-column.fusion-builder-column-outer .fusion_builder_column_element:hover .fusion_module_title,
+#fusion_builder_layout .fusion_builder_container .fusion-builder-column.fusion-builder-column-outer .fusion_builder_column_element:hover p {
+  opacity: 0;
+}
+#fusion_builder_layout .fusion_builder_container .fusion-builder-column.fusion-builder-column-inner .fusion_module_block.fusion_builder_column_element .fusion_module_title,
+#fusion_builder_layout .fusion_builder_container .fusion-builder-column.fusion-builder-column-inner .fusion_module_block.fusion_builder_column_element p {
+  opacity: 1;
+}
+#fusion_builder_layout .fusion-builder-global-tooltip {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  border-radius: 5px;
+  z-index: 99999;
+}
+#fusion_builder_layout .fusion-builder-global-tooltip span {
+  background: #32383c;
+  position: absolute;
+  margin: 0 auto;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 200;
+  top: -50px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  white-space: nowrap;
+  display: none;
+}
+#fusion_builder_layout .fusion-builder-global-tooltip span:before {
+  content: "\f0d7";
+  font-family: fontawesome;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  font-size: 30px;
+  color: #33393d;
+}
+#fusion_builder_layout .fusion-builder-global-tooltip:hover span {
+  display: block;
+}
+#fusion_builder_layout .fusion-builder-column,
+#fusion_builder_layout .fusion-builder-row-container,
+#fusion_builder_layout .fusion_builder_column_element {
+  background-color: transparent;
 }
 #fusion_builder_layout .fusion_builder_column_layout_1_1,
 #fusion_builder_layout .fusion_builder_column_layout_fullwidth {
@@ -2139,20 +2375,17 @@ body > .mce-floatpanel {
   float: left;
   border-top: 1px solid #ddd;
   margin: -1em 0 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   display: none;
   position: absolute;
   background: #fff;
   z-index: 999;
   left: 0;
   top: -68px;
-  -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
-          box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 .column-sizes .column-size {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   width: 40px;
   height: 40px;
   float: left;
@@ -2175,8 +2408,7 @@ input[type=text].fusion-builder-section-name {
   border: 1px solid transparent;
   margin: 9px 0 0 25px;
   z-index: 999;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   color: #fff;
   width: 33%;
 }
@@ -2232,38 +2464,10 @@ input[type=text].fusion-builder-section-name:hover {
 .wp-picker-container input.iris-error[type="text"] {
   background-color: #fff;
   border: 1px solid #ddd;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) inset;
   color: #333;
   -webkit-transition: border-color 0.05s ease-in-out 0s;
   transition: border-color 0.05s ease-in-out 0s;
-}
-.colorpicker .option-field .iris-picker {
-  min-width: 308px;
-  float: left;
-}
-.colorpicker .option-field .iris-picker .iris-square {
-  margin-right: 0;
-}
-.colorpicker .option-field .wp-picker-container {
-  width: 310px;
-}
-.colorpickeralpha .option-field .wp-picker-container {
-  width: 395px;
-}
-.colorpickeralpha .option-field .iris-picker {
-  min-width: 393px;
-  float: left;
-}
-.colorpickeralpha .option-field .iris-picker .iris-slider {
-  margin-left: 18px !important;
-}
-.colorpickeralpha .option-field .iris-picker .iris-square {
-  width: 273px !important;
-}
-.colorpickeralpha .option-field .iris-picker .iris-palette {
-  width: 21.1px !important;
-  height: 21.1px !important;
 }
 .fusion-builder-load-template-dialog-container {
   display: none;
@@ -2285,8 +2489,7 @@ input[type=text].fusion-builder-section-name:hover {
   right: 0;
   z-index: 999;
   background-color: #fff;
-  -webkit-box-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
   border-radius: 2px;
   cursor: auto;
 }
@@ -2394,6 +2597,12 @@ input[type=text].fusion-builder-section-name:hover {
   background-color: #0073aa;
   color: #ffffff;
 }
+.fusion-builder-layouts-header-fields .fusion-save-element-fields {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
 .fusion-builder-layouts-header-fields input {
   width: 100%;
   height: 18px;
@@ -2401,8 +2610,44 @@ input[type=text].fusion-builder-section-name:hover {
   margin: 0;
   font-size: 1em;
   float: right;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
+  box-sizing: content-box;
+}
+.fusion-builder-layouts-header-fields .save-as-global {
+  background: #fff;
+  height: 100%;
+  width: 540px;
+  box-sizing: border-box;
+  text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.fusion-builder-layouts-header-fields .save-as-global label {
+  margin: 0;
+  float: left;
+  border-right: 4px solid #ffffff;
+  border-left: 4px solid #ffffff;
+  height: 48px;
+  padding: 14px;
+  box-sizing: border-box;
+  background: #eaeaea;
+  width: 155px;
+}
+.fusion-builder-layouts-header-fields .save-as-global input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  float: left;
+  margin: 1px 5px 0 0;
+}
+.fusion-builder-layouts-header-fields .save-as-global:before {
+  margin: -1px 0 0 -2px;
+  font-size: 18px;
+}
+.fusion-builder-layouts-header-fields .save-as-global .fusion-builder-save-column {
+  position: relative;
+  float: right;
+  width: 128px;
 }
 .fusion-builder-layouts-header {
   float: left;
@@ -2438,6 +2683,7 @@ input[type=text].fusion-builder-section-name:hover {
 .fusion-builder-column-inner {
   padding: 3.5em 1em 1.5em !important;
   margin-bottom: 0 !important;
+  float: none;
 }
 #fusion_settings_meta_box {
   display: none !important;
@@ -2547,8 +2793,7 @@ input[type=text].fusion-builder-section-name:hover {
   color: #777;
   float: left;
   width: 94%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .fusion_builder_blank_page .fusion-builder-submit-button span {
   padding-right: 0.5em;
@@ -2572,8 +2817,7 @@ input[type=text].fusion-builder-section-name:hover {
   width: 50%;
   float: left;
   border-top: 1px dashed #c8c7c7;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .fusion-builder-blank-page-info h3 {
   margin: 2em 0 !important;
@@ -2617,8 +2861,7 @@ input[type=text].fusion-builder-section-name:hover {
   border-top: 1px dashed #c8c7c7;
   margin: 0;
   padding: 1em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 .fusion-builder-blank-page-icons ul li:nth-child(odd) {
   border-right: 1px dashed #c8c7c7;
@@ -2708,8 +2951,7 @@ input[type=text].fusion-builder-section-name:hover {
   color: #00a0d2 !important;
 }
 .fusion-builder-dialog .ui-dialog-content a:focus {
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
 }
 .fusion-builder-dialog .ui-dialog-buttonpane {
   margin: 5px 0 0 !important;
@@ -2733,8 +2975,7 @@ input[type=text].fusion-builder-section-name:hover {
   font-size: 14px !important;
   border: none !important;
   border-radius: 0 !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
   line-height: 1 !important;
 }
 .fusion-builder-dialog .ui-dialog-buttonpane button:hover {
@@ -2786,8 +3027,7 @@ input[type=text].fusion-builder-section-name:hover {
   color: #777;
   font-size: 12px;
   display: none;
-  -webkit-box-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 30px rgba(0, 0, 0, 0.3);
   border-radius: 0 0 5px 5px;
   overflow: auto;
 }
@@ -2865,7 +3105,7 @@ input[type=text].fusion-builder-section-name:hover {
   width: auto;
   padding-top: 32px;
 }
-.fusion-table-builder .fusion-builder-table > thead > tr > th .fusion-builer-table-featured span {
+.fusion-table-builder .fusion-builder-table > thead > tr > th .fusion-builder-table-featured span {
   display: inline-block;
   vertical-align: middle;
   line-height: 33px;
@@ -2890,8 +3130,7 @@ input[type=text].fusion-builder-section-name:hover {
 }
 .fusion-table-builder input {
   border: 0;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   width: 100%;
   max-width: 100%;
   background: transparent;
@@ -2919,7 +3158,7 @@ input[type=text].fusion-builder-section-name:hover {
   max-width: 100%;
   background-color: transparent;
 }
-.fusion-builer-table-featured {
+.fusion-builder-table-featured {
   text-align: center;
   border-bottom: 1px solid #ddd;
   padding: 8px;
@@ -3030,13 +3269,13 @@ tr:hover .fusion-builder-table-delete-row {
     text-align: left;
   }
   .fusion-builder-sortable-options li .fusion-builder-controls a {
-    border-top: 1px solid #ddd;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
   }
 }
 @media only screen and (max-width: 1000px) {
   .fusion-builder-section-controls a,
   .fusion-page-builder-controls a {
-    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
   }
   .fusion-builder-column-controls a,
   .fusion-builder-inner-row-controls a,
@@ -3076,8 +3315,7 @@ tr:hover .fusion-builder-table-delete-row {
   -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
   bottom: 0;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
 }
 .fusion-builder-default-reset.checked a,
 .fusion-builder-default-reset span {
@@ -3100,6 +3338,8 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-light .fusion-builder-save-inner-row,
 .admin-color-light .fusion-builder-section-controls a:hover,
 .admin-color-light .fusion-builder-section-header,
+.admin-color-light .fusion-builder-submit-button,
+.admin-color-light .fusion-builder-update-buttons a.button.fusion-preview,
 .admin-color-light .fusion-page-layouts .fusion-page-layout .fusion-layout-buttons a:hover,
 .admin-color-light .fusion-tabs-menu,
 .admin-color-light .fusion_builder_template_button_save {
@@ -3131,6 +3371,8 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-light .fusion-builder-modal-bottom-container .fusion-builder-modal-close:hover,
 .admin-color-light .fusion-builder-modal-bottom-container .fusion-builder-modal-save:hover,
 .admin-color-light .fusion-builder-section-controls a,
+.admin-color-light .fusion-builder-submit-button:hover,
+.admin-color-light .fusion-builder-update-buttons a.button.fusion-preview:hover,
 .admin-color-light .fusion-page-builder-controls a:hover,
 .admin-color-light .fusion-tabs-menu li.current,
 .admin-color-light .fusion-tabs-menu li:first-child,
@@ -3153,6 +3395,32 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-light .bootstrap-datetimepicker-widget a {
   color: #888888 !important;
 }
+.admin-color-light .option-field .ui-buttonset.hundred_percent .ui-state-active[data-value="no"] {
+  background-color: #888888 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: none;
+  color: #333333;
+}
+.admin-color-light .option-field .ui-buttonset.min_height a.ui-button.buttonset-item.ui-state-active:last-child {
+  background-color: #e5e5e5 !important;
+  border-color: #767676 !important;
+}
+.admin-color-light .ui-buttonset .ui-state-active {
+  background-image: none !important;
+  box-shadow: none !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: #888888 !important;
+  color: #333333;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.admin-color-light .ui-buttonset .ui-state-active[data-value="false"],
+.admin-color-light .ui-buttonset .ui-state-active[data-value="no"],
+.admin-color-light .ui-buttonset .ui-state-active[data-value="off"] {
+  background-color: #e5e5e5 !important;
+  border-color: #767676 !important;
+  color: #333333;
+}
 .admin-color-blue #fusion_builder_controls,
 .admin-color-blue .bootstrap-datetimepicker-widget li.picker-switch.accordion-toggle,
 .admin-color-blue .bootstrap-datetimepicker-widget td.active,
@@ -3166,6 +3434,8 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-blue .fusion-builder-save-inner-row,
 .admin-color-blue .fusion-builder-section-controls a:hover,
 .admin-color-blue .fusion-builder-section-header,
+.admin-color-blue .fusion-builder-submit-button,
+.admin-color-blue .fusion-builder-update-buttons a.button.fusion-preview,
 .admin-color-blue .fusion-page-layouts .fusion-page-layout .fusion-layout-buttons a:hover,
 .admin-color-blue .fusion-tabs-menu,
 .admin-color-blue .fusion_builder_template_button_save {
@@ -3197,6 +3467,8 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-blue .fusion-builder-modal-bottom-container .fusion-builder-modal-close:hover,
 .admin-color-blue .fusion-builder-modal-bottom-container .fusion-builder-modal-save:hover,
 .admin-color-blue .fusion-builder-section-controls a,
+.admin-color-blue .fusion-builder-submit-button:hover,
+.admin-color-blue .fusion-builder-update-buttons a.button.fusion-preview:hover,
 .admin-color-blue .fusion-page-builder-controls a:hover,
 .admin-color-blue .fusion-tabs-menu li.current,
 .admin-color-blue .fusion-tabs-menu li:first-child,
@@ -3219,6 +3491,32 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-blue .bootstrap-datetimepicker-widget a {
   color: #096484 !important;
 }
+.admin-color-blue .option-field .ui-buttonset.hundred_percent .ui-state-active[data-value="no"] {
+  background-color: #096484 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: none;
+  color: #ffffff;
+}
+.admin-color-blue .option-field .ui-buttonset.min_height a.ui-button.buttonset-item.ui-state-active:last-child {
+  background-color: #52accc !important;
+  border-color: #767676 !important;
+}
+.admin-color-blue .ui-buttonset .ui-state-active {
+  background-image: none !important;
+  box-shadow: none !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: #096484 !important;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.admin-color-blue .ui-buttonset .ui-state-active[data-value="false"],
+.admin-color-blue .ui-buttonset .ui-state-active[data-value="no"],
+.admin-color-blue .ui-buttonset .ui-state-active[data-value="off"] {
+  background-color: #52accc !important;
+  border-color: #767676 !important;
+  color: #ffffff;
+}
 .admin-color-coffee #fusion_builder_controls,
 .admin-color-coffee .bootstrap-datetimepicker-widget li.picker-switch.accordion-toggle,
 .admin-color-coffee .bootstrap-datetimepicker-widget td.active,
@@ -3232,6 +3530,8 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-coffee .fusion-builder-save-inner-row,
 .admin-color-coffee .fusion-builder-section-controls a:hover,
 .admin-color-coffee .fusion-builder-section-header,
+.admin-color-coffee .fusion-builder-submit-button,
+.admin-color-coffee .fusion-builder-update-buttons a.button.fusion-preview,
 .admin-color-coffee .fusion-page-layouts .fusion-page-layout .fusion-layout-buttons a:hover,
 .admin-color-coffee .fusion-tabs-menu,
 .admin-color-coffee .fusion_builder_template_button_save {
@@ -3263,6 +3563,8 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-coffee .fusion-builder-modal-bottom-container .fusion-builder-modal-close:hover,
 .admin-color-coffee .fusion-builder-modal-bottom-container .fusion-builder-modal-save:hover,
 .admin-color-coffee .fusion-builder-section-controls a,
+.admin-color-coffee .fusion-builder-submit-button:hover,
+.admin-color-coffee .fusion-builder-update-buttons a.button.fusion-preview:hover,
 .admin-color-coffee .fusion-page-builder-controls a:hover,
 .admin-color-coffee .fusion-tabs-menu li.current,
 .admin-color-coffee .fusion-tabs-menu li:first-child,
@@ -3285,6 +3587,32 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-coffee .bootstrap-datetimepicker-widget a {
   color: #c7a589 !important;
 }
+.admin-color-coffee .option-field .ui-buttonset.hundred_percent .ui-state-active[data-value="no"] {
+  background-color: #c7a589 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: none;
+  color: #ffffff;
+}
+.admin-color-coffee .option-field .ui-buttonset.min_height a.ui-button.buttonset-item.ui-state-active:last-child {
+  background-color: #59524c !important;
+  border-color: #767676 !important;
+}
+.admin-color-coffee .ui-buttonset .ui-state-active {
+  background-image: none !important;
+  box-shadow: none !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: #c7a589 !important;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.admin-color-coffee .ui-buttonset .ui-state-active[data-value="false"],
+.admin-color-coffee .ui-buttonset .ui-state-active[data-value="no"],
+.admin-color-coffee .ui-buttonset .ui-state-active[data-value="off"] {
+  background-color: #59524c !important;
+  border-color: #767676 !important;
+  color: #ffffff;
+}
 .admin-color-ectoplasm #fusion_builder_controls,
 .admin-color-ectoplasm .bootstrap-datetimepicker-widget li.picker-switch.accordion-toggle,
 .admin-color-ectoplasm .bootstrap-datetimepicker-widget td.active,
@@ -3298,6 +3626,8 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-ectoplasm .fusion-builder-save-inner-row,
 .admin-color-ectoplasm .fusion-builder-section-controls a:hover,
 .admin-color-ectoplasm .fusion-builder-section-header,
+.admin-color-ectoplasm .fusion-builder-submit-button,
+.admin-color-ectoplasm .fusion-builder-update-buttons a.button.fusion-preview,
 .admin-color-ectoplasm .fusion-page-layouts .fusion-page-layout .fusion-layout-buttons a:hover,
 .admin-color-ectoplasm .fusion-tabs-menu,
 .admin-color-ectoplasm .fusion_builder_template_button_save {
@@ -3329,6 +3659,8 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-ectoplasm .fusion-builder-modal-bottom-container .fusion-builder-modal-close:hover,
 .admin-color-ectoplasm .fusion-builder-modal-bottom-container .fusion-builder-modal-save:hover,
 .admin-color-ectoplasm .fusion-builder-section-controls a,
+.admin-color-ectoplasm .fusion-builder-submit-button:hover,
+.admin-color-ectoplasm .fusion-builder-update-buttons a.button.fusion-preview:hover,
 .admin-color-ectoplasm .fusion-page-builder-controls a:hover,
 .admin-color-ectoplasm .fusion-tabs-menu li.current,
 .admin-color-ectoplasm .fusion-tabs-menu li:first-child,
@@ -3351,6 +3683,32 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-ectoplasm .bootstrap-datetimepicker-widget a {
   color: #413256 !important;
 }
+.admin-color-ectoplasm .option-field .ui-buttonset.hundred_percent .ui-state-active[data-value="no"] {
+  background-color: #413256 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: none;
+  color: #ffffff;
+}
+.admin-color-ectoplasm .option-field .ui-buttonset.min_height a.ui-button.buttonset-item.ui-state-active:last-child {
+  background-color: #523f6d !important;
+  border-color: #767676 !important;
+}
+.admin-color-ectoplasm .ui-buttonset .ui-state-active {
+  background-image: none !important;
+  box-shadow: none !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: #413256 !important;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.admin-color-ectoplasm .ui-buttonset .ui-state-active[data-value="false"],
+.admin-color-ectoplasm .ui-buttonset .ui-state-active[data-value="no"],
+.admin-color-ectoplasm .ui-buttonset .ui-state-active[data-value="off"] {
+  background-color: #523f6d !important;
+  border-color: #767676 !important;
+  color: #ffffff;
+}
 .admin-color-midnight #fusion_builder_controls,
 .admin-color-midnight .bootstrap-datetimepicker-widget li.picker-switch.accordion-toggle,
 .admin-color-midnight .bootstrap-datetimepicker-widget td.active,
@@ -3364,6 +3722,8 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-midnight .fusion-builder-save-inner-row,
 .admin-color-midnight .fusion-builder-section-controls a:hover,
 .admin-color-midnight .fusion-builder-section-header,
+.admin-color-midnight .fusion-builder-submit-button,
+.admin-color-midnight .fusion-builder-update-buttons a.button.fusion-preview,
 .admin-color-midnight .fusion-page-layouts .fusion-page-layout .fusion-layout-buttons a:hover,
 .admin-color-midnight .fusion-tabs-menu,
 .admin-color-midnight .fusion_builder_template_button_save {
@@ -3395,6 +3755,8 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-midnight .fusion-builder-modal-bottom-container .fusion-builder-modal-close:hover,
 .admin-color-midnight .fusion-builder-modal-bottom-container .fusion-builder-modal-save:hover,
 .admin-color-midnight .fusion-builder-section-controls a,
+.admin-color-midnight .fusion-builder-submit-button:hover,
+.admin-color-midnight .fusion-builder-update-buttons a.button.fusion-preview:hover,
 .admin-color-midnight .fusion-page-builder-controls a:hover,
 .admin-color-midnight .fusion-tabs-menu li.current,
 .admin-color-midnight .fusion-tabs-menu li:first-child,
@@ -3417,6 +3779,32 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-midnight .bootstrap-datetimepicker-widget a {
   color: #e14d43 !important;
 }
+.admin-color-midnight .option-field .ui-buttonset.hundred_percent .ui-state-active[data-value="no"] {
+  background-color: #e14d43 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: none;
+  color: #ffffff;
+}
+.admin-color-midnight .option-field .ui-buttonset.min_height a.ui-button.buttonset-item.ui-state-active:last-child {
+  background-color: #363b3f !important;
+  border-color: #767676 !important;
+}
+.admin-color-midnight .ui-buttonset .ui-state-active {
+  background-image: none !important;
+  box-shadow: none !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: #e14d43 !important;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.admin-color-midnight .ui-buttonset .ui-state-active[data-value="false"],
+.admin-color-midnight .ui-buttonset .ui-state-active[data-value="no"],
+.admin-color-midnight .ui-buttonset .ui-state-active[data-value="off"] {
+  background-color: #363b3f !important;
+  border-color: #767676 !important;
+  color: #ffffff;
+}
 .admin-color-ocean #fusion_builder_controls,
 .admin-color-ocean .bootstrap-datetimepicker-widget li.picker-switch.accordion-toggle,
 .admin-color-ocean .bootstrap-datetimepicker-widget td.active,
@@ -3430,6 +3818,8 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-ocean .fusion-builder-save-inner-row,
 .admin-color-ocean .fusion-builder-section-controls a:hover,
 .admin-color-ocean .fusion-builder-section-header,
+.admin-color-ocean .fusion-builder-submit-button,
+.admin-color-ocean .fusion-builder-update-buttons a.button.fusion-preview,
 .admin-color-ocean .fusion-page-layouts .fusion-page-layout .fusion-layout-buttons a:hover,
 .admin-color-ocean .fusion-tabs-menu,
 .admin-color-ocean .fusion_builder_template_button_save {
@@ -3461,6 +3851,8 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-ocean .fusion-builder-modal-bottom-container .fusion-builder-modal-close:hover,
 .admin-color-ocean .fusion-builder-modal-bottom-container .fusion-builder-modal-save:hover,
 .admin-color-ocean .fusion-builder-section-controls a,
+.admin-color-ocean .fusion-builder-submit-button:hover,
+.admin-color-ocean .fusion-builder-update-buttons a.button.fusion-preview:hover,
 .admin-color-ocean .fusion-page-builder-controls a:hover,
 .admin-color-ocean .fusion-tabs-menu li.current,
 .admin-color-ocean .fusion-tabs-menu li:first-child,
@@ -3483,6 +3875,32 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-ocean .bootstrap-datetimepicker-widget a {
   color: #9ebaa0 !important;
 }
+.admin-color-ocean .option-field .ui-buttonset.hundred_percent .ui-state-active[data-value="no"] {
+  background-color: #9ebaa0 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: none;
+  color: #ffffff;
+}
+.admin-color-ocean .option-field .ui-buttonset.min_height a.ui-button.buttonset-item.ui-state-active:last-child {
+  background-color: #738e96 !important;
+  border-color: #767676 !important;
+}
+.admin-color-ocean .ui-buttonset .ui-state-active {
+  background-image: none !important;
+  box-shadow: none !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: #9ebaa0 !important;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.admin-color-ocean .ui-buttonset .ui-state-active[data-value="false"],
+.admin-color-ocean .ui-buttonset .ui-state-active[data-value="no"],
+.admin-color-ocean .ui-buttonset .ui-state-active[data-value="off"] {
+  background-color: #738e96 !important;
+  border-color: #767676 !important;
+  color: #ffffff;
+}
 .admin-color-sunrise #fusion_builder_controls,
 .admin-color-sunrise .bootstrap-datetimepicker-widget li.picker-switch.accordion-toggle,
 .admin-color-sunrise .bootstrap-datetimepicker-widget td.active,
@@ -3496,6 +3914,8 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-sunrise .fusion-builder-save-inner-row,
 .admin-color-sunrise .fusion-builder-section-controls a:hover,
 .admin-color-sunrise .fusion-builder-section-header,
+.admin-color-sunrise .fusion-builder-submit-button,
+.admin-color-sunrise .fusion-builder-update-buttons a.button.fusion-preview,
 .admin-color-sunrise .fusion-page-layouts .fusion-page-layout .fusion-layout-buttons a:hover,
 .admin-color-sunrise .fusion-tabs-menu,
 .admin-color-sunrise .fusion_builder_template_button_save {
@@ -3527,6 +3947,8 @@ tr:hover .fusion-builder-table-delete-row {
 .admin-color-sunrise .fusion-builder-modal-bottom-container .fusion-builder-modal-close:hover,
 .admin-color-sunrise .fusion-builder-modal-bottom-container .fusion-builder-modal-save:hover,
 .admin-color-sunrise .fusion-builder-section-controls a,
+.admin-color-sunrise .fusion-builder-submit-button:hover,
+.admin-color-sunrise .fusion-builder-update-buttons a.button.fusion-preview:hover,
 .admin-color-sunrise .fusion-page-builder-controls a:hover,
 .admin-color-sunrise .fusion-tabs-menu li.current,
 .admin-color-sunrise .fusion-tabs-menu li:first-child,
@@ -3548,6 +3970,186 @@ tr:hover .fusion-builder-table-delete-row {
 }
 .admin-color-sunrise .bootstrap-datetimepicker-widget a {
   color: #be3631 !important;
+}
+.admin-color-sunrise .option-field .ui-buttonset.hundred_percent .ui-state-active[data-value="no"] {
+  background-color: #be3631 !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  box-shadow: none;
+  color: #ffffff;
+}
+.admin-color-sunrise .option-field .ui-buttonset.min_height a.ui-button.buttonset-item.ui-state-active:last-child {
+  background-color: #cf4944 !important;
+  border-color: #767676 !important;
+}
+.admin-color-sunrise .ui-buttonset .ui-state-active {
+  background-image: none !important;
+  box-shadow: none !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: #be3631 !important;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.admin-color-sunrise .ui-buttonset .ui-state-active[data-value="false"],
+.admin-color-sunrise .ui-buttonset .ui-state-active[data-value="no"],
+.admin-color-sunrise .ui-buttonset .ui-state-active[data-value="off"] {
+  background-color: #cf4944 !important;
+  border-color: #767676 !important;
+  color: #ffffff;
+}
+.admin-color-light #fusion_builder_layout .fusion_builder_container .fusion-global-column .fusion-global-element {
+  background: rgba(136, 136, 136, 0.05);
+}
+.admin-color-light #fusion_builder_layout .fusion-global-container .fusion-builder-column .fusion-global-element {
+  background: rgba(136, 136, 136, 0.05);
+}
+.admin-color-light #fusion_builder_layout .fusion-builder-column.fusion-global-column,
+.admin-color-light #fusion_builder_layout .fusion-global-container,
+.admin-color-light #fusion_builder_layout .fusion_builder_column_element.fusion-global-element {
+  background: rgba(136, 136, 136, 0.1);
+}
+.admin-color-light #fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column {
+  background: rgba(136, 136, 136, 0.05);
+}
+.admin-color-light #fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column .fusion_builder_column_element.fusion-global-element {
+  background: rgba(136, 136, 136, 0.07);
+}
+.admin-color-light #fusion_builder_layout .fusion-global-column:after,
+.admin-color-light #fusion_builder_layout .fusion-global-container:after,
+.admin-color-light #fusion_builder_layout .fusion-global-element:after {
+  background-color: #888888;
+}
+.admin-color-blue #fusion_builder_layout .fusion_builder_container .fusion-global-column .fusion-global-element {
+  background: rgba(9, 100, 132, 0.05);
+}
+.admin-color-blue #fusion_builder_layout .fusion-global-container .fusion-builder-column .fusion-global-element {
+  background: rgba(9, 100, 132, 0.05);
+}
+.admin-color-blue #fusion_builder_layout .fusion-builder-column.fusion-global-column,
+.admin-color-blue #fusion_builder_layout .fusion-global-container,
+.admin-color-blue #fusion_builder_layout .fusion_builder_column_element.fusion-global-element {
+  background: rgba(9, 100, 132, 0.1);
+}
+.admin-color-blue #fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column {
+  background: rgba(9, 100, 132, 0.05);
+}
+.admin-color-blue #fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column .fusion_builder_column_element.fusion-global-element {
+  background: rgba(9, 100, 132, 0.07);
+}
+.admin-color-blue #fusion_builder_layout .fusion-global-column:after,
+.admin-color-blue #fusion_builder_layout .fusion-global-container:after,
+.admin-color-blue #fusion_builder_layout .fusion-global-element:after {
+  background-color: #52accc;
+}
+.admin-color-coffee #fusion_builder_layout .fusion_builder_container .fusion-global-column .fusion-global-element {
+  background: rgba(89, 82, 76, 0.05);
+}
+.admin-color-coffee #fusion_builder_layout .fusion-global-container .fusion-builder-column .fusion-global-element {
+  background: rgba(89, 82, 76, 0.05);
+}
+.admin-color-coffee #fusion_builder_layout .fusion-builder-column.fusion-global-column,
+.admin-color-coffee #fusion_builder_layout .fusion-global-container,
+.admin-color-coffee #fusion_builder_layout .fusion_builder_column_element.fusion-global-element {
+  background: rgba(89, 82, 76, 0.1);
+}
+.admin-color-coffee #fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column {
+  background: rgba(89, 82, 76, 0.05);
+}
+.admin-color-coffee #fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column .fusion_builder_column_element.fusion-global-element {
+  background: rgba(89, 82, 76, 0.07);
+}
+.admin-color-coffee #fusion_builder_layout .fusion-global-column:after,
+.admin-color-coffee #fusion_builder_layout .fusion-global-container:after,
+.admin-color-coffee #fusion_builder_layout .fusion-global-element:after {
+  background-color: #5a524d;
+}
+.admin-color-ectoplasm #fusion_builder_layout .fusion_builder_container .fusion-global-column .fusion-global-element {
+  background: rgba(65, 50, 86, 0.05);
+}
+.admin-color-ectoplasm #fusion_builder_layout .fusion-global-container .fusion-builder-column .fusion-global-element {
+  background: rgba(65, 50, 86, 0.05);
+}
+.admin-color-ectoplasm #fusion_builder_layout .fusion-builder-column.fusion-global-column,
+.admin-color-ectoplasm #fusion_builder_layout .fusion-global-container,
+.admin-color-ectoplasm #fusion_builder_layout .fusion_builder_column_element.fusion-global-element {
+  background: rgba(65, 50, 86, 0.1);
+}
+.admin-color-ectoplasm #fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column {
+  background: rgba(65, 50, 86, 0.05);
+}
+.admin-color-ectoplasm #fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column .fusion_builder_column_element.fusion-global-element {
+  background: rgba(65, 50, 86, 0.07);
+}
+.admin-color-ectoplasm #fusion_builder_layout .fusion-global-column:after,
+.admin-color-ectoplasm #fusion_builder_layout .fusion-global-container:after,
+.admin-color-ectoplasm #fusion_builder_layout .fusion-global-element:after {
+  background-color: #53406d;
+}
+.admin-color-midnight #fusion_builder_layout .fusion_builder_container .fusion-global-column .fusion-global-element {
+  background: rgba(225, 77, 67, 0.05);
+}
+.admin-color-midnight #fusion_builder_layout .fusion-global-container .fusion-builder-column .fusion-global-element {
+  background: rgba(225, 77, 67, 0.05);
+}
+.admin-color-midnight #fusion_builder_layout .fusion-builder-column.fusion-global-column,
+.admin-color-midnight #fusion_builder_layout .fusion-global-container,
+.admin-color-midnight #fusion_builder_layout .fusion_builder_column_element.fusion-global-element {
+  background: rgba(225, 77, 67, 0.1);
+}
+.admin-color-midnight #fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column {
+  background: rgba(225, 77, 67, 0.05);
+}
+.admin-color-midnight #fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column .fusion_builder_column_element.fusion-global-element {
+  background: rgba(225, 77, 67, 0.07);
+}
+.admin-color-midnight #fusion_builder_layout .fusion-global-column:after,
+.admin-color-midnight #fusion_builder_layout .fusion-global-container:after,
+.admin-color-midnight #fusion_builder_layout .fusion-global-element:after {
+  background-color: #e14e44;
+}
+.admin-color-ocean #fusion_builder_layout .fusion_builder_container .fusion-global-column .fusion-global-element {
+  background: rgba(115, 142, 150, 0.05);
+}
+.admin-color-ocean #fusion_builder_layout .fusion-global-container .fusion-builder-column .fusion-global-element {
+  background: rgba(115, 142, 150, 0.05);
+}
+.admin-color-ocean #fusion_builder_layout .fusion-builder-column.fusion-global-column,
+.admin-color-ocean #fusion_builder_layout .fusion-global-container,
+.admin-color-ocean #fusion_builder_layout .fusion_builder_column_element.fusion-global-element {
+  background: rgba(115, 142, 150, 0.1);
+}
+.admin-color-ocean #fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column {
+  background: rgba(115, 142, 150, 0.05);
+}
+.admin-color-ocean #fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column .fusion_builder_column_element.fusion-global-element {
+  background: rgba(115, 142, 150, 0.07);
+}
+.admin-color-ocean #fusion_builder_layout .fusion-global-column:after,
+.admin-color-ocean #fusion_builder_layout .fusion-global-container:after,
+.admin-color-ocean #fusion_builder_layout .fusion-global-element:after {
+  background-color: #738e96;
+}
+.admin-color-sunrise #fusion_builder_layout .fusion_builder_container .fusion-global-column .fusion-global-element {
+  background: rgba(190, 54, 49, 0.05);
+}
+.admin-color-sunrise #fusion_builder_layout .fusion-global-container .fusion-builder-column .fusion-global-element {
+  background: rgba(190, 54, 49, 0.05);
+}
+.admin-color-sunrise #fusion_builder_layout .fusion-builder-column.fusion-global-column,
+.admin-color-sunrise #fusion_builder_layout .fusion-global-container,
+.admin-color-sunrise #fusion_builder_layout .fusion_builder_column_element.fusion-global-element {
+  background: rgba(190, 54, 49, 0.1);
+}
+.admin-color-sunrise #fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column {
+  background: rgba(190, 54, 49, 0.05);
+}
+.admin-color-sunrise #fusion_builder_layout .fusion-global-container .fusion-builder-column.fusion-global-column .fusion_builder_column_element.fusion-global-element {
+  background: rgba(190, 54, 49, 0.07);
+}
+.admin-color-sunrise #fusion_builder_layout .fusion-global-column:after,
+.admin-color-sunrise #fusion_builder_layout .fusion-global-container:after,
+.admin-color-sunrise #fusion_builder_layout .fusion-global-element:after {
+  background-color: #ce4945;
 }
 .fusion-builder-option.code p.description {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -3596,7 +4198,114 @@ tr:hover .fusion-builder-table-delete-row {
 .fusion-builder-media-dialog.hide-router .media-sidebar {
   display: none;
 }
-.fusion-builder-media-dialog.hide-router .media-toolbar,
-.fusion-builder-media-dialog.hide-router .attachments {
+.fusion-builder-media-dialog.hide-router .attachments,
+.fusion-builder-media-dialog.hide-router .media-toolbar {
   right: 0;
+}
+.fusion-builder-update-buttons {
+  position: fixed;
+  bottom: -50px;
+  right: 0;
+  width: 320px;
+  display: none;
+}
+.fusion-builder-update-buttons a.button {
+  width: 50%;
+  float: left;
+  padding: 16px 10px;
+  height: auto;
+  line-height: 1.4em;
+  text-align: center;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+}
+.fusion-builder-update-buttons a.button.fusion-preview {
+  background: #32373C;
+  border-color: #32373C;
+  color: #fff;
+}
+.fusion-builder-update-buttons a.button.fusion-preview:hover {
+  background: #222222;
+  border-color: #222222;
+}
+.fusion-builder-enabled .fusion-builder-update-buttons {
+  display: block;
+}
+.fusion-builder-insert-inner-column {
+  float: left;
+  text-decoration: none;
+  color: #666;
+  border: 1px solid #ddd;
+  padding: 12px 28px;
+}
+.ui-buttonset .ui-state-active {
+  background-image: none !important;
+  box-shadow: none !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  background-color: #00a0d2;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+.ui-buttonset .ui-state-active:hover {
+  background-color: #00a0d2;
+  color: #ffffff;
+}
+.ui-buttonset .ui-state-active[data-value="false"],
+.ui-buttonset .ui-state-active[data-value="no"],
+.ui-buttonset .ui-state-active[data-value="off"] {
+  background-color: #23282d;
+  border-color: #767676 !important;
+  color: #ffffff;
+}
+.ui-buttonset .ui-state-active[data-value="false"]:hover,
+.ui-buttonset .ui-state-active[data-value="no"]:hover,
+.ui-buttonset .ui-state-active[data-value="off"]:hover {
+  background-color: #00a0d2;
+  color: #ffffff;
+}
+#adv-settings label[for="fusion_builder_layout-hide"],
+#adv-settings label[for="fusion_settings_meta_box-hide"] {
+  display: none;
+}
+.fusion-colorpicker-legacy .option-field .wp-picker-container {
+  width: 345px;
+}
+.fusion-colorpicker-legacy .option-field .wp-picker-container .wp-picker-input-wrap {
+  width: 215px;
+}
+.fusion-colorpicker-legacy .option-field .wp-picker-container .wp-picker-input-wrap input {
+  height: 34px;
+  min-height: 34px;
+}
+.fusion-colorpicker-legacy .option-field .wp-picker-container .iris-palette-container > .iris-palette {
+  margin-left: 6.3px !important;
+}
+.fusion-colorpicker-legacy .option-field .wp-picker-container .iris-palette-container > .iris-palette:first-child {
+  margin-left: 0 !important;
+}
+.fusion-colorpicker-legacy .option-field .wp-picker-container .wp-color-result {
+  height: 32px;
+}
+.fusion-colorpicker-legacy .option-field .wp-picker-container .wp-color-result:after {
+  height: 100%;
+  line-height: 33px;
+  font-size: 12px;
+  padding: 0 5px;
+  border-radius: 0;
+}
+.fusion-colorpicker-legacy .option-field .wp-picker-container.wp-picker-alpha-container {
+  width: 355px;
+}
+.fusion-colorpicker-legacy .option-field .wp-picker-container.wp-picker-alpha-container .wp-picker-input-wrap {
+  width: 225px;
+}
+.fusion-colorpicker-legacy .option-field .wp-picker-container.wp-picker-alpha-container .iris-palette-container > .iris-palette {
+  margin-left: 3.5px !important;
+}
+.fusion-colorpicker-legacy .option-field .wp-picker-container.wp-picker-alpha-container .iris-palette-container > .iris-palette:first-child {
+  margin-left: 0 !important;
+}
+.fusion-colorpicker-legacy > .mce-floatpanel {
+  z-index: 99999 !important;
 }

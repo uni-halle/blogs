@@ -57,7 +57,7 @@ function fusion_builder_options_section_slideshows( $sections ) {
 				'label'       => esc_html__( 'Navigation Box Dimensions', 'fusion-builder' ),
 				'description' => esc_html__( 'Controls the width and height of the navigation box.', 'fusion-builder' ),
 				'id'          => 'slider_nav_box_dimensions',
-				'units'		  => false,
+				'units'       => false,
 				'default'     => array(
 					'width'   => '30px',
 					'height'  => '30px',

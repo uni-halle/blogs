@@ -28,7 +28,7 @@ function fusion_builder_options_section_advanced( $sections ) {
 			),
 			'js_compiler' => array(
 				'label'       => esc_html__( 'Enable JS compiler', 'fusion-builder' ),
-				'description' => ( Fusion_Dynamic_JS::is_http2() ) ? esc_html__( 'We have detected that your server supports HTTP/2. We recommend you leave the compiler disabled as that will improve performance of your site by allowing multiple JS files to be downloaded simultaneously.', 'fusion-builder' ) : 	esc_html__( 'By default all the javascript files are combined. Disabling the JS compiler will load non-combined javascript files. This will have an impact on the performance of your site.', 'fusion-builder' ),
+				'description' => ( Fusion_Dynamic_JS::is_http2() ) ? esc_html__( 'We have detected that your server supports HTTP/2. We recommend you leave the compiler disabled as that will improve performance of your site by allowing multiple JS files to be downloaded simultaneously.', 'fusion-builder' ) : esc_html__( 'By default all the javascript files are combined. Disabling the JS compiler will load non-combined javascript files. This will have an impact on the performance of your site.', 'fusion-builder' ),
 				'id'          => 'js_compiler',
 				'default'     => ( Fusion_Dynamic_JS::is_http2() ) ? '0' : '1',
 				'type'        => 'switch',

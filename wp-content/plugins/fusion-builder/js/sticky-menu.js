@@ -64,9 +64,15 @@
 				for ( key in styles ) {
 					el.style[ key ] = styles[ key ];
 				}
+
+				jQuery( '.fusion-builder-update-buttons' ).stop().animate( { 'bottom': 0 }, 100 );
 			} else {
 				for ( key in originalStyles ) {
 					el.style[ key ] = originalStyles[ key ];
+				}
+
+				if ( getWindowScroll().top + requiredTop + topBorderSize + originalRect.height < $mainContainerRect.top ) {
+					jQuery( '.fusion-builder-update-buttons' ).stop().animate( { 'bottom': '-50px' }, 100 );
 				}
 			}
 

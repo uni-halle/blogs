@@ -30,6 +30,16 @@ if ( fusion_is_element_enabled( 'fusion_map' ) ) {
 			protected $args;
 
 			/**
+			 * Whether the nonces script has already been added for the map.
+			 *
+			 * @static
+			 * @access private
+			 * @since 1.3
+			 * @var bool
+			 */
+			private static $nonce_added = false;
+
+			/**
 			 * Constructor.
 			 *
 			 * @access public
@@ -101,15 +111,19 @@ if ( fusion_is_element_enabled( 'fusion_map' ) ) {
 
 					$num_of_addresses = count( $addresses );
 
+					if ( base64_encode( base64_decode( $infobox_content ) ) === $infobox_content ) {
+						$infobox_content = base64_decode( $infobox_content );
+					}
+
 					$infobox_content_array = array();
-					$infobox_content_array = ( ! in_array( $map_style, array( 'default', 'theme' ) ) && 'default' !== $infobox ) ? explode( '|', $infobox_content ) : array() ;
+					$infobox_content_array = ( ! in_array( $map_style, array( 'default', 'theme' ) ) ) ? explode( '|', $infobox_content ) : array() ;
 
 					$icon_array = array();
 					if ( $icon ) {
 						$icon_array = explode( '|', $icon );
 					}
 
-					if ( 'theme' == $map_style ) {
+					if ( 'theme' === $map_style ) {
 						$map_style                = 'custom';
 						$icon                     = 'theme';
 						$animation                = 'yes';
@@ -123,21 +137,21 @@ if ( fusion_is_element_enabled( 'fusion_map' ) ) {
 						if ( $brightness_level > 140 ) {
 							$infobox_text_color = '#fff';
 						}
-					} elseif ( 'custom' == $map_style ) {
+					} elseif ( 'custom' === $map_style ) {
 						if ( '0' == Fusion_Color::new_color( $overlay_color )->alpha ) {
 							$overlay_color = '';
 						}
 					}
 
 					// If only one custom icon is set, use it for all markers.
-					if ( 'custom' == $map_style && $icon && 'theme' != $icon && $icon_array && count( $icon_array ) == 1 ) {
+					if ( 'custom' === $map_style && $icon && 'theme' !== $icon && $icon_array && count( $icon_array ) == 1 ) {
 						$icon_url = $icon_array[0];
 						for ( $i = 0; $i < $num_of_addresses; $i++ ) {
 							$icon_array[ $i ] = $icon_url;
 						}
 					}
 
-					if ( 'theme' == $icon && 'custom' == $map_style ) {
+					if ( 'theme' === $icon && 'custom' === $map_style ) {
 						for ( $i = 0; $i < $num_of_addresses; $i++ ) {
 							$icon_array[ $i ] = plugins_url( 'images/avada_map_marker.png', dirname( __FILE__ ) );
 						}
@@ -167,7 +181,7 @@ if ( fusion_is_element_enabled( 'fusion_map' ) ) {
 					}
 
 					for ( $i = 0; $i < $num_of_addresses; $i++ ) {
-						if ( strpos( $this->args['address'][ $i ], 'latlng=' ) === 0 ) {
+						if ( 0 === strpos( $this->args['address'][ $i ], 'latlng=' ) ) {
 							$this->args['address'][ $i ] = $coordinates[ $i ]['address'];
 						}
 					}
@@ -194,7 +208,7 @@ if ( fusion_is_element_enabled( 'fusion_map' ) ) {
 							$json_addresses[ $key ]['marker'] = $icon_array[ $key ];
 						}
 
-						if ( strpos( $address, strtolower( 'latlng=' ) ) !== false ) {
+						if ( false !== strpos( $address, strtolower( 'latlng=' ) ) ) {
 							$json_addresses[ $key ]['address']     = str_replace( 'latlng=', '', $address );
 							$lat_lng                               = explode( ',', $json_addresses[ $key ]['address'] );
 							$json_addresses[ $key ]['coordinates'] = true;
@@ -237,6 +251,10 @@ if ( fusion_is_element_enabled( 'fusion_map' ) ) {
 						var map_<?php echo $map_id; // WPCS: XSS ok. ?>;
 						var markers = [];
 						var counter = 0;
+						<?php if ( ! self::$nonce_added ) : ?>
+							<?php self::$nonce_added = true; ?>
+							var fusionMapNonce = '<?php echo wp_create_nonce( 'avada_admin_ajax' ); // WPCS: XSS ok. ?>';
+						<?php endif; ?>
 						function fusion_run_map_<?php echo $map_id ; // WPCS: XSS ok. ?>() {
 							jQuery('#<?php echo $map_id; // WPCS: XSS ok. ?>').fusion_maps({
 								addresses: <?php echo $json_addresses; // WPCS: XSS ok. ?>,
@@ -281,9 +299,11 @@ if ( fusion_is_element_enabled( 'fusion_map' ) ) {
 			 */
 			public function attr() {
 
-				$attr = fusion_builder_visibility_atts( $this->args['hide_on_mobile'], array(
-					'class' => 'shortcode-map fusion-google-map',
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->args['hide_on_mobile'], array(
+						'class' => 'shortcode-map fusion-google-map',
+					)
+				);
 
 				if ( $this->args['class'] ) {
 					$attr['class'] .= ' ' . $this->args['class'];
@@ -423,244 +443,246 @@ if ( fusion_is_element_enabled( 'fusion_map' ) ) {
  * @since 1.0
  */
 function fusion_element_google_map() {
-	fusion_builder_map( array(
-		'name'       => esc_attr__( 'Google Map', 'fusion-builder' ),
-		'shortcode'  => 'fusion_map',
-		'icon'       => 'fusiona-map',
-		'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-google-map-preview.php',
-		'preview_id' => 'fusion-builder-block-module-google-map-preview-template',
-		'params'     => array(
-			array(
-				'type'        => 'textarea',
-				'heading'     => esc_attr__( 'Address', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add the address to the location you wish to display. Single address example: 775 New York Ave, Brooklyn, Kings, New York 11203. If the location is off, please try to use long/lat coordinates with latlng=. ex: latlng=12.381068,-1.492711. For multiple addresses, separate addresses by using the | symbol. ex: Address 1|Address 2|Address 3.', 'fusion-builder' ),
-				'param_name'  => 'address',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Map Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the type of google map to display.', 'fusion-builder' ),
-				'param_name'  => 'type',
-				'value'       => array(
-					'roadmap'   => esc_attr__( 'Roadmap', 'fusion-builder' ),
-					'satellite' => esc_attr__( 'Satellite', 'fusion-builder' ),
-					'hybrid'    => esc_attr__( 'Hybrid', 'fusion-builder' ),
-					'terrain'   => esc_attr__( 'Terrain', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'       => esc_attr__( 'Google Map', 'fusion-builder' ),
+			'shortcode'  => 'fusion_map',
+			'icon'       => 'fusiona-map',
+			'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-google-map-preview.php',
+			'preview_id' => 'fusion-builder-block-module-google-map-preview-template',
+			'params'     => array(
+				array(
+					'type'        => 'textarea',
+					'heading'     => esc_attr__( 'Address', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add the address to the location you wish to display. Single address example: 775 New York Ave, Brooklyn, Kings, New York 11203. If the location is off, please try to use long/lat coordinates with latlng=. ex: latlng=12.381068,-1.492711. For multiple addresses, separate addresses by using the | symbol. ex: Address 1|Address 2|Address 3.', 'fusion-builder' ),
+					'param_name'  => 'address',
+					'value'       => '',
 				),
-				'default' => 'roadmap',
-			),
-			array(
-				'type'             => 'dimension',
-				'remove_from_atts' => true,
-				'heading'          => esc_attr__( 'Map Dimensions', 'fusion-builder' ),
-				'description'      => esc_attr__( 'Map dimensions in percentage, pixels or ems. NOTE: height does not accept percentage value.', 'fusion-builder' ),
-				'param_name'       => 'dimensions',
-				'value'            => array(
-					'width'  => '100%',
-					'height' => '300px',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Map Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the type of google map to display.', 'fusion-builder' ),
+					'param_name'  => 'type',
+					'value'       => array(
+						'roadmap'   => esc_attr__( 'Roadmap', 'fusion-builder' ),
+						'satellite' => esc_attr__( 'Satellite', 'fusion-builder' ),
+						'hybrid'    => esc_attr__( 'Hybrid', 'fusion-builder' ),
+						'terrain'   => esc_attr__( 'Terrain', 'fusion-builder' ),
+					),
+					'default' => 'roadmap',
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Zoom Level', 'fusion-builder' ),
-				'description' => esc_attr__( 'Higher number will be more zoomed in.', 'fusion-builder' ),
-				'param_name'  => 'zoom',
-				'value'       => '14',
-				'min'         => '1',
-				'max'         => '25',
-				'step'        => '1',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Scrollwheel on Map', 'fusion-builder' ),
-				'description' => esc_attr__( "Enable zooming using a mouse's scroll wheel.", 'fusion-builder' ),
-				'param_name'  => 'scrollwheel',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'default'     => 'yes',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Scale Control on Map', 'fusion-builder' ),
-				'description' => esc_attr__( 'Display the map scale.', 'fusion-builder' ),
-				'param_name'  => 'scale',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'default'     => 'yes',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Pan Control on Map', 'fusion-builder' ),
-				'description' => esc_attr__( 'Displays pan control button.', 'fusion-builder' ),
-				'param_name'  => 'zoom_pancontrol',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'default'     => 'yes',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Address Pin Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to animate the address pins when the map first loads.', 'fusion-builder' ),
-				'param_name'  => 'animation',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'default'     => 'no',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Tooltip by Default', 'fusion-builder' ),
-				'description' => esc_attr__( 'Display or hide tooltip by default when the map first loads.', 'fusion-builder' ),
-				'param_name'  => 'popup',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'default'     => 'yes',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Select the Map Styling Switch', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose default styling for classic google map styles. Choose theme styling for our custom style. Choose custom styling to make your own with the advanced options below.', 'fusion-builder' ),
-				'param_name'  => 'map_style',
-				'value'       => array(
-					'default' => esc_attr__( 'Default Styling', 'fusion-builder' ),
-					'theme'   => esc_attr__( 'Theme Styling', 'fusion-builder' ),
-					'custom'  => esc_attr__( 'Custom Styling', 'fusion-builder' ),
-				),
-				'default' => 'default',
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Map Overlay Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Custom styling setting only. Pick an overlaying color for the map. Works best with "roadmap" type.', 'fusion-builder' ),
-				'param_name'  => 'overlay_color',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'map_style',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'             => 'dimension',
+					'remove_from_atts' => true,
+					'heading'          => esc_attr__( 'Map Dimensions', 'fusion-builder' ),
+					'description'      => esc_attr__( 'Map dimensions in percentage, pixels or ems. NOTE: height does not accept percentage value.', 'fusion-builder' ),
+					'param_name'       => 'dimensions',
+					'value'            => array(
+						'width'  => '100%',
+						'height' => '300px',
 					),
 				),
-			),
-			array(
-				'type'        => 'textarea',
-				'heading'     => esc_attr__( 'Infobox Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'Custom styling setting only. Type in custom info box content to replace address string. For multiple addresses, separate info box contents by using the | symbol. ex: InfoBox 1|InfoBox 2|InfoBox 3.', 'fusion-builder' ),
-				'param_name'  => 'infobox_content',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'map_style',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Zoom Level', 'fusion-builder' ),
+					'description' => esc_attr__( 'Higher number will be more zoomed in.', 'fusion-builder' ),
+					'param_name'  => 'zoom',
+					'value'       => '14',
+					'min'         => '1',
+					'max'         => '25',
+					'step'        => '1',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Scrollwheel on Map', 'fusion-builder' ),
+					'description' => esc_attr__( "Enable zooming using a mouse's scroll wheel.", 'fusion-builder' ),
+					'param_name'  => 'scrollwheel',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Scale Control on Map', 'fusion-builder' ),
+					'description' => esc_attr__( 'Display the map scale.', 'fusion-builder' ),
+					'param_name'  => 'scale',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Pan Control on Map', 'fusion-builder' ),
+					'description' => esc_attr__( 'Displays pan control button.', 'fusion-builder' ),
+					'param_name'  => 'zoom_pancontrol',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Address Pin Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to animate the address pins when the map first loads.', 'fusion-builder' ),
+					'param_name'  => 'animation',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'no',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Tooltip by Default', 'fusion-builder' ),
+					'description' => esc_attr__( 'Display or hide tooltip by default when the map first loads.', 'fusion-builder' ),
+					'param_name'  => 'popup',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Select the Map Styling Switch', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose default styling for classic google map styles. Choose theme styling for our custom style. Choose custom styling to make your own with the advanced options below.', 'fusion-builder' ),
+					'param_name'  => 'map_style',
+					'value'       => array(
+						'default' => esc_attr__( 'Default Styling', 'fusion-builder' ),
+						'theme'   => esc_attr__( 'Theme Styling', 'fusion-builder' ),
+						'custom'  => esc_attr__( 'Custom Styling', 'fusion-builder' ),
+					),
+					'default' => 'default',
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Map Overlay Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Custom styling setting only. Pick any overlaying color for the map besides pure black or white. Works best with "roadmap" type.', 'fusion-builder' ),
+					'param_name'  => 'overlay_color',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'map_style',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Infobox Styling', 'fusion-builder' ),
-				'description' => esc_attr__( 'Custom styling setting only. Choose between default or custom info box.', 'fusion-builder' ),
-				'param_name'  => 'infobox',
-				'value'       => array(
-					'default' => esc_attr__( 'Default Infobox', 'fusion-builder' ),
-					'custom'  => esc_attr__( 'Custom Infobox', 'fusion-builder' ),
-				),
-				'default'     => 'default',
-				'dependency'  => array(
-					array(
-						'element'  => 'map_style',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'        => 'raw_textarea',
+					'heading'     => esc_attr__( 'Infobox Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Custom styling setting only. Type in custom info box content to replace address string. For multiple addresses, separate info box contents by using the | symbol. ex: InfoBox 1|InfoBox 2|InfoBox 3.', 'fusion-builder' ),
+					'param_name'  => 'infobox_content',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'map_style',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Info Box Text Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Custom styling setting only. Pick a color for the info box text.', 'fusion-builder' ),
-				'param_name'  => 'infobox_text_color',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'map_style',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Infobox Styling', 'fusion-builder' ),
+					'description' => esc_attr__( 'Custom styling setting only. Choose between default or custom info box.', 'fusion-builder' ),
+					'param_name'  => 'infobox',
+					'value'       => array(
+						'default' => esc_attr__( 'Default Infobox', 'fusion-builder' ),
+						'custom'  => esc_attr__( 'Custom Infobox', 'fusion-builder' ),
 					),
-					array(
-						'element'  => 'infobox',
-						'value'    => 'custom',
-						'operator' => '==',
-					),
-				),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Info Box Background Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Custom styling setting only. Pick a color for the info box background.', 'fusion-builder' ),
-				'param_name'  => 'infobox_background_color',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'map_style',
-						'value'    => 'custom',
-						'operator' => '==',
-					),
-					array(
-						'element'  => 'infobox',
-						'value'    => 'custom',
-						'operator' => '==',
+					'default'     => 'default',
+					'dependency'  => array(
+						array(
+							'element'  => 'map_style',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'textarea',
-				'heading'     => esc_attr__( 'Custom Marker Icon', 'fusion-builder' ),
-				'description' => esc_attr__( 'Custom styling setting only. Use full image urls for custom marker icons or input "theme" for our custom marker. For multiple addresses, separate icons by using the | symbol or use one for all. ex: Icon 1|Icon 2|Icon 3.', 'fusion-builder' ),
-				'param_name'  => 'icon',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'map_style',
-						'value'    => 'custom',
-						'operator' => '==',
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Info Box Text Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Custom styling setting only. Pick a color for the info box text.', 'fusion-builder' ),
+					'param_name'  => 'infobox_text_color',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'map_style',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
+						array(
+							'element'  => 'infobox',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
 					),
 				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Info Box Background Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Custom styling setting only. Pick a color for the info box background.', 'fusion-builder' ),
+					'param_name'  => 'infobox_background_color',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'map_style',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
+						array(
+							'element'  => 'infobox',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'textarea',
+					'heading'     => esc_attr__( 'Custom Marker Icon', 'fusion-builder' ),
+					'description' => esc_attr__( 'Custom styling setting only. Use full image urls for custom marker icons or input "theme" for our custom marker. For multiple addresses, separate icons by using the | symbol or use one for all. ex: Icon 1|Icon 2|Icon 3.', 'fusion-builder' ),
+					'param_name'  => 'icon',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'map_style',
+							'value'    => 'custom',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_google_map' );

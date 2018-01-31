@@ -9,7 +9,7 @@
 		<div class="fusion-builder-important-notice">
 			<p class="about-description">
 				<?php esc_html_e( 'Fusion Builder elements are fully customizable through a global set of options in the Fusion Element Options Panel. Click the button below to go to Fusion Element Options to see all the style settings available for of each element. Additionally, there are options below for general Fusion Builder settings.', 'fusion-builder' ); ?><br/>
-				<a href="<?php echo esc_url_raw( apply_filters( 'fusion_builder_options_url', admin_url( 'admin.php?page=fusion-element-options' ) ) ); ?>#animation_offset" class="button button-primary button-large avada-large-button"><?php esc_attr_e( 'Go To Fusion Element Options', 'fusion-builder' );?></a>
+				<a href="<?php echo esc_url_raw( apply_filters( 'fusion_builder_options_url', admin_url( 'admin.php?page=fusion-element-options' ) ) ); ?>#animation_offset" class="button button-primary button-large avada-large-button"><?php esc_attr_e( 'Go To Fusion Element Options', 'fusion-builder' ); ?></a>
 			</p>
 		</div>
 
@@ -116,7 +116,8 @@
 								echo $module['name'] . '</label>'; // WPCS: XSS ok.
 								echo '</li>';
 							}
-						endforeach; ?>
+						endforeach;
+						?>
 					</ul>
 				</div>
 			</div>
@@ -157,7 +158,8 @@
 							echo '<input type="checkbox" name="post_types[]" value="' . esc_attr( $post_type ) . '" ' . $checked . ' id="fusion_post_type_' . esc_attr( $i ) . '"/>'; // WPCS: XSS ok.
 							echo $post_type_obj->labels->singular_name . '</label>'; // WPCS: XSS ok.
 							echo '</li>';
-						endforeach; ?>
+						endforeach;
+						?>
 						<input type="hidden" name="post_types[]" value="fusion_template" />
 					</ul>
 				</div>
@@ -192,6 +194,29 @@
 					<a href="<?php echo esc_url_raw( admin_url( 'admin.php?page=fusion-builder-options&fusion_action=export&fusion_export_type=fusion_element' ) ); ?>" class="button" title="<?php esc_attr_e( 'Export Fusion Elements from your Library', 'fusion-builder' ); ?>"><?php esc_attr_e( 'Export Content', 'fusion-builder' ); ?></a>
 
 					<a href="<?php echo esc_url_raw( admin_url( 'admin.php?page=fusion-builder-options&fusion_action=export&fusion_export_type=fusion_template' ) ); ?>" class="button" title="<?php esc_attr_e( 'Export Fusion Templates from your Library', 'fusion-builder' ); ?>"><?php esc_attr_e( 'Export Templates', 'fusion-builder' ); ?></a>
+				</div>
+			</div>
+
+			<div class="fusion-builder-option">
+				<div class="fusion-builder-option-title">
+					<h3><?php esc_attr_e( 'Sticky Preview / Publish Buttons', 'fusion-builder' ); ?></h3>
+					<span class="fusion-builder-option-label">
+						<p><?php esc_attr_e( 'This option allows the preview and publish button to stick to the bottom of the page so you can quickly access them.', 'fusion-builder' ); ?></p>
+					</span>
+				</div>
+
+				<div class="fusion-builder-option-field">
+					<div class="fusion-form-radio-button-set ui-buttonset enable-builder-ui">
+						<?php
+						$enable_builder_sticky_publish_buttons = '1';
+						if ( isset( $existing_settings['enable_builder_sticky_publish_buttons'] ) ) {
+							$enable_builder_sticky_publish_buttons = $existing_settings['enable_builder_sticky_publish_buttons'];
+						}
+						?>
+						<input type="hidden" class="button-set-value" value="<?php echo esc_attr( $enable_builder_sticky_publish_buttons ); ?>" name="enable_builder_sticky_publish_buttons" id="enable_builder_sticky_publish_buttons">
+						<a data-value="1" class="ui-button buttonset-item<?php echo ( $enable_builder_sticky_publish_buttons ) ? ' ui-state-active' : ''; ?>" href="#"><?php esc_attr_e( 'On', 'fusion-builder' ); ?></a>
+						<a data-value="0" class="ui-button buttonset-item<?php echo ( ! $enable_builder_sticky_publish_buttons ) ? ' ui-state-active' : ''; ?>" href="#"><?php esc_attr_e( 'Off', 'fusion-builder' ); ?></a>
+					</div>
 				</div>
 			</div>
 

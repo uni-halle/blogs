@@ -1,3 +1,4 @@
+/* global fusionBuilderConfig */
 jQuery( document ).ready( function() {
 
     jQuery( '#fusion-builder-import-file' ).on( 'change', FusionPrepareUpload );
@@ -5,7 +6,6 @@ jQuery( document ).ready( function() {
     jQuery( '.fusion-builder-import-data' ).on( 'click', FusionUploadFiles );
 
     function FusionPrepareUpload( event ) {
-		var files;
         if ( '' !== jQuery( this ).val() ) {
             jQuery( '.fusion-builder-import-data' ).prop( 'disabled', false );
         } else {
@@ -42,7 +42,7 @@ jQuery( document ).ready( function() {
             processData: false,
             data: data,
             cache: false,
-            complete: function( data ) {
+            complete: function() {
                 inputField.val( '' );
                 jQuery( '.fusion-builder-import-success' ).show();
             }

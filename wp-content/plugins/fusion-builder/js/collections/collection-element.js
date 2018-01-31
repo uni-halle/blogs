@@ -1,3 +1,4 @@
+/* global FusionPageBuilderElements */
 var FusionPageBuilder = FusionPageBuilder || {};
 
 ( function( $ ) {
@@ -9,7 +10,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 			model: FusionPageBuilder.Element
 		} );
 
-        FusionPageBuilderElements = new FusionPageBuilder.Collection();
+        FusionPageBuilderElements = new FusionPageBuilder.Collection(); // jshint ignore:line
 
 	} );
 

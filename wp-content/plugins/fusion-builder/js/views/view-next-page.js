@@ -1,3 +1,4 @@
+/* global FusionPageBuilderViewManager, FusionPageBuilderEvents */
 var FusionPageBuilder = FusionPageBuilder || {};
 
 ( function( $ ) {
@@ -37,9 +38,6 @@ var FusionPageBuilder = FusionPageBuilder || {};
 					FusionPageBuilderEvents.trigger( 'fusion-element-removed' );
 				}
 			}
-
 		} );
-
 	} );
-
 } )( jQuery );

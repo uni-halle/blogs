@@ -140,7 +140,7 @@ class Fusion_Data {
 				'color' => '#cd201f',
 			),
 			'email'      => array(
-				'label' => esc_html__( 'Email Address', 'fusion-builder' ),
+				'label' => esc_attr__( 'Email Address', 'fusion-builder' ),
 				'color' => '#000000',
 			),
 		);
@@ -1051,7 +1051,7 @@ class Fusion_Data {
 	 * @return array
 	 */
 	public static function color_theme( $context ) {
-		$options = get_option( Avada::get_option_name(), array() );
+		$options = get_option( Fusion_Settings::get_option_name(), array() );
 
 		$light = array();
 		$light['header_bg_color'] = '#ffffff';
@@ -1088,7 +1088,7 @@ class Fusion_Data {
 		$light['body_typography']['color'] = '#747474';
 		$light['link_color'] = '#333333';
 		$light['menu_h45_bg_color'] = '#FFFFFF';
-		$light['menu_first_color'] = '#333333';
+		$light['nav_typography']['color'] = '#333333';
 		$light['menu_sub_bg_color'] = '#f2efef';
 		$light['menu_sub_color'] = '#333333';
 		$light['menu_bg_hover_color'] = '#f8f8f8';
@@ -1207,7 +1207,7 @@ class Fusion_Data {
 		$dark['body_typography']['color'] = '#aaa9a9';
 		$dark['link_color'] = '#ffffff';
 		$dark['menu_h45_bg_color'] = '#29292A';
-		$dark['menu_first_color'] = '#ffffff';
+		$dark['nav_typography']['color'] = '#ffffff';
 		$dark['menu_sub_bg_color'] = '#3e3e3e';
 		$dark['menu_sub_color'] = '#d6d6d6';
 		$dark['menu_bg_hover_color'] = '#383838';

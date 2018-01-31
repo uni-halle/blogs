@@ -115,52 +115,54 @@ if ( fusion_is_element_enabled( 'fusion_highlight' ) ) {
  * @since 1.0
  */
 function fusion_element_highlight() {
-	fusion_builder_map( array(
-		'name'           => esc_attr__( 'Highlight', 'fusion-builder' ),
-		'shortcode'      => 'fusion_highlight',
-		'icon'           => 'fusiona-H',
-		'generator_only' => true,
-		'params'         => array(
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Highlight Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Pick a highlight color.', 'fusion-builder' ),
-				'param_name'  => 'color',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Highlight With Round Edges', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to have rounded edges.', 'fusion-builder' ),
-				'param_name'  => 'rounded',
-				'value'       => array(
-					'no'  => __( 'No', 'fusion-builder' ),
-					'yes' => __( 'Yes', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'           => esc_attr__( 'Highlight', 'fusion-builder' ),
+			'shortcode'      => 'fusion_highlight',
+			'icon'           => 'fusiona-H',
+			'generator_only' => true,
+			'params'         => array(
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Highlight Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Pick a highlight color.', 'fusion-builder' ),
+					'param_name'  => 'color',
+					'value'       => '',
 				),
-				'default'     => 'no',
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Highlight With Round Edges', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to have rounded edges.', 'fusion-builder' ),
+					'param_name'  => 'rounded',
+					'value'       => array(
+						'no'  => __( 'No', 'fusion-builder' ),
+						'yes' => __( 'Yes', 'fusion-builder' ),
+					),
+					'default'     => 'no',
+				),
+				array(
+					'type'        => 'textarea',
+					'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Enter some text to highlight.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'textarea',
-				'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'Enter some text to highlight.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_highlight' );

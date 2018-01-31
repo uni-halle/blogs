@@ -139,13 +139,13 @@ class Fusion_Patcher_Filesystem {
 		if ( 'ftpext' === $wp_filesystem->method ) {
 			if ( 'avada' === self::$target ) {
 				$path_array  = explode( '/', Avada::$template_dir_path );
-				$target      = $wp_filesystem->wp_themes_dir() . $path_array[ count( $path_array ) -1 ];
+				$target      = $wp_filesystem->wp_themes_dir() . $path_array[ count( $path_array ) - 1 ];
 			} elseif ( 'fusion-core' === self::$target && defined( 'FUSION_CORE_PATH' ) ) {
 				$path_array  = explode( '/', FUSION_CORE_PATH );
-				$target      = $wp_filesystem->wp_plugins_dir() . $path_array[ count( $path_array ) -2 ];
+				$target      = $wp_filesystem->wp_plugins_dir() . $path_array[ count( $path_array ) - 2 ];
 			} elseif ( 'fusion-builder' === self::$target && defined( 'FUSION_BUILDER_PLUGIN_DIR' ) ) {
 				$path_array  = explode( '/', FUSION_CORE_PATH );
-				$target      = $wp_filesystem->wp_plugins_dir() . $path_array[ count( $path_array ) -2 ];
+				$target      = $wp_filesystem->wp_plugins_dir() . $path_array[ count( $path_array ) - 2 ];
 			}
 		}
 
@@ -171,10 +171,12 @@ class Fusion_Patcher_Filesystem {
 		if ( ! $this->status ) {
 
 			// The zip-file URL for this patch.
-			$patch_url = add_query_arg( array(
-				'action' => 'serve_patch',
-				'id'     => self::$patch_id,
-			), Fusion_Patcher_Client::$remote_patches_uri );
+			$patch_url = add_query_arg(
+				array(
+					'action' => 'serve_patch',
+					'id'     => self::$patch_id,
+				), Fusion_Patcher_Client::$remote_patches_uri
+			);
 
 			// Add a message to users for debugging purposes.
 			new Fusion_Patcher_Admin_Notices( 'write-permissions-' . self::$patch_id, sprintf( __( 'The patch could not be applied because of your specific server permissions. You have two options to remedy this. 1. <a %1$s>Download this zip file</a> which contains the files needed to fix this issue. Simply extract the zip file, and replace the files it contains with the same files on your server. DO NOT REPLACE THE ENTIRE FOLDER. 2. <a %2$s>Contact our support center</a>, submit a ticket and include your FTP credentials so one of our support experts can apply the fix for you. Once the fix is applied, click the "Dismiss Notices" button so this message is removed.', 'fusion-builder' ), 'target="_blank" href="' . $patch_url . '" style="color:#fff;text-decoration:underline;font-weight:bold;"', 'target="_blank" href="http://theme-fusion.com/support-ticket/" style="color:#fff;text-decoration:underline;font-weight:bold;"' ) );

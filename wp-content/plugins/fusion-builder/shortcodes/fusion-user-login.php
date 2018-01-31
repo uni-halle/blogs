@@ -128,7 +128,7 @@ if ( fusion_is_element_enabled( 'fusion_login' ) ||
 				$html = '<div ' . FusionBuilder::attributes( 'login-shortcode' ) . '>' . $styles;
 
 				if ( ! is_user_logged_in() ) {
-					$user_login = ( isset( $_GET['log'] ) ) ?  $_GET['log'] : '';
+					$user_login = ( isset( $_GET['log'] ) ) ? $_GET['log'] : '';
 
 					$html .= '<h3 class="fusion-login-heading">' . $heading . '</h3>';
 					$html .= '<div class="fusion-login-caption">' . $caption . '</div>';
@@ -337,6 +337,7 @@ if ( fusion_is_element_enabled( 'fusion_login' ) ||
 					if ( empty( $redirection_link ) ) {
 						$redirection_link = wp_get_referer();
 						if ( isset( $_SERVER['REQUEST_URI'] ) ) {
+							// @codingStandardsIgnoreLine
 							$redirection_link = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 						}
 
@@ -422,7 +423,7 @@ if ( fusion_is_element_enabled( 'fusion_login' ) ||
 
 				if (
 					'post-data' === $action || // Don't mess with POST requests.
-					'reauth' === $action    || // Need to reauthorize.
+					'reauth' === $action || // Need to reauthorize.
 					'logout' === $action       // User is logging out.
 				) {
 					return;
@@ -714,9 +715,11 @@ if ( fusion_is_element_enabled( 'fusion_login' ) ||
 			 */
 			public function attr() {
 
-				$attr = fusion_builder_visibility_atts( $this->args['hide_on_mobile'], array(
-					'class' => 'fusion-login-box fusion-login-box-' . $this->login_counter . ' fusion-login-box-' . $this->args['action'] . ' fusion-login-align-' . $this->args['text_align'],
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->args['hide_on_mobile'], array(
+						'class' => 'fusion-login-box fusion-login-box-' . $this->login_counter . ' fusion-login-box-' . $this->args['action'] . ' fusion-login-align-' . $this->args['text_align'],
+					)
+				);
 
 				if ( $this->args['class'] ) {
 					$attr['class'] .= ' ' . $this->args['class'];
@@ -884,143 +887,145 @@ function fusion_element_login() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'        => esc_attr__( 'User Login', 'fusion-builder' ),
-		'description' => esc_attr__( 'Enter some content for this block', 'fusion-builder' ),
-		'shortcode'   => 'fusion_login',
-		'icon'        => 'fusiona-calendar-check-o',
-		'params'      => array(
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Text Align', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the alignment of all content parts. "Text Flow" follows the default text align of the site. "Center" will center all elements.', 'fusion-builder' ),
-				'param_name'  => 'text_align',
-				'value'       => array(
-					''         => esc_attr__( 'Default', 'fusion-builder' ),
-					'textflow' => esc_attr__( 'Text Flow', 'fusion-builder' ),
-					'center'   => esc_attr__( 'Center', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'        => esc_attr__( 'User Login', 'fusion-builder' ),
+			'description' => esc_attr__( 'Enter some content for this block', 'fusion-builder' ),
+			'shortcode'   => 'fusion_login',
+			'icon'        => 'fusiona-calendar-check-o',
+			'params'      => array(
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Text Align', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the alignment of all content parts. "Text Flow" follows the default text align of the site. "Center" will center all elements.', 'fusion-builder' ),
+					'param_name'  => 'text_align',
+					'value'       => array(
+						''         => esc_attr__( 'Default', 'fusion-builder' ),
+						'textflow' => esc_attr__( 'Text Flow', 'fusion-builder' ),
+						'center'   => esc_attr__( 'Center', 'fusion-builder' ),
+					),
+					'default'     => '',
 				),
-				'default'     => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Heading', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a heading text.', 'fusion-builder' ),
-				'param_name'  => 'heading',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Heading Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a heading color.', 'fusion-builder' ),
-				'param_name'  => 'heading_color',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'heading',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Heading', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a heading text.', 'fusion-builder' ),
+					'param_name'  => 'heading',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Heading Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a heading color.', 'fusion-builder' ),
+					'param_name'  => 'heading_color',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'heading',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Caption', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a caption text.', 'fusion-builder' ),
-				'param_name'  => 'caption',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Caption Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a caption color.', 'fusion-builder' ),
-				'param_name'  => 'caption_color',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'caption',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Caption', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a caption text.', 'fusion-builder' ),
+					'param_name'  => 'caption',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Caption Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a caption color.', 'fusion-builder' ),
+					'param_name'  => 'caption_color',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'caption',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Button Span', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to have the button span the full width.', 'fusion-builder' ),
-				'param_name'  => 'button_fullwidth',
-				'value'       => array(
-					''    => esc_attr__( 'Default', 'fusion-builder' ),
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Button Span', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to have the button span the full width.', 'fusion-builder' ),
+					'param_name'  => 'button_fullwidth',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => '',
 				),
-				'default'     => '',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Form Background Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a background color for the form wrapping box.', 'fusion-builder' ),
+					'param_name'  => 'form_background_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'user_login_form_background_color' ),
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Link Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a link color.', 'fusion-builder' ),
+					'param_name'  => 'link_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'link_color' ),
+				),
+				array(
+					'type'        => 'link_selector',
+					'heading'     => esc_attr__( 'Redirection Link', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add the url to which a user should redirected after form submission. Leave empty to use the same page.', 'fusion-builder' ),
+					'param_name'  => 'redirection_link',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'link_selector',
+					'heading'     => esc_attr__( 'Register Link', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add the url the "Register" link should open.', 'fusion-builder' ),
+					'param_name'  => 'register_link',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'link_selector',
+					'heading'     => esc_attr__( 'Lost Password Link', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add the url the "Lost Password" link should open.', 'fusion-builder' ),
+					'param_name'  => 'lost_password_link',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Form Background Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a background color for the form wrapping box.', 'fusion-builder' ),
-				'param_name'  => 'form_background_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'user_login_form_background_color' ),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Link Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a link color.', 'fusion-builder' ),
-				'param_name'  => 'link_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'link_color' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Redirection Link', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add the url to which a user should redirected after form submission. Leave empty to use the same page.', 'fusion-builder' ),
-				'param_name'  => 'redirection_link',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Register Link', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add the url the "Register" link should open.', 'fusion-builder' ),
-				'param_name'  => 'register_link',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Lost Password Link', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add the url the "Lost Password" link should open.', 'fusion-builder' ),
-				'param_name'  => 'lost_password_link',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_login' );
 
@@ -1033,128 +1038,130 @@ function fusion_element_lost_password() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'      => esc_attr__( 'User Lost Password', 'fusion-builder' ),
-		'shortcode' => 'fusion_lost_password',
-		'icon'      => 'fusiona-calendar-check-o',
-		'params'    => array(
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Text Align', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the alignment of all content parts. "Text Flow" follows the default text align of the site. "Center" will center all elements.', 'fusion-builder' ),
-				'param_name'  => 'text_align',
-				'value'       => array(
-					''         => esc_attr__( 'Default', 'fusion-builder' ),
-					'textflow' => esc_attr__( 'Text Flow', 'fusion-builder' ),
-					'center'   => esc_attr__( 'Center', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'      => esc_attr__( 'User Lost Password', 'fusion-builder' ),
+			'shortcode' => 'fusion_lost_password',
+			'icon'      => 'fusiona-calendar-check-o',
+			'params'    => array(
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Text Align', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the alignment of all content parts. "Text Flow" follows the default text align of the site. "Center" will center all elements.', 'fusion-builder' ),
+					'param_name'  => 'text_align',
+					'value'       => array(
+						''         => esc_attr__( 'Default', 'fusion-builder' ),
+						'textflow' => esc_attr__( 'Text Flow', 'fusion-builder' ),
+						'center'   => esc_attr__( 'Center', 'fusion-builder' ),
+					),
+					'default'     => '',
 				),
-				'default'     => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Heading', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a heading text.', 'fusion-builder' ),
-				'param_name'  => 'heading',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Heading Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a heading color.', 'fusion-builder' ),
-				'param_name'  => 'heading_color',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'heading',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Heading', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a heading text.', 'fusion-builder' ),
+					'param_name'  => 'heading',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Heading Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a heading color.', 'fusion-builder' ),
+					'param_name'  => 'heading_color',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'heading',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Caption', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a caption text.', 'fusion-builder' ),
-				'param_name'  => 'caption',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Caption Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a caption color.', 'fusion-builder' ),
-				'param_name'  => 'caption_color',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'caption',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Caption', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a caption text.', 'fusion-builder' ),
+					'param_name'  => 'caption',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Caption Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a caption color.', 'fusion-builder' ),
+					'param_name'  => 'caption_color',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'caption',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Button Span', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to have the button span the full width.', 'fusion-builder' ),
-				'param_name'  => 'button_fullwidth',
-				'value'       => array(
-					''    => esc_attr__( 'Default', 'fusion-builder' ),
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Button Span', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to have the button span the full width.', 'fusion-builder' ),
+					'param_name'  => 'button_fullwidth',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => '',
 				),
-				'default'     => '',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Form Background Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a background color for the form wrapping box.', 'fusion-builder' ),
+					'param_name'  => 'form_background_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'user_login_form_background_color' ),
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Link Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a link color.', 'fusion-builder' ),
+					'param_name'  => 'link_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'link_color' ),
+				),
+				array(
+					'type'        => 'link_selector',
+					'heading'     => esc_attr__( 'Redirection Link', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add the url to which a user should redirected after form submission. Leave empty to use the same page.', 'fusion-builder' ),
+					'param_name'  => 'redirection_link',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Form Background Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a background color for the form wrapping box.', 'fusion-builder' ),
-				'param_name'  => 'form_background_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'user_login_form_background_color' ),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Link Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a link color.', 'fusion-builder' ),
-				'param_name'  => 'link_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'link_color' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Redirection Link', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add the url to which a user should redirected after form submission. Leave empty to use the same page.', 'fusion-builder' ),
-				'param_name'  => 'redirection_link',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_lost_password' );
 
@@ -1167,127 +1174,129 @@ function fusion_element_register() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'      => esc_attr__( 'User Register', 'fusion-builder' ),
-		'shortcode' => 'fusion_register',
-		'icon'      => 'fusiona-calendar-check-o',
-		'params'    => array(
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Text Align', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the alignment of all content parts. "Text Flow" follows the default text align of the site. "Center" will center all elements.', 'fusion-builder' ),
-				'param_name'  => 'text_align',
-				'value'       => array(
-					''         => esc_attr__( 'Default', 'fusion-builder' ),
-					'textflow' => esc_attr__( 'Text Flow', 'fusion-builder' ),
-					'center'   => esc_attr__( 'Center', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'      => esc_attr__( 'User Register', 'fusion-builder' ),
+			'shortcode' => 'fusion_register',
+			'icon'      => 'fusiona-calendar-check-o',
+			'params'    => array(
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Text Align', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the alignment of all content parts. "Text Flow" follows the default text align of the site. "Center" will center all elements.', 'fusion-builder' ),
+					'param_name'  => 'text_align',
+					'value'       => array(
+						''         => esc_attr__( 'Default', 'fusion-builder' ),
+						'textflow' => esc_attr__( 'Text Flow', 'fusion-builder' ),
+						'center'   => esc_attr__( 'Center', 'fusion-builder' ),
+					),
+					'default'     => '',
 				),
-				'default'     => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Heading', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a heading text.', 'fusion-builder' ),
-				'param_name'  => 'heading',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Heading Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a heading color.', 'fusion-builder' ),
-				'param_name'  => 'heading_color',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'heading',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Heading', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a heading text.', 'fusion-builder' ),
+					'param_name'  => 'heading',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Heading Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a heading color.', 'fusion-builder' ),
+					'param_name'  => 'heading_color',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'heading',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Caption', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a caption text.', 'fusion-builder' ),
-				'param_name'  => 'caption',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Caption Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a caption color.', 'fusion-builder' ),
-				'param_name'  => 'caption_color',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'caption',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Caption', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a caption text.', 'fusion-builder' ),
+					'param_name'  => 'caption',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Caption Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a caption color.', 'fusion-builder' ),
+					'param_name'  => 'caption_color',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'caption',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Button Span', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to have the button span the full width.', 'fusion-builder' ),
-				'param_name'  => 'button_fullwidth',
-				'value'       => array(
-					''    => esc_attr__( 'Default', 'fusion-builder' ),
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Button Span', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to have the button span the full width.', 'fusion-builder' ),
+					'param_name'  => 'button_fullwidth',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => '',
 				),
-				'default'     => '',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Form Background Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a background color for the form wrapping box.', 'fusion-builder' ),
+					'param_name'  => 'form_background_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'user_login_form_background_color' ),
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Link Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a link color.', 'fusion-builder' ),
+					'param_name'  => 'link_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'link_color' ),
+				),
+				array(
+					'type'        => 'link_selector',
+					'heading'     => esc_attr__( 'Redirection Link', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add the url to which a user should redirected after form submission. Leave empty to use the same page.', 'fusion-builder' ),
+					'param_name'  => 'redirection_link',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Form Background Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a background color for the form wrapping box.', 'fusion-builder' ),
-				'param_name'  => 'form_background_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'user_login_form_background_color' ),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Link Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a link color.', 'fusion-builder' ),
-				'param_name'  => 'link_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'link_color' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Redirection Link', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add the url to which a user should redirected after form submission. Leave empty to use the same page.', 'fusion-builder' ),
-				'param_name'  => 'redirection_link',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_register' );

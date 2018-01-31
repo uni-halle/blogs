@@ -1,3 +1,4 @@
+/* global FusionPageBuilderApp */
 ( function( $ ) {
 
 	$( document ).ready( function() {

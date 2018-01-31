@@ -103,9 +103,11 @@ if ( fusion_is_element_enabled( 'fusion_slider' ) ) {
 			 */
 			public function attr() {
 
-				$attr = fusion_builder_visibility_atts( $this->parent_args['hide_on_mobile'], array(
-					'class' => 'fusion-slider-sc flexslider', // FIXXXME had clearfix class; group mixin working?
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->parent_args['hide_on_mobile'], array(
+						'class' => 'fusion-slider-sc flexslider', // FIXXXME had clearfix class; group mixin working?
+					)
+				);
 
 				if ( $this->parent_args['hover_type'] ) {
 					$attr['class'] .= ' flexslider-hover-type-' . $this->parent_args['hover_type'];
@@ -329,79 +331,81 @@ if ( fusion_is_element_enabled( 'fusion_slider' ) ) {
  * @since 1.0
  */
 function fusion_element_slider() {
-	fusion_builder_map( array(
-		'name'          => esc_attr__( 'Slider', 'fusion-builder' ),
-		'shortcode'     => 'fusion_slider',
-		'multi'         => 'multi_element_parent',
-		'element_child' => 'fusion_slide',
-		'icon'          => 'fusiona-uniF61C',
-		'preview'       => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-slider-preview.php',
-		'preview_id'    => 'fusion-builder-block-module-slider-preview-template',
-		'params'        => array(
-			array(
-				'type'        => 'tinymce',
-				'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'Enter some content for this contentbox.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => '[fusion_slide type="image" link="" linktarget="_self" lightbox="no" /]',
-			),
-			array(
-				'type'             => 'multiple_upload',
-				'heading'          => esc_attr__( 'Bulk Image Upload', 'fusion-builder' ),
-				'description'      => __( 'This option allows you to select multiple images at once and they will populate into individual items. It saves time instead of adding one image at a time.', 'fusion-builder' ),
-				'param_name'       => 'multiple_upload',
-				'element_target'   => 'fusion_slide',
-				'param_target'     => 'image',
-				'remove_from_atts' => true,
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Hover Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the hover effect type.', 'fusion-builder' ),
-				'param_name'  => 'hover_type',
-				'value'       => array(
-					'none'    => esc_attr__( 'None', 'fusion-builder' ),
-					'zoomin'  => esc_attr__( 'Zoom In', 'fusion-builder' ),
-					'zoomout' => esc_attr__( 'Zoom Out', 'fusion-builder' ),
-					'liftup'  => esc_attr__( 'Lift Up', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'          => esc_attr__( 'Slider', 'fusion-builder' ),
+			'shortcode'     => 'fusion_slider',
+			'multi'         => 'multi_element_parent',
+			'element_child' => 'fusion_slide',
+			'icon'          => 'fusiona-uniF61C',
+			'preview'       => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-slider-preview.php',
+			'preview_id'    => 'fusion-builder-block-module-slider-preview-template',
+			'params'        => array(
+				array(
+					'type'        => 'tinymce',
+					'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Enter some content for this contentbox.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => '[fusion_slide type="image" link="" linktarget="_self" lightbox="no" /]',
 				),
-				'default'     => 'none',
-			),
-			array(
-				'type'             => 'dimension',
-				'remove_from_atts' => true,
-				'heading'          => esc_attr__( 'Image Size Dimensions', 'fusion-builder' ),
-				'description'      => esc_attr__( 'Dimensions in percentage (%) or pixels (px).', 'fusion-builder' ),
-				'param_name'       => 'dimensions',
-				'value'            => array(
-					'width'  => '100%',
-					'height' => '100%',
+				array(
+					'type'             => 'multiple_upload',
+					'heading'          => esc_attr__( 'Bulk Image Upload', 'fusion-builder' ),
+					'description'      => __( 'This option allows you to select multiple images at once and they will populate into individual items. It saves time instead of adding one image at a time.', 'fusion-builder' ),
+					'param_name'       => 'multiple_upload',
+					'element_target'   => 'fusion_slide',
+					'param_target'     => 'image',
+					'remove_from_atts' => true,
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Hover Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the hover effect type.', 'fusion-builder' ),
+					'param_name'  => 'hover_type',
+					'value'       => array(
+						'none'    => esc_attr__( 'None', 'fusion-builder' ),
+						'zoomin'  => esc_attr__( 'Zoom In', 'fusion-builder' ),
+						'zoomout' => esc_attr__( 'Zoom Out', 'fusion-builder' ),
+						'liftup'  => esc_attr__( 'Lift Up', 'fusion-builder' ),
+					),
+					'default'     => 'none',
+				),
+				array(
+					'type'             => 'dimension',
+					'remove_from_atts' => true,
+					'heading'          => esc_attr__( 'Image Size Dimensions', 'fusion-builder' ),
+					'description'      => esc_attr__( 'Dimensions in percentage (%) or pixels (px).', 'fusion-builder' ),
+					'param_name'       => 'dimensions',
+					'value'            => array(
+						'width'  => '100%',
+						'height' => '100%',
+					),
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
 				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_slider' );
 
@@ -409,128 +413,130 @@ add_action( 'fusion_builder_before_init', 'fusion_element_slider' );
  * Map shortcode to Fusion Builder.
  */
 function fusion_element_slide() {
-	fusion_builder_map( array(
-		'name'              => esc_attr__( 'Slide', 'fusion-builder' ),
-		'description'       => esc_attr__( 'Enter some content for this textblock.', 'fusion-builder' ),
-		'shortcode'         => 'fusion_slide',
-		'option_dependency' => 'type',
-		'hide_from_builder' => true,
-		'params'            => array(
-			array(
-				'type'        => 'textarea',
-				'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'Content', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => '',
-				'hidden'      => true,
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Slide Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose a video or image slide.', 'fusion-builder' ),
-				'param_name'  => 'type',
-				'value'       => array(
-					'image' => esc_attr__( 'Image', 'fusion-builder' ),
-					'video' => esc_attr__( 'Video', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'              => esc_attr__( 'Slide', 'fusion-builder' ),
+			'description'       => esc_attr__( 'Enter some content for this textblock.', 'fusion-builder' ),
+			'shortcode'         => 'fusion_slide',
+			'option_dependency' => 'type',
+			'hide_from_builder' => true,
+			'params'            => array(
+				array(
+					'type'        => 'textarea',
+					'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Content', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => '',
+					'hidden'      => true,
 				),
-				'default'     => 'image',
-			),
-			array(
-				'type'             => 'upload',
-				'heading'          => esc_attr__( 'Image', 'fusion-builder' ),
-				'description'      => esc_attr__( 'Upload an image to display.', 'fusion-builder' ),
-				'param_name'       => 'image',
-				'remove_from_atts' => true,
-				'value'            => '',
-				'dependency'       => array(
-					array(
-						'element'  => 'type',
-						'value'    => 'image',
-						'operator' => '==',
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Slide Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose a video or image slide.', 'fusion-builder' ),
+					'param_name'  => 'type',
+					'value'       => array(
+						'image' => esc_attr__( 'Image', 'fusion-builder' ),
+						'video' => esc_attr__( 'Video', 'fusion-builder' ),
+					),
+					'default'     => 'image',
+				),
+				array(
+					'type'             => 'upload',
+					'heading'          => esc_attr__( 'Image', 'fusion-builder' ),
+					'description'      => esc_attr__( 'Upload an image to display.', 'fusion-builder' ),
+					'param_name'       => 'image',
+					'remove_from_atts' => true,
+					'value'            => '',
+					'dependency'       => array(
+						array(
+							'element'  => 'type',
+							'value'    => 'image',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'             => 'textarea',
+					'heading'          => esc_attr__( 'Video Element or Video Embed Code', 'fusion-builder' ),
+					'description'      => __( 'Click the Youtube or Vimeo Element button below then enter your unique video ID, or copy and paste your video embed code. <p><a href="#" class="insert-slider-video" data-type="fusion_youtube">Add YouTube Video</a></p><p><a href="#" class="insert-slider-video" data-type="fusion_vimeo">Add Vimeo Video</a></p>.', 'fusion-builder' ),
+					'param_name'       => 'video',
+					'remove_from_atts' => true,
+					'value'            => '',
+					'dependency'       => array(
+						array(
+							'element'  => 'type',
+							'value'    => 'video',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Full Image Link or External Link', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add the url of where the image will link to. If lightbox option is enabled, you have to add the full image link to show it in the lightbox.', 'fusion-builder' ),
+					'param_name'  => 'link',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'type',
+							'value'    => 'image',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Lighbox', 'fusion-builder' ),
+					'description' => esc_attr__( 'Show image in lightbox. Lightbox must be enabled in Theme Options or the image will open up in the same tab by itself.', 'fusion-builder' ),
+					'param_name'  => 'lightbox',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'no',
+					'dependency'  => array(
+						array(
+							'element'  => 'type',
+							'value'    => 'image',
+							'operator' => '==',
+						),
+						array(
+							'element'  => 'link',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Link Target', 'fusion-builder' ),
+					'description' => __( '_self = open in same window <br />_blank = open in new window.', 'fusion-builder' ),
+					'param_name'  => 'linktarget',
+					'value'       => array(
+						'_self'  => esc_attr__( '_self', 'fusion-builder' ),
+						'_blank' => esc_attr__( '_blank', 'fusion-builder' ),
+					),
+					'default'     => '_self',
+					'dependency'  => array(
+						array(
+							'element'  => 'type',
+							'value'    => 'image',
+							'operator' => '==',
+						),
+						array(
+							'element'  => 'link',
+							'value'    => '',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'lightbox',
+							'value'    => 'no',
+							'operator' => '==',
+						),
 					),
 				),
 			),
-			array(
-				'type'             => 'textarea',
-				'heading'          => esc_attr__( 'Video Element or Video Embed Code', 'fusion-builder' ),
-				'description'      => __( 'Click the Youtube or Vimeo Element button below then enter your unique video ID, or copy and paste your video embed code. <p><a href="#" class="insert-slider-video" data-type="fusion_youtube">Add YouTube Video</a></p><p><a href="#" class="insert-slider-video" data-type="fusion_vimeo">Add Vimeo Video</a></p>.', 'fusion-builder' ),
-				'param_name'       => 'video',
-				'remove_from_atts' => true,
-				'value'            => '',
-				'dependency'       => array(
-					array(
-						'element'  => 'type',
-						'value'    => 'video',
-						'operator' => '==',
-					),
-				),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Full Image Link or External Link', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add the url of where the image will link to. If lightbox option is enabled, you have to add the full image link to show it in the lightbox.', 'fusion-builder' ),
-				'param_name'  => 'link',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'type',
-						'value'    => 'image',
-						'operator' => '==',
-					),
-				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Lighbox', 'fusion-builder' ),
-				'description' => esc_attr__( 'Show image in Lightbox.', 'fusion-builder' ),
-				'param_name'  => 'lightbox',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'default'     => 'no',
-				'dependency'  => array(
-					array(
-						'element'  => 'type',
-						'value'    => 'image',
-						'operator' => '==',
-					),
-					array(
-						'element'  => 'link',
-						'value'    => '',
-						'operator' => '!=',
-					),
-				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Link Target', 'fusion-builder' ),
-				'description' => __( '_self = open in same window <br />_blank = open in new window.', 'fusion-builder' ),
-				'param_name'  => 'linktarget',
-				'value'       => array(
-					'_self'  => esc_attr__( '_self', 'fusion-builder' ),
-					'_blank' => esc_attr__( '_blank', 'fusion-builder' ),
-				),
-				'default'     => '_self',
-				'dependency'  => array(
-					array(
-						'element'  => 'type',
-						'value'    => 'image',
-						'operator' => '==',
-					),
-					array(
-						'element'  => 'link',
-						'value'    => '',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'lightbox',
-						'value'    => 'no',
-						'operator' => '==',
-					),
-				),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_slide' );

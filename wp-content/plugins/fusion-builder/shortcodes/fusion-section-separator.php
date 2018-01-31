@@ -202,9 +202,11 @@ if ( fusion_is_element_enabled( 'fusion_section_separator' ) ) {
 
 				global $fusion_settings;
 
-				$attr = fusion_builder_visibility_atts( $this->args['hide_on_mobile'], array(
-					'class' => 'fusion-section-separator section-separator',
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->args['hide_on_mobile'], array(
+						'class' => 'fusion-section-separator section-separator',
+					)
+				);
 
 				$attr['style'] = '';
 
@@ -220,7 +222,7 @@ if ( fusion_is_element_enabled( 'fusion_section_separator' ) ) {
 							$attr['style'] = 'border:' . $this->args['bordersize'] . ' solid ' . $this->args['bordercolor'] . ';';
 						}
 					}
-				} elseif ( 'bigtriangle' === $this->args['divider_type'] || 'slant' === $this->args['divider_type'] || 'big-half-circle' === $this->args['divider_type'] || 'clouds' === $this->args['divider_type']  || 'curved' === $this->args['divider_type'] ) {
+				} elseif ( 'bigtriangle' === $this->args['divider_type'] || 'slant' === $this->args['divider_type'] || 'big-half-circle' === $this->args['divider_type'] || 'clouds' === $this->args['divider_type'] || 'curved' === $this->args['divider_type'] ) {
 					$attr['style'] = 'padding:0;';
 				}
 
@@ -245,8 +247,8 @@ if ( fusion_is_element_enabled( 'fusion_section_separator' ) ) {
 						$margin_left  = fusion_builder_single_dimension( $fusion_col_type['padding'], 'left' );
 						$margin_right = fusion_builder_single_dimension( $fusion_col_type['padding'], 'right' );
 					}
-					$margin_left_unitless  = filter_var( $margin_left, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
-					$margin_right_unitless = filter_var( $margin_right, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+					$margin_left_unitless  = (int) filter_var( $margin_left, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
+					$margin_right_unitless = (int) filter_var( $margin_right, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 
 					$container_percentage  = 100 - $margin_left_unitless - $margin_right_unitless;
 					if ( false !== strpos( $margin_left, '%' ) ) {
@@ -551,185 +553,187 @@ function fusion_element_section_separator() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'      => esc_attr__( 'Section Separator', 'fusion-builder' ),
-		'shortcode' => 'fusion_section_separator',
-		'icon'      => 'fusiona-ellipsis',
-		'params'    => array(
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Section Separator Style', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the type of the section separator', 'fusion-builder' ),
-				'param_name'  => 'divider_type',
-				'value'       => array(
-					'triangle'        => esc_attr__( 'Triangle', 'fusion-builder' ),
-					'slant'           => esc_attr__( 'Slant', 'fusion-builder' ),
-					'bigtriangle'     => esc_attr__( 'Big Triangle', 'fusion-builder' ),
-					'rounded-split'   => esc_attr__( 'Rounded Split', 'fusion-builder' ),
-					'curved'          => esc_attr__( 'Curved', 'fusion-builder' ),
-					'big-half-circle' => esc_attr__( 'Big Half Circle', 'fusion-builder' ),
-					'clouds'          => esc_attr__( 'Clouds', 'fusion-builder' ),
-				),
-				'default' => 'triangle',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Horizontal Position of the Section Separator', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the horizontal position of the section separator.', 'fusion-builder' ),
-				'param_name'  => 'divider_position',
-				'value'       => array(
-					'left'   => esc_attr__( 'Left', 'fusion-builder' ),
-					'center' => esc_attr__( 'Center', 'fusion-builder' ),
-					'right'  => esc_attr__( 'Right', 'fusion-builder' ),
-				),
-				'default'     => 'center',
-				'dependency'  => array(
-					array(
-						'element'  => 'divider_type',
-						'value'    => 'triangle',
-						'operator' => '!=',
+	fusion_builder_map(
+		array(
+			'name'      => esc_attr__( 'Section Separator', 'fusion-builder' ),
+			'shortcode' => 'fusion_section_separator',
+			'icon'      => 'fusiona-ellipsis',
+			'params'    => array(
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Section Separator Style', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the type of the section separator', 'fusion-builder' ),
+					'param_name'  => 'divider_type',
+					'value'       => array(
+						'triangle'        => esc_attr__( 'Triangle', 'fusion-builder' ),
+						'slant'           => esc_attr__( 'Slant', 'fusion-builder' ),
+						'bigtriangle'     => esc_attr__( 'Big Triangle', 'fusion-builder' ),
+						'rounded-split'   => esc_attr__( 'Rounded Split', 'fusion-builder' ),
+						'curved'          => esc_attr__( 'Curved', 'fusion-builder' ),
+						'big-half-circle' => esc_attr__( 'Big Half Circle', 'fusion-builder' ),
+						'clouds'          => esc_attr__( 'Clouds', 'fusion-builder' ),
 					),
-					array(
-						'element'  => 'divider_type',
-						'value'    => 'rounded-split',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'divider_type',
-						'value'    => 'big-half-circle',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'divider_type',
-						'value'    => 'clouds',
-						'operator' => '!=',
-					),
+					'default' => 'triangle',
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Vertical Position of the Section Separator', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the vertical position of the section separator.', 'fusion-builder' ),
-				'param_name'  => 'divider_candy',
-				'value'       => array(
-					'top'        => esc_attr__( 'Top', 'fusion-builder' ),
-					'bottom'     => esc_attr__( 'Bottom', 'fusion-builder' ),
-					'bottom,top' => esc_attr__( 'Top and Bottom', 'fusion-builder' ),
-				),
-				'default'      => 'top',
-				'dependency'   => array(
-					array(
-						'element'  => 'divider_type',
-						'value'    => 'clouds',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Horizontal Position of the Section Separator', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the horizontal position of the section separator.', 'fusion-builder' ),
+					'param_name'  => 'divider_position',
+					'value'       => array(
+						'left'   => esc_attr__( 'Left', 'fusion-builder' ),
+						'center' => esc_attr__( 'Center', 'fusion-builder' ),
+						'right'  => esc_attr__( 'Right', 'fusion-builder' ),
+					),
+					'default'     => 'center',
+					'dependency'  => array(
+						array(
+							'element'  => 'divider_type',
+							'value'    => 'triangle',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'divider_type',
+							'value'    => 'rounded-split',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'divider_type',
+							'value'    => 'big-half-circle',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'divider_type',
+							'value'    => 'clouds',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'iconpicker',
-				'heading'     => esc_attr__( 'Icon', 'fusion-builder' ),
-				'param_name'  => 'icon',
-				'value'       => '',
-				'description' => esc_attr__( 'Click an icon to select, click again to deselect.', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'divider_type',
-						'value'    => 'triangle',
-						'operator' => '==',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Vertical Position of the Section Separator', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the vertical position of the section separator.', 'fusion-builder' ),
+					'param_name'  => 'divider_candy',
+					'value'       => array(
+						'top'        => esc_attr__( 'Top', 'fusion-builder' ),
+						'bottom'     => esc_attr__( 'Bottom', 'fusion-builder' ),
+						'bottom,top' => esc_attr__( 'Top and Bottom', 'fusion-builder' ),
+					),
+					'default'      => 'top',
+					'dependency'   => array(
+						array(
+							'element'  => 'divider_type',
+							'value'    => 'clouds',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Icon Color', 'fusion-builder' ),
-				'description' => '',
-				'param_name'  => 'icon_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'icon_color' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'divider_type',
-						'value'    => 'triangle',
-						'operator' => '==',
-					),
-					array(
-						'element'  => 'icon',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'iconpicker',
+					'heading'     => esc_attr__( 'Icon', 'fusion-builder' ),
+					'param_name'  => 'icon',
+					'value'       => '',
+					'description' => esc_attr__( 'Click an icon to select, click again to deselect.', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'divider_type',
+							'value'    => 'triangle',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => __( 'Border', 'fusion-builder' ),
-				'heading'     => esc_attr__( 'Border', 'fusion-builder' ),
-				'description' => esc_attr__( 'In pixels.', 'fusion-builder' ),
-				'param_name'  => 'bordersize',
-				'value'       => '',
-				'min'         => '0',
-				'max'         => '50',
-				'step'        => '1',
-				'default'     => $fusion_settings->get( 'section_sep_border_size' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'divider_type',
-						'value'    => 'triangle',
-						'operator' => '==',
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Icon Color', 'fusion-builder' ),
+					'description' => '',
+					'param_name'  => 'icon_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'icon_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'divider_type',
+							'value'    => 'triangle',
+							'operator' => '==',
+						),
+						array(
+							'element'  => 'icon',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => __( 'Border Color', 'fusion-builder' ),
-				'heading'     => esc_attr__( 'Border Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the border color. ', 'fusion-builder' ),
-				'param_name'  => 'bordercolor',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'section_sep_border_color' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'divider_type',
-						'value'    => 'triangle',
-						'operator' => '==',
-					),
-					array(
-						'element'  => 'bordersize',
-						'value'    => '0',
-						'operator' => '!=',
+				array(
+					'type'        => 'range',
+					'heading'     => __( 'Border', 'fusion-builder' ),
+					'heading'     => esc_attr__( 'Border', 'fusion-builder' ),
+					'description' => esc_attr__( 'In pixels.', 'fusion-builder' ),
+					'param_name'  => 'bordersize',
+					'value'       => '',
+					'min'         => '0',
+					'max'         => '50',
+					'step'        => '1',
+					'default'     => $fusion_settings->get( 'section_sep_border_size' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'divider_type',
+							'value'    => 'triangle',
+							'operator' => '==',
+						),
 					),
 				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => __( 'Border Color', 'fusion-builder' ),
+					'heading'     => esc_attr__( 'Border Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the border color. ', 'fusion-builder' ),
+					'param_name'  => 'bordercolor',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'section_sep_border_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'divider_type',
+							'value'    => 'triangle',
+							'operator' => '==',
+						),
+						array(
+							'element'  => 'bordersize',
+							'value'    => '0',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Background Color of the Section Separator', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the background color of the section separator style. Leave empty for default value of #f6f6f6.', 'fusion-builder' ),
+					'param_name'  => 'backgroundcolor',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'section_sep_bg' ),
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+				),
 			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Background Color of the Section Separator', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the background color of the section separator style. Leave empty for default value of #f6f6f6.', 'fusion-builder' ),
-				'param_name'  => 'backgroundcolor',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'section_sep_bg' ),
-			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_section_separator' );

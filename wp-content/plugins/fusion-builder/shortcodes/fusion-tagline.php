@@ -98,6 +98,10 @@ if ( fusion_is_element_enabled( 'fusion_tagline_box' ) ) {
 
 				$defaults['button_type'] = strtolower( $defaults['button_type'] );
 
+				if ( base64_encode( base64_decode( $defaults['description'] ) ) === $defaults['description'] ) {
+					$defaults['description'] = base64_decode( $defaults['description'] );
+				}
+
 				extract( $defaults );
 
 				$this->args = $defaults;
@@ -135,7 +139,7 @@ if ( fusion_is_element_enabled( 'fusion_tagline_box' ) ) {
 						$button_margin_class = ' fusion-desktop-button-margin';
 					}
 
-					$this->args['button_class'] = ' fusion-desktop-button continue' . $button_margin_class;
+					$this->args['button_class'] = ' fusion-desktop-button fusion-tagline-button continue' . $button_margin_class;
 					$desktop_button = '<a ' . FusionBuilder::attributes( 'tagline-shortcode-button' ) . '><span>' . $button . '</span></a>';
 				}
 
@@ -178,17 +182,21 @@ if ( fusion_is_element_enabled( 'fusion_tagline_box' ) ) {
 			public function attr() {
 				global $fusion_library;
 
-				$attr = fusion_builder_visibility_atts( $this->args['hide_on_mobile'], array(
-					'class' => 'fusion-reading-box-container reading-box-container-' . $this->tagline_box_counter,
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->args['hide_on_mobile'], array(
+						'class' => 'fusion-reading-box-container reading-box-container-' . $this->tagline_box_counter,
+					)
+				);
 
 				if ( $this->args['animation_type'] ) {
-					$animations = FusionBuilder::animations( array(
-						'type'      => $this->args['animation_type'],
-						'direction' => $this->args['animation_direction'],
-						'speed'     => $this->args['animation_speed'],
-						'offset'    => $this->args['animation_offset'],
-					) );
+					$animations = FusionBuilder::animations(
+						array(
+							'type'      => $this->args['animation_type'],
+							'direction' => $this->args['animation_direction'],
+							'speed'     => $this->args['animation_speed'],
+							'offset'    => $this->args['animation_offset'],
+						)
+					);
 
 					$attr = array_merge( $attr, $animations );
 
@@ -430,384 +438,386 @@ function fusion_element_tagline_box() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'            => esc_attr__( 'Tagline Box', 'fusion-builder' ),
-		'shortcode'       => 'fusion_tagline_box',
-		'icon'            => 'fusiona-list-alt',
-		'preview'         => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-tagline-preview.php',
-		'preview_id'      => 'fusion-builder-block-module-tagline-preview-template',
-		'allow_generator' => true,
-		'params'          => array(
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Background Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the background color. ', 'fusion-builder' ),
-				'param_name'  => 'backgroundcolor',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'tagline_bg' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Shadow', 'fusion-builder' ),
-				'description' => esc_attr__( 'Show the shadow below the box.', 'fusion-builder' ),
-				'param_name'  => 'shadow',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'            => esc_attr__( 'Tagline Box', 'fusion-builder' ),
+			'shortcode'       => 'fusion_tagline_box',
+			'icon'            => 'fusiona-list-alt',
+			'preview'         => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-tagline-preview.php',
+			'preview_id'      => 'fusion-builder-block-module-tagline-preview-template',
+			'allow_generator' => true,
+			'params'          => array(
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Background Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the background color. ', 'fusion-builder' ),
+					'param_name'  => 'backgroundcolor',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'tagline_bg' ),
 				),
-				'default'     => 'no',
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Shadow Opacity', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the opacity of the shadow.', 'fusion-builder' ),
-				'param_name'  => 'shadowopacity',
-				'value'       => array(
-					'1'   => '1',
-					'0.1' => '0.1',
-					'0.2' => '0.2',
-					'0.3' => '0.3',
-					'0.4' => '0.4',
-					'0.5' => '0.5',
-					'0.6' => '0.6',
-					'0.7' => '0.7',
-					'0.8' => '0.8',
-					'0.9' => '0.9',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Shadow', 'fusion-builder' ),
+					'description' => esc_attr__( 'Show the shadow below the box.', 'fusion-builder' ),
+					'param_name'  => 'shadow',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'no',
 				),
-				'default'     => '0.7',
-				'dependency'  => array(
-					array(
-						'element'  => 'shadow',
-						'value'    => 'yes',
-						'operator' => '==',
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Shadow Opacity', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the opacity of the shadow.', 'fusion-builder' ),
+					'param_name'  => 'shadowopacity',
+					'value'       => array(
+						'1'   => '1',
+						'0.1' => '0.1',
+						'0.2' => '0.2',
+						'0.3' => '0.3',
+						'0.4' => '0.4',
+						'0.5' => '0.5',
+						'0.6' => '0.6',
+						'0.7' => '0.7',
+						'0.8' => '0.8',
+						'0.9' => '0.9',
+					),
+					'default'     => '0.7',
+					'dependency'  => array(
+						array(
+							'element'  => 'shadow',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Border Size', 'fusion-builder' ),
-				'param_name'  => 'border',
-				'description' => esc_attr__( 'In pixels.', 'fusion-builder' ),
-				'min'         => '0',
-				'max'         => '20',
-				'value'       => '1',
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Border Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the border color. ', 'fusion-builder' ),
-				'param_name'  => 'bordercolor',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'tagline_border_color' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'border',
-						'value'    => '0',
-						'operator' => '!=',
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Border Size', 'fusion-builder' ),
+					'param_name'  => 'border',
+					'description' => esc_attr__( 'In pixels.', 'fusion-builder' ),
+					'min'         => '0',
+					'max'         => '20',
+					'value'       => '1',
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Border Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the border color. ', 'fusion-builder' ),
+					'param_name'  => 'bordercolor',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'tagline_border_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'border',
+							'value'    => '0',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Highlight Border Position', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the position of the highlight. This border highlight is from theme options primary color and does not take the color from border color above.', 'fusion-builder' ),
-				'param_name'  => 'highlightposition',
-				'value'       => array(
-					'top'    => esc_attr__( 'Top', 'fusion-builder' ),
-					'bottom' => esc_attr__( 'Bottom', 'fusion-builder' ),
-					'left'   => esc_attr__( 'Left', 'fusion-builder' ),
-					'right'  => esc_attr__( 'Right', 'fusion-builder' ),
-					'none'   => esc_attr__( 'None', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Highlight Border Position', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the position of the highlight. This border highlight is from theme options primary color and does not take the color from border color above.', 'fusion-builder' ),
+					'param_name'  => 'highlightposition',
+					'value'       => array(
+						'top'    => esc_attr__( 'Top', 'fusion-builder' ),
+						'bottom' => esc_attr__( 'Bottom', 'fusion-builder' ),
+						'left'   => esc_attr__( 'Left', 'fusion-builder' ),
+						'right'  => esc_attr__( 'Right', 'fusion-builder' ),
+						'none'   => esc_attr__( 'None', 'fusion-builder' ),
+					),
+					'default'     => 'left',
 				),
-				'default'     => 'left',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Content Alignment', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose how the content should be displayed.', 'fusion-builder' ),
-				'param_name'  => 'content_alignment',
-				'value'       => array(
-					'left'   => esc_attr__( 'Left', 'fusion-builder' ),
-					'center' => esc_attr__( 'Center', 'fusion-builder' ),
-					'right'  => esc_attr__( 'Right', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Content Alignment', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose how the content should be displayed.', 'fusion-builder' ),
+					'param_name'  => 'content_alignment',
+					'value'       => array(
+						'left'   => esc_attr__( 'Left', 'fusion-builder' ),
+						'center' => esc_attr__( 'Center', 'fusion-builder' ),
+						'right'  => esc_attr__( 'Right', 'fusion-builder' ),
+					),
+					'default'     => 'left',
 				),
-				'default'     => 'left',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Button Link', 'fusion-builder' ),
-				'description' => esc_attr__( 'The url the button will link to.', 'fusion-builder' ),
-				'param_name'  => 'link',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Button Text', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert the text that will display in the button.', 'fusion-builder' ),
-				'param_name'  => 'button',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'link',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'link_selector',
+					'heading'     => esc_attr__( 'Button Link', 'fusion-builder' ),
+					'description' => esc_attr__( 'The url the button will link to.', 'fusion-builder' ),
+					'param_name'  => 'link',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Button Text', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the text that will display in the button.', 'fusion-builder' ),
+					'param_name'  => 'button',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'link',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Link Target', 'fusion-builder' ),
-				'description' => __( '_self = open in same window <br />_blank = open in new window.', 'fusion-builder' ),
-				'param_name'  => 'linktarget',
-				'value'       => array(
-					'_self'  => esc_attr__( '_self', 'fusion-builder' ),
-					'_blank' => esc_attr__( '_blank', 'fusion-builder' ),
-				),
-				'default'     => '_self',
-				'dependency'  => array(
-					array(
-						'element'  => 'link',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Link Target', 'fusion-builder' ),
+					'description' => __( '_self = open in same window <br />_blank = open in new window.', 'fusion-builder' ),
+					'param_name'  => 'linktarget',
+					'value'       => array(
+						'_self'  => esc_attr__( '_self', 'fusion-builder' ),
+						'_blank' => esc_attr__( '_blank', 'fusion-builder' ),
+					),
+					'default'     => '_self',
+					'dependency'  => array(
+						array(
+							'element'  => 'link',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Modal Window Anchor', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add the class name of the modal window you want to open on button click.', 'fusion-builder' ),
-				'param_name'  => 'modal',
-				'value'       => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'link',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Modal Window Anchor', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add the class name of the modal window you want to open on button click.', 'fusion-builder' ),
+					'param_name'  => 'modal',
+					'value'       => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'link',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Button Size', 'fusion-builder' ),
-				'description' => esc_attr__( "Select the button's size. Choose default for theme option selection.", 'fusion-builder' ),
-				'param_name'  => 'button_size',
-				'value'       => array(
-					''       => esc_attr__( 'Default', 'fusion-builder' ),
-					'small'  => esc_attr__( 'Small', 'fusion-builder' ),
-					'medium' => esc_attr__( 'Medium', 'fusion-builder' ),
-					'large'  => esc_attr__( 'Large', 'fusion-builder' ),
-					'xlarge' => esc_attr__( 'XLarge', 'fusion-builder' ),
-				),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'link',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Button Size', 'fusion-builder' ),
+					'description' => esc_attr__( "Select the button's size. Choose default for theme option selection.", 'fusion-builder' ),
+					'param_name'  => 'button_size',
+					'value'       => array(
+						''       => esc_attr__( 'Default', 'fusion-builder' ),
+						'small'  => esc_attr__( 'Small', 'fusion-builder' ),
+						'medium' => esc_attr__( 'Medium', 'fusion-builder' ),
+						'large'  => esc_attr__( 'Large', 'fusion-builder' ),
+						'xlarge' => esc_attr__( 'XLarge', 'fusion-builder' ),
+					),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'link',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Button Type', 'fusion-builder' ),
-				'description' => esc_attr__( "Select the button's type. Choose default for theme option selection.", 'fusion-builder' ),
-				'param_name'  => 'button_type',
-				'value'       => array(
-					''     => esc_attr__( 'Default', 'fusion-builder' ),
-					'flat' => esc_attr__( 'Flat', 'fusion-builder' ),
-					'3d'   => esc_attr__( '3D', 'fusion-builder' ),
-				),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'link',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Button Type', 'fusion-builder' ),
+					'description' => esc_attr__( "Select the button's type. Choose default for theme option selection.", 'fusion-builder' ),
+					'param_name'  => 'button_type',
+					'value'       => array(
+						''     => esc_attr__( 'Default', 'fusion-builder' ),
+						'flat' => esc_attr__( 'Flat', 'fusion-builder' ),
+						'3d'   => esc_attr__( '3D', 'fusion-builder' ),
+					),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'link',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Button Shape', 'fusion-builder' ),
-				'description' => esc_attr__( "Select the button's shape. Choose default for theme option selection.", 'fusion-builder' ),
-				'param_name'  => 'button_shape',
-				'value'       => array(
-					''       => esc_attr__( 'Default', 'fusion-builder' ),
-					'square' => esc_attr__( 'Square', 'fusion-builder' ),
-					'pill'   => esc_attr__( 'Pill', 'fusion-builder' ),
-					'round'  => esc_attr__( 'Round', 'fusion-builder' ),
-				),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'link',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Button Shape', 'fusion-builder' ),
+					'description' => esc_attr__( "Select the button's shape. Choose default for theme option selection.", 'fusion-builder' ),
+					'param_name'  => 'button_shape',
+					'value'       => array(
+						''       => esc_attr__( 'Default', 'fusion-builder' ),
+						'square' => esc_attr__( 'Square', 'fusion-builder' ),
+						'pill'   => esc_attr__( 'Pill', 'fusion-builder' ),
+						'round'  => esc_attr__( 'Round', 'fusion-builder' ),
+					),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'link',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Button Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the button color. Default uses theme option selection.', 'fusion-builder' ),
-				'param_name'  => 'buttoncolor',
-				'value'       => array(
-					'default'   => esc_attr__( 'Default', 'fusion-builder' ),
-					'green'     => esc_attr__( 'Green', 'fusion-builder' ),
-					'darkgreen' => esc_attr__( 'Dark Green', 'fusion-builder' ),
-					'orange'    => esc_attr__( 'Orange', 'fusion-builder' ),
-					'blue'      => esc_attr__( 'Blue', 'fusion-builder' ),
-					'red'       => esc_attr__( 'Red', 'fusion-builder' ),
-					'pink'      => esc_attr__( 'Pink', 'fusion-builder' ),
-					'darkgray'  => esc_attr__( 'Dark Gray', 'fusion-builder' ),
-					'lightgray' => esc_attr__( 'Light Gray', 'fusion-builder' ),
-				),
-				'default'     => 'default',
-				'dependency'  => array(
-					array(
-						'element'  => 'link',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Button Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the button color. Default uses theme option selection.', 'fusion-builder' ),
+					'param_name'  => 'buttoncolor',
+					'value'       => array(
+						'default'   => esc_attr__( 'Default', 'fusion-builder' ),
+						'green'     => esc_attr__( 'Green', 'fusion-builder' ),
+						'darkgreen' => esc_attr__( 'Dark Green', 'fusion-builder' ),
+						'orange'    => esc_attr__( 'Orange', 'fusion-builder' ),
+						'blue'      => esc_attr__( 'Blue', 'fusion-builder' ),
+						'red'       => esc_attr__( 'Red', 'fusion-builder' ),
+						'pink'      => esc_attr__( 'Pink', 'fusion-builder' ),
+						'darkgray'  => esc_attr__( 'Dark Gray', 'fusion-builder' ),
+						'lightgray' => esc_attr__( 'Light Gray', 'fusion-builder' ),
+					),
+					'default'     => 'default',
+					'dependency'  => array(
+						array(
+							'element'  => 'link',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'textarea',
-				'heading'     => esc_attr__( 'Tagline Title', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert the title text.', 'fusion-builder' ),
-				'param_name'  => 'title',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'textarea',
-				'heading'     => esc_attr__( 'Tagline Description', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert the description text.', 'fusion-builder' ),
-				'param_name'  => 'description',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'tinymce',
-				'heading'     => esc_attr__( 'Additional Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'This is additional content you can add to the tagline box. This will show below the title and description if one is used.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'             => 'dimension',
-				'remove_from_atts' => true,
-				'heading'          => esc_attr__( 'Margin', 'fusion-builder' ),
-				'description'      => esc_attr__( 'Spacing above and below the tagline. In px, em or %, e.g. 10px.', 'fusion-builder' ),
-				'param_name'       => 'dimensions',
-				'value'            => array(
-					'margin_top'    => '',
-					'margin_bottom' => '',
+				array(
+					'type'        => 'textarea',
+					'heading'     => esc_attr__( 'Tagline Title', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the title text.', 'fusion-builder' ),
+					'param_name'  => 'title',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Animation Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the type of animation to use on the element.', 'fusion-builder' ),
-				'param_name'  => 'animation_type',
-				'value'       => fusion_builder_available_animations(),
-				'default'     => '',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Direction of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the incoming direction for the animation.', 'fusion-builder' ),
-				'param_name'  => 'animation_direction',
-				'value'       => array(
-					'down'   => esc_attr__( 'Top', 'fusion-builder' ),
-					'right'  => esc_attr__( 'Right', 'fusion-builder' ),
-					'up'     => esc_attr__( 'Bottom', 'fusion-builder' ),
-					'left'   => esc_attr__( 'Left', 'fusion-builder' ),
-					'static' => esc_attr__( 'Static', 'fusion-builder' ),
+				array(
+					'type'        => 'raw_textarea',
+					'heading'     => esc_attr__( 'Tagline Description', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the description text.', 'fusion-builder' ),
+					'param_name'  => 'description',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
 				),
-				'default'     => 'left',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'tinymce',
+					'heading'     => esc_attr__( 'Additional Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'This is additional content you can add to the tagline box. This will show below the title and description if one is used.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
+				),
+				array(
+					'type'             => 'dimension',
+					'remove_from_atts' => true,
+					'heading'          => esc_attr__( 'Margin', 'fusion-builder' ),
+					'description'      => esc_attr__( 'Spacing above and below the tagline. In px, em or %, e.g. 10px.', 'fusion-builder' ),
+					'param_name'       => 'dimensions',
+					'value'            => array(
+						'margin_top'    => '',
+						'margin_bottom' => '',
 					),
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => __( 'Speed of Animation', 'fusion-builder' ),
-				'description' => __( 'Type in speed of animation in seconds (0.1 - 1).', 'fusion-builder' ),
-				'param_name'  => 'animation_speed',
-				'value'       => array(
-					'1'   => '1',
-					'0.1' => '0.1',
-					'0.2' => '0.2',
-					'0.3' => '0.3',
-					'0.4' => '0.4',
-					'0.5' => '0.5',
-					'0.6' => '0.6',
-					'0.7' => '0.7',
-					'0.8' => '0.8',
-					'0.9' => '0.9',
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Animation Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the type of animation to use on the element.', 'fusion-builder' ),
+					'param_name'  => 'animation_type',
+					'value'       => fusion_builder_available_animations(),
+					'default'     => '',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
 				),
-				'default'     => '0.3',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Direction of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the incoming direction for the animation.', 'fusion-builder' ),
+					'param_name'  => 'animation_direction',
+					'value'       => array(
+						'down'   => esc_attr__( 'Top', 'fusion-builder' ),
+						'right'  => esc_attr__( 'Right', 'fusion-builder' ),
+						'up'     => esc_attr__( 'Bottom', 'fusion-builder' ),
+						'left'   => esc_attr__( 'Left', 'fusion-builder' ),
+						'static' => esc_attr__( 'Static', 'fusion-builder' ),
+					),
+					'default'     => 'left',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Offset of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls when the animation should start.', 'fusion-builder' ),
-				'param_name'  => 'animation_offset',
-				'value'       => array(
-					''                => esc_attr__( 'Default', 'fusion-builder' ),
-					'top-into-view'   => esc_attr__( 'Top of element hits bottom of viewport', 'fusion-builder' ),
-					'top-mid-of-view' => esc_attr__( 'Top of element hits middle of viewport', 'fusion-builder' ),
-					'bottom-in-view'  => esc_attr__( 'Bottom of element enters viewport', 'fusion-builder' ),
-				),
-				'default'     => '',
-				'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'animation_type',
-						'value'    => '',
-						'operator' => '!=',
+				array(
+					'type'        => 'select',
+					'heading'     => __( 'Speed of Animation', 'fusion-builder' ),
+					'description' => __( 'Type in speed of animation in seconds (0.1 - 1).', 'fusion-builder' ),
+					'param_name'  => 'animation_speed',
+					'value'       => array(
+						'1'   => '1',
+						'0.1' => '0.1',
+						'0.2' => '0.2',
+						'0.3' => '0.3',
+						'0.4' => '0.4',
+						'0.5' => '0.5',
+						'0.6' => '0.6',
+						'0.7' => '0.7',
+						'0.8' => '0.8',
+						'0.9' => '0.9',
+					),
+					'default'     => '0.3',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
 					),
 				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Offset of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls when the animation should start.', 'fusion-builder' ),
+					'param_name'  => 'animation_offset',
+					'value'       => array(
+						''                => esc_attr__( 'Default', 'fusion-builder' ),
+						'top-into-view'   => esc_attr__( 'Top of element hits bottom of viewport', 'fusion-builder' ),
+						'top-mid-of-view' => esc_attr__( 'Top of element hits middle of viewport', 'fusion-builder' ),
+						'bottom-in-view'  => esc_attr__( 'Bottom of element enters viewport', 'fusion-builder' ),
+					),
+					'default'     => '',
+					'group'       => esc_attr__( 'Animation', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'animation_type',
+							'value'    => '',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_tagline_box' );

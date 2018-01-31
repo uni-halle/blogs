@@ -1,3 +1,4 @@
+/* global FusionPageBuilderApp, fusionHistoryManager, fusionBuilderText, fusionAllElements, FusionPageBuilderEvents, alert, fusionBuilderConfig, FusionPageBuilderElements, FusionPageBuilderViewManager */
 var FusionPageBuilder = FusionPageBuilder || {};
 
 ( function( $ ) {
@@ -40,10 +41,15 @@ var FusionPageBuilder = FusionPageBuilder || {};
 				fractionSize = columnSize.replace( '_', '/' );
 				this.$el.find( '.fusion-builder-resize-column' ).text( fractionSize );
 
+				// If global, make it.
+				if ( 'undefined' !== typeof ( this.model.attributes.params.fusion_global ) ) {
+					FusionPageBuilderApp.addClassToElement( this.$el, 'fusion-global-column', this.model.attributes.params.fusion_global );
+				}
+
 				return this;
 			},
 
-			sortableElements: function( event ) {
+			sortableElements: function() {
 				var thisEl = this;
 				this.$el.sortable( {
 					items: '.fusion_module_block:not(.fusion_builder_row_inner .fusion_module_block), .fusion_builder_row_inner',
@@ -51,7 +57,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 					cancel: '.fusion-builder-settings, .fusion-builder-clone, .fusion-builder-remove, .fusion-builder-add-element, .fusion-builder-insert-column, .fusion-builder-save-module-dialog, .fusion-builder-remove-inner-row, .fusion-builder-save-inner-row-dialog-button, .fusion-builder-remove-inner-row, .fusion_builder_row_inner .fusion-builder-row-content',
 					tolerance: 'pointer',
 
-					over: function( event, ui ) {
+					over: function( event ) {
 
 						// Move sortable palceholder above +Element button for empty columns.
 						if ( 1 === $( event.target ).find( '.fusion_module_block, .fusion_builder_row_inner' ).length ) {
@@ -63,7 +69,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 						var $moduleBlock = $( ui.item ),
 						    moduleCID    = ui.item.data( 'cid' ),
 						    model        = thisEl.collection.find( function( model ) {
-								return model.get( 'cid' ) == moduleCID;
+								return model.get( 'cid' ) === moduleCID;
 						    } );
 
 						// If column is empty add element before "Add Element" button
@@ -82,7 +88,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 						// Save history state
 						fusionHistoryManager.turnOnTracking();
-						fusionHistoryState = fusionBuilderText.moved + ' ' + fusionAllElements[ model.get( 'element_type' ) ].name + ' ' + fusionBuilderText.element;
+						window.fusionHistoryState = fusionBuilderText.moved + ' ' + fusionAllElements[ model.get( 'element_type' ) ].name + ' ' + fusionBuilderText.element;
 						FusionPageBuilderEvents.trigger( 'fusion-element-sorted' );
 					}
 
@@ -97,22 +103,55 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 				$( '#fusion-builder-layouts-columns-trigger' ).click();
 
-				$( '#fusion-builder-layouts-columns .fusion-builder-layouts-header-element-fields' ).append( '<div class="fusion-save-element-fields"><input type="text" value="" id="fusion-builder-save-element-input" class="fusion-builder-save-element-input" placeholder="' + fusionBuilderText.enter_name + '" /><a href="#" class="fusion-builder-save-column fusion-builder-element-button-save" data-element-cid="' + this.model.get( 'cid' ) + '">' + fusionBuilderText.save_column + '</a></div>' );
+				$( '#fusion-builder-layouts-columns .fusion-builder-layouts-header-element-fields' ).append( '<div class="fusion-save-element-fields"><input type="text" value="" id="fusion-builder-save-element-input" class="fusion-builder-save-element-input" placeholder="' + fusionBuilderText.enter_name + '" /><div class="save-as-global"><label><input type="checkbox" id="fusion_save_global" name="fusion_save_global">' + fusionBuilderText.save_global + '</label><a href="#" class="fusion-builder-save-column fusion-builder-element-button-save" data-element-cid="' + this.model.get( 'cid' ) + '">' + fusionBuilderText.save_column + '</a></div></div>' );
 			},
 
 			// Save column
 			saveElement: function( event ) {
 				var $thisColumn      = this.$el,
 				    elementContent   = this.getColumnContent( $thisColumn ),
+				    $mainContainer   = $( '#fusion_builder_main_container' ),
 				    elementName      = $( '#fusion-builder-save-element-input' ).val(),
+				    saveGlobal       = $( '#fusion_save_global' ).is( ':checked' ),
 				    layoutsContainer = $( '#fusion-builder-layouts-columns .fusion-page-layouts' ),
-				    emptyMessage     = $( '#fusion-builder-layouts-columns .fusion-page-layouts .fusion-empty-library-message' );
+				    emptyMessage     = $( '#fusion-builder-layouts-columns .fusion-page-layouts .fusion-empty-library-message' ),
+				    thisModel        = this.model,
+				    isDuplicate      = false,
+				    oldGLobalID      = null,
+				    params           = {};
 
 				if ( event ) {
 					event.preventDefault();
 				}
 
-				if ( true === FusionPageBuilderApp.layoutIsSaving ) {
+				if ( 'undefined' !== typeof ( this.model.attributes.params ) && 'undefined' !== typeof ( this.model.attributes.params.fusion_global ) &&  0 < $mainContainer.find( '[fusion-global-layout="' + this.model.attributes.params.fusion_global + '"]' ).length ) {
+
+					// Make a copy.
+					oldGLobalID     = this.model.attributes.params.fusion_global;
+					params          = this.model.get( 'params' );
+
+					// Remove temporarily and update model
+					delete params.fusion_global;
+					this.model.set( 'params', params );
+
+					// Get content.
+					elementContent   = this.getColumnContent( $thisColumn );
+
+					// Add it back.
+					params.fusion_global = oldGLobalID;
+					this.model.set( 'params', params );
+				}
+
+				$.each( jQuery( 'ul.fusion-page-layouts.fusion-layout-columns li' ), function( index, value ) { // jshint ignore:line
+					var templateName = jQuery( this ).find( 'h4.fusion-page-layout-title' ).html().split( '<div ' )[0];
+					if ( elementName.toLowerCase().trim() === templateName.toLowerCase().trim() ) {
+						alert( fusionBuilderText.duplicate_element_name_error );
+						isDuplicate = true;
+						return false;
+					}
+				});
+
+				if ( true === FusionPageBuilderApp.layoutIsSaving || true === isDuplicate ) {
 					return;
 				}
 				FusionPageBuilderApp.layoutIsSaving = true;
@@ -127,6 +166,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 							action: 'fusion_builder_save_layout',
 							fusion_load_nonce: fusionBuilderConfig.fusion_load_nonce,
 							fusion_layout_name: elementName,
+							fusion_save_global: saveGlobal,
 							fusion_layout_content: elementContent,
 							fusion_layout_post_type: 'fusion_element',
 							fusion_layout_new_cat: 'columns'
@@ -136,6 +176,19 @@ var FusionPageBuilder = FusionPageBuilder || {};
 							layoutsContainer.prepend( data.responseText );
 							$( '.fusion-save-element-fields' ).remove();
 							emptyMessage.hide();
+
+							// If global, make it.
+							if ( saveGlobal ) {
+								thisModel.attributes.params.fusion_global = $( data.responseText ).attr( 'data-layout_id' );
+								$( 'div[data-cid="' + thisModel.get( 'cid' ) + '"]' ).addClass( 'fusion-global-column' );
+								$( 'div[data-cid="' + thisModel.get( 'cid' ) + '"]' ).attr( 'fusion-global-layout', $( data.responseText ).attr( 'data-layout_id' )  );
+								$( 'div[data-cid="' + thisModel.get( 'cid' ) + '"]' ).append( '<div class="fusion-builder-global-tooltip"><span>' + fusionBuilderText.global_column + '</span></div>' );
+								FusionPageBuilderEvents.trigger( 'fusion-element-added' );
+								FusionPageBuilderApp.saveGlobal = true;
+
+								// Check for globals.
+								setTimeout( FusionPageBuilderApp.checkGlobalParents, 500, thisModel.get( 'parent' ) );
+							}
 						}
 					} );
 
@@ -190,7 +243,9 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 				// Find elements inside this column
 				$thisColumn.find( '.fusion_builder_column_element:not(.fusion-builder-column-inner .fusion_builder_column_element)' ).each( function() {
-					var $thisRowInner;
+					var $thisRowInner,
+					    $rowInnerCID,
+					    $innerModule;
 
 					// Find standard elements
 					if ( $( this ).hasClass( 'fusion_module_block' ) ) {
@@ -199,7 +254,13 @@ var FusionPageBuilder = FusionPageBuilder || {};
 					// Find inner rows
 					} else {
 						$thisRowInner = $( this );
-						shortcode += '[fusion_builder_row_inner]';
+						$rowInnerCID  = $thisRowInner.data( 'cid' );
+						$innerModule  = FusionPageBuilderElements.findWhere( { cid: $rowInnerCID } );
+						if ( 'undefined' !== typeof ( $innerModule.attributes.params ) && 'undefined' !== typeof ( $innerModule.attributes.params.fusion_global ) ) {
+							shortcode += '[fusion_builder_row_inner fusion_global="' + $innerModule.attributes.params.fusion_global + '"]';
+						} else {
+							shortcode += '[fusion_builder_row_inner]';
+						}
 
 						// Find nested columns
 						$thisRowInner.find( '.fusion-builder-column-inner' ).each( function() {
@@ -286,11 +347,14 @@ var FusionPageBuilder = FusionPageBuilder || {};
 			},
 
 			removeColumn: function( event ) {
-				var modules;
+				var modules,
+				    parentCID;
 
 				if ( event ) {
 					event.preventDefault();
 				}
+
+				parentCID = this.model.get( 'parent' );
 
 				modules = FusionPageBuilderViewManager.getChildViews( this.model.get( 'cid' ) );
 
@@ -313,10 +377,13 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 					// Save history state
 					fusionHistoryManager.turnOnTracking();
-					fusionHistoryState = fusionBuilderText.deleted + ' ' + fusionBuilderText.column;
+					window.fusionHistoryState = fusionBuilderText.deleted + ' ' + fusionBuilderText.column;
 
 					FusionPageBuilderEvents.trigger( 'fusion-element-removed' );
 				}
+
+				// Check for globals.
+				setTimeout( FusionPageBuilderApp.checkGlobalParents, 500, parentCID );
 			},
 
 			addModule: function( event ) {
@@ -384,7 +451,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 						// Get model from collection by cid
 						module = FusionPageBuilderElements.find( function( model ) {
-							return model.get( 'cid' ) == moduleCID;
+							return model.get( 'cid' ) === moduleCID;
 						} );
 
 						// Clone model attritubes
@@ -417,7 +484,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 					// Save history state
 					fusionHistoryManager.turnOnTracking();
-					fusionHistoryState = fusionBuilderText.cloned + ' ' + fusionBuilderText.column;
+					window.fusionHistoryState = fusionBuilderText.cloned + ' ' + fusionBuilderText.column;
 
 					FusionPageBuilderEvents.trigger( 'fusion-element-cloned' );
 				}
@@ -465,7 +532,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 					// Save history state
 					fusionHistoryManager.turnOnTracking();
-					fusionHistoryState = fusionBuilderText.resized_column + ' ' + fractionSize;
+					window.fusionHistoryState = fusionBuilderText.resized_column + ' ' + fractionSize;
 
 					FusionPageBuilderEvents.trigger( 'fusion-element-edited' );
 				}

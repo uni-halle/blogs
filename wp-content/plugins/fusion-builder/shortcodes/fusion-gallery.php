@@ -160,11 +160,13 @@ if ( fusion_is_element_enabled( 'fusion_gallery' ) ) {
 						}
 
 						// Responsive images.
-						$fusion_library->images->set_grid_image_meta( array(
-							'layout' => $this->args['layout'],
-							'columns' => $responsive_images_columns,
-							'gutter_width' => $this->args['column_spacing'],
-						) );
+						$fusion_library->images->set_grid_image_meta(
+							array(
+								'layout' => $this->args['layout'],
+								'columns' => $responsive_images_columns,
+								'gutter_width' => $this->args['column_spacing'],
+							)
+						);
 
 						if ( 'full' === $image_size ) {
 							$image_html = $fusion_library->images->edit_grid_image_src( $image_html, null, $image_id, 'full' );
@@ -410,8 +412,8 @@ if ( fusion_is_element_enabled( 'fusion_gallery' ) ) {
 								'step'        => 1,
 							),
 							'gallery_column_spacing' => array(
-								'label'       => esc_html__( 'Gallery Column Spacing', 'Avada' ),
-								'description' => esc_html__( 'Controls the column spacing for gallery elements.', 'Avada' ),
+								'label'       => esc_attr__( 'Gallery Column Spacing', 'fusion-builder' ),
+								'description' => esc_attr__( 'Controls the column spacing for gallery elements.', 'fusion-builder' ),
 								'id'          => 'gallery_column_spacing',
 								'default'     => '10',
 								'type'        => 'slider',
@@ -463,13 +465,6 @@ if ( fusion_is_element_enabled( 'fusion_gallery' ) ) {
 
 				global $wp_version, $content_media_query, $six_fourty_media_query, $three_twenty_six_fourty_media_query, $ipad_portrait_media_query, $fusion_settings, $dynamic_css_helpers, $fusion_library;
 
-				$elements = array(
-					'.fusion-portfolio .fusion-portfolio-boxed .fusion-portfolio-post-wrapper',
-					'.fusion-portfolio .fusion-portfolio-boxed .fusion-content-sep',
-					'.fusion-portfolio-one .fusion-portfolio-boxed .fusion-portfolio-post-wrapper',
-				);
-				$css['global'][ $dynamic_css_helpers->implode( $elements ) ]['border-color'] = $fusion_library->sanitize->color( $fusion_settings->get( 'sep_color' ) );
-
 				$css['global']['.fusion-filters .fusion-filter.fusion-active a']['color'] = $fusion_library->sanitize->color( $fusion_settings->get( 'primary_color' ) );
 				$css['global']['.fusion-filters .fusion-filter.fusion-active a']['border-color'] = $fusion_library->sanitize->color( $fusion_settings->get( 'primary_color' ) );
 
@@ -495,155 +490,154 @@ if ( fusion_is_element_enabled( 'fusion_gallery' ) ) {
 function fusion_element_gallery() {
 	global $fusion_settings;
 
-	$lightbox_description = ( $fusion_settings->get( 'status_lightbox' ) ) ? esc_attr__( 'Show image in lightbox.', 'fusion-builder' ) : esc_attr__( 'Lightbox setting is currently turned OFF in Theme Options. Please turn on the lightbox to display images in lightbox.', 'fusion-builder' );
-
-	fusion_builder_map( array(
-		'name'            => esc_attr__( 'Gallery', 'fusion-builder' ),
-		'shortcode'       => 'fusion_gallery',
-		'icon'            => 'fusiona-dashboard',
-		'preview'         => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-gallery-preview.php',
-		'preview_id'      => 'fusion-builder-block-module-gallery-preview-template',
-		'allow_generator' => true,
-		'params'          => array(
-			array(
-				'type'        => 'upload_images',
-				'heading'     => esc_attr__( 'Gallery Images', 'fusion-builder' ),
-				'description' => esc_attr__( 'Upload or select images from media library.', 'fusion-builder' ),
-				'param_name'  => 'image_ids',
-				'element'     => 'fusion_gallery',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Gallery Layout', 'fusion-builder' ),
-				'description' => __( 'Select the gallery layout type.', 'fusion-builder' ),
-				'param_name'  => 'layout',
-				'value'       => array(
-					''        => esc_attr__( 'Default', 'fusion-builder' ),
-					'grid'    => esc_attr__( 'Grid', 'fusion-builder' ),
-					'masonry' => esc_attr__( 'Masonry', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'            => esc_attr__( 'Gallery', 'fusion-builder' ),
+			'shortcode'       => 'fusion_gallery',
+			'icon'            => 'fusiona-dashboard',
+			'preview'         => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-gallery-preview.php',
+			'preview_id'      => 'fusion-builder-block-module-gallery-preview-template',
+			'allow_generator' => true,
+			'params'          => array(
+				array(
+					'type'        => 'upload_images',
+					'heading'     => esc_attr__( 'Gallery Images', 'fusion-builder' ),
+					'description' => esc_attr__( 'Upload or select images from media library.', 'fusion-builder' ),
+					'param_name'  => 'image_ids',
+					'element'     => 'fusion_gallery',
+					'value'       => '',
 				),
-				'default'     => '',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Picture Size', 'fusion-builder' ),
-				'description' => __( 'Fixed = width and height will be fixed.<br/>Auto = width and height will adjust to the image.<br/>', 'fusion-builder' ),
-				'param_name'  => 'picture_size',
-				'value'       => array(
-					''       => esc_attr__( 'Default', 'fusion-builder' ),
-					'fixed'  => esc_attr__( 'Fixed', 'fusion-builder' ),
-					'auto'   => esc_attr__( 'Auto', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Gallery Layout', 'fusion-builder' ),
+					'description' => __( 'Select the gallery layout type.', 'fusion-builder' ),
+					'param_name'  => 'layout',
+					'value'       => array(
+						''        => esc_attr__( 'Default', 'fusion-builder' ),
+						'grid'    => esc_attr__( 'Grid', 'fusion-builder' ),
+						'masonry' => esc_attr__( 'Masonry', 'fusion-builder' ),
+					),
+					'default'     => '',
 				),
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'masonry',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Picture Size', 'fusion-builder' ),
+					'description' => __( 'Fixed = width and height will be fixed.<br/>Auto = width and height will adjust to the image.<br/>', 'fusion-builder' ),
+					'param_name'  => 'picture_size',
+					'value'       => array(
+						''       => esc_attr__( 'Default', 'fusion-builder' ),
+						'fixed'  => esc_attr__( 'Fixed', 'fusion-builder' ),
+						'auto'   => esc_attr__( 'Auto', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'masonry',
+							'operator' => '!=',
+						),
+					),
+					'default'     => '',
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Number of Columns', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set the number of columns per row.', 'fusion-builder' ),
+					'param_name'  => 'columns',
+					'value'       => '',
+					'min'         => '1',
+					'max'         => '6',
+					'step'        => '1',
+					'default'     => $fusion_settings->get( 'gallery_columns' ),
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Column Spacing', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the amount of spacing between gallery images without "px". ex: 7.', 'fusion-builder' ),
+					'param_name'  => 'column_spacing',
+					'value'       => '10',
+					'min'         => '0',
+					'max'         => '300',
+					'step'        => '1',
+					'default'     => $fusion_settings->get( 'gallery_column_spacing' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'columns',
+							'value'    => '1',
+							'operator' => '!=',
+						),
 					),
 				),
-				'default'     => '',
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Number of Columns', 'fusion-builder' ),
-				'description' => esc_attr__( 'Set the number of columns per row.', 'fusion-builder' ),
-				'param_name'  => 'columns',
-				'value'       => '',
-				'min'         => '1',
-				'max'         => '6',
-				'step'        => '1',
-				'default'     => $fusion_settings->get( 'gallery_columns' ),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Column Spacing', 'fusion-core' ),
-				'description' => esc_attr__( 'Insert the amount of spacing between gallery images without "px". ex: 7.', 'fusion-core' ),
-				'param_name'  => 'column_spacing',
-				'value'       => '10',
-				'min'         => '0',
-				'max'         => '300',
-				'step'        => '1',
-				'default'     => $fusion_settings->get( 'gallery_column_spacing' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'columns',
-						'value'    => '1',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Hover Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the hover effect type.', 'fusion-builder' ),
+					'param_name'  => 'hover_type',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'none'    => esc_attr__( 'None', 'fusion-builder' ),
+						'zoomin'  => esc_attr__( 'Zoom In', 'fusion-builder' ),
+						'zoomout' => esc_attr__( 'Zoom Out', 'fusion-builder' ),
+						'liftup'  => esc_attr__( 'Lift Up', 'fusion-builder' ),
+					),
+					'default'     => '',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Image lightbox', 'fusion-builder' ),
+					'description' => esc_attr__( 'Show image in lightbox. Lightbox must be enabled in Theme Options or the image will open up in the same tab by itself.', 'fusion-builder' ),
+					'param_name'  => 'lightbox',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => $fusion_settings->get( 'status_lightbox' ) ? 'yes' : 'no',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Lightbox Content', 'fusion-builder' ),
+					'param_name'  => 'lightbox_content',
+					'default'     => '',
+					'value'       => array(
+						''                  => esc_attr__( 'Default', 'fusion-builder' ),
+						'titles'            => esc_attr__( 'Titles', 'fusion-builder' ),
+						'title_and_caption' => esc_attr__( 'Titles and Captions', 'fusion-builder' ),
+						'none'              => esc_attr__( 'None', 'fusion-builder' ),
+					),
+					'description' => esc_attr__( 'Choose if titles and captions will display in the lightbox.', 'fusion-builder' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'lightbox',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Hover Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the hover effect type.', 'fusion-builder' ),
-				'param_name'  => 'hover_type',
-				'value'       => array(
-					''    => esc_attr__( 'Default', 'fusion-builder' ),
-					'none'    => esc_attr__( 'None', 'fusion-builder' ),
-					'zoomin'  => esc_attr__( 'Zoom In', 'fusion-builder' ),
-					'zoomout' => esc_attr__( 'Zoom Out', 'fusion-builder' ),
-					'liftup'  => esc_attr__( 'Lift Up', 'fusion-builder' ),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
 				),
-				'default'     => '',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Image lightbox', 'fusion-builder' ),
-				'param_name'  => 'lightbox',
-				'default'     => '',
-				'value'       => array(
-					''    => esc_attr__( 'Default', 'fusion-builder' ),
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
 				),
-				'description' => $lightbox_description,
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Lightbox Content', 'fusion-builder' ),
-				'param_name'  => 'lightbox_content',
-				'default'     => '',
-				'value'       => array(
-					''                  => esc_attr__( 'Default', 'fusion-builder' ),
-					'titles'            => esc_attr__( 'Titles', 'fusion-builder' ),
-					'title_and_caption' => esc_attr__( 'Titles and Captions', 'fusion-builder' ),
-					'none'              => esc_attr__( 'None', 'fusion-builder' ),
-				),
-				'description' => esc_attr__( 'Choose if titles and captions will display in the lightbox.', 'fusion-builder' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'lightbox',
-						'value'    => 'no',
-						'operator' => '!=',
-					),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
 				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_gallery' );

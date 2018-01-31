@@ -1,3 +1,4 @@
+/* global FusionPageBuilderEvents, FusionPageBuilderViewManager, FusionPageBuilderApp, fusionHistoryManager, fusionBuilderText, fusionAllElements */
 var FusionPageBuilder = FusionPageBuilder || {};
 
 ( function( $ ) {
@@ -38,7 +39,8 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 			addCustomModule: function( event ) {
 				var layoutID,
-				    title;
+				    title,
+				    isGlobal;
 
 				if ( event ) {
 					event.preventDefault();
@@ -52,6 +54,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 				layoutID = $( event.currentTarget ).closest( 'li' ).data( 'layout_id' );
 				title    = $( event.currentTarget ).find( '.fusion_module_title' ).text();
+				isGlobal = $( event.currentTarget ).closest( 'li' ).hasClass( 'fusion-global' );
 
 				$( event.currentTarget ).parent( '.fusion-builder-all-modules' ).css( 'opacity', '0' );
 				$( event.currentTarget ).parent( '.fusion-builder-all-modules' ).prev( '#fusion-loader' ).show();
@@ -62,6 +65,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 					data: {
 						action: 'fusion_builder_load_layout',
 						fusion_load_nonce: FusionPageBuilderApp.fusion_load_nonce,
+						fusion_is_global: isGlobal,
 						fusion_layout_id: layoutID
 					},
 
@@ -73,13 +77,16 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 						$( event.currentTarget ).parent( '.fusion-builder-all-modules' ).css( 'opacity', '1' );
 						$( event.currentTarget ).parent( '.fusion-builder-all-modules' ).prev( '#fusion-loader' ).hide();
+
+						// Check for globals.
+						setTimeout( FusionPageBuilderApp.checkGlobalParents, 500, FusionPageBuilderApp.parentColumnId );
 					},
 
 					complete: function() {
 
 						// Save history state
 						fusionHistoryManager.turnOnTracking();
-						fusionHistoryState = fusionBuilderText.added_custom_element + title;
+						window.fusionHistoryState = fusionBuilderText.added_custom_element + title;
 
 						FusionPageBuilderEvents.trigger( 'fusion-element-added' );
 					}
@@ -105,20 +112,20 @@ var FusionPageBuilder = FusionPageBuilder || {};
 				if ( label in fusionAllElements ) {
 
 					params = fusionAllElements[ label ].params;
-					multi   = fusionAllElements[ label ].multi;
+					multi  = fusionAllElements[ label ].multi;
 					type   = fusionAllElements[ label ].shortcode;
 					name   = fusionAllElements[ label ].name;
 					allowGenerator = fusionAllElements[ label ].allow_generator;
 
 				} else {
 					params = '';
-					multi   = '';
+					multi  = '';
 					type   = '';
 					allowGenerator = '';
 				}
 
 				if ( event ) {
-					fusionHistoryState = fusionBuilderText.added + ' ' + name + ' ' + fusionBuilderText.element;
+					window.fusionHistoryState = fusionBuilderText.added + ' ' + name + ' ' + fusionBuilderText.element;
 				}
 
 				this.collection.add( [ {
@@ -180,16 +187,15 @@ var FusionPageBuilder = FusionPageBuilder || {};
 				// Process default parameters from shortcode
 				_.each( defaultParams, function( param )  {
 					if ( _.isObject( param.value ) ) {
-						value = param.default;
+						value = param['default'];
 					} else {
 						value = param.value;
 					}
 					params[param.param_name] = value;
 				} );
 
-				_.each( layout, function( element, index ) {
-					var updateContent    = layoutElementsNum == ( index + 1 ) ? 'true' : 'false',
-					    columnAttributes = {
+				_.each( layout, function( element, index ) { // jshint ignore:line
+					var columnAttributes = {
 							type: 'fusion_builder_column_inner',
 							element_type: 'fusion_builder_column_inner',
 							cid: FusionPageBuilderViewManager.generateCid(),
@@ -211,14 +217,11 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 					// Save history state
 					fusionHistoryManager.turnOnTracking();
-					fusionHistoryState = fusionBuilderText.added_nested_columns;
+					window.fusionHistoryState = fusionBuilderText.added_nested_columns;
 
 					FusionPageBuilderEvents.trigger( 'fusion-element-cloned' );
 				}
 			}
-
 		} );
-
 	} );
-
 } )( jQuery );

@@ -657,7 +657,9 @@
 
 				// Initialize color picker
 				$( this ).find( ".color-picker" ).each( function() {
-					$(this).wpColorPicker();
+					$(this).wpColorPicker({
+						palettes: ['#000000','#ffffff','#f44336','#E91E63','#03A9F4','#00BCD4','#8BC34A','#FFEB3B','#FFC107','#FF9800','#607D8B']
+					});
 				});
 
 				var type = $( this ).attr( 'data-type' );

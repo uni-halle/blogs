@@ -102,16 +102,26 @@ if ( fusion_is_element_enabled( 'fusion_pricing_table' ) ) {
 
 				$defaults = FusionBuilder::set_shortcode_defaults(
 					array(
-						'hide_on_mobile'  => fusion_builder_default_visibility( 'string' ),
-						'class'           => '',
-						'id'              => '',
-						'backgroundcolor' => $fusion_settings->get( 'pricing_bg_color' ),
-						'bordercolor'     => $fusion_settings->get( 'pricing_border_color' ),
-						'columns'         => '',
-						'dividercolor'    => $fusion_settings->get( 'pricing_divider_color' ),
-						'type'            => '1',
+						'hide_on_mobile'          => fusion_builder_default_visibility( 'string' ),
+						'class'                   => '',
+						'id'                      => '',
+						'backgroundcolor'         => $fusion_settings->get( 'pricing_bg_color' ),
+						'background_color_hover'  => $fusion_settings->get( 'pricing_background_color_hover' ),
+						'bordercolor'             => $fusion_settings->get( 'pricing_border_color' ),
+						'heading_color_style_1'   => $fusion_settings->get( 'full_boxed_pricing_box_heading_color' ),
+						'heading_color_style_2'   => $fusion_settings->get( 'sep_pricing_box_heading_color' ),
+						'pricing_color'           => $fusion_settings->get( 'pricing_box_color' ),
+						'body_text_color'         => $fusion_settings->get( 'body_typography', 'color' ),
+						'columns'                 => '',
+						'dividercolor'            => $fusion_settings->get( 'pricing_divider_color' ),
+						'type'                    => '1',
 					), $args
 				);
+
+				// Make sure the bg color is set to border color in case it is not existing in the shortcode yet and border color is not specifically set.
+				if ( ! array_key_exists( 'background_color_hover', $args ) && ( isset( $args['bordercolor'] ) && '' !== $args['bordercolor'] ) ) {
+					$defaults['background_color_hover'] = $defaults['bordercolor'];
+				}
 
 				extract( $defaults );
 
@@ -129,12 +139,17 @@ if ( fusion_is_element_enabled( 'fusion_pricing_table' ) ) {
 				.pricing-table-{$this->pricing_table_counter} .list-group .list-group-item,
 				.pricing-table-{$this->pricing_table_counter} .list-group .list-group-item:last-child{background-color:{$backgroundcolor}; border-color:{$dividercolor};}
 				.pricing-table-{$this->pricing_table_counter}.full-boxed-pricing .panel-wrapper:hover .panel-heading,
-				.pricing-table-{$this->pricing_table_counter} .panel-wrapper:hover .list-group-item {background-color:$bordercolor;}
+				.pricing-table-{$this->pricing_table_counter} .panel-wrapper:hover .list-group-item {background-color:{$background_color_hover};}
 				.pricing-table-{$this->pricing_table_counter}.full-boxed-pricing .panel-heading{background-color:{$backgroundcolor};}
 				.pricing-table-{$this->pricing_table_counter} .fusion-panel, .pricing-table-{$this->pricing_table_counter} .panel-wrapper:last-child .fusion-panel,
 				.pricing-table-{$this->pricing_table_counter} .standout .fusion-panel, .pricing-table-{$this->pricing_table_counter}  .panel-heading,
 				.pricing-table-{$this->pricing_table_counter} .panel-body, .pricing-table-{$this->pricing_table_counter} .panel-footer{border-color:{$dividercolor};}
 				.pricing-table-{$this->pricing_table_counter} .panel-body,.pricing-table-{$this->pricing_table_counter} .panel-footer{background-color:{$bordercolor};}
+				.pricing-table-{$this->pricing_table_counter}.sep-boxed-pricing .panel-heading h3{color:{$heading_color_style_2};}
+				.pricing-table-{$this->pricing_table_counter}.full-boxed-pricing.fusion-pricing-table .panel-heading h3{color:{$heading_color_style_1};}
+				.pricing-table-{$this->pricing_table_counter}.fusion-pricing-table .panel-body .price .decimal-part{color:{$pricing_color};}
+				.pricing-table-{$this->pricing_table_counter}.fusion-pricing-table .panel-body .price .integer-part{color:{$pricing_color};}
+				.pricing-table-{$this->pricing_table_counter} ul.list-group li{color:{$body_text_color};}
 				</style>";
 
 				$html = $styles . '<div ' . FusionBuilder::attributes( 'pricingtable-shortcode' ) . '>' . do_shortcode( $content ) . '</div>';
@@ -481,6 +496,7 @@ if ( fusion_is_element_enabled( 'fusion_pricing_table' ) ) {
 			 * @return array $sections Pricing Table settings.
 			 */
 			public function add_options() {
+				global $fusion_settings;
 
 				return array(
 					'pricing_table_shortcode_section' => array(
@@ -517,6 +533,13 @@ if ( fusion_is_element_enabled( 'fusion_pricing_table' ) ) {
 								'default'     => '#ffffff',
 								'type'        => 'color-alpha',
 							),
+							'pricing_background_color_hover' => array(
+								'label'       => esc_html__( 'Pricing Box Background Hover Color', 'fusion-builder' ),
+								'description' => esc_html__( 'Controls the hover color of the main background and title background.', 'fusion-builder' ),
+								'id'          => 'pricing_background_color_hover',
+								'default'     => $fusion_settings->get( 'pricing_border_color' ),
+								'type'        => 'color-alpha',
+							),
 							'pricing_border_color' => array(
 								'label'       => esc_html__( 'Pricing Box Border Color', 'fusion-builder' ),
 								'description' => esc_html__( 'Controls the color of the outer border, pricing row and footer row backgrounds.', 'fusion-builder' ),
@@ -551,88 +574,144 @@ function fusion_element_pricing_table() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'       => esc_attr__( 'Pricing Table', 'fusion-builder' ),
-		'shortcode'  => 'fusion_pricing_table',
-		'icon'       => 'fusiona-dollar',
-		'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-pricing-table-preview.php',
-		'preview_id' => 'fusion-builder-block-module-pricing-table-preview-template',
+	fusion_builder_map(
+		array(
+			'name'       => esc_attr__( 'Pricing Table', 'fusion-builder' ),
+			'shortcode'  => 'fusion_pricing_table',
+			'icon'       => 'fusiona-dollar',
+			'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-pricing-table-preview.php',
+			'preview_id' => 'fusion-builder-block-module-pricing-table-preview-template',
 
-		'custom_settings_view_name'     => 'ModuleSettingsTableView',
-		'custom_settings_view_js'       => FUSION_BUILDER_PLUGIN_URL . 'inc/templates/custom/js/fusion-pricing-table-settings.js',
-		'custom_settings_template_file' => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/custom/fusion-pricing-table-settings.php',
-		// 'custom_settings_template_css'  => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/custom/css/fusion-pricing-table-settings.css',
-		'on_save'           => 'pricingTableShortcodeFilter',
-		'admin_enqueue_js'  => FUSION_BUILDER_PLUGIN_URL . 'shortcodes/js/fusion-pricing-table.js',
-		'params'            => array(
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the type of pricing table.', 'fusion-builder' ),
-				'param_name'  => 'type',
-				'value'       => array(
-					'1' => esc_attr__( 'Style 1', 'fusion-builder' ),
-					'2' => esc_attr__( 'Style 2', 'fusion-builder' ),
+			'custom_settings_view_name'     => 'ModuleSettingsTableView',
+			'custom_settings_view_js'       => FUSION_BUILDER_PLUGIN_URL . 'inc/templates/custom/js/fusion-pricing-table-settings.js',
+			'custom_settings_template_file' => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/custom/fusion-pricing-table-settings.php',
+			// 'custom_settings_template_css'  => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/custom/css/fusion-pricing-table-settings.css',
+			'on_save'           => 'pricingTableShortcodeFilter',
+			'admin_enqueue_js'  => FUSION_BUILDER_PLUGIN_URL . 'shortcodes/js/fusion-pricing-table.js',
+			'params'            => array(
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the type of pricing table.', 'fusion-builder' ),
+					'param_name'  => 'type',
+					'value'       => array(
+						'1' => esc_attr__( 'Style 1', 'fusion-builder' ),
+						'2' => esc_attr__( 'Style 2', 'fusion-builder' ),
+					),
+					'default'     => '1',
 				),
-				'default'     => '1',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Background Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set pricing table background color. ', 'fusion-builder' ),
+					'param_name'  => 'backgroundcolor',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'pricing_bg_color' ),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Background Hover Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set pricing table background hover color. ', 'fusion-builder' ),
+					'param_name'  => 'background_color_hover',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'pricing_background_color_hover' ),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Border Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set pricing table border color.', 'fusion-builder' ),
+					'param_name'  => 'bordercolor',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'pricing_border_color' ),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Divider Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set pricing table divider color.', 'fusion-builder' ),
+					'param_name'  => 'dividercolor',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'pricing_divider_color' ),
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Heading Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set pricing table headings color.', 'fusion-builder' ),
+					'param_name'  => 'heading_color_style_1',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'full_boxed_pricing_box_heading_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'type',
+							'value'    => '1',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Heading Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set pricing table headings color.', 'fusion-builder' ),
+					'param_name'  => 'heading_color_style_2',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'sep_pricing_box_heading_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'type',
+							'value'    => '2',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Pricing Text Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set pricing table price text color.', 'fusion-builder' ),
+					'param_name'  => 'pricing_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'pricing_box_color' ),
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Body Text Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set pricing table body text color', 'fusion-builder' ),
+					'param_name'  => 'body_text_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'body_typography', 'color' ),
+				),
+				array(
+					'type'        => 'textarea',
+					'heading'     => esc_attr__( 'Short Code', 'fusion-builder' ),
+					'description' => esc_attr__( 'Pricing Table short code content.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => '[fusion_pricing_column title="Standard" standout="no" class="" id=""][fusion_pricing_price currency="$" price="15.55" time="monthly"][/fusion_pricing_price][fusion_pricing_row]Feature 1[/fusion_pricing_row][fusion_pricing_footer][/fusion_pricing_footer][/fusion_pricing_column][fusion_pricing_column title="Premium" standout="yes" class="" id=""][fusion_pricing_price currency="$" price="25.55" time="monthly"][/fusion_pricing_price][fusion_pricing_row]Feature 1[/fusion_pricing_row][fusion_pricing_footer][/fusion_pricing_footer][/fusion_pricing_column]',
+					'hidden'      => true,
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Background Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Leave blank for default.', 'fusion-builder' ),
-				'param_name'  => 'backgroundcolor',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'pricing_bg_color' ),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Border Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Leave blank for default.', 'fusion-builder' ),
-				'param_name'  => 'bordercolor',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'pricing_border_color' ),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Divider Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Leave blank for default.', 'fusion-builder' ),
-				'param_name'  => 'dividercolor',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'pricing_divider_color' ),
-			),
-			array(
-				'type'        => 'textarea',
-				'heading'     => esc_attr__( 'Short Code', 'fusion-builder' ),
-				'description' => esc_attr__( 'Pricing Table short code content.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => '[fusion_pricing_column title="Standard" standout="no" class="" id=""][fusion_pricing_price currency="$" price="15.55" time="monthly"][/fusion_pricing_price][fusion_pricing_row]Feature 1[/fusion_pricing_row][fusion_pricing_footer][/fusion_pricing_footer][/fusion_pricing_column][fusion_pricing_column title="Premium" standout="yes" class="" id=""][fusion_pricing_price currency="$" price="25.55" time="monthly"][/fusion_pricing_price][fusion_pricing_row]Feature 1[/fusion_pricing_row][fusion_pricing_footer][/fusion_pricing_footer][/fusion_pricing_column]',
-				'hidden'      => true,
-			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_pricing_table' );

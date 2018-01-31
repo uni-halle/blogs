@@ -11,8 +11,7 @@
 .fusion-builder-wrap .fusion-builder-logo {
   background: #ffffff url("../images/icons/fb_logo.svg") no-repeat center;
   border: none;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
   display: inline-block;
   font-size: 14px;
   font-weight: 600;
@@ -28,8 +27,7 @@
 }
 .fusion-builder-wrap .fusion-builder-version {
   background: #2d2d2d;
-  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
-          box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
   color: #ffffff;
   display: block;
   margin-top: 30px;
@@ -146,42 +144,45 @@
   width: auto;
 }
 .fusion-builder-wrap .fusion-builder-addons .fusion-admin-box {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   float: left;
-  margin: 0 0 2% 0;
+  margin: 0 0 2%;
   padding: 0 1%;
   width: 25%;
 }
 .fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme-wrapper {
   border: 1px solid #dedede;
-  -webkit-box-shadow: 0 1px 1px -1px rgba(0, 0, 0, .1);
-          box-shadow: 0 1px 1px -1px rgba(0, 0, 0, .1);
+  box-shadow: 0 1px 1px -1px rgba(0, 0, 0, .1);
 }
 #wpwrap .fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme {
   float: none;
   margin: 0;
   width: 100%;
   border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
-.fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme:hover img,
-.fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme:focus img {
+.fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme:focus img,
+.fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme:hover img {
   opacity: .3;
   -webkit-transform: scale(1.1);
       -ms-transform: scale(1.1);
           transform: scale(1.1);
 }
 .fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme .theme-screenshot {
-  background-color: #000000;
+  background: #000000;
 }
 .fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme .theme-screenshot:after {
   padding-top: 74.9%;
 }
 .fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme .theme-name {
-  line-height: 18px;
-  font-weight: 600;
+  padding: 15px;
+  height: 38px;
+  line-height: 38px;
+}
+.fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme .theme-name .plugin-info {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: normal;
 }
 .fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme .theme-actions {
   z-index: 1;
@@ -194,6 +195,21 @@
   padding: 0;
   border: none;
   background: transparent;
+  display: none;
+}
+.fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme.active .theme-name {
+  line-height: 1;
+}
+.fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme.active .theme-name .plugin-info a {
+  color: #eeeeee;
+}
+.fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme.active .theme-name .plugin-info a:hover {
+  color: #ffffff;
+}
+.fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme.installed .theme-name {
+  line-height: 1;
+}
+.fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme:hover .theme-actions {
   display: block;
 }
 .fusion-builder-wrap .fusion-builder-addons .fusion-admin-box .theme .button-primary {
@@ -215,7 +231,6 @@
   -webkit-transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
   border: none;
-  -webkit-transition: opacity .2s ease-in-out 0s, transform .2s ease-in-out 0s;
   -webkit-transition: opacity .2s ease-in-out 0s, -webkit-transform .2s ease-in-out 0s;
           transition: opacity .2s ease-in-out 0s, -webkit-transform .2s ease-in-out 0s;
           transition: opacity .2s ease-in-out 0s, transform .2s ease-in-out 0s;
@@ -300,8 +315,7 @@
   border-bottom-color: #bbbbbb;
   border-radius: 0;
   border: 1px solid #cccccc;
-  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
-          box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
   color: #333333;
   cursor: pointer;
   display: block;
@@ -329,8 +343,7 @@
   background-image: none !important;
   border-color: #0064cd #0064cd #003f81;
   border-color: rgba(0, 0, 0, .1) !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, .25);
 }
@@ -378,8 +391,7 @@
   border: 1px solid #dfdfdf;
   border-style: none solid solid;
   border-width: medium 1px 1px;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
-          box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
   display: none;
   padding: 25px;
 }
@@ -409,10 +421,44 @@ input[type="file"]::-webkit-file-upload-button {
   border-style: solid;
   border-radius: 3px;
   white-space: nowrap;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   -webkit-appearance: none;
-  -webkit-box-shadow: 0 1px 0 #cccccc;
-          box-shadow: 0 1px 0 #cccccc;
+  box-shadow: 0 1px 0 #cccccc;
   vertical-align: top;
+}
+.fusion-builder-admin-toggle-icon {
+  font-size: 23px;
+}
+.fusion-builder-admin-toggle-icon.fusion-minus::after,
+.fusion-builder-admin-toggle-icon.fusion-plus::after,
+.fusion-builder-admin-toggle-icon.fusion-plus::before {
+  content: "";
+  height: 2px;
+  width: 14px;
+  display: block;
+  background: #333333;
+          border-radius: 10px;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.fusion-builder-admin-toggle-icon.fusion-plus::after {
+  height: 14px;
+  width: 2px;
+  left: 50%;
+  top: 50%;
+}
+.fusion-builder-admin-toggle-heading {
+  position: relative;
+}
+.fusion-builder-admin-toggle-icon {
+  position: absolute;
+  right: 30px;
+  margin: 0;
+  top: 50%;
 }

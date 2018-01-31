@@ -47,8 +47,7 @@
   background: #ffffff;
   border-top: 1px solid #cccccc;
   bottom: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   left: 0;
   padding: 1em;
   position: absolute;
@@ -63,8 +62,7 @@
 .fusion-builder-modal-bottom-container .fusion-builder-modal-save {
   background: #008fc5;
   border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   color: #ffffff;
   display: inline-block;
   font-size: 14px;
@@ -83,8 +81,7 @@
 .fusion-builder-main-settings {
   background-color: #ffffff;
   bottom: 2em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   left: 0;
   margin-bottom: 3em;
   margin-top: 3em;
@@ -118,16 +115,14 @@
 .fusion-builder-main-settings.fusion-builder-main-settings-advanced .fusion-builder-module-settings {
   border-left: 1px solid #dddddd;
   min-height: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   float: right;
   margin: 0;
   padding-top: 2.5em;
   width: 67%;
 }
 .fusion-builder-main-settings.fusion-builder-main-settings-advanced .fusion-builder-module-settings li {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 2em 5em;
   width: 100%;
 }
@@ -238,8 +233,7 @@
           appearance: none;
   background: url("../images/icons/select_bg5.jpg") no-repeat right;
   border-right: none !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
   cursor: pointer;
   font: 12px/20px Arial, Helvetica, sans-serif;
   height: 46px !important;
@@ -264,8 +258,7 @@
   border-left: 1px solid #d9d9d9 !important;
   border-right: none !important;
   border-top: none !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
   cursor: pointer;
   font: 12px/20px Arial, Helvetica, sans-serif;
   height: 34px !important;
@@ -337,8 +330,7 @@
 }
 .option-field input[type="text"],
 .option-field textarea {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   padding: .5em;
   width: 100%;
 }
@@ -473,8 +465,7 @@
 .fusion-builder-all-modules li {
   background-color: #ffffff;
   border: 1px solid #dddddd;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   cursor: pointer;
   float: left;
   list-style-type: none;
@@ -487,8 +478,7 @@
 .fusion-builder-all-modules li:hover {
   background: #f7f7f7;
   border: 1px solid #cccccc;
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .1);
-          box-shadow: 0 0 3px rgba(0, 0, 0, .1);
+  box-shadow: 0 0 3px rgba(0, 0, 0, .1);
   color: #444444;
 }
 .fusion-builder-all-modules li .fusion_module_title {
@@ -514,8 +504,7 @@
 .fusion-builder-section-header {
   background: #0091cd;
   border-bottom: 1px solid #ffffff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: #ffffff;
   cursor: move;
   float: left;
@@ -547,8 +536,7 @@
 .fusion_module_block {
   background: #ffffff;
   border: 1px solid #dddddd;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   float: left;
   margin-bottom: 1.5em;
   padding: 1.5em;
@@ -576,8 +564,7 @@
 }
 .fusion_builder_row {
   border-bottom: 1px solid #dddddd;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   float: left;
   padding: 1.5% 1.5% 2.5%;
   position: relative;
@@ -585,8 +572,7 @@
 }
 .fusion_builder_row_inner {
   border: 1px solid #dddddd;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   float: left;
   margin-bottom: 1.5em;
   padding: 1.5em;
@@ -656,8 +642,7 @@
           animation: zoomIn .3s 1 cubic-bezier(.77, 0, .175, 1);
   background: #f3f3f3 !important;
   border: 1px dashed #dddddd !important;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   display: block;
   padding-left: 0;
   padding-right: 0;
@@ -709,10 +694,8 @@
   background: #ffffff;
   border-radius: 2px;
   bottom: 5%;
-  -webkit-box-shadow: 0 0 100px rgba(0, 0, 0, .5);
-          box-shadow: 0 0 100px rgba(0, 0, 0, .5);
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-shadow: 0 0 100px rgba(0, 0, 0, .5);
+  box-sizing: border-box;
   left: 0;
   margin: auto;
   max-width: 1250px;
@@ -737,8 +720,7 @@
 }
 .fusion-builder-modal-settings-container .fusion-builder-column-layouts li {
   border: 1px dashed #cccccc;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   cursor: pointer;
   float: left;
   margin: 1.5%;
@@ -751,8 +733,7 @@
 .fusion-builder-column {
   background: #ffffff;
   border: 1px solid #dddddd;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   cursor: move;
   display: inline-block;
   float: none;
@@ -841,8 +822,7 @@
 }
 .fusion-builder-add-element {
   border: 1px dashed #dddddd;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: #999999;
   float: left;
   padding: 1em 0;
@@ -939,8 +919,7 @@
   position: relative;
 }
 .fusion-builder-sortable-options li {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   overflow: hidden;
 }
 .fusion-builder-sortable-options li .fusion-builder-controls {
@@ -964,8 +943,7 @@
   background: #ffffff;
 }
 .fusion-builder-sortable-options li .multi-element-child-name {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   display: inline-block;
   font-weight: bold;
   padding: .8em .8em .8em 1em;
@@ -991,8 +969,7 @@
   width: 100%;
 }
 .fusion-page-layouts .fusion-page-layout {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   cursor: pointer;
   list-style-type: none;
   margin: 0 1.5% 1.5%;
@@ -1046,8 +1023,7 @@
 .fusion-builder-add-multi-child:hover,
 .fusion-builder-sortable-options li:hover {
   background: #f7f7f7;
-  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .1);
-          box-shadow: 0 0 3px rgba(0, 0, 0, .1);
+  box-shadow: 0 0 3px rgba(0, 0, 0, .1);
   color: #444444;
 }
 .fusion-builder-add-multi-child {
@@ -1076,8 +1052,7 @@
 }
 .fusion-builder-row-container {
   background: #ffffff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   float: left;
   min-height: 180px;
   width: 100%;
@@ -1194,10 +1169,8 @@
 .column-sizes {
   background: #ffffff;
   border-top: 1px solid #dddddd;
-  -webkit-box-shadow: 0 0 30px rgba(0, 0, 0, .2);
-          box-shadow: 0 0 30px rgba(0, 0, 0, .2);
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-shadow: 0 0 30px rgba(0, 0, 0, .2);
+  box-sizing: border-box;
   display: none;
   float: left;
   left: 0;
@@ -1210,8 +1183,7 @@
 .column-sizes .column-size {
   border-bottom: 1px solid #dddddd;
   border-right: 1px solid #dddddd;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   cursor: pointer;
   display: inline-block;
   float: left;
@@ -1230,8 +1202,7 @@
 input[type="text"].fusion-builder-section-name {
   background-color: transparent;
   border: 0;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   color: #ffffff;
   margin: 9px 0 0 25px;
   width: 33%;
@@ -1260,8 +1231,7 @@ input[type="text"].fusion-builder-section-name:focus {
   max-width: 100%;
 }
 .fusion_module_block_preview .fusion-slide-preview {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   display: inline-block;
   margin: 1.5%;
   max-height: 80px;
@@ -1300,8 +1270,7 @@ input[type="text"].fusion-builder-section-name:focus {
 .wp-picker-container input.iris-error[type="text"] {
   background-color: #ffffff;
   border: 1px solid #dddddd;
-  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .07) inset;
-          box-shadow: 0 1px 2px rgba(0, 0, 0, .07) inset;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .07) inset;
   color: #333333;
   -webkit-transition: border-color .05s ease-in-out 0s;
           transition: border-color .05s ease-in-out 0s;
@@ -1320,8 +1289,7 @@ input[type="text"].fusion-builder-section-name:focus {
 .fusion-builder-load-template-dialog {
   background-color: #ffffff;
   border-radius: 2px;
-  -webkit-box-shadow: 0 2px 30px rgba(0, 0, 0, .3);
-          box-shadow: 0 2px 30px rgba(0, 0, 0, .3);
+  box-shadow: 0 2px 30px rgba(0, 0, 0, .3);
   cursor: auto;
   display: none;
   height: 183px;
@@ -1577,8 +1545,7 @@ input[type="range"].fusion-range-option::-webkit-slider-runnable-track {
   background: #dddddd;
   border-radius: 0;
   border: 0 solid #cccccc;
-  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
-          box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0), 0 0 0 rgba(13, 13, 13, 0);
   cursor: pointer;
   height: 6px;
   width: 100%;
@@ -1588,8 +1555,7 @@ input[type="range"].fusion-range-option::-webkit-slider-thumb {
   background: #008fc5;
   border-radius: 15px;
   border: 0 solid rgba(0, 0, 0, 0);
-  -webkit-box-shadow: 0 0 0 #000031, 0 0 0 #00004b;
-          box-shadow: 0 0 0 #000031, 0 0 0 #00004b;
+  box-shadow: 0 0 0 #000031, 0 0 0 #00004b;
   cursor: pointer;
   height: 18px;
   margin-top: -6px;
@@ -1645,8 +1611,7 @@ input[type="range"].fusion-range-option::-ms-thumb {
 }
 .fusion_builder_blank_page {
   border: 1px dashed #c8c7c7;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   color: #777777;
   float: left;
   margin: 0 3% 3%;
@@ -1669,8 +1634,7 @@ input[type="range"].fusion-range-option::-ms-thumb {
 }
 .fusion-builder-blank-page-info {
   border-top: 1px dashed #c8c7c7;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   float: left;
   width: 50%;
 }
@@ -1703,8 +1667,7 @@ input[type="range"].fusion-range-option::-ms-thumb {
 }
 .fusion-builder-blank-page-icons ul li {
   border-top: 1px dashed #c8c7c7;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   float: left;
   margin: 0;
   padding: 1em 0;
@@ -1754,8 +1717,7 @@ input[type="range"].fusion-range-option::-ms-thumb {
   border-radius: 0 0 5px 5px;
   border-top: 0;
   border: 1px solid #dddddd;
-  -webkit-box-shadow: 0 2px 30px rgba(0, 0, 0, .3);
-          box-shadow: 0 2px 30px rgba(0, 0, 0, .3);
+  box-shadow: 0 2px 30px rgba(0, 0, 0, .3);
   color: #777777;
   display: none;
   font-size: 12px;
@@ -1830,8 +1792,7 @@ input[type="range"].fusion-range-option::-ms-thumb {
 .fusion-table-builder input {
   background: transparent;
   border: 0;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   max-width: 100%;
   width: 100%;
 }
@@ -1866,7 +1827,7 @@ input[type="range"].fusion-range-option::-ms-thumb {
 .fusion-table-remove-row {
   cursor: pointer;
 }
-.fusion-builer-table-featured {
+.fusion-builder-table-featured {
   background: #f5f5f5;
   float: left;
   margin-bottom: 8px;

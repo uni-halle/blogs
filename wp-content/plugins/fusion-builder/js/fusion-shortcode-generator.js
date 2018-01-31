@@ -1,8 +1,9 @@
+/* global FusionPageBuilderApp, FusionPageBuilder, FusionPageBuilderElements, fusionBuilderInsertIntoEditor */
 ( function( $ ) {
 
 	// Insert shortcode into post editor
-	fusionBuilderInsertIntoEditor = function( shortcode, editorID ) {
-		var currentEditor = window.SCmoduleContentEditorMode,
+	fusionBuilderInsertIntoEditor = function( shortcode, editorID ) { // jshint ignore:line
+		var currentEditor = window.SCmoduleContentEditorMode, // jshint ignore:line
 		    editorArea,
 		    editor;
 
@@ -56,7 +57,7 @@
 
 } )( jQuery );
 
-function openShortcodeGenerator( trigger ) {
+function openShortcodeGenerator( trigger ) { // jshint ignore:line
 
 	// Get editor id from event.trigger.  parent.parent
 

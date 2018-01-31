@@ -1,3 +1,4 @@
+/* global FusionPageBuilderApp, alert, fusionBuilderText, FusionPageBuilderEvents, FusionPageBuilderViewManager, fusionAllElements, FusionPageBuilderElements, fusionHistoryManager */
 var FusionPageBuilder = FusionPageBuilder || {};
 
 ( function( $ ) {
@@ -21,7 +22,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 			},
 
 			initialize: function() {
-				this.typingTimer;
+				this.typingTimer; // jshint ignore:line
 				this.doneTypingInterval = 800;
 			},
 
@@ -33,21 +34,58 @@ var FusionPageBuilder = FusionPageBuilder || {};
 						this.$el.find( 'span' ).toggleClass( 'dashicons-arrow-up' ).toggleClass( 'dashicons-arrow-down' );
 				}
 
+				// If global, make it.
+				if ( 'undefined' !== typeof ( this.model.attributes.params.fusion_global ) ) {
+					FusionPageBuilderApp.addClassToElement( this.$el, 'fusion-global-container', this.model.attributes.params.fusion_global );
+				}
+
 				return this;
 			},
 
 			saveElement: function( event ) {
-				var thisEl           = this.$el,
-				    elementContent   = this.getContainerContent(),
+				var elementContent   = this.getContainerContent(),
+				    $mainContainer   = $( '#fusion_builder_main_container' ),
 				    elementName      = $( '#fusion-builder-save-element-input' ).val(),
+				    saveGlobal       = $( '#fusion_save_global' ).is( ':checked' ),
 				    layoutsContainer = $( '#fusion-builder-layouts-sections .fusion-page-layouts' ),
-				    emptyMessage     = $( '#fusion-builder-layouts-sections .fusion-empty-library-message' );
+				    emptyMessage     = $( '#fusion-builder-layouts-sections .fusion-empty-library-message' ),
+				    thisModel        = this.model,
+				    isDuplicate      = false,
+				    oldGLobalID      = null,
+				    params           = {};
 
 				if ( event ) {
 					event.preventDefault();
 				}
 
-				if ( true === FusionPageBuilderApp.layoutIsSaving ) {
+				if ( 'undefined' !== typeof ( this.model.attributes.params ) && 'undefined' !== typeof ( this.model.attributes.params.fusion_global ) &&  0 < $mainContainer.find( '[fusion-global-layout="' + this.model.attributes.params.fusion_global + '"]' ).length ) {
+
+					// Make a copy.
+					oldGLobalID     = this.model.attributes.params.fusion_global;
+					params          = this.model.get( 'params' );
+
+					// Remove temporarily and update model
+					delete params.fusion_global;
+					this.model.set( 'params', params );
+
+					// Get content.
+					elementContent   = this.getContainerContent();
+
+					// Add it back.
+					params.fusion_global = oldGLobalID;
+					this.model.set( 'params', params );
+				}
+
+				$.each( jQuery( 'ul.fusion-page-layouts.fusion-layout-sections li' ), function( index, value ) { // jshint ignore:line
+					var templateName = jQuery( this ).find( 'h4.fusion-page-layout-title' ).html().split( '<div ' )[0];
+					if ( elementName.toLowerCase().trim() === templateName.toLowerCase().trim() ) {
+						alert( fusionBuilderText.duplicate_element_name_error );
+						isDuplicate = true;
+						return false;
+					}
+				});
+
+				if ( true === FusionPageBuilderApp.layoutIsSaving || true === isDuplicate ) {
 					return;
 				}
 				FusionPageBuilderApp.layoutIsSaving = true;
@@ -61,6 +99,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 							action: 'fusion_builder_save_layout',
 							fusion_load_nonce: FusionPageBuilderApp.fusion_load_nonce,
 							fusion_layout_name: elementName,
+							fusion_save_global: saveGlobal,
 							fusion_layout_content: elementContent,
 							fusion_layout_post_type: 'fusion_element',
 							fusion_layout_new_cat: 'sections'
@@ -70,6 +109,16 @@ var FusionPageBuilder = FusionPageBuilder || {};
 							layoutsContainer.prepend( data.responseText );
 							$( '.fusion-save-element-fields' ).remove();
 							emptyMessage.hide();
+
+							// If global, make it.
+							if ( saveGlobal ) {
+								thisModel.attributes.params.fusion_global = $( data.responseText ).attr( 'data-layout_id' );
+								$( 'div[data-cid="' + thisModel.get( 'cid' ) + '"]' ).closest( '.fusion_builder_container' ).addClass( 'fusion-global-container' );
+								$( 'div[data-cid="' + thisModel.get( 'cid' ) + '"]' ).attr( 'fusion-global-layout', $( data.responseText ).attr( 'data-layout_id' )  );
+								$( 'div[data-cid="' + thisModel.get( 'cid' ) + '"]' ).append( '<div class="fusion-builder-global-tooltip"><span>' + fusionBuilderText.global_container + '</span></div>' );
+								FusionPageBuilderEvents.trigger( 'fusion-element-added' );
+								FusionPageBuilderApp.saveGlobal = true;
+							}
 						}
 					} );
 
@@ -78,7 +127,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 				}
 			},
 
-			getContainerContent: function( model, collection, options ) {
+			getContainerContent: function( model, collection, options ) { // jshint ignore:line
 				var shortcode      = '',
 				    $thisContainer = this.$el.find( '.fusion-builder-section-content' );
 
@@ -120,19 +169,19 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 				$( '#fusion-builder-layouts-sections-trigger' ).click();
 
-				$( '#fusion-builder-layouts-sections .fusion-builder-layouts-header-element-fields' ).append( '<div class="fusion-save-element-fields"><input type="text" value="' + containerName + '" id="fusion-builder-save-element-input" class="fusion-builder-save-element-input" placeholder="' + fusionBuilderText.enter_name + '" /><a href="#" class="fusion-builder-save-column fusion-builder-element-button-save" data-element-cid="' + this.model.get( 'cid' ) + '">' + fusionBuilderText.save_section + '</a></div>' );
+				$( '#fusion-builder-layouts-sections .fusion-builder-layouts-header-element-fields' ).append( '<div class="fusion-save-element-fields"><input type="text" value="' + containerName + '" id="fusion-builder-save-element-input" class="fusion-builder-save-element-input" placeholder="' + fusionBuilderText.enter_name + '" /><div class="save-as-global"><label><input type="checkbox" id="fusion_save_global" name="fusion_save_global">' + fusionBuilderText.save_global + '</label><a href="#" class="fusion-builder-save-column fusion-builder-element-button-save" data-element-cid="' + this.model.get( 'cid' ) + '">' + fusionBuilderText.save_section + '</a></div></div>' );
 			},
 
 			showSettings: function( event ) {
 
 				var $modalView,
-					$viewSettings = {
+				    $viewSettings = {
 						model: this.model,
 						collection: this.collection,
 						attributes: {
 							'data-modal_view': 'element_settings'
 						}
-					};
+				    };
 
 				if ( event ) {
 					event.preventDefault();
@@ -149,8 +198,8 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 			hideHundredPercentOption: function() {
 				var $currentTemplate = jQuery( '#page_template' ),
-					$currentPortfolioWidth = jQuery( '#pyre_portfolio_width_100' ).val(),
-					$option = jQuery( '.fusion_builder_container li[data-option-id="hundred_percent"]' );
+				    $currentPortfolioWidth = jQuery( '#pyre_portfolio_width_100' ).val(),
+				    $option = jQuery( '.fusion_builder_container li[data-option-id="hundred_percent"]' );
 
 				if ( '100-width.php' !== $currentTemplate.val() && 'yes' !== $currentPortfolioWidth ) {
 
@@ -182,7 +231,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 				// Process default options for shortcode.
 				_.each( defaultParams, function( param )  {
 					if ( _.isObject( param.value ) ) {
-						value = param.default;
+						value = param['default'];
 					} else {
 						value = param.value;
 					}
@@ -245,13 +294,13 @@ var FusionPageBuilder = FusionPageBuilder || {};
 					var thisRow = $( this ),
 					    rowCID  = thisRow.data( 'cid' ),
 
-					    // Get model from collection by cid.
-					    row = FusionPageBuilderElements.find( function( model ) {
-							return model.get( 'cid' ) == rowCID;
-					    } ),
+						// Get model from collection by cid.
+						row = FusionPageBuilderElements.find( function( model ) {
+							return model.get( 'cid' ) === rowCID;
+						} ),
 
-					    // Clone row.
-					    rowAttributes = $.extend( true, {}, row.attributes );
+						// Clone row.
+						rowAttributes = $.extend( true, {}, row.attributes );
 
 					rowAttributes.created = 'manually';
 					rowAttributes.cid = FusionPageBuilderViewManager.generateCid();
@@ -267,7 +316,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 						    // Get model from collection by cid
 						    column = FusionPageBuilderElements.find( function( model ) {
-								return model.get( 'cid' ) == $columnCID;
+								return model.get( 'cid' ) === $columnCID;
 						    } ),
 
 						    // Clone column
@@ -300,7 +349,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 								// Get model from collection by cid
 								element = FusionPageBuilderElements.find( function( model ) {
-									return model.get( 'cid' ) == elementCID;
+									return model.get( 'cid' ) === elementCID;
 								} );
 
 								// Clone model attritubes
@@ -334,7 +383,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 				// Save history state
 				fusionHistoryManager.turnOnTracking();
-				fusionHistoryState = fusionBuilderText.cloned_section;
+				window.fusionHistoryState = fusionBuilderText.cloned_section;
 
 				FusionPageBuilderEvents.trigger( 'fusion-element-cloned' );
 			},
@@ -378,7 +427,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 					// Save history state
 					fusionHistoryManager.turnOnTracking();
-					fusionHistoryState = fusionBuilderText.deleted_section;
+					window.fusionHistoryState = fusionBuilderText.deleted_section;
 
 					FusionPageBuilderEvents.trigger( 'fusion-element-removed' );
 				}
@@ -413,7 +462,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 				code = event.keyCode || event.which;
 
-				if ( 13 == code ) {
+				if ( 13 == code ) { // jshint ignore:line
 					event.preventDefault();
 					this.$el.find( '.fusion-builder-section-name' ).blur();
 
@@ -431,9 +480,6 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 				}, this.doneTypingInterval );
 			}
-
 		} );
-
 	} );
-
 } )( jQuery );

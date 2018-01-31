@@ -1,3 +1,4 @@
+/* global FusionPageBuilderEvents, FusionPageBuilderViewManager, fusionAllElements, tinyMCE, FusionPageBuilderApp, fusionBuilderInsertIntoEditor */
 var FusionPageBuilder = FusionPageBuilder || {};
 
 ( function( $ ) {
@@ -48,13 +49,13 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 				if ( label in fusionAllElements ) {
 
-					multi   = fusionAllElements[ label ].multi;
-					type   = fusionAllElements[ label ].shortcode;
+					multi = fusionAllElements[ label ].multi;
+					type  = fusionAllElements[ label ].shortcode;
 
 				} else {
 
 					params = '';
-					multi   = '';
+					multi  = '';
 					type   = '';
 				}
 
@@ -66,7 +67,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 				_.each( defaultParams, function( param )  {
 					var value;
 					if ( _.isObject( param.value ) ) {
-						value = param.default;
+						value = param['default'];
 					} else {
 						value = param.value;
 					}
@@ -140,7 +141,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 				// Process default parameters from shortcode
 				_.each( defaultParams, function( param )  {
 					if ( _.isObject( param.value ) ) {
-						value = param.default;
+						value = param['default'];
 					} else {
 						value = param.value;
 					}
@@ -154,7 +155,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 					params.type = element;
 
-					updateContent    = layoutElementsNum == ( index + 1 ) ? 'true' : 'false';
+					updateContent    = layoutElementsNum === ( index + 1 ) ? 'true' : 'false';
 					columnAttributes = {
 						type: 'generated_element',
 						added: 'manually',
@@ -193,14 +194,14 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 				FusionPageBuilderApp.activeModal = 'container';
 
-				elementID = FusionPageBuilderViewManager.generateCid();
+				elementID     = FusionPageBuilderViewManager.generateCid();
 				defaultParams = fusionAllElements.fusion_builder_container.params;
-				params = {};
+				params        = {};
 
 				// Process default parameters from shortcode
 				_.each( defaultParams, function( param ) {
 					if ( _.isObject( param.value ) ) {
-						value = param.default;
+						value = param['default'];
 					} else {
 						value = param.value;
 					}

@@ -179,6 +179,10 @@ if ( fusion_is_element_enabled( 'fusion_counters_circle' ) ) {
 				$font_size     = 50 * $multiplicator;
 
 				$attr['data-percent']       = $this->child_args['value'];
+
+				if ( $this->child_args['countdown'] ) {
+					$attr['data-percent-original'] = $this->child_args['value'];
+				}
 				$attr['data-countdown']     = $this->child_args['countdown'];
 				$attr['data-filledcolor']   = $this->child_args['filledcolor'];
 				$attr['data-unfilledcolor'] = $this->child_args['unfilledcolor'];
@@ -299,59 +303,61 @@ if ( fusion_is_element_enabled( 'fusion_counters_circle' ) ) {
  * @since 1.0
  */
 function fusion_element_counters_circle() {
-	fusion_builder_map( array(
-		'name'          => esc_attr__( 'Counter Circles', 'fusion-builder' ),
-		'shortcode'     => 'fusion_counters_circle',
-		'multi'         => 'multi_element_parent',
-		'element_child' => 'fusion_counter_circle',
-		'icon'          => 'fusiona-clock',
-		'params'        => array(
-			array(
-				'type'        => 'tinymce',
-				'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'Enter some content for this contentbox.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => '[fusion_counter_circle value="50" filledcolor="" unfilledcolor="" size="220" scales="no" countdown="no" speed="1500"]' . esc_attr__( 'Your Content Goes Here', 'fusion-builder' ) . '[/fusion_counter_circle]',
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Offset of Animation', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls when the animation should start.', 'fusion-builder' ),
-				'param_name'  => 'animation_offset',
-				'value'       => array(
-					''                => esc_attr__( 'Default', 'fusion-builder' ),
-					'top-into-view'   => esc_attr__( 'Top of element hits bottom of viewport', 'fusion-builder' ),
-					'top-mid-of-view' => esc_attr__( 'Top of element hits middle of viewport', 'fusion-builder' ),
-					'bottom-in-view'  => esc_attr__( 'Bottom of element enters viewport', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'          => esc_attr__( 'Counter Circles', 'fusion-builder' ),
+			'shortcode'     => 'fusion_counters_circle',
+			'multi'         => 'multi_element_parent',
+			'element_child' => 'fusion_counter_circle',
+			'icon'          => 'fusiona-clock',
+			'params'        => array(
+				array(
+					'type'        => 'tinymce',
+					'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Enter some content for this contentbox.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => '[fusion_counter_circle value="50" filledcolor="" unfilledcolor="" size="220" scales="no" countdown="no" speed="1500"]' . esc_attr__( 'Your Content Goes Here', 'fusion-builder' ) . '[/fusion_counter_circle]',
 				),
-				'default'     => '',
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Offset of Animation', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls when the animation should start.', 'fusion-builder' ),
+					'param_name'  => 'animation_offset',
+					'value'       => array(
+						''                => esc_attr__( 'Default', 'fusion-builder' ),
+						'top-into-view'   => esc_attr__( 'Top of element hits bottom of viewport', 'fusion-builder' ),
+						'top-mid-of-view' => esc_attr__( 'Top of element hits middle of viewport', 'fusion-builder' ),
+						'bottom-in-view'  => esc_attr__( 'Bottom of element enters viewport', 'fusion-builder' ),
+					),
+					'default'     => '',
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_counters_circle' );
 
@@ -362,80 +368,82 @@ function fusion_element_counter_circle() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'              => esc_attr__( 'Counter Circle', 'fusion-builder' ),
-		'description'       => esc_attr__( 'Enter some content for this block.', 'fusion-builder' ),
-		'shortcode'         => 'fusion_counter_circle',
-		'hide_from_builder' => true,
-		'params'            => array(
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Filled Area Percentage', 'fusion-builder' ),
-				'description' => esc_attr__( 'From 1% to 100%.', 'fusion-builder' ),
-				'param_name'  => 'value',
-				'value'       => '50',
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Filled Color', 'fusion-builder' ),
-				'param_name'  => 'filledcolor',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'counter_filled_color' ),
-				'description' => esc_attr__( 'Controls the color of the filled in area. ', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Unfilled Color', 'fusion-builder' ),
-				'param_name'  => 'unfilledcolor',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'counter_unfilled_color' ),
-				'description' => esc_attr__( 'Controls the color of the unfilled in area. ', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Size of the Counter', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert size of the counter in px. ex: 220.', 'fusion-builder' ),
-				'param_name'  => 'size',
-				'value'       => '220',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Scales', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to show a scale around circles.', 'fusion-builder' ),
-				'param_name'  => 'scales',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'              => esc_attr__( 'Counter Circle', 'fusion-builder' ),
+			'description'       => esc_attr__( 'Enter some content for this block.', 'fusion-builder' ),
+			'shortcode'         => 'fusion_counter_circle',
+			'hide_from_builder' => true,
+			'params'            => array(
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Filled Area Percentage', 'fusion-builder' ),
+					'description' => esc_attr__( 'From 1% to 100%.', 'fusion-builder' ),
+					'param_name'  => 'value',
+					'value'       => '50',
 				),
-				'default'     => 'no',
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Countdown', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to let the circle filling move counter clockwise.', 'fusion-builder' ),
-				'param_name'  => 'countdown',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Filled Color', 'fusion-builder' ),
+					'param_name'  => 'filledcolor',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'counter_filled_color' ),
+					'description' => esc_attr__( 'Controls the color of the filled in area. ', 'fusion-builder' ),
 				),
-				'default'     => 'no',
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Unfilled Color', 'fusion-builder' ),
+					'param_name'  => 'unfilledcolor',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'counter_unfilled_color' ),
+					'description' => esc_attr__( 'Controls the color of the unfilled in area. ', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Size of the Counter', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert size of the counter in px. ex: 220.', 'fusion-builder' ),
+					'param_name'  => 'size',
+					'value'       => '220',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Scales', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show a scale around circles.', 'fusion-builder' ),
+					'param_name'  => 'scales',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'no',
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Countdown', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to let the circle filling move counter clockwise.', 'fusion-builder' ),
+					'param_name'  => 'countdown',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'no',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Animation Speed', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert animation speed in milliseconds.', 'fusion-builder' ),
+					'param_name'  => 'speed',
+					'value'       => '1500',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Counter Circle Text', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert text for counter circle box, keep it short.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
+				),
 			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Animation Speed', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert animation speed in milliseconds.', 'fusion-builder' ),
-				'param_name'  => 'speed',
-				'value'       => '1500',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Counter Circle Text', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert text for counter circle box, keep it short.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_counter_circle' );

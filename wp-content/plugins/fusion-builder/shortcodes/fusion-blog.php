@@ -134,6 +134,8 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 				add_filter( 'fusion_attr_blog-shortcode-loop', array( $this, 'loop_attr' ) );
 				add_filter( 'fusion_attr_blog-shortcode-post-title', array( $this, 'post_title_attr' ) );
 				add_filter( 'fusion_attr_blog-shortcode-post-content-wrapper', array( $this, 'post_content_wrapper_attr' ) );
+				add_filter( 'fusion_attr_blog-fusion-post-wrapper', array( $this, 'post_wrapper_attr' ) );
+				add_filter( 'fusion_attr_blog-fusion-content-sep', array( $this, 'content_sep_attr' ) );
 
 				add_shortcode( 'fusion_blog', array( $this, 'render' ) );
 			}
@@ -148,42 +150,49 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 			 * @return string          HTML output.
 			 */
 			public function render( $args, $content = '' ) {
+				global $fusion_settings;
 
 				$defaults = FusionBuilder::set_shortcode_defaults(
 					array(
-						'hide_on_mobile'           => fusion_builder_default_visibility( 'string' ),
-						'class'                    => '',
-						'id'                       => '',
-						'blog_grid_column_spacing' => '40',
-						'blog_grid_columns'        => '3',
-						'pull_by'                  => '',
-						'cat_slug'                 => '',
-						'tag_slug'                 => '',
-						'exclude_tags'             => '',
-						'excerpt'                  => 'yes',
-						'excerpt_length'           => '',
-						'exclude_cats'             => '',
-						'layout'                   => 'large',
-						'meta_all'                 => 'yes',
-						'meta_author'              => 'yes',
-						'meta_categories'          => 'yes',
-						'meta_comments'            => 'yes',
-						'meta_date'                => 'yes',
-						'meta_link'                => 'yes',
-						'meta_read'                => 'yes',
-						'meta_tags'                => 'no',
-						'number_posts'             => '6',
-						'offset'                   => '',
-						'order'                    => 'DESC',
-						'orderby'                  => 'date',
-						'paging'                   => '',
-						'show_title'               => 'yes',
-						'scrolling'                => 'infinite',
-						'strip_html'               => 'yes',
-						'thumbnail'                => 'yes',
-						'title_link'               => 'yes',
-						'posts_per_page'           => '-1',
-						'taxonomy'                 => 'category',
+						'hide_on_mobile'            => fusion_builder_default_visibility( 'string' ),
+						'class'                     => '',
+						'id'                        => '',
+						'blog_grid_column_spacing'  => '40',
+						'blog_grid_padding'         => $fusion_settings->get( 'blog_grid_padding' ),
+						'equal_heights'             => 'no',
+						'blog_grid_columns'         => '3',
+						'pull_by'                   => '',
+						'cat_slug'                  => '',
+						'tag_slug'                  => '',
+						'exclude_tags'              => '',
+						'excerpt'                   => $fusion_settings->get( 'blog_excerpt' ),
+						'excerpt_length'            => $fusion_settings->get( 'blog_excerpt_length' ),
+						'exclude_cats'              => '',
+						'grid_box_color'            => $fusion_settings->get( 'timeline_bg_color' ),
+						'grid_element_color'        => $fusion_settings->get( 'timeline_color' ),
+						'grid_separator_color'      => $fusion_settings->get( 'grid_separator_color' ),
+						'grid_separator_style_type' => $fusion_settings->get( 'grid_separator_style_type' ),
+						'layout'                    => 'large',
+						'meta_all'                  => 'yes',
+						'meta_author'               => 'yes',
+						'meta_categories'           => 'yes',
+						'meta_comments'             => 'yes',
+						'meta_date'                 => 'yes',
+						'meta_link'                 => 'yes',
+						'meta_read'                 => 'yes',
+						'meta_tags'                 => 'no',
+						'number_posts'              => '6',
+						'offset'                    => '',
+						'order'                     => 'DESC',
+						'orderby'                   => 'date',
+						'paging'                    => '',
+						'posts_per_page'            => '-1',
+						'scrolling'                 => 'infinite',
+						'show_title'                => 'yes',
+						'strip_html'                => 'yes',
+						'taxonomy'                  => 'category',
+						'thumbnail'                 => 'yes',
+						'title_link'                => 'yes',
 
 						'excerpt_words'            => '50', // Deprecated.
 						'title'                    => '',   // Deprecated.
@@ -191,6 +200,32 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 				);
 
 				$defaults['blog_grid_column_spacing'] = FusionBuilder::validate_shortcode_attr_value( $defaults['blog_grid_column_spacing'], '' );
+
+				if ( isset( $args['padding_top'] ) && '' !== $args['padding_top'] ) {
+					$defaults['blog_grid_padding']['top'] = $args['padding_top'];
+				}
+
+				if ( isset( $args['padding_right'] ) && '' !== $args['padding_right'] ) {
+					$defaults['blog_grid_padding']['right'] = $args['padding_right'];
+				}
+
+				if ( isset( $args['padding_bottom'] ) && '' !== $args['padding_bottom'] ) {
+					$defaults['blog_grid_padding']['bottom'] = $args['padding_bottom'];
+				}
+
+				if ( isset( $args['padding_left'] ) && '' !== $args['padding_left'] ) {
+					$defaults['blog_grid_padding']['left'] = $args['padding_left'];
+				}
+
+				// Re-index the array to set the correct values.
+				if ( ! isset( $args['blog_grid_padding'] ) ) {
+					$defaults['blog_grid_padding'] = array(
+						$defaults['blog_grid_padding']['top'],
+						$defaults['blog_grid_padding']['right'],
+						$defaults['blog_grid_padding']['bottom'],
+						$defaults['blog_grid_padding']['left'],
+					);
+				}
 
 				extract( $defaults );
 
@@ -297,7 +332,7 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 					$tags_id_to_exclude = array();
 					if ( $tags_to_exclude ) {
 						foreach ( $tags_to_exclude as $tag_to_exclude ) {
-							// @codingStandardsIgnoreLine
+							// @codingStandardsIgnoreLine WordPress.VIP.RestrictedFunctions.get_term_by_get_term_by
 							$id_obj = get_term_by( 'slug', $tag_to_exclude, 'post_tag' );
 							if ( $id_obj ) {
 								$tags_id_to_exclude[] = $id_obj->term_id;
@@ -309,12 +344,12 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 					}
 
 					// Setting up tags to be used.
-					$tag_ids = '';
+					$tag_ids = array();
 					if ( '' !== $defaults['tag_slug'] ) {
 						$tags = explode( ',' , $defaults['tag_slug'] );
 						if ( isset( $tags ) && $tags ) {
 							foreach ( $tags as $tag ) {
-								// @codingStandardsIgnoreLine
+								// @codingStandardsIgnoreLine WordPress.VIP.RestrictedFunctions.get_term_by_get_term_by
 								$id_obj = get_term_by( 'slug', $tag, 'post_tag' );
 
 								if ( $id_obj ) {
@@ -365,7 +400,8 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 						$posts .= '<article class="fusion-post-grid fusion-post-masonry post fusion-grid-sizer"></article>';
 					}
 
-					while ( $fusion_query->have_posts() ) : $fusion_query->the_post();
+					while ( $fusion_query->have_posts() ) :
+						$fusion_query->the_post();
 
 						$this->post_id = get_the_ID();
 
@@ -398,7 +434,7 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 						$posts .= $before_loop_action;
 
 						if ( 'grid' === $this->args['layout'] || 'masonry' === $this->args['layout'] || 'timeline' === $this->args['layout'] ) {
-							$posts .= '<div ' . FusionBuilder::attributes( 'fusion-post-wrapper' ) . '>';
+							$posts .= '<div ' . FusionBuilder::attributes( 'blog-fusion-post-wrapper' ) . '>';
 						}
 
 						$this->header = array(
@@ -464,10 +500,7 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 				$html .= '</div>';
 
 				if ( 'no' !== $this->args['scrolling'] ) {
-					ob_start();
-					$this->pagination( $this->query->max_num_pages, $range = 2, $this->query );
-					$pagination = ob_get_contents();
-					ob_get_clean();
+					$pagination = $this->pagination( $this->query->max_num_pages, $range = 2, $this->query );
 
 					$html .= $pagination;
 				}
@@ -499,6 +532,7 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 			public function pagination( $pages = '', $range = 2, $current_query = '' ) {
 
 				$showitems = ( $range * 2 ) + 1;
+				$output    = '';
 
 				if ( '' == $current_query ) {
 					global $paged;
@@ -524,41 +558,45 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 				if ( 1 != $pages ) :
 					$blog_global_pagination = apply_filters( 'fusion_builder_blog_pagination', '' );
 
-					if ( ( 'pagination' !== $this->args['scrolling'] && 'Pagination' !== $blog_global_pagination ) ) : ?>
-						<div class='pagination infinite-scroll clearfix'>
-					<?php else : ?>
-						<div class='pagination clearfix'>
-					<?php endif; ?>
+					if ( ( 'pagination' !== $this->args['scrolling'] && 'Pagination' !== $blog_global_pagination ) ) {
+						$output .= '<div class="pagination infinite-scroll clearfix">';
+					} else {
+						$output .= '<div class="pagination clearfix">';
+					}
 
-					<?php if ( 1 < $paged ) : ?>
-						<a class="pagination-prev" href="<?php echo esc_url_raw( get_pagenum_link( $paged - 1 ) ); ?>">
-							<span class="page-prev"></span>
-							<span class="page-text"><?php esc_html_e( 'Previous', 'fusion-builder' ); ?></span>
-						</a>
-					<?php endif; ?>
+					if ( 1 < $paged ) {
+						$output .= '<a class="pagination-prev" href="' . get_pagenum_link( $paged - 1 ) . '">';
+						$output .= '<span class="page-prev"></span>';
+						$output .= '<span class="page-text">' . esc_html__( 'Previous', 'fusion-builder' ) . '</span>';
+						$output .= '</a>';
+					}
+					$for_max = min( $pages, $showitems );
 
-					<?php for ( $i = 1; $i <= $pages; $i++ ) : ?>
-						<?php if ( 1 != $pages && ( ! ( $i >= $paged + $range + 1 || $i <= $paged - $range - 1 ) || $pages <= $showitems ) ) : ?>
-							<?php if ( $paged === $i ) : ?>
-								<span class="current"><?php echo esc_attr( $i ); ?></span>
-							<?php else : ?>
-								<a href="<?php echo esc_url_raw( get_pagenum_link( $i ) ); ?>" class="inactive"><?php echo esc_attr( $i ); ?></a>
-							<?php endif; ?>
-						<?php endif; ?>
-					<?php endfor; ?>
+					for ( $i = 1; $i <= $for_max; $i++ ) {
+						if ( 1 != $pages && ( ! ( $i >= $paged + $range + 1 || $i <= $paged - $range - 1 ) || $pages <= $showitems ) ) {
+							if ( $paged === $i ) {
+								$output .= '<span class="current">' . $i . '</span>';
+							} else {
+								$output .= '<a href="' . get_pagenum_link( $i ) . '" class="inactive">' . $i . '</a>';
+							}
+						}
+					}
 
-					<?php if ( $paged < $pages ) : ?>
-						<a class="pagination-next" href="<?php echo esc_url_raw( get_pagenum_link( $paged + 1 ) ); ?>">
-							<span class="page-text"><?php esc_html_e( 'Next', 'fusion-builder' ); ?></span>
-							<span class="page-next"></span>
-						</a>
-					<?php endif; ?>
+					if ( $paged < $pages ) {
+						$output .= '<a class="pagination-next" href="' . get_pagenum_link( $paged + 1 ) . '">';
+						$output .= '<span class="page-text">' . esc_html__( 'Next', 'fusion-builder' ) . '</span>';
+						$output .= '<span class="page-next"></span>';
+						$output .= '</a>';
+					}
 
-					</div>
-					<?php if ( ( 'pagination' !== $this->args['scrolling'] && 'Pagination' !== $blog_global_pagination ) ) : ?>
-						<div class="fusion-infinite-scroll-trigger"></div>
-					<?php endif; ?>
-					<?php
+					$output .= '</div>';
+
+					if ( ( 'pagination' !== $this->args['scrolling'] && 'Pagination' !== $blog_global_pagination ) ) {
+						$output .= '<div class="fusion-infinite-scroll-trigger"></div>';
+					} else {
+						$output .= '<div class="fusion-clearfix"></div>';
+					}
+					return $output;
 					// Needed for Theme check.
 					ob_start();
 					posts_nav_link();
@@ -630,7 +668,7 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 
 				$attr['class'] = 'fusion-posts-container fusion-posts-container-' . $this->args['scrolling'] . $load_more;
 
-				if ( ! $this->args['meta_all'] ) {
+				if ( ! $this->args['meta_info_combined'] ) {
 					$attr['class'] .= ' fusion-no-meta-info';
 				}
 
@@ -652,13 +690,25 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 						}
 					}
 
+					if ( 'grid' === $this->args['layout'] ) {
+						if ( 'yes' === $this->args['equal_heights'] ) {
+							$attr['class'] .= ' fusion-blog-equal-heights';
+						}
+					}
+
 					if ( $this->args['blog_grid_column_spacing'] || '0' === $this->args['blog_grid_column_spacing'] ) {
 						$attr['data-grid-col-space'] = $this->args['blog_grid_column_spacing'];
 					}
 
 					$negative_margin = ( -1 ) * $this->args['blog_grid_column_spacing'] / 2;
 
-					$attr['style'] = 'margin: ' . $negative_margin . 'px ' . $negative_margin . 'px 0;height:500px;';
+					$min_height = 'min-height:500px;';
+
+					if ( '1' === $this->args['posts_per_page'] ) {
+						$min_height = '';
+					}
+
+					$attr['style'] = 'margin: ' . $negative_margin . 'px ' . $negative_margin . 'px 0;' . $min_height;
 				}
 
 				return $attr;
@@ -679,10 +729,10 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 				if ( 'timeline' === $this->args['layout'] ) {
 
 					$wrapper  = '<div ' . FusionBuilder::attributes( 'fusion-timeline-icon' . $class_timeline_icon ) . '>';
-					$wrapper .= '<i ' . FusionBuilder::attributes( 'fusion-icon-bubbles' ) . '></i>';
+					$wrapper .= '<i ' . FusionBuilder::attributes( 'fusion-icon-bubbles' ) . ' style="color:' . $this->args['grid_element_color'] . ';"></i>';
 					$wrapper .= '</div>';
 					$wrapper .= '<div ' . FusionBuilder::attributes( 'fusion-blog-layout-timeline fusion-clearfix' ) . '>';
-					$wrapper .= '<div class="fusion-timeline-line"></div>';
+					$wrapper .= '<div class="fusion-timeline-line" style="border-left:1px solid ' . $this->args['grid_element_color'] . ';border-right:1px solid ' . $this->args['grid_element_color'] . ';"></div>';
 				}
 
 				echo $wrapper; // WPCS: XSS ok.
@@ -785,6 +835,8 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 					}
 
 					$extra_classes[] = 'fusion-clearfix' . $timeline_align;
+
+					$attr['style'] = 'border-color:' . $this->args['grid_element_color'] . ';';
 				}
 
 				// Set the has-post-thumbnail if a video is used. This is needed if no featured image is present.
@@ -803,6 +855,34 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 
 				return $attr;
 
+			}
+
+			/**
+			 * Adds attributes to the content separator.
+			 *
+			 * @since 1.3
+			 * @access public
+			 * @return array
+			 */
+			public function content_sep_attr() {
+
+				global $fusion_library;
+
+				$attr = array(
+					'class' => 'fusion-content-sep',
+					'style' => 'border-color:' . $this->args['grid_separator_color'] . ';',
+				);
+
+				$separator_styles_array = explode( '|', $this->args['grid_separator_style_type'] );
+				$separator_styles = '';
+
+				foreach ( $separator_styles_array as $separator_style ) {
+					$separator_styles .= ' sep-' . $separator_style;
+				}
+
+				$attr['class'] .= $separator_styles;
+
+				return $attr;
 			}
 
 			/**
@@ -842,8 +922,8 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 
 				// Calculate the correct size of the image wrapper container, based on orientation and column spacing.
 				if ( class_exists( 'Fusion_Sanitize' ) && class_exists( 'Fusion_Color' ) &&
-					'transparent' !== Fusion_Sanitize::color( $fusion_settings->get( 'timeline_color' ) ) &&
-					'0' != Fusion_Color::new_color( $fusion_settings->get( 'timeline_color' ) )->alpha ) {
+					'transparent' !== Fusion_Sanitize::color( $this->args['grid_element_color'] ) &&
+					'0' != Fusion_Color::new_color( $this->args['grid_element_color'] )->alpha ) {
 
 					$masonry_column_offset = ' - ' . ( (int) $this->args['blog_grid_column_spacing'] / 2 ) . 'px';
 					if ( 'fusion-element-portrait' === $element_orientation_class ) {
@@ -873,11 +953,13 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 				);
 
 				// Get the post image.
-				$fusion_library->images->set_grid_image_meta( array(
-					'layout' => 'portfolio_full',
-					'columns' => $responsive_images_columns,
-					'gutter_width' => $this->args['blog_grid_column_spacing'],
-				));
+				$fusion_library->images->set_grid_image_meta(
+					array(
+						'layout' => 'portfolio_full',
+						'columns' => $responsive_images_columns,
+						'gutter_width' => $this->args['blog_grid_column_spacing'],
+					)
+				);
 
 				$post_id = get_the_ID();
 				$permalink = get_permalink( $post_id );
@@ -1021,24 +1103,13 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 					$content_wrapper_styles = '';
 
 					if ( $this->args['meta_info_combined'] > 0 && ! $this->args['is_zero_excerpt'] && 'masonry' !== $this->args['layout'] ) {
-						$separator_styles_array = explode( '|', $fusion_settings->get( 'separator_style_type' ) );
-						$separator_styles = '';
-
-						foreach ( $separator_styles_array as $separator_style ) {
-							$separator_styles .= ' sep-' . $separator_style;
-						}
-
-						$content_sep = '<div ' . FusionBuilder::attributes( 'fusion-content-sep' . $separator_styles ) . '></div>';
-					}
-
-					if ( ! $this->args['meta_info_combined'] && $this->args['is_zero_excerpt'] && ! $this->args['show_title'] ) {
-						$content_wrapper_styles = 'style="display:none;"';
+						$content_sep = '<div ' . FusionBuilder::attributes( 'blog-fusion-content-sep' ) . '></div>';
 					}
 
 					if ( $this->args['meta_all'] ) {
 						$meta_data .= fusion_builder_render_post_metadata( 'grid_timeline', $this->meta_info_settings );
 					}
-					$pre_title_content .= '<div ' . FusionBuilder::attributes( 'blog-shortcode-post-content-wrapper' ) . $content_wrapper_styles . '>';
+					$pre_title_content .= '<div ' . FusionBuilder::attributes( 'blog-shortcode-post-content-wrapper' ) . '>';
 				}
 
 				$pre_title_content .= '<div ' . FusionBuilder::attributes( 'fusion-post-content post-content' ) . '>';
@@ -1060,8 +1131,8 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 				}
 
 				if ( 'timeline' === $this->args['layout'] ) {
-					$pre_title_content .= '<div ' . FusionBuilder::attributes( 'fusion-timeline-circle' ) . '></div>';
-					$pre_title_content .= '<div ' . FusionBuilder::attributes( 'fusion-timeline-arrow' ) . '></div>';
+					$pre_title_content .= '<div ' . FusionBuilder::attributes( 'fusion-timeline-circle' ) . ' style="background-color:' . $this->args['grid_element_color'] . ';"></div>';
+					$pre_title_content .= '<div ' . FusionBuilder::attributes( 'fusion-timeline-arrow' ) . ' style="color:' . $this->args['grid_element_color'] . ';"></div>';
 				}
 				if ( '' !== $link ) {
 					$link = '<h2 ' . FusionBuilder::attributes( 'blog-shortcode-post-title' ) . '>' . $link . '</h2>';
@@ -1105,27 +1176,87 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 			public function post_content_wrapper_attr() {
 				global $fusion_settings, $fusion_library;
 
-				$attr = array();
+				$attr = array(
+					'class' => 'fusion-post-content-wrapper',
+				);
 
-				$attr['class'] = 'fusion-post-content-wrapper';
+				if ( 'grid' === $this->args['layout'] || 'timeline' === $this->args['layout'] || 'masonry' === $this->args['layout'] ) {
+					$padding = ( is_array( $this->args['blog_grid_padding'] ) ) ? implode( ' ', $this->args['blog_grid_padding'] ) : $this->args['blog_grid_padding'] ;
+					$attr['style'] = 'padding: ' . $padding . ';';
 
-				if ( 'masonry' === $this->args['layout'] ) {
-					$masonry_content_padding = $this->args['blog_grid_column_spacing'] / 2;
-					$color = Fusion_Color::new_color( $fusion_settings->get( 'timeline_bg_color' ) );
-					$color_css = $color->to_css( 'rgba' );
-					if ( 0 === $color->alpha ) {
-						$color_css = $color->to_css( 'rgb' );
+					if ( 'masonry' === $this->args['layout'] ) {
+						$color = Fusion_Color::new_color( $this->args['grid_box_color'] );
+						$color_css = $color->to_css( 'rgba' );
+						if ( 0 === $color->alpha ) {
+							$color_css = $color->to_css( 'rgb' );
+						}
+						$attr['style'] = 'background-color:' . $color_css . ';';
 					}
-					$attr['style'] = 'background-color:' . $color_css . ';';
-					if ( ! $this->args['meta_info_combined'] && $this->args['is_zero_excerpt'] && ! $this->args['show_title'] ) {
+
+					if ( ! $this->args['meta_info_combined'] && ( $this->args['is_zero_excerpt'] || 'hide' === $this->args['excerpt'] ) && ! $this->args['show_title'] ) {
 						$attr['style'] .= ' display:none;';
 					}
 				}
 
 				return $attr;
-
 			}
 
+			/**
+			 * Builds the fusion-post-wrapper attributes array.
+			 *
+			 * @access public
+			 * @since 1.3
+			 * @return array
+			 */
+			public function post_wrapper_attr() {
+				$attr = array(
+					'class' => 'fusion-post-wrapper',
+				);
+
+				if ( 'masonry' === $this->args['layout'] ) {
+					$color = Fusion_Color::new_color( $this->args['grid_box_color'] );
+					$color_css = $color->to_css( 'rgba' );
+					if ( 0 === $color->alpha ) {
+						$color_css = $color->to_css( 'rgb' );
+					}
+					$attr['style'] = 'background-color:' . $color_css . ';';
+
+					$element_color = Fusion_Color::new_color( $this->args['grid_element_color'] );
+					if ( 0 === $element_color->alpha || 'transparent' === $this->args['grid_element_color']  ) {
+						$attr['class'] .= ' fusion-masonary-is-transparent ';
+						$attr['style'] .= 'border:none;';
+					} else {
+						$attr['style'] .= 'border:1px solid ' . $this->args['grid_element_color'] . ';border-bottom-width:3px;';
+					}
+
+					if ( ! $this->args['meta_info_combined'] && $this->args['is_zero_excerpt'] && ! $this->args['show_title'] ) {
+						$attr['style'] .= ' display:none;';
+					}
+
+				} else if ( 'grid' === $this->args['layout'] ) {
+					$color = Fusion_Color::new_color( $this->args['grid_box_color'] );
+					$color_css = $color->to_css( 'rgba' );
+					$attr['style'] = 'background-color:' . $color_css . ';';
+
+					$element_color = Fusion_Color::new_color( $this->args['grid_element_color'] );
+					if ( 0 === $element_color->alpha || 'transparent' === $this->args['grid_element_color']  ) {
+						$attr['style'] .= 'border:none;';
+					} else {
+						$attr['style'] .= 'border:1px solid ' . $this->args['grid_element_color'] . ';border-bottom-width:3px;';
+					}
+
+					if ( ! $this->args['meta_info_combined'] && $this->args['is_zero_excerpt'] && ! $this->args['show_title'] ) {
+						$attr['style'] .= ' display:none;';
+					}
+				} else if ( 'timeline' === $this->args['layout'] ) {
+					$color = Fusion_Color::new_color( $this->args['grid_box_color'] );
+					$color_css = $color->to_css( 'rgba' );
+					$attr['style'] = 'background-color:' . $color_css . ';';
+				}
+
+				return $attr;
+
+			}
 
 			/**
 			 * Adds the loop-footer HTML.
@@ -1134,11 +1265,10 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 			 * @since 1.0
 			 */
 			public function loop_footer() {
-
-				if ( 'grid' === $this->args['layout'] || 'masonry' === $this->args['layout'] || 'timeline' === $this->args['layout'] ) {
+				if ( in_array( $this->args['layout'], array( 'grid', 'masonry', 'timeline' ), true ) ) {
 					echo '</div>';
 
-					if ( $this->args['meta_info_combined'] > 0 ) {
+					if ( 0 < $this->args['meta_info_combined'] && ( $this->args['meta_comments'] || $this->args['meta_link'] ) ) {
 						$inner_content = $this->read_more();
 						$inner_content .= $this->grid_timeline_comments();
 
@@ -1248,7 +1378,7 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 						$inner_content = '</div>';
 					}
 
-					$inner_content .= '<h3 ' . FusionBuilder::attributes( 'fusion-timeline-date' ) . '>' . get_the_date( $fusion_settings->get( 'timeline_date_format' ) ) . '</h3>';
+					$inner_content .= '<h3 ' . FusionBuilder::attributes( 'fusion-timeline-date' ) . ' style="background-color:' . $this->args['grid_element_color'] . ';">' . get_the_date( $fusion_settings->get( 'timeline_date_format' ) ) . '</h3>';
 					$inner_content .= '<div class="fusion-collapse-month">';
 				}
 
@@ -1365,18 +1495,6 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 
 				global $wp_version, $content_media_query, $six_fourty_media_query, $three_twenty_six_fourty_media_query, $ipad_portrait_media_query, $content_min_media_query, $small_media_query, $medium_media_query, $large_media_query, $six_columns_media_query, $five_columns_media_query, $four_columns_media_query, $three_columns_media_query, $two_columns_media_query, $one_column_media_query, $fusion_library, $fusion_settings, $dynamic_css_helpers;
 
-				$elements = array(
-					'.fusion-blog-layout-grid .post .post-wrapper',
-					'.fusion-blog-layout-grid .post .fusion-content-sep',
-					'.fusion-blog-layout-grid .post .flexslider',
-					'.fusion-layout-timeline .post',
-					'.fusion-layout-timeline .post .fusion-content-sep',
-					'.fusion-layout-timeline .post .flexslider',
-					'.fusion-timeline-date',
-					'.fusion-timeline-arrow',
-				);
-				$css['global'][ $dynamic_css_helpers->implode( $elements ) ]['border-color'] = $fusion_library->sanitize->color( $fusion_settings->get( 'sep_color' ) );
-
 				$css['global']['.fusion-load-more-button.fusion-blog-button']['background-color'] = $fusion_library->sanitize->color( $fusion_settings->get( 'blog_load_more_posts_button_bg_color' ) );
 				$css['global']['.fusion-load-more-button.fusion-blog-button:hover']['background-color'] = Fusion_Color::new_color( $fusion_settings->get( 'blog_load_more_posts_button_bg_color' ) )->get_new( 'alpha', '0.8' )->to_css( 'rgba' );
 
@@ -1397,8 +1515,6 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 				$elements = array(
 					'.fusion-blog-layout-grid .post .flexslider',
 					'.fusion-blog-layout-grid .post .fusion-post-wrapper',
-					'.fusion-blog-layout-grid .post .fusion-content-sep',
-					'.product .fusion-content-sep',
 					'.products li',
 					'.product-buttons',
 					'.product-buttons-container',
@@ -1407,11 +1523,9 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 					'.fusion-blog-timeline-layout .post .fusion-content-sep',
 					'.fusion-blog-timeline-layout .post .flexslider',
 					'.fusion-blog-layout-timeline .post',
-					'.fusion-blog-layout-timeline .post .fusion-content-sep',
-					'.fusion-portfolio.fusion-portfolio-boxed .fusion-portfolio-content-wrapper',
-					'.fusion-portfolio.fusion-portfolio-boxed .fusion-content-sep',
 					'.fusion-blog-layout-timeline .post .flexslider',
 					'.fusion-blog-layout-timeline .fusion-timeline-date',
+					'.fusion-blog-layout-timeline .fusion-timeline-arrow',
 					'.fusion-events-shortcode .fusion-layout-column',
 					'.fusion-events-shortcode .fusion-events-thumbnail',
 				);
@@ -1419,6 +1533,12 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 
 				if ( 'transparent' == $fusion_library->sanitize->color( $fusion_settings->get( 'timeline_color' ) ) || '0' == Fusion_Color::new_color( $fusion_settings->get( 'timeline_color' ) )->alpha ) {
 					$css['global'][ $dynamic_css_helpers->implode( $elements ) ]['border'] = 'none';
+				}
+
+				$css['global']['.fusion-body .product .fusion-content-sep']['border-color'] = $fusion_library->sanitize->color( $fusion_settings->get( 'grid_separator_color' ) );
+
+				if ( 'transparent' == $fusion_library->sanitize->color( $fusion_settings->get( 'grid_separator_color' ) ) || '0' == Fusion_Color::new_color( $fusion_settings->get( 'grid_separator_color' ) )->alpha ) {
+					$css['global']['.fusion-body .product .fusion-content-sep']['border'] = 'none';
 				}
 
 				$elements = array(
@@ -1431,9 +1551,9 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 
 				$elements = array(
 					'.fusion-timeline-icon',
-					'.fusion-timeline-arrow:before',
+					'.fusion-timeline-arrow',
 					'.fusion-blog-timeline-layout .fusion-timeline-icon',
-					'.fusion-blog-timeline-layout .fusion-timeline-arrow:before',
+					'.fusion-blog-timeline-layout .fusion-timeline-arrow',
 				);
 				$css['global'][ $dynamic_css_helpers->implode( $elements ) ]['color'] = $fusion_library->sanitize->color( $fusion_settings->get( 'timeline_color' ) );
 
@@ -1573,7 +1693,7 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 				$css[ $six_fourty_media_query ]['.fusion-blog-layout-medium .fusion-post-slideshow']['width']  = 'auto';
 
 				// Blog large alternate layout.
-				$css[ $six_fourty_media_query ]['.fusion-blog-layout-large-alternate .fusion-date-and-formats']['margin-bottom'] = '55px';
+				$css[ $six_fourty_media_query ]['.fusion-blog-layout-large-alternate .fusion-date-and-formats']['margin-bottom'] = '35px';
 
 				$css[ $six_fourty_media_query ]['.fusion-blog-layout-large-alternate .fusion-post-content']['margin'] = '0';
 
@@ -1619,29 +1739,29 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 
 					switch ( fusion_library()->get_option( 'image_rollover_direction' ) ) {
 
-						case 'fade' :
+						case 'fade':
 							$image_rollover_direction_value = 'translateY(0%)';
 							$image_rollover_direction_hover_value = '';
 
 							$css['global']['.fusion-image-wrapper .fusion-rollover']['transition'] = 'opacity 0.5s ease-in-out';
 							break;
-						case 'right' :
+						case 'right':
 							$image_rollover_direction_value       = 'translateX(100%)';
 							$image_rollover_direction_hover_value = '';
 							break;
-						case 'bottom' :
+						case 'bottom':
 							$image_rollover_direction_value       = 'translateY(100%)';
 							$image_rollover_direction_hover_value = 'translateY(0%)';
 							break;
-						case 'top' :
+						case 'top':
 							$image_rollover_direction_value       = 'translateY(-100%)';
 							$image_rollover_direction_hover_value = 'translateY(0%)';
 							break;
-						case 'center_horiz' :
+						case 'center_horiz':
 							$image_rollover_direction_value       = 'scaleX(0)';
 							$image_rollover_direction_hover_value = 'scaleX(1)';
 							break;
-						case 'center_vertical' :
+						case 'center_vertical':
 							$image_rollover_direction_value       = 'scaleY(0)';
 							$image_rollover_direction_hover_value = 'scaleY(1)';
 							break;
@@ -1726,12 +1846,20 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 				);
 				$css['global'][ $dynamic_css_helpers->implode( $elements ) ]['color'] = $fusion_library->sanitize->color( fusion_library()->get_option( 'primary_color' ) );
 				$elements = array(
+					'.fusion-blog-pagination .pagination',
 					'.fusion-blog-pagination .pagination .current',
 					'.fusion-blog-pagination .pagination .pagination-next',
 					'.fusion-blog-pagination .pagination .pagination-prev',
 					'.fusion-blog-pagination .pagination a.inactive',
 				);
 				$css['global'][ $dynamic_css_helpers->implode( $elements ) ]['font-size'] = $fusion_library->sanitize->size( fusion_library()->get_option( 'pagination_font_size' ) );
+
+				$elements = array(
+					'.fusion-blog-pagination .pagination .current',
+					'.fusion-hide-pagination-text .fusion-blog-pagination .pagination .pagination-next',
+					'.fusion-hide-pagination-text .fusion-blog-pagination .pagination .pagination-prev',
+					'.fusion-blog-pagination .pagination a.inactive',
+				);
 				$css['global'][ $dynamic_css_helpers->implode( $elements ) ]['padding'] = $fusion_library->sanitize->size( $fusion_settings->get( 'pagination_box_padding', 'height' ) ) . ' ' . $fusion_library->sanitize->size( $fusion_settings->get( 'pagination_box_padding', 'width' ) );
 
 				return $css;
@@ -1747,21 +1875,21 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 			public function add_options() {
 				return array(
 					'blog_shortcode_section' => array(
-						'label'       => esc_html__( 'Blog Element', 'fusion-builder' ),
+						'label'       => esc_attr__( 'Blog Element', 'fusion-builder' ),
 						'description' => '',
 						'id'          => 'blog_shortcode_section',
 						'default'     => '',
 						'type'        => 'accordion',
 						'fields'      => array(
 							'dates_box_color' => array(
-								'label'       => esc_html__( 'Blog Date Box Color', 'fusion-builder' ),
-								'description' => esc_html__( 'Controls the color of the date box in blog alternate and recent posts layouts.', 'fusion-builder' ),
+								'label'       => esc_attr__( 'Blog Date Box Color', 'fusion-builder' ),
+								'description' => esc_attr__( 'Controls the color of the date box in blog alternate and recent posts layouts.', 'fusion-builder' ),
 								'id'          => 'dates_box_color',
 								'default'     => '#eef0f2',
 								'type'        => 'color-alpha',
 							),
 							'blog_grid_columns' => array(
-								'label'       => esc_html__( 'Grid Layout Columns', 'fusion-builder' ),
+								'label'       => esc_attr__( 'Grid Layout Columns', 'fusion-builder' ),
 								'description' => esc_html__( 'Controls the amount of columns for the grid layout when using it for the assigned blog page in "settings > reading" or blog archive pages or search results page.', 'fusion-builder' ),
 								'id'          => 'blog_grid_columns',
 								'default'     => 3,
@@ -1773,7 +1901,7 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 								),
 							),
 							'blog_grid_column_spacing' => array(
-								'label'       => esc_html__( 'Grid Layout Column Spacing', 'fusion-builder' ),
+								'label'       => esc_attr__( 'Grid Layout Column Spacing', 'fusion-builder' ),
 								'description' => esc_html__( 'Controls the amount of spacing between columns for the grid layout when using it for the assigned blog page in "settings > reading" or blog archive pages or search results page.', 'fusion-builder' ),
 								'id'          => 'blog_grid_column_spacing',
 								'default'     => '40',
@@ -1783,6 +1911,56 @@ if ( fusion_is_element_enabled( 'fusion_blog' ) ) {
 									'step' => '1',
 									'max'  => '300',
 									'edit' => 'yes',
+								),
+							),
+							'blog_grid_padding' => array(
+								'label'       => esc_attr__( 'Blog Grid Text Padding', 'fusion-builder' ),
+								'description' => esc_html__( 'Controls the top/right/bottom/left padding of the blog text when using grid / masonry or timeline layout. ', 'fusion-builder' ),
+								'id'          => 'blog_grid_padding',
+								'choices'     => array(
+									'top'     => true,
+									'bottom'  => true,
+									'left'    => true,
+									'right'   => true,
+									'units'   => array( 'px', '%' ),
+								),
+								'default'     => array(
+									'top'     => '30px',
+									'bottom'  => '20px',
+									'left'    => '25px',
+									'right'   => '25px',
+								),
+								'type'        => 'spacing',
+							),
+							'blog_excerpt' => array(
+								'label'       => esc_attr__( 'Content Display', 'fusion-builder' ),
+								'description' => esc_attr__( 'Controls if the post content displays an excerpt, full content or is completely disabled for blog elements.', 'fusion-builder' ),
+								'id'          => 'blog_excerpt',
+								'default'     => 'yes',
+								'type'        => 'radio-buttonset',
+								'choices'     => array(
+									'hide' => esc_attr__( 'No Text', 'fusion-builder' ),
+									'yes'  => esc_attr__( 'Excerpt', 'fusion-builder' ),
+									'no'   => esc_attr__( 'Full Content', 'fusion-builder' ),
+								),
+							),
+							'blog_excerpt_length' => array(
+								'label'       => esc_attr__( 'Excerpt Length', 'fusion-builder' ),
+								'description' => esc_attr__( 'Controls the number of words in the excerpts for blog elements.', 'fusion-builder' ),
+								'id'          => 'blog_excerpt_length',
+								'default'     => '10',
+								'type'        => 'slider',
+								'choices'     => array(
+									'min'  => '0',
+									'max'  => '500',
+									'step' => '1',
+								),
+								'required'    => array(
+									array(
+										'setting'  => 'blog_excerpt',
+										'operator' => '==',
+										'value'    => 'yes',
+									),
 								),
 							),
 						),
@@ -1890,477 +2068,690 @@ function fusion_blog_redirect_canonical( $redirect_url ) {
  * @since 1.0
  */
 function fusion_element_blog() {
-	fusion_builder_map( array(
-		'name'       => esc_attr__( 'Blog', 'fusion-builder' ),
-		'shortcode'  => 'fusion_blog',
-		'icon'       => 'fusiona-blog',
-		'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-blog-preview.php',
-		'preview_id' => 'fusion-builder-block-module-blog-preview-template',
-		'params'     => array(
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Blog Layout', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the layout for the element', 'fusion-builder' ),
-				'param_name'  => 'layout',
-				'default'     => 'large',
-				'value'       => array(
-					'large'            => esc_attr__( 'Large', 'fusion-builder' ),
-					'medium'           => esc_attr__( 'Medium', 'fusion-builder' ),
-					'large alternate'  => esc_attr__( 'Large Alternate', 'fusion-builder' ),
-					'medium alternate' => esc_attr__( 'Medium Alternate', 'fusion-builder' ),
-					'grid'             => esc_attr__( 'Grid', 'fusion-builder' ),
-					'timeline'         => esc_attr__( 'Timeline', 'fusion-builder' ),
-					'masonry'          => esc_attr__( 'Masonry', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Grid Layout # of Columns', 'fusion-builder' ),
-				'description' => esc_attr__( 'Set the number of columns per row.', 'fusion-builder' ),
-				'param_name'  => 'blog_grid_columns',
-				'value'       => '3',
-				'min'         => '1',
-				'max'         => '6',
-				'step'        => '1',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'medium',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'layout',
-						'value'    => 'large',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'layout',
-						'value'    => 'medium alternate',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'layout',
-						'value'    => 'large alternate',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'layout',
-						'value'    => 'timeline',
-						'operator' => '!=',
+	global $fusion_settings;
+
+	fusion_builder_map(
+		array(
+			'name'       => esc_attr__( 'Blog', 'fusion-builder' ),
+			'shortcode'  => 'fusion_blog',
+			'icon'       => 'fusiona-blog',
+			'preview'    => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-blog-preview.php',
+			'preview_id' => 'fusion-builder-block-module-blog-preview-template',
+			'params'     => array(
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Blog Layout', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the layout for the element', 'fusion-builder' ),
+					'param_name'  => 'layout',
+					'default'     => 'large',
+					'value'       => array(
+						'large'            => esc_attr__( 'Large', 'fusion-builder' ),
+						'medium'           => esc_attr__( 'Medium', 'fusion-builder' ),
+						'large alternate'  => esc_attr__( 'Large Alternate', 'fusion-builder' ),
+						'medium alternate' => esc_attr__( 'Medium Alternate', 'fusion-builder' ),
+						'grid'             => esc_attr__( 'Grid', 'fusion-builder' ),
+						'timeline'         => esc_attr__( 'Timeline', 'fusion-builder' ),
+						'masonry'          => esc_attr__( 'Masonry', 'fusion-builder' ),
 					),
 				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Column Spacing', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert the amount of spacing between blog posts.', 'fusion-builder' ),
-				'param_name'  => 'blog_grid_column_spacing',
-				'value'       => '40',
-				'min'         => '0',
-				'step'        => '1',
-				'max'         => '300',
-				'dependency'  => array(
-					array(
-						'element'  => 'layout',
-						'value'    => 'medium',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'layout',
-						'value'    => 'large',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'layout',
-						'value'    => 'medium alternate',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'layout',
-						'value'    => 'large alternate',
-						'operator' => '!=',
-					),
-					array(
-						'element'  => 'layout',
-						'value'    => 'timeline',
-						'operator' => '!=',
-					),
-				),
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Posts Per Page', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select number of posts per page.  Set to -1 to display all. Set to 0 to use number of posts from Settings > Reading.', 'fusion-builder' ),
-				'param_name'  => 'number_posts',
-				'value'       => '6',
-				'min'         => '-1',
-				'max'         => '25',
-				'step'        => '1',
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Post Offset', 'fusion-builder' ),
-				'description' => esc_attr__( 'The number of posts to skip. ex: 1.', 'fusion-builder' ),
-				'param_name'  => 'offset',
-				'value'       => '0',
-				'min'         => '0',
-				'max'         => '25',
-				'step'        => '1',
-				'dependency'  => array(
-					array(
-						'element'  => 'number_posts',
-						'value'    => '-1',
-						'operator' => '!=',
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Grid Layout # of Columns', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set the number of columns per row.', 'fusion-builder' ),
+					'param_name'  => 'blog_grid_columns',
+					'value'       => '3',
+					'min'         => '1',
+					'max'         => '6',
+					'step'        => '1',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'medium',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'large',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'medium alternate',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'large alternate',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'timeline',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Pull Posts By', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to show posts by category or tag.', 'fusion-builder' ),
-				'param_name'  => 'pull_by',
-				'default'     => 'category',
-				'value'       => array(
-					'category' => esc_attr__( 'Category', 'fusion-builder' ),
-					'tag'      => esc_attr__( 'Tag', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'multiple_select',
-				'heading'     => esc_attr__( 'Categories', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select a category or leave blank for all.', 'fusion-builder' ),
-				'param_name'  => 'cat_slug',
-				'value'       => fusion_builder_shortcodes_categories( 'category' ),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'pull_by',
-						'value'    => 'tag',
-						'operator' => '!=',
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Column Spacing', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the amount of spacing between blog posts.', 'fusion-builder' ),
+					'param_name'  => 'blog_grid_column_spacing',
+					'value'       => '40',
+					'min'         => '0',
+					'step'        => '1',
+					'max'         => '300',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'medium',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'large',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'medium alternate',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'large alternate',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'timeline',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'multiple_select',
-				'heading'     => esc_attr__( 'Exclude Categories', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select a category to exclude.', 'fusion-builder' ),
-				'param_name'  => 'exclude_cats',
-				'value'       => fusion_builder_shortcodes_categories( 'category' ),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'pull_by',
-						'value'    => 'tag',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Equal Heights', 'fusion-builder' ),
+					'description' => esc_attr__( 'Set to yes to display grid boxes with equal heights per row.', 'fusion-builder' ),
+					'param_name'  => 'equal_heights',
+					'default'     => 'no',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'grid',
+							'operator' => '==',
+						),
+						array(
+							'element'  => 'blog_grid_columns',
+							'value'    => 1,
+							'operator' => '>',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'multiple_select',
-				'heading'     => esc_attr__( 'Tags', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select a tag or leave blank for all.', 'fusion-builder' ),
-				'param_name'  => 'tag_slug',
-				'value'       => fusion_builder_shortcodes_tags( 'post_tag' ),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'pull_by',
-						'value'    => 'category',
-						'operator' => '!=',
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Posts Per Page', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select number of posts per page.  Set to -1 to display all. Set to 0 to use number of posts from Settings > Reading.', 'fusion-builder' ),
+					'param_name'  => 'number_posts',
+					'value'       => '6',
+					'min'         => '-1',
+					'max'         => '25',
+					'step'        => '1',
+				),
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Post Offset', 'fusion-builder' ),
+					'description' => esc_attr__( 'The number of posts to skip. ex: 1.', 'fusion-builder' ),
+					'param_name'  => 'offset',
+					'value'       => '0',
+					'min'         => '0',
+					'max'         => '25',
+					'step'        => '1',
+					'dependency'  => array(
+						array(
+							'element'  => 'number_posts',
+							'value'    => '-1',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'multiple_select',
-				'heading'     => esc_attr__( 'Exclude Tags', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select a tag to exclude.', 'fusion-builder' ),
-				'param_name'  => 'exclude_tags',
-				'value'       => fusion_builder_shortcodes_tags( 'post_tag' ),
-				'default'     => '',
-				'dependency'  => array(
-					array(
-						'element'  => 'pull_by',
-						'value'    => 'category',
-						'operator' => '!=',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Pull Posts By', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show posts by category or tag.', 'fusion-builder' ),
+					'param_name'  => 'pull_by',
+					'default'     => 'category',
+					'value'       => array(
+						'category' => esc_attr__( 'Category', 'fusion-builder' ),
+						'tag'      => esc_attr__( 'Tag', 'fusion-builder' ),
 					),
 				),
-			),
-			array(
-				'type'        => 'select',
-				'heading'     => esc_attr__( 'Order By', 'fusion-builder' ),
-				'description' => esc_attr__( 'Defines how posts should be ordered.', 'fusion-builder' ),
-				'param_name'  => 'orderby',
-				'default'     => 'date',
-				'value'       => array(
-					'date'          => esc_attr__( 'Date', 'fusion-builder' ),
-					'title'         => esc_attr__( 'Post Title', 'fusion-builder' ),
-					'name'          => esc_attr__( 'Post Slug', 'fusion-builder' ),
-					'author'        => esc_attr__( 'Author', 'fusion-builder' ),
-					'comment_count' => esc_attr__( 'Number of Comments', 'fusion-builder' ),
-					'modified'      => esc_attr__( 'Last Modified', 'fusion-builder' ),
-					'rand'          => esc_attr__( 'Random', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Order', 'fusion-builder' ),
-				'description' => esc_attr__( 'Defines the sorting order of posts.', 'fusion-builder' ),
-				'param_name'  => 'order',
-				'default'     => 'DESC',
-				'value'       => array(
-					'DESC' => esc_attr__( 'Descending', 'fusion-builder' ),
-					'ASC'  => esc_attr__( 'Ascending', 'fusion-builder' ),
-				),
-				'dependency'  => array(
-					array(
-						'element'  => 'orderby',
-						'value'    => 'rand',
-						'operator' => '!=',
+				array(
+					'type'        => 'multiple_select',
+					'heading'     => esc_attr__( 'Categories', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select a category or leave blank for all.', 'fusion-builder' ),
+					'param_name'  => 'cat_slug',
+					'value'       => fusion_builder_shortcodes_categories( 'category' ),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'pull_by',
+							'value'    => 'tag',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Thumbnail', 'fusion-builder' ),
-				'description' => esc_attr__( 'Display the post featured image.', 'fusion-builder' ),
-				'param_name'  => 'thumbnail',
-				'default'     => 'yes',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Title', 'fusion-builder' ),
-				'description' => esc_attr__( 'Display the post title below the featured image.', 'fusion-builder' ),
-				'param_name'  => 'title',
-				'default'     => 'yes',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Link Title To Post', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose if the title should be a link to the single post page.', 'fusion-builder' ),
-				'default'     => 'yes',
-				'param_name'  => 'title_link',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'dependency'  => array(
-					array(
-						'element'  => 'title',
-						'value'    => 'yes',
-						'operator' => '==',
+				array(
+					'type'        => 'multiple_select',
+					'heading'     => esc_attr__( 'Exclude Categories', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select a category to exclude.', 'fusion-builder' ),
+					'param_name'  => 'exclude_cats',
+					'value'       => fusion_builder_shortcodes_categories( 'category' ),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'pull_by',
+							'value'    => 'tag',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Text display', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to display the post excerpt.', 'fusion-builder' ),
-				'param_name'  => 'excerpt',
-				'value'   => array(
-					'yes'   => esc_attr__( 'Excerpt', 'fusion-builder' ),
-					'no'    => esc_attr__( 'Full Content', 'fusion-builder' ),
-					'hide'  => esc_attr__( 'None', 'fusion-builder' ),
-				),
-				'default' => 'yes',
-			),
-			array(
-				'type'        => 'range',
-				'heading'     => esc_attr__( 'Excerpt Length', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert the number of words/characters you want to show in the excerpt.', 'fusion-builder' ),
-				'param_name'  => 'excerpt_length',
-				'value'       => '10',
-				'min'         => '0',
-				'max'         => '500',
-				'step'        => '1',
-				'dependency'  => array(
-					array(
-						'element'  => 'excerpt',
-						'value'    => 'yes',
-						'operator' => '==',
+				array(
+					'type'        => 'multiple_select',
+					'heading'     => esc_attr__( 'Tags', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select a tag or leave blank for all.', 'fusion-builder' ),
+					'param_name'  => 'tag_slug',
+					'value'       => fusion_builder_shortcodes_tags( 'post_tag' ),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'pull_by',
+							'value'    => 'category',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Strip HTML from Posts Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to strip HTML from the post content.', 'fusion-builder' ),
-				'param_name'  => 'strip_html',
-				'default'     => 'yes',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'dependency'  => array(
-					array(
-						'element'  => 'excerpt',
-						'value'    => 'yes',
-						'operator' => '==',
+				array(
+					'type'        => 'multiple_select',
+					'heading'     => esc_attr__( 'Exclude Tags', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select a tag to exclude.', 'fusion-builder' ),
+					'param_name'  => 'exclude_tags',
+					'value'       => fusion_builder_shortcodes_tags( 'post_tag' ),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'pull_by',
+							'value'    => 'category',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Meta Info', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to show all meta data.', 'fusion-builder' ),
-				'param_name'  => 'meta_all',
-				'default'     => 'yes',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Author Name', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to show the author.', 'fusion-builder' ),
-				'param_name'  => 'meta_author',
-				'default'     => 'yes',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'dependency'  => array(
-					array(
-						'element'  => 'meta_all',
-						'value'    => 'yes',
-						'operator' => '==',
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Order By', 'fusion-builder' ),
+					'description' => esc_attr__( 'Defines how posts should be ordered.', 'fusion-builder' ),
+					'param_name'  => 'orderby',
+					'default'     => 'date',
+					'value'       => array(
+						'date'          => esc_attr__( 'Date', 'fusion-builder' ),
+						'title'         => esc_attr__( 'Post Title', 'fusion-builder' ),
+						'name'          => esc_attr__( 'Post Slug', 'fusion-builder' ),
+						'author'        => esc_attr__( 'Author', 'fusion-builder' ),
+						'comment_count' => esc_attr__( 'Number of Comments', 'fusion-builder' ),
+						'modified'      => esc_attr__( 'Last Modified', 'fusion-builder' ),
+						'rand'          => esc_attr__( 'Random', 'fusion-builder' ),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Categories', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to show the categories.', 'fusion-builder' ),
-				'param_name'  => 'meta_categories',
-				'default'     => 'yes',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'dependency'  => array(
-					array(
-						'element'  => 'meta_all',
-						'value'    => 'yes',
-						'operator' => '==',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Order', 'fusion-builder' ),
+					'description' => esc_attr__( 'Defines the sorting order of posts.', 'fusion-builder' ),
+					'param_name'  => 'order',
+					'default'     => 'DESC',
+					'value'       => array(
+						'DESC' => esc_attr__( 'Descending', 'fusion-builder' ),
+						'ASC'  => esc_attr__( 'Ascending', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'orderby',
+							'value'    => 'rand',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Comment Count', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to show the comments.', 'fusion-builder' ),
-				'param_name'  => 'meta_comments',
-				'default'     => 'yes',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'dependency'  => array(
-					array(
-						'element'  => 'meta_all',
-						'value'    => 'yes',
-						'operator' => '==',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Thumbnail', 'fusion-builder' ),
+					'description' => esc_attr__( 'Display the post featured image.', 'fusion-builder' ),
+					'param_name'  => 'thumbnail',
+					'default'     => 'yes',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Date', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to show the date.', 'fusion-builder' ),
-				'param_name'  => 'meta_date',
-				'default'     => 'yes',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'dependency'  => array(
-					array(
-						'element'  => 'meta_all',
-						'value'    => 'yes',
-						'operator' => '==',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Title', 'fusion-builder' ),
+					'description' => esc_attr__( 'Display the post title below the featured image.', 'fusion-builder' ),
+					'param_name'  => 'title',
+					'default'     => 'yes',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Read More Link', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to show the Read More link.', 'fusion-builder' ),
-				'param_name'  => 'meta_link',
-				'default'     => 'yes',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
-				),
-				'dependency'  => array(
-					array(
-						'element'  => 'meta_all',
-						'value'    => 'yes',
-						'operator' => '==',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Link Title To Post', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose if the title should be a link to the single post page.', 'fusion-builder' ),
+					'default'     => 'yes',
+					'param_name'  => 'title_link',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'title',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Tags', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to show the tags.', 'fusion-builder' ),
-				'param_name'  => 'meta_tags',
-				'default'     => 'yes',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Text display', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls if the blog post content is displayed as excerpt, full content or is completely disabled.', 'fusion-builder' ),
+					'param_name'  => 'excerpt',
+					'value'   => array(
+						''      => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes'   => esc_attr__( 'Excerpt', 'fusion-builder' ),
+						'no'    => esc_attr__( 'Full Content', 'fusion-builder' ),
+						'hide'  => esc_attr__( 'No Text', 'fusion-builder' ),
+					),
+					'default' => '',
 				),
-				'dependency'  => array(
-					array(
-						'element'  => 'meta_all',
-						'value'    => 'yes',
-						'operator' => '==',
+				array(
+					'type'        => 'range',
+					'heading'     => esc_attr__( 'Excerpt Length', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert the number of words/characters you want to show in the excerpt.', 'fusion-builder' ),
+					'param_name'  => 'excerpt_length',
+					'value'       => '10',
+					'min'         => '0',
+					'max'         => '500',
+					'step'        => '1',
+					'dependency'  => array(
+						array(
+							'element'  => 'excerpt',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'excerpt',
+							'value'    => 'hide',
+							'operator' => '!=',
+						),
 					),
 				),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Pagination Type', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose the type of pagination.', 'fusion-builder' ),
-				'param_name'  => 'scrolling',
-				'default'     => 'pagination',
-				'value'       => array(
-					'no'               => esc_attr__( 'No Pagination', 'fusion-builder' ),
-					'pagination'       => esc_attr__( 'Pagination', 'fusion-builder' ),
-					'infinite'         => esc_attr__( 'Infinite Scrolling', 'fusion-builder' ),
-					'load_more_button' => esc_attr__( 'Load More Button', 'fusion-builder' ),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Strip HTML from Posts Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to strip HTML from the post content.', 'fusion-builder' ),
+					'param_name'  => 'strip_html',
+					'default'     => 'yes',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'excerpt',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'excerpt',
+							'value'    => 'hide',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Meta Info', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show all meta data.', 'fusion-builder' ),
+					'param_name'  => 'meta_all',
+					'default'     => 'yes',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Author Name', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show the author.', 'fusion-builder' ),
+					'param_name'  => 'meta_author',
+					'default'     => 'yes',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'meta_all',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Categories', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show the categories.', 'fusion-builder' ),
+					'param_name'  => 'meta_categories',
+					'default'     => 'yes',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'meta_all',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Comment Count', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show the comments.', 'fusion-builder' ),
+					'param_name'  => 'meta_comments',
+					'default'     => 'yes',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'meta_all',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Date', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show the date.', 'fusion-builder' ),
+					'param_name'  => 'meta_date',
+					'default'     => 'yes',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'meta_all',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Read More Link', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show the Read More link.', 'fusion-builder' ),
+					'param_name'  => 'meta_link',
+					'default'     => 'yes',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'meta_all',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Tags', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show the tags.', 'fusion-builder' ),
+					'param_name'  => 'meta_tags',
+					'default'     => 'yes',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'meta_all',
+							'value'    => 'yes',
+							'operator' => '==',
+						),
+					),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Pagination Type', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose the type of pagination.', 'fusion-builder' ),
+					'param_name'  => 'scrolling',
+					'default'     => 'pagination',
+					'value'       => array(
+						'no'               => esc_attr__( 'No Pagination', 'fusion-builder' ),
+						'pagination'       => esc_attr__( 'Pagination', 'fusion-builder' ),
+						'infinite'         => esc_attr__( 'Infinite Scrolling', 'fusion-builder' ),
+						'load_more_button' => esc_attr__( 'Load More Button', 'fusion-builder' ),
+					),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Grid Box Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the background color for the grid boxes.', 'fusion-builder' ),
+					'param_name'  => 'grid_box_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'timeline_bg_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'medium',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'large',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'medium alternate',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'large alternate',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Grid Element Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the color of borders/date box/timeline dots and arrows for the grid boxes.', 'fusion-builder' ),
+					'param_name'  => 'grid_element_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'timeline_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'medium',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'large',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'medium alternate',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'large alternate',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'select',
+					'heading'     => esc_attr__( 'Grid Separator Style', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the line style of grid separators.', 'fusion-builder' ),
+					'param_name'  => 'grid_separator_style_type',
+					'value'       => array(
+						''              => esc_attr__( 'Default', 'fusion-builder' ),
+						'none'          => esc_attr__( 'No Style', 'fusion-builder' ),
+						'single|solid'  => esc_attr__( 'Single Border Solid', 'fusion-builder' ),
+						'double|solid'  => esc_attr__( 'Double Border Solid', 'fusion-builder' ),
+						'single|dashed' => esc_attr__( 'Single Border Dashed', 'fusion-builder' ),
+						'double|dashed' => esc_attr__( 'Double Border Dashed', 'fusion-builder' ),
+						'single|dotted' => esc_attr__( 'Single Border Dotted', 'fusion-builder' ),
+						'double|dotted' => esc_attr__( 'Double Border Dotted', 'fusion-builder' ),
+						'shadow'        => esc_attr__( 'Shadow', 'fusion-builder' ),
+					),
+					'default'     => '',
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'medium',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'large',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'medium alternate',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'large alternate',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'masonry',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Grid Separator Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the line style color of grid separators.', 'fusion-builder' ),
+					'param_name'  => 'grid_separator_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'grid_separator_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'medium',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'large',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'medium alternate',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'large alternate',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'masonry',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'             => 'dimension',
+					'remove_from_atts' => true,
+					'heading'          => esc_attr__( 'Blog Grid Text Padding ', 'fusion-builder' ),
+					'description'      => esc_attr__( 'Controls the padding for the blog text when using grid / masonry or timeline layout. Enter values including any valid CSS unit, ex: 30px, 25px, 0px, 25px.', 'fusion-builder' ),
+					'param_name'       => 'blog_grid_padding',
+					'value'            => array(
+						'padding_top'    => '',
+						'padding_right'  => '',
+						'padding_bottom' => '',
+						'padding_left'   => '',
+					),
+					'dependency'  => array(
+						array(
+							'element'  => 'layout',
+							'value'    => 'medium',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'large',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'medium alternate',
+							'operator' => '!=',
+						),
+						array(
+							'element'  => 'layout',
+							'value'    => 'large alternate',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
 				),
 			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_blog' );

@@ -4,7 +4,9 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 global $fusion_builder_elements, $fusion_builder_multi_elements, $fusion_builder_enabled_elements, $parallax_id;
 $parallax_id = 1;
@@ -176,6 +178,9 @@ function fusion_load_element_frontend_assets() {
 	$dynamic_css_obj = Fusion_Dynamic_CSS::get_instance();
 	$mode = ( method_exists( $dynamic_css_obj, 'get_mode' ) ) ? $dynamic_css_obj->get_mode() : $dynamic_css_obj->mode;
 
+	if ( ! is_array( $all_fusion_builder_elements ) ) {
+		return;
+	}
 	foreach ( $all_fusion_builder_elements as $module ) {
 
 		// Load element front end js.

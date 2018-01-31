@@ -243,9 +243,11 @@ if ( fusion_is_element_enabled( 'fusion_person' ) ) {
 			 */
 			public function attr() {
 
-				$attr = fusion_builder_visibility_atts( $this->args['hide_on_mobile'], array(
-					'class' => 'fusion-person person fusion-person-' . $this->args['content_alignment'] . ' fusion-person-icon-' . $this->args['icon_position'],
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->args['hide_on_mobile'], array(
+						'class' => 'fusion-person person fusion-person-' . $this->args['content_alignment'] . ' fusion-person-icon-' . $this->args['icon_position'],
+					)
+				);
 
 				if ( $this->args['class'] ) {
 					$attr['class'] .= ' ' . $this->args['class'];
@@ -647,7 +649,7 @@ function fusion_element_person() {
 				'value'       => '',
 			),
 			array(
-				'type'        => 'textfield',
+				'type'        => 'link_selector',
 				'heading'     => esc_attr__( 'Picture Link URL', 'fusion-builder' ),
 				'description' => esc_attr__( 'Add the URL the picture will link to, ex: http://example.com.', 'fusion-builder' ),
 				'param_name'  => 'pic_link',
@@ -1120,7 +1122,7 @@ function fusion_element_person() {
 		foreach ( $custom_social_networks as $key => $custom_network ) {
 			$person_options['params'][] = array(
 				'type'        => 'textfield',
-				'heading'     => sprintf( esc_attr__( 'Custom %s Link', 'fusion-builder' ), $key + 1 ),
+				'heading'     => sprintf( esc_attr__( '%s Link', 'fusion-builder' ), $custom_network['title'] ),
 				'description' => esc_attr__( 'Insert your custom social link.', 'fusion-builder' ),
 				'param_name'  => 'custom_' . $key,
 				'value'       => '',

@@ -100,7 +100,7 @@ class Fusion_Images {
 	 *
 	 * @since 1.0.0
 	 * @param int $max_width  The maximum image width to be included in the 'srcset'. Default '1600'.
-	 * @return int 	The new max width.
+	 * @return int  The new max width.
 	 */
 	public function set_max_srcset_image_width( $max_width ) {
 		return 1920;
@@ -127,7 +127,7 @@ class Fusion_Images {
 	 * @param array  $image_meta    The image meta data as returned by 'wp_get_attachment_metadata()'.
 	 * @param int    $attachment_id Image attachment ID or 0.
 	 *
-	 * @return array $sources 		One or more arrays of source data to include in the 'srcset'.
+	 * @return array $sources       One or more arrays of source data to include in the 'srcset'.
 	 */
 	public function set_largest_image_size( $sources, $size_array, $image_src, $image_meta, $attachment_id ) {
 		$cropped_image = false;
@@ -174,7 +174,7 @@ class Fusion_Images {
 	 * @param array  $image_meta    The image meta data as returned by 'wp_get_attachment_metadata()'.
 	 * @param int    $attachment_id Image attachment ID or 0.
 	 *
-	 * @return array $sources 		One or more arrays of source data to include in the 'srcset'.
+	 * @return array $sources       One or more arrays of source data to include in the 'srcset'.
 	 */
 	public function edit_grid_image_srcset( $sources, $size_array, $image_src, $image_meta, $attachment_id ) {
 		// Only do manipulation for blog images.
@@ -234,14 +234,16 @@ class Fusion_Images {
 				$breakpoint_interval = $breakpoint_range / 5;
 
 				$main_image_break_point = apply_filters( 'fusion_library_main_image_breakpoint', $main_break_point );
-				$break_points = apply_filters( 'fusion_library_image_breakpoints', array(
-					6 => $main_image_break_point,
-					5 => $main_image_break_point - $breakpoint_interval,
-					4 => $main_image_break_point - 2 * $breakpoint_interval,
-					3 => $main_image_break_point - 3 * $breakpoint_interval,
-					2 => $main_image_break_point - 4 * $breakpoint_interval,
-					1 => $main_image_break_point - 5 * $breakpoint_interval,
-				) );
+				$break_points = apply_filters(
+					'fusion_library_image_breakpoints', array(
+						6 => $main_image_break_point,
+						5 => $main_image_break_point - $breakpoint_interval,
+						4 => $main_image_break_point - 2 * $breakpoint_interval,
+						3 => $main_image_break_point - 3 * $breakpoint_interval,
+						2 => $main_image_break_point - 4 * $breakpoint_interval,
+						1 => $main_image_break_point - 5 * $breakpoint_interval,
+					)
+				);
 
 				$sizes = apply_filters( 'fusion_library_image_grid_initial_sizes', '', $main_break_point, (int) self::$grid_image_meta['columns'] );
 
@@ -250,9 +252,12 @@ class Fusion_Images {
 				foreach ( $break_points as $columns => $breakpoint ) {
 					if ( $columns <= (int) self::$grid_image_meta['columns'] ) {
 						$width = $content_width / $columns;
-						if ( $breakpoint < $width ) {
+
+						// For one column layouts where the content width is larger than column breakpoint width, don't reset the width.
+						if ( $breakpoint < $width && ! ( 1 === (int) self::$grid_image_meta['columns'] && $content_width > $breakpoint + $breakpoint_interval ) ) {
 							$width = $breakpoint + $breakpoint_interval;
 						}
+
 						$sizes .= '(min-width: ' . round( $breakpoint ) . 'px) ' . round( $width ) . 'px, ';
 					}
 				}
@@ -260,15 +265,17 @@ class Fusion_Images {
 				$width = 40;
 				$sizes = '(max-width: ' . $content_break_point . 'px) 100vw, ' . $width . 'vw';
 
-				// Large Layouts.
+				// Large Layouts (e.g. person or image element).
 			} elseif ( false !== strpos( self::$grid_image_meta['layout'], 'large' ) ) {
 
 				// If possible, set the correct size for the content width, depending on columns.
 				if ( $attachment_id ) {
-					$base_image_size = $this->get_grid_image_base_size( $attachment_id, self::$grid_image_meta['layout'], self::$grid_image_meta['columns'] );
+					$base_image_size = $this->get_grid_image_base_size( $attachment_id, self::$grid_image_meta['layout'], self::$grid_image_meta['columns'], 'get_closest_ceil' );
 
 					if ( is_integer( $base_image_size ) ) {
 						$content_width = $base_image_size;
+					} else {
+						$content_width = $size[0];
 					}
 				}
 
@@ -295,7 +302,6 @@ class Fusion_Images {
 	public function edit_grid_image_src( $html, $post_id = null, $post_thumbnail_id = null, $size = null, $attr = null ) {
 		// @codingStandardsIgnoreLine
 		if ( isset( self::$grid_image_meta['layout'] ) && in_array( self::$grid_image_meta['layout'], self::$supported_grid_layouts ) && 'full' === $size ) {
-
 			$image_size = $this->get_grid_image_base_size( $post_thumbnail_id, self::$grid_image_meta['layout'], self::$grid_image_meta['columns'] );
 
 			$full_image_src = wp_get_attachment_image_src( $post_thumbnail_id, $image_size );
@@ -317,7 +323,7 @@ class Fusion_Images {
 	 * @param null|int    $columns           Number of columns.
 	 * @return string Image size name.
 	 */
-	public function get_grid_image_base_size( $post_thumbnail_id = null, $layout = null, $columns = null ) {
+	public function get_grid_image_base_size( $post_thumbnail_id = null, $layout = null, $columns = null, $match_basis = 'get_closest' ) {
 		// @codingStandardsIgnoreLine
 		global $is_IE;
 		$sizes = array();
@@ -349,12 +355,23 @@ class Fusion_Images {
 
 		ksort( $sizes );
 
-		// Find closest size match.
+
 		$image_size = null;
 		$size_name = null;
 
+
+		// Find the best match.
 		foreach ( $sizes as $size => $name ) {
-			if ( null === $image_size || abs( $width - $image_size ) > abs( $size - $width ) ) {
+
+			// Find closest size match.
+			$match_condition = null === $image_size || abs( $width - $image_size ) > abs( $size - $width );
+
+			// Find closest match greater than available width.
+			if ( 'get_closest_ceil' === $match_basis ) {
+				$match_condition = $size > $width && abs( $width - $image_size ) > abs( $size - $width );
+			}
+
+			if ( $match_condition ) {
 				$image_size = $size;
 				$size_name = $name;
 			}
@@ -452,33 +469,60 @@ class Fusion_Images {
 	 * @param string $attachment_url The url of the used attachment.
 	 * @return array/bool The attachment data of the image, false if the url is empty or attachment not found.
 	 */
-	public static function get_attachment_data_from_url( $attachment_url = '' ) {
+	public function get_attachment_data_from_url( $attachment_url = '' ) {
 
 		if ( '' === $attachment_url ) {
 			return false;
 		}
 
-		$attachment_data['url'] = preg_replace( '/-\d+x\d+(?=\.(jpg|jpeg|png|gif|tiff|svg)$)/i', '', $attachment_url );
-		$attachment_data['id'] = self::get_attachment_id_from_url( $attachment_data['url'] );
+		$attachment_url = set_url_scheme( $attachment_url );
+		$attachment_base_url = preg_replace( '/-\d+x\d+(?=\.(jpg|jpeg|png|gif|tiff|svg)$)/i', '', $attachment_url );
+		$attachment_data['id'] = self::get_attachment_id_from_url( $attachment_base_url );
 
 		if ( ! $attachment_data['id'] ) {
 			return false;
 		}
 
-		preg_match( '/-\d+x\d+(?=\.(jpg|jpeg|png|gif|tiff|svg)$)/i', $attachment_url, $matches );
-		if ( count( $matches ) > 0 ) {
+		$attachment_data = $this->get_attachment_data( $attachment_data['id'] );
+
+		if ( $attachment_base_url !== $attachment_url ) {
+			preg_match( '/-\d+x\d+(?=\.(jpg|jpeg|png|gif|tiff|svg)$)/i', $attachment_url, $matches );
 			$dimensions = explode( 'x', $matches[0] );
 			$attachment_data['width'] = absint( $dimensions[0] );
 			$attachment_data['height'] = absint( $dimensions[1] );
-		} else {
-			$attachment_src = wp_get_attachment_image_src( $attachment_data['id'], 'full' );
-			$attachment_data['width'] = $attachment_src[1];
-			$attachment_data['height'] = $attachment_src[2];
 		}
 
-		$attachment_data['alt'] = get_post_field( '_wp_attachment_image_alt', $attachment_data['id'] );
-		$attachment_data['caption'] = get_post_field( 'post_excerpt', $attachment_data['id'] );
-		$attachment_data['title'] = get_post_field( 'post_title', $attachment_data['id'] );
+		return $attachment_data;
+	}
+
+	/**
+	 * Gets the most important attachment data.
+	 *
+	 * @since 1.2
+	 * @access public
+	 * @param int    $attachment_id The ID of the used attachment.
+	 * @param string $size          The image size to be returned.
+	 * @return array/bool           The attachment data of the image,
+	 *                              false if the url is empty or attachment not found.
+	 */
+	public function get_attachment_data( $attachment_id = 0, $size = 'full' ) {
+
+		if ( ! $attachment_id ) {
+			return false;
+		}
+
+		$attachment_data['id'] = $attachment_id;
+
+		$attachment_src = wp_get_attachment_image_src( $attachment_id, $size );
+		$attachment_data['url'] = esc_url( $attachment_src[0] );
+		$attachment_data['width'] = esc_attr( $attachment_src[1] );
+		$attachment_data['height'] = esc_attr( $attachment_src[2] );
+
+		$attachment_data['alt'] = esc_attr( get_post_field( '_wp_attachment_image_alt', $attachment_id ) );
+		$attachment_data['caption'] = wp_get_attachment_caption( $attachment_id );
+		$attachment_data['caption_attribute'] = esc_attr( strip_tags( $attachment_data['caption'] ) );
+		$attachment_data['title'] = get_the_title( $attachment_id );
+		$attachment_data['title_attribute'] = esc_attr( strip_tags( $attachment_data['title'] ) );
 
 		return $attachment_data;
 	}
@@ -487,9 +531,11 @@ class Fusion_Images {
 	 * Deletes the resized images when the original image is deleted from the Wordpress Media Library.
 	 * This is necessary in order to handle custom image sizes created from the Fusion_Image_Resizer class.
 	 *
+	 * @access public
 	 * @param  int $post_id The post ID.
+	 * @return void
 	 */
-	function delete_resized_images( $post_id ) {
+	public function delete_resized_images( $post_id ) {
 		// Get attachment image metadata.
 		$metadata = wp_get_attachment_metadata( $post_id );
 		if ( ! $metadata ) {

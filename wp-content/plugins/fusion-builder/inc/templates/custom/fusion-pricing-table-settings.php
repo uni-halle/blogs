@@ -35,7 +35,7 @@
 
 			<div id="table-options" class="fusion-tab-content">
 
-				<?php fusion_element_options_loop('fusionAllElements[atts.element_type].params'); ?>
+				<?php fusion_element_options_loop( 'fusionAllElements[atts.element_type].params' ); ?>
 
 			</div>
 
@@ -175,7 +175,7 @@
 													<span class="fa fusiona-file-add fusion-builder-table-clone-column" title="{{ fusionBuilderText.clone_column }}" data-column-id="{{ c }}" />
 												</div>
 											</div>
-											<div class="fusion-builer-table-featured">
+											<div class="fusion-builder-table-featured">
 												<span>{{ fusionBuilderText.standout_design }}</span>
 												<div class="fusion-form-radio-button-set ui-buttonset th_standout-{{c}}">
 
@@ -203,7 +203,7 @@
 												<span class="fa fusiona-file-add fusion-builder-table-clone-column" title="{{ fusionBuilderText.clone_column }}" data-column-id="{{ c }}" />
 											</div>
 										</div>
-										<div class="fusion-builer-table-featured">
+										<div class="fusion-builder-table-featured">
 											<span>{{ fusionBuilderText.standout_design }}</span>
 											<div class="fusion-form-radio-button-set ui-buttonset th_standout-{{c}}">
 

@@ -389,93 +389,95 @@ function fusion_element_modal() {
 
 	global $fusion_settings;
 
-	fusion_builder_map( array(
-		'name'            => esc_attr__( 'Modal', 'fusion-builder' ),
-		'shortcode'       => 'fusion_modal',
-		'icon'            => 'fusiona-external-link',
-		'preview'         => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-modal-preview.php',
-		'preview_id'      => 'fusion-builder-block-module-modal-preview-template',
-		'allow_generator' => true,
-		'params'          => array(
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Name Of Modal', 'fusion-builder' ),
-				'description' => esc_attr__( 'Needs to be a unique identifier (lowercase), used for button or modal_text_link element to open the modal. ex: mymodal.', 'fusion-builder' ),
-				'param_name'  => 'name',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Modal Heading', 'fusion-builder' ),
-				'description' => esc_attr__( 'Heading text for the modal.', 'fusion-builder' ),
-				'param_name'  => 'title',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Size Of Modal', 'fusion-builder' ),
-				'description' => esc_attr__( 'Select the modal window size.', 'fusion-builder' ),
-				'param_name'  => 'size',
-				'value'       => array(
-					'small' => esc_attr__( 'Small', 'fusion-builder' ),
-					'large' => esc_attr__( 'Large', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'            => esc_attr__( 'Modal', 'fusion-builder' ),
+			'shortcode'       => 'fusion_modal',
+			'icon'            => 'fusiona-external-link',
+			'preview'         => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-modal-preview.php',
+			'preview_id'      => 'fusion-builder-block-module-modal-preview-template',
+			'allow_generator' => true,
+			'params'          => array(
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Name Of Modal', 'fusion-builder' ),
+					'description' => esc_attr__( 'Needs to be a unique identifier (lowercase), used for button or modal_text_link element to open the modal. ex: mymodal.', 'fusion-builder' ),
+					'param_name'  => 'name',
+					'value'       => '',
 				),
-				'default'     => 'small',
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Background Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the modal background color. ', 'fusion-builder' ),
-				'param_name'  => 'background',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'modal_bg_color' ),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Border Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Controls the modal border color. ', 'fusion-builder' ),
-				'param_name'  => 'border_color',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'modal_border_color' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Show Footer', 'fusion-builder' ),
-				'description' => esc_attr__( 'Choose to show the modal footer with close button.', 'fusion-builder' ),
-				'param_name'  => 'show_footer',
-				'value'       => array(
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Modal Heading', 'fusion-builder' ),
+					'description' => esc_attr__( 'Heading text for the modal.', 'fusion-builder' ),
+					'param_name'  => 'title',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
 				),
-				'default'     => 'yes',
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Size Of Modal', 'fusion-builder' ),
+					'description' => esc_attr__( 'Select the modal window size.', 'fusion-builder' ),
+					'param_name'  => 'size',
+					'value'       => array(
+						'small' => esc_attr__( 'Small', 'fusion-builder' ),
+						'large' => esc_attr__( 'Large', 'fusion-builder' ),
+					),
+					'default'     => 'small',
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Background Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the modal background color. ', 'fusion-builder' ),
+					'param_name'  => 'background',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'modal_bg_color' ),
+				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Border Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Controls the modal border color. ', 'fusion-builder' ),
+					'param_name'  => 'border_color',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'modal_border_color' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Show Footer', 'fusion-builder' ),
+					'description' => esc_attr__( 'Choose to show the modal footer with close button.', 'fusion-builder' ),
+					'param_name'  => 'show_footer',
+					'value'       => array(
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					),
+					'default'     => 'yes',
+				),
+				array(
+					'type'        => 'tinymce',
+					'heading'     => esc_attr__( 'Contents of Modal', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add your content to be displayed in modal.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'tinymce',
-				'heading'     => esc_attr__( 'Contents of Modal', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add your content to be displayed in modal.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_modal' );
 
@@ -483,40 +485,42 @@ add_action( 'fusion_builder_before_init', 'fusion_element_modal' );
  * Map shortcode to Fusion Builder
  */
 function fusion_element_modal_link() {
-	fusion_builder_map( array(
-		'name'              => esc_attr__( 'Modal Text Link', 'fusion-builder' ),
-		'shortcode'         => 'fusion_modal_text_link',
-		'icon'              => 'fusiona-external-link',
-		'params'            => array(
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Name Of Modal', 'fusion-builder' ),
-				'description' => esc_attr__( 'Unique identifier of the modal to open on click.', 'fusion-builder' ),
-				'param_name'  => 'name',
-				'value'       => '',
+	fusion_builder_map(
+		array(
+			'name'              => esc_attr__( 'Modal Text Link', 'fusion-builder' ),
+			'shortcode'         => 'fusion_modal_text_link',
+			'icon'              => 'fusiona-external-link',
+			'params'            => array(
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Name Of Modal', 'fusion-builder' ),
+					'description' => esc_attr__( 'Unique identifier of the modal to open on click.', 'fusion-builder' ),
+					'param_name'  => 'name',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'textarea',
+					'heading'     => esc_attr__( 'Text or HTML code', 'fusion-builder' ),
+					'description' => esc_attr__( 'Insert text or HTML code here (e.g: HTML for image). This content will be used to trigger the modal popup.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => '',
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'textarea',
-				'heading'     => esc_attr__( 'Text or HTML code', 'fusion-builder' ),
-				'description' => esc_attr__( 'Insert text or HTML code here (e.g: HTML for image). This content will be used to trigger the modal popup.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => '',
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_modal_link' );

@@ -1,3 +1,4 @@
+/* global fusionHistoryManager, fusionBuilderText, FusionPageBuilderEvents, FusionPageBuilderApp, FusionPageBuilderViewManager */
 var FusionPageBuilder = FusionPageBuilder || {};
 
 ( function( $ ) {
@@ -34,8 +35,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 			sortableColumns: function() {
 				var thisEl     = this,
-				    selectedEl = thisEl.$el.find( '.fusion-builder-row-container' ),
-				    cid        = this.model.get( 'cid' );
+				    selectedEl = thisEl.$el.find( '.fusion-builder-row-container' );
 
 				selectedEl.sortable( {
 					helper: 'clone',
@@ -46,8 +46,8 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 					update: function( event, ui ) {
 						var elementCID = ui.item.data( 'cid' ),
-						    model     = thisEl.collection.find( function( model ) {
-								return model.get( 'cid' ) == elementCID;
+						    model      = thisEl.collection.find( function( model ) {
+								return model.get( 'cid' ) === elementCID;
 						    } );
 
 						// Moved column within the same section/row
@@ -60,7 +60,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 						// Save history state
 						fusionHistoryManager.turnOnTracking();
-						fusionHistoryState = fusionBuilderText.moved_column;
+						window.fusionHistoryState = fusionBuilderText.moved_column;
 
 						FusionPageBuilderEvents.trigger( 'fusion-element-sorted' );
 					}
@@ -91,7 +91,7 @@ var FusionPageBuilder = FusionPageBuilder || {};
 
 			},
 
-			removeRow: function( event, force ) {
+			removeRow: function( event, force ) { // jshint ignore:line
 
 				var columns;
 
@@ -116,9 +116,6 @@ var FusionPageBuilder = FusionPageBuilder || {};
 					FusionPageBuilderEvents.trigger( 'fusion-element-removed' );
 				}
 			}
-
 		} );
-
 	} );
-
 } )( jQuery );

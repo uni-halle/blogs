@@ -371,97 +371,99 @@ function fusion_element_checklist() {
 		$fusion_settings = Fusion_Settings::get_instance();
 	}
 
-	fusion_builder_map( array(
-		'name'          => esc_attr__( 'Checklist', 'fusion-builder' ),
-		'shortcode'     => 'fusion_checklist',
-		'multi'         => 'multi_element_parent',
-		'element_child' => 'fusion_li_item',
-		'icon'          => 'fusiona-list-ul',
-		'preview'       => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-checklist-preview.php',
-		'preview_id'    => 'fusion-builder-block-module-checklist-preview-template',
-		'params'        => array(
-			array(
-				'type'        => 'tinymce',
-				'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'Enter some content for this contentbox.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => '[fusion_li_item icon=""]' . esc_attr__( 'Your Content Goes Here', 'fusion-builder' ) . '[/fusion_li_item]',
-			),
-			array(
-				'type'        => 'iconpicker',
-				'heading'     => esc_attr__( 'Select Icon', 'fusion-builder' ),
-				'param_name'  => 'icon',
-				'value'       => '',
-				'description' => esc_attr__( 'Global setting for all list items, this can be overridden individually. Click an icon to select, click again to deselect.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'colorpicker',
-				'heading'     => esc_attr__( 'Checklist Icon Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Global setting for all list items.  Controls the color of the checklist icon.', 'fusion-builder' ),
-				'param_name'  => 'iconcolor',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'checklist_icons_color' ),
-			),
-			array(
-				'type'        => 'radio_button_set',
-				'heading'     => esc_attr__( 'Checklist Circle', 'fusion-builder' ),
-				'description' => esc_attr__( 'Global setting for all list items. Turn on if you want to display a circle background for checklists.', 'fusion-builder' ),
-				'param_name'  => 'circle',
-				'default'     => '',
-				'value'       => array(
-					''    => esc_attr__( 'Default', 'fusion-builder' ),
-					'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-					'no'  => esc_attr__( 'No', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'          => esc_attr__( 'Checklist', 'fusion-builder' ),
+			'shortcode'     => 'fusion_checklist',
+			'multi'         => 'multi_element_parent',
+			'element_child' => 'fusion_li_item',
+			'icon'          => 'fusiona-list-ul',
+			'preview'       => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-checklist-preview.php',
+			'preview_id'    => 'fusion-builder-block-module-checklist-preview-template',
+			'params'        => array(
+				array(
+					'type'        => 'tinymce',
+					'heading'     => esc_attr__( 'Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Enter some content for this contentbox.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => '[fusion_li_item icon=""]' . esc_attr__( 'Your Content Goes Here', 'fusion-builder' ) . '[/fusion_li_item]',
 				),
-			),
-			array(
-				'type'        => 'colorpickeralpha',
-				'heading'     => esc_attr__( 'Checklist Circle Color', 'fusion-builder' ),
-				'description' => esc_attr__( 'Global setting for all list items.  Controls the color of the checklist circle background.', 'fusion-builder' ),
-				'param_name'  => 'circlecolor',
-				'value'       => '',
-				'default'     => $fusion_settings->get( 'checklist_circle_color' ),
-				'dependency'  => array(
-					array(
-						'element'  => 'circle',
-						'value'    => 'no',
-						'operator' => '!=',
+				array(
+					'type'        => 'iconpicker',
+					'heading'     => esc_attr__( 'Select Icon', 'fusion-builder' ),
+					'param_name'  => 'icon',
+					'value'       => '',
+					'description' => esc_attr__( 'Global setting for all list items, this can be overridden individually. Click an icon to select, click again to deselect.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'colorpicker',
+					'heading'     => esc_attr__( 'Checklist Icon Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Global setting for all list items.  Controls the color of the checklist icon.', 'fusion-builder' ),
+					'param_name'  => 'iconcolor',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'checklist_icons_color' ),
+				),
+				array(
+					'type'        => 'radio_button_set',
+					'heading'     => esc_attr__( 'Checklist Circle', 'fusion-builder' ),
+					'description' => esc_attr__( 'Global setting for all list items. Turn on if you want to display a circle background for checklists.', 'fusion-builder' ),
+					'param_name'  => 'circle',
+					'default'     => '',
+					'value'       => array(
+						''    => esc_attr__( 'Default', 'fusion-builder' ),
+						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+						'no'  => esc_attr__( 'No', 'fusion-builder' ),
 					),
 				),
+				array(
+					'type'        => 'colorpickeralpha',
+					'heading'     => esc_attr__( 'Checklist Circle Color', 'fusion-builder' ),
+					'description' => esc_attr__( 'Global setting for all list items.  Controls the color of the checklist circle background.', 'fusion-builder' ),
+					'param_name'  => 'circlecolor',
+					'value'       => '',
+					'default'     => $fusion_settings->get( 'checklist_circle_color' ),
+					'dependency'  => array(
+						array(
+							'element'  => 'circle',
+							'value'    => 'no',
+							'operator' => '!=',
+						),
+					),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Item Size', 'fusion-builder' ),
+					'description' => esc_attr__( "Select the list item's size. In pixels (px), ex: 13px.", 'fusion-builder' ),
+					'param_name'  => 'size',
+					'value'       => '13px',
+				),
+				array(
+					'type'        => 'checkbox_button_set',
+					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+					'param_name'  => 'hide_on_mobile',
+					'value'       => fusion_builder_visibility_options( 'full' ),
+					'default'     => fusion_builder_default_visibility( 'array' ),
+					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+					'param_name'  => 'id',
+					'value'       => '',
+					'group'       => esc_attr__( 'General', 'fusion-builder' ),
+				),
 			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Item Size', 'fusion-builder' ),
-				'description' => esc_attr__( "Select the list item's size. In pixels (px), ex: 13px.", 'fusion-builder' ),
-				'param_name'  => 'size',
-				'value'       => '13px',
-			),
-			array(
-				'type'        => 'checkbox_button_set',
-				'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-				'param_name'  => 'hide_on_mobile',
-				'value'       => fusion_builder_visibility_options( 'full' ),
-				'default'     => fusion_builder_default_visibility( 'array' ),
-				'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-				'param_name'  => 'id',
-				'value'       => '',
-				'group'       => esc_attr__( 'General', 'fusion-builder' ),
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_checklist' );
 
@@ -471,29 +473,31 @@ add_action( 'fusion_builder_before_init', 'fusion_element_checklist' );
  * @since 1.0
  */
 function fusion_element_checklist_item() {
-	fusion_builder_map( array(
-		'name'              => esc_attr__( 'List Item', 'fusion-builder' ),
-		'description'       => esc_attr__( 'Enter some content for this textblock', 'fusion-builder' ),
-		'shortcode'         => 'fusion_li_item',
-		'hide_from_builder' => true,
-		'allow_generator'   => true,
-		'params'            => array(
-			array(
-				'type'        => 'iconpicker',
-				'heading'     => esc_attr__( 'Select Icon', 'fusion-builder' ),
-				'param_name'  => 'icon',
-				'value'       => '',
-				'description' => esc_attr__( 'This setting will override the global setting. ', 'fusion-builder' ),
+	fusion_builder_map(
+		array(
+			'name'              => esc_attr__( 'List Item', 'fusion-builder' ),
+			'description'       => esc_attr__( 'Enter some content for this textblock', 'fusion-builder' ),
+			'shortcode'         => 'fusion_li_item',
+			'hide_from_builder' => true,
+			'allow_generator'   => true,
+			'params'            => array(
+				array(
+					'type'        => 'iconpicker',
+					'heading'     => esc_attr__( 'Select Icon', 'fusion-builder' ),
+					'param_name'  => 'icon',
+					'value'       => '',
+					'description' => esc_attr__( 'This setting will override the global setting. ', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'tinymce',
+					'heading'     => esc_attr__( 'List Item Content', 'fusion-builder' ),
+					'description' => esc_attr__( 'Add list item content.', 'fusion-builder' ),
+					'param_name'  => 'element_content',
+					'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
+					'placeholder' => true,
+				),
 			),
-			array(
-				'type'        => 'tinymce',
-				'heading'     => esc_attr__( 'List Item Content', 'fusion-builder' ),
-				'description' => esc_attr__( 'Add list item content.', 'fusion-builder' ),
-				'param_name'  => 'element_content',
-				'value'       => esc_attr__( 'Your Content Goes Here', 'fusion-builder' ),
-				'placeholder' => true,
-			),
-		),
-	) );
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_checklist_item' );

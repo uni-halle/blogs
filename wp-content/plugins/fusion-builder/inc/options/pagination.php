@@ -33,7 +33,7 @@ function fusion_builder_options_section_pagination( $sections ) {
 				'label'       => esc_html__( 'Pagination Box Padding', 'fusion-builder' ),
 				'description' => esc_html__( 'Controls the padding inside the pagination box.', 'fusion-builder' ),
 				'id'          => 'pagination_box_padding',
-				'units'		  => false,
+				'units'       => false,
 				'default'     => array(
 					'width'   => '6px',
 					'height'  => '2px',

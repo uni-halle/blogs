@@ -15,10 +15,12 @@
 			<?php
 			$addons_json = ( isset( $_GET['reset_transient'] ) ) ? false : get_site_transient( 'fusion_builder_addons_json' );
 			if ( ! $addons_json ) {
-				$response = wp_remote_get( 'http://updates.theme-fusion.com/fusion_builder_addon/', array(
-					'timeout'    => 30,
-					'user-agent' => 'fusion-builder',
-				) );
+				$response = wp_remote_get(
+					'http://updates.theme-fusion.com/fusion_builder_addon/', array(
+						'timeout'    => 30,
+						'user-agent' => 'fusion-builder',
+					)
+				);
 				$addons_json  = wp_remote_retrieve_body( $response );
 				set_site_transient( 'fusion_builder_addons_json', $addons_json, 300 );
 			}
@@ -30,10 +32,18 @@
 				$addons['coming-soon'] = $coming_soon;
 			}
 			$n = 0;
+			$installed_plugins = get_plugins();
 			?>
 			<?php foreach ( $addons as $id => $addon ) : ?>
+				<?php
+				$addon_info = fusion_get_plugin_info( $addon['plugin_name'], $installed_plugins );
+				$active_class = '';
+				if ( is_array( $addon_info ) ) {
+					$active_class = ( $addon_info['is_active'] ) ? ' active' : ' installed';
+				}
+				?>
 				<div class="fusion-admin-box">
-					<div class="theme">
+					<div class="theme<?php echo esc_html( $active_class ); ?>">
 						<div class="theme-wrapper">
 							<div class="theme-screenshot">
 								<img class="addon-image" src="" data-src="<?php echo esc_url_raw( $addon['thumbnail'] ); ?>" <?php echo ( ! empty( $addon['retinaThumbnail'] ) ) ? 'data-src-retina="' . esc_url_raw( $addon['retinaThumbnail'] ) . '"' : ''; ?> />
@@ -41,12 +51,33 @@
 									<img src="<?php echo esc_url_raw( $addon['thumbnail'] ); ?>" />
 								</noscript>
 							</div>
-							<h3 class="theme-name" id="<?php esc_attr( $addon['post_title'] ); ?>"><?php echo esc_html( ucwords( $addon['post_title'] ) ); ?></h3>
+							<h3 class="theme-name" id="<?php esc_attr( $addon['post_title'] ); ?>">
+								<?php echo ( is_array( $addon_info ) && $addon_info['is_active'] ) ? esc_html__( 'Active:', 'fusion-builder' ) : '';  ?>
+								<?php echo esc_html( ucwords( $addon['post_title'] ) ); ?>
+								<?php if ( is_array( $addon_info ) ) : ?>
+								<div class="plugin-info">
+										<?php
+										$version = ( isset( $addon_info['Version'] ) ) ? $addon_info['Version'] : false;
+										$author  = ( $addon_info['Author'] && $addon_info['AuthorURI'] ) ? "<a href='{$addon_info['AuthorURI']}' target='_blank'>{$addon_info['Author']}</a>" : false;
+
+										if ( $version && $author ) :
+											printf( __( 'v%1$s | %2$s', 'fusion-builder' ), $version, $author ); // WPCS: XSS ok.
+										endif;
+										?>
+								</div>
+							<?php endif; ?>
+							</h3>
 							<div class="theme-actions">
 								<?php if ( 'coming-soon' !== $id ) : ?>
-									<?php $url = add_query_arg( 'ref', 'ThemeFusion', $addon['url'] ); ?>
-									<a href="<?php echo esc_url_raw( $url ); ?>" target="_blank"></a>
-									<a class="button button-primary button-get-addon" href="<?php echo esc_url_raw( $url ); ?>" target="_blank"><?php esc_attr_e( 'Get Add-on', 'fusion-builder' ); ?></a>
+									<?php if ( is_array( $addon_info ) ) : ?>
+										<?php if ( $addon_info['is_active'] ) : ?>
+											<a class="button button-primary" href="<?php echo esc_url_raw( wp_nonce_url( 'plugins.php?action=deactivate&amp;plugin=' . $addon_info['plugin_file'] . '&amp;plugin_status=all&amp;paged=1&amp;s', 'deactivate-plugin_' . $addon_info['plugin_file'] ) ); // WPCS: XSS ok. ?>" target="_blank"><?php esc_attr_e( 'Deactivate', 'fusion-builder' ); ?></a>
+										<?php else : ?>
+											<a class="button button-primary" href="<?php echo esc_url_raw( wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . $addon_info['plugin_file'] . '&amp;plugin_status=all&amp;paged=1&amp;s', 'activate-plugin_' . $addon_info['plugin_file'] ) ); // WPCS: XSS ok. ?>" target="_blank"><?php esc_attr_e( 'Activate', 'fusion-builder' ); ?></a>
+										<?php endif; ?>
+									<?php else : ?>
+										<a class="button button-primary button-get-addon" href="<?php echo esc_url_raw( add_query_arg( 'ref', 'ThemeFusion', $addon['url'] ) ); ?>" target="_blank"><?php esc_attr_e( 'Get Add-on', 'fusion-builder' ); ?></a>
+									<?php endif; ?>
 								<?php endif; ?>
 
 							</div>
@@ -58,7 +89,7 @@
 
 								if ( 30 >= $date_difference ) :
 								?>
-									<div class="plugin-required"><?php esc_attr_e( 'New', 'Avada' ); ?></div>
+									<div class="plugin-required"><?php esc_attr_e( 'New', 'fusion-builder' ); ?></div>
 								<?php endif; ?>
 							<?php endif; ?>
 						</div>

@@ -1,7 +1,9 @@
 <?php
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Register the layouts.
@@ -76,27 +78,31 @@ function fusion_builder_register_layouts() {
 		'name' => esc_attr__( 'Category', 'fusion-builder' ),
 	);
 
-	register_taxonomy( 'element_category', array( 'fusion_element' ), array(
-		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => false,
-		'show_admin_column' => false,
-		'query_var'         => true,
-		'show_in_nav_menus' => false,
-	) );
+	register_taxonomy(
+		'element_category', array( 'fusion_element' ), array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => false,
+			'show_admin_column' => false,
+			'query_var'         => true,
+			'show_in_nav_menus' => false,
+		)
+	);
 
 	$labels = array(
 		'name' => esc_attr__( 'Category', 'fusion-builder' ),
 	);
 
-	register_taxonomy( 'template_category', array( 'fusion_template' ), array(
-		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => false,
-		'show_admin_column' => false,
-		'query_var'         => true,
-		'show_in_nav_menus' => false,
-	) );
+	register_taxonomy(
+		'template_category', array( 'fusion_template' ), array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => false,
+			'show_admin_column' => false,
+			'query_var'         => true,
+			'show_in_nav_menus' => false,
+		)
+	);
 }
 add_action( 'admin_init', 'fusion_builder_register_layouts' );
 
@@ -248,35 +254,48 @@ function fusion_builder_display_library_content() {
 					<div class="fusion-builder-layouts-header-fields fusion-builder-layouts-header-element-fields"></div>
 					<div class="fusion-builder-layouts-header-info">
 						<h2><?php esc_attr_e( 'Saved Containers', 'fusion-builder' ); ?></h2>
-						<span class="fusion-builder-layout-info"><?php esc_attr_e( 'Manage your saved containers. Containers cannot be inserted from the library window.', 'fusion-builder' ); ?></span>
+						<span class="fusion-builder-layout-info"><?php
+						/* translators: The "Fusion Documentation" link. */
+						printf( __( 'Manage your saved containers. Containers cannot be inserted from the library window. The globe icon indicates the element is a <a href="%s" target="_blank">global element</a>.', 'fusion-builder' ), 'https://theme-fusion.com/fb-doc/fusion-builder-global-elements/' );
+						?></span>
 					</div>
 				</div>
 
 				<?php
 				// Query containers.
-				$query = fusion_cached_query( array(
-					'status'         => 'publish',
-					'post_type'      => 'fusion_element',
-					'posts_per_page' => '-1',
-					'tax_query'      => array(
-						array(
-							'taxonomy' => 'element_category',
-							'field'    => 'slug',
-							'terms'    => 'sections',
+				$query = fusion_cached_query(
+					array(
+						'post_status'    => 'publish',
+						'post_type'      => 'fusion_element',
+						'posts_per_page' => '-1',
+						'tax_query'      => array(
+							array(
+								'taxonomy' => 'element_category',
+								'field'    => 'slug',
+								'terms'    => 'sections',
+							),
 						),
-					),
-				) );
+					)
+				);
 				?>
 
 				<?php if ( $query->have_posts() ) : ?>
 
-					<ul class="fusion-page-layouts">
+					<ul class="fusion-page-layouts fusion-layout-sections">
 
-						<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-							<?php global $post; ?>
+						<?php
+						while ( $query->have_posts() ) :
+							$query->the_post();
+							$is_global = ( 'yes' === get_post_meta( get_the_ID(), '_fusion_is_global', true ) ? 'fusion-global' : '' );
+							global $post;
+							?>
 
-							<li class="fusion-page-layout" data-layout_id="<?php echo get_the_ID(); ?>">
-								<h4 class="fusion-page-layout-title"><?php echo get_the_title(); ?></h4>
+							<li class="<?php echo esc_attr( $is_global ); ?> fusion-page-layout" data-layout_id="<?php echo get_the_ID(); ?>">
+								<h4 class="fusion-page-layout-title"><?php echo get_the_title(); ?>
+									<?php if ( '' !== $is_global ) : ?>
+										<div class="fusion-global-tooltip-wrapper"><span class="fusion-global-tooltip"><?php esc_attr_e( 'This is a global container.', 'fusion-builder' ); ?></span></div>
+									<?php endif; ?>
+								</h4>
 								<span class="fusion-layout-buttons">
 									<a href="#" class="fusion-builder-layout-button-delete"><?php esc_attr_e( 'Delete', 'fusion-builder' ); ?></a>
 								</span>
@@ -286,7 +305,7 @@ function fusion_builder_display_library_content() {
 					</ul>
 
 				<?php else : ?>
-					<ul class="fusion-page-layouts">
+					<ul class="fusion-page-layouts fusion-layout-sections">
 						<p class="fusion-empty-library-message"><?php esc_attr_e( 'There are no custom containers in your library', 'fusion-builder' ); ?></p>
 					</ul>
 
@@ -309,35 +328,48 @@ function fusion_builder_display_library_content() {
 					<div class="fusion-builder-layouts-header-fields fusion-builder-layouts-header-element-fields"></div>
 					<div class="fusion-builder-layouts-header-info">
 						<h2><?php esc_attr_e( 'Saved Columns', 'fusion-builder' ); ?></h2>
-						<span class="fusion-builder-layout-info"><?php esc_attr_e( 'Manage your saved columns. Columns cannot be inserted from the library window and they must always go inside a container.', 'fusion-builder' ); ?></span>
+						<span class="fusion-builder-layout-info"><?php
+						/* translators: The "Fusion Documentation" link. */
+						printf( __( 'Manage your saved columns. Columns cannot be inserted from the library window and they must always go inside a container. The globe icon indicates the element is a <a href="%s" target="_blank">global element</a>.', 'fusion-builder' ), 'https://theme-fusion.com/fb-doc/fusion-builder-global-elements/' );
+						?></span>
 					</div>
 				</div>
 
 				<?php
 				// Query columns.
-				$query = fusion_cached_query( array(
-					'status'         => 'publish',
-					'post_type'      => 'fusion_element',
-					'posts_per_page' => '-1',
-					'tax_query'      => array(
-						array(
-							'taxonomy' => 'element_category',
-							'field'    => 'slug',
-							'terms'    => 'columns',
+				$query = fusion_cached_query(
+					array(
+						'post_status'    => 'publish',
+						'post_type'      => 'fusion_element',
+						'posts_per_page' => '-1',
+						'tax_query'      => array(
+							array(
+								'taxonomy' => 'element_category',
+								'field'    => 'slug',
+								'terms'    => 'columns',
+							),
 						),
-					),
-				) );
+					)
+				);
 				?>
 
 				<?php if ( $query->have_posts() ) : ?>
 
-					<ul class="fusion-page-layouts">
+					<ul class="fusion-page-layouts fusion-layout-columns">
 
-						<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-							<?php global $post; ?>
+						<?php
+						while ( $query->have_posts() ) :
+							$query->the_post();
+							$is_global = ( 'yes' === get_post_meta( get_the_ID(), '_fusion_is_global', true ) ? 'fusion-global' : '' );
+							global $post;
+						?>
 
-							<li class="fusion-page-layout" data-layout_id="<?php echo get_the_ID(); ?>">
-								<h4 class="fusion-page-layout-title"><?php echo get_the_title(); ?></h4>
+							<li class="<?php echo esc_attr( $is_global ); ?> fusion-page-layout" data-layout_id="<?php echo get_the_ID(); ?>">
+								<h4 class="fusion-page-layout-title"><?php echo get_the_title(); ?>
+									<?php if ( '' !== $is_global ) : ?>
+										<div class="fusion-global-tooltip-wrapper"><span class="fusion-global-tooltip"><?php esc_attr_e( 'This is a global column.', 'fusion-builder' ); ?></span></div>
+									<?php endif; ?>
+								</h4>
 								<span class="fusion-layout-buttons">
 									<a href="#" class="fusion-builder-layout-button-delete"><?php esc_attr_e( 'Delete', 'fusion-builder' ); ?></a>
 								</span>
@@ -347,7 +379,7 @@ function fusion_builder_display_library_content() {
 					</ul>
 
 				<?php else : ?>
-					<ul class="fusion-page-layouts">
+					<ul class="fusion-page-layouts fusion-layout-columns">
 						<p class="fusion-empty-library-message"><?php esc_attr_e( 'There are no custom columns in your library', 'fusion-builder' ); ?></p>
 					</ul>
 
@@ -370,36 +402,51 @@ function fusion_builder_display_library_content() {
 					<div class="fusion-builder-layouts-header-fields fusion-builder-layouts-header-element-fields"></div>
 					<div class="fusion-builder-layouts-header-info">
 						<h2><?php esc_attr_e( 'Saved Elements', 'fusion-builder' ); ?></h2>
-						<span class="fusion-builder-layout-info"><?php esc_attr_e( 'Manage your saved elements. Elements cannot be inserted from the library window and they must always go inside a column.', 'fusion-builder' ); ?></span>
+						<span class="fusion-builder-layout-info"><?php
+						/* translators: The "Fusion Documentation" link. */
+						printf( __( 'Manage your saved elements. Elements cannot be inserted from the library window and they must always go inside a column. The globe icon indicates the element is a <a href="%s" target="_blank">global element</a>.', 'fusion-builder' ), 'https://theme-fusion.com/fb-doc/fusion-builder-global-elements/' );
+						?></span>
 					</div>
 				</div>
 
 				<?php
 				// Query elements.
-				$query = fusion_cached_query( array(
-					'status'         => 'publish',
-					'post_type'      => 'fusion_element',
-					'posts_per_page' => '-1',
-					'tax_query'      => array(
-						array(
-							'taxonomy' => 'element_category',
-							'field'    => 'slug',
-							'terms'    => 'elements',
+				$query = fusion_cached_query(
+					array(
+						'post_status'    => 'publish',
+						'post_type'      => 'fusion_element',
+						'posts_per_page' => '-1',
+						'tax_query'      => array(
+							array(
+								'taxonomy' => 'element_category',
+								'field'    => 'slug',
+								'terms'    => 'elements',
+							),
 						),
-					),
-				) );
+					)
+				);
 				?>
 
-				<?php if ( $query->have_posts() ) : ?>
+				<?php
+				if ( $query->have_posts() ) :
+				?>
 
-					<ul class="fusion-page-layouts">
+					<ul class="fusion-page-layouts fusion-layout-elements">
 
-						<?php while ( $query->have_posts() ) : $query->the_post(); ?>
-							<?php global $post; ?>
-							<?php $element_type = esc_attr( get_post_meta( $post->ID, '_fusion_element_type', true ) ); ?>
+						<?php
+						while ( $query->have_posts() ) :
+							$query->the_post();
+							$is_global = ( 'yes' === get_post_meta( get_the_ID(), '_fusion_is_global', true ) ? 'fusion-global' : ''  );
+							global $post;
+							$element_type = esc_attr( get_post_meta( $post->ID, '_fusion_element_type', true ) );
+							?>
 
-							<li class="fusion-page-layout" data-layout_type="<?php echo esc_attr( $element_type ); ?>" data-layout_id="<?php echo esc_attr( get_the_ID() ); ?>">
-								<h4 class="fusion-page-layout-title"><?php echo get_the_title(); ?></h4>
+							<li class="<?php echo esc_attr( $is_global ); ?> fusion-page-layout" data-layout_type="<?php echo esc_attr( $element_type ); ?>" data-layout_id="<?php echo esc_attr( get_the_ID() ); ?>">
+								<h4 class="fusion-page-layout-title"><?php echo get_the_title(); ?>
+									<?php if ( '' !== $is_global ) : ?>
+										<div class="fusion-global-tooltip-wrapper"><span class="fusion-global-tooltip"><?php esc_attr_e( 'This is a global element.', 'fusion-builder' ); ?></span></div>
+									<?php endif; ?>
+								</h4>
 								<span class="fusion-layout-buttons">
 									<a href="#" class="fusion-builder-layout-button-delete"><?php esc_attr_e( 'Delete', 'fusion-builder' ); ?></a>
 								</span>
@@ -409,7 +456,7 @@ function fusion_builder_display_library_content() {
 					</ul>
 
 				<?php else : ?>
-					<ul class="fusion-page-layouts">
+					<ul class="fusion-page-layouts fusion-layout-elements">
 						<p class="fusion-empty-library-message"><?php esc_attr_e( 'There are no custom elements in your library', 'fusion-builder' ); ?></p>
 					</ul>
 
@@ -442,27 +489,32 @@ function fusion_builder_display_library_content() {
 
 				<?php
 				// Query page templates.
-				$query = fusion_cached_query( array(
-					'status'         => 'publish',
-					'post_type'      => 'fusion_template',
-					'posts_per_page' => '-1',
-				) );
+				$query = fusion_cached_query(
+					array(
+						'post_status'    => 'publish',
+						'post_type'      => 'fusion_template',
+						'posts_per_page' => '-1',
+					)
+				);
 				?>
 
-				<ul class="fusion-page-layouts">
+				<ul class="fusion-page-layouts fusion-layout-templates">
 
 					<?php if ( $query->have_posts() ) : ?>
 
-						<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+						<?php while ( $query->have_posts() ) : ?>
+							<?php $query->the_post(); ?>
 							<?php global $post; ?>
 							<li class="fusion-page-layout" data-layout_id="<?php echo get_the_ID(); ?>">
 								<h4 class="fusion-page-layout-title"><?php echo get_the_title(); ?></h4>
 								<span class="fusion-layout-buttons">
 									<a href="javascript:void(0)" class="fusion-builder-layout-button-load-dialog">
-										<?php printf(
+										<?php
+										printf(
 											esc_html__( 'Load %s', 'fusion-builder' ),
 											'<div class="fusion-builder-load-template-dialog-container"><div class="fusion-builder-load-template-dialog"><span class="fusion-builder-save-element-title">' . esc_html__( 'How To Load Template?', 'fusion-builder' ) . '</span><div class="fusion-builder-save-element-container"><span class="fusion-builder-layout-button-load" data-load-type="replace">' . esc_attr__( 'Replace all page content', 'fusion-builder' ) . '</span><span class="fusion-builder-layout-button-load" data-load-type="above">' . esc_attr__( 'Insert above current content', 'fusion-builder' ) . '</span><span class="fusion-builder-layout-button-load" data-load-type="below">' . esc_attr__( 'Insert below current content', 'fusion-builder' ) . '</span></div></div></div>'
-										); ?>
+										);
+										?>
 									</a>
 									<a href="<?php echo esc_url_raw( htmlspecialchars_decode( get_edit_post_link( $post->ID ) ) ); ?>" class="" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Edit', 'fusion-builder' ); ?></a>
 									<a href="#" class="fusion-builder-layout-button-delete"><?php esc_html_e( 'Delete', 'fusion-builder' ); ?></a>
@@ -505,22 +557,26 @@ function fusion_load_custom_elements() {
 		$cat = $_POST['cat'];
 
 		// Query elements.
-		$query = fusion_cached_query( array(
-			'status'         => 'publish',
-			'post_type'      => 'fusion_element',
-			'posts_per_page' => '-1',
-			'tax_query'      => array(
-				array(
-					'taxonomy' => 'element_category',
-					'field'    => 'slug',
-					'terms'    => $cat,
+		$query = fusion_cached_query(
+			array(
+				'post_status'    => 'publish',
+				'post_type'      => 'fusion_element',
+				'posts_per_page' => '-1',
+				'tax_query'      => array(
+					array(
+						'taxonomy' => 'element_category',
+						'field'    => 'slug',
+						'terms'    => $cat,
+					),
 				),
-			),
-		));
+			)
+		);
 
-		if ( $query->have_posts() ) : ?>
+		if ( $query->have_posts() ) :
+		?>
 			<ul class="fusion-builder-all-modules">
-				<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+				<?php while ( $query->have_posts() ) : ?>
+					<?php $query->the_post(); ?>
 					<?php global $post; ?>
 					<?php $element_type = esc_attr( get_post_meta( $post->ID, '_fusion_element_type', true ) ); ?>
 					<?php $element_type_class = ( isset( $element_type ) && '' != $element_type ) ? 'fusion-element-type-' . $element_type : ''; ?>
@@ -538,7 +594,8 @@ function fusion_load_custom_elements() {
 			<p class="fusion-empty-library-message"><?php esc_attr_e( 'There are no custom elements in your library', 'fusion-builder' ); ?></p>
 
 		<?php endif; ?>
-		<?php wp_reset_postdata();
+		<?php
+		wp_reset_postdata();
 	}
 
 	die();
@@ -561,10 +618,19 @@ function fusion_builder_load_layout() {
 	$layout_id = (int) $_POST['fusion_layout_id'];
 	$layout    = get_post( $layout_id );
 
+	// Globals.
+	if ( isset( $_POST['fusion_is_global'] ) && 'false' !== $_POST['fusion_is_global'] ) {
+		$position = strpos( $layout->post_content, ']' );
+		if ( false !== $position ) {
+			$layout->post_content = apply_filters( 'content_edit_pre', $layout->post_content, $layout->post_content, $layout_id );
+			$layout->post_content = substr_replace( $layout->post_content, ' fusion_global="' . $layout_id . '"]', $position, 1 );
+		}
+	}
+
 	if ( $layout ) {
 
 		// Set page content.
-		$data['post_content'] = $layout->post_content;
+		$data['post_content'] = apply_filters( 'content_edit_pre', $layout->post_content, $layout_id );
 
 		// Set page template.
 		if ( 'fusion_template' == get_post_type( $layout_id ) ) {
@@ -656,8 +722,14 @@ function fusion_builder_save_layout() {
 		$layout_name = $_POST['fusion_layout_name'];
 		$taxonomy    = 'element_category';
 		$term        = '';
-		$meta        = '';
+		$meta        = array();
 		$layout_type = '';
+		$global_data = '';
+		$global_type = array(
+			'elements' => 'element',
+			'columns'  => 'column',
+			'sections' => 'container',
+		);
 
 		if ( isset( $_POST['fusion_layout_post_type'] ) && '' !== $_POST['fusion_layout_post_type'] ) {
 
@@ -684,6 +756,25 @@ function fusion_builder_save_layout() {
 				if ( isset( $_POST['fusion_page_template'] ) && '' !== $_POST['fusion_page_template'] ) {
 					$meta['_wp_page_template'] = $_POST['fusion_page_template'];
 				}
+
+				// Save globals. @codingStandardsIgnoreLine
+				$_POST['fusion_layout_content'] = apply_filters( 'content_save_pre', $_POST['fusion_layout_content'] );
+			}
+
+			// Globals.
+			if ( isset( $_POST['fusion_save_global'] ) && 'false' !== $_POST['fusion_save_global'] ) {
+				$meta['_fusion_is_global'] = 'yes';
+				$global_data               = 'fusion-global';
+			} else {
+				$position = false;
+				if ( isset( $_POST['fusion_layout_content'] ) ) {
+					$position = strpos( $_POST['fusion_layout_content'], 'fusion_global' );
+				}
+
+				if ( false !== $position ) {
+					// Remove fusion_global attributes from content if it is simple library element. @codingStandardsIgnoreLine
+					$_POST['fusion_layout_content'] = preg_replace( '/fusion_global=[^][^][0-9]*[^][^]/' , '', $_POST['fusion_layout_content'] );
+				}
 			}
 
 			// Add Fusion Options to meta data.
@@ -695,15 +786,21 @@ function fusion_builder_save_layout() {
 			// Post category.
 			if ( isset( $_POST['fusion_layout_new_cat'] ) && '' !== $_POST['fusion_layout_new_cat'] ) {
 				$term = $_POST['fusion_layout_new_cat'];
+				$global_type = $global_type[ $term ];
 			}
 
-			$new_layout_id = fusion_builder_create_layout( $post_type, $layout_name, $_POST['fusion_layout_content'], $meta, $taxonomy, $term );
+			$post_fusion_layout_content = ( isset( $_POST['fusion_layout_content'] ) ) ? $_POST['fusion_layout_content'] : '';
+			$new_layout_id = fusion_builder_create_layout( $post_type, $layout_name, $post_fusion_layout_content, $meta, $taxonomy, $term );
 			?>
 
 			<?php if ( 'fusion_element' == $post_type ) : ?>
 
-				<li class="fusion-page-layout<?php echo esc_attr( $layout_type ); ?>" data-layout_id="<?php echo esc_attr( $new_layout_id ); ?>">
-					<h4 class="fusion-page-layout-title"><?php echo get_the_title( $new_layout_id ); ?></h4>
+				<li class="<?php echo esc_attr( $global_data ); ?> fusion-page-layout<?php echo esc_attr( $layout_type ); ?>" data-layout_id="<?php echo esc_attr( $new_layout_id ); ?>">
+					<h4 class="fusion-page-layout-title"><?php echo get_the_title( $new_layout_id ); ?>
+						<?php if ( 'false' !== $_POST['fusion_save_global'] ) : ?>
+							<div class="fusion-global-tooltip-wrapper"><span class="fusion-global-tooltip"><?php printf( esc_attr__( 'This is a global %s.', 'fusion-builder' ), esc_attr( $global_type ) ); ?></span></div>
+						<?php endif; ?>
+					</h4>
 					<span class="fusion-layout-buttons">
 						<a href="#" class="fusion-builder-layout-button-delete"><?php esc_html_e( 'Delete', 'fusion-builder' ); ?></a>
 					</span>
@@ -711,20 +808,23 @@ function fusion_builder_save_layout() {
 
 			<?php elseif ( 'fusion_template' == $post_type ) : ?>
 
-				<li class="fusion-page-layout" data-layout_id="<?php echo esc_attr( $new_layout_id ); ?>">
+				<li class="<?php echo esc_attr( $global_data ); ?> fusion-page-layout" data-layout_id="<?php echo esc_attr( $new_layout_id ); ?>">
 					<h4 class="fusion-page-layout-title"><?php echo get_the_title( $new_layout_id ); // WPCS: XSS ok. ?></h4>
 					<span class="fusion-layout-buttons">
 						<a href="javascript:void(0)" class="fusion-builder-layout-button-load-dialog">
-							<?php printf(
+							<?php
+							printf(
 								esc_html__( 'Load %s', 'fusion-builder' ),
 								'<div class="fusion-builder-load-template-dialog-container"><div class="fusion-builder-load-template-dialog"><span class="fusion-builder-save-element-title">' . esc_attr__( 'How To Load Template?', 'fusion-builder' ) . '</span><div class="fusion-builder-save-element-container"><span class="fusion-builder-layout-button-load" data-load-type="replace">' . esc_attr__( 'Replace all page content', 'fusion-builder' ) . '</span><span class="fusion-builder-layout-button-load" data-load-type="above">' . esc_attr__( 'Insert above current content', 'fusion-builder' ) . '</span><span class="fusion-builder-layout-button-load" data-load-type="below">' . esc_attr__( 'Insert below current content', 'fusion-builder' ) . '</span></div></div></div>'
-							); ?>
+							);
+							?>
 						</a>
 						<a href="<?php echo esc_url_raw( htmlspecialchars_decode( get_edit_post_link( $new_layout_id ) ) ); ?>" class="" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Edit', 'fusion-builder' ); ?></a>
 						<a href="#" class="fusion-builder-layout-button-delete"><?php esc_html_e( 'Delete', 'fusion-builder' ); ?></a>
 					</span>
 				</li>
-			<?php endif;
+			<?php
+			endif;
 		}
 	}
 
@@ -732,6 +832,32 @@ function fusion_builder_save_layout() {
 }
 add_action( 'wp_ajax_fusion_builder_save_layout', 'fusion_builder_save_layout' );
 
+/**
+ * Save custom layout.
+ */
+function fusion_builder_update_layout() {
+
+	check_ajax_referer( 'fusion_load_nonce', 'fusion_load_nonce' );
+
+	if ( isset( $_POST['fusion_layout_id'] ) && '' !== $_POST['fusion_layout_id'] ) {
+
+		$layout_id = $_POST['fusion_layout_id'];
+		$content   = isset( $_POST['fusion_layout_content'] ) ? $_POST['fusion_layout_content'] : '';
+
+		// Filter nested globals.
+		$content   = apply_filters( 'content_save_pre', $content, $content, $layout_id );
+
+		$post = array(
+			'ID'           => $layout_id,
+			'post_content' => $content,
+		);
+
+		wp_update_post( $post );
+
+	}
+	die();
+}
+add_action( 'wp_ajax_fusion_builder_update_layout', 'fusion_builder_update_layout' );
 /**
  * Get image URL from image ID.
  */

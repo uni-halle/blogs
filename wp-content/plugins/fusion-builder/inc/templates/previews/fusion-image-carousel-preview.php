@@ -8,15 +8,17 @@
 		slider_inner_reg_exp = new RegExp( '\\[(\\[?)(fusion_image)(?![\\w-])([^\\]\\/]*(?:\\/(?!\\])[^\\]\\/]*)*?)(?:(\\/)\\]|\\](?:([^\\[]*(?:\\[(?!\\/\\2\\])[^\\[]*)*)(\\[\\/\\2\\]))?)(\\]?)' ),
 		slider_matches = content.match( slider_reg_exp );
 
-		_.each( slider_matches.slice(0,5), function ( slider_shortcode ) {
-			var
-			slider_shortcode_element = slider_shortcode.match( slider_inner_reg_exp ),
-			slider_shortcode_content = slider_shortcode_element[5],
-			slider_shortcode_attributes = slider_shortcode_element[3] !== '' ? window.wp.shortcode.attrs( slider_shortcode_element[3] ) : ''; #>
+		if( null !== slider_matches && slider_matches.length ) {
+			_.each( slider_matches.slice(0,5), function ( slider_shortcode ) {
+				var
+				slider_shortcode_element = slider_shortcode.match( slider_inner_reg_exp ),
+				slider_shortcode_content = slider_shortcode_element[5],
+				slider_shortcode_attributes = slider_shortcode_element[3] !== '' ? window.wp.shortcode.attrs( slider_shortcode_element[3] ) : ''; #>
 
-			<img src="{{ slider_shortcode_attributes.named['image'] }}" class="fusion-slide-preview" />
-		<#
-		});
+				<img src="{{ slider_shortcode_attributes.named['image'] }}" class="fusion-slide-preview" />
+			<#
+			});
+		}
 		#>
 	</div>
 </script>

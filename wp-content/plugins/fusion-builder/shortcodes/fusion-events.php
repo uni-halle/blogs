@@ -256,76 +256,78 @@ if ( fusion_is_element_enabled( 'fusion_events' ) ) {
  */
 function fusion_element_events() {
 	if ( class_exists( 'Tribe__Events__Main' ) ) {
-		fusion_builder_map( array(
-			'name'      => esc_attr__( 'Events', 'fusion-builder' ),
-			'shortcode' => 'fusion_events',
-			'icon'      => 'fusiona-tag',
-			'params'    => array(
-				array(
-					'type'        => 'multiple_select',
-					'heading'     => esc_attr__( 'Categories', 'fusion-builder' ),
-					'description' => esc_attr__( 'Select a category or leave blank for all.', 'fusion-builder' ),
-					'param_name'  => 'cat_slug',
-					'value'       => fusion_builder_shortcodes_categories( 'tribe_events_cat' ),
-					'default'     => '',
-				),
-				array(
-					'type'        => 'textfield',
-					'heading'     => esc_attr__( 'Number of Events', 'fusion-builder' ),
-					'description' => esc_attr__( 'Select the number of events to display.', 'fusion-builder' ),
-					'param_name'  => 'number_posts',
-					'value'       => '4',
-				),
-				array(
-					'type'        => 'select',
-					'heading'     => esc_attr__( 'Maximum Columns', 'fusion-builder' ),
-					'description' => esc_attr__( 'Select the number of max columns to display.', 'fusion-builder' ),
-					'param_name'  => 'columns',
-					'value'       => array(
-						'1' => '1',
-						'2' => '2',
-						'3' => '3',
-						'4' => '4',
-						'5' => '5',
-						'6' => '6',
+		fusion_builder_map(
+			array(
+				'name'      => esc_attr__( 'Events', 'fusion-builder' ),
+				'shortcode' => 'fusion_events',
+				'icon'      => 'fusiona-tag',
+				'params'    => array(
+					array(
+						'type'        => 'multiple_select',
+						'heading'     => esc_attr__( 'Categories', 'fusion-builder' ),
+						'description' => esc_attr__( 'Select a category or leave blank for all.', 'fusion-builder' ),
+						'param_name'  => 'cat_slug',
+						'value'       => fusion_builder_shortcodes_categories( 'tribe_events_cat' ),
+						'default'     => '',
 					),
-					'default'     => '4',
-				),
-				array(
-					'type'        => 'radio_button_set',
-					'heading'     => esc_attr__( 'Picture Size', 'fusion-builder' ),
-					'description' => __( 'cover = image will scale to cover the container, <br />auto = width and height will adjust to the image.', 'fusion-builder' ),
-					'param_name'  => 'picture_size',
-					'value'       => array(
-						'cover' => esc_attr__( 'Cover', 'fusion-builder' ),
-						'auto'  => esc_attr__( 'Auto', 'fusion-builder' ),
+					array(
+						'type'        => 'textfield',
+						'heading'     => esc_attr__( 'Number of Events', 'fusion-builder' ),
+						'description' => esc_attr__( 'Select the number of events to display.', 'fusion-builder' ),
+						'param_name'  => 'number_posts',
+						'value'       => '4',
 					),
-					'default' => 'cover',
+					array(
+						'type'        => 'select',
+						'heading'     => esc_attr__( 'Maximum Columns', 'fusion-builder' ),
+						'description' => esc_attr__( 'Select the number of max columns to display.', 'fusion-builder' ),
+						'param_name'  => 'columns',
+						'value'       => array(
+							'1' => '1',
+							'2' => '2',
+							'3' => '3',
+							'4' => '4',
+							'5' => '5',
+							'6' => '6',
+						),
+						'default'     => '4',
+					),
+					array(
+						'type'        => 'radio_button_set',
+						'heading'     => esc_attr__( 'Picture Size', 'fusion-builder' ),
+						'description' => __( 'cover = image will scale to cover the container, <br />auto = width and height will adjust to the image.', 'fusion-builder' ),
+						'param_name'  => 'picture_size',
+						'value'       => array(
+							'cover' => esc_attr__( 'Cover', 'fusion-builder' ),
+							'auto'  => esc_attr__( 'Auto', 'fusion-builder' ),
+						),
+						'default' => 'cover',
+					),
+					array(
+						'type'        => 'checkbox_button_set',
+						'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+						'param_name'  => 'hide_on_mobile',
+						'value'       => fusion_builder_visibility_options( 'full' ),
+						'default'     => fusion_builder_default_visibility( 'array' ),
+						'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+					),
+					array(
+						'type'        => 'textfield',
+						'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+						'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+						'param_name'  => 'class',
+						'value'       => '',
+					),
+					array(
+						'type'        => 'textfield',
+						'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+						'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+						'param_name'  => 'id',
+						'value'       => '',
+					),
 				),
-				array(
-					'type'        => 'checkbox_button_set',
-					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-					'param_name'  => 'hide_on_mobile',
-					'value'       => fusion_builder_visibility_options( 'full' ),
-					'default'     => fusion_builder_default_visibility( 'array' ),
-					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-				),
-				array(
-					'type'        => 'textfield',
-					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-					'param_name'  => 'class',
-					'value'       => '',
-				),
-				array(
-					'type'        => 'textfield',
-					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-					'param_name'  => 'id',
-					'value'       => '',
-				),
-			),
-		) );
+			)
+		);
 	}
 }
 add_action( 'wp_loaded', 'fusion_element_events' );

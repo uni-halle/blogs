@@ -242,9 +242,11 @@ if ( fusion_is_element_enabled( 'fusion_products_slider' ) ) {
 			 */
 			public function attr() {
 
-				$attr = fusion_builder_visibility_atts( $this->args['hide_on_mobile'], array(
-					'class' => 'fusion-woo-product-slider fusion-woo-slider',
-				) );
+				$attr = fusion_builder_visibility_atts(
+					$this->args['hide_on_mobile'], array(
+						'class' => 'fusion-woo-product-slider fusion-woo-slider',
+					)
+				);
 
 				if ( $this->args['class'] ) {
 					$attr['class'] .= ' ' . $this->args['class'];
@@ -348,164 +350,166 @@ if ( fusion_is_element_enabled( 'fusion_products_slider' ) ) {
  */
 function fusion_element_products_slider() {
 	if ( class_exists( 'WooCommerce' ) ) {
-		fusion_builder_map( array(
-			'name'      => esc_attr__( 'Woo Carousel', 'fusion-builder' ),
-			'shortcode' => 'fusion_products_slider',
-			'icon'      => 'fusiona-tag',
-			'params'    => array(
-				array(
-					'type'        => 'radio_button_set',
-					'heading'     => esc_attr__( 'Picture Size', 'fusion-builder' ),
-					'description' => __( 'fixed = width and height will be fixed <br />auto = width and height will adjust to the image.', 'fusion-builder' ),
-					'param_name'  => 'picture_size',
-					'value'       => array(
-						'fixed' => esc_attr__( 'Fixed', 'fusion-builder' ),
-						'auto'  => esc_attr__( 'Auto', 'fusion-builder' ),
+		fusion_builder_map(
+			array(
+				'name'      => esc_attr__( 'Woo Carousel', 'fusion-builder' ),
+				'shortcode' => 'fusion_products_slider',
+				'icon'      => 'fusiona-tag',
+				'params'    => array(
+					array(
+						'type'        => 'radio_button_set',
+						'heading'     => esc_attr__( 'Picture Size', 'fusion-builder' ),
+						'description' => __( 'fixed = width and height will be fixed <br />auto = width and height will adjust to the image.', 'fusion-builder' ),
+						'param_name'  => 'picture_size',
+						'value'       => array(
+							'fixed' => esc_attr__( 'Fixed', 'fusion-builder' ),
+							'auto'  => esc_attr__( 'Auto', 'fusion-builder' ),
+						),
+						'default'     => 'fixed',
 					),
-					'default'     => 'fixed',
-				),
-				array(
-					'type'        => 'multiple_select',
-					'heading'     => esc_attr__( 'Categories', 'fusion-builder' ),
-					'description' => esc_attr__( 'Select a category or leave blank for all.', 'fusion-builder' ),
-					'param_name'  => 'cat_slug',
-					'value'       => fusion_builder_shortcodes_categories( 'product_cat' ),
-					'default'     => '',
-				),
-				array(
-					'type'        => 'textfield',
-					'heading'     => esc_attr__( 'Number of Products', 'fusion-builder' ),
-					'description' => esc_attr__( 'Select the number of products to display.', 'fusion-builder' ),
-					'param_name'  => 'number_posts',
-					'value'       => '5',
-				),
-				array(
-					'type'        => 'radio_button_set',
-					'heading'     => esc_attr__( 'Carousel Layout', 'fusion-builder' ),
-					'description' => esc_attr__( 'Choose to show titles on rollover image, or below image.', 'fusion-builder' ),
-					'param_name'  => 'carousel_layout',
-					'value'       => array(
-						'title_on_rollover' => esc_attr__( 'Title on rollover', 'fusion-builder' ),
-						'title_below_image' => esc_attr__( 'Title below image', 'fusion-builder' ),
+					array(
+						'type'        => 'multiple_select',
+						'heading'     => esc_attr__( 'Categories', 'fusion-builder' ),
+						'description' => esc_attr__( 'Select a category or leave blank for all.', 'fusion-builder' ),
+						'param_name'  => 'cat_slug',
+						'value'       => fusion_builder_shortcodes_categories( 'product_cat' ),
+						'default'     => '',
 					),
-					'default'     => 'title_on_rollover',
-				),
-				array(
-					'type'        => 'radio_button_set',
-					'heading'     => esc_attr__( 'Carousel Autoplay', 'fusion-builder' ),
-					'description' => esc_attr__( 'Choose to autoplay the carousel.', 'fusion-builder' ),
-					'param_name'  => 'autoplay',
-					'value'       => array(
-						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					array(
+						'type'        => 'textfield',
+						'heading'     => esc_attr__( 'Number of Products', 'fusion-builder' ),
+						'description' => esc_attr__( 'Select the number of products to display.', 'fusion-builder' ),
+						'param_name'  => 'number_posts',
+						'value'       => '5',
 					),
-					'default'     => 'no',
-				),
-				array(
-					'type'        => 'range',
-					'heading'     => esc_attr__( 'Maximum Columns', 'fusion-builder' ),
-					'description' => esc_attr__( 'Select the number of max columns to display.', 'fusion-builder' ),
-					'param_name'  => 'columns',
-					'value'       => '5',
-					'min'         => '1',
-					'max'         => '6',
-					'step'        => '1',
-				),
-				array(
-					'type'        => 'textfield',
-					'heading'     => esc_attr__( 'Column Spacing', 'fusion-builder' ),
-					'description' => esc_attr__( "Insert the amount of spacing between items without 'px'. ex: 13.", 'fusion-builder' ),
-					'param_name'  => 'column_spacing',
-					'value'       => '',
-				),
-				array(
-					'type'        => 'textfield',
-					'heading'     => esc_attr__( 'Scroll Items', 'fusion-builder' ),
-					'description' => esc_attr__( 'Insert the amount of items to scroll. Leave empty to scroll number of visible items.', 'fusion-builder' ),
-					'param_name'  => 'scroll_items',
-					'value'       => '',
-				),
-				array(
-					'type'        => 'radio_button_set',
-					'heading'     => esc_attr__( 'Show Navigation', 'fusion-builder' ),
-					'description' => esc_attr__( 'Choose to show navigation buttons on the carousel.', 'fusion-builder' ),
-					'param_name'  => 'show_nav',
-					'value'       => array(
-						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					array(
+						'type'        => 'radio_button_set',
+						'heading'     => esc_attr__( 'Carousel Layout', 'fusion-builder' ),
+						'description' => esc_attr__( 'Choose to show titles on rollover image, or below image.', 'fusion-builder' ),
+						'param_name'  => 'carousel_layout',
+						'value'       => array(
+							'title_on_rollover' => esc_attr__( 'Title on rollover', 'fusion-builder' ),
+							'title_below_image' => esc_attr__( 'Title below image', 'fusion-builder' ),
+						),
+						'default'     => 'title_on_rollover',
 					),
-					'default'     => 'yes',
-				),
-				array(
-					'type'        => 'radio_button_set',
-					'heading'     => esc_attr__( 'Mouse Scroll', 'fusion-builder' ),
-					'description' => esc_attr__( 'Choose to enable mouse drag control on the carousel. IMPORTANT: For easy draggability, when mouse scroll is activated, links will be disabled.', 'fusion-builder' ),
-					'param_name'  => 'mouse_scroll',
-					'value'       => array(
-						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					array(
+						'type'        => 'radio_button_set',
+						'heading'     => esc_attr__( 'Carousel Autoplay', 'fusion-builder' ),
+						'description' => esc_attr__( 'Choose to autoplay the carousel.', 'fusion-builder' ),
+						'param_name'  => 'autoplay',
+						'value'       => array(
+							'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+							'no'  => esc_attr__( 'No', 'fusion-builder' ),
+						),
+						'default'     => 'no',
 					),
-					'default'     => 'no',
-				),
-				array(
-					'type'        => 'radio_button_set',
-					'heading'     => esc_attr__( 'Show Categories', 'fusion-builder' ),
-					'description' => esc_attr__( 'Choose to show or hide the categories.', 'fusion-builder' ),
-					'param_name'  => 'show_cats',
-					'value'       => array(
-						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					array(
+						'type'        => 'range',
+						'heading'     => esc_attr__( 'Maximum Columns', 'fusion-builder' ),
+						'description' => esc_attr__( 'Select the number of max columns to display.', 'fusion-builder' ),
+						'param_name'  => 'columns',
+						'value'       => '5',
+						'min'         => '1',
+						'max'         => '6',
+						'step'        => '1',
 					),
-					'default'     => 'yes',
-				),
-				array(
-					'type'        => 'radio_button_set',
-					'heading'     => esc_attr__( 'Show Price', 'fusion-builder' ),
-					'description' => esc_attr__( 'Choose to show or hide the price.', 'fusion-builder' ),
-					'param_name'  => 'show_price',
-					'value'       => array(
-						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					array(
+						'type'        => 'textfield',
+						'heading'     => esc_attr__( 'Column Spacing', 'fusion-builder' ),
+						'description' => esc_attr__( "Insert the amount of spacing between items without 'px'. ex: 13.", 'fusion-builder' ),
+						'param_name'  => 'column_spacing',
+						'value'       => '',
 					),
-					'default'     => 'yes',
-				),
-				array(
-					'type'        => 'radio_button_set',
-					'heading'     => esc_attr__( 'Show Buttons', 'fusion-builder' ),
-					'description' => esc_attr__( 'Choose to show or hide the icon buttons.', 'fusion-builder' ),
-					'param_name'  => 'show_buttons',
-					'value'       => array(
-						'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
-						'no'  => esc_attr__( 'No', 'fusion-builder' ),
+					array(
+						'type'        => 'textfield',
+						'heading'     => esc_attr__( 'Scroll Items', 'fusion-builder' ),
+						'description' => esc_attr__( 'Insert the amount of items to scroll. Leave empty to scroll number of visible items.', 'fusion-builder' ),
+						'param_name'  => 'scroll_items',
+						'value'       => '',
 					),
-					'default'     => 'yes',
+					array(
+						'type'        => 'radio_button_set',
+						'heading'     => esc_attr__( 'Show Navigation', 'fusion-builder' ),
+						'description' => esc_attr__( 'Choose to show navigation buttons on the carousel.', 'fusion-builder' ),
+						'param_name'  => 'show_nav',
+						'value'       => array(
+							'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+							'no'  => esc_attr__( 'No', 'fusion-builder' ),
+						),
+						'default'     => 'yes',
+					),
+					array(
+						'type'        => 'radio_button_set',
+						'heading'     => esc_attr__( 'Mouse Scroll', 'fusion-builder' ),
+						'description' => esc_attr__( 'Choose to enable mouse drag control on the carousel. IMPORTANT: For easy draggability, when mouse scroll is activated, links will be disabled.', 'fusion-builder' ),
+						'param_name'  => 'mouse_scroll',
+						'value'       => array(
+							'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+							'no'  => esc_attr__( 'No', 'fusion-builder' ),
+						),
+						'default'     => 'no',
+					),
+					array(
+						'type'        => 'radio_button_set',
+						'heading'     => esc_attr__( 'Show Categories', 'fusion-builder' ),
+						'description' => esc_attr__( 'Choose to show or hide the categories.', 'fusion-builder' ),
+						'param_name'  => 'show_cats',
+						'value'       => array(
+							'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+							'no'  => esc_attr__( 'No', 'fusion-builder' ),
+						),
+						'default'     => 'yes',
+					),
+					array(
+						'type'        => 'radio_button_set',
+						'heading'     => esc_attr__( 'Show Price', 'fusion-builder' ),
+						'description' => esc_attr__( 'Choose to show or hide the price.', 'fusion-builder' ),
+						'param_name'  => 'show_price',
+						'value'       => array(
+							'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+							'no'  => esc_attr__( 'No', 'fusion-builder' ),
+						),
+						'default'     => 'yes',
+					),
+					array(
+						'type'        => 'radio_button_set',
+						'heading'     => esc_attr__( 'Show Buttons', 'fusion-builder' ),
+						'description' => esc_attr__( 'Choose to show or hide the icon buttons.', 'fusion-builder' ),
+						'param_name'  => 'show_buttons',
+						'value'       => array(
+							'yes' => esc_attr__( 'Yes', 'fusion-builder' ),
+							'no'  => esc_attr__( 'No', 'fusion-builder' ),
+						),
+						'default'     => 'yes',
+					),
+					array(
+						'type'        => 'checkbox_button_set',
+						'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
+						'param_name'  => 'hide_on_mobile',
+						'value'       => fusion_builder_visibility_options( 'full' ),
+						'default'     => fusion_builder_default_visibility( 'array' ),
+						'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
+					),
+					array(
+						'type'        => 'textfield',
+						'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+						'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+						'param_name'  => 'class',
+						'value'       => '',
+						'group'       => esc_attr__( 'General', 'fusion-builder' ),
+					),
+					array(
+						'type'        => 'textfield',
+						'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
+						'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
+						'param_name'  => 'id',
+						'value'       => '',
+						'group'       => esc_attr__( 'General', 'fusion-builder' ),
+					),
 				),
-				array(
-					'type'        => 'checkbox_button_set',
-					'heading'     => esc_attr__( 'Element Visibility', 'fusion-builder' ),
-					'param_name'  => 'hide_on_mobile',
-					'value'       => fusion_builder_visibility_options( 'full' ),
-					'default'     => fusion_builder_default_visibility( 'array' ),
-					'description' => esc_attr__( 'Choose to show or hide the element on small, medium or large screens. You can choose more than one at a time.', 'fusion-builder' ),
-				),
-				array(
-					'type'        => 'textfield',
-					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-					'param_name'  => 'class',
-					'value'       => '',
-					'group'       => esc_attr__( 'General', 'fusion-builder' ),
-				),
-				array(
-					'type'        => 'textfield',
-					'heading'     => esc_attr__( 'CSS ID', 'fusion-builder' ),
-					'description' => esc_attr__( 'Add an ID to the wrapping HTML element.', 'fusion-builder' ),
-					'param_name'  => 'id',
-					'value'       => '',
-					'group'       => esc_attr__( 'General', 'fusion-builder' ),
-				),
-			),
-		) );
+			)
+		);
 	}
 }
 add_action( 'wp_loaded', 'fusion_element_products_slider' );

@@ -93,8 +93,8 @@ class Fusion_Icon {
 		$directions = array(
 			'/up$/i',
 			'/down$/i',
-			'
-			/left$/i', '/right$/i',
+			'/left$/i',
+			'/right$/i',
 		);
 		$directions_format = array( '(Up)', '(Down)', '(Left)', '(Right)' );
 		$name = preg_replace( $directions, $directions_format, $name );

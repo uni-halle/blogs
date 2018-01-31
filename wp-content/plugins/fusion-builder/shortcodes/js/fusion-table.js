@@ -1,9 +1,10 @@
+/* global TableShortcodeHandler, FusionPageBuilderApp */
 jQuery( document ).ready( function() {
 
 	// Table handler
-	TableShortcodeHandler = jQuery( '#fusion_table_type, #fusion_table_columns' );
+	TableShortcodeHandler = jQuery( '#fusion_table_type, #fusion_table_columns' ); // jshint ignore:line
 
-	TableShortcodeHandler.live( 'change', function( e ) {
+	TableShortcodeHandler.live( 'change', function( e ) { // jshint ignore:line
 		var types = new Array(
 				'',
 				'table-1',

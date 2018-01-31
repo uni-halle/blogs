@@ -103,29 +103,31 @@ if ( fusion_is_element_enabled( 'fusion_menu_anchor' ) ) {
  * @since 1.0
  */
 function fusion_element_menu_anchor() {
-	fusion_builder_map( array(
-		'name'              => esc_attr__( 'Menu Anchor', 'fusion-builder' ),
-		'shortcode'         => 'fusion_menu_anchor',
-		'icon'              => 'fusiona-anchor',
-		'preview'           => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-menu-anchor-preview.php',
-		'preview_id'        => 'fusion-builder-block-module-menu-anchor-preview-template',
-		'params'            => array(
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'Name', 'fusion-builder' ),
-				'param_name'  => 'name',
-				'value'       => '',
-				'description' => esc_attr__( 'This name will be the id you will have to use in your one page menu.', 'fusion-builder' ),
-			),
-			array(
-				'type'        => 'textfield',
-				'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
-				'param_name'  => 'class',
-				'value'       => '',
-				'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
-			),
+	fusion_builder_map(
+		array(
+			'name'              => esc_attr__( 'Menu Anchor', 'fusion-builder' ),
+			'shortcode'         => 'fusion_menu_anchor',
+			'icon'              => 'fusiona-anchor',
+			'preview'           => FUSION_BUILDER_PLUGIN_DIR . 'inc/templates/previews/fusion-menu-anchor-preview.php',
+			'preview_id'        => 'fusion-builder-block-module-menu-anchor-preview-template',
+			'params'            => array(
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'Name', 'fusion-builder' ),
+					'param_name'  => 'name',
+					'value'       => '',
+					'description' => esc_attr__( 'This name will be the id you will have to use in your one page menu.', 'fusion-builder' ),
+				),
+				array(
+					'type'        => 'textfield',
+					'heading'     => esc_attr__( 'CSS Class', 'fusion-builder' ),
+					'param_name'  => 'class',
+					'value'       => '',
+					'description' => esc_attr__( 'Add a class to the wrapping HTML element.', 'fusion-builder' ),
+				),
 
-		),
-	) );
+			),
+		)
+	);
 }
 add_action( 'fusion_builder_before_init', 'fusion_element_menu_anchor' );
