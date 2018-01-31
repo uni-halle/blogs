@@ -1,3 +1,4 @@
+/*
 (function($) {
 function faq() {
 	 var hide = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAD1BMVEX////d3d2ampqxsbF5eXmCtCYvAAAAAXRSTlMAQObYZgAAADBJREFUeF6dzNEJACAMA1HdINQJCp1Ebv+ZlLYLaD4f4cbnDNi6MAO8KCHJ+7X02j3mzgMQe93HcQAAAABJRU5ErkJggg==';
@@ -33,25 +34,28 @@ $(document).ready(function() {
  faq();
 });
 })( jQuery );
+*/
 
 jQuery(document).ready(function ($) {
   var toggle_speed = 100;
  
-  $('.menu > li > a').click(function(){
+  $('.menu > li > a[href="#"]').click(function(){
     if ($(this).attr('class') != 'active'){
       $('.menu li ul').slideUp(toggle_speed);
       $(this).next().slideToggle(toggle_speed);
       $('.menu li a').removeClass('active');
       $(this).addClass('active');
+      return false;
     }
   });
  
-  $('.sub-menu > li > a').click(function(){
+  $('.sub-menu > li > a[href="#"]').click(function(){
     if ($(this).attr('class') != 'active'){
       $('.sub-menu li ul').slideUp(toggle_speed);
       $(this).next().slideToggle(toggle_speed);
       $('.menu li a').removeClass('active');
       $(this).addClass('active');
+      return false;
     }
   });
  
@@ -59,3 +63,12 @@ jQuery(document).ready(function ($) {
   $(".current-menu-item").children(".sub-menu").slideDown(toggle_speed);
 });
 
+jQuery( document ).ready( function(){
+	jQuery( '.lesen_titel_klasse' ).
+	click( function(){
+		jQuery( this ).
+		parent().
+		children( '.lesen_text_klasse' ).
+		slideToggle();
+	});
+});

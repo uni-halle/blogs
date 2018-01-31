@@ -10,12 +10,14 @@
 $Bsb4Design = new \BootstrapBasic4\Bsb4Design();
 ?> 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<!--
     <div class="entry-meta"> 
     	<span style="float:right">      
 	        <div class="klein"><?php if($format = get_the_term_list( $post->ID, 'format', ' ', ', ' )):?><?=$format?> <?php endif ?></div>
 	    </span>
    </div> 
        <br>
+-->
     <header class="entry-header"> 
     <h1 class="entry-title">
 	       <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a> 
@@ -36,16 +38,22 @@ $Bsb4Design = new \BootstrapBasic4\Bsb4Design();
             </span>
             <?php } // End if categories ?> 
 			<div class="klein">
-				<i class="fa fa-info-circle" aria-hidden="true" title="Basis-Info"> </i>
+				<?php 	$schulform = get_field('schulform');
+								$klasse = get_field('klasse');
+								$fach = get_field('fach');
+								$einrichtung = get_field('einrichtung');
+								$handlungsfeldau = get_field('handlungsfeld-au');
+								$handlungsfeldkj = get_field('handlungsfeld-kj');
+								$handlungsfeldeb = get_field('handlungsfeld-eb');
+								if( $schulform or $klasse or $fach or $einrichtung or $handlungsfeldau or $handlungsfeldkj or $handlungsfeldeb): ?>
+							<i class="fa fa-info-circle" aria-hidden="true" title="Basis-Info"> </i><?php endif ?>
 					<?php if($schulform = get_the_term_list( $post->ID, 'schulform', '', ', ' )):?><?=$schulform?> | <?php endif ?>
 					<?php if($klasse = get_the_term_list( $post->ID, 'klasse', 'Klasse ', ', ' )):?><?=$klasse?> | <?php endif ?>
 					<?php if($fach = get_the_term_list( $post->ID, 'fach', '', ', ' )):?><?=$fach?><?php endif ?>
 					<?php if($einrichtung = get_the_term_list( $post->ID, 'einrichtung', '', ', ' )):?><?=$einrichtung?> | <?php endif ?>
  					<?php if($handlungsfeldau = get_the_term_list( $post->ID, 'handlungsfeld-au', '', ', ' )):?><?=$handlungsfeldau?> <?php endif ?> 
  					<?php if($handlungsfeldkj = get_the_term_list( $post->ID, 'handlungsfeld-kj', '', ', ' )):?><?=$handlungsfeldkj?> <?php endif ?> 
- 					<?php if($handlungsfeldeb = get_the_term_list( $post->ID, 'handlungsfeld-eb', '', ', ' )):?><?=$handlungsfeldeb?> <?php endif ?> 
-					
-				<br />
+ 					<?php if($handlungsfeldeb = get_the_term_list( $post->ID, 'handlungsfeld-eb', '', ', ' )):?><?=$handlungsfeldeb?> <?php endif ?> 					
 			</div>
         </div><!-- .entry-meta -->
         <?php endif ?>

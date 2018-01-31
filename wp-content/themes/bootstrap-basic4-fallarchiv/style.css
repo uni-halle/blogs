@@ -13,8 +13,10 @@
 */
 
 
-
-/* expliziter include der eltern-css AFAIK nicht mehr nötig :D */
+html { 
+	overflow: scroll;
+	overflow-x: auto;
+}
 body {
 /* 	font-family: 'Open Sans', sans-serif; */
 	font-family: 'Source Sans Pro', sans-serif;
@@ -22,34 +24,39 @@ body {
 	font-size: 1rem;
 	background-color: #f8f8f8; 
 }
-/*
+
 p {
-	font-family: 'Lora', serif;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
-*/
-.h1, h1 {
-    font-size: 1.5rem;
-}
-.h4, h4 {
-    font-size: 1rem;
-    letter-spacing: 0.1em;
-}
-.h5, h5 {
-    font-size: 0.9rem;
-    text-transform: none;
-    letter-spacing: 0.1em;
-    font-weight: 300;
-}
-.h6, h6 {
-    font-size: 0.8rem;
-    text-transform: none;
-    font-weight: 300;
-}
+
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4 {
     font-family: inherit;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
 	font-weight: 300;
+}
+
+.h1, h1 {
+    font-size: 1.5rem;
+}
+.h4, h4 {
+    font-size: 1.1rem;
+    text-transform: none;
+    letter-spacing: 0.1em;
+    margin-top:20px;
+    font-weight: 500;
+}
+.h5, h5 {
+    font-size: 1rem;
+    text-transform: none;
+    letter-spacing: 0.1em;
+    font-weight: 300;
+}
+.h6, h6 {
+    font-size: 0.9rem;
+    text-transform: none;
+    font-weight: 300;
 }
 a {
 	color: #568923;
@@ -73,6 +80,9 @@ a:hover {
 .site-branding {
 	background-color: #fff;
 	padding: 20px 20px 10px 20px;
+	border-bottom: 1px #dddddd solid;
+	border-left: 1px solid #dddddd;
+	border-right: 1px solid #dddddd;
 }
 .site-title {
 	margin-top: 0;
@@ -100,7 +110,7 @@ a:hover {
 	margin-bottom: 0;
 }
 .page-header {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 .klein {
 	font-size: 0.8em;
@@ -117,19 +127,38 @@ a:hover {
 	background-color: #eee;
 }
 li {
-	list-style: none;
+/* 	list-style: none; */
+}
+.site-footer li {
+	display: inline;
+	margin: 0 20px;
 }
 ul {
-	padding: 0;
+	padding: 0 0 0 20px;
 	margin-bottom: 0;
 }
+.site-footer ul {
+	text-align: center;
+}
+.site-footer {
+	font-size: 1.2em;
+	background-color: #f8f8f8;
+	border: none;
+/*
+	border-top: 1px solid #dddddd;
+	border-left: 1px solid #dddddd;
+	border-right: 1px solid #dddddd;
+*/
+}
+
 .table {
 	margin-bottom: 0;
 }
 
 .main-navigation{
-	border-top: 1px solid #aaa;
-	border-bottom: 1px solid #aaa;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
 }
 .page-title {
 	font-size: 1em;
@@ -290,7 +319,7 @@ nav:after {
 nav li {
     float: left;
     list-style: none;
-    margin: 0 0 0 20px;
+    margin: 0 20px 0 20px;
     padding: 0;
     position: relative;
 }
@@ -419,3 +448,68 @@ nav ul ul span {
 	margin-top: 20px;
 }
 */
+td, th {
+    border-bottom: none;
+    }
+div.table { 
+      display: table; 
+      border-collapse:collapse; 
+      width:100%;
+    }
+div.tr { 
+      display:table-row; 
+    }
+div.td { 
+      display:table-cell; 
+      padding:10px 25px 0px 0; 
+    }
+div.td30 { 
+      display:table-cell; 
+      padding:10px 25px 0px 0; 
+      width:30%;
+    }
+div.td50 { 
+      display:table-cell; 
+      padding:10px 25px 0px 0; 
+      width:50%;
+    }
+.page-title {
+	text-align: center;
+	font-size: 1.1rem;
+	text-transform: none;
+}
+.navbar-nav {
+	font-size: 1.4em;
+	color: rgba(86,137,35,1);
+}
+#menu-top-right {
+	font-size: 1.4em;
+}
+.nav-link {
+	color: rgba(86,137,35,1); 
+}
+.nav-link:hover {
+	color: rgba(86,137,35,1); 
+}
+.widget li {
+	list-style: none;
+}
+.lesen_klasse{
+	
+}
+
+.lesen_titel_klasse{
+	cursor:pointer;
+	padding-top: 10px;
+	margin-bottom: 8px;
+	border-bottom: 1px solid #ddd;
+	color: rgba(86,137,35,1); 
+}
+
+.lesen_text_klasse{
+	display:none;
+}
+
+.taxonomy-description {
+	padding-top: 1em;
+}

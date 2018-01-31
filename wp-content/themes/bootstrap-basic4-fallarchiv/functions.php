@@ -43,14 +43,6 @@
 
 		register_post_type( 'interpretation', $args );
 		}
-		
-		register_taxonomy('auswertungsmethode','interpretation',array(
-        	'hierarchical' => true,
-			'label' => 'Auswertungsmethode',
-			'query_var' => true,
-			'rewrite' => true
-			)
-		);
 
 	add_action( 'init', 'cpt_interpretation', 0 );
 	
@@ -200,6 +192,13 @@ function build_taxonomies() {
 			'meta_box_cb' => false
 			)
 		);
+	register_taxonomy('auswertungsmethode','interpretation',array(
+        	'hierarchical' => true,
+			'label' => 'Auswertungsmethode',
+			'query_var' => true,
+			'rewrite' => true
+			)
+		);
    	}
 
 /*** entfernt überflüssige Beitrags-Optionen  ***/
@@ -327,7 +326,34 @@ function mein_feld(){
 	return $string;
 }
 
+add_shortcode('lesen_kuerzel', 'lesen_funktion');
+function lesen_funktion( $attr, $content) {
+	$string = '<div class="lesen_klasse">';
+	$string .= '<p class="lesen_titel_klasse">';
+	$string .= $attr['titel'];
+	$string .='</p><div class="lesen_text_klasse">';
+	$string .= $content;
+	$string .='</div></div>';
+	return $string;
+}
 
+/*
+add_action( 'wp_enqueue_scripts', 'lesen_skripte' );
+function lesen_skripte() {
+	$plugin_url = plugins_url( '/', __FILE__ );
+	wp_enqueue_style(
+		'lesen-style',
+		$plugin_url . 'style.css'
+	);
+	wp_enqueue_script(
+		'lesen-script',
+		$plugin_url . 'script.js',
+		array( 'jquery' ),
+		'1.0.0',
+		true
+	);
+}
+*/
 
 
 /*

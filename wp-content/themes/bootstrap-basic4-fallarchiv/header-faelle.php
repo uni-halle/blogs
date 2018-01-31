@@ -24,16 +24,14 @@
         <div class="container page-container">
             <header class="page-header page-header-sitebrand-topbar">
                 <div class="row row-with-vspace site-branding">
-<!--
-	             <div class="col-6"><a href="<?php echo esc_url(home_url('/')); ?>/kategorie/schule-unterricht">zum Fallarchiv</a>
+	                 <div class="col-6"><!-- <a href="<?php echo esc_url(home_url('/')); ?>/kategorie/schule-unterricht">zum Fallarchiv</a> -->
                 </div>
                 <div class="col-6"><a href="<?php echo esc_url(home_url('/')); ?>/redaktionelles" class="rechts">zum Methodenbaukasten</a>
 
                 </div>
--->
                     <div class="col-md-12 site-title">
                         <h1 class="site-title-heading">
-                            <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><?php bloginfo('name'); ?></a>
+                            <a href="<?php echo esc_url(home_url('/')); ?>/kategorie/schule-unterricht">FALLARCHIV</a>
                         </h1>
                         <div class="site-description">
                             <small>
@@ -55,7 +53,7 @@
                     </div>
 -->
                 </div><!--.site-branding-->
-
+<!--
                 <div class="row main-navigation">
                     <div class="col-md-12">
                         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -71,7 +69,7 @@
                                         'theme_location' => 'primary', 
                                         'container' => false, 
                                         'menu_class' => 'navbar-nav mr-auto', 
-//                                         'walker' => new \BootstrapBasic4\BootstrapBasic4WalkerNavMenu()
+                                        'walker' => new \BootstrapBasic4\BootstrapBasic4WalkerNavMenu()
                                     )
                                 ); 
                                 ?> 
@@ -84,7 +82,7 @@
                         </nav>
                     </div>
                 </div>
-
+-->
             </header><!--.page-header-->
 
 

@@ -37,9 +37,17 @@ get_sidebar('left');
 						<span class="cat-links">
 							<?php $Bsb4Design->categoriesList($categories_list); ?> 
 						</span>
-							<?php } // End if categories ?>   
-						<div class="klein">
-							<i class="fa fa-info-circle" aria-hidden="true" title="Basis-Info"> </i>
+							<?php } // End if categories ?>  
+						<div class="klein"> 
+						<?php 	$schulform = get_field('schulform');
+								$klasse = get_field('klasse');
+								$fach = get_field('fach');
+								$einrichtung = get_field('einrichtung');
+								$handlungsfeldau = get_field('handlungsfeld-au');
+								$handlungsfeldkj = get_field('handlungsfeld-kj');
+								$handlungsfeldeb = get_field('handlungsfeld-eb');
+								if( $schulform or $klasse or $fach or $einrichtung or $handlungsfeldau or $handlungsfeldkj or $handlungsfeldeb): ?>
+							<i class="fa fa-info-circle" aria-hidden="true" title="Basis-Info"> </i><?php endif ?> 
 							<?php if($schulform = get_the_term_list( $post->ID, 'schulform', '', ', ' )):?><?=$schulform?> | <?php endif ?>
 							<?php if($klasse = get_the_term_list( $post->ID, 'klasse', 'Klasse ', ', ' )):?><?= $klasse?> | <?php endif ?>
 							<?php if($fach = get_the_term_list( $post->ID, 'fach', '', ', ' )):?><?=$fach?> | <?php endif ?>
@@ -47,15 +55,15 @@ get_sidebar('left');
 							<?php if($handlungsfeldau = get_the_term_list( $post->ID, 'handlungsfeld-au', '', ', ' )):?><?=$handlungsfeldau?> <?php endif ?> 
 							<?php if($handlungsfeldkj = get_the_term_list( $post->ID, 'handlungsfeld-kj', '', ', ' )):?><?=$handlungsfeldkj?> <?php endif ?> 
 							<?php if($handlungsfeldeb = get_the_term_list( $post->ID, 'handlungsfeld-eb', '', ', ' )):?><?=$handlungsfeldeb?> <?php endif ?> 
+							 
 							
-							<br />
 						</div>
-	            </div> 
+	            </div>  <hr />
 				<?php endif ?>
-	            <hr />
+	           
 <!-- 	  Kurztext (Eingabe in Standard-Editor) -->
 				<?php the_content($Bsb4Design->continueReading(true)); ?> 
-			<hr>	
+				
 <!--	 Kategorie + Tags -->   
 		    <div class="entry-meta">
 				<?php if ('post' == get_post_type()) { // Hide category and tag text for pages on Search ?> 
@@ -65,6 +73,7 @@ get_sidebar('left');
 						$tags_list = get_the_tag_list('', __(', ', 'bootstrap-basic4'));
 						if ($tags_list) {
             			?>
+            			<hr>
 						<span class="tags-links">
 							<?php $Bsb4Design->tagsList($tags_list); ?> 
 						</span>
@@ -78,13 +87,14 @@ get_sidebar('left');
 				<?php if($werhandeltsch = get_the_term_list( $post->ID, 'werhandelt-sch', '<i class="fa fa-user-circle" aria-hidden="true" title="handelnde Personen"></i> ', ', ' )):?><?=$werhandeltsch?><?php endif ?>
 				<?php if($werhandeltkj = get_the_term_list( $post->ID, 'werhandelt-kj', '<i class="fa fa-user-circle" aria-hidden="true" title="handelnde Personen"></i> ', ', ' )):?><?=$werhandeltkj?><?php endif ?>
 				<?php if($werhandelteb = get_the_term_list( $post->ID, 'werhandelt-eb', '<i class="fa fa-user-circle" aria-hidden="true" title="handelnde Personen"></i> ', ', ' )):?><?=$werhandelteb?><?php endif ?>
+				<?php if($sozialform or $werhandeltsch or $werhandeltkj or $werhandelteb):?><hr /><?php endif ?>
 				<?php endif ?>	
 			</div>	
 <!--
 		<div class="klein"><i class="fa fa-file" aria-hidden="true" title="Format/e"> </i><?php if($format = get_the_term_list( $post->ID, 'format', ' ', ', ' )):?><?=$format?> <?php endif ?></div>
 -->
 		</div> 	<!-- .entry-meta --> 
-		<hr />
+		
 <!--      Inhalt  -->  
 		<?php if( !post_password_required( $post )): ?>
 			<div id="accordion" role="tablist" aria-multiselectable="true">
@@ -247,10 +257,7 @@ get_sidebar('left');
 				<?php endif ?>	
 				<br>	
 
-<!-- 	  Interpretationen / zusammenhängende Fälle -->
-<!-- <h4><br />Diskussion</h4> -->
-
-
+<!-- 	  Interpretationen  -->
 			<?php $interpretation = get_field('interpretation');
 				if( $interpretation ): ?>
 			
@@ -313,6 +320,7 @@ get_sidebar('left');
 				</div>
 				<?php endif;?>
 <!-- Kommentare -->	
+			<?php if (comments_open()):?>
 				<div class="card">		
 					<div class="card-header" role="tab" id="heading3c">
 						<h5><i class="fa fa-caret-down" aria-hidden="true"> </i>
@@ -334,10 +342,13 @@ get_sidebar('left');
 						</div>
 	                 </div>
 				</div>
-			
+			<?php endif;?>
 <!-- Hintergrund-Info -->
-<!-- 		<h4><br />Hintergrund</h4> -->
-		<!-- Autor -->
+					<?php $autor = get_field('autor');
+						$erhebungskontext = get_field('erhebungskontext');
+						$erhebungsmethode = get_field('erhebungsmethode');
+						$notizen_fall = get_field('notizen-fall');
+					if( $autor or $erhebungskontext or $erhebungsmethode or $notizen_fall): ?>
 				<div class="card">		
 					<div class="card-header" role="tab" id="heading4a">
 						<br />
@@ -383,6 +394,7 @@ get_sidebar('left');
 	          			</div>
 				  	</div>
 				</div>		
+				<?php endif;?>
 		<!-- Redaktion 
 	    		<div class="card">		
 					<div class="card-header" role="tab" id="headingSix">
