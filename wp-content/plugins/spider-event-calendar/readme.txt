@@ -1,19 +1,20 @@
-=== Calendar by WD - Responsive Event Calendar for WordPress ===  
-Contributors: webdorado, wdsupport  
-Donate link: https://web-dorado.com/products/wordpress-calendar.html  
-Tags: calendar, date, event, event calendar, events, events calendar, meeting, organizer, recurring, reservation, responsive, schedule, calendars, event manager, calendar widget, event registration, event management, agenda,  holiday calendar , scheduling, free calendar, Calender, upcoming events , event widget , event list, calendar localization, editorial calendar, Interactive Calendar, news calendar, appointment, event tracking, event organizer, upcoming events widget, event page, event bookings, recurring events, conference, dates, times, venue, responsive calendar, seminar, summit, facebook integration, widget, online calendar, calendar shortcode, events list, custom calendar, google calendar, event subscription, ical, facebook event calendar, event filter, calendar manager, online reservation, booking calendar, event booking, reservation calendar, customizable calendar, upcoming events calendar, events feed, event ticketing, rsvp, tickets, bookings 
+=== Calendar by WD - Responsive Event Calendar ===  
+Contributors: webdorado, wdsupport, 10web  
+Tags: calendar, event, event calendar, events, events calendar, calendars, event manager, calendar widget,  event management,  free calendar, Calender, upcoming events
 Requires at least: 3.4  
 Tested up to: 4.9   
-Stable tag: 1.5.56
+Stable tag: 1.5.57
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
 Event Calendar by WD is a responsive calendar plugin for organizing events. This calendar calendar lets you manage and publish unlimited event calendars on your site.
 
-== Description ==    
+== Description ==   
+[Special offer: Try Spider Event Calendar premium and 60+ other plugins for free at 10Web](https://10web.io/plugins/wordpress-spider-calendar/)  
+10Web is a new platform from WebDorado
+
 WordPress event calendar is a FREE user-friendly responsive calendar plugin to manage multiple recurring events and various display options. This free calendar plugin makes event registration and events management easy and lets you display beautiful responsive calendars, upcoming events and calendar widget. It’s perfect for websites organising seminars,summits, conferences, concerts,meetings, who want to have it displayed in an attractive calendar.   
 
-[Special Offer for all Premium Plugins](https://web-dorado.com/wordpress-plugins-bundle.html)   
 [WordPress Calendar](https://web-dorado.com/products/wordpress-calendar.html)  
 [Demo](http://wpdemo.web-dorado.com/spider-calendar/)  
 [Demo Admin](http://wpdemo.web-dorado.com/wp-admin/admin.php?page=SpiderCalendar)  
@@ -152,8 +153,11 @@ Vietnamese (vi)
 
 == Changelog ==
 
+= 1.5.57 =
+Changed: Deactivation popup   
+
 = 1.5.56 =
-* Changed: Web-Dorado links   
+Changed: Web-Dorado links   
 
 = 1.5.55 =
 Fixed: Load admin styles only on calendar pages   

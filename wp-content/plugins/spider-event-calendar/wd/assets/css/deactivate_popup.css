@@ -1,3 +1,7 @@
+.wd-bwg-reasons:nth-child(3) {
+  display: none;
+}
+
 .wd-opacity{
 	position: fixed;
     top: 0px;

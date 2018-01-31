@@ -31,13 +31,6 @@
                     <div class="deal_desc">
                         <p><?php echo $plugin["content"]; ?></p>
                         <div class="deal_desc_footer">
-                            <!--<div class="downloads">
-                                <div class="rating" data-rating="<?php echo $plugin["rating"]; ?>"></div>
-                                <div class="spans">
-                                    <span><?php _e( "Downloads", $wd_options->prefix ); ?></span>
-                                    <span><?php echo number_format($plugin["downloaded"], 0); ?></span>
-                                </div>
-                            </div>-->
                             <div class="download_btn">
                                 <a href="<?php echo $plugin["href"]; ?>" target="_blank" ><?php _e( "Download", $wd_options->prefix ); ?></a>
                             </div>

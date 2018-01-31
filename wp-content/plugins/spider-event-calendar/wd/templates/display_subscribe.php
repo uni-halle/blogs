@@ -8,7 +8,7 @@
 			<div class="texts">
 				<p><?php _e( "Hi there", $wd_options->prefix ); ?>,</p>
 				<p>
-					<?php echo sprintf( __( "Allow %s to collect some usage data. This will allow  you to get more out of your plugin experience – get awesome customer support, receive exclusive deals and discounts on  premium products and more. You can choose to skip this step, %s will still work just fine.", $wd_options->prefix ), '<strong>Web-Dorado</strong>', $wd_options->plugin_title ); ?>
+					<?php echo sprintf( __( "Allow %s to collect some usage data. This will allow  you to get more out of your plugin experience - get awesome customer support, receive exclusive deals and discounts on premium products and more. You can choose to skip this step, %s will still work just fine.", $wd_options->prefix ), '<strong>Web-Dorado</strong>', $wd_options->plugin_title ); ?>
 				</p>
 			</div>
 			<div class="btns">

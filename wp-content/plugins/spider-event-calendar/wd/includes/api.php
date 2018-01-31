@@ -55,7 +55,7 @@
 		public function get_hash(){
 			$response = wp_remote_get("https://api.web-dorado.com/hash/" . $_SERVER['REMOTE_ADDR'] . "/" . $_SERVER['HTTP_HOST']);
 			
-			$response_body = isset($response["body"]) ? json_decode($response["body"], true) : null;
+			$response_body = ( !is_wp_error($response) && isset($response["body"])) ? json_decode($response["body"], true) : null;
 			
 			if(is_array($response_body)){
 				$hash = $response_body["body"]["hash"];

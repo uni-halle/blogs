@@ -20,7 +20,7 @@ var btnVal = 3;
 // Public Methods                                                                     //
 ////////////////////////////////////////////////////////////////////////////////////////
 function wdReady(prefix){
-	
+
 	jQuery(document).on("click", "." + window[prefix + "WDDeactivateVars"].deactivate_class, function(){
 		jQuery(".wd-" + prefix + "-opacity").show();
 		jQuery(".wd-" + prefix  + "-deactivate-popup").show();
@@ -32,6 +32,7 @@ function wdReady(prefix){
 	});
 	
 	jQuery(document).on("change", "[name=" + prefix + "_reasons]", function(){	
+
 		jQuery("." + prefix +  "_additional_details_wrap").html("");
 		jQuery(".wd-" + prefix + "-deactivate-popup").removeClass("wd-popup-active1 wd-popup-active2");
 		if(jQuery(this).val() == "reason_plugin_is_hard_to_use_technical_problems"){
@@ -80,6 +81,7 @@ function wdReady(prefix){
 	jQuery(document).on("click", ".wd-" + prefix + "-deactivate", function(){
 		jQuery(".wd-deactivate-popup-opacity-" + prefix).show();
 		if(jQuery(this).hasClass("wd-clicked") == false){
+			jQuery(this).addClass("wd-clicked");
 			jQuery("[name=" + prefix + "_submit_and_deactivate]").val(jQuery(this).attr("data-val"));
 			jQuery("#" + prefix + "_deactivate_form").submit();			
 		} 
@@ -93,6 +95,7 @@ function wdReady(prefix){
 	});
 
 }
+
 ////////////////////////////////////////////////////////////////////////////////////////
 // Getters & Setters                                                                  //
 ////////////////////////////////////////////////////////////////////////////////////////

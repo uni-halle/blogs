@@ -4,6 +4,24 @@ add_action( 'wp_print_scripts', 'cal_scripts' );
 
 function  cal_scripts(){
   global $wd_spider_calendar_version;
+  $spider_cal_pages = array(
+    'toplevel_page_SpiderCalendar',
+    'calendar_page_spider_calendar_event_category',
+    'calendar_page_spider_calendar_themes',
+    'calendar_page_spider_widget_calendar_themes',
+    'calendar_page_calendar_export',
+    'calendar_page_Spider_calendar_Licensing',
+    'calendar_page_Uninstall_sp_calendar',
+    'calendar_page_overview_sp_calendar'
+  );
+
+  if(function_exists('get_current_screen')) {
+    $current_screen = get_current_screen();
+    if(is_admin() && !in_array($current_screen->id, $spider_cal_pages)) {
+      return;
+    }
+  }
+
   wp_enqueue_script("Calendar", plugins_url("elements/calendar.js", __FILE__), array(), $wd_spider_calendar_version, FALSE);
   wp_enqueue_script("calendar-setup", plugins_url("elements/calendar-setup.js", __FILE__), array(), $wd_spider_calendar_version, FALSE);
   wp_enqueue_script("calendar_function", plugins_url("elements/calendar_function.js", __FILE__), array(), $wd_spider_calendar_version, FALSE);
