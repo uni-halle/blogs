@@ -3,8 +3,8 @@ Contributors: edo888
 Author: Translate AI Multilingual Solutions
 Tags: translate wordpress, multilingual, translate, translation, language, bilingual, localization, translation proxy, i18n, l10n, localisation, multilanguage, google translate
 Requires at least: 2.8.1
-Tested up to: 4.8
-Stable tag: 2.8.32
+Tested up to: 4.9
+Stable tag: 2.8.35
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
@@ -79,8 +79,6 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 
 **Edit Translations Demo (paid)**
 [youtube https://www.youtube.com/watch?v=YwSy3VtQx3I]
-
-Keywords: translate wordpress, wordpress translator, translate, translator, translation, machine translate, wp translate, ajax translate, bilingual, multilanguage, multilingual, i18n, localization, l10n, tradurre, traducir, traduire, traduzione, ubersetzung, mehrsprachig, oversette, oversatta, vertaling, vertaler, meertalig
 
 List of supported languages: Afrikaans, Albanian, Amharic, Arabic, Armenian, Azerbaijani, Basque, Belarusian, Bengali, Bosnian, Bulgarian, Catalan, Cebuano, Chichewa, Chinese (Simplified), Chinese (Traditional), Corsican, Croatian, Czech, Danish, Dutch, English, Esperanto, Estonian, Filipino, Finnish, French, Frisian, Galician, Georgian, German, Greek, Gujarati, Haitian Creole, Hausa, Hawaiian, Hebrew, Hindi, Hmong, Hungarian, Icelandic, Igbo, Indonesian, Irish, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Kurdish (Kurmanji), Kyrgyz, Lao, Latin, Latvian, Lithuanian, Luxembourgish, Macedonian, Malagasy, Malay, Malayalam, Maltese, Maori, Marathi, Mongolian, Myanmar (Burmese), Nepali, Norwegian, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Samoan, Scottish Gaelic, Serbian, Sesotho, Shona, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sudanese, Swahili, Swedish, Tajik, Tamil, Telugu, Thai, Turkish, Ukrainian, Urdu, Uzbek, Vietnamese, Welsh, Xhosa, Yiddish, Yoruba, Zulu
 
@@ -220,6 +218,19 @@ You need to go to the language you want to edit, for instance, French: http://do
 7. Settings page
 
 == Changelog ==
+
+= 2.8.35 =
+* Admin notice added for conflicting plugins
+* Disabled translation of non-selected languages when accessed directly in sub-directory URL structure mode
+* Update to WordPress 4.9.1 before updating GTranslate
+* Fixed update issue related to bug in new WP 4.9 flatten_dirlist function
+
+= 2.8.34 =
+* Non-stable: Fixed update issue related to bug in new WP 4.9 flatten_dirlist function. Important: If you are using Globe widget look, make sure to open GTranslate settings page, click "Reset Code to Default" under Widget Code section and Save.
+
+= 2.8.33 =
+* Fixed issue related to new version of Contact Form 7
+* Ready for WordPress 4.9
 
 = 2.8.32 =
 * New feature: auto switch language based on browser language settigns

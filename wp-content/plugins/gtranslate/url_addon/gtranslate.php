@@ -89,8 +89,18 @@ if(isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
 //print_r($request_headers);
 //exit;
 
-if(isset($request_headers['Content-Type']) and strpos($request_headers['Content-Type'], 'multipart/form-data;') !== false)
+if(isset($request_headers['content-type'])) {
+    $request_headers['Content-Type'] = $request_headers['content-type'];
+    unset($request_headers['content-type']);
+}
+
+if(isset($request_headers['Content-Type']) and strpos($request_headers['Content-Type'], 'multipart/form-data;') !== false) {
     $request_headers['Content-Type'] = 'multipart/form-data'; // remove boundary
+    $request_headers['Content-Length'] = '';
+
+    if(isset($request_headers['content-length']))
+        unset($request_headers['content-length']);
+}
 
 $headers = array();
 foreach($request_headers as $key => $val) {
