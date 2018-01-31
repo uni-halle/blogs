@@ -313,15 +313,23 @@ function em_init_actions() {
 				$EM_Booking->tickets_bookings = new EM_Tickets_Bookings();
 				$EM_Booking->tickets_bookings->booking = $EM_Ticket_Booking->booking = $EM_Booking;
 				$EM_Booking->tickets_bookings->add( $EM_Ticket_Booking );
-				//Now save booking
-				if( $EM_Event->get_bookings()->add($EM_Booking) ){
-					$result = true;
-					$EM_Notices->add_confirm( $EM_Event->get_bookings()->feedback_message );		
-					$feedback = $EM_Event->get_bookings()->feedback_message;	
+				$post_validation = $EM_Booking->validate();
+				do_action('em_booking_add', $EM_Event, $EM_Booking, $post_validation);
+				if( $post_validation ){
+					//Now save booking
+					if( $EM_Event->get_bookings()->add($EM_Booking) ){
+						$result = true;
+						$EM_Notices->add_confirm( $EM_Event->get_bookings()->feedback_message );		
+						$feedback = $EM_Event->get_bookings()->feedback_message;	
+					}else{
+						$result = false;
+						$EM_Notices->add_error( $EM_Event->get_bookings()->get_errors() );			
+						$feedback = $EM_Event->get_bookings()->feedback_message;	
+					}
 				}else{
 					$result = false;
-					$EM_Notices->add_error( $EM_Event->get_bookings()->get_errors() );			
-					$feedback = $EM_Event->get_bookings()->feedback_message;	
+					$EM_Notices->add_error( $EM_Booking->get_errors() );
+					$feedback = $EM_Event->get_bookings()->feedback_message;
 				}
 			}else{
 				$result = false;

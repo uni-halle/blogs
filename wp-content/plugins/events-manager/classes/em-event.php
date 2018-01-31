@@ -67,7 +67,7 @@ class EM_Event extends EM_Object{
 	var $event_start_date;
 	var $event_end_date;
 	var $post_content;
-	var $event_rsvp;
+	var $event_rsvp = 0;
 	var $event_rsvp_date;
 	var $event_rsvp_time = "00:00:00";
 	var $event_rsvp_spaces;
@@ -111,7 +111,7 @@ class EM_Event extends EM_Object{
 		'event_start_date' => array( 'name'=>'start_date', 'type'=>'%s', 'null'=>true ),
 		'event_end_date' => array( 'name'=>'end_date', 'type'=>'%s', 'null'=>true ),
 		'post_content' => array( 'name'=>'notes', 'type'=>'%s', 'null'=>true ),
-		'event_rsvp' => array( 'name'=>'rsvp', 'type'=>'%d', 'null'=>true ), //has a default, so can be null/excluded
+		'event_rsvp' => array( 'name'=>'rsvp', 'type'=>'%d' ),
 		'event_rsvp_date' => array( 'name'=>'rsvp_date', 'type'=>'%s', 'null'=>true ),
 		'event_rsvp_time' => array( 'name'=>'rsvp_time', 'type'=>'%s', 'null'=>true ),
 		'event_rsvp_spaces' => array( 'name'=>'rsvp_spaces', 'type'=>'%d', 'null'=>true ),
@@ -1497,6 +1497,7 @@ class EM_Event extends EM_Object{
 	 */	
 	function output($format, $target="html") {	
 		global $wpdb;
+		$format = do_shortcode($format); //parse shortcode first, so that formats within shortcodes are parsed properly
 	 	$event_string = $format;
 		//Time place holder that doesn't show if empty.
 		//TODO add filter here too

@@ -312,7 +312,8 @@ class EM_Bookings extends EM_Object implements Iterator{
 			$result_tickets = $wpdb->query("DELETE FROM ". EM_TICKETS_BOOKINGS_TABLE ." WHERE booking_id IN (SELECT booking_id FROM ".EM_BOOKINGS_TABLE." WHERE event_id = '$event_id')");
 			$result = $wpdb->query("DELETE FROM ".EM_BOOKINGS_TABLE." WHERE event_id = '$event_id'");
 		}else{
-			$result = $result_tickets == true;
+			//we have not bookings loaded to delete, nor an event to delete bookings from, so bookings are considered 'deleted' since there's nothing ot delete
+			$result = $result_tickets = true;
 		}
 		do_action('em_bookings_deleted', $result, $booking_ids);
 		return apply_filters('em_bookings_delete', $result !== false && $result_tickets !== false, $booking_ids, $this);
