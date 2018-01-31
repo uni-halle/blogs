@@ -980,6 +980,7 @@ SQL;
 
 				$time_start = microtime(true);
 
+				define('WP_IMPORTING', true);
 				update_option('fgj2wp_stop_import', false, false); // Reset the stop import action
 				
 				// To solve the issue of links containing ":" in multisite mode
@@ -1865,6 +1866,7 @@ SQL;
 				}
 			}
 			$old_filename = str_replace(" ", "%20", $old_filename); // for filenames with spaces
+			$old_filename = str_replace("&amp;", "&", $old_filename); // for filenames with &
 			
 			// Get the upload path
 			$upload_path = $this->upload_dir($filename, $date, get_option('uploads_use_yearmonth_folders'));
