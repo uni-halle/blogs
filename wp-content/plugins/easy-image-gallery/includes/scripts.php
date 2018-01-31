@@ -38,7 +38,7 @@ function easy_image_gallery_scripts() {
 	if ( easy_image_gallery_is_gallery() )
 		wp_enqueue_style( 'easy-image-gallery' );
 
-	$linked_images = easy_image_gallery_has_linked_images();
+	$linked_images = true;
 
 	// only load the JS if gallery images are linked or the featured image is linked
 	if ( $linked_images ) {
@@ -94,7 +94,7 @@ function easy_image_gallery_js() {
 	if ( ! easy_image_gallery_allowed_post_type() || ! easy_image_gallery_is_gallery() )
 		return;
 
-	if ( is_singular() && easy_image_gallery_has_linked_images() ) : ?>
+	if ( is_singular() ) : ?>
 
 		<?php
 
@@ -158,59 +158,10 @@ function easy_image_gallery_js() {
 add_action( 'wp_footer', 'easy_image_gallery_js', 20 );
 
 
-/**
- * CSS for admin
- *
- * @since 1.0
- */
-function easy_image_gallery_admin_css() { ?>
+function easy_image_gallery_admin_scripts() {
+    wp_enqueue_script( 'easy_image_gallery_jquery-ui', EASY_IMAGE_GALLERY_URL . 'includes/lib/jquery-ui.min.js' );
+    wp_enqueue_script( 'repeatable-fields', EASY_IMAGE_GALLERY_URL . 'includes/lib/repeatable-fields.js', array('jquery', 'easy_image_gallery_jquery-ui') );
+    wp_enqueue_style( 'easy_image_gallery_admin_css', EASY_IMAGE_GALLERY_URL . 'includes/css/easy-image-gallery-admin.css' );
+}
 
-	<style>
-		.attachment.details .check div {
-			background-position: -60px 0;
-		}
-
-		.attachment.details .check:hover div {
-			background-position: -60px 0;
-		}
-
-		.gallery_images .details.attachment {
-			box-shadow: none;
-		}
-
-		.eig-metabox-sortable-placeholder {
-			background: #DFDFDF;
-		}
-
-		.gallery_images .attachment.details > div {
-			width: 150px;
-			height: 150px;
-			box-shadow: none;
-		}
-
-		.gallery_images .attachment-preview .thumbnail {
-			 cursor: move;
-		}
-
-		.attachment.details div:hover .check {
-			display:block;
-		}
-
-        .gallery_images:after,
-        #gallery_images_container:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
-
-        .gallery_images > li {
-            float: left;
-            cursor: move;
-            margin: 0 20px 20px 0;
-        }
-
-        .gallery_images li.image img {
-            width: 150px;
-            height: auto;
-        }
-
-    </style>
-
-<?php }
-add_action( 'admin_head', 'easy_image_gallery_admin_css' );
+add_action( 'admin_head', 'easy_image_gallery_admin_scripts' );

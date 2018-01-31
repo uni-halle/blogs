@@ -2,8 +2,8 @@
 Contributors: devrix, nofearinc
 Tags: image gallery, image, galleries, simple, easy, devrix
 Requires at least: 3.5
-Tested up to: 4.7.1
-Stable tag: 1.2.1
+Tested up to: 4.9.2
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,9 @@ This plugin allows you to easily create an image gallery on any post, page or cu
 
 Features:
 
+1. Added the possibility to add two or more different galleries on one page
+1. Fixed image styles.
+1. Fixed some of PHP errors & bugs.
 1. Drag and drop re-ordering
 1. Add gallery to any post, page or custom post type
 1. If more than one image is added to the gallery, the images become grouped in the lightbox so you can easily view the next one
@@ -27,29 +30,30 @@ Features:
 1. Uses the thumbnail size specified in Settings -> Media
 1. Custom webfont icon for hover effect
 1. Uses the new WP 3.5+ media manager for a familiar and intuitive way to add your images
-1. WordPress 4.7 Ready
 
 = Usage =
 
-Galleries are automatically appended to the bottom of your post/page unless you use the shortcode below. Using the shortcode will give you finer control over placement within the content area. Plugin settings are located under Settings -> Media
+Use the shortcode or the function to show the gallery.
 
 = Shortcode Usage =
 
 Use the following shortcode anywhere in the content area to display the gallery
 
-	[easy_image_gallery]
+	[easy_image_gallery gallery="XXX"]
+	
+Where "XXX" is the ID of the gallery item.
 
 = Template Tag Usage =
 
 The following template tag is available to display the gallery
 
 	if( function_exists( 'easy_image_gallery' ) ) {
-		echo easy_image_gallery();
+		echo easy_image_gallery( "XXX" );
 	}
+	
+Where "XXX" is the ID of the gallery item.
 
-If you use the template tag above, you will need remove the default content filter:
-
-remove_filter( 'the_content', 'easy_image_gallery_append_to_content' );
+If you use the template tag above, you will need to remove the default content filter:
 
 = Developer Friendly =
 
@@ -64,11 +68,9 @@ remove_filter( 'the_content', 'easy_image_gallery_append_to_content' );
 
 *Become a fan on Facebook*
 [https://www.facebook.com/DevriXLtd](https://www.facebook.com/DevriXLtd "Facebook Devrix")
-[https://www.facebook.com/DevriXShop]
-(https://www.facebook.com/DevriXLtd "Facebook Devrix Shop")
 
 *Follow us on Twitter*
-[https://twitter.com/wpdevrix](https://twitter.com/wpdevrix"Twitter")
+[https://twitter.com/wpdevrix](https://twitter.com/wpdevrix)
 
 == Installation ==
 
@@ -87,6 +89,14 @@ remove_filter( 'the_content', 'easy_image_gallery_append_to_content' );
 1. Clicking on an image launches the lightbox. Here it's shown with prettyPhoto
 
 == Frequently Asked Questions ==
+
+= Why my galleries don't show up after an update to Version 1.3 or above? =
+
+In Version 1.3 of the plugin, we've added a major update. Now, you have the ability to add more than one galleries to your posts or pages.
+
+For that reason, we have to introduce Gallery ID as an argument for the shortcode. E.g. you need to use [easy_image_gallery gallery="XXX"], where XXX is the ID of the gallery you want to display.
+
+Each of your galleries in the edit screen of your page or post will generate a new shortcode which you'll be able to use in the page or post editor.
 
 = fancyBox looks different after upgrading to 1.1 =
 
@@ -109,9 +119,10 @@ The plugin ownership was transferred to DevriX. There are no functionality chang
 
 == Changelog ==
 
-= 1.2.1 =
-* Release date - January 31, 2017.
-* Removing Fancybox 2.0 due to license constraints, back to 1.3.4
+= 1.3 =
+* Release date - Release date - January 19, 2018.
+* Add the possibility to add two or more different galleries on one page/post.
+* Improved the UI / UX
 
 = 1.2 =
 * Release date - Release date - January 26, 2017.
@@ -169,4 +180,4 @@ The plugin ownership was transferred to DevriX. There are no functionality chang
 
 = 1.0 =
 
-* Initial release
+* Initial release				

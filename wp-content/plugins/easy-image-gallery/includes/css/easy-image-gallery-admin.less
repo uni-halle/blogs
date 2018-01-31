@@ -1,0 +1,144 @@
+#easy_image_gallery{
+	background: transparent;
+
+	.hndle.ui-sortable-handle{
+		background: #FFF;
+	}
+
+	.inside{
+		padding: 0;
+		background: transparent !important;
+
+		#dx-eig-gallery{
+			padding: 12px 12px 12px 12px;
+
+			.alert-db-danger{
+				color: #a94442;
+				background-color: #f2dede;
+				border: 1px solid #ebccd1;
+				border-radius: 4px;
+				margin-top: 10px;
+				padding: 10px;
+			}
+
+			.buttons{
+				width: 100%;
+				border-bottom: 1px solid #ddd;
+				padding: 12px;
+				background: #FFF;
+				margin-left: -12px;
+				margin-top: -20px;
+			}
+
+			.dx-eig-gallery-row{
+				background: #FFF;
+				margin: 15px 0 15px 0;
+				border: 1px solid #ddd;
+				line-height: 28px;
+			
+				.dx-eig-gallery-row-heading{
+					padding: 12px;
+					border-bottom: 1px solid #ddd;
+					cursor: move;
+
+					.name{
+						float: left;
+						font-weight: bold;
+						margin-right: 10px;
+					}
+
+					.dx-eig-gallery-add-images{
+						float: left;
+					}
+
+					.remove{
+						float: right;
+						margin-left: 10px;
+						color: red;
+						font-weight: bold;
+						cursor: pointer;
+
+						img{
+							width: 25px;
+							height: 25px;
+						}
+					}
+
+					.dx-eig-shortcode-show{
+						float: right;
+						margin-left: 15px;
+						width: 230px;
+					}
+
+					.link-image-to-l{
+						float: right;
+					}
+				}
+
+				.dx-eig-gallery-row-content{
+					padding: 6px;
+
+					ul{
+						margin: 0;
+					}
+
+					.no-images-message{
+						width: 100%;
+						text-align: center;
+						padding: 5px 0 5px 0;
+					}
+
+					.attachment.details{
+						width: calc(~"100% / 8");
+						padding: 6px;
+						background: #FFF;
+					}
+
+					.attachment.details .check div {
+						background-position: -60px 0;
+					}
+
+					.attachment.details .check:hover div {
+						background-position: -60px 0;
+					}
+
+					.gallery_images .details.attachment {
+						box-shadow: none;
+					}
+
+					.eig-metabox-sortable-placeholder {
+						background: #DFDFDF;
+					}
+
+					.gallery_images .attachment.details > div {
+						width: 100%;
+						height: auto;
+						box-shadow: none;
+					}
+
+					.gallery_images .attachment-preview .thumbnail {
+						 cursor: move;
+						 width: 100%;
+
+						 img{
+						 	width: 100%;
+						 	height: auto;
+						 }
+					}
+
+					.attachment.details:hover{
+						border: 5px #0073AA solid;
+					}
+
+					.attachment.details div:hover .check {
+						display:block;
+					}
+				}
+			}
+		}
+	}
+}
+
+.dx-eig-clear{
+	clear: both;
+}

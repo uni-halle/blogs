@@ -3,7 +3,7 @@
 Plugin Name: Easy Image Gallery
 Plugin URI: http://devrix.com/
 Description: An easy to use image gallery with drag & drop re-ordering
-Version: 1.2.1
+Version: 1.3
 Author: DevriX
 Author URI: http://devrix.com/
 Text Domain: easy-image-gallery
@@ -29,7 +29,6 @@ if ( ! class_exists( 'Easy_Image_Gallery' ) ) {
 			add_action( 'plugins_loaded', array( $this, 'includes' ) );
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'easy_image_gallery_plugin_action_links' );
 		}
-
 
 		/**
 		 * Internationalization

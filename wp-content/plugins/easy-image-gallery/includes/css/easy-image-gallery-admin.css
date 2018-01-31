@@ -1,0 +1,117 @@
+#easy_image_gallery {
+  background: transparent;
+}
+#easy_image_gallery .hndle.ui-sortable-handle {
+  background: #FFF;
+}
+#easy_image_gallery .inside {
+  padding: 0;
+  background: transparent !important;
+}
+#easy_image_gallery .inside #dx-eig-gallery {
+  padding: 12px 12px 12px 12px;
+}
+#easy_image_gallery .inside #dx-eig-gallery .alert-db-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border: 1px solid #ebccd1;
+  border-radius: 4px;
+  margin-top: 10px;
+  padding: 10px;
+}
+#easy_image_gallery .inside #dx-eig-gallery .buttons {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  padding: 12px;
+  background: #FFF;
+  margin-left: -12px;
+  margin-top: -20px;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row {
+  background: #FFF;
+  margin: 15px 0 15px 0;
+  border: 1px solid #ddd;
+  line-height: 28px;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-heading {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  cursor: move;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-heading .name {
+  float: left;
+  font-weight: bold;
+  margin-right: 10px;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-heading .dx-eig-gallery-add-images {
+  float: left;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-heading .remove {
+  float: right;
+  margin-left: 10px;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-heading .remove img {
+  width: 25px;
+  height: 25px;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-heading .dx-eig-shortcode-show {
+  float: right;
+  margin-left: 15px;
+  width: 230px;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-heading .link-image-to-l {
+  float: right;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-content {
+  padding: 6px;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-content ul {
+  margin: 0;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-content .no-images-message {
+  width: 100%;
+  text-align: center;
+  padding: 5px 0 5px 0;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-content .attachment.details {
+  width: calc(100% / 8);
+  padding: 6px;
+  background: #FFF;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-content .attachment.details .check div {
+  background-position: -60px 0;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-content .attachment.details .check:hover div {
+  background-position: -60px 0;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-content .gallery_images .details.attachment {
+  box-shadow: none;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-content .eig-metabox-sortable-placeholder {
+  background: #DFDFDF;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-content .gallery_images .attachment.details > div {
+  width: 100%;
+  height: auto;
+  box-shadow: none;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-content .gallery_images .attachment-preview .thumbnail {
+  cursor: move;
+  width: 100%;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-content .gallery_images .attachment-preview .thumbnail img {
+  width: 100%;
+  height: auto;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-content .attachment.details:hover {
+  border: 5px #0073AA solid;
+}
+#easy_image_gallery .inside #dx-eig-gallery .dx-eig-gallery-row .dx-eig-gallery-row-content .attachment.details div:hover .check {
+  display: block;
+}
+.dx-eig-clear {
+  clear: both;
+}
