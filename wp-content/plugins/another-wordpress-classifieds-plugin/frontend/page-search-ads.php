@@ -15,7 +15,7 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
     }
 
     public function get_current_action($default='searchads') {
-        $action = awpcp_request_param( 'awpcp-action', null );
+        $action = awpcp_request_param( 'awpcp-step', null );
 
         if ( $action ) {
             return $action;
@@ -103,7 +103,7 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
         }
 
         $action_url = awpcp_current_url();
-        $hidden = array_merge( $url_params, array( 'awpcp-action' => 'dosearch' ) );
+        $hidden = array_merge( $url_params, array( 'awpcp-step' => 'dosearch' ) );
 
         $params = compact( 'action_url', 'ui', 'form', 'hidden', 'messages', 'errors' );
 
@@ -157,7 +157,7 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
     }
 
     public function build_return_link() {
-        $params = array_merge( stripslashes_deep( $_REQUEST ), array( 'awpcp-action' => 'searchads' ) );
+        $params = array_merge( stripslashes_deep( $_REQUEST ), array( 'awpcp-step' => 'searchads' ) );
         $href = add_query_arg(urlencode_deep($params), awpcp_current_url());
 
         $return_link = '<div class="awpcp-return-to-search-link awpcp-clearboth"><a href="<link-url>"><link-text></a></div>';

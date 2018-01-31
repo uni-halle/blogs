@@ -198,6 +198,15 @@ class AWPCP_Settings_API {
             __( 'Show Classifieds Bar', 'another-wordpress-classifieds-plugin' ),
             'checkbox',
             1,
+            __( 'The Classifieds Bar is a section shown at the top of the plugin pages, displaying a Search Bar and multiple menu items. Each element of the bar can be enabled or disabled using the settings below.', 'another-wordpress-classifieds-plugin' )
+        );
+
+        $this->add_setting(
+            $key,
+            'show-classifieds-search-bar',
+            __( 'Show Search Bar', 'another-wordpress-classifieds-plugin' ),
+            'checkbox',
+            1,
             ''
         );
 
@@ -205,6 +214,12 @@ class AWPCP_Settings_API {
 		$this->add_setting( $key, 'show-menu-item-edit-ad', __( 'Show Edit Ad menu item', 'another-wordpress-classifieds-plugin' ), 'checkbox', 1, '' );
 		$this->add_setting( $key, 'show-menu-item-browse-ads', __( 'Show Browse Ads menu item', 'another-wordpress-classifieds-plugin' ), 'checkbox', 1, '' );
 		$this->add_setting( $key, 'show-menu-item-search-ads', __( 'Show Search Ads menu item', 'another-wordpress-classifieds-plugin' ), 'checkbox', 1, '' );
+
+		$this->add_behavior( $key, 'show-classifieds-search-bar', 'enabledIf', 'show-classifieds-bar' );
+		$this->add_behavior( $key, 'show-menu-item-place-ad', 'enabledIf', 'show-classifieds-bar' );
+		$this->add_behavior( $key, 'show-menu-item-edit-ad', 'enabledIf', 'show-classifieds-bar' );
+		$this->add_behavior( $key, 'show-menu-item-browse-ads', 'enabledIf', 'show-classifieds-bar' );
+		$this->add_behavior( $key, 'show-menu-item-search-ads', 'enabledIf', 'show-classifieds-bar' );
 
 		// Group: Payment Settings
 
@@ -302,7 +317,7 @@ class AWPCP_Settings_API {
 
 		$key = $this->add_section($group, __('General Email Settings', 'another-wordpress-classifieds-plugin'), 'default', 20, array($this, 'section'));
 
-		$this->add_setting( $key, 'admin-recipient-email', __( 'TO email address for outgoing emails', 'another-wordpress-classifieds-plugin' ), 'textfield', '', __( 'Emails are sent to your WordPress admin email. If you prefere to receive emails in a different address, please enter it here.', 'another-wordpress-classifieds-plugin' ) );
+		$this->add_setting( $key, 'admin-recipient-email', __( 'TO email address for outgoing emails', 'another-wordpress-classifieds-plugin' ), 'textfield', '', __( 'Emails are sent to your WordPress admin email. If you prefer to receive emails in a different address, please enter it here.', 'another-wordpress-classifieds-plugin' ) );
 
 		$this->add_setting(
 			$key,
@@ -448,6 +463,13 @@ class AWPCP_Settings_API {
 				   array($this, 'validate_registration_settings'), 10, 2);
 		add_filter('awpcp_validate_settings_smtp-settings',
 				   array($this, 'validate_smtp_settings'), 10, 2);
+
+        add_filter(
+            'awpcp_validate_settings_email-settings',
+            array( $this, 'validate_email_settings' ),
+            10,
+            2
+        );
 	}
 
 	public function init() {
@@ -880,6 +902,50 @@ class AWPCP_Settings_API {
 		return $options;
 	}
 
+    public function validate_email_settings( $options, $group ) {
+        $settings = array(
+            'awpcpadminemail' => __( '<new-value> is not a valid email address. Please check the value you entered to use as the FROM email address for outgoing messages.', 'another-wordpress-classifieds-plugin' ),
+            'admin-recipient-email' => __( '<new-value> is not a valid email address. Please check the value you entered to use as recipient email address for admin notifications.', 'another-wordpress-classifieds-plugin' ),
+        );
+
+        foreach( $settings as $setting_name => $message ) {
+            $validated_value = $this->validate_email_setting(
+                $options,
+                $setting_name,
+                $message
+            );
+
+            if ( is_null( $validated_value ) ) {
+                continue;
+            }
+
+            $options[ $setting_name ] = $validated_value;
+        }
+
+        return $options;
+    }
+
+    private function validate_email_setting( $options, $setting_name, $message ) {
+        if ( ! isset( $options[ $setting_name ] ) ) {
+            return null;
+        }
+
+        if ( empty( $options[ $setting_name ] ) ) {
+            return $options[ $setting_name ];
+        }
+
+        if ( ! awpcp_is_valid_email_address( $options[ $setting_name ] ) ) {
+            $new_value = '<strong>' . esc_html( $options[ $setting_name ] ) . '</strong>';
+            $message = str_replace( '<new-value>', $new_value, $message );
+
+            awpcp_flash( $message, 'notice notice-error' );
+
+            return $this->get_option( $setting_name );
+        }
+
+        return $options[ $setting_name ];
+    }
+
 	/**
 	 * Classifieds Pages Settings checks
 	 */
@@ -961,7 +1027,14 @@ class AWPCP_Settings_API {
 
 		$value = intval($this->get_option($setting->name));
 
-		$html = '<input type="hidden" value="0" name="awpcp-options['. $setting->name .']" />';
+		$html = '<input type="hidden" value="0" name="awpcp-options['. $setting->name .']" ';
+
+        if ( ! empty( $setting->args['behavior'] ) ) {
+            $html.= 'awpcp-setting="' . esc_attr( json_encode( $setting->args['behavior'] ) ) . '" />';
+        } else {
+            $html.= '/>';
+        }
+
 		$html.= '<input id="'. $setting->name . '" value="1" ';
 		$html.= 'type="checkbox" name="awpcp-options[' . $setting->name . ']" ';
 

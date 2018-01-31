@@ -12,7 +12,20 @@ class AWPCP_Missing_Pages_Finder {
         $this->db = $db;
     }
 
-    public function find_missing_pages() {
+    public function find_page_with_shortcode( $shortcode ) {
+        $query = 'SELECT ID, post_title, post_status ';
+        $query.= 'FROM ' . $this->db->posts . ' ';
+        $query.= "WHERE post_content LIKE '%%%s%%' ";
+        $query.= "AND post_status NOT IN ('inherit') ";
+
+        $sql = $this->db->prepare( $query, $shortcode );
+
+        $pages = $this->db->get_results( $sql );
+
+        return count( $pages ) === 1 ? $pages[0] : null;
+    }
+
+    public function find_broken_page_id_references() {
         $plugin_pages = awpcp_get_plugin_pages_info();
 
         $registered_pages = array_keys( awpcp_pages() );
@@ -25,7 +38,7 @@ class AWPCP_Missing_Pages_Finder {
 
         $query = 'SELECT posts.ID post, posts.post_status status ';
         $query.= 'FROM ' . $this->db->posts . ' AS posts ';
-        $query.= "WHERE posts.ID IN (" . join( ",", $registered_pages_ids ) . ") ";
+        $query.= "WHERE posts.ID IN (" . join( ",", $registered_pages_ids ) . ") AND posts.post_type = 'page' ";
 
         $existing_pages = $this->db->get_results( $query, OBJECT_K );
         $missing_pages = array( 'not-found' => array(), 'not-published' => array(), 'not-referenced' => array() );

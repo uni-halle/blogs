@@ -52,7 +52,7 @@ class AWPCP_Classified_Pages_Settings {
 			$restored_pages = array();
 		}
 
-		$missing = awpcp_array_filter_recursive( $this->missing_pages_finder->find_missing_pages() );
+		$missing = awpcp_array_filter_recursive( $this->missing_pages_finder->find_broken_page_id_references() );
 
 		ob_start();
 			include(AWPCP_DIR . '/admin/templates/admin-panel-settings-pages-settings.tpl.php');

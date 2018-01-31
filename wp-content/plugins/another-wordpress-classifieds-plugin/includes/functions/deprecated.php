@@ -139,7 +139,7 @@ function awpcp_display_ads($where, $byl, $hidepager, $grouporderby, $adorcat, $b
             $output .= $dropdown->render( array( 'context' => 'search', 'name' => 'category_id', 'selected' => $category_id ) );
             $output .= '</div>';
 
-            $output .= "<input type=\"hidden\" name=\"awpcp-action\" value=\"browsecat\" />&nbsp;<input class=\"button\" type=\"submit\" value=\"";
+            $output .= "<input class=\"button\" type=\"submit\" value=\"";
             $output .= __("Change Category",'another-wordpress-classifieds-plugin');
             $output .= "\" /></form></div>";
 

@@ -22,7 +22,7 @@ class AWPCP_Classifieds_Bar {
 
     public function render( $components = array() ) {
         $components = wp_parse_args( $components, array(
-            'search_bar' => true,
+            'search_bar' => $this->settings->get_option( 'show-classifieds-search-bar' ),
             'menu' => true,
         ) );
 

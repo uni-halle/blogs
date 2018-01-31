@@ -5,6 +5,7 @@
  */
 function awpcp_display_listings( $query, $context, $options ) {
     $options = wp_parse_args( $options, array(
+        'page' => false,
         'show_intro_message' => false,
         'show_menu_items' => false,
         'show_category_selector' => false,

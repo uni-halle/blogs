@@ -51,12 +51,18 @@ class AWPCP_BrowseAdsPage extends AWPCP_Page {
             $message = __( "No specific category was selected for browsing so you are viewing listings from all categories." , 'another-wordpress-classifieds-plugin' );
 
             $output = awpcp_print_message( $message );
-            $output.= awpcp_display_listings_in_page( $query, 'browse-listings' );
+            $output.= $this->render_listings_in_page( $query );
         } else {
-            $output = awpcp_display_listings_in_page( $query, 'browse-listings' );
+            $output = $this->render_listings_in_page( $query );
         }
 
         return $output;
+    }
+
+    protected function render_listings_in_page( $query ) {
+        $options = array( 'page' => $this->page );
+
+        return awpcp_display_listings_in_page( $query, 'browse-listings', $options );
     }
 
     protected function render_all_listings() {
@@ -67,6 +73,6 @@ class AWPCP_BrowseAdsPage extends AWPCP_Page {
             'orderby' => get_awpcp_option( 'groupbrowseadsby' ),
         );
 
-        return awpcp_display_listings_in_page( $query, 'browse-listings' );
+        return $this->render_listings_in_page( $query );
     }
 }

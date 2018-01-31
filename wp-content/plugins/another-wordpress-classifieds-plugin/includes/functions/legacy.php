@@ -200,7 +200,7 @@ function get_cat_parent_ID($cat_ID){
     $query = 'SELECT category_parent_id FROM ' . AWPCP_TABLE_CATEGORIES . ' WHERE category_id = %d';
     $query = $wpdb->prepare( $query, $cat_ID );
 
-    return $wpdb->get_var( $query );
+    return intval( $wpdb->get_var( $query ) );
 }
 
 function ads_exist() {

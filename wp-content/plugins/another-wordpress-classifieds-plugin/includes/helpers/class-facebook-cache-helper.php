@@ -1,10 +1,16 @@
 <?php
 
 function awpcp_facebook_cache_helper() {
-    return new AWPCP_FacebookCacheHelper();
+    return new AWPCP_FacebookCacheHelper( AWPCP_Facebook::instance() );
 }
 
 class AWPCP_FacebookCacheHelper {
+
+    private $facebook;
+
+    public function __construct( $facebook ) {
+        $this->facebook = $facebook;
+    }
 
     public function on_place_ad( $ad ) {
         $this->schedule_clear_cache_action( $ad );
@@ -41,7 +47,8 @@ class AWPCP_FacebookCacheHelper {
             'timeout' => 30,
             'body' => array(
                 'id' => url_showad( $ad->ad_id ),
-                'scrape' => true
+                'scrape' => true,
+                'access_token' => $this->facebook->get( 'user_token' ),
             ),
         );
 

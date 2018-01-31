@@ -1,4 +1,8 @@
+<?php if ( $options['page'] ): ?>
+<div class="<?php echo $options['page']; ?> awpcp-page" id="classiwrapper">
+<?php else: ?>
 <div id="classiwrapper">
+<?php endif; ?>
     <?php echo $before_content; ?>
 
     <?php if ( $options['show_intro_message'] ): ?>

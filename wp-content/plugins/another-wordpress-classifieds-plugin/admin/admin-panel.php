@@ -949,7 +949,13 @@ function awpcp_opsconfig_categories() {
 }
 
 function awpcp_pages() {
-	$pages = array('main-page-name' => array(get_awpcp_option('main-page-name'), '[AWPCP]'));
+    $pages = array(
+        'main-page-name' => array(
+            get_awpcp_option('main-page-name'),
+            '[AWPCPCLASSIFIEDSUI]'
+        )
+    );
+
 	return $pages + awpcp_subpages();
 }
 
@@ -1095,8 +1101,7 @@ function awpcp_handle_admin_requests() {
 		$tbl_ad_categories = $wpdb->prefix . "awpcp_categories";
 		$tbl_ads = $wpdb->prefix . "awpcp_ads";
 
-		$category_id=clean_field($_REQUEST['category_id']);
-
+		$category_id = intval( $_REQUEST['category_id'] );
 
 		if (isset($_REQUEST['$movetocat']) && !empty($_REQUEST['$movetocat']))
 		{
@@ -1125,81 +1130,41 @@ function awpcp_handle_admin_requests() {
 		}
 		elseif ($aeaction == 'delete')
 		{
-			if (isset($_REQUEST['category_name']) && !empty($_REQUEST['category_name']))
-			{
-				$category_name=clean_field($_REQUEST['category_name']);
-			}
-			if (isset($_REQUEST['category_parent_id']) && !empty($_REQUEST['category_parent_id']))
-			{
-				$category_parent_id=clean_field($_REQUEST['category_parent_id']);
-			}
-
 			// Make sure this is not the default category. If it is the default category alert that the default category can only be renamed not deleted
 			if ($category_id == 1)
 			{
 				$themessagetoprint=__("Sorry but you cannot delete the default category. The default category can only be renamed",'another-wordpress-classifieds-plugin');
 			} else {
 				//Proceed with the delete instructions
+                $category_parent_id = get_cat_parent_ID( $category_id );
 
-				// Move any ads that the category contains if move-to category value is set and does not equal zero
+                if ( isset( $movetocat ) && intval( $movetocat ) ) {
+                    $new_category_id = intval( $movetocat );
+                } elseif ( category_is_child( $category_id ) ) {
+                    $new_category_id = $category_parent_id;
+                } else {
+                    $new_category_id = 1;
+                }
 
-				if ( isset($movetocat) && !empty($movetocat) && ($movetocat != 0) )
-				{
-					$movetocatparent=get_cat_parent_ID($movetocat);
+                $new_category_parent_id = get_cat_parent_ID( $new_category_id );
 
-					$query = 'UPDATE ' . AWPCP_TABLE_ADS . ' SET ad_category_id = %d ad_category_parent_id=%d ';
-					$query.= 'WHERE ad_category_id = %d';
-					$query = $wpdb->prepare( $query, $movetocat, $movetocatparent, $category_id );
+                if ( $new_category_parent_id === $category_id ) {
+                    awpcp_move_sub_categories( $category_id, 0 );
 
-					$wpdb->query( $query );
+                    $new_category_parent_id = 0;
+                } else if ( $new_category_parent_id ) {
+                    awpcp_move_sub_categories( $category_id, $new_category_parent_id );
+                } else {
+                    awpcp_move_sub_categories( $category_id, $new_category_id );
+                }
 
-					// Must also relocate ads where the main category was a child of the category being deleted
-					$query = 'UPDATE ' . AWPCP_TABLE_ADS . ' SET ad_category_parent_id = %d WHERE ad_category_parent_id = %d';
-					$query = $wpdb->prepare( $query, $movetocat, $category_id );
+                // move listings to new category
+                $query = 'UPDATE ' . AWPCP_TABLE_ADS . ' SET ad_category_id = %d, ad_category_parent_id = %d WHERE ad_category_id = %d';
+                $query = $wpdb->prepare( $query, $new_category_id, $new_category_parent_id, $category_id );
 
-					$wpdb->query( $query );
+                $wpdb->query( $query );
 
-					// Must also relocate any children categories to the the move-to-cat
-					$query = 'UPDATE ' . AWPCP_TABLE_CATEGORIES . ' SET category_parent_id = %d WHERE category_parent_id = %d';
-					$wpdb->prepare( $query, $movetocat, $category_id );
-
-					$wpdb->query( $query );
-				}
-
-
-				// Else if the move-to value is zero move the ads to the parent category if category is a child or the default category if
-				// category is not a child
-
-				elseif ( !isset($movetocat) || empty($movetocat) || ($movetocat == 0) )
-				{
-
-					// If the category has a parent move the ads to the parent otherwise move the ads to the default
-
-					if ( category_is_child($category_id) )
-					{
-
-						$movetocat=get_cat_parent_ID($category_id);
-					}
-					else
-					{
-						$movetocat=1;
-					}
-
-					$movetocatparent=get_cat_parent_ID($movetocat);
-
-					// Adjust any ads transferred from the main category
-					$query="UPDATE ".$tbl_ads." SET ad_category_id='$movetocat', ad_category_parent_id='$movetocatparent' WHERE ad_category_id='$category_id'";
-					$wpdb->query( $query );
-
-					// Must also relocate any children categories to the the move-to-cat
-					$query="UPDATE ".$tbl_ad_categories." SET category_parent_id='$movetocat' WHERE category_parent_id='$category_id'";
-					$wpdb->query( $query );
-
-					// Adjust  any ads transferred from children categories
-					$query="UPDATE ".$tbl_ads." SET ad_category_parent_id='$movetocat' WHERE ad_category_parent_id='$category_id'";
-					$wpdb->query( $query );
-				}
-
+                // delete category
 				$query = "DELETE FROM  " . AWPCP_TABLE_CATEGORIES . " WHERE category_id='$category_id'";
 				$wpdb->query( $query );
 
@@ -1373,6 +1338,27 @@ function awpcp_handle_admin_requests() {
 	}
 }
 
+/**
+ * @param $parent_id        int     The ID of the current parent category.
+ * @param $new_parent_id    int     The ID of the new parent category.
+ *
+ * @since 3.8.2
+ */
+function awpcp_move_sub_categories( $parent_id, $new_parent_id ) {
+    global $wpdb;
+
+    // move sub-categories to new category
+    $query = 'UPDATE ' . AWPCP_TABLE_CATEGORIES . ' SET category_parent_id = %d WHERE category_parent_id = %d';
+    $query = $wpdb->prepare( $query, $new_parent_id, $parent_id );
+
+    $wpdb->query( $query );
+
+    // fix category_parent_id in associated listings
+    $query = 'UPDATE ' . AWPCP_TABLE_ADS . ' SET ad_category_parent_id = %d WHERE ad_category_parent_id = %d';
+    $query = $wpdb->prepare( $query, $new_parent_id, $parent_id );
+
+    $wpdb->query( $query );
+}
 
 
 /**

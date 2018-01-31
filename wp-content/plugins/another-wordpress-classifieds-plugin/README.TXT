@@ -4,9 +4,9 @@ Donate link: http://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified theme,wp classified
 Requires at least: 4.3
 Requires PHP: 5.6
-Tested up to: 4.8.1
-Last Updated: 2017-Sep-26
-Stable tag: 3.8.1
+Tested up to: 4.9.2
+Last Updated: 2017-Dec-5
+Stable tag: 3.8.2
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -240,6 +240,26 @@ Yes it can. AWPCP comes with many user-provided translations under the /language
 Yes it is. However, you cannot "network-activate" the plugin (as this will share the database). Activate it on only the subsites on which you need a directory.  This can be done under Plugins->Add New as the Administrator user.  Do not "network activate" AWPCP as the "super admin".
 
 == Changelog ==
+
+= Version 3.8.2 =
+* Allow Search Bar to be disabled.
+* Restore Pages now looks for existing pages first.
+* Add Edit Links for anonymous users.
+* Update Breakpoints.js to version 0.0.11.
+* Add page CSS class in awpcp_display_listing().
+* Show all region fields at once in User Edit.
+* Improve appearance of menu items.
+* Prevent invalid email address in settings.
+* Do not load regions for textfields, but show them anyway.
+* Verify that iconv is available before using it.
+* Raplace awpcp-action query arg with awpcp-step.
+* Catch uncaught exception in Modules Updater.
+* Show change button if multiple dropdowns are enabled.
+* Fix code used to clear Facebook cache of listings.
+* Create a log entry for every upgrade.
+* Fix JavaScript conflict with BD.
+* Prevent orphan category records.
+* Allow 'All Sub-categories' to be selected.
 
 = Version 3.8.1 =
 * Allow HTML tags in listing's excerpts.

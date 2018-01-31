@@ -54,6 +54,16 @@ class AWPCP_Installer {
 
         $installed_version = get_option( 'awpcp_db_version' );
 
+        if ( $installed_version !== false && ! preg_match( '/^\d[\d.]*/', $installed_version ) ) {
+            // Something is wrong. The installed version should always be false
+            // or a valid version number.
+
+            // We create a log entry for debug purposes, but abort the operation.
+            $this->log_upgrade( $installed_version, $awpcp_db_version );
+
+            return;
+        }
+
         // if table exists, this is an upgrade
         if ( $installed_version !== false && awpcp_table_exists( AWPCP_TABLE_CATEGORIES ) ) {
             $this->upgrade( $installed_version, $awpcp_db_version );
@@ -63,6 +73,22 @@ class AWPCP_Installer {
 
         update_option( 'awpcp-installed-or-upgraded', true );
         update_option( 'awpcp-flush-rewrite-rules', true );
+    }
+
+    private function log_upgrade( $oldversion, $newversion ) {
+        $upgrade_log = get_option( 'awpcp-upgrade-log', array() );
+
+        $upgrade_log[] = array(
+            'oldversion' => $oldversion,
+            'newversion' => $newversion,
+            'date' => current_time( 'mysql' ),
+        );
+
+        // Keep latest 100 entries. This should prevent filling the database with
+        // log entries if `awpcp_db_version` is set to something invalid permanently.
+        $upgrade_log = array_slice( $upgrade_log, 0, 100 );
+
+        update_option( 'awpcp-upgrade-log', $upgrade_log );
     }
 
     /**
@@ -313,6 +339,8 @@ class AWPCP_Installer {
         }
 
         do_action('awpcp_upgrade', $oldversion, $newversion);
+
+        $this->log_upgrade( $oldversion, $newversion );
 
         return update_option("awpcp_db_version", $newversion);
     }

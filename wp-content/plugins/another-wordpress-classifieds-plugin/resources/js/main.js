@@ -23,6 +23,10 @@ function( $ ) {
                 return;
             }
 
+            if ( $dropdown.closest( '.awpcp-category-dropdown-container' ).is( '.awpcp-multiple-dropdown-category-selector-container' ) ) {
+                return;
+            }
+
             // TODO: This is a hack. We should be able to detect only real change
             // events, not artificial events fired to let other parts of the UI
             // know what's the current value when the page loads.

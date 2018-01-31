@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version:  \n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/another-wordpress-classifieds-"
 "plugin\n"
-"POT-Creation-Date: 2017-09-24 22:29:10+00:00\n"
+"POT-Creation-Date: 2017-10-18 23:54:33+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -40,7 +40,7 @@ msgstr ""
 #: admin/admin-panel-fees-table.php:120
 #: admin/templates/admin-panel-credit-plans-entry-form.tpl.php:19
 #: admin/templates/admin-panel-fees-entry-form.tpl.php:25
-#: frontend/placeholders.php:452 frontend/templates/page-search-ads.tpl.php:46
+#: frontend/placeholders.php:454 frontend/templates/page-search-ads.tpl.php:46
 #: includes/settings/class-payment-general-settings.php:16
 msgid "Price"
 msgstr ""
@@ -387,11 +387,11 @@ msgid "Keyword"
 msgstr ""
 
 #: admin/admin-panel-listings-table.php:287 frontend/page-show-ad.php:58
-#: frontend/placeholders.php:578
+#: frontend/placeholders.php:580
 msgid "Location"
 msgstr ""
 
-#: admin/admin-panel-listings-table.php:288 frontend/placeholders.php:670
+#: admin/admin-panel-listings-table.php:288 frontend/placeholders.php:672
 msgid "Phone"
 msgstr ""
 
@@ -502,8 +502,8 @@ msgid "No Ad ID was specified."
 msgstr ""
 
 #: admin/admin-panel-listings.php:305 frontend/ad-functions.php:242
-#: frontend/page-edit-ad.php:171 frontend/page-edit-ad.php:229
-#: frontend/page-edit-ad.php:367 frontend/page-edit-ad.php:395
+#: frontend/page-edit-ad.php:173 frontend/page-edit-ad.php:231
+#: frontend/page-edit-ad.php:369 frontend/page-edit-ad.php:397
 msgid "The specified Ad doesn't exists."
 msgstr ""
 
@@ -591,36 +591,36 @@ msgstr ""
 msgid "Access Key for \"%s\""
 msgstr ""
 
-#: admin/admin-panel-listings.php:553
+#: admin/admin-panel-listings.php:554
 msgid "The access key was sent to %s."
 msgstr ""
 
-#: admin/admin-panel-listings.php:555 frontend/page-edit-ad.php:533
+#: admin/admin-panel-listings.php:556 frontend/page-edit-ad.php:535
 msgid "There was an error trying to send the email to %s."
 msgstr ""
 
-#: admin/admin-panel-listings.php:632
+#: admin/admin-panel-listings.php:633
 msgid "%d of %d Ads were deleted. %d generated errors."
 msgstr ""
 
-#: admin/admin-panel-listings.php:634
+#: admin/admin-panel-listings.php:635
 msgid "%d of %d Ads were deleted."
 msgstr ""
 
-#: admin/admin-panel-listings.php:638
+#: admin/admin-panel-listings.php:639
 msgid "%d of %d Ads don't exist."
 msgstr ""
 
-#: admin/admin-panel-listings.php:642
+#: admin/admin-panel-listings.php:643
 msgid "%d of %d Ads weren't deleted because you are not authorized."
 msgstr ""
 
-#: admin/admin-panel-listings.php:669
+#: admin/admin-panel-listings.php:670
 msgctxt "ajax delete ad"
 msgid "The specified Ad doesn't exists."
 msgstr ""
 
-#: admin/admin-panel-listings.php:710
+#: admin/admin-panel-listings.php:711 frontend/page-edit-ad.php:558
 msgid "The specified listing doesn't exists."
 msgstr ""
 
@@ -922,41 +922,41 @@ msgstr ""
 msgid "Action"
 msgstr ""
 
-#: admin/admin-panel.php:1121
+#: admin/admin-panel.php:1127
 msgid "The new category was successfully added."
 msgstr ""
 
-#: admin/admin-panel.php:1140
+#: admin/admin-panel.php:1146
 msgid ""
 "Sorry but you cannot delete the default category. The default category can "
 "only be renamed"
 msgstr ""
 
-#: admin/admin-panel.php:1208
+#: admin/admin-panel.php:1214
 msgid "The category has been deleted"
 msgstr ""
 
-#: admin/admin-panel.php:1220
+#: admin/admin-panel.php:1226
 msgid "Your category changes have been saved."
 msgstr ""
 
-#: admin/admin-panel.php:1227
+#: admin/admin-panel.php:1233
 msgid "No changes made to categories."
 msgstr ""
 
-#: admin/admin-panel.php:1266
+#: admin/admin-panel.php:1272
 msgid ""
 "With the exception of any category that was being moved to itself, the "
 "categories have been moved"
 msgstr ""
 
-#: admin/admin-panel.php:1270
+#: admin/admin-panel.php:1276
 msgid ""
 "The categories have not been moved because you did not indicate where you "
 "want the categories to be moved to"
 msgstr ""
 
-#: admin/admin-panel.php:1365
+#: admin/admin-panel.php:1371
 msgid "The categories have been deleted"
 msgstr ""
 
@@ -1703,8 +1703,10 @@ msgstr ""
 
 #: admin/templates/admin-panel-settings-pages-settings.tpl.php:62
 msgid ""
-"If you are having problems with your plugin pages, you can delete them and "
-"use the Restore button to have the plugin create them again."
+"Use the button below to have the plugin attempt to find the necessary pages. "
+"If you continue to have problems or seeing page related warnings above, you "
+"can delete affected plugin pages and use the Restore Pages button to have "
+"the plugin create them again."
 msgstr ""
 
 #: admin/templates/admin-panel-settings-pages-settings.tpl.php:63
@@ -1941,7 +1943,7 @@ msgid "Premium Modules"
 msgstr ""
 
 #: admin/templates/admin-sidebar.tpl.php:154
-#: admin/templates/admin-sidebar.tpl.php:195 functions.php:2911
+#: admin/templates/admin-sidebar.tpl.php:195 functions.php:2919
 msgid "Installed"
 msgstr ""
 
@@ -1950,7 +1952,7 @@ msgid "No premium modules installed."
 msgstr ""
 
 #: admin/templates/admin-sidebar.tpl.php:171
-#: admin/templates/admin-sidebar.tpl.php:212 functions.php:2907
+#: admin/templates/admin-sidebar.tpl.php:212 functions.php:2915
 msgid "Not Installed"
 msgstr ""
 
@@ -2085,8 +2087,8 @@ msgstr ""
 msgid "This field is required."
 msgstr ""
 
-#: awpcp.php:1248 frontend/page-edit-ad.php:128 frontend/page-edit-ad.php:440
-#: includes/settings-api.php:238
+#: awpcp.php:1248 frontend/page-edit-ad.php:130 frontend/page-edit-ad.php:442
+#: includes/settings-api.php:253
 msgid "Please enter a valid email address."
 msgstr ""
 
@@ -2177,6 +2179,16 @@ msgstr ""
 msgid "Problem encountered. Cannot complete  request"
 msgstr ""
 
+#: frontend/class-categories-selector-component.php:36
+msgctxt "multiple dropdowns category selector"
+msgid "Category: <category-name>"
+msgstr ""
+
+#: frontend/class-categories-selector-component.php:41
+msgctxt "single dropdown category selector"
+msgid "Category:"
+msgstr ""
+
 #: frontend/class-image-placeholders.php:45
 msgid "Click to enlarge image."
 msgstr ""
@@ -2200,8 +2212,8 @@ msgstr ""
 msgid "Please go to the Ad Management panel to edit your Ads."
 msgstr ""
 
-#: frontend/page-edit-ad.php:46 frontend/page-edit-ad.php:119
-#: frontend/page-edit-ad.php:496
+#: frontend/page-edit-ad.php:46 frontend/page-edit-ad.php:121
+#: frontend/page-edit-ad.php:498
 msgid "Click here"
 msgstr ""
 
@@ -2209,84 +2221,102 @@ msgstr ""
 msgid "You are not allowed to edit the specified Ad."
 msgstr ""
 
-#: frontend/page-edit-ad.php:118 frontend/page-edit-ad.php:495
+#: frontend/page-edit-ad.php:120 frontend/page-edit-ad.php:497
 msgid ""
 "You are currently not logged in, if you have an account in this website you "
 "can log in and go to the Ad Management panel to edit your Ads."
 msgstr ""
 
-#: frontend/page-edit-ad.php:126
+#: frontend/page-edit-ad.php:128
 msgid ""
 "Please enter the email address you used when you created your Ad in addition "
 "to the Ad access key that was emailed to you after your Ad was submitted."
 msgstr ""
 
-#: frontend/page-edit-ad.php:132
+#: frontend/page-edit-ad.php:134
 msgid "Please enter your Ad access key."
 msgstr ""
 
-#: frontend/page-edit-ad.php:138
+#: frontend/page-edit-ad.php:140
 msgid ""
 "The email address and access key you entered does not match any of the Ads "
 "in our system."
 msgstr ""
 
-#: frontend/page-edit-ad.php:208
+#: frontend/page-edit-ad.php:210
 msgid "Manage Attachments"
 msgstr ""
 
-#: frontend/page-edit-ad.php:211
+#: frontend/page-edit-ad.php:213
 msgid "Go to the %s section to manage the Images and Attachments for this Ad."
 msgstr ""
 
-#: frontend/page-edit-ad.php:280 frontend/page-place-ad.php:1157
+#: frontend/page-edit-ad.php:282 frontend/page-place-ad.php:1157
 msgid ""
 "There was an unexpected error trying to save your Ad details. Please try "
 "again or contact an administrator."
 msgstr ""
 
-#: frontend/page-edit-ad.php:302 frontend/page-place-ad.php:1224
+#: frontend/page-edit-ad.php:304 frontend/page-place-ad.php:1224
 msgid "The specified Ad doesn't exists. No images can be added at this time."
 msgstr ""
 
-#: frontend/page-edit-ad.php:355
+#: frontend/page-edit-ad.php:357
 #: frontend/templates/page-place-ad-preview-step.tpl.php:17
 #: includes/helpers/widgets/class-listing-form-steps-component.php:69
 #: templates/admin/import-listings-admin-page-import-form.tpl.php:30
 msgid "Finish"
 msgstr ""
 
-#: frontend/page-edit-ad.php:374
+#: frontend/page-edit-ad.php:376
 msgid ""
 "The Ad has been edited successfully. <a href=\"%s\">Go back to view "
 "listings</a>."
 msgstr ""
 
-#: frontend/page-edit-ad.php:400
+#: frontend/page-edit-ad.php:402
 msgid "There was a problem trying to delete your Ad. The Ad was not deleted."
 msgstr ""
 
-#: frontend/page-edit-ad.php:412
+#: frontend/page-edit-ad.php:414
 msgid "Your Ad has been successfully deleted."
 msgstr ""
 
-#: frontend/page-edit-ad.php:438
+#: frontend/page-edit-ad.php:440
 msgid "Please enter the email address you used when you created your Ad."
 msgstr ""
 
-#: frontend/page-edit-ad.php:447
+#: frontend/page-edit-ad.php:449
 msgid ""
 "The email address you entered does not match any of the Ads in our system."
 msgstr ""
 
-#: frontend/page-edit-ad.php:481
+#: frontend/page-edit-ad.php:483
 msgid ""
 "The email address you entered does not match any of the listing in our "
 "system."
 msgstr ""
 
-#: frontend/page-edit-ad.php:530
+#: frontend/page-edit-ad.php:532
 msgid "The access keys were sent to %s."
+msgstr ""
+
+#: frontend/page-edit-ad.php:545
+msgid "Invalid access token."
+msgstr ""
+
+#: frontend/page-edit-ad.php:565
+msgid "The sepecified listing cannot be edited using this access code."
+msgstr ""
+
+#: frontend/page-edit-ad.php:583
+msgid "Edit link for listing: %s"
+msgstr ""
+
+#: frontend/page-edit-ad.php:599
+msgid ""
+"The link you used already expired. Please check your email to receive a link "
+"with a new access token."
 msgstr ""
 
 #: frontend/page-place-ad.php:59
@@ -2759,33 +2789,33 @@ msgid ""
 "(the author) can see it."
 msgstr ""
 
-#: frontend/placeholders.php:394
+#: frontend/placeholders.php:396
 msgid "Seller"
 msgstr ""
 
-#: frontend/placeholders.php:417
+#: frontend/placeholders.php:419
 msgid "Visit Website"
 msgstr ""
 
-#: frontend/placeholders.php:614
+#: frontend/placeholders.php:616
 msgid "This Ad has been viewed %d time."
 msgid_plural "This Ad has been viewed %d times."
 msgstr[0] ""
 msgstr[1] ""
 
-#: frontend/placeholders.php:618
+#: frontend/placeholders.php:620
 msgid "Total views: %d"
 msgstr ""
 
-#: frontend/placeholders.php:729
+#: frontend/placeholders.php:731
 msgid "Flag Ad"
 msgstr ""
 
-#: frontend/placeholders.php:744
+#: frontend/placeholders.php:746
 msgid "Tweet This"
 msgstr ""
 
-#: frontend/placeholders.php:775
+#: frontend/placeholders.php:777
 msgid "Share on Facebook"
 msgstr ""
 
@@ -2995,6 +3025,20 @@ msgstr ""
 msgid ""
 "Below you will find the access key for your Ad \"%s\" associated to the "
 "email address %s."
+msgstr ""
+
+#: frontend/templates/email-send-ad-access-key.tpl.php:7
+#: frontend/templates/email-send-all-ad-access-keys.tpl.php:9
+msgid "Edit Link:"
+msgstr ""
+
+#: frontend/templates/email-send-ad-access-key.tpl.php:9
+#: frontend/templates/email-send-all-ad-access-keys.tpl.php:13
+#: templates/email/listing-edit-link-with-access-token.tpl.php:9
+msgctxt "edit link email"
+msgid ""
+"The edit link will expire after 24 hours. If you use the link after it has "
+"expired, a new one will be delivered to your email address automatically."
 msgstr ""
 
 #: frontend/templates/email-send-all-ad-access-keys.tpl.php:4
@@ -3704,15 +3748,15 @@ msgid ""
 "to continue: %s."
 msgstr ""
 
-#: functions.php:2741
+#: functions.php:2749
 msgid "Email sent %s."
 msgstr ""
 
-#: functions.php:2919
+#: functions.php:2927
 msgid "SSL Support: Yes."
 msgstr ""
 
-#: functions.php:2921
+#: functions.php:2929
 msgid "SSL Support: No."
 msgstr ""
 
@@ -3883,11 +3927,11 @@ msgid "There were no ads found"
 msgstr ""
 
 #: includes/functions/deprecated.php:143
+#: templates/frontend/category-selector.tpl.php:12
 msgid "Change Category"
 msgstr ""
 
 #: includes/functions/deprecated.php:151
-#: templates/frontend/category-selector.tpl.php:15
 msgid "Category: "
 msgstr ""
 
@@ -4366,7 +4410,7 @@ msgstr ""
 
 #: includes/helpers/widgets/class-listing-form-steps-component.php:51
 #: includes/helpers/widgets/class-listing-form-steps-component.php:66
-#: includes/settings-api.php:211
+#: includes/settings-api.php:226
 msgid "Payment"
 msgstr ""
 
@@ -5646,7 +5690,7 @@ msgid "Enable User Ad Management Panel"
 msgstr ""
 
 #: includes/settings/class-general-settings.php:28
-#: includes/settings-api.php:417
+#: includes/settings-api.php:432
 msgid "General Settings"
 msgstr ""
 
@@ -6866,143 +6910,154 @@ msgstr ""
 msgid "Show Classifieds Bar"
 msgstr ""
 
-#: includes/settings-api.php:204
-msgid "Show Place Ad menu item"
-msgstr ""
-
-#: includes/settings-api.php:205
-msgid "Show Edit Ad menu item"
-msgstr ""
-
-#: includes/settings-api.php:206
-msgid "Show Browse Ads menu item"
+#: includes/settings-api.php:201
+msgid ""
+"The Classifieds Bar is a section shown at the top of the plugin pages, "
+"displaying a Search Bar and multiple menu items. Each element of the bar can "
+"be enabled or disabled using the settings below."
 msgstr ""
 
 #: includes/settings-api.php:207
-msgid "Show Search Ads menu item"
+msgid "Show Search Bar"
+msgstr ""
+
+#: includes/settings-api.php:213
+msgid "Show Place Ad menu item"
+msgstr ""
+
+#: includes/settings-api.php:214
+msgid "Show Edit Ad menu item"
 msgstr ""
 
 #: includes/settings-api.php:215
+msgid "Show Browse Ads menu item"
+msgstr ""
+
+#: includes/settings-api.php:216
+msgid "Show Search Ads menu item"
+msgstr ""
+
+#: includes/settings-api.php:230
 msgid "PayPal Settings"
 msgstr ""
 
-#: includes/settings-api.php:217
+#: includes/settings-api.php:232
 msgid "Activate PayPal?"
 msgstr ""
 
-#: includes/settings-api.php:222
+#: includes/settings-api.php:237
 msgid "PayPal receiver email"
 msgstr ""
 
-#: includes/settings-api.php:225
+#: includes/settings-api.php:240
 msgid ""
 "Email address for PayPal payments (if running in pay mode and if PayPal is "
 "activated)."
 msgstr ""
 
-#: includes/settings-api.php:231
+#: includes/settings-api.php:246
 msgid "PayPal Merchant ID"
 msgstr ""
 
-#: includes/settings-api.php:245
+#: includes/settings-api.php:260
 msgid "PayPal currency code"
 msgstr ""
 
-#: includes/settings-api.php:248
+#: includes/settings-api.php:263
 msgid "The currency in which you would like to receive your PayPal payments"
 msgstr ""
 
-#: includes/settings-api.php:252
+#: includes/settings-api.php:267
 msgid "The PayPal Currency Code must be one of <currency-codes>."
 msgstr ""
 
-#: includes/settings-api.php:261
+#: includes/settings-api.php:276
 msgid "2Checkout Settings"
 msgstr ""
 
-#: includes/settings-api.php:263
+#: includes/settings-api.php:278
 msgid "Activate 2Checkout"
 msgstr ""
 
-#: includes/settings-api.php:263
+#: includes/settings-api.php:278
 msgid "Activate 2Checkout?"
 msgstr ""
 
-#: includes/settings-api.php:265
+#: includes/settings-api.php:280
 msgid "2Checkout account"
 msgstr ""
 
-#: includes/settings-api.php:265
+#: includes/settings-api.php:280
 msgid "Account for 2Checkout payments."
 msgstr ""
 
-#: includes/settings-api.php:270
+#: includes/settings-api.php:285
 msgid "2Checkout Currency Code"
 msgstr ""
 
-#: includes/settings-api.php:270
+#: includes/settings-api.php:285
 msgid "The currency in which you would like to receive your 2Checkout payments"
 msgstr ""
 
-#: includes/settings-api.php:277
+#: includes/settings-api.php:292
 msgid "AdSense"
 msgstr ""
 
-#: includes/settings-api.php:281
+#: includes/settings-api.php:296
 msgid "AdSense Settings"
 msgstr ""
 
-#: includes/settings-api.php:284
+#: includes/settings-api.php:299
 msgid "Above Ad text."
 msgstr ""
 
-#: includes/settings-api.php:285
+#: includes/settings-api.php:300
 msgid "Under Ad text."
 msgstr ""
 
-#: includes/settings-api.php:286
+#: includes/settings-api.php:301
 msgid "Below Ad images."
 msgstr ""
 
-#: includes/settings-api.php:289
+#: includes/settings-api.php:304
 msgid "Activate AdSense"
 msgstr ""
 
-#: includes/settings-api.php:290
+#: includes/settings-api.php:305
 msgid "AdSense code"
 msgstr ""
 
-#: includes/settings-api.php:290
+#: includes/settings-api.php:305
 msgid "Your AdSense code (Best if 468x60 text or banner.)"
 msgstr ""
 
-#: includes/settings-api.php:291
+#: includes/settings-api.php:306
 msgid "Show AdSense at position"
 msgstr ""
 
-#: includes/settings-api.php:295
+#: includes/settings-api.php:310
 msgid "Registration"
 msgstr ""
 
-#: includes/settings-api.php:303
+#: includes/settings-api.php:318
 msgid "General Email Settings"
 msgstr ""
 
-#: includes/settings-api.php:305
+#: includes/settings-api.php:320
 msgid "TO email address for outgoing emails"
 msgstr ""
 
-#: includes/settings-api.php:305
+#: includes/settings-api.php:320
 msgid ""
-"Emails are sent to your WordPress admin email. If you prefere to receive "
+"Emails are sent to your WordPress admin email. If you prefer to receive "
 "emails in a different address, please enter it here."
 msgstr ""
 
-#: includes/settings-api.php:310
+#: includes/settings-api.php:325
 msgid "FROM email address for outgoing emails"
 msgstr ""
 
-#: includes/settings-api.php:313
+#: includes/settings-api.php:328
 msgid ""
 "Emails go out using your WordPress admin email. If you prefer to use a "
 "different email enter it here. Some servers will not process outgoing emails "
@@ -7014,12 +7069,12 @@ msgid ""
 "hosting account."
 msgstr ""
 
-#: includes/settings-api.php:316
+#: includes/settings-api.php:331
 msgid ""
 "Use wordpress@<website-domain> as the FROM email address for outgoing emails."
 msgstr ""
 
-#: includes/settings-api.php:325
+#: includes/settings-api.php:340
 msgid ""
 "That's the address WordPress uses to send its emails. If you are receiving "
 "the registration emails and other WordPress notifications succesfully, then "
@@ -7028,11 +7083,11 @@ msgid ""
 "emails setting is ignored."
 msgstr ""
 
-#: includes/settings-api.php:328
+#: includes/settings-api.php:343
 msgid "Use sender email for reply messages"
 msgstr ""
 
-#: includes/settings-api.php:328
+#: includes/settings-api.php:343
 msgid ""
 "Check this to use the name and email of the sender in the FROM field when "
 "someone replies to an ad. When unchecked the messages go out with the "
@@ -7045,170 +7100,170 @@ msgid ""
 "sure your WordPress admin email address is tied to your hosting account."
 msgstr ""
 
-#: includes/settings-api.php:338
+#: includes/settings-api.php:353
 msgid "Include the name of the recipient in the email address"
 msgstr ""
 
-#: includes/settings-api.php:344
+#: includes/settings-api.php:359
 msgid "Include Ad access key in email messages"
 msgstr ""
 
-#: includes/settings-api.php:344
+#: includes/settings-api.php:359
 msgid ""
 "Include Ad access key in email notifications. You may want to uncheck this "
 "option if you are using the Ad Management panel, but is not necessary."
 msgstr ""
 
-#: includes/settings-api.php:348
+#: includes/settings-api.php:363
 msgid "Ad Posted Message"
 msgstr ""
 
-#: includes/settings-api.php:350
+#: includes/settings-api.php:365
 msgid "Subject for Ad posted notification email"
 msgstr ""
 
-#: includes/settings-api.php:350
+#: includes/settings-api.php:365
 msgid "Your Classified Ad listing has been submitted"
 msgstr ""
 
-#: includes/settings-api.php:350
+#: includes/settings-api.php:365
 msgid "Subject line for email sent out when someone posts an Ad"
 msgstr ""
 
-#: includes/settings-api.php:351
+#: includes/settings-api.php:366
 msgid "Body for Ad posted notification email"
 msgstr ""
 
-#: includes/settings-api.php:351
+#: includes/settings-api.php:366
 msgid ""
 "Thank you for submitting your Classified Ad. The details of your ad are "
 "shown below."
 msgstr ""
 
-#: includes/settings-api.php:351
+#: includes/settings-api.php:366
 msgid "Message body text for email sent out when someone posts an Ad"
 msgstr ""
 
-#: includes/settings-api.php:355
+#: includes/settings-api.php:370
 msgid "Reply to Ad Message"
 msgstr ""
 
-#: includes/settings-api.php:357
+#: includes/settings-api.php:372
 msgid "Subject for Reply to Ad email"
 msgstr ""
 
-#: includes/settings-api.php:357
+#: includes/settings-api.php:372
 msgid "Response to your AWPCP Demo Ad"
 msgstr ""
 
-#: includes/settings-api.php:357
+#: includes/settings-api.php:372
 msgid "Subject line for email sent out when someone replies to Ad"
 msgstr ""
 
-#: includes/settings-api.php:358
+#: includes/settings-api.php:373
 msgid "Body for Reply to Ad email"
 msgstr ""
 
-#: includes/settings-api.php:358
+#: includes/settings-api.php:373
 msgid "Someone has responded to your AWPCP Demo Ad"
 msgstr ""
 
-#: includes/settings-api.php:358
+#: includes/settings-api.php:373
 msgid "Message body text for email sent out when someone replies to Ad"
 msgstr ""
 
-#: includes/settings-api.php:359
+#: includes/settings-api.php:374
 msgid "Notify admin about contact message"
 msgstr ""
 
-#: includes/settings-api.php:359
+#: includes/settings-api.php:374
 msgid ""
 "An email will be sent to the administrator every time a visitor sends a "
 "message to one of the Ad posters through the Reply to Ad page."
 msgstr ""
 
-#: includes/settings-api.php:363
+#: includes/settings-api.php:378
 msgid "Resend Access Key Message"
 msgstr ""
 
-#: includes/settings-api.php:365
+#: includes/settings-api.php:380
 msgid "Subject for Request Ad Access Key email"
 msgstr ""
 
-#: includes/settings-api.php:365
+#: includes/settings-api.php:380
 msgid "The Classified Ad's ad access key you requested"
 msgstr ""
 
-#: includes/settings-api.php:365
+#: includes/settings-api.php:380
 msgid ""
 "Subject line for email sent out when someone requests their ad access key "
 "resent"
 msgstr ""
 
-#: includes/settings-api.php:366
+#: includes/settings-api.php:381
 msgid "Body for Request Ad Access Key email"
 msgstr ""
 
-#: includes/settings-api.php:366
+#: includes/settings-api.php:381
 msgid ""
 "You asked to have your Classified Ad's access key resent. Below are all the "
 "Ad access keys in the system that are tied to the email address you provided"
 msgstr ""
 
-#: includes/settings-api.php:366
+#: includes/settings-api.php:381
 msgid ""
 "Message body text for email sent out when someone requests their ad access "
 "key resent"
 msgstr ""
 
-#: includes/settings-api.php:370
+#: includes/settings-api.php:385
 msgid "Verify Email Message"
 msgstr ""
 
-#: includes/settings-api.php:372
+#: includes/settings-api.php:387
 msgid "Subject for Verification email"
 msgstr ""
 
-#: includes/settings-api.php:372
+#: includes/settings-api.php:387
 msgid "Verify the email address used for Ad $title"
 msgstr ""
 
-#: includes/settings-api.php:372
+#: includes/settings-api.php:387
 msgid "Subject line for email sent out to verify the email address."
 msgstr ""
 
-#: includes/settings-api.php:373
+#: includes/settings-api.php:388
 msgid "Body for Verification email"
 msgstr ""
 
-#: includes/settings-api.php:373
+#: includes/settings-api.php:388
 msgid ""
 "You can use the following placeholders to personalize the body of the email: "
 "$title, $author_name,$verification_email, $website_name, $website_url."
 msgstr ""
 
-#: includes/settings-api.php:377
+#: includes/settings-api.php:392
 msgid "Incomplete Payment Message"
 msgstr ""
 
-#: includes/settings-api.php:379
+#: includes/settings-api.php:394
 msgid "Subject for Incomplete Payment email"
 msgstr ""
 
-#: includes/settings-api.php:379
+#: includes/settings-api.php:394
 msgid "There was a problem processing your payment"
 msgstr ""
 
-#: includes/settings-api.php:379
+#: includes/settings-api.php:394
 msgid ""
 "Subject line for email sent out when the payment processing does not complete"
 msgstr ""
 
-#: includes/settings-api.php:380
+#: includes/settings-api.php:395
 msgid "Body for Incomplete Payment email"
 msgstr ""
 
-#: includes/settings-api.php:380
+#: includes/settings-api.php:395
 msgid ""
 "There was a problem encountered during your attempt to submit payment. If "
 "funds were removed from the account you tried to use to make a payment "
@@ -7216,283 +7271,295 @@ msgid ""
 "assistance."
 msgstr ""
 
-#: includes/settings-api.php:380
+#: includes/settings-api.php:395
 msgid ""
 "Message body text for email sent out when the payment processing does not "
 "complete"
 msgstr ""
 
-#: includes/settings-api.php:384
+#: includes/settings-api.php:399
 msgid "Renew Ad Message"
 msgstr ""
 
-#: includes/settings-api.php:386
+#: includes/settings-api.php:401
 msgid "Subject for Renew Ad email"
 msgstr ""
 
-#: includes/settings-api.php:386
+#: includes/settings-api.php:401
 msgid "Your classifieds listing Ad will expire in %d days."
 msgstr ""
 
-#: includes/settings-api.php:386
+#: includes/settings-api.php:401
 msgid "Subject line for email sent out when an Ad is about to expire."
 msgstr ""
 
-#: includes/settings-api.php:387 includes/settings-api.php:394
+#: includes/settings-api.php:402 includes/settings-api.php:409
 msgid "Body for Renew Ad email"
 msgstr ""
 
-#: includes/settings-api.php:387
+#: includes/settings-api.php:402
 msgid ""
 "This is an automated notification that your Classified Ad will expire in %d "
 "days."
 msgstr ""
 
-#: includes/settings-api.php:387
+#: includes/settings-api.php:402
 msgid ""
 "Message body text for email sent out when an Ad is about to expire. Use %d "
 "as placeholder for the number of days before the Ad expires."
 msgstr ""
 
-#: includes/settings-api.php:391
+#: includes/settings-api.php:406
 msgid "Ad Renewed Message"
 msgstr ""
 
-#: includes/settings-api.php:393
+#: includes/settings-api.php:408
 msgid "Subject for Ad Renewed email"
 msgstr ""
 
-#: includes/settings-api.php:393
+#: includes/settings-api.php:408
 msgid "Your classifieds listing \"%s\" has been successfully renewed."
 msgstr ""
 
-#: includes/settings-api.php:393
+#: includes/settings-api.php:408
 msgid "Subject line for email sent out when an Ad is successfully renewed."
 msgstr ""
 
-#: includes/settings-api.php:394
+#: includes/settings-api.php:409
 msgid ""
 "Your classifieds listing Ad has been successfully renewed. More information "
 "below:"
 msgstr ""
 
-#: includes/settings-api.php:394
+#: includes/settings-api.php:409
 msgid ""
 "Message body text for email sent out when an Ad is successfully renewed. "
 msgstr ""
 
-#: includes/settings-api.php:398
+#: includes/settings-api.php:413
 msgid "Ad Expired Message"
 msgstr ""
 
-#: includes/settings-api.php:400
+#: includes/settings-api.php:415
 msgid "Subject for Ad Expired email"
 msgstr ""
 
-#: includes/settings-api.php:400
+#: includes/settings-api.php:415
 msgid "Your classifieds listing at %s has expired"
 msgstr ""
 
-#: includes/settings-api.php:400
+#: includes/settings-api.php:415
 msgid "Subject line for email sent out when an ad has auto-expired"
 msgstr ""
 
-#: includes/settings-api.php:401
+#: includes/settings-api.php:416
 msgid "Body for Ad Expired email"
 msgstr ""
 
-#: includes/settings-api.php:401
+#: includes/settings-api.php:416
 msgid "This is an automated notification that your Classified Ad has expired."
 msgstr ""
 
-#: includes/settings-api.php:401
+#: includes/settings-api.php:416
 msgid "Message body text for email sent out when an ad has auto-expired"
 msgstr ""
 
-#: includes/settings-api.php:405
+#: includes/settings-api.php:420
 msgid "Advanced Email Configuration"
 msgstr ""
 
-#: includes/settings-api.php:407
+#: includes/settings-api.php:422
 msgid "Enable external SMTP server"
 msgstr ""
 
-#: includes/settings-api.php:407
+#: includes/settings-api.php:422
 msgid "Enabled external SMTP server (if emails not processing normally)."
 msgstr ""
 
-#: includes/settings-api.php:408
+#: includes/settings-api.php:423
 msgid "SMTP host"
 msgstr ""
 
-#: includes/settings-api.php:408
+#: includes/settings-api.php:423
 msgid "SMTP host (if emails not processing normally)."
 msgstr ""
 
-#: includes/settings-api.php:409
+#: includes/settings-api.php:424
 msgid "SMTP port"
 msgstr ""
 
-#: includes/settings-api.php:409
+#: includes/settings-api.php:424
 msgid "SMTP port (if emails not processing normally)."
 msgstr ""
 
-#: includes/settings-api.php:410
+#: includes/settings-api.php:425
 msgid "SMTP username"
 msgstr ""
 
-#: includes/settings-api.php:410
+#: includes/settings-api.php:425
 msgid "SMTP username (if emails not processing normally)."
 msgstr ""
 
-#: includes/settings-api.php:411
+#: includes/settings-api.php:426
 msgid "SMTP password"
 msgstr ""
 
-#: includes/settings-api.php:411
+#: includes/settings-api.php:426
 msgid "SMTP password (if emails not processing normally)."
 msgstr ""
 
-#: includes/settings-api.php:419
+#: includes/settings-api.php:434
 msgid "Send Ads to Facebook Automatically"
 msgstr ""
 
-#: includes/settings-api.php:419
+#: includes/settings-api.php:434
 msgid ""
 "If checked, Ads will be posted to Facebook shortly after they are posted, "
 "enabled or edited, whichever occurs first. Ads will be posted only once. "
 "Please note that disabled Ads cannot be posted to Facebook."
 msgstr ""
 
-#: includes/settings-api.php:610
+#: includes/settings-api.php:632
 msgid "<module-name> License Key"
 msgstr ""
 
-#: includes/settings-api.php:619
+#: includes/settings-api.php:641
 msgid "Licenses"
 msgstr ""
 
-#: includes/settings-api.php:759
+#: includes/settings-api.php:781
 msgid ""
 "Require Registration setting was enabled automatically because you activated "
 "the User Ad Management panel."
 msgstr ""
 
-#: includes/settings-api.php:776
+#: includes/settings-api.php:798
 msgid ""
 "Akismet SPAM control cannot be enabled because Akismet plugin is not "
 "installed or activated."
 msgstr ""
 
-#: includes/settings-api.php:780
+#: includes/settings-api.php:802
 msgid ""
 "Akismet SPAM control cannot be enabled because Akismet is not properly "
 "configured."
 msgstr ""
 
-#: includes/settings-api.php:803
+#: includes/settings-api.php:825
 msgid ""
 "reCAPTCHA can't be used because the public key and private key settings are "
 "required for reCAPTCHA to work properly."
 msgstr ""
 
-#: includes/settings-api.php:805
+#: includes/settings-api.php:827
 msgid ""
 "reCAPTCHA can't be used because the public key setting is required for "
 "reCAPTCHA to work properly."
 msgstr ""
 
-#: includes/settings-api.php:807
+#: includes/settings-api.php:829
 msgid ""
 "reCAPTCHA can't be used because the private key setting is required for "
 "reCAPTCHA to work properly."
 msgstr ""
 
-#: includes/settings-api.php:820
+#: includes/settings-api.php:842
 msgid ""
 "User Ad Management panel was automatically deactivated because you disabled "
 "Require Registration setting."
 msgstr ""
 
-#: includes/settings-api.php:825
+#: includes/settings-api.php:847
 msgid ""
 "Credit System was automatically disabled because you disabled Require "
 "Registration setting."
 msgstr ""
 
-#: includes/settings-api.php:841
+#: includes/settings-api.php:863
 msgid ""
 "There is a problem with the PayPal Currency Code you have entered. It does "
 "not match any of the codes in our list of curencies supported by PayPal."
 msgstr ""
 
-#: includes/settings-api.php:842
+#: includes/settings-api.php:864
 msgid "The available currency codes are"
 msgstr ""
 
-#: includes/settings-api.php:851
+#: includes/settings-api.php:873
 msgid ""
 "Require Registration setting was enabled automatically because you activated "
 "the Credit System."
 msgstr ""
 
-#: includes/settings-api.php:856
+#: includes/settings-api.php:878
 msgid ""
 "Charge Listing Fee setting was enabled automatically because you activated "
 "the Credit System."
 msgstr ""
 
-#: includes/settings-api.php:862
+#: includes/settings-api.php:884
 msgid ""
 "Credit System was disabled automatically because you disabled Charge Listing "
 "Fee."
 msgstr ""
 
-#: includes/settings-api.php:1104
+#: includes/settings-api.php:907
+msgid ""
+"<new-value> is not a valid email address. Please check the value you entered "
+"to use as the FROM email address for outgoing messages."
+msgstr ""
+
+#: includes/settings-api.php:908
+msgid ""
+"<new-value> is not a valid email address. Please check the value you entered "
+"to use as recipient email address for admin notifications."
+msgstr ""
+
+#: includes/settings-api.php:1177
 msgid "Deactivate"
 msgstr ""
 
-#: includes/settings-api.php:1105
+#: includes/settings-api.php:1178
 msgid "active"
 msgstr ""
 
-#: includes/settings-api.php:1105 includes/settings-api.php:1108
-#: includes/settings-api.php:1118 includes/settings-api.php:1120
-#: includes/settings-api.php:1122
+#: includes/settings-api.php:1178 includes/settings-api.php:1181
+#: includes/settings-api.php:1191 includes/settings-api.php:1193
+#: includes/settings-api.php:1195
 msgid "Status: <license-status>"
 msgstr ""
 
-#: includes/settings-api.php:1107 includes/settings-api.php:1110
+#: includes/settings-api.php:1180 includes/settings-api.php:1183
 msgid "Activate"
 msgstr ""
 
-#: includes/settings-api.php:1108
+#: includes/settings-api.php:1181
 msgid "inactive"
 msgstr ""
 
-#: includes/settings-api.php:1113
+#: includes/settings-api.php:1186
 msgid ""
 "Click the button above to check the status of your license. Please <contact-"
 "link>contact customer support</a> if you think the reported status is wrong."
 msgstr ""
 
-#: includes/settings-api.php:1118
+#: includes/settings-api.php:1191
 msgid "expired"
 msgstr ""
 
-#: includes/settings-api.php:1120
+#: includes/settings-api.php:1193
 msgid "disabled"
 msgstr ""
 
-#: includes/settings-api.php:1122
+#: includes/settings-api.php:1195
 msgid "unknown"
 msgstr ""
 
-#: includes/settings-api.php:1161
+#: includes/settings-api.php:1234
 msgid "Documentation on date and time formatting"
 msgstr ""
 
-#: includes/settings-api.php:1182
+#: includes/settings-api.php:1255
 msgid "Setting <setting-name> not available."
 msgstr ""
 
@@ -8014,6 +8081,41 @@ msgstr ""
 msgid "No payment methods available."
 msgstr ""
 
+#: templates/email/listing-edit-link-with-access-token.tpl.php:1
+msgctxt "edit link email"
+msgid "Hi <contact-name>,"
+msgstr ""
+
+#: templates/email/listing-edit-link-with-access-token.tpl.php:3
+msgctxt "edit link email"
+msgid ""
+"The access key and edit link for the listing <listing-title> are shown below:"
+msgstr ""
+
+#: templates/email/listing-edit-link-with-access-token.tpl.php:5
+msgctxt "edit link email"
+msgid "Access Key: <access-key>"
+msgstr ""
+
+#: templates/email/listing-edit-link-with-access-token.tpl.php:6
+msgctxt "edit link email"
+msgid "Email Address: <email-address>"
+msgstr ""
+
+#: templates/email/listing-edit-link-with-access-token.tpl.php:7
+msgctxt "edit link email"
+msgid "Edit Link: <edit-link>"
+msgstr ""
+
+#: templates/email/listing-edit-link-with-access-token.tpl.php:11
+msgctxt "edit link email"
+msgid ""
+"You are receiving this message because you tried to edit this listing using "
+"an expired link or because you or the administrator requested the access key "
+"to be sent. If that's not the case, please ignore this message, or contact "
+"the adiministrator if you have received similar messages today."
+msgstr ""
+
 #: templates/email/listing-is-about-to-expire-notification.plain.tpl.php:3
 msgid "Listing Details are below:"
 msgstr ""
@@ -8084,6 +8186,6 @@ msgstr ""
 msgid "Return to main classifieds"
 msgstr ""
 
-#: templates/frontend/listings.tpl.php:20
+#: templates/frontend/listings.tpl.php:24
 msgid "There were no listings found."
 msgstr ""

@@ -60,7 +60,10 @@ class AWPCP_ModulesUpdater {
         try {
             $information = $this->get_information_for_module( $module );
         } catch ( AWPCP_Easy_Digital_Downloads_Exception $e ) {
-            awpcp_flash( $e->getMessage() );
+            awpcp_flash( $e->getMessage(), array( 'notice', 'notice-error' ) );
+            return $plugins_information;
+        } catch ( AWPCP_HTTP_Exception $e ) {
+            awpcp_flash( $e->getMessage(), array( 'notice', 'notice-error' ) );
             return $plugins_information;
         }
 

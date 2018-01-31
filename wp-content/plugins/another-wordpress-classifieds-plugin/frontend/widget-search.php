@@ -132,7 +132,7 @@ class AWPCP_Search_Widget extends WP_Widget {
             echo '<input type="hidden" name="' . esc_attr( $param ) . '" value="' . esc_attr( $value ) . '" />';
         }
 
-        echo '<input type="hidden" name="a" value="dosearch"/>';
+        echo '<input type="hidden" name="awpcp-step" value="dosearch"/>';
 
 		$keywordphrase = stripslashes_deep( awpcp_request_param( 'keywordphrase' ) );
 

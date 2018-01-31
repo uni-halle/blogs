@@ -296,12 +296,12 @@ if (typeof jQuery !== 'undefined') {
                 }
 
                 if ( 'textfield' === mode ) {
-                    return;
-                }
+                    next[0].show( true );
+                    hidden = next.slice( 1 );
 
                 // fetch new options only if the new value is one of
                 // the options
-                if (null !== value && undefined !== value && value.length) {
+                } else if ( null !== value && undefined !== value && value.length ) {
                     first = next[0];
                     first.selected(undefined);
 

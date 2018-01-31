@@ -68,11 +68,22 @@ function( $ ) {
             self.change(parseInt($(this).val(), 10));
         });
 
-        $.subscribe('/category/widget/updated/' + self.identifier, function(event, dropdown, parent_category_id) {
+        $.subscribe( '/category/widget/updated/' + self.identifier, function( event, dropdown, category_id ) {
             if (self.parent === dropdown) {
-                self.render(parent_category_id);
+                self.render( category_id );
             }
-        });
+
+            if ( ! self.child || ! self.category_id ) {
+                return;
+            }
+
+            if ( self.child.dropdown === dropdown && category_id === null ) {
+                event.stopImmediatePropagation();
+                setTimeout( function() {
+                    self.change( self.category_id );
+                }, 500 );
+            }
+        } );
 
         self.dropdown.val(self.category ? self.category : '');
     };

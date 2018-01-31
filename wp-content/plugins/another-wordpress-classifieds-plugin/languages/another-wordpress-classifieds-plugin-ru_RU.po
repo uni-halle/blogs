@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Another WordPress Classifieds Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/another-wordpress-classifieds-plugin\n"
-"POT-Creation-Date: 2017-09-24 22:29:10+00:00\n"
-"PO-Revision-Date: 2017-09-24 22:29+0000\n"
+"POT-Creation-Date: 2017-10-18 23:54:33+00:00\n"
+"PO-Revision-Date: 2017-11-27 23:19+0000\n"
 "Last-Translator: Willington Vega <wvega@wvega.com>\n"
 "Language-Team: Russian (Russia) (http://www.transifex.com/wp-translations/another-wordpress-classifieds-plugin/language/ru_RU/)\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,7 @@ msgstr "Кредиты"
 #: admin/admin-panel-fees-table.php:120
 #: admin/templates/admin-panel-credit-plans-entry-form.tpl.php:19
 #: admin/templates/admin-panel-fees-entry-form.tpl.php:25
-#: frontend/placeholders.php:452 frontend/templates/page-search-ads.tpl.php:46
+#: frontend/placeholders.php:454 frontend/templates/page-search-ads.tpl.php:46
 #: includes/settings/class-payment-general-settings.php:16
 msgid "Price"
 msgstr "Цена"
@@ -152,7 +152,7 @@ msgstr "Импортировать"
 #: admin/templates/admin-panel-fees-entry-form.tpl.php:35
 #: includes/settings/class-payment-general-settings.php:18
 msgid "Duration"
-msgstr "Длительность"
+msgstr "Срок"
 
 #: admin/admin-panel-fees-table.php:115
 #: admin/templates/admin-panel-fees-entry-form.tpl.php:40
@@ -396,11 +396,11 @@ msgid "Keyword"
 msgstr "Ключевому слову"
 
 #: admin/admin-panel-listings-table.php:287 frontend/page-show-ad.php:58
-#: frontend/placeholders.php:578
+#: frontend/placeholders.php:580
 msgid "Location"
 msgstr "Местонахождение"
 
-#: admin/admin-panel-listings-table.php:288 frontend/placeholders.php:670
+#: admin/admin-panel-listings-table.php:288 frontend/placeholders.php:672
 msgid "Phone"
 msgstr "Телефон"
 
@@ -511,8 +511,8 @@ msgid "No Ad ID was specified."
 msgstr "Не было указано ID объявления."
 
 #: admin/admin-panel-listings.php:305 frontend/ad-functions.php:242
-#: frontend/page-edit-ad.php:171 frontend/page-edit-ad.php:229
-#: frontend/page-edit-ad.php:367 frontend/page-edit-ad.php:395
+#: frontend/page-edit-ad.php:173 frontend/page-edit-ad.php:231
+#: frontend/page-edit-ad.php:369 frontend/page-edit-ad.php:397
 msgid "The specified Ad doesn't exists."
 msgstr "Указанное объявление не существует."
 
@@ -608,38 +608,38 @@ msgstr "Объявление не было отмечено как провер�
 
 #: admin/admin-panel-listings.php:545
 msgid "Access Key for \"%s\""
-msgstr ""
+msgstr "Ключ доступа для «%s»"
 
-#: admin/admin-panel-listings.php:553
+#: admin/admin-panel-listings.php:554
 msgid "The access key was sent to %s."
 msgstr "Ключ доступа был отправлен на %s."
 
-#: admin/admin-panel-listings.php:555 frontend/page-edit-ad.php:533
+#: admin/admin-panel-listings.php:556 frontend/page-edit-ad.php:535
 msgid "There was an error trying to send the email to %s."
 msgstr "Произошла ошибка при попытке отправить сообщение для %s."
 
-#: admin/admin-panel-listings.php:632
+#: admin/admin-panel-listings.php:633
 msgid "%d of %d Ads were deleted. %d generated errors."
 msgstr "%d из %d Объявлений были удалены. %d возникло ошибок."
 
-#: admin/admin-panel-listings.php:634
+#: admin/admin-panel-listings.php:635
 msgid "%d of %d Ads were deleted."
 msgstr "%d из %d Объявлений были удалены"
 
-#: admin/admin-panel-listings.php:638
+#: admin/admin-panel-listings.php:639
 msgid "%d of %d Ads don't exist."
 msgstr "%d из %d объявлений не существует."
 
-#: admin/admin-panel-listings.php:642
+#: admin/admin-panel-listings.php:643
 msgid "%d of %d Ads weren't deleted because you are not authorized."
 msgstr "%d из %d объявлений были удалены из-за того, что вы незарегистрированы."
 
-#: admin/admin-panel-listings.php:669
+#: admin/admin-panel-listings.php:670
 msgctxt "ajax delete ad"
 msgid "The specified Ad doesn't exists."
 msgstr "Указанное объявление не существует."
 
-#: admin/admin-panel-listings.php:710
+#: admin/admin-panel-listings.php:711 frontend/page-edit-ad.php:558
 msgid "The specified listing doesn't exists."
 msgstr "Указанное объявление не существует."
 
@@ -946,41 +946,41 @@ msgstr "Порядок"
 msgid "Action"
 msgstr "Действие"
 
-#: admin/admin-panel.php:1121
+#: admin/admin-panel.php:1127
 msgid "The new category was successfully added."
 msgstr "Новая категория была успешно добавлена."
 
-#: admin/admin-panel.php:1140
+#: admin/admin-panel.php:1146
 msgid ""
 "Sorry but you cannot delete the default category. The default category can "
 "only be renamed"
 msgstr "Извините, но вы не можете удалить удалить категорию по умолчанию. Категория по умолчанию может быть только переименована"
 
-#: admin/admin-panel.php:1208
+#: admin/admin-panel.php:1214
 msgid "The category has been deleted"
 msgstr "Категория была удалена"
 
-#: admin/admin-panel.php:1220
+#: admin/admin-panel.php:1226
 msgid "Your category changes have been saved."
 msgstr "Ваши изменения в категории были сохранены."
 
-#: admin/admin-panel.php:1227
+#: admin/admin-panel.php:1233
 msgid "No changes made to categories."
 msgstr "Изменения не внесены в категории."
 
-#: admin/admin-panel.php:1266
+#: admin/admin-panel.php:1272
 msgid ""
 "With the exception of any category that was being moved to itself, the "
 "categories have been moved"
 msgstr "Категории перемещены, за исключением категорий которые должны были быть перемещены сами в себя"
 
-#: admin/admin-panel.php:1270
+#: admin/admin-panel.php:1276
 msgid ""
 "The categories have not been moved because you did not indicate where you "
 "want the categories to be moved to"
 msgstr "Категории не были перемещены, так как вы не указали, куда в их переместить"
 
-#: admin/admin-panel.php:1365
+#: admin/admin-panel.php:1371
 msgid "The categories have been deleted"
 msgstr "Категории были удалены"
 
@@ -1514,7 +1514,7 @@ msgstr "В настоящее время ваша система настрое�
 msgid ""
 "AWPCP is highly customizable. Use the next button to go to the Settings "
 "section to fit AWPCP to your needs."
-msgstr "AWPCP имеет много настроек. Используйте следующую кнопку, чтобы перейти в раздел настроек и сконфигурировать AWPCP в соответствии с вашими потребностями."
+msgstr "AWPCP имеет много настроек. Используйте следующую кнопку, чтобы перейти в раздел настроек и настроить AWPCP в соответствии с вашими потребностями."
 
 #: admin/templates/admin-panel-home.tpl.php:128
 msgid "Configure AWPCP"
@@ -1728,9 +1728,11 @@ msgstr "Страница: %s (Имя по умолчанию: %s)."
 
 #: admin/templates/admin-panel-settings-pages-settings.tpl.php:62
 msgid ""
-"If you are having problems with your plugin pages, you can delete them and "
-"use the Restore button to have the plugin create them again."
-msgstr "Если у вас возникли проблемы со страницами плагина, Вы можете удалить их и использовать кнопку Восстановить, чтобы плагин создал их снова."
+"Use the button below to have the plugin attempt to find the necessary pages."
+" If you continue to have problems or seeing page related warnings above, you"
+" can delete affected plugin pages and use the Restore Pages button to have "
+"the plugin create them again."
+msgstr "Нажмите кнопку ниже, чтобы плагин попытался найти необходимые страницы. Если проблемы останутся, вы можете удалить страницы плагина и воспользоваться кнопкой «Восстановить страницы», чтобы создать их заново."
 
 #: admin/templates/admin-panel-settings-pages-settings.tpl.php:63
 msgid "Restore Pages"
@@ -1966,7 +1968,7 @@ msgid "Premium Modules"
 msgstr "Премиум-модули"
 
 #: admin/templates/admin-sidebar.tpl.php:154
-#: admin/templates/admin-sidebar.tpl.php:195 functions.php:2911
+#: admin/templates/admin-sidebar.tpl.php:195 functions.php:2919
 msgid "Installed"
 msgstr "Установлен"
 
@@ -1975,7 +1977,7 @@ msgid "No premium modules installed."
 msgstr "Премиум-модули не установлены"
 
 #: admin/templates/admin-sidebar.tpl.php:171
-#: admin/templates/admin-sidebar.tpl.php:212 functions.php:2907
+#: admin/templates/admin-sidebar.tpl.php:212 functions.php:2915
 msgid "Not Installed"
 msgstr "Не установлены"
 
@@ -2110,8 +2112,8 @@ msgstr "Модуль поиска по почтовому индексу"
 msgid "This field is required."
 msgstr "Это поле является обязательным."
 
-#: awpcp.php:1248 frontend/page-edit-ad.php:128 frontend/page-edit-ad.php:440
-#: includes/settings-api.php:238
+#: awpcp.php:1248 frontend/page-edit-ad.php:130 frontend/page-edit-ad.php:442
+#: includes/settings-api.php:253
 msgid "Please enter a valid email address."
 msgstr "Пожалуйста, введите действующий адрес электронной почты."
 
@@ -2202,6 +2204,16 @@ msgstr "Произошла ошибка при попытке удалить о�
 msgid "Problem encountered. Cannot complete  request"
 msgstr "Возникла проблема. Невозможно выполнить запрос"
 
+#: frontend/class-categories-selector-component.php:36
+msgctxt "multiple dropdowns category selector"
+msgid "Category: <category-name>"
+msgstr ""
+
+#: frontend/class-categories-selector-component.php:41
+msgctxt "single dropdown category selector"
+msgid "Category:"
+msgstr "Категория:"
+
 #: frontend/class-image-placeholders.php:45
 msgid "Click to enlarge image."
 msgstr "Нажмите, чтобы увеличить"
@@ -2225,8 +2237,8 @@ msgstr "Категория для просмотра не была выбран�
 msgid "Please go to the Ad Management panel to edit your Ads."
 msgstr "Пожалуйста, перейдите к Панели Управления Обявлением для редактирования вашего объявления."
 
-#: frontend/page-edit-ad.php:46 frontend/page-edit-ad.php:119
-#: frontend/page-edit-ad.php:496
+#: frontend/page-edit-ad.php:46 frontend/page-edit-ad.php:121
+#: frontend/page-edit-ad.php:498
 msgid "Click here"
 msgstr "Нажмите здесь"
 
@@ -2234,85 +2246,103 @@ msgstr "Нажмите здесь"
 msgid "You are not allowed to edit the specified Ad."
 msgstr "Вы не можете редактировать указанное объявление."
 
-#: frontend/page-edit-ad.php:118 frontend/page-edit-ad.php:495
+#: frontend/page-edit-ad.php:120 frontend/page-edit-ad.php:497
 msgid ""
 "You are currently not logged in, if you have an account in this website you "
 "can log in and go to the Ad Management panel to edit your Ads."
 msgstr "В данный момент вы не выполнили вход в систему, если у вас есть аккаунт на этом сайте, вы можете войти в систему и перейти к Панель Управления Объявлением для редактирования ваших объявлений."
 
-#: frontend/page-edit-ad.php:126
+#: frontend/page-edit-ad.php:128
 msgid ""
 "Please enter the email address you used when you created your Ad in addition"
 " to the Ad access key that was emailed to you after your Ad was submitted."
 msgstr "Пожалуйста, введите адрес электронной почты, который Вы использовали при создании объявления, в дополнение к ключ доступа объявления, который был выслан вам по электронной почте после того, как Вы подали объявление."
 
-#: frontend/page-edit-ad.php:132
+#: frontend/page-edit-ad.php:134
 msgid "Please enter your Ad access key."
 msgstr "Пожалуйста, введите ваш ключ доступа к объявлению."
 
-#: frontend/page-edit-ad.php:138
+#: frontend/page-edit-ad.php:140
 msgid ""
 "The email address and access key you entered does not match any of the Ads "
 "in our system."
 msgstr "Адреса электронной почты и введенный ключ доступа не соответствуют ни одному из объявлений в нашей системе."
 
-#: frontend/page-edit-ad.php:208
+#: frontend/page-edit-ad.php:210
 msgid "Manage Attachments"
 msgstr "Управление Вложениями"
 
-#: frontend/page-edit-ad.php:211
+#: frontend/page-edit-ad.php:213
 msgid "Go to the %s section to manage the Images and Attachments for this Ad."
 msgstr "Перейдите в раздел %s для управления Изображениями и Вложениями этого Объявления."
 
-#: frontend/page-edit-ad.php:280 frontend/page-place-ad.php:1157
+#: frontend/page-edit-ad.php:282 frontend/page-place-ad.php:1157
 msgid ""
 "There was an unexpected error trying to save your Ad details. Please try "
 "again or contact an administrator."
 msgstr "Произошла непредвиденная ошибка при попытке сохранить детали объявления. Пожалуйста, попробуйте снова или обратитесь к администратору."
 
-#: frontend/page-edit-ad.php:302 frontend/page-place-ad.php:1224
+#: frontend/page-edit-ad.php:304 frontend/page-place-ad.php:1224
 msgid "The specified Ad doesn't exists. No images can be added at this time."
 msgstr "Указанное объявление не существует. На данный момент нет изображений которые могут быть добавлены."
 
-#: frontend/page-edit-ad.php:355
+#: frontend/page-edit-ad.php:357
 #: frontend/templates/page-place-ad-preview-step.tpl.php:17
 #: includes/helpers/widgets/class-listing-form-steps-component.php:69
 #: templates/admin/import-listings-admin-page-import-form.tpl.php:30
 msgid "Finish"
 msgstr "Закончить"
 
-#: frontend/page-edit-ad.php:374
+#: frontend/page-edit-ad.php:376
 msgid ""
 "The Ad has been edited successfully. <a href=\"%s\">Go back to view "
 "listings</a>."
 msgstr "Объявление успешно отредактировано.  <a href=\"%s\">Вернуться к просмотру объявлений</a>."
 
-#: frontend/page-edit-ad.php:400
+#: frontend/page-edit-ad.php:402
 msgid "There was a problem trying to delete your Ad. The Ad was not deleted."
 msgstr "Возникла проблема, при попытке удалить ваше объявление. Объявление не было удалено."
 
-#: frontend/page-edit-ad.php:412
+#: frontend/page-edit-ad.php:414
 msgid "Your Ad has been successfully deleted."
 msgstr "Ваше объявление было успешно удалено."
 
-#: frontend/page-edit-ad.php:438
+#: frontend/page-edit-ad.php:440
 msgid "Please enter the email address you used when you created your Ad."
 msgstr "Пожалуйста, введите адрес электронной почты, который Вы использовали при создании объявления."
 
-#: frontend/page-edit-ad.php:447
+#: frontend/page-edit-ad.php:449
 msgid ""
 "The email address you entered does not match any of the Ads in our system."
 msgstr "Введенный адрес электронной почты не соответствует ни одному из объявлений в нашей системе."
 
-#: frontend/page-edit-ad.php:481
+#: frontend/page-edit-ad.php:483
 msgid ""
 "The email address you entered does not match any of the listing in our "
 "system."
 msgstr "Введенный адрес электронной почты не соответствует ни одному из объявлений в нашей системе."
 
-#: frontend/page-edit-ad.php:530
+#: frontend/page-edit-ad.php:532
 msgid "The access keys were sent to %s."
 msgstr "Ключ доступа был отправлен на %s."
+
+#: frontend/page-edit-ad.php:545
+msgid "Invalid access token."
+msgstr ""
+
+#: frontend/page-edit-ad.php:565
+msgid "The sepecified listing cannot be edited using this access code."
+msgstr ""
+
+#: frontend/page-edit-ad.php:583
+msgid "Edit link for listing: %s"
+msgstr ""
+
+#: frontend/page-edit-ad.php:599
+msgid ""
+"The link you used already expired. Please check your email to receive a link"
+" with a new access token."
+msgstr ""
 
 #: frontend/page-place-ad.php:59
 #: includes/views/class-verify-transaction-exists-step-decorator.php:17
@@ -2785,15 +2815,15 @@ msgid ""
 "(the author) can see it."
 msgstr "Объявление временно отключено до тех пор, пока администратор не одобрит его. Только вы, как автор, можете его видеть."
 
-#: frontend/placeholders.php:394
+#: frontend/placeholders.php:396
 msgid "Seller"
 msgstr "Продавец"
 
-#: frontend/placeholders.php:417
+#: frontend/placeholders.php:419
 msgid "Visit Website"
 msgstr "Посетите сайт"
 
-#: frontend/placeholders.php:614
+#: frontend/placeholders.php:616
 msgid "This Ad has been viewed %d time."
 msgid_plural "This Ad has been viewed %d times."
 msgstr[0] "Это объявление было просмотрено %d раз."
@@ -2801,19 +2831,19 @@ msgstr[1] "Это объявление было просмотрено %d раз
 msgstr[2] "Это объявление было просмотрено %d раз."
 msgstr[3] "Это объявление было просмотрено %d раз."
 
-#: frontend/placeholders.php:618
+#: frontend/placeholders.php:620
 msgid "Total views: %d"
 msgstr "Всего просмотров: %d"
 
-#: frontend/placeholders.php:729
+#: frontend/placeholders.php:731
 msgid "Flag Ad"
 msgstr "Пожаловаться на объявление"
 
-#: frontend/placeholders.php:744
+#: frontend/placeholders.php:746
 msgid "Tweet This"
 msgstr "Твитнуть"
 
-#: frontend/placeholders.php:775
+#: frontend/placeholders.php:777
 msgid "Share on Facebook"
 msgstr "Поделиться на Facebook"
 
@@ -3024,6 +3054,20 @@ msgid ""
 "Below you will find the access key for your Ad \"%s\" associated to the "
 "email address %s."
 msgstr "Ниже представлен ключ доступа к вашему объявлению «%s», который связан с электронной почтой %s."
+
+#: frontend/templates/email-send-ad-access-key.tpl.php:7
+#: frontend/templates/email-send-all-ad-access-keys.tpl.php:9
+msgid "Edit Link:"
+msgstr ""
+
+#: frontend/templates/email-send-ad-access-key.tpl.php:9
+#: frontend/templates/email-send-all-ad-access-keys.tpl.php:13
+#: templates/email/listing-edit-link-with-access-token.tpl.php:9
+msgctxt "edit link email"
+msgid ""
+"The edit link will expire after 24 hours. If you use the link after it has "
+"expired, a new one will be delivered to your email address automatically."
+msgstr ""
 
 #: frontend/templates/email-send-all-ad-access-keys.tpl.php:4
 msgid "Total ads found sharing your email address"
@@ -3732,15 +3776,15 @@ msgid ""
 "to continue: %s."
 msgstr "Кроме того, вы можете утвердить изображения перейдя в раздел \"Управление Изображениями\" этого объявления и нажав на \"Включить\", расположенную ниже каждого изображения. Нажмите здесь, чтобы продолжить: %s."
 
-#: functions.php:2741
+#: functions.php:2749
 msgid "Email sent %s."
 msgstr "Отправлено %s."
 
-#: functions.php:2919
+#: functions.php:2927
 msgid "SSL Support: Yes."
 msgstr "Поддержка SSL: Да."
 
-#: functions.php:2921
+#: functions.php:2929
 msgid "SSL Support: No."
 msgstr "Поддержка SSL: Нет."
 
@@ -3911,11 +3955,11 @@ msgid "There were no ads found"
 msgstr "Не было найдено объявлений"
 
 #: includes/functions/deprecated.php:143
+#: templates/frontend/category-selector.tpl.php:12
 msgid "Change Category"
 msgstr "Сменить категорию"
 
 #: includes/functions/deprecated.php:151
-#: templates/frontend/category-selector.tpl.php:15
 msgid "Category: "
 msgstr "Категория: "
 
@@ -4178,23 +4222,23 @@ msgid ""
 "It look's like your server is not authorized to make requests to <host>. "
 "Please contact support and ask them to add your IP address <ip-address> to "
 "the whitelist."
-msgstr ""
+msgstr "Видимо ваш сервер не авторизован для запросов к <host>. Пожалуйста, свяжитесь с техподдержкой и попросите добавить ваш IP-адрес <ip-address> в белый список."
 
 #: includes/helpers/class-http.php:33 includes/helpers/class-http.php:68
 msgid "Include this error message with your report."
-msgstr ""
+msgstr "Включите это сообщение об ошибке в ваш отчет."
 
 #: includes/helpers/class-http.php:62
 msgid ""
 "It was not possible to establish a connection with <host>. The connection "
 "failed with the following error:"
-msgstr ""
+msgstr "Невозможно подключиться к <host>. Соединение оборвалось со следующей ошибкой:"
 
 #: includes/helpers/class-http.php:75
 msgid ""
 "It was not possible to establish a connection with <host>. A problem "
 "occurred in the SSL/TSL handshake:"
-msgstr ""
+msgstr "Невозможно подключиться к <host>. Соединение оборвалось на стадии SSL/TSL handshake:"
 
 #: includes/helpers/class-http.php:80
 msgid ""
@@ -4202,20 +4246,20 @@ msgid ""
 " we require that your server uses a recent version of cURL and a version of "
 "OpenSSL that supports TLSv1.2 (minimum version with support is OpenSSL "
 "1.0.1c)."
-msgstr ""
+msgstr "Чтобы удостовериться в безопасности наших систем и следовать стандартам отрасли, мы требуем, чтобы ваш сервер использовал последнюю версию cURL и версию OpenSSL с поддержкой TLSv1.2 (минимальная такая версия OpenSSL 1.0.1c)."
 
 #: includes/helpers/class-http.php:82
 msgid ""
 "Upgrading your system will not only allow you to communicate with our "
 "servers but also help you prepare your website to interact with services "
 "using the latest security standards."
-msgstr ""
+msgstr "Обновление вашей системы позволит вам не только связываться с нашими серверами, но также подготовит ваш сайт для работы с сервисами с использованием последних стандартов безопасности."
 
 #: includes/helpers/class-http.php:84
 msgid ""
 "Please contact your hosting provider and ask them to upgrade your system. "
 "Include this message if necesary."
-msgstr ""
+msgstr "Пожалуйста, свяжитесь с вашим провайдером и попросите его обновить вашу систему. Приложите это сообщение в случае необходимости."
 
 #: includes/helpers/class-modules-manager.php:160
 msgid ""
@@ -4404,7 +4448,7 @@ msgstr "На кассу"
 
 #: includes/helpers/widgets/class-listing-form-steps-component.php:51
 #: includes/helpers/widgets/class-listing-form-steps-component.php:66
-#: includes/settings-api.php:211
+#: includes/settings-api.php:226
 msgid "Payment"
 msgstr "Оплата"
 
@@ -4954,7 +4998,7 @@ msgstr "Описание (символов)"
 #: includes/payment-terms-table.php:38
 msgctxt "place ad payment terms column headers"
 msgid "Duration"
-msgstr "Длительность"
+msgstr "Срок"
 
 #: includes/payment-terms-table.php:44
 msgctxt "place ad payment terms column headers"
@@ -5696,7 +5740,7 @@ msgid "Enable User Ad Management Panel"
 msgstr "Включить Пользовательскую Панель Управления Объявлениями"
 
 #: includes/settings/class-general-settings.php:28
-#: includes/settings-api.php:417
+#: includes/settings-api.php:432
 msgid "General Settings"
 msgstr "Основные настройки"
 
@@ -6246,7 +6290,7 @@ msgstr "Количество дней перед удалением деакти
 
 #: includes/settings/class-listings-moderation-settings.php:79
 msgid "Allow users to edit the start date of their listings?"
-msgstr ""
+msgstr "Разрешать пользователям редактировать дату начала их объявлений?"
 
 #: includes/settings/class-listings-moderation-settings.php:88
 msgid ""
@@ -6918,144 +6962,155 @@ msgstr "Полоска объявлений"
 msgid "Show Classifieds Bar"
 msgstr "Отобразить полоску объявлений"
 
-#: includes/settings-api.php:204
+#: includes/settings-api.php:201
+msgid ""
+"The Classifieds Bar is a section shown at the top of the plugin pages, "
+"displaying a Search Bar and multiple menu items. Each element of the bar can"
+" be enabled or disabled using the settings below."
+msgstr "«Панель объявлений» — это раздел, размещаемый наверху страниц плагина. Она отображает панель поиска и несколько пунктов меню. Каждый из элементов панели может быть включен или выключен с помощью настроек ниже."
+
+#: includes/settings-api.php:207
+msgid "Show Search Bar"
+msgstr "Показывать панель поиска"
+
+#: includes/settings-api.php:213
 msgid "Show Place Ad menu item"
 msgstr "Паказать пункт меню Разместить Объявление"
 
-#: includes/settings-api.php:205
+#: includes/settings-api.php:214
 msgid "Show Edit Ad menu item"
 msgstr "Показывать пункт меню Редактирвать Объявление"
 
-#: includes/settings-api.php:206
+#: includes/settings-api.php:215
 msgid "Show Browse Ads menu item"
 msgstr "Показать пунк меню Просмотр Объявлений"
 
-#: includes/settings-api.php:207
+#: includes/settings-api.php:216
 msgid "Show Search Ads menu item"
 msgstr "Показать пункт меню Поиск Объявлений"
 
-#: includes/settings-api.php:215
+#: includes/settings-api.php:230
 msgid "PayPal Settings"
 msgstr "Настройки PayPal"
 
-#: includes/settings-api.php:217
+#: includes/settings-api.php:232
 msgid "Activate PayPal?"
 msgstr "Активировать PayPal?"
 
-#: includes/settings-api.php:222
+#: includes/settings-api.php:237
 msgid "PayPal receiver email"
 msgstr "Эл. почта получателя PayPal"
 
-#: includes/settings-api.php:225
+#: includes/settings-api.php:240
 msgid ""
 "Email address for PayPal payments (if running in pay mode and if PayPal is "
 "activated)."
 msgstr "Адрес электронной почты для платежей PayPal (если работает в платном режиме и PayPal активирован)."
 
-#: includes/settings-api.php:231
+#: includes/settings-api.php:246
 msgid "PayPal Merchant ID"
 msgstr "Идентификатор продавца PayPal"
 
-#: includes/settings-api.php:245
+#: includes/settings-api.php:260
 msgid "PayPal currency code"
 msgstr "Код валюты PayPal"
 
-#: includes/settings-api.php:248
+#: includes/settings-api.php:263
 msgid "The currency in which you would like to receive your PayPal payments"
 msgstr "В какой валюте вы хотели бы получать платежи PayPal"
 
-#: includes/settings-api.php:252
+#: includes/settings-api.php:267
 msgid "The PayPal Currency Code must be one of <currency-codes>."
 msgstr "Код валюты для PayPal должен быть одним из <currency-codes>."
 
-#: includes/settings-api.php:261
+#: includes/settings-api.php:276
 msgid "2Checkout Settings"
 msgstr "Настройки 2Checkout"
 
-#: includes/settings-api.php:263
+#: includes/settings-api.php:278
 msgid "Activate 2Checkout"
 msgstr "Активировать 2Checkout"
 
-#: includes/settings-api.php:263
+#: includes/settings-api.php:278
 msgid "Activate 2Checkout?"
 msgstr "Активировать 2Checkout?"
 
-#: includes/settings-api.php:265
+#: includes/settings-api.php:280
 msgid "2Checkout account"
 msgstr "Профиль 2Checkout "
 
-#: includes/settings-api.php:265
+#: includes/settings-api.php:280
 msgid "Account for 2Checkout payments."
 msgstr "Учетная запись для платежей 2Checkout."
 
-#: includes/settings-api.php:270
+#: includes/settings-api.php:285
 msgid "2Checkout Currency Code"
 msgstr "Код валюты 2Checkout"
 
-#: includes/settings-api.php:270
+#: includes/settings-api.php:285
 msgid ""
 "The currency in which you would like to receive your 2Checkout payments"
 msgstr "В какой валюте вы хотели бы получать платежи 2Checkout"
 
-#: includes/settings-api.php:277
+#: includes/settings-api.php:292
 msgid "AdSense"
 msgstr "AdSense"
 
-#: includes/settings-api.php:281
+#: includes/settings-api.php:296
 msgid "AdSense Settings"
 msgstr "Настройки AdSense "
 
-#: includes/settings-api.php:284
+#: includes/settings-api.php:299
 msgid "Above Ad text."
 msgstr "Над текстом объявления."
 
-#: includes/settings-api.php:285
+#: includes/settings-api.php:300
 msgid "Under Ad text."
 msgstr "Под текстом объявления."
 
-#: includes/settings-api.php:286
+#: includes/settings-api.php:301
 msgid "Below Ad images."
 msgstr "Под изображениями объявления."
 
-#: includes/settings-api.php:289
+#: includes/settings-api.php:304
 msgid "Activate AdSense"
 msgstr "Активировать AdSense"
 
-#: includes/settings-api.php:290
+#: includes/settings-api.php:305
 msgid "AdSense code"
 msgstr "Код AdSense"
 
-#: includes/settings-api.php:290
+#: includes/settings-api.php:305
 msgid "Your AdSense code (Best if 468x60 text or banner.)"
 msgstr "Ваш код AdSense (Лучше всего, если Баннер  или текст 468х60.)"
 
-#: includes/settings-api.php:291
+#: includes/settings-api.php:306
 msgid "Show AdSense at position"
 msgstr "Показывать AdSense"
 
-#: includes/settings-api.php:295
+#: includes/settings-api.php:310
 msgid "Registration"
 msgstr "Регистрация"
 
-#: includes/settings-api.php:303
+#: includes/settings-api.php:318
 msgid "General Email Settings"
 msgstr "Основные настройки почты"
 
-#: includes/settings-api.php:305
+#: includes/settings-api.php:320
 msgid "TO email address for outgoing emails"
 msgstr "Адрес эл. почты для исходящих писем"
 
-#: includes/settings-api.php:305
+#: includes/settings-api.php:320
 msgid ""
-"Emails are sent to your WordPress admin email. If you prefere to receive "
+"Emails are sent to your WordPress admin email. If you prefer to receive "
 "emails in a different address, please enter it here."
-msgstr "Письма отправляются на адрес электронной почты администратора WordPress. Если вы предпочитаете получать электронную почту на другой адрес, введите его здесь."
+msgstr ""
 
-#: includes/settings-api.php:310
+#: includes/settings-api.php:325
 msgid "FROM email address for outgoing emails"
 msgstr "Адрес электронной почты для исходящих писем"
 
-#: includes/settings-api.php:313
+#: includes/settings-api.php:328
 msgid ""
 "Emails go out using your WordPress admin email. If you prefer to use a "
 "different email enter it here. Some servers will not process outgoing emails"
@@ -7067,13 +7122,13 @@ msgid ""
 "hosting account."
 msgstr "Исходящие электронные письма уходят с профиля администратора WordPress. Если вы желаете изменить адрес, введите его здесь. Некоторые серверы не будут обрабатывать исходящие письма, которые имеют адреса от gmail, yahoo, hotmail или других бесплатных служб в поле \"От\". Некоторые серверы также не обрабатывают письма, у которых адреса отличаются от электронной почты, связанной с Вашей учетной записью хостинга в поле \"От\". Если у вас такой хостинг, Вы должны оставить этот флажок отключенным и убедится, что адрес электронной почты администратора WordPress , связан с учетной записью вашего хостинга."
 
-#: includes/settings-api.php:316
+#: includes/settings-api.php:331
 msgid ""
 "Use wordpress@<website-domain> as the FROM email address for outgoing "
 "emails."
 msgstr "Использовать wordpress@<website-domain> в поле ОТ исходящих электронных писем."
 
-#: includes/settings-api.php:325
+#: includes/settings-api.php:340
 msgid ""
 "That's the address WordPress uses to send its emails. If you are receiving "
 "the registration emails and other WordPress notifications succesfully, then "
@@ -7082,11 +7137,11 @@ msgid ""
 "emails setting is ignored."
 msgstr "Этот адрес использует WordPress для отправки электронных писем. Если вы нормально получаете регистрационные и остальные письма от WordPress, то возможно вам следует применить эту опцию, чтобы использовать этот же адресс для исходящей почты. Если отмечено, поле ОТ в настройках игнорируется."
 
-#: includes/settings-api.php:328
+#: includes/settings-api.php:343
 msgid "Use sender email for reply messages"
 msgstr "Использование электронной почты отправителя для ответа на сообщения"
 
-#: includes/settings-api.php:328
+#: includes/settings-api.php:343
 msgid ""
 "Check this to use the name and email of the sender in the FROM field when "
 "someone replies to an ad. When unchecked the messages go out with the "
@@ -7100,171 +7155,171 @@ msgid ""
 "account."
 msgstr "Установите этот флажок, чтобы использовать имя и адрес отправителя в поле \"От\", когда кто-нибудь отвечает на объявление. Если флажок не установлен, сообщения уходят с именем сайта и адресом почты админа WP в поле \"От\". Некоторые серверы не будут обрабатывать исходящие сообщения электронной почты, которые имеют адреса электронной почты от gmail, yahoo, hotmail и других бесплатных служб электронной почты в поле \"От\". Некоторые серверы также не обрабатывать электронные письма, которые имеют адреса электронной почты, отличные от электронной почты, связанной с Вашей учетной записью хостинга в поле \"От\". Если у вас такой хостинг, Вы должны оставить этот флажок отключенным и убедится, что адрес электронной почтыа дминистратора WordPress , связан с учетной записью вашего хостинга."
 
-#: includes/settings-api.php:338
+#: includes/settings-api.php:353
 msgid "Include the name of the recipient in the email address"
 msgstr "Включить имя получателя в адрес электронной почты"
 
-#: includes/settings-api.php:344
+#: includes/settings-api.php:359
 msgid "Include Ad access key in email messages"
 msgstr "Включить ключ доступа объявления в сообщение электронной почты"
 
-#: includes/settings-api.php:344
+#: includes/settings-api.php:359
 msgid ""
 "Include Ad access key in email notifications. You may want to uncheck this "
 "option if you are using the Ad Management panel, but is not necessary."
 msgstr "Включите ключ доступа объявления в почтовые уведомления. Вы можете выключить эту опцию, если вы используете Панель Управления Объявлением, но это не является необходимым."
 
-#: includes/settings-api.php:348
+#: includes/settings-api.php:363
 msgid "Ad Posted Message"
 msgstr "Сообщение о Размещении Объявления"
 
-#: includes/settings-api.php:350
+#: includes/settings-api.php:365
 msgid "Subject for Ad posted notification email"
 msgstr "Тема почтового сообщения о размещении объявления"
 
-#: includes/settings-api.php:350
+#: includes/settings-api.php:365
 msgid "Your Classified Ad listing has been submitted"
 msgstr "Ваши список объявлений был размещен"
 
-#: includes/settings-api.php:350
+#: includes/settings-api.php:365
 msgid "Subject line for email sent out when someone posts an Ad"
 msgstr "Тема почтового сообщения, отправляемого, когда кто-то разместил объявление"
 
-#: includes/settings-api.php:351
+#: includes/settings-api.php:366
 msgid "Body for Ad posted notification email"
 msgstr "Текст почтового сообщения о размещении объявления"
 
-#: includes/settings-api.php:351
+#: includes/settings-api.php:366
 msgid ""
 "Thank you for submitting your Classified Ad. The details of your ad are "
 "shown below."
 msgstr "Спасибо за публикацию объявления. Детали объявления показаны ниже."
 
-#: includes/settings-api.php:351
+#: includes/settings-api.php:366
 msgid "Message body text for email sent out when someone posts an Ad"
 msgstr "Текст почтового сообщения, отправляемого, когда кто-то разместил объявление"
 
-#: includes/settings-api.php:355
+#: includes/settings-api.php:370
 msgid "Reply to Ad Message"
 msgstr "Сообщение об Ответе на Объявление"
 
-#: includes/settings-api.php:357
+#: includes/settings-api.php:372
 msgid "Subject for Reply to Ad email"
 msgstr "Тема почтового сообщения об ответе на объявление"
 
-#: includes/settings-api.php:357
+#: includes/settings-api.php:372
 msgid "Response to your AWPCP Demo Ad"
 msgstr "Ответ на ваш AWPCP демо-объявление"
 
-#: includes/settings-api.php:357
+#: includes/settings-api.php:372
 msgid "Subject line for email sent out when someone replies to Ad"
 msgstr "Тема почтового сообщения, отправляемого, когда кто-то ответил на объявление"
 
-#: includes/settings-api.php:358
+#: includes/settings-api.php:373
 msgid "Body for Reply to Ad email"
 msgstr "Текст почтового сообщения об ответе на объявление"
 
-#: includes/settings-api.php:358
+#: includes/settings-api.php:373
 msgid "Someone has responded to your AWPCP Demo Ad"
 msgstr "Кто-то ответил на ваше AWPCP демо объявление"
 
-#: includes/settings-api.php:358
+#: includes/settings-api.php:373
 msgid "Message body text for email sent out when someone replies to Ad"
 msgstr "Текст почтового сообщения, отправляемого, когда кто-то ответил на объявление"
 
-#: includes/settings-api.php:359
+#: includes/settings-api.php:374
 msgid "Notify admin about contact message"
 msgstr "Уведомлять администратора об ответах на объявления"
 
-#: includes/settings-api.php:359
+#: includes/settings-api.php:374
 msgid ""
 "An email will be sent to the administrator every time a visitor sends a "
 "message to one of the Ad posters through the Reply to Ad page."
 msgstr "Письмо будет отправляться администратору каждый раз, когда посетитель оставляет сообщение в одном из объявлений."
 
-#: includes/settings-api.php:363
+#: includes/settings-api.php:378
 msgid "Resend Access Key Message"
 msgstr "Сообщение с ключом доступа"
 
-#: includes/settings-api.php:365
+#: includes/settings-api.php:380
 msgid "Subject for Request Ad Access Key email"
 msgstr "Тема почтового сообщения о ключе доступа объявления"
 
-#: includes/settings-api.php:365
+#: includes/settings-api.php:380
 msgid "The Classified Ad's ad access key you requested"
 msgstr "Ключ доступа к объявлению, который вы запросили"
 
-#: includes/settings-api.php:365
+#: includes/settings-api.php:380
 msgid ""
 "Subject line for email sent out when someone requests their ad access key "
 "resent"
 msgstr "Тема почтового сообщения, отправляемого, когда кто-то запросил ключ доступа к объявлению"
 
-#: includes/settings-api.php:366
+#: includes/settings-api.php:381
 msgid "Body for Request Ad Access Key email"
 msgstr "Текст почтового сообщения о ключе доступа к объявлению"
 
-#: includes/settings-api.php:366
+#: includes/settings-api.php:381
 msgid ""
 "You asked to have your Classified Ad's access key resent. Below are all the "
 "Ad access keys in the system that are tied to the email address you provided"
 msgstr "Вы просили повторно выслать вам ваш ключ доступа Доски Объявлений. Ниже представлены все ключи доступа объявлений в системе, которые связаны с указанным Вами адресом электронной почты"
 
-#: includes/settings-api.php:366
+#: includes/settings-api.php:381
 msgid ""
 "Message body text for email sent out when someone requests their ad access "
 "key resent"
 msgstr "Текст почтового сообщения, отправляемого, когда кто-то запроси ключ доступа к объявлению"
 
-#: includes/settings-api.php:370
+#: includes/settings-api.php:385
 msgid "Verify Email Message"
 msgstr "Проверочное сообщение"
 
-#: includes/settings-api.php:372
+#: includes/settings-api.php:387
 msgid "Subject for Verification email"
 msgstr "Тема проверочного письма"
 
-#: includes/settings-api.php:372
+#: includes/settings-api.php:387
 msgid "Verify the email address used for Ad $title"
 msgstr "Подтвердите адрес электронной почты, используемый для объявления $title"
 
-#: includes/settings-api.php:372
+#: includes/settings-api.php:387
 msgid "Subject line for email sent out to verify the email address."
 msgstr "Тема почтового сообщения для подтверждения адреса электронной почты."
 
-#: includes/settings-api.php:373
+#: includes/settings-api.php:388
 msgid "Body for Verification email"
 msgstr "Тело письма подтверждения"
 
-#: includes/settings-api.php:373
+#: includes/settings-api.php:388
 msgid ""
 "You can use the following placeholders to personalize the body of the email:"
 " $title, $author_name,$verification_email, $website_name, $website_url."
 msgstr "Вы можете использовать такие короткие коды для персонализации тела письма: $title, $author_name,$verification_email, $website_name, $website_url."
 
-#: includes/settings-api.php:377
+#: includes/settings-api.php:392
 msgid "Incomplete Payment Message"
 msgstr "Сообщение о незавершенной оплате"
 
-#: includes/settings-api.php:379
+#: includes/settings-api.php:394
 msgid "Subject for Incomplete Payment email"
 msgstr "Тема почтового сообщения о незавершенной оплате"
 
-#: includes/settings-api.php:379
+#: includes/settings-api.php:394
 msgid "There was a problem processing your payment"
 msgstr "Возникла проблема обработки Вашего платежа"
 
-#: includes/settings-api.php:379
+#: includes/settings-api.php:394
 msgid ""
 "Subject line for email sent out when the payment processing does not "
 "complete"
 msgstr "Тема почтового сообщения, отправляемого, когда процесс оплаты не был завершен"
 
-#: includes/settings-api.php:380
+#: includes/settings-api.php:395
 msgid "Body for Incomplete Payment email"
 msgstr "Текст почтового сообщения о незавершенной оплате"
 
-#: includes/settings-api.php:380
+#: includes/settings-api.php:395
 msgid ""
 "There was a problem encountered during your attempt to submit payment. If "
 "funds were removed from the account you tried to use to make a payment "
@@ -7272,283 +7327,295 @@ msgid ""
 " assistance."
 msgstr "Во время оплаты возникла проблема. Если с вашего баланса были сняты какие-либо средства, пожалуйста, свяжитесь с администратором иди тех.поддержкой сервиса оплаты."
 
-#: includes/settings-api.php:380
+#: includes/settings-api.php:395
 msgid ""
 "Message body text for email sent out when the payment processing does not "
 "complete"
 msgstr "Текст почтового сообщения, отправляемого, когда процесс оплаты не был завершен"
 
-#: includes/settings-api.php:384
+#: includes/settings-api.php:399
 msgid "Renew Ad Message"
 msgstr "Сообщение об истекающем объявлении"
 
-#: includes/settings-api.php:386
+#: includes/settings-api.php:401
 msgid "Subject for Renew Ad email"
 msgstr "Тема почтового сообщения об истекающем сроке объявления"
 
-#: includes/settings-api.php:386
+#: includes/settings-api.php:401
 msgid "Your classifieds listing Ad will expire in %d days."
 msgstr "Публикация вашего объявления истекает через %d дней."
 
-#: includes/settings-api.php:386
+#: includes/settings-api.php:401
 msgid "Subject line for email sent out when an Ad is about to expire."
 msgstr "Тема почтового сообщения, отправляемого, когда срок объявления истекает"
 
-#: includes/settings-api.php:387 includes/settings-api.php:394
+#: includes/settings-api.php:402 includes/settings-api.php:409
 msgid "Body for Renew Ad email"
 msgstr "Текст почтового сообщения об истекающем сроке объявления"
 
-#: includes/settings-api.php:387
+#: includes/settings-api.php:402
 msgid ""
 "This is an automated notification that your Classified Ad will expire in %d "
 "days."
 msgstr "Это автоматическое уведомление о том, что срок вашего объявления истекает через %d дней."
 
-#: includes/settings-api.php:387
+#: includes/settings-api.php:402
 msgid ""
 "Message body text for email sent out when an Ad is about to expire. Use %d "
 "as placeholder for the number of days before the Ad expires."
 msgstr "Текст почтового сообщения, отправляемого, когда срока действия объявления истекает в ближайшее время. Использовать %d в качестве значения количества дней до истечения срока объявления."
 
-#: includes/settings-api.php:391
+#: includes/settings-api.php:406
 msgid "Ad Renewed Message"
 msgstr "Сообщение о возобновленном объявлении"
 
-#: includes/settings-api.php:393
+#: includes/settings-api.php:408
 msgid "Subject for Ad Renewed email"
 msgstr "Тема почтового сообщения о возобновлении объявления"
 
-#: includes/settings-api.php:393
+#: includes/settings-api.php:408
 msgid "Your classifieds listing \"%s\" has been successfully renewed."
 msgstr "Ваш список объявлений  \"%s\" был возобновлен."
 
-#: includes/settings-api.php:393
+#: includes/settings-api.php:408
 msgid "Subject line for email sent out when an Ad is successfully renewed."
 msgstr "Тема почтового сообщения, отправляемого, когда объявление успешно возобновлено."
 
-#: includes/settings-api.php:394
+#: includes/settings-api.php:409
 msgid ""
 "Your classifieds listing Ad has been successfully renewed. More information "
 "below:"
 msgstr "Ваше объявление возобновлено. Детальная информация:"
 
-#: includes/settings-api.php:394
+#: includes/settings-api.php:409
 msgid ""
 "Message body text for email sent out when an Ad is successfully renewed. "
 msgstr "Текст почтового сообщения, отправляемого, когда объявление успешно возобновлено."
 
-#: includes/settings-api.php:398
+#: includes/settings-api.php:413
 msgid "Ad Expired Message"
 msgstr "Сообщение об истекшем объявлении"
 
-#: includes/settings-api.php:400
+#: includes/settings-api.php:415
 msgid "Subject for Ad Expired email"
 msgstr "Тема почтового сообщения об истекшем сроке объявления"
 
-#: includes/settings-api.php:400
+#: includes/settings-api.php:415
 msgid "Your classifieds listing at %s has expired"
 msgstr "Публикация вашего объявления %s истекла."
 
-#: includes/settings-api.php:400
+#: includes/settings-api.php:415
 msgid "Subject line for email sent out when an ad has auto-expired"
 msgstr "Тема почтового сообщения, отправляемого, когда срок объявления истек"
 
-#: includes/settings-api.php:401
+#: includes/settings-api.php:416
 msgid "Body for Ad Expired email"
 msgstr "Текст почтового сообщения об истекшем сроке объявления"
 
-#: includes/settings-api.php:401
+#: includes/settings-api.php:416
 msgid "This is an automated notification that your Classified Ad has expired."
 msgstr "Это автоматическое уведомление о том, что срок вашего объявления истек."
 
-#: includes/settings-api.php:401
+#: includes/settings-api.php:416
 msgid "Message body text for email sent out when an ad has auto-expired"
 msgstr "Текст почтового сообщения, отправляемого, когда срок объявления истек"
 
-#: includes/settings-api.php:405
+#: includes/settings-api.php:420
 msgid "Advanced Email Configuration"
 msgstr "Расширенная настройка почты"
 
-#: includes/settings-api.php:407
+#: includes/settings-api.php:422
 msgid "Enable external SMTP server"
 msgstr "Включение внешнего SMTP-сервера"
 
-#: includes/settings-api.php:407
+#: includes/settings-api.php:422
 msgid "Enabled external SMTP server (if emails not processing normally)."
 msgstr "Подключение внешнего SMTP-сервера (если почта не обрабатывается нормально)."
 
-#: includes/settings-api.php:408
+#: includes/settings-api.php:423
 msgid "SMTP host"
 msgstr "SMTP-хост"
 
-#: includes/settings-api.php:408
+#: includes/settings-api.php:423
 msgid "SMTP host (if emails not processing normally)."
 msgstr "SMTP-хост (если почта не обрабатывается нормально)."
 
-#: includes/settings-api.php:409
+#: includes/settings-api.php:424
 msgid "SMTP port"
 msgstr "SMTP-порт"
 
-#: includes/settings-api.php:409
+#: includes/settings-api.php:424
 msgid "SMTP port (if emails not processing normally)."
 msgstr "SMTP-порт (если почта не обрабатывается нормально)."
 
-#: includes/settings-api.php:410
+#: includes/settings-api.php:425
 msgid "SMTP username"
 msgstr "Имя пользователя SMTP"
 
-#: includes/settings-api.php:410
+#: includes/settings-api.php:425
 msgid "SMTP username (if emails not processing normally)."
 msgstr "Имя пользователя SMTP (если почта не обрабатывается нормально)."
 
-#: includes/settings-api.php:411
+#: includes/settings-api.php:426
 msgid "SMTP password"
 msgstr "Пароль SMTP"
 
-#: includes/settings-api.php:411
+#: includes/settings-api.php:426
 msgid "SMTP password (if emails not processing normally)."
 msgstr "Пароль SMTP (если почта не обрабатывается нормально)."
 
-#: includes/settings-api.php:419
+#: includes/settings-api.php:434
 msgid "Send Ads to Facebook Automatically"
 msgstr "Автоматически отправлять объявления на Facebook"
 
-#: includes/settings-api.php:419
+#: includes/settings-api.php:434
 msgid ""
 "If checked, Ads will be posted to Facebook shortly after they are posted, "
 "enabled or edited, whichever occurs first. Ads will be posted only once. "
 "Please note that disabled Ads cannot be posted to Facebook."
 msgstr "Если отмечено, объявления будут опубликовано на Facebook вскоре после добавления, активации или редактирования, в зависимости от очередности. Объявление публикуется единожды. Обратите внимание, что отключенные объявления не могут быть опубликованы на Facebook."
 
-#: includes/settings-api.php:610
+#: includes/settings-api.php:632
 msgid "<module-name> License Key"
 msgstr "Ключ лицензии для <module-name>"
 
-#: includes/settings-api.php:619
+#: includes/settings-api.php:641
 msgid "Licenses"
 msgstr "Лицензии"
 
-#: includes/settings-api.php:759
+#: includes/settings-api.php:781
 msgid ""
 "Require Registration setting was enabled automatically because you activated"
 " the User Ad Management panel."
 msgstr "Обязательная регистрация была включена автоматически, так как вы активировали пользовательскую панель объявлений."
 
-#: includes/settings-api.php:776
+#: includes/settings-api.php:798
 msgid ""
 "Akismet SPAM control cannot be enabled because Akismet plugin is not "
 "installed or activated."
 msgstr "Вы не можете активировать контроль спама Akismet, так как Akismet не установлен либо не активирован "
 
-#: includes/settings-api.php:780
+#: includes/settings-api.php:802
 msgid ""
 "Akismet SPAM control cannot be enabled because Akismet is not properly "
 "configured."
 msgstr "Вы не можете активировать контроль спама Akismet, так как Akismet неверно настроен."
 
-#: includes/settings-api.php:803
+#: includes/settings-api.php:825
 msgid ""
 "reCAPTCHA can't be used because the public key and private key settings are "
 "required for reCAPTCHA to work properly."
 msgstr "reCAPTCHA не может быть использован, так как настройки открытого и закрытого ключей являются обязательными для нормальной работы reCAPTCHA"
 
-#: includes/settings-api.php:805
+#: includes/settings-api.php:827
 msgid ""
 "reCAPTCHA can't be used because the public key setting is required for "
 "reCAPTCHA to work properly."
 msgstr "reCAPTCHA не может быть использован, так как настройки открытого ключа являются обязательными для нормальной работы reCAPTCHA"
 
-#: includes/settings-api.php:807
+#: includes/settings-api.php:829
 msgid ""
 "reCAPTCHA can't be used because the private key setting is required for "
 "reCAPTCHA to work properly."
 msgstr "reCAPTCHA не может быть использован, так как настройки закрытого ключа являются обязательными для нормальной работы reCAPTCHA"
 
-#: includes/settings-api.php:820
+#: includes/settings-api.php:842
 msgid ""
 "User Ad Management panel was automatically deactivated because you disabled "
 "Require Registration setting."
 msgstr "Пользовательская Панель Управления Объявлениями была автоматически отключена, потому что вы отключили настройку Обязательной Регистрации."
 
-#: includes/settings-api.php:825
+#: includes/settings-api.php:847
 msgid ""
 "Credit System was automatically disabled because you disabled Require "
 "Registration setting."
 msgstr "Кредитная система отключена, так как вы отключили обязательную регистрацию."
 
-#: includes/settings-api.php:841
+#: includes/settings-api.php:863
 msgid ""
 "There is a problem with the PayPal Currency Code you have entered. It does "
 "not match any of the codes in our list of curencies supported by PayPal."
 msgstr "Есть проблема с кодом валюты, которую вы ввели. Он не соответствует ни одному из кодов в списке доступных валют PayPal."
 
-#: includes/settings-api.php:842
+#: includes/settings-api.php:864
 msgid "The available currency codes are"
 msgstr "Доступные коды валюты"
 
-#: includes/settings-api.php:851
+#: includes/settings-api.php:873
 msgid ""
 "Require Registration setting was enabled automatically because you activated"
 " the Credit System."
 msgstr "Обязательная регистрация была включена автоматически, так как вы активировали систему кредитов."
 
-#: includes/settings-api.php:856
+#: includes/settings-api.php:878
 msgid ""
 "Charge Listing Fee setting was enabled automatically because you activated "
 "the Credit System."
 msgstr "Режим оплаты был включен автоматически, так как вы активировали систему кредитов."
 
-#: includes/settings-api.php:862
+#: includes/settings-api.php:884
 msgid ""
 "Credit System was disabled automatically because you disabled Charge Listing"
 " Fee."
 msgstr "Система кредитов была отключена, так как вы отключили обязательный режим оплаты."
 
-#: includes/settings-api.php:1104
+#: includes/settings-api.php:907
+msgid ""
+"<new-value> is not a valid email address. Please check the value you entered"
+" to use as the FROM email address for outgoing messages."
+msgstr ""
+
+#: includes/settings-api.php:908
+msgid ""
+"<new-value> is not a valid email address. Please check the value you entered"
+" to use as recipient email address for admin notifications."
+msgstr ""
+
+#: includes/settings-api.php:1177
 msgid "Deactivate"
 msgstr "Деактивировать"
 
-#: includes/settings-api.php:1105
+#: includes/settings-api.php:1178
 msgid "active"
 msgstr "активный"
 
-#: includes/settings-api.php:1105 includes/settings-api.php:1108
-#: includes/settings-api.php:1118 includes/settings-api.php:1120
-#: includes/settings-api.php:1122
+#: includes/settings-api.php:1178 includes/settings-api.php:1181
+#: includes/settings-api.php:1191 includes/settings-api.php:1193
+#: includes/settings-api.php:1195
 msgid "Status: <license-status>"
 msgstr "Статус: <license-status>"
 
-#: includes/settings-api.php:1107 includes/settings-api.php:1110
+#: includes/settings-api.php:1180 includes/settings-api.php:1183
 msgid "Activate"
 msgstr "Активировать"
 
-#: includes/settings-api.php:1108
+#: includes/settings-api.php:1181
 msgid "inactive"
 msgstr "неактивный"
 
-#: includes/settings-api.php:1113
+#: includes/settings-api.php:1186
 msgid ""
 "Click the button above to check the status of your license. Please <contact-"
 "link>contact customer support</a> if you think the reported status is wrong."
 msgstr "Нажмите кнопку выше для проверки статуса вашей лицензии. Пожалуйста, свяжитесь с <contact-link>пользовательской поддержкой</a>, если вы считаете, что возвращенный статус неверен."
 
-#: includes/settings-api.php:1118
+#: includes/settings-api.php:1191
 msgid "expired"
 msgstr "истек"
 
-#: includes/settings-api.php:1120
+#: includes/settings-api.php:1193
 msgid "disabled"
 msgstr "отключено"
 
-#: includes/settings-api.php:1122
+#: includes/settings-api.php:1195
 msgid "unknown"
 msgstr "неопределено"
 
-#: includes/settings-api.php:1161
+#: includes/settings-api.php:1234
 msgid "Documentation on date and time formatting"
 msgstr "Документация по форматированию даты и время"
 
-#: includes/settings-api.php:1182
+#: includes/settings-api.php:1255
 msgid "Setting <setting-name> not available."
 msgstr "Настройка <setting-name> не доступна."
 
@@ -7785,7 +7852,7 @@ msgstr "Импорт объявлений"
 
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:6
 msgid "Configure"
-msgstr "Конфигурировать"
+msgstr "Конфигурация"
 
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:13
 msgid "Define default values for the start date and end date columns?"
@@ -7803,19 +7870,19 @@ msgstr "Формат Даты"
 
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:49
 msgid "US Date Only (mm/dd/year)"
-msgstr "Только Дата США (дд / мм / год)"
+msgstr "Формат даты США (мм/дд/год)"
 
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:53
 msgid "UK Date Only (dd/mm/year)"
-msgstr "Только Дата Великобритании (ДД/мм/год)"
+msgstr "Европейский формат даты (дд/мм/год)"
 
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:58
 msgid "US Date and Time (mm/dd/year hh:mm:ss)"
-msgstr "США Дата и время (мм / дд / год чч: мм: сс)"
+msgstr "Формат даты со временем США (мм/дд/год чч:мм:сс)"
 
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:62
 msgid "UK Date and Time (dd/mm/year hh:mm:ss)"
-msgstr "Великобритания дата и время (ДД/мм/год чч:мм:СС)"
+msgstr "Европейский формат даты со временем (дд/мм/год чч:мм:сс)"
 
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:67
 msgid "Separators Used in CSV"
@@ -7823,15 +7890,15 @@ msgstr "Разделители использующиеся в CSV"
 
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:70
 msgid "Date Separator"
-msgstr "Разделитель Даты"
+msgstr "Разделитель даты"
 
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:75
 msgid "Time Separator"
-msgstr "Разделитель Времени"
+msgstr "Разделитель времени"
 
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:80
 msgid "Image Separator"
-msgstr "Разделитель Изображений"
+msgstr "Разделитель изображений"
 
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:81
 msgid "(semi-colon)"
@@ -7882,7 +7949,7 @@ msgstr "Пользовател по умолчанию"
 
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:145
 msgid "Test Import"
-msgstr "Тестовый Импорт"
+msgstr "Тестовый импорт"
 
 #: templates/admin/import-listings-admin-page-configuration-form.tpl.php:151
 #: templates/admin/import-listings-admin-page-import-form.tpl.php:36
@@ -7983,7 +8050,7 @@ msgstr "Адрес"
 
 #: templates/components/classifieds-search-bar.tpl.php:8
 msgid "Find Listings"
-msgstr ""
+msgstr "Искать объявления"
 
 #: templates/components/classifieds-search-bar.tpl.php:10
 msgid "Advanced Search"
@@ -8076,6 +8143,42 @@ msgstr "Выбрать файлы"
 msgid "No payment methods available."
 msgstr "Нет доступных способов оплаты."
 
+#: templates/email/listing-edit-link-with-access-token.tpl.php:1
+msgctxt "edit link email"
+msgid "Hi <contact-name>,"
+msgstr ""
+
+#: templates/email/listing-edit-link-with-access-token.tpl.php:3
+msgctxt "edit link email"
+msgid ""
+"The access key and edit link for the listing <listing-title> are shown "
+"below:"
+msgstr ""
+
+#: templates/email/listing-edit-link-with-access-token.tpl.php:5
+msgctxt "edit link email"
+msgid "Access Key: <access-key>"
+msgstr ""
+
+#: templates/email/listing-edit-link-with-access-token.tpl.php:6
+msgctxt "edit link email"
+msgid "Email Address: <email-address>"
+msgstr ""
+
+#: templates/email/listing-edit-link-with-access-token.tpl.php:7
+msgctxt "edit link email"
+msgid "Edit Link: <edit-link>"
+msgstr ""
+
+#: templates/email/listing-edit-link-with-access-token.tpl.php:11
+msgctxt "edit link email"
+msgid ""
+"You are receiving this message because you tried to edit this listing using "
+"an expired link or because you or the administrator requested the access key"
+" to be sent. If that's not the case, please ignore this message, or contact "
+"the adiministrator if you have received similar messages today."
+msgstr ""
+
 #: templates/email/listing-is-about-to-expire-notification.plain.tpl.php:3
 msgid "Listing Details are below:"
 msgstr "Детали объявления следующие:"
@@ -8146,6 +8249,6 @@ msgstr "На сайте <site-name> имеются объявления, пом�
 msgid "Return to main classifieds"
 msgstr "Вернуться к основным объялениям"
 
-#: templates/frontend/listings.tpl.php:20
+#: templates/frontend/listings.tpl.php:24
 msgid "There were no listings found."
 msgstr "Не найдено объявлений."

@@ -59,7 +59,7 @@
 
 			<form method="post">
 				<?php wp_nonce_field('awpcp-restore-pages'); ?>
-				<div><?php _e('If you are having problems with your plugin pages, you can delete them and use the Restore button to have the plugin create them again.', 'another-wordpress-classifieds-plugin') ?></div>
+				<p><?php _e( 'Use the button below to have the plugin attempt to find the necessary pages. If you continue to have problems or seeing page related warnings above, you can delete affected plugin pages and use the Restore Pages button to have the plugin create them again.', 'another-wordpress-classifieds-plugin') ?></p>
 				<input type="submit" value="<?php echo esc_attr( __( 'Restore Pages', 'another-wordpress-classifieds-plugin' ) ); ?>" class="button-primary" id="submit" name="restore-pages">
 			</form>
 

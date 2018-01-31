@@ -4,7 +4,7 @@
  * Plugin Name: Another WordPress Classifieds Plugin (AWPCP)
  * Plugin URI: http://www.awpcp.com
  * Description: AWPCP - A plugin that provides the ability to run a free or paid classified ads service on your WP site. <strong>!!!IMPORTANT!!!</strong> It's always a good idea to do a BACKUP before you upgrade AWPCP!
- * Version: 3.8.1
+ * Version: 3.8.2
  * Author: D. Rodenbaugh
  * License: GPLv2 or any later version
  * Author URI: http://www.skylineconsult.com
@@ -1099,11 +1099,11 @@ class AWPCP {
         wp_register_script( 'awpcp-knockout', "//ajax.aspnetcdn.com/ajax/knockout/knockout-3.1.0.js", array(), '3.1.0', true );
         wp_register_script( 'awpcp-momentjs-with-locales', '//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js', array(), '2.10.6', true );
 
-        wp_register_script(
-            'awpcp-breakpoints.js',
+        $this->maybe_register_script(
+            'breakpoints.js',
             "{$vendors}/breakpoints.js/breakpoints.min.js",
             array( 'jquery' ),
-            $awpcp_db_version,
+            '0.0.10',
             true
         );
 
@@ -1128,7 +1128,7 @@ class AWPCP {
 		wp_register_script(
             'awpcp',
             "{$js}/awpcp.min.js",
-            array( 'jquery', 'backbone', 'awpcp-knockout', 'awpcp-breakpoints.js' ),
+            array( 'jquery', 'backbone', 'awpcp-knockout', 'breakpoints.js' ),
             $awpcp_db_version,
             true
         );
@@ -1212,6 +1212,26 @@ class AWPCP {
         wp_register_script('awpcp-page-reply-to-ad', "{$js}/page-reply-to-ad.js", array('awpcp', 'awpcp-jquery-validate'), $awpcp_db_version, true);
 		wp_register_script('awpcp-page-show-ad', "{$js}/page-show-ad.js", array('awpcp'), $awpcp_db_version, true);
 	}
+
+    private function maybe_register_script( $handle, $src, $deps, $ver, $in_footer = false ) {
+        $scripts = wp_scripts();
+
+        if ( isset( $scripts->registered[ $handle ] ) ) {
+            $registered_script = $scripts->registered[ $handle ];
+        } else {
+            $registered_script = null;
+        }
+
+        if ( $registered_script && version_compare( $registered_script->ver, $ver, '>=' ) ) {
+            return;
+        }
+
+        if ( $registered_script ) {
+            wp_deregister_script( $handle );
+        }
+
+        wp_register_script( $handle, $src, $deps, $ver, $in_footer );
+    }
 
 	public function register_custom_style() {
 		global $awpcp_db_version;

@@ -285,3 +285,4 @@ function awpcp_clean_up_non_verified_ads( /* AWPCP_ListingsAPI */ $listings, $se
         }
     }
 }
+

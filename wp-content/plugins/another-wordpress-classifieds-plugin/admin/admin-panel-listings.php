@@ -546,6 +546,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
 
         $message->prepare($template,  array(
             'ad' => $ad,
+            'edit_link' => awpcp_get_edit_listing_url_with_access_key( $ad ),
             'nameofsite' => $nameofsite,
         ));
 

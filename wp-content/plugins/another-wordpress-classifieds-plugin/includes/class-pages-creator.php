@@ -4,7 +4,10 @@
  * @since 3.5.3
  */
 function awpcp_pages_creator() {
-    return new AWPCP_Pages_Creator( awpcp_missing_pages_finder() );
+    return new AWPCP_Pages_Creator(
+        awpcp_missing_pages_finder(),
+        awpcp()->settings
+    );
 }
 
 /**
@@ -13,15 +16,29 @@ function awpcp_pages_creator() {
 class AWPCP_Pages_Creator {
 
     private $missing_pages_finder;
+    private $settings;
 
-    public function __construct( $missing_pages_finder ) {
+    public function __construct( $missing_pages_finder, $settings ) {
         $this->missing_pages_finder = $missing_pages_finder;
+        $this->settings = $settings;
     }
 
     public function restore_missing_pages() {
         $shortcodes = awpcp_pages();
 
-        $missing_pages = $this->missing_pages_finder->find_missing_pages();
+        foreach( $shortcodes as $refname => $properties ) {
+            $page = $this->missing_pages_finder->find_page_with_shortcode( $properties[1] );
+
+            if ( ! is_object( $page ) ) {
+                continue;
+            }
+
+            $this->settings->update_option( $refname, $page->post_title );
+
+            awpcp_update_plugin_page_id( $refname, $page->ID );
+        }
+
+        $missing_pages = $this->missing_pages_finder->find_broken_page_id_references();
         $pages_to_restore = array_merge( $missing_pages['not-found'], $missing_pages['not-referenced'] );
         $page_refs = awpcp_get_properties( $pages_to_restore, 'page' );
 
