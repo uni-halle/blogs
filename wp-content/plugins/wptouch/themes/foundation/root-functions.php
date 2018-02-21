@@ -19,6 +19,7 @@ add_filter( 'wptouch_admin_page_render_wptouch-admin-theme-settings', 'foundatio
 add_filter( 'wptouch_setting_version_compare', 'foundation_setting_version_compare', 10, 2 );
 add_filter( 'wptouch_body_classes', 'foundation_body_classes' );
 add_filter( 'wptouch_the_content', 'foundation_insert_multipage_links' );
+add_filter( 'wptouch_update_settings', 'foundation_sanitize_wptouch_settings' );
 
 // fix for JetPack
 add_filter( 'jetpack_check_mobile', 'foundation_override_jetpack_check_mobile' );
@@ -51,11 +52,11 @@ function foundation_add_wpml_lang_switcher() {
 				echo '<strong>' . __( 'Language: ', 'wptouch-pro' ) . '</strong>';
 				echo '<select>';
 				foreach ( $data as $lang => $item ) {
-					echo '<option value="' . $item['url'] . '"';
+					echo '<option value="' . esc_url( $item['url'] ) . '"';
 					if ( $item["active"] ) {
 						echo " selected";
 					}
-					echo '>' . $item['native_name'] . '</option>';
+					echo '>' . esc_html( $item['native_name'] ) . '</option>';
 				}
 				echo '</select>';
 				echo '</div></div>';
@@ -280,7 +281,7 @@ function foundation_handle_footer() {
 		/**
 		 * Filters the custom footer message obtained from the custom footer section.
 		 *
-		 * @param string $settings->custom_footer_message The footer message.
+		 * @param string $settings ->custom_footer_message The footer message.
 		 */
 		$message = apply_filters( 'foundation_footer_message', $settings->custom_footer_message );
 
@@ -331,7 +332,7 @@ function foundation_handle_footer() {
 			'step'            => true,
 			'width'           => true,
 		);
-		$allowed_tags['script'] = array(
+		$allowed_tags['script']                 = array(
 			'async'       => true,
 			'crossorigin' => true,
 			'defer'       => true,
@@ -346,7 +347,7 @@ function foundation_handle_footer() {
 		 * Filters the custom footer message obtained from the custom footer section.
 		 *
 		 * @param string $output_message The footer message for output.
-		 * @param array $allowed_tags The allowed tags for the sanitization function.
+		 * @param array  $allowed_tags   The allowed tags for the sanitization function.
 		 */
 		echo wp_kses( apply_filters( 'foundation_footer_message_output', $output_message ), $allowed_tags );
 	}
@@ -358,7 +359,7 @@ function foundation_handle_custom_css_declarations() {
 		/**
 		 * Filters the custom css declarations from the customizer settings.
 		 *
-		 * @param string $settings->custom_css_declarations The css declarations.
+		 * @param string $settings ->custom_css_declarations The css declarations.
 		 */
 		$styles         = apply_filters( 'foundation_custom_css_declarations', $settings->custom_css_declarations );
 		$trimmed_styles = trim( $styles );
@@ -436,7 +437,7 @@ function foundation_setup_viewport() {
 	if ( $settings->allow_zoom == true ) {
 		$zoomState = 'yes';
 	}
-	echo '<meta name="viewport" content="initial-scale=1.0, maximum-scale=3.0, user-scalable=' . $zoomState . ', width=device-width" />';
+	echo '<meta name="viewport" content="initial-scale=1.0, maximum-scale=3.0, user-scalable=' . esc_attr( $zoomState ) . ', width=device-width" />';
 }
 
 function foundation_render_theme_settings( $page_options ) {
@@ -673,7 +674,7 @@ function foundation_maybe_output_homescreen_icon( $image, $width, $height, $pixe
 			$size_string = '';
 		}
 
-		echo '<link rel="apple-touch-icon-precomposed" ' . $size_string . ' href="' . esc_url( foundation_prepare_uploaded_file_url( $image ) ) . '" />' . "\n";
+		echo '<link rel="apple-touch-icon-precomposed" ' . esc_html( $size_string ) . ' href="' . esc_url( foundation_prepare_uploaded_file_url( $image ) ) . '" />' . "\n";
 	}
 }
 
@@ -688,7 +689,7 @@ function foundation_setup_homescreen_icons() {
 		foundation_maybe_output_homescreen_icon( $settings->ipad_icon_retina, 57, 57, 1 );
 
 		// Default (if no icon added in admin, or icon isn't formatted correctly, and as a catch-all)
-		echo '<link rel="apple-touch-icon-precomposed" href="' . WPTOUCH_DEFAULT_HOMESCREEN_ICON . '" />' . "\n";
+		echo '<link rel="apple-touch-icon-precomposed" href="' . esc_url( WPTOUCH_DEFAULT_HOMESCREEN_ICON ) . '" />' . "\n";
 	} else {
 		// iPhone / Android home screen icons
 		foundation_maybe_output_homescreen_icon( $settings->iphone_icon_retina, 192, 192, 2 );
@@ -699,7 +700,7 @@ function foundation_setup_homescreen_icons() {
 
 		// Default (if no icon added in admin, or icon isn't formatted correctly, and as a catch-all)
 		if ( ! $has_icon ) {
-			echo '<link rel="apple-touch-icon-precomposed" href="' . WPTOUCH_DEFAULT_HOMESCREEN_ICON . '" />' . "\n";
+			echo '<link rel="apple-touch-icon-precomposed" href="' . esc_url( WPTOUCH_DEFAULT_HOMESCREEN_ICON ) . '" />' . "\n";
 		}
 	}
 }
@@ -708,7 +709,7 @@ function foundation_setup_smart_app_banner() {
 	$settings = foundation_get_settings();
 	$appID    = $settings->smart_app_banner;
 	if ( $appID ) {
-		echo '<meta name="apple-itunes-app" content="app-id=' . $appID . '" />' . "\n";
+		echo '<meta name="apple-itunes-app" content="app-id=' . esc_attr( $appID ) . '" />' . "\n";
 	}
 }
 
@@ -760,7 +761,7 @@ function foundation_load_theme_modules() {
 	/**
 	 * Filters the theme support setting.
 	 *
-	 * @param array $theme_data->theme_support The theme support data.
+	 * @param array $theme_data ->theme_support The theme support data.
 	 */
 	$theme_data->theme_support = apply_filters( 'wptouch_theme_support', $theme_data->theme_support );
 
@@ -995,19 +996,19 @@ function wptouch_fdn_archive_title_text() {
 		echo '<div class="archive-text">';
 	}
 	if ( is_search() ) {
-		echo $total_results . '&nbsp;';
+		echo intval( $total_results ) . '&nbsp;';
 		echo sprintf( __( "search results for '%s'", "wptouch-pro" ), get_search_query() );
 	}
 	if ( is_category() ) {
-		echo sprintf( __( "%sCategories &rsaquo;%s %s", "wptouch-pro" ), '<span class="type">', '</span>', single_cat_title( "", false ) );
+		echo sprintf( __( "%sCategories &rsaquo;%s %s", "wptouch-pro" ), '<span class="type">', '</span>', esc_html( single_cat_title( "", false ) ) );
 	} elseif ( is_tag() ) {
-		echo sprintf( __( "Tags &rsaquo; %s", "wptouch-pro" ), single_tag_title( " ", false ) );
+		echo sprintf( __( "Tags &rsaquo; %s", "wptouch-pro" ), esc_html( single_tag_title( " ", false ) ) );
 	} elseif ( is_day() ) {
-		echo sprintf( __( "Archives &rsaquo; %s", "wptouch-pro" ), get_the_time( 'F jS, Y' ) );
+		echo sprintf( __( "Archives &rsaquo; %s", "wptouch-pro" ), esc_html( get_the_time( 'F jS, Y' ) ) );
 	} elseif ( is_month() ) {
-		echo sprintf( __( "Archives &rsaquo; %s", "wptouch-pro" ), get_the_time( 'F, Y' ) );
+		echo sprintf( __( "Archives &rsaquo; %s", "wptouch-pro" ), esc_html( get_the_time( 'F, Y' ) ) );
 	} elseif ( is_year() ) {
-		echo sprintf( __( "Archives &rsaquo; %s", "wptouch-pro" ), get_the_time( 'Y' ) );
+		echo sprintf( __( "Archives &rsaquo; %s", "wptouch-pro" ), esc_html( get_the_time( 'Y' ) ) );
 	} elseif ( get_post_type() ) {
 	}
 	if ( ! ( is_home() || is_single() ) ) {
@@ -1073,10 +1074,10 @@ function wptouch_fdn_ordered_cat_list( $num, $include_count = true, $taxonomy = 
 					continue;
 				}
 
-				echo "<li><a href=\"" . $link . "\">" . $result->name;
+				echo "<li><a href=\"" . esc_url( $link ) . "\">" . $result->name;
 
 				if ( $include_count ) {
-					echo " <span>(" . $result->count . ")</span></a>";
+					echo " <span>(" . intval( $result->count ) . ")</span></a>";
 				}
 
 				echo '</a>';
@@ -1193,7 +1194,7 @@ function wptouch_fdn_hierarchical_cat_list( $num, $include_count = true, $taxono
 	$html = apply_filters( 'wp_list_categories', $output, $r );
 
 	if ( $r['echo'] ) {
-		echo $html;
+		echo wp_kses_post( $html );
 	} else {
 		return $html;
 	}
@@ -1221,7 +1222,7 @@ function wptouch_fdn_ordered_tag_list( $num ) {
 	if ( $sql ) {
 		foreach ( $sql as $result ) {
 			if ( $result ) {
-				echo "<li><a href=\"" . get_tag_link( $result->term_id ) . "\">" . $result->name . " <span>(" . $result->count . ")</span></a></li>";
+				echo "<li><a href=\"" . esc_url( get_tag_link( $result->term_id ) ) . "\">" . esc_url( $result->name ) . " <span>(" . intval( $result->count ) . ")</span></a></li>";
 			}
 		}
 	}
@@ -1414,4 +1415,23 @@ function foundation_add_meta_theme_color() {
 
 function foundation_override_jetpack_check_mobile() {
 	return false;
+}
+
+/**
+ * Sanitize settings data for XSS before DB save/update.
+ *
+ * @param object $settings The WPtouch settings.
+ *
+ * @return object
+ */
+function foundation_sanitize_wptouch_settings( $settings ) {
+	if ( ! empty( $settings->homepage_redirect_custom_target ) ) {
+		$settings->homepage_redirect_custom_target = esc_url_raw( $settings->homepage_redirect_custom_target );
+	}
+
+	if ( ! empty( $settings->site_title ) ) {
+		$settings->site_title = sanitize_text_field( $settings->site_title );
+	}
+
+	return $settings;
 }

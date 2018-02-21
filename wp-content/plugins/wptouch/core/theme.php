@@ -26,7 +26,7 @@ function wptouch_title() {
 }
 
 function wptouch_site_title() {
-	echo wptouch_get_site_title();
+	echo esc_html( wptouch_get_site_title() );
 }
 
 function wptouch_get_site_title() {
@@ -68,7 +68,7 @@ function wptouch_get_footer_classes() {
 }
 
 function wptouch_body_classes() {
-	echo wptouch_get_body_classes();
+	echo esc_attr( wptouch_get_body_classes() );
 }
 
 function wptouch_get_body_classes() {
@@ -125,12 +125,12 @@ function wptouch_canonical_link() {
 			$permalink = get_permalink( $post->ID );
 		}
 
-		echo '<link rel="canonical" href="' . $permalink . '" />';
+		echo '<link rel="canonical" href="' . esc_url( $permalink ) . '" />';
 	}
 }
 
 function wptouch_the_title() {
-	echo wptouch_get_title();
+	echo esc_html( wptouch_get_title() );
 }
 
 function wptouch_get_title() {
@@ -138,7 +138,7 @@ function wptouch_get_title() {
 }
 
 function wptouch_the_permalink() {
-	echo wptouch_get_the_permalink();
+	echo esc_url( wptouch_get_the_permalink() );
 }
 
 function wptouch_get_the_permalink() {
@@ -146,7 +146,7 @@ function wptouch_get_the_permalink() {
 }
 
 function wptouch_post_classes() {
-	echo implode( ' ', wptouch_get_post_classes() );
+	echo esc_attr( implode( ' ', wptouch_get_post_classes() ) );
 }
 
 function wptouch_get_post_classes() {
@@ -205,7 +205,7 @@ function wptouch_has_post_thumbnail() {
 }
 
 function wptouch_the_post_thumbnail( $param = false ) {
-	echo wptouch_get_the_post_thumbnail( $param );
+	echo wp_kses_post( wptouch_get_the_post_thumbnail( $param ) );
 }
 
 function wptouch_get_the_post_thumbnail( $param = false ) {
@@ -232,7 +232,7 @@ function wptouch_get_the_post_thumbnail( $param = false ) {
 }
 
 function wptouch_content_classes() {
-	echo implode( ' ', wptouch_get_content_classes() );
+	echo esc_attr( implode( ' ', wptouch_get_content_classes() ) );
 }
 
 function wptouch_get_content_classes() {
@@ -242,7 +242,7 @@ function wptouch_get_content_classes() {
 }
 
 function wptouch_the_time( $format = false, $time = false ) {
-	echo wptouch_get_the_time( $format, $time );
+	echo esc_html( wptouch_get_the_time( $format, $time ) );
 }
 
 function wptouch_get_the_time( $format = false, $time = false ) {
@@ -294,7 +294,7 @@ function wptouch_is_custom_page_template() {
 }
 
 function wptouch_the_custom_page_template_id() {
-	echo wptouch_get_custom_page_template_id();
+	echo esc_html( wptouch_get_custom_page_template_id() );
 }
 
 function wptouch_get_custom_page_template_id() {
@@ -303,7 +303,7 @@ function wptouch_get_custom_page_template_id() {
 }
 
 function wptouch_the_mobile_switch_link() {
-	echo wptouch_get_mobile_switch_link();
+	echo esc_url( wptouch_get_mobile_switch_link() );
 }
 
 function wptouch_get_mobile_switch_link() {
@@ -321,7 +321,7 @@ function wptouch_use_mobile_switch_link() {
 }
 
 function wptouch_the_footer_message() {
-	echo wptouch_get_the_footer_message();
+	echo wp_kses_post( wptouch_get_the_footer_message() );
 }
 
 function wptouch_get_the_footer_message() {
@@ -340,7 +340,7 @@ function wptouch_have_comments() {
 }
 
 function wptouch_the_comment_count() {
-	echo wptouch_get_comment_count();
+	echo absint( wptouch_get_comment_count() );
 }
 
 function wptouch_get_comment_count() {
@@ -358,7 +358,7 @@ function wptouch_get_comment_count() {
 }
 
 function wptouch_the_current_page_url() {
-	echo wptouch_get_current_page_url();
+	echo esc_url( wptouch_get_current_page_url() );
 }
 
 function wptouch_get_current_page_url() {
@@ -397,7 +397,7 @@ function wptouch_ordered_tag_list( $num ) {
 	if ( $sql ) {
 		foreach ( $sql as $result ) {
 			if ( $result ) {
-				echo "<li><a href=\"" . get_tag_link( $result->term_id ) . "\">" . $result->name . "</a></li>";
+				echo wp_kses_post( "<li><a href=\"" . get_tag_link( $result->term_id ) . "\">" . $result->name . "</a></li>" );
 			}
 		}
 	}

@@ -48,6 +48,9 @@ class WPtouchDefaultSettings30 extends WPtouchSettings {
 		$this->analytics_google_id = '';
 		$this->custom_stats_code = '';
 
+		// Setup - Google Maps
+		$this->maps_google_api_key = '';
+
 		// Setup - Home Page Redirect
 		$this->homepage_landing = 'none';
 		$this->homepage_redirect_wp_target = 0;

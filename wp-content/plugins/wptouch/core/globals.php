@@ -276,16 +276,16 @@ function wptouch_get_bloginfo( $setting_name ) {
 			$setting = $wptouch_pro->get_current_theme_directory();
 			break;
 		case 'theme_root_url':
-			$setting = $wptouch_pro->get_current_theme_uri();
+			$setting = esc_url( $wptouch_pro->get_current_theme_uri() );
 			break;
 		case 'theme_parent_url':
-			$setting = $wptouch_pro->change_dir_to_url( $wptouch_pro->get_current_parent_location() );
+			$setting = esc_url( $wptouch_pro->change_dir_to_url( $wptouch_pro->get_current_parent_location() ) );
 			break;
 		case 'site_title':
 			if ( $settings->site_title != '' ) {
-				$setting = $settings->site_title;
+				$setting = esc_html( $settings->site_title );
 			} else {
-				$setting = get_bloginfo('name');
+				$setting = esc_html( get_bloginfo( 'name' ) );
 			}
 			break;
 		case 'wptouch_directory':
@@ -299,12 +299,12 @@ function wptouch_get_bloginfo( $setting_name ) {
 			break;
 		case 'theme_count':
 			$themes = $wptouch_pro->get_available_themes();
-			$setting = count( $themes );
+			$setting = esc_html( count( $themes ) );
 			break;
 		case 'icon_set_count':
 			$icon_sets = $wptouch_pro->get_available_icon_packs();
 			// Remove the custom icon count
-			$setting = count( $icon_sets ) - 1;
+			$setting = esc_html( count( $icon_sets ) - 1 );
 			break;
 		case 'icon_count':
 			$icon_sets = $wptouch_pro->get_available_icon_packs();
@@ -315,12 +315,12 @@ function wptouch_get_bloginfo( $setting_name ) {
 				$icons = $wptouch_pro->get_icons_from_packs( $setname );
 				$total_icons += count( $icons );
 			}
-			$setting = $total_icons;
+			$setting = esc_html( $total_icons );
 			break;
 		case 'support_licenses_remaining':
 			$licenses = $wptouch_pro->bnc_api->user_list_licenses();
 			if ( $licenses ) {
-				$setting = $licenses['remaining'];
+				$setting = esc_html( $licenses['remaining'] );
 			} else {
 				$setting = 0;
 			}
@@ -328,7 +328,7 @@ function wptouch_get_bloginfo( $setting_name ) {
 		case 'support_licenses_total':
 			$licenses = $wptouch_pro->bnc_api->get_total_licenses();
 			if ( $licenses ) {
-				$setting = $licenses;
+				$setting = esc_html( $licenses );
 			} else {
 				$setting = 0;
 			}
@@ -336,39 +336,39 @@ function wptouch_get_bloginfo( $setting_name ) {
 		case 'active_theme_friendly_name':
 			$theme_info = $wptouch_pro->get_current_theme_info();
 			if ( $theme_info ) {
-				$setting = $theme_info->name;
+				$setting = esc_html( $theme_info->name );
 			}
 			break;
 		case 'rss_url':
 			if ( $settings->menu_custom_rss_url ) {
-				$setting = $settings->menu_custom_rss_url;
+				$setting = esc_url( $settings->menu_custom_rss_url );
 			} else {
-				$setting = get_bloginfo( 'rss2_url' );
+				$setting = esc_url( get_bloginfo( 'rss2_url' ) );
 			}
 			break;
 		case 'warnings':
-			$setting = wptouch_get_plugin_warning_count();
+			$setting = esc_url( wptouch_get_plugin_warning_count() );
 			break;
 		case 'url':
 			if ( $settings->homepage_landing != 'none' ) {
 				if ( $settings->homepage_landing == 'custom' ) {
-					$setting = $settings->homepage_redirect_custom_target;
+					$setting = esc_url( $settings->homepage_redirect_custom_target );
 				} else {
 					$redirect_target = $settings->homepage_redirect_wp_target;
 					if ( function_exists( 'icl_object_id' ) ) {
 						$redirect_target = icl_object_id( $redirect_target, 'page', true );
 					}
-					$setting = get_permalink( $redirect_target );
+					$setting = esc_url( get_permalink( $redirect_target ) );
 				}
 			} else {
-				$setting = home_url();
+				$setting = esc_url( home_url() );
 			}
 			break;
 		case 'search_url':
 			if ( function_exists( 'home_url' ) ) {
-				$setting = home_url();
+				$setting = esc_url( home_url() );
 			} else {
-				$setting = get_bloginfo( 'home' );
+				$setting = esc_url( get_bloginfo( 'home' ) );
 			}
 
 			if ( $wptouch_pro->is_previewing_mobile_theme() ) {

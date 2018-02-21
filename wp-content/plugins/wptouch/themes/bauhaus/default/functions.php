@@ -318,7 +318,7 @@ function bauhaus_featured_slider() {
 
 	if ( $slides->post_count > 0 ) {
 
-		echo '<div class="carousel list-carousel ' . implode( ' ', $classes ) .'">';
+		echo '<div class="carousel list-carousel ' . esc_attr( implode( ' ', $classes ) ) .'">';
 
 		while ( $slides->have_posts() ) {
 			$slides->the_post();

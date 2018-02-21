@@ -2,7 +2,7 @@
 Contributors: wptouch, sureswiftcapital, duanestorey, dalemugford, adamdipardo, oxymoron
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 4.2
-Stable tag: 4.3.23
+Stable tag: 4.3.26
 Tested up to: 4.9
 License: GPLv2
 
@@ -32,6 +32,19 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 6. Theme settings
 
 == Changelog ==
+
+= Version 4.3.26 (Feb 8th, 2018) =
+
+* Added: Additional escaping for JS output.
+* Added: Additional core theme support items.
+
+= Version 4.3.25 (Feb 2nd, 2018) =
+
+* Fixed: Double escaping on post content which caused certain shortcodes not to work properly.
+
+= Version 4.3.24 (Feb 1st, 2018) =
+
+* Fixed: Added additional sanitization and escaping to data pulled saved to and pulled from the database.
 
 = Version 4.3.23 (Dec 27, 2017) =
 

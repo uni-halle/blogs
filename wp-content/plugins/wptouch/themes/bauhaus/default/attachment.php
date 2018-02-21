@@ -34,7 +34,7 @@
 		}?>
 
 		<a href="<?php echo esc_url( $next_attachment_url ); ?>" title="<?php echo esc_attr( get_the_title() ); ?>" rel="attachment">
-			<?php echo wp_get_attachment_image( $post->ID, array( 800, 800 ) ); ?>
+			<?php echo wp_kses_post( wp_get_attachment_image( $post->ID, array( 800, 800 ) ) ); ?>
 		</a>
 
 		<?php if ( !empty( $post->post_excerpt ) ) { ?>

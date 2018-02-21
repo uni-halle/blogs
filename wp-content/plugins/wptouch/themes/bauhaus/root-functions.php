@@ -1,6 +1,6 @@
 <?php
 
-define( 'BAUHAUS_THEME_VERSION', '2.2.2' );
+define( 'BAUHAUS_THEME_VERSION', '2.2.3' );
 define( 'BAUHAUS_SETTING_DOMAIN', 'bauhaus' );
 define( 'BAUHAUS_DIR', wptouch_get_bloginfo( 'theme_root_directory' ) );
 define( 'BAUHAUS_URL', wptouch_get_bloginfo( 'theme_parent_url' ) );
@@ -641,7 +641,7 @@ function bauhaus_handle_the_thumbnail( $current_thumbnail ) {
 		global $post;
 
 		$image = get_post_meta( $post->ID, $settings->bauhaus_thumbnail_custom_field, true );
-		echo $image;
+		echo wp_kses_post( $image );
 	}
 
 	return $current_thumbnail;

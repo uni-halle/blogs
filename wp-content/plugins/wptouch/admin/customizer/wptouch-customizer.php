@@ -120,7 +120,7 @@ function wptouch_customizer_reset_settings() {
 	$current_theme = wptouch_get_current_theme_name();
 	delete_option( 'wptouch_customizer_initialized_' . $current_theme );
 
-	// Delete theme mods – because we're not actively customizing here, WP believes the desktop theme is active, so override the value for the duration of the action. Disable the override once we're done so later requests execute normally.
+	// Delete theme mods – because we're not actively customizing here, WP believes the desktop theme is active, so override the value for the duration of the action. Disable the override once we're done so later requests execute normally.
 	wptouch_customizer_begin_theme_override();
 	remove_theme_mods();
 	wptouch_customizer_end_theme_override();
@@ -540,6 +540,27 @@ function wptouch_customizer_scripts() {
 			true
 		);
 
+		/**
+		 * WPtouch Load color extraction js library.
+		 *
+		 * Whether to load the necessary js to use in the customizer
+		 * for getting colors from an image, allowing this to be set
+		 * on a per theme basis.
+		 *
+		 * @since 4.3.25
+		 *
+		 * @param boolean
+		 */
+		if ( apply_filters( 'wptouch_load_color_extraction_lib', false ) ) {
+			wp_enqueue_script(
+				'color-extraction-customizer-js',
+				WPTOUCH_URL . '/admin/customizer/color-thief/color-thief.min.js',
+				array(),
+				md5( WPTOUCH_VERSION ),
+				true
+			);
+		}
+
 		global $wptouch_pro;
 		$theme = $wptouch_pro->get_current_theme_info();
 		$pro_or_free = ( !defined( 'WPTOUCH_IS_FREE' ) ) ? 'yes' : 'no';
@@ -590,7 +611,7 @@ function wptouch_customizer_scripts() {
 }
 
 function wptouch_customizer_ajax_callbacks() {
-?>
+	?>
 	<script type="text/javascript">
 		function wptouchCustomizerGetLuma( hexvalue ) {
 			var c = hexvalue.substring(1);      // strip #
@@ -602,40 +623,40 @@ function wptouch_customizer_ajax_callbacks() {
 			return 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709'
 		}
 
-	( function( jQuery ){
-<?php
-	if ( foundation_has_theme_colors() ) {
-		$colors = foundation_get_theme_colors();
-		foreach( $colors as $color ) {
-?>
+		( function( jQuery ){
+			<?php
+			if ( foundation_has_theme_colors() ) {
+			$colors = foundation_get_theme_colors();
+			foreach( $colors as $color ) {
+			?>
 			wp.customize('wptouch_<?php echo $color->setting; ?>',function( value ) {
 				value.bind( function( to ) {
 					<?php if ( $color->fg_selectors ) { ?>
-						jQuery( '<?php echo $color->fg_selectors; ?>' ).css('color', to ? to : '' );
+					jQuery( '<?php echo esc_attr( $color->fg_selectors ); ?>' ).css('color', to ? to : '' );
 					<?php } ?>
 
 					<?php if ( $color->bg_selectors ) { ?>
-						jQuery( '<?php echo $color->bg_selectors; ?>' ).css('background-color', to ? to : '' );
+					jQuery( '<?php echo esc_attr( $color->bg_selectors ); ?>' ).css('background-color', to ? to : '' );
 					<?php } ?>
 
 					<?php if ( $color->luma_threshold ) { ?>
-						if ( wptouchCustomizerGetLuma( to ) < <?php echo $color->luma_threshold; ?> ) {
-							jQuery( 'body' ).removeClass( 'light-<?php echo $color->luma_class; ?>' );
-							jQuery( 'body' ).addClass( 'dark-<?php echo $color->luma_class; ?>' );
-						} else {
-							jQuery( 'body' ).addClass( 'light-<?php echo $color->luma_class; ?>' );
-							jQuery( 'body' ).removeClass( 'dark-<?php echo $color->luma_class; ?>' );
-						}
+					if ( wptouchCustomizerGetLuma( to ) < <?php echo esc_attr( $color->luma_threshold ); ?> ) {
+						jQuery( 'body' ).removeClass( 'light-<?php echo esc_attr( $color->luma_class ); ?>' );
+						jQuery( 'body' ).addClass( 'dark-<?php echo esc_attr( $color->luma_class ); ?>' );
+					} else {
+						jQuery( 'body' ).addClass( 'light-<?php echo esc_attr( $color->luma_class ); ?>' );
+						jQuery( 'body' ).removeClass( 'dark-<?php echo esc_attr( $color->luma_class ); ?>' );
+					}
 					<?php } ?>
 				});
 			});
-<?php
-		}
-	}
-?>
-	} )( jQuery )
+			<?php
+			}
+			}
+			?>
+		} )( jQuery )
 	</script>
-<?php
+	<?php
 }
 
 function wptouch_customizer_override_settings( $settings, $domain ) {

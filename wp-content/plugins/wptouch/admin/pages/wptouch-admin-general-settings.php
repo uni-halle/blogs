@@ -276,6 +276,42 @@ function wptouch_render_general_page( $page_options ) {
 		'wptouch_pro'
 	);
 
+	/**
+	 * WPtouch load Google maps settings.
+	 *
+	 * Whether to load the necessary Google maps settings,
+	 * allowing this to be set on a per theme basis.
+	 *
+	 * @since 4.3.23
+	 *
+	 * @param boolean
+	 */
+	if ( apply_filters( 'wptouch_load_google_maps_settings', false ) ) {
+
+		$google_maps_settings = array(
+			wptouch_add_pro_setting(
+				'text',
+				'maps_google_api_key',
+				__( 'Google Maps API Key &mdash; <a href="https://developers.google.com/maps/documentation/static-maps/get-api-key" target="_new">Get a key</a>', 'wptouch-pro' ),
+				false,
+				WPTOUCH_SETTING_BASIC,
+				'4.3.23'
+			),
+		);
+
+		$google_maps_settings = apply_filters( 'wptouch_pro_google_maps_settings', $google_maps_settings );
+
+		wptouch_add_page_section(
+			WPTOUCH_ADMIN_SETUP_GENERAL,
+			__( 'Google Maps', 'wptouch-pro' ),
+			'setup-google-maps',
+			$google_maps_settings,
+			$page_options,
+			'wptouch_pro'
+		);
+
+	}
+
 	wptouch_add_page_section(
 		WPTOUCH_ADMIN_SETUP_GENERAL,
 		wptouchize_it( __( 'WPtouch Pro Love', 'wptouch-pro' ) ),

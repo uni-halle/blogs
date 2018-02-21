@@ -2,7 +2,7 @@
 <html <?php language_attributes(); ?>>
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
-		<title><?php wp_title( ' | ', true, 'right' ); ?></title>
+		<title><?php echo esc_html( wp_title( ' | ', false, 'right' ) ); ?></title>
 		<?php wptouch_head(); ?>
 		<?php
 			if ( !is_single() && !is_archive() && !is_page() && !is_search() ) {

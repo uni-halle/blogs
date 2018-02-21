@@ -559,7 +559,7 @@ class WPtouchProFour {
 
 				$shortcode_data[ 'page-' . $page ] = $page_shortcode_data;
 
-				echo $content;
+				echo wp_kses_post( $content );
 
 				update_post_meta( $this->post[ 'post_id' ], 'wptouch_sc_data', $shortcode_data );
 			}
@@ -736,7 +736,9 @@ class WPtouchProFour {
 
 			echo '<div class="error">';
 			foreach( $this->get_critical_notifications() as $notification ) {
-				echo '<p>' . $notification[0] . '</p>';
+				if ( ! empty( $notification[0] ) ) {
+					echo '<p>' . esc_html( $notification[0] ) . '</p>';
+				}
 			}
 			echo '</div>';
 
@@ -1691,7 +1693,7 @@ class WPtouchProFour {
 		switch( $_REQUEST[ 'plugin' ] ) {
 			case 'wptouch-pro':
 				echo '<div style="padding: 3%">';
-				echo "<h2 style=\"font-family:'open sans', sans-serif;\">" . sprintf( __( '%s Changelog', 'wptouch-pro' ), WPTOUCH_PRODUCT_NAME ) . "</h2>";
+				echo "<h2 style=\"font-family:'open sans', sans-serif;\">" . sprintf( __( '%s Changelog', 'wptouch-pro' ), esc_html( WPTOUCH_PRODUCT_NAME ) ) . "</h2>";
 
 				require_once( WPTOUCH_DIR . '/core/admin-ajax.php' );
 
@@ -2962,7 +2964,7 @@ class WPtouchProFour {
 			if ( $query_string ) {
 				$query_string = '?' . $query_string;
 			}
-			header( 'Location: ' . urldecode( $url ) . $query_string );
+			header( 'Location: ' . esc_url( urldecode( $url ) . $query_string ) );
 		}
 		die;
 	}
@@ -3343,7 +3345,7 @@ class WPtouchProFour {
 
 		$setting_name = $this->get_wp_setting_name_for_domain( $domain );
 
-		if ( $this->is_domain_site_wide( $domain ) ) {
+			if ( $this->is_domain_site_wide( $domain ) ) {
 			WPTOUCH_DEBUG( WPTOUCH_VERBOSE, 'Saving site wide option for domain ' . $domain );
 			update_site_option( $setting_name, $settings );
 		} else {
