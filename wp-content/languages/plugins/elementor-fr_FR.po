@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Elementor Page Builder - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-01-17 18:00:07+0000\n"
+"PO-Revision-Date: 2018-02-12 09:59:52+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,19 +11,23 @@ msgstr ""
 "Language: fr\n"
 "Project-Id-Version: Plugins - Elementor Page Builder - Stable (latest release)\n"
 
-#: includes/editor.php:635
+#: includes/fonts.php:64
+msgid "Google Early Access"
+msgstr "Google Early Access"
+
+#: includes/editor.php:636
 msgid "Unknown Error"
 msgstr "Erreur inconnue"
 
-#: includes/editor.php:630
+#: includes/editor.php:631
 msgid "Saving has been disabled until you’re reconnected."
 msgstr "L’enregistrement a été désactivé jusqu’à ce que vous vous soyez reconnecté."
 
-#: includes/editor.php:633
+#: includes/editor.php:634
 msgid "Server Error"
 msgstr "Erreur serveur"
 
-#: includes/editor.php:634
+#: includes/editor.php:635
 msgid "Connection Lost"
 msgstr "Connexion perdue"
 
@@ -107,35 +111,35 @@ msgctxt "revision date format"
 msgid "M j, H:i"
 msgstr "j M, H:i"
 
-#: includes/editor.php:629
+#: includes/editor.php:630
 msgid "Dismiss"
 msgstr "Rejeter"
 
-#: includes/editor.php:628
+#: includes/editor.php:629
 msgid "View All Revisions"
 msgstr "Voir toutes les révisions"
 
-#: includes/editor.php:627
+#: includes/editor.php:628
 msgid "Have a look"
 msgstr "Regardez"
 
-#: includes/editor.php:626
+#: includes/editor.php:627
 msgid "Keep Editing"
 msgstr "Continuer à modifier"
 
-#: includes/editor.php:625
+#: includes/editor.php:626
 msgid "This is just a draft. Play around and when you're done - click update."
 msgstr "C’est juste un brouillon. Jouez et quand vous avez terminé - cliquez sur mettre à jour."
 
-#: includes/editor.php:624
+#: includes/editor.php:625
 msgid "Hurray! Your page is live."
 msgstr "Hourra ! Votre page est en ligne"
 
-#: includes/editor.php:623
+#: includes/editor.php:624
 msgid "Submit"
 msgstr "Soumettre"
 
-#: includes/editor.php:622
+#: includes/editor.php:623
 msgid "Update"
 msgstr "Mettre à jour"
 
@@ -282,7 +286,7 @@ msgstr "Enregistrer le brouillon"
 msgid "Save Options"
 msgstr "Enregistrer les options"
 
-#: includes/editor-templates/panel.php:102
+#: includes/editor-templates/panel.php:102 includes/editor.php:620
 msgid "Publish"
 msgstr "Publier"
 
@@ -328,28 +332,28 @@ msgstr "Décoration"
 msgid "Unlinked values"
 msgstr "Valeurs non liées"
 
-#: includes/admin.php:679
+#: includes/admin.php:680
 msgid "Blog"
 msgstr "Blog"
 
-#: includes/admin.php:632
+#: includes/admin.php:633
 msgid "(opens in a new window)"
 msgstr "(ouvre dans une nouvelle fenêtre)"
 
-#: includes/admin.php:613
+#: includes/admin.php:614
 msgid "News & Updates"
 msgstr "Nouveautés & mises à jour"
 
-#: includes/admin.php:602
+#: includes/admin.php:603
 msgctxt "Dashboard Overview Widget Recently Date"
 msgid "M jS"
 msgstr "M jS"
 
-#: includes/admin.php:596
+#: includes/admin.php:597
 msgid "Recently Edited"
 msgstr "Modifié récemment"
 
-#: includes/admin.php:591
+#: includes/admin.php:592
 msgid "Create New Page"
 msgstr "Créer une nouvelle page"
 
@@ -397,15 +401,15 @@ msgstr "Début"
 msgid "Type Here"
 msgstr "Écrivez ici"
 
-#: includes/editor.php:640
+#: includes/editor.php:641
 msgid "Reload Page"
 msgstr "Recharger la page"
 
-#: includes/editor.php:642
+#: includes/editor.php:643
 msgid "Your session has expired. Please reload the page to continue editing."
 msgstr "Votre session a expiré. Veuillez recharger la page pour continuer à modifier."
 
-#: includes/editor.php:641
+#: includes/editor.php:642
 msgid "Timeout"
 msgstr "Expiration"
 
@@ -425,7 +429,7 @@ msgstr "Couleurs par défaut"
 msgid "Update Notification"
 msgstr "Notification de mise à jour"
 
-#: includes/editor.php:644
+#: includes/editor.php:645
 msgid "Unknown Value"
 msgstr "Valeur inconnue"
 
@@ -468,7 +472,7 @@ msgstr "Déplacé"
 msgid "Added"
 msgstr "Ajouté"
 
-#: includes/editor.php:639
+#: includes/editor.php:640
 msgid "Documentation"
 msgstr "Documentation"
 
@@ -1088,7 +1092,7 @@ msgctxt "revision date format"
 msgid "M j @ H:i"
 msgstr "j M @ h:i"
 
-#: includes/editor.php:638
+#: includes/editor.php:639
 msgid "Autosave"
 msgstr "Sauvegarde automatique"
 
@@ -1162,7 +1166,7 @@ msgstr "Avec cette fonctionnalité, vous pouvez enregistrer un widget comme glob
 msgid "Meet Our Global Widget"
 msgstr "Découvrez notre widget global"
 
-#: includes/admin.php:282 includes/admin.php:690
+#: includes/admin.php:282 includes/admin.php:691
 #: includes/editor-templates/panel-elements.php:23
 #: includes/editor-templates/panel-elements.php:55
 #: includes/editor-templates/templates.php:197
@@ -1216,7 +1220,7 @@ msgstr "Améliorer Elementor"
 msgid "General Elements"
 msgstr "Éléments généraux"
 
-#: includes/frontend.php:850
+#: includes/frontend.php:858
 msgid "Invalid Data: The Template ID cannot be the same as the currently edited template. Please choose a different one."
 msgstr "Données non valides : l’ID du modèle ne peut pas être le même que le modèle en cours de modification. Veuillez en choisir un autre."
 
@@ -1738,7 +1742,7 @@ msgstr "Une nouvelle version d'Elementor Page Builder est disponible. <a href=\"
 
 #: includes/widgets/image-carousel.php:190 includes/widgets/image.php:139
 msgid "Custom URL"
-msgstr "URL prsonnalisée"
+msgstr "URL personnalisée"
 
 #: includes/elements/column.php:208 includes/elements/section.php:488
 #: includes/widgets/accordion.php:233 includes/widgets/accordion.php:394
@@ -3176,7 +3180,7 @@ msgstr "À propos d'Elementor"
 msgid "Revision History"
 msgstr "Historique des révisions"
 
-#: includes/editor.php:643
+#: includes/editor.php:644
 msgid "Soon"
 msgstr "Bientôt"
 
@@ -3192,7 +3196,7 @@ msgstr "Modifier {0}"
 msgid "Please note: All unsaved changes will be lost."
 msgstr "Veuillez noter : toutes les modifications non enregistrées seront perdues."
 
-#: includes/editor.php:621
+#: includes/editor.php:622
 msgid "Saved"
 msgstr "Enregistré"
 
@@ -3245,11 +3249,11 @@ msgstr "Aperçu"
 
 #: includes/editor-templates/templates.php:37
 #: includes/editor-templates/templates.php:38
-#: includes/editor-templates/templates.php:215 includes/editor.php:620
+#: includes/editor-templates/templates.php:215 includes/editor.php:621
 msgid "Save"
 msgstr "Enregistrer"
 
-#: includes/admin.php:683
+#: includes/admin.php:684
 msgid "Help"
 msgstr "Aide"
 
@@ -3293,10 +3297,10 @@ msgstr "Ajouter une nouvelle section"
 msgid "Loading"
 msgstr "Chargement"
 
-#. #-#-#-#-#  elementor-code.pot (Elementor 1.9.3)  #-#-#-#-#
+#. #-#-#-#-#  elementor-code.pot (Elementor 1.9.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: core/settings/page/manager.php:53 includes/admin.php:230
-#: includes/admin.php:578 includes/admin.php:733
+#: includes/admin.php:579 includes/admin.php:734
 #: includes/editor-templates/editor-wrapper.php:24 includes/editor.php:536
 #: includes/settings/settings.php:27 includes/settings/settings.php:28
 #: includes/settings/settings.php:293
@@ -3573,11 +3577,11 @@ msgctxt "Background Control"
 msgid "Classic"
 msgstr "Classique"
 
-#: includes/controls/font.php:115 includes/editor-templates/panel.php:216
+#: includes/fonts.php:63
 msgid "Google"
 msgstr "Google"
 
-#: includes/controls/font.php:109 includes/editor-templates/panel.php:210
+#: includes/fonts.php:62
 msgid "System"
 msgstr "Système"
 
@@ -3632,11 +3636,11 @@ msgid "Top"
 msgstr "Haut"
 
 #: core/settings/page/model.php:146 includes/base/widget-base.php:268
-#: includes/controls/font.php:108 includes/controls/groups/typography.php:141
+#: includes/controls/font.php:109 includes/controls/groups/typography.php:141
 #: includes/controls/groups/typography.php:160
 #: includes/controls/groups/typography.php:173
 #: includes/controls/groups/typography.php:185
-#: includes/editor-templates/panel.php:208 includes/elements/column.php:156
+#: includes/editor-templates/panel.php:203 includes/elements/column.php:156
 #: includes/elements/column.php:191 includes/elements/column.php:726
 #: includes/elements/section.php:320 includes/elements/section.php:337
 #: includes/elements/section.php:382 includes/elements/section.php:440
@@ -3657,7 +3661,7 @@ msgid "Clear"
 msgstr "Effacer"
 
 #: includes/admin.php:138 includes/admin.php:146 includes/admin.php:206
-#: includes/frontend.php:822
+#: includes/frontend.php:830
 msgid "Edit with Elementor"
 msgstr "Modifier avec Elementor"
 

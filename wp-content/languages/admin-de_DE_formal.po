@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-01-24 13:32:10+0000\n"
+"PO-Revision-Date: 2018-02-18 10:57:34+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,37 +30,37 @@ msgstr "Europe/Berlin"
 msgid "This changeset cannot be further modified."
 msgstr "Dieses Änderungs-Set kann nicht weiter modifiziert werden."
 
-#: wp-admin/about.php:262
+#: wp-admin/about.php:298
 msgid "Improvements to Roles and Capabilities"
 msgstr "Verbesserungen für Rollen und Berechtigungen"
 
-#: wp-admin/about.php:263
+#: wp-admin/about.php:299
 msgid "New capabilities have been introduced that allow granular management of plugins and translation files. In addition, the site switching process in multisite has been fine-tuned to update the available roles and capabilities in a more reliable and coherent way."
 msgstr "Neue Funktionen wurden eingeführt, die eine detaillierte Verwaltung von Plugins und Übersetzungsdateien ermöglichen. Außerdem wurde der Prozess des Website-Wechsels in Netzwerk-Installationen optimiert, um die verfügbaren Benutzerrollen und Berechtigungen auf zuverlässigere und einheitlichere Weise zu aktualisieren."
 
-#: wp-admin/about.php:259
+#: wp-admin/about.php:295
 msgid "WordPress 4.9 includes an upgraded version of MediaElement.js, which removes dependencies on jQuery, improves accessibility, modernizes the UI, and fixes many bugs."
 msgstr "WordPress 4.9 enthält eine aktualisierte Version von MediaElement.js, welche die Abhängigkeiten von jQuery entfernt, die Zugänglichkeit verbessert, die Benutzeroberfläche modernisiert und viele Fehler behebt."
 
-#: wp-admin/about.php:258
+#: wp-admin/about.php:294
 msgid "MediaElement.js upgraded to 4.2.6"
 msgstr "MediaElement.js auf 4.2.6 aktualisiert"
 
-#: wp-admin/about.php:255
+#: wp-admin/about.php:291
 msgid "We&#8217;ve introduced a new code editing library, CodeMirror, for use within core. Use it to improve any code writing or editing experiences within your plugins, like CSS or JavaScript include fields."
 msgstr "Wir haben eine neue Code-Bearbeitungs-Bibliothek, CodeMirror, für die Verwendung innerhalb des Cores eingeführt. Nutzen Sie sie, um das Schreiben oder Bearbeiten von Code innerhalb Ihrer Plugins, wie CSS oder JavaScript, zu verbessern."
 
-#: wp-admin/about.php:254
+#: wp-admin/about.php:290
 msgid "CodeMirror available for use in your themes and plugins"
 msgstr "CodeMirror ist für die Nutzung in Ihren Themes und Plugins verfügbar"
 
 #. translators: %s:
 #. https://make.wordpress.org/core/2017/11/01/improvements-to-the-customize-js-api-in-4-9/
-#: wp-admin/about.php:248
+#: wp-admin/about.php:284
 msgid "We&#8217;ve made numerous improvements to the Customizer JS API in WordPress 4.9, eliminating many pain points and making it just as easy to work with as the PHP API. There are also new base control templates, a date/time control, and section/panel/global notifications to name a few. <a href=\"%s\">Check out the full list.</a>"
 msgstr "Wir haben zahlreiche Verbesserungen an der Customizer JS API in WordPress 4.9 vorgenommen, wodurch viele Schwachpunkte beseitigt wurden und die Arbeit mit der JS API nun genauso einfach ist wie mit der PHP API. Es gibt jetzt neue Vorlagen für Basissteuerungen, eine Datum/Uhrzeit-Steuerung und Benachrichtigungen für Sektionen/Panels und globale Benachrichtigungen, um nur einige zu nennen. <a href=\"%s\">Hier finden Sie die komplette Liste.</a>"
 
-#: wp-admin/about.php:244
+#: wp-admin/about.php:280
 msgid "Customizer JS API Improvements"
 msgstr "Customizer JS API-Verbesserungen"
 
@@ -68,7 +68,7 @@ msgstr "Customizer JS API-Verbesserungen"
 msgid "This data is used to provide general enhancements to WordPress, which includes helping to protect your site by finding and automatically installing new updates. It is also used to calculate statistics, such as those shown on the <a href=\"%s\">WordPress.org stats page</a>."
 msgstr "Diese Daten werden genutzt, um durchgängig Verbesserungen an WordPress zu ermöglichen, welche auch das Finden und automatische Installieren von neuen Updates beinhalten, um Ihre Website zu schützen. Auch werden die Daten verwendet, um Statistiken zu erstellen, wie solche, die auf der <a href=\"%s\">Seite mit den Statistiken bei WordPress.org</a> zu sehen sind."
 
-#: wp-admin/about.php:157
+#: wp-admin/about.php:193
 msgid "When you edit themes and plugins directly, WordPress 4.9 will politely warn you that this is a dangerous practice. It will recommend that you backup your files before saving, so they don&#8217;t get overwritten by the next update. Take the safe route: your future self will thank you. Your team and customers will thank you."
 msgstr "Wenn Sie Themes und Plugins direkt bearbeiten, wird WordPress 4.9 Sie nun freundlich warnen, dass dies eine gefährliche Vorgehensweise ist. Es wird Ihnen empfehlen, eine Sicherung Ihrer Dateien anzulegen, so dass diese beim nächsten Update nicht überschrieben werden. Nehmen Sie die sichere Route: Sie werden es nicht bereuen. Ihr Team und Ihre Kunden werden es Ihnen danken."
 
@@ -121,15 +121,15 @@ msgstr "Wenn die %1$s-Datei <a href=\"%2$s\">beschreibbar</a> wäre, könnte Wor
 msgid "If the root directory of your site was <a href=\"%1$s\">writable</a>, we could do this automatically, but it isn&#8217;t so this is the url rewrite rule you should have in your %2$s file. Create a new file, called %2$s in the root directory of your site. Click in the field and press %3$s to select all. Then insert this code into the %2$s file."
 msgstr "Wenn das Hauptverzeichnis Ihrer Website <a href=\"%1$s\">beschreibbar</a> wäre, könnte WordPress das automatisch machen. Das ist nicht der Fall. Darum finden Sie hier die mod_rewrite-Regeln für Ihre %2$s-Datei. Erstellen Sie eine neue Datei namens %2$s im Stammverzeichnis Ihrer Website. Klicken Sie in das Feld und verwenden Sie %3$s, um alles auszuwählen. Fügen Sie diese dann in die %2$s-Datei ein."
 
-#. translators: 1: web.config, 2: Codex URL, 3: CTRL + a, 4: element code
-#: wp-admin/options-permalink.php:308
-msgid "If your %1$s file was <a href=\"%2$s\">writable</a>, we could do this automatically, but it isn&#8217;t so this is the url rewrite rule you should have in your %1$s file. Click in the field and press %3$s to select all. Then insert this rule inside of the %4$s element in %1$s file."
-msgstr "Wenn Ihre %1$s-Datei <a href=\"%2$s\">beschreibbar</a> wäre, könnte WordPress sie automatisch bearbeiten. Das ist nicht der Fall. Darum finden Sie hier die mod_rewrite-Regeln, die Sie in Ihre %1$s-Datei einfügen müssen. Klicken Sie in das Feld und verwenden Sie %3$s, um alles auszuwählen. Fügen sie diese Regel dann im %4$s-Element der %1$s-Datei hinzu."
-
 #: wp-admin/options-permalink.php:310 wp-admin/options-permalink.php:331
 #: wp-admin/options-permalink.php:358
 msgid "https://codex.wordpress.org/Changing_File_Permissions"
 msgstr "https://codex.wordpress.org/Changing_File_Permissions"
+
+#. translators: 1: web.config, 2: Codex URL, 3: CTRL + a, 4: element code
+#: wp-admin/options-permalink.php:308
+msgid "If your %1$s file was <a href=\"%2$s\">writable</a>, we could do this automatically, but it isn&#8217;t so this is the url rewrite rule you should have in your %1$s file. Click in the field and press %3$s to select all. Then insert this rule inside of the %4$s element in %1$s file."
+msgstr "Wenn Ihre %1$s-Datei <a href=\"%2$s\">beschreibbar</a> wäre, könnte WordPress sie automatisch bearbeiten. Das ist nicht der Fall. Darum finden Sie hier die mod_rewrite-Regeln, die Sie in Ihre %1$s-Datei einfügen müssen. Klicken Sie in das Feld und verwenden Sie %3$s, um alles auszuwählen. Fügen sie diese Regel dann im %4$s-Element der %1$s-Datei hinzu."
 
 #: wp-admin/options-permalink.php:163
 msgid "https://codex.wordpress.org/Using_Permalinks"
@@ -144,53 +144,53 @@ msgstr "Geben Sie hier die Adresse ein, wenn <a href=\"%s\">die Startseite Ihrer
 msgid "https://codex.wordpress.org/Giving_WordPress_Its_Own_Directory"
 msgstr "https://codex.wordpress.org/Giving_WordPress_Its_Own_Directory"
 
-#: wp-admin/about.php:226
+#: wp-admin/about.php:262
 msgid "WordPress is working on a new way to create and control your content and we&#8217;d love to have your help. Interested in being an <a href=\"%s\">early tester</a> or getting involved with the Gutenberg project? <a href=\"%s\">Contribute on GitHub</a>."
 msgstr "WordPress arbeitet an einer neuen Art und Weise, wie Sie Ihre Inhalte erstellen und unter Kontrolle halten können und wir würden uns sehr über Ihre Mithilfe freuen. Sind Sie daran interessiert sich mit <a href=\"%s\">vorzeitigen Betatests</a> einzubringen oder sich beim Gutenberg Projekt zu engagieren? Dann: <a href=\"%s\">Beteiligen Sie sich auf GitHub</a>."
 
 #. translators: %s: smiling face with smiling eyes emoji
-#: wp-admin/about.php:237
+#: wp-admin/about.php:273
 msgid "Developer Happiness %s"
 msgstr "Erfreuliches für Entwicklerinnen und Entwickler %s"
 
-#: wp-admin/about.php:227
+#: wp-admin/about.php:263
 msgid "https://wordpress.org/plugins/gutenberg/"
 msgstr "https://de.wordpress.org/plugins/gutenberg/"
 
 #. translators: %s: handshake emoji
-#: wp-admin/about.php:220
+#: wp-admin/about.php:256
 msgid "Lend a Hand with Gutenberg %s"
 msgstr "Helfen Sie uns mit Gutenberg %s"
 
-#: wp-admin/about.php:195
+#: wp-admin/about.php:231
 msgid "More Reliable Theme Switching"
 msgstr "Zuverlässigerer Theme-Wechsel"
 
-#: wp-admin/about.php:187
+#: wp-admin/about.php:223
 msgid "Site Building Improvements"
 msgstr "Verbesserungen zum Aufbau der Website"
 
-#: wp-admin/about.php:172
+#: wp-admin/about.php:208
 msgid "The New Gallery Widget"
 msgstr "Das neue Galerie-Widget"
 
-#: wp-admin/about.php:164
+#: wp-admin/about.php:200
 msgid "Even More Widget Updates"
 msgstr "Noch mehr Aktualisierungen bei den Widgets"
 
-#: wp-admin/about.php:134
+#: wp-admin/about.php:170
 msgid "Coding Enhancements"
 msgstr "Verbesserungen fürs Programmieren"
 
-#: wp-admin/about.php:127
+#: wp-admin/about.php:163
 msgid "Were you lured away from your desk before you saved your new draft design? Fear not, when you return, WordPress 4.9 will politely ask whether or not you&#8217;d like to save your unsaved changes."
 msgstr "Sie wurden von Ihrem Schreibtisch weggelockt, bevor Sie Ihren neuen Designentwurf gespeichert haben? Keine Angst, bei Ihrer Rückkehr wird WordPress 4.9 Sie freundlich fragen, ob Sie Ihre ungespeicherten Änderungen speichern möchten oder nicht."
 
-#: wp-admin/about.php:119
+#: wp-admin/about.php:155
 msgid "Design Locking To Guard Your Changes"
 msgstr "Eine Design-Sperre, um Ihre Änderungen zu schützen"
 
-#: wp-admin/about.php:126
+#: wp-admin/about.php:162
 msgid "A Prompt to Protect Your Work"
 msgstr "Eine Aufforderung, Ihre Arbeit zu schützen"
 
@@ -202,80 +202,80 @@ msgstr "Wir nehmen Privatsphäre und Transparenz sehr ernst. Um mehr darüber zu
 msgid "From time to time, your WordPress site may send data to WordPress.org &#8212; including, but not limited to &#8212; the version of WordPress you are using, and a list of installed plugins and themes."
 msgstr "Von Zeit zu Zeit kann Ihre WordPress-Website Daten an WordPress.org senden &#8212; inklusive, aber nicht begrenzt auf &#8212; die Version von WordPress, die Sie nutzen und eine Liste der installierten Plugins und Themes."
 
-#: wp-admin/about.php:203
+#: wp-admin/about.php:239
 msgid "Were you confused by the steps to create a new menu? Perhaps no longer! We&#8217;ve ironed out the UX for a smoother menu creation process. Newly updated copy will guide you."
 msgstr "Haben Sie die Schritte im Customizer, um ein neues Menü zu erstellen, verwirrt? Womöglich nicht mehr länger! Wir haben den Vorgang zugunsten eines sanfteren  Ablaufs überarbeitet und aufgeräumt. Die neue Version wird Sie hindurch führen."
 
-#: wp-admin/about.php:196
-msgid "When you switch themes, widgets sometimes think they can just up and move location. Improvements in WordPress 4.9 offer more persistent menu and widget placement when you decide it&#8217;s time for a new theme. Additionally, you can preview installed themes or download, install, and preview new themes right. Nothing says handy like being able to preview before you deploy. "
-msgstr "Wenn Sie zwischen Themes hin und her wechseln, meinen Widgets manchmal, sie könnten einfach ihre Position wechseln. Verbesserungen in WordPress 4.9 halten Menüs und Widgets auf ihren Plätzen, wenn Sie sich für ein neues Theme entscheiden. Zusätzlich können Sie installierte Themes in einer Vorschau ansehen oder neue Themes direkt herunterladen und installieren. Nichts ist praktischer als eine Vorschau vor der Veröffentlichung."
-
-#: wp-admin/about.php:202
+#: wp-admin/about.php:238
 msgid "Better Menu Instructions = Less Confusion"
 msgstr "Bessere Menü-Anleitungen = Weniger Verwirrung"
 
-#: wp-admin/about.php:180
+#: wp-admin/about.php:232
+msgid "When you switch themes, widgets sometimes think they can just up and move location. Improvements in WordPress 4.9 offer more persistent menu and widget placement when you decide it&#8217;s time for a new theme. Additionally, you can preview installed themes or download, install, and preview new themes right. Nothing says handy like being able to preview before you deploy. "
+msgstr "Wenn Sie zwischen Themes hin und her wechseln, meinen Widgets manchmal, sie könnten einfach ihre Position wechseln. Verbesserungen in WordPress 4.9 halten Menüs und Widgets auf ihren Plätzen, wenn Sie sich für ein neues Theme entscheiden. Zusätzlich können Sie installierte Themes in einer Vorschau ansehen oder neue Themes direkt herunterladen und installieren. Nichts ist praktischer als eine Vorschau vor der Veröffentlichung."
+
+#: wp-admin/about.php:216
 msgid "Want to add media to your text widget? Embed images, video, and audio directly into the widget along with your text, with our simple but useful Add Media button. Woo!"
 msgstr "Sie wollen Ihrem Text-Widget Medien hinzufügen? Integrieren Sie Bilder, Video und Audio direkt in das Widget. Das geht zusammen mit Ihrem Text, mit unserem einfachen, aber nützlichen, „Medien hinzufügen“-Button. Wow!"
 
-#: wp-admin/about.php:173
+#: wp-admin/about.php:209
 msgid "An incremental improvement to the media changes hatched in WordPress 4.8, you can now add a gallery via widget. Yes!"
 msgstr "Als weitere Verbesserung der bereits in WordPress 4.8 vorgestellten Änderungen bezüglich Medien, können Sie nun eine Galerie über ein Widget hinzufügen. Jawohl!"
 
-#: wp-admin/about.php:179
+#: wp-admin/about.php:215
 msgid "Press a Button, Add Media"
 msgstr "Ein Button-Klick & Medien hinzufügen"
 
-#: wp-admin/about.php:150
+#: wp-admin/about.php:186
 msgid "The dreaded white screen. You&#8217;ll avoid it when working on themes and plugin code because WordPress 4.9 will warn you about saving an error. You&#8217;ll sleep better at night."
 msgstr "Der gefürchtete White Screen. Sie werden ihn beim Arbeiten an Theme- und Plugin-Code vermeiden können, weil WordPress 4.9 Sie warnen wird, sobald Sie einen Fehler speichern wollen. Nun können Sie Nachts bestimmt besser schlafen."
 
-#: wp-admin/about.php:156
+#: wp-admin/about.php:192
 msgid "Warning: Potential Danger Ahead!"
 msgstr "Warnung: Potentielle Gefahr voraus!"
 
-#: wp-admin/about.php:149
+#: wp-admin/about.php:185
 msgid "Sandbox for Safety"
 msgstr "Eine Sandbox für die Sicherheit"
 
-#: wp-admin/about.php:143
+#: wp-admin/about.php:179
 msgid "You&#8217;ve got a display problem but can&#8217;t quite figure out exactly what went wrong in the CSS you lovingly wrote. With syntax highlighting and error checking for CSS editing and the Custom HTML widget introduced in WordPress 4.8.1, you&#8217;ll pinpoint coding errors quickly. Practically guaranteed to help you scan code more easily and suss out and fix code errors quickly."
 msgstr "Sie haben trotz liebevoll geschriebenem CSS-Code ein Problem auf dem Bildschirm und können beim besten Willen nicht herausfinden, was schiefgelaufen ist? Mit der Syntaxhervorhebung und Fehlerprüfung für das Bearbeiten von CSS und dem HTML-Widget, welches mit WordPress 4.8.1 eingeführt wurde, kommen Sie Fehlern im Code schnell auf die Spur. Es ist so gut wie garantiert, dass Sie fehlerhaften Code schneller und einfacher aufspüren und auch beheben können."
 
-#: wp-admin/about.php:142
+#: wp-admin/about.php:178
 msgid "Syntax Highlighting and Error Checking? Yes, Please!"
 msgstr "Syntaxhervorhebung und Fehlerprüfung? Ja, bitte!"
 
-#: wp-admin/about.php:120
+#: wp-admin/about.php:156
 msgid "Ever encounter a scenario where two designers walk into a project and designer A overrides designer B&#8217;s beautiful changes? WordPress 4.9&#8217;s design lock feature (similar to post locking) secures your draft design so that no one can make changes to it or erase all your hard work."
 msgstr "Haben Sie es schon erlebt, dass sich zwei Designer in ein Projekt einbringen und Designer A die wunderbaren Änderungen von Designer B überschreibt? Die Design-Sperre in WordPress 4.9 sichert Ihnen (genau wie das Sperren von Beiträgen) Ihre Designentwürfe, sodass sie niemand verändern oder all Ihre harte Arbeit löschen kann."
 
-#: wp-admin/about.php:113
+#: wp-admin/about.php:149
 msgid "Need to get some feedback on proposed site design changes? WordPress 4.9 gives you a preview link you can send to your team and customers so that you can collect and integrate feedback before you schedule the changes to go live. Can we say collaboration&#43;&#43;?"
 msgstr "Brauchen Sie Rückmeldung zu vorgeschlagenen Designänderungen der Website? WordPress 4.9 gibt Ihnen einen Vorschau-Link, den Sie an Ihr Team und Kunden weitergeben können, sodass Sie Rückmeldungen sammeln und integrieren können, bevor Sie die Änderungen veröffentlichen. Dürfen wir das Zusammenarbeit++ nennen?"
 
-#: wp-admin/about.php:112
+#: wp-admin/about.php:148
 msgid "Collaborate with Design Preview Links"
 msgstr "Zusammenarbeit durch Links zur Design-Vorschau"
 
-#: wp-admin/about.php:106
+#: wp-admin/about.php:142
 msgid "Yes, you read that right. Just like you can draft and revise posts and schedule them to go live on the date and time you choose, you can now tinker with your site&#8217;s design and schedule those design changes to go live as you please."
 msgstr "Ja, Sie haben richtig gelesen. So, wie Sie Entwürfe und Revisionen von Beiträgen haben können und sie für eine Veröffentlichung an einem bestimmten Datum in der Zukunft planen können, können Sie jetzt am Design Ihrer Website tüfteln und diese Änderungen ganz nach Ihrem Wunsch später veröffentlichen."
 
-#: wp-admin/about.php:105
+#: wp-admin/about.php:141
 msgid "Draft and Schedule Site Design Customizations"
 msgstr "Anpassungen des Website-Designs entwerfen und planen"
 
-#: wp-admin/about.php:84
+#: wp-admin/about.php:120
 msgid "Welcome to an improved Customizer workflow with design drafts, locking, scheduling, and preview links. What&#8217;s more, code syntax highlighting and error checking will make for a clean and smooth site building experience. Finally, if all that wasn&#8217;t pretty great, we&#8217;ve got a great new Gallery widget and improvements to theme browsing and switching."
 msgstr "Willkommen zu einem verbesserten Workflow im Customizer mit Design-Entwürfen und einer Design-Sperre, Planen (Terminierung) und Vorschau-Links. Darüber hinaus Code-Syntaxhervorhebung und Fehlerprüfung, was das Erstellen Ihrer Website zu einem leichtgängigeren Erlebnis macht. Außerdem haben wir, wenn das noch nicht gut genug ist, ein großartiges, neues Galerie-Widget und es gibt Verbesserungen für das Stöbern durch Themes und deren Wechsel."
 
-#: wp-admin/about.php:97
+#: wp-admin/about.php:133
 msgid "Customizer Workflow Improved"
 msgstr "Verbesserter Workflow im Customizer"
 
 #. translators: %s: party popper emoji
-#: wp-admin/about.php:79
+#: wp-admin/about.php:115
 msgid "Major Customizer Improvements, Code Error Checking, and More! %s"
 msgstr "Wesentliche Verbesserungen des Customizers, Code-Fehlerprüfung und mehr! %s"
 
@@ -1330,7 +1330,7 @@ msgstr "%1$s, %2$s"
 
 #: wp-admin/edit-form-advanced.php:443
 msgid "<strong>Publish</strong> &mdash; You can set the terms of publishing your post in the Publish box. For Status, Visibility, and Publish (immediately), click on the Edit link to reveal more options. Visibility includes options for password-protecting a post or making it stay at the top of your blog indefinitely (sticky). The Password protected option allows you to set an arbitrary password for each post. The Private option hides the post from everyone except editors and administrators. Publish (immediately) allows you to set a future or past date and time, so you can schedule a post to be published in the future or backdate a post."
-msgstr "<strong>Veröffentlichen</strong> &mdash; Sie können die Konditionen zur Veröffentlichung Ihres Beitrags im Kästchen Veröffentlichen festlegen. Klicken Sie bei Status, Sichtbarkeit und (sofort) Veröffentlichen auf den Bearbeiten-Link, um mehr Optionen einzublenden. Die Sichtbarkeit beinhaltet Optionen für den Passwortschutz eines Beitrags oder die Festlegung, dass der Beitrag dauerhaft gehalten werden soll (sticky). Die Einstellung zum Passwortschutz ermöglicht Ihnen, für jeden Beitrag ein beliebiges Passwort festzulegen. Die Einstellung Privat versteckt Beiträge für jeden, bis auf Administratoren und Redakteure. (Sofort) Veröffentlichen ermöglicht Ihnen, ein künftiges oder zurückliegendes Datum und eine Uhrzeit festzulegen, damit Sie die Veröffentlichung Ihres Beitrags planen oder Beiträge zurückdatieren können."
+msgstr "<strong>Veröffentlichen</strong> &mdash; Sie können die Konditionen zur Veröffentlichung Ihres Beitrags in der Veröffentlichen-Box Veröffentlichen festlegen. Klicken Sie bei Status, Sichtbarkeit und (sofort) Veröffentlichen auf den Bearbeiten-Link, um mehr Optionen einzublenden. Die Sichtbarkeit beinhaltet Optionen für den Passwortschutz eines Beitrags oder die Festlegung, dass der Beitrag dauerhaft gehalten werden soll (sticky). Die Einstellung zum Passwortschutz ermöglicht Ihnen, für jeden Beitrag ein beliebiges Passwort festzulegen. Die Einstellung Privat versteckt Beiträge für jeden, bis auf Administratoren und Redakteure. (Sofort) Veröffentlichen ermöglicht Ihnen, ein künftiges oder zurückliegendes Datum und eine Uhrzeit festzulegen, damit Sie die Veröffentlichung Ihres Beitrags planen oder Beiträge zurückdatieren können."
 
 #. translators: %s: edit page url
 #: wp-admin/user-new.php:265
@@ -1697,7 +1697,7 @@ msgid "(Currently set to: %s)"
 msgstr "(Aktueller Wert: %s)"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:390
+#: wp-admin/about.php:426
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>Version %s</strong> behob ein Sicherheitsproblem."
 
@@ -1721,15 +1721,15 @@ msgstr "https://de.gravatar.com/"
 msgid "Profile Picture"
 msgstr "Profilbild"
 
-#: wp-admin/about.php:381
+#: wp-admin/about.php:417
 msgid "Maintenance Releases"
 msgstr "Wartungs-Updates"
 
-#: wp-admin/about.php:384
+#: wp-admin/about.php:420
 msgid "Security Releases"
 msgstr "Sicherheits-Updates"
 
-#: wp-admin/about.php:34 wp-admin/about.php:387
+#: wp-admin/about.php:34 wp-admin/about.php:423
 msgid "Maintenance and Security Releases"
 msgstr "Wartungs- und Sicherheits-Updates"
 
@@ -3227,7 +3227,7 @@ msgstr[1] "%d Sterne"
 
 #: wp-admin/includes/class-wp-list-table.php:434
 msgid "Select bulk action"
-msgstr "Mehrfachauswahl"
+msgstr "Sammelaktion auswählen"
 
 #: wp-admin/theme-install.php:305
 msgctxt "Button label for a theme"
@@ -4559,13 +4559,13 @@ msgstr "Verwalten von <a href=\"%1$s\">Widgets</a> oder <a href=\"%2$s\">Menüs<
 msgid "Don&#8217;t forget to click &#8220;Save Changes&#8221; when you&#8217;re done!"
 msgstr "Vergessen Sie nicht &#8222;Änderungen speichern&#8220; zu klicken, wenn Sie fertig sind!"
 
-#: wp-admin/edit-tags.php:250
-msgid "<strong>Parent</strong> &mdash; Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have child categories for Bebop and Big Band. Totally optional. To create a subcategory, just choose another category from the Parent dropdown."
-msgstr "<strong>Eltern</strong> &mdash; Das sind übergeordnete Kategorien, die im Gegensatz zu Schlagwörtern hierarchisch angeordnet werden können. Sie können zum Beispiel eine Kategorie Jazz anlegen sowie die Kategorien Bebop und Big Band. Wie Sie wollen. Da die beiden letzteren Verfeinerungen der Kategorie Jazz darstellen, wählen Sie für beide die Kategorie Jazz, als übergeordnete Kategorie aus dem Dropdown-Menü."
-
 #: wp-admin/widgets.php:71
 msgid "When changing themes, there is often some variation in the number and setup of widget areas/sidebars and sometimes these conflicts make the transition a bit less smooth. If you changed themes and seem to be missing widgets, scroll down on this screen to the Inactive Widgets area, where all of your widgets and their settings will have been saved."
 msgstr "Wenn Sie Themes wechseln, gibt es häufig Unterschiede in der Anzahl und Benennung der Widgetbereiche. Dies kann den Übergang etwas schwierig machen. Wenn Sie nach einem Themewechsel ein Widget vermissen, dann schauen Sie im Bereich <strong>Inaktive Widgets</strong>, wo alle Widgets und ihre Einstellungen gespeichert sind."
+
+#: wp-admin/edit-tags.php:250
+msgid "<strong>Parent</strong> &mdash; Categories, unlike tags, can have a hierarchy. You might have a Jazz category, and under that have child categories for Bebop and Big Band. Totally optional. To create a subcategory, just choose another category from the Parent dropdown."
+msgstr "<strong>Eltern</strong> &mdash; Das sind übergeordnete Kategorien, die im Gegensatz zu Schlagwörtern hierarchisch angeordnet werden können. Sie können zum Beispiel eine Kategorie Jazz anlegen sowie die Kategorien Bebop und Big Band. Wie Sie wollen. Da die beiden letzteren Verfeinerungen der Kategorie Jazz darstellen, wählen Sie für beide die Kategorie Jazz, als übergeordnete Kategorie aus dem Dropdown-Menü."
 
 #: wp-admin/custom-background.php:90
 msgid "To use a background image, simply upload it or choose an image that has already been uploaded to your Media Library by clicking the &#8220;Choose Image&#8221; button. You can display a single instance of your image, or tile it to fill the screen. You can have your background fixed in place, so your site content moves on top of it, or you can have it scroll with your site."
@@ -4878,7 +4878,7 @@ msgstr "Sie können die Linkkategorien über die Mehrfachauswahl löschen, aber 
 
 #: wp-admin/edit-form-advanced.php:397
 msgid "Creating a Page is very similar to creating a Post, and the screens can be customized in the same way using drag and drop, the Screen Options tab, and expanding/collapsing boxes as you choose. This screen also has the distraction-free writing space, available in both the Visual and Text modes via the Fullscreen buttons. The Page editor mostly works the same as the Post editor, but there are some Page-specific features in the Page Attributes box."
-msgstr "Eine Seite zu erstellen, ist sehr ähnlich wie das Erstellen eines Beitrags und der Bildschirm kann genauso per Drag &#38; Drop, dem Tab &#8222;Ansicht anpassen&#8220; und durch Auf- und Zuklappen der Boxen individuel angepasst werden. Über den Vollbild-Button gelangen Sie in den ablenkungsfreien Schreibmodus, in dem Sie sowohl den visuellen als auch den Text-Editor verwenden können. Der Seiten-Editor funktioniert im Wesentlichen wie der Beitrags-Editor, aber in der Box Seiten-Attribute gibt es einige seitenspezifische Einstellungsmöglichkeiten."
+msgstr "Eine Seite zu erstellen, ist sehr ähnlich wie das Erstellen eines Beitrags und der Bildschirm kann genauso per Drag &#38; Drop, dem Tab &#8222;Ansicht anpassen&#8220; und durch Auf- und Zuklappen der Boxen individuell angepasst werden. Über den Vollbild-Button gelangen Sie in den ablenkungsfreien Schreibmodus, in dem Sie sowohl den visuellen als auch den Text-Editor verwenden können. Der Seiten-Editor funktioniert im Wesentlichen wie der Beitrags-Editor, aber in der Box Seiten-Attribute gibt es einige seitenspezifische Einstellungsmöglichkeiten."
 
 #: wp-admin/custom-header.php:106
 msgid "You can set a custom image header for your site. Simply upload the image and crop it, and the new header will go live immediately. Alternatively, you can use an image that has already been uploaded to your Media Library by clicking the &#8220;Choose Image&#8221; button."
@@ -5538,14 +5538,15 @@ msgid "Show Toolbar when viewing site"
 msgstr "Werkzeugleiste für mich auf der Website anzeigen"
 
 #. translators: %s: Codex URL
-#: wp-admin/about.php:50 wp-admin/about.php:68 wp-admin/about.php:407
+#: wp-admin/about.php:50 wp-admin/about.php:68 wp-admin/about.php:86
+#: wp-admin/about.php:104 wp-admin/about.php:443
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Weitere Informationen finden Sie in den <a href=\"%s\">Veröffentlichtungsmitteilungen</a>."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:39 wp-admin/about.php:57 wp-admin/about.php:403
+#: wp-admin/about.php:75 wp-admin/about.php:93 wp-admin/about.php:439
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> behob Sicherheitsprobleme und %2$s Fehler."
@@ -5553,14 +5554,14 @@ msgstr[1] "<strong>Version %1$s</strong> behob Sicherheitsprobleme und %2$s Fehl
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:399
+#: wp-admin/about.php:435
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> behob ein Sicherheitsproblem und %2$s Fehler."
 msgstr[1] "<strong>Version %1$s</strong> behob ein Sicherheitsproblem und %2$s Fehler."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:395
+#: wp-admin/about.php:39 wp-admin/about.php:57 wp-admin/about.php:431
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>Version %1$s</strong> behob %2$s Fehler."
@@ -5575,20 +5576,20 @@ msgstr "Willkommen in Ihrem WordPress-Dashboard! Diese Seite wird immer angezeig
 msgid "What&#8217;s New"
 msgstr "Was gibt's Neues"
 
-#: wp-admin/about.php:380
+#: wp-admin/about.php:416
 msgid "Maintenance Release"
 msgstr "Wartungs-Update"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:392
+#: wp-admin/about.php:428
 msgid "<strong>Version %s</strong> addressed some security issues."
 msgstr "<strong>Version %s</strong> behob einige Sicherheitsprobleme."
 
-#: wp-admin/about.php:383
+#: wp-admin/about.php:419
 msgid "Security Release"
 msgstr "Sicherheits-Update"
 
-#: wp-admin/about.php:386
+#: wp-admin/about.php:422
 msgid "Maintenance and Security Release"
 msgstr "Wartungs- und Sicherheits-Update"
 
@@ -5596,7 +5597,7 @@ msgstr "Wartungs- und Sicherheits-Update"
 msgid "This screen allows you to choose your permalink structure. You can choose from common settings or create custom URL structures."
 msgstr "Auf dieser Seite können Sie Ihre gewünschte Permalink-Struktur einstellen. Sie können entweder aus üblichen Einstellungen wählen oder eine eigene URL-Struktur definieren."
 
-#: wp-admin/about.php:273
+#: wp-admin/about.php:309
 msgid "Return to Updates"
 msgstr "Zurück zu Aktualisierungen"
 
@@ -5792,10 +5793,6 @@ msgstr "Alle über die Oberfläche von WordPress hochgeladenen Dateien werden in
 msgid "If a media file has not been attached to any content, you will see that in the Uploaded To column, and can click on Attach to launch a small popup that will allow you to search for existing content and attach the file."
 msgstr "Falls eine Datei in keinem Beitrag oder Seite verwendet wird, so wird dies in der Spalte „Hochgeladen zu“ kenntlich gemacht. Mit einem Klick auf „Verknüpfen“ können Sie Beiträge oder Seiten suchen, mit denen Sie die Datei verknüpfen möchten."
 
-#: wp-admin/edit-form-advanced.php:396 wp-admin/edit.php:237
-msgid "Pages are similar to posts in that they have a title, body text, and associated metadata, but they are different in that they are not part of the chronological blog stream, kind of like permanent posts. Pages are not categorized or tagged, but can have a hierarchy. You can nest pages under other pages by making one the &#8220;Parent&#8221; of the other, creating a group of pages."
-msgstr "Seiten sind Beiträgen recht ähnlich. Sie haben einen Titel, Inhalt und weitere Metadaten. Sie erscheinen jedoch nicht im chronologischen Ablauf der Beiträge und können auch nicht mit Kategorien und Schlagwörtern verknüpft werden. Dafür können Seiten hierarchisch angeordnet beziehungsweise verschachtelt werden, indem einer Seite &#8222;Eltern&#8220; verpasst werden, also eine andere Seite als übergeordnete Seite festgelegt wird."
-
 #: wp-admin/edit.php:243
 msgid "Managing pages is very similar to managing posts, and the screens can be customized in the same way."
 msgstr "Seiten zu verwalten ist genauso einfach wie das Verwalten von Beiträgen und Sie haben ebenso die Möglichkeit, über &#8222;Ansicht anpassen&#8220; die Einstellungen zu ändern."
@@ -5820,7 +5817,11 @@ msgstr "Um Kommentare schneller zu moderieren können Sie, wie viele andere Benu
 
 #: wp-admin/edit.php:244
 msgid "You can also perform the same types of actions, including narrowing the list by using the filters, acting on a page using the action links that appear when you hover over a row, or using the Bulk Actions menu to edit the metadata for multiple pages at once."
-msgstr "Sie können auch die gleichen Arten von Aktionen ausführen, z.B. die Liste einschränken, indem Sie die Filter verwenden, auf einer Seite mit den Aktionslinks arbeiten, die angezeigt werden, wenn Sie mit der Maus über eine Zeile fahren, oder das Massenaktionen-Menü verwenden, um die Metadaten für mehrere Seiten gleichzeitig zu bearbeiten."
+msgstr "Sie können auch die gleichen Arten von Aktionen ausführen, z.B. die Liste einschränken, indem Sie die Filter verwenden, auf einer Seite mit den Aktionslinks arbeiten, die angezeigt werden, wenn Sie mit der Maus über eine Zeile fahren oder das Sammelaktionen-Menü verwenden, um die Metadaten für mehrere Seiten gleichzeitig zu bearbeiten."
+
+#: wp-admin/edit-form-advanced.php:396 wp-admin/edit.php:237
+msgid "Pages are similar to posts in that they have a title, body text, and associated metadata, but they are different in that they are not part of the chronological blog stream, kind of like permanent posts. Pages are not categorized or tagged, but can have a hierarchy. You can nest pages under other pages by making one the &#8220;Parent&#8221; of the other, creating a group of pages."
+msgstr "Seiten sind Beiträgen recht ähnlich. Sie haben einen Titel, Inhalt und weitere Metadaten. Sie erscheinen jedoch nicht im chronologischen Blog-Stream und können auch nicht mit Kategorien und Schlagwörtern verknüpft werden. Dafür können Seiten hierarchisch angeordnet beziehungsweise verschachtelt werden, indem einer Seite &#8222;Eltern&#8220; verpasst werden, also eine andere Seite als übergeordnete Seite festgelegt wird."
 
 #: wp-admin/link-manager.php:54
 msgid "Links may be separated into Link Categories; these are different than the categories used on your posts."
@@ -5874,11 +5875,11 @@ msgstr "Da dies ein Blog-Netzwerk (Multisite) ist, können Sie in anderen Blogs 
 msgid "Welcome to WordPress %s"
 msgstr "Willkommen bei WordPress %s"
 
-#: wp-admin/about.php:273
+#: wp-admin/about.php:309
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Zum Dashboard  &rarr; Aktualisierungen zurückkehren"
 
-#: wp-admin/about.php:276
+#: wp-admin/about.php:312
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Zum Dashboard &rarr; Startseite"
 
@@ -6723,10 +6724,6 @@ msgstr "Der Export enthält dann alle Beiträge, Seiten, Kommentare, Benutzerdef
 msgid "%1$s &#8212; WordPress"
 msgstr "%1$s &#8212; WordPress"
 
-#: wp-admin/edit-form-advanced.php:417 wp-admin/media.php:76
-msgid "For images only, you can click on Edit Image under the thumbnail to expand out an inline image editor with icons for cropping, rotating, or flipping the image as well as for undoing and redoing. The boxes on the right give you more options for scaling the image, for cropping it, and for cropping the thumbnail in a different way than you crop the original image. You can click on Help in those boxes to get more information."
-msgstr "Bei Bildern können Sie auf den Button „Bild bearbeiten“ unter dem Vorschaubild klicken und es dann zum Beispiel zuschneiden, skalieren, drehen oder spiegeln. Während der Bearbeitung lassen sich einzelne Arbeitsschritte auch rückgängig machen."
-
 #: wp-admin/edit-form-advanced.php:418 wp-admin/media.php:77
 msgid "Note that you crop the image by clicking on it (the Crop icon is already selected) and dragging the cropping frame to select the desired part. Then click Save to retain the cropping."
 msgstr ""
@@ -6744,6 +6741,10 @@ msgstr "Im Bereich <strong>Verfügbare Widgets</strong> sehen Sie alle Widgets, 
 #: wp-admin/media.php:75
 msgid "This screen allows you to edit five fields for metadata in a file within the media library."
 msgstr "Auf dieser Seite können Sie fünf Metadaten-Felder einer Datei ändern, die sich in der Mediathek befinden."
+
+#: wp-admin/edit-form-advanced.php:417 wp-admin/media.php:76
+msgid "For images only, you can click on Edit Image under the thumbnail to expand out an inline image editor with icons for cropping, rotating, or flipping the image as well as for undoing and redoing. The boxes on the right give you more options for scaling the image, for cropping it, and for cropping the thumbnail in a different way than you crop the original image. You can click on Help in those boxes to get more information."
+msgstr "Nur bei den Bildern können Sie auf „Original bearbeiten“ unter dem Thumbnail klicken, um einen Inline-Bildeditor mit Symbolen zum Zuschneiden, Drehen oder Spiegeln des Bildes sowie zum Rückgängigmachen und Wiederherstellen zu erweitern. Die Kästchen auf der rechten Seite bieten Ihnen mehr Möglichkeiten, das Bild zu skalieren, es zu beschneiden und das Miniaturbild anders zu beschneiden als das Originalbild. Sie können dort auch auf das Hilfe „?“ klicken, um weitere Informationen zu erhalten."
 
 #: wp-admin/user-new.php:335
 msgid "Email or Username"
@@ -7728,7 +7729,7 @@ msgstr "In dieser Zeitzone gibt es keine Sommerzeit."
 msgid "Are you sure you wish to delete these files and data?"
 msgstr "Sind Sie sicher, dass Sie diese Dateien und Daten löschen möchten?"
 
-#: wp-admin/about.php:276
+#: wp-admin/about.php:312
 msgid "Go to Dashboard"
 msgstr "Zum Dashboard"
 

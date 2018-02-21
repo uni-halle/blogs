@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Image Widget - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-06 11:54:21+0000\n"
+"PO-Revision-Date: 2018-02-06 04:32:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,7 +29,7 @@ msgstr "http://m.tri.be/iwpdoc"
 
 #: image-widget.php:597
 msgid "<p class=\"dashicons-before dashicons-star-filled\"><strong>Image Widget Plus</strong> - Add lightbox, slideshow, and random image widgets. <strong><a href=\"%s\" target=\"_blank\">Find out how!</a></strong></p>"
-msgstr "<p class=\"dashicons-before dashicons-star-filled\"><strong>Image Widget Plus</strong> - Fügen Sie Leuchtkasten, Slideshow und zufällige Bild-Widgets hinzu. <strong><a href=\"%s\" target=\"_blank\"> Finden Sie heraus, wie!</a></strong></p>"
+msgstr "<p class=\"dashicons-before dashicons-star-filled\"><strong>Image Widget Plus</strong> - Füge Leuchtkästen, Slideshow und zufällige Bild-Widgets hinzu. <strong><a href=\"%s\" target=\"_blank\"> Finde heraus, wie!</a></strong></p>"
 
 #: image-widget.php:613
 msgid "Image Widget Plus"
@@ -151,7 +151,7 @@ msgstr "Ins Widget einfügen"
 msgid "Select an Image"
 msgstr "Bild auswählen"
 
-#. #-#-#-#-#  image-widget-code.pot (Image Widget 4.4.6)  #-#-#-#-#
+#. #-#-#-#-#  image-widget-code.pot (Image Widget 4.4.7)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: image-widget.php:41
 msgid "Image Widget"

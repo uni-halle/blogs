@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Events Manager - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-15 12:31:34+0000\n"
+"PO-Revision-Date: 2018-01-28 10:51:05+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -41,7 +41,7 @@ msgstr "第 5"
 msgid "Modifications to event dates will cause all recurrences of this event to be deleted and recreated, previous bookings will be deleted."
 msgstr "開催日を変更すると、このイベントのすべての繰り返しが削除されたのちに再構築されます。これによって、すでに入っている予約の情報も滅失してしまいます。"
 
-#: classes/em-event.php:2691
+#: classes/em-event.php:2692
 msgid "the fifth %s of the month"
 msgstr "第 5 %s"
 
@@ -213,9 +213,9 @@ msgstr "Marcus Sykes"
 msgid "Event registration and booking management for WordPress. Recurring events, locations, google maps, rss, ical, booking registration and more!"
 msgstr "WordPress でイベントの作成と予約管理ができるプラグインです。繰り返しイベント、開催場所の管理、Google Maps 連携、RSS 、iCal 、予約の手動入力ほか、イベント運営をサポートする機能が満載!"
 
-#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.8.1.1)  #-#-#-#-#
+#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.8.1.3)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.8.1.1)  #-#-#-#-#
+#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.8.1.3)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "http://wp-events-plugin.com"
 msgstr "http://wp-events-plugin.com"
@@ -1685,16 +1685,16 @@ msgstr "<li>この開催場所で予定されているイベントはありま�
 msgid "Send your booking"
 msgstr "予約を申込む"
 
-#: em-actions.php:641
+#: em-actions.php:649
 msgid "Exported booking on %s"
 msgstr "%sに予約をエクスポートする"
 
-#: em-actions.php:414 em-actions.php:437
+#: em-actions.php:422 em-actions.php:445
 msgctxt "bookings"
 msgid "No emails to send for this booking."
 msgstr "この予約には自動返信メールが設定されていません。"
 
-#: em-actions.php:352
+#: em-actions.php:360
 msgid "You must log in to cancel your booking."
 msgstr "予約をキャンセルするには、ログインしてください。"
 
@@ -1816,83 +1816,83 @@ msgstr "都道府県"
 msgid "Address"
 msgstr "住所"
 
-#: classes/em-event.php:2725
+#: classes/em-event.php:2726
 msgid "every %s years"
 msgstr "毎%s年"
 
-#: classes/em-event.php:2723
+#: classes/em-event.php:2724
 msgid "every year"
 msgstr "毎年"
 
-#: classes/em-event.php:2720
+#: classes/em-event.php:2721
 msgid "every %s months"
 msgstr "毎%s月"
 
-#: classes/em-event.php:2707
+#: classes/em-event.php:2708
 msgid "every %s weeks"
 msgstr "毎%s週"
 
-#: classes/em-event.php:2705
+#: classes/em-event.php:2706
 msgid "every week"
 msgstr "毎週"
 
-#: classes/em-event.php:2696
+#: classes/em-event.php:2697
 msgid "every %s days"
 msgstr "毎%s日"
 
-#: classes/em-event.php:2694
+#: classes/em-event.php:2695
 msgid "everyday"
 msgstr "毎日"
 
-#: classes/em-event.php:2692
+#: classes/em-event.php:2693
 msgid "From %1$s to %2$s"
 msgstr "%1$sから　%2$s まで"
 
-#: classes/em-event.php:2691
+#: classes/em-event.php:2692
 msgid "the last %s of the month"
 msgstr "月最後の%s"
 
-#: classes/em-event.php:2691
+#: classes/em-event.php:2692
 msgid "the fourth %s of the month"
 msgstr "４半期の%s"
 
-#: classes/em-event.php:2691
+#: classes/em-event.php:2692
 msgid "the third %s of the month"
 msgstr "３半期の%s"
 
-#: classes/em-event.php:2691
+#: classes/em-event.php:2692
 msgid "the second %s of the month"
 msgstr "２半期の%s"
 
-#: classes/em-event.php:2691
+#: classes/em-event.php:2692
 msgid "the first %s of the month"
 msgstr "月初めの%s"
 
-#: classes/em-event.php:2244
+#: classes/em-event.php:2245
 msgid "Event could not be attached."
 msgstr "このイベントは、関連付けできません。"
 
-#: classes/em-event.php:2241
+#: classes/em-event.php:2242
 msgid "Event re-attached to recurrence."
 msgstr "切り離したイベントを、繰り返しイベントへ再度関連付けました。"
 
-#: classes/em-event.php:2227
+#: classes/em-event.php:2228
 msgid "Event could not be detached."
 msgstr "このイベントは、切り離せません。"
 
-#: classes/em-event.php:2223
+#: classes/em-event.php:2224
 msgid "Undo"
 msgstr "元に戻す"
 
-#: classes/em-event.php:2223
+#: classes/em-event.php:2224
 msgid "Event detached."
 msgstr "イベントは切り離されました。"
 
-#: classes/em-event.php:1966
+#: classes/em-event.php:1967
 msgid "Profile"
 msgstr "プロフィール"
 
-#: classes/em-event.php:1956 templates/forms/bookingform/ticket-single.php:37
+#: classes/em-event.php:1957 templates/forms/bookingform/ticket-single.php:37
 #: templates/forms/bookingform/tickets-list.php:45
 msgid "N/A"
 msgstr "N/A"
@@ -2068,12 +2068,12 @@ msgid "Bookings/Registration"
 msgstr "予約／チケットの設定"
 
 #: classes/em-event-post-admin.php:244 classes/em-event-post-admin.php:476
-#: classes/em-location-post-admin.php:157 em-actions.php:638
+#: classes/em-location-post-admin.php:157 em-actions.php:646
 #: templates/forms/event-editor.php:66
 msgid "Where"
 msgstr "開催場所"
 
-#: classes/em-event-post-admin.php:242 em-actions.php:639
+#: classes/em-event-post-admin.php:242 em-actions.php:647
 #: templates/forms/event-editor.php:52
 msgid "When"
 msgstr "開催期間"
@@ -2134,11 +2134,11 @@ msgstr "%sの色を選択します。「色を選択」ボタンを押すとカ�
 msgid "Color"
 msgstr "色"
 
-#: classes/em-bookings.php:374
+#: classes/em-bookings.php:375
 msgid "An error occurred."
 msgstr "不測のエラーが発生しました。"
 
-#: classes/em-bookings.php:364 classes/em-bookings.php:370
+#: classes/em-bookings.php:365 classes/em-bookings.php:371
 msgid "Bookings %s. Mails Sent."
 msgstr "予約を%sし、メールを送信しました。"
 
@@ -2146,7 +2146,7 @@ msgstr "予約を%sし、メールを送信しました。"
 msgid "%s created."
 msgstr "%sを作成しました。"
 
-#: classes/em-bookings-table.php:464
+#: classes/em-bookings-table.php:470
 msgid "No bookings."
 msgstr "予約はありません。"
 
@@ -2278,12 +2278,12 @@ msgstr "予約メモを記入しました。"
 msgid "Booking could not be %s."
 msgstr "予約を %s できませんでした。"
 
-#: classes/em-booking.php:905 classes/em-booking.php:906 em-actions.php:417
-#: em-actions.php:444
+#: classes/em-booking.php:905 classes/em-booking.php:906 em-actions.php:425
+#: em-actions.php:452
 msgid "ERROR : Email Not Sent."
 msgstr "エラー: メールを送信できませんでした。"
 
-#: classes/em-booking.php:901 em-actions.php:412 em-actions.php:435
+#: classes/em-booking.php:901 em-actions.php:420 em-actions.php:443
 msgid "Email Sent."
 msgstr "メールを送信しました。"
 
@@ -2403,7 +2403,7 @@ msgstr "開催場所の新規作成"
 msgid "Add Event"
 msgstr "イベントの新規作成"
 
-#: buddypress/screens/my-events.php:49 classes/em-event.php:1800
+#: buddypress/screens/my-events.php:49 classes/em-event.php:1801
 #: em-events.php:186 em-posts.php:152
 msgid "Edit Event"
 msgstr "イベントの編集"
@@ -5055,7 +5055,7 @@ msgstr "%sに関する権限"
 
 #: admin/em-options.php:548
 msgid "You can now give fine grained control with regards to what your users can do with events. Each user role can have perform different sets of actions."
-msgstr "以下で、イベント、繰り返しイベント、開催場所、その他に関する権限を、ユーザー権限レベルごとに設定できます。"
+msgstr "以下で、イベント、繰り返しイベント、開催場所、その他に関する権限を、ユーザー権限レベルごとに設定できます。それぞれの値の右の「?」にマウスオーバーで説明をバルーン表示します。"
 
 #: admin/em-options.php:547
 msgid "Warning: Changing these values may result in exposing previously hidden information to all users."
@@ -5833,7 +5833,7 @@ msgstr "<p>Events Manager のインストールが完了しました。<a href='
 msgid "Update Blogs"
 msgstr "サイトを更新"
 
-#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.8.1.1)  #-#-#-#-#
+#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.8.1.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: admin/em-admin.php:113 classes/em-people.php:37 events-manager.php:724
 msgid "Events Manager"
@@ -5927,7 +5927,7 @@ msgstr "日時"
 #: classes/em-event-posts-admin.php:345 classes/em-event-posts-admin.php:347
 #: classes/em-event-posts-admin.php:399 classes/em-event.php:970
 #: classes/em-event.php:983 classes/em-event.php:1064 em-actions.php:122
-#: em-actions.php:637 em-install.php:472 em-install.php:521 em-posts.php:147
+#: em-actions.php:645 em-install.php:472 em-install.php:521 em-posts.php:147
 #: templates/buddypress/group-events.php:105
 #: templates/forms/event-editor.php:12 templates/forms/event-editor.php:109
 #: templates/forms/event-editor.php:111 templates/templates/my-bookings.php:39
@@ -5979,13 +5979,13 @@ msgid "No confirmed bookings."
 msgstr "確認されていない予約"
 
 #: admin/bookings/em-confirmed.php:116 admin/bookings/em-pending.php:133
-#: admin/bookings/em-person.php:124 classes/em-bookings-table.php:609
-#: classes/em-bookings-table.php:618
+#: admin/bookings/em-person.php:124 classes/em-bookings-table.php:614
+#: classes/em-bookings-table.php:623
 msgid "Reject"
 msgstr "取消"
 
 #: admin/bookings/em-confirmed.php:114 admin/bookings/em-person.php:118
-#: classes/em-bookings-table.php:617
+#: classes/em-bookings-table.php:622
 msgid "Unapprove"
 msgstr "承認しない"
 
@@ -5995,9 +5995,9 @@ msgstr "キャンセルされた予約はありません。"
 
 #: admin/bookings/em-cancelled.php:113 admin/bookings/em-confirmed.php:118
 #: admin/bookings/em-pending.php:134 admin/bookings/em-person.php:127
-#: admin/bookings/em-rejected.php:113 classes/em-bookings-table.php:610
-#: classes/em-bookings-table.php:619 classes/em-bookings-table.php:626
-#: classes/em-bookings-table.php:635 classes/em-event-posts-admin.php:255
+#: admin/bookings/em-rejected.php:113 classes/em-bookings-table.php:615
+#: classes/em-bookings-table.php:624 classes/em-bookings-table.php:631
+#: classes/em-bookings-table.php:640 classes/em-event-posts-admin.php:255
 #: templates/buddypress/group-events.php:101
 #: templates/buddypress/my-group-events.php:95
 #: templates/buddypress/my-group-events.php:132
@@ -6008,9 +6008,9 @@ msgstr "削除"
 
 #: admin/bookings/em-cancelled.php:112 admin/bookings/em-confirmed.php:119
 #: admin/bookings/em-pending.php:135 admin/bookings/em-person.php:126
-#: admin/bookings/em-rejected.php:112 classes/em-bookings-table.php:611
-#: classes/em-bookings-table.php:620 classes/em-bookings-table.php:627
-#: classes/em-bookings-table.php:636
+#: admin/bookings/em-rejected.php:112 classes/em-bookings-table.php:616
+#: classes/em-bookings-table.php:625 classes/em-bookings-table.php:632
+#: classes/em-bookings-table.php:641
 msgid "Edit/View"
 msgstr "編集/閲覧"
 
@@ -6057,8 +6057,8 @@ msgstr "取り消す"
 #: admin/bookings/em-pending.php:67 admin/bookings/em-pending.php:132
 #: admin/bookings/em-person.php:54 admin/bookings/em-person.php:115
 #: admin/bookings/em-rejected.php:52 admin/bookings/em-rejected.php:111
-#: classes/em-bookings-table.php:608 classes/em-bookings-table.php:625
-#: classes/em-bookings-table.php:634
+#: classes/em-bookings-table.php:613 classes/em-bookings-table.php:630
+#: classes/em-bookings-table.php:639
 msgid "Approve"
 msgstr "承認する"
 

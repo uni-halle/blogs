@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Plugins - Leaflet Maps Marker (Google Maps, OpenStreetMap, Bing Maps) - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-01-29 01:53:01+0000\n"
+"PO-Revision-Date: 2018-02-18 14:45:30+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Plugins - Leaflet Maps Marker (Google Maps, OpenStreetMap, Bing Maps) - Stable (latest release)\n"
 
@@ -55,7 +55,7 @@ msgstr "Test"
 
 #: leaflet-tools.php:1092
 msgid "Loading..."
-msgstr "Lade..."
+msgstr "Wird geladen..."
 
 #: leaflet-tools.php:1085
 msgid "This tool tests the authentication/signature"

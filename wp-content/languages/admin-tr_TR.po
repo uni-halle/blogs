@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-01-25 11:03:51+0000\n"
+"PO-Revision-Date: 2018-02-06 20:40:16+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -30,37 +30,37 @@ msgstr "Europe/Istanbul"
 msgid "This changeset cannot be further modified."
 msgstr "Bu değişiklik kümesi daha fazla değiştirilemez."
 
-#: wp-admin/about.php:262
+#: wp-admin/about.php:298
 msgid "Improvements to Roles and Capabilities"
 msgstr "Rollerde ve yeteneklerde geliştirmeler"
 
-#: wp-admin/about.php:263
+#: wp-admin/about.php:299
 msgid "New capabilities have been introduced that allow granular management of plugins and translation files. In addition, the site switching process in multisite has been fine-tuned to update the available roles and capabilities in a more reliable and coherent way."
 msgstr "Eklentilerin ve çeviri dosyalarının detay seviyede yönetilebilmeleri için yeni yetenekler geliştirildi. Ek olarak site değişimi işlemi var olan rol ve yeteneklerin güncellenmesi için daha güvenilir ve uyumlu yollar kullanacak şekilde iyileştirildi."
 
-#: wp-admin/about.php:259
+#: wp-admin/about.php:295
 msgid "WordPress 4.9 includes an upgraded version of MediaElement.js, which removes dependencies on jQuery, improves accessibility, modernizes the UI, and fixes many bugs."
 msgstr "WordPress 4.9, jQuery bağımlılığını ortadan kaldıran, erişilirliği artıran, ara birimi modernize eden ve bir çok hatayı gideren güncellenmiş MediaElement.js dosyasını içeriyor."
 
-#: wp-admin/about.php:258
+#: wp-admin/about.php:294
 msgid "MediaElement.js upgraded to 4.2.6"
 msgstr "MediaElement.js 4.2.6 sürümüne güncellendi"
 
-#: wp-admin/about.php:255
+#: wp-admin/about.php:291
 msgid "We&#8217;ve introduced a new code editing library, CodeMirror, for use within core. Use it to improve any code writing or editing experiences within your plugins, like CSS or JavaScript include fields."
-msgstr "Çekirdekte kullanılmak üzere yeni bir kod düzenleme kütüphanesi dahil ettik, CodeMirror. Eklentilerinizde herhangi bir CSS ya da JavaScript verisinin düzenlenmesi için kod yazma deneyimini geliştirebilirsiniz."
+msgstr "Çekirdekte kullanılmak üzere yeni bir kod düzenleme kütüphanesi dahil ettik: CodeMirror. Eklentilerinizde, örneğin CSS veya JavaScript kodlarının düzenlendiği alanlarda CodeMirror&#8217;ı kullanarak kod yazma ve düzenleme deneyimini iyileştirebilirsiniz."
 
-#: wp-admin/about.php:254
+#: wp-admin/about.php:290
 msgid "CodeMirror available for use in your themes and plugins"
 msgstr "Tema ve eklentilerinizde kullanmanız için CodeMirror"
 
 #. translators: %s:
 #. https://make.wordpress.org/core/2017/11/01/improvements-to-the-customize-js-api-in-4-9/
-#: wp-admin/about.php:248
+#: wp-admin/about.php:284
 msgid "We&#8217;ve made numerous improvements to the Customizer JS API in WordPress 4.9, eliminating many pain points and making it just as easy to work with as the PHP API. There are also new base control templates, a date/time control, and section/panel/global notifications to name a few. <a href=\"%s\">Check out the full list.</a>"
 msgstr "Tıpkı PHP API tarafında yaptığımız gibi, özelleştirici JS API üzerinde bir çok geliştirme yaparak WordPress 4.9 sürümünde bir çok acı verici noktayı giderdik. Ayrıca yeni temel kontrol şablonları, bir tarih/zaman kontrolü ve bölüm/panel/global bildirimler de cabası. <a href=\"%s\">Tüm listeye göz atın.</a>"
 
-#: wp-admin/about.php:244
+#: wp-admin/about.php:280
 msgid "Customizer JS API Improvements"
 msgstr "Özelleştirici JS API geliştirmeleri"
 
@@ -68,7 +68,7 @@ msgstr "Özelleştirici JS API geliştirmeleri"
 msgid "This data is used to provide general enhancements to WordPress, which includes helping to protect your site by finding and automatically installing new updates. It is also used to calculate statistics, such as those shown on the <a href=\"%s\">WordPress.org stats page</a>."
 msgstr "Bu veri yeni güncellemeleri bulup otomatik olarak kurulmasına yardım eden WordPress için genel iyileştirmeler için kullanılır. Ayrıca <a href=\"%s\">WordPress.org istatistik sayfası</a>nda görüntülenen istatistiklerin hesaplanmasında da kullanılmaktadır."
 
-#: wp-admin/about.php:157
+#: wp-admin/about.php:193
 msgid "When you edit themes and plugins directly, WordPress 4.9 will politely warn you that this is a dangerous practice. It will recommend that you backup your files before saving, so they don&#8217;t get overwritten by the next update. Take the safe route: your future self will thank you. Your team and customers will thank you."
 msgstr "Temalar ve eklentiler üzerinde direkt olarak düzenleme yaparsanız WordPress 4.9 sizi kibarca bunun tehlikeli bir uygulama olduğu yönünde uyaracaktır. Bir sonraki güncellemede üzerlerine yazılıp değişikliklerinizi kaybetmemeniz için kaydetmeden önce dosyalarınızın yedeğini almayı önerecektir. Güvenli rotayı seçin: gelecekteki siz müteşekkir olacaktır. Ekibiniz ve müşterileriniz size teşekkür edecektir."
 
@@ -144,53 +144,53 @@ msgstr "https://codex.wordpress.org/Giving_WordPress_Its_Own_Directory"
 msgid "Enter the address here if you <a href=\"%s\">want your site home page to be different from your WordPress installation directory</a>."
 msgstr "<a href=\"%s\">Sitenizin ana sayfasının WordPress kurulum dizininden farklı olmasını istiyorsanız</a> adresi buraya girin."
 
-#: wp-admin/about.php:227
+#: wp-admin/about.php:263
 msgid "https://wordpress.org/plugins/gutenberg/"
 msgstr "https://wordpress.org/plugins/gutenberg/"
 
 #. translators: %s: smiling face with smiling eyes emoji
-#: wp-admin/about.php:237
+#: wp-admin/about.php:273
 msgid "Developer Happiness %s"
 msgstr "Geliştirici mutluluğu %s"
 
-#: wp-admin/about.php:226
+#: wp-admin/about.php:262
 msgid "WordPress is working on a new way to create and control your content and we&#8217;d love to have your help. Interested in being an <a href=\"%s\">early tester</a> or getting involved with the Gutenberg project? <a href=\"%s\">Contribute on GitHub</a>."
 msgstr "WordPress içeriğinizi oluşturmak ve kontrol etmek için yeni yollar üzerinde çalışıyor ve sizin yardımınızı da çok isteriz. <a href=\"%s\">İlk testçi</a>lerden olmak ya da Gutenberg projesi ile ilgili çalışmak ister misiniz? <a href=\"%s\">Github üzerinden katkıda bulunun</a>."
 
 #. translators: %s: handshake emoji
-#: wp-admin/about.php:220
+#: wp-admin/about.php:256
 msgid "Lend a Hand with Gutenberg %s"
 msgstr "Gutenberg’e bir el atın %s"
 
-#: wp-admin/about.php:195
+#: wp-admin/about.php:231
 msgid "More Reliable Theme Switching"
 msgstr "Daha güvenilir tema değiştirme"
 
-#: wp-admin/about.php:187
+#: wp-admin/about.php:223
 msgid "Site Building Improvements"
 msgstr "Site yapılandırma geliştirmeleri"
 
-#: wp-admin/about.php:172
+#: wp-admin/about.php:208
 msgid "The New Gallery Widget"
 msgstr "Yeni galeri bileşeni"
 
-#: wp-admin/about.php:164
+#: wp-admin/about.php:200
 msgid "Even More Widget Updates"
 msgstr "Daha da çok bileşen güncellemeleri"
 
-#: wp-admin/about.php:134
+#: wp-admin/about.php:170
 msgid "Coding Enhancements"
 msgstr "Kodlama geliştirmeleri"
 
-#: wp-admin/about.php:127
+#: wp-admin/about.php:163
 msgid "Were you lured away from your desk before you saved your new draft design? Fear not, when you return, WordPress 4.9 will politely ask whether or not you&#8217;d like to save your unsaved changes."
 msgstr "Yeni taslak tasarımınızı kaydetmeden masanızdan uzaklaştınız mı? Endişe etmeyin, WordPress 4.9 kibarca kaydedilmemiş değişikliklerinizi kaydetmek isteyip istemediğinizi soracaktır."
 
-#: wp-admin/about.php:126
+#: wp-admin/about.php:162
 msgid "A Prompt to Protect Your Work"
 msgstr "Çalışmalarınızı saklamak için bir uyarı"
 
-#: wp-admin/about.php:119
+#: wp-admin/about.php:155
 msgid "Design Locking To Guard Your Changes"
 msgstr "Değişikliklerinizi korumak için tasarım kilitleme"
 
@@ -202,80 +202,80 @@ msgstr "Gizliliği ve şeffaflığı çok ciddiye alıyoruz. Topladığımız ve
 msgid "From time to time, your WordPress site may send data to WordPress.org &#8212; including, but not limited to &#8212; the version of WordPress you are using, and a list of installed plugins and themes."
 msgstr "Zaman zaman WordPress siteniz WordPress.org sitesine veri gönderebilir, kullandığınız WordPress sürümü &#8212;dahil ama tek başına olmayabilir&#8212; ve kurulu olan eklenti ve temaların listesi gibi."
 
-#: wp-admin/about.php:203
+#: wp-admin/about.php:239
 msgid "Were you confused by the steps to create a new menu? Perhaps no longer! We&#8217;ve ironed out the UX for a smoother menu creation process. Newly updated copy will guide you."
 msgstr "Yeni bir menü oluşturma adımlarında kafanız mı karıştı? Artık değil! Daha net bir menü oluşturma süreci için kullanıcı deneyimini iyileştirdik. Yeni ve güncellenmiş metinler sizi yönlendirecektir."
 
-#: wp-admin/about.php:202
+#: wp-admin/about.php:238
 msgid "Better Menu Instructions = Less Confusion"
 msgstr "Daha iyi menü yönergeleri = Daha az karışıklık"
 
-#: wp-admin/about.php:196
+#: wp-admin/about.php:232
 msgid "When you switch themes, widgets sometimes think they can just up and move location. Improvements in WordPress 4.9 offer more persistent menu and widget placement when you decide it&#8217;s time for a new theme. Additionally, you can preview installed themes or download, install, and preview new themes right. Nothing says handy like being able to preview before you deploy. "
 msgstr "Tema değiştirdiğinizde bazen temalar konumlarını değiştirebilirler. WordPress 4.9 sürümündeki iyileştirmeler yeni bir temaya geçişe karar verdiğinizde daha kalıcı menü ve bileşen konumlandırma sağlıyor. Ek olarak, yüklü temalar için ön izleme yapabilir ya da yeni temaları indirip, kurup ön izleme yapabilirsiniz. Yayına göndermeden önce ön izleme yapmak gibisi yok."
 
-#: wp-admin/about.php:180
+#: wp-admin/about.php:216
 msgid "Want to add media to your text widget? Embed images, video, and audio directly into the widget along with your text, with our simple but useful Add Media button. Woo!"
 msgstr "Metin bileşeninize ortam eklemek mi istediniz? Basit ama kullanışlı Ortam ekle tuşumuz ile kolayca bileşenin içine direkt olarak görsel, video ya da ses gömün. Yihuu!"
 
-#: wp-admin/about.php:179
+#: wp-admin/about.php:215
 msgid "Press a Button, Add Media"
 msgstr "Bir tuşa basın, ortam ekleyin"
 
-#: wp-admin/about.php:173
+#: wp-admin/about.php:209
 msgid "An incremental improvement to the media changes hatched in WordPress 4.8, you can now add a gallery via widget. Yes!"
 msgstr "WordPress 4.8 ile kuluçkaya giren ortam değişiklikleri en sonunda kabuğundan çıktı, artık bileşen yardımıyla galeri ekleyebilirsiniz. Evet!"
 
-#: wp-admin/about.php:156
+#: wp-admin/about.php:192
 msgid "Warning: Potential Danger Ahead!"
 msgstr "Uyarı: İlerde potansiyel tehlike!"
 
-#: wp-admin/about.php:150
+#: wp-admin/about.php:186
 msgid "The dreaded white screen. You&#8217;ll avoid it when working on themes and plugin code because WordPress 4.9 will warn you about saving an error. You&#8217;ll sleep better at night."
 msgstr "Can sıkıcı beyaz ekran. Artık WordPress 4.9 sizi kayıt hatalarına karşı uyaracağı için tema ve eklenti kodunuzda hatalara yer olmayacak. Geceleri daha rahat uyuyabilirsiniz."
 
-#: wp-admin/about.php:149
+#: wp-admin/about.php:185
 msgid "Sandbox for Safety"
 msgstr "Güvenlik için kum kutusu"
 
-#: wp-admin/about.php:143
+#: wp-admin/about.php:179
 msgid "You&#8217;ve got a display problem but can&#8217;t quite figure out exactly what went wrong in the CSS you lovingly wrote. With syntax highlighting and error checking for CSS editing and the Custom HTML widget introduced in WordPress 4.8.1, you&#8217;ll pinpoint coding errors quickly. Practically guaranteed to help you scan code more easily and suss out and fix code errors quickly."
 msgstr "Görüntüyle ilgili bir probleminiz var fakat CSS kodlarındaki hatayı bir türlü bulamıyorsunuz. CSS düzenleme için sentaks vurgulama ve hata kontrolü ile WordPress 4.8.1 sürümüyle gelen özel HTML bileşeni, hataları kolayca nokta atışıyla bulmanızı sağlıyor. Kodlarınızı her zamankinden kolay bir şekilde tarayabileceğinizi ve hataları çabucak çözeceğinizi garanti ediyoruz."
 
-#: wp-admin/about.php:142
+#: wp-admin/about.php:178
 msgid "Syntax Highlighting and Error Checking? Yes, Please!"
 msgstr "Sentaks vurgulama ve hata kontrolü? Evet, lütfen!"
 
-#: wp-admin/about.php:120
+#: wp-admin/about.php:156
 msgid "Ever encounter a scenario where two designers walk into a project and designer A overrides designer B&#8217;s beautiful changes? WordPress 4.9&#8217;s design lock feature (similar to post locking) secures your draft design so that no one can make changes to it or erase all your hard work."
 msgstr "Hiç iki tasarımcının bir projede aynı anda çalıştığı ve birisinin yaptığı değişikliklerin, diğerinin güzelim tasarımını ezdiği oldu mu? WordPress 4.9&#8217;un tasarım kilitleme özelliği (yazı kilitlemeye benzer) taslak tasarımınızı korur, böylece hiç kimse değişiklik yapamaz ve sıkı çalışmanızı silemez."
 
-#: wp-admin/about.php:113
+#: wp-admin/about.php:149
 msgid "Need to get some feedback on proposed site design changes? WordPress 4.9 gives you a preview link you can send to your team and customers so that you can collect and integrate feedback before you schedule the changes to go live. Can we say collaboration&#43;&#43;?"
 msgstr "Önerilen site tasarım değişiklikleri için geri bildirim almanız mı gerekiyor? WordPress 4.9 size ekibinize ya da müşterilerinize gönderebileceğiniz bir ön izleme bağlantısı sağlıyor. Bu sayede geri bildirimleri toplayıp uygulayabilir ve değişikliklerin yayın için zamanlanmasını sağlayabilirsiniz. İşbirliği diyebilir miyiz&#43;&#43;?"
 
-#: wp-admin/about.php:112
+#: wp-admin/about.php:148
 msgid "Collaborate with Design Preview Links"
 msgstr "Tasarım ön izleme bağlantıları ile katılımcı olun"
 
-#: wp-admin/about.php:106
+#: wp-admin/about.php:142
 msgid "Yes, you read that right. Just like you can draft and revise posts and schedule them to go live on the date and time you choose, you can now tinker with your site&#8217;s design and schedule those design changes to go live as you please."
 msgstr "Evet, doğru okudunuz. Aynı yazıları taslak yapıp, sürümler arası geçiş yapabildiğiniz gibi, zamanlayıp belirli bir tarihte yayımladığınız gibi, şimdi sitenizin tasarımı ile de bu şekilde çalışabilirsiniz ve istediğiniz zaman yayına geçmesini sağlayabilirsiniz."
 
-#: wp-admin/about.php:105
+#: wp-admin/about.php:141
 msgid "Draft and Schedule Site Design Customizations"
 msgstr "Site tasarım özelleştirmelerini taslak olarak kaydedin ya da zamanlayın"
 
-#: wp-admin/about.php:97
+#: wp-admin/about.php:133
 msgid "Customizer Workflow Improved"
 msgstr "Özelleştirici akışları iyileştirildi"
 
-#: wp-admin/about.php:84
+#: wp-admin/about.php:120
 msgid "Welcome to an improved Customizer workflow with design drafts, locking, scheduling, and preview links. What&#8217;s more, code syntax highlighting and error checking will make for a clean and smooth site building experience. Finally, if all that wasn&#8217;t pretty great, we&#8217;ve got a great new Gallery widget and improvements to theme browsing and switching."
 msgstr "Taslaklar, kilitleme, zamanlama ve ön izleme bağlantılarının olduğu gelişmiş Özelleştirici akışına hoş geldiniz. Dahası, kod sentaks vurgulama ve hata kontrolü temiz ve pürüzsüz bir site yapılandırma deneyimi sağlıyor. Son olarak hepsi yeterince harika değilmiş gibi bir de yeni galeri bileşenimiz ve tema tarama ve değiştirme konusunda iyileştirmelerimiz var."
 
 #. translators: %s: party popper emoji
-#: wp-admin/about.php:79
+#: wp-admin/about.php:115
 msgid "Major Customizer Improvements, Code Error Checking, and More! %s"
 msgstr "Büyük özelleştirici iyileştirmeleri, kod hata kontrolü ve daha fazlası! %s"
 
@@ -1697,7 +1697,7 @@ msgid "(Currently set to: %s)"
 msgstr "(Mevcut: %s)"
 
 #. translators: %s: WordPress version number
-#: wp-admin/about.php:390
+#: wp-admin/about.php:426
 msgid "<strong>Version %s</strong> addressed one security issue."
 msgstr "<strong>Sürüm %s</strong> bir güvenlik açığını kapatıyor."
 
@@ -1719,15 +1719,15 @@ msgstr "https://en.gravatar.com/"
 msgid "Profile Picture"
 msgstr "Profil fotoğrafı"
 
-#: wp-admin/about.php:381
+#: wp-admin/about.php:417
 msgid "Maintenance Releases"
 msgstr "Bakım dağıtımları"
 
-#: wp-admin/about.php:384
+#: wp-admin/about.php:420
 msgid "Security Releases"
 msgstr "Güvenlik dağıtımları"
 
-#: wp-admin/about.php:34 wp-admin/about.php:387
+#: wp-admin/about.php:34 wp-admin/about.php:423
 msgid "Maintenance and Security Releases"
 msgstr "Bakım ve güvenlik dağıtımları"
 
@@ -2887,6 +2887,14 @@ msgstr "Yeni çeviriler mevcut."
 msgid "Size in megabytes"
 msgstr "Megabayt cinsinden boyut"
 
+#: wp-admin/includes/class-wp-automatic-updater.php:846
+msgid ""
+"UPDATE LOG\n"
+"=========="
+msgstr ""
+"GÜNCELLEME KAYITLARI\n"
+"====================="
+
 #: wp-admin/includes/class-wp-automatic-updater.php:828
 msgid ""
 "BETA TESTING?\n"
@@ -2910,14 +2918,6 @@ msgstr ""
 "* Ya da hata rapor yazma konusunda daha rahat iseniz: https://core.trac.wordpress.org/\n"
 "\n"
 "Teşekkürler! -- WordPress ekibi"
-
-#: wp-admin/includes/class-wp-automatic-updater.php:846
-msgid ""
-"UPDATE LOG\n"
-"=========="
-msgstr ""
-"GÜNCELLEME KAYITLARI\n"
-"====================="
 
 #. translators: Do not translate USERNAME, ADMIN_URL, EMAIL, SITENAME, SITEURL:
 #. those are placeholders.
@@ -4957,13 +4957,13 @@ msgstr "İsterseniz temanın varsayılan başlık görsellerini kullanabilir, is
 msgid "Some themes come with additional header images bundled. If you see multiple images displayed, select the one you&#8217;d like and click the &#8220;Save Changes&#8221; button."
 msgstr "Bazı temalar ek başlık görselleri ile beraber gelirler. Eğer birden çok görsel görürseniz, beğendiğiniz birini seçin ve &#8220;Ayarları kaydet&#8221; tuşuna basın."
 
-#: wp-admin/custom-header.php:108
-msgid "If your theme has more than one default header image, or you have uploaded more than one custom header image, you have the option of having WordPress display a randomly different image on each page of your site. Click the &#8220;Random&#8221; radio button next to the Uploaded Images or Default Images section to enable this feature."
-msgstr "Eğer temanızın birden çok varsayılan başlık görseli varsa ya da siz birden çok başlık görseli yüklediyseniz, WordPress rastgele bir tanesini gösterecek şekilde ayarlanabilir. Varsayılan görseller ya da yüklenen görseller alanının yanında yer alan &#8220;Rastgele&#8221; kutusunu seçerek bu özelliği etkinleştirebilirsiniz."
-
 #: wp-admin/custom-header.php:116
 msgid "For most themes, the header text is your Site Title and Tagline, as defined in the <a href=\"%1$s\">General Settings</a> section."
 msgstr "Çoğu tema için başlık metni <a href=\"%1$s\">Genel ayarlar</a> bölümünde tanımladığınız sitenizin başlığı ve sloganınızdır."
+
+#: wp-admin/custom-header.php:108
+msgid "If your theme has more than one default header image, or you have uploaded more than one custom header image, you have the option of having WordPress display a randomly different image on each page of your site. Click the &#8220;Random&#8221; radio button next to the Uploaded Images or Default Images section to enable this feature."
+msgstr "Eğer temanızın birden çok varsayılan başlık görseli varsa ya da siz birden çok başlık görseli yüklediyseniz, WordPress rastgele bir tanesini gösterecek şekilde ayarlanabilir. Varsayılan görseller ya da yüklenen görseller alanının yanında yer alan &#8220;Rastgele&#8221; kutusunu seçerek bu özelliği etkinleştirebilirsiniz."
 
 #: wp-admin/install.php:256 wp-admin/install.php:269
 msgid "Configuration Error"
@@ -5532,12 +5532,13 @@ msgid "Show Toolbar when viewing site"
 msgstr "Siteyi görüntülerken araç çubuğunu göster"
 
 #. translators: %s: Codex URL
-#: wp-admin/about.php:50 wp-admin/about.php:68 wp-admin/about.php:407
+#: wp-admin/about.php:50 wp-admin/about.php:68 wp-admin/about.php:86
+#: wp-admin/about.php:104 wp-admin/about.php:443
 msgid "For more information, see <a href=\"%s\">the release notes</a>."
 msgstr "Daha fazla bilgi için <a href=\"%s\">dağıtım notlarına</a> bakın."
 
 #. translators: 1: WordPress version number, 2: plural number of bugs.
-#: wp-admin/about.php:395
+#: wp-admin/about.php:39 wp-admin/about.php:57 wp-admin/about.php:431
 msgid "<strong>Version %1$s</strong> addressed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed %2$s bugs."
 msgstr[0] "<strong>%1$s sürümü</strong> %2$s açığını barındırıyor."
@@ -5546,7 +5547,7 @@ msgstr[1] "<strong>%1$s sürümü</strong> %2$s açıklarını barındırıyor."
 #. translators: 1: WordPress version number, 2: plural number of bugs.
 #. translators: 1: WordPress version number, 2: plural number of bugs. More
 #. than one security issue.
-#: wp-admin/about.php:39 wp-admin/about.php:57 wp-admin/about.php:403
+#: wp-admin/about.php:75 wp-admin/about.php:93 wp-admin/about.php:439
 msgid "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed some security issues and fixed %2$s bugs."
 msgstr[0] "<strong>%1$s sürümü</strong> bazı güvenlik açıkları için çıkartıldı ve %2$s açığı kapattı."
@@ -5554,7 +5555,7 @@ msgstr[1] "<strong>%1$s sürümü</strong> bazı güvenlik açıkları için ç�
 
 #. translators: 1: WordPress version number, 2: plural number of bugs. Singular
 #. security issue.
-#: wp-admin/about.php:399
+#: wp-admin/about.php:435
 msgid "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bug."
 msgid_plural "<strong>Version %1$s</strong> addressed a security issue and fixed %2$s bugs."
 msgstr[0] "<strong>%1$s sürümü</strong> bir güvenlik açığı için çıkartıldı ve %2$s hatayı düzeltti."
@@ -5569,22 +5570,22 @@ msgstr "WordPress başlangıç ekranına hoş geldiniz! Bu ekran sitenize giriş
 msgid "What&#8217;s New"
 msgstr "Neler yeni"
 
-#. translators: %s: WordPress version number
-#: wp-admin/about.php:392
-msgid "<strong>Version %s</strong> addressed some security issues."
-msgstr "<strong>%s sürümü</strong> bir güvenlik açığı barındırıyor."
-
-#: wp-admin/about.php:386
+#: wp-admin/about.php:422
 msgid "Maintenance and Security Release"
 msgstr "Bakım ve Güvenlik dağıtımı"
 
-#: wp-admin/about.php:383
+#: wp-admin/about.php:419
 msgid "Security Release"
 msgstr "Güvenlik dağıtımı"
 
-#: wp-admin/about.php:380
+#: wp-admin/about.php:416
 msgid "Maintenance Release"
 msgstr "Bakım dağıtımı"
+
+#. translators: %s: WordPress version number
+#: wp-admin/about.php:428
+msgid "<strong>Version %s</strong> addressed some security issues."
+msgstr "<strong>%s sürümü</strong> bazı güvenlik açıklarını giderdi."
 
 #: wp-admin/options-permalink.php:22
 msgid "This screen allows you to choose your permalink structure. You can choose from common settings or create custom URL structures."
@@ -5594,7 +5595,7 @@ msgstr "Bu ekran, varsayılan kalıcı bağlantı yapısını seçmenize olanak 
 msgid "Welcome to WordPress %1$s. <a href=\"%2$s\">Learn more</a>."
 msgstr "WordPress %1$s&#8217;e hoşgeldiniz. <a href=\"%2$s\">Daha fazla bilgi</a>."
 
-#: wp-admin/about.php:273
+#: wp-admin/about.php:309
 msgid "Return to Updates"
 msgstr "Güncelleştirmelere geri dön"
 
@@ -5866,11 +5867,11 @@ msgstr "Çoklu site kurulumu olduğu için ağda var olan diğer kullanıcılar�
 msgid "Welcome to WordPress %s"
 msgstr "WordPress %s&#8217;e hoşgeldiniz"
 
-#: wp-admin/about.php:276
+#: wp-admin/about.php:312
 msgid "Go to Dashboard &rarr; Home"
 msgstr "Başlangıç ekranına git &rarr; Ana sayfa"
 
-#: wp-admin/about.php:273
+#: wp-admin/about.php:309
 msgid "Return to Dashboard &rarr; Updates"
 msgstr "Başlangıç ekranına geri dön &rarr; Güncellemeler"
 
@@ -6378,13 +6379,13 @@ msgctxt "Translate this to be the equivalent of English Translators in your lang
 msgid "Translators"
 msgstr "Çevirmenler"
 
-#: wp-admin/freedoms.php:50
-msgid "Every plugin and theme in WordPress.org&#8217;s directory is 100%% GPL or a similarly free and compatible license, so you can feel safe finding <a href=\"%1$s\">plugins</a> and <a href=\"%2$s\">themes</a> there. If you get a plugin or theme from another source, make sure to <a href=\"%3$s\">ask them if it&#8217;s GPL</a> first. If they don&#8217;t respect the WordPress license, we don&#8217;t recommend them."
-msgstr "WordPress dizininde yer alan her eklenti ya da tema %%100 GPL uyumlu ya da benzer bir ücretsiz lisansa sahiptir, böylece rahatça <a href=\"%1$s\">eklenti</a> ve <a href=\"%2$s\">tema</a> bulabilirsiniz. Eğer bir başka kaynaktan eklenti ya da tema bulursanız <a href=\"%3$s\">GPL olup olmadığını</a> sorun. Eğer WordPress lisansına saygı göstermiyorlarsa, kendilerini hiç bir şekilde önermiyoruz."
-
 #: wp-admin/freedoms.php:43
 msgid "WordPress grows when people like you tell their friends about it, and the thousands of businesses and services that are built on and around WordPress share that fact with their users. We&#8217;re flattered every time someone spreads the good word, just make sure to <a href=\"%s\">check out our trademark guidelines</a> first."
 msgstr "WordPress, sizin gibi insanların arkadaşlarına WordPress&#8217;i anlatması ve binlerce firmanın ve servisin WordPress etrafında konuşlanmış uygulamaları ile büyüyor ve bizler, her seferinde hakkımızda iyi bir şeyler söylendiğinde gururlanıyoruz. Sadece ilk önce <a href=\"%s\">marka yönergelerimize</a> bir göz atsanız yeter."
+
+#: wp-admin/freedoms.php:50
+msgid "Every plugin and theme in WordPress.org&#8217;s directory is 100%% GPL or a similarly free and compatible license, so you can feel safe finding <a href=\"%1$s\">plugins</a> and <a href=\"%2$s\">themes</a> there. If you get a plugin or theme from another source, make sure to <a href=\"%3$s\">ask them if it&#8217;s GPL</a> first. If they don&#8217;t respect the WordPress license, we don&#8217;t recommend them."
+msgstr "WordPress dizininde yer alan her eklenti ya da tema %%100 GPL uyumlu ya da benzer bir ücretsiz lisansa sahiptir, böylece rahatça <a href=\"%1$s\">eklenti</a> ve <a href=\"%2$s\">tema</a> bulabilirsiniz. Eğer bir başka kaynaktan eklenti ya da tema bulursanız <a href=\"%3$s\">GPL olup olmadığını</a> sorun. Eğer WordPress lisansına saygı göstermiyorlarsa, kendilerini hiç bir şekilde önermiyoruz."
 
 #: wp-admin/freedoms.php:34
 msgid "WordPress is Free and open source software, built by a distributed community of mostly volunteer developers from around the world. WordPress comes with some awesome, worldview-changing rights courtesy of its <a href=\"%s\">license</a>, the GPL."
@@ -7088,13 +7089,13 @@ msgstr "Ana sayfa: %s"
 msgid "ERROR:"
 msgstr "HATA:"
 
-#: wp-admin/import.php:23
-msgid "This screen lists links to plugins to import data from blogging/content management platforms. Choose the platform you want to import from, and click Install Now when you are prompted in the popup window. If your platform is not listed, click the link to search the plugin directory for other importer plugins to see if there is one for your platform."
-msgstr "Bu ekran blog uygulamaları/içerik yönetim platformlarından içeri veri aktaran eklentileri listeler. İçeri aktarmak istediğiniz platformu seçin ve açılan pencerede şimdi yükle tuşuna basın. Eğer platformunuz yüklü değilse, bağlantıya tıklayarak eklenti dizininde platformunuza uygun içeri aktarıcı bir eklenti var mı arayın."
-
 #: wp-admin/export.php:49
 msgid "Once generated, your WXR file can be imported by another WordPress site or by another blogging platform able to access this format."
 msgstr "WXR dosyaları bir kere oluşturulduğunda başka WordPress sitelerinde ya da bu formatı kullanabilen diğer platformlarda içeri aktarmak için kullanılabilir."
+
+#: wp-admin/import.php:23
+msgid "This screen lists links to plugins to import data from blogging/content management platforms. Choose the platform you want to import from, and click Install Now when you are prompted in the popup window. If your platform is not listed, click the link to search the plugin directory for other importer plugins to see if there is one for your platform."
+msgstr "Bu ekran blog uygulamaları/içerik yönetim platformlarından içeri veri aktaran eklentileri listeler. İçeri aktarmak istediğiniz platformu seçin ve açılan pencerede şimdi yükle tuşuna basın. Eğer platformunuz yüklü değilse, bağlantıya tıklayarak eklenti dizininde platformunuza uygun içeri aktarıcı bir eklenti var mı arayın."
 
 #: wp-admin/link-manager.php:55
 msgid "You can customize the display of this screen using the Screen Options tab and/or the dropdown filters above the links table."
@@ -7710,7 +7711,7 @@ msgstr "Evet, bu dosyaları ve verileri sil"
 msgid "Inactive:"
 msgstr "Etkisiz:"
 
-#: wp-admin/about.php:276
+#: wp-admin/about.php:312
 msgid "Go to Dashboard"
 msgstr "Başlangıca git"
 
@@ -9043,13 +9044,13 @@ msgstr "%s dosyasını geçici bir süreliğine yazılabilir olarak ayarlarsanı
 msgid "If you temporarily make your site&#8217;s root directory writable for us to generate the %s file automatically, do not forget to revert the permissions after the file has been created."
 msgstr "Sitenizin kök dizinini geçici olarak yazılabilir yaparsanız %s dosyasını otomatik olarak oluşturabiliriz. Dosya oluşturulduktan sonra izinleri eski haline getirmeyi unutmayın."
 
-#: wp-admin/options-discussion.php:160
-msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be held in the <a href=\"edit-comments.php?comment_status=moderated\">moderation queue</a>. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
-msgstr "Eğer bir yorumun içeriğinde, isminde, adresinde, e-posta adresinde ya da IP adresinde bu kelimelerden herhangi biri varsa, <a href=\"edit-comments.php?comment_status=moderated\">denetleme sırasına</a> alınacak. Her bir satıra bir kelime veya IP yazın. İçerikteki kelimeler de eşleşecektir, örneğin &#8220;press&#8221; kelimesi &#8220;WordPress&#8221; kelimesi ile eşleşecektir."
-
 #: wp-admin/options-discussion.php:169
 msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be put in the trash. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
 msgstr "Eğer bir yorumun içeriğinde, isminde, adresinde, e-posta adresinde ya da IP adresinde  bu kelimelerden biri varsa, istenmeyen olarak işaretlenecek. Her bir satıra bir kelime yazın. İçerikteki kelimeler de eşleşecek, örneğin &#8220;press&#8221; kelimesi &#8220;WordPress&#8221; kelimesi ile eşleşecek."
+
+#: wp-admin/options-discussion.php:160
+msgid "When a comment contains any of these words in its content, name, URL, email, or IP address, it will be held in the <a href=\"edit-comments.php?comment_status=moderated\">moderation queue</a>. One word or IP address per line. It will match inside words, so &#8220;press&#8221; will match &#8220;WordPress&#8221;."
+msgstr "Eğer bir yorumun içeriğinde, isminde, adresinde, e-posta adresinde ya da IP adresinde bu kelimelerden herhangi biri varsa, <a href=\"edit-comments.php?comment_status=moderated\">denetleme sırasına</a> alınacak. Her bir satıra bir kelime veya IP yazın. İçerikteki kelimeler de eşleşecektir, örneğin &#8220;press&#8221; kelimesi &#8220;WordPress&#8221; kelimesi ile eşleşecektir."
 
 #: wp-admin/edit-tag-form.php:143 wp-admin/edit-tags.php:399
 msgid "The &#8220;slug&#8221; is the URL-friendly version of the name. It is usually all lowercase and contains only letters, numbers, and hyphens."

@@ -100,13 +100,13 @@ msgstr "Autor:"
 msgid "Previous post:"
 msgstr "Vorheriger Beitrag:"
 
-#: single.php:37
-msgid "Previous"
-msgstr "Zurück"
-
 #: single.php:35
 msgid "Next post:"
 msgstr "Nächster Beitrag:"
+
+#: single.php:37
+msgid "Previous"
+msgstr "Zurück"
 
 #: single.php:34
 msgid "Next"
@@ -162,10 +162,6 @@ msgstr "Grau"
 msgid "Dark"
 msgstr "Dunkel"
 
-#: inc/customizer.php:172
-msgid "Main Text Color"
-msgstr "Primäre Textfarbe"
-
 #: inc/customizer.php:253
 msgid "Default"
 msgstr "Standard"
@@ -173,6 +169,10 @@ msgstr "Standard"
 #: inc/customizer.php:184
 msgid "Secondary Text Color"
 msgstr "Sekundäre Textfarbe"
+
+#: inc/customizer.php:172
+msgid "Main Text Color"
+msgstr "Primäre Textfarbe"
 
 #: inc/customizer.php:160
 msgid "Link Color"
@@ -230,26 +230,6 @@ msgid "collapse child menu"
 msgstr "Untermenü verbergen"
 
 #. translators: If there are characters in your language that are not supported
-#. by Inconsolata, translate this to 'off'. Do not translate into your own
-#. language.
-#: functions.php:213
-msgctxt "Inconsolata font: on or off"
-msgid "on"
-msgstr "on"
-
-#: functions.php:166
-msgid "Content Bottom 1"
-msgstr "Unterhalb des Inhalts 1"
-
-#: functions.php:168 functions.php:178
-msgid "Appears at the bottom of the content on posts and pages."
-msgstr "Erscheint unterhalb des Inhalts von Beiträgen und Seiten."
-
-#: functions.php:176
-msgid "Content Bottom 2"
-msgstr "Unterhalb des Inhalts 2"
-
-#. translators: If there are characters in your language that are not supported
 #. by Merriweather, translate this to 'off'. Do not translate into your own
 #. language.
 #: functions.php:203
@@ -264,6 +244,26 @@ msgstr "on"
 msgctxt "Montserrat font: on or off"
 msgid "on"
 msgstr "on"
+
+#. translators: If there are characters in your language that are not supported
+#. by Inconsolata, translate this to 'off'. Do not translate into your own
+#. language.
+#: functions.php:213
+msgctxt "Inconsolata font: on or off"
+msgid "on"
+msgstr "on"
+
+#: functions.php:166
+msgid "Content Bottom 1"
+msgstr "Unterhalb des Inhalts 1"
+
+#: functions.php:176
+msgid "Content Bottom 2"
+msgstr "Unterhalb des Inhalts 2"
+
+#: functions.php:168 functions.php:178
+msgid "Appears at the bottom of the content on posts and pages."
+msgstr "Erscheint unterhalb des Inhalts von Beiträgen und Seiten."
 
 #: functions.php:156
 msgid "Sidebar"
@@ -315,13 +315,13 @@ msgstr "Wie es aussieht, wurde an dieser Stelle nichts gefunden. Möchtest du ei
 msgid "Oops! That page can&rsquo;t be found."
 msgstr "Die Seite konnte leider nicht gefunden werden."
 
-#. Theme URI of the plugin/theme
-msgid "https://wordpress.org/themes/twentysixteen/"
-msgstr "https://de.wordpress.org/themes/twentysixteen/"
-
 #. Author of the plugin/theme
 msgid "the WordPress team"
 msgstr "dem WordPress-Team"
+
+#. Theme URI of the plugin/theme
+msgid "https://wordpress.org/themes/twentysixteen/"
+msgstr "https://de.wordpress.org/themes/twentysixteen/"
 
 #. #-#-#-#-#  twentysixteen.pot (Twenty Sixteen 1.4)  #-#-#-#-#
 #. Author URI of the plugin/theme

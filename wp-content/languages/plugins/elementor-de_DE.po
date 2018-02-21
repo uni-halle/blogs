@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Elementor Page Builder - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-01-17 11:49:21+0000\n"
+"PO-Revision-Date: 2018-02-18 15:00:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,19 +11,23 @@ msgstr ""
 "Language: de\n"
 "Project-Id-Version: Plugins - Elementor Page Builder - Stable (latest release)\n"
 
-#: includes/editor.php:635
+#: includes/fonts.php:64
+msgid "Google Early Access"
+msgstr "Google Early Access"
+
+#: includes/editor.php:636
 msgid "Unknown Error"
 msgstr "Unbekannter Fehler"
 
-#: includes/editor.php:630
+#: includes/editor.php:631
 msgid "Saving has been disabled until you’re reconnected."
 msgstr "Speichern wurde deaktiviert bis wieder eine Internetverbindung existiert."
 
-#: includes/editor.php:633
+#: includes/editor.php:634
 msgid "Server Error"
 msgstr "Serverfehler"
 
-#: includes/editor.php:634
+#: includes/editor.php:635
 msgid "Connection Lost"
 msgstr "Internetverbindung getrennt."
 
@@ -107,35 +111,35 @@ msgctxt "revision date format"
 msgid "M j, H:i"
 msgstr "M j, H:i"
 
-#: includes/editor.php:629
+#: includes/editor.php:630
 msgid "Dismiss"
 msgstr "Verwerfen"
 
-#: includes/editor.php:628
+#: includes/editor.php:629
 msgid "View All Revisions"
 msgstr "Alle Revisionen anzeigen"
 
-#: includes/editor.php:627
+#: includes/editor.php:628
 msgid "Have a look"
 msgstr "Ansehen"
 
-#: includes/editor.php:626
+#: includes/editor.php:627
 msgid "Keep Editing"
 msgstr "Weiter bearbeiten"
 
-#: includes/editor.php:625
+#: includes/editor.php:626
 msgid "This is just a draft. Play around and when you're done - click update."
 msgstr "Dies ist nur ein Entwurf. Spiele ein Wenig damit herum und wenn du fertig bist - klicke auf Aktualisieren."
 
-#: includes/editor.php:624
+#: includes/editor.php:625
 msgid "Hurray! Your page is live."
 msgstr "Hurra! Deine Seite ist veröffentlicht."
 
-#: includes/editor.php:623
+#: includes/editor.php:624
 msgid "Submit"
 msgstr "Abschicken"
 
-#: includes/editor.php:622
+#: includes/editor.php:623
 msgid "Update"
 msgstr "Speichern"
 
@@ -185,7 +189,7 @@ msgstr "Editor anzeigen"
 
 #: includes/editor.php:544
 msgid "Dashboard Settings"
-msgstr "Dashboard Einstellungen"
+msgstr "Elementor Dashboard"
 
 #: includes/editor-templates/templates.php:232
 msgid "Select File"
@@ -282,7 +286,7 @@ msgstr "Als Entwurf speichern"
 msgid "Save Options"
 msgstr "Speicheroptionen"
 
-#: includes/editor-templates/panel.php:102
+#: includes/editor-templates/panel.php:102 includes/editor.php:620
 msgid "Publish"
 msgstr "Speichern"
 
@@ -293,7 +297,7 @@ msgstr "Vorschau der Änderungen"
 
 #: includes/editor-templates/panel.php:27
 msgid "Exit To Dashboard"
-msgstr "Zurück zum Dashboard"
+msgstr "Elementor verlassen"
 
 #: includes/editor-templates/panel-elements.php:33
 msgid "Search Widget:"
@@ -328,28 +332,28 @@ msgstr "Auszeichnung"
 msgid "Unlinked values"
 msgstr "Unverknüpfte Werte"
 
-#: includes/admin.php:679
+#: includes/admin.php:680
 msgid "Blog"
 msgstr "Blog"
 
-#: includes/admin.php:632
+#: includes/admin.php:633
 msgid "(opens in a new window)"
 msgstr "(Öffnet in neuem Fenster)"
 
-#: includes/admin.php:613
+#: includes/admin.php:614
 msgid "News & Updates"
 msgstr "News & Updates"
 
-#: includes/admin.php:602
+#: includes/admin.php:603
 msgctxt "Dashboard Overview Widget Recently Date"
 msgid "M jS"
 msgstr "M jS"
 
-#: includes/admin.php:596
+#: includes/admin.php:597
 msgid "Recently Edited"
 msgstr "Kürzlich bearbeitet"
 
-#: includes/admin.php:591
+#: includes/admin.php:592
 msgid "Create New Page"
 msgstr "Neue Seite erstellen"
 
@@ -397,15 +401,15 @@ msgstr "Beginn"
 msgid "Type Here"
 msgstr "Eingabe hier"
 
-#: includes/editor.php:640
+#: includes/editor.php:641
 msgid "Reload Page"
 msgstr "Seite aktualisieren"
 
-#: includes/editor.php:642
+#: includes/editor.php:643
 msgid "Your session has expired. Please reload the page to continue editing."
 msgstr "Deine Sitzung ist abgelaufen. Bitte aktualisiere die Seite um mit der Bearbeitung fortzufahren."
 
-#: includes/editor.php:641
+#: includes/editor.php:642
 msgid "Timeout"
 msgstr "Zeitüberschreitung"
 
@@ -425,7 +429,7 @@ msgstr "Standardfarben"
 msgid "Update Notification"
 msgstr "Update-Benachrichtigung"
 
-#: includes/editor.php:644
+#: includes/editor.php:645
 msgid "Unknown Value"
 msgstr "Unbekannter Wert"
 
@@ -468,7 +472,7 @@ msgstr "Verschoben"
 msgid "Added"
 msgstr "Hinzugefügt"
 
-#: includes/editor.php:639
+#: includes/editor.php:640
 msgid "Documentation"
 msgstr "Dokumentation"
 
@@ -972,7 +976,7 @@ msgstr "Hover"
 #: includes/elements/column.php:693 includes/elements/section.php:1139
 #: includes/widgets/common.php:153
 msgid "Add your custom id WITHOUT the Pound key. e.g: my-id"
-msgstr "Eigene ID OHNE die Raute einfügen. Z.B. meine-id"
+msgstr "Eigene ID OHNE die Raute einfügen. Z.B.: meine-id"
 
 #: includes/elements/column.php:689 includes/elements/section.php:1135
 #: includes/widgets/common.php:149
@@ -1058,7 +1062,7 @@ msgstr "Gib deine alte und deine neue URL deiner Wordpress Installation an, um a
 
 #: includes/settings/tools.php:170
 msgid "Update Site Address (URL)"
-msgstr "Aktualisiere deine Websiteadresse (URL)"
+msgstr "Websiteadresse (URL) aktualisieren"
 
 #. translators: %s: Codex URL
 #: includes/settings/tools.php:161
@@ -1088,7 +1092,7 @@ msgctxt "revision date format"
 msgid "M j @ H:i"
 msgstr "j M @ H:i"
 
-#: includes/editor.php:638
+#: includes/editor.php:639
 msgid "Autosave"
 msgstr "Automatische Speicherung"
 
@@ -1162,7 +1166,7 @@ msgstr "Mit dieser Einstellung kannst du ein Widget als global speichern und an 
 msgid "Meet Our Global Widget"
 msgstr "Entdecke unser Globales Widget"
 
-#: includes/admin.php:282 includes/admin.php:690
+#: includes/admin.php:282 includes/admin.php:691
 #: includes/editor-templates/panel-elements.php:23
 #: includes/editor-templates/panel-elements.php:55
 #: includes/editor-templates/templates.php:197
@@ -1216,7 +1220,7 @@ msgstr "Elementor verbessern"
 msgid "General Elements"
 msgstr "Allgemeine Elemente"
 
-#: includes/frontend.php:850
+#: includes/frontend.php:858
 msgid "Invalid Data: The Template ID cannot be the same as the currently edited template. Please choose a different one."
 msgstr "Ungültige Eingabe: Die Vorlagen-ID kann nicht dieselbe sein wie die der akuell bearbeiteten Vorlage. Bitte eine andere auswählen."
 
@@ -1258,7 +1262,7 @@ msgstr "Farbwähler"
 
 #: includes/tracker.php:265
 msgid "No thanks"
-msgstr "Nein, danke!"
+msgstr "Nein danke"
 
 #: core/settings/general/model.php:85 includes/settings/settings.php:218
 msgid "Enter parent element selector to which stretched sections will fit to (e.g. #primary / .wrapper / main etc). Leave blank to fit to page width."
@@ -1519,7 +1523,7 @@ msgstr "Falls du den Quellcode deines Themes bearbeiten möchtest, empfehlen wir
 
 #: includes/editor.php:595
 msgid "Learn More"
-msgstr "Lerne Mehr"
+msgstr "Mehr erfahren"
 
 #: includes/editor.php:613
 msgid "Delete {0}"
@@ -1556,15 +1560,15 @@ msgstr "Senden & Deaktivieren"
 
 #: includes/settings/settings.php:144
 msgid "Disable Default Colors"
-msgstr "Standardschriftarten deaktivieren"
+msgstr "Standardfarben deaktivieren"
 
 #: includes/editor.php:546 includes/schemes/typography.php:78
 msgid "Default Fonts"
-msgstr "Standard Schriftart"
+msgstr "Standardschriftarten"
 
 #: includes/schemes/color.php:78
 msgid "Color Palettes"
-msgstr "Farbpalette"
+msgstr "Farbpaletten"
 
 #: includes/elements/column.php:643 includes/elements/section.php:1089
 #: includes/widgets/common.php:103 includes/widgets/video.php:546
@@ -1663,7 +1667,7 @@ msgstr "Download Button"
 
 #: includes/widgets/audio.php:156
 msgid "Like Button"
-msgstr "Gefällt mir Schaltfläche"
+msgstr "'Gefällt mir' Schaltfläche"
 
 #: includes/widgets/audio.php:145
 msgid "Buy Button"
@@ -1707,7 +1711,7 @@ msgstr "Die Deaktivierung ist nur vorübergehend."
 
 #: includes/admin.php:485
 msgid "I couldn't get the plugin to work"
-msgstr "Ich habe das Plugin nicht zum laufen bekommen"
+msgstr "Ich habe das Plugin nicht zum Laufen bekommen"
 
 #: includes/admin.php:482
 msgid "Please share which plugin"
@@ -1719,11 +1723,11 @@ msgstr "Ich habe ein besseres Plugin gefunden"
 
 #: includes/admin.php:477
 msgid "I no longer need the plugin"
-msgstr "Ich bei nicht mehr das Plugin"
+msgstr "Ich benötige das Plugin nicht mehr"
 
 #: includes/admin.php:389
 msgid "Update Now"
-msgstr "Update jetzt"
+msgstr "Aktualisiere jetzt"
 
 #. translators: %s: Elementor version
 #: includes/admin.php:376
@@ -1758,7 +1762,7 @@ msgstr "Generell"
 #. translators: %s: Link to plugin review
 #: includes/admin.php:418
 msgid "Enjoyed <strong>Elementor</strong>? Please leave us a %s rating. We really appreciate your support!"
-msgstr "Gefällt Dir <strong>Elementor</strong>? Dann lass uns bitte eine %s Bewertung da. Wir schätzen deine Unterstützung!"
+msgstr "Gefällt Dir <strong>Elementor</strong>? Dann hinterlasse uns bitte eine %s Bewertung. Wir schätzen deine Unterstützung!"
 
 #: includes/widgets/video.php:269
 msgid "Intro Byline"
@@ -1846,7 +1850,7 @@ msgstr "Du kannst das originale Bild in jede beliebige Größe zuschneiden. Du k
 
 #: includes/editor.php:597
 msgid "You must call 'the_content' function in the current template, in order for Elementor to work on this page."
-msgstr "Du musst die Methode 'the_content' im aktuellen Template aufrufen, damit Elementor auf dieser Seite funktioniert."
+msgstr "Du musst die 'the_content'-Funktion im aktuellen Template aufrufen, damit Elementor auf dieser Seite funktioniert."
 
 #: includes/editor.php:596
 msgid "Sorry, the content area was not found in your page."
@@ -1866,7 +1870,7 @@ msgstr "Intro-Titel"
 
 #: includes/widgets/video.php:230
 msgid "Loop"
-msgstr "Wiederholen"
+msgstr "Endlosschleife"
 
 #: includes/widgets/video.php:133
 msgid "Video Options"
@@ -2206,7 +2210,7 @@ msgstr "Tabs"
 
 #: includes/widgets/image-carousel.php:261
 msgid "Pause on Hover"
-msgstr "Pausieren bei Mauszeigerkontakt"
+msgstr "Pausieren bei Hover"
 
 #: includes/widgets/image-carousel.php:289
 msgid "Autoplay Speed"
@@ -2223,11 +2227,11 @@ msgstr "Slide"
 
 #: includes/widgets/sidebar.php:91 includes/widgets/sidebar.php:109
 msgid "Choose Sidebar"
-msgstr "Sidebar wählen"
+msgstr "Seitenleiste auswählen"
 
 #: includes/widgets/sidebar.php:89
 msgid "No sidebars were found"
-msgstr "Keine Sidebar gefunden"
+msgstr "Keine Seitenleisten gefunden"
 
 #: includes/widgets/sidebar.php:42 includes/widgets/sidebar.php:104
 msgid "Sidebar"
@@ -2259,7 +2263,7 @@ msgstr "Prozentsatz anzeigen"
 
 #: includes/widgets/progress.php:121
 msgid "Percentage"
-msgstr "Prozentsatz"
+msgstr "Prozent"
 
 #: includes/widgets/progress.php:42 includes/widgets/progress.php:87
 #: includes/widgets/progress.php:166
@@ -2272,11 +2276,11 @@ msgstr "Beispielsweise: Über mich"
 
 #: includes/widgets/menu-anchor.php:104
 msgid "The ID of Menu Anchor."
-msgstr "Die ID des Menü-Anker."
+msgstr "Die ID des Menü-Ankers."
 
 #: includes/widgets/menu-anchor.php:95
 msgid "This ID will be the CSS ID you will have to use in your own page, Without #."
-msgstr "Diese ID ist die CSS-ID, die du dann ohne das Rautezeichen in deiner Seite verwenden musst."
+msgstr "Diese ID ist die CSS-ID, die du ohne das \"#\" in deiner Seite verwenden musst."
 
 #: includes/widgets/menu-anchor.php:88
 msgid "Anchor"
@@ -2632,7 +2636,7 @@ msgstr "Klick mich"
 
 #: includes/widgets/heading.php:110
 msgid "XXL"
-msgstr "Riesig"
+msgstr "XXL"
 
 #: includes/widgets/heading.php:109
 msgid "XL"
@@ -2661,15 +2665,15 @@ msgstr "Bearbeiten"
 
 #: includes/elements/section.php:1225 includes/widgets/common.php:391
 msgid "Hide On Mobile"
-msgstr "Auf Smartphones nicht anzeigen"
+msgstr "Auf Smartphones verbergen"
 
 #: includes/elements/section.php:1212 includes/widgets/common.php:378
 msgid "Hide On Tablet"
-msgstr "Auf Tablets nicht anzeigen"
+msgstr "Auf Tablets verbergen"
 
 #: includes/elements/section.php:1199 includes/widgets/common.php:365
 msgid "Hide On Desktop"
-msgstr "Auf Computern nicht anzeigen"
+msgstr "Auf Computern verbergen"
 
 #: includes/elements/column.php:415 includes/elements/column.php:452
 #: includes/elements/section.php:703 includes/elements/section.php:739
@@ -2680,7 +2684,7 @@ msgstr "Auf Computern nicht anzeigen"
 #: includes/widgets/social-icons.php:352 includes/widgets/testimonial.php:259
 #: includes/widgets/text-editor.php:269
 msgid "Border Radius"
-msgstr "Border Radius"
+msgstr "Eckenradius"
 
 #: includes/elements/column.php:597 includes/elements/section.php:1037
 #: includes/widgets/common.php:58
@@ -2917,7 +2921,7 @@ msgstr "Beitragsarten"
 
 #: includes/schemes/typography.php:96
 msgid "Accent Text"
-msgstr "Akzent-Text"
+msgstr "Hervorgehobener Text"
 
 #: includes/schemes/typography.php:95
 msgid "Body Text"
@@ -2991,7 +2995,7 @@ msgstr "Spaltenposition"
 
 #: includes/elements/section.php:349 includes/elements/section.php:393
 msgid "Minimum Height"
-msgstr "Minimale Höhe"
+msgstr "Mindesthöhe"
 
 #: includes/elements/section.php:339 includes/elements/section.php:383
 msgid "Min Height"
@@ -2999,7 +3003,7 @@ msgstr "Min. Höhe"
 
 #: includes/elements/section.php:338
 msgid "Fit To Screen"
-msgstr "An Bildschirmgröße anpassen"
+msgstr "An Bildschirm anpassen"
 
 #: includes/controls/image-dimensions.php:144 includes/elements/section.php:333
 #: includes/elements/section.php:378 includes/elements/section.php:873
@@ -3054,7 +3058,7 @@ msgstr "Spaltenbreite"
 #: includes/elements/column.php:700 includes/elements/section.php:1146
 #: includes/widgets/common.php:160
 msgid "CSS Classes"
-msgstr "CSS Klassen"
+msgstr "CSS-Klassen"
 
 #: core/settings/page/model.php:217 includes/elements/column.php:618
 #: includes/elements/section.php:1064 includes/widgets/accordion.php:283
@@ -3084,11 +3088,11 @@ msgstr "Center"
 
 #: includes/elements/column.php:569 includes/elements/section.php:1009
 msgid "Text Align"
-msgstr "Text Align"
+msgstr "Textausrichtung"
 
 #: includes/elements/column.php:557 includes/elements/section.php:997
 msgid "Link Hover Color"
-msgstr "Linkfarbe bei Mausberührung"
+msgstr "Linkfarbe bei Hover"
 
 #: includes/elements/column.php:545 includes/elements/section.php:985
 msgid "Link Color"
@@ -3142,7 +3146,7 @@ msgstr "Struktur"
 #: includes/elements/column.php:714 includes/elements/section.php:1161
 #: includes/managers/controls.php:167 includes/widgets/common.php:348
 msgid "Responsive"
-msgstr "Responsive"
+msgstr "Responsiv"
 
 #: includes/managers/controls.php:166 includes/settings/settings.php:249
 msgid "Advanced"
@@ -3152,7 +3156,7 @@ msgstr "Erweitert"
 #: includes/managers/controls.php:165 includes/settings/settings.php:179
 #: includes/widgets/divider.php:79 includes/widgets/icon-list.php:215
 msgid "Style"
-msgstr "Style"
+msgstr "Stil"
 
 #: includes/managers/controls.php:164 includes/widgets/accordion.php:117
 #: includes/widgets/accordion.php:383 includes/widgets/alert.php:121
@@ -3176,7 +3180,7 @@ msgstr "Über Elementor"
 msgid "Revision History"
 msgstr "Revisions Historie"
 
-#: includes/editor.php:643
+#: includes/editor.php:644
 msgid "Soon"
 msgstr "Bald"
 
@@ -3192,7 +3196,7 @@ msgstr "{0} bearbeiten"
 msgid "Please note: All unsaved changes will be lost."
 msgstr "Achtung: Alle nicht gespeicherten Änderungen gehen verloren."
 
-#: includes/editor.php:621
+#: includes/editor.php:622
 msgid "Saved"
 msgstr "Gespeichert"
 
@@ -3241,15 +3245,15 @@ msgstr "Zurücksetzen"
 
 #: includes/editor-templates/templates.php:162
 msgid "Preview"
-msgstr "Preview"
+msgstr "Vorschau"
 
 #: includes/editor-templates/templates.php:37
 #: includes/editor-templates/templates.php:38
-#: includes/editor-templates/templates.php:215 includes/editor.php:620
+#: includes/editor-templates/templates.php:215 includes/editor.php:621
 msgid "Save"
 msgstr "Speichern"
 
-#: includes/admin.php:683
+#: includes/admin.php:684
 msgid "Help"
 msgstr "Hilfe"
 
@@ -3269,12 +3273,12 @@ msgstr "Responsive Modus"
 #: includes/editor-templates/panel.php:51
 #: includes/editor-templates/panel.php:52
 msgid "Widgets Panel"
-msgstr "Widgets Panel"
+msgstr "Widgetpanel"
 
 #: includes/editor-templates/panel.php:46
 #: includes/editor-templates/panel.php:47
 msgid "Menu"
-msgstr "Menu"
+msgstr "Menü"
 
 #: includes/editor-templates/panel-elements.php:34
 msgid "Search Widget..."
@@ -3291,12 +3295,12 @@ msgstr "Neuen Abschnitt hinzufügen"
 #: includes/admin.php:155 includes/editor-templates/editor-wrapper.php:41
 #: includes/editor-templates/templates.php:66
 msgid "Loading"
-msgstr "Lade"
+msgstr "Wird geladen"
 
-#. #-#-#-#-#  elementor-code.pot (Elementor 1.9.3)  #-#-#-#-#
+#. #-#-#-#-#  elementor-code.pot (Elementor 1.9.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: core/settings/page/manager.php:53 includes/admin.php:230
-#: includes/admin.php:578 includes/admin.php:733
+#: includes/admin.php:579 includes/admin.php:734
 #: includes/editor-templates/editor-wrapper.php:24 includes/editor.php:536
 #: includes/settings/settings.php:27 includes/settings/settings.php:28
 #: includes/settings/settings.php:293
@@ -3341,7 +3345,7 @@ msgstr "Buchstabenabstand"
 #: includes/controls/groups/typography.php:194
 msgctxt "Typography Control"
 msgid "Line-Height"
-msgstr "Line-Height"
+msgstr "Zeilenabstand"
 
 #: includes/elements/column.php:218 includes/elements/column.php:288
 #: includes/elements/column.php:400 includes/elements/column.php:660
@@ -3440,7 +3444,7 @@ msgstr "Auto"
 #: includes/controls/groups/background.php:347
 msgctxt "Background Control"
 msgid "Size"
-msgstr "Size"
+msgstr "Größe"
 
 #: includes/controls/groups/background.php:335
 msgctxt "Background Control"
@@ -3573,11 +3577,11 @@ msgctxt "Background Control"
 msgid "Classic"
 msgstr "Klassisch"
 
-#: includes/controls/font.php:115 includes/editor-templates/panel.php:216
+#: includes/fonts.php:63
 msgid "Google"
 msgstr "Google"
 
-#: includes/controls/font.php:109 includes/editor-templates/panel.php:210
+#: includes/fonts.php:62
 msgid "System"
 msgstr "System"
 
@@ -3632,11 +3636,11 @@ msgid "Top"
 msgstr "Oben"
 
 #: core/settings/page/model.php:146 includes/base/widget-base.php:268
-#: includes/controls/font.php:108 includes/controls/groups/typography.php:141
+#: includes/controls/font.php:109 includes/controls/groups/typography.php:141
 #: includes/controls/groups/typography.php:160
 #: includes/controls/groups/typography.php:173
 #: includes/controls/groups/typography.php:185
-#: includes/editor-templates/panel.php:208 includes/elements/column.php:156
+#: includes/editor-templates/panel.php:203 includes/elements/column.php:156
 #: includes/elements/column.php:191 includes/elements/column.php:726
 #: includes/elements/section.php:320 includes/elements/section.php:337
 #: includes/elements/section.php:382 includes/elements/section.php:440
@@ -3657,7 +3661,7 @@ msgid "Clear"
 msgstr "Löschen"
 
 #: includes/admin.php:138 includes/admin.php:146 includes/admin.php:206
-#: includes/frontend.php:822
+#: includes/frontend.php:830
 msgid "Edit with Elementor"
 msgstr "Mit Elementor bearbeiten"
 

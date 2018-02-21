@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Duplicate Post - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-12-05 22:37:21+0000\n"
+"PO-Revision-Date: 2018-02-13 00:51:23+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,7 +25,7 @@ msgstr "Al servizio della comunità di WordPress da novembre 2007."
 
 #: duplicate-post-admin.php:194
 msgid "Duplicate Post turns 10!"
-msgstr "Duplictae Post compie 10 anni!"
+msgstr "Duplicate Post compie 10 anni!"
 
 #. Plugin URI of the plugin/theme
 msgid "https://duplicate-post.lopo.it/"

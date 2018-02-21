@@ -1,0 +1,82 @@
+# Translation of Plugins - Disable REST API - Stable (latest release) in German
+# This file is distributed under the same license as the Plugins - Disable REST API - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-02-07 09:01:46+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - Disable REST API - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://www.binarytemplar.com"
+msgstr "http://www.binarytemplar.com"
+
+#. Author of the plugin/theme
+msgid "Dave McHale"
+msgstr "Dave McHale"
+
+#. Description of the plugin/theme
+msgid "Disable the use of the JSON REST API on your website to anonymous users"
+msgstr "Deaktiviert die Verwendungsmöglichkeit der JSON REST API auf deiner Website für anonyme Benutzer."
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.binarytemplar.com/disable-json-api"
+msgstr "http://www.binarytemplar.com/disable-json-api"
+
+#: classes/disable-rest-api.php:207
+msgid "DRA: Only authenticated users can access the REST API."
+msgstr "DRA: Nur authentifizierte Benutzer können auf die REST-API zugreifen."
+
+#: classes/disable-rest-api.php:183
+msgid "Whitelist settings saved."
+msgstr "Whitelist-Einstellungen wurden gespeichert."
+
+#: classes/disable-rest-api.php:176
+msgid "All whitelists have been removed."
+msgstr "Alle Whitelists wurden entfernt."
+
+#: classes/disable-rest-api.php:131
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: classes/disable-rest-api.php:112
+msgid "Disable REST API Settings"
+msgstr "Disable REST API - Einstellungen"
+
+#: admin.php:69
+msgid "On this website, the REST API root is %s"
+msgstr "Das Hauptverzeichnis (root) der REST API auf dieser Website ist %s"
+
+#: admin.php:65
+msgid "REST API ROOT"
+msgstr "REST API ROOT"
+
+#: admin.php:37
+msgid "Are you sure you wish to clear all whitelisted rules?"
+msgstr "Bist du sicher, dass du alle Whitelist-Regeln löschen möchtest?"
+
+#: admin.php:36
+msgid "Reset Whitelisted Routes"
+msgstr "Zurücksetzen der Whitelist-Routen"
+
+#: admin.php:26
+msgid "Checking a box merely restores default functionality to an endpoint . Other authentication and/or permissions may still be required for access, or other themes / plugins may also affect access to those endpoints. "
+msgstr "Das Markieren einer Chekbox stellt lediglich die Standardfunktionalität eines Endpunkts wieder her. Andere Authentifizierungen und/oder Berechtigungen können für den Zugriff erforderlich sein, oder andere Themen/Plugins können den Zugriff auf diese Endpunkte ebenfalls beeinträchtigen."
+
+#: admin.php:26
+msgid "IMPORTANT NOTE:"
+msgstr "WICHTIGER HINWEIS:"
+
+#: admin.php:24
+msgid "By default, this plugin ensures that the entire REST API is protected from non-authenticated users. You may use this page to specify which endpoints should be allowed to behave as normal."
+msgstr "Standardmäßig stellt dieses Plugin sicher, dass die gesamte REST-API vor nicht authentifizierten Benutzern geschützt ist. Auf dieser Seite können Sie festlegen, welche Endpunkte sich normal verhalten dürfen."
+
+#. #-#-#-#-#  disable-json-api-code.pot (Disable REST API 1.4.3)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: admin.php:22 classes/disable-rest-api.php:112
+msgid "Disable REST API"
+msgstr "Disable REST API"
