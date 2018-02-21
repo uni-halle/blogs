@@ -1,4 +1,4 @@
-/*! elementor - v1.9.3 - 21-01-2018 */
+/*! elementor - v1.9.6 - 21-02-2018 */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 module.exports = Marionette.Behavior.extend( {
 	previewWindow: null,
@@ -7,6 +7,7 @@ module.exports = Marionette.Behavior.extend( {
 		return {
 			buttonPreview: '#elementor-panel-saver-button-preview',
 			buttonPublish: '#elementor-panel-saver-button-publish',
+			buttonSaveOptions: '#elementor-panel-saver-button-save-options',
 			buttonPublishLabel: '#elementor-panel-saver-button-publish-label',
 			menuSaveDraft: '#elementor-panel-saver-menu-save-draft',
 			lastEditedWrapper: '.elementor-last-edited-wrapper'
@@ -29,6 +30,15 @@ module.exports = Marionette.Behavior.extend( {
 			.on( 'page:status:change', this.onPageStatusChange );
 
 		elementor.settings.page.model.on( 'change', this.onPageSettingsChange.bind( this ) );
+
+		elementor.channels.editor.on( 'status:change', this.activateSaveButtons.bind( this ) );
+	},
+
+	activateSaveButtons: function( hasChanges ) {
+		hasChanges = hasChanges || 'draft' === elementor.settings.page.model.get( 'post_status' );
+
+		this.ui.buttonPublish.add( this.ui.menuSaveDraft ).toggleClass( 'elementor-saver-disabled', ! hasChanges );
+		this.ui.buttonSaveOptions.toggleClass( 'elementor-saver-disabled', ! hasChanges );
 	},
 
 	onRender: function() {
@@ -113,6 +123,11 @@ module.exports = Marionette.Behavior.extend( {
 
 	onClickButtonPublish: function() {
 		var postStatus = elementor.settings.page.model.get( 'post_status' );
+
+		if ( ! elementor.saver.isEditorChanged() && 'draft' !== postStatus ) {
+			return;
+		}
+
 		switch ( postStatus ) {
 			case 'publish':
 			case 'private':
@@ -152,6 +167,8 @@ module.exports = Marionette.Behavior.extend( {
 				if ( ! elementor.config.current_user_can_publish ) {
 					publishLabel = 'submit';
 				}
+
+				this.activateSaveButtons( true );
 				break;
 			case 'pending': // User cannot change post status
 			case undefined: // TODO: as a contributor it's undefined instead of 'pending'.
@@ -212,11 +229,11 @@ module.exports = Module.extend( {
 	},
 
 	saveDraft: function() {
-		if ( ! this.isEditorChanged() ) {
+		var postStatus = elementor.settings.page.model.get( 'post_status' );
+
+		if ( ! elementor.saver.isEditorChanged() && 'draft' !== postStatus ) {
 			return;
 		}
-
-		var postStatus = elementor.settings.page.model.get( 'post_status' );
 
 		switch ( postStatus ) {
 			case 'publish':
@@ -347,12 +364,15 @@ module.exports = Module.extend( {
 			success: function( data ) {
 				self.afterAjax();
 
-				if ( ! self.isChangedDuringSave ) {
-					self.setFlagEditorChange( false );
-				}
+				if ( 'autosave' !== options.status ) {
+					if ( statusChanged ) {
+						elementor.settings.page.model.set( 'post_status', options.status );
+					}
 
-				if ( 'autosave' !== options.status && statusChanged ) {
-					elementor.settings.page.model.set( 'post_status', options.status );
+					// Notice: Must be after update page.model.post_status to the new status.
+					if ( ! self.isChangedDuringSave ) {
+						self.setFlagEditorChange( false );
+					}
 				}
 
 				if ( data.config ) {
@@ -966,7 +986,10 @@ TemplateLibraryManager = function() {
 		if ( ! modal ) {
 			modal = elementor.dialogsManager.createWidget( 'lightbox', {
 				id: 'elementor-template-library-modal',
-				closeButton: false
+				closeButton: false,
+				hide: {
+					onOutsideClick: false
+				}
 			} );
 		}
 
@@ -1255,7 +1278,7 @@ module.exports = Marionette.ItemView.extend( {
 		elementor.templates.requestLibraryData( function() {
 			self.ui.sync.removeClass( 'eicon-animation-spin' );
 
-			elementor.templates.showTemplates();
+			elementor.templates.setTemplatesSource( elementor.templates.getFilter( 'source' ) );
 		}, true, true );
 	},
 
@@ -2937,7 +2960,7 @@ module.exports = ControlSelect2View.extend( {
 
 			_.each( fonts, function( fontType, fontName ) {
 				if ( _.isArray( groups ) && _.contains( groups, fontType ) || fontType === groups ) {
-					filteredFonts[ fontName ] = fontType;
+					filteredFonts[ fontName ] = fontName;
 				}
 			} );
 
@@ -9546,6 +9569,8 @@ helpers = {
 			elementor.$previewContents.find( 'link:last' ).after( '<link href="' + fontUrl + '" rel="stylesheet" type="text/css">' );
 		}
 		this._enqueuedFonts.push( font );
+
+		elementor.channels.editor.trigger( 'font:insertion', fontType, font );
 	},
 
 	getElementChildType: function( elementType, container ) {

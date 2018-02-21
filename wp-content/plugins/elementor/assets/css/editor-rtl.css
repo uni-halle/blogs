@@ -1,4 +1,4 @@
-/*! elementor - v1.9.3 - 21-01-2018 */
+/*! elementor - v1.9.6 - 21-02-2018 */
 @charset "UTF-8";
 .dialog-widget-content {
   background-color: #fff;
@@ -884,6 +884,8 @@ select {
     position: absolute;
     -webkit-box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 3px;
+            border-radius: 3px;
     left: 0;
     right: 0;
     margin: -4px auto 5px;
@@ -898,8 +900,10 @@ select {
       left: 22px;
       border: 8px solid transparent;
       border-bottom-color: #fff; }
-    .elementor-panel .elementor-controls-popover div.elementor-control:before {
-      content: none; }
+    .elementor-panel .elementor-controls-popover div.elementor-control {
+      background-color: transparent; }
+      .elementor-panel .elementor-controls-popover div.elementor-control:before {
+        content: none; }
   .elementor-panel #elementor-panel-get-pro-elements .elementor-panel-nerd-box-message {
     text-transform: uppercase; }
   .elementor-panel #elementor-panel-header {
@@ -1322,6 +1326,8 @@ select {
     width: 55%; }
   .elementor-panel .elementor-control-field-description {
     margin-top: 10px; }
+  .elementor-panel .elementor-control-background_attachment_alert .elementor-control-field-description {
+    margin-top: 0; }
   .elementor-panel .elementor-required {
     color: #b01b1b; }
   .elementor-panel .elementor-choices {
@@ -2143,13 +2149,15 @@ select {
     -webkit-border-radius: 0 3px 3px 0;
             border-radius: 0 3px 3px 0;
     margin: 0; }
-  .elementor-panel .wp-color-picker {
+  .elementor-panel input[type="text"].wp-color-picker {
     float: left;
     width: 100px;
-    max-width: 100px;
+    max-width: 136px;
     -webkit-border-radius: 3px 0 0 3px;
             border-radius: 3px 0 0 3px;
-    line-height: 1; }
+    font-size: 11px;
+    line-height: 12px;
+    padding: 7px 3px; }
   .elementor-panel .wp-picker-holder * {
     -webkit-box-sizing: content-box;
             box-sizing: content-box; }
@@ -2286,18 +2294,26 @@ select {
         cursor: pointer; }
         .elementor-panel #elementor-panel-saver-save-options .elementor-last-edited-wrapper time:hover {
           border-bottom-color: inherit; }
+  .elementor-panel .elementor-saver-disabled {
+    cursor: default; }
   .elementor-panel #elementor-panel-saver-button-preview a {
     color: #a4afb7; }
   .elementor-panel #elementor-panel-saver-button-publish, .elementor-panel #elementor-panel-saver-button-save-options {
     font-size: 11px;
     text-transform: uppercase;
     height: 26px; }
+    .elementor-panel #elementor-panel-saver-button-publish.elementor-saver-disabled, .elementor-panel #elementor-panel-saver-button-save-options.elementor-saver-disabled {
+      background-color: #556068;
+      color: #a4afb7; }
   .elementor-panel #elementor-panel-saver-button-publish {
     width: 100%;
     -webkit-border-radius: 0 3px 3px 0;
             border-radius: 0 3px 3px 0; }
-  .elementor-panel #elementor-panel-saver-button-, .elementor-panel #elementor-panel-saver-button-save-options {
+  .elementor-panel #elementor-panel-saver-button-save-options {
     width: 25px; }
+  .elementor-panel #elementor-panel-saver-menu-save-draft.elementor-saver-disabled .elementor-icon,
+  .elementor-panel #elementor-panel-saver-menu-save-draft.elementor-saver-disabled .elementor-title {
+    color: #6d7882; }
 
 #elementor-mode-switcher {
   position: absolute;

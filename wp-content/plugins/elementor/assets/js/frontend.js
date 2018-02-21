@@ -1,4 +1,4 @@
-/*! elementor - v1.9.3 - 21-01-2018 */
+/*! elementor - v1.9.6 - 21-02-2018 */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var ElementsHandler;
 
@@ -1263,8 +1263,17 @@ module.exports = ViewModule.extend( {
 
 	stretch: function() {
 		var containerSelector = this.getSettings( 'selectors.container' ),
-			$element = this.elements.$element,
-			$container = jQuery( containerSelector ),
+			$container;
+
+		try {
+			$container = jQuery( containerSelector );
+		} catch ( e ) {}
+
+		if ( ! $container || ! $container.length ) {
+			$container = jQuery( this.getDefaultSettings().selectors.container );
+		}
+
+		var $element = this.elements.$element,
 			isSpecialContainer = window !== $container[0];
 
 		this.reset();
