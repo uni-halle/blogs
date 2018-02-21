@@ -59,7 +59,7 @@ p {
     font-weight: 300;
 }
 a {
-	color: #568923;
+	color: #4a771d;
 }
 a:hover {
  	color: #008aa3; 
@@ -248,17 +248,17 @@ blockquote {
 	text-transform: uppercase;
 }
 .page-item.active .page-link {
-    background-color: #568923;
-    border-color: #568923;
+    background-color: #4a771d;
+    border-color: #4a771d;
     }
 .page-link {
     background-color: #fff;
     border: 1px solid #ddd;
-    color: #568923;
+    color: #4a771d;
     }
 .btn-primary {
-    background-color: #568923;
-    border-color: #568923;
+    background-color: #4a771d;
+    border-color: #4a771d;
     }
 .btn-primary:hover {
     background-color: #008aa3; 
