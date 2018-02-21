@@ -28,11 +28,13 @@ class AWPCP_HTTP {
 
             $message = '<strong>' . __( 'The server returned a 403 Forbidden error.', 'another-wordpress-classifieds-plugin' ) . '</strong>';
             $message.= '<br/><br/>';
-            $message.= __( "It look's like your server is not authorized to make requests to <host>. Please contact support and ask them to add your IP address <ip-address> to the whitelist.", 'another-wordpress-classifieds-plugin' );
+            $message.= __( "It look's like your server is not authorized to make requests to <host>. Please <support-link>contact Another WordPress Classifieds Plugin support</support-link> and ask them to add your IP address <ip-address> to the whitelist.", 'another-wordpress-classifieds-plugin' );
             $message.= '<br/><br/>';
             $message.= __( 'Include this error message with your report.', 'another-wordpress-classifieds-plugin' );
 
             $message = str_replace( '<host>', $host, $message );
+            $message = str_replace( '<support-link>', '<a href="https://awpcp.com/contact">', $message );
+            $message = str_replace( '</support-link>', '</a>', $message );
             $message = str_replace( '<ip-address>', awpcp_get_server_ip_address(), $message );
 
             throw new AWPCP_HTTP_Exception( $message );
@@ -63,11 +65,13 @@ class AWPCP_HTTP {
             $message.= '<br/><br/>';
             $message.= '<code>curl: (' . $error_number . ') ' . $error_message . '</code>';
             $message.= '<br/><br/>';
-            $message.= __( "It look's like your server is not authorized to make requests to <host>. Please contact support and ask them to add your IP address <ip-address> to the whitelist.", 'another-wordpress-classifieds-plugin' );
+            $message.= __( "It look's like your server is not authorized to make requests to <host>. Please <support-link>contact Another WordPress Classifieds Plugin support</support-link> and ask them to add your IP address <ip-address> to the whitelist.", 'another-wordpress-classifieds-plugin' );
             $message.= '<br/><br/>';
             $message.= __( 'Include this error message with your report.', 'another-wordpress-classifieds-plugin' );
 
             $message = str_replace( '<host>', $host, $message );
+            $message = str_replace( '<support-link>', '<a href="https://awpcp.com/contact">', $message );
+            $message = str_replace( '</support-link>', '</a>', $message );
             $message = str_replace( '<ip-address>', awpcp_get_server_ip_address(), $message );
 
             throw new AWPCP_HTTP_Exception( $message );

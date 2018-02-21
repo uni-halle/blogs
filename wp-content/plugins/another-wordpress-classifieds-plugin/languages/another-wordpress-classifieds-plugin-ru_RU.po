@@ -1,4 +1,4 @@
-# Copyright (C) 2017
+# Copyright (C) 2018
 # This file is distributed under the same license as the  package.
 # Translators:
 # GREEN301086 <GREEN301086@mail.ru>, 2014
@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Another WordPress Classifieds Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/another-wordpress-classifieds-plugin\n"
-"POT-Creation-Date: 2017-10-18 23:54:33+00:00\n"
-"PO-Revision-Date: 2017-11-27 23:19+0000\n"
+"POT-Creation-Date: 2018-01-27 02:19:05+00:00\n"
+"PO-Revision-Date: 2018-01-27 02:31+0000\n"
 "Last-Translator: Willington Vega <wvega@wvega.com>\n"
 "Language-Team: Russian (Russia) (http://www.transifex.com/wp-translations/another-wordpress-classifieds-plugin/language/ru_RU/)\n"
 "MIME-Version: 1.0\n"
@@ -49,7 +49,7 @@ msgstr "Кредиты"
 #: admin/admin-panel-fees-table.php:120
 #: admin/templates/admin-panel-credit-plans-entry-form.tpl.php:19
 #: admin/templates/admin-panel-fees-entry-form.tpl.php:25
-#: frontend/placeholders.php:454 frontend/templates/page-search-ads.tpl.php:46
+#: frontend/placeholders.php:458 frontend/templates/page-search-ads.tpl.php:46
 #: includes/settings/class-payment-general-settings.php:16
 msgid "Price"
 msgstr "Цена"
@@ -183,7 +183,7 @@ msgid "Categories"
 msgstr "Категории"
 
 #: admin/admin-panel-fees-table.php:127
-#: admin/templates/admin-sidebar.tpl.php:103 awpcp.php:878
+#: admin/templates/admin-sidebar.tpl.php:103 awpcp.php:884
 msgid "Featured Ads"
 msgstr "Избранные объявления"
 
@@ -396,11 +396,11 @@ msgid "Keyword"
 msgstr "Ключевому слову"
 
 #: admin/admin-panel-listings-table.php:287 frontend/page-show-ad.php:58
-#: frontend/placeholders.php:580
+#: frontend/placeholders.php:584
 msgid "Location"
 msgstr "Местонахождение"
 
-#: admin/admin-panel-listings-table.php:288 frontend/placeholders.php:672
+#: admin/admin-panel-listings-table.php:288 frontend/placeholders.php:676
 msgid "Phone"
 msgstr "Телефон"
 
@@ -774,7 +774,7 @@ msgid "Manage Extra Fields"
 msgstr "Управление дополнительными полями"
 
 #: admin/admin-panel.php:315 admin/templates/admin-sidebar.tpl.php:108
-#: awpcp.php:871
+#: awpcp.php:877
 msgid "Extra Fields"
 msgstr "Дополнительные поля"
 
@@ -946,41 +946,41 @@ msgstr "Порядок"
 msgid "Action"
 msgstr "Действие"
 
-#: admin/admin-panel.php:1127
+#: admin/admin-panel.php:1126
 msgid "The new category was successfully added."
 msgstr "Новая категория была успешно добавлена."
 
-#: admin/admin-panel.php:1146
+#: admin/admin-panel.php:1136
 msgid ""
 "Sorry but you cannot delete the default category. The default category can "
 "only be renamed"
 msgstr "Извините, но вы не можете удалить удалить категорию по умолчанию. Категория по умолчанию может быть только переименована"
 
-#: admin/admin-panel.php:1214
+#: admin/admin-panel.php:1173
 msgid "The category has been deleted"
 msgstr "Категория была удалена"
 
-#: admin/admin-panel.php:1226
+#: admin/admin-panel.php:1185
 msgid "Your category changes have been saved."
 msgstr "Ваши изменения в категории были сохранены."
 
-#: admin/admin-panel.php:1233
+#: admin/admin-panel.php:1192
 msgid "No changes made to categories."
 msgstr "Изменения не внесены в категории."
 
-#: admin/admin-panel.php:1272
+#: admin/admin-panel.php:1231
 msgid ""
 "With the exception of any category that was being moved to itself, the "
 "categories have been moved"
 msgstr "Категории перемещены, за исключением категорий которые должны были быть перемещены сами в себя"
 
-#: admin/admin-panel.php:1276
+#: admin/admin-panel.php:1235
 msgid ""
 "The categories have not been moved because you did not indicate where you "
 "want the categories to be moved to"
 msgstr "Категории не были перемещены, так как вы не указали, куда в их переместить"
 
-#: admin/admin-panel.php:1371
+#: admin/admin-panel.php:1330
 msgid "The categories have been deleted"
 msgstr "Категории были удалены"
 
@@ -1868,19 +1868,19 @@ msgstr "Купить премиум-модуль"
 msgid "Get a Premium Module!"
 msgstr "Получить премиум-модуль!"
 
-#: admin/templates/admin-sidebar.tpl.php:46 awpcp.php:843
+#: admin/templates/admin-sidebar.tpl.php:46 awpcp.php:849
 msgid "Campaign Manager"
 msgstr "Менеджер кампаний"
 
-#: admin/templates/admin-sidebar.tpl.php:52 awpcp.php:900
+#: admin/templates/admin-sidebar.tpl.php:52 awpcp.php:906
 msgid "Mark as Sold"
 msgstr "Пометить как Продано"
 
-#: admin/templates/admin-sidebar.tpl.php:58 awpcp.php:928
+#: admin/templates/admin-sidebar.tpl.php:58 awpcp.php:934
 msgid "Restricted Categories"
 msgstr "Ограниченные категории"
 
-#: admin/templates/admin-sidebar.tpl.php:63 awpcp.php:836
+#: admin/templates/admin-sidebar.tpl.php:63 awpcp.php:842
 msgid "BuddyPress Listings"
 msgstr "Объявления BuddyPress"
 
@@ -1888,15 +1888,15 @@ msgstr "Объявления BuddyPress"
 msgid "Comments/Ratings"
 msgstr "Комментарии и рейтинги"
 
-#: admin/templates/admin-sidebar.tpl.php:73 awpcp.php:822
+#: admin/templates/admin-sidebar.tpl.php:73 awpcp.php:828
 msgid "Attachments"
 msgstr "Вложения"
 
-#: admin/templates/admin-sidebar.tpl.php:78 awpcp.php:829
+#: admin/templates/admin-sidebar.tpl.php:78 awpcp.php:835
 msgid "Authorize.Net"
 msgstr "Authorize.Net"
 
-#: admin/templates/admin-sidebar.tpl.php:83 awpcp.php:914
+#: admin/templates/admin-sidebar.tpl.php:83 awpcp.php:920
 msgid "PayPal Pro"
 msgstr "PayPal Pro"
 
@@ -1904,7 +1904,7 @@ msgstr "PayPal Pro"
 msgid "Coupon/Discount"
 msgstr "Купоны и скидки"
 
-#: admin/templates/admin-sidebar.tpl.php:93 awpcp.php:949
+#: admin/templates/admin-sidebar.tpl.php:93 awpcp.php:955
 msgid "Subscriptions"
 msgstr "Подписки"
 
@@ -1912,15 +1912,15 @@ msgstr "Подписки"
 msgid "Fee Per Category"
 msgstr "Тариф для категории"
 
-#: admin/templates/admin-sidebar.tpl.php:113 awpcp.php:850
+#: admin/templates/admin-sidebar.tpl.php:113 awpcp.php:856
 msgid "Category Icons"
 msgstr "Иконки категорий"
 
-#: admin/templates/admin-sidebar.tpl.php:118 awpcp.php:921
+#: admin/templates/admin-sidebar.tpl.php:118 awpcp.php:927
 msgid "Regions Control"
 msgstr "Управление Регионами"
 
-#: admin/templates/admin-sidebar.tpl.php:123 awpcp.php:935
+#: admin/templates/admin-sidebar.tpl.php:123 awpcp.php:941
 msgid "RSS"
 msgstr "RSS"
 
@@ -2057,102 +2057,102 @@ msgstr "Управление объявлениями"
 msgid "Manage Ad Listings"
 msgstr "Управление списком объявлений"
 
-#: awpcp.php:710
+#: awpcp.php:716
 msgid "AWPCP"
 msgstr "AWPCP"
 
-#: awpcp.php:805
+#: awpcp.php:811
 msgid ""
 "AWPCP requires the graphics processing library GD and it is not installed. "
 "Contact your web host to fix this."
 msgstr "AWPCP требуется библиотека обработки графики GD которая не установлена. Обратитесь поддержку веб-хостинга, чтобы это исправить."
 
-#: awpcp.php:806
+#: awpcp.php:812
 #: includes/placeholders/class-placeholders-installation-verifier.php:31
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: awpcp.php:857
+#: awpcp.php:863
 msgid "Comments & Ratings"
 msgstr "Комментарии и рейтинги"
 
-#: awpcp.php:864
+#: awpcp.php:870
 msgid "Coupons/Discount"
 msgstr "Купоны/Скидки"
 
-#: awpcp.php:885
+#: awpcp.php:891
 msgid "Fee per Category"
 msgstr "Тариф для категории"
 
-#: awpcp.php:892
+#: awpcp.php:898
 msgid "Google Checkout"
 msgstr "Google Checkout"
 
-#: awpcp.php:907
+#: awpcp.php:913
 msgid "PayFast"
 msgstr "PayFast"
 
-#: awpcp.php:942
+#: awpcp.php:948
 msgid "Stripe"
 msgstr "Stripe"
 
-#: awpcp.php:956 templates/components/media-manager.tpl.php:46
+#: awpcp.php:962 templates/components/media-manager.tpl.php:46
 msgid "Videos"
 msgstr "Видео"
 
-#: awpcp.php:964
+#: awpcp.php:970
 msgid "XML Sitemap"
 msgstr "Карта сайта XML "
 
-#: awpcp.php:971
+#: awpcp.php:977
 msgid "ZIP Code Search Module"
 msgstr "Модуль поиска по почтовому индексу"
 
-#: awpcp.php:1247
+#: awpcp.php:1273
 msgid "This field is required."
 msgstr "Это поле является обязательным."
 
-#: awpcp.php:1248 frontend/page-edit-ad.php:130 frontend/page-edit-ad.php:442
+#: awpcp.php:1274 frontend/page-edit-ad.php:130 frontend/page-edit-ad.php:442
 #: includes/settings-api.php:253
 msgid "Please enter a valid email address."
 msgstr "Пожалуйста, введите действующий адрес электронной почты."
 
-#: awpcp.php:1249 awpcp.php:1250
+#: awpcp.php:1275 awpcp.php:1276
 msgid "Please enter a valid URL."
 msgstr "Пожалуйста, введите правильный URL."
 
-#: awpcp.php:1251
+#: awpcp.php:1277
 msgid "Please enter a valid number."
 msgstr "Пожалуйста, введите правильный номер."
 
-#: awpcp.php:1252
+#: awpcp.php:1278
 msgid "Please enter a valid amount."
 msgstr "Пожалуйста, введите корректное количество."
 
-#: awpcp.php:1262
+#: awpcp.php:1288
 msgctxt "[UI Datepicker] Display text for previous month link"
 msgid "&#x3c;Prev"
 msgstr "&#x3c; Пред."
 
-#: awpcp.php:1264
+#: awpcp.php:1290
 msgctxt "[UI Datepicker] Display text for next month link"
 msgid "Next&#x3e;"
 msgstr "След. &#x3e;"
 
-#: awpcp.php:1279
+#: awpcp.php:1305
 msgctxt "[UI Datepicker] The first day of the week, Sun = 0, Mon = 1, ..."
 msgid "0"
 msgstr "0"
 
-#: awpcp.php:1285
+#: awpcp.php:1311
 msgid "There are files currently being uploaded."
 msgstr "Несколько файлов загружаются."
 
-#: awpcp.php:1286
+#: awpcp.php:1312
 msgid "There are files pending to be uploaded."
 msgstr "Несколько файлов ожидают загрузки."
 
-#: awpcp.php:1287
+#: awpcp.php:1313
 msgid "You haven't uploaded any images or files."
 msgstr "Вы не загрузили ни одного файла."
 
@@ -2217,6 +2217,10 @@ msgstr "Категория:"
 #: frontend/class-image-placeholders.php:45
 msgid "Click to enlarge image."
 msgstr "Нажмите, чтобы увеличить"
+
+#: frontend/class-image-placeholders.php:64
+msgid "Thumbnail for the listing's main image"
+msgstr ""
 
 #: frontend/class-wordpress-status-header-filter.php:52
 msgctxt "404 HTTP status description"
@@ -2815,15 +2819,15 @@ msgid ""
 "(the author) can see it."
 msgstr "Объявление временно отключено до тех пор, пока администратор не одобрит его. Только вы, как автор, можете его видеть."
 
-#: frontend/placeholders.php:396
+#: frontend/placeholders.php:400
 msgid "Seller"
 msgstr "Продавец"
 
-#: frontend/placeholders.php:419
+#: frontend/placeholders.php:423
 msgid "Visit Website"
 msgstr "Посетите сайт"
 
-#: frontend/placeholders.php:616
+#: frontend/placeholders.php:620
 msgid "This Ad has been viewed %d time."
 msgid_plural "This Ad has been viewed %d times."
 msgstr[0] "Это объявление было просмотрено %d раз."
@@ -2831,19 +2835,19 @@ msgstr[1] "Это объявление было просмотрено %d раз
 msgstr[2] "Это объявление было просмотрено %d раз."
 msgstr[3] "Это объявление было просмотрено %d раз."
 
-#: frontend/placeholders.php:620
+#: frontend/placeholders.php:624
 msgid "Total views: %d"
 msgstr "Всего просмотров: %d"
 
-#: frontend/placeholders.php:731
+#: frontend/placeholders.php:735
 msgid "Flag Ad"
 msgstr "Пожаловаться на объявление"
 
-#: frontend/placeholders.php:746
+#: frontend/placeholders.php:750
 msgid "Tweet This"
 msgstr "Твитнуть"
 
-#: frontend/placeholders.php:777
+#: frontend/placeholders.php:781
 msgid "Share on Facebook"
 msgstr "Поделиться на Facebook"
 
@@ -4217,30 +4221,31 @@ msgstr "Произошла ошибка при деактивации лицен
 msgid "The server returned a 403 Forbidden error."
 msgstr "Сервер вернул ошибку 403 Forbidden."
 
-#: includes/helpers/class-http.php:31 includes/helpers/class-http.php:66
+#: includes/helpers/class-http.php:31 includes/helpers/class-http.php:68
 msgid ""
 "It look's like your server is not authorized to make requests to <host>. "
-"Please contact support and ask them to add your IP address <ip-address> to "
-"the whitelist."
-msgstr "Видимо ваш сервер не авторизован для запросов к <host>. Пожалуйста, свяжитесь с техподдержкой и попросите добавить ваш IP-адрес <ip-address> в белый список."
+"Please <support-link>contact Another WordPress Classifieds Plugin support"
+"</support-link> and ask them to add your IP address <ip-address> to the "
+"whitelist."
+msgstr ""
 
-#: includes/helpers/class-http.php:33 includes/helpers/class-http.php:68
+#: includes/helpers/class-http.php:33 includes/helpers/class-http.php:70
 msgid "Include this error message with your report."
 msgstr "Включите это сообщение об ошибке в ваш отчет."
 
-#: includes/helpers/class-http.php:62
+#: includes/helpers/class-http.php:64
 msgid ""
 "It was not possible to establish a connection with <host>. The connection "
 "failed with the following error:"
 msgstr "Невозможно подключиться к <host>. Соединение оборвалось со следующей ошибкой:"
 
-#: includes/helpers/class-http.php:75
+#: includes/helpers/class-http.php:79
 msgid ""
 "It was not possible to establish a connection with <host>. A problem "
 "occurred in the SSL/TSL handshake:"
 msgstr "Невозможно подключиться к <host>. Соединение оборвалось на стадии SSL/TSL handshake:"
 
-#: includes/helpers/class-http.php:80
+#: includes/helpers/class-http.php:84
 msgid ""
 "To ensure the security of our systems and adhere to industry best practices,"
 " we require that your server uses a recent version of cURL and a version of "
@@ -4248,14 +4253,14 @@ msgid ""
 "1.0.1c)."
 msgstr "Чтобы удостовериться в безопасности наших систем и следовать стандартам отрасли, мы требуем, чтобы ваш сервер использовал последнюю версию cURL и версию OpenSSL с поддержкой TLSv1.2 (минимальная такая версия OpenSSL 1.0.1c)."
 
-#: includes/helpers/class-http.php:82
+#: includes/helpers/class-http.php:86
 msgid ""
 "Upgrading your system will not only allow you to communicate with our "
 "servers but also help you prepare your website to interact with services "
 "using the latest security standards."
 msgstr "Обновление вашей системы позволит вам не только связываться с нашими серверами, но также подготовит ваш сайт для работы с сервисами с использованием последних стандартов безопасности."
 
-#: includes/helpers/class-http.php:84
+#: includes/helpers/class-http.php:88
 msgid ""
 "Please contact your hosting provider and ask them to upgrade your system. "
 "Include this message if necesary."
@@ -4769,14 +4774,14 @@ msgid ""
 msgstr "Произошла ошибка с вашей оплатой. Пожалуйста, свяжитесь с администратором, если вы пытались совершить платёж через систему 2Checkout. Если вы не совершали платёж, вы можете проигнорировать это сообщение. "
 
 #: includes/payment-gateway-2checkout.php:96
-#: includes/payment-gateway-paypal-standard.php:122
+#: includes/payment-gateway-paypal-standard.php:126
 msgid ""
 "The amount you have paid does not match the required amount for this "
 "transaction. Please contact us to clarify the problem."
 msgstr "Внесенная сумма, не соответствует сумме, необходимой для этой сделки. Пожалуйста, свяжитесь с нами, для уточнения проблемы."
 
 #: includes/payment-gateway-2checkout.php:104
-#: includes/payment-gateway-paypal-standard.php:130
+#: includes/payment-gateway-paypal-standard.php:134
 msgid ""
 "There was an error processing your transaction. If funds have been deducted "
 "from your account, they have not been processed to our account. You will "
@@ -4784,7 +4789,7 @@ msgid ""
 msgstr "Во время обработки платежа возникла ошибка. Если с вашего баланса снялись какие-либо средства, они не были зачислены на наш счет. Вам стоит связаться с PayPal для выяснения причин."
 
 #: includes/payment-gateway-2checkout.php:114
-#: includes/payment-gateway-paypal-standard.php:140
+#: includes/payment-gateway-paypal-standard.php:144
 msgid ""
 "It appears this transaction has already been processed. If you do not see "
 "your ad in the system please contact the site adminstrator for assistance."
@@ -4820,7 +4825,7 @@ msgid ""
 "If you have any further questions, please contact this site administrator."
 msgstr "Если у вас возникли дополнительные вопросы, просьба связаться с администратором сайта."
 
-#: includes/payment-gateway-paypal-standard.php:165
+#: includes/payment-gateway-paypal-standard.php:169
 msgid ""
 "We couldn't determine the payment status for your transaction. Please "
 "contact customer service if you are viewing this message after having made a"
@@ -4829,7 +4834,7 @@ msgid ""
 "disregarded."
 msgstr "Мы не могли определить статус платежа вашей трнзакции. Пожалуйста, свяжитесь со службой поддержки, если вы читаете это сообщение после того, как была произведена оплата. Если вы еще не пробовали совершить оплату, и вы читаете это сообщение, значит, это сообщение отображается по ошибке и может быть проигнорировано."
 
-#: includes/payment-gateway-paypal-standard.php:269
+#: includes/payment-gateway-paypal-standard.php:273
 msgid "The payment transaction was canceled by the user."
 msgstr "Платежная операция прервана пользователем."
 
@@ -5198,7 +5203,7 @@ msgid "Images/Attachments"
 msgstr "Изображения и файлы"
 
 #: includes/settings/class-files-settings.php:21
-#: includes/settings/class-general-settings.php:16 installer.php:90
+#: includes/settings/class-general-settings.php:16 installer.php:116
 msgid "General"
 msgstr "Общие"
 
@@ -7803,7 +7808,7 @@ msgstr "Оплата, связанная с этой операцией не у�
 msgid "You are not allowed to buy credits."
 msgstr "Вам не разрешено покупать кредиты."
 
-#: installer.php:102
+#: installer.php:128
 msgid "30 Day Listing"
 msgstr "Срок размщения 30 дней"
 

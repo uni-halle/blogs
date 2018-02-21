@@ -1,4 +1,4 @@
-# Copyright (C) 2017
+# Copyright (C) 2018
 # This file is distributed under the same license as the  package.
 # Translators:
 # Christian Ludger <info@christianludger.de>, 2015-2017
@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Another WordPress Classifieds Plugin\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/another-wordpress-classifieds-plugin\n"
-"POT-Creation-Date: 2017-10-18 23:54:33+00:00\n"
-"PO-Revision-Date: 2017-11-27 23:19+0000\n"
+"POT-Creation-Date: 2018-01-27 02:19:05+00:00\n"
+"PO-Revision-Date: 2018-01-27 02:31+0000\n"
 "Last-Translator: Willington Vega <wvega@wvega.com>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/wp-translations/another-wordpress-classifieds-plugin/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "Credits"
 #: admin/admin-panel-fees-table.php:120
 #: admin/templates/admin-panel-credit-plans-entry-form.tpl.php:19
 #: admin/templates/admin-panel-fees-entry-form.tpl.php:25
-#: frontend/placeholders.php:454 frontend/templates/page-search-ads.tpl.php:46
+#: frontend/placeholders.php:458 frontend/templates/page-search-ads.tpl.php:46
 #: includes/settings/class-payment-general-settings.php:16
 msgid "Price"
 msgstr "Preis"
@@ -180,7 +180,7 @@ msgid "Categories"
 msgstr "Kategorien verwalten"
 
 #: admin/admin-panel-fees-table.php:127
-#: admin/templates/admin-sidebar.tpl.php:103 awpcp.php:878
+#: admin/templates/admin-sidebar.tpl.php:103 awpcp.php:884
 msgid "Featured Ads"
 msgstr "Anzeigen"
 
@@ -393,11 +393,11 @@ msgid "Keyword"
 msgstr "Nach Schlüsselwort suchen"
 
 #: admin/admin-panel-listings-table.php:287 frontend/page-show-ad.php:58
-#: frontend/placeholders.php:580
+#: frontend/placeholders.php:584
 msgid "Location"
 msgstr "Ort"
 
-#: admin/admin-panel-listings-table.php:288 frontend/placeholders.php:672
+#: admin/admin-panel-listings-table.php:288 frontend/placeholders.php:676
 msgid "Phone"
 msgstr "Telefonnummer"
 
@@ -757,7 +757,7 @@ msgid "Manage Extra Fields"
 msgstr "Extrafelder bearbeiten"
 
 #: admin/admin-panel.php:315 admin/templates/admin-sidebar.tpl.php:108
-#: awpcp.php:871
+#: awpcp.php:877
 msgid "Extra Fields"
 msgstr "Extrafelder Modul"
 
@@ -929,41 +929,41 @@ msgstr "Reihenfolge"
 msgid "Action"
 msgstr "Aktion"
 
-#: admin/admin-panel.php:1127
+#: admin/admin-panel.php:1126
 msgid "The new category was successfully added."
 msgstr "Die neue Kategorie wurde erfolgreich hinzugefügt."
 
-#: admin/admin-panel.php:1146
+#: admin/admin-panel.php:1136
 msgid ""
 "Sorry but you cannot delete the default category. The default category can "
 "only be renamed"
 msgstr "Die Standard-Kategorie kann nicht gelöscht werden. Sie kann nur umbenannt werden"
 
-#: admin/admin-panel.php:1214
+#: admin/admin-panel.php:1173
 msgid "The category has been deleted"
 msgstr "Die Kategorie wurde gelöscht"
 
-#: admin/admin-panel.php:1226
+#: admin/admin-panel.php:1185
 msgid "Your category changes have been saved."
 msgstr "Ihre Kategorieänderungen wurden gespeichert."
 
-#: admin/admin-panel.php:1233
+#: admin/admin-panel.php:1192
 msgid "No changes made to categories."
 msgstr "Kategorien bleiben unverändert."
 
-#: admin/admin-panel.php:1272
+#: admin/admin-panel.php:1231
 msgid ""
 "With the exception of any category that was being moved to itself, the "
 "categories have been moved"
 msgstr "Alle Kategorien wurden verschoben - außer die, die auf sich selbst verschoben würden"
 
-#: admin/admin-panel.php:1276
+#: admin/admin-panel.php:1235
 msgid ""
 "The categories have not been moved because you did not indicate where you "
 "want the categories to be moved to"
 msgstr "Die Kategorien wurden nicht verschoben, weil kein Ziel angegeben wurde"
 
-#: admin/admin-panel.php:1371
+#: admin/admin-panel.php:1330
 msgid "The categories have been deleted"
 msgstr "Die Kategorien wurden gelöscht"
 
@@ -1851,19 +1851,19 @@ msgstr "Premium Modul kaufen"
 msgid "Get a Premium Module!"
 msgstr "Kaufen Sie jetzt ein Premium Modul!"
 
-#: admin/templates/admin-sidebar.tpl.php:46 awpcp.php:843
+#: admin/templates/admin-sidebar.tpl.php:46 awpcp.php:849
 msgid "Campaign Manager"
 msgstr "Kampagnien Manager"
 
-#: admin/templates/admin-sidebar.tpl.php:52 awpcp.php:900
+#: admin/templates/admin-sidebar.tpl.php:52 awpcp.php:906
 msgid "Mark as Sold"
 msgstr "Als verkauft markieren"
 
-#: admin/templates/admin-sidebar.tpl.php:58 awpcp.php:928
+#: admin/templates/admin-sidebar.tpl.php:58 awpcp.php:934
 msgid "Restricted Categories"
 msgstr "Limitierte Kategorien"
 
-#: admin/templates/admin-sidebar.tpl.php:63 awpcp.php:836
+#: admin/templates/admin-sidebar.tpl.php:63 awpcp.php:842
 msgid "BuddyPress Listings"
 msgstr "BuddyPress Anzeigen "
 
@@ -1871,15 +1871,15 @@ msgstr "BuddyPress Anzeigen "
 msgid "Comments/Ratings"
 msgstr "Kommentare/Bewertungen"
 
-#: admin/templates/admin-sidebar.tpl.php:73 awpcp.php:822
+#: admin/templates/admin-sidebar.tpl.php:73 awpcp.php:828
 msgid "Attachments"
 msgstr "Anhänge"
 
-#: admin/templates/admin-sidebar.tpl.php:78 awpcp.php:829
+#: admin/templates/admin-sidebar.tpl.php:78 awpcp.php:835
 msgid "Authorize.Net"
 msgstr "Authorize.Net"
 
-#: admin/templates/admin-sidebar.tpl.php:83 awpcp.php:914
+#: admin/templates/admin-sidebar.tpl.php:83 awpcp.php:920
 msgid "PayPal Pro"
 msgstr "PayPal Pro"
 
@@ -1887,7 +1887,7 @@ msgstr "PayPal Pro"
 msgid "Coupon/Discount"
 msgstr "Gutschein"
 
-#: admin/templates/admin-sidebar.tpl.php:93 awpcp.php:949
+#: admin/templates/admin-sidebar.tpl.php:93 awpcp.php:955
 msgid "Subscriptions"
 msgstr "Abos"
 
@@ -1895,15 +1895,15 @@ msgstr "Abos"
 msgid "Fee Per Category"
 msgstr "Gebühr für Kategorie "
 
-#: admin/templates/admin-sidebar.tpl.php:113 awpcp.php:850
+#: admin/templates/admin-sidebar.tpl.php:113 awpcp.php:856
 msgid "Category Icons"
 msgstr "Kategoriebildermodul"
 
-#: admin/templates/admin-sidebar.tpl.php:118 awpcp.php:921
+#: admin/templates/admin-sidebar.tpl.php:118 awpcp.php:927
 msgid "Regions Control"
 msgstr "Regionskontrollmodul"
 
-#: admin/templates/admin-sidebar.tpl.php:123 awpcp.php:935
+#: admin/templates/admin-sidebar.tpl.php:123 awpcp.php:941
 msgid "RSS"
 msgstr "RSS Modul"
 
@@ -2040,102 +2040,102 @@ msgstr "Anzeigen-Verwaltung"
 msgid "Manage Ad Listings"
 msgstr "Anzeigen verwalten"
 
-#: awpcp.php:710
+#: awpcp.php:716
 msgid "AWPCP"
 msgstr "AWPCP Support Website"
 
-#: awpcp.php:805
+#: awpcp.php:811
 msgid ""
 "AWPCP requires the graphics processing library GD and it is not installed. "
 "Contact your web host to fix this."
 msgstr "AWPCP erfordert die Grafik-Bibliothek GD welche nicht installiert ist. Kontaktieren Sie Ihren Web-Host, dies zu beheben."
 
-#: awpcp.php:806
+#: awpcp.php:812
 #: includes/placeholders/class-placeholders-installation-verifier.php:31
 msgid "Warning"
 msgstr "Warnung"
 
-#: awpcp.php:857
+#: awpcp.php:863
 msgid "Comments & Ratings"
 msgstr "Kommentare und Bewertungen"
 
-#: awpcp.php:864
+#: awpcp.php:870
 msgid "Coupons/Discount"
 msgstr "Gutscheine"
 
-#: awpcp.php:885
+#: awpcp.php:891
 msgid "Fee per Category"
 msgstr "Gebühr pro Kategorie Module"
 
-#: awpcp.php:892
+#: awpcp.php:898
 msgid "Google Checkout"
 msgstr "Google Checkout"
 
-#: awpcp.php:907
+#: awpcp.php:913
 msgid "PayFast"
 msgstr "Schnelle Bezahlung"
 
-#: awpcp.php:942
+#: awpcp.php:948
 msgid "Stripe"
 msgstr "Stripe"
 
-#: awpcp.php:956 templates/components/media-manager.tpl.php:46
+#: awpcp.php:962 templates/components/media-manager.tpl.php:46
 msgid "Videos"
 msgstr "Videos"
 
-#: awpcp.php:964
+#: awpcp.php:970
 msgid "XML Sitemap"
 msgstr "XML Sitemap"
 
-#: awpcp.php:971
+#: awpcp.php:977
 msgid "ZIP Code Search Module"
 msgstr "ZIP Code Search Modul"
 
-#: awpcp.php:1247
+#: awpcp.php:1273
 msgid "This field is required."
 msgstr "Pflichtfeld"
 
-#: awpcp.php:1248 frontend/page-edit-ad.php:130 frontend/page-edit-ad.php:442
+#: awpcp.php:1274 frontend/page-edit-ad.php:130 frontend/page-edit-ad.php:442
 #: includes/settings-api.php:253
 msgid "Please enter a valid email address."
 msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein!"
 
-#: awpcp.php:1249 awpcp.php:1250
+#: awpcp.php:1275 awpcp.php:1276
 msgid "Please enter a valid URL."
 msgstr "Bitte geben Sie eine gültige URL (Webseitenadresse) ein!"
 
-#: awpcp.php:1251
+#: awpcp.php:1277
 msgid "Please enter a valid number."
 msgstr "Bitte geben Sie eine Zahl ein!"
 
-#: awpcp.php:1252
+#: awpcp.php:1278
 msgid "Please enter a valid amount."
 msgstr "Bitte geben Sie eine Menge ein!"
 
-#: awpcp.php:1262
+#: awpcp.php:1288
 msgctxt "[UI Datepicker] Display text for previous month link"
 msgid "&#x3c;Prev"
 msgstr "&#x3c;Prev"
 
-#: awpcp.php:1264
+#: awpcp.php:1290
 msgctxt "[UI Datepicker] Display text for next month link"
 msgid "Next&#x3e;"
 msgstr "Next&#x3e;"
 
-#: awpcp.php:1279
+#: awpcp.php:1305
 msgctxt "[UI Datepicker] The first day of the week, Sun = 0, Mon = 1, ..."
 msgid "0"
 msgstr "0"
 
-#: awpcp.php:1285
+#: awpcp.php:1311
 msgid "There are files currently being uploaded."
 msgstr "Es werden gerade Dateien hochgeladen."
 
-#: awpcp.php:1286
+#: awpcp.php:1312
 msgid "There are files pending to be uploaded."
 msgstr "Dateien sind in der Warteschlange zum Upload."
 
-#: awpcp.php:1287
+#: awpcp.php:1313
 msgid "You haven't uploaded any images or files."
 msgstr "Sie haben noch keine Bilder oder Dateien hochgeladen."
 
@@ -2190,7 +2190,7 @@ msgstr "Interner Fehler. Die Anfrage konnte nicht beendet werden."
 #: frontend/class-categories-selector-component.php:36
 msgctxt "multiple dropdowns category selector"
 msgid "Category: <category-name>"
-msgstr ""
+msgstr "Kategorie:<category-name>"
 
 #: frontend/class-categories-selector-component.php:41
 msgctxt "single dropdown category selector"
@@ -2200,6 +2200,10 @@ msgstr "Kategorie"
 #: frontend/class-image-placeholders.php:45
 msgid "Click to enlarge image."
 msgstr "Auf Bild klicken um zu vergrößern."
+
+#: frontend/class-image-placeholders.php:64
+msgid "Thumbnail for the listing's main image"
+msgstr ""
 
 #: frontend/class-wordpress-status-header-filter.php:52
 msgctxt "404 HTTP status description"
@@ -2311,21 +2315,21 @@ msgstr "Die Zugangsdaten wurden an  %s gesendet."
 
 #: frontend/page-edit-ad.php:545
 msgid "Invalid access token."
-msgstr ""
+msgstr "Falscher Zugangscode."
 
 #: frontend/page-edit-ad.php:565
 msgid "The sepecified listing cannot be edited using this access code."
-msgstr ""
+msgstr "Die Anzeige kann nicht mit diesem Zugangscode bearbeitet werden."
 
 #: frontend/page-edit-ad.php:583
 msgid "Edit link for listing: %s"
-msgstr ""
+msgstr "Bearbeitungslink für Ihre Anzeige:%s"
 
 #: frontend/page-edit-ad.php:599
 msgid ""
 "The link you used already expired. Please check your email to receive a link"
 " with a new access token."
-msgstr ""
+msgstr "Der Link ist abgelaufen. Ein neuer Bearbeitungslink wurde an Sie verschickt. Bitte prüfen Sie Ihre E-Mails."
 
 #: frontend/page-place-ad.php:59
 #: includes/views/class-verify-transaction-exists-step-decorator.php:17
@@ -2798,33 +2802,33 @@ msgid ""
 "(the author) can see it."
 msgstr "Diese Anzeige ist im Moment deaktiviert da sie noch vom Administrator genehmigt werden muss. Nur Sie (der Besitzer) können die Anzeige sehen. "
 
-#: frontend/placeholders.php:396
+#: frontend/placeholders.php:400
 msgid "Seller"
 msgstr "Verkäufer"
 
-#: frontend/placeholders.php:419
+#: frontend/placeholders.php:423
 msgid "Visit Website"
 msgstr "Webseite"
 
-#: frontend/placeholders.php:616
+#: frontend/placeholders.php:620
 msgid "This Ad has been viewed %d time."
 msgid_plural "This Ad has been viewed %d times."
 msgstr[0] "Anzeigenaufrufe: %d."
 msgstr[1] "Anzeigenaufrufe: %d"
 
-#: frontend/placeholders.php:620
+#: frontend/placeholders.php:624
 msgid "Total views: %d"
 msgstr "Aufrufe: %d"
 
-#: frontend/placeholders.php:731
+#: frontend/placeholders.php:735
 msgid "Flag Ad"
 msgstr "Merken"
 
-#: frontend/placeholders.php:746
+#: frontend/placeholders.php:750
 msgid "Tweet This"
 msgstr "Tweet This"
 
-#: frontend/placeholders.php:777
+#: frontend/placeholders.php:781
 msgid "Share on Facebook"
 msgstr "Share on Facebook"
 
@@ -3039,7 +3043,7 @@ msgstr "Unten finden Sie den Zugangscode für Ihre Anzeige \"%s\". Diese Anzeige
 #: frontend/templates/email-send-ad-access-key.tpl.php:7
 #: frontend/templates/email-send-all-ad-access-keys.tpl.php:9
 msgid "Edit Link:"
-msgstr ""
+msgstr "Bearbeitungslink:"
 
 #: frontend/templates/email-send-ad-access-key.tpl.php:9
 #: frontend/templates/email-send-all-ad-access-keys.tpl.php:13
@@ -3048,7 +3052,7 @@ msgctxt "edit link email"
 msgid ""
 "The edit link will expire after 24 hours. If you use the link after it has "
 "expired, a new one will be delivered to your email address automatically."
-msgstr ""
+msgstr "Der Bearbeitungslink ist nach 24 Stunden ungültig. Wenn Sie den Link dann verwenden wird Ihnen automatisch ein neuer Bearbeitungslink per E-Mail zugeschickt."
 
 #: frontend/templates/email-send-all-ad-access-keys.tpl.php:4
 msgid "Total ads found sharing your email address"
@@ -4198,30 +4202,31 @@ msgstr "Es gab einen Fehler die Lizenz für das Modul <module-name> zu deaktivie
 msgid "The server returned a 403 Forbidden error."
 msgstr "The server returned a 403 Forbidden error."
 
-#: includes/helpers/class-http.php:31 includes/helpers/class-http.php:66
+#: includes/helpers/class-http.php:31 includes/helpers/class-http.php:68
 msgid ""
 "It look's like your server is not authorized to make requests to <host>. "
-"Please contact support and ask them to add your IP address <ip-address> to "
-"the whitelist."
-msgstr "It look's like your server is not authorized to make requests to <host>. Please contact support and ask them to add your IP address <ip-address> to the whitelist."
+"Please <support-link>contact Another WordPress Classifieds Plugin support"
+"</support-link> and ask them to add your IP address <ip-address> to the "
+"whitelist."
+msgstr ""
 
-#: includes/helpers/class-http.php:33 includes/helpers/class-http.php:68
+#: includes/helpers/class-http.php:33 includes/helpers/class-http.php:70
 msgid "Include this error message with your report."
 msgstr "Include this error message with your report."
 
-#: includes/helpers/class-http.php:62
+#: includes/helpers/class-http.php:64
 msgid ""
 "It was not possible to establish a connection with <host>. The connection "
 "failed with the following error:"
 msgstr "It was not possible to establish a connection with <host>. The connection failed with the following error:"
 
-#: includes/helpers/class-http.php:75
+#: includes/helpers/class-http.php:79
 msgid ""
 "It was not possible to establish a connection with <host>. A problem "
 "occurred in the SSL/TSL handshake:"
 msgstr "It was not possible to establish a connection with <host>. A problem occurred in the SSL/TSL handshake:"
 
-#: includes/helpers/class-http.php:80
+#: includes/helpers/class-http.php:84
 msgid ""
 "To ensure the security of our systems and adhere to industry best practices,"
 " we require that your server uses a recent version of cURL and a version of "
@@ -4229,14 +4234,14 @@ msgid ""
 "1.0.1c)."
 msgstr "To ensure the security of our systems and adhere to industry best practices, we require that your server uses a recent version of cURL and a version of OpenSSL that supports TLSv1.2 (minimum version with support is OpenSSL 1.0.1c)."
 
-#: includes/helpers/class-http.php:82
+#: includes/helpers/class-http.php:86
 msgid ""
 "Upgrading your system will not only allow you to communicate with our "
 "servers but also help you prepare your website to interact with services "
 "using the latest security standards."
 msgstr "Upgrading your system will not only allow you to communicate with our servers but also help you prepare your website to interact with services using the latest security standards."
 
-#: includes/helpers/class-http.php:84
+#: includes/helpers/class-http.php:88
 msgid ""
 "Please contact your hosting provider and ask them to upgrade your system. "
 "Include this message if necesary."
@@ -4742,14 +4747,14 @@ msgid ""
 msgstr "Ein Problem mit Ihrer Zahlung ist aufgetreten. Wenn Sie gerade eine Zahlung mit 2Checkout durchgeführt haben, wenden Sie sich bitte an den 2Checkout Support. Wenn Sie gerade keine Zahlung durchgeführt haben, können Sie diese Nachricht ignorieren."
 
 #: includes/payment-gateway-2checkout.php:96
-#: includes/payment-gateway-paypal-standard.php:122
+#: includes/payment-gateway-paypal-standard.php:126
 msgid ""
 "The amount you have paid does not match the required amount for this "
 "transaction. Please contact us to clarify the problem."
 msgstr "Die Höhe Ihrer Zahlung entspricht keiner der hinterlegten Gebühren. Bitte wenden Sie sich an den Betreiber der Website, um das Problem zu klären."
 
 #: includes/payment-gateway-2checkout.php:104
-#: includes/payment-gateway-paypal-standard.php:130
+#: includes/payment-gateway-paypal-standard.php:134
 msgid ""
 "There was an error processing your transaction. If funds have been deducted "
 "from your account, they have not been processed to our account. You will "
@@ -4757,7 +4762,7 @@ msgid ""
 msgstr "Bei der Verarbeitung Ihrer Transaktion trat ein Fehler auf. Wir haben Ihre Zahlung nicht erhalten. Wenn Ihr PayPal Konto bereits belastet wurde, wenden Sie sich bitte an PayPal, um das Problem zu klären."
 
 #: includes/payment-gateway-2checkout.php:114
-#: includes/payment-gateway-paypal-standard.php:140
+#: includes/payment-gateway-paypal-standard.php:144
 msgid ""
 "It appears this transaction has already been processed. If you do not see "
 "your ad in the system please contact the site adminstrator for assistance."
@@ -4793,7 +4798,7 @@ msgid ""
 "If you have any further questions, please contact this site administrator."
 msgstr "Wenn Sie weitere Fragen haben wenden Sie sich bitte an den Betreiber der Website."
 
-#: includes/payment-gateway-paypal-standard.php:165
+#: includes/payment-gateway-paypal-standard.php:169
 msgid ""
 "We couldn't determine the payment status for your transaction. Please "
 "contact customer service if you are viewing this message after having made a"
@@ -4802,7 +4807,7 @@ msgid ""
 "disregarded."
 msgstr "Ein unbekanntes Problem ist aufgetreten. Wenn Sie gerade eine Zahlung durchgeführt haben, wenden Sie sich bitte an den Betreiber der Website. Wenn Sie gerade keine Zahlung durchgeführt haben, können Sie diese Nachricht ignorieren."
 
-#: includes/payment-gateway-paypal-standard.php:269
+#: includes/payment-gateway-paypal-standard.php:273
 msgid "The payment transaction was canceled by the user."
 msgstr "Die Bezahlung wurde abgebrochen."
 
@@ -5163,7 +5168,7 @@ msgid "Images/Attachments"
 msgstr "Bilder/Anhänge"
 
 #: includes/settings/class-files-settings.php:21
-#: includes/settings/class-general-settings.php:16 installer.php:90
+#: includes/settings/class-general-settings.php:16 installer.php:116
 msgid "General"
 msgstr "Globale Einstellungen"
 
@@ -7069,7 +7074,7 @@ msgstr "AN E-Mail-Adresse für ausgehende E-Mails"
 msgid ""
 "Emails are sent to your WordPress admin email. If you prefer to receive "
 "emails in a different address, please enter it here."
-msgstr ""
+msgstr "E-Mails werden an Ihre WordPress Admin-E-Mail geschickt. Wenn Sie eine andere Adresse als Empfänger möchten, dann tragen Sie diese bitte hier ein."
 
 #: includes/settings-api.php:325
 msgid "FROM email address for outgoing emails"
@@ -7528,13 +7533,13 @@ msgstr "Das Credit System wurde automatisch deaktivert weil Sie die Bezahlung de
 msgid ""
 "<new-value> is not a valid email address. Please check the value you entered"
 " to use as the FROM email address for outgoing messages."
-msgstr ""
+msgstr "<new-value> ist keine gültige E-Mail Adresse. Bitte prüfen Sie Ihre Eingabe für die \"von\" E-Mail Adresse."
 
 #: includes/settings-api.php:908
 msgid ""
 "<new-value> is not a valid email address. Please check the value you entered"
 " to use as recipient email address for admin notifications."
-msgstr ""
+msgstr "<new-value> ist keine gültige E-Mail Adresse. Bitte prüfen Sie Ihre Eingabe für \"Admin\"-E-Mails."
 
 #: includes/settings-api.php:1177
 msgid "Deactivate"
@@ -7762,7 +7767,7 @@ msgstr "Die Bezahlung die mit dieser Transaktion verknüpft ist scheiterte (Grü
 msgid "You are not allowed to buy credits."
 msgstr "Sie dürfen keine Credits kaufen."
 
-#: installer.php:102
+#: installer.php:128
 msgid "30 Day Listing"
 msgstr "30 Tage Anzeige"
 
@@ -8105,29 +8110,29 @@ msgstr "Keine Zahlungsmethode möglich."
 #: templates/email/listing-edit-link-with-access-token.tpl.php:1
 msgctxt "edit link email"
 msgid "Hi <contact-name>,"
-msgstr ""
+msgstr "Hallo <contact-name>,"
 
 #: templates/email/listing-edit-link-with-access-token.tpl.php:3
 msgctxt "edit link email"
 msgid ""
 "The access key and edit link for the listing <listing-title> are shown "
 "below:"
-msgstr ""
+msgstr "Der Zugangscode und der Bearbeitungslink für die Anzeige <listing-title> werden unten angezeigt:"
 
 #: templates/email/listing-edit-link-with-access-token.tpl.php:5
 msgctxt "edit link email"
 msgid "Access Key: <access-key>"
-msgstr ""
+msgstr "Zugangscode:<access-key>"
 
 #: templates/email/listing-edit-link-with-access-token.tpl.php:6
 msgctxt "edit link email"
 msgid "Email Address: <email-address>"
-msgstr ""
+msgstr "E-Mail Adresse:<email-address>"
 
 #: templates/email/listing-edit-link-with-access-token.tpl.php:7
 msgctxt "edit link email"
 msgid "Edit Link: <edit-link>"
-msgstr ""
+msgstr "Bearbeitungslink: <edit-link>"
 
 #: templates/email/listing-edit-link-with-access-token.tpl.php:11
 msgctxt "edit link email"
@@ -8136,7 +8141,7 @@ msgid ""
 "an expired link or because you or the administrator requested the access key"
 " to be sent. If that's not the case, please ignore this message, or contact "
 "the adiministrator if you have received similar messages today."
-msgstr ""
+msgstr "Sie erhalten diese E-Mail weil Sie versucht haben eine Anzeige mit einem abgelaufenen Link zu bearbeiten. Ihnen wurde automatisch ein neuer Bearbeitungslink zugeschickt. Wenn Sie nicht auf den Bearbeitungslink geklickt haben, dann kontaktieren Sie bitte den Webseitenbetreiber."
 
 #: templates/email/listing-is-about-to-expire-notification.plain.tpl.php:3
 msgid "Listing Details are below:"

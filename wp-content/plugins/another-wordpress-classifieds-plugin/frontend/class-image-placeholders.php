@@ -61,6 +61,7 @@ class AWPCP_Image_Placeholders {
                     'attributes' => array(
                         'class' => 'thumbshow',
                         'src' => esc_attr( $thumbnail ),
+                        'alt' => __( "Thumbnail for the listing's main image", 'another-wordpress-classifieds-plugin' ),
                         'width' => awpcp_array_data( 'width', null, $image_dimensions ),
                         'height' => awpcp_array_data( 'height', null, $image_dimensions ),
                     )

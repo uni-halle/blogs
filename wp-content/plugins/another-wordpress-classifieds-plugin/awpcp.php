@@ -4,7 +4,7 @@
  * Plugin Name: Another WordPress Classifieds Plugin (AWPCP)
  * Plugin URI: http://www.awpcp.com
  * Description: AWPCP - A plugin that provides the ability to run a free or paid classified ads service on your WP site. <strong>!!!IMPORTANT!!!</strong> It's always a good idea to do a BACKUP before you upgrade AWPCP!
- * Version: 3.8.2
+ * Version: 3.8.3
  * Author: D. Rodenbaugh
  * License: GPLv2 or any later version
  * Author URI: http://www.skylineconsult.com
@@ -100,6 +100,7 @@ require_once(AWPCP_DIR . "/includes/compatibility/class-all-in-one-seo-pack-plug
 require( AWPCP_DIR . "/includes/compatibility/class-facebook-button-plugin-integration.php");
 require_once(AWPCP_DIR . "/includes/compatibility/class-facebook-plugin-integration.php");
 require_once( AWPCP_DIR . '/includes/compatibility/class-facebook-all-plugin-integration.php' );
+require_once( AWPCP_DIR . "/includes/compatibility/class-jetpack-plugin-integration.php" );
 require_once( AWPCP_DIR . '/includes/compatibility/class-mashshare-plugin-integration.php' );
 require_once( AWPCP_DIR . '/includes/compatibility/class-plugin-integrations.php' );
 require( AWPCP_DIR . "/includes/compatibility/class-profile-builder-plugin-integration.php");
@@ -612,6 +613,11 @@ class AWPCP {
         $this->plugin_integrations->add_plugin_integration(
             'wonderm00ns-simple-facebook-open-graph-tags/wonderm00n-open-graph.php',
             'awpcp_simple_facebook_opengraph_tags_plugin_integration'
+        );
+
+        $this->plugin_integrations->add_plugin_integration(
+            'jetpack/jetpack.php',
+            'awpcp_jetpack_plugin_integration'
         );
     }
 

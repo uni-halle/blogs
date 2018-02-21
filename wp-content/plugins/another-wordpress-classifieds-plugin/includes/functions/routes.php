@@ -429,7 +429,7 @@ function awpcp_get_url_with_page_permastruct( $path ) {
     $url = str_replace( '%pagename%', ltrim( $path, '/' ), $permalink_structure );
     $url = home_url( $url );
 
-    return $url;
+    return user_trailingslashit( $url );
 }
 
 /**

@@ -107,6 +107,10 @@ class AWPCP_ListingsFinder {
     }
 
     private function normalize_regions_query( $query ) {
+        if ( ! is_array( $query['regions'] ) ) {
+            $query['regions'] = array();
+        }
+
         // search for a listing associated with a Region (of any kind) whose
         // name matches the given search value.
         $query['regions'][] = array( 'country' => $query['region'] );
@@ -525,19 +529,21 @@ class AWPCP_ListingsFinder {
     }
 
     public function group_conditions( $conditions, $connector = 'OR' ) {
+        if ( ! is_array( $conditions ) ) {
+            return $conditions;
+        }
+
         $conditions_count = count( $conditions );
 
-        if ( is_array( $conditions ) && $conditions_count >= 1 ) {
-            if ( $conditions_count > 1 ) {
-                return '( ' . implode( " $connector ", $conditions ) . ' )';
-            } else if ( $conditions_count == 1 ) {
-                return array_pop( $conditions );
-            }
-        } else if ( ! is_array( $conditions ) ) {
-            return $conditions;
-        } else {
-            return '';
+        if ( $conditions_count > 1 ) {
+            return '( ' . implode( " $connector ", $conditions ) . ' )';
         }
+
+        if ( $conditions_count == 1 ) {
+            return array_pop( $conditions );
+        }
+
+        return '';
     }
 
     private function build_limit_clause( $query ) {

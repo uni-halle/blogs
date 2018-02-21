@@ -273,11 +273,15 @@ function awpcp_do_placeholder_url($ad, $placeholder) {
  * @since 3.0
  */
 function awpcp_do_placeholder_title($ad, $placeholder) {
+    $title = $ad->get_title();
     $url = awpcp_listing_renderer()->get_view_listing_url( $ad );
 
-    $replacements['ad_title'] = sprintf( '<a href="%s">%s</a>', esc_attr( $url ), esc_html( $ad->get_title() ) );
-    $replacements['title'] = esc_html( $ad->get_title() );
-    $replacements['title_link'] = $replacements['ad_title'];
+    $title_link = sprintf( '<a href="%s">%s</a>', esc_attr( $url ), esc_html( $title ) );
+    $title_link = apply_filters( 'awpcp_title_link_placeholder', $title_link, $ad, $title, $url );
+
+    $replacements['title'] = esc_html( $title );
+    $replacements['ad_title'] = $title_link;
+    $replacements['title_link'] = $title_link;
 
     return $replacements[$placeholder];
 }

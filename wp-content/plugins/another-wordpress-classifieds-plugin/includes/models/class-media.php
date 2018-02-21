@@ -22,6 +22,16 @@ class AWPCP_Media {
     }
 
     public static function create_from_object( $object ) {
+        if ( isset( $object->metadata ) ) {
+            $metadata = maybe_unserialize( $object->metadata );
+        } else {
+            $metadata = array();
+        }
+
+        if ( ! is_array( $metadata ) ) {
+            $metadata = array();
+        }
+
         return new AWPCP_Media(
             $object->id,
             $object->ad_id,
@@ -31,7 +41,7 @@ class AWPCP_Media {
             $object->enabled,
             $object->status,
             $object->is_primary,
-            isset( $object->metadata ) ? maybe_unserialize( $object->metadata ) : array(),
+            $metadata,
             $object->created
         );
     }

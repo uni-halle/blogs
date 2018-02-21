@@ -10,7 +10,7 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
 
     public function __construct($page='awpcp-search-ads', $title=null) {
         parent::__construct($page, is_null($title) ? __('Search Ads', 'another-wordpress-classifieds-plugin') : $title);
-        
+
         $this->classifieds_bar_components = array( 'search_bar' => false );
     }
 

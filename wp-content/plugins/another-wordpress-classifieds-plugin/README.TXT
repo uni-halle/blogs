@@ -5,8 +5,8 @@ Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classif
 Requires at least: 4.3
 Requires PHP: 5.6
 Tested up to: 4.9.2
-Last Updated: 2017-Dec-5
-Stable tag: 3.8.2
+Last Updated: 2018-Jan-31
+Stable tag: 3.8.3
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -162,7 +162,7 @@ If you love the plugin, [please consider purchasing a Premium Module](http://awp
 
 == Credits ==
 
-Copyright 2009-17 awpcp.com
+Copyright 2009-18 awpcp.com
 
 AWPCP Classifieds icons courtesy of http://www.famfamfam.com/lab/icons/silk/
 dcfunctions.php used with permission under GPL by Dan Caragea http://www.datemill.com
@@ -240,6 +240,15 @@ Yes it can. AWPCP comes with many user-provided translations under the /language
 Yes it is. However, you cannot "network-activate" the plugin (as this will share the database). Activate it on only the subsites on which you need a directory.  This can be done under Plugins->Add New as the Administrator user.  Do not "network activate" AWPCP as the "super admin".
 
 == Changelog ==
+= Version 3.8.3 =
+* Fix layout issue for Submit button on Search Bar.
+* Fix '[] operator not supported for strings' Error.
+* Fix call to undefined function ___().
+* Add integration for Jetpack Open Graph meta tags feature.
+* Restore menu items in Single Listing page.
+* Update messages for HTTP errors.
+* Fix PHP warning in PayPal Standard gateway.
+* Fix Warnings and Errors on PHP 7.1+.
 
 = Version 3.8.2 =
 * Allow Search Bar to be disabled.

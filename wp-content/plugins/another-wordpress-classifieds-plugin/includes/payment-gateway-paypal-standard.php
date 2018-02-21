@@ -24,7 +24,7 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
         return self::INTEGRATION_BUTTON;
     }
 
-    private function verify_transaction($transaction) {
+    public function verify_transaction($transaction) {
         $errors = array();
 
         // PayPal can redirect users using a GET request and issuing
@@ -81,8 +81,9 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
             return $transaction->get('validated', false);
         }
 
-        $mc_gross = $mcgross = number_format((double) awpcp_post_param('mc_gross'), 2);
-        $payment_gross = number_format((double) awpcp_post_param('payment_gross'), 2);
+        $mc_gross = floatval( awpcp_post_param( 'mc_gross' ) );
+        $payment_gross = floatval( awpcp_post_param( 'payment_gross' ) );
+        $tax = floatval( awpcp_post_param( 'tax' ) );
         $txn_id = awpcp_post_param('txn_id');
         $txn_type = awpcp_post_param('txn_type');
         $custom = awpcp_post_param('custom');
@@ -93,7 +94,6 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
         $item_number = awpcp_post_param('item_number');
         $quantity = awpcp_post_param('quantity');
         $mc_fee = awpcp_post_param('mc_fee');
-        $tax = awpcp_post_param('tax');
         $payment_currency = awpcp_post_param('mc_currency');
         $exchange_rate = awpcp_post_param('exchange_rate');
         $payment_status = awpcp_post_param('payment_status');
@@ -116,9 +116,13 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
         }
 
         $totals = $transaction->get_totals();
+
         $amount = number_format($totals['money'], 2);
         $amount_before_tax = number_format($mc_gross - $tax, 2);
-        if ($amount != $mc_gross && $amount != $payment_gross && $amount != $amount_before_tax) {
+        $mc_gross_formatted = number_format( $mc_gross, 2 );
+        $payment_gross_formatted = number_format( $payment_gross, 2 );
+
+        if ( $amount != $mc_gross_formatted && $amount != $payment_gross_formatted && $amount != $amount_before_tax) {
             $message = __("The amount you have paid does not match the required amount for this transaction. Please contact us to clarify the problem.", 'another-wordpress-classifieds-plugin');
             $transaction->errors['validation'] = $message;
             $transaction->payment_status = AWPCP_Payment_Transaction::PAYMENT_STATUS_INVALID;
@@ -180,7 +184,7 @@ class AWPCP_PayPalStandardPaymentGateway extends AWPCP_PaymentGateway {
         return true;
     }
 
-    private function funds_were_sent_to_correct_receiver() {
+    public function funds_were_sent_to_correct_receiver() {
         $email_addresses = array( awpcp_post_param( 'receiver_email' ), awpcp_post_param( 'business' ) );
         $email_addresses = array_filter( $email_addresses, 'awpcp_is_valid_email_address' );
 

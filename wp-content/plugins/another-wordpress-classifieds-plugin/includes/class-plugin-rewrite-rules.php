@@ -42,24 +42,10 @@ class AWPCP_Plugin_Rewrite_Rules {
                 continue;
             }
 
-            $uris[ $refname ] = $this->get_converted_page_uris( get_page_uri( $page->ID ) );
+            $uris[ $refname ] = $this->rewrite_rules_helper->generate_page_uri_variants( get_page_uri( $page->ID ) );
         }
 
         return $uris;
-    }
-
-    private function get_converted_page_uris( $regular_page_uri ) {
-        $uppercase_page_uri = preg_replace_callback(
-            '/%[0-9a-zA-Z]{2}/',
-            create_function( '$x', 'return strtoupper( $x[0] );' ),
-            $regular_page_uri
-        );
-
-        if ( strcmp( $regular_page_uri, $uppercase_page_uri ) !== 0 ) {
-            return array( $regular_page_uri, $uppercase_page_uri );
-        } else {
-            return array( $regular_page_uri );
-        }
     }
 
     private function add_api_rewrite_rules() {
@@ -191,7 +177,7 @@ class AWPCP_Plugin_Rewrite_Rules {
             return;
         }
 
-        $page_uris = $this->get_converted_page_uris( $browse_categories_page_info['page_uri'] );
+        $page_uris = $this->rewrite_rules_helper->generate_page_uri_variants( $browse_categories_page_info['page_uri'] );
         $browse_listings_page_id = awpcp_get_page_id_by_ref( 'browse-ads-page-name' );
         $base_regex = '<page-uri>(?:$|/(\d+)?)';
         $base_redirect = 'index.php?page_id=<browse-listings-page-id>&cid=$matches[1]&awpcp-custom=redirect-browse-listings';

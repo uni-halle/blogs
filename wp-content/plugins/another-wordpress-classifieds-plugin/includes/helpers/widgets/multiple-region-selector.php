@@ -25,9 +25,8 @@ class AWPCP_MultipleRegionSelector {
     public $regions = array();
 
     public function __construct( $regions, $options ) {
-
-        // we need at least one region, even if its empty
-        if ( empty( $regions ) ) {
+        // We need at least one region, even if its empty.
+        if ( ! is_array( $regions ) || empty( $regions ) ) {
             $this->regions = array( array(
                 'country' => '',
                 'county' => '',

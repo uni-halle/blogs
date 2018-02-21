@@ -70,6 +70,9 @@ function awpcp_get_digits_from_string( $string ) {
     return implode( '', $matches[0] );
 }
 
+/**
+ * Based on code found at https://wordpress.stackexchange.com/a/141136/52.
+ */
 function awpcp_trim_html_content( $content, $word_count ) {
     $allowed_tags = array_keys( wp_kses_allowed_html( 'post' ) );
     $allowed_tags = '<' . implode( '>,<', $allowed_tags ) . '>';
