@@ -8,13 +8,12 @@ if ( ! class_exists( 'CZR_controller_header' ) ) :
     }
 
     function czr_fn_display_view_topbar_wrapper() {
-      return 1 == esc_attr( czr_fn_opt( 'tc_header_desktop_topbar' ) );
+      return 'none' !== esc_attr( czr_fn_opt( 'tc_header_show_topbar' ) );
     }
 
     function czr_fn_display_view_topbar_social_block() {
-      return czr_fn_has_social_links() && 1 == esc_attr( czr_fn_opt( 'tc_social_in_header' ) );
+      return czr_fn_has_social_links() && 'none' !== esc_attr( czr_fn_opt( 'tc_header_show_socials' ) );
     }
-
 
     function czr_fn_display_view_branding_tagline() {
       return  '' != get_bloginfo( 'description' ) && in_array( esc_attr( czr_fn_opt( 'tc_header_desktop_tagline' ) ), array( 'brand_below', 'brand_next' ) );
@@ -53,7 +52,7 @@ if ( ! class_exists( 'CZR_controller_header' ) ) :
     //and
     //2) menu type is not aside (sidenav)
     function czr_fn_display_view_navbar_primary_menu() {
-      return $this -> czr_fn_display_view_menu() && 'aside' != esc_attr( czr_fn_opt( 'tc_menu_style' ) ) && ( has_nav_menu( 'main' ) || czr_fn_isprevdem() );;
+      return $this -> czr_fn_display_view_menu() && 'aside' != esc_attr( czr_fn_opt( 'tc_menu_style' ) ) && ( has_nav_menu( 'main' ) || czr_fn_isprevdem() );
     }
 
     //when the 'secondary' navbar menu is allowed?
@@ -65,11 +64,11 @@ if ( ! class_exists( 'CZR_controller_header' ) ) :
     }
 
     //when the top navbar menu is allowed?
-    //1) menu allowed
+    //1) topbar is displayed in desktops
     //and
-    //2) topbar is displayed
+    //2) menu allowed
     function czr_fn_display_view_topbar_menu() {
-      return $this -> czr_fn_display_view_menu() && esc_attr( czr_fn_opt( 'tc_header_desktop_topbar' ) );
+      return in_array( esc_attr( czr_fn_opt( 'tc_header_show_topbar' ) ), array( 'desktop', 'desktop_mobile' ) ) && $this -> czr_fn_display_view_menu() && has_nav_menu( 'topbar' );
     }
 
     //when the sidenav menu is allowed?

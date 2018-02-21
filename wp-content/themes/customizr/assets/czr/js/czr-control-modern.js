@@ -8856,7 +8856,8 @@ $.extend( CZRSkopeMths, {
                   'post_lists_sec',
                   'galleries_sec',
                   'footer_customizer_sec',
-                  'custom_scripts_sec'
+                  'custom_scripts_sec',
+                  'contact_info_sec'
 
             ], function( _secId ) {
                   _.delay( function() {
@@ -10845,7 +10846,7 @@ $.extend( CZRLayoutSelectMths , {
                             ],
                             visibility : function( to, servusShortId ) {
                                   if ( 'tc_header_topbar_layout' == servusShortId ) {
-                                        return ( 'wide' == to  ) && _is_checked( api( api.CZR_Helpers.build_setId( 'tc_header_desktop_topbar' ) ).get() );
+                                        return ( 'wide' == to  ) && _is_checked( api( api.CZR_Helpers.build_setId( 'tc_header_show_topbar' ) ).get() );
                                   }
                                   else if ( 'tc_mc_effect' == servusShortId ) {
                                         return 'aside' == api( api.CZR_Helpers.build_setId( 'tc_menu_style' ) ).get() && 'wide' == to;
@@ -10854,7 +10855,7 @@ $.extend( CZRLayoutSelectMths , {
                             },
                     },
                     {
-                            dominus : 'tc_header_desktop_topbar',
+                            dominus : 'tc_header_show_topbar',
                             servi   : [ 'tc_header_topbar_layout' ],
                             visibility: function (to) {
                                   return _is_checked(to) &&  'wide' == api( api.CZR_Helpers.build_setId( 'tc_site_layout' ) ).get();
@@ -10866,7 +10867,7 @@ $.extend( CZRLayoutSelectMths , {
                               'tc_header_topbar_layout',
                             ],
                             visibility : function( to ) {
-                                  return _is_checked( api( api.CZR_Helpers.build_setId( 'tc_header_desktop_topbar' ) ).get() ) &&  'wide' == api( api.CZR_Helpers.build_setId( 'tc_site_layout' ) ).get();
+                                  return _is_checked( api( api.CZR_Helpers.build_setId( 'tc_header_show_topbar' ) ).get() ) &&  'wide' == api( api.CZR_Helpers.build_setId( 'tc_site_layout' ) ).get();
                             }
                     },
                     {
@@ -11205,6 +11206,22 @@ $.extend( CZRLayoutSelectMths , {
                             ],
                             visibility: function (to) {
                                   return 'custom' == to;
+                            }
+                    },
+                    /*
+                    * temporary:
+                    * as I think the contact info can be a module like the social links, as we might want to create
+                    * like a widget (like a shortcode), that will allow users to display it in the sidebar, in the footer, and so on.
+                    */
+                    {
+                            dominus : 'tc_header_show_contact_info',
+                            servi   : [
+                              'tc_contact_info_phone',
+                              'tc_contact_info_opening_hours',
+                              'tc_contact_info_email',
+                            ],
+                            visibility: function (to) {
+                                  return 'none' != to;
                             }
                     },
                     {

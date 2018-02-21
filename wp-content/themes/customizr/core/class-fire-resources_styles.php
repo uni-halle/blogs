@@ -179,6 +179,9 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
                                        '.nav__utils a',
                                        '.nav__utils a:focus',
                                        '.nav__utils a:active',
+                                       '.header-contact__info a',
+                                       '.header-contact__info a:focus',
+                                       '.header-contact__info a:active',
                                        '.czr-overlay a:hover',
                                        '.dropdown-menu',
                                        '.tc-header .navbar-brand-sitename',
@@ -212,7 +215,6 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
                                  'background-color' => array(
                                        '.ham__toggler-span-wrapper .line',
                                        '[class*=nav__menu] .nav__title::before',
-                                       '.tc-header .navbar-brand-sitename.czr-underline span::after'
                                  )
                            )
                      ),
@@ -235,6 +237,7 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
                                          '.tc-header .socials a:hover',
                                          '.nav__utils a:hover',
                                          '.nav__utils a.current-active',
+                                         '.header-contact__info a:hover',
                                          '.tc-header .czr-form .form-group.in-focus label',
                                          '.czr-overlay .czr-form .form-group.in-focus label'
                                  ),
@@ -558,7 +561,7 @@ if ( ! class_exists( 'CZR_resources_styles' ) ) :
                                        '.grid-container__classic .post-type__icon:hover',
                                        'button[type=submit]',
                                        'input[type=submit]',
-                                       '.widget-area .widget:not(.widget_shopping_cart) a:not(.btn):before',
+                                       '.widget-area .widget a:not(.btn):before',
                                        "[class*='grid-container__'] .hover .entry-title a::after",
                                        'a.czr-format-link::before',
                                        '.comment-author a::before',

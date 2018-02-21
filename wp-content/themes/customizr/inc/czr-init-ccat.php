@@ -1357,6 +1357,16 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
         return ( function_exists('is_woocommerce') && is_woocommerce() ) ? false : $bool;
       }
 
+
+      //enable fancybox for images in the wc short description
+      add_filter( 'tc_enable_fancybox_in_wc_short_description', '__return_true' );
+
+
+      //enable images smartload in the wc short description
+      add_filter( 'tc_enable_img_smart_load_in_wc_short_description', '__return_true' );
+
+
+
       //when in the woocommerce shop page use the "shop" id
       add_filter( 'czr_id', 'czr_fn_woocommerce_shop_page_id' );
 
@@ -2480,7 +2490,9 @@ class CZR_utils_settings_map {
                   'tc_header_skin',
                   'tc_header_custom_bg_color',
                   'tc_header_custom_fg_color',
-                  'tc_header_title_underline'
+                  'tc_header_title_underline',
+                  'tc_header_show_topbar',
+                  'tc_header_show_socials',
             );
 
             foreach ( $_to_unset as $key ) {
@@ -2489,6 +2501,20 @@ class CZR_utils_settings_map {
 
             //to add
             $_to_add  = array(
+                  'tc_social_in_header' =>  array(
+                                    'default'       => 1,
+                                    'label'       => __( 'Social links in header' , 'customizr' ),
+                                    'control'   =>  'CZR_controls' ,
+                                    'section'     => 'header_layout_sec',
+                                    'type'        => 'checkbox' ,
+                                    'priority'      => 11,
+                                    'transport'    => ( czr_fn_is_partial_refreshed_on() ) ? 'postMessage' : 'refresh',
+                                    'ubq_section'   => array(
+                                        'section' => 'socials_sec',
+                                        'priority' => '1'
+                                    ),
+
+                  ),
                   'tc_show_tagline'  =>  array(
                                     'default'       => 1,
                                     'control'       => 'CZR_controls' ,
@@ -2586,7 +2612,6 @@ class CZR_utils_settings_map {
 
             //to unset
             $_to_unset = array(
-                  'tc_header_desktop_topbar',
                   'tc_header_desktop_search',
                   'tc_header_desktop_wc_cart',
                   'tc_header_desktop_tagline',
@@ -3568,12 +3593,18 @@ if ( ! class_exists( 'CZR_utils' ) ) :
       */
       function czr_fn_wp_filters() {
         add_filter( 'the_content'                         , array( $this , 'czr_fn_fancybox_content_filter' ) );
+        if ( apply_filters( 'tc_enable_fancybox_in_wc_short_description', false  ) ) {
+            add_filter( 'woocommerce_short_description'   , array( $this, 'czr_fn_fancybox_content_filter' ) );
+        }
         /*
         * Smartload disabled for content retrieved via ajax
         */
         if ( apply_filters( 'tc_globally_enable_img_smart_load', ! czr_fn_is_ajax() && esc_attr( czr_fn_opt( 'tc_img_smart_load' ) ) ) ) {
             add_filter( 'the_content'                       , 'czr_fn_parse_imgs', PHP_INT_MAX );
             add_filter( 'tc_thumb_html'                     , 'czr_fn_parse_imgs' );
+            if ( apply_filters( 'tc_enable_img_smart_load_in_wc_short_description', false  ) ) {
+                add_filter( 'woocommerce_short_description' , 'czr_fn_parse_imgs' );
+            }
         }
         add_filter( 'wp_title'                            , 'czr_fn_wp_title' , 10, 2 );
       }
@@ -4095,7 +4126,7 @@ if ( ! class_exists( 'CZR_resources' ) ) :
   			if ( false != esc_attr( czr_fn_opt( 'tc_link_scroll') ) )
   				wp_enqueue_script('jquery-effects-core');
               $anchor_smooth_scroll_exclude =  apply_filters( 'tc_anchor_smoothscroll_excl' , array(
-                  'simple' => array( '[class*=edd]' , '.tc-carousel-control', '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[class*=upme]', '[class*=um-]' ),
+                  'simple' => array( '[class*=edd]' , '.tc-carousel-control', '.carousel-control', '[data-toggle="modal"]', '[data-toggle="dropdown"]', '[data-toggle="tooltip"]', '[data-toggle="popover"]', '[data-toggle="collapse"]', '[data-toggle="tab"]', '[data-toggle="pill"]', '[class*=upme]', '[class*=um-]' ),
                   'deep'   => array(
                     'classes' => array(),
                     'ids'     => array()
