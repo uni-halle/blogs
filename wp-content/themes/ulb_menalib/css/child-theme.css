@@ -353,7 +353,11 @@ font-size: 12px;
 }
 .single-tribe_events #tribe-events-content .tribe-events-event-meta dd {
     font-family: arial,helvetica,sans-serif;
-font-size: 11px;
+font-size: 12px;
+hyphens:auto;
+
+word-break: break-all;
+
 }
 .tribe-events-meta-group .tribe-events-single-section-title {
     font-family: arial,helvetica,sans-serif;
@@ -371,6 +375,38 @@ overflow: hidden;
  text-align: justify;
  margin-left: 5px;
 }
+
+.tribe-events-event-meta .tribe-events-meta-group, .tribe-events-event-meta .column 
+{
+    box-sizing: border-box;
+
+
+    margin: 0 0 20px 0;
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
+    width: 99%;
+    zoom: 1;
+ }
+
+
+ .single-tribe_events .tribe-events-event-meta 
+ {
+
+    margin:0;
+}
+
+
+.single-tribe_events .tribe-events-venue-map {
+
+  
+    float: unset;
+    margin:0;
+    width: 100%!important;
+
+}
+
+
 
 /* Slideshow */
 .slideshow_container .slideshow_view .slideshow_slide.slideshow_slide_image img {
@@ -472,7 +508,7 @@ input.button:nth-child(2) {
   font-size: 9px;
 }
 #tribe-events-content a {
-  color: black;
+  /*color: black;*/
 }
 .tribe-events-calendar div[id*="tribe-events-event-"] h3.tribe-events-month-event-title a {
   font-size: 8px;
