@@ -1129,6 +1129,11 @@ SQL;
 			
 			$this->log(__('Importing categories...', 'fg-joomla-to-wordpress'));
 			
+			// Allow HTML in term descriptions
+			foreach ( array('pre_term_description') as $filter ) {
+				remove_filter($filter, 'wp_filter_kses');
+			}
+			
 			// Joomla sections (Joomla version ≤ 1.5)
 			if ( version_compare($this->joomla_version, '1.5', '<=') ) {
 				do {
@@ -1208,10 +1213,13 @@ SQL;
 					$slug = $category['name'];
 				}
 				
+				$description = isset($category['description'])? $category['description']: '';
+				$description = $this->process_category_description($description, $category['date']);
+				
 				// Insert the category
 				$new_category = array(
 					'cat_name' 				=> $category['title'],
-					'category_description'	=> isset($category['description'])? $category['description']: '',
+					'category_description'	=> $description,
 					'category_nicename'		=> $slug,
 					'taxonomy'				=> $taxonomy,
 					'category_parent'		=> $parent_id,
@@ -1596,7 +1604,7 @@ SQL;
 			$prefix = $this->plugin_options['prefix'];
 			$last_section_id = (int)get_option('fgj2wp_last_section_id'); // to restore the import where it left
 			$sql = "
-				SELECT CONCAT('s', s.id) AS id, s.title, IF(s.alias <> '', s.alias, s.name) AS name, s.description, 0 AS parent_id
+				SELECT CONCAT('s', s.id) AS id, s.title, IF(s.alias <> '', s.alias, s.name) AS name, s.description, 0 AS parent_id, '' AS date
 				FROM ${prefix}sections s
 				WHERE s.id > '$last_section_id'
 				ORDER BY s.id
@@ -1625,7 +1633,7 @@ SQL;
 
 			if ( version_compare($this->joomla_version, '1.5', '<=') ) {
 				$sql = "
-					SELECT c.id, c.title, IF(c.alias <> '', c.alias, c.name) AS name, c.description, CONCAT('s', s.id) AS parent_id
+					SELECT c.id, c.title, IF(c.alias <> '', c.alias, c.name) AS name, c.description, CONCAT('s', s.id) AS parent_id, '' AS date
 					$extra_cols
 					FROM ${prefix}categories c
 					INNER JOIN ${prefix}sections AS s ON s.id = c.section
@@ -1636,7 +1644,7 @@ SQL;
 				";
 			} else {
 				$sql = "
-					SELECT c.id, c.title, c.alias AS name, c.description, c.parent_id
+					SELECT c.id, c.title, c.alias AS name, c.description, c.parent_id, c.created_time AS date
 					$extra_cols
 					FROM ${prefix}categories c
 					$extra_joins
@@ -1665,12 +1673,14 @@ SQL;
 			if ( version_compare($this->joomla_version, '1.5', '<=') ) {
 				$name_field = "IF(c.alias <> '', c.alias, c.name)";
 				$extension_field = 'c.section';
+				$date_field = "'' AS date";
 			} else {
 				$name_field = 'c.alias';
 				$extension_field = 'c.extension';
+				$date_field = 'c.created_time AS date';
 			}
 			$sql = "
-				SELECT c.id, c.title, $name_field AS name, c.description, c.parent_id
+				SELECT c.id, c.title, $name_field AS name, c.description, c.parent_id, $date_field
 				FROM ${prefix}categories c
 				WHERE $extension_field = '$component'
 				AND c.id > '$last_category_metakey'
@@ -2025,6 +2035,25 @@ SQL;
 			}
 		}
 
+		/**
+		 * Process the category description (import embedded images)
+		 * 
+		 * @since 3.35.0
+		 * 
+		 * @param string $description Category description
+		 * @param date $date Category date
+		 * @return string Category description
+		 */
+		public function process_category_description($description, $date) {
+			// Import medias
+			if ( !$this->plugin_options['skip_media'] ) {
+				$result = $this->import_media_from_content($description, $date);
+				$this->media_count += $result['media_count'];
+				$description = $this->process_content_media_links($description, $result['media']);
+			}
+			return $description;
+		}
+		
 		/**
 		 * Process the post content
 		 *
@@ -2417,7 +2446,7 @@ SQL;
 			if ( $meta_key_value['meta_value'] == 0 ) {
 				$meta_key_value['meta_key'] = '_fgj2wp_old_id';
 				// Without URL rewriting
-				if ( preg_match("#[^a-zA-Z]id=(\d+)#", $link, $matches) ) {
+				if ( preg_match("#[^a-zA-Z_]id=(\d+)#", $link, $matches) ) {
 					$meta_key_value['meta_value'] = $matches[1];
 				}
 				// With URL rewriting
@@ -2542,22 +2571,37 @@ SQL;
 		public function get_joomla_language() {
 			$lang = '';
 
+			$params = $this->get_params('com_languages');
+			if ( isset($params['site']) ) {
+				$lang = $params['site'];
+			}
+			return $lang;
+		}
+		
+		/**
+		 * Get the Joomla parameters of an extension
+		 *
+		 * @param string $extension Extension code
+		 * @return array Parameters
+		 */
+		public function get_params($extension) {
+			$params = array();
 			$prefix = $this->plugin_options['prefix'];
 
 			if ( $this->table_exists('extensions') ) {
 				$sql = "
 					SELECT `params`
 					FROM ${prefix}extensions
-					WHERE `element` = 'com_languages'
+					WHERE `element` = '$extension'
 				";
 			} elseif ( $this->table_exists('components') ) {
 				$sql = "
 					SELECT `params`
 					FROM ${prefix}components
-					WHERE `option` = 'com_languages'
+					WHERE `option` = '$extension'
 				";
 			} else {
-				return '';
+				return $params;
 			}
 			$result = $this->joomla_query($sql);
 			if ( isset($result[0]['params']) ) {
@@ -2566,11 +2610,8 @@ SQL;
 				} else {
 					$params = json_decode($result[0]['params'], true);
 				}
-				if ( array_key_exists('site', $params)) {
-					$lang = $params['site'];
-				}
 			}
-			return $lang;
+			return $params;
 		}
 
 		/**
