@@ -95,7 +95,9 @@ if(isset($request_headers['content-type'])) {
 }
 
 if(isset($request_headers['Content-Type']) and strpos($request_headers['Content-Type'], 'multipart/form-data;') !== false) {
-    $request_headers['Content-Type'] = 'multipart/form-data'; // remove boundary
+    //$request_headers['Content-Type'] = 'multipart/form-data'; // remove boundary
+    $request_headers['Content-Type'] = 'application/x-www-form-urlencoded';
+    $is_multipart = true;
     $request_headers['Content-Length'] = '';
 
     if(isset($request_headers['content-length']))
@@ -126,9 +128,23 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
 switch($_SERVER['REQUEST_METHOD']) {
     case 'POST': {
         curl_setopt($ch, CURLOPT_POST, true);
-        if(isset($request_headers['Content-Type']) and strpos($request_headers['Content-Type'], 'multipart/form-data') !== false) {
+        if(isset($is_multipart)) {
             http_build_query_for_curl($_POST, $new_post);
+            $new_post2 = array();
+            foreach($new_post as $key => $value)
+                $new_post2[] = $key.'='.urlencode($value);
+            $new_post = implode('&', $new_post2);
+            $headers[] = 'Content-Length: '.strlen($new_post);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $new_post);
+
+        } elseif(isset($request_headers['Content-Type']) and strpos($request_headers['Content-Type'], 'multipart/form-data') !== false) {
+            http_build_query_for_curl($_POST, $new_post);
+
+            $new_post = array('a'=>1,'b'=>2);
             curl_setopt($ch, CURLOPT_POSTFIELDS, $new_post); // todo: think about $_FILES: http://php.net/manual/en/class.curlfile.php
+            //curl_setopt($ch, CURLOPT_HTTPHEADER, array());
+            file_put_contents('debug.txt', print_r($new_post, true)."\n", FILE_APPEND);
         } else {
             curl_setopt($ch, CURLOPT_POSTFIELDS, file_get_contents('php://input'));
         }
@@ -196,8 +212,11 @@ $html = str_ireplace('href="/', 'href="/' . $glang . '/', $html);
 $html = preg_replace('/href=\"\/' . $glang . '\/(af|sq|am|ar|hy|az|eu|be|bn|bs|bg|ca|ceb|ny|zh-CN|zh-TW|co|hr|cs|da|nl|en|eo|et|tl|fi|fr|fy|gl|ka|de|el|gu|ht|ha|haw|iw|hi|hmn|hu|is|ig|id|ga|it|ja|jw|kn|kk|km|ko|ku|ky|lo|la|lv|lt|lb|mk|mg|ms|ml|mt|mi|mr|mn|my|ne|no|ps|fa|pl|pt|pa|ro|ru|sm|gd|sr|st|sn|sd|si|sk|sl|so|es|su|sw|sv|tg|ta|te|th|tr|uk|ur|uz|vi|cy|xh|yi|yo|zu)\//i', 'href="/$1/', $html); // fix double language code
 $html = str_ireplace('href="/' . $glang . '//', 'href="//', $html);
 $html = str_ireplace('action="/', 'action="/' . $glang . '/', $html);
+$html = str_ireplace('action=\'/', 'action=\'/' . $glang . '/', $html);
 $html = str_ireplace('action="/' . $glang . '//', 'action="//', $html);
+$html = str_ireplace('action=\'/' . $glang . '//', 'action=\'//', $html);
 $html = str_ireplace('action="//' . $_SERVER['HTTP_HOST'], 'action="//' . $_SERVER['HTTP_HOST'] . '/' . $glang, $html);
+$html = str_ireplace('action=\'//' . $_SERVER['HTTP_HOST'], 'action=\'//' . $_SERVER['HTTP_HOST'] . '/' . $glang, $html);
 
 // woocommerce specific changes
 $html = str_ireplace(

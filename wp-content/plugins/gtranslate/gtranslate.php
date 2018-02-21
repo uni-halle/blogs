@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: https://gtranslate.io/?xyz=998
 Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="https://wordpress.org/support/plugin/gtranslate">GTranslate Support</a>.
-Version: 2.8.35
+Version: 2.8.36
 Author: Translate AI Multilingual Solutions
 Author URI: https://gtranslate.io
 Text Domain: gtranslate
@@ -320,10 +320,12 @@ function RefreshDoWidgetCode() {
         translation_method = 'redirect';
         jQuery('#new_window_option').show();
         jQuery('#url_translation_option').show();
+        jQuery('#hreflang_tags_option').show();
         jQuery('#auto_switch_option').hide();
     } else {
         jQuery('#new_window_option').hide();
         jQuery('#url_translation_option').hide();
+        jQuery('#hreflang_tags_option').hide();
         jQuery('#auto_switch_option').show();
     }
 
@@ -779,6 +781,7 @@ function ShowWidgetPreview(widget_preview) {
 jQuery('#pro_version').attr('checked', '$pro_version'.length > 0);
 jQuery('#enterprise_version').attr('checked', '$enterprise_version'.length > 0);
 jQuery('#url_translation').attr('checked', '$url_translation'.length > 0);
+jQuery('#add_hreflang_tags').attr('checked', '$add_hreflang_tags'.length > 0);
 jQuery('#new_window').attr('checked', '$new_window'.length > 0);
 jQuery('#show_in_menu').val('$show_in_menu');
 jQuery('#floating_language_selector').val('$floating_language_selector');
@@ -793,6 +796,7 @@ jQuery('#flag_size').val('$flag_size');
 if(jQuery('#pro_version:checked').length || jQuery('#enterprise_version:checked').length) {
     jQuery('#new_window_option').show();
     jQuery('#url_translation_option').show();
+    jQuery('#hreflang_tags_option').show();
     jQuery('#auto_switch_option').hide();
 }
 
@@ -1023,6 +1027,10 @@ EOT;
                     <tr id="url_translation_option" style="display:none;">
                         <td class="option_name"><?php _e('Enable URL Translation', 'gtranslate'); ?>:</td>
                         <td><input id="url_translation" name="url_translation" value="1" type="checkbox"/></td>
+                    </tr>
+                    <tr id="hreflang_tags_option" style="display:none;">
+                        <td class="option_name"><?php _e('Add hreflang tags', 'gtranslate'); ?>:</td>
+                        <td><input id="add_hreflang_tags" name="add_hreflang_tags" value="1" type="checkbox"/></td>
                     </tr>
                     <tr id="new_window_option" style="display:none;">
                         <td class="option_name"><?php _e('Open in new window', 'gtranslate'); ?>:</td>
@@ -1307,6 +1315,7 @@ EOT;
         $data['pro_version'] = isset($_POST['pro_version']) ? intval($_POST['pro_version']) : '';
         $data['enterprise_version'] = isset($_POST['enterprise_version']) ? intval($_POST['enterprise_version']) : '';
         $data['url_translation'] = isset($_POST['url_translation']) ? intval($_POST['url_translation']) : '';
+        $data['add_hreflang_tags'] = isset($_POST['add_hreflang_tags']) ? intval($_POST['add_hreflang_tags']) : '';
         $data['new_window'] = isset($_POST['new_window']) ? intval($_POST['new_window']) : '';
         $data['show_in_menu'] = isset($_POST['show_in_menu']) ? sanitize_text_field($_POST['show_in_menu']) : '';
         $data['floating_language_selector'] = isset($_POST['floating_language_selector']) ? sanitize_text_field($_POST['floating_language_selector']) : 'no';
@@ -1374,6 +1383,7 @@ EOT;
         $data['pro_version'] = isset($data['pro_version']) ? $data['pro_version'] : '';
         $data['enterprise_version'] = isset($data['enterprise_version']) ? $data['enterprise_version'] : '';
         $data['url_translation'] = isset($data['url_translation']) ? $data['url_translation'] : '';
+        $data['add_hreflang_tags'] = isset($data['add_hreflang_tags']) ? $data['add_hreflang_tags'] : '';
         $data['new_window'] = isset($data['new_window']) ? $data['new_window'] : '';
         $data['show_in_menu'] = isset($data['show_in_menu']) ? $data['show_in_menu'] : ((isset($data['show_in_primary_menu']) and $data['show_in_primary_menu'] == 1) ? 'primary' : '');
         $data['floating_language_selector'] = isset($data['floating_language_selector']) ? $data['floating_language_selector'] : 'no';
@@ -1924,5 +1934,42 @@ if($data['url_translation'] and ($data['pro_version'] or $data['enterprise_versi
     add_action('wp_head', 'gtranslate_url_translation_meta', 1);
     function gtranslate_url_translation_meta() {
         echo '<meta name="uri-translation" content="on" />';
+    }
+}
+
+if($data['add_hreflang_tags'] and ($data['pro_version'] or $data['enterprise_version'])) {
+    add_action('wp_head', 'gtranslate_add_hreflang_tags', 1);
+    function gtranslate_add_hreflang_tags() {
+        $data = get_option('GTranslate');
+        GTranslate::load_defaults($data);
+
+        $enabled_languages = array();
+        if($data['widget_look'] == 'flags' or $data['widget_look'] == 'dropdown_with_flags' or $data['widget_look'] == 'flags_name' or $data['widget_look'] == 'flags_code' or $data['widget_look'] == 'popup')
+            $enabled_languages = $data['fincl_langs'];
+        elseif($data['widget_look'] == 'flags_dropdown')
+            $enabled_languages = array_values(array_unique(array_merge($data['fincl_langs'], $data['incl_langs'])));
+        else
+            $enabled_languages = $data['incl_langs'];
+
+        $current_url = wp_get_canonical_url();
+
+        if($current_url !== false) {
+            // adding default language
+            echo '<link rel="alternate" hreflang="'.$data['default_language'].'" href="'.$current_url.'" />'."\n";
+
+            // adding enabled languages
+            foreach($enabled_languages as $lang) {
+                $href = '';
+                $domain = str_replace('www.', '', $_SERVER['HTTP_HOST']);
+
+                if($data['enterprise_version'])
+                    $href = str_ireplace('://' . $domain, '://' . $lang . '.' . $domain, $current_url);
+                elseif($data['pro_version'])
+                    $href = str_ireplace('://' . $domain, '://' . $domain . '/' . $lang, $current_url);
+
+                if(!empty($href) and $lang != $data['default_language'])
+                    echo '<link rel="alternate" hreflang="'.$lang.'" href="'.$href.'" />'."\n";
+            }
+        }
     }
 }

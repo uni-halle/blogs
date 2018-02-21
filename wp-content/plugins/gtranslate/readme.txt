@@ -4,7 +4,7 @@ Author: Translate AI Multilingual Solutions
 Tags: translate wordpress, multilingual, translate, translation, language, bilingual, localization, translation proxy, i18n, l10n, localisation, multilanguage, google translate
 Requires at least: 2.8.1
 Tested up to: 4.9
-Stable tag: 2.8.35
+Stable tag: 2.8.36
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
@@ -56,6 +56,7 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 * WooCommerce compatible
 * You can have sub-directory (example.com/**es**/) or sub-domain (**es.**example.com) URL structure
 * URL Translation aka slug translation is possible (example.com/about-us &rarr; example.es/sobre-nosotros)
+* Add hreflang tags for translated alternatives
 * You can manually correct translations
 * In context translation interface (make corrections without loosing the context)
 * Meta data translation (meta keywords, meta description)
@@ -218,6 +219,10 @@ You need to go to the language you want to edit, for instance, French: http://do
 7. Settings page
 
 == Changelog ==
+
+= 2.8.36 =
+* Option to add hreflang tags for translated pages
+* Fix for Contact Form 7
 
 = 2.8.35 =
 * Admin notice added for conflicting plugins
