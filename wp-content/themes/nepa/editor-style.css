@@ -1,0 +1,73 @@
+/*
+ Theme Name:   Nepa Theme
+ Theme URI:    http://example.com/twentyseventeen/
+ Description:  Twentyseventeen Child Theme
+ Author URI:   http://designring.de
+ Template:     twentyseventeen
+ Version:      0.1.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Text Domain:  twentyseventeen-child
+ Tags:         mlu, nepa
+*/
+
+
+h1, h2, h3, h4, h5, h6 {
+	text-align: left;
+	padding-top: 0;
+}
+
+h1, h2 {
+	color: #A6641C;
+}
+
+h1 {
+	padding-top: 0.5em;
+	margin-bottom: 1em;
+}
+
+h2 {
+	padding-top: 0.25em;
+	margin-bottom: 0.5em;
+}
+
+h3, h4 {
+	color: #A6641C;
+}
+
+h6 {
+	font-size: 120%;
+	color: #555;
+	font-weight: normal;
+	padding-top: 0;
+}
+
+.imageborder {
+	border: 1px solid #ccc;
+	padding: 0.5em;
+	background: #fff;
+}
+
+.imageshadow !important {
+	box-shadow: 0px 0px 10px #999;
+}
+
+.entry-content a img,
+.widget a img {
+    box-shadow: 0 0 0 8px #FCF7F3;
+	-webkit-box-shadow: 0 0 0 8px #FCF7F3;
+    -moz-box-shadow: 0 0 0 8px #FCF7F3;
+}
+
+.wp-caption .wp-caption-text {
+    text-align: left;
+}
+
+
+ul, ol {
+	padding: 0 2em;
+}
+
+p {
+	margin-bottom: 1em;
+}

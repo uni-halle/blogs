@@ -1,18 +1,328 @@
 /*
  Theme Name:   Nepa Theme
- Theme URI:    http://example.com/twenty-fifteen-child/
- Description:  Twenty Fifteen Child Theme
- Author:       K. Zobel
+ Theme URI:    http://example.com/twentyseventeen/
+ Description:  Twentyseventeen Child Theme
  Author URI:   http://designring.de
- Template:     twentyfifteen
+ Template:     twentyseventeen
  Version:      0.1.0
  License:      GNU General Public License v2 or later
  License URI:  http://www.gnu.org/licenses/gpl-2.0.html
- Text Domain:  twenty-fifteen-child
- Tags:         mlu,nepa
+ Text Domain:  twentyseventeen-child
+ Tags:         mlu, nepa
 */
 
-#sidebar, #main>*,#colophon{
-	box-shadow: 0 0 1em #e8e8e8;
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
+
+body {
+	overflow-y: scroll;
+/*        
+        -moz-hyphens: auto;
+        -o-hyphens: auto;
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+*/
 }
 
+/* Site Dimension */
+#page {
+    max-width: 925px;
+    margin: 0 auto;
+    box-shadow: 0px 0px 20px #999;
+}
+
+/*Background */
+.site-content-contain {
+    background-color: #FCF7F3;
+}
+
+/* Content width */
+.entry-content {
+    max-width: 670px;
+    text-align: justify;
+}
+
+/* Margin to top on all sites exepct home */
+.site-content {
+	padding-top: 2em;
+}
+
+/* Header image dimension on home */
+.has-header-image .custom-header-media img {
+    position: relative;
+    min-width: inherit;
+/*  
+    min-width: 1px;
+    max-height: 145px; 
+    height: 100%; 
+*/
+}
+
+
+
+/* Vertical space for logo on home */
+.twentyseventeen-front-page.has-header-image .custom-header-media, .twentyseventeen-front-page.has-header-video .custom-header-media, .home.blog.has-header-image .custom-header-media, .home.blog.has-header-video .custom-header-media {
+    max-height: 145px;
+    height: 100%;
+    max-width: 925px;
+    width: 100%;
+
+}
+
+.navigation-top {
+    position: relative;
+}
+
+.custom-header {
+    margin-bottom: 0 !important;
+}
+
+.wp-custom-header {
+    max-height: 145px;
+    height: 100%;
+}
+
+
+
+/* /////////////////// Navi main //////////////////// */
+
+/* Z-Index greater than 1000 (LayerSlider WP) */ 
+.navigation-top, .site-navigation-fixed.navigation-top {
+	z-index:1001;
+}
+
+.main-navigation {
+	font-size: 1.2em;
+	font-family: "Cinzel", serif, "Arial", sans-serif;
+	letter-spacing: 3px;
+	color: #999;
+}
+
+.navigation-top a {
+	font-weight: normal;
+}
+
+/* Menu 2nd level */
+.main-navigation ul li li a {
+	font-size: 0.95em;
+	letter-spacing: 1px;
+}
+
+/*
+.main-navigation ul li li a:hover {
+	background: #B0B67F; 
+}
+*/
+
+/* Marks active menu coloured */ 
+.main-navigation a:hover, 
+.main-navigation a:active,
+	/* 
+		.navigation-top .current_page_item > a,
+		.navigation-top .current_page_ancestor > a,
+	*/
+.navigation-top .current-menu-item > a,
+.navigation-top .current-menu-ancestor > a {
+	text-decoration: none;
+	color: #B0B67F;
+}
+
+/* BG color menu 2nd level */
+@media screen and (min-width: 48em) {
+    .main-navigation li li:hover, 
+    .main-navigation li li.focus {
+    	background-color: #fff;
+   }
+   .main-navigation li li:hover > a, 
+   .main-navigation li li a:hover {
+        color: #fff;
+        background: #B0B67F;
+   }
+}
+
+/* Navi ???
+.admin-bar.twentyseventeen-front-page.has-header-image .custom-header-media, .admin-bar.twentyseventeen-front-page.has-header-video .custom-header-media, .admin-bar.home.blog.has-header-image .custom-header-media, .admin-bar.home.blog.has-header-video .custom-header-media {
+    height: 225px;
+    background-color: #fff;
+}
+*/
+
+/* Space for logo-branding on all sites except home */
+@media screen and (min-width: 48em) {
+    .site-branding {
+		height: 145px;		
+    }
+
+    /* Width of navi 2nd level */
+    .main-navigation ul ul a {
+        width: 20em;
+    }
+}
+
+/* Height for custom header only on home which inflicts logo on all sites */
+@media screen and (max-width: 48em) {
+.custom-header {
+    max-height: 220px !important;
+    height: 100% !important;  
+	}
+}
+.custom-header-media::before {
+    background: transparent;
+}
+
+
+/* Suppresses display of article name */
+.entry-header {
+	display: none;
+}
+
+/* Minimises padding of content to top wrap */
+.panel-content .wrap {
+    padding-top: 1.5em;
+    padding-bottom: 4.5em;
+}
+
+/* Arrow down on right side of menu */
+.site-header .menu-scroll-down {
+	display: none;
+}
+
+/*  ////////////////////// Footer menu */
+.menu-footer {
+}
+
+/* Sets BG color */
+.site-footer {
+	background-color: #A6641C;
+    margin-bottom: 5em;
+}
+
+ul#menu-footer {
+	list-style: none;
+	margin: 2em 0;
+}
+
+/* Adjust vertical and horizontal space of menu */
+ul#menu-footer li {
+	float: left;
+	padding: 0em 1em 2em 1em;
+}
+
+ul#menu-footer li a {
+	color: #efefef;
+}
+
+/*  Icon of and mobile menu */
+.menu-toggle {
+	font-size: 1em;
+	color: #A6641C;
+}
+
+/* Wording */
+h1, h2, h3, h4, h5, h6 {
+	text-align: left;
+	padding-top: 0;
+}
+
+h1, h2 {
+	color: #A6641C;
+}
+
+h1 {
+	padding-top: 0.5em;
+	margin-bottom: 1em;
+}
+
+h2 {
+	padding-top: 0.25em;
+	margin-bottom: 0.5em;
+}
+
+h3, h4 {
+	color: #A6641C;
+}
+
+/* Subheadline after h1 */
+h6 {
+	font-size: 120%;
+	color: #555;
+	font-weight: normal;
+	padding-top: 0;
+}
+
+/* /////////////////// Images */
+.imageborder {
+	border: 1px solid #ccc;
+	padding: 0.5em;
+	background: #fff;
+}
+
+.imageshadow !important {
+	box-shadow: 0px 0px 10px #999;
+}
+
+/* No shadow for lightbox images but imgaborder (see above) */
+.entry-content a img,
+.widget a img {
+    box-shadow: 0 0 0 8px #FCF7F3;
+	-webkit-box-shadow: 0 0 0 8px #FCF7F3;
+    -moz-box-shadow: 0 0 0 8px #FCF7F3;
+}
+
+.wp-caption .wp-caption-text {
+    text-align: left;
+}
+
+
+ul, ol {
+	padding: 0 2em;
+}
+
+@media (max-width: 420px) {
+    .has-header-image .custom-header-media img {
+        display: none;
+    }
+    .custom-logo-link {
+        display: none;
+    }
+    .custom-header-media::before {
+        background: #A6641C;
+        opacity: 0.5;
+    }
+}
+
+@media (min-width: 420px) {
+    .custom-logo-link {
+        display: none;
+	}   
+}
+
+/* /////////////////// Search results */
+
+.home.blog .entry-title {
+    margin: 0;
+    font-size: 1em;
+}
+
+.entry-summary h1 {
+    font-size: 1.25em;
+    margin-bottom: 0;
+}
+
+/* cf content-excerpt.php */
+h2.entry-summary {
+    font-size: 1.15em;
+    margin-bottom: 0.5em;
+}
+
+.entry-summary h3, 
+.entry-summary h4, 
+.entry-summary h5, 
+.entry-summary h6 {
+    font-size: 1em;
+    margin-bottom: 0;
+}
+
+.entry-summary p {
+    margin: 0.25em 0;
+}
