@@ -27,6 +27,7 @@ return array(
     'Masterminds\\HTML5\\Serializer\\OutputRules' => $vendorDir . '/masterminds/html5/src/HTML5/Serializer/OutputRules.php',
     'Masterminds\\HTML5\\Serializer\\RulesInterface' => $vendorDir . '/masterminds/html5/src/HTML5/Serializer/RulesInterface.php',
     'Masterminds\\HTML5\\Serializer\\Traverser' => $vendorDir . '/masterminds/html5/src/HTML5/Serializer/Traverser.php',
+    'Mundschenk_WP_Requirements' => $vendorDir . '/mundschenk-at/check-wp-requirements/class-mundschenk-wp-requirements.php',
     'PHP_Typography\\DOM' => $vendorDir . '/mundschenk-at/php-typography/src/class-dom.php',
     'PHP_Typography\\Fixes\\Default_Registry' => $vendorDir . '/mundschenk-at/php-typography/src/fixes/class-default-registry.php',
     'PHP_Typography\\Fixes\\Node_Fix' => $vendorDir . '/mundschenk-at/php-typography/src/fixes/class-node-fix.php',
@@ -106,5 +107,4 @@ return array(
     'WP_Typography\\UI\\Tabs' => $baseDir . '/includes/wp-typography/ui/class-tabs.php',
     'WP_Typography\\UI\\Textarea' => $baseDir . '/includes/wp-typography/ui/class-textarea.php',
     'WP_Typography_Factory' => $baseDir . '/includes/class-wp-typography-factory.php',
-    'WP_Typography_Requirements' => $baseDir . '/includes/class-wp-typography-requirements.php',
 );

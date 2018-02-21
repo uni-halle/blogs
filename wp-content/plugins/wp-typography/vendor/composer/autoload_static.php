@@ -53,6 +53,7 @@ class ComposerStaticInitWPTypography
         'Masterminds\\HTML5\\Serializer\\OutputRules' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/OutputRules.php',
         'Masterminds\\HTML5\\Serializer\\RulesInterface' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/RulesInterface.php',
         'Masterminds\\HTML5\\Serializer\\Traverser' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/Traverser.php',
+        'Mundschenk_WP_Requirements' => __DIR__ . '/..' . '/mundschenk-at/check-wp-requirements/class-mundschenk-wp-requirements.php',
         'PHP_Typography\\DOM' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/class-dom.php',
         'PHP_Typography\\Fixes\\Default_Registry' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/class-default-registry.php',
         'PHP_Typography\\Fixes\\Node_Fix' => __DIR__ . '/..' . '/mundschenk-at/php-typography/src/fixes/class-node-fix.php',
@@ -132,7 +133,6 @@ class ComposerStaticInitWPTypography
         'WP_Typography\\UI\\Tabs' => __DIR__ . '/../..' . '/includes/wp-typography/ui/class-tabs.php',
         'WP_Typography\\UI\\Textarea' => __DIR__ . '/../..' . '/includes/wp-typography/ui/class-textarea.php',
         'WP_Typography_Factory' => __DIR__ . '/../..' . '/includes/class-wp-typography-factory.php',
-        'WP_Typography_Requirements' => __DIR__ . '/../..' . '/includes/class-wp-typography-requirements.php',
     );
 
     public static function getInitializer(ClassLoaderWPTypography $loader)

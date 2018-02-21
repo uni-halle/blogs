@@ -1,8 +1,8 @@
 <?php
 /**
- *  This file is part of wp-Typography.
+ *  This file is part of mundschenk-at/check-wp-requirements.
  *
- *  Copyright 2014-2017 Peter Putzer.
+ *  Copyright 2014-2018 Peter Putzer.
  *  Copyright 2009-2011 KINGdesk, LLC.
  *
  *  This program is free software; you can redistribute it and/or
@@ -21,7 +21,7 @@
  *
  *  ***
  *
- *  @package mundschenk-at/wp-typography
+ *  @package mundschenk-at/check-wp-requirements
  *  @license http://www.gnu.org/licenses/gpl-2.0.html
  */
 
@@ -35,21 +35,17 @@
  *
  * Note: All code must be executable on PHP 5.2.
  */
-class WP_Typography_Requirements {
+class Mundschenk_WP_Requirements {
 
 	/**
 	 * The minimum requirements for running the plugins. Must contain:
-	 *  - 'PHP'
-	 *  - 'Multibyte'
-	 *  - 'UTF-8'
+	 *  - 'php'
+	 *  - 'multibyte'
+	 *  - 'utf-8'
 	 *
 	 * @var array A hash containing the version requirements for the plugin.
 	 */
-	private $install_requirements = array(
-		'PHP'       => '5.6.0',
-		'Multibyte' => true,
-		'UTF-8'     => true,
-	);
+	private $install_requirements;
 
 	/**
 	 * The user-visible name of the plugin.
@@ -62,20 +58,28 @@ class WP_Typography_Requirements {
 	/**
 	 * The full path to the main plugin file.
 	 *
-	 * @since 5.1.0
-	 * @var   string
+	 * @var string
 	 */
 	private $plugin_file;
 
 	/**
-	 * Sets up a new WP_Typography_Requirements object.
+	 * Sets up a new Mundschenk_WP_Requirements object.
 	 *
-	 * @param string $name        The plugin name.
-	 * @param string $plugin_path The full path to the main plugin file.
+	 * @param string $name         The plugin name.
+	 * @param string $plugin_path  The full path to the main plugin file.
+	 * @param string $textdomain   The text domain used for i18n.
+	 * @param array  $requirements The requirements to check against.
 	 */
-	public function __construct( $name, $plugin_path ) {
+	public function __construct( $name, $plugin_path, $textdomain, $requirements ) {
 		$this->plugin_name = $name;
 		$this->plugin_file = $plugin_path;
+		$this->textdomain  = $textdomain;
+
+		$this->install_requirements = \wp_parse_args( $requirements, array(
+			'php'       => '5.2.0',
+			'multibyte' => false,
+			'utf-8'     => false,
+		) );
 	}
 
 	/**
@@ -86,17 +90,17 @@ class WP_Typography_Requirements {
 	public function check() {
 		$requirements_met = true;
 
-		if ( ! empty( $this->install_requirements['PHP'] ) && version_compare( PHP_VERSION, $this->install_requirements['PHP'], '<' ) ) {
+		if ( ! empty( $this->install_requirements['php'] ) && version_compare( PHP_VERSION, $this->install_requirements['php'], '<' ) ) {
 			if ( is_admin() ) {
 				add_action( 'admin_notices', array( $this, 'admin_notices_php_version_incompatible' ) );
 			}
 			$requirements_met = false;
-		} elseif ( ! empty( $this->install_requirements['Multibyte'] ) && ! $this->check_multibyte_support() ) {
+		} elseif ( ! empty( $this->install_requirements['multibyte'] ) && ! $this->check_multibyte_support() ) {
 			if ( is_admin() ) {
 				add_action( 'admin_notices', array( $this, 'admin_notices_mbstring_incompatible' ) );
 			}
 			$requirements_met = false;
-		} elseif ( ! empty( $this->install_requirements['UTF-8'] ) && ! $this->check_utf8_support() ) {
+		} elseif ( ! empty( $this->install_requirements['utf-8'] ) && ! $this->check_utf8_support() ) {
 			if ( is_admin() ) {
 				add_action( 'admin_notices', array( $this, 'admin_notices_charset_incompatible' ) );
 			}
@@ -105,12 +109,7 @@ class WP_Typography_Requirements {
 
 		if ( ! $requirements_met && is_admin() ) {
 			// Load text domain to ensure translated admin notices.
-			load_plugin_textdomain( 'wp-typography', false, dirname( plugin_basename( $this->plugin_file ) ) . '/translations/' );
-
-			/*
-				Not sure if we should actually auto-deactivate the plugin.
-				add_action( 'admin_init', array( $this, 'deactivate_plugin' ) );
-			 */
+			load_plugin_textdomain( $this->textdomain );
 		}
 
 		return $requirements_met;
@@ -150,9 +149,9 @@ class WP_Typography_Requirements {
 	public function admin_notices_php_version_incompatible() {
 		$this->display_error_notice(
 			/* translators: 1: plugin name 2: target PHP version number 3: actual PHP version number */
-			__( 'The activated plugin %1$s requires PHP %2$s or later. Your server is running PHP %3$s. Please deactivate this plugin, or upgrade your server\'s installation of PHP.', 'wp-typography' ),
+			__( 'The activated plugin %1$s requires PHP %2$s or later. Your server is running PHP %3$s. Please deactivate this plugin, or upgrade your server\'s installation of PHP.', $this->textdomain ),
 			"<strong>{$this->plugin_name}</strong>",
-			$this->install_requirements['PHP'],
+			$this->install_requirements['php'],
 			phpversion()
 		);
 	}
@@ -163,10 +162,10 @@ class WP_Typography_Requirements {
 	public function admin_notices_mbstring_incompatible() {
 		$this->display_error_notice(
 			/* translators: 1: plugin name 2: mbstring documentation URL */
-			__( 'The activated plugin %1$s requires the mbstring PHP extension to be enabled on your server. Please deactivate this plugin, or <a href="%2$s">enable the extension</a>.', 'wp-typography' ),
+			__( 'The activated plugin %1$s requires the mbstring PHP extension to be enabled on your server. Please deactivate this plugin, or <a href="%2$s">enable the extension</a>.', $this->textdomain ),
 			"<strong>{$this->plugin_name}</strong>",
 			/* translators: URL with mbstring PHP extension installation instructions */
-			__( 'http://www.php.net/manual/en/mbstring.installation.php', 'wp-typography' )
+			__( 'http://www.php.net/manual/en/mbstring.installation.php', $this->textdomain )
 		);
 	}
 
@@ -176,7 +175,7 @@ class WP_Typography_Requirements {
 	public function admin_notices_charset_incompatible() {
 		$this->display_error_notice(
 			/* translators: 1: plugin name 2: current character encoding 3: options URL */
-			__( 'The activated plugin %1$s requires your blog use the UTF-8 character encoding. You have set your blogs encoding to %2$s. Please deactivate this plugin, or <a href="%3$s">change your character encoding to UTF-8</a>.', 'wp-typography' ),
+			__( 'The activated plugin %1$s requires your blog use the UTF-8 character encoding. You have set your blogs encoding to %2$s. Please deactivate this plugin, or <a href="%3$s">change your character encoding to UTF-8</a>.', $this->textdomain ),
 			"<strong>{$this->plugin_name}</strong>",
 			get_bloginfo( 'charset' ),
 			'/wp-admin/options-reading.php'
