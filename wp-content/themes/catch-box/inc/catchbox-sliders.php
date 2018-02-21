@@ -46,7 +46,7 @@ if ( ! function_exists( 'catchbox_sliders' ) ) :
  */
 function catchbox_sliders() {
 	//delete_transient( 'catchbox_sliders' );
-	
+
 	if ( !$output = get_transient( 'catchbox_sliders' ) ) {
 		echo '<!-- refreshing cache -->';
 
@@ -70,7 +70,7 @@ function catchbox_sliders() {
 		}
 
 		$output = '';
-		
+
 		if ( ! empty( $post_list ) ) {
 
 			$output = '
@@ -83,17 +83,17 @@ function catchbox_sliders() {
 					'ignore_sticky_posts' => 1 // ignore sticky posts
 				));
 
-				while ( $loop->have_posts()) : 
-					$loop->the_post(); 
+				while ( $loop->have_posts()) :
+					$loop->the_post();
 
 					$title_attribute = the_title_attribute( 'echo=0' );
 
-					if ( 0 == $loop->current_post ) { 
-						$classes = "slides displayblock"; 
-					} else { 
-						$classes = "slides displaynone"; 
+					if ( 0 == $loop->current_post ) {
+						$classes = "slides displayblock";
+					} else {
+						$classes = "slides displaynone";
 					}
-					
+
 					$output .= '
 					<div class="'. $classes . '">
 						<a href="'. esc_url ( get_permalink() ).'" title="' . $title_attribute .'" rel="bookmark">
@@ -104,14 +104,14 @@ function catchbox_sliders() {
 							<span class="slider-excerpt">' . get_the_excerpt() . '</span>
 						</div><!-- .featured-text -->
 					</div> <!-- .slides -->';
-				endwhile; 
+				endwhile;
 			wp_reset_postdata();
-			
+
 			$output .= '
 				</section> <!-- .slider-wrap -->
 				<nav id="nav-slider">
-					<div class="nav-previous"><img class="pngfix" src="'.get_template_directory_uri().'/images/previous.png" alt="next slide"></div>
-					<div class="nav-next"><img class="pngfix" src="'.get_template_directory_uri().'/images/next.png" alt="next slide"></div>
+					<div class="nav-previous"><img class="pngfix" src="'.esc_url( get_template_directory_uri() ).'/images/previous.png" alt="next slide"></div>
+					<div class="nav-next"><img class="pngfix" src="'.esc_url( get_template_directory_uri() ).'/images/next.png" alt="next slide"></div>
 				</nav>
 			</div> <!-- #featured-slider -->';
 		}

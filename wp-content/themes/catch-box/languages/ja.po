@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-11-24 18:19+0545\n"
-"PO-Revision-Date: 2017-11-24 18:19+0545\n"
+"POT-Creation-Date: 2018-02-06 16:41+0545\n"
+"PO-Revision-Date: 2018-02-06 16:41+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: \n"
 "Language: ja_JP\n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Bookmarks: -1,-1,111,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-SearchPath-0: ..\n"
 
@@ -483,6 +483,10 @@ msgstr ""
 
 #: ../functions.php:894
 msgid "VK"
+msgstr ""
+
+#: ../functions.php:899
+msgid "Spotify"
 msgstr ""
 
 #: ../image.php:15

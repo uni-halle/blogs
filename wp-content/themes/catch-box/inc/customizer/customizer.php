@@ -666,7 +666,17 @@ function catchbox_customize_register( $wp_customize ) {
 			'panel' 		=> 'social_links',
 			'section' 		=> 'predefined_social_icons',
 			'default' 		=> ''
-		),						
+		),
+		'social_spotify' => array(
+			'id' 			=> 'social_spotify',
+			'title' 		=> esc_html__( 'Spotify', 'catch-box' ),
+			'description'	=> '',
+			'field_type' 	=> 'url',
+			'sanitize' 		=> 'esc_url_raw',
+			'panel' 		=> 'social_links',
+			'section' 		=> 'predefined_social_icons',
+			'default' 		=> ''
+		),
 
 		//Webmaster Tools
 		'tracker_header' => array(
@@ -926,7 +936,7 @@ add_action( 'customize_save', 'catchbox_customize_preview' );
  * @since Catch Box 3.3
  */
 function catchbox_customize_scripts() {
-    wp_enqueue_script( 'catchbox_customizer_custom', get_template_directory_uri() . '/js/customizer-custom-scripts.js', array( 'jquery' ), '20140108', true );
+    wp_enqueue_script( 'catchbox_customizer_custom', trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'js/customizer-custom-scripts.js', array( 'jquery' ), '20140108', true );
 
     $catchbox_misc_links = array(
 		'reset_message' => esc_html__( 'Refresh the customizer page after saving to view reset effects', 'catch-box' ),

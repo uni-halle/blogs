@@ -16,7 +16,7 @@
  */
 function catchbox_enqueue_metabox_scripts() {
     //CSS Styles
-	wp_enqueue_style( 'catchbox-metabox', get_template_directory_uri() . '/css/catchbox-metabox.css' );
+	wp_enqueue_style( 'catchbox-metabox', trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'css/catchbox-metabox.css' );
 }
 add_action( 'admin_print_scripts-post-new.php', 'catchbox_enqueue_metabox_scripts', 11 );
 add_action( 'admin_print_scripts-post.php', 'catchbox_enqueue_metabox_scripts', 11 );
@@ -54,19 +54,19 @@ $sidebar_layout = array(
 		'id'        => 'catchbox-sidebarlayout',
 		'value'     => 'right-sidebar',
 		'label'     => __( 'Right sidebar', 'catch-box' ),
-		'thumbnail' => get_template_directory_uri() . '/images/right-sidebar.png'
+		'thumbnail' => trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'images/right-sidebar.png'
 	),
 	'left-sidebar' => array(
 		'id'		=> 'catchbox-sidebarlayout',
 		'value' 	=> 'left-sidebar',
 		'label' 	=> __( 'Left sidebar', 'catch-box' ),
-		'thumbnail' => get_template_directory_uri() . '/images/left-sidebar.png'
+		'thumbnail' => trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'images/left-sidebar.png'
 	),
 	'no-sidebar-one-column' => array(
 		'id'		=> 'catchbox-sidebarlayout',
 		'value' 	=> 'no-sidebar-one-column',
 		'label' 	=> __( 'No Sidebar, One Column', 'catch-box' ),
-		'thumbnail' => get_template_directory_uri() . '/images/no-sidebar.png'
+		'thumbnail' => trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'images/no-sidebar.png'
 	)
 );
 

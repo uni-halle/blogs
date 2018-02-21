@@ -77,8 +77,15 @@ dark, light, blue, white, black, gray, one-column, two-columns, left-sidebar, ri
 
 == Change Log ==
 
+= 4.7.5 (Released: February 6, 2018) =
+* Added: rel="nofollow" for social icons with target="_blank"
+* Added: Option to add Spotify social icon (Requested by: salihkn)
+* Bug Fixed: Escaping get_template_directory_uri()
+* Enhanced: Author profile in archive
+
 = 4.7.4 (Released: November 24, 2017) =
 * Bug Fixed: Zoom issue with form in IOS devices (Reported by: Marius)
+* Enhanced: Updated base font to to 16px as recommended by google developer guideline
 
 = 4.7.3 (Released: October 11, 2017) =
 * Updated: French translation by Capronnier luc
@@ -115,7 +122,7 @@ dark, light, blue, white, black, gray, one-column, two-columns, left-sidebar, ri
 * Bug Fixed: Homepage/Frontpage categories update option causing blog to show no posts
 
 = 4.6 =
-* Bug Fixed: Used 'get_stylesheet_directory_uri()' instead of 'get_template_directory_uri()' for enqueuing color scheme css (Reported by: malodk02)
+* Bug Fixed: Used 'get_stylesheet_directory_uri()' instead of 'esc_url( get_template_directory_uri() )' for enqueuing color scheme css (Reported by: malodk02)
 * Bug Fixed: No Sidebar layout issue with Comment width in mobile view (Reported by: Marius)
 * Bug Fixed: Cancel reply button design issue in mobile view (Reported by: Marius)
 * Bug Fixed: Slider Navigation Issue when there are no active slider

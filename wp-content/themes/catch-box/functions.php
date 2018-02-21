@@ -627,29 +627,29 @@ function catchbox_scripts_method() {
 	$options = get_option( 'catchbox_theme_options' );
 
 	// Add Genericons, used in the main stylesheet.
-	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.4.1' );
+	wp_enqueue_style( 'genericons', trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'genericons/genericons.css', array(), '3.4.1' );
 
 	/**
 	 * Loads up Responsive Menu
 	 */
-	wp_enqueue_script( 'catchbox-menu', get_template_directory_uri() . '/js/menu.min.js', array( 'jquery' ), '2.1.1.1', false );
+	wp_enqueue_script( 'catchbox-menu', trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'js/menu.min.js', array( 'jquery' ), '2.1.1.1', false );
 
 	wp_localize_script( 'catchbox-menu', 'screenReaderText', array(
 		'expand'   => esc_html__( 'expand child menu', 'catch-box' ),
 		'collapse' => esc_html__( 'collapse child menu', 'catch-box' ),
 	) );
 
-	wp_enqueue_script( 'jquery-fitvids', get_template_directory_uri() . '/js/catchbox-fitvids.min.js', array( 'jquery' ), '20140315', true );
+	wp_enqueue_script( 'jquery-fitvids', trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'js/catchbox-fitvids.min.js', array( 'jquery' ), '20140315', true );
 
 	//Register JQuery circle all and JQuery set up as dependent on Jquery-cycle
-	wp_register_script( 'jquery-cycle', get_template_directory_uri() . '/js/jquery.cycle.all.min.js', array( 'jquery' ), '2.9999.5', true );
+	wp_register_script( 'jquery-cycle', trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'js/jquery.cycle.all.min.js', array( 'jquery' ), '2.9999.5', true );
 
 	//Enqueue Slider Script only in Front Page
 	if ( is_front_page() || is_home() ) {
-		wp_enqueue_script( 'catchbox-slider', get_template_directory_uri() . '/js/catchbox-slider.js', array( 'jquery-cycle' ), '1.0', true );
+		wp_enqueue_script( 'catchbox-slider', trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'js/catchbox-slider.js', array( 'jquery-cycle' ), '1.0', true );
 	}
 
-	wp_enqueue_script( 'catchbox-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151112', true );
+	wp_enqueue_script( 'catchbox-skip-link-focus-fix', trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'js/skip-link-focus-fix.js', array(), '20151112', true );
 
 	/**
 	 * Adds JavaScript to pages with the comment form to support
@@ -663,17 +663,17 @@ function catchbox_scripts_method() {
 	wp_enqueue_style( 'catchbox-style', get_stylesheet_uri() );
 
 	// Adds JavaScript for handling the navigation menu hide-and-show behavior.
-	wp_enqueue_script( 'catchbox-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20152512', true );
+	wp_enqueue_script( 'catchbox-navigation', trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'js/navigation.js', array( 'jquery' ), '20152512', true );
 
 	/**
 	 * Loads up Scroll Up script
 	 */
 	if ( empty( $options['disable_scrollup'] ) ) {
-		wp_enqueue_script( 'catchbox-scrollup', get_template_directory_uri() . '/js/catchbox-scrollup.min.js', array( 'jquery' ), '20072014', true  );
+		wp_enqueue_script( 'catchbox-scrollup', trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'js/catchbox-scrollup.min.js', array( 'jquery' ), '20072014', true  );
 	}
 
 	// Load the html5 shiv.
-	wp_enqueue_script( 'catchbox-html5', get_template_directory_uri() . '/js/html5.min.js', array(), '3.7.3' );
+	wp_enqueue_script( 'catchbox-html5', trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'js/html5.min.js', array(), '3.7.3' );
 
 }
 endif; // catchbox_scripts_method
@@ -879,20 +879,25 @@ function catchbox_socialprofile() {
 					//Goodreads
 					if ( !empty( $options['social_goodreads'] ) ) {
 						$catchbox_socialprofile .=
-							'<li class="goodreads"><a href="'.esc_url( $options['social_goodreads'] ).'" title="'. esc_attr__( 'Goodreads', 'catch-box' ) .'" target="_blank">'. esc_attr__( 'Goodreads', 'catch-box' ) .'</a></li>';
+							'<li class="goodreads"><a href="'.esc_url( $options['social_goodreads'] ).'" title="'. esc_attr__( 'Goodreads', 'catch-box' ) .'" target="_blank" rel="nofollow">'. esc_attr__( 'Goodreads', 'catch-box' ) .'</a></li>';
 					}
 
 					//Github
 					if ( !empty( $options['social_github'] ) ) {
 						$catchbox_socialprofile .=
-							'<li class="github"><a href="'.esc_url( $options['social_github'] ).'" title="'. esc_attr__( 'Github', 'catch-box' ) .'" target="_blank">'. esc_attr__( 'Github', 'catch-box' ) .'</a></li>';
+							'<li class="github"><a href="'.esc_url( $options['social_github'] ).'" title="'. esc_attr__( 'Github', 'catch-box' ) .'" target="_blank" rel="nofollow">'. esc_attr__( 'Github', 'catch-box' ) .'</a></li>';
 					}
 
 					//VK
 					if ( !empty( $options['social_vk'] ) ) {
 						$catchbox_socialprofile .=
-							'<li class="vk"><a href="'.esc_url( $options['social_vk'] ).'" title="'. esc_attr__( 'VK', 'catch-box' ) .'" target="_blank">'. esc_attr__( 'VK', 'catch-box' ) .'</a></li>';
-					}	
+							'<li class="vk"><a href="'.esc_url( $options['social_vk'] ).'" title="'. esc_attr__( 'VK', 'catch-box' ) .'" target="_blank" rel="nofollow">'. esc_attr__( 'VK', 'catch-box' ) .'</a></li>';
+					}
+					//Spotify
+					if ( !empty( $options['social_spotify'] ) ) {
+						$catchbox_socialprofile .=
+							'<li class="spotify"><a href="'.esc_url( $options['social_spotify'] ).'" title="'. esc_attr__( 'Spotify', 'catch-box' ) .'" target="_blank" rel="nofollow">'. esc_attr__( 'Spotify', 'catch-box' ) .'</a></li>';
+					}
 
 					$catchbox_socialprofile .= '
 				</ul>
@@ -1023,7 +1028,7 @@ function catchbox_enqueue_color_scheme() {
 	$enqueue_schemes = array( 'dark', 'blue', 'green', 'red', 'brown', 'orange' );
 
 	if ( in_array( $color_scheme, $enqueue_schemes ) ) {
-		wp_enqueue_style( $color_scheme, get_template_directory_uri() . '/colors/' . $color_scheme . '.css', array( 'catchbox-style' ), null );
+		wp_enqueue_style( $color_scheme, trailingslashit( esc_url ( get_template_directory_uri() ) ) . 'colors/' . $color_scheme . '.css', array( 'catchbox-style' ), null );
 	}
 
 	do_action( 'catchbox_enqueue_color_scheme', $color_scheme );

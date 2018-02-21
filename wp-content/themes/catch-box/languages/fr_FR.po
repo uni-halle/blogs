@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box 4.7.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-24 18:19+0545\n"
-"PO-Revision-Date: 2017-11-24 18:19+0545\n"
+"POT-Creation-Date: 2018-02-06 16:41+0545\n"
+"PO-Revision-Date: 2018-02-06 16:41+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: D'CLIC, L Capronnier <contact@dclic.info, lcapronnier@yahoo."
 "Com>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../404.php:14
@@ -497,11 +497,15 @@ msgstr "Github"
 msgid "VK"
 msgstr "VK"
 
-#: ../functions.php:975
+#: ../functions.php:899 ../inc/customizer/customizer.php:672
+msgid "Spotify"
+msgstr ""
+
+#: ../functions.php:980
 msgid "Scroll Up"
 msgstr "Défiler vers le haut"
 
-#: ../functions.php:1009
+#: ../functions.php:1014
 msgid "Skip to content"
 msgstr "Aller au contenu principal"
 
@@ -835,50 +839,50 @@ msgstr "deviantART"
 msgid "Aim"
 msgstr "Aim"
 
-#: ../inc/customizer/customizer.php:674
+#: ../inc/customizer/customizer.php:684
 msgid "Code to display on Header"
 msgstr "Code à afficher dans l'entête"
 
-#: ../inc/customizer/customizer.php:675
+#: ../inc/customizer/customizer.php:685
 msgid ""
 "Here you can put scripts from Google, Facebook etc. which will load on Header"
 msgstr ""
 "Ici vous pouvez ajouter des scripts provenant de Google, Facebook, ... qui "
 "seront chargés dans l'entête"
 
-#: ../inc/customizer/customizer.php:685
+#: ../inc/customizer/customizer.php:695
 msgid "Code to display on Footer"
 msgstr "Code à afficher dans le pied de page"
 
-#: ../inc/customizer/customizer.php:686
+#: ../inc/customizer/customizer.php:696
 msgid ""
 "Here you can put scripts from Google, Facebook etc. which will load on Footer"
 msgstr ""
 "Ici vous pouvez ajouter des scripts provenant de Google, Facebook, ... qui "
 "seront chargés dans le pied de page"
 
-#: ../inc/customizer/customizer.php:702
+#: ../inc/customizer/customizer.php:712
 msgid "Header Image Location"
 msgstr "Position de l'image d'entête"
 
-#: ../inc/customizer/customizer.php:709
+#: ../inc/customizer/customizer.php:719
 msgid "Above Header Content"
 msgstr "Au dessus de l'entête du contenu"
 
-#: ../inc/customizer/customizer.php:710
+#: ../inc/customizer/customizer.php:720
 msgid "Between Site Title-Logo"
 msgstr "Entre le titre du site et le logo"
 
-#: ../inc/customizer/customizer.php:711
+#: ../inc/customizer/customizer.php:721
 msgid "Below Header Content"
 msgstr "En dessous de l'entête du contenu"
 
-#: ../inc/customizer/customizer.php:851
+#: ../inc/customizer/customizer.php:861
 #, php-format
 msgid "#%s Featured Post ID"
 msgstr "#%s ID de l'article présenté"
 
-#: ../inc/customizer/customizer.php:866
+#: ../inc/customizer/customizer.php:876
 msgid ""
 "Caution: Reset all settings to default. Refresh the page after save to view "
 "full effects."
@@ -886,19 +890,19 @@ msgstr ""
 "Attention&nbsp;: remettre tous les paramètres par défaut. Recharger la page "
 "après l'enregistrement pour en voir les effets."
 
-#: ../inc/customizer/customizer.php:868
+#: ../inc/customizer/customizer.php:878
 msgid "Reset all settings"
 msgstr "Réinitialiser tous les paramètres"
 
-#: ../inc/customizer/customizer.php:878
+#: ../inc/customizer/customizer.php:888
 msgid "Check to reset all settings to default"
 msgstr "Valider pour remettre toutes les valeurs par défauts des paramètres"
 
-#: ../inc/customizer/customizer.php:888 ../inc/customizer/customizer.php:899
+#: ../inc/customizer/customizer.php:898 ../inc/customizer/customizer.php:909
 msgid "Important Links"
 msgstr "Liens importants"
 
-#: ../inc/customizer/customizer.php:932
+#: ../inc/customizer/customizer.php:942
 msgid "Refresh the customizer page after saving to view reset effects"
 msgstr ""
 "Mettre à jour la page de personnalisation après l'enregistrement pour voir "

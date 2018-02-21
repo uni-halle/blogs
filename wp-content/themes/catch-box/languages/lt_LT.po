@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2017-11-24 18:19+0545\n"
-"PO-Revision-Date: 2017-11-24 18:19+0545\n"
+"POT-Creation-Date: 2018-02-06 16:41+0545\n"
+"PO-Revision-Date: 2018-02-06 16:41+0545\n"
 "Last-Translator: Catch Themes <info@catchthemes.com>\n"
 "Language-Team: Catch Themes <info@catchthemes.com>\n"
 "Language: lt\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.4\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;esc_attr_e;esc_attr__;"
 "_nx:1,2,4c;esc_html__;esc_attr_x:1,2c\n"
@@ -488,11 +488,15 @@ msgstr ""
 msgid "VK"
 msgstr ""
 
-#: ../functions.php:975
+#: ../functions.php:899 ../inc/customizer/customizer.php:672
+msgid "Spotify"
+msgstr "Spotify"
+
+#: ../functions.php:980
 msgid "Scroll Up"
 msgstr "Slinkti aukštyn"
 
-#: ../functions.php:1009
+#: ../functions.php:1014
 msgid "Skip to content"
 msgstr "Pereiti prie turinio"
 
@@ -805,46 +809,46 @@ msgstr "deviantART"
 msgid "Aim"
 msgstr "Aim"
 
-#: ../inc/customizer/customizer.php:674
+#: ../inc/customizer/customizer.php:684
 msgid "Code to display on Header"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:675
+#: ../inc/customizer/customizer.php:685
 msgid ""
 "Here you can put scripts from Google, Facebook etc. which will load on Header"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:685
+#: ../inc/customizer/customizer.php:695
 msgid "Code to display on Footer"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:686
+#: ../inc/customizer/customizer.php:696
 msgid ""
 "Here you can put scripts from Google, Facebook etc. which will load on Footer"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:702
+#: ../inc/customizer/customizer.php:712
 msgid "Header Image Location"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:709
+#: ../inc/customizer/customizer.php:719
 msgid "Above Header Content"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:710
+#: ../inc/customizer/customizer.php:720
 msgid "Between Site Title-Logo"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:711
+#: ../inc/customizer/customizer.php:721
 msgid "Below Header Content"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:851
+#: ../inc/customizer/customizer.php:861
 #, php-format
 msgid "#%s Featured Post ID"
 msgstr ""
 
-#: ../inc/customizer/customizer.php:866
+#: ../inc/customizer/customizer.php:876
 msgid ""
 "Caution: Reset all settings to default. Refresh the page after save to view "
 "full effects."
@@ -852,19 +856,19 @@ msgstr ""
 "Atsargiai: Atstatykite visus nustatymus į numatytuosius. Po išsaugojimo "
 "atnaujinkite puslapį, kad galėtumėte peržiūrėti pilną efektą."
 
-#: ../inc/customizer/customizer.php:868
+#: ../inc/customizer/customizer.php:878
 msgid "Reset all settings"
 msgstr "Atstatyti visus nustatymus"
 
-#: ../inc/customizer/customizer.php:878
+#: ../inc/customizer/customizer.php:888
 msgid "Check to reset all settings to default"
 msgstr "Pažymėkite norėdami atstatyti visus nustatymus į numatytuosius"
 
-#: ../inc/customizer/customizer.php:888 ../inc/customizer/customizer.php:899
+#: ../inc/customizer/customizer.php:898 ../inc/customizer/customizer.php:909
 msgid "Important Links"
 msgstr "Svarbios nuorodos"
 
-#: ../inc/customizer/customizer.php:932
+#: ../inc/customizer/customizer.php:942
 msgid "Refresh the customizer page after saving to view reset effects"
 msgstr ""
 
@@ -1473,9 +1477,6 @@ msgstr "Žymų Archyvai: %s"
 
 #~ msgid "Foursquare"
 #~ msgstr "Foursquare"
-
-#~ msgid "Spotify"
-#~ msgstr "Spotify"
 
 #~ msgid "Twitch"
 #~ msgstr "Twitch"
