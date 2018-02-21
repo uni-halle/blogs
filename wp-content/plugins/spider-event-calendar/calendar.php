@@ -3,12 +3,12 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: https://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.5.57
+Version: 1.5.58
 Author: WebDorado
 Author URI: https://web-dorado.com/wordpress-plugins-bundle.html
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
-$wd_spider_calendar_version="1.5.57";
+$wd_spider_calendar_version="1.5.58";
 // LANGUAGE localization.
 function sp_calendar_language_load() {
   load_plugin_textdomain('sp_calendar', FALSE, basename(dirname(__FILE__)) . '/languages');
@@ -496,6 +496,8 @@ function sp_calendar_options_panel() {
   add_action('admin_print_styles-' . $page_calendar, 'spider_calendar_admin_styles_scripts');
   add_action('admin_print_styles-' . $page_uninstall, 'spider_calendar_admin_styles_scripts');
   add_action('admin_print_styles-' . $page_widget_theme, 'spider_widget_calendar_themes_admin_styles_scripts');
+  add_action('admin_print_styles', 'spider_widget_styles_scripts');
+
 }
 
 function Spider_calendar_Licensing() {
@@ -518,6 +520,10 @@ function Spider_calendar_Licensing() {
   </ol>
   </div>
   <?php
+}
+function spider_widget_styles_scripts(){
+  wp_enqueue_script('wp-color-picker');
+  wp_enqueue_style( 'wp-color-picker' );
 }
 
 function spider_calendar_themes_admin_styles_scripts() {
@@ -1402,7 +1408,7 @@ function calendar_export() {
 
 if (!function_exists('spcal_bp_install_notice')) {
 
-  if(get_option('wds_bk_notice_status')==='' || get_option('wds_bk_notice_status')==='1'){
+  if(get_option('wds_seo_notice_status')==='' || get_option('wds_seo_notice_status')==='1'){
 	return;
   }
 
@@ -1431,32 +1437,32 @@ if (!function_exists('spcal_bp_install_notice')) {
 
     $spcal_bp_plugin_url = plugins_url('', __FILE__);
     $prefix = 'sp';
-    $meta_value = get_option('wd_bk_notice_status');
+    $meta_value = get_option('wd_seo_notice_status');
     if ($meta_value === '' || $meta_value === false) {
       ob_start();
       ?>
       <div class="notice notice-info" id="wd_bp_notice_cont">
         <p>
-          <img id="wd_bp_logo_notice" src="<?php echo $spcal_bp_plugin_url . '/images/backup-logo.png'; ?>">
-          <?php _e("Spider Event Calendar advises: Install brand new FREE", $prefix) ?>
-          <a href="https://wordpress.org/plugins/backup-wd/" title="<?php _e("More details", $prefix) ?>"
-             target="_blank"><?php _e("Backup WD", $prefix) ?></a>
-          <?php _e("plugin to keep your data and website safe.", $prefix) ?>
+          <img id="wd_bp_logo_notice" src="<?php echo $spcal_bp_plugin_url . '/images/seo_logo.png'; ?>">
+          <?php _e("Spider Event Calendar advises:Optimize your web pages for search engines with the", $prefix) ?>
+          <a href="https://wordpress.org/plugins/seo-by-10web/" title="<?php _e("More details", $prefix) ?>"
+             target="_blank"><?php _e("FREE SEO", $prefix) ?></a>
+          <?php _e("plugin.", $prefix) ?>
           <a class="button button-primary"
-             href="<?php echo esc_url(wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=backup-wd'), 'install-plugin_backup-wd')); ?>">
+             href="<?php echo esc_url(wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=seo-by-10web'), 'install-plugin_seo-by-10web')); ?>">
             <span onclick="wd_bp_notice_install()"><?php _e("Install", $prefix); ?></span>
           </a>
         </p>
         <button type="button" class="wd_bp_notice_dissmiss notice-dismiss"><span class="screen-reader-text"></span>
         </button>
       </div>
-      <script>spcal_bp_url = '<?php echo add_query_arg(array('action' => 'wd_bp_dismiss',), admin_url('admin-ajax.php')); ?>'</script>
+      <script>spcal_bp_url = '<?php echo add_query_arg(array('action' => 'wd_seo_dismiss',), admin_url('admin-ajax.php')); ?>'</script>
       <?php
       echo ob_get_clean();
     }
   }
 
-  if (!is_dir(plugin_dir_path(dirname(__FILE__)) . 'backup-wd')) {
+  if (!is_dir(plugin_dir_path(dirname(__FILE__)) . 'seo-by-10web')) {
     add_action('admin_notices', 'spcal_bp_install_notice');
   }
 
@@ -1467,9 +1473,9 @@ if (!function_exists('spcal_bp_install_notice')) {
    * 1    : never show again
    */
   function spcal_bp_install_notice_status() {
-    update_option('wd_bk_notice_status', '1', 'no');
+    update_option('wd_seo_notice_status', '1', 'no');
   }
-  add_action('wp_ajax_wd_bp_dismiss', 'spcal_bp_install_notice_status');
+  add_action('wp_ajax_wd_seo_dismiss', 'spcal_bp_install_notice_status');
 }
 
 
