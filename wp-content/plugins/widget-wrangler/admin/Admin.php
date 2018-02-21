@@ -309,7 +309,7 @@ class Admin {
 		// we need to find and save the data
 		$submitted = self::getSubmittedWranglerData();
 
-		if ( $submitted['widgets'] ) {
+		if ( isset( $submitted['widgets'] ) ) {
 			$widgets = self::serializeWidgets( $submitted['widgets'] );
 			update_post_meta( $post_id, 'ww_post_widgets', $widgets);
 		}

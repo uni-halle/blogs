@@ -58,9 +58,11 @@ class Presets {
 		);
 
 		// default widgets
-		if (!$row = Extras::get($where)) {
+		$row = Extras::get($where);
+
+		if (!$row) {
 			$data['extra_key'] = $where['extra_key'];
-			$data['data'] = serialize(array('name' => 'Default'));
+			$data['data'] = array('name' => 'Default');
 
 			$existing_widgets = Admin::unserializeWidgets( get_option( 'ww_default_widgets', array() ) );
 			$data['widgets'] = serialize($existing_widgets);
@@ -70,9 +72,10 @@ class Presets {
 
 		// postspage widgets
 		$where['extra_key'] = 'postspage';
-		if (!$row = Extras::get($where)) {
+		$row = Extras::get($where);
+		if (!$row) {
 			$data['extra_key'] = $where['extra_key'];
-			$data['data'] = serialize(array('name' => 'Posts Page'));
+			$data['data'] = array('name' => 'Posts Page');
 
 			$existing_widgets = Admin::unserializeWidgets( get_option( 'ww_postspage_widgets', array() ) );
 			$data['widgets'] = serialize($existing_widgets);

@@ -89,6 +89,8 @@ class Updates {
 	 * Installation.
 	 */
 	public static function install() {
+		include_once  WW_PLUGIN_DIR.'/admin/Admin.php';
+
 		$settings = Settings::instance();
 		add_option('ww_settings', $settings->default_settings);
 		add_option('ww_version', WW_VERSION);
@@ -120,7 +122,8 @@ class Updates {
 		if ( version_compare( $old_version, 2, '>=' ) ) {
 			return;
 		}
-			// check to make sure array options aren't over serialized
+
+		// check to make sure array options aren't over serialized
 		$options = array('ww_default_widgets', 'ww_postspage_widgets', 'ww_settings', 'ww_sidebars');
 		foreach ($options as $option){
 			if ($v = get_option($option)){
@@ -174,6 +177,25 @@ class Updates {
 		}
 
 		delete_option('ww_pro_license_status');
+	}
+
+	/**
+	 * Fix corrupted installs with presets missing the admin class.
+	 */
+	public static function update2002() {
+		$where = array(
+			'type' => 'preset',
+			'variety' => 'core',
+			'extra_key' => 'default',
+		);
+		$default = Extras::get($where);
+		$default->data = maybe_unserialize($default->data);
+		Extras::update($default, $where);
+
+		$where['extra_key'] = 'postspage';
+		$postspage = Extras::get($where);
+		$postspage->data = maybe_unserialize($postspage->data);
+		Extras::update($postspage, $where);
 	}
 
 }
