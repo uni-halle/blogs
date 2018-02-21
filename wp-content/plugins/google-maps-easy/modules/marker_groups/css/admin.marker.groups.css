@@ -1,0 +1,16 @@
+/* Marker Groups List Table */
+#gmpMgrTbl_actions #jqgh_gmpMgrTbl_actions .s-ico {
+	display: none !important;
+}
+/* Marker Groups Edit Form */
+#gmpMgrTab {
+	min-height: 450px;
+}
+#gmpMgrTab .gmpSubOpt {
+	vertical-align: middle;
+	margin-right: 10px;
+}
+#gmpMgrSaveBtn {
+	float: right;
+	margin-right: 30px;
+}
