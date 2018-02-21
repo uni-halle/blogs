@@ -2,8 +2,8 @@
 Tags: bundle, widget, button, slider, image, carousel, price table, google maps, tinymce, social links
 Requires at least: 4.2
 Tested up to: 4.9.1
-Stable tag: 1.11.3
-Build time: 2018-01-10T11:22:18+02:00
+Stable tag: 1.11.4
+Build time: 2018-02-07T08:38:59+02:00
 License: GPLv3 or later
 Contributors: gpriday, braam-genis
 Donate link: https://siteorigin.com/downloads/contribution/
@@ -64,6 +64,12 @@ The SiteOrigin Widgets Bundle is the perfect platform to build widgets for your 
 3. An example of the button widget.
 
 == Changelog ==
+
+= 1.11.4 - 7 February 2018 =
+* Slider: Add playsinline for Video backgrounds for iOS.
+* Repeater field: Trigger change events for repeater when adding, removing or duplicating items.
+* TinyMCE field: Removed special handling for TinyMCE fields when retrieving data. Just use field value directly.
+* Fixed build overwriting some CSS files.
 
 = 1.11.3 - 10 January 2018 =
 * Hero: Add margin-top to so-widget-sow-button for spacing.
