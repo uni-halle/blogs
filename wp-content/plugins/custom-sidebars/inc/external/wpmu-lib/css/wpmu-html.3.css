@@ -132,11 +132,6 @@ body .wpmui-divider {
   bottom: 0;
   border-right: 1px solid #E5E5E5;
 }
-#wpwrap .wpmui-hidden,
-body .wpmui-hidden {
-  display: none;
-  visibility: hidden;
-}
 #wpwrap .wpmui-fa,
 body .wpmui-fa {
   font-family: Fontawesome440 !important;

@@ -4,6 +4,17 @@ Author:      Philipp Stracker, Marcin Pietrzak
 Change Log:
 ----------------------------------------------------------------------
 
+3.0.6
+PHP
+- Change variable name to correct one.
+
+3.0.5
+PHP
+- Added sanitization of css classes.
+- Added wpColorPicker field.
+- Added wp_media field.
+- Fixed a url port problem.
+
 3.0.4
 JS
 - Added check is function "el.wpmuiSelect" to avoid JavaScript errors.

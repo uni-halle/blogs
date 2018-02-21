@@ -16,6 +16,8 @@
 /*global window:false */
 /*global document:false */
 /*global XMLHttpRequest:false */
+/*global console:false */
+/*global wp:false */
 
 (function( wpmUi ) {
 
@@ -612,6 +614,103 @@
 		return obj;
 	};
 
+	/**
+	 * Initialize the Radio Sliders
+	 *
+	 * @since  3.0.5
+	 */
+	wpmUi.bind_radio_sliders = function() {
+		jQuery('.wpmui-radio-slider').on('click', function( ev ) {
+			var radio = jQuery(this);
+			var data = jQuery('.wpmui-toggle', radio).data('states');
+			var field = jQuery('input.wpmui-hidden[type=hidden]', radio );
+			var active = Object.keys( data )[0];
+			var value = 0;
+			if ( 1 === parseInt(field.val()) || active === field.val() )  {
+				radio.removeClass( 'on' );
+				value = data[Object.keys( data )[1]];
+			} else {
+				radio.addClass( 'on' );
+				value = data[Object.keys( data )[0]];
+			}
+			if ( 'boolean' === typeof( value ) ) {
+				value = value? 1:0;
+			}
+			field.val( value );
+		});
+	};
+
+	/**
+	 * Initialize the wpColorPicker
+	 *
+	 * @since  3.0.5
+	 */
+	wpmUi.bind_wp_color_picker = function() {
+		if ( jQuery.fn.wpColorPicker ) {
+			jQuery('.wpmui-color-field').wpColorPicker();
+		}
+	};
+
+	/**
+	 * Initialize the wp_media
+	 *
+	 * @since  3.0.5
+	 */
+	wpmUi.bind_wp_media = function() {
+		jQuery(".option-wp_media .image-reset").on("click", function( event ){
+			var container = jQuery(this).closest(".option-wp_media");
+			jQuery(".filename", container ).html( "" );
+			jQuery(".image-preview", container ).removeAttr( "src" );
+			jQuery(".attachment-id", container ).removeAttr("value");
+			jQuery(this).addClass("disabled");
+			jQuery('.wp-media-wrapper', container ).addClass('hidden');
+		});
+		jQuery('.option-wp_media .button-select-image').on('click', function( event ){
+			var file_frame;
+			var wp_media_post_id;
+			var container = jQuery(this).closest('.option-wp_media');
+			var set_to_post_id = jQuery('.attachment-id', container ).val();
+			event.preventDefault();
+			// If the media frame already exists, reopen it.
+			if ( file_frame ) {
+				// Set the post ID to what we want
+				file_frame.uploader.uploader.param( 'post_id', set_to_post_id );
+				// Open frame
+				file_frame.open();
+				return;
+			} else {
+				// Set the wp.media post id so the uploader grabs the ID we want when initialised
+				wp.media.model.settings.post.id = set_to_post_id;
+			}
+			// Create the media frame.
+			file_frame = wp.media.frames.file_frame = wp.media({
+				title: 'Select a image to upload',
+				button: {
+					text: 'Use this image',
+				},
+				multiple: false	// Set to true to allow multiple files to be selected
+			});
+			// When an image is selected, run a callback.
+			file_frame.on( 'select', function( wp_media_post_id ) {
+				// We set multiple to false so only get one image from the uploader
+				var attachment = file_frame.state().get('selection').first().toJSON();
+				// Do something with attachment.id and/or attachment.url here
+				jQuery('.filename', container).html(attachment.filename);
+				jQuery('.image-preview', container ).attr( 'src', attachment.url ).css( 'width', 'auto' );
+				jQuery('.attachment-id', container ).val( attachment.id );
+				jQuery(".image-reset", container).removeClass("disabled");
+				jQuery('.wp-media-wrapper', container ).removeClass('hidden');
+				// Restore the main post ID
+				wp.media.model.settings.post.id = wp_media_post_id;
+			});
+			// Finally, open the modal
+			file_frame.open();
+		});
+		// Restore the main ID when the add media button is pressed
+		jQuery( 'a.add_media' ).on( 'click', function( wp_media_post_id ) {
+			wp.media.model.settings.post.id = wp_media_post_id;
+		});
+	};
 
 	// ==========
 	// == Private helper functions =============================================
@@ -642,6 +741,9 @@
 			window.setTimeout(function() {
 				wpmUi.upgrade_multiselect();
 				wpmUi.upgrade_tooltips();
+				wpmUi.bind_radio_sliders();
+				wpmUi.bind_wp_color_picker();
+				wpmUi.bind_wp_media();
 			}, 20);
 		}
 

@@ -54,7 +54,7 @@ class TheLib_Net extends TheLib {
 			}
 
 			if ( ( ! $is_ssl && '80' != $_SERVER['SERVER_PORT'] ) ||
-				( $is_ssl && '443' != $_SERVER['SERVER_PORT'] )
+				( $is_ssl && !in_array( $_SERVER['SERVER_PORT'], array( '80', '443' ) ) )
 			) {
 				$cur_url .= ':' . $_SERVER['SERVER_PORT'];
 			}

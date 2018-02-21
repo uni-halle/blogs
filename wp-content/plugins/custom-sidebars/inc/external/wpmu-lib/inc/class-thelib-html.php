@@ -27,10 +27,12 @@ class TheLib_Html extends TheLib  {
 	const INPUT_TYPE_FILE = 'file';
 
 	/* Constants for advanced HTML input elements. */
-	const INPUT_TYPE_WP_EDITOR = 'wp_editor';
 	const INPUT_TYPE_DATEPICKER = 'datepicker';
 	const INPUT_TYPE_RADIO_SLIDER = 'radio_slider';
 	const INPUT_TYPE_TAG_SELECT = 'tag_select';
+	const INPUT_TYPE_WP_COLOR_PICKER = 'wp_color_picker';
+	const INPUT_TYPE_WP_EDITOR = 'wp_editor';
+	const INPUT_TYPE_WP_MEDIA = 'wp_media';
 	const INPUT_TYPE_WP_PAGES = 'wp_pages';
 
 	/* Constants for default HTML elements. */
@@ -470,10 +472,10 @@ class TheLib_Html extends TheLib  {
 				$sticky_key = substr( $sticky_key, 0, -2 );
 			}
 
-			if ( isset( $_POST[$sticky_key] ) ) {
-				$value = $_POST[$sticky_key];
-			} elseif ( isset( $_GET[$sticky_key] ) ) {
-				$value = $_GET[$sticky_key];
+			if ( isset( $_POST[ $sticky_key ] ) ) {
+				$value = $_POST[ $sticky_key ];
+			} elseif ( isset( $_GET[ $sticky_key ] ) ) {
+				$value = $_GET[ $sticky_key ];
 			}
 		}
 
@@ -590,7 +592,7 @@ class TheLib_Html extends TheLib  {
 			case self::INPUT_TYPE_WP_EDITOR:
 				$this->element_wp_editor(
 					$labels,
-					$id,
+					$id? $id:$name,
 					$value,
 					$field_options
 				);
@@ -714,6 +716,41 @@ class TheLib_Html extends TheLib  {
 					$wrapper_class
 				);
 				break;
+
+			/**
+			 * wp-color-picker
+			 *
+			 * @since 3.0.5
+			 */
+			case self::INPUT_TYPE_WP_COLOR_PICKER:
+				$this->element_color_picker(
+					$labels,
+					$class,
+					$id,
+					$name,
+					$value,
+					$max_attr . $attr_placeholder . $ajax_data . $data_attr,
+					$wrapper_class
+				);
+				break;
+
+			/**
+			 * wp_media
+			 *
+			 * @since 3.0.5
+			 */
+			case self::INPUT_TYPE_WP_MEDIA:
+				$this->element_wp_media(
+					$labels,
+					$class,
+					$id,
+					$name,
+					$value,
+					$max_attr . $attr_placeholder . $ajax_data . $data_attr,
+					$wrapper_class
+				);
+				break;
+
 		}
 
 		// Return the output buffer
@@ -752,11 +789,13 @@ class TheLib_Html extends TheLib  {
 			esc_attr( $type ),
 			esc_attr( $class ),
 			esc_attr( $id ),
-			esc_attr( $name ),
+			esc_attr( sanitize_title( $name ) ),
 			esc_attr( $value ),
 			$attr
 		);
-
+		if ( ! empty( $labels->title ) ) {
+			$this->element_desc( $labels );
+		}
 		$this->element_hint( $labels );
 		$this->wrap_close();
 	}
@@ -1028,10 +1067,11 @@ class TheLib_Html extends TheLib  {
 	 * @internal
 	 */
 	private function element_wp_editor( $labels, $id, $value, $options ) {
+		if ( empty( $id ) ) {
+			$id = 'wpmulib-wp-editor-'.rand();
+		}
 		$this->element_label( $labels );
-
 		wp_editor( $value, $id, $options );
-
 		$this->element_hint( $labels );
 	}
 
@@ -1091,8 +1131,7 @@ class TheLib_Html extends TheLib  {
 		if ( ! isset( $options['active'] ) ) { $options['active'] = true; }
 		if ( ! isset( $options['inactive'] ) ) { $options['inactive'] = false; }
 
-		if ( $state ) { $value = $options['active']; }
-		else { $value = $options['inactive']; }
+		if ( $state ) { $value = $options['active']; } else { $value = $options['inactive']; }
 
 		$turned = ( $value ) ? 'on' : 'off';
 
@@ -1124,7 +1163,9 @@ class TheLib_Html extends TheLib  {
 			'<span class="before"></span>',
 			'<span class="after"></span>'
 		);
-
+		if ( ! empty( $labels->title ) ) {
+			$this->element_desc( $labels );
+		}
 		$this->element_hint( $labels );
 		$this->wrap_close();
 	}
@@ -1224,19 +1265,19 @@ class TheLib_Html extends TheLib  {
 		$items = array();
 
 		foreach ( $pages as $page ) {
-			$parent_list[$page->ID] = $page;
+			$parent_list[ $page->ID ] = $page;
 		}
 
 		if ( ! array_key_exists( $value, $parent_list ) ) {
 			// In case no value is selected set the default to 'no item';
-			$items[$value] = $args['no_item'];
+			$items[ $value ] = $args['no_item'];
 		}
 
 		foreach ( $pages as $page_id => $page ) {
 			$level = 0;
 			$parent = $page;
 			while ( $parent->post_parent ) {
-				$parent = $parent_list[$parent->post_parent];
+				$parent = $parent_list[ $parent->post_parent ];
 				$level += 1;
 			}
 
@@ -1250,7 +1291,7 @@ class TheLib_Html extends TheLib  {
 				$label = $page->post_title;
 			}
 
-			$items[$page->ID] = str_repeat( '&nbsp;&mdash;&nbsp;', $level ) . $label;
+			$items[ $page->ID ] = str_repeat( '&nbsp;&mdash;&nbsp;', $level ) . $label;
 		}
 
 		$this->element_select(
@@ -1363,8 +1404,8 @@ class TheLib_Html extends TheLib  {
 						$is_head = $is_head_row
 							|| ( 0 === $col_num && $args['head_col'] );
 
-						$col_class = isset( $args['col_class'][$col_num] )
-							? $args['col_class'][$col_num]
+						$col_class = isset( $args['col_class'][ $col_num ] )
+							? $args['col_class'][ $col_num ]
 							: '';
 
 						$code_row .= sprintf(
@@ -1540,9 +1581,9 @@ class TheLib_Html extends TheLib  {
 				esc_attr( ' wpmui-label-' . $labels->id . ' ' . $labels->class ),
 				esc_attr( $labels->label_type )
 			);
+		} else {
+			$this->element_desc( $labels );
 		}
-
-		$this->element_desc( $labels );
 	}
 
 	/**
@@ -1621,4 +1662,73 @@ class TheLib_Html extends TheLib  {
 		if ( $return ) { return ob_get_clean(); }
 	}
 
+	/**
+	 * Enqueue wp-color-picker
+	 *
+	 * @since  3.0.5
+	 * @internal
+	 */
+	private function _enqueue_color_picker() {
+		wp_enqueue_script( 'wp-color-picker' );
+		wp_enqueue_style( 'wp-color-picker' );
+	}
+
+	/**
+	 * Helper function used by `wp-color-picker`
+	 *
+	 * @since  3.0.5
+	 * @internal
+	 */
+	private function element_color_picker( $labels, $class, $id, $name, $value, $attr, $wrapper_class ) {
+		$this->_enqueue_color_picker();
+		$this->wrap_open( 'colorpicker', $class, 'span', $wrapper_class );
+		$this->element_label( $labels );
+		printf(
+			'<input class="wpmui-color-field %1$s" type="text" id="%2$s" name="%3$s" value="%4$s" %5$s />',
+			esc_attr( $class ),
+			esc_attr( $id ),
+			esc_attr( $name ),
+			esc_attr( $value ),
+			$attr
+		);
+		$this->element_hint( $labels );
+		$this->wrap_close();
+	}
+
+	/**
+	 * Helper function used by `html_element`
+	 *
+	 * @since  1.1.0
+	 * @internal
+	 */
+	private function element_wp_media( $labels, $class, $id, $name, $value, $attr, $wrapper_class ) {
+		$image_src = wp_get_attachment_image_url( $value );
+		wp_enqueue_media();
+		$this->element_label( $labels );
+		$content = sprintf( '<div class="wp-media-wrapper %s">', esc_attr( empty( $image_src )? 'hidden':'' ) );
+		$content .= '<div class="image-preview-wrapper">';
+		$content .= sprintf(
+			'<img class="image-preview" src="%s" />',
+			esc_url( $image_src )
+		);
+		$content .= '</div>';
+		$content .= '<span class="filename"></span>';
+		$content .= sprintf(
+			'<a href="#" class="image-reset %s">%s</a>',
+			esc_attr( $image_src? '': 'disabled' ),
+			esc_html__( 'Clear' )
+		);
+		$content .= '</div>';
+		$content .= sprintf(
+			'<input type="button" class="button button-select-image" value="%s" />',
+			esc_attr__( 'Browse' )
+		);
+		$content .= sprintf(
+			'<input type="hidden" name="%s" value="%s" class="attachment-id" />',
+			esc_attr( $name ),
+			esc_attr( $value )
+		);
+		echo $content;
+		$this->element_hint( $labels );
+	}
 }
