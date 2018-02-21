@@ -41,6 +41,7 @@ class A_NextGen_Basic_ImageBrowser_Controller extends Mixin
         } else {
             return $this->object->render_partial('photocrati-nextgen_gallery_display#no_images_found', array(), $return);
         }
+        return '';
     }
     /**
      * Returns the rendered template of an image browser display

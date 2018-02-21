@@ -84,14 +84,6 @@ class M_NextGen_Admin extends C_Base_Module
 			'I_MVC_Controller',
 			'A_MVC_Validation'
 		);
-
-        if (is_admin()) {
-            $this->get_registry('I_NextGen_Admin_Page', 'A_Fs_Access_Page', NGG_FS_ACCESS_SLUG);
-            $this->get_registry()->add_adapter(
-                'I_Page_Manager',
-                'A_NextGen_Admin_Default_Pages'
-            );
-        }
 	}
 
 	/**

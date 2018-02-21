@@ -170,6 +170,8 @@ class M_DataMapper extends C_Base_Module
 		elseif (($value = $wp_query->get('post_title__like'))) {
 			$where .= " AND {$wpdb->posts}.post_title LIKE '{$value}'";
 		}
+
+		return $where;
 	}
 
 

@@ -300,7 +300,7 @@ class nggManageAlbum {
 <style type="text/css">
 	.select2-container {max-width: 580px; }
 	.select2-drop { max-width: 580px; }
-	.select2-choice { max-width: 580;}
+	.select2-choice { max-width: 580px;}
 </style>
 
 <script type="text/javascript">
@@ -314,7 +314,7 @@ jQuery(document).ready(
 
 			// Refresh when a new gallery has been added
 			Frame_Event_Publisher.listen_for('attach_to_post:manage_galleries attach_to_post:new_gallery', function(){
-				window.location.href = window.location.href;
+				window.location.href = window.location.href.toString();
 			});
 
 			// Updates the thumbnail image when a previewpic has been modified
@@ -437,7 +437,6 @@ function showDialog() {
 </script>
 
 <div class="wrap album" id="wrap" >
-    <?php screen_icon( 'nextgen-gallery' ); ?>
 	<h2><?php esc_html_e('Manage Albums', 'nggallery') ?></h2>
 	<form id="selectalbum" method="POST" onsubmit="ngg_serialize()" accept-charset="utf-8">
 		<?php wp_nonce_field('ngg_album') ?>
@@ -462,7 +461,7 @@ function showDialog() {
 					<input class="button-secondary" type="submit" name="showThickbox" value="<?php esc_attr_e( 'Edit Album', 'nggallery'); ?>" onclick="showDialog(); return false;" />
 					<?php } ?>
 					<?php if(nggGallery::current_user_can( 'NextGEN Add/Delete album' )) { ?>
-					<input class="button-secondary action "type="submit" name="delete" value="<?php esc_attr_e('Delete', 'nggallery'); ?>" onclick="javascript:check=confirm('<?php echo esc_js('Delete album ?','nggallery'); ?>');if(check==false) return false;"/>
+					<input class="button-secondary action "type="submit" name="delete" value="<?php esc_attr_e('Delete', 'nggallery'); ?>" onclick="javascript:check=confirm('<?php echo esc_js(__('Delete album ?','nggallery')); ?>');if(check==false) return false;"/>
 					<?php } ?>
 				<?php } else { ?>
 					<?php if(nggGallery::current_user_can( 'NextGEN Add/Delete album' )) { ?>
@@ -603,7 +602,7 @@ function showDialog() {
                     'echo' => TRUE,
                     'name' => 'pageid',
                     'selected' => $album->pageid,
-                    'show_option_none' => esc_html('Not linked', 'nggallery'),
+                    'show_option_none' => esc_html_e('Not linked', 'nggallery'),
                     'option_none_value' => 0
                 ));
                 $dropdown = ob_get_contents();
@@ -642,11 +641,12 @@ function showDialog() {
 	 *
 	 * @param integer $id (the prefix 'a' indidcates that you look for a album
 	 * @param bool $used (object will be hidden)
-	 * @return $output
+	 * @return string
 	 */
 	function get_container($id = 0, $used = false) {
 		global $wpdb, $nggdb;
 
+		$retval = NULL;
 		$obj =  array();
 		$preview_image = '';
         $class = '';
@@ -655,7 +655,7 @@ function showDialog() {
 		if (substr( $id, 0, 1) == 'a') {
 
 			if ( !$album = $this->_get_album(substr( $id, 1)))
-				return;
+				return $retval;
 
 			$obj['id']   = $album->id;
 			$obj['name'] = $obj['title'] = $album->name;
@@ -681,7 +681,7 @@ function showDialog() {
 
 		} else {
 			if ( !$gallery = $nggdb->find_gallery( $id ) )
-				return;
+				return $retval;
 
 			$obj['id']    = $gallery->gid;
 			$obj['name']  = $gallery->name;
@@ -709,7 +709,7 @@ function showDialog() {
 		// add class if it's in use in other albums
 		$used = $used ? ' inUse' : '';
 
-		echo '<div id="gid-' . $prefix . $obj['id'] . '" class="groupItem' . $used . '">
+		$retval =  '<div id="gid-' . $prefix . $obj['id'] . '" class="groupItem' . $used . '">
 				<div class="innerhandle">
 					<div class="item_top ' . $class . '">
 						<a href="#" class="min" title="close">[-]</a>
@@ -724,6 +724,8 @@ function showDialog() {
 						</div>
 				</div>
 			   </div>';
+		echo $retval;
+		return $retval;
 	}
 
 	/**

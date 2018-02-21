@@ -9,8 +9,17 @@ class Ngg_Serializable
 	 */
 	function serialize($value)
 	{
+		// Try encoding using JSON. It's usually Unicode safe but still, sometimes trips over
+		// things
+		$serialized = @json_encode($value);
+
+		if (!$serialized) {
+			$serialized = preg_replace('/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F-\x9F]/u', '', $value);
+			$serialized = @json_encode($serialized);
+		}
+
 		//Using json_encode here because PHP's serialize is not Unicode safe
-		return base64_encode(json_encode($value));
+		return base64_encode($serialized);
 	}
 
 

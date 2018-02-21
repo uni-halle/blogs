@@ -591,7 +591,7 @@ class C_Display_Type_Mapper extends C_CustomPost_DataMapper_Driver
     }
     function initialize($context = FALSE)
     {
-        parent::initialize('display_type');
+        parent::initialize();
     }
     /**
      * Gets a singleton of the mapper
@@ -1482,7 +1482,7 @@ class C_Displayed_Gallery_Mapper extends C_CustomPost_DataMapper_Driver
      */
     function initialize()
     {
-        parent::initialize('displayed_gallery');
+        parent::initialize();
     }
     /**
      * Gets a singleton of the mapper

@@ -2,11 +2,11 @@
 Contributors: photocrati, imagely
 Tags: wordpress gallery plugin, gallery, nextgen, nextgen gallery, photo gallery, image gallery, photography, slideshow, images, photo, photo album, watermark
 Requires at least: 4.0.0
-Stable tag: 2.2.33
-Tested up to: 4.9.1
+Stable tag: 2.2.46
+Tested up to: 4.9.2
 License: GPLv2
 
-The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 18 million downloads.
+The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 20 million downloads.
 
 == Description ==
 
@@ -59,7 +59,7 @@ Learn more or connect with us:<br>
 == Credits ==
 
 Copyright:<br>
-Imagely 2016
+Imagely 2016-2018
 Photocrati Media 2012-2016<br>
 Alex Rabe 2007-2011
 
@@ -187,11 +187,35 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 == Changelog ==
 
-= V2.2.33 - 12.24.2017
-* Fixed:   Certain image attributes were not being validated correctly
+= V2.2.46 - 02.15.2018 =
+* Fixed:   Broken Manage Albums page
 
-= V2.2.30 - 12.13.2017
+= V2.2.45 - 02.14.2018 =
+* NEW:     Partner page for Imagify image optimization
+* Secured: Image property escaping case-sensitive
+* Secured: Vulnerable to CVE-2017-2416 buffer overflows
+* Kudos:   Zhouyuan Yang of Fortinet's FortiGuard Labs
+* Fixed:   Incorrect CSS class format used in form generator text field
+* Fixed:   Clean exit in FastCGI environments
+* Fixed:   Use of deprecated functions
+
+= V2.2.43 - 02.05.2018 =
+* NEW:     Partner page for Imagify image optimization
+* Secured: Image property escaping case-sensitive
+* Secured: Vulnerable to CVE-2017-2416 buffer overflows
+* Kudos:   Zhouyuan Yang of Fortinet's FortiGuard Labs
+* Fixed:   Incorrect CSS class format used in form generator text field
+* Fixed:   Clean exit in FastCGI environments
+
+= V2.2.33 - 12.24.2017 =
+* Secured: Certain image attributes were not being validated correctly
+
+= V2.2.30 - 12.13.2017 =
 * Fixed:   Segfaults on PHP 7.2, 7.1.12, and 7.0.26.
+* Fixed:   Wizards initialized too early.
+* Fixed:   ImageBrowser display types generating warnings on PHP 7.2
+* Fixed:   Widgets causing WSOD on PHP 7.2
+* Fixed:   Removed create_function() calls (deprecated in PHP 7.2)
 
 = V2.2.18 - 12.04.2017 =
 * NEW:     Include PHP 7.2.0 in the warning created by NextGen Gallery 2.2.16

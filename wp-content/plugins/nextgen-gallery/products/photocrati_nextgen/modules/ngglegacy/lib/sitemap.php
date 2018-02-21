@@ -11,15 +11,9 @@ class nggSitemaps {
 
     var $images	= array();
 
-    /**
-     * nggSitemaps::__construct()
-     *
-     * @return
-     */
-    function __construct() {
-
+    function __construct()
+    {
         add_filter('wpseo_sitemap_urlimages', array( &$this, 'add_wpseo_xml_sitemap_images'), 10, 2);
-
     }
 
     /**
@@ -97,7 +91,7 @@ class nggSitemaps {
      * Parse the single image shortcode and return all images into an array
      *
      * @param array $atts
-     * @return
+     * @return string
      */
     function add_images( $atts ) {
 
@@ -110,7 +104,7 @@ class nggSitemaps {
 
         // Some error checks
         if ( count($pids) == 0 )
-            return;
+            return '';
 
         $images = nggdb::find_images_in_list( $pids );
 

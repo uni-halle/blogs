@@ -99,7 +99,7 @@ class nggMeta{
 
         // on request sanitize the output
         if ( $this->sanitize == true )
-            array_walk( $meta , create_function('&$value', '$value = esc_html($value);'));
+            array_walk( $meta , 'esc_html');
 
         return $meta;
     }
@@ -187,7 +187,7 @@ class nggMeta{
 
         // on request sanitize the output
         if ( $this->sanitize == true )
-            array_walk( $this->exif_array , create_function('&$value', '$value = esc_html($value);'));
+            array_walk( $this->exif_array , 'esc_html');
 
         return $this->exif_array;
 
@@ -266,7 +266,7 @@ class nggMeta{
 
         // on request sanitize the output
         if ( $this->sanitize == true )
-            array_walk( $this->iptc_array , create_function('&$value', '$value = esc_html($value);'));
+            array_walk( $this->iptc_array , 'esc_html');
 
         return $this->iptc_array;
     }
@@ -408,7 +408,7 @@ class nggMeta{
 
         // on request sanitize the output
         if ( $this->sanitize == true )
-            array_walk( $this->xmp_array , create_function('&$value', '$value = esc_html($value);'));
+            array_walk( $this->xmp_array , 'esc_html');
 
         return $this->xmp_array;
     }
@@ -421,6 +421,7 @@ class nggMeta{
         } else {
             $array = $value;
         }
+        return $array;
     }
 
     /**
@@ -530,7 +531,7 @@ class nggMeta{
      * Reason : GD manipulation removes that options
      *
      * @since V1.4.0
-     * @return void
+     * @return array
      */
     function get_common_meta() {
         global $wpdb;

@@ -1,0 +1,132 @@
+
+.gallery_page_ngg_imagify_ad #update-nag, 
+.gallery_page_ngg_imagify_ad .update-nag {
+    display:none;
+}
+
+#imagify_upgrade_page {
+    max-width: none;
+}
+
+#imagify_upgrade_page h1 {
+    margin: 40px 0 20px;
+}
+
+#imagify_upgrade_page .about-text {
+    margin-right: 100px;
+}
+
+#imagify_upgrade_page p {
+    min-height: auto;
+    margin: 5px 0;
+    max-width: none;
+    color: #999;
+    width: 30%;
+    /*float: left;*/
+    max-width: 400px;
+    box-sizing: border-box;
+    font-size: 22px;
+}
+
+#imagify_upgrade_page .imagify-information {
+    font-size: 15px;
+    color: black;
+    color: #000;
+    margin: 5px 0 10px;
+}
+
+#imagify_upgrade_page .imagify-information.imagify-third-party {
+    font-weight: bold;
+}
+
+#imagify_upgrade_page .imagify-information a {
+    color: #76a934;
+    text-decoration: none;
+}
+
+#imagify_upgrade_page .feature-section {
+    float: right;
+    width: 62%;
+    max-width: 800px;
+    /*margin-top: 15px;*/
+    box-sizing: border-box;
+    margin-left: 8%;
+    padding: 0;
+    border: 1px solid #eee;
+    margin-top: -70px;
+}
+
+#imagify_upgrade_page img {
+    width: 800px;
+    max-width: 100%;
+}
+
+#imagify_upgrade_page a.button-primary {
+    font-size: 14px;
+    background-color: #76a934;
+    border: none;
+    box-shadow: none;
+    text-transform: uppercase;
+    height: 50px;
+    width: 300px;
+    max-width: 100%;
+    padding: 12px 22px;
+    text-shadow: none;
+    text-align: center;
+    margin: 40px 0 30px;
+    font-weight: bold;
+}
+
+#imagify_upgrade_page .ngg-imagify-third-party {
+    font-weight: bold;
+}
+
+@media (min-width: 1920px) {
+    #imagify_upgrade_page .feature-section {
+        margin-left: 50px;
+    }
+}
+
+@media (max-width: 1350px) {
+    #imagify_upgrade_page .feature-section {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 1300px) {
+    #imagify_upgrade_page p {
+        width: 33%;
+    }
+    #imagify_upgrade_page .feature-section {
+        width: 59%;
+    }
+    #imagify_upgrade_page .about-text {
+        margin-right: 50px;
+    }
+}
+
+@media (max-width: 1150px) {
+    #imagify_upgrade_page p {
+        width: 100%;
+        max-width: 100%;
+        float: none;
+    }
+    #imagify_upgrade_page .feature-section {
+        float: none;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 0;
+    }
+    #imagify_upgrade_page a.button-primary {
+        margin: 40px 0 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    #imagify_upgrade_page h1 {
+        font-size: 2.2em;
+    }
+    #imagify_upgrade_page .about-text {
+        margin-right: 20px;
+    }
+}

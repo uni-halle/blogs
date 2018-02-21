@@ -53,7 +53,7 @@ use lsolesen\pel\PelTag;
  * @package PEL
  * @subpackage Exception
  */
-class PelWrongComponentCountException extends \lsolesen\pel\PelEntryException
+class PelWrongComponentCountException extends PelEntryException
 {
 
     /**

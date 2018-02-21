@@ -236,7 +236,7 @@ class Mixin_Legacy_Template_Locator extends Mixin
     function get_templates_from_dir($dir, $prefix = FALSE)
     {
         if (!is_dir($dir)) {
-            return;
+            return array();
         }
         $dir = new RecursiveDirectoryIterator($dir);
         $iterator = new RecursiveIteratorIterator($dir);

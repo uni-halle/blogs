@@ -755,6 +755,7 @@ class PelIfd implements \IteratorAggregate, \ArrayAccess
              * PelTag::CFA_REPEAT_PATTERN_DIM,
              */
         }
+        return array();
     }
 
     /**

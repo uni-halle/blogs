@@ -209,7 +209,7 @@ class nggdb
      * @param bool $exclude
      * @return An array containing the nggImage objects representing the images in the gallery.
      */
-    function get_ids_from_gallery($id, $order_by = 'sortorder', $order_dir = 'ASC', $exclude = true) {
+    static function get_ids_from_gallery($id, $order_by = 'sortorder', $order_dir = 'ASC', $exclude = true) {
 
         global $wpdb;
 
@@ -738,7 +738,7 @@ class nggdb
 
             // split the words it a array if seperated by a space or comma
             preg_match_all('/".*?("|$)|((?<=[\\s",+])|^)[^\\s",+]+/', $request, $matches);
-            $search_terms = array_map(create_function('$a', 'return trim($a, "\\"\'\\n\\r ");'), $matches[0]);
+            $search_terms = array_map(array($this, 'trim_quotes_and_whitespace'), $matches[0]);
 
             $n = '%';
             $searchand = '';
@@ -783,6 +783,11 @@ class nggdb
         return null;
     }
 
+    function trim_quotes_and_whitespace($str)
+    {
+    	return trim($str, "\"'\n\r");
+    }
+
     /**
      * search for galleries and return the result
      *
@@ -801,7 +806,7 @@ class nggdb
 
             // split the words it a array if seperated by a space or comma
             preg_match_all('/".*?("|$)|((?<=[\\s",+])|^)[^\\s",+]+/', $request, $matches);
-            $search_terms = array_map(create_function('$a', 'return trim($a, "\\"\'\\n\\r ");'), $matches[0]);
+            $search_terms = array_map(array($this, 'trim_quotes_and_whitespace'), $matches[0]);
 
             $n = '%';
             $searchand = '';
@@ -849,7 +854,7 @@ class nggdb
 
             // split the words it a array if seperated by a space or comma
             preg_match_all('/".*?("|$)|((?<=[\\s",+])|^)[^\\s",+]+/', $request, $matches);
-            $search_terms = array_map(create_function('$a', 'return trim($a, "\\"\'\\n\\r ");'), $matches[0]);
+            $search_terms = array_map(array($this, 'trim_quotes_and_whitespace'), $matches[0]);
 
             $n = '%';
             $searchand = '';

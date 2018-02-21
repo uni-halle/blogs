@@ -232,12 +232,8 @@ class simple_html_dom_node
 		if ($echo)
 		{
 			echo $string;
-			return;
 		}
-		else
-		{
-			return $string;
-		}
+		return $string;
 	}
 
 	// returns the parent of node
@@ -757,6 +753,8 @@ class simple_html_dom_node
 			$this->_[HDOM_INFO_QUOTE][] = HDOM_QUOTE_DOUBLE;
 		}
 		$this->attr[$name] = $value;
+
+		return $value;
 	}
 
 	function __isset($name)
@@ -1100,6 +1098,7 @@ class simple_html_dom
 			$this->clear();
 			return false;
 		}
+		return $this;
 	}
 
 	// set callback function
@@ -1629,6 +1628,7 @@ class simple_html_dom
 			$this->pos = $pos;
 			return substr($this->doc, $pos_old, $pos-$pos_old);
 		}
+		return '';
 	}
 
 	// remove noise from html content
@@ -1703,6 +1703,7 @@ class simple_html_dom
 				return $noiseElement;
 			}
 		}
+		return NULL;
 	}
 	function __toString()
 	{
@@ -1724,6 +1725,7 @@ class simple_html_dom
 			case 'target_charset':
 				return $this->_target_charset;
 		}
+		return '';
 	}
 
 	// camel naming conventions
@@ -1738,5 +1740,3 @@ class simple_html_dom
 	function getElementsByTagName($name, $idx=-1) {return $this->find($name, $idx);}
 	function loadFile() {$args = func_get_args();$this->load_file($args);}
 }
-
-?>

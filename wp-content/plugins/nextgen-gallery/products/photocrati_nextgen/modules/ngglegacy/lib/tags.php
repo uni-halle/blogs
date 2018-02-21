@@ -394,5 +394,6 @@ if (!function_exists('nggtags_delete_empty_element')) {
 		if ( !empty($element) ) {
 			return $element;
 		}
+		return NULL;
 	}
 }

@@ -33,6 +33,7 @@ class Mixin_Widget extends Mixin
         $options = array('title' => FALSE, 'items' => $number, 'show' => $show, 'type' => 'random', 'width' => $width, 'height' => $height, 'exclude' => $exclude, 'list' => $list, 'webslice' => FALSE);
         $widget = new C_Widget_Gallery();
         $widget->widget($args = array('widget_id' => 'sidebar_1'), $options);
+        return $widget;
     }
     /**
      * Function for templates without widget support
@@ -44,6 +45,7 @@ class Mixin_Widget extends Mixin
         $options = array('title' => FALSE, 'items' => $number, 'show' => $show, 'type' => 'recent', 'width' => $width, 'height' => $height, 'exclude' => $exclude, 'list' => $list, 'webslice' => FALSE);
         $widget = new C_Widget_Gallery();
         $widget->widget($args = array('widget_id' => 'sidebar_1'), $options);
+        return $widget;
     }
     /**
      * Function for templates without widget support
@@ -57,6 +59,7 @@ class Mixin_Widget extends Mixin
     {
         $widget = new C_Widget_Slideshow();
         $widget->render_slideshow($galleryID, $width, $height);
+        return $widget;
     }
 }
 class C_Widget_Gallery extends WP_Widget

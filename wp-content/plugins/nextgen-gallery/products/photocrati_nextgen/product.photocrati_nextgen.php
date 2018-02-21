@@ -22,6 +22,7 @@ class P_Photocrati_NextGen extends C_Base_Product
 		'photocrati-ajax'                       =>  'always',
 		'photocrati-datamapper'                 =>  'always',
 		'photocrati-nextgen-legacy'             =>  'always',
+		'photocrati-simple_html_dom'            =>  'always',
 		'photocrati-nextgen-data'               =>  'always',
 
 		// We should look at how to make the modules below only
@@ -52,7 +53,8 @@ class P_Photocrati_NextGen extends C_Base_Product
 		'photocrati-widget'                     =>  'always',
 		'photocrati-third_party_compat'         =>  'always',
 		'photocrati-nextgen_xmlrpc'             =>  'always',
-		'photocrati-wpcli'                      =>  'always'
+		'photocrati-wpcli'                      =>  'always',
+        'photocrati-imagify'                    =>  'backend'
 	);
 
 	function get_modules_provided()

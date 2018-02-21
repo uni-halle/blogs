@@ -66,7 +66,7 @@ class nggLoader
 
 			// Pass the init check or show a message
 			if (get_option( 'ngg_init_check' ) != false )
-				add_action( 'admin_notices', create_function('', 'echo \'<div id="message" class="error"><p><strong>' . get_option( "ngg_init_check" ) . '</strong></p></div>\';') );
+				add_action( 'admin_notices', array($this, 'output_init_check_error'));
 
 		} else {
 
@@ -75,6 +75,11 @@ class nggLoader
 				add_action('wp_head', array('nggMediaRss', 'add_mrss_alternate_link'));
 
 		}
+	}
+
+	function output_init_check_error()
+	{
+		echo sprintf("<div id='message' class='error'><p><strong>%s</strong></p></div>", esc_html(get_option('ngg_init_check')));
 	}
 
 	function required_version() {
@@ -87,16 +92,21 @@ class nggLoader
 		if ( ($wp_ok == FALSE) ) {
 			add_action(
 				'admin_notices',
-				create_function(
-					'',
-					'global $ngg; printf (\'<div id="message" class="error"><p><strong>\' . __(\'Sorry, NextGEN Gallery works only under WordPress %s or higher\', "nggallery" ) . \'</strong></p></div>\', $ngg->minimum_WP );'
-				)
+				array($this, 'output_minimum_wp_version_error')
 			);
 			return false;
 		}
 
 		return true;
 
+	}
+
+	function output_minimum_wp_version_error()
+	{
+		echo sprintf(
+			"<div id='message' class='error'><p><strong>%s</strong></p></div>",
+			sprintf(__("Sorry, NextGEN Gallery works only under WordPress %s or higher.", 'nggallery'), $this->minimum_WP)
+		);
 	}
 
 	function check_memory_limit() {
@@ -113,13 +123,10 @@ class nggLoader
 			$this->memory_limit = (int) substr( $this->memory_limit, 0, -1);
 
 			//This works only with enough memory, 16MB is silly, wordpress requires already 16MB :-)
-			if ( ($this->memory_limit != 0) && ($this->memory_limit < 16 ) ) {
+			if ( ($this->memory_limit != 0) && ($this->memory_limit < 32 ) ) {
 				add_action(
 					'admin_notices',
-					create_function(
-						'',
-						'echo \'<div id="message" class="error"><p><strong>' . __('Sorry, NextGEN Gallery works only with a Memory Limit of 16 MB or higher', 'nggallery') . '</strong></p></div>\';'
-					)
+					array($this, 'output_memory_limit_error')
 				);
 				return false;
 			}
@@ -127,6 +134,14 @@ class nggLoader
 
 		return true;
 
+	}
+
+	function output_memory_limit_error()
+	{
+		echo sprintf(
+			"<div id='message' class='error'><p><strong>%s</strong></p>",
+			__("Sorry, NextGEN Gallery works only with a memory limit of 32MB or higher")
+		);
 	}
 
 	function define_tables() {
@@ -261,12 +276,6 @@ class nggLoader
 		if( isset($option->response[ $this->plugin_name ]) ){
 			//Clear it''s download link
 			$option->response[ $this->plugin_name ]->package = '';
-
-			//Add a notice message
-			if ($this->add_PHP5_notice == false){
-				add_action( "in_plugin_update_message-$this->plugin_name", create_function('', 'echo \'<br /><span style="color:red">Please update to PHP5.2 as soon as possible, the plugin is not tested under PHP4 anymore</span>\';') );
-				$this->add_PHP5_notice = true;
-			}
 		}
 		return $option;
 	}
@@ -286,11 +295,21 @@ class nggLoader
 
 		// If test-head query var exists hook into wp_head
 		if ( isset( $_GET['test-head'] ) )
-			add_action( 'wp_head', create_function('', 'echo \'<!--wp_head-->\';'), 99999 );
+			add_action( 'wp_head', array($this, 'output_wp_head_comment'), 99999 );
 
 		// If test-footer query var exists hook into wp_footer
 		if ( isset( $_GET['test-footer'] ) )
-			add_action( 'wp_footer', create_function('', 'echo \'<!--wp_footer-->\';'), 99999 );
+			add_action( 'wp_footer', array($this, 'output_wp_footer_comment'), 99999 );
+	}
+
+	function output_wp_head_comment()
+	{
+		echo "<!--wp_user-->";
+	}
+
+	function output_wp_footer_comment()
+	{
+		echo "<!--wp_footer-->";
 	}
 }
 

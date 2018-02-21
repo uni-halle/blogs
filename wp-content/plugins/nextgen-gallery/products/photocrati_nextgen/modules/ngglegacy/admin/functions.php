@@ -710,11 +710,12 @@ class nggAdmin{
     static function do_ajax_operation( $operation, $image_array, $title = '' ) {
 
         if ( !is_array($image_array) || empty($image_array) )
-            return;
+            return '';
 
         $js_array  = implode('","', $image_array);
 
         // send out some JavaScript, which initate the ajax operation
+        ob_start();
         ?>
         <script type="text/javascript">
 
@@ -732,8 +733,10 @@ class nggAdmin{
                 nggAjax.init( nggAjaxOptions );
             } );
         </script>
-
     <?php
+        $script = ob_get_clean();
+        echo $script;
+        return $script;
     }
 
     /**

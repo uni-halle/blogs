@@ -91,7 +91,7 @@ class A_NextGen_Album_Breadcrumbs extends Mixin
                         $found[] = $album;
                         break;
                     } else {
-                        $found = $this->find_gallery_parent($gallery_id, $album->sortorder, $found);
+                        $found = $this->find_gallery_parent($gallery_id, $album->sortorder);
                         if ($found) {
                             $found[] = $album;
                             break;
@@ -433,7 +433,7 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
         if ($gallery && strpos($gallery, 'nggpage--') !== 0) {
             // basic albums only support one per post
             if (isset($GLOBALS['nggShowGallery'])) {
-                return;
+                return '';
             }
             $GLOBALS['nggShowGallery'] = TRUE;
             // Try finding the gallery by slug first. If nothing is found, we assume that

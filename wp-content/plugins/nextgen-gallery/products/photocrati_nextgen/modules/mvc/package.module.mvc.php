@@ -612,6 +612,7 @@ class Mixin_Mvc_View_Instance_Methods extends Mixin
                 $this->end_element();
             }
         }
+        return NULL;
     }
     /**
      * Gets the absolute path of an MVC template file

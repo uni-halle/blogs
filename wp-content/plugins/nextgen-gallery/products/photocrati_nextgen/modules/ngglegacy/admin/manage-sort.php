@@ -77,7 +77,7 @@ function nggallery_sortorder($galleryID = 0){
 			// Listen for events in other frames
 			if (window.Frame_Event_Publisher) {
 				Frame_Event_Publisher.listen_for('attach_to_post:manage_galleries attach_to_post:manage_images', function(){
-					window.location.href = window.location.href;
+					window.location.href = window.location.href.toString();
 				});
 			}
 

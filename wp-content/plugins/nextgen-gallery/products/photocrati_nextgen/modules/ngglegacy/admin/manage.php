@@ -592,6 +592,9 @@ class nggManageGallery {
 								nggGallery::show_message(sprintf(__('One or more "../" in Gallery paths could be unsafe and NextGen Gallery will not delete gallery %s automatically', 'nggallery'), $gallery->{$gallery->id_field}));
 							}
 							else {
+								/**
+								 * @var $mapper Mixin_Gallery_Mapper
+								 */
 								if ($mapper->destroy($id, TRUE))
 									$deleted = TRUE;
 							}
@@ -1117,6 +1120,7 @@ class nggManageGallery {
 		$pagination = "<div class='tablenav-pages{$page_class}'>$output</div>";
 
 		echo $pagination;
+		return $pagination;
 	}
 
 }

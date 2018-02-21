@@ -542,6 +542,7 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin
                 return $this->object->render_partial("photocrati-nextgen_gallery_display#no_images_found", array(), $return);
             }
         }
+        return '';
     }
     /**
      * Enqueues all static resources required by this display type

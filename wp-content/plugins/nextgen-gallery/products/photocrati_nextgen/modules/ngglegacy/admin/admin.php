@@ -138,6 +138,7 @@ class nggAdminPanel{
 								window.location.search = '?skipjs[{$skipjs_count}]='+url;
 							}
 						}
+						console.error(msg)
 						return true;
 					};</script>\n",
 					$html

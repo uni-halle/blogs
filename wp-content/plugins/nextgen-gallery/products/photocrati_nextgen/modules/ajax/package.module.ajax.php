@@ -11,7 +11,7 @@ class C_Ajax_Controller extends C_MVC_Controller
         parent::define($context);
         $this->implement('I_Ajax_Controller');
     }
-    function index_action()
+    function index_action($return = FALSE)
     {
         $retval = NULL;
         // Inform the MVC framework what type of content we're returning

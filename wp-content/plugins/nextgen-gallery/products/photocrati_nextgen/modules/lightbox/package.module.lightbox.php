@@ -318,7 +318,7 @@ class C_NGG_Lightbox extends C_Component
     }
     function initialize($name = '', $properties = array())
     {
-        parent::initialize($name);
+        parent::initialize();
         $properties['name'] = $name;
         foreach ($properties as $k => $v) {
             $this->{$k} = $v;

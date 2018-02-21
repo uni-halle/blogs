@@ -249,7 +249,7 @@ class M_Gallery_Display extends C_Base_Module
 	/**
 	 * Gets the src url for the registered fontawesome handler
 	 * @param bool $ngg_provided_only
-	 * @return null|string|void
+	 * @return null|string
 	 */
 	static function get_fontawesome_url($ngg_provided_only=FALSE)
 	{
@@ -322,7 +322,7 @@ class M_Gallery_Display extends C_Base_Module
       $taglist = implode(',', $sluglist);
 
       if ($taglist === 'uncategorized' || empty($taglist))
-          return;
+          return '';
 
       $renderer = C_Displayed_Gallery_Renderer::get_instance();
       $view     = C_Component_Factory::get_instance()->create('mvc_view', '');

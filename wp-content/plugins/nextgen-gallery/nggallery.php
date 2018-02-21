@@ -3,8 +3,8 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 
 /**
  * Plugin Name: NextGEN Gallery
- * Description: The most popular gallery plugin for WordPress and one of the most popular plugins of all time with over 18 million downloads.
- * Version: 2.2.33
+ * Description: The most popular gallery plugin for WordPress and one of the most popular plugins of all time with over 20 million downloads.
+ * Version: 2.2.46
  * Author: Imagely
  * Plugin URI: https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/
  * Author URI: https://www.imagely.com
@@ -85,14 +85,25 @@ class C_NextGEN_Bootstrap
 
 	static function shutdown($exception=NULL)
 	{
-		if (is_null($exception)) {
-			throw new E_Clean_Exit;
-		}
+		if (is_null($exception))
+		{
+            $name = php_sapi_name();
+            if (FALSE === strpos($name, 'cgi')
+            &&  version_compare(PHP_VERSION, '5.3.3') >= 0)
+            {
+                $status = session_status();
+                if (in_array($status, array(PHP_SESSION_DISABLED, PHP_SESSION_NONE), TRUE))
+                    session_write_close();
+                fastcgi_finish_request();
+            }
+            else {
+                throw new E_Clean_Exit;
+            }
+        }
 		elseif (!($exception instanceof E_Clean_Exit)) {
 			ob_end_clean();
 			self::print_exception($exception);
 		}
-
 	}
 
 	static function print_exception($exception)
@@ -661,7 +672,7 @@ class C_NextGEN_Bootstrap
 		define('NGG_PRODUCT_URL', path_join(str_replace("\\", '/', NGG_PLUGIN_URL), 'products'));
 		define('NGG_MODULE_URL', path_join(str_replace("\\", '/', NGG_PRODUCT_URL), 'photocrati_nextgen/modules'));
 		define('NGG_PLUGIN_STARTED_AT', microtime());
-		define('NGG_PLUGIN_VERSION', '2.2.33');
+		define('NGG_PLUGIN_VERSION', '2.2.46');
 
 		if (defined('SCRIPT_DEBUG') && SCRIPT_DEBUG)
 			define('NGG_SCRIPT_VERSION', (string)mt_rand(0, mt_getrandmax()));

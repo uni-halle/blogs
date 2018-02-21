@@ -152,7 +152,7 @@ class C_NGG_Admin_Overview
  * nggallery_admin_overview()
  *
  * Add the admin overview the dashboard style
- * @return mixed content
+ * @return NULL
  */
 function nggallery_admin_overview()
 {
@@ -397,4 +397,5 @@ function nggallery_admin_overview()
     </div>
 
     <?php
+    return NULL;
 }

@@ -447,7 +447,7 @@ class Mixin_CustomPost_DataMapper_Driver extends Mixin
             if ($this->is_select_statement()) {
                 $this->object->cache($cache_key, $results);
             }
-            remove_action('pre_get_posts', array(&$this, 'set_query_args'), PHP_INT_MAX - 1, 1);
+            remove_action('pre_get_posts', array(&$this, 'set_query_args'), PHP_INT_MAX - 1);
         }
         // Convert the result
         if ($convert_to_entities) {
@@ -1108,11 +1108,11 @@ class C_CustomTable_DataMapper_Driver extends C_DataMapper_Driver_Base
     }
     function initialize($object_name = FALSE)
     {
-        parent::initialize($object_name);
+        parent::initialize();
         if (!isset($this->_primary_key_column)) {
             $this->_primary_key_column = $this->_lookup_primary_key_column();
         }
-        $this->migrate(FALSE);
+        $this->migrate();
     }
     /**
      * Returns the database connection object for WordPress
@@ -1578,7 +1578,7 @@ class Mixin_DataMapper_Driver_Base extends Mixin
      * implementation. The implementation should make use of the
      * _set_default_value() method
      */
-    function set_defaults()
+    function set_defaults($stdObject)
     {
     }
     function has_default_values($entity)

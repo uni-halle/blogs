@@ -590,6 +590,9 @@ class C_NextGen_API extends C_Component
                         $error = null;
                         if ($gallery != null) {
                             if ($task_type == 'gallery_remove') {
+                                /**
+                                 * @var $mapper Mixin_Gallery_Mapper
+                                 */
                                 if (!$mapper->destroy($gallery, true)) {
                                     $error = __('Failed to remove gallery (%1$s).', 'nggallery');
                                 }
