@@ -8,7 +8,8 @@
 
 /* -- button */
 .infogr_btn_new {
-  background: url(../img/fav.jpg) no-repeat 7px center #f7f7f7;
+  background: url(../img/fav.png) no-repeat 7px center #f7f7f7;
+  background-size: 16px;
   border-color: #ccc;
   box-shadow: 0 1px 0 #fff inset, 0 1px 0 rgba(0, 0, 0, 0.08);
   color: #555;
