@@ -429,7 +429,7 @@ add_action( 'after_setup_theme', 'menalib_custom_header_setup' );
 	https://premium.wpmudev.org/blog/wordpress-pages-like-posts/
  */
 
-add_filter( 'pre_get_posts', 'my_get_posts' );
+// add_filter( 'pre_get_posts', 'my_get_posts' );
  function my_get_posts( $query ) 
  {
 	 if ( is_home() && false == $query->query_vars['suppress_filters'] )
@@ -440,6 +440,34 @@ add_filter( 'pre_get_posts', 'my_get_posts' );
 /*
 	***
 */
+
+
+/*
+	Enable iframe support, stop editor stripping out some code like iframe
+	https://wordpress.stackexchange.com/questions/3041/make-wordpress-wysiwyg-not-strip-out-iframes
+*/
+
+
+
+
+function fb_change_mce_options( $initArray ) 
+{
+
+	// Comma separated string od extendes tags
+	// Command separated string of extended elements
+	$ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src]';
+
+	if ( isset( $initArray['extended_valid_elements'] ) ) {
+	    $initArray['extended_valid_elements'] .= ',' . $ext;
+	} else {
+	    $initArray['extended_valid_elements'] = $ext;
+	}
+	// maybe; set tiny paramter verify_html
+	//$initArray['verify_html'] = false;
+
+	return $initArray;
+}
+add_filter( 'tiny_mce_before_init', 'fb_change_mce_options' );
 
 
 /*
