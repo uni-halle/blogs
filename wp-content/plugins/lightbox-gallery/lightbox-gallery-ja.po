@@ -2,70 +2,70 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Lightbox Gallery\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-28 02:04+0900\n"
-"PO-Revision-Date: 2015-02-16 17:39+0900\n"
+"POT-Creation-Date: 2018-02-17 22:08+0900\n"
+"PO-Revision-Date: 2018-02-17 22:08+0900\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-KeywordsList: __;_e;_c\n"
-"X-Poedit-Basepath: ../\n"
-"Language: ja_JP\n"
-"X-Generator: Poedit 1.6.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-SearchPath-0: lightbox-gallery\n"
 
-#: lightbox-gallery/lightbox-gallery.php:229
+#: lightbox-gallery/lightbox-gallery.php:250
 msgid "Settings"
 msgstr "設定"
 
-#: lightbox-gallery/lightbox-gallery.php:244
-#: lightbox-gallery/lightbox-gallery.php:290
+#: lightbox-gallery/lightbox-gallery.php:265
+#: lightbox-gallery/lightbox-gallery.php:318
 msgid "Lightbox Gallery"
 msgstr "Lightbox Gallery"
 
-#: lightbox-gallery/lightbox-gallery.php:260
+#: lightbox-gallery/lightbox-gallery.php:282
 msgid "Options updated."
 msgstr "オプションは更新されました。"
 
-#: lightbox-gallery/lightbox-gallery.php:264
+#: lightbox-gallery/lightbox-gallery.php:286
 msgid "Options deleted."
 msgstr "オプションは削除されました。"
 
-#: lightbox-gallery/lightbox-gallery.php:274
+#: lightbox-gallery/lightbox-gallery.php:296
 msgid "Scripts downloaded."
 msgstr "スクリプトがダウンロードされました。"
 
-#: lightbox-gallery/lightbox-gallery.php:276
+#: lightbox-gallery/lightbox-gallery.php:298
 msgid "Download failed."
 msgstr "ダウンロードは失敗しました。"
 
-#: lightbox-gallery/lightbox-gallery.php:297
-#: lightbox-gallery/lightbox-gallery.php:392
-#: lightbox-gallery/lightbox-gallery.php:413
-#: lightbox-gallery/lightbox-gallery.php:426
-#: lightbox-gallery/lightbox-gallery.php:442
+#: lightbox-gallery/lightbox-gallery.php:325
+#: lightbox-gallery/lightbox-gallery.php:446
+#: lightbox-gallery/lightbox-gallery.php:467
+#: lightbox-gallery/lightbox-gallery.php:481
+#: lightbox-gallery/lightbox-gallery.php:497
 msgid "Click to toggle"
 msgstr "クリックで切替"
 
-#: lightbox-gallery/lightbox-gallery.php:298
+#: lightbox-gallery/lightbox-gallery.php:326
 msgid "Lightbox Gallery Options"
 msgstr "Lightbox Gallery オプション"
 
-#: lightbox-gallery/lightbox-gallery.php:307
+#: lightbox-gallery/lightbox-gallery.php:335
 msgid "Choose the gallery loading type"
 msgstr "ギャラリー読込タイプを選択してください"
 
-#: lightbox-gallery/lightbox-gallery.php:308
+#: lightbox-gallery/lightbox-gallery.php:336
 msgid "Colorbox"
 msgstr "Colorbox"
 
-#: lightbox-gallery/lightbox-gallery.php:312
+#: lightbox-gallery/lightbox-gallery.php:340
 msgid "Lightbox"
 msgstr "Lightbox"
 
-#: lightbox-gallery/lightbox-gallery.php:317
+#: lightbox-gallery/lightbox-gallery.php:345
 #, php-format
 msgid ""
 "Due to the license regulation by the plugin directory, it is impossible to "
@@ -78,23 +78,11 @@ msgstr ""
 "\">ダウンロード</a>し、`jquery.lightbox.js`を`/lightbox-gallery/js/`に設置し"
 "てください。"
 
-#: lightbox-gallery/lightbox-gallery.php:323
+#: lightbox-gallery/lightbox-gallery.php:351
 msgid "Highslide JS"
 msgstr "Highslide JS"
 
-#: lightbox-gallery/lightbox-gallery.php:325
-#, php-format
-msgid ""
-"Caution: Highslide JS is licensed under a Creative Commons Attribution-"
-"NonCommercial 2.5 License. You need the author's permission to use Highslide "
-"JS on commercial websites. <a href=\"%s\" target=\"_blank\">Please look at "
-"the author's website.</a>"
-msgstr ""
-"注意： Highslide JSは、Creative Commons 表示-非営利 2.5 一般のライセンスで"
-"す。Highslide JSを商用ウェブサイトで使用するには著作者の許可が必要です。<a "
-"href=\"%s\" target=\"_blank\">著作者のウェブサイトをご覧ください。</a>"
-
-#: lightbox-gallery/lightbox-gallery.php:331
+#: lightbox-gallery/lightbox-gallery.php:363
 #, php-format
 msgid ""
 "You can change the lightbox view to the highslide. Just <a href=\"%s\" "
@@ -105,95 +93,120 @@ msgstr ""
 "\"%s\" target=\"_blank\">ダウンロード</a>し、`highslide.js`を`/lightbox-"
 "gallery/js/`に設置してください。"
 
-#: lightbox-gallery/lightbox-gallery.php:339
+#: lightbox-gallery/lightbox-gallery.php:371
+msgid "Colorbox CSS"
+msgstr "Colorbox CSS"
+
+#: lightbox-gallery/lightbox-gallery.php:384
+msgid "Colorbox default settings"
+msgstr "Colorbox デフォルト設定"
+
+#: lightbox-gallery/lightbox-gallery.php:386
+#, php-format
+msgid ""
+"You can set the additional settings for Colorbox. See <a href=\"%s\" target="
+"\"_blank\">Colorbox official site</a> in detail."
+msgstr ""
+"Colorbox の追加設定をセットできます。詳細は、<a href=\"%s\" target=\"_blank"
+"\">Colorbox オフィシャルサイト</a>をご覧ください。"
+
+#: lightbox-gallery/lightbox-gallery.php:389
+msgid "Hide the counter text"
+msgstr "カウンターテキストを隠す"
+
+#: lightbox-gallery/lightbox-gallery.php:390
+msgid "Hide the counter text like \"image 3 of 5\""
+msgstr "\"image 3 of 5\" などのカウンターテキストを隠します"
+
+#: lightbox-gallery/lightbox-gallery.php:393
 msgid ""
 "In case that you would like to use the lightbox in certain categories (comma-"
 "deliminated)"
 msgstr "特定のカテゴリーでLightboxを使用したい場合（カンマ区切り）"
 
-#: lightbox-gallery/lightbox-gallery.php:343
+#: lightbox-gallery/lightbox-gallery.php:397
 msgid ""
 "In case that you would like to use the lightbox in certain pages (comma-"
 "deliminated)"
 msgstr "特定のページでLightboxを使用したい場合（カンマ区切り）"
 
-#: lightbox-gallery/lightbox-gallery.php:347
+#: lightbox-gallery/lightbox-gallery.php:401
 msgid "Enforce loading the lightbox gallery scripts"
 msgstr "lightbox galleryスクリプトの読み込みを強制する"
 
-#: lightbox-gallery/lightbox-gallery.php:348
+#: lightbox-gallery/lightbox-gallery.php:402
 msgid "The lightbox gallery scripts are loaded in every page"
 msgstr "lightbox galleryスクリプトはすべてのページで読み込まれます"
 
-#: lightbox-gallery/lightbox-gallery.php:351
+#: lightbox-gallery/lightbox-gallery.php:405
 msgid "Add rel=&quot;lightbox&quot; automatically in the post insert"
 msgstr "投稿挿入時に自動的に rel=&quot;lightbox&quot; を追加する"
 
-#: lightbox-gallery/lightbox-gallery.php:352
+#: lightbox-gallery/lightbox-gallery.php:406
 msgid "Do not forget to check the script enforcement option above with this"
 msgstr "上記のスクリプト強制読込オプションも忘れずにチェックしてください"
 
-#: lightbox-gallery/lightbox-gallery.php:355
+#: lightbox-gallery/lightbox-gallery.php:409
 msgid "In case that you would like to disable to load the lightbox-gallery.css"
 msgstr "lightbox-gallery.cssの読み込みを禁止する場合"
 
-#: lightbox-gallery/lightbox-gallery.php:356
+#: lightbox-gallery/lightbox-gallery.php:410
 msgid "Do not use the lightbox-gallery.css"
 msgstr "lightbox-gallery.cssを使用しない"
 
-#: lightbox-gallery/lightbox-gallery.php:359
+#: lightbox-gallery/lightbox-gallery.php:413
 msgid "In case that you would like to disable to load the column inline css"
 msgstr "カラムのインラインcssの読み込みを禁止する場合"
 
-#: lightbox-gallery/lightbox-gallery.php:360
+#: lightbox-gallery/lightbox-gallery.php:414
 msgid "Do not use the column inline css"
 msgstr "カラムのインラインcssを使用しない"
 
-#: lightbox-gallery/lightbox-gallery.php:363
+#: lightbox-gallery/lightbox-gallery.php:417
 msgid "In case that you would like to set the default number of columns"
 msgstr "デフォルトのカラム数をセットする場合"
 
-#: lightbox-gallery/lightbox-gallery.php:367
+#: lightbox-gallery/lightbox-gallery.php:421
 msgid "In case that you would like to set the default thumbnail size"
 msgstr "デフォルトのサムネイルサイズをセットする場合"
 
-#: lightbox-gallery/lightbox-gallery.php:371
+#: lightbox-gallery/lightbox-gallery.php:425
 msgid "In case that you would like to set the default lightbox size"
 msgstr "デフォルトのlightboxサイズをセットする場合"
 
-#: lightbox-gallery/lightbox-gallery.php:378
+#: lightbox-gallery/lightbox-gallery.php:432
 msgid "Choose the script loading point"
 msgstr "スクリプトの読込ポイントを選択してください"
 
-#: lightbox-gallery/lightbox-gallery.php:379
+#: lightbox-gallery/lightbox-gallery.php:433
 msgid "Header"
 msgstr "ヘッダー"
 
-#: lightbox-gallery/lightbox-gallery.php:380
+#: lightbox-gallery/lightbox-gallery.php:434
 msgid "Footer"
 msgstr "フッター"
 
-#: lightbox-gallery/lightbox-gallery.php:383
+#: lightbox-gallery/lightbox-gallery.php:437
 msgid "Update Options &raquo;"
 msgstr "オプションを更新する &raquo;"
 
-#: lightbox-gallery/lightbox-gallery.php:393
+#: lightbox-gallery/lightbox-gallery.php:447
 msgid "Delete Options"
 msgstr "オプションを削除する"
 
-#: lightbox-gallery/lightbox-gallery.php:395
+#: lightbox-gallery/lightbox-gallery.php:449
 msgid "Are you sure to delete options? Options you set will be deleted."
 msgstr "本当にオプションを削除しますか？設定したオプションは削除されます。"
 
-#: lightbox-gallery/lightbox-gallery.php:399
+#: lightbox-gallery/lightbox-gallery.php:453
 msgid "Delete Options &raquo;"
 msgstr "オプションを削除する &raquo;"
 
-#: lightbox-gallery/lightbox-gallery.php:414
+#: lightbox-gallery/lightbox-gallery.php:468
 msgid "Script Auto Download"
 msgstr "スクリプト自動ダウンロード"
 
-#: lightbox-gallery/lightbox-gallery.php:416
+#: lightbox-gallery/lightbox-gallery.php:470
 msgid ""
 "Just push the button and `jquery.lightbox.js` and `highslide.js` will be "
 "downloaded automatically."
@@ -201,15 +214,15 @@ msgstr ""
 "このボタンを押すだけで、`jquery.lightbox.js` と `highslide.js` を自動的にダウ"
 "ンロードします。"
 
-#: lightbox-gallery/lightbox-gallery.php:418
+#: lightbox-gallery/lightbox-gallery.php:472
 msgid "Download Scripts &raquo;"
 msgstr "スクリプトダウンロード &raquo;"
 
-#: lightbox-gallery/lightbox-gallery.php:427
+#: lightbox-gallery/lightbox-gallery.php:482
 msgid "Donation"
 msgstr "寄付"
 
-#: lightbox-gallery/lightbox-gallery.php:429
+#: lightbox-gallery/lightbox-gallery.php:484
 msgid ""
 "If you liked this plugin, please make a donation via paypal! Any amount is "
 "welcome. Your support is much appreciated."
@@ -217,11 +230,11 @@ msgstr ""
 "このプラグインをお気に召しましたら、Paypalよりご寄付をよろしくお願いいたしま"
 "す。"
 
-#: lightbox-gallery/lightbox-gallery.php:443
+#: lightbox-gallery/lightbox-gallery.php:498
 msgid "CMS x WP"
 msgstr "CMS×WP"
 
-#: lightbox-gallery/lightbox-gallery.php:445
+#: lightbox-gallery/lightbox-gallery.php:500
 msgid ""
 "There are much more plugins which are useful for developing business "
 "websites such as membership sites or ec sites. You could totally treat "
@@ -230,45 +243,65 @@ msgstr ""
 "会員制サイトやECサイトなどのビジネスサイト構築に役立つプラグインが盛りだくさ"
 "ん。CMS×WPのプラグインで WordPress が CMS として大いに活躍します。"
 
-#: lightbox-gallery/lightbox-gallery.php:446
+#: lightbox-gallery/lightbox-gallery.php:501
 msgid "WordPress plugin sales site: CMS x WP"
 msgstr "WordPress のプラグイン販売サイト CMS×WP"
 
-#: lightbox-gallery/lightbox-gallery.php:520
+#: lightbox-gallery/lightbox-gallery.php:588
 msgid "Pages:"
 msgstr "ページ："
 
-#: lightbox-gallery/lightbox-gallery.php:522
+#: lightbox-gallery/lightbox-gallery.php:590
 msgid "Next page"
 msgstr "次のページ"
 
-#: lightbox-gallery/lightbox-gallery.php:523
+#: lightbox-gallery/lightbox-gallery.php:591
 msgid "Previous page"
 msgstr "前のページ"
 
-#: lightbox-gallery/lightbox-gallery.php:615
+#: lightbox-gallery/lightbox-gallery.php:711
 msgid "camera"
 msgstr "機種"
 
-#: lightbox-gallery/lightbox-gallery.php:617
+#: lightbox-gallery/lightbox-gallery.php:713
 msgid "aperture"
 msgstr "絞り値"
 
-#: lightbox-gallery/lightbox-gallery.php:619
+#: lightbox-gallery/lightbox-gallery.php:715
 msgid "focal_length"
 msgstr "焦点距離"
 
-#: lightbox-gallery/lightbox-gallery.php:621
+#: lightbox-gallery/lightbox-gallery.php:717
 msgid "ISO"
 msgstr "ISO"
 
-#: lightbox-gallery/lightbox-gallery.php:625
+#: lightbox-gallery/lightbox-gallery.php:721
 msgid "shutter_speed"
 msgstr "シャッタースピード"
 
-#: lightbox-gallery/lightbox-gallery.php:628
+#: lightbox-gallery/lightbox-gallery.php:724
 msgid "created_timestamp"
 msgstr "撮影日時"
+
+#~ msgid "Colorbox css"
+#~ msgstr "Colorbox css"
+
+#~ msgid ""
+#~ "You can set the additional settings for Colorbox. See <a href=\"%s\" "
+#~ "target=\"_blank\">Colorbox official site</a>."
+#~ msgstr ""
+#~ "Colorbox の追加設定をセットできます。詳細は、<a href=\"%s\" target="
+#~ "\"_blank\">Colorbox オフィシャルサイト</a>をご覧ください。"
+
+#~ msgid ""
+#~ "Caution: Highslide JS is licensed under a Creative Commons Attribution-"
+#~ "NonCommercial 2.5 License. You need the author's permission to use "
+#~ "Highslide JS on commercial websites. <a href=\"%s\" target=\"_blank"
+#~ "\">Please look at the author's website.</a>"
+#~ msgstr ""
+#~ "注意： Highslide JSは、Creative Commons 表示-非営利 2.5 一般のライセンスで"
+#~ "す。Highslide JSを商用ウェブサイトで使用するには著作者の許可が必要です。"
+#~ "<a href=\"%s\" target=\"_blank\">著作者のウェブサイトをご覧ください。</a>"
 
 #~ msgid ""
 #~ "In case that you would like to disable to load the jquery.lightbox.css"

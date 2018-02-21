@@ -1,10 +1,10 @@
 /** 
  * Name:    Highslide JS
- * Version: 4.1.13 (2011-10-06)
+ * Version: 5.0.0 (2016-05-24)
  * Config:  default
  * Author:  Torstein Hønsi
  * Support: www.highslide.com/support
- * License: www.highslide.com/#license
+ * License: MIT
  */
 if (!hs) { var hs = {
 // Language strings
@@ -100,8 +100,7 @@ timers : [],
 pendingOutlines : {},
 clones : {},
 onReady: [],
-uaVersion: /Trident\/4\.0/.test(navigator.userAgent) ? 8 :
-	parseFloat((navigator.userAgent.toLowerCase().match( /.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/ ) || [0,'0'])[1]),
+uaVersion: document.documentMode ||	parseFloat((navigator.userAgent.toLowerCase().match( /.+(?:rv|it|ra|ie)[\/: ]([\d.]+)/ ) || [0,'0'])[1]),
 ie : (document.all && !window.opera),
 //ie : navigator && /MSIE [678]/.test(navigator.userAgent), // ie9 compliant?
 safari : /Safari/.test(navigator.userAgent),
@@ -1828,7 +1827,6 @@ afterClose : function () {
 	
 	this.doShowHide('visible');
 		if (this.outline && this.outlineWhileAnimating) this.outline.destroy();
-	
 		hs.discardElement(this.wrapper);
 	
 	hs.expanders[this.key] = null;		

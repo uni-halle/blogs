@@ -1,5 +1,5 @@
 /*!
-	Colorbox 1.5.14
+	Colorbox 1.6.4
 	license: MIT
 	http://www.jacklmoore.com/colorbox
 */
@@ -85,6 +85,39 @@
 		},
 		title: function() {
 			return this.title;
+		},
+		createImg: function() {
+			var img = new Image();
+			var attrs = $(this).data('cbox-img-attrs');
+
+			if (typeof attrs === 'object') {
+				$.each(attrs, function(key, val){
+					img[key] = val;
+				});
+			}
+
+			return img;
+		},
+		createIframe: function() {
+			var iframe = document.createElement('iframe');
+			var attrs = $(this).data('cbox-iframe-attrs');
+
+			if (typeof attrs === 'object') {
+				$.each(attrs, function(key, val){
+					iframe[key] = val;
+				});
+			}
+
+			if ('frameBorder' in iframe) {
+				iframe.frameBorder = 0;
+			}
+			if ('allowTransparency' in iframe) {
+				iframe.allowTransparency = "true";
+			}
+			iframe.name = (new Date()).getTime(); // give the iframe a unique name to prevent caching
+			iframe.allowFullscreen = true;
+
+			return iframe;
 		}
 	},
 
@@ -122,7 +155,7 @@
 	$prev,
 	$close,
 	$groupControls,
-	$events = $('<a/>'), // $({}) would be prefered, but there is an issue with jQuery 1.4.2
+	$events = $('<a/>'), // $({}) would be preferred, but there is an issue with jQuery 1.4.2
 
 	// Variables for cached values or use across multiple functions
 	settings,
@@ -380,8 +413,8 @@
 				var maxWidth = settings.get('maxWidth');
 				var maxHeight = settings.get('maxHeight');
 
-				settings.w = (maxWidth !== false ? Math.min(initialWidth, setSize(maxWidth, 'x')) : initialWidth) - loadedWidth - interfaceWidth;
-				settings.h = (maxHeight !== false ? Math.min(initialHeight, setSize(maxHeight, 'y')) : initialHeight) - loadedHeight - interfaceHeight;
+				settings.w = Math.max((maxWidth !== false ? Math.min(initialWidth, setSize(maxWidth, 'x')) : initialWidth) - loadedWidth - interfaceWidth, 0);
+				settings.h = Math.max((maxHeight !== false ? Math.min(initialHeight, setSize(maxHeight, 'y')) : initialHeight) - loadedHeight - interfaceHeight, 0);
 
 				$loaded.css({width:'', height:settings.h});
 				publicMethod.position();
@@ -451,7 +484,7 @@
 				$current = $tag(div, "Current"),
 				$prev = $('<button type="button"/>').attr({id:prefix+'Previous'}),
 				$next = $('<button type="button"/>').attr({id:prefix+'Next'}),
-				$slideshow = $tag('button', "Slideshow"),
+				$slideshow = $('<button type="button"/>').attr({id:prefix+'Slideshow'}),
 				$loadingOverlay
 			);
 
@@ -834,15 +867,8 @@
 			}
 
 			if (settings.get('iframe')) {
-				iframe = document.createElement('iframe');
 
-				if ('frameBorder' in iframe) {
-					iframe.frameBorder = 0;
-				}
-
-				if ('allowTransparency' in iframe) {
-					iframe.allowTransparency = "true";
-				}
+				iframe = settings.get('createIframe');
 
 				if (!settings.get('scrolling')) {
 					iframe.scrolling = "no";
@@ -851,9 +877,7 @@
 				$(iframe)
 					.attr({
 						src: settings.get('href'),
-						name: (new Date()).getTime(), // give the iframe a unique name to prevent caching
-						'class': prefix + 'Iframe',
-						allowFullScreen : true // allow HTML5 video to go fullscreen
+						'class': prefix + 'Iframe'
 					})
 					.one('load', complete)
 					.appendTo($loaded);
@@ -926,7 +950,7 @@
 		}, 100);
 
 		if (settings.get('inline')) {
-			var $target = $(href);
+			var $target = $(href).eq(0);
 			// Inserts an empty placeholder where inline content is being pulled from.
 			// An event is bound to put inline content back when Colorbox closes or loads new content.
 			$inline = $('<div>').hide().insertBefore($target);
@@ -946,11 +970,11 @@
 
 			href = retinaUrl(settings, href);
 
-			photo = new Image();
+			photo = settings.get('createImg');
 
 			$(photo)
 			.addClass(prefix + 'Photo')
-			.bind('error',function () {
+			.bind('error.'+prefix,function () {
 				prep($tag(div, 'Error').html(settings.get('imgError')));
 			})
 			.one('load', function () {
@@ -958,17 +982,10 @@
 					return;
 				}
 
-				// A small pause because some browsers will occassionaly report a
+				// A small pause because some browsers will occasionally report a
 				// img.width and img.height of zero immediately after the img.onload fires
 				setTimeout(function(){
 					var percent;
-
-					$.each(['alt', 'longdesc', 'aria-describedby'], function(i,val){
-						var attr = $(settings.el).attr(val) || $(settings.el).attr('data-'+val);
-						if (attr) {
-							photo.setAttribute(val, attr);
-						}
-					});
 
 					if (settings.get('retinaImage') && window.devicePixelRatio > 1) {
 						photo.height = photo.height / window.devicePixelRatio;
@@ -996,9 +1013,10 @@
 
 					if ($related[1] && (settings.get('loop') || $related[index + 1])) {
 						photo.style.cursor = 'pointer';
-						photo.onclick = function () {
+
+						$(photo).bind('click.'+prefix, function () {
 							publicMethod.next();
-						};
+						});
 					}
 
 					photo.style.width = photo.width + 'px';
