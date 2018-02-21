@@ -33,7 +33,7 @@ class AAM_Backend_Authorization {
      */
     protected function __construct() {
         //control admin area
-        if (!wp_doing_ajax()) {
+        if (!defined( 'DOING_AJAX' ) || !DOING_AJAX) {
             add_action('admin_init', array($this, 'checkScreenAccess'));
         }
         
