@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Leaflet Maps Marker (Google Maps, OpenStreetMap, Bing Maps) - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-02-18 14:45:30+0000\n"
+"PO-Revision-Date: 2018-02-28 17:44:15+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1589,7 +1589,7 @@ msgstr "veröffentlichen"
 #: leaflet-layer.php:390 leaflet-layer.php:797 leaflet-marker.php:283
 #: leaflet-marker.php:763
 msgid "update"
-msgstr "aktualisieren"
+msgstr "Aktualisieren"
 
 #: leaflet-layer.php:388
 msgid "Edit layer"
@@ -1869,7 +1869,7 @@ msgstr "Karte einfügen"
 
 #: inc/tinymce-plugin.php:114
 msgid "Cancel"
-msgstr "abbrechen"
+msgstr "Abbrechen"
 
 #: inc/tinymce-plugin.php:108
 msgid "Please <a href=\"%s\" target=\"_blank\">click here</a> to add your first one!"
@@ -1939,7 +1939,7 @@ msgstr "OpenStreetMap-Mitwirkende"
 #: leaflet-layer.php:604 leaflet-layer.php:991 leaflet-layer.php:1034
 #: leaflet-list-markers.php:296 leaflet-marker.php:798
 msgid "edit"
-msgstr "bearbeiten"
+msgstr "Bearbeiten"
 
 #: inc/showmap.php:532 leaflet-fullscreen.php:204 leaflet-fullscreen.php:692
 #: leaflet-layer.php:1034 leaflet-marker.php:798
@@ -1973,7 +1973,7 @@ msgstr "Die obrige Tabelle zeigt %1s von insgesamt %2s Markern (sortiert nach %3
 #: inc/showmap.php:273 leaflet-fullscreen.php:182 leaflet-fullscreen.php:184
 #: leaflet-fullscreen.php:677 leaflet-fullscreen.php:679
 msgid "more information"
-msgstr "mehr Informationen"
+msgstr "Weitere Informationen"
 
 #: inc/showmap.php:273 leaflet-fullscreen.php:182 leaflet-fullscreen.php:184
 #: leaflet-fullscreen.php:677 leaflet-fullscreen.php:679
@@ -6486,7 +6486,7 @@ msgstr "Sie haben ungespeicherte Änderungen auf dieser Seite. Wollen Sie diese 
 
 #: inc/class-leaflet-options.php:241
 msgid "Save Changes"
-msgstr "&Auml;nderungen speichern"
+msgstr "Änderungen speichern"
 
 #: inc/class-leaflet-options.php:179
 msgid "Plugin options updated."

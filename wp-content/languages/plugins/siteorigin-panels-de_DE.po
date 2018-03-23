@@ -2,12 +2,12 @@
 # This file is distributed under the same license as the Plugins - Page Builder by SiteOrigin - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2016-10-11 19:13:24+0000\n"
+"PO-Revision-Date: 2018-02-26 00:03:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: GlotPress/2.3.0-alpha\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Plugins - Page Builder by SiteOrigin - Stable (latest release)\n"
 
@@ -539,7 +539,7 @@ msgstr "Nächstes"
 
 #: tpl/js-templates.php:425
 msgid "Previous"
-msgstr "Vorheriges"
+msgstr "Zurück"
 
 #: tpl/js-templates.php:398
 msgid "Your search didn't return any results"

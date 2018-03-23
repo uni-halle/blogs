@@ -1,14 +1,15 @@
-# Translation of Stable (latest release) in Chinese (China)
-# This file is distributed under the same license as the Stable (latest release) package.
+# Translation of Plugins - LiveJournal Importer - Stable (latest release) in Chinese (China)
+# This file is distributed under the same license as the Plugins - LiveJournal Importer - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-08-01 21:08:36+0000\n"
+"PO-Revision-Date: 2017-11-21 06:54:02+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: GlotPress/1.0-alpha-1100\n"
-"Project-Id-Version: Stable (latest release)\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Plugins - LiveJournal Importer - Stable (latest release)\n"
 
 #. Author of the plugin/theme
 msgid "wordpressdotorg"
@@ -245,3 +246,7 @@ msgstr "LiveJournal 导入工具"
 #. Plugin URI of the plugin/theme
 msgid "http://wordpress.org/extend/plugins/livejournal-importer/"
 msgstr "http://wordpress.org/extend/plugins/livejournal-importer/"
+
+#. Description of the plugin/theme
+msgid "Import posts and comments from LiveJournal."
+msgstr "从LiveJournal导入文章和评论。"

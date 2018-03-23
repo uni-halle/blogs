@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - Twenty Fourteen package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-16 17:37:48+0000\n"
+"PO-Revision-Date: 2018-02-28 17:54:58+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,12 +15,6 @@ msgstr ""
 msgid "In 2014, our default theme lets you create a responsive magazine website with a sleek, modern design. Feature your favorite homepage content in either a grid or a slider. Use the three widget areas to customize your website, and change your content's layout with a full-width page template and a contributor page to show off your authors. Creating a magazine website with WordPress has never been easier."
 msgstr "In 2014 lässt dich unser Standard-Theme eine adaptive Magazin-Website mit einem schnittigen, modernen Design erstellen. Präsentiere deine wichtigsten Beiträge entweder in einem Raster oder einem Slider. Passe deine Website mit drei Widget-Bereichen an deine Bedürfnisse an und verändere das Layout deiner Inhalte mit einem Seiten-Template, welches die gesamte Seitenbreite nutzt oder mit einem Template für eine Autorenseite."
 
-#. translators: %s: post title
-#: comments.php:30
-msgctxt "comments title"
-msgid "One thought on &ldquo;%s&rdquo;"
-msgstr "Ein Gedanke zu &#8222;%s&#8220;"
-
 #. translators: 1: number of comments, 2: post title
 #: comments.php:34
 msgctxt "comments title"
@@ -28,6 +22,12 @@ msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] "%1$s Gedanke zu &#8222;%2$s&#8220;"
 msgstr[1] "%1$s Gedanken zu &#8222;%2$s&#8220;"
+
+#. translators: %s: post title
+#: comments.php:30
+msgctxt "comments title"
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr "Ein Gedanke zu &#8222;%s&#8220;"
 
 #. Template Name of the plugin/theme
 msgid "Full Width Page"
@@ -444,7 +444,7 @@ msgstr "Nichts gefunden"
 #. Author URI of the plugin/theme
 #: footer.php:21
 msgid "https://wordpress.org/"
-msgstr "https://wordpress.org/"
+msgstr "https://de.wordpress.org/"
 
 #. Author of the plugin/theme
 msgid "the WordPress team"

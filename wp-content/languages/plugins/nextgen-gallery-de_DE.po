@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - NextGEN Gallery &#8211; WordPress Gallery Plugin - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-02-07 23:20:58+0000\n"
+"PO-Revision-Date: 2018-02-28 18:08:28+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -39,15 +39,6 @@ msgstr "PHP Exif Support"
 msgid "PHP Safe Mode"
 msgstr "PHP Safe Mode"
 
-#: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:441
-#: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:444
-#: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:447
-#: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:450
-#: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:453
-#: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:456
-msgid "N/A"
-msgstr "Keine Angabe"
-
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:455
 msgid " MByte"
 msgstr " MByte"
@@ -59,10 +50,6 @@ msgstr "Betriebssystem"
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:469
 msgid "Server"
 msgstr "Server"
-
-#: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:470
-msgid "Memory usage"
-msgstr "Speichernutzung"
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:475
 msgid "PHP Allow URL fopen"
@@ -788,6 +775,19 @@ msgstr "Tags, die übereinstimmen sollen:"
 msgid "Tags number and slugs number isn't the same!"
 msgstr "Tag-Nummer und Slug-Nummer sind nicht identisch!"
 
+#: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:470
+msgid "Memory usage"
+msgstr "Arbeitsspeicherauslastung"
+
+#: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:441
+#: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:444
+#: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:447
+#: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:450
+#: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:453
+#: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:456
+msgid "N/A"
+msgstr "n. a."
+
 #: products/photocrati_nextgen/modules/ngglegacy/admin/manage-galleries.php:465
 #: products/photocrati_nextgen/modules/ngglegacy/admin/manage-images.php:634
 #: products/photocrati_nextgen/modules/ngglegacy/admin/media-upload.php:253
@@ -974,12 +974,6 @@ msgstr "Hinzufügen"
 #: products/photocrati_nextgen/modules/ngglegacy/admin/publish.php:45
 msgid "Alignment"
 msgstr "Ausrichtung"
-
-#: products/photocrati_nextgen/modules/ngglegacy/admin/manage-images.php:632
-#: products/photocrati_nextgen/modules/ngglegacy/admin/manage.php:159
-#: products/photocrati_nextgen/modules/ngglegacy/admin/media-upload.php:274
-msgid "Thumbnail"
-msgstr "Thumbnail"
 
 #: products/photocrati_nextgen/modules/ngglegacy/admin/overview.php:87
 msgid "About"
@@ -1679,6 +1673,12 @@ msgstr "Sammelaktionen"
 #: products/photocrati_nextgen/modules/ngglegacy/admin/functions.php:672
 msgid "Edit gallery"
 msgstr "Galerie bearbeiten"
+
+#: products/photocrati_nextgen/modules/ngglegacy/admin/manage-images.php:632
+#: products/photocrati_nextgen/modules/ngglegacy/admin/manage.php:159
+#: products/photocrati_nextgen/modules/ngglegacy/admin/media-upload.php:274
+msgid "Thumbnail"
+msgstr "Vorschaubild"
 
 #: products/photocrati_nextgen/modules/nextgen_data/package.module.nextgen_data.php:2830
 #: products/photocrati_nextgen/modules/ngglegacy/admin/album.php:721
@@ -2677,10 +2677,6 @@ msgid "Close"
 msgstr "Schließen"
 
 #: products/photocrati_nextgen/modules/lightbox/package.module.lightbox.php:76
-msgid "Previous"
-msgstr "Vorheriges"
-
-#: products/photocrati_nextgen/modules/lightbox/package.module.lightbox.php:76
 msgid "Full Size"
 msgstr "Volle Größe"
 
@@ -3144,3 +3140,7 @@ msgstr "Shutter Reloaded"
 #: products/photocrati_nextgen/modules/lightbox/package.module.lightbox.php:76
 msgid "Loading..."
 msgstr "Wird geladen..."
+
+#: products/photocrati_nextgen/modules/lightbox/package.module.lightbox.php:76
+msgid "Previous"
+msgstr "Zurück"

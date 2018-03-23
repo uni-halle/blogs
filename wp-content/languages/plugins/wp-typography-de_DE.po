@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - wp-Typography - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-01-05 22:10:16+0000\n"
+"PO-Revision-Date: 2018-03-13 22:26:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,42 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: de\n"
 "Project-Id-Version: Plugins - wp-Typography - Stable (latest release)\n"
+
+#: includes/wp-typography/integration/class-acf-integration.php:143
+msgid "Treat as feed title"
+msgstr "Als Feed-Überschrift behandeln"
+
+#: includes/wp-typography/integration/class-acf-integration.php:142
+msgid "Treat as feed body text"
+msgstr "Als Feed-Fließtext behandeln"
+
+#: includes/wp-typography/integration/class-acf-integration.php:141
+msgid "RSS Feeds"
+msgstr "Feeds"
+
+#: includes/wp-typography/integration/class-acf-integration.php:139
+msgid "Treat as title"
+msgstr "Als Überschrift behandeln"
+
+#: includes/wp-typography/integration/class-acf-integration.php:138
+msgid "Treat as body text"
+msgstr "Als Fließtext behandeln"
+
+#: includes/wp-typography/integration/class-acf-integration.php:137
+msgid "Standard Posts"
+msgstr "Standard-Beiträge"
+
+#: includes/wp-typography/integration/class-acf-integration.php:136
+msgid "Do not filter"
+msgstr "Nicht filtern"
+
+#: includes/wp-typography/integration/class-acf-integration.php:132
+msgid "Select the wp-Typography filter to apply"
+msgstr "Wähle die anzuwendenden wp-Typography-Filter aus"
+
+#: includes/wp-typography/integration/class-acf-integration.php:131
+msgid "Typography"
+msgstr "Typographie"
 
 #: includes/_language_names.php:60
 msgctxt "language name"
@@ -96,7 +132,7 @@ msgid "Line Wrapping"
 msgstr "Zeilenumbruch"
 
 #. translators: URL with mbstring PHP extension installation instructions
-#: includes/class-wp-typography-requirements.php:169
+#: vendor/mundschenk-at/check-wp-requirements/class-mundschenk-wp-requirements.php:180
 msgid "http://www.php.net/manual/en/mbstring.installation.php"
 msgstr "http://php.net/manual/de/mbstring.installation.php"
 
@@ -166,15 +202,15 @@ msgctxt "language name"
 msgid "Hindi"
 msgstr "Hindi"
 
-#: includes/wp-typography/components/class-admin-interface.php:451
+#: includes/wp-typography/components/class-admin-interface.php:450
 msgid "Useful resources:"
 msgstr "Nützliche Ressourcen:"
 
-#: includes/wp-typography/components/class-admin-interface.php:366
+#: includes/wp-typography/components/class-admin-interface.php:365
 msgid "Cached post content cleared."
 msgstr "Zwischengespeicherte Beitragsinhalte verworfen."
 
-#: includes/wp-typography/components/class-admin-interface.php:355
+#: includes/wp-typography/components/class-admin-interface.php:354
 msgid "Settings reset to default values."
 msgstr "Einstellungen auf Standardwerte zurückgesetzt."
 
@@ -407,15 +443,15 @@ msgstr "Standardmäßig verarbeitet wp-Typography alle Beitragsinhalte und -tite
 msgid "Browser support"
 msgstr "Browser-Unterstützung"
 
-#: includes/wp-typography/components/class-admin-interface.php:246
+#: includes/wp-typography/components/class-admin-interface.php:245
 msgid "Please keep in mind that technically, WordPress applies the typographic fixes on the individual content parts used in your site templates, e.g. <code>the_title</code>, <code>the_content</code>, not the page as a whole. For this reason, HTML tags (including classes and IDs) from the theme's template files cannot be used to limit the scope of wp-Typography's processing."
 msgstr "Bitte bedenke, dass WordPress aus technischer Sicht die typographischen Kniffe auf die einzelnen Inhaltsbereiche (wie <code>the_title</code>, <code>the_content</code>) innerhalb der Templates anwendet und nicht auf die Seite als Ganzes. Aus diesem Grund funktioniert auch die Einschränkung über HTML-Elemente, -Klassen und -IDs aus den Template-Dateien nicht."
 
-#: includes/wp-typography/components/class-admin-interface.php:244
+#: includes/wp-typography/components/class-admin-interface.php:243
 msgid "Improve your web typography with <em>hyphenation</em>, <em>space control</em>, <em>intelligent character replacement</em>, and <em>CSS hooks</em>. These improvements can be enabled separately via the settings tabs provided below. We try to provide reasonable default values, but please check that they are suitable for your site language."
 msgstr "Verbessere die Typography deiner Website durch <em>Silbentrennung</em>, <em>Weißraum-Kontrolle</em>, <em>intelligente Zeichenersetzung</em> und <em>CSS-Klassen</em>. Dieser Verbesserung können einzeln über die Einstellungsseiten aktiviert werden. Obwohl wir uns bemühen, sinnvolle Standardeinstellung bereitzustellen, solltest du überprüfen, ob diese zu den Spracheinstellungen deiner Website passen."
 
-#: includes/wp-typography/components/class-admin-interface.php:241
+#: includes/wp-typography/components/class-admin-interface.php:240
 msgid "Introduction"
 msgstr "Überblick"
 
@@ -762,18 +798,18 @@ msgid "wp-Typography"
 msgstr "wp-Typography"
 
 #. translators: 1: plugin name 2: current character encoding 3: options URL
-#: includes/class-wp-typography-requirements.php:179
+#: vendor/mundschenk-at/check-wp-requirements/class-mundschenk-wp-requirements.php:190
 msgid "The activated plugin %1$s requires your blog use the UTF-8 character encoding. You have set your blogs encoding to %2$s. Please deactivate this plugin, or <a href=\"%3$s\">change your character encoding to UTF-8</a>."
 msgstr "Das aktivierte Plugin %1$s erfordert die Zeichenkodierung UTF-8. Derzeit wird die Kodierung PHP %2$s verwendet. Bitte das Plugin deaktivieren oder <a href=\"%3$s\">die Zeichenkodierung auf UTF-8 ändern</a>."
 
 #. translators: 1: plugin name 2: mbstring documentation URL
-#: includes/class-wp-typography-requirements.php:166
+#: vendor/mundschenk-at/check-wp-requirements/class-mundschenk-wp-requirements.php:177
 msgid "The activated plugin %1$s requires the mbstring PHP extension to be enabled on your server. Please deactivate this plugin, or <a href=\"%2$s\">enable the extension</a>."
 msgstr "Das aktivierte Plugin %1$s erfordert die PHP-Erweiterung mbstring. Bitte das Plugin deaktivieren oder <a href=\"%2$s\">die Erweiterung aktivieren</a>."
 
 #. translators: 1: plugin name 2: target PHP version number 3: actual PHP
 #. version number
-#: includes/class-wp-typography-requirements.php:153
+#: vendor/mundschenk-at/check-wp-requirements/class-mundschenk-wp-requirements.php:164
 msgid "The activated plugin %1$s requires PHP %2$s or later. Your server is running PHP %3$s. Please deactivate this plugin, or upgrade your server's installation of PHP."
 msgstr "Das aktivierte Plugin %1$s erfordert PHP %2$s oder höher. Am Server wird PHP %3$s ausgeführt. Bitte das Plugin deaktivieren oder ein Upgrade der PHP-Version durchführen."
 
@@ -785,7 +821,7 @@ msgstr "Änderungen speichern"
 msgid "Restore Defaults"
 msgstr "Alles zurücksetzen"
 
-#: includes/wp-typography/components/class-admin-interface.php:495
+#: includes/wp-typography/components/class-admin-interface.php:494
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -1045,18 +1081,18 @@ msgstr "Silbentrennung"
 msgid "General Scope"
 msgstr "Allgemein"
 
-#: includes/wp-typography/components/class-admin-interface.php:224
+#: includes/wp-typography/components/class-admin-interface.php:223
 msgid "License"
 msgstr "Lizenz"
 
-#: includes/wp-typography/components/class-admin-interface.php:223
+#: includes/wp-typography/components/class-admin-interface.php:222
 msgid "Changelog"
 msgstr "Änderungshistorie"
 
-#: includes/wp-typography/components/class-admin-interface.php:222
+#: includes/wp-typography/components/class-admin-interface.php:221
 msgid "FAQs"
 msgstr "Hilfe"
 
-#: includes/wp-typography/components/class-admin-interface.php:221
+#: includes/wp-typography/components/class-admin-interface.php:220
 msgid "Plugin Home"
 msgstr "Plugin-Homepage"
