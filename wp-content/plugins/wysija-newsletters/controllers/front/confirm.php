@@ -162,6 +162,13 @@ class WYSIJA_control_front_confirm extends WYSIJA_control_front{
             // we need to call the translation otherwise it will not be loaded and translated
             $model_config->add_translated_default();
             $this->helperUser->uid=$userid;
+
+            // Prevent changing email address
+            if($this->userData['details']['email'] != $_REQUEST['wysija']['user']['email']) {
+                $this->error(__('Email cannot be changed. Please subscribe again.',WYSIJA),1);
+                unset($_REQUEST['wysija']['user']['email']);
+            }
+
             //if the status changed we might need to send notifications */
             if((int)$_REQUEST['wysija']['user']['status'] !=(int)$this->userData['details']['status']){
                 if($_REQUEST['wysija']['user']['status']>0){

@@ -1259,7 +1259,7 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 				<!-- THEMES BAR -->
 			<?php if (WYSIJA::current_user_can('wysija_theme_tab')): ?>
 					<div class="wj_themes" style="display:none;">
-						<div class="wj_button">
+						<div class="wj_button" style="display:none;">
 							<a id="wysija-themes-browse" class="button" href="javascript:;" href2="admin.php?page=wysija_campaigns&action=themes"><?php _e('Add more themes', WYSIJA) ?></a>
 						</div>
 						<ul id="wj_themes_list" class="clearfix">

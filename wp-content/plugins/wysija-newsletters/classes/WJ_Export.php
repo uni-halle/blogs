@@ -173,17 +173,19 @@ class WJ_Export extends WYSIJA_object {
 
 			// append content to the file
 			foreach ( $data as $k => $row ) {
-				$row = array_map(function($value) {
-					$value = str_replace('"', '""', $value);
-					return (preg_match('/,/', $value)) ?
-						'"' . $value . '"' :
-						$value;
-				}, $row);
+				$row = array_map(array($this, '_escape_commas_and_quotes'), $row);
 				$row_string     = implode( $this->_fields_separator, $row );
 				$encoded_string = iconv( $this->_base_encode, $this->_output_encode, $row_string );
 				fwrite( $this->_file_handle, $encoded_string . ( $rows_count !== $k ? $this->_lines_separator : '' ) );
 			}
 		}
+	}
+
+	function _escape_commas_and_quotes($value) {
+		$value = str_replace('"', '""', $value);
+		return (preg_match('/,/', $value)) ?
+			'"' . $value . '"' :
+			$value;
 	}
 
 	/**
