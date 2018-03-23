@@ -160,8 +160,9 @@ jQuery(document).ready(function(){
 						if(!res.data.update) {
 							jQuery('#gmpMarkerForm input[name="marker_opts[id]"]').val( res.data.marker.id );
 							var marker = gmpGetCurrentMarker();
-							if(marker)
+							if(marker) {
 								marker.setId(res.data.marker.id);
+							}
 						}
 					}
 					if(!currentMarkerMapId) {
@@ -171,6 +172,7 @@ jQuery(document).ready(function(){
 						jQuery('#gmpMarkersListGrid').trigger('reloadGrid');
 					}
 					_gmpUnchangeMarkerForm();
+					jQuery(document).trigger('gmpAfterMarkerSave', gmpGetCurrentMarker());
 				}
 			}
 		});
@@ -321,6 +323,7 @@ function gmpResetMarkerForm() {
 
 	gmpSetIconImg();
 	gmpAddLinkOptions();
+	jQuery(document).trigger('gmpAfterResetMarkerForm');
 }
 function _gmpCreateNewMapMarker(params) {
 	params = params || {};
@@ -411,6 +414,7 @@ function gmpOpenMarkerEdit(id) {
 		gmpSetIconImg();
 		gmpSetCurrentMarker( marker );
 		marker.showInfoWnd();
+		jQuery(document).trigger('gmpMarkerFormEdit', marker);
 	}
 }
 function gmpRemoveMarkerFromMapTblClick(markerId, params) {

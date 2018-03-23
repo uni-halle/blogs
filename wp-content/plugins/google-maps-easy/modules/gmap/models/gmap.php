@@ -46,6 +46,7 @@ class gmapModelGmp extends modelGmp {
 		$map['params']['view_id'] = $map['view_id'];
 		$map['params']['view_html_id'] = $map['view_html_id'];
 		$map['params']['id'] = $map['id'];
+		$map = apply_filters('gmp_after_simple_get', $map);
 		return $map;
 	}
 	public function getParamsList() {
@@ -192,6 +193,9 @@ class gmapModelGmp extends modelGmp {
 			$data['create_date'] = date('Y-m-d H:i:s');	// We need to set date here only for maps amd markers
 		else
 			unset($data['create_date']);
+		foreach($data as &$d) {
+			$d = addslashes($d);
+		}
 		return $data;
 	}
 	public function getMapByTitle($title) {

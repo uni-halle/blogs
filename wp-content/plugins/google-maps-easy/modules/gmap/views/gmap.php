@@ -29,7 +29,7 @@ class gmapViewGmp extends viewGmp {
 	public function getApiKey() {
 		$apiKey = 'AIzaSyCh33wsMPd4zTjqSkqEm0_giCOi-78XZN8';
 
-		if($userApiKey = frameGmp::_()->getModule('options')->get('user_api_key')) {
+		if($userApiKey = dispatcherGmp::applyFilters('gRewriteApiKey', frameGmp::_()->getModule('options')->get('user_api_key'))) {
 			$apiKey = trim($userApiKey);
 		}
 		return $apiKey;

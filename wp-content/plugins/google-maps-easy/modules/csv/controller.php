@@ -244,7 +244,7 @@ class csvControllerGmp extends controllerGmp {
 	}
 	private function _prepareValueToImport($val) {
 		$sitePath = $this->_getSitePath();
-		return str_replace('[GMP_SITE_PATH]', $sitePath, htmlspecialchars_decode($val));
+		return str_replace('[GMP_SITE_PATH]', $sitePath, htmlspecialchars_decode(addslashes($val)));
 	}
 	private function _toYesNo($val) {
 		return empty($val) ? 'No' : 'Yes';

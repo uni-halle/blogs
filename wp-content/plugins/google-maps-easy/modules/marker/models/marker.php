@@ -14,6 +14,7 @@ class markerModelGmp extends modelGmp {
 		$marker['coord_y'] = isset($marker['coord_y']) ? (float)$marker['coord_y'] : 0;
 		$update = (bool) $id;
 		if(!empty($marker['title'])) {
+			$marker = apply_filters('gmp_before_marker_save', $marker);
 			if(isset($marker['description'])){
 				//Replace site url in markers descriptions backend. Fixed site migration issue.
 				$marker['description'] = str_replace(GMP_SITE_URL, 'GMP_SITE_URL', $marker['description']);
@@ -43,8 +44,14 @@ class markerModelGmp extends modelGmp {
 				dispatcherGmp::doAction('afterMarkerInsert', $dbRes, $marker);
 			}
 			if($dbRes) {
-				if(!$update)
+				if(!$update) {
 					$id = $dbRes;
+				}
+				do_action('gmp_save_lang_data', array(
+					'type' => 'markers',
+					'marker_id' => $id,
+					'map' => frameGmp::_()->getModule('gmap')->getModel()->getMapById($marker['map_id']),
+				));
 				return $id;
 			} else {
 				$this->pushError(frameGmp::_()->getTable('marker')->getErrors());
@@ -87,14 +94,16 @@ class markerModelGmp extends modelGmp {
 			}
 			if(!isset($marker['params']['title_is_link']))
 				$marker['params']['title_is_link'] = false;
-			// Go to absolute path as "../wp-content/" will not work on frontend
-			$marker['description'] = str_replace('../wp-content/', GMP_SITE_URL. 'wp-content/', $marker['description']);
-			//Replace site url in markers descriptions frontend.
-			$marker['description'] = str_replace('GMP_SITE_URL', GMP_SITE_URL, $marker['description']);
 
-			if(uriGmp::isHttps()) {
-				$marker['description'] = uriGmp::makeHttps($marker['description']);
-			}
+			$siteUrl = uriGmp::isHttps() ? uriGmp::makeHttps(GMP_SITE_URL) : GMP_SITE_URL;
+			// Go to absolute path as "../wp-content/" will not work on frontend
+			$marker['description'] = str_replace('../wp-content/', $siteUrl. 'wp-content/', $marker['description']);
+			//Replace site url in markers descriptions frontend.
+			$marker['description'] = str_replace('GMP_SITE_URL', $siteUrl, $marker['description']);
+
+			//if(uriGmp::isHttps()) {
+			//	$marker['description'] = uriGmp::makeHttps($marker['description']);
+			//}
 			if($widthMapData && !empty($marker['map_id']))
 				$marker['map'] = frameGmp::_()->getModule('gmap')->getModel()->getMapById($marker['map_id'], false);
 		}

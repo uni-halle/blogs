@@ -9,27 +9,29 @@
 <section>
 	<div class="supsystic-item supsystic-panel">
 		<div id="containerWrapper">
+			<div class="gmpMapBtns">
+				<button id="gmpInsertToContactForm" class="button"><?php _e('Insert to Contact Form', GMP_LANG_CODE)?></button>
+				<?php
+				if(property_exists($this, 'membershipPluginError')) {
+					echo $this->membershipPluginError;
+				} else if(property_exists($this, 'pluginInstallUrl')) {
+					echo '<a class="button" target="_blank" href="' . $this->pluginInstallUrl . '">';
+					_e('Integrate with Membership', GMP_LANG_CODE);
+					echo '</a>';
+				} else if(property_exists($this, 'canUseMembershipFeature') && $this->canUseMembershipFeature == 1) {
+					echo '<div class="mbs-turn-on-wrapper">';
+					echo htmlGmp::checkboxHiddenVal('map_opts[membership-selectbox]', array(
+						'value' => isset($this->map['params']['membershipEnable']) ? $this->map['params']['membershipEnable'] : 0,
+						'attrs' => 'id="membershipPropEnable"',
+					));
+					echo '<label for="membershipPropEnable">' . _e('Enable for Membership', GMP_LANG_CODE) . '</label>';
+					echo '</div>';
+				}
+				?>
+			</div>
+			<?php do_action('gmp_lang_tabs'); ?>
+			<div style="clear: both;"></div>
 			<div id="gmpMapPropertiesTabs" style="display: none;">
-				<div class="gmpMapBtns">
-					<button id="gmpInsertToContactForm" class="button"><?php _e('Insert to Contact Form', GMP_LANG_CODE)?></button>
-					<?php
-					if(property_exists($this, 'membershipPluginError')) {
-						echo $this->membershipPluginError;
-					} else if(property_exists($this, 'pluginInstallUrl')) {
-						echo '<a class="button" target="_blank" href="' . $this->pluginInstallUrl . '">';
-						_e('Integrate with Membership', GMP_LANG_CODE);
-						echo '</a>';
-					} else if(property_exists($this, 'canUseMembershipFeature') && $this->canUseMembershipFeature == 1) {
-						echo '<div class="mbs-turn-on-wrapper">';
-						echo htmlGmp::checkboxHiddenVal('map_opts[membership-selectbox]', array(
-							'value' => isset($this->map['params']['membershipEnable']) ? $this->map['params']['membershipEnable'] : 0,
-							'attrs' => 'id="membershipPropEnable"',
-						));
-						echo '<label for="membershipPropEnable">' . _e('Enable for Membership', GMP_LANG_CODE) . '</label>';
-						echo '</div>';
-					}
-					?>
-				</div>
 				<h3 class="nav-tab-wrapper" style="margin-bottom: 12px;">
 					<a class="nav-tab nav-tab-active" href="#gmpMapTab">
 						<p>

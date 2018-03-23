@@ -26,7 +26,8 @@ gmpGoogleMarker.prototype.infoWndOpened = function() {
 };
 gmpGoogleMarker.prototype.init = function() {
 	var markerParamsForCreate = this._markerParams
-	,	openInfoWndEvent = this._markerParams.params && parseInt(this._markerParams.params.description_mouse_hover) ? 'mouseover' : 'click'
+	,	openInfoWndEvent = 'click'
+	,	closeInfoWndEvent = ''
 	,	openLinkEvent = 'click';
 
 	if(parseInt(this._map._mapParams.hide_marker_tooltip)) {
@@ -43,6 +44,14 @@ gmpGoogleMarker.prototype.init = function() {
 	this._markerObj.addListener('domready', jQuery.proxy(function(){
 		changeInfoWndBgColor(this._map);
 	}, this));
+	if(this._markerParams.params && !(window.ontouchstart === null || navigator.msMaxTouchPoints)) {
+		if(parseInt(this._markerParams.params.description_mouse_hover)) {
+			openInfoWndEvent = 'mouseover';
+			if(parseInt(this._markerParams.params.description_mouse_leave)) {
+				closeInfoWndEvent = 'mouseout';
+			}
+		}
+	}
 	this._markerObj.addListener(openInfoWndEvent, jQuery.proxy(function () {
 		if(this._markerParams.params
 			&& !parseInt(this._markerParams.params.description_mouse_hover)
@@ -52,35 +61,32 @@ gmpGoogleMarker.prototype.init = function() {
 		} else {
 			this.showInfoWnd();
 		}
-
         jQuery(document).trigger('gmapAfterMarkerClick', this);
 	}, this));
-
-	this._markerObj.addListener('mouseout', jQuery.proxy(function () {
-		if(this._markerParams.params
-			&& parseInt(this._markerParams.params.description_mouse_leave)
-			&& parseInt(this._markerParams.params.description_mouse_hover)
-		) {
-
+	if(closeInfoWndEvent) {
+		this._markerObj.addListener(closeInfoWndEvent, jQuery.proxy(function () {
 			var self = this
-			,	infoWndDiv = jQuery('.gm-style-iw').parent();
+			,	infoWndDiv = jQuery('.gm-style-iw').parent()
+			,	timeout = 300;
 
 			infoWndDiv.on('mouseover', function () {
+				// Mouse is on infowindow content
 				infoWndDiv.addClass('hovering');
 			});
-
+			infoWndDiv.on('mouseleave', function () {
+				// Hide infowindow after mouse have left infowindow content
+				setTimeout(function() {
+					self.hideInfoWnd();
+				}, timeout);
+			});
 			setTimeout(function() {
-				infoWndDiv.on('mouseleave', function () {
+				// Hide infowindow if mouse is not on infowindow content
+				if(!infoWndDiv.hasClass('hovering')) {
 					self.hideInfoWnd();
-				});
-
-				if(!infoWndDiv.hasClass('hovering'))
-					self.hideInfoWnd();
-			}, 300);
-
-		}
-	}, this));
-
+				}
+			}, timeout);
+		}, this));
+	}
 	if(this._markerParams.params && parseInt(this._markerParams.params.marker_link)) {
 		this._markerObj.addListener(openLinkEvent, jQuery.proxy(function () {
 			var isLink = /http/gi
