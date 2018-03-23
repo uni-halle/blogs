@@ -283,8 +283,10 @@ class WPForms_Form_Handler {
 		}
 
 		// Sanitize - don't allow tags for users who do not have appropriate cap.
+		// If we don't do this, forms for these users can get corrupt due to
+		// conflicts with wp_kses.
 		if ( ! current_user_can( 'unfiltered_html' ) ) {
-			array_walk_recursive( $data, 'wp_strip_all_tags' );
+			$data = map_deep( $data, 'wp_strip_all_tags' );
 		}
 
 		// Sanitize notification names.

@@ -29,6 +29,9 @@ class WPForms_Builder_Panel_Fields extends WPForms_Builder_Panel {
 			add_action( 'wpforms_builder_fields', array( $this, 'fields' ) );
 			add_action( 'wpforms_builder_fields_options', array( $this, 'fields_options' ) );
 			add_action( 'wpforms_builder_preview', array( $this, 'preview' ) );
+
+			// Template for form builder previews.
+			add_action( 'wpforms_builder_print_footer_scripts', array( $this, 'field_preview_templates' ) );
 		}
 	}
 
@@ -82,7 +85,7 @@ class WPForms_Builder_Panel_Fields extends WPForms_Builder_Panel {
 			<?php do_action( 'wpforms_builder_fields', $this->form ); ?>
 		</div>
 
-		<div class="wpforms-field-options wpforms-tab-content">
+		<div id="wpforms-field-options" class="wpforms-field-options wpforms-tab-content">
 			<?php do_action( 'wpforms_builder_fields_options', $this->form ); ?>
 		</div>
 		<?php
@@ -258,6 +261,7 @@ class WPForms_Builder_Panel_Fields extends WPForms_Builder_Panel {
 			$css .= ! empty( $field['required'] ) && $field['required'] == '1' ? ' required' : '';
 			$css .= ! empty( $field['input_columns'] ) && $field['input_columns'] === '2' ? ' wpforms-list-2-columns' : '';
 			$css .= ! empty( $field['input_columns'] ) && $field['input_columns'] === '3' ? ' wpforms-list-3-columns' : '';
+			$css .= ! empty( $field['input_columns'] ) && $field['input_columns'] === 'inline' ? ' wpforms-list-inline' : '';
 			$css .= isset( $field['meta']['delete'] ) && $field['meta']['delete'] === false ? ' no-delete' : '';
 
 			$css = apply_filters( 'wpforms_field_preview_class', $css, $field );
@@ -289,6 +293,53 @@ class WPForms_Builder_Panel_Fields extends WPForms_Builder_Panel {
 	public function field_order( $a, $b ) {
 		return $a['order'] - $b['order'];
 	}
+
+	/**
+	 * Template for form builder preview.
+	 *
+	 * @since 1.4.5
+	 */
+	public function field_preview_templates() {
+
+		// Checkbox, Radio, and Payment Multiple field choices.
+		?>
+		<script type="text/html" id="tmpl-wpforms-field-preview-checkbox-radio-payment-multiple">
+			<# if ( data.settings.choices_images ) { #>
+			<ul class="primary-input wpforms-image-choices wpforms-image-choices-{{ data.settings.choices_images_style }}">
+				<# _.each( data.order, function( choiceID, key ) {  #>
+				<li class="wpforms-image-choices-item<# if ( 1 === data.settings.choices[choiceID].default ) { print( ' wpforms-selected' ); } #>">
+					<label>
+						<span class="wpforms-image-choices-image">
+							<# if ( ! _.isEmpty( data.settings.choices[choiceID].image ) ) { #>
+							<img src="{{ data.settings.choices[choiceID].image }}">
+							<# } else { #>
+							<img src="{{ wpforms_builder.image_placeholder }}">
+							<# } #>
+						</span>
+						<# if ( 'none' === data.settings.choices_images_style ) { #>
+							<br>
+							<input type="{{ data.type }}" disabled<# if ( 1 === data.settings.choices[choiceID].default ) { print( ' checked' ); } #>>
+						<# } else { #>
+							<input class="wpforms-screen-reader-element" type="{{ data.type }}" disabled<# if ( 1 === data.settings.choices[choiceID].default ) { print( ' checked' ); } #>>
+						<# } #>
+						<span class="wpforms-image-choices-label">{{ data.settings.choices[choiceID].label }}</span>
+					</label>
+				</li>
+				<# }) #>
+			</ul>
+			<# } else { #>
+			<ul class="primary-input">
+				<# _.each( data.order, function( choiceID, key ) {  #>
+				<li>
+					<input type="{{ data.type }}" disabled<# if ( 1 === data.settings.choices[choiceID].default ) { print( ' checked' ); } #>>{{ data.settings.choices[choiceID].label }}
+				</li>
+				<# }) #>
+			</ul>
+			<# } #>
+		</script>
+		<?php
+	}
+
 }
 
 new WPForms_Builder_Panel_Fields;

@@ -186,6 +186,11 @@ class WPForms_Settings {
 				'form'   => false,
 				'submit' => false,
 			),
+			'misc'         => array(
+				'name'   => esc_html__( 'Misc', 'wpforms' ),
+				'form'   => true,
+				'submit' => esc_html__( 'Save Settings', 'wpforms' ),
+			),
 		);
 
 		return apply_filters( 'wpforms_settings_tabs', $tabs );
@@ -265,7 +270,7 @@ class WPForms_Settings {
 		$defaults = array(
 			// General Settings tab.
 			'general'      => array(
-				'license-heading'    => array(
+				'license-heading' => array(
 					'id'       => 'license-heading',
 					'content'  => '<h4>' . esc_html__( 'License', 'wpforms' ) . '</h4><p>' . esc_html__( 'Your license key provides access to updates and addons.', 'wpforms' ) . '</p>',
 					'type'     => 'content',
@@ -277,14 +282,14 @@ class WPForms_Settings {
 					'name' => esc_html__( 'License Key', 'wpforms' ),
 					'type' => 'license',
 				),
-				'general-heading'    => array(
+				'general-heading' => array(
 					'id'       => 'general-heading',
 					'content'  => '<h4>' . esc_html__( 'General', 'wpforms' ) . '</h4>',
 					'type'     => 'content',
 					'no_label' => true,
 					'class'    => array( 'section-heading', 'no-desc' ),
 				),
-				'disable-css'        => array(
+				'disable-css'     => array(
 					'id'        => 'disable-css',
 					'name'      => esc_html__( 'Include Form Styling', 'wpforms' ),
 					'desc'      => esc_html__( 'Determines which CSS files to load for the site.', 'wpforms' ),
@@ -297,16 +302,10 @@ class WPForms_Settings {
 						3 => esc_html__( 'No styling', 'wpforms' ),
 					),
 				),
-				'global-assets'      => array(
+				'global-assets'   => array(
 					'id'   => 'global-assets',
 					'name' => esc_html__( 'Load Assets Globally', 'wpforms' ),
 					'desc' => esc_html__( 'Check this if you would like to load WPForms assets site-wide. Only check if your site is having compatibility issues or instructed to by support.', 'wpforms' ),
-					'type' => 'checkbox',
-				),
-				'hide-announcements' => array(
-					'id'   => 'hide-announcements',
-					'name' => esc_html__( 'Hide Announcements', 'wpforms' ),
-					'desc' => esc_html__( 'Check this if you would like to hide plugin announcements and update details.', 'wpforms' ),
 					'type' => 'checkbox',
 				),
 			),
@@ -379,6 +378,12 @@ class WPForms_Settings {
 					'name' => esc_html__( 'Secret Key', 'wpforms' ),
 					'type' => 'text',
 				),
+				'recaptcha-noconflict' => array(
+					'id'   => 'recaptcha-noconflict',
+					'name' => esc_html__( 'No-Conflict Mode', 'wpforms' ),
+					'desc' => esc_html__( 'When checked, other reCAPTCHA occurrences are forcefully removed, to prevent conflicts. Only check if your site is having compatibility issues or instructed to by support.', 'wpforms' ),
+					'type' => 'checkbox',
+				),
 			),
 			// Validation messages settings tab.
 			'validation'   => array(
@@ -434,6 +439,28 @@ class WPForms_Settings {
 					'content' => '<h4>' . esc_html__( 'Integrations', 'wpforms' ) . '</h4><p>' . esc_html__( 'Manage integrations with popular providers such as Constant Contact, MailChimp, Zapier, and more.', 'wpforms' ) . '</p>',
 					'type'    => 'providers',
 					'wrap'    => 'none',
+				),
+			),
+			// Misc. settings tab.
+			'misc'        => array(
+				'misc-heading'       => array(
+					'id'       => 'misc-heading',
+					'content'  => '<h4>' . esc_html__( 'Misc', 'wpforms' ) . '</h4>',
+					'type'     => 'content',
+					'no_label' => true,
+					'class'    => array( 'section-heading', 'no-desc' ),
+				),
+				'hide-announcements' => array(
+					'id'   => 'hide-announcements',
+					'name' => esc_html__( 'Hide Announcements', 'wpforms' ),
+					'desc' => esc_html__( 'Check this if you would like to hide plugin announcements and update details.', 'wpforms' ),
+					'type' => 'checkbox',
+				),
+				'uninstall-data'    => array(
+					'id'   => 'uninstall-data',
+					'name' => esc_html__( 'Uninstall WPForms', 'wpforms' ),
+					'desc' => esc_html__( 'Check this if you would like to remove ALL WPForms data upon plugin deletion. All forms, entries, and uploaded files will be unrecoverable.', 'wpforms' ),
+					'type' => 'checkbox',
 				),
 			),
 		);

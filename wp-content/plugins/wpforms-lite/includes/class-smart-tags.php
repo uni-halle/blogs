@@ -43,7 +43,8 @@ class WPForms_Smart_Tags {
 			'query_var key=""'    => esc_html__( 'Query String Variable', 'wpforms' ),
 			'user_ip'             => esc_html__( 'User IP Address', 'wpforms' ),
 			'user_id'             => esc_html__( 'User ID', 'wpforms' ),
-			'user_display'        => esc_html__( 'User Name', 'wpforms' ),
+			'user_display'        => esc_html__( 'User Display Name', 'wpforms' ),
+			'user_full_name'      => esc_html__( 'User Full Name', 'wpforms' ),
 			'user_email'          => esc_html__( 'User Email', 'wpforms' ),
 			'author_id'           => esc_html__( 'Author ID', 'wpforms' ),
 			'author_display'      => esc_html__( 'Author Name', 'wpforms' ),
@@ -145,6 +146,16 @@ class WPForms_Smart_Tags {
 						break;
 
 					case 'user_display':
+						if ( is_user_logged_in() ) {
+							$user = wp_get_current_user();
+							$name = sanitize_text_field( $user->display_name );
+						} else {
+							$name = '';
+						}
+						$content = str_replace( '{' . $tag . '}', $name, $content );
+						break;
+
+					case 'user_full_name':
 						if ( is_user_logged_in() ) {
 							$user = wp_get_current_user();
 							$name = sanitize_text_field( $user->user_firstname . ' ' . $user->user_lastname );

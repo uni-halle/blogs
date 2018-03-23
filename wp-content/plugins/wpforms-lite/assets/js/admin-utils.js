@@ -3,6 +3,10 @@ var wpf = {
 
 	cachedFields: {},
 	savedState: false,
+	orders:  {
+		fields: [],
+		choices: {}
+	},
 
 	// This file contains a collection of utility functions.
 
@@ -27,6 +31,10 @@ var wpf = {
 
 		// Load initial form saved state.
 		wpf.savedState = wpf.getFormState( '#wpforms-builder-form' );
+
+		// Save field and choice order for sorting later.
+		wpf.setFieldOrders();
+		wpf.setChoicesOrders();
 	},
 
 	/**
@@ -36,7 +44,13 @@ var wpf = {
 	 */
 	bindUIActions: function() {
 
-		// The following items should all trigger the fieldUpdate trigger
+		// The following items should all trigger the fieldUpdate trigger.
+		jQuery(document).on('wpformsFieldAdd', wpf.setFieldOrders);
+		jQuery(document).on('wpformsFieldDelete', wpf.setFieldOrders);
+		jQuery(document).on('wpformsFieldMove', wpf.setFieldOrders);
+		jQuery(document).on('wpformsFieldChoiceAdd', wpf.setChoicesOrders);
+		jQuery(document).on('wpformsFieldChoiceDelete', wpf.setChoicesOrders);
+		jQuery(document).on('wpformsFieldChoiceMove', wpf.setChoicesOrders);
 		jQuery(document).on('wpformsFieldAdd', wpf.fieldUpdate);
 		jQuery(document).on('wpformsFieldDelete', wpf.fieldUpdate);
 		jQuery(document).on('wpformsFieldMove', wpf.fieldUpdate);
@@ -45,6 +59,58 @@ var wpf = {
 		jQuery(document).on('wpformsFieldChoiceDelete', wpf.fieldUpdate);
 		jQuery(document).on('wpformsFieldChoiceMove', wpf.fieldUpdate);
 		jQuery(document).on('focusout', '.wpforms-field-option-row-choices input.label', wpf.fieldUpdate);
+	},
+
+	/**
+	 * Store the order of the fields.
+	 *
+	 * @since 1.4.5
+	 */
+	setFieldOrders: function() {
+
+		wpf.orders.fields = [];
+
+		jQuery( '.wpforms-field-option' ).each(function() {
+			wpf.orders.fields.push( jQuery( this ).data( 'field-id' ) );
+		});
+	},
+
+	/**
+	 * Store the order of the choices for each field.
+	 *
+	 * @since 1.4.5
+	 */
+	setChoicesOrders: function() {
+
+		wpf.orders.choices = {};
+
+		jQuery( '.choices-list' ).each(function() {
+			var fieldID = jQuery( this ).data( 'field-id' );
+			wpf.orders.choices[ 'field_'+ fieldID ] = [];
+			jQuery( this ).find( 'li' ).each( function() {
+				wpf.orders.choices[ 'field_' + fieldID ].push( jQuery( this ).data( 'key' ) );
+			});
+		});
+	},
+
+	/**
+	 * Return the order of choices for a specific field.
+	 *
+	 * @since 1.4.5
+	 *
+	 * @param int id Field ID.
+	 *
+	 * @return array
+	 */
+	getChoicesOrder: function( id ) {
+
+		var choices = [];
+
+		jQuery( '#wpforms-field-option-'+id ).find( '.choices-list li' ).each( function() {
+			choices.push( jQuery( this ).data( 'key' ) );
+		});
+
+		return choices;
 	},
 
 	/**
@@ -69,80 +135,69 @@ var wpf = {
 	 * @param bool useCache
 	 * @return object
 	 */
-	getFields: function(allowedFields, useCache ) {
+	getFields: function( allowedFields, useCache ) {
 
 		useCache = useCache || false;
 
 		if ( useCache && ! jQuery.isEmptyObject(wpf.cachedFields) ) {
 
 			// Use cache if told and cache is primed.
-			var fieldsOrdered = jQuery.extend({}, wpf.cachedFields);
+			var fields = jQuery.extend({}, wpf.cachedFields);
 
 			wpf.debug('getFields triggered (cached)');
 
 		} else {
 
 			// Normal processing, get fields from builder and prime cache.
-			var formData       = jQuery('#wpforms-builder-form').serializeObject(),
+			var formData       = wpf.formObject( '#wpforms-field-options' ),
 				fields         = formData.fields,
 				fieldOrder     = [],
-				fieldsOrdered  = new Array(),
+				fieldsOrdered  = [],
 				fieldBlacklist = ['html','divider','pagebreak'];
 
 			if (!fields) {
 				return false;
 			}
 
-			// Find and store the order of forms. The order is lost when javascript
-			// serilizes the form.
-			jQuery('.wpforms-field-option').each(function(index, ele) {
-				fieldOrder.push(jQuery(ele).data('field-id'));
-			});
-
-			// Remove fields that are not supported and check for white list
-			jQuery.each(fields, function(index, ele) {
-				if (ele) {
-					if (jQuery.inArray(fields[index].type, fieldBlacklist) == '1' ){
-						delete fields[index];
-						wpf.removeArrayItem(fieldOrder, index);
-					}
+			for( var key in fields) {
+				if ( ! fields[key].type || jQuery.inArray(fields[key].type, fieldBlacklist) > -1 ){
+					delete fields[key];
 				}
-			});
-
-			// Preserve the order of field choices
-			for(var key in fields) {
-				if (fields[key].choices) {
-					jQuery('#wpforms-field-option-row-'+fields[key].id+'-choices .choices-list li').each(function(index, ele) {
-						var choiceKey = jQuery(ele).data('key');
-						fields[key].choices['choice_'+choiceKey] = fields[key].choices[choiceKey];
-						fields[key].choices['choice_'+choiceKey].key = choiceKey;
-						delete fields[key].choices[choiceKey];
-					});
-				}
-			}
-
-			// Preserve the order of fields
-			for(var key in fieldOrder) {
-				fieldsOrdered['field_'+fieldOrder[key]] = fields[fieldOrder[key]];
 			}
 
 			// Cache the all the fields now that they have been ordered and initially
 			// processed.
-			wpf.cachedFields = fieldsOrdered;
+			wpf.cachedFields = jQuery.extend({}, fields);
 
 			wpf.debug('getFields triggered');
 		}
 
 		// If we should only return specfic field types, remove the others.
 		if ( allowedFields && allowedFields.constructor === Array ) {
-			for(key in fieldsOrdered) {
-				if ( jQuery.inArray(fieldsOrdered[key].type, allowedFields) === -1 ){
-					delete fieldsOrdered[key];
+			for( var key in fields) {
+				if ( jQuery.inArray( fields[key].type, allowedFields ) === -1 ){
+					delete fields[key];
 				}
 			}
 		}
 
-		return fieldsOrdered;
+		return fields;
+	},
+
+	/**
+	 * Get field settings object.
+	 *
+	 * @since 1.4.5
+	 *
+	 * @param int id Field ID.
+	 *
+	 * @return object
+	 */
+	getField: function( id ) {
+
+		var field = wpf.formObject( '#wpforms-field-option-'+id );
+
+		return field.fields[ Object.keys( field.fields )[0] ];
 	},
 
 	/**
@@ -169,18 +224,6 @@ var wpf = {
 	},
 
 	/**
-	 * todo: get a single field
-	 *
-	 * @since 1.1.10
-	 * @param {[type]} id
-	 * @param {[type]} key
-	 * @return {[type]}
-	 */
-	getField: function(id,key) {
-		// @todo
-	},
-
-	/**
 	 * Get form state.
 	 *
 	 * @since 1.3.8
@@ -188,14 +231,10 @@ var wpf = {
 	 */
 	getFormState: function( el ) {
 
-		//return JSON.stringify( jQuery( el ).serializeArray() );
-
 		// Serialize tested the most performant string we can use for
 		// comparisons.
 		return jQuery( el ).serialize();
 	},
-
-	// hasField @todo
 
 	/**
 	 * Remove items from an array.
@@ -222,10 +261,17 @@ var wpf = {
 	 *
 	 * @since 1.0.1
 	 * @deprecated 1.2.8
+	 *
+	 * @param string str String to sanitize.
+	 *
+	 * @return string
 	 */
-	sanitizeString: function(str) {
+	sanitizeString: function( str ) {
 
-		return str.trim();
+		if (typeof str === 'string' || str instanceof String) {
+			return str.trim();
+		}
+		return str;
 	},
 
 	/**
@@ -382,15 +428,15 @@ var wpf = {
 		var len;
 		var emptyValues = [undef, null, false, 0, '', '0'];
 
-		for (i = 0, len = emptyValues.length; i < len; i++) {
+		for ( i = 0, len = emptyValues.length; i < len; i++ ) {
 			if (mixedVar === emptyValues[i]) {
 				return true;
 			}
 		}
 
-		if (typeof mixedVar === 'object') {
-			for (key in mixedVar) {
-				if (mixedVar.hasOwnProperty(key)) {
+		if ( typeof mixedVar === 'object' ) {
+			for ( key in mixedVar ) {
+				if ( mixedVar.hasOwnProperty( key ) ) {
 					return false;
 				}
 			}
@@ -433,10 +479,79 @@ var wpf = {
 	 *
 	 * @since 1.4.1
 	 */
-	focusCaretToEnd: function(el ) {
+	focusCaretToEnd: function( el ) {
 		el.focus();
 		var $thisVal = el.val();
 		el.val('').val($thisVal);
+	},
+
+	/**
+	 * Creates a object from form elements.
+	 *
+	 * @since 1.4.5
+	 */
+	formObject: function( el ) {
+
+		var form         = $( el ),
+			fields       = form.find( '[name]' ) ,
+			json         = {},
+			arraynames   = {};
+
+		for ( var v = 0; v < fields.length; v++ ){
+
+			var field     = $( fields[v] ),
+				name      = field.prop( 'name' ).replace( /\]/gi,'' ).split( '[' ),
+				value     = field.val(),
+				lineconf  = {};
+
+			if ( ( field.is( ':radio' ) || field.is( ':checkbox' ) ) && ! field.is( ':checked' ) ) {
+				continue;
+			}
+			for ( var i = name.length-1; i >= 0; i-- ) {
+				var nestname = name[i];
+				if ( typeof nestname === 'undefined' ) {
+					nestname = '';
+				}
+				if ( nestname.length === 0 ){
+					lineconf = [];
+					if ( typeof arraynames[name[i-1]] === 'undefined' )  {
+						arraynames[name[i-1]] = 0;
+					} else {
+						arraynames[name[i-1]] += 1;
+					}
+					nestname = arraynames[name[i-1]];
+				}
+				if ( i === name.length-1 ){
+					if ( value ) {
+						if ( value === 'true' ) {
+							value = true;
+						} else if ( value === 'false' ) {
+							value = false;
+						}else if ( ! isNaN( parseFloat( value ) ) && parseFloat( value ).toString() === value ) {
+							value = parseFloat( value );
+						} else if ( typeof value === 'string' && ( value.substr( 0,1 ) === '{' || value.substr( 0,1 ) === '[' ) ) {
+							try {
+								value = JSON.parse( value );
+							} catch (e) {}
+						} else if ( typeof value === 'object' && value.length && field.is( 'select' ) ){
+				 			var new_val = {};
+							for ( var i = 0; i < value.length; i++ ){
+								new_val[ 'n' + i ] = value[ i ];
+							}
+				 		 	value = new_val;
+						}
+			 	 	}
+			  		lineconf[nestname] = value;
+				} else {
+					var newobj = lineconf;
+					lineconf = {};
+					lineconf[nestname] = newobj;
+				}
+		  	}
+			$.extend( true, json, lineconf );
+		};
+
+		return json;
 	}
 };
 wpf.init();

@@ -608,6 +608,12 @@ class WPForms_Tools {
 			<textarea readonly="readonly" class="info-area"><?php echo $this->get_system_info(); ?></textarea>
 		</div>
 
+		<div class="wpforms-setting-row tools">
+			<h3 id="ssl-verify"><?php esc_html_e( 'Test SSL Connections', 'wpforms' ); ?></h3>
+			<p><?php esc_html_e( 'Click the button below to verify your web server can perform SSL connections successfully.', 'wpforms' ); ?></p>
+			<button type="button" id="wpforms-ssl-verify" class="wpforms-btn wpforms-btn-md wpforms-btn-orange"><?php esc_html_e( 'Test Connection', 'wpforms' ); ?></button>
+		</div>
+
 		<?php
 	}
 

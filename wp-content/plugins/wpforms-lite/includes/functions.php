@@ -198,6 +198,55 @@ function wpforms_has_field_type( $type, $form, $multiple = false ) {
 }
 
 /**
+ * Check if form provided contains a field which a specific setting.
+ *
+ * @since 1.4.5
+ *
+ * @param string $setting
+ * @param array $form
+ * @param bool $multiple
+ *
+ * @return bool
+ */
+function wpforms_has_field_setting( $setting, $form, $multiple = false ) {
+
+	$form_data = '';
+	$field     = false;
+
+	if ( $multiple ) {
+		foreach ( $form as $single_form ) {
+			$field = wpforms_has_field_setting( $setting, $single_form );
+			if ( $field ) {
+				break;
+			}
+		}
+
+		return $field;
+	} else {
+
+		if ( is_object( $form ) && ! empty( $form->post_content ) ) {
+			$form_data = wpforms_decode( $form->post_content );
+		} elseif ( is_array( $form ) ) {
+			$form_data = $form;
+		}
+
+		if ( empty( $form_data['fields'] ) ) {
+			return false;
+		}
+
+		foreach ( $form_data['fields'] as $single_field ) {
+
+			if ( ! empty( $single_field[ $setting ] ) ) {
+				$field = true;
+				break;
+			}
+		}
+
+		return $field;
+	}
+}
+
+/**
  * Checks if form provided contains page breaks, if so give details.
  *
  * @since 1.0.0
@@ -353,30 +402,38 @@ function wpforms_get_pagebreak_details( $form = false ) {
  */
 function wpforms_html_attributes( $id = '', $class = array(), $datas = array(), $atts = array(), $echo = false ) {
 
-	$output = '';
-	$id     = trim( $id );
+	$id    = trim( $id );
+	$parts = array();
 
 	if ( ! empty( $id ) ) {
-		$output = 'id="' . sanitize_html_class( $id ) . '" ';
+		$id = sanitize_html_class( $id );
+		if ( ! empty( $id ) ) {
+			$parts[] = 'id="' . $id . '"';
+		}
 	}
 
 	if ( ! empty( $class ) ) {
-		$output .= 'class="' . wpforms_sanitize_classes( $class, true ) . '" ';
+		$class = wpforms_sanitize_classes( $class, true );
+		if ( ! empty( $class ) ) {
+			$parts[] = 'class="' . $class . '"';
+		}
 	}
 
 	if ( ! empty( $datas ) ) {
 		foreach ( $datas as $data => $val ) {
-			$output .= 'data-' . sanitize_html_class( $data ) . '="' . esc_attr( $val ) . '" ';
+			$parts[] = 'data-' . sanitize_html_class( $data ) . '="' . esc_attr( $val ) . '"';
 		}
 	}
 
 	if ( ! empty( $atts ) ) {
 		foreach ( $atts as $att => $val ) {
 			if ( '0' == $val || ! empty( $val ) ) {
-				$output .= sanitize_html_class( $att ) . '="' . esc_attr( $val ) . '" ';
+				$parts[] = sanitize_html_class( $att ) . '="' . esc_attr( $val ) . '"';
 			}
 		}
 	}
+
+	$output = implode( ' ', $parts );
 
 	if ( $echo ) {
 		echo trim( $output );
@@ -405,7 +462,9 @@ function wpforms_sanitize_classes( $classes, $convert = false ) {
 			$classes = explode( ' ', trim( $classes ) );
 		}
 		foreach ( $classes as $class ) {
-			$css[] = sanitize_html_class( $class );
+			if ( ! empty( $class ) ) {
+				$css[] = sanitize_html_class( $class );
+			}
 		}
 	}
 	if ( $array ) {
@@ -1270,6 +1329,85 @@ function _wpforms_get_hierarchical_object_flatten( $array, &$output, $ref_name =
 			unset( $output[ $item->ID ]->children );
 		}
 	}
+}
+
+/**
+ * Returns field choice properties for field configured with dynamic choices.
+ *
+ * @since 1.4.5
+ *
+ * @param array $field     Field settings.
+ * @param int   $form_id   Form ID.
+ * @param array $form_data Form data.
+ *
+ * @return false|array
+ */
+function wpforms_get_field_dynamic_choices( $field, $form_id, $form_data = array() ) {
+
+	if ( empty( $field['dynamic_choices'] ) ) {
+		return false;
+	}
+
+	$choices = array();
+
+	if ( 'post_type' === $field['dynamic_choices'] ) {
+
+		if ( empty( $field['dynamic_post_type'] ) ) {
+			return false;
+		}
+
+		$posts = wpforms_get_hierarchical_object(
+			apply_filters(
+				'wpforms_dynamic_choice_post_type_args',
+				array(
+					'post_type'      => $field['dynamic_post_type'],
+					'posts_per_page' => -1,
+					'orderby'        => 'title',
+					'order'          => 'ASC',
+				),
+				$field,
+				$form_id
+			),
+			true
+		);
+
+		foreach ( $posts as $post ) {
+			$choices[] = array(
+				'value' => $post->ID,
+				'label' => $post->post_title,
+				'depth' => isset( $post->depth ) ? absint( $post->depth ) : 1,
+			);
+		}
+
+	} elseif ( 'taxonomy' === $field['dynamic_choices'] ) {
+
+		if ( empty( $field['dynamic_taxonomy'] ) ) {
+			return false;
+		}
+
+		$terms = wpforms_get_hierarchical_object(
+			apply_filters(
+				'wpforms_dynamic_choice_taxonomy_args',
+				array(
+					'taxonomy'   => $field['dynamic_taxonomy'],
+					'hide_empty' => false,
+				),
+				$field,
+				$form_data
+			),
+			true
+		);
+
+		foreach ( $terms as $term ) {
+			$choices[] = array(
+				'value' => $term->term_id,
+				'label' => $term->name,
+				'depth' => isset( $term->depth ) ? absint( $term->depth ) : 1,
+			);
+		}
+	}
+
+	return $choices;
 }
 
 /**

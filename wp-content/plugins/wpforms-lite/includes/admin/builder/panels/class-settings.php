@@ -27,22 +27,6 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 	}
 
 	/**
-	 * Enqueue assets for the Setting panel.
-	 *
-	 * @since 1.0.0
-	 */
-	public function enqueues() {
-
-		// CSS.
-		wp_enqueue_style(
-			'wpforms-builder-settings',
-			WPFORMS_PLUGIN_URL . 'assets/css/admin-builder-settings.css',
-			null,
-			WPFORMS_VERSION
-		);
-	}
-
-	/**
 	 * Outputs the Settings panel sidebar.
 	 *
 	 * @since 1.0.0

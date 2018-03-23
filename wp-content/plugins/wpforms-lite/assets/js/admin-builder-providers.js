@@ -69,6 +69,46 @@
 			$(document).on('wpformsPanelSwitch', function(e, targetPanel) {
 				WPFormsProviders.providerPanelConfirm(targetPanel);
 			});
+
+			// Alert users if they save a form and do not configure required
+			// fields.
+			$( document ).on( 'wpformsSaved', function(){
+
+				var $connectionBlocks = $( '#wpforms-panel-providers' ).find( '.wpforms-connection-block' );
+
+				if ( ! $connectionBlocks.length ) {
+					return;
+				}
+
+				$connectionBlocks.each( function() {
+					var requiredEmpty = false;
+					$( this ).find( 'table span.required' ).each(function() {
+						var $element = $( this ).parent().parent().find( 'select' );
+						if ( $element.val() === '' ) {
+							requiredEmpty = true;
+						}
+					});
+					if ( requiredEmpty ) {
+						var $titleArea = $( this ).closest( '.wpforms-panel-content-section' ).find( '.wpforms-panel-content-section-title' ).clone();
+						$titleArea.find( 'button' ).remove();
+						var msg  = wpforms_builder.provider_required_flds;
+
+						$.alert({
+							title: wpforms_builder.heads_up,
+							content: msg.replace( '{provider}', $titleArea.text().trim() ),
+							icon: 'fa fa-exclamation-circle',
+							type: 'orange',
+							buttons: {
+								confirm: {
+									text: wpforms_builder.ok,
+									btnClass: 'btn-confirm',
+									keys: ['enter']
+								}
+							}
+						});
+					}
+				});
+			});
 		},
 
 		/**

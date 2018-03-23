@@ -94,6 +94,7 @@ We also knew that our developer friends may want to extend contact forms further
 * <a href="https://wpforms.com/addons/conditional-logic-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Smart Conditional Logic</a> - Show or hide fields and contact form sections based on user behavior.
 * <a href="https://wpforms.com/addons/geolocation-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Geolocation</a> - Display location information about your users.
 * <a href="https://wpforms.com/addons/custom-catpcha-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Custom Captchas</a> - Create custom captchas for your contact form.
+* <a href="https://wpforms.com/addons/surveys-and-polls-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Surveys and Polls</a> - Easily create surveys forms and analyze the data with interactive reports.
 * Want us to add something else? Suggest a contact form feature and we'll get it added!
 
 After reading this feature list, you can probably imagine why WPForms is the best WordPress contact form plugin in the market.
@@ -209,6 +210,30 @@ Thank you
 Syed Balkhi
 
 == Changelog ==
+
+= 1.4.5.2 =
+- Fixed: Incorrect documenation link for Input Mask.
+- Fixed: Input Mask value disappearing when form builder is refreshed.
+
+= 1.4.5.1 =
+- Fixed: Dynamic choices not displaying correctly for Multiple Choice and Checkbox fields.
+
+= 1.4.5 =
+- Added: Image choices feature with Checkbox and Multiple Choice fields; Images can now be uploaded and displayed with your choices!
+- Added: Custom input masks for Single Line Text fields (Advanced Options).
+- Added: No-Conflict Mode for Google reCAPTCHA (Settings > reCAPTCHA). Removes other reCAPTCHA occurrences, to prevent conflicts.
+- Added: SSL Connection Test (Tools > System Info). Quicky verify that your web host correct supports SSL connections.
+- Added: `{user_full_name}` Smart Tag, displays users first and last name.
+- Added: Discalimer / Terms of Service Display formatting option for Checkbox fields (Advanced Options).
+- Added: Basic CSS styling for `disabled` fields.
+- Added: Uninstall routine, available from Settings > Misc.
+- Added: Form builder performance improvements. Editing a form with hundreds of fields is now 500%+ faster!
+- Changed: New Settings tab: Misc, moved Hide Annoucements option to new tab.
+- Changed: `{user_display}` Smart Tag diplays user's display name (in most cases, this is the user's name).
+- Changed: All `<form>` attributes can now be changed via `wpforms_frontend_form_atts` filter.
+- Fixed: Form builder tab icon alignment conflicts with third party plugin CSS.
+- Fixed: Smart Tag dropdown display issues in the form builder.
+- Fixed: Form builder drag and drop area disappearing if all fields are removed from a form.
 
 = 1.4.4.1 =
 - Changed: Textdomain loading to a later priority.

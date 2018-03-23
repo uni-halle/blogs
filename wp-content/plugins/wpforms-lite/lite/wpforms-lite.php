@@ -944,10 +944,17 @@ class WPForms_Lite {
 		// JavaScript.
 		wp_enqueue_script(
 			'jquery-matchheight',
-			WPFORMS_PLUGIN_URL . 'assets/js/jQuery.matchHeight-min.js',
+			WPFORMS_PLUGIN_URL . 'assets/js/jquery.matchHeight-min.js',
 			array( 'jquery' ),
 			'0.7.0',
 			false
+		);
+
+		wp_enqueue_script(
+			'listjs',
+			WPFORMS_PLUGIN_URL . 'assets/js/list.min.js',
+			array( 'jquery' ),
+			'1.5.0'
 		);
 	}
 
@@ -1011,7 +1018,7 @@ class WPForms_Lite {
 			),
 			array(
 				'name' => 'PayPal Standard',
-				'desc' => 'WPForms\' PayPal addon allows you to connect your WordPress site with PayPal to easily collect payments, donations, and online orders.',
+				'desc' => 'WPForms PayPal addon allows you to connect your WordPress site with PayPal to easily collect payments, donations, and online orders.',
 				'icon' => 'addon-icon-paypal.png',
 			),
 			array(
@@ -1021,24 +1028,32 @@ class WPForms_Lite {
 			),
 			array(
 				'name' => 'Stripe',
-				'desc' => 'WPForms\' Stripe addon allows you to connect your WordPress site with Stripe to easily collect payments, donations, and online orders.',
+				'desc' => 'WPForms Stripe addon allows you to connect your WordPress site with Stripe to easily collect payments, donations, and online orders.',
 				'icon' => 'addon-icon-stripe.png',
 			),
 			array(
+				'name' => 'Surveys and Polls',
+				'desc' => 'WPForms Surveys and Polls allows you easily create surveys forms and analyze the data with interactive reports.',
+				'icon' => 'addon-icons-surveys-polls.png',
+			),
+			array(
 				'name' => 'User Registration',
-				'desc' => 'WPForms\' User Registration addon allows you to create custom WordPress user registration forms.',
+				'desc' => 'WPForms User Registration addon allows you to create custom WordPress user registration forms.',
 				'icon' => 'addon-icon-user-registration.png',
 			),
 			array(
 				'name' => 'Zapier',
-				'desc' => 'WPForms\' Zapier addon allows you to connect your WordPress forms with over 500+ web apps. The integration possibilities here are just endless..',
+				'desc' => 'WPForms Zapier addon allows you to connect your WordPress forms with over 500+ web apps. The integration possibilities here are just endless.',
 				'icon' => 'addon-icon-zapier.png',
 			),
 		)
 		?>
 
 		<div id="wpforms-admin-addons" class="wrap wpforms-admin-wrap">
-			<h1 class="page-title"><?php esc_html_e( 'WPForms Addons', 'wpforms' ); ?></h1>
+			<h1 class="page-title">
+				<?php esc_html_e( 'WPForms Addons', 'wpforms' ); ?>
+				<input type="search" placeholder="<?php esc_html_e( 'Search Addons', 'wpforms' ); ?>" id="wpforms-admin-addons-search">
+			</h1>
 			<div class="notice notice-info" style="display: block;">
 				<p><strong><?php esc_html_e( 'Form Addons are a PRO feature.', 'wpforms' ); ?></strong></p>
 				<p><?php esc_html_e( 'Please upgrade to the PRO plan to unlock them and more awesome features.', 'wpforms' ); ?></p>
@@ -1049,13 +1064,14 @@ class WPForms_Lite {
 				</p>
 			</div>
 			<div class="wpforms-admin-content">
-				<div class="addons-container">
-					<?php foreach ( $addons as $addon ) : ?>
+				<div class="addons-container" id="wpforms-admin-addons-list">
+					<div class="list">
+						<?php foreach ( $addons as $addon ) : ?>
 						<div class="addon-container">
 							<div class="addon-item">
 								<div class="details wpforms-clear" style="">
-									<img src="https://wpforms.com/images/<?php echo $addon['icon']; ?>">
-									<h5>
+									<img src="<?php echo WPFORMS_PLUGIN_URL; ?>lite/assets/images/<?php echo $addon['icon']; ?>">
+									<h5 class="addon-name">
 										<?php
 										printf(
 											/* translators: %s - addon name*/
@@ -1064,7 +1080,7 @@ class WPForms_Lite {
 										);
 										?>
 									</h5>
-									<p><?php echo $addon['desc']; ?></p>
+									<p class="addon-desc"><?php echo $addon['desc']; ?></p>
 								</div>
 								<div class="actions wpforms-clear">
 									<div class="upgrade-button">
@@ -1075,8 +1091,8 @@ class WPForms_Lite {
 								</div>
 							</div>
 						</div>
-					<?php endforeach; ?>
-					<div style="clear:both;"></div>
+						<?php endforeach; ?>
+					</div>
 				</div>
 			</div>
 		</div>

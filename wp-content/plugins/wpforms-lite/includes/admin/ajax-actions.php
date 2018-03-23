@@ -346,11 +346,12 @@ function wpforms_builder_dynamic_source() {
 add_action( 'wp_ajax_wpforms_builder_dynamic_source', 'wpforms_builder_dynamic_source' );
 
 /**
- * Install or activate a plugin to be used for importing.
+ * Perform test connection to verify that the current web host can successfully
+ * make outbound SSL connections.
  *
- * @since 1.4.2
+ * @since 1.4.5
  */
-function wpforms_tools_import_form() {
+function wpforms_verify_ssl() {
 
 	// Run a security check.
 	check_ajax_referer( 'wpforms-admin', 'nonce' );
@@ -359,6 +360,19 @@ function wpforms_tools_import_form() {
 	if ( ! wpforms_current_user_can() ) {
 		wp_send_json_error();
 	}
-}
 
-add_action( 'wp_ajax_wpforms_tools_import_form', 'wpforms_tools_import_form' );
+	$response      = wp_remote_post( 'https://wpforms.com/connection-test.php' );
+	$response_code = wp_remote_retrieve_response_code( $response );
+
+	if ( 200 === wp_remote_retrieve_response_code( $response ) ) {
+		wp_send_json_success( array(
+			'msg' => esc_html__( 'Success! Your server can make SSL connections.', 'wpforms' ),
+		) );
+	} else {
+		wp_send_json_error( array(
+			'msg'   => esc_html__( 'There was an error and the connection failed. Please contact your web host with the technical details below.', 'wpforms' ),
+			'debug' => '<pre>'. print_r( map_deep( $response, 'wp_strip_all_tags' ), true ) . '</pre>',
+		) );
+	}
+}
+add_action( 'wp_ajax_wpforms_verify_ssl', 'wpforms_verify_ssl' );

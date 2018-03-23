@@ -14,6 +14,7 @@ class WPForms_Process {
 	 * Holds errors.
 	 *
 	 * @since 1.0.0
+	 *
 	 * @var array
 	 */
 	public $errors;
@@ -22,6 +23,7 @@ class WPForms_Process {
 	 * Holds formatted fields.
 	 *
 	 * @since 1.0.0
+	 *
 	 * @var array
 	 */
 	public $fields;
@@ -30,9 +32,28 @@ class WPForms_Process {
 	 * Holds the ID of a successful entry.
 	 *
 	 * @since 1.2.3
+	 *
 	 * @var int
 	 */
 	public $entry_id = 0;
+
+	/**
+	 * Holds form data.
+	 *
+	 * @since 1.4.5
+	 *
+	 * @var array
+	 */
+	public $form_data;
+
+	/**
+	 * If a valid return has was processed.
+	 *
+	 * @since 1.4.5
+	 *
+	 * @var bool
+	 */
+	public $valid_hash = false;
 
 	/**
 	 * Primary class constructor.
@@ -238,21 +259,26 @@ class WPForms_Process {
 	public function validate_return_hash( $hash = '' ) {
 
 		$query_args = base64_decode( $hash );
-		parse_str( $query_args );
+
+		parse_str( $query_args, $output );
 
 		// Verify hash matches.
-		if ( wp_hash( $form_id . ',' . $entry_id ) !== $hash ) {
+		if ( wp_hash( $output['form_id'] . ',' . $output['entry_id'] ) !== $output['hash'] ) {
 			return false;
 		}
 
 		// Get lead and verify it is attached to the form we received with it.
-		$entry = wpforms()->entry->get( $entry_id );
+		$entry = wpforms()->entry->get( $output['entry_id'] );
 
-		if ( $form_id != $entry->form_id ) {
+		if ( $output['form_id'] != $entry->form_id ) {
 			return false;
 		}
 
-		return $form_id;
+		return array(
+			'form_id'  => absint( $output['form_id'] ),
+			'entry_id' => absint( $output['form_id'] ),
+			'fields'   => $entry->fields,
+		);
 	}
 
 	/**
@@ -263,20 +289,23 @@ class WPForms_Process {
 	 * @param array|string $form_data
 	 * @param string $hash
 	 */
-	public function entry_confirmation_redirect( $form_data = '', $hash = '' ) {
+	public function entry_confirmation_redirect( $form_data = array(), $hash = '' ) {
 
-		$url = '';
+		$url = false;
 
+		// Maybe process return hash.
 		if ( ! empty( $hash ) ) {
 
-			$form_id = $this->validate_return_hash( $hash );
+			$hash_data = $this->validate_return_hash( $hash );
 
-			if ( ! $form_id ) {
+			if ( ! $hash_data || ! is_array( $hash_data ) ) {
 				return;
 			}
 
-			// Get form
-			$form_data = wpforms()->form->get( $form_id, array(
+			$this->valid_hash = true;
+			$this->entry_id   = absint( $hash_data['entry_id'] );
+			$this->fields     = json_decode( $hash_data['fields'], true );
+			$this->form_data  = wpforms()->form->get( absint( $hash_data['form_id'] ), array(
 				'content_only' => true,
 			) );
 		}
@@ -293,17 +322,11 @@ class WPForms_Process {
 			}
 		}
 
-		if ( ! empty( $form_data['id'] ) ) {
-			$form_id = $form_data['id'];
-		} else {
-			return;
-		}
-
 		if ( ! empty( $url ) ) {
-			$url = apply_filters( 'wpforms_process_redirect_url', $url, $form_id, $this->fields );
+			$url = apply_filters( 'wpforms_process_redirect_url', $url, $form_data['id'], $this->fields );
 			wp_redirect( esc_url_raw( $url ) );
-			do_action( 'wpforms_process_redirect', $form_id );
-			do_action( "wpforms_process_redirect_{$form_id}", $form_id );
+			do_action( 'wpforms_process_redirect', $form_data['id'] );
+			do_action( "wpforms_process_redirect_{$form_data['id']}", $form_data['id'] );
 			exit;
 		}
 	}

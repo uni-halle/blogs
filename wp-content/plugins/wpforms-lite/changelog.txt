@@ -1,5 +1,29 @@
 == Changelog ==
 
+= 1.4.5.2 =
+- Fixed: Incorrect documenation link for Input Mask.
+- Fixed: Input Mask value disappearing when form builder is refreshed.
+
+= 1.4.5.1 =
+- Fixed: Dynamic choices not displaying correctly for Multiple Choice and Checkbox fields.
+
+= 1.4.5 =
+- Added: Image choices feature with Checkbox and Multiple Choice fields; Images can now be uploaded and displayed with your choices!
+- Added: Custom input masks for Single Line Text fields (Advanced Options).
+- Added: No-Conflict Mode for Google reCAPTCHA (Settings > reCAPTCHA). Removes other reCAPTCHA occurrences, to prevent conflicts.
+- Added: SSL Connection Test (Tools > System Info). Quicky verify that your web host correct supports SSL connections.
+- Added: `{user_full_name}` Smart Tag, displays users first and last name.
+- Added: Discalimer / Terms of Service Display formatting option for Checkbox fields (Advanced Options).
+- Added: Basic CSS styling for `disabled` fields.
+- Added: Uninstall routine, available from Settings > Misc.
+- Added: Form builder performance improvements. Editing a form with hundreds of fields is now 500%+ faster!
+- Changed: New Settings tab: Misc, moved Hide Annoucements option to new tab.
+- Changed: `{user_display}` Smart Tag diplays user's display name (in most cases, this is the user's name).
+- Changed: All `<form>` attributes can now be changed via `wpforms_frontend_form_atts` filter.
+- Fixed: Form builder tab icon alignment conflicts with third party plugin CSS.
+- Fixed: Smart Tag dropdown display issues in the form builder.
+- Fixed: Form builder drag and drop area disappearing if all fields are removed from a form.
+
 = 1.4.4.1 =
 - Changed: Textdomain loading to a later priority.
 - Changed: Allow the `WPForms_Builder` class to be accessible.
