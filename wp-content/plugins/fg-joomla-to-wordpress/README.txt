@@ -1,10 +1,11 @@
 === FG Joomla to WordPress ===
 Contributors: Kerfred
 Plugin Uri: https://wordpress.org/plugins/fg-joomla-to-wordpress/
-Tags: joomla, mambo, elxis, wordpress, importer, convert joomla to wordpress, migrate joomla to wordpress, joomla to wordpress migration, migrator, converter, import, k2, jcomments, joomlacomments, jomcomment, flexicontent, postviews, joomlatags, sh404sef, attachments, rokbox, kunena, phocagallery, phoca, joomsef, opensef, easyblog, zoo, zooitems, joomfish, joom!fish, falang, wpml, joomgallery, jevents, contact directory, docman, virtuemart, woocommerce, jreviews, mosets tree, wpml, simple image gallery, rsgallery, community builder
+Tags: joomla, mambo, elxis, wordpress, import, importer, migration, migrator, k2, virtuemart, easyblog, sh404sef, jcomments, kunena, zoo, community builder, hikashop
 Requires at least: 4.5
 Tested up to: 4.9.4
-Stable tag: 3.36.0
+Stable tag: 3.40.0
+Requires PHP: 5.3
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=fred%2egilles%40free%2efr&lc=FR&item_name=fg-joomla-to-wordpress&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
@@ -87,6 +88,8 @@ The Premium version allows the use of add-ons that enhance functionality:
 * RSGallery
 * Community Builder
 * RSBlog
+* AllVideos
+* HikaShop
 
 These modules can be purchased on: [https://www.fredericgilles.net/fg-joomla-to-wordpress/add-ons/](https://www.fredericgilles.net/fg-joomla-to-wordpress/add-ons/)
 
@@ -224,6 +227,21 @@ Don't hesitate to let a comment on the [forum](https://wordpress.org/support/plu
 * other can be translated
 
 == Changelog ==
+
+= 3.40.0 =
+* New: Check if we need the HikaShop module
+* Change the URL of the WP Filesystem SSH2 plugin
+* Tweak: Change the scope of the upload_dir() method
+
+= 3.39.0 =
+* New: Add the "fgj2wp_pre_modify_link" filter hook
+
+= 3.38.0 =
+* New: Allow the SFTP connection. It requires the plugin "WP Filesystem SSH2".
+
+= 3.37.0 =
+* New: Check if we need the plugins RSGallery, Simple Image Gallery, Simple Image Gallery Pro, Rokbox, AllVideos
+* Update the Spanish translations
 
 = 3.36.0 =
 * New: Add the get_params() method (used in the Simple Image Gallery add-on)
@@ -952,234 +970,7 @@ Don't hesitate to let a comment on the [forum](https://wordpress.org/support/plu
 
 == Upgrade Notice ==
 
-= 3.36.0 =
-New: Add the get_params() method (used in the Simple Image Gallery add-on)
-
-= 3.35.1 =
-Fixed: Notice: Undefined index: date
-Tested with WordPress 4.9.4
-
-= 3.35.0 =
-New: Import the images embedded in the categories description
-New: Allow HTML tags in categories description
-Fixed: Links modified with wrong value
-
-= 3.34.0 =
-Tweak: Use WP_IMPORTING
-Tested with WordPress 4.9.2
-
-= 3.33.3 =
-Fixed: Media containing "&" were not imported
-Tested with WordPress 4.9.1
-
-= 3.33.2 =
-Tested with WordPress 4.9
-
-= 3.33.1 =
-Fixed: The width in the image caption was sometimes missing
-Tested with WordPress 4.8.3
-
-= 3.33.0 =
-Fixed: Sanitize the file names with spaces
-Tested with Joomla 3.8
-Tested with WordPress 4.8.2
-
-= 3.32.0 =
-New: Check if we need the RSBlog module
-
-= 3.31.0 =
-New: Test if Falang is used on Joomla
-Fixed: Security cross-site scripting (XSS) vulnerability in the Ajax importer
-Tested with WordPress 4.8.1
-
-= 3.30.0 =
-New: Import the image caption in the media attachment page
-
-= 3.28.0 =
-New: Modify internal links in drafts
-
-= 3.27.0 =
-New: Block the import if the URL field is empty and if the media are not skipped
-New: Add error messages and information
-
-= 3.26.0 =
-New: Add the percentage in the progress bar
-New: Display the progress and the log when returning to the import page
-Change: Restyling the progress bar
-Fixed: Typo - replace "complete" by "completed"
-Tested with WordPress 4.8
-
-= 3.25.0 =
-Compatible with Joomla 3.7
-Tested with WordPress 4.7.4
-
-= 3.23.2 =
-Tested with WordPress 4.7.3
-
-= 3.23.1 =
-Fixed: Images not imported on some servers
-Tested with WordPress 4.7.1
-
-= 3.23.0 =
-Tweak: Code refactoring
-
-= 3.22.0 =
-Tweak: Code refactoring
-
-= 3.21.0 =
-New: Add an option to remove the accents from the medias (useful on Windows)
-Tested with WordPress 4.7
-
-= 3.20.6 =
-Fixed: Existing images attached to imported posts were removed when deleting the imported data
-Fixed: Typo in Italian translation
-
-= 3.20.5 =
-Fixed: Images not imported on HTTPS sites: Warning: fsockopen(): unable to connect to https::80 (php_network_getaddresses: getaddrinfo failed: nodename nor servname provided, or not known)
-
-= 3.20.4 =
-Fixed: Wrong progress bar color
-
-= 3.20.3 =
-Fixed: The progress bar didn't move during the first import
-Fixed: The log window was empty during the first import
-
-= 3.20.2 =
-New: Check if the Community Builder module is required
-Fixed: The "IMPORT COMPLETE" message was still displayed when the import was run again
-
-= 3.20.1 =
-Fixed: The images protected by a user agent protection were not imported
-
-= 3.20.0 =
-Tweak: Code refactoring
-
-= 3.19.1 =
-Fixed: Database passwords containing "<" were not accepted
-
-= 3.19.0 =
-New: Modify the tags links in the post content
-
-= 3.18.0 =
-New: Authorize the connections to Web sites that use invalid SSL certificates
-Tweak: If the import is blocked, stop sending AJAX requests
-
-= 3.17.2 =
-Fixed: Review link broken
-Fixed: Imported tags were not removed when removing imported data only
-
-= 3.17.1 =
-Fixed: Missing link between the post and its featured image
-Fixed: Wrong number of comments displayed
-Tested with WordPress 4.6.1
-
-= 3.16.0 =
-New: Display the number of data found in the Joomla database before importing
-New: Display the needed modules as warnings before importing
-Tested with WordPress 4.6
-
-= 3.15.3 =
-Tweak: Code optimization
-
-= 3.15.2 =
-Fixed: the "Modify internal links" function could break some links
-
-= 3.15.1 =
-Fixed: Internal links like catid=XXX&id=YYY were not modified
-Tweak: Speed up and reduce the memory consumed by the modification of the internal links
-
-= 3.15.0 =
-New translation: Italian
-
-= 3.14.0 =
-New: Compatible with Joomla 3.6
-
-= 3.13.3 =
-Fixed: Display an error message when the process hangs
-Tweak: Increase the speed of counting the terms
-
-= 3.13.2 =
-Tested with WordPress 4.5.3
-
-= 3.13.1 =
-Fixed: Don't import the introtext in the post content if it is marked as hidden on Joomla
-
-= 3.12.0 =
-Fixed: Rewrite the function to delete only the imported data
-Fixed: Categories import can hang if the import counter was resetted and the imported categories were not deleted
-
-= 3.11.0 =
-New: Option to import the featured images only
-
-= 3.10.2 =
-Fixed: The message "[ERROR] The import process is still running. Please wait before running it again." sometimes appears after the process has crashed, and it prevents the import process to resume
-FAQ updated
-
-= 3.10.0 =
-New: Add some hooks
-Tweak: Code optimization
-FAQ updated
-
-= 3.9.1 =
-Fixed: Images with line breaks inside the tag were not imported
-Tested with WordPress 4.5.2
-
-= 3.9.0 =
-New: Allow image filenames starting with //
-
-= 3.8.0 =
-Tested with WordPress 4.5.1
-
-= 3.7.0 =
-New: Ability to stop the log window auto-refresh
-
-= 3.6.1 =
-Tested with WordPress 4.5
-
-= 3.6.0 =
-New: Compatible with Joomla 3.5
-Fixed: Images without slashes in their path were not imported
-
-= 3.5.1 =
-Fixed: Import stopped when a post has no title or no content
-Fixed: The first image was not removed from the content when used both in the intro text and in the full text
-
-= 3.5.0 =
-Fixed: Notice: Undefined variable: imported_tags
-Fixed: the progress bar was resetted when resuming the import
-
-= 3.4.0 =
-New: Modify the first image options
-Tweak: Code refactoring
-
-= 3.3.1 =
-Fixed: Error :SQLSTATE[42S22]: Column not found: 1054 Unknown column 'c.extension' in 'where clause'
-
-= 3.3.0 =
-New: Use the WordPress FTP API instead of the phpseclib library
-New: Better handle the progress bar
-New: Don't log the [COUNT] data in the log window
-Fixed: Browser tab crashed when too much data was displayed in the log window
-
-= 3.2.0 =
-New: Modify the Joomla SEF links
-
-= 3.1.0 =
-New: Brazilian translation added
-Fixed: When choosing "Import first image as featured only", the first image was not removed from content if it was surrounded by a hyperlink
-
-= 3.0.3 =
-Fixed: Articles got the unassigned category when the category is a duplicate
-
-= 3.0.2 =
-Fixed: Infinite loop when some categories have duplicate names
-
-= 3.0.1 =
-Fixed: After a resume, the posts were imported as uncategorized
-
-= 3.0.0 =
-New: Run the import in AJAX
-New: Add a progress bar
-New: Add a logger frame to see the logs in real time
-New: Ability to stop the import
-New: Compatible with PHP 7
+= 3.40.0 =
+New: Check if we need the HikaShop module
+Change the URL of the WP Filesystem SSH2 plugin
+Tweak: Change the scope of the upload_dir() method

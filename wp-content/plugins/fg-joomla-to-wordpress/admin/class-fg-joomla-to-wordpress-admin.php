@@ -1940,7 +1940,7 @@ SQL;
 		 * @param bool $use_yearmonth_folders Use the Year/Month tree folder
 		 * @return string Upload directory
 		 */
-		private function upload_dir($filename, $date, $use_yearmonth_folders=true) {
+		public function upload_dir($filename, $date, $use_yearmonth_folders=true) {
 			$upload_dir = wp_upload_dir(strftime('%Y/%m', strtotime($date)));
 			if ( $use_yearmonth_folders ) {
 				$upload_path = $upload_dir['path'];
@@ -1965,7 +1965,7 @@ SQL;
 		 * @param string $filetype File type
 		 * @param string $image_alt Image description
 		 * @param string $image_caption Image caption
-		 * @return int|false Attachment ID or false
+		 * @return int|bool Attachment ID or false
 		 */
 		public function insert_attachment($attachment_title, $basename, $new_full_filename, $guid, $date, $filetype, $image_alt='', $image_caption='') {
 			$post_name = 'attachment-' . sanitize_title($attachment_title); // Prefix the post name to avoid wrong redirect to a post with the same name
@@ -1991,7 +1991,7 @@ SQL;
 					'post_excerpt'		=> $image_caption,
 				);
 				$attachment_id = wp_insert_attachment($attachment_data, $new_full_filename);
-				add_post_meta($attachment_id, '_fgj2wp_imported', 1, true); // To delete the imported attachments
+				add_post_meta($attachment_id, '_fgj2wp_imported', 1, true); // To be able to delete the imported attachments
 			}
 			
 			if ( !empty($attachment_id) ) {
@@ -2312,6 +2312,7 @@ SQL;
 											$new_link = get_permalink($linked_post_id);
 										}
 									}
+									$new_link = apply_filters('fgj2wp_pre_modify_link', $new_link, $link);
 									
 									if ( !empty($new_link) ) {
 										if ( !empty($anchor_link) ) {

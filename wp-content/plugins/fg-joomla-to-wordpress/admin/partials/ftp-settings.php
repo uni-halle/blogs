@@ -18,8 +18,12 @@
 					<td><input id="ftp_password" name="ftp_password" type="password" size="50" value="<?php echo $data['ftp_password']; ?>" /></td>
 				</tr>
 				<tr>
-					<th scope="row"><?php _e('FTPS', 'fg-joomla-to-wordpress'); ?></th>
-					<td><input id="ftp_connection_type" name="ftp_connection_type" type="checkbox" value="ftps" <?php checked($data['ftp_connection_type'], 'ftps'); ?> /> <label for="ftp_connection_type" ><?php _e('Use FTPS', 'fg-joomla-to-wordpress'); ?></label></td>
+					<th scope="row"><?php _e('Protocol', 'fg-joomla-to-wordpress'); ?></th>
+					<td>
+						<input id="ftp_connection_type_ftp" name="ftp_connection_type" type="radio" value="ftp" <?php checked($data['ftp_connection_type'], 'ftp'); ?> /> <label for="ftp_connection_type_ftp" ><?php _e('FTP', 'fg-joomla-to-wordpress'); ?></label>&nbsp;
+						<input id="ftp_connection_type_ftps" name="ftp_connection_type" type="radio" value="ftps" <?php checked($data['ftp_connection_type'], 'ftps'); ?> /> <label for="ftp_connection_type_ftps" ><?php _e('FTPS', 'fg-joomla-to-wordpress'); ?></label>&nbsp;
+						<input id="ftp_connection_type_sftp" name="ftp_connection_type" type="radio" value="sftp" <?php checked($data['ftp_connection_type'], 'sftp'); ?> /> <label for="ftp_connection_type_sftp" ><?php _e('SFTP', 'fg-joomla-to-wordpress'); ?></label> <small><?php printf(__('(SFTP requires the <a href="%s" target="_blank">WP Filesystem SSH2</a> plugin)', 'fg-joomla-to-wordpress'), 'https://www.fredericgilles.net/wp-filesystem-ssh2/'); ?></small>
+					</td>
 				</tr>
 				<tr>
 					<th scope="row"><label for="ftp_dir"><?php _e('FTP base directory', 'fg-joomla-to-wordpress'); ?></label></th>

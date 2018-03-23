@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FG Joomla to WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-22 08:23+0200\n"
-"PO-Revision-Date: 2017-10-22 08:23+0200\n"
+"POT-Creation-Date: 2018-03-16 11:09+0100\n"
+"PO-Revision-Date: 2018-03-16 11:10+0100\n"
 "Last-Translator: F. GILLES\n"
 "Language-Team: F. GILLES\n"
 "Language: fr_FR\n"
@@ -242,70 +242,70 @@ msgid_plural "%d web links"
 msgstr[0] "%d lien"
 msgstr[1] "%d liens"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1005
+#: admin/class-fg-joomla-to-wordpress-admin.php:1006
 #, php-format
 msgid "%d category imported"
 msgid_plural "%d categories imported"
 msgstr[0] "%d catégorie importée"
 msgstr[1] "%d catégories importées"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1018
+#: admin/class-fg-joomla-to-wordpress-admin.php:1019
 #, php-format
 msgid "%d page imported"
 msgid_plural "%d pages imported"
 msgstr[0] "%d page importée"
 msgstr[1] "%d pages importées"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1022
+#: admin/class-fg-joomla-to-wordpress-admin.php:1023
 #, php-format
 msgid "%d post imported"
 msgid_plural "%d posts imported"
 msgstr[0] "%d article importé"
 msgstr[1] "%d articles importés"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1024
+#: admin/class-fg-joomla-to-wordpress-admin.php:1025
 #, php-format
 msgid "%d media imported"
 msgid_plural "%d medias imported"
 msgstr[0] "%d média importé"
 msgstr[1] "%d médias importés"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1030
+#: admin/class-fg-joomla-to-wordpress-admin.php:1031
 #, php-format
 msgid "%d tag imported"
 msgid_plural "%d tags imported"
 msgstr[0] "%d mot-clef importé"
 msgstr[1] "%d mots-clefs importés"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1056
+#: admin/class-fg-joomla-to-wordpress-admin.php:1057
 msgid "Don't forget to modify internal links."
 msgstr "N'oubliez pas de modifier les liens internes."
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1073
+#: admin/class-fg-joomla-to-wordpress-admin.php:1074
 msgid "The URL field is required to import the media."
 msgstr "Le champ URL est requis pour importer les médias."
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1129
+#: admin/class-fg-joomla-to-wordpress-admin.php:1130
 msgid "Importing categories..."
 msgstr "Import des catégories..."
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1303
+#: admin/class-fg-joomla-to-wordpress-admin.php:1312
 msgid "Importing posts..."
 msgstr "Import des articles..."
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1348
+#: admin/class-fg-joomla-to-wordpress-admin.php:1357
 msgid ""
 "The import process is still running. Please wait before running it again."
 msgstr ""
 "Le process d’import est toujours en cours. Merci d’attendre avant de le "
 "relancer."
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1447
+#: admin/class-fg-joomla-to-wordpress-admin.php:1456
 #, php-format
 msgid "Article #%d:"
 msgstr "Article #%d :"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1874
+#: admin/class-fg-joomla-to-wordpress-admin.php:1886
 #, php-format
 msgid "Unable to create directory %s"
 msgstr "Impossible de créer le répertoire %s"
@@ -319,9 +319,21 @@ msgstr "Connexion FTP réussie"
 msgid "FTP connection failed"
 msgstr "Connexion FTP échouée"
 
-#: admin/class-fg-joomla-to-wordpress-ftp.php:154
+#: admin/class-fg-joomla-to-wordpress-ftp.php:146
+#: admin/class-fg-joomla-to-wordpress-ftp.php:158
+#: admin/class-fg-joomla-to-wordpress-ftp.php:169
 msgid "FTP connection failed:"
 msgstr "Connexion FTP échouée :"
+
+#: admin/class-fg-joomla-to-wordpress-ftp.php:146
+#: admin/partials/ftp-settings.php:25
+#, php-format
+msgid ""
+"(SFTP requires the <a href=\"%s\" target=\"_blank\">WP Filesystem SSH2</a> "
+"plugin)"
+msgstr ""
+"(SFTP nécessite le plugin <a href=\"%s\" target=\"_blank\">WP Filesystem "
+"SSH2</a>)"
 
 #: admin/class-fg-joomla-to-wordpress-modules-check.php:43
 #, php-format
@@ -352,224 +364,269 @@ msgstr ""
 "\"%2$s\" target=\"_blank\">version Premium</a> et <a href=\"%3$s\" target="
 "\"_blank\">%4$s</a> pour les importer."
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:54
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:57
 msgid "several users"
 msgstr "plusieurs utilisateurs"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:58
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:64
 msgid "some tags"
 msgstr "des mots-clefs"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:62
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:71
 msgid "some K2 items"
 msgstr "des éléments K2"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:62
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:71
 msgid "K2 add-on"
 msgstr "du module K2"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:66
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:78
 msgid "some Flexicontent items"
 msgstr "des éléments Flexicontent"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:66
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:78
 msgid "Flexicontent add-on"
 msgstr "du module Flexicontent"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:70
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:85
 msgid "some EasyBlog posts"
 msgstr "des articles EasyBlog"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:70
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:85
 msgid "EasyBlog add-on"
 msgstr "du module EasyBlog"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:74
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:92
 msgid "some Joom!Fish translations"
 msgstr "des traductions Joom!Fish"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:74
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:78
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:92
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:99
 msgid "Joom!Fish add-on"
 msgstr "du module Joom!Fish"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:78
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:99
 msgid "some Falang translations"
 msgstr "des traductions Falang"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:82
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:106
 msgid "some Zoo items"
 msgstr "des éléments Zoo"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:82
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:106
 msgid "Zoo add-on"
 msgstr "du module Zoo"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:86
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:90
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:113
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:120
 msgid "some sh404sef redirections"
 msgstr "des redirections sh404sef"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:86
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:90
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:113
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:120
 msgid "sh404sef add-on"
 msgstr "du module sh404sef"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:94
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:127
 msgid "some JoomSEF redirections"
 msgstr "des redirections JoomSEF"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:94
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:127
 msgid "JoomSEF add-on"
 msgstr "du module JoomSEF"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:98
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:134
 msgid "some OpenSEF redirections"
 msgstr "des redirections OpenSEF"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:98
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:134
 msgid "OpenSEF add-on"
 msgstr "du module OpenSEF"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:102
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:141
 msgid "some JComments comments"
 msgstr "des commentaires JComments"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:102
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:141
 msgid "JComments add-on"
 msgstr "du module JComments"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:106
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:148
 msgid "some JomComment comments"
 msgstr "des commentaires JomComment"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:106
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:148
 msgid "JomComment add-on"
 msgstr "du module JomComment"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:110
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:114
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:155
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:162
 msgid "a Kunena forum"
 msgstr "un forum Kunena"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:110
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:114
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:155
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:162
 msgid "Kunena add-on"
 msgstr "du module Kunena"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:118
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:169
 msgid "some attachments"
 msgstr "des fichiers joints"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:118
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:169
 msgid "Attachments add-on"
 msgstr "du module Attachments"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:122
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:176
 msgid "some Joomlatags tags"
 msgstr "des mots-clefs Joomlatags"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:122
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:176
 msgid "Joomlatags add-on"
 msgstr "du module Joomlatags"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:126
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:183
 msgid "some JoomGallery galleries"
 msgstr "des galeries JoomGallery"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:126
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:183
 msgid "JoomGallery add-on"
 msgstr "du module JoomGallery"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:130
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:190
 msgid "some PhocaGallery galleries"
 msgstr "des images PhocaGallery"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:130
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:190
 msgid "PhocaGallery add-on"
 msgstr "du module Phocagallery"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:134
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:197
+msgid "some RSGallery galleries"
+msgstr "des galeries RSGallery"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:197
+msgid "RSGallery add-on"
+msgstr "du module RSGallery"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:204
+msgid "some Simple Image Gallery galleries"
+msgstr "des galeries Simple Image Gallery"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:204
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:211
+msgid "Simple Image Gallery add-on"
+msgstr "du module Simple Image Gallery"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:211
+msgid "some Simple Image Gallery Pro galleries"
+msgstr "des galeries Simple Image Gallery Pro"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:218
+msgid "some Rokbox images"
+msgstr "des images Rokbox"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:218
+msgid "Rokbox add-on"
+msgstr "du module Rokbox"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:225
 msgid "some JEvents events"
 msgstr "des évènements JEvents"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:134
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:225
 msgid "JEvents add-on"
 msgstr "du module JEvents"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:138
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:232
 msgid "some contacts"
 msgstr "des contacts"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:138
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:232
 msgid "Contact Manager add-on"
 msgstr "du module Contact Manager"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:142
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:239
 msgid "some Docman documents"
 msgstr "des documents Docman"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:142
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:239
 msgid "Docman add-on"
 msgstr "du module Docman"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:146
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:150
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:246
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:253
 msgid "a Virtuemart e-commerce solution"
 msgstr "une boutique en ligne Virtuemart"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:146
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:150
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:246
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:253
 msgid "Virtuemart add-on"
 msgstr "du module Virtuemart"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:154
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:260
 msgid "some JReviews data"
 msgstr "des données JReviews"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:154
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:260
 msgid "JReviews add-on"
 msgstr "du module JReviews"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:158
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:267
 msgid "a Mosets Tree directory"
 msgstr "un annuaire Mosets Tree"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:158
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:267
 msgid "Mosets Tree add-on"
 msgstr "du module Mosets Tree"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:162
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:274
 msgid "user groups"
 msgstr "des groupes d'utilisateurs"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:162
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:274
 msgid "User Groups add-on"
 msgstr "du module User Groups"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:166
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:281
 msgid "Community Builder data"
 msgstr "des données Community Builder"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:166
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:281
 msgid "Community Builder add-on"
 msgstr "du module Community Builder"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:170
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:288
 msgid "some RSBlog posts"
 msgstr "des articles RSBlog"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:170
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:288
 msgid "RSBlog add-on"
 msgstr "du module RSBlog"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:184
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:295
 msgid "several languages"
 msgstr "plusieurs langues"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:184
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:295
 msgid "WPML add-on"
 msgstr "du module WPML"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:302
+msgid "some AllVideos videos"
+msgstr "des vidéos AllVideos"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:302
+msgid "AllVideos add-on"
+msgstr "du module AllVideos"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:309
+msgid "an HikaShop e-commerce solution"
+msgstr "une boutique en ligne HikaShop"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:309
+msgid "HikaShop add-on"
+msgstr "du module HikaShop"
 
 #: admin/class-fg-joomla-to-wordpress-weblinks.php:82
 #, php-format
@@ -972,7 +1029,11 @@ msgstr "contenu Community Builder"
 msgid "RSBlog content"
 msgstr "contenu RSBlog"
 
-#: admin/partials/extra-features.php:42
+#: admin/partials/extra-features.php:38
+msgid "HikaShop e-commerce"
+msgstr "boutique en ligne HikaShop"
+
+#: admin/partials/extra-features.php:43
 msgid "This feature needs an add-on in addition to the Premium version."
 msgstr ""
 "Cette fonctionnalité nécessite un module supplémentaire en plus de la "
@@ -999,18 +1060,26 @@ msgid "FTP password"
 msgstr "Mot de passe FTP"
 
 #: admin/partials/ftp-settings.php:21
+msgid "Protocol"
+msgstr "Protocole"
+
+#: admin/partials/ftp-settings.php:23
+msgid "FTP"
+msgstr "FTP"
+
+#: admin/partials/ftp-settings.php:24
 msgid "FTPS"
 msgstr "FTPS"
 
-#: admin/partials/ftp-settings.php:22
-msgid "Use FTPS"
-msgstr "Utiliser FTPS"
-
 #: admin/partials/ftp-settings.php:25
+msgid "SFTP"
+msgstr "SFTP"
+
+#: admin/partials/ftp-settings.php:29
 msgid "FTP base directory"
 msgstr "Répertoire de base FTP"
 
-#: admin/partials/ftp-settings.php:30
+#: admin/partials/ftp-settings.php:34
 msgid "Test the FTP connection"
 msgstr "Tester la connexion FTP"
 
@@ -1094,6 +1163,9 @@ msgstr "Tester la connexion à la base de données"
 #: includes/class-fg-joomla-to-wordpress.php:216
 msgid "Import"
 msgstr "Importer"
+
+#~ msgid "Use FTPS"
+#~ msgstr "Utiliser FTPS"
 
 #~ msgid ""
 #~ "This plugin will import sections, categories, posts, medias (images, "
