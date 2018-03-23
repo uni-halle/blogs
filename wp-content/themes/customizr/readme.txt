@@ -23,6 +23,22 @@ See headers of each files for further details.
 
 
 ####################### Changelog ######################
+= 4.1.1 March 23rd 2018 =
+* Fix: wront text-domain for the social links module
+
+= 4.1.0 March 22nd 2018 =
+* Fix: do not display post metas for pages in search results
+* Fix: make sure our col*auto always have a max-width of 100%. fixes #1476
+* Imp: overall css improvements
+* Imp: remove post 'hentry' class when current post type is a page since author and published/update metas will not be printed in pages fixes #1344 #917 #864 #694 #1401. In blog/archives or single posts showing those metas is up to the user.
+* Imp: co-authors plus plugin integration
+* Imp: add horizontal widget area before the footer. fixes #1369
+* Imp: add early check on php version (min 5.3) and wp version (min 4.5). Fixes #1496
+* Imp: turn slider .czrs-title from H1 to H2.fixes #1489
+* Imp: fix various form plugins compatibility.fixes #1487, #1486
+* Imp: improve woocommerce single product tabs style
+* Imp: added various dismissable placeholders and notices on front with direct link to the live customizer.
+
 = 4.0.18 February 13th 2018 =
 * Fix: tagline visibility in mobiles when shown in desktop topbar. fixes #1458
 * Fix: topbar menu not displayed in fresh installs. fixes #1460

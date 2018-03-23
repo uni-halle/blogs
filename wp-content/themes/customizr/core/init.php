@@ -250,6 +250,7 @@ if ( ! class_exists( 'CZR___' ) ) :
                         array('core'       , 'resources_fonts'),
                         array('core'       , 'resources_scripts'),
                         array('core'       , 'widgets'),//widget factory
+                        array('core'       , 'placeholders'),//front end placeholders ajax actions for widgets, menus.... Must be fired if is_admin === true to allow ajax actions.
                         array('core/back'  , 'admin_init'),//loads admin style and javascript ressources. Handles various pure admin actions (no customizer actions)
                         array('core/back'  , 'admin_page')//creates the welcome/help panel including changelog and system config
                     ),
@@ -417,7 +418,7 @@ if ( ! class_exists( 'CZR___' ) ) :
                     if ( defined( 'DOING_AJAX' ) )
                       $_to_load = $this -> czr_fn_unset_core_classes( $_to_load, array( 'header' , 'content' , 'footer' ), array( 'admin|core/back|customize' ) );
                     else
-                      $_to_load = $this -> czr_fn_unset_core_classes( $_to_load, array( 'header' , 'content' , 'footer' ), array( 'admin|core/back|customize', 'fire|core|placehloders' ) );
+                      $_to_load = $this -> czr_fn_unset_core_classes( $_to_load, array( 'header' , 'content' , 'footer' ), array( 'admin|core/back|customize', 'fire|core|placeholders' ) );
                 }
                 else {
                     //Skips all admin classes

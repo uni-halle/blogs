@@ -68,6 +68,11 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
             //prevent rendering the comments template more than once
             add_filter( 'tc_render_comments_template'            , array( $this,  'czr_fn_control_coments_template_rendering' ) );
 
+
+            //remove hentry class when the current $post type is a page
+            add_filter( 'post_class'                             , array( $this, 'czr_fn_maybe_remove_hentry_class' ), 20 );
+
+
             //Default images sizes
             $this -> tc_thumb_size      = array( 'width' => 270 , 'height' => 250, 'crop' => true ); //size name : tc-thumb
             $this -> slider_full_size   = array( 'width' => 9999 , 'height' => 500, 'crop' => true ); //size name : slider-full
@@ -426,10 +431,11 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
 
 
       /**
+      * hook : 'wp_before_admin_bar_render'
       * Add help button
       */
       function czr_fn_add_help_button() {
-          if ( current_user_can( 'edit_theme_options' ) ) {
+          if ( czr_fn_is_pro() ) {
               global $wp_admin_bar;
               $wp_admin_bar->add_menu( array(
                   'parent' => 'top-secondary', // Off on the right side
@@ -578,8 +584,22 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
 
 
 
+        /**
+        * Remove hentry class when the current $post type is a page
+        * @param array $class
+        * @return array $class
+        * hook : post_class
+        *
+        */
+        function czr_fn_maybe_remove_hentry_class( $class ) {
+            $remove_bool = 'page' == czr_fn_get_post_type();
 
+            if ( apply_filters( 'czr_post_class_remove_hentry_class', $remove_bool ) ) {
+                $class = array_diff( $class, array( 'hentry' ) );
+            }
 
+            return $class;
+        }
 
 
 
@@ -931,5 +951,52 @@ czr_fn_setup_constants();
 
 //setup started using theme option ( before checking czr_fn_is_ms() that uses the user_started_before_Version function to determine it )
 czr_fn_setup_started_using_theme_option_and_constants();
+
+// load the czr-base-fmk
+if ( ! isset( $GLOBALS['czr_base_fmk'] ) ) {
+    require_once(  dirname( __FILE__ ) . '/czr-base-fmk/czr-base-fmk.php' );
+    \czr_fn\CZR_Fmk_Base( array(
+       'text_domain' => 'customizr',
+       'base_url' => CZR_BASE_URL . 'core/czr-base-fmk',
+       'version' => CUSTOMIZR_VER
+    ) );
+} else {
+    error_log('Warning => the czr_base_fmk should be loaded and instantiated by the theme.');
+}
+
+
+// load the social links module
+require_once( CZR_BASE . CZR_CORE_PATH . 'czr-modules/social-links/index.php' );
+czr_fn_register_social_links_module(
+    array(
+        'id' => 'tc_theme_options[tc_social_links]',
+
+        'text-domain' => 'customizr',
+        'base_url_path' => CZR_BASE_URL . '/core/czr-modules/social-links',
+        'version' => CUSTOMIZR_VER,
+
+        'option_value' => czr_fn_opt( 'tc_social_links' ), // for dynamic registration
+        'setting' => array(
+            'type' => 'option',
+            'default'  => array(),
+            'transport' => czr_fn_is_partial_refreshed_on() ? 'postMessage' : 'refresh',
+            'sanitize_callback' => 'czr_fn_sanitize_callback__czr_social_module',
+            'validate_callback' => 'czr_fn_validate_callback__czr_social_module'
+        ),
+
+        'section' => array(
+            'id' => 'socials_sec',
+            'title' => __( 'Social links', 'customizr' ),
+            'panel' => 'tc-global-panel',
+            'priority' => 20
+        ),
+
+        'control' => array(
+            'priority' => 10,
+            'label' => __( 'Create and organize your social links', 'customizr' ),
+            'type'  => 'czr_module',
+        )
+    )
+);
 
 require_once( get_template_directory() . ( czr_fn_is_ms() ? '/core/init.php' : '/inc/czr-init-ccat.php' ) );
