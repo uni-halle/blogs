@@ -1,0 +1,152 @@
+.content {
+
+
+
+	&__article,
+	&__pagination,
+	&__postnavigation {
+		margin: $marginlarge;
+		padding: $marginlarge 0 $marginlarge $marginlarge;
+		
+		// content-separation
+		//@include border(top);
+		padding-top: $marginlarge;
+	}
+
+
+
+	// manage border/separation exclusions
+	&__article:first-child { 
+		@media (min-width: $tablet) {
+			//border-top: none;
+			padding-top: 0;
+		}
+		@media (max-width: $tablet) {
+			margin-top: 0;
+		}
+	}
+
+
+
+	&__postlist {}
+	&__postlinklist {}
+	&__postmasonry {}
+	&__postaccordion {}
+	&__pagelist {}
+
+
+
+	&__pagination {
+		text-align: right;
+		.nav-links > * {
+			display: inline-block;
+			padding: 0;
+			margin-right: $marginsmall;
+		}
+		.nav-links > *:last-child {
+			margin-right: 0;
+		}
+		a { 
+			color: $color__navigation--2;
+			&:hover { color: $color__navigation--3; }
+				
+			&.next { 
+				padding-right: 1em; 
+				&:after {
+					content: "›";
+					position: relative;
+					left: 0.375em;
+					transition: $transition;
+				}
+				&:hover:after {
+					left: 0.75em;
+					transition: $transition;
+				}
+			}
+			&.prev {
+				padding-left: 1em;
+				&:before {
+					content: "‹";
+					position: relative;
+					right: 0.375em;
+					transition: $transition;
+				}
+				&:hover:before {
+					right: 0.75em;
+					transition: $transition;
+				}
+			}
+		}
+	}
+
+
+
+	&__postnavigation {
+		.nav-links > * {
+			display: block;
+			float: right;
+			margin-right: $marginsmall;
+			padding-right: $marginsmall;
+			@include border(right);
+		}
+		.nav-links > *:first-child {
+			margin: 0;
+			padding: 0;
+			border-right: none;
+		}
+		.nav-previous a { 
+			color: $color__navigation--2;
+			&:hover { color: $color__navigation--3; }
+			
+			padding-right: 1em; 
+			&:after {
+				content: "›";
+				position: relative;
+				left: 0.375em;
+				transition: $transition;
+			}
+			&:hover:after {
+				left: 0.75em;
+				transition: $transition;
+			}
+		}
+		.nav-next a { 
+			color: $color__navigation--2;
+			&:hover { color: $color__navigation--3; }
+			
+			padding-left: 1em;
+			&:before {
+				content: "‹";
+				position: relative;
+				right: 0.375em;
+				transition: $transition;
+			}
+			&:hover:before {
+				right: 0.75em;
+				transition: $transition;
+			}
+		}
+		.backlink {
+			display: block;
+			float: right;
+			color: $color__navigation--2;
+			&:hover { color: $color__navigation--3; }
+			
+			padding-right: 1em; 
+			&:after {
+				content: "›";
+				position: relative;
+				left: 0.375em;
+				transition: $transition;
+			}
+			&:hover:after {
+				left: 0.75em;
+				transition: $transition;
+			}
+			
+		}
+	}
+
+
+
+}

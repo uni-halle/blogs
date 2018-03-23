@@ -1,0 +1,17 @@
+.article {
+
+
+
+	&__date {
+		@media (min-width: $phone) {
+			text-align: right;
+		}
+	}
+
+
+
+	&__title {}
+
+
+
+}

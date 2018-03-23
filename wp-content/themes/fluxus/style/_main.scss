@@ -1,0 +1,105 @@
+.main {
+	min-height: 100vh;
+
+
+
+	&__sidebar {
+		float: none;
+		clear: both;
+		width: 100%;
+		
+		@media (min-width: $tablet) {
+			float: right;
+			clear: right;
+			width: $sidebarwidth;
+			
+			@include border(left);
+		}
+	}
+
+
+
+	&__content {
+		float: left;
+		clear: left;
+		width: calc( 100% - #{$sidebarwidth});
+		@media (max-width: $tablet) {
+			float: none;
+			clear: both;
+			width: 100%;
+		}
+		
+		min-height: 100vh;
+		padding-bottom: 12em;
+	}
+
+
+
+	&__nextbutton {
+		text-align: center;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		
+		&img {
+			width: 6em;
+			height: auto;
+			margin-bottom: 6em;
+			opacity: 0.5;
+			transition: $transition;
+			&:hover {
+				opacity: 1;
+				transition: $transition;
+			}
+		}
+	}
+	&__backtosearchbutton {
+		text-align: center;
+	}
+
+
+	&__content--full { 
+		width: 100%; 
+	}
+
+
+
+}
+
+
+
+.page-template-page-startseite {
+	.main__content {
+		margin-top: 10vh;
+	}
+	.main__nextbutton {
+		text-align: center;
+		position: static;
+		width: 100%;
+		
+		&img {
+			width: 6em;
+			height: auto;
+			margin-bottom: 0;
+			opacity: 0.5;
+			transition: $transition;
+			&:hover {
+				opacity: 1;
+				transition: $transition;
+			}
+		}
+	}
+}
+
+.fw .main__content {
+	animation-duration: 0.5s;
+	animation-timing-function: ease-in;
+	animation-fill-mode: both;
+	animation-name: fadeInUp;
+}
+.rw .main__content {
+	animation-duration: 0.5s;
+	animation-timing-function: ease-in;
+	animation-fill-mode: both;
+	animation-name: fadeInDown;
+}

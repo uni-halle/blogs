@@ -1,0 +1,59 @@
+.pagelist {
+
+
+	&__item {
+		margin: 0 $marginlarge;
+		padding: $marginlarge 0 calc(#{$marginlarge} + 3em) $marginlarge;
+		&:first-child { 
+			margin-top: 0; 
+		}
+		@include border(top);
+	}
+
+
+
+	.pagelist__content {
+		overflow: visible;
+		padding-bottom: 10em;
+	}
+
+
+
+	&__head {}
+	&__img {
+		display: block;
+		width: $thumbnailwidth;
+		height: auto;
+		margin-right: $margin;
+		
+		float: left;
+		@media (max-width: $desktop) {	float: none; }
+		@media (max-width: $tablet) {	float: left; }
+		@media (max-width: $phone) {	float: none; }
+	}
+	&__headinfo {
+		padding-top: $margin;
+	}
+	&__date {
+		margin-bottom: $marginsmall !important;
+		}
+
+
+
+	&__content {
+		overflow: visible;
+	}
+
+
+
+	.more-link {
+		display: block;
+		padding: 0.375em 1.5em 0.375em 0.375em;
+		text-align: right;
+		font-weight: $fontweightbold;
+		background: $smoke;
+	}
+
+
+
+}

@@ -1,0 +1,62 @@
+.addgallerymasonry { 
+
+
+
+	@include fadein();
+	margin: $marginlarge calc(#{$marginlarge} - #{$marginsmall}) $marginlarge $marginlarge;
+
+
+
+	> * {
+		width: 16.66%;
+		@media (max-width: $desktop) { 
+			width: 20%;
+		}
+		@media (max-width: $tablet) { }
+		@media (max-width: $phone) { 
+			width: 33.33%;
+		}
+	}
+
+
+
+	&__item,
+	&__item--first {
+		float: left;
+		padding-right: $marginsmall;
+		margin-bottom: $marginsmall;
+	}
+	&__item img{
+		filter: grayscale(100%);
+		opacity: 0.5;
+		transition: $transition;
+	}
+	&__item:hover img,
+	&__item--first img {
+		filter: grayscale(0%);
+		opacity: 1;
+	}
+	&__item--first {
+		@media (min-width: $desktop) { 
+			width: 50%;
+		}
+		@media (max-width: $desktop) { 
+			width: 60%;
+		}
+		@media (max-width: $tablet) { }
+		@media (max-width: $phone) { 
+			width: 100%;
+		}
+	}
+
+
+
+	&__img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+
+
+}

@@ -1,0 +1,63 @@
+.postmasonry {
+
+
+
+	margin: $marginlarge calc(#{$marginlarge} - #{$marginsmall}) $marginlarge $marginlarge;
+
+
+
+	&__link {
+		display: block;
+		overflow: hidden;
+		}
+
+
+	&__item {
+		overflow: hidden;
+		padding: 0 $marginsmall 0 0;
+		margin: 0 0 $marginsmall 0;
+		
+		@media (min-width: $desktop) { 	width: 33.33%; }
+		@media (max-width: $desktop) { 	width: 50%; }
+		@media (max-width: $tablet) { 	width: 50%; }
+		@media (max-width: $phone) { 	width: 100%;}
+		}
+
+
+
+	&--only1 &__item {}
+	&--morethan1 &__item {}
+
+
+
+	&__postthumbnail {
+		display: block;
+		width: 100%;
+		height: auto;
+		z-index: -1;
+		}
+
+
+
+	&__title {
+		text-align: right;
+		padding: $marginsmall;
+		
+		color: #fff;
+		background: rgba(0,0,0,0.5);
+		}
+	&__postthumbnail + &__title {
+		width: calc(100% - #{$marginsmall});
+		position: absolute;
+		bottom: 0;
+		transform: translateY(100%);
+		transition: $transition;
+		}
+	&__item:hover &__postthumbnail + &__title {
+		transform: translateY(0);
+		transition: $transition;
+		}
+
+
+
+}

@@ -1,0 +1,84 @@
+.postaccordion {
+
+
+	&__item {
+		margin: 0 $marginlarge;
+		&:first-child { 
+			margin-top: 0; 
+		}
+		@include border(top);
+		
+		transition: $transition;
+		&.accordionsection--current {
+			margin: $marginlarge;
+			transition: $transition;
+		}
+	}
+
+
+
+	&__head {}
+	&__postthumbnail {
+		display: block;
+		width: $thumbnailwidth;
+		height: auto;
+		margin-bottom: 0 !important;
+		
+		float: left;
+		@media (max-width: $desktop) {	float: none; }
+		@media (max-width: $tablet) {	float: left; }
+		@media (max-width: $phone) {	float: none; }
+	}
+	&__headinfo {
+		padding: $margin $margin 0 $margin;
+	}
+	&__date {
+		margin-bottom: $marginsmall !important;
+		}
+	&__title {}
+
+
+
+	&__content {
+		clear: both;
+		padding: $margin;
+	}
+
+
+
+	// typo-links
+	&__title {
+		padding-right: 1em;
+		color: $color__navigation--2 !important;
+		transition: $transition;
+		
+		&::after {
+			content: "›";
+			position: relative;
+			left: 0.375em;
+			transition: $transition;
+			display: inline-block;
+		}
+		.postaccordion__item:hover &,
+		.accordionsection--current & {
+			color: $color__theme--3 !important;
+			transition: $transition;
+		}
+		.postaccordion__item:hover &::after,
+		.accordionsection--current &::after {
+			left: 0.375em;
+			transform: rotate(90deg);
+			transition: $transition;
+		}
+	}
+
+
+
+	&__item:hover,
+	&__item.accordionsection--current {
+		background: $smoke;
+	}
+
+
+
+}

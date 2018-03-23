@@ -1,0 +1,70 @@
+.postlinklist {
+
+
+	&__item {
+		margin: $margin $marginlarge;
+		@include border(top);
+		&:first-child { 
+			margin-top: $marginlarge;
+			border-top: none; 
+		}
+	}
+
+
+
+	&__head {
+		color: $color;
+	}
+	&__postthumbnail {
+		display: block;
+		width: $thumbnailwidth;
+		height: auto;
+		margin-right: $margin;
+		
+		float: left;
+		@media (max-width: $desktop) {	float: none; }
+		@media (max-width: $tablet) {	float: left; }
+		@media (max-width: $phone) {	float: none; }
+	}
+	&__headinfo {
+		padding-top: $margin;
+	}
+	&__date {
+		margin-bottom: $marginsmall !important;
+		}
+	&__title {}
+
+
+
+	&__content {
+		color: $color;
+		clear: both;
+	}
+
+
+
+	// typo-links
+	&__title {
+		padding-right: 1em;
+		color: $color__navigation--2 !important;
+		transition: $transition;
+		
+		&::after {
+			content: "›";
+			position: relative;
+			left: 0.375em;
+			transition: $transition;
+		}
+		.postlinklist__item:hover & {
+			color: $color__theme--3 !important;
+			transition: $transition;
+		}
+		.postlinklist__item:hover &::after {
+			left: 0.75em;
+			transition: $transition;
+		}
+	}
+
+
+
+}

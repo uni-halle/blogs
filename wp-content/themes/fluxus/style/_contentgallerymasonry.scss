@@ -1,0 +1,128 @@
+.contentgallerymasonry { 
+	margin-top: $marginlarge;
+	width: calc(100% + #{$margin});
+	overflow: visible;
+
+
+
+	&__item {
+		overflow: visible;
+		padding: 0 $margin 0 0;
+		margin: 0 0 $margin 0;
+		
+		@media (min-width: $desktop) { 
+			&--1columns { width: 100%; }
+			&--2columns { width: 50%; }
+			&--3columns { width: 33.33%; }
+			&--4columns { width: 25%; }
+			&--5columns { width: 20%; }
+			&--6columns { width: 16.66%; }
+			&--7columns { width: 14.28%; }
+			&--8columns { width: 12.5%; }
+			&--9columns { width: 11.11%; }
+			
+			&--5columns.doublewidth { width: 40%; }
+			&--5columns.triplewidth { width: 60%; }
+		}
+		@media (max-width: $desktop) { 
+			&--1columns { width: 100%; }
+			&--2columns { width: 50%; }
+			&--3columns,
+			&--4columns,
+			&--5columns,
+			&--6columns,
+			&--7columns,
+			&--8columns,
+			&--9columns { width: 33.33%; }
+			
+			&--5columns.doublewidth { width: 66,66%; }
+			&--5columns.triplewidth { width: 100%; }
+		}
+		@media (max-width: $tablet) { 
+			&--1columns { width: 100%; }
+			&--2columns { width: 50%; }
+			&--3columns { width: 33.33%; }
+			&--4columns { width: 25%; }
+			&--5columns { width: 20%; }
+			&--6columns { width: 16.66%; }
+			&--7columns { width: 14.28%; }
+			&--8columns { width: 12.5%; }
+			&--9columns { width: 11.11%; }
+			
+			&--5columns.doublewidth { width: 40%; }
+			&--5columns.triplewidth { width: 60%; }
+		}
+		@media (max-width: $phone) { 
+			&--1columns { width: 100%; }
+			&--2columns,
+			&--3columns,
+			&--4columns,
+			&--5columns,
+			&--6columns,
+			&--7columns,
+			&--8columns,
+			&--9columns { width: 50%; }
+			
+			&--5columns.doublewidth { width: 100%; }
+			&--5columns.triplewidth { width: 100%; }
+		}
+		
+		
+		svg {
+			.sektion10 & #contour { fill: #8ab7ce; }
+			.sektion20 & #contour { fill: #78979d; }
+			.sektion30 & #contour { fill: #95a28f; }
+			.sektion40 & #contour { fill: #8ab6b9; }
+			.sektion41 & #contour { fill: #8ab6b9; }
+			.sektion50 & #contour { fill: #d07172; }
+			.sektion51 & #contour { fill: #d07172; }
+			.sektion60 & #contour { fill: #c4759c; }
+			.sektion61 & #contour { fill: #c4759c; }
+			.sektion62 & #contour { fill: #c4759c; }
+			.sektion70 & #contour { fill: #929fb9; }
+		}
+	}
+
+
+
+	&__link {	
+		display: block;
+	}
+
+
+
+	&__img {
+		display: block;
+		width: 100%;
+		height: auto;
+		
+		box-shadow: 0.15em 0.15em 1em rgba(71,113,134,0.5);
+		&[src*='quote']{
+			-webkit-box-shadow: none;
+			box-shadow: none;
+		}
+	}
+
+
+
+	&__caption {
+		display: block;
+		clear: both;
+		width: 100%;
+		font-size: 0.75em;
+		line-height: 2em;
+		margin: 0;
+		
+		@include border(bottom);
+	}
+
+
+
+}
+
+.page-template-page-meta {
+	.contentgallerymasonry__img {
+		box-shadow: none;
+	}
+	
+}

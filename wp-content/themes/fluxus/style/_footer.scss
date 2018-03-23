@@ -1,0 +1,22 @@
+.footer {
+
+
+
+	padding-top: 0;
+
+
+
+	&__widget {
+		margin: $marginlarge;
+		
+		//separation
+		padding-top: $marginlarge;
+		@include border(top);
+		&:first-child { 
+			margin-top: 0; 
+		}
+	}
+
+
+
+}

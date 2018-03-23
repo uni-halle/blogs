@@ -1,0 +1,25 @@
+.widget {
+
+
+
+	&__title {}
+
+
+	// lists
+	ul {
+		list-style: none;
+	}
+	// deactivate typo-list-style
+	ul li:before { display: none; }
+	ul, ol {
+		margin: 0;
+		padding: 0;
+	}
+	ul ul, ol ol { 
+		margin-left: $margin; 
+		padding: 0; 
+	}
+
+
+
+}

@@ -1,0 +1,242 @@
+.body {
+	background-color: #000;
+
+
+
+	//padding: $marginlarge calc(#{$marginlarge} * 2); // margins between body and wrapper
+	@media (max-width: $tablet) { 
+		padding: $margin $marginlarge;
+	}
+	@media (max-width: $phone) { 
+		padding: 0;
+	}
+
+
+
+	&__background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 40%;
+		height: 100%;
+
+		&upper,
+		&lower {
+			height: 50%;
+			@media (max-width: $phone) { 
+				display: none;
+			}
+			background-color: #555;
+		}
+		&upper { 
+			position: relative;
+			&inner{
+				//display: none;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				background-size: cover;
+				background-position: center center;
+
+				animation-duration: 0.5s;
+				animation-timing-function: ease-in;
+				animation-fill-mode: both;
+				animation-name: fadeIn;
+			}
+			&--typo {
+				height: 100%;
+				.body__backgroundupperinner {
+					padding: $marginlarge;
+					text-align: right;
+					h1 {
+						color: #fff;
+						font-weight: 600;
+						font-size: 3em;
+						line-height: 1em;
+					}
+					h3 {
+						font-weight: 300;
+						color: #fff;
+					}
+				}
+/*
+				h3 {
+					font-weight: 600;
+					&::after {
+						content: "/";
+						margin-left: 0.2em;
+					}
+				}
+*/
+			}
+		}
+		&lower { 
+			position: relative;
+			svg {
+				//display: none;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 80%;
+				height: auto;
+			}
+		}
+	}
+
+
+
+	&__wrapper {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 60%;
+		min-height: 100%;
+		
+		@media (max-width: $phone) { 
+			width: 100%;
+		}
+	}
+
+
+
+}
+
+
+
+
+
+	
+body.page-template-page-startseite {
+	padding: 3em;
+
+	.body__background {
+		background: #000;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+
+		animation-delay: 0.5s;
+		animation-duration: 2s;
+		animation-timing-function: cubic-bezier(0.7,0,0.5,1);
+		animation-fill-mode: both;
+		animation-name: blowUpStart;
+
+	}
+	.body__wrapper {
+		background: transparent;
+		animation-delay: 2s;
+		animation-duration: 1s;
+		animation-timing-function: ease-in;
+		animation-fill-mode: both;
+		animation-name: fadeInStart;
+		
+		.main {
+			background: rgba(0,0,0,0.5);
+			@media (max-width: $tablet) {
+				width: 100%;
+			}
+		}
+		
+		.typo {
+			color: $color1;
+/*
+			font-size: 1.25em;
+			line-height: 1.5em;
+*/
+			padding-left: 0;
+			
+			p {
+				hyphens: none;
+				letter-spacing: 0.05em;
+			}
+			
+			strong {
+				color: #fff;
+				font-weight: 300;
+			}
+			.titleblock--big strong {
+				color: #fff;
+				font-weight: $fontweightsemibold;
+			}
+		}
+	}
+}
+
+
+#sektion10,
+#sektion15,
+#sektion20,
+#sektion30,
+#sektion40,
+#sektion41,
+#sektion50,
+#sektion51,
+#sektion60,
+#sektion61,
+#sektion62,
+#sektion70,
+#sektion80 
+{
+	cursor: pointer;
+	
+	opacity: 0;
+	transition: $transitionslow;
+	&:hover, {
+		opacity: 1;
+		transition: $transition;
+	}
+}
+
+
+.sektion10 #sektion10,
+.sektion15 #sektion15,
+.sektion20 #sektion20,
+.sektion30 #sektion30,
+.sektion40 #sektion40,
+.sektion41 #sektion41,
+.sektion50 #sektion50,
+.sektion51 #sektion51,
+.sektion60 #sektion60,
+.sektion61 #sektion61,
+.sektion62 #sektion62,
+.sektion70 #sektion70,
+.sektion80 #sektion80 
+ { opacity: 1; }
+
+
+// etagen halbtransparent
+.sektion10 #Plan_Etage_1,
+.sektion15 #Plan_Etage_1,
+.sektion20 #Plan_Etage_1,
+.sektion30 #Plan_Etage_1,
+.sektion40 #Plan_Etage_1,
+.sektion41 #Plan_Etage_1
+ { opacity: 0.5; }
+.sektion10 #raume_flach_unten,
+.sektion15 #raume_flach_unten,
+.sektion20 #raume_flach_unten,
+.sektion30 #raume_flach_unten,
+.sektion40 #raume_flach_unten,
+.sektion41 #raume_flach_unten
+ { opacity: 0.5; }
+
+
+.sektion50 #Plan_Etage_2,
+.sektion51 #Plan_Etage_2,
+.sektion60 #Plan_Etage_2,
+.sektion61 #Plan_Etage_2,
+.sektion62 #Plan_Etage_2,
+.sektion70 #Plan_Etage_2,
+.sektion80 #Plan_Etage_2 
+ { opacity: 0.5; }
+.sektion50 #raume_flach_oben,
+.sektion51 #raume_flach_oben,
+.sektion60 #raume_flach_oben,
+.sektion61 #raume_flach_oben,
+.sektion62 #raume_flach_oben,
+.sektion70 #raume_flach_oben,
+.sektion80 #raume_flach_oben 
+ { opacity: 0.5; }

@@ -1,0 +1,40 @@
+.sidebar {
+
+
+
+	&__widget {
+		margin: $marginlarge;
+		
+		// widget-separation
+		@include border(top);
+		padding-top: $marginlarge;
+	}
+
+
+
+	// manage border/separation exclusions
+	// no border-top for first in each sidebar
+	&__widget:first-child {
+		border-top: none;
+		padding-top: 0;
+	}
+	// border-top for first in second sidebar on desktop, but only if there is an first sidebar
+	@media (min-width: $tablet) {
+		& + .content + & > &__widget:first-child {
+			@include border(top);
+			padding-top: $marginlarge;
+			margin-top: 0;
+		}
+	}
+	// border-top for first in second sidebar on singlecolumn layout, no matter if there is an first sidebar
+	@media (max-width: $tablet) {
+		.content + & > &__widget:first-child {
+			@include border(top);
+			padding-top: $marginlarge;
+			margin-top: 0;
+		}
+	}
+
+
+
+}

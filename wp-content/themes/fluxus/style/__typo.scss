@@ -1,0 +1,324 @@
+.typo {
+
+
+	strong { font-weight: $fontweightsemibold; }
+	small { font-size: 0.75em; }
+
+
+
+	blockquote,
+	cite, 
+	em, 
+	i { 
+		font-family: Times, serif;
+		font-style: italic; 
+		font-size: 1.07em;
+		letter-spacing: 0.03em;
+	}
+	blockquote {
+		clear: both;
+	}
+	
+	
+	
+	p,
+	address { 
+		margin: 0 0 1.5em 0; 
+	}
+	
+	
+	
+	p {
+		//text-align: justify;
+		
+		hyphens: auto;
+		-webkit-hyphens: auto;
+		-moz-hyphens: auto;
+		-ms-hyphens: auto;
+
+		hyphenate-limit-lines: 3;
+		-webkit-hyphenate-limit-lines: 3;
+		-moz-hyphenate-limit-lines: 3;
+		-ms-hyphenate-limit-lines: 3;
+
+		hyphenate-limit-chars: 6 3 2;
+		-webkit-hyphenate-limit-chars: 6 3 2;
+		-moz-hyphenate-limit-chars: 6 3 2;
+		-ms-hyphenate-limit-chars: 6 3 2;
+	}
+	&.widget p {
+		text-align: left;
+	}
+	
+	
+	
+	sup { line-height: 1em; }
+	
+	
+	
+	dl { margin: 0 1.5em; }
+	dd { margin-bottom: 1.5em; }
+	
+	
+	
+	img,
+	.comment-content img,
+	.widget img {
+		display: block;
+		max-width: 100%; // Fluid images for posts, pages, comments and widgets
+		height: auto; // Make sure images with WordPress-added height and width attributes are scaled correctly
+		}
+	embed,
+	iframe,
+	object,
+	video {
+		max-width: 100%; // Make sure videos and embeds fit their containers
+		}
+	.alignleft {
+		float: left;
+		margin-right: 1.5em;
+		@media (max-width: $phone) {
+			clear: both;
+			float: none;
+			margin-right: 0;
+			}
+		}
+	.alignright {
+		float: right;
+		margin-left: 1.5em;
+		@media (max-width: $phone) {
+			clear: both;
+			float: none;
+			margin-left: 0;
+			}
+		}
+	.aligncenter {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+		}
+	.size-large,
+	.size-full {
+		margin-right: 0;
+		}
+	
+	
+	
+	// margin-bottom of images
+	.gallery, 
+	img { margin-bottom: 1.5em; } // same margin like <p>
+	.gallery img,
+	.wp-caption img { 
+		margin-bottom: 0; 
+		}
+	
+	
+	
+	.wp-caption {
+		margin-bottom: 1.5em; // same margin like <p>
+		width: auto;
+		max-width: 100%;
+		clear: both;
+		}
+	.wp-caption-text {
+		display: block;
+		clear: both;
+		width: 100%;
+		font-size: 0.75em;
+		line-height: 2em;
+		margin: 0;
+		
+		@include border(bottom);
+		}
+	
+	
+	
+	// max-width for smaller images
+	.wp-caption.size-medium { 
+		max-width: 50%;
+		}
+	.wp-caption.size-thumbnail { 
+		max-width: 33%; 
+		}
+	img[size="size-thumbnail"] { 
+		max-width: 33%; 
+		}
+	
+	
+	// lists
+	ul, ol { 
+		margin: 0 0 1.5em 1.5em; 
+		padding: 0; 
+		}
+	ul ul, ol ol, ul ol, ol ul { 
+		margin-bottom: 0; 
+		}
+	ul {
+		list-style: none;
+		}
+	ul li:before {
+		content: "\203A";
+		display: block;
+		height: 0;
+		width: 0;
+		left: -1.5em;
+		position: relative;
+		}
+	
+	
+	
+	hr {
+		@include border(top);
+		border-bottom: none;
+		margin-bottom: 1.5em;
+	}
+
+
+
+	.accordionsection {
+		padding-top: 1.5em;
+		@include border(top);
+		&:last-of-type {
+			@include border(bottom);
+		}
+		// hide content
+		&__content {
+			display: none;
+		}
+		// link-decoration
+		&__tab {
+			cursor: pointer;
+		}
+		&__tab a::after {
+			display: inline-block;
+		}
+		&__tab:hover a::after,
+		&--current .accordionsection__tab a::after{
+			left: 0.375em;
+			transform: rotate(90deg);
+		}
+	}
+	
+	
+	
+	// no bottom-margin for last child of typo
+	> *:last-child {
+		margin-bottom: 0;
+	}
+
+
+
+
+
+
+
+
+	// winckelmann
+		.wp-caption {
+			max-width: 100% !important;
+			overflow: visible;
+		}
+
+		img {
+			box-shadow: 0.5em 0.5em 1em #999;
+			
+			&[src*='cite-'] {
+				background: #ddd;
+				
+				&:hover {
+					background: #ccc;
+				}
+			}
+		}
+
+
+
+
+	h1, h2, h3, h4, h5, h6 {
+		color: $color1;
+		font-weight: $fontweightsemibold;
+		font-size: 1em;
+		line-height: 1.5em;
+		margin: 0 0 1.5em 0;
+		}
+	h1, h2, h3 {
+		font-size: 2em;
+		line-height: 1.5em;
+		margin: 0 0 0.75em 0;
+		}
+
+	.titleblock {
+		text-indent: -3em;
+		&::before {
+			font-weight: $fontweightsemibold;
+			content: "/ ";
+			color: transparent;
+		}
+		&::before {
+			color: #999;
+			
+			.sektion10 & { color: #8ab7ce; }
+			.sektion20 & { color: #78979d; }
+			.sektion30 & { color: #95a28f; }
+			.sektion40 & { color: #8ab6b9; }
+			.sektion41 & { color: #8ab6b9; }
+			.sektion50 & { color: #d07172; }
+			.sektion51 & { color: #d07172; }
+			.sektion60 & { color: #c4759c; }
+			.sektion61 & { color: #c4759c; }
+			.sektion62 & { color: #c4759c; }
+			.sektion70 & { color: #929fb9; }
+			
+		}
+		strong:first-child {
+			margin-right: 1.5em;
+		}
+		
+		
+		&--big {
+			font-size: 3em;
+			line-height: 1em;
+			text-indent: -1em;
+			margin-bottom: 0.5em;
+			&::before {
+				margin-right: 0.2em;
+			}
+		}
+	}
+
+	h1, h2, h3, h4, h5, h6, p, li {
+		a::before {
+			content: url("img/linkarrow.svg");
+			margin-left: 0.2em;
+			margin-right: 0.3em;
+		}
+		a.backtosearchlink {
+			&::before {
+				content: url("img/linkarrowtoleft.svg");
+			}
+		}
+		a:hover {
+			border-bottom: $linkrot 2px solid;
+		}
+	}
+	.backtosearchp {
+		padding-top: $marginlarge;
+	}
+	.wp-caption {
+		a::before {
+			display: none;
+		}
+		a:hover {
+			border-bottom: none !important;
+		}
+	}
+
+
+
+
+
+
+
+
+
+}

@@ -1,0 +1,149 @@
+// media-breakpoints
+$desktop: 1024px;
+$tablet: 768px; 	// switch between multi- and singlecolumn
+$phone: 640px;
+
+
+
+// layout
+$wrapperwidth: 80em;
+$sidebarwidth: 20em;
+$thumbnailwidth: 10em;
+
+$margin: 1.5rem;
+$marginsmall: 0.75rem;
+$marginlarge: 3rem;
+
+
+
+// typo
+$fontfamily: "Work Sans", sans-serif;
+$fontweightregular: 400;
+$fontweightbold: 700;
+$fontweightsemibold: 600;
+$letterspacing: 0.05;
+
+
+
+// transitions
+$transition: all 0.2s ease;
+$transitionslow: all 0.5s ease;
+
+
+
+// color
+$color: #333;
+$smoke: whitesmoke;
+
+$color1: #477186; //tuerkis 
+$color2: #567d84; //tuerkis dunkel
+$color3: #7a8a73; //graugruen
+$color4: #6ca3a7; //tuerkis hell
+$color5: #c44d4f; //rot
+$color6: #7686a6; //blau
+$color7: #9e3c6f; //magenta
+
+$schattenblau: #3d6dd0;
+$gray: #b3b3b3;
+$linkrot: #c40e54;
+
+
+
+
+// color navigation (blue)
+$color__navigation--1: 		#555;
+$color__navigation--2: 		#666;
+$color__navigation--3: 		#777;
+$color__navigation--4: 		#888;
+$color__navigation--5: 		#999;
+// color theme (green)
+$color__theme--1: 			#555;
+$color__theme--2: 			#666;
+$color__theme--3: 			#777;
+$color__theme--4: 			#888;
+$color__theme--5: 			#999;
+
+
+
+// M I X I N S //////////////////////////////
+@mixin border($side) {
+	border-#{$side}: 1px solid #ddd;
+	}
+
+
+
+@keyframes fadein {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+	}
+@mixin fadein() { 
+	animation: fadein 1s;
+	}
+
+
+
+@mixin gradient($color1, $point1, $color2, $point2, $direction) {
+	background: $color1;
+	background: -moz-linear-gradient($direction, $color1 $point1, $color2 $point2);
+	background: -webkit-linear-gradient($direction, $color1 $point1,$color2 $point2);
+	background: linear-gradient($direction, $color1 $point1, $color2 $point2);
+	}
+
+
+
+
+
+
+
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, 100%, 0);
+	}
+
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, -100%, 0);
+	}
+
+	100% {
+		opacity: 1;
+		transform: none;
+	}
+}
+@keyframes blowUpStart {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+
+	100% {
+		opacity: 0.3;
+		transform: scale(2);
+	}
+}
+@keyframes fadeInStart {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}

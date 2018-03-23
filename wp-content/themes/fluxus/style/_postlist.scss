@@ -1,0 +1,52 @@
+.postlist {
+
+
+	&__item {
+		margin: $margin $marginlarge;
+		&:first-child { 
+			margin-top: 0; 
+		}
+		@include border(top);
+	}
+
+
+
+	&__head {}
+	&__postthumbnail {
+		display: block;
+		width: $thumbnailwidth;
+		height: auto;
+		margin-right: $margin;
+		
+		float: left;
+		@media (max-width: $desktop) {	float: none; }
+		@media (max-width: $tablet) {	float: left; }
+		@media (max-width: $phone) {	float: none; }
+	}
+	&__headinfo {
+		padding-top: $margin;
+	}
+	&__date {
+		margin-bottom: $marginsmall !important;
+		}
+	&__title {}
+
+
+
+	&__content {
+		clear: both;
+	}
+
+
+
+	.more-link {
+		display: block;
+		padding: 0.375em 1.5em 0.375em 0.375em;
+		text-align: right;
+		font-weight: $fontweightbold;
+		background: $smoke;
+	}
+
+
+
+}

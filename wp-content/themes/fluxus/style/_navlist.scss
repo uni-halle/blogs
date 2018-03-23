@@ -1,0 +1,143 @@
+.navlist {
+	max-height: 100%;
+	overflow: auto;
+	
+	z-index: 1000;
+	position: fixed;
+	bottom: 0;
+	background-color: $color;
+	width: 60%;
+	@media (max-width: $phone) { 
+		width: 100%;
+	}
+
+	&__list {
+		display: none;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		}
+	a { 
+		line-height: 2em; 
+		display: block;
+		text-decoration: none;
+		white-space: nowrap;
+		
+		color: #fff;
+		background-color: #555;
+		&:hover {
+			background-color: #666;
+			}
+		}
+
+	// childrens
+	.children  {
+		display: none;
+		}
+	// show childrens and siblings
+	.current_page_item > ul,
+	.current_page_ancestor > ul {
+		display: list-item;
+	}
+	// shift childrens to the right
+	&__list a { 
+		padding-left: $marginlarge; 
+		}
+	&__list ul a { 
+		padding-left: calc(1.5 * #{$marginlarge});
+		}
+	&__list ul ul a { 
+		padding-left: calc(2 * #{$marginlarge});
+		}
+	&__list ul ul ul a { 
+		padding-left: calc(2.5 * #{$marginlarge}); 
+		}
+	&__list ul ul ul ul a { 
+		padding-left: calc(3 * #{$marginlarge}); 
+		}
+	
+	
+	
+	// current, parents, childrens and siblings
+	.current_page_item > a {
+		background-color: #666;
+		}
+	
+	
+/*
+	.front-page > a {
+		display: none;
+	}
+*/
+
+	
+	
+	
+	&__icon {
+		display: block;
+		height: 1.5em;
+		width: auto;
+		cursor: pointer;
+		float: left;
+		
+		margin: 0.75em 0 0.75em $margin;
+	}
+	&__icon--navicon {
+		margin-left: $marginlarge;
+	}
+
+	.searchform {
+		margin-right: $marginlarge;
+		
+		#s {
+			margin: 0.5em $marginlarge;
+			font-size: 1em;
+			height: 2em;
+			display: block;
+			width: calc(100% - 3em);
+			color: #fff;
+			padding: 0 $marginsmall;
+			cursor: pointer;
+			
+			background-color: #333;
+			border: 1px solid transparent;
+			background: url(img/search.svg) no-repeat;
+			background-position-x: calc(100% - 0.2em);
+			background-position-y: center;
+			background-size: 1.5em auto;
+			
+			&:focus {
+				background-color: #444;
+				border: 1px solid #fff;
+			}
+		}
+	}
+	
+	&__list {
+		a::before {
+			display: inline-block;
+			content: '›';
+			margin-right: 1em;
+			transform: rotate(90deg);
+			opacity: 0;
+			transition: $transition;
+		}
+		.page_item_has_children > a::before {
+			opacity: 1;
+			transition: $transition;
+		}
+		.page_item_has_children.current_page_ancestor > a::before,
+		.page_item_has_children.current_page_item > a::before,
+		.page_item_has_children > a:focus::before {
+			opacity: 0;
+			transition: $transition;
+		}
+		.page_item_has_children > a.active::before {
+			opacity: 0 !important;
+			transition: $transition;
+		}
+	}
+}

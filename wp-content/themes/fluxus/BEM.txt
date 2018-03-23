@@ -1,0 +1,51 @@
+.body
+	.body__background ()
+	.body__wrapper .wrapper
+
+		.wrapper__section .header
+
+		.wrapper__section .navbar
+
+		.wrapper__section .navlist
+
+		.wrapper__section .main
+
+			.main__sidebar .sidebar
+				.sidebar__widget .widget .typo
+					.widget__title
+
+			.main__content .content (.main__content—full)
+				.content__article .article .typo
+					.article__date
+					.article__title
+				.content__postnavigation
+				.content__pagination
+
+				.content__postlist .postlist
+					.postlist__item
+						.postlist__link
+						.postlist__postthumbnail
+						.postlist__date
+						.postlist__title
+						.postlist__info
+
+				.content__postmasonry .postmasonry
+					.postmasonry__item
+						.postmasonry__link
+						.postmasonry__postthumbnail
+						.postmasonry__title
+
+				.content__postaccordion .postaccordion
+					.postaccordion__item
+						.postaccordion__link
+						.postaccordion__postthumbnail
+						.postaccordion__title
+
+
+			.main__sidebar .sidebar
+				.sidebar__widget .widget .typo
+					.widget__title
+
+		.wrapper__section .footer
+			.footer__widget .widget .typo
+				.widget__title

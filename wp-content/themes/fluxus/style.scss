@@ -1,0 +1,42 @@
+/*
+Theme Name: fluxus
+Author: Friedrich Lux, Halle (Saale)
+Author URI: 
+Description: wordpress-Start-Theme
+Version: 2017
+*/
+
+
+// basic settings
+@import 'style/_globals';
+@import 'style/_settings';
+@import 'style/_typo';
+
+
+
+// DOM-modules, mostly BEM with exception of wordpress-generated parts like navigation
+@import 'style/body';
+@import 'style/wrapper';
+@import 'style/header';
+@import 'style/navbar';
+@import 'style/navlist';
+@import 'style/main';
+@import 'style/sidebar';
+@import 'style/content';
+@import 'style/footer';
+@import 'style/article';
+@import 'style/widget';
+@import 'style/imagelightbox';
+@import 'style/childlist';
+@import 'style/breadcrump';
+@import 'style/postlist';
+@import 'style/postlinklist';
+@import 'style/postmasonry';
+@import 'style/postaccordion';
+//@import 'style/pagelist';
+
+@import 'style/contentgallerymasonry';
+@import 'style/contentgalleryslider';
+@import 'style/addgallerymasonry';
+@import 'style/addgalleryslideshow';
+@import 'style/addimageheaderimage';
