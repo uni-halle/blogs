@@ -40,7 +40,7 @@ opinionstage_enqueue_js_asset('menu-page');
 				<div class="opinionstage-section-header">
 					<div class="opinionstage-section-title">Content</div>
 					<?php if ( $os_client_logged_in ) {?>
-					<a href="<?php echo OPINIONSTAGE_SERVER_BASE.'/dashboard/content'; ?>" target="_blank" class="opinionstage-section-action opinionstage-blue-bordered-btn">VIEW MY CONTENT</a>
+						<?php echo opinionstage_link('VIEW MY CONTENT', 'dashboard/content', 'opinionstage-section-action opinionstage-blue-bordered-btn'); ?>
 					<?php } ?>
 				</div>
 				<div class="opinionstage-section-content">
@@ -247,13 +247,13 @@ opinionstage_enqueue_js_asset('menu-page');
 						<a href="http://blog.opinionstage.com/how-to-add-interactive-content-on-wordpress/?o=wp35e8" class="opinionstage-help-link" target="_blank">How to use this plugin</a>
 					</div>
 					<div class="opinionstage-help-row">
-						<?php echo opinionstage_create_link('Live content examples', 'discover', '', 'opinionstage-help-link'); ?>
+						<?php echo opinionstage_link('Live content examples', 'discover', 'opinionstage-help-link'); ?>
 					</div>
 					<div class="opinionstage-help-row">
 						<a href="http://blog.opinionstage.com/video-tutorials" class="opinionstage-help-link" target="_blank">View all video tutorials</a>
 					</div>
 					<div class="opinionstage-help-row">
-						<a href="https://www.opinionstage.com/dashboard/content?o=wp35e8" class="opinionstage-help-link" target="_blank">To contact us, click here and then on the chat window located on bottom/right of screen</a>
+						<?php echo opinionstage_link('To contact us, click here and then on the chat window located on bottom/right of screen', 'dashboard/content', 'opinionstage-help-link'); ?>
 					</div>
 				</div>
 			</div>
