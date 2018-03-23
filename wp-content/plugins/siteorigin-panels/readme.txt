@@ -2,8 +2,8 @@
 Tags: page builder, responsive, widget, widgets, builder, page, admin, gallery, content, cms, pages, post, css, layout, grid
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 2.6.2
-Build time: 2018-01-23T10:38:09+02:00
+Stable tag: 2.6.3
+Build time: 2018-03-06T11:33:07+02:00
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://siteorigin.com/downloads/contribution/
@@ -95,6 +95,12 @@ Page Builder is actively developed and updated, so generally I'd recommend that 
 We've tried to ensure that Page Builder is compatible with most plugin widgets. It's best to just download Page Builder and test for yourself.
 
 == Changelog ==
+
+= 2.6.3 - 6 March 2018 =
+* Use `delete_post_meta_by_key` instead of direct DB query to clear old cache renders.
+* Removed special handling for retrieving data from TinyMCE editor fields. Just use the field value directly.
+* Show correct preview for current editor when another editor has created an autosave.
+* Use minified CSS files.
 
 = 2.6.2 - 23 January 2018 =
 * Prevent Gutenberg from taking over existing PB pages.
