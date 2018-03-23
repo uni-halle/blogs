@@ -173,7 +173,16 @@ function foundation_social_links(){
 
 
 function foundation_show_social_links_area() {
-	echo '<ul class="social-links-wrap">';
+	ob_start();
 	foundation_social_links();
-	echo '</ul>';
+	$html = ob_get_contents();
+	ob_end_clean();
+
+	if ( ! empty( $html ) ) :
+		?>
+		<ul class="social-links-wrap">
+		<?php echo $html; ?>
+		</ul>
+		<?php
+	endif;
 }

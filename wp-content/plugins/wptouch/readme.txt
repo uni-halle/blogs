@@ -2,7 +2,7 @@
 Contributors: wptouch, sureswiftcapital, duanestorey, dalemugford, adamdipardo, oxymoron
 Tags: wptouch, iphone, ipod, bravenewcode, mobile, mobile-friendly, android, blackberry, smartphone, responsive, design, mobile plugin, ios, mobile theme
 Requires at least: 4.2
-Stable tag: 4.3.26
+Stable tag: 4.3.27
 Tested up to: 4.9
 License: GPLv2
 
@@ -32,6 +32,10 @@ For more information visit [WPtouch.com](http://www.wptouch.com/?utm_campaign=wp
 6. Theme settings
 
 == Changelog ==
+
+= Version 4.3.27 (March 8th, 2018) =
+
+* Fixed: Issue where html would be output for social media links when none are set.
 
 = Version 4.3.26 (Feb 8th, 2018) =
 
