@@ -3,8 +3,9 @@ Contributors: tillkruess
 Donate link: https://www.paypal.me/tillkruss
 Tags: antispam, anti spam, spam, email, e-mail, mail, spider, crawler, harvester, robots, spambot, block, obfuscate, obfuscation, encode, encoder, encoding, encrypt, encryption, protect, protection
 Requires at least: 2.0
-Tested up to: 4.5
-Stable tag: 1.0.5
+Tested up to: 4.9
+Requires PHP: 5.3
+Stable tag: 1.0.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,6 +32,8 @@ For detailed installation instructions, please read the [standard installation p
 
 This plugin hooks into the WordPress filters like `the_content`, `widget_text` and others (additional filters can be added). On each filter a quick (disableable) search for an @-sign is performed. If an @-sign is found, a (overridable) regular expression looks for plain text email addresses. Found email addresses are replaced with the return value of `eae_encode_str()` (changeable), which obfuscates the email addresses to protect it from being read by email-harvesting robots. This function is slightly faster than WP's built-in `antispambot()` and uses additional hexadecimal entities.
 
+Alternatively, you can use the `[encode]` shortcode: `[encode]+1 (234) 567-8900[/encode]`
+
 = How can I make sure the plugin works? =
 
 You cannot use Firebug, Web Inspector or Dragonfly, because they decode decimal/hexadecimal entities into plain text. To make sure email addresses are encoded, right-/secondary-click the page, click "View Source", "View Page Source" or "Source" and search for any plain text email addresses. In Firefox, be sure to test with "View Source" not "View Selection Source".
@@ -41,8 +44,8 @@ You specify any valid callback function with the `eae_method` filter to apply to
 
 = How can I filter other parts of my site? =
 
-* If the content supports WordPress filters, register the `eae_encode_emails()` function to it: `add_filter( $tag, 'eae_encode_emails' );`.
-* If the content is a PHP string, run it through the `eae_encode_emails()` function: `$text = eae_encode_emails( $text );`.
+* If the content supports WordPress filters, register the `eae_encode_emails()` function to it: `add_filter( $tag, 'eae_encode_emails' );`
+* If the content is a PHP string, run it through the `eae_encode_emails()` function: `$text = eae_encode_emails( $text );`
 * If you want to encode a single email address, use the `eae_encode_str()` function: `<?php echo eae_encode_str( 'name@domain.com' ); ?>`
 
 This plugin doesn't encode the entire website for performance reasons, it encodes only the content of the following WordPress filters `the_content`, `the_excerpt`, `widget_text`, `comment_text`, `comment_excerpt`.
@@ -61,6 +64,11 @@ Like this: `add_filter( 'eae_at_sign_check', '__return_false' );`
 
 
 == Changelog ==
+
+= 1.0.6 =
+
+* Added `[encode]` shortcode
+* Require PHP 5.3 to fix deprecation warning
 
 = 1.0.5 =
 
@@ -90,6 +98,10 @@ Like this: `add_filter( 'eae_at_sign_check', '__return_false' );`
 
 
 == Upgrade Notice ==
+
+= 1.0.6 =
+
+This release adds PHP 7.2 compatibility and a new shortcode.
 
 = 1.0.5 =
 

@@ -3,7 +3,7 @@
 Plugin Name: Email Address Encoder
 Plugin URI: http://wordpress.org/plugins/email-address-encoder/
 Description: A lightweight plugin to protect email addresses from email-harvesting robots by encoding them into decimal and hexadecimal entities.
-Version: 1.0.5
+Version: 1.0.6
 Author: Till Krüss
 Author URI: https://till.im/
 Text Domain: email-address-encoder
@@ -30,6 +30,34 @@ foreach ( array( 'the_content', 'the_excerpt', 'widget_text', 'comment_text', 'c
 }
 
 /**
+ * Attempt to register the shortcode relatively late to avoid conflicts.
+ */
+add_action( 'init', 'register_shortcode', 1000 );
+
+/**
+ * Register the [encode] shortcode if it doesn't exist, yet.
+ *
+ * @return void
+ */
+function register_shortcode() {
+	if ( ! shortcode_exists( 'encode' ) ) {
+		add_shortcode( 'encode', 'eae_shortcode' );
+	}
+}
+
+/**
+ * The [encode] shortcode callback function. Returns encoded shortcode content.
+ *
+ * @param array $attributes Shortcode attributes
+ * @param string $string Shortcode content
+ *
+ * @return string Encoded given text
+ */
+function eae_shortcode( $attributes, $content = '' ) {
+    return eae_encode_str( $content );
+}
+
+/**
  * Searches for plain email addresses in given $string and
  * encodes them (by default) with the help of eae_encode_str().
  *
@@ -37,7 +65,8 @@ foreach ( array( 'the_content', 'the_excerpt', 'widget_text', 'comment_text', 'c
  * http://daringfireball.net/projects/markdown/
  *
  * @param string $string Text with email addresses to encode
- * @return string $string Given text with encoded email addresses
+ *
+ * @return string Given text with encoded email addresses
  */
 function eae_encode_emails( $string ) {
 
@@ -73,14 +102,9 @@ function eae_encode_emails( $string ) {
 		}xi'
 	);
 
-	return preg_replace_callback(
-		$regexp,
-		create_function(
-            '$matches',
-            'return ' . $method . '($matches[0]);'
-        ),
-		$string
-	);
+	return preg_replace_callback( $regexp, function ( $matches ) use ( $method ) {
+		return $method( $matches[0] );
+	}, $string );
 
 }
 
@@ -96,8 +120,9 @@ function eae_encode_emails( $string ) {
  * Whose code is based on a filter by Matthew Wickline, posted to
  * the BBEdit-Talk with some optimizations by Milian Wolff.
  *
- * @param string $string Text with email addresses to encode
- * @return string $string Given text with encoded email addresses
+ * @param string $string Text to encode
+ *
+ * @return string Encoded given text
  */
 function eae_encode_str( $string ) {
 
