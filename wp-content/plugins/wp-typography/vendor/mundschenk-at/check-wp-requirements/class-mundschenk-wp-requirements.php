@@ -63,6 +63,20 @@ class Mundschenk_WP_Requirements {
 	private $plugin_file;
 
 	/**
+	 * The textdomain used for loading plugin translations.
+	 *
+	 * @var string
+	 */
+	private $textdomain;
+
+	/**
+	 * The base directory of the Check_WP_Requirements component (i.e. the equivalent of __DIR__).
+	 *
+	 * @var string
+	 */
+	private $base_dir;
+
+	/**
 	 * Sets up a new Mundschenk_WP_Requirements object.
 	 *
 	 * @param string $name         The plugin name.
@@ -74,6 +88,7 @@ class Mundschenk_WP_Requirements {
 		$this->plugin_name = $name;
 		$this->plugin_file = $plugin_path;
 		$this->textdomain  = $textdomain;
+		$this->base_dir    = dirname( __FILE__ );
 
 		$this->install_requirements = \wp_parse_args( $requirements, array(
 			'php'       => '5.2.0',
@@ -91,25 +106,22 @@ class Mundschenk_WP_Requirements {
 		$requirements_met = true;
 
 		if ( ! empty( $this->install_requirements['php'] ) && version_compare( PHP_VERSION, $this->install_requirements['php'], '<' ) ) {
-			if ( is_admin() ) {
-				add_action( 'admin_notices', array( $this, 'admin_notices_php_version_incompatible' ) );
-			}
+			$notice           = 'admin_notices_php_version_incompatible';
 			$requirements_met = false;
 		} elseif ( ! empty( $this->install_requirements['multibyte'] ) && ! $this->check_multibyte_support() ) {
-			if ( is_admin() ) {
-				add_action( 'admin_notices', array( $this, 'admin_notices_mbstring_incompatible' ) );
-			}
+			$notice           = 'admin_notices_mbstring_incompatible';
 			$requirements_met = false;
 		} elseif ( ! empty( $this->install_requirements['utf-8'] ) && ! $this->check_utf8_support() ) {
-			if ( is_admin() ) {
-				add_action( 'admin_notices', array( $this, 'admin_notices_charset_incompatible' ) );
-			}
+			$notice           = 'admin_notices_charset_incompatible';
 			$requirements_met = false;
 		}
 
-		if ( ! $requirements_met && is_admin() ) {
+		if ( ! $requirements_met && ! empty( $notice ) && is_admin() ) {
 			// Load text domain to ensure translated admin notices.
 			load_plugin_textdomain( $this->textdomain );
+
+			// Add admin notice.
+			add_action( 'admin_notices', array( $this, $notice ) );
 		}
 
 		return $requirements_met;
@@ -196,6 +208,6 @@ class Mundschenk_WP_Requirements {
 		$format  = array_shift( $args );
 		$message = vsprintf( $format, $args );
 
-		require dirname( $this->plugin_file ) . '/admin/partials/requirements-error-notice.php';
+		require "{$this->base_dir}/partials/requirements-error-notice.php";
 	}
 }

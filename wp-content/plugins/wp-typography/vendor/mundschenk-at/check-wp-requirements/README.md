@@ -28,7 +28,7 @@ $ composer require mundschenk-at/check-wp-requirements
     returns `true`.
 
 ```PHP
-require_once dirname( __FILE__ ) . '/vendor/mundschenk-at/check-wp-requirements/src/class-mundschenk-wp-requirements.php';
+require_once dirname( __FILE__ ) . '/vendor/mundschenk-at/check-wp-requirements/class-mundschenk-wp-requirements.php';
 
 /**
  * Load the plugin after checking for the necessary PHP version.

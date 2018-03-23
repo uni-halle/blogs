@@ -2,7 +2,7 @@
 /**
  *  This file is part of wp-Typography.
  *
- *  Copyright 2014-2017 Peter Putzer.
+ *  Copyright 2014-2018 Peter Putzer.
  *
  *  This program is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public License
@@ -114,10 +114,11 @@ class Setup implements Plugin_Component {
 	 * @since 3.1.0
 	 */
 	public function activate() {
-		// Load default values for any new options and clear the cache.
+		// Load default values for any new options.
 		$this->plugin->get_config();
-		$this->plugin->set_default_options(); // After get_config, otherwhise previous options are overwritten.
-		$this->plugin->clear_cache();
+
+		// After get_config(), otherwhise previous options are overwritten.
+		$this->plugin->set_default_options();
 	}
 
 	/**
@@ -126,7 +127,8 @@ class Setup implements Plugin_Component {
 	 * @since 5.1.0
 	 */
 	public function plugin_update_check() {
-		$installed_version = $this->options->get( Options::INSTALLED_VERSION );
+		// We can ignore errors here, just carry on as if for a new installation.
+		$installed_version = (string) $this->options->get( Options::INSTALLED_VERSION, '' );
 
 		if ( $this->plugin->get_version() !== $installed_version ) {
 			$this->plugin_updated( $installed_version );
@@ -139,7 +141,6 @@ class Setup implements Plugin_Component {
 	 * @param string $previous_version The version we are upgrading from.
 	 */
 	protected function plugin_updated( $previous_version ) {
-
 		// Upgrade from version 3.0.0 or lower.
 		if ( \version_compare( $previous_version, '3.1.0-beta.2', '<' ) ) {
 			$this->upgrade_options_3_1();
@@ -161,6 +162,9 @@ class Setup implements Plugin_Component {
 
 		// Update installed version information.
 		$this->set_installed_version();
+
+		// Always clear the cache on upgrades.
+		$this->plugin->clear_cache();
 	}
 
 	/**

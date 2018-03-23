@@ -34,7 +34,6 @@ use WP_Typography\Settings\Plugin_Configuration as Config;
 use PHP_Typography\PHP_Typography;
 use PHP_Typography\Settings\Dash_Style;
 use PHP_Typography\Settings\Quote_Style;
-use PHP_Typography\Arrays;
 
 /**
  * The public (non-admin) functionality of the plugin.
@@ -135,6 +134,25 @@ class Public_Interface implements Plugin_Component {
 	 * Adds content filter handlers.
 	 */
 	public function add_content_filters() {
+
+		/**
+		 * Filters the content filter enabling functions.
+		 *
+		 * @internal
+		 *
+		 * @param callable[string] $filters An array of enabling functions taking
+		 *                                  the priority as an argument, indexed by
+		 *                                  filter group.
+		 */
+		$filters = \apply_filters( 'typo_content_filters', [
+			// Add filters for "full" content.
+			'content' => [ $this, 'enable_content_filters' ],
+			// Add filters for headings.
+			'heading' => [ $this, 'enable_heading_filters' ],
+			// Extra care needs to be taken with the <title> tag.
+			'title'   => [ $this, 'enable_title_filters' ],
+		] );
+
 		/**
 		 * Filters the priority used for wp-Typography's text processing filters.
 		 *
@@ -146,40 +164,19 @@ class Public_Interface implements Plugin_Component {
 		 */
 		$priority = \apply_filters( 'typo_filter_priority', $this->filter_priority );
 
-		// Add filters for "full" content.
-		/**
-		 * Disables automatic filtering by wp-Typography.
-		 *
-		 * @since 3.6.0
-		 * @since 5.2.0 WooCommerce support added ($filter_group 'woocommerce').
-		 *
-		 * @param bool   $disable      Whether to disable automatic filtering. Default false.
-		 * @param string $filter_group Which filters to disable. Possible values 'content', 'heading', 'title', 'acf', 'woocommerce'.
-		 */
-		if ( ! \apply_filters( 'typo_disable_filtering', false, 'content' ) ) {
-			$this->enable_content_filters( $priority );
-		}
-
-		// Add filters for headings.
-		/** This filter is documented in class-wp-typography.php */
-		if ( ! \apply_filters( 'typo_disable_filtering', false, 'heading' ) ) {
-			$this->enable_heading_filters( $priority );
-		}
-
-		// Extra care needs to be taken with the <title> tag.
-		/** This filter is documented in class-wp-typography.php */
-		if ( ! \apply_filters( 'typo_disable_filtering', false, 'title' ) ) {
-			$this->enable_title_filters( $priority );
-		}
-
-		// Add filters for third-party plugins.
-		/** This filter is documented in class-wp-typography.php */
-		if ( \class_exists( 'acf' ) && \function_exists( 'acf_get_setting' ) && ! \apply_filters( 'typo_disable_filtering', false, 'acf' ) ) {
-			$this->enable_acf_filters( $priority );
-		}
-		/** This filter is documented in class-wp-typography.php */
-		if ( \class_exists( 'WooCommerce' ) && ! \apply_filters( 'typo_disable_filtering', false, 'woocommerce' ) ) {
-			$this->enable_woocommerce_filters( $priority );
+		foreach ( $filters as $tag => $enable ) {
+			/**
+			 * Disables automatic filtering by wp-Typography.
+			 *
+			 * @since 3.6.0
+			 * @since 5.2.0 WooCommerce support added ($filter_group 'woocommerce').
+			 *
+			 * @param bool   $disable      Whether to disable automatic filtering. Default false.
+			 * @param string $filter_group Which filters to disable. Possible values 'content', 'heading', 'title', 'acf', 'woocommerce'.
+			 */
+			if ( ! \apply_filters( 'typo_disable_filtering', false, $tag ) ) {
+				$enable( $priority );
+			}
 		}
 	}
 
@@ -237,48 +234,6 @@ class Public_Interface implements Plugin_Component {
 	}
 
 	/**
-	 * Enable the Advanced Custom Fields (https://www.advancedcustomfields.com) filters.
-	 *
-	 * @param int $priority Filter priority.
-	 */
-	private function enable_acf_filters( $priority ) {
-		$acf_version = \intval( acf_get_setting( 'version' ) );
-
-		if ( 5 === $acf_version ) {
-			// Advanced Custom Fields Pro (version 5).
-			$acf_prefix = 'acf/format_value';
-		} elseif ( 4 === $acf_version ) {
-			// Advanced Custom Fields (version 4).
-			$acf_prefix = 'acf/format_value_for_api';
-		}
-
-		// Other ACF versions (i.e. < 4) are not supported.
-		if ( ! empty( $acf_prefix ) ) {
-			\add_filter( "{$acf_prefix}/type=wysiwyg",  [ $this->plugin, 'process' ],       $priority );
-			\add_filter( "{$acf_prefix}/type=textarea", [ $this->plugin, 'process' ],       $priority );
-			\add_filter( "{$acf_prefix}/type=text",     [ $this->plugin, 'process_title' ], $priority );
-		}
-	}
-
-	/**
-	 * Enable the WooCommerce (https://github.com/woocommerce/woocommerce) filters.
-	 *
-	 * @param int $priority Filter priority.
-	 */
-	private function enable_woocommerce_filters( $priority ) {
-		// Page descriptions.
-		\add_filter( 'woocommerce_format_content', [ $this->plugin, 'process' ], $priority );
-
-		// Shop notices.
-		\add_filter( 'woocommerce_add_error',      [ $this->plugin, 'process' ], $priority );
-		\add_filter( 'woocommerce_add_success',    [ $this->plugin, 'process' ], $priority );
-		\add_filter( 'woocommerce_add_notice',     [ $this->plugin, 'process' ], $priority );
-
-		// Demo store banner.
-		\add_filter( 'woocommerce_demo_store',     [ $this->plugin, 'process' ], $priority );
-	}
-
-	/**
 	 * Prints CSS and JS depending on plugin options.
 	 */
 	public function add_wp_head() {
@@ -304,8 +259,7 @@ class Public_Interface implements Plugin_Component {
 			$version    = $this->plugin->get_version();
 			$plugin_dir = \plugin_dir_url( $this->plugin_basename );
 
-			\wp_enqueue_script( 'jquery-selection',                "{$plugin_dir}js/jquery.selection$suffix.js", [ 'jquery' ],                     $version, true );
-			\wp_enqueue_script( 'wp-typography-cleanup-clipboard', "{$plugin_dir}js/clean_clipboard$suffix.js",  [ 'jquery', 'jquery-selection' ], $version, true );
+			\wp_enqueue_script( 'wp-typography-cleanup-clipboard', "{$plugin_dir}js/clean-clipboard$suffix.js", [ 'jquery' ], $version, true );
 		}
 	}
 }

@@ -2,7 +2,7 @@
 /**
  *  This file is part of wp-Typography.
  *
- *  Copyright 2017 Peter Putzer.
+ *  Copyright 2017-2018 Peter Putzer.
  *
  *  This program is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public License
@@ -31,9 +31,12 @@ use WP_Typography\Data_Storage\Options;
 use WP_Typography\Data_Storage\Transients;
 
 use WP_Typography\Components\Admin_Interface;
-use WP_Typography\Components\Multilingual_Support;
 use WP_Typography\Components\Public_Interface;
 use WP_Typography\Components\Setup;
+
+use WP_Typography\Integration\Container as Integrations;
+use WP_Typography\Integration\ACF_Integration;
+use WP_Typography\Integration\WooCommerce_Integration;
 
 /**
  * A factory for creating WP_Typography instances via dependency injection.
@@ -71,6 +74,24 @@ abstract class WP_Typography_Factory {
 			] );
 			self::$factory->addRule( Options::class, [
 				'shared' => true,
+			] );
+
+			// Plugin integrations are also shared.
+			self::$factory->addRule( Integrations::class, [
+				'shared'          => true,
+				'constructParams' => [
+					[
+						new ACF_Integration(),
+						new WooCommerce_Integration(),
+					],
+				],
+			] );
+
+			// API implementation.
+			self::$factory->addRule( 'substitutions', [
+				\WP_Typography::class => [
+					'instance' => \WP_Typography\Implementation::class,
+				],
 			] );
 
 			// Load version from plugin data.

@@ -29,7 +29,7 @@
  *  Description: Improve your web typography with: hyphenation, space control, intelligent character replacement, and CSS hooks.
  *  Author: Peter Putzer
  *  Author URI: https://code.mundschenk.at
- *  Version: 5.2.2
+ *  Version: 5.3.1
  *  License: GNU General Public License v2 or later
  *  License URI: https://www.gnu.org/licenses/gpl-2.0.html
  *  Text Domain: wp-typography
@@ -67,7 +67,7 @@ function run_wp_typography() {
 		require_once __DIR__ . '/vendor/autoload.php';
 
 		// Create the plugin.
-		$plugin = WP_Typography_Factory::get( __FILE__ )->create( 'WP_Typography' );
+		$plugin = WP_Typography_Factory::get( __FILE__ )->create( 'WP_Typography\Plugin_Controller' );
 
 		// Start the plugin for real.
 		$plugin->run();
