@@ -4,7 +4,7 @@ Donate link: http://wpgogo.com/development/lightbox-gallery.html
 Tags: lightbox, gallery, galleries, image, images, album, photo, photos, picture, pictures, jQuery, Highslide, Colorbox
 Requires at least: 2.5
 Tested up to: 4.9.4
-Stable tag: 0.9
+Stable tag: 0.9.1
 License: GPLv2 or later
 
 The Lightbox Gallery plugin changes the view of galleries to the lightbox.
@@ -145,6 +145,9 @@ You can set the additional settings for Colorbox. See [Colorbox official site](h
 [gallery colorbox_settings="transition:'fade', slideshow:true"]
 
 == Changelog ==
+
+= 0.9.1 =
+* Code cleaning.
 
 = 0.9 =
 * Colorbox settings.

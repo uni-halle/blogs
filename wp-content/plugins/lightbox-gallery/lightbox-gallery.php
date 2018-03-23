@@ -5,7 +5,7 @@ Plugin URI: http://wpgogo.com/development/lightbox-gallery.html
 Description: The Lightbox Gallery plugin changes the view of galleries to the lightbox.
 Author: Hiroaki Miyashita
 Author URI: http://wpgogo.com/
-Version: 0.9
+Version: 0.9.1
 Text Domain: lightbox-gallery
 Domain Path: /
 */
@@ -616,7 +616,7 @@ function lightbox_gallery($attr) {
 	if ( empty($attachments) )
 		return '';
 		
-	$total = count($attachments)-$from;
+	$total = count($attachments)-(int)$from;
 	
 	if ( !$page ) $page = 1;
 	$numpages = 1;
