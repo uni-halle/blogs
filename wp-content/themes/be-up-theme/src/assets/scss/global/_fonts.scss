@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Cairo';
+    src: url('../../../assets/fonts/Cairo-Black.eot');
+    src: local('Cairo-Black'),
+        url('../../../assets/fonts/Cairo-Black.eot?#iefix') format('embedded-opentype'),
+        url('../../../assets/fonts/Cairo-Black.woff2') format('woff2'),
+        url('../../../assets/fonts/Cairo-Black.woff') format('woff'),
+        url('../../../assets/fonts/Cairo-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('../../../assets/fonts/Cairo-SemiBold.eot');
+    src: local('Cairo-SemiBold'),
+        url('../../../assets/fonts/Cairo-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('../../../assets/fonts/Cairo-SemiBold.woff2') format('woff2'),
+        url('../../../assets/fonts/Cairo-SemiBold.woff') format('woff'),
+        url('../../../assets/fonts/Cairo-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('../../../assets/fonts/Cairo-Bold.eot');
+    src: local('Cairo Bold'), local('Cairo-Bold'),
+        url('../../../assets/fonts/Cairo-Bold.eot?#iefix') format('embedded-opentype'),
+        url('../../../assets/fonts/Cairo-Bold.woff2') format('woff2'),
+        url('../../../assets/fonts/Cairo-Bold.woff') format('woff'),
+        url('../../../assets/fonts/Cairo-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('../../../assets/fonts/Cairo-Light.eot');
+    src: local('Cairo-Light'),
+        url('../../../assets/fonts/Cairo-Light.eot?#iefix') format('embedded-opentype'),
+        url('../../../assets/fonts/Cairo-Light.woff2') format('woff2'),
+        url('../../../assets/fonts/Cairo-Light.woff') format('woff'),
+        url('../../../assets/fonts/Cairo-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('../../../assets/fonts/Cairo-Regular.eot');
+    src: local('Cairo-Regular'),
+        url('../../../assets/fonts/Cairo-Regular.eot?#iefix') format('embedded-opentype'),
+        url('../../../assets/fonts/Cairo-Regular.woff2') format('woff2'),
+        url('../../../assets/fonts/Cairo-Regular.woff') format('woff'),
+        url('../../../assets/fonts/Cairo-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('../../../assets/fonts/Cairo-ExtraLight.eot');
+    src: local('Cairo-ExtraLight'),
+        url('../../../assets/fonts/Cairo-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('../../../assets/fonts/Cairo-ExtraLight.woff2') format('woff2'),
+        url('../../../assets/fonts/Cairo-ExtraLight.woff') format('woff'),
+        url('../../../assets/fonts/Cairo-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}

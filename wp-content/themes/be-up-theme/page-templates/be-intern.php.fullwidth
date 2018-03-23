@@ -1,0 +1,79 @@
+<?php
+/*
+Template Name: be-up Intern
+*/
+get_header(); ?>
+
+<?php get_template_part( 'template-parts/featured-image' ); ?>
+<div class="main-container">
+	<div class="main-grid">
+		</div>
+	</div>
+
+	<main class="main-content-full-width">
+		<div class="be-gradient-2 spacer-v-4">
+			<div class="grid-container">
+				<div class="grid-x grid-margin-x align-left">
+					<div class="small-12 cell">
+						<h1>Herzlich willkommen im internen Bereich.</h1>
+					</div>
+					<div class="small-6 cell destroyme">
+						<?php
+						if (isset($_COOKIE['wp-postpass_' . COOKIEHASH]) && wp_check_password( $post->post_password, $_COOKIE['wp-postpass_' . COOKIEHASH])) {
+							//echo '<div class="be-link" id="' . esc_attr($a['ort']) . '" data-open="reveal_logout">Logout</div>';
+							//echo 'Der interne Bereich steht den Hebammen, Ärztinnen und Ärzten der teilnehmenden Kliniken zur Verfügung. Wenn Sie an der Studie mitarbeiten und die Zugangsdaten erhalten möchten, kontaktieren Sie Frau Dipl. Med. Päd. Sabine Striebich oder Frau Elke Mattern, M.Sc. über kontakt@be-up-studie.de.';
+							//echo '<a href="'.get_stylesheet_directory_uri().'/logout.php">Logout</a><br /><br />';
+						}
+						else {
+							echo 'Der interne Bereich steht den Hebammen, Ärztinnen und Ärzten der teilnehmenden Kliniken zur Verfügung. Wenn Sie an der Studie mitarbeiten und die Zugangsdaten erhalten möchten, kontaktieren Sie Frau Dipl. Med. Päd. Sabine Striebich oder Frau Elke Mattern, M.Sc. über kontakt@be-up-studie.de.';
+						}
+						?>					
+					</div>
+				</div>	
+			</div>	
+		</div>	
+		<div class="grid-container">
+			<div class="grid-x grid-margin-x align-left">							
+				<div class="small-12 cell">
+					<?php while ( have_posts() ) : the_post(); ?>
+						<?php
+							if (!empty($post->post_password)) { // if there's a password
+
+								if (isset($_COOKIE['wp-postpass_' . COOKIEHASH]) && wp_check_password( $post->post_password, $_COOKIE['wp-postpass_' . COOKIEHASH])) {
+									//echo '<div class="be-link" id="' . esc_attr($a['ort']) . '" data-open="reveal_logout">Logout</div>';
+									echo '<button type="button" id="logout" class="alert button" data-open="reveal_logout">Logout</button>';
+									//echo '<a href="'.get_stylesheet_directory_uri().'/logout.php">Logout</a><br /><br />';
+								}
+							}
+						?>
+						<?php get_template_part( 'template-parts/content', 'page' ); ?>
+						<?php //get_template_part( 'template-parts/demo-content-standard', 'page' ); ?>
+						<?php //comments_template(); ?>
+					<?php endwhile; ?>
+				</div>
+			</div>
+		</div>
+
+		<div class="reveal" id="reveal_logout" aria-labelledby="reveal_Header_logout" data-reveal>
+			<h1 id="reveal_Header_logout">Logout</h1>
+			<p class="lead">
+				Sie haben sich erfolgreich ausgeloggt.
+			</p>
+			<button class="close-button" data-close aria-label="Close Accessible Modal" type="button">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+
+		<script>
+			$("button#logout").click(function() {
+				function explode(){
+					window.location.href = "<?php echo get_stylesheet_directory_uri()?>/logout.php";
+					}
+				setTimeout(explode, 1000);
+			});
+		</script>
+				
+	</main>
+</div>
+	
+<?php get_footer();

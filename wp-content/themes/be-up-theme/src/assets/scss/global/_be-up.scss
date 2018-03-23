@@ -1,0 +1,267 @@
+// col, grads, spacers, fonts general
+.be-gradient-1 {
+    background: $be-grad-1;
+}
+.be-gradient-2 {
+    background: $be-grad-2;
+}
+.be-gradient-2-invers {
+    background: $be-grad-2-invers;
+}
+
+.be-background-light {
+    background-color: $white;
+}
+.be-background-1 {
+    background-color: $primary-color;
+}
+.be-background-3 {
+    background-color: $tertiary-color;
+}
+
+$space-half: 0.5rem;
+$space-single: 1rem;
+$space-double: 2rem;
+$space-quad: 4rem;
+
+.light {
+    color: $white;
+}
+.dark {
+    color: $black;
+}
+.be-col-1 {
+    color: $primary-color;
+}
+
+
+// Typo
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+h1 {
+    font-size: 1.625rem;
+}
+h2 {
+    font-size: 1.25rem;
+}
+h3 {
+    font-size: 1.125rem;
+}
+h4 {
+    font-size: 1rem;
+}
+h5 {
+    font-size: 0.8rem;
+}
+p {
+    font-size: 1.125rem;
+}
+
+// General
+
+.be-link {
+    a {
+        font-weight: 600;
+        font-size: 1.125rem;
+        
+        &::after {
+            content: " »";
+        }
+    }
+}
+.be-link-info {
+    a {
+        font-weight: 600;
+        font-size: 1.125rem;
+        color: $quinary-color;
+        font-weight: normal;
+        &::before {
+            font-family: 'FontAwesome';
+            content: "\f05a \00a0";
+        }
+    }
+}
+
+.be-h2-link {
+    a {
+        h2 {
+            display: inline;
+        
+            &::before {
+                font-weight: 600;
+                font-size: 1.125rem;
+                content: "« ";
+                color: white;
+            }
+        }
+    }
+    .radius-bg:hover {
+        background-color: darken($quinary-color , 15);
+    }
+}
+
+.spacer-v-2 {
+    padding: $space-double 0;
+}
+.spacer-v-4 {
+    padding: $space-quad 0;
+}
+
+.be-border-upper {
+    border-top: 3px solid $secondary-color;
+}
+
+.topspace {
+    height: 8rem;
+    background-color: $tertiary-color;
+}
+
+.be-h2-special {
+    margin-bottom: 5rem;
+}
+.radius-bg {
+    height: 5rem;
+    background-color: $quinary-color;
+    padding: $space-single $space-half;
+    float: left; 
+    min-width: 30%;
+    border-radius: 1rem;
+    margin-top: -2.5rem;
+    h2 {
+        line-height: 3rem;
+        color: $white;
+        height: 100%;
+    }
+}
+
+.accordion-item {
+    @extend .be-border-upper;
+    .accordion-title::before {
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        margin-top: -1rem;
+        font-size: 2rem;
+        line-height: 0.5rem;
+        content: '+';
+        @extend .be-background-1;
+        color: $white;
+        padding: $space-half;
+        border-radius: 0.5rem;
+        width: 2rem;
+        height: 2rem;
+
+    }
+}
+
+.be-contact-form {
+    div.wpcf7 {
+        width: 100%;
+    }
+    span.wpcf7-list-item { 
+        display: block; 
+    }
+
+}
+
+span.wpcf7-list-item {
+    margin-left: 0;
+
+    .wpcf7-list-item-label {
+        font-size: 1.125rem;
+        font-weight: bold;
+    }
+}
+
+
+
+.be-contact-form {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Header
+
+.site-header {
+
+
+    background-color: $primary-color;
+    .top-bar {
+        .menu li:not(:last-child) {
+            border-right: 2px solid #fff;
+        }
+        .menu-item a{
+            //font-weight: bold;
+            font-size: 1.125rem;
+            color: $white;
+        }
+    }
+
+    .header-gradient {
+        @extend .be-gradient-1;
+        height: 5rem;
+    }
+    .desktop-menu {
+
+    }
+
+    .site-desktop-title {
+        position: relative;
+        .logo-header {
+            position: absolute;
+            left: -228px;
+            bottom: -85px;
+        }
+    }
+    .site-mobile-title {
+        position: relative;
+        float: right;
+        .logo-header {
+            position: absolute;
+            left: -184px;
+            bottom: -85px;
+        }
+    }
+}
+
+
+// Footer
+
+.footer-lower {
+    .cell {
+        margin: 1rem 0rem;
+    }
+}
+.footer-upper {
+    padding-top: 1rem;
+}
+
+.footer-menu {
+    ul {
+        display: block;
+        &.dropdown a {
+            color: $white;
+            padding: 0.5rem 0rem;
+            font-size: 1.125rem;
+        }
+    }
+}
+.footer-cutout {
+    padding: 1rem;
+    margin-bottom: 2rem;
+    margin-top: -2rem;
+    border-radius: 1rem;
+}

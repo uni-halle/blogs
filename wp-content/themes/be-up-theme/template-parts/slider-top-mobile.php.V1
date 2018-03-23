@@ -1,0 +1,31 @@
+<?php
+/**
+ * Template part Imagemap
+ *
+ *<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/js/slick/slick.js"></script>
+ */
+
+?>
+<div class="slick-rail show-for-small-only">
+    <div class="slick slick-top-mobile">
+    <img class="alignnone wp-image-24 size-full" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/slider-top-mobile/slider-1.jpg" alt="Mutter mit Kind">
+    <img class="alignnone wp-image-24 size-full" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/slider-top-mobile/slider-2.jpg" alt="Mutter mit Kind">
+    <img class="alignnone wp-image-24 size-full" src="<?php echo get_stylesheet_directory_uri(); ?>/assets/slider-top-mobile/slider-3.jpg" alt="Mutter mit Kind">
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.slick-top-mobile').slick({
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            //dots: true,
+            autoplay: true,
+            autoplaySpeed: 5000,
+            arrows: false,
+            fade: true,
+            lazyLoad: 'ondemand'
+        });
+    });
+        
+</script>
