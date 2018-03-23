@@ -11,7 +11,7 @@
  *
  * 19 August 2013
  */
-defined('__DIR__') or define('__DIR__', dirname(__FILE__));
+//defined('__DIR__') or define('__DIR__', dirname(__FILE__));
 
 class SMAPTwitterOAuth {
   const VERSION = '0.8.3';

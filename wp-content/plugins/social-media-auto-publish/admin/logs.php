@@ -89,7 +89,7 @@ if( !defined('ABSPATH') ){ exit();}
 								{
 									$arrval=unserialize($status);
 									foreach ($arrval as $a=>$b)
-										echo "<span style=\"color:red\">".$a." : ".$b."</span><br>";
+										echo "<span style=\"color:red\">".$b."</span><br>";
 								
 								}
 								

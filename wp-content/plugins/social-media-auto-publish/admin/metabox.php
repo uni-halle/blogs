@@ -62,9 +62,11 @@ if(isset($_GET['action']) && $_GET['action']=="edit" && !empty($_GET['post']))  
 
 function xyz_smap_addpostmetatags()
 {
-	$imgpath= plugins_url()."/social-media-auto-publish/admin/images/";
+	$imgpath= plugins_url()."/social-media-auto-publish/images/";
 	$heimg=$imgpath."support.png";
 	$xyz_smap_catlist=get_option('xyz_smap_include_categories');
+	if (is_array($xyz_smap_catlist))
+		$xyz_smap_catlist=implode(',', $xyz_smap_catlist);
 	?>
 <script>
 var fcheckid;
@@ -72,9 +74,9 @@ var tcheckid;
 var lcheckid;
 function displaycheck()
 {
-	if(document.getElementById("xyz_smap_post_permission"))
+	if(document.getElementById("xyz_smap_post_permission_yes") || document.getElementById("xyz_smap_post_permission_no"))
 	{
-		fcheckid=document.getElementById("xyz_smap_post_permission").value;
+		fcheckid=jQuery("input[name='xyz_smap_post_permission']:checked").val();
 		if(fcheckid==1)
 		{
 			document.getElementById("fpmd").style.display='';	
@@ -89,10 +91,10 @@ function displaycheck()
 		}
 	}
 
-	if(document.getElementById("xyz_smap_twpost_permission"))
+	if(document.getElementById("xyz_smap_twpost_permission_yes")||document.getElementById("xyz_smap_twpost_permission_no"))
 	{
-		tcheckid=document.getElementById("xyz_smap_twpost_permission").value;
-		if(tcheckid==1)
+var tcheckid=jQuery("input[name='xyz_smap_twpost_permission']:checked").val();
+if(tcheckid==1)
 		{
 			
 			document.getElementById("twmf").style.display='';
@@ -108,9 +110,9 @@ function displaycheck()
 		}
 	}
 
-	if(document.getElementById("xyz_smap_lnpost_permission"))
+	if(document.getElementById("xyz_smap_lnpost_permission_no") ||document.getElementById("xyz_smap_lnpost_permission_yes") )
 	{
-		lcheckid=document.getElementById("xyz_smap_lnpost_permission").value;
+		lcheckid=jQuery("input[name='xyz_smap_lnpost_permission']:checked").val();
 		if(lcheckid==1)
 		{
 		
@@ -132,11 +134,11 @@ function displaycheck()
 
 </script>
 <script type="text/javascript">
-function detdisplay(id)
+function detdisplay_smap(id)
 {
 	document.getElementById(id).style.display='';
 }
-function dethide(id)
+function dethide_smap(id)
 {
 	document.getElementById(id).style.display='none';
 }
@@ -155,22 +157,33 @@ function drpdisplay()
 }
 
 jQuery(document).ready(function() {
+	displaycheck();
 
+	 var xyz_smap_post_permission=jQuery("input[name='xyz_smap_post_permission']:checked").val();
+	 XyzSmapToggleRadio(xyz_smap_post_permission,'xyz_smap_post_permission'); 
+
+	 var xyz_smap_twpost_permission=jQuery("input[name='xyz_smap_twpost_permission']:checked").val();
+	 XyzSmapToggleRadio(xyz_smap_twpost_permission,'xyz_smap_twpost_permission'); 
+
+	 var xyz_smap_lnpost_permission=jQuery("input[name='xyz_smap_lnpost_permission']:checked").val();
+	 XyzSmapToggleRadio(xyz_smap_lnpost_permission,'xyz_smap_lnpost_permission'); 
+
+			
 	jQuery('#category-all').bind("DOMSubtreeModified",function(){
-		get_categorylist(1);
+		smap_get_categorylist(1);
 		});
 	
-	get_categorylist(1);
+	smap_get_categorylist(1);
 	jQuery('#category-all').on("click",'input[name="post_category[]"]',function() {
-		get_categorylist(1);
+		smap_get_categorylist(1);
 				});
 
 	jQuery('#category-pop').on("click",'input[type="checkbox"]',function() {
-		get_categorylist(2);
+		smap_get_categorylist(2);
 				});
 });
 
-function get_categorylist(val)
+function smap_get_categorylist(val)
 {
 	var cat_list="";var chkdArray=new Array();var cat_list_array=new Array();
 	var posttype="<?php echo get_post_type() ;?>";
@@ -215,15 +228,15 @@ function get_categorylist(val)
 
 			if(show_flag==0 && posttype=="post")
 			{
-				jQuery('#xyz_fbMetabox').hide();
-				jQuery('#xyz_twMetabox').hide();
-				jQuery('#xyz_lnMetabox').hide();
+				jQuery('#xyz_smap_fbMetabox').hide();
+				jQuery('#xyz_smap_twMetabox').hide();
+				jQuery('#xyz_smap_lnMetabox').hide();
 			}
 			else
 			{
-				jQuery('#xyz_fbMetabox').show();
-				jQuery('#xyz_twMetabox').show();
-				jQuery('#xyz_lnMetabox').show();
+				jQuery('#xyz_smap_fbMetabox').show();
+				jQuery('#xyz_smap_twMetabox').show();
+				jQuery('#xyz_smap_lnMetabox').show();
 			}
 		}
 }
@@ -247,7 +260,7 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 
 ?>
 
-<tr id="xyz_fbMetabox"><td colspan="2" >
+<tr id="xyz_smap_fbMetabox"><td colspan="2" >
 <?php  if(get_option('xyz_smap_post_permission')==1) {?>
 <table class="xyz_smap_meta_acclist_table"><!-- FB META -->
 
@@ -262,12 +275,10 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 	<tr valign="top">
 		<td class="xyz_smap_pleft15" width="60%">Enable auto publish post to my facebook account
 		</td>
-		<td width="40%"><select id="xyz_smap_post_permission" name="xyz_smap_post_permission"
-			onchange="displaycheck()"><option value="0" >
-					No</option>
-				<option value="1"<?php echo 'selected';?>>Yes</option>
-		</select>
-		</td>
+	 <td  class="switch-field">
+		<label id="xyz_smap_post_permission_yes"><input type="radio" name="xyz_smap_post_permission" id="xyz_smap_post_permission_1" value="1" checked/>Yes</label>
+		<label id="xyz_smap_post_permission_no"><input type="radio" name="xyz_smap_post_permission" id="xyz_smap_post_permission_0" value="0" />No</label>
+	 </td>
 	</tr>
 	<tr valign="top" id="fpmd">
 		<td class="xyz_smap_pleft15">Posting method
@@ -296,8 +307,8 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 	</tr>
 	<tr valign="top" id="fpmf">
 		<td class="xyz_smap_pleft15">Message format for posting <img src="<?php echo $heimg?>"
-						onmouseover="detdisplay('xyz_fb')" onmouseout="dethide('xyz_fb')">
-						<div id="xyz_fb" class="informationdiv" style="display: none;">
+						onmouseover="detdisplay_smap('xyz_fb')" onmouseout="dethide_smap('xyz_fb')">
+						<div id="xyz_fb" class="smap_informationdiv" style="display: none;">
 							{POST_TITLE} - Insert the title of your post.<br />{PERMALINK} -
 							Insert the URL where your post is displayed.<br />{POST_EXCERPT}
 							- Insert the excerpt of your post.<br />{POST_CONTENT} - Insert
@@ -335,7 +346,7 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 	{
 	?>
 	
-	<tr id="xyz_twMetabox"><td colspan="2" >
+	<tr id="xyz_smap_twMetabox"><td colspan="2" >
 <?php  if(get_option('xyz_smap_twpost_permission')==1) {?>
 <table class="xyz_smap_meta_acclist_table"><!-- TW META -->
 
@@ -350,21 +361,16 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 	<tr valign="top">
 		<td class="xyz_smap_pleft15" width="60%">Enable auto publish posts to my twitter account
 		</td>
-		<td width="40%"><select id="xyz_smap_twpost_permission" name="xyz_smap_twpost_permission"
-			onchange="displaycheck()">
-				<option value="0">
-					No</option>
-				<option value="1"
-				<?php echo 'selected';?>>Yes</option>
-		</select>
-		</td>
+ 	 <td  class="switch-field">
+		<label id="xyz_smap_twpost_permission_yes"><input type="radio" name="xyz_smap_twpost_permission" id="xyz_smap_twpost_permission_1" value="1" checked/>Yes</label>
+		<label id="xyz_smap_twpost_permission_no"><input type="radio" name="xyz_smap_twpost_permission" id="xyz_smap_twpost_permission_0" value="0" />No</label>
+	 </td>
 	</tr>
 	
 	<tr valign="top" id="twai">
 		<td class="xyz_smap_pleft15">Attach image to twitter post
 		</td>
-		<td><select id="xyz_smap_twpost_image_permission" name="xyz_smap_twpost_image_permission"
-			onchange="displaycheck()">
+		<td><select id="xyz_smap_twpost_image_permission" name="xyz_smap_twpost_image_permission">
 				<option value="0"
 				<?php  if(get_option('xyz_smap_twpost_image_permission')==0) echo 'selected';?>>
 					No</option>
@@ -376,8 +382,8 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 	
 	<tr valign="top" id="twmf">
 		<td class="xyz_smap_pleft15">Message format for posting <img src="<?php echo $heimg?>"
-						onmouseover="detdisplay('xyz_tw')" onmouseout="dethide('xyz_tw')">
-						<div id="xyz_tw" class="informationdiv"
+						onmouseover="detdisplay_smap('xyz_tw')" onmouseout="dethide_smap('xyz_tw')">
+						<div id="xyz_tw" class="smap_informationdiv"
 							style="display: none; font-weight: normal;">
 							{POST_TITLE} - Insert the title of your post.<br />{PERMALINK} -
 							Insert the URL where your post is displayed.<br />{POST_EXCERPT}
@@ -416,7 +422,7 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 	
 	<?php if(get_option('xyz_smap_lnaf')==0){?>
 	
-	<tr id="xyz_lnMetabox"><td colspan="2" >
+	<tr id="xyz_smap_lnMetabox"><td colspan="2" >
 <?php  if(get_option('xyz_smap_lnpost_permission')==1) {?>
 <table class="xyz_smap_meta_acclist_table"><!-- LI META -->
 
@@ -429,16 +435,12 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 <tr><td colspan="2" valign="top">&nbsp;</td></tr>
 	
 	<tr valign="top" >
-		<td class="xyz_smap_pleft15" width="60%">Enable auto publish	posts to my linkedin account
+		<td class="xyz_smap_pleft15" width="60%">Enable auto publish posts to my linkedin account
 		</td>
-		<td width="40%"><select id="xyz_smap_lnpost_permission" name="xyz_smap_lnpost_permission"
-			onchange="displaycheck()">
-				<option value="0">
-					No</option>
-				<option value="1"
-				<?php echo 'selected';?>>Yes</option>
-		</select>
-		</td>
+	 	  <td  class="switch-field">
+			<label id="xyz_smap_lnpost_permission_yes"><input type="radio" name="xyz_smap_lnpost_permission" id="xyz_smap_lnpost_permission_1" value="1" checked/>Yes</label>
+			<label id="xyz_smap_lnpost_permission_no"><input type="radio" name="xyz_smap_lnpost_permission" id="xyz_smap_lnpost_permission_0" value="0" />No</label>
+		 </td>
 	</tr>
 	
 	<tr valign="top" id="shareprivate">
@@ -452,8 +454,8 @@ Public</option><option value="1" <?php  if(get_option('xyz_smap_ln_shareprivate'
 
 	<tr valign="top" id="lnmf">
 		<td class="xyz_smap_pleft15">Message format for posting <img src="<?php echo $heimg?>"
-						onmouseover="detdisplay('xyz_ln')" onmouseout="dethide('xyz_ln')">
-						<div id="xyz_ln" class="informationdiv"
+						onmouseover="detdisplay_smap('xyz_ln')" onmouseout="dethide_smap('xyz_ln')">
+						<div id="xyz_ln" class="smap_informationdiv"
 							style="display: none; font-weight: normal;">
 							{POST_TITLE} - Insert the title of your post.<br />{PERMALINK} -
 							Insert the URL where your post is displayed.<br />{POST_EXCERPT}
@@ -507,34 +509,20 @@ Public</option><option value="1" <?php  if(get_option('xyz_smap_ln_shareprivate'
 			return;
 		
 		//FB 
-				if(document.getElementById("xyz_smap_post_permission"))
-				{
-					document.getElementById("xyz_smap_post_permission").value=0;
-					document.getElementById("fpmd").style.display='none';	
-					document.getElementById("fpmf").style.display='none';
-					document.getElementById("fpmftarea").style.display='none';
-				}
-
+			
+	jQuery('#xyz_smap_post_permission_0').attr('checked',true);
+		displaycheck();
 				
         //TW 
-				if(document.getElementById("xyz_smap_twpost_permission"))
-				{
-					document.getElementById("xyz_smap_twpost_permission").value=0;
-					document.getElementById("twmf").style.display='none';
-					document.getElementById("twai").style.display='none';
-					document.getElementById("twmftarea").style.display='none';
-				}
+			
+		jQuery('#xyz_smap_twpost_permission_0').attr('checked',true);
+		displaycheck();
 
 
 		//LN								
-				if(document.getElementById("xyz_smap_lnpost_permission"))
-				{
-					document.getElementById("xyz_smap_lnpost_permission").value=0;
-					document.getElementById("lnmf").style.display='none';
-					document.getElementById("shareprivate").style.display='none';
-					document.getElementById("lnmftarea").style.display='none';
-				}
-
+			
+		jQuery('#xyz_smap_lnpost_permission_0').attr('checked',true);
+		displaycheck();
 	}
 
 
@@ -578,7 +566,38 @@ Public</option><option value="1" <?php  if(get_option('xyz_smap_ln_shareprivate'
 
 	}
 	
+	jQuery("#xyz_smap_twpost_permission_no").click(function(){
+		displaycheck();
+		XyzSmapToggleRadio(0,'xyz_smap_twpost_permission');
+		
+	});
+	jQuery("#xyz_smap_twpost_permission_yes").click(function(){
+		displaycheck();
+		XyzSmapToggleRadio(1,'xyz_smap_twpost_permission');
+		
+	});
 
+	jQuery("#xyz_smap_post_permission_no").click(function(){
+		displaycheck();
+		XyzSmapToggleRadio(0,'xyz_smap_post_permission');
+		
+	});
+	jQuery("#xyz_smap_post_permission_yes").click(function(){
+		displaycheck();
+		XyzSmapToggleRadio(1,'xyz_smap_post_permission');
+		
+	});
+	jQuery("#xyz_smap_lnpost_permission_no").click(function(){
+		displaycheck();
+		XyzSmapToggleRadio(0,'xyz_smap_lnpost_permission');
+		
+	});
+	jQuery("#xyz_smap_lnpost_permission_yes").click(function(){
+		displaycheck();
+		XyzSmapToggleRadio(1,'xyz_smap_lnpost_permission');
+		
+	});
+	
 	
 	</script>
 <?php 

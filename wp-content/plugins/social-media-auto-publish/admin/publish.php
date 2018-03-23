@@ -190,7 +190,7 @@ function xyz_link_publish($post_ID) {
 			$xyz_smap_include_categories=get_option('xyz_smap_include_categories');
 			if($xyz_smap_include_categories!="All")
 			{
-				$carr1=explode(',', $xyz_smap_include_categories);
+				$carr1=explode(',',$xyz_smap_include_categories);
 					
 				$defaults = array('fields' => 'ids');
 				$carr2=wp_get_post_categories( $post_ID, $defaults );
@@ -483,7 +483,7 @@ function xyz_link_publish($post_ID) {
 				if($posting_method==1 || $posting_method==2)
 				{
 				
-					$attachment=xyz_wp_fbap_attachment_metas($attachment,$link);
+					//$attachment=xyz_wp_fbap_attachment_metas($attachment,$link);
 					update_post_meta($post_ID, "xyz_smap_insert_og", "1");
 				}
 				try{
@@ -586,14 +586,11 @@ function xyz_link_publish($post_ID) {
 // 				if($image_found==1)
 // 					$tw_max_len=$tw_max_len-24;
 			
-			
+			if (function_exists('mb_strlen')) {
 				foreach ($matches as $key=>$val)
 				{
 			
-				//	if(substr($val,0,5)=="https")
 						$url_max_len=23;//23 for https and 22 for http
-// 					else
-// 						$url_max_len=22;//23 for https and 22 for http
 			
 					$messagepart=mb_substr($substring, 0, mb_strpos($substring, $val));
 			
@@ -640,6 +637,54 @@ function xyz_link_publish($post_ID) {
 						$final_str.=$substring;
 					}
 				}
+			}
+			else {
+				foreach ($matches as $key=>$val)
+				{
+					//	if(substr($val,0,5)=="https")
+					$url_max_len=23;//23 for https and 22 for http
+					// 					else
+						// 						$url_max_len=22;//23 for https and 22 for http
+						$messagepart=substr($substring, 0, strpos($substring, $val));
+						if(strlen($messagepart)>($tw_max_len-$len))
+						{
+							$final_str.=substr($messagepart,0,$tw_max_len-$len-3)."...";
+							$len+=($tw_max_len-$len);
+							break;
+						}
+						else
+						{
+							$final_str.=$messagepart;
+							$len+=strlen($messagepart);
+						}
+						$cur_url_len=strlen($val);
+						if(strlen($val)>$url_max_len)
+							$cur_url_len=$url_max_len;
+							$substring=substr($substring, strpos($substring, $val)+strlen($val));
+							if($cur_url_len>($tw_max_len-$len))
+							{
+								$final_str.="...";
+								$len+=3;
+								break;
+							}
+							else
+							{
+								$final_str.=$val;
+								$len+=$cur_url_len;
+							}
+				}
+				if(strlen($substring)>0 && $tw_max_len>$len)
+				{
+					if(strlen($substring)>($tw_max_len-$len))
+					{
+						$final_str.=substr($substring,0,$tw_max_len-$len-3)."...";
+					}
+					else
+					{
+						$final_str.=$substring;
+					}
+					}
+				}
 			
 				$substring=$final_str;
 			}
@@ -649,17 +694,18 @@ function xyz_link_publish($post_ID) {
 				
 			if($image_found==1 && $post_twitter_image_permission==1)
 			{
+
 				$url = 'https://upload.twitter.com/1.1/media/upload.json';
 				$img_response = wp_remote_get($attachmenturl,array('sslverify'=> (get_option('xyz_smap_peer_verification')=='1') ? true : false) );
 				if ( is_array( $img_response ) ) {
 					$img_body = $img_response['body'];
 					$params=array('media_data' =>base64_encode($img_body));
-				$code = $twobj->request('POST', $url, $params, true,true);
-				if ($code == 200)
-				{
-					$response = json_decode($twobj->response['response']);
-					$media_ids_str = $response->media_id_string;
-					$resultfrtw = $twobj->request('POST', $twobj->url('1.1/statuses/update'), array( 'media_ids' => $media_ids_str, 'status' => $substring));
+					$code = $twobj->request('POST', $url, $params, true,true);
+					if ($code == 200)
+					{
+						$response = json_decode($twobj->response['response']);
+						$media_ids_str = $response->media_id_string;
+						$resultfrtw = $twobj->request('POST', $twobj->url('1.1/statuses/update'), array( 'media_ids' => $media_ids_str, 'status' => $substring));
 						if($resultfrtw==200)
 						{
 							if ( $media_ids_str !='')
@@ -669,9 +715,10 @@ function xyz_link_publish($post_ID) {
 						}
 						else
 							$tw_publish_status["statuses/update_with_media"]="<span style=\"color:red\">statuses/update : ".$twobj->response['response']."</span>";
-				}
-				else
-				{
+								
+					}
+					else
+					{
 						$tw_publish_status["statuses/update_with_media"]="<span style=\"color:red\">statuses/update : ".$twobj->response['response']."</span>";
 					}
 				}
@@ -770,7 +817,7 @@ function xyz_link_publish($post_ID) {
 		$ln_publish_status=array();
 
 		$ObjLinkedin = new SMAPLinkedInOAuth2($xyz_smap_application_lnarray);
-		$contentln=xyz_wp_smap_linkedin_attachment_metas($contentln,$link);
+		//$contentln=xyz_wp_smap_linkedin_attachment_metas($contentln,$link);
 		if($xyz_smap_ln_sharingmethod==0)
 		{
 				try{

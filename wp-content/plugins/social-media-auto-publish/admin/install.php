@@ -93,8 +93,11 @@ function smap_install_free()
 	add_option('xyz_smap_twap_post_logs', '');
 	add_option('xyz_smap_premium_version_ads', '1');
 	add_option('xyz_smap_default_selection_edit', '0');
-	add_option('xyz_smap_utf_decode_enable', '0');
-
+// 	add_option('xyz_smap_utf_decode_enable', '0');
+	add_option('xyz_smap_dnt_shw_notice','0');
+	if(get_option('xyz_smap_credit_dismiss') == ""){
+		add_option("xyz_smap_credit_dismiss",0);
+	}
 }
 
 register_activation_hook(XYZ_SMAP_PLUGIN_FILE,'smap_free_network_install');

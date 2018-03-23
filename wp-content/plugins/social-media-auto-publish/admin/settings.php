@@ -3,26 +3,29 @@ if( !defined('ABSPATH') ){ exit();}
 global $current_user;
 $auth_varble=0;
 wp_get_current_user();
-$imgpath= plugins_url()."/social-media-auto-publish/admin/images/";
+$imgpath= plugins_url()."/social-media-auto-publish/images/";
 $heimg=$imgpath."support.png";
 $ms0="";
 $ms1="";
 $ms2="";
 $ms3="";
-$ms4="";
 $redirecturl=admin_url('admin.php?page=social-media-auto-publish-settings&auth=1');
 
 
 require( dirname( __FILE__ ) . '/authorization.php' );
 
-if(isset($_GET['smap_notice']) && $_GET['smap_notice'] == 'hide')
+if(!$_POST && isset($_GET['smap_notice']) && $_GET['smap_notice'] == 'hide')
 {
+	if (! isset( $_REQUEST['_wpnonce'] ) || ! wp_verify_nonce( $_REQUEST['_wpnonce'],'smap-shw')){
+		wp_nonce_ays( 'smap-shw');
+		exit;
+	}
 	update_option('xyz_smap_dnt_shw_notice', "hide");
 	?>
 <style type='text/css'>
 #smap_notice_td
 {
-display:none;
+display:none !important;
 }
 </style>
 <div class="system_notice_area_style1" id="system_notice_area">
@@ -94,16 +97,6 @@ if(isset($_POST['fb']))
 		$ms2="Please fill facebook application secret.";
 		$erf=1;
 	}
-	/*elseif($fbid=="" && $posting_permission==1)
-	{
-		$ms3="Please fill facebook user id.";
-		$erf=1;
-	}*/
-	elseif($messagetopost=="" && $posting_permission==1)
-	{
-		$ms4="Please fill message format for posting.";
-		$erf=1;
-	}
 	else
 	{
 		$erf=0;
@@ -112,10 +105,10 @@ if(isset($_POST['fb']))
 			update_option('xyz_smap_af',1);
 			update_option('xyz_smap_fb_token','');
 		}
-		if($messagetopost=="")
+	/* 	if($messagetopost=="")
 		{
 			$messagetopost="New post added at {BLOG_TITLE} - {POST_TITLE}";
-		}
+		} */
 		update_option('xyz_smap_application_name',$app_name);
 		update_option('xyz_smap_application_id',$appid);
 		update_option('xyz_smap_post_permission',$posting_permission);
@@ -125,19 +118,6 @@ if(isset($_POST['fb']))
 		update_option('xyz_smap_po_method',$posting_method);
 		update_option('xyz_smap_message',$messagetopost);
 
-// 		$url = 'https://graph.facebook.com/'.XYZ_SMAP_FB_API_VERSION.'/me';
-// 		$contentget=wp_remote_get($url);$page_id="";
-// 		if(is_array($contentget))
-// 		{
-// 			$result1=$contentget['body'];
-// 			$pagearray = json_decode($result1);
-// 			if(isset($pagearray->id))
-// 			$page_id=$pagearray->id;
-// 		}
-		
-			
-
-// 		update_option('xyz_smap_fb_numericid',$page_id);
 
 	}
 }
@@ -229,7 +209,7 @@ if(isset($_POST['twit']))
 
 $lms1="";
 $lms2="";
-$lms3="";
+// $lms3="";
 $lerf=0;
 
 if(isset($_POST['linkdn']))
@@ -261,20 +241,10 @@ if(isset($_POST['linkdn']))
 		$lms2="Please fill linked api secret";
 		$lerf=1;
 	}
-	elseif($lmessagetopost=="" && $lnposting_permission==1)
-	{
-		$lms3="Please fill mssage format for posting.";
-		$lerf=1;
-	}
 	else
 	{
 
 		$lerf=0;
-		
-		if($lmessagetopost=="")
-		{
-			$lmessagetopost="New post added at {BLOG_TITLE} - {POST_TITLE}";
-		}
 		
 		if($lnappikey!=$lnappikeyold || $lnapisecret!=$lnapisecretold )
 		{
@@ -343,7 +313,7 @@ if((isset($_POST['twit']) && $terf==1)|| (isset($_POST['fb']) && $erf==1) || (is
 	<?php 
 	if(isset($_POST['fb']))
 	{
-		echo esc_html($ms0);echo esc_html($ms1);echo esc_html($ms2);echo esc_html($ms4);
+		echo esc_html($ms0);echo esc_html($ms1);echo esc_html($ms2);
 	}
 	else if(isset($_POST['twit']))
 	{
@@ -351,18 +321,18 @@ if((isset($_POST['twit']) && $terf==1)|| (isset($_POST['fb']) && $erf==1) || (is
 	}
 	else if(isset($_POST['linkdn']))
 	{
-		echo esc_html($lms1);echo esc_html($lms2);echo esc_html($lms3);
+		echo esc_html($lms1);echo esc_html($lms2);
 	}
 	?>
 	&nbsp;&nbsp;&nbsp;<span id="system_notice_area_dismiss">Dismiss</span>
 </div>
 <?php } ?>
 <script type="text/javascript">
-function detdisplay(id)
+function detdisplay_smap(id)
 {
 	document.getElementById(id).style.display='';
 }
-function dethide(id)
+function dethide_smap(id)
 {
 	document.getElementById(id).style.display='none';
 }
@@ -384,7 +354,7 @@ function drpdisplay()
 <div style="width: 100%">
 
 	<h2>
-		 <img src="<?php echo plugins_url()?>/social-media-auto-publish/admin/images/facebook-logo.png" height="16px"> Facebook Settings
+		 <img src="<?php echo plugins_url()?>/social-media-auto-publish/images/facebook-logo.png" height="16px"> Facebook Settings
 	</h2>
 	<?php
 	$af=get_option('xyz_smap_af');
@@ -431,7 +401,7 @@ function drpdisplay()
 	
 	<table class="widefat" style="width: 99%;background-color: #FFFBCC">
 	<tr>
-	<td id="bottomBorderNone">
+	<td id="bottomBorderNone" style="border: 1px solid #FCC328;">
 	
 	<div>
 
@@ -487,8 +457,8 @@ function drpdisplay()
 				</tr>
 				<tr valign="top">
 					<td>Message format for posting <img src="<?php echo $heimg?>"
-						onmouseover="detdisplay('xyz_fb')" onmouseout="dethide('xyz_fb')">
-						<div id="xyz_fb" class="informationdiv" style="display: none;">
+						onmouseover="detdisplay_smap('xyz_fb')" onmouseout="dethide_smap('xyz_fb')" style="width:13px;height:auto;">
+						<div id="xyz_fb" class="smap_informationdiv" style="display: none;">
 							{POST_TITLE} - Insert the title of your post.<br />{PERMALINK} -
 							Insert the URL where your post is displayed.<br />{POST_EXCERPT}
 							- Insert the excerpt of your post.<br />{POST_CONTENT} - Insert
@@ -497,7 +467,7 @@ function drpdisplay()
 							of the author.<br />{POST_ID} - Insert the ID of your post.
 							<br />{POST_PUBLISH_DATE} - Insert the publish date of your post.
 							<br />{USER_DISPLAY_NAME} - Insert the display name of the author.
-						</div></td>
+						</div><br/><span style="color: #0073aa;">[Optional in the case of <b>Text message with attached link</b><br/> or <b>Text message with image</b> posting methods]</span></td>
 	<td>
 	<select name="xyz_smap_fb_info" id="xyz_smap_fb_info" onchange="xyz_smap_fb_info_insert(this)">
 		<option value ="0" selected="selected">--Select--</option>
@@ -511,8 +481,8 @@ function drpdisplay()
 		<option value ="8">{POST_PUBLISH_DATE}   </option>
 		<option value ="9">{USER_DISPLAY_NAME}   </option>
 		</select> </td></tr><tr><td>&nbsp;</td><td>
-		<textarea id="xyz_smap_message"  name="xyz_smap_message" style="height:80px !important;" ><?php if($ms4==""){ 
-								echo esc_textarea(get_option('xyz_smap_message'));}?></textarea>
+		<textarea id="xyz_smap_message"  name="xyz_smap_message" style="height:80px !important;" ><?php 
+								echo esc_textarea(get_option('xyz_smap_message'));?></textarea>
 	</td></tr>
 	
 				<tr valign="top">
@@ -544,20 +514,16 @@ function drpdisplay()
 				<tr valign="top">
 					<td>Enable auto publish post to my facebook account
 					</td>
-					<td><select id="xyz_smap_post_permission"
-						name="xyz_smap_post_permission"><option value="0"
-						<?php  if(get_option('xyz_smap_post_permission')==0) echo 'selected';?>>
-								No</option>
-							<option value="1"
-							<?php  if(get_option('xyz_smap_post_permission')==1) echo 'selected';?>>Yes</option>
-					</select>
+					<td  class="switch-field">
+						<label id="xyz_smap_post_permission_yes"><input type="radio" name="xyz_smap_post_permission" value="1" <?php  if(get_option('xyz_smap_post_permission')==1) echo 'checked';?>/>Yes</label>
+						<label id="xyz_smap_post_permission_no"><input type="radio" name="xyz_smap_post_permission" value="0" <?php  if(get_option('xyz_smap_post_permission')==0) echo 'checked';?>/>No</label>
 					</td>
 				</tr>
 				<?php 
 
 				$xyz_acces_token=get_option('xyz_smap_fb_token');
 				if($xyz_acces_token!=""){
-
+				
 					$offset=0;$limit=100;$data=array();
 					//$fbid=get_option('xyz_smap_fb_id');
 					do
@@ -569,64 +535,60 @@ function drpdisplay()
 							$result1=$pp['body'];
 							$pagearray1 = json_decode($result1);
 							if(is_array($pagearray1->data))
-							$data = array_merge($data, $pagearray1->data);
+								$data = array_merge($data, $pagearray1->data);
 						}
 						else
 							break;
-						$offset += $limit;
-// 						if(!is_array($pagearray1->paging))
-// 							break;
-// 					}while(array_key_exists("next", $pagearray1->paging));
+							$offset += $limit;
+							// 						if(!is_array($pagearray1->paging))
+								// 							break;
+								// 					}while(array_key_exists("next", $pagearray1->paging));
 					}while(isset($pagearray1->paging->next));
-
-
-
+				
+				
+				
 					$count=count($data);
-					
-						$smap_pages_ids1=get_option('xyz_smap_pages_ids');
-						$smap_pages_ids0=array();
-						if($smap_pages_ids1!="")
-							$smap_pages_ids0=explode(",",$smap_pages_ids1);
 						
+					$smap_pages_ids1=get_option('xyz_smap_pages_ids');
+					$smap_pages_ids0=array();
+					if($smap_pages_ids1!="")
+						$smap_pages_ids0=explode(",",$smap_pages_ids1);
+				
 						$smap_pages_ids=array();
 						for($i=0;$i<count($smap_pages_ids0);$i++)
 						{
 							if($smap_pages_ids0[$i]!="-1")
-							$smap_pages_ids[$i]=trim(substr($smap_pages_ids0[$i],0,strpos($smap_pages_ids0[$i],"-")));
-						    else
-							$smap_pages_ids[$i]=$smap_pages_ids0[$i];
+								$smap_pages_ids[$i]=trim(substr($smap_pages_ids0[$i],0,strpos($smap_pages_ids0[$i],"-")));
+								else
+									$smap_pages_ids[$i]=$smap_pages_ids0[$i];
 						}
-						
-					//$data[$i]->id."-".$data[$i]->access_token
+				
+						//$data[$i]->id."-".$data[$i]->access_token
 						?>
-
-				<tr valign="top">
-					<td>Select facebook pages for auto	publish
-					</td>
-					<td><select name="smap_pages_list[]" multiple="multiple" style="height:auto !important;">
-							<option value="-1"
-							<?php if(in_array(-1, $smap_pages_ids)) echo "selected" ?>>Profile	Page</option>
-							<?php 
-							for($i=0;$i<$count;$i++)
-							{
-								?>
-							<option
-								value="<?php  echo $data[$i]->id."-".$data[$i]->access_token;?>"
-								<?php
-
-								
-								if(in_array($data[$i]->id, $smap_pages_ids)) echo "selected" ?>>
-
-								<?php echo $data[$i]->name; ?>
-							</option>
-							<?php }?>
-					</select>
-					</td>
-				</tr>
-
-
+				
+			<tr valign="top"><td>
+					Select facebook pages for auto publish
+				</td>
+				<td>
+				
+				<div class="scroll_checkbox">
+				<input type="checkbox" id="select_all_pages" >Select All
+				<br><input type="checkbox" class="selpages" name="smap_pages_list[]" value="-1" <?php if(in_array(-1, $smap_pages_ids)) echo "checked" ?>>Profile Page
+			
 				<?php 
-				}?>
+				for($i=0;$i<$count;$i++)
+				{
+			          $pgid=$data[$i]->id;
+					$page_name[$pgid]=$data[$i]->name;
+				?>
+				<br><input type="checkbox" class="selpages" name="smap_pages_list[]"  value="<?php  echo $data[$i]->id."-".$data[$i]->access_token;?>" <?php if(in_array($data[$i]->id, $smap_pages_ids)) echo "checked" ?>><?php echo $data[$i]->name; ?>
+				<?php }
+				//	$page_name=base64_encode(serialize($page_name));?>
+				<input type="hidden" value="<?php echo $page_name;?>" name="hidden_page_name" >
+				</div>
+				</td></tr>
+			<?php 
+			}?>
 				<tr><td   id="bottomBorderNone"></td>
 					<td  id="bottomBorderNone"><div style="height: 50px;">
 							<input type="submit" class="submit_smap_new"
@@ -641,7 +603,7 @@ function drpdisplay()
 
 
 	<h2>
-		 <img	src="<?php echo plugins_url()?>/social-media-auto-publish/admin/images/twitter-logo.png" height="16px"> Twitter Settings
+		 <img	src="<?php echo plugins_url()?>/social-media-auto-publish/images/twitter-logo.png" height="16px"> Twitter Settings
 	</h2>
 	<?php
 
@@ -661,7 +623,7 @@ function drpdisplay()
 
 <table class="widefat" style="width: 99%;background-color: #FFFBCC">
 <tr>
-<td id="bottomBorderNone">
+<td id="bottomBorderNone" style="border: 1px solid #FCC328;">
 	<div>
 		<b>Note :</b> You have to create a Twitter application before filling in following fields. 	
 		<br><b><a href="https://apps.twitter.com/app/new" target="_blank">Click here</a></b> to create new application. Specify the website for the application as :	<span style="color: red;"><?php echo  (is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST']; ?>		 </span> 
@@ -727,8 +689,8 @@ function drpdisplay()
 				</tr>
 				<tr valign="top">
 					<td>Message format for posting <img src="<?php echo $heimg?>"
-						onmouseover="detdisplay('xyz_tw')" onmouseout="dethide('xyz_tw')">
-						<div id="xyz_tw" class="informationdiv"
+						onmouseover="detdisplay_smap('xyz_tw')" onmouseout="dethide_smap('xyz_tw')" style="width:13px;height:auto;">
+						<div id="xyz_tw" class="smap_informationdiv"
 							style="display: none; font-weight: normal;">
 							{POST_TITLE} - Insert the title of your post.<br />{PERMALINK} -
 							Insert the URL where your post is displayed.<br />{POST_EXCERPT}
@@ -758,21 +720,16 @@ function drpdisplay()
 				<tr valign="top">
 					<td>Attach image to twitter post
 					</td>
-					<td><select id="xyz_smap_twpost_image_permission"
-						name="xyz_smap_twpost_image_permission">
-							<option value="0"
-							<?php  if(get_option('xyz_smap_twpost_image_permission')==0) echo 'selected';?>>
-								No</option>
-							<option value="1"
-							<?php  if(get_option('xyz_smap_twpost_image_permission')==1) echo 'selected';?>>Yes</option>
-					</select>
+					<td  class="switch-field">
+						<label id="xyz_smap_twpost_image_permission_yes"><input type="radio" name="xyz_smap_twpost_image_permission" value="1" <?php  if(get_option('xyz_smap_twpost_image_permission')==1) echo 'checked';?>/>Yes</label>
+						<label id="xyz_smap_twpost_image_permission_no"><input type="radio" name="xyz_smap_twpost_image_permission" value="0" <?php  if(get_option('xyz_smap_twpost_image_permission')==0) echo 'checked';?>/>No</label>
 					</td>
 				</tr>
 				
 				<tr valign="top">
 	<td>Twitter character limit  <img src="<?php echo $heimg?>"
-							onmouseover="detdisplay('xyz_smap_tw_char_limit')" onmouseout="dethide('xyz_smap_tw_char_limit')">
-							<div id="xyz_smap_tw_char_limit" class="informationdiv" style="display: none;">
+							onmouseover="detdisplay_smap('xyz_smap_tw_char_limit')" onmouseout="dethide_smap('xyz_smap_tw_char_limit')" style="width:13px;height:auto;">
+							<div id="xyz_smap_tw_char_limit" class="smap_informationdiv" style="display: none;">
 							The character limit of tweets  is 280.<br/>
 							Use 140 for languages like Chinese, Japanese and Korean<br/> which won't get the 280 character length limit.<br />
 							</div></td>
@@ -783,19 +740,11 @@ function drpdisplay()
 				<tr valign="top">
 					<td>Enable auto publish	posts to my twitter account
 					</td>
-					<td><select id="xyz_smap_twpost_permission"
-						name="xyz_smap_twpost_permission">
-							<option value="0"
-							<?php  if(get_option('xyz_smap_twpost_permission')==0) echo 'selected';?>>
-								No</option>
-							<option value="1"
-							<?php  if(get_option('xyz_smap_twpost_permission')==1) echo 'selected';?>>Yes</option>
-					</select>
-					</td>
+				<td  class="switch-field">
+				<label id="xyz_smap_twpost_permission_yes"><input type="radio" name="xyz_smap_twpost_permission" value="1" <?php  if(get_option('xyz_smap_twpost_permission')==1) echo 'checked';?>/>Yes</label>
+				<label id="xyz_smap_twpost_permission_no"><input type="radio" name="xyz_smap_twpost_permission" value="0" <?php  if(get_option('xyz_smap_twpost_permission')==0) echo 'checked';?>/>No</label>
+				</td>
 				</tr>
-
-				
-
 
 				<tr>
 			<td   id="bottomBorderNone"></td>
@@ -811,7 +760,7 @@ function drpdisplay()
 
 	
 	<h2>
-		 <img	src="<?php echo plugins_url()?>/social-media-auto-publish/admin/images/linkedin.gif" height="16px"> Linkedin Settings
+		 <img	src="<?php echo plugins_url()?>/social-media-auto-publish/images/linkedin.gif" height="16px"> Linkedin Settings
 	</h2>
 	
 
@@ -851,7 +800,7 @@ $lnaf=get_option('xyz_smap_lnaf');
 			
 			<table class="widefat" style="width: 99%;background-color: #FFFBCC">
 	<tr>
-	<td id="bottomBorderNone">
+	<td id="bottomBorderNone" style="border: 1px solid #FCC328;">
 	
 	<div>
 
@@ -895,8 +844,8 @@ $lnaf=get_option('xyz_smap_lnaf');
 	
 	<tr valign="top">
 					<td>Message format for posting <img src="<?php echo $heimg?>"
-						onmouseover="detdisplay('xyz_ln')" onmouseout="dethide('xyz_ln')">
-						<div id="xyz_ln" class="informationdiv"
+						onmouseover="detdisplay_smap('xyz_ln')" onmouseout="dethide_smap('xyz_ln')" style="width:13px;height:auto;">
+						<div id="xyz_ln" class="smap_informationdiv"
 							style="display: none; font-weight: normal;">
 							{POST_TITLE} - Insert the title of your post.<br />{PERMALINK} -
 							Insert the URL where your post is displayed.<br />{POST_EXCERPT}
@@ -906,7 +855,7 @@ $lnaf=get_option('xyz_smap_lnaf');
 							of the author.<br />{POST_ID} - Insert the ID of your post.
 							<br />{POST_PUBLISH_DATE} - Insert the publish date of your post.
 							<br />{USER_DISPLAY_NAME} - Insert the display name of the author.
-						</div></td>
+						</div><br/><span style="color: #0073aa;">[Optional]</span></td>
 	<td>
 	<select name="xyz_smap_ln_info" id="xyz_smap_ln_info" onchange="xyz_smap_ln_info_insert(this)">
 		<option value ="0" selected="selected">--Select--</option>
@@ -920,22 +869,24 @@ $lnaf=get_option('xyz_smap_lnaf');
 		<option value ="8">{POST_PUBLISH_DATE}   </option>
 		<option value ="9">{USER_DISPLAY_NAME}   </option>
 		</select> </td></tr><tr><td>&nbsp;</td><td>
-		<textarea id="xyz_smap_lnmessage"  name="xyz_smap_lnmessage" style="height:80px !important;" ><?php if($lms3==""){echo esc_textarea(get_option('xyz_smap_lnmessage'));}?></textarea>
+		<textarea id="xyz_smap_lnmessage"  name="xyz_smap_lnmessage" style="height:80px !important;" ><?php echo esc_textarea(get_option('xyz_smap_lnmessage'));?></textarea>
 	</td></tr>
 
 	<tr valign="top" id="shareprivate">
 	<input type="hidden" name="xyz_smap_ln_sharingmethod" id="xyz_smap_ln_sharingmethod" value="0">
 	<td>Share post content with</td>
-	<td>
-		<select id="xyz_smap_ln_shareprivate" name="xyz_smap_ln_shareprivate" > <option value="0" <?php  if(get_option('xyz_smap_ln_shareprivate')==0) echo 'selected';?>>
-Public</option><option value="1" <?php  if(get_option('xyz_smap_ln_shareprivate')==1) echo 'selected';?>>Connections only</option></select>
-	</td></tr>
+	<td  class="switch-field">
+		<label id="xyz_smap_ln_shareprivate_yes" ><input type="radio" name="xyz_smap_ln_shareprivate" value="1" <?php  if(get_option('xyz_smap_ln_shareprivate')==1) echo 'checked';?>/>Connections</label>
+		<label id="xyz_smap_ln_shareprivate_no" ><input type="radio" name="xyz_smap_ln_shareprivate" value="0" <?php  if(get_option('xyz_smap_ln_shareprivate')==0) echo 'checked';?>/>Public</label>
+	</td>
+	</tr>
 	
 	<tr valign="top"><td>Enable auto publish posts to my linkedin account</td>
-	<td>
-		<select id="xyz_smap_lnpost_permission" class="al2fb_text" name="xyz_smap_lnpost_permission" > <option value="0" <?php  if(get_option('xyz_smap_lnpost_permission')==0) echo 'selected';?>>
-No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')==1) echo 'selected';?>>Yes</option></select>
-	</td></tr>
+		<td  class="switch-field">
+			<label id="xyz_smap_lnpost_permission_yes"><input type="radio" name="xyz_smap_lnpost_permission" value="1" <?php  if(get_option('xyz_smap_lnpost_permission')==1) echo 'checked';?>/>Yes</label>
+			<label id="xyz_smap_lnpost_permission_no"><input type="radio" name="xyz_smap_lnpost_permission" value="0" <?php  if(get_option('xyz_smap_lnpost_permission')==0) echo 'checked';?>/>No</label>
+		</td>
+	</tr>
 	
 		<tr>
 			<td   id="bottomBorderNone"></td>
@@ -968,7 +919,10 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 		if($_POST['xyz_smap_cat_all']=="All")
 			$smap_category_ids=$_POST['xyz_smap_cat_all'];//redio btn name
 		else
-			$smap_category_ids=$_POST['xyz_smap_sel_cat'];//dropdown
+		{
+			$smap_category_ids=$_POST['xyz_smap_catlist'];//dropdown
+			$smap_category_ids=implode(',', $smap_category_ids);
+		}
 
 		$xyz_customtypes="";
 		
@@ -978,7 +932,7 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
         $xyz_smap_premium_version_ads=intval($_POST['xyz_smap_premium_version_ads']);
         $xyz_smap_default_selection_edit=intval($_POST['xyz_smap_default_selection_edit']);
         //$xyz_smap_future_to_publish=$_POST['xyz_smap_future_to_publish'];
-        $xyz_smap_utf_decode_enable=intval($_POST['xyz_smap_utf_decode_enable']);
+//         $xyz_smap_utf_decode_enable=intval($_POST['xyz_smap_utf_decode_enable']);
 		$smap_customtype_ids="";
 		
 		$xyz_smap_applyfilters="";
@@ -1018,7 +972,7 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 		update_option('xyz_smap_peer_verification',$xyz_smap_peer_verification);
 		update_option('xyz_smap_premium_version_ads',$xyz_smap_premium_version_ads);
 		update_option('xyz_smap_default_selection_edit',$xyz_smap_default_selection_edit);
-		update_option('xyz_smap_utf_decode_enable',$xyz_smap_utf_decode_enable);
+// 		update_option('xyz_smap_utf_decode_enable',$xyz_smap_utf_decode_enable);
 		//update_option('xyz_smap_std_future_to_publish',$xyz_smap_future_to_publish);
 	}
 
@@ -1027,12 +981,14 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 	$xyz_smap_include_pages=get_option('xyz_smap_include_pages');
 	$xyz_smap_include_posts=get_option('xyz_smap_include_posts');
 	$xyz_smap_include_categories=get_option('xyz_smap_include_categories');
+	if ($xyz_smap_include_categories!='All')
+	$xyz_smap_include_categories=explode(',', $xyz_smap_include_categories);
 	$xyz_smap_include_customposttypes=get_option('xyz_smap_include_customposttypes');
 	$xyz_smap_apply_filters=get_option('xyz_smap_std_apply_filters');
 	$xyz_smap_peer_verification=get_option('xyz_smap_peer_verification');
 	$xyz_smap_premium_version_ads=get_option('xyz_smap_premium_version_ads');
 	$xyz_smap_default_selection_edit=get_option('xyz_smap_default_selection_edit');
-	$xyz_smap_utf_decode_enable=get_option('xyz_smap_utf_decode_enable');
+// 	$xyz_smap_utf_decode_enable=get_option('xyz_smap_utf_decode_enable');
 	?>
 		<h2>Basic Settings</h2>
 
@@ -1043,16 +999,10 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 
 				<tr valign="top">
 
-					<td  colspan="1" width="50%">Publish wordpress `pages` to social media
-					</td>
-					<td><select name="xyz_smap_include_pages">
-
-							<option value="1"
-							<?php if($xyz_smap_include_pages=='1') echo 'selected'; ?>>Yes</option>
-
-							<option value="0"
-							<?php if($xyz_smap_include_pages!='1') echo 'selected'; ?>>No</option>
-					</select>
+					<td  colspan="1" width="50%">Publish wordpress `pages` to social media </td>
+					<td  class="switch-field">
+						<label id="xyz_smap_include_pages_yes"><input type="radio" name="xyz_smap_include_pages" value="1" <?php  if($xyz_smap_include_pages==1) echo 'checked';?>/>Yes</label>
+						<label id="xyz_smap_include_pages_no"><input type="radio" name="xyz_smap_include_pages" value="0" <?php  if($xyz_smap_include_pages==0) echo 'checked';?>/>No</label>
 					</td>
 				</tr>
 
@@ -1060,14 +1010,9 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 
 					<td  colspan="1">Publish wordpress `posts` to social media
 					</td>
-					<td><select name="xyz_smap_include_posts" onchange="xyz_smap_show_postCategory(this.value);">
-
-							<option value="1"
-							<?php if($xyz_smap_include_posts=='1') echo 'selected'; ?>>Yes</option>
-
-							<option value="0"
-							<?php if($xyz_smap_include_posts!='1') echo 'selected'; ?>>No</option>
-					</select>
+					<td  class="switch-field">
+						<label id="xyz_smap_include_posts_yes"><input type="radio" name="xyz_smap_include_posts" value="1" <?php  if($xyz_smap_include_posts==1) echo 'checked';?>/>Yes</label>
+						<label id="xyz_smap_include_posts_no"><input type="radio" name="xyz_smap_include_posts" value="0" <?php  if($xyz_smap_include_posts==0) echo 'checked';?>/>No</label>
 					</td>
 				</tr>
 				
@@ -1075,19 +1020,15 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 
 					<td  colspan="1">Select post categories for auto publish
 					</td>
-					<td><input type="hidden"
-						value="<?php echo esc_html($xyz_smap_include_categories);?>"
-						name="xyz_smap_sel_cat" id="xyz_smap_sel_cat"> <input type="radio"
-						name="xyz_smap_cat_all" id="xyz_smap_cat_all" value="All"
-						onchange="rd_cat_chn(1,-1)"
-						<?php if($xyz_smap_include_categories=="All") echo "checked"?>>All<font
-						style="padding-left: 10px;"></font><input type="radio"
-						name="xyz_smap_cat_all" id="xyz_smap_cat_all" value=""
-						onchange="rd_cat_chn(1,1)"
-						<?php if($xyz_smap_include_categories!="All") echo "checked"?>>Specific
-
-						<span id="cat_dropdown_span"><br /> <br /> <?php 
-
+					<td class="switch-field">
+	                <input type="hidden" value="<?php echo esc_html($xyz_smap_include_categories);?>" name="xyz_smap_sel_cat" 
+			id="xyz_smap_sel_cat"> 
+					<label id="xyz_smap_include_categories_no">
+					<input type="radio"	name="xyz_smap_cat_all" id="xyz_smap_cat_all" value="All" onchange="rd_cat_chn(1,-1)" <?php if($xyz_smap_include_categories=="All") echo "checked"?>>All<font style="padding-left: 10px;"></font></label>
+					<label id="xyz_smap_include_categories_yes">
+					<input type="radio"	name="xyz_smap_cat_all" id="xyz_smap_cat_all" value=""	onchange="rd_cat_chn(1,1)" <?php if($xyz_smap_include_categories!="All") echo "checked"?>>Specific</label>
+					<br /> <br /> <div class="scroll_checkbox"  id="cat_dropdown_span">
+					<?php 
 
 						$args = array(
 								'show_option_all'    => '',
@@ -1110,14 +1051,20 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 								'hide_if_empty'      => false );
 
 						if(count(get_categories($args))>0)
+					{
+						$smap_categories=get_categories();
+						foreach ($smap_categories as $smap_cat)
 						{
-							$args['name']='xyz_smap_catlist';
-							echo str_replace( "<select", "<select multiple onClick=setcat(this) style='width:200px;height:auto !important;border:1px solid #cccccc;'", wp_dropdown_categories($args));
-						}
+							$cat_id[]=$smap_cat->cat_ID;
+							$cat_name[]=$smap_cat->cat_name;
+							?>
+							<input type="checkbox" name="xyz_smap_catlist[]"  value="<?php  echo $smap_cat->cat_ID;?>" <?php if(is_array($xyz_smap_include_categories)) if(in_array($smap_cat->cat_ID, $xyz_smap_include_categories)) echo "checked"; ?>/><?php echo $smap_cat->cat_name; ?>
+							<br/><?php }
+					}
 						else
 							echo "NIL";
 
-						?><br /> <br /> </span>
+						?><br /> <br /> </div>
 					</td>
 				</tr>
 
@@ -1155,27 +1102,25 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 					?>
 					</td>
 					</tr>
-					
+
 					<tr valign="top">
 
-					<td scope="row" colspan="1" width="50%">Default selection of auto publish while editing posts/pages	
-					</td><td><select name="xyz_smap_default_selection_edit" >
-					
-					<option value ="1" <?php if($xyz_smap_default_selection_edit=='1') echo 'selected'; ?> >Yes </option>
-					
-					<option value ="0" <?php if($xyz_smap_default_selection_edit=='0') echo 'selected'; ?> >No </option>
-					</select> 
-					</td></tr>
+					<td scope="row" colspan="1" width="50%">Default selection of auto publish while editing posts/pages/custom post types
+					</td>
+					<td  class="switch-field">
+						<label id="xyz_smap_default_selection_edit_yes"><input type="radio" name="xyz_smap_default_selection_edit" value="1" <?php  if($xyz_smap_default_selection_edit==1) echo 'checked';?>/>Enabled</label>
+						<label id="xyz_smap_default_selection_edit_no"><input type="radio" name="xyz_smap_default_selection_edit" value="0" <?php  if($xyz_smap_default_selection_edit==0) echo 'checked';?>/>Disabled</label>
+					</td>
+					</tr>
 					
 					<tr valign="top">
 					
-					<td scope="row" colspan="1" width="50%">SSL peer verification	</td><td><select name="xyz_smap_peer_verification" >
-					
-					<option value ="1" <?php if($xyz_smap_peer_verification=='1') echo 'selected'; ?> >Enable </option>
-					
-					<option value ="0" <?php if($xyz_smap_peer_verification=='0') echo 'selected'; ?> >Disable </option>
-					</select> 
-					</td></tr>
+					<td scope="row" colspan="1" width="50%">Enable SSL peer verification in remote requests</td>
+					<td  class="switch-field">
+						<label id="xyz_smap_peer_verification_yes"><input type="radio" name="xyz_smap_peer_verification" value="1" <?php  if($xyz_smap_peer_verification==1) echo 'checked';?>/>Yes</label>
+						<label id="xyz_smap_peer_verification_no"><input type="radio" name="xyz_smap_peer_verification" value="0" <?php  if($xyz_smap_peer_verification==0) echo 'checked';?>/>No</label>
+					</td>
+					</tr>
 					
 				<tr valign="top">
 					<td scope="row" colspan="1">Apply filters during publishing	</td>
@@ -1209,46 +1154,23 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 					</td>
 				</tr>
 
-<tr valign="top">
-
+<!--  <tr valign="top">
+		
 					<td  colspan="1" width="50%">Enable utf-8 decoding before publishing
 					</td>
-					<td><select name="xyz_smap_utf_decode_enable">
-
-							<option value="1"
-							<?php if($xyz_smap_utf_decode_enable=='1') echo 'selected'; ?>>Yes</option>
-
-							<option value="0"
-							<?php if($xyz_smap_utf_decode_enable!='1') echo 'selected'; ?>>No</option>
-					</select>
+					<td  class="switch-field">
+						<label id="xyz_smap_utf_decode_enable_yes"><input type="radio" name="xyz_smap_utf_decode_enable" value="1" <?php // if($xyz_smap_utf_decode_enable==1) echo 'checked';?>/>Yes</label>
+						<label id="xyz_smap_utf_decode_enable_no"><input type="radio" name="xyz_smap_utf_decode_enable" value="0" <?php // if($xyz_smap_utf_decode_enable==0) echo 'checked';?>/>No</label>
 					</td>
-				</tr>
-	
-				<!--<tr valign="top">
-
-					<td scope="row" colspan="1">Enable "future_to_publish" hook	</td>
-					<td><select name="xyz_smap_future_to_publish" id="xyz_smap_future_to_publish" >
-					
-					<option value ="1" <?php // if($xyz_smap_future_to_publish=='1') echo 'selected'; ?> >Yes </option>
-					
-					<option value ="2" <?php // if($xyz_smap_future_to_publish=='2') echo 'selected'; ?> >No </option>
-					</select>
-					</td>
-				</tr>-->					
+				</tr>-->
 
 				<tr valign="top">
 
 					<td  colspan="1">Enable credit link to author
 					</td>
-					<td><select name="xyz_credit_link" id="xyz_smap_credit_link">
-
-							<option value="smap"
-							<?php if($xyz_credit_link=='smap') echo 'selected'; ?>>Yes</option>
-
-							<option
-								value="<?php echo $xyz_credit_link!='smap'?$xyz_credit_link:0;?>"
-								<?php if($xyz_credit_link!='smap') echo 'selected'; ?>>No</option>
-					</select>
+					<td  class="switch-field">
+						<label id="xyz_credit_link_yes"><input type="radio" name="xyz_credit_link" value="smap" <?php  if($xyz_credit_link=='smap') echo 'checked';?>/>Yes</label>
+						<label id="xyz_credit_link_no"><input type="radio" name="xyz_credit_link" value="<?php echo $xyz_credit_link!='smap'?$xyz_credit_link:0;?>" <?php  if($xyz_credit_link!='smap') echo 'checked';?>/>No</label>
 					</td>
 				</tr>
 				
@@ -1256,15 +1178,9 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 
 					<td  colspan="1">Enable premium version ads
 					</td>
-					<td><select name="xyz_smap_premium_version_ads" id="xyz_smap_premium_version_ads">
-
-							<option value="1"
-							<?php if($xyz_smap_premium_version_ads=='1') echo 'selected'; ?>>Yes</option>
-
-							<option
-								value="0"
-								<?php if($xyz_smap_premium_version_ads=='0') echo 'selected'; ?>>No</option>
-					</select>
+					<td  class="switch-field">
+						<label id="xyz_smap_premium_version_ads_yes"><input type="radio" name="xyz_smap_premium_version_ads" value="1" <?php  if($xyz_smap_premium_version_ads==1) echo 'checked';?>/>Yes</label>
+						<label id="xyz_smap_premium_version_ads_no"><input type="radio" name="xyz_smap_premium_version_ads" value="0" <?php  if($xyz_smap_premium_version_ads==0) echo 'checked';?>/>No</label>
 					</td>
 				</tr>
 
@@ -1287,10 +1203,14 @@ No</option><option value="1" <?php  if(get_option('xyz_smap_lnpost_permission')=
 		
 		
 </div>		
-
+<?php if (is_array($xyz_smap_include_categories))
+$xyz_smap_include_categories1=implode(',', $xyz_smap_include_categories);
+else 
+	$xyz_smap_include_categories1=$xyz_smap_include_categories;
+	?>
 	<script type="text/javascript">
 	//drpdisplay();
-var catval='<?php echo esc_html($xyz_smap_include_categories); ?>';
+var catval='<?php echo esc_html($xyz_smap_include_categories1); ?>';
 var custtypeval='<?php echo esc_html($xyz_smap_include_customposttypes); ?>';
 var get_opt_cats='<?php echo esc_html(get_option('xyz_smap_include_posts'));?>';
 jQuery(document).ready(function() {
@@ -1303,8 +1223,34 @@ jQuery(document).ready(function() {
 		  jQuery('#selPostCat').hide();
 	  else
 		  jQuery('#selPostCat').show();
-			  
-	  
+
+  jQuery("#select_all_pages").click(function(){
+		
+		jQuery(".selpages").prop("checked",jQuery("#select_all_pages").prop("checked"));
+	});
+   var xyz_credit_link=jQuery("input[name='xyz_credit_link']:checked").val();
+   if(xyz_credit_link=='smap')
+	   xyz_credit_link=1;
+   else
+	   xyz_credit_link=0;
+   XyzSmapToggleRadio(xyz_credit_link,'xyz_credit_link');
+   
+   var xyz_smap_cat_all=jQuery("input[name='xyz_smap_cat_all']:checked").val();
+   if (xyz_smap_cat_all == 'All') 
+	   xyz_smap_cat_all=0;
+   else 
+	   xyz_smap_cat_all=1;
+   XyzSmapToggleRadio(xyz_smap_cat_all,'xyz_smap_include_categories'); 
+  
+
+   var smap_toggle_element_ids=['xyz_smap_post_permission','xyz_smap_include_categories','xyz_smap_default_selection_edit','xyz_smap_peer_verification',
+		'xyz_smap_twpost_image_permission','xyz_smap_twpost_permission','xyz_smap_ln_shareprivate',
+		 'xyz_smap_lnpost_permission','xyz_smap_include_pages','xyz_smap_include_posts','xyz_credit_link','xyz_smap_premium_version_ads'];
+
+   jQuery.each(smap_toggle_element_ids, function( index, value ) {
+		   checkedval= jQuery("input[name='"+value+"']:checked").val();
+		   XyzSmapToggleRadio(checkedval,value); 
+   	});
 	}); 
 	
 function setcat(obj)
@@ -1327,14 +1273,14 @@ document.getElementById('xyz_smap_sel_cat').value=sel_str;
 
 }
 
-var d1='<?php echo esc_html($xyz_smap_include_categories);?>';
-splitText = d1.split(",");
-jQuery.each(splitText, function(k,v) {
-jQuery("#xyz_smap_catlist").children("option[value="+v+"]").attr("selected","selected");
-});
+//var d1='<?php // echo esc_html($xyz_smap_include_categories);?>';
+//splitText = d1.split(",");
+//jQuery.each(splitText, function(k,v) {
+//jQuery("#xyz_smap_catlist").children("option[value="+v+"]").attr("selected","selected");
+//});
 
 function rd_cat_chn(val,act)
-{//xyz_smap_cat_all xyz_smap_cust_all 
+{
 	if(val==1)
 	{
 		if(act==-1)
@@ -1342,7 +1288,6 @@ function rd_cat_chn(val,act)
 		else
 		  jQuery("#cat_dropdown_span").show();
 	}
-	
 }
 
 function xyz_smap_fb_info_insert(inf){
@@ -1389,6 +1334,22 @@ function xyz_smap_show_postCategory(val)
 	else
 		jQuery('#selPostCat').show();
 }
+var smap_toggle_element_ids=['xyz_smap_post_permission','xyz_smap_include_categories','xyz_smap_default_selection_edit','xyz_smap_peer_verification',
+	'xyz_smap_twpost_image_permission','xyz_smap_twpost_permission','xyz_smap_ln_shareprivate',
+	 'xyz_smap_lnpost_permission','xyz_smap_include_pages','xyz_smap_include_posts','xyz_credit_link','xyz_smap_premium_version_ads'];
+
+jQuery.each(smap_toggle_element_ids, function( index, value ) {
+	jQuery("#"+value+"_no").click(function(){
+		XyzSmapToggleRadio(0,value);
+		if(value=='xyz_smap_include_posts')
+			xyz_smap_show_postCategory(0);
+	});
+	jQuery("#"+value+"_yes").click(function(){
+		XyzSmapToggleRadio(1,value);
+		if(value=='xyz_smap_include_posts')
+			xyz_smap_show_postCategory(1);
+	});
+	});
 </script>
 	<?php 
 ?>

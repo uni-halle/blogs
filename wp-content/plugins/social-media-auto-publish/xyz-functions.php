@@ -49,7 +49,7 @@ if(!function_exists('xyz_smap_links')){
 
 			$links[] = '<a href="http://help.xyzscripts.com/docs/social-media-auto-publish/faq/"  title="FAQ">FAQ</a>';
 			$links[] = '<a href="http://help.xyzscripts.com/docs/social-media-auto-publish/"  title="Read Me">README</a>';
-			$links[] = '<a href="http://xyzscripts.com/support/" class="xyz_support" title="Support"></a>';
+			$links[] = '<a href="https://xyzscripts.com/support/" class="xyz_support" title="Support"></a>';
 			$links[] = '<a href="http://twitter.com/xyzscripts" class="xyz_twitt" title="Follow us on twitter"></a>';
 			$links[] = '<a href="https://www.facebook.com/xyzscripts" class="xyz_fbook" title="Facebook"></a>';
 			$links[] = '<a href="https://plus.google.com/+Xyzscripts" class="xyz_gplus" title="+1"></a>';
@@ -65,6 +65,7 @@ if(!function_exists('xyz_smap_string_limit')){
 function xyz_smap_string_limit($string, $limit) {
 
 	$space=" ";$appendstr=" ...";
+	if (function_exists('mb_strlen')) {
 	if(mb_strlen($string) <= $limit) return $string;
 	if(mb_strlen($appendstr) >= $limit) return '';
 	$string = mb_substr($string, 0, $limit-mb_strlen($appendstr));
@@ -73,6 +74,17 @@ function xyz_smap_string_limit($string, $limit) {
 		return $string.$appendstr;
 	else
 		return mb_substr($string, 0, $rpos).$appendstr;
+	}
+	else {
+		if(strlen($string) <= $limit) return $string;
+		if(strlen($appendstr) >= $limit) return '';
+		$string = substr($string, 0, $limit-strlen($appendstr));
+		$rpos = strripos($string, $space);
+		if ($rpos===false)
+			return $string.$appendstr;
+		else
+			return substr($string, 0, $rpos).$appendstr;
+	}
 }
 
 }
@@ -128,7 +140,7 @@ function xyz_smap_is_session_started()
     return FALSE;
 }
 }
-if (!function_exists("xyz_wp_smap_linkedin_attachment_metas")) {
+/*if (!function_exists("xyz_wp_smap_linkedin_attachment_metas")) {
 	function xyz_wp_smap_linkedin_attachment_metas($contentln,$url)
 	{
 		$content_title='';$content_desc='';$utf="UTF-8";$content_img='';
@@ -178,7 +190,7 @@ if (!function_exists("xyz_wp_smap_linkedin_attachment_metas")) {
 		}
 		if($content_img!='')
 			$contentln['content']['submitted-image-url']=$content_img;
-		}*/
+		}
 		if(isset($contentln['content']['submitted-url']))
 			$contentln['content']['submitted-url']=$url;
 
@@ -214,7 +226,7 @@ if (!function_exists("xyz_wp_fbap_attachment_metas")) {
 				// 				$content_title=utf8_decode($content_title);
 			if($name!='')
 				$attachment['name']=$name;
-		} */
+		} 
 		if(isset($attachment['actions']))
 		{
 			if(isset($attachment['actions']['name']))
@@ -237,7 +249,7 @@ if (!function_exists("xyz_wp_fbap_attachment_metas")) {
 				$attachment['actions']['link']=$url;
 			}
 		}
-	/* 	if(isset($attachment['description']))
+	 	if(isset($attachment['description']))
 		{
 			$ogmetaContentAttributeNodes_desc = $xpath->query("/html/head/meta[@property='og:description']/@content");
 			foreach($ogmetaContentAttributeNodes_desc as $ogmetaContentAttributeNode_desc) {
@@ -258,14 +270,14 @@ if (!function_exists("xyz_wp_fbap_attachment_metas")) {
 		}
 		if($content_img!='')
 			$attachment['picture']=$content_img;
-		}*/
+		}
 
 		if(isset($attachment['link']))
 			$attachment['link']=$url;
 
 		return $attachment;
 	}
-}
+} */
 
 if (!function_exists("xyz_smap_split_replace"))
 {

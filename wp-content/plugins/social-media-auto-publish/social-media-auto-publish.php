@@ -1,11 +1,11 @@
 <?php
 /*
  Plugin Name: Social Media Auto Publish
-Plugin URI: http://xyzscripts.com/wordpress-plugins/social-media-auto-publish/
+Plugin URI: https://xyzscripts.com/wordpress-plugins/social-media-auto-publish/
 Description:   Publish posts automatically from your blog to social media networks like Facebook, Twitter and LinkedIn. The plugin supports filtering posts by post-types and categories.
-Version: 1.7.6
+Version: 1.7.7
 Author: xyzscripts.com
-Author URI: http://xyzscripts.com/
+Author URI: https://xyzscripts.com/
 License: GPLv2 or later
 */
 
@@ -29,14 +29,13 @@ if ( !function_exists( 'add_action' ) ) {
 	echo "Hi there!  I'm just a plugin, not much I can do when called directly.";
 	exit;
 }
-//ob_start();
 //error_reporting(0);
 define('XYZ_SMAP_PLUGIN_FILE',__FILE__);
 
 if (!defined('XYZ_SMAP_FB_API_VERSION'))
 	define('XYZ_SMAP_FB_API_VERSION','v2.6');
 global $wpdb;
-if(isset($_POST) && isset($_POST['fb_auth'] ))
+if(isset($_POST) && isset($_POST['fb_auth'] ) || (isset($_GET['page']) && ($_GET['page']=='social-media-auto-publish-settings')))
 {
 	ob_start();
 }
@@ -68,7 +67,7 @@ if(get_option('xyz_credit_link')=="smap"){
 
 }
 function xyz_smap_credit() {
-	$content = '<div style="clear:both;width:100%;text-align:center; font-size:11px; "><a target="_blank" title="Social Media Auto Publish" href="http://xyzscripts.com/wordpress-plugins/social-media-auto-publish/details" >Social Media Auto Publish</a> Powered By : <a target="_blank" title="PHP Scripts & Programs" href="http://www.xyzscripts.com" >XYZScripts.com</a></div>';
+	$content = '<div style="clear:both;width:100%;text-align:center; font-size:11px; "><a target="_blank" title="Social Media Auto Publish" href="https://xyzscripts.com/wordpress-plugins/social-media-auto-publish/details" >Social Media Auto Publish</a> Powered By : <a target="_blank" title="PHP Scripts & Programs" href="http://www.xyzscripts.com" >XYZScripts.com</a></div>';
 	echo $content;
 }
 if(!function_exists('get_post_thumbnail_id'))
