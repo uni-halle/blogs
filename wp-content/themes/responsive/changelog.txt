@@ -8,6 +8,12 @@ Changelog Legend:
 [x] = Deleted
 [!] = Bugs
 
+(03/13/18) - Changed - Version 3.11
+[*] - Updated WooCommerce templates
+
+(02/22/18) - Changed - Version 3.10
+[+] - Added new 2 column layout for footer widgets area 
+
 (01/05/18) - Changed - Version 3.9
 [*] Enhanced top menu look
 [*] Now Html is allowed in Features, Testimonial & Team section
