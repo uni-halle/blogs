@@ -77,6 +77,10 @@ dark, light, blue, white, black, gray, one-column, two-columns, left-sidebar, ri
 
 == Change Log ==
 
+= 4.7.6 (Released: March 22, 2018) =
+* Bug Fixed: Design issue with Catch Infinite Scroll plugin
+* Bug Fixed: Button design issue in iOS mobile devices
+
 = 4.7.5 (Released: February 6, 2018) =
 * Added: rel="nofollow" for social icons with target="_blank"
 * Added: Option to add Spotify social icon (Requested by: salihkn)

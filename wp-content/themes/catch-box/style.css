@@ -4,7 +4,7 @@ Theme URI: https://catchthemes.com/themes/catch-box/
 Author: Catch Themes
 Author URI: https://catchthemes.com/
 Description: Catch Box is simple, lightweight, box shaped, and adaptable WordPress Theme for bloggers and professionals. It is based on HTML5, CSS3 and Responsive Web Design to view in various devices. 10 Best Reasons to use Catch Box Theme. 1. Responsive Web Design, 2. Custom Menus (Primary, Secondary and Footer menus), 3. Theme Options for light, dark, blue, green, red, brown and orange color scheme, custom link colors, three layout choices, two content choices between excerpt and content option in homepage, feed redirection, custom css styles, 4. Featured Sliders where you can define number of slides and post IDs, 5. Social Links (Facebook, Twitter, RSS, Linkedin, Pinterest, etc), 6. Webmaster Tools (Google, Yahoo and Bing site verification ID, Header and Footer codes), 7. Custom Backgrounds, 8. Custom Header, 9. Catchbox Adspace widget to add any type of Advertisements, and 10. Support popular plugins. Multilingual Ready (WPML) and also currently translated in Brazilian Portuguese, Spanish, Danish, German, French, Polish, Czech, Croatian, Italian, Swedish, Russian, Arabic, Serbian, Dutch, Persian, Hungarian, Slovak, Japanese, Bosnian, Catalan, Romanian, Ukrainian and Lithuanian languages. Theme Support at https://catchthemes.com/support/
-Version: 4.7.5
+Version: 4.7.6
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: catch-box
@@ -68,6 +68,14 @@ footer, header, hgroup, menu, nav, section {
 }
 figure {
 	margin: 0;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
 }
 
 /* =Structure
@@ -2490,6 +2498,7 @@ a.comment-reply-link > span {
 #respond input#submit {
 	background: #222;
 	border: none;
+	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 	-webkit-box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
@@ -2928,22 +2937,28 @@ img#wpstats {
     text-align: center;
     width: 100%;
 }
+
 #content #infinite-handle span {
 	background: none transparent;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	display: block;
 	padding: 0;
 }
+
 #content #infinite-handle span button {
 	background-color: #444;
+	color: #fff;
+	display: inline;
 	font-size: 14px;
-	padding: 10px 0;
+	padding: 10px 30px;
 	width: 100%;
 }
 
 #content #infinite-handle span button:hover,
 #content #infinite-handle span button:focus {
 	background-color: #000;
-	font-size: 14px;
-	padding: 10px 0;
 }
 
 
@@ -3201,14 +3216,14 @@ Responsive Style
 	.site {
 		width: 960px;
   	}
-	#nav-slider .nav-previous, 
+	#nav-slider .nav-previous,
   	#nav-slider .nav-next {
     	top: 94px;
   	}
   	#primary {
 	    width: 565px;
 	}
-	#site-generator .copyright, 
+	#site-generator .copyright,
 	#site-generator .powered {
 	    width: 445px;
 	}
@@ -3219,7 +3234,7 @@ Responsive Style
 	.commentlist .children .avatar {
 		left: 25px;
 		top: 25px;
-	}	
+	}
 	.one-column .site {
 		width: 730px;
 	}
@@ -3234,10 +3249,10 @@ Responsive Style
 		padding: 25px 25px 0;
 	}
 	#header-content {
-		margin: 0 25px;	
+		margin: 0 25px;
 	}
 	#header-content {
-		padding: 25px 0;	
+		padding: 25px 0;
 	}
 	.page-header,
 	.commentlist > li.comment,
@@ -3247,7 +3262,7 @@ Responsive Style
 		padding: 25px;
 	}
 	#slider,
-	.hentry, 
+	.hentry,
 	.no-results,
 	#author-info,
 	#disqus_thread,
@@ -3255,7 +3270,7 @@ Responsive Style
 	.page-header,
 	.breadcrumbs,
 	p,
-	ul, 
+	ul,
 	ol,
 	.home #content nav,
 	.archive #content nav,
@@ -3284,7 +3299,7 @@ Responsive Style
 		padding: 10px 0 5px;
 	}
 	#site-generator {
-		padding: 20px 25px;	
+		padding: 20px 25px;
 	}
 	#comments-title {
 	    padding-bottom: 20px;
@@ -3302,10 +3317,10 @@ Responsive Style
   	#primary {
   		width: 515px;
   	}
-	#site-generator .copyright, 
+	#site-generator .copyright,
 	#site-generator .powered {
 	    width: 420px;
-	}	  	
+	}
 }
 
 /* iPad Portrait and other Smaller then standard 960 (devices and browsers) ----------- */
@@ -3315,16 +3330,16 @@ Responsive Style
 	}
 	#primary,
 	#secondary,
-	#site-generator .copyright, 
+	#site-generator .copyright,
 	#site-generator .powered {
 		display: block;
 		float: none;
 		width: 100%;
 	}
-	#site-generator .copyright, 
+	#site-generator .copyright,
 	#site-generator .powered {
 		text-align: center;
-	}		
+	}
 	/* Simplify the basic layout */
 	#nav-slider .nav-previous,
 	#nav-slider .nav-next {
@@ -3353,7 +3368,7 @@ Responsive Style
    		padding: 0 20px;
    		text-align: left;
 	}
-	#access ul.menu ul a, 
+	#access ul.menu ul a,
 	#access-secondary ul.menu ul a,
 	#access-footer ul.menu ul a {
 		font-size: 15px;
@@ -3369,7 +3384,7 @@ Responsive Style
 	.error404 .entry-content,
 	.no-sidebar #comments-title  {
 	    width: 100%;
-	}	
+	}
 	/* Simplify the pullquotes and pull styles */
 	.no-sidebar blockquote.pull {
 		margin: 0 0 2em;
@@ -3410,7 +3425,7 @@ Responsive Style
 		float: none;
 		margin-right: 0;
 		width: auto;
-	}	
+	}
 	.format-gallery .gallery-thumb {
 		max-width: 100%
 	}
@@ -3458,7 +3473,7 @@ Responsive Style
 	.footer-menu-open #site-footer-mobile-menu {
 	    display: block;
 	}
-	#access ul.menu li, 
+	#access ul.menu li,
 	#access-secondary ul.menu li,
 	#access-footer ul.menu li {
 		border-left: none;
@@ -3474,7 +3489,7 @@ Responsive Style
 	.menu-access-wrap #access-footer .toggled-on li:first-child {
 		margin-top: 1px;
 	}
-	.site-header-menu #access .menu-item-has-children > a, 
+	.site-header-menu #access .menu-item-has-children > a,
 	.site-header-menu #access .page_item_has_children > a,
 	.site-header-menu #access-secondary .menu-item-has-children > a,
 	.site-footer-menu #access-footer .menu-item-has-children > a {
@@ -3508,23 +3523,23 @@ Responsive Style
 		top: auto;
 		width: 100%;
 	}
-	#access ul.menu ul a, 
+	#access ul.menu ul a,
 	#access-secondary ul.menu ul a,
 	#access-footer ul.menu ul a {
 		width: auto;
 		padding-left: 30px;
 	}
-	#access ul.menu ul ul a, 
+	#access ul.menu ul ul a,
 	#access-secondary ul.menu ul ul a,
 	#access-footer ul.menu ul ul a {
 		padding-left: 40px;
 	}
-	#access ul.menu ul ul ul a, 
+	#access ul.menu ul ul ul a,
 	#access-secondary ul.menu ul ul ul a,
 	#access-footer ul.menu ul ul ul a {
 		padding-left: 50px;
 	}
-	#access ul.menu ul ul ul ul a, 
+	#access ul.menu ul ul ul ul a,
 	#access-secondary ul.menu ul ul ul ul a,
 	#access-footer ul.menu ul ul ul ul a {
 		padding-left: 60px;
@@ -3577,7 +3592,7 @@ Responsive Style
 	}
 	.dropdown-toggle.toggled-on:after {
 		content: "\f432";
-	}	
+	}
 	.one-menu .menu-access-wrap,
 	#colophon .menu-access-wrap {
 		text-align: center;
@@ -3596,7 +3611,7 @@ Responsive Style
 	}
 	#mobile-header-right-menu .mobile-menu-text {
 		float: left;
-	}	
+	}
 	#respond input#submit {
 		left: 20px;
 	}
@@ -3618,17 +3633,17 @@ Responsive Style
 		padding: 20px 20px 0;
 	}
 	#header-content {
-		margin: 0 20px;	
+		margin: 0 20px;
 	}
-	#access div, 
+	#access div,
 	#access-secondary div,
 	#access-footer div {
 	    margin: 0;
 	}
 	#header-content {
-		padding: 20px 0;	
+		padding: 20px 0;
 	}
-	#slider-wrap a, 
+	#slider-wrap a,
 	#slider-wrap .featured-img span
 	.page-header,
 	.commentlist > li.comment,
@@ -3637,8 +3652,8 @@ Responsive Style
 	.commentlist .children li.comment {
 		padding: 20px;
 	}
-	#slider,	
-	.hentry, 
+	#slider,
+	.hentry,
 	.no-results,
 	#author-info,
 	#disqus_thread,
@@ -3646,7 +3661,7 @@ Responsive Style
 	.page-header,
 	.breadcrumbs,
 	p,
-	ul, 
+	ul,
 	ol,
 	.home #content nav,
 	.archive #content nav,
@@ -3662,7 +3677,7 @@ Responsive Style
 	.commentlist .children li.comment {
 		margin-top: 20px;
 	}
-	.hentry, 
+	.hentry,
 	.no-sidebar .hentry,
 	.no-sidebar.full-width .hentry,
 	.one-column.no-sidebar .hentry,
@@ -3673,7 +3688,7 @@ Responsive Style
 	    padding: 10px 20px 20px;
 	}
 	#site-generator {
-		padding: 20px;	
+		padding: 20px;
 	}
 	#comments-title,
 	#nav-below {
@@ -3689,8 +3704,8 @@ Responsive Style
 }
 
 /* Smaller then standard 767 (devices and browsers) ----------- */
-@media screen and (max-width: 767px) {	
-	.site, 
+@media screen and (max-width: 767px) {
+	.site,
 	.one-column .site {
 		width: 600px;
 	}
@@ -3699,7 +3714,7 @@ Responsive Style
 		float: none;
 		text-align: center;
 	}
-	#sidebar-header-right, 
+	#sidebar-header-right,
 	#branding .searchform,
 	#sidebar-header-right .widget,
 	#branding .search-field {
@@ -3709,7 +3724,7 @@ Responsive Style
 	#sidebar-header-right {
 		text-align: center;
 		width: 100%;
-	}	
+	}
 	#branding .searchform {
 		display: inline-block;
 	    margin-top: 0;
@@ -3726,7 +3741,7 @@ Responsive Style
 	#slider.slider-fullwidth #nav-slider .nav-previous,
 	#slider.slider-fullwidth #nav-slider .nav-next {
 		top: 20%;
-	}	
+	}
 	/* Reposition the site title and description slightly */
 	#site-title {
 		padding: 0;
@@ -3761,7 +3776,7 @@ Responsive Style
 		margin-left: 0 !important;
 	}
 	/* Pagination */
-	.post-navigation .nav-previous, 
+	.post-navigation .nav-previous,
 	.post-navigation .nav-next {
 		float: left;
 		text-align: left;
@@ -3770,8 +3785,8 @@ Responsive Style
 	#content #infinite-handle {
 		padding-bottom: 1em;
 	}
-	#nav-below .wp-pagenavi a, 
-	#nav-below .wp-pagenavi span, 
+	#nav-below .wp-pagenavi a,
+	#nav-below .wp-pagenavi span,
 	#nav-below #wp_page_numbers ul li a,
 	.page-link span,
 	.page-link a span {
@@ -3779,15 +3794,15 @@ Responsive Style
 		font-size: 12px;
 		line-height: 24px;
 		padding: 0 10px;
-	}	
-	#nav-below .wp-pagenavi a, 
+	}
+	#nav-below .wp-pagenavi a,
 	#nav-below .wp-pagenavi span,
 	.page-link span {
 		margin: 0 0 0 5px;
-	}	
+	}
 	#respond input[type="text"],
 	#respond input[type="email"],
-	#respond input[type="url"],	
+	#respond input[type="url"],
 	#respond textarea {
 	    -moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
@@ -3815,7 +3830,7 @@ Responsive Style
 		margin: 0 0 5px 10px;
 	}
 	#site-generator {
-		padding: 1em 0.5em;	
+		padding: 1em 0.5em;
 	}
 	.woocommerce #content ul.products li {
 		margin-right: 0;
@@ -3867,16 +3882,16 @@ Responsive Style
 	}
 	.entry-meta {
 		font-size: 12px;
-	}	
+	}
 	#site-generator {
 		font-size: 11px;
-	}		
-	#slider-wrap a, 
+	}
+	#slider-wrap a,
 	#slider-wrap .featured-img span {
 		padding: 10px;
 	}
 	#sidebar-header-right {
-		margin-top: 20px;	
+		margin-top: 20px;
 	}
 	#slider-wrap .featured-text {
 		padding: 0 10px 10px;
@@ -3898,7 +3913,7 @@ Responsive Style
 }
 
 @media screen and (max-width: 640px) {
-	.site, 
+	.site,
 	.one-column .site {
 		width: 460px;
 	}
@@ -3928,7 +3943,7 @@ Responsive Style
 	}
 	.error404 #main #s {
 	    width: 80%;
-	}		
+	}
 	/* Controllers */
 	#controllers {
 		display: block;
@@ -3944,7 +3959,7 @@ Responsive Style
 		margin: 0 3px;
 		overflow: hidden;
 		display: inline-block;
-		background-color: #b7b7b7;	
+		background-color: #b7b7b7;
 		-webkit-border-radius: 6px;
 		-moz-border-radius: 6px;
 		border-radius: 6px;
@@ -3952,7 +3967,7 @@ Responsive Style
 	}
 	#controllers a:hover, #controllers a.active {
 		background-color:#000;
-	}	
+	}
 	.widget_search #s {
 		width: 85%;
 	}
@@ -3971,7 +3986,7 @@ Responsive Style
 	}
 	#site-description {
 		font-size: 12px;
-	}	
+	}
 	#site-generator {
 		font-size: 10px;
 	}
@@ -3994,10 +4009,10 @@ Responsive Style
 		padding: 15px 15px 0;
 	}
 	#header-content {
-		margin: 0 15px;	
+		margin: 0 15px;
 	}
 	#header-content {
-		padding: 15px 0;	
+		padding: 15px 0;
 	}
 	.page-header,
 	.breadcrumbs,
@@ -4008,8 +4023,8 @@ Responsive Style
 	#site-generator {
 		padding: 15px;
 	}
-	#slider,	
-	.hentry, 
+	#slider,
+	.hentry,
 	.no-results,
 	#author-info,
 	#disqus_thread,
@@ -4017,7 +4032,7 @@ Responsive Style
 	.page-header,
 	.breadcrumbs,
 	p,
-	ul, 
+	ul,
 	ol,
 	.home #content nav,
 	.archive #content nav,
@@ -4033,7 +4048,7 @@ Responsive Style
 	.commentlist .children li.comment {
 		margin-top: 15px;
 	}
-	.hentry, 
+	.hentry,
 	.no-sidebar .hentry,
 	.no-sidebar.full-width .hentry,
 	.one-column.no-sidebar .hentry,
@@ -4074,19 +4089,19 @@ Responsive Style
 	.widget_search #s {
 		width: 80%;
 	}
-	.entry-content img, 
+	.entry-content img,
 	.comment-content img,
 	img.size-full,
 	img.size-large,
 	img.wp-post-image {
 		max-width: 92%;
    	 	padding: 3%;
-	}	
+	}
 	#slider,
-	.hentry, 
-	.no-results, 
-	#author-info, 
-	#disqus_thread, 
+	.hentry,
+	.no-results,
+	#author-info,
+	#disqus_thread,
 	#content .error404,
 	.widget {
 	    border-radius: 0;
@@ -4096,10 +4111,10 @@ Responsive Style
 		padding: 10px 0 0;
 	}
 	#header-content {
-		margin: 0 10px;	
+		margin: 0 10px;
 	}
 	#header-content {
-		padding: 10px 0;	
+		padding: 10px 0;
 	}
 	.page-header,
 	.breadcrumbs,
@@ -4109,8 +4124,8 @@ Responsive Style
 	#site-generator {
 		padding: 10px;
 	}
-	#slider,	
-	.hentry, 
+	#slider,
+	.hentry,
 	.no-results,
 	#author-info,
 	#disqus_thread,
@@ -4118,7 +4133,7 @@ Responsive Style
 	.page-header,
 	.breadcrumbs,
 	p,
-	ul, 
+	ul,
 	ol,
 	.home #content nav,
 	.archive #content nav,
@@ -4130,7 +4145,7 @@ Responsive Style
 	#supplementary .widget {
 		margin-bottom: 10px;
 	}
-	.hentry, 
+	.hentry,
 	.no-sidebar .hentry,
 	.no-sidebar.full-width .hentry,
 	.one-column.no-sidebar .hentry,
