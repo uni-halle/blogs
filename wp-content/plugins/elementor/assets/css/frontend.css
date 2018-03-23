@@ -1,4 +1,4 @@
-/*! elementor - v1.9.6 - 21-02-2018 */
+/*! elementor - v1.9.8 - 12-03-2018 */
 .dialog-widget-content {
   background-color: #fff;
   position: absolute;
@@ -1043,6 +1043,8 @@
     margin-right: 5px; }
   .elementor-button .elementor-button-text {
     display: inline-block; }
+  .elementor-button span {
+    text-decoration: inherit; }
 
 .elementor-element.elementor-button-info .elementor-button {
   background-color: #5bc0de; }
@@ -1078,18 +1080,17 @@
   color: #222222;
   line-height: 1; }
 
-.elementor-counter .elementor-counter-number-prefix {
+.elementor-counter .elementor-counter-number-prefix, .elementor-counter .elementor-counter-number-suffix {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  white-space: pre-wrap; }
+
+.elementor-counter .elementor-counter-number-prefix {
   text-align: right; }
 
 .elementor-counter .elementor-counter-number-suffix {
-  -webkit-box-flex: 1;
-  -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
   text-align: left; }
 
 .elementor-counter .elementor-counter-title {
