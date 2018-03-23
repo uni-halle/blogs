@@ -534,6 +534,12 @@ class Visual_Form_Builder_Form_Display {
 					break;
 
 				case 'address' :
+					// Get global settings
+					$vfb_settings 	= get_option( 'vfb-settings' );
+
+					// Settings - Place Address labels above fields
+					$settings_address_labels	= isset( $vfb_settings['address-labels'] ) ? false : true;
+
 					$address = '';
 
 					$address_parts = array(
@@ -563,8 +569,7 @@ class Visual_Form_Builder_Form_Display {
 					    )
 					);
 
-					$address_parts = apply_filters( 'vfb_address_labels', $address_parts, $form_id );
-
+					$address_parts   = apply_filters( 'vfb_address_labels', $address_parts, $form_id );
 					$label_placement = apply_filters( 'vfb_address_labels_placement', $settings_address_labels, $form_id );
 
 					$placement_bottom = ( $label_placement ) ? '<label for="%2$s-%4$s">%5$s</label>' : '';
@@ -815,7 +820,7 @@ class Visual_Form_Builder_Form_Display {
 	 * @param  [type] $form_id [description]
 	 * @return [type]          [description]
 	 */
-	public function get_form( $form_id ) {
+	public static function get_form( $form_id ) {
 		global $wpdb;
 
 		$order = sanitize_sql_orderby( 'form_id DESC' );
@@ -832,7 +837,7 @@ class Visual_Form_Builder_Form_Display {
 	 * @param  [type] $form_id [description]
 	 * @return [type]          [description]
 	 */
-	public function get_fields( $form_id ) {
+	public static function get_fields( $form_id ) {
 		global $wpdb;
 
 		$order_fields = sanitize_sql_orderby( 'field_sequence ASC' );

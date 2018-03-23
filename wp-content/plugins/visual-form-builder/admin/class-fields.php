@@ -405,7 +405,8 @@ class Visual_Form_Builder_Admin_Fields {
 		            	<br />
 		                <select name="field_default-<?php echo $field->field_id; ?>" class="widefat" id="edit-form-item-default-<?php echo $field->field_id; ?>">
 		                <?php
-		                foreach ( $this->countries as $country ) {
+						$countries = include( VFB_WP_PLUGIN_DIR . '/inc/countries.php' );
+		                foreach ( $countries as $country ) {
 							echo '<option value="' . $country . '" ' . selected( $field->field_default, $country, 0 ) . '>' . $country . '</option>';
 						}
 						?>
