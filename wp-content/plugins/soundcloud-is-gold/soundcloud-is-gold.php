@@ -3,10 +3,11 @@
 Plugin Name: Soundcloud is Gold
 Plugin URI: http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin
 Description: <strong><a href="http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin">Soundcloud is gold</a></strong> integrates perfectly into wordpress. Select, set and add track, playlists or favorites to your post using the soundcloud player. Live Preview, easy, smart and straightforward. You can set default settings in the option page, choose your defaut soundcloud player (Standard, Artwork, Visual), its width, extra Css classes for you CSS lovers and your favorite colors. You'll still be able to set players to different settings before adding to your post if you fancy a one off change!
-Version: 2.4.3
+Version: 2.5
 Author: Thomas Michalak
 Author URI: http://www.mightymess.com/thomas-michalak
 License: GPL2 or Later
+Text Domain: soundcloud-is-gold
 */
 
 /*
@@ -26,6 +27,8 @@ define ('CLIENT_ID', '9UhNtlbTIh7V6YHJm9wwHgjCwd7t1xOk');
 
 require_once('soundcloud-is-gold-notice.php');
 require_once('soundcloud-is-gold-functions.php');
+require_once('soundcloud-is-gold-widget.php');
+//require_once('soundcloud-is-gold-advance.php');
 
 /** Get Plugin Version **/
 function get_soundcloud_is_gold_version() {
@@ -41,9 +44,8 @@ function soundcloud_is_gold_admin_init() {
     wp_register_script('soundcloud-is-gold-js', SIG_PLUGIN_DIR.'soundcloud-is-gold-js.js', array('jquery', 'farbtastic'));
     wp_register_script('carouFredSel', SIG_PLUGIN_DIR.'includes/jquery.carouFredSel-5.5.0-packed.js', array('jquery'));
     wp_register_style('soundcloud-is-gold-css', SIG_PLUGIN_DIR.'soundcloud-is-gold-css.css');
-    //wp_register_style('ChunkFive', SIG_PLUGIN_DIR.'includes/ChunkFive-fontfacekit/stylesheet.css');
-    //wp_register_style('Quicksand', SIG_PLUGIN_DIR.'includes/Quicksand-fontfacekit/stylesheet.css');
     wp_register_style('soundcloud-is-gold-editor-css', SIG_PLUGIN_DIR.'tinymce-plugin/soundcloud-is-gold-editor_plugin.css');
+		load_plugin_textdomain( 'soundcloud-is-gold' );
 }
 //Plugin option scripts
 function soundcloud_is_gold_option_scripts() {
@@ -69,12 +71,14 @@ function soundcloud_is_gold_menu() {
 	add_action( "admin_print_scripts-$soundcloudIsGoldPage", 'soundcloud_is_gold_option_scripts' ); // Add script
 	add_action( "admin_print_styles-$soundcloudIsGoldPage", 'soundcloud_is_gold_option_styles' ); // Add Style
 	//add_action( "admin_print_styles-$soundcloudIsGoldPage", 'soundcloud_is_gold_option_fonts' ); // Add Fonts
-	//Development
-	/*$soundcloudIsGoldDevPage = add_submenu_page( __FILE__, 'Soundcloud is Gold: Dev', 'Development Options', 'activate_plugins', 'soundcloud_is_gold_dev_options', soundcloud_is_gold_dev_options );
-	add_action( "admin_print_scripts-$soundcloudIsGoldDevPage", 'soundcloud_is_gold_option_scripts' ); // Add script
-	add_action( "admin_print_styles-$soundcloudIsGoldDevPage", 'soundcloud_is_gold_option_styles' ); // Add Style
-	add_action( "admin_print_styles-$soundcloudIsGoldDevPage", 'soundcloud_is_gold_option_fonts' ); // Add Fonts
+
+	//Advance
+	/*$soundcloudIsGoldAdvancePage = add_submenu_page( __FILE__, 'Soundcloud is Gold: Advance', 'Advance Options', 'activate_plugins', 'soundcloud_is_gold_advance_options', soundcloud_is_gold_advance_options );
+	add_action( "admin_print_scripts-$soundcloudIsGoldAdvancePage", 'soundcloud_is_gold_option_scripts' ); // Add script
+	add_action( "admin_print_styles-$soundcloudIsGoldAdvancePage", 'soundcloud_is_gold_option_styles' ); // Add Style
+	add_action( "admin_print_styles-$soundcloudIsGoldAdvancePage", 'soundcloud_is_gold_option_fonts' ); // Add Fonts
 	*/
+
 }
 
 /*** Link to Settings from the plugin Page ***/
@@ -102,9 +106,9 @@ function soundcloud_is_gold_add_defaults() {
 		if(empty($tmpOptions)) {
 					//Set default Users and Pick a random user to be active
 					$soundcloudIsGoldDefaultUsers = array(
-									    'anna-chocola' => array('anna-chocola', 'https://i1.sndcdn.com/avatars-000009470567-spqine-large.jpg?4387aef'),
-									    't-m' => array('t-m', 'https://i1.sndcdn.com/avatars-000002680779-fkvvpj-large.jpg?4387aef'),
-									    'my-disco-nap' => array('my-disco-nap', 'https://i1.sndcdn.com/avatars-000012680897-foqv41-large.jpg?b9f92e9')
+									    '2708382' => array('2708382', 'anna-chocola', 'https://i1.sndcdn.com/avatars-000009470567-spqine-large.jpg?4387aef'),
+									    '150596' => array('150596', 't-m', 'https://i1.sndcdn.com/avatars-000002680779-fkvvpj-large.jpg?4387aef'),
+									    '3140049' => array('3140049', 'my-disco-nap', 'https://i1.sndcdn.com/avatars-000012680897-foqv41-large.jpg?b9f92e9')
 									    );
 					$soundcloudIsGoldDefaultUser = $soundcloudIsGoldDefaultUsers[array_rand($soundcloudIsGoldDefaultUsers, 1)][0];
 					//Set Default Settings
@@ -185,71 +189,35 @@ function soundcloud_is_gold_options(){
     }
     $soundcouldMMShortcode = '[soundcloud id='.$soundcouldMMId.']';
 
+		//Output Options header
+		soundcloud_options_header();
 ?>
-
-    <script type="text/javascript">
-	//Set default Soundcloud Is Gold Settings
-        <?php get_soundcloud_is_gold_default_settings_for_js(); ?>
-    </script>
-
-
-    <!-- XXS test -->
-    <!-- <form method="POST" action="
-http://localhost/~thomas/Others/dev/wp-admin/admin-ajax.php?action=get_soundcloud_player" />
-<input type="text" name="id" value='"></param></object><img src=xonerror=alert(1) />' />
-<input type="text" name="format" value="1">
-<input type="submit" name="submit" />
-</form> -->
-
-  <div class="soundcloudMMWrapper soundcloudMMOptions soundcloudMMMainWrapper">
-		<!-- Survey -->
-		<a href="https://mightymess.typeform.com/to/Bg82kF" id="soundcloudMMSurvey" class="button-primary" target="_blank" >Help me make a better plugin by taking this super short survey ></a>
-		<!-- Header -->
-		<div id="soundcloudMMTop">
-			<div class="leftPart">
-				<img id="soundcloudMMPowered" width="104" height="32" src="https://developers.soundcloud.com/assets/powered_by_black-4339b4c3c9cf88da9bfb15a16c4f6914.png">
-				<h1>SoundCloud is gold <small>v<?php echo get_soundcloud_is_gold_version($options) ?></small></h1>
-				<p>This is your main options page. You can set a default styling for your site and link to your soundcloud accounts.</p>
-			</div>
-			<div class="rightPart">
-				<ul id="soundcloudMMExtras" class="">
-						<li><a href="https://wordpress.org/tags/soundcloud-is-gold?forum_id=10" title="Soundcloud is Gold Forum" class="soundcloudMMBt button-primary">Support Forum</a></li>
-						<li>
-						<form class="soundcloudMMBtForm" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-										<input type="hidden" name="cmd" value="_s-xclick">
-										<input type="hidden" name="hosted_button_id" value="9VGA6PYQWETGY">
-										<input type="submit" name="submit" value="Please help with a donation" class="soundcloudMMBt button-primary" alt="PayPal - The safer, easier way to pay online.">
-										<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
-								</form>
-						</li>
-				</ul>
-			</div>
-		</div>
-		<!-- Main -->
-        <div id="soundcloudMMMain" class="">
             <form method="post" action="options.php" id="soundcloudMMMainForm" name="soundcloudMMMainForm" class="">
 	    <p class="hidden soundcloudMMId" id="soundcloudMMId-<?php echo $soundcouldMMId ?>"><?php echo $soundcouldMMId ?></p>
             <?php settings_fields('soundcloud_is_gold_options'); ?>
                 <ul id="soundcloudMMSettings">
                     <!-- Username -->
-		    <li class="soundcloudMMBox"><label class="optionLabel">User Name</label>
+		    <li class="soundcloudMMBox"><label class="optionLabel"><?php _e('User Name', 'soundcloud-is-gold') ?></label>
 			<?php get_soundcloud_is_gold_username_interface($options, $soundcloudIsGoldUsers) ?>
 		    </li>
 		    <!-- Default Settings -->
                     <li class="soundcloudMMBox">
-												<label class="optionLabel">Default Settings</label>
+												<label class="optionLabel"><?php _e('Default Settings', 'soundcloud-is-gold') ?></label>
                         <ul class="subSettings checkboxes">
-                            <li><input type="checkbox" <?php echo (isset($soundcloudIsGoldSettings[0]) && $soundcloudIsGoldSettings[0]) ? 'checked="checked"' : ''?> name="soundcloud_is_gold_options[soundcloud_is_gold_settings][0]" value="true" class="soundcloudMMAutoPlay" id="soundcloudMMAutoPlay"/><label for="soundcloudMMAutoPlay">Play Automatically</label></li>
-                            <li><input type="checkbox" <?php echo (isset($soundcloudIsGoldSettings[1]) && $soundcloudIsGoldSettings[1]) ? 'checked="checked"' : ''?> name="soundcloud_is_gold_options[soundcloud_is_gold_settings][1]" value="true" class="soundcloudMMShowComments" id="soundcloudMMShowComments"/><label for="soundcloudMMShowComments">Show comments</label></li>
-			    									<li><input type="checkbox" <?php echo (isset($soundcloudIsGoldSettings[2]) && $soundcloudIsGoldSettings[2]) ? 'checked="checked"' : ''?> name="soundcloud_is_gold_options[soundcloud_is_gold_settings][2]" value="true" class="soundcloudMMShowArtwork" id="soundcloudMMShowArtwork"/><label for="soundcloudMMShowArtwork">Show Artwork</label></li>
-														<li><input type="checkbox" <?php echo (isset($soundcloudIsGoldSettings[3]) && $soundcloudIsGoldSettings[3]) ? 'checked="checked"' : ''?> name="soundcloud_is_gold_options[soundcloud_is_gold_settings][3]" value="true" class="soundcloudMMShowVisual" id="soundcloudMMShowVisual"/><label for="soundcloudMMShowVisual">Full Visual <small>(use soundcloud colors)</small></label></li>
-                        </ul>
+                            <li><input type="checkbox" <?php echo (isset($soundcloudIsGoldSettings[0]) && $soundcloudIsGoldSettings[0]) ? 'checked="checked"' : ''?> name="soundcloud_is_gold_options[soundcloud_is_gold_settings][0]" value="true" class="soundcloudMMAutoPlay" id="soundcloudMMAutoPlay"/><label for="soundcloudMMAutoPlay"><?php _e('Play Automatically', 'soundcloud-is-gold') ?></label></li>
+                            <li><input type="checkbox" <?php echo (isset($soundcloudIsGoldSettings[1]) && $soundcloudIsGoldSettings[1]) ? 'checked="checked"' : ''?> name="soundcloud_is_gold_options[soundcloud_is_gold_settings][1]" value="true" class="soundcloudMMShowComments" id="soundcloudMMShowComments"/><label for="soundcloudMMShowComments"><?php _e('Show comments', 'soundcloud-is-gold') ?></label></li>
+			    									<li><input type="checkbox" <?php echo (isset($soundcloudIsGoldSettings[2]) && $soundcloudIsGoldSettings[2]) ? 'checked="checked"' : ''?> name="soundcloud_is_gold_options[soundcloud_is_gold_settings][2]" value="true" class="soundcloudMMShowArtwork" id="soundcloudMMShowArtwork"/><label for="soundcloudMMShowArtwork"><?php _e('Show Artwork', 'soundcloud-is-gold') ?></label></li>
+												</ul>
+												<ul class="subSettings checkboxes">
+														<li><input type="checkbox" <?php echo (isset($soundcloudIsGoldSettings[3]) && $soundcloudIsGoldSettings[3]) ? 'checked="checked"' : ''?> name="soundcloud_is_gold_options[soundcloud_is_gold_settings][3]" value="true" class="soundcloudMMShowVisual" id="soundcloudMMShowVisual"/><label for="soundcloudMMShowVisual"><?php _e('Full Visual', 'soundcloud-is-gold') ?><small>(<?php _e('use soundcloud colors', 'soundcloud-is-gold') ?>)</small></label></li>
+														<li><input type="checkbox" <?php echo (isset($soundcloudIsGoldSettings[4]) && $soundcloudIsGoldSettings[4]) ? 'checked="checked"' : ''?> name="soundcloud_is_gold_options[soundcloud_is_gold_settings][4]" value="true" class="soundcloudMMSForceMini" id="soundcloudMMSForceMini"/><label for="soundcloudMMSForceMini"><?php _e('Force mini player', 'soundcloud-is-gold') ?><small>(<?php _e('Artwork and comments won\'t show', 'soundcloud-is-gold') ?>)</small></label></li>
+												</ul>
                     </li>
 		    <!-- Sizes -->
-                    <li class="soundcloudMMBox"><label class="optionLabel">Default Size</label>
+                    <li class="soundcloudMMBox"><label class="optionLabel"><?php _e('Default Sizes', 'soundcloud-is-gold') ?></label>
                         <ul id="soundcloudMMWidthSetting" class="subSettings texts">
                             <li>
-                                <input name="soundcloud_is_gold_options[soundcloud_is_gold_width_settings][type]" <?php echo ($soundcloudIsGoldWidthSettings['type'] == "wp") ? 'checked="checked"' : ''; ?> id="soundcloudMMWpWidth" value="wp" type="radio" class="soundcloudMMWpWidth soundcloudMMWidthType radio"/><label for="soundcloudMMWpWidth">Media Width</label>
+                                <input name="soundcloud_is_gold_options[soundcloud_is_gold_width_settings][type]" <?php echo ($soundcloudIsGoldWidthSettings['type'] == "wp") ? 'checked="checked"' : ''; ?> id="soundcloudMMWpWidth" value="wp" type="radio" class="soundcloudMMWpWidth soundcloudMMWidthType radio"/><label for="soundcloudMMWpWidth"><?php _e('Media Width', 'soundcloud-is-gold') ?></label>
                                 <select class="soundcloudMMInput soundcloudMMWidth" name="soundcloud_is_gold_options[soundcloud_is_gold_width_settings][wp]">
                                 <?php foreach(get_soundcloud_is_gold_wordpress_sizes() as $key => $soundcloudIsGoldMediaSize) : ?>
                                     <?php
@@ -261,31 +229,37 @@ http://localhost/~thomas/Others/dev/wp-admin/admin-ajax.php?action=get_soundclou
                                 </select>
                             </li>
                             <li>
-                                <input name="soundcloud_is_gold_options[soundcloud_is_gold_width_settings][type]" <?php echo ($soundcloudIsGoldWidthSettings['type'] == "custom") ? 'checked="checked"' : ''; ?> id="soundcloudMMCustomWidth" value="custom" type="radio" class="soundcloudMMCustomWidth soundcloudMMWidthType radio"/><label for="soundcloudMMCustomWidth">Custom Width</label>
+                                <input name="soundcloud_is_gold_options[soundcloud_is_gold_width_settings][type]" <?php echo ($soundcloudIsGoldWidthSettings['type'] == "custom") ? 'checked="checked"' : ''; ?> id="soundcloudMMCustomWidth" value="custom" type="radio" class="soundcloudMMCustomWidth soundcloudMMWidthType radio"/><label for="soundcloudMMCustomWidth"><?php _e('Custom Width', 'soundcloud-is-gold') ?></label>
                                 <input name="soundcloud_is_gold_options[soundcloud_is_gold_width_settings][custom]" id="soundcloudMMCustomSelectedWidth" class="soundcloudMMInput soundcloudMMWidth soundcloudMMCustomSelectedWidth" type="text" name="soundcloud_is_gold_options[soundcloudMMCustomSelectedWidth]" value="<?php echo $soundcloudIsGoldWidthSettings['custom'] ?>" />
                             </li>
-														<li>
-															<input type="checkbox" <?php echo (isset($soundcloudIsGoldHeightSettings['square']) && $soundcloudIsGoldHeightSettings['square']) ? 'checked="checked"' : ''?> name="soundcloud_is_gold_options[soundcloud_is_gold_height_settings][square]" value="true" class="soundcloudMMSquareHeight" id="soundcloudMMSquareHeight"/><label for="soundcloudMMSquareHeight">Force Visual Square</label>
-														</li>
                         </ul>
+												<ul class="subSettings texts">
+													<li>
+															<label><?php _e('Playlist Height', 'soundcloud-is-gold') ?><small>(<?php _e('leave empty for default, can\'t be less than 300px', 'soundcloud-is-gold') ?></small></label>
+															<input id="soundcloudMMPlaylistHeight" class="soundcloudMMInput soundcloudMMWidth soundcloudMMPlaylistHeight" type="text" name="soundcloud_is_gold_options[soundcloud_is_gold_height_settings][playlist]" value="<?php echo (isset($soundcloudIsGoldHeightSettings['playlist'])) ? $soundcloudIsGoldHeightSettings['playlist'] : ''?>" />
+													</li>
+													<li>
+														<input type="checkbox" <?php echo (isset($soundcloudIsGoldHeightSettings['square']) && $soundcloudIsGoldHeightSettings['square']) ? 'checked="checked"' : ''?> name="soundcloud_is_gold_options[soundcloud_is_gold_height_settings][square]" value="true" class="soundcloudMMSquareHeight" id="soundcloudMMSquareHeight"/><label for="soundcloudMMSquareHeight"><?php _e('Force Square Player', 'soundcloud-is-gold') ?><small>(<?php _e('Visual', 'soundcloud-is-gold') ?>)</small></label>
+													</li>
+												</ul>
                     </li>
 		    <!-- Color and Classes -->
-                    <li class="soundcloudMMBox"><label class="optionLabel">Extras</label>
+                    <li class="soundcloudMMBox"><label class="optionLabel"><?php _e('Extras', 'soundcloud-is-gold') ?></label>
                         <ul class="subSettings texts">
                             <li>
-                                <label>Color</label>
+                                <label><?php _e('Color', 'soundcloud-is-gold') ?></label>
                                 <div class="soundcloudMMColorPickerContainer" id="soundcloudMMColorPickerContainer">
-                                    <input type="text" class="soundcloudMMInput soundcloudMMColor" id="soundcloudMMColor" name="soundcloud_is_gold_options[soundcloud_is_gold_color]" value="<?php echo $soundcloudIsGoldColor ?>" style="background-color:<?php echo $soundcloudIsGoldColor ?>"/><a href="#" class="soundcloudMMBt soundcloudMMBtSmall inline blue soundcloudMMRounder soundcloudMMResetColor">reset to default</a>
-                                    <div id="soundcloudMMColorPicker" class="shadow soundcloudMMColorPicker"><div id="soundcloudMMColorPickerSelect" class="soundcloudMMColorPickerSelect"></div><a id="soundcloudMMColorPickerClose" class="blue soundcloudMMBt soundcloudMMColorPickerClose">done</a></div>
+                                    <input type="text" class="soundcloudMMInput soundcloudMMColor" id="soundcloudMMColor" name="soundcloud_is_gold_options[soundcloud_is_gold_color]" value="<?php echo $soundcloudIsGoldColor ?>" style="background-color:<?php echo $soundcloudIsGoldColor ?>"/><a href="#" class="soundcloudMMBt soundcloudMMBtSmall inline blue soundcloudMMRounder soundcloudMMResetColor"><?php _e('reset to default', 'soundcloud-is-gold') ?></a>
+                                    <div id="soundcloudMMColorPicker" class="shadow soundcloudMMColorPicker"><div id="soundcloudMMColorPickerSelect" class="soundcloudMMColorPickerSelect"></div><a id="soundcloudMMColorPickerClose" class="blue soundcloudMMBt soundcloudMMColorPickerClose"><?php _e('done', 'soundcloud-is-gold') ?></a></div>
                                 </div>
                             </li>
                             <li class="clear">
-                                <label>CSS Classes <small>(no commas)</small></label><input class="soundcloudMMInput soundcloudMMClasses" type="text" name="soundcloud_is_gold_options[soundcloud_is_gold_classes]" value="<?php echo $soundcloudIsGoldClasses ?>" />
+                                <label><?php _e('CSS Classes', 'soundcloud-is-gold') ?><small>(<?php _e('no commas', 'soundcloud-is-gold') ?>)</small></label><input class="soundcloudMMInput soundcloudMMClasses" type="text" name="soundcloud_is_gold_options[soundcloud_is_gold_classes]" value="<?php echo $soundcloudIsGoldClasses ?>" />
                             </li>
                         </ul>
                     </li>
 		    <!-- Preview -->
-                    <li class="soundcloudMMBox"><label class="optionLabel previewLabel">Live Preview <small>(your latest track)</small></label>
+                    <li class="soundcloudMMBox"><label class="optionLabel previewLabel"><?php _e('Live Preview', 'soundcloud-is-gold') ?><small>(<?php _e('your latest track', 'soundcloud-is-gold') ?>)</small></label>
                         <?php if($soundcloudIsGoldApiResponse['response']) :?>
                         <p class="soundcloudMMEmbed soundcloudMMEmbedOptions" style="text-align:center;">
 			    							<!-- Soundcloud Preview here -->
@@ -293,18 +267,18 @@ http://localhost/~thomas/Others/dev/wp-admin/admin-ajax.php?action=get_soundclou
                         <p class="soundcloudMMLoading soundcloudMMPreviewLoading" style="display:none"></p>
                         <?php else : ?>
                         <!-- Error getting Json -->
-                        <div class="soundcloudMMJsonError"><p><?php echo $soundcloudIsGoldApiResponse['error'] ? $soundcloudIsGoldApiResponse['error'] : "Oups! There's been a error while getting the tracks from soundcloud. Please reload the page."?></p></div>
+                        <div class="soundcloudMMJsonError"><p><?php echo $soundcloudIsGoldApiResponse['error'] ? $soundcloudIsGoldApiResponse['error'] : "__('Oups! There's been a error while getting the tracks from soundcloud. Please reload the page.', 'soundcloud-is-gold')"?></p></div>
                         <?php endif; ?>
                     </li>
                 </ul>
 		<!-- Submit -->
                 <p id="soundcloudMMSubmit"><input type="submit" name="Submit" value="<?php _e('Save Your SoundCloud Settings') ?>" class="soundcloudMMButton-primary button-primary"/></p>
 	    </form>
-        </div>
-        <p id="disclaimer">SoundCloud and SoundCloud Logo are trademarks of SoundCloud Ltd.</p>
-    </div>
 
     <?php
+
+		//Output Options Footer
+		soundcloud_options_footer();
 }
 
 

@@ -176,7 +176,7 @@ jQuery(document).ready(function($){
 	$('input[type=checkbox], input[type=radio], .soundcloudMMWPSelectedWidth, .soundcloudMMColorPickerClose', this).click(function(){
 	    updateMe(mySelf, true);
 	});
-	$('.soundcloudMMCustomSelectedWidth, .soundcloudMMClasses', this).focusout(function(){
+	$('.soundcloudMMCustomSelectedWidth, .soundcloudMMPlaylistHeight, .soundcloudMMClasses', this).focusout(function(){
 	    updateMe(mySelf, true);
 	});
 	//Initialize color Picker
@@ -203,12 +203,16 @@ jQuery(document).ready(function($){
 	else artwork = true;
   if($('.soundcloudMMShowVisual:checked', parent).val() == undefined) visual = false;
 	else visual = true;
+  if($('.soundcloudMMSForceMini:checked', parent).val() == undefined) mini = false;
+	else mini = true;
   //Set width
 	if($(".soundcloudMMWpWidth", parent).is(":checked")) width = $('.soundcloudMMWidth option:selected', parent).val();
 	if($(".soundcloudMMCustomWidth", parent).is(":checked")) width = $('input.soundcloudMMWidth', parent).val();
   //Set height
   if($('.soundcloudMMSquareHeight:checked', parent).val() == undefined) height = false;
 	else height = true;
+  //Set playlist height
+  playlistHeight = $('.soundcloudMMPlaylistHeight', parent).val();
   //Class
 	classes = $('.soundcloudMMClasses', parent).val();
 	//Color
@@ -217,10 +221,11 @@ jQuery(document).ready(function($){
 	//Format
 	if($('.soundcloudMMWrapper').hasClass('playlists')) format = 'playlists';
 	else format = 'tracks';
+
 	//Set Shortocode Attributes
-	if(!parent.hasClass('soundcloudMMOptions')) shortcode(parent, autoPlay, comments, width, height, classes, color, artwork, visual, format);
+	if(!parent.hasClass('soundcloudMMOptions')) shortcode(parent, autoPlay, comments, width, height, playlistHeight, classes, color, artwork, visual, mini, format);
   //Refresh Preview if requested
-	if(refresh) preview(parent, user, autoPlay, comments, width, height, classes, color, artwork, visual, format);
+	if(refresh) preview(parent, user, autoPlay, comments, width, height, playlistHeight, classes, color, artwork, visual, mini, format);
 
    };
 
@@ -247,14 +252,16 @@ jQuery(document).ready(function($){
     /********************************************/
     /**               SHORTCODE                **/
     /********************************************/
-    function shortcode(parent, autoPlay, comments, width, height, classes, color, artwork, visual, format){
+    function shortcode(parent, autoPlay, comments, width, height, playlistHeight, classes, color, artwork, visual, mini, format){
         var shortcode = "soundcloud id='"+getID($('.soundcloudMMId', parent))+"'";
 	      if(comments != soundcloudIsGoldComments_default) shortcode += " comments='"+comments+"'";
 	      if(artwork != soundcloudIsGoldArtwork_default) shortcode += " artwork='"+artwork+"'";
         if(visual != soundcloudIsGoldVisual_default) shortcode += " visual='"+visual+"'";
+        if(mini != soundcloudIsGoldMini_default) shortcode += " mini='"+mini+"'";
         if(autoPlay != soundcloudIsGoldAutoPlay_default) shortcode += " autoPlay='"+autoPlay+"'";
         if(width != soundcloudIsGoldWidth_default) shortcode += " width='"+width+"'";
         if(height != soundcloudIsGoldHeight_default) shortcode += " height='"+height+"'";
+        if(playlistHeight != soundcloudIsGoldPlaylistHeight_default) shortcode += " playlistHeight='"+playlistHeight+"'";
         if(classes != soundcloudIsGoldClasses_default) shortcode += " classes='"+classes+"'";
         if(color != soundcloudIsGoldColor_default) shortcode += " color='"+color+"'";
 	      if(format != 'tracks') shortcode += " format='playlist'";
@@ -266,12 +273,14 @@ jQuery(document).ready(function($){
     /********************************************/
     /**                PREVIEW                 **/
     /********************************************/
-    function preview(parent, user, autoPlay, comments, width, height, classes, color, artwork, visual, format){
+    function preview(parent, user, autoPlay, comments, width, height, playlistHeight, classes, color, artwork, visual, mini, format){
   	//Animate transition
     //Set Height
     newHeight = '450';
+    if(playlistHeight != '' && format == 'playlist') newHeight = playlistHeight;
   	if(format == 'tracks') newHeight = '166';
     if(visual == 'true' && height == 'true') newHeight = '450';
+    if(format == 'tracks' && mini == 'true') newHeight = '20';
 
   	//Set request
   	var myData = {
@@ -283,8 +292,10 @@ jQuery(document).ready(function($){
         autoPlay: autoPlay,
   	    artwork: artwork,
         visual: visual,
+        mini: mini,
   	    width: width,
         height: height,
+        playlistHeight: playlistHeight,
   	    classes: classes,
   	    color: color,
   	    format: format

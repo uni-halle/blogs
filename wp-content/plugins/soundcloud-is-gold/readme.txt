@@ -1,61 +1,68 @@
 === SoundCloud Is Gold ===
-Contributors: Thomas Michalak
-Donate link: http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin
-Tags: soundcloud, simple, shortcode, music, sound
+Contributors: realtm
+Donate link: https://www.paypal.com/donate/?token=BWzoCeVKupkWFJQ7nIA-0il0ndBxJOConYsL8hEYVgQHTMPaKM6bjYu0GqHO7aE2j0px_m
+Tags: soundcloud, simple, shortcode, music, sound, podcasts, widget
 Requires at least: 3.2
-Tested up to: 4.7.2
-Stable tag: 2.4.3
+Tested up to: 4.9.4
+Stable tag: 2.5
 
-Browse through your soundcloud tracks, playlists and favorites. Add tracks, playlists and favorites to your posts. Live preview, easy to use.
+Browse and insert Soundcloud tracks, playlists and favourites to your posts. Live preview and customise your player to fit your website's design.
 
 == Description ==
 
-**The only way to a create a better plugin is to listen to you, the users. I created a super short survey with questions around possible new features and asking what you like or hate about the plugin. It’s very short and only take a few minutes at most. [https://mightymess.typeform.com/to/Bg82kF](https://mightymess.typeform.com/to/Bg82kF), Thank you for your support**
+Browse and insert your or someone else tracks, playlists and favourites to your posts using SoundCloud's official player. The live preview makes it easy to see how customising your player will fit perfectly with your website’s design.
 
-**New Widget to display latest and random track, favorites or sets for one user, multiple users or random users.**
+It’s smart, secure and just works.
 
-**Soundcloud is Gold** integrates perfectly into wordpress. Browse through your soundcloud tracks, playlists and favorites from the 'Soundcloud is gold' tab in the post's 'upload media' popup window. Select, set and add track, playlists, favorites to your post using the soundcloud player. Live Preview, easy, smart and straightforward.
-You can set default settings in the option page, choose your defaut soundcloud player style, it's width, add extra classes for you CSS lovers, show comments, autoplay and set your favorite color.
-You'll also be able to set players to different settings before adding to your post if you fancy a one off change.
+You can set a default style for all players but if needed, you will be able to tweak the styling for one particular player. Soundcloud is Gold is currently helping 10,000 music lovers getting their work out there!
 
-**Save multiple users, very useful for labels, collectives or artists with many projects.**
+&nbsp;
 
-**Soundcloud is Gold** use a shortcode but the "Soundcloud is Gold" tab will write it for you dynamically as you select parameters, and on top of this it will provide a nice live preview of your player so you know what does what. When done just press the 'insert soundcloud player' and it will added to your post just like when you're adding a photo or gallery.
+>All you need from a Soundcloud Plugin - Easy to install and to set up, good looking in both widget and full-width style.
+>⭐️⭐️⭐️⭐️⭐️ - @goamazinghostel - [read full review](https://wordpress.org/support/topic/all-you-need-from-a-soundcloud-plugin/)
 
-If you love it please rate it! If you use it and want to help, [donations are always welcomed](http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin) or you could like, tweet or spread the love on your blog ;)
+&nbsp;
 
-Latest developments updates on twitter: [#soundcloudisgold](https://twitter.com/#!/search/realtime/%23soundcloudisgold) or follow me on [twitter](http://twitter.com/#!/mighty_mess)
+>Works Perfectly. This plugin made adding Soundcloud a trivial effort.
+>⭐️⭐️⭐️⭐️⭐️ - @fssbob - [read full review](https://wordpress.org/support/topic/works-perfectly-1037/)
 
-Check out my [TM soundcloud profile](http://www.soundcloud.com/t-m), more [mighty mess](http://www.mightymess.com).
+&nbsp;
 
-= Features =
+== Top Features ==
 
-* Browse through your soundcloud tracks, sets and favorites from a tab in the media upload window (see screenshot), no need to go back and forth between soundcloud and your website.
-* Save multiple users, very useful for labels, collectives or artists with many projects
-* Live Preview in the Tab, see what does what instantly (see screenshot).
-* Integrates perfectly with wordpress media upload by using the same listing style that you get with the images (see screenshot).
-* See track's info directly in the tab (description, url, cover, etc...).
-* Set default settings from the option page (see screenshot):
+* **Browse** through your or someone lese soundcloud tracks, sets and favourites from a tab in the media upload window, no need to go back and forth between Soundcloud and your website.
+* **Save multiple users**, very useful for labels, collectives or artists with many projects
+* **Live Preview** let you see what does what instantly.
+* **Integrates perfectly** with wordpress media upload by using the same listing style that you get with the images.
+* **Plugin construct the shortode for you**, no need to remember any crasy syntax (but you can still use the shortcode manually if needed).
+* **Widget** for showing the latest or random tracks, favourites or sets for one user, multiple users or random users.
+* **Track's info** displayed directly in the tab (description, url, cover, etc...).
+* Default settings from the option page (see screenshot):
     * Default player type (Standard, Artwork, Visual)
     * Width
     * Extra Classes for the div that wraps around the player
     * Auto Play
     * Show/Hide Comments
-    * Player's Colors
-* Use shortcode
-* Plugin construct shortode for you, no need to remember any syntax.
-* Styled sortcode for neat layout in your editor.
+    * Player's Colours
+* Styled sortcode in editor for neat layout.
 * Implement Soundcloud Html5 player.
-* Widget for showing latest and random track, favorites or sets for one user, multiple users or random users.
 * Follow WP developpers guidelines (enqueue scripts and styles just for the plugin, clean code, commented, secure and leave no trace when uninstall ).
 * https support
 
-= Advantages against pasting embed code from soundcloud =
 
-* By changing the main settings in the options, all players on your site using the default settings will change. If green isn't trendy anymore and black is the new white, it won't be a problem and you keep your street credibility safe.
-* If Soundcloud update their player or release a even cooler new player that let you scratch your track while streaming to google+, I will most defenetly update the plugin to use those new features.
+= Advantages against pasting embed code from soundcloud and other plugins =
 
-That's just my opinion of course...
+* By changing the main settings in the options, all players on your site using the default settings will change. If green isn't trendy anymore and purple is the new orange, it won't be a problem and you will keep your street credibility.
+* If Soundcloud update their player or release an even cooler new player that let you scratch your track while streaming to snapchat, I will most defenetly update the plugin to use those new features.
+* **Soundcloud is Gold** use a shortcode but the "Soundcloud is Gold" tab will write it for you dynamically as you select parameters, and on top of this it will provide a nice live preview of your player so you know what does what. When done just press the 'insert soundcloud player' and it will added to your post just like when you're adding a photo or gallery.
+
+
+
+== Keep it alive! ==
+
+If you love it please rate it! If you use it and want to help, [donations are always welcomed](http://www.mightymess.com/soundcloud-is-gold-wordpress-plugin) or you could like, tweet or spread the love on your blog ;)
+
+Latest developments updates on twitter: [#soundcloudisgold](https://twitter.com/#!/search/realtime/%23soundcloudisgold) or follow me on [twitter](http://twitter.com/#!/mighty_mess)
 
 
 == RoadMap ==
@@ -81,7 +88,8 @@ That's just my opinion of course...
 
 == Installation ==
 
-Just follow the usual procedure. Log on to your wordpress, go to plugin -> add new -> search 'Soundcloud is Gold' -> click install
+Just follow the usual procedure. Log on to your wordpress, go to plugin 👉 Add New 👉 search 'Soundcloud is Gold' 👉 click install.
+
 
 
 
@@ -138,15 +146,26 @@ Sometimes, I generally keep a eye on my plugin's forums and website's comments. 
 
 == Screenshots ==
 
-1. screenshot-1.png
-2. screenshot-2.png
-3. screenshot-3.png
-4. screenshot-4.png
-4. screenshot-5.png
-4. screenshot-6.png
+1. Main options
+2. Color Customisation
+3. Editor view
+4. Adding a Track
+4. Adding a Playlist
+4. Widget Options
 
 
 == Changelog ==
+
+= 2.5 =
+* 🤟 You can now change playlists' height!
+* 🤟 Mini player is back!! You can now Force the player height to show the Mini Player.
+* 🤟 When adding a user, if you put the whole url, the plugin will work out your username.
+* 🤖 Update how users are created for first time install so it's using user id and not username.
+* 🇫🇷 The plugin is translation ready!! To celebrate I've translated it in French (Should be approved soon).
+* ✍🏻 Updated the disclaimer message for people with no tracks/playlists.
+* ✍🏻 Minors text changes for labels and instructions.
+* 💥 Removed survey from the plugin admin panel. Thanks everyone!
+* 💥 Screenshots were removed from the actual plugin, so that's a smaller plugin for.
 
 = 2.4.3 =
 * Fixed apostrophe bug in the shortcode when trying to insert
