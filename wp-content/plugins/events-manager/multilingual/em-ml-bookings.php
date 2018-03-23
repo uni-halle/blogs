@@ -2,7 +2,7 @@
 class EM_ML_Bookings {
     
     public static function init(){
-        add_action('em_booking_add','EM_ML_Bookings::em_booking_add', 1, 3);
+        add_action('em_booking_save_pre','EM_ML_Bookings::em_booking_save_pre', 1, 1);
 		add_filter('em_event_get_bookings', 'EM_ML_Bookings::override_bookings',100,2);
 		add_action('em_booking_form_footer','EM_ML_Bookings::em_booking_form_footer',10,1);
 		add_action('em_booking_output_event', 'EM_ML_Bookings::em_booking_output_event',10,2);
@@ -12,11 +12,12 @@ class EM_ML_Bookings {
     /**
      * @param EM_Booking $EM_Booking
      */
-    public static function em_booking_add( $EM_Event, $EM_Booking ){
-        if( empty($EM_Booking->booking_id) && EM_ML::$current_language != EM_ML::$wplang ){
+    public static function em_booking_save_pre( $EM_Booking ){
+        if( empty($EM_Booking->booking_id) ){
             $EM_Booking->booking_meta['lang'] = EM_ML::$current_language;
         }
     }
+    public static function em_booking_add( $EM_Event, $EM_Booking ){ em_booking_save_pre($EM_Booking); }
 	
 	public static function override_bookings($EM_Bookings, $EM_Event){
 		if( !EM_ML::is_original($EM_Event) ){

@@ -683,7 +683,7 @@ jQuery(document).ready( function($){
 				return false;
 			}
 		}).data( "ui-autocomplete" )._renderItem = function( ul, item ) {
-			html_val = "<a>" + item.label + '<br><span style="font-size:11px"><em>'+ item.address + ', ' + item.town+"</em></span></a>";
+			html_val = "<a>" + em_esc_attr(item.label) + '<br><span style="font-size:11px"><em>'+ em_esc_attr(item.address) + ', ' + em_esc_attr(item.town)+"</em></span></a>";
 			return jQuery( "<li></li>" ).data( "item.autocomplete", item ).append(html_val).appendTo( ul );
 		};
 		jQuery('#em-location-reset a').click( function(){
@@ -845,7 +845,7 @@ var em_ajaxify = function(url){
 var em_maps_loaded = false;
 var maps = {};
 var maps_markers = {};
-var infowindow;
+var infoWindow;
 //loads maps script if not already loaded and executes EM maps script
 function em_maps_load(){
 	if( !em_maps_loaded ){
@@ -942,13 +942,13 @@ function em_maps_load_location(el){
 	};
 	jQuery(document).triggerHandler('em_maps_location_marker_options', marker_options);
 	maps_markers[map_id] = new google.maps.Marker(marker_options);
-	infowindow = new google.maps.InfoWindow({ content: jQuery('#em-location-map-info-'+map_id+' .em-map-balloon').get(0) });
-	infowindow.open(maps[map_id],maps_markers[map_id]);
+	infoWindow = new google.maps.InfoWindow({ content: jQuery('#em-location-map-info-'+map_id+' .em-map-balloon').get(0) });
+	infoWindow.open(maps[map_id],maps_markers[map_id]);
 	maps[map_id].panBy(40,-70);
 	
 	//JS Hook for handling map after instantiation
 	//Example hook, which you can add elsewhere in your theme's JS - jQuery(document).bind('em_maps_location_hook', function(){ alert('hi');} );
-	jQuery(document).triggerHandler('em_maps_location_hook', [maps[map_id], infowindow, maps_markers[map_id], map_id]);
+	jQuery(document).triggerHandler('em_maps_location_hook', [maps[map_id], infoWindow, maps_markers[map_id], map_id]);
 	//map resize listener
 	jQuery(window).on('resize', function(e) {
 		google.maps.event.trigger(maps[map_id], "resize");
@@ -978,25 +978,22 @@ function em_maps() {
 			if( !(location_latitude == 0 && location_longitude == 0) ){
 				var position = new google.maps.LatLng(location_latitude, location_longitude); //the location coords
 				marker.setPosition(position);
-				var mapTitle = (jQuery('input#location-name').length > 0) ? jQuery(jQuery.parseHTML(jQuery('input#location-name').val())).text():jQuery('input#title').val();
-				var mapAddress = jQuery('#location-address').val();
-				var mapTown = jQuery('#location-town').val();
-				marker.setTitle( jQuery('input#location-name input#title, #location-select-id').first().val() );
+				var mapTitle = (jQuery('input#location-name').length > 0) ? jQuery('input#location-name').val():jQuery('input#title').val();
+				mapTitle = em_esc_attr(mapTitle);
+				marker.setTitle( mapTitle );
 				jQuery('#em-map').show();
 				jQuery('#em-map-404').hide();
 				google.maps.event.trigger(map, 'resize');
 				map.setCenter(position);
 				map.panBy(40,-55);
 				infoWindow.setContent( 
-					'<div id="location-balloon-content"><strong>' + 
-					mapTitle + 
-					'</strong><br>' + 
-					jQuery(jQuery.parseHTML(mapAddress)).text() + 
-					'<br>' + jQuery(jQuery.parseHTML(mapTown)).text() + 
+					'<div id="location-balloon-content"><strong>' + mapTitle + '</strong><br>' + 
+					em_esc_attr(jQuery('#location-address').val()) + 
+					'<br>' + em_esc_attr(jQuery('#location-town').val()) + 
 					'</div>'
 				);
 				infoWindow.open(map, marker);
-				jQuery(document).triggerHandler('em_maps_location_hook', [map, infowindow, marker, 0]);
+				jQuery(document).triggerHandler('em_maps_location_hook', [map, infoWindow, marker, 0]);
 			} else {
     			jQuery('#em-map').hide();
     			jQuery('#em-map-404').show();
@@ -1019,7 +1016,7 @@ function em_maps() {
 						infoWindow.setContent( '<div id="location-balloon-content">'+ data.location_balloon +'</div>');
 						infoWindow.open(map, marker);
 						google.maps.event.trigger(map, 'resize');
-						jQuery(document).triggerHandler('em_maps_location_hook', [map, infowindow, marker, 0]);
+						jQuery(document).triggerHandler('em_maps_location_hook', [map, infoWindow, marker, 0]);
 					}else{
 						jQuery('#em-map').hide();
 						jQuery('#em-map-404').show();
@@ -1094,7 +1091,7 @@ function em_maps() {
 			}else{
 				refresh_map_location();
 			}
-			jQuery(document).triggerHandler('em_map_loaded', [map, infowindow, marker]);
+			jQuery(document).triggerHandler('em_map_loaded', [map, infoWindow, marker]);
 		}
 		//map resize listener
 		jQuery(window).on('resize', function(e) {
@@ -1110,10 +1107,15 @@ function em_maps() {
 function em_map_infobox(marker, message, map) {
   var iw = new google.maps.InfoWindow({ content: message });
   google.maps.event.addListener(marker, 'click', function() {
-	if( infowindow ) infowindow.close();
-	infowindow = iw;
+	if( infoWindow ) infoWindow.close();
+	infoWindow = iw;
     iw.open(map,marker);
   });
+}
+
+function em_esc_attr( str ){
+	if( typeof str !== 'string' ) return '';
+	return str.replace(/</gi,'&lt;').replace(/>/gi,'&gt;');
 }
 
 /* jQuery timePicker - http://labs.perifer.se/timedatepicker/ @ http://github.com/perifer/timePicker commit 100644 */
