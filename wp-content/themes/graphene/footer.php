@@ -13,6 +13,16 @@ global $graphene_settings;
     </div><!-- #content-main -->
     
     <?php
+
+        /* Sidebar2 on the left side? */
+        if ( in_array( graphene_column_mode(), array( 'three_col_right', 'three_col_center', 'two_col_right' ) ) ){
+            get_sidebar( 'two' );
+        }
+        
+        /* Sidebar1 on the left side? */            
+        if ( in_array( graphene_column_mode(), array( 'three_col_right' ) ) ){
+            get_sidebar();                
+        }
     
         /* Sidebar 2 on the right side? */
         if ( graphene_column_mode() == 'three_col_left' ){

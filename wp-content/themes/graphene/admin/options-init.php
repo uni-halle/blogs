@@ -37,6 +37,7 @@ include( GRAPHENE_ROOTDIR . '/admin/customizer/customizer.php' );
 include( GRAPHENE_ROOTDIR . '/admin/ajax-handler.php');
 include( GRAPHENE_ROOTDIR . '/admin/wpml-helper.php' );
 include( GRAPHENE_ROOTDIR . '/admin/welcome/welcome-screen.php' );
+if ( ! file_exists( GRAPHENE_ROOTDIR . '/plus/setup.php' ) ) include( GRAPHENE_ROOTDIR . '/admin/customizer/graphene-plus.php' );
 
 /* Include the feature pointer */
 /* Disabled for now until a proper API has been implemented in WordPress core */
@@ -75,6 +76,8 @@ if ( ! function_exists( 'graphene_admin_options_style' ) ) :
 		wp_enqueue_style( 'font-awesome', GRAPHENE_ROOTURI . '/fonts/font-awesome/css/font-awesome.min.css' );
 		wp_enqueue_style( 'graphene-admin-style', GRAPHENE_ROOTURI . '/admin/admin.css' );
 		if ( is_rtl() ) wp_enqueue_style( 'graphene-admin-style-rtl', GRAPHENE_ROOTURI . '/admin/admin-rtl.css' );
+
+		do_action( 'graphene_admin_options_style' );
 	}
 endif;
 
@@ -84,6 +87,8 @@ endif;
  */
 function graphene_admin_scripts() {
 	wp_enqueue_script( 'graphene-admin', GRAPHENE_ROOTURI . '/admin/js/admin.js', array( 'jquery' ), '', false );
+
+	do_action( 'graphene_admin_scripts' );
 }
 
 

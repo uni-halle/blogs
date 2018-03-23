@@ -61,6 +61,9 @@ function graphene_enqueue_customizer_preview_scripts(){
 	$version = $graphene_settings['scripts_ver'];
 	
 	wp_enqueue_script( 'graphene-customizer-preview', GRAPHENE_ROOTURI . '/admin/customizer/customizer-preview.js', array( 'jquery' ), $version, true );
+	wp_localize_script( 'graphene-customizer-preview', 'grapheneCustomizerPreview', array(
+		'sectionNavTitle'	=> __( 'In this section', 'graphene' ),
+	) );
 }
 add_action( 'customize_preview_init', 'graphene_enqueue_customizer_preview_scripts' );
 
@@ -94,26 +97,32 @@ function graphene_customize_register( $wp_customize ) {
 	graphene_add_customizer_controls( $wp_customize );
 	
 	/* Options panel */	
-	$wp_customize->add_panel( 'graphene-general', array(
-		'title'	=> __( 'Graphene: General', 'graphene' ),
-	) );
-	
-	$wp_customize->add_panel( 'graphene-display', array(
-		'title'	=> __( 'Graphene: Display', 'graphene' ),
+	$panels = apply_filters( 'graphene_customizer_panels', array(
+		10 => array(
+			'id'	=> 'graphene-general',
+			'title'	=> __( 'Graphene: General', 'graphene' )
+		),
+		20 => array(
+			'id'	=> 'graphene-display',
+			'title'	=> __( 'Graphene: Display', 'graphene' ),
+		),
+		30 => array(
+			'id'	=> 'graphene-colours',
+			'title'			=> __( 'Graphene: Colours', 'graphene' ),
+			'description'	=> '<p>' . __( "Changing colours for your website involves a lot more than just trial and error. Simply mixing and matching colours without regard to their compatibility may do more damage than good to your site's aesthetics.", 'graphene' ) . '</p><p>' . sprintf( __( "It's generally a good idea to stick to colours from colour pallettes that are aesthetically pleasing. Try the %s website for a kickstart on some colour palettes you can use.", 'graphene' ), '<a href="http://www.colourlovers.com/palettes/">COLOURlovers</a>' ) . '</p>',
+		),
+		40 => array(
+			'id'	=> 'graphene-advanced',
+			'title'	=> __( 'Graphene: Advanced', 'graphene' ),
+		),
+		50 => array(
+			'id'	=> 'graphene-utilities',
+			'title'	=> __( 'Graphene: Utilities', 'graphene' ),
+		),
 	) );
 
-	$wp_customize->add_panel( 'graphene-colours', array(
-		'title'			=> __( 'Graphene: Colours', 'graphene' ),
-		'description'	=> '<p>' . __( "Changing colours for your website involves a lot more than just trial and error. Simply mixing and matching colours without regard to their compatibility may do more damage than good to your site's aesthetics.", 'graphene' ) . '</p><p>' . sprintf( __( "It's generally a good idea to stick to colours from colour pallettes that are aesthetically pleasing. Try the %s website for a kickstart on some colour palettes you can use.", 'graphene' ), '<a href="http://www.colourlovers.com/palettes/">COLOURlovers</a>' ) . '</p>',
-	) );
-
-	$wp_customize->add_panel( 'graphene-advanced', array(
-		'title'	=> __( 'Graphene: Advanced', 'graphene' ),
-	) );
-
-	$wp_customize->add_panel( 'graphene-utilities', array(
-		'title'	=> __( 'Graphene: Utilities', 'graphene' ),
-	) );
+	ksort( $panels );
+	foreach ( $panels as $panel ) $wp_customize->add_panel( $panel['id'], $panel );
 	
 	/* Register the options controls */
 	graphene_customizer_general_options( $wp_customize );
@@ -140,6 +149,9 @@ function graphene_get_customizer_transport_settings(){
 	
 	/* Selectively set settings to postMessage transport */
 	$settings = array(
+
+		'section_nav_title',
+
 		'header_img_height',
 		'slider_height',
 		'slider_height_mobile',
@@ -209,7 +221,7 @@ function graphene_get_customizer_transport_settings(){
 		$transport_settings[$setting] = 'postMessage';
 	}
 	
-	return $transport_settings;
+	return apply_filters( 'graphene_get_customizer_transport_settings', $transport_settings );
 }
 
 
@@ -248,7 +260,7 @@ function graphene_get_customizer_validator_settings(){
 	$validator_settings['copy_text'] 	= 'wp_kses_post';
 	
 	/* Excerpt options */
-	$validator_settings['excerpt_html_tags'] = 'trim';
+	$validator_settings['excerpt_html_tags'] = 'wp_kses_post';
 	
 	/* Footer widget options */
 	$validator_settings['footerwidget_column']	= 'absint';
@@ -266,7 +278,7 @@ function graphene_get_customizer_validator_settings(){
 	/* Social profiles */
 	$validator_settings['social_profiles'] = 'graphene_validate_json';
 	
-	return $validator_settings;
+	return apply_filters( 'graphene_get_customizer_validator_settings', $validator_settings );
 }
 
 

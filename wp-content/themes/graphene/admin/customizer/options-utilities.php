@@ -54,4 +54,6 @@ function graphene_customizer_utilities( $wp_customize ){
 		'description'	=> __( 'Export legacy Graphene settings in case you need to roll back from Graphene 2.0.', 'graphene' ),
 	) ) );
 
+
+	do_action( 'graphene_customizer_utilities', $wp_customize );
 }

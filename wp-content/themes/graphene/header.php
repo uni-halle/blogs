@@ -159,19 +159,5 @@
             <div id="content" class="clearfix hfeed row">
                 <?php do_action( 'graphene_before_content-main' ); ?>
                 
-                <?php
-                
-                    /* Sidebar2 on the left side? */
-                    if ( in_array( graphene_column_mode(), array( 'three_col_right', 'three_col_center', 'two_col_right' ) ) ){
-                        get_sidebar( 'two' );
-                    }
-        			
-        			/* Sidebar1 on the left side? */            
-                    if ( in_array( graphene_column_mode(), array( 'three_col_right' ) ) ){
-                        get_sidebar();                
-                    }
-                
-                ?>
-                
                 <div id="content-main" <?php graphene_grid( 'clearfix content-main', 12, $graphene_settings['column_width']['two_col']['content'], $graphene_settings['column_width']['three_col']['content'] ); ?>>
                 <?php do_action( 'graphene_top_content' ); ?>

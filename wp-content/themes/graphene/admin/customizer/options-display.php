@@ -132,7 +132,6 @@ function graphene_customizer_display_options( $wp_customize ){
 	) );
 
 	$wp_customize->add_control( new Graphene_Code_Control( $wp_customize, 'graphene_settings[excerpt_html_tags]', array(
-		'type' 		=> 'textarea',
 		'section' 	=> 'graphene-display-excerpts',
 		'label' 	=> __( 'Keep these HTML tags in excerpts', 'graphene' ),
 		'description'	=> __( "Enter the HTML tags you'd like to retain in excerpts. For example, enter <code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> to retain <code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, and <code>&lt;li&gt;</code> HTML tags.", 'graphene' ),
@@ -143,15 +142,15 @@ function graphene_customizer_display_options( $wp_customize ){
 	) ) );
 
 	
-	/* =Miscellaneous
+	/* =WP Editor
 	--------------------------------------------------------------------------------------*/
-	$wp_customize->add_section( 'graphene-display-misc', array(
-		'title'	=> __( 'Miscellaneous', 'graphene' ),
+	$wp_customize->add_section( 'graphene-display-editor', array(
+		'title'	=> __( 'WP Editor', 'graphene' ),
 		'panel'	=> 'graphene-display',
 	) );
 
 	$options = array(
-		'section'	=> 'graphene-display-misc',
+		'section'	=> 'graphene-display-editor',
 		'type'		=> 'checkbox',
 		'options'	=> array(
 			'disable_editor_style'	=> array( 'label' => __( 'Disable custom editor styles', 'graphene' ) ),
@@ -159,4 +158,6 @@ function graphene_customizer_display_options( $wp_customize ){
 	);
 	graphene_add_customizer_options( $options, $wp_customize );
 
+
+	do_action( 'graphene_customizer_display_options', $wp_customize );
 }

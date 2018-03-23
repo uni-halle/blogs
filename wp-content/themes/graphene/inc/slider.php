@@ -6,7 +6,8 @@ function graphene_slider(){
 	global $graphene_settings, $graphene_in_slider;
 	
 	$graphene_in_slider = true;
-	if ( $graphene_settings['slider_display_style'] == 'bgimage-excerpt' ) graphene_set_excerpt_length( 35 );
+	$display = $graphene_settings['slider_display_style'];
+	if ( $display != 'full-post' ) graphene_set_excerpt_length( 35 );
 
 	/* Get the slider posts */
 	$sliderposts = graphene_get_slider_posts();
@@ -38,8 +39,8 @@ function graphene_slider(){
 	    			$style = '';
 
 					/* Background image*/
-					if ( $graphene_settings['slider_display_style'] == 'bgimage-excerpt' ) {
-						$image = graphene_get_slider_image( get_the_ID(), 'graphene_slider', true);
+					if ( $display == 'bgimage-excerpt' ) {
+						$image = graphene_get_slider_image( get_the_ID(), 'graphene_slider', true );
 						if ( $image ){
 							$style .= 'style="background-image:url(';
 							$style .= ( is_array( $image ) ) ? $image[0] : $image;
@@ -57,21 +58,33 @@ function graphene_slider(){
 				    <div <?php echo $style; ?> class="item <?php if ( $sliderposts->current_post == 0 ) echo 'active'; ?>" id="slider-post-<?php the_ID(); ?>">
 				    	<?php do_action( 'graphene_before_sliderpost' ); ?>
 
-				    	<?php if ( $graphene_settings['slider_display_style'] == 'bgimage-excerpt' ) : ?>
+				    	<?php if ( $display == 'bgimage-excerpt' ) : ?>
 		                	<a href="<?php echo $slider_link_url; ?>" class="permalink-overlay" title="<?php _e( 'View post', 'graphene' ); ?>"></a>
-		                <?php endif; ?>
 
-		                <?php if ( $graphene_settings['slider_display_style'] == 'full-post' ) : ?>
-		                	<h2 class="slider_post_title"><a href="<?php echo $slider_link_url; ?>"><?php the_title(); ?></a></h2>
-		                	<?php the_content(); ?>
-	                	<?php else : ?>
-						    <div class="carousel-caption">
+		                	<div class="carousel-caption">
 						    	<h2 class="slider_post_title"><a href="<?php echo $slider_link_url; ?>"><?php the_title(); ?></a></h2>
 					    		<div class="slider_post_excerpt"><?php the_excerpt(); ?></div>
-
 					    		<?php do_action( 'graphene_slider_postentry' ); ?>
 						    </div>
-						<?php endif; ?>
+		                <?php endif; ?>
+
+		                <?php if ( $display == 'card' ) : $image = graphene_get_slider_image( get_the_ID(), 'graphene_slider', true ); ?>
+		                	<div class="image col-md-5" style="background-image: url(<?php echo $image; ?>);">
+		                		<a href="<?php echo $slider_link_url; ?>" class="permalink-overlay" title="<?php _e( 'View post', 'graphene' ); ?>"></a>
+		                	</div>
+		                	<div class="content col-md-7">
+						    	<h2 class="slider_post_title"><a href="<?php echo $slider_link_url; ?>"><?php the_title(); ?></a></h2>
+					    		<div class="slider_post_excerpt"><?php the_excerpt(); ?></div>
+					    		<?php do_action( 'graphene_slider_postentry' ); ?>
+						    </div>
+	                	<?php endif; ?>
+
+
+		                <?php if ( $display == 'full-post' ) : ?>
+		                	<h2 class="slider_post_title"><a href="<?php echo $slider_link_url; ?>"><?php the_title(); ?></a></h2>
+		                	<?php the_content(); ?>
+		                	<?php do_action( 'graphene_slider_postentry' ); ?>
+	                	<?php endif; ?>
 				    </div>
 			<?php endwhile; wp_reset_postdata(); ?>
 		</div>
@@ -267,21 +280,19 @@ endif;
  * Exclude posts that belong to the categories displayed in slider from the posts listing
  */
 function graphene_exclude_slider_categories( $request ){
-	global $graphene_settings, $graphene_defaults;
+	global $graphene_settings, $graphene_in_slider;
 
+	if ( $graphene_in_slider ) return $request;
 	if ( $graphene_settings['slider_type'] != 'categories' ) return $request;
+	if ( ! $graphene_settings['slider_exclude_categories'] ) return $request;
 	if ( is_admin() ) return $request;
+
+	$dummy_query = new WP_Query();
+	$dummy_query->parse_query( $request );
+
+	if ( get_option( 'show_on_front' ) == 'page' && $dummy_query->query_vars['page_id'] == get_option( 'page_on_front' ) ) return $request;
 	
-	if ( $graphene_settings['slider_exclude_categories'] != $graphene_defaults['slider_exclude_categories'] ){
-		$dummy_query = new WP_Query();
-    	$dummy_query->parse_query( $request );
-		
-		if ( get_option( 'show_on_front' ) == 'page' && $dummy_query->query_vars['page_id'] == get_option( 'page_on_front' ) ) return $request;
-		
-		if ( ( $graphene_settings['slider_exclude_categories'] == 'everywhere' ) || 
-				$graphene_settings['slider_exclude_categories'] == 'homepage' && $dummy_query->is_home() )
-			$request['category__not_in'] =  graphene_object_id( $graphene_settings['slider_specific_categories'], 'category' );
-	}
+	$request['category__not_in'] =  graphene_object_id( $graphene_settings['slider_specific_categories'], 'category' );
 	
 	return $request;
 }

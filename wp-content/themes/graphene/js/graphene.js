@@ -170,6 +170,27 @@ jQuery(document).ready(function($) {
             }, 700);
         });
     }
+
+
+    /* Layout Shortcodes */
+    $('[data-toggle="tooltip"]').tooltip()
+	    // Stop "click triggered" tootips from acting as bookmarks to top of page
+	    .filter('[data-trigger*="click"]')
+	    .on('click', function(e) {
+	        e.preventDefault();
+	    });
+
+
+	/* Masonry for posts layout */
+	if ( grapheneJS.isMasonry ) {
+		$postsList = $('.loop-masonry .entries-wrapper');
+		$postsList.imagesLoaded(function(){
+			$postsList.masonry({
+				itemSelector: '.post-layout-grid',
+				columnWidth: 0.25
+			});
+		});
+	}
 });
 
 

@@ -72,7 +72,7 @@ function graphene_customizer_colour_options( $wp_customize ){
 		'panel'	=> 'graphene-colours',
 	) );
 
-	$wp_customize->add_control(	new Customize_Alpha_Color_Control( $wp_customize, 'graphene_settings[slider_caption_bg]', array(
+	$wp_customize->add_control(	new Graphene_Customize_Alpha_Color_Control( $wp_customize, 'graphene_settings[slider_caption_bg]', array(
 		'label'         => __( 'Slider caption background', 'graphene' ),
 		'section'       => 'graphene-colours-slider',
 		'show_opacity'  => true,
@@ -215,4 +215,6 @@ function graphene_customizer_colour_options( $wp_customize ){
 	);
 	graphene_add_customizer_options( $options, $wp_customize );
 
+
+	do_action( 'graphene_customizer_colour_options', $wp_customize );
 }

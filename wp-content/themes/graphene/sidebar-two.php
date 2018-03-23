@@ -9,7 +9,7 @@
 global $graphene_settings;
 ?>
     
-<div id="sidebar2" <?php graphene_grid( 'sidebar', 0, $graphene_settings['column_width']['two_col']['sidebar'], $graphene_settings['column_width']['three_col']['sidebar_left'] ); ?>>
+<div id="sidebar2" <?php graphene_grid( 'sidebar sidebar-left', 0, $graphene_settings['column_width']['two_col']['sidebar'], $graphene_settings['column_width']['three_col']['sidebar_left'] ); ?>>
 
 	<?php do_action( 'graphene_before_sidebar2' ); ?>
 

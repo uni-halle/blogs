@@ -76,6 +76,23 @@ jQuery(document).ready(function ($) {
 
 
 	/**
+	 * Generic jQuery UI Sliders
+	 */
+	$('.graphene-control-slider').each(function(){
+		var target = '#' + $(this).data('target');
+		$(this).slider({
+			min: $(this).data('min'),
+			max: $(this).data('max'),
+			step: $(this).data('step'),
+			value: $(this).data('value'),
+			slide: function (event, ui) {
+				$(target).val(ui.value).trigger('change');
+			}
+		});
+	});
+
+
+	/**
 	 * jQuery UI Sliders for columns width
 	 */
 	var gutter = graphene_settings.gutter_width;
@@ -283,4 +300,13 @@ jQuery(document).ready(function ($) {
 	 $('form.graphene-import').submit(function(e){
 	 	$('.status-icon', this).removeClass('hide');
 	 });
+
+
+	 /**
+	  * Multiple checkbox control
+	  */
+    $('.customize-control-checkbox-multiple input[type="checkbox"]').on( 'change', function() {
+        checkbox_values = $(this).parents('.customize-control').find('input[type="checkbox"]:checked').map(function(){return this.value;}).get().join( ',' );
+        $(this).parents('.customize-control').find('input[type="hidden"]').val(checkbox_values).trigger('change');
+    } );
 });

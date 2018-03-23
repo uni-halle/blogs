@@ -114,8 +114,8 @@ function graphene_minify_css( $css ){
 function graphene_get_custom_style(){ 
 	global $graphene_settings, $graphene_defaults, $content_width;
 	
-	$background = get_theme_mod( 'background_image', false);
-	$bgcolor = get_theme_mod( 'background_color', false);
+	$background = get_theme_mod( 'background_image', false );
+	$bgcolor = get_theme_mod( 'background_color', false );
 	$widgetcolumn = $graphene_settings['footerwidget_column'];
 	$widgetcolumn_alt = $graphene_settings['alt_footerwidget_column'];
 	$container_width = apply_filters( 'graphene_container_width', $graphene_settings['container_width'] );
@@ -224,7 +224,7 @@ function graphene_get_custom_colours( $hook_suffix = '', $force_all = false ){
 		// Primary Menu (top level)
 		$colours = array(
 			'menu_primary_bg'				=> '.navbar, .navbar #header-menu-wrap, .navbar #header-menu-wrap {background: %s}',
-			'menu_primary_item'				=> '.navbar #header-menu-wrap .nav > li > a, .navbar #header-menu-wrap .nav > li > a {color: %s}',
+			'menu_primary_item'				=> '.navbar-inverse .nav > li > a {color: %s}',
 			'menu_primary_active_bg'		=> '.navbar #header-menu-wrap .nav li:focus, .navbar #header-menu-wrap .nav li:hover, .navbar #header-menu-wrap .nav li.current-menu-item, .navbar #header-menu-wrap .nav li.current-menu-ancestor, .navbar #header-menu-wrap .dropdown-menu li, .navbar #header-menu-wrap .dropdown-menu > li > a:focus, .navbar #header-menu-wrap .dropdown-menu > li > a:hover, .navbar #header-menu-wrap .dropdown-menu > .active > a, .navbar #header-menu-wrap .dropdown-menu > .active > a:focus, .navbar #header-menu-wrap .dropdown-menu > .active > a:hover, .navbar #header-menu-wrap .navbar-nav>.open>a, .navbar #header-menu-wrap .navbar-nav>.open>a:focus, .navbar #header-menu-wrap .navbar-nav>.open>a:hover, .navbar .navbar-nav>.active>a, .navbar .navbar-nav>.active>a:focus, .navbar .navbar-nav>.active>a:hover {background: %s}',
 			'menu_primary_active_item'		=> 	'.navbar #header-menu-wrap .navbar-nav>.active>a, .navbar #header-menu-wrap .navbar-nav>.active>a:focus, .navbar #header-menu-wrap .navbar-nav>.active>a:hover, .navbar #header-menu-wrap .navbar-nav>.open>a, .navbar #header-menu-wrap .navbar-nav>.open>a:focus, .navbar #header-menu-wrap .navbar-nav>.open>a:hover, .navbar #header-menu-wrap .navbar-nav>.current-menu-item>a, .navbar #header-menu-wrap .navbar-nav>.current-menu-item>a:hover, .navbar #header-menu-wrap .navbar-nav>.current-menu-item>a:focus, .navbar #header-menu-wrap .navbar-nav>.current-menu-ancestor>a, .navbar #header-menu-wrap .navbar-nav>.current-menu-ancestor>a:hover, .navbar #header-menu-wrap .navbar-nav>.current-menu-ancestor>a:focus, .navbar #header-menu-wrap .navbar-nav>li>a:focus, .navbar #header-menu-wrap .navbar-nav>li>a:hover {color: %s}',
 			'menu_primary_dd_item'			=> '.navbar #header-menu-wrap .nav ul li a, .navbar #header-menu-wrap .nav ul li a {color: %s}',
@@ -365,9 +365,9 @@ function graphene_custom_style( $echo = true, $minify = true, $force_all = false
 		$style .= graphene_get_custom_colours( '', $force_all );
 		$style .= graphene_get_custom_style();	
 	}
-	if ( $minify ) $style = graphene_minify_css( $style );
 	
 	$style = apply_filters( 'graphene_custom_style', $style, $echo, $minify, $force_all );
+	if ( $minify ) $style = graphene_minify_css( $style );
 	
     if ( $style && $echo ) echo '<style type="text/css">' . "\n" . $style . "\n" . '</style>' . "\n";
 	else return $style;
@@ -380,6 +380,20 @@ add_action( 'wp_head', 'graphene_custom_style' );
  * appropriate head element for the favicon
 */
 function graphene_favicon(){
+	
+	/* If user has set a WordPress site icon, use that and remove the previous Graphene favicon settings */
+	if ( get_option( 'site_icon' ) ) {
+		$current_settings = get_option( 'graphene_settings' );
+		if ( isset( $current_settings['favicon_url'] ) && $current_settings['favicon_url'] ) {
+			unset( $current_settings['favicon_url'] );
+			update_option( 'graphene_settings', $current_settings );
+
+			global $graphene_settings;
+			$graphene_settings = graphene_get_settings();
+		}
+		return;
+	}
+
 	global $graphene_settings;
 	if ( $graphene_settings['favicon_url'] ) { ?>
 		<link rel="icon" href="<?php echo $graphene_settings['favicon_url']; ?>" type="image/x-icon" />

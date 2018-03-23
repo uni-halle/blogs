@@ -35,14 +35,14 @@ body {
 	box-sizing: border-box;
 	border-right: 1px solid #eee;
 	border-bottom: 1px solid #eee;
-	min-height: 100px;
+	min-height: 300px;
 	float: left;
 	padding: 20px 25px;
 	font-size: 1.1em;
 	line-height: normal;
 }
-.panel:nth-child(2n) {
-	border-right: none;
+.panel-25 {
+	width: 25%;
 }
 .panel-50 {
 	width: 50%;
@@ -51,6 +51,21 @@ body {
 .panel.support,
 .panel.contribute {
 	text-align: center;
+	padding: 50px 10px;
+}
+.panel.graphene-plus {
+	padding: 0;
+	border: none;
+}
+.panel.graphene-plus a {
+	display: block;
+	line-height: 0;
+}
+.panel.graphene-plus img {
+	max-width: 100%;
+	height: auto;
+}
+.panel.contribute {
 	padding: 50px 10%;
 }
 .panel.contribute,
@@ -86,9 +101,9 @@ body {
 	border-radius: 3px;
 	padding: 2px 5px;
 }
-.panel .button,
-.panel .button:hover,
-.panel .button:focus {
+.btn,
+.btn:hover,
+.btn:focus {
 	background: #83B0B0;
 	background: linear-gradient(#8EB7B7,#83B0B0);
 	border: none;
@@ -99,12 +114,14 @@ body {
 	text-shadow: 1px 1px 0 #555;
 	text-shadow: 1px 1px 0 rgba(50,50,50,0.3);
 	height: auto;
+	text-decoration: none;
 }
-.panel .button.purple {
+.btn-purple,
+.btn-purple:hover {
 	background: #4D3E7C;
 	background: linear-gradient(#4D3E7C,#604D99);
 }
-.panel .button .fa {
+.btn .fa {
 	margin-right: 5px;
 	font-size: 20px;
 	vertical-align: middle;
@@ -121,7 +138,9 @@ body {
 	}
 	.panel {
 		height: auto !important;
+		min-height: 100px;
 	}
+	.panel-25,
 	.panel-50 {
 		width: 100%;
 		float: none;

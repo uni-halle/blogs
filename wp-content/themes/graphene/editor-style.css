@@ -201,7 +201,7 @@ dt,
 .gallery .gallery-icon,
 p .button,
 pre {
-	margin-top: 20px;
+	margin-bottom: 20px;
 }
 ol,
 ul {
@@ -269,9 +269,6 @@ blockquote cite {
 p cite {
 	display: block;
 	text-align: right;
-}
-.alert {
-    margin-top: 20px;
 }
 .pullquote {
     margin-top: 30px;

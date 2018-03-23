@@ -20,6 +20,9 @@ add_action( 'init', 'graphene_db_init' );
  */
 function graphene_get_content_width(){
 	global $graphene_settings;
+	
+	if ( ! is_array( $graphene_settings['column_width'] ) ) $graphene_settings['column_width'] = json_decode( $graphene_settings['column_width'], true );
+
 	$width = graphene_grid_width( 0, 12, $graphene_settings['column_width']['two_col']['content'], $graphene_settings['column_width']['three_col']['content'] );
 	return apply_filters( 'graphene_content_width', $width );
 }
@@ -204,18 +207,16 @@ function graphene_widgets_init() {
 	if (function_exists( 'register_sidebar' ) ) {
 		global $graphene_settings, $graphene_defaults;
 		
-		register_sidebar(array( 'name' => __( 'Graphene - Sidebar One', 'graphene' ),
+		register_sidebar(array( 'name' => __( 'Graphene - Right Sidebar', 'graphene' ),
 			'id' 			=> 'sidebar-widget-area',
-			'description' 	=> __( 'The first sidebar widget area (will always be displayed on the right hand side).', 'graphene' ),
 			'before_widget' => '<div id="%1$s" class="sidebar-wrap clearfix %2$s">',
 			'after_widget' 	=> '</div>',
 			'before_title' 	=> "<h3>",
 			'after_title' 	=> "</h3>",
 		) );
                 
-		register_sidebar(array( 'name' => __( 'Graphene - Sidebar Two', 'graphene' ),
+		register_sidebar(array( 'name' => __( 'Graphene - Left Sidebar', 'graphene' ),
 			'id' 			=> 'sidebar-two-widget-area',
-			'description' 	=> __( 'The second sidebar widget area (will always be displayed on the left hand side).', 'graphene' ),
 			'before_widget' => '<div id="%1$s" class="sidebar-wrap clearfix %2$s">',
 			'after_widget' 	=> '</div>',
 			'before_title' 	=> "<h3>",

@@ -101,3 +101,59 @@
 .add-social-profile .button {
 	margin-top: 10px;
 }
+.slider-legend {
+	margin-top: 5px;
+}
+.slider-legend.alignleft,
+.slider-legend.alignright {
+	width: 20%;
+}
+.slider-legend.alignright {
+	text-align: right;
+}
+.slider-legend.alignmiddle {
+	float: left;
+	width: 60%;
+	text-align: center;
+}
+#customize-control-graphene_settings-posts_layout label img,
+#customize-control-graphene_settings-slider_display_style label img {
+	display: block;
+}
+#customize-control-graphene_settings-posts_layout label span,
+#customize-control-graphene_settings-slider_display_style label span,
+.graphene-plus-feature span {
+	display: block;
+	width: 150px;
+	padding: 2px 5px;
+	box-sizing: border-box;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 10px;
+	background: #4c315a;
+	color: #fff;
+	margin-top: -2em;
+}
+.graphene-plus-feature {
+	border: 1px dashed #bbb;
+	box-sizing: border-box;
+	width: 100%;
+}
+.graphene-plus-feature a {
+	text-decoration: none;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.graphene-plus-feature span {
+	width: 100%;
+	font-size: 12px;
+	padding: 5px 10px;
+	margin: 0;
+}
+#customize-controls .graphene-plus-feature img {
+	margin: 10px;
+	opacity: 0.6;
+	max-width: 95%;
+	height: auto;
+}

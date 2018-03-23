@@ -72,6 +72,16 @@ function graphene_customizer_general_options( $wp_customize ){
 	  'label' 		=> __( 'Disable slider', 'graphene' ),
 	) );
 
+	$wp_customize->add_control( new Graphene_Radio_HTML_Control( $wp_customize, 'graphene_settings[slider_display_style]', array(
+		'section' 	=> 'graphene-general-slider',
+		'label'	=> __( 'Display style', 'graphene' ),
+		'choices'	=> array(
+			'bgimage-excerpt'	=> '<span>' . __( 'Standard', 'graphene' ) . '</span><img src="' . GRAPHENE_ROOTURI . '/admin/images/slider-display-standard.png" alt="" width="150" height="86" />',
+			'card'				=> '<span>' . __( 'Card', 'graphene' ) . '</span><img src="' . GRAPHENE_ROOTURI . '/admin/images/slider-display-card.png" alt="" width="150" height="86" />',
+			'full-post'			=> '<span>' . __( 'Full post content', 'graphene' ) . '</span><img src="' . GRAPHENE_ROOTURI . '/admin/images/slider-display-full-post.png" alt="" width="150" height="86" />',
+		),
+	) ) );
+
 	$wp_customize->add_control( 'graphene_settings[slider_full_width]', array(
 	  'type' 		=> 'checkbox',
 	  'section' 	=> 'graphene-general-slider',
@@ -156,16 +166,6 @@ function graphene_customizer_general_options( $wp_customize ){
        	'settings'   => 'graphene_settings[slider_imgurl]',
        	'description'=> __( 'Make sure you select "Custom image" in the slider image option above to use this image.', 'graphene' )
    	) )	);
-
-   	$wp_customize->add_control( 'graphene_settings[slider_display_style]', array(
-		'type' 		=> 'select',
-		'section' 	=> 'graphene-general-slider',
-		'label' 	=> __( 'Slider display style', 'graphene' ),
-		'choices'	=> array(
-			'bgimage-excerpt'	=> __( 'Background image and excerpt', 'graphene' ),
-			'full-post'			=> __( 'Full post content', 'graphene' ),
-		),
-	) );
 
 	$wp_customize->add_control( new Graphene_Enhanced_Text_Control( $wp_customize, 'graphene_settings[slider_height]', array(
 		'type' 		=> 'number',
@@ -332,6 +332,13 @@ function graphene_customizer_general_options( $wp_customize ){
 	  'type' 	=> 'checkbox',
 	  'section' => 'graphene-general-child-pages',
 	  'label' 	=> __( 'Disable contextual navigation in the sidebar', 'graphene' ),
+	) );
+
+	$wp_customize->add_control( 'graphene_settings[section_nav_title]', array(
+	  'type' 		=> 'text',
+	  'section' 	=> 'graphene-general-child-pages',
+	  'label' 		=> __( 'Customise contextual navigation title', 'graphene' ),
+	  'description'	=> sprintf( __( 'When left empty, this will default to %s.', 'graphene' ), '"' . __( 'In this section', 'graphene' ) . '"' )
 	) );
 
 	$wp_customize->add_control( 'graphene_settings[child_page_listing]', array(
@@ -555,4 +562,7 @@ function graphene_customizer_general_options( $wp_customize ){
 	  'section' => 'graphene-general-print',
 	  'label' 	=> __( 'Show print button', 'graphene' ),
 	) );
+
+
+	do_action( 'graphene_customizer_general_options', $wp_customize );
 }

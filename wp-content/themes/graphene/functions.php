@@ -29,6 +29,7 @@ require( GRAPHENE_ROOTDIR . '/inc/utils.php' 			);
 require( GRAPHENE_ROOTDIR . '/inc/head.php' 			);
 require( GRAPHENE_ROOTDIR . '/inc/footer.php' 			);
 require( GRAPHENE_ROOTDIR . '/inc/menus.php' 			);
+require( GRAPHENE_ROOTDIR . '/inc/widgets.php' 			);
 require( GRAPHENE_ROOTDIR . '/inc/loop.php' 			);
 require( GRAPHENE_ROOTDIR . '/inc/infinite-scroll.php' 	);
 require( GRAPHENE_ROOTDIR . '/inc/comments.php' 		);

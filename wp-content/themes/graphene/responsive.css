@@ -1,5 +1,8 @@
 /* Extra small devices (phones, less than 768px) */
 @media (max-width: 767px) {
+	.desktop-only {
+		display: none !important;
+	}
 	#top-bar {
 		padding: 0 15px;
 	}
@@ -98,6 +101,24 @@
 	}
 	.carousel .slider_post_title {
 		font-size: 16px;
+	}
+	.carousel.card .content {
+		position: absolute;
+		bottom: 0;
+		background: #000;
+		background: rgba(0,0,0,0.6);
+		color: #fff;
+		padding: 10px 15px;
+		font-size: 0.9em;
+		line-height: normal;
+		height: auto;
+	}
+	.carousel.card .slider_post_title,
+	.carousel.card .slider_post_title a {
+		color: #fff;
+	}
+	.carousel.card .carousel-control {
+		opacity: 0.5;
 	}
 	.post {
 		padding: 15px 0;
@@ -275,6 +296,9 @@
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+	.mobile-only {
+		display: none !important;
+	}
 	.footer-widget-col-5 .sidebar-wrap {
 	    width: 20% !important;
 	}

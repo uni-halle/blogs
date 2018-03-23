@@ -270,9 +270,10 @@ function graphene_post_nav(){
 		'in_same_cat' 	=> false,
 		'excluded_cats' => '',
 	);
-	if ( $graphene_settings['slider_type'] == 'categories' )
-		if ( $graphene_settings['slider_exclude_categories'] == 'everywhere' ) 
-			$args['excluded_cats'] = $graphene_settings['slider_specific_categories'];
+
+	if ( $graphene_settings['slider_type'] == 'categories' && $graphene_settings['slider_exclude_categories'] ) {
+		$args['excluded_cats'] = $graphene_settings['slider_specific_categories'];
+	}
 			
 	$args = apply_filters( 'graphene_post_nav_args', $args );
 
@@ -563,6 +564,9 @@ add_action( 'save_post', 'graphene_clear_post_image_cache' );
 */
 function graphene_improved_excerpt( $text ){
 	global $graphene_settings, $post;
+
+	if ( ! $graphene_settings['excerpt_html_tags'] ) return $text;
+	remove_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
 	
 	$raw_excerpt = $text;
 	if ( '' == $text ) {
@@ -592,17 +596,9 @@ function graphene_improved_excerpt( $text ){
 	// Try to balance the HTML tags
 	$text = force_balance_tags( $text );
 	
-	return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt);
+	return apply_filters( 'wp_trim_excerpt', $text, $raw_excerpt );
 }
-
-
-/**
- * Only use the custom excerpt trimming function if user decides to retain html tags.
-*/
-if ( $graphene_settings['excerpt_html_tags'] ) {
-	remove_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
-	add_filter( 'get_the_excerpt', 'graphene_improved_excerpt' );
-}
+add_filter( 'get_the_excerpt', 'graphene_improved_excerpt', 5 );
 
 
 /**
@@ -1059,6 +1055,8 @@ function graphene_page_navigation(){
 	$ancestors = get_ancestors( $current, 'page' );
 	if ( $ancestors ) $parent = $ancestors[0];
 	else $parent = $current;
+
+	$title = ( $graphene_settings['section_nav_title'] ) ? $graphene_settings['section_nav_title'] : __( 'In this section', 'graphene' );
 	
 	$args = array(
 		'post_type'			=> array( 'page' ),
@@ -1071,8 +1069,8 @@ function graphene_page_navigation(){
 	
 	if ( $children->have_posts() ) :
 	?>
-        <div class="widget">
-            <h3 class="section-title-sm"><?php _e( 'In this section', 'graphene' ); ?></h3>
+        <div class="widget contextual-nav">
+            <h3 class="section-title-sm"><?php echo $title; ?></h3>
             <div class="list-group page-navigation">
             	<a class="list-group-item parent <?php if ( $parent == $current ) echo 'active'; ?>" href="<?php echo esc_url( get_permalink( $parent ) ); ?>"><?php echo get_the_title( $parent ); ?></a>
                 <?php while ( $children->have_posts() ) : $children->the_post(); ?>
@@ -1098,3 +1096,31 @@ function graphene_remove_captioned_image_margin( $atts ) {
     return $atts;
 }
 add_filter( 'shortcode_atts_caption', 'graphene_remove_captioned_image_margin' );
+
+
+/**
+ * Allow template parts to be filtered
+ */
+function graphene_get_template_part( $slug, $name = null ) {
+	/**
+	 * Fires before the specified template part file is loaded.
+	 *
+	 * The dynamic portion of the hook name, `$slug`, refers to the slug name
+	 * for the generic template part.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param string      $slug The slug name for the generic template.
+	 * @param string|null $name The name of the specialized template.
+	 */
+	do_action( "get_template_part_{$slug}", $slug, $name );
+
+	$templates = array();
+	$name = (string) $name;
+	if ( '' !== $name )
+		$templates[] = "{$slug}-{$name}.php";
+
+	$templates[] = "{$slug}.php";
+
+	locate_template( apply_filters( 'graphene_get_template_part', $templates, $slug, $name ), true, false );
+}

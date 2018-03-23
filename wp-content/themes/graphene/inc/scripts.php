@@ -29,7 +29,9 @@ function graphene_enqueue_scripts(){
 	wp_enqueue_script( 'graphene', 					GRAPHENE_ROOTURI . '/js/graphene.js', 												array( 'bootstrap', 'comment-reply', 'infinite-scroll' ), $version );
 
 	/* Enqueue styles */
-	wp_enqueue_style( 'graphene-google-fonts', 		graphene_google_fonts_uri(), 										array(), $version );
+	$google_fonts_uri = graphene_google_fonts_uri();
+	if ( $google_fonts_uri ) wp_enqueue_style( 'graphene-google-fonts', $google_fonts_uri, array(), $version );
+
 	wp_enqueue_style( 'bootstrap', 					GRAPHENE_ROOTURI . '/bootstrap/css/bootstrap.min.css' );
 	wp_enqueue_style( 'font-awesome', 				GRAPHENE_ROOTURI . '/fonts/font-awesome/css/font-awesome.min.css',  array() );
 	wp_enqueue_style( 'graphene', 					get_stylesheet_uri(), 												array( 'bootstrap', 'font-awesome' ), $version, 'screen' );
@@ -100,6 +102,9 @@ function graphene_localize_scripts(){
 										'window.grapheneInfScrollCommentsPerPage', 
 										'window.grapheneInfScrollCommentsLeft' ),
 		'infScrollCommentsFinishedMsg'	=> __( 'All comments loaded!', 'graphene' ),
+
+		/* Posts layout */
+		'isMasonry'				=> ( isset( $graphene_settings['posts_layout'] ) && $graphene_settings['posts_layout'] == 'masonry' ) ? true : false,
 	);
 	wp_localize_script( 'graphene', 'grapheneJS', apply_filters( 'graphene_js_object', $js_object ) );
 }
@@ -110,11 +115,13 @@ add_action( 'wp_enqueue_scripts', 'graphene_localize_scripts' );
  * Generate the stylesheet link for Google Fonts
  */
 function graphene_google_fonts_uri(){
-	$query_args = array(
+	$fonts = apply_filters( 'graphene_google_fonts', array(
 		'family' => 'Lato:400,400i,700,700i',
 		'subset' => 'latin',
-	);
-	return add_query_arg( apply_filters( 'graphene_google_fonts', $query_args ), "//fonts.googleapis.com/css" );
+	) );
+
+	if ( ! $fonts['family'] ) return false;
+	else return add_query_arg( $fonts, "https://fonts.googleapis.com/css" );
 }
 
 

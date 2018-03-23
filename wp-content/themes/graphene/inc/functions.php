@@ -3,7 +3,7 @@ if ( ! function_exists( 'graphene_get_header_image' ) ) :
 /**
  * This function retrieves the header image for the theme
 */
-function graphene_get_header_image( $post_id = NULL ){
+function graphene_get_header_image( $post_id = NULL, $size = 'post-thumbnail', $return_url = true ){
 	global $graphene_settings, $post;
 	
 	$header_img = '';
@@ -16,14 +16,28 @@ function graphene_get_header_image( $post_id = NULL ){
 		$image_meta = wp_get_attachment_metadata( $image_id );
 		
 		if ( $image_meta && $image_meta['width'] >= HEADER_IMAGE_WIDTH && ! $graphene_settings['featured_img_header'] ) {
-			$image = wp_get_attachment_image_src( $image_id, 'post-thumbnail' );
-			$header_img = $image[0];
+			$image = wp_get_attachment_image_src( $image_id, $size );
+			if ( $return_url ) $header_img = $image[0];
 		}
 	}
 	
 	if ( ! $header_img ) $header_img = get_header_image();
+
+	if ( ! $return_url && ! is_array( $header_img ) ) {
+		if ( isset( $image ) && $image ) $header_img = $image;
+		else {
+			$image_id = graphene_get_attachment_id_from_src( $header_img );
+			$image = wp_get_attachment_image_src( $image_id, $size );
+
+			if ( $image ) $header_img = $image;
+			else {
+				$dimension = getimagesize( $header_img );
+				$header_img = array( $header_img, $dimension[0], $dimension[1] );
+			}
+		}
+	}
 	
-	return apply_filters( 'graphene_header_image', $header_img, $post_id );
+	return apply_filters( 'graphene_header_image', $header_img, $post_id, $size, $return_url );
 }
 endif;
 
@@ -252,6 +266,24 @@ function graphene_get_grid( $classes = '', $grid_one = 12, $grid_two = '', $grid
 		$grid[] = sprintf( 'col-md-%d', $grid_two );
 	if ( strpos( $column_mode, 'three_col' ) === 0 )
 		$grid[] = sprintf( 'col-md-%d', $grid_three );
+
+	/* Additional classes for sidebar modes */
+	global $graphene_settings;
+
+	if ( $column_mode == 'two_col_right' ) {
+		if ( stripos( $classes, 'sidebar' ) !== false ) $grid[] =  sprintf( 'col-md-pull-%d', $graphene_settings['column_width']['two_col']['content'] );
+		if ( stripos( $classes, 'content-main' ) !== false ) $grid[] =  sprintf( 'col-md-push-%d', $graphene_settings['column_width']['two_col']['sidebar'] );
+	}
+
+	if ( $column_mode == 'three_col_right' ) {
+		if ( stripos( $classes, 'sidebar' ) !== false ) $grid[] =  sprintf( 'col-md-pull-%d', $graphene_settings['column_width']['three_col']['content'] );
+		if ( stripos( $classes, 'content-main' ) !== false ) $grid[] =  sprintf( 'col-md-push-%d', $graphene_settings['column_width']['three_col']['sidebar_left'] + $graphene_settings['column_width']['three_col']['sidebar_right'] );
+	}
+
+	if ( $column_mode == 'three_col_center' ) {
+		if ( stripos( $classes, 'sidebar-left' ) !== false ) $grid[] =  sprintf( 'col-md-pull-%d', $graphene_settings['column_width']['three_col']['content'] );
+		if ( stripos( $classes, 'content-main' ) !== false ) $grid[] =  sprintf( 'col-md-push-%d', $graphene_settings['column_width']['three_col']['sidebar_left'] );
+	}
 	
 	return apply_filters( 'graphene_grid', $grid, $classes, $grid_one, $grid_two, $grid_three );
 }

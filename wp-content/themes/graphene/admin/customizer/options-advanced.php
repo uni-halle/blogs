@@ -36,4 +36,7 @@ function graphene_customizer_advanced_options( $wp_customize ){
 		'type' 		=> 'textarea',
 		'section' 	=> 'graphene-advanced-widget-hooks',
 	) ) );
+
+
+	do_action( 'graphene_customizer_advanced_options', $wp_customize );
 }

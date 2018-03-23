@@ -2,7 +2,7 @@
 Theme Name: 	Graphene
 Theme URI: 		https://www.graphene-theme.com/graphene-theme/
 Description: 	We believe that every theme should facilitate creative writing, not hinder it. We also believe that each site should have the opportunity to be unique. Since the beginning, we have listened to countless suggestions and requests for features that really matter. Here's a theme that's user-friendly, feature-packed, and endlessly customisable, for both beginners and advanced creators. Feel at home with more than 40 languages and backed with active community support, where questions, ideas and suggestions are always welcomed.
-Version: 		2.2
+Version: 		2.3.1
 Author: 		Graphene Themes Solutions
 Author URI: 	https://www.graphene-theme.com/
 Tags: 			one-column, two-columns, three-columns, right-sidebar, left-sidebar, custom-colors, custom-header, custom-background, custom-menu, editor-style, theme-options, threaded-comments, sticky-post, translation-ready, rtl-language-support, post-formats, featured-image-header, featured-images, full-width-template, microformats
@@ -73,7 +73,7 @@ fieldset {
 body {
 	font-family: 'Lato', sans-serif;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.5em;
     color: #4a474b;
 }
 a {
@@ -119,6 +119,9 @@ input[type="color"],
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
+textarea {
+    height: auto;
+}
 iframe,
 embed,
 object {
@@ -127,6 +130,35 @@ object {
 abbr[data-original-title], 
 abbr[title] {
     border: none;
+}
+h1,.h1, 
+h2,.h2, 
+h3,.h3, 
+h4,.h4, 
+h5,.h5, 
+h6,.h6, 
+#banner-text h1, 
+#banner-text h2, 
+.header_title, 
+.header_desc, 
+.navbar .nav > li > a, 
+.navbar .nav ul li a, 
+#sidebar-ebook h2, 
+.homepage_pane .post-title a, 
+.homepage_pane .post-title a:visited, 
+.post-nav-btm .previous a, 
+.post-nav-btm .previous a:visited, 
+.post-nav-btm .next-post a, 
+.post-nav-btm .next-post a:visited, 
+.comment-link a, 
+.comment-link a:visited, 
+.btn, 
+.Button,
+input[type="submit"], 
+button[type="submit"], 
+#commentform #submit, 
+.wpsc_buy_button {
+    font-style: normal;
 }
 
 
@@ -137,7 +169,6 @@ abbr[title] {
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
     position: relative;
     z-index: 3;
-    background: #fff;
 }
 
 
@@ -238,7 +269,6 @@ abbr[title] {
     position: static
 }
 #banner-text h1 {
-    font-family: 'Lato', sans-serif;
     font-size: 30px;
     font-weight: 300;
     line-height: 38px;
@@ -257,7 +287,6 @@ abbr[title] {
     left: 0;
     font-size: 16px;
     font-weight: 400;
-    font-family: 'Lato', sans-serif;
     top: 75%;
     position: absolute;
     color: #ffffff;
@@ -268,7 +297,6 @@ abbr[title] {
 .header_title,
 .header_desc {
 	width: 100%;
-    font-family: "Lato", arial, sans-serif;
     font-weight: normal;
     line-height: normal;
     margin-bottom: 0;
@@ -342,7 +370,6 @@ abbr[title] {
     min-height: 55px;
     padding: 15px;
     box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
     font-weight: 700;
     font-size: 16px;
     color: #1f1a22;
@@ -380,7 +407,6 @@ abbr[title] {
 }
 .navbar .nav ul li a {
     font-size: 14px;
-    font-family: 'Lato', sans-serif;
     font-weight: normal;
     line-height: normal;
     padding: 10px 15px;
@@ -559,9 +585,37 @@ abbr[title] {
     font-weight: bold;
     margin-bottom: 5px;
 }
-.carousel .slider_post_title,
-.carousel .slider_post_title a {
+.carousel.bgimage-excerpt .slider_post_title,
+.carousel.bgimage-excerpt .slider_post_title a {
     color: #fff;
+}
+.carousel.card .item {
+    text-align: left;
+}
+.carousel.card .content {
+    padding: 20px;
+    height: 100%;
+    overflow: hidden;
+}
+.carousel.card .image {
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    padding: 15px;
+}
+.carousel.card .carousel-control {
+    opacity: 0;
+    -webkit-transition: opacity .4s; 
+    -moz-transition: opacity .4s; 
+    -ms-transition: opacity .4s; 
+    -o-transition: opacity .4s; 
+    transition: opacity .4s;
+}
+.carousel.card:hover .carousel-control {
+    opacity: 0.5;
+}
+.carousel.card .slider_post_title {
+    margin-bottom: 0.5em;
 }
 .carousel-indicators {
     bottom: -30px;
@@ -663,8 +717,7 @@ now override the 3.3 new styles for modern browsers & apply opacity
 	margin-top: -35px;
 	overflow: hidden;
 }
-.term-desc p{
-	font: normal 12px/18px arial;
+.term-desc p {
 	margin-top: 10px;
 }
 .term-desc p:first-child {
@@ -805,12 +858,6 @@ now override the 3.3 new styles for modern browsers & apply opacity
 .post-meta li {
 	float: left;
 }
-.post-meta .meta_categories {
-
-}
-.three-columns .post-meta ul {
-	width: 185px;
-}
 .post-meta {
     font-size: 14px;
 }
@@ -823,6 +870,8 @@ now override the 3.3 new styles for modern browsers & apply opacity
 }
 .post-meta li {
 	list-style: none;
+    line-height: normal;
+    margin-top: 5px;
 }
 .post-meta .post-author,
 .post-meta .edit-post,
@@ -833,23 +882,22 @@ now override the 3.3 new styles for modern browsers & apply opacity
 	float: right;
 	position: relative;
 }
-.post-meta .edit-post,
-.post-meta .post-date-inline,
-.print,
-.wp-email-button {
-	margin-left: 5px;
-}
 .wp-email-button img{
 	vertical-align: bottom;
 }
-.post-meta .post-date-inline {
+.post-meta > li {
 	border-left: 1px solid #ccc;
-	padding-left: 5px;
+	padding: 0 5px;
+}
+.post-meta > li:first-child {
+    border: none;
+    padding-left: 0;
 }
 .post-meta .print,
 .post-meta .email {
     float: right;
     font-size: 16px;
+    border: none;
 }
 .wp-email-button img,
 .wp-email-button a:last-child {
@@ -977,6 +1025,7 @@ now override the 3.3 new styles for modern browsers & apply opacity
 }
 .entry-content {
 	clear: both;
+    padding-top: 20px;
 }
 .entry-content img, 
 .wp-caption {
@@ -1020,10 +1069,11 @@ now override the 3.3 new styles for modern browsers & apply opacity
 .entry-content p,
 .comment-entry p,
 dt,
+dd,
 .entry-content p .button,
 .comment-link,
 pre {
-	margin-top: 20px;
+	margin-bottom: 20px;
 }
 .entry-content .excerpt-thumb img,
 .child-page .excerpt-thumb img {
@@ -1103,13 +1153,13 @@ blockquote {
     border: none;
     margin: 0;
     padding: 0;
+    line-height: normal;
 }
-blockquote p {
+blockquote p,
+.lead {
     font-style: italic;
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 1.5em;
     color: #4a474b;
-    font-family: 'Lato',sans-serif;
 }
 blockquote cite {
 	display: block;
@@ -1180,6 +1230,35 @@ p.form-allowed-tags code {
     margin-top: 20px;
     list-style: none;
 }
+.loop-grid .entries-wrapper,
+.loop-masonry .entries-wrapper {
+    margin: 0 -15px;
+}
+.loop-grid .entries-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+.post-layout-grid {
+    margin-bottom: 25px;
+}
+.post-layout-grid .post {
+    margin-bottom: 0;
+    height: 100%;
+}
+.post-layout-grid .post-image {
+    margin: -15px -15px 20px;
+}
+.post-layout-grid .post-image img {
+    width: 100%;
+    height: auto;
+}
+.post-layout-grid .h2, 
+.post-layout-grid .h2, 
+.post-layout-grid .post-title, 
+.post-layout-grid .post-title a {
+    font-size: 1.2em;
+}
 h3.author-post-list {
     margin: 40px 0 20px;
 }
@@ -1188,12 +1267,7 @@ h3.author-post-list .fa {
 }
 .comment-nav {
 	color: #929292;
-	font: normal 12px tahoma;
 	text-align: center;
-}
-.comment-link a,
-.comment-link a:visited {
-	font: normal 18px arial;
 }
 .post-nav {
 	margin-bottom: 10px;
@@ -1239,6 +1313,7 @@ h3.author-post-list .fa {
 }
 .pagination-wrapper {
     text-align: center;
+    clear: both;
 }
 .pagination {
     font-size: 14px;
@@ -1339,10 +1414,18 @@ h3.author-post-list .fa {
 	margin: 20px 0 0;
 }
 .search-results-header {
-	margin: 30px 0 10px;
+	margin: 20px 0 40px;
 }
 .search-results-header p {
 	margin-top: 10px;
+}
+legend {
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    opacity: 0.7;
+    margin-top: 40px;
+    padding-bottom: 5px;
 }
 
 
@@ -1445,7 +1528,6 @@ h3.author-post-list .fa {
 #comments .comment-entry p,
 #comments .comment-entry ul li,
 #comments .comment-entry ol li {
-    font-family: 'Lato',sans-serif;
     font-size: 14px;
     line-height: 20px;
 }
@@ -1461,7 +1543,6 @@ h3.author-post-list .fa {
 .sidebar select {
 	border: 1px solid #e3e3e3;
 	color: #2c2b2b;
-	font: normal 12px arial;
 }
 #commentform {
 	padding: 18px;
@@ -1533,7 +1614,7 @@ h3.author-post-list .fa {
 -------------------------------------------------------------- */
 
 .sidebar h3 {
-    font-size: 11px;
+    font-size: 0.75em;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -1599,7 +1680,6 @@ h3.author-post-list .fa {
 }
 #sidebar-ebook h2 {
     font-size: 40px;
-    font-family: 'Lato', sans-serif;
     font-weight: 300;
     color: #de6783;
     text-transform: uppercase;
@@ -1616,8 +1696,6 @@ h3.author-post-list .fa {
 #sidebar_bottom .sidebar-wrap {
     background: none;
     border: 0 none;
-    font-size: 14px;
-    line-height: 18px;
     margin-bottom: 0;
 }
 #sidebar_bottom .sidebar-wrap li {
@@ -1701,7 +1779,7 @@ h3.author-post-list .fa {
 .sidebar ul li {
 	border-bottom: 1px solid #e9e9e9;
     font-size: 14px;
-	line-height: 1.5em;
+    line-height: 1.5em;
 	padding: 8px 0;
 }
 .sidebar ul li img,
@@ -1725,10 +1803,13 @@ h3.author-post-list .fa {
     flex-direction: row;
     flex-wrap: wrap;
 }
+.homepage-pane-wrap {
+    margin-bottom: 30px;
+}
 .homepage_pane {
 	vertical-align: top;
 	border: 1px solid #e9e8e3;
-    margin-bottom: 30px;
+    height: 100%;
     -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
     position: relative;
@@ -1743,7 +1824,6 @@ h3.author-post-list .fa {
 }
 .homepage_pane .post-title a,
 .homepage_pane .post-title a:visited {
-    font-family: 'Lato', sans-serif;
     font-size: 26px;
     font-weight: bold;
     color: #1f1a22;
@@ -1752,9 +1832,8 @@ h3.author-post-list .fa {
 .homepage_pane .post-excerpt {
     clear: right;
     padding-top: 20px;
-    font-family: 'Lato', sans-serif;
     font-size: 14px;
-    line-height: 22px;
+    line-height: 1.5em;
 }
 .homepage_pane .post-excerpt p{
 	margin-bottom: 10px;
@@ -1823,8 +1902,37 @@ h3.author-post-list .fa {
 /* =Shortcodes
 -------------------------------------------------------------- */
 
-.alert {
-    margin-top: 20px;
+.panel-heading .panel-title {
+    margin: 0;
+}
+.panel-heading .panel-title a {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    margin: -10px -15px;
+}
+.panel-heading .collapsed .fa-caret-up:before {
+    content: "\f0d7";
+}
+.entry-content .nav-tabs,
+.comment-entry .nav-tabs {
+    padding: 0 0 0 15px;
+}
+.entry-content .nav-tabs li,
+.comment-entry .nav-tabs li {
+    margin-bottom: -1px;
+    font-weight: bold;
+}
+.tab_wrap {
+    margin-bottom: 20px;
+}
+.tab_wrap .nav-tabs {
+    border-bottom: none;
+}
+.tab_wrap .tab-content {
+    padding: 15px;
+    box-shadow: 0 -1px 1px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
 }
 .sidebar > .alert:first-child {
     margin-top: 0;
@@ -1907,7 +2015,6 @@ h3.author-post-list .fa {
 .wp-email .Forms {
 	border: 1px solid #e3e3e3;
 	color: #2c2b2b;
-	font: normal 12px arial;
 	padding: 4px 3px;
 	width: 250px;
 	height: 16px;
@@ -2006,15 +2113,6 @@ span.vote_total span {
 	float: none !important;
 	font-size: 1em !important;
 }
-.default_product_display .wpsc_product_price,
-.single_product_display .product_description,
-.single_product_display .single_additional_description,
-.single_product_display .wpsc_product_price,
-.default_product_display .wpsc_variation_forms label,
-.single_product_display form.product_form fieldset p, 
-#content .single_product_display form.product_form fieldset p {
-	font: normal 12px/18px arial;
-}
 .wpsc_product_price .currentprice {
 	font-weight: bold;
 }
@@ -2074,20 +2172,11 @@ form.product_form fieldset,
 #content .single_product_display .wpsc_variation_forms table tr td.col2 {
 	width: 80%;
 }
-.single_product_display form.product_form input, 
-#content .single_product_display form.product_form input,
-#checkout_page_container textarea, 
-#checkout_page_container input, 
-#content #checkout_page_container textarea, 
-#content #checkout_page_container input {
-	font: normal 12px arial;
-}
 #checkout_page_container textarea, 
 #checkout_page_container input[type="text"],
 #checkout_page_container select {
 	padding: 3px 5px;
 	border: 1px solid #ddd;
-	font: normal 12px arial;
 }
 .wpsc_checkout_table input[type="text"],
 .wpsc_checkout_table textarea {
@@ -2248,7 +2337,7 @@ form.product_form fieldset,
     border-radius: 16px;
 }
 blockquote p:first-child {
-    margin-top: 20px
+    margin-bottom: 20px
 }
 .sidebar .widget_recent_entries h3,
 .sidebar .widget_rss h3 {
@@ -2258,7 +2347,6 @@ blockquote p:first-child {
 .sidebar .widget_rss li {
     padding-bottom: 10px;
     padding-top: 10px;
-    line-height: 22px;
 }
 .sidebar .widget_recent_entries a,
 .sidebar .widget_rss ul a {
@@ -2300,7 +2388,6 @@ blockquote p:first-child {
     font-size: 14px;
     font-weight: bold;
     text-transform: lowercase;
-    font-family: 'Lato',sans-serif;
     -webkit-border-radius: 5px;
     border-radius: 5px;
     -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.2);
@@ -2310,7 +2397,6 @@ blockquote p:first-child {
 .comment-link a,
 .comment-link a:visited {
     font-size: 14px;
-    font-family: 'Lato',sans-serif;
 }
 .wp-caption {
     background: none;
@@ -2420,7 +2506,6 @@ button[type="submit"],
     border: none;
     color: #ffffff;
     border-radius: 3px;
-    font-family: Lato, sans-serif;
     font-weight: 700;
     font-size: 14px;
     line-height: 34px;

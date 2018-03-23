@@ -28,11 +28,9 @@ function graphene_add_customizer_controls( $wp_customize ) {
                 <?php endif; ?>
 
                 <select <?php $this->link(); ?> <?php $this->input_attrs(); ?>>
-                    <?php
-                    foreach ( $this->choices as $value => $label ){
-						$selected = ( in_array( $value, (array) $this->value() ) ) ? 'selected="selected"' : '';
-                        echo '<option value="' . esc_attr( $value ) . '"' . $selected . '>' . $label . '</option>';
-					}
+                    <?php foreach ( $this->choices as $value => $label ) : $selected = ( in_array( $value, (array) $this->value() ) ) ? 'selected="selected"' : ''; ?>
+                        <option value="<?php echo esc_attr( $value ); ?>" <?php echo $selected; ?>><?php echo $label; ?></option>;
+					<?php endforeach; ?>
                     ?>
                 </select>
             </label>
@@ -53,11 +51,43 @@ function graphene_add_customizer_controls( $wp_customize ) {
             ?>
             	<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
             <?php foreach ( $this->choices as $value => $label ) : ?>
-                <label>
-                    <input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?> />
-                    <?php echo $label; ?><br/>
-                </label>
+            	<span class="customize-inside-control-row">
+	                <label>
+	                    <input type="<?php echo $this->type; ?>" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?> />
+	                    <?php echo $label; ?>
+	                </label>
+	            </span>
             <?php endforeach;
+		}
+	}
+
+
+	/**
+	 * Checkbox with HTML allowed in label
+	 */
+	class Graphene_Checkbox_HTML_Control extends WP_Customize_Control {
+		public $type = 'checkbox';
+		
+		public function render_content() {
+			$input_id = '_customize-input-' . $this->id;
+			$description_id = '_customize-description-' . $this->id;
+			$describedby_attr = ( ! empty( $this->description ) ) ? ' aria-describedby="' . esc_attr( $description_id ) . '" ' : '';
+			?>
+			<span class="customize-inside-control-row">
+				<input
+					id="<?php echo esc_attr( $input_id ); ?>"
+					<?php echo $describedby_attr; ?>
+					type="checkbox"
+					value="<?php echo esc_attr( $this->value() ); ?>"
+					<?php $this->link(); ?>
+					<?php checked( $this->value() ); ?>
+				/>
+				<label for="<?php echo esc_attr( $input_id ); ?>"><?php echo $this->label; ?></label>
+				<?php if ( ! empty( $this->description ) ) : ?>
+					<span id="<?php echo esc_attr( $description_id ); ?>" class="description customize-control-description"><?php echo $this->description; ?></span>
+				<?php endif; ?>
+			</span>
+			<?php
 		}
 	}
 	
@@ -173,10 +203,13 @@ function graphene_add_customizer_controls( $wp_customize ) {
 	 */
 	class Graphene_HTML_Control extends WP_Customize_Control {
 		public $content = '';
+		public $heading = '';
+
 		public function render_content() {
-			if ( isset( $this->label ) ) echo '<span class="customize-control-title">' . $this->label . '</span>';
-			if ( isset( $this->content ) ) echo $this->content;
-			if ( isset( $this->description ) ) echo '<span class="description customize-control-description">' . $this->description . '</span>';
+			if ( $this->heading ) echo '<h2 class="heading customize-control-heading">' . $this->heading . '</h2>';
+			if ( $this->label ) echo '<span class="customize-control-title">' . $this->label . '</span>';
+			if ( $this->content ) echo $this->content;
+			if ( $this->description ) echo '<span class="description customize-control-description">' . $this->description . '</span>';
 		}
 	}
 
@@ -370,6 +403,36 @@ function graphene_add_customizer_controls( $wp_customize ) {
 
 
 	/**
+	* Multiple checkbox customize control class.
+	*/
+	class Graphene_Multiple_Checkbox_Control extends WP_Customize_Control {
+
+		public $type = 'checkbox-multiple';
+
+		public function render_content() {
+		    if ( empty( $this->choices ) ) return;
+		    $multi_values = ! is_array( $this->value() ) ? explode( ',', $this->value() ) : $this->value();
+
+			if ( $this->description ) echo '<span class="description customize-control-description">' . $this->description . '</span>';
+			if ( $this->label ) echo '<span class="customize-control-title">' . $this->label . '</span>';
+			?>
+		    <ul>
+		        <?php foreach ( $this->choices as $value => $label ) : ?>
+		            <li>
+		                <label>
+		                    <input type="checkbox" value="<?php echo esc_attr( $value ); ?>" <?php checked( in_array( $value, $multi_values ) ); ?> /> 
+		                    <?php echo esc_html( $label ); ?>
+		                </label>
+		            </li>
+		        <?php endforeach; ?>
+		    </ul>
+		    <input type="hidden" <?php $this->link(); ?> value="<?php echo esc_attr( implode( ',', $multi_values ) ); ?>" />
+		<?php 
+		}
+	}
+
+
+	/**
 	 * Reset settings
 	 */
 	class Graphene_Reset_Settings extends WP_Customize_Control {
@@ -432,7 +495,36 @@ function graphene_add_customizer_controls( $wp_customize ) {
 
 
 	/**
+	 * Graphene Plus features
+	 */
+	class Graphene_Plus_Feature_Control extends WP_Customize_Control {
+		public $link = '';
+		public $imgurl = '';
+		
+		public function render_content() {
+			$args = array(
+                'utm_campaign'  => 'graphene-plus',
+                'utm_source'    => 'graphene-theme',
+                'utm_content'   => str_replace( ']', '', str_replace( 'graphene_settings[', '', $this->id ) ),
+                'utm_medium'    => 'customizer',
+            );
+            ?>
+            <div class="graphene-plus-feature">
+            	<a href="<?php echo add_query_arg( $args, $this->link ); ?>">
+            		<span class="label"><?php _e( 'This feature is available in Graphene Plus', 'graphene' ); ?></span>
+            		<img src="<?php echo $this->imgurl; ?>" alt="" />
+            	</a>
+            </div>
+            <?php
+		}
+	}
+
+
+	/**
 	 * Alpha colour picker
 	 */
 	require_once( GRAPHENE_ROOTDIR . '/admin/customizer/alpha-color-picker/alpha-color-picker.php' );
+
+
+	do_action( 'graphene_add_customizer_controls', $wp_customize );
 }

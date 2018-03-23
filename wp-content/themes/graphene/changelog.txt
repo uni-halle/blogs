@@ -4,6 +4,23 @@ https://www.graphene-theme.com/
 
 CHANGELOG
 
+Version 2.3.1
+	* Fixed: Static front page not shown if slider option "Exclude the categories from posts listing" is enabled
+	* Fixed: Fatal error in certain cases where custom widgets do not have the get_settings() method
+	* Fixed: Textarea default height set too low
+
+Version 2.3
+	* Added: Rearranged sidebars so that they always appear after the main content in mobile view, regardless of column settings
+	* Added: Widgets display option for mobile- or desktop-only, or both
+	* Added: Front-facing user profile fields
+	* Added: Option to customize "In this section" title
+	* Added: "Card" slider display style
+	* Fixed: Unable to save settings for "Keep HTML tags in excerpts" option in Customizer
+	* Fixed: Settings for "Keep HTML tags in excerpts" option not actually being applied to excerpts
+	* Fixed: Primary menu active item colour customisation not applied
+	* Fixed: Previous favicon URL still being used when migrating from older versions of Graphene
+	* Fixed: "Exclude the categories from posts listing" option not applied
+
 Version 2.2
 	* Added: Colour customisation options for footer widget area
 	* Added: Automatically select best image available for display of individual posts and slider
