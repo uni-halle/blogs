@@ -3,12 +3,12 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: https://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.5.58
+Version: 1.5.59
 Author: WebDorado
 Author URI: https://web-dorado.com/wordpress-plugins-bundle.html
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
-$wd_spider_calendar_version="1.5.58";
+$wd_spider_calendar_version="1.5.59";
 // LANGUAGE localization.
 function sp_calendar_language_load() {
   load_plugin_textdomain('sp_calendar', FALSE, basename(dirname(__FILE__)) . '/languages');
@@ -1406,79 +1406,6 @@ function calendar_export() {
 }
 
 
-if (!function_exists('spcal_bp_install_notice')) {
-
-  if(get_option('wds_seo_notice_status')==='' || get_option('wds_seo_notice_status')==='1'){
-	return;
-  }
-
-  function spcal_bp_script_style() {
-    $screen = get_current_screen();
-    $screen_id = $screen->id;
-    if($screen_id!="toplevel_page_SpiderCalendar" && $screen_id!="calendar_page_spider_calendar_event_category" && $screen_id!="calendar_page_spider_calendar_themes" && $screen_id!="calendar_page_spider_widget_calendar_themes" && $screen_id!="calendar_page_calendar_export" && $screen_id!="calendar_page_Uninstall_sp_calendar" && $screen_id!="calendar_page_overview_sp_calendar"&& $screen_id!="calendar_page_Spider_calendar_Licensing") {
-      return;
-    }
-
-    $spcal_bp_plugin_url = plugins_url('', __FILE__);
-    wp_enqueue_script('spcal_bck_install', $spcal_bp_plugin_url . '/js/wd_bp_install.js', array('jquery'));
-    wp_enqueue_style('spcal_bck_install', $spcal_bp_plugin_url . '/style_for_cal/wd_bp_install.css');
-  }
-  add_action('admin_enqueue_scripts', 'spcal_bp_script_style');
-
-  /**
-   * Show notice to install backup plugin
-   */
-  function spcal_bp_install_notice() {
-	$screen = get_current_screen(); 
-	$screen_id = $screen->id;
-    if($screen_id!="toplevel_page_SpiderCalendar" && $screen_id!="calendar_page_spider_calendar_event_category" && $screen_id!="calendar_page_spider_calendar_themes" && $screen_id!="calendar_page_spider_widget_calendar_themes" && $screen_id!="calendar_page_calendar_export" && $screen_id!="calendar_page_Uninstall_sp_calendar" && $screen_id!="calendar_page_overview_sp_calendar"&& $screen_id!="calendar_page_Spider_calendar_Licensing") {
-      return;
-    }
-
-    $spcal_bp_plugin_url = plugins_url('', __FILE__);
-    $prefix = 'sp';
-    $meta_value = get_option('wd_seo_notice_status');
-    if ($meta_value === '' || $meta_value === false) {
-      ob_start();
-      ?>
-      <div class="notice notice-info" id="wd_bp_notice_cont">
-        <p>
-          <img id="wd_bp_logo_notice" src="<?php echo $spcal_bp_plugin_url . '/images/seo_logo.png'; ?>">
-          <?php _e("Spider Event Calendar advises:Optimize your web pages for search engines with the", $prefix) ?>
-          <a href="https://wordpress.org/plugins/seo-by-10web/" title="<?php _e("More details", $prefix) ?>"
-             target="_blank"><?php _e("FREE SEO", $prefix) ?></a>
-          <?php _e("plugin.", $prefix) ?>
-          <a class="button button-primary"
-             href="<?php echo esc_url(wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=seo-by-10web'), 'install-plugin_seo-by-10web')); ?>">
-            <span onclick="wd_bp_notice_install()"><?php _e("Install", $prefix); ?></span>
-          </a>
-        </p>
-        <button type="button" class="wd_bp_notice_dissmiss notice-dismiss"><span class="screen-reader-text"></span>
-        </button>
-      </div>
-      <script>spcal_bp_url = '<?php echo add_query_arg(array('action' => 'wd_seo_dismiss',), admin_url('admin-ajax.php')); ?>'</script>
-      <?php
-      echo ob_get_clean();
-    }
-  }
-
-  if (!is_dir(plugin_dir_path(dirname(__FILE__)) . 'seo-by-10web')) {
-    add_action('admin_notices', 'spcal_bp_install_notice');
-  }
-
-  /**
-   * Add usermeta to db
-   *
-   * empty: notice,
-   * 1    : never show again
-   */
-  function spcal_bp_install_notice_status() {
-    update_option('wd_seo_notice_status', '1', 'no');
-  }
-  add_action('wp_ajax_wd_seo_dismiss', 'spcal_bp_install_notice_status');
-}
-
-
 add_filter("plugin_row_meta", 'spidercal_add_plugin_meta_links', 10, 2);
 
 function spidercal_add_plugin_meta_links($meta_fields, $file){
@@ -1575,4 +1502,76 @@ $spider_category_event_table = "CREATE TABLE IF NOT EXISTS `" . $wpdb->prefix . 
   spider_calendar_chech_update();
 }
 register_activation_hook(__FILE__, 'spidercal_activate');
+
+if (!function_exists('spcal_bp_install_notice')) {
+
+  if(get_option('wds_seo_notice_status')==='' || get_option('wds_seo_notice_status')==='1'){
+    return;
+  }
+
+  function spcal_bp_script_style() {
+    $screen = get_current_screen();
+    $screen_id = $screen->id;
+    if($screen_id!="toplevel_page_SpiderCalendar" && $screen_id!="calendar_page_spider_calendar_event_category" && $screen_id!="calendar_page_spider_calendar_themes" && $screen_id!="calendar_page_spider_widget_calendar_themes" && $screen_id!="calendar_page_calendar_export" && $screen_id!="calendar_page_Uninstall_sp_calendar" && $screen_id!="calendar_page_overview_sp_calendar"&& $screen_id!="calendar_page_Spider_calendar_Licensing") {
+      return;
+    }
+
+    $spcal_bp_plugin_url = plugins_url('', __FILE__);
+    wp_enqueue_script('spcal_bck_install', $spcal_bp_plugin_url . '/js/wd_bp_install.js', array('jquery'));
+    wp_enqueue_style('spcal_bck_install', $spcal_bp_plugin_url . '/style_for_cal/wd_bp_install.css');
+  }
+  add_action('admin_enqueue_scripts', 'spcal_bp_script_style');
+
+  /**
+   * Show notice to install backup plugin
+   */
+  function spcal_bp_install_notice() {
+    $screen = get_current_screen();
+    $screen_id = $screen->id;
+    if($screen_id!="toplevel_page_SpiderCalendar" && $screen_id!="calendar_page_spider_calendar_event_category" && $screen_id!="calendar_page_spider_calendar_themes" && $screen_id!="calendar_page_spider_widget_calendar_themes" && $screen_id!="calendar_page_calendar_export" && $screen_id!="calendar_page_Uninstall_sp_calendar" && $screen_id!="calendar_page_overview_sp_calendar"&& $screen_id!="calendar_page_Spider_calendar_Licensing") {
+      return;
+    }
+
+    $spcal_bp_plugin_url = plugins_url('', __FILE__);
+    $prefix = 'sp';
+    $meta_value = get_option('wd_seo_notice_status');
+    if ($meta_value === '' || $meta_value === false) {
+      ob_start();
+      ?>
+        <div class="notice notice-info" id="wd_bp_notice_cont">
+            <p>
+                <img id="wd_bp_logo_notice" src="<?php echo $spcal_bp_plugin_url . '/images/seo_logo.png'; ?>">
+              <?php _e("Spider Event Calendar advises:Optimize your web pages for search engines with the", $prefix) ?>
+                <a href="https://wordpress.org/plugins/seo-by-10web/" title="<?php _e("More details", $prefix) ?>"
+                   target="_blank"><?php _e("FREE SEO", $prefix) ?></a>
+              <?php _e("plugin.", $prefix) ?>
+                <a class="button button-primary"
+                   href="<?php echo esc_url(wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=seo-by-10web'), 'install-plugin_seo-by-10web')); ?>">
+                    <span onclick="wd_bp_notice_install()"><?php _e("Install", $prefix); ?></span>
+                </a>
+            </p>
+            <button type="button" class="wd_bp_notice_dissmiss notice-dismiss"><span class="screen-reader-text"></span>
+            </button>
+        </div>
+        <script>spcal_bp_url = '<?php echo add_query_arg(array('action' => 'wd_seo_dismiss',), admin_url('admin-ajax.php')); ?>'</script>
+      <?php
+      echo ob_get_clean();
+    }
+  }
+
+  if (!is_dir(plugin_dir_path(dirname(__FILE__)) . 'seo-by-10web')) {
+    add_action('admin_notices', 'spcal_bp_install_notice');
+  }
+
+  /**
+   * Add usermeta to db
+   *
+   * empty: notice,
+   * 1    : never show again
+   */
+  function spcal_bp_install_notice_status() {
+    update_option('wd_seo_notice_status', '1', 'no');
+  }
+  add_action('wp_ajax_wd_seo_dismiss', 'spcal_bp_install_notice_status');
+}
 ?>

@@ -3,7 +3,7 @@ Contributors: webdorado, wdsupport, 10web
 Tags: calendar, event, event calendar, events, events calendar, calendars, event manager, calendar widget,  event management,  free calendar, Calender, upcoming events
 Requires at least: 3.9  
 Tested up to: 4.9   
-Stable tag: 1.5.58
+Stable tag: 1.5.59
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -73,6 +73,9 @@ If you think you found a bug in the plugin or have any problem/question concerni
 
 
 == Changelog ==
+
+= 1.5.59 =
+Fixed: register_activation_hook not being called because of conflict with some plugins  
 
 = 1.5.58 =
 Fixed: JS error on widget   
