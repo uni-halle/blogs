@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: https://gtranslate.io/?xyz=998
 Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="https://wordpress.org/support/plugin/gtranslate">GTranslate Support</a>.
-Version: 2.8.36
+Version: 2.8.39
 Author: Translate AI Multilingual Solutions
 Author URI: https://gtranslate.io
 Text Domain: gtranslate
@@ -1204,7 +1204,7 @@ EOT;
                             <li style="margin:0;"><?php _e('Priority Live Chat support', 'gtranslate'); ?></li>
                         </ul>
 
-                        <p><?php _e('Prices starting from <b>$3.99/month</b>!', 'gtranslate'); ?></p>
+                        <p><?php _e('Prices starting from <b>$5.99/month</b>!', 'gtranslate'); ?></p>
 
                         <a href="https://gtranslate.io/?xyz=998#pricing" target="_blank" class="button-primary"><?php _e('Try Now (15 days free)', 'gtranslate'); ?></a> <a href="https://gtranslate.io/?xyz=998#faq" target="_blank" class="button-primary"><?php _e('FAQ', 'gtranslate'); ?></a> <a href="https://gtranslate.io/?xyz=998#contact" target="_blank" class="button-primary"><?php _e('Live Chat', 'gtranslate'); ?></a>
                     </div>
@@ -1951,7 +1951,8 @@ if($data['add_hreflang_tags'] and ($data['pro_version'] or $data['enterprise_ver
         else
             $enabled_languages = $data['incl_langs'];
 
-        $current_url = wp_get_canonical_url();
+        //$current_url = wp_get_canonical_url();
+        $current_url = home_url(add_query_arg(null, null));
 
         if($current_url !== false) {
             // adding default language
@@ -1963,9 +1964,9 @@ if($data['add_hreflang_tags'] and ($data['pro_version'] or $data['enterprise_ver
                 $domain = str_replace('www.', '', $_SERVER['HTTP_HOST']);
 
                 if($data['enterprise_version'])
-                    $href = str_ireplace('://' . $domain, '://' . $lang . '.' . $domain, $current_url);
+                    $href = str_ireplace('://' . $_SERVER['HTTP_HOST'], '://' . $lang . '.' . $domain, $current_url);
                 elseif($data['pro_version'])
-                    $href = str_ireplace('://' . $domain, '://' . $domain . '/' . $lang, $current_url);
+                    $href = str_ireplace('://' . $_SERVER['HTTP_HOST'], '://' . $_SERVER['HTTP_HOST'] . '/' . $lang, $current_url);
 
                 if(!empty($href) and $lang != $data['default_language'])
                     echo '<link rel="alternate" hreflang="'.$lang.'" href="'.$href.'" />'."\n";

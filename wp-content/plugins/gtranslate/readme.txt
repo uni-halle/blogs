@@ -4,7 +4,7 @@ Author: Translate AI Multilingual Solutions
 Tags: translate wordpress, multilingual, translate, translation, language, bilingual, localization, translation proxy, i18n, l10n, localisation, multilanguage, google translate
 Requires at least: 2.8.1
 Tested up to: 4.9
-Stable tag: 2.8.36
+Stable tag: 2.8.39
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
@@ -219,6 +219,16 @@ You need to go to the language you want to edit, for instance, French: http://do
 7. Settings page
 
 == Changelog ==
+
+= 2.8.39 =
+* 2 more translation proxy servers added: ani, evn
+
+= 2.8.38 =
+* Hreflang tags bug fixed
+* Pricing info updated
+
+= 2.8.37 =
+* Fix for identical hreflang tags when using www prefix for domain
 
 = 2.8.36 =
 * Option to add hreflang tags for translated pages
