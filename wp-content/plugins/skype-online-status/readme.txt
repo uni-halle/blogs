@@ -3,8 +3,8 @@ Contributors: RavanH
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=ravanhagen%40gmail%2ecom&item_name=Skype%20Legacy%20Buttons&item_number=3%2e0&no_shipping=0&tax=0&bn=PP%2dDonationsBF&charset=UTF%2d8&lc=us
 Tags: skype, skype button, call, support, widget, widgets, post, posts, quicktag, tinymce, tinymce3, im, skype-button
 Requires at least: 3.2
-Tested up to: 4.6
-Stable tag: 3.0.4
+Tested up to: 4.9
+Stable tag: 3.1
 
 Add Legacy Skype "Contact Me" buttons to your WordPress site through widgets, post shortcode and template tags.
 
@@ -77,11 +77,11 @@ For version 3.5 and beyond :)
 
 Please report anything you find on [WordPress Support &raquo; Skype Legacy Buttons](http://wordpress.org/tags/skype-online-status "WordPress Support &raquo; Skype Legacy Buttons")
 
-When reporting bugs, please describe as carefully as possible and provide information like the version number of the plugin, WordPress and - if relevant - server security settings, PHP and MySQL version. Provide as much related info as you can, so we can reproduce the error... And fix it :) 
+When reporting bugs, please describe as carefully as possible and provide information like the version number of the plugin, WordPress and - if relevant - server security settings, PHP and MySQL version. Provide as much related info as you can, so we can reproduce the error... And fix it :)
 
 = Known issues =
 
-- The javascript provided by Skype that detects whether Skype is installed (client side), does not work properly on Linux. It defaults to displaying a download popup even if Skype is installed on the visitors computer after the Skype button is clicked. Hopefully - but I doubt it - Skype will fix this some day :$ 
+- The javascript provided by Skype that detects whether Skype is installed (client side), does not work properly on Linux. It defaults to displaying a download popup even if Skype is installed on the visitors computer after the Skype button is clicked. Hopefully - but I doubt it - Skype will fix this some day :$
 
 == Installation ==
 
@@ -95,13 +95,13 @@ Search for "Skype Legacy Buttons" and install with that slick **Plugins > Add Ne
 
 Follow these steps:
 
-Note: When upgrading from version 2.5.x or previous: please deactivate plugin and remove the old directories and files before uploading! 
+Note: When upgrading from version 2.5.x or previous: please deactivate plugin and remove the old directories and files before uploading!
 
  1. Download archive and unpack.
- 2. Upload (and overwrite) the /skype-online-status/ folder and its content to the /plugins/ folder. 
+ 2. Upload (and overwrite) the /skype-online-status/ folder and its content to the /plugins/ folder.
  3. Activate plugin on the Plug-ins page
  4. Configure (or update) your SkypeID and settings on the Settings > Skype Buttons page
- 5. Activate the widget or put `<?php if (function_exists(get_skype_status)) { get_skype_status(''); } ?>` in your sidebar.php or any other template file or use the Skype quicktag button to insert the **[**skype-status**]** shortcode in your posts/pages to display the Skype button anywhere on your website. 
+ 5. Activate the widget or put `<?php if (function_exists(get_skype_status)) { get_skype_status(''); } ?>` in your sidebar.php or any other template file or use the Skype quicktag button to insert the **[**skype-status**]** shortcode in your posts/pages to display the Skype button anywhere on your website.
 
 Read more on usage in the Quick Guide section of the Settings > Skype Buttons page, available after installation.
 
@@ -257,11 +257,11 @@ Gaeilge translation and dropdown template protocol bugfix
 * switch to global WP constants (like `WP_CONTENT_DIR`)
 * bugfix: multiple widget theme preview
 
-= 2.6.9 = 
-* Danish + Italian translations 
+= 2.6.9 =
+* Danish + Italian translations
 * bugfixes in install routine and detect blog language on reset
 * bugfix: allow the use of cURL library (if available) while `allow_url_fopen` is off
-* Removal of good old Buttonsnap Library to avoid showstopper error in WP 2.7 
+* Removal of good old Buttonsnap Library to avoid showstopper error in WP 2.7
 * adaptation of settings page to fit the new WP 2.7 backend
 
 = 2.6.4 =
@@ -269,14 +269,14 @@ Gaeilge translation and dropdown template protocol bugfix
 
 = 2.6.3 =
 * Implement the use of cURL if available
-* Multiple widgets!! 
+* Multiple widgets!!
 * Thank-you box for donators at backend
 * Bugfixes: widget options page function, widgets for WP < 2.5, `get_skype_status` and valid characters in SkypeID
 
 = 2.6.2 =
 * bugfix in Custom template save to db (stripslashes)
-* heaps more themes 
-* new {function} tag to My Status templates 
+* heaps more themes
+* new {function} tag to My Status templates
 * improved widget with preview
 
 = 2.6.1 =
@@ -284,7 +284,7 @@ Gaeilge translation and dropdown template protocol bugfix
 * some small bugfixes and code improvements
 * complete removal button
 * simple widget
-* removed built-in update checker (redundant since WP2.5 auto-update) 
+* removed built-in update checker (redundant since WP2.5 auto-update)
 * add your own download link
 * improved `reg_exp` for quicktag replacement (defeating wpautop's wrapping p)
 * minor changes in available settings (newline for download link optional)
@@ -295,7 +295,7 @@ Gaeilge translation and dropdown template protocol bugfix
 
 = 2.4 =
 * onkeydown action on admin textarea
-* backwards compatibility with PHP versions previous to 4.3 ( fallback to `file()` instead of `file_get_contents()` ) 
+* backwards compatibility with PHP versions previous to 4.3 ( fallback to `file()` instead of `file_get_contents()` )
 * check for allow_url_fopen before remote file reading (used in status check and upgrade check) with dynamic options change
 
 = 2.3 =
@@ -303,9 +303,9 @@ Gaeilge translation and dropdown template protocol bugfix
 
 = 2.2 =
 * moved buttonsnap.php
-* changes to Quick Guide, template files and Live Support 
-* bugfixes: 
- 1. quicktag button not showing; 
+* changes to Quick Guide, template files and Live Support
+* bugfixes:
+ 1. quicktag button not showing;
  2. multiple skype buttons in 1 post not showing
 * minor changes to admin page
 * global string for speed improvement
@@ -328,14 +328,14 @@ Gaeilge translation and dropdown template protocol bugfix
 
 
 = 1.6 =
-* templating guide 
+* templating guide
 * redesign Options > Skype Status page
 
 = 1.5 =
 * plain text fallback template in core code
 
 = 1.4 =
-* reset button 
+* reset button
 * default settings
 
 = 1.3 =
@@ -343,8 +343,8 @@ Gaeilge translation and dropdown template protocol bugfix
 
 = 1.2 =
 * bugfixes:
- 1. inconsistent options page form-labels; 
- 2. `skype_status_check` not defaulting to `status_error_txt` when mystatus.skype.com is off-line 
+ 1. inconsistent options page form-labels;
+ 2. `skype_status_check` not defaulting to `status_error_txt` when mystatus.skype.com is off-line
 
 = 1.1 =
 * added new text template file
@@ -360,4 +360,3 @@ Gaeilge translation and dropdown template protocol bugfix
 = 0.1 =
 * function and syntax conversion from plugin Skype Button (by Anti Veeranna, discontinued)
 * starting date: 2006-03-03
-

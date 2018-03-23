@@ -2,10 +2,10 @@
 /*
 Plugin Name: Skype Legacy Buttons
 Plugin URI: http://status301.net/wordpress-plugins/skype-online-status/
-Description: Add multiple, highly customizable and accessible Skype buttons to post/page content, sidebar or theme templates. Find documentation and advanced configuration options on the settings page or just go straight to your <a href="widgets.php">Widgets</a> page and add one there...  
+Description: Add multiple, highly customizable and accessible Skype buttons to post/page content, sidebar or theme templates. Find documentation and advanced configuration options on the settings page or just go straight to your <a href="widgets.php">Widgets</a> page and add one there...
 Text Domain: skype-online-status
 Domain Path: languages
-Version: 3.0.4
+Version: 3.1
 Author: RavanH
 Author URI: http://status301.net/
 */
@@ -32,9 +32,9 @@ Author URI: http://status301.net/
 */
 
 // Plugin version number and date
-define('SOSVERSION', '3.0');
-define('SOSVERSION_DATE', '2015-05-20');
-		
+define('SOSVERSION', '3.1');
+define('SOSVERSION_DATE', '2018-03-05');
+
 // Plugin constants
 define('SOSPLUGINDIR', dirname(__FILE__));
 define('SOSPLUGINBASENAME', plugin_basename(__FILE__));
@@ -45,7 +45,7 @@ require_once(SOSPLUGINDIR . '/skype-classes.php');
 
 Skype_Online_Status::init();
 
-// template tag functions 
+// template tag functions
 function get_skype_status($args = '') {
 	echo Skype_Online_Status::skype_status($args);
 }

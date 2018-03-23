@@ -13,7 +13,6 @@ if(!empty($_SERVER['SCRIPT_FILENAME']) && basename(__FILE__) == basename($_SERVE
 		<p id="basic" style="text-align:right"><a href="#wphead"><?php _e('Top') ?></a></p>
 		<h3>Basic Use</h3>
 		<p>Define basic Skype settings such as Skype ID (more then one possible, seperate with a semi-colon <strong>;</strong>), User name and preferred Theme on the Skype Legacy Buttons Settings page as default for each Skype legacy button on your blog. Then use one or more of the methodes described below to trigger the default Skype button on your blog pages. Under 'Advanced' you can read about ways to override your default settings and create multiple and different Skype buttons across your blog.</p>
-<!--		<p><img src="http://c.skype.com/i/legacy/images/share/buttons/privacy_shot.jpg" alt="" style="float:right" /><strong>Important:</strong> Be sure to enable <strong><em>online status</em></strong> in your personal Skype settings on your PC: open your Skype client, go to Tools > Options > Privacy (or Advanced), tick the 'Allow my status to be shown on the web' (or similar in your language) checkbox and 'Save'.</p> -->
 		<p>To make your Skype button initiate conference calls or multi-chat sessions, put multiple Skype ID's seperated with a semi-colon (;) in the Skype ID box.</p>
 
 		<h4>Widgets</h4>
@@ -62,7 +61,7 @@ if(!empty($_SERVER['SCRIPT_FILENAME']) && basename(__FILE__) == basename($_SERVE
 			<li>Everything within the template between <strong>&lt;!-- voicemail_start --&gt;</strong> and <strong>&lt;!-- voicemail_end --&gt;</strong> will be erased when the option 'Use <strong>Leave a voicemail</strong>' on the Skype Legacy Buttons Settings page is NOT checked.</li>
 		</ol>
 		<p>For the rest you are free to put anything you like in the template files.<br />
-		To get started see <a href="http://www.skype.com/go/skypebuttons">http://www.skype.com/go/skypebuttons</a> for an interactive form to create new Skype Button code.</p> 
+		To get started see <a href="http://www.skype.com/go/skypebuttons">http://www.skype.com/go/skypebuttons</a> for an interactive form to create new Skype Button code.</p>
 		<h4>Template tags</h4>
 		<p>The following tags are available:</p>
 		<strong>General tags</strong>
@@ -70,11 +69,7 @@ if(!empty($_SERVER['SCRIPT_FILENAME']) && basename(__FILE__) == basename($_SERVE
 			<dt>{skypeid}</dt><dd>Put this where the 'Skype ID' should go. Usually href="skype:{skypeid}?call" but it can also be used elsewhere.</dd>
 			<dt>{username}</dt><dd>Put this where you want the 'User name' to appear, such as in title="", alt="" or as link text.</dd>
 			<dt>{functiontxt}</dt><dd>Put this where you want the <em>corresponding</em> Function text to appear, such as in title="", alt="" or as link text.</dd>
-<!--			<dt>{function}</dt><dd>Put this where you want the <em>preselected</em> Function to appear, such as after href="skype:{skypeid}?... in the link URL. The function can be set on the Skype Buttons Settings page under 'Function' to options like 'Call me', 'Chat with me' or 'Leave a voicemail'.</dd>
-			<dt>{status}</dt><dd>Put this where you want the <em>dynamic</em> 'Status' texts to appear, such as in title="", alt="" or as link text. The status text (defined on the Skype Status Settings page under 'Status text') depends on the actual online status of the defined Skype user and ranges from 'Unknown' to 'Online'.</dd>
-			<dt>{statustxt}</dt><dd>Put this where you want the <em>static</em> 'My status' text to appear, such as in title="", alt="" or as link text.</dd>
-			<dt>{sep2}</dt><dd>Put this where you want the 'Second seperator' text to appear, usually between the tags like {username} and {status}.</dd>
--->			<dt>{sep1}</dt><dd>Put this where you want the 'First seperator' text to appear, usually between the tags like {call} and {username}.</dd>
+			<dt>{sep1}</dt><dd>Put this where you want the 'First seperator' text to appear, usually between the tags like {call} and {username}.</dd>
 		</dl>
 		<strong>Action text tags</strong>
 		<dl>
@@ -88,8 +83,6 @@ if(!empty($_SERVER['SCRIPT_FILENAME']) && basename(__FILE__) == basename($_SERVE
 		<h4>Examples</h4>
 		<p>The classic 'Call me!' button template looks like this:</p>
 		<blockquote>&lt;!-- 'Call me!' classic style - http://www.skype.com/go/skypebuttons --&gt;<br />&lt;a href="skype:{skypeid}?call" onclick="return skypeCheck();" title="{call}{sep1}{username}">&lt;img src="http://download.skype.com/share/skypebuttons/buttons/call_blue_white_124x52.png" style="border: none;" width="124" height="52" alt="{call}{sep1}{username}" /&gt;&lt;/a&gt;</blockquote>
-<!--		<p>The template for a simple text link displaying username and online status (seperated by the second seperator tag) could look like this:</p>
-		<blockquote>&lt;!-- 'My status' plain text link - http://www.skype.com/go/skypebuttons --&gt;<br />&lt;a href="skype:{skypeid}?call" onclick="return skypeCheck();" title="{username}{sep2}{status}">{username}{sep2}{status}&lt;/a&gt;</blockquote> -->
 		<p style="text-align:right"><a href="#wphead"><?php _e('Top') ?></a></p>
 
 	</div> <!-- #guide -->
@@ -116,7 +109,7 @@ if(!empty($_SERVER['SCRIPT_FILENAME']) && basename(__FILE__) == basename($_SERVE
 		<p>I appreciate every contribution, no matter if it&#8217;s two or twenty euro/dollar or any other amount. Please, use the link in the sidebar.</p>
 		<p>Thanks!<br />
 			<em>RavanH</em></p>
-	
+
 		<p id="live" style="text-align:right"><a href="#wphead"><?php _e('Top') ?></a></p>
 
 		<h3><?php _e('Support','skype-online-status') ?></h3>
@@ -127,18 +120,17 @@ if(!empty($_SERVER['SCRIPT_FILENAME']) && basename(__FILE__) == basename($_SERVE
 			<em>RavanH</em></p>
 
 		<p id="credits" style="text-align:right"><a href="#wphead"><?php _e('Top') ?></a></p>
-		
+
 		<h3>Credits</h3>
 		<p>This plugin was built by <em>RavanH</em>. It was originally based upon the neat little plugin <a href="http://anti.masendav.com/skype-button-for-wordpress/">Skype Button v2.01</a> by <em>Anti Veeranna</em>. My continued development of this plugin is supported by donators, mentioned in the sidebar. Many thanks!</p>
 
 		<p id="revhist" style="text-align:right"><a href="#wphead"><?php _e('Top') ?></a></p>
 		<h4>FAQ's, Revision History, Todo and other info</h4>
-		<p>See the included <a target="_blank" href="<?php echo plugins_url('/readme.txt', __FILE__); ?>">README</a> file:</p>
-		<iframe src="<?php echo plugins_url('/readme.txt', __FILE__); ?>" scrolling="auto" allowtransparency="yes" style="margin:0;padding:0;border:0;width:100%;height:600px"></iframe>
+		<p>See the included <a target="_blank" href="<?php echo plugins_url('/readme.txt', __FILE__); ?>">README</a> file.</p>
 		<p style="text-align:right"><a href="#wphead"><?php _e('Top') ?></a></p>
 
 	<?php
-	if (defined('WP_DEBUG') && WP_DEBUG) { 
+	if (defined('WP_DEBUG') && WP_DEBUG) {
 		echo "<h3>DEBUG INFO</h3>
 		<div style=\"width:32%;float:left\"><h4>Old database values</h4><textarea readonly=\"readonly\" style=\"width:100%;height:600px\">";
 		foreach (Skype_Online_Status::$config as $key => $value) {
@@ -147,7 +139,7 @@ if(!empty($_SERVER['SCRIPT_FILENAME']) && basename(__FILE__) == basename($_SERVE
 		unset($value);
 		echo "</textarea></div>
 		<div style=\"width:32%;margin:0 2%;float:left\"><h4>Updated to</h4><textarea readonly=\"readonly\" style=\"width:100%;height:600px\">";
-		if (!empty($_POST['skype_status_update']) || !empty($_POST['skype_status_reset'])) { 
+		if (!empty($_POST['skype_status_update']) || !empty($_POST['skype_status_reset'])) {
 			foreach ($option as $key => $value) {
 				echo $key . " => " . stripslashes(htmlspecialchars($value)) . "\r\n";
 			}
@@ -160,9 +152,9 @@ if(!empty($_SERVER['SCRIPT_FILENAME']) && basename(__FILE__) == basename($_SERVE
 		}
 		unset($value);
 		echo "</textarea></div><div style=\"clear:both\"></div>
-		<div id=\"globals\"><h4>Pluging global values and flags</h4> 
+		<div id=\"globals\"><h4>Pluging global values and flags</h4>
 		<p>SOSVERSION=".SOSVERSION."<br />SOSVERSION_DATE=".SOSVERSION_DATE."</p>
-		</div>";	
+		</div>";
 	}
 	?>
 	</div> <!-- #notes -->
