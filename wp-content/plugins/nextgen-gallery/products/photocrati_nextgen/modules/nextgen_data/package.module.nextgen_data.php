@@ -282,6 +282,20 @@ class Mixin_NextGen_Gallery_Validation
             $this->object->path = M_NextGen_Data::strip_html($this->object->path);
             $this->object->path = str_replace(array('"', "''", ">", "<"), array('', '', '', ''), $this->object->path);
         }
+        // Ensure that the gallery path is restriected to $fs->get_document_root('galleries')
+        $fs = C_Fs::get_instance();
+        $root = $fs->get_document_root('galleries');
+        $gallery_abspath = $fs->get_absolute_path($fs->join_paths($root, $this->object->path));
+        if ($gallery_abspath[0] != DIRECTORY_SEPARATOR) {
+            $gallery_abspath = DIRECTORY_SEPARATOR . $gallery_abspath;
+        }
+        if (strpos($gallery_abspath, $root) === FALSE) {
+            $this->object->add_error(sprintf(__("Gallery path must be located in %s", 'nggallery'), $root), 'gallerypath');
+            $storage = C_Gallery_Storage::get_instance();
+            $this->object->path = $storage->get_upload_relpath($this->object);
+            unset($storage);
+        }
+        $this->object->path = trailingslashit($this->object->path);
         $this->object->validates_presence_of('title');
         $this->object->validates_presence_of('name');
         $this->object->validates_uniqueness_of('slug');

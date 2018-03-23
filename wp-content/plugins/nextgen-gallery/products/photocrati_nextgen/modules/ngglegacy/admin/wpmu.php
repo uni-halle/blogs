@@ -28,9 +28,20 @@ if(preg_match('#' . basename(__FILE__) . '#', $_SERVER['PHP_SELF'])) { die('You 
 
         // the path should always end with a slash	
         $ngg_options['gallerypath']    = trailingslashit($ngg_options['gallerypath']);
+		$fs               = C_Fs::get_instance();
+		$root             = $fs->get_document_root('galleries');
+		$gallery_abspath = $fs->get_absolute_path($fs->join_paths($root, $ngg_options['gallerypath']));
+		if ($gallery_abspath[0] != DIRECTORY_SEPARATOR) $gallery_abspath = DIRECTORY_SEPARATOR.$gallery_abspath;
+		if (strpos($gallery_abspath, $root) === FALSE) {
+            $messagetext = sprintf(__("Gallery path must be located in %s", 'nggallery'), $root);
+            $storage = C_Gallery_Storage::get_instance();
+            $ngg_options['gallerypath'] = implode(DIRECTORY_SEPARATOR, array('wp-content', 'uploads', 'sites', '%BLOG_ID%', 'nggallery')).DIRECTORY_SEPARATOR;
+            unset($storage);
+	    }
+	    else {
+			$messagetext = __('Updated successfully','nggallery');
+        }
 		update_site_option('ngg_options', $ngg_options);
-        
-	 	$messagetext = __('Updated successfully','nggallery');
 	}		
 
     // Show donation message only one time.

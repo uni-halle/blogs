@@ -602,7 +602,7 @@ function showDialog() {
                     'echo' => TRUE,
                     'name' => 'pageid',
                     'selected' => $album->pageid,
-                    'show_option_none' => esc_html_e('Not linked', 'nggallery'),
+                    'show_option_none' => esc_html__('Not linked', 'nggallery'),
                     'option_none_value' => 0
                 ));
                 $dropdown = ob_get_contents();

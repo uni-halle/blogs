@@ -87,7 +87,7 @@ class M_NextGen_Basic_Gallery extends C_Base_Module
         }
 
         // Frontend-only components
-        if (apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id))
+        if (!is_admin() && apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id))
         {
             // Provides the controllers for the display types
             $this->get_registry()->add_adapter(

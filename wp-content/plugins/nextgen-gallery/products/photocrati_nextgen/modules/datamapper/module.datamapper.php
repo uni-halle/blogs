@@ -263,5 +263,4 @@ class C_DataMapper_Installer
 		$this->settings->set_default_value('datamapper_driver', 'custom_post_datamapper');
 	}
 }
-
 new M_DataMapper();

@@ -3,7 +3,7 @@
 		type="text"
 		name="path"
 		id="gallery_path"
-		value="<?php echo esc_attr(str_replace('\\', DIRECTORY_SEPARATOR, $gallery->path)) ?>"
+		value="<?php echo esc_attr(preg_replace('#[/\\\]+#', DIRECTORY_SEPARATOR, $gallery->path )); ?>"
         <?php if (is_multisite()) echo "disabled"; ?>
 		/>
 </span>

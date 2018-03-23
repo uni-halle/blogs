@@ -63,7 +63,7 @@ class M_NextGen_Basic_Singlepic extends C_Base_Module
             );
         }
 
-        if (apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id))
+        if (!is_admin() && apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id))
         {
             // Provides settings fields and frontend rendering
             $this->get_registry()->add_adapter(

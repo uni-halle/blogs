@@ -233,12 +233,17 @@ class nggLoader
 			require_once (dirname (__FILE__) . '/lib/rewrite.php');				//  71.936
 
 			// Load backend libraries
-			if ( is_admin() ) {
+			if ( is_admin() && !$this->is_rest_url()) {
 				require_once (dirname (__FILE__) . '/admin/admin.php');
 				require_once (dirname (__FILE__) . '/admin/media-upload.php');
 				$this->nggAdminPanel = new nggAdminPanel();
 			}
 		}
+	}
+
+	function is_rest_url()
+	{
+		return strpos($_SERVER['REQUEST_URI'], 'wp-json') !== FALSE;
 	}
 
 	function load_thickbox_images() {

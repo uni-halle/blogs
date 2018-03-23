@@ -20,8 +20,9 @@ if ( isset($_POST['tag_action']) ) {
 		$todelete = (isset($_POST['deletetag_name'])) ? $_POST['deletetag_name'] : '';
 		$action_status = nggTags::delete_tags( $todelete );
 	} elseif ( $_POST['tag_action'] == 'editslug' ) {
-		$matchtag = (isset($_POST['tagname_match'])) ? $_POST['tagname_match'] : '';
+		$matchtag = esc_html((isset($_POST['tagname_match'])) ? $_POST['tagname_match'] : '');
 		$newslug   = (isset($_POST['tagslug_new'])) ? $_POST['tagslug_new'] : '';
+		$newslug = esc_html(M_NextGen_Data::strip_html($newslug));
 		$action_status = nggTags::edit_tag_slug( $matchtag, $newslug );
 	}
 }

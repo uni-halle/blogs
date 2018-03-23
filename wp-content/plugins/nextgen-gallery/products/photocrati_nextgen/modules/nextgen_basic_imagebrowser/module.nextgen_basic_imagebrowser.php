@@ -75,7 +75,7 @@ class M_NextGen_Basic_ImageBrowser extends C_Base_Module
             );
         }
 
-		if (apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id))
+		if (!is_admin() && apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id))
 		{
             // Add rendering logic
             $this->get_registry()->add_adapter(
