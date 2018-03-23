@@ -3,6 +3,10 @@
  * @package WPSEO\Admin\Views
  */
 
+/**
+ * @var Yoast_Form $yform
+ */
+
 if ( ! defined( 'WPSEO_VERSION' ) ) {
 	header( 'Status: 403 Forbidden' );
 	header( 'HTTP/1.1 403 Forbidden' );
@@ -24,7 +28,6 @@ $wpseo_export_phrase = sprintf(
 	action="<?php echo esc_url( admin_url( 'admin.php?page=wpseo_tools&tool=import-export#top#wpseo-export' ) ); ?>"
 	method="post"
 	accept-charset="<?php echo esc_attr( get_bloginfo( 'charset' ) ); ?>">
-	<?php $yform->checkbox( 'include_taxonomy_meta', __( 'Include Taxonomy Metadata', 'wordpress-seo' ) ); ?><br />
 	<?php wp_nonce_field( WPSEO_Export::NONCE_ACTION, WPSEO_Export::NONCE_NAME ); ?>
 	<button type="submit" class="button button-primary" id="export-button"><?php echo esc_html( $submit_button_value ); ?></button>
 </form>
