@@ -12,7 +12,7 @@ Plugin Name: Category Posts Widget
 Plugin URI: https://wordpress.org/plugins/category-posts/
 Description: Adds a widget that shows the most recent posts from a single category.
 Author: TipTopPress
-Version: 4.8.2
+Version: 4.8.3
 Author URI: http://tiptoppress.com
 Text Domain: category-posts
 Domain Path: /languages
@@ -441,8 +441,13 @@ class Widget extends \WP_Widget {
 	 * @since 4.1
 	 */
 	public function post_thumbnail_html( $html, $post_id, $post_thumbnail_id, $size, $attr ) {
-		if ( empty( $this->instance['thumb_w'] ) || empty( $this->instance['thumb_h'] ) ) {
-			return $html; // bail out if no full dimensions defined.
+		
+		$use_css_cropping = isset( $this->instance['use_css_cropping'] ) && $this->instance['use_css_cropping'];
+		$empty_dimensions = empty( $this->instance['thumb_w'] ) || empty( $this->instance['thumb_h'] );
+		$thumb = isset( $this->instance['template'] ) && preg_match( '/%thumb%/', $this->instance['template'] );
+		
+		if ( ! ( $use_css_cropping && ! $empty_dimensions && $thumb ) ) {
+			return $html; // If no full dimensions defined, just do not cropping for that image
 		}
 		$meta = image_get_intermediate_size( $post_thumbnail_id, $size );
 
@@ -1305,12 +1310,12 @@ class Widget extends \WP_Widget {
 			wp_reset_postdata();
 
 			$use_css_cropping = isset( $this->instance['use_css_cropping'] ) && $this->instance['use_css_cropping'];
+			$empty_dimensions = empty( $this->instance['thumb_w'] ) || empty( $this->instance['thumb_h'] );
+			$thumb = isset( $this->instance['template'] ) && preg_match( '/%thumb%/', $this->instance['template'] );
 
-			if ( $use_css_cropping ) {
+			if ( $use_css_cropping && ! $empty_dimensions && $thumb ) {
 				// enqueue relevant scripts and parameters to perform cropping
 				// once we support only 4.5+ it can be refactored to use wp_add_inline_script.
-				wp_enqueue_script( 'jquery' ); // just in case the theme or other plugins didn't enqueue it.
-				add_action( 'wp_footer', __NAMESPACE__ . '\change_cropped_image_dimensions', 100 );  // add to the footer the cropping script.
 				$number = $this->number;
 				// a temporary hack to handle difference in the number in a true widget
 				// and the number format expected at the rest of the places.
@@ -1327,6 +1332,8 @@ class Widget extends \WP_Widget {
 						return $a;
 					}
 				);
+				wp_enqueue_script( 'jquery' ); // just in case the theme or other plugins didn't enqueue it.
+				add_action('wp_footer',function () use ($number,$instance) { __NAMESPACE__ . '\\' . change_cropped_image_dimensions($number,$instance);},100);
 			}
 		}
 	}
@@ -1829,7 +1836,7 @@ class Widget extends \WP_Widget {
 					<p><?php esc_html_e( 'Excerpt settings', 'category-posts' ); ?></p>
 					<div class="cpwp_ident">
 					<?php
-					echo $this->get_number_input_block_html( $instance, 'excerpt_length', esc_html__( 'Excerpt length (words):', 'category-posts' ), get_option( 'posts_per_page' ), 1, 55, '', true );
+					echo $this->get_number_input_block_html( $instance, 'excerpt_length', esc_html__( 'Excerpt length (words):', 'category-posts' ), get_option( 'posts_per_page' ), 1, 200, '', true );
 					echo $this->get_text_input_block_html( $instance, 'excerpt_more_text', esc_html__( 'Excerpt \'more\' text:', 'category-posts' ), '', esc_attr__( '...', 'category-posts' ), true );
 					echo $this->get_checkbox_block_html( $instance, 'excerpt_filters', esc_html__( 'Don\'t override Themes and plugin filters', 'category-posts' ), false, true );
 					?>
@@ -1976,8 +1983,7 @@ add_action( 'widgets_init', __NAMESPACE__ . '\register_widget' );
  *
  * @since 4.7
  */
-function change_cropped_image_dimensions() {
-	?>
+function change_cropped_image_dimensions($number,$widgetsettings) {	?>
 	<script type="text/javascript">
 
 		if (typeof jQuery !== 'undefined')  {
@@ -2042,7 +2048,7 @@ function change_cropped_image_dimensions() {
 					},
 				}
 
-				<?php
+<?php
 				/**
 				 *  The cpw_crop_widgets is an internal filter that is used
 				 *  to gather the ids of the widgets to which apply cropping
@@ -2051,13 +2057,15 @@ function change_cropped_image_dimensions() {
 				 *  in the array while the ratio of width/height be the value
 				 */
 				$widgets_ids = apply_filters( 'cpw_crop_widgets', array() );
-				foreach ( $widgets_ids as $number => $ratio ) {
-				?>
-				cwp_namespace.fluid_images.widget = jQuery('#<?php echo esc_attr( $number ); ?>');
-				cwp_namespace.fluid_images.Widgets['<?php echo esc_attr( $number ); ?>'] = new cwp_namespace.fluid_images.WidgetPosts(cwp_namespace.fluid_images.widget,<?php echo esc_attr( $ratio ); ?>);
-				<?php } ?>
+				foreach ( $widgets_ids as $num => $ratio ) {
+					if($num != $number) {
+						continue;
+					} ?>
+					cwp_namespace.fluid_images.widget = jQuery('#<?php echo esc_attr( $num ); ?>');
+					cwp_namespace.fluid_images.Widgets['<?php echo esc_attr( $num ); ?>'] = new cwp_namespace.fluid_images.WidgetPosts(cwp_namespace.fluid_images.widget,<?php echo esc_attr( $ratio ); ?>);
+<?php			} ?>
 
-				<?php /* do on page load or on resize the browser window */ echo "\r\n"; ?>
+<?php			/* do on page load or on resize the browser window */ echo "\r\n"; ?>
 				jQuery(window).on('load resize', function() {
 					for (var widget in cwp_namespace.fluid_images.Widgets) {
 						cwp_namespace.fluid_images.Widgets[widget].changeImageSize();
@@ -2066,7 +2074,7 @@ function change_cropped_image_dimensions() {
 			});
 		}
 	</script>
-	<?php
+<?php
 }
 
 /*

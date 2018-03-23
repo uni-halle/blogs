@@ -4,7 +4,7 @@ Donate link: http://mkrdip.me/donate
 Tags: category, categories, posts, widget, posts widget, recent posts, category recent posts, shortcode, sidebar, excerpt, multiple widgets
 Requires at least: 2.8
 Tested up to: 4.9
-Stable tag: 4.8.2
+Stable tag: 4.8.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,13 +34,13 @@ We've also started creating free widget Add-ons for the Premium Widget here: [Wi
 * More examples on the [demo pages](http://demo.tiptoppress.com/?utm_source=wordpress_org&utm_campaign=demo_cpw&utm_medium=web)
 
 = Features =
-* SVG icon support for post formats
-* Template to arrange the post details
+* SVG font-icon support for post formats
+* [Template](http://tiptoppress.com/template-arrange-post-details/) to arrange the post details
 * Premade Templates
-* The Template text can be a placeholder, plain text, HTML or HTML for icons
+* The Template text can be a post details placeholder, plain text, HTML or HTML for SVG font-icons
 * New date format: Time since plublished
 * Filter by post status: Published, scheduled, private
-* New hover effect: SVG icon
+* New hover effect: SVG font-icon
 * Shortcode (Easily change all Shortcode options in the customizer).
 * Support multiple shortcodes at the same post.
 * Add option for post offset (use two or more widgets after another).
@@ -112,26 +112,26 @@ Automatic installation is the easiest option as WordPress handles the file trans
 
 == Frequently Asked Questions ==
 = Template, placeholder and post detail =
-Here You can control the [Post Detail parts](http://tiptoppress.com/category-posts-widget/documentation-4-8/#Post_details), which appears as part of the post item. All post detail will placed as placeholder. The text in the Template area can be a placeholder, plain text, HTML code or HTML code for icons.
+Here You can control the [Post Detail parts](http://tiptoppress.com/category-posts-widget/documentation-4-8/#Post_details), which appears as part of the post item. All post detail will placed as placeholder. The text in the Template area can be a post details placeholder, plain text, HTML or HTML for SVG icons.
+
+[How it works? and examples.](http://tiptoppress.com/template-arrange-post-details/)
+
+For more layout options please try our premium widget: [Term and Category based Posts Widget](http://tiptoppress.com/term-and-category-based-posts-widget/).
 
 = Use SVG icons =
-For SVG icon HTML we recommend the [WordPress Dashicons](https://developer.wordpress.org/resource/dashicons/), which are included as default and can be used without any icon-font including.
+For SVG font-icon HTML we recommend the [WordPress Dashicons](https://developer.wordpress.org/resource/dashicons/), which are included as default and can be used without any font-icon including.
 
 = How Category Posts Widget work with SiteOrigin Page Builder =
 Please add the widget with shortcode [catposts] inside a editor widget which is placed to a SiteOrigin Page Builder row.
 We also create a YouTube video: [How Category Posts Widget work with SiteOrigin Page Builder](http://tiptoppress.com/how-category-posts-widget-work-with-siteorigin-page-builder/)
 
-= Thumb and Title not able to float left =
-Check the option in the Thumbnails panels > "Show thumbnails above text".
-Then add this custom CSS:
+= How Category Posts Widget work with Divi Builder =
+You can create a new Divi widget area and put our widgets into a Divi Sidebar Module: [How to put a widget into Divi Module](https://divibooster.com/how-to-put-a-widget-into-divi-module/).
 
-`.cat-post-thumbnail {
-	float: left !important;
-}`
+= How our widgets works with other page builder plugins like Elementor, Thrive Architect etc. =
+We recommend for all other page builder plugins like Elementor or Thrive Architect to use the [WP Custom Widget Area](https://wordpress.org/plugins/wp-custom-widget-area/) plugin in additional.
 
-If you use wordpress 4.7 or higher you can [add this custom CSS with the customizer](http://kometschuh.de/Easily-adding-custom-CSS-using-the-WordPress-Theme-customizer.html/?utm_source=wordpress_org&utm_campaign=faq_cpw&utm_medium=web)
-
-For more layout options please try our premium widget: [Term and Category based Posts Widget](http://tiptoppress.com/term-and-category-based-posts-widget/?utm_source=wordpress_org&utm_campaign=faq_cpw&utm_medium=web).
+Use the [WP Custom Widget Area](https://wordpress.org/plugins/wp-custom-widget-area/) plugin and create a new custom area with this plugin and place the shortcode (from the new created widget area) to a post or page. Then add our widget to the new created custom widget area  the widgets admin site (Dashboard > Appearance > Widgets > … ).
 
 = The font-size is different from that of other widgets or Theme elements? =
 Please use the option: "Disable widget CSS".
@@ -149,7 +149,7 @@ We know there are peopel how use PHP 5.2 [wordpress.org/about/stats](https://wor
 Check also the .htaccess file, if there is an entry for an older PHP version.
 
 == Screenshots ==
-1. Front end of the widget with SVG icon support for post formats, hover effects and the Template text-area.
+1. Front end of the widget with SVG font-icon support for post formats, hover effects and the Template text-area.
 2. Template to arrange the post details with placeholders.
 3. Edit the widget options with the customizer.
 4. Use shortcode [catposts] in the content.
@@ -159,6 +159,9 @@ Check also the .htaccess file, if there is an entry for an older PHP version.
 == Changelog ==
 [Read more on our blog ...](http://tiptoppress.com/category/category-posts-widget?utm_source=wordpress_org&utm_campaign=changelog_cpw&utm_medium=web)
 
+= 4.8.3 - March 03th 2018 =
+* Fixed Updated widget with zero for the thumb dimensions caused a JavaScript error
+
 = 4.8.2 - January 30th 2018 =
 * Fixed Adding the widget with the customizer only the title is shown
 * Fixed Recognize "Empty lines" > Next line is a paragraph in the Template in widget areas
@@ -167,12 +170,12 @@ Check also the .htaccess file, if there is an entry for an older PHP version.
 * Fixed Recognize "Empty lines" > Next line is a paragraph in the Template
 
 = 4.8 - January 22th 2018 =
-* SVG icon support for post formats
+* SVG font-icon support for post formats
 * Template to arrange the post details
 * Premade Templates
 * Date format: Time since plublished
 * Filter by post status: Published, scheduled, private
-* Hover effect: SVG icon
+* Hover effect: SVG font-icon
 
 = 4.7.4 - October 21th 2017 =
 * Bugfix for filter by post status (note private)
