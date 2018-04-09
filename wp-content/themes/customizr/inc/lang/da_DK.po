@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: * Customizr v4.1.1\n"
+"Project-Id-Version: * Customizr v4.1.2\n"
 "Report-Msgid-Bugs-To: https://presscustomizr.com/contact/\n"
-"POT-Creation-Date: 2018-03-22 22:27:35+00:00\n"
+"POT-Creation-Date: 2018-03-29 13:25:56+00:00\n"
 "PO-Revision-Date: 2015-08-22 15:54+0200\n"
 "Last-Translator: Nicolas <contact@presscustomizr.com>\n"
 "Language-Team: Nicolas G. <contact@presscustomizr.com>\n"
@@ -276,17 +276,17 @@ msgstr ""
 msgid "dismiss notice"
 msgstr ""
 
-#: build/free/customizr/core/class-fire-plugins_compat.php:377
+#: build/free/customizr/core/class-fire-plugins_compat.php:383
 #: build/free/customizr/inc/czr-init-ccat.php:834
-#: core/class-fire-plugins_compat.php:377
+#: core/class-fire-plugins_compat.php:383
 #: inc/_dev/class-fire-plugins_compat.php:361 inc/czr-init-ccat.php:834
 #, fuzzy
 msgid "Front page slider name"
 msgstr "Vælg forside slider"
 
-#: build/free/customizr/core/class-fire-plugins_compat.php:379
+#: build/free/customizr/core/class-fire-plugins_compat.php:385
 #: build/free/customizr/inc/czr-init-ccat.php:836
-#: core/class-fire-plugins_compat.php:379
+#: core/class-fire-plugins_compat.php:385
 #: inc/_dev/class-fire-plugins_compat.php:363 inc/czr-init-ccat.php:836
 msgid "Posts slider button text"
 msgstr ""
@@ -542,8 +542,8 @@ msgid ""
 msgstr ""
 
 #: build/free/customizr/core/core-settings-map.php:337
-#: build/free/customizr/core/init-base.php:996 core/core-settings-map.php:337
-#: core/init-base.php:996
+#: build/free/customizr/core/init-base.php:995 core/core-settings-map.php:337
+#: core/init-base.php:995
 #, fuzzy
 msgid "Create and organize your social links"
 msgstr "Indstil dine sociale links"
@@ -1455,18 +1455,18 @@ msgstr ""
 
 #: build/free/customizr/core/core-settings-map.php:1207
 #: build/free/customizr/core/core-settings-map.php:1219
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:430
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:455
 #: core/core-settings-map.php:1207 core/core-settings-map.php:1219
-#: core/czr-base-fmk/czr-base-fmk.php:430
+#: core/czr-base-fmk/czr-base-fmk.php:455
 msgid "Yes"
 msgstr ""
 
 #: build/free/customizr/core/core-settings-map.php:1208
 #: build/free/customizr/core/core-settings-map.php:1220
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:430
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:455
 #: build/free/customizr/inc/czr-front-ccat.php:4196
 #: core/core-settings-map.php:1208 core/core-settings-map.php:1220
-#: core/czr-base-fmk/czr-base-fmk.php:430
+#: core/czr-base-fmk/czr-base-fmk.php:455
 #: inc/_dev/parts/class-content-headings.php:338 inc/czr-front-ccat.php:4196
 msgid "No"
 msgstr "Ingen"
@@ -3311,9 +3311,11 @@ msgid "Slide Image"
 msgstr "Slide billede"
 
 #: build/free/customizr/core/czr-admin-ccat.php:2437
-#: build/free/customizr/core/czr-modules/social-links/index.php:106
+#: build/free/customizr/core/czr-modules/social-links/index.php:121
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:123
 #: core/_dev/_admin/class-admin-meta_boxes.php:1507
-#: core/czr-admin-ccat.php:2437 core/czr-modules/social-links/index.php:102
+#: core/czr-admin-ccat.php:2437 core/czr-modules/social-links/index.php:121
+#: core/czr-modules/social-links/social_links_module.php:123
 msgid "Title"
 msgstr "Titel"
 
@@ -3336,9 +3338,9 @@ msgid "Link"
 msgstr ""
 
 #: build/free/customizr/core/czr-admin-ccat.php:2441
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:200
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:409
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:421
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:225
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:434
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:446
 #: build/free/customizr/core/czr-customize-ccat.php:850
 #: build/free/customizr/core/czr-customize-ccat.php:860
 #: build/free/customizr/core/front/models/modules/common/class-model-breadcrumb.php:625
@@ -3358,9 +3360,9 @@ msgstr ""
 #: core/_dev/_admin/class-admin-meta_boxes.php:1511
 #: core/_dev/_czr/class-czr-resources.php:229
 #: core/_dev/_czr/class-czr-resources.php:239 core/czr-admin-ccat.php:2441
-#: core/czr-base-fmk/czr-base-fmk.php:200
-#: core/czr-base-fmk/czr-base-fmk.php:409
-#: core/czr-base-fmk/czr-base-fmk.php:421 core/czr-customize-ccat.php:850
+#: core/czr-base-fmk/czr-base-fmk.php:225
+#: core/czr-base-fmk/czr-base-fmk.php:434
+#: core/czr-base-fmk/czr-base-fmk.php:446 core/czr-customize-ccat.php:850
 #: core/czr-customize-ccat.php:860
 #: core/front/models/modules/common/class-model-breadcrumb.php:625
 #: core/front/models/modules/common/class-model-breadcrumb.php:658
@@ -3423,121 +3425,125 @@ msgstr ""
 msgid "Slider documentation"
 msgstr "Læs dokumentationen"
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:201
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:226
 #: build/free/customizr/core/czr-customize-ccat.php:851
 #: build/free/customizr/inc/czr-front-ccat.php:824
 #: build/free/customizr/inc/czr-front-ccat.php:831
 #: core/_dev/_czr/class-czr-resources.php:230
-#: core/czr-base-fmk/czr-base-fmk.php:201 core/czr-customize-ccat.php:851
+#: core/czr-base-fmk/czr-base-fmk.php:226 core/czr-customize-ccat.php:851
 #: inc/_dev/parts/class-header-menu.php:136
 #: inc/_dev/parts/class-header-menu.php:143 inc/czr-front-ccat.php:824
 #: inc/czr-front-ccat.php:831
 msgid "Close"
 msgstr ""
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:202
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:227
 #: build/free/customizr/core/czr-customize-ccat.php:852
 #: core/_dev/_czr/class-czr-resources.php:231
-#: core/czr-base-fmk/czr-base-fmk.php:202 core/czr-customize-ccat.php:852
+#: core/czr-base-fmk/czr-base-fmk.php:227 core/czr-customize-ccat.php:852
 msgid "Not set"
 msgstr ""
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:203
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:228
 #: build/free/customizr/core/czr-customize-ccat.php:856
+#: build/free/customizr/core/czr-modules/social-links/index.php:78
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:80
 #: core/_dev/_czr/class-czr-resources.php:235
-#: core/czr-base-fmk/czr-base-fmk.php:203 core/czr-customize-ccat.php:856
+#: core/czr-base-fmk/czr-base-fmk.php:228 core/czr-customize-ccat.php:856
+#: core/czr-modules/social-links/index.php:78
+#: core/czr-modules/social-links/social_links_module.php:80
 msgid "Done !"
 msgstr ""
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:205
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:230
 #: build/free/customizr/core/czr-customize-ccat.php:858
 #: build/free/customizr/core/czr-customize-ccat.php:878
 #: core/_dev/_czr/class-czr-resources.php:237
 #: core/_dev/_czr/class-czr-resources.php:257
-#: core/czr-base-fmk/czr-base-fmk.php:205 core/czr-customize-ccat.php:858
+#: core/czr-base-fmk/czr-base-fmk.php:230 core/czr-customize-ccat.php:858
 #: core/czr-customize-ccat.php:878
 #, fuzzy
 msgid "Learn more about this in the documentation"
 msgstr "Læs dokumentationen"
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:206
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:231
 #: build/free/customizr/core/czr-customize-ccat.php:879
 #: core/_dev/_czr/class-czr-resources.php:258
-#: core/czr-base-fmk/czr-base-fmk.php:206 core/czr-customize-ccat.php:879
+#: core/czr-base-fmk/czr-base-fmk.php:231 core/czr-customize-ccat.php:879
 #, fuzzy
 msgid "Settings"
 msgstr "Diverse billedindstillinger"
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:207
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:232
 #: build/free/customizr/core/czr-customize-ccat.php:880
 #: core/_dev/_czr/class-czr-resources.php:259
-#: core/czr-base-fmk/czr-base-fmk.php:207 core/czr-customize-ccat.php:880
+#: core/czr-base-fmk/czr-base-fmk.php:232 core/czr-customize-ccat.php:880
 msgid "Options for"
 msgstr ""
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:210
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:215
-#: core/czr-base-fmk/czr-base-fmk.php:210
-#: core/czr-base-fmk/czr-base-fmk.php:215
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:235
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:240
+#: core/czr-base-fmk/czr-base-fmk.php:235
+#: core/czr-base-fmk/czr-base-fmk.php:240
 #, fuzzy
 msgid "Select Image"
 msgstr "Slide billede"
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:211
-#: core/czr-base-fmk/czr-base-fmk.php:211
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:236
+#: core/czr-base-fmk/czr-base-fmk.php:236
 #, fuzzy
 msgid "Change Image"
 msgstr "Slide billede"
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:212
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:409
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:237
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:434
 #: build/free/customizr/core/czr-customize-ccat.php:1476
 #: core/_dev/_czr/controls/class-upload-control.php:68
-#: core/czr-base-fmk/czr-base-fmk.php:212
-#: core/czr-base-fmk/czr-base-fmk.php:409 core/czr-customize-ccat.php:1476
+#: core/czr-base-fmk/czr-base-fmk.php:237
+#: core/czr-base-fmk/czr-base-fmk.php:434 core/czr-customize-ccat.php:1476
 msgid "Remove"
 msgstr ""
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:213
-#: core/czr-base-fmk/czr-base-fmk.php:213
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:238
+#: core/czr-base-fmk/czr-base-fmk.php:238
 msgid "Default"
 msgstr ""
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:214
-#: core/czr-base-fmk/czr-base-fmk.php:214
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:239
+#: core/czr-base-fmk/czr-base-fmk.php:239
 #, fuzzy
 msgid "No image selected"
 msgstr "Der er ikke valgt noget billede"
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:216
-#: core/czr-base-fmk/czr-base-fmk.php:216
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:241
+#: core/czr-base-fmk/czr-base-fmk.php:241
 #, fuzzy
 msgid "Choose Image"
 msgstr "Vælg en slider"
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:354
-#: core/czr-base-fmk/czr-base-fmk.php:354
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:379
+#: core/czr-base-fmk/czr-base-fmk.php:379
 msgid "ac_set_ajax_czr_tmpl => Security check failed."
 msgstr ""
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:395
-#: core/czr-base-fmk/czr-base-fmk.php:395
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:420
+#: core/czr-base-fmk/czr-base-fmk.php:420
 msgid "Add New"
 msgstr ""
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:400
-#: core/czr-base-fmk/czr-base-fmk.php:400
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:425
+#: core/czr-base-fmk/czr-base-fmk.php:425
 msgid "Cancel"
 msgstr ""
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:400
-#: core/czr-base-fmk/czr-base-fmk.php:400
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:425
+#: core/czr-base-fmk/czr-base-fmk.php:425
 #, fuzzy
 msgid "Add it"
 msgstr "Tilføj en slider"
 
-#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:429
-#: core/czr-base-fmk/czr-base-fmk.php:429
+#: build/free/customizr/core/czr-base-fmk/czr-base-fmk.php:454
+#: core/czr-base-fmk/czr-base-fmk.php:454
 msgid "Are you sure you want to remove : <strong>{{ data.title }} ?</strong>"
 msgstr ""
 
@@ -3572,24 +3578,40 @@ msgid "Upgrade Wordpress Now"
 msgstr "Opgradér WordPress nu"
 
 #: build/free/customizr/core/czr-customize-ccat.php:853
+#: build/free/customizr/core/czr-modules/social-links/index.php:75
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:77
 #: core/_dev/_czr/class-czr-resources.php:232 core/czr-customize-ccat.php:853
+#: core/czr-modules/social-links/index.php:75
+#: core/czr-modules/social-links/social_links_module.php:77
 msgid "Rss"
 msgstr ""
 
 #: build/free/customizr/core/czr-customize-ccat.php:854
+#: build/free/customizr/core/czr-modules/social-links/index.php:76
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:78
 #: core/_dev/_czr/class-czr-resources.php:233 core/czr-customize-ccat.php:854
+#: core/czr-modules/social-links/index.php:76
+#: core/czr-modules/social-links/social_links_module.php:78
 #, fuzzy
 msgid "Select a social icon"
 msgstr "Indstil dine sociale links"
 
 #: build/free/customizr/core/czr-customize-ccat.php:855
+#: build/free/customizr/core/czr-modules/social-links/index.php:77
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:79
 #: core/_dev/_czr/class-czr-resources.php:234 core/czr-customize-ccat.php:855
+#: core/czr-modules/social-links/index.php:77
+#: core/czr-modules/social-links/social_links_module.php:79
 #, fuzzy
 msgid "Follow us on"
 msgstr "Følg os"
 
 #: build/free/customizr/core/czr-customize-ccat.php:857
+#: build/free/customizr/core/czr-modules/social-links/index.php:79
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:81
 #: core/_dev/_czr/class-czr-resources.php:236 core/czr-customize-ccat.php:857
+#: core/czr-modules/social-links/index.php:79
+#: core/czr-modules/social-links/social_links_module.php:81
 msgid "New Social Link created ! Scroll down to edit it."
 msgstr ""
 
@@ -3669,89 +3691,123 @@ msgstr "Ladda upp logotyp"
 msgid "Press return or enter to open this panel"
 msgstr ""
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:75
-#: core/czr-modules/social-links/index.php:71
+#: build/free/customizr/core/czr-modules/social-links/index.php:90
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:92
+#: core/czr-modules/social-links/index.php:90
+#: core/czr-modules/social-links/social_links_module.php:92
 msgid "Select an icon"
 msgstr ""
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:79
-#: core/czr-modules/social-links/index.php:75
+#: build/free/customizr/core/czr-modules/social-links/index.php:94
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:96
+#: core/czr-modules/social-links/index.php:94
+#: core/czr-modules/social-links/social_links_module.php:96
 #, fuzzy
 msgid "Social link url"
 msgstr "Sociale links"
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:80
-#: build/free/customizr/core/czr-modules/social-links/index.php:101
-#: core/czr-modules/social-links/index.php:76
-#: core/czr-modules/social-links/index.php:97
+#: build/free/customizr/core/czr-modules/social-links/index.php:95
+#: build/free/customizr/core/czr-modules/social-links/index.php:116
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:97
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:118
+#: core/czr-modules/social-links/index.php:95
+#: core/czr-modules/social-links/index.php:116
+#: core/czr-modules/social-links/social_links_module.php:97
+#: core/czr-modules/social-links/social_links_module.php:118
 msgid "Enter the full url of your social profile (must be valid url)."
 msgstr ""
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:81
-#: build/free/customizr/core/czr-modules/social-links/index.php:102
-#: core/czr-modules/social-links/index.php:77
-#: core/czr-modules/social-links/index.php:98
+#: build/free/customizr/core/czr-modules/social-links/index.php:96
+#: build/free/customizr/core/czr-modules/social-links/index.php:117
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:98
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:119
+#: core/czr-modules/social-links/index.php:96
+#: core/czr-modules/social-links/index.php:117
+#: core/czr-modules/social-links/social_links_module.php:98
+#: core/czr-modules/social-links/social_links_module.php:119
 msgid "http://...,mailto:...,..."
 msgstr ""
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:87
-#: core/czr-modules/social-links/index.php:83
+#: build/free/customizr/core/czr-modules/social-links/index.php:102
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:104
+#: core/czr-modules/social-links/index.php:102
+#: core/czr-modules/social-links/social_links_module.php:104
 msgid "Size in px"
 msgstr ""
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:96
-#: core/czr-modules/social-links/index.php:92
+#: build/free/customizr/core/czr-modules/social-links/index.php:111
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:113
+#: core/czr-modules/social-links/index.php:111
+#: core/czr-modules/social-links/social_links_module.php:113
 #, fuzzy
 msgid "Social icon"
 msgstr "Sociale links"
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:100
-#: core/czr-modules/social-links/index.php:96
+#: build/free/customizr/core/czr-modules/social-links/index.php:115
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:117
+#: core/czr-modules/social-links/index.php:115
+#: core/czr-modules/social-links/social_links_module.php:117
 #, fuzzy
 msgid "Social link"
 msgstr "Sociale links"
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:107
-#: core/czr-modules/social-links/index.php:103
+#: build/free/customizr/core/czr-modules/social-links/index.php:122
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:124
+#: core/czr-modules/social-links/index.php:122
+#: core/czr-modules/social-links/social_links_module.php:124
 msgid "This is the text displayed on mouse over."
 msgstr ""
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:111
-#: core/czr-modules/social-links/index.php:107
+#: build/free/customizr/core/czr-modules/social-links/index.php:126
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:128
+#: core/czr-modules/social-links/index.php:126
+#: core/czr-modules/social-links/social_links_module.php:128
 #, fuzzy
 msgid "Icon color"
 msgstr "Tip icon färg"
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:111
-#: core/czr-modules/social-links/index.php:107
+#: build/free/customizr/core/czr-modules/social-links/index.php:126
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:128
+#: core/czr-modules/social-links/index.php:126
+#: core/czr-modules/social-links/social_links_module.php:128
 msgid "default:"
 msgstr ""
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:112
-#: core/czr-modules/social-links/index.php:108
+#: build/free/customizr/core/czr-modules/social-links/index.php:127
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:129
+#: core/czr-modules/social-links/index.php:127
+#: core/czr-modules/social-links/social_links_module.php:129
 msgid "Set a unique color for your icon."
 msgstr ""
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:117
-#: core/czr-modules/social-links/index.php:113
+#: build/free/customizr/core/czr-modules/social-links/index.php:132
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:134
+#: core/czr-modules/social-links/index.php:132
+#: core/czr-modules/social-links/social_links_module.php:134
 msgid "Link target"
 msgstr ""
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:118
-#: core/czr-modules/social-links/index.php:114
+#: build/free/customizr/core/czr-modules/social-links/index.php:133
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:135
+#: core/czr-modules/social-links/index.php:133
+#: core/czr-modules/social-links/social_links_module.php:135
 #, fuzzy
 msgid "Check this option to open the link in a another tab of the browser."
 msgstr "Fravælg for at fjerne øverste, farvede kant (top border)."
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:156
+#: build/free/customizr/core/czr-modules/social-links/index.php:171
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:173
 #: core/_dev/_czr/controls/__DEPRECATED__class-modules-control.php:60
-#: core/czr-modules/social-links/index.php:152
+#: core/czr-modules/social-links/index.php:171
+#: core/czr-modules/social-links/social_links_module.php:173
 msgid "An error occurred: malformed social links"
 msgstr ""
 
-#: build/free/customizr/core/czr-modules/social-links/index.php:200
+#: build/free/customizr/core/czr-modules/social-links/index.php:215
+#: build/free/customizr/core/czr-modules/social-links/social_links_module.php:217
 #: core/_dev/_czr/controls/__DEPRECATED__class-modules-control.php:104
-#: core/czr-modules/social-links/index.php:196
+#: core/czr-modules/social-links/index.php:215
+#: core/czr-modules/social-links/social_links_module.php:217
 msgid "Please fill the social link inputs with a valid URLs"
 msgstr ""
 
@@ -3862,15 +3918,15 @@ msgid "Permalink to:&nbsp;"
 msgstr "Permalink til %s"
 
 #: build/free/customizr/core/front/models/content/post-metas/class-model-post_metas.php:193
-#: build/free/customizr/inc/czr-front-ccat.php:6990
+#: build/free/customizr/inc/czr-front-ccat.php:6991
 #: core/front/models/content/post-metas/class-model-post_metas.php:193
-#: inc/_dev/parts/class-content-post_metas.php:541 inc/czr-front-ccat.php:6990
+#: inc/_dev/parts/class-content-post_metas.php:542 inc/czr-front-ccat.php:6991
 msgid "View all posts by %s"
 msgstr "Vis alle indlæg af %s"
 
-#: build/free/customizr/core/front/models/content/post-metas/class-model-post_metas.php:244
+#: build/free/customizr/core/front/models/content/post-metas/class-model-post_metas.php:245
 #: build/free/customizr/inc/czr-front-ccat.php:6833
-#: core/front/models/content/post-metas/class-model-post_metas.php:244
+#: core/front/models/content/post-metas/class-model-post_metas.php:245
 #: inc/_dev/parts/class-content-post_metas.php:384 inc/czr-front-ccat.php:6833
 msgid "View all posts in %s"
 msgstr "Vis alle indlæg i %s"
@@ -4323,8 +4379,8 @@ msgstr "Hovedmenu"
 msgid "Need help with Customizr? Click here!"
 msgstr "Har du brug for hjælp med Customizr? Klik her!"
 
-#: build/free/customizr/core/init-base.php:989
-#: build/free/customizr/inc/czr-init-ccat.php:3162 core/init-base.php:989
+#: build/free/customizr/core/init-base.php:988
+#: build/free/customizr/inc/czr-init-ccat.php:3162 core/init-base.php:988
 #: inc/_dev/class-fire-utils_settings_map.php:1206 inc/czr-init-ccat.php:3162
 msgid "Social links"
 msgstr "Sociale links"

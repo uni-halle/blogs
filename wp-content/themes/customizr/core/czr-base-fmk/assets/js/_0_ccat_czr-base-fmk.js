@@ -67,7 +67,7 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
                 _truncate = function( string ){
                       if ( ! _.isString( string ) )
                         return '';
-                      return string.length > 200 ? string.substr( 0, 199 ) : string;
+                      return string.length > 300 ? string.substr( 0, 299 ) + '...' : string;
                 };
 
             //if the array to print is not composed exclusively of strings, then let's stringify it
@@ -195,14 +195,14 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
       *****************************************************************************/
       api.bind('ready', function() {
           // do we have dynamic registration candidates
-          var dynRegistrationCandidates = serverControlParams.dynamicSettingParams || [];
-          if ( ! _.isObject( serverControlParams.dynamicSettingParams ) ) {
-                api.errorLog( 'serverControlParams.dynamicSettingParams should be an array');
+          var dynRegistrationCandidates = serverControlParams.paramsForDynamicRegistration || [];
+          if ( ! _.isObject( serverControlParams.paramsForDynamicRegistration ) ) {
+                api.errorLog( 'serverControlParams.paramsForDynamicRegistration should be an array');
           }
 
-          //console.log( 'serverControlParams.dynamicSettingParams', serverControlParams.dynamicSettingParams );
+          //console.log( 'serverControlParams.paramsForDynamicRegistration', serverControlParams.paramsForDynamicRegistration );
 
-          _.each( serverControlParams.dynamicSettingParams, function( dynParams, setId ) {
+          _.each( serverControlParams.paramsForDynamicRegistration, function( dynParams, setId ) {
                 try { registerDynamicModuleSettingControl( dynParams ); } catch( er ) {
                       api.errorLog( er );
                 }
@@ -239,8 +239,8 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
             }
 
             // the option value must be an array
-            if ( ! _.isArray( args.option_value ) ) {
-                  throw new Error( 'registerDynamicModuleSettingControl => the module values must be an array');
+            if ( ! _.isArray( args.option_value ) && ! _.isObject( args.option_value ) ) {
+                  throw new Error( 'registerDynamicModuleSettingControl => the module values must be an array or an object');
             }
 
             // console.log( "args?", args );
@@ -262,8 +262,8 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
                         },
                         {
                               value : args.option_value,
-                              transport : settingArgs.transport,
-                              type : settingArgs.type
+                              transport : settingArgs.transport || 'refresh',
+                              type : settingArgs.type || 'option'
                         }
                   );
                   // assign the value sent from the server
@@ -278,8 +278,8 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
             var sectionArgs = args.section;
 
             // Check if we have a correct section
-            if ( ! _.has( sectionArgs, 'id' ) || ! _.has( sectionArgs, 'title' ) ) {
-                  throw new Error( 'registerDynamicModuleSettingControl => wrong params for the setting section');
+            if ( ! _.has( sectionArgs, 'id' ) ){
+                  throw new Error( 'registerDynamicModuleSettingControl => missing section id for the section of setting : ' + settingId );
             }
 
             if ( ! api.section.has( sectionArgs.id ) ) {
@@ -298,10 +298,10 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
                         type: "default",
                       }, {
                         id: sectionArgs.id,
-                        title: sectionArgs.title,
+                        title: sectionArgs.title || sectionArgs.id,
                         description: _.isEmpty( sectionArgs.description ) ? '' : sectionArgs.description,
                         panel: _.isEmpty( sectionArgs.panel ) ? '' : sectionArgs.panel,
-                        priority: sectionArgs.priority
+                        priority: sectionArgs.priority || 10
                       }
                   );
 
@@ -312,41 +312,44 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
 
             // REGISTER THE CONTROL
             var controlId = settingId;
-            // start from a copy of a core control object
-            var controlArgs = args.control,
-                defaultControlArgs = $.extend( true, {} , api.settings.controls.blogdescription );
-            // Then update it with our defaults set server side
-            // array(
-            //     'type'      => 'czr_module',
-            //     'module_type' => 'czr_flat_skope_module',
-            //     'section'   => 'flat_skope_sec'
-            // );
-            controlArgs = _.extend(
-                  defaultControlArgs,
-                  {
-                        type : 'czr_module',
-                        module_type : args.module_type,
-                        section : sectionArgs.id,
-                        content : '',
-                        label : controlArgs.label,
-                        priority : controlArgs.priority
+
+            if ( ! api.control.has( controlId ) ) {
+                  // start from a copy of a core control object
+                  var controlArgs = args.control,
+                      defaultControlArgs = $.extend( true, {} , api.settings.controls.blogdescription );
+                  // Then update it with our defaults set server side
+                  // array(
+                  //     'type'      => 'czr_module',
+                  //     'module_type' => 'czr_flat_skope_module',
+                  //     'section'   => 'flat_skope_sec'
+                  // );
+                  controlArgs = _.extend(
+                        defaultControlArgs,
+                        {
+                              type : 'czr_module',
+                              module_type : args.module_type,
+                              section : sectionArgs.id,
+                              content : '',
+                              label : controlArgs.label,
+                              priority : controlArgs.priority
+                        }
+                  );
+
+                  // Then associates the settingId
+                  controlArgs.settings.default = settingId;
+
+                  var ControlConstructor = api.controlConstructor[ controlArgs.type ] || api.Control, options;
+                  options = _.extend( { params: controlArgs }, controlArgs ); // Inclusion of params alias is for back-compat for custom controls that expect to augment this property.
+                  var _ctrl_ = api.control.add( new ControlConstructor( controlId, options ) );
+
+                  // if the currently expanded section is the one of the dynamic control
+                  // Awake the module => fire ready
+                  if ( api.section( sectionArgs.id ).expanded() ) {
+                        api.control( controlId ).trigger( 'set-module-ready' );
                   }
-            );
-
-            // Then associates the settingId
-            controlArgs.settings.default = settingId;
-
-            var ControlConstructor = api.controlConstructor[ controlArgs.type ] || api.Control, options;
-            options = _.extend( { params: controlArgs }, controlArgs ); // Inclusion of params alias is for back-compat for custom controls that expect to augment this property.
-            var _ctrl_ = api.control.add( new ControlConstructor( controlId, options ) );
-
-            // if the currently expanded section is the one of the dynamic control
-            // Awake the module => fire ready
-            if ( api.section( sectionArgs.id ).expanded() ) {
-                  api.control( controlId ).trigger( 'set-module-ready' );
-            }
-            // console.log('registerDynamicModuleSettingControl => CONTROL DATA ?', settingId, options);
-            // console.log('ALORS IN DYNAMIC REGISTRATION ? ', dataForSkopeToRegister, settingId );
+                  // console.log('registerDynamicModuleSettingControl => CONTROL DATA ?', settingId, options);
+                  // console.log('ALORS IN DYNAMIC REGISTRATION ? ', dataForSkopeToRegister, settingId );
+            }//if ( ! api.control.has( controlId ) )
 
             return settingId;
       };//registerDynamicModuleSettingControl
@@ -1066,7 +1069,7 @@ api.CZR_Helpers = $.extend( api.CZR_Helpers, {
                                     api.CZR_Helpers.czr_cachedTmpl[ args.module_type ][ args.tmpl ] = _serverTmpl_;
                               }).fail( function( _r_ ) {
                                     //console.log( 'api.CZR_Helpers.getModuleTmpl => ', _r_ );
-                                    dfd.reject( 'api.CZR_Helpers.getModuleTmpl => Problem when fetching the ' + args.tmpl + ' tmpl from server for module : ' + args.module_id + ' ' + args.module_type );
+                                    dfd.reject( 'api.CZR_Helpers.getModuleTmpl => Problem when fetching the ' + args.tmpl + ' tmpl from server for module : ' + args.module_id + ' ' + args.module_type + _r_ );
                               });
                   }
             }
@@ -1302,13 +1305,6 @@ api.CZR_Helpers = $.extend( api.CZR_Helpers, {
 });//$.extend
 })( wp.customize , jQuery, _);
 (function (api, $, _) {
-  //This promise will let us know when we have the first set of preview query ready to use
-  //This is needed for modules contextually dependant
-  //For example, the slider module will initialize the module model based on the contextual informations, if no items have been set yet.
-
-  api.czr_wpQueryDataReady = $.Deferred();
-  api.czr_wpQueryInfos = api.czr_wpQueryInfos || new api.Value();
-  api.czr_partials = api.czr_partials || new api.Value();
   /*****************************************************************************
   * CAPTURE PREVIEW INFORMATIONS ON REFRESH + REACT TO THEM
   *****************************************************************************/
@@ -1347,14 +1343,24 @@ api.CZR_Helpers = $.extend( api.CZR_Helpers, {
 
         /* WP CONDITIONAL TAGS => stores and observes the WP conditional tags sent by the preview */
         api.previewer.bind( 'czr-query-data-ready', function( data ) {
+              api.czr_wpQueryInfos = api.czr_wpQueryInfos || new api.Value();
               api.czr_wpQueryInfos( data );
+
+              //This promise will let us know when we have the first set of preview query ready to use
+              //This is needed for modules contextually dependant
+              //For example, the slider module will initialize the module model based on the contextual informations, if no items have been set yet.
+              api.czr_wpQueryDataReady = api.czr_wpQueryDataReady || $.Deferred();
+
               if ( 'pending' == api.czr_wpQueryDataReady.state() ) {
                     api.czr_wpQueryDataReady.resolve( data );
               }
         });
 
         //PARTIAL REFRESHS => stores and observes the partials data sent by the preview
+        //=> this is used in api.CZR_Helpers.hasPartRefresh( control_id )
+        //=> as of WP4.7.5, there's no way to get the list of control with partial refresh in the customize-control api
         api.previewer.bind( 'czr-partial-refresh-data', function( data ) {
+              api.czr_partials = api.czr_partials || new api.Value();
               api.czr_partials.set( data );
         });
 
@@ -2684,7 +2690,9 @@ $.extend( CZRItemMths , {
 
       //fired on click dom event
       //for dynamic multi input modules
-      removeItem : function() {
+      //@return void()
+      //@param params : { dom_el : {}, dom_event : {}, event : {}, model {} }
+      removeItem : function( params ) {
             var item = this,
                 module = this.module,
                 _new_collection = _.clone( module.itemCollection() );
@@ -2703,9 +2711,30 @@ $.extend( CZRItemMths , {
             module.trigger('pre_item_api_remove', item() );
 
             var _item_ = $.extend( true, {}, item() );
-            //remove the item from the collection
+
+            // <REMOVE THE ITEM FROM THE COLLECTION>
             module.czr_Item.remove( item.id );
-            module.trigger( 'item-removed', _item_ );
+            // </REMOVE THE ITEM FROM THE COLLECTION>
+
+            //refresh the preview frame (only needed if transport is postMessage && has no partial refresh set )
+            //must be a dom event not triggered
+            //otherwise we are in the init collection case where the items are fetched and added from the setting in initialize
+            if ( 'postMessage' == api(module.control.id).transport && _.has( params, 'dom_event') && ! _.has( params.dom_event, 'isTrigger' ) && ! api.CZR_Helpers.hasPartRefresh( module.control.id ) ) {
+                  // api.previewer.refresh().done( function() {
+                  //       _dfd_.resolve();
+                  // });
+                  // It would be better to wait for the refresh promise
+                  // The following approach to bind and unbind when refreshing the preview is similar to the one coded in module::addItem()
+                  var triggerEventWhenPreviewerReady = function() {
+                        api.previewer.unbind( 'ready', triggerEventWhenPreviewerReady );
+                        module.trigger( 'item-removed', _item_ );
+                  };
+                  api.previewer.bind( 'ready', triggerEventWhenPreviewerReady );
+                  api.previewer.refresh();
+            } else {
+                  module.trigger( 'item-removed', _item_ );
+            }
+
       },
 
       //@return the item {...} from the collection
@@ -4697,7 +4726,16 @@ $.extend( CZRDynModuleMths, {
                         trigger   : 'click keydown',
                         selector  : '.' + module.control.css_attr.add_new_btn, //'.czr-add-new',
                         name      : 'add_item',
-                        actions   : [ 'closeRemoveDialogs', 'closeAllItems', 'addItem' ],
+                        //@param params : { dom_el : {}, dom_event : {}, event : {}, model {} }
+                        actions   : function( params ) {
+                              module.closeRemoveDialogs( params ).closeAllItems( params ).addItem( params ).done( function( item_id ) {
+                                    module.czr_Item( item_candidate.id, function( _item_ ) {
+                                          _item_.embedded.then( function() {
+                                                module.czr_Item( item_candidate.id ).viewState( 'expanded' );
+                                          });
+                                    } );
+                              });
+                        }
                   }
             ]);//module.userEventMap
       },
@@ -4793,7 +4831,8 @@ $.extend( CZRDynModuleMths, {
       //Fired on user Dom action.
       //the item is manually added.
       //@return a promise() for future sequential actions
-      addItem : function(obj) {
+      //@param params : { dom_el : {}, dom_event : {}, event : {}, model {} }
+      addItem : function( params ) {
             if ( ! this.itemCanBeInstantiated() ) {
 
                   return;
@@ -4827,7 +4866,8 @@ $.extend( CZRDynModuleMths, {
             module.instantiateItem( item_candidate, true ).ready(); //true == Added by user
 
             //this iife job is to close the pre item and to maybe refresh the preview
-            //@return a promise(), then once done the item view is expanded to start editing it
+            //then once done the item view is expanded to start editing it
+            //@return a promise()
             $.Deferred( function() {
                   var _dfd_ = this;
                   module.czr_Item( item_candidate.id ).isReady.then( function() {
@@ -4840,12 +4880,12 @@ $.extend( CZRDynModuleMths, {
                               api.previewer.unbind( 'ready', resolveWhenPreviewerReady );
                               _dfd_.resolve();
                         };
-                        //module.doActions( 'item_added_by_user' , module.container, { item : item_candidate , dom_event : obj.dom_event } );
+                        //module.doActions( 'item_added_by_user' , module.container, { item : item_candidate , dom_event : params.dom_event } );
 
                         //refresh the preview frame (only needed if transport is postMessage && has no partial refresh set )
                         //must be a dom event not triggered
                         //otherwise we are in the init collection case where the items are fetched and added from the setting in initialize
-                        if ( 'postMessage' == api(module.control.id).transport && _.has( obj, 'dom_event') && ! _.has( obj.dom_event, 'isTrigger' ) && ! api.CZR_Helpers.hasPartRefresh( module.control.id ) ) {
+                        if ( 'postMessage' == api(module.control.id).transport && _.has( params, 'dom_event') && ! _.has( params.dom_event, 'isTrigger' ) && ! api.CZR_Helpers.hasPartRefresh( module.control.id ) ) {
                               // api.previewer.refresh().done( function() {
                               //       _dfd_.resolve();
                               // });
@@ -4853,13 +4893,11 @@ $.extend( CZRDynModuleMths, {
                               api.previewer.bind( 'ready', resolveWhenPreviewerReady );
                               api.previewer.refresh();
                         } else {
-                              _dfd_.resolve();
+                              _dfd_.resolve( );
                         }
                   });
-            }).done( function() {
-                    module.czr_Item( item_candidate.id ).viewState( 'expanded' );
             }).always( function() {
-                    dfd.resolve();
+                    dfd.resolve( item_candidate.id );
             });
             return dfd.promise();
       }
@@ -4923,7 +4961,7 @@ $.extend( CZRDynModuleMths, {
                           appendAndResolve( api.CZR_Helpers.parseTemplate( _serverTmpl_ )() );
                     }).fail( function( _r_ ) {
                           //console.log( 'fail response =>', _r_);
-                          dfd.reject( 'renderPreItemView => Problem when fetching the pre-item tmpl from server for module : '+ module.id );
+                          dfd.reject( [ 'renderPreItemView for module : ', module.id , _r_ ].join(' ') );
                     });
               }
               return dfd.promise();

@@ -953,7 +953,7 @@ czr_fn_setup_constants();
 czr_fn_setup_started_using_theme_option_and_constants();
 
 // load the czr-base-fmk
-if ( ! isset( $GLOBALS['czr_base_fmk'] ) ) {
+if ( ! isset( $GLOBALS['czr_base_fmk_namespace'] ) ) {
     require_once(  dirname( __FILE__ ) . '/czr-base-fmk/czr-base-fmk.php' );
     \czr_fn\CZR_Fmk_Base( array(
        'text_domain' => 'customizr',
@@ -966,12 +966,11 @@ if ( ! isset( $GLOBALS['czr_base_fmk'] ) ) {
 
 
 // load the social links module
-require_once( CZR_BASE . CZR_CORE_PATH . 'czr-modules/social-links/index.php' );
+require_once( CZR_BASE . CZR_CORE_PATH . 'czr-modules/social-links/social_links_module.php' );
 czr_fn_register_social_links_module(
     array(
-        'id' => 'tc_theme_options[tc_social_links]',
+        'setting_id' => 'tc_theme_options[tc_social_links]',
 
-        'text-domain' => 'customizr',
         'base_url_path' => CZR_BASE_URL . '/core/czr-modules/social-links',
         'version' => CUSTOMIZR_VER,
 
