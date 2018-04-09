@@ -42,6 +42,13 @@ h6 {
 	padding-top: 0;
 }
 
+/* Styles for slider */
+s1, s2, s3 {
+	font-size: 20px;
+	color: #3F3724;
+	line-height: 150%;
+}
+
 .imageborder {
 	border: 1px solid #ccc;
 	padding: 0.5em;
