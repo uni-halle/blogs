@@ -259,12 +259,12 @@ function showCatentries($atts){
 			echo '<div class="catpost" id="post-'.get_the_ID().'">';
 				echo '<a href="'.get_the_permalink().'" rel="bookmark" title="'.get_the_title().'">';
 					echo '<h3>';
-					
+
 					echo get_the_title();
-					
+
 					echo '</h3>';
 				echo '</a>';
-					
+
 					if (has_post_thumbnail()) {
 					echo '<div class="threadimg">';
 					the_post_thumbnail('medium');
@@ -307,22 +307,22 @@ if ( !class_exists( 'PPLB_Plugin' ) ) {
 			add_action('wp_enqueue_scripts', array( $this, 'pplb_logout_js' ) ); 					// adds the script to the header.
 			add_action('wp_ajax_nopriv_pplb_logout', array( $this, 'pplb_protected_logout' ) ); 	// logout for non-logged in wp users
 			add_action('wp_ajax_pplb_logout', array( $this, 'pplb_protected_logout' ) ); 		// logout for logged in wp users
-			
+
 			add_shortcode('logout_btn', array( $this, 'pplb_logout_button' ) );					// adds the shortcode.
-			
+
 			add_filter( 'post_password_expires', array( $this, 'pplb_change_postpass_expires' ), 10, 1 );
-			
+
 			add_action( 'admin_init',  array( $this, 'pplb_options_save' ) );
 		}
-		
+
 		/*
 			Add the logout button to posts which require a password and the password has been provided.
 		*/
-		
+
 		function pplb_logout_filter( $content ){
 			global $post;
 			$html = '';
-			
+
 			//Check if the post has a password and we are inside the loop.
 			if ( !empty( $post->post_password) && in_the_loop() ){
 				//Check to see if the password has been provided.
@@ -339,13 +339,13 @@ if ( !class_exists( 'PPLB_Plugin' ) ) {
 				}
 			}
 			return $html.$content;
-			
+
 		}
-		
-		/* 
+
+		/*
 			Adds for use in wordpress shortcode or php.
 		*/
-		
+
 		function pplb_logout_button(){
 			$qid = get_queried_object_id();
 			$qpost = get_post($qid);
@@ -364,13 +364,13 @@ if ( !class_exists( 'PPLB_Plugin' ) ) {
 				}
 			}
 			return $html;
-			
+
 		}
-		
+
 		/*
 			Ajax function to reset the cookie in wordpress.
 		*/
-		
+
 		function pplb_protected_logout(){
 			// Set the cookie to expire ten days ago... instantly logged out.
 			setcookie( 'wp-postpass_' . COOKIEHASH, stripslashes( '' ), time() - 864000, COOKIEPATH, COOKIE_DOMAIN );
@@ -383,13 +383,13 @@ if ( !class_exists( 'PPLB_Plugin' ) ) {
 			$options = get_option('pplb_options');
 			$pplb_alert = (array_key_exists('pplb_alert', $options)) ? $options['pplb_alert'] : 'no';
 			$log = isset( $options['pplb_debug'] ) ? $options['pplb_debug'] : 0;
-			
+
 			$response = array(
 				'status' 	=> 0,
 				'message' 	=> '',
 				'log'           => $log
 			);
-			
+
 			if ( $pplb_alert == 'yes' ) {
 				$response['status'] = 1;
 				$response['message'] = stripslashes( $options['pplb_message'] );
@@ -400,7 +400,7 @@ if ( !class_exists( 'PPLB_Plugin' ) ) {
 			}
 			wp_send_json( $response );
 		}
-		
+
 		/*
 			Enqueue the scripts.
 		*/
@@ -410,7 +410,7 @@ if ( !class_exists( 'PPLB_Plugin' ) ) {
 			wp_enqueue_script( 'pplb_logout_js' );
 			wp_localize_script( 'pplb_logout_js', 'pplb_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 		}
-		
+
 		/*
 			Filter the expiration time if necessary based upon the option.
 		*/
@@ -423,7 +423,7 @@ if ( !class_exists( 'PPLB_Plugin' ) ) {
 				return $expire;
 			}
 		}
-		
+
 		/*
 		        Save on admin init
 		*/
@@ -436,13 +436,13 @@ if ( !class_exists( 'PPLB_Plugin' ) ) {
 				$options['pplb_debug'] = ( array_key_exists('pplb_debug', $_POST) ) ? $_POST['pplb_debug']: 0;
 				$options['pplb_button_class'] = esc_attr($_POST['pplb_button_class']);
 				$options['pplb_button_text'] = !empty($_POST['pplb_button_text']) ? esc_attr($_POST['pplb_button_text']) : 'logout';
-				
-				
+
+
 				update_option('pplb_options', $options);
-				
+
 				$expire = ( isset( $_POST['pplb_pass_expires'] ) && !empty( $_POST['pplb_pass_expires'] ) ) ? $_POST['pplb_pass_expires']: false;
 				update_option('pplb_pass_expires', $expire );
-				
+
 				$filter = isset($_POST['pplb_button_filter']) ? $_POST['pplb_button_filter']: 'yes';
 				update_option('pplb_button_filter', $filter);
 				$redirect = add_query_arg( array( 'message' => 1 ) );
@@ -456,14 +456,14 @@ if ( !class_exists( 'PPLB_Plugin' ) ) {
 		function pplb_settings_page(){
 			include ( PPLB_TEMPLATE_PATH . 'pplb-options.php' );
 		}
-		
+
 		/*
 			Add the admin page
 		*/
 		function pplb_add_admin(){
 			add_options_page('Protected Post Logout Settings', 'Protected Post Logout', 'manage_options', 'pplb-settings-page', array( $this, 'pplb_settings_page' ) );
 		}
-		
+
 		/*
 			Activation hook to install the options if they haven't been installed before.
 		*/
@@ -480,8 +480,8 @@ if ( !class_exists( 'PPLB_Plugin' ) ) {
 				update_option('pplb_button_filter', 'yes');
 			}
 		}
-		
-		/* 
+
+		/*
 			Only add the filter if the option declares it
 		*/
 		function add_pplb_filter(){
@@ -539,7 +539,17 @@ class PHP_Code_Widget extends WP_Widget {
 			$text = ob_get_contents();
 			ob_end_clean();
 			?>
-			<div class="execphpwidget"><?php echo $instance['filter'] ? wpautop($text) : $text; ?></div>
+			<!--<div class="execphpwidget"><?php echo $instance['filter'] ? wpautop($text) : $text; ?></div>-->
+			<div class="execphpwidget"><?php
+			if ( is_single() ) {
+			echo '<ul><a href="'.get_site_url().'/intern" style="font-weight:700;">zur Übersicht</a></ul>';
+			}
+			elseif (is_archive() ){
+			echo '<ul><a href="'.get_site_url().'/intern" style="font-weight:700;">zur Übersicht</a></ul>';
+			}
+
+			?>
+			</div>
 		<?php
 		echo $after_widget;
 	}
@@ -571,3 +581,47 @@ class PHP_Code_Widget extends WP_Widget {
 }
 
 add_action('widgets_init', create_function('', 'return register_widget("PHP_Code_Widget");'));
+
+
+add_filter( 'wp_insert_post_data', function( $data, $postarr ){
+	if ( 'post' == $data['post_type'] && 'auto-draft' == $data['post_status'] ) {
+		$data['post_password'] = 'Aktive*Geburt2020';
+	}
+	return $data;
+}, '99', 2 );
+
+
+function secret_download_handler() {
+    if (strpos($_SERVER["REQUEST_URI"], 'internal_download.php') !== false) {
+        // echo json_encode($_COOKIE);
+        // echo "<br>";
+        // echo json_encode($post);
+        // echo "<br>";
+        // echo COOKIEHASH;
+        if (isset($_COOKIE['wp-postpass_' . COOKIEHASH])) {
+            //if (wp_check_password( $post->post_password, $_COOKIE['wp-postpass_' . COOKIEHASH])) {
+            if (true) {
+                require_once('wp-content/themes/be-up-theme/secret_download.php');
+                $pdf_filename = urldecode($_GET['file']);
+                $php_filename = sd_pdf_to_php_filename($pdf_filename);
+                sd_echo_file_by_get($php_filename);
+            } else {
+                echo "wp_check_password failed.<br>";
+            }
+        } else {
+            echo "Bitte vorher im internel Bereich anmelden.";
+        }
+        exit();
+    }
+}
+add_action('parse_request', 'secret_download_handler');
+
+
+function secret_upload_handler() {
+    if (strpos($_SERVER["REQUEST_URI"], 'internal_upload.php') !== false) {
+        require_once('wp-content/themes/be-up-theme/secret_download.php');
+        sd_upload_file();
+        exit();
+    }
+}
+add_action('parse_request', 'secret_upload_handler');

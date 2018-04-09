@@ -22,6 +22,7 @@ get_header(); ?>
 						//echo '<div class="be-link" id="' . esc_attr($a['ort']) . '" data-open="reveal_logout">Logout</div>';
 						//echo 'Der interne Bereich steht den Hebammen, Ärztinnen und Ärzten der teilnehmenden Kliniken zur Verfügung. Wenn Sie an der Studie mitarbeiten und die Zugangsdaten erhalten möchten, kontaktieren Sie Frau Dipl. Med. Päd. Sabine Striebich oder Frau Elke Mattern, M.Sc. über kontakt@be-up-studie.de.';
 						//echo '<a href="'.get_stylesheet_directory_uri().'/logout.php">Logout</a><br /><br />';
+						$cookiestatus = 'cookietrue';
 					}
 					else {
 						echo '<div class="small-12 medium-6 cell destroyme">';
@@ -39,10 +40,10 @@ get_header(); ?>
 							//echo '<a href="'.get_stylesheet_directory_uri().'/logout.php">Logout</a><br /><br />';
 							echo '</div>';
 							echo '<div class="small-12 cell">';
-							echo '<h3>Downloads</h3>';
+							//echo '<h3>Downloads</h3>';
 							$cookiehash = 'wp-postpass_' . COOKIEHASH;
-							echo $cookiehash;
-							echo '<a href="https://be-up-studie.de/wp-content/themes/be-up-theme/secret_download.php?file=Ramsayer_Titel_final.pdf&hash='.$cookiehash.'">Ramsayer</a>';
+							//echo $cookiehash;
+							//echo '<a href="https://be-up-studie.de/wp-content/themes/be-up-theme/secret_download.php?file=Ramsayer_Titel_final.pdf&hash='.$cookiehash.'">Ramsayer</a>';
 							echo '</div>';
 						}
 					}
@@ -85,13 +86,14 @@ get_header(); ?>
 				</div>
 				<div class="small-12 medium-4 cell secret">
 					<?php 
-					if (!empty($post->post_password)) { // if there's a password
-						if (isset($_COOKIE['wp-postpass_' . COOKIEHASH]) && wp_check_password( $post->post_password, $_COOKIE['wp-postpass_' . COOKIEHASH])) {
+					// if (!empty($post->post_password)) { // if there's a password
+						// if (isset($_COOKIE['wp-postpass_' . COOKIEHASH]) && wp_check_password( $post->post_password, $_COOKIE['wp-postpass_' . COOKIEHASH])) {
+						if ( $cookiestatus == 'cookietrue') {
 							get_sidebar();
 						}
-					}
-					else {
-					};
+					// }
+					// else {
+					// };
 					?>
 				</div>
 			</div>

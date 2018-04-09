@@ -84,7 +84,8 @@ get_header(); ?>
 										the_post_thumbnail('medium');
 										echo '</div>';
 										};
-										echo get_the_content();
+										// echo get_the_content();
+										the_content();
 									echo '</div>';
 								echo '</div>';
 						?>
