@@ -67,24 +67,24 @@ get_header(); ?>
                                 */
                                 $video_length = get_post_meta(get_the_ID(), 'Video-Length', true);
                                 $video_date = get_post_meta(get_the_ID(), 'Video-Date', true);
-                                if (!empty($video_length) | !empty($video_date)) :
+                                if (!empty($video_length) || !empty($video_date)) :
                             ?>
                             <div class="video-meta">
                                 <h3 class="video-meta__title">Video Information</h3>
                                 <ul class="video-meta__list">
                                     <?php if (!empty($video_length)) : ?>
                                     <li class="video-meta__list-item">Length: <?= $video_length ?></li>
-                                    <?php endif; ?>
+                                    <?php endif ?>
                                     <?php if (!empty($video_date)) : ?>
                                     <li class="video-meta__list-item">Recorded on: <?= $video_date ?></li>
-                                    <?php endif; ?>
+                                    <?php endif ?>
                                 </ul>
                             </div>
-                            <?php endif; ?>
-                        <?php endif; ?>
+                            <?php endif ?>
+                        <?php endif ?>
                     <?php elseif (has_post_thumbnail()) : ?>
                         <?= the_post_thumbnail([285,180]); ?>
-                    <?php endif; ?>
+                    <?php endif ?>
 
                     <?php if (in_category(['board-of-directors', 'board-of-advisors', 'staff'])) : ?>
                     <div class="contact-info">
@@ -94,7 +94,7 @@ get_header(); ?>
                             <li>Phone: <?= get_post_meta($post->ID, 'phone', true); ?></li>
                         </ul>
                     </div>
-                    <?php endif; ?>
+                    <?php endif ?>
 
                 </div>
                 <div class="[ medium-8  columns ]  single-conent">
@@ -102,17 +102,17 @@ get_header(); ?>
 
                     <?php if (in_category(['board-of-directors', 'board-of-advisors', 'staff'])) : ?>
                     <p><?= get_post_meta($post->ID, 'position', true); ?></p>
-                    <?php endif; ?>
+                    <?php endif ?>
 
                     <?php if (in_category(['publications', 'projects', 'networks'])) : ?>
                     <p class="event-item__consultant"><?= get_post_meta($post->ID, 'author', true); ?></p>
-                    <?php endif; ?>
+                    <?php endif ?>
 
                     <?= the_content(); ?>
                 </div>
             </div>
         </div>
-    <?php endwhile; ?>
+    <?php endwhile ?>
 
 </div>
 

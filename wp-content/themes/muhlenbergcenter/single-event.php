@@ -7,7 +7,7 @@ get_header(); ?>
 
 <article id="post-<?php the_ID(); ?>" class="event">
 
-    <?php the_content(); ?>
+    <?= the_content(); ?>
 
     <?php 
         /*
@@ -18,8 +18,8 @@ get_header(); ?>
         if (!empty($program)) :
     ?>
 
-    <section class="row additional-info program">
-        <div class="small-12 columns">
+    <section class="row  additional-info  program">
+        <div class="small-12  columns">
             <h2 class="additional-info__title">
                 <span class="additional-info__title-inner"><?= _e('Program', 'muhlenbergcenter'); ?></span>
             </h2>
@@ -44,7 +44,7 @@ get_header(); ?>
                 if ($program_content->have_posts()) :
                 while ($program_content->have_posts()) : $program_content->the_post();
             ?>
-            <div class="additional-info__content program">
+            <div class="additional-info__content  program">
                 <?= the_content(); ?>
             </div>
             <?php
@@ -56,7 +56,7 @@ get_header(); ?>
         </div>
     </section>
 
-    <?php endif; ?>
+    <?php endif ?>
 
     <?php 
         /*
@@ -67,8 +67,8 @@ get_header(); ?>
         if (!empty($venue)) :
     ?>
 
-    <section class="row additional-info venue">
-        <div class="small-12 columns">
+    <section class="row  additional-info  venue">
+        <div class="small-12  columns">
             <h2 class="additional-info__title">
                 <span class="additional-info__title-inner"><?= _e('Venue', 'muhlenbergcenter'); ?></span>
             </h2>
@@ -93,15 +93,15 @@ get_header(); ?>
                 if ($venue_content->have_posts()) :
                 while ($venue_content->have_posts()) : $venue_content->the_post();
             ?>
-            <div class="row additional-info__content program">
+            <div class="row  additional-info__content  program">
                 <?php if(has_post_thumbnail()) : ?>
-                <div class="medium-4 columns">
+                <div class="medium-4  columns">
                     <?= the_post_thumbnail(); ?>
                 </div>
-                <div class="medium-8 columns">
+                <div class="medium-8  columns">
                 <?php else : ?>
-                <div class="small-12 columns">
-                <?php endif; ?>
+                <div class="small-12  columns">
+                <?php endif ?>
                     <h3 class="additional-info__subtitle">
                         <?= the_title(); ?>
                     </h3>
@@ -117,7 +117,7 @@ get_header(); ?>
         </div>
     </section>
 
-    <?php endif; ?>
+    <?php endif ?>
 
     <?php 
         /*
@@ -128,8 +128,8 @@ get_header(); ?>
         if (!empty($accommodation)) :
     ?>
 
-    <section class="row additional-info accommodation">
-        <div class="small-12 columns">
+    <section class="row  additional-info  accommodation">
+        <div class="small-12  columns">
             <h2 class="additional-info__title">
                 <span class="additional-info__title-inner"><?= _e('Accommodation', 'muhlenbergcenter'); ?></span>
             </h2>
@@ -154,15 +154,15 @@ get_header(); ?>
                 if ($accommodation_content->have_posts()) :
                 while ($accommodation_content->have_posts()) : $accommodation_content->the_post();
             ?>
-            <div class="row additional-info__content accommodation">
+            <div class="row  additional-info__content  accommodation">
                 <?php if(has_post_thumbnail()) : ?>
-                <div class="medium-4 columns">
+                <div class="medium-4  columns">
                     <?= the_post_thumbnail(); ?>
                 </div>
-                <div class="medium-8 columns">
+                <div class="medium-8  columns">
                 <?php else : ?>
-                <div class="small-12 columns">
-                <?php endif; ?>
+                <div class="small-12  columns">
+                <?php endif ?>
                     <h3 class="additional-info__subtitle">
                         <?= the_title(); ?>
                     </h3>
@@ -178,7 +178,7 @@ get_header(); ?>
         </div>
     </section>
 
-    <?php endif; ?>
+    <?php endif ?>
 
     <?php 
         /*
@@ -190,8 +190,8 @@ get_header(); ?>
         if (!empty($directions)) :
     ?>
 
-    <section class="row additional-info directions">
-        <div class="small-12 columns">
+    <section class="row  additional-info  directions">
+        <div class="small-12  columns">
             <h2 class="additional-info__title">
                 <span class="additional-info__title-inner"><?= _e('Directions', 'muhlenbergcenter'); ?></span>
             </h2>
@@ -200,7 +200,7 @@ get_header(); ?>
                 <?= _e('show', 'muhlenbergcenter'); ?>
             </div>
 
-            <div class="row additional-info__content directions">
+            <div class="row  additional-info__content  directions">
                 <?php
                     /*
                        Get program content from post in category 'event-directions'
@@ -217,7 +217,7 @@ get_header(); ?>
                     if ($directions_content->have_posts()) :
                     while ($directions_content->have_posts()) : $directions_content->the_post();
                 ?>
-                    <div class="medium-4 columns">
+                    <div class="medium-4  columns">
                         <?php 
                             /* Check for custom field 'Directions Map'
                                if it is used return map, else return directions icon
@@ -228,9 +228,9 @@ get_header(); ?>
                                 height="175" class="iframe  iframe--map"></iframe>
                         <?php else : ?>
                         <img src="<?= esc_url(get_template_directory_uri()); ?>/img/symbol-directions.png" alt="symbol directions" />
-                        <?php endif; ?>
+                        <?php endif ?>
                     </div>
-                    <div class="medium-8 columns">
+                    <div class="medium-8  columns">
                         <?= the_content(); ?>
                     </div>
                 <?php
@@ -243,7 +243,7 @@ get_header(); ?>
         </div>
     </section>
 
-    <?php endif; ?>
+    <?php endif ?>
 
     <?php 
         /*
@@ -254,8 +254,8 @@ get_header(); ?>
         if (!empty($contact)) :
     ?>
 
-    <section class="row additional-info contact">
-        <div class="small-12 columns">
+    <section class="row  additional-info  contact">
+        <div class="small-12  columns">
             <h2 class="additional-info__title">
                 <span class="additional-info__title-inner"><?= _e('Contact', 'muhlenbergcenter'); ?></span>
             </h2>
@@ -264,7 +264,7 @@ get_header(); ?>
                 <?= _e('show', 'muhlenbergcenter'); ?>
             </div>
 
-            <div class="row additional-info__content contact">
+            <div class="row  additional-info__content  contact">
                 <?php
                     /*
                        Get program content from post in category 'event-contact'
@@ -280,7 +280,7 @@ get_header(); ?>
                     if ($contact_content->have_posts()) :
                     while ($contact_content->have_posts()) : $contact_content->the_post();
                 ?>
-                    <div class="small-12 columns">
+                    <div class="small-12  columns">
                         <?= the_content(); ?>
                     </div>
                 <?php
@@ -293,7 +293,7 @@ get_header(); ?>
         </div>
     </section>
 
-    <?php endif; ?>
+    <?php endif ?>
 
 </article>
 

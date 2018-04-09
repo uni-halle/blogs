@@ -7,7 +7,14 @@
  */
 ?>
 
-<?php if (is_category(['press', 'publications', 'projects', 'networks', 'material-links'])) : /* Begin: Category Press and Research */ ?>
+<?php if (is_category([
+    'press',
+    'publications',
+    'projects',
+    'networks',
+    'material-links',
+    'key-research-areas'
+])) : /* Begin: Category Press and Research */ ?>
 <li id="post-<?= the_ID(); ?>" class="media">
     <div class="thumbnail">
         <a href="<?= the_permalink(); ?>"
@@ -17,7 +24,7 @@
             <?php else : ?>
                 <img src="<?= esc_url(get_template_directory_uri()); ?>/img/teaser_press.jpg"
                      alt="teaser image" />
-            <?php endif; ?>
+            <?php endif ?>
         </a>
     </div>
     <p>
@@ -28,7 +35,11 @@
     </p>
 </li>
 
-<?php elseif (is_category(['board-of-directors', 'board-of-advisors', 'staff'])) : /* Begin: Category Members */ ?>
+<?php elseif (is_category([
+    'board-of-directors',
+    'board-of-advisors',
+    'staff'
+])) : /* Begin: Category Members */ ?>
 <li id="post-<?= the_ID(); ?>" class="person">
     <?php if ( has_post_thumbnail() ) : ?>
     <div class="thumbnail">
@@ -37,7 +48,7 @@
             <?= the_post_thumbnail([285, 180]); ?>
         </a>
     </div>
-    <?php endif; ?>
+    <?php endif ?>
     <h3 class="person__name">
         <a href="<?= the_permalink(); ?>"
            class="person__link"
@@ -64,7 +75,7 @@
     <div class="medium-4 columns">
         <?= the_post_thumbnail([285,180]); ?>
     </div>
-    <?php endif; ?>
+    <?php endif ?>
     <div class="medium-8 columns">
         <?php
             if (is_single()) :
@@ -85,4 +96,4 @@
     </div>
 </article>
 
-<?php endif; /* End: Other Posts */ ?>
+<?php endif ?>

@@ -13,7 +13,7 @@
                 <?= the_post_thumbnail([285,180]); ?>
             <?php else : ?>
                 <img src="<?= esc_url(get_template_directory_uri()); ?>/img/teaser_pictures.jpg" alt="teaser image" />
-            <?php endif; ?>
+            <?php endif ?>
         </a>
     </div>
     <p>

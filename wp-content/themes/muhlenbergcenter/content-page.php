@@ -7,7 +7,7 @@
 
 <div id="post-<?php the_ID(); ?>" class="row">
 
-    <div class="small-12 columns">
+    <div class="small-12  columns">
         <?php if (!is_page('calendar')) : ?>
         <h1 class="page-title"><?= the_title('<span>', '</span>'); ?></h1>
         <?php endif; ?>
@@ -58,7 +58,7 @@
                                                         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/teaser_press.jpg" alt="teaser image" />
                                                 <?php elseif(in_category('pictures')) : ?>
                                                         <img src="<?php echo esc_url(get_template_directory_uri()); ?>/img/teaser_pictures.jpg" alt="teaser image" />
-                                                <?php endif; ?>
+                                                <?php endif ?>
                                             </a>
                                         </div>
                                     <?php else : ?>
@@ -78,8 +78,8 @@
                                                 </iframe>
                                             </div>
                                        </div>
-                                        <?php endif; ?>
-                                    <?php endif; ?>
+                                        <?php endif ?>
+                                    <?php endif ?>
                                     <p class="meta-info">
                                         <span class="meta-info__category">
                                         <?php $categories = get_the_category();
@@ -97,9 +97,9 @@
                                         </a>
                                     </p>
                                 </li>
-                            <?php endwhile; ?>
+                            <?php endwhile ?>
                             </ul>
-                        <?php endif; ?>
+                        <?php endif ?>
                 </div>
             </div>
 
@@ -185,7 +185,7 @@
                 <?= the_content(); ?>
             </div>
 
-        <?php endif; ?>
+        <?php endif ?>
     </div>
 
 </div>

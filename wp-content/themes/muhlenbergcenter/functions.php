@@ -21,42 +21,42 @@ if (version_compare($GLOBALS['wp_version'], '4.1-alpha', '<')) {
 if (!function_exists('muhlenbergcenter_setup')) :
 function muhlenbergcenter_setup() {
 
-	/*
-	 * Make theme available for translation.
-	 * Translations can be filed in the /languages/ directory.
-	 */
-	load_theme_textdomain('muhlenbergcenter', get_template_directory() . '/languages');
+    /*
+     * Make theme available for translation.
+     * Translations can be filed in the /languages/ directory.
+     */
+    load_theme_textdomain('muhlenbergcenter', get_template_directory() . '/languages');
 
-	// Add default posts and comments RSS feed links to head.
-	add_theme_support('automatic-feed-links');
+    // Add default posts and comments RSS feed links to head.
+    add_theme_support('automatic-feed-links');
 
-	// Let WordPress manage the document title.
-	add_theme_support('title-tag');
+    // Let WordPress manage the document title.
+    add_theme_support('title-tag');
 
-	// Enable support for post thumbnails on posts and pages.
-	add_theme_support('post-thumbnails');
-	set_post_thumbnail_size(825, 510, true);
+    // Enable support for post thumbnails on posts and pages.
+    add_theme_support('post-thumbnails');
+    set_post_thumbnail_size(825, 510, true);
 
-	// Register a primary menu using wp_nav_menu().
-	register_nav_menus([
-		'primary' => __('Primary Menu', 'muhlenbergcenter'),
-	]);
+    // Register a primary menu using wp_nav_menu().
+    register_nav_menus([
+        'primary' => __('Primary Menu', 'muhlenbergcenter'),
+    ]);
 
-	// Switch default core markup to output valid HTML5.
-	add_theme_support('html5', [
-		'search-form', 'gallery', 'caption'
-	]);
+    // Switch default core markup to output valid HTML5.
+    add_theme_support('html5', [
+        'search-form', 'gallery', 'caption'
+    ]);
 
-	// Enable support for post formats.
-	add_theme_support('post-formats', [
-		'video', 'gallery'
-	]);
+    // Enable support for post formats.
+    add_theme_support('post-formats', [
+        'video', 'gallery'
+    ]);
 
-	/*
-	 * This theme styles the visual editor to resemble the theme style,
-	 * specifically font, colors, and column width.
-	 */
-	add_editor_style(['css/editor-style.css']);
+    /*
+     * This theme styles the visual editor to resemble the theme style,
+     * specifically font, colors, and column width.
+     */
+    add_editor_style(['css/editor-style.css']);
 
     // Clean up the wp_head action.
     // remove_action('wp_head', 'feed_links', 2);
@@ -78,33 +78,33 @@ add_action('after_setup_theme', 'muhlenbergcenter_setup');
  * Register widget areas.
  */
 function muhlenbergcenter_widgets_init() {
-	register_sidebar([
-		'name'          => __('First footer column', 'muhlenbergcenter'),
-		'id'            => 'sidebar-footer-1',
-		'description'   => __('Contains search field that appears in the first footer column.', 'muhlenbergcenter'),
-		'before_widget' => '<div id="%1$s" class="medium-3 small-12 columns">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h3 class="visuallyhidden">',
-		'after_title'   => '</h3>',
-	]);
-	register_sidebar([
-		'name'          => __('Second footer column', 'muhlenbergcenter'),
-		'id'            => 'sidebar-footer-2',
-		'description'   => __('Contains the first part of navigation that appears in the second footer column.', 'muhlenbergcenter'),
-		'before_widget' => '<div id="%1$s" class="medium-2 small-6 columns">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h3 class="visuallyhidden">',
-		'after_title'   => '</h3>',
-	]);
-	register_sidebar([
-		'name'          => __('Third footer column', 'muhlenbergcenter'),
-		'id'            => 'sidebar-footer-3',
-		'description'   => __('Contains the second part of navigation that appears in the third footer column.', 'muhlenbergcenter'),
-		'before_widget' => '<div id="%1$s" class="medium-3 small-6 columns">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h3 class="visuallyhidden">',
-		'after_title'   => '</h3>',
-	]);
+    register_sidebar([
+        'name'          => __('First footer column', 'muhlenbergcenter'),
+        'id'            => 'sidebar-footer-1',
+        'description'   => __('Contains search field that appears in the first footer column.', 'muhlenbergcenter'),
+        'before_widget' => '<div id="%1$s" class="medium-3 small-12 columns">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="visuallyhidden">',
+        'after_title'   => '</h3>',
+    ]);
+    register_sidebar([
+        'name'          => __('Second footer column', 'muhlenbergcenter'),
+        'id'            => 'sidebar-footer-2',
+        'description'   => __('Contains the first part of navigation that appears in the second footer column.', 'muhlenbergcenter'),
+        'before_widget' => '<div id="%1$s" class="medium-2 small-6 columns">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="visuallyhidden">',
+        'after_title'   => '</h3>',
+    ]);
+    register_sidebar([
+        'name'          => __('Third footer column', 'muhlenbergcenter'),
+        'id'            => 'sidebar-footer-3',
+        'description'   => __('Contains the second part of navigation that appears in the third footer column.', 'muhlenbergcenter'),
+        'before_widget' => '<div id="%1$s" class="medium-3 small-6 columns">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="visuallyhidden">',
+        'after_title'   => '</h3>',
+    ]);
 }
 add_action('widgets_init', 'muhlenbergcenter_widgets_init');
 
@@ -142,7 +142,7 @@ function add_menu_parent_class($items) {
  * Change class name for sub menus.
  */
 class muhlenbergcenter_Walker_Nav_Menu extends Walker_Nav_Menu {
-  function start_lvl(&$output, $depth) {
+  function start_lvl(&$output, $depth = 0, $args = []) {
     $indent = str_repeat("\t", $depth);
     $output .= "\n$indent<ul class=\"dropdown\">\n";
   }

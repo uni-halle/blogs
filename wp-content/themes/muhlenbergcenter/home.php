@@ -6,10 +6,47 @@
 
 get_header(); ?>
 
-<div class="row home" data-equalizer data-equalize-on="medium">
-    <div class="small-12 columns">
+<div class="row  home">
+    <div class="small-12  columns">
+        <?php
+            $researchconditions = [
+                'category_name'  => 'key-research-areas',
+                'post_type'      => 'post',
+                'post_status'    => 'publish',
+                'posts_per_page' => 3
+            ];
+            $researchtopics = new WP_Query($researchconditions);
+            if ($researchtopics->have_posts()) : ?>
+
+            <ul class="medium-block-grid-3  research-topics">
+                <?php
+                    while($researchtopics->have_posts()) : $researchtopics->the_post();
+                    $pagelink = get_post_meta(get_the_ID(), 'Page Link', true);
+                ?>
+                <li class="research-topics__item">
+                    <a href="<?= the_permalink(); ?>" class="research-topics__link" title="<?php sprintf(_e('More about ', 'muhlenbergcenter'), the_title()); ?>">
+                        <?php if(has_post_thumbnail()) : ?>
+                            <?php the_post_thumbnail([285,180]); ?>
+                        <?php endif ?>
+                        <p class="research-topics__title"><?= the_title(); ?></p>
+                    </a>
+                </li>
+                <?php endwhile ?>
+            </ul>
+
+        <?php endif;
+            wp_reset_postdata();
+        ?>
+    </div>
+</div>
+
+<div class="row  home" data-equalizer data-equalize-on="medium">
+    <div class="small-12  columns">
+        <h1 class="page-title">
+            <span><?= _e('Events', 'muhlenbergcenter'); ?></span>
+        </h1>
         <ul class="medium-block-grid-3">
-    
+
         <?php
             /* Shortcode: 3 aktuelle Events mit Tag "home" ausgeben */
             echo do_shortcode(
@@ -52,47 +89,9 @@ get_header(); ?>
                 [/events_list]'
             );
         ?>
-    
+
         </ul>
     </div>
 </div>
 
-<?php /* get the posts for person slider */
-$personSliderConditions = array (
-    'category_name' => 'personenslider',
-    'post_type'     => 'post',
-    'post_status'   => 'publish',
-    'orderby'       => 'date',
-    'nopaging'      => true
-);
-$the_query = new WP_Query( $personSliderConditions );
-if ( $the_query->have_posts() ) :
-?>
-<div class="row persons visible-for-medium-up">
-    <div class="small-12 columns">
-        <ul data-orbit data-options="animation:slide;
-                                     timer: false;
-                                     animation_speed: 800;
-                                     navigation_arrows: true;
-                                     caption_class: persons-text;
-                                     next_class: persons-next;
-                                     prev_class: persons-prev;">
-            <?php while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-            <li>
-                <div class="persons-text">
-                    <?php the_content(); ?>
-                </div>
-                <?php if ( has_post_thumbnail() ) : ?>
-                <?php the_post_thumbnail( 'full' ); ?>
-                <?php endif; ?>
-            </li>
-            <?php endwhile; ?>
-        </ul>
-    </div>
-</div>
-<?php
-    endif;
-    wp_reset_postdata();
-?>
-
-<?php get_footer(); ?>
+<?= get_footer(); ?>
