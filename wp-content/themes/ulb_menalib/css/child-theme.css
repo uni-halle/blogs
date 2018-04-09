@@ -184,6 +184,10 @@ text-decoration: underline;
   text-align: center;
 }
 
+
+
+
+
 /* Beitraege */
 
 /*
@@ -202,13 +206,17 @@ h3.entry-format
 p {
   margin-bottom: 0px;
 }
-.entry-title, entry title a {
+
+.entry-content h1, 
+.comment-content h1,
+.entry-title
+{
   font-family: arial,helvetica,sans-serif;
   font-size: 1.3em;
-  color: #666;
-  width: 440px;
+  color: #444444;
+  width: 100%;
   font-weight: 300;
-  line-height: 1.2em;
+  line-height: 1.2em!important;
 }
 
 article {
@@ -219,6 +227,15 @@ article {
 font-size: 12px;
   text-decoration-color: black;
  width: 440px !important;
+}
+
+.entry-content>p:empty
+{
+  /*
+    Empty <p>s occur when template snippets are used
+  */
+  display: none;
+
 }
 
 .entry-content, .entry-summary 
