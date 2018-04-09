@@ -14,7 +14,7 @@
 <!--Start footer navigation-->
 <div class="container_24 footer-navi">
     <div class="grid_24">
-        <div class="grid_10 alpha">
+        <div class="grid_8 alpha">
             <div class="navigation">
                 <ul class="footer_des">
                     <li><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('name'); ?> -
@@ -23,7 +23,7 @@
                 </ul>                
             </div>
         </div>
-        <div class="grid_4">
+        <div class="grid_6">
             <div class="social-icons">
                 <?php if (inkthemes_get_option('colorway_twitter') != '') { ?>
                     <a href="<?php echo inkthemes_get_option('colorway_twitter'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/twitter-icon.png" alt="twitter" title="Twitter"/></a>
@@ -48,6 +48,31 @@
                 <?php if (inkthemes_get_option('colorway_digg') != '') { ?>
                     <a href="<?php echo inkthemes_get_option('colorway_digg'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/digg.png" alt="digg" title="digg"/></a>
                 <?php } ?>
+
+                <?php if (inkthemes_get_option('inkthemes_flickr') != '') { ?>
+                    <a href="<?php echo inkthemes_get_option('inkthemes_flickr'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/flickr.png" alt="flickr" title="flickr"/></a>
+                <?php } ?>
+
+                <?php if (inkthemes_get_option('inkthemes_instagram') != '') { ?>
+                    <a href="<?php echo inkthemes_get_option('inkthemes_instagram'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/Instagram.png" alt="insta" title="insta"/></a>
+                <?php } ?>
+
+                <?php if (inkthemes_get_option('inkthemes_pinterest') != '') { ?>
+                    <a href="<?php echo inkthemes_get_option('inkthemes_pinterest'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/Pinterest.png" alt="pinterest" title="pinterest"/></a>
+                <?php } ?>
+
+<?php if (inkthemes_get_option('inkthemes_tumblr') != '') { ?>
+                    <a href="<?php echo inkthemes_get_option('inkthemes_tumblr'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/Tumblr.png" alt="tmblr" title="tmblr"/></a>
+                <?php } ?>
+
+<?php if (inkthemes_get_option('inkthemes_youtube') != '') { ?>
+                    <a href="<?php echo inkthemes_get_option('inkthemes_youtube'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/youtube.png" alt="tmblr" title="tmblr"/></a>
+                <?php } ?>
+
+<?php if (inkthemes_get_option('inkthemes_google') != '') { ?>
+                    <a href="<?php echo inkthemes_get_option('inkthemes_google'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/google.png" alt="google" title="google"/></a>
+                <?php } ?>
+
             </div>
         </div>
         <div class="grid_10 omega">

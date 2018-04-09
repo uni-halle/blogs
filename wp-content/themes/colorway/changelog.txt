@@ -1,6 +1,12 @@
 Theme Name: ColorWay
 
 ========================
+
+* Version 3.4.9
+***************************************
+1. Popular social icons options added.
+2. Few links updated.
+
 * Version 3.4.8
 ***************************************
 1. Theme URI and footer link updated.

@@ -436,7 +436,13 @@ class inkthemes_Customizer {
                 'colorway_rss',
                 'colorway_linkedin',
                 'colorway_stumble',
-                'colorway_digg'
+                'colorway_digg',
+                'inkthemes_flickr',
+                'inkthemes_instagram',
+                'inkthemes_pinterest',
+                'inkthemes_tumblr',
+                'inkthemes_youtube',
+                'inkthemes_google'
             ),
             'style_section' => array(
                 'inkthemes_customcss'
@@ -884,9 +890,65 @@ class inkthemes_Customizer {
                 'label' => __('Custom CSS', 'colorway'),
                 'description' => __('Quickly add your custom CSS code to your theme by writing the code in this block.', 'colorway'),
                 'type' => 'option',
-                'setting_type' => 'textarea',
+                'setting_type' => 'link',
                 'default' => ''
-            )
+            ),
+
+            'inkthemes_flickr' => array(
+                'id' => 'inkthemes_options[inkthemes_flickr]',
+                'label' => __('Flickr URL', 'colorway'),
+                'description' => __('Quickly add your Flickr URL code to your theme by writing the code in this block.', 'colorway'),
+                'type' => 'option',
+                'setting_type' => 'link',
+                'default' => ''
+            ),
+
+            'inkthemes_instagram' => array(
+                'id' => 'inkthemes_options[inkthemes_instagram]',
+                'label' => __('Instagram URL', 'colorway'),
+                'description' => __('Quickly add your Instagram URL code to your theme by writing the code in this block.', 'colorway'),
+                'type' => 'option',
+                'setting_type' => 'link',
+                'default' => ''
+            ),
+
+            'inkthemes_pinterest' => array(
+                'id' => 'inkthemes_options[inkthemes_pinterest]',
+                'label' => __('Pinterest URL', 'colorway'),
+                'description' => __('Quickly add your Pinterest URL code to your theme by writing the code in this block.', 'colorway'),
+                'type' => 'option',
+                'setting_type' => 'link',
+                'default' => ''
+            ),
+
+            'inkthemes_tumblr' => array(
+                'id' => 'inkthemes_options[inkthemes_tumblr]',
+                'label' => __('Tumblr URL', 'colorway'),
+                'description' => __('Quickly add your Tumblr URL code to your theme by writing the code in this block.', 'colorway'),
+                'type' => 'option',
+                'setting_type' => 'link',
+                'default' => ''
+            ),
+
+            'inkthemes_youtube' => array(
+                'id' => 'inkthemes_options[inkthemes_youtube]',
+                'label' => __('Youtube URL', 'colorway'),
+                'description' => __('Quickly add your Youtube URL code to your theme by writing the code in this block.', 'colorway'),
+                'type' => 'option',
+                'setting_type' => 'link',
+                'default' => ''
+            ),
+
+            'inkthemes_google' => array(
+                'id' => 'inkthemes_options[inkthemes_google]',
+                'label' => __('Google+ URL', 'colorway'),
+                'description' => __('Quickly add your Google+ URL code to your theme by writing the code in this block.', 'colorway'),
+                'type' => 'option',
+                'setting_type' => 'link',
+                'default' => ''
+            ),
+
+
         );
         return $theme_settings;
     }
@@ -1128,9 +1190,9 @@ function inkthemes_registers() {
     wp_enqueue_script('inkthemes_customizer_script');
     wp_localize_script('inkthemes_customizer_script', 'ink_advert', array(
         'pro' => __('View PRO version', 'colorway'),
-        'url' => esc_url('http://www.inkthemes.com/wp-themes/colorway-wp-theme/'),
+        'url' => esc_url('https://www.inkthemes.com/market/colorway-wp-theme/'),
         'support_text' => __('Need Help!', 'colorway'),
-        'support_url' => esc_url('http://www.inkthemes.com/lets-connect/'),
+        'support_url' => esc_url('https://www.inkthemes.com/contact-us/'),
             )
     );
 }
