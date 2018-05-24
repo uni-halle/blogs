@@ -156,7 +156,7 @@ function showad( $adid=null, $omitmenu=false, $preview=false, $send_email=true, 
 				$message = __('This Ad is currently disabled until the Administrator approves it. Only you (the Administrator) and the author can see it.', 'another-wordpress-classifieds-plugin');
 				$messages[] = awpcp_print_error($message);
 			} else if ( $show_messages && ( $is_ad_owner || $preview ) && ! $ad->verified ) {
-				$message = __('This Ad is currently disabled until you verify the email address used for the contact information. Only you (the author) can see it.', 'another-wordpress-classifieds-plugin');
+				$message = __('This listing is currently disabled until you verify the email address used for the contact information. Only you (the author) can see the listing. A verification email has been sent to you.', 'another-wordpress-classifieds-plugin');
 				$messages[] = awpcp_print_error($message);
 			} else if ( $show_messages && ( $is_ad_owner || $preview ) && $ad->disabled == 1 ) {
 				$message = __('This Ad is currently disabled until the Administrator approves it. Only you (the author) can see it.', 'another-wordpress-classifieds-plugin');

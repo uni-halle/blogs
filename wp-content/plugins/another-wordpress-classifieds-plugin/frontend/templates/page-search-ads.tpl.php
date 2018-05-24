@@ -49,7 +49,7 @@
             <input id="min-price" class="awpcp-textfield inputbox money" type="text" name="searchpricemin" value="<?php echo esc_attr( $form['min_price'] ); ?>">
             <label for="max-price"><?php _e( "Max", 'another-wordpress-classifieds-plugin' ); ?></label>
             <input id="max-price" class="awpcp-textfield inputbox money" type="text" name="searchpricemax" value="<?php echo esc_attr( $form['max_price'] ); ?>">
-        </label>
+        </span>
         <?php echo awpcp_form_error('min_price', $errors); ?>
         <?php echo awpcp_form_error('max_price', $errors); ?>
     </p>

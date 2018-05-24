@@ -40,13 +40,23 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
     protected function _dispatch($default=null) {
         $action = $this->get_current_action();
 
-        switch ($action) {
-            case 'dosearch':
-                return $this->do_search_step();
-            case 'searchads':
-            default:
-                return $this->search_step();
+        $form = $this->search_step();
+
+        if ( 'dosearch' !== $action ) {
+            return $form;
         }
+
+        $results = $this->do_search_step();
+
+        if ( 'above' === get_awpcp_option( 'search-form-in-results' ) ) {
+            return $form . $results;
+        }
+
+        if ( 'below' === get_awpcp_option( 'search-form-in-results' ) ) {
+            return $results . $form;
+        }
+
+        return $results;
     }
 
     protected function get_posted_data() {
@@ -92,7 +102,11 @@ class AWPCP_SearchAdsPage extends AWPCP_Page {
         $ui['price-field'] = get_awpcp_option('displaypricefield');
         $ui['allow-user-to-search-in-multiple-regions'] = get_awpcp_option('allow-user-to-search-in-multiple-regions');
 
-        $messages = array( __( 'Use the form below to select the fields on which you want to search. Adding more fields makes for a more specific search. Using fewer fields will make for a broader search.', 'another-wordpress-classifieds-plugin' ) );
+        $messages = array();
+
+        if ( 'searchads' === $this->get_current_action() ) {
+            $messages[] = __( 'Use the form below to select the fields on which you want to search. Adding more fields makes for a more specific search. Using fewer fields will make for a broader search.', 'another-wordpress-classifieds-plugin' );
+        }
 
         $url_params = wp_parse_args( parse_url( awpcp_current_url(), PHP_URL_QUERY ) );
 

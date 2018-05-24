@@ -1,10 +1,9 @@
 <?php
-
 /**
  * Plugin Name: Another WordPress Classifieds Plugin (AWPCP)
  * Plugin URI: http://www.awpcp.com
  * Description: AWPCP - A plugin that provides the ability to run a free or paid classified ads service on your WP site. <strong>!!!IMPORTANT!!!</strong> It's always a good idea to do a BACKUP before you upgrade AWPCP!
- * Version: 3.8.3
+ * Version: 3.8.5
  * Author: D. Rodenbaugh
  * License: GPLv2 or any later version
  * Author URI: http://www.skylineconsult.com
@@ -362,6 +361,7 @@ require_once( AWPCP_DIR . '/admin/import/class-csv-reader-factory.php' );
 require_once( AWPCP_DIR . '/admin/import/class-csv-reader.php' );
 require_once( AWPCP_DIR . '/admin/import/class-import-listings-ajax-handler.php' );
 require( AWPCP_DIR . '/admin/listings/class-listings-table-search-by-phone-condition.php' );
+require( AWPCP_DIR . '/admin/listings/class-listings-table-search-by-contact-email-condition.php' );
 
 // frontend functions
 require_once(AWPCP_DIR . "/frontend/placeholders.php");
@@ -850,7 +850,7 @@ class AWPCP {
                     'url' => 'http://awpcp.com/premium-modules/campaign-manager-module/?ref=panel',
                     'installed' => defined( 'AWPCP_CAMPAIGN_MANAGER_MODULE' ),
                     'version' => 'AWPCP_CAMPAIGN_MANAGER_MODULE_DB_VERSION',
-                    'required' => '3.6.4',
+                    'required' => '3.6.7',
                 ),
 				'category-icons' => array(
 					'name' => __( 'Category Icons', 'another-wordpress-classifieds-plugin' ),
@@ -878,7 +878,7 @@ class AWPCP {
 					'url' => 'http://awpcp.com/downloads/extra-fields-module/?ref=panel',
 					'installed' => defined( 'AWPCP_EXTRA_FIELDS_MODULE' ),
 					'version' => 'AWPCP_EXTRA_FIELDS_MODULE_DB_VERSION',
-					'required' => '3.6',
+					'required' => '3.6.10',
 				),
 				'featured-ads' => array(
 					'name' => __( 'Featured Ads', 'another-wordpress-classifieds-plugin' ),
@@ -928,7 +928,7 @@ class AWPCP {
 					'url' => 'http://awpcp.com/downloads/regions-module/?ref=panel',
 					'installed' => defined( 'AWPCP_REGION_CONTROL_MODULE' ),
 					'version' => 'AWPCP_REGION_CONTROL_MODULE_DB_VERSION',
-					'required' => '3.6',
+					'required' => '3.6.8',
 				),
 				'restricted-categories' => array(
 					'name' => __( 'Restricted Categories', 'another-wordpress-classifieds-plugin' ),
@@ -956,7 +956,7 @@ class AWPCP {
 					'url' => 'http://awpcp.com/downloads/subscriptions-module/?ref=panel',
 					'installed' => defined( 'AWPCP_SUBSCRIPTIONS_MODULE' ),
 					'version' => 'AWPCP_SUBSCRIPTIONS_MODULE_DB_VERSION',
-					'required' => '3.6.4-dev-1'
+					'required' => '3.6.5'
 				),
                 'videos' => array(
                     'name' => __( 'Videos', 'another-wordpress-classifieds-plugin' ),

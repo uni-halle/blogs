@@ -493,7 +493,7 @@ class AWPCP_CSV_Importer_Delegate {
         foreach ( array_filter( $filenames ) as $filename ) {
             $uploaded = awpcp_upload_image_file(
                 $images_dir,
-                basename( $filename ),
+                awpcp_unique_filename( $images_directory . DIRECTORY_SEPARATOR . $filename, basename( $filename ), array( $images_dir, $images_dir . 'images/', $images_dir . 'thumbs/' ) ),
                 $images_directory . DIRECTORY_SEPARATOR . $filename,
                 $min_size,
                 $max_size,

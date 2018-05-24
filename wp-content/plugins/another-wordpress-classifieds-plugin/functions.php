@@ -2944,23 +2944,32 @@ function awpcp_get_server_ip_address() {
         return $ip_address;
     }
 
+    $ip_address = awpcp_get_server_ip_address_from_httpbin();
+
+    if ( is_null( $ip_address ) ) {
+        $ip_address = '(unknown)';
+    }
+
+    set_transient( 'awpcp-server-ip-address', $ip_address, HOUR_IN_SECONDS );
+
+    return $ip_address;
+}
+
+/**
+ * @since 3.8.4
+ */
+function awpcp_get_server_ip_address_from_httpbin() {
     $response = wp_remote_get( 'https://httpbin.org/ip' );
 
     if ( is_wp_error( $response ) ) {
-        return $ip_address;
+        return null;
     }
 
     $body = json_decode( wp_remote_retrieve_body( $response ) );
 
     if ( ! isset( $body->origin ) ) {
-        return $ip_address;
+        return null;
     }
 
-    $ip_address = $body->origin;
-
-    if ( $ip_address ) {
-        set_transient( 'awpcp-server-ip-address', $ip_address, HOUR_IN_SECONDS );
-    }
-
-    return $ip_address;
+    return $body->origin;
 }

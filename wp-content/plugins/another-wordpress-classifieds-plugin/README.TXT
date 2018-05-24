@@ -1,26 +1,26 @@
 === AWPCP - Classifieds Plugin ===
 Contributors: awpcp
-Donate link: http://awpcp.com/donate
+Donate link: https://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified theme,wp classified
 Requires at least: 4.3
 Requires PHP: 5.6
-Tested up to: 4.9.2
-Last Updated: 2018-Jan-31
-Stable tag: 3.8.3
+Tested up to: 4.9
+Last Updated: 2018-May-22
+Stable tag: 3.8.5
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
 
 == Description ==
 
-[Main Site](http://awpcp.com/) | [Support](http://awpcp.com/forum/) | [Docs](http://awpcp.com/docs/) | [Showcase](http://awpcp.com/showcase/) | [Premium Modules](http://awpcp.com/premium-modules/)
+[Main Site](https://awpcp.com/) | [Support](https://awpcp.com/forum/) | [Docs](https://awpcp.com/docs/) | [Showcase](https://awpcp.com/showcase/) | [Premium Modules](https://awpcp.com/premium-modules/)
 
 Add a classified ads section to your WordPress site, quickly and easily.  
 Lots of features, very configurable.  Easy to setup.  Great support.
 We're the #1 WordPress Classified Ads Plugin: 8+ years old and over 10,000 active sites
 
-NEW module(s): [Mark as Sold](http://awpcp.com/premium-modules/mark-as-sold-module?ref=wp)
-, [Restricted Categories](http://awpcp.com/premium-modules/restricted-categories-module?ref=wp) and [Ad Campaign Manager](http://awpcp.com/premium-modules/campaign-manager-module?ref=wp)
+NEW module(s): [Mark as Sold](https://awpcp.com/premium-modules/mark-as-sold-module?ref=wp)
+, [Restricted Categories](https://awpcp.com/premium-modules/restricted-categories-module?ref=wp) and [Ad Campaign Manager](https://awpcp.com/premium-modules/campaign-manager-module?ref=wp)
 
 
 = Features =
@@ -43,7 +43,7 @@ NEW module(s): [Mark as Sold](http://awpcp.com/premium-modules/mark-as-sold-modu
     15. Classified ads can be displayed on any page for a single category using shortcodes
     16. Auto-verify ads with email links to post immediately upon click
     17. Classified ads can be 'Sent to Facebook' inside of ad management
-    18. Support for displaying ad events in BuddyPress activity stream with [BuddyPress module](http://awpcp.com/premium-modules/buddypress-module?ref=wp)
+    18. Support for displaying ad events in BuddyPress activity stream with [BuddyPress module](https://awpcp.com/premium-modules/buddypress-module?ref=wp)
     19. Classified ads can be edited via front end, back end with or without registration (depending on settings)
  = Notification Features =
     1. Allow posters to be notified of expiring ads, renewals, and approvals of ads
@@ -134,31 +134,31 @@ NEW module(s): [Mark as Sold](http://awpcp.com/premium-modules/mark-as-sold-modu
     16. **NEW** Ad Campaign Manager (put your own advertisements into the classifieds in 5 different positions)
 
 = Premium Module Links: =
-* **NEW** [Mark as Sold](http://awpcp.com/premium-modules/mark-as-sold-module?ref=wp)
-* **NEW** [Restricted Categories](http://awpcp.com/premium-modules/restricted-categories-module?ref=wp)
-* **NEW** [Ad Campaign Manager](http://awpcp.com/premium-modules/campaign-manager-module?ref=wp)
-* [BuddyPress](http://awpcp.com/premium-modules/buddypress-module?ref=wp)
-* [Attachments](http://awpcp.com/premium-modules/attachments-module?ref=wp)
-* [Comments/Ratings](http://awpcp.com/premium-modules/comments-ratings-module?ref=wp)
+* **NEW** [Mark as Sold](https://awpcp.com/premium-modules/mark-as-sold-module?ref=wp)
+* **NEW** [Restricted Categories](https://awpcp.com/premium-modules/restricted-categories-module?ref=wp)
+* **NEW** [Ad Campaign Manager](https://awpcp.com/premium-modules/campaign-manager-module?ref=wp)
+* [BuddyPress](https://awpcp.com/premium-modules/buddypress-module?ref=wp)
+* [Attachments](https://awpcp.com/premium-modules/attachments-module?ref=wp)
+* [Comments/Ratings](https://awpcp.com/premium-modules/comments-ratings-module?ref=wp)
 * [Authorize.net Gateway](http://www.awpcp.com/premium-modules/authorizenet-payment-module?ref=wp)
 * [PayPal Pro Gateway](http://www.awpcp.com/premium-modules/paypalpro-payment-module?ref=wp)
-* [Extra Fields](http://awpcp.com/premium-modules/extra-fields-module?ref=wp)
-* [Region Control](http://awpcp.com/premium-modules/regions-control-module?ref=wp)
-* [Category Icons](http://awpcp.com/premium-modules/category-icons-module?ref=wp)
-* [RSS Feeds](http://awpcp.com/premium-modules/rss-module?ref=wp)
-* [Featured Ads](http://awpcp.com/premium-modules/featured-ads-module?ref=wp)
+* [Extra Fields](https://awpcp.com/premium-modules/extra-fields-module?ref=wp)
+* [Region Control](https://awpcp.com/premium-modules/regions-control-module?ref=wp)
+* [Category Icons](https://awpcp.com/premium-modules/category-icons-module?ref=wp)
+* [RSS Feeds](https://awpcp.com/premium-modules/rss-module?ref=wp)
+* [Featured Ads](https://awpcp.com/premium-modules/featured-ads-module?ref=wp)
 * [Fee per Category](http://www.awpcp.com/premium-modules/fee-per-category-module?ref=wp)
 * [Coupons/Discounts](http://www.awpcp.com/premium-modules/coupon-module?ref=wp)
 * [Subscriptions](http://www.awpcp.com/premium-modules/subscriptions-module?ref=wp)
 
-Or, just [Donate to AWPCP to Support further development](http://awpcp.com/donate?ref=wp)
+Or, just [Donate to AWPCP to Support further development](https://awpcp.com/donate?ref=wp)
 
 These are just some of the features of Another WordPress Classifieds Plugin
 
-For more information and support please visit [http://awpcp.com](http://awpcp.com?ref=wp)
+For more information and support please visit [https://awpcp.com](https://awpcp.com?ref=wp)
 For plugin support please visit [http://forum.awpcp.com](http://forum.awpcp.com)
 
-If you love the plugin, [please consider purchasing a Premium Module](http://awpcp.com/premium-modules/?ref=wp)!
+If you love the plugin, [please consider purchasing a Premium Module](https://awpcp.com/premium-modules/?ref=wp)!
 
 == Credits ==
 
@@ -212,14 +212,14 @@ Your classifieds should now be ready and working. If you are having problems ple
 
 == Frequently Asked Questions ==
 
-For the definitive FAQ section, please visit the [FAQ Section of the Forum](http://www.awpcp.com/forum/faq), or our [Quick Start](http://awpcp.com/quick-start-guide/) guide.
+For the definitive FAQ section, please visit the [FAQ Section of the Forum](http://www.awpcp.com/forum/faq), or our [Quick Start](https://awpcp.com/quick-start-guide/) guide.
 
 = Installation Instructions =
-Please see our [Installation Guide](https://awpcp.com/quick-start-guide/#qs-general), the [Quick Start Guide](http://awpcp.com/quick-start-guide) for common how-to scenarios, and our [Initial Setup](https://awpcp.com/documentation/#setup) page for instructions on how to get going quickly with Business Directory Plugin.
+Please see our [Installation Guide](https://awpcp.com/quick-start-guide/#qs-general), the [Quick Start Guide](https://awpcp.com/quick-start-guide) for common how-to scenarios, and our [Initial Setup](https://awpcp.com/documentation/#setup) page for instructions on how to get going quickly with Business Directory Plugin.
 
-Full [documentation](http://awpcp.com/docs) for the plugin is also available.
+Full [documentation](https://awpcp.com/docs) for the plugin is also available.
 
-If you are having problems please visit [support forum](http://awpcp.com/forum) for help.
+If you are having problems please visit [support forum](https://awpcp.com/forum) for help.
 
 = Can AWPCP support paid and free listings? =
 Yes it can.  You can do this by creating fee plans for 0.00 and some other paid amount at the same time.  For more details, read [this article](https://awpcp.com/quick-start-guide/#qs-freepaid).
@@ -234,12 +234,29 @@ Whatever theme you pick, we recommend using the Theme Check plugin (available fo
 In general, we like WooThemes as a solid company with great products and support.  You can check them out [here](http://woothemes.com)  Or [StudioPress](http://studiopress.com​​)
 
 = Can AWPCP be translated into my language? =
-Yes it can. AWPCP comes with many user-provided translations under the /languages folder. For details on how to do it, our [translation guide](http://awpcp.com/quick-start-guide/#qs-translate) will help get you started.
+Yes it can. AWPCP comes with many user-provided translations under the /languages folder. For details on how to do it, our [translation guide](https://awpcp.com/quick-start-guide/#qs-translate) will help get you started.
 
 = Is AWPCP compatible with WordPress Multisite (WPMU)? =
 Yes it is. However, you cannot "network-activate" the plugin (as this will share the database). Activate it on only the subsites on which you need a directory.  This can be done under Plugins->Add New as the Administrator user.  Do not "network activate" AWPCP as the "super admin".
 
 == Changelog ==
+= Version 3.8.5 =
+* Remove the FULLTEXT index that prevented the listings table from being created on servers running MySQL 5.5 or earlier.
+
+= Version 3.8.4 =
+* Add option to display Results and Search Form on the same page.
+* Add search by "Ad Contact Email" in listings table on the admin panel.
+* Use InnoDB engine for plugin tables.
+* Use the 'Number of words in excerpt' setting for widgets.
+* Display 'redirect\_uri' on Facebook Settings admin page.
+* Do not upgrade if version number is invalid.
+* Fix 'grecaptcha.render is not a function' JS error.
+* Do not clear Facebook cache if no user access token is set.
+* Add support for paginated Groups and Pages API responses.
+* Add notice about App Review for user\_managed\_groups perm.
+* Generate better unique filenames for imported images.
+* Fix 'Function create\_function() is deprecated' error on PHP 7.2.
+
 = Version 3.8.3 =
 * Fix layout issue for Submit button on Search Bar.
 * Fix '[] operator not supported for strings' Error.

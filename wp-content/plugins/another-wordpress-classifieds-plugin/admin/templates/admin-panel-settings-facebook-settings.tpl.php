@@ -4,10 +4,12 @@
 		<h3 class="hndle"><span><?php _e('Facebook Integration', 'another-wordpress-classifieds-plugin') ?></span></h3>
 		<div class="inside">
 			<div>
-				<?php echo str_replace( '<a>',
+				<p><?php echo str_replace( '<a>',
 					'<a href="https://developers.facebook.com/docs/web/tutorials/scrumptious/register-facebook-application/" target="_blank">',
 					__( 'This configuration allows you to post ads to Facebook. You must have a Facebook Application created to use this feature. Read <a>How to Register and Configure a Facebook Application.</a>', 'another-wordpress-classifieds-plugin' ) );
-				?>
+				?></p>
+                <p><?php esc_html_e( 'Add the following URL to the list of Valid OAuth Redirect URIs for the configuration of the Facebook Application:', 'another-wordpress-classifieds-plugin' ); ?></p>
+                <pre><code><?php echo esc_html( $redirect_uri ); ?></code></pre>
 			</div>
 	     </div>
 	</div>
@@ -156,6 +158,7 @@
 							<?php endforeach; ?>
 						<?php else: ?>
 							<p><?php _e( 'There are no Facebook groups available for you to select. Please make sure you are connected to the internet and have granted the Facebook application the correct permissions. Click "Diagnostics" if you are in doubt.', 'another-wordpress-classifieds-plugin' ); ?></p>
+                            <p><?php _e( 'As of April 4, 2018, all applications (new and existing) need to go through <a href="https://developers.facebook.com/docs/apps/review" rel="nofollow">App Review</a> in order to get access to the <a href="https://developers.facebook.com/docs/graph-api/reference/user/groups/" rel="nofollow">Groups API</a>. That means that unless you <a href="https://developers.facebook.com/docs/facebook-login/review" rel="nofollow">submit your app for review</a> (ask for the <code>user_managed_groups</code> permission), AWPCP won\'t be able to display the list of groups you manage and won\'t be able to post classifieds to those groups.', 'another-wordpress-classifieds-plugin' ); ?></p>
 						<?php endif; ?>
 					</td>
 				</tr>
@@ -171,10 +174,10 @@
 				<?php endif; ?>
 				<tr>
 					<td colspan="2">
-						<input type="submit" value="<?php _e( 'Save Page and Group Selection', 'another-wordpress-classifieds-plugin' ); ?>" class="button-primary" name="save_config" />	
+						<input type="submit" value="<?php _e( 'Save Page and Group Selection', 'another-wordpress-classifieds-plugin' ); ?>" class="button-primary" name="save_config" />
 					</td>
 				</tr>
-			</table>		
+			</table>
 		<?php endif; ?>
 	</div>
 

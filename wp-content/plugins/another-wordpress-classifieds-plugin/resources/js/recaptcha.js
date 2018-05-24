@@ -24,7 +24,7 @@ function($) {
     var waitForReCaptchaToBeReady = function() {
         attempts = attempts + 1;
 
-        if ( typeof grecaptcha !== 'undefined' ) {
+        if ( typeof grecaptcha !== 'undefined' && typeof grecaptcha.render !== 'undefined' ) {
             renderReCaptchaWidgets();
         } else if ( attempts <= maxAttempts ) {
             timeout = setTimeout( waitForReCaptchaToBeReady, maxDelay * Math.pow( attempts / maxAttempts, 2 ) );

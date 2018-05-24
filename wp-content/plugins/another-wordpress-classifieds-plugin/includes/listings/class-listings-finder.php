@@ -75,6 +75,7 @@ class AWPCP_ListingsFinder {
 
             'payment_status' => null,
             'payer_email' => null,
+            'ad_contact_email' => null,
 
             'disabled_date' => null,
             'start_date' => null,
@@ -335,6 +336,10 @@ class AWPCP_ListingsFinder {
 
         if ( ! empty( $query['contact_name'] ) ) {
             $conditions[] = $this->db->prepare( 'listings.`ad_contact_name` = %s', $query['contact_name'] );
+        }
+
+        if ( ! empty( $query['ad_contact_email'] ) ) {
+            $conditions[] = $this->db->prepare( 'listings.`ad_contact_email` = %s', $query['ad_contact_email'] );
         }
 
         return $conditions;

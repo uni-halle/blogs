@@ -49,7 +49,7 @@ class AWPCP_MultipleRegionSelector {
             'enabled_fields' => awpcp_get_enabled_region_fields(),
         ) );
 
-        $this->options['maxRegions'] = max( $this->options['maxRegions'], count( $regions ) );
+        $this->options['maxRegions'] = max( $this->options['maxRegions'], count( $this->regions ) );
     }
 
     public function set_template( $template ) {

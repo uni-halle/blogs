@@ -184,15 +184,30 @@ class AWPCP_Facebook {
                               'profile' => true );
         }
 
-        $response = $this->api_request( '/me/accounts' );
-        if ( $response && isset( $response->data ) ) {
-            foreach ( $response->data as &$p ) {
-                if ( in_array( 'CREATE_CONTENT', $p->perms ) )
-                    $pages[] = array( 'id' => $p->id,
-                                      'name' => $p->name,
-                                      'access_token' => $p->access_token );
+        $after = null;
+
+        do {
+            $response = $this->api_request( '/me/accounts', 'GET', array(
+                'fields'  => 'id,name,access_token,perms',
+                'summary' => 'total_count',
+                'after'   => $after,
+            ) );
+
+            if ( $response && isset( $response->data ) ) {
+                foreach ( $response->data as &$p ) {
+                    if ( in_array( 'CREATE_CONTENT', $p->perms ) )
+                        $pages[] = array( 'id' => $p->id,
+                                          'name' => $p->name,
+                                          'access_token' => $p->access_token );
+                }
             }
-        }
+
+            if ( ! isset( $response->paging->cursors->after ) || ! isset( $response->paging->next ) ) {
+                break;
+            }
+
+            $after = $response->paging->cursors->after;
+        } while( $after );
 
     	return $pages;
     }
@@ -203,14 +218,30 @@ class AWPCP_Facebook {
         }
 
         $this->set_access_token( 'user_token' );
-        $response = $this->api_request( '/me/groups' );
 
         $groups = array();
-        if ( $response && isset( $response->data ) ) {
-            foreach ( $response->data as &$p ) {
-                $groups[] = array( 'id' => $p->id, 'name' => $p->name );
+        $after  = null;
+
+        do {
+            $response = $this->api_request( '/me/groups', 'GET', array(
+                'after' => $after,
+            ) );
+
+            if ( $response && isset( $response->data ) ) {
+                foreach ( $response->data as &$p ) {
+                    $groups[] = array(
+                        'id'   => $p->id,
+                        'name' => $p->name
+                    );
+                }
             }
-        }
+
+            if ( ! isset( $response->paging->cursors->after ) || ! isset( $response->paging->next ) ) {
+                break;
+            }
+
+            $after = $response->paging->cursors->after;
+        } while( $after );
 
         return $groups;
     }

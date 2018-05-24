@@ -22,7 +22,7 @@ function awpcp_upload_image_file($directory, $filename, $tmpname, $min_size, $ma
 	$newpath = trailingslashit($directory) . $newname;
 
 	if ( !file_exists( $tmpname ) ) {
-		return sprintf( __( 'The specified image file does not exists: %s.', 'another-wordpress-classifieds-plugin' ), $filename );
+		return sprintf( __( 'The specified image file does not exists: %s.', 'another-wordpress-classifieds-plugin' ), $tmpname );
 	}
 
 	$ext = strtolower( awpcp_get_file_extension( $filename ) );

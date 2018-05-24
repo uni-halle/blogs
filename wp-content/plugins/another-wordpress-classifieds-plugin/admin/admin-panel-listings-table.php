@@ -291,6 +291,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
             $options['payer-email'] = __('Payer Email', 'another-wordpress-classifieds-plugin');
         }
 
+        $options['ad-contact-email'] = __( 'Ad Contact Email', 'another-wordpress-classifieds-plugin' );
         $options['user'] = __('User', 'another-wordpress-classifieds-plugin');
 
         $search_by = awpcp_request_param('search-by', 'title');
