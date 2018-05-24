@@ -479,11 +479,13 @@ div.td50 {
 	text-transform: none;
 }
 .navbar-nav {
-	font-size: 1.4em;
+	font-size: 2em;
 	color: rgba(86,137,35,1);
+	letter-spacing:0.1em;
 }
 #menu-top-right {
-	font-size: 1.4em;
+	font-size: 2em;
+	letter-spacing:0.1em;
 }
 .nav-link {
 	color: rgba(86,137,35,1); 
@@ -513,3 +515,26 @@ div.td50 {
 .taxonomy-description {
 	padding-top: 1em;
 }
+
+.pagination {
+  display:flex;
+  flex-direction: row;
+  justify-content:center;
+  align-content: space-between;
+}
+.pagination .nav-previous, .pagination .nav-next {
+  width:2em;
+}
+.pagination .nav-next {
+  text-align: right;
+}
+.pagination .pagination-text {
+  width:100%;
+  text-align: center;
+}
+button {
+	background-color: #fff;
+	border: 1px solid #999;
+	margin-top: 10px;
+	font-weight: 300;
+	}

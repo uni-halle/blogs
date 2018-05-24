@@ -13,7 +13,7 @@
 get_header();
 get_sidebar('left');
 ?> 
-          <main id="main" class="col-md-<?php echo \BootstrapBasic4\Bootstrap4Utilities::getMainColumnSize(); ?> site-main" role="main">
+          <main id="main" class="col-md-6 site-main" role="main">
 	        <div id="fall">
 
              <?php
@@ -30,7 +30,6 @@ get_sidebar('left');
 						</h1>
 					<?php endif; // is_single() ?>
 				</header><!-- .entry-header -->
-				<?php if( !post_password_required( $post )): ?>
 		        <div class="entry-meta">
 					<?php $categories_list = get_the_category_list(__(' | ', 'bootstrap-basic4'));
 						if (!empty($categories_list)) {	?> 
@@ -40,7 +39,7 @@ get_sidebar('left');
 							<?php } // End if categories ?>  
 						<div class="klein"> 
 						<?php 	$schulform = get_field('schulform');
-								$klasse = get_field('klasse');
+								$klasse = get_field('klassenstufe_num');
 								$fach = get_field('fach');
 								$einrichtung = get_field('einrichtung');
 								$handlungsfeldau = get_field('handlungsfeld-au');
@@ -49,7 +48,7 @@ get_sidebar('left');
 								if( $schulform or $klasse or $fach or $einrichtung or $handlungsfeldau or $handlungsfeldkj or $handlungsfeldeb): ?>
 							<i class="fa fa-info-circle" aria-hidden="true" title="Basis-Info"> </i><?php endif ?> 
 							<?php if($schulform = get_the_term_list( $post->ID, 'schulform', '', ', ' )):?><?=$schulform?> | <?php endif ?>
-							<?php if($klasse = get_the_term_list( $post->ID, 'klasse', 'Klasse ', ', ' )):?><?= $klasse?> | <?php endif ?>
+							<?php if( $klasse ): ?> Klasse <?php echo $klasse; ?>	| <?php endif; ?>
 							<?php if($fach = get_the_term_list( $post->ID, 'fach', '', ', ' )):?><?=$fach?> | <?php endif ?>
 							<?php if($einrichtung = get_the_term_list( $post->ID, 'einrichtung', '', ', ' )):?><?=$einrichtung?> | <?php endif ?>
 							<?php if($handlungsfeldau = get_the_term_list( $post->ID, 'handlungsfeld-au', '', ', ' )):?><?=$handlungsfeldau?> <?php endif ?> 
@@ -59,9 +58,12 @@ get_sidebar('left');
 							
 						</div>
 	            </div>  <hr />
-				<?php endif ?>
-	           
 <!-- 	  Kurztext (Eingabe in Standard-Editor) -->
+			<?php 
+		    if (post_password_required()) {
+		    	echo get_post_field('post_content');
+		    }
+		    ?>
 				<?php the_content($Bsb4Design->continueReading(true)); ?> 
 				
 <!--	 Kategorie + Tags -->   

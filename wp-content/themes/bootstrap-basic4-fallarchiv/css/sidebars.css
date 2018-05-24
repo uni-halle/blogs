@@ -1,0 +1,190 @@
+/*
+Copyright(c) 2018 codemacher UG (haftungsbeschränkt) All Rights Reserved.
+*/
+/* 
+    Created on : 11.04.2018, 11:10:55
+    Author     : post
+*/
+.accordion h1 {
+  font-size: 18px;
+  margin-top: 0;
+  cursor: pointer;
+}
+.accordion h2 {
+  font-size:1rem;
+  text-transform: none;
+  cursor: pointer;
+}
+.accordion h3 {
+  font-size:0.9em;
+  text-transform: none;
+/*   color:#4a771d; */
+	color: #333;
+  cursor: pointer;
+  letter-spacing: 0em;
+  padding-bottom: 4px;
+  padding-top: 4px;
+}
+.accordion .card, .accordion .card-header {
+  background: none;
+}
+.accordion .accordion .card-header {
+  border:none;
+}
+.accordion .card-body, .accordion .card-header {
+  padding-right:0;
+}
+.accordion .accordion .accordion .card-body, .accordion ul {
+  padding: 0px;
+}
+.accordion form label, .accordion form label > * {
+  width:100%;
+}
+#headingTags, #headingFilter, #headingInterpretationen {
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding-bottom: 5px;
+  /*
+    border: 1px #ddd solid;
+    background-color: #fff;
+    padding: 6px;
+  */
+}
+#collapseTags .card-body{
+  padding: 0;	
+  margin-bottom: 20px;
+
+  /*
+    border: 1px #ddd solid;
+    background-color: #fafafa;
+  */
+}
+
+#collapseFilter
+
+#headingArbeitsfelder, #headingWeitereFilter, #headingInterpretationen {
+  border-bottom: 1px #ddd solid;
+  padding-bottom: 5px;
+  /*	background-color: #fff;
+    padding: 6px; */
+}
+#collapseArbeitsfelder {
+
+} 
+
+#collapseWeitereFilter, #collapseInterpretationen {
+  border: 1px #ddd solid;
+  background-color: #eee;
+  padding-left: 6px;
+  padding-right: 6px;
+  /*
+    margin-top:6px;
+    margin-left: 10px;
+  */
+}
+#headingSchuleUnterricht, #headingSchuleAusserUnterricht, #headingAusserschulisch, #headingErwachsenenbildung {
+/*   border-bottom: 1px #ddd solid; */
+/*   padding-bottom: 4px; */
+
+  /* 	padding: 6px; */
+}
+
+#headingSchuleUnterricht h3[aria-expanded=true] {
+/*    font-weight:bold; */	
+	background-color: #aaa;
+	color: #fff;
+	padding-left: 5px;
+	}
+
+#headingSchuleAusserUnterricht h3[aria-expanded=true] {
+   	background-color: #aaa;
+	color: #fff;
+	padding-left: 5px;
+	}
+
+#headingAusserschulisch h3[aria-expanded=true] {
+   	background-color: #aaa;
+	color: #fff;
+	padding-left: 5px;
+	}
+
+#headingErwachsenenbildung h3[aria-expanded=true] {
+   	background-color: #aaa;
+	color: #fff;
+	padding-left: 5px;
+	}
+
+
+#collapseSchuleUnterricht, #collapseSchuleAusserUnterricht, #collapseAusserschulisch, #collapseErwachsenenbildung {
+  border: 1px #ddd solid;
+/*   background-color: #e1e5da; */
+  background-color: #eee;
+  padding-left: 6px;
+  padding-right: 6px;
+  /* 	margin-top:6px; */
+}
+.sf-meta-range-slider .sf-range-values-seperator {
+  display:none;
+}
+.sf-meta-range-slider > label:first-of-type, .sf-meta-range-slider > label:nth-of-type(2) {
+  width:auto;
+  background:none;
+  border:none;
+}
+.sf-meta-range-slider > label:nth-of-type(2) {
+  float:right;
+
+}
+.sf-meta-range-slider input.sf-input-range-number {
+  background:none;
+  border:none;
+}
+/* Hide HTML5 Up and Down arrows. */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+.sf-meta-range-slider > label:nth-of-type(2) input.sf-input-range-number {
+  text-align: right;
+}
+.searchandfilter .meta-slider {
+  margin-top:0;
+}
+.sf-field-post-meta-klassenstufe_num h4 {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  font-size:14px;
+}
+
+#search-filter-form-2096, #search-filter-form-2097 {
+  display:none;
+}
+#suchmaske ul {
+  padding:0;
+}
+#suchmaske ul li {
+  display:inline-block;
+  height:30px;
+  padding:0;
+}
+#suchmaske ul li label {
+  height:100%;
+  width:100%;
+}
+#suchmaske ul li label input{
+  height:100%;
+  width:100%;
+}
+#suchmaske ul li.sf-field-submit {
+  width:20%;
+}
+#suchmaske ul li.sf-field-search {
+  width:80%;
+}

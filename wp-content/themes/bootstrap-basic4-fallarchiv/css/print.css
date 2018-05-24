@@ -1,0 +1,107 @@
+/*
+Copyright(c) 2018 codemacher UG (haftungsbeschränkt) All Rights Reserved.
+*/
+/* 
+    Created on : 22.05.2018, 14:05:59
+    Author     : post
+*/
+
+/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+@media print {
+		
+  *,
+  *:before,
+  *:after {
+    color: #000 !important;
+    text-shadow: none !important;
+    background: transparent !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+  .navbar {
+    display: none;
+  }
+  .btn > .caret,
+  .dropup > .btn > .caret {
+    border-top-color: #000 !important;
+  }
+  .label {
+    border: 1px solid #000;
+  }
+  .table {
+    border-collapse: collapse !important;
+  }
+  .table td,
+  .table th {
+    background-color: #fff !important;
+  }
+  .table-bordered th,
+  .table-bordered td {
+    border: 1px solid #ddd !important;
+  }
+  #sidebar-left,
+  #sidebar-right {
+		display: none;
+		}
+  main {
+		width: 100%;
+		overflow: visible !important;
+	}
+	html {
+		overflow: visible !important;
+	}
+
+	#main {
+		width: 100% !important;
+		overflow: visible !important;
+	}
+	#fall {
+		width: 100% !important;
+		overflow: visible !important;
+	}
+	.site-main {
+		width: 100% !important;
+		overflow: visible !important;
+	}
+  .row {
+    width:100%;
+    display:block;
+  }
+	#main.col-md-6 {
+		width: 100% !important;
+		overflow: visible !important;
+    max-width:100%;
+
+	}
+
+}

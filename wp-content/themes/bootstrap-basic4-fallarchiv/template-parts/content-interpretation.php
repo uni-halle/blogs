@@ -35,7 +35,7 @@ $Bsb4Design = new \BootstrapBasic4\Bsb4Design();
         <div class="klein">
         <?php
         $schulform = get_field('schulform');
-        $klasse = get_field('klassenstufe_num');
+        $klasse = get_field('klasse');
         $fach = get_field('fach');
         $einrichtung = get_field('einrichtung');
         $handlungsfeldau = get_field('handlungsfeld-au');
@@ -46,7 +46,7 @@ $Bsb4Design = new \BootstrapBasic4\Bsb4Design();
           ?>
             <i class="fa fa-info-circle" aria-hidden="true" title="Basis-Info"> </i><?php endif ?>
           <?php if ($schulform = get_the_term_list($post->ID, 'schulform', '', ', ')): ?><?= $schulform ?> | <?php endif ?>
-          <?php if( $klasse ): ?> Klasse <?php echo $klasse; ?>	| <?php endif; ?>
+          <?php if ($klasse = get_the_term_list($post->ID, 'klasse', 'Klasse ', ', ')): ?><?= $klasse ?> | <?php endif ?>
           <?php if ($fach = get_the_term_list($post->ID, 'fach', '', ', ')): ?><?= $fach ?><?php endif ?>
           <?php if ($einrichtung = get_the_term_list($post->ID, 'einrichtung', '', ', ')): ?><?= $einrichtung ?> | <?php endif ?>
           <?php if ($handlungsfeldau = get_the_term_list($post->ID, 'handlungsfeld-au', '', ', ')): ?><?= $handlungsfeldau ?> <?php endif ?> 
@@ -73,7 +73,7 @@ $Bsb4Design = new \BootstrapBasic4\Bsb4Design();
       if (post_password_required()) {
         echo get_post_field('post_content');
       } else {
-        the_content($Bsb4Design->continueReading(true));
+//         the_content($Bsb4Design->continueReading(true));
       }
       ?> 
       <div class="clearfix"></div>
