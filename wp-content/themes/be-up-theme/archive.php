@@ -88,7 +88,11 @@ get_header(); ?>
 <?php
 				$categories = get_the_category();
 				if ( ! empty( $categories ) ) {
-					echo '<div class="catpost-title" style="margin-top: 1rem;">'.esc_html( $categories[0]->name ).'</div>';
+					// echo '<div class="catpost-title" style="margin-top: 1rem;">'.esc_html( $categories[0]->name ).'</div>';
+					echo '<div class="catpost-title" style="margin-top: 1rem;">
+						<p style="font-size: 22px; color: #FFF; line-height: 20px; margin-bottom: 0px; padding-top: 8px;">'.esc_html( $categories[0]->name ).'</p>
+						<p style="font-size: 18px; color: #FFEFDE; margin-bottom: 0px;">'.esc_html( get_the_date('d.m.Y') ).' | '.esc_html( get_the_author()).'</p>
+					</div>';
 				}
 				echo '<div class="entry-content be-gradient-2-invers spacer-v-4" style="padding:1rem; margin-bottom:1rem;">';
 					echo '<div class="catpost" id="post-'.get_the_ID().'">';

@@ -178,6 +178,104 @@ return '
 add_shortcode( 'be_link_ext', 'be_link_ext_shortcode' );
 
 
+
+
+function be_link_mime_shortcode( $atts = [], $content = null ) {
+    $a = shortcode_atts( array(
+        'url' => 'text',
+        'link' => 'text',
+	), $atts );
+    //$theurl = 'http://be-up.doom/wp-content/uploads/2018/01/kbd.pdf';
+    //$theurl = esc_attr($a['link']);
+    $theurl = $content;
+
+    if(!function_exists('extcheck')) {
+    
+        function extcheck($extension) {
+
+            preg_match('|<a.+?href\="(.+?)".*?>(.+?)</a>|i', $extension, $match);
+            $url = $match[1];
+            $text = $match[2];
+            //$path_parts = pathinfo($extension);
+            $path_parts = pathinfo($url);
+            $theext = $path_parts["extension"];
+    
+            $mime_types = array(
+    
+                'txt' => 'file-text-o',
+                'htm' => 'file-code',
+                'html' => 'file-code',
+                'php' => 'file-code',
+                'css' => 'file-code',
+                'js' => 'file-code',
+                'json' => 'file-code',
+                'xml' => 'file-code',
+                'swf' => 'file-video',
+                'flv' => 'file-video',
+    
+                // images
+                'png' => 'file-image-o',
+                'jpe' => 'file-image-o',
+                'jpeg' => 'file-image-o',
+                'jpg' => 'file-image-o',
+                'gif' => 'file-image-o',
+                'bmp' => 'file-image-o',
+                'ico' => 'file-image-o',
+                'tiff' => 'file-image-o',
+                'tif' => 'file-image-o',
+                'svg' => 'file-image-o',
+                'svgz' => 'file-image-o',
+    
+                // archives
+                'zip' => 'file-archive-o',
+                'rar' => 'file-archive-o',
+                'exe' => 'file-archive-o',
+                'msi' => 'file-archive-o',
+                'cab' => 'file-archive-o',
+    
+                // audio/video
+                'mp3' => 'file-audio-o',
+                'qt' => 'file-audio-o',
+                'mov' => 'file-audio-o',
+    
+                // adobe
+                'pdf' => 'file-pdf-o',
+                'psd' => 'file-image-o',
+                'ai' => 'file-image-o',
+                'eps' => 'file-image-o',
+                'ps' => 'file-image-o',
+    
+                // ms office
+                'doc' => 'file-word-o',
+                'docx' => 'file-word-o',
+                'rtf' => 'file-word-o',
+                'xls' => 'file-word-o',
+                'xlsx' => 'file-word-o',
+                'ppt' => 'file-word-o',
+    
+                // open office
+                'odt' => 'file-word-o',
+                'ods' => 'file-word-o',
+            );
+    
+            if (array_key_exists($theext, $mime_types)) {
+                return '<i class="fa fa-' . $mime_types[$theext] . '" aria-hidden="true"></i>';
+            }
+            else {
+                return '<i class="fa fa-file-text-o" aria-hidden="true"></i>';
+            }
+        }
+    };
+    return '
+<div class="be-link">
+' .do_shortcode($content).'
+' .extcheck($theurl).'
+</div>
+';
+}
+add_shortcode( 'be_link_mime', 'be_link_mime_shortcode' );
+
+
 // function be_link_ext_shortcode( $atts, $content = null) {
 
 //     return '<a href="test">test</a>';

@@ -18,7 +18,7 @@ function sd_php_to_pdf_filename($pdf_filename) {
 
 function sd_echo_file($file, $client_filename) {
     if ($fd = fopen( $file, "r")) {
-        fseek($fd, 8); /* Skip pseudo header. 8 == length("<? \r\n<?") */
+        fseek($fd, 5); /* Skip pseudo header. 8 == length("<? \r\n") */
         header("Content-type:application/pdf");
         header("Content-Disposition:attachment;filename=" . $client_filename . "");
         $cont = true;
