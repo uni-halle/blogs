@@ -7,18 +7,29 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly.
 
-/**
- * Check the POST META
-*/
-function easy_image_gallery_get_post_meta(){
-	//CHECK FOR OLD DB
+function easy_image_gallery_db_version(){
 	$old_meta_structure = get_post_meta(get_the_ID(), '_easy_image_gallery', true);
 	$new_meta_structure = get_post_meta(get_the_ID(), '_easy_image_gallery_v2', true);
 
 	if (isset($new_meta_structure) && $new_meta_structure != null) {
-		$gallery_ids = $new_meta_structure;
-	} else {
-		$get_gallery_attachments = $old_meta_structure;
+		return "new";
+	}elseif( isset($old_meta_structure) && $old_meta_structure != null ) {
+		return "old";
+	}
+
+	return;
+}
+
+/**
+ * Check the POST META
+*/
+function easy_image_gallery_get_post_meta(){
+	$db_version = easy_image_gallery_db_version();
+	if ( $db_version == "new" ) {
+		$gallery_ids = get_post_meta(get_the_ID(), '_easy_image_gallery_v2', true);
+		return $gallery_ids;
+	} elseif ( $db_version == "old" ) {
+		$get_gallery_attachments = get_post_meta(get_the_ID(), '_easy_image_gallery', true);
 		$get_gallery_old_data = explode(",", $get_gallery_attachments);
 
 		$get_open_images = get_post_meta(get_the_ID(), '_easy_image_gallery_link_images');
@@ -29,18 +40,15 @@ function easy_image_gallery_get_post_meta(){
 		}
 
 		$gallery_ids = array(array(
-		"SHORTCODE" => rand(100, 999),
-		"DATA" => $get_gallery_old_data,
-		"OPEN_IMAGES" => $get_open_images[0],
+			"SHORTCODE" => rand(100, 999),
+			"DATA" => $get_gallery_old_data,
+			"OPEN_IMAGES" => $get_open_images[0],
 		));
 
-		if ( !easy_image_gallery_has_shortcode('easy_image_gallery') ){
-			add_filter( 'the_content', 'easy_image_gallery_append_to_content' );
-			add_action( 'template_redirect', 'easy_image_gallery_template_redirect' );
-        }
+		return $gallery_ids;
 	}
 
-	return $gallery_ids;
+	return;
 }
 /**
  * Is gallery
@@ -57,6 +65,63 @@ function easy_image_gallery_is_gallery() {
 	return false;
 }
 
+/**
+ * Get page images ids
+ *
+ * @since 1.3
+ * @return array
+ */
+function easy_image_gallery_get_image_ids( $post_id = null, $all_galleries_images = true, $gallery_id = null ) {
+	global $post;
+
+    if ( $post_id == null ) {
+        $post_id = $post->ID;
+    }
+
+	if( ! isset( $post_id ) || $post_id == null ) return;
+
+	$db_version = easy_image_gallery_db_version();
+	if ( $db_version == "new" ) {
+
+		$new_db_structure = get_post_meta(get_the_ID(), '_easy_image_gallery_v2', true);
+		if ( $all_galleries_images == true ){
+
+			$images_ids = array();
+			if( isset( $new_db_structure ) && !empty( $new_db_structure ) ){
+				foreach( $new_db_structure as $gallery ){
+					foreach( $gallery['DATA'] as $image ){
+						$images_ids[] = $image;
+					}
+				}
+			}
+
+			return $images_ids;
+
+		}elseif( $all_galleries_images == false ){
+
+			if ( isset( $gallery_id ) && !empty( $gallery_id ) ){
+
+				if( isset( $new_db_structure ) && !empty( $new_db_structure ) ){
+					foreach( $new_db_structure as $gallery ){
+						if( $gallery['SHORTCODE'] == $gallery_id ){
+							return $gallery['DATA'];
+						}
+					}
+				}
+
+			}
+
+        }
+
+	}elseif ( $db_version == "old" ) {
+		$old_db_structure = get_post_meta(get_the_ID(), '_easy_image_gallery', true);
+		$attachment_ids = explode( ',', $old_db_structure );
+
+		return array_filter( $attachment_ids );
+	}
+
+	return;
+}
 
 /**
  * Check the current post for the existence of a short code
@@ -303,7 +368,7 @@ function easy_image_gallery_count_images( $gallery_shortcode ) {
  *
  * @since 1.0
  */
-function easy_image_gallery( $gallery_id = null ) {
+function easy_image_gallery( $gallery_id = 'old_db' ) {
 
 	$galleries = easy_image_gallery_get_galleries();
     global $post;
@@ -339,10 +404,10 @@ function easy_image_gallery( $gallery_id = null ) {
                 }
 
                 $classes = implode( ' ', $classes );
-    ?>
-                <ul class="image-gallery <?php echo $classes; ?>">
+    			if ( isset($has_gallery_images) && !empty($has_gallery_images) ) {
+					?>
+	                <ul class="image-gallery <?php echo $classes; ?>">
                     <?php
-                    if ( isset($has_gallery_images) && !empty($has_gallery_images) ) {
                     	foreach ( $has_gallery_images as $attachment_id ) {
 	                        $classes = array( 'popup' );
 
@@ -367,10 +432,8 @@ function easy_image_gallery( $gallery_id = null ) {
 
 	                        echo apply_filters( 'easy_image_gallery_html', $html, $rel, $image_link, $image_class, $image_caption, $image, $attachment_id, $post->ID );
 	                    }
-                    }
-                    ?>
-                </ul>
-    <?php
+                	echo '</ul>';
+            	}
             }
         }
 
@@ -385,14 +448,15 @@ function easy_image_gallery( $gallery_id = null ) {
  * @since 1.0
  */
 function easy_image_gallery_append_to_content( $content ) {
-
-	if ( is_singular() && is_main_query() && easy_image_gallery_allowed_post_type() ) {
+	// if it is single page and supported post_type and page not have shortcode.
+	if ( is_singular() && is_main_query() && easy_image_gallery_allowed_post_type() && !easy_image_gallery_has_shortcode('easy_image_gallery') ) {
 		$new_content = easy_image_gallery( 'old_db' );
 		$content .= $new_content;
 	}
 
 	return $content;
 }
+add_filter( 'the_content', 'easy_image_gallery_append_to_content' );
 
 /**
  * Remove the_content filter if shortcode is detected on page
@@ -400,8 +464,7 @@ function easy_image_gallery_append_to_content( $content ) {
  * @since 1.0
  */
 function easy_image_gallery_template_redirect() {
-
     if ( easy_image_gallery_has_shortcode( 'easy_image_gallery' ) )
 		remove_filter( 'the_content', 'easy_image_gallery_append_to_content' );
-
 }
+add_action( 'template_redirect', 'easy_image_gallery_template_redirect' );

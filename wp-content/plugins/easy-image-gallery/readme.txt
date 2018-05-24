@@ -119,8 +119,13 @@ The plugin ownership was transferred to DevriX. There are no functionality chang
 
 == Changelog ==
 
+= 1.3.1 =
+* Release date - May 07, 2018.
+* Remove jquery-ui.min.js from the plugin and use the WordPress Core version of the library.
+* Bugfix: add a fallback when the user is using the plugin's function in the code, instead of a shortcoe.
+
 = 1.3 =
-* Release date - Release date - January 19, 2018.
+* Release date - January 19, 2018.
 * Add the possibility to add two or more different galleries on one page/post.
 * Improved the UI / UX
 
