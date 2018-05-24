@@ -104,8 +104,13 @@ class EM_Event_Post_Admin{
 		$saving_status = !in_array(get_post_status($post_id), array('trash','auto-draft')) && !defined('DOING_AUTOSAVE');
 		$EM_EVENT_SAVE_POST = true; //first filter for save_post in EM for events
 		if(!defined('UNTRASHING_'.$post_id) && $is_post_type && $saving_status ){
-			$EM_Event = new EM_Event($post_id, 'post_id'); //grab event, via post info, reset the $EM_Event variable
+			//Reset server timezone to UTC in case other plugins are doing something naughty
+			$server_timezone = date_default_timezone_get();
+			date_default_timezone_set('UTC');
+			//grab event, via post info, reset the $EM_Event variable
+			$EM_Event = new EM_Event($post_id, 'post_id'); 
 			$EM_Event->post_type = $post_type;
+			//check whether this is a quick save or not, then save accordingly
 			if( !empty($_REQUEST['_emnonce']) && wp_verify_nonce($_REQUEST['_emnonce'], 'edit_event') ){ 
 				//this is only run if we know form data was submitted, hence the nonce
 				$get_meta = $EM_Event->get_post_meta();
@@ -185,6 +190,8 @@ class EM_Event_Post_Admin{
 				}
 			}
 			self::maybe_publish_location($EM_Event);
+			//Set server timezone back, even though it should be UTC anyway
+			date_default_timezone_set($server_timezone);
 		}
 	}
 	

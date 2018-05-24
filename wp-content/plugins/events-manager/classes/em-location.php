@@ -21,7 +21,7 @@ function em_get_location($id = false, $search_by = 'location_id') {
 	}
 	if( is_object($id) && get_class($id) == 'EM_Location' ){
 		return apply_filters('em_get_location', $id);
-	}else{
+	}elseif( !defined('EM_CACHE') || EM_CACHE ){
 		//check the cache first
 		$location_id = false;
 		if( is_numeric($id) ){
@@ -39,8 +39,8 @@ function em_get_location($id = false, $search_by = 'location_id') {
 				return apply_filters('em_get_location', $location);
 			}
 		}
-		return apply_filters('em_get_location', new EM_Location($id,$search_by));
 	}
+	return apply_filters('em_get_location', new EM_Location($id,$search_by));
 }
 /**
  * Object that holds location info and related functions
@@ -392,7 +392,7 @@ class EM_Location extends EM_Object {
 		//cache refresh when saving via admin area is handled in EM_Event_Post_Admin::save_post/refresh_cache
 		if( $post_save && $meta_save && $this->is_published() ){
 			//we won't depend on hooks, if we saved the event and it's still published in its saved state, refresh the cache regardless
-			$this->load_postdata($this);
+			$this->load_postdata($post_data);
 			wp_cache_set($this->location_id, $this, 'em_locations');
 			wp_cache_set($this->post_id, $this->location_id, 'em_locations_ids');
 		}

@@ -262,7 +262,8 @@
 		</table>
 	</div> <!-- . inside --> 
 	</div> <!-- .postbox -->
-	
+
+	<?php em_admin_option_box_data_privacy(); ?>
 	<?php if ( !is_multisite() ) { em_admin_option_box_uninstall(); } ?>
 	
 	<?php if( get_option('dbem_migrate_images') ): ?>

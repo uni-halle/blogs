@@ -78,6 +78,9 @@ function em_init_actions() {
 		if( $_REQUEST['action'] == 'event_save' && $EM_Event->can_manage('edit_events','edit_others_events') ){
 			//Check Nonces
 			if( !wp_verify_nonce($_REQUEST['_wpnonce'], 'wpnonce_event_save') ) exit('Trying to perform an illegal action.');
+			//Set server timezone to UTC in case other plugins are doing something naughty
+			$server_timezone = date_default_timezone_get();
+			date_default_timezone_set('UTC');
 			//Grab and validate submitted data
 			if ( $EM_Event->get_post() && $EM_Event->save() ) { //EM_Event gets the event if submitted via POST and validates it (safer than to depend on JS)
 				$events_result = true;
@@ -99,6 +102,8 @@ function em_init_actions() {
 				$EM_Notices->add_error( $EM_Event->get_errors() );
 				$events_result = false;				
 			}
+			//Set server timezone back, even though it should be UTC anyway
+			date_default_timezone_set($server_timezone);
 		}
 		if ( $_REQUEST['action'] == 'event_duplicate' && wp_verify_nonce($_REQUEST['_wpnonce'],'event_duplicate_'.$EM_Event->event_id) ) {
 			$event = $EM_Event->duplicate();

@@ -1,5 +1,5 @@
 <?php
-class EM_Taxonomy_Terms extends EM_Object implements Iterator{
+class EM_Taxonomy_Terms extends EM_Object implements Iterator, Countable{
 
 	protected $is_ms_global = false;
 	protected $meta_key = 'event-taxonomy';
@@ -325,5 +325,8 @@ class EM_Taxonomy_Terms extends EM_Object implements Iterator{
         $key = key($this->terms);
         $var = ($key !== NULL && $key !== FALSE);
         return $var;
+    }
+    public function count(){
+    	return count($this->terms);
     }
 }

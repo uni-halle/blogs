@@ -521,7 +521,6 @@ class EM_Object {
 						    $ignore_cancel_cond = true;
 						}
 					}
-				    if( !empty($tax_data['ms']) ) self::ms_global_switch_back(); //switch back if ms global mode
 					//create sql conditions
 					if( count($term_tax_ids) > 0 || count($term_tax_not_ids) > 0 ){
 					    //figure out context - what table/field to search

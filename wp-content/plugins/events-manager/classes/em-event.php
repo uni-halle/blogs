@@ -21,7 +21,7 @@ function em_get_event($id = false, $search_by = 'event_id') {
 	}
 	if( is_object($id) && get_class($id) == 'EM_Event' ){
 		return apply_filters('em_get_event', $id);
-	}else{
+	}elseif( !defined('EM_CACHE') || EM_CACHE ){
 		//check the cache first
 		$event_id = false;
 		if( is_numeric($id) ){
@@ -39,9 +39,9 @@ function em_get_event($id = false, $search_by = 'event_id') {
 				return apply_filters('em_get_event', $event);
 			}
 		}
-		//if we get this far, just create a new event
-		return apply_filters('em_get_event', new EM_Event($id,$search_by));
 	}
+	//if we get this far, just create a new event
+	return apply_filters('em_get_event', new EM_Event($id,$search_by));
 }
 /**
  * Event Object. This holds all the info pertaining to an event, including location and recurrence info.
@@ -634,7 +634,7 @@ class EM_Event extends EM_Object{
 		$preview_autosave = is_admin() && !empty($_REQUEST['_emnonce']) && !empty($_REQUEST['wp-preview']) && $_REQUEST['wp-preview'] == 'dopreview'; //we shouldn't save new data during a preview auto-save
 		if( !$preview_autosave && $can_manage_bookings && !empty($_POST['event_rsvp']) && $_POST['event_rsvp'] ){
 			//get tickets only if event is new, non-recurring, or recurring but specifically allowed to reschedule by user
-			if( !$this->is_recurring() || (empty($this->event_id) || !empty($_REQUEST['event_recreate_tickets'])) ){
+			if( !$this->is_recurring() || (empty($this->event_id) || !empty($_REQUEST['event_recreate_tickets'])) || !$this->event_rsvp ){
 				$this->get_bookings()->get_tickets()->get_post();
 			}
 			$this->event_rsvp = 1;
@@ -1795,6 +1795,9 @@ class EM_Event extends EM_Object{
 					}elseif ($condition == 'all_day'){
 						//is it an all day event
 						$show_condition = !empty($this->event_all_day);
+					}elseif ($condition == 'not_all_day'){
+						//is not an all day event
+						$show_condition = !empty($this->event_all_day);
 					}elseif ($condition == 'logged_in'){
 						//user is logged in
 						$show_condition = is_user_logged_in();
@@ -2335,12 +2338,20 @@ class EM_Event extends EM_Object{
 		
 		if( get_option('dbem_categories_enabled') ){
     		//for backwards compat and easy use, take over the individual category placeholders with the frirst cat in th elist.
-    		$EM_Categories = $this->get_categories();
-    		if( count($EM_Categories->categories) > 0 ){
-    			$EM_Category = $EM_Categories->get_first();
+    		if( count($this->get_categories()) > 0 ){
+    			$EM_Category = $this->get_categories()->get_first();
     		}
     		if( empty($EM_Category) ) $EM_Category = new EM_Category();
     		$event_string = $EM_Category->output($event_string, $target);
+		}
+		
+		if( get_option('dbem_tags_enabled') ){
+			$EM_Tags = new EM_Tags($this);
+			if( count($EM_Tags) > 0 ){
+				$EM_Tag = $EM_Tags->get_first();
+			}
+			if( empty($EM_Tag) ) $EM_Tag = new EM_Tag();
+			$event_string = $EM_Tag->output($event_string, $target);
 		}
 		
 		//Finally, do the event notes, so that previous placeholders don't get replaced within the content, which may use shortcodes
@@ -2636,7 +2647,7 @@ class EM_Event extends EM_Object{
 			 		$meta_fields['_event_end_date'] = $event_array['event_end_date'];
 			 		$meta_fields['_event_end_local'] = $event_array['event_end_date']. ' ' . $event_array['event_end_time'];
 					$site_data = get_site_option('dbem_data');
-					if( $site_data['updates']['timezone-backcompat'] ){
+					if( !empty($site_data['updates']['timezone-backcompat']) ){
 				 		$meta_fields['_start_ts'] = $start_timestamp;
 				 		$meta_fields['_end_ts'] = $end_timestamp;
 					}
@@ -2815,40 +2826,34 @@ class EM_Event extends EM_Object{
 	 * @return array
 	 */
 	function get_recurrence_days(){
-		$EM_DateTime = new EM_DateTime();
-		$start_date = $EM_DateTime->modify($this->start()->getDate())->getTimestamp();
-		$end_date = $EM_DateTime->modify($this->end()->getDate())->getTimestamp();
-				
+		//get timestampes for start and end dates, both at 12AM
+		$start_date = $this->start()->copy()->setTime(0,0,0)->getTimestamp();
+		$end_date = $this->end()->copy()->setTime(0,0,0)->getTimestamp();
+		
 		$weekdays = explode(",", $this->recurrence_byday); //what days of the week (or if monthly, one value at index 0)
-		 
-		$matching_days = array(); 
-		$aDay = 86400;  // a day in seconds
-		$aWeek = $aDay * 7;		 
-			
-		//TODO can this be optimized?
-		switch ( $this->recurrence_freq ){
+		$matching_days = array(); //the days we'll be returning in timestamps
+		
+		//generate matching dates based on frequency type
+		switch ( $this->recurrence_freq ){ /* @var EM_DateTime $current_date */
 			case 'daily':
 				//If daily, it's simple. Get start date, add interval timestamps to that and create matching day for each interval until end date.
 				$current_date = $start_date;
 				while( $current_date <= $end_date ){
 					$matching_days[] = $current_date;
-					$current_date = $current_date + ($aDay * $this->recurrence_interval);
+					$current_date = $current_date + (DAY_IN_SECONDS * $this->recurrence_interval);
 				}
 				break;
 			case 'weekly':
 				//sort out week one, get starting days and then days that match time span of event (i.e. remove past events in week 1)
+				$current_date = $this->start()->copy()->setTime(0,0,0);
 				$start_of_week = get_option('start_of_week'); //Start of week depends on WordPress
-				//first, get the start of this week as timestamp
-				$event_start_day = date('w', $start_date);
 				//then get the timestamps of weekdays during this first week, regardless if within event range
 				$start_weekday_dates = array(); //Days in week 1 where there would events, regardless of event date range
 				for($i = 0; $i < 7; $i++){
-					$weekday_date = $start_date+($aDay*$i); //the date of the weekday we're currently checking
-					$weekday_day = date('w',$weekday_date); //the day of the week we're checking, taking into account wp start of week setting
-
-					if( in_array( $weekday_day, $weekdays) ){
-						$start_weekday_dates[] = $weekday_date; //it's in our starting week day, so add it
+					if( in_array( $current_date->format('w'), $weekdays) ){
+						$start_weekday_dates[] = $current_date->getTimestamp(); //it's in our starting week day, so add it
 					}
+					$current_date->add('P1D'); //add a day
 				}					
 				//for each day of eventful days in week 1, add 7 days * weekly intervals
 				foreach ($start_weekday_dates as $weekday_date){
@@ -2857,20 +2862,17 @@ class EM_Event extends EM_Object{
 						if( $weekday_date >= $start_date && $weekday_date <= $end_date ){
 							$matching_days[] = $weekday_date;
 						}
-						$weekday_date = $weekday_date + ($aWeek *  $this->recurrence_interval);
+						$weekday_date = $weekday_date + (WEEK_IN_SECONDS *  $this->recurrence_interval);
 					}
 				}//done!
 				break;  
 			case 'monthly':
 				//loop months starting this month by intervals
-				$current_arr = getdate($start_date);
-				$end_arr = getdate($end_date);
-				$end_month_date = strtotime( date('Y-m-t', $end_date) ); //End date on last day of month
-				$current_date = strtotime( date('Y-m-1', $start_date) ); //Start date on first day of month
-				while( $current_date <= $end_month_date ){
-					$last_day_of_month = date('t', $current_date);
+				$current_date = $this->start()->copy()->modify('first day of this month')->setTime(0,0,0); //Start date on first day of month
+				while( $current_date->getTimestamp() <= $this->end()->getTimestamp() ){
+					$last_day_of_month = $current_date->format('t');
 					//Now find which day we're talking about
-					$current_week_day = date('w',$current_date);
+					$current_week_day = $current_date->format('w');
 					$matching_month_days = array();
 					//Loop through days of this years month and save matching days to temp array
 					for($day = 1; $day <= $last_day_of_month; $day++){
@@ -2882,26 +2884,23 @@ class EM_Event extends EM_Object{
 					//Now grab from the array the x day of the month
 					$matching_day = false;
 					if( $this->recurrence_byweekno > 0 ){
+						//date might not exist (e.g. fifth Sunday of a month) so only add if it exists
 						if( !empty($matching_month_days[$this->recurrence_byweekno-1]) ){
 							$matching_day = $matching_month_days[$this->recurrence_byweekno-1];
 						}
 					}else{
+						//last day of month, so we pop the last matching day
 						$matching_day = array_pop($matching_month_days);
 					}
+					//if we have a matching day, get the timestamp, make sure it's within our start/end dates for the event, and add to array if it is
 					if( !empty($matching_day) ){
-						$matching_date = strtotime(date('Y-m',$current_date).'-'.$matching_day);
+						$matching_date = $current_date->setDate( $current_date->format('Y'), $current_date->format('m'), $matching_day )->getTimestamp();
 						if($matching_date >= $start_date && $matching_date <= $end_date){
 							$matching_days[] = $matching_date;
 						}
 					}
-					//add the number of days in this month to make start of next month
-					$current_arr['mon'] += $this->recurrence_interval;
-					if($current_arr['mon'] > 12){
-						//FIXME this won't work if interval is more than 12
-						$current_arr['mon'] = $current_arr['mon'] - 12;
-						$current_arr['year']++;
-					}
-					$current_date = strtotime("{$current_arr['year']}-{$current_arr['mon']}-1"); 
+					//add the monthly interval to the current date
+					$current_date->add('P'.$this->recurrence_interval.'M')->modify('first day of this month'); 
 				}
 				break;
 			case 'yearly':

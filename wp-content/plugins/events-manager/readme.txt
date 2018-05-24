@@ -4,8 +4,8 @@ Donate link: http://wp-events-plugin.com
 Tags: bookings, calendar, tickets, events, buddypress, event management, google maps, maps, locations, registration
 Text Domain: events-manager
 Requires at least: 3.5
-Tested up to: 4.9
-Stable tag: 5.9
+Tested up to: 4.9.6
+Stable tag: 5.9.3
 
 Fully featured event registration management including recurring events, locations management, calendar, Google map integration, booking management
 
@@ -44,18 +44,29 @@ Version 5 now makes events and locations WordPress Custom Post Types, allowing f
 * Add to Google Calendar buttons
 * RSS Feeds
 * Compatible with SEO plugins
+* Timezone Support - create events in different timezones 
 * Plenty of template tags and shortcodes for use in your posts and pages
 * Actively maintained and supported
 * Lots of documentation and tutorials
 * And much more!
 
+= Data Privacy and GDPR Compliance =
+We provide the tools to [help you be GDPR compliant](http://wp-events-plugin.com/documentation/data-privacy-gdpr-compliance/), including:
+
+* export/erasure of data via the WordPress Privacy Tools, including booking, event and location data
+* consent checkboxes on our booking, event and location forms on the frontend
+* settings to control what can be exported/erased as well as where/when to place consent requests
+* privacy policy sample describing what Events Manager does with personal data
+
 = Go Pro =
-We have also released an add-on for Events Manager which not only demonstrates the flexibility of Events Manager, but also adds some important features:
+We have a premium "Pro" add-on for Events Manager which not only demonstrates the flexibility of Events Manager, but also adds some important features including but not limited to:
 
 * PayPal, Authorize.net and Offline Payments
 * Custom booking forms
+* Individual Attendee custom forms
 * Coupon Codes
-* Faster support via private forums
+* Custom booking email per event and gateway
+* Faster support via private Pro forums
 
 For more information or to go pro, [visit our plugin website](http://wp-events-plugin.com/features/).
 
@@ -99,6 +110,40 @@ See our [FAQ](http://wp-events-plugin.com/documentation/faq/) page, which is upd
 6. Manage attendees with various booking reports
 
 == Changelog ==
+= 5.9.3 =
+* added Data Privacy and GDPR features
+* fixed user deletion not properly deleting events and not deleting locations if content is set to be deleted not reassigned
+* added location attributes array to em_get_attributes filter
+* fixed EM_MB_ICAL_WORDWRAP incorrectly not applying multibyte wordwraps if set to true
+* added 'not_all_day' conditional placeholder
+* made EM_Taxonomy_Terms objects countable
+* fixed tag placeholders not getting parsed in event format such as #_TAGIMAGE
+
+= 5.9.2 =
+* fixed some instances where PHP 5.2 outputs incorrect times due to other plugins changing server timezones
+* fixed scope issues with PHP 5.2 when calculating start/end of month dates
+* fixed potential issues with manual offsets when other plugins change server timezones whilst saving events, particularly in PHP 5.2
+* added EM_CACHE constant which if defined as false will disable caching
+* fixed issues when changing times of an EM_DateTime object with large manual offset timezones may cause incorrect dates (fixes some weekly recurrence pattern issues)
+* added notice when viewing bookings made in another language
+* added booking admin table column for language used in booking
+* fixed some minor PHP notices preventing event submissions/edits with a new location if display_errors are enabled
+* updated EM_Notices to use new class names for notices output in WP Dashboard
+* added filters for all post type and custom taxonomy arrays used in initial post type and custom taxonomy registration functions (see em-posts.php)
+
+= 5.9.1 =
+* fixed the & operator in category search attribute not working correctly in MultiSite Global Tables mode
+* added fix/workaround for any code that changes the timezone from WP's UTC timezone during runtime
+* fixed multisite upgrade issues with timezones
+* added option to reset timezones for all blogs on multisite and also reset each blog to its individual WP timezone
+* changed default subscriber capabilities so they can't submit events by default
+* added option to resume failed timezone resets on multisite blogs
+* added upgrade warning for multisite users who upgraded to 5.9 and had timezone update errors
+* fixed (deprecated with backward compatibility) shorthand EM_Booking object properties such as 'status' not having values after 5.9 update
+* fixed recurrence pattern date miscalculations on sites where a plugin/theme changes the default server timezone after WP sets it to UTC
+* added gutenberg support with define('EM_GUTENBERG', true); defined in wp-config.php
+* fixed new tickets not being added to previously created recurring event where bookings were previously disabled
+* added tweaked EM_DateTime functionality so functions that might return false in DateTime set valid property to false before returning object for chaining
 
 = 5.9 =
 * fixes applied to 5.8.1.2 merged into dev version
@@ -119,7 +164,7 @@ See our [FAQ](http://wp-events-plugin.com/documentation/faq/) page, which is upd
 * fixed event duplication not copying other plugin meta data, such as ACF
 * fixed EM_Bookings::get() producing SQL error if passing an array of booking IDs
 * added em_event_post_scope_meta_query filter for admin-side custom scopes
-* fixed bug where blank start/end times of tickets and booking cut-offs default to 12AM istead of event start time
+* fixed bug where blank start/end times of tickets and booking cut-offs default to 12AM instead of event start time
 * fixed preview mode not reflecting new event description
 * fixed broken ical permalinks for individual subcategories
 * changed recurrence warning strips from green to orange/blue at top of admin pages

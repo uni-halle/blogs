@@ -252,8 +252,44 @@ function em_options_save(){
 			if( !empty($_REQUEST['timezone_reset_blog']) && is_numeric($_REQUEST['timezone_reset_blog']) ){
 				$blog_id = $_REQUEST['timezone_reset_blog'];
 				switch_to_blog($blog_id);
+				if( $timezone == 'default' ){
+					$timezone = str_replace(' ', EM_DateTimeZone::create()->getName());
+				}
 				$blog_name = get_bloginfo('name');
 				$result = em_migrate_datetime_timezones(true, true, $timezone);
+				restore_current_blog();
+			}elseif( !empty($_REQUEST['timezone_reset_blog']) && ($_REQUEST['timezone_reset_blog'] == 'all' || $_REQUEST['timezone_reset_blog'] == 'all-resume') ){
+				global $wpdb, $current_site;
+				$blog_ids = $blog_ids_progress = get_site_option('dbem_reset_timezone_multisite_progress', false);
+				if( !is_array($blog_ids) || $_REQUEST['timezone_reset_blog'] == 'all' ){
+					$blog_ids = $blog_ids_progress = $wpdb->get_col('SELECT blog_id FROM '.$wpdb->blogs.' WHERE site_id='.$current_site->id);
+					update_site_option('dbem_reset_timezone_multisite_progress', $blog_ids_progress);
+				}
+				foreach($blog_ids as $k => $blog_id){
+					$result = true;
+					$plugin_basename = plugin_basename(dirname(dirname(__FILE__)).'/events-manager.php');
+					if( in_array( $plugin_basename, (array) get_blog_option($blog_id, 'active_plugins', array() ) ) || is_plugin_active_for_network($plugin_basename) ){
+						switch_to_blog($blog_id);
+						$blog_timezone = $timezone == 'default' ? str_replace(' ', '', EM_DateTimeZone::create()->getName()) : $timezone;
+						$blog_name = get_bloginfo('name');
+						$blog_result = em_migrate_datetime_timezones(true, true, $blog_timezone);
+						if( !$blog_result ){
+							$fails[$blog_id] = $blog_name;
+						}else{
+							unset($blog_ids_progress[$k]);
+							update_site_option('dbem_reset_timezone_multisite_progress', $blog_ids_progress);
+						}
+					}
+				}
+				if( !empty($fails) ){
+					$result = __('The following blog timezones could not be successfully reset:', 'events-manager');
+					$result .= '<ul>';
+					foreach( $fails as $fail ) $result .= '<li>'.$fail.'</li>';
+					$result .= '</ul>';
+				}else{
+					delete_site_option('dbem_reset_timezone_multisite_progress');
+					EM_Admin_Notices::remove('date_time_migration_5.9_multisite', true);
+				}
 				restore_current_blog();
 			}else{
 				$result = __('A valid blog ID must be provided, you can only reset one blog at a time.','events-manager');
@@ -265,7 +301,11 @@ function em_options_save(){
 			$EM_Notices->add_error($result, true);
 		}else{
 			if( is_multisite() ){
-				$EM_Notices->add_confirm(sprintf(__('Event timezones for blog %s have been reset to %s.','events-manager'), '<code>'.$blog_name.'</code>', '<code>'.$timezone.'</code>'), true);
+				if( $_REQUEST['timezone_reset_blog'] == 'all' || $_REQUEST['timezone_reset_blog'] == 'all-resume' ){
+					$EM_Notices->add_confirm(sprintf(__('Event timezones on all blogs have been reset to %s.','events-manager'), '<code>'.$timezone.'</code>'), true);
+				}else{
+					$EM_Notices->add_confirm(sprintf(__('Event timezones for blog %s have been reset to %s.','events-manager'), '<code>'.$blog_name.'</code>', '<code>'.$timezone.'</code>'), true);
+				}
 			}else{
 				$EM_Notices->add_confirm(sprintf(__('Event timezones have been reset to %s.','events-manager'), '<code>'.$timezone.'</code>'), true);
 			}
@@ -276,12 +316,15 @@ function em_options_save(){
 	
 	//update scripts that may need to run
 	$blog_updates = is_multisite() ? array_merge(EM_Options::get('updates'), EM_Options::site_get('updates')) : EM_Options::get('updates');
-	foreach( $blog_updates as $update => $update_data ){
-		$filename = EM_DIR.'/admin/settings/updates/'.$update.'.php';
-		if( file_exists($filename) ) include_once($filename);
-		do_action('em_admin_update_'.$update, $update_data);
+	if( is_array($blog_updates) ) {
+		foreach ( $blog_updates as $update => $update_data ) {
+			$filename = EM_DIR . '/admin/settings/updates/' . $update . '.php';
+			if ( file_exists( $filename ) ) {
+				include_once( $filename );
+			}
+			do_action( 'em_admin_update_' . $update, $update_data );
+		}
 	}
-	
 }
 add_action('admin_init', 'em_options_save');
 
@@ -799,18 +842,37 @@ function em_admin_option_box_uninstall(){
 			<table class="form-table">
     		    <tr class="em-header"><td colspan="2">
     		        <h4><?php _e ( 'Reset Timezones', 'events-manager'); ?></h4>
-    		    </td></tr>
+					<?php if( is_multisite() && get_site_option('dbem_reset_timezone_multisite_progress', false) !== false ): ?>
+					<p style="color:red;">
+						<?php 
+						echo sprintf( esc_html__('Your last attempt to reset all blogs to a certain timezone did not complete successfully. You can attempt to reset only those blogs that weren\'t completed by selecting your desired timezone again and then %s from the dropdowns below', 'events-manager'), '<code>'.esc_html__('Resume Previous Attempt (All Blogs)', 'events-manager').'</code>' ); 
+						?>
+					</p>
+					<?php endif; ?>
+				</td></tr>
     		    <tr>
     			    <th style="text-align:right;">
     			    	<a href="#" class="button-secondary" id="em-reset-event-timezones"><?php esc_html_e('Reset Event Timezones','events-manager'); ?></a>
     			    </th>
     			    <td>
     			    	<select name="timezone_reset_value" class="em-reset-event-timezones">
-    			    		<?php echo wp_timezone_choice(''); ?>
+    			    		<?php 
+    			    			if( is_multisite() ){
+    			    				$timezone_default = 'none';
+    			    				echo '<option value="default">'.__('Blog Default Timezone', 'events-manager').'</option>';
+    			    			}else{
+	    			    			$timezone_default = str_replace(' ', '', EM_DateTimeZone::create()->getName());
+								}
+							?>
+    			    		<?php echo wp_timezone_choice($timezone_default); ?>
     			    	</select>
     			    	<?php if( is_multisite() ): ?>
     			    		<select name="timezone_reset_blog" class="em-reset-event-timezones">
     			    			<option value="0"><?php esc_html_e('Select a blog...', 'events-manager'); ?></option>
+    			    			<option value="all"><?php esc_html_e('All Blogs', 'events-manager'); ?></option>
+    			    			<?php if( is_multisite() && get_site_option('dbem_reset_timezone_multisite_progress', false) !== false ): ?>
+    			    			<option value="all-resume"><?php esc_html_e('Resume Previous Attempt (All Blogs)', 'events-manager'); ?></option>
+    			    			<?php endif; ?>
     			    			<?php
 	    			    		foreach( get_sites() as $WP_Site){ /* @var WP_Site $WP_Site */
 	    			    			echo '<option value="'.esc_attr($WP_Site->blog_id).'">'. esc_html($WP_Site->blogname) .'</option>';
@@ -861,5 +923,76 @@ function em_admin_option_box_uninstall(){
 		</div>
 	</div>
 	<?php	
+}
+
+/**
+ * Meta options box for privacy and data protection rules for GDPR (and other dp laws) compliancy
+ */
+function em_admin_option_box_data_privacy(){
+	global $save_button;
+	$privacy_options = array(
+		0 => __('Do not include', 'events-manager'),
+		1 => __('Include all', 'events-manager'),
+		2 => __('Include only guest submissions', 'events-manager')
+	);
+	?>
+    <div  class="postbox " id="em-opt-data-privacy" >
+        <div class="handlediv" title="<?php __('Click to toggle', 'events-manager'); ?>"><br /></div><h3><span><?php _e ( 'Privacy', 'events-manager'); ?> </span></h3>
+        <div class="inside">
+            <p class="em-boxheader"><?php echo sprintf(__('Depending on the nature of your site, you will be subject to one or more national and international privacy/data protection laws such as the %s. Below are some options that you can use to tailor how Events Manager interacts with WordPress privacy tools.','events-manager'), '<a href=http://ec.europa.eu/justice/smedataprotect/index_en.htm">GDPR</a>'); ?></p>
+            <p class="em-boxheader"><?php echo sprintf(__('For more information see our <a href="%s">data privacy documentation</a>.','events-manager'), 'http://wp-events-plugin.com/documentation/data-privacy-gdpr-compliance/'); ?></p>
+            <p class="em-boxheader"><?php echo __('All options below relate to data that may have been submitted by or collected from the user requesting their personal data, which would also include events and locations where they are the author.', 'events-manager'); ?></p>
+            <table class='form-table'>
+                <thead>
+                    <tr class="em-header">
+                        <th colspan="2"><h4><?php esc_html_e('Export Personal Data'); ?></h4></th>
+                    </tr>
+                </thead>
+				<?php
+				em_options_select ( __( 'Events', 'events-manager'), 'dbem_data_privacy_export_events', $privacy_options );
+				em_options_select ( __( 'Locations', 'events-manager'), 'dbem_data_privacy_export_locations', $privacy_options, __('Locations submitted by guest users are not included, unless they are linked to events also submitted by them.', 'events-manager') );
+				em_options_select ( __( 'Bookings', 'events-manager'), 'dbem_data_privacy_export_bookings', $privacy_options, __('This is specific to bookings made by the user, not bookings that may have been made to events they own.', 'events-manager'), $privacy_options );
+				?>
+                <thead>
+                    <tr class="em-header">
+                        <th colspan="2"><h4><?php esc_html_e('Erase Personal Data'); ?></h4></th>
+                    </tr>
+                </thead>
+                <?php
+                em_options_select ( __( 'Events', 'events-manager'), 'dbem_data_privacy_erase_events', $privacy_options );
+                em_options_select ( __( 'Locations', 'events-manager'), 'dbem_data_privacy_erase_locations', $privacy_options, __('Locations submitted by guest users are not included, unless they are linked to events also submitted by them.', 'events-manager') );
+                em_options_select ( __( 'Bookings', 'events-manager'), 'dbem_data_privacy_erase_bookings', $privacy_options, __('This is specific to bookings made by the user, not bookings that may have been made to events they own.', 'events-manager'), $privacy_options );
+                ?>
+                <thead>
+                    <tr class="em-header">
+                        <th colspan="2">
+                            <h4><?php esc_html_e('Consent', 'events-manager'); ?></h4>
+                            <p><?php esc_html_e('If you collect personal data, you may want to request their consent. The options below will automatically add checkboxes requesting this consent.', 'events-manager'); ?></p>
+                        </th>
+                    </tr>
+                </thead>
+                <?php
+                $consent_options = array(
+                    0 => __('Do not show', 'events-manager'),
+                    1 => __('Show to all', 'events-manager'),
+                    2 => __('Only show to guests', 'events-manager')
+                );
+                $consent_remember = array(
+	                0 => __('Always show and ask for consent', 'events-manager'),
+                	1 => __('Remember and hide checkbox', 'events-manager'),
+	                2 => __('Remember and show checkbox', 'events-manager')
+                );
+                em_options_input_text( __('Consent Text', 'events-manager'), 'dbem_data_privacy_consent_text', __('%s will be replaced by a link to your site privacy policy page.', 'events-manager') );
+                em_options_select( __('Remembering Consent', 'events-manager'), 'dbem_data_privacy_consent_remember', $consent_remember, __('You can hide or leave the consent box checked for registered users who have provided consent previously.', 'events-manager') );
+                em_options_select( __( 'Event Submission Forms', 'events-manager'), 'dbem_data_privacy_consent_events', $privacy_options );
+                em_options_select( __( 'Location Submission Forms', 'events-manager'), 'dbem_data_privacy_consent_locations', $privacy_options );
+                em_options_select( __( 'Bookings Forms', 'events-manager'), 'dbem_data_privacy_consent_bookings', $privacy_options );
+
+                echo $save_button;
+                ?>
+            </table>
+        </div> <!-- . inside -->
+    </div> <!-- .postbox -->
+	<?php
 }
 ?>

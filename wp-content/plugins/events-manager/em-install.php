@@ -496,23 +496,23 @@ function em_add_options() {
 		'dbem_display_calendar_in_events_page' => 0,
 		'dbem_single_event_format' => '<div style="float:right; margin:0px 0px 15px 15px;">#_LOCATIONMAP</div>
 <p>
-	<strong>'.__('Date/Time','events-manager').'</strong><br/>
+	<strong>'.esc_html__('Date/Time','events-manager').'</strong><br/>
 	Date(s) - #_EVENTDATES<br /><i>#_EVENTTIMES</i>
 </p>
 {has_location}
 <p>
-	<strong>'.__('Location','events-manager').'</strong><br/>
+	<strong>'.esc_html__('Location','events-manager').'</strong><br/>
 	#_LOCATIONLINK
 </p>
 {/has_location}
 <p>
-	<strong>'.__('Categories','events-manager').'</strong>
+	<strong>'.esc_html__('Categories','events-manager').'</strong>
 	#_CATEGORIES
 </p>
 <br style="clear:both" />
 #_EVENTNOTES
 {has_bookings}
-<h3>Bookings</h3>
+<h3>'.esc_html__('Bookings','events-manager').'</h3>
 #_BOOKINGFORM
 {/has_bookings}',
 	    'dbem_event_excerpt_format' => '#_EVENTDATES @ #_EVENTTIMES - #_EVENTEXCERPT',
@@ -823,7 +823,19 @@ function em_add_options() {
 	    //feedback reminder
 	    'dbem_feedback_reminder' => time(),
 	    'dbem_events_page_ajax' => 0,
-	    'dbem_conditional_recursions' => 1
+	    'dbem_conditional_recursions' => 1,
+        //data privacy/protection
+        'dbem_data_privacy_consent_text' => esc_html__('I consent to my submitted data being collected and stored as outlined by the site %s.','events-manager'),
+        'dbem_data_privacy_consent_remember' => 1,
+		'dbem_data_privacy_consent_events' => 1,
+		'dbem_data_privacy_consent_locations' => 1,
+		'dbem_data_privacy_consent_bookings' => 1,
+		'dbem_data_privacy_export_events' => 1,
+		'dbem_data_privacy_export_locations' => 1,
+		'dbem_data_privacy_export_bookings' => 1,
+		'dbem_data_privacy_erase_events' => 1,
+		'dbem_data_privacy_erase_locations' => 1,
+		'dbem_data_privacy_erase_bookings' => 1
 	);
 	
 	//do date js according to locale:
@@ -1051,7 +1063,28 @@ function em_upgrade_current_installation(){
 			));
 			EM_Admin_Notices::add($EM_Admin_Notice, is_multisite());
 		}
-	}	
+	}
+	if( get_option('dbem_version') != '' && get_option('dbem_version') == 5.9 && is_multisite() && !EM_MS_GLOBAL && (is_network_admin() || is_main_site()) ){
+		//warning just for users who upgraded to 5.9 on multisite without global tables enabled
+		$message = 'Due to a bug in 5.9 when updating to new timezones in MultiSite installations, you may notice some of your events are missing from lists.<br><br>To fix this problem, visit %s choose your timezone, select %s and click %s to update all your blogs to the desired timezone.';
+		$url = network_admin_url('admin.php?page=events-manager-options#general+admin-tools');
+		$admin_tools_link = '<a href="'.$url.'">'.esc_html(__('Network Admin').' &gt; '.__('Events Manager','events-manager').' &gt; '.__('Admin Tools','events-manager')).'</a>';
+		$message = sprintf($message, $admin_tools_link, '<em><strong>'.esc_html__('All Blogs', 'events-manager').'</strong></em>', '<em><strong>'.esc_html__('Reset Event Timezones','events-manager').'</strong></em>');
+		$EM_Admin_Notice = new EM_Admin_Notice(array(
+		'name' => 'date_time_migration_5.9_multisite',
+		'who' => 'admin',
+		'what' => 'warning',
+		'where' => 'all',
+		'message' => $message
+		));
+		EM_Admin_Notices::add($EM_Admin_Notice, is_multisite());
+	}
+	if( get_option('dbem_version') != '' && get_option('dbem_version') < 5.93 ){
+		$message = __('Events Manager has introduced new privacy tools to help you comply with international laws such as the GDPR, <a href="%s">see our documentation</a> for more information.','events-manager');
+		$message = sprintf( $message, 'https://wp-events-plugin.com/documentation/data-privacy-protection/?utm_source=plugin&utm_campaign=gdpr_update');
+		$EM_Admin_Notice = new EM_Admin_Notice(array( 'name' => 'gdpr_update', 'who' => 'admin', 'where' => 'all', 'message' => $message ));
+		EM_Admin_Notices::add($EM_Admin_Notice, is_multisite());
+	}
 }
 
 function em_set_mass_caps( $roles, $caps ){
@@ -1090,7 +1123,11 @@ function em_set_capabilities(){
 			/* Location Capabilities */
 			'edit_locations', 'read_private_locations', 'read_others_locations',
 		);
-		em_set_mass_caps( array('administrator','editor','contributor','author','subscriber'), $loose_caps);
+		em_set_mass_caps( array('administrator','editor','contributor','author'), $loose_caps);
+		
+		//subscribers can read private stuff, nothing else
+		$wp_roles->add_cap('subscriber', 'read_private_locations');
+		$wp_roles->add_cap('subscriber', 'read_private_events');
 	}
 	if( get_option('dbem_version')  && get_option('dbem_version') < 5 ){
 		//Add new caps that are similar to old ones
@@ -1448,6 +1485,8 @@ function em_migrate_uploads(){
 
 function em_migrate_datetime_timezones( $reset_new_fields = true, $migrate_date_fields = true, $timezone = false ){
 	global $wpdb;
+	//Table names
+	$db = EM_MS_GLOBAL ? $wpdb->base_prefix : $wpdb->prefix;
 	//create AND and WHERE conditions for blog IDs if we're in Multisite Glboal Mode
 	$blog_id_where = $blog_id_and = '';
 	if( EM_MS_GLOBAL ){
@@ -1460,13 +1499,13 @@ function em_migrate_datetime_timezones( $reset_new_fields = true, $migrate_date_
 		$blog_id_and = ' AND '.$blog_id_cond;
 	}
 	//reset all the data for these purposes
-	if( $reset_new_fields || $migrate_date_fields ) $wpdb->query('UPDATE '. EM_EVENTS_TABLE .' SET event_start = NULL, event_end = NULL, event_timezone = NULL'.$blog_id_where);
+	if( $reset_new_fields || $migrate_date_fields ) $wpdb->query('UPDATE '. $db.'em_events' .' SET event_start = NULL, event_end = NULL, event_timezone = NULL'.$blog_id_where);
 	if( !$migrate_date_fields ) return true;
 	
 	//start migration of old date formats to new datetime formats in local and UTC mode along with a declared timezone
 	$migration_results = $migration_meta_results = $migration_errors = array();
 	//firstly, we do a query for all-day events and reset the times, so that UTC times are correct relative to the local time
-	$migration_result = $wpdb->query('UPDATE '.EM_EVENTS_TABLE." SET event_start_time = '00:00:00', event_end_time = '23:59:59' WHERE event_all_day = 1".$blog_id_and);
+	$migration_result = $wpdb->query('UPDATE '. $db.'em_events'." SET event_start_time = '00:00:00', event_end_time = '23:59:59' WHERE event_all_day = 1".$blog_id_and);
 	if( $migration_result === false ) $migration_errors[] = array('Local datetime allday event times modification errors', $wpdb->last_error);
 	
 	//migration procedure depends on whether we have an actual timezone or just a manual offset of hours in the WP settings page
@@ -1492,11 +1531,11 @@ function em_migrate_datetime_timezones( $reset_new_fields = true, $migrate_date_
 			if( empty($query_data[$t['offset']]) ){
 				$query_data[$t['offset']] = array(
 						'start' => array(
-								'sql' => $wpdb->prepare('UPDATE '. EM_EVENTS_TABLE. ' SET event_start = DATE_SUB(TIMESTAMP(event_start_date,event_start_time), INTERVAL %d SECOND)', $t['offset']),
+								'sql' => $wpdb->prepare('UPDATE '. $db.'em_events'. ' SET event_start = DATE_SUB(TIMESTAMP(event_start_date,event_start_time), INTERVAL %d SECOND)', $t['offset']),
 								'where' => array()
 						),
 						'end' => array(
-								'sql' => $wpdb->prepare('UPDATE '. EM_EVENTS_TABLE. ' SET event_end = DATE_SUB(TIMESTAMP(event_end_date, event_end_time), INTERVAL %d SECOND)', $t['offset']),
+								'sql' => $wpdb->prepare('UPDATE '. $db.'em_events'. ' SET event_end = DATE_SUB(TIMESTAMP(event_end_date, event_end_time), INTERVAL %d SECOND)', $t['offset']),
 								'where' => array()
 						)
 				);
@@ -1526,12 +1565,12 @@ function em_migrate_datetime_timezones( $reset_new_fields = true, $migrate_date_
 		$EM_DateTimeZone = EM_DateTimeZone::create($timezone);
 		$offset = $timezone == 'UTC' ? 0 : $EM_DateTimeZone->manual_offset / MINUTE_IN_SECONDS;
 		$timezone = $EM_DateTimeZone->getName();
-		$migration_result = $wpdb->query($wpdb->prepare('UPDATE '. EM_EVENTS_TABLE. ' SET event_start = DATE_SUB(TIMESTAMP(event_start_date,event_start_time), INTERVAL %d MINUTE), event_end = DATE_SUB(TIMESTAMP(event_end_date, event_end_time), INTERVAL %d MINUTE) WHERE event_end IS NULL '.$blog_id_and, $offset, $offset));
+		$migration_result = $wpdb->query($wpdb->prepare('UPDATE '. $db.'em_events'. ' SET event_start = DATE_SUB(TIMESTAMP(event_start_date,event_start_time), INTERVAL %d MINUTE), event_end = DATE_SUB(TIMESTAMP(event_end_date, event_end_time), INTERVAL %d MINUTE) WHERE event_end IS NULL '.$blog_id_and, $offset, $offset));
 		if( $migration_result === false ) $migration_errors[] = array('Event start/end UTC offset', $wpdb->last_error);
 	}
 	
 	//set the timezone (on initial migration all events have same timezone of blog)
-	$migration_result = $wpdb->query($wpdb->prepare('UPDATE '.EM_EVENTS_TABLE.' SET event_timezone = %s WHERE event_timezone IS NULL'.$blog_id_and, $timezone));
+	$migration_result = $wpdb->query($wpdb->prepare('UPDATE '. $db.'em_events' .' SET event_timezone = %s WHERE event_timezone IS NULL'.$blog_id_and, $timezone));
 	if( $migration_result === false ) $migration_errors[] = array('Event timezone setting', $wpdb->last_error);
 	
 	//reave meta data - at this point once we've copied over all of the dates, so we do 5 queries to postmeta, one for each field we've created above start/end times in local/utc and timezone
@@ -1543,10 +1582,10 @@ function em_migrate_datetime_timezones( $reset_new_fields = true, $migrate_date_
 		foreach( array('event_start', 'event_end', 'event_timezone', 'start', 'end') as $field ){
 			if( $field == 'start' || $field == 'end' ){
 				//create a timestamp combining two given fields, which we'll now use 
-				$sql = 'INSERT INTO '.$wpdb->postmeta." (post_id, meta_key, meta_value) SELECT post_id, '_event_{$field}_local', TIMESTAMP(event_{$field}_date, event_{$field}_time) FROM ".EM_EVENTS_TABLE. $blog_id_where;
+				$sql = 'INSERT INTO '.$wpdb->postmeta." (post_id, meta_key, meta_value) SELECT post_id, '_event_{$field}_local', TIMESTAMP(event_{$field}_date, event_{$field}_time) FROM ".$db . 'em_events'. $blog_id_where;
 				$field = "event_".$field."_local";
 			}else{
-				$sql = 'INSERT INTO '.$wpdb->postmeta." (post_id, meta_key, meta_value) SELECT post_id, '_{$field}', {$field} FROM ".EM_EVENTS_TABLE. $blog_id_where;
+				$sql = 'INSERT INTO '.$wpdb->postmeta." (post_id, meta_key, meta_value) SELECT post_id, '_{$field}', {$field} FROM ". $db.'em_events'. $blog_id_where;
 			}
 			$migration_result = $wpdb->query($sql);
 			if( $migration_result === false ) $migration_errors[] = array('Adding new meta data key <em>_'.$field.'</em>', $wpdb->last_error);
@@ -1568,7 +1607,8 @@ function em_migrate_datetime_timezones( $reset_new_fields = true, $migrate_date_
 
 function em_migrate_get_tz_transitions( $timezone, $blog_id_where = '' ){
 	global $wpdb;
-	$minmax_dates = $wpdb->get_row('SELECT MIN(event_start_date) AS mindate, MAX(event_end_date) AS maxdate FROM '.EM_EVENTS_TABLE.$blog_id_where);
+	$db = EM_MS_GLOBAL ? $wpdb->base_prefix : $wpdb->prefix;
+	$minmax_dates = $wpdb->get_row('SELECT MIN(event_start_date) AS mindate, MAX(event_end_date) AS maxdate FROM '. $db.'em_events' .$blog_id_where);
 	$DTZ = new EM_DateTimeZone( $timezone );
 	$start = strtotime($minmax_dates->mindate, current_time('timestamp')) - 60*60*24;
 	$end = strtotime($minmax_dates->maxdate, current_time('timestamp')) + 60*60*24; //we add a day just to get the most comprehensive range possible

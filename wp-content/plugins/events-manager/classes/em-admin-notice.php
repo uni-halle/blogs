@@ -17,7 +17,7 @@ class EM_Admin_Notice {
 	 */
 	public $who = 'admin';
 	/**
-	 * Represents the date of when
+	 * What kind of notices this is, which can be 'success','info','warning' or 'error'
 	 * @var string
 	 */
 	public $what = 'info';

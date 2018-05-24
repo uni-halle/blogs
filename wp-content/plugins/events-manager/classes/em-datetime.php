@@ -34,11 +34,15 @@ class EM_DateTime extends DateTime {
 	public function __construct( $time = null, $timezone = null ){
 		//get our EM_DateTimeZone
 		$timezone = EM_DateTimeZone::create($timezone);
+		//save timezone name for use in getTimezone()
+		$this->timezone_name = $timezone->getName();
+		$this->timezone_manual_offset = $timezone->manual_offset;
 		//fix DateTime error if a regular timestamp is supplied without prepended @ symbol
 		if( is_numeric($time) ) $time = '@'.$time;
 		//finally, run parent function with our custom timezone
 		try{
 			@parent::__construct($time, $timezone);
+			if( substr($time,0,1) == '@' || $time == 'now' ) $this->setTimezone($timezone);
 			$this->valid = true; //if we get this far, supplied time is valid
 		}catch( Exception $e ){
 			//get current date/time in relevant timezone and set valid flag to false
@@ -48,11 +52,8 @@ class EM_DateTime extends DateTime {
 			$this->setTime(0,0,0);
 			$this->valid = false;
 		}
-		//save timezone name for use in getTimezone()
-		$this->timezone_name = $timezone->getName();
-		$this->timezone_manual_offset = $timezone->manual_offset;
 		//deal with manual UTC offsets, but only if we haven't defaulted to the current timestamp since that would already be a correct relative value
-		if( $time !== null && $time != 'now' ) $this->handleOffsets($timezone);
+		if( $time !== null && $time != 'now' && substr($time,0,1) != '@' ) $this->handleOffsets($timezone);
 	}
 	
 	/**
@@ -80,7 +81,14 @@ class EM_DateTime extends DateTime {
 		if( !$this->valid && ($format == 'Y-m-d' || $format == em_get_date_format())) return '';
 		//if we deal with offsets, then we offset UTC time by that much
 		if( $this->timezone_manual_offset !== false ){
-			return date($format, $this->getTimestamp() + $this->timezone_manual_offset );
+			if( function_exists('date_timestamp_get') ){
+				return date($format, $this->getTimestampWithOffset(true) );
+			}else{
+				//PHP < 5.3 fallback :/ Messed up, but it works...
+				$timestamp = parent::format('U');
+				$server_offset = date('Z', $timestamp);
+				return date( $format, $timestamp - ($server_offset * 2) + $this->getOffset() );
+			}
 		}
 		return parent::format($format);
 	}
@@ -105,9 +113,14 @@ class EM_DateTime extends DateTime {
 	public function i18n( $format = 'Y-m-d H:i:s' ){
 		if( !$this->valid && $format == em_get_date_format()) return '';
 		//if we deal with offsets, then we offset UTC time by that much
-		$ts = $this->getTimestamp();
-		$tswo = $this->getTimestampWithOffset();
-		return date_i18n( $format, $this->getTimestampWithOffset() );
+		if( !function_exists('date_timestamp_get') && $this->timezone_manual_offset !== false ){
+			//PHP < 5.3 fallback :/ Messed up, but it works...
+			$timestamp = parent::format('U');
+			$server_offset = date('Z', $timestamp);
+			return date_i18n( $format, $timestamp - ($server_offset * 2) + $this->getOffset() );
+		}else{
+			return date_i18n( $format, $this->getTimestampWithOffset(true) );
+		}
 	}
 	
 	/**
@@ -119,7 +132,8 @@ class EM_DateTime extends DateTime {
 	}
 	
 	/**
-	 * Modifies the time of this object, if a mysql TIME valid format is provided (e.g. 14:30:00)
+	 * Modifies the time of this object, if a mysql TIME valid format is provided (e.g. 14:30:00).
+	 * Returns EM_DateTime object in all cases, but $this->valid will be set to false if unsuccessful
 	 * @param string $hour
 	 * @return EM_DateTime Returns object for chaining.
 	 */
@@ -127,47 +141,87 @@ class EM_DateTime extends DateTime {
 		if( preg_match('/^\d{2}:\d{2}:\d{2}$/', $hour) ){
 			$time = explode(':', $hour);
 			$this->setTime($time[0], $time[1], $time[2]);
+		}else{
+			$this->valid = false;
 		}
 		return $this;
 	}
 	
+	/**
+	 * Sets timestamp with PHP 5.2.x fallback.
+	 * Returns EM_DateTime object in all cases, but $this->valid will be set to false if unsuccessful
+	 * @see DateTime::setTimestamp()
+	 */
 	public function setTimestamp( $timestamp ){
 		if( function_exists('date_timestamp_set') ){
-			return parent::setTimestamp( $timestamp );
+			$return = parent::setTimestamp( $timestamp );
+			$this->valid = $return !== false;
 		}else{
 			//PHP < 5.3 fallback :/ setting modify() with a timestamp produces unpredictable results, so we play more tricks...
 			$date = explode(',', date('Y,n,j,G,i,s', $timestamp));
 			parent::setDate( (int) $date[0], (int) $date[1], (int) $date[2]);
 			parent::setTime( (int) $date[3], (int) $date[4], (int) $date[5]);
-			return $this;
+			//$this->valid determined in functions above
 		}
+		return $this;
 	}
 	
 	/**
 	 * Extends DateTime functionality by accepting a false or string value for a timezone. 
+	 * Returns EM_DateTime object in all cases, but $this->valid will be set to false if unsuccessful
 	 * @see DateTime::setTimezone()
 	 * @return EM_DateTime Returns object for chaining.
 	 */
 	public function setTimezone( $timezone ){
 		if( $timezone == $this->getTimezone()->getName() ) return $this;
 		$timezone = EM_DateTimeZone::create($timezone);
-		parent::setTimezone($timezone);
+		$return = parent::setTimezone($timezone);
 		$this->timezone_name = $timezone->getName();
 		$this->timezone_manual_offset = $timezone->manual_offset;
+		$this->valid = $return !== false;
 		return $this;
 	}
 	
+	/**
+	 * Sets time along with adjusting internal timestamp for manual UTC offsets.
+	 * Returns EM_DateTime object in all cases, but $this->valid will be set to false if unsuccessful
+	 * {@inheritDoc}
+	 * @see DateTime::setTime()
+	 */
 	public function setTime( $hour, $minute, $second = NULL, $microseconds = NULL ){
-		parent::setTime( $hour, $minute, $second );
+		/*
+		 * manual offsets stores internal timestamp and date as UTC and the time is changed in UTC date/time
+		 * this causes problems when UTC time is on a different date to the local time with manual offset.
+		 * example: 2018-01-01 14:00 UTC => 2018-01-02 00:00 UTC+10
+		 * action: set the time to 12:00
+		 * result: 2018-01-01 02:00 UTC => 2018-01-01 12:00 UTC+10 -> after offset handling 
+		 * expected: 2018-01-02 02:00 UTC => 2018-01-02 12:00 UTC+10 -> after offset handling
+		 * solution : change date AFTER setting the time and BEFORE offset handling
+		 */
+		if( $this->timezone_manual_offset !== false ){
+			$date_array = explode('-', $this->format('Y-m-d')); 
+		}
+		$return = parent::setTime( $hour, $minute, $second );
+		//pre-handle offsets for time changes where dates change as stated above 
+		if( $this->timezone_manual_offset !== false ){
+			$this->setDate($date_array[0], $date_array[1], $date_array[2]);
+		}
 		$this->handleOffsets();
+		$this->valid = $return !== false;
 		return $this;
 	}
 	
+	/**
+	 * Sets date along with adjusting internal timestamp for manual UTC offsets.
+	 * Returns EM_DateTime object in all cases, but $this->valid will be set to false if unsuccessful
+	 * {@inheritDoc}
+	 * @see DateTime::setDate()
+	 */
 	public function setDate( $year, $month, $day ){
 		if( $this->timezone_manual_offset !== false ){
 			//we run into issues if we're dealing with timezones on the fringe of date changes e.g. 2018-01-01 01:00:00 UTC+2
 			$DateTime = new DateTime( $this->getDateTime(), new DateTimeZone('UTC'));
-			$DateTime->setDate( $year, $month, $day );
+			$DateTime->setDate( $year, $month, $day ); //$this->valid is determined here
 			//create a new timestamp based on UTC DateTime and offset it to current timezone
 			if( function_exists('date_timestamp_get') ){
 				$timestamp = $DateTime->getTimestamp();
@@ -177,23 +231,45 @@ class EM_DateTime extends DateTime {
 			}
 			$timestamp -= $this->timezone_manual_offset;
 			$this->setTimestamp( $timestamp );
+			$return = $this->valid;
 		}else{
-			parent::setDate( $year, $month, $day );
+			$return = parent::setDate( $year, $month, $day );
 		}
+		$this->valid = $return !== false;
 		return $this;
 	}
 	
+	/**
+	 * Returns EM_DateTime object in all cases, but $this->valid will be set to false if unsuccessful
+	 * {@inheritDoc}
+	 * @see DateTime::setISODate()
+	 */
 	public function setISODate( $year, $week, $day = NULL ){
-		parent::setISODate( $year, $week, $day );
+		$return = parent::setISODate( $year, $week, $day );
+		$this->valid = $return !== false;
 		return $this;
 	}
 	
+	/**
+	 * Handles UTC manual offsets along with providing a PHP 5.2.x fallback.
+	 * Returns EM_DateTime object in all cases, but $this->valid will be set to false if unsuccessful
+	 * {@inheritDoc}
+	 * @see DateTime::modify()
+	 */
 	public function modify( $modify ){
 		if( function_exists('date_add') ){
-			parent::modify($modify);
+			$result = parent::modify($modify);
+			$this->valid = $result !== false;
 		}else{
 			//PHP < 5.3 fallback :/ wierd stuff happens when using the DateTime modify function
-			$this->setTimestamp( strtotime($modify, $this->getTimestamp()) );
+			if( preg_match('/^(first|last) day of this month$/', $modify, $matches) ){
+				$format = $matches[1] == 'first' ? 'Y-m-01':'Y-m-t';
+				$timestamp = strtotime($this->format( $format ), $this->getTimestamp());
+			}else{
+				$timestamp = strtotime($modify, $this->getTimestamp());
+			}
+			$this->valid = $timestamp !== false;
+			if( $this->valid ) $this->setTimestamp( $timestamp );
 		}
 		$this->handleOffsets();
 		return $this;
@@ -201,6 +277,7 @@ class EM_DateTime extends DateTime {
 	
 	/**
 	 * Extends DateTime function to allow string representation of argument passed to create a new DateInterval object.
+	 * Returns EM_DateTime object in all cases, but $this->valid will be set to false if unsuccessful
 	 * @see DateTime::add()
 	 * @param string|DateInterval
 	 * @return EM_DateTime Returns object for chaining.
@@ -208,20 +285,23 @@ class EM_DateTime extends DateTime {
 	public function add( $DateInterval ){
 		if( function_exists('date_add') ){
 			if( is_object($DateInterval) ){
-				return parent::add($DateInterval);
+				$result = parent::add($DateInterval);
 			}else{
-				return parent::add( new DateInterval($DateInterval) );
+				$result = parent::add( new DateInterval($DateInterval) );
 			}
+			$this->valid = $result !== false;
 		}else{
 			//PHP < 5.3 fallback :/
 			$strtotime = $this->dateinterval_fallback($DateInterval, 'add');
 			$this->setTimestamp( strtotime($strtotime, $this->getTimestamp()) );
-			return $this;
+			//$this->valid determined in setTimestamp
 		}
+		return $this;
 	}
 	
 	/**
 	 * Extends DateTime function to allow string representation of argument passed to create a new DateInterval object.
+	 * Returns EM_DateTime object in all cases, but $this->valid will be set to false if unsuccessful
 	 * @see DateTime::sub()
 	 * @param string|DateInterval
 	 * @return EM_DateTime
@@ -229,16 +309,18 @@ class EM_DateTime extends DateTime {
 	public function sub( $DateInterval ){
 		if( function_exists('date_sub') ){
 			if( is_object($DateInterval) ){
-				return parent::sub($DateInterval);
+				$result = parent::sub($DateInterval);
 			}else{
-				return parent::sub( new DateInterval($DateInterval) );
+				$result = parent::sub( new DateInterval($DateInterval) );
 			}
+			$this->valid = $result !== false;
 		}else{
 			//PHP < 5.3 fallback :/
 			$strtotime = $this->dateinterval_fallback($DateInterval, 'subtract');
 			$this->setTimestamp( strtotime($strtotime, $this->getTimestamp()) );
-			return $this;
+			//$this->valid determined in setTimestamp
 		}
+		return $this;
 	}
 	
 	/**
@@ -279,6 +361,10 @@ class EM_DateTime extends DateTime {
 		return clone $this;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 * @see DateTime::getTimestamp()
+	 */
 	public function getTimestamp(){
 		if( function_exists('date_timestamp_get') ){
 			return parent::getTimestamp();
@@ -286,15 +372,28 @@ class EM_DateTime extends DateTime {
 			//PHP < 5.3 fallback :/
 			$strtotime = parent::format('Y-m-d H:i:s');
 			$timestamp = strtotime($strtotime);
+			//offset timestamp in case plugins change default timezone
+			$server_offset = date('Z',$timestamp);
+			$timestamp += $server_offset;
 			return $timestamp;
 		}
 	}
 	
 	/**
-	 * Gets a timestamp with an offset, which will represent the local time equivalent in UTC time (so a local time would be produced if supplied to date())
+	 * Gets a timestamp with an offset, which will represent the local time equivalent in UTC time.
+	 * If using this to supply to a date() function, set $server_localized to true which will account for any rogue code
+	 * that sets the server default timezone to something other than UTC (which is WP sets it to at the start)
+	 * @param boolean $server_localized
 	 */
-	public function getTimestampWithOffset(){
-		return $this->getOffset() + $this->getTimestamp();
+	public function getTimestampWithOffset( $server_localized = false ){
+		//aside from the actual offset from the timezone, we also have a local server offset we need to deal with here...
+		$server_offset = $server_localized ? date('Z',$this->getTimestamp()) : 0;
+		if( function_exists('date_timestamp_get') ){
+			return $this->getOffset() + $this->getTimestamp() - $server_offset;
+		}else{
+			//PHP < 5.3 fallback :/
+			return $this->getTimestamp() - $server_offset;
+		}
 	}
 	
 	/**
