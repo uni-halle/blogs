@@ -45,6 +45,7 @@ function opinionstage_create_new_href() {
 							<?php echo opinionstage_create_widget_link('outcome', 'create-menu__itm', __('outcome quiz')) ?>
 							<?php echo opinionstage_create_widget_link('contact_form', 'create-menu__itm', __('contact form')) ?>
 							<?php echo opinionstage_create_widget_link('list', 'create-menu__itm', __('list')) ?>
+							<?php echo opinionstage_create_widget_link('story', 'create-menu__itm', __('story')) ?>
 						</div>
 					</div>
 					<?php } ?>
@@ -109,6 +110,10 @@ function opinionstage_create_new_href() {
 					@click="selectWidgetType('form')"
 					:class="{ active: selectedWidgetType === 'form' }"
 			>form</div>
+			<div class='filter__itm'
+					@click="selectWidgetType('story')"
+					:class="{ active: selectedWidgetType === 'story' }"
+			>story</div>
 		</div>
 		<div class='search'>
 			<img

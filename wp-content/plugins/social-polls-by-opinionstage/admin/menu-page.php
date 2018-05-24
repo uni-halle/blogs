@@ -13,8 +13,8 @@ function opinionstage_register_menu_page() {
 	if (function_exists('add_menu_page')) {
 
 		add_menu_page(
-			__('Poll, Survey, Quiz, Slider & Form', OPINIONSTAGE_TEXT_DOMAIN),
-			__('Poll, Survey, Quiz, Slider & Form', OPINIONSTAGE_TEXT_DOMAIN),
+			__('Poll, Survey, Slider, Quiz, Form & Story', OPINIONSTAGE_TEXT_DOMAIN),
+			__('Poll, Survey, Slider, Quiz, Form & Story', OPINIONSTAGE_TEXT_DOMAIN),
 			'edit_posts',
 			OPINIONSTAGE_MENU_SLUG,
 			'opinionstage_menu_page',

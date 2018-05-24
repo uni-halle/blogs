@@ -9,5 +9,5 @@ defined( 'ABSPATH' ) or die();
 		height="19"
 		style="position: relative; left: -3px; top: -2px; padding: 0"
 >
-	Add a Poll, Survey, Quiz, Form or Slider
+	Add a Poll, Survey, Quiz, Form, Slider or Story
 </button>

@@ -50,7 +50,7 @@ opinionstage_enqueue_js_asset('menu-page');
 						</div>
 						<div class="opinionstage-section-cell opinionstage-description-cell">
 							<div class="title">Poll</div>
-							<div class="example">e.g. What's your favorite color?</div>
+							<div class="example">Get opinions, run contests & competitions</div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-btn-cell">
 							<?php echo opinionstage_create_poll_link('opinionstage-blue-btn opinionstage-create-btn'); ?>
@@ -62,7 +62,7 @@ opinionstage_enqueue_js_asset('menu-page');
 						</div>
 						<div class="opinionstage-section-cell opinionstage-description-cell">
 							<div class="title">Survey</div>
-							<div class="example">e.g. Help us improve our site</div>
+							<div class="example">Gather feedback from your users</div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-btn-cell">
 							<?php echo opinionstage_create_widget_link('survey', 'opinionstage-blue-btn opinionstage-create-btn'); ?>
@@ -74,7 +74,7 @@ opinionstage_enqueue_js_asset('menu-page');
 						</div>
 						<div class="opinionstage-section-cell opinionstage-description-cell">
 							<div class="title">Trivia Quiz</div>
-							<div class="example">e.g. How well do you know dogs?</div>
+							<div class="example">Create a knowledge test or assessment</div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-btn-cell">
 							<?php echo opinionstage_create_widget_link('quiz', 'opinionstage-blue-btn opinionstage-create-btn'); ?>
@@ -86,7 +86,7 @@ opinionstage_enqueue_js_asset('menu-page');
 						</div>
 						<div class="opinionstage-section-cell opinionstage-description-cell">
 							<div class="title">Outcome Quiz</div>
-							<div class="example">e.g. Where should you travel next?</div>
+							<div class="example">Create a personality or service selector</div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-btn-cell">
 							<?php echo opinionstage_create_widget_link('outcome', 'opinionstage-blue-btn opinionstage-create-btn'); ?>
@@ -98,7 +98,7 @@ opinionstage_enqueue_js_asset('menu-page');
 						</div>
 						<div class="opinionstage-section-cell opinionstage-description-cell">
 							<div class="title">Slideshow</div>
-							<div class="example">e.g. Browse the most watched TV series</div>
+							<div class="example">Group items in an interactive display</div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-btn-cell">
 							<?php echo opinionstage_create_slideshow_link( 'opinionstage-blue-btn opinionstage-create-btn' ); ?>
@@ -109,8 +109,8 @@ opinionstage_enqueue_js_asset('menu-page');
 							<div class="os-icon icon-os-widget-form"></div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-description-cell">
-							<div class="title">Form</div>
-							<div class="example">e.g. Collect email addresses</div>
+							<div class="title">Contact Form</div>
+							<div class="example">Gather information from your users</div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-btn-cell">
 							<?php echo opinionstage_create_widget_link('contact_form', 'opinionstage-blue-btn opinionstage-create-btn'); ?>
@@ -122,10 +122,22 @@ opinionstage_enqueue_js_asset('menu-page');
 						</div>
 						<div class="opinionstage-section-cell opinionstage-description-cell">
 							<div class="title">List</div>
-							<div class="example">e.g. Top 10 movies of all times</div>
+							<div class="example">Create a listacle of anything</div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-btn-cell">
 							<?php echo opinionstage_create_widget_link('list', 'opinionstage-blue-btn opinionstage-create-btn'); ?>
+						</div>
+					</div>
+					<div class="opinionstage-section-raw">
+						<div class="opinionstage-section-cell opinionstage-icon-cell">
+							<div class="os-icon icon-os-reports-set"></div>
+						</div>
+						<div class="opinionstage-section-cell opinionstage-description-cell">
+							<div class="title">Story</div>
+							<div class="example">Create an article using interactive elements</div>
+						</div>
+						<div class="opinionstage-section-cell opinionstage-btn-cell">
+							<?php echo opinionstage_create_widget_link('story', 'opinionstage-blue-btn opinionstage-create-btn'); ?>
 						</div>
 					</div>
 				</div>
