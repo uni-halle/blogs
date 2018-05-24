@@ -1724,6 +1724,9 @@ html.swipebox {
   -webkit-transition: opacity 0.25s ease-in;
   transition: opacity 0.25s ease-in;
 }
+.aesop-stacked-img {
+  background-attachment: fixed;
+}
 /* @noflip */
 body.rtl {
   direction: rtl;
