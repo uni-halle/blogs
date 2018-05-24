@@ -3,7 +3,7 @@
 Plugin Name: Page Builder by SiteOrigin
 Plugin URI: https://siteorigin.com/page-builder/
 Description: A drag and drop, responsive page builder that simplifies building your website.
-Version: 2.6.3
+Version: 2.6.7
 Author: SiteOrigin
 Author URI: https://siteorigin.com
 License: GPL3
@@ -11,12 +11,12 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: http://siteorigin.com/page-builder/#donate
 */
 
-define( 'SITEORIGIN_PANELS_VERSION', '2.6.3' );
+define( 'SITEORIGIN_PANELS_VERSION', '2.6.7' );
 if ( ! defined( 'SITEORIGIN_PANELS_JS_SUFFIX' ) ) {
 	define( 'SITEORIGIN_PANELS_JS_SUFFIX', '.min' );
 }
 define( 'SITEORIGIN_PANELS_CSS_SUFFIX', '.min' );
-define( 'SITEORIGIN_PANELS_VERSION_SUFFIX', '-263' );
+define( 'SITEORIGIN_PANELS_VERSION_SUFFIX', '-267' );
 
 require_once plugin_dir_path( __FILE__ ) . 'inc/functions.php';
 
@@ -65,6 +65,7 @@ class SiteOrigin_Panels {
 		
 		// We need to generate fresh post content
 		add_filter( 'the_content', array( $this, 'generate_post_content' ) );
+		add_filter( 'woocommerce_format_content', array( $this, 'generate_woocommerce_content' ) );
 		add_filter( 'wp_enqueue_scripts', array( $this, 'generate_post_css' ) );
 		
 		// Content cache has been removed. SiteOrigin_Panels_Cache_Renderer just deletes any existing caches.
@@ -254,6 +255,23 @@ class SiteOrigin_Panels {
 
 		return $panels_data;
 	}
+	
+	/**
+	 * Generate post content for WooCommerce shop page if it's using a PB layout.
+	 *
+	 * @param $content
+	 *
+	 * @return string
+	 *
+	 * @filter woocommerce_format_content
+	 */
+	public function generate_woocommerce_content( $content ) {
+		if ( class_exists( 'WooCommerce' ) && is_shop() ) {
+			return $this->generate_post_content( $content );
+		}
+		
+		return $content;
+	}
 
 	/**
 	 * Generate post content for the current post.
@@ -275,6 +293,11 @@ class SiteOrigin_Panels {
 		}
 		
 		$post_id = get_the_ID();
+		
+		if ( class_exists( 'WooCommerce' ) && is_shop() ) {
+			$post_id = wc_get_page_id( 'shop' );
+		}
+		
 		// If we're viewing a preview make sure we load and render the autosave post's meta.
 		if ( $preview ) {
 			$preview_post = wp_get_post_autosave( $post_id, get_current_user_id() );
@@ -320,9 +343,15 @@ class SiteOrigin_Panels {
 	 * Generate CSS for the current post
 	 */
 	public function generate_post_css() {
-		if( is_singular() && get_post_meta( get_the_ID(), 'panels_data', true ) ) {
+		$post_id = get_the_ID();
+		
+		if ( class_exists( 'WooCommerce' ) && is_shop() ) {
+			$post_id = wc_get_page_id( 'shop' );
+		}
+		
+		if( is_singular() && get_post_meta( $post_id, 'panels_data', true ) ) {
 			$renderer = SiteOrigin_Panels::renderer();
-			$renderer->add_inline_css( get_the_ID(), $renderer->generate_css( get_the_ID() ) );
+			$renderer->add_inline_css( $post_id, $renderer->generate_css( $post_id ) );
 		}
 	}
 

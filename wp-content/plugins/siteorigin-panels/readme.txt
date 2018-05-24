@@ -2,8 +2,8 @@
 Tags: page builder, responsive, widget, widgets, builder, page, admin, gallery, content, cms, pages, post, css, layout, grid
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 2.6.3
-Build time: 2018-03-06T11:33:07+02:00
+Stable tag: 2.6.7
+Build time: 2018-05-07T09:52:52+02:00
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://siteorigin.com/downloads/contribution/
@@ -95,6 +95,24 @@ Page Builder is actively developed and updated, so generally I'd recommend that 
 We've tried to ensure that Page Builder is compatible with most plugin widgets. It's best to just download Page Builder and test for yourself.
 
 == Changelog ==
+
+= 2.6.7 - 7 May 2018 =
+* Prevent debug notice when background fallback image hasn't been set.
+
+= 2.6.6 - 25 April 2018 =
+* Only filter WooCommerce content when on the shop page.
+* Fix Background fallback URL notices.
+
+= 2.6.5 - 23 April 2018 =
+* Don't use `mime_content_type` for external layouts if it's not available. Just check file extensions.
+* Get correct ID for WooCommerce shop page to allow PB to render correctly.
+* Added image fallback url field for background images in row, cell and widget styles.
+* Temporarily remove Jetpack widgets requiring scripts for admin form, until we can reliably enqueue their scripts.
+* Remove loading indicator and display message when loading widget and style forms fail.
+* Allow setting margins around specific widgets.
+
+= 2.6.4 - 4 April 2018 =
+* Only call widget `enqueue_admin_scripts` function for WP core JS widgets.
 
 = 2.6.3 - 6 March 2018 =
 * Use `delete_post_meta_by_key` instead of direct DB query to clear old cache renders.

@@ -1598,6 +1598,7 @@
 }
 .so-panels-dialog .so-visual-styles {
   margin: -15px;
+  height: 100%;
   /* All the field types */
 }
 .so-panels-dialog .so-visual-styles h3 {
@@ -1757,8 +1758,11 @@
   color: #666;
   text-decoration: none;
 }
-.so-panels-dialog .so-visual-styles .style-field-image .remove-image .remove-image {
-  color: #333;
+.so-panels-dialog .so-visual-styles .style-field-image .remove-image.hidden {
+  display: none;
+}
+.so-panels-dialog .so-visual-styles .style-field-image .image-fallback {
+  margin-top: 4px;
 }
 .so-panels-dialog .so-visual-styles .style-field-checkbox label {
   -webkit-user-select: none;
