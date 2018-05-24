@@ -3,7 +3,7 @@ Contributors: brianhogg
 Tags: event, events, calendar, shortcode, modern tribe
 Requires at least: 4.1
 Tested up to: 4.9
-Stable tag: 1.8
+Stable tag: 1.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -155,6 +155,11 @@ The [pro version of the plugin](https://eventcalendarnewsletter.com/the-events-c
 
 == Upgrade Notice ==
 
+= 1.9 =
+* Adds check for minimum WordPress and PHP version
+* Adds a link to a short tutorial video
+* Changes first example shortcode so it's easier to copy/paste
+
 = 1.8 =
 * Adds new orderby='title' option
 * Fixes resetting the WordPress global query instead of just the post data
@@ -241,6 +246,11 @@ Fix missing ul
 * Initial Release
 
 == Changelog ==
+
+= 1.9 =
+* Adds check for minimum WordPress and PHP version
+* Adds a link to a short tutorial video
+* Changes first example shortcode so it's easier to copy/paste
 
 = 1.8 =
 * Adds new orderby='title' option

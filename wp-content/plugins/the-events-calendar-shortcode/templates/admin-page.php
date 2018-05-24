@@ -3,7 +3,9 @@
 
 	<p><?php echo sprintf( esc_html__( 'The shortcode displays lists of your events. For example the shortcode to show next 8 events in the category "%s" in ASC order with date showing:', 'the-events-calendar-shortcode' ), 'festival' ); ?></p>
 
-	<pre>[ecs-list-events cat='festival' limit='8']</pre>
+	<p class="shortcode">[ecs-list-events cat='festival' limit='8']</p>
+
+    <p><a href="https://youtu.be/0okrUs-xOq4" target="_blank"><?php echo esc_html( __( 'Watch a Short Walk Through Video', 'the-events-calendar-shortcode' ) ) ?></a></p>
 
 	<table>
 		<tbody>
