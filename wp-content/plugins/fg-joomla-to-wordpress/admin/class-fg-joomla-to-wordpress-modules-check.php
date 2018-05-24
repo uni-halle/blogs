@@ -274,9 +274,16 @@ if ( !class_exists('FG_Joomla_to_WordPress_Modules_Check', false) ) {
 					sprintf($message_addon, __('user groups', 'fg-joomla-to-wordpress'), $premium_url, $premium_url . 'usergroups/', __('User Groups add-on', 'fg-joomla-to-wordpress'))
 				),
 				
-				// Community Builder
+				// Community Builder 1
 				array(array($this, 'count'),
 					array('community_fields', 0),
+					'fg-joomla-to-wordpress-premium-community-builder-module/fgj2wp-community-builder.php',
+					sprintf($message_addon, __('Community Builder data', 'fg-joomla-to-wordpress'), $premium_url, $premium_url . 'community-builder/', __('Community Builder add-on', 'fg-joomla-to-wordpress'))
+				),
+				
+				// Community Builder 2
+				array(array($this, 'count'),
+					array('comprofiler_fields', 0),
 					'fg-joomla-to-wordpress-premium-community-builder-module/fgj2wp-community-builder.php',
 					sprintf($message_addon, __('Community Builder data', 'fg-joomla-to-wordpress'), $premium_url, $premium_url . 'community-builder/', __('Community Builder add-on', 'fg-joomla-to-wordpress'))
 				),

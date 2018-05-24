@@ -3,8 +3,8 @@ Contributors: Kerfred
 Plugin Uri: https://wordpress.org/plugins/fg-joomla-to-wordpress/
 Tags: joomla, mambo, elxis, wordpress, import, importer, migration, migrator, k2, virtuemart, easyblog, sh404sef, jcomments, kunena, zoo, community builder, hikashop
 Requires at least: 4.5
-Tested up to: 4.9.4
-Stable tag: 3.40.0
+Tested up to: 4.9.6
+Stable tag: 3.43.0
 Requires PHP: 5.3
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -224,9 +224,25 @@ Don't hesitate to let a comment on the [forum](https://wordpress.org/support/plu
 * Polish (pl_PL)
 * Bulgarian (bg_BG)
 * Brazilian (pt_BR)
+* Greek (el_EL)
 * other can be translated
 
 == Changelog ==
+
+= 3.43.0 =
+* Tweak: Add the function wc_upload_dir()
+* Tested with WordPress 4.9.6
+
+= 3.42.0 =
+* New translation: Greek (thanks to Kostas A.)
+* Fixed: The media containing "+" in their filename were not imported
+
+= 3.41.1 =
+* Fixed: Notice: Undefined index: date
+
+= 3.41.0 =
+* New: Check if Community Builder 2.x is installed
+* Tested with WordPress 4.9.5
 
 = 3.40.0 =
 * New: Check if we need the HikaShop module
@@ -969,6 +985,21 @@ Don't hesitate to let a comment on the [forum](https://wordpress.org/support/plu
 * Initial version: Import Joomla 1.5 sections, categories, posts and images
 
 == Upgrade Notice ==
+
+= 3.43.0 =
+Tweak: Add the function wc_upload_dir()
+Tested with WordPress 4.9.6
+
+= 3.42.0 =
+New translation: Greek (thanks to Kostas A.)
+Fixed: The media containing "+" in their filename were not imported
+
+= 3.41.1 =
+Fixed: Notice: Undefined index: date
+
+= 3.41.0 =
+New: Check if Community Builder 2.x is installed
+Tested with WordPress 4.9.5
 
 = 3.40.0 =
 New: Check if we need the HikaShop module

@@ -1214,7 +1214,8 @@ SQL;
 				}
 				
 				$description = isset($category['description'])? $category['description']: '';
-				$description = $this->process_category_description($description, $category['date']);
+				$date = isset($category['date'])? $category['date'] : '';
+				$description = $this->process_category_description($description, $date);
 				
 				// Insert the category
 				$new_category = array(
@@ -1848,7 +1849,7 @@ SQL;
 			}
 			$import_external = ($this->plugin_options['import_external'] == 1) || (isset($options['force_external']) && $options['force_external'] );
 			
-			$filename = urldecode($filename); // for filenames with spaces or accents
+			$filename = rawurldecode($filename); // for filenames with spaces or accents
 			// Filenames starting with //
 			if ( preg_match('#^//#', $filename) ) {
 				$filename = 'http:' . $filename;
@@ -1879,7 +1880,13 @@ SQL;
 			$old_filename = str_replace("&amp;", "&", $old_filename); // for filenames with &
 			
 			// Get the upload path
-			$upload_path = $this->upload_dir($filename, $date, get_option('uploads_use_yearmonth_folders'));
+			if ( isset($options['woocommerce']) ) {
+				// WooCommerce secure directory
+				$upload_path = $this->wc_upload_dir($filename, $date);
+			} else {
+				// Standard uploads directory
+				$upload_path = $this->upload_dir($filename, $date, get_option('uploads_use_yearmonth_folders'));
+			}
 			
 			// Make sure we have an uploads directory.
 			if ( !wp_mkdir_p($upload_path) ) {
@@ -1931,7 +1938,7 @@ SQL;
 		}
 		
 		/**
-		 * Determine the media upload directory
+		 * Determine the media uploads directory
 		 * 
 		 * @since 2.13.0
 		 * 
@@ -1952,6 +1959,23 @@ SQL;
 				$upload_path = $upload_dir['basedir'] . untrailingslashit(dirname($short_filename));
 			}
 			return $upload_path;
+		}
+		
+		/**
+		 * Get the WooCommerce uploads dir
+		 * 
+		 * @since 3.43.0
+		 * 
+		 * @param string $filename Filename
+		 * @param date $date Date
+		 * @return string Upload directory
+		 */
+		private function wc_upload_dir($filename, $date) {
+			$wp_upload_dir = wp_upload_dir();
+			$upload_path = $wp_upload_dir['basedir'];
+			$upload_dir = $this->upload_dir($filename, $date);
+			$upload_dir = str_replace($upload_path, $upload_path . '/woocommerce_uploads', $upload_dir);
+			return $upload_dir;
 		}
 		
 		/**
@@ -2550,18 +2574,19 @@ SQL;
 		 */
 		private function joomla_version() {
 			if ( !$this->table_exists('content') ) {
-				return '0.0';
+				$version = '0.0';
 			} elseif ( !$this->column_exists('content', 'alias') ) {
-				return '1.0';
+				$version = '1.0';
 			} elseif ( !$this->column_exists('content', 'asset_id') ) {
-				return '1.5';
+				$version = '1.5';
 			} elseif ( $this->column_exists('content', 'title_alias') ) {
-				return '2.5';
+				$version = '2.5';
 			} elseif ( !$this->table_exists('tags') ) {
-				return '3.0';
+				$version = '3.0';
 			} else {
-				return '3.1';
+				$version = '3.1';
 			}
+			return $version;
 		}
 
 		/**

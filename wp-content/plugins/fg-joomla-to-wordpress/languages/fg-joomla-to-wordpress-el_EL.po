@@ -1,0 +1,1188 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FG Joomla to WordPress\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-20 10:54+0000\n"
+"PO-Revision-Date: 2018-04-20 11:29+0000\n"
+"Last-Translator: gas <gas@otenet.gr>\n"
+"Language-Team: Ελληνικά\n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:114
+msgid "All new imported data will be deleted from WordPress."
+msgstr "Όλα να νέα εισηγμένα δεδομένα θα διαγραφούν από το WordPress"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:115
+msgid "All content will be deleted from WordPress."
+msgstr "Όλο το περιεχόμενο θα διαγραφεί από το WordPress"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:116
+msgid "Please select a remove option."
+msgstr "Παρακαλώ κάντε μια επιλογή διαγραφής."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:117
+msgid "IMPORT COMPLETED"
+msgstr "Η ΕΙΣΑΓΩΓΗ ΟΛΟΚΛΗΡΩΘΗΚΕ"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:118
+msgid "Content removed from WordPress"
+msgstr "Το περιεχόμενο διεγράφη από το WordPress"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:119 
+#: admin/class-fg-joomla-to-wordpress-admin.php:314
+msgid "Settings saved"
+msgstr "Οι ρυθμίσεις αποθηκεύτηκαν"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:120
+msgid "Importing…"
+msgstr "Εισαγωγή..."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:121
+msgid "IMPORT STOPPED BY USER"
+msgstr "Η ΕΙΣΑΓΩΓΗ ΔΙΕΚΟΠΗ ΑΠΟ ΤΟΝ ΧΡΗΣΤΗ"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:122
+msgid "Internal links modified"
+msgstr "Οι εσωτερικοί σύνδεσμοι τροποποιήθηκαν"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:135
+msgid "Joomla (FG)"
+msgstr "Joomla (FG)"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:135
+msgid ""
+"Import categories, articles and medias (images, attachments) from a Joomla "
+"database into WordPress."
+msgstr ""
+"Εισάγετε κατηγορίες , άρθρα και πολυμέσα (εικόνες, επισυνάψεις) από μια "
+"Joomla βάση δεδομένων στο WordPress."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:287
+msgid "The wp-content directory must be writable."
+msgstr "Ο κατάλογος wp-content πρέπει να είναι εγγράψιμος."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:292
+#, php-format
+msgid "WordPress 4.5+ is required. Please <a href=\"%s\">update WordPress</a>."
+msgstr ""
+"Το WordPress 4.5+ απαιτείται. Παρακαλούμε <a href=\"%s\">ενημερώστε το "
+"WordPress</a>."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:302 
+#: admin/class-fg-joomla-to-wordpress-admin.php:342
+msgid "WordPress content removed"
+msgstr "Το περιεχόμενο του WordPress αφαιρέθηκε"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:304 
+#: admin/class-fg-joomla-to-wordpress-admin.php:344
+msgid "Couldn't remove content"
+msgstr "Δεν ήταν δυνατό να αφαιρεθεί το περιεχόμενο"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:325
+msgid "Connection successful"
+msgstr "Επιτυχία σύνδεσης"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:327
+msgid "Connection failed"
+msgstr "Αποτυχία σύνδεσης"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:327
+msgid "See the errors in the log below"
+msgstr "Δείτε τα σφάλματα στο καταγραφικό παρακάτω"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:366
+#, php-format
+msgid "%d internal link modified"
+msgid_plural "%d internal links modified"
+msgstr[0] "%d εσωτερικός σύνδεσμος τροποποιήθηκε"
+msgstr[1] "%d εσωτερικοί σύνδεσμοι τροποποιήθηκαν"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:384
+msgid "Import Joomla (FG)"
+msgstr "Εισαγωγή Joomla (FG)"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:385
+msgid ""
+"This plugin will import sections, categories, posts, medias (images, "
+"attachments) and web links from a Joomla database into WordPress."
+msgstr ""
+"Αυτό το πρόσθετο θα εισάγει τομείς, κατηγορίες, άρθρα, μέσα (εικόνες, "
+"επισυνάψεις) και διαδικτιακούς συνδέσμους από μια Joomla βάση δεδομένων στο "
+"WordPress."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:386
+#, php-format
+msgid ""
+"For any issue, please read the <a href=\"%s\" target=\"_blank\">FAQ</a> "
+"first."
+msgstr ""
+"Για κάθε θέμα, παρακαλούμε διαβάστε τα <a href=\"%s\" target=\"_blank\">"
+"FAQ</a> πρώτα."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:416 
+#: admin/class-fg-joomla-to-wordpress-admin.php:800
+#, php-format
+msgid "%d category"
+msgid_plural "%d categories"
+msgstr[0] "%d κατηγορία"
+msgstr[1] "%d κατηγορίες"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:417
+#, php-format
+msgid "%d post"
+msgid_plural "%d posts"
+msgstr[0] "%d άρθρο"
+msgstr[1] "%d άρθρα"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:418
+#, php-format
+msgid "%d page"
+msgid_plural "%d pages"
+msgstr[0] "%d σελίδα"
+msgstr[1] "%d σελίδες"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:419
+#, php-format
+msgid "%d media"
+msgid_plural "%d medias"
+msgstr[0] "%d πολυμέσο"
+msgstr[1] "%d πολυμέσα"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:420
+#, php-format
+msgid "%d tag"
+msgid_plural "%d tags"
+msgstr[0] "%d ετικέτα"
+msgstr[1] "%d ετικέτες"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:449
+msgid "Instructions"
+msgstr "Οδηγίες"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:455
+msgid "Options"
+msgstr "Επιλογές"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:459
+msgid "FAQ"
+msgstr "FAQ"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:489
+msgid "PDO is required. Please enable it."
+msgstr "PDO απαιτείται. Παρακαλούμε ενεργοποιήστε το."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:498 
+#: admin/class-fg-joomla-to-wordpress-admin.php:759
+msgid ""
+"Couldn't connect to the Joomla database. Please check your parameters. And "
+"be sure the WordPress server can access the Joomla database."
+msgstr ""
+"Αδυναμία σύνδεσης στην Joomla βάση δεδομένων. Παρακαλούμε ελέγξτε τις "
+"παραμέτρους σας. Και επιβεβαιώστε ότι ο WordPress server μπορεί να έχει "
+"πρόσβαση στην Joomla βάση δεδομένων."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:498 
+#: admin/class-fg-joomla-to-wordpress-admin.php:759
+#, php-format
+msgid ""
+"Please read the <a href=\"%s\" target=\"_blank\">FAQ for the solution</a>."
+msgstr ""
+"Παρακαλούμε διαβάστε τις <a href=\"%s\" target=\"_blank\">FAQ για τη λύση</a>"
+"."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:526
+msgid "Error:"
+msgstr "Σφάλμα:"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:752
+msgid "Connected with success to the Joomla database"
+msgstr "Επιτυχής σύνδεση με την Joomla βάση δεδομένων"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:776
+#, php-format
+msgid ""
+"Your version of Joomla (probably 1.0) is not supported by this plugin. "
+"Please consider upgrading to the <a href=\"%s\" target=\"_blank\">Premium "
+"version</a>."
+msgstr ""
+"Η Joomla έκδοσή σας (πιθανότατα 1.0) δεν υποστηρίζεται από αυτό το πρόσθετο. "
+"Παρακαλούμε σκεφτείτε την αναβάθμισή του  στην <a href=\"%s\" "
+"target=\"_blank\">Premium έκδοση</a>."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:790
+msgid "Joomla data found:"
+msgstr "Βρέθηκαν Joomla δεδομένα:"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:795
+#, php-format
+msgid "%d section"
+msgid_plural "%d sections"
+msgstr[0] "%d τομέας"
+msgstr[1] "%d τομείς"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:804
+#, php-format
+msgid "%d article"
+msgid_plural "%d articles"
+msgstr[0] "%d άρθρο"
+msgstr[1] "%d άρθρα"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:809
+#, php-format
+msgid "%d web link"
+msgid_plural "%d web links"
+msgstr[0] "%d σύνδεσμος"
+msgstr[1] "%d σύνδεσμοι"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:1006
+#, php-format
+msgid "%d category imported"
+msgid_plural "%d categories imported"
+msgstr[0] "%d κατηγορία εισήχθη"
+msgstr[1] "%d κατηγορίες εισήχθησαν"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:1019
+#, php-format
+msgid "%d page imported"
+msgid_plural "%d pages imported"
+msgstr[0] "%d σελίδα εισήχθη"
+msgstr[1] "%d σελίδες εισήχθησαν"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:1023
+#, php-format
+msgid "%d post imported"
+msgid_plural "%d posts imported"
+msgstr[0] "%d άρθρο εισήχθη"
+msgstr[1] "%d άρθρα εισήχθησαν"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:1025
+#, php-format
+msgid "%d media imported"
+msgid_plural "%d medias imported"
+msgstr[0] "%d πολυμέσο εισήχθη"
+msgstr[1] "%d πολυμέσα εισήχθησαν"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:1031
+#, php-format
+msgid "%d tag imported"
+msgid_plural "%d tags imported"
+msgstr[0] "%d ετικέτα εισήχθη"
+msgstr[1] "%d ετικέτες εισήχθησαν"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:1057
+msgid "Don't forget to modify internal links."
+msgstr "Μην ξεχάσετε να τροποποιήσετε τους εσωτερικούς συνδέσμους"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:1074
+msgid "The URL field is required to import the media."
+msgstr "Το πεδίο URL απαιτείται για την εισαγωγή των πολυμέσων."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:1130
+msgid "Importing categories..."
+msgstr "Εισάγονται κατηγορίες..."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:1312
+msgid "Importing posts..."
+msgstr "Εισάγονται άρθρα..."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:1357
+msgid ""
+"The import process is still running. Please wait before running it again."
+msgstr ""
+"Η διαδικασία εισαγωγής εκτελείται ακόμη. Παρακαλούμε περιμένετε πριν την "
+"εκτελέσετε εκ νέου."
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:1456
+#, php-format
+msgid "Article #%d:"
+msgstr "Άρθρο #%d:"
+
+#: admin/class-fg-joomla-to-wordpress-admin.php:1886
+#, php-format
+msgid "Unable to create directory %s"
+msgstr "Αδυναμία δημιουργίας φακέλου %s"
+
+#: admin/class-fg-joomla-to-wordpress-ftp.php:107 
+#: admin/class-fg-joomla-to-wordpress-ftp.php:124
+msgid "FTP connection successful"
+msgstr "Επιτυχία σύνδεσης FTP"
+
+#: admin/class-fg-joomla-to-wordpress-ftp.php:109
+msgid "FTP connection failed"
+msgstr "Αποτυχία σύνδεσης FTP"
+
+#: admin/class-fg-joomla-to-wordpress-ftp.php:146 
+#: admin/class-fg-joomla-to-wordpress-ftp.php:158 
+#: admin/class-fg-joomla-to-wordpress-ftp.php:169
+msgid "FTP connection failed:"
+msgstr "Αποτυχία σύνδεσης FTP:"
+
+#: admin/class-fg-joomla-to-wordpress-ftp.php:146 
+#: admin/partials/ftp-settings.php:25
+#, php-format
+msgid ""
+"(SFTP requires the <a href=\"%s\" target=\"_blank\">WP Filesystem SSH2</a> "
+"plugin)"
+msgstr ""
+"(Το SFTP απαιτεί το <a href=\"%s\" target=\"_blank\">πρόσθετο WP Filesystem "
+"SSH2</a>)"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:43
+#, php-format
+msgid ""
+"Your Joomla database contains %s. You need the <a href=\"%s\" "
+"target=\"_blank\">Premium version</a> to import them."
+msgstr ""
+"H Joomla βάση δεδομένων περιέχει %s. Χρειάζεστε την <a href=\"%s\" "
+"target=\"_blank\">Premium έκδοση</a> για να τα εισάγετε."
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:46
+#, php-format
+msgid ""
+"Your Joomla database contains %1$s. You need the <a href=\"%3$s\" "
+"target=\"_blank\">%4$s</a> to import them."
+msgstr ""
+"Η Joomla βάση δεδομένων περιέχει %1$s. Χρειάζεστε την <a href=\"%3$s\" "
+"target=\"_blank\">%4$s</a> για να τα εισάγετε."
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:49
+#, php-format
+msgid ""
+"Your Joomla database contains %1$s. You need the <a href=\"%2$s\" "
+"target=\"_blank\">Premium version</a> and the <a href=\"%3$s\" "
+"target=\"_blank\">%4$s</a> to import them."
+msgstr ""
+"Η Joomla βάση δεδομένων περιέχει %1$s. Χρειάζεστε την <a href=\"%2$s\" "
+"target=\"_blank\">Premium έκδοση</a> και το <a href=\"%3$s\" "
+"target=\"_blank\">%4$s</a> για να τα εισάγετε."
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:57
+msgid "several users"
+msgstr "μερικούς χρήστες"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:64
+msgid "some tags"
+msgstr "μερικές ετικέτες"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:71
+msgid "some K2 items"
+msgstr "μερικά Κ2 αντικείμενα"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:71
+msgid "K2 add-on"
+msgstr "K2 πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:78
+msgid "some Flexicontent items"
+msgstr "μερικά Flexicontent αντικείμενα"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:78
+msgid "Flexicontent add-on"
+msgstr "Flexicontent πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:85
+msgid "some EasyBlog posts"
+msgstr "μερικά ΕasyBlog άρθρα"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:85
+msgid "EasyBlog add-on"
+msgstr "EasyBlog πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:92
+msgid "some Joom!Fish translations"
+msgstr "μερικές Joom!Fish μεταφράσεις"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:92 
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:99
+msgid "Joom!Fish add-on"
+msgstr "Joom!Fish πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:99
+msgid "some Falang translations"
+msgstr "κάποιες Falang μεταφράσεις"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:106
+msgid "some Zoo items"
+msgstr "κάποια Zoo αντικείμενα"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:106
+msgid "Zoo add-on"
+msgstr "Zoo πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:113 
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:120
+msgid "some sh404sef redirections"
+msgstr "κάποιες sh404sef ανακατευθύνσεις"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:113 
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:120
+msgid "sh404sef add-on"
+msgstr "sh404sef πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:127
+msgid "some JoomSEF redirections"
+msgstr "κάποιες JoomSEF ανακατευθύνσεις"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:127
+msgid "JoomSEF add-on"
+msgstr "JoomSEF πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:134
+msgid "some OpenSEF redirections"
+msgstr "κάποιες OpenSEF ανακατευθύνσεις"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:134
+msgid "OpenSEF add-on"
+msgstr "OpenSEF πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:141
+msgid "some JComments comments"
+msgstr "κάποια JComments σχόλια"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:141
+msgid "JComments add-on"
+msgstr "JComments πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:148
+msgid "some JomComment comments"
+msgstr "κάποια JomComment σχόλια"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:148
+msgid "JomComment add-on"
+msgstr "JomComment πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:155 
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:162
+msgid "a Kunena forum"
+msgstr "ένα Kunena forum"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:155 
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:162
+msgid "Kunena add-on"
+msgstr "Kunena πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:169
+msgid "some attachments"
+msgstr "κάποιες επισυνάψεις"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:169
+msgid "Attachments add-on"
+msgstr "Πρόσθετο επισυνάψεων"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:176
+msgid "some Joomlatags tags"
+msgstr "κάποιες Joomlatags ετικέτες"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:176
+msgid "Joomlatags add-on"
+msgstr "Joomlatags πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:183
+msgid "some JoomGallery galleries"
+msgstr "κάποιες JoomGallery συλλογές"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:183
+msgid "JoomGallery add-on"
+msgstr "JoomGallery πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:190
+msgid "some PhocaGallery galleries"
+msgstr "κάποιες PhocaGallery συλλογές"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:190
+msgid "PhocaGallery add-on"
+msgstr "PhocaGallery πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:197
+msgid "some RSGallery galleries"
+msgstr "κάποιες RSGallery συλλογές"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:197
+msgid "RSGallery add-on"
+msgstr "RSGallery πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:204
+msgid "some Simple Image Gallery galleries"
+msgstr "κάποιες Simple Image Gallery συλλογές"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:204 
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:211
+msgid "Simple Image Gallery add-on"
+msgstr "Simple Image Gallery πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:211
+msgid "some Simple Image Gallery Pro galleries"
+msgstr "κάποιες Simple Image Gallery Pro συλλογές"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:218
+msgid "some Rokbox images"
+msgstr "κάποιες Rokbox εικόνες"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:218
+msgid "Rokbox add-on"
+msgstr "Rokbox πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:225
+msgid "some JEvents events"
+msgstr "κάποια JEvents events"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:225
+msgid "JEvents add-on"
+msgstr "JEvents πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:232
+msgid "some contacts"
+msgstr "κάποιες επαφές"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:232
+msgid "Contact Manager add-on"
+msgstr "Contact Manager πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:239
+msgid "some Docman documents"
+msgstr "κάποια Docman έγγραφα"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:239
+msgid "Docman add-on"
+msgstr "Docman πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:246 
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:253
+msgid "a Virtuemart e-commerce solution"
+msgstr "μια Virtuemart e-commerce εφαρμογή"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:246 
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:253
+msgid "Virtuemart add-on"
+msgstr "Virtuemart πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:260
+msgid "some JReviews data"
+msgstr "κάποια JReviews δεδομένα"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:260
+msgid "JReviews add-on"
+msgstr "JReviews πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:267
+msgid "a Mosets Tree directory"
+msgstr "ένα Mosets Tree κατάλογο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:267
+msgid "Mosets Tree add-on"
+msgstr "Mosets Tree πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:274
+msgid "user groups"
+msgstr "ομάδες χρηστών"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:274
+msgid "User Groups add-on"
+msgstr "User Groups πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:281 
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:288
+msgid "Community Builder data"
+msgstr "Community Builder δεδομένα"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:281 
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:288
+msgid "Community Builder add-on"
+msgstr "Community Builder πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:295
+msgid "some RSBlog posts"
+msgstr "κάποια RSBlog άρθρα"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:295
+msgid "RSBlog add-on"
+msgstr "RSBlog πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:302
+msgid "several languages"
+msgstr "κάποιες γλώσσες"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:302
+msgid "WPML add-on"
+msgstr "WPML πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:309
+msgid "some AllVideos videos"
+msgstr "κάποια AllVideos βίντεο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:309
+msgid "AllVideos add-on"
+msgstr "AllVideos πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:316
+msgid "an HikaShop e-commerce solution"
+msgstr "μια HikaShop e-commerce εφαρμογή"
+
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:316
+msgid "HikaShop add-on"
+msgstr "HikaShop πρόσθετο"
+
+#: admin/class-fg-joomla-to-wordpress-weblinks.php:82
+#, php-format
+msgid "%d links category imported"
+msgid_plural "%d links categories imported"
+msgstr[0] "%d σύνδεσμοι κατηγορίας εισήχθησαν"
+msgstr[1] "%d σύνδεσμοι κατηγοριών εισήχθησαν"
+
+#: admin/class-fg-joomla-to-wordpress-weblinks.php:84
+msgid "Importing web links..."
+msgstr "εισάγονται διαδικτυακοί σύνδεσμοι"
+
+#: admin/class-fg-joomla-to-wordpress-weblinks.php:113
+#, php-format
+msgid "%d web link imported"
+msgid_plural "%d web links imported"
+msgstr[0] "%d διαδικτυακός σύνδεσμος εισήχθη"
+msgstr[1] "%d διαδικτυακοί σύνδεσμοι εισήχθησαν"
+
+#: admin/class-fg-joomla-to-wordpress-weblinks.php:171
+#, php-format
+msgid "%d link"
+msgid_plural "%d links"
+msgstr[0] "%d σύνδεσμος"
+msgstr[1] "%d σύνδεσμοι"
+
+#: admin/partials/actions.php:3
+msgid "Save settings"
+msgstr "Αποθήκευση ρυθμίσεων"
+
+#: admin/partials/actions.php:4
+msgid "Start / Resume the import"
+msgstr "Έναρξη / συνέχιση εισαγωγής"
+
+#: admin/partials/actions.php:6
+msgid "Stop import"
+msgstr "Διακοπή εισαγωγής"
+
+#: admin/partials/after-migration.php:3
+msgid "After the migration"
+msgstr "Μετά τη μετάβαση"
+
+#: admin/partials/after-migration.php:6
+msgid "If you have links between articles, you need to modify internal links."
+msgstr ""
+"Αν έχετε συνδέσμους ενδιάμεσα στα άρθρα, χρειάζεται να τροποποιήσετε τους "
+"εσωτερικούς συνδέσμους."
+
+#: admin/partials/after-migration.php:10
+msgid "Modify internal links"
+msgstr "Τροποποίηση εσωτερικών συνδέσμων"
+
+#: admin/partials/behavior.php:2
+msgid "Behavior"
+msgstr "Συμπεριφορά"
+
+#: admin/partials/behavior.php:5
+msgid "Import introtext:"
+msgstr "Εισαγωγή κειμένου εισαγωγής:"
+
+#: admin/partials/behavior.php:7
+msgid ""
+"The text before the «Read more» split will be imported into the excerpt."
+msgstr ""
+"Το κείμενο πριν τον διαχωριστή \"Διαβάστε περισσότερα\" θα εισαχθεί στο "
+"απόσπασμα."
+
+#: admin/partials/behavior.php:7
+msgid "to the excerpt"
+msgstr "στο απόσπασμα"
+
+#: admin/partials/behavior.php:8
+msgid ""
+"The text before the «Read more» split will be imported into the post content "
+"with a «read more» link."
+msgstr ""
+"Το κείμενο πριν τον διαχωριστή \"Διαβάστε περισσότερα\" θα εισαχθεί στο "
+"περιεχόμενο με έναν \"Διαβάστε περισσότερα\" σύνδεσμο"
+
+#: admin/partials/behavior.php:8
+msgid "to the content"
+msgstr "στο περιεχόμενο"
+
+#: admin/partials/behavior.php:9
+msgid ""
+"The text before the «Read more» split will be imported into both the excerpt "
+"and the post content."
+msgstr ""
+"Το κείμενο πριν τον διαχωριστή \"Διαβάστε περισσότερα\" θα εισαχθεί και στο "
+"απόσπασμα και στο περιεχόμενο του άρθρου."
+
+#: admin/partials/behavior.php:9
+msgid "to both"
+msgstr "και στα δύο"
+
+#: admin/partials/behavior.php:13
+msgid "Archived posts:"
+msgstr "Αρχειοθετημένα άρθρα:"
+
+#: admin/partials/behavior.php:15
+msgid "Do not import archived posts"
+msgstr "Να μην εισαχθούν τα αρχειοθετημένα άρθρα"
+
+#: admin/partials/behavior.php:15
+msgid "Not imported"
+msgstr "Να μην εισαχθούν"
+
+#: admin/partials/behavior.php:16
+msgid "Import archived posts as drafts"
+msgstr "Εισαγωγή αρχειοθετημένων άρθρων ως πρόχειρων"
+
+#: admin/partials/behavior.php:16
+msgid "Import as drafts"
+msgstr "Εισαγωγή ως πρόχειρα"
+
+#: admin/partials/behavior.php:17
+msgid "Import archived posts as published posts"
+msgstr "Εισαγωγή αρχειοθετημένων άρθρων ως δημοσιευμένων άρθρων"
+
+#: admin/partials/behavior.php:17
+msgid "Import as published posts"
+msgstr "Εισαγωγή ως δημοσιευμένα άρθρα"
+
+#: admin/partials/behavior.php:21
+msgid "Media:"
+msgstr "Πολυμέσα:"
+
+#: admin/partials/behavior.php:22
+msgid "Skip media"
+msgstr "Παράβλεψη πολυμέσων"
+
+#: admin/partials/behavior.php:25
+msgid "Featured image:"
+msgstr "Προβεβλημένη εικόνα"
+
+#: admin/partials/behavior.php:27
+msgid "Use the fulltext image (Joomla 2.5+) in priority"
+msgstr "Χρήση της εικόνας fulltext (Joomla 2.5+) ως προτεραιότητα"
+
+#: admin/partials/behavior.php:27
+msgid "fulltext image"
+msgstr "fulltext εικόνα"
+
+#: admin/partials/behavior.php:28
+msgid "Use the intro image (Joomla 2.5+) in priority"
+msgstr "Χρήση αυτής της εικόνας (Joomla 2.5+) με προτεραιότητα"
+
+#: admin/partials/behavior.php:28
+msgid "intro image"
+msgstr "εισαγωγική εικόνα"
+
+#: admin/partials/behavior.php:30
+msgid "Use the first image from the content"
+msgstr "Χρήση της πρώτης εικόνας από το περιεχόμενο"
+
+#: admin/partials/behavior.php:30
+msgid "first content image"
+msgstr "πρώτη εικόνα περιεχομένου"
+
+#: admin/partials/behavior.php:31
+msgid "Don't use featured images"
+msgstr "Να μη γίνει χρήση των προβεβλημένων εικόνων"
+
+#: admin/partials/behavior.php:31
+msgid "none"
+msgstr "τίποτα"
+
+#: admin/partials/behavior.php:33
+msgid "Import only the featured images. Don't import the other images"
+msgstr ""
+"Εισαγωγή μόνο των προβεβλημένων εικόνων. Να μην εισαχθούν οι υπόλοιπες "
+"εικόνες"
+
+#: admin/partials/behavior.php:35
+msgid ""
+"Remove the first image from the content when it is used as the featured image"
+msgstr ""
+"Αφαίρεση της πρώτης εικόνας από το περιεχόμενο αν χρησιμοποιηθεί ως "
+"προβεβλημένη."
+
+#: admin/partials/behavior.php:37
+msgid "Remove accents from file names"
+msgstr "Αφαίρεση τονισμών από τα ονόματα αρχείων"
+
+#: admin/partials/behavior.php:39
+msgid "Import external media"
+msgstr "Εισαγωγή εξωτερικών πολυμέσων"
+
+#: admin/partials/behavior.php:41
+msgid ""
+"Checked: download the media with their full path in order to import media "
+"with identical names."
+msgstr ""
+"Επιλεγμένο: λήψη πολυμέσων με τη πλήρη διαδρομή ώστε να εισαχθούν με όμοια "
+"ονόματα."
+
+#: admin/partials/behavior.php:41
+msgid "Import media with duplicate names"
+msgstr "Εισαγωγή πολυμέσων με διπλά ονόματα"
+
+#: admin/partials/behavior.php:43
+msgid ""
+"Checked: download the media even if it has already been imported. Unchecked: "
+"Download only media which were not already imported."
+msgstr ""
+"Επιλεγμένο: λήψη πολυμέσων ακόμη και αν έχουν ήδη εισαχθεί. Αποεπιλεγμένο: "
+"Λήψη μόνο των πολυμέσων που δεν έχουν ήδη εισαχθεί."
+
+#: admin/partials/behavior.php:43
+msgid ""
+"Force media import. Keep unchecked except if you had previously some media "
+"download issues."
+msgstr ""
+"Επιβολή εισαγωγής πολυμέσων. Αφήστε το αποεπιλεγμένο εκτός και αν είχατε "
+"θέματα λήψης."
+
+#: admin/partials/behavior.php:45
+msgid "Timeout for each media:"
+msgstr "Λήξη χρονικού ορίου για κάθε πολυμέσο:"
+
+#: admin/partials/behavior.php:46
+msgid "seconds"
+msgstr "δευτερόλεπτα"
+
+#: admin/partials/behavior.php:50
+msgid "Meta keywords:"
+msgstr "Μεταδεδομένα λέξεις κλειδιά:"
+
+#: admin/partials/behavior.php:51
+msgid "Import meta keywords as tags"
+msgstr "Εισαγωγή μεταδεδομένων με λέξεις κλειδιά ως ετικέτες"
+
+#: admin/partials/behavior.php:54
+msgid "Create pages:"
+msgstr "Δημιουργία σελίδων:"
+
+#: admin/partials/behavior.php:55
+msgid "Import as pages instead of blog posts (without categories)"
+msgstr "Εισαγωγή ως σελίδες αντί ως άρθρα (χωρίς κατηγορίες)"
+
+#: admin/partials/database-info.php:2
+msgid "WordPress database"
+msgstr "Βάση δεδομένων του WordPress"
+
+#: admin/partials/empty-content.php:6
+msgid ""
+"If you want to restart the import from scratch, you must empty the WordPress "
+"content with the button hereafter."
+msgstr ""
+"Αν θέλετε να επανεκκινήσετε την εισαγωγή εκ νέου, πρέπει να αδειάσετε το "
+"περιεχόμενο της βάσης δεδομένων του WordPress με αυτό το κουμπί."
+
+#: admin/partials/empty-content.php:7
+msgid "Remove only new imported data"
+msgstr "Αφαίρεση μόνο των νεοεισαχθέντων δεδομένων"
+
+#: admin/partials/empty-content.php:8
+msgid "Remove all WordPress content"
+msgstr "Αφαίρεση όλου του WordPress περιεχομένου"
+
+#: admin/partials/empty-content.php:9
+msgid "Empty WordPress content"
+msgstr "Άδειασμα του WordPress περιεχομένου"
+
+#: admin/partials/extra-features.php:2
+msgid "Do you need extra features?"
+msgstr "Θέλετε επιπλέον δυνατότητες;"
+
+#: admin/partials/extra-features.php:4
+msgid "authors and all users migration"
+msgstr "μεταφορά συντακτών και όλων των χρηστών"
+
+#: admin/partials/extra-features.php:5
+msgid "menus migration"
+msgstr "μεταφορά μενού"
+
+#: admin/partials/extra-features.php:6
+msgid "HTML modules migration"
+msgstr "μεταφορά HTML μοντούλας"
+
+#: admin/partials/extra-features.php:7
+msgid "SEO: keeps Joomla IDs or redirects standard Joomla URLs"
+msgstr "SEO: διατήρηση των Joomla IDs ή αναδρομολόγηση των στάνταρ Joomla URL"
+
+#: admin/partials/extra-features.php:8
+msgid "SEO: Keeps meta description and meta keywords"
+msgstr "SEO: Διατήρηση περιγραφής μεταδεδομένων και λέξεων-κλειδιών"
+
+#: admin/partials/extra-features.php:9
+msgid "SEO: Keeps sh404sef, JoomSEF and OpenSEF URLs"
+msgstr "SEO: Διατήρηση sh404sef, JoomSEF και OpenSEF URL"
+
+#: admin/partials/extra-features.php:10
+msgid "Joomla views counts migration"
+msgstr "Μεταφορά μέτρησης θεάσεων του Joomla"
+
+#: admin/partials/extra-features.php:11
+msgid "Joomla 1.0 compatible"
+msgstr "Συμβατότητα με Joomla 1.0"
+
+#: admin/partials/extra-features.php:12
+msgid "Joomla 2.5+ featured images"
+msgstr "Joomla 2.5+ προβεβλημένες εικόνες"
+
+#: admin/partials/extra-features.php:13
+msgid "Joomla 3.1+ tags"
+msgstr "Joomla 3.1+ ετικέτες"
+
+#: admin/partials/extra-features.php:14
+msgid "Joomla contacts"
+msgstr "Joomla επαφές"
+
+#: admin/partials/extra-features.php:15
+msgid "Mambo 4.5 and 4.6 compatible"
+msgstr "Συμβατότητα Mambo 4.5 και 4.6"
+
+#: admin/partials/extra-features.php:16
+msgid "K2 content"
+msgstr "K2 περιεχόμενο"
+
+#: admin/partials/extra-features.php:17
+msgid "EasyBlog content"
+msgstr "EasyBlog περιεχόμενο"
+
+#: admin/partials/extra-features.php:18
+msgid "Kunena forum to bbPress"
+msgstr "Kunena φόρουμ σε bbPress"
+
+#: admin/partials/extra-features.php:19
+msgid "Flexicontent content"
+msgstr "Flexicontent περιεχόμενο"
+
+#: admin/partials/extra-features.php:20
+msgid "Zoo content"
+msgstr "Zoo περιεχόμενο"
+
+#: admin/partials/extra-features.php:21
+msgid "Jcomments and Jomcomment comments"
+msgstr "Jcomments και Jomcomment σχόλια"
+
+#: admin/partials/extra-features.php:22
+msgid "Joomlatags tags"
+msgstr "Joomlatags ετικέτες"
+
+#: admin/partials/extra-features.php:23
+msgid "Attachments"
+msgstr "Επισυνάψεις"
+
+#: admin/partials/extra-features.php:24
+msgid "Rokbox images"
+msgstr "Rokbox εικόνες"
+
+#: admin/partials/extra-features.php:25
+msgid "JoomGallery images"
+msgstr "JoomGallery εικόνες"
+
+#: admin/partials/extra-features.php:26
+msgid "Phocagallery images"
+msgstr "Phocagallery εικόνες"
+
+#: admin/partials/extra-features.php:27
+msgid "Joom!Fish translations to WPML"
+msgstr "Joom!Fish μεταφράσεις σε WPML"
+
+#: admin/partials/extra-features.php:28
+msgid "JEvents events"
+msgstr "JEvents συμβάντα"
+
+#: admin/partials/extra-features.php:29
+msgid "Docman documents"
+msgstr "Docman έγγραφα"
+
+#: admin/partials/extra-features.php:30
+msgid "Virtuemart e-commerce"
+msgstr "Virtuemart e-commerce"
+
+#: admin/partials/extra-features.php:31
+msgid "JReviews reviews"
+msgstr "JReviews κριτικές"
+
+#: admin/partials/extra-features.php:32
+msgid "Mosets Tree directory"
+msgstr "Mosets Tree κατάλογος"
+
+#: admin/partials/extra-features.php:33
+msgid "Multilingual content to WPML"
+msgstr "Πολύγλωσσο περιεχόμενο σε WPML"
+
+#: admin/partials/extra-features.php:34
+msgid "Simple Image Gallery & Simple Image Gallery Pro"
+msgstr "Simple Image Gallery & Simple Image Gallery Pro"
+
+#: admin/partials/extra-features.php:35
+msgid "RSGallery images"
+msgstr "RSGallery εικόνες"
+
+#: admin/partials/extra-features.php:36
+msgid "Community Builder content"
+msgstr "Community Builder περιεχόμενο"
+
+#: admin/partials/extra-features.php:37
+msgid "RSBlog content"
+msgstr "RSBlog περιεχόμενο"
+
+#: admin/partials/extra-features.php:38
+msgid "HikaShop e-commerce"
+msgstr "HikaShop e-commerce"
+
+#: admin/partials/extra-features.php:43
+msgid "This feature needs an add-on in addition to the Premium version."
+msgstr ""
+"Αυτό το χαρακτηριστικό χρειάζεται ένα πρόσθετο επιπλέον με την Premium "
+"έκδοση."
+
+#: admin/partials/ftp-settings.php:2
+msgid "Joomla FTP parameters"
+msgstr "Joomla παράμετροι FTP"
+
+#: admin/partials/ftp-settings.php:5
+msgid "FTP host"
+msgstr "FTP host"
+
+#: admin/partials/ftp-settings.php:9
+msgid "FTP port"
+msgstr "FTP port"
+
+#: admin/partials/ftp-settings.php:13
+msgid "FTP login"
+msgstr "FTP σύνδεση"
+
+#: admin/partials/ftp-settings.php:17
+msgid "FTP password"
+msgstr "FTP συνθηματικό"
+
+#: admin/partials/ftp-settings.php:21
+msgid "Protocol"
+msgstr "Πρωτόκολλο"
+
+#: admin/partials/ftp-settings.php:23
+msgid "FTP"
+msgstr "FTP"
+
+#: admin/partials/ftp-settings.php:24
+msgid "FTPS"
+msgstr "FTPS"
+
+#: admin/partials/ftp-settings.php:25
+msgid "SFTP"
+msgstr "SFTP"
+
+#: admin/partials/ftp-settings.php:29
+msgid "FTP base directory"
+msgstr "FTP βασικός κατάλογος"
+
+#: admin/partials/ftp-settings.php:34
+msgid "Test the FTP connection"
+msgstr "Δοκιμή σύνδεσης FTP"
+
+#: admin/partials/logger.php:3
+msgid "Log"
+msgstr "Καταγραφικό"
+
+#: admin/partials/logger.php:4
+msgid "Log auto-refresh"
+msgstr "Αυτόματη ανανέωση καταγραφικού"
+
+#: admin/partials/paypal-donate.php:1
+#, php-format
+msgid ""
+"If you found this plugin useful and it saved you many hours or days, please "
+"rate it on %s."
+msgstr ""
+"Αν βρήκατε χρήσιμο αυτό το πρόσθετο και σας γλύτωσε πολλές ώρες ή μέρες, "
+"παρακαλούμε αξιολογήστε το στο %s."
+
+#: admin/partials/paypal-donate.php:1
+msgid "You can also make a donation using the button below."
+msgstr ""
+"Μπορείτε επίσης να κάνετε μια προσφορά χρησιμοποιώντας το κουμπί παρακάτω,"
+
+#: admin/partials/settings.php:2
+msgid "Automatic removal:"
+msgstr "Αυτόματη διαγραφή:"
+
+#: admin/partials/settings.php:3
+msgid "Automatically remove all the WordPress content before each import"
+msgstr ""
+"Αυτόματη διαγραφή όλου του WordPress περιεχομένου, πριν από κάθε εισαγωγή"
+
+#: admin/partials/settings.php:6
+msgid "Joomla web site parameters"
+msgstr "Παράμετροι ιστοσελίδας Joomla"
+
+#: admin/partials/settings.php:9
+msgid "URL of the live Joomla web site"
+msgstr "URL της ζωντανής ιστοσελίδας Joomla"
+
+#: admin/partials/settings.php:11
+msgid ""
+"This field is used to pull the media off that site. It must contain the URL "
+"of the original site."
+msgstr ""
+"Αυτό το πεδίο χρησιμοποιείται για να λάβει τα πολυμέσα από την ιστοσελίδα. "
+"Πρέπει να περιέχει την URL της αρχικής ιστοσελίδας."
+
+#: admin/partials/settings.php:15
+msgid "Joomla database parameters"
+msgstr "Παράμετροι βάσης δεδομένων του Joomla"
+
+#: admin/partials/settings.php:18
+msgid "Hostname"
+msgstr "Hostname"
+
+#: admin/partials/settings.php:22
+msgid "Port"
+msgstr "Port"
+
+#: admin/partials/settings.php:26
+msgid "Database"
+msgstr "Βάση δεδομένων"
+
+#: admin/partials/settings.php:30
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+#: admin/partials/settings.php:34
+msgid "Password"
+msgstr "Συνθηματικό"
+
+#: admin/partials/settings.php:38
+msgid "Joomla Table Prefix"
+msgstr "Πρόθεμα βάσης δεδομένων του Joomla"
+
+#: admin/partials/settings.php:43
+msgid "Test the database connection"
+msgstr "Δοκιμή σύνδεσης με τη βάση δεδομένων"
+
+#. Name of the plugin
+msgid "FG Joomla to WordPress"
+msgstr "FG Joomla to WordPress"
+
+#. Description of the plugin
+msgid ""
+"A plugin to migrate categories, posts, images and medias from Joomla to "
+"WordPress"
+msgstr ""
+"Ένα πρόσθετο για μεταφορά κατηγοριών, άρθρων, εικόνων και πολυμέσων από το "
+"Joomla στo WordPress"
+
+#. URI of the plugin
+msgid "https://wordpress.org/plugins/fg-joomla-to-wordpress/"
+msgstr "https://wordpress.org/plugins/fg-joomla-to-wordpress/"
+
+#. Author of the plugin
+msgid "Frédéric GILLES"
+msgstr "Frédéric GILLES"
+
+#. Author URI of the plugin
+msgid "https://www.fredericgilles.net/"
+msgstr "https://www.fredericgilles.net/"
