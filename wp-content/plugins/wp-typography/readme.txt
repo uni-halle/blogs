@@ -4,7 +4,7 @@ Tags: typography, hyphenation, smart quotes, formatting, widows, orphans, typogr
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 4.9
-Stable tag: 5.3.1
+Stable tag: 5.3.5
 
 Improve your web typography with: hyphenation, space control, intelligent character replacement, and CSS hooks.
 
@@ -111,7 +111,20 @@ please upgrade PHP or continue to use version 4.2.2.
 
 == Changelog ==
 
-# 5.3.1 - March 15, 2018
+= 5.3.5 - May 10, 2018 =
+* _Bugfix_: 50/50 (and x/x except 1/1) are not treated as fractions anymore.
+* _Bugfix_: The French spacing rules were not applied to closing guillemets followed by a comma.
+
+= 5.3.4 - April 22, 2018 =
+* _Bugfix_: Update used libraries to the latest versions.
+
+= 5.3.3 - April 08, 2018 =
+* _Bugfix_: Correctly match smart fractions even if the are followed by a comma (i.e. `1/4,`).
+
+= 5.3.2 - March 24, 2018 =
+* _Bugfix_: Prevent future conflicts with other plugins by updating included libraries.
+
+= 5.3.1 - March 15, 2018 =
 * _Bugfix_: Always clear the cache after updates to prevent frontend whitescreens under certain circumstances.
 
 = 5.3.0 - March 13, 2018 =
