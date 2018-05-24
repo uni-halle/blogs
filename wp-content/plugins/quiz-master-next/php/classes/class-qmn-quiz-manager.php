@@ -111,13 +111,8 @@ class QMNQuizManager {
 			'quiz_id'     => $qmn_quiz_options->quiz_id,
 			'quiz_name'   => $qmn_quiz_options->quiz_name,
 			'quiz_system' => $qmn_quiz_options->system,
+			'user_ip'     => $this->get_user_ip(),
 		);
-
-		if ( $_SERVER['REMOTE_ADDR'] ) {
-			$qmn_array_for_variables['user_ip'] = $_SERVER['REMOTE_ADDR'];
-		} else {
-			$qmn_array_for_variables['user_ip'] = 'Unknown';
-		}
 
 		$return_display .= "<script>
 			if (window.qmn_quiz_data === undefined) {
@@ -129,6 +124,7 @@ class QMNQuizManager {
 			'quiz_name'         => $qmn_array_for_variables['quiz_name'],
 			'disable_answer'    => $qmn_quiz_options->disable_answer_onselect,
 			'ajax_show_correct' => $qmn_quiz_options->ajax_show_correct,
+			'progress_bar'      => $qmn_quiz_options->progress_bar,
 		);
 
 		$return_display = apply_filters( 'qmn_begin_shortcode', $return_display, $qmn_quiz_options, $qmn_array_for_variables );
@@ -137,9 +133,7 @@ class QMNQuizManager {
 		if ( $qmn_allowed_visit && ! isset( $_POST["complete_quiz"] ) && ! empty( $qmn_quiz_options->quiz_name ) ) {
 			$return_display .= $this->display_quiz( $qmn_quiz_options, $qmn_array_for_variables, $question_amount );
 		} elseif ( isset( $_POST["complete_quiz"] ) && 'confirmation' == $_POST["complete_quiz"] && $_POST["qmn_quiz_id"] == $qmn_array_for_variables["quiz_id"] ) {
-			$qmn_quiz_questions = $this->load_questions( $quiz, $qmn_quiz_options, false );
-			$qmn_quiz_answers = $this->create_answer_array( $qmn_quiz_questions );
-			$return_display .= $this->display_results( $qmn_quiz_options, $qmn_quiz_questions, $qmn_quiz_answers, $qmn_array_for_variables );
+			$return_display .= $this->display_results( $qmn_quiz_options, $qmn_array_for_variables );
 		}
 
 		$qmn_filtered_json = apply_filters( 'qmn_json_data', $qmn_json_data, $qmn_quiz_options, $qmn_array_for_variables );
@@ -200,7 +194,22 @@ class QMNQuizManager {
 				}
 			}
 			$question_sql = implode( ', ', $question_ids );
-			$questions = $wpdb->get_results( "SELECT * FROM " . $wpdb->prefix . "mlw_questions WHERE question_id IN ($question_sql) " . $order_by_sql . $limit_sql );
+			$questions = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}mlw_questions WHERE question_id IN ($question_sql) " . $order_by_sql . $limit_sql );
+			
+			// If we are not using randomization, we need to put the questions in the order of the new question editor.
+			// If a user has saved the pages in the question editor but still uses the older pagination options
+			// Then they will make it here. So, we need to order the questions based on the new editor.
+			if ( 1 != $quiz_options->randomness_order && 2 != $quiz_options->randomness_order ) {
+				$ordered_questions = array();
+				foreach ( $questions as $question ) {
+					$key = array_search( $question->question_id, $question_ids );
+					if ( false !== $key ) {
+						$ordered_questions[ $key ] = $question;
+					}
+				}
+				ksort( $ordered_questions );
+				$questions = $ordered_questions;
+			}
 		} else {
 			$questions = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM " . $wpdb->prefix . "mlw_questions WHERE quiz_id=%d AND deleted=0 " . $order_by_sql . $limit_sql, $quiz_id ) );
 		}
@@ -289,7 +298,8 @@ class QMNQuizManager {
 			'empty' => $options->empty_error_text,
 		);
 
-		wp_enqueue_script( 'qmn_quiz', plugins_url( '../../js/qmn_quiz.js', __FILE__ ), array( 'wp-util', 'underscore', 'jquery', 'jquery-ui-tooltip' ), $mlwQuizMasterNext->version );
+		wp_enqueue_script( 'progress-bar', plugins_url( '../../js/progressbar.min.js', __FILE__ ) );
+		wp_enqueue_script( 'qmn_quiz', plugins_url( '../../js/qmn_quiz.js', __FILE__ ), array( 'wp-util', 'underscore', 'jquery', 'jquery-ui-tooltip', 'progress-bar' ), $mlwQuizMasterNext->version );
 		wp_localize_script( 'qmn_quiz', 'qmn_ajax_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) ); // setting ajaxurl
 		wp_enqueue_script( 'math_jax', '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML' );
 
@@ -506,6 +516,7 @@ class QMNQuizManager {
 				<a class="qsm-btn qsm-previous qmn_btn mlw_qmn_quiz_link mlw_previous" href="#"><?php echo esc_html( $options->previous_button_text ); ?></a>
 				<span class="qmn_page_message"></span>
 				<div class="qmn_page_counter_message"></div>
+				<div id="qsm-progress-bar"></div>
 				<a class="qsm-btn qsm-next qmn_btn mlw_qmn_quiz_link mlw_next" href="#"><?php echo esc_html( $options->next_button_text ); ?></a>
 				<input type='submit' class='qsm-btn qsm-submit-btn qmn_btn' value='<?php echo esc_attr( htmlspecialchars_decode( $options->submit_button_text, ENT_QUOTES ) ); ?>' />
 			</div>
@@ -666,15 +677,13 @@ class QMNQuizManager {
 	 * Generates the content for the results page part of the shortcode
 	 *
 	 * @since 4.0.0
-	 * @param array $qmn_quiz_options The database row of the quiz.
-	 * @param array $qmn_quiz_questions The questions of the quiz.
-	 * @param array $qmn_quiz_answers The answers of the quiz.
-	 * @param array $qmn_array_for_variables The array of results for the quiz.
+	 * @param array $options The database row of the quiz.
+	 * @param array $data The array of results for the quiz.
 	 * @uses QMNQuizManager:submit_results() Perform The Quiz/Survey Submission
 	 * @return string The content for the results page section
 	 */
-	public function display_results( $qmn_quiz_options, $qmn_quiz_questions, $qmn_quiz_answers, $qmn_array_for_variables ) {
-		$result = $this->submit_results( $qmn_quiz_options, $qmn_quiz_questions, $qmn_quiz_answers, $qmn_array_for_variables );
+	public function display_results( $options, $data ) {
+		$result = $this->submit_results( $options, $data );
 		$results_array = $result;
 		return $results_array['display'];
 	}
@@ -693,15 +702,13 @@ class QMNQuizManager {
 		$qmn_allowed_visit = true;
 		$quiz = intval( $_POST["qmn_quiz_id"] );
 		$mlwQuizMasterNext->pluginHelper->prepare_quiz( $quiz );
-		$qmn_quiz_options = $mlwQuizMasterNext->quiz_settings->get_quiz_options();
-		$qmn_quiz_questions = $this->load_questions( $quiz, $qmn_quiz_options, false );
-		$qmn_quiz_answers = $this->create_answer_array( $qmn_quiz_questions, true );
-		$qmn_array_for_variables = array(
-			'quiz_id' => $qmn_quiz_options->quiz_id,
-			'quiz_name' => $qmn_quiz_options->quiz_name,
-			'quiz_system' => $qmn_quiz_options->system,
+		$options = $mlwQuizMasterNext->quiz_settings->get_quiz_options();
+		$data = array(
+			'quiz_id' => $options->quiz_id,
+			'quiz_name' => $options->quiz_name,
+			'quiz_system' => $options->system,
 		);
-		echo json_encode( $this->submit_results( $qmn_quiz_options, $qmn_quiz_questions, $qmn_quiz_answers, $qmn_array_for_variables) );
+		echo json_encode( $this->submit_results( $options, $data ) );
 		die();
 	}
 
@@ -712,8 +719,6 @@ class QMNQuizManager {
 	 *
 	 * @since 4.6.0
 	 * @param array $qmn_quiz_options The database row of the quiz.
-	 * @param array $qmn_quiz_questions The questions of the quiz.
-	 * @param array $qmn_quiz_answers The answers of the quiz.
 	 * @param array $qmn_array_for_variables The array of results for the quiz.
 	 * @uses QMNQuizManager:check_answers() Creates display for beginning section
 	 * @uses QMNQuizManager:check_comment_section() Creates display for questions
@@ -723,15 +728,11 @@ class QMNQuizManager {
 	 * @uses QMNQuizManager:send_admin_email() Creates display for end section
 	 * @return string The content for the results page section
 	 */
-	public function submit_results( $qmn_quiz_options, $qmn_quiz_questions, $qmn_quiz_answers, $qmn_array_for_variables ) {
+	public function submit_results( $qmn_quiz_options, $qmn_array_for_variables ) {
 		global $qmn_allowed_visit;
 		$result_display = '';
 
-		if ( $_SERVER["REMOTE_ADDR"] ) {
-			$qmn_array_for_variables['user_ip'] = $_SERVER["REMOTE_ADDR"];
-		} else {
-			$qmn_array_for_variables['user_ip'] = "Unknown";
-		}
+		$qmn_array_for_variables['user_ip'] = $this->get_user_ip();
 
 		$result_display = apply_filters( 'qmn_begin_results', $result_display, $qmn_quiz_options, $qmn_array_for_variables );
 		if ( ! $qmn_allowed_visit ) {
@@ -769,7 +770,7 @@ class QMNQuizManager {
 
 		if ( !isset( $_POST["mlw_code_captcha"] ) || ( isset( $_POST["mlw_code_captcha"] ) && $_POST["mlw_user_captcha"] == $_POST["mlw_code_captcha"] ) ) {
 
-			$qmn_array_for_variables = array_merge($qmn_array_for_variables,$this->check_answers($qmn_quiz_questions, $qmn_quiz_answers, $qmn_quiz_options, $qmn_array_for_variables));
+			$qmn_array_for_variables = array_merge( $qmn_array_for_variables, $this->check_answers( $qmn_quiz_options, $qmn_array_for_variables ) );
 			$result_display = apply_filters('qmn_after_check_answers', $result_display, $qmn_quiz_options, $qmn_array_for_variables);
 			$qmn_array_for_variables['comments'] = $this->check_comment_section($qmn_quiz_options, $qmn_array_for_variables);
 			$result_display = apply_filters('qmn_after_check_comments', $result_display, $qmn_quiz_options, $qmn_array_for_variables);
@@ -778,60 +779,64 @@ class QMNQuizManager {
 			$result_display .= $this->display_social($qmn_quiz_options, $qmn_array_for_variables);
 			$result_display = apply_filters('qmn_after_social_media', $result_display, $qmn_quiz_options, $qmn_array_for_variables);
 
-			// Creates our results array.
-			$results_array = array(
-				intval( $qmn_array_for_variables['timer'] ),
-				$qmn_array_for_variables['question_answers_array'],
-				htmlspecialchars( stripslashes( $qmn_array_for_variables['comments'] ), ENT_QUOTES ),
-				'contact' => $contact_responses,
-			);
-			$results_array = apply_filters( 'qsm_results_array', $results_array, $qmn_array_for_variables );
-			$serialized_results = serialize( $results_array );
+			// If the store responses in database option is set to Yes.
+			if ( 0 != $qmn_quiz_options->store_responses ) {
 
-			global $wpdb;
-			$table_name = $wpdb->prefix . "mlw_results";
-			$results_insert = $wpdb->insert(
-				$table_name,
-				array(
-					'quiz_id'       => $qmn_array_for_variables['quiz_id'],
-					'quiz_name'     => $qmn_array_for_variables['quiz_name'],
-					'quiz_system'   => $qmn_array_for_variables['quiz_system'],
-					'point_score'   => $qmn_array_for_variables['total_points'],
-					'correct_score' => $qmn_array_for_variables['total_score'],
-					'correct'       => $qmn_array_for_variables['total_correct'],
-					'total'         => $qmn_array_for_variables['total_questions'],
-					'name' => $qmn_array_for_variables['user_name'],
-					'business' => $qmn_array_for_variables['user_business'],
-					'email' => $qmn_array_for_variables['user_email'],
-					'phone' => $qmn_array_for_variables['user_phone'],
-					'user' => $qmn_array_for_variables['user_id'],
-					'user_ip' => $qmn_array_for_variables['user_ip'],
-					'time_taken' => $qmn_array_for_variables['time_taken'],
-					'time_taken_real' => date( "Y-m-d H:i:s", strtotime( $qmn_array_for_variables['time_taken'] ) ),
-					'quiz_results' => $serialized_results,
-					'deleted' => 0
-				),
-				array(
-					'%d',
-					'%s',
-					'%d',
-					'%d',
-					'%d',
-					'%d',
-					'%d',
-					'%s',
-					'%s',
-					'%s',
-					'%s',
-					'%d',
-					'%s',
-					'%s',
-					'%s',
-					'%s',
-					'%d'
-				)
-			);
+				// Creates our results array.
+				$results_array = array(
+					intval( $qmn_array_for_variables['timer'] ),
+					$qmn_array_for_variables['question_answers_array'],
+					htmlspecialchars( stripslashes( $qmn_array_for_variables['comments'] ), ENT_QUOTES ),
+					'contact' => $contact_responses,
+				);
+				$results_array = apply_filters( 'qsm_results_array', $results_array, $qmn_array_for_variables );
+				$serialized_results = serialize( $results_array );
 
+				// Inserts the responses in the database
+				global $wpdb;
+				$table_name = $wpdb->prefix . "mlw_results";
+				$results_insert = $wpdb->insert(
+					$table_name,
+					array(
+						'quiz_id'         => $qmn_array_for_variables['quiz_id'],
+						'quiz_name'       => $qmn_array_for_variables['quiz_name'],
+						'quiz_system'     => $qmn_array_for_variables['quiz_system'],
+						'point_score'     => $qmn_array_for_variables['total_points'],
+						'correct_score'   => $qmn_array_for_variables['total_score'],
+						'correct'         => $qmn_array_for_variables['total_correct'],
+						'total'           => $qmn_array_for_variables['total_questions'],
+						'name'            => $qmn_array_for_variables['user_name'],
+						'business'        => $qmn_array_for_variables['user_business'],
+						'email'           => $qmn_array_for_variables['user_email'],
+						'phone'           => $qmn_array_for_variables['user_phone'],
+						'user'            => $qmn_array_for_variables['user_id'],
+						'user_ip'         => $qmn_array_for_variables['user_ip'],
+						'time_taken'      => $qmn_array_for_variables['time_taken'],
+						'time_taken_real' => date( "Y-m-d H:i:s", strtotime( $qmn_array_for_variables['time_taken'] ) ),
+						'quiz_results'    => $serialized_results,
+						'deleted'         => 0
+					),
+					array(
+						'%d',
+						'%s',
+						'%d',
+						'%d',
+						'%d',
+						'%d',
+						'%d',
+						'%s',
+						'%s',
+						'%s',
+						'%s',
+						'%d',
+						'%s',
+						'%s',
+						'%s',
+						'%s',
+						'%d'
+					)
+				);
+			}
 
 			$this->send_user_email($qmn_quiz_options, $qmn_array_for_variables);
 			$result_display = apply_filters('qmn_after_send_user_email', $result_display, $qmn_quiz_options, $qmn_array_for_variables);
@@ -840,9 +845,7 @@ class QMNQuizManager {
 			$result_display = apply_filters('qmn_end_results', $result_display, $qmn_quiz_options, $qmn_array_for_variables);
 			//Legacy Code
 			do_action('mlw_qmn_load_results_page', $wpdb->insert_id, $qmn_quiz_options->quiz_settings);
-		}
-		else
-		{
+		} else {
 			$result_display .= "Thank you.";
 		}
 
@@ -902,92 +905,185 @@ class QMNQuizManager {
 	}
 
 	/**
-	  * Scores User Answers
-	  *
-	  * Calculates the users scores for the quiz
-	  *
-	  * @since 4.0.0
-		* @param array $qmn_quiz_options The database row of the quiz
-		* @param array $qmn_quiz_questions The questions of the quiz
-		* @param array $qmn_quiz_answers The answers of the quiz
-		* @param array $qmn_array_for_variables The array of results for the quiz
-		* @uses QMNPluginHelper:display_review() Scores the question
-		* @return array The results of the user's score
-	  */
-	public function check_answers($qmn_quiz_questions, $qmn_quiz_answers, $qmn_quiz_options, $qmn_array_for_variables)
-	{
-		$mlw_points = 0;
-		$mlw_correct = 0;
-		$mlw_total_score = 0;
-		$mlw_question_answers = "";
+	 * Scores User Answers
+	 *
+	 * Calculates the users scores for the quiz
+	 *
+	 * @since 4.0.0
+	 * @param array $options The database row of the quiz
+	 * @param array $quiz_data The array of results for the quiz
+	 * @uses QMNPluginHelper:display_review() Scores the question
+	 * @return array The results of the user's score
+	 */
+	public function check_answers( $options, $quiz_data ) {
+
 		global $mlwQuizMasterNext;
-		isset($_POST["total_questions"]) ? $mlw_total_questions = intval($_POST["total_questions"]) : $mlw_total_questions = 0;
-		isset($_POST["qmn_question_list"]) ? $question_list = explode('Q',$_POST["qmn_question_list"]) : $question_list = array();
-		$mlw_user_text = "";
-		$mlw_correct_text = "";
-		$qmn_correct = "incorrect";
-		$qmn_answer_points = 0;
-		$mlw_qmn_answer_array = array();
-		foreach($qmn_quiz_questions as $mlw_question)
-		{
-			foreach($question_list as $question_id)
-			{
-				if ($mlw_question->question_id == $question_id)
-				{
-					$mlw_user_text = "";
-					$mlw_correct_text = "";
-					$qmn_correct = "incorrect";
-					$qmn_answer_points = 0;
 
-					$results_array = $mlwQuizMasterNext->pluginHelper->display_review($mlw_question->question_type_new, $mlw_question->question_id);
-					if (!isset($results_array["null_review"]))
-					{
-						$mlw_points += $results_array["points"];
-						$qmn_answer_points += $results_array["points"];
-						if ($results_array["correct"] == "correct")
-						{
-							$mlw_correct += 1;
-							$qmn_correct = "correct";
-						}
-						$mlw_user_text = $results_array["user_text"];
-						$mlw_correct_text = $results_array["correct_text"];
+		// Load the pages and questions
+		$pages = $mlwQuizMasterNext->pluginHelper->get_quiz_setting( 'pages', array() );
+		$questions = QSM_Questions::load_questions_by_pages( $options->quiz_id );
+		
+		// Retrieve data from submission
+		$total_questions = isset( $_POST["total_questions"] ) ? intval( $_POST["total_questions"] ) : 0;
+		$question_list   = isset( $_POST["qmn_question_list"] ) ? explode( 'Q', $_POST["qmn_question_list"] ) : array();
 
-						if ( isset( $_POST["mlwComment".$mlw_question->question_id] ) ) {
-							$mlw_qm_question_comment = htmlspecialchars( stripslashes( $_POST["mlwComment".$mlw_question->question_id] ), ENT_QUOTES );
-						} else {
-							$mlw_qm_question_comment = "";
+		// Prepare variables
+		$points_earned  = 0;
+		$total_correct  = 0;
+		$total_score    = 0;
+		$user_answer    = "";
+		$correct_answer = "";
+		$correct_status = "incorrect";
+		$answer_points  = 0;
+		$question_data  = array();
+
+		// If deprecated pagination setting is not used, use new system...
+		if ( 0 == $options->question_from_total && 0 !== count( $pages ) ) {
+
+			// Cycle through each page in quiz.
+			foreach ( $pages as $page ) {
+
+				// Cycle through each question on a page
+				foreach ( $page as $page_question_id ) {
+
+					// Cycle through each question that appeared to the user
+					foreach ( $question_list as $question_id ) {
+
+						// When the questions are the same...
+						if ( $page_question_id == $question_id ) {
+
+							$question = $questions[ $page_question_id ];
+
+							// Reset question-specific variables
+							$user_answer    = "";
+							$correct_answer = "";
+							$correct_status = "incorrect";
+							$answer_points  = 0;
+
+							// Send question to our grading function
+							$results_array = $mlwQuizMasterNext->pluginHelper->display_review( $question['question_type_new'], $question['question_id'] );
+
+							// If question was graded correctly.
+							if ( ! isset( $results_array["null_review"] ) ) {
+								$points_earned += $results_array["points"];
+								$answer_points += $results_array["points"];
+
+								// If the user's answer was correct
+								if ( 'correct' == $results_array["correct"] ) {
+									$total_correct += 1;
+									$correct_status = "correct";
+								}
+								$user_answer = $results_array["user_text"];
+								$correct_answer = $results_array["correct_text"];
+
+								// If a comment was submitted
+								if ( isset( $_POST["mlwComment" . $question['question_id'] ] ) ) {
+									$comment = htmlspecialchars( stripslashes( $_POST["mlwComment" . $question['question_id'] ] ), ENT_QUOTES );
+								} else {
+									$comment = "";
+								}
+
+								// Get text for question
+								$question_text = $question['question_name'];
+								if ( isset( $results_array["question_text"] ) ) {
+									$question_text = $results_array["question_text"];
+								}
+
+								// Save question data into new array in our array
+								$question_data[] = apply_filters( 'qmn_answer_array', array(
+									$question_text, 
+									htmlspecialchars( $user_answer, ENT_QUOTES ), 
+									htmlspecialchars( $correct_answer, ENT_QUOTES ), 
+									$comment, 
+									"correct"  => $correct_status, 
+									"id"       => $question['question_id'], 
+									"points"   => $answer_points, 
+									"category" => $question['category'] 
+								), $options, $quiz_data);
+							}
+							break;
 						}
-						$question_text = $mlw_question->question_name;
-						if (isset($results_array["question_text"]))
-						{
-							$question_text = $results_array["question_text"];
-						}
-						$mlw_qmn_answer_array[] = apply_filters('qmn_answer_array', array($question_text, htmlspecialchars($mlw_user_text, ENT_QUOTES), htmlspecialchars($mlw_correct_text, ENT_QUOTES), $mlw_qm_question_comment, "correct" => $qmn_correct, "id" => $mlw_question->question_id, "points" => $qmn_answer_points, "category" => $mlw_question->category), $qmn_quiz_options, $qmn_array_for_variables);
 					}
-					break;
+				}
+			}
+		} else {
+			// Cycle through each page in quiz.
+			foreach ( $questions as $question ) {
+
+				// Cycle through each question that appeared to the user
+				foreach ( $question_list as $question_id ) {
+
+					// When the questions are the same...
+					if ( $question['question_id'] == $question_id ) {
+
+						// Reset question-specific variables
+						$user_answer    = "";
+						$correct_answer = "";
+						$correct_status = "incorrect";
+						$answer_points  = 0;
+
+						// Send question to our grading function
+						$results_array = $mlwQuizMasterNext->pluginHelper->display_review( $question['question_type_new'], $question['question_id'] );
+
+						// If question was graded correctly.
+						if ( ! isset( $results_array["null_review"] ) ) {
+							$points_earned += $results_array["points"];
+							$answer_points += $results_array["points"];
+
+							// If the user's answer was correct
+							if ( 'correct' == $results_array["correct"] ) {
+								$total_correct += 1;
+								$correct_status = "correct";
+							}
+							$user_answer = $results_array["user_text"];
+							$correct_answer = $results_array["correct_text"];
+
+							// If a comment was submitted
+							if ( isset( $_POST["mlwComment" . $question['question_id'] ] ) ) {
+								$comment = htmlspecialchars( stripslashes( $_POST["mlwComment" . $question['question_id'] ] ), ENT_QUOTES );
+							} else {
+								$comment = "";
+							}
+
+							// Get text for question
+							$question_text = $question['question_name'];
+							if ( isset( $results_array["question_text"] ) ) {
+								$question_text = $results_array["question_text"];
+							}
+
+							// Save question data into new array in our array
+							$question_data[] = apply_filters( 'qmn_answer_array', array(
+								$question_text, 
+								htmlspecialchars( $user_answer, ENT_QUOTES ), 
+								htmlspecialchars( $correct_answer, ENT_QUOTES ), 
+								$comment, 
+								"correct"  => $correct_status, 
+								"id"       => $question['question_id'], 
+								"points"   => $answer_points, 
+								"category" => $question['category'] 
+							), $options, $quiz_data);
+						}
+						break;
+					}
 				}
 			}
 		}
 
-		//Calculate Total Percent Score And Average Points Only If Total Questions Doesn't Equal Zero To Avoid Division By Zero Error
-		if ($mlw_total_questions != 0)
-		{
-			$mlw_total_score = round((($mlw_correct/$mlw_total_questions)*100), 2);
-			$mlw_average_points = round(($mlw_points/$mlw_total_questions), 2);
-		}
-		else
-		{
-			$mlw_total_score = 0;
-			$mlw_average_points = 0;
+		// Calculate Total Percent Score And Average Points Only If Total Questions Doesn't Equal Zero To Avoid Division By Zero Error
+		if ( 0 !== $total_questions ) {
+			$total_score = round( ( ( $total_correct / $total_questions ) * 100 ), 2 );
+		} else {
+			$total_score = 0;
 		}
 
+		// Return array to be merged with main user response array
 		return array(
-			'total_points' => $mlw_points,
-			'total_score' => $mlw_total_score,
-			'total_correct' => $mlw_correct,
-			'total_questions' => $mlw_total_questions,
-			'question_answers_display' => $mlw_question_answers,
-			'question_answers_array' => $mlw_qmn_answer_array,
+			'total_points'             => $points_earned,
+			'total_score'              => $total_score,
+			'total_correct'            => $total_correct,
+			'total_questions'          => $total_questions,
+			'question_answers_display' => '', // Kept for backwards compatibility
+			'question_answers_array'   => $question_data,
 		);
 	}
 
@@ -1340,6 +1436,29 @@ class QMNQuizManager {
 
 		//Remove HTML type for emails
 		remove_filter( 'wp_mail_content_type', 'mlw_qmn_set_html_content_type' );
+	}
+
+	/**
+	 * Returns the quiz taker's IP if IP collection is enabled
+	 * 
+	 * @since 5.3.0
+	 * @return string The IP address or a phrase if not collected
+	 */
+	private function get_user_ip() {
+		$ip = __( 'Not collected', 'quiz-master-next' );
+		$settings = (array) get_option( 'qmn-settings' );
+    	$ip_collection = '0';
+		if ( isset( $settings['ip_collection'] ) ) {
+			$ip_collection = $settings['ip_collection'];
+		}
+		if ( '1' != $ip_collection ) {
+			if ( $_SERVER['REMOTE_ADDR'] ) {
+				$ip = $_SERVER['REMOTE_ADDR'];
+			} else {
+				$ip = __( 'Unknown', 'quiz-master-next' );
+			}
+		}
+		return $ip;	
 	}
 }
 $qmnQuizManager = new QMNQuizManager();

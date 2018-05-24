@@ -10,13 +10,15 @@ var QSM;
 (function ($) {
 	QSM = {
 		init: function() {
-			_.each( qmn_quiz_data, function( quiz ) {
-				quizID = parseInt( quiz.quiz_id );
-				QSM.initPagination( quizID );
-				if ( quiz.hasOwnProperty( 'timer_limit' ) && 0 != quiz.timer_limit ) {
-					QSM.initTimer( quizID );
-				}				
-			});
+			if (qmn_quiz_data) {
+				_.each( qmn_quiz_data, function( quiz ) {
+					quizID = parseInt( quiz.quiz_id );
+					QSM.initPagination( quizID );
+					if ( quiz.hasOwnProperty( 'timer_limit' ) && 0 != quiz.timer_limit ) {
+						QSM.initTimer( quizID );
+					}				
+				});
+			}
 		},
 
 		/**
@@ -61,6 +63,36 @@ var QSM;
 				$quizForm.children( '.qsm-page' ).hide();
 				template = wp.template( 'qsm-pagination' );
 				$quizForm.append( template() );
+				if ( '1' == qmn_quiz_data[ quizID ].progress_bar ) {
+					qmn_quiz_data[ quizID ].bar = new ProgressBar.Line('#qsm-progress-bar', {
+						strokeWidth: 2,
+						easing: 'easeInOut',
+						duration: 1400,
+						color: '#3498db',
+						trailColor: '#eee',
+						trailWidth: 1,
+						svgStyle: {width: '100%', height: '100%'},
+						text: {
+						  style: {
+							// color: '#999',
+							position: 'absolute',
+							padding: 0,
+							margin: 0,
+							top: 0,
+							right: '10px',
+							'font-size': '13px',
+							'font-weight': 'bold',
+							transform: null
+						  },
+						  autoStyleContainer: false
+						},
+						from: {color: '#3498db'},
+						to: {color: '#ED6A5A'},
+						step: function(state, bar) {
+						  bar.setText(Math.round(bar.value() * 100) + ' %');
+						}
+					});
+				}
 				QSM.goToPage( quizID, 1 );
 				$quizForm.find( '.qsm-pagination .qsm-next' ).on( 'click', function( event ) {
 					event.preventDefault();
@@ -92,6 +124,9 @@ var QSM;
 			}
 			if ( 1 < pageNumber ) {
 				$quizForm.find( '.qsm-previous' ).show();
+			}
+			if ( '1' == qmn_quiz_data[ quizID ].progress_bar ) {
+				qmn_quiz_data[ quizID ].bar.animate( pageNumber / $pages.length );
 			}
 			QSM.savePage( quizID, pageNumber );
 		},
@@ -300,38 +335,40 @@ function qmnDisplayResults( results, quiz_form_id, $container ) {
 }
 
 function qmnInit() {
-	for ( var key in qmn_quiz_data ) {
-		if ( qmn_quiz_data[key].ajax_show_correct === '1' ) {
-			jQuery( '#quizForm' + qmn_quiz_data[key].quiz_id + ' .qmn_quiz_radio').change(function() {
-				var chosen_answer = jQuery(this).val();
-				var question_id = jQuery(this).attr('name').replace(/question/i,'');
-				var chosen_id = jQuery(this).attr('id');
-				jQuery.each( qmn_quiz_data[key].question_list, function( i, value ) {
-					if ( question_id == value.question_id ) {
-						jQuery.each( value.answers, function(j, answer ) {
-							if ( answer[0] === chosen_answer ) {
-								if ( answer[2] !== 1) {
-									jQuery( '#'+chosen_id ).parent().addClass( "qmn_incorrect_answer" );
+	if (qmn_quiz_data) {
+		for ( var key in qmn_quiz_data ) {
+			if ( qmn_quiz_data[key].ajax_show_correct === '1' ) {
+				jQuery( '#quizForm' + qmn_quiz_data[key].quiz_id + ' .qmn_quiz_radio').change(function() {
+					var chosen_answer = jQuery(this).val();
+					var question_id = jQuery(this).attr('name').replace(/question/i,'');
+					var chosen_id = jQuery(this).attr('id');
+					jQuery.each( qmn_quiz_data[key].question_list, function( i, value ) {
+						if ( question_id == value.question_id ) {
+							jQuery.each( value.answers, function(j, answer ) {
+								if ( answer[0] === chosen_answer ) {
+									if ( answer[2] !== 1) {
+										jQuery( '#'+chosen_id ).parent().addClass( "qmn_incorrect_answer" );
+									}
 								}
-							}
-							if ( answer[2] === 1) {
-								jQuery( ':radio[name=question'+question_id+'][value="'+answer[0]+'"]' ).parent().addClass( "qmn_correct_answer" );
-							}
-						});
-					}
+								if ( answer[2] === 1) {
+									jQuery( ':radio[name=question'+question_id+'][value="'+answer[0]+'"]' ).parent().addClass( "qmn_correct_answer" );
+								}
+							});
+						}
+					});
 				});
-			});
-		}
+			}
 
-		if ( qmn_quiz_data[key].disable_answer === '1' ) {
-			jQuery( '#quizForm' + qmn_quiz_data[key].quiz_id + ' .qmn_quiz_radio').change(function() {
-				var radio_group = jQuery(this).attr('name');
-				jQuery('input[type=radio][name='+radio_group+']').prop('disabled',true);
-			});
-		}
+			if ( qmn_quiz_data[key].disable_answer === '1' ) {
+				jQuery( '#quizForm' + qmn_quiz_data[key].quiz_id + ' .qmn_quiz_radio').change(function() {
+					var radio_group = jQuery(this).attr('name');
+					jQuery('input[type=radio][name='+radio_group+']').prop('disabled',true);
+				});
+			}
 
-		if ( qmn_quiz_data[key].hasOwnProperty('pagination') ) {
-	    qmnInitPagination( qmn_quiz_data[key].quiz_id );
+			if ( qmn_quiz_data[key].hasOwnProperty('pagination') ) {
+		    qmnInitPagination( qmn_quiz_data[key].quiz_id );
+			}
 		}
 	}
 }
