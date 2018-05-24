@@ -12,7 +12,7 @@ Plugin Name: Category Posts Widget
 Plugin URI: https://wordpress.org/plugins/category-posts/
 Description: Adds a widget that shows the most recent posts from a single category.
 Author: TipTopPress
-Version: 4.8.3
+Version: 4.8.5
 Author URI: http://tiptoppress.com
 Text Domain: category-posts
 Domain Path: /languages
@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const VERSION        = '4.8.2';
+const VERSION        = '4.8.5';
 const DOC_URL        = 'http://tiptoppress.com/category-posts-widget/documentation-4-8?utm_source=widget_cpw&utm_campaign=documentation_4_8_cpw&utm_medium=form';
 const PRO_URL        = 'http://tiptoppress.com/term-and-category-based-posts-widget/?utm_source=widget_cpw&utm_campaign=get_pro_cpw&utm_medium=action_link';
 const SUPPORT_URL    = 'https://wordpress.org/support/plugin/category-posts';
@@ -170,7 +170,7 @@ add_action( 'wp_head', __NAMESPACE__ . '\wp_head' );
  */
 function admin_scripts( $hook ) {
 
-	if ( 'widgets.php' === $hook ) { // enqueue only for widget admin and customizer.
+	if ( 'widgets.php' === $hook || 'post.php' === $hook ) { // enqueue only for widget admin and customizer. (add if post.php: fix make widget SiteOrigin Page Builder plugin, GH issue #181)
 
 		// control open and close the widget section.
 		wp_register_script( 'category-posts-widget-admin-js', plugins_url( 'js/admin/category-posts-widget.js', __FILE__ ), array( 'jquery' ), VERSION, true );
@@ -214,6 +214,9 @@ function load_textdomain() {
  */
 
 add_action( 'admin_print_styles-widgets.php', __NAMESPACE__ . '\admin_styles' );
+
+// fix make widget SiteOrigin Page Builder plugin, GH issue #181
+add_action('siteorigin_panel_enqueue_admin_scripts', __NAMESPACE__ . '\admin_styles' );
 
 /**
  * Add required admin styles.
