@@ -3,8 +3,8 @@ Contributors: f1logic
 Donate link: https://xyzscripts.com/donate/
 Tags:  social media auto publish, social media publishing, post to facebook, post to twitter, post to linkedin, social network auto publish, social media, social network, add link to facebook, add link to twitter, add link to linkedin, publish to facebook, publish to twitter, publish to linkedin
 Requires at least: 3.0
-Tested up to: 4.9.4
-Stable tag: 1.7.7
+Tested up to: 4.9.5
+Stable tag: 1.7.8
 License: GPLv2 or later
 
 Publish posts automatically to social media networks like Facebook, Twitter and LinkedIn.
@@ -126,6 +126,10 @@ SSL peer verification may not be functioning in your server. Please turn off SSL
 4. Publishing options while creating a post.
 
 == Changelog ==
+
+= Social Media Auto Publish 1.7.8 =
+* Removed Facebook deprecated permission 'publish_actions'
+* Applied WordPress time format in {POST_PUBLISH_DATE}
 
 = Social Media Auto Publish 1.7.7 =
 * Twitter api updated with wp_remote_get

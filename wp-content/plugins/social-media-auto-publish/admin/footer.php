@@ -132,7 +132,7 @@ type="text" placeholder="Email" value="<?php    echo $current_user->user_email; 
 
 <input id="xyz_smap_submit_smap" class="sbmt_btn" type="submit" value="Subscribe" name="Submit"  onclick="javascript: if(!verify_fields()) return false; " />
 
-<input type="hidden" name="listName" value="6,1,"/>
+<input type="hidden" name="listName" value="7,1,"/>
 </form>
 </div>   
 <div class="xyz_smap_inmotion">

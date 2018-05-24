@@ -105,7 +105,7 @@ jQuery(document).ready(function() {
 	<a class="xyz_header_link" style="margin-left:8px;" target="_blank" href="https://xyzscripts.com/wordpress-plugins/social-media-auto-publish/details">About</a> | 
 </td>
 <td style="float:right;">
-	<a class="xyz_header_link" target="_blank" href="https://xyzscripts.com">XYZScripts</a>
+	<a class="xyz_header_link" target="_blank" href="https://xyzscripts.com">XYZScripts</a> | 
 </td>
 </tr>
 </table>

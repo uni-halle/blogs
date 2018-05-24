@@ -3,7 +3,8 @@ if( !defined('ABSPATH') ){ exit();}
 $app_id = get_option('xyz_smap_application_id');
 $app_secret = get_option('xyz_smap_application_secret');
 $redirecturl=admin_url('admin.php?page=social-media-auto-publish-settings&auth=1');
-// $lnredirecturl=admin_url('admin.php?page=social-media-auto-publish-settings&auth=3');
+// 	if(is_ssl()===false)
+// 		$redirecturl=preg_replace("/^http:/i", "https:", $redirecturl);
 $my_url=urlencode($redirecturl);
 if(isset($_POST) && (isset($_POST['fb_auth']) || isset($_POST['lnauth'])) )
 {
@@ -27,7 +28,7 @@ if(isset($_POST['fb_auth']))
 		
 		$dialog_url = "https://www.facebook.com/".XYZ_SMAP_FB_API_VERSION."/dialog/oauth?client_id="
 		. $app_id . "&redirect_uri=" . $my_url . "&state="
-		. $xyz_smap_session_state . "&scope=email,public_profile,publish_pages,user_posts,publish_actions,manage_pages";
+		. $xyz_smap_session_state . "&scope=email,public_profile,publish_pages,user_posts,manage_pages";
 		
 		header("Location: " . $dialog_url);
 }

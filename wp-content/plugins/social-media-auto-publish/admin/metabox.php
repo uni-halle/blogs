@@ -65,8 +65,8 @@ function xyz_smap_addpostmetatags()
 	$imgpath= plugins_url()."/social-media-auto-publish/images/";
 	$heimg=$imgpath."support.png";
 	$xyz_smap_catlist=get_option('xyz_smap_include_categories');
-	if (is_array($xyz_smap_catlist))
-		$xyz_smap_catlist=implode(',', $xyz_smap_catlist);
+// 	if (is_array($xyz_smap_catlist))
+// 		$xyz_smap_catlist=implode(',', $xyz_smap_catlist);
 	?>
 <script>
 var fcheckid;

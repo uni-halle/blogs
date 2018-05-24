@@ -1,24 +1,6 @@
 <?php
 if( !defined('ABSPATH') ){ exit();}
 ?>
-<style>
-.buy-button {
-	display:block;
-	color:white;
-    padding:5px 21px;
-    background: #545454;
-    border: 0;
-    border-bottom: 2px solid #545454;
-    cursor: pointer;
-    -webkit-box-shadow: inset 0 -2px #545454;
-    box-shadow: inset 0 -2px #545454;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius:3px;
-}
-</style>
-
 <h1 style="visibility: visible;">Social Media Auto Publish (V <?php echo xyz_smap_plugin_get_version(); ?>)</h1>
 
 <div style="width: 99%">
@@ -471,7 +453,7 @@ Social Media Auto Publish automatically publishes posts from your blog to your  
 	<tr>
 		<td>Purchase</td>
 		<td></td>
-		<td style="padding: 2px" ><a target="_blank"href="https://xyzscripts.com/members/product/purchase/XYZWPSMPPRE"  class="buy-button">Buy Now</a>
+		<td style="padding: 2px" ><a target="_blank"href="https://xyzscripts.com/members/product/purchase/XYZWPSMPPRE"  class="xyz-smap-buy-button">Buy Now</a>
 		</td>
 	</tr>
 		

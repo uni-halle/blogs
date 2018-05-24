@@ -338,7 +338,7 @@ function xyz_link_publish($post_ID) {
 				$message5=str_replace('{POST_CONTENT}', $description, $message4);
 				$message5=str_replace('{USER_NICENAME}', $user_nicename, $message5);
 				$message5=str_replace('{POST_ID}', $post_ID, $message5);
-				$publish_time=get_the_time('Y/m/d',$post_ID );
+				$publish_time=get_the_time(get_option('date_format'),$post_ID );
 				$message5=str_replace('{POST_PUBLISH_DATE}', $publish_time, $message5);
 				$message5=str_replace('{USER_DISPLAY_NAME}', $display_name, $message5);
 				$message5=str_replace("&nbsp;","",$message5);
@@ -571,7 +571,7 @@ function xyz_link_publish($post_ID) {
 			$substring=xyz_smap_split_replace('{POST_CONTENT}', $description, $substring);
 			$substring=str_replace('{USER_NICENAME}', $user_nicename, $substring);
 			$substring=str_replace('{POST_ID}', $post_ID, $substring);
-			$publish_time=get_the_time('Y/m/d',$post_ID );
+			$publish_time=get_the_time(get_option('date_format'),$post_ID );
 			$substring=str_replace('{POST_PUBLISH_DATE}', $publish_time, $substring);
 			$substring=str_replace('{USER_DISPLAY_NAME}', $display_name,$substring );
 			preg_match_all($reg_exUrl,$substring,$matches); // @ is same as /
@@ -784,7 +784,7 @@ function xyz_link_publish($post_ID) {
 			$message5=str_replace('{POST_CONTENT}', $description, $message4);
 			$message5=str_replace('{USER_NICENAME}', $user_nicename, $message5);
 			
-			$publish_time=get_the_time('Y/m/d',$post_ID );
+			$publish_time=get_the_time(get_option('date_format'),$post_ID );
 			$message5=str_replace('{POST_PUBLISH_DATE}', $publish_time, $message5);
 			$message5=str_replace('{POST_ID}', $post_ID, $message5);
 			$message5=str_replace('{USER_DISPLAY_NAME}', $display_name, $message5);
