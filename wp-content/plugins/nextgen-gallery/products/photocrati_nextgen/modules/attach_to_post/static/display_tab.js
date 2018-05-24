@@ -122,9 +122,12 @@ jQuery(function($){
 
         render: function(){
             this.$el.empty();
-            if (this.options.include_blank) {
-                this.$el.append("<option></option>");
+
+            if (this.multiple) {
+                this.$el.prop('multiple', true);
+                this.$el.attr('multiple', 'multiple');
             }
+
             this.collection.each(function(item){
                 var option = new this.Option({
                     model: item,
@@ -133,8 +136,11 @@ jQuery(function($){
                 });
                 this.$el.append(option.render().el);
             }, this);
-            if (this.multiple) this.$el.prop('multiple', true).attr('multiple', 'multiple');
-            if (this.width) this.$el.width(this.width);
+
+            if (this.width) {
+                this.$el.width(this.width);
+            }
+
             return this;
         },
 
@@ -175,7 +181,6 @@ jQuery(function($){
         initialize: function(options) {
             this.options = options || {};
             this.collection = this.options.collection;
-            this.options.include_blank = true;
             this.select_tag = new Ngg.Views.SelectTag(this.options);
             this.collection.on('change', this.selection_changed, this);
         },
@@ -196,14 +201,7 @@ jQuery(function($){
             };
 
             // Create the select2 drop-down
-            if (this.$el.parent().length == 0) {
-                $('body').append(this.$el);
-                this.select_tag.$el.select2(this.select2_opts);
-                var container = this.select_tag.$el.select2('container').detach();
-                this.$el.append(container);
-                this.$el.detach();
-            }
-            else this.select_tag.$el.select2(this.select2_opts);
+            this.select_tag.$el.select2(this.select2_opts);
 
             // Ensure that values are pre-populated
             if (this.options.multiple) {
@@ -214,10 +212,6 @@ jQuery(function($){
                 if (selected.length == 0) selected = '';
                 this.select_tag.$el.select2('val', selected);
             }
-
-
-            // For IE, ensure that the text field has a width
-            this.$el.find('.select2-input').width(this.options.width-20);
 
             return this;
         }
@@ -674,7 +668,7 @@ jQuery(function($){
                 width: 500
             });
 
-            var template = _.template('<tr><td><label><%- sources %></label></td><td id="source_column"></td></tr>');
+            var template = _.template('<tr><td id="source_column"></td><td><label><%- sources %></label></td></tr>');
             this.$el.html(template(igw_data.i18n));
             this.$el.find('#source_column').append(chosen.render().el);
 
@@ -760,27 +754,6 @@ jQuery(function($){
                 }
             });
 
-            if (selected_type) {
-                var selected_source = this.sources.selected_value();
-                var default_source = selected_type.get('default_source');
-
-                // If the default source isn't selected, then select it
-                if (default_source && selected_source != default_source) {
-
-                    // Get the default source object by name
-                    default_source = this.sources.where({
-                        name: default_source
-                    });
-
-                    // Does the default source exist ?
-                    if (default_source.length > 0) {
-                        default_source = default_source[0];
-                        this.sources.deselect_all();
-                        this.sources.select(default_source.id);
-                    }
-                }
-            }
-
             $('.display_settings_form').each(function(){
                 $this = $(this);
                 if ($this.attr('rel') == value) $this.removeClass('hidden');
@@ -817,12 +790,10 @@ jQuery(function($){
                 if (!display_order)
                     display_order = order_base;
                 var display_step = Math.floor(display_order / order_step);
-                if (current_step > 0 && display_step > current_step) {
-                    this.$el.append('<li class="clear" style="height: 10px" />');
-                }
                 current_step = display_step;
                 this.$el.append(display_type.render().el);
             }, this);
+            this.$el.append('<li class="clear" style="height: 10px; list-style-type:none" />');
             return this;
         },
 
@@ -868,10 +839,14 @@ jQuery(function($){
                     name: 'display_type',
                     checked: this.model.get('selected')
                 });
+                var line_break = $('<br>');
                 image_container.append(inner_div);
                 image_container.append(img);
+                image_container.append('<br>');
+                image_container.append(this.model.get('title').replace(/nextgen /gi, ''));
                 inner_div.append(radio_button);
-                inner_div.append(this.model.get('title'));
+                inner_div.append(line_break);
+                // inner_div.append(this.model.get('title').replace(/nextgen /gi, ''));
                 this.$el.append(image_container);
                 return this;
             }
@@ -999,7 +974,7 @@ jQuery(function($){
         },
 
         RefreshButton: Backbone.View.extend({
-            className: 'refresh_button',
+            className: 'refresh_button button-primary',
 
             tagName: 'input',
 
@@ -1041,7 +1016,7 @@ jQuery(function($){
 
             render: function(){
                 this.$el.empty();
-                this.$el.append('<strong>Exclude:</strong>');
+                this.$el.append('<span style="margin-right: 8px;">Exclude:</span>');
                 var all_button = new this.Button({
                     value: true,
                     text: 'All',
@@ -1212,7 +1187,7 @@ jQuery(function($){
             render: function(){
                 this.$el.empty();
                 this.populate_sorting_fields();
-                this.$el.append('<strong>Sort By:</strong>');
+                this.$el.append('<span style="margin-right: 8px;">Sort By:</span>');
                 this.sortorder_options.each(function(item, index){
                     var button = new this.Button({model: item, className: 'sortorder'});
                     this.$el.append(button.render().el);
@@ -1220,7 +1195,7 @@ jQuery(function($){
                         this.$el.append('<span class="separator">|</span>');
                     }
                 }, this);
-                this.$el.append('<strong style="margin-left: 30px;">Order By:</strong>');
+                this.$el.append('<span style="margin: 0 8px 0 40px;">Order By:</span>');
                 this.sortdirection_options.each(function(item, index){
                     var button = new this.Button({model: item, className: 'sortdirection'});
                     this.$el.append(button.render().el);
@@ -1366,7 +1341,7 @@ jQuery(function($){
                 multiple: true,
                 width: 500
             });
-            var html = $('<tr><td><label>'+igw_data.i18n.galleries+'</label></td><td class="galleries_column"></td></tr>');
+            var html = $('<tr><td class="galleries_column"></td><td><label>'+igw_data.i18n.galleries+'</label></td></tr>');
             this.$el.empty();
             this.$el.append(html);
             this.$el.find('.galleries_column').append(select.render().el);
@@ -1390,7 +1365,7 @@ jQuery(function($){
                 width: 500
             });
             this.$el.empty();
-            this.$el.append('<tr><td><label>'+igw_data.i18n.albums+'</label></td><td class="albums_column"></td></tr>');
+            this.$el.append('<tr><td class="albums_column"></td><td><label>'+igw_data.i18n.albums+'</label></td></tr>');
             this.$el.find('.albums_column').append(album_select.render().el);
             return this;
         }
@@ -1412,7 +1387,7 @@ jQuery(function($){
                 width: 500
             });
             this.$el.empty();
-            this.$el.append('<tr><td><label>Tags</label></td><td class="tags_column"></td></tr>');
+            this.$el.append('<tr><td class="tags_column"></td><td><label>Tags</label></td></tr>');
             this.$el.find('.tags_column').append(tag_select.render().el);
             return this;
         }
@@ -1440,7 +1415,7 @@ jQuery(function($){
             });
 
             this.$el.empty();
-            this.$el.append('<tr><td><label># of Images To Display</label></td><td class="recent_images_column"></td></tr>');
+            this.$el.append('<tr><td class="recent_images_column"></td><td><label># of Images To Display</label></td></tr>');
             this.$el.find('.recent_images_column').append(edit_field);
             return this;
         }
@@ -1468,7 +1443,7 @@ jQuery(function($){
             });
 
             this.$el.empty();
-            this.$el.append('<tr><td><label># of Images To Display</label></td><td class="random_images_column"></td></tr>');
+            this.$el.append('<tr><td class="random_images_column"></td><td><label># of Images To Display</label></td></tr>');
             this.$el.find('.random_images_column').append(edit_field);
             return this;
         }
@@ -1640,6 +1615,15 @@ jQuery(function($){
                 //this.displayed_gallery.set('sortorder', this.entities.entity_ids());
                 this.displayed_gallery.set('exclusions', this.entities.excluded_ids());
             }, this);
+
+            // Default to the "galleries" display types when creating new entries
+            if (!this.displayed_gallery.get('source')) {
+                var defaultsource = this.sources.find_by_name_or_alias('galleries');
+                if (defaultsource) {
+                    defaultsource.set('selected', true);
+                    this.sources.trigger('selected');
+                }
+            }
 
             // Monitor events in other tabs and respond as appropriate
             if (window.Frame_Event_Publisher) {

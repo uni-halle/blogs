@@ -24,7 +24,7 @@ class M_Dynamic_Stylesheet extends C_Base_Module
 			'photocrati-dynamic_stylesheet',
 			'Dynamic Stylesheet',
 			'Provides the ability to generate and enqueue a dynamic stylesheet',
-			'0.4',
+			'3.0.0',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Imagely',
             'https://www.imagely.com',

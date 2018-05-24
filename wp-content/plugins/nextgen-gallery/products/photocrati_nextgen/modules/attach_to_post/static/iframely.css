@@ -29,3 +29,169 @@ html#iframely {
 #iframely #icon-nextgen-gallery {
     display: none;
 }
+
+#iframely #wpwrap {
+    background-color: #fcfcfc;
+}
+
+#iframely #ngg_page_content {
+    margin: 0;
+    width: 100%;
+}
+
+#iframely .ngg-admin .notice, 
+#iframely .ngg-admin div.error, 
+#iframely .ngg-admin div.updated {
+    display: none;
+}
+
+#iframely #ngg_page_content .ngg_page_content_header {
+    display:none;
+}
+
+#iframely #ngg_page_content .ngg_page_content_menu {
+    background: transparent;
+    border: none;
+    padding: 10px 20px 10px 0;
+    float: none;
+    height: 25px;
+    margin-top: 0;
+    width: auto;
+}
+
+#iframely #ngg_page_content .ngg_page_content_menu a {
+    border: none;
+    color: #bbb;
+    display: inline;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    line-height: 25px;
+    padding: 15px 20px;
+    border-left: 1px solid #f7f8f3;
+    border-right: 1px solid #f7f8f3;
+}
+
+#iframely #ngg_page_content .ngg_page_content_menu .ngg_page_content_menu_active {
+	color: #9fbb1a;
+    border-right: 1px solid #edeeeb;
+    border-left: 1px solid #edeeeb;
+}
+
+#iframely #ngg_page_content .ngg_page_content_menu a:before {
+	display: none;
+}
+
+#iframely #ngg_page_content .ngg_page_content_main {
+    padding: 30px;
+    width: 100%;
+}
+
+#iframely #ngg_page_content .ngg_page_content_main h3 {
+    display: none;
+}
+
+#iframely #ngg_page_content .ngg_manage_tags .ngg_page_content_main h3,
+#iframely #ngg_page_content .ngg_manage_images .ngg_page_content_main h3,
+#iframely #ngg_page_content .ngg_manage_albums .ngg_page_content_main h3 {
+    display: block;
+}
+
+#iframely #ngg_page_content button:active,
+#iframely #ngg_page_content .button-primary:active,
+#iframely #ngg_page_content .button-secondary:active {
+    vertical-align: top;
+}
+
+#iframely #ngg_page_content .ngg_manage_galleries .search-form {
+    margin-top: -20px;
+}
+
+#iframely #ngg_page_content .ngg_manage_galleries p.search-box {
+    margin: 0;
+    position: relative;
+    float: none;
+    top: 37px;
+    left: 450px;
+    width: 350px;
+}
+
+#iframely .ngg_manage_galleries table #id {
+    min-width: 40px;
+}
+
+#iframely .ngg_manage_galleries table #author {
+    min-width: 85px;
+}
+
+#iframely .ngg_manage_galleries table #page_id {
+    min-width: 65px;
+}
+#iframely .gallery_page_nggallery-manage-gallery .ui-dialog {
+    height: auto !important;
+    min-height: auto;
+}
+
+/* Media Queries */
+
+
+@media (max-width: 1140px) {
+    #iframely .plupload_buttons {
+        display: inline;
+        margin: 0 0 0 10px;
+    }
+    #iframely .gallery_page_ngg_addgallery #ngg_page_content button,
+    #iframely .gallery_page_ngg_addgallery #ngg_page_content .button-primary,
+    #iframely .gallery_page_ngg_addgallery #ngg_page_content .button-secondary {
+        width: 130px !important;
+    }
+}
+
+@media (max-width: 940px) {
+    #iframely .plupload_buttons {
+        display: block;
+        margin: 10px 0 0 75px;
+    }
+    #iframely .gallery_page_ngg_addgallery #ngg_page_content button,
+    #iframely .gallery_page_ngg_addgallery #ngg_page_content .button-primary,
+    #iframely .gallery_page_ngg_addgallery #ngg_page_content .button-secondary {
+        width: 201px !important;
+    }
+}
+
+@media (max-width: 800px) {
+    #iframely .ngg-admin #wpbody {
+        padding: 0;
+    } 
+    #iframely #ngg_page_content .ngg_page_content_menu {
+        padding: 5px 0 0;
+    }
+    #iframely #ngg_page_content .ngg_page_content_menu a {
+        display: block;
+        width: 100%;
+        float: left;
+        padding: 0;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    #iframely #ngg_page_content .ngg_page_content_menu .ngg_page_content_menu_active, 
+    #iframely #ngg_page_content .ngg_page_content_menu a:active {
+        background: transparent;
+    }
+    #iframely #ngg_page_content .ngg_page_content_menu a:last-of-type {
+        padding-bottom: 5px;
+    }
+    #iframely .plupload_buttons {
+        margin-left: 0;
+    }
+    #iframely #ngg_page_content .plupload_droptext {
+        line-height: 60px;
+    }
+    #iframely .gallery_page_ngg_addgallery #ngg_page_content button,
+    #iframely .gallery_page_ngg_addgallery #ngg_page_content .button-primary,
+    #iframely .gallery_page_ngg_addgallery #ngg_page_content .button-secondary {
+        width: 100% !important;
+        margin: 4px 0;
+        display: block;
+    }
+}

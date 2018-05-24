@@ -26,7 +26,7 @@ class A_Display_Settings_Controller extends Mixin
 }
 /**
  * Class A_Display_Settings_Page
- * @mixin C_Page_Manager
+ * @mixin C_NextGen_Admin_Page_Manager
  * @adapts I_Page_Manager
  */
 class A_Display_Settings_Page extends Mixin
@@ -1784,7 +1784,7 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
             $lookup = FALSE;
         }
         // Enqueue any necessary static resources
-        if (!defined('NGG_SKIP_LOAD_SCRIPTS') || !NGG_SKIP_LOAD_SCRIPTS) {
+        if ((!defined('NGG_SKIP_LOAD_SCRIPTS') || !NGG_SKIP_LOAD_SCRIPTS) && !$this->is_rest_request()) {
             $controller->enqueue_frontend_resources($displayed_gallery);
         }
         // Try cache lookup, if we're to do so
@@ -1842,6 +1842,10 @@ class Mixin_Displayed_Gallery_Renderer extends Mixin
             echo $retval;
         }
         return $retval;
+    }
+    function is_rest_request()
+    {
+        return strpos($_SERVER['REQUEST_URI'], 'wp-json') !== FALSE;
     }
 }
 class C_Displayed_Gallery_Source_Manager

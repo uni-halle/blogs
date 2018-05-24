@@ -1,7 +1,7 @@
 <?php
 /**
  * Class A_NextGen_Pro_Plus_Upgrade_Page
- * @mixin C_Page_Manager
+ * @mixin C_NextGen_Admin_Page_Manager
  * @adapts I_Page_Manager
  * @todo merge with A_NextGen_Pro_Upgrade_Page class
  */
@@ -39,7 +39,7 @@ class A_NextGen_Pro_Upgrade_Controller extends Mixin
     }
     function get_page_title()
     {
-        return __('Upgrade to Pro', 'nggallery');
+        return __('Upgrade', 'nggallery');
     }
     function get_required_permission()
     {

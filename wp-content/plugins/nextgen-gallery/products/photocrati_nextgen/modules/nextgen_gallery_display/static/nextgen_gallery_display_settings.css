@@ -8,7 +8,7 @@
 
 .gallery_page_ngg_display_settings table tr td:first-child {
     vertical-align: top;
-    text-align: right;
+    /*text-align: right;*/
     padding-right: 7px;
     padding-top: 5px;
 }
@@ -23,7 +23,6 @@
 }
 
 .gallery_page_ngg_display_settings input[type=number] {
-    width: 75px;
     text-align: center;
 }
 

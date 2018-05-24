@@ -73,7 +73,7 @@
             </td>
             <td>
                 <img src='<?php echo $thumbnail_url; ?>'/>
-                <button id='nextgen_settings_preview_refresh' data-refresh-url='<?php echo $refresh_url; ?>'><?php echo $refresh_label; ?></button>
+                <button id='nextgen_settings_preview_refresh' class="button-primary" data-refresh-url='<?php echo $refresh_url; ?>'><?php echo $refresh_label; ?></button>
             </td>
         </tr>
     <?php } ?>

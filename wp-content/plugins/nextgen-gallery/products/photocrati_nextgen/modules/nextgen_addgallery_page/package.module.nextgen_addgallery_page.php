@@ -39,7 +39,7 @@ class A_Import_Media_Library_Form extends Mixin
         wp_enqueue_script('nextgen_media_library_import-js');
         wp_enqueue_style('nextgen_media_library_import-css');
         $url = admin_url() . 'admin.php?page=nggallery-manage-gallery&mode=edit&gid={gid}';
-        $i18n_array = array('admin_url' => admin_url(), 'title' => __('Import Images into NextGen Gallery', 'nggallery'), 'import_multiple' => __('Import %s images', 'nggallery'), 'import_singular' => __('Import 1 image', 'nggallery'), 'imported_multiple' => sprintf(__('{count} images were uploaded successfully. <a href="%s" target="_blank">Manage gallery</a>', 'nggallery'), $url), 'imported_singular' => sprintf(__('1 image was uploaded successfully. <a href="%s" target="_blank">Manage gallery</a>', 'nggallery'), $url), 'imported_none' => __('0 images were uploaded', 'nggallery'), 'progress_title' => __('Importing gallery', 'nggallery'), 'in_progress' => __('In Progress...', 'nggallery'), 'gritter_title' => __('Upload complete', 'nggallery'), 'gritter_error' => __('An unexpected error occured. This is most likely due to a server misconfiguration. Check your PHP error log or ask your hosting provider for assistance.', 'nggallery'));
+        $i18n_array = array('admin_url' => admin_url(), 'title' => __('Import Images into NextGen Gallery', 'nggallery'), 'import_multiple' => __('Import %s images', 'nggallery'), 'import_singular' => __('Import 1 image', 'nggallery'), 'imported_multiple' => sprintf(__('{count} images were uploaded successfully. <a href="%s" target="_blank">Manage gallery</a>', 'nggallery'), $url), 'imported_singular' => sprintf(__('1 image was uploaded successfully. <a href="%s" target="_blank">Manage gallery</a>', 'nggallery'), $url), 'imported_none' => __('0 images were uploaded', 'nggallery'), 'progress_title' => __('Importing gallery', 'nggallery'), 'in_progress' => __('In Progress...', 'nggallery'), 'gritter_title' => __('Upload complete. Great job!', 'nggallery'), 'gritter_error' => __('Oops! Sorry, but an error occured. This may be due to a server misconfiguration. Check your PHP error log or ask your hosting provider for assistance.', 'nggallery'));
         foreach (C_WordPress_Security_Manager::get_instance()->get_request_token('nextgen_upload_image')->get_request_list() as $name => $value) {
             $i18n_array['sectoken'][$name] = $value;
         }
@@ -361,14 +361,18 @@ class A_NextGen_AddGallery_Controller extends Mixin
 }
 /**
  * Class A_NextGen_AddGallery_Pages
- * @mixin C_Page_Manager
+ * @mixin C_NextGen_Admin_Page_Manager
  * @adapts I_Page_Manager
  */
 class A_NextGen_AddGallery_Pages extends Mixin
 {
     function setup()
     {
-        $this->object->add(NGG_ADD_GALLERY_SLUG, array('adapter' => 'A_NextGen_AddGallery_Controller', 'parent' => NGGFOLDER, 'add_menu' => TRUE, 'before' => 'nggallery-manage-gallery'));
+        // TODO: remove this if() when plupload is upgraded
+        // Because iOS cannot work with our current version of plupload we hide this page from iOS users
+        if (!preg_match('/crios|iP(hone|od|ad)/i', $_SERVER['HTTP_USER_AGENT'])) {
+            $this->object->add(NGG_ADD_GALLERY_SLUG, array('adapter' => 'A_NextGen_AddGallery_Controller', 'parent' => NGGFOLDER, 'add_menu' => TRUE, 'before' => 'nggallery-manage-gallery'));
+        }
         return $this->call_parent('setup');
     }
 }
@@ -385,7 +389,7 @@ class A_Upload_Images_Form extends Mixin
     }
     function get_i18n_strings()
     {
-        return array('no_image_uploaded' => __('No images were uploaded successfully.', 'nggallery'), 'one_image_uploaded' => __('1 image was uploaded successfully.', 'nggallery'), 'x_images_uploaded' => __('{count} images were uploaded successfully.', 'nggallery'), 'image_errors' => __('The following errors occured:', 'nggallery'), 'manage_gallery' => __('Manage gallery {name}', 'nggallery'));
+        return array('no_image_uploaded' => __('No images were uploaded successfully.', 'nggallery'), 'one_image_uploaded' => __('1 image was uploaded successfully.', 'nggallery'), 'x_images_uploaded' => __('{count} images were uploaded successfully.', 'nggallery'), 'image_errors' => __('The following errors occured:', 'nggallery'), 'manage_gallery' => __('Manage gallery > {name}', 'nggallery'));
     }
     /**
      * Plupload stores its i18n JS *mostly* as "en.js" or "ar.js" - but some as zh_CN.js so we must check both if the

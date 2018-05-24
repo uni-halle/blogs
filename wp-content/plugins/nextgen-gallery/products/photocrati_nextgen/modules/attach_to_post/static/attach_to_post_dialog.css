@@ -1,18 +1,94 @@
-/* TinyMCE 4 rules */
+/* Thickbox-based IGW Rules */
+
+.ngg_tb_window #TB_iframeContent {
+    height:100.1% !important;
+}
+
+.ngg_tb_window #TB_title {
+    height: 0 !important;
+    border: none !important;
+}
+
+.ngg_tb_window #TB_closeWindowButton {
+    background: transparent;
+    top: 10px;
+    right: 20px;
+}
+
+.ngg_tb_window .tb-close-icon,
+.ngg_tb_window #TB_closeWindowButton:focus .tb-close-icon {
+    color: #fff;
+    border: none;
+    box-shadow: none;
+    background: #9fbb1a;
+    border-radius: 50%;
+    padding: 1px;
+    height: 20px;
+    width: 20px;
+    font-size: 12px;
+}
+
+.ngg_tb_window #TB_closeWindowButton:hover .tb-close-icon, 
+.ngg_tb_window #TB_closeWindowButton:focus .tb-close-icon {
+    color: #fff;
+}
+
+.ngg_tb_window .tb-close-icon:before {
+    font: normal 18px dashicons;
+}
+
+/* TinyMCE 4-based IGW rules */
+
+#ngg_attach_to_post_dialog {
+    width: 95% !important;
+    left: 2.5% !important;
+}
+
+#ngg_attach_to_post_dialog-head
 #ngg_attach_to_post_dialog-title {
     display: none;
+}
+
+#ngg_attach_to_post_dialog-body {
+    width: 100% !important;
 }
 
 #ngg_attach_to_post_dialog-head {
     min-height: 0;
     height: 0;
+    border: none;
 }
 
 #ngg_attach_to_post_dialog-head .mce-close {
     position: absolute;
-    top: 6px !important;
+    background: transparent;
+    top: 10px !important;
     right: 20px !important;
     z-index: 2;
+}
+
+#ngg_attach_to_post_dialog-head .mce-close i,
+#ngg_attach_to_post_dialog-head .mce-close:focus i {
+    color: #fff;
+    border: none;
+    box-shadow: none;
+    background: #9fbb1a;
+    border-radius: 50%;
+    padding: 1px;
+    height: 20px;
+    width: 20px;
+    font-size: 12px;
+}
+
+#ngg_attach_to_post_dialog-head .mce-close:hover i, 
+#ngg_attach_to_post_dialog-head .mce-close:focus i {
+    color: #fff;
+}
+
+#ngg_attach_to_post_dialog-head .mce-close i:before {
+    font: normal 17px dashicons;
+    color: #fff;
+    margin: 1.2px 0 0 -8px;
 }
 
 .ngg_attach_to_post_window {
@@ -20,7 +96,8 @@
 	border: none !important;
 }
 
-/* TinyMCE 3 rules */
+/* TinyMCE 3-based IGW rules */
+
 .ngg_attach_to_post_window .mceResize,
 .ngg_attach_to_post_window .mceTop,
 .ngg_attach_to_post_window .mceBottom,
@@ -60,4 +137,62 @@
     border-radius: 0px;
     background: rgba(255, 255, 255, 0.6);
     border-top: none;
+}
+
+/* Styling for NGG placeholder in Gutenberg. This styling mimics
+ * rules in ngg_attach_to_post_tinymce_plugin.css to ensure the
+ * placeholder is properly styled for Gutenberg. */
+
+div[aria-label="Block: Classic"] .nggPlaceholder {
+    background-color: #143650;
+    box-sizing: border-box;
+    border-bottom: 5px solid #9fbb1a;
+    border-radius: 3px;
+    box-shadow: 0 0 4px 1px rgba(0,0,0,.05);
+    color: #9fbb1a;
+    font-family: sans-serif;
+    font-size: 20px;
+    height: 200px;
+    margin: 5px;
+    outline: none !important;
+    padding: 30px 30px 50px 30px;
+    text-align: center;
+    width: 100%;
+}
+
+div[aria-label="Block: Classic"] .nggPlaceholder h3 {
+    color: #fff;
+    font-family: Lato, sans-serif;
+    font-size: 16px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 24px 0 0 0;
+}
+
+div[aria-label="Block: Classic"] .nggPlaceholderButton:hover {
+    margin: 0;
+    opacity: .8;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    color: #9fbb1a;
+}
+
+div[aria-label="Block: Classic"] .nggPlaceholderButton {
+    font-size: 13px;
+    font-size: 1.3rem;
+    margin: 0;
+    opacity: 1.0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    color: #bbb;
+    padding: 4px 0px 0 12px;
+    color: rgba(159, 187, 26, 0.7)
+}
+
+div[aria-label="Block: Classic"] .nggPlaceholderButton.nggIgwRemove {
+    border-left: 1px solid rgba(204, 204, 204, 0.4);
+}
+
+@media (max-width: 781px) {
+    #TB_window.ngg_tb_window {
+        position: absolute !important;
+    }
 }

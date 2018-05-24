@@ -174,6 +174,8 @@ class C_NextGen_Shortcode_Manager
 	{
 		$regex = str_replace('%d', '(\d+)', $this->_placeholder_text);
 
+		if ($this->is_rest_request()) ob_start();
+
 		if (preg_match_all("/{$regex}/m", $content, $matches, PREG_SET_ORDER)) {
 			foreach ($matches as $match) {
 				$placeholder = array_shift($match);
@@ -182,16 +184,21 @@ class C_NextGen_Shortcode_Manager
 			}
 		}
 
+		if ($this->is_rest_request()) ob_end_clean();
+
         return $content;
 	}
 
 	function execute_found_shortcode($found_id)
 	{
+		$retval = '';
 		$details 	= $this->_found[$found_id];
 		if (isset($this->_shortcodes[$details['shortcode']])) {
-			return call_user_func($this->_shortcodes[$details['shortcode']], $details['params'], $details['inner_content']);
+			$retval = call_user_func($this->_shortcodes[$details['shortcode']], $details['params'], $details['inner_content']);
 		}
-		return "Invalid shortcode";
+		else $retval =  "Invalid shortcode";
+
+		return $retval;
 	}
 
 	/**
@@ -225,21 +232,29 @@ class C_NextGen_Shortcode_Manager
 			remove_shortcode($shortcode);
 	}
 
+	function is_rest_request()
+	{
+		return strpos($_SERVER['REQUEST_URI'], 'wp-json') !== FALSE;
+	}
+
 	function __call($method, $args)
 	{
+		$retval = '';
 		$params = array_shift($args);
-		$inner_content = array_shift($args);
+		$retval = $inner_content = array_shift($args);
 		$parts = explode('____', $method);
 		$shortcode = array_shift($parts);
 		if (doing_filter('the_content') && !doing_filter('widget_text')) {
-			return $this->replace_with_placeholder($shortcode, $params, $inner_content);
+			$retval =  $this->replace_with_placeholder($shortcode, $params, $inner_content);
 		}
 
 		// For widgets, don't use placeholders
 		else {
 			$callback = $this->_shortcodes[$shortcode];
-			return call_user_func($callback, $params, $inner_content);
+			$retval = call_user_func($callback, $params, $inner_content);
 		}
+
+		return $retval;
 
 	}
 

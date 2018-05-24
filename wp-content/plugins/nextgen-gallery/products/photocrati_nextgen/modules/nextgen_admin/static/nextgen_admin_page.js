@@ -1,14 +1,39 @@
 jQuery(function($){
 
-    // Activate accordions
-    $('.accordion').accordion({
-        clearStyle: true,
-        autoHeight: false,
-        heightStyle: 'content',
-        collapsible: true,
-        icons: {
-            header: 'ui-icon-triangle-1-s',
-            activeHeader: 'ui-icon-triangle-1-n'
+    /* Set active link color and show form sections when menu item is clicked */
+    $('.ngg_page_content_menu a:first-of-type').addClass("ngg_page_content_menu_active");
+
+    $('.ngg_page_content_menu a').click( function(e) {
+        
+        /* Add color to only the active link */
+        $('.ngg_page_content_menu a').removeClass("ngg_page_content_menu_active");
+        $(this).addClass("ngg_page_content_menu_active");
+
+        /* Show the associated div */
+        var id = $(this).attr('data-id');
+        $('.ngg_page_content_main > div').css("display", "none");
+        $('div[data-id="' + $(this).attr('data-id') + '"]').css("display", "block");
+
+    });
+
+    /* Set up responsive menu for mobile devices. */   
+    $(".responsive-menu-icon").remove();
+    $(".ngg_page_content_menu").addClass("responsive-menu").before('<div class="responsive-menu-icon"></div>');
+
+    $(".responsive-menu-icon").click(function(){
+        $(this).next(".ngg_page_content_menu").slideToggle( "fast" );
+    });
+
+    $(window).resize(function(){
+        if(window.innerWidth > 640) {
+            $(".ngg_page_content_menu").removeAttr("style");
+            $(".responsive-menu > a").removeClass("menu-open");
+        }
+    });
+
+    $(".responsive-menu > a").click(function(event){
+        if(window.innerWidth < 782) {
+            $(this).parent(".ngg_page_content_menu").slideToggle( "fast" );
         }
     });
 

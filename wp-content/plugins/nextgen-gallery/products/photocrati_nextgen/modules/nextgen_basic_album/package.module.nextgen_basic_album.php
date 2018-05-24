@@ -525,7 +525,7 @@ class A_NextGen_Basic_Album_Controller extends Mixin_NextGen_Basic_Pagination
                         $template = 'extended';
                         break;
                 }
-                return $this->object->render_view("photocrati-nextgen_basic_album#{$template}", $params, $return);
+                return $this->object->render_partial("photocrati-nextgen_basic_album#{$template}", $params, $return);
             }
         } else {
             return $this->object->render_partial('photocrati-nextgen_gallery_display#no_images_found', array(), $return);

@@ -272,8 +272,8 @@ class nggdb
 
         // Unserialize the galleries inside the album
         if ( $album ) {
-			// XXX nggdb is used statically, cannot inherit from Ngg_Serializable
-			$serializer = new Ngg_Serializable();
+
+	        $serializer = new Ngg_Serializable();
 
             if ( !empty( $album->sortorder ) )
                 $album->gallery_ids = $serializer->unserialize( $album->sortorder );
@@ -897,16 +897,14 @@ class nggdb
         global $wpdb;
 
         // XXX nggdb is used statically, cannot inherit from Ngg_Serializable
-        $serializer = new Ngg_Serializable();
+	    $serializer = new Ngg_Serializable();
 
         // Query database for existing values
         // Use cache object
         $old_values = $wpdb->get_var( $wpdb->prepare( "SELECT meta_data FROM $wpdb->nggpictures WHERE pid = %d ", $id ) );
-        $old_values = $serializer->unserialize( $old_values );
-
+        $old_values = $serializer->unserialize( $old_values);
         $meta = array_merge( (array)$old_values, (array)$new_values );
         $serialized_meta = $serializer->serialize($meta);
-
         $result = $wpdb->query( $wpdb->prepare("UPDATE $wpdb->nggpictures SET meta_data = %s WHERE pid = %d", $serialized_meta, $id) );
 
         do_action('ngg_updated_image_meta', $id, $meta);

@@ -8,34 +8,48 @@
 }
 
 /* bootstrap styles */
-.tourist-popover{
+.tourist-popover {
   padding: 0;
 }
-.tourist-popover .popover-content{
+.tourist-popover .popover-content {
   padding: 10px 0 0 0;
   min-width: 200px;
 }
-.tourist-popover .popover-content p{
+.tourist-popover .popover-content p {
   margin: 0 8px 10px 8px;
 }
-.tourist-popover .popover-content .action-label{
+.tourist-popover .popover-content .action-label {
   background: rgba(0, 111, 255, 0.168627);
   font-size: 14px;
   padding: 3px 10px;
 }
-.tourist-popover .popover-content .tour-counter{
+.tourist-popover .popover-content .tour-counter {
   margin: 0; padding: 0;
   position: absolute;
-  left: 10px; bottom: 14px;
+  left: 20px; 
+  bottom: 23px;
   font-size: 11px;
   color: #acacac;
+  color: #fff;
 }
-.tourist-popover .tour-buttons{
-  padding: 8px 10px;
+.tourist-popover .tour-buttons {
   min-height: 28px;
   background: #f5f5f5;
   border-radius: 0px 0px 6px 6px;
   box-sizing: content-box;
+  background: #2a343d;
+  padding: 15px 20px 17px;
+  border-top: 3px solid #9fbb1a;
+}
+.tourist-popover .button-primary {
+    background-color: #9fbb1a;
+    box-shadow: none;
+    text-shadow: none;
+    border: none;
+    padding: 1px 20px;
+}
+.tourist-popover .button-primary:hover {
+    background-color: #A9C524;
 }
 .tourist-popover .btn-close{
   background: none;
@@ -47,6 +61,10 @@
 }
 .tourist-popover .btn-close:hover{
   opacity: .5;
+}
+.tourist-popover.top > .arrow {
+    border-top-color: #2a343d;
+    overflow: hidden;
 }
 
 /* qtip2 styles */

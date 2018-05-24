@@ -14,7 +14,7 @@ class M_Validation extends C_Base_Module
 			'photocrati-validation',
 			'Validation',
 			'Provides validation support for objects',
-			'0.2',
+			'3.0.0',
 			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 			'Imagely',
 			'https://www.imagely.com'

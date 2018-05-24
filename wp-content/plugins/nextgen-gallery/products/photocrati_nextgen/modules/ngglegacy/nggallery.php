@@ -213,7 +213,7 @@ class nggLoader
 
 		// Load global libraries												// average memory usage (in bytes)
 		require_once (dirname (__FILE__) . '/lib/core.php');					//  94.840
-		require_once (dirname (__FILE__) . '/lib/class.ngg_serializable.php');					//  94.840
+		require_once (dirname (__FILE__) . '/lib/class.ngg_serializable.php');
 		require_once (dirname (__FILE__) . '/lib/ngg-db.php');					// 132.400
 		require_once (dirname (__FILE__) . '/lib/image.php');					//  59.424
 		require_once (dirname (__FILE__) . '/lib/tags.php');				    // 117.136

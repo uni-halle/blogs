@@ -534,7 +534,7 @@ class A_NextGen_Basic_Thumbnails_Controller extends Mixin
                 $params['thumbnail_size_name'] = $thumbnail_size_name;
                 $params['slideshow_link'] = $slideshow_link;
                 $params = $this->object->prepare_display_parameters($displayed_gallery, $params);
-                $output = $this->object->render_view('photocrati-nextgen_basic_gallery#thumbnails/index', $params, $return);
+                $output = $this->object->render_partial('photocrati-nextgen_basic_gallery#thumbnails/index', $params, $return);
             }
             return $output;
         } else {

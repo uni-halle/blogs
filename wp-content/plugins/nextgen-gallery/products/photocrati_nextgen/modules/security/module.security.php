@@ -14,7 +14,7 @@ class M_Security extends C_Base_Module
 			'photocrati-security',
 			'Security',
 			'Provides utilities to check for credentials and security',
-			'0.3',
+			'3.0.0',
 			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
 			'Imagely',
 			'https://www.imagely.com'

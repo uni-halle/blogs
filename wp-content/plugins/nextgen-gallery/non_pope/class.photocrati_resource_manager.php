@@ -67,8 +67,14 @@ class C_Photocrati_Resource_Manager
 		elseif ((isset($_SERVER['PATH_INFO']) && strpos($_SERVER['PATH_INFO'], 'nextgen-pro-lightbox-gallery') !== FALSE) OR strpos($_SERVER['REQUEST_URI'], 'nextgen-pro-lightbox-gallery') !== FALSE) {
 			$retval = FALSE;
 		}
+		else if ($this->is_rest_request()) $retval = FALSE;
 
 		return $retval;
+	}
+
+	function is_rest_request()
+	{
+		return strpos($_SERVER['REQUEST_URI'], 'wp-json') !== FALSE;
 	}
 
 	/**

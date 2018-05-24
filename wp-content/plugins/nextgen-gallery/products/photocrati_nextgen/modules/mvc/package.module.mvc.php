@@ -430,7 +430,7 @@ class Mixin_MVC_Controller_Instance_Methods extends Mixin
      */
     function render()
     {
-        if (!headers_sent()) {
+        if (!headers_sent() || defined('DOING_AJAX')) {
             header('Content-Type: ' . $this->object->_content_type . '; charset=' . get_option('blog_charset'), true);
         }
     }

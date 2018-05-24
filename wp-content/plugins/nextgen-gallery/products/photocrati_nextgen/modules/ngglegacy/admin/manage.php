@@ -194,7 +194,7 @@ class nggManageGallery {
 
 		$output = array();
 
-		$output[] = "<a href='{$image_url}' class='shutter' title='{$filename}'>";
+		$output[] = "<a href='{$image_url}' class='thickbox' title='{$filename}'>";
 		$output[] = "<img class='thumb' src='{$thumb_url}' id='thumb{$picture->pid}'/>";
 		$output[] = "</a>";
 
@@ -302,7 +302,7 @@ class nggManageGallery {
 		$alt_text	= empty($picture->alttext) ? $picture->filename: $picture->alttext;
 		$title		= esc_attr(__('View', 'nggallery'). " \"{$alt_text}\"");
 
-		return "<a href='{$image_url}' class='shutter' title='{$title}'>{$label}</a>";
+		return "<a href='{$image_url}' class='thickbox' title='{$title}'>{$label}</a>";
 	}
 
 	function render_meta_action_link($id, $picture)
@@ -351,6 +351,7 @@ class nggManageGallery {
 		$title		= esc_attr__('Recover image from backup', 'nggallery');
 		$label		= esc_html__('Recover', 'nggallery');
 		$alttext	= empty($picture->alttext) ? $picture->filename : $picture->alttext;
+		$alttext    = M_NextGen_Data::strip_html(html_entity_decode($alttext), TRUE);
 		$confirm	= addslashes(__("Recover", 'nggallery'). " \"{$alttext}\"?");
 		$onclick	= "javascript:if(!confirm(\"{$confirm}\")) return false";
 
@@ -363,6 +364,7 @@ class nggManageGallery {
 		$title		= esc_attr__('Delete image', 'nggallery');
 		$label		= esc_html__('Delete', 'nggallery');
 		$alttext	= empty($picture->alttext) ? $picture->filename : $picture->alttext;
+		$alttext    = M_NextGen_Data::strip_html(html_entity_decode($alttext), TRUE);
 		$confirm	= addslashes(__("Delete", 'nggallery'). " \"{$alttext}\"?");
 		$onclick	= "javascript:if(!confirm(\"{$confirm}\")) return false;";
 

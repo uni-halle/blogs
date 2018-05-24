@@ -159,242 +159,256 @@ function nggallery_admin_overview()
     $NGG_Admin_Overview = new C_NGG_Admin_Overview();
 
     global $wpdb;
+    
+    $action_status = array('message' => '', 'status' => 'ok');
+
     $images    = intval($wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggpictures"));
     $galleries = intval($wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggallery"));
     $albums    = intval($wpdb->get_var("SELECT COUNT(*) FROM $wpdb->nggalbum"));
 
     ?>
 
-    <div class="wrap about-wrap">
-        <h1><?php _e( 'Welcome to NextGEN Gallery', 'nggallery' ); ?></h1>
+    <?php if ($action_status['message']!='') : ?>
+        <div id="message" class="<?php echo ($action_status['status']=='ok' ? 'updated' : $action_status['status']); ?> fade">
+            <p><strong><?php echo $action_status['message']; ?></strong></p>
+        </div>
+    <?php endif; ?>
 
-        <div class="about-text"><?php printf( __( "Congrats! You're now running the most popular WordPress gallery plugin of all time. So far you've added %s images, %s galleries, and %s albums." ), $images, $galleries, $albums); ?></div>
-        <div class="about-text" id="ngg-gallery-wizard"><?php echo __("Need help setting up a gallery? Launch the ", 'nggallery') . ' <a data-ngg-wizard="nextgen.beginner.gallery_creation_igw" class="ngg-wizard-invoker" href="' . esc_url(add_query_arg('ngg_wizard', 'nextgen.beginner.gallery_creation_igw')) . '">' . __('Gallery Wizard.', 'nggallery') . '</a>'; ?></div>
-        <div class="wp-badge"></div>
+    <div class="wrap about-wrap ngg_overview">
 
-        <h2 class="nav-tab-wrapper wp-clearfix" id="ngg-tabs-wrapper">
-            <a href="#top#welcome" class="nav-tab nav-tab-active" id="welcome-link"><?php _e( 'Welcome', 'nggallery' ); ?></a>
-            <a href="#top#videos" class="nav-tab" id="videos-link"><?php _e( 'More Videos' ); ?></a>
-            <a href="#top#pro" class="nav-tab" id="pro-link"><?php _e( 'NextGEN Pro' ); ?></a>
-            <a href="#top#genesis" class="nav-tab" id="genesis-link"><?php _e( 'Genesis Themes' ); ?></a>
+        <div class="ngg_page_content_header">
+            <img src="<?php  echo(C_Router::get_instance()->get_static_url('photocrati-nextgen_admin#imagely_icon.png')); ?>"><h3><?php echo _e( 'Welcome to NextGEN Gallery', 'nggallery' ); ?></h3>
+        </div>
+
+        <div class="about-text" id="ngg-gallery-wizard"><span><?php echo __("Need help getting started? ", 'nggallery')?></span><?php echo ' <a data-ngg-wizard="nextgen.beginner.gallery_creation_igw" class="ngg-wizard-invoker button-primary" href="' . esc_url(add_query_arg('ngg_wizard', 'nextgen.beginner.gallery_creation_igw')) . '">' . __('Launch Gallery Wizard', 'nggallery') . '</a>'; ?>
+        </div>
+
+        <div class='ngg_page_content_menu'>
+            <a href="javascript:void(0)" data-id="welcome-link"><?php _e( 'Welcome', 'nggallery' ); ?></a>
+            <a href="javascript:void(0)" data-id="videos-link" style="display:none;"><?php _e( 'More Videos' ); ?></a>
+            <a href="javascript:void(0)" data-id="pro-link"><?php _e( 'Upgrade to Pro' ); ?></a>
+            <a href="javascript:void(0)" data-id="genesis-link"><?php _e( 'Genesis Themes' ); ?></a>
             <?php if (!is_multisite() || is_super_admin()) { ?>
-                <a href="#top#details" class="nav-tab" id="details-link"><?php _e( 'Site Details' ); ?></a>
+                 <a href="javascript:void(0)" data-id="details-link"><?php _e( 'Site Details' ); ?></a>
             <?php } ?>
-            <a href="#top#freedoms" class="nav-tab" id="freedoms-link"><?php _e( 'Freedoms' ); ?></a>
-        </h2>
+            <a href="javascript:void(0)" data-id="freedoms-link"><?php _e( 'Freedoms' ); ?></a>
+        </div>
 
-        <div id="welcome" class="ngg-tab">
+        <div class='ngg_page_content_main'>
 
-            <div class="headline-feature feature-video">
-                <iframe width="1050" height="590" src="https://www.youtube.com/embed/qwNr5ZNGavo?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
+            <div data-id="welcome-link">
+
+                <div class="about-text"><strong><?php printf( __( "Congrats! You're now running the most popular WordPress gallery plugin of all time.")) ?></strong><br><?php printf( __( " So far you've added %s images, %s galleries, and %s albums." ), $images, $galleries, $albums); ?>
+                </div>
+
+                <div class="headline-feature feature-video">
+                    <iframe width="1050" height="590" src="https://www.youtube.com/embed/mNEnY23i9DE?rel=0" frameborder="0" allowfullscreen></iframe>
+                </div>
+
+                <hr>
+
+                <div class="feature-section three-col">
+                    <h2><?php _e( 'Meet the Imagely Product Ambassadors', 'nggallery' ); ?></h2>
+                    <p class="about-text"><?php _e( "NextGEN Gallery and other Imagely products are used by some of the best photographers in the world. Meet some of the Imagely Ambassadors who are putting Imagely and NextGEN Gallery to work professionally.", 'nggallery' ); ?>
+                    </p>
+                    <div class="col">
+                        <a href="https://www.imagely.com/team-member/the-youngrens/?utm_source=ngg&utm_medium=ngguser&utm_campaign=ambassador" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/theyoungrens-ngg.jpg" alt="The Youngrens"/></a>
+                        <h3><?php _e( 'The Youngrens' ); ?></h3>
+                        <p><?php _e( 'Jeff and Erin are a luxury husband and wife photography team who deeply love each other and their photography clients. They shoot weddings and engagements all over the U.S. and beyond. With three photography businesses that serve different clientele, they have unique insights into business strategies and are passionate about improving the day to day lives of other photographers.', 'nggallery' ); ?></p>
+                    </div>
+                    <div class="col">
+                        <a href="https://www.imagely.com/team-member/tamara-lackey/?utm_source=ngg&utm_medium=ngguser&utm_campaign=ambassador" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/TamaraLackey-ngg.jpg" alt="Tamara Lackey" /></a>
+                        <h3><?php _e( 'Tamara Lackey' ); ?></h3>
+                        <p><?php _e( 'Tamara Lackey is a renowned professional photographer, speaker, and author. Her authentic lifestyle photography, from children’s portraits to celebrity portraits, is praised within her industry and published internationally. She is a Nikon USA Ambassador, the host of The reDefine Show web series, and the co-founder of the non-profit charitable organization, Beautiful Together, in support of children waiting for families.', 'nggallery' ); ?></p>
+                    </div>
+                    <div class="col">
+                        <a href="https://www.imagely.com/team-member/colby-brown/?utm_source=ngg&utm_medium=ngguser&utm_campaign=ambassador" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/colby-brown-ngg.jpg" alt="Colby Brown" /></a>
+                        <h3><?php _e( 'Colby Brown' ); ?></h3>
+                        <p><?php _e( 'Colby is a photographer, photo educator, and author specializing in landscape, travel and humanitarian photography. With an audience reaching millions, Colby partners on social influencer marketing campaigns with some of the biggest companies and destinations in the world, including Sony, Samsung, Toshiba, Iceland Naturally, Jordan Tourism Board, Australia.com, Visit California and more.', 'nggallery' ); ?></p>
+                    </div>
+                </div>
+
+                <div class="feature-section three-col">
+                    <div class="col">
+                        <a href="https://www.imagely.com/team-member/jared-platt/?utm_source=ngg&utm_medium=ngguser&utm_campaign=ambassador" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/jared-platt-ngg.jpg" alt="Jared Platt" /></a>
+                        <h3><?php _e( 'Jared Platt' ); ?></h3>
+                        <p><?php _e( 'Jared is a professional wedding and lifestyle photographer. He also travels the world giving lectures and workshops on photography, lighting, and post-production efficiency and workflow. His interactive style, and attention to detail and craft make him an entertaining and demanding photography instructor.', 'nggallery' ); ?></p>
+                    </div>
+                    <div class="col">
+                        <a href="https://www.imagely.com/team-member/brian-matiash/?utm_source=ngg&utm_medium=ngguser&utm_campaign=ambassador" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/brian-matiash-ngg.jpeg" alt="" /></a>
+                        <h3><?php _e( 'Brian Matiash' ); ?></h3>
+                        <p><?php _e( 'Brian is a professional photographer, author, and educator. He fuses landscape & travel photography with experiential storytelling and practical instructing to help others grow creatively. He is also a Sony Artisan of Imagery, a Zeiss Lens Ambassador, a Formatt-Hitech Featured Photographer, and a member of G-Technology’s G-Team.', 'nggallery' ); ?></p>
+                    </div>
+                    <div class="col">
+                        <a href="https://www.imagely.com/team-member/christine-tremoulet/?utm_source=ngg&utm_medium=ngguser&utm_campaign=ambassador" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/Christine-Tremoulet-ngg.jpg" alt="" /></a>
+                        <h3><?php _e( 'Christine Tremoulet' ); ?></h3>
+                        <p><?php _e( 'Christine famously coined the term WordPress. She is an author, speaker, business coach, and story strategist who specializes in helping creatives celebrate their story online through blogging and social media. When not offering actionable know-how to businesses, she can be found taking long road trips across North America in her Mini Cooper.', 'nggallery' ); ?></p>
+                    </div>
+                </div>
+
+                <div class="feature-section three-col">
+                    <div class="col">
+                        <a href="https://www.imagely.com/team-member/david-beckstead/?utm_source=ngg&utm_medium=ngguser&utm_campaign=ambassador" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/david-beckstead-ngg.jpg" alt="David Beckstead" /></a>
+                        <h3><?php _e( 'David Beckstead' ); ?></h3>
+                        <p><?php _e( 'Named one of the Top 10 Wedding Photographers in the World by American Photo magazine, David is a celebrated photographer and educator. He is also a mountain man with a enviable lifestyle: from his base in rural Washington, he travels all over the world teaching workshops, while sharing lessons with 16,000 photographers in the Abstract Canvas Facebook group.', 'nggallery' ); ?></p>
+                    </div>
+                </div>
+
+
             </div>
 
-            <hr>
+            <div data-id="videos-link" style="display:none;">
 
-            <div class="feature-section three-col">
-                <h2><?php _e( 'Meet the Imagely Product Ambassadors', 'nggallery' ); ?></h2>
-                <p class="about-text centered"><?php _e( "NextGEN Gallery and other Imagely products are used by some of the best photographers in the world. Meet some of the Imagely Ambassadors who are putting Imagely and NextGEN Gallery to work professionally.", 'nggallery' ); ?>
+                <p class="about-text"><?php printf( __( 'We have a growing list of video tutorials to get you started. Watch some below or head over to <a href="%s" target="_blank">NextGEN Gallery University on YouTube</a> to see all available vidoes.', 'nggallery' ), esc_url( 'https://www.youtube.com/playlist?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM' ) ); ?>
                 </p>
-                <div class="col">
-                    <a href="https://www.imagely.com/team-member/the-youngrens/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/theyoungrens-ngg.jpg" alt="The Youngrens"/></a>
-                    <h3><?php _e( 'The Youngrens' ); ?></h3>
-                    <p><?php _e( 'Jeff and Erin are a luxury husband and wife photography team who deeply love each other and their photography clients. They shoot weddings and engagements all over the U.S. and beyond. With three photography businesses that serve different clientele, they have unique insights into business strategies and are passionate about improving the day to day lives of other photographers.', 'nggallery' ); ?></p>
+
+                <div class="headline-feature feature-video">
+                    <iframe width="1280" height="720" src="https://www.youtube.com/embed/c664fvAZ1nI?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="col">
-                    <a href="https://www.imagely.com/team-member/tamara-lackey/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/TamaraLackey-ngg.jpg" alt="Tamara Lackey" /></a>
-                    <h3><?php _e( 'Tamara Lackey' ); ?></h3>
-                    <p><?php _e( 'Tamara Lackey is a renowned professional photographer, speaker, and author. Her authentic lifestyle photography, from children’s portraits to celebrity portraits, is praised within her industry and published internationally. She is a Nikon USA Ambassador, the host of The reDefine Show web series, and the co-founder of the non-profit charitable organization, Beautiful Together, in support of children waiting for families.', 'nggallery' ); ?></p>
-                </div>
-                <div class="col">
-                    <a href="https://www.imagely.com/team-member/colby-brown/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/colby-brown-ngg.jpg" alt="Colby Brown" /></a>
-                    <h3><?php _e( 'Colby Brown' ); ?></h3>
-                    <p><?php _e( 'Colby is a photographer, photo educator, and author specializing in landscape, travel and humanitarian photography. With an audience reaching millions, Colby partners on social influencer marketing campaigns with some of the biggest companies and destinations in the world, including Sony, Samsung, Toshiba, Iceland Naturally, Jordan Tourism Board, Australia.com, Visit California and more.', 'nggallery' ); ?></p>
-                </div>
-            </div>
 
-            <div class="feature-section three-col">
-                <div class="col">
-                    <a href="https://www.imagely.com/team-member/jared-platt/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/jared-platt-ngg.jpg" alt="Jared Platt" /></a>
-                    <h3><?php _e( 'Jared Platt' ); ?></h3>
-                    <p><?php _e( 'Jared is a professional wedding and lifestyle photographer. He also travels the world giving lectures and workshops on photography, lighting, and post-production efficiency and workflow. His interactive style, and attention to detail and craft make him an entertaining and demanding photography instructor.', 'nggallery' ); ?></p>
-                </div>
-                <div class="col">
-                    <a href="https://www.imagely.com/team-member/brian-matiash/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/brian-matiash-ngg.jpeg" alt="" /></a>
-                    <h3><?php _e( 'Brian Matiash' ); ?></h3>
-                    <p><?php _e( 'Brian is a professional photographer, author, and educator. He fuses landscape & travel photography with experiential storytelling and practical instructing to help others grow creatively. He is also a Sony Artisan of Imagery, a Zeiss Lens Ambassador, a Formatt-Hitech Featured Photographer, and a member of G-Technology’s G-Team.', 'nggallery' ); ?></p>
-                </div>
-                <div class="col">
-                    <a href="https://www.imagely.com/team-member/christine-tremoulet/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/Christine-Tremoulet-ngg.jpg" alt="" /></a>
-                    <h3><?php _e( 'Christine Tremoulet' ); ?></h3>
-                    <p><?php _e( 'Christine famously coined the term WordPress. She is an author, speaker, business coach, and story strategist who specializes in helping creatives celebrate their story online through blogging and social media. When not offering actionable know-how to businesses, she can be found taking long road trips across North America in her Mini Cooper.', 'nggallery' ); ?></p>
-                </div>
-            </div>
-
-            <div class="feature-section three-col">
-                <div class="col">
-                    <a href="https://www.imagely.com/team-member/david-beckstead/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/david-beckstead-ngg.jpg" alt="David Beckstead" /></a>
-                    <h3><?php _e( 'David Beckstead' ); ?></h3>
-                    <p><?php _e( 'Named one of the Top 10 Wedding Photographers in the World by American Photo magazine, David is a celebrated photographer and educator. He is also a mountain man with a enviable lifestyle: from his base in rural Washington, he travels all over the world teaching workshops, while sharing lessons with 16,000 photographers in the Abstract Canvas Facebook group.', 'nggallery' ); ?></p>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div id="videos" class="ngg-tab">
-
-            <p class="about-text centered"><?php printf( __( 'We have a growing list of video tutorials to get you started. Watch some below or head over to <a href="%s" target="_blank">NextGEN Gallery University on YouTube</a> to see all available vidoes.', 'nggallery' ), esc_url( 'https://www.youtube.com/playlist?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM' ) ); ?>
-            </p>
-
-            <div class="headline-feature feature-video">
-                <iframe width="1280" height="720" src="https://www.youtube.com/embed/c664fvAZ1nI?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
-            </div>
-
-            <hr>
-
-            <div class="feature-section two-col">
-                <h2><?php _e( 'More Video Tutorials' ); ?></h2>
-                <div class="col">
-                    <div class="headline-feature feature-video">
-                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/h_HrKpkI90w?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
+                <div class="feature-section two-col">
+                    <div class="col">
+                        <div class="headline-feature feature-video">
+                            <iframe width="1280" height="720" src="https://www.youtube.com/embed/h_HrKpkI90w?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="headline-feature feature-video">
+                            <iframe width="1280" height="720" src="https://www.youtube.com/embed/58u9AjMJqJM?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="headline-feature feature-video">
-                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/58u9AjMJqJM?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
+
+                <div class="feature-section two-col">
+                    <div class="col">
+                        <div class="headline-feature feature-video">
+                            <iframe width="1280" height="720" src="https://www.youtube.com/embed/OfxWM59fb_Y?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="headline-feature feature-video">
+                            <iframe width="1280" height="720" src="https://www.youtube.com/embed/BiFjDYIaZZw?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="feature-section two-col">
-                <div class="col">
-                    <div class="headline-feature feature-video">
-                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/OfxWM59fb_Y?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="headline-feature feature-video">
-                        <iframe width="1280" height="720" src="https://www.youtube.com/embed/BiFjDYIaZZw?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <p class="about-text centered"><?php printf( __( 'Want more? Head over to <a href="%s" target="_blank">NextGEN Gallery University on YouTube</a>.', 'nggallery' ), esc_url( 'https://www.youtube.com/playlist?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM' ) ); ?>
-            </p>
-
-        </div>
-        
-        <div id="pro" class="ngg-tab">
-
-            <h2><?php _e( 'Upgrade to NextGEN Pro!' ); ?></h2>
-            <p class="about-text centered"><span style="font-weight: bold;"><?php _e( 'The most powerful gallery system ever built for WordPress. ', 'nggallery' ); ?></span><br><?php _e( 'Gorgeous new gallery displays, image protection, full screen lightbox, commenting and social sharing for individual images, proofing, ecommerce, digital downloads, and more.', 'nggallery' ); ?></p>
-            <p class="about-text centered"><a href='https://www.imagely.com/wordpress-gallery-plugin/nextgen-pro/?utm_source=ngg&utm_medium=ngguser&utm_campaign=ngpro' target='_blank' class="button-primary"><?php _e( 'Get NextGEN Pro Now', 'nggallery' ); ?></a></p>
-            <div class="feature-section">
-                <iframe src="https://www.youtube.com/embed/zmA-b_jiXN0" frameborder="0" allowfullscreen></iframe>
-            </div>
-
-
-        </div>
-
-        <div id="genesis" class="ngg-tab">
-
-            <h2><?php _e( 'Genesis Child Themes for Photographers' ); ?></h2>
-            <p class="about-text centered"><?php _e( 'Meet the new series of Genesis child themes by Imagely: gorgeous, responsive image-centric themes for photographers or anyone with visually rich websites.', 'nggallery' ); ?></p>
-            <h3 class="about-text centered"><?php _e( 'CLICK TO LEARN MORE:', 'nggallery' ); ?></h3>
-            <div class="feature-section two-col">
-                    <div class="col">
-                        <a href="https://www.imagely.com/wordpress-photography-themes/ansel/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/ansel-ngg.jpg" class="ngg-theme-image"></a>
-                    </div>
-                    <div class="col">
-                        <a href="https://www.imagely.com/wordpress-photography-themes/fearless/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/fearless-ngg.jpg" class="ngg-theme-image"></a>
-                    </div>
-            </div>
-            <div class="feature-section two-col">
-                    <div class="col">
-                        <a href="https://www.imagely.com/wordpress-photography-themes/blush/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/blush-ngg.jpg" class="ngg-theme-image"></a>
-                    </div>
-                    <div class="col">
-                        <a href="https://www.imagely.com/wordpress-photography-themes/free-spirit/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/free-spirit-ngg.jpg" class="ngg-theme-image"></a>
-                    </div>
-            </div>
-            <div class="feature-section two-col">
-                    <div class="col">
-                        <a href="https://www.imagely.com/wordpress-photography-themes/reportage/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/reportage-ngg.jpg" class="ngg-theme-image"></a>
-                    </div>
-                    <div class="col">
-                        <a href="https://www.imagely.com/wordpress-photography-themes/lightly/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/lightly-ngg.jpg" class="ngg-theme-image"></a>
-                    </div>
-            </div>
-            <div class="feature-section two-col">
-                    <div class="col">
-                        <a href="https://www.imagely.com/wordpress-photography-themes/rebel/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/rebel-ngg.jpg" class="ngg-theme-image"></a>
-                    </div>
-                    <div class="col">
-                        <a href="https://www.imagely.com/wordpress-photography-themes/summerly/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/summerly-ngg.jpg" class="ngg-theme-image"></a>
-                    </div>
-            </div>
-            <div class="feature-section two-col">
-                    <div class="col">
-                        <a href="https://www.imagely.com/wordpress-photography-themes/expedition/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/expedition-ngg.jpg" class="ngg-theme-image"></a>
-                    </div>
-                    <div class="col">
-                        <a href="https://www.imagely.com/wordpress-photography-themes/punk-bride/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/punk-bride-ngg.jpg" class="ngg-theme-image"></a>
-                    </div>
-            </div>
-            <div class="feature-section two-col">
-                    <div class="col">
-                        <a href="https://www.imagely.com/wordpress-photography-themes/journal/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/journal-ngg.jpg" class="ngg-theme-image"></a>
-                    </div>
-                    <div class="col">
-                        <a href="https://www.imagely.com/wordpress-photography-themes/simplicity/" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/simplicity-ngg.jpg" class="ngg-theme-image"></a>
-                    </div>
-            </div>
-            
-        </div>
-
-        <?php if (!is_multisite() || is_super_admin()) { ?>
-            <div id="details" class="ngg-tab">
-                <h2><?php _e( 'Site Details' ); ?></h2>
-                <p class="about-text centered"><?php _e( 'When contacting support, consider copying and pasting this information in your support request. It helps us troubleshoot more quickly.', 'nggallery' ); ?>
+                <p class="about-text"><?php printf( __( 'Want more? Head over to <a href="%s" target="_blank">NextGEN Gallery University on YouTube</a>.', 'nggallery' ), esc_url( 'https://www.youtube.com/playlist?list=PL9cmsdHslD0vIcJjBggJ-XMjtwvqrRgoM' ) ); ?>
                 </p>
-                <div class="two-col">
-                    <div class="col">
-                        <?php if (is_multisite()) $NGG_Admin_Overview->dashboard_quota(); ?>
-                    </div>
-                    <div class="col">
-                        <p><strong><?php print __('Server Settings', 'nggallery'); ?></strong></p>
-                        <ul>
-                            <?php $NGG_Admin_Overview->server_info(); ?>
-                        </ul>
-                    </div>
+
+            </div>
+
+            <div data-id="pro-link">
+
+                <h2><?php _e( 'Upgrade to NextGEN Pro!' ); ?></h2>
+                <p class="about-text"><span style="font-weight: bold;"><?php _e( 'The most powerful gallery system ever built for WordPress. ', 'nggallery' ); ?></span><br><?php _e( 'Gorgeous new gallery displays, image protection, full screen lightbox, commenting and social sharing for individual images, proofing, ecommerce, digital downloads, and more.', 'nggallery' ); ?></p>
+                <p class="about-text"><a href='https://www.imagely.com/wordpress-gallery-plugin/nextgen-pro/?utm_source=ngg&utm_medium=ngguser&utm_campaign=ngpro' target='_blank' class="button-primary ngg-pro-upgrade"><?php _e( 'Get NextGEN Pro Now', 'nggallery' ); ?></a></p>
+                <div class="feature-section">
+                    <iframe src="https://www.youtube.com/embed/zmA-b_jiXN0" frameborder="0" allowfullscreen></iframe>
                 </div>
-                <div class="two-col">
-                    <div class="col">
+
+            </div>
+
+            <div data-id="genesis-link">
+
+                <h2><?php _e( 'Genesis Child Themes for Photographers' ); ?></h2>
+                <p class="about-text"><?php _e( 'Meet the new series of Genesis child themes by Imagely: gorgeous, responsive image-centric themes for photographers or anyone with visually rich websites.', 'nggallery' ); ?></p>
+                <h3 class="about-text"><?php _e( 'CLICK TO LEARN MORE:', 'nggallery' ); ?></h3>
+                <div class="feature-section two-col">
+                        <div class="col">
+                            <a href="https://www.imagely.com/wordpress-photography-themes/ansel/?utm_source=ngg&utm_medium=ngguser&utm_campaign=imagelytheme" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/ansel-ngg.jpg" class="ngg-theme-image"></a>
+                        </div>
+                        <div class="col">
+                            <a href="https://www.imagely.com/wordpress-photography-themes/fearless/?utm_source=ngg&utm_medium=ngguser&utm_campaign=imagelytheme" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/fearless-ngg.jpg" class="ngg-theme-image"></a>
+                        </div>
+                </div>
+                <div class="feature-section two-col">
+                        <div class="col">
+                            <a href="https://www.imagely.com/wordpress-photography-themes/blush/?utm_source=ngg&utm_medium=ngguser&utm_campaign=imagelytheme" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/blush-ngg.jpg" class="ngg-theme-image"></a>
+                        </div>
+                        <div class="col">
+                            <a href="https://www.imagely.com/wordpress-photography-themes/free-spirit/?utm_source=ngg&utm_medium=ngguser&utm_campaign=imagelytheme" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/free-spirit-ngg.jpg" class="ngg-theme-image"></a>
+                        </div>
+                </div>
+                <div class="feature-section two-col">
+                        <div class="col">
+                            <a href="https://www.imagely.com/wordpress-photography-themes/reportage/?utm_source=ngg&utm_medium=ngguser&utm_campaign=imagelytheme" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/reportage-ngg.jpg" class="ngg-theme-image"></a>
+                        </div>
+                        <div class="col">
+                            <a href="https://www.imagely.com/wordpress-photography-themes/lightly/?utm_source=ngg&utm_medium=ngguser&utm_campaign=imagelytheme" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/lightly-ngg.jpg" class="ngg-theme-image"></a>
+                        </div>
+                </div>
+                <div class="feature-section two-col">
+                        <div class="col">
+                            <a href="https://www.imagely.com/wordpress-photography-themes/rebel/?utm_source=ngg&utm_medium=ngguser&utm_campaign=imagelytheme" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/rebel-ngg.jpg" class="ngg-theme-image"></a>
+                        </div>
+                        <div class="col">
+                            <a href="https://www.imagely.com/wordpress-photography-themes/summerly/?utm_source=ngg&utm_medium=ngguser&utm_campaign=imagelytheme" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/summerly-ngg.jpg" class="ngg-theme-image"></a>
+                        </div>
+                </div>
+                <div class="feature-section two-col">
+                        <div class="col">
+                            <a href="https://www.imagely.com/wordpress-photography-themes/expedition/?utm_source=ngg&utm_medium=ngguser&utm_campaign=imagelytheme" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/expedition-ngg.jpg" class="ngg-theme-image"></a>
+                        </div>
+                        <div class="col">
+                            <a href="https://www.imagely.com/wordpress-photography-themes/punk-bride/?utm_source=ngg&utm_medium=ngguser&utm_campaign=imagelytheme" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/punk-bride-ngg.jpg" class="ngg-theme-image"></a>
+                        </div>
+                </div>
+                <div class="feature-section two-col">
+                        <div class="col">
+                            <a href="https://www.imagely.com/wordpress-photography-themes/journal/?utm_source=ngg&utm_medium=ngguser&utm_campaign=imagelytheme" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/journal-ngg.jpg" class="ngg-theme-image"></a>
+                        </div>
+                        <div class="col">
+                            <a href="https://www.imagely.com/wordpress-photography-themes/simplicity/?utm_source=ngg&utm_medium=ngguser&utm_campaign=imagelytheme" target="_blank"><img src="https://f001.backblaze.com/file/nextgen-gallery/simplicity-ngg.jpg" class="ngg-theme-image"></a>
+                        </div>
+                </div>
+                
+            </div>
+
+            <?php if (!is_multisite() || is_super_admin()) { ?>
+                <div data-id="details-link">
+                    <h2><?php _e( 'Site Details' ); ?></h2>
+                    <p class="about-text"><?php _e( 'When contacting support, consider copying and pasting this information in your support request. It helps us troubleshoot more quickly.', 'nggallery' ); ?>
+                    </p>
+                    <div class="two-col">
+                        <div class="col">
+                            <p><strong><?php print __('Server Settings', 'nggallery'); ?></strong></p>
+                            <ul>
+                                <?php $NGG_Admin_Overview->server_info(); ?>
+                            </ul>
+                        </div>
+                        <div class="col">
                             <p><strong><?php print __('Graphic Library', 'nggallery'); ?></strong></p>
                             <ul>
                                 <?php $NGG_Admin_Overview->gd_info(); ?>
                             </ul>
+                        </div>
+                    </div>
+                    <div class="two-col">
+                        <div class="col">
+                            <?php if (is_multisite()) $NGG_Admin_Overview->dashboard_quota(); ?>
+                        </div>
                     </div>
                 </div>
+            <?php } ?>
+            
+            <div data-id="freedoms-link">
+
+                <p class="about-description"><?php printf( __( 'NextGEN Gallery is Free and open source software, built by a small but dedicated team as well as community code contributions. It comes with awesome rights courtesy of its <a href="%s" target="_blank">license</a>, the GPL.' ), 'https://wordpress.org/about/license/' ); ?></p>
+
+                <ol start="0">
+                    <li><p><?php _e( 'You have the freedom to run the program, for any purpose.' ); ?></p></li>
+                    <li><p><?php _e( 'You have access to the source code, the freedom to study how the program works, and the freedom to change it to make it do what you wish.' ); ?></p></li>
+                    <li><p><?php _e( 'You have the freedom to redistribute copies of the original program so you can help your neighbor.' ); ?></p></li>
+                    <li><p><?php _e( 'You have the freedom to distribute copies of your modified versions to others. By doing this you can give the whole community a chance to benefit from your changes.' ); ?></p></li>
+                </ol>
+
+                <p><?php _e( 'NextGEN Gallery grows because people like you tell your friends and website visitors about it. We thank you for doing so.' ); ?></p>
+
             </div>
-        <?php } ?>
-        
-        <div id="freedoms" class="ngg-tab">
 
-            <p class="about-description"><?php printf( __( 'NextGEN Gallery is Free and open source software, built by a small but dedicated team as well as community code contributions. It comes with awesome rights courtesy of its <a href="%s" target="_blank">license</a>, the GPL.' ), 'https://wordpress.org/about/license/' ); ?></p>
-
-            <ol start="0">
-                <li><p><?php _e( 'You have the freedom to run the program, for any purpose.' ); ?></p></li>
-                <li><p><?php _e( 'You have access to the source code, the freedom to study how the program works, and the freedom to change it to make it do what you wish.' ); ?></p></li>
-                <li><p><?php _e( 'You have the freedom to redistribute copies of the original program so you can help your neighbor.' ); ?></p></li>
-                <li><p><?php _e( 'You have the freedom to distribute copies of your modified versions to others. By doing this you can give the whole community a chance to benefit from your changes.' ); ?></p></li>
-            </ol>
-
-            <p><?php _e( 'NextGEN Gallery grows because people like you tell your friends and website visitors about it. We thank you for doing so.' ); ?></p>
-
-        </div>
-
-    </div>
+        </div> <!-- /.ngg_page_content_main -->
+    
+    </div> <!-- /.wrap -->
 
     <?php
     return NULL;

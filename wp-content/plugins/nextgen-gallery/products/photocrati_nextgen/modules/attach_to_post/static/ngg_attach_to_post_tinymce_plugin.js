@@ -51,13 +51,13 @@
 			editor.addButton('NextGEN_AttachToPost', {
 				title:	'ngg_attach_to_post.title',
 				cmd:	'ngg_attach_to_post',
-				image:	plugin_url+'/atp_button.png'
+				image:	plugin_url+'/igw_button.png'
 			});
 
 			/**
 			 * Listen for click events to our placeholder
 			 */
-            editor.on('mouseup', function(e) {
+            editor.on('mouseup touchend', function(e) {
 				tinymce.extend(self, {
 					editor: editor,
 					plugin: editor.plugins.NextGEN_AttachToPost
@@ -212,17 +212,23 @@
 			win = $(win);
 			var winWidth    = win.width();
 			var winHeight   = win.height();
-			var popupWidth  = 1200;
-			var popupHeight = 600;
+			var popupWidth  = 1600;
+			var popupHeight = 1200;
 			var minWidth    = 800;
 			var minHeight   = 600;
 			var maxWidth    = winWidth  - (winWidth  * 0.05);
-			var maxHeight   = winHeight - (winHeight * 0.05);
+			var maxHeight   = winHeight - (winHeight * 0.1);
 
-			if (maxWidth    < minWidth)  { maxWidth    = winWidth - 10;  }
-			if (maxHeight   < minHeight) { maxHeight   = winHeight - 10; }
+			if (maxWidth    < minWidth)  { maxWidth    = winWidth - 20;  }
+			if (maxHeight   < minHeight) { maxHeight   = winHeight - 40; }
 			if (popupWidth  > maxWidth)  { popupWidth  = maxWidth;  }
 			if (popupHeight > maxHeight) { popupHeight = maxHeight; }
+
+			// for mobile devices: dismiss the keyboard by blurring any input with focus
+            document.activeElement.blur();
+            Array.prototype.forEach.call(document.querySelectorAll('input, textarea'), function(it) {
+                it.blur();
+            });
 
 			// Open a window, occupying 90% of the screen real estate
 			this.editor.windowManager.open({

@@ -22,7 +22,7 @@ class M_NextGen_Basic_Templates extends C_Base_Module
 			'photocrati-nextgen_basic_templates',
 			'NextGen Basic Templates',
 			'Provides a NextGen-Legacy compatible thumbnail gallery for NextGEN Gallery',
-			'0.7',
+			'3.0.0',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Imagely',
             'https://www.imagely.com'

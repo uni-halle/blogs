@@ -1,7 +1,9 @@
 <table class="thumbnail_options">
 	<tr>
 		<td>
-			<label for="thumbnail_dimensions_width">
+			<label for="thumbnail_dimensions_width"
+					title="<?php echo esc_attr($thumbnail_dimensions_help); ?>"
+               		class="tooltip">
 				<?php esc_html_e($thumbnail_dimensions_label) ?>
 			</label>
 		</td>
@@ -19,12 +21,13 @@
               'thumbnails-template.php'
           )));
 		?>
-			<p class="description"><?php esc_html_e($thumbnail_dimensions_help)?></p>
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<label for="thumbnail_crop">
+			<label 	for="thumbnail_crop" 
+					title="<?php echo esc_attr($thumbnail_crop_help); ?>"
+               		class="tooltip">
 				<?php esc_html_e($thumbnail_crop_label) ?>
 			</label>
 		</td>
@@ -42,7 +45,6 @@
                    value="0"
                 <?php checked(0, $thumbnail_crop); ?>/>
             <label for="thumbnail_crop_no"><?php _e('No'); ?></label>
-			<p class="description"><?php esc_html_e($thumbnail_crop_help); ?></p>
 		</td>
 	</tr>
     <?php /*
@@ -66,7 +68,9 @@
     */ ?>
 	<tr>
 		<td>
-			<label for="size_list">
+			<label 	for="size_list"
+					title="<?php echo esc_attr($size_list_help); ?>"
+               		class="tooltip">
 				<?php esc_html_e($size_list_label) ?>
 			</label>
 		</td>
@@ -94,7 +98,6 @@
 				echo "<i>No default sizes present.</i>";
 			}
 		?>
-			<p class="description"><?php esc_html_e($size_list_help)?></p>
 		</td>
 	</tr>
 </table>

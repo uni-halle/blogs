@@ -1,3 +1,8 @@
+
+#ngg_page_content #nextgen_pro_upgrade_page .ngg_page_content_main {
+	padding: 20px 40px 200px;
+}
+
 .gallery_page_ngg_pro_upgrade #update-nag, 
 .gallery_page_ngg_pro_upgrade .update-nag {
 	display:none;
@@ -5,6 +10,15 @@
 
 #nextgen_pro_upgrade_page {
 	max-width: none;
+}
+
+#nextgen_pro_upgrade_page .about-wrap .about-text {
+    min-height: auto;
+}
+
+#nextgen_pro_upgrade_page img {
+    width: 600px;
+    max-width: 100%;
 }
 
 #nextgen_pro_upgrade_page h1 {
@@ -31,6 +45,7 @@
     width: 100%;
     display: block;
     margin-top: 60px;
+    display:none;
 }
 
 #nextgen_pro_upgrade_page.nextgen_plus p span {
@@ -45,17 +60,25 @@
     margin-left: 30px;
     padding: 0;
     border: 1px solid #eee;
+    box-shadow: 0 0 4px 2px rgba(0,0,0,.05);
 }
 
 #nextgen_pro_upgrade_page iframe {
-	height: 450px;
-	width: 800px;
+	height: 370px;
+    width: 650px;
 	max-width: 100%;
 }
 
 #nextgen_pro_upgrade_page a.button-primary {
+    font-size: 15px;
+    height: 2.8em;
+    line-height: 1.6em;
+    line-height: 50px;
+    height: 50px !important;
+    padding: 0 30px !important;
+    /*from video redesign*/
     font-size: 14px;
-    background-color: #76a934;
+    background-color: #9fbb1a;
     border: none;
     box-shadow: none;
     text-transform: uppercase;
@@ -65,7 +88,7 @@
     padding: 12px 22px;
     text-shadow: none;
     text-align: center;
-    margin: 40px 0 60px;
+    margin: 40px 0;
     font-weight: bold;
 }
 

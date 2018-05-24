@@ -10,7 +10,9 @@
 }
 
 #gallery_selection .plupload_buttons a {
-    margin-right: 4px;
+    margin-right: 6px;
+    width: 130px !important;
+    text-align: center;
 }
 
 #gallery_name {
@@ -35,7 +37,8 @@
 }
 
 .plupload_buttons {
-    display: inline
+    display: inline;
+    margin-left: 20px;
 }
 
 .plupload_droptext {
@@ -43,6 +46,155 @@
     color: silver;
 }
 
+/* Gritter customizations */
+
+#gritter-notice-wrapper {
+    background: rgba(56, 70, 82, .9);
+    border: 1px solid #2a343d;
+    margin: 10px 5px 0 0;
+    border-radius: 3px;
+    bottom: 20px;
+    top: auto;
+}
+
+.gritter-top, 
+.gritter-item,
+.gritter-bottom {
+    background: none;
+}
+
+.gritter-item {
+    padding: 2px 11px 0 11px;
+}
+
+.gritter-title {
+    text-shadow: none;
+}
+
 #gritter-notice-wrapper a {
-    color: #00b9eb;
+    color: #b8d433;
+    text-decoration: none;
+    padding-top: 5px;
+    display: block;
+}
+
+.gritter-close {
+    width: auto;
+    height: auto;
+    background: none;
+    display: block !important;
+    top: 10px;
+    right: 10px;
+}
+
+.gritter-close:after {
+    content: 'X';
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* For Redesign */
+
+.gallery_page_ngg_addgallery #ngg_page_content .ngg_page_content_menu {
+    width: 25%;
+}
+
+.gallery_page_ngg_addgallery #ngg_page_content .ngg_page_content_main {
+    width: 75%;
+}
+
+#ngg_page_content .plupload_container {
+    padding: 0 !important;
+    border: 1px solid rgba(159, 187, 26, 0.13) !important;
+}
+
+#ngg_page_content .plupload_filelist_header, 
+#ngg_page_content .plupload_filelist_footer,
+#ngg_page_content .plupload_file_status span {
+    background: rgba(247, 248, 243, 0.46) !important;
+    color: #999 !important;
+}
+
+#ngg_page_content .plupload_filelist_header {
+    border-bottom: 1px solid #f7f7f7 !important;
+    display: none;
+}
+
+#ngg_page_content .plupload_filelist_footer {
+    border-top: 1px solid #f7f7f7 !important;
+}
+
+#ngg_page_content .plupload_scroll .plupload_filelist {
+    background: #fff !important;
+    height: auto;
+    overflow-y: hidden;
+}
+
+#ngg_page_content #gallery_selection {
+    padding: 20px 20px 25px !important;
+    background: #f7f8f3;
+}
+
+#ngg_page_content #gallery_id,
+#ngg_page_content #gallery_name {
+    height: 30px !important;
+    min-width: 200px !important;
+    font-size: 12px !important;
+    color: #888 !important;
+}
+
+#ngg_page_content input#import_gallery_title {
+    width: 250px;
+    font-size: 13px;
+    color: #aaa;
+}
+
+@media (max-width: 1380px) {
+    .gallery_page_ngg_addgallery #ngg_page_content .ngg_page_content_menu,
+    .gallery_page_ngg_addgallery #ngg_page_content .ngg_page_content_main  {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1140px) {
+    .plupload_buttons {
+        display: block;
+        margin: 10px 0 0 75px;
+    }
+    .gallery_page_ngg_addgallery #ngg_page_content button,
+    .gallery_page_ngg_addgallery #ngg_page_content .button-primary,
+    .gallery_page_ngg_addgallery #ngg_page_content .button-secondary {
+        width: 201px !important;
+    }
+}
+
+@media (max-width: 800px) {
+    .gallery_page_ngg_addgallery #ngg_page_content .ngg_page_content_menu,
+    .gallery_page_ngg_addgallery #ngg_page_content .ngg_page_content_main  {
+        width: 100%;
+    }
+    .gallery_page_ngg_addgallery #ngg_page_content .ngg_page_content_main input, 
+    .gallery_page_ngg_addgallery #ngg_page_content .ngg_page_content_main select {
+        width: 100% !important;
+        max-width: 100%;
+        margin: 5px 0;
+        box-sizing: border-box;
+    }
+    .gallery_page_ngg_addgallery #ngg_page_content input[type=checkbox] {
+        width: 16px !important;
+    }
+    .plupload_buttons {
+        margin-left: 0;
+    }
+    .gallery_page_ngg_addgallery #ngg_page_content button,
+    .gallery_page_ngg_addgallery #ngg_page_content .button-primary,
+    .gallery_page_ngg_addgallery #ngg_page_content .button-secondary {
+        width: 100% !important;
+        margin: 4px 0;
+        display: block;
+        text-align: center;
+    }
+    #ngg-importML-gallery-selection {
+        display: block !important;
+    }
 }

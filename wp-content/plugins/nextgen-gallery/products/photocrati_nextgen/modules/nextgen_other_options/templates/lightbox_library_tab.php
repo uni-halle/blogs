@@ -26,6 +26,13 @@
             <?php echo $form; ?>
         </tbody>
     <?php } ?>
+    <?php if ( !defined('NGG_PRO_PLUGIN_VERSION') && !defined('NGG_PLUS_PLUGIN_VERSION') && !is_multisite() ) { ?>
+        <tr>
+            <td colspan="2" class="ngg_options_promo">
+                <?php esc_html_e('Want a stunning lightbox with color options, image comments, social sharing, full screen, and more? Get the ', 'nggallery'); ?><a href="https://www.imagely.com/wordpress-gallery-plugin/pro-lightbox-demo/?utm_source=ngg&utm_medium=ngguser&utm_campaign=pro_lightbox" target="_blank"><?php esc_html_e('NextGEN Pro Lightbox!', 'nggallery'); ?></a>
+            </td>
+        </tr>
+    <?php } ?>
 	<tr>
 		<td class="column1">
 			<label for="lightbox_global"><?php esc_html_e('What must the lightbox be applied to?', 'nggallery')?></label>

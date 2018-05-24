@@ -14,7 +14,7 @@ class M_DataMapper extends C_Base_Module
 			'photocrati-datamapper',
 			'DataMapper',
 			'Provides a database abstraction layer following the DataMapper pattern',
-			'0.10',
+			'3.0.0',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Imagely',
             'https://www.imagely.com'
@@ -195,34 +195,35 @@ class M_DataMapper extends C_Base_Module
 
     /**
      * Unserializes data using our proprietary format
+     * TODO: This is redundant with C_Ngg_Serializer
      * @param string $value
      * @return mixed
      */
-    static function unserialize($value)
-    {
-        $retval = NULL;
-        if (is_string($value))
-        {
-            $retval = stripcslashes($value);
+	static function unserialize($value)
+	{
+		$retval = NULL;
+		if (is_string($value))
+		{
+			$retval = stripcslashes($value);
 
-            if (strlen($value) > 1)
-            {
-                // We can't always rely on base64_decode() or json_decode() to return FALSE as their documentation
-                // claims so check if $retval begins with a: as that indicates we have a serialized PHP object.
-                if (strpos($retval, 'a:') === 0)
-                {
-                    $er = error_reporting(0);
-                    $retval = unserialize($value);
-                    error_reporting($er);
-                }
-                else {
-                    // We use json_decode() here because PHP's unserialize() is not Unicode safe.
-                    $retval = json_decode(base64_decode($retval), TRUE);
-                }
-            }
-        }
+			if (strlen($value) > 1)
+			{
+				// We can't always rely on base64_decode() or json_decode() to return FALSE as their documentation
+				// claims so check if $retval begins with a: as that indicates we have a serialized PHP object.
+				if (strpos($retval, 'a:') === 0)
+				{
+					$er = error_reporting(0);
+					$retval = unserialize($value);
+					error_reporting($er);
+				}
+				else {
+					// We use json_decode() here because PHP's unserialize() is not Unicode safe.
+					$retval = json_decode(base64_decode($retval), TRUE);
+				}
+			}
+		}
 
-        return $retval;
+		return $retval;
     }
 
     /**
@@ -232,8 +233,8 @@ class M_DataMapper extends C_Base_Module
      */
     static function serialize($value)
     {
-        //Using json_encode here because PHP's serialize is not Unicode safe
-        return base64_encode(json_encode($value));
+	    //Using json_encode here because PHP's serialize is not Unicode safe
+	    return base64_encode(json_encode($value));
     }
 
     function get_type_list()

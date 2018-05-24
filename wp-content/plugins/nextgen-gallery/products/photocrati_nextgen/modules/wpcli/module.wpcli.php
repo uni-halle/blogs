@@ -15,7 +15,7 @@ class M_WPCLI extends C_Base_Module
             'photocrati-wpcli',
             'WP-CLI Integration',
             "Provides additional commands for WP-CLI (https://github.com/wp-cli/wp-cli",
-            '0.2',
+            '3.0.0',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Imagely',
             'https://www.imagely.com'

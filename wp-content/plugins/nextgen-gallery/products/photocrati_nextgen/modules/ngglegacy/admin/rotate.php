@@ -30,7 +30,7 @@ include_once( nggGallery::graphic_library() );
 $ngg_options = get_option('ngg_options');
 
 $thumb = new ngg_Thumbnail($picture->imagePath, TRUE);
-$thumb->resize(350,350);
+$thumb->resize(450,350);
 
 // we need the new dimension
 $resizedPreviewInfo = $thumb->newDimensions;
@@ -40,9 +40,8 @@ $thumb->destruct();
 $storage            = C_Gallery_Storage::get_instance();
 $thumbnail_manager  = C_Dynamic_Thumbnails_Manager::get_instance();
 $dynamic_size       = $thumbnail_manager->get_size_name(array(
-	'width'     =>  350,
-	'height'    =>  350,
-
+	'width'     =>  300,
+	'height'    =>  300,
 ));
 //$preview_image		= trailingslashit( home_url() ) . 'index.php?callback=image&amp;pid=' . $picture->pid . '&amp;width=350&amp;height=350';
 $preview_image      = $storage->get_image_url($id, $dynamic_size);
@@ -84,9 +83,9 @@ $preview_image      = $storage->get_image_url($id, $dynamic_size);
 	}
 </script>
 
-<table width="98%" align="center" style="border:1px solid #DADADA">
-	<tr style="height : 360px;">
-		<td valign="middle" align="center" style="background-color:#DADADA; width : 370px;">
+<table align="center">
+	<tr>
+		<td valign="middle" align="center" id="ngg-overlay-dialog-main">
 			<img src="<?php echo nextgen_esc_url( $preview_image ); ?>" alt="" id="imageToEdit" />	
 		</td>
 		<td>
@@ -96,11 +95,10 @@ $preview_image      = $storage->get_image_url($id, $dynamic_size);
 			<input type="radio" name="ra" value="fh" /><?php esc_html_e('Flip horizontally', 'nggallery'); ?>
 		</td>		
 	</tr>
-	<tr style="background-color:#DADADA;">
-
-		<td colspan="2">
-			<input type="button" name="update" value="<?php esc_attr_e('Update', 'nggallery'); ?>" onclick="rotateImage()" class="button-secondary" style="float:right; margin-left:4px;"/>
-			<div id="thumbMsg" style="color:#FF0000; display : none;font-size:11px; float:right; width:60%; height:2em; line-height:2em;"></div>
-		</td>
-	</tr>
 </table>
+<div id="ngg-overlay-dialog-bottom">
+	<input type="button" name="update" value="<?php esc_attr_e('Update', 'nggallery'); ?>" onclick="rotateImage()" class="button-primary" />
+	<div id="thumbMsg"></div>
+</div>
+
+

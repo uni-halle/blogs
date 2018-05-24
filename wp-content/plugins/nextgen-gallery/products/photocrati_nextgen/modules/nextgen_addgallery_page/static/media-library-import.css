@@ -25,3 +25,11 @@
 #ngg-importML-gallery-select {
     vertical-align: middle;
 }
+
+.ngg_settings_page .jqueryFileTree LI.directory {
+	background-size: contain;
+}
+
+.ngg_settings_page .jqueryFileTree LI.expanded {
+    background-size: 21px;
+}

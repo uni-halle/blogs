@@ -1,22 +1,20 @@
-(function($){
-    setTimeout(function(){
-        $(function(){
-
-            window.get_igw_dimensions = function(){
+(function($) {
+    setTimeout(function() {
+        $(function() {
+            window.get_igw_dimensions = function() {
                 var $button     = $('.ngg-add-gallery');
-                var href        = $button.attr('href');
                 var win = jQuery(top);
                 var winWidth    = win.width();
                 var winHeight   = win.height();
-                var popupWidth  = 1200;
-                var popupHeight = 600;
+                var popupWidth  = 1800;
+                var popupHeight = 1200;
                 var minWidth    = 800;
                 var minHeight   = 600;
                 var maxWidth    = winWidth  - (winWidth  * 0.05);
-                var maxHeight   = winHeight - (winHeight * 0.05);
+                var maxHeight   = winHeight - (winHeight * 0.09);
 
-                if (maxWidth    < minWidth)  { maxWidth    = winWidth-10  }
-                if (maxHeight   < minHeight) { maxHeight   = winHeight-10 }
+                if (maxWidth    < minWidth)  { maxWidth    = winWidth-20  }
+                if (maxHeight   < minHeight) { maxHeight   = winHeight-40 }
                 if (popupWidth  > maxWidth)  { popupWidth  = maxWidth;  }
                 if (popupHeight > maxHeight) { popupHeight = maxHeight; }
 
@@ -40,15 +38,16 @@
                         'top':  dimensions.top.toString()+"px",
                         'left': dimensions.left.toString()+"px"
                     });
+                    $('#TB_window').addClass('ngg_tb_window');
                     $('#TB_window iframe').css({
                         width: '100%',
-                        height: '93%'
+                        height: '100%'
                     });
-                }
-                else {
+                } else {
                     window.wp_tb_position();
                 }
             };
+            
         });
     });
 })(jQuery);

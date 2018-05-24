@@ -11,6 +11,6 @@
 </div>
 
 <button id='ngg-importML-select-opener'
-        class='button-primary hidden'><?php echo $i18n['select-opener']; ?></button>
+        class='button-primary'><?php echo $i18n['select-opener']; ?></button>
 <button id='ngg-importML-selected-image-import'
         class='button-primary hidden'></button>

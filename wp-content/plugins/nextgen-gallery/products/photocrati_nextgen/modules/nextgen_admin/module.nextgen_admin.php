@@ -26,7 +26,7 @@ class M_NextGen_Admin extends C_Base_Module
 			'photocrati-nextgen_admin',
 			'NextGEN Administration',
 			'Provides a framework for adding Administration pages',
-			'0.16',
+			'3.0.0',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Imagely',
             'https://www.imagely.com'
@@ -59,7 +59,7 @@ class M_NextGen_Admin extends C_Base_Module
 
         $this->get_registry()->add_utility(
             'I_Page_Manager',
-            'C_Page_Manager'
+            'C_NextGen_Admin_Page_Manager'
         );
 
         // Provides a form manager
@@ -86,6 +86,62 @@ class M_NextGen_Admin extends C_Base_Module
 		);
 	}
 
+
+	function get_common_admin_css_handlers($array)
+	{
+		$array['nextgen_admin_css'] = $this->module_version;
+		return $array;
+	}
+
+	function get_common_admin_js_handlers($array)
+	{
+		$array['nextgen_admin_js'] = $this->module_version;
+		return $array;
+	}
+
+	// Enqueues static resources that should be enqueued in the HEADER on a NextGEN Admin Page
+	static function enqueue_common_admin_static_resources($footer=FALSE)
+	{
+		$footer = ($footer === TRUE);
+		$script_handles_filter = $footer ? 'ngg_admin_footer_script_handles' : 'ngg_admin_script_handles';
+		$style_handles_filter  = 'ngg_admin_style_handles';
+		$enqueue_action        = $footer ? 'ngg_admin_footer_enqueue_scripts' : 'ngg_admin_enqueue_scripts';
+
+		if ($slug = C_NextGen_Admin_Page_Manager::is_requested()) {
+			$script_handles = apply_filters($script_handles_filter, array(), $slug);
+			$style_handles = apply_filters($style_handles_filter, array(), $slug);
+
+			foreach ($script_handles as $handle => $version) {
+				$hook = "ngg_enqueue_{$handle}_script";
+				if (has_action($hook))
+					do_action($hook, $handle, $version);
+				else
+					wp_enqueue_script($handle, NULL, NULL, $version);
+
+			}
+
+			if (!$footer) {
+				foreach ($style_handles as $handle => $version) {
+					$hook = "ngg_enqueue_{$handle}_style";
+					if (has_action($hook))
+						do_action($hook, $handle, $version);
+					else
+						wp_enqueue_style($handle, NULL, NULL, $version);
+				}
+			}
+
+			// Expose a means for other modules or third-party plugins to provide their own
+			// enqueue calls
+			do_action($enqueue_action, $slug);
+		}
+	}
+
+	// Enqueues static resources that should be enqueued in the FOOTER on a NextGEN Admin Page
+	function enqueue_common_admin_footer_static_resources()
+	{
+		self::enqueue_common_admin_static_resources(TRUE);
+	}
+
 	/**
 	 * Hooks into the WordPress Framework
 	 */
@@ -93,13 +149,30 @@ class M_NextGen_Admin extends C_Base_Module
 	{
         // Register scripts
         add_action('init', array($this, 'register_scripts'), 9);
+		add_action('admin_enqueue_scripts', array($this, 'enqueue_wizard_components'));
         add_action('init', array($this, 'init_wizards'), 5);
+
+        // Enqueue common static resources for NGG admin pages
+		add_filter('ngg_admin_style_handles', array($this, 'get_common_admin_css_handlers'));
+		add_filter('ngg_admin_script_handles', array($this, 'get_common_admin_js_handlers'));
+		add_action('admin_enqueue_scripts', array(get_class(), 'enqueue_common_admin_static_resources'));
+		add_action('admin_footer_print_scripts', array(&$this, 'enqueue_common_admin_footer_static_resources'));
 
 		// Provides menu options for managing NextGEN Settings
 		add_action('admin_menu', array($this, 'add_menu_pages'), 999);
 
         // Define routes
         add_action('ngg_routes', array($this, 'define_routes'));
+
+        // Add ngg-admin body class to all admin pages for styling
+        add_filter( 'admin_body_class', array($this, 'add_ngg_body_class'));
+
+        // Add ngg-post-type body class to NGG custom post types for styling
+        add_filter( 'admin_body_class', array($this, 'add_ngg_post_type_class'));
+
+        // Add filters for custom post type admin page markup
+        add_action( 'all_admin_notices', array($this, 'custom_post_type_markup_top'));
+        add_action( 'admin_footer', array($this, 'custom_post_type_markup_bottom'));
 
 		// Provides admin notices
 		$notices = C_Admin_Notification_Manager::get_instance();
@@ -223,59 +296,142 @@ class M_NextGen_Admin extends C_Base_Module
 	        'gritter',
 	        $router->get_static_url('photocrati-nextgen_admin#gritter/gritter.min.js'),
 	        array('jquery'),
-	        NGG_SCRIPT_VERSION
+	        $this->module_version
         );
         wp_register_style(
 	        'gritter',
 	        $router->get_static_url('photocrati-nextgen_admin#gritter/css/gritter.css'),
 	        FALSE,
-	        NGG_SCRIPT_VERSION
+	        $this->module_version
         );
         wp_register_script(
 	        'ngg_progressbar',
 	        $router->get_static_url('photocrati-nextgen_admin#ngg_progressbar.js'),
 	        array('gritter'),
-	        NGG_SCRIPT_VERSION
+	        $this->module_version
         );
         wp_register_style(
 	        'ngg_progressbar',
 	        $router->get_static_url('photocrati-nextgen_admin#ngg_progressbar.css'),
 	        array('gritter'),
-	        NGG_SCRIPT_VERSION
+	        $this->module_version
         );
         wp_register_style(
 	        'ngg_select2',
 	        $router->get_static_url('photocrati-nextgen_admin#select2/select2.css'),
 	        FALSE,
-	        NGG_SCRIPT_VERSION
+	        $this->module_version
         );
         wp_register_script(
 	        'ngg_select2',
-	        $router->get_static_url('photocrati-nextgen_admin#select2/select2.modded.js'),
+	        $router->get_static_url('photocrati-nextgen_admin#select2/select2.js'),
 	        FALSE,
-	        NGG_SCRIPT_VERSION
+	        $this->module_version
         );
         wp_register_script(
             'jquery.nextgen_radio_toggle',
             $router->get_static_url('photocrati-nextgen_admin#jquery.nextgen_radio_toggle.js'),
             array('jquery'),
-	        NGG_SCRIPT_VERSION
+	        $this->module_version
         );
-
-        if (preg_match("#/wp-admin/post(-new)?.php#", $_SERVER['REQUEST_URI']))
-        {
-            wp_enqueue_script('ngg_progressbar');
-            wp_enqueue_style('ngg_progressbar');
-        }
-
         wp_register_style(
 	        'ngg-jquery-ui',
 	        $router->get_static_url('photocrati-nextgen_admin#jquery-ui/jquery-ui-1.10.4.custom.css'),
 	        FALSE,
-	        NGG_SCRIPT_VERSION
+	        '1.10.4'
+        );
+        wp_register_script(
+            'iris',
+            $router->get_url('/wp-admin/js/iris.min.js', FALSE, TRUE),
+            array('jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch')
+        );
+        wp_register_script(
+            'wp-color-picker',
+            $router->get_url('/wp-admin/js/color-picker.js', FALSE, TRUE),
+            array('iris')
+        );
+        wp_localize_script('wp-color-picker', 'wpColorPickerL10n', array(
+            'clear' => __('Clear', 'nggallery'),
+            'defaultString' => __('Default', 'nggallery'),
+            'pick' => __('Select Color', 'nggallery'),
+            'current' => __('Current Color', 'nggallery'),
+        ));
+
+        wp_register_style(
+            'nextgen_admin_css', 
+            $router->get_static_url('photocrati-nextgen_admin#nextgen_admin_page.css'), 
+            array('wp-color-picker'), 
+            $this->module_version
+        );
+        wp_register_script(
+            'nextgen_admin_js',
+            $router->get_static_url('photocrati-nextgen_admin#nextgen_admin_page.js'),
+            array('wp-color-picker'),
+	        $this->module_version
         );
 
-		$this->enqueue_wizard_components();
+        // Style the parent menu icons for NextGEN-related pages
+        wp_add_inline_style('wp-admin', '
+	        #adminmenu li.toplevel_page_nextgen-gallery img,
+	        #adminmenu li[class*=toplevel_page_nextgen-gallery] img,
+			#adminmenu li[class*=toplevel_page_ngg] img {
+			    opacity: 1;
+			    max-width: 18px;
+			    padding-top: 7px;
+			}
+        ');
+	}
+
+	/**
+	 * Adds a common body class to all admin pages
+	 *
+	 * @param $classes
+	 *
+	 * @return string
+	 */
+	function add_ngg_body_class( $classes )
+	{
+		return C_NextGen_Admin_Page_Manager::is_requested() ? "$classes ngg-admin" : $classes;
+	}
+
+    /**
+     * Adds a common body class to all admin pages
+     *
+     * @param $classes
+     *
+     * @return string
+     */
+    function add_ngg_post_type_class( $classes )
+    {
+        $url = $_SERVER['REQUEST_URI'];
+        $is_ngg_post_type = strpos($url, 'post_type=ngg_') || strpos($url, 'post_type=nextgen_');
+        if ( $is_ngg_post_type ) {
+            return "$classes ngg-post-type";
+        } else {
+            return $classes;
+        }
+        
+    }
+
+	/* Add common admin markup to top of custom post type pages */
+	function custom_post_type_markup_top() {
+        global $title;
+        $url = $_SERVER['REQUEST_URI'];
+        $is_ngg_post_type = strpos($url, 'post_type=ngg_') || strpos($url, 'post_type=nextgen_');
+        $is_single_edit_page = strpos($url, '&ngg_edit');
+		if ( $is_ngg_post_type && !$is_single_edit_page) {
+		    echo '<div id="ngg_page_content"><div class="ngg_page_content_header "><img src="' . C_Router::get_instance()->get_static_url('photocrati-nextgen_admin#imagely_icon.png') . '"><h3>'. $title . '</h3></div><div class="ngg_page_content_main">';
+		}
+	}
+
+	/* Add common admin markup to bottom of custom post type pages */
+	function custom_post_type_markup_bottom() {
+        $url = $_SERVER['REQUEST_URI'];
+        $is_ngg_post_type = strpos($url, 'post_type=ngg_') || strpos($url, 'post_type=nextgen_');
+        $is_single_edit_page = strpos($url, '&ngg_edit');
+        if ( $is_ngg_post_type && !$is_single_edit_page) {
+			echo '</div></div>';
+		}
 	}
 	
 	function init_wizards()
@@ -284,40 +440,50 @@ class M_NextGen_Admin extends C_Base_Module
 		$wizards->set_starter(__('Do you need help with NextGEN?', 'nggallery'));
 		$wizards->set_active(false);
 		
-		// Add gallery creation wizard for new users
-		$wizard = $wizards->add_wizard('nextgen.beginner.gallery_creation');
-		$wizard->add_step('start');
-		$wizard->set_step_text('start', __('Hello, it looks like you don\'t have any galleries, this wizard will guide you through creating your first gallery.', 'nggallery'));
-		$wizard->set_step_view('start', 'a.toplevel_page_nextgen-gallery');
-		$wizard->add_step('gallery_menu');
-		$wizard->set_step_text('gallery_menu', __('Click on the Gallery menu to access NextGEN\'s functionality.', 'nggallery'));
-		$wizard->set_step_target('gallery_menu', 'a.toplevel_page_nextgen-gallery', 'right center', 'left center');
-		$wizard->set_step_view('gallery_menu', 'a.toplevel_page_nextgen-gallery');
-		$wizard->add_step('add_gallery_menu');
-		$wizard->set_step_text('add_gallery_menu', __('Click on the "Add Gallery / Images" menu to create new galleries with images.', 'nggallery'));
-		$wizard->set_step_target('add_gallery_menu', 'a[href*="admin.php?page=ngg_addgallery"]', 'right center', 'left center');
-		$wizard->set_step_view('add_gallery_menu', 'a[href*="admin.php?page=ngg_addgallery"]');
-		$wizard->add_step('input_gallery_name');
-		$wizard->set_step_text('input_gallery_name', __('Select a name for your gallery.', 'nggallery'));
-		$wizard->set_step_target('input_gallery_name', 'input#gallery_name', 'bottom center', 'top center');
-		$wizard->set_step_target_wait('input_gallery_name', '5');
-		$wizard->set_step_view('input_gallery_name', 'input#gallery_name');
-		$wizard->add_step('select_images');
-		$wizard->set_step_text('select_images', __('Now click the "Add Files" button and select some images to add to the gallery.', 'nggallery'));
-		$wizard->set_step_target('select_images', 'a#uploader_browse', 'right center', 'left center');
-		$wizard->set_step_target_wait('select_images', '5');
-		$wizard->set_step_view('select_images', 'a#uploader_browse');
-		$wizard->add_step('upload_images');
-		$wizard->set_step_text('upload_images', __('Now click the "Start Upload" button to begin the upload process.', 'nggallery'));
-		$wizard->set_step_target('upload_images', 'a#uploader_upload', 'right center', 'left center');
-		$wizard->set_step_target_wait('upload_images', '5');
-		$wizard->set_step_view('upload_images', 'a#uploader_upload');
-		$wizard->add_step('finish');
-		$wizard->set_step_text('finish', __('Congratulations! You just created your first gallery.', 'nggallery'));
+		/* 
+         * This first sequence was established to just add a gallery via the 
+         * central gallery area. We decided instead on an alternative sequence
+         * below that also inserts the gallery into a page. Just keeping this 
+         * code for reference
+         */
+		// $wizard = $wizards->add_wizard('nextgen.beginner.gallery_creation');
+		// $wizard->add_step('start');
+		// $wizard->set_step_text('start', __('Hello, it looks like you don\'t have any galleries, this wizard will guide you through creating your first gallery.', 'nggallery'));
+		// $wizard->set_step_view('start', 'a.toplevel_page_nextgen-gallery');
+		// $wizard->add_step('gallery_menu');
+		// $wizard->set_step_text('gallery_menu', __('Click on the Gallery menu to access NextGEN\'s functionality.', 'nggallery'));
+		// $wizard->set_step_target('gallery_menu', 'a.toplevel_page_nextgen-gallery', 'right center', 'left center');
+		// $wizard->set_step_view('gallery_menu', 'a.toplevel_page_nextgen-gallery');
+		// $wizard->add_step('add_gallery_menu');
+		// $wizard->set_step_text('add_gallery_menu', __('Click on the "Add Gallery / Images" menu to create new galleries with images.', 'nggallery'));
+		// $wizard->set_step_target('add_gallery_menu', 'a[href*="admin.php?page=ngg_addgallery"]', 'right center', 'left center');
+		// $wizard->set_step_view('add_gallery_menu', 'a[href*="admin.php?page=ngg_addgallery"]');
+		// $wizard->add_step('input_gallery_name');
+		// $wizard->set_step_text('input_gallery_name', __('Select a name for your gallery.', 'nggallery'));
+		// $wizard->set_step_target('input_gallery_name', 'input#gallery_name', 'bottom center', 'top center');
+		// $wizard->set_step_target_wait('input_gallery_name', '5');
+		// $wizard->set_step_view('input_gallery_name', 'input#gallery_name');
+		// $wizard->add_step('select_images');
+		// $wizard->set_step_text('select_images', __('Now click the "Add Files" button and select some images to add to the gallery.', 'nggallery'));
+		// $wizard->set_step_target('select_images', 'a#uploader_browse', 'right center', 'left center');
+		// $wizard->set_step_target_wait('select_images', '5');
+		// $wizard->set_step_view('select_images', 'a#uploader_browse');
+		// $wizard->add_step('upload_images');
+		// $wizard->set_step_text('upload_images', __('Now click the "Start Upload" button to begin the upload process.', 'nggallery'));
+		// $wizard->set_step_target('upload_images', 'a#uploader_upload', 'right center', 'left center');
+		// $wizard->set_step_target_wait('upload_images', '5');
+		// $wizard->set_step_view('upload_images', 'a#uploader_upload');
+		// $wizard->add_step('finish');
+		// $wizard->set_step_text('finish', __('Congratulations! You just created your first gallery.', 'nggallery'));
 		
+        /* 
+         * This is the new wizard sequence that helps users both crerate a gallery
+         * and add it to a page.
+         */
 		$wizard = $wizards->add_wizard('nextgen.beginner.gallery_creation_igw');
 		$wizard->add_step('start');
 		$wizard->set_step_text('start', __('Hello, this wizard will guide you through creating a NextGEN gallery and inserting it into a page. Click "Next step" to proceed.', 'nggallery'));
+		// $wizard->set_step_target('start', 'a.ngg-wizard-invoker', 'bottom center', 'top center');
 		$wizard->add_step('pages_menu');
 		$wizard->set_step_text('pages_menu', __('Click on "Pages" to access your WordPress pages.', 'nggallery'));
 		$wizard->set_step_target('pages_menu', '#menu-pages a.menu-top', 'right center', 'left center');
@@ -334,35 +500,36 @@ class M_NextGen_Admin extends C_Base_Module
 		$wizard->set_step_text('add_gallery_button', __('Now click the "Add Gallery" button to open NextGEN\'s Insert Gallery Window (IGW).', 'nggallery'));
 		$wizard->set_step_target('add_gallery_button', 'a#ngg-media-button', 'right center', 'left center');
 		$wizard->set_step_view('add_gallery_button', 'a#ngg-media-button');
-		$wizard->add_step('add_gallery_tab');
-		$wizard->set_step_text('add_gallery_tab', __('Now click the "Add Gallery / Images" tab to add a new gallery.', 'nggallery'));
-		$wizard->set_step_target('add_gallery_tab', '#attach_to_post_tabs a#ui-id-2', 'bottom center', 'top center');
-		$wizard->set_step_view('add_gallery_tab', '#attach_to_post_tabs a#ui-id-2');
-		$wizard->set_step_context('add_gallery_tab', 'iframe[src*="' . NGG_ATTACH_TO_POST_SLUG . '"]');
-		$wizard->set_step_lazy('add_gallery_tab', true);
-		$wizard->set_step_condition('add_gallery_tab', 'nextgen_event', 'plupload_init', null, 10000);
+        $wizard->add_step('add_gallery_tab');
+        $wizard->set_step_text('add_gallery_tab', __('Now click the "Upload Images" tab to add a new gallery.', 'nggallery'));
+        $wizard->set_step_target('add_gallery_tab', '#attach_to_post_tabs a#ui-id-2', 'right center', 'left center');
+        $wizard->set_step_view('add_gallery_tab', '#attach_to_post_tabs a#ui-id-2');
+        $wizard->set_step_context('add_gallery_tab', 'iframe[src*="' . NGG_ATTACH_TO_POST_SLUG . '"]');
+        $wizard->set_step_lazy('add_gallery_tab', true);
+        $wizard->set_step_condition('add_gallery_tab', 'nextgen_event', 'plupload_init', null, 10000);
 		$wizard->add_step('input_gallery_name');
 		$wizard->set_step_text('input_gallery_name', __('Select a name for your gallery.', 'nggallery'));
-		$wizard->set_step_target('input_gallery_name', 'input#gallery_name:visible', 'bottom center', 'top center');
-		$wizard->set_step_view('input_gallery_name', 'input#gallery_name');
-		$wizard->set_step_context('input_gallery_name', array('iframe[src*="' . NGG_ATTACH_TO_POST_SLUG . '"]', 'iframe#ngg-iframe-create_tab'));
+        $wizard->set_step_target('input_gallery_name', 'input#gallery_name:visible', 'bottom center', 'top center');
+        $wizard->set_step_view('input_gallery_name', 'input#gallery_name');
+        $wizard->set_step_context('input_gallery_name', array('iframe[src*="' . NGG_ATTACH_TO_POST_SLUG . '"]', 'iframe#ngg-iframe-create_tab'));
 		$wizard->set_step_lazy('input_gallery_name', true);
+        // $wizard->set_step_condition('input_gallery_name', 'nextgen_event', 'plupload_init', null, 10000);
 		$wizard->add_step('select_images');
 		$wizard->set_step_text('select_images', __('Now click the "Add Files" button and select some images to add to the gallery.', 'nggallery'));
-		$wizard->set_step_target('select_images', 'a#uploader_browse', 'right center', 'left center');
+		$wizard->set_step_target('select_images', 'a#uploader_browse', 'bottom center', 'top center');
 		$wizard->set_step_view('select_images', 'a#uploader_browse');
 		$wizard->set_step_context('select_images', array('iframe[src*="' . NGG_ATTACH_TO_POST_SLUG . '"]', 'iframe#ngg-iframe-create_tab'));
 		$wizard->set_step_lazy('select_images', true);
 		$wizard->add_step('upload_images');
 		$wizard->set_step_text('upload_images', __('Now click the "Start Upload" button to begin the upload process.', 'nggallery'));
-		$wizard->set_step_target('upload_images', 'a#uploader_upload', 'right center', 'left center');
+		$wizard->set_step_target('upload_images', 'a#uploader_upload', 'bottom center', 'top center');
 		$wizard->set_step_view('upload_images', 'a#uploader_upload');
 		$wizard->set_step_context('upload_images', array('iframe[src*="' . NGG_ATTACH_TO_POST_SLUG . '"]', 'iframe#ngg-iframe-create_tab'));
 		$wizard->set_step_lazy('upload_images', true);
 		$wizard->set_step_condition('upload_images', 'plupload_bind', 'UploadComplete', array('iframe[src*="' . NGG_ATTACH_TO_POST_SLUG . '"]', 'iframe#ngg-iframe-create_tab', '#uploader'));
 		$wizard->add_step('display_gallery_tab');
-		$wizard->set_step_text('display_gallery_tab', __('Congratulations! You just created your first gallery. Now let\'s insert it into the page. Click the "Display Galleries" tab.', 'nggallery'));
-		$wizard->set_step_target('display_gallery_tab', '#attach_to_post_tabs a#ui-id-1', 'bottom center', 'top center');
+		$wizard->set_step_text('display_gallery_tab', __('Congratulations! You just created your first gallery. Now let\'s insert it into the page. Click the "Insert into Page" tab.', 'nggallery'));
+		$wizard->set_step_target('display_gallery_tab', '#attach_to_post_tabs a#ui-id-1', 'right center', 'left center');
 		$wizard->set_step_view('display_gallery_tab', '#attach_to_post_tabs a#ui-id-1');
 		$wizard->set_step_context('display_gallery_tab', 'iframe[src*="' . NGG_ATTACH_TO_POST_SLUG . '"]');
 		$wizard->set_step_lazy('display_gallery_tab', true);
@@ -373,20 +540,6 @@ class M_NextGen_Admin extends C_Base_Module
 		$wizard->set_step_view('display_type_select', '.display_type_preview input[type="radio"]');
 		$wizard->set_step_context('display_type_select', 'iframe[src*="' . NGG_ATTACH_TO_POST_SLUG . '"]');
 		$wizard->set_step_lazy('display_type_select', true);
-		$wizard->add_step('display_accordion_close');
-		$wizard->set_step_text('display_accordion_close', __('Now let\'s specify which gallery to display. Start by clicking on the "Select a display type" section header to collapse it.', 'nggallery'));
-		$wizard->set_step_target('display_accordion_close', '#displayed_tab #display_type_tab', 'bottom center', 'top center');
-		$wizard->set_step_view('display_accordion_close', '#displayed_tab #display_type_tab');
-		$wizard->set_step_context('display_accordion_close', 'iframe[src*="' . NGG_ATTACH_TO_POST_SLUG . '"]');
-		$wizard->set_step_lazy('display_accordion_close', true);
-		$wizard->set_step_condition('display_accordion_close', 'wait', '1000');
-		$wizard->add_step('source_accordion_open');
-		$wizard->set_step_text('source_accordion_open', __('Now click on the "What would you like to display?" section\'s header to expand it.', 'nggallery'));
-		$wizard->set_step_target('source_accordion_open', '#displayed_tab #source_tab', 'bottom center', 'top center');
-		$wizard->set_step_view('source_accordion_open', '#displayed_tab #source_tab');
-		$wizard->set_step_context('source_accordion_open', 'iframe[src*="' . NGG_ATTACH_TO_POST_SLUG . '"]');
-		$wizard->set_step_lazy('source_accordion_open', true);
-		$wizard->set_step_condition('source_accordion_open', 'wait', '1000');
 		$wizard->add_step('source_select');
 		$wizard->set_step_text('source_select', __('Now click inside the "Galleries" field and select your gallery.', 'nggallery'));
 		$wizard->set_step_target('source_select', '#source_configuration .galleries_column .select2-container input', 'right center', 'left center');
@@ -394,8 +547,8 @@ class M_NextGen_Admin extends C_Base_Module
 		$wizard->set_step_context('source_select', 'iframe[src*="' . NGG_ATTACH_TO_POST_SLUG . '"]');
 		$wizard->set_step_lazy('source_select', true);
 		$wizard->add_step('insert_gallery');
-		$wizard->set_step_text('insert_gallery', __('Now click on the "Insert Displayed Gallery" button to insert the gallery in your page.', 'nggallery'));
-		$wizard->set_step_target('insert_gallery', '#displayed_tab #save_displayed_gallery', 'right center', 'left center');
+		$wizard->set_step_text('insert_gallery', __('Now click on the "Insert Gallery" button to insert the gallery in your page.', 'nggallery'));
+		$wizard->set_step_target('insert_gallery', '#displayed_tab #save_displayed_gallery', 'top center', 'bottom left');
 		$wizard->set_step_view('insert_gallery', '#displayed_tab #save_displayed_gallery');
 		$wizard->set_step_context('insert_gallery', 'iframe[src*="' . NGG_ATTACH_TO_POST_SLUG . '"]');
 		$wizard->set_step_lazy('insert_gallery', true);
@@ -471,10 +624,10 @@ class M_NextGen_Admin extends C_Base_Module
         
 		$wizards = C_NextGEN_Wizard_Manager::get_instance();
 		$wizard = $wizards->get_next_wizard();
-		
+
 		if ($wizards->is_active() && $wizard != null) {
 			$data = array();
-			$data['starter'] = array('text' => $wizards->get_starter(), 'image' => $router->get_static_url('photocrati-nextgen_admin#wizard_starter_icon.png'));
+			$data['starter'] = array('text' => $wizards->get_starter(), 'image' => $router->get_static_url('photocrati-nextgen_admin#imagely_icon.png'));
 			$running_wizard = $wizards->get_running_wizard();
 			$data['running_wizard'] = $running_wizard != null ? $running_wizard->get_id() : null;
 			$data['wizard_list'] = array($wizard->toData());
@@ -497,7 +650,7 @@ class M_NextGen_Admin extends C_Base_Module
 	 */
 	function add_menu_pages()
 	{
-		C_Page_Manager::get_instance()->setup();
+		C_NextGen_Admin_Page_Manager::get_instance()->setup();
 	}
 
     function get_type_list()
@@ -511,7 +664,7 @@ class M_NextGen_Admin extends C_Base_Module
             'C_Form' => 'class.form.php',
             'C_Form_Manager' => 'class.form_manager.php',
             'C_Nextgen_Admin_Page_Controller' => 'class.nextgen_admin_page_controller.php',
-            'C_Page_Manager' => 'class.page_manager.php',
+            'C_NextGen_Admin_Page_Manager' => 'class.nextgen_admin_page_manager.php',
 	        'C_Admin_Notification_Manager'  =>  'class.admin_notification_manager.php',
             'C_NextGEN_Wizard_Manager' => 'class.nextgen_wizard_manager.php',
         );
@@ -585,3 +738,4 @@ class C_NextGen_Admin_Option_Handler
 }
 
 new M_NextGen_Admin();
+

@@ -39,7 +39,6 @@
                         'javascript:alert("/*\nCSS Name: Example\nDescription: This is an example stylesheet\nAuthor: John Smith\nVersion: 1.0\n*/");'
                     );
                 ?>
-                All stylesheets must contain a <a href='#' onclick='javascript:alert("/*\nCSS Name: Example\nDescription: This is an example stylesheet\nAuthor: John Smith\nVersion: 1.0\n*/");'>file header</a>
             </p>
 		</td>
 	</tr>

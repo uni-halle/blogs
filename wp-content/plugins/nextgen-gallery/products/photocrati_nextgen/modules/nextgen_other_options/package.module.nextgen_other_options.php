@@ -363,7 +363,7 @@ class A_Other_Options_Controller extends Mixin
 }
 /**
  * Class A_Other_Options_Page
- * @mixin C_Page_Manager
+ * @mixin C_NextGen_Admin_Page_Manager
  * @adapts I_Page_Manager
  */
 class A_Other_Options_Page extends Mixin
@@ -387,7 +387,7 @@ class A_Reset_Form extends Mixin
     }
     function render()
     {
-        return $this->object->render_partial('photocrati-nextgen_other_options#reset_tab', array('reset_value' => __('Reset all options to default settings', 'nggallery'), 'reset_warning' => __('Replace all existing options and gallery options with their default settings', 'nggallery'), 'reset_label' => __('Reset settings', 'nggallery'), 'reset_confirmation' => __("Reset all options to default settings?\n\nChoose [Cancel] to Stop, [OK] to proceed.", 'nggallery')), TRUE);
+        return $this->object->render_partial('photocrati-nextgen_other_options#reset_tab', array('reset_value' => __('Reset all options', 'nggallery'), 'reset_warning' => __('Replace all existing options and gallery options with their default settings', 'nggallery'), 'reset_label' => __('Reset settings', 'nggallery'), 'reset_confirmation' => __("Reset all options to default settings?\n\nChoose [Cancel] to Stop, [OK] to proceed.", 'nggallery')), TRUE);
     }
     function reset_action()
     {

@@ -23,7 +23,7 @@ class M_Simple_Html_Dom extends C_Base_Module
             'photocrati-simple_html_dom',
             'Simple HTML Dom',
             'Provides the simple_html_dom utility for other modules to use',
-            '1.5',
+            '3.0.0',
             'https://www.imagely.com',
             'Imagely',
             'https://www.imagely.com'

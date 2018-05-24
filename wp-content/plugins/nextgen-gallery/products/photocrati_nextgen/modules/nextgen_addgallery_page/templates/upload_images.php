@@ -210,7 +210,7 @@
 								}
 								else {
 									$.gritter.add({
-										title: '<?php _e("Upload complete", 'nggallery'); ?>',
+										title: '<?php _e("Upload complete. Great job!", 'nggallery'); ?>',
 										text: msg,
 										sticky: true
 									});

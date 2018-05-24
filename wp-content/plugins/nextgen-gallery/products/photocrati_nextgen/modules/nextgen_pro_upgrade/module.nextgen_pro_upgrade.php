@@ -21,7 +21,7 @@ class M_NextGen_Pro_Upgrade extends C_Base_Module
             'photocrati-nextgen_pro_upgrade',
             'NextGEN Pro Page',
             'NextGEN Gallery Pro Upgrade Page',
-            '0.8',
+            '3.0.0',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Imagely',
             'https://www.imagely.com'
