@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Elementor stylesheet class.
+ * Elementor stylesheet.
  *
  * Elementor stylesheet handler class responsible for setting up CSS rules and
  * properties, and all the CSS `@media` rule with supported viewport width.
@@ -282,6 +282,8 @@ class Stylesheet {
 	 *
 	 * @since 1.2.0
 	 * @access private
+	 *
+	 * @throws \RangeException If max value for this device is out of range.
 	 *
 	 * @param string $device_name Device name.
 	 *

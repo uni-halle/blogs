@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Elementor user class.
+ * Elementor user.
  *
  * Elementor user handler class is responsible for checking if the user can edit
  * with Elementor and displaying different admin notices.
@@ -89,9 +89,17 @@ class User {
 	}
 
 	/**
+	 * Is current user can edit post type.
+	 *
+	 * Whether the current user can edit any given post type.
+	 *
 	 * @since 1.9.0
-	 * @static
 	 * @access public
+	 * @static
+	 *
+	 * @param string The post type slug to check.
+	 *
+	 * @return bool True on success, False otherwise.
 	 */
 	public static function is_current_user_can_edit_post_type( $post_type ) {
 		if ( ! post_type_exists( $post_type ) ) {
@@ -118,13 +126,13 @@ class User {
 	 *
 	 * Retrieve the list of notices for the current user.
 	 *
-	 * @since 1.0.0
+	 * @since 2.0.0
 	 * @access private
 	 * @static
 	 *
 	 * @return array A list of user notices.
 	 */
-	private static function _get_user_notices() {
+	private static function get_user_notices() {
 		return get_user_meta( get_current_user_id(), self::ADMIN_NOTICES_KEY, true );
 	}
 
@@ -142,7 +150,7 @@ class User {
 	 * @return bool Whether the notice was viewed by the user.
 	 */
 	public static function is_user_notice_viewed( $notice_id ) {
-		$notices = self::_get_user_notices();
+		$notices = self::get_user_notices();
 		if ( empty( $notices ) || empty( $notices[ $notice_id ] ) ) {
 			return false;
 		}
@@ -166,7 +174,7 @@ class User {
 			die;
 		}
 
-		$notices = self::_get_user_notices();
+		$notices = self::get_user_notices();
 		if ( empty( $notices ) ) {
 			$notices = [];
 		}

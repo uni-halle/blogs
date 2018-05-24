@@ -57,6 +57,22 @@ class Widget_Icon extends Widget_Base {
 	}
 
 	/**
+	 * Get widget categories.
+	 *
+	 * Retrieve the list of categories the icon widget belongs to.
+	 *
+	 * Used to determine where to display the widget in the editor.
+	 *
+	 * @since 2.0.0
+	 * @access public
+	 *
+	 * @return array Widget categories.
+	 */
+	public function get_categories() {
+		return [ 'basic' ];
+	}
+
+	/**
 	 * Register icon widget controls.
 	 *
 	 * Adds different input fields to allow the user to change and customize the widget settings.
@@ -119,6 +135,9 @@ class Widget_Icon extends Widget_Base {
 			[
 				'label' => __( 'Link', 'elementor' ),
 				'type' => Controls_Manager::URL,
+				'dynamic' => [
+					'active' => true,
+				],
 				'placeholder' => __( 'https://your-link.com', 'elementor' ),
 			]
 		);
@@ -332,7 +351,7 @@ class Widget_Icon extends Widget_Base {
 	 * @access protected
 	 */
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		$this->add_render_attribute( 'wrapper', 'class', 'elementor-icon-wrapper' );
 
@@ -359,6 +378,7 @@ class Widget_Icon extends Widget_Base {
 
 		if ( ! empty( $settings['icon'] ) ) {
 			$this->add_render_attribute( 'icon', 'class', $settings['icon'] );
+			$this->add_render_attribute( 'icon', 'aria-hidden', 'true' );
 		}
 
 		?>
@@ -384,7 +404,7 @@ class Widget_Icon extends Widget_Base {
 				iconTag = link ? 'a' : 'div'; #>
 		<div class="elementor-icon-wrapper">
 			<{{{ iconTag }}} class="elementor-icon elementor-animation-{{ settings.hover_animation }}" {{{ link }}}>
-				<i class="{{ settings.icon }}"></i>
+				<i class="{{ settings.icon }}" aria-hidden="true"></i>
 			</{{{ iconTag }}}>
 		</div>
 		<?php

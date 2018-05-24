@@ -57,22 +57,6 @@ class Widget_Social_Icons extends Widget_Base {
 	}
 
 	/**
-	 * Get widget categories.
-	 *
-	 * Retrieve the list of categories the social icons widget belongs to.
-	 *
-	 * Used to determine where to display the widget in the editor.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 *
-	 * @return array Widget categories.
-	 */
-	public function get_categories() {
-		return [ 'general-elements' ];
-	}
-
-	/**
 	 * Register social icons widget controls.
 	 *
 	 * Adds different input fields to allow the user to change and customize the widget settings.
@@ -143,6 +127,8 @@ class Widget_Social_Icons extends Widget_Base {
 							'fa fa-soundcloud',
 							'fa fa-spotify',
 							'fa fa-stack-overflow',
+							'fa fa-steam',
+							'fa fa-stumbleupon',
 							'fa fa-telegram',
 							'fa fa-tripadvisor',
 							'fa fa-tumblr',
@@ -157,6 +143,7 @@ class Widget_Social_Icons extends Widget_Base {
 							'fa fa-xing',
 							'fa fa-yelp',
 							'fa fa-youtube',
+							'fa fa-500px',
 						],
 					],
 					[
@@ -434,9 +421,10 @@ class Widget_Social_Icons extends Widget_Base {
 	 * @access protected
 	 */
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		$class_animation = '';
+
 		if ( ! empty( $settings['hover_animation'] ) ) {
 			$class_animation = ' elementor-animation-' . $settings['hover_animation'];
 		}

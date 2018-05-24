@@ -66,22 +66,6 @@ class Widget_Audio extends Widget_Base {
 	}
 
 	/**
-	 * Get widget categories.
-	 *
-	 * Retrieve the list of categories the audio widget belongs to.
-	 *
-	 * Used to determine where to display the widget in the editor.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 *
-	 * @return array Widget categories.
-	 */
-	public function get_categories() {
-		return [ 'general-elements' ];
-	}
-
-	/**
 	 * Register audio widget controls.
 	 *
 	 * Adds different input fields to allow the user to change and customize the widget settings.
@@ -246,7 +230,7 @@ class Widget_Audio extends Widget_Base {
 	 * @access protected
 	 */
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		if ( empty( $settings['link'] ) ) {
 			return;
@@ -275,6 +259,8 @@ class Widget_Audio extends Widget_Base {
 	 * @access public
 	 *
 	 * @param string $html The HTML returned by the oEmbed provider.
+	 *
+	 * @return string Filtered audio widget oEmbed HTML.
 	 */
 	public function filter_oembed_result( $html ) {
 		$param_keys = [

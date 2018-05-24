@@ -6,9 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Elementor column element class.
+ * Elementor column element.
  *
- * Elementor repeater handler class is responsible for initializing the column
+ * Elementor column handler class is responsible for initializing the column
  * element.
  *
  * @since 1.0.0
@@ -44,14 +44,17 @@ class Element_Column extends Element_Base {
 
 		return [
 			'duplicate' => [
+				/* translators: %s: Column label */
 				'title' => sprintf( __( 'Duplicate %s', 'elementor' ), $column_label ),
 				'icon' => 'clone',
 			],
 			'add' => [
+				/* translators: %s: Column label */
 				'title' => sprintf( __( 'Add %s', 'elementor' ), $column_label ),
 				'icon' => 'plus',
 			],
 			'remove' => [
+				/* translators: %s: Column label */
 				'title' => sprintf( __( 'Remove %s', 'elementor' ), $column_label ),
 				'icon' => 'close',
 			],
@@ -123,8 +126,8 @@ class Element_Column extends Element_Base {
 			[
 				'label' => __( 'Column Width', 'elementor' ) . ' (%)',
 				'type' => Controls_Manager::NUMBER,
-				'min' => 10,
-				'max' => 90,
+				'min' => 2,
+				'max' => 98,
 				'required' => true,
 				'device_args' => [
 					Controls_Stack::RESPONSIVE_TABLET => [
@@ -175,14 +178,17 @@ class Element_Column extends Element_Base {
 				'type' => Controls_Manager::NUMBER,
 				'placeholder' => 20,
 				'selectors' => [
-					'{{WRAPPER}} > .elementor-column-wrap > .elementor-widget-wrap > .elementor-widget:not(:last-child)' => 'margin-bottom: {{VALUE}}px',//Need the full path for exclude the inner section
+					'{{WRAPPER}} > .elementor-column-wrap > .elementor-widget-wrap > .elementor-widget:not(:last-child)' => 'margin-bottom: {{VALUE}}px', //Need the full path for exclude the inner section
 				],
 			]
 		);
 
 		$possible_tags = [
 			'div',
+			'header',
+			'footer',
 			'article',
+			'section',
 			'aside',
 			'nav',
 		];
@@ -300,7 +306,7 @@ class Element_Column extends Element_Base {
 		$this->add_control(
 			'background_overlay_opacity',
 			[
-				'label' => __( 'Opacity (%)', 'elementor' ),
+				'label' => __( 'Opacity', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => .5,
@@ -340,7 +346,7 @@ class Element_Column extends Element_Base {
 		$this->add_control(
 			'background_overlay_hover_opacity',
 			[
-				'label' => __( 'Opacity (%)', 'elementor' ),
+				'label' => __( 'Opacity', 'elementor' ),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => .5,
@@ -486,12 +492,12 @@ class Element_Column extends Element_Base {
 						[
 							'name' => 'background_background',
 							'operator' => '!==',
-							'value' => ''
+							'value' => '',
 						], [
 							'name' => 'border_border',
 							'operator' => '!==',
-							'value' => ''
-						]
+							'value' => '',
+						],
 					],
 				],
 				'selectors' => [
@@ -517,7 +523,7 @@ class Element_Column extends Element_Base {
 			]
 		);
 
-		if ( in_array( Scheme_Color::get_type(), Schemes_Manager::get_enabled_schemes() ) ) {
+		if ( in_array( Scheme_Color::get_type(), Schemes_Manager::get_enabled_schemes(), true ) ) {
 			$this->add_control(
 				'colors_warning',
 				[
@@ -608,7 +614,7 @@ class Element_Column extends Element_Base {
 		$this->start_controls_section(
 			'section_advanced',
 			[
-				'label' => __( 'Element Style', 'elementor' ),
+				'label' => __( 'Advanced', 'elementor' ),
 				'type' => Controls_Manager::SECTION,
 				'tab' => Controls_Manager::TAB_ADVANCED,
 			]
@@ -648,6 +654,7 @@ class Element_Column extends Element_Base {
 				'selectors' => [
 					'{{WRAPPER}}' => 'z-index: {{VALUE}};',
 				],
+				'label_block' => false,
 			]
 		);
 
@@ -658,7 +665,7 @@ class Element_Column extends Element_Base {
 				'type' => Controls_Manager::ANIMATION,
 				'default' => '',
 				'prefix_class' => 'animated ',
-				'label_block' => true,
+				'label_block' => false,
 				'frontend_available' => true,
 			]
 		);
@@ -703,8 +710,8 @@ class Element_Column extends Element_Base {
 				'label' => __( 'CSS ID', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
 				'default' => '',
-				'label_block' => true,
 				'title' => __( 'Add your custom id WITHOUT the Pound key. e.g: my-id', 'elementor' ),
+				'label_block' => false,
 			]
 		);
 
@@ -715,8 +722,8 @@ class Element_Column extends Element_Base {
 				'type' => Controls_Manager::TEXT,
 				'default' => '',
 				'prefix_class' => '',
-				'label_block' => true,
 				'title' => __( 'Add your custom class WITHOUT the dot. e.g: my-class', 'elementor' ),
+				'label_block' => false,
 			]
 		);
 
@@ -796,7 +803,7 @@ class Element_Column extends Element_Base {
 		?>
 		<div class="elementor-element-overlay">
 			<ul class="elementor-editor-element-settings elementor-editor-column-settings">
-				<li class="elementor-editor-element-setting elementor-editor-element-trigger" title="<?php printf( __( 'Edit %s', 'elementor' ), __( 'Column', 'elementor' ) ); ?>">
+				<li class="elementor-editor-element-setting elementor-editor-element-trigger" title="<?php echo esc_attr( sprintf( __( 'Edit %s', 'elementor' ), __( 'Column', 'elementor' ) ) ); ?>">
 					<i class="eicon-column" aria-hidden="true"></i>
 					<span class="elementor-screen-only"><?php printf( __( 'Edit %s', 'elementor' ), __( 'Column', 'elementor' ) ); ?></span>
 				</li>
@@ -838,10 +845,10 @@ class Element_Column extends Element_Base {
 	 * @access public
 	 */
 	public function before_render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
-		$has_background_overlay = in_array( $settings['background_overlay_background'], [ 'classic', 'gradient' ] ) ||
-								  in_array( $settings['background_overlay_hover_background'], [ 'classic', 'gradient' ] );
+		$has_background_overlay = in_array( $settings['background_overlay_background'], [ 'classic', 'gradient' ], true ) ||
+								  in_array( $settings['background_overlay_hover_background'], [ 'classic', 'gradient' ], true );
 
 		$column_wrap_class = 'elementor-column-wrap';
 		if ( $this->get_children() ) {
@@ -876,7 +883,7 @@ class Element_Column extends Element_Base {
 	/**
 	 * Add column render attributes.
 	 *
-	 * Used to add render attributes to the column element.
+	 * Used to add attributes to the current column wrapper HTML tag.
 	 *
 	 * @since 1.3.0
 	 * @access protected

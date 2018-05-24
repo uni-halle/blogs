@@ -1,6 +1,8 @@
 <?php
 namespace Elementor;
 
+use Elementor\Modules\DynamicTags\Module as TagsModule;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -8,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Elementor google maps widget.
  *
- * Elementor widget that displays an embeded google map.
+ * Elementor widget that displays an embedded google map.
  *
  * @since 1.0.0
  */
@@ -57,6 +59,22 @@ class Widget_Google_Maps extends Widget_Base {
 	}
 
 	/**
+	 * Get widget categories.
+	 *
+	 * Retrieve the list of categories the google maps widget belongs to.
+	 *
+	 * Used to determine where to display the widget in the editor.
+	 *
+	 * @since 2.0.0
+	 * @access public
+	 *
+	 * @return array Widget categories.
+	 */
+	public function get_categories() {
+		return [ 'basic' ];
+	}
+
+	/**
 	 * Register google maps widget controls.
 	 *
 	 * Adds different input fields to allow the user to change and customize the widget settings.
@@ -78,6 +96,12 @@ class Widget_Google_Maps extends Widget_Base {
 			[
 				'label' => __( 'Address', 'elementor' ),
 				'type' => Controls_Manager::TEXT,
+				'dynamic' => [
+					'active' => true,
+					'categories' => [
+						TagsModule::POST_META_CATEGORY,
+					],
+				],
 				'placeholder' => $default_address,
 				'default' => $default_address,
 				'label_block' => true,
@@ -101,7 +125,7 @@ class Widget_Google_Maps extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'height',
 			[
 				'label' => __( 'Height', 'elementor' ),
@@ -151,7 +175,7 @@ class Widget_Google_Maps extends Widget_Base {
 	 * @access protected
 	 */
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		if ( empty( $settings['address'] ) ) {
 			return;
@@ -162,9 +186,10 @@ class Widget_Google_Maps extends Widget_Base {
 		}
 
 		printf(
-			'<div class="elementor-custom-embed"><iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=%s&amp;t=m&amp;z=%d&amp;output=embed&amp;iwloc=near"></iframe></div>',
+			'<div class="elementor-custom-embed"><iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=%s&amp;t=m&amp;z=%d&amp;output=embed&amp;iwloc=near" aria-label="%s"></iframe></div>',
 			rawurlencode( $settings['address'] ),
-			absint( $settings['zoom']['size'] )
+			absint( $settings['zoom']['size'] ),
+			esc_attr( $settings['address'] )
 		);
 	}
 

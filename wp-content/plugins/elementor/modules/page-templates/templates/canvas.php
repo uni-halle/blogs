@@ -3,18 +3,21 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+
+\Elementor\Plugin::$instance->frontend->add_body_class( 'elementor-template-canvas' );
+
 ?>
 <!DOCTYPE html>
-<html <?php language_attributes(); ?> class="no-js">
-	<head>
-		<meta charset="<?php bloginfo( 'charset' ); ?>">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<?php if ( ! current_theme_supports( 'title-tag' ) ) : ?>
+<html <?php language_attributes(); ?>>
+<head>
+	<meta charset="<?php bloginfo( 'charset' ); ?>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<?php if ( ! current_theme_supports( 'title-tag' ) ) : ?>
 		<title><?php echo wp_get_document_title(); ?></title>
-		<?php endif; ?>
-		<?php wp_head(); ?>
-	</head>
-	<body <?php body_class(); ?>>
+	<?php endif; ?>
+	<?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
 	<?php
 	/**
 	 * Before canvas page template content.
@@ -25,10 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 */
 	do_action( 'elementor/page_templates/canvas/before_content' );
 
-	while ( have_posts() ) :
-		the_post();
-		the_content();
-	endwhile;
+	\Elementor\Plugin::$instance->modules_manager->get_modules( 'page-templates' )->print_content();
 
 	/**
 	 * After canvas page template content.
@@ -38,6 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 * @since 1.0.0
 	 */
 	do_action( 'elementor/page_templates/canvas/after_content' );
+
 	wp_footer();
 	?>
 	</body>

@@ -58,22 +58,6 @@ class Widget_Toggle extends Widget_Base {
 	}
 
 	/**
-	 * Get widget categories.
-	 *
-	 * Retrieve the list of categories the toggle widget belongs to.
-	 *
-	 * Used to determine where to display the widget in the editor.
-	 *
-	 * @since 1.0.0
-	 * @access public
-	 *
-	 * @return array Widget categories.
-	 */
-	public function get_categories() {
-		return [ 'general-elements' ];
-	}
-
-	/**
 	 * Register toggle widget controls.
 	 *
 	 * Adds different input fields to allow the user to change and customize the widget settings.
@@ -470,12 +454,13 @@ class Widget_Toggle extends Widget_Base {
 	 * @access protected
 	 */
 	protected function render() {
-		$settings = $this->get_settings();
+		$settings = $this->get_settings_for_display();
 
 		$id_int = substr( $this->get_id_int(), 0, 3 );
 		?>
 		<div class="elementor-toggle" role="tablist">
-			<?php foreach ( $settings['tabs'] as $index => $item ) :
+			<?php
+			foreach ( $settings['tabs'] as $index => $item ) :
 				$tab_count = $index + 1;
 
 				$tab_title_setting_key = $this->get_repeater_setting_key( 'tab_title', 'tabs', $index );
@@ -502,7 +487,7 @@ class Widget_Toggle extends Widget_Base {
 				$this->add_inline_editing_attributes( $tab_content_setting_key, 'advanced' );
 				?>
 				<div class="elementor-toggle-item">
-					<<?php echo $settings['title_html_tag']; ?> <?php echo $this->get_render_attribute_string( $tab_title_setting_key ); ?>>
+					<<?php echo esc_html( $settings['title_html_tag'] ); ?> <?php echo $this->get_render_attribute_string( $tab_title_setting_key ); ?>>
 						<?php if ( $settings['icon'] ) : ?>
 						<span class="elementor-toggle-icon elementor-toggle-icon-<?php echo esc_attr( $settings['icon_align'] ); ?>" aria-hidden="true">
 							<i class="elementor-toggle-icon-closed <?php echo esc_attr( $settings['icon'] ); ?>"></i>
@@ -510,7 +495,7 @@ class Widget_Toggle extends Widget_Base {
 						</span>
 						<?php endif; ?>
 						<?php echo $item['tab_title']; ?>
-					</<?php echo $settings['title_html_tag']; ?>>
+					</<?php echo esc_html( $settings['title_html_tag'] ); ?>>
 					<div <?php echo $this->get_render_attribute_string( $tab_content_setting_key ); ?>><?php echo $this->parse_text_editor( $item['tab_content'] ); ?></div>
 				</div>
 			<?php endforeach; ?>
