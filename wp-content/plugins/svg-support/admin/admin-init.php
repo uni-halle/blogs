@@ -17,7 +17,12 @@ function bodhi_svgs_admin_menu() {
 		'manage_options',
 		'svg-support',
 		'bodhi_svg_support_settings_page'
-		);
+	);
+
+	// load the help menu on the SVG Support settings page
+	add_action( 'load-' . $bodhi_svgs_options_page, 'bodhi_svgs_help_tab' );
+
+	require( BODHI_SVGS_PLUGIN_PATH . 'admin/svgs-settings-page-help.php' );
 
 }
 add_action( 'admin_menu', 'bodhi_svgs_admin_menu' );

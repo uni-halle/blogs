@@ -11,6 +11,24 @@
 h3 {
 	padding: 0 12px;
 }
+.help-tab-content h3 {
+	padding: 0;
+}
+h3.inner-title {
+	padding: 0;
+	font-size: 1.2em;
+}
+
+.metabox-holder {
+	.postbox>h3,
+	.stuffbox>h3,
+	h2.hndle,
+	h3.hndle {
+		font-size: 1.3em;
+		font-weight: 600;
+	}
+}
+
 .shortpixel-logo img {
 	position: absolute;
 	right: 10px;

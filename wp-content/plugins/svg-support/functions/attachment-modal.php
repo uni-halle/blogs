@@ -14,14 +14,14 @@ function bodhi_svgs_response_for_svg( $response, $attachment, $meta ) {
 
 		if ( ! file_exists( $svg_path ) ) {
 			// If SVG is external, use the URL instead of the path
-			$svg_path = $response[ 'url' ];
+			$svg_path = $response['url'];
 		}
 
 		$dimensions = bodhi_svgs_get_dimensions( $svg_path );
 
-		$response[ 'sizes' ] = array(
+		$response['sizes'] = array(
 			'full' => array(
-				'url' => $response[ 'url' ],
+				'url' => $response['url'],
 				'width' => $dimensions->width,
 				'height' => $dimensions->height,
 				'orientation' => $dimensions->width > $dimensions->height ? 'landscape' : 'portrait'
@@ -49,6 +49,7 @@ function bodhi_svgs_get_dimensions( $svg ) {
 		$attributes = $svg->attributes();
 		$width = (string) $attributes->width;
 		$height = (string) $attributes->height;
+
 	}
 
 	return (object) array( 'width' => $width, 'height' => $height );

@@ -40,14 +40,12 @@ function bodhi_svgs_admin_css() {
 add_action( 'admin_enqueue_scripts', 'bodhi_svgs_admin_css' );
 
 /**
- * Enqueue front end CSS for attachment pages
+ * Enqueue front end CSS
  */
 function bodhi_svgs_frontend_css() {
 
-	// check if user is on attachment page
-	if ( is_attachment() ) {
-		wp_enqueue_style( 'bodhi-svgs-attachment', BODHI_SVGS_PLUGIN_URL . 'css/svgs-attachment.css' );
-	}
+	// enqueue attachment CSS
+	wp_enqueue_style( 'bodhi-svgs-attachment', BODHI_SVGS_PLUGIN_URL . 'css/svgs-attachment.css' );
 
 }
 add_action( 'wp_enqueue_scripts', 'bodhi_svgs_frontend_css' );

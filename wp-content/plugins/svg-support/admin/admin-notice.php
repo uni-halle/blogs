@@ -1,4 +1,8 @@
 <?php
+/***************************
+ * NOT ACTIVE SINCE 2.3.12 *
+ ***************************/
+
 /**
  * Display admin notice to users who upgraded from less than 2.3
  * Allow for dismissal by storing an option in the DB via AJAX

@@ -5,6 +5,6 @@
  * WooCommerce Product, Sensei Course
  */
 body #set-post-thumbnail,
-body #postimagediv .inside img {
+body #postimagediv .inside img[src$=".svg"] {
 	width: 100%;
 }
