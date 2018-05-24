@@ -40,6 +40,8 @@ function theme_slug_widgets_init() {
 			'after_title' => '</h3>'
 		)
 	);
+}
+
 
 	/*
 		2018_01_29 HenryG.
@@ -47,7 +49,8 @@ function theme_slug_widgets_init() {
 		PageTopWidget
 		
 	 */
-
+add_action( 'widgets_init', 'theme_top_widget_init' );
+function theme_top_widget_init() {
 	register_sidebar( array(
 		'id' => 'top_widget',
 		'name' => __( 'PageTopWidget' ),
@@ -59,9 +62,21 @@ function theme_slug_widgets_init() {
 		)
 	);
 
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function de_menalib_kit_search() {
 return <<<FORMULAR
 <form action="https://kvk.bibliothek.kit.edu/hylib-bin/kvk/nph-kvk2.cgi" method="GET" name="KVK_Suchmaske"><input name="maske" type="HIDDEN" value="SSG623" /><INPUT TYPE="HIDDEN" NAME="input-charset" VALUE="utf-8"><INPUT TYPE="HIDDEN" NAME="header" VALUE="http://kvk.bibliothek.kit.edu/asset/html/header.html">
@@ -475,3 +490,11 @@ add_filter( 'tiny_mce_before_init', 'fb_change_mce_options' );
 
 
 */
+
+
+ /**
+ * Include Shortcode für Hal:Lit Discovery Suche
+ */
+
+
+require_once( get_stylesheet_directory() . '/inc/discovery-search.php');
