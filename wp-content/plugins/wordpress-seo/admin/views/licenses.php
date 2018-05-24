@@ -1,7 +1,9 @@
 <?php
 /**
+ * WPSEO plugin file.
+ *
  * @package WPSEO\Admin
- * @since      5.1
+ * @since   5.1
  */
 
 if ( ! defined( 'WPSEO_VERSION' ) ) {
@@ -221,7 +223,6 @@ $wpseo_extensions_header = sprintf( __( '%1$s Extensions', 'wordpress-seo' ), 'Y
 			<h2><?php
 				/* translators: %1$s expands to Yoast SEO */
 				$yoast_seo_extensions = sprintf( __( '%1$s extensions', 'wordpress-seo' ), 'Yoast SEO' );
-
 				$yoast_seo_extensions = '<span class="yoast-heading-highlight">' . $yoast_seo_extensions . '</span>';
 
 				/* translators: %1$s expands to Yoast SEO extensions */
