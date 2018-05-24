@@ -4048,13 +4048,13 @@ msgid "1 result found. Use up and down arrow keys to navigate."
 msgstr "1 sonuç bulundu. Dolaşmak için yukarı ve aşağı okları kullanın."
 
 #. translators: %s: user name
-#: wp-includes/comment-template.php:2232
+#: wp-includes/comment-template.php:2231
 msgid "Logged in as %s. Edit your profile."
 msgstr "%s olarak giriş yapıldı. Profilinizi düzenleyin."
 
 #. translators: 1: edit user link, 2: accessibility text, 3: user name, 4:
 #. logout URL
-#: wp-includes/comment-template.php:2229
+#: wp-includes/comment-template.php:2228
 msgid "<a href=\"%1$s\" aria-label=\"%2$s\">Logged in as %3$s</a>. <a href=\"%4$s\">Log out?</a>"
 msgstr "<a href=\"%1$s\" aria-label=\"%2$s\">%3$s olarak giriş yapıldı</a>. <a href=\"%4$s\">Çıkış yap?</a>"
 
@@ -9191,7 +9191,7 @@ msgstr "<strong>VHOST ve SUBDOMAIN_INSTALL değerleri arasında çakışma söz 
 msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
 msgstr "<strong>HATA</strong>: Bu kullanıcı adı kabul edilmeyen karakterler içerdiği için geçerli değil.  Lütfen geçerli bir kullanıcı adı girin."
 
-#: wp-includes/comment-template.php:2207
+#: wp-includes/comment-template.php:2206
 msgid "Required fields are marked %s"
 msgstr "Gerekli alanlar %s ile işaretlenmişlerdir"
 
@@ -9353,7 +9353,7 @@ msgstr "Sizi bu siteye eklerken bir hata oluştu. <a href=\"%s\">Anasayfaya</a> 
 msgid "This file is too big. Files must be less than %d KB in size."
 msgstr "Dosya çok büyük. Dosyalar %d KB boyutundan daha küçük olmalıdırlar."
 
-#: wp-includes/comment-template.php:2236
+#: wp-includes/comment-template.php:2235
 msgid "Your email address will not be published."
 msgstr "E-posta hesabınız yayımlanmayacak."
 
@@ -11278,19 +11278,19 @@ msgstr "Tekrar edilen yorum bulundu; görünen o ki bu yorumu daha önceden zate
 msgid "Unapproved"
 msgstr "Onaylanmamış"
 
-#: wp-includes/comment-template.php:2251
+#: wp-includes/comment-template.php:2250
 msgid "Post Comment"
 msgstr "Yorum gönder"
 
-#: wp-includes/comment-template.php:2250
+#: wp-includes/comment-template.php:2249
 msgid "Cancel reply"
 msgstr "Cevabı iptal et"
 
-#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2245
+#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2244
 msgid "Leave a Reply to %s"
 msgstr "%s için bir cevap yazın"
 
-#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2244
+#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2243
 msgid "Leave a Reply"
 msgstr "Bir Cevap Yazın"
 
@@ -11383,7 +11383,7 @@ msgid "Tags: "
 msgstr "Etiketler:"
 
 #. translators: %s: login URL
-#: wp-includes/comment-template.php:2223
+#: wp-includes/comment-template.php:2222
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr "Yorum yapabilmek için <a href=\"%s\">giriş yapmalısınız</a>."
 
@@ -11441,7 +11441,7 @@ msgstr "Bilinmeyen bir sebepten dolayı bu yazı düzenlenemedi."
 msgid "Widgets"
 msgstr "Bileşenler"
 
-#: wp-includes/comment-template.php:2203
+#: wp-includes/comment-template.php:2202
 msgid "Website"
 msgstr "İnternet sitesi"
 
@@ -11497,7 +11497,7 @@ msgstr "Tarih Biçimi"
 msgid "Allow people to post comments on new articles"
 msgstr "Yeni yazılar üzerine yorum yapılmasına izin ver"
 
-#: wp-includes/comment-template.php:2201 wp-login.php:809
+#: wp-includes/comment-template.php:2200 wp-login.php:809
 msgid "Email"
 msgstr "E-posta"
 
@@ -11957,7 +11957,7 @@ msgstr "Hiçbiri"
 msgid "Description"
 msgstr "Tanım"
 
-#: wp-includes/comment-template.php:2199
+#: wp-includes/comment-template.php:2198
 msgid "Name"
 msgstr "İsim"
 
@@ -12045,7 +12045,7 @@ msgstr "Hayır"
 msgid "Are you sure you want to do this?"
 msgstr "Bunu yapmak istediğinizden emin misiniz?"
 
-#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2219
+#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2218
 msgctxt "noun"
 msgid "Comment"
 msgstr "Yorum"

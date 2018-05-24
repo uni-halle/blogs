@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Contact Form &amp; SMTP Plugin for WordPress by PirateForms - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-02-13 12:45:38+0000\n"
+"PO-Revision-Date: 2018-03-29 11:48:03+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,27 +11,19 @@ msgstr ""
 "Language: tr\n"
 "Project-Id-Version: Plugins - Contact Form &amp; SMTP Plugin for WordPress by PirateForms - Development (trunk)\n"
 
-#: vendor/codeinwp/themeisle-sdk/class-themeisle-sdk-endpoints.php:238
-msgid "%s not found"
-msgstr "%s bulunamadı"
-
-#: vendor/codeinwp/themeisle-sdk/class-themeisle-sdk-endpoints.php:299
-msgid "Invalid %"
-msgstr "Geçersiz %"
-
-#: admin/class-pirateforms-admin.php:622
+#: admin/class-pirateforms-admin.php:641
 msgid "Email content"
 msgstr "E-posta içeriği"
 
-#: admin/class-pirateforms-admin.php:623
+#: admin/class-pirateforms-admin.php:642
 msgid "You can use the next magic tags:"
 msgstr "Bir sonraki sihirli etiketleri kullanabilirsiniz:"
 
-#: public/class-pirateforms-public.php:807
+#: public/class-pirateforms-public.php:888
 msgid "Invalid CAPTCHA"
 msgstr "Geçersiz CAPTCHA"
 
-#: public/class-pirateforms-public.php:819
+#: public/class-pirateforms-public.php:900
 msgid "Incorrect CAPTCHA"
 msgstr "Hatalı CAPTCHA"
 
@@ -43,45 +35,46 @@ msgstr "Lütfen site anahtarını ve gizli anahtarı belirtin."
 msgid "To use this option, please ensure Akismet is activated with a valid key."
 msgstr "Bu seçeneği kullanmak için lütfen Akismet'in geçerli anahtarla etkinleştirildiğinden emin olun."
 
-#: admin/class-pirateforms-admin.php:378
+#: admin/class-pirateforms-admin.php:397
 msgid "Integrate with Akismet?"
 msgstr "Akismet ile bütünleştirilsin mi?"
 
-#: admin/class-pirateforms-admin.php:381
+#: admin/class-pirateforms-admin.php:400
 msgid "Checking this option will verify the content of the message with Akismet to check if it's spam. If it is determined to be spam, the message will be blocked. %s"
 msgstr "Bu seçeneği işaretlerseniz, mesajın içeriğinin Akismet ile kontrol edilerek istenmeyen olup olmadığı kontrol edilir. İstenmeyen olarak belirlenirse, mesaj engellenir. %s"
 
-#: admin/class-pirateforms-admin.php:501
+#: admin/class-pirateforms-admin.php:520
 msgid "Add a spam trap"
 msgstr "İstenmeyen posta tuzağı ekle"
 
-#: admin/class-pirateforms-admin.php:511
+#: admin/class-pirateforms-admin.php:530
 msgid "Custom"
 msgstr "Özel"
 
-#: admin/class-pirateforms-admin.php:512
+#: admin/class-pirateforms-admin.php:531
 msgid "Google reCAPTCHA"
 msgstr "Google reCAPTCHA"
 
-#: includes/class-pirateforms-html.php:190
+#: includes/class-pirateforms-html.php:195
 msgid "Upload file"
 msgstr "Dosya yükle"
 
 #: includes/class-pirateforms-util.php:258
 #: includes/class-pirateforms-util.php:299
-#: public/class-pirateforms-public.php:584
+#: public/class-pirateforms-public.php:627
+#: public/class-pirateforms-public.php:630
 msgid "Came from"
 msgstr "Şuradan gelen"
 
-#: public/class-pirateforms-public.php:104
+#: public/class-pirateforms-public.php:143
 msgid "I'm human!"
 msgstr "Ben bir insanım!"
 
-#: public/class-pirateforms-public.php:828
+#: public/class-pirateforms-public.php:909
 msgid "Submission blocked!"
 msgstr "Gönderim engellendi!"
 
-#: public/class-pirateforms-public.php:957
+#: public/class-pirateforms-public.php:1039
 msgid "Uploaded file type is not allowed for %s"
 msgstr "%s için yüklenen dosya türüne izin verilmiyor"
 
@@ -126,11 +119,11 @@ msgstr "Önceki gönderiler:"
 msgid "No entries found."
 msgstr "Hiçbir gönderi bulunamadı"
 
-#: admin/class-pirateforms-admin.php:1019
+#: admin/class-pirateforms-admin.php:1037
 msgid "Sent email successfully!"
 msgstr "E-posta başarıyla gönderildi!"
 
-#: admin/class-pirateforms-admin.php:1019
+#: admin/class-pirateforms-admin.php:1037
 msgid "Sent email failed!"
 msgstr "E-posta gönderilemedi!"
 
@@ -138,35 +131,35 @@ msgstr "E-posta gönderilemedi!"
 msgid "More Features"
 msgstr "Daha fazla özellikler"
 
-#: admin/class-pirateforms-admin.php:946
+#: admin/class-pirateforms-admin.php:964
 msgid "Mail Status"
 msgstr "Posta durumu"
 
-#: admin/class-pirateforms-admin.php:969
+#: admin/class-pirateforms-admin.php:987
 msgid "Status not captured"
 msgstr "Durum yakalanamadı"
 
-#: admin/class-pirateforms-admin.php:969
+#: admin/class-pirateforms-admin.php:987
 msgid "Mail sent successfully!"
 msgstr "Posta başarıyla gönderildi!"
 
-#: admin/class-pirateforms-admin.php:969
+#: admin/class-pirateforms-admin.php:987
 msgid "Mail sending failed!"
 msgstr "Posta gönderimi başarısız oldu!"
 
-#: admin/class-pirateforms-admin.php:360
+#: admin/class-pirateforms-admin.php:379
 msgid "Success Page"
 msgstr "Başarı sayfası"
 
-#: admin/class-pirateforms-admin.php:416 admin/class-pirateforms-admin.php:435
-#: admin/class-pirateforms-admin.php:454 admin/class-pirateforms-admin.php:473
-#: admin/class-pirateforms-admin.php:491
+#: admin/class-pirateforms-admin.php:435 admin/class-pirateforms-admin.php:454
+#: admin/class-pirateforms-admin.php:473 admin/class-pirateforms-admin.php:492
+#: admin/class-pirateforms-admin.php:510
 msgid "Do not display"
 msgstr "Gösterme"
 
-#: admin/class-pirateforms-admin.php:417 admin/class-pirateforms-admin.php:436
-#: admin/class-pirateforms-admin.php:455 admin/class-pirateforms-admin.php:474
-#: admin/class-pirateforms-admin.php:492
+#: admin/class-pirateforms-admin.php:436 admin/class-pirateforms-admin.php:455
+#: admin/class-pirateforms-admin.php:474 admin/class-pirateforms-admin.php:493
+#: admin/class-pirateforms-admin.php:511
 msgid "Display but not required"
 msgstr "Görüntüle ama gerekli değil"
 
@@ -179,7 +172,7 @@ msgstr "Daha fazla özellik gör"
 msgid "Extend to FULL version"
 msgstr "Tam sürüme genişlet"
 
-#: admin/class-pirateforms-admin.php:363
+#: admin/class-pirateforms-admin.php:382
 msgid "Select the page that displays after a successful form submission. The page will be displayed without pausing on the email form, so please be sure to configure a relevant thank you message in this page."
 msgstr "Başarılı bir form gönderme sonrasında görüntülenecek sayfayı seçin. Sayfa, e-posta formunda duraksamaksızın görüntülenecektir, bu nedenle lütfen bu sayfada ilgili bir teşekkür mesajı yapılandırdığınızdan emin olun."
 
@@ -192,80 +185,80 @@ msgid "The notification email will be sent from this address both to the recipie
 msgstr "Bildirim e-postası bu adresden hem aşağıdaki alıcılara hem de iletişim formunu gönderen kişiye gönderilecektir (e-posta onayı altında etkinleştirilmişse, bu e-posta adresinin alan adı, sitenizin alan adıyla eşleşmelidir)."
 
 #: admin/class-pirateforms-admin.php:316 admin/class-pirateforms-admin.php:335
-#: admin/class-pirateforms-admin.php:391 admin/class-pirateforms-admin.php:750
-#: admin/class-pirateforms-admin.php:793
+#: admin/class-pirateforms-admin.php:373 admin/class-pirateforms-admin.php:410
+#: admin/class-pirateforms-admin.php:768 admin/class-pirateforms-admin.php:811
 msgid "Yes"
 msgstr "Evet"
 
-#: admin/class-pirateforms-admin.php:483
-#: public/class-pirateforms-public.php:995
+#: admin/class-pirateforms-admin.php:502
+#: public/class-pirateforms-public.php:1077
 msgid "Attachment"
 msgstr "Ek"
 
-#: admin/class-pirateforms-admin.php:700
+#: admin/class-pirateforms-admin.php:718
 msgid "Attachment is missing"
 msgstr "Ek eksik"
 
-#: admin/class-pirateforms-admin.php:702
+#: admin/class-pirateforms-admin.php:720
 msgid "Please add an attachment"
 msgstr "Lütfen bir ek girin"
 
-#: public/class-pirateforms-public.php:362
+#: public/class-pirateforms-public.php:401
 msgid "Submit"
 msgstr "Gönder"
 
-#: admin/class-pirateforms-admin.php:510 admin/class-pirateforms-admin.php:812
+#: admin/class-pirateforms-admin.php:529 admin/class-pirateforms-admin.php:830
 msgid "No"
 msgstr "Hayır"
 
-#: admin/class-pirateforms-admin.php:799
+#: admin/class-pirateforms-admin.php:817
 msgid "Security?"
 msgstr "Güvenlik?"
 
-#: admin/class-pirateforms-admin.php:813
+#: admin/class-pirateforms-admin.php:831
 msgid "SSL"
 msgstr "SSL"
 
-#: admin/class-pirateforms-admin.php:814
+#: admin/class-pirateforms-admin.php:832
 msgid "TLS"
 msgstr "TLS"
-
-#: admin/class-pirateforms-admin.php:325
-msgid "Should the form use a WordPress nonce? This helps reduce spam by ensuring that the form submittor is on the site when submitting the form rather than submitting remotely. This could, however, cause problems with sites using a page caching plugin. Turn this off if you are getting complaints about forms not being able to be submitted with an error of \"Nonce failed!\""
-msgstr "Form, bir WordPress güvenlik anahtarı kullanmalı mı? Bu, form gönderen kişinin, form gönderirken uzaktan göndermek yerine siteye girmesini sağlayarak istenmeyen gönderimleri azaltmaya yardımcı olur. Ancak bu, bir sayfa önbelleğe alma eklentisi kullanan sitelerde sorunlara neden olabilir. \"Güvenlik anahtarı hatalı!\" hatasıyla gönderilemeyen formlarla ilgili şikayet alırsanız bu özelliği kapatın."
 
 #: admin/class-pirateforms-admin.php:344
 msgid "Adding text here will send an email to the form submitter. The email uses the \"Successful form submission text\" field from the \"Alert Messages\" tab as the subject line. Plain text only here, no HTML."
 msgstr "Buraya metin eklendiğinde, form gönderenine bir e-posta gönderilir. E-posta, \"Uyarı mesajları\" sekmesindeki konu başlığı olarak \"Başarılı form gönderme metni\" alanını kullanır. Burada sadece düz metin kullanılabilir, HTML değil."
 
-#: public/class-pirateforms-public.php:965
+#: admin/class-pirateforms-admin.php:325
+msgid "Should the form use a WordPress nonce? This helps reduce spam by ensuring that the form submittor is on the site when submitting the form rather than submitting remotely. This could, however, cause problems with sites using a page caching plugin. Turn this off if you are getting complaints about forms not being able to be submitted with an error of \"Nonce failed!\""
+msgstr "Form, bir WordPress güvenlik anahtarı kullanmalı mı? Bu, form gönderen kişinin, form gönderirken uzaktan göndermek yerine siteye girmesini sağlayarak istenmeyen gönderimleri azaltmaya yardımcı olur. Ancak bu, bir sayfa önbelleğe alma eklentisi kullanan sitelerde sorunlara neden olabilir. \"Güvenlik anahtarı hatalı!\" hatasıyla gönderilemeyen formlarla ilgili şikayet alırsanız bu özelliği kapatın."
+
+#: public/class-pirateforms-public.php:1047
 msgid "Uploaded file is too large %s"
 msgstr "%s için yüklenen dosya boyutu çok büyük"
 
-#: public/class-pirateforms-public.php:979
+#: public/class-pirateforms-public.php:1061
 msgid "There was an unknown error uploading the file %s"
 msgstr "%s için bilinmeyen dosya yükleme hatası oldu"
 
 #: admin/class-pirateforms-admin.php:322
-msgid "Add a nonce to the contact form:"
-msgstr "İletişim formuna güvenlik anahtarı ekle:"
+msgid "Add a nonce to the contact form"
+msgstr "İletişim formuna güvenlik anahtarı ekle"
 
-#: admin/class-pirateforms-admin.php:399
+#: admin/class-pirateforms-admin.php:418
 #: admin/partials/pirateforms-settings-display.php:31
 msgid "Fields Settings"
 msgstr "Alan ayarları"
 
-#: admin/class-pirateforms-admin.php:550
+#: admin/class-pirateforms-admin.php:569
 #: admin/partials/pirateforms-settings-display.php:34
 msgid "Fields Labels"
 msgstr "Alan başlıkları"
 
-#: admin/class-pirateforms-admin.php:641
+#: admin/class-pirateforms-admin.php:659
 #: admin/partials/pirateforms-settings-display.php:37
 msgid "Alert Messages"
 msgstr "Uyarı mesajları"
 
-#: admin/class-pirateforms-admin.php:731
+#: admin/class-pirateforms-admin.php:749
 msgid "SMTP Options"
 msgstr "SMTP seçenekleri"
 
@@ -293,18 +286,21 @@ msgstr "Ücretsiz ve basit iletişim formu eklentisi - Pirateforms"
 
 #: includes/class-pirateforms-util.php:256
 #: includes/class-pirateforms-util.php:298
-#: public/class-pirateforms-public.php:576
+#: public/class-pirateforms-public.php:616
+#: public/class-pirateforms-public.php:620
 msgid "IP address"
 msgstr "IP adresi"
 
 #: includes/class-pirateforms-util.php:257
-#: public/class-pirateforms-public.php:577
+#: public/class-pirateforms-public.php:617
+#: public/class-pirateforms-public.php:621
 msgid "IP search"
 msgstr "IP araması"
 
 #: includes/class-pirateforms-util.php:259
 #: includes/class-pirateforms-util.php:300
-#: public/class-pirateforms-public.php:590
+#: public/class-pirateforms-public.php:635
+#: public/class-pirateforms-public.php:638
 msgid "Sent from page"
 msgstr "Gönderilen sayfa"
 
@@ -324,7 +320,7 @@ msgstr "Web sitenizin yükleme sürelerini yarı yarıya azaltmayı öğrenmeye 
 msgid "Thank you for subscribing! You have been added to the mailing list and will receive the next email information in the coming weeks. If you ever wish to unsubscribe, simply use the \"Unsubscribe\" link included in each newsletter."
 msgstr "Abone olduğunuz için teşekkür ederiz! Posta listesine eklediniz ve önümüzdeki haftalarda bir sonraki e-posta bilgisini alacaksınız. Eğer aboneliğinizi iptal etmek isterseniz, her haber bülteninde yer alan \"Aboneliği iptal et\" bağlantısını kullanın."
 
-#: admin/class-pirateforms-admin.php:570
+#: admin/class-pirateforms-admin.php:589
 msgid "Email"
 msgstr "E-posta"
 
@@ -344,15 +340,15 @@ msgstr "Hiçbiri"
 msgid "Themeisle"
 msgstr "Themeisle"
 
-#: admin/class-pirateforms-admin.php:720
+#: admin/class-pirateforms-admin.php:738
 msgid "Thanks, your email was sent successfully!"
 msgstr "Teşekkürler, e-postanız başarıyla gönderildi!"
 
-#: admin/class-pirateforms-admin.php:520
+#: admin/class-pirateforms-admin.php:539
 msgid "Site key"
 msgstr "Site anahtarı"
 
-#: admin/class-pirateforms-admin.php:538
+#: admin/class-pirateforms-admin.php:557
 msgid "Secret key"
 msgstr "Gizli anahtar"
 
@@ -396,122 +392,122 @@ msgstr "Gönderiler yönetim alanında saklanmalı mıdır? Seçilirse, iletişi
 msgid "Send email confirmation to form submitter"
 msgstr "Formu gönderene e-posta onayı gönder"
 
-#: admin/class-pirateforms-admin.php:407 admin/class-pirateforms-admin.php:557
+#: admin/class-pirateforms-admin.php:426 admin/class-pirateforms-admin.php:576
 msgid "Name"
 msgstr "İsim"
 
-#: admin/class-pirateforms-admin.php:418 admin/class-pirateforms-admin.php:437
-#: admin/class-pirateforms-admin.php:456 admin/class-pirateforms-admin.php:475
-#: admin/class-pirateforms-admin.php:493
+#: admin/class-pirateforms-admin.php:437 admin/class-pirateforms-admin.php:456
+#: admin/class-pirateforms-admin.php:475 admin/class-pirateforms-admin.php:494
+#: admin/class-pirateforms-admin.php:512
 msgid "Required"
 msgstr "Gerekli"
 
-#: admin/class-pirateforms-admin.php:426
+#: admin/class-pirateforms-admin.php:445
 msgid "Email address"
 msgstr "E-posta adresi"
 
-#: admin/class-pirateforms-admin.php:445 admin/class-pirateforms-admin.php:583
-#: admin/class-pirateforms-admin.php:585
+#: admin/class-pirateforms-admin.php:464 admin/class-pirateforms-admin.php:602
+#: admin/class-pirateforms-admin.php:604
 msgid "Subject"
 msgstr "Konu"
 
-#: admin/class-pirateforms-admin.php:464 admin/class-pirateforms-admin.php:596
+#: admin/class-pirateforms-admin.php:483 admin/class-pirateforms-admin.php:615
 msgid "Message"
 msgstr "Mesaj"
 
-#: admin/class-pirateforms-admin.php:523
+#: admin/class-pirateforms-admin.php:542
 msgid "Create an account here "
 msgstr "Buradan bir hesap oluşturun "
 
-#: admin/class-pirateforms-admin.php:523
+#: admin/class-pirateforms-admin.php:542
 msgid "to get the Site key and the Secret key for the reCaptcha."
 msgstr "reCaptcha için site ve gizli anahtar almak için."
 
-#: admin/class-pirateforms-admin.php:559
+#: admin/class-pirateforms-admin.php:578
 msgid "Your Name"
 msgstr "Adınız"
 
-#: admin/class-pirateforms-admin.php:572
+#: admin/class-pirateforms-admin.php:591
 msgid "Your Email"
 msgstr "E-posta adresiniz"
 
-#: admin/class-pirateforms-admin.php:598
+#: admin/class-pirateforms-admin.php:617
 msgid "Your message"
 msgstr "Mesajınız"
 
-#: admin/class-pirateforms-admin.php:609
+#: admin/class-pirateforms-admin.php:628
 msgid "Submit button"
 msgstr "Gönder düğmesi"
 
-#: admin/class-pirateforms-admin.php:648
+#: admin/class-pirateforms-admin.php:666
 msgid "Name required and missing"
 msgstr "İsim gerekli ve eksik"
 
-#: admin/class-pirateforms-admin.php:650
+#: admin/class-pirateforms-admin.php:668
 msgid "Enter your name"
 msgstr "Adınızı girin"
 
-#: admin/class-pirateforms-admin.php:661
+#: admin/class-pirateforms-admin.php:679
 msgid "E-mail required and missing"
 msgstr "E-posta gerekli ve eksik"
 
-#: admin/class-pirateforms-admin.php:663
+#: admin/class-pirateforms-admin.php:681
 msgid "Enter valid email"
 msgstr "Geçeli e-posta girin"
 
-#: admin/class-pirateforms-admin.php:674
+#: admin/class-pirateforms-admin.php:692
 msgid "Subject required and missing"
 msgstr "Konu gerekli ve eksik"
 
-#: admin/class-pirateforms-admin.php:676
+#: admin/class-pirateforms-admin.php:694
 msgid "Please enter a subject"
 msgstr "Bir konu girin"
 
-#: admin/class-pirateforms-admin.php:687
+#: admin/class-pirateforms-admin.php:705
 msgid "Question/comment is missing"
 msgstr "Soru/yorum eksik"
 
-#: admin/class-pirateforms-admin.php:689
+#: admin/class-pirateforms-admin.php:707
 msgid "Enter your question or comment"
 msgstr "Sorunuzu yada yorumunuzu girin"
 
-#: admin/class-pirateforms-admin.php:713
+#: admin/class-pirateforms-admin.php:731
 msgid "Successful form submission text"
 msgstr "Başarılı form gönderim metni"
 
-#: admin/class-pirateforms-admin.php:716
+#: admin/class-pirateforms-admin.php:734
 msgid "This text is used on the page if no Success Page is chosen above. This is also used as the confirmation email title, if one is set to send out."
 msgstr "Eğer üstten bir başarı sayfası seçilmediyse bu metin sayfada kullanılır. Eğer doğrulama e-postası gönderilecekse bu metin ayrıca başlık olarak da kullanılır."
 
-#: admin/class-pirateforms-admin.php:738
+#: admin/class-pirateforms-admin.php:756
 msgid "Use SMTP to send emails?"
 msgstr "E-posta göndermek için SMTP kullanılsın mı?"
 
-#: admin/class-pirateforms-admin.php:741
+#: admin/class-pirateforms-admin.php:759
 msgid "Instead of PHP mail function"
 msgstr "PHP mail fonksiyonu yerine"
 
-#: admin/class-pirateforms-admin.php:756
+#: admin/class-pirateforms-admin.php:774
 msgid "SMTP Host"
 msgstr "SMTP ana bilgisayar adı"
 
-#: admin/class-pirateforms-admin.php:768
+#: admin/class-pirateforms-admin.php:786
 msgid "SMTP Port"
 msgstr "SMTP portu"
 
-#: admin/class-pirateforms-admin.php:780
+#: admin/class-pirateforms-admin.php:798
 msgid "Use SMTP Authentication?"
 msgstr "SMTP doğrulaması kullanılsın mı?"
 
-#: admin/class-pirateforms-admin.php:783 admin/class-pirateforms-admin.php:802
+#: admin/class-pirateforms-admin.php:801 admin/class-pirateforms-admin.php:820
 msgid "If you check this box, make sure the SMTP Username and SMTP Password are completed."
 msgstr "Bu kutuyu işaretlerseniz, SMTP kullanıcı adı ve SMTP parolasının tamamlandığından emin olun."
 
-#: admin/class-pirateforms-admin.php:821
+#: admin/class-pirateforms-admin.php:839
 msgid "SMTP Username"
 msgstr "SMTP kullanıcı adı"
 
-#: admin/class-pirateforms-admin.php:833
+#: admin/class-pirateforms-admin.php:851
 msgid "SMTP Password"
 msgstr "SMTP parolası"
 
@@ -575,7 +571,7 @@ msgid "Form submission blocked!"
 msgstr "Form gönderimi engellendi!"
 
 #: includes/class-pirateforms-util.php:240
-#: public/class-pirateforms-public.php:549
+#: public/class-pirateforms-public.php:589
 msgid "Contact form submission from %s"
 msgstr "%s tarafından form gönderimi"
 
@@ -618,19 +614,18 @@ msgstr "Çöpte hiçbir gönderi bulunamadı."
 msgid "Entries from Pirate Forms"
 msgstr "Pirate Formsdan gönderiler"
 
-#: public/class-pirateforms-public.php:466
+#: public/class-pirateforms-public.php:505
 msgid "Sorry, an error occured."
 msgstr "Üzgünüm, bir hata oluştu."
 
-#: public/class-pirateforms-public.php:528
+#: public/class-pirateforms-public.php:567
 msgid "Nonce failed!"
 msgstr "Güvenlik anahtarı hatalı!"
 
-#: public/class-pirateforms-public.php:536
-#: public/class-pirateforms-public.php:601
+#: public/class-pirateforms-public.php:575
 msgid "Form submission failed!"
 msgstr "Form gönderimi başarısız oldu."
 
-#: public/class-pirateforms-public.php:561
+#: public/class-pirateforms-public.php:601
 msgid "Please enter one or more Contact submission recipients"
 msgstr "Lütfen bir veya daha fazla iletişim gönderi alıcısı girin"

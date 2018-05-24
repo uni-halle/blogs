@@ -1,0 +1,202 @@
+# Translation of Plugins - WP Native Dashboard - Stable (latest release) in German
+# This file is distributed under the same license as the Plugins - WP Native Dashboard - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-05-22 21:54:59+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: de\n"
+"Project-Id-Version: Plugins - WP Native Dashboard - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://www.code-styling.de/"
+msgstr "http://www.code-styling.de/"
+
+#. Author of the plugin/theme
+msgid "Heiko Rabe"
+msgstr "Heiko Rabe"
+
+#. Description of the plugin/theme
+msgid "You can configure your blog working at administration with different languages depends on users choice and capabilities the admin has been enabled."
+msgstr "Du kannst den Administrationsbereich so konfigurieren, dass er in verschieden Sprachen - abhängig von deiner Wahl bzw. deinen Berechtigungen - dargestellt wird."
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.code-styling.de/english/development/wordpress-plugin-wp-native-dashboard-en"
+msgstr "http://www.code-styling.de/english/development/wordpress-plugin-wp-native-dashboard-en"
+
+#. Plugin Name of the plugin/theme
+msgid "WP Native Dashboard"
+msgstr "WP Native Dashboard"
+
+#: wp-native-dashboard.php:617
+msgid "cleanup all settings at plugin deactivation."
+msgstr "alle Einstellungen bei Plugin-Deaktivierung entfernen."
+
+#: wp-native-dashboard.php:598
+msgid "Native Dashboard Settings"
+msgstr "Native Dashboard Einstellungen"
+
+#: wp-native-dashboard.php:577
+msgid "check repository &raquo;"
+msgstr "prüfen »"
+
+#: wp-native-dashboard.php:568
+msgid "Available for download:"
+msgstr "verfügbare Downloads:"
+
+#: wp-native-dashboard.php:565
+msgid "A lot of languages should be provided by polyglott translation teams as download into your WordPress installation."
+msgstr "Viele Sprachen werden von Polyglott Übersetzungsteams als Download für Ihre WordPress-Installation angeboten."
+
+#: wp-native-dashboard.php:518
+msgid "Your WordPress installation currectly supports this list of languages at your Dashboard."
+msgstr "Ihre WordPress-Installation unterstützt momentan diese Liste der Sprachen in Ihrem Dashboard."
+
+#: wp-native-dashboard.php:510
+msgid "If you are using one of the current available <a href=\"http://wordpress.org/extend/plugins/search.php?q=multilingual\" target=\"_blank\">multilingual plugins</a>, which permits you writing and publishing posts in several languages, you may also have the need, that native speaking authors should be able to choose their prefered backend language while writing. It's your decision if and how this will be possible. This feature set does not impact your frontend language (defined by config or by any multilingual plugin)."
+msgstr "Wenn Sie eines der aktuellen <a href=\"http://wordpress.org/extend/plugins/search.php?q=multilingual\" target=\"_blank\">Plugins für Mehrsprachigkeit</a> benutzen, das Ihnen erlaubt, Beiträge in mehreren Sprachen zu schreiben und zu veröffentlichen, könnte es notwendig werden, dass die muttersprachlichen Autoren in der Lage sein sollten, in ihrer bevorzugte Sprache im Backend zu schreiben. Es ist Ihre Entscheidung, ob und wie dies möglich sein wird. Diese Funktionen haben keinen Einfluss auf Ihre Frontend Sprache (definiert durch die Konfiguration oder durch ein Plugin für Mehrsprachigkeit)."
+
+#: wp-native-dashboard.php:510
+msgid "read more &raquo;"
+msgstr "Lesen Sie mehr »"
+
+#: wp-native-dashboard.php:506
+msgid "enable locale abbreviations behind the language name."
+msgstr "Gebietsschema Abkürzungen hinter dem Namen der Sprache aktivieren"
+
+#: wp-native-dashboard.php:502
+msgid "translate <em>Frontend Admin Bar</em> using backend selected language."
+msgstr "<em>Frontend-Admin-Bar</em> mit der ausgewählten Backend Sprache übersetzen"
+
+#: wp-native-dashboard.php:498
+msgid "extend <em>Backend Admin Bar</em> with a language quick selector."
+msgstr "erweitere die <em>Backend Admin Bar</em> um die Direktauswahl der Sprache."
+
+#: wp-native-dashboard.php:492
+msgid "extend <em>Admin Center Headline</em> with a language quick selector."
+msgstr "erweitere die <em>Admin-Center Kopfzeile</em> mit einer Sprachumschaltung."
+
+#: wp-native-dashboard.php:487
+msgid "extend <a href=\"profile.php\" target=\"_blank\">Personal Profile Settings</a> with users prefered language."
+msgstr "erweitere die <a href=\"profile.php\" target=\"_blank\">persönlichen Profil-Einstellungen</a> um eine benutzerspezifische Sprachwahl."
+
+#: wp-native-dashboard.php:483
+msgid "enable template tag usage of login selector (see help screen)."
+msgstr "Template-Tag Nutzung der Anmeldungsauswahlbox aktivieren (siehe Hilfe-Bildschirm)."
+
+#: wp-native-dashboard.php:479
+msgid "extend the <em>WordPress Logon Screen</em> to choose a language too."
+msgstr "erweitere den <em>WordPress Anmelde-Bildschirm</em> um eine Sprache auszuwählen."
+
+#: wp-native-dashboard.php:464
+msgid "If you need the select box from normal login screen within your own login implementation, you can activate the template tags for. Add the following codelines into your widget, template or whereever required."
+msgstr "Wenn Sie die Sprach-Auswahlbox des Anmeldebildschirm in Ihrer eigenen Implementierung benötigen, können Sie die dafür benötigten Template-Tags aktivieren. Fügen Sie danach folgende Codezeilen in Ihre Widget, Template oder wo immer Sie es brauchen ein."
+
+#: wp-native-dashboard.php:461
+msgid "Template Tags within your Plugins or Themes"
+msgstr "Template-Tags innerhalb Ihrer Plugins oder Themes"
+
+#: wp-native-dashboard.php:453
+msgid "Translate WordPress, Themes and Plugins into your Language"
+msgstr "Übersetzen Sie WordPress, Themes und Plugins in Ihre Sprache"
+
+#: wp-native-dashboard.php:446
+msgid "While get in touch with WordPress you will find out, that the initial delivery package comes only with english localization. If you want WordPress to show your native language, you have to provide the appropriated language file at languages folder. This files will be used to replace the english text phrases during the process of page generation. This translation capability has the origin at the gettext functionality which currently been used across a wide range of open source projects."
+msgstr ""
+"Wenn man sich mit WordPress näher beschäftigt, fällt einem auf, das man im Auslieferungszustand alles in englisch bekommt. Um WordPress an seine eigene Muttersprache anzupassen, kann man WordPress Sprachdateien zur Verfügung stellen. Diese werden dann dazu benutzt, die in englisch vorgegebenen Textfragmente während der Seitenerzeugung zu ersetzen.\n"
+"Diese Übersetzungfähigkeiten basieren auf der Verwendung der gettext Funktionalität, die in sehr vielen Open Source Projekten zum Einsatz kommt."
+
+#: wp-native-dashboard.php:443
+msgid "... use your backend with your prefered language"
+msgstr "... verwenden Sie Ihre Admin-Oberfläche in Ihrer bevorzugten Sprache"
+
+#: wp-native-dashboard.php:432
+msgid "Template Tags"
+msgstr "Template-Tags"
+
+#: wp-native-dashboard.php:426
+msgid "Overview"
+msgstr "Übersicht"
+
+#: wp-native-dashboard.php:420
+msgid "Downloads"
+msgstr "Downloads"
+
+#: wp-native-dashboard.php:419
+msgid "Installed Languages"
+msgstr "Installierte Sprachen"
+
+#: wp-native-dashboard.php:418
+msgid "Capabilities"
+msgstr "Fähigkeiten"
+
+#: wp-native-dashboard.php:387
+msgid "Cheatin&#8217; uh?"
+msgstr "Cheatin&#8217; uh?"
+
+#: wp-native-dashboard.php:368
+msgid "Native Dashboard"
+msgstr "Native Dashboard"
+
+#: wp-native-dashboard.php:83
+msgid "-n.a.-"
+msgstr "-n.a.-"
+
+#: personalprofile.php:41
+msgid "Select your prefered language that will be used to show the Admin Center."
+msgstr "Wählen Sie Ihre bevorzugte Sprache, die im Admin-Center verwendet werden soll."
+
+#: loginselector.php:29 personalprofile.php:20 wp-native-dashboard.php:240
+msgid "Language"
+msgstr "Sprache"
+
+#: automattic.php:637
+msgid "The download is currently not available."
+msgstr "Der Download ist derzeit nicht verfügbar."
+
+#: automattic.php:626 wp-native-dashboard.php:531
+msgid "Delete"
+msgstr "Löschen"
+
+#: automattic.php:539
+msgid "The missing languages directory could not be created at '%s'."
+msgstr "Das fehlenden Sprachdatei-Verzeichnis konnte nicht erstellt werden in '%s'."
+
+#: automattic.php:473
+msgid "You do not have the permission to delete language files."
+msgstr "Sie haben nicht die Berechtigung zum Löschen von Sprachdateien."
+
+#: automattic.php:450
+msgid "The language file %s you tried to delete does not exist."
+msgstr "Die Sprachdatei %s die Sie löschen möchten, gibt es nicht."
+
+#: automattic.php:397
+msgid "Download"
+msgstr "Herunterladen"
+
+#: automattic.php:394 automattic.php:624 wp-native-dashboard.php:529
+msgid "right to left"
+msgstr "rechts nach links"
+
+#: automattic.php:321
+msgid "The network connection to <strong>svn.automattic.com</strong> is currently not available. Please try again later."
+msgstr "Die Netzwerkverbindung zu <strong>svn.automattic.com</strong> ist derzeit nicht verfügbar. Bitte versuchen Sie es später erneut."
+
+#: automattic.php:134 automattic.php:255
+msgid "Error"
+msgstr "Fehler"
+
+#: automattic.php:116 automattic.php:237
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: automattic.php:112 automattic.php:136 automattic.php:233 automattic.php:257
+msgid "Ok"
+msgstr "Ok"
+
+#: automattic.php:110 automattic.php:231
+msgid "User Credentials required"
+msgstr "Anmeldeinformationen erforderlich"

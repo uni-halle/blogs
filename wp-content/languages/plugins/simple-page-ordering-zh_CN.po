@@ -1,0 +1,40 @@
+# Translation of Plugins - Simple Page Ordering - Stable (latest release) in Chinese (China)
+# This file is distributed under the same license as the Plugins - Simple Page Ordering - Stable (latest release) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-03-29 10:13:18+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Plugins - Simple Page Ordering - Stable (latest release)\n"
+
+#. Author URI of the plugin/theme
+msgid "http://10up.com"
+msgstr "http://10up.com"
+
+#. Author of the plugin/theme
+msgid "Jake Goldman, 10up"
+msgstr "Jake Goldman, 10up"
+
+#. Plugin URI of the plugin/theme
+msgid "http://10up.com/plugins/simple-page-ordering-wordpress/"
+msgstr "http://10up.com/plugins/simple-page-ordering-wordpress/"
+
+#. Plugin Name of the plugin/theme
+msgid "Simple Page Ordering"
+msgstr "Simple Page Ordering"
+
+#. Description of the plugin/theme
+msgid "Order your pages and hierarchical post types using drag and drop on the built in page list. For further instructions, open the \"Help\" tab on the Pages screen."
+msgstr "使用内建页面列表中的拖放命令来排列页面和分层的邮件类型。有关进一步的说明，请在页面屏幕上打开“帮助”选项卡。"
+
+#: simple-page-ordering.php:301
+msgid "Sort by Order"
+msgstr "排序顺序"
+
+#: simple-page-ordering.php:103
+msgid "To reposition an item, simply drag and drop the row by \"clicking and holding\" it anywhere (outside of the links and form controls) and moving it to its new position."
+msgstr "要重新定位一个项目，只需在“任何地方”（在链接和窗体控件的外部）单击并拖放该行并将其移动到新位置即可拖放行。"

@@ -1,28 +1,161 @@
-# Translation of Plugins - Events Manager - Development (trunk) in Japanese
-# This file is distributed under the same license as the Plugins - Events Manager - Development (trunk) package.
+# Translation of Plugins - Events Manager - Stable (latest release) in Japanese
+# This file is distributed under the same license as the Plugins - Events Manager - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-17 22:08:45+0000\n"
+"PO-Revision-Date: 2018-05-24 04:23:52+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ja_JP\n"
-"Project-Id-Version: Plugins - Events Manager - Development (trunk)\n"
+"Project-Id-Version: Plugins - Events Manager - Stable (latest release)\n"
 
-#: em-install.php:1037
+#: multilingual/em-ml-bookings.php:144
+msgid "Language Booked"
+msgstr "予約が存在する言語"
+
+#: multilingual/em-ml-bookings.php:128
+msgid "The language used to make this booking was %s"
+msgstr "このイベントが作成された言語: %s"
+
+#: admin/em-options.php:872 em-install.php:1072
+msgid "All Blogs"
+msgstr "サイト全体"
+
+#: admin/em-options.php:862
+msgid "Blog Default Timezone"
+msgstr "サイトの標準タイムゾーン"
+
+#: admin/em-options.php:305
+msgid "Event timezones on all blogs have been reset to %s."
+msgstr "サイト上のすべてのイベントのタイムゾーンを以下に設定しました: %s"
+
+#: admin/em-options.php:285
+msgid "The following blog timezones could not be successfully reset:"
+msgstr "以下のタイムゾーンはリセットできませんでした: "
+
+#: admin/em-data-privacy.php:379 templates/forms/event/recurring-when.php:18
+#: templates/forms/event/when-with-recurring.php:31
+#: templates/forms/event/when.php:24
+msgid "Timezone"
+msgstr "タイムゾーン"
+
+#: em-install.php:1597
+msgid "There was an error whilst migrating your times to our new timezone-aware formats. Below is a list of errors:"
+msgstr "タイムゾーン切替機能つきのフォーマットへ更新する際にエラーが生じました。以下にエラーの一覧を示します。:"
+
+#: em-install.php:1056
+msgid "You can reset your events to a new timezone and also complete the final migration step by deleting unecessary data in %s"
+msgstr "新しいタイムゾーンを適用するためイベントをリセットできます。以下の設定ページから、不要なデータを削除して設定を完了してください: %s"
+
+#: em-install.php:1052
+msgid "You can also reset all events of a blog to a new timezone in %s"
+msgstr "以下のページから、すべてのイベントのタイムゾーン設定を一括更新できます: %s"
+
+#: em-install.php:1051
+msgid "Please update your network and when you're happy with the changes you can also finalize the migration by deleting unecessary data in the %s page."
+msgstr "サイトを更新後、Events Manager の新しいシステムに十分満足できたら、以下のページから不要になった古いデータを削除して、新しいシステムへ完全移行できます: %s"
+
+#: em-install.php:1049 em-install.php:1071
 msgid "Network Admin"
 msgstr "サイト管理者"
+
+#: em-install.php:1046
+msgid "Events Manager now supports multiple timezones for your events! Your events will initially match your blog timezone."
+msgstr "Events Manager に複数のタイムゾーンを適用できるようになりました! 初期設定では、サイトのタイムゾーン設定が適用されます。"
+
+#: classes/em-bookings-table.php:95
+msgid "Ticket Total"
+msgstr "チケットの合計"
 
 #: admin/settings/updates/timezone-backcompat.php:95
 msgctxt "Multisite Blog Update"
 msgid "Failed to update %s."
 msgstr "%s は更新できませんでした。"
 
+#: admin/settings/updates/timezone-backcompat.php:53
+#: admin/settings/updates/timezone-backcompat.php:70
+msgid "We recommend you back up your database! Once the upgrade is finalized, you cannot downgrade to an earlier version of the plugin. This cannot be undone."
+msgstr "この操作はやり直しができせん。ファイナライズが完了すると、以前のバージョンに戻すことはできなくなります。実行する前にデータベースのバックアップをお勧めします!"
+
+#: admin/settings/updates/timezone-backcompat.php:40
+#: admin/settings/updates/timezone-backcompat.php:52
+#: admin/settings/updates/timezone-backcompat.php:69
+msgid "This is not a required step to enable any extra functionality, and therefore is not urgent. Only until you are happy with the upgrade and are confident you don't need to downgrade, finalize your upgrade by deleting and discontinuing these fields."
+msgstr "このステップを行わなくても付加機能は利用できるため、今すぐファイナライズを実行する必要はありません。アップグレードされた機能に十分満足が行き、前のバージョンに戻す必要はないと判断したら、これらのフィールドを削除してアップグレードを完了してください。"
+
+#: admin/settings/updates/timezone-backcompat.php:39
+#: admin/settings/updates/timezone-backcompat.php:51
+#: admin/settings/updates/timezone-backcompat.php:68
+msgid "Events Manager 5.9 introduced timezone functionality, which does not require certain fields in your database. To maintain backwards compatibility with earlier versions, these fields will still be created."
+msgstr "Events Manager 5.9 で強化されたタイムゾーン機能では、以前のバージョンのデータベースで使用していたフィールドが不要になります。前のバージョンとの互換性を残す場合は、これらのフィールドは引き続き生成されます。"
+
+#: admin/settings/updates/timezone-backcompat.php:38
+#: admin/settings/updates/timezone-backcompat.php:41
+#: admin/settings/updates/timezone-backcompat.php:50
+#: admin/settings/updates/timezone-backcompat.php:55
+#: admin/settings/updates/timezone-backcompat.php:67
+#: admin/settings/updates/timezone-backcompat.php:73
+#: admin/settings/updates/timezone-backcompat.php:86
+msgid "Finalize Timezones Upgrade"
+msgstr "新しいタイムゾーン機能のファイナライズ"
+
+#: admin/settings/updates/timezone-backcompat.php:25
+msgid "There was an error upgrading your site, please try again or contact support."
+msgstr "更新中にエラーが発生しました。再度やり直すか、管理者に連絡してください"
+
 #: admin/settings/updates/timezone-backcompat.php:20
 msgid "You have successfully finalized upgrading your site."
 msgstr "サイトは正常に更新されました。"
+
+#: admin/settings/tabs/general.php:25
+msgid "When creating a new event, this timezone will be applied by default."
+msgstr "イベントを新規作成する際、このタイムゾーンが標準で適用されます。"
+
+#: admin/settings/tabs/general.php:19
+msgid "Default Timezone"
+msgstr "デフォルトのタイムゾーン"
+
+#: admin/settings/tabs/general.php:15
+msgid "Each event can have its own timezone if enabled. If set to no, then all newly created events will have the blog timezone, which currently is set to %s"
+msgstr "「はい」の場合、イベントごとにタイムゾーン (開催国) を設定できます。「いいえ」の場合は、新規に作成するイベントはすべて、このサイトのタイムゾーン設定が適用されます。現在の設定: %s"
+
+#: admin/settings/tabs/general.php:15
+msgid "Enable Timezone Support?"
+msgstr "タイムゾーン切替機能を有効化しますか?"
+
+#: admin/em-options.php:885
+msgid "WARNING! This cannot be undone and will overwrite all event timezones, you may want to back up your database first!"
+msgstr "警告!!: この操作を実行すると、すべてのイベントのタイムゾーンが上書きされ、元に戻すことはできません。実行前にデータベースのバックアップをとることを強く推奨します。"
+
+#: admin/em-options.php:884
+msgid "Select a Timezone to reset all your blog events to."
+msgstr "このサイトのイベントに適用するタイムゾーンを選択してください。"
+
+#: admin/em-options.php:871
+msgid "Select a blog..."
+msgstr "ウェブサイトを選択..."
+
+#: admin/em-options.php:855 em-install.php:1072
+msgid "Reset Event Timezones"
+msgstr "タイムゾーンをリセット"
+
+#: admin/em-options.php:844
+msgid "Reset Timezones"
+msgstr "タイムゾーンをリセット"
+
+#: admin/em-options.php:310
+msgid "Event timezones have been reset to %s."
+msgstr "イベントのタイムゾーンを %s に設定しました。"
+
+#: admin/em-options.php:307
+msgid "Event timezones for blog %s have been reset to %s."
+msgstr "ウェブサイト %s 内のイベントのタイムゾーンを %s に設定しました。"
+
+#: admin/em-options.php:295
+msgid "A valid blog ID must be provided, you can only reset one blog at a time."
+msgstr "有効なブログ ID (ウェブサイト ID) を入力してください。なお、1度にリセットできるのは 1 ブログ ( ウェブサイト) だけです。"
 
 #: admin/em-ms-options.php:30
 #: admin/settings/updates/timezone-backcompat.php:106
@@ -43,64 +176,6 @@ msgstr "%s は最新です。"
 msgctxt "Multisite Blog Update"
 msgid "Updated %s."
 msgstr "%s を更新しました。"
-
-#: templates/forms/event/recurring-when.php:18
-#: templates/forms/event/when-with-recurring.php:31
-#: templates/forms/event/when.php:24
-msgid "Timezone"
-msgstr "タイムゾーン"
-
-#: em-install.php:1558
-msgid "There was an error whilst migrating your times to our new timezone-aware formats. Below is a list of errors:"
-msgstr "タイムゾーン切替機能つきのフォーマットへ更新する際にエラーが生じました。以下にエラーの一覧を示します。:"
-
-#: admin/settings/tabs/general.php:25
-msgid "When creating a new event, this timezone will be applied by default."
-msgstr "イベントを新規作成する際、このタイムゾーンが標準で適用されます。"
-
-#: admin/settings/tabs/general.php:19
-msgid "Default Timezone"
-msgstr "デフォルトのタイムゾーン"
-
-#: admin/settings/tabs/general.php:15
-msgid "Each event can have its own timezone if enabled. If set to no, then all newly created events will have the blog timezone, which currently is set to %s"
-msgstr "「はい」の場合、イベントごとにタイムゾーン (開催国) を設定できます。「いいえ」の場合は、新規に作成するイベントはすべて、このサイトのタイムゾーン設定が適用されます。現在の設定: %s"
-
-#: admin/settings/tabs/general.php:15
-msgid "Enable Timezone Support?"
-msgstr "タイムゾーン切替機能を有効化しますか?"
-
-#: admin/em-options.php:823
-msgid "WARNING! This cannot be undone and will overwrite all event timezones, you may want to back up your database first!"
-msgstr "警告!!: この操作を実行すると、すべてのイベントのタイムゾーンが上書きされ、元に戻すことはできません。実行前にデータベースのバックアップをとることを強く推奨します。"
-
-#: admin/em-options.php:822
-msgid "Select a Timezone to reset all your blog events to."
-msgstr "このサイトのイベントに適用するタイムゾーンを選択してください。"
-
-#: admin/em-options.php:813
-msgid "Select a blog..."
-msgstr "ウェブサイトを選択..."
-
-#: admin/em-options.php:805
-msgid "Reset Event Timezones"
-msgstr "タイムゾーンをリセット"
-
-#: admin/em-options.php:801
-msgid "Reset Timezones"
-msgstr "タイムゾーンをリセット"
-
-#: admin/em-options.php:270
-msgid "Event timezones have been reset to %s."
-msgstr "イベントのタイムゾーンを %s に設定しました。"
-
-#: admin/em-options.php:268
-msgid "Event timezones for blog %s have been reset to %s."
-msgstr "ウェブサイト %s 内のイベントのタイムゾーンを %s に設定しました。"
-
-#: admin/em-options.php:259
-msgid "A valid blog ID must be provided, you can only reset one blog at a time."
-msgstr "有効なブログ ID (ウェブサイト ID) を入力してください。なお、1度にリセットできるのは 1 ブログ ( ウェブサイト) だけです。"
 
 #: admin/settings/tabs/pages.php:412 admin/settings/tabs/pages.php:546
 msgid "When listing event archives for a %s, this order is applied."
@@ -132,7 +207,7 @@ msgstr "第 5"
 msgid "Modifications to event dates will cause all recurrences of this event to be deleted and recreated, previous bookings will be deleted."
 msgstr "開催日を変更すると、このイベントのすべての繰り返しが削除されたのちに再構築されます。これによって、すでに入っている予約の情報も滅失してしまいます。"
 
-#: classes/em-event.php:2962
+#: classes/em-event.php:2961
 msgid "the fifth %s of the month"
 msgstr "第 5 %s"
 
@@ -140,37 +215,25 @@ msgstr "第 5 %s"
 msgid "Add Note"
 msgstr "メモを追加"
 
-#: admin/em-options.php:796
-msgid "Are you sure you want to proceed? We recommend you back up your database first, just in case!"
-msgstr "実行前にデータベースのバックアップを取ることをお勧めします。本当に実行してよろしいですか?"
-
-#: admin/em-options.php:790
-msgid "Orphaned events may show on your event lists but not point to real event pages, and can be deleted. %d potentially orphaned events have been found."
-msgstr "現在 %d 件の迷子イベントが存在します。迷子イベントとは「イベント一覧には表示されているものの、対応するイベント詳細ページが削除された等の原因で、どのイベント詳細ページにも紐付いていないイベント」をさします。「迷子イベントを削除」ボタンを押すと、これらの迷子イベントをクリーンアップします。"
-
-#: admin/em-options.php:777
-msgid "Remove Orphaned Events"
-msgstr "迷子イベントを削除"
-
-#: admin/em-options.php:774
-msgid "Database Cleanup"
-msgstr "データベースのクリーンアップ"
-
 #: admin/em-options.php:172
 msgid "Found %d orphaned events, deleted %d successfully"
 msgstr "%d 件の迷子イベントを検出し、うち %d 件を削除しました。"
 
-#: admin/settings/tabs/formats.php:451
-msgid "Google Maps Styling Wizard"
-msgstr "Google マップのスタイルウィザード"
+#: admin/em-options.php:817
+msgid "Database Cleanup"
+msgstr "データベースのクリーンアップ"
 
-#: admin/settings/tabs/formats.php:451
-msgid "You can add styles to your maps to give them a unique look. Build one using the %s or choose from the many free templates on %s paste the generated JSON code here."
-msgstr "個性的なマップにするために、スタイルを設定できます。%sを使うか、 %s にある多彩な無料テンプレートをここにコピペすることで JSON コードを生成できます。"
+#: admin/em-options.php:820
+msgid "Remove Orphaned Events"
+msgstr "迷子イベントを削除"
 
-#: admin/settings/tabs/formats.php:451
-msgid "Google Maps Style"
-msgstr "Google マップのスタイル"
+#: admin/em-options.php:833
+msgid "Orphaned events may show on your event lists but not point to real event pages, and can be deleted. %d potentially orphaned events have been found."
+msgstr "現在 %d 件の迷子イベントが存在します。迷子イベントとは「イベント一覧には表示されているものの、対応するイベント詳細ページが削除された等の原因で、どのイベント詳細ページにも紐付いていないイベント」をさします。「迷子イベントを削除」ボタンを押すと、これらの迷子イベントをクリーンアップします。"
+
+#: admin/em-options.php:839
+msgid "Are you sure you want to proceed? We recommend you back up your database first, just in case!"
+msgstr "実行前にデータベースのバックアップを取ることをお勧めします。本当に実行してよろしいですか?"
 
 #: templates/forms/event/recurring-when.php:94
 msgid "Reschedule Recurring Event"
@@ -192,23 +255,23 @@ msgstr "繰り返しイベントのチケットを編集"
 msgid "Cancel Ticket Recreation"
 msgstr "チケットの再生成をキャンセル"
 
-#: templates/emails/bookingsummary.php:61
+#: admin/em-data-privacy.php:269 templates/emails/bookingsummary.php:61
 msgid "Surcharges (After Taxes)"
 msgstr "手数料(税加算後)"
 
-#: templates/emails/bookingsummary.php:38
+#: admin/em-data-privacy.php:267 templates/emails/bookingsummary.php:38
 msgid "Surcharges Before Taxes"
 msgstr "課税前の追加料金"
 
-#: events-manager.php:381 templates/forms/event/bookings.php:36
+#: events-manager.php:383 templates/forms/event/bookings.php:36
 msgid "Modifications to event tickets will cause all bookings to individual recurrences of this event to be deleted."
 msgstr "イベントチケットを編集すると、すべての予約情報において、このイベントの個別の繰り返しが削除されます。"
 
-#: events-manager.php:376
+#: events-manager.php:378
 msgid "Modifications to event times will cause all recurrences of this event to be deleted and recreated, previous bookings will be deleted."
 msgstr "開催時刻を変更すると、このイベントのすべての繰り返し部分が削除されたのち再構築され、それによって既存の予約情報が滅失してしまいます。"
 
-#: events-manager.php:375 events-manager.php:377 events-manager.php:380
+#: events-manager.php:377 events-manager.php:379 events-manager.php:382
 msgid "Are you sure you want to continue?"
 msgstr "本当によろしいですか?"
 
@@ -227,14 +290,26 @@ msgid "You can edit individual recurrences and disassociate them with this recur
 msgstr "繰り返し部分を個別に編集することで、親繰り返しイベントから切り離すことができます。"
 
 #: classes/em-event-post-admin.php:40 classes/em-event-posts-admin.php:314
-#: events-manager.php:379
+#: events-manager.php:381
 msgid "Bookings to individual event recurrences will be preserved if event times and ticket settings are not modified."
 msgstr "開催時間およびチケットの設定を変更しない場合は、個別の繰り返しイベントの予約情報は保持されます。"
 
 #: classes/em-event-post-admin.php:39 classes/em-event-posts-admin.php:313
-#: events-manager.php:378
+#: events-manager.php:380
 msgid "Modifications to recurring events will be applied to all recurrences and will overwrite any changes made to those individual event recurrences."
 msgstr "繰り返しイベントを編集すると、変更した箇所の情報がすべての繰り返しに適用され、以下の既存の各繰り返しイベントにも新しい情報が上書きされます。"
+
+#: admin/settings/tabs/formats.php:451
+msgid "Google Maps Styling Wizard"
+msgstr "Google マップのスタイルウィザード"
+
+#: admin/settings/tabs/formats.php:451
+msgid "You can add styles to your maps to give them a unique look. Build one using the %s or choose from the many free templates on %s paste the generated JSON code here."
+msgstr "個性的なマップにするために、スタイルを設定できます。%sを使うか、 %s にある多彩な無料テンプレートをここにコピペすることで JSON コードを生成できます。"
+
+#: admin/settings/tabs/formats.php:451
+msgid "Google Maps Style"
+msgstr "Google マップのスタイル"
 
 #: admin/settings/tabs/formats.php:107
 msgid "Search form will be pre-selected with this country."
@@ -248,27 +323,27 @@ msgstr "%s はユーザー名、%s はパスワード、%s はパスワード生
 msgid "The option below allows you to disable user accounts, yet you will still see the supplied personal information for each booking."
 msgstr "以下のオプションで、予約申込み時の利用者認証 (ログイン) を無効にします。ただし、申込者の情報は予約情報の一部としてが記録されているので、予約の詳細を参照すれば申込者個人の特定が可能です。"
 
-#: admin/em-options.php:767
+#: admin/em-options.php:810
 msgid "Export your Events Manager settings and restore them here or on another website running this plugin."
 msgstr "左のボタンを押すと、Events Manager の設定をダウンロードします。エクスポートした設定は、このサイトの設定の復元や、Events Manager を実行している別のサイトへのインポートに使用できます。"
 
-#: admin/em-options.php:765
+#: admin/em-options.php:808
 msgid "Export Settings"
 msgstr "エクスポート"
 
-#: admin/em-options.php:749
+#: admin/em-options.php:792
 msgid "Choose a settings file saved from a backup or another Events Manager installation and click the '%s' button."
 msgstr "「ファイルを選択」ボタンで設定ファイルを選択し、左の「%s」ボタンを押すと、このサイトへ設定をインポートします。"
 
-#: admin/em-options.php:745 admin/em-options.php:749
+#: admin/em-options.php:788 admin/em-options.php:792
 msgid "Import Settings"
 msgstr "インポート"
 
-#: admin/em-options.php:740
+#: admin/em-options.php:783
 msgid "Within the network admin area, only network-specific settings will be exported or imported. For individual site settings please visit the relevant site within your network."
 msgstr "エクスポート／インポートされる設定は、サーバーやデータベースを特定した内容になっています。このサイトからエクスポートした設定をこのサイトへインポートする場合は問題ありませんが、このサイトからエクスポートした設定を別のサイトでインポートする場合は、インポート先のサイトのサーバーおよびデータベース設定に応じて設定ファイルを編集してください。"
 
-#: admin/em-options.php:738
+#: admin/em-options.php:781
 msgid "Import/Export Settings"
 msgstr "設定のインポート / エクスポート"
 
@@ -304,9 +379,9 @@ msgstr "Marcus Sykes"
 msgid "Event registration and booking management for WordPress. Recurring events, locations, google maps, rss, ical, booking registration and more!"
 msgstr "WordPress でイベントの作成と予約管理ができるプラグインです。繰り返しイベント、開催場所の管理、Google Maps 連携、RSS 、iCal 、予約の手動入力ほか、イベント運営をサポートする機能が満載!"
 
-#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.9)  #-#-#-#-#
+#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.9.3)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.9)  #-#-#-#-#
+#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.9.3)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "http://wp-events-plugin.com"
 msgstr "http://wp-events-plugin.com"
@@ -849,6 +924,7 @@ msgstr "チケットごとに金額や定員、受付期間などを変えるこ
 msgid "You can have single or multiple tickets, where certain tickets become available under certain conditions, e.g. early bookings, group discounts, maximum bookings per ticket, etc."
 msgstr "チケットは1種類だけでも、複数種でも設定できます。(複数種の例／一般・早期予約割引・団体割引、前売券・当日券、など)　"
 
+#: admin/em-data-privacy.php:288 admin/em-data-privacy.php:414
 #: templates/forms/event/bookings.php:29
 msgid "Tickets"
 msgstr "チケット"
@@ -1035,19 +1111,19 @@ msgstr "ログイン"
 msgid "Log in if you already have an account with us."
 msgstr "アカウントをすでにお持ちの方は、ログインしてください。"
 
-#: templates/emails/bookingsummary.php:52
+#: admin/em-data-privacy.php:268 templates/emails/bookingsummary.php:52
 msgid "Discounts (After Taxes)"
 msgstr "割引 (課税後)"
 
-#: templates/emails/bookingsummary.php:47
+#: admin/em-data-privacy.php:301 templates/emails/bookingsummary.php:47
 msgid "Taxes"
 msgstr "消費税"
 
-#: templates/emails/bookingsummary.php:29
+#: admin/em-data-privacy.php:266 templates/emails/bookingsummary.php:29
 msgid "Discounts Before Taxes"
 msgstr "消費税を適用する前に割引を適用(消費税は割引後の金額に適用)"
 
-#: templates/emails/bookingsummary.php:25
+#: admin/em-data-privacy.php:289 templates/emails/bookingsummary.php:25
 msgid "Sub Total"
 msgstr "小計"
 
@@ -1083,97 +1159,97 @@ msgstr "このイベント情報は、他言語で作成されたイベント情
 msgid "Translated Event Information"
 msgstr "翻訳されたイベント情報"
 
-#: events-manager.php:444
+#: events-manager.php:446
 msgid "You do not have permission to upload images"
 msgstr "画像をアップロードする権限がありません"
 
-#: events-manager.php:438
+#: events-manager.php:440
 msgid "You cannot view others %s"
 msgstr "他の%sを表示する権限がありません"
 
-#: events-manager.php:423 events-manager.php:437
+#: events-manager.php:425 events-manager.php:439
 msgid "You cannot read private %s"
 msgstr "プライベートの%sを読む権限がありません"
 
-#: events-manager.php:422 events-manager.php:430 events-manager.php:436
-#: events-manager.php:442
+#: events-manager.php:424 events-manager.php:432 events-manager.php:438
+#: events-manager.php:444
 msgid "You do not have permission to edit %s"
 msgstr "%sを編集する権限がありません"
 
-#: events-manager.php:421 events-manager.php:429 events-manager.php:435
+#: events-manager.php:423 events-manager.php:431 events-manager.php:437
 msgid "You do not have permission to edit others %s"
 msgstr "他の%sを編集する権限がありません"
 
-#: events-manager.php:420 events-manager.php:428 events-manager.php:434
-#: events-manager.php:441
+#: events-manager.php:422 events-manager.php:430 events-manager.php:436
+#: events-manager.php:443
 msgid "You do not have permission to delete %s"
 msgstr "%sを削除する権限がありません"
 
-#: events-manager.php:419 events-manager.php:427 events-manager.php:433
+#: events-manager.php:421 events-manager.php:429 events-manager.php:435
 msgid "You do not have permission to delete others %s"
 msgstr "他の%sを削除する権限がありません"
 
-#: events-manager.php:418 events-manager.php:426 events-manager.php:432
+#: events-manager.php:420 events-manager.php:428 events-manager.php:434
 msgid "You do not have permission to publish %s"
 msgstr "%sを出力する権限がありません"
 
-#: events-manager.php:416
+#: events-manager.php:418
 msgid "You do not have permission to manage %s"
 msgstr "%sを管理する権限がありません"
 
-#: events-manager.php:415
+#: events-manager.php:417
 msgid "You do not have permission to manage others %s"
 msgstr "他の%sを管理する権限がありません"
 
-#: events-manager.php:398
+#: events-manager.php:400
 msgid "Expand All"
 msgstr "すべて開く"
 
-#: events-manager.php:397
+#: events-manager.php:399
 msgid "Collapse All"
 msgstr "すべて折りたたむ"
 
-#: events-manager.php:388
+#: events-manager.php:390
 msgid "Are you sure you want to disable bookings? If you do this and save, you will lose all previous bookings. If you wish to prevent further bookings, reduce the number of spaces available to the amount of bookings you currently have"
 msgstr "予約機能を無効にして「更新」を押すと、現在の予約情報がすべて失われます。現在予約を受付中のイベントの場合、この操作はたいへん危険です。予約情報はそのままで、新規の申込を制限するには、チケットの「席数」やイベントの「総席数」を予約済みの席数より少なく設定し直せば利用者は予約申込みができなくなるため、こちらの方法がおすすめです。本当に予約機能を無効にしてよろしいですか?"
 
-#: events-manager.php:385
+#: events-manager.php:387
 msgid "Are you sure you want to delete all recurrences of this event?"
 msgstr "本当にこのイベントの繰返しを全削除してよろしいですか?"
 
-#: events-manager.php:384
+#: events-manager.php:386
 msgid "All events will be moved to trash."
 msgstr "すべてのイベントをゴミ箱へ移動しました。"
 
-#: events-manager.php:384
+#: events-manager.php:386
 msgid "This cannot be undone."
 msgstr "これは元に戻すことはできません。"
 
-#: events-manager.php:383
+#: events-manager.php:385
 msgid "Are you sure you want to detach this event? By doing so, this event will be independent of the recurring set of events."
 msgstr "繰返しイベントから切り離すと、そのイベントは繰返しスケジュールから除外され、独立したイベントとして扱われます。本当にこのイベントを繰返しスケジュールから切り離しますか?"
 
-#: events-manager.php:369
+#: events-manager.php:371
 msgid "Loading..."
 msgstr "読み込み中..."
 
-#: events-manager.php:368
+#: events-manager.php:370
 msgid "Searching..."
 msgstr "検索中..."
 
-#: events-manager.php:353
+#: events-manager.php:355
 msgid "Are you sure you want to delete?"
 msgstr "本当に削除しますか ?"
 
-#: events-manager.php:352
+#: events-manager.php:354
 msgid "Save Settings"
 msgstr "設定を保存"
 
-#: events-manager.php:349
+#: events-manager.php:351
 msgid "Save Ticket"
 msgstr "チケットを保存"
 
-#: events-manager.php:348
+#: events-manager.php:350
 msgid "Please wait while the booking is being submitted."
 msgstr "予約申込みが行われるまでお待ちください。"
 
@@ -1257,7 +1333,9 @@ msgstr "繰り返しイベントの新規作成"
 msgid "Recurring Events Template"
 msgstr "繰り返しイベントのテンプレート"
 
-#: em-posts.php:190 em-posts.php:193 em-posts.php:195
+#: admin/em-data-privacy.php:44 admin/em-data-privacy.php:198
+#: admin/em-data-privacy.php:360 em-posts.php:190 em-posts.php:193
+#: em-posts.php:195
 msgid "Recurring Events"
 msgstr "繰り返しイベント"
 
@@ -1776,28 +1854,28 @@ msgstr "<li>この開催場所で予定されているイベントはありま�
 msgid "Send your booking"
 msgstr "予約を申込む"
 
-#: em-actions.php:649
+#: em-actions.php:654
 msgid "Exported booking on %s"
-msgstr "%sに予約をエクスポートする"
+msgstr "このリストをエクスポートした日時: %s"
 
-#: em-actions.php:422 em-actions.php:445
+#: em-actions.php:427 em-actions.php:450
 msgctxt "bookings"
 msgid "No emails to send for this booking."
 msgstr "この予約には自動返信メールが設定されていません。"
 
-#: em-actions.php:360
+#: em-actions.php:365
 msgid "You must log in to cancel your booking."
 msgstr "予約をキャンセルするには、ログインしてください。"
 
-#: em-actions.php:201
+#: em-actions.php:206
 msgid "%s successfully deleted"
 msgstr "%s を削除しました。"
 
-#: em-actions.php:127
+#: em-actions.php:132
 msgid "%s could not be deleted."
 msgstr "%s を削除できませんでした。"
 
-#: em-actions.php:124
+#: em-actions.php:129
 msgid "%s successfully deleted."
 msgstr "%s を削除しました。"
 
@@ -1848,23 +1926,23 @@ msgstr "チケット予約を保存する際にトラブルがありました。
 msgid "Ticket booking created"
 msgstr "チケット予約が生成されました"
 
-#: classes/em-object.php:1605
+#: classes/em-object.php:1604
 msgid "The image is in a wrong format!"
 msgstr "この画像ファイル形式は使用できません。"
 
-#: classes/em-object.php:1602
+#: classes/em-object.php:1601
 msgid "The image is too small! Minimum size allowed:"
 msgstr "画像が小さすぎます！最小サイズは:"
 
-#: classes/em-object.php:1599
+#: classes/em-object.php:1598
 msgid "The image is too big! Maximum size allowed:"
 msgstr "画像が大きすぎます。最大サイズは:"
 
-#: classes/em-object.php:1592
+#: classes/em-object.php:1591
 msgid "The image file is too big! Maximum size:"
 msgstr "画像ファイルが大きすぎます。最大サイズ:"
 
-#: classes/em-object.php:1571
+#: classes/em-object.php:1570
 msgid "There was an error uploading the image."
 msgstr "画像のアップロード中にエラーが発生しました。"
 
@@ -1902,88 +1980,89 @@ msgstr "開催場所の住所"
 msgid "State"
 msgstr "都道府県"
 
+#: admin/em-data-privacy.php:391 admin/em-data-privacy.php:462
 #: classes/em-location-posts-admin.php:55 em-install.php:537
 #: templates/tables/locations.php:45 templates/tables/locations.php:56
 msgid "Address"
 msgstr "住所"
 
-#: classes/em-event.php:2996
+#: classes/em-event.php:2995
 msgid "every %s years"
 msgstr "毎%s年"
 
-#: classes/em-event.php:2994
+#: classes/em-event.php:2993
 msgid "every year"
 msgstr "毎年"
 
-#: classes/em-event.php:2991
+#: classes/em-event.php:2990
 msgid "every %s months"
 msgstr "毎%s月"
 
-#: classes/em-event.php:2978
+#: classes/em-event.php:2977
 msgid "every %s weeks"
 msgstr "毎%s週"
 
-#: classes/em-event.php:2976
+#: classes/em-event.php:2975
 msgid "every week"
 msgstr "毎週"
 
-#: classes/em-event.php:2967
+#: classes/em-event.php:2966
 msgid "every %s days"
 msgstr "毎%s日"
 
-#: classes/em-event.php:2965
+#: classes/em-event.php:2964
 msgid "everyday"
 msgstr "毎日"
 
-#: classes/em-event.php:2963
+#: classes/em-event.php:2962
 msgid "From %1$s to %2$s"
 msgstr "%1$sから　%2$s まで"
 
-#: classes/em-event.php:2962
+#: classes/em-event.php:2961
 msgid "the last %s of the month"
 msgstr "月最後の%s"
 
-#: classes/em-event.php:2962
+#: classes/em-event.php:2961
 msgid "the fourth %s of the month"
 msgstr "４半期の%s"
 
-#: classes/em-event.php:2962
+#: classes/em-event.php:2961
 msgid "the third %s of the month"
 msgstr "３半期の%s"
 
-#: classes/em-event.php:2962
+#: classes/em-event.php:2961
 msgid "the second %s of the month"
 msgstr "２半期の%s"
 
-#: classes/em-event.php:2962
+#: classes/em-event.php:2961
 msgid "the first %s of the month"
 msgstr "月初めの%s"
 
-#: classes/em-event.php:2472
+#: classes/em-event.php:2483
 msgid "Event could not be attached."
 msgstr "このイベントは、関連付けできません。"
 
-#: classes/em-event.php:2469
+#: classes/em-event.php:2480
 msgid "Event re-attached to recurrence."
 msgstr "切り離したイベントを、繰り返しイベントへ再度関連付けました。"
 
-#: classes/em-event.php:2455
+#: classes/em-event.php:2466
 msgid "Event could not be detached."
 msgstr "このイベントは、切り離せません。"
 
-#: classes/em-event.php:2451
+#: classes/em-event.php:2462
 msgid "Undo"
 msgstr "元に戻す"
 
-#: classes/em-event.php:2451
+#: classes/em-event.php:2462
 msgid "Event detached."
 msgstr "イベントは切り離されました。"
 
-#: classes/em-event.php:2191
+#: classes/em-event.php:2194
 msgid "Profile"
 msgstr "プロフィール"
 
-#: classes/em-event.php:2181 templates/forms/bookingform/ticket-single.php:37
+#: classes/em-event.php:2184 templates/forms/bookingform/ticket-single.php:37
 #: templates/forms/bookingform/tickets-list.php:45
 msgid "N/A"
 msgstr "該当なし"
@@ -2059,7 +2138,7 @@ msgstr "%sは必須項目です。"
 msgid "Duplicate"
 msgstr "複製"
 
-#: classes/em-event-post-admin.php:289 classes/em-event-posts-admin.php:269
+#: classes/em-event-post-admin.php:296 classes/em-event-posts-admin.php:269
 #: classes/em-event-posts-admin.php:400
 #: templates/buddypress/group-events.php:100
 msgid "Duplicate %s"
@@ -2119,65 +2198,66 @@ msgstr[0] "将来 <span class=\"count\">(%s)</span>"
 msgid "View all posts in %s"
 msgstr "%sのすべての投稿を表示"
 
-#: classes/em-event-post-admin.php:495 classes/em-event-posts-admin.php:387
+#: classes/em-event-post-admin.php:502 classes/em-event-posts-admin.php:387
 msgid "Recurrences"
 msgstr "繰り返し"
 
-#: classes/em-event-post-admin.php:413 classes/em-event.php:1139
+#: classes/em-event-post-admin.php:420 classes/em-event.php:1139
 msgid "There was a problem saving the recurring events."
 msgstr "繰り返しイベントの保存に問題が発生しました。"
 
-#: classes/em-event-post-admin.php:413 classes/em-event.php:1139
+#: classes/em-event-post-admin.php:420 classes/em-event.php:1139
 msgid "Something went wrong with the recurrence update..."
 msgstr "繰り返しの更新に問題が発生しました..."
 
-#: classes/em-event-post-admin.php:348
+#: classes/em-event-post-admin.php:355
 msgid "No categories available, <a href=\"%s\">create one here first</a>"
 msgstr "利用可能なカテゴリーがありません。<a href=\"%s\">こちらで作成してください</a>。"
 
-#: classes/em-event-post-admin.php:302
+#: classes/em-event-post-admin.php:309
 msgid "This event was submitted by a guest. You will find their details in the <em>Anonymous Submitter Info</em> box"
 msgstr "このイベントはゲストによって申請されました。<em>匿名イベント申請者の情報</em>で詳細を確認できます。"
 
-#: classes/em-event-post-admin.php:280 classes/em-event-post-admin.php:505
+#: classes/em-event-post-admin.php:287 classes/em-event-post-admin.php:512
 msgid "Site Categories"
 msgstr "サイトカテゴリー"
 
-#: classes/em-event-post-admin.php:277 classes/em-event-post-admin.php:502
+#: classes/em-event-post-admin.php:284 classes/em-event-post-admin.php:509
 #: classes/em-location-post-admin.php:181 multilingual/em-ml-admin.php:31
 #: multilingual/em-ml-admin.php:48
 msgid "Attributes"
 msgstr "属性"
 
-#: classes/em-event-post-admin.php:273
+#: classes/em-event-post-admin.php:280
 msgid "Bookings Stats"
 msgstr "予約状況"
 
-#: classes/em-event-post-admin.php:271 classes/em-event-post-admin.php:499
+#: classes/em-event-post-admin.php:278 classes/em-event-post-admin.php:506
 #: multilingual/em-ml-admin.php:37 templates/forms/event-editor.php:98
 msgid "Bookings/Registration"
 msgstr "予約／チケットの設定"
 
-#: classes/em-event-post-admin.php:265 classes/em-event-post-admin.php:497
-#: classes/em-location-post-admin.php:178 em-actions.php:646
+#: classes/em-event-post-admin.php:272 classes/em-event-post-admin.php:504
+#: classes/em-location-post-admin.php:178 em-actions.php:651
 #: templates/forms/event-editor.php:66
 msgid "Where"
 msgstr "開催場所"
 
-#: classes/em-event-post-admin.php:263 em-actions.php:647
+#: admin/em-data-privacy.php:375 admin/em-data-privacy.php:377
+#: classes/em-event-post-admin.php:270 em-actions.php:652
 #: templates/forms/event-editor.php:52
 msgid "When"
 msgstr "開催期間"
 
-#: classes/em-event-post-admin.php:261 classes/em-event-post-admin.php:493
+#: classes/em-event-post-admin.php:268 classes/em-event-post-admin.php:500
 msgid "Anonymous Submitter Info"
 msgstr "匿名イベント申請者の情報"
 
-#: classes/em-event-post-admin.php:135 classes/em-location-post-admin.php:95
+#: classes/em-event-post-admin.php:140 classes/em-location-post-admin.php:95
 msgid "Your %s details are incorrect and cannot be published, please correct these errors first:"
 msgstr "%s詳細のうち、以下の項目が記入されていないため、保存できませんでした。:"
 
-#: classes/em-event-post-admin.php:133
+#: classes/em-event-post-admin.php:138
 msgid "Your event details are incorrect and recurrences cannot be created, please correct these errors first:"
 msgstr "イベント詳細が不正なため、繰り返しを作成できませんでした。まずこれらのエラーを修正してください:"
 
@@ -2273,7 +2353,7 @@ msgstr "チケット種別ごとに分ける"
 msgid "Select the options below and export all the bookings you have currently filtered (all pages) into a CSV spreadsheet format."
 msgstr "現在のフィルターに該当するすべての予約情報を CSV 形式でエクスポートします。エクスポートするカラムは右のグループから左のグループへ、エクスポートしないカラムは左のグループから右のグループへドラッグします。項目の並び順もドラッグして変更できます。"
 
-#: classes/em-bookings-table.php:291 events-manager.php:351
+#: classes/em-bookings-table.php:291 events-manager.php:353
 msgid "Export Bookings"
 msgstr "予約情報のエクスポート"
 
@@ -2357,122 +2437,123 @@ msgstr "保留中"
 msgid "Confirmed"
 msgstr "承認済み"
 
-#: classes/em-booking.php:1165
+#: classes/em-booking.php:1170
 msgid "Confirmation email could not be sent to admin. Registrant should have gotten their email (only admin see this warning)."
 msgstr "登録者へ無事に承認メールを送信しましたが、管理者メールはなんらかの理由で送信できませんでした。(これは管理者のみに表示される警告です)"
 
-#: classes/em-booking.php:996
+#: classes/em-booking.php:1001
 msgid "Booking note successfully added."
 msgstr "予約メモを記入しました。"
 
-#: classes/em-booking.php:947 classes/em-booking.php:948
+#: classes/em-booking.php:952 classes/em-booking.php:953
 msgid "Booking could not be %s."
 msgstr "予約を %s できませんでした。"
 
-#: classes/em-booking.php:941 classes/em-booking.php:942 em-actions.php:425
-#: em-actions.php:452
+#: classes/em-booking.php:946 classes/em-booking.php:947 em-actions.php:430
+#: em-actions.php:457
 msgid "ERROR : Email Not Sent."
 msgstr "エラー: メールを送信できませんでした。"
 
-#: classes/em-booking.php:937 em-actions.php:420 em-actions.php:443
+#: classes/em-booking.php:942 em-actions.php:425 em-actions.php:448
 msgid "Email Sent."
 msgstr "メールを送信しました。"
 
-#: classes/em-booking.php:933
+#: classes/em-booking.php:938
 msgid "Booking %s."
 msgstr "ステイタスを「%s」へ変更しました。"
 
-#: classes/em-booking.php:924
+#: classes/em-booking.php:929
 msgid "Not approved, spaces full."
 msgstr "満席のため、予約できませんでした。"
 
-#: classes/em-booking.php:877
+#: classes/em-booking.php:882
 msgid "%s could not be deleted"
 msgstr "%s を削除できませんでした。"
 
-#: classes/em-booking.php:874
+#: classes/em-booking.php:879
 msgid "%s deleted"
 msgstr "%s を削除しました。"
 
-#: classes/em-booking.php:844 classes/em-people.php:37 classes/em-person.php:99
+#: admin/em-data-privacy.php:233 classes/em-booking.php:849
+#: classes/em-people.php:41 classes/em-person.php:101 classes/em-person.php:114
 #: templates/forms/bookingform/booking-fields.php:16
 msgid "Phone"
 msgstr "電話番号"
 
-#: classes/em-booking.php:843 classes/em-event-post-admin.php:304
-#: classes/em-person.php:98 em-install.php:380
+#: classes/em-booking.php:848 classes/em-event-post-admin.php:311
+#: classes/em-person.php:100 classes/em-person.php:113 em-install.php:380
 #: templates/forms/event-editor.php:37
 msgid "Email"
 msgstr "メール"
 
-#: classes/em-booking.php:821
+#: classes/em-booking.php:826
 msgid "Personal details have successfully been modified."
 msgstr "個人情報を更新しました。"
 
-#: classes/em-booking.php:786 em-functions.php:438
+#: classes/em-booking.php:791 em-functions.php:438
 msgid "<strong>ERROR</strong>: The email address isn&#8217;t correct."
 msgstr "<strong>エラー</strong>: メールアドレスが不正です。スペルを確認し正しく記入してください。"
 
-#: classes/em-booking.php:783 em-functions.php:436
+#: classes/em-booking.php:788 em-functions.php:436
 msgid "<strong>ERROR</strong>: Please type your e-mail address."
 msgstr "<strong>エラー</strong>: メールアドレスを入力してください。"
 
-#: classes/em-booking.php:760 classes/em-booking.php:834
+#: classes/em-booking.php:765 classes/em-booking.php:839
 msgid "Not Supplied"
 msgstr "提供されていません。"
 
-#: classes/em-booking.php:756 classes/em-booking.php:764
+#: classes/em-booking.php:761 classes/em-booking.php:769
 msgid "Guest User"
 msgstr "ゲストユーザー"
 
-#: classes/em-booking.php:308
+#: classes/em-booking.php:313
 msgid "You are trying to book a non-existent ticket for this event."
 msgstr "このイベントに存在しないチケットを予約しようとしています。"
 
-#: classes/em-booking.php:255 classes/em-booking.php:874
-#: classes/em-booking.php:877 classes/em-bookings.php:166
+#: classes/em-booking.php:260 classes/em-booking.php:879
+#: classes/em-booking.php:882 classes/em-bookings.php:166
 #: classes/em-tickets-bookings.php:166 em-install.php:720 em-install.php:722
 msgid "Booking"
 msgstr "予約"
 
-#: classes/em-booking.php:255
+#: classes/em-booking.php:260
 msgid "You cannot manage this %s."
 msgstr "%s　このイベントを管理できません。"
 
-#: classes/em-booking.php:233 classes/em-booking.php:234
-#: classes/em-booking.php:242 classes/em-booking.php:253
+#: classes/em-booking.php:238 classes/em-booking.php:239
+#: classes/em-booking.php:247 classes/em-booking.php:258
 #: classes/em-tickets-bookings.php:69 classes/em-tickets-bookings.php:70
 msgid "There was a problem saving the booking."
 msgstr "予約の申込みに問題が発生しました。"
 
-#: classes/em-booking.php:229
+#: classes/em-booking.php:234
 msgid "Your booking has been recorded"
 msgstr "予約の申込みを記録しました。"
 
-#: classes/em-booking.php:221 classes/em-ticket-booking.php:70
+#: classes/em-booking.php:226 classes/em-ticket-booking.php:70
 #: classes/em-ticket.php:193
 msgid "Changes saved"
 msgstr "変更を保存しました。"
 
-#: classes/em-booking.php:151
+#: classes/em-booking.php:154
 msgid "Awaiting Payment"
 msgstr "支払い待ち"
 
-#: classes/em-booking.php:150
+#: classes/em-booking.php:153
 msgid "Awaiting Online Payment"
 msgstr "オンライン決済待ち"
 
-#: classes/em-booking.php:149 classes/em-bookings-table.php:56
+#: classes/em-booking.php:152 classes/em-bookings-table.php:56
 #: em-install.php:385 em-install.php:704 em-install.php:727
 msgid "Cancelled"
 msgstr "キャンセル済み"
 
-#: classes/em-booking.php:148 classes/em-bookings-table.php:57
+#: classes/em-booking.php:151 classes/em-bookings-table.php:57
 #: em-install.php:386
 msgid "Rejected"
 msgstr "取消済み"
 
-#: classes/em-booking.php:147 classes/em-event.php:365
+#: classes/em-booking.php:150 classes/em-event.php:365
 msgid "Approved"
 msgstr "承認済み"
 
@@ -2494,7 +2575,7 @@ msgstr "開催場所の新規作成"
 msgid "Add Event"
 msgstr "イベントの新規作成"
 
-#: buddypress/screens/my-events.php:49 classes/em-event.php:2025
+#: buddypress/screens/my-events.php:49 classes/em-event.php:2028
 #: em-events.php:187 em-posts.php:152
 msgid "Edit Event"
 msgstr "イベントの編集"
@@ -2672,8 +2753,8 @@ msgstr "予約日"
 msgid "Start Date"
 msgstr "開始日"
 
-#: admin/settings/tabs/pages.php:650 events-manager.php:415
-#: events-manager.php:416
+#: admin/settings/tabs/pages.php:650 events-manager.php:417
+#: events-manager.php:418
 msgid "bookings"
 msgstr "予約"
 
@@ -2692,8 +2773,8 @@ msgstr "登録メンバーが、自分の過去の予約情報を閲覧できる
 #: admin/settings/tabs/pages.php:640 buddypress/bp-em-notifications.php:24
 #: buddypress/bp-em-notifications.php:26 buddypress/bp-em-notifications.php:33
 #: buddypress/bp-em-notifications.php:35 buddypress/bp-em-notifications.php:41
-#: buddypress/bp-em-notifications.php:43 em-install.php:759 em-install.php:1178
-#: em-install.php:1231
+#: buddypress/bp-em-notifications.php:43 em-install.php:759 em-install.php:1215
+#: em-install.php:1268
 msgid "My Bookings"
 msgstr "My 予約"
 
@@ -3238,7 +3319,7 @@ msgstr "ビジュアルエディターを使いますか?"
 msgid "You can allow users to publicly submit events on your blog by using the %s shortcode, and enabling anonymous submissions below."
 msgstr "固定ページ等にショートコード%sを挿入することで、フロントエンド側にイベント作成フォームを表示することができます。<br />イベントを公募したり、管理者以外の特定の人に対し管理画面にアクセスすることなしにイベント作成を許可できます。これを「イベント申請フォーム」と呼びます。"
 
-#: admin/settings/tabs/general.php:107
+#: admin/em-options.php:987 admin/settings/tabs/general.php:107
 msgid "Event Submission Forms"
 msgstr "イベント申請フォーム"
 
@@ -3556,7 +3637,7 @@ msgstr "タグ"
 #: admin/settings/tabs/formats.php:340 admin/settings/tabs/formats.php:342
 #: admin/settings/tabs/formats.php:343 admin/settings/tabs/formats.php:344
 #: admin/settings/tabs/formats.php:345 admin/settings/tabs/pages.php:513
-#: admin/settings/tabs/pages.php:515 em-install.php:591 em-install.php:1166
+#: admin/settings/tabs/pages.php:515 em-install.php:591 em-install.php:1203
 msgid "Tags"
 msgstr "タグ"
 
@@ -3579,7 +3660,7 @@ msgstr "カテゴリー詳細ページのタイトルの書式です。カテゴ
 #: admin/settings/tabs/pages.php:373 admin/settings/tabs/pages.php:374
 #: admin/settings/tabs/pages.php:383 admin/settings/tabs/pages.php:389
 #: admin/settings/tabs/pages.php:393 admin/settings/tabs/pages.php:459
-#: events-manager.php:441 events-manager.php:442
+#: events-manager.php:443 events-manager.php:444
 msgid "categories"
 msgstr "カテゴリー"
 
@@ -3587,7 +3668,7 @@ msgstr "カテゴリー"
 #: admin/settings/tabs/formats.php:302 admin/settings/tabs/formats.php:303
 #: admin/settings/tabs/formats.php:304 admin/settings/tabs/pages.php:379
 #: admin/settings/tabs/pages.php:381 em-install.php:509 em-install.php:569
-#: em-install.php:1154 em-install.php:1216
+#: em-install.php:1191 em-install.php:1253
 msgid "Categories"
 msgstr "カテゴリー"
 
@@ -5010,358 +5091,359 @@ msgstr "「はい」の場合、ゲストが予約申込みを送信すると、
 msgid "Allow guest bookings?"
 msgstr "ゲストの予約を許可しますか？"
 
-#: admin/em-options.php:856
+#: admin/em-options.php:918
 msgid "Reset"
 msgstr "リセット"
 
-#: admin/em-options.php:852
+#: admin/em-options.php:914
 msgid "Use the buttons below to uninstall Events Manager completely from your system or reset Events Manager to original settings and keep your event data."
 msgstr "Events Manager を完全にアンインストールする場合は、以下の「アンインストール」ボタンを押してください。<br />イベントデータは温存したまま Events Manager をデフォルトの設定に戻したい場合は、以下の「リセット」ボタンを押してください。"
 
-#: admin/em-options.php:851
+#: admin/em-options.php:913
 msgid "Uninstall/Reset"
 msgstr "アンインストール / リセット"
 
-#: admin/em-options.php:732
+#: admin/em-options.php:775
 msgid "If you would like to download a dev version, but just as a one-off, you can force a dev version check by clicking the button below. If there is one available, it should appear in your plugin updates page as a regular update."
 msgstr "開発者版を使用している場合、左のボタンを押すと、開発者版の更新があるかどうかを確認できます。更新がある場合は、一般のプラグインの更新と同様、プラグイン更新ページに表示されます。"
 
-#: admin/em-options.php:731
+#: admin/em-options.php:774
 msgid "Check Dev Versions"
 msgstr "開発者版の更新を確認"
 
-#: admin/em-options.php:728
+#: admin/em-options.php:771
 msgid "If you would like to check and see if there is a new stable update."
 msgstr "安定版を使用している場合、左のボタンを押すと、使用中のバージョンが最新版かどうかをチェックします。"
 
-#: admin/em-options.php:727
+#: admin/em-options.php:770
 msgid "Re-Check Updates"
 msgstr "安定版の更新の再確認"
 
-#: admin/em-options.php:725
+#: admin/em-options.php:768
 msgid "If enabled, the latest dev version will always be checked instead of the latest stable version of the plugin."
 msgstr "「はい」にすると、プラグインの更新チェックの際、安定版ではなく開発者版の最新アップデートをチェックします。"
 
-#: admin/em-options.php:725
+#: admin/em-options.php:768
 msgid "Enable Dev Updates?"
 msgstr "開発者版アップデートを有効にしますか?"
 
-#: admin/em-options.php:723
+#: admin/em-options.php:766
 msgid "We're always making improvements, adding features and fixing bugs between releases. We incrementally make these changes in between updates and make it available as a development version. You can download these manually, but we've made it easy for you. <strong>Warning:</strong> Development versions are not always fully tested before release, use wisely!"
 msgstr "Events Manager は、常に新機能の追加やバグ修正などを行い、進化しています。また、現行バージョンから次のアップデートまでの間に、少しずつ更改したものを開発者版として提供しています。開発者版は公式サイトから手動ダウンロードもできますが、以下で開発者版アップデートを有効にすることで、より簡単にアップデートを入手できます。<br/><strong>注意!!:</strong> 開発者版は、リリース前のテストを十分に行っていません。あくまで評価・開発用として、自己責任で使用してください。(実稼働中のサイトで使用して不具合が起きた場合、一切の責任は負えません)"
 
-#: admin/em-options.php:722
+#: admin/em-options.php:765
 msgid "Development Versions &amp; Updates"
 msgstr "開発者版とアップデートの設定"
 
-#: admin/em-options.php:709 admin/settings/tabs/general.php:162
+#: admin/em-options.php:752 admin/settings/tabs/general.php:162
 #: admin/settings/tabs/general.php:241
 msgid "Advanced"
 msgstr "高度な設定"
 
-#: admin/em-options.php:709 em-install.php:1037 em-install.php:1043
+#: admin/em-options.php:752 em-install.php:1049 em-install.php:1055
+#: em-install.php:1071
 msgid "Admin Tools"
 msgstr "管理ツール"
 
-#: admin/em-options.php:638
+#: admin/em-options.php:681
 msgid "If set to yes the capabilities will be applied all your network blogs and you will not be able to set custom capabilities each blog. You can select no later and visit specific blog settings pages to add/remove capabilities."
 msgstr "「はい」の場合、子サイトを含むサイト全体にこれらの権限が適用され、個々の子サイトで独自に権限を設定することはできなくなります。このオプションは後で「いいえ」に変更することもできます。また、「いいえ」の場合、特定の子サイトの設定ページで権限を加える／除く操作もできます。"
 
-#: admin/em-options.php:638
+#: admin/em-options.php:681
 msgid "Apply global capabilities?"
 msgstr "グローバル権限を適用しますか?"
 
-#: admin/em-options.php:632
+#: admin/em-options.php:675
 msgid "User can upload images along with their events and locations."
 msgstr "この権限のあるユーザーは、イベントと開催場所に関する画像をアップロードできます。"
 
-#: admin/em-options.php:631
+#: admin/em-options.php:674
 msgid "User can use and manage bookings with their events."
 msgstr "この権限のあるユーザーは、自らが主催するイベントの予約情報の閲覧や管理ができます。"
 
-#: admin/em-options.php:630
+#: admin/em-options.php:673
 msgid "User can manage other users individual bookings and event booking settings."
 msgstr "この権限のあるユーザーは、他のユーザーの予約やイベント予約設定を管理できます。"
 
-#: admin/em-options.php:628
+#: admin/em-options.php:671
 msgid "User can edit %s categories and tags."
 msgstr "この権限のあるユーザーは、%sのカテゴリーとタグを編集できます。"
 
-#: admin/em-options.php:627
+#: admin/em-options.php:670
 msgid "User can delete %s categories and tags."
 msgstr "この権限のあるユーザーは、%sのカテゴリーとタグを削除できます。"
 
-#: admin/em-options.php:625 admin/settings/tabs/general.php:90
+#: admin/em-options.php:668 admin/settings/tabs/general.php:90
 #: admin/settings/tabs/pages.php:631
 msgid "Other"
 msgstr "その他"
 
-#: admin/em-options.php:622
+#: admin/em-options.php:665
 msgid "User can use other user locations for their events."
 msgstr "この権限のあるユーザーは、他のユーザーが作成した開催場所を使うことができます。"
 
-#: admin/em-options.php:608 admin/em-options.php:609 admin/em-options.php:610
-#: admin/em-options.php:611 admin/em-options.php:612 events-manager.php:426
-#: events-manager.php:427 events-manager.php:428 events-manager.php:429
-#: events-manager.php:430
+#: admin/em-options.php:651 admin/em-options.php:652 admin/em-options.php:653
+#: admin/em-options.php:654 admin/em-options.php:655 events-manager.php:428
+#: events-manager.php:429 events-manager.php:430 events-manager.php:431
+#: events-manager.php:432
 msgid "recurring events"
 msgstr "繰り返しイベント"
 
-#: admin/em-options.php:606 em-posts.php:194
+#: admin/em-options.php:649 em-posts.php:194
 msgid "Recurring Event"
 msgstr "繰り返しイベント"
 
-#: admin/em-options.php:603 admin/em-options.php:621
+#: admin/em-options.php:646 admin/em-options.php:664
 msgid "User can view private %s"
 msgstr "ユーザーはプライベート%sを見ることができます。"
 
-#: admin/em-options.php:602 admin/em-options.php:612 admin/em-options.php:620
+#: admin/em-options.php:645 admin/em-options.php:655 admin/em-options.php:663
 msgid "User can create and edit %s"
 msgstr "この権限のあるユーザーは、%sの作成や編集ができます。"
 
-#: admin/em-options.php:601 admin/em-options.php:611 admin/em-options.php:619
+#: admin/em-options.php:644 admin/em-options.php:654 admin/em-options.php:662
 msgid "User can delete their own %s"
 msgstr "この権限のあるユーザーは、自分の%sを削除できます。"
 
-#: admin/em-options.php:600 admin/em-options.php:610 admin/em-options.php:618
+#: admin/em-options.php:643 admin/em-options.php:653 admin/em-options.php:661
 msgid "User can edit other users %s"
 msgstr "この権限のあるユーザーは、他のユーザーの%sを編集できます。"
 
-#: admin/em-options.php:599 admin/em-options.php:609 admin/em-options.php:617
+#: admin/em-options.php:642 admin/em-options.php:652 admin/em-options.php:660
 msgid "User can delete other users %s"
 msgstr "この権限のあるユーザーは、他のユーザーの%sを削除できます。"
 
-#: admin/em-options.php:598 admin/em-options.php:608 admin/em-options.php:616
+#: admin/em-options.php:641 admin/em-options.php:651 admin/em-options.php:659
 msgid "Users can publish %s and skip any admin approval"
 msgstr "この権限のあるユーザーは、サイト管理者の承認なしに%sを公開できます。"
 
-#: admin/em-options.php:596 admin/em-options.php:606 admin/em-options.php:614
-#: admin/em-options.php:625
+#: admin/em-options.php:639 admin/em-options.php:649 admin/em-options.php:657
+#: admin/em-options.php:668
 msgid "%s Capabilities"
 msgstr "%sに関する権限"
 
-#: admin/em-options.php:591
+#: admin/em-options.php:634
 msgid "You can now give fine grained control with regards to what your users can do with events. Each user role can have perform different sets of actions."
 msgstr "以下で、イベント、繰り返しイベント、開催場所、その他に関する権限を、ユーザー権限レベルごとに設定できます。それぞれの値の右の「?」にマウスオーバーで説明をバルーン表示します。"
 
-#: admin/em-options.php:590
+#: admin/em-options.php:633
 msgid "Warning: Changing these values may result in exposing previously hidden information to all users."
 msgstr "警告: これらの値を変えると、変更前は非表示にしていた情報が、変更後にすべてのユーザーに開示される可能性があります。権限レベルと、付与する権限内容に十分注意して設定してください。"
 
-#: admin/em-options.php:586
+#: admin/em-options.php:629
 msgid "User Capabilities"
 msgstr "ユーザー権限レベル"
 
-#: admin/em-options.php:568
+#: admin/em-options.php:611
 msgid "Checking..."
 msgstr "チェックしています…"
 
-#: admin/em-options.php:536
+#: admin/em-options.php:579
 msgid "Insert the password to be used to access your SMTP server"
 msgstr "SMTP サーバーのパスワードを記入してください。"
 
-#: admin/em-options.php:536
+#: admin/em-options.php:579
 msgid "SMTP password"
 msgstr "SMTP のパスワード"
 
-#: admin/em-options.php:535
+#: admin/em-options.php:578
 msgid "Insert the username to be used to access your SMTP server."
 msgstr "SMTP サーバーのユーザー名を記入してください。"
 
-#: admin/em-options.php:535
+#: admin/em-options.php:578
 msgid "SMTP username"
 msgstr "SMTP のユーザー名"
 
-#: admin/em-options.php:534
+#: admin/em-options.php:577
 msgid "The SMTP host. Usually it corresponds to 'localhost'. If you use Gmail, set this value to 'ssl://smtp.gmail.com:465'."
 msgstr "SMTP のホストです。通常は 'localhost’ です。 Gmail の場合は、この値を 'ssl://smtp.gmail.com:465' に設定してください。"
 
-#: admin/em-options.php:533
+#: admin/em-options.php:576
 msgid "SMTP authentication is often needed. If you use Gmail, make sure to set this parameter to Yes"
 msgstr "SMTP で送信する場合、多くのサーバーが SMTP 認証を要求します。 Gmail の場合は「はい」を選択してください。"
 
-#: admin/em-options.php:533
+#: admin/em-options.php:576
 msgid "Use SMTP authentication?"
 msgstr "SMTP 認証を使いますか？"
 
-#: admin/em-options.php:532
+#: admin/em-options.php:575
 msgid "The port through which you e-mail notifications will be sent. Make sure the firewall doesn't block this port"
 msgstr "自動送信メールを送出するポートです。ファイアウォールがこのポートをブロックしていないことを確認してください。"
 
-#: admin/em-options.php:528
+#: admin/em-options.php:571
 msgid "If HTML emails are enabled, br tags will automatically be added for new lines."
 msgstr "HTML メールが有効の場合、改行の際に改行タグが自動的に挿入されます。"
 
-#: admin/em-options.php:528
+#: admin/em-options.php:571
 msgid "Add br tags to HTML emails?"
 msgstr "HTML メールに <br /> タグを自動挿入しますか？"
 
-#: admin/em-options.php:527
+#: admin/em-options.php:570
 msgid "Depending on server settings, some sending methods may ignore this settings."
 msgstr "サーバーの設定によって、いずれかの送信方法は使用できない場合もあります。"
 
-#: admin/em-options.php:527
+#: admin/em-options.php:570
 msgid "If set to yes, your emails will be sent in HTML format, otherwise plaintext."
 msgstr "「はい」の場合は HTML 形式、「いいえ」の場合はテキスト形式でメールを送信します。"
 
-#: admin/em-options.php:527
+#: admin/em-options.php:570
 msgid "Send HTML Emails?"
 msgstr "HTML メールを送りますか？"
 
-#: admin/em-options.php:526
+#: admin/em-options.php:569
 msgid "Select the method to send email notification."
 msgstr "自動送信メールの送信方法を選択してください。SMTP を選択した場合は、以下に追加の設定項目が表示されます。"
 
-#: admin/em-options.php:526
+#: admin/em-options.php:569
 msgid "PHP mail function"
 msgstr "PHP メール"
 
-#: admin/em-options.php:526
+#: admin/em-options.php:569
 msgid "Mail sending method"
 msgstr "メールの送信方法"
 
-#: admin/em-options.php:525
+#: admin/em-options.php:568
 msgid "Insert the address of the notification sender."
 msgstr "自動送信メールの発信者メールアドレスを記入します。半角英数字のみを用い、正確に記入してください。<br />上の「テストメール送信」ボタンを押すと、記入されたメールアドレスへテストメールを送信します。正しく記入できたかどうか確認ください。"
 
-#: admin/em-options.php:525
+#: admin/em-options.php:568
 msgid "Notification sender address"
 msgstr "自動送信メールの発信者メールアドレス"
 
-#: admin/em-options.php:524
+#: admin/em-options.php:567
 msgid "Insert the display name of the notification sender."
 msgstr "自動送信メールの発信者名を記入します。"
 
-#: admin/em-options.php:524
+#: admin/em-options.php:567
 msgid "Notification sender name"
 msgstr "自動送信メールの送信者名"
 
-#: admin/em-options.php:518 admin/em-options.php:569
+#: admin/em-options.php:561 admin/em-options.php:612
 msgid "Test Email Settings"
 msgstr "テストメール送信"
 
-#: admin/em-options.php:517
+#: admin/em-options.php:560
 msgid "edit"
 msgstr "このユーザーのプロフィール"
 
-#: admin/em-options.php:517
+#: admin/em-options.php:560
 msgid "A test email will be sent to your account email - %s"
 msgstr "テストメールの送信先　 →　%s"
 
-#: admin/em-options.php:516
+#: admin/em-options.php:559
 msgid "Before you save your changes, you can quickly send yourself a test email by clicking this button."
 msgstr "このボタンをクリックすると、設定した宛先へテストメールを送信できます。変更を保存する前に、メールアドレスが正しいことを確認ください。"
 
-#: admin/em-options.php:513
+#: admin/em-options.php:556
 msgid "Email Settings"
 msgstr "メール設定"
 
-#: admin/em-options.php:496
+#: admin/em-options.php:539
 msgid "The maximum allowed size for images uploaded, in bytes"
 msgstr "アップロード画像のファイルサイズの最大値をバイト単位で設定します。"
 
-#: admin/em-options.php:496
+#: admin/em-options.php:539
 msgid "Maximum size (bytes)"
 msgstr "最大サイズ(バイト)"
 
-#: admin/em-options.php:495
+#: admin/em-options.php:538
 msgid "The minimum allowed height for images uploaded, in pixels"
 msgstr "アップロード画像の高さの最小値"
 
-#: admin/em-options.php:495
+#: admin/em-options.php:538
 msgid "Minimum height (px)"
 msgstr "最小の高さ(px)"
 
-#: admin/em-options.php:494
+#: admin/em-options.php:537
 msgid "The maximum allowed height for images uploaded, in pixels"
 msgstr "アップロード画像の高さの最大値"
 
-#: admin/em-options.php:494
+#: admin/em-options.php:537
 msgid "Maximum height (px)"
 msgstr "最大の高さ(px)"
 
-#: admin/em-options.php:493
+#: admin/em-options.php:536
 msgid "The minimum allowed width for images uploads"
 msgstr "アップロード画像の幅の最小値"
 
-#: admin/em-options.php:493
+#: admin/em-options.php:536
 msgid "Minimum width (px)"
 msgstr "最小の幅(px)"
 
-#: admin/em-options.php:492
+#: admin/em-options.php:535
 msgid "The maximum allowed width for images uploads"
 msgstr "アップロード画像の幅の最大値"
 
-#: admin/em-options.php:492
+#: admin/em-options.php:535
 msgid "Maximum width (px)"
 msgstr "最大の幅(px)"
 
-#: admin/em-options.php:489
+#: admin/em-options.php:532
 msgid "These settings will only apply to the image uploading if using our front-end forms. In your WP admin area, images are handled by WordPress."
 msgstr "この設定は、画像がフロントエンドのアップロードフォームを使用してアップロードされた場合にのみ適用されます。管理画面では WordPress の設定に依存します。"
 
-#: admin/em-options.php:487
+#: admin/em-options.php:530
 msgid "Image Sizes"
 msgstr "画像サイズ"
 
-#: admin/em-options.php:420
+#: admin/em-options.php:463
 msgid "Emails"
 msgstr "メール設定"
 
-#: admin/em-options.php:416
+#: admin/em-options.php:459
 msgid "Formatting"
 msgstr "書式設定"
 
-#: admin/em-options.php:415 admin/settings/tabs/formats.php:37
+#: admin/em-options.php:458 admin/settings/tabs/formats.php:37
 #: admin/settings/tabs/formats.php:263 admin/settings/tabs/pages.php:11
 msgid "Pages"
 msgstr "ページ設定"
 
-#: admin/em-options.php:356
+#: admin/em-options.php:399
 msgid "Uninstall and Deactivate"
 msgstr "アンインストールと無効化"
 
-#: admin/em-options.php:354
+#: admin/em-options.php:397
 msgid "If you just want to deactivate the plugin, <a href=\"%s\">go to your plugins page</a>."
 msgstr "単にプラグインを無効にするだけの場合は、<a href=\"%s\">プラグイン</a>ページで「停止」をクリックしてください。"
 
-#: admin/em-options.php:353
+#: admin/em-options.php:396
 msgid "All your settings and events will be permanently deleted. This cannot be undone."
 msgstr "すべての設定とイベントが完全に削除されます。これは修復できません。"
 
-#: admin/em-options.php:352
+#: admin/em-options.php:395
 msgid "Are you sure you want to uninstall Events Manager?"
 msgstr "Events Manager をアンインストールしますか？"
 
-#: admin/em-options.php:351
+#: admin/em-options.php:394
 msgid "Uninstall Events Manager"
 msgstr "Events Manager のアンインストール"
 
-#: admin/em-options.php:337
+#: admin/em-options.php:380
 msgid "All your settings, including email templates and template formats for Events Manager will be deleted."
 msgstr "メール文案や Events Manager 用のテンプレートを含むすべての書式設定を削除します。"
 
-#: admin/em-options.php:336
+#: admin/em-options.php:379
 msgid "Are you sure you want to reset Events Manager?"
 msgstr "Events Manager をリセットしますか？"
 
-#: admin/em-options.php:335 admin/em-options.php:339
+#: admin/em-options.php:378 admin/em-options.php:382
 msgid "Reset Events Manager"
 msgstr "Events Manager をリセットする"
 
-#: admin/em-options.php:321
+#: admin/em-options.php:364
 msgid "Email not sent."
 msgstr "メールは送信されませんでした"
 
-#: admin/em-options.php:316
+#: admin/em-options.php:359
 msgid "Email sent successfully to %s"
 msgstr "%s　宛のメール送信に成功しました。"
 
-#: admin/em-options.php:291
+#: admin/em-options.php:334
 msgid "Congratulations! Your email settings work."
 msgstr "メール設定は正しく動作しています。"
 
-#: admin/em-options.php:290
+#: admin/em-options.php:333
 msgid "Events Manager Test Email"
 msgstr "Events Manager のテストメール"
 
@@ -5413,8 +5495,8 @@ msgstr "すべての開催場所を親サイトで管理する場合、子サイ
 
 #: admin/em-ms-options.php:169 admin/em-ms-options.php:174
 #: admin/em-ms-options.php:175 admin/em-ms-options.php:176
-#: admin/em-options.php:616 admin/em-options.php:617 admin/em-options.php:618
-#: admin/em-options.php:619 admin/em-options.php:620 admin/em-options.php:621
+#: admin/em-options.php:659 admin/em-options.php:660 admin/em-options.php:661
+#: admin/em-options.php:662 admin/em-options.php:663 admin/em-options.php:664
 #: admin/settings/tabs/formats.php:244 admin/settings/tabs/formats.php:245
 #: admin/settings/tabs/formats.php:246 admin/settings/tabs/formats.php:247
 #: admin/settings/tabs/pages.php:200 admin/settings/tabs/pages.php:203
@@ -5423,9 +5505,9 @@ msgstr "すべての開催場所を親サイトで管理する場合、子サイ
 #: admin/settings/tabs/pages.php:310 admin/settings/tabs/pages.php:311
 #: admin/settings/tabs/pages.php:312 admin/settings/tabs/pages.php:355
 #: admin/settings/tabs/pages.php:706 classes/em-location.php:475
-#: events-manager.php:432 events-manager.php:433 events-manager.php:434
-#: events-manager.php:435 events-manager.php:436 events-manager.php:437
-#: events-manager.php:438
+#: events-manager.php:434 events-manager.php:435 events-manager.php:436
+#: events-manager.php:437 events-manager.php:438 events-manager.php:439
+#: events-manager.php:440
 msgid "locations"
 msgstr "開催場所"
 
@@ -5442,14 +5524,14 @@ msgid "Global %s slug"
 msgstr "%sのグローバルスラッグ"
 
 #: admin/em-ms-options.php:166 admin/em-ms-options.php:167
-#: admin/em-options.php:627 admin/em-options.php:628
+#: admin/em-options.php:670 admin/em-options.php:671
 #: admin/settings/tabs/formats.php:26 admin/settings/tabs/formats.php:30
 #: admin/settings/tabs/formats.php:32 admin/settings/tabs/formats.php:37
 #: admin/settings/tabs/general.php:48 admin/settings/tabs/general.php:49
 #: admin/settings/tabs/pages.php:42 admin/settings/tabs/pages.php:45
 #: admin/settings/tabs/pages.php:76 admin/settings/tabs/pages.php:137
 #: admin/settings/tabs/pages.php:208 admin/settings/tabs/pages.php:463
-#: admin/settings/tabs/pages.php:597 classes/em-event-post-admin.php:135
+#: admin/settings/tabs/pages.php:597 classes/em-event-post-admin.php:140
 #: classes/em-event.php:1081 classes/em-event.php:1096
 msgid "event"
 msgstr "イベント"
@@ -5459,9 +5541,9 @@ msgid "Link sub-site %s directly to sub-site?"
 msgstr "サブサイトの%sを直接サブサイトにリンクしますか？"
 
 #: admin/em-ms-options.php:165 admin/em-ms-options.php:166
-#: admin/em-ms-options.php:167 admin/em-options.php:598
-#: admin/em-options.php:599 admin/em-options.php:600 admin/em-options.php:601
-#: admin/em-options.php:602 admin/em-options.php:603
+#: admin/em-ms-options.php:167 admin/em-options.php:641
+#: admin/em-options.php:642 admin/em-options.php:643 admin/em-options.php:644
+#: admin/em-options.php:645 admin/em-options.php:646
 #: admin/settings/tabs/formats.php:273 admin/settings/tabs/formats.php:275
 #: admin/settings/tabs/formats.php:283 admin/settings/tabs/formats.php:314
 #: admin/settings/tabs/formats.php:316 admin/settings/tabs/formats.php:324
@@ -5471,8 +5553,8 @@ msgstr "サブサイトの%sを直接サブサイトにリンクしますか？"
 #: admin/settings/tabs/pages.php:75 admin/settings/tabs/pages.php:76
 #: admin/settings/tabs/pages.php:130 admin/settings/tabs/pages.php:131
 #: admin/settings/tabs/pages.php:133 admin/settings/tabs/pages.php:698
-#: events-manager.php:418 events-manager.php:419 events-manager.php:420
-#: events-manager.php:421 events-manager.php:422 events-manager.php:423
+#: events-manager.php:420 events-manager.php:421 events-manager.php:422
+#: events-manager.php:423 events-manager.php:424 events-manager.php:425
 msgid "events"
 msgstr "イベント"
 
@@ -5514,56 +5596,57 @@ msgstr "グローバルテーブルモードを許可しますか？"
 msgid "Multi Site Options"
 msgstr "マルチサイトオプション"
 
-#: admin/em-ms-options.php:150 admin/em-options.php:487
-#: admin/em-options.php:513 admin/em-options.php:586 admin/em-options.php:709
-#: admin/settings/tabs/bookings.php:6 admin/settings/tabs/bookings.php:23
-#: admin/settings/tabs/bookings.php:41 admin/settings/tabs/bookings.php:94
-#: admin/settings/tabs/bookings.php:108 admin/settings/tabs/bookings.php:132
-#: admin/settings/tabs/emails.php:9 admin/settings/tabs/emails.php:97
-#: admin/settings/tabs/emails.php:117 admin/settings/tabs/formats.php:5
-#: admin/settings/tabs/formats.php:51 admin/settings/tabs/formats.php:136
-#: admin/settings/tabs/formats.php:158 admin/settings/tabs/formats.php:239
-#: admin/settings/tabs/formats.php:293 admin/settings/tabs/formats.php:334
-#: admin/settings/tabs/formats.php:374 admin/settings/tabs/formats.php:436
-#: admin/settings/tabs/general.php:5 admin/settings/tabs/general.php:107
-#: admin/settings/tabs/general.php:162 admin/settings/tabs/general.php:241
-#: admin/settings/tabs/general.php:270 admin/settings/tabs/pages.php:14
-#: admin/settings/tabs/pages.php:36 admin/settings/tabs/pages.php:53
-#: admin/settings/tabs/pages.php:195 admin/settings/tabs/pages.php:242
-#: admin/settings/tabs/pages.php:365 admin/settings/tabs/pages.php:499
-#: admin/settings/tabs/pages.php:631 admin/settings/wpfc-admin.php:22
+#: admin/em-ms-options.php:150 admin/em-options.php:530
+#: admin/em-options.php:556 admin/em-options.php:629 admin/em-options.php:752
+#: admin/em-options.php:940 admin/settings/tabs/bookings.php:6
+#: admin/settings/tabs/bookings.php:23 admin/settings/tabs/bookings.php:41
+#: admin/settings/tabs/bookings.php:94 admin/settings/tabs/bookings.php:108
+#: admin/settings/tabs/bookings.php:132 admin/settings/tabs/emails.php:9
+#: admin/settings/tabs/emails.php:97 admin/settings/tabs/emails.php:117
+#: admin/settings/tabs/formats.php:5 admin/settings/tabs/formats.php:51
+#: admin/settings/tabs/formats.php:136 admin/settings/tabs/formats.php:158
+#: admin/settings/tabs/formats.php:239 admin/settings/tabs/formats.php:293
+#: admin/settings/tabs/formats.php:334 admin/settings/tabs/formats.php:374
+#: admin/settings/tabs/formats.php:436 admin/settings/tabs/general.php:5
+#: admin/settings/tabs/general.php:107 admin/settings/tabs/general.php:162
+#: admin/settings/tabs/general.php:241 admin/settings/tabs/general.php:271
+#: admin/settings/tabs/pages.php:14 admin/settings/tabs/pages.php:36
+#: admin/settings/tabs/pages.php:53 admin/settings/tabs/pages.php:195
+#: admin/settings/tabs/pages.php:242 admin/settings/tabs/pages.php:365
+#: admin/settings/tabs/pages.php:499 admin/settings/tabs/pages.php:631
+#: admin/settings/wpfc-admin.php:22
 msgid "Click to toggle"
 msgstr "切り替え"
 
-#: admin/em-ms-options.php:137 admin/em-options.php:412
+#: admin/em-ms-options.php:137 admin/em-options.php:455
 msgid "Event Manager Options"
 msgstr "Events Manager のオプション"
 
-#: admin/em-ms-options.php:139 admin/em-options.php:414
-#: admin/settings/tabs/bookings.php:6 em-install.php:1043
+#: admin/em-ms-options.php:139 admin/em-options.php:457
+#: admin/settings/tabs/bookings.php:6 em-install.php:1055
 msgid "General"
 msgstr "基本設定"
 
-#: admin/em-ms-options.php:78 admin/em-options.php:396
+#: admin/em-ms-options.php:78 admin/em-options.php:439
 #: classes/em-bookings-table.php:53
 msgid "All"
 msgstr "すべて"
 
 #: admin/em-ms-options.php:78 admin/em-ms-options.php:201
-#: admin/em-options.php:396 admin/em-options.php:466
+#: admin/em-options.php:439 admin/em-options.php:509
 msgid "Save Changes"
 msgstr "変更を保存する"
 
-#: admin/em-ms-options.php:75 admin/em-options.php:393
+#: admin/em-ms-options.php:75 admin/em-options.php:436
 msgid "This accepts %s, %s and %s placeholders."
 msgstr "%s、%s、%sを使用できます。"
 
 #: admin/em-ms-options.php:73 admin/em-ms-options.php:74
-#: admin/em-options.php:391 admin/em-options.php:392
+#: admin/em-options.php:434 admin/em-options.php:435
 msgid "This accepts %s placeholders."
 msgstr "%sを使用できます。"
 
-#: admin/em-ms-options.php:72 admin/em-options.php:390
+#: admin/em-ms-options.php:72 admin/em-options.php:433
 msgid "This accepts %s and %s placeholders."
 msgstr "%sと%sを使用できます。"
 
@@ -5571,7 +5654,7 @@ msgstr "%sと%sを使用できます。"
 msgid "To update your network blogs with the latest Events Manager automatically, click the update button below."
 msgstr "このサイトの Events Manager を常に最新の状態に自動アップデートするには、以下の更新ボタンをクリックしてください。"
 
-#: admin/em-ms-options.php:6 admin/em-ms-options.php:39 em-install.php:1038
+#: admin/em-ms-options.php:6 admin/em-ms-options.php:39 em-install.php:1050
 msgid "Update Network"
 msgstr "Networkをアップデートする"
 
@@ -5583,11 +5666,11 @@ msgstr "場所を編集する"
 msgid "Add location"
 msgstr "場所を追加する"
 
-#: admin/em-help.php:38 admin/em-ms-options.php:70 admin/em-options.php:388
+#: admin/em-help.php:38 admin/em-ms-options.php:70 admin/em-options.php:431
 msgid "Booking Related Placeholders"
 msgstr "予約に関するプレースホルダー"
 
-#: admin/em-help.php:35 admin/em-ms-options.php:69 admin/em-options.php:387
+#: admin/em-help.php:35 admin/em-ms-options.php:69 admin/em-options.php:430
 msgid "Location Related Placeholders"
 msgstr "開催場所に関するプレースホルダー"
 
@@ -5595,11 +5678,11 @@ msgstr "開催場所に関するプレースホルダー"
 msgid "Tag Related Placeholders"
 msgstr "タグに関するプレースホルダー"
 
-#: admin/em-help.php:30 admin/em-ms-options.php:71 admin/em-options.php:389
+#: admin/em-help.php:30 admin/em-ms-options.php:71 admin/em-options.php:432
 msgid "Category Related Placeholders"
 msgstr "カテゴリーに関するプレースホルダー"
 
-#: admin/em-help.php:27 admin/em-ms-options.php:68 admin/em-options.php:386
+#: admin/em-help.php:27 admin/em-ms-options.php:68 admin/em-options.php:429
 msgid "Event Related Placeholders"
 msgstr "イベントに関するプレースホルダー"
 
@@ -5636,7 +5719,7 @@ msgstr "%1$s - 記入者＝ %2$s"
 msgid "You can add private notes below for internal reference that only event managers will see."
 msgstr "イベント主催者のみが見ることのできる私的なメモを記入できます。"
 
-#: admin/em-bookings.php:451
+#: admin/em-bookings.php:451 admin/em-data-privacy.php:312
 msgid "Booking Notes"
 msgstr "予約に関するメモ"
 
@@ -5653,7 +5736,8 @@ msgstr "予約を修正"
 msgid "Comment"
 msgstr "コメント"
 
-#: admin/em-bookings.php:389 templates/emails/bookingsummary.php:69
+#: admin/em-bookings.php:389 admin/em-data-privacy.php:303
+#: templates/emails/bookingsummary.php:69
 msgid "Total Price"
 msgstr "総額"
 
@@ -5690,7 +5774,7 @@ msgid "Booking Details"
 msgstr "チケットの詳細"
 
 #: admin/em-bookings.php:234 admin/em-bookings.php:283
-#: admin/em-bookings.php:415 admin/em-options.php:340 admin/em-options.php:357
+#: admin/em-bookings.php:415 admin/em-options.php:383 admin/em-options.php:400
 #: admin/settings/tabs/bookings.php:82
 #: admin/settings/updates/timezone-backcompat.php:56 em-install.php:725
 #: templates/templates/my-bookings.php:69
@@ -5753,12 +5837,13 @@ msgid "Description"
 msgstr "詳細"
 
 #: admin/em-bookings.php:151 admin/em-bookings.php:203
-#: admin/settings/tabs/pages.php:277 admin/settings/tabs/pages.php:328
-#: admin/settings/tabs/pages.php:429 admin/settings/tabs/pages.php:563
-#: classes/em-booking.php:842 classes/em-bookings-table.php:76
-#: classes/em-event-post-admin.php:303 classes/em-person.php:94
-#: classes/em-person.php:96 em-install.php:379
-#: templates/buddypress/group-events.php:42
+#: admin/em-data-privacy.php:380 admin/em-data-privacy.php:390
+#: admin/em-data-privacy.php:457 admin/settings/tabs/pages.php:277
+#: admin/settings/tabs/pages.php:328 admin/settings/tabs/pages.php:429
+#: admin/settings/tabs/pages.php:563 classes/em-booking.php:847
+#: classes/em-bookings-table.php:76 classes/em-event-post-admin.php:310
+#: classes/em-person.php:96 classes/em-person.php:98 classes/em-person.php:112
+#: em-install.php:379 templates/buddypress/group-events.php:42
 #: templates/buddypress/my-group-events.php:42
 #: templates/forms/bookingform/booking-fields.php:12
 #: templates/forms/event/bookings-ticket-form.php:13
@@ -5784,17 +5869,19 @@ msgstr "「%s」のチケット"
 msgid "You do not have the rights to manage this ticket."
 msgstr "このチケットを管理する権限がありません。"
 
-#: admin/em-bookings.php:110 admin/em-ms-options.php:168
-#: admin/em-options.php:614 admin/settings/tabs/formats.php:251
-#: admin/settings/tabs/formats.php:262 admin/settings/tabs/formats.php:263
-#: admin/settings/tabs/formats.php:267 admin/settings/tabs/formats.php:268
-#: admin/settings/tabs/general.php:73 admin/settings/tabs/general.php:84
-#: admin/settings/tabs/pages.php:195 admin/settings/tabs/pages.php:242
-#: admin/settings/tabs/pages.php:258 admin/settings/tabs/pages.php:259
-#: classes/em-event-posts-admin.php:192 classes/em-event-posts-admin.php:354
-#: classes/em-location-posts-admin.php:47
+#: admin/em-bookings.php:110 admin/em-data-privacy.php:383
+#: admin/em-data-privacy.php:393 admin/em-data-privacy.php:395
+#: admin/em-data-privacy.php:458 admin/em-data-privacy.php:460
+#: admin/em-ms-options.php:168 admin/em-options.php:657
+#: admin/settings/tabs/formats.php:251 admin/settings/tabs/formats.php:262
+#: admin/settings/tabs/formats.php:263 admin/settings/tabs/formats.php:267
+#: admin/settings/tabs/formats.php:268 admin/settings/tabs/general.php:73
+#: admin/settings/tabs/general.php:84 admin/settings/tabs/pages.php:195
+#: admin/settings/tabs/pages.php:242 admin/settings/tabs/pages.php:258
+#: admin/settings/tabs/pages.php:259 classes/em-event-posts-admin.php:192
+#: classes/em-event-posts-admin.php:354 classes/em-location-posts-admin.php:47
 #: classes/em-location-posts-admin.php:49 classes/em-location.php:462
-#: classes/em-location.php:469 em-actions.php:200 em-install.php:504
+#: classes/em-location.php:469 em-actions.php:205 em-install.php:504
 #: em-posts.php:242 templates/buddypress/group-events.php:43
 #: templates/buddypress/my-group-events.php:44
 #: templates/forms/location-editor.php:32
@@ -5803,7 +5890,8 @@ msgstr "このチケットを管理する権限がありません。"
 msgid "Location"
 msgstr "開催場所"
 
-#: admin/em-bookings.php:106 templates/templates/my-bookings.php:40
+#: admin/em-bookings.php:106 admin/em-data-privacy.php:277
+#: templates/templates/my-bookings.php:40
 msgid "Date"
 msgstr "開催日"
 
@@ -5819,8 +5907,8 @@ msgstr "承認済"
 msgid "Availability"
 msgstr "予約状況"
 
-#: admin/em-bookings.php:97 admin/settings/tabs/pages.php:659
-#: templates/forms/event-editor.php:44
+#: admin/em-bookings.php:97 admin/em-data-privacy.php:369
+#: admin/settings/tabs/pages.php:659 templates/forms/event-editor.php:44
 msgid "Event Name"
 msgstr "イベント名"
 
@@ -5863,21 +5951,24 @@ msgstr "現在の予約状況"
 msgid "Event Bookings Dashboard"
 msgstr "予約管理ダッシュボード"
 
-#: admin/em-admin.php:254 admin/em-options.php:855
+#: admin/em-admin.php:254 admin/em-options.php:917
 msgid "Uninstall"
 msgstr "アンインストール"
 
-#: admin/em-admin.php:231 admin/em-ms-options.php:167
-#: admin/settings/tabs/formats.php:5 admin/settings/tabs/formats.php:9
-#: admin/settings/tabs/pages.php:19 admin/settings/tabs/pages.php:59
-#: buddypress/bp-em-activity.php:66 buddypress/bp-em-core.php:12
-#: buddypress/bp-em-core.php:53 buddypress/bp-em-core.php:81
-#: buddypress/bp-em-core.php:149 buddypress/bp-em-core.php:192
-#: buddypress/bp-em-core.php:243 buddypress/bp-em-core.php:265
-#: buddypress/screens/profile.php:27 em-actions.php:122 em-install.php:471
-#: em-install.php:522 em-install.php:608 em-install.php:609 em-install.php:627
-#: em-install.php:645 em-install.php:1129 em-posts.php:143 em-posts.php:146
-#: em-posts.php:148 em-template-tags.php:141 widgets/em-events.php:17
+#: admin/em-admin.php:231 admin/em-data-privacy.php:48
+#: admin/em-data-privacy.php:202 admin/em-data-privacy.php:360
+#: admin/em-ms-options.php:167 admin/em-options.php:952
+#: admin/em-options.php:962 admin/settings/tabs/formats.php:5
+#: admin/settings/tabs/formats.php:9 admin/settings/tabs/pages.php:19
+#: admin/settings/tabs/pages.php:59 buddypress/bp-em-activity.php:66
+#: buddypress/bp-em-core.php:12 buddypress/bp-em-core.php:53
+#: buddypress/bp-em-core.php:81 buddypress/bp-em-core.php:149
+#: buddypress/bp-em-core.php:192 buddypress/bp-em-core.php:243
+#: buddypress/bp-em-core.php:265 buddypress/screens/profile.php:27
+#: em-actions.php:127 em-install.php:471 em-install.php:522 em-install.php:608
+#: em-install.php:609 em-install.php:627 em-install.php:645 em-install.php:1166
+#: em-posts.php:143 em-posts.php:146 em-posts.php:148 em-template-tags.php:141
+#: widgets/em-events.php:17
 msgid "Events"
 msgstr "イベント"
 
@@ -5917,21 +6008,29 @@ msgstr "<p>Events Manager のインストールが完了しました。<a href='
 msgid "Update Blogs"
 msgstr "サイトを更新"
 
-#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.9)  #-#-#-#-#
+#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.9.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/em-admin.php:113 classes/em-people.php:37 em-install.php:1037
-#: events-manager.php:728
+#: admin/em-admin.php:113 admin/em-data-privacy.php:30
+#: admin/em-data-privacy.php:38 admin/em-data-privacy.php:44
+#: admin/em-data-privacy.php:48 admin/em-data-privacy.php:54
+#: admin/em-data-privacy.php:187 admin/em-data-privacy.php:192
+#: admin/em-data-privacy.php:198 admin/em-data-privacy.php:202
+#: admin/em-data-privacy.php:208 classes/em-people.php:41 em-install.php:1049
+#: em-install.php:1071 events-manager.php:730
 msgid "Events Manager"
 msgstr "Events Manager"
 
-#: admin/em-admin.php:45 admin/em-ms-locations.php:26
-#: admin/em-ms-options.php:176 admin/settings/tabs/formats.php:239
+#: admin/em-admin.php:45 admin/em-data-privacy.php:54
+#: admin/em-data-privacy.php:208 admin/em-data-privacy.php:347
+#: admin/em-data-privacy.php:447 admin/em-ms-locations.php:26
+#: admin/em-ms-options.php:176 admin/em-options.php:953
+#: admin/em-options.php:963 admin/settings/tabs/formats.php:239
 #: admin/settings/tabs/formats.php:242 admin/settings/tabs/formats.php:244
 #: admin/settings/tabs/formats.php:245 admin/settings/tabs/formats.php:246
 #: admin/settings/tabs/formats.php:247 admin/settings/tabs/pages.php:21
 #: admin/settings/tabs/pages.php:246 admin/settings/tabs/pages.php:248
-#: classes/em-location-posts-admin.php:38 em-actions.php:200 em-install.php:527
-#: em-install.php:529 em-install.php:1142 em-install.php:1201 em-posts.php:238
+#: classes/em-location-posts-admin.php:38 em-actions.php:205 em-install.php:527
+#: em-install.php:529 em-install.php:1179 em-install.php:1238 em-posts.php:238
 #: em-posts.php:241 em-posts.php:243 templates/tables/locations.php:11
 #: templates/tables/locations.php:14
 msgid "Locations"
@@ -5945,7 +6044,7 @@ msgstr "ヘルプ"
 msgid "Getting Help for Events Manager"
 msgstr "Events Manager のヘルプ"
 
-#: admin/em-admin.php:40 admin/em-admin.php:247 em-install.php:1043
+#: admin/em-admin.php:40 admin/em-admin.php:247 em-install.php:1055
 msgid "Settings"
 msgstr "設定"
 
@@ -5954,10 +6053,12 @@ msgid "Events Manager Settings"
 msgstr "Events Manager の設定"
 
 #: admin/em-admin.php:38 admin/em-admin.php:301 admin/em-bookings.php:114
-#: admin/em-bookings.php:162 admin/em-options.php:418
+#: admin/em-bookings.php:162 admin/em-data-privacy.php:38
+#: admin/em-data-privacy.php:192 admin/em-data-privacy.php:261
+#: admin/em-options.php:461 admin/em-options.php:954 admin/em-options.php:964
 #: buddypress/bp-em-activity.php:45 buddypress/bp-em-activity.php:47
 #: classes/em-event-post.php:153 classes/em-event-posts-admin.php:242
-#: templates/buddypress/group-events.php:87
+#: em-install.php:515 templates/buddypress/group-events.php:87
 #: templates/buddypress/my-group-events.php:81 templates/tables/events.php:101
 msgid "Bookings"
 msgstr "予約管理"
@@ -5967,8 +6068,8 @@ msgid "No rejected bookings."
 msgstr "取り消された予約はありません。"
 
 #: admin/bookings/em-person.php:88 admin/em-bookings.php:264
-#: admin/em-bookings.php:274 classes/em-bookings-table.php:85
-#: templates/templates/my-bookings.php:42
+#: admin/em-bookings.php:274 admin/em-data-privacy.php:276
+#: classes/em-bookings-table.php:85 templates/templates/my-bookings.php:42
 msgid "Status"
 msgstr "状態"
 
@@ -5976,7 +6077,7 @@ msgstr "状態"
 msgid "No pending bookings."
 msgstr "保留中の予約はありません。"
 
-#: admin/bookings/em-events.php:118 classes/em-booking.php:146
+#: admin/bookings/em-events.php:118 classes/em-booking.php:149
 #: classes/em-bookings-table.php:54 classes/em-event-posts-admin.php:245
 #: classes/em-event.php:364 em-install.php:384
 #: templates/buddypress/group-events.php:90
@@ -5996,23 +6097,25 @@ msgstr "日時"
 
 #: admin/bookings/em-events.php:93 admin/bookings/em-pending.php:101
 #: admin/bookings/em-person.php:86 admin/em-bookings.php:88
-#: admin/em-bookings.php:89 admin/em-ms-options.php:164
-#: admin/em-options.php:596 admin/settings/tabs/formats.php:25
-#: admin/settings/tabs/formats.php:36 admin/settings/tabs/formats.php:37
-#: admin/settings/tabs/formats.php:41 admin/settings/tabs/formats.php:42
-#: admin/settings/tabs/formats.php:224 admin/settings/tabs/formats.php:270
-#: admin/settings/tabs/formats.php:278 admin/settings/tabs/formats.php:311
-#: admin/settings/tabs/formats.php:319 admin/settings/tabs/formats.php:352
-#: admin/settings/tabs/formats.php:360 admin/settings/tabs/general.php:11
-#: admin/settings/tabs/general.php:51 admin/settings/tabs/pages.php:36
-#: admin/settings/tabs/pages.php:53 admin/settings/tabs/pages.php:74
-#: admin/settings/tabs/pages.php:75 classes/em-bookings-table.php:79
-#: classes/em-event-post-admin.php:289 classes/em-event-posts-admin.php:184
-#: classes/em-event-posts-admin.php:186 classes/em-event-posts-admin.php:269
-#: classes/em-event-posts-admin.php:346 classes/em-event-posts-admin.php:348
-#: classes/em-event-posts-admin.php:400 classes/em-event.php:1086
-#: classes/em-event.php:1100 classes/em-event.php:1177 em-actions.php:122
-#: em-actions.php:645 em-install.php:478 em-install.php:527 em-posts.php:147
+#: admin/em-bookings.php:89 admin/em-data-privacy.php:278
+#: admin/em-data-privacy.php:370 admin/em-data-privacy.php:372
+#: admin/em-ms-options.php:164 admin/em-options.php:639
+#: admin/settings/tabs/formats.php:25 admin/settings/tabs/formats.php:36
+#: admin/settings/tabs/formats.php:37 admin/settings/tabs/formats.php:41
+#: admin/settings/tabs/formats.php:42 admin/settings/tabs/formats.php:224
+#: admin/settings/tabs/formats.php:270 admin/settings/tabs/formats.php:278
+#: admin/settings/tabs/formats.php:311 admin/settings/tabs/formats.php:319
+#: admin/settings/tabs/formats.php:352 admin/settings/tabs/formats.php:360
+#: admin/settings/tabs/general.php:11 admin/settings/tabs/general.php:51
+#: admin/settings/tabs/pages.php:36 admin/settings/tabs/pages.php:53
+#: admin/settings/tabs/pages.php:74 admin/settings/tabs/pages.php:75
+#: classes/em-bookings-table.php:79 classes/em-event-post-admin.php:296
+#: classes/em-event-posts-admin.php:184 classes/em-event-posts-admin.php:186
+#: classes/em-event-posts-admin.php:269 classes/em-event-posts-admin.php:346
+#: classes/em-event-posts-admin.php:348 classes/em-event-posts-admin.php:400
+#: classes/em-event.php:1086 classes/em-event.php:1100
+#: classes/em-event.php:1177 em-actions.php:127 em-actions.php:650
+#: em-install.php:478 em-install.php:527 em-posts.php:147
 #: templates/buddypress/group-events.php:100
 #: templates/forms/event-editor.php:12 templates/forms/event-editor.php:109
 #: templates/forms/event-editor.php:111 templates/templates/my-bookings.php:39
@@ -6160,6 +6263,6 @@ msgstr "一括操作"
 #: admin/bookings/em-person.php:40 admin/bookings/em-person.php:42
 #: admin/bookings/em-rejected.php:38 admin/bookings/em-rejected.php:40
 #: admin/settings/tabs/formats.php:56 em-install.php:412 em-install.php:418
-#: events-manager.php:367 templates/templates/events-search.php:28
+#: events-manager.php:369 templates/templates/events-search.php:28
 msgid "Search"
 msgstr "検索"

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - User Role Editor - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-03-11 20:54:18+0000\n"
+"PO-Revision-Date: 2018-03-26 06:38:50+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -236,11 +236,7 @@ msgstr "Individuelle Inhaltstypen"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: includes/classes/ure-lib.php:1832 includes/classes/user-role-editor.php:502
-msgid "Changelog"
-msgstr "Änderungen"
-
-#. #-#-#-#-#  user-role-editor-code.pot (User Role Editor 4.40.1)  #-#-#-#-#
+#. #-#-#-#-#  user-role-editor-code.pot (User Role Editor 4.40.2)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: includes/classes/capabilities-groups-manager.php:75
 #: includes/classes/ure-lib.php:230 includes/classes/user-role-editor.php:553
@@ -479,9 +475,9 @@ msgstr "Über"
 msgid "Vladimir Garagulya"
 msgstr "Vladimir Garagulya"
 
-#. #-#-#-#-#  user-role-editor-code.pot (User Role Editor 4.40.1)  #-#-#-#-#
+#. #-#-#-#-#  user-role-editor-code.pot (User Role Editor 4.40.2)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  user-role-editor-code.pot (User Role Editor 4.40.1)  #-#-#-#-#
+#. #-#-#-#-#  user-role-editor-code.pot (User Role Editor 4.40.2)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://www.role-editor.com"
 msgstr "https://www.role-editor.com"
@@ -969,3 +965,7 @@ msgstr "Berechtigung %s wurde erfolgreich hinzugefügt"
 #: includes/classes/ure-lib.php:1598
 msgid "Manage options"
 msgstr "Optionen verwalten"
+
+#: includes/classes/ure-lib.php:1832 includes/classes/user-role-editor.php:502
+msgid "Changelog"
+msgstr "Änderungsprotokoll"

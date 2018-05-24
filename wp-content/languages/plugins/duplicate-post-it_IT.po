@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Duplicate Post - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-02-13 00:51:23+0000\n"
+"PO-Revision-Date: 2018-05-03 22:42:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -70,7 +70,7 @@ msgstr "Formato"
 
 #: duplicate-post-options.php:223
 msgid "Template"
-msgstr "Modello"
+msgstr "Template"
 
 #: duplicate-post-options.php:220
 msgid "Featured Image"
