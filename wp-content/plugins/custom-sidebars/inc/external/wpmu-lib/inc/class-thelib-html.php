@@ -389,6 +389,7 @@ class TheLib_Html extends TheLib  {
 			'tooltip'        => '',
 			'alt'            => '',
 			'read_only'      => false,
+			'disabled'       => false,
 			'placeholder'    => '',
 			'data_placeholder' => '',
 			'ajax_data'      => '',
@@ -453,6 +454,7 @@ class TheLib_Html extends TheLib  {
 		$max_attr = empty( $maxlength ) ? '' : 'maxlength="' . esc_attr( $maxlength ) . '" ';
 		$read_only = empty( $read_only ) ? '' : 'readonly="readonly" ';
 		$multiple = empty( $multiple ) ? '' : 'multiple="multiple" ';
+		$disabled = empty( $disabled ) ? '' : 'disabled="disabled" ';
 
 		$data_attr = '';
 		foreach ( $data as $data_key => $data_value ) {
@@ -521,7 +523,7 @@ class TheLib_Html extends TheLib  {
 					$id,
 					$name,
 					$value,
-					$read_only . $max_attr . $attr_placeholder . $ajax_data . $data_attr,
+					$read_only . $max_attr . $attr_placeholder . $ajax_data . $data_attr . $disabled,
 					$wrapper_class
 				);
 				break;
@@ -533,7 +535,7 @@ class TheLib_Html extends TheLib  {
 					$id,
 					$name,
 					$value,
-					$max_attr . $attr_placeholder . $ajax_data . $data_attr,
+					$max_attr . $attr_placeholder . $ajax_data . $data_attr . $disabled,
 					$wrapper_class
 				);
 				break;
@@ -545,7 +547,7 @@ class TheLib_Html extends TheLib  {
 					$id,
 					$name,
 					$value,
-					$read_only . $attr_placeholder . $ajax_data . $data_attr,
+					$read_only . $attr_placeholder . $ajax_data . $data_attr . $disabled,
 					$wrapper_class
 				);
 				break;
@@ -557,7 +559,7 @@ class TheLib_Html extends TheLib  {
 					$id,
 					$name,
 					$value,
-					$multiple . $read_only . $attr_data_placeholder . $ajax_data . $data_attr,
+					$multiple . $read_only . $attr_data_placeholder . $ajax_data . $data_attr . $disabled,
 					$field_options,
 					$wrapper_class
 				);
@@ -583,7 +585,7 @@ class TheLib_Html extends TheLib  {
 					$id,
 					$name,
 					$value,
-					$ajax_data . $data_attr,
+					$ajax_data . $data_attr . $disabled,
 					$field_options,
 					$config
 				);
@@ -616,7 +618,7 @@ class TheLib_Html extends TheLib  {
 					$name,
 					$value,
 					$button_value,
-					$ajax_data . $data_attr
+					$ajax_data . $data_attr . $disabled
 				);
 				break;
 
@@ -628,7 +630,7 @@ class TheLib_Html extends TheLib  {
 					$name,
 					$value,
 					$alt,
-					$ajax_data . $data_attr
+					$ajax_data . $data_attr . $disabled
 				);
 				break;
 
@@ -655,7 +657,7 @@ class TheLib_Html extends TheLib  {
 					$name,
 					$value,
 					$field_options,
-					$multiple . $read_only . $attr_data_placeholder . $data_attr,
+					$multiple . $read_only . $attr_data_placeholder . $data_attr . $disabled,
 					$ajax_data,
 					$empty_text,
 					$button_text,
@@ -671,7 +673,7 @@ class TheLib_Html extends TheLib  {
 					$id,
 					$name,
 					$value,
-					$multiple . $read_only . $attr_data_placeholder . $ajax_data . $data_attr,
+					$multiple . $read_only . $attr_data_placeholder . $ajax_data . $data_attr . $disabled,
 					$field_options,
 					$wrapper_class
 				);
@@ -729,7 +731,7 @@ class TheLib_Html extends TheLib  {
 					$id,
 					$name,
 					$value,
-					$max_attr . $attr_placeholder . $ajax_data . $data_attr,
+					$max_attr . $attr_placeholder . $ajax_data . $data_attr . $disabled,
 					$wrapper_class
 				);
 				break;

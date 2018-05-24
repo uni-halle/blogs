@@ -151,6 +151,9 @@
 .widgets-php .widget-liquid-left {
   width: 100%;
 }
+.widgets-php .cs-wrap .widget-liquid-right .widget.open {
+  z-index: 9999 !important;
+}
 .widgets-php .widget-liquid-right {
   padding: 0 0 75px 0;
   margin: -10px -214% 0 0;
@@ -161,6 +164,11 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+@media screen and (max-width: 480px) {
+  .widgets-php .widget-liquid-right {
+    width: 100%;
+  }
 }
 .widgets-php .widget-liquid-right #widgets-right {
   margin: 20px;
@@ -326,8 +334,17 @@
   line-height: 26px;
   margin-right: 20px;
 }
+#cs-options .cs-action.btn-export {
+  white-space: nowrap;
+}
 #cs-options .cs-filter {
   float: right;
+}
+@media screen and (max-width: 700px) {
+  #cs-options .cs-filter {
+    float: none;
+    margin-top: 5px;
+  }
 }
 
 .sidebar-form {
@@ -802,6 +819,20 @@ h2 .show-infos {
   font-size: 1.4em;
 }
 
+@media screen and (max-width: 480px) {
+  .wpmui-popup .buttons {
+    height: 80px;
+    text-align: left;
+  }
+  .wpmui-popup .buttons label {
+    float: none;
+    display: block;
+    margin-bottom: .5em;
+  }
+  .wpmui-popup .buttons .btn-save {
+    float: right;
+  }
+}
 /**
  * =============================================================================
  * == Post list

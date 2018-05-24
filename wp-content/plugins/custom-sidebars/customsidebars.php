@@ -3,7 +3,7 @@
  * Plugin Name: Custom Sidebars
  * Plugin URI:  https://wordpress.org/plugins/custom-sidebars/
  * Description: Allows you to create widgetized areas and custom sidebars. Replace whole sidebars or single widgets for specific posts and pages.
- * Version:     3.1.2
+ * Version:     3.1.5
  * Author:      WPMU DEV
  * Author URI:  http://premium.wpmudev.org/
  * Textdomain:  custom-sidebars
@@ -50,7 +50,6 @@ function inc_sidebars_init() {
 
 	define( 'CSB_PLUGIN', __FILE__ );
 	define( 'CSB_IS_PRO', false );
-	define( 'CSB_LANG_DIR', $plugin_dir_rel . '/lang/' );
 	define( 'CSB_VIEWS_DIR', $plugin_dir . '/views/' );
 	define( 'CSB_INC_DIR', $plugin_dir . '/inc/' );
 	define( 'CSB_JS_URL', $plugin_url . 'assets/js/' );
@@ -113,12 +112,6 @@ if ( ! class_exists( 'CustomSidebarsEmptyPlugin' ) ) {
 
 // Translation.
 function inc_sidebars_init_translation() {
-	if ( defined( 'CSB_LANG_DIR' ) ) {
-		load_plugin_textdomain(
-			'custom-sidebars',
-			false,
-			CSB_LANG_DIR
-		);
-	}
+    load_plugin_textdomain( 'custom-sidebars', false, basename( dirname( __FILE__ ) ) . '/languages');
 }
 add_action( 'plugins_loaded', 'inc_sidebars_init_translation' );

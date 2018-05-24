@@ -1,21 +1,28 @@
+# Copyright (C) 2018 WPMU DEV
+# This file is distributed under the same license as the Custom Sidebars Pro package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Custom Sidebars\n"
+"Project-Id-Version: Custom Sidebars Pro PLUGIN_VERSION\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/customsidebars\n"
-"POT-Creation-Date: 2018-02-09 06:13:10+00:00\n"
-"PO-Revision-Date: 2014-08-28 21:53+0100\n"
-"Last-Translator: Philipp Stracker <philipp@stracker.net>\n"
-"Language-Team:  <hboswijk@xs4all.nl>\n"
-"Language: nl_NL\n"
+"POT-Creation-Date: 2018-05-07 07:48:42+00:00\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: __;gettext;gettext_noop;_e;_x;_ex\n"
-"X-Poedit-Basepath: ..\n"
-"X-Generator: Poedit 1.6.8\n"
+"PO-Revision-Date: 2018-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.3\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
 
 #: inc/class-custom-sidebars-checkup-notification.php:114
 msgid ""
@@ -53,121 +60,130 @@ msgstr ""
 msgid "Clone"
 msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:158
-#: inc/class-custom-sidebars-editor.php:173
+#: inc/class-custom-sidebars-editor.php:146
+#: inc/class-custom-sidebars-editor.php:161
 #: inc/class-custom-sidebars-export.php:98
 msgid "You do not have permission for this"
 msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:242
-#: inc/class-custom-sidebars-editor.php:376
-#: inc/class-custom-sidebars-editor.php:659
+#: inc/class-custom-sidebars-editor.php:231
+#: inc/class-custom-sidebars-editor.php:371
+#: inc/class-custom-sidebars-editor.php:664
 msgid "You have no permission to do this operation."
 msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:263
+#: inc/class-custom-sidebars-editor.php:249
 msgid "Sidebar-name cannot be empty"
 msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:287
-#: inc/class-custom-sidebars-editor.php:385
-#, fuzzy
+#: inc/class-custom-sidebars-editor.php:270
+#: inc/class-custom-sidebars-editor.php:379
 msgid "The sidebar does not exist"
-msgstr "Maak Sidebar"
+msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:318
+#: inc/class-custom-sidebars-editor.php:303
 msgid "Created new sidebar <strong>%1$s</strong>"
 msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:326
+#: inc/class-custom-sidebars-editor.php:311
 msgid "Updated sidebar <strong>%1$s</strong>"
 msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:337
-#: inc/class-custom-sidebars-editor.php:405
-#, fuzzy
+#: inc/class-custom-sidebars-editor.php:322
+#: inc/class-custom-sidebars-editor.php:397
 msgid "The sidebar was not found"
-msgstr "Maak Sidebar"
+msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:394
+#: inc/class-custom-sidebars-editor.php:387
 msgid "Deleted sidebar <strong>%1$s</strong>"
 msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:467
+#: inc/class-custom-sidebars-editor.php:454
 #: inc/class-custom-sidebars-visibility.php:156
 msgid "Front Page"
 msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:468
+#: inc/class-custom-sidebars-editor.php:455
 msgid "Search Results"
 msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:469
+#: inc/class-custom-sidebars-editor.php:456
 #: inc/class-custom-sidebars-visibility.php:162
 msgid "Not found (404)"
 msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:470
-#, fuzzy
+#: inc/class-custom-sidebars-editor.php:457
 msgid "Any Author Archive"
-msgstr "Per categorie"
+msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:471
+#: inc/class-custom-sidebars-editor.php:458
 msgid "Date Archives"
 msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:489
-#: inc/class-custom-sidebars-editor.php:492
-#: inc/class-custom-sidebars-editor.php:499
-#: inc/class-custom-sidebars-editor.php:501
-#: inc/class-custom-sidebars-editor.php:585
-#: inc/class-custom-sidebars-editor.php:587
-#: inc/class-custom-sidebars-editor.php:606
-#, fuzzy
+#: inc/class-custom-sidebars-editor.php:475
+#: inc/class-custom-sidebars-editor.php:478
+#: inc/class-custom-sidebars-editor.php:484
+#: inc/class-custom-sidebars-editor.php:486
+#: inc/class-custom-sidebars-editor.php:558
+#: inc/class-custom-sidebars-editor.php:560
+#: inc/class-custom-sidebars-editor.php:614
 msgid "%s Archives"
-msgstr "Per categorie"
+msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:548
+#: inc/class-custom-sidebars-editor.php:526
 #: inc/class-custom-sidebars-visibility.php:157
-#, fuzzy
 msgid "Post Index"
-msgstr "Per bericht-soort"
+msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:552
+#: inc/class-custom-sidebars-editor.php:530
 msgid "%1$s Archives"
 msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:830
+#: inc/class-custom-sidebars-editor.php:845
 msgid "Updated sidebar <strong>%1$s</strong> settings."
 msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:882 views/widgets.php:17
-#, fuzzy
+#: inc/class-custom-sidebars-editor.php:900 views/widgets.php:17
 msgid "Sidebars"
-msgstr "Speciale Sidebars"
+msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:1355
+#: inc/class-custom-sidebars-editor.php:1322
 msgid "Custom sidebars configuration is allowed for:"
 msgstr ""
 
+#: inc/class-custom-sidebars-editor.php:1345
+msgid "Allowed to replace sidebars:"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:1351
+msgid "Allow entry author to change sidebars"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:1362
+msgid "Allow Custom Taxonomies in Sidebar Location:"
+msgstr ""
+
+#: inc/class-custom-sidebars-editor.php:1373
+msgid ""
+"After turn on any Custom Taxonomy you need to reload this screen to be able "
+"choose it in Sidebar Location."
+msgstr ""
+
 #: inc/class-custom-sidebars-explain.php:225
-#, fuzzy
 msgid "Sidebar Debug"
-msgstr "Speciale Sidebars"
+msgstr ""
 
 #: inc/class-custom-sidebars-explain.php:229
-#, fuzzy
 msgid "Turn on Custom Sidebars explain mode."
-msgstr "Speciale Sidebars"
+msgstr ""
 
 #: inc/class-custom-sidebars-explain.php:236
 msgid "Turn off Custom Sidebars explain mode."
 msgstr ""
 
 #: inc/class-custom-sidebars-export.php:62 views/widgets.php:46
-#, fuzzy
 msgid "Import / Export Sidebars"
-msgstr "Speciale Sidebars"
+msgstr ""
 
 #: inc/class-custom-sidebars-export.php:287
 #: inc/class-custom-sidebars-export.php:340
@@ -196,11 +212,10 @@ msgid "You do not have permission for import sidebars."
 msgstr ""
 
 #: inc/class-custom-sidebars-export.php:684
-#, fuzzy
 msgid "Imported %d custom sidebar!"
 msgid_plural "Imported %d custom sidebars!"
-msgstr[0] "Speciale Sidebars"
-msgstr[1] "Speciale Sidebars"
+msgstr[0] ""
+msgstr[1] ""
 
 #: inc/class-custom-sidebars-export.php:698
 msgid "Plugin options were imported!"
@@ -217,9 +232,8 @@ msgid "Single page"
 msgstr ""
 
 #: inc/class-custom-sidebars-visibility.php:160
-#, fuzzy
 msgid "Archives"
-msgstr "Per categorie"
+msgstr ""
 
 #: inc/class-custom-sidebars-visibility.php:161
 msgid "Search results"
@@ -282,9 +296,8 @@ msgid "Special pages"
 msgstr ""
 
 #: inc/class-custom-sidebars-visibility.php:250
-#, fuzzy
 msgid "For posttype"
-msgstr "Per bericht-soort"
+msgstr ""
 
 #: inc/class-custom-sidebars-visibility.php:252
 msgid "Taxonomy"
@@ -346,22 +359,22 @@ msgstr ""
 msgid "Only these %s:"
 msgstr ""
 
-#: inc/class-custom-sidebars.php:132
+#: inc/class-custom-sidebars.php:148
 msgid ""
 "<strong>Accessibility mode is not supported by the\n"
 "\t\t\t\t\t\t%1$s plugin.</strong><br /><a href=\"%2$s\">Click here</a>\n"
 "\t\t\t\t\t\tto disable accessibility mode and use the %1$s plugin!"
 msgstr ""
 
-#: inc/class-custom-sidebars.php:947 views/import.php:147
+#: inc/class-custom-sidebars.php:961 views/import.php:147
 msgid "Widgets"
 msgstr ""
 
-#: inc/class-custom-sidebars.php:957
+#: inc/class-custom-sidebars.php:971
 msgid "Support"
 msgstr ""
 
-#: inc/class-custom-sidebars.php:974
+#: inc/class-custom-sidebars.php:989
 msgid "Create a custom sidebar to get started."
 msgstr ""
 
@@ -380,7 +393,7 @@ msgstr ""
 
 #: views/bulk-edit.php:23 views/import.php:130 views/widgets.php:47
 msgid "Custom Sidebars"
-msgstr "Speciale Sidebars"
+msgstr ""
 
 #: views/bulk-edit.php:35
 msgid "&mdash; No Change &mdash;"
@@ -436,61 +449,55 @@ msgstr ""
 
 #: views/import.php:144 views/widgets-editor.php:15
 msgid "Name"
-msgstr "Naam"
+msgstr ""
 
 #: views/import.php:145 views/widgets-editor.php:20
 msgid "Description"
-msgstr "Beschrijving"
+msgstr ""
 
 #: views/import.php:146
 msgid "Note"
 msgstr ""
 
 #: views/import.php:154
-#, fuzzy
 msgid "New sidebar will be created"
-msgstr "Maak een nieuwe sidebar"
+msgstr ""
 
 #: views/import.php:156
-#, fuzzy
 msgid "Existing sidebar will be replaced!"
-msgstr "Maak Sidebar"
+msgstr ""
 
 #: views/import.php:224
-#, fuzzy
 msgid "(Theme sidebar)"
-msgstr "Maak Sidebar"
+msgstr ""
 
 #: views/import.php:252
 msgid "Configuration"
 msgstr ""
 
 #: views/import.php:256
-#, fuzzy
 msgid "Replaceable sidebars"
-msgstr "Vervangbare Sidebars"
+msgstr ""
 
 #: views/import.php:259
 msgid "Replaceable Sidebars"
-msgstr "Vervangbare Sidebars"
+msgstr ""
 
 #: views/import.php:278
 msgid "By post type"
-msgstr "Per bericht-soort"
+msgstr ""
 
 #: views/import.php:307
-#, fuzzy
 msgid "Post-type archives"
-msgstr "Per bericht-soort"
+msgstr ""
 
 #: views/import.php:328
 msgid "By category"
-msgstr "Per categorie"
+msgstr ""
 
 #: views/import.php:348
-#, fuzzy
 msgid "Category archives"
-msgstr "Per categorie"
+msgstr ""
 
 #: views/import.php:369
 msgid "Main blog page"
@@ -513,18 +520,17 @@ msgid "Search results page"
 msgstr ""
 
 #: views/import.php:383
-msgid ""
-"Replace the current plugin configuration with the imported configuration."
+msgid "Replace the current plugin configuration with the imported configuration."
 msgstr ""
 
 #: views/widgets-delete.php:11
 msgid ""
-"Please confirm that you want to delete the sidebar <strong class=\"name\"></"
-"strong>."
+"Please confirm that you want to delete the sidebar <strong "
+"class=\"name\"></strong>."
 msgstr ""
 
 #: views/widgets-delete.php:16 views/widgets-editor.php:63
-#: views/widgets-location.php:242
+#: views/widgets-location.php:251
 msgid "Cancel"
 msgstr ""
 
@@ -533,19 +539,16 @@ msgid "Yes, delete it"
 msgstr ""
 
 #: views/widgets-editor.php:16
-#, fuzzy
 msgid "Sidebar name here..."
-msgstr "Naam"
+msgstr ""
 
 #: views/widgets-editor.php:17
-#, fuzzy
-msgid "The name must be unique."
-msgstr "Naam"
+msgid "The name should be unique."
+msgstr ""
 
 #: views/widgets-editor.php:21
-#, fuzzy
 msgid "Sidebar description here..."
-msgstr "Beschrijving"
+msgstr ""
 
 #: views/widgets-editor.php:27
 msgid "Caution:"
@@ -553,19 +556,19 @@ msgstr ""
 
 #: views/widgets-editor.php:39
 msgid "Before Title"
-msgstr "Voor de Titel"
+msgstr ""
 
 #: views/widgets-editor.php:43
 msgid "After Title"
-msgstr "Na de Titel"
+msgstr ""
 
 #: views/widgets-editor.php:49
 msgid "Before Widget"
-msgstr "Voor Widget"
+msgstr ""
 
 #: views/widgets-editor.php:53
 msgid "After Widget"
-msgstr "Na Widget"
+msgstr ""
 
 #: views/widgets-editor.php:60
 msgid "Advanced - Edit custom wrapper code"
@@ -573,7 +576,7 @@ msgstr ""
 
 #: views/widgets-editor.php:64 views/widgets.php:43
 msgid "Create Sidebar"
-msgstr "Maak Sidebar"
+msgstr ""
 
 #: views/widgets-export.php:10 views/widgets-export.php:28
 msgid "Export"
@@ -588,9 +591,8 @@ msgid "Select a file to import"
 msgstr ""
 
 #: views/widgets-location.php:30
-#, fuzzy
 msgid "Replaced by another sidebar:"
-msgstr "Maak Sidebar"
+msgstr ""
 
 #: views/widgets-location.php:38
 msgid "As <strong>%1$s</strong> for selected %2$s"
@@ -600,104 +602,92 @@ msgstr ""
 msgid "Click here to pick available %1$s"
 msgstr ""
 
-#: views/widgets-location.php:89
-msgid ""
-"There are no replaceable sidebars. Please allow at least one as replaceable."
+#: views/widgets-location.php:87
+msgid "There are no replaceable sidebars. Please allow at least one as replaceable."
 msgstr ""
 
-#: views/widgets-location.php:99 views/widgets-location.php:140
-#: views/widgets-location.php:198
+#: views/widgets-location.php:97 views/widgets-location.php:149
+#: views/widgets-location.php:207
 msgid "Click to toggle"
 msgstr ""
 
-#: views/widgets-location.php:100
+#: views/widgets-location.php:98
 msgid "For all Single Entries matching selected criteria"
 msgstr ""
 
-#: views/widgets-location.php:103
+#: views/widgets-location.php:101
 msgid ""
 "These replacements will be applied to every single post that matches a "
 "certain post type or category."
 msgstr ""
-"Deze vervangingen zullen worden toegepast op elk afzonderlijk bericht dat "
-"correspondeert met een bepaald berichten-soort of categorie."
 
-#: views/widgets-location.php:111
+#: views/widgets-location.php:109
 msgid "categories"
 msgstr ""
 
-#: views/widgets-location.php:123
-#, fuzzy
+#: views/widgets-location.php:121
 msgid "Post Types"
-msgstr "Per bericht-soort"
+msgstr ""
 
-#: views/widgets-location.php:141
+#: views/widgets-location.php:150
 msgid "For Archives"
 msgstr ""
 
-#: views/widgets-location.php:144
+#: views/widgets-location.php:153
 msgid "These replacements will be applied to Archive Type posts and pages."
 msgstr ""
 
-#: views/widgets-location.php:146 views/widgets-location.php:157
+#: views/widgets-location.php:155 views/widgets-location.php:166
 msgid "Archive Types"
 msgstr ""
 
-#: views/widgets-location.php:147 views/widgets-location.php:168
-#, fuzzy
+#: views/widgets-location.php:156 views/widgets-location.php:177
 msgid "Category Archives"
-msgstr "Per categorie"
+msgstr ""
 
-#: views/widgets-location.php:148
+#: views/widgets-location.php:157
 msgid "Authors"
 msgstr ""
 
-#: views/widgets-location.php:179
+#: views/widgets-location.php:188
 msgid "Author Archives"
 msgstr ""
 
-#: views/widgets-location.php:199
+#: views/widgets-location.php:208
 msgid "3rd party plugins"
 msgstr ""
 
-#: views/widgets-location.php:202
-#, fuzzy
+#: views/widgets-location.php:211
 msgid "These replacements will be applied to 3rd party plugins."
 msgstr ""
-"Deze vervangingen zullen worden toegepast op elk afzonderlijk bericht dat "
-"correspondeert met een bepaald berichten-soort of categorie."
 
-#: views/widgets-location.php:243 views/widgets.php:42
+#: views/widgets-location.php:252 views/widgets.php:42
 msgid "Save Changes"
-msgstr "Wijzigingen opslaan"
+msgstr ""
 
 #: views/widgets.php:21
 msgid "Create a new sidebar"
-msgstr "Maak een nieuwe sidebar"
+msgstr ""
 
 #: views/widgets.php:40
-#, fuzzy
 msgid "Edit [Sidebar]"
-msgstr "Bewerk"
+msgstr ""
 
 #: views/widgets.php:41
-#, fuzzy
 msgid "New Custom Sidebar"
-msgstr "Maak een nieuwe sidebar"
+msgstr ""
 
 #: views/widgets.php:44
-#, fuzzy
 msgid "Delete Sidebar"
-msgstr "Maak Sidebar"
+msgstr ""
 
 #: views/widgets.php:45
 msgid "Define where you want this sidebar to appear."
 msgstr ""
 
 #: views/widgets.php:48
-#, fuzzy
 msgid "Theme Sidebars"
-msgstr "Speciale Sidebars"
+msgstr ""
 
 #: views/widgets.php:49
 msgid "Couldn't load data from WordPress..."
@@ -709,7 +699,8 @@ msgstr ""
 
 #: views/widgets.php:51
 msgid ""
-"Activate this option to replace the sidebar with one of your custom sidebars."
+"Activate this option to replace the sidebar with one of your custom "
+"sidebars."
 msgstr ""
 
 #: views/widgets.php:52
@@ -717,41 +708,36 @@ msgid "Filter..."
 msgstr ""
 
 #: views/widgets.php:69
-#, fuzzy
 msgid "Delete this sidebar."
-msgstr "Maak Sidebar"
+msgstr ""
 
 #: views/widgets.php:78
-#, fuzzy
 msgid "Edit this sidebar."
-msgstr "Bewerk"
+msgstr ""
 
 #: views/widgets.php:80
 msgid "Edit"
-msgstr "Bewerk"
+msgstr ""
 
 #: views/widgets.php:87 views/widgets.php:124
 msgid "Where do you want to show the sidebar?"
 msgstr ""
 
 #: views/widgets.php:89 views/widgets.php:126
-#, fuzzy
 msgid "Sidebar Location"
-msgstr "Maak Sidebar"
+msgstr ""
 
 #: views/widgets.php:106
 msgid "This sidebar will always be same on all pages"
 msgstr ""
 
 #: views/widgets.php:115
-#, fuzzy
 msgid "Allow this sidebar to be replaced"
-msgstr "Maak Sidebar"
+msgstr ""
 
 #. Plugin Name of the plugin/theme
-#, fuzzy
 msgid "Custom Sidebars Pro"
-msgstr "Speciale Sidebars"
+msgstr ""
 
 #. Plugin URI of the plugin/theme
 msgid "http://premium.wpmudev.org/project/custom-sidebars/"
@@ -771,171 +757,7 @@ msgstr ""
 msgid "http://premium.wpmudev.org/"
 msgstr ""
 
-#: inc/class-custom-sidebars-editor.php:1155
-#, fuzzy
+#: inc/class-custom-sidebars-editor.php:1137
 msgctxt "Column name on entries list."
 msgid "Custom Sidebars"
-msgstr "Speciale Sidebars"
-
-#, fuzzy
-#~ msgid "Static sidebar"
-#~ msgstr "Maak Sidebar"
-
-#~ msgid ""
-#~ "There was not any sidebar called \"%s\" and it could not been deleted."
-#~ msgstr ""
-#~ "Er bestaat geen sidebar getiteld \"%s\" en deze kon niet worden "
-#~ "verwijderd."
-
-#~ msgid "The custom sidebars settings has been updated successfully."
-#~ msgstr "De speciale sidebars instellingen zijn bijgewerkt."
-
-#~ msgid "The default sidebars have been updated successfully."
-#~ msgstr "De standaard sidebars zijn bijgewerkt."
-
-#~ msgid "You have to fill all the fields to create a new sidebar."
-#~ msgstr "U moet alle velden invullen om een nieuwe sidebar te maken."
-
-#~ msgid ""
-#~ "There is already a sidebar registered with that name, please choose a "
-#~ "different one."
-#~ msgstr ""
-#~ "Er bestaat al een sidebar met die naam, kies a.u.b. een andere naam."
-
-#~ msgid "The operation is not secure and it cannot be completed."
-#~ msgstr "Deze actie is niet veilig en kan niet voltooid worden."
-
-#~ msgid "The sidebar \"%s\" has been updated successfully."
-#~ msgstr "De sidebar \"%s\" is met succes gewijzigd."
-
-#~ msgid "The Custom Sidebars data has been removed successfully,"
-#~ msgstr "De Speciale Sidebars gegevens zijn verwijderd."
-
-#~ msgid ""
-#~ "You can assign specific sidebars to this post, just select a sidebar and "
-#~ "the default one will be replaced, if it is available on your template."
-#~ msgstr ""
-#~ "U kunt speciale sidebars toewijzen aan dit bericht, selecteer gewoon een "
-#~ "sidebar en de standaard sidebar zal worden vervangen, als die beschikbaar "
-#~ "is voor uw template."
-
-#~ msgid ""
-#~ "There are not replaceable sidebars selected. You can define what sidebar "
-#~ "will be able for replacement in the <a href=\"themes.php?"
-#~ "page=customsidebars\">Custom Sidebars config page</a>."
-#~ msgstr ""
-#~ "Er zijn niet-vervangbare sidebars geselecteerd. U kunt bepalen welke "
-#~ "sidebars vervangen kunnen worden in de <a href=\"themes.php?"
-#~ "page=customsidebars\">Speciale Sidebars instellingen pagina</a>."
-
-#~ msgid "Default sidebars for posts"
-#~ msgstr "Standaard sidebars voor berichten"
-
-#~ msgid ""
-#~ "The sidebars by categories work in a hierarchycal way, if a post belongs "
-#~ "to a parent and a child category it will show the child category sidebars "
-#~ "if they are defined, otherwise it will show the parent ones. If no "
-#~ "category sidebar for post are defined, the post will show the post post-"
-#~ "type sidebar. If none of those sidebars are defined, the theme default "
-#~ "sidebar is shown."
-#~ msgstr ""
-#~ "De sidebars op basis van categorieën werken op een hiërarchische manier; "
-#~ "als aan een bericht zowel een parent als een child categorie is toegekend "
-#~ "zal het de child categorie sidebars tonen als die zijn gedefiniëerd; "
-#~ "anders tonen ze die van de parent. Als er geen categorie sidebar voor "
-#~ "berichten zijn gedefiniëerd, toont het bericht de bericht bericht-type "
-#~ "sidebar. Als geen van deze sidebars zijn gedefiniëerd, wordt de standaard "
-#~ "thema sidebar getoond."
-
-#~ msgid ""
-#~ "There are no replaceable sidebars selected. You must select some of them "
-#~ "in the form above to be able for replacing them in all the post type "
-#~ "entries."
-#~ msgstr ""
-#~ "Er zijn geen vervangbare sidebars geselecteerd. U moet er één of meer "
-#~ "selecteren in de lijst hierboven om ze te kunnen vervangen in alle "
-#~ "soorten berichten."
-
-#~ msgid "There are no categories available."
-#~ msgstr "Er zijn geen categorieën beschikbaar."
-
-#~ msgid "Default sidebars for pages"
-#~ msgstr "Standaard sidebars voor pagina's"
-
-#~ msgid ""
-#~ "You can define specific sidebars for the different Wordpress pages. "
-#~ "Sidebars for lists of posts pages work in the same hierarchycal way than "
-#~ "the one for single posts."
-#~ msgstr ""
-#~ "U kunt speciale sidebars definiëren voor de diverse Wordpress pagina's. "
-#~ "Sidebars voor pagina's met met meerdere berichten werken op dezelfde "
-#~ "hiërarchische manier als degene met enkele berichten."
-
-#~ msgid "Do you like this plugin? Support its development with a donation :)"
-#~ msgstr "Bevalt deze plugin u? Steun de ontwikkeling met een donatie :)"
-
-#~ msgid ""
-#~ "When a custom sidebar is created, it is shown in the widgets page. There "
-#~ "you will be able to configure it."
-#~ msgstr ""
-#~ "Wanneer een specifieke sidebar is gemaakt, wordt die getoond in de "
-#~ "widgets pagina. Daar kunt u hem verder aanpassen."
-
-#~ msgid ""
-#~ "Select here the sidebars available for replacing. They will appear for "
-#~ "replace when a post or page is edited or created. They will be also "
-#~ "available in the default sidebars page. You can select several bars "
-#~ "holding the SHIFT key when clicking on them."
-#~ msgstr ""
-#~ "Selecteer hier de sidebars beschikbaar voor vervanging. Zij zullen "
-#~ "getoond worden ter vervanging als u een bericht of pagina bewerkt of "
-#~ "aanmaakt. Zij zullen ook getoond worden op de Standaard Sidebars pagina. "
-#~ "U kunt er meerdere selecteren door de SHIFT-toets in te drukken als u er "
-#~ "op klikt."
-
-#~ msgid "Select the boxes available for substitution"
-#~ msgstr "Selecteer de te vervangen items"
-
-#~ msgid "All the Custom Sidebars"
-#~ msgstr "Alle Specifieke Sidebars"
-
-#~ msgid ""
-#~ "If a sidebar is deleted and is currently on use, the posts and pages "
-#~ "which uses it will show the default sidebar instead."
-#~ msgstr ""
-#~ "Als een sidebar wordt verwijderd die momenteel in gebruik is, zullen de "
-#~ "berichten en pagina's die hem gebruiken de standaard sidebar tonen."
-
-#~ msgid "Delete"
-#~ msgstr "Verwijder"
-
-#~ msgid ""
-#~ "There are no custom sidebars available. You can create a new one using "
-#~ "the left form."
-#~ msgstr ""
-#~ "Er zijn geen specifieke sidebars beschikbaar. U kunt een nieuwe maken met "
-#~ "het linker formulier."
-
-#~ msgid ""
-#~ "Click on the button below to delete all the Custom Sidebars data from the "
-#~ "database. Keep in mind that once the button is clicked you will have to "
-#~ "create new sidebars and customize them to restore your current sidebars "
-#~ "configuration.</p><p>If you are going to uninstall the plugin "
-#~ "permanently, you should use this button before, so there will be no track "
-#~ "about the plugin left in the database."
-#~ msgstr ""
-#~ "Klik op de knop hieronder om alle Specifieke Sidebars gegevens uit de "
-#~ "database te verwijderen. Denk er om dat als u dit doet, u nieuwe sidebars "
-#~ "zult moeten maken en aanpassen om uw huidige sidebar-configuratie te "
-#~ "herstellen.</p><p>Als u de plugin permanent wilt verwijderen, moet u "
-#~ "eerst deze knop gebruiken, opdat er geen sporen van de plugin "
-#~ "achterblijven in de database."
-
-#~ msgid ""
-#~ "When a custom sidebar is created, it is shown in the widgets view and you "
-#~ "can define what the new sidebar will contain. Once the sidebar is setted "
-#~ "up, it is possible to select it for displaying in any post or page."
-#~ msgstr ""
-#~ "When a custom sidebar is created, it is shown in the widgets view and you "
-#~ "can define what the new sidebar will contain. Once the sidebar is setted "
-#~ "up, it is possible to select it for displaying in any post or page."
+msgstr ""

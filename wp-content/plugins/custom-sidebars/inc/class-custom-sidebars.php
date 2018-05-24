@@ -76,6 +76,23 @@ class CustomSidebars {
 		add_action( 'admin_init', array( $this, 'admin_init' ) );
 		// Extensions use this hook to initialize themselfs.
 		do_action( 'cs_init' );
+		/**
+		 * Add version to media files
+		 */
+		add_filter( 'wpmu_style_version', array( $this, 'wp_enqueue_add_version' ), 10, 2 );
+		add_filter( 'wpmu_script_version', array( $this, 'wp_enqueue_add_version' ), 10, 2 );
+	}
+
+	/**
+	 * Add version to media files
+	 *
+	 * @since 3.1.3
+	 */
+	public function wp_enqueue_add_version( $version, $handle ) {
+		if ( preg_match( '/^wpmu\-cs\-/', $handle ) ) {
+			return '3.1.5';
+		}
+		return $version;
 	}
 
 	/**
@@ -84,7 +101,6 @@ class CustomSidebars {
 	 * @since 3.0.5
 	 */
 	public function admin_init() {
-
 		$plugin_title = 'Custom Sidebars';
 		
 		/**
@@ -451,14 +467,12 @@ class CustomSidebars {
 		if ( ! is_array( $sidebars ) ) {
 			$sidebars = array();
 		}
-
 		// Remove invalid items.
 		foreach ( $sidebars as $key => $data ) {
 			if ( ! is_array( $data ) ) {
 				unset( $sidebars[ $key ] );
 			}
 		}
-
 		return $sidebars;
 	}
 
@@ -963,16 +977,15 @@ class CustomSidebars {
 	 * @since 3.0.1
 	 */
 	public function print_templates() {
+		if ( false == $this->check_screen() ) {
+			return;
+		}
 		wp_enqueue_script( 'wp-util' );
 ?>
 	<script type="text/html" id="tmpl-custom-sidebars-new">
-		
 		<div class="custom-sidebars-add-new">
-			
 			<p><?php esc_html_e( 'Create a custom sidebar to get started.', 'custom-sidebars' ); ?></p>
-			
 		</div>
-		
 	</script>
 <?php
 	}
@@ -996,5 +1009,66 @@ class CustomSidebars {
 			require_once CSB_INC_DIR . 'integrations/class-custom-sidebars-integration-polylang.php';
 		}
 		do_action( 'cs_integrations' );
+	}
+
+	private function check_screen() {
+		if ( ! function_exists( 'get_current_screen' ) ) {
+			return false;
+		}
+		$screen = get_current_screen();
+		if ( ! is_a( $screen, 'WP_Screen' ) ) {
+			return false;
+		}
+		if ( 'widgets' != $screen->id ) {
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * get custom taxonomies
+	 *
+	 * @since 3.1.4
+	 *
+	 * @returns array Array of object of custom, public taxonomies
+	 */
+	public static function get_custom_taxonomies( $state = 'all' ) {
+		$args = array(
+			'public'   => true,
+			'_builtin' => false,
+		);
+		$taxonomies = get_taxonomies( $args, 'objects' );
+		if ( empty( $taxonomies ) ) {
+			return array();
+		}
+		/**
+		 * if we need only allowed taxonomies, then remove not needed from
+		 * $taxonomies array
+		 */
+		if ( 'allowed' === $state ) {
+			$editor = CustomSidebarsEditor::instance();
+			$allowed = $editor->get_allowed_custom_taxonmies();
+			if ( empty( $allowed ) ) {
+				return array();
+			}
+			foreach ( $taxonomies as $slug => $taxonomy ) {
+				if ( in_array( $slug, $allowed ) ) {
+					continue;
+				}
+				unset( $taxonomies[ $slug ] );
+			}
+		}
+
+		uasort( $taxonomies, array( __CLASS__, 'sort_by_label' ) );
+		return $taxonomies;
+	}
+
+	/**
+	 * Sort helper for get_custom_taxonomies() function.
+	 *
+	 * @since 3.1.4
+	 */
+	private static function sort_by_label( $a, $b ) {
+		return strcmp( $a->label, $b->label );
 	}
 };

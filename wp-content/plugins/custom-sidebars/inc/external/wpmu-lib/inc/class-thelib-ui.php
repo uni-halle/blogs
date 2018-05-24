@@ -331,7 +331,16 @@ class TheLib_Ui extends TheLib {
 				if ( empty( $url ) ) {
 					wp_enqueue_style( $alias );
 				} else {
-					wp_enqueue_style( $alias, $url );
+					/**
+					 * Allow to setup styles version.
+					 *
+					 * @since 3.0.6
+					 *
+					 * @param string WPMU Version
+					 * @param string $alias Css handler.
+					 */
+					$version = apply_filters( 'wpmu_style_version', TheLib3_Wrap::get_version(), $alias );
+					wp_enqueue_style( $alias, $url, array(), $version );
 				}
 			}
 		}
@@ -368,7 +377,16 @@ class TheLib_Ui extends TheLib {
 
 				// Register script if it has an URL.
 				if ( ! empty( $url ) ) {
-					wp_register_script( $alias, $url, array( 'jquery' ), false, true );
+					/**
+					 * Allow to setup script version.
+					 *
+					 * @since 3.0.6
+					 *
+					 * @param string WPMU Version
+					 * @param string $alias Css handler.
+					 */
+					$version = apply_filters( 'wpmu_script_version', TheLib3_Wrap::get_version(), $alias );
+					wp_register_script( $alias, $url, array( 'jquery' ), $version, true );
 				}
 
 				// Enqueue the script for output in the page footer.
@@ -533,5 +551,4 @@ class TheLib_Ui extends TheLib {
 			$this->add_action( 'network_admin_notices', '_admin_notice_callback', 1 );
 		}
 	}
-
 }

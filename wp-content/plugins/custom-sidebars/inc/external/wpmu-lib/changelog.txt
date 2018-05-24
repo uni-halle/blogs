@@ -1,12 +1,19 @@
 Plugin Name: WPMU Dev code library
-Author:      Philipp Stracker, Marcin Pietrzak
+Author:      Philipp Stracker, Marcin Pietrzak, Joel James
 
 Change Log:
 ----------------------------------------------------------------------
 
+3.0.7 - 2018-03-29
+PHP
+- Added "disabled" attribute.
+
+
 3.0.6
 PHP
 - Change variable name to correct one.
+- Added filter 'wpmu_style_version'.
+- Added filter 'wpmu_script_version'.
 
 3.0.5
 PHP
