@@ -19,6 +19,13 @@ body {
 	float: none;
 	margin: 0 5px;
 }
+#footer .social-profiles {
+    text-align: left;
+}
+#footer .social-profile {
+    margin-right: 10px;
+    margin-left: 0;
+}
 
 
 /* =Navigation

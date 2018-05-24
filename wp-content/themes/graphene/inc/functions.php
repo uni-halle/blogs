@@ -80,20 +80,20 @@ function graphene_get_header_image_alt( $image_src ){
  * @package Graphene
  * @since 2.1
  */
-function graphene_get_image_html( $image_src_or_id, $size = '' ){
+function graphene_get_image_html( $image_src_or_id, $size = '', $alt = '' ){
 	global $graphene_settings;
 	
 	if ( ! is_numeric( $image_src_or_id ) ) {
 		$image_id = graphene_get_attachment_id_from_src( $image_src_or_id );
 
 		if ( ! $image_id ) {
-			$html = '<img src="' . $image_src_or_id . '" alt="" />';
+			$html = '<img src="' . $image_src_or_id . '" alt="' . $alt . '" title="' . $alt . '" />';
 			return $html;
 		}
 	
 	} else $image_id = $image_src_or_id;
 
-	$image = wp_get_attachment_image( $image_id, $size );
+	$image = wp_get_attachment_image( $image_id, $size, false, array( 'alt' => $alt, 'title' => $alt ) );
 	return $image;
 }
 
@@ -108,6 +108,8 @@ function graphene_body_class( $classes ){
 	
 	if ( $graphene_settings['slider_full_width'] ) $classes[] = 'full-width-slider';
 	if ( $graphene_settings['slider_position'] ) $classes[] = 'bottom-slider';
+	if ( $graphene_settings['mobile_left_column_first'] ) $classes[] = 'left-col-first';
+	$classes[] = 'layout-' . $graphene_settings['container_style'];
 	
     $column_mode = graphene_column_mode();
     $classes[] = $column_mode;
@@ -119,8 +121,8 @@ function graphene_body_class( $classes ){
     }
 	
 	if ( has_nav_menu( 'secondary-menu' ) ) $classes[] = 'have-secondary-menu';
-
 	if ( is_singular() ) $classes[] = 'singular';
+	if ( $graphene_settings['slider_as_header'] ) $classes[] = 'header-slider';
     
     // Prints the body class
     return $classes;
@@ -132,12 +134,13 @@ add_filter( 'body_class', 'graphene_body_class' );
 /**
  * Add Social Media icons in top bar
 */
-function graphene_top_bar_social(){
+function graphene_social_profiles(){
     global $graphene_settings;
 
     /* Loop through the registered custom social modia */
     $social_profiles = $graphene_settings['social_profiles'];
-	if ( in_array( false, $social_profiles) ) return;
+	if ( in_array( false, $social_profiles ) ) return;
+	if ( empty( $social_profiles ) ) return;
 	?>
 	<ul class="social-profiles">
 		<?php
@@ -156,8 +159,8 @@ function graphene_top_bar_social(){
 		            $icon_url = '';
 		            $icon_name = '';
 		            if ( $social_profile['type'] == 'custom' ) {
-						$icon_url = $social_profile['icon_url'];
-						$icon_name = $social_profile['icon_name'];
+						$icon_url = ( isset( $social_profile['icon_url'] ) ) ? $social_profile['icon_url'] : '';
+						$icon_name = ( isset( $social_profile['icon_name'] ) ) ? $social_profile['icon_name'] : '';
 		                $class = 'mysocial social-custom';
 		            }
 				?>
@@ -182,7 +185,14 @@ function graphene_top_bar_social(){
     </ul>
     <?php
 }
-add_action( 'graphene_social_profiles', 'graphene_top_bar_social' );
+
+
+/**
+ * Backward compat
+ */
+function graphene_top_bar_social(){
+	graphene_social_profiles();
+}
 
 /**
 
@@ -270,19 +280,21 @@ function graphene_get_grid( $classes = '', $grid_one = 12, $grid_two = '', $grid
 	/* Additional classes for sidebar modes */
 	global $graphene_settings;
 
-	if ( $column_mode == 'two_col_right' ) {
-		if ( stripos( $classes, 'sidebar' ) !== false ) $grid[] =  sprintf( 'col-md-pull-%d', $graphene_settings['column_width']['two_col']['content'] );
-		if ( stripos( $classes, 'content-main' ) !== false ) $grid[] =  sprintf( 'col-md-push-%d', $graphene_settings['column_width']['two_col']['sidebar'] );
-	}
+	if ( ! $graphene_settings['mobile_left_column_first'] ) {
+		if ( $column_mode == 'two_col_right' ) {
+			if ( stripos( $classes, 'sidebar' ) !== false ) $grid[] =  sprintf( 'col-md-pull-%d', $graphene_settings['column_width']['two_col']['content'] );
+			if ( stripos( $classes, 'content-main' ) !== false ) $grid[] =  sprintf( 'col-md-push-%d', $graphene_settings['column_width']['two_col']['sidebar'] );
+		}
 
-	if ( $column_mode == 'three_col_right' ) {
-		if ( stripos( $classes, 'sidebar' ) !== false ) $grid[] =  sprintf( 'col-md-pull-%d', $graphene_settings['column_width']['three_col']['content'] );
-		if ( stripos( $classes, 'content-main' ) !== false ) $grid[] =  sprintf( 'col-md-push-%d', $graphene_settings['column_width']['three_col']['sidebar_left'] + $graphene_settings['column_width']['three_col']['sidebar_right'] );
-	}
+		if ( $column_mode == 'three_col_right' ) {
+			if ( stripos( $classes, 'sidebar' ) !== false ) $grid[] =  sprintf( 'col-md-pull-%d', $graphene_settings['column_width']['three_col']['content'] );
+			if ( stripos( $classes, 'content-main' ) !== false ) $grid[] =  sprintf( 'col-md-push-%d', $graphene_settings['column_width']['three_col']['sidebar_left'] + $graphene_settings['column_width']['three_col']['sidebar_right'] );
+		}
 
-	if ( $column_mode == 'three_col_center' ) {
-		if ( stripos( $classes, 'sidebar-left' ) !== false ) $grid[] =  sprintf( 'col-md-pull-%d', $graphene_settings['column_width']['three_col']['content'] );
-		if ( stripos( $classes, 'content-main' ) !== false ) $grid[] =  sprintf( 'col-md-push-%d', $graphene_settings['column_width']['three_col']['sidebar_left'] );
+		if ( $column_mode == 'three_col_center' ) {
+			if ( stripos( $classes, 'sidebar-left' ) !== false ) $grid[] =  sprintf( 'col-md-pull-%d', $graphene_settings['column_width']['three_col']['content'] );
+			if ( stripos( $classes, 'content-main' ) !== false ) $grid[] =  sprintf( 'col-md-push-%d', $graphene_settings['column_width']['three_col']['sidebar_left'] );
+		}
 	}
 	
 	return apply_filters( 'graphene_grid', $grid, $classes, $grid_one, $grid_two, $grid_three );
@@ -388,3 +400,15 @@ function graphene_posts_page_column(){
 	}
 }
 add_action( 'template_redirect', 'graphene_posts_page_column' );
+
+
+/**
+ * Add the necessary wrapper for full-width boxed layout
+ */
+function graphene_container_wrapper( $part = 'start' ) {
+	global $graphene_settings;
+	if ( $graphene_settings['container_style'] != 'full-width-boxed' ) return;
+
+	if ( $part == 'start' ) echo '<div class="container container-full-width-boxed">';
+	if ( $part == 'end' ) echo '</div>';
+}

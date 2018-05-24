@@ -4,6 +4,46 @@ https://www.graphene-theme.com/
 
 CHANGELOG
 
+Version 2.4.2
+	* Added: Separate slider colours option when using the card display option
+	* Updated: Removed translation files for the following languages since there are better translations in GlotPress: pt_BR, ru_RU
+	* Fixed: graphene_navbar_header action hook does not appear in Action Hook Widget Areas option
+	* Fixed: Carousel script error when the primary header menu is not in use
+	* Fixed: PHP warning when using YARPP
+	* Fixed: PHP warning in 404.php file
+	* Fixed: Reorganised top bar and bottom footer elements using floats for more robust styling
+
+Version 2.4.1
+	* Fixed: PHP warning when YARPP has not been installed
+	* Fixed: Slider has no background colour when extended to full width
+
+Version 2.4
+	* Added: Yet Another Related Posts plugin integration
+	* Added: Full width boxed container layout in addition to existing full width stretched container layout
+	* Added: Banner display style for slider
+	* Added: Deep multi-level menu capability in mobile view
+	* Added: Mentions Bar feature
+	* Added: Google Rich Snippets using the recommended LD+JSON markup for more detailed layout-agnostic markup
+	* Added: Slider entry meta in card display
+	* Added: Social profiles link in footer
+	* Added: Option to display social media icons in top bar and footer
+	* Added: Option to select left sidebar order in mobile view
+	* Added: Option to select header text alignment
+	* Added: Option to disable the previous/next posts navigation
+	* Added: Option to restrict the previous/next posts navigation to posts within the same category
+	* Added: Automatically disable author bio if only single author is present and bio is empty
+	* Added: More robust compatibility with plugins that use the Bootstrap framework
+	* Added: More robust determination of slider image dimension
+	* Added: Show site title in mobile only when site title is set to hidden for desktop
+	* Fixed: Site title and tagline display setting Customizer preview not working
+	* Fixed: List margins in bbPress posts
+	* Fixed: Social sharing buttons does not appear at the top of posts
+	* Fixed: Tooltip JS error if site is using older versions of jQuery < 1.9.1
+	* Fixed: Graphene Mobile not loaded when present
+	* Fixed: Bootstrap conflict with WP Download Manager
+	* Fixed: Several PHP notices and warnings
+	* Fixed: Not found error with default page template icon
+
 Version 2.3.1
 	* Fixed: Static front page not shown if slider option "Exclude the categories from posts listing" is enabled
 	* Fixed: Fatal error in certain cases where custom widgets do not have the get_settings() method

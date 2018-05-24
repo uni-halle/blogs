@@ -12,6 +12,8 @@ function graphene_plus_options_defaults( $defaults ){
 	$defaults['plus_amp_social'] = '';
 	$defaults['plus_amp_ads'] = '';
 	$defaults['plus_credit'] = '';
+	$defaults['plus_stacks_appearance'] = '';
+	$defaults['plus_stacks_widget_areas'] = '';
 
 	return $defaults;
 }
@@ -26,6 +28,10 @@ function graphene_plus_customizer_panels( $panels ){
 		'id'	=> 'graphene-amp',
 		'title'	=> __( 'Graphene: Accelerated Mobile Pages (AMP)', 'graphene' )
 	);
+	$panels[46] = array(
+		'id'	=> 'graphene-stacks',
+		'title'	=> __( 'Graphene: Page Builder', 'graphene' )
+	);
 
 	return $panels;
 }
@@ -36,6 +42,15 @@ add_filter( 'graphene_customizer_panels', 'graphene_plus_customizer_panels' );
  * Add custom options to Graphene Customizer panels
  */
 function graphene_plus_customizer_options( $wp_customize ){
+
+	/* =Slider 
+	--------------------------------------------------------------------------------------*/
+	$wp_customize->add_control( new Graphene_Plus_Feature_Control( $wp_customize, 'graphene_settings[slider_as_header]', array(
+		'section' 	=> 'graphene-general-slider',
+		'priority'	=> 9,
+		'link'		=> 'https://www.graphene-theme.com/graphene-plus/stand-out-from-the-crowd/',
+		'imgurl'	=> GRAPHENE_ROOTURI . '/admin/images/plus-slider-as-header.png'
+	) ) );
 
 	/* =Posts layout
 	--------------------------------------------------------------------------------------*/
@@ -105,6 +120,30 @@ function graphene_plus_customizer_options( $wp_customize ){
 		'section' 	=> 'graphene-amp-ads',
 		'link'		=> 'https://www.graphene-theme.com/graphene-plus/accelerated-mobile-pages/',
 		'imgurl'	=> GRAPHENE_ROOTURI . '/admin/images/plus-amp-ads.png'
+	) ) );
+
+	/* =Stacks - Appearance
+	--------------------------------------------------------------------------------------*/
+	$wp_customize->add_section( 'graphene-stacks-appearance', array(
+		'title'	=> __( 'Appearance', 'graphene' ),
+		'panel'	=> 'graphene-stacks',
+	) );
+	$wp_customize->add_control( new Graphene_Plus_Feature_Control( $wp_customize, 'graphene_settings[plus_stacks_appearance]', array(
+		'section' 	=> 'graphene-stacks-appearance',
+		'link'		=> 'https://www.graphene-theme.com/graphene-plus/stacks-page-builder/',
+		'imgurl'	=> GRAPHENE_ROOTURI . '/admin/images/plus-stacks-appearance.png'
+	) ) );
+
+	/* =Stacks - Widget Areas
+	--------------------------------------------------------------------------------------*/
+	$wp_customize->add_section( 'graphene-stacks-widget-areas', array(
+		'title'	=> __( 'Widget Areas', 'graphene' ),
+		'panel'	=> 'graphene-stacks',
+	) );
+	$wp_customize->add_control( new Graphene_Plus_Feature_Control( $wp_customize, 'graphene_settings[plus_stacks_widget_areas]', array(
+		'section' 	=> 'graphene-stacks-widget-areas',
+		'link'		=> 'https://www.graphene-theme.com/graphene-plus/stacks-page-builder/',
+		'imgurl'	=> GRAPHENE_ROOTURI . '/admin/images/plus-stacks-widget-areas.png'
 	) ) );
 
 	/* =Disable credit

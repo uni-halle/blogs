@@ -52,6 +52,8 @@
 */ 
 graphene_adsense(); ?>
 
+<?php graphene_related_posts(); ?>
+
 <?php /* Get the comments template for single post pages */ ?>
 <?php comments_template(); ?>
 

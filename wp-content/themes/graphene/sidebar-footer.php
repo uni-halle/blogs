@@ -15,15 +15,15 @@ if (((!$graphene_settings['alt_home_footerwidget'] || !is_front_page()) && is_ac
     
     <?php do_action('graphene_before_bottomsidebar'); ?>
     
-    <div id="sidebar_bottom" class="sidebar row footer-widget-col-<?php echo $columns; ?>">
-        
-        <?php do_action('graphene_bottomsidebar'); ?>
-		
-		<?php if (is_front_page() && $graphene_settings['alt_home_footerwidget']) : ?>
-            <?php dynamic_sidebar('home-footer-widget-area'); ?>
-        <?php else : ?>
-            <?php dynamic_sidebar('footer-widget-area'); ?>
-        <?php endif; ?>
+    <div id="sidebar_bottom" class="sidebar widget-area row footer-widget-col-<?php echo $columns; ?>">
+        <?php graphene_container_wrapper( 'start' ); ?>
+            <?php 
+                do_action( 'graphene_bottomsidebar' );
+
+                if ( is_front_page() && $graphene_settings['alt_home_footerwidget'] ) dynamic_sidebar( 'home-footer-widget-area' );
+                else dynamic_sidebar( 'footer-widget-area' );
+            ?>		
+        <?php graphene_container_wrapper( 'end' ); ?>
     </div>
 
 	<?php do_action('graphene_after_bottomsidebar'); ?>

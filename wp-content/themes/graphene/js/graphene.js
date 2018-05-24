@@ -3,8 +3,16 @@ jQuery(document).ready(function($) {
 
 	/* Go to parent link of a dropdown menu if clicked when dropdown menu is open */
 	$('.dropdown-toggle[href], .dropdown-submenu > a[href]').click(function(){
-		if ($(this).parent().hasClass('open') || $(this).parent().hasClass('dropdown-submenu') ) window.location = $(this).attr('href');
-	});	
+		if ( $(this).parent().hasClass('open') ) window.location = $(this).attr('href');
+	});
+
+	/* Multi-level dropdown menu on mobile */
+	$('.dropdown-submenu > a[href]').click(function(e){
+		if ( $(window).width() <= 991 ) {
+			e.preventDefault(); event.stopPropagation();
+			$(this).parent().toggleClass('open');
+		}
+	});
 	
 
 	/* Graphene Slider */
@@ -35,6 +43,14 @@ jQuery(document).ready(function($) {
 		$(document).on( 'mouseleave', '.carousel', function() {
 			$(this).carousel( 'cycle' );
 		});
+
+		/* Position the carousel caption when using full-width-boxed layout */
+		function graphenePositionCarouselCaption(){
+			if ( $(window).width() <= 991 || $('#header-menu-wrap').length == 0 ) return;
+			$('.layout-full-width-boxed .carousel-caption-content').css('left', $('#header-menu-wrap').position().left + 15 + 'px' );
+		}
+		$(window).resize(function(){graphenePositionCarouselCaption();});
+		graphenePositionCarouselCaption();
 	}
 
 
@@ -173,16 +189,16 @@ jQuery(document).ready(function($) {
 
 
     /* Layout Shortcodes */
-    $('[data-toggle="tooltip"]').tooltip()
-	    // Stop "click triggered" tootips from acting as bookmarks to top of page
-	    .filter('[data-trigger*="click"]')
-	    .on('click', function(e) {
+    if ( $.isFunction( 'tooltip' ) ) {
+    	// Stop "click triggered" tootips from acting as bookmarks to top of page
+    	$('[data-toggle="tooltip"]').tooltip().filter('[data-trigger*="click"]').on('click', function(e) {
 	        e.preventDefault();
 	    });
+	}
 
 
 	/* Masonry for posts layout */
-	if ( grapheneJS.isMasonry ) {
+	if ( grapheneJS.isMasonry || $('.posts-list.loop-masonry').length > 0 ) {
 		$postsList = $('.loop-masonry .entries-wrapper');
 		$postsList.imagesLoaded(function(){
 			$postsList.masonry({

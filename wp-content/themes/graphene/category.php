@@ -25,7 +25,7 @@ get_header();
         */
         while ( have_posts() ) {
             the_post(); 
-            get_template_part( 'loop', 'category' );
+            graphene_get_template_part( 'loop', 'category' );
         }
     ?>
     </div>

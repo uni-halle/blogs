@@ -50,24 +50,7 @@ function graphene_setup() {
 	$content_width = graphene_get_content_width();
 		
 	// Add custom image sizes selectively
-	$height = ( $graphene_settings['slider_height']) ? $graphene_settings['slider_height'] : 370;
-	$frontpage_id = ( get_option( 'show_on_front' ) == 'posts' ) ? NULL : get_option( 'page_on_front' );
-	
-	if ( $graphene_settings['slider_full_width'] ) {
-		$slider_width = graphene_grid_width( $graphene_settings['gutter_width']*2, 12 );
-	} else {
-		$column_mode = graphene_column_mode( $frontpage_id );
-		
-		if ( strpos( $column_mode, 'two_col' ) === 0 ) $column_mode = 'two_col';
-		elseif ( strpos( $column_mode, 'three_col' ) === 0 ) $column_mode = 'three_col';
-		else $column_mode = NULL;
-		
-		if ( $column_mode )	$slider_width = graphene_grid_width( '', $graphene_settings['column_width'][$column_mode]['content'] );
-		else $slider_width = graphene_grid_width( '', 12 );
-	}
-
-	add_image_size( 'graphene_slider', apply_filters( 'graphene_slider_image_width', $slider_width ), $height, true );
-
+	add_image_size( 'graphene_slider', graphene_get_slider_image_width(), $graphene_settings['slider_height'], true );
 
 	if ( get_option( 'show_on_front' ) == 'page' && !$graphene_settings['disable_homepage_panes']) {
 		$pane_width = floor( $content_width / 2 );
@@ -131,7 +114,8 @@ function graphene_setup() {
 	$args = apply_filters( 'graphene_custom_header_args', $args );
 	add_theme_support( 'custom-header', $args );
 	
-	set_post_thumbnail_size( $args['width'], $args['height'], true );
+	if ( $graphene_settings['slider_as_header'] ) set_post_thumbnail_size( $content_width, 0 );
+	else set_post_thumbnail_size( $args['width'], $args['height'], true );
 
 	// Register default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 	register_default_headers( graphene_get_default_headers() );
@@ -195,6 +179,21 @@ if ( ! function_exists( 'graphene_get_default_headers' ) ) {
 
 
 /**
+ * Synchronize theme mods between Graphene and Graphene Plus when switching from one to another
+ */
+function graphene_sync_theme_mods(){
+	$theme_slug = get_option( 'stylesheet' );
+	if ( stripos( $theme_slug, 'graphene' ) === false ) return;
+
+	$other_theme_slug = ( $theme_slug == 'graphene' ) ? 'graphene-plus' : 'graphene';
+	$other_theme_mods = get_option( "theme_mods_$other_theme_slug" );
+
+	if ( $other_theme_mods ) update_option( "theme_mods_$theme_slug", $other_theme_mods );
+}
+add_action( 'after_switch_theme', 'graphene_sync_theme_mods' );
+
+
+/**
  * Register widgetized areas
  *
  * To override graphene_widgets_init() in a child theme, remove the action hook and add your own
@@ -204,7 +203,7 @@ if ( ! function_exists( 'graphene_get_default_headers' ) ) {
  * @uses register_sidebar
  */
 function graphene_widgets_init() {
-	if (function_exists( 'register_sidebar' ) ) {
+	if ( function_exists( 'register_sidebar' ) ) {
 		global $graphene_settings, $graphene_defaults;
 		
 		register_sidebar(array( 'name' => __( 'Graphene - Right Sidebar', 'graphene' ),

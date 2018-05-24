@@ -2,7 +2,7 @@
 Theme Name: 	Graphene
 Theme URI: 		https://www.graphene-theme.com/graphene-theme/
 Description: 	We believe that every theme should facilitate creative writing, not hinder it. We also believe that each site should have the opportunity to be unique. Since the beginning, we have listened to countless suggestions and requests for features that really matter. Here's a theme that's user-friendly, feature-packed, and endlessly customisable, for both beginners and advanced creators. Feel at home with more than 40 languages and backed with active community support, where questions, ideas and suggestions are always welcomed.
-Version: 		2.3.1
+Version: 		2.4.2
 Author: 		Graphene Themes Solutions
 Author URI: 	https://www.graphene-theme.com/
 Tags: 			one-column, two-columns, three-columns, right-sidebar, left-sidebar, custom-colors, custom-header, custom-background, custom-menu, editor-style, theme-options, threaded-comments, sticky-post, translation-ready, rtl-language-support, post-formats, featured-image-header, featured-images, full-width-template, microformats
@@ -170,6 +170,12 @@ button[type="submit"],
     position: relative;
     z-index: 3;
 }
+.container-fluid .container > .container-full-width-boxed,
+.container-fluid .row > .container-full-width-boxed,
+#secondary-menu-wrap > .container-full-width-boxed {
+    padding-left: 0;
+    padding-right: 0;
+}
 
 
 /* =Header
@@ -177,18 +183,22 @@ button[type="submit"],
 
 #top-bar {
     background: #4c315a;
-    padding: 10px 15px;
+    padding: 10px 0;
+}
+.top-bar-items .logo {
+    margin-right: 30px;
+    line-height: 0;
+}
+.top-bar-items .social-profiles {
+    float: left;
 }
 #top-bar.light {
     background: #f5f5f5;
 }
-#top-bar #profiles {
-    float: left;
-}
 #top-bar #top_search {
-    float: right;
-    max-width: 30%;
+    max-width: 330px;
     display: block;
+    float: right;
 }
 .social-profiles {
     list-style: none;
@@ -196,7 +206,6 @@ button[type="submit"],
 .social-profile {
     display: inline-block;
     margin-right: 10px;
-    line-height: 32px;
 }
 .social-profile a,
 .social-profile a:hover {
@@ -212,9 +221,18 @@ button[type="submit"],
     -webkit-transition: opacity ease-in 0.1s;
     -o-transition: opacity ease-in 0.1s;
     transition: opacity ease-in 0.1s;
+    vertical-align: middle;
 }
 .social-profile .fa:hover {
     opacity: 1;
+}
+#footer .social-profiles {
+    text-align: right;
+    margin-bottom: 10px;
+}
+#footer .social-profile {
+    margin-right: 0;
+    margin-left: 10px;
 }
 #top_search input {
 	border: 0 none;
@@ -255,15 +273,14 @@ button[type="submit"],
     max-height: 250px;
 	position: relative;
 	overflow: hidden;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: none;
+    background-color: #fff;
 }
 #header img {
     width: 100%;
     height: auto;
-}
-#header {
-    background-size: cover;
-    background-position: center center;
-    background-repeat: none;
 }
 #header .sidebar-wrap {
     position: static
@@ -300,7 +317,16 @@ button[type="submit"],
     font-weight: normal;
     line-height: normal;
     margin-bottom: 0;
+    padding: 0 15px;
     text-align: center;
+}
+.align-left .header_title,
+.align-left .header_desc {
+    text-align: left;
+}
+.align-right .header_title,
+.align-right .header_desc {
+    text-align: right;
 }
 .header_title {
 	font-size: 32px ;
@@ -367,7 +393,7 @@ button[type="submit"],
     border-color: rgba(255,255,255,0.1);
 }
 .navbar .nav > li > a {
-    min-height: 55px;
+    min-height: 50px;
     padding: 15px;
     box-sizing: border-box;
     font-weight: 700;
@@ -419,14 +445,14 @@ button[type="submit"],
     padding: 0;
     border: none;
 }
-.navbar #header-menu-wrap {
+.navbar {
     background: #f5f5f5;
+}
+.navbar-inverse {
+    background: #2F2733;
 }
 .navbar .dropdown-menu li {
     background: #eee;
-}
-.navbar-inverse #header-menu-wrap {
-    background: #2F2733;
 }
 .navbar-inverse .nav li:focus,
 .navbar-inverse .nav li:hover,
@@ -503,16 +529,16 @@ button[type="submit"],
 -------------------------------------------------------------- */
 
 .carousel {
-    margin-bottom: 50px;
-    width: 100%;
+    margin: 0 0 50px;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
     clear: both;
+    background: #fff;
 }
 .carousel,
 .carousel .item {
     height: 400px;
 }
-.full-width-slider .carousel {
+#content > .carousel {
     margin-top: -30px;
 }
 .full-width-slider.bottom-slider .carousel {
@@ -574,7 +600,7 @@ button[type="submit"],
     padding: 15px 25px;
     box-sizing: border-box;
     background: #333;
-    background: rgba(0,0,0,0.8);
+    background: linear-gradient(to top, rgba(0,0,0,0.7) 20%, transparent);
     color: #fff;
     text-align: left;
     font-size: 14px;
@@ -585,25 +611,27 @@ button[type="submit"],
     font-weight: bold;
     margin-bottom: 5px;
 }
-.carousel.bgimage-excerpt .slider_post_title,
-.carousel.bgimage-excerpt .slider_post_title a {
+.carousel.style-bgimage-excerpt .slider_post_title,
+.carousel.style-bgimage-excerpt .slider_post_title a,
+.carousel.style-banner .slider_post_title,
+.carousel.style-banner .slider_post_title a {
     color: #fff;
 }
-.carousel.card .item {
+.carousel.style-card .item {
     text-align: left;
 }
-.carousel.card .content {
-    padding: 20px;
+.carousel.style-card .content {
+    padding: 20px 20px 50px;
     height: 100%;
     overflow: hidden;
 }
-.carousel.card .image {
+.carousel.style-card .image {
     height: 100%;
     background-size: cover;
     background-position: center center;
     padding: 15px;
 }
-.carousel.card .carousel-control {
+.carousel.style-card .carousel-control {
     opacity: 0;
     -webkit-transition: opacity .4s; 
     -moz-transition: opacity .4s; 
@@ -611,14 +639,65 @@ button[type="submit"],
     -o-transition: opacity .4s; 
     transition: opacity .4s;
 }
-.carousel.card:hover .carousel-control {
+.carousel.style-card:hover .carousel-control {
     opacity: 0.5;
 }
-.carousel.card .slider_post_title {
+.carousel.style-card .slider_post_title {
     margin-bottom: 0.5em;
+}
+.carousel .post-meta {
+    padding: 5px 20px;
+    font-size: 0.75em;
+    background: #fafafa;
+    background: rgba(200,200,200,0.1);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: -20px;
+}
+.carousel .post-meta li {
+    margin: 0 5px 0 0;
+    display: inline;
+    border: none;
+    width: auto;
+    float: none;
+}
+.carousel .post-meta .fa {
+    margin-right: 3px;
+}
+.carousel.style-banner .carousel-caption {
+    left: 0;
+    top: 0;
+    bottom: auto;
+    height: 100%;
+    width: 60%;
+    padding: 25px 25px 25px 70px;
+    background: linear-gradient(to right, rgba(0,0,0,0.7) 10%, transparent);
+    font-size: 0.9em;
+    line-height: 1.5em;
+}
+.carousel.style-banner .slider_post_title {
+    font-size: 1.7em;
+    line-height: 1.3em;
+    margin-bottom: 0.5em;
+}
+.carousel.style-banner .post-meta {
+    padding-bottom: 10px
+}
+.carousel.style-banner .post-meta,
+.carousel.style-banner .post-meta a {
+    background: none;
+    color: #eee;
+    color: rgba(255,255,255,0.8);
 }
 .carousel-indicators {
     bottom: -30px;
+}
+#header .carousel-indicators {
+    bottom: 6px;
+    text-align: right;
+    padding-right: 10px;
 }
 .carousel-indicators li {
     border: none;
@@ -751,20 +830,23 @@ now override the 3.3 new styles for modern browsers & apply opacity
 }
 .post,
 .singular .hentry,
+.singular .posts-list .hentry,
 .comment-respond {
-    background: none;
+    background: #fff;
     border: 1px solid #e9e8e3;
     -webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
 }
-.post {
+.post,
+.singular .posts-list .post {
     padding: 15px 0;
 	margin-bottom: 25px;
 	overflow: visible;
 	position: relative;
 	width: 100%;
 }
-.post .entry {
+.post .entry,
+.singular .posts-list .post .entry {
     padding: 0 15px;
 }
 .singular .hentry,
@@ -783,7 +865,7 @@ now override the 3.3 new styles for modern browsers & apply opacity
     padding-top: 15px;
 }
 .child-page .entry-content {
-	margin-top: 0;
+	padding-top: 0;
     font-size: 14px;
     line-height: 22px;
 }
@@ -799,7 +881,8 @@ now override the 3.3 new styles for modern browsers & apply opacity
 	text-align: center;
 	float: none;
 }
-.post .date {
+.post .date,
+.graphene_post_meta .date {
 	width: 53px;
     text-align: center;
     padding: 0;
@@ -809,14 +892,17 @@ now override the 3.3 new styles for modern browsers & apply opacity
 	display: block;
 	float: left;
 }
-.post .date.with-year {
+.post .date.with-year,
+.graphene_post_meta .date.with-year {
 	margin-top: -5px;
 	padding-bottom: 0;
 }
-.post .date span {
+.post .date span,
+.graphene_post_meta .date span {
 	display: block;
 }
-.post .date .month {
+.post .date .month,
+.graphene_post_meta .date .month {
     font-size: 10px;
     line-height: 10px;
     font-weight: bold;
@@ -824,17 +910,20 @@ now override the 3.3 new styles for modern browsers & apply opacity
     text-transform: uppercase;
     padding-top: 5px;
 }
-.post .date .day {
+.post .date .day,
+.graphene_post_meta .date .day {
     font-size: 24px;
     padding: 5px 0;
     font-weight: bold;
     color: #6b3589;
     text-shadow: none;
 }
-.post .date.with-year .day {
+.post .date.with-year .day,
+.graphene_post_meta .date.with-year .day {
     padding: 3px 0;
 }
-.post .date .year {
+.post .date .year,
+.graphene_post_meta .date .year {
     padding-bottom: 3px;
     font-size: 10px;
     line-height: 10px;
@@ -1075,6 +1164,18 @@ dd,
 pre {
 	margin-bottom: 20px;
 }
+.entry-content p:last-child,
+.comment-entry p:last-child,
+dt:last-child,
+dd:last-child,
+.entry-content p .button:last-child,
+.comment-link:last-child,
+pre:last-child {
+    margin-bottom: 0;
+}
+.entry-content .excerpt-thumb {
+    display: inline;
+}
 .entry-content .excerpt-thumb img,
 .child-page .excerpt-thumb img {
     float: right;
@@ -1120,6 +1221,15 @@ pre {
 	display: block;
 	margin: 1em auto;
 }
+.text-alignleft {
+    text-align: left;
+}
+.text-aligncenter {
+    text-align: center;
+}
+.text-alignright {
+    text-align: right;
+}
 img.wp-smiley,
 .entry-content p img.wp-smiley,
 .comment-entry p img.wp-smiley {
@@ -1151,7 +1261,7 @@ table#wp-calendar tr {
 }
 blockquote {
     border: none;
-    margin: 0;
+    margin: 0 0 20px;
     padding: 0;
     line-height: normal;
 }
@@ -1427,6 +1537,24 @@ legend {
     margin-top: 40px;
     padding-bottom: 5px;
 }
+.generic-thumb {
+    display: block;
+    width: 150px;
+    max-width: 100%;
+    height: 150px;
+    text-align: center;
+    font-size: 32px;
+    color: #ccc;
+    background: #f5f5f5;
+    position: relative;
+}
+.generic-thumb i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -16px;
+    margin-left: -16px;
+}
 
 
 /* =Comments
@@ -1540,7 +1668,7 @@ legend {
 #comments li.bypostauthor li.comment .avatar {
 	left: 10px;
 }
-.sidebar select {
+.widget-area select {
 	border: 1px solid #e3e3e3;
 	color: #2c2b2b;
 }
@@ -1613,32 +1741,34 @@ legend {
 /* =Sidebars
 -------------------------------------------------------------- */
 
+.widget-area h3 {
+    margin: 0 0 15px 0;
+}
 .sidebar h3 {
     font-size: 0.75em;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
     line-height: normal;
-	margin: 0 0 15px 0;
 	padding: 0;
 	width: 100%;
 	zoom: 1;
 }
-.sidebar > .warning_block p {
+.widget-area > .warning_block p {
 	margin-top: 10px;
 	font-size: 11px;
 	line-height: 16px;
 }
-.sidebar > .warning_block .first-p {
+.widget-area > .warning_block .first-p {
 	margin-top: 0;
 }
-.sidebar .sidebar-wrap {
+.widget-area .sidebar-wrap {
     background: #f9f9f9;
     border-top: 6px solid #dbdbdb;
     padding: 15px;
     margin-bottom: 15px;
 }
-.sidebar .widget_media_video {
+.widget-area .widget_media_video {
     background: none;
     padding: 0;
     border-top: none;
@@ -1648,7 +1778,7 @@ legend {
     line-height: 22px;
     margin-top: 10px;
 }
-.sidebar #tweetfollow {
+.widget-area #tweetfollow {
 	margin-top: 10px;
 	text-align: right;
 }
@@ -1748,47 +1878,47 @@ legend {
 #wp-calendar #next {
 	text-align: right;
 }
-.sidebar ol {
+.widget-area ol {
 	list-style-position: outside;
 	margin-left: 29px;
 }
-.sidebar ol ol {
+.widget-area ol ol {
 	list-style-type: lower-alpha;
 	margin-left: 20px;
 }
-.sidebar ul ul {
+.widget-area ul ul {
 	margin-left: 20px;
 }
-.sidebar ol ol ol {
+.widget-area ol ol ol {
 	list-style-type: lower-roman;
 }
-.sidebar ol li {
+.widget-area ol li {
 	line-height: 15px;
 	padding: 2px 0;
 }
-.sidebar ul ul li {
+.widget-area ul ul li {
 	border: none;
 }
-.sidebar ul ul li {
+.widget-area ul ul li {
 	line-height: 15px;
 }
-.sidebar ul {
+.widget-area ul {
 	list-style-position: outside;
 	list-style-type: none;
 }
-.sidebar ul li {
+.widget-area ul li {
 	border-bottom: 1px solid #e9e9e9;
     font-size: 14px;
     line-height: 1.5em;
 	padding: 8px 0;
 }
-.sidebar ul li img,
-.sidebar ol li img {
+.widget-area ul li img,
+.widget-area ol li img {
 	display: inline;
 	margin: 0 2px;
 	vertical-align: middle;
 }
-.sidebar ul li span.meta-rss {
+.widget-area ul li span.meta-rss {
 	display: inline-block;
 	width: 0px;
 	height: 16px;
@@ -1842,10 +1972,45 @@ legend {
 	margin-top: 10px;
 	margin-right: 0;
 }
+.highlight-title {
+    font-weight: bold;
+    font-size: 1.7em;
+    margin-bottom: 10px;
+}
 
 
 /* =Footer
 -------------------------------------------------------------- */
+
+.mentions-bar {
+    border-top: 1px solid #eee;
+    background: #fafafa;
+    padding: 20px 15px;
+    text-align: center;
+}
+.mentions-bar .description {
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.1em;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+.mentions-bar-logo {
+    padding: 0;
+}
+.mentions-bar-logo li {
+    display: inline-block;
+    margin: 1.5%;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #eee;
+}
+.mentions-bar-logo li img {
+    max-width: 100%;
+    max-height: 50px;
+    width: auto;
+    height: auto;
+}
 
 #footer {
 	padding: 15px 0;
@@ -1861,6 +2026,17 @@ legend {
 #footer a:visited {
 	color: #fff;
 	text-decoration: none;
+}
+.copyright-developer,
+.footer-right {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.footer-right {
+    float: right;
+}
+.copyright-developer {
+    float: left;
 }
 #developer {
     opacity: 0.7;
@@ -1934,7 +2110,7 @@ legend {
     box-shadow: 0 -1px 1px rgba(0,0,0,0.1);
     border: 1px solid #eee;
 }
-.sidebar > .alert:first-child {
+.widget-area > .alert:first-child {
     margin-top: 0;
 }
 .pullquote {
@@ -2033,8 +2209,9 @@ legend {
 
 /* Breadcrumb NavXT */
 .breadcrumb-navxt {
-	margin-bottom: 10px;
-	font-size: 12px;
+	margin-bottom: 0;
+	font-size: 0.75em;
+    border-radius: 0;
 }
 .breadcrumb-navxt a {
 	font-weight: normal;
@@ -2090,6 +2267,29 @@ legend {
 }
 #wp-comment-editor-container .mceIframeContainer {
 	background: #fff;
+}
+
+
+/* YARPP */
+.related-posts {
+    margin-bottom: 30px;
+}
+.related-posts .section-title-sm {
+    margin-bottom: -10px;
+}
+.related-post {
+    margin-top: 30px;
+}
+.related-post .image {
+    margin-bottom: 10px;
+}
+.related-post img {
+    width: 100%;
+    height: auto;
+}
+.related-post .generic-thumb {
+    width: 100%;
+    height: 153px;
 }
 
 
@@ -2339,32 +2539,29 @@ form.product_form fieldset,
 blockquote p:first-child {
     margin-bottom: 20px
 }
-.sidebar .widget_recent_entries h3,
-.sidebar .widget_rss h3 {
+.widget-area .widget_recent_entries h3,
+.widget-area .widget_rss h3 {
     margin-bottom: 10px
 }
-.sidebar .widget_recent_entries li,
-.sidebar .widget_rss li {
+.widget-area .widget_recent_entries li,
+.widget-area .widget_rss li {
     padding-bottom: 10px;
     padding-top: 10px;
 }
-.sidebar .widget_recent_entries a,
-.sidebar .widget_rss ul a {
+.widget-area .widget_recent_entries a,
+.widget-area .widget_rss ul a {
     font-size: 16px;
     font-weight: bold;
     line-height: 22px;
 }
-.sidebar .recentcomments .comment-author-link {
+.widget-area .recentcomments .comment-author-link {
     font-weight: bold;
 }
-.sidebar .widget_rss .rssSummary {
+.widget-area .widget_rss .rssSummary {
     margin-top: 5px;
 }
 .post-nav {
     padding-top: 10px
-}
-.three-columns #commentform textarea {
-    width: 360px
 }
 .previous a i {
     margin-right: 5px
@@ -2614,4 +2811,179 @@ button[type="submit"] {
 }
 .widget_collapscat .expandable .collapse {
     display: inline;
+}
+
+
+
+/**
+ * Panels
+ */
+.panel-layout {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.panel-layout.entry-content {
+    padding: 0;
+}
+.container > .panel-grid.row {
+    margin-top: 0;
+}
+.container .panel-grid-cell {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.container > .panel-grid.row > .highlights {
+    padding-bottom: 0;
+}
+.panel-grid-cell .posts-list {
+    border-top: none;
+    padding: 0;
+}
+.panel-grid-cell .widget_black-studio-tinymce .widget-title {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+.panel-grid-cell .highlights {
+    padding-bottom: 0;
+}
+.panel-grid-cell .posts-list {
+    padding-bottom: 40px;
+}
+.widget .text.has-icon {
+    padding-left: 50px;
+    position: relative;
+}
+.widget .text.has-icon .widget-title {
+    font-size: 18px;
+    line-height: 26px;
+}
+.widget .text.text-alignright.has-icon {
+    padding-right: 40px;
+    padding-left: 0;
+}
+.widget .text.text-aligncenter.has-icon {
+    padding-right: 0;
+    padding-left: 0;
+}
+.widget .text .fa {
+    font-size: 30px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.colored-icon .text.has-icon .fa {
+    color: #1ca4be;
+    background: -webkit-linear-gradient(135deg, #87069e, #1ca4be);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.widget .text.text-alignright .fa {
+    left: auto;
+    right: 0;
+}
+.widget .text.text-aligncenter .fa {
+    left: auto;
+    right: auto;
+    position: static;
+    margin-bottom: 20px;
+}
+.so-panel .cta .btn .fa {
+    font-size: 18px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.panel-grid-cell .mentions-bar {
+    border: none;
+    background: none;
+    padding: 0;
+}
+.panel-grid-cell .mentions-bar .highlight-title,
+.panel-grid-cell .mentions-bar .description {
+    margin-bottom: 10px;
+}
+.panel-grid-cell .description {
+    margin-bottom: 20px;
+}
+.widget_graphene_featured_image {
+    margin-bottom: 30px;
+    position: relative;
+}
+.so-panel .textwidget h1:first-child {
+    margin-top: 0;
+}
+.carousel .link-overlay {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 12;
+}
+
+
+@media (max-width: 780px) {
+    .container .panel-grid-cell {
+        padding: 20px 15px !important;
+    }
+}
+
+
+/**
+ * Stacks
+ */
+.posts-list .post-title,
+.posts-list .post-meta,
+.posts-list .post-meta li,
+.posts-list .entry-footer,
+.posts-list .entry-footer li {
+    padding: 0;
+    margin: 0;
+}
+.posts-list .post-meta > li {
+    padding: 0 5px;
+}
+.posts-list .post-meta > li:first-child {
+    padding-left: 0;
+}
+.posts-list .entry-footer {
+    margin-top: 20px;
+}
+.posts-list .entry-footer li {
+    margin-top: 15px;
+}
+.panel-grid .highlight-title,
+.panel-grid .item-title {
+    margin: 0 0 20px;
+}
+.panel-grid .siteorigin-panels-stretch .highlight-title,
+.panel-grid .siteorigin-panels-stretch .description {
+    margin: 20px 0;
+}
+.panel-grid .siteorigin-panels-stretch .description {
+    margin-top: 0;
+}
+.posts-list .post-layout-grid .excerpt-thumb img {
+    border: none;
+    float: none;
+    margin: 0;
+}
+.posts-list .post-layout-grid .post {
+    margin-bottom: 0;
+}
+.panel-grid .widget-area .widget,
+.panel-grid .widget_black-studio-tinymce .entry-content {
+    margin-bottom: 40px;
+}
+.panel-grid .entry-content {
+    padding-top: 0;
+}
+.panel-grid .posts-list .entry-content {
+    padding-top: 20px;
+}
+.widget_graphene_post_meta {
+    margin-bottom: 20px !important;
+}
+.featured-image {
+    margin: 1.5em 0;
 }

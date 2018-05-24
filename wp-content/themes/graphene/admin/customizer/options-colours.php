@@ -83,6 +83,9 @@ function graphene_customizer_colour_options( $wp_customize ){
 		'section'	=> 'graphene-colours-slider',
 		'options'	=> array(
             'slider_caption_text'   => array( 'label' => __( 'Slider caption text', 'graphene' ) ),
+            'slider_card_bg'   		=> array( 'label' => __( 'Card display style: background', 'graphene' ) ),
+            'slider_card_text'   	=> array( 'label' => __( 'Card display style: text', 'graphene' ) ),
+            'slider_card_link'   	=> array( 'label' => __( 'Card display style: links', 'graphene' ) ),
 		)
 	);
 	graphene_add_customizer_options( $options, $wp_customize );

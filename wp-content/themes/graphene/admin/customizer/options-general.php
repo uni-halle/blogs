@@ -7,6 +7,21 @@
  */
 function graphene_customizer_general_options( $wp_customize ){
 
+	/* =Site Identity
+	--------------------------------------------------------------------------------------*/
+	$wp_customize->add_control( 'graphene_settings[header_text_align]', array(
+		'type' 		=> 'radio',
+		'section' 	=> 'title_tagline',
+		'label' 	=> __( 'Site Title and Tagline alignment', 'graphene' ),
+		'choices'	=> array(
+			'left'		=> __( 'Left', 'graphene' ),
+			'center'	=> __( 'Center', 'graphene' ),
+			'right'		=> __( 'Right', 'graphene' ),
+		),
+		'priority'	=> 45,
+	) );
+
+
 	/* =Top Bar
 	--------------------------------------------------------------------------------------*/
 	$wp_customize->add_section( 'graphene-general-header', array(
@@ -69,6 +84,7 @@ function graphene_customizer_general_options( $wp_customize ){
 	$wp_customize->add_control( 'graphene_settings[slider_disable]', array(
 	  'type' 		=> 'checkbox',
 	  'section' 	=> 'graphene-general-slider',
+	  'priority'	=> 8,
 	  'label' 		=> __( 'Disable slider', 'graphene' ),
 	) );
 
@@ -78,6 +94,7 @@ function graphene_customizer_general_options( $wp_customize ){
 		'choices'	=> array(
 			'bgimage-excerpt'	=> '<span>' . __( 'Standard', 'graphene' ) . '</span><img src="' . GRAPHENE_ROOTURI . '/admin/images/slider-display-standard.png" alt="" width="150" height="86" />',
 			'card'				=> '<span>' . __( 'Card', 'graphene' ) . '</span><img src="' . GRAPHENE_ROOTURI . '/admin/images/slider-display-card.png" alt="" width="150" height="86" />',
+			'banner'			=> '<span>' . __( 'Banner', 'graphene' ) . '</span><img src="' . GRAPHENE_ROOTURI . '/admin/images/slider-display-banner.png" alt="" width="150" height="86" />',
 			'full-post'			=> '<span>' . __( 'Full post content', 'graphene' ) . '</span><img src="' . GRAPHENE_ROOTURI . '/admin/images/slider-display-full-post.png" alt="" width="150" height="86" />',
 		),
 	) ) );
@@ -399,6 +416,18 @@ function graphene_customizer_general_options( $wp_customize ){
 	  'panel'		=> 'graphene-general',
 	) );
 
+	$wp_customize->add_control( 'graphene_settings[social_media_location]', array(
+		'type' 	=> 'select',
+		'section' => 'graphene-general-social-profiles',
+		'label' 	=> __( 'Display in', 'graphene' ),
+		'choices'	=> array(
+			'disabled'	=> __( 'Disabled', 'graphene' ),
+			'top-bar'	=> __( 'Top bar', 'graphene' ),
+			'footer'	=> __( 'Footer', 'graphene' ),
+			'top-bar-footer'	=> __( 'Top bar and footer', 'graphene' )
+		)
+	) );
+
 	$wp_customize->add_control( 'graphene_settings[social_media_new_window]', array(
 	  'type' 	=> 'checkbox',
 	  'section' => 'graphene-general-social-profiles',
@@ -511,6 +540,50 @@ function graphene_customizer_general_options( $wp_customize ){
 			'rows'	=> 3,
 			'cols'	=> 60
 		)
+	) ) );
+
+
+	/* =Mentions Bar
+	--------------------------------------------------------------------------------------*/
+	$wp_customize->add_section( 'graphene-general-mentions-bar', array(
+		'title' 		=> __( 'Mentions Bar', 'graphene' ),
+		'panel'			=> 'graphene-general',
+		'description'	=> __( 'Showcase the awards, reviews, or mentions you have received from other organisations or those you are affiliated to.', 'graphene' )
+	) );
+
+	$wp_customize->add_control( 'graphene_settings[mentions_bar_display]', array(
+		'type' 		=> 'select',
+		'section' 	=> 'graphene-general-mentions-bar',
+		'label' 		=> __( 'Display in', 'graphene' ),
+		'choices'		=> array(
+			'disable'	=> __( 'Disabled', 'graphene' ),
+			'front-page'=> __( 'Front page', 'graphene' ),
+			'pages'		=> __( 'All pages', 'graphene' ),
+			'all'		=> __( 'All posts and pages', 'graphene' ),
+		),
+	) );
+
+	$wp_customize->add_control( 'graphene_settings[mentions_bar_title]', array(
+		'type' 		=> 'text',
+		'section' 	=> 'graphene-general-mentions-bar',
+		'label' 		=> __( 'Mentions bar title', 'graphene' ),
+	) );
+
+	$wp_customize->add_control( 'graphene_settings[mentions_bar_desc]', array(
+		'type' 		=> 'text',
+		'section' 	=> 'graphene-general-mentions-bar',
+		'label' 		=> __( 'Mentions bar tagline', 'graphene' ),
+	) );
+
+	$wp_customize->add_control( 'graphene_settings[mentions_bar_new_window]', array(
+		'type' 		=> 'checkbox',
+		'section' 	=> 'graphene-general-mentions-bar',
+		'label' 		=> __( 'Open links in new window', 'graphene' ),
+	) );
+
+	$wp_customize->add_control( new Graphene_Mentions_Bar_Control( $wp_customize, 'graphene_settings[brand_icons]', array(
+		'section' 	=> 'graphene-general-mentions-bar',
+		'label' 	=> __( 'Brands logo', 'graphene' ),
 	) ) );
 
 

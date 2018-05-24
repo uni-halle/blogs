@@ -52,13 +52,14 @@
 .hide {
 	display: none;
 }
-.graphene-social-profile {
+.graphene-sortable,
+.repeatable-item {
 	padding: 10px;
 	border: 1px solid #ddd;
 	background: #fff;
 	position: relative;
 }
-.graphene-social-profile .customize-control-title .fa {
+.graphene-sortable .customize-control-title .fa {
 	font-size: 24px;
 	padding-right: 5px;
 }
@@ -69,18 +70,25 @@
 .status-icon.fa-check {
 	color: #4CAF50;
 }
-.graphene-social-profile .delete,
-.graphene-social-profile .move {
+.graphene-sortable .delete,
+.graphene-repeatable .delete,
+.graphene-sortable .move {
 	position: absolute;
 	top: 10px;
 	right: 10px;
 	font-size: 16px;
 }
-.graphene-social-profile .delete {
+.graphene-sortable .delete {
 	right: 35px;
 }
-.graphene-social-profile .move {
+.graphene-repeatable .delete {
+	top: 15px;
+}
+.graphene-sortable .move {
 	cursor: move;
+}
+.customize-control .inline-field {
+	margin-bottom: 10px;
 }
 .customize-control .inline-field label {
 	clear: both;
@@ -93,12 +101,22 @@
 	width: 79%;
 	margin: 4px 0 0 0;
 }
-.add-social-profile {
+.customize-control .graphene-repeatable .inline-field input[type="text"] {
+	width: 70%;
+}
+.graphene-add-sortable {
 	padding: 10px;
 	margin-top: 40px;
 	border: 1px dashed #ccc;
 }
-.add-social-profile .button {
+.add-repeatable-item {
+	border: 1px dashed #ccc;
+	background: none;
+}
+.add-repeatable-item .delete {
+	display: none;
+}
+.graphene-add-sortable .button {
 	margin-top: 10px;
 }
 .slider-legend {
@@ -156,4 +174,28 @@
 	opacity: 0.6;
 	max-width: 95%;
 	height: auto;
+}
+.new-label {
+	font-size: 0.8em;
+	text-transform: uppercase;
+	border-radius: 3px;
+	color: #fff;
+	background: #0073aa;
+	padding: 1px 5px 2px;
+	margin-left: 5px;
+}
+#customize-controls .image-preview img {
+	max-width: 150px;
+	height: auto;
+}
+#customize-controls .image-preview {
+	margin-left: 15px;
+	display: inline-block;
+	vertical-align: text-top;
+}
+#customize-controls .image-placeholder {
+	display: block;
+	width: 150px;
+	height: 50px;
+	border: 1px dashed #ddd;
 }

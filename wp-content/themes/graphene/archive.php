@@ -47,7 +47,7 @@ if ( have_posts() )
              */
             while ( have_posts() ) {
                 the_post(); 
-                get_template_part( 'loop', 'archive' );
+                graphene_get_template_part( 'loop', 'archive' );
             }
         ?>
     </div>

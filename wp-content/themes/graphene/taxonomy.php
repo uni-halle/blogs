@@ -27,7 +27,7 @@ get_header();
         */
         while ( have_posts() ) {
             the_post(); 
-            get_template_part( 'loop', 'taxonomy' );
+            graphene_get_template_part( 'loop', 'taxonomy' );
         }
     ?>
     </div>

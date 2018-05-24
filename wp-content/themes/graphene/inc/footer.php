@@ -10,3 +10,21 @@ function graphene_return_to_top(){
 	<?php
 }
 add_action( 'wp_footer', 'graphene_return_to_top' );
+
+
+/**
+ * Mentions bar
+ *
+ * @since Graphene 2.4
+ */
+function graphene_mentions_bar(){
+	global $graphene_settings;
+
+	if ( graphene_has_custom_layout() && ! $graphene_settings['stacks_keep_mentions_bar'] ) return;
+	if ( $graphene_settings['mentions_bar_display'] == 'disable' ) return;
+	if ( $graphene_settings['mentions_bar_display'] == 'front-page' && ! is_front_page() ) return;
+	if ( ( $graphene_settings['mentions_bar_display'] == 'pages' && ! ( is_front_page() || is_page() ) ) ) return;
+	
+	graphene_stack( 'mentions-bar' );
+}
+add_action( 'graphene_before_footer_widget_area', 'graphene_mentions_bar' );

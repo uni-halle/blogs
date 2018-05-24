@@ -182,3 +182,42 @@ function graphene_save_custom_user_fields( $user_id ){
 // Hook the update function
 add_action( 'personal_options_update', 'graphene_save_custom_user_fields' );
 add_action( 'edit_user_profile_update', 'graphene_save_custom_user_fields' );
+
+
+/**
+ * Automatically disable author bio display if only a single author is present with empty bio text
+ */
+function graphene_set_once_author_bio_display(){
+    if ( get_option( 'graphene_set_once_author_bio_display', false ) ) return;
+
+    global $graphene_settings;
+    if ( ! $graphene_settings['hide_author_bio'] ) {
+        $args = array(
+            'role__in'  => array(
+                'administrator',
+                'editor',
+                'author',
+                'contributor',
+            )
+        );
+        
+        $user_query = new WP_User_Query( $args );
+        $users = $user_query->get_results();
+
+        if ( ! empty( $users ) && count( $users ) == 1 ) {
+            $user = $users[0];
+            $user_bio = trim( get_user_meta( $user->ID, 'description', true ) );
+            
+            if ( ! $user_bio ) {
+                $graphene_settings = get_option( 'graphene_settings', array() );
+                $graphene_settings['hide_author_bio'] = true;
+                update_option( 'graphene_settings', $graphene_settings );
+
+                $graphene_settings = graphene_get_settings();
+            }
+        }
+    }
+
+    update_option( 'graphene_set_once_author_bio_display', 1 );
+}
+add_action( 'init', 'graphene_set_once_author_bio_display' );

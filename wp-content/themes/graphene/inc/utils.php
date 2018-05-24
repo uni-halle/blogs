@@ -308,3 +308,52 @@ function graphene_sort_array_key_score( $a, $b ){
 	if ( $b['score'] > $a['score'] ) return 1;
 	return 0;
 }
+
+
+/**
+ * Get registered post types
+ */
+function graphene_get_post_types(){
+	$types = array_merge( array( 'page' => 'page', 'post' => 'post' ), get_post_types( array( '_builtin' => false ) ) );
+
+	// These are post types we know we don't want to show Page Builder on
+	unset( $types['ml-slider'] );
+
+	foreach( $types as $type_id => $type ) {
+		$type_object = get_post_type_object( $type_id );
+
+		if( !$type_object->show_ui ) {
+			unset($types[$type_id]);
+			continue;
+		}
+
+		$types[$type_id] = $type_object->label;
+	}
+
+	return $types;
+}
+
+
+if ( ! function_exists( 'graphene_remove_anonymous_object_filter' ) ) :
+/**
+ * Remove an anonymous object filter.
+ *
+ * @param  string $tag    Hook name.
+ * @param  string $class  Class name
+ * @param  string $method Method name
+ * @return void
+ */
+function graphene_remove_anonymous_object_filter( $tag, $class, $method ){
+	$filters = $GLOBALS['wp_filter'][ $tag ];
+
+	if ( empty ( $filters ) ) return;
+
+	foreach ( $filters as $priority => $filter ) {
+		foreach ( $filter as $identifier => $function )	{
+			if ( is_array( $function) && is_a( $function['function'][0], $class ) && $method === $function['function'][1] ) {
+				remove_filter( $tag, array ( $function['function'][0], $method ), $priority );
+			}
+		}
+	}
+}
+endif;

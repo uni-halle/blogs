@@ -162,12 +162,16 @@ function graphene_get_custom_style(){
 	/* Slider */
 	if ( $graphene_settings['slider_height'] || $graphene_settings['slider_height_mobile'] ) {
 		$style .= '.carousel, .carousel .item{height:'.$graphene_settings['slider_height'].'px;}';
-		$style .= '@media (max-width: 767px) {.carousel, .carousel .item{height:'.$graphene_settings['slider_height_mobile'].'px;}}';
+		$style .= '@media (max-width: 991px) {.carousel, .carousel .item{height:'.$graphene_settings['slider_height_mobile'].'px;}}';
 	}
 	
 	/* Header image height */
-	if ( $graphene_settings['header_img_height'] && $graphene_settings['header_img_height'] != $graphene_defaults['header_img_height'] ){
+	if ( ! $graphene_settings['slider_as_header'] && $graphene_settings['header_img_height'] && $graphene_settings['header_img_height'] != $graphene_defaults['header_img_height'] ){
 		$style .= '#header{max-height:'. HEADER_IMAGE_HEIGHT .'px;}';
+	}
+
+	if ( $graphene_settings['slider_as_header'] ) {
+		$style .= '#header{max-height:'. $graphene_settings['slider_height'] .'px;}';
 	}
 		
 	// Link style
@@ -223,7 +227,7 @@ function graphene_get_custom_colours( $hook_suffix = '', $force_all = false ){
 		 
 		// Primary Menu (top level)
 		$colours = array(
-			'menu_primary_bg'				=> '.navbar, .navbar #header-menu-wrap, .navbar #header-menu-wrap {background: %s}',
+			'menu_primary_bg'				=> '.navbar {background: %s}',
 			'menu_primary_item'				=> '.navbar-inverse .nav > li > a {color: %s}',
 			'menu_primary_active_bg'		=> '.navbar #header-menu-wrap .nav li:focus, .navbar #header-menu-wrap .nav li:hover, .navbar #header-menu-wrap .nav li.current-menu-item, .navbar #header-menu-wrap .nav li.current-menu-ancestor, .navbar #header-menu-wrap .dropdown-menu li, .navbar #header-menu-wrap .dropdown-menu > li > a:focus, .navbar #header-menu-wrap .dropdown-menu > li > a:hover, .navbar #header-menu-wrap .dropdown-menu > .active > a, .navbar #header-menu-wrap .dropdown-menu > .active > a:focus, .navbar #header-menu-wrap .dropdown-menu > .active > a:hover, .navbar #header-menu-wrap .navbar-nav>.open>a, .navbar #header-menu-wrap .navbar-nav>.open>a:focus, .navbar #header-menu-wrap .navbar-nav>.open>a:hover, .navbar .navbar-nav>.active>a, .navbar .navbar-nav>.active>a:focus, .navbar .navbar-nav>.active>a:hover {background: %s}',
 			'menu_primary_active_item'		=> 	'.navbar #header-menu-wrap .navbar-nav>.active>a, .navbar #header-menu-wrap .navbar-nav>.active>a:focus, .navbar #header-menu-wrap .navbar-nav>.active>a:hover, .navbar #header-menu-wrap .navbar-nav>.open>a, .navbar #header-menu-wrap .navbar-nav>.open>a:focus, .navbar #header-menu-wrap .navbar-nav>.open>a:hover, .navbar #header-menu-wrap .navbar-nav>.current-menu-item>a, .navbar #header-menu-wrap .navbar-nav>.current-menu-item>a:hover, .navbar #header-menu-wrap .navbar-nav>.current-menu-item>a:focus, .navbar #header-menu-wrap .navbar-nav>.current-menu-ancestor>a, .navbar #header-menu-wrap .navbar-nav>.current-menu-ancestor>a:hover, .navbar #header-menu-wrap .navbar-nav>.current-menu-ancestor>a:focus, .navbar #header-menu-wrap .navbar-nav>li>a:focus, .navbar #header-menu-wrap .navbar-nav>li>a:hover {color: %s}',
@@ -252,7 +256,7 @@ function graphene_get_custom_colours( $hook_suffix = '', $force_all = false ){
 		
 		// Content area
 		$colours = array(
-			'content_wrapper_bg' 	=> '#content {background-color: %s}',
+			'content_wrapper_bg' 	=> '#content, #header {background-color: %s}',
 			'content_bg' 			=> '.post, .singular .hentry {background-color: %s;}',
 			'meta_border'			=> '.entry-footer {border-color: %s;}',
 			'content_font_colour' 	=> 'body, blockquote p {color: %s}',
@@ -275,7 +279,10 @@ function graphene_get_custom_colours( $hook_suffix = '', $force_all = false ){
 
 		// Slider
 		$colours = array(
-			'slider_caption_bg|slider_caption_bg@0.8|slider_caption_text'	=> '.carousel-caption {background-color: %1$s; background-color: %2$s; color: %3$s} .carousel .slider_post_title, .carousel .slider_post_title a {color: %3$s}'
+			'slider_caption_bg|slider_caption_bg@0.8|slider_caption_text'	=> '.carousel-caption {background-color: %1$s; background-color: %2$s; color: %3$s} .carousel .slider_post_title, .carousel .slider_post_title a {color: %3$s}',
+			'slider_card_bg'	=> '.carousel.style-card {background: %s}',
+			'slider_card_text'	=> '.carousel.style-card {color: %s}',
+			'slider_card_link'	=> '.carousel.style-card a {color: %s}',
 		);
 		$style .= graphene_build_style( $colours );
 

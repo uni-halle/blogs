@@ -19,10 +19,17 @@ function graphene_customizer_display_options( $wp_customize ){
 		'section' => 'graphene-display-columns-layout',
 		'label' 	=> __( 'Container style', 'graphene' ),
 		'choices'	=> array(
-			'boxed'			=> __( 'Boxed', 'graphene' ),
-			'full-width'	=> __( 'Full width', 'graphene' ),
+			'boxed'				=> __( 'Boxed', 'graphene' ),
+			'full-width-boxed'	=> __( 'Full width', 'graphene' ),
+			'full-width'		=> __( 'Full width stretched', 'graphene' ),
 		),
 	) );
+
+	$wp_customize->add_control( new Graphene_Radio_HTML_Control( $wp_customize, 'graphene_settings[mobile_left_column_first]', array(
+		'type' 		=> 'checkbox',
+		'section' 	=> 'graphene-display-columns-layout',
+		'label' 	=> __( 'In mobile view, display left column above the main content', 'graphene' ),
+	) ) );
 
 	$wp_customize->add_control( new Graphene_Radio_HTML_Control( $wp_customize, 'graphene_settings[column_mode]', array(
 		'type' 		=> 'radio',
@@ -103,6 +110,18 @@ function graphene_customizer_display_options( $wp_customize ){
 			'icon_plus_year'=> __( 'Icon with year', 'graphene'),
 			'text'			=> __( 'Inline text', 'graphene'),
 		)
+	) );
+
+	$wp_customize->add_control( 'graphene_settings[hide_post_nav]', array(
+		'type' 		=> 'checkbox',
+		'section' 	=> 'graphene-display-posts',
+		'label' 	=> __( 'Hide previous/next post navigation', 'graphene' ),
+	) );
+
+	$wp_customize->add_control( 'graphene_settings[post_nav_in_term]', array(
+		'type' 		=> 'checkbox',
+		'section' 	=> 'graphene-display-posts',
+		'label' 	=> __( 'Restrict previous/next post navigation to within the same category', 'graphene' ),
 	) );
 
 

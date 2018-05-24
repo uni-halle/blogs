@@ -102,9 +102,12 @@ function graphene_homepage_panes(){
 /* Helper function to control when the homepage panes should be displayed. */
 function graphene_display_homepage_panes(){
 	global $graphene_settings;
-	if ( get_option( 'show_on_front' ) == 'page' && ! $graphene_settings['disable_homepage_panes'] && is_front_page() ) {
-		graphene_homepage_panes();
-	}	
+
+	if ( $graphene_settings['disable_homepage_panes'] ) return;
+	if ( ! is_front_page() ) return;
+	if ( get_option( 'show_on_front' ) != 'page' ) return;
+	if ( graphene_has_custom_layout() ) return;
+
+	graphene_homepage_panes();
 }
 add_action( 'graphene_bottom_content', 'graphene_display_homepage_panes' );
-?>

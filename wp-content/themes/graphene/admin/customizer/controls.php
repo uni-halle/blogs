@@ -293,7 +293,7 @@ function graphene_add_customizer_controls( $wp_customize ) {
 								'Twitch', 'Vimeo', 'Vine', 'vk', 'WeChat', 'WhatsApp', 'WordPress', 'Yahoo!', 'Yelp' );
             $social_profiles = ( ! empty( $graphene_settings['social_profiles'] ) ) ? $graphene_settings['social_profiles'] : array();
         	?>
-        	<ul class="graphene-social-profiles">
+        	<ul class="graphene-social-profiles graphene-sortables">
 	        	<?php
 					if ( ! in_array( false, $social_profiles) ) : foreach ($social_profiles as $profile_key => $profile_data) :
 						$profile_data['url'] = esc_url( $profile_data['url'] );
@@ -306,7 +306,7 @@ function graphene_add_customizer_controls( $wp_customize ) {
 							$profile_data['icon_name'] = '';
 						}
 				?>
-                    <li class="graphene-social-profile">
+                    <li class="graphene-social-profile graphene-sortable">
                         <span class="customize-control-title">
                         	<?php if ( $profile_data['type'] == 'custom' ) : ?>
                         		<?php if ( $profile_data['icon_name'] ) : ?>
@@ -348,13 +348,13 @@ function graphene_add_customizer_controls( $wp_customize ) {
 	                        </div>
                         <?php endif; ?>
 
-                        <span class="delete"><a href="#" class="socialprofile-del"><i class="fa fa-times" title="<?php _e( 'Delete', 'graphene' ); ?>"></i></a></span>
+                        <span class="delete"><a href="#" class="sortable-del"><i class="fa fa-times" title="<?php _e( 'Delete', 'graphene' ); ?>"></i></a></span>
                         <span class="move"><i class="fa fa-arrows" title="<?php _e( 'Drag and drop to reorder', 'graphene' ); ?>"></i></span>
                     </li>
 				<?php endforeach; endif; ?>
 			</ul>
 
-			<div class="add-social-profile">
+			<div class="add-social-profile graphene-add-sortable">
 				<span class="customize-control-title"><?php _e( 'Add social profile', 'graphene' ); ?></span>
 
 				<div class="inline-field">
@@ -397,6 +397,64 @@ function graphene_add_customizer_controls( $wp_customize ) {
 			</div>
 
 			<input type="hidden" <?php $this->link(); ?> id="graphene_settings_social_profiles" value="" />
+			<?php
+		}
+	}
+
+
+	/**
+	 * Mentions Bar
+	 */
+	class Graphene_Mentions_Bar_Control extends WP_Customize_Control {
+		public function render_content() {
+			global $graphene_settings;
+
+			if ( isset( $this->label ) ) echo '<span class="customize-control-title">' . $this->label . '</span>';
+        	?>
+        	<ul class="graphene-brand-icons graphene-sortables">
+	        	<?php $i = 0; foreach ( $graphene_settings['brand_icons'] as $brand_icon ) : ?>
+                    <li class="brand-icon graphene-sortable">
+                    	<input type="hidden" name="brand-icon-data" data-image-id="<?php echo $brand_icon['image_id']; ?>" data-url="<?php echo $brand_icon['url']; ?>" />
+
+                    	<div class="inline-field">
+                    		<label>
+                    			<a data-field="brand_icon_<?php echo $i; ?>" data-title="<?php esc_attr_e( 'Select Image', 'graphene' ); ?>" data-button="<?php esc_attr_e( 'Select image', 'graphene' ); ?>" href="#" class="media-upload button"><?php _e( 'Select image', 'graphene' );?></a>
+                    		</label>
+	                    	<div class="image-preview"><?php echo wp_get_attachment_image( $brand_icon['image_id'], 'medium' ); ?></div>
+	                        <input type="hidden" id="brand_icon_<?php echo $i; ?>" data-key="image-id" value="<?php echo $brand_icon['image_id']; ?>" />
+	                    </div>
+
+                        <div class="inline-field">
+                        	<label><?php _e( 'Links to', 'graphene' ); ?></label>
+                        	<input type="text" data-key="url" value="<?php echo esc_attr( $brand_icon['url'] ); ?>" />
+                        </div>
+
+                        <span class="delete"><a href="#" class="sortable-del"><i class="fa fa-times" title="<?php _e( 'Delete', 'graphene' ); ?>"></i></a></span>
+                        <span class="move"><i class="fa fa-arrows" title="<?php _e( 'Drag and drop to reorder', 'graphene' ); ?>"></i></span>
+                    </li>
+				<?php $i++; endforeach; ?>
+			</ul>
+
+			<div class="add-brand-icon graphene-add-sortable">
+				<span class="customize-control-title"><?php _e( 'Add brand logo', 'graphene' ); ?></span>
+
+				<div class="inline-field">
+					<label>
+						<a data-field="brand_icon_<?php echo $i; ?>" data-title="<?php esc_attr_e( 'Select Image', 'graphene' ); ?>" data-button="<?php esc_attr_e( 'Select image', 'graphene' ); ?>" href="#" class="media-upload button"><?php _e( 'Select image', 'graphene' );?></a>
+					</label>
+					<span class="image-preview"><span class="image-placeholder"></span></span>
+	                <input type="hidden" id="brand_icon_<?php echo $i; ?>" class="new-brand-icon-image-id" value="" />
+	            </div>
+
+                <div class="inline-field">
+                	<label><?php _e( 'Links to', 'graphene' ); ?></label>
+                	<input type="text" id="new-brand-icon-url" value="" />
+                </div>
+
+                <a class="button button-primary" href="#" data-count="<?php echo $i; ?>"><?php _e( 'Add brand logo', 'graphene' ); ?></a>
+			</div>
+
+			<input type="hidden" <?php $this->link(); ?> id="graphene_settings_brand_icons" value="" />
 			<?php
 		}
 	}

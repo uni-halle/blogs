@@ -9,91 +9,100 @@
  */
 global $graphene_settings;
 ?>  
-<?php do_action( 'graphene_bottom_content' ); ?>
-    </div><!-- #content-main -->
-    
-    <?php
 
-        /* Sidebar2 on the left side? */
-        if ( in_array( graphene_column_mode(), array( 'three_col_right', 'three_col_center', 'two_col_right' ) ) ){
-            get_sidebar( 'two' );
-        }
+<?php if ( ! graphene_has_custom_layout() ) : ?>
+        <?php do_action( 'graphene_bottom_content' ); ?>
+        </div><!-- #content-main -->
         
-        /* Sidebar1 on the left side? */            
-        if ( in_array( graphene_column_mode(), array( 'three_col_right' ) ) ){
-            get_sidebar();                
-        }
-    
-        /* Sidebar 2 on the right side? */
-        if ( graphene_column_mode() == 'three_col_left' ){
-            get_sidebar( 'two' );
-        }
+        <?php
+            if ( ! $graphene_settings['mobile_left_column_first'] ) {
+                /* Sidebar2 on the left side? */
+                if ( in_array( graphene_column_mode(), array( 'three_col_right', 'three_col_center', 'two_col_right' ) ) ) get_sidebar( 'two' );
+                
+                /* Sidebar1 on the left side? */            
+                if ( in_array( graphene_column_mode(), array( 'three_col_right' ) ) ) get_sidebar();
+            }
+            
+            /* Sidebar 2 on the right side? */
+            if ( graphene_column_mode() == 'three_col_left' ) get_sidebar( 'two' );
+            
+            /* Sidebar 1 on the right side? */
+            if ( in_array( graphene_column_mode(), array( 'two_col_left', 'three_col_left', 'three_col_center' ) ) ) get_sidebar();
+        ?>
         
-        /* Sidebar 1 on the right side? */
-        if ( in_array( graphene_column_mode(), array( 'two_col_left', 'three_col_left', 'three_col_center' ) ) ){
-            get_sidebar();
-        }
-    
-    ?>
-    
-    <?php do_action( 'graphene_after_content' ); ?>
+        <?php do_action( 'graphene_after_content' ); ?>
 
+    <?php graphene_container_wrapper( 'end' ); ?>
 </div><!-- #content -->
+<?php endif; ?>
+
+<?php do_action( 'graphene_before_footer_widget_area' ); ?>
 
 <?php /* Get the footer widget area */ ?>
-<?php get_template_part('sidebar', 'footer'); ?>
+<?php get_template_part( 'sidebar', 'footer' ); ?>
 
-<?php do_action('graphene_before_footer'); ?>
+<?php do_action( 'graphene_before_footer' ); ?>
 
 <div id="footer" class="row">
+    <?php graphene_container_wrapper( 'start' ); ?>
 
-    <?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
-        <div class="footer-menu-wrap col-md-8 col-md-push-4 flip">
-            <?php
-                /* Footer menu */
-                $args = array(
-                    'container'         => false,
-                    'fallback_cb'       => 'none',
-                    'depth'             => 2,
-                    'theme_location'    => 'footer-menu',
-                    'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                );
-                wp_nav_menu( apply_filters( 'graphene_footer_menu_args', $args ) );
-            ?>
-        </div>
-    <?php endif; ?>
+        <?php 
+            if ( ( stripos( $graphene_settings['social_media_location'], 'footer' ) !== false && $graphene_settings['social_profiles'] ) || has_nav_menu( 'footer-menu' ) ) :
+        ?>
+            <div class="footer-right">
+                <?php if ( stripos( $graphene_settings['social_media_location'], 'footer' ) !== false ) graphene_social_profiles(); ?>
 
-    <div class="copyright-developer col-md-4 <?php if ( has_nav_menu( 'footer-menu' ) ) echo 'col-md-pull-8'; ?> flip">
-        <?php if ( ! $graphene_settings['hide_copyright'] ) : ?>
-            <div id="copyright">
-                <?php 
-                    if ( $graphene_settings['copy_text'] == '' ) printf( '<p>&copy; %1$s %2$s.</p>', date( 'Y' ), get_bloginfo( 'name' ) );
-                    else echo ( ! stristr( $graphene_settings['copy_text'], '</p>' ) ) ? wpautop( $graphene_settings['copy_text'] ) : $graphene_settings['copy_text'];
-
-                    do_action('graphene_copyright');
-                ?>
+                <?php if ( has_nav_menu( 'footer-menu' ) ) : ?>
+                    <div class="footer-menu-wrap flip">
+                        <?php
+                            /* Footer menu */
+                            $args = array(
+                                'container'         => false,
+                                'fallback_cb'       => 'none',
+                                'depth'             => 2,
+                                'theme_location'    => 'footer-menu',
+                                'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                            );
+                            wp_nav_menu( apply_filters( 'graphene_footer_menu_args', $args ) );
+                        ?>
+                    </div>
+                <?php endif; ?>
             </div>
         <?php endif; ?>
 
-        <?php if ( ! $graphene_settings['disable_credit'] ) : ?>
-            <div id="developer">
-                <p>
-                    <?php /* translators: %1$s is heart icon, %2$s is the theme's developer */ ?>
+        <div class="copyright-developer">
+            <?php if ( ! $graphene_settings['hide_copyright'] ) : ?>
+                <div id="copyright">
                     <?php 
-                        printf( 
-                            __( 'Made with %1$s by %2$s.', 'graphene'), 
-                            '<i class="fa fa-heart"></i>', 
-                            '<a href="https://www.graphene-theme.com/" rel="nofollow">' . __('Graphene Themes', 'graphene') . '</a>'
-                        ); 
-                    ?>
-                </p>
+                        if ( $graphene_settings['copy_text'] == '' ) printf( '<p>&copy; %1$s %2$s.</p>', date( 'Y' ), get_bloginfo( 'name' ) );
+                        else echo ( ! stristr( $graphene_settings['copy_text'], '</p>' ) ) ? wpautop( $graphene_settings['copy_text'] ) : $graphene_settings['copy_text'];
 
-                <?php do_action('graphene_developer'); ?>
-            </div>
-        <?php endif; ?>
-    </div>
-    
-    <?php do_action('graphene_footer'); ?>
+                        do_action('graphene_copyright');
+                    ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ( ! $graphene_settings['disable_credit'] ) : ?>
+                <div id="developer">
+                    <p>
+                        <?php /* translators: %1$s is heart icon, %2$s is the theme's developer */ ?>
+                        <?php 
+                            printf( 
+                                __( 'Made with %1$s by %2$s.', 'graphene'), 
+                                '<i class="fa fa-heart"></i>', 
+                                '<a href="https://www.graphene-theme.com/" rel="nofollow">' . __('Graphene Themes', 'graphene') . '</a>'
+                            ); 
+                        ?>
+                    </p>
+
+                    <?php do_action('graphene_developer'); ?>
+                </div>
+            <?php endif; ?>
+        </div>
+
+        <?php do_action('graphene_footer'); ?>
+        
+    <?php graphene_container_wrapper( 'end' ); ?>
 </div><!-- #footer -->
 
 <?php do_action('graphene_after_footer'); ?>

@@ -1,0 +1,3608 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Graphene 1.0 theme for WordPress\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-24 16:21+0800\n"
+"PO-Revision-Date: 2017-11-24 16:34+0800\n"
+"Last-Translator: Gent Ukehajdaraj <info@gentukehajdaraj.com>\n"
+"Language-Team: Syahir Hakim <syahir@khairul-syahir.com>\n"
+"Language: sq_AL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;esc_attr_e;esc_attr__\n"
+"X-Poedit-Basepath: D:/MyVault/MyProjects/Websites/theme-graphene/site/wp-"
+"content/themes/graphene\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.0.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:23
+#, php-format
+msgid "Searching for: <span>%s</span>"
+msgstr "Duke kërkuar për: <span>%s</span>"
+
+#: 404.php:29 search-404.php:3
+msgid "Error 404 - Page Not Found"
+msgstr "Error 404 - Faqja Nuk Gjindet"
+
+#: 404.php:31 search-404.php:5
+msgid ""
+"Sorry, I've looked everywhere but I can't find the page you're looking for."
+msgstr "Kërkojmë falje, por nuk gjetëm faqën që ju po e kërkonit"
+
+#: 404.php:32 search-404.php:6
+msgid ""
+"If you follow the link from another website, I may have removed or renamed "
+"the page some time ago. You may want to try searching for the page:"
+msgstr ""
+"Nëse keni ardhur nga një webfaqe tjetër, faqja që po kërkoni është fshirë "
+"apo i është ndryshuar titulli. Mund të provoni ta kërkoni:"
+
+#: 404.php:40
+msgid "Automated search"
+msgstr "Kërkim automatik"
+
+#: 404.php:43
+#, php-format
+msgid "Searching for the terms <strong>%s</strong> ..."
+msgstr "Duke kërkuar për fjalët <strong>%s</strong> ..."
+
+#: admin/ajax-handler.php:9 admin/ajax-handler.php:33 admin/ajax-handler.php:51
+msgid ""
+"Sorry, but you don't have the necessary permission to modify theme options."
+msgstr ""
+
+#: admin/ajax-handler.php:20
+#, fuzzy
+#| msgid "Options Presets"
+msgid "Options saved."
+msgstr "Shabllona të Opcioneve"
+
+#: admin/ajax-handler.php:84
+msgid "Colour preset deleted."
+msgstr ""
+
+#: admin/ajax-handler.php:84
+msgid "Colour preset saved."
+msgstr ""
+
+#: admin/custom-fields.php:14
+msgid "Graphene post-specific options"
+msgstr "Opcionet specifike për postim të Graphene"
+
+#: admin/custom-fields.php:15
+msgid "Graphene page-specific options"
+msgstr "Opcionet specifike për faqe të Graphene"
+
+#: admin/custom-fields.php:92
+msgid ""
+"These settings will only be applied to this particular post or page you're "
+"editing. They will override the global settings set in the Graphene Options "
+"or Graphene Display options page."
+msgstr ""
+"Këto ndryshime do të aplikohen vetëm në këtë postim apo faqe që ju po e "
+"përpunoni. Ato do të ndryshojnë rregullat globale të vendosura në faqet "
+"Graphene Opcionet apo Graphene Display."
+
+#: admin/custom-fields.php:93
+msgid "Slider options"
+msgstr "Opcionet e sllajdit"
+
+#: admin/custom-fields.php:97 admin/customizer/options-general.php:144
+msgid "Slider image"
+msgstr "Fotoja e sllajdit"
+
+#: admin/custom-fields.php:101 admin/custom-fields.php:136
+#: admin/custom-fields.php:150
+msgid "Use global setting"
+msgstr "Përdor rregullat standarde"
+
+#: admin/custom-fields.php:102 admin/customizer/options-general.php:146
+msgid "Don't show image"
+msgstr "Mos e shfaq fotografinë"
+
+#: admin/custom-fields.php:103
+msgid "Featured Image"
+msgstr "Fotografia kryesore"
+
+#: admin/custom-fields.php:104 admin/customizer/options-general.php:148
+msgid "First image in post"
+msgstr "Fotografia e parë në postim"
+
+#: admin/custom-fields.php:105
+msgid "Custom URL"
+msgstr "URL e Veqantë"
+
+#: admin/custom-fields.php:111
+msgid "Custom slider image URL"
+msgstr "URL e veqantë e fotos së sllajdit"
+
+#: admin/custom-fields.php:115
+msgid ""
+"Make sure you select Custom URL in the slider image option above to use this "
+"custom url."
+msgstr ""
+"Sigurohuni që keni zgjedhur URL e Veqantë në opcionet për foton e sllajdit "
+"lartë për të përdorur një URL të veqantë."
+
+#: admin/custom-fields.php:120
+#, fuzzy
+#| msgid "Custom slider image URL"
+msgid "Custom slider URL"
+msgstr "URL e veqantë e fotos së sllajdit"
+
+#: admin/custom-fields.php:124
+msgid "Use this to override the link that is used in the slider."
+msgstr ""
+
+#: admin/custom-fields.php:128
+msgid "Display options"
+msgstr "Display Opcionet"
+
+#: admin/custom-fields.php:132
+msgid "AddThis Social Sharing button"
+msgstr "AddThis butoni për shpërndarje sociale"
+
+#: admin/custom-fields.php:137
+msgid "Show button"
+msgstr "Shfaq butonin"
+
+#: admin/custom-fields.php:138
+msgid "Hide button"
+msgstr "Fshehe butonin"
+
+#: admin/custom-fields.php:146 admin/customizer/options-display.php:99
+msgid "Post date display"
+msgstr "Dukja e datës së postimit"
+
+#: admin/custom-fields.php:151 admin/customizer/options-display.php:101
+msgid "Hidden"
+msgstr "Fshehur"
+
+#: admin/custom-fields.php:152
+msgid "As an icon (without the year)"
+msgstr "Si një ikonë (pa vitin)"
+
+#: admin/custom-fields.php:153
+msgid "As an icon (including the year)"
+msgstr "Si një ikonë (me vitin)"
+
+#: admin/custom-fields.php:154
+msgid "As inline text"
+msgstr "Si një tekst brenda rreshtit"
+
+#: admin/custom-fields.php:162
+msgid "Navigation options"
+msgstr "Opcionet për navigim"
+
+#: admin/custom-fields.php:166 admin/customizer/controls.php:293
+#: admin/customizer/controls.php:343
+msgid "Description"
+msgstr "Përshkrimi"
+
+#: admin/custom-fields.php:170
+msgid ""
+"Only required if you need a description in the navigation menu and you are "
+"not using a custom menu."
+msgstr ""
+"Kërkohet vetëm nëse ju duhet një përshkrim në menynë e navigimit dhe kur nuk "
+"jeni duke e përdorur meny të veqantë."
+
+#: admin/customizer/controls.php:140
+#, fuzzy
+#| msgid ""
+#| "This option enables you to place virtually any content to every nook and "
+#| "cranny in the theme, by attaching widget areas to the theme's action "
+#| "hooks."
+msgid ""
+"This option enables you to place virtually any content anywhere in the "
+"theme, by attaching widget areas to the theme's action hooks."
+msgstr ""
+"Ky opcion ua mundëson që të futni përmbajtje në çdo pjesë të theme-s, duke "
+"vendosur hapësirën e widgets në action hooks të themes."
+
+#: admin/customizer/controls.php:141
+msgid ""
+"All action hooks available in the Graphene Theme are listed below. Click on "
+"the filename to display all the action hooks available in that file. Then, "
+"tick the checkbox next to an action hook to make a widget area available for "
+"that action hook."
+msgstr ""
+"Të gjitha action hooks të Graphene Theme janë të listuara poshtë. Klikoni në "
+"emrin e fajllit për të shikuar të gjitha action hooks për atë fajll. Pastaj, "
+"klikoni në katrorin afër action hooks-it për ta bërë një hapësirë të widget-"
+"it për atë action hook."
+
+#: admin/customizer/controls.php:142
+#, php-format
+msgid ""
+"To see a visual map showing where each action hook in Graphene is located, "
+"visit this page: %s"
+msgstr ""
+
+#: admin/customizer/controls.php:142
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Graphene Action Hooks Map"
+msgstr "Opcionet e Graphene"
+
+#: admin/customizer/controls.php:152
+msgid "Click to show/hide the action hooks for this file"
+msgstr "Klikoni për ta shfaqur/fshehur action hooks për këtë fajll."
+
+#: admin/customizer/controls.php:193
+msgid "Container width"
+msgstr "Gjatësia e Container-it"
+
+#: admin/customizer/controls.php:202
+#, fuzzy
+#| msgid "two-column mode"
+msgid "Columns width (two-column mode)"
+msgstr "Mënyra me dy-kolumne"
+
+#: admin/customizer/controls.php:204 admin/customizer/controls.php:224
+msgid "Content"
+msgstr "Përmbajtja"
+
+#: admin/customizer/controls.php:208
+msgid "Sidebar"
+msgstr "Sidebar"
+
+#: admin/customizer/controls.php:218
+#, fuzzy
+#| msgid "three-column mode"
+msgid "Columns width (three-column mode)"
+msgstr "Mënyra me tri-kolumne"
+
+#: admin/customizer/controls.php:220
+msgid "Left sidebar"
+msgstr "Sidebar-i majtas"
+
+#: admin/customizer/controls.php:228
+msgid "Right sidebar"
+msgstr "Sidebari-i djathtas"
+
+#: admin/customizer/controls.php:269 admin/customizer/controls.php:334
+#, fuzzy
+#| msgid "Custom URL"
+msgid "Custom"
+msgstr "URL e Veqantë"
+
+#: admin/customizer/controls.php:298 admin/customizer/controls.php:348
+#, fuzzy
+#| msgid "%s URL"
+msgid "URL"
+msgstr "%s URL"
+
+#: admin/customizer/controls.php:302
+#, fuzzy
+#| msgid "Note: Leave values empty to reset to the default values."
+msgid "Leave the URL empty to use the default RSS URL."
+msgstr "Shënim: Leni hapësirat e zbrazta nëse doni të resetoni vlerat."
+
+#: admin/customizer/controls.php:308 admin/customizer/controls.php:353
+#, fuzzy
+#| msgid "Favicon URL"
+msgid "Icon URL"
+msgstr "URL e Fav Ikonës"
+
+#: admin/customizer/controls.php:312 admin/customizer/controls.php:358
+msgid "Icon name"
+msgstr ""
+
+#: admin/customizer/controls.php:317 admin/customizer/customizer.php:38
+#: inc/comments.php:184
+msgid "Delete"
+msgstr "Fshije"
+
+#: admin/customizer/controls.php:318
+#, fuzzy
+#| msgid "Post and pages top border"
+msgid "Drag and drop to reorder"
+msgstr "Kufizimi i sipërm i postimeve dhe faqeve"
+
+#: admin/customizer/controls.php:324 admin/customizer/controls.php:362
+#, fuzzy
+#| msgid "Social Media profile URL"
+msgid "Add social profile"
+msgstr "URL-ja e profilit në Rrjet Social"
+
+#: admin/customizer/controls.php:328
+msgid "Choose type"
+msgstr ""
+
+#: admin/customizer/controls.php:377
+msgid ""
+"Reset all of the theme's settings to their default values. Custom Header, "
+"Custom Menus, and other WordPress settings won't be affected."
+msgstr ""
+
+#: admin/customizer/controls.php:378
+#, fuzzy
+#| msgid "This action is not reversible."
+msgid "<strong>WARNING:</strong> This action is not reversible."
+msgstr "Ky veprim është i pakthyeshëm."
+
+#: admin/customizer/controls.php:380
+#, fuzzy
+#| msgid "This action is not reversible."
+msgid "Confirm to reset settings? This action is not reversible."
+msgstr "Ky veprim është i pakthyeshëm."
+
+#: admin/customizer/controls.php:380 admin/customizer/options-utilities.php:13
+#, fuzzy
+#| msgid "Reset to default settings"
+msgid "Reset settings"
+msgstr "Riktheni opcionet fillestare"
+
+#: admin/customizer/controls.php:400 admin/customizer/options-utilities.php:38
+#, fuzzy
+#| msgid "Export Theme options"
+msgid "Export settings"
+msgstr "Eksporto opcionet e theme-së"
+
+#: admin/customizer/controls.php:422 admin/customizer/options-utilities.php:32
+#, fuzzy
+#| msgid "Import Theme options"
+msgid "Import settings"
+msgstr "Importo opcionet e theme-së"
+
+#: admin/customizer/customizer.php:35
+msgid "Oops, nothing found."
+msgstr ""
+
+#: admin/customizer/customizer.php:37
+msgid "Please select the exported Graphene options file to import."
+msgstr ""
+
+#: admin/customizer/customizer.php:39
+msgid "(optional)"
+msgstr ""
+
+#: admin/customizer/customizer.php:40
+#, fuzzy
+#| msgid "Link Text"
+msgid "Link"
+msgstr "Teksti i linkut"
+
+#: admin/customizer/customizer.php:41
+msgid "Please select a settings file to import."
+msgstr ""
+
+#: admin/customizer/customizer.php:95
+#, fuzzy
+#| msgid "Graphene Theme"
+msgid "Graphene: General"
+msgstr "Graphene Theme"
+
+#: admin/customizer/customizer.php:99
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Graphene: Display"
+msgstr "Opcionet e Graphene"
+
+#: admin/customizer/customizer.php:103
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Graphene: Colours"
+msgstr "Opcionet e Graphene"
+
+#: admin/customizer/customizer.php:104
+msgid ""
+"Changing colours for your website involves a lot more than just trial and "
+"error. Simply mixing and matching colours without regard to their "
+"compatibility may do more damage than good to your site's aesthetics."
+msgstr ""
+"Ndryshimi i ngjyrave të webfaqës përfshin një punë më të ndërlikuar. Duke i "
+"përzier ngjyrat mes veti pa ndonjë përshtatje në dizajn do të ndikojë më "
+"shumë për të keq sesa për të mirë në estetikën e webfaqës suaj."
+
+#: admin/customizer/customizer.php:104
+#, php-format
+msgid ""
+"It's generally a good idea to stick to colours from colour pallettes that "
+"are aesthetically pleasing. Try the %s website for a kickstart on some "
+"colour palettes you can use."
+msgstr ""
+"Në përgjishsi është një ide e mirë që të përdorni ngjyrat nga paleta e "
+"ngjyrave që dukën mirë estetikisht. Përdorni %s webfaqën për më shumë ndihmë "
+"në paletën e ngjyrave që mund të përdorni."
+
+#: admin/customizer/customizer.php:108
+#, fuzzy
+#| msgid "Graphene FAQs"
+msgid "Graphene: Advanced"
+msgstr "Pyetjet më të shpeshta të Graphene"
+
+#: admin/customizer/customizer.php:112
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Graphene: Utilities"
+msgstr "Opcionet e Graphene"
+
+#: admin/customizer/options-advanced.php:13
+msgid "Custom <head> Tags"
+msgstr ""
+
+#: admin/customizer/options-advanced.php:20
+msgid "Code to insert into the <head> element"
+msgstr ""
+
+#: admin/customizer/options-advanced.php:31
+msgid "Action Hooks Widget Areas"
+msgstr "Hapësira për Widget Action Hooks"
+
+#: admin/customizer/options-colours.php:13
+#, fuzzy
+#| msgid "Top bar"
+msgid "Top Bar"
+msgstr "Shiriti i epërm"
+
+#: admin/customizer/options-colours.php:19
+#: admin/customizer/options-colours.php:207
+msgid "Background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:26
+#, fuzzy
+#| msgid "Secondary Menu"
+msgid "Primary Menu"
+msgstr "Menyja sekondare"
+
+#: admin/customizer/options-colours.php:34
+#: admin/customizer/options-colours.php:57
+msgid "Background (default state)"
+msgstr ""
+
+#: admin/customizer/options-colours.php:35
+#: admin/customizer/options-colours.php:58
+#, fuzzy
+#| msgid "Text decoration (hover state )"
+msgid "Text (default state)"
+msgstr "Dekorimi i tekstit (kur kalohet mbi të)"
+
+#: admin/customizer/options-colours.php:36
+#: admin/customizer/options-colours.php:59
+#, fuzzy
+#| msgid "Background image and excerpt"
+msgid "Background (active state)"
+msgstr "Fotografia e prapavijës dhe fragmenti"
+
+#: admin/customizer/options-colours.php:37
+#: admin/customizer/options-colours.php:60
+#, fuzzy
+#| msgid "Text decoration (hover state )"
+msgid "Text (active state)"
+msgstr "Dekorimi i tekstit (kur kalohet mbi të)"
+
+#: admin/customizer/options-colours.php:38
+#: admin/customizer/options-colours.php:61
+#, fuzzy
+#| msgid "Dropdown menu item width"
+msgid "Dropdown menu text (default state)"
+msgstr "Gjatësia e menysë Dropdown"
+
+#: admin/customizer/options-colours.php:39
+#: admin/customizer/options-colours.php:62
+#, fuzzy
+#| msgid "Dropdown menu item width"
+msgid "Dropdown menu text (active state)"
+msgstr "Gjatësia e menysë Dropdown"
+
+#: admin/customizer/options-colours.php:48 inc/setup.php:97
+msgid "Secondary Menu"
+msgstr "Menyja sekondare"
+
+#: admin/customizer/options-colours.php:56
+#, fuzzy
+#| msgid "Top bar"
+msgid "Top border"
+msgstr "Shiriti i epërm"
+
+#: admin/customizer/options-colours.php:71
+#: admin/customizer/options-general.php:65
+msgid "Slider"
+msgstr "Sllajderi"
+
+#: admin/customizer/options-colours.php:76
+#, fuzzy
+#| msgid "Widget item background"
+msgid "Slider caption background"
+msgstr "Prapavija e Widget-it"
+
+#: admin/customizer/options-colours.php:85
+#, fuzzy
+#| msgid "Slider options"
+msgid "Slider caption text"
+msgstr "Opcionet e sllajdit"
+
+#: admin/customizer/options-colours.php:94
+#, fuzzy
+#| msgid "Content area"
+msgid "Content Area"
+msgstr "Hapësira e përmbajtes"
+
+#: admin/customizer/options-colours.php:102
+msgid "Main content wrapper background"
+msgstr "Prapavija e mbështjellësit krysor të përmbajtës"
+
+#: admin/customizer/options-colours.php:103
+msgid "Post and pages content background"
+msgstr "Prapavija e përmbajtës së postimeve dhe faqeve"
+
+#: admin/customizer/options-colours.php:104
+msgid "Post meta and footer border"
+msgstr "Kufizimi i meta dhe footer-it të postimit"
+
+#: admin/customizer/options-colours.php:105
+#, fuzzy
+#| msgid "Content Text"
+msgid "Content text"
+msgstr "Teksti i përmbajtjes"
+
+#: admin/customizer/options-colours.php:106
+#, fuzzy
+#| msgid "Title text font"
+msgid "Title text"
+msgstr "Fonti i tekstit të titullit"
+
+#: admin/customizer/options-colours.php:107
+msgid "Links"
+msgstr ""
+
+#: admin/customizer/options-colours.php:108
+#, fuzzy
+#| msgid "Link colour (hover state )"
+msgid "Links (hover)"
+msgstr "Ngjyra e linkut (kur kalohet mbi të)"
+
+#: admin/customizer/options-colours.php:109
+msgid "Sticky posts border"
+msgstr ""
+
+#: admin/customizer/options-colours.php:110
+#, fuzzy
+#| msgid "Post and pages content background"
+msgid "Child pages content background"
+msgstr "Prapavija e përmbajtës së postimeve dhe faqeve"
+
+#: admin/customizer/options-colours.php:119
+msgid "Widgets"
+msgstr "Widgets"
+
+#: admin/customizer/options-colours.php:127
+msgid "Widget item background"
+msgstr "Prapavija e Widget-it"
+
+#: admin/customizer/options-colours.php:128
+msgid "Widget item list border"
+msgstr "Kufizimi i listës së Widget-it"
+
+#: admin/customizer/options-colours.php:129
+msgid "Widget header border"
+msgstr "Kufizimi i header-it të Widget-it"
+
+#: admin/customizer/options-colours.php:138
+#, fuzzy
+#| msgid "Button label"
+msgid "Buttons and Labels"
+msgstr "Titulli i butonit"
+
+#: admin/customizer/options-colours.php:146
+#, fuzzy
+#| msgid "Button background colour"
+msgid "Button background"
+msgstr "Ngjyra e prapavijës së butonit"
+
+#: admin/customizer/options-colours.php:147
+#, fuzzy
+#| msgid "Button label"
+msgid "Button text"
+msgstr "Titulli i butonit"
+
+#: admin/customizer/options-colours.php:148
+#, fuzzy
+#| msgid "Widget item background"
+msgid "Label background"
+msgstr "Prapavija e Widget-it"
+
+#: admin/customizer/options-colours.php:149
+msgid "Label text"
+msgstr ""
+
+#: admin/customizer/options-colours.php:158
+msgid "Archives"
+msgstr "Arkiva"
+
+#: admin/customizer/options-colours.php:166
+#, fuzzy
+#| msgid "Archive label colour"
+msgid "Archive label background"
+msgstr "Ngjyra e emrit të arkivës"
+
+#: admin/customizer/options-colours.php:167
+#, fuzzy
+#| msgid "Archive label colour"
+msgid "Archive label border"
+msgstr "Ngjyra e emrit të arkivës"
+
+#: admin/customizer/options-colours.php:168
+#, fuzzy
+#| msgid "Archive label colour"
+msgid "Archive label label colour"
+msgstr "Ngjyra e emrit të arkivës"
+
+#: admin/customizer/options-colours.php:169
+#, fuzzy
+#| msgid "Archive label colour"
+msgid "Archive label text colour"
+msgstr "Ngjyra e emrit të arkivës"
+
+#: admin/customizer/options-colours.php:178
+#: admin/customizer/options-general.php:301
+#, fuzzy
+#| msgid "Comments off"
+msgid "Comments"
+msgstr "Komentet janë mbyllur"
+
+#: admin/customizer/options-colours.php:186
+#, fuzzy
+#| msgid "Comments off"
+msgid "Comments background"
+msgstr "Komentet janë mbyllur"
+
+#: admin/customizer/options-colours.php:187
+#, fuzzy
+#| msgid "Comments off"
+msgid "Comments border"
+msgstr "Komentet janë mbyllur"
+
+#: admin/customizer/options-colours.php:188
+#, fuzzy
+#| msgid "Comments off"
+msgid "Comments box shadow"
+msgstr "Komentet janë mbyllur"
+
+#: admin/customizer/options-colours.php:189
+#, fuzzy
+#| msgid "Comments off"
+msgid "Comments text"
+msgstr "Komentet janë mbyllur"
+
+#: admin/customizer/options-colours.php:190
+msgid "Author comments border"
+msgstr ""
+
+#: admin/customizer/options-colours.php:199
+#: admin/customizer/options-general.php:513
+#, fuzzy
+#| msgid "Footer Menu"
+msgid "Footer"
+msgstr "Menyja e footer-it"
+
+#: admin/customizer/options-colours.php:208
+#, fuzzy
+#| msgid "Normal website"
+msgid "Normal text"
+msgstr "Webfaqe Normale"
+
+#: admin/customizer/options-colours.php:209
+#, fuzzy
+#| msgid "Link Text"
+msgid "Link text"
+msgstr "Teksti i linkut"
+
+#: admin/customizer/options-display.php:13
+#, fuzzy
+#| msgid "Column mode"
+msgid "Columns Layout"
+msgstr "Mënyra e Kolumneve"
+
+#: admin/customizer/options-display.php:20
+#, fuzzy
+#| msgid "Container width"
+msgid "Container style"
+msgstr "Gjatësia e Container-it"
+
+#: admin/customizer/options-display.php:22
+msgid "Boxed"
+msgstr ""
+
+#: admin/customizer/options-display.php:23
+#, fuzzy
+#| msgid "Column width"
+msgid "Full width"
+msgstr "Gjatësia e Kolumnit"
+
+#: admin/customizer/options-display.php:30
+msgid "Layout"
+msgstr ""
+
+#: admin/customizer/options-display.php:32
+msgid "One column"
+msgstr "Një Kolumnë"
+
+#: admin/customizer/options-display.php:33
+#, fuzzy
+#| msgid "Two columns (with sidebar left)"
+msgid "Two columns, right sidebar"
+msgstr "Dy Kolumne (me sidebar të majtë)"
+
+#: admin/customizer/options-display.php:34
+#, fuzzy
+#| msgid "Two columns (with sidebar left)"
+msgid "Two columns, left sidebar"
+msgstr "Dy Kolumne (me sidebar të majtë)"
+
+#: admin/customizer/options-display.php:35
+#, fuzzy
+#| msgid "Three columns (with two sidebars left)"
+msgid "Three columns, right sidebars"
+msgstr "Tri Kolumne (me dy sidebar të majtë)"
+
+#: admin/customizer/options-display.php:36
+#, fuzzy
+#| msgid "Three columns (with two sidebars left)"
+msgid "Three columns, left sidebars"
+msgstr "Tri Kolumne (me dy sidebar të majtë)"
+
+#: admin/customizer/options-display.php:37
+#, fuzzy
+#| msgid "Three columns (with two sidebars left)"
+msgid "Three columns, left & right sidebars"
+msgstr "Tri Kolumne (me dy sidebar të majtë)"
+
+#: admin/customizer/options-display.php:45
+#, fuzzy
+#| msgid "Column width"
+msgid "Columns Width"
+msgstr "Gjatësia e Kolumnit"
+
+#: admin/customizer/options-display.php:47
+#, fuzzy
+#| msgid "Note: Leave values empty to reset to the default values."
+msgid "Leave values empty to reset to the default values."
+msgstr "Shënim: Leni hapësirat e zbrazta nëse doni të resetoni vlerat."
+
+#: admin/customizer/options-display.php:62
+msgid "Posts Elements"
+msgstr ""
+
+#: admin/customizer/options-display.php:69
+msgid "Hide post author"
+msgstr "Fshihe autorin e postimit"
+
+#: admin/customizer/options-display.php:75
+msgid "Hide post categories"
+msgstr "Fshih kategoritë e postimit"
+
+#: admin/customizer/options-display.php:81
+msgid "Hide post tags"
+msgstr "Fshih etiketat e postimit"
+
+#: admin/customizer/options-display.php:87
+msgid "Hide post comment count"
+msgstr "Fshih numrin e komenteve të postimit"
+
+#: admin/customizer/options-display.php:93
+#, fuzzy
+#| msgid "Hide post author"
+msgid "Hide author bio"
+msgstr "Fshihe autorin e postimit"
+
+#: admin/customizer/options-display.php:102
+msgid "Icon"
+msgstr ""
+
+#: admin/customizer/options-display.php:103
+#, fuzzy
+#| msgid "As an icon (without the year)"
+msgid "Icon with year"
+msgstr "Si një ikonë (pa vitin)"
+
+#: admin/customizer/options-display.php:104
+#, fuzzy
+#| msgid "As inline text"
+msgid "Inline text"
+msgstr "Si një tekst brenda rreshtit"
+
+#: admin/customizer/options-display.php:112
+msgid "Excerpts"
+msgstr ""
+
+#: admin/customizer/options-display.php:119
+#, fuzzy
+#| msgid "Show excerpts in front page"
+msgid "Show excerpts in Front Page"
+msgstr "Shfaq fragmentet e postimeve në faqën kryesore"
+
+#: admin/customizer/options-display.php:125
+msgid "Show full content in archive pages"
+msgstr "Shfaq përmbajtjën e plotë në faqën e arkivës"
+
+#: admin/customizer/options-display.php:131
+msgid "Show More link for manual excerpts"
+msgstr "Shfaq linkun Më Shumë për fragmentet manuale"
+
+#: admin/customizer/options-display.php:137
+#, fuzzy
+#| msgid "Retain these HTML tags in excerpts"
+msgid "Keep these HTML tags in excerpts"
+msgstr "Mbaj këto HTML atribute në fragmente"
+
+#: admin/customizer/options-display.php:138
+msgid ""
+"Enter the HTML tags you'd like to retain in excerpts. For example, enter "
+"<code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> to retain <code>&lt;p&gt;</code>, "
+"<code>&lt;ul&gt;</code>, and <code>&lt;li&gt;</code> HTML tags."
+msgstr ""
+"Shkruani atributet HTML të cilat dëshironi ti mbani në fragmente. Për "
+"shembull, shkruani <code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> për të mbajtur "
+"<code>&lt;p&gt;</code>, <code>&lt;ul&gt;</code>, dhe <code>&lt;li&gt;</code>."
+
+#: admin/customizer/options-display.php:149
+#, fuzzy
+#| msgid "Miscellaneous Display Options"
+msgid "Miscellaneous"
+msgstr "Opcionet Tjera të Shfaqjës"
+
+#: admin/customizer/options-display.php:157
+msgid "Disable custom editor styles"
+msgstr "Ndalo stilet e veqanta të përpunuesit"
+
+#: admin/customizer/options-general.php:13
+#, fuzzy
+#| msgid "Header Text"
+msgid "Header"
+msgstr "Teksti i Header-it"
+
+#: admin/customizer/options-general.php:20
+#, fuzzy
+#| msgid "Disabled for pages"
+msgid "Disable Top Bar"
+msgstr "E mbyllur për faqet"
+
+#: admin/customizer/options-general.php:26
+msgid "Use light-coloured header bars"
+msgstr "Përdor header bars me ngjyrë të lehtë"
+
+#: admin/customizer/options-general.php:32
+msgid "Link header image to front page"
+msgstr "Linkoni fotografinë e header-it me faqën kryesore"
+
+#: admin/customizer/options-general.php:33
+msgid ""
+"Check this if you disable the header texts and want the header image to be "
+"linked to the front page."
+msgstr ""
+"Klikoni këtë nëse doni që ta ndalni tekstin e header-it dhe dëshironi që "
+"fotografia e header-it të linkohet me faqën kryesore."
+
+#: admin/customizer/options-general.php:39
+msgid "Disable Featured Image replacing header image"
+msgstr "Ndaloni zëvendësimin e Fotografisë Kryesore me atë të header-it"
+
+#: admin/customizer/options-general.php:40
+msgid ""
+"Check this to prevent the posts Featured Image replacing the header image "
+"regardless of the featured image dimension."
+msgstr ""
+"Klikoni këtë për ta ndaluar zëvendësimin e Fotografisë Kryesore të postimeve "
+"me atë të header-it pa marrë parasysh dimenzionet e fotografisë kryesore."
+
+#: admin/customizer/options-general.php:46
+#, fuzzy
+#| msgid "Header widget area"
+msgid "Header image max height"
+msgstr "Hapësira e Widget-it në Header"
+
+#: admin/customizer/options-general.php:53
+msgid "Search box location"
+msgstr "Lokacioni i hapësirës së kërkimit"
+
+#: admin/customizer/options-general.php:55
+msgid "Top bar"
+msgstr "Shiriti i epërm"
+
+#: admin/customizer/options-general.php:56
+msgid "Navigation bar"
+msgstr "Shiriti navigues"
+
+#: admin/customizer/options-general.php:57
+#, fuzzy
+#| msgid "--Disabled--"
+msgid "Disabled"
+msgstr "--Mbyllur--"
+
+#: admin/customizer/options-general.php:72
+msgid "Disable slider"
+msgstr "Ndaloje Sllajder-in"
+
+#: admin/customizer/options-general.php:78
+msgid "Extend slider to full width of theme"
+msgstr ""
+
+#: admin/customizer/options-general.php:84
+#, fuzzy
+#| msgid "Slider options"
+msgid "Slider content"
+msgstr "Opcionet e sllajdit"
+
+#: admin/customizer/options-general.php:86
+msgid "Show latest posts"
+msgstr "Shfaq postimet e fundit"
+
+#: admin/customizer/options-general.php:87
+msgid "Show random posts"
+msgstr "Shfaq një postim në mënyrë të rastësishme"
+
+#: admin/customizer/options-general.php:88
+#: admin/customizer/options-general.php:268
+msgid "Show specific posts/pages"
+msgstr "Shfaq një postim/faqe specifike"
+
+#: admin/customizer/options-general.php:89
+msgid "Show posts from categories"
+msgstr "Shfaq postimet nga kategoritë"
+
+#: admin/customizer/options-general.php:96
+msgid "Include posts with featured image only"
+msgstr ""
+
+#: admin/customizer/options-general.php:102
+#: admin/customizer/options-general.php:293
+msgid "Posts and/or pages to display"
+msgstr "Postimet dhe/apo faqet që shfaqën"
+
+#: admin/customizer/options-general.php:103
+#: admin/customizer/options-general.php:294
+#, fuzzy
+#| msgid ""
+#| "Enter ID of posts and/or pages to be displayed, separated by comma. "
+#| "Example: <code>1,13,45,33</code>"
+msgid ""
+"Enter ID of posts and/or pages to be displayed, separated by comma.<br / "
+">Applicable only if \"Show specific posts/pages\" is selected above.<br /"
+">Example: <code>1,13,45,33</code>"
+msgstr ""
+"Shkruani ID-në e postimeve dhe/apo faqeve të cilat doni ti shfaqni, duke i "
+"ndarë me presje. Shembull: <code>1,13,45,33</code>"
+
+#: admin/customizer/options-general.php:113
+msgid "Categories to display"
+msgstr "Kategoritë që shfaqën"
+
+#: admin/customizer/options-general.php:116
+msgid ""
+"All posts within the categories selected here will be displayed on the "
+"slider. Usage example: create a new category \"Featured\" and assign all "
+"posts to be displayed on the slider to that category, and then select that "
+"category here."
+msgstr ""
+"Të gjitha postimet brenda kategorive të selektuara këtu do të shfaqën në "
+"sllajder. Shembuj të përdorimit: krijoni një kategori \"Featured\"  dhe "
+"caktoni që të gjitha postimet që shfaqën në sllajder t'i përkasin kësaj "
+"kategorie, dhe selektoni atë kategori këtu."
+
+#: admin/customizer/options-general.php:118
+#: admin/customizer/options-general.php:244
+#: admin/customizer/options-general.php:286
+#, fuzzy
+#| msgid "Hide post categories"
+msgid "Select categories"
+msgstr "Fshih kategoritë e postimit"
+
+#: admin/customizer/options-general.php:125
+#, fuzzy
+#| msgid "Author's posts listings"
+msgid "Exclude the categories from posts listing"
+msgstr "Postimet e Autorit"
+
+#: admin/customizer/options-general.php:131
+#, fuzzy
+#| msgid "Show posts from categories"
+msgid "Show posts from categories in random order"
+msgstr "Shfaq postimet nga kategoritë"
+
+#: admin/customizer/options-general.php:137
+msgid "Number of posts to display"
+msgstr "Numri i postimeve që paraqiten"
+
+#: admin/customizer/options-general.php:138
+msgid "posts"
+msgstr ""
+
+#: admin/customizer/options-general.php:147
+#, fuzzy
+#| msgid "Featured Image"
+msgid "Featured image"
+msgstr "Fotografia kryesore"
+
+#: admin/customizer/options-general.php:149
+#, fuzzy
+#| msgid "Custom slider image URL"
+msgid "Custom image"
+msgstr "URL e veqantë e fotos së sllajdit"
+
+#: admin/customizer/options-general.php:154
+#, fuzzy
+#| msgid "Custom slider image URL"
+msgid "Custom slider image"
+msgstr "URL e veqantë e fotos së sllajdit"
+
+#: admin/customizer/options-general.php:157
+#, fuzzy
+#| msgid ""
+#| "Make sure you select Custom URL in the slider image option above to use "
+#| "this custom url."
+msgid ""
+"Make sure you select \"Custom image\" in the slider image option above to "
+"use this image."
+msgstr ""
+"Sigurohuni që keni zgjedhur URL e Veqantë në opcionet për foton e sllajdit "
+"lartë për të përdorur një URL të veqantë."
+
+#: admin/customizer/options-general.php:163
+msgid "Slider display style"
+msgstr "Stili i shfaqjës së Sllajder-it"
+
+#: admin/customizer/options-general.php:165
+msgid "Background image and excerpt"
+msgstr "Fotografia e prapavijës dhe fragmenti"
+
+#: admin/customizer/options-general.php:166
+msgid "Full post content"
+msgstr "Përmbajtja e postimit të plotë"
+
+#: admin/customizer/options-general.php:173
+msgid "Slider height"
+msgstr "Lartësia e Sllajder-it"
+
+#: admin/customizer/options-general.php:174
+#: admin/customizer/options-general.php:181
+msgid "px"
+msgstr ""
+
+#: admin/customizer/options-general.php:180
+#, fuzzy
+#| msgid "Slider height"
+msgid "Slider height (mobile)"
+msgstr "Lartësia e Sllajder-it"
+
+#: admin/customizer/options-general.php:187
+msgid "Slider speed"
+msgstr "Shpejtësia e Sllajder-it"
+
+#: admin/customizer/options-general.php:188
+msgid "milliseconds"
+msgstr "milisekonda"
+
+#: admin/customizer/options-general.php:189
+#, fuzzy
+#| msgid "This is the duration that each slider item will be shown"
+msgid "This is the duration that each slider item will be shown."
+msgstr "Kjo është koha që duhet për tu shfaqur secili Sllajd"
+
+#: admin/customizer/options-general.php:195
+msgid "Move slider to bottom of page"
+msgstr "Zhvendose sllajder-in në fund të faqës"
+
+#: admin/customizer/options-general.php:202
+msgid "Infinite Scroll"
+msgstr ""
+
+#: admin/customizer/options-general.php:209
+#, fuzzy
+#| msgid "Disabled for pages"
+msgid "Enable for posts"
+msgstr "E mbyllur për faqet"
+
+#: admin/customizer/options-general.php:215
+#, fuzzy
+#| msgid "Leave comment"
+msgid "Enable for comments"
+msgstr "Komento"
+
+#: admin/customizer/options-general.php:221
+#, fuzzy
+#| msgid "Loading tweets..."
+msgid "Loading method"
+msgstr "Duke nxjerrur tweet-at"
+
+#: admin/customizer/options-general.php:223
+msgid "Auto-load"
+msgstr ""
+
+#: admin/customizer/options-general.php:224
+msgid "Click-to-load"
+msgstr ""
+
+#: admin/customizer/options-general.php:232
+#, fuzzy
+#| msgid "Front Page Options"
+msgid "Front Page"
+msgstr "Opcionet e Faqës Kryesore"
+
+#: admin/customizer/options-general.php:239
+msgid "Front page posts categories"
+msgstr "Kategoritë e postimeve të faqës kryesore"
+
+#: admin/customizer/options-general.php:242
+#, fuzzy
+#| msgid ""
+#| "Only posts that belong to the categories selected here will be displayed "
+#| "on the front page. Does not affect Static Front Page."
+msgid ""
+"Only posts that belong to the categories selected here will be displayed on "
+"the front page. Works only if not using Static Front Page."
+msgstr ""
+"Vetëm postimet që janë pjesë e kategorive të caktuara këtu do të shfaqën në "
+"faqën kryesore. Kjo nuk ndikon në Faqën Kryesore Statike."
+
+#: admin/customizer/options-general.php:252
+#, fuzzy
+#| msgid "Homepage Panes"
+msgid "Home Page Panes"
+msgstr "Panot e Faqës Kryesore"
+
+#: admin/customizer/options-general.php:259
+msgid "Disable homepage panes"
+msgstr "Mbyll panot e faqës kryesore"
+
+#: admin/customizer/options-general.php:265
+msgid "Type of content to show"
+msgstr "Tipi i përmbajtjës që shfaqet"
+
+#: admin/customizer/options-general.php:267
+msgid "Latest posts"
+msgstr "Postimet e fundit"
+
+#: admin/customizer/options-general.php:275
+#, fuzzy
+#| msgid "Number of posts to display"
+msgid "Number of posts"
+msgstr "Numri i postimeve që paraqiten"
+
+#: admin/customizer/options-general.php:281
+#, fuzzy
+#| msgid "Category to show latest posts from"
+msgid "Categories to show latest posts from"
+msgstr "Kategoritë nga të cilat do të shfaqën postimet e fundit"
+
+#: admin/customizer/options-general.php:284
+#, fuzzy
+#| msgid ""
+#| "Only posts that belong to the categories selected here will be displayed "
+#| "on the front page. Does not affect Static Front Page."
+msgid ""
+"Only posts that belong to the categories selected here will be displayed in "
+"the home page panes."
+msgstr ""
+"Vetëm postimet që janë pjesë e kategorive të caktuara këtu do të shfaqën në "
+"faqën kryesore. Kjo nuk ndikon në Faqën Kryesore Statike."
+
+#: admin/customizer/options-general.php:308
+msgid "Commenting"
+msgstr "Komentet"
+
+#: admin/customizer/options-general.php:309
+#, fuzzy
+#| msgid ""
+#| "Note: this setting overrides the global WordPress Discussion Setting "
+#| "called \"Allow people to post comments on new articles\" and also the "
+#| "\"Allow comments\" option for individual posts/pages."
+msgid ""
+"Overrides the global WordPress Discussion Setting called \"Allow people to "
+"post comments on new articles\" and also the \"Allow comments\" option for "
+"individual posts/pages."
+msgstr ""
+"Shënim: ky opcion i ndryshon opcionet e WordPress-it për Diskutim të quajtura"
+"\"Lejo vizitorët të komentojnë në artikujt e ri\" gjithashtu dhe \"Lejo "
+"komentet\" opcioni për postimet/faqet individuale."
+
+#: admin/customizer/options-general.php:311
+msgid "Use WordPress settings"
+msgstr "Përdor rregullat e WordPress"
+
+#: admin/customizer/options-general.php:312
+#, fuzzy
+#| msgid "Disabled for pages"
+msgid "Disable for pages"
+msgstr "E mbyllur për faqet"
+
+#: admin/customizer/options-general.php:313
+#, fuzzy
+#| msgid "Disabled completely"
+msgid "Disable completely"
+msgstr "E mbyllur komplet"
+
+#: admin/customizer/options-general.php:321
+#, fuzzy
+#| msgid "Child Page Options"
+msgid "Child Pages"
+msgstr "Opcionet e nënfaqeve"
+
+#: admin/customizer/options-general.php:328
+msgid "Hide parent box if content is empty"
+msgstr "Fshehe kutinë e bashkangjitur nëse përmbajtja është e zbrazët."
+
+#: admin/customizer/options-general.php:334
+msgid "Disable contextual navigation in the sidebar"
+msgstr ""
+
+#: admin/customizer/options-general.php:340
+msgid "Child page listings"
+msgstr "Listimet e nënfaqeve"
+
+#: admin/customizer/options-general.php:342
+msgid "Show listing"
+msgstr "Shfaq listimet"
+
+#: admin/customizer/options-general.php:343
+msgid "Hide listing"
+msgstr "Fshih listimet"
+
+#: admin/customizer/options-general.php:344
+#, fuzzy
+#| msgid "Only show listing if parent content is empty"
+msgid "Show only if parent is empty"
+msgstr "Shfaq listimin vetëm nëse përmbajtja e bashkangjitur është e zbrazët"
+
+#: admin/customizer/options-general.php:352
+#, fuzzy
+#| msgid "Widget Area Options"
+msgid "Widget Areas"
+msgstr "Opcionet e hapësirës së Widget-it"
+
+#: admin/customizer/options-general.php:359
+msgid "Enable header widget area"
+msgstr "Aktivizo hapësirën e widget-it të header-it"
+
+#: admin/customizer/options-general.php:360
+msgid ""
+"<strong>Important:</strong> This widget area is unstyled, as it is often "
+"used for advertisement banners, etc. If you enable it, make sure you style "
+"it to your needs using the Custom CSS option."
+msgstr ""
+"<strong>E Rëndësishme:</strong> Kjo hapësirë e widget-it është e pa "
+"stilizuar, sepse zakonisht përdorët për banera të reklamave, etj. Nëse e "
+"aktivizoni, sigurohuni që ta stilizoni ashtu si doni duke përdorur opcionin "
+"CSS i veqantë."
+
+#: admin/customizer/options-general.php:366
+#, fuzzy
+#| msgid "Enable alternate front page sidebar widget area"
+msgid "Enable alternative sidebar widget area in front page."
+msgstr "Aktivizo hapësira alternative të sidebar-it në faqën kryesore"
+
+#: admin/customizer/options-general.php:372
+#, fuzzy
+#| msgid "Enable alternate front page footer widget area"
+msgid "Enable alternative footer widget area in front page."
+msgstr "Aktivizo hapësira alternative të footer-it në faqën kryesore"
+
+#: admin/customizer/options-general.php:378
+msgid "Divide footer widget area into this number of columns"
+msgstr ""
+
+#: admin/customizer/options-general.php:384
+msgid "Divide alternative footer widget area into this number of columns"
+msgstr ""
+
+#: admin/customizer/options-general.php:391
+#, fuzzy
+#| msgid "Social Media profile URL"
+msgid "Social Profiles"
+msgstr "URL-ja e profilit në Rrjet Social"
+
+#: admin/customizer/options-general.php:398
+msgid "Open social media links in new window"
+msgstr "Hap linqet e rrjeteve sociale në dritare të re"
+
+#: admin/customizer/options-general.php:403
+#, fuzzy
+#| msgid "Social Media profile URL"
+msgid "Social profiles"
+msgstr "URL-ja e profilit në Rrjet Social"
+
+#: admin/customizer/options-general.php:410
+#, fuzzy
+#| msgid "Social Sharing Buttons"
+msgid "Social Sharing"
+msgstr "Butonat për shpërndarje sociale"
+
+#: admin/customizer/options-general.php:417
+#, fuzzy
+#| msgid "Show social sharing button"
+msgid "Show social sharing buttons"
+msgstr "Shfaq butonin për shpërndarje sociale"
+
+#: admin/customizer/options-general.php:423
+msgid "Include static Pages"
+msgstr ""
+
+#: admin/customizer/options-general.php:429
+#, fuzzy
+#| msgid "Show full content in archive pages"
+msgid "Include home and archive pages"
+msgstr "Shfaq përmbajtjën e plotë në faqën e arkivës"
+
+#: admin/customizer/options-general.php:435
+#, fuzzy
+#| msgid "Button label"
+msgid "Buttons location"
+msgstr "Titulli i butonit"
+
+#: admin/customizer/options-general.php:437
+msgid "Bottom of posts"
+msgstr "Fundi i postimeve"
+
+#: admin/customizer/options-general.php:438
+msgid "Top of posts"
+msgstr "Fillimi i postimeve"
+
+#: admin/customizer/options-general.php:439
+#, fuzzy
+#| msgid "Bottom of posts"
+msgid "Top and bottom of posts"
+msgstr "Fundi i postimeve"
+
+#: admin/customizer/options-general.php:446
+#, fuzzy
+#| msgid "Social sharing buttons location"
+msgid "Social sharing buttons code"
+msgstr "Lokacioni i butonave për shpërndarje sociale"
+
+#: admin/customizer/options-general.php:447
+msgid ""
+"You can use codes from any popular social sharing sites, like Facebook, "
+"Digg, AddThis, etc."
+msgstr ""
+"Ju mund të përdorni çfardo kodi nga rrjetet sociale më të famshme, siç janë "
+"Facebook, Digg, AddThis, etj"
+
+#: admin/customizer/options-general.php:458
+#, fuzzy
+#| msgid "Add-ons"
+msgid "Ads"
+msgstr "Add-ons"
+
+#: admin/customizer/options-general.php:465
+#, fuzzy
+#| msgid "Show random posts"
+msgid "Show ads"
+msgstr "Shfaq një postim në mënyrë të rastësishme"
+
+#: admin/customizer/options-general.php:471
+msgid "Include Front Page"
+msgstr ""
+
+#: admin/customizer/options-general.php:477
+#, fuzzy
+#| msgid "Your Adsense code"
+msgid "Ads code"
+msgstr "Kodi juaj i Adsense"
+
+#: admin/customizer/options-general.php:488
+msgid "Analytics"
+msgstr ""
+
+#: admin/customizer/options-general.php:495
+#, fuzzy
+#| msgid "Enable Google Analytics tracking"
+msgid "Enable analytics tracking"
+msgstr "Lejo Google Analytics tracking"
+
+#: admin/customizer/options-general.php:501
+#, fuzzy
+#| msgid "Google Analytics tracking code"
+msgid "Analytics code"
+msgstr "Kodi i Google Analytics"
+
+#: admin/customizer/options-general.php:502
+#, php-format
+msgid ""
+"The analytics code will be added inside the %s element of all pages in this "
+"site."
+msgstr ""
+
+#: admin/customizer/options-general.php:520
+msgid "Copyright text (html allowed)"
+msgstr "Teksti për të drejtat e autorit (lejohet html)"
+
+#: admin/customizer/options-general.php:530
+msgid "Do not show copyright info"
+msgstr "Mos shfaq detajet e të drejtave të autorit"
+
+#: admin/customizer/options-general.php:536
+#, fuzzy
+#| msgid "Do not show the \"Return to top\" link"
+msgid "Disable \"Return to top\" button"
+msgstr "Mos e shfaq linkun \"Kthehu në maje\""
+
+#: admin/customizer/options-general.php:543
+msgid "Print"
+msgstr ""
+
+#: admin/customizer/options-general.php:550
+#, fuzzy
+#| msgid "Enable print CSS for single posts and pages?"
+msgid "Clean up single posts and pages when printing"
+msgstr "Lejo printimin e CSS për postime dhe faqe të vetme?"
+
+#: admin/customizer/options-general.php:556
+msgid "Show print button"
+msgstr "Shfaq butonin për printim"
+
+#: admin/customizer/options-import.php:44 admin/uninstall.php:32
+msgid "ERROR: You are not authorised to perform that operation"
+msgstr "GABIM: Ju nuk jeni të autorizuar që të bëni këtë veprim"
+
+#: admin/customizer/options-import.php:64
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr "Para se të ngarkoni fajllin tuaj, ju duhet të rregulloni këtë gabim:"
+
+#: admin/customizer/options-import.php:70
+#, fuzzy
+#| msgid "Import Graphene Theme Options"
+msgid "Import Graphene Theme Colour Presets"
+msgstr "Importo Opcionet e Graphene Theme"
+
+#: admin/customizer/options-import.php:73
+#, fuzzy
+#| msgid "Choose a file from your computer:"
+msgid ""
+"Choose a Graphene theme's colour presets export file from your computer:"
+msgstr "Zgjedh fajllin nga kompjuteri:"
+
+#: admin/customizer/options-import.php:74
+#, php-format
+msgid "Maximum size: %s"
+msgstr "Madhësia maksimale: %s"
+
+#: admin/customizer/options-import.php:81
+msgid "Upload file and import"
+msgstr "Ngarko fajlli dhe importoje"
+
+#: admin/customizer/options-import.php:100
+#, fuzzy
+#| msgid "Import Graphene Theme Options"
+msgid "Export Graphene Theme Colour Presets"
+msgstr "Importo Opcionet e Graphene Theme"
+
+#: admin/customizer/options-import.php:103
+msgid "Please select the colour presets to be exported."
+msgstr ""
+
+#: admin/customizer/options-import.php:113
+msgid "Export colour presets"
+msgstr ""
+
+#: admin/customizer/options-import.php:114
+#, fuzzy
+#| msgid "Go to the Graphene options page"
+msgid "&laquo; Return to Graphene Options"
+msgstr "Shko tek faqja e opcioneve të Graphene"
+
+#: admin/customizer/options-import.php:132
+#, fuzzy
+#| msgid "ERROR: You are not authorised to perform that operation"
+msgid "Authorisation checks failed to perform this operation."
+msgstr "GABIM: Ju nuk jeni të autorizuar që të bëni këtë veprim"
+
+#: admin/customizer/options-import.php:154
+msgid "Could not read uploaded file. Please check the file and try again."
+msgstr ""
+
+#: admin/customizer/options-import.php:158
+#, fuzzy
+#| msgid "The uploaded file does not contain valid Graphene options."
+msgid ""
+"Uploaded file does not contain any setting to import. Please check and try "
+"again."
+msgstr "Fajlli i ngarkuar nuk përfshin opcione valide të Graphene."
+
+#: admin/customizer/options-import.php:159
+#, fuzzy
+#| msgid "The uploaded file does not contain valid Graphene options."
+msgid ""
+"The uploaded file does not contain valid Graphene options. Please check and "
+"try again."
+msgstr "Fajlli i ngarkuar nuk përfshin opcione valide të Graphene."
+
+#: admin/customizer/options-utilities.php:19
+#, fuzzy
+#| msgid "Reset to default settings"
+msgid "Reset theme settings"
+msgstr "Riktheni opcionet fillestare"
+
+#: admin/customizer/options-utilities.php:26
+#, fuzzy
+#| msgid "Import/export theme options"
+msgid "Import & export settings"
+msgstr "Importo/eksporto opcionet e theme-së"
+
+#: admin/customizer/options-utilities.php:33
+msgid ""
+"Import Graphene settings to replace all current Graphene settings on this "
+"website."
+msgstr ""
+
+#: admin/customizer/options-utilities.php:39
+msgid ""
+"Export Graphene settings so that you can import them later on as a backup, "
+"or replicate settings on other websites."
+msgstr ""
+
+#: admin/customizer/options-utilities.php:46
+#, fuzzy
+#| msgid "Use global setting"
+msgid "Legacy settings"
+msgstr "Përdor rregullat standarde"
+
+#: admin/customizer/options-utilities.php:53
+#, fuzzy
+#| msgid "Import Graphene Theme Options"
+msgid "Export legacy Graphene settings"
+msgstr "Importo Opcionet e Graphene Theme"
+
+#: admin/customizer/options-utilities.php:54
+msgid ""
+"Export legacy Graphene settings in case you need to roll back from Graphene "
+"2.0."
+msgstr ""
+
+#: admin/db-updater.php:247
+#, php-format
+msgid "Follow %s on Twitter"
+msgstr "Ndiq %s në Twitter"
+
+#: admin/db-updater.php:258
+#, php-format
+msgid "Visit %s's Facebook page"
+msgstr "Vizito faqën e Facebook-ut të %s"
+
+#: admin/feature-pointers.php:9
+msgid "Where are all the options?!"
+msgstr "Ku janë të gjitha opcionet?!"
+
+#: admin/feature-pointers.php:10
+msgid "We've decided to clean things up!"
+msgstr "Kemi vendosur që ti pastrojmë gjërat!"
+
+#: admin/feature-pointers.php:11
+msgid ""
+"We know how too many options can really be daunting to new users, so we've "
+"hidden them."
+msgstr ""
+"Ne e dimë që shumë opcione mund të sjellin huti tek përdoruesit e rinjë, "
+"kshtu që i kemi fshehur ato."
+
+#: admin/feature-pointers.php:12
+msgid ""
+"But no worries! If you're a seasoned user of the Graphene theme, or whenever "
+"you feel ready to further customise your site, just click on the \"Show all "
+"options\" link, and they will magically appear to you."
+msgstr ""
+"Por mos u brengosni! Nëse jeni një përdorues i vjetër i Graphene theme, apo "
+"ndiheni të gatshëm të ndryshoni më tepër webfaqën tuaj, vetëm klikoni në "
+"linkun  \"Shfaq të gjitha opcionet\", dhe ato do të paraqiten."
+
+#: admin/options-defaults.php:80
+#, php-format
+msgid "Subscribe to %s's RSS feed"
+msgstr "Abonohuni te %s's RSS feed"
+
+#: admin/options-defaults.php:165
+#, fuzzy
+#| msgid "default"
+msgid "Default"
+msgstr "e zakonshme"
+
+#: admin/options-defaults.php:169
+msgid "Dream Magnet"
+msgstr ""
+
+#: admin/options-defaults.php:173
+msgid "Curiosity Killed"
+msgstr ""
+
+#: admin/options-defaults.php:177
+msgid "Zesty Orange"
+msgstr ""
+
+#: admin/options-init.php:51
+msgid "Graphene Options"
+msgstr "Opcionet e Graphene"
+
+#: admin/options-init.php:110
+msgid "Template preview not found."
+msgstr "Parashikimi i shabllonit nuk u gjet."
+
+#: admin/options-init.php:113
+msgid "default"
+msgstr "e zakonshme"
+
+#: admin/options-init.php:172 admin/options-init.php:176
+msgid "Theme default"
+msgstr "Theme e zakonshme"
+
+#: admin/options-init.php:217
+msgid "Learn more about this feature set"
+msgstr ""
+
+#: admin/options-init.php:218
+#, fuzzy
+#| msgid "Documentation Wiki"
+msgid "Documentation"
+msgstr "Documentation Wiki"
+
+#: admin/options.php:26
+#, fuzzy, php-format
+#| msgid "%1$s at %2$s"
+msgid "Version %1$s by %2$s"
+msgstr "%1$s, ora %2$s"
+
+#: admin/options.php:32
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Customise Graphene settings"
+msgstr "Opcionet e Graphene"
+
+#: admin/options.php:37
+msgid "Get community support"
+msgstr ""
+
+#: admin/options.php:42
+msgid ""
+"Graphene theme is a labour of love, but it could not survive on love alone. "
+"Help support the theme and ensure its continuous development."
+msgstr ""
+
+#: admin/options.php:43
+msgid "Make a contribution"
+msgstr ""
+
+#: admin/options.php:47
+msgid "News and announcement"
+msgstr ""
+
+#: admin/options.php:56
+msgid "No news items."
+msgstr "Nuk ka të reja."
+
+#: admin/uninstall.php:23
+msgid "Uninstall Graphene"
+msgstr "Uninstaloje Graphene"
+
+#: admin/uninstall.php:24
+#, php-format
+msgid "Theme uninstalled. Redirecting to %s"
+msgstr "Theme është uninstaluar. Duke u ridrejtuar në %s"
+
+#: admin/user.php:7
+msgid "Graphene-specific User Profile Information"
+msgstr "Graphene-specifike informata për profilin e përdoruesit"
+
+#: admin/user.php:8
+msgid "The settings defined here are used only with the Graphene theme."
+msgstr "Opcionet e definuara këtu do të përdoren vetëm për Graphene theme."
+
+#: admin/user.php:12
+msgid "Author profile image URL"
+msgstr "URL e fotografisë së profilit të autorit"
+
+#: admin/user.php:14
+#, fuzzy, php-format
+#| msgid ""
+#| "You can specify the image to be displayed as the author's profile image "
+#| "in the Author's page. If no URL is defined here, the author's <a href="
+#| "\"http://www.gravatar.com\">Gravatar</a> will be used."
+msgid ""
+"You can specify the image to be displayed as the author's profile image in "
+"the Author's page. If no URL is defined here, the author's %s will be used."
+msgstr ""
+"Ju mund të specifikoni fotografinë që shfaqet në profilin e autorit në faqën "
+"e Autorit. Nëse nuk ka URL të definuar këtu, do të përdoret <a href=\"http://"
+"www.gravatar.com\">Gravatar-i</a> i autorit."
+
+#: admin/user.php:19
+#, fuzzy, php-format
+#| msgid ""
+#| "Please enter the full URL (including <code>http://</code>) to your "
+#| "profile image."
+msgid "Please enter the full URL (including %s) to your profile image."
+msgstr ""
+"Ju lutem shkruani URL-në e plotë (duke përfshirë <code>http://</code>) në "
+"fotografinë e profilit tuaj."
+
+#: admin/user.php:19
+msgid ""
+"<strong>Important: </strong>Image width must be less than or equal to "
+"<strong>150px</strong>."
+msgstr ""
+"<strong>E Rëndësishme: </strong>Gjerësia e fotografisë duhet të jetë më e "
+"vogë apo e barabartë me <strong>150px</strong>."
+
+#: admin/user.php:24
+#, fuzzy
+#| msgid "Hide date"
+msgid "Hide email"
+msgstr "Fshehe datën"
+
+#: admin/user.php:28
+msgid "Remove email address from your author bio."
+msgstr ""
+
+#: admin/user.php:33
+msgid "Current location"
+msgstr ""
+
+#: admin/user.php:38
+msgid ""
+"Will be displayed on your front-facing author profile page. Recommended to "
+"use \"City, Country\" format, e.g. \"Lisbon, Portugal\"."
+msgstr ""
+
+#: admin/user.php:43
+#, fuzzy
+#| msgid "Social Media icon URL"
+msgid "Social media URLs"
+msgstr "URL-ja e ikonës së Rrjetit Social"
+
+#: archive.php:24 archive.php:26 archive.php:30
+#, fuzzy, php-format
+#| msgid "Archives"
+msgid "%s archive"
+msgstr "Arkiva"
+
+#: archive.php:28
+msgid "F Y"
+msgstr "F Y"
+
+#: archive.php:32
+msgid "Blog Archive"
+msgstr "Blog Arkiva"
+
+#: author.php:32
+#, fuzzy
+#| msgid "Author's posts listings"
+msgid "Author's posts"
+msgstr "Postimet e Autorit"
+
+#: category.php:13
+#, fuzzy, php-format
+#| msgid "Category Archive: <span>%s</span>"
+msgid "Category: <span>%s</span>"
+msgstr "Arkiva e Kategorive: <span>%s</span>"
+
+#: comments.php:25
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+"Ky potim është i mbrojtur me fjalëkalim. Shkruani fjalëkalimin për të "
+"shikuar komentet."
+
+#: comments.php:50 inc/loop.php:818 loop-author.php:58
+#, fuzzy, php-format
+#| msgid "1 comment"
+#| msgid_plural "%d comments"
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] "1 koment"
+msgstr[1] "%d komente"
+
+#: comments.php:52
+#, fuzzy, php-format
+#| msgid "1 ping"
+#| msgid_plural "%d pings"
+msgid "%s ping"
+msgid_plural "%s pings"
+msgstr[0] "1 ping"
+msgstr[1] "%d pings"
+
+#: comments.php:82
+#, fuzzy
+#| msgid "Edit comment"
+msgid "Skip to comment form"
+msgstr "Ndrysho komentin"
+
+#: comments.php:124
+msgid "Comments have been disabled."
+msgstr "Komentet janë mbyllur."
+
+#: comments.php:138
+msgid "Your email address will not be published."
+msgstr "Email adresa e juaj nuk do të publikohet."
+
+#: comments.php:141
+msgid "Submit Comment"
+msgstr "Dërgo Koment"
+
+#: footer.php:74
+#, php-format
+msgid "Made with %1$s by %2$s."
+msgstr ""
+
+#: footer.php:76
+#, fuzzy
+#| msgid "Graphene Theme"
+msgid "Graphene Themes"
+msgstr "Graphene Theme"
+
+#: header.php:30
+#, fuzzy
+#| msgid "Disable search box"
+msgid "Toggle search form"
+msgstr "Hiqeni hapësiren e kërkimit"
+
+#: header.php:60 header.php:98
+msgid "Go back to the front page"
+msgstr "Kthehuni në faqën fillestare"
+
+#: header.php:81
+#, fuzzy
+#| msgid "Slider animation"
+msgid "Toggle navigation"
+msgstr "Animacioni i Sllajder-it"
+
+#: inc/comments.php:25
+msgid "Your comment is awaiting moderation."
+msgstr "Komenti yt duhet të moderohet nga administratori"
+
+#: inc/comments.php:54
+#, fuzzy
+#| msgid "Name:"
+msgid "Name"
+msgstr "Emri:"
+
+#: inc/comments.php:58
+#, fuzzy
+#| msgid "Email:"
+msgid "Email"
+msgstr "Email:"
+
+#: inc/comments.php:62
+#, fuzzy
+#| msgid "Site title options"
+msgid "Website (optional)"
+msgstr "Opcionet e titullit të Webfaqës"
+
+#: inc/comments.php:88
+#, fuzzy
+#| msgid "Message:"
+msgid "Your message"
+msgstr "Mesazhi:"
+
+#: inc/comments.php:184
+#, fuzzy
+#| msgid "Leave comment"
+msgid "Delete this comment"
+msgstr "Komento"
+
+#: inc/comments.php:186
+msgid "Mark this comment as spam"
+msgstr ""
+
+#: inc/comments.php:186
+msgid "Spam"
+msgstr ""
+
+#: inc/comments.php:213
+#, fuzzy
+#| msgid "Leave comment"
+msgid "Fetch more comments"
+msgstr "Komento"
+
+#: inc/comments.php:258
+#, php-format
+msgid "%1$s on %2$s <span class=\"time\">at %3$s</span>"
+msgstr ""
+
+#: inc/comments.php:263
+msgid "Author"
+msgstr ""
+
+#: inc/comments.php:271
+msgid "Reply"
+msgstr "Kthe përgjigje"
+
+#: inc/functions.php:184
+#, php-format
+msgid "Visit %1$s's %2$s page"
+msgstr "Vizito %2$s faqën e %1$s"
+
+#: inc/functions.php:327
+#, php-format
+msgid ""
+"You haven't placed any widget into this widget area. Go to %1$s and place "
+"some widgets in the widget area called %2$s."
+msgstr ""
+
+#: inc/functions.php:327
+msgid "WP Admin > Appearance > Widgets"
+msgstr ""
+
+#: inc/functions.php:328
+msgid "This notice will not be displayed to your site's visitors."
+msgstr ""
+
+#: inc/infinite-scroll.php:98 inc/scripts.php:73
+#, fuzzy
+#| msgid "Read more"
+msgid "Load more"
+msgstr "Lexo më shumë"
+
+#: inc/loop.php:99 loop.php:36
+msgid "Continue reading"
+msgstr "Vazhdo leximin"
+
+#: inc/loop.php:220
+#, fuzzy
+#| msgid "&laquo; Previous page"
+msgid "&laquo; Prev"
+msgstr "&laquo; Faqja e mëhershme"
+
+#: inc/loop.php:221
+#, fuzzy
+#| msgid "Next page &raquo;"
+msgid "Next &raquo;"
+msgstr "Faqja tjetër &raquo;"
+
+#: inc/loop.php:235
+msgid "Pages:"
+msgstr "Faqet:"
+
+#: inc/loop.php:573
+#, php-format
+msgid "Print this %s"
+msgstr "Printoje këtë %s"
+
+#: inc/loop.php:597
+#, fuzzy, php-format
+#| msgid "Return to top"
+msgid "Return to %s"
+msgstr "Kthehu lart"
+
+#: inc/loop.php:727
+#, fuzzy, php-format
+#| msgid "%1$s at %2$s"
+msgid "By %1$s in %2$s"
+msgstr "%1$s, ora %2$s"
+
+#: inc/loop.php:728
+#, php-format
+msgid "Filed under %2$s"
+msgstr ""
+
+#: inc/loop.php:729
+#, fuzzy, php-format
+#| msgid "by %s"
+msgid "By %s"
+msgstr "nga %s"
+
+#: inc/loop.php:810
+#, fuzzy
+#| msgid "Tags:"
+msgid "Tags"
+msgstr "Etiketat:"
+
+#: inc/loop.php:817
+msgid "Leave comment"
+msgstr "Komento"
+
+#: inc/loop.php:916
+msgid "In this section"
+msgstr ""
+
+#: inc/menus.php:136
+msgid "FontAwesome Icon Name"
+msgstr ""
+
+#: inc/menus.php:179
+#, php-format
+msgid "Choose from 580+ %s"
+msgstr ""
+
+#: inc/menus.php:179
+msgid "available icons"
+msgstr ""
+
+#: inc/menus.php:224
+msgid "Home"
+msgstr "Fillimi"
+
+#: inc/menus.php:296
+#, fuzzy, php-format
+#| msgid "(No title)"
+msgid "#%d (no title)"
+msgstr "(Pa Titul)"
+
+#: inc/panes.php:70 inc/panes.php:85 loop-author.php:58 loop-children.php:45
+#: loop.php:17 loop.php:43
+#, php-format
+msgid "Permalink to %s"
+msgstr "Permalink to %s"
+
+#: inc/panes.php:85
+msgid "Read more"
+msgstr "Lexo më shumë"
+
+#: inc/scripts.php:80
+#, php-format
+msgid "Fetching %1$s of %2$s items left ..."
+msgstr ""
+
+#: inc/scripts.php:84
+#, php-format
+msgid "Fetching %1$s of %2$s item left ..."
+msgid_plural "Fetching %1$s of %2$s items left ..."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/scripts.php:89
+msgid "All loaded!"
+msgstr ""
+
+#: inc/scripts.php:93 inc/scripts.php:97
+#, php-format
+msgid "Fetching %1$s of %2$s comments left ..."
+msgid_plural "Fetching %1$s of %2$s comments left ..."
+msgstr[0] ""
+msgstr[1] ""
+
+#: inc/scripts.php:102
+msgid "All comments loaded!"
+msgstr ""
+
+#: inc/setup.php:96
+msgid "Header Menu"
+msgstr "Header menyja"
+
+#: inc/setup.php:98
+msgid "Footer Menu"
+msgstr "Menyja e footer-it"
+
+#: inc/setup.php:148
+msgid "Forest"
+msgstr ""
+
+#: inc/setup.php:153
+msgid "Mountains"
+msgstr ""
+
+#: inc/setup.php:158
+msgid "Road"
+msgstr ""
+
+#: inc/setup.php:162
+msgid "Header image by Syahir Hakim"
+msgstr "Fotografia e Header-it nga Syahir Hakim"
+
+#: inc/setup.php:166
+msgid ""
+"This is the default Graphene theme header image, cropped from image by "
+"Quantin Houyoux at sxc.hu"
+msgstr ""
+"Kjo është fotografia e zakonshme e header-it të Graphene Theme, e përpunuar "
+"nga fotografia e Quantin Houyoux tek sxc.hu"
+
+#: inc/setup.php:170 inc/setup.php:174 inc/setup.php:178 inc/setup.php:182
+#: inc/setup.php:186
+msgid "Header image cropped from image by Ilco at sxc.hu"
+msgstr "Fotografia e header-it e përpunuar nga fotografia e Ilco tek sxc.hu"
+
+#: inc/setup.php:207
+#, fuzzy
+#| msgid "Graphene Theme news"
+msgid "Graphene - Sidebar One"
+msgstr "Të rejat e Graphene Theme"
+
+#: inc/setup.php:209
+msgid ""
+"The first sidebar widget area (will always be displayed on the right hand "
+"side)."
+msgstr ""
+"Hapësira e parë e widget-it të sidebar-it (do të shfaqet gjithmonë në anën e "
+"djathtë)."
+
+#: inc/setup.php:216
+msgid "Graphene - Sidebar Two"
+msgstr ""
+
+#: inc/setup.php:218
+msgid ""
+"The second sidebar widget area (will always be displayed on the left hand "
+"side)."
+msgstr ""
+"Hapësira e dytë e widget-it të sidebar-it (gjithmonë do të shfaqët në anën e "
+"majtë)."
+
+#: inc/setup.php:236
+#, fuzzy
+#| msgid "Graphene FAQs"
+msgid "Graphene - Footer"
+msgstr "Pyetjet më të shpeshta të Graphene"
+
+#: inc/setup.php:238
+msgid ""
+"The footer widget area. Leave empty to disable. Set the number of columns to "
+"display at the theme's Display Options page."
+msgstr ""
+"Hapësira e widget-it në footer. Lëreni të zbrazët për ta deaktivizuar. "
+"Caktoni numrin e kolumneve që shfaqën në faqën e Opcioneve të Shfaqjës."
+
+#: inc/setup.php:253
+msgid "Graphene - Sidebar One (Front Page)"
+msgstr ""
+
+#: inc/setup.php:255
+msgid ""
+"The first sidebar widget area that will only be displayed on the front page."
+msgstr "Sidebar Widget hapësira e parë e cila shfaqet vetëm në faqën kryesore."
+
+#: inc/setup.php:262
+msgid "Graphene - Sidebar Two (Front Page)"
+msgstr ""
+
+#: inc/setup.php:264
+msgid ""
+"The second sidebar widget area that will only be displayed on the front page."
+msgstr "Sidebar Widget hapësira e dytë e cila shfaqet vetëm në faqën kryesore."
+
+#: inc/setup.php:273
+msgid "Graphene - Footer (Front Page)"
+msgstr ""
+
+#: inc/setup.php:275
+msgid ""
+"The footer widget area that will only be displayed on the front page. Leave "
+"empty to disable. Set the number of columns to display at the theme's "
+"Display Options page."
+msgstr ""
+"Footer widget hapësira do të shfaqet vetëm në faqën kryesore. Lene të "
+"zbrazët për ta ndalur këtë opcion. Vendosni numrin e kolumneve për shfaqje "
+"në faqën Display Opcionet."
+
+#: inc/setup.php:285
+#, fuzzy
+#| msgid "Graphene Theme"
+msgid "Graphene - Header"
+msgstr "Graphene Theme"
+
+#: inc/setup.php:287
+msgid "The header widget area."
+msgstr "Hapësira e widget-it të header-it."
+
+#: inc/setup.php:304
+#, php-format
+msgid ""
+"Dynamically added widget area. This widget area is attached to the %s action "
+"hook."
+msgstr ""
+"Widget hapësira e vendosur në mënyrë dinamike. Kjo hapësirë e widget-it "
+"është e ngjitur tek %s action hook."
+
+#: inc/slider.php:61
+#, fuzzy
+#| msgid "View full post"
+msgid "View post"
+msgstr "Shiko postimin e plotë"
+
+#: loop-author.php:58 loop-children.php:45 loop-page.php:5 loop-page.php:16
+#: loop-single.php:16 loop.php:4 loop.php:18
+msgid "(No title)"
+msgstr "(Pa Titul)"
+
+#: loop-author.php:65
+msgid "Most commented posts"
+msgstr "Postimet më të komentuara"
+
+#: loop-not-found.php:3
+msgid "Not found"
+msgstr "Nuk u gjet"
+
+#: loop-not-found.php:8
+msgid ""
+"Sorry, but you are looking for something that isn't here. Wanna try a search?"
+msgstr "Kërkojmë falje, por ajo që po kërkonit nuk ekziston. Doni ta kërkoni?"
+
+#: loop-not-found.php:10
+msgid ""
+"Sorry, but no results were found for that keyword. Wanna try an alternative "
+"keyword search?"
+msgstr ""
+"Kërkojmë falje, por nuk gjetëm asgjë për atë fjalë. Doni të provoni një "
+"tjetër?"
+
+#: loop-page.php:42 loop-single.php:44 loop.php:74
+msgid "Permanent link to this article:"
+msgstr "Permalinku për këtë artikull:"
+
+#: search-404.php:17
+#, fuzzy, php-format
+#| msgid "Search results for: %s"
+msgid "Found %1$s search result for keyword: %2$s"
+msgid_plural "Found %1$s search results for keyword: %2$s"
+msgstr[0] "Rezultatet e kërkimit për: %s"
+msgstr[1] "Rezultatet e kërkimit për: %s"
+
+#: search-404.php:26
+msgid "Suggested results"
+msgstr "Rezultatet e sygjeruara"
+
+#: search-404.php:31
+#, fuzzy, php-format
+#| msgid ""
+#| "I've done a courtesy search for the term %s for you. See if you can find "
+#| "what you're looking for in the list below:"
+msgid ""
+"I've done a courtesy search for the term %1$s for you and found a total of "
+"%2$s result. See if you can find what you're looking for below."
+msgid_plural ""
+"I've done a courtesy search for the term %1$s for you and found a total of "
+"%2$s results. See if you can find what you're looking for below."
+msgstr[0] ""
+"Është bërë një kërkim për fjalën %s për ju. Ndoshta kemi gjetur atë që po "
+"kërkonit në listën e mëposhtme:"
+msgstr[1] ""
+"Është bërë një kërkim për fjalën %s për ju. Ndoshta kemi gjetur atë që po "
+"kërkonit në listën e mëposhtme:"
+
+#: search-404.php:52
+msgid ""
+"<strong>Sorry, couldn't find anything.</strong> Try searching for "
+"alternative terms using the search form above."
+msgstr ""
+"<strong>Na vjen keq, nuk gjetëm asgjë.</strong> Provoni të kërkoni fjalë të "
+"tjera duke përdorur hapësirën lartë për kërkim."
+
+#: search.php:18
+#, fuzzy, php-format
+#| msgid "Search results for: %s"
+msgid "%1$d result for %2$s"
+msgid_plural "%1$d results for %2$s"
+msgstr[0] "Rezultatet e kërkimit për: %s"
+msgstr[1] "Rezultatet e kërkimit për: %s"
+
+#: searchform.php:3
+msgid "Search"
+msgstr "Kërko"
+
+#: sidebar-two.php:28
+msgid "Front Page Sidebar Two Widget Area"
+msgstr "Front Page Sidebar Two Widget Hapësira"
+
+#: sidebar-two.php:30
+msgid "Sidebar Two Widget Area"
+msgstr "Hapësira e Dytë e Widget-it të Sidebar-it"
+
+#: sidebar.php:28
+msgid "Front Page Sidebar Widget Area"
+msgstr "Front Page Sidebar Widget hapësira"
+
+#: sidebar.php:30
+msgid "Sidebar Widget Area"
+msgstr "Sidebar Widget Hapësira"
+
+#: tag.php:13
+#, fuzzy, php-format
+#| msgid "Tag Archive: <span>%s</span>"
+msgid "Tag: <span>%s</span>"
+msgstr "Etiketa e Arkivës <span>%s</span>"
+
+#: taxonomy.php:15
+#, fuzzy, php-format
+#| msgid "%1$s at %2$s"
+msgid "%1$s: %2$s"
+msgstr "%1$s, ora %2$s"
+
+#: template-onecolumn.php:10
+#, fuzzy
+#| msgid "One column"
+msgid "One column, no sidebar"
+msgstr "Një Kolumnë"
+
+#: template-threecolumnscenter.php:11
+#, fuzzy
+#| msgid "Three columns (with sidebars left and right)"
+msgid "Three columns, sidebar left and right"
+msgstr "Tri Kolumne (me sidebar të majtë dhe djathtë)"
+
+#: template-threecolumnsleft.php:13
+#, fuzzy
+#| msgid "Three columns (with sidebars left and right)"
+msgid "Three columns, sidebars on the right"
+msgstr "Tri Kolumne (me sidebar të majtë dhe djathtë)"
+
+#: template-threecolumnsright.php:13
+#, fuzzy
+#| msgid "Three columns (with two sidebars left)"
+msgid "Three columns, sidebars on the left"
+msgstr "Tri Kolumne (me dy sidebar të majtë)"
+
+#: template-twocolumnsleft.php:13
+#, fuzzy
+#| msgid "Two columns (with sidebar right)"
+msgid "Two columns, sidebar on the right"
+msgstr "Dy Kolumne (me sidebar të djathtë)"
+
+#: template-twocolumnsright.php:13
+#, fuzzy
+#| msgid "Two columns (with sidebar left)"
+msgid "Two columns, sidebar on the left"
+msgstr "Dy Kolumne (me sidebar të majtë)"
+
+#~ msgid "Continue reading &raquo;"
+#~ msgstr "Vazhdo leximin &raquo;"
+
+#~ msgid "Daily Archive: %s"
+#~ msgstr "Arkiva Ditore: %s"
+
+#~ msgid "Monthly Archive: %s"
+#~ msgstr "Arkiva Mujore: %s"
+
+#~ msgid "Yearly Archive: %s"
+#~ msgstr "Arkiva Vjetore: %s"
+
+#~ msgid "%1$s Archive: <span>%2$s</span>"
+#~ msgstr "%1$s Arkiva: <span>%2$s</span>"
+
+#~ msgid ""
+#~ "You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> "
+#~ "tags and attributes: %s"
+#~ msgstr ""
+#~ "Mund të përdorni këto <abbr title=\"HyperText Markup Language\">HTML</"
+#~ "abbr> tags and attributes: %s"
+
+#~ msgid "Copyright"
+#~ msgstr "Të drejtat e autorit"
+
+#~ msgid ""
+#~ "Except where otherwise noted, content on this site is licensed under a %s."
+#~ msgstr ""
+#~ "Vetëm në rastet ku citohet ndryshe, përmbajtja e kësaj faqe është e "
+#~ "licensuar sipas %s."
+
+#~ msgid "Creative Commons Licence"
+#~ msgstr "Creative Commons Licence"
+
+#~ msgid "Creative Commons Licence BY-NC-ND"
+#~ msgstr "Creative Commons Licence BY-NC-ND"
+
+#~ msgid "Powered by %1$s and the %2$s."
+#~ msgstr "Mundësuar nga %1$s dhe %2$s."
+
+#~ msgid "Subscribe to RSS feed"
+#~ msgstr "Abonohuni te RSS feed"
+
+#~ msgid "Author's details"
+#~ msgstr "Detajet e Autorit"
+
+#~ msgid "<strong>Name:</strong> %1$s %2$s"
+#~ msgstr "<strong>Emri:</strong> %1$s %2$s"
+
+#~ msgid "<strong>Date registered:</strong> %1$s"
+#~ msgstr "<strong>Data e regjistrimit:</strong> %1$s"
+
+#~ msgid "Biography"
+#~ msgstr "Biografia"
+
+#~ msgid "Permalink Link to %s"
+#~ msgstr "Permalink Link to %s"
+
+#~ msgid "View page &raquo;"
+#~ msgstr "Shikoje faqen &raquo;"
+
+#~ msgid "Edit %s"
+#~ msgstr "Ndryshoje %s"
+
+#~ msgid "Status update"
+#~ msgstr "Status i ri"
+
+#~ msgid "Audio"
+#~ msgstr "Audio"
+
+#~ msgid "Image"
+#~ msgstr "Fotografi"
+
+#~ msgid "Video"
+#~ msgstr "Video"
+
+#~ msgid "Post format"
+#~ msgstr "Formati i postit"
+
+#~ msgid "l F j, Y"
+#~ msgstr "l F j, Y"
+
+#~ msgid "g:i A"
+#~ msgstr "g:i A"
+
+#~ msgid "Edit post"
+#~ msgstr "Ndryshoje postin"
+
+#~ msgid "Posted on: %s"
+#~ msgstr "U postua më: %s"
+
+#~ msgid "F j, Y"
+#~ msgstr "F j, Y"
+
+#~ msgid "Categories:"
+#~ msgstr "Kategoritë:"
+
+#~ msgid "This post has no tag"
+#~ msgstr "Ky postim nuk është i etiketuar"
+
+#~ msgid "About the author"
+#~ msgstr "Për autorin"
+
+#~ msgid "Read the rest of this entry &raquo;"
+#~ msgstr "Lexoje vazhdimin e kësaj pjese &raquo;"
+
+#~ msgid "Meta"
+#~ msgstr "Meta"
+
+#~ msgid "Posts RSS"
+#~ msgstr "Postimet RSS"
+
+#~ msgid "Comments RSS"
+#~ msgstr "Komentet RSS"
+
+#~ msgid "Powered by %s"
+#~ msgstr "Mundësuar nga %s"
+
+#~ msgid ""
+#~ "Powered by WordPress, state-of-the-art semantic personal publishing "
+#~ "platform."
+#~ msgstr ""
+#~ "Mundësuar nga WordPress, state-of-the-art semantic personal publishing "
+#~ "platform."
+
+#~ msgid "Graphene's Frequently Asked Questions"
+#~ msgstr "Pyetjet më të shpeshta të Graphene"
+
+#~ msgid "Where should I go for the theme's support?"
+#~ msgstr "Ku duhet të shkoj për mbështetje të mëtutjeshme të themes?"
+
+#~ msgid ""
+#~ "Please direct all support requests for the theme at the theme's <a href="
+#~ "\"http://forum.khairul-syahir.com/graphene-wordpress-theme/\">Support "
+#~ "Forum</a>."
+#~ msgstr ""
+#~ "Ju lutem dërgoni të gjitha kërkesat e juaja për mbështetje në <a href="
+#~ "\"http://forum.khairul-syahir.com/graphene-wordpress-theme/\">Forumin për "
+#~ "mbështetje</a>."
+
+#~ msgid "The post's featured image is replacing my header image. Help!"
+#~ msgstr ""
+#~ "Fotografia kryesore e postimit po e zëvendëson foton e header-it. Më "
+#~ "duhet ndihmë!"
+
+#~ msgid ""
+#~ "This is actually one of the theme's features, based on the feature in the "
+#~ "default TwentyTen theme. Any featured image that has a size of greater "
+#~ "than or equal to the theme's header image size (960 x 198 pixels) will "
+#~ "replace the header image when the post/page that featured image is "
+#~ "assigned to is being displayed. It enables you to have different header "
+#~ "image for different posts and/or pages."
+#~ msgstr ""
+#~ "Kjo në fakt është një nga opcionet e theme-s, bazuar në idenë normale të "
+#~ "theme-s TwentyTen. Çdo fotografi kryesore e cila është më e madhe apo e "
+#~ "barabartë me fotografinë e header-it (960 x 198 pixels) do të "
+#~ "zëvendoësojë këtë fotografi kur të postohet një postim/faqe e re me "
+#~ "fotografi kryesore. Kjo ju mundëson që të keni fotografi të ndryshme të "
+#~ "header-it për postim/faqe të ndryshme."
+
+#~ msgid ""
+#~ "If you want to disable this feature, simply tick the <em>Disable Featured "
+#~ "Image replacing header image</em> option in the <a href=\"themes.php?"
+#~ "page=graphene_options&tab=display\">Graphene Options</a> page, under "
+#~ "Display &gt; Header Display Options."
+#~ msgstr ""
+#~ "Nëse doni ta ndalni këtë opcion, vetëm klikoni në <em>Ndalni zëvendësimin "
+#~ "e fotografisë së header-it me fotografi kryesore të postimit/faqës</em> "
+#~ "opcionin në <a href=\"themes.php?page=graphene_options&tab=display"
+#~ "\">Graphene Opcionet</a>"
+
+#~ msgid "Can I modify Graphene to my heart's content without paying anything?"
+#~ msgstr ""
+#~ "A mund ta ndryshoj Graphene por jo përmbajtjen e faqes pa paguar asgjë?"
+
+#~ msgid ""
+#~ "The Graphene WordPress theme, along with all the other themes in the "
+#~ "WordPress.org Official Free Themes Directory, is released under the GNU "
+#~ "General Public License (GPL) Version 2. The full text of that licence is "
+#~ "included with the theme in the <code>licence.txt</code> file in the "
+#~ "theme's folder. Releasing the theme under that licence means, among "
+#~ "others, that you are <em>free to modify the theme in any way for any "
+#~ "purpose (including commercial)</em> without any obligation to the theme's "
+#~ "author. However, if you decide to redistribute the theme, the licence "
+#~ "dictates that you must release the theme under the same licence, GPLv2."
+#~ msgstr ""
+#~ "Graphene Theme për Wordpress, së bashku me të gjitha theme-t tjera falas "
+#~ "brenda direktorisë zyrtare të Wordpress.org, janë të publikuara sipas GNU "
+#~ "General Public License (GPL) Version 2. Teksti komplet i licensës është i "
+#~ "përfshirë në theme në fajllin <code>licence.txt</code> në folderin e "
+#~ "theme-s. Duke e publikuar theme-n në sipas kësaj license do të thotë, mes "
+#~ "të tjerash, që ju jeni <em> i lirë që ta ndryshoni atë në çfardo mënyre "
+#~ "dhe për çfardo qëllimesh (përfshirë ato komerciale) </em> pa ndonjë "
+#~ "obligim ndaj autorit të theme-s. Megjithatë, nëse vendosni ta "
+#~ "ridistributoni  theme-n, licensa ju obligon që ta publikoni këtë theme "
+#~ "sipas të njejtës licensë, GPLv2."
+
+#~ msgid ""
+#~ "But of course, the author would always appreciate <a href=\"themes.php?"
+#~ "page=graphene_options\">donations</a> to support ongoing and future "
+#~ "developments of the theme."
+#~ msgstr ""
+#~ "But normalisht, autori do të jetë mirënjohës për <a href=\"themes.php?"
+#~ "page=graphene_options\">donacione</a> që do të qojnë në zhvillimin e "
+#~ "mëtutjeshëm të theme-s."
+
+#~ msgid ""
+#~ "If the theme is released under GPLv2, what is this Creative Commons "
+#~ "licence in the theme's footer?"
+#~ msgstr ""
+#~ "Nëse kjo theme është e publikuar sipas GPLv2, atëherë qfarë është "
+#~ "Creative Commons license në fund të faqës?"
+
+#~ msgid ""
+#~ "The Creative Commons licence is a popular licence nowadays that are used "
+#~ "by a lot of web-based content authors to licence their work such that it "
+#~ "protects their intellectual property but in the same time allows its free "
+#~ "distribution. It is included with the theme simply to make it easy for "
+#~ "the theme's users to make use of the licence for the content they "
+#~ "publish. Theme users can remove it altogether via the theme's Options "
+#~ "page should they wish not to use it."
+#~ msgstr ""
+#~ "Licensa Creative Commons është një licensë shumë e famshme e cila "
+#~ "përdoret nga shumë autorë që prodhojnë përmbajtje për internet për t'a "
+#~ "licensuar punën e tyre duke mbrojtur pronën e tyre intelektuale dhe në të "
+#~ "njejtën kohë duke bërë distributimin falas. Është e përfshirë me këtë "
+#~ "theme thjeshtë për të bërë më të lehtë që përdoruesit të jenë më të lirë "
+#~ "në përmbajtjen që ata e publikojnë. Përdoruesit mund ta heqin atë në "
+#~ "faqën e opcioneve nëse nuk dëshirojnë ta përdorin."
+
+#~ msgid ""
+#~ "Put simply, <em>it is not the licence that is applied for the theme "
+#~ "itself</em>, but just for the website's content should the theme user "
+#~ "wants to use it."
+#~ msgstr ""
+#~ "Thënë më thjeshtë, <em>nuk është licensë e cila i aplikohet theme-s</em>, "
+#~ "por i aplikohet vetëm përmbajtjes së webfaqës nëse përdoruesi dëshiron ta "
+#~ "përdor."
+
+#~ msgid "Is the theme compatible with this plugin or that plugin?"
+#~ msgstr "A është kjo theme e aftë të punojë me këtë apo atë plugin?"
+
+#~ msgid ""
+#~ "I don't know. With so many plugins available for WordPress, there's no "
+#~ "way that I (or anybody else for that matter) can test for compatibility "
+#~ "for all of them. Having said that, the theme is built with all the "
+#~ "necessary WordPress components included with it, so chances are most "
+#~ "plugins will be compatible with the theme."
+#~ msgstr ""
+#~ "Nuk e di. Me gjithë ata plugin-a të shumtë që ka WordPress, nuk ka ndonjë "
+#~ "mënyrë që unë (apo dikush tjetër) mund ta testoj nëse të gjithë ata "
+#~ "funksionojnë në rregull. Duke thënë këtë, kjo theme është e ndërtuar me "
+#~ "të gjitha komponentet e nevojshme të WordPress-it, kështu që shancat janë "
+#~ "që shumica e plugin-ave të funksionojnë edhe me këtë theme."
+
+#~ msgid ""
+#~ "My suggestion is to just install the plugin and try it. If you stumble "
+#~ "into problem, ask for support from the plugin author first. If the plugin "
+#~ "author says that it's a problems with the theme, you know where to find "
+#~ "support."
+#~ msgstr ""
+#~ "Sygjerimi im është që t'a instaloni dhe t'a provoni vetë atë. Nëse hasni "
+#~ "në ndonjë problem, kërkoni për ndihmë tek autori i plugin-it së pari. "
+#~ "Nëse ai konstaton se problemi qëndron tek webfaqja atëhere lirisht na "
+#~ "kontaktoni ne."
+
+#~ msgid "Preview"
+#~ msgstr "Provoje si duket"
+
+#~ msgid "Enable preview of your site on the Graphene Theme Options page"
+#~ msgstr ""
+#~ "Lejoni para-shikimin e webfaqës suaj në faqën e Graphene Theme Opcionet"
+
+#~ msgid "Rescan action hooks"
+#~ msgstr "Riskeno action hooks"
+
+#~ msgid "Header Display Options"
+#~ msgstr "Opcionet e shfaqjës së Header-it"
+
+#~ msgid "Use random header image"
+#~ msgstr "Përdor një fotografi të rastësishme të header-it"
+
+#~ msgid ""
+#~ "Check this to show a random header image (random image taken from the "
+#~ "available default header images)."
+#~ msgstr ""
+#~ "Klikoni këtë për të shfaqur një fotografi të rastësishme të header-it "
+#~ "(fotografia merret rastësisht nga fotografitë e definiuara për header). "
+
+#~ msgid ""
+#~ "<strong>Note:</strong> only works on pages where a specific header image "
+#~ "is not defined."
+#~ msgstr ""
+#~ "<strong>Vëmendje:</strong> punon vetëm në faqet ku nuk është definuar "
+#~ "fotografia e header-it."
+
+#~ msgid "Column Options"
+#~ msgstr "Opcionet e Kolumneve"
+
+#~ msgid "Three columns (with two sidebars right)"
+#~ msgstr "Tri Kolumne (me dy sidebar të djathtë)"
+
+#~ msgid "bbPress column mode"
+#~ msgstr "bbPress mënyra e kolumneve"
+
+#~ msgid "Column Width Options"
+#~ msgstr "Opcionet e Gjatësisë së Kolumneve"
+
+#~ msgid "Posts Display Options"
+#~ msgstr "Opcionet e Shfaqjës së Postimeve"
+
+#~ msgid ""
+#~ "Note: displaying date as inline text allows more space for the content "
+#~ "area, especially useful for a three-column layout configuration."
+#~ msgstr ""
+#~ "Shënim: Nëse e shfaqni datën si tekst brenda rreshtit, kjo ju lë me më "
+#~ "shumë hapësirë në pjesën e përmbajtës, shumë e dobishme për konfigurimin "
+#~ "me tri-kolumne."
+
+#~ msgid ""
+#~ "Only affects posts listing (such as the front page) and not single post "
+#~ "view."
+#~ msgstr ""
+#~ "Ndikon vetëm në listimin e rregullt të postimeve (siç është faqja "
+#~ "kryesore) dhe jo postimin e vetëm."
+
+#~ msgid "Show post author's <a href=\"http://en.gravatar.com/\">gravatar</a>"
+#~ msgstr ""
+#~ "Shfaq <a href=\"http://en.gravatar.com/\">Gravatar-in</a> e autorit të "
+#~ "postimit"
+
+#~ msgid "Show post author's info"
+#~ msgstr "Shfaq detajet e autorit të postimit"
+
+#~ msgid "Excerpts Display Options"
+#~ msgstr "Opcionet e Shfaqjës së Fragmenteve"
+
+#~ msgid ""
+#~ "Note: Archive pages include the archive for category, tags, time, and "
+#~ "search results pages. Enabling this option will cause the full content of "
+#~ "posts and pages listed in those archives to displayed instead of the "
+#~ "excerpt, and truncated by the Read More tag if used."
+#~ msgstr ""
+#~ "Shënim: Faqja e arkivës përfshin arkivat për kategoritë, etiketat, kohën "
+#~ "dhe faqën e rezultateve të kërkimeve. Duke e lejuar këtë opcion, e gjithë "
+#~ "përmbajtja e plotë e postimeve dhe faqeve të arkivuara do të shfaqën e jo "
+#~ "vetëm fragmenti, vetëm nëse përdorët opcioni Lexo Më Shumë."
+
+#~ msgid "Comments Display Options"
+#~ msgstr "Opcionet e Shfaqjës së Komenteve"
+
+#~ msgid "Hide allowed tags in comment form"
+#~ msgstr "Fshih etiketat e lejuara në formën e komenteve"
+
+#~ msgid "Colours Options"
+#~ msgstr "Opcionet e ngjyrave"
+
+#~ msgid ""
+#~ "When you've got the perfect combination, you can even share it with "
+#~ "fellow Graphene theme users through the <a href=\"http://forum.khairul-"
+#~ "syahir.com/\">Support Forum</a>."
+#~ msgstr ""
+#~ "Kur të gjeni kombinimin perfekt, ju mund ta ndani atë me përdoruesit e "
+#~ "tjerë të Graphene theme në <a href=\"http://forum.khairul-syahir.com/"
+#~ "\">Forumin për mbështetje</a>."
+
+#~ msgid ""
+#~ "<strong>Note:</strong> The previews work best on modern Gecko- and Webkit-"
+#~ "based browsers, such as Mozilla Firefox and Google Chrome."
+#~ msgstr ""
+#~ "<strong>Shënim:</strong> Testimi si do të duket webfaqja më së miri "
+#~ "funksionojnë në shfletuesit modern siç janë Mozilla Firefox dhe Google "
+#~ "Chrome."
+
+#~ msgid ""
+#~ "<strong>Note:</strong> To reset any of the colours to their default "
+#~ "value, just click on \"Clear\" beside the colour field and save the "
+#~ "settings. The theme will automatically revert the value to the default "
+#~ "colour."
+#~ msgstr ""
+#~ "<strong>Shënim:</strong> Për të reset-uar cilendo nga ngjyrat në gjendjen "
+#~ "e mëparshme, vetëm klikoni në \"Pastro\" afër fushës së ngjyrave dhe "
+#~ "ruani ndryshimet. The webfaqja në mënyrë automatike do të kthehet si ka "
+#~ "qenë në fillim."
+
+#~ msgid "Post and pages bottom border"
+#~ msgstr "Kufizimi i poshtëm i postimeve dhe faqeve"
+
+#~ msgid "Clear"
+#~ msgstr "Pastro"
+
+#~ msgid "Widget preview"
+#~ msgstr "Si do të duket Widget"
+
+#~ msgid "Widget title"
+#~ msgstr "Titulli i Widget-it"
+
+#~ msgid "List item"
+#~ msgstr "Listoje"
+
+#~ msgid "Widget title colour"
+#~ msgstr "Ngjyra e titullit të Widget-it"
+
+#~ msgid "Widget title text shadow colour"
+#~ msgstr "Ngjyra e hijës së titullit të Widget-it"
+
+#~ msgid "Widget header gradient bottom colour"
+#~ msgstr "Ngjyra gradiente e poshtme e header-it të Widget-it"
+
+#~ msgid "Widget header gradient top colour"
+#~ msgstr "Ngjyra gradiente e sipërme e header-it të Widget-it"
+
+#~ msgid "Slider background preview"
+#~ msgstr "Si duket prapavija e Sllajder-it"
+
+#~ msgid "Slider top left colour"
+#~ msgstr "Ngjyra e Sllajder-it majtas lart"
+
+#~ msgid "Slider bottom right colour"
+#~ msgstr "Ngjyra e Sllajderit poshtë djathtas"
+
+#~ msgid "Block buttons"
+#~ msgstr "Butonat blok"
+
+#~ msgid "Block button preview"
+#~ msgstr "Si duket blok butoni"
+
+#~ msgid "Button label colour"
+#~ msgstr "Ngjyra e titullit të butonit"
+
+#~ msgid "Button label text shadow"
+#~ msgstr "Hijëzimi i titullit të butonit"
+
+#~ msgid "Archive title"
+#~ msgstr "Titulli i arkivës"
+
+#~ msgid "Archive title preview"
+#~ msgstr "Si duket titulli i arkivës"
+
+#~ msgid "Archive title:"
+#~ msgstr "Titulli i arkivës:"
+
+#~ msgid "Sample title"
+#~ msgstr "Titull i rëndomtë"
+
+#~ msgid "Archive background gradient left colour"
+#~ msgstr "Ngjyra gradiente e majtë  e prapavijës së arkivës"
+
+#~ msgid "Archive background gradient right colour"
+#~ msgstr "Ngjyra gradiente e djathtë e prapavijës së arkivës"
+
+#~ msgid "Archive text colour"
+#~ msgstr "Ngjyra e tekstit të arkivës"
+
+#~ msgid "Archive label and text shadow colour"
+#~ msgstr "Ngjyra e hijëzimit të titullit dhe emrit të arkivës"
+
+#~ msgid "Text Style Options"
+#~ msgstr "Opcionet e Stilit të Tekstit"
+
+#~ msgid ""
+#~ "Note that these are CSS properties, so any valid CSS values for each "
+#~ "particular property can be used."
+#~ msgstr ""
+#~ "Keni parasysh se keto jane pjesë të CSS, kështu që çdo vlerë valide e VSS "
+#~ "mund të përdoret për cilendo pjesë."
+
+#~ msgid "Some example CSS properties values:"
+#~ msgstr "Disa shembuj të vlerave të pjesëve të CSS"
+
+#~ msgid "Text font:"
+#~ msgstr "Tekst fonti:"
+
+#~ msgid "Text size and line height:"
+#~ msgstr "Madhësia e tekstit dhe lartësia e vijës:"
+
+#~ msgid "Text weight:"
+#~ msgstr "Pesha e tekstit:"
+
+#~ msgid "Text style:"
+#~ msgstr "Stili i tekstit:"
+
+#~ msgid "Text colour:"
+#~ msgstr "Ngjyra e tekstit:"
+
+#~ msgid "Title text size"
+#~ msgstr "Madhësia e tekstit të titullit"
+
+#~ msgid "Title text weight"
+#~ msgstr "Pesha e titullit të tekstit"
+
+#~ msgid "Title text line height"
+#~ msgstr "Lartësia e vijës së tekstit të titullit"
+
+#~ msgid "Title text style"
+#~ msgstr "Stili i tekstit të titullit"
+
+#~ msgid "Description text font"
+#~ msgstr "Fonti i tekstit të përshkrimit"
+
+#~ msgid "Description text size"
+#~ msgstr "Madhësia e tekstit të përshkrimit"
+
+#~ msgid "Description text weight"
+#~ msgstr "Pesha e tekstit të përshkrimit"
+
+#~ msgid "Description text line height"
+#~ msgstr "Lartësia e vijës së tekstit të përshkrimit"
+
+#~ msgid "Description text style"
+#~ msgstr "Stili i tekstit të përshkrimit"
+
+#~ msgid "Text font"
+#~ msgstr "Fonti i tekstit"
+
+#~ msgid "Text size"
+#~ msgstr "Madhësia e tekstit"
+
+#~ msgid "Text line height"
+#~ msgstr "Lartësia e vijës së tekstit"
+
+#~ msgid "Text colour"
+#~ msgstr "Ngjyra e tekstit"
+
+#~ msgid "Link colour (normal state )"
+#~ msgstr "Ngjyra e linkut (gjendja normale)"
+
+#~ msgid "Link colour (visited state )"
+#~ msgstr "Ngjyra e linkut (gjendja kur është vizituar)"
+
+#~ msgid "Text decoration (normal state )"
+#~ msgstr "Dekorimi i tekstit (gjendja normale)"
+
+#~ msgid "Footer Widget Display Options"
+#~ msgstr "Opcionet e Shfaqjës së Widget-eve të Footer-it"
+
+#~ msgid "Number of columns to display"
+#~ msgstr "Numri i kolumneve që shfaqën"
+
+#~ msgid "Number of columns to display for front page footer widget"
+#~ msgstr ""
+#~ "Numri i kolumneve që shfaqën për widget-in e footer-it në faqën kryesore"
+
+#~ msgid "Navigation Menu Display Options"
+#~ msgstr "Opcionet e Shfaqjës së Menysë së Navigimit"
+
+#~ msgid "Disable description in Header Menu"
+#~ msgstr "Shfaq përshkrimin në Menynë e Header-it"
+
+#~ msgid "Description for default menu \"Home\" item"
+#~ msgstr "Përshkrimi për pjesën e zakonshme  \"Fillimi\" të menysë"
+
+#~ msgid ""
+#~ "Use these tags to customise your own site title structure: <code>#site-"
+#~ "name</code>, <code>#site-desc</code>, <code>#post-title</code>"
+#~ msgstr ""
+#~ "Përdor këto etiketa për ta ndryshuar strukturën e titullit të webfaqës :"
+#~ "<code>#site-name</code>, <code>#site-desc</code>, <code>#post-title</code>"
+
+#~ msgid "Custom front page site title"
+#~ msgstr "Titull i veqantë i faqës kryesore"
+
+#~ msgid ""
+#~ "Defaults to <code>#site-name &raquo; #site-desc</code>. The <code>#post-"
+#~ "title</code> tag cannot be used here."
+#~ msgstr ""
+#~ "Rikthehet në <code>#site-name &raquo; #site-desc</code>. Etiketa "
+#~ "<code>#post-title</code> nuk mund të përdoret këtu."
+
+#~ msgid "Custom content pages site title"
+#~ msgstr "Titull i veqantë i faqës së përmbajtjës"
+
+#~ msgid "Defaults to <code>#post-title &raquo; #site-name</code>."
+#~ msgstr "Kthehet në  <code>#post-title &raquo; #site-name</code>."
+
+#~ msgid "Favicon options"
+#~ msgstr "Opcionet e Fav Ikonës"
+
+#~ msgid "Upload or select image from gallery"
+#~ msgstr "Ngarkoje apo zgjidh fotografinë nga galeria"
+
+#~ msgid ""
+#~ "Simply enter the full URL to your favicon file here to enable favicon. "
+#~ "Make sure you include the <code>http://</code> in front of the URL as "
+#~ "well. Or use the WordPress media uploader to upload an image, or select "
+#~ "one from the media library."
+#~ msgstr ""
+#~ "Vetëm shkruani URL-në e plotë të fajllit të Fav Ikonës për ta aktivizuar "
+#~ "atë. Sigurohuni që të përfshini <code>http://</code> në fillim të URL-së. "
+#~ "Apo përdorni ngarkuesin e medias në WordPress për ta ngarkuar "
+#~ "fotografinë, apo zgjidh një nga ato që gjenden në libraria e medias."
+
+#~ msgid "WordPress Editor options"
+#~ msgstr "Opcionet e Përpunuesit të Wordpress-it"
+
+#~ msgid "Custom CSS"
+#~ msgstr "CSS i veqantë"
+
+#~ msgid "Custom CSS styles"
+#~ msgstr "Stile të veqanta të CSS"
+
+#~ msgid ""
+#~ "You can enter your own CSS codes below to modify any other aspects of the "
+#~ "theme's appearance that is not included in the options."
+#~ msgstr ""
+#~ "Këtu mund të shkruani kodet tuaja të CSS-it për të ndryshuar ndonjë "
+#~ "aspekt tjetër të webfaqës që nuk gjindet në opcione kryesore."
+
+#~ msgid "Slider Options"
+#~ msgstr "Opcionet e Sllajder-it"
+
+#~ msgid "What do you want to show in the slider"
+#~ msgstr "Çfarë dëshironi të shfaqni në Sllajder"
+
+#~ msgid ""
+#~ "Applicable only if <strong>Show specific posts/pages</strong> is selected "
+#~ "above."
+#~ msgstr ""
+#~ "Aplikohet vetëm nëse <strong>Shfaq një postim/faqe specifike</strong> "
+#~ "është e zgjedhur lartë."
+
+#~ msgid "Thumbnail and excerpt"
+#~ msgstr "Thumbnail fotogradia dhe fragmenti"
+
+#~ msgid "Horizontal slide"
+#~ msgstr "Sllajdi horizontal"
+
+#~ msgid "Vertical slide"
+#~ msgstr "Sllajdi vertikal"
+
+#~ msgid "Fade"
+#~ msgstr "Duke u zbehur"
+
+#~ msgid "No effect"
+#~ msgstr "Pa efekt"
+
+#~ msgid "Slider transition speed"
+#~ msgstr "Shpejtësia e tranzicionit të Sllajder-it"
+
+#~ msgid ""
+#~ "This is the speed of the slider transition. Lower values = higher speed."
+#~ msgstr ""
+#~ "Kjo është shpejtësia e tranzicionit të sllajder-it. Vlera më të vogla = "
+#~ "shpejtësi më e madhe."
+
+#~ msgid "You may select multiple categories by holding down the CTRL key."
+#~ msgstr ""
+#~ "Ju mund të selektoni më shumë kategori duke e mbajtur shtypur tastin CTRL."
+
+#~ msgid "Latest posts by category"
+#~ msgstr "Postimet e fundit sipas kategorive"
+
+#~ msgid "Posts and/or pages"
+#~ msgstr "Postimet dhe/apo faqet"
+
+#~ msgid "Number of latest posts to display"
+#~ msgstr "Numri i postimeve të fundit që shfaqën"
+
+#~ msgid ""
+#~ "Applicable only if <strong>Latest posts</strong> or <strong>Latest posts "
+#~ "by category</strong> is selected above."
+#~ msgstr ""
+#~ "Aplikohet vetëm nëse <strong>Postimet e fundit</strong> apo "
+#~ "<strong>Postimet e fundit sipas kategorive</strong> janë të zgjedhura "
+#~ "lartë."
+
+#~ msgid ""
+#~ "Applicable only if <strong>Latest posts by category</strong> is selected "
+#~ "above."
+#~ msgstr ""
+#~ "Aplikohet vetëm nëse <strong>Postimet e fundit sipas kategorive</strong> "
+#~ "është e zgjedhur lartë."
+
+#~ msgid ""
+#~ "Applicable only if <strong>Posts and/or pages</strong> is selected above."
+#~ msgstr ""
+#~ "Aplikohet vetëm nëse <strong>Postimet dhe/apo faqet</strong> është e "
+#~ "zgjedhur lartë."
+
+#~ msgid ""
+#~ "<strong>Note:</strong> homepage panes are only displayed when using a <a "
+#~ "href=\"http://codex.wordpress.org/Creating_a_Static_Front_Page\">static "
+#~ "front page</a>."
+#~ msgstr ""
+#~ "<strong>Shënim:</strong> panot e faqës kryesore shfaqën vetëm nëse "
+#~ "përdoret <a href=\"http://codex.wordpress.org/Creating_a_Static_Front_Page"
+#~ "\">Faqja Kryesore Statike</a>."
+
+#~ msgid "Comments Options"
+#~ msgstr "Opcionet e komenteve"
+
+#~ msgid "Alternate Widgets"
+#~ msgstr "Widget-et alternative"
+
+#~ msgid ""
+#~ "You can enable the theme to show different widget areas in the front page "
+#~ "than the rest of the website. If you enable this option, additional "
+#~ "widget areas that will only be displayed on the front page will be added "
+#~ "to the Widget settings page."
+#~ msgstr ""
+#~ "Ju mund ta aktivizoni këtë theme që të shfaq widgete të ndryshme në faqën "
+#~ "kryesore dhe të ndryshme në faqet e tjera. Nëse e aktivizoni këtë opcion, "
+#~ "hapësira të tjera të widget-eve që shfaqën vetëm në faqën kryesore do të "
+#~ "duken në faqën e opcioneve të Widget-eve."
+
+#~ msgid ""
+#~ "You can also specify different column counts for the front page footer "
+#~ "widget and the rest-of-site footer widget if you enable this option."
+#~ msgstr ""
+#~ "Ju mund të specifikoni numra të ndryshëm të kolumneve për widgetin e "
+#~ "footer-it në faqën kryesore, si dhe për pjesët e tjera të webfaqës nëse e "
+#~ "aktivizoni këtë opcion."
+
+#~ msgid "Top Bar Options"
+#~ msgstr "Opcionet e shiritit të epërm"
+
+#~ msgid "Hide the top bar"
+#~ msgstr "Fshih shiritin e epërm"
+
+#~ msgid "Hide feed icon"
+#~ msgstr "Fshih ikonën e feed-it"
+
+#~ msgid "Use custom feed URL"
+#~ msgstr "Përdor URL të veqantë të feed-it"
+
+#~ msgid ""
+#~ "This custom feed URL will replace the default WordPress RSS feed URL."
+#~ msgstr ""
+#~ "Kjo URL e veqantë e feed-it do të zëvendësojë atë të WordPress-it RSS "
+#~ "feed URL."
+
+#~ msgid "Twitter URL"
+#~ msgstr "URL e Twitter-it"
+
+#~ msgid "Enter the URL to your Twitter page."
+#~ msgstr "Shkruani URL-në e faqës së Twitter-it."
+
+#~ msgid "Facebook URL"
+#~ msgstr "URL e Facebook-ut"
+
+#~ msgid "Enter the URL to your Facebook profile page."
+#~ msgstr "Shkruani URL-në e faqës së Facebook-ut"
+
+#~ msgid "%s Title"
+#~ msgstr "%s Titulli"
+
+#~ msgid ""
+#~ "The title is empty and the following title will be shown: <strong>%s</"
+#~ "strong>"
+#~ msgstr ""
+#~ "Titulli është i zbrazët dhe ky është titulli që do të shfaqët: <strong>"
+#~ "%s</strong>"
+
+#~ msgid "%s icon URL"
+#~ msgstr "%s URL e ikonës"
+
+#~ msgid "Add new social media icon"
+#~ msgstr "Shto një ikonë të re të rrjetit social"
+
+#~ msgid "Show in Pages as well?"
+#~ msgstr "Shfaqe në faqe gjithashtu?"
+
+#~ msgid "Both top and bottom"
+#~ msgstr "Edhe fundi edhe fillimi i postimeve"
+
+#~ msgid "Your social sharing button code"
+#~ msgstr "Kodi i butonit për shpërndarje sociale"
+
+#~ msgid "You may use these tags to get the post's URL, title, and excerpt:"
+#~ msgstr ""
+#~ "Ju mund të përdorni këto etiketa për të nxjerrur URL-në, titullin, dhe "
+#~ "fragmentin e postimit:"
+
+#~ msgid "Adsense Options"
+#~ msgstr "Opcionet për Adsense"
+
+#~ msgid "Show Adsense advertising"
+#~ msgstr "Shfaq reklamat e Adsense"
+
+#~ msgid "Show ads on front page as well"
+#~ msgstr "Shfaq reklama edhe në faqën kryesore"
+
+#~ msgid "Google Analytics Options"
+#~ msgstr "Opcionet e Google Analytics"
+
+#~ msgid ""
+#~ "<strong>Note:</strong> the theme now places the Google Analytics script "
+#~ "in the <code>&lt;head&gt;</code> element to better support the new "
+#~ "asynchronous Google Analytics script. Please make sure you update your "
+#~ "script to use the new asynchronous script from Google Analytics."
+#~ msgstr ""
+#~ "<strong>Shënim:</strong> kjo theme vendos skriptin e Google Analytics në "
+#~ "elementin <code>&lt;head&gt;</code> në mënyrë që të jetë më i "
+#~ "sinkronizuar me skriptin e ri të Google Analytics. Sigurohuni që e keni "
+#~ "verzionin më të ri në mënyrë që të përdorni këtë skript."
+
+#~ msgid ""
+#~ "Make sure you include the full tracking code (including the <code>&lt;"
+#~ "script&gt;</code> and <code>&lt;/script&gt;</code> tags) and not just the "
+#~ "<code>UA-#######-#</code> code."
+#~ msgstr ""
+#~ "Sigurohuni që të përfshini kodin e plotë të Google Analytics (përfshirë "
+#~ "edhe <code>&lt;script&gt;</code> dhe <code>&lt;/script&gt;</code> "
+#~ "etiketat) dhe jo vetëm kodin <code>UA-#######-#</code>."
+
+#~ msgid "Footer Options"
+#~ msgstr "Opcionet e Footer-it"
+
+#~ msgid "Use Creative Commons licence for content"
+#~ msgstr "Përdor licensën Creative Commons për përmbajtje"
+
+#~ msgid ""
+#~ "If this field is empty, the following default copyright text will be "
+#~ "displayed:"
+#~ msgstr ""
+#~ "Nëse kjo fushë është e zbrazët, ky tekst i zakonshëm për të drejta të "
+#~ "autorit do të shfaqet:"
+
+#~ msgid "Print Options"
+#~ msgstr "Opcionet për printim"
+
+#~ msgid ""
+#~ "<strong>Note:</strong> This is an experimental feature. Please report any "
+#~ "problem at the <a href=\"http://forum.khairul-syahir.com/forum/bug-report"
+#~ "\">Support Forum</a>."
+#~ msgstr ""
+#~ "<strong>Shënim:</strong> Kjo është një opcion eksperimental. Raportoni "
+#~ "ndonjë problem tek <a href=\"http://forum.khairul-syahir.com/forum/bug-"
+#~ "report\">Forumi për mbështetje</a>."
+
+#~ msgid "Options import completed"
+#~ msgstr "Importimi i Opcioneve përfundoi"
+
+#~ msgid "Sorry, there has been an error."
+#~ msgstr "Kërkojmë ndjesë, ndodhi një gabim."
+
+#~ msgid "The uploaded file could not be read."
+#~ msgstr "Fajlli i ngarkuar nuk mund të lexohet."
+
+#~ msgid "The uploaded file is not supported."
+#~ msgstr "Fajlli i ngarkuar nuk ka mbështetje nga ne."
+
+#~ msgid ""
+#~ "File is empty. Please upload something more substantial. This error could "
+#~ "also be caused by uploads being disabled in your php.ini or by "
+#~ "post_max_size being defined as smaller than upload_max_filesize in php."
+#~ "ini."
+#~ msgstr ""
+#~ "Fajlli është i zbrazët. Ju lutem ngarkoni diçka më substanciale. Ky gabim "
+#~ "gjithashtu mund të shfaqet për shkak të moslejimit të ngarkimeve në php."
+#~ "ini apo by post_max_size ku definohet vlerë më e vogël se "
+#~ "upload_max_filesize në php.ini "
+
+#~ msgid "Toggle all options boxes"
+#~ msgstr "Aktivizo të gjitha kutitë e opcioneve"
+
+#~ msgid "The \"Normal website\" settings preset has been applied."
+#~ msgstr "Shablloni i opcioneve  \"Webfaqe normale\" është aplikuar."
+
+#~ msgid "Settings have been reset."
+#~ msgstr "Opcionet janë resetuar."
+
+#~ msgid "ERROR: Invalid category to show in slider."
+#~ msgstr "GABIM: Kategoria nuk bën të shfaqët në sllajder."
+
+#~ msgid ""
+#~ "ERROR: You must specify the posts/pages to be displayed when you have "
+#~ "\"Show specific posts/pages\" selected for the slider."
+#~ msgstr ""
+#~ "GABIM: ju duhet të specifikoni postimet/faqet të cilat duhet të shfaqën "
+#~ "kur të zgjedhni \"Shfaq postimet/faqet specifike\" në sllajder."
+
+#~ msgid ""
+#~ "ERROR: You must have selected at least one category when you have \"Show "
+#~ "posts from categories\" selected for the slider."
+#~ msgstr ""
+#~ "GABIM: Ju duhet të zgjedhni të paktën një kategori kur të zgjidhni "
+#~ "opcionin  \"Shfaq postimet nga kategoritë\" në sllajder."
+
+#~ msgid "ERROR: Invalid category selected for the slider categories."
+#~ msgstr "GABIM: Kategori nuk bën të shfaqët si kategori e sllajderit."
+
+#~ msgid ""
+#~ "ERROR: The number of posts to displayed in the slider must be a an "
+#~ "integer value."
+#~ msgstr ""
+#~ "GABIM: Numri i postimeve që shfaqën në sllajder duhet të jetë numër i "
+#~ "plotë."
+
+#~ msgid "ERROR: Invalid option for the slider image is specified."
+#~ msgstr ""
+#~ "GABIM: Nuk është specifikuar opcion valid për fotografinë e sllajder-it."
+
+#~ msgid "ERROR: Bad URL entered for the custom slider image URL."
+#~ msgstr ""
+#~ "GABIM: URL e parregullt është futur në URL-në e fotografisë së veqantë të "
+#~ "sllajder-it."
+
+#~ msgid "ERROR: Invalid option for the slider display style is specified."
+#~ msgstr ""
+#~ "GABIM: Opcion jo valid është spcifikuar për stilin e shfaqjës së sllajder-"
+#~ "it."
+
+#~ msgid "ERROR: The value for slider height must be an integer."
+#~ msgstr ""
+#~ "GABIM: Vlera e lartësisë së sllajder-it duhet të jetë numër i plotë."
+
+#~ msgid "ERROR: The value for slider speed must be an integer."
+#~ msgstr ""
+#~ "GABIM: Vlera e shpejtësisë së sllajder-it duhet të jetë numër i plotë."
+
+#~ msgid "ERROR: The value for slider transition speed must be an integer."
+#~ msgstr ""
+#~ "GABIM: Vlera e shpejtësisë së tranzicionit duhet të jetë numër i plotë."
+
+#~ msgid "ERROR: Invalid slider animation."
+#~ msgstr "GABIM: Animacion jo valid i sllajder-it."
+
+#~ msgid ""
+#~ "ERROR: Invalid category selected for the front page posts categories."
+#~ msgstr ""
+#~ "GABIM: Është zgjedhur kategori jo valide për kategoritë e postimeve të "
+#~ "faqës kryesore."
+
+#~ msgid ""
+#~ "ERROR: Invalid option for the type of content to show in homepage panes."
+#~ msgstr ""
+#~ "GABIM: Opcioni është jo valid për llojin e përmbajtjës që shfaqët në "
+#~ "panot e faqës kryesore."
+
+#~ msgid ""
+#~ "ERROR: The value for the number of latest posts to display in homepage "
+#~ "panes must be an integer."
+#~ msgstr ""
+#~ "GABIM: Vlera e numrit të postimeve të fundit që shfaqën në panot e faqës "
+#~ "kryesore duhet të jetë numër i plotë."
+
+#~ msgid ""
+#~ "ERROR: Invalid category selected for the latest posts to show from in the "
+#~ "homepage panes."
+#~ msgstr ""
+#~ "GABIM: Kategori jo valid është zgjedhur për postimet e fundit që shfaqën "
+#~ "në panot e faqës kryesore."
+
+#~ msgid "ERROR: Invalid option for the comments option."
+#~ msgstr "GABIM: Opcioni është jo valid për opcionet e komenteve."
+
+#~ msgid "ERROR: Invalid option for the child page listings."
+#~ msgstr "GABIM: Opcioni është jo valid për listimet e nënfaqeve."
+
+#~ msgid "ERROR: Bad URL entered for the custom feed URL."
+#~ msgstr "GABIM: URL jo valide është shkruar në feed URL e veqantë. "
+
+#~ msgid "ERROR: Bad URL entered for the Twitter URL."
+#~ msgstr "GABIM: URL jo valide është shkruar në Twitter URL."
+
+#~ msgid "ERROR: Bad URL entered for the Facebook URL."
+#~ msgstr "GABIM: URL jo valide është shkruar në Facebook URL."
+
+#~ msgid "ERROR: Bad URL entered for the social media icon URL."
+#~ msgstr ""
+#~ "GABIM: URL jo valide është shkruar për URL-në e ikonës së rrjeteve "
+#~ "sociale."
+
+#~ msgid "ERROR: Bad URL entered for the social media URL."
+#~ msgstr "GABIM: URL jo valide është shkruar për URL-në e rrjeteve sociale."
+
+#~ msgid "ERROR: Invalid option for the social sharing buttons location."
+#~ msgstr ""
+#~ "GABIM: Opcioni është jo valid për lokacionin e butonave të mediave "
+#~ "sociale."
+
+#~ msgid "ERROR: Invalid option for the Search box location."
+#~ msgstr "GABIM: Opcion jo valid për lokacionin e hapësirës së kërkimit."
+
+#~ msgid "ERROR: Invalid option for the column mode."
+#~ msgstr "GABIM: Opcion jo valid për mënyrën e kolumneve."
+
+#~ msgid "ERROR: Invalid option for the bbPress column mode."
+#~ msgstr "GABIM: Opcion jo valid për bbPress mënyrën e kolumneve."
+
+#~ msgid ""
+#~ "ERROR: Invalid width for %s. Width value must be positive number without "
+#~ "units."
+#~ msgstr ""
+#~ "GABIM: Gjatësi jo valide për %s. vlera e gjatësisë duhet të jetë një "
+#~ "numër pozitiv pa shtesa të tjera."
+
+#~ msgid "ERROR: Invalid option for the post date display."
+#~ msgstr "GABIM: Opcion jo valid i shfaqjës së datës së postimit."
+
+#~ msgid ""
+#~ "ERROR: The number of columns to be displayed in the footer widget must be "
+#~ "a an integer value."
+#~ msgstr ""
+#~ "GABIM: Numri i kolumneve që shfaqën në widget-in e footer-it duhet të "
+#~ "jetë numër i plotë."
+
+#~ msgid "ERROR: The width of the submenu must be a an integer value."
+#~ msgstr "GABIM: Gjerësia e nënmenysë duhet të jetë numër i plotë."
+
+#~ msgid "ERROR: Bad URL entered for the favicon URL."
+#~ msgstr "GABIM: URL jo valide është shkruar në URL-në e fav ikonës."
+
+#~ msgid "ERROR: Invalid action hook selected widget action hooks."
+#~ msgstr "GABIM: Action hook jo valid është zgjedhur për këtë widget."
+
+#~ msgid ""
+#~ "Please confirm that you would like to uninstall the Graphene theme. All "
+#~ "of the theme's options in the database will be deleted."
+#~ msgstr ""
+#~ "Ju lutem konfirmo se dëshironi ta uninstaloni Graphene theme. Të gjitha "
+#~ "opcionet e theme-së në databazë do të fshihen."
+
+#~ msgid "Uninstall Theme"
+#~ msgstr "Uninstaloje Theme-në."
+
+#~ msgid "Graphene Theme Options"
+#~ msgstr "Opcionet e Graphene Theme"
+
+#~ msgid ""
+#~ "These are the global settings for the theme. You may override some of the "
+#~ "settings in individual posts and pages."
+#~ msgstr ""
+#~ "Këto janë opcionet e përgjithshme për theme. Ju mund të bëni ndryshime të "
+#~ "veqanta në postimet dhe faqet individuale."
+
+#~ msgid "General"
+#~ msgstr "Gjenerale"
+
+#~ msgid "Display"
+#~ msgstr "Shfaqja"
+
+#~ msgid "Advanced"
+#~ msgstr "Të Avancuara"
+
+#~ msgid "Save Options"
+#~ msgstr "Ruaj Opcionet"
+
+#~ msgid "Need help?"
+#~ msgstr "Ju duhet ndihmë?"
+
+#~ msgid "Support Forum"
+#~ msgstr "Forumi për Mbështetje"
+
+#~ msgid "Also, find out how you can %s."
+#~ msgstr "Gjithashtu, shiko se si mundeni të %s."
+
+#~ msgid "support the Graphene theme"
+#~ msgstr "mbështetni Graphene Theme"
+
+#~ msgid "Support the developer"
+#~ msgstr "Mbështetni krijuesin e themes"
+
+#~ msgid ""
+#~ "Developing this awesome theme took a lot of effort and time, months and "
+#~ "months of continuous voluntary unpaid work. If you like this theme or if "
+#~ "you are using it for commercial websites, please consider a donation to "
+#~ "the developer to help support future updates and development."
+#~ msgstr ""
+#~ "Në krijimin e kësaj theme fantastike është shpenzuar shumë kohë dhe mund, "
+#~ "muaj e muaj të një pune të vazhdueshme vullnetare pa pagesë. Nëse ju "
+#~ "pëlqen apo nëse e përdorni për webfaqe komerciale, ju lutem konsideroni "
+#~ "të dërgoni donacione tek krijuesi i theme-së në mënyrë që të ketë më "
+#~ "shumë zhvillime të reja në të ardhmën."
+
+#~ msgid "Graphene Usage Survey"
+#~ msgstr "Pyetsor për përdorimin e Graphene"
+
+#~ msgid ""
+#~ "Help us to get to know you better. Take the Graphene theme usage survey "
+#~ "now! Every opinion counts towards making the theme better. The survey is "
+#~ "very short, and is completely anonymous."
+#~ msgstr ""
+#~ "Na ndihmoni që të ju njohim më mirë juve. Plotësoni këtë pyetsor të "
+#~ "përdorimit tani! Çdo opinion i juaj na ndihmon që ta bëjmë këtë theme sa "
+#~ "më të mirë. Pyetsori është i shkurtër, dhe totalisht anonim."
+
+#~ msgid "Take the survey"
+#~ msgstr "Plotësoni pyetsorin"
+
+#~ msgid "Add-ons and plugins"
+#~ msgstr "Add-ons dhe pluginat"
+
+#~ msgid ""
+#~ "Add-ons are not shipped with the theme, but can be installed separately "
+#~ "to extend the theme's capability."
+#~ msgstr ""
+#~ "Add-ons nuk vijnë me theme, por mund të instalohen ndaras për të rritur "
+#~ "aftësitë e theme-së."
+
+#~ msgid "Installed"
+#~ msgstr "E Instaluar"
+
+#~ msgid "Not installed"
+#~ msgstr "Jo e Instaluar"
+
+#~ msgid "Learn more"
+#~ msgstr "Lexo më shumë"
+
+#~ msgid ""
+#~ "Mobile extension developed specifically for optimised display of your "
+#~ "site on mobile devices, such as iPhone and Android devices."
+#~ msgstr ""
+#~ "Shtesa për mobil e zhvilluar veqanërisht për shfaqje të optimizuar të "
+#~ "webfaqës suaj në telefona si Iphone dhe Android."
+
+#~ msgid "Plugins"
+#~ msgstr "Pluginat"
+
+#~ msgid ""
+#~ "The plugins listed here are natively supported by the theme. All you need "
+#~ "to do is install the plugins and activate them."
+#~ msgstr ""
+#~ "Pluginat e listuar këtu vijnë me theme. Vetëm duhet t'i instaloni ata dhe "
+#~ "pastaj t'i aktivizoni."
+
+#~ msgid "Activated"
+#~ msgstr "Aktiv"
+
+#~ msgid ""
+#~ "The default settings for the theme is preconfigured for use in blogs. If "
+#~ "you're using this theme primarily for a normal website, or if you want to "
+#~ "reset the settings to their default values, you can apply one of the "
+#~ "available options presets below."
+#~ msgstr ""
+#~ "Opcionet normale për këtë theme janë të konfiguruara paraprakisht që të "
+#~ "përdoren nëpër blogje. Nëse e përdorni këtë theme së pari për një webfaqe "
+#~ "normale, apo nëse dëshironi t'i riktheni këto opcione tek vlerat "
+#~ "fillestare, mund ta bëni këtë duket përdorur shabllonet e opcioneve më "
+#~ "poshtë."
+
+#~ msgid ""
+#~ "Note that you can still configure the individual settings after you apply "
+#~ "any preset."
+#~ msgstr ""
+#~ "Megjithatë duhet ta dini se ende mund t'i konfiguroni opcionet "
+#~ "individuale pasi të aplikoni ndonjë shabllon."
+
+#~ msgid "Select Options Preset"
+#~ msgstr "Zgjidhni Shabllonin e Opcioneve"
+
+#~ msgid "Apply Options Preset"
+#~ msgstr "Aplikoni Shabllonin e Opcioneve"
+
+#~ msgid "Import"
+#~ msgstr "Importo"
+
+#~ msgid "Export"
+#~ msgstr "Eksporto"
+
+#~ msgid "Uninstall theme"
+#~ msgstr "Uninstaloje theme-në"
+
+#~ msgid ""
+#~ "<strong>Be careful!</strong> Uninstalling the theme will remove all of "
+#~ "the theme's options from the database. Do this only if you decide not to "
+#~ "use the theme anymore."
+#~ msgstr ""
+#~ "<strong>Kini kujdes!</strong> Duke uninstaluar theme-në ju do të fshini "
+#~ "të gjitha opcionet e theme-së në databazë. Bëne këtë vetëm nëse vendsni "
+#~ "që mos ta përdorni më këtë theme."
+
+#~ msgid ""
+#~ "If you just want to try another theme, there is no need to uninstall this "
+#~ "theme. Simply activate the other theme in the Appearance &gt; Themes "
+#~ "admin page."
+#~ msgstr ""
+#~ "Nëse dëshironi të provoni një theme tjeter, nuk ka nevojë ta uninstaloni "
+#~ "këtë theme. Vetem aktivizone theme-në tjetër në Appearance &gt; Themes "
+#~ "admin page."
+
+#~ msgid ""
+#~ "Note that uninstalling this theme <strong>does not remove</strong> the "
+#~ "theme's files. To delete the files after you have uninstalled this theme, "
+#~ "go to Appearances &gt; Themes and delete the theme from there."
+#~ msgstr ""
+#~ "Kini vëmendjen se duke uninstaluar këtë theme <strong>nuk fshihen</"
+#~ "strong> fajllat e theme-së. Për t'i fshirë fajllat pasi ta uninstaloni, "
+#~ "atëherë shkoni në Appearances &gt; Themes dhe bëni fshirjen e theme-së "
+#~ "nga aty."
+
+#~ msgid ""
+#~ "The preview will be updated when the \"Save Options\" button above is "
+#~ "clicked."
+#~ msgstr ""
+#~ "Opcioni se si duket do të përtrihet kur butoni  \"Ruaj Opcionet\" lartë "
+#~ "klikohet."
+
+#~ msgid "Social Media name"
+#~ msgstr "Emri i Rrjetit Social"
+
+#~ msgid "Name of the social media, e.g. LinkedIn, etc."
+#~ msgstr "Emri i këtij rrjeti social, p.sh. LinkedIn, etj."
+
+#~ msgid "Social Media title"
+#~ msgstr "Titulli i Rrjetit Social"
+
+#~ msgid "Title for the social media, leave empty for generated title."
+#~ msgstr ""
+#~ "Titulli i rrjetit social, lëreni të zbrazët për një titull automatik."
+
+#~ msgid "URL to your page for the social media."
+#~ msgstr "URL-ja e faqës suaj për rrjete sociale."
+
+#~ msgid ""
+#~ "URL to the social media icon. Note: the theme uses the %s icon set for "
+#~ "the social media icons. Please do not hotlink the icons on the site. "
+#~ "Download the icons you need and upload them to your server instead."
+#~ msgstr ""
+#~ "URL-ja e ikonës së rrjetit social. Shënim: theme përdor setin e ikonave "
+#~ "%s për rrjete sociale. Ju lutem mos të linkoni direkt tek ikonat në "
+#~ "webfaqe. Shkarkoni këto ikona dhe ngarkoni ato në serverin tuaj."
+
+#~ msgid "Website:"
+#~ msgstr "Webfaqja juaj:"
+
+#~ msgid "Older posts &laquo;"
+#~ msgstr "Postimet e vjetra &laquo;"
+
+#~ msgid "&raquo; Newer posts"
+#~ msgstr "&raquo; Postimet e reja"
+
+#~ msgid ""
+#~ "<strong>ERROR: You must supply the post ID to get the image from as an "
+#~ "argument when calling the graphene_get_post_image() function.</strong>"
+#~ msgstr ""
+#~ "<strong>GABIM: Ju duhet të shkruani ID-në e postimit për të nxjerrur "
+#~ "fotografinë si argument kur të thërrisni graphene_get_post_image() "
+#~ "function.</strong>"
+
+#~ msgid "Footer Widget Area"
+#~ msgstr "Footer Widget Hapësira"
+
+#~ msgid "Front Page Footer Widget Area"
+#~ msgstr "Front Page Footer Widget Hapësira"
+
+#~ msgid "Header Widget Area"
+#~ msgstr "Header Widget Hapësira"
+
+#~ msgid "Display the latest Twitter status updates."
+#~ msgstr "Shfaq statuset më të reja në Twitter"
+
+#~ msgid "Follow me on Twitter"
+#~ msgstr "Më ndiq në Twitter"
+
+#~ msgid "follower"
+#~ msgstr "përcjellës"
+
+#~ msgid "followers"
+#~ msgstr "përcjellësit"
+
+#~ msgid "Latest tweets"
+#~ msgstr "Tweetat e fundit"
+
+#~ msgid "Title:"
+#~ msgstr "Titulli:"
+
+#~ msgid "Twitter Username:"
+#~ msgstr "Username-i në Twitter"
+
+#~ msgid "Number of tweets to display:"
+#~ msgstr "Numrin e tweet-ave që shfaqen:"
+
+#~ msgid "Show followers count"
+#~ msgstr "Shfaq numrin e përcjellësve"
+
+#~ msgid "Open links in new window"
+#~ msgstr "Hap linqet në një dritare tjetër"

@@ -43,7 +43,7 @@
     <?php 
         while ( have_posts() ) {
             the_post(); 
-            get_template_part( 'loop', 'search' );
+            graphene_get_template_part( 'loop', 'search' );
         }
     ?>
     </div>

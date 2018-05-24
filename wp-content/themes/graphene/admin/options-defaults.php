@@ -22,6 +22,7 @@ $graphene_defaults = apply_filters( 'graphene_defaults', array(
 	'light_header' 				=> false,
 	'link_header_img' 			=> false,
 	'featured_img_header' 		=> false,
+	'header_text_align'			=> 'center',
 	'header_img_height'		 	=> 250,	
 	'search_box_location' 		=> 'top_bar', // top_bar | nav_bar | disabled
 	
@@ -34,7 +35,7 @@ $graphene_defaults = apply_filters( 'graphene_defaults', array(
 	'slider_postcount' 			=> 5,
 	'slider_with_image_only'	=> false,
 	'slider_img' 				=> 'post_image', // disabled | featured_image | post_image | custom_url
-	'slider_display_style' 		=> 'bgimage-excerpt', // bgimage-excerpt | card | full-post
+	'slider_display_style' 		=> 'bgimage-excerpt', // bgimage-excerpt | card | banner | full-post
 	'slider_imgurl' 			=> '',
 	'slider_height' 			=> 400,
 	'slider_height_mobile'		=> 250,
@@ -42,6 +43,7 @@ $graphene_defaults = apply_filters( 'graphene_defaults', array(
 	'slider_position' 			=> false,
 	'slider_disable'			=> false,
 	'slider_full_width'			=> false,
+	'slider_as_header'			=> false,
 	
 	/* Infinite Scroll options */
 	'inf_scroll_enable'			=> false,
@@ -73,7 +75,8 @@ $graphene_defaults = apply_filters( 'graphene_defaults', array(
 	
 	/* Top bar options(Syndication) */
 	'hide_top_bar' 				=> false,        		
-	'social_media_new_window'   => false,	
+	'social_media_new_window'   => false,
+	'social_media_location'		=> 'top-bar', // disabled | top-bar | footer | top-bar-footer
 	'social_profiles'           => array ( 
 		array ( 
 			'type'	=> 'rss',
@@ -105,6 +108,13 @@ $graphene_defaults = apply_filters( 'graphene_defaults', array(
 	'enable_header_widget' 		=> false,
 	'footerwidget_column' 		=> 4,
 	'alt_footerwidget_column' 	=> 4,
+
+	/* Mentions bar */
+	'mentions_bar_title'		=> '',
+	'mentions_bar_desc'			=> '',
+	'mentions_bar_display'		=> 'front-page', // disable | front-page | pages | all
+	'mentions_bar_new_window'	=> false,
+	'brand_icons'				=> array(),
 	
 	/* Footer options */
 	'copy_text' 				=> '',
@@ -122,7 +132,8 @@ $graphene_defaults = apply_filters( 'graphene_defaults', array(
 	 */
 
 	/* Column layout */
-	'container_style'	=> 'boxed', // boxed | full-width
+	'container_style'	=> 'boxed', // boxed | full-width | full-width-boxed
+	'mobile_left_column_first'	=> false,
 	'column_mode' 		=> 'two_col_left',  // one_column | two_col_left | two_col_right | three_col_left | three_col_right | three_col_center
 	'bbp_column_mode' 	=> 'two_col_left',
 	'container_width' 	=> 1170,
@@ -146,6 +157,8 @@ $graphene_defaults = apply_filters( 'graphene_defaults', array(
 	'hide_post_cat' 			=> false,
 	'hide_post_tags' 			=> false,
 	'hide_author_bio'			=> false,
+	'hide_post_nav'				=> false,
+	'post_nav_in_term'			=> false,
 	
 	/* Excerpt options */
 	'posts_show_excerpt' 		=> false,
@@ -213,6 +226,9 @@ $graphene_defaults = apply_filters( 'graphene_defaults', array(
 
 	'slider_caption_bg' 		=> 'rgba(0,0,0,0.8)',
 	'slider_caption_text'	 	=> '#ffffff',
+	'slider_card_bg' 			=> '#ffffff',
+	'slider_card_text'	 		=> '#4a474b',
+	'slider_card_link'	 		=> '#783d98',
 
 	'button_bg' 				=> '#4F2D69',
 	'button_label'	 			=> '#ffffff',

@@ -137,7 +137,7 @@ function graphene_get_comment_count( $type = 'comments', $only_approved_comments
 	elseif 	( $type == 'trackbacks' ) 	$type_sql = 'comment_type = "trackback"';
 	elseif 	( $type == 'pingbacks' )	$type_sql = 'comment_type = "pingback"';
 	
-	$type_sql = apply_filters( 'franz_comments_typesql', $type_sql, $type );
+	$type_sql = apply_filters( 'graphene_comments_typesql', $type_sql, $type );
 	$approved_sql = $only_approved_comments ? ' AND comment_approved="1"' : '';
 	$top_level_sql = ( $top_level ) ? ' AND comment_parent="0" ' : '';
         

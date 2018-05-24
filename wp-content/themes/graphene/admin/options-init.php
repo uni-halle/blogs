@@ -152,11 +152,15 @@ function graphene_page_template_visualizer() {
         
         function update_page_template() {
             var preview_img = $( '#page_template' ).val().replace(/.php$/, '.png' );
+            
 			<?php if ( is_rtl() ) : ?>
 				if ( preview_img.indexOf('left') > -1 ) preview_img = preview_img.replace('left','right');
 				else if ( preview_img.indexOf('right') > -1 ) preview_img = preview_img.replace('right','left');
 			<?php endif; ?>
-            if (preview_img == 'default' ) $( '#page_template_img' ).removeAttr('src');
+            if (preview_img == 'default' ) {
+            	$( '#page_template_img' ).removeAttr('src');
+            	return;
+            }
             $( '#page_template_img' ).attr( 'src', '<?php echo $preview_img_path ?>'+preview_img);
         }
         

@@ -1,5 +1,21 @@
 jQuery(document).ready(function ($) {
 
+	/* Highlight new features */
+	$('#accordion-panel-graphene-general .accordion-section-title').append('<span class="new-label">' + grapheneCustomizer.l10n.new + '</span>');
+	$('#accordion-panel-graphene-display .accordion-section-title').append('<span class="new-label">' + grapheneCustomizer.l10n.new + '</span>');
+	$('#accordion-panel-graphene-stacks .accordion-section-title').append('<span class="new-label">' + grapheneCustomizer.l10n.new + '</span>');
+	$('#accordion-section-title_tagline .accordion-section-title').append('<span class="new-label">' + grapheneCustomizer.l10n.new + '</span>');
+	$('#accordion-section-graphene-general-slider .accordion-section-title').append('<span class="new-label">' + grapheneCustomizer.l10n.new + '</span>');
+	$('#accordion-section-graphene-general-social-profiles .accordion-section-title').append('<span class="new-label">' + grapheneCustomizer.l10n.new + '</span>');
+	$('#accordion-section-graphene-general-mentions-bar .accordion-section-title').append('<span class="new-label">' + grapheneCustomizer.l10n.new + '</span>');
+	$('#accordion-section-graphene-display-columns-layout .accordion-section-title').append('<span class="new-label">' + grapheneCustomizer.l10n.new + '</span>');
+	$('#customize-control-graphene_settings-slider_display_style .customize-control-title').append('<span class="new-label">' + grapheneCustomizer.l10n.new + '</span>');
+	$('#customize-control-graphene_settings-header_text_align .customize-control-title').append('<span class="new-label">' + grapheneCustomizer.l10n.new + '</span>');
+	$('#customize-control-graphene_settings-container_style .customize-control-title').append('<span class="new-label">' + grapheneCustomizer.l10n.new + '</span>');
+	$('#customize-control-graphene_settings-mobile_left_column_first label').append('<span class="new-label">' + grapheneCustomizer.l10n.new + '</span>');
+	$('#customize-control-graphene_settings-social_media_location label').append('<span class="new-label">' + grapheneCustomizer.l10n.new + '</span>');
+	$('#customize-control-graphene_settings-slider_as_header label').append('<span class="new-label">' + grapheneCustomizer.l10n.new + '</span>');
+
 	/* Confirm click */
 	$(document).on( 'click', '.confirm-click', function(e){
 		e.preventDefault();
@@ -72,6 +88,16 @@ jQuery(document).ready(function ($) {
 			$('#customize-control-graphene_settings-slider_specific_categories, \
 				#customize-control-graphene_settings-slider_exclude_categories, \
 				#customize-control-graphene_settings-slider_random_category_posts').show();
+	}
+
+
+	/* Hide generic Customizer options until they're needed */
+	grapheneHideControls();
+	$('#customize-control-graphene_settings-hide_post_nav input').on('change', grapheneHideControls );
+
+	function grapheneHideControls(){
+		$('#customize-control-graphene_settings-post_nav_in_term').hide();
+		if ( ! wp.customize.value('graphene_settings[hide_post_nav]')() ) $('#customize-control-graphene_settings-post_nav_in_term').show();
 	}
 
 
@@ -184,24 +210,92 @@ jQuery(document).ready(function ($) {
 	});
 
 
-	/**
-	 * Social profiles
-	 */
-	$('.socialprofile-del').on('click', function(){
-		socialProfile = $(this).parents('.graphene-social-profile');
-		socialProfile.slideUp(200);
-		setTimeout(function(){socialProfile.remove(); $('.graphene-social-profiles').trigger('change');}, 200);
+	/* Media Uploader in custom controls */
+	var customUploader, uploaderTarget;
+    $(document).on('click', '.media-upload', function(e) {
+        e.preventDefault();
+ 
+        // Extend the wp.media object
+		var uploaderOpts = {
+			title	: 'Choose Image',
+			library	: { type: 'image' },
+            button	: { text: 'Choose Image' },
+            multiple: false
+		};
+		if ( $(this).data('title') ) uploaderOpts.title = $(this).data('title');
+		if ( $(this).data('button') ) uploaderOpts.button.text = $(this).data('button');
+		if ( $(this).data('multiple') ) uploaderOpts.multiple = $(this).data('multiple');
+        customUploader = wp.media.frames.file_frame = wp.media(uploaderOpts);
+ 
+		fieldName = $(this).data('field');
+		uploaderTarget = '#' + fieldName;
+		
+        customUploader.on('select', function() {
+			attachment = customUploader.state().get('selection').first().toJSON();
+			
+			if ( fieldName.indexOf('brand_icon') === 0 ) {
+				$(uploaderTarget).val(attachment.id).trigger('change');
+				$('.image-preview', $(uploaderTarget).parent()).html('<img src="' + attachment.url + '" alt="' + attachment.alt + '" width="' + attachment.width + '" height="' + attachment.height + '" />');
+			} else {
+				$(uploaderTarget).val(attachment.url);
+			}				
+        });
+ 
+        //Open the uploader dialog
+        customUploader.open();
+    });
+
+
+    /**
+     * Repeatable fields
+     */
+    $(document).on('click', '.repeatable-del', function(){
+		repeatable = $(this).parents('.repeatable-item');
+		repeatable.slideUp(200);
+		setTimeout(function(){repeatable.remove(); $('.graphene-repeatable').trigger('change');}, 200);
+	});
+
+	$(document).on('focusout', '.add-repeatable-item input[type="text"]', function(){
+		if ( $(this).val() ) {
+			html = $('.add-repeatable-item', $(this).parents('.graphene-repeatable')).get(0).outerHTML;
+			$(this).parents('.graphene-repeatable').append(html);
+			$(this).parents('.repeatable-item').removeClass('add-repeatable-item');
+			$(this).parents('.graphene-repeatable').trigger('change');
+		}
+	});
+
+	$('.graphene-repeatable').change(function(){
+		repeatableItems = [];
+		$('.repeatable-item input[type="text"]').each(function(){
+			if ($(this).val())repeatableItems.push($(this).val());
+		});
+		$(this).parents('.customize-control').find('.graphene-repeatable-setting-link').val(JSON.stringify(repeatableItems)).trigger('change');
+	});
+
+
+    /* 
+     * Sortable fields 
+    */
+	$(document).on('click', '.sortable-del', function(){
+		sortable = $(this).parents('.graphene-sortable');
+		sortable.slideUp(200);
+		setTimeout(function(){sortable.remove(); $('.graphene-sortables').trigger('change');}, 200);
 	});
 
 	/* Make the profiles sortable */
-	$('.graphene-social-profiles').sortable({
-		items: '.graphene-social-profile',
+	$('.graphene-sortables').sortable({
+		items: '.graphene-sortable',
 		// placeholder: 'socialprofile-dragging',
 		stop: function( event, ui ){
-			$('.graphene-social-profiles').trigger('change');
+			$('.graphene-sortables').trigger('change');
 		},
 		opacity: .8
 	});
+
+
+	/**
+	 * Social profiles
+	 */
 
 	/* Show hidden fields when new social type selected is custom */
 	$('#new-socialprofile-type').change(function(){
@@ -227,7 +321,7 @@ jQuery(document).ready(function ($) {
 		hideClass = 'hide';
 		if ( profileType == 'custom' ) hideClass = '';
 
-		html = '<li class="graphene-social-profile ui-sortable-handle">\
+		html = '<li class="graphene-social-profile graphene-sortable ui-sortable-handle">\
                     <span class="customize-control-title">\<i class="fa fa-' + profileType + '"></i>' + profileType + '</span>\
                 	<input type="hidden" name="social-profile-data" data-type="' + profileType + '" data-name="' + profileType + '" data-title="' + profileType + '" data-url="' + profileUrl + '" data-icon-url="' + profileIconUrl + '" data-icon-name="' + profileIconName + '">\
                     <div class="inline-field">\
@@ -246,8 +340,8 @@ jQuery(document).ready(function ($) {
                     	<label>Icon name</label>\
                     	<input type="text" data-key="icon-name" value="' + profileIconName + '">\
                     </div>\
-                    <span class="delete"><a href="#" class="socialprofile-del"><i class="fa fa-times" title="Delete"></i></a></span>\
-                    <span class="move"><i class="fa fa-arrows" title="Drag and drop to reorder"></i></span>\
+                    <span class="delete"><a href="#" class="sortable-del"><i class="fa fa-times" title="' + grapheneCustomizer.l10n.delete + '"></i></a></span>\
+                    <span class="move"><i class="fa fa-arrows" title="' + grapheneCustomizer.l10n.drag_drop + '"></i></span>\
                 </li>';
         $('.graphene-social-profiles').append(html);
 
@@ -261,7 +355,7 @@ jQuery(document).ready(function ($) {
 	});
 
 	/* Update the social profile values and trigger change */
-	$('.graphene-social-profile input').keyup(function(){
+	$(document).on('change', '.graphene-social-profile input', function(){
 		key = $(this).data('key');
 		$('input[name="social-profile-data"]', $(this).parents('.graphene-social-profile')).data(key, $(this).val());
 
@@ -292,6 +386,75 @@ jQuery(document).ready(function ($) {
 
 		$(this).parents('.customize-control').find('#graphene_settings_social_profiles').val(JSON.stringify(profiles)).trigger('change');
 	});
+
+
+
+	/**
+	 * Mentions bar
+	 */
+
+	/* Add new brand-icon */
+	$('.add-brand-icon .button-primary').click(function(e){
+		e.preventDefault();
+		brandIcon = $(this).parents('.add-brand-icon');
+
+		if (window.grapheneBrandIconIndex == undefined) window.grapheneBrandIconIndex = $(this).data('count') + 1;
+		else window.grapheneBrandIconIndex += 1;
+
+		imageId = $('.new-brand-icon-image-id', brandIcon).val();
+		image = $('.image-preview', brandIcon).html();
+		linkUrl = $('#new-brand-icon-url').val();
+
+		html = '<li class="brand-icon graphene-sortable ui-sortable-handle">\
+                	<input type="hidden" name="brand-icon-data" data-image-id="' + imageId + '" data-url="' + linkUrl + '" />\
+                	<div class="inline-field">\
+                		<label>\
+                			<a data-field="brand_icon_' + window.grapheneBrandIconIndex + '" data-title="' + grapheneCustomizer.l10n.select_image + '" data-button="' + grapheneCustomizer.l10n.select_image + '" href="#" class="media-upload button">' + grapheneCustomizer.l10n.select_image + '</a>\
+                		</label>\
+                    	<div class="image-preview">' + image + '</div>\
+                        <input type="hidden" id="brand_icon_' + window.grapheneBrandIconIndex + '" data-key="image-id" value="' + imageId + '" />\
+                    </div>\
+                    <div class="inline-field">\
+                    	<label>' + grapheneCustomizer.l10n.links_to + '</label>\
+                    	<input type="text" data-key="url" value="' + linkUrl + '" />\
+                    </div>\
+                    <span class="delete"><a href="#" class="sortable-del"><i class="fa fa-times" title="' + grapheneCustomizer.delete + '"></i></a></span>\
+                    <span class="move"><i class="fa fa-arrows" title="' + grapheneCustomizer.l10n.drag_drop + '"></i></span>\
+                </li>';
+        $('.graphene-brand-icons').append(html);
+
+        $('#new-brand-icon-image-id').val('');
+		$('#new-brand-icon-url').val('');
+		$('.image-preview', brandIcon).html('<span class="image-placeholder"></span>');
+
+		$('.graphene-brand-icons').trigger('change');
+	});
+
+	/* Update the brand icon values and trigger change */
+	$(document).on('change', '.brand-icon input', function(){
+		key = $(this).data('key');
+		$('input[name="brand-icon-data"]', $(this).parents('.brand-icon')).data(key, $(this).val());
+
+		$('.graphene-brand-icons').trigger('change');
+	});
+
+	/* Update the values when change is triggered */
+	$('.graphene-brand-icons').change(function(){
+		brandIcons = [];
+		$('input[name="brand-icon-data"]').each(function(){
+			imageId = $(this).data('image-id');
+			linkUrl = $(this).data('url');
+
+			brandIcon = {
+				image_id: imageId,
+				url 	: linkUrl,
+			};
+			brandIcons.push(brandIcon);
+		});
+
+		$(this).parents('.customize-control').find('#graphene_settings_brand_icons').val(JSON.stringify(brandIcons)).trigger('change');
+	});
+
 
 
 	/**

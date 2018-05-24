@@ -1,0 +1,2832 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Graphene 1.0 theme for WordPress\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-11-24 16:21+0800\n"
+"PO-Revision-Date: 2017-11-24 16:31+0800\n"
+"Last-Translator: Masato Maekawa <masato@maekawa.com>\n"
+"Language-Team: \n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n;esc_attr_e;esc_attr__\n"
+"X-Poedit-Basepath: D:/[MyVault]/MyProjects/[Websites]/theme-graphene/site/wp-"
+"content/themes/graphene/graphene\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.0.4\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:23
+#, php-format
+msgid "Searching for: <span>%s</span>"
+msgstr ""
+
+#: 404.php:29 search-404.php:3
+msgid "Error 404 - Page Not Found"
+msgstr "Error 404 - ページが見つかりません"
+
+#: 404.php:31 search-404.php:5
+msgid ""
+"Sorry, I've looked everywhere but I can't find the page you're looking for."
+msgstr "残念ながらどこでもお探しのページを発見できません。"
+
+#: 404.php:32 search-404.php:6
+msgid ""
+"If you follow the link from another website, I may have removed or renamed "
+"the page some time ago. You may want to try searching for the page:"
+msgstr ""
+"他サイトからのリンクならば、そのページは削除されたか、名前を変更されたかもし"
+"れません。ページを検索しますか："
+
+#: 404.php:40
+msgid "Automated search"
+msgstr ""
+
+#: 404.php:43
+#, php-format
+msgid "Searching for the terms <strong>%s</strong> ..."
+msgstr ""
+
+#: admin/ajax-handler.php:9 admin/ajax-handler.php:33 admin/ajax-handler.php:51
+msgid ""
+"Sorry, but you don't have the necessary permission to modify theme options."
+msgstr ""
+
+#: admin/ajax-handler.php:20
+msgid "Options saved."
+msgstr ""
+
+#: admin/ajax-handler.php:84
+msgid "Colour preset deleted."
+msgstr ""
+
+#: admin/ajax-handler.php:84
+msgid "Colour preset saved."
+msgstr ""
+
+#: admin/custom-fields.php:14
+msgid "Graphene post-specific options"
+msgstr "Graphene 記事ごとのオプション"
+
+#: admin/custom-fields.php:15
+msgid "Graphene page-specific options"
+msgstr "Graphene ページごとのオプション"
+
+#: admin/custom-fields.php:92
+msgid ""
+"These settings will only be applied to this particular post or page you're "
+"editing. They will override the global settings set in the Graphene Options "
+"or Graphene Display options page."
+msgstr ""
+"この設定は、編集中のこの記事だけに適用されます。「Grapheneのオプション」ペー"
+"ジのグローバルな設定を上書きします。"
+
+#: admin/custom-fields.php:93
+msgid "Slider options"
+msgstr "スライダーのオプション"
+
+#: admin/custom-fields.php:97 admin/customizer/options-general.php:144
+msgid "Slider image"
+msgstr "スライダーの画像"
+
+#: admin/custom-fields.php:101 admin/custom-fields.php:136
+#: admin/custom-fields.php:150
+msgid "Use global setting"
+msgstr "グローバル設定を使う"
+
+#: admin/custom-fields.php:102 admin/customizer/options-general.php:146
+msgid "Don't show image"
+msgstr "画像を表示しない"
+
+#: admin/custom-fields.php:103
+msgid "Featured Image"
+msgstr "注目の画像"
+
+#: admin/custom-fields.php:104 admin/customizer/options-general.php:148
+msgid "First image in post"
+msgstr "記事の最初の画像"
+
+#: admin/custom-fields.php:105
+msgid "Custom URL"
+msgstr "カスタムURL"
+
+#: admin/custom-fields.php:111
+msgid "Custom slider image URL"
+msgstr "カスタム時のスライダー画像URL"
+
+#: admin/custom-fields.php:115
+msgid ""
+"Make sure you select Custom URL in the slider image option above to use this "
+"custom url."
+msgstr ""
+"このURLの画像を使用するには、上の「スライダー画像」で「カスタムURL」を選択し"
+"てください"
+
+#: admin/custom-fields.php:120
+#, fuzzy
+#| msgid "Custom slider image URL"
+msgid "Custom slider URL"
+msgstr "カスタム時のスライダー画像URL"
+
+#: admin/custom-fields.php:124
+msgid "Use this to override the link that is used in the slider."
+msgstr ""
+
+#: admin/custom-fields.php:128
+msgid "Display options"
+msgstr "表示設定"
+
+#: admin/custom-fields.php:132
+msgid "AddThis Social Sharing button"
+msgstr "ソーシャル共有ボタンを追加"
+
+#: admin/custom-fields.php:137
+msgid "Show button"
+msgstr "ボタンを表示"
+
+#: admin/custom-fields.php:138
+msgid "Hide button"
+msgstr "ボタンを非表示"
+
+#: admin/custom-fields.php:146 admin/customizer/options-display.php:99
+#, fuzzy
+#| msgid "Number of posts to display"
+msgid "Post date display"
+msgstr "表示する最新の投稿の数"
+
+#: admin/custom-fields.php:151 admin/customizer/options-display.php:101
+msgid "Hidden"
+msgstr ""
+
+#: admin/custom-fields.php:152
+msgid "As an icon (without the year)"
+msgstr ""
+
+#: admin/custom-fields.php:153
+msgid "As an icon (including the year)"
+msgstr ""
+
+#: admin/custom-fields.php:154
+msgid "As inline text"
+msgstr ""
+
+#: admin/custom-fields.php:162
+#, fuzzy
+#| msgid "Navigation Menu Display Options"
+msgid "Navigation options"
+msgstr "ナビゲーションメニュー表示オプション"
+
+#: admin/custom-fields.php:166 admin/customizer/controls.php:293
+#: admin/customizer/controls.php:343
+#, fuzzy
+#| msgid "Description text font"
+msgid "Description"
+msgstr "説明文のフォント"
+
+#: admin/custom-fields.php:170
+msgid ""
+"Only required if you need a description in the navigation menu and you are "
+"not using a custom menu."
+msgstr ""
+
+#: admin/customizer/controls.php:140
+msgid ""
+"This option enables you to place virtually any content anywhere in the "
+"theme, by attaching widget areas to the theme's action hooks."
+msgstr ""
+
+#: admin/customizer/controls.php:141
+msgid ""
+"All action hooks available in the Graphene Theme are listed below. Click on "
+"the filename to display all the action hooks available in that file. Then, "
+"tick the checkbox next to an action hook to make a widget area available for "
+"that action hook."
+msgstr ""
+
+#: admin/customizer/controls.php:142
+#, php-format
+msgid ""
+"To see a visual map showing where each action hook in Graphene is located, "
+"visit this page: %s"
+msgstr ""
+
+#: admin/customizer/controls.php:142
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Graphene Action Hooks Map"
+msgstr "Grapheneのオプション"
+
+#: admin/customizer/controls.php:152
+msgid "Click to show/hide the action hooks for this file"
+msgstr ""
+
+#: admin/customizer/controls.php:193
+msgid "Container width"
+msgstr ""
+
+#: admin/customizer/controls.php:202
+msgid "Columns width (two-column mode)"
+msgstr ""
+
+#: admin/customizer/controls.php:204 admin/customizer/controls.php:224
+#, fuzzy
+#| msgid "Content Text"
+msgid "Content"
+msgstr "本文"
+
+#: admin/customizer/controls.php:208
+msgid "Sidebar"
+msgstr "サイドバー"
+
+#: admin/customizer/controls.php:218
+msgid "Columns width (three-column mode)"
+msgstr ""
+
+#: admin/customizer/controls.php:220
+#, fuzzy
+#| msgid "Hide sidebar"
+msgid "Left sidebar"
+msgstr "サイドバーを隠す"
+
+#: admin/customizer/controls.php:228
+#, fuzzy
+#| msgid "Hide sidebar"
+msgid "Right sidebar"
+msgstr "サイドバーを隠す"
+
+#: admin/customizer/controls.php:269 admin/customizer/controls.php:334
+#, fuzzy
+#| msgid "Custom URL"
+msgid "Custom"
+msgstr "カスタムURL"
+
+#: admin/customizer/controls.php:298 admin/customizer/controls.php:348
+msgid "URL"
+msgstr ""
+
+#: admin/customizer/controls.php:302
+#, fuzzy
+#| msgid "Leave field empty to use the default value."
+msgid "Leave the URL empty to use the default RSS URL."
+msgstr "デフォルト値で使う時は空白にする"
+
+#: admin/customizer/controls.php:308 admin/customizer/controls.php:353
+msgid "Icon URL"
+msgstr ""
+
+#: admin/customizer/controls.php:312 admin/customizer/controls.php:358
+msgid "Icon name"
+msgstr ""
+
+#: admin/customizer/controls.php:317 admin/customizer/customizer.php:38
+#: inc/comments.php:184
+msgid "Delete"
+msgstr ""
+
+#: admin/customizer/controls.php:318
+msgid "Drag and drop to reorder"
+msgstr ""
+
+#: admin/customizer/controls.php:324 admin/customizer/controls.php:362
+msgid "Add social profile"
+msgstr ""
+
+#: admin/customizer/controls.php:328
+msgid "Choose type"
+msgstr ""
+
+#: admin/customizer/controls.php:377
+msgid ""
+"Reset all of the theme's settings to their default values. Custom Header, "
+"Custom Menus, and other WordPress settings won't be affected."
+msgstr ""
+
+#: admin/customizer/controls.php:378
+#, fuzzy
+#| msgid "This action is not reversible."
+msgid "<strong>WARNING:</strong> This action is not reversible."
+msgstr "この操作は取り消しできません。"
+
+#: admin/customizer/controls.php:380
+#, fuzzy
+#| msgid "This action is not reversible."
+msgid "Confirm to reset settings? This action is not reversible."
+msgstr "この操作は取り消しできません。"
+
+#: admin/customizer/controls.php:380 admin/customizer/options-utilities.php:13
+#, fuzzy
+#| msgid "Use global setting"
+msgid "Reset settings"
+msgstr "グローバル設定を使う"
+
+#: admin/customizer/controls.php:400 admin/customizer/options-utilities.php:38
+#, fuzzy
+#| msgid "Update Settings"
+msgid "Export settings"
+msgstr "設定を更新"
+
+#: admin/customizer/controls.php:422 admin/customizer/options-utilities.php:32
+#, fuzzy
+#| msgid "Update Settings"
+msgid "Import settings"
+msgstr "設定を更新"
+
+#: admin/customizer/customizer.php:35
+msgid "Oops, nothing found."
+msgstr ""
+
+#: admin/customizer/customizer.php:37
+msgid "Please select the exported Graphene options file to import."
+msgstr ""
+
+#: admin/customizer/customizer.php:39
+msgid "(optional)"
+msgstr ""
+
+#: admin/customizer/customizer.php:40
+#, fuzzy
+#| msgid "Link Text"
+msgid "Link"
+msgstr "リンク"
+
+#: admin/customizer/customizer.php:41
+msgid "Please select a settings file to import."
+msgstr ""
+
+#: admin/customizer/customizer.php:95
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Graphene: General"
+msgstr "Grapheneのオプション"
+
+#: admin/customizer/customizer.php:99
+#, fuzzy
+#| msgid "Graphene Display"
+msgid "Graphene: Display"
+msgstr "Grapheneの表示"
+
+#: admin/customizer/customizer.php:103
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Graphene: Colours"
+msgstr "Grapheneのオプション"
+
+#: admin/customizer/customizer.php:104
+msgid ""
+"Changing colours for your website involves a lot more than just trial and "
+"error. Simply mixing and matching colours without regard to their "
+"compatibility may do more damage than good to your site's aesthetics."
+msgstr ""
+
+#: admin/customizer/customizer.php:104
+#, php-format
+msgid ""
+"It's generally a good idea to stick to colours from colour pallettes that "
+"are aesthetically pleasing. Try the %s website for a kickstart on some "
+"colour palettes you can use."
+msgstr ""
+
+#: admin/customizer/customizer.php:108
+#, fuzzy
+#| msgid "Graphene FAQs"
+msgid "Graphene: Advanced"
+msgstr "GrapheneのFAQ"
+
+#: admin/customizer/customizer.php:112
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Graphene: Utilities"
+msgstr "Grapheneのオプション"
+
+#: admin/customizer/options-advanced.php:13
+msgid "Custom <head> Tags"
+msgstr ""
+
+#: admin/customizer/options-advanced.php:20
+msgid "Code to insert into the <head> element"
+msgstr ""
+
+#: admin/customizer/options-advanced.php:31
+#, fuzzy
+#| msgid "Footer Widget Area"
+msgid "Action Hooks Widget Areas"
+msgstr "フッターウィジェット領域"
+
+#: admin/customizer/options-colours.php:13
+#, fuzzy
+#| msgid "Top bar"
+msgid "Top Bar"
+msgstr "トップバー"
+
+#: admin/customizer/options-colours.php:19
+#: admin/customizer/options-colours.php:207
+msgid "Background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:26
+#, fuzzy
+#| msgid "Secondary Menu"
+msgid "Primary Menu"
+msgstr "第2メニュー"
+
+#: admin/customizer/options-colours.php:34
+#: admin/customizer/options-colours.php:57
+msgid "Background (default state)"
+msgstr ""
+
+#: admin/customizer/options-colours.php:35
+#: admin/customizer/options-colours.php:58
+#, fuzzy
+#| msgid "Text decoration (hover state)"
+msgid "Text (default state)"
+msgstr "文字装飾(カーソルオン時)"
+
+#: admin/customizer/options-colours.php:36
+#: admin/customizer/options-colours.php:59
+msgid "Background (active state)"
+msgstr ""
+
+#: admin/customizer/options-colours.php:37
+#: admin/customizer/options-colours.php:60
+#, fuzzy
+#| msgid "Text decoration (hover state)"
+msgid "Text (active state)"
+msgstr "文字装飾(カーソルオン時)"
+
+#: admin/customizer/options-colours.php:38
+#: admin/customizer/options-colours.php:61
+#, fuzzy
+#| msgid "Dropdown menu item width"
+msgid "Dropdown menu text (default state)"
+msgstr "ドロップダウンメニューの表示幅"
+
+#: admin/customizer/options-colours.php:39
+#: admin/customizer/options-colours.php:62
+#, fuzzy
+#| msgid "Dropdown menu item width"
+msgid "Dropdown menu text (active state)"
+msgstr "ドロップダウンメニューの表示幅"
+
+#: admin/customizer/options-colours.php:48 inc/setup.php:97
+msgid "Secondary Menu"
+msgstr "第2メニュー"
+
+#: admin/customizer/options-colours.php:56
+#, fuzzy
+#| msgid "Top bar"
+msgid "Top border"
+msgstr "トップバー"
+
+#: admin/customizer/options-colours.php:71
+#: admin/customizer/options-general.php:65
+#, fuzzy
+#| msgid "Slider image"
+msgid "Slider"
+msgstr "スライダーの画像"
+
+#: admin/customizer/options-colours.php:76
+#, fuzzy
+#| msgid "Slider options"
+msgid "Slider caption background"
+msgstr "スライダーのオプション"
+
+#: admin/customizer/options-colours.php:85
+#, fuzzy
+#| msgid "Slider options"
+msgid "Slider caption text"
+msgstr "スライダーのオプション"
+
+#: admin/customizer/options-colours.php:94
+#, fuzzy
+#| msgid "Content Text"
+msgid "Content Area"
+msgstr "本文"
+
+#: admin/customizer/options-colours.php:102
+msgid "Main content wrapper background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:103
+msgid "Post and pages content background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:104
+msgid "Post meta and footer border"
+msgstr ""
+
+#: admin/customizer/options-colours.php:105
+#, fuzzy
+#| msgid "Content Text"
+msgid "Content text"
+msgstr "本文"
+
+#: admin/customizer/options-colours.php:106
+#, fuzzy
+#| msgid "Title text font"
+msgid "Title text"
+msgstr "タイトルのフォント"
+
+#: admin/customizer/options-colours.php:107
+msgid "Links"
+msgstr ""
+
+#: admin/customizer/options-colours.php:108
+#, fuzzy
+#| msgid "Link colour (hover state)"
+msgid "Links (hover)"
+msgstr "リンク色(カーソルオン時)"
+
+#: admin/customizer/options-colours.php:109
+msgid "Sticky posts border"
+msgstr ""
+
+#: admin/customizer/options-colours.php:110
+#, fuzzy
+#| msgid "Hide post comment count"
+msgid "Child pages content background"
+msgstr "コメント数を非表示"
+
+#: admin/customizer/options-colours.php:119
+msgid "Widgets"
+msgstr ""
+
+#: admin/customizer/options-colours.php:127
+msgid "Widget item background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:128
+msgid "Widget item list border"
+msgstr ""
+
+#: admin/customizer/options-colours.php:129
+msgid "Widget header border"
+msgstr ""
+
+#: admin/customizer/options-colours.php:138
+msgid "Buttons and Labels"
+msgstr ""
+
+#: admin/customizer/options-colours.php:146
+msgid "Button background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:147
+msgid "Button text"
+msgstr ""
+
+#: admin/customizer/options-colours.php:148
+msgid "Label background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:149
+msgid "Label text"
+msgstr ""
+
+#: admin/customizer/options-colours.php:158
+msgid "Archives"
+msgstr "アーカイブ"
+
+#: admin/customizer/options-colours.php:166
+msgid "Archive label background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:167
+msgid "Archive label border"
+msgstr ""
+
+#: admin/customizer/options-colours.php:168
+msgid "Archive label label colour"
+msgstr ""
+
+#: admin/customizer/options-colours.php:169
+msgid "Archive label text colour"
+msgstr ""
+
+#: admin/customizer/options-colours.php:178
+#: admin/customizer/options-general.php:301
+#, fuzzy
+#| msgid "Comments RSS"
+msgid "Comments"
+msgstr "コメントのRSS"
+
+#: admin/customizer/options-colours.php:186
+msgid "Comments background"
+msgstr ""
+
+#: admin/customizer/options-colours.php:187
+#, fuzzy
+#| msgid "Comments RSS"
+msgid "Comments border"
+msgstr "コメントのRSS"
+
+#: admin/customizer/options-colours.php:188
+msgid "Comments box shadow"
+msgstr ""
+
+#: admin/customizer/options-colours.php:189
+#, fuzzy
+#| msgid "Comments RSS"
+msgid "Comments text"
+msgstr "コメントのRSS"
+
+#: admin/customizer/options-colours.php:190
+#, fuzzy
+#| msgid "No comment yet"
+msgid "Author comments border"
+msgstr "まだコメントなし"
+
+#: admin/customizer/options-colours.php:199
+#: admin/customizer/options-general.php:513
+#, fuzzy
+#| msgid "Footer Options"
+msgid "Footer"
+msgstr "フッター設定"
+
+#: admin/customizer/options-colours.php:208
+msgid "Normal text"
+msgstr ""
+
+#: admin/customizer/options-colours.php:209
+#, fuzzy
+#| msgid "Link Text"
+msgid "Link text"
+msgstr "リンク"
+
+#: admin/customizer/options-display.php:13
+msgid "Columns Layout"
+msgstr ""
+
+#: admin/customizer/options-display.php:20
+msgid "Container style"
+msgstr ""
+
+#: admin/customizer/options-display.php:22
+msgid "Boxed"
+msgstr ""
+
+#: admin/customizer/options-display.php:23
+msgid "Full width"
+msgstr ""
+
+#: admin/customizer/options-display.php:30
+msgid "Layout"
+msgstr ""
+
+#: admin/customizer/options-display.php:32
+msgid "One column"
+msgstr ""
+
+#: admin/customizer/options-display.php:33
+msgid "Two columns, right sidebar"
+msgstr ""
+
+#: admin/customizer/options-display.php:34
+msgid "Two columns, left sidebar"
+msgstr ""
+
+#: admin/customizer/options-display.php:35
+msgid "Three columns, right sidebars"
+msgstr ""
+
+#: admin/customizer/options-display.php:36
+msgid "Three columns, left sidebars"
+msgstr ""
+
+#: admin/customizer/options-display.php:37
+msgid "Three columns, left & right sidebars"
+msgstr ""
+
+#: admin/customizer/options-display.php:45
+msgid "Columns Width"
+msgstr ""
+
+#: admin/customizer/options-display.php:47
+#, fuzzy
+#| msgid "Leave field empty to use the default value."
+msgid "Leave values empty to reset to the default values."
+msgstr "デフォルト値で使う時は空白にする"
+
+#: admin/customizer/options-display.php:62
+msgid "Posts Elements"
+msgstr ""
+
+#: admin/customizer/options-display.php:69
+msgid "Hide post author"
+msgstr "筆者名を非表示"
+
+#: admin/customizer/options-display.php:75
+msgid "Hide post categories"
+msgstr "カテゴリーを非表示"
+
+#: admin/customizer/options-display.php:81
+msgid "Hide post tags"
+msgstr "投稿タグを非表示"
+
+#: admin/customizer/options-display.php:87
+msgid "Hide post comment count"
+msgstr "コメント数を非表示"
+
+#: admin/customizer/options-display.php:93
+#, fuzzy
+#| msgid "Hide post author"
+msgid "Hide author bio"
+msgstr "筆者名を非表示"
+
+#: admin/customizer/options-display.php:102
+msgid "Icon"
+msgstr ""
+
+#: admin/customizer/options-display.php:103
+msgid "Icon with year"
+msgstr ""
+
+#: admin/customizer/options-display.php:104
+msgid "Inline text"
+msgstr ""
+
+#: admin/customizer/options-display.php:112
+msgid "Excerpts"
+msgstr ""
+
+#: admin/customizer/options-display.php:119
+#, fuzzy
+#| msgid "Show excerpts in front page"
+msgid "Show excerpts in Front Page"
+msgstr "フロントページに抜粋を表示"
+
+#: admin/customizer/options-display.php:125
+msgid "Show full content in archive pages"
+msgstr ""
+
+#: admin/customizer/options-display.php:131
+msgid "Show More link for manual excerpts"
+msgstr "マニュアル抜粋用により多くのリンクを表示"
+
+#: admin/customizer/options-display.php:137
+msgid "Keep these HTML tags in excerpts"
+msgstr ""
+
+#: admin/customizer/options-display.php:138
+msgid ""
+"Enter the HTML tags you'd like to retain in excerpts. For example, enter "
+"<code>&lt;p&gt;&lt;ul&gt;&lt;li&gt;</code> to retain <code>&lt;p&gt;</code>, "
+"<code>&lt;ul&gt;</code>, and <code>&lt;li&gt;</code> HTML tags."
+msgstr ""
+
+#: admin/customizer/options-display.php:149
+#, fuzzy
+#| msgid "Miscellaneous Display Options"
+msgid "Miscellaneous"
+msgstr "その他の表示オプション"
+
+#: admin/customizer/options-display.php:157
+msgid "Disable custom editor styles"
+msgstr ""
+
+#: admin/customizer/options-general.php:13
+#, fuzzy
+#| msgid "Header Menu"
+msgid "Header"
+msgstr "ヘッダーメニュー"
+
+#: admin/customizer/options-general.php:20
+#, fuzzy
+#| msgid "Disable slider"
+msgid "Disable Top Bar"
+msgstr "スライダーを表示しない"
+
+#: admin/customizer/options-general.php:26
+msgid "Use light-coloured header bars"
+msgstr "明るい色のヘッダーバーを使う"
+
+#: admin/customizer/options-general.php:32
+msgid "Link header image to front page"
+msgstr "ヘッダー画像をフロントページにリンクする"
+
+#: admin/customizer/options-general.php:33
+msgid ""
+"Check this if you disable the header texts and want the header image to be "
+"linked to the front page."
+msgstr ""
+"ヘッダー文字を非表示にして、ヘッダー画像をフロントページにリンクしたい時に"
+"チェック。"
+
+#: admin/customizer/options-general.php:39
+msgid "Disable Featured Image replacing header image"
+msgstr "注目画像のヘッダー画像への置き換えを無効にする"
+
+#: admin/customizer/options-general.php:40
+msgid ""
+"Check this to prevent the posts Featured Image replacing the header image "
+"regardless of the featured image dimension."
+msgstr ""
+"投稿の注目画像が不注意にヘッダー画像に置き換わることを防ぐために、ここを"
+"チェックしてください。"
+
+#: admin/customizer/options-general.php:46
+#, fuzzy
+#| msgid "Header image by Syahir Hakim"
+msgid "Header image max height"
+msgstr "ヘッダー画像 by Syahir Hakim\""
+
+#: admin/customizer/options-general.php:53
+msgid "Search box location"
+msgstr "検索ボックスの位置"
+
+#: admin/customizer/options-general.php:55
+msgid "Top bar"
+msgstr "トップバー"
+
+#: admin/customizer/options-general.php:56
+msgid "Navigation bar"
+msgstr "ナビゲーションバー"
+
+#: admin/customizer/options-general.php:57
+#, fuzzy
+#| msgid "--Disabled--"
+msgid "Disabled"
+msgstr "--無効--"
+
+#: admin/customizer/options-general.php:72
+msgid "Disable slider"
+msgstr "スライダーを表示しない"
+
+#: admin/customizer/options-general.php:78
+msgid "Extend slider to full width of theme"
+msgstr ""
+
+#: admin/customizer/options-general.php:84
+#, fuzzy
+#| msgid "Slider options"
+msgid "Slider content"
+msgstr "スライダーのオプション"
+
+#: admin/customizer/options-general.php:86
+msgid "Show latest posts"
+msgstr "最新の投稿を表示"
+
+#: admin/customizer/options-general.php:87
+msgid "Show random posts"
+msgstr "ランダムな投稿を表示する"
+
+#: admin/customizer/options-general.php:88
+#: admin/customizer/options-general.php:268
+msgid "Show specific posts/pages"
+msgstr ""
+
+#: admin/customizer/options-general.php:89
+#, fuzzy
+#| msgid "Hide post categories"
+msgid "Show posts from categories"
+msgstr "カテゴリーを非表示"
+
+#: admin/customizer/options-general.php:96
+msgid "Include posts with featured image only"
+msgstr ""
+
+#: admin/customizer/options-general.php:102
+#: admin/customizer/options-general.php:293
+msgid "Posts and/or pages to display"
+msgstr ""
+
+#: admin/customizer/options-general.php:103
+#: admin/customizer/options-general.php:294
+msgid ""
+"Enter ID of posts and/or pages to be displayed, separated by comma.<br / "
+">Applicable only if \"Show specific posts/pages\" is selected above.<br /"
+">Example: <code>1,13,45,33</code>"
+msgstr ""
+
+#: admin/customizer/options-general.php:113
+#, fuzzy
+#| msgid "Number of tweets to display:"
+msgid "Categories to display"
+msgstr "表示するツイート数:"
+
+#: admin/customizer/options-general.php:116
+#, fuzzy
+#| msgid ""
+#| "All posts within the category selected here will be displayed on the "
+#| "slider. Usage example: create a new category \"Featured\" and assign all "
+#| "posts to be displayed on the slider to that category, and then select "
+#| "that category here."
+msgid ""
+"All posts within the categories selected here will be displayed on the "
+"slider. Usage example: create a new category \"Featured\" and assign all "
+"posts to be displayed on the slider to that category, and then select that "
+"category here."
+msgstr ""
+"ここで選択したカテゴリーの全投稿が、スライダーに表示されます。<br />使用例："
+"たとえば「フィーチャー」というカテゴリーを作ります。そしてスライダーで表示し"
+"たい投稿をすべてそのカテゴリーに設定します。そして、そのカテゴリーをここで選"
+"択します。"
+
+#: admin/customizer/options-general.php:118
+#: admin/customizer/options-general.php:244
+#: admin/customizer/options-general.php:286
+#, fuzzy
+#| msgid "Hide post categories"
+msgid "Select categories"
+msgstr "カテゴリーを非表示"
+
+#: admin/customizer/options-general.php:125
+#, fuzzy
+#| msgid "Author's posts listings"
+msgid "Exclude the categories from posts listing"
+msgstr "この筆者の投稿リスト"
+
+#: admin/customizer/options-general.php:131
+msgid "Show posts from categories in random order"
+msgstr ""
+
+#: admin/customizer/options-general.php:137
+msgid "Number of posts to display"
+msgstr "表示する最新の投稿の数"
+
+#: admin/customizer/options-general.php:138
+msgid "posts"
+msgstr ""
+
+#: admin/customizer/options-general.php:147
+#, fuzzy
+#| msgid "Featured Image"
+msgid "Featured image"
+msgstr "注目の画像"
+
+#: admin/customizer/options-general.php:149
+#, fuzzy
+#| msgid "Custom slider image URL"
+msgid "Custom image"
+msgstr "カスタム時のスライダー画像URL"
+
+#: admin/customizer/options-general.php:154
+#, fuzzy
+#| msgid "Custom slider image URL"
+msgid "Custom slider image"
+msgstr "カスタム時のスライダー画像URL"
+
+#: admin/customizer/options-general.php:157
+#, fuzzy
+#| msgid ""
+#| "Make sure you select Custom URL in the slider image option above to use "
+#| "this custom url."
+msgid ""
+"Make sure you select \"Custom image\" in the slider image option above to "
+"use this image."
+msgstr ""
+"このURLの画像を使用するには、上の「スライダー画像」で「カスタムURL」を選択し"
+"てください"
+
+#: admin/customizer/options-general.php:163
+#, fuzzy
+#| msgid "Slider image"
+msgid "Slider display style"
+msgstr "スライダーの画像"
+
+#: admin/customizer/options-general.php:165
+msgid "Background image and excerpt"
+msgstr ""
+
+#: admin/customizer/options-general.php:166
+#, fuzzy
+#| msgid "Hide post comment count"
+msgid "Full post content"
+msgstr "コメント数を非表示"
+
+#: admin/customizer/options-general.php:173
+msgid "Slider height"
+msgstr "スライダーの高さ"
+
+#: admin/customizer/options-general.php:174
+#: admin/customizer/options-general.php:181
+msgid "px"
+msgstr ""
+
+#: admin/customizer/options-general.php:180
+#, fuzzy
+#| msgid "Slider height"
+msgid "Slider height (mobile)"
+msgstr "スライダーの高さ"
+
+#: admin/customizer/options-general.php:187
+msgid "Slider speed"
+msgstr "スライダーのスピード"
+
+#: admin/customizer/options-general.php:188
+msgid "milliseconds"
+msgstr "ミリ秒"
+
+#: admin/customizer/options-general.php:189
+#, fuzzy
+#| msgid "This is the duration that each slider item will be shown"
+msgid "This is the duration that each slider item will be shown."
+msgstr "これは個々のスライダー項目が表示されている時間です"
+
+#: admin/customizer/options-general.php:195
+msgid "Move slider to bottom of page"
+msgstr "スライダーをページの下部に移動させる"
+
+#: admin/customizer/options-general.php:202
+msgid "Infinite Scroll"
+msgstr ""
+
+#: admin/customizer/options-general.php:209
+msgid "Enable for posts"
+msgstr ""
+
+#: admin/customizer/options-general.php:215
+#, fuzzy
+#| msgid "Leave comment"
+msgid "Enable for comments"
+msgstr "コメントをどうぞ"
+
+#: admin/customizer/options-general.php:221
+msgid "Loading method"
+msgstr ""
+
+#: admin/customizer/options-general.php:223
+msgid "Auto-load"
+msgstr ""
+
+#: admin/customizer/options-general.php:224
+msgid "Click-to-load"
+msgstr ""
+
+#: admin/customizer/options-general.php:232
+#, fuzzy
+#| msgid "Front Page Options"
+msgid "Front Page"
+msgstr "フロントページ設定"
+
+#: admin/customizer/options-general.php:239
+msgid "Front page posts categories"
+msgstr "フロントページ投稿カテゴリー"
+
+#: admin/customizer/options-general.php:242
+#, fuzzy
+#| msgid ""
+#| "Only posts that belong to the categories selected here will be displayed "
+#| "on the front page. Does not affect Static Front Page."
+msgid ""
+"Only posts that belong to the categories selected here will be displayed on "
+"the front page. Works only if not using Static Front Page."
+msgstr ""
+"ここで選択したカテゴリーに所属する投稿だけが、フロントページに表示されます。"
+"静的なフロントページには影響しません。"
+
+#: admin/customizer/options-general.php:252
+msgid "Home Page Panes"
+msgstr ""
+
+#: admin/customizer/options-general.php:259
+msgid "Disable homepage panes"
+msgstr ""
+
+#: admin/customizer/options-general.php:265
+msgid "Type of content to show"
+msgstr ""
+
+#: admin/customizer/options-general.php:267
+msgid "Latest posts"
+msgstr "最新記事"
+
+#: admin/customizer/options-general.php:275
+#, fuzzy
+#| msgid "Number of posts to display"
+msgid "Number of posts"
+msgstr "表示する最新の投稿の数"
+
+#: admin/customizer/options-general.php:281
+#, fuzzy
+#| msgid "Category to show in slider"
+msgid "Categories to show latest posts from"
+msgstr "スライダーで表示するカテゴリ"
+
+#: admin/customizer/options-general.php:284
+#, fuzzy
+#| msgid ""
+#| "Only posts that belong to the categories selected here will be displayed "
+#| "on the front page. Does not affect Static Front Page."
+msgid ""
+"Only posts that belong to the categories selected here will be displayed in "
+"the home page panes."
+msgstr ""
+"ここで選択したカテゴリーに所属する投稿だけが、フロントページに表示されます。"
+"静的なフロントページには影響しません。"
+
+#: admin/customizer/options-general.php:308
+#, fuzzy
+#| msgid "Comments RSS"
+msgid "Commenting"
+msgstr "コメントのRSS"
+
+#: admin/customizer/options-general.php:309
+msgid ""
+"Overrides the global WordPress Discussion Setting called \"Allow people to "
+"post comments on new articles\" and also the \"Allow comments\" option for "
+"individual posts/pages."
+msgstr ""
+
+#: admin/customizer/options-general.php:311
+#, fuzzy
+#| msgid "Use global setting"
+msgid "Use WordPress settings"
+msgstr "グローバル設定を使う"
+
+#: admin/customizer/options-general.php:312
+msgid "Disable for pages"
+msgstr ""
+
+#: admin/customizer/options-general.php:313
+#, fuzzy
+#| msgid "Disable slider"
+msgid "Disable completely"
+msgstr "スライダーを表示しない"
+
+#: admin/customizer/options-general.php:321
+msgid "Child Pages"
+msgstr ""
+
+#: admin/customizer/options-general.php:328
+msgid "Hide parent box if content is empty"
+msgstr ""
+
+#: admin/customizer/options-general.php:334
+msgid "Disable contextual navigation in the sidebar"
+msgstr ""
+
+#: admin/customizer/options-general.php:340
+msgid "Child page listings"
+msgstr ""
+
+#: admin/customizer/options-general.php:342
+#, fuzzy
+#| msgid "Show button"
+msgid "Show listing"
+msgstr "ボタンを表示"
+
+#: admin/customizer/options-general.php:343
+#, fuzzy
+#| msgid "Hide post tags"
+msgid "Hide listing"
+msgstr "投稿タグを非表示"
+
+#: admin/customizer/options-general.php:344
+msgid "Show only if parent is empty"
+msgstr ""
+
+#: admin/customizer/options-general.php:352
+#, fuzzy
+#| msgid "Widget Area Options"
+msgid "Widget Areas"
+msgstr "ウィジェット領域オプション"
+
+#: admin/customizer/options-general.php:359
+#, fuzzy
+#| msgid "Enable alternate front page sidebar widget area"
+msgid "Enable header widget area"
+msgstr "フロントページのみに表示されるサイドバーウィジェット領域を有効にする"
+
+#: admin/customizer/options-general.php:360
+msgid ""
+"<strong>Important:</strong> This widget area is unstyled, as it is often "
+"used for advertisement banners, etc. If you enable it, make sure you style "
+"it to your needs using the Custom CSS option."
+msgstr ""
+
+#: admin/customizer/options-general.php:366
+#, fuzzy
+#| msgid "Enable alternate front page sidebar widget area"
+msgid "Enable alternative sidebar widget area in front page."
+msgstr "フロントページのみに表示されるサイドバーウィジェット領域を有効にする"
+
+#: admin/customizer/options-general.php:372
+#, fuzzy
+#| msgid "Enable alternate front page footer widget area"
+msgid "Enable alternative footer widget area in front page."
+msgstr "フロントページのみに表示されるフッターウィジェット領域を有効にする"
+
+#: admin/customizer/options-general.php:378
+msgid "Divide footer widget area into this number of columns"
+msgstr ""
+
+#: admin/customizer/options-general.php:384
+msgid "Divide alternative footer widget area into this number of columns"
+msgstr ""
+
+#: admin/customizer/options-general.php:391
+msgid "Social Profiles"
+msgstr ""
+
+#: admin/customizer/options-general.php:398
+msgid "Open social media links in new window"
+msgstr ""
+
+#: admin/customizer/options-general.php:403
+msgid "Social profiles"
+msgstr ""
+
+#: admin/customizer/options-general.php:410
+#, fuzzy
+#| msgid "Social Sharing Buttons"
+msgid "Social Sharing"
+msgstr "ソーシャル共有ボタン"
+
+#: admin/customizer/options-general.php:417
+#, fuzzy
+#| msgid "Show social sharing button"
+msgid "Show social sharing buttons"
+msgstr "ソーシャル共有ボタンを表示する"
+
+#: admin/customizer/options-general.php:423
+msgid "Include static Pages"
+msgstr ""
+
+#: admin/customizer/options-general.php:429
+msgid "Include home and archive pages"
+msgstr ""
+
+#: admin/customizer/options-general.php:435
+#, fuzzy
+#| msgid "Content sidebar location"
+msgid "Buttons location"
+msgstr "本文のサイドバーの位置"
+
+#: admin/customizer/options-general.php:437
+msgid "Bottom of posts"
+msgstr ""
+
+#: admin/customizer/options-general.php:438
+#, fuzzy
+#| msgid "Show random posts"
+msgid "Top of posts"
+msgstr "ランダムな投稿を表示する"
+
+#: admin/customizer/options-general.php:439
+#, fuzzy
+#| msgid "Show random posts"
+msgid "Top and bottom of posts"
+msgstr "ランダムな投稿を表示する"
+
+#: admin/customizer/options-general.php:446
+#, fuzzy
+#| msgid "Your social sharing button code"
+msgid "Social sharing buttons code"
+msgstr "あなたのソーシャル共有ボタンコード"
+
+#: admin/customizer/options-general.php:447
+msgid ""
+"You can use codes from any popular social sharing sites, like Facebook, "
+"Digg, AddThis, etc."
+msgstr ""
+"あなたはコードを次のサイトで作ることができます。 <a href=\"http://www."
+"addthis.com/\">AddThis website</a>."
+
+#: admin/customizer/options-general.php:458
+msgid "Ads"
+msgstr ""
+
+#: admin/customizer/options-general.php:465
+#, fuzzy
+#| msgid "Show random posts"
+msgid "Show ads"
+msgstr "ランダムな投稿を表示する"
+
+#: admin/customizer/options-general.php:471
+msgid "Include Front Page"
+msgstr ""
+
+#: admin/customizer/options-general.php:477
+#, fuzzy
+#| msgid "Your Adsense code"
+msgid "Ads code"
+msgstr "あなたのアドセンスコード"
+
+#: admin/customizer/options-general.php:488
+msgid "Analytics"
+msgstr ""
+
+#: admin/customizer/options-general.php:495
+#, fuzzy
+#| msgid "Enable Google Analytics tracking"
+msgid "Enable analytics tracking"
+msgstr "Google Analytics トラッキングを有効にする"
+
+#: admin/customizer/options-general.php:501
+#, fuzzy
+#| msgid "Google Analytics tracking code"
+msgid "Analytics code"
+msgstr "Google Analyticsトラッキングコード"
+
+#: admin/customizer/options-general.php:502
+#, php-format
+msgid ""
+"The analytics code will be added inside the %s element of all pages in this "
+"site."
+msgstr ""
+
+#: admin/customizer/options-general.php:520
+msgid "Copyright text (html allowed)"
+msgstr "著作権表示(html使用可能)"
+
+#: admin/customizer/options-general.php:530
+msgid "Do not show copyright info"
+msgstr "著作権情報を表示しない"
+
+#: admin/customizer/options-general.php:536
+msgid "Disable \"Return to top\" button"
+msgstr ""
+
+#: admin/customizer/options-general.php:543
+msgid "Print"
+msgstr ""
+
+#: admin/customizer/options-general.php:550
+msgid "Clean up single posts and pages when printing"
+msgstr ""
+
+#: admin/customizer/options-general.php:556
+#, fuzzy
+#| msgid "Show button"
+msgid "Show print button"
+msgstr "ボタンを表示"
+
+#: admin/customizer/options-import.php:44 admin/uninstall.php:32
+msgid "ERROR: You are not authorised to perform that operation"
+msgstr "エラー:この操作をする権限がありません"
+
+#: admin/customizer/options-import.php:64
+msgid ""
+"Before you can upload your import file, you will need to fix the following "
+"error:"
+msgstr ""
+
+#: admin/customizer/options-import.php:70
+msgid "Import Graphene Theme Colour Presets"
+msgstr ""
+
+#: admin/customizer/options-import.php:73
+msgid ""
+"Choose a Graphene theme's colour presets export file from your computer:"
+msgstr ""
+
+#: admin/customizer/options-import.php:74
+#, php-format
+msgid "Maximum size: %s"
+msgstr ""
+
+#: admin/customizer/options-import.php:81
+msgid "Upload file and import"
+msgstr ""
+
+#: admin/customizer/options-import.php:100
+msgid "Export Graphene Theme Colour Presets"
+msgstr ""
+
+#: admin/customizer/options-import.php:103
+msgid "Please select the colour presets to be exported."
+msgstr ""
+
+#: admin/customizer/options-import.php:113
+msgid "Export colour presets"
+msgstr ""
+
+#: admin/customizer/options-import.php:114
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "&laquo; Return to Graphene Options"
+msgstr "Grapheneのオプション"
+
+#: admin/customizer/options-import.php:132
+#, fuzzy
+#| msgid "ERROR: You are not authorised to perform that operation"
+msgid "Authorisation checks failed to perform this operation."
+msgstr "エラー:この操作をする権限がありません"
+
+#: admin/customizer/options-import.php:154
+msgid "Could not read uploaded file. Please check the file and try again."
+msgstr ""
+
+#: admin/customizer/options-import.php:158
+msgid ""
+"Uploaded file does not contain any setting to import. Please check and try "
+"again."
+msgstr ""
+
+#: admin/customizer/options-import.php:159
+msgid ""
+"The uploaded file does not contain valid Graphene options. Please check and "
+"try again."
+msgstr ""
+
+#: admin/customizer/options-utilities.php:19
+msgid "Reset theme settings"
+msgstr ""
+
+#: admin/customizer/options-utilities.php:26
+msgid "Import & export settings"
+msgstr ""
+
+#: admin/customizer/options-utilities.php:33
+msgid ""
+"Import Graphene settings to replace all current Graphene settings on this "
+"website."
+msgstr ""
+
+#: admin/customizer/options-utilities.php:39
+msgid ""
+"Export Graphene settings so that you can import them later on as a backup, "
+"or replicate settings on other websites."
+msgstr ""
+
+#: admin/customizer/options-utilities.php:46
+#, fuzzy
+#| msgid "Use global setting"
+msgid "Legacy settings"
+msgstr "グローバル設定を使う"
+
+#: admin/customizer/options-utilities.php:53
+msgid "Export legacy Graphene settings"
+msgstr ""
+
+#: admin/customizer/options-utilities.php:54
+msgid ""
+"Export legacy Graphene settings in case you need to roll back from Graphene "
+"2.0."
+msgstr ""
+
+#: admin/db-updater.php:247
+#, fuzzy, php-format
+#| msgid "Follow me on Twitter"
+msgid "Follow %s on Twitter"
+msgstr "Twitterでフォローする"
+
+#: admin/db-updater.php:258
+#, php-format
+msgid "Visit %s's Facebook page"
+msgstr ""
+
+#: admin/feature-pointers.php:9
+msgid "Where are all the options?!"
+msgstr ""
+
+#: admin/feature-pointers.php:10
+msgid "We've decided to clean things up!"
+msgstr ""
+
+#: admin/feature-pointers.php:11
+msgid ""
+"We know how too many options can really be daunting to new users, so we've "
+"hidden them."
+msgstr ""
+
+#: admin/feature-pointers.php:12
+msgid ""
+"But no worries! If you're a seasoned user of the Graphene theme, or whenever "
+"you feel ready to further customise your site, just click on the \"Show all "
+"options\" link, and they will magically appear to you."
+msgstr ""
+
+#: admin/options-defaults.php:80
+#, fuzzy, php-format
+#| msgid "Subscribe to RSS feed"
+msgid "Subscribe to %s's RSS feed"
+msgstr "RSSフィードを購読"
+
+#: admin/options-defaults.php:165
+msgid "Default"
+msgstr ""
+
+#: admin/options-defaults.php:169
+msgid "Dream Magnet"
+msgstr ""
+
+#: admin/options-defaults.php:173
+msgid "Curiosity Killed"
+msgstr ""
+
+#: admin/options-defaults.php:177
+msgid "Zesty Orange"
+msgstr ""
+
+#: admin/options-init.php:51
+msgid "Graphene Options"
+msgstr "Grapheneのオプション"
+
+#: admin/options-init.php:110
+msgid "Template preview not found."
+msgstr ""
+
+#: admin/options-init.php:113
+msgid "default"
+msgstr ""
+
+#: admin/options-init.php:172 admin/options-init.php:176
+msgid "Theme default"
+msgstr ""
+
+#: admin/options-init.php:217
+msgid "Learn more about this feature set"
+msgstr ""
+
+#: admin/options-init.php:218
+msgid "Documentation"
+msgstr ""
+
+#: admin/options.php:26
+#, fuzzy, php-format
+#| msgid "%1$s at %2$s"
+msgid "Version %1$s by %2$s"
+msgstr "%1$s at %2$s"
+
+#: admin/options.php:32
+#, fuzzy
+#| msgid "Graphene Options"
+msgid "Customise Graphene settings"
+msgstr "Grapheneのオプション"
+
+#: admin/options.php:37
+msgid "Get community support"
+msgstr ""
+
+#: admin/options.php:42
+msgid ""
+"Graphene theme is a labour of love, but it could not survive on love alone. "
+"Help support the theme and ensure its continuous development."
+msgstr ""
+
+#: admin/options.php:43
+msgid "Make a contribution"
+msgstr ""
+
+#: admin/options.php:47
+msgid "News and announcement"
+msgstr ""
+
+#: admin/options.php:56
+msgid "No news items."
+msgstr ""
+
+#: admin/uninstall.php:23
+msgid "Uninstall Graphene"
+msgstr "Grapheneをアンインストールする"
+
+#: admin/uninstall.php:24
+#, php-format
+msgid "Theme uninstalled. Redirecting to %s"
+msgstr ""
+
+#: admin/user.php:7
+msgid "Graphene-specific User Profile Information"
+msgstr "Graphene固有のユーザープロフィール情報"
+
+#: admin/user.php:8
+msgid "The settings defined here are used only with the Graphene theme."
+msgstr "ここでの設定は、Grapheneテーマの中だけで使用されます"
+
+#: admin/user.php:12
+msgid "Author profile image URL"
+msgstr "筆者のプロフィール画像URL"
+
+#: admin/user.php:14
+#, fuzzy, php-format
+#| msgid ""
+#| "You can specify the image to be displayed as the author's profile image "
+#| "in the Author's page. If no URL is defined here, the author's <a href="
+#| "\"http://www.gravatar.com\">Gravatar</a> will be used."
+msgid ""
+"You can specify the image to be displayed as the author's profile image in "
+"the Author's page. If no URL is defined here, the author's %s will be used."
+msgstr ""
+"あなたは筆者ページの中で筆者プロフィール画像として表示される画像を特定するこ"
+"とができます。ここにURLが定義されていない場合は、筆者の <a href=\"http://www."
+"gravatar.com\">Gravatar</a>が使われます。"
+
+#: admin/user.php:19
+#, fuzzy, php-format
+#| msgid "Please enter the URL to your profile image."
+msgid "Please enter the full URL (including %s) to your profile image."
+msgstr "あなたのプロフィール画像のURLを入力"
+
+#: admin/user.php:19
+msgid ""
+"<strong>Important: </strong>Image width must be less than or equal to "
+"<strong>150px</strong>."
+msgstr ""
+"<strong>重要: </strong>画像の幅は<strong>150px</strong>以下にしてください。"
+
+#: admin/user.php:24
+#, fuzzy
+#| msgid "Hide sidebar"
+msgid "Hide email"
+msgstr "サイドバーを隠す"
+
+#: admin/user.php:28
+msgid "Remove email address from your author bio."
+msgstr ""
+
+#: admin/user.php:33
+#, fuzzy
+#| msgid "Content sidebar location"
+msgid "Current location"
+msgstr "本文のサイドバーの位置"
+
+#: admin/user.php:38
+msgid ""
+"Will be displayed on your front-facing author profile page. Recommended to "
+"use \"City, Country\" format, e.g. \"Lisbon, Portugal\"."
+msgstr ""
+
+#: admin/user.php:43
+msgid "Social media URLs"
+msgstr ""
+
+#: archive.php:24 archive.php:26 archive.php:30
+#, fuzzy, php-format
+#| msgid "Archives"
+msgid "%s archive"
+msgstr "アーカイブ"
+
+#: archive.php:28
+msgid "F Y"
+msgstr ""
+
+#: archive.php:32
+#, fuzzy
+#| msgid "Archives"
+msgid "Blog Archive"
+msgstr "アーカイブ"
+
+#: author.php:32
+#, fuzzy
+#| msgid "Author's posts listings"
+msgid "Author's posts"
+msgstr "この筆者の投稿リスト"
+
+#: category.php:13
+#, php-format
+msgid "Category: <span>%s</span>"
+msgstr ""
+
+#: comments.php:25
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+"パスワードで保護された記事。コメントするにはパスワードを入力してください。"
+
+#: comments.php:50 inc/loop.php:818 loop-author.php:58
+#, php-format
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] "%s 個のコメント"
+
+#: comments.php:52
+#, php-format
+msgid "%s ping"
+msgid_plural "%s pings"
+msgstr[0] "%s 個のping"
+
+#: comments.php:82
+#, fuzzy
+#| msgid "Edit comment"
+msgid "Skip to comment form"
+msgstr "コメント編集"
+
+#: comments.php:124
+msgid "Comments have been disabled."
+msgstr "コメントは停止中"
+
+#: comments.php:138
+msgid "Your email address will not be published."
+msgstr "メールアドレスは公開されません"
+
+#: comments.php:141
+msgid "Submit Comment"
+msgstr "コメント投稿"
+
+#: footer.php:74
+#, php-format
+msgid "Made with %1$s by %2$s."
+msgstr ""
+
+#: footer.php:76
+msgid "Graphene Themes"
+msgstr "Grapheneの設定"
+
+#: header.php:30
+msgid "Toggle search form"
+msgstr ""
+
+#: header.php:60 header.php:98
+msgid "Go back to the front page"
+msgstr "フロントページに戻る"
+
+#: header.php:81
+msgid "Toggle navigation"
+msgstr ""
+
+#: inc/comments.php:25
+msgid "Your comment is awaiting moderation."
+msgstr "コメントは承認待ち。"
+
+#: inc/comments.php:54
+#, fuzzy
+#| msgid "Name:"
+msgid "Name"
+msgstr "名前:"
+
+#: inc/comments.php:58
+#, fuzzy
+#| msgid "Email:"
+msgid "Email"
+msgstr "Email:"
+
+#: inc/comments.php:62
+msgid "Website (optional)"
+msgstr ""
+
+#: inc/comments.php:88
+#, fuzzy
+#| msgid "Message:"
+msgid "Your message"
+msgstr "本文:"
+
+#: inc/comments.php:184
+msgid "Delete this comment"
+msgstr "コメントをどうぞ"
+
+#: inc/comments.php:186
+msgid "Mark this comment as spam"
+msgstr ""
+
+#: inc/comments.php:186
+msgid "Spam"
+msgstr ""
+
+#: inc/comments.php:213
+msgid "Fetch more comments"
+msgstr "コメントをどうぞ"
+
+#: inc/comments.php:258
+#, php-format
+msgid "%1$s on %2$s <span class=\"time\">at %3$s</span>"
+msgstr ""
+
+#: inc/comments.php:263
+msgid "Author"
+msgstr ""
+
+#: inc/comments.php:271
+msgid "Reply"
+msgstr "返信"
+
+#: inc/functions.php:184
+#, php-format
+msgid "Visit %1$s's %2$s page"
+msgstr ""
+
+#: inc/functions.php:327
+#, php-format
+msgid ""
+"You haven't placed any widget into this widget area. Go to %1$s and place "
+"some widgets in the widget area called %2$s."
+msgstr ""
+
+#: inc/functions.php:327
+msgid "WP Admin > Appearance > Widgets"
+msgstr ""
+
+#: inc/functions.php:328
+msgid "This notice will not be displayed to your site's visitors."
+msgstr ""
+
+#: inc/infinite-scroll.php:98 inc/scripts.php:73
+msgid "Load more"
+msgstr ""
+
+#: inc/loop.php:99 loop.php:36
+msgid "Continue reading"
+msgstr "続きを読む"
+
+#: inc/loop.php:220
+msgid "&laquo; Prev"
+msgstr ""
+
+#: inc/loop.php:221
+msgid "Next &raquo;"
+msgstr ""
+
+#: inc/loop.php:235
+msgid "Pages:"
+msgstr ""
+
+#: inc/loop.php:573
+#, php-format
+msgid "Print this %s"
+msgstr ""
+
+#: inc/loop.php:597
+#, fuzzy, php-format
+#| msgid "Permalink to %s"
+msgid "Return to %s"
+msgstr "%s へのパーマリンク"
+
+#: inc/loop.php:727
+#, fuzzy, php-format
+#| msgid "%1$s at %2$s"
+msgid "By %1$s in %2$s"
+msgstr "%1$s at %2$s"
+
+#: inc/loop.php:728
+#, php-format
+msgid "Filed under %2$s"
+msgstr ""
+
+#: inc/loop.php:729
+#, php-format
+msgid "By %s"
+msgstr ""
+
+#: inc/loop.php:810
+#, fuzzy
+#| msgid "Tags:"
+msgid "Tags"
+msgstr "タグ:"
+
+#: inc/loop.php:817
+msgid "Leave comment"
+msgstr "コメントをどうぞ"
+
+#: inc/loop.php:916
+msgid "In this section"
+msgstr ""
+
+#: inc/menus.php:136
+msgid "FontAwesome Icon Name"
+msgstr ""
+
+#: inc/menus.php:179
+#, php-format
+msgid "Choose from 580+ %s"
+msgstr ""
+
+#: inc/menus.php:179
+msgid "available icons"
+msgstr ""
+
+#: inc/menus.php:224
+msgid "Home"
+msgstr "ホーム"
+
+#: inc/menus.php:296
+#, fuzzy, php-format
+#| msgid "(No title)"
+msgid "#%d (no title)"
+msgstr "(無題)"
+
+#: inc/panes.php:70 inc/panes.php:85 loop-author.php:58 loop-children.php:45
+#: loop.php:17 loop.php:43
+#, php-format
+msgid "Permalink to %s"
+msgstr "%s へのパーマリンク"
+
+#: inc/panes.php:85
+msgid "Read more"
+msgstr ""
+
+#: inc/scripts.php:80
+#, php-format
+msgid "Fetching %1$s of %2$s items left ..."
+msgstr ""
+
+#: inc/scripts.php:84
+#, php-format
+msgid "Fetching %1$s of %2$s item left ..."
+msgid_plural "Fetching %1$s of %2$s items left ..."
+msgstr[0] ""
+
+#: inc/scripts.php:89
+msgid "All loaded!"
+msgstr ""
+
+#: inc/scripts.php:93 inc/scripts.php:97
+#, php-format
+msgid "Fetching %1$s of %2$s comments left ..."
+msgid_plural "Fetching %1$s of %2$s comments left ..."
+msgstr[0] ""
+
+#: inc/scripts.php:102
+#, fuzzy
+#| msgid "% comments"
+msgid "All comments loaded!"
+msgstr "% 個のコメント"
+
+#: inc/setup.php:96
+msgid "Header Menu"
+msgstr "ヘッダーメニュー"
+
+#: inc/setup.php:98
+#, fuzzy
+#| msgid "Footer Options"
+msgid "Footer Menu"
+msgstr "フッター設定"
+
+#: inc/setup.php:148
+msgid "Forest"
+msgstr ""
+
+#: inc/setup.php:153
+msgid "Mountains"
+msgstr ""
+
+#: inc/setup.php:158
+msgid "Road"
+msgstr ""
+
+#: inc/setup.php:162
+msgid "Header image by Syahir Hakim"
+msgstr "ヘッダー画像 by Syahir Hakim\""
+
+#: inc/setup.php:166
+msgid ""
+"This is the default Graphene theme header image, cropped from image by "
+"Quantin Houyoux at sxc.hu"
+msgstr ""
+"Grapheneテーマのデフォルトヘッダー画像で、Quantin Houyoux が sxc.hu に投稿し"
+"た画像を切り取ったものです。"
+
+#: inc/setup.php:170 inc/setup.php:174 inc/setup.php:178 inc/setup.php:182
+#: inc/setup.php:186
+msgid "Header image cropped from image by Ilco at sxc.hu"
+msgstr "ヘッダー画像はsxc.huのIlcoによる画像を切り抜いたものです"
+
+#: inc/setup.php:207
+#, fuzzy
+#| msgid "Graphene Display Options"
+msgid "Graphene - Sidebar One"
+msgstr "Grapheneの表示オプション"
+
+#: inc/setup.php:209
+#, fuzzy
+#| msgid ""
+#| "The right sidebar widget area that will only be displayed on the front "
+#| "page."
+msgid ""
+"The first sidebar widget area (will always be displayed on the right hand "
+"side)."
+msgstr "右サイドバー・ウィジェットエリアはフロントページのみ表示されます。"
+
+#: inc/setup.php:216
+msgid "Graphene - Sidebar Two"
+msgstr ""
+
+#: inc/setup.php:218
+#, fuzzy
+#| msgid ""
+#| "The right sidebar widget area that will only be displayed on the front "
+#| "page."
+msgid ""
+"The second sidebar widget area (will always be displayed on the left hand "
+"side)."
+msgstr "右サイドバー・ウィジェットエリアはフロントページのみ表示されます。"
+
+#: inc/setup.php:236
+#, fuzzy
+#| msgid "Graphene FAQs"
+msgid "Graphene - Footer"
+msgstr "GrapheneのFAQ"
+
+#: inc/setup.php:238
+msgid ""
+"The footer widget area. Leave empty to disable. Set the number of columns to "
+"display at the theme's Display Options page."
+msgstr ""
+"フッター・ウィジェット領域。空のままだと使用不可。テーマの表示オプションで表"
+"示されるコラム数を設定してください"
+
+#: inc/setup.php:253
+msgid "Graphene - Sidebar One (Front Page)"
+msgstr ""
+
+#: inc/setup.php:255
+#, fuzzy
+#| msgid ""
+#| "The right sidebar widget area that will only be displayed on the front "
+#| "page."
+msgid ""
+"The first sidebar widget area that will only be displayed on the front page."
+msgstr "右サイドバー・ウィジェットエリアはフロントページのみ表示されます。"
+
+#: inc/setup.php:262
+msgid "Graphene - Sidebar Two (Front Page)"
+msgstr ""
+
+#: inc/setup.php:264
+#, fuzzy
+#| msgid ""
+#| "The right sidebar widget area that will only be displayed on the front "
+#| "page."
+msgid ""
+"The second sidebar widget area that will only be displayed on the front page."
+msgstr "右サイドバー・ウィジェットエリアはフロントページのみ表示されます。"
+
+#: inc/setup.php:273
+msgid "Graphene - Footer (Front Page)"
+msgstr ""
+
+#: inc/setup.php:275
+msgid ""
+"The footer widget area that will only be displayed on the front page. Leave "
+"empty to disable. Set the number of columns to display at the theme's "
+"Display Options page."
+msgstr ""
+"フロントページにのみ表示されるフッター・ウィジェット領域。空のままだと使用不"
+"可。テーマの表示オプションでコラム数を設定してください。"
+
+#: inc/setup.php:285
+#, fuzzy
+#| msgid "Graphene Display"
+msgid "Graphene - Header"
+msgstr "Grapheneの表示"
+
+#: inc/setup.php:287
+#, fuzzy
+#| msgid "The right sidebar widget area."
+msgid "The header widget area."
+msgstr "右サイドバー・ウィジェット領域"
+
+#: inc/setup.php:304
+#, php-format
+msgid ""
+"Dynamically added widget area. This widget area is attached to the %s action "
+"hook."
+msgstr ""
+
+#: inc/slider.php:61
+#, fuzzy
+#| msgid "View full post"
+msgid "View post"
+msgstr "全文を読む"
+
+#: loop-author.php:58 loop-children.php:45 loop-page.php:5 loop-page.php:16
+#: loop-single.php:16 loop.php:4 loop.php:18
+msgid "(No title)"
+msgstr "(無題)"
+
+#: loop-author.php:65
+msgid "Most commented posts"
+msgstr "最多コメントの記事"
+
+#: loop-not-found.php:3
+msgid "Not found"
+msgstr "見つかりません"
+
+#: loop-not-found.php:8
+msgid ""
+"Sorry, but you are looking for something that isn't here. Wanna try a search?"
+msgstr "残念ながらお探しのものはありません。検索しますか？"
+
+#: loop-not-found.php:10
+msgid ""
+"Sorry, but no results were found for that keyword. Wanna try an alternative "
+"keyword search?"
+msgstr ""
+"残念ながらそのキーワードでは見つかりませんでした。別のキーワードを試します"
+"か？"
+
+#: loop-page.php:42 loop-single.php:44 loop.php:74
+#, fuzzy
+#| msgid "Permalink to %s"
+msgid "Permanent link to this article:"
+msgstr "%s へのパーマリンク"
+
+#: search-404.php:17
+#, php-format
+msgid "Found %1$s search result for keyword: %2$s"
+msgid_plural "Found %1$s search results for keyword: %2$s"
+msgstr[0] ""
+
+#: search-404.php:26
+msgid "Suggested results"
+msgstr "おすすめの結果"
+
+#: search-404.php:31
+#, fuzzy, php-format
+#| msgid ""
+#| "I've done a courtesy search for the term %s for you. See if you can find "
+#| "what you're looking for in the list below:"
+msgid ""
+"I've done a courtesy search for the term %1$s for you and found a total of "
+"%2$s result. See if you can find what you're looking for below."
+msgid_plural ""
+"I've done a courtesy search for the term %1$s for you and found a total of "
+"%2$s results. See if you can find what you're looking for below."
+msgstr[0] ""
+"キーワード %s で検索を行いました。 このリストからお探しのものを見つけてくださ"
+"い:"
+
+#: search-404.php:52
+msgid ""
+"<strong>Sorry, couldn't find anything.</strong> Try searching for "
+"alternative terms using the search form above."
+msgstr ""
+"<strong>残念ながら、何も見つかりませんでした。</strong>別のキーワードを上の検"
+"索窓に入力して検索してみてください。"
+
+#: search.php:18
+#, fuzzy, php-format
+#| msgid "%1$s at %2$s"
+msgid "%1$d result for %2$s"
+msgid_plural "%1$d results for %2$s"
+msgstr[0] "%1$s at %2$s"
+
+#: searchform.php:3
+msgid "Search"
+msgstr "検索"
+
+#: sidebar-two.php:28
+#, fuzzy
+#| msgid "Front Page Sidebar Widget Area"
+msgid "Front Page Sidebar Two Widget Area"
+msgstr "フロントページのサイドバー・ウィジェット領域"
+
+#: sidebar-two.php:30
+#, fuzzy
+#| msgid "Sidebar Widget Area"
+msgid "Sidebar Two Widget Area"
+msgstr "サイドバー・ウィジェット領域"
+
+#: sidebar.php:28
+msgid "Front Page Sidebar Widget Area"
+msgstr "フロントページのサイドバー・ウィジェット領域"
+
+#: sidebar.php:30
+msgid "Sidebar Widget Area"
+msgstr "サイドバー・ウィジェット領域"
+
+#: tag.php:13
+#, php-format
+msgid "Tag: <span>%s</span>"
+msgstr ""
+
+#: taxonomy.php:15
+#, fuzzy, php-format
+#| msgid "%1$s at %2$s"
+msgid "%1$s: %2$s"
+msgstr "%1$s at %2$s"
+
+#: template-onecolumn.php:10
+msgid "One column, no sidebar"
+msgstr ""
+
+#: template-threecolumnscenter.php:11
+msgid "Three columns, sidebar left and right"
+msgstr ""
+
+#: template-threecolumnsleft.php:13
+msgid "Three columns, sidebars on the right"
+msgstr ""
+
+#: template-threecolumnsright.php:13
+msgid "Three columns, sidebars on the left"
+msgstr ""
+
+#: template-twocolumnsleft.php:13
+msgid "Two columns, sidebar on the right"
+msgstr ""
+
+#: template-twocolumnsright.php:13
+msgid "Two columns, sidebar on the left"
+msgstr ""
+
+#~ msgid "Continue reading &raquo;"
+#~ msgstr "続きを読む &raquo;"
+
+#~ msgid "1 comment"
+#~ msgstr "1 個のコメント"
+
+#~ msgid "No ping yet"
+#~ msgstr "まだpingなし"
+
+#~ msgid "1 ping"
+#~ msgstr "1 個のping"
+
+#~ msgid ""
+#~ "You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> "
+#~ "tags and attributes: %s"
+#~ msgstr ""
+#~ "次の <abbr title=\"HyperText Markup Language\">HTML</abbr>タグおよび属性が"
+#~ "使えます: %s"
+
+#~ msgid ""
+#~ "Except where otherwise noted, content on this site is licensed under a <a "
+#~ "href=\"http://creativecommons.org/licenses/by-nc-nd/3.0/\">Creative "
+#~ "Commons Licence</a>."
+#~ msgstr ""
+#~ "特別に記述された部分を除き、このサイトの内容は<href=\" http://"
+#~ "creativecommons.org/licenses/by-nc-nd/3.0/ \">クリエイティブ・コモンズ"
+#~ "<Licence/でライセンスされます。"
+
+#~ msgid "Valid XHTML 1.0 Strict"
+#~ msgstr "Valid XHTML 1.0 Strict"
+
+#~ msgid "Valid CSS"
+#~ msgstr "Valid CSS"
+
+#~ msgid "Valid CSS Level 2.1"
+#~ msgstr "Valid CSS Level 2.1"
+
+#~ msgid "%1$s uses %2$s theme by %3$s."
+#~ msgstr "%1$s は %2$s テーマを使っています(作成者 %3$s.)"
+
+#~ msgid " says:"
+#~ msgstr " さん、いわく:"
+
+#~ msgid "Front Page Footer Widget Area"
+#~ msgstr "フロントページのフッター・ウィジェット領域"
+
+#~ msgid "Latest tweets"
+#~ msgstr "最新ツイート"
+
+#~ msgid "Title:"
+#~ msgstr "タイトル:"
+
+#~ msgid "Twitter Username:"
+#~ msgstr "Twitterユーザ名:"
+
+#~ msgid "Website:"
+#~ msgstr "ウェブサイト:"
+
+#~ msgid "Older posts &laquo;"
+#~ msgstr "古い記事へ &laquo;"
+
+#~ msgid "&raquo; Newer posts"
+#~ msgstr "&raquo; 新しい記事へ"
+
+#~ msgid ""
+#~ "<strong>ERROR: You must supply the post ID to get the image from as an "
+#~ "argument when calling the graphene_get_post_image() function.</strong>"
+#~ msgstr ""
+#~ "<strong>エラー: 画像を得るにはgraphene_get_post_image() 関数を呼ぶとき.引"
+#~ "数として投稿IDをを与えなければなりません</strong>"
+
+#~ msgid "Author's details"
+#~ msgstr "筆者の詳細"
+
+#~ msgid "<strong>Name:</strong> %1$s %2$s"
+#~ msgstr "<strong>名前:</strong> %1$s %2$s"
+
+#~ msgid "<strong>Date registered:</strong> %1$s"
+#~ msgstr "<strong>登録日時:</strong> %1$s"
+
+#~ msgid "Biography"
+#~ msgstr "バイオグラフィー"
+
+#~ msgid "Permalink Link to %s"
+#~ msgstr "%s へのパーマネント・リンク"
+
+#~ msgid "Edit post"
+#~ msgstr "記事編集"
+
+#~ msgid "by"
+#~ msgstr "by"
+
+#~ msgid "Read the rest of this entry &raquo;"
+#~ msgstr "続きを読む &raquo;"
+
+#~ msgid "<p><strong>Pages:</strong> "
+#~ msgstr "<p><strong>ページ:</strong> "
+
+#~ msgid "This post has no tag"
+#~ msgstr "タグはついていません"
+
+#~ msgid "About the author"
+#~ msgstr "筆者について"
+
+#~ msgid "Meta"
+#~ msgstr "メタ"
+
+#~ msgid "Posts RSS"
+#~ msgstr "記事のRSS"
+
+#~ msgid "Powered by %s"
+#~ msgstr "Powered by %s"
+
+#~ msgid ""
+#~ "Powered by WordPress, state-of-the-art semantic personal publishing "
+#~ "platform."
+#~ msgstr ""
+#~ "Powered by WordPress, state-of-the-art semantic personal publishing "
+#~ "platform."
+
+#~ msgid ""
+#~ "Please enter only numerical value for the footer widget column count."
+#~ msgstr "フッターウィジェットのコラム数を数値で入力"
+
+#~ msgid ""
+#~ "Please enter only numerical value for the front page footer widget column "
+#~ "count."
+#~ msgstr "フロントページのフッター・ウィジェットのコラム数を数値で入力"
+
+#~ msgid ""
+#~ "Please enter only numerical value for the navigation menu dropdown item "
+#~ "width."
+#~ msgstr "ナビゲーションメニューのドロップダウン表示幅を数値で入力"
+
+#~ msgid "Settings updated."
+#~ msgstr "設定は更新されました。"
+
+#~ msgid "ERROR:"
+#~ msgstr "エラー:"
+
+#~ msgid "Header Display Options"
+#~ msgstr "ヘッダー表示オプション"
+
+#~ msgid "Use random header image"
+#~ msgstr "ランダムなヘッダー画像を使う"
+
+#~ msgid ""
+#~ "Check this to show a random header image (random image taken from the "
+#~ "available default header images)."
+#~ msgstr ""
+#~ "ランダムにヘッダー画像を表示する時チェック(ランダム画像は、使用可能なデ"
+#~ "フォルトヘッダー画像から使われます)"
+
+#~ msgid ""
+#~ "<strong>Note:</strong> only works on pages where a specific header image "
+#~ "is not defined."
+#~ msgstr ""
+#~ "<strong>注意:</strong> 特定のヘッダー画像が設定されているページのみで動作"
+#~ "します"
+
+#~ msgid "Hide the top bar"
+#~ msgstr "トップバーを隠す"
+
+#~ msgid "Sidebar Options"
+#~ msgstr "サイドバーのオプション"
+
+#~ msgid "Right"
+#~ msgstr "右"
+
+#~ msgid "Left"
+#~ msgstr "左"
+
+#~ msgid ""
+#~ "Will cause all posts and pages to be displayed in a single-column layout."
+#~ msgstr "すべての投稿およびページで、シングルカラムのレイアウトになります"
+
+#~ msgid "Posts Display Options"
+#~ msgstr "投稿の表示設定"
+
+#~ msgid "Hide post date"
+#~ msgstr "日付を非表示"
+
+#~ msgid "Show post year"
+#~ msgstr "年を表示する"
+
+#~ msgid "Only works if the option \"Hide post date\" is disabled."
+#~ msgstr "\"日付を非表示\" が無効にされていない時のみ動作します。"
+
+#~ msgid ""
+#~ "Only affects posts listing (such as the front page) and not single post "
+#~ "view."
+#~ msgstr ""
+#~ "単一記事画面ではなく、投稿リスト(フロントページなど)のみに影響します"
+
+#~ msgid "Show post author's gravatar"
+#~ msgstr "筆者のGravatarを表示"
+
+#~ msgid "Show post author's info"
+#~ msgstr "筆者の情報を表示"
+
+#~ msgid "Comments Display Options"
+#~ msgstr "コメント表示オプション"
+
+#~ msgid "Hide allowed tags in comment form"
+#~ msgstr "コメントフォームで許容されるタグを非表示"
+
+#~ msgid "Text Style Options"
+#~ msgstr "テキストスタイルオプション"
+
+#~ msgid ""
+#~ "Note that these are CSS properties, so any valid CSS values for each "
+#~ "particular property can be used."
+#~ msgstr ""
+#~ "CSSのプロパティであることに注意。特定のプロパティを設定する有効なCSS値はど"
+#~ "れも使えます。"
+
+#~ msgid "Some example CSS properties values:"
+#~ msgstr "CSSプロパティ値のサンプル:"
+
+#~ msgid "Text font:"
+#~ msgstr "フォント:"
+
+#~ msgid ""
+#~ "<code>arial</code>, <code>tahoma</code>, <code>georgia</code>, "
+#~ "<code>'Trebuchet MS'</code>"
+#~ msgstr ""
+#~ "<code>arial</code>, <code>tahoma</code>, <code>Osaka</code>, <code>'MS Pゴ"
+#~ "シック'</code>"
+
+#~ msgid "Text size and line height:"
+#~ msgstr "文字サイズと行の高さ:"
+
+#~ msgid "<code>12px</code>, <code>12pt</code>, <code>12em</code>"
+#~ msgstr "<code>12px</code>, <code>12pt</code>, <code>12em</code>"
+
+#~ msgid "Text weight:"
+#~ msgstr "文字の太さ:"
+
+#~ msgid ""
+#~ "<code>normal</code>, <code>bold</code>, <code>100</code>, <code>700</code>"
+#~ msgstr ""
+#~ "<code>normal</code>, <code>bold</code>, <code>100</code>, <code>700</code>"
+
+#~ msgid "Text style:"
+#~ msgstr "文字スタイル:"
+
+#~ msgid " <code>normal</code>, <code>italic</code>, <code>oblique</code>"
+#~ msgstr " <code>normal</code>, <code>italic</code>, <code>oblique</code>"
+
+#~ msgid "Text colour:"
+#~ msgstr "文字の色:"
+
+#~ msgid ""
+#~ "<code>blue</code>, <code>navy</code>, <code>red</code>, <code>#ff0000</"
+#~ "code>"
+#~ msgstr ""
+#~ "<code>blue</code>, <code>navy</code>, <code>red</code>, <code>#ff0000</"
+#~ "code>"
+
+#~ msgid "Header Text"
+#~ msgstr "ヘッダーテキスト"
+
+#~ msgid "Title text size"
+#~ msgstr "タイトル文字のサイズ"
+
+#~ msgid "Title text weight"
+#~ msgstr "タイトル文字の太さ"
+
+#~ msgid "Title text line height"
+#~ msgstr "タイトル行の高さ"
+
+#~ msgid "Title text style"
+#~ msgstr "タイトルの文字スタイル"
+
+#~ msgid "Description text size"
+#~ msgstr "説明文文字のサイズ"
+
+#~ msgid "Description text weight"
+#~ msgstr "説明文文字の太さ"
+
+#~ msgid "Description text line height"
+#~ msgstr "説明文行の高さ"
+
+#~ msgid "Description text style"
+#~ msgstr "説明文文字のスタイル"
+
+#~ msgid "Text font"
+#~ msgstr "フォント"
+
+#~ msgid "Text size"
+#~ msgstr "文字サイズ"
+
+#~ msgid "Text line height"
+#~ msgstr "行の高さ"
+
+#~ msgid "Text colour"
+#~ msgstr "文字の色"
+
+#~ msgid "Link colour (normal state)"
+#~ msgstr "リンク色(通常時)"
+
+#~ msgid "Link colour (visited state)"
+#~ msgstr "リンク色(既訪問時)"
+
+#~ msgid "Text decoration (normal state)"
+#~ msgstr "文字装飾(通常時)"
+
+#~ msgid "Footer Widget Display Options"
+#~ msgstr "フッター・ウィジェット表示オプション"
+
+#~ msgid "Number of columns to display"
+#~ msgstr "表示するコラム数"
+
+#~ msgid "Number of columns to display for front page footer widget"
+#~ msgstr "フロントページのフッターウィジェットに表示するコラム数"
+
+#~ msgid "Swap title order"
+#~ msgstr "タイトルの表示順を反転する"
+
+#~ msgid ""
+#~ "If this is checked, the website title will be displayed first, followed "
+#~ "by the page title."
+#~ msgstr ""
+#~ "ここにチェックすると、Webサイトのタイトルが最初に、ページタイトルが後に表"
+#~ "示されます。"
+
+#~ msgid "Custom CSS"
+#~ msgstr "カスタムCSS"
+
+#~ msgid "Custom CSS styles"
+#~ msgstr "カスタムCSSスタイル"
+
+#~ msgid ""
+#~ "You can enter your own CSS codes below to modify any other aspects of the "
+#~ "theme's appearance that is not included in the options."
+#~ msgstr ""
+#~ "オプションでは変更できないテーマの表示を修正するため、下に任意のCSSコード"
+#~ "を入力できます"
+
+#~ msgid "Graphene's Frequently Asked Questions"
+#~ msgstr "Grapheneのよくある質問"
+
+#~ msgid "Where should I go for the theme's support?"
+#~ msgstr "このテーマのサポートはどこで受けられますか？"
+
+#~ msgid ""
+#~ "Please direct all support requests for the theme at the theme's <a href="
+#~ "\"http://forum.khairul-syahir.com/forum/graphene-wordpress-theme"
+#~ "\">Support Forum</a>."
+#~ msgstr ""
+#~ "すべてのサポートはこのテーマの <a href=\"http://forum.khairul-syahir.com/"
+#~ "forum/graphene-wordpress-theme\">サポート・フォーラム</a> で行われています"
+#~ "(英語)。"
+
+#~ msgid "The post's featured image is replacing my header image. Help!"
+#~ msgstr "記事の注目画像が、ヘッダー画像に置き換えられてしまいます。助けて！"
+
+#~ msgid ""
+#~ "This is actually one of the theme's features, based on the feature in the "
+#~ "default TwentyTen theme. Any featured image that has a size of greater "
+#~ "than or equal to the theme's header image size (900 x 198 pixels) will "
+#~ "replace the header image when the post/page that featured image is "
+#~ "assigned to is being displayed. It enables you to have different header "
+#~ "image for different posts and/or pages."
+#~ msgstr ""
+#~ "実は、これはこのテーマの特徴のひとつです。これはデフォルトのTwentyTenテー"
+#~ "マの特徴に基づいています。テーマのヘッダー画像と同じかより大きいサイズを"
+#~ "持った注目画像は、注目画像が設定されている投稿/ページが表示される時に、"
+#~ "ヘッダー画像を置き換えます。これにより、それぞれの投稿/ページに異なるヘッ"
+#~ "ダー画像を表示させることができます。"
+
+#~ msgid ""
+#~ "If you want to disable this feature, simply tick the <em>Disable Featured "
+#~ "Image replacing header image</em> option in the <a href=\"themes.php?"
+#~ "page=graphene_options_display\">Graphene Display</a> options page, under "
+#~ "Header Display Options."
+#~ msgstr ""
+#~ "この特徴を無効にしたい場合は、<a href=\"themes.php?"
+#~ "page=graphene_options_display\">Graphene の表示</a>設定ページのヘッダー画"
+#~ "像オプションにある<em>注目画像のヘッダー画像への置き換えを無効にする</em>"
+#~ "を選択してください。"
+
+#~ msgid "Can I modify Graphene to my heart's content without paying anything?"
+#~ msgstr "何の支払いもせずに、Grapheneを思う存分変更してもいいですか？"
+
+#~ msgid ""
+#~ "The Graphene Wordpress theme, along with all the other themes in the "
+#~ "Wordpress.org Official Free Themes Directory, is released under the GNU "
+#~ "General Public License (GPL) Version 2. The full text of that licence is "
+#~ "included with the theme in the <code>licence.txt</code> file in the "
+#~ "theme's folder. Releasing the theme under that licence means, among "
+#~ "others, that you are <em>free to modify the theme in any way for any "
+#~ "purpose (including commercial)</em> without any obligation to the theme's "
+#~ "author. However, if you decide to redistribute the theme, the licence "
+#~ "dictates that you must release the theme under the same licence, GPLv2."
+#~ msgstr ""
+#~ "Graphene テーマは、Wordpress.org Official Free Themesディレクトリにおける"
+#~ "他のテーマと同様、GNU一般共有使用許諾(GPL)バージョン2でリリースされていま"
+#~ "す。 themeフォルダーに<code>licence.txt</code>ファイルがあれば、そのライセ"
+#~ "ンスの全文が含まれています。 このライセンスでテーマをリリースされているの"
+#~ "で、あなたが<em>どんな目的(商用を含む)</em>でも、テーマを変更することには"
+#~ "何の義務も課せられません。 しかし、あなたがテーマを再配付するなら同じライ"
+#~ "センス(GPLv2)でリリースしなければなりません。"
+
+#~ msgid ""
+#~ "But of course, the author would always appreciate <a href=\"themes.php?"
+#~ "page=graphene_options\">donations</a> to support ongoing and future "
+#~ "developments of the theme."
+#~ msgstr ""
+#~ "しかしもちろん、作者はテーマの今後の開発をサポートするための寄付には感謝す"
+#~ "るでしょう。"
+
+#~ msgid ""
+#~ "If the theme is released under GPLv2, what is this Creative Commons "
+#~ "licence in the theme's footer?"
+#~ msgstr ""
+#~ "このテーマがGPLv2でリリースされているなら、このテーマのフッターにあるクリ"
+#~ "エイティブ・コモンズのライセンスは何ですか？"
+
+#~ msgid ""
+#~ "The Creative Commons licence is a popular licence nowadays that are used "
+#~ "by a lot of web-based content authors to licence their work such that it "
+#~ "protects their intellectual property but in the same time allows its free "
+#~ "distribution. It is included with the theme simply to make it easy for "
+#~ "the theme's users to make use of the licence for the content they "
+#~ "publish. Theme users can remove it altogether via the theme's Options "
+#~ "page should they wish not to use it."
+#~ msgstr ""
+#~ "クリエイティブ・コモンズ・ライセンスは、多くのウェブ上のコンテンツ作者に"
+#~ "よって、自分たちの知的所有権を保護するとともに、自由な配布を許可するために"
+#~ "使われる一般的なライセンスです。テーマ自体にこれが実装されていることによっ"
+#~ "て、テーマのユーザー発表する内容にこのライセンスを簡単に使用できます。もち"
+#~ "ろんテーマのオプションで、クリエイティブ・コモンズ・ライセンスを使用しない"
+#~ "ようにも設定できます。"
+
+#~ msgid ""
+#~ "Put simply, <em>it is not the licence that is applied for the theme "
+#~ "itself</em>, but just for the website's content should the theme user "
+#~ "wants to use it."
+#~ msgstr ""
+#~ "単純な話、<em>クリエイティブ・コモンズはテーマ自体のために適用されるライセ"
+#~ "ンスではありません。</em>ウェブサイトのコンテンツについてテーマのユーザが"
+#~ "それを使用したい場合のために使います。"
+
+#~ msgid "Is the theme compatible with this plugin or that plugin?"
+#~ msgstr "このテーマは、あれやこれやのプラグインと互換性がありますか？"
+
+#~ msgid ""
+#~ "I don't know. With so many plugins available for Wordpress, there's no "
+#~ "way that I (or anybody else for that matter) can test for compatibility "
+#~ "for all of them. Having said that, the theme is built with all the "
+#~ "necessary Wordpress components included with it, so chances are most "
+#~ "plugins will be compatible with the theme."
+#~ msgstr ""
+#~ "わかりません。 Wordpressにはとても多くのプラグインがあるので、開発者(とい"
+#~ "うか、誰も)がそのすべてに互換性あるかどうかテストできる方法がありません。 "
+#~ "とはいえ、このテーマは必要なWordpressのコンポーネントがすべて含まれている"
+#~ "状態で構築されているので、たぶん、ほとんどのプラグインがテーマと互換性があ"
+#~ "るでしょう。"
+
+#~ msgid ""
+#~ "My suggestion is to just install the plugin and try it. If you stumble "
+#~ "into problem, ask for support from the plugin author first. If the plugin "
+#~ "author says that it's a problems with the theme, you know where to find "
+#~ "support."
+#~ msgstr ""
+#~ "おすすめするのは、ただプラグインをインストールして、試してみることです。 "
+#~ "問題が発生したなら、まずプラグインの作者にサポートを求めてください。 もし"
+#~ "プラグインの作者が、テーマに関する問題であると言ったら、どこでサポートを受"
+#~ "けるべきかわかるでしょう。"
+
+#~ msgid "You must enter your Adsense code to enable Adsense advertising"
+#~ msgstr "アドセンス広告を行うためには、アドセンスコードを入力してください"
+
+#~ msgid ""
+#~ "You must enter your AddThis button code to enable the AddThis social "
+#~ "sharing button"
+#~ msgstr "ソーシャル共有を行うためには、ボタン追加コードを入力してください"
+
+#~ msgid ""
+#~ "You must enter your Google Analytics tracking code to enable Google "
+#~ "Analytics tracking."
+#~ msgstr ""
+#~ "Google Analyticsトラッキングを行うためには、トラッキングコードを入力してく"
+#~ "ださい"
+
+#~ msgid ""
+#~ "Please confirm that you would like to uninstall the Graphene theme. All "
+#~ "of the theme's options in the database will be deleted."
+#~ msgstr ""
+#~ "Grapheneテーマをアンインストールしようとしています。実行すると、データベー"
+#~ "スからGrapheneに関する設定をすべて削除します。"
+
+#~ msgid "Uninstall Theme"
+#~ msgstr "テーマをアンインストールする"
+
+#~ msgid ""
+#~ "These are the global settings for the theme. You may override some of the "
+#~ "settings in individual posts and pages."
+#~ msgstr ""
+#~ "このテーマに対するグローバルな設定です。一部の設定は、投稿やページごとに設"
+#~ "定を上書きすることができます。"
+
+#~ msgid "Slider Options"
+#~ msgstr "スライダー設定"
+
+#~ msgid "You may select multiple categories by holding down the CTRL key."
+#~ msgstr ""
+#~ "CTRLキーを押したままにすることによって、複数のカテゴリーを選択できます。"
+
+#~ msgid "Alternate Widgets"
+#~ msgstr "ウィジェット交代"
+
+#~ msgid ""
+#~ "You can enable the theme to show different widget areas in the front page "
+#~ "than the rest of the website. If you enable this option, additional "
+#~ "widget areas that will only be displayed on the front page will be added "
+#~ "to the Widget settings page."
+#~ msgstr ""
+#~ "フロントページのみで、ウェブサイトの他のページとは異なるウィジェット領域を"
+#~ "表示することができます。このオプションを有効にすると、ウィジェット設定ペー"
+#~ "ジに、フロントページのみに表示されるウィジェット領域が追加されます。"
+
+#~ msgid ""
+#~ "You can also specify different column counts for the front page footer "
+#~ "widget and the rest-of-site footer widget if you enable this option."
+#~ msgstr ""
+#~ "このオプションにより、フロントページのフッターウィジェット領域を、サイトの"
+#~ "他のページと違うコラム数に設定することができます。"
+
+#~ msgid "Feed Options"
+#~ msgstr "フィード設定"
+
+#~ msgid "Hide feed icon"
+#~ msgstr "フィードアイコンを隠す"
+
+#~ msgid "Use custom feed URL"
+#~ msgstr "カスタムフィードURLを使う"
+
+#~ msgid ""
+#~ "This custom feed URL will replace the default Wordpress RSS feed URL."
+#~ msgstr ""
+#~ "このカスタムフィードURLは、WordpressのデフォルトRSSフィードURLを置き換えま"
+#~ "す"
+
+#~ msgid "Show in Pages as well?"
+#~ msgstr "投稿だけでなくページ上でも表示する？"
+
+#~ msgid "Adsense Options"
+#~ msgstr "アドセンス設定"
+
+#~ msgid "Show Adsense advertising"
+#~ msgstr "アドセンス広告を表示する"
+
+#~ msgid "Show ads on front page as well"
+#~ msgstr "広告をフロントページ上で表示"
+
+#~ msgid "Google Analytics Options"
+#~ msgstr "Google Analytics設定"
+
+#~ msgid ""
+#~ "<strong>Note:</strong> the theme now places the Google Analytics script "
+#~ "in the <code>&lt;head&gt;</code> element to better support the new "
+#~ "asynchronous Google Analytics script. Please make sure you update your "
+#~ "script to use the new asynchronous script from Google Analytics."
+#~ msgstr ""
+#~ "<strong>注意:</strong> 現在このテーマは 新しい非同期型Google Analytics ス"
+#~ "クリプトに対応するために <code>&lt;head&gt;</code> 要素にスクリプトを配置"
+#~ "します。必ずアップデートして、Google Analyticsの新しい非同期型スクリプトを"
+#~ "使用してください。"
+
+#~ msgid ""
+#~ "Make sure you include the full tracking code (including the <code>&lt;"
+#~ "script&gt;</code> and <code>&lt;/script&gt;</code> tags) and not just the "
+#~ "<code>UA-#######-#</code> code."
+#~ msgstr ""
+#~ "フルトラッキングコードであることを確認してください (<code>&lt;script&gt;</"
+#~ "code> and <code>&lt;/script&gt;</code> タグが含まれていること)  <code>UA-"
+#~ "#######-#</code> というコードではありません。"
+
+#~ msgid "Show Creative Commons logo"
+#~ msgstr "クリエイティブ・コモンズのロゴを表示"
+
+#~ msgid ""
+#~ "If this field is empty, the following default copyright text will be "
+#~ "displayed:"
+#~ msgstr "この項目を空白にすると、下記のデフォルト著作権文が表示されます:"
+
+#~ msgid "Support the developer"
+#~ msgstr "開発者を支援する"
+
+#~ msgid ""
+#~ "Developing this awesome theme took a lot of effort and time, weeks and "
+#~ "weeks of voluntary unpaid work. If you like this theme or if you are "
+#~ "using it for commercial websites, please consider a donation to the "
+#~ "developer to help support future updates and development."
+#~ msgstr ""
+#~ "このテーマの開発には、多くの努力と時間を必要としました。このテーマがお好き"
+#~ "ならば、あるいは、商業的なウェブサイトのためにそれを使っているならば、将来"
+#~ "の開発を支援するために、開発者への寄付を考慮していただければ幸いです。"
+
+#~ msgid "Uninstall theme"
+#~ msgstr "テーマをアンインストールする"
+
+#~ msgid ""
+#~ "<strong>Be careful!</strong> Uninstalling the theme will remove all of "
+#~ "the theme's options from the database. Do this only if you decide not to "
+#~ "use the theme anymore."
+#~ msgstr ""
+#~ "<strong>ご注意l!</strong>このテーマをアンインストールすると、テーマに関す"
+#~ "る設定はすべてデータベースから削除されます。このテーマを今後使用しないとき"
+#~ "にのみ、実行してください。"
+
+#~ msgid ""
+#~ "If you just want to try another theme, there is no need to uninstall this "
+#~ "theme. Simply activate the other theme in the Appearance > Themes admin "
+#~ "page."
+#~ msgstr ""
+#~ "他のテーマを試してみるだけなら、アンインストールする必要はありません。管理"
+#~ "ページの「外観>テーマ」より、他のテーマを有効化するだけです。"
+
+#~ msgid ""
+#~ "Note that uninstalling this theme <strong>does not remove</strong> the "
+#~ "theme's files. To delete the files after you have uninstalled this theme, "
+#~ "go to Appearances > Themes and delete the theme from there."
+#~ msgstr ""
+#~ "注意:このテーマのアンインストールではテーマのファイルは <strong>削除されま"
+#~ "せん/strong>。 アンインストール後にファイルを削除する時は、「外観　> テー"
+#~ "マ」からテーマの削除を実行してください。"

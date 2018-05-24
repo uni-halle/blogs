@@ -24,7 +24,7 @@ get_header();
          */
         while ( have_posts() ) {
             the_post(); 
-            get_template_part( 'loop', 'tag' );
+            graphene_get_template_part( 'loop', 'tag' );
         }
     ?>
     </div>

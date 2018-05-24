@@ -44,7 +44,15 @@ function graphene_enqueue_customizer_scripts() {
 		'no_file'					=> __( 'Please select a settings file to import.', 'graphene' ),
 		'ajaxurl'					=> admin_url( 'admin-ajax.php' ),
 		'graphene_uri'				=> GRAPHENE_ROOTURI,
+		'l10n'	=> array(
+			'delete'		=> __( 'Delete', 'graphene' ),
+			'select_image'	=> __( 'Select image', 'graphene' ),
+			'links_to'		=> __( 'Links to', 'graphene' ),
+			'drag_drop'		=> __( 'Drag and drop to reorder', 'graphene' ),
+			'new'			=> __( 'New', 'graphene' )
+		)
 	);
+
 	wp_localize_script( 'graphene-customizer', 'grapheneCustomizer', $l10n_data );
 
 	global $graphene_settings;
@@ -150,12 +158,16 @@ function graphene_get_customizer_transport_settings(){
 	/* Selectively set settings to postMessage transport */
 	$settings = array(
 
+		'header_text_align',
 		'section_nav_title',
 
 		'header_img_height',
 		'slider_height',
 		'slider_height_mobile',
 		'copy_text',
+
+		'mentions_bar_title',
+		'mentions_bar_desc',
 
 		'container_width',
 		'column_width',
@@ -192,6 +204,9 @@ function graphene_get_customizer_transport_settings(){
 
 		'slider_caption_bg',
 		'slider_caption_text',
+		'slider_card_bg',
+		'slider_card_text',
+		'slider_card_link',
 
 		'button_bg',
 		'button_label',
@@ -277,6 +292,9 @@ function graphene_get_customizer_validator_settings(){
 
 	/* Social profiles */
 	$validator_settings['social_profiles'] = 'graphene_validate_json';
+
+	/* Brand icons */
+	$validator_settings['brand_icons'] = 'graphene_validate_json';
 	
 	return apply_filters( 'graphene_get_customizer_validator_settings', $validator_settings );
 }
@@ -298,6 +316,7 @@ function graphene_customizer_filter_settings( $graphene_settings ){
 
 		if ( ! is_array( $graphene_settings['widget_hooks'] ) ) $graphene_settings['widget_hooks'] = explode( ',', $graphene_settings['widget_hooks'] );
 		if ( ! is_array( $graphene_settings['social_profiles'] ) ) $graphene_settings['social_profiles'] = json_decode( $graphene_settings['social_profiles'], true );
+		if ( ! is_array( $graphene_settings['brand_icons'] ) ) $graphene_settings['brand_icons'] = json_decode( $graphene_settings['brand_icons'], true );
 	}
 	return $graphene_settings;
 }
