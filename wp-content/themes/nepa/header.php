@@ -40,7 +40,7 @@
 
 	</header><!-- #masthead -->
 
-<?php layerslider(3, 'archiv'); ?>
+<?php layerslider(3, 'homepage'); ?>
 
 	<?php
 

@@ -51,7 +51,7 @@ html .ls-container, body .ls-container, #ls-global .ls-container {
 }
 
 /* Content width and position */
-.entry-content {
+.entry-content, .entry-summary {
     max-width: 670px;
     text-align: justify;
     margin-left: ;
@@ -75,10 +75,11 @@ html .ls-container, body .ls-container, #ls-global .ls-container {
 }
 
 /* Search */
+/*
 #secondary {
     padding: 1em 2em 0 0;
     }
-
+*/
 
 
 /* Vertical space for logo on home */
@@ -149,7 +150,7 @@ html .ls-container, body .ls-container, #ls-global .ls-container {
 }
 
 /* BG color menu 2nd level */
-@media screen and (min-width: 50em) {
+@media screen and (min-width: 60em) {
     .main-navigation li li:hover, 
     .main-navigation li li.focus {
     	background-color: #fff;
@@ -159,43 +160,79 @@ html .ls-container, body .ls-container, #ls-global .ls-container {
         color: #fff;
         background: #B0B67F;
    }
-   
-
 	.wrap {
 		padding-left: 4.75em;
 		padding-right: 0em;
+		max-width: 925px;
+		width: 100%;
 	}
+	/* Search results */
+	header.page-header {
+		margin-left: 5.6em;
+	}
+	/* Error 404 page */
+	.error-404.not-found {
+		margin-left: 5.75em;
+	} 
+	.error-404 header.page-header {
+   		margin-left: 0;
+   		width: 90% !important;
+	}
+	/* fixed navi doesn't jump left */
+	.site-navigation-fixed.navigation-top {
+		padding-left: 75px;
+	}
+
 
 }
 
 /* Navi ???
-.admin-bar.twentyseventeen-front-page.has-header-image .custom-header-media, .admin-bar.twentyseventeen-front-page.has-header-video .custom-header-media, .admin-bar.home.blog.has-header-image .custom-header-media, .admin-bar.home.blog.has-header-video .custom-header-media {
+.admin-bar.twentyseventeen-front-page.has-header-image .custom-header-media, 
+.admin-bar.twentyseventeen-front-page.has-header-video .custom-header-media, 
+.admin-bar.home.blog.has-header-image .custom-header-media, 
+.admin-bar.home.blog.has-header-video .custom-header-media {
     height: 225px;
     background-color: #fff;
 }
 */
 
 /* Space for logo-branding on all sites except home */
-@media screen and (min-width: 50em) {
+@media screen and (min-width: 60em) {
     .site-branding {
 		height: 145px;		
     }
-
     /* Width of navi 2nd level */
     .main-navigation ul ul a {
         width: 20em;
     }
+    .error-404.not-found {
+/*		margin-left: 5.75em; */
+} 
+	#secondary.widget-area {
+		float: none;
+		margin-left: 6.25em;
+		width: 670px; 
+		max-width: 100%;
+}
 }
 
 /* Height for custom header only on home which inflicts logo on all sites */
-@media screen and (max-width: 50em) {
-.custom-header {
-    max-height: 220px !important;
-    height: 100% !important;  
+@media screen and (max-width: 60em) {
+	.custom-header {
+    	max-height: 220px !important;
+    	height: 100% !important;  
 	}
+	#secondary.widget-area {
+		float: none;
+		margin-left: auto;
+		margin-right: auto;
+		width: 670px;
+		max-width: 100%;
+			}
 }
+
 .custom-header-media::before {
-    background: transparent;
+    	background: transparent;
 }
 
 
@@ -280,9 +317,11 @@ h6 {
 
 /* Styles for slider */
 s1, s2, s3 {
-	font-size: 20px;
+	color: #3F3724;
+/*	font-size: 100%;
 	color: #3F3724;
 	line-height: 150%;
+*/
 }
 
 /* /////////////////// Images */
@@ -329,11 +368,14 @@ ul, ol {
 @media (min-width: 420px) {
     .custom-logo-link {
         display: none;
-	}   
+	}  
 }
 
 /* /////////////////// Search results */
 
+.entry-summary {
+	margin: auto;
+}
 .home.blog .entry-title {
     margin: 0;
     font-size: 1em;
@@ -360,4 +402,32 @@ h2.entry-summary {
 
 .entry-summary p {
     margin: 0.25em 0;
+}
+
+.error404.has-sidebar #primary .page-content {
+	float: left;
+	width: 90%;
+}
+
+.has-sidebar:not(.error404) #primary {
+	float: none;
+	width: 100%;
+}
+
+/* branding on small screens to fit space */
+@media screen and (min-width: 30em) {
+.site-branding {
+    padding: 2.25em 0;
+	}
+}
+
+/* IE */
+@media screen and (min-width: 50em) and 
+(-ms-high-contrast: none), 
+(-ms-high-contrast: active) {
+   .wp-custom-header {
+   		margin-top: 73px;
+   		width: 925px;
+    	max-width: 100%;
+	} 		
 }
