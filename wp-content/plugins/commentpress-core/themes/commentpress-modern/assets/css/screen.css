@@ -2283,6 +2283,11 @@ ul.image_link h4
 {
 }
 
+ul.image_link li.alignright
+{
+	text-align: right;
+}
+
 ul.image_link .alignright h4
 {
 	text-align: right;
@@ -3081,6 +3086,26 @@ p.comment-subscription-form
 	margin: 0.5em 0;
 	font-family: sans-serif;
 	text-transform: uppercase;
+}
+
+
+
+/*
+--------------------------------------------------------------------------------
+Compatibility with GeoMashup plugin
+--------------------------------------------------------------------------------
+*/
+
+.post .geomap
+{
+	border-top: 1px solid #ddd;
+	margin: 0.7em 0 0 0;
+	padding: 1em 0 0 0;
+}
+
+.post .geomap .gm-map
+{
+	width: 100% !important;
 }
 
 

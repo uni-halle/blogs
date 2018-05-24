@@ -12,20 +12,20 @@
 
 <?php
 if ( ! function_exists( '_wp_render_title_tag' ) ) :
-    function commentpress_theme_slug_render_title() {
+	function commentpress_theme_slug_render_title() {
 	?>
 	<!-- title -->
 	<title><?php wp_title( '|', true, 'right' ); bloginfo( 'name' ); commentpress_site_title( '|' ); ?></title>
 	<?php
-    }
-    add_action( 'wp_head', 'commentpress_theme_slug_render_title' );
+	}
+	add_action( 'wp_head', 'commentpress_theme_slug_render_title' );
 endif;
 ?>
 
 <!-- meta -->
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-<meta name="description" content="<?php bloginfo('description') ?>" />
+<meta name="description" content="<?php echo commentpress_header_meta_description(); ?>" />
 <?php if(is_search()) { ?><meta name="robots" content="noindex, nofollow" /><?php } ?>
 
 <!-- profile -->
