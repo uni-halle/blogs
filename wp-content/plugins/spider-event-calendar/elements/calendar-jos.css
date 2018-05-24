@@ -310,10 +310,10 @@ div.calendar {
 .wd-text-center{
 	text-align:center;
 }
-.wd-left{
+.sp-wd-left{
 	float:left;
 }
-.wd-right{
+.sp-wd-right{
 	float:right;
 }
 .wd-clear:after{

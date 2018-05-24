@@ -2,349 +2,890 @@ msgid ""
 msgstr ""
 "Project-Id-Version: spider_calendar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-13 18:07+0400\n"
-"PO-Revision-Date: 2016-01-18 11:16+0100\n"
+"POT-Creation-Date: 2018-03-19 13:34+0400\n"
+"PO-Revision-Date: 2018-03-19 13:34+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
-"X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.6.7\n"
-"X-Poedit-SearchPath-0: C:\\wamp\\www\\wordpress3.5\\wp-content\\plugins"
-"\\spider-event-calendar\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;esc_attr_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 2.0.1\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:451
-msgid "Date"
-msgstr "Data"
+#: calendar.php:621
+msgid ""
+"This is the best WordPress event Calendar plugin available in WordPress "
+"Directory."
+msgstr ""
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:458
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:461
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:475
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:478
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:481
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:484
-msgid "Repeat Every"
+#: calendar.php:626
+msgid "Responsive"
+msgstr ""
+
+#: calendar.php:627
+msgid ""
+"Spider Calendar plugin is fully responsive and mobile-ready.  Thus a "
+"beautiful display on all types of devices and screens is guaranteed."
+msgstr ""
+
+#: calendar.php:630
+msgid "Unlimited Calendars & Events"
+msgstr ""
+
+#: calendar.php:631
+msgid ""
+"The calendar plugin allows you to create as many calendars as you want and "
+"add unlimited number of events in each calendar.  Customize the design of "
+"each calendar, create events for each calendar separately and show multiple "
+"calendars on one page."
+msgstr ""
+
+#: calendar.php:634
+#, fuzzy
+#| msgid "All categories"
+msgid "Event Categories"
+msgstr "Tutte le categorie"
+
+#: calendar.php:635
+msgid ""
+"You can assign categories to your events by adding titles, descriptions and "
+"category colors from the website admin panel. The plugin allows you "
+"customize the calendars to show events from all or just a few categories."
+msgstr ""
+
+#: calendar.php:638
+msgid "Themes"
+msgstr ""
+
+#: calendar.php:639
+msgid ""
+"Choose among 17 different calendar themes to make sure the calendar fits "
+"perfectly with your website design. Add your own style to the themes by "
+"customizing almost everything or easily create your own theme."
+msgstr ""
+
+#: calendar.php:642
+#, fuzzy
+#| msgid "Repeat Every"
+msgid "Repeat Events"
 msgstr "Ripetere ogni"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:458
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:366
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:228
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:364
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:205
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:263
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:201
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:387
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:235
-msgid "Day"
-msgstr "Giorno"
+#: calendar.php:643
+msgid ""
+"If you have events in your calendar that occur regularly you can choose to "
+"use the recurring events option.  You can set the events to repeat daily, "
+"weekly, monthly, yearly on specific days of the week, specific days of the "
+"month or year."
+msgstr ""
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:461
-msgid "Week(s) on"
-msgstr "Settimane su"
+#: calendar.php:649
+msgid "Creating/Editing Calendars"
+msgstr ""
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:475
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:478
-msgid "Month(s) on the"
-msgstr "Mesi su"
+#: calendar.php:654
+msgid "Creating/Editing Events"
+msgstr ""
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:481
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:484
-msgid "Year(s) in"
-msgstr "Anni in"
+#: calendar.php:659
+#, fuzzy
+#| msgid "All categories"
+msgid "Adding Event Category"
+msgstr "Tutte le categorie"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:481
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:484
-msgid "on the"
-msgstr "sulla"
+#: calendar.php:664
+msgid "Adding Themes"
+msgstr ""
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:492
-msgid "There Is No Text For This Event"
-msgstr "Non esiste un testo per questo evento"
+#: calendar.php:668 calendar.php:694
+msgid "General Parameters"
+msgstr ""
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/functions_for_xml_and_ajax.php:509
-msgid "Back to event list"
-msgstr "Ritorna alla lista eventi"
+#: calendar.php:672
+msgid "Header Parameters"
+msgstr ""
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:78
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:43
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:87
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:43
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:80
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:43
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:78
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:44
+#: calendar.php:676 calendar.php:702
+msgid "Body Parameters"
+msgstr ""
+
+#: calendar.php:680 calendar.php:698
+msgid "Popup Window Parameters"
+msgstr ""
+
+#: calendar.php:684
+msgid "Other Views Parameters of the Wordpress Calendar"
+msgstr ""
+
+#: calendar.php:690
+msgid "Adding Themes for a widget view"
+msgstr ""
+
+#: calendar.php:708
+msgid "Publishing the Created Calendar in a Page or a Post"
+msgstr ""
+
+#: calendar.php:713
+msgid "Publishing the Created Calendar in the Widget"
+msgstr ""
+
+#: calendar.php:718
+msgid "Publishing the Upcoming Events widget"
+msgstr ""
+
+#: calendar.php:1318
+msgid "This section allows you to create calendars."
+msgstr ""
+
+#: calendar.php:1319 calendar.php:1327 calendar.php:1335
+#: calendar_functions.html.php:1161 calendar_functions.html.php:1579
+#: calendar_functions.html.php:2076
+msgid "Read More in User Manual."
+msgstr ""
+
+#: calendar.php:1326
+msgid "This section allows you to create event categories."
+msgstr ""
+
+#: calendar.php:1334
+msgid ""
+"This section will allow exporting Spider Calendar data for further import to "
+"Event Calendar WD."
+msgstr ""
+
+#: calendar.php:1358 calendar_functions.html.php:1169
+#: calendar_functions.html.php:1587 calendar_functions.html.php:2084
+#: wd/templates/display_overview_user_guide.php:33
+msgid "Support Forum"
+msgstr ""
+
+#: calendar.php:1363 calendar_functions.html.php:1174
+#: calendar_functions.html.php:1592 calendar_functions.html.php:2089
+msgid "UPGRADE TO PAID VERSION"
+msgstr ""
+
+#: calendar.php:1373
+#, php-format
+msgid ""
+"This is FREE version, Customizing %s is available only in the PAID version."
+msgstr ""
+
+#: calendar.php:1544
+msgid ""
+"Spider Event Calendar advises:Optimize your web pages for search engines "
+"with the"
+msgstr ""
+
+#: calendar.php:1545
+msgid "More details"
+msgstr ""
+
+#: calendar.php:1546
+msgid "FREE SEO"
+msgstr ""
+
+#: calendar.php:1547
+msgid "plugin."
+msgstr ""
+
+#: calendar.php:1550
+msgid "Install"
+msgstr ""
+
+#: calendar_functions.html.php:1160 calendar_functions.html.php:1578
+#: calendar_functions.html.php:2075
+msgid ""
+"This section allows you to create/edit the events of a particular calendar."
+msgstr ""
+
+#: front_end/bigcalendarday.php:155 front_end/bigcalendarday_widget.php:114
+#: front_end/bigcalendarlist.php:156 front_end/bigcalendarlist_widget.php:113
+#: front_end/bigcalendarmonth.php:168 front_end/bigcalendarmonth_widget.php:111
+#: front_end/bigcalendarweek.php:156 front_end/bigcalendarweek_widget.php:109
 msgid "January"
 msgstr "Gennaio"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:79
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:44
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:88
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:44
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:81
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:44
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:79
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:45
+#: front_end/bigcalendarday.php:156 front_end/bigcalendarday_widget.php:115
+#: front_end/bigcalendarlist.php:157 front_end/bigcalendarlist_widget.php:114
+#: front_end/bigcalendarmonth.php:169 front_end/bigcalendarmonth_widget.php:112
+#: front_end/bigcalendarweek.php:157 front_end/bigcalendarweek_widget.php:110
 msgid "February"
 msgstr "Febbraio"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:80
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:45
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:89
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:45
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:82
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:45
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:80
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:46
+#: front_end/bigcalendarday.php:157 front_end/bigcalendarday_widget.php:116
+#: front_end/bigcalendarlist.php:158 front_end/bigcalendarlist_widget.php:115
+#: front_end/bigcalendarmonth.php:170 front_end/bigcalendarmonth_widget.php:113
+#: front_end/bigcalendarweek.php:158 front_end/bigcalendarweek_widget.php:111
 msgid "March"
 msgstr "Marzo"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:81
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:46
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:90
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:46
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:83
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:46
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:81
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:47
+#: front_end/bigcalendarday.php:158 front_end/bigcalendarday_widget.php:117
+#: front_end/bigcalendarlist.php:159 front_end/bigcalendarlist_widget.php:116
+#: front_end/bigcalendarmonth.php:171 front_end/bigcalendarmonth_widget.php:114
+#: front_end/bigcalendarweek.php:159 front_end/bigcalendarweek_widget.php:112
 msgid "April"
 msgstr "Aprile"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:82
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:47
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:91
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:47
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:84
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:47
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:82
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:48
+#: front_end/bigcalendarday.php:159 front_end/bigcalendarday_widget.php:118
+#: front_end/bigcalendarlist.php:160 front_end/bigcalendarlist_widget.php:117
+#: front_end/bigcalendarmonth.php:172 front_end/bigcalendarmonth_widget.php:115
+#: front_end/bigcalendarweek.php:160 front_end/bigcalendarweek_widget.php:113
 msgid "May"
 msgstr "Maggio"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:83
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:48
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:92
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:48
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:85
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:48
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:83
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:49
+#: front_end/bigcalendarday.php:160 front_end/bigcalendarday_widget.php:119
+#: front_end/bigcalendarlist.php:161 front_end/bigcalendarlist_widget.php:118
+#: front_end/bigcalendarmonth.php:173 front_end/bigcalendarmonth_widget.php:116
+#: front_end/bigcalendarweek.php:161 front_end/bigcalendarweek_widget.php:114
 msgid "June"
 msgstr "Giugno"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:84
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:49
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:93
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:49
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:86
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:49
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:84
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:50
+#: front_end/bigcalendarday.php:161 front_end/bigcalendarday_widget.php:120
+#: front_end/bigcalendarlist.php:162 front_end/bigcalendarlist_widget.php:119
+#: front_end/bigcalendarmonth.php:174 front_end/bigcalendarmonth_widget.php:117
+#: front_end/bigcalendarweek.php:162 front_end/bigcalendarweek_widget.php:115
 msgid "July"
 msgstr "Luglio"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:85
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:50
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:94
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:50
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:87
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:50
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:85
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:51
+#: front_end/bigcalendarday.php:162 front_end/bigcalendarday_widget.php:121
+#: front_end/bigcalendarlist.php:163 front_end/bigcalendarlist_widget.php:120
+#: front_end/bigcalendarmonth.php:175 front_end/bigcalendarmonth_widget.php:118
+#: front_end/bigcalendarweek.php:163 front_end/bigcalendarweek_widget.php:116
 msgid "August"
 msgstr "Agosto"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:86
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:51
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:95
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:51
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:88
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:51
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:86
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:52
+#: front_end/bigcalendarday.php:163 front_end/bigcalendarday_widget.php:122
+#: front_end/bigcalendarlist.php:164 front_end/bigcalendarlist_widget.php:121
+#: front_end/bigcalendarmonth.php:176 front_end/bigcalendarmonth_widget.php:119
+#: front_end/bigcalendarweek.php:164 front_end/bigcalendarweek_widget.php:117
 msgid "September"
 msgstr "Settembre"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:87
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:52
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:96
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:52
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:89
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:52
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:87
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:53
+#: front_end/bigcalendarday.php:164 front_end/bigcalendarday_widget.php:123
+#: front_end/bigcalendarlist.php:165 front_end/bigcalendarlist_widget.php:122
+#: front_end/bigcalendarmonth.php:177 front_end/bigcalendarmonth_widget.php:120
+#: front_end/bigcalendarweek.php:165 front_end/bigcalendarweek_widget.php:118
 msgid "October"
 msgstr "Ottobre"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:88
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:53
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:97
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:53
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:90
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:53
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:88
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:54
+#: front_end/bigcalendarday.php:165 front_end/bigcalendarday_widget.php:124
+#: front_end/bigcalendarlist.php:166 front_end/bigcalendarlist_widget.php:123
+#: front_end/bigcalendarmonth.php:178 front_end/bigcalendarmonth_widget.php:121
+#: front_end/bigcalendarweek.php:166 front_end/bigcalendarweek_widget.php:119
 msgid "November"
 msgstr "Novembre"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:89
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:54
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:98
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:54
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:91
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:54
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:89
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:55
+#: front_end/bigcalendarday.php:166 front_end/bigcalendarday_widget.php:125
+#: front_end/bigcalendarlist.php:167 front_end/bigcalendarlist_widget.php:124
+#: front_end/bigcalendarmonth.php:179 front_end/bigcalendarmonth_widget.php:122
+#: front_end/bigcalendarweek.php:167 front_end/bigcalendarweek_widget.php:120
 msgid "December"
 msgstr "Dicembre"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:379
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:241
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:377
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:218
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:276
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:214
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:400
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:475
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:248
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:310
+#: front_end/bigcalendarday.php:570 front_end/bigcalendarday_widget.php:361
+#: front_end/bigcalendarlist.php:553 front_end/bigcalendarlist_widget.php:336
+#: front_end/bigcalendarmonth.php:552 front_end/bigcalendarmonth_widget.php:331
+#: front_end/bigcalendarweek.php:599 front_end/bigcalendarweek_widget.php:359
+#: functions_for_xml_and_ajax.php:358 functions_for_xml_and_ajax.php:610
+#: spidercalendar_upcoming_events_widget.php:891
+#: spidercalendar_upcoming_events_widget.php:963
+#: spidercalendar_upcoming_events_widget.php:1441
+#: spidercalendar_upcoming_events_widget.php:1852
+msgid "Day"
+msgstr "Giorno"
+
+#: front_end/bigcalendarday.php:585 front_end/bigcalendarday_widget.php:376
+#: front_end/bigcalendarlist.php:568 front_end/bigcalendarlist_widget.php:351
+#: front_end/bigcalendarmonth.php:567 front_end/bigcalendarmonth_widget.php:345
+#: front_end/bigcalendarweek.php:614 front_end/bigcalendarweek_widget.php:374
 msgid "Week"
 msgstr "Settimana"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:391
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:253
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:389
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:230
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:288
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:226
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:412
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:260
+#: front_end/bigcalendarday.php:599 front_end/bigcalendarday_widget.php:390
+#: front_end/bigcalendarlist.php:582 front_end/bigcalendarlist_widget.php:365
+#: front_end/bigcalendarmonth.php:581 front_end/bigcalendarmonth_widget.php:358
+#: front_end/bigcalendarweek.php:628 front_end/bigcalendarweek_widget.php:388
 msgid "List"
 msgstr "Lista"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:403
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:265
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:401
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:242
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:300
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:238
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:424
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:272
+#: front_end/bigcalendarday.php:613 front_end/bigcalendarday_widget.php:404
+#: front_end/bigcalendarlist.php:596 front_end/bigcalendarlist_widget.php:379
+#: front_end/bigcalendarmonth.php:595 front_end/bigcalendarmonth_widget.php:371
+#: front_end/bigcalendarweek.php:642 front_end/bigcalendarweek_widget.php:402
 msgid "Month"
 msgstr "Mese"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday.php:556
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarday_widget.php:378
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek.php:638
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarweek_widget.php:458
-msgid "There Is No Event In This Day"
+#: front_end/bigcalendarday.php:864 front_end/bigcalendarday_widget.php:523
+#: front_end/bigcalendarweek.php:950 front_end/bigcalendarweek_widget.php:609
+#, fuzzy
+msgid "There are no events on this date"
 msgstr "Non ci sono eventi in questo giorno"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist.php:536
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarlist_widget.php:339
-msgid "There Is No Event In This Month"
+#: front_end/bigcalendarday.php:1037 front_end/bigcalendarday_widget.php:712
+#: front_end/bigcalendarlist.php:981 front_end/bigcalendarlist_widget.php:671
+#: front_end/bigcalendarmonth.php:1410
+#: front_end/bigcalendarmonth_widget.php:969 front_end/bigcalendarweek.php:1060
+#: front_end/bigcalendarweek_widget.php:737
+msgid "All categories"
+msgstr "Tutte le categorie"
+
+#: front_end/bigcalendarlist.php:813 front_end/bigcalendarlist_widget.php:482
+#, fuzzy
+#| msgid "There Is No Event In This Month"
+msgid "There are no events for this month"
 msgstr "Non ci sono eventi in questo mese"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:398
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:421
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:305
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:328
+#: front_end/bigcalendarmonth.php:774 front_end/bigcalendarmonth.php:797
+#: front_end/bigcalendarmonth_widget.php:441
+#: front_end/bigcalendarmonth_widget.php:464
 msgid "Su"
 msgstr "Dom"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:402
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:309
+#: front_end/bigcalendarmonth.php:778 front_end/bigcalendarmonth_widget.php:445
 msgid "Mo"
 msgstr "Lun"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:405
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:312
+#: front_end/bigcalendarmonth.php:781 front_end/bigcalendarmonth_widget.php:448
 msgid "Tu"
 msgstr "Mar"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:408
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:315
+#: front_end/bigcalendarmonth.php:784 front_end/bigcalendarmonth_widget.php:451
 msgid "We"
 msgstr "Mer"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:411
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:318
+#: front_end/bigcalendarmonth.php:787 front_end/bigcalendarmonth_widget.php:454
 msgid "Th"
 msgstr "Gio"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:414
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:321
+#: front_end/bigcalendarmonth.php:790 front_end/bigcalendarmonth_widget.php:457
 msgid "Fr"
 msgstr "Ven"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:417
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth_widget.php:324
+#: front_end/bigcalendarmonth.php:793 front_end/bigcalendarmonth_widget.php:460
 msgid "Sa"
 msgstr "Sab"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:508
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:558
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:612
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:667
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:718
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/bigcalendarmonth.php:771
+#: front_end/bigcalendarmonth.php:949 front_end/bigcalendarmonth.php:1013
+#: front_end/bigcalendarmonth.php:1078 front_end/bigcalendarmonth.php:1144
+#: front_end/bigcalendarmonth.php:1207 front_end/bigcalendarmonth.php:1273
+#: spidercalendar_upcoming_events_widget.php:1048
+#: spidercalendar_upcoming_events_widget.php:1526
+#: spidercalendar_upcoming_events_widget.php:1936
 #, fuzzy
 msgid "See more"
 msgstr "Scopri di più ..."
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:927
+#: front_end/frontend_functions.php:1054
+#: spidercalendar_upcoming_events_widget.php:263
 msgid "First"
 msgstr "Primi"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:930
+#: front_end/frontend_functions.php:1057
+#: spidercalendar_upcoming_events_widget.php:266
 msgid "Second"
 msgstr "Secondo"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:933
+#: front_end/frontend_functions.php:1060
+#: spidercalendar_upcoming_events_widget.php:269
 msgid "Third"
 msgstr "Terzo"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:936
+#: front_end/frontend_functions.php:1063
+#: spidercalendar_upcoming_events_widget.php:272
 msgid "Fourth"
 msgstr "Quarto"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:939
+#: front_end/frontend_functions.php:1066
+#: spidercalendar_upcoming_events_widget.php:275
 msgid "Last"
 msgstr "Ultimo"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:945
+#: front_end/frontend_functions.php:1072
+#: spidercalendar_upcoming_events_widget.php:284
 msgid "Monday"
 msgstr "Lunedì"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:948
+#: front_end/frontend_functions.php:1075
+#: spidercalendar_upcoming_events_widget.php:287
 msgid "Tuesday"
 msgstr "Martedì"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:951
+#: front_end/frontend_functions.php:1078
+#: spidercalendar_upcoming_events_widget.php:290
 msgid "Wednesday"
 msgstr "Mercoledì"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:954
+#: front_end/frontend_functions.php:1081
+#: spidercalendar_upcoming_events_widget.php:293
 msgid "Thursday"
 msgstr "Giovedì"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:957
+#: front_end/frontend_functions.php:1084
+#: spidercalendar_upcoming_events_widget.php:296
 msgid "Friday"
 msgstr "Venerdì"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:960
+#: front_end/frontend_functions.php:1087
+#: spidercalendar_upcoming_events_widget.php:299
 msgid "Saturday"
 msgstr "Sabato"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/frontend_functions.php:963
+#: front_end/frontend_functions.php:1090
+#: spidercalendar_upcoming_events_widget.php:302
 msgid "Sunday"
 msgstr "Domenica"
 
-#: C:\wamp\www\wordpress3.5\wp-content\plugins\spider-event-calendar/front_end/views.php:760
-msgid "All categories"
-msgstr "Tutte le categorie"
+#: functions_for_xml_and_ajax.php:358 functions_for_xml_and_ajax.php:362
+#: functions_for_xml_and_ajax.php:374 functions_for_xml_and_ajax.php:379
+#: functions_for_xml_and_ajax.php:383 functions_for_xml_and_ajax.php:389
+#: functions_for_xml_and_ajax.php:610 functions_for_xml_and_ajax.php:613
+#: functions_for_xml_and_ajax.php:627 functions_for_xml_and_ajax.php:630
+#: functions_for_xml_and_ajax.php:633 functions_for_xml_and_ajax.php:636
+#: spidercalendar_upcoming_events_widget.php:891
+#: spidercalendar_upcoming_events_widget.php:897
+#: spidercalendar_upcoming_events_widget.php:927
+#: spidercalendar_upcoming_events_widget.php:931
+#: spidercalendar_upcoming_events_widget.php:937
+#: spidercalendar_upcoming_events_widget.php:943
+#: spidercalendar_upcoming_events_widget.php:963
+#: spidercalendar_upcoming_events_widget.php:969
+#: spidercalendar_upcoming_events_widget.php:999
+#: spidercalendar_upcoming_events_widget.php:1005
+#: spidercalendar_upcoming_events_widget.php:1011
+#: spidercalendar_upcoming_events_widget.php:1017
+#: spidercalendar_upcoming_events_widget.php:1441
+#: spidercalendar_upcoming_events_widget.php:1447
+#: spidercalendar_upcoming_events_widget.php:1477
+#: spidercalendar_upcoming_events_widget.php:1483
+#: spidercalendar_upcoming_events_widget.php:1489
+#: spidercalendar_upcoming_events_widget.php:1495
+#: spidercalendar_upcoming_events_widget.php:1852
+#: spidercalendar_upcoming_events_widget.php:1858
+#: spidercalendar_upcoming_events_widget.php:1888
+#: spidercalendar_upcoming_events_widget.php:1893
+#: spidercalendar_upcoming_events_widget.php:1898
+#: spidercalendar_upcoming_events_widget.php:1903
+msgid "Repeat Every"
+msgstr "Ripetere ogni"
+
+#: functions_for_xml_and_ajax.php:362 functions_for_xml_and_ajax.php:613
+#: spidercalendar_upcoming_events_widget.php:897
+#: spidercalendar_upcoming_events_widget.php:969
+#: spidercalendar_upcoming_events_widget.php:1447
+#: spidercalendar_upcoming_events_widget.php:1858
+msgid "Week(s) on"
+msgstr "Settimane su"
+
+#: functions_for_xml_and_ajax.php:374 functions_for_xml_and_ajax.php:379
+#: functions_for_xml_and_ajax.php:627 functions_for_xml_and_ajax.php:630
+#: spidercalendar_upcoming_events_widget.php:927
+#: spidercalendar_upcoming_events_widget.php:931
+#: spidercalendar_upcoming_events_widget.php:999
+#: spidercalendar_upcoming_events_widget.php:1005
+#: spidercalendar_upcoming_events_widget.php:1477
+#: spidercalendar_upcoming_events_widget.php:1483
+#: spidercalendar_upcoming_events_widget.php:1888
+#: spidercalendar_upcoming_events_widget.php:1893
+msgid "Month(s) on the"
+msgstr "Mesi su"
+
+#: functions_for_xml_and_ajax.php:383 functions_for_xml_and_ajax.php:389
+#: functions_for_xml_and_ajax.php:633 functions_for_xml_and_ajax.php:636
+#: spidercalendar_upcoming_events_widget.php:937
+#: spidercalendar_upcoming_events_widget.php:943
+#: spidercalendar_upcoming_events_widget.php:1011
+#: spidercalendar_upcoming_events_widget.php:1017
+#: spidercalendar_upcoming_events_widget.php:1489
+#: spidercalendar_upcoming_events_widget.php:1495
+#: spidercalendar_upcoming_events_widget.php:1898
+#: spidercalendar_upcoming_events_widget.php:1903
+msgid "Year(s) in"
+msgstr "Anni in"
+
+#: functions_for_xml_and_ajax.php:383 functions_for_xml_and_ajax.php:389
+#: functions_for_xml_and_ajax.php:633 functions_for_xml_and_ajax.php:636
+#: spidercalendar_upcoming_events_widget.php:937
+#: spidercalendar_upcoming_events_widget.php:943
+#: spidercalendar_upcoming_events_widget.php:1011
+#: spidercalendar_upcoming_events_widget.php:1017
+#: spidercalendar_upcoming_events_widget.php:1489
+#: spidercalendar_upcoming_events_widget.php:1495
+#: spidercalendar_upcoming_events_widget.php:1898
+#: spidercalendar_upcoming_events_widget.php:1903
+msgid "on the"
+msgstr "sulla"
+
+#: functions_for_xml_and_ajax.php:603
+msgid "Date"
+msgstr "Data"
+
+#: functions_for_xml_and_ajax.php:646
+msgid "There Is No Text For This Event"
+msgstr "Non esiste un testo per questo evento"
+
+#: functions_for_xml_and_ajax.php:662
+msgid "Back to event list"
+msgstr "Ritorna alla lista eventi"
+
+#: wd/includes/deactivate.php:35
+msgid "Technical problems / hard to use"
+msgstr ""
+
+#: wd/includes/deactivate.php:39
+msgid "Free version is limited"
+msgstr ""
+
+#: wd/includes/deactivate.php:43
+msgid "Premium is expensive"
+msgstr ""
+
+#: wd/includes/deactivate.php:47
+msgid "Upgrading to paid version"
+msgstr ""
+
+#: wd/includes/deactivate.php:51
+msgid "Temporary deactivation"
+msgstr ""
+
+#: wd/includes/notices.php:211
+msgid "Leave A Review?"
+msgstr ""
+
+#: wd/includes/notices.php:212
+#, php-format
+msgid ""
+"We hope you've enjoyed using WordPress %s! Would you consider leaving us a "
+"review on WordPress.org?"
+msgstr ""
+
+#: wd/includes/notices.php:213
+msgid "Sure! I'd love to!"
+msgstr ""
+
+#: wd/includes/notices.php:214
+msgid "I've already left a review"
+msgstr ""
+
+#: wd/includes/notices.php:215
+msgid "Maybe Later"
+msgstr ""
+
+#: wd/includes/notices.php:216
+msgid "Never show again"
+msgstr ""
+
+#: wd/includes/overview.php:27
+msgid "Welcome"
+msgstr ""
+
+#: wd/includes/overview.php:31
+msgid "User Guide"
+msgstr ""
+
+#: wd/includes/overview.php:35
+msgid "Deals"
+msgstr ""
+
+#: wd/includes/overview.php:39
+msgid "Support"
+msgstr ""
+
+#: wd/includes/overview.php:43
+msgid "Submit Your  Idea"
+msgstr ""
+
+#: wd/includes/overview.php:47
+msgid "Forum"
+msgstr ""
+
+#: wd/includes/overview.php:87
+msgid "Wordpress form builder plugin"
+msgstr ""
+
+#: wd/includes/overview.php:88
+msgid ""
+"Form Maker is a modern and advanced tool for creating WordPress forms easily "
+"and fast."
+msgstr ""
+
+#: wd/includes/overview.php:93
+msgid "WordPress Photo Gallery plugin"
+msgstr ""
+
+#: wd/includes/overview.php:94
+msgid ""
+"Photo Gallery is a fully responsive WordPress Gallery plugin with advanced "
+"functionality."
+msgstr ""
+
+#: wd/includes/overview.php:99
+msgid "WordPress calendar plugin"
+msgstr ""
+
+#: wd/includes/overview.php:100
+msgid ""
+"Organize and publish your events in an easy and elegant way using Event "
+"Calendar WD."
+msgstr ""
+
+#: wd/includes/overview.php:105
+msgid "WD Google Maps plugin"
+msgstr ""
+
+#: wd/includes/overview.php:106
+msgid ""
+"Google Maps WD is an intuitive tool for creating Google maps with advanced "
+"markers, custom layers and overlays for   your website."
+msgstr ""
+
+#: wd/includes/overview.php:111
+msgid "WordPress slider plugin"
+msgstr ""
+
+#: wd/includes/overview.php:112
+msgid ""
+"Create responsive, highly configurable sliders with various effects for your "
+"WordPress site."
+msgstr ""
+
+#: wd/includes/overview.php:117
+msgid "WordPress event calendar plugin"
+msgstr ""
+
+#: wd/includes/overview.php:118
+msgid ""
+"Spider Event Calendar is a highly configurable product which allows you to "
+"have multiple organized events."
+msgstr ""
+
+#: wd/includes/overview.php:123
+msgid "WordPress Instagram Feed plugin"
+msgstr ""
+
+#: wd/includes/overview.php:124
+msgid ""
+"WD Instagram Feed is a user-friendly tool for displaying user or hashtag-"
+"based feeds on your website."
+msgstr ""
+
+#: wd/includes/overview.php:177
+msgid "Not set"
+msgstr ""
+
+#: wd/includes/overview.php:182
+msgid "On"
+msgstr ""
+
+#: wd/includes/overview.php:184
+msgid "Off"
+msgstr ""
+
+#: wd/includes/overview.php:193 wd/includes/overview.php:201
+#: wd/includes/overview.php:208 wd/includes/overview.php:215
+#: wd/includes/overview.php:223 wd/includes/overview.php:230
+msgid "N/A"
+msgstr ""
+
+#: wd/includes/overview.php:228
+msgid " MByte"
+msgstr ""
+
+#: wd/includes/overview.php:235 wd/includes/overview.php:242
+#: wd/includes/overview.php:249 wd/includes/overview.php:259
+msgid "Yes"
+msgstr ""
+
+#: wd/includes/overview.php:237 wd/includes/overview.php:244
+#: wd/includes/overview.php:251 wd/includes/overview.php:254
+#: wd/includes/overview.php:259
+msgid "No"
+msgstr ""
+
+#: wd/includes/subscribe.php:43
+msgid "Your name &"
+msgstr ""
+
+#: wd/includes/subscribe.php:44
+msgid "Email address"
+msgstr ""
+
+#: wd/includes/subscribe.php:48
+msgid "Site URL"
+msgstr ""
+
+#: wd/includes/subscribe.php:49
+msgid "Wordpress version"
+msgstr ""
+
+#: wd/includes/subscribe.php:53
+msgid "List of plugins"
+msgstr ""
+
+#: wd/templates/display_deactivation_popup.php:8
+msgid ""
+"Please let us know why you are deactivating. Your answer will help us to "
+"serve you better"
+msgstr ""
+
+#: wd/templates/display_deactivation_popup.php:21
+msgid "Skip and deactivate"
+msgstr ""
+
+#: wd/templates/display_deactivation_popup.php:22
+msgid "Submit and deactivate"
+msgstr ""
+
+#: wd/templates/display_overview.php:8
+#, php-format
+msgid "Welcome to %s"
+msgstr ""
+
+#: wd/templates/display_overview.php:16
+#, php-format
+msgid "CONGRATS! You've successfully installed %s WordPress plugin."
+msgstr ""
+
+#: wd/templates/display_overview_deals.php:12
+#, php-format
+msgid "Get %s"
+msgstr ""
+
+#: wd/templates/display_overview_deals.php:13
+msgid "plugins"
+msgstr ""
+
+#: wd/templates/display_overview_deals.php:14
+#: wd/templates/display_overview_deals.php:58
+msgid "for"
+msgstr ""
+
+#: wd/templates/display_overview_deals.php:14
+#: wd/templates/display_overview_deals.php:58
+msgid "only"
+msgstr ""
+
+#: wd/templates/display_overview_deals.php:16
+msgid "Save 80%"
+msgstr ""
+
+#: wd/templates/display_overview_deals.php:35
+msgid "Download"
+msgstr ""
+
+#: wd/templates/display_overview_deals.php:45
+msgid "Get all plugins"
+msgstr ""
+
+#: wd/templates/display_overview_deals.php:57
+msgid "Get all 11 themes"
+msgstr ""
+
+#: wd/templates/display_overview_deals.php:60
+msgid "Save 70%"
+msgstr ""
+
+#: wd/templates/display_overview_deals.php:77
+msgid "Find out more"
+msgstr ""
+
+#: wd/templates/display_overview_support.php:3
+#, php-format
+msgid ""
+"You may contact us by filling in this form or by email %s any time you need "
+"professional support or have any questions. You can also fill in the form to "
+"leave your comments or feedback."
+msgstr ""
+
+#: wd/templates/display_overview_support.php:6
+msgid "Site Details"
+msgstr ""
+
+#: wd/templates/display_overview_support.php:8
+msgid ""
+"When contacting support, consider copying and pasting this information in "
+"your support request."
+msgstr ""
+
+#: wd/templates/display_overview_support.php:10
+msgid "It helps us troubleshoot more quickly."
+msgstr ""
+
+#: wd/templates/display_overview_support.php:17
+msgid "Copy to Clipboard"
+msgstr ""
+
+#: wd/templates/display_overview_support.php:20
+msgid "Server Settings"
+msgstr ""
+
+#: wd/templates/display_overview_support.php:26
+msgid "Graphic Library"
+msgstr ""
+
+#: wd/templates/display_overview_support.php:41
+msgid "Contact us"
+msgstr ""
+
+#: wd/templates/display_overview_user_guide.php:26
+msgid "Demo"
+msgstr ""
+
+#: wd/templates/display_overview_user_guide.php:36
+msgid "FAQ"
+msgstr ""
+
+#: wd/templates/display_overview_user_guide.php:40
+msgid "Addons"
+msgstr ""
+
+#: wd/templates/display_overview_welcome.php:18
+msgid "Run Install Wizard "
+msgstr ""
+
+#: wd/templates/display_overview_welcome.php:26
+msgid "More features"
+msgstr ""
+
+#: wd/templates/display_subscribe.php:9
+msgid "Hi there"
+msgstr ""
+
+#: wd/templates/display_subscribe.php:11
+#, php-format
+msgid ""
+"Allow %s to collect some usage data. This will allow  you to get more out of "
+"your plugin experience - get awesome customer support, receive exclusive "
+"deals and discounts on premium products and more. You can choose to skip "
+"this step, %s will still work just fine."
+msgstr ""
+
+#: wd/templates/display_subscribe.php:19
+msgid "What data is being collected?"
+msgstr ""
+
+#: wd/templates/display_subscribe.php:36
+msgid "Privacy Policy"
+msgstr ""
+
+#: wd/templates/display_subscribe.php:42
+msgid "Terms of Use"
+msgstr ""
+
+#: wd/wd.php:72
+msgid "Overview"
+msgstr ""
+
+#, fuzzy
+#~| msgid "There Is No Text For This Event"
+#~ msgid "There Is No Event In This Day"
+#~ msgstr "Non esiste un testo per questo evento"
+
+#, fuzzy
+#~| msgid "There Is No Text For This Event"
+#~ msgid "There Is No Event In This Month"
+#~ msgstr "Non esiste un testo per questo evento"
 
 #~ msgid "No Repeat"
 #~ msgstr "Nessuna ripetizione"

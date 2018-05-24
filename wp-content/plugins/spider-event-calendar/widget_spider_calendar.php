@@ -149,6 +149,9 @@ class spider_calendar extends WP_Widget {
     <?php
   }
 }
+function spider_calendar_widget(){
+	return register_widget("spider_calendar");
+}
 
-add_action('widgets_init', create_function('', 'return register_widget("spider_calendar");'));
+add_action('widgets_init', 'spider_calendar_widget');
 ?>

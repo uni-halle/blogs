@@ -697,7 +697,7 @@ function show_event_category($rows, $pageNav, $sort){
         <td><h2>Event Category</h2></td>
         <td style="text-align:right;">
           <p class="submit" style="padding:0px; text-align:left">
-            <input type="button" value="Add a Category" name="custom_parametrs" onClick="window.location.href='admin.php?page=spider_calendar_event_category&task=add_category'" class="wd-right"/>
+            <input type="button" value="Add a Category" name="custom_parametrs" onClick="window.location.href='admin.php?page=spider_calendar_event_category&task=add_category'" class="sp-wd-right"/>
           </p>
         </td>
       </tr>
@@ -1155,13 +1155,13 @@ function html_show_spider_event($rows, $pageNav, $sort, $calendar_id, $cal_name)
     }
   </script>
     <div class="sp_calendar_upgrade wd-clear" >
-        <div class="wd-left">
+        <div class="sp-wd-left">
 		  <div style="font-size: 14px;">
 			<?php _e("This section allows you to create/edit the events of a particular calendar.","sp_calendar");?>
 			<a style="color: #5CAEBD; text-decoration: none;border-bottom: 1px dotted;" target="_blank" href="https://web-dorado.com/wordpress-spider-calendar/creating-editing-events.html"><?php _e("Read More in User Manual.","sp_calendar");?></a>
 		  </div>
 		</div>
-        <div class="wd-right"> 
+        <div class="sp-wd-right"> 
             <div class="wd-table">
                 <div class="wd-cell wd-cell-valign-middle">
                     <a href="https://wordpress.org/support/plugin/spider-event-calendar" target="_blank">
@@ -1573,13 +1573,13 @@ function html_add_spider_event($calendar_id, $cal_name) {
 	}
   </style>
   <div class="sp_calendar_upgrade wd-clear" >
-	<div class="wd-left">
+	<div class="sp-wd-left">
 	  <div style="font-size: 14px;">
 		<?php _e("This section allows you to create/edit the events of a particular calendar.","sp_calendar");?>
 		<a style="color: #5CAEBD; text-decoration: none;border-bottom: 1px dotted;" target="_blank" href="https://web-dorado.com/wordpress-spider-calendar/creating-editing-events.html"><?php _e("Read More in User Manual.","sp_calendar");?></a>
 	  </div>
 	</div>
-	<div class="wd-right"> 
+	<div class="sp-wd-right"> 
 		<div class="wd-table">
 			<div class="wd-cell wd-cell-valign-middle">
 				<a href="https://wordpress.org/support/plugin/spider-event-calendar" target="_blank">
@@ -2070,13 +2070,13 @@ function html_edit_spider_event($row, $calendar_id, $id, $cal_name) {
   $query2 = $wpdb->get_results("SELECT title,id FROM " . $wpdb->prefix . "spidercalendar_event_category");
   ?>
   <div class="sp_calendar_upgrade wd-clear" >
-	<div class="wd-left">
+	<div class="sp-wd-left">
 	  <div style="font-size: 14px;">
 		<?php _e("This section allows you to create/edit the events of a particular calendar.","sp_calendar");?>
 		<a style="color: #5CAEBD; text-decoration: none;border-bottom: 1px dotted;" target="_blank" href="https://web-dorado.com/wordpress-spider-calendar/creating-editing-events.html"><?php _e("Read More in User Manual.","sp_calendar");?></a>
 	  </div>
 	</div>
-	<div class="wd-right"> 
+	<div class="sp-wd-right"> 
 		<div class="wd-table">
 			<div class="wd-cell wd-cell-valign-middle">
 				<a href="https://wordpress.org/support/plugin/spider-event-calendar" target="_blank">

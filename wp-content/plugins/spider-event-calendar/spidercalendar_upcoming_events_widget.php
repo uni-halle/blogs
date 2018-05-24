@@ -2891,4 +2891,8 @@ jSelectEvents('<?php echo $this->get_field_id('event_select'); ?>','<?php echo $
   
 	
 }
-add_action('widgets_init', create_function('', 'return register_widget("upcoming_events");'));?>
+function spider_calendar_upcoming_events(){
+	return register_widget("upcoming_events");
+}
+
+add_action('widgets_init', 'spider_calendar_upcoming_events'); ?>

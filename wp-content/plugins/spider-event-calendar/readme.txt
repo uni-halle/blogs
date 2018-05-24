@@ -3,7 +3,7 @@ Contributors: webdorado, wdsupport, 10web
 Tags: calendar, event, event calendar, events, events calendar, calendars, event manager, calendar widget,  event management,  free calendar, Calender, upcoming events
 Requires at least: 3.9  
 Tested up to: 4.9   
-Stable tag: 1.5.59
+Stable tag: 1.5.61
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -15,7 +15,7 @@ Event Calendar by WD is a responsive calendar plugin for organizing events. Plug
 [WordPress Calendar](https://web-dorado.com/products/wordpress-calendar.html)  
 [Demo](http://wpdemo.web-dorado.com/spider-calendar/)  
 [Demo Admin](http://wpdemo.web-dorado.com/wp-admin/admin.php?page=SpiderCalendar)  
-[User Manual](https://web-dorado.com/spider-calendar-wordpress-guide-step-1.html)  
+[User Manual](https://web-dorado.com/wordpress-spider-calendar/installing.html)  
 
 WordPress event calendar is a FREE user-friendly responsive plugin to manage multiple recurring events and various display options. This free plugin makes event registration and events management easy and lets you display beautiful responsive calendars, upcoming events and more. It’s perfect for websites organising seminars, summits, conferences, concerts, meetings, and more.
 
@@ -73,6 +73,14 @@ If you think you found a bug in the plugin or have any problem/question concerni
 
 
 == Changelog ==
+
+= 1.5.61 =
+Fixed: Faster loading of pages. Synchronous requests in calendar frontend are removed   
+Changed: PHP 7.2 compatibility, create_function is not used anymore   
+
+= 1.5.60 =
+Fixed: Events of the same day of the previous year were visible in popup   
+Updated: Italian translation thanks to Marco Moniga  
 
 = 1.5.59 =
 Fixed: register_activation_hook not being called because of conflict with some plugins  
