@@ -110,142 +110,156 @@ if ( ! class_exists( 'ThemeIsle_SDK_Widget_Dashboard_Blog' ) ) :
 			$this->setup_feeds();
 			?>
 			<style type="text/css">
-				#themeisle ul {
-					margin-bottom: 0px;
-				}
-
 				#themeisle ul li.ti-dw-recommend-item {
-
 					padding-left: 7px;
 					border-top: 1px solid #eee;
-
 					margin-bottom: 0px;
 					padding-top: 6px;
 				}
-
 				#themeisle h2.hndle {
-					background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdCAYAAABWk2cPAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALfSURBVEhL7VW/ayJBFL7/5ZqziBzIcSCHxUE4hAiCgnAQsBASOAikEAIeCAaCiJAyIBICQURYwoJoEUmxa6MWioWxURu30mq77b57s86acX+oOQhp8sFjdmbfzrfve2/efMI74IP0VTB0gz/th/8iNbQxOt0eOmoN6WgAn78cwJeoYcLf78KrSPVneU3isEQZoz0D3pt03jhDrDTERJXxWM3A5yAOIPmgce/t2IvUGFzjkDa+7C5RTx0gWbxG0v8bBXUG3fLReigk4rh55gtbsAfpGDfhVTS+VA19bYbH7BkqU/56AzNU7nrYpbI7qfbEcxfBkSOHJGO27Vk0htqEYoXvARdS+tsEJyAJY1GRkOxnGTdq2zuaRZOkJ1Wi1+h7ODlJB/l1kYRKZVyKhMwoSmUw5M4uWMhIcl9f1l1qB2m/aMkZQIE2d5BeDTGiSD0VfC4jZPmSKiO+LMJGuoRE1bkiOIW00CAdW3NuxzLmxhD1hyHmug7dbBRD9KdLc4dR6Zfgn0ffXN2EjVSMLIcOrWxuwiyyPhYGI7X0m/agqPeIib5+yit/LWILKYuUlrTa5kbMwjko7J0AXc1RLZwifRF58Us1YXMzYSMV5WQ5ZWsG5VnYaG1BxM7zKBRzOAkHac460gxK9sUnVBqbu9rhKCS9lRaq1/poCeUq7tL6uPnjSLeoBRo9/KXjslqP4Na1gbiQssiULK9gP+VVqPnFQMblnwi+WmTfIji5amLES1mn/mz9yCFVuddZdiFlIJlTK+JtH2/AaPMogzipzrZ+4yQ1qCL1JSaNDL6bf81y1aOb5R6Vhow6G1tPNK9Borl0R2NLRiEaxNEF9Wa3yrHBSarTbeHot7ySqVmYR4AucDYuaJyzkfptZ0e/FeGa03m3jOQPizCAo0QG9W2ktL5HgGt45JRgaBh1x9R1WHY0KCTnLZOW5Kw0miuZq01ITGa6Z18Db9I3xAfpm+IdSIF/du91gSA2+I8AAAAASUVORK5CYII=');
+					background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA3Ny4xMiA3Ny4xMiI+PHRpdGxlPkFzc2V0IDM8L3RpdGxlPjxwYXRoIGQ9Ik03NS43Niw0Ny42cS0xLjUsNi40Ni00LjA3LDkuMjZBMzYuMjIsMzYuMjIsMCwwLDEsNjMuMjYsNjNhNTEsNTEsMCwwLDEtOS43OSw0LjZoLS4xNXY0LjgyQTQuNjYsNC42NiwwLDAsMSw1Miw3NS43Niw0LjA3LDQuMDcsMCwwLDEsNDksNzcuMTJhNCw0LDAsMCwxLTIuMTgtLjYxQTQuOTQsNC45NCwwLDAsMSw0NS4xOSw3NWE0LjQyLDQuNDIsMCwwLDEtNy41NCwwLDQuOTQsNC45NCwwLDAsMS0xLjU4LDEuNSwzLjc1LDMuNzUsMCwwLDEtMiwuNjFBNC4yNyw0LjI3LDAsMCwxLDMwLjI3LDc1YTQuOTQsNC45NCwwLDAsMS0xLjU4LDEuNSw0LDQsMCwwLDEtMi4xOC42MSwzLjkzLDMuOTMsMCwwLDEtMy4xNi0xLjQzLDUuMyw1LjMsMCwwLDEtMS4yMS0zLjU0LDEzLjgxLDEzLjgxLDAsMCwxLTguNTgsMywxMy4yMywxMy4yMywwLDAsMS05LTMuNDdBMTguMjEsMTguMjEsMCwwLDAsOSw3MC43OWExNC4yNiwxNC4yNiwwLDAsMS03LjgzLTUuNDIsMTYuMTIsMTYuMTIsMCwwLDAsNS4xOS4wNywxMi44OSwxMi44OSwwLDAsMCw0LjktMS43M1EzLjE1LDU1LjQzLDEuMDUsNTAuNDZhMTgsMTgsMCwwLDEtMS02LjkzQTQwLDQwLDAsMCwxLDEuMjEsMzQsMjYuNTksMjYuNTksMCwwLDEsNS4yNywyNC4xUTguNDQsMTkuNDMsMTMsMTkuNDNhMy40MSwzLjQxLDAsMCwxLDMuNDcsMi4yNmMuNi0uOCwxLjItMS41NiwxLjgxLTIuMjZsLjQ1LS40NS43NS0uNzUsMS4wNS0xLjgxYTM1LjIsMzUuMiwwLDAsMSwyLjExLTMuMzIsMjguNTcsMjguNTcsMCwwLDEsOS4xMi03LjY4QTIzLjQsMjMuNCwwLDAsMSw0Mi45MywyLjU2YTIyLjIyLDIyLjIyLDAsMCwxLDIuNzEuMTVBOC4xNiw4LjE2LDAsMCwxLDUxLjgxLDAsOC42OSw4LjY5LDAsMCwxLDU4LDIuNDFhMS41MSwxLjUxLDAsMCwxLC4xNS42OGMwLC4yNS0uNTUuOTMtMS42NiwybC0uMy4zYTkuNjksOS42OSwwLDAsMSwxLjU4LjgzYy41NS4zNS44My42NS44My45YTEuNjIsMS42MiwwLDAsMS0uNiwxbC0uMTUuMTVxNi43OCw2LDguNTgsMTYuMjdBMy4zLDMuMywwLDAsMSw2OSwyMy4zNWE2LjQ4LDYuNDgsMCwwLDEsNC4yMiwyLjFxMy45MiwzLjMyLDMuOTIsMTEuOUE0Mi4wNSw0Mi4wNSwwLDAsMSw3NS43Niw0Ny42Wk01My42Miw1NC4wN2EyNCwyNCwwLDAsMS0xNCw0LjUyQTIxLjQxLDIxLjQxLDAsMCwxLDI3LDU0LjY3LDI0LjI4LDI0LjI4LDAsMCwxLDE4LjUzLDQ1YTI5LDI5LDAsMCwxLTMtMTMsMzEuNzgsMzEuNzgsMCwwLDEsLjkxLTcuNTNBMzIuMTcsMzIuMTcsMCwwLDAsMTEuOSw0MS4yN2EzMy41LDMzLjUsMCwwLDAsMi43OSwxMy40LDI5LjEsMjkuMSwwLDAsMCw3LjksMTAuODUsNC42OCw0LjY4LDAsMCwxLDEuNjYtMS44OCw0LjE3LDQuMTcsMCwwLDEsNC40NC0uMDgsNC41LDQuNSwwLDAsMSwxLjU4LDEuNjZBNC4yLDQuMiwwLDAsMSwzNCw2M2EzLjgzLDMuODMsMCwwLDEsMiwuNiw0LjUsNC41LDAsMCwxLDEuNTgsMS42Niw0LjI3LDQuMjcsMCwwLDEsNy41NCwwLDQuNSw0LjUsMCwwLDEsMS41OC0xLjY2LDQuMTcsNC4xNywwLDAsMSw0LjQ0LjA4LDMuODYsMy44NiwwLDAsMSwxLjUxLDEuNzMsMzAuMTcsMzAuMTcsMCwwLDAsNy42OC05Ljk0LDMxLjE4LDMxLjE4LDAsMCwwLDMuMTYtMTIuMzVBMjguMzksMjguMzksMCwwLDEsNTMuNjIsNTQuMDdaTTI4Ljc3LDY1LjM3YTMuMSwzLjEsMCwwLDAtNC4zNywwLDMuMDYsMy4wNiwwLDAsMC0uOSwyLjI2djQuODJhMy4zMiwzLjMyLDAsMCwwLC45LDIuMzMsMi45MywyLjkzLDAsMCwwLDQuMzcsMCwzLjMyLDMuMzIsMCwwLDAsLjktMi4zM1Y2Ny42M0EzLjA2LDMuMDYsMCwwLDAsMjguNzcsNjUuMzdabS45LTQ4YTQuMjQsNC4yNCwwLDAsMCwzLjQ3LDEuNzMsNC40NSw0LjQ1LDAsMCwwLDMuNTQtMS43Myw2LDYsMCwwLDAsMS40My0zLjkyLDUuNyw1LjcsMCwwLDAtMS40My0zLjg0QTQuNTMsNC41MywwLDAsMCwzMy4xNCw4YTQuMzEsNC4zMSwwLDAsMC0zLjQ3LDEuNjYsNS43OSw1Ljc5LDAsMCwwLTEuMzUsMy43N0E2LjMzLDYuMzMsMCwwLDAsMjkuNjcsMTcuNFptNi40OCw0OGEzLjEsMy4xLDAsMCwwLTQuMzcsMCwzLjA2LDMuMDYsMCwwLDAtLjksMi4yNnY0LjgyYTMuMzIsMy4zMiwwLDAsMCwuOSwyLjMzLDIuOTMsMi45MywwLDAsMCw0LjM3LDAsMy4zMiwzLjMyLDAsMCwwLC45LTIuMzNWNjcuNjNBMy4wNiwzLjA2LDAsMCwwLDM2LjE1LDY1LjM3Wm0tNC4wNy01NC4zYTIuMzcsMi4zNywwLDAsMSwyLTEsMi4xNywyLjE3LDAsMCwxLDEuODgsMSw0LjEsNC4xLDAsMCwxLDAsNC41MiwyLjE3LDIuMTcsMCwwLDEtMS44OCwxLDIuMzcsMi4zNywwLDAsMS0yLTEsMy43MiwzLjcyLDAsMCwxLS43NS0yLjM0QTMuNDksMy40OSwwLDAsMSwzMi4wOCwxMS4wN1ptNSw5LjQxYTIwLjYxLDIwLjYxLDAsMCwwLTMuNTQsMTIuMjgsMTcuMTUsMTcuMTUsMCwwLDAsNC4wNywxMSwxMi40MywxMi40MywwLDAsMCw5Ljg3LDQuNDUsMTUuMywxNS4zLDAsMCwwLDktMywxMywxMywwLDAsMCwuNi0zLjMycTAtMy4zMi0zLjE2LTMuMzFhOC41OCw4LjU4LDAsMCwwLTIsLjNxLTcuODMsMS41LTExLjU5LS4zLTQuNTMtMi4xMi00LjUyLTkuMzRBMzcuOTIsMzcuOTIsMCwwLDEsMzcuMDUsMjAuNDhaTTYxLjQ1LDE3QTEyLjg0LDEyLjg0LDAsMCwwLDUxLjIxLDEyLjJhMTUuMTEsMTUuMTEsMCwwLDAtNi40LDEuNDMsMTcuODMsMTcuODMsMCwwLDAtNS41LDRxLTYuMTgsMjAuNjQsNi4xOCwyMC42NEEyNC43NSwyNC43NSwwLDAsMCw0OSwzNy44MWEzOC45MiwzOC45MiwwLDAsMSw0LjgyLS40NmMxLjgxLDAsMy4wNi40NiwzLjc3LDEuMzZxMS4zNSwxLjUuNzUsNS4xMmEyMS43MiwyMS43MiwwLDAsMCw1LTcuMTVBMjEuMzgsMjEuMzgsMCwwLDAsNjUuMDcsMjgsMTcuNDQsMTcuNDQsMCwwLDAsNjEuNDUsMTdaTTQzLjYsNjUuMzdhMi43MiwyLjcyLDAsMCwwLTIuMS0uOSwzLDMsMCwwLDAtMi4xOS45LDMuMDYsMy4wNiwwLDAsMC0uOSwyLjI2djQuODJhMy4zMiwzLjMyLDAsMCwwLC45LDIuMzMsMi44NCwyLjg0LDAsMCwwLDIuMTksMSwyLjYxLDIuNjEsMCwwLDAsMi4xLTEsMy40NSwzLjQ1LDAsMCwwLC44My0yLjMzVjY3LjYzQTMuMTcsMy4xNywwLDAsMCw0My42LDY1LjM3Wm03LjQ2LDBhMywzLDAsMCwwLTIuMTgtLjksMi43MywyLjczLDAsMCwwLTIuMTEuOSwzLjE3LDMuMTcsMCwwLDAtLjgzLDIuMjZ2NC44MmEzLjQ1LDMuNDUsMCwwLDAsLjgzLDIuMzMsMi42MSwyLjYxLDAsMCwwLDIuMTEsMSwyLjgzLDIuODMsMCwwLDAsMi4xOC0xLDMuMzIsMy4zMiwwLDAsMCwuOS0yLjMzVjY3LjYzQTMuMDYsMy4wNiwwLDAsMCw1MS4wNiw2NS4zN1oiLz48L3N2Zz4=');
 					background-repeat: no-repeat;
-					background-position: 90% 50%;
-					background-size: 29px;
+					background-position: 92% 50%;
+					background-size: 30px;
 				}
-
-				.ti-dw-feed-item {
+				#themeisle .inside {
+					padding: 0;
+				}
+				.ti-feed-list {
+					padding: 0 12px 5px;
+					margin-bottom: 10px;
+					border-bottom: 1px solid #eee;
+				}
+				.ti-dw-feed-item a {
 					display: flex;
 					align-items: center;
+					margin-bottom: 5px;
+					padding: 5px;
+					transition: .2s ease;
+					border-radius: 3px;
 				}
-
-				.ti-dw-feed-item a {
-					float: left;
-					width: 89.9%;
+				.ti-dw-feed-item a:hover {
+					background-color: #f8f8f8;
 				}
-
-				.ti-dw-feed-item .ti-dw-day-container {
-					width: 100%;
-					letter-spacing: 3px;
-					display: block;
+				.ti-dw-feed-item a:hover .ti-dw-date-container {
+					opacity: .9;
 				}
-
 				.ti-dw-feed-item .ti-dw-month-container {
-
-					width: 100%;
-					display: block;
-					font-weight: 600;
-					padding: 0px;
-					margin-top: -6px;
+					margin-top: -5px;
 					text-transform: uppercase;
 					font-size: 10px;
 					letter-spacing: 1px;
+					font-weight: 700;
 				}
-
 				.ti-dw-feed-item .ti-dw-date-container {
-					float: left;
-					min-height: 30px;
-					margin-right: 0.1%;
-					width: 10%;
+					border-radius: 3px;
+					transition: .2s ease;
+					min-height: 35px;
+					margin-right: 5px;
+					min-width: 35px;
+					text-align: center;
+					border: 1px solid #2a6f97;
+					color: #fff;
+					background: #2ea2cc;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+				}
+				.ti-dw-footer {
+					padding: 0 12px 5px;
 					text-align: center;
 				}
-
+				.ti-dw-recommend-item {
+					display: block;
+				}
 				.ti-dw-recommend-item span {
 					color: #72777c;
 				}
-
 				.ti-dw-powered-by {
-					font-style: italic;
-					text-align: right;
-					margin-top:3px;
+					font-size: 11px;
+					margin-top: 3px;
+					display: block;
+					color: #72777c;
+				}
+				.ti-dw-powered-by span {
+					font-weight: 600;
 				}
 
+
 			</style>
-			<ul>
+			<ul class="ti-feed-list">
 				<?php
 				foreach ( $this->items as $item ) {
 					?>
-					<li class="ti-dw-feed-item"><span class="ti-dw-date-container"><span
-									class="ti-dw-day-container"><?php echo date( 'd', $item['date'] ); ?></span> <span
-									class="ti-dw-month-container"><?php echo substr( date( 'M', $item['date'] ), 0, 3 ); ?></span></span><a
-								href="
-								<?php
-								echo add_query_arg(
-									array(
-										'utm_campaign' => 'feed',
-										'utm_medium'   => 'dashboard_widget',
-									), $item['link']
-								);
-								?>
-								" target="_blank"><?php echo $item['title']; ?></a>
-						<div class="clear"></div>
+					<li class="ti-dw-feed-item">
+						<a href="
+						<?php
+						echo add_query_arg(
+							array(
+								'utm_campaign' => 'feed',
+								'utm_medium'   => 'dashboard_widget',
+							), $item['link']
+						);
+						?>
+						" target="_blank">
+							<span class="ti-dw-date-container"><span
+										class="ti-dw-day-container"><?php echo date( 'd', $item['date'] ); ?></span> <span
+										class="ti-dw-month-container"><?php echo substr( date( 'M', $item['date'] ), 0, 3 ); ?></span></span><?php echo $item['title']; ?>
+						</a>
 					</li>
 					<?php
 				}
-
-				$recommend = apply_filters( 'themeisle_sdk_recommend_plugin_or_theme', array() );
-				if ( is_array( $recommend ) && ! empty( $recommend ) ) {
-
-					$type = $recommend['type'];
-					if ( ( $type == 'theme' && current_user_can( 'install_themes' ) ) || ( $type == 'plugin' && current_user_can( 'install_plugins' ) ) ) {
-						add_thickbox();
-						$url = add_query_arg(
-							array(
-								'theme' => $recommend['slug'],
-							), network_admin_url( 'theme-install.php' )
-						);
-
-						if ( 'plugin' === $type ) {
-
-							$url = add_query_arg(
-								array(
-									'tab'    => 'plugin-information',
-									'plugin' => $recommend['slug'],
-								), network_admin_url( 'plugin-install.php' )
-							);
-						}
-						?>
-						<li class="ti-dw-recommend-item ">
-							<span class="ti-dw-recommend"><?php echo apply_filters( 'themeisle_sdk_dashboard_popular_label', sprintf( 'Popular %s', ucwords( $type ) ) ); ?>
-								: </span>
-							<?php
-							echo trim(
-								str_replace(
-									array(
-										'lite',
-										'Lite',
-									), '', $recommend['name']
-								)
-							);
-							?>
-							(<a class="thickbox open-plugin-details-modal"
-								href="<?php echo $url . '&TB_iframe=true&width=600&height=500'; ?>"><?php echo apply_filters( 'themeisle_sdk_dashboard_install_label', 'Install' ); ?></a>)
-						</li>
-						<li class="ti-dw-powered-by">
-							Powered by <?php echo esc_attr( $this->product->get_friendly_name() ); ?>
-						</li>
-
-						<?php
-					}
-				}
 				?>
 			</ul>
+			<?php
+			$recommend = apply_filters( 'themeisle_sdk_recommend_plugin_or_theme', array() );
+			if ( is_array( $recommend ) && ! empty( $recommend ) ) {
+
+				$type = $recommend['type'];
+				if ( ( $type == 'theme' && current_user_can( 'install_themes' ) ) || ( $type == 'plugin' && current_user_can( 'install_plugins' ) ) ) {
+					add_thickbox();
+					$url = add_query_arg(
+						array(
+							'theme' => $recommend['slug'],
+						), network_admin_url( 'theme-install.php' )
+					);
+
+					if ( 'plugin' === $type ) {
+
+						$url = add_query_arg(
+							array(
+								'tab'    => 'plugin-information',
+								'plugin' => $recommend['slug'],
+							), network_admin_url( 'plugin-install.php' )
+						);
+					}
+					?>
+					<div class="ti-dw-footer">
+					<span class="ti-dw-recommend-item ">
+							<span class="ti-dw-recommend"><?php echo apply_filters( 'themeisle_sdk_dashboard_popular_label', sprintf( 'Popular %s', ucwords( $type ) ) ); ?>
+								: </span>
+						<?php
+						echo trim(
+							str_replace(
+								array(
+									'lite',
+									'Lite',
+								), '', $recommend['name']
+							)
+						);
+						?>
+						(<a class="thickbox open-plugin-details-modal"
+							href="<?php echo $url . '&TB_iframe=true&width=600&height=500'; ?>"><?php echo apply_filters( 'themeisle_sdk_dashboard_install_label', 'Install' ); ?></a>)
+					</span>
+						<span class="ti-dw-powered-by">
+						Powered by <span><?php echo esc_attr( $this->product->get_friendly_name() ); ?></span>
+					</span>
+					</div>
+
+					<?php
+				}
+			}
+			?>
 
 			<?php
 

@@ -60,7 +60,38 @@ if ( ! class_exists( 'ThemeIsle_SDK_Product' ) ) :
 		/**
 		 * @var array $allowed_authors The allowed authors.
 		 */
-		private $allowed_authors = array( 'proteusthemes.com', 'anarieldesign.com', 'prothemedesign.com', 'cssigniter.com' );
+		private $allowed_authors = array(
+			'proteusthemes.com',
+			'anarieldesign.com',
+			'prothemedesign.com',
+			'cssigniter.com',
+		);
+		/**
+		 * @var array $allowed_external_products The allowed external_products.
+		 */
+		private $allowed_products = array(
+			'zermatt',
+			'neto',
+			'olsen',
+			'benson',
+			'romero',
+			'carmack',
+			'puzzle',
+			'broadsheet',
+			'girlywp',
+			'veggie',
+			'zeko',
+			'maishawp',
+			'didi',
+			'liber',
+			'medicpress-pt',
+			'adrenaline-pt',
+			'consultpress-pt',
+			'legalpress-pt',
+			'gympress-pt',
+			'readable-pt',
+			'bolts-pt',
+		);
 		/**
 		 * @var bool $requires_license Either user needs to activate it with license.
 		 */
@@ -166,6 +197,9 @@ if ( ! class_exists( 'ThemeIsle_SDK_Product' ) ) :
 		public function is_external_author() {
 			foreach ( $this->allowed_authors as $author ) {
 				if ( strpos( $this->author_url, $author ) !== false ) {
+					return true;
+				}
+				if ( in_array( $this->get_slug(), $this->allowed_products ) ) {
 					return true;
 				}
 			}
@@ -279,6 +313,52 @@ if ( ! class_exists( 'ThemeIsle_SDK_Product' ) ) :
 		}
 
 		/**
+		 * @return string Return license key, if available.
+		 */
+		private function get_license() {
+			$license_data = get_option( $this->get_key() . '_license_data', '' );
+
+			if ( empty( $license_data ) ) {
+				return '';
+			}
+			if ( ! isset( $license_data->key ) ) {
+				return '';
+			}
+
+			return $license_data->key;
+		}
+
+		/**
+		 * @return array Array of available versions.
+		 */
+		private function get_pro_versions() {
+			$license = $this->get_license();
+			$store_url = trailingslashit( $this->store_url );
+			$url      = sprintf( '%s?edd_action=get_versions&name=%s&url=%s&license=%s', $store_url, urlencode( $this->get_name() ), urlencode( get_site_url() ), $license );
+			$response = wp_remote_get( $url );
+			if ( is_wp_error( $response ) ) {
+				return array();
+			}
+			$response = wp_remote_retrieve_body( $response );
+			$response = json_decode( $response );
+			if ( ! is_object( $response ) ) {
+				return array();
+			}
+			if ( ! isset( $response->versions ) ) {
+				return array();
+			}
+			$versions = array();
+			foreach ( $response->versions as $key => $version ) {
+				$versions[] = array(
+					'version' => $version->version,
+					'url'     => $version->file,
+				);
+			}
+
+			return $versions;
+		}
+
+		/**
 		 * Return theme versions.
 		 *
 		 * @return array Theme versions array.
@@ -315,20 +395,20 @@ if ( ! class_exists( 'ThemeIsle_SDK_Product' ) ) :
 		 * @return array Array of versions.
 		 */
 		private function get_api_versions() {
-			if ( ! $this->is_wordpress_available() ) {
-				return array();
-			}
 
 			$cache_key      = $this->get_key() . '_' . preg_replace( '/[^0-9a-zA-Z ]/m', '', $this->version ) . 'versions';
 			$cache_versions = get_transient( $this->get_key() . '_' . preg_replace( '/[^0-9a-zA-Z ]/m', '', $this->version ) . 'versions' );
 			if ( false == $cache_versions ) {
 				$versions = array();
-				if ( $this->get_type() === 'plugin' ) {
-					$versions = $this->get_plugin_versions();
-				}
-
-				if ( $this->get_type() === 'theme' ) {
-					$versions = $this->get_theme_versions();
+				if ( ! $this->is_wordpress_available() ) {
+					$versions = $this->get_pro_versions();
+				} else {
+					if ( $this->get_type() === 'plugin' ) {
+						$versions = $this->get_plugin_versions();
+					}
+					if ( $this->get_type() === 'theme' ) {
+						$versions = $this->get_theme_versions();
+					}
 				}
 				set_transient( $cache_key, $versions, MONTH_IN_SECONDS );
 			} else {
