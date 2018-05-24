@@ -513,7 +513,8 @@ if ( ! class_exists( 'CZR_Fmk_Base_Ajax_Filter' ) ) :
             if ( empty( $html ) ) {
                 wp_send_json_error( 'ac_get_all_modules_tmpl => no template was found for tmpl => ' . $requested_tmpl );
             }
-            return $html;
+
+            return $html;//will be sent by wp_send_json_success() in ::ac_set_ajax_czr_tmpl()
         }
     }//class
 endif;
@@ -527,6 +528,7 @@ if ( ! class_exists( 'CZR_Fmk_Base_Tmpl_Builder' ) ) :
         ** TMPL BUILDER
         *********************************************************/
         // This is the standard method to be used in a module to generate the item input template
+        // for pre-item, mod-opts and item-inputs
         // fired in self::ac_get_ajax_module_tmpl
         function ac_generate_czr_tmpl_from_map( $tmpl_map ) {
             $html = '';
@@ -541,6 +543,8 @@ if ( ! class_exists( 'CZR_Fmk_Base_Tmpl_Builder' ) ) :
                 'step' => '',
                 'min' => '',
                 'max' => '',
+                'orientation' => '',//vertical / horizontal
+                'unit' => '',//% or px for example
 
                 'transport' => '',//<= can be set as a data property of the input wrapper, and used when instanciating the input
 
@@ -548,6 +552,8 @@ if ( ! class_exists( 'CZR_Fmk_Base_Tmpl_Builder' ) ) :
                 'tmpl_callback' => '',//<= a callback function to be used to print the entire input template, including the wrapper
 
                 'width-100' => false,//<= to force a width of 100%
+                'title_width' => '',//width-80
+                'input_width' => ''//width-20
             );
             foreach( $tmpl_map as $input_id => $input_data ) {
                 if ( ! is_string( $input_id ) || empty( $input_id ) ) {
@@ -576,7 +582,7 @@ if ( ! class_exists( 'CZR_Fmk_Base_Tmpl_Builder' ) ) :
                 }
 
             }
-            return $html;
+            return $html;////will be sent by wp_send_json_success() in ::ac_set_ajax_czr_tmpl()
         }
 
 
@@ -607,18 +613,20 @@ if ( ! class_exists( 'CZR_Fmk_Base_Tmpl_Builder' ) ) :
             );
             // no need to print a title for an hidden input
             if ( $input_type !== 'hidden' ) {
-              printf( '<div class="customize-control-title">%1$s</div>', $input_data['title'] );
+              printf( '<div class="customize-control-title %1$s">%2$s</div>', ! empty( $input_data['title_width'] ) ? $input_data['title_width'] : '', $input_data['title'] );
             }
             ?>
               <?php if ( ! empty( $input_data['notice_before'] ) ) : ?>
                   <span class="czr-notice"><?php echo $input_data['notice_before']; ?></span>
               <?php endif; ?>
-            <div class="czr-input">
+
+            <?php printf( '<div class="czr-input %1$s">', ! empty( $input_data['input_width'] ) ? $input_data['input_width'] : '' ); ?>
 
             <?php
             if ( ! empty( $input_data['input_template'] ) && is_string( $input_data['input_template'] ) ) {
                 echo $input_data['input_template'];
             } else {
+
                 switch ( $input_type ) {
                     /* ------------------------------------------------------------------------- *
                      *  HIDDEN
@@ -666,6 +674,11 @@ if ( ! class_exists( 'CZR_Fmk_Base_Tmpl_Builder' ) ) :
                     /* ------------------------------------------------------------------------- *
                      *  COLOR
                     /* ------------------------------------------------------------------------- */
+                    case 'wp_color_apha' :
+                      ?>
+                        <input data-czrtype="<?php echo $input_id; ?>" class="width-100"  data-alpha="true" type="text" value="{{ data['<?php echo $input_id; ?>'] }}"></input>
+                      <?php
+                    break;
                     case 'color' :
                       ?>
                         <input data-czrtype="<?php echo $input_id; ?>" type="text" value="{{ data['<?php echo $input_id; ?>'] }}"></input>
@@ -682,6 +695,15 @@ if ( ! class_exists( 'CZR_Fmk_Base_Tmpl_Builder' ) ) :
                         #>
                         <input data-czrtype="<?php echo $input_id; ?>" type="checkbox" {{ _checked }}></input>
                       <?php
+                    break;
+
+                    case 'gutencheck' :
+                        ?>
+                          <#
+                            var _checked = ( false != data['<?php echo $input_id; ?>'] ) ? "checked=checked" : '';
+                          #>
+                          <span class="czr-toggle-check"><input class="czr-toggle-check__input" id="pending-toggle-0" data-czrtype="<?php echo $input_id; ?>" type="checkbox" {{ _checked }}><span class="czr-toggle-check__track"></span><span class="czr-toggle-check__thumb"></span></span>
+                        <?php
                     break;
 
                     /* ------------------------------------------------------------------------- *
@@ -704,6 +726,34 @@ if ( ! class_exists( 'CZR_Fmk_Base_Tmpl_Builder' ) ) :
                       <?php
                     break;
 
+                    /* ------------------------------------------------------------------------- *
+                     *  TINY MCE EDITOR
+                    /* ------------------------------------------------------------------------- */
+                    case 'tiny_mce_editor' :
+                        ?>
+                          <# //console.log( 'IN php::ac_get_default_input_tmpl() => data sent to the tmpl => ', data ); #>
+                          <button type="button" class="button text_editor-button" data-czr-control-id="{{ data.control_id }}" data-czr-input-id="<?php echo $input_id; ?>" data-czr-action="open-tinymce-editor"><?php _e('Edit', 'customizr' ); ?></button>&nbsp;
+                          <button type="button" class="button text_editor-button" data-czr-control-id="{{ data.control_id }}" data-czr-input-id="<?php echo $input_id; ?>" data-czr-action="close-tinymce-editor"><?php _e('Close', 'customizr' ); ?></button>
+                          <input data-czrtype="<?php echo $input_id; ?>" type="hidden" value="{{ data.value }}"/>
+                        <?php
+                    break;
+
+                    /* ------------------------------------------------------------------------- *
+                     *  RANGE
+                    /* ------------------------------------------------------------------------- */
+                    case 'range_slider' :
+                      ?>
+                        <?php
+                        printf( '<input data-czrtype="%5$s" type="range" %1$s %2$s %3$s %4$s value="{{ data[\'%5$s\'] }}" />',
+                          ! empty( $input_data['orientation'] ) ? 'data-orientation="'. $input_data['orientation'] .'"' : '',
+                          ! empty( $input_data['unit'] ) ? 'data-unit="'. $input_data['unit'] .'"' : '',
+                          ! empty( $input_data['min'] ) ? 'min="'. $input_data['min'] .'"' : '',
+                          ! empty( $input_data['max'] ) ? 'max="'. $input_data['max'] .'"' : '',
+                          $input_id
+                        );
+                        ?>
+                      <?php
+                    break;
                 }//switch
             }
             ?>
@@ -715,9 +765,10 @@ if ( ! class_exists( 'CZR_Fmk_Base_Tmpl_Builder' ) ) :
             <?php
             // </INPUT WRAPPER>
 
-            $tmpl_html = apply_filters( 'ac_get_input_tmpl', ob_get_clean(), $input_id, $input_data );
+            $tmpl_html = apply_filters( "czr_set_input_tmpl___{$input_type}", ob_get_clean(), $input_id, $input_data );
+            //error_log( print_r($tmpl_html, true ) );
             if ( empty( $tmpl_html ) ) {
-                wp_send_json_error( 'ac_get_input_tmpl => no template found for input id : ' . $input_id );
+                wp_send_json_error( 'ac_get_input_tmpl => no html returned for input ' . $input_id );
             }
             return $tmpl_html;
         }//ac_get_input_tmpl()
@@ -1253,10 +1304,10 @@ if ( ! class_exists( 'CZR_Fmk_Base' ) ) :
             // error_log( '</GET AJAX MODULE TMPL>' );
             // the module type is sent in the $posted_params
             if ( ! is_array( $posted_params ) || empty( $posted_params ) ) {
-               wp_send_json_error( 'ac_get_ajax_module_tmpl => empty posted_params' );
+                wp_send_json_error( 'ac_get_ajax_module_tmpl => empty posted_params' );
             }
             if ( ! array_key_exists( 'module_type', $posted_params  ) || empty( $posted_params['module_type'] ) ) {
-               wp_send_json_error( 'ac_get_ajax_module_tmpl => missing module_type' );
+                wp_send_json_error( 'ac_get_ajax_module_tmpl => missing module_type' );
             }
             // if ( ! array_key_exists( 'control_id', $posted_params  ) || empty( $posted_params['control_id'] ) ) {
             //    wp_send_json_error( 'ac_get_ajax_module_tmpl => missing control_id' );
@@ -1275,11 +1326,73 @@ if ( ! class_exists( 'CZR_Fmk_Base' ) ) :
             if ( empty( $tmpl_params ) ) {
                 return;
             }
+            // the requested_tmpl can be pre-item, mod-opt or item-inputs
             $tmpl_map = array_key_exists( $requested_tmpl, $tmpl_params ) ? $tmpl_params[ $requested_tmpl ] : array();
             if ( empty( $tmpl_map ) ) {
                 return;
             }
-            return $this -> ac_generate_czr_tmpl_from_map( $tmpl_map );
+            // Do we have tabs ?
+            // With tabs
+            // 'tabs' => array(
+              // array(
+              //     'title' => __('Spacing', 'text_domain_to_be_replaced'),
+              //     'inputs' => array(
+              //         'padding' => array(
+              //             'input_type'  => 'number',
+              //             'title'       => __('Padding', 'text_domain_to_be_replaced')
+              //         ),
+              //         'margin' => array(
+              //             'input_type'  => 'number',
+              //             'title'       => __('Margin', 'text_domain_to_be_replaced')
+              //         )
+              //     )
+              // ),
+              // array( ... )
+              //
+              //
+              // Without tabs :
+              //  'padding' => array(
+              //       'input_type'  => 'number',
+              //       'title'       => __('Padding', 'text_domain_to_be_replaced')
+              //  ),
+              //   'margin' => array(
+              //      'input_type'  => 'number',
+              //      'title'       => __('Margin', 'text_domain_to_be_replaced')
+              //  )
+            if ( array_key_exists( 'tabs', $tmpl_map ) ) {
+                ob_start();
+                ?>
+                <div class="tabs tabs-style-topline">
+                  <nav>
+                    <ul>
+                      <?php
+                        // print the tabs nav
+                        foreach ( $tmpl_map['tabs'] as $_key => $tab ) {
+                          printf( '<li data-tab-id="section-topline-%1$s" %2$s><a href="#"><span>%3$s</span></a></li>',
+                              $_key + 1,
+                              array_key_exists('attributes', $tab) ? $tab['attributes'] : '',
+                              $tab['title']
+                          );
+                        }//foreach
+                      ?>
+                    </ul>
+                  </nav>
+                  <div class="content-wrap">
+                    <?php
+                      foreach ( $tmpl_map['tabs'] as $_key => $tab ) {
+                        printf( '<section id="section-topline-%1$s">%2$s</section>',
+                            $_key + 1,
+                            $this -> ac_generate_czr_tmpl_from_map( $tab['inputs'] )
+                        );
+                      }//foreach
+                    ?>
+                  </div><?php //.content-wrap ?>
+                </div><?php //.tabs ?>
+                <?php
+                return ob_get_clean();
+            } else {
+                return $this -> ac_generate_czr_tmpl_from_map( $tmpl_map );
+            }
         }
 
     }//class
