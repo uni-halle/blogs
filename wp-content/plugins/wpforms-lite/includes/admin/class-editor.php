@@ -72,8 +72,25 @@ class WPForms_Admin_Editor {
 					<button type="button" id="wpforms-modal-close"><span class="screen-reader-text"><?php esc_html_e( 'Close', 'wpforms' ); ?></span></button>
 				</div>
 				<div id="wpforms-modal-inner">
+
 					<div id="wpforms-modal-options">
 						<?php
+						echo '<p id="wpforms-modal-notice">';
+						printf(
+							wp_kses(
+								/* translators: %s - WPForms documenation link. */
+								__( 'Heads up! Don\'t forget to test your form. <a href="%s" target="_blank" rel="noopener noreferrer">Check out our complete guide</a>!', 'wpforms' ),
+								array(
+									'a' => array(
+										'href'   => array(),
+										'rel'    => array(),
+										'target' => array(),
+									),
+								)
+							),
+							'https://wpforms.com/docs/how-to-properly-test-your-wordpress-forms-before-launching-checklist/'
+						);
+						echo '</p>';
 						$args  = apply_filters( 'wpforms_modal_select', array() );
 						$forms = wpforms()->form->get( '', $args );
 						if ( ! empty( $forms ) ) {
@@ -123,7 +140,7 @@ class WPForms_Admin_Editor {
 				-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 				box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 				width: 500px;
-				height: 220px;
+				height: 285px;
 				overflow: hidden;
 				margin-left: -250px;
 				margin-top: -125px;
@@ -217,6 +234,13 @@ class WPForms_Admin_Editor {
 				-webkit-font-smoothing: antialiased;
 				-moz-osx-font-smoothing: grayscale;
 				content: '\f140';
+			}
+
+			#wpforms-modal-notice {
+				background-color: #d9edf7;
+				border: 1px solid #bce8f1;
+				color: #31708f;
+				padding: 10px;
 			}
 
 			#wpforms-modal #wpforms-modal-options {

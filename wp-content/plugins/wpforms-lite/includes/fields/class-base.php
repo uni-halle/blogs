@@ -360,6 +360,7 @@ abstract class WPForms_Field {
 
 			case 'choices':
 				$values  = ! empty( $field['choices'] ) ? $field['choices'] : $this->defaults;
+				$label   = ! empty( $args['label'] ) ? esc_html( $args['label'] ) : esc_html__( 'Choices', 'wpforms' );
 				$class   = array();
 
 				if ( ! empty( $field['show_values'] ) ) {
@@ -378,7 +379,7 @@ abstract class WPForms_Field {
 					$field,
 					array(
 						'slug'          => 'choices',
-						'value'         => esc_html__( 'Choices', 'wpforms' ),
+						'value'         => $label,
 						'tooltip'       => esc_html__( 'Add choices for the form field.', 'wpforms' ),
 						'after_tooltip' => '<a href="#" class="toggle-bulk-add-display"><i class="fa fa-download"></i> <span>' . esc_html__( 'Bulk Add', 'wpforms' ) . '</span></a>',
 					),
@@ -974,9 +975,9 @@ abstract class WPForms_Field {
 				}
 
 				// Build output.
-				if ( in_array( $field['type'], array( 'checkbox', 'payment-multiple', 'radio' ), true ) ) {
+				if ( in_array( $field['type'], array( 'checkbox', 'gdpr-checkbox', 'payment-multiple', 'radio' ), true ) ) {
 
-					if ( 'checkbox' === $field['type'] ) {
+					if ( in_array( $field['type'], array( 'checkbox', 'gdpr-checkbox', true ) ) ) {
 						$type = 'checkbox';
 					} else {
 						$type = 'radio';

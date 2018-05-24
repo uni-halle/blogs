@@ -135,8 +135,8 @@ class WPForms_WP_Emails {
 	 *
 	 * @since 1.1.3
 	 *
-	 * @param string $key
-	 * @param mixed $value
+	 * @param string $key   Object property key.
+	 * @param mixed  $value Object property value.
 	 */
 	public function __set( $key, $value ) {
 
@@ -322,7 +322,7 @@ class WPForms_WP_Emails {
 	 * @param string $to The To address.
 	 * @param string $subject The subject line of the email.
 	 * @param string $message The body of the email.
-	 * @param array $attachments Attachments to the email.
+	 * @param array  $attachments Attachments to the email.
 	 *
 	 * @return bool
 	 */
@@ -390,7 +390,7 @@ class WPForms_WP_Emails {
 	 *
 	 * @since 1.1.3
 	 *
-	 * @param string $message
+	 * @param string $message Text to convert.
 	 *
 	 * @return string
 	 */
@@ -408,9 +408,9 @@ class WPForms_WP_Emails {
 	 *
 	 * @since 1.1.3
 	 *
-	 * @param string $string
-	 * @param bool $sanitize
-	 * @param bool $linebreaks
+	 * @param string $string     String that may contain tags.
+	 * @param bool   $sanitize   Toggle to maybe sanitize.
+	 * @param bool   $linebreaks Toggle to process linebreaks.
 	 *
 	 * @return string
 	 */
@@ -436,7 +436,7 @@ class WPForms_WP_Emails {
 	 *
 	 * @since 1.1.3
 	 *
-	 * @param bool $html
+	 * @param bool $html Toggle to use HTML or plaintext.
 	 *
 	 * @return string
 	 */
@@ -444,6 +444,10 @@ class WPForms_WP_Emails {
 
 		if ( empty( $this->fields ) ) {
 			return '';
+		}
+
+		if ( empty( $this->form_data['fields'] ) ) {
+			$html = false;
 		}
 
 		$message = '';
@@ -461,20 +465,51 @@ class WPForms_WP_Emails {
 
 			$field_template = ob_get_clean();
 
-			$x = 1;
-			foreach ( $this->fields as $field ) {
+			// Check to see if user has added support for field type.
+			$other_fields = apply_filters( 'wpforms_email_display_other_fields', array(), $this );
 
-				if (
-					! apply_filters( 'wpforms_email_display_empty_fields', false ) &&
-					( empty( $field['value'] ) && '0' !== $field['value'] )
-				) {
-					continue;
+			$x = 1;
+
+			foreach ( $this->form_data['fields'] as $field_id => $field ) {
+
+				$field_name = '';
+				$field_val  = '';
+
+				// If the field exists in the form_data but not in the final
+				// field data, then it's a non-input based field, "other fields".
+				if ( empty( $this->fields[ $field_id ] ) ) {
+
+					if ( empty( $other_fields ) || ! in_array( $field['type'], $other_fields, true ) ) {
+						continue;
+					}
+
+					if ( 'divider' === $field['type'] ) {
+						$field_name = ! empty( $field['label'] ) ? str_repeat( '&mdash;', 3 ) . ' ' . $field['label'] . ' ' . str_repeat( '&mdash;', 3 ) : null;
+						$field_val  = ! empty( $field['description'] ) ? $field['description'] : '';
+					} elseif ( 'pagebreak' === $field['type'] ) {
+						if (  ! empty( $field['position'] ) && 'bottom' === $field['position'] ) {
+							continue;
+						}
+						$title      = ! empty( $field['title'] ) ? $field['title'] : esc_html__( 'Page Break', 'wpforms' );
+						$field_name = str_repeat( '&mdash;', 6 ) . ' ' . $title . ' ' . str_repeat( '&mdash;', 6 );
+					} elseif ( 'html' === $field['type'] ) {
+						$field_name = null;
+						$field_val  = $field['code'];
+					}
+				} else {
+
+					if (
+						! apply_filters( 'wpforms_email_display_empty_fields', false ) &&
+						( empty( $this->fields[ $field_id ]['value'] ) && '0' !== $this->fields[ $field_id ]['value'] )
+					) {
+						continue;
+					}
+
+					$field_name = $this->fields[ $field_id ]['name'];
+					$field_val  = empty( $this->fields[ $field_id ]['value'] ) && '0' !== $this->fields[ $field_id ]['value'] ? '<em>' . esc_html__( '(empty)', 'wpforms' ) . '</em>' : $this->fields[ $field_id ]['value'];
 				}
 
-				$field_val  = empty( $field['value'] ) && '0' !== $field['value'] ? '<em>' . esc_html__( '(empty)', 'wpforms' ) . '</em>' : $field['value'];
-				$field_name = $field['name'];
-
-				if ( empty( $field_name ) ) {
+				if ( empty( $field_name ) && ! is_null( $field_name ) ) {
 					$field_name = sprintf(
 						/* translators: %d - field ID. */
 						esc_html__( 'Field ID #%d', 'wpforms' ),
@@ -483,14 +518,24 @@ class WPForms_WP_Emails {
 				}
 
 				$field_item = $field_template;
+
 				if ( 1 === $x ) {
 					$field_item = str_replace( 'border-top:1px solid #dddddd;', '', $field_item );
 				}
-				$field_item  = str_replace( '{field_name}', $field_name, $field_item );
-				$field_value = apply_filters( 'wpforms_html_field_value', wpforms_decode_string( $field_val ), $field, $this->form_data, 'email-html' );
-				$field_item  = str_replace( '{field_value}', $field_value, $field_item );
+				$field_item = str_replace( '{field_name}', $field_name, $field_item );
+				$field_item = str_replace(
+					'{field_value}',
+					apply_filters(
+						'wpforms_html_field_value',
+						wpforms_decode_string( $field_val ),
+						isset( $this->fields[ $field_id ] ) ? $this->fields[ $field_id ] : $field,
+						$this->form_data, 'email-html'
+					),
+					$field_item
+				);
 
 				$message .= wpautop( $field_item );
+
 				$x ++;
 			}
 		} else {
@@ -560,9 +605,9 @@ class WPForms_WP_Emails {
 	 *
 	 * @since 1.1.3
 	 *
-	 * @param string $slug
+	 * @param string $slug Template file slug.
 	 * @param string $name Optional. Default null.
-	 * @param bool $load
+	 * @param bool   $load Maybe load.
 	 *
 	 * @return string
 	 */
@@ -591,9 +636,9 @@ class WPForms_WP_Emails {
 	 * @since 1.1.3
 	 *
 	 * @param string|array $template_names Template file(s) to search for, in order.
-	 * @param bool $load If true the template file will be loaded if it is found.
-	 * @param bool $require_once Whether to require_once or require. Default true.
-	 *   Has no effect if $load is false.
+	 * @param bool         $load           If true the template file will be loaded if it is found.
+	 * @param bool         $require_once   Whether to require_once or require. Default true.
+	 *                                     Has no effect if $load is false.
 	 *
 	 * @return string The template filename if one is located.
 	 */

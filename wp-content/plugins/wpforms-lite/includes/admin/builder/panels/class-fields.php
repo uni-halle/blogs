@@ -115,6 +115,8 @@ class WPForms_Builder_Panel_Fields extends WPForms_Builder_Panel {
 
 			return;
 		}
+
+		$recaptcha = wpforms_setting( 'recaptcha-type', 'v2' );
 		?>
 
 		<div class="wpforms-preview-wrap">
@@ -130,9 +132,11 @@ class WPForms_Builder_Panel_Fields extends WPForms_Builder_Panel {
 					<?php do_action( 'wpforms_builder_preview', $this->form ); ?>
 				</div>
 
+				<?php if ( 'invisible' !== $recaptcha ) : ?>
 				<p class="wpforms-field-recaptcha">
 					<img src="<?php echo WPFORMS_PLUGIN_URL; ?>/assets/images/recaptcha-placeholder.png" style="max-width: 304px;">
 				</p>
+				<?php endif; ?>
 
 				<?php
 				$submit = ! empty( $this->form_data['settings']['submit_text'] ) ? $this->form_data['settings']['submit_text'] : esc_html__( 'Submit', 'wpforms' );
@@ -322,7 +326,7 @@ class WPForms_Builder_Panel_Fields extends WPForms_Builder_Panel {
 						<# } else { #>
 							<input class="wpforms-screen-reader-element" type="{{ data.type }}" disabled<# if ( 1 === data.settings.choices[choiceID].default ) { print( ' checked' ); } #>>
 						<# } #>
-						<span class="wpforms-image-choices-label">{{ data.settings.choices[choiceID].label }}</span>
+						<span class="wpforms-image-choices-label">{{{ data.settings.choices[choiceID].label }}}</span>
 					</label>
 				</li>
 				<# }) #>
@@ -331,7 +335,7 @@ class WPForms_Builder_Panel_Fields extends WPForms_Builder_Panel {
 			<ul class="primary-input">
 				<# _.each( data.order, function( choiceID, key ) {  #>
 				<li>
-					<input type="{{ data.type }}" disabled<# if ( 1 === data.settings.choices[choiceID].default ) { print( ' checked' ); } #>>{{ data.settings.choices[choiceID].label }}
+					<input type="{{ data.type }}" disabled<# if ( 1 === data.settings.choices[choiceID].default ) { print( ' checked' ); } #>>{{{ data.settings.choices[choiceID].label }}}
 				</li>
 				<# }) #>
 			</ul>

@@ -241,7 +241,10 @@ class WPForms_Preview {
 	 */
 	public function form_preview_check() {
 
-		if ( ! is_admin() ) {
+		// This isn't a privilege check, rather this is intended to prevent
+		// the check from running on the site frontend and areas where
+		// we don't want it to load.
+		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
 			return;
 		}
 
@@ -394,6 +397,9 @@ class WPForms_Preview {
 	 */
 	public function form_preview_hide( $query ) {
 
+		// Hide the preview page from the site's edit.php post table.
+		// This prevents users from seeing or trying to modify this page, since
+		// it is intended to be for internal WPForms use only.
 		if (
 			$query->is_main_query() &&
 			is_admin() &&

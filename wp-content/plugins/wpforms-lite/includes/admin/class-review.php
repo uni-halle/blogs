@@ -38,6 +38,12 @@ class WPForms_Review {
 			return;
 		}
 
+		// If the user has opted out of product annoucement notifications, don't
+		// display the review request.
+		if ( wpforms_setting( 'hide-announcements', false ) ) {
+			return;
+		}
+
 		// Verify that we can do a check for reviews.
 		$review = get_option( 'wpforms_review' );
 		$time   = time();

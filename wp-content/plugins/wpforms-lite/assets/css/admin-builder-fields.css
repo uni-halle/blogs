@@ -581,23 +581,32 @@
 	color: #777;
 	position: absolute;
 	top: 5px;
-	right: 32px;
+	right: 35px;
 	font-size: 16px;
-	opacity: 0;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	background-color: #fff;
+	display: none;
 	z-index: 10;
 	-webkit-transition: all 0.4s ease-in-out;
 	-moz-transition:    all 0.4s ease-in-out;
 	-ms-transition:     all 0.4s ease-in-out;
 	-o-transition:      all 0.4s ease-in-out;
 	transition:         all 0.4s ease-in-out;
+	border-radius: 50%;
 }
 
 #wpforms-panel-fields .wpforms-field:hover .wpforms-field-duplicate,
 #wpforms-panel-fields .wpforms-field.active .wpforms-field-duplicate {
+	display: block;
+}
+
+#wpforms-panel-fields .wpforms-field .wpforms-field-duplicate i {
 	opacity: 0.45;
 }
 
-#wpforms-panel-fields .wpforms-field .wpforms-field-duplicate:hover {
+#wpforms-panel-fields .wpforms-field .wpforms-field-duplicate:hover i {
 	color: #e27730;
 	opacity: 1;
 }
@@ -612,21 +621,30 @@
 	top: 5px;
 	right: 10px;
 	font-size: 16px;
-	opacity: 0;
+	width: 20px;
+	height: 20px;
+	text-align: center;
+	background-color: #fff;
+	display: none;
 	z-index: 10;
 	-webkit-transition: all 0.4s ease-in-out;
 	-moz-transition:    all 0.4s ease-in-out;
 	-ms-transition:     all 0.4s ease-in-out;
 	-o-transition:      all 0.4s ease-in-out;
 	transition:         all 0.4s ease-in-out;
+	border-radius: 50%;
 }
 
 #wpforms-panel-fields .wpforms-field:hover .wpforms-field-delete,
 #wpforms-panel-fields .wpforms-field.active .wpforms-field-delete {
+	display: block;
+}
+
+#wpforms-panel-fields .wpforms-field .wpforms-field-delete i {
 	opacity: 0.45;
 }
 
-#wpforms-panel-fields .wpforms-field .wpforms-field-delete:hover {
+#wpforms-panel-fields .wpforms-field .wpforms-field-delete:hover i {
 	color: #d22222;
 	opacity: 1;
 }

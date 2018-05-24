@@ -48,6 +48,7 @@ var wpf = {
 		jQuery(document).on('wpformsFieldAdd', wpf.setFieldOrders);
 		jQuery(document).on('wpformsFieldDelete', wpf.setFieldOrders);
 		jQuery(document).on('wpformsFieldMove', wpf.setFieldOrders);
+		jQuery(document).on('wpformsFieldAdd', wpf.setChoicesOrders);
 		jQuery(document).on('wpformsFieldChoiceAdd', wpf.setChoicesOrders);
 		jQuery(document).on('wpformsFieldChoiceDelete', wpf.setChoicesOrders);
 		jQuery(document).on('wpformsFieldChoiceMove', wpf.setChoicesOrders);
@@ -492,14 +493,14 @@ var wpf = {
 	 */
 	formObject: function( el ) {
 
-		var form         = $( el ),
+		var form         = jQuery( el ),
 			fields       = form.find( '[name]' ) ,
 			json         = {},
 			arraynames   = {};
 
 		for ( var v = 0; v < fields.length; v++ ){
 
-			var field     = $( fields[v] ),
+			var field     = jQuery( fields[v] ),
 				name      = field.prop( 'name' ).replace( /\]/gi,'' ).split( '[' ),
 				value     = field.val(),
 				lineconf  = {};
@@ -548,7 +549,7 @@ var wpf = {
 					lineconf[nestname] = newobj;
 				}
 		  	}
-			$.extend( true, json, lineconf );
+			jQuery.extend( true, json, lineconf );
 		};
 
 		return json;

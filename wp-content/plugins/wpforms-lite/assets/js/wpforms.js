@@ -13,9 +13,6 @@
 		 */
 		init: function() {
 
-			// Set user identifier
-			WPForms.setUserIndentifier();
-
 			// Document ready
 			$(document).ready(WPForms.ready);
 
@@ -31,6 +28,9 @@
 		 * @since 1.2.3
 		 */
 		ready: function() {
+
+			// Set user identifier
+			WPForms.setUserIndentifier();
 
 			WPForms.loadValidation();
 			WPForms.loadDatePicker();
@@ -752,7 +752,7 @@
 		 */
 		setUserIndentifier: function() {
 
-			if ( ! WPForms.getCookie('_wpfuuid') ) {
+			if ( wpforms_settings.uuid_cookie && ! WPForms.getCookie('_wpfuuid') ) {
 
 				// Generate UUID - http://stackoverflow.com/a/873856/1489528
 				var s         = new Array(36),

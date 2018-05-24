@@ -1,5 +1,20 @@
 == Changelog ==
 
+= 1.4.6 =
+- Added: GDPR Enhancements plugin setting [doc](https://wpforms.com/how-to-create-gdpr-compliant-forms/).
+- Added: GDPR Enhancement: User Agreement form field.
+- Changed: PHP warning that alerts users support for PHP 5.4 and below will be dropped this summer.
+- Changed: Spam logging, to improve performance.
+- Fixed: Typo in base form CSS.
+- Fixed: Stripping HTML from the checkbox and mulitple choice labels in the form builder.
+- Fixed: Form builder icon visibility when field labels are hidden.
+
+= 1.4.5.3 =
+- Changed: Use minified admin assets when appropriate.
+- Changed: Show helpful doc link in form embed modal.
+- Fixed: reCAPTCHA v2 showing in form builder when using Invisible reCAPTCHA.
+- Fixed: Remove jQuery shorthand references in `admin-utils` to prevent conflicts.
+
 = 1.4.5.2 =
 - Fixed: Incorrect documenation link for Input Mask.
 - Fixed: Input Mask value disappearing when form builder is refreshed.

@@ -12,7 +12,15 @@
 /**
  * Helper function to determine if viewing an WPForms related admin page.
  *
+ * Here we determine if the current administration page is owned/created by
+ * WPForms. This is done in compliance with WordPress best practices for
+ * development, so that we only load required WPForms CSS and JS files on pages
+ * we create. As a result we do not load our assets admin wide, where they might
+ * conflict with other plugins needlessly, also leading to a better, faster user
+ * experience for our users.
+ *
  * @since 1.3.9
+ *
  * @return boolean
  */
 function wpforms_is_admin_page() {
@@ -35,6 +43,8 @@ function wpforms_admin_styles() {
 	if ( ! wpforms_is_admin_page() ) {
 		return;
 	}
+
+	$min = wpforms_get_min_suffix();
 
 	// jQuery confirm.
 	wp_enqueue_style(
@@ -63,7 +73,7 @@ function wpforms_admin_styles() {
 	// Main admin styles.
 	wp_enqueue_style(
 		'wpforms-admin',
-		WPFORMS_PLUGIN_URL . 'assets/css/admin.css',
+		WPFORMS_PLUGIN_URL . "assets/css/admin{$min}.css",
 		array(),
 		WPFORMS_VERSION
 	);
@@ -81,6 +91,8 @@ function wpforms_admin_scripts() {
 	if ( ! wpforms_is_admin_page() ) {
 		return;
 	}
+
+	$min = wpforms_get_min_suffix();
 
 	wp_enqueue_media();
 
@@ -111,14 +123,19 @@ function wpforms_admin_scripts() {
 		false
 	);
 
-	// TODO: we should use wpforms_get_min_suffix() here.
-	$dir    = wpforms_debug() ? '/src' : '';
-	$suffix = wpforms_debug() ? '' : '.min';
+	// jQuery Conditionals.
+	wp_enqueue_script(
+		'jquery-conditionals',
+		WPFORMS_PLUGIN_URL . "assets/js/jquery.conditionals.min.js",
+		array( 'jquery' ),
+		'1.0.1',
+		false
+	);
 
 	// Main admin script.
 	wp_enqueue_script(
 		'wpforms-admin',
-		WPFORMS_PLUGIN_URL . "assets/js/admin{$suffix}.js",
+		WPFORMS_PLUGIN_URL . "assets/js/admin{$min}.js",
 		array( 'jquery' ),
 		WPFORMS_VERSION,
 		false
@@ -130,6 +147,7 @@ function wpforms_admin_scripts() {
 		'addon_deactivate'                => esc_html__( 'Deactivate', 'wpforms' ),
 		'addon_inactive'                  => esc_html__( 'Inactive', 'wpforms' ),
 		'addon_install'                   => esc_html__( 'Install Addon', 'wpforms' ),
+		'addon_error'                     => esc_html__( 'Could not install addon. Please download from wpforms.com and install manually.', 'wpforms' ),
 		'ajax_url'                        => admin_url( 'admin-ajax.php' ),
 		'cancel'                          => esc_html__( 'Cancel', 'wpforms' ),
 		'close'                           => esc_html__( 'Close', 'wpforms' ),
@@ -316,7 +334,7 @@ function wpforms_admin_upgrade_link() {
 	// If at this point we still don't have an ID, we really don't have one!
 	// Just return the standard upgrade URL.
 	if ( empty( $shareasale_id ) ) {
-		return 'https://wpforms.com/lite-upgrade/?utm_source=WordPress&amp;utm_medium=link&amp;utm_campaign=liteplugin';
+		return 'https://wpforms.com/lite-upgrade/?discount=LITEUPGRADE&amp;utm_source=WordPress&amp;utm_medium=link&amp;utm_campaign=liteplugin';
 	}
 
 	// Whether we have a specific redirect URL to use
@@ -337,8 +355,8 @@ function wpforms_admin_upgrade_link() {
  */
 function wpforms_check_php_version() {
 
-	// Display for PHP below 5.3.
-	if ( version_compare( PHP_VERSION, '5.3.0', '>=' ) ) {
+	// Display for PHP below 5.4.
+	if ( version_compare( PHP_VERSION, '5.4', '>=' ) ) {
 		return;
 	}
 
@@ -372,7 +390,7 @@ function wpforms_check_php_version() {
 		) .
 		'<br><br>' .
 		wp_kses(
-			__( '<em><strong>Please Note:</strong> After April 2018, WPForms will be deactivated if not further action is taken.</em>', 'wpforms' ),
+			__( '<em><strong>Please Note:</strong> After June 2018, WPForms will be deactivated if no further action is taken.</em>', 'wpforms' ),
 			array(
 				'strong' => array(),
 				'em'     => array(),

@@ -236,7 +236,7 @@ class WPForms_Process {
 
 			// Logs spam entry depending on log levels set.
 			wpforms_log(
-				'Spam Entry',
+				'Spam Entry ' . uniqid(),
 				array( $honeypot, $entry ),
 				array(
 					'type'    => array( 'spam' ),
@@ -308,25 +308,29 @@ class WPForms_Process {
 			$this->form_data  = wpforms()->form->get( absint( $hash_data['form_id'] ), array(
 				'content_only' => true,
 			) );
+
+		} else {
+
+			$this->form_data = $form_data;
 		}
 
 		// Redirect if needed, to either a page or URL, after form processing.
-		if ( ! empty( $form_data['settings']['confirmation_type'] ) && 'message' !== $form_data['settings']['confirmation_type'] ) {
+		if ( ! empty( $this->form_data['settings']['confirmation_type'] ) && 'message' !== $this->form_data['settings']['confirmation_type'] ) {
 
-			if ( 'redirect' === $form_data['settings']['confirmation_type'] ) {
-				$url = apply_filters( 'wpforms_process_smart_tags', $form_data['settings']['confirmation_redirect'], $form_data, $this->fields, $this->entry_id );
+			if ( 'redirect' === $this->form_data['settings']['confirmation_type'] ) {
+				$url = apply_filters( 'wpforms_process_smart_tags', $this->form_data['settings']['confirmation_redirect'], $this->form_data, $this->fields, $this->entry_id );
 			}
 
-			if ( 'page' === $form_data['settings']['confirmation_type'] ) {
-				$url = get_permalink( (int) $form_data['settings']['confirmation_page'] );
+			if ( 'page' === $this->form_data['settings']['confirmation_type'] ) {
+				$url = get_permalink( (int) $this->form_data['settings']['confirmation_page'] );
 			}
 		}
 
 		if ( ! empty( $url ) ) {
-			$url = apply_filters( 'wpforms_process_redirect_url', $url, $form_data['id'], $this->fields );
+			$url = apply_filters( 'wpforms_process_redirect_url', $url, $this->form_data['id'], $this->fields );
 			wp_redirect( esc_url_raw( $url ) );
-			do_action( 'wpforms_process_redirect', $form_data['id'] );
-			do_action( "wpforms_process_redirect_{$form_data['id']}", $form_data['id'] );
+			do_action( 'wpforms_process_redirect', $this->form_data['id'] );
+			do_action( "wpforms_process_redirect_{$this->form_data['id']}", $this->form_data['id'] );
 			exit;
 		}
 	}

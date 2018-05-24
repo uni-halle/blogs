@@ -115,6 +115,7 @@ class WPForms_Builder {
 			// Load builder panels.
 			$this->load_panels();
 
+			add_action( 'admin_head', array( $this, 'admin_head' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueues' ) );
 			add_action( 'admin_print_footer_scripts', array( $this, 'footer_scripts' ) );
 			add_action( 'wpforms_admin_page', array( $this, 'output' ) );
@@ -169,6 +170,16 @@ class WPForms_Builder {
 				require_once WPFORMS_PLUGIN_DIR . 'pro/includes/admin/builder/panels/class-' . $panel . '.php';
 			}
 		}
+	}
+
+	/**
+	 * Admin head area inside the form builder.
+	 *
+	 * @since 1.4.6
+	 */
+	public function admin_head() {
+
+		do_action( 'wpforms_builder_admin_head', $this->view );
 	}
 
 	/**

@@ -2275,10 +2275,14 @@
 		 */
 		recaptchaToggle: function() {
 
-			if ($('#wpforms-panel-field-settings-recaptcha').is(':checked')) {
-				$('.wpforms-field-recaptcha').show();
-			} else {
-				$('.wpforms-field-recaptcha').hide();
+			var $recaptchaPreview = $( '.wpforms-field-recaptcha' );
+
+			if ( $recaptchaPreview.length ) {
+				if ( $( '#wpforms-panel-field-settings-recaptcha' ).is( ':checked' ) ) {
+					$recaptchaPreview.show();
+				} else {
+					$recaptchaPreview.hide();
+				}
 			}
 		},
 

@@ -127,7 +127,7 @@
 					} else {
 						label = wpforms_builder.field + ' #' + fields[field_id].id;
 					}
-					if ( fieldID && fieldID === fields[field_id].id ) {
+					if ( fieldID && fieldID == fields[field_id].id ) {
 						continue;
 					} else {
 						$fields.append( $( '<option>', { value: fields[field_id].id, text : label } ) );

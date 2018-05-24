@@ -68,6 +68,11 @@ class WPForms_Fields {
 			'payment-total',
 		) );
 
+		// Include GDPR Checkbox field if GDPR enhancements are enabled.
+		if ( wpforms_setting( 'gdpr', false ) ) {
+			$fields[] = 'gdpr-checkbox';
+		}
+
 		foreach ( $fields as $field ) {
 
 			if ( file_exists( WPFORMS_PLUGIN_DIR . 'includes/fields/class-' . $field . '.php' ) ) {

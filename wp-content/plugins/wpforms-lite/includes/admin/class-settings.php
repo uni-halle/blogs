@@ -277,7 +277,7 @@ class WPForms_Settings {
 					'no_label' => true,
 					'class'    => array( 'section-heading' ),
 				),
-				'license-key'        => array(
+				'license-key'     => array(
 					'id'   => 'license-key',
 					'name' => esc_html__( 'License Key', 'wpforms' ),
 					'type' => 'license',
@@ -306,6 +306,32 @@ class WPForms_Settings {
 					'id'   => 'global-assets',
 					'name' => esc_html__( 'Load Assets Globally', 'wpforms' ),
 					'desc' => esc_html__( 'Check this if you would like to load WPForms assets site-wide. Only check if your site is having compatibility issues or instructed to by support.', 'wpforms' ),
+					'type' => 'checkbox',
+				),
+				'gdpr-heading' => array(
+					'id'       => 'GDPR',
+					'content'  => '<h4>' . esc_html__( 'GDPR', 'wpforms' ) . '</h4>',
+					'type'     => 'content',
+					'no_label' => true,
+					'class'    => array( 'section-heading', 'no-desc' ),
+				),
+				'gdpr'               => array(
+					'id'   => 'gdpr',
+					'name' => esc_html__( 'GDPR Enhancements', 'wpforms' ),
+					'desc' => sprintf(
+						wp_kses(
+							/* translators: %s = WPForms.com GDPR documentation URL. */
+							__( 'Check this to turn on GDPR related features and enhancements. <a href="%s" target="_blank" rel="noopener noreferrer">Read our GDPR documentation</a> to learn more.', 'wpforms' ),
+							array(
+								'a' => array(
+									'href'   => array(),
+									'target' => array(),
+									'rel'    => array(),
+								),
+							)
+						),
+						'https://wpforms.com/docs/how-to-create-gdpr-compliant-forms/'
+					),
 					'type' => 'checkbox',
 				),
 			),
@@ -442,7 +468,7 @@ class WPForms_Settings {
 				),
 			),
 			// Misc. settings tab.
-			'misc'        => array(
+			'misc'         => array(
 				'misc-heading'       => array(
 					'id'       => 'misc-heading',
 					'content'  => '<h4>' . esc_html__( 'Misc', 'wpforms' ) . '</h4>',
@@ -456,7 +482,7 @@ class WPForms_Settings {
 					'desc' => esc_html__( 'Check this if you would like to hide plugin announcements and update details.', 'wpforms' ),
 					'type' => 'checkbox',
 				),
-				'uninstall-data'    => array(
+				'uninstall-data'      => array(
 					'id'   => 'uninstall-data',
 					'name' => esc_html__( 'Uninstall WPForms', 'wpforms' ),
 					'desc' => esc_html__( 'Check this if you would like to remove ALL WPForms data upon plugin deletion. All forms, entries, and uploaded files will be unrecoverable.', 'wpforms' ),

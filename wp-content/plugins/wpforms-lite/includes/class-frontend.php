@@ -1024,6 +1024,7 @@ class WPForms_Frontend {
 			'val_time24h'         => wpforms_setting( 'validation-time24h', esc_html__( 'Please enter time in 24-hour format (eg 22:45).', 'wpforms' ) ),
 			'val_requiredpayment' => wpforms_setting( 'validation-requiredpayment', esc_html__( 'Payment is required.', 'wpforms' ) ),
 			'val_creditcard'      => wpforms_setting( 'validation-creditcard', esc_html__( 'Please enter a valid credit card number.', 'wpforms' ) ),
+			'uuid_cookie'         => false,
 		);
 		// Include payment related strings if needed.
 		if ( function_exists( 'wpforms_get_currencies' ) ) {
