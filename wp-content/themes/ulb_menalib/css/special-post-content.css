@@ -1,0 +1,28 @@
+
+#post-6412
+{
+
+	/*
+	#post-6412 = Sticky Discovery-Search for Home-Page
+	*/
+	background-color:#E2E2E2;
+	padding: 1.6em;
+	padding-top: 0.2em;
+	padding-bottom: 1.6em;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 0.3em;
+	border-color: #CCCCCC; 
+}
+
+
+
+#post-6412 header.entry-header
+{
+	pointer-events: none;
+}
+
+#post-6412 footer
+{
+	display: none;
+}

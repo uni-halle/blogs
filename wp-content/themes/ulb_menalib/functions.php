@@ -27,6 +27,8 @@ $blacklist = array('singular');
 endif;   // Add the extra classes back untouched
 return array_merge($wp_classes, (array) $extra_classes);
 }
+
+
 add_action( 'widgets_init', 'theme_slug_widgets_init' );
 function theme_slug_widgets_init() {
 	register_sidebar( array(
@@ -40,12 +42,36 @@ function theme_slug_widgets_init() {
 		)
 	);
 }
+
+
+/*
+	2018_05_08 HenryG.
+	PageTopWidget for languages
+		
+*/
+add_action( 'widgets_init', 'theme_top_widget_init' );
+function theme_top_widget_init() {
+	register_sidebar( array(
+		'id' => 'top_widget',
+		'name' => __( 'PageTopWidget' ),
+		'description' => __( 'Widget on top of the page area' ),
+		'before_widget' => '<div id="page-top-widget" class="widget widget-area page-top-widget">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>'
+		)
+	);
+}
+
+
+
+
 function de_menalib_kit_search() {
 return <<<FORMULAR
 <form action="https://kvk.bibliothek.kit.edu/hylib-bin/kvk/nph-kvk2.cgi" method="GET" name="KVK_Suchmaske"><input name="maske" type="HIDDEN" value="SSG623" /><INPUT TYPE="HIDDEN" NAME="input-charset" VALUE="utf-8"><INPUT TYPE="HIDDEN" NAME="header" VALUE="http://kvk.bibliothek.kit.edu/asset/html/header.html">
 <INPUT TYPE="HIDDEN" NAME="footer" VALUE="http://kvk.bibliothek.kit.edu/asset/html/footer.html">
 <input TYPE="HIDDEN" NAME="lang" VALUE="de">
-<h2>Kataloge auswählen</h2>
+<h1>Kataloge auswählen</h1>
 <table>
 <tbody>
 <tr>
@@ -126,7 +152,7 @@ return <<<FORMULAR
 <ul><li>Rechtstrunkierung mit '?', im Feld Autor geschieht dies automatisch</li>
 <li>Die Felder werden mit UND verknüpft</li></ul>
 <br/>
-<h2>weitere Informationen</h2>
+<h2>Weitere Informationen</h2>
 Die im <a href="http://wikis.sub.uni-hamburg.de/webis/index.php/Vorderer_Orient_einschl._Nordafrika_%286.23%29" target="_blank">Sondersammelgebiet 6.23 Vorderer Orient/ Nordafrika</a> bis 1997 in Tübingen und 1998-2015 in Halle gesammelten Bestände werden seit 2016 im neu geschaffenen <a href="http://gepris.dfg.de/gepris/projekt/284366805" target="_blank">Fachinformationsdienst Nahost-, Nordafrika- und Islamstudien</a> fortgeführt. Den Suchergebnissen können Sie entnehmen, welche der Bibliotheken über den gewünschten Titel verfügt.
 <h2>Kontakt</h2>
 Bei technischen Fragen: <a href="mailto:Uwe.Dierolf@kit.edu">Uwe Dierolf</a>
@@ -140,7 +166,7 @@ function en_menalib_kit_search() {
 return <<<FORMULAR
 
 <form action="http://kvk.ubka.uni-karlsruhe.de/hylib-bin/kvk/nph-kvk2.cgi" method="GET" name="KVK_Suchmaske"><input name="maske" type="HIDDEN" value="SSG623" />
-<h2>Choose Catalogues</h2>
+<h1>Choose Catalogues</h1>
 <table>
 <tbody>
 <tr>
@@ -224,11 +250,11 @@ return <<<FORMULAR
 </tbody>
 </table></form>
 <!-- Ende : Suchformular -->
-<h2>Search tips</h2>
+<h2>Search Tips</h2>
 <ul><li>Right truncation with '?', automatically done in the author field</li>
 <li>fields are linked with AND</li></ul>
 <br/>
-<h2>further Information</h2>
+<h2>Further Information</h2>
 The library holdings of the Special Interest Collection Near East/ North Africa, collected until 1997 in Tübingen and 1998-2015 in Halle are continued since 2016 in the Special Information Service Near East, North Africa and Islamic Studies. You can see which library holds the wanted title in the results.
 
 <h2>Contact</h2>
@@ -388,6 +414,12 @@ add_action( 'after_setup_theme', 'menalib_custom_header_setup' );
 
 
 
+
+
+
+
+
+
 /*
 	2018_01_24 HenryG.
 	display pages as posts
@@ -402,3 +434,11 @@ add_filter( 'pre_get_posts', 'my_get_posts' );
  }
 
  */
+
+  /**
+ * Include Shortcode für Hal:Lit Discovery Suche
+ */
+
+
+require_once( get_stylesheet_directory() . '/inc/discovery-search.php');
+require_once( get_stylesheet_directory() . '/inc/password-protected-posts.php');

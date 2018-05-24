@@ -1,0 +1,91 @@
+.discovery-search
+{
+	display: block;
+	width: 100%;
+
+}
+
+
+.discovery-search form
+{
+	display: flex;
+	box-sizing: border-box;
+	width: 100%;
+	background-color: #FFFFFF;
+	padding: 0.16em;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	border-radius: 0.3em;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #AAAAAA;
+	
+}
+
+.discovery-search form input
+{
+	display: inline-block;
+	
+}
+
+.discovery-search form input[type='text']
+{
+	flex-grow: 1;
+	padding: 0.2em;
+	padding-left: 0.6em;
+	padding-right: 0.6em;
+	border-width: 0;
+
+}
+.discovery-search form input[type='submit']
+{
+	
+	width: 7em;
+	background-image: url(../images/magnify-icon.svg);
+	background-size: auto 68%;
+	background-position: 18% 52%;
+	background-repeat: no-repeat;
+	padding-left: 5%;
+	padding-right: 0.0%;
+	color: #FFFFFF;
+	font-size: 120%;
+	background-color: #597C00;
+	border-color: #597C00;
+	text-shadow: none;
+	border-radius: 0.25em;
+	border-width: 0.12em;
+	transition: all 0.2s;
+	cursor: pointer;
+}
+
+.discovery-search form input[type='submit']:hover
+{
+	
+	background-size: auto 930%;
+	background-position: 24.5% 32.0%;
+	background-color: #709800;
+	border-color: #709800;
+	padding-left: 0.0%;
+	padding-right: 0.0%;
+
+}
+
+.discovery-search form input[type='submit']:active
+{
+	background-size: auto 60%;
+	background-position: 18% 50%;
+	padding-left: 5%;
+}
+
+
+.discovery-search form input[type='submit']:focus 
+{
+	outline:none;
+}
+.discovery-search form input[type='submit']::-moz-focus-inner 
+{
+	border:0;
+}
+
+
+

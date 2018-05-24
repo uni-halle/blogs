@@ -1,0 +1,55 @@
+ul.qtranxs_language_chooser {
+    margin: 0;
+    text-align: right;
+}
+
+ul.qtranxs_language_chooser li {
+    display: inline-block; 
+    /* horizontal list, use "list-item" or other appropriate value for vertical list */
+    list-style-type: none;
+    /* use "initial" or other to enable bullets */
+    margin: 0 5px 0 0;
+    margin-right: 12px;
+    /* adjust spacing between items */
+    opacity: 0.5;
+    -o-transition: 1s ease opacity;
+    -moz-transition: 1s ease opacity;
+    -webkit-transition: 1s ease opacity;
+    transition: 1s ease opacity;
+}
+
+
+
+
+/* ul.qtranxs_language_chooser li span { margin: 0 5px 0 0; } */
+
+
+/* other way to control spacing */
+
+ul.qtranxs_language_chooser li.active {
+    opacity: 0.8;
+}
+
+ul.qtranxs_language_chooser li:hover {
+    opacity: 1;
+}
+
+ul.qtranxs_language_chooser img {
+    box-shadow: none;
+    vertical-align: middle;
+    display: initial;
+}
+
+ul.qtranxs_language_chooser .qtranxs_flag {
+    height: 12px;
+    width: 18px;
+    display: block;
+}
+
+ul.qtranxs_language_chooser .qtranxs_flag_and_text {
+    padding-left: 20px;
+}
+
+ul.qtranxs_language_chooser .qtranxs_flag span {
+    display: none;
+}

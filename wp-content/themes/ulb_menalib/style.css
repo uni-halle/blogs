@@ -28,3 +28,24 @@
 
 */
 @import url("css/post-content.css");
+
+/* 
+	special-post-content.css: 
+	- contains special definitions for single posts
+	- usually starting with #post-6412 .xxx .yyy{}
+
+*/
+@import url("css/special-post-content.css");
+
+/*
+	discovery-search.css 
+	
+*/
+@import url("css/discovery-search.css");
+
+
+/*
+	qtranslate language chooser
+	
+*/
+@import url("css/qtranslate.css");
