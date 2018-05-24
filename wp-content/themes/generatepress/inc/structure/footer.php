@@ -18,7 +18,7 @@ if ( ! function_exists( 'generate_construct_footer' ) ) {
 	 */
 	function generate_construct_footer() {
 		?>
-		<footer class="site-info" itemtype="http://schema.org/WPFooter" itemscope="itemscope">
+		<footer class="site-info" itemtype="https://schema.org/WPFooter" itemscope="itemscope">
 			<div class="inside-site-info <?php if ( 'full-width' !== generate_get_setting( 'footer_inner_width' ) ) : ?>grid-container grid-parent<?php endif; ?>">
 				<?php
 				/**
@@ -203,7 +203,7 @@ if ( ! function_exists( 'generate_construct_footer_widgets' ) ) {
 }
 
 if ( ! function_exists( 'generate_back_to_top' ) ) {
-	add_action( 'wp_footer', 'generate_back_to_top' );
+	add_action( 'generate_after_footer', 'generate_back_to_top' );
 	/**
 	 * Build the back to top button
 	 *
@@ -221,7 +221,6 @@ if ( ! function_exists( 'generate_back_to_top' ) ) {
 
 		echo apply_filters( 'generate_back_to_top_output', sprintf( // WPCS: XSS ok.
 			'<a title="%1$s" rel="nofollow" href="#" class="generate-back-to-top" style="opacity:0;visibility:hidden;" data-scroll-speed="%2$s" data-start-scroll="%3$s">
-				<i class="fa %4$s" aria-hidden="true"></i>
 				<span class="screen-reader-text">%5$s</span>
 			</a>',
 			esc_attr__( 'Scroll back to top', 'generatepress' ),
