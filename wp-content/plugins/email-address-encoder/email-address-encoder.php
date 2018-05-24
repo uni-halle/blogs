@@ -3,7 +3,7 @@
 Plugin Name: Email Address Encoder
 Plugin URI: http://wordpress.org/plugins/email-address-encoder/
 Description: A lightweight plugin to protect email addresses from email-harvesting robots by encoding them into decimal and hexadecimal entities.
-Version: 1.0.6
+Version: 1.0.7
 Author: Till Krüss
 Author URI: https://till.im/
 Text Domain: email-address-encoder
@@ -32,14 +32,14 @@ foreach ( array( 'the_content', 'the_excerpt', 'widget_text', 'comment_text', 'c
 /**
  * Attempt to register the shortcode relatively late to avoid conflicts.
  */
-add_action( 'init', 'register_shortcode', 1000 );
+add_action( 'init', 'eae_register_shortcode', 1000 );
 
 /**
- * Register the [encode] shortcode if it doesn't exist, yet.
+ * Register the [encode] shortcode, if it doesn't exist.
  *
  * @return void
  */
-function register_shortcode() {
+function eae_register_shortcode() {
 	if ( ! shortcode_exists( 'encode' ) ) {
 		add_shortcode( 'encode', 'eae_shortcode' );
 	}
@@ -137,7 +137,7 @@ function eae_encode_str( $string ) {
 
 			$r = ( $seed * ( 1 + $key ) ) % 100; // pseudo "random function"
 
-			if ( $r > 60 && $char != '@' ) ; // plain character (not encoded), if not @-sign
+			if ( $r > 60 && $char !== '@' && $char !== '.' ) ; // plain character (not encoded), except @-signs and dots
 			else if ( $r < 45 ) $chars[ $key ] = '&#x' . dechex( $ord ) . ';'; // hexadecimal
 			else $chars[ $key ] = '&#' . $ord . ';'; // decimal (ascii)
 
