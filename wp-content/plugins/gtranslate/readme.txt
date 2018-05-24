@@ -4,7 +4,7 @@ Author: Translate AI Multilingual Solutions
 Tags: translate wordpress, multilingual, translate, translation, language, bilingual, localization, translation proxy, i18n, l10n, localisation, multilanguage, google translate
 Requires at least: 2.8.1
 Tested up to: 4.9
-Stable tag: 2.8.39
+Stable tag: 2.8.40
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
@@ -219,6 +219,13 @@ You need to go to the language you want to edit, for instance, French: http://do
 7. Settings page
 
 == Changelog ==
+
+= 2.8.40 =
+* Updated Hebrew language code for hreflang (he instead of iw)
+* Added translation for ajax_url javascript variables, previously only wp_ajax_url were translated
+* Multisite support added for hreflang tags
+* Fix woocommerce cart cookie path when wp in installed in folder
+* Fix for incorrect http response headers regex
 
 = 2.8.39 =
 * 2 more translation proxy servers added: ani, evn

@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: https://gtranslate.io/?xyz=998
 Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="https://wordpress.org/support/plugin/gtranslate">GTranslate Support</a>.
-Version: 2.8.39
+Version: 2.8.40
 Author: Translate AI Multilingual Solutions
 Author URI: https://gtranslate.io
 Text Domain: gtranslate
@@ -1952,7 +1952,7 @@ if($data['add_hreflang_tags'] and ($data['pro_version'] or $data['enterprise_ver
             $enabled_languages = $data['incl_langs'];
 
         //$current_url = wp_get_canonical_url();
-        $current_url = home_url(add_query_arg(null, null));
+        $current_url = network_home_url(add_query_arg(null, null));
 
         if($current_url !== false) {
             // adding default language
@@ -1968,8 +1968,12 @@ if($data['add_hreflang_tags'] and ($data['pro_version'] or $data['enterprise_ver
                 elseif($data['pro_version'])
                     $href = str_ireplace('://' . $_SERVER['HTTP_HOST'], '://' . $_SERVER['HTTP_HOST'] . '/' . $lang, $current_url);
 
-                if(!empty($href) and $lang != $data['default_language'])
-                    echo '<link rel="alternate" hreflang="'.$lang.'" href="'.$href.'" />'."\n";
+                if(!empty($href) and $lang != $data['default_language']) {
+                    if($lang == 'iw')
+                        echo '<link rel="alternate" hreflang="he" href="'.$href.'" />'."\n";
+                    else
+                        echo '<link rel="alternate" hreflang="'.$lang.'" href="'.$href.'" />'."\n";
+                }
             }
         }
     }

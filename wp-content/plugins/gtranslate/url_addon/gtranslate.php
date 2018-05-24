@@ -193,11 +193,16 @@ $response_headers = explode(PHP_EOL, $header);
 //print_r($response_headers);
 $headers_sent = '';
 foreach($response_headers as $header) {
-    if(!empty($header) and !preg_match('/Content\-Length|Transfer\-Encoding|Content\-Encoding|Link/i', $header)) {
+    if(!empty($header) and !preg_match('/Content\-Length:|Transfer\-Encoding:|Content\-Encoding:|Link:/i', $header)) {
 
         if(preg_match('/^Location:/i', $header)) {
             $header = str_ireplace($host, $_SERVER['HTTP_HOST'] . '/' . $glang, $header);
             $header = str_ireplace('Location: /', 'Location: /' . $glang . '/', $header);
+        }
+
+        // woocommerce cookie path fix
+        if(preg_match('/^Set-Cookie:/i', $header) and strpos($header, 'woocommerce') !== false) {
+            $header = preg_replace('/path=\/.*\/;/', 'path=/;', $header);
         }
 
         $headers_sent .= $header;
@@ -220,8 +225,8 @@ $html = str_ireplace('action=\'//' . $_SERVER['HTTP_HOST'], 'action=\'//' . $_SE
 
 // woocommerce specific changes
 $html = str_ireplace(
-    array('"wc_ajax_url":"\\/',              '"checkout_url":"\\/',               'var wc_country_select_params',  'var wc_address_i18n_params' ),
-    array('"wc_ajax_url":"\\/'.$glang.'\\/', '"checkout_url":"\\/'.$glang.'\\/',  'var wc_country_select_params2', 'var wc_address_i18n_params2'),
+    array('ajax_url":"\\/',              '"checkout_url":"\\/',               'var wc_country_select_params',  'var wc_address_i18n_params' ),
+    array('ajax_url":"\\/'.$glang.'\\/', '"checkout_url":"\\/'.$glang.'\\/',  'var wc_country_select_params2', 'var wc_address_i18n_params2'),
     $html
 );
 
