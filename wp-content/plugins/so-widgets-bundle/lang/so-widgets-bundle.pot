@@ -69,7 +69,7 @@ msgstr ""
 msgid "Save"
 msgstr ""
 
-#: tmp/base/inc/actions.php:19, tmp/base/inc/actions.php:145, tmp/base/inc/actions.php:233, tmp/base/inc/actions.php:305, tmp/base/inc/actions.php:331, tmp/base/inc/actions.php:339, tmp/base/inc/actions.php:521, tmp/base/inc/actions.php:527, tmp/so-widgets-bundle.php:739, tmp/so-widgets-bundle.php:787, tmp/so-widgets-bundle.php:813, tmp/so-widgets-bundle.php:873, tmp/so-widgets-bundle.php:895, tmp/so-widgets-bundle.php:1027, tmp/so-widgets-bundle.php:1049
+#: tmp/base/inc/actions.php:19, tmp/base/inc/actions.php:149, tmp/base/inc/actions.php:237, tmp/base/inc/actions.php:309, tmp/base/inc/actions.php:335, tmp/base/inc/actions.php:343, tmp/base/inc/actions.php:525, tmp/base/inc/actions.php:531, tmp/so-widgets-bundle.php:739, tmp/so-widgets-bundle.php:787, tmp/so-widgets-bundle.php:813, tmp/so-widgets-bundle.php:873, tmp/so-widgets-bundle.php:895, tmp/so-widgets-bundle.php:1027, tmp/so-widgets-bundle.php:1049
 msgid "Invalid request."
 msgstr ""
 
@@ -77,19 +77,19 @@ msgstr ""
 msgid "Invalid post."
 msgstr ""
 
-#: tmp/base/inc/actions.php:95, tmp/base/siteorigin-widget.class.php:1273
+#: tmp/base/inc/actions.php:99, tmp/base/siteorigin-widget.class.php:1273
 msgid "Widget Preview"
 msgstr ""
 
-#: tmp/base/inc/actions.php:417
+#: tmp/base/inc/actions.php:421
 msgid "Nonce error"
 msgstr ""
 
-#: tmp/base/inc/actions.php:437
+#: tmp/base/inc/actions.php:441
 msgid "Signature error"
 msgstr ""
 
-#: tmp/base/inc/actions.php:489
+#: tmp/base/inc/actions.php:493
 msgid "Attachment error"
 msgstr ""
 
@@ -158,7 +158,7 @@ msgstr ""
 msgid "This field does not have a type. Please specify a type for it to be rendered correctly."
 msgstr ""
 
-#: tmp/base/inc/fields/font.class.php:17
+#: tmp/base/inc/fields/font.class.php:33
 msgid "Use theme font"
 msgstr ""
 
@@ -362,7 +362,7 @@ msgstr ""
 msgid "Sticky posts"
 msgstr ""
 
-#: tmp/base/inc/fields/posts.class.php:115, tmp/compat/beaver-builder/beaver-builder.php:129, tmp/widgets/google-map/google-map.php:537, tmp/widgets/image/image.php:91
+#: tmp/base/inc/fields/posts.class.php:115, tmp/compat/beaver-builder/beaver-builder.php:129, tmp/widgets/google-map/google-map.php:537, tmp/widgets/image/image.php:91, tmp/widgets/image/image.php:115
 msgid "Default"
 msgstr ""
 
@@ -738,7 +738,7 @@ msgstr ""
 msgid "Button text"
 msgstr ""
 
-#: tmp/widgets/button/button.php:99, tmp/widgets/google-map/google-map.php:193, tmp/widgets/headline/headline.php:87, tmp/widgets/headline/headline.php:229, tmp/widgets/hero/hero.php:247, tmp/widgets/icon/icon.php:56, tmp/widgets/image/image.php:151, tmp/widgets/layout-slider/layout-slider.php:87, tmp/widgets/simple-masonry/simple-masonry.php:78, tmp/widgets/slider/slider.php:84
+#: tmp/widgets/button/button.php:99, tmp/widgets/google-map/google-map.php:193, tmp/widgets/headline/headline.php:87, tmp/widgets/headline/headline.php:229, tmp/widgets/hero/hero.php:247, tmp/widgets/icon/icon.php:56, tmp/widgets/image/image.php:175, tmp/widgets/layout-slider/layout-slider.php:87, tmp/widgets/simple-masonry/simple-masonry.php:78, tmp/widgets/slider/slider.php:84
 msgid "Destination URL"
 msgstr ""
 
@@ -770,7 +770,7 @@ msgstr ""
 msgid "Top"
 msgstr ""
 
-#: tmp/widgets/button/button.php:169, tmp/widgets/button/button.php:221, tmp/widgets/contact/contact.php:733, tmp/widgets/contact/contact.php:763, tmp/widgets/contact/contact.php:1203, tmp/widgets/cta/cta.php:193, tmp/widgets/features/features.php:127, tmp/widgets/headline/headline.php:177, tmp/widgets/headline/headline.php:319, tmp/widgets/headline/headline.php:429, tmp/widgets/icon/icon.php:49, tmp/widgets/image/image.php:95, tmp/widgets/social-media-buttons/social-media-buttons.php:303, tmp/widgets/social-media-buttons/social-media-buttons.php:325, tmp/widgets/testimonial/testimonial.php:507
+#: tmp/widgets/button/button.php:169, tmp/widgets/button/button.php:221, tmp/widgets/contact/contact.php:733, tmp/widgets/contact/contact.php:763, tmp/widgets/contact/contact.php:1203, tmp/widgets/cta/cta.php:193, tmp/widgets/features/features.php:127, tmp/widgets/headline/headline.php:177, tmp/widgets/headline/headline.php:319, tmp/widgets/headline/headline.php:429, tmp/widgets/icon/icon.php:49, tmp/widgets/image/image.php:95, tmp/widgets/image/image.php:119, tmp/widgets/social-media-buttons/social-media-buttons.php:303, tmp/widgets/social-media-buttons/social-media-buttons.php:325, tmp/widgets/testimonial/testimonial.php:507
 msgid "Right"
 msgstr ""
 
@@ -778,7 +778,7 @@ msgstr ""
 msgid "Bottom"
 msgstr ""
 
-#: tmp/widgets/button/button.php:173, tmp/widgets/button/button.php:219, tmp/widgets/contact/contact.php:731, tmp/widgets/contact/contact.php:761, tmp/widgets/contact/contact.php:1201, tmp/widgets/cta/cta.php:191, tmp/widgets/features/features.php:131, tmp/widgets/headline/headline.php:175, tmp/widgets/headline/headline.php:317, tmp/widgets/headline/headline.php:427, tmp/widgets/icon/icon.php:48, tmp/widgets/image/image.php:93, tmp/widgets/social-media-buttons/social-media-buttons.php:301, tmp/widgets/social-media-buttons/social-media-buttons.php:323, tmp/widgets/testimonial/testimonial.php:505
+#: tmp/widgets/button/button.php:173, tmp/widgets/button/button.php:219, tmp/widgets/contact/contact.php:731, tmp/widgets/contact/contact.php:761, tmp/widgets/contact/contact.php:1201, tmp/widgets/cta/cta.php:191, tmp/widgets/features/features.php:131, tmp/widgets/headline/headline.php:175, tmp/widgets/headline/headline.php:317, tmp/widgets/headline/headline.php:427, tmp/widgets/icon/icon.php:48, tmp/widgets/image/image.php:93, tmp/widgets/image/image.php:117, tmp/widgets/social-media-buttons/social-media-buttons.php:301, tmp/widgets/social-media-buttons/social-media-buttons.php:323, tmp/widgets/testimonial/testimonial.php:505
 msgid "Left"
 msgstr ""
 
@@ -798,7 +798,7 @@ msgstr ""
 msgid "Align"
 msgstr ""
 
-#: tmp/widgets/button/button.php:223, tmp/widgets/contact/contact.php:765, tmp/widgets/contact/contact.php:1205, tmp/widgets/headline/headline.php:173, tmp/widgets/headline/headline.php:315, tmp/widgets/headline/headline.php:425, tmp/widgets/icon/icon.php:47, tmp/widgets/image/image.php:97, tmp/widgets/social-media-buttons/social-media-buttons.php:305, tmp/widgets/social-media-buttons/social-media-buttons.php:327
+#: tmp/widgets/button/button.php:223, tmp/widgets/contact/contact.php:765, tmp/widgets/contact/contact.php:1205, tmp/widgets/headline/headline.php:173, tmp/widgets/headline/headline.php:315, tmp/widgets/headline/headline.php:425, tmp/widgets/icon/icon.php:47, tmp/widgets/image/image.php:97, tmp/widgets/image/image.php:121, tmp/widgets/social-media-buttons/social-media-buttons.php:305, tmp/widgets/social-media-buttons/social-media-buttons.php:327
 msgid "Center"
 msgstr ""
 
@@ -1202,7 +1202,7 @@ msgstr ""
 msgid "Border style"
 msgstr ""
 
-#: tmp/widgets/contact/contact.php:651, tmp/widgets/contact/contact.php:877, tmp/widgets/contact/contact.php:1269, tmp/widgets/image/image.php:125
+#: tmp/widgets/contact/contact.php:651, tmp/widgets/contact/contact.php:877, tmp/widgets/contact/contact.php:1269, tmp/widgets/image/image.php:149
 msgid "Hidden"
 msgstr ""
 
@@ -1250,11 +1250,11 @@ msgstr ""
 msgid "Position"
 msgstr ""
 
-#: tmp/widgets/contact/contact.php:727, tmp/widgets/image/image.php:127
+#: tmp/widgets/contact/contact.php:727, tmp/widgets/image/image.php:151
 msgid "Above"
 msgstr ""
 
-#: tmp/widgets/contact/contact.php:729, tmp/widgets/image/image.php:129
+#: tmp/widgets/contact/contact.php:729, tmp/widgets/image/image.php:153
 msgid "Below"
 msgstr ""
 
@@ -1410,27 +1410,27 @@ msgstr ""
 msgid "Error sending email, please try again later."
 msgstr ""
 
-#: tmp/widgets/contact/contact.php:2227
+#: tmp/widgets/contact/contact.php:2231
 msgid "A valid email is required"
 msgstr ""
 
-#: tmp/widgets/contact/contact.php:2231
+#: tmp/widgets/contact/contact.php:2235
 msgid "The email address is invalid"
 msgstr ""
 
-#: tmp/widgets/contact/contact.php:2239
+#: tmp/widgets/contact/contact.php:2243
 msgid "Missing subject"
 msgstr ""
 
-#: tmp/widgets/contact/contact.php:2307
+#: tmp/widgets/contact/contact.php:2311
 msgid "Error validating your Captcha response."
 msgstr ""
 
-#: tmp/widgets/contact/contact.php:2371
+#: tmp/widgets/contact/contact.php:2375
 msgid "Unfortunately our system identified your message as spam."
 msgstr ""
 
-#: tmp/widgets/contact/contact.php:2387
+#: tmp/widgets/contact/contact.php:2391
 msgctxt "The name of who sent this email"
 msgid "From"
 msgstr ""
@@ -1519,7 +1519,7 @@ msgstr ""
 msgid "Icon image size"
 msgstr ""
 
-#: tmp/widgets/features/features.php:209, tmp/widgets/image/image.php:109
+#: tmp/widgets/features/features.php:209, tmp/widgets/image/image.php:133
 msgid "Title text"
 msgstr ""
 
@@ -1575,7 +1575,7 @@ msgstr ""
 msgid "Open more URL in a new window"
 msgstr ""
 
-#: tmp/widgets/features/features.php:593, tmp/widgets/hero/hero.php:847
+#: tmp/widgets/features/features.php:593, tmp/widgets/hero/hero.php:849
 msgid "Responsive Breakpoint"
 msgstr ""
 
@@ -2191,7 +2191,7 @@ msgstr ""
 msgid "Link Hover Color"
 msgstr ""
 
-#: tmp/widgets/hero/hero.php:851
+#: tmp/widgets/hero/hero.php:853
 msgid "This setting controls when the Hero widget will switch to the responsive height for slides. This breakpoint will only be used if a responsive height is set in the hero settings. The default value is 780px"
 msgstr ""
 
@@ -2223,7 +2223,7 @@ msgstr ""
 msgid "URL"
 msgstr ""
 
-#: tmp/widgets/image-grid/image-grid.php:76, tmp/widgets/image/image.php:161, tmp/widgets/slider/slider.php:89
+#: tmp/widgets/image-grid/image-grid.php:76, tmp/widgets/image/image.php:185, tmp/widgets/slider/slider.php:89
 msgid "Open in new window"
 msgstr ""
 
@@ -2247,7 +2247,7 @@ msgstr ""
 msgid "Amount of spacing between images."
 msgstr ""
 
-#: tmp/widgets/image-grid/image-grid.php:152, tmp/widgets/image/image.php:375
+#: tmp/widgets/image-grid/image-grid.php:152, tmp/widgets/image/image.php:401
 msgid "Add a Lightbox to your images with %sSiteOrigin Premium%s"
 msgstr ""
 
@@ -2267,27 +2267,31 @@ msgstr ""
 msgid "Image alignment"
 msgstr ""
 
-#: tmp/widgets/image/image.php:119
+#: tmp/widgets/image/image.php:109
+msgid "Title alignment"
+msgstr ""
+
+#: tmp/widgets/image/image.php:143
 msgid "Title position"
 msgstr ""
 
-#: tmp/widgets/image/image.php:141
+#: tmp/widgets/image/image.php:165
 msgid "Alt text"
 msgstr ""
 
-#: tmp/widgets/image/image.php:173
+#: tmp/widgets/image/image.php:197
 msgid "Bound"
 msgstr ""
 
-#: tmp/widgets/image/image.php:175
+#: tmp/widgets/image/image.php:199
 msgid "Make sure the image doesn't extend beyond its container."
 msgstr ""
 
-#: tmp/widgets/image/image.php:185
+#: tmp/widgets/image/image.php:209
 msgid "Full Width"
 msgstr ""
 
-#: tmp/widgets/image/image.php:187
+#: tmp/widgets/image/image.php:211
 msgid "Resize image to fit its container."
 msgstr ""
 
