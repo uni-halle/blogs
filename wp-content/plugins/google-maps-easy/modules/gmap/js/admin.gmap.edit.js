@@ -570,7 +570,8 @@ function gmpCheckShortcode() {
 		jQuery('#shortcodeCode .gmpMapShortCodeShell').val('['+ gmpMapShortcode+ ' id="' + currentId+ '"]');
 		jQuery('#shortcodeCode .gmpMapPhpShortCodeShell').val('<?php echo do_shortcode(\'['+ gmpMapShortcode+ ' id="'+ currentId+ '"]\')?>');
 		if(GMP_DATA.isPro) {
-			jQuery('#shortcodeCode .gmpMapMarkerFormCodeShell').val('['+ gmpMapShortcode + '_marker_form map_id="'+ currentId+ '"]');
+			jQuery('.gmpMapMarkerFormCodeShell').val('['+ gmpMapShortcode + '_marker_form map_id="'+ currentId+ '"]');
+			jQuery('.gmpPlacesToolbarCodeShell').val('['+ gmpMapShortcode + '_places_toolbar map_id="'+ currentId+ '"]');
 		}
 		gmpResetCopyTextCodeFields('#shortcodeCode');
 		jQuery('#shortcodeCode').slideDown( g_gmpAnimationSpeed );

@@ -19,19 +19,21 @@ class marker_groupsControllerGmp extends controllerGmp {
 	protected function _prepareListForTbl($data) {
 		if (!empty($data)) {
 			$markerGroupsIds = array();
-			$parents = array();
+			$parentsTitlesList = array();
 			foreach($data as $i => $v) {
 				// Save Markers Groups sort order
 				$markerGroupsIds[] = $data[$i]['id'];
+				$parent = (int)$data[$i]['parent'];
 
 				// Marker Group Parent Title
-				if(!empty($data[$i]['parent'])) {
-					if(!isset($parents [$data[$i]['parent']])) {
-						$parentGroup = $this->getModel()->getById($data[$i]['parent']);
-						$parents [$data[$i]['parent']] = $parentGroup['title'];
+				if(!empty($parent)) {
+					if(!isset($parentsTitlesList[$parent])) {
+						if($parentGroup = $this->getModel()->getById($parent)) {
+							$parentsTitlesList[$parent] = !empty($parentGroup['title']) ? $parentGroup['title'] : '';
+						}
 					}
-					$data[$i]['parent'] = $parents [$data[$i]['parent']];
 				}
+				$data[$i]['parent'] = !empty($parentsTitlesList[$parent]) ? $parentsTitlesList[$parent] : '-';
 
 				// Actions
 				$actions = $this->getView()->getListOperations($v);

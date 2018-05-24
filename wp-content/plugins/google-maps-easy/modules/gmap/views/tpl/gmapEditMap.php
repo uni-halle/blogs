@@ -727,7 +727,7 @@
 														<?php _e('Min Search Radius (in meters):', GMP_LANG_CODE)?>
 													</label></br>
 													<?php echo htmlGmp::text('map_opts[custom_controls_slider_min]', array(
-														'value' => $this->editMap && isset($this->map['params']['custom_controls_slider_min']) ? $this->map['params']['custom_controls_slider_min'] : '0',
+														'value' => $this->editMap && isset($this->map['params']['custom_controls_slider_min']) ? $this->map['params']['custom_controls_slider_min'] : '100',
 														'attrs' => 'class="gmpProOpt" style="width: 100%;" id="map_opts_custom_controls_slider_min"'))?>
 												</div>
 												<div style="margin-top: 10px;">
@@ -735,8 +735,16 @@
 														<?php _e('Max Search Radius (in meters):', GMP_LANG_CODE)?>
 													</label></br>
 													<?php echo htmlGmp::text('map_opts[custom_controls_slider_max]', array(
-														'value' => $this->editMap && isset($this->map['params']['custom_controls_slider_max']) ? $this->map['params']['custom_controls_slider_max'] : '1000000',
+														'value' => $this->editMap && isset($this->map['params']['custom_controls_slider_max']) ? $this->map['params']['custom_controls_slider_max'] : '1000',
 														'attrs' => 'class="gmpProOpt" style="width: 100%;" id="map_opts_custom_controls_slider_max"'))?>
+												</div>
+												<div style="margin-top: 10px;">
+													<label for="map_opts_custom_controls_slider_step">
+														<?php _e('Search Step (in meters):', GMP_LANG_CODE)?>
+													</label></br>
+													<?php echo htmlGmp::text('map_opts[custom_controls_slider_step]', array(
+														'value' => $this->editMap && isset($this->map['params']['custom_controls_slider_step']) ? $this->map['params']['custom_controls_slider_step'] : '10',
+														'attrs' => 'class="gmpProOpt" style="width: 100%;" id="map_opts_custom_controls_slider_step"'))?>
 												</div>
 												<div style="margin-top: 10px;">
 													<label for="map_opts_custom_controls_search_country">
@@ -885,6 +893,11 @@
 											))?>
 											<div id="gmpAddMarkersOnFrontendOptions" style="display: none;">
 												<div style="margin-top: 10px;">
+													<?php echo htmlGmp::text('gmpCopyTextCode', array(
+														'value' => '',	// Will be inserted from JS
+														'attrs' => 'class="gmpCopyTextCode gmpMapMarkerFormCodeShell gmpStaticWidth" style="width: 100%; text-align: center;"'));?>
+												</div>
+												<div style="margin-top: 10px;">
 													<?php echo htmlGmp::checkboxHiddenVal('map_opts[frontend_add_markers_logged_in_only]', array(
 														'value' => $this->editMap && isset($this->map['params']['frontend_add_markers_logged_in_only']) ? $this->map['params']['frontend_add_markers_logged_in_only'] : false,
 														'attrs' => 'class="gmpProOpt" id="map_opts_frontend_add_markers_logged_in_only"'
@@ -936,6 +949,59 @@
 															'value' => $this->editMap && isset($this->map['params']['frontend_add_markers_use_time_limits']) ? $this->map['params']['frontend_add_markers_use_time_limits'] : '10',
 															'attrs' => 'style="width: 100%;" id="map_opts_frontend_add_markers_use_time_limits"'))?>
 													</div>
+												</div>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">
+											<label for="map_opts_places_en_toolbar">
+												<?php _e('Use Places Toolbar', GMP_LANG_CODE)?>:
+											</label>
+											<i style="float: right;" class="fa fa-question supsystic-tooltip" title="<?php _e("Activate the toolbar for search Places (restaurants, schools, museums, etc.) on the map. Use the shortcode to display toolbar on wherever you need, but toolbar must be placed on the same page as its map.", GMP_LANG_CODE);
+											echo '<br />';
+											if(!$this->isPro){
+												echo esc_html('<a href="'. $proLink. '" target="_blank"><img src="'. $this->promoModPath. 'img/places/places.png" /></a>');
+											}?>"></i>
+											<?php if(!$this->isPro) { ?>
+												<?php $proLink = frameGmp::_()->getModule('supsystic_promo')->generateMainLink('utm_source=plugin&utm_medium=places_toolbar&utm_campaign=googlemaps'); ?>
+												<br /><span class="gmpProOptMiniLabel"><a target="_blank" href="<?php echo $proLink?>"><?php _e('PRO option', GMP_LANG_CODE)?></a></span>
+											<?php }?>
+										</th>
+										<td>
+											<?php echo htmlGmp::checkboxHiddenVal('map_opts[places][en_toolbar]', array(
+												'value' => $this->editMap && isset($this->map['params']['places']['en_toolbar']) ? $this->map['params']['places']['en_toolbar'] : false,
+												'attrs' => 'class="gmpProOpt" id="map_opts_places_en_toolbar"'
+											))?>
+											<div id="gmpPlacesToolbarOptions" style="display: none;">
+												<div style="margin-top: 10px;">
+													<?php echo htmlGmp::text('gmpCopyTextCode', array(
+														'value' => '',	// Will be inserted from JS
+														'attrs' => 'class="gmpCopyTextCode gmpPlacesToolbarCodeShell gmpStaticWidth" style="width: 100%; text-align: center;"'));?>
+												</div>
+												<div style="margin-top: 10px;">
+													<label for="map_opts_places_slider_min">
+														<?php _e('Min Search Radius (in meters):', GMP_LANG_CODE)?>
+													</label></br>
+													<?php echo htmlGmp::text('map_opts[places][slider_min]', array(
+														'value' => $this->editMap && isset($this->map['params']['places']['slider_min']) ? $this->map['params']['places']['slider_min'] : '100',
+														'attrs' => 'class="gmpProOpt" style="width: 100%;" id="map_opts_places_slider_min"'))?>
+												</div>
+												<div style="margin-top: 10px;">
+													<label for="map_opts_places_slider_max">
+														<?php _e('Max Search Radius (in meters):', GMP_LANG_CODE)?>
+													</label></br>
+													<?php echo htmlGmp::text('map_opts[places][slider_max]', array(
+														'value' => $this->editMap && isset($this->map['params']['places']['slider_max']) ? $this->map['params']['places']['slider_max'] : '1000',
+														'attrs' => 'class="gmpProOpt" style="width: 100%;" id="map_opts_places_slider_max"'))?>
+												</div>
+												<div style="margin-top: 10px;">
+													<label for="map_opts_places_slider_step">
+														<?php _e('Search Step (in meters):', GMP_LANG_CODE)?>
+													</label></br>
+													<?php echo htmlGmp::text('map_opts[places][slider_step]', array(
+														'value' => $this->editMap && isset($this->map['params']['places][slider_step']) ? $this->map['params']['places][slider_step'] : '10',
+														'attrs' => 'class="gmpProOpt" style="width: 100%;" id="map_opts_places_slider_step"'))?>
 												</div>
 											</div>
 										</td>
@@ -1163,7 +1229,7 @@
 														'value' => $this->editMap && isset($this->map['params']['directions_miles']) ? $this->map['params']['directions_miles'] : false,
 														'attrs' => 'class="gmpProOpt"'))?>
 													<span>
-														<?php _e('Use miles.', GMP_LANG_CODE)?>
+														<?php _e('Use miles', GMP_LANG_CODE)?>
 													</span>
 												</div>
 											</div>
@@ -1710,15 +1776,6 @@
 									'value' => '',	// Will be inserted from JS
 									'attrs' => 'class="gmpCopyTextCode gmpMapPhpShortCodeShell" style="float: right; text-align: center;"'));?>
 								<br style="clear: both;" />
-								<?php if($isPro) {?>
-									<span style="display: none; width: 100%;">
-										<strong style="margin-top: 7px; font-size: 1.2em; float: left;"><?php _e('Marker Form shortcode', GMP_LANG_CODE)?>:</strong>
-										<?php echo htmlGmp::text('gmpCopyTextCode', array(
-											'value' => '',	// Will be inserted from JS
-											'attrs' => 'class="gmpCopyTextCode gmpMapMarkerFormCodeShell" style="float: right; text-align: center;"'));?>
-										<br style="clear: both;" />
-									</span>
-								<?php }?>
 							</p>
 							<p id="shortcodeNotice" style="display: none;"><?php _e('Shortcode will appear after you save map.', GMP_LANG_CODE)?></p>
 						</div>

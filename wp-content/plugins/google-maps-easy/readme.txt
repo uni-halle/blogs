@@ -4,8 +4,8 @@ Author URI: https://supsystic.com/
 Plugin URI: https://supsystic.com/plugins/google-maps-plugin
 Donate link: https://supsystic.com/plugins/google-maps-plugin
 Tags: google map, map, Google Maps, map markers, location
-Tested up to: 4.9.4
-Stable tag: 1.8.8
+Tested up to: 4.9.5
+Stable tag: 1.9.1
 
 Google Maps with markers, locations and clusterization. Any data on the google map: text, images, videos. Custom google map markers with map builder
 
@@ -211,6 +211,26 @@ Copy and paste the shortcode into your post or page and Google Maps Easy will au
 6. Google Map Stylizations. Make your map unique with our Map Themes!
 
 == Changelog ==
+
+= Google Map Plugin v1.9.1 / 11.04.2018 =
+  * Core code improvements
+  * Minor issues fix
+
+= Google Map Plugin v1.9.0 / 28.03.2018 =
+ * Fix China Google Maps Lib location
+ * Add ability to make additional search requests for Places Toolbar
+ * Add of option "Search Step" for search slider
+ * Update preset options for search slider
+ * Add ability to open info window of selected marker by opening map page by link with hash #gmpInfoWnd=marker_id
+
+= Google Map Plugin v1.8.9 / 20.03.2018 =
+ * Update of shortcode position in admin area for "Add markers on frontend" option
+ * Add Places Toolbar
+ * Update the appearance of search form of custom map controls
+ * Fix of appearance of marker groups filter for custom map controls
+ * Fix of displaying the category name in marker Categories list
+ * Fix of appearance of marker groups filter for custom map controls
+ * Small code fix
 
 = Google Map Plugin v1.8.8 / 01.03.2018 =
  * Add ability to translate markers data via the Translate by Supsystic plugin

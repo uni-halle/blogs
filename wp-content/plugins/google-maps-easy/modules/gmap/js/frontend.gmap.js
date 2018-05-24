@@ -28,7 +28,8 @@ function gmpInitMapOnPage(mapData) {
 	}
 	,	newMap = null
 	,	mapMarkersIds = []
-	,	markerIdToShow = gmpIsMarkerToShow();
+	,	markerIdToShow = gmpIsMarkerToShow()
+	,	infoWndToShow = gmpIsInfoWndToShow();
 
 	if(mapData && mapData.view_html_mbs_id) {
 		// for membership Activity ajax load
@@ -50,10 +51,17 @@ function gmpInitMapOnPage(mapData) {
 		for(var i in mapData.markers) {
 			mapMarkersIds.push(mapData.markers[i].id);
 		}
-		if(toeInArray(markerIdToShow, mapMarkersIds) == -1)
+		if(toeInArray(markerIdToShow, mapMarkersIds) == -1) {
 			markerIdToShow = false;
+		}
+		if(toeInArray(infoWndToShow, mapMarkersIds) == -1) {
+			infoWndToShow = false;
+		}
 		for(var j = 0; j < mapData.markers.length; j++) {
 			if(markerIdToShow && mapData.markers[j].id != markerIdToShow) continue;
+			if(infoWndToShow) {
+				mapData.markers[j].params.show_description = mapData.markers[j].id == infoWndToShow ? '1' : '0';
+			}
 			var newMarker = newMap.addMarker( mapData.markers[j] );
 			// We will set this only when marker info window need to be loaded
 			/*newMarker.setTitle( mapData.markers[j].title, true );
@@ -183,6 +191,19 @@ function gmpGetMapImgSrc(map) {
 }
 function gmpIsMarkerToShow() {
 	var markerHash = 'gmpMarker'
+	,	hashParams = toeGetHashParams();
+	if(hashParams) {
+		for(var i in hashParams) {
+			if(!hashParams[i] || typeof(hashParams[i]) !== 'string') continue;
+			var pair = hashParams[i].split('=');
+			if(pair[0] == markerHash)
+				return parseInt(pair[1]);
+		}
+	}
+	return false;
+}
+function gmpIsInfoWndToShow() {
+	var markerHash = 'gmpInfoWnd'
 	,	hashParams = toeGetHashParams();
 	if(hashParams) {
 		for(var i in hashParams) {

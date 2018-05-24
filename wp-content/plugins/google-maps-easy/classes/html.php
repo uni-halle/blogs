@@ -188,7 +188,7 @@ class htmlGmp {
         $out .= '<select multiple="multiple" size="'.$params['size'].'" name="'.$name.'" '.$params['attrs'].'>';
         if(!empty($params['options'])) {
             foreach($params['options'] as $k => $v) {
-                $selected = (in_array($k,(array)$params['value']) ? 'selected="true"' : '');
+                $selected = (isset($params['value']) && in_array($k,(array)$params['value']) ? 'selected="true"' : '');
                 $out .= '<option value="'.$k.'" '.$selected.'>'.$v.'</option>';
             }
         }

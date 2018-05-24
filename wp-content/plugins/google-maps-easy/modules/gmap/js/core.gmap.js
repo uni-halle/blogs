@@ -474,6 +474,18 @@ gmpGoogleMap.prototype.clearMarkers = function() {
 		this._markers = [];
 	}
 };
+gmpGoogleMap.prototype.clearMarkersByParam = function(param) {
+	if(this._markers && this._markers.length) {
+		for(var i = 0; i < this._markers.length; i++) {
+			if(this._markers[i].getMarkerParam(param)) {
+				this._markers[i].setMap( null );
+				this._markers.splice(i, 1);
+				this.clearMarkersByParam(param);
+				break;
+			}
+		}
+	}
+};
 gmpGoogleMap.prototype.clearShapes = function() {
 	if(this._shapes && this._shapes.length) {
 		for(var i = 0; i < this._shapes.length; i++) {

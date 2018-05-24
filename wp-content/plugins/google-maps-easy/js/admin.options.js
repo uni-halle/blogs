@@ -102,7 +102,7 @@ function gmpResetCopyTextCodeFields(selector) {
 		}).focus(function(){
 			this.setSelectionRange(0, this.value.length);
 		});
-		area.find('input.gmpCopyTextCode').each(function(){
+		area.find('input.gmpCopyTextCode:not(.gmpStaticWidth)').each(function(){
 			cloneWidthElement.html( str_replace(jQuery(this).val(), '<', 'P') );
 			if(jQuery(this).hasClass('gmpMapPhpShortCodeShell')) {
 				jQuery(this).width( cloneWidthElement.width() - 20 );	// Make input more compact
