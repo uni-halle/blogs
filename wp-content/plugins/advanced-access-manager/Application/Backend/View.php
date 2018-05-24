@@ -36,6 +36,7 @@ class AAM_Backend_View {
         AAM_Backend_Feature_Main_Menu::register();
         AAM_Backend_Feature_Main_Metabox::register();
         AAM_Backend_Feature_Main_Capability::register();
+        AAM_Backend_Feature_Main_Route::register();
         AAM_Backend_Feature_Main_Post::register();
         AAM_Backend_Feature_Main_Redirect::register();
         AAM_Backend_Feature_Main_LoginRedirect::register();
@@ -76,7 +77,7 @@ class AAM_Backend_View {
      */
     public function renderAccessFrame() {
         ob_start();
-        require_once(dirname(__FILE__) . '/phtml/frame.phtml');
+        require_once(dirname(__FILE__) . '/phtml/metabox/metabox-content.phtml');
         $content = ob_get_contents();
         ob_end_clean();
 
@@ -90,7 +91,7 @@ class AAM_Backend_View {
      */
     public function renderPostMetabox($post) {
         ob_start();
-        require_once(dirname(__FILE__) . '/phtml/post-metabox.phtml');
+        require_once(dirname(__FILE__) . '/phtml/metabox/post-metabox.phtml');
         $content = ob_get_contents();
         ob_end_clean();
 
@@ -104,7 +105,7 @@ class AAM_Backend_View {
      */
     public function renderTermMetabox($term) {
         ob_start();
-        require_once(dirname(__FILE__) . '/phtml/term-metabox.phtml');
+        require_once(dirname(__FILE__) . '/phtml/metabox/term-metabox.phtml');
         $content = ob_get_contents();
         ob_end_clean();
 
@@ -155,15 +156,21 @@ class AAM_Backend_View {
      * @access public
      */
     public function renderContent($type = 'main') {
-        ob_start();
-        if ($type == 'extensions') {
-            AAM_Backend_Feature_Extension_Manager::getInstance()->render();
-        } else {
-            require_once(dirname(__FILE__) . '/phtml/main-panel.phtml');
+        $content = apply_filters('aam-ui-content-filter', null, $type);
+        
+        if (is_null($content)) {
+            ob_start();
+            if ($type == 'extensions') {
+                AAM_Backend_Feature_Extension_Manager::getInstance()->render();
+            } elseif ($type == 'postform') {
+                echo AAM_Backend_Feature_Main_Post::renderAccessForm();
+            } else {
+                require_once(dirname(__FILE__) . '/phtml/main-panel.phtml');
+            }
+            $content = ob_get_contents();
+            ob_end_clean();
         }
-        $content = ob_get_contents();
-        ob_end_clean();
-
+        
         return $content;
     }
     

@@ -1,0 +1,413 @@
+<?php
+
+/**
+ * ======================================================================
+ * LICENSE: This file is subject to the terms and conditions defined in *
+ * file 'license.txt', which is part of this source code package.       *
+ * ======================================================================
+ */
+
+/**
+ * AAM RESTful Posts Resource
+ * 
+ * @package AAM
+ * @author Vasyl Martyniuk <vasyl@vasyltech.com>
+ * @todo Rethink about DRY approach to the post access control
+ */
+class AAM_Api_Rest_Resource_Post {
+    
+    /**
+     * Instance of itself
+     * 
+     * @var AAM_Api_Rest_Resource_Post
+     * 
+     * @access private 
+     */
+    private static $_instance = null;
+    
+    /**
+     * Authorize Post actions
+     * 
+     * @param WP_REST_Request $request
+     * 
+     * @return WP_Error|null
+     * 
+     * @access public
+     */
+    public function authorize($request) {
+        $result = null;
+        
+        if ($request['id']) {
+            $post = AAM::getUser()->getObject('post', $request['id']);
+
+            switch($request->get_method()) {
+                case 'GET':
+                    $result = $this->authorizeRead($post, $request);
+                    break;
+
+                case 'POST':
+                case 'PUT':
+                case 'PATCH':
+                    $result = $this->authorizeUpdate($post);
+                    break;
+
+                case 'DELETE':
+                    $result = $this->authorizeDelete($post);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        
+        return apply_filters('aam-rest-post-authorization', $result, $request);
+    }
+    
+    /**
+     * Check post access
+     * 
+     * Based on the provided post object, check if current user has access to it. 
+     * This method run multiple checks at-once
+     * 
+     * @param AAM_Core_Object_Post $post
+     * @param WP_REST_Request      $request
+     * 
+     * @return void
+     * 
+     * @access protected
+     */
+    protected function authorizeRead(AAM_Core_Object_Post $post, $request) {
+        $result = null;
+        
+        //TODO: remove pipeline filter for all methods
+        $steps = apply_filters('aam-post-read-auth-pipeline-filter', array(
+            // Step #1. Check if access expired to the post
+            array($this, 'checkExpiration'),
+            // Step #2. Check if user has access to read the post
+            array($this, 'checkReadAccess'),
+            // Step #3. Check if counter exceeded max allowed views
+            array($this, 'checkCounter'),
+            // Step #4. Check if redirect is defined for the post
+            array($this, 'checkRedirect'),
+            // Step #5. Check if post is password protected
+            array($this, 'checkPassword')
+        ));
+        
+        if (is_array($steps)) {
+            foreach($steps as $callback) {
+                $result = call_user_func_array($callback, array($post, $request));
+                
+                if (is_wp_error($result)) { break; }
+            }
+        } else {
+            $result = new WP_Error(
+                'application_error', 
+                "aam-post-read-auth-steps-filter was not utilized properly"
+            );
+        }
+        
+        return $result;
+    }
+    
+    /**
+     * 
+     * @param AAM_Core_Object_Post $post
+     * @return type
+     */
+    protected function authorizeUpdate(AAM_Core_Object_Post $post) {
+        $result = null;
+        
+        $steps = apply_filters('aam-post-update-auth-pipeline-filter', array(
+            // Step #1. Check if edit action is alloed
+            array($this, 'checkUpdate'),
+        ));
+        
+        if (is_array($steps)) {
+            foreach($steps as $callback) {
+                $result = call_user_func_array($callback, array($post));
+                
+                if (is_wp_error($result)) { break; }
+            }
+        } else {
+            $result = new WP_Error(
+                'application_error', 
+                "aam-post-update-auth-steps-filter was not utilized properly"
+            );
+        }
+        
+        return $result;
+    }
+    
+    /**
+     * 
+     * @param AAM_Core_Object_Post $post
+     * @return type
+     */
+    protected function authorizeDelete(AAM_Core_Object_Post $post) {
+        $result = null;
+        
+        $steps = apply_filters('aam-post-delete-auth-steps-filter', array(
+            // Step #1. Check if edit action is alloed
+            array($this, 'checkDelete'),
+        ));
+        
+        if (is_array($steps)) {
+            foreach($steps as $callback) {
+                $result = call_user_func_array($callback, array($post));
+                
+                if (is_wp_error($result)) { break; }
+            }
+        } else {
+            $result = new WP_Error(
+                'application_error', 
+                "aam-post-delete-auth-steps-filter was not utilized properly"
+            );
+        }
+        
+        return $result;
+    }
+    
+    /**
+     * Check ACCESS_EXPIRATION option
+     * 
+     * If access is expired, override the access settings based on the
+     * post.access.expired ConfigPress settings (default frontend.read)
+     * 
+     * @param AAM_Core_Object_Post $post
+     * 
+     * @return void
+     * 
+     * @access protected
+     */
+    protected function checkExpiration($post) {
+        $expire = $post->has('api.expire');
+
+        if ($expire) {
+            $date = strtotime($post->get('api.expire_datetime'));
+            if ($date <= time()) {
+                $actions = AAM_Core_Config::get('post.access.expired', 'api.read');
+
+                foreach(array_map('trim', explode(',', $actions)) as $action) {
+                    $post->set($action, 1);
+                }
+            }
+        }
+    }
+    
+    /**
+     * Check READ & READ_OTHERS options
+     * 
+     * @param AAM_Core_Object_Post $post
+     * 
+     * @return void
+     * 
+     * @access protected
+     */
+    protected function checkReadAccess(AAM_Core_Object_Post $post) {
+        $result = null;
+        
+        $read   = $post->has('api.read');
+        $others = $post->has('api.read_others');
+        
+        if ($read || ($others && ($post->post_author != get_current_user_id()))) {
+            $result = new WP_Error(
+                'rest_cannot_read', 
+                "User is unauthorized to read the post. Access denied.", 
+                array(
+                    'action' => 'api.read',
+                    'status' => 401
+                )
+            );
+        }
+        
+        return $result;
+    }
+    
+    /**
+     * Check ACCESS_COUNTER option
+     * 
+     * @param AAM_Core_Object_Post $post
+     * 
+     * @return void
+     * 
+     * @access protected
+     */
+    protected function checkCounter(AAM_Core_Object_Post $post) {
+        $result = null;
+        $user   = get_current_user_id();
+        
+        //check counter only for authenticated users and if ACCESS COUNTER is set
+        if ($user && $post->has('api.access_counter')) {
+            $option  = 'aam-post-api-' . $post->ID . '-access-counter';
+            $counter = intval(get_user_meta($user, $option, true));
+            
+            if ($counter >= $post->get('api.access_counter_limit')) {
+                $result = new WP_Error(
+                    'rest_cannot_read', 
+                    "User exceeded allowed read number. Access denied.", 
+                    array(
+                        'action' => 'api.access_counter',
+                        'status' => 401
+                    )
+                );
+            } else {
+                update_user_meta($user, $option, ++$counter);
+            }
+        }
+        
+        return $result;
+    }
+    
+    /**
+     * Check REDIRECT option
+     * 
+     * @param AAM_Core_Object_Post $post
+     * 
+     * @return void
+     * 
+     * @access protected
+     */
+    protected function checkRedirect(AAM_Core_Object_Post $post) {
+        $result = null;
+        
+        if ($post->has('api.redirect')) {
+            $result = new WP_Error(
+                'rest_cannot_read', 
+                "Direct access is not allowed. Follow the redirect link.", 
+                array(
+                    'action'   => 'api.redirect',
+                    'redirect' => $post->get('api.location'),
+                    'status'   => 307
+                )
+            );
+        }
+        
+        return $result;
+    }
+    
+    /**
+     * Check PASSWORD PROTECTED option
+     * 
+     * @param AAM_Core_Object_Post $post
+     * @param WP_REST_Request      $request
+     * 
+     * @return null|WP_Error
+     * 
+     * @access public
+     */
+    public function checkPassword(AAM_Core_Object_Post $post, $request) {
+        $result = null;
+        
+        if ($post->has('api.protected')) {
+            $pass = $post->get('api.password');
+            
+            // initialize hasher
+            require_once( ABSPATH . 'wp-includes/class-phpass.php' );
+            $hasher = new PasswordHash(8, true);
+
+            if ($pass != $request['password'] 
+                    && !$hasher->CheckPassword($pass, $request['password'])) {
+                $result = new WP_Error(
+                    'rest_cannot_read', 
+                    "The content is password protected. Provide valid password to read.", 
+                    array(
+                        'action'   => 'api.protected',
+                        'status'   => 401
+                    )
+                );
+            }
+            
+            // Very important! Unset password. Otherwise it will fall back to the
+            // default password verification and this will cause invalid password
+            // response
+            $request['password'] = null;
+        }
+        
+        return $result;
+    }
+    
+    /**
+     * Check EDIT & EDIT_BY_OTHERS options
+     * 
+     * @param AAM_Core_Object_Post $post
+     * 
+     * @return void
+     * 
+     * @access protected
+     */
+    protected function checkUpdate(AAM_Core_Object_Post $post) {
+        $result = null;
+        
+        $edit   = $post->has('api.edit');
+        $others = $post->has('api.edit_others');
+        
+        if ($edit || ($others && ($post->post_author != get_current_user_id()))) {
+            $result = new WP_Error(
+                'rest_cannot_update', 
+                "User is unauthorized to update the post. Access denied.", 
+                array(
+                    'action' => 'api.edit',
+                    'status' => 401
+                )
+            );
+        }
+        
+        return $result;
+    }
+    
+    /**
+     * Check DELETE & DELETE_BY_OTHERS options
+     * 
+     * @param AAM_Core_Object_Post $post
+     * 
+     * @return void
+     * 
+     * @access protected
+     */
+    protected function checkDelete(AAM_Core_Object_Post $post) {
+        $result = null;
+        
+        $delete = $post->has('api.delete');
+        $others = $post->has('api.delete_others');
+        
+        if ($delete || ($others && ($post->post_author != get_current_user_id()))) {
+            $result = new WP_Error(
+                'rest_cannot_delete', 
+                "User is unauthorized to delete the post. Access denied.", 
+                array(
+                    'action' => 'api.delete',
+                    'status' => 401
+                )
+            );
+        }
+        
+        return $result;
+    }
+    
+    /**
+     * Alias for the bootstrap
+     * 
+     * @return AAM_Api_Rest_Resource_Post
+     * 
+     * @access public
+     * @static
+     */
+    public static function getInstance() {
+        return self::bootstrap();
+    }
+    
+    /**
+     * Bootstrap authorization layer
+     * 
+     * @return AAM_Api_Rest_Resource_Post
+     * 
+     * @access public
+     */
+    public static function bootstrap() {
+        if (is_null(self::$_instance)) {
+            self::$_instance = new self;
+        }
+        
+        return self::$_instance;
+    }
+}

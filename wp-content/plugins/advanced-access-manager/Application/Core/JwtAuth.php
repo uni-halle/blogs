@@ -37,7 +37,7 @@ class AAM_Core_JwtAuth {
         add_action('rest_api_init', array($this, 'registerAPI'));
 
         //register authentication hook
-        add_filter('determine_current_user', array($this, 'determineCurrentUser'), 1);
+        add_filter('determine_current_user', array($this, 'determineCurrentUser'), 999);
 
         //load firebase vendor
         require AAM_BASEDIR . '/vendor/autoload.php';
@@ -55,7 +55,7 @@ class AAM_Core_JwtAuth {
         
         if (empty($secret)) {
             AAM_Core_Console::add(
-                __('JWT Authentication is enabled but secret key is not defined', AAM_KEY)
+                __('JWT Authentication is enabled but authentication.jwt.secret is not defined', AAM_KEY)
             );
         }
     }
@@ -109,20 +109,28 @@ class AAM_Core_JwtAuth {
             $key    = AAM_Core_Config::get('authentication.jwt.secret');
             $expire = AAM_Core_Config::get('authentication.jwt.expires', 86400);
             
-            $claims = array(
-                "iat"    => time(),
-                'exp'    => time() + $expire, // by default expires in 1 day
-                'userId' => $result['user']->ID,
-            );
-            
-            $response->data = array(
-                'token' => Firebase\JWT\JWT::encode(
-                        apply_filters('aam-jwt-claims-filter', $claims), $key
-                ),
-                'token_expires' => $claims['exp'],
-                'user'  => $result['user']
-            );
-            $response->status = 200;
+            if ($key) {
+                $claims = array(
+                    "iat"    => time(),
+                    'exp'    => time() + $expire, // by default expires in 1 day
+                    'userId' => $result['user']->ID,
+                );
+
+                $response->data = array(
+                    'token' => Firebase\JWT\JWT::encode(
+                            apply_filters('aam-jwt-claims-filter', $claims), $key
+                    ),
+                    'token_expires' => $claims['exp'],
+                    'user'  => $result['user']
+                );
+                $response->status = 200;
+            } else {
+                $response->status = 400;
+                $response->data = new WP_Error(
+                    'jwt_empty_secret_key',
+                    __('JWT Authentication is enabled but secret key is not defined', AAM_KEY)
+                );
+            }
         } else {
             $response->data = $result['error'];
             $response->status = 403;
@@ -151,7 +159,7 @@ class AAM_Core_JwtAuth {
                 $claims = Firebase\JWT\JWT::decode(
                         $token, $key, array_keys(Firebase\JWT\JWT::$supported_algs)
                 );
-
+                
                 if (isset($claims->userId)) {
                     $result = $claims->userId;
                 }

@@ -3,7 +3,7 @@
 /**
   Plugin Name: Advanced Access Manager
   Description: All you need to manage access to your WordPress website
-  Version: 5.2.1
+  Version: 5.3
   Author: Vasyl Martyniuk <vasyl@vasyltech.com>
   Author URI: https://vasyltech.com
 
@@ -108,6 +108,9 @@ class AAM {
             //load AAM core config
             AAM_Core_Config::bootstrap();
             
+            //load WP Core hooks
+            AAM_Shared_Manager::bootstrap();
+            
             //login control
             if (AAM_Core_Config::get('secure-login', true)) {
                 AAM_Core_Login::bootstrap();
@@ -135,9 +138,6 @@ class AAM {
             );
             self::$_instance = new self;
             
-            //load AAM cache
-            AAM_Core_Cache::bootstrap();
-            
             //load all installed extension
             AAM_Extension_Repository::getInstance()->load();
             
@@ -145,9 +145,9 @@ class AAM {
             AAM_Core_Media::bootstrap();
             
             //bootstrap the correct interface
-            if (is_admin()) {
+            if (AAM_Core_Api_Area::isBackend()) {
                 AAM_Backend_Manager::bootstrap();
-            } else {
+            } elseif (AAM_Core_Api_Area::isFrontend()) {
                 AAM_Frontend_Manager::bootstrap();
             }
         }
@@ -188,8 +188,8 @@ class AAM {
         //check PHP Version
         if (version_compare(PHP_VERSION, '5.3.0') == -1) {
             exit(__('PHP 5.3.0 or higher is required.', AAM_KEY));
-        } elseif (version_compare($wp_version, '3.8') == -1) {
-            exit(__('WP 3.8 or higher is required.', AAM_KEY));
+        } elseif (version_compare($wp_version, '4.0') == -1) {
+            exit(__('WP 4.0 or higher is required.', AAM_KEY));
         }
     }
 
@@ -237,6 +237,9 @@ if (defined('ABSPATH')) {
     //the highest priority (higher the core)
     //this is important to have to catch events like register core post types
     add_action('init', 'AAM::getInstance', -1);
+    
+    //register API manager is applicable
+    add_action('parse_request', 'AAM_Api_Manager::bootstrap', 1);
     
     //schedule cron
     if (!wp_next_scheduled('aam-cron')) {

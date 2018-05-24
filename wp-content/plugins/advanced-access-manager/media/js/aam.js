@@ -185,7 +185,14 @@
                                                 'class', 'aam-row-action icon-cog text-muted'
                                             );
                                         } else {
-                                            $.aam.loadAccessForm($('#load-post-object-type').val(), $('#load-post-object').val(), $(this));
+                                            aam.fetchPartial('postform', function(content) {
+                                                $('#metabox-post-access-form').html(content);
+                                                $.aam.loadAccessForm(
+                                                    $('#load-post-object-type').val(), 
+                                                    $('#load-post-object').val(), 
+                                                    $(this)
+                                                );
+                                            });
                                         }
                                     }
                                 }).attr({
@@ -485,6 +492,41 @@
 
                 return (subject.type === 'user' && parseInt(subject.id) === id);
             }
+            
+            /**
+             * 
+             * @param {type} selected
+             * @returns {undefined}
+             */
+            function loadRoleList(selected) {
+                console.log(selected);
+                $.ajax(aamLocal.ajaxurl, {
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        action: 'aam',
+                        sub_action: 'Subject_Role.getList',
+                        _ajax_nonce: aamLocal.nonce
+                    },
+                    beforeSend: function () {
+                        $('#expiration-change-role').html(
+                            '<option value="">' + aam.__('Loading...') + '</option>'
+                        );
+                    },
+                    success: function (response) {
+                        $('#expiration-change-role').html(
+                            '<option value="">' + aam.__('Select Role') + '</option>'
+                        );
+                        for (var i in response) {
+                            $('#expiration-change-role').append(
+                                '<option value="' + i + '">' + response[i].name + '</option>'
+                            );
+                        }
+                        
+                        $('#expiration-change-role').val(selected);
+                    }
+                });
+            }
 
             /**
              * 
@@ -645,7 +687,14 @@
                                             aam.fetchContent('main');
                                             $('i.icon-spin4', container).attr('class', 'aam-row-action icon-cog text-muted');
                                         } else {
-                                            $.aam.loadAccessForm($('#load-post-object-type').val(), $('#load-post-object').val(), $(this));
+                                            aam.fetchPartial('postform', function(content) {
+                                                $('#metabox-post-access-form').html(content);
+                                                $.aam.loadAccessForm(
+                                                    $('#load-post-object-type').val(), 
+                                                    $('#load-post-object').val(), 
+                                                    $(this)
+                                                );
+                                            });
                                         }
                                     }
                                 }).attr({
@@ -667,9 +716,18 @@
                                             var settings = data[5].split('|');
                                             $('#user-expires').val(settings[0]);
                                             $('#action-after-expiration').val(settings[1]);
+                                            
+                                            if (settings[1] === 'change-role') {
+                                                $('#expiration-change-role-holder').removeClass('hidden');
+                                                loadRoleList(settings[2]);
+                                            } else {
+                                                loadRoleList();
+                                                $('#expiration-change-role-holder').addClass('hidden');
+                                            }
                                         } else {
                                             $('#reset-user-expiration-btn').addClass('hidden');
                                             $('#user-expires, #action-after-expiration').val('');
+                                            loadRoleList();
                                         }
                                         
                                         $('#edit-user-expiration-modal').modal('show');
@@ -747,6 +805,14 @@
                 }
             });
             
+            $('#action-after-expiration').bind('change', function() {
+               if ($(this).val() === 'change-role') {
+                   $('#expiration-change-role-holder').removeClass('hidden');
+               } else {
+                   $('#expiration-change-role-holder').addClass('hidden');
+               }
+            });
+            
             //edit role button
             $('#edit-user-expiration-btn').bind('click', function () {
                 var _this = this;
@@ -760,7 +826,8 @@
                         _ajax_nonce: aamLocal.nonce,
                         user: $(_this).attr('data-user-id'),
                         expires: $('#user-expires').val(),
-                        after: $('#action-after-expiration').val()
+                        after: $('#action-after-expiration').val(),
+                        role: $('#expiration-change-role').val()
                     },
                     beforeSend: function () {
                         $(_this).text(aam.__('Saving...')).attr('disabled', true);
@@ -858,8 +925,16 @@
                         aam.fetchContent('main');
                         $('i.icon-spin4', $(this)).attr('class', 'icon-cog');
                     } else {
-                        $.aam.loadAccessForm($('#load-post-object-type').val(), $('#load-post-object').val(), null, function () {
-                            $('i.icon-spin4', $(_this)).attr('class', 'icon-cog');
+                        aam.fetchPartial('postform', function(content) {
+                            $('#metabox-post-access-form').html(content);
+                            $.aam.loadAccessForm(
+                                $('#load-post-object-type').val(), 
+                                $('#load-post-object').val(), 
+                                null, 
+                                function () {
+                                    $('i.icon-spin4', $(_this)).attr('class', 'icon-cog');
+                                }
+                            );
                         });
                     }
                     //hide post & pages access control groups that belong to backend
@@ -888,8 +963,16 @@
                         aam.fetchContent('main');
                         $('i.icon-spin4', $(this)).attr('class', 'icon-cog');
                     } else {
-                        $.aam.loadAccessForm($('#load-post-object-type').val(), $('#load-post-object').val(), null, function () {
-                            $('i.icon-spin4', $(_this)).attr('class', 'icon-cog');
+                        aam.fetchPartial('postform', function(content) {
+                            $('#metabox-post-access-form').html(content);
+                            $.aam.loadAccessForm(
+                                $('#load-post-object-type').val(), 
+                                $('#load-post-object').val(), 
+                                null, 
+                                function () {
+                                    $('i.icon-spin4', $(_this)).attr('class', 'icon-cog');
+                                }
+                            );
                         });
                     }
                 });
@@ -1011,7 +1094,7 @@
 
                     //reset button
                     $('#menu-reset').bind('click', function () {
-                        aam.reset('menu');
+                        aam.reset('menu', $(this));
                     });
                 }
             }
@@ -1132,7 +1215,7 @@
 
                     //reset button
                     $('#metabox-reset').bind('click', function () {
-                        aam.reset('metabox');
+                        aam.reset('metabox', $(this));
                     });
 
                     $('input[type="checkbox"]', '#metabox-list').each(function () {
@@ -1444,7 +1527,7 @@
 
                     //reset button
                     $('#capability-reset').bind('click', function () {
-                        aam.reset('capability');
+                        aam.reset('capability', $(this));
                     });
                 }
             }
@@ -1551,7 +1634,7 @@
 
                 //show overlay if present
                 $('.aam-overlay', container).show();
-
+                
                 //reset data preview elements
                 $('.option-preview', container).text('');
 
@@ -1848,11 +1931,21 @@
                                 subject: aam.getSubject().type,
                                 subjectId: aam.getSubject().id
                             },
+                            beforeSend: function() {
+                                var label = $('#post-reset').text();
+                                $('#post-reset').attr('data-original-label', label);
+                                $('#post-reset').text(aam.__('Resetting...'));
+                            },
                             success: function (response) {
                                 if (response.status === 'success') {
                                     $('#post-overwritten').addClass('hidden');
                                     $.aam.loadAccessForm(type, id);
                                 }
+                            },
+                            complete: function() {
+                                $('#post-reset').text(
+                                    $('#post-reset').attr('data-original-label')
+                                );
                             }
                         });
                     });
@@ -1986,7 +2079,7 @@
                     });
 
                     $('#redirect-reset').bind('click', function () {
-                        aam.reset('redirect');
+                        aam.reset('redirect', $(this));
                     });
                 }
             }
@@ -2059,7 +2152,7 @@
                     });
                     
                     $('#login-redirect-reset').bind('click', function () {
-                        aam.reset('loginRedirect');
+                        aam.reset('loginRedirect', $(this));
                     });
                 }
             }
@@ -2126,7 +2219,7 @@
                     });
                     
                     $('#logout-redirect-reset').bind('click', function () {
-                        aam.reset('logoutRedirect');
+                        aam.reset('logoutRedirect', $(this));
                     });
                 }
             }
@@ -2195,6 +2288,155 @@
                             //save redirect type
                             save($(this).attr('name'), $(this).val());
                         });
+                    });
+                }
+            }
+
+            aam.addHook('init', initialize);
+
+        })(jQuery);
+        
+        /**
+         * API Routes Interface
+         * 
+         * @param {jQuery} $
+         * 
+         * @returns {void}
+         */
+        (function ($) {
+
+            /**
+             * 
+             * @param {type} type
+             * @param {type} route
+             * @param {type} method
+             * @param {type} value
+             * @param {type} btn
+             * @returns {undefined}
+             */
+            function save(type, route, method, value, btn) {
+                //show indicator
+                $(btn).attr('class', 'aam-row-action icon-spin4 animate-spin');
+                
+                $.ajax(aamLocal.ajaxurl, {
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        action: 'aam',
+                        sub_action: 'Main_Route.save',
+                        _ajax_nonce: aamLocal.nonce,
+                        subject: aam.getSubject().type,
+                        subjectId: aam.getSubject().id,
+                        type: type,
+                        route: route,
+                        method: method,
+                        value: value
+                    },
+                    success: function (response) {
+                        if (response.status === 'failure') {
+                            aam.notification('danger', response.error);
+                            updateBtn(btn, value ? 0 : 1);
+                        } else {
+                            $('#aam-route-overwrite').removeClass('hidden');
+                            updateBtn(btn, value);
+                        }
+                    },
+                    error: function () {
+                        updateBtn(btn, value ? 0 : 1);
+                        aam.notification('danger', aam.__('Application error'));
+                    }
+                });
+            }
+            
+            /**
+             * 
+             * @param {type} btn
+             * @param {type} value
+             * @returns {undefined}
+             */
+            function updateBtn(btn, value) {
+                if (value) {
+                    $(btn).attr('class', 'aam-row-action text-danger icon-check');
+                } else {
+                    $(btn).attr('class', 'aam-row-action text-muted icon-check-empty');
+                }
+            }
+            
+            /**
+             * 
+             * @returns {undefined}
+             */
+            function initialize() {
+                if ($('#route-content').length) {
+                    //initialize the role list table
+                    $('#route-list').DataTable({
+                        autoWidth: false,
+                        ordering: false,
+                        pagingType: 'simple',
+                        serverSide: false,
+                        ajax: {
+                            url: aamLocal.ajaxurl,
+                            type: 'POST',
+                            data: {
+                                action: 'aam',
+                                sub_action: 'Main_Route.getTable',
+                                _ajax_nonce: aamLocal.nonce,
+                                subject: aam.getSubject().type,
+                                subjectId: aam.getSubject().id
+                            }
+                        },
+                        columnDefs: [
+                            {visible: false, targets: [0]},
+                            {className: 'text-center', targets: [1]}
+                        ],
+                        language: {
+                            search: '_INPUT_',
+                            searchPlaceholder: aam.__('Search Route'),
+                            info: aam.__('_TOTAL_ route(s)'),
+                            infoFiltered: '',
+                            infoEmpty: aam.__('Nothing to show'),
+                            lengthMenu: '_MENU_'
+                        },
+                        createdRow: function (row, data) {
+                            // decorate the method
+                            var method = $('<span/>', {
+                                'class': 'aam-api-method ' + data[1].toLowerCase()
+                            }).text(data[1]);
+                            
+                            $('td:eq(0)', row).html(method);
+                            
+                            var actions = data[3].split(',');
+
+                            var container = $('<div/>', {'class': 'aam-row-actions'});
+                            $.each(actions, function (i, action) {
+                                switch (action) {
+                                    case 'unchecked':
+                                        $(container).append($('<i/>', {
+                                            'class': 'aam-row-action text-muted icon-check-empty'
+                                        }).bind('click', function () {
+                                            save(data[0], data[2], data[1], 1, this);
+                                        }));
+                                        break;
+
+                                    case 'checked':
+                                        $(container).append($('<i/>', {
+                                            'class': 'aam-row-action text-danger icon-check'
+                                        }).bind('click', function () {
+                                            save(data[0], data[2], data[1], 0, this);
+                                        }));
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                            });
+                            $('td:eq(2)', row).html(container);
+                        }
+                    });
+
+                    //reset button
+                    $('#route-reset').bind('click', function () {
+                        aam.reset('route', $(this));
                     });
                 }
             }
@@ -2478,7 +2720,10 @@
                             },
                             success: function(response) {
                                 if (response.status === 'success') {
-                                    aam.notification('success', aam.__('All settings were cleared successfully'));
+                                    aam.notification(
+                                        'success', 
+                                        aam.__('All settings has been cleared successfully')
+                                    );
                                 } else {
                                     aam.notification('danger', response.reason);
                                 }
@@ -2509,7 +2754,10 @@
                             },
                             success: function(response) {
                                 if (response.status === 'success') {
-                                    aam.notification('success', aam.__('The cache was cleared successfully'));
+                                    aam.notification(
+                                        'success', 
+                                        aam.__('The cache has been cleared successfully')
+                                    );
                                 } else {
                                     aam.notification('danger', response.reason);
                                 }
@@ -2705,7 +2953,7 @@
      * 
      * @returns {undefined}
      */
-    AAM.prototype.fetchContent = function (uiType) {
+    AAM.prototype.fetchContent = function (view, success) {
         var _this = this;
         
         //referred object ID like post, page or any custom post type
@@ -2718,7 +2966,7 @@
             data: {
                 action: 'aamc',
                 _ajax_nonce: aamLocal.nonce,
-                uiType: uiType,
+                uiType: view,
                 subject: this.getSubject().type,
                 subjectId: this.getSubject().id,
                 oid: object ? object[1] : null,
@@ -2752,13 +3000,47 @@
                 
                 $('.aam-sidebar .metabox-holder').hide();
                 $('.aam-sidebar .shared-metabox').show();
-                $('.aam-sidebar .' + uiType + '-metabox').show();
+                $('.aam-sidebar .' + view + '-metabox').show();
                 
-                if (uiType !== 'main') { //hide subject and user/role manager
+                if (view !== 'main') { //hide subject and user/role manager
                     $('#aam-subject-banner').hide();
                 } else {
                     $('#aam-subject-banner').show();
                 }
+                
+                if (typeof success === 'function') {
+                   // success.call();
+                }
+            }
+        });
+    };
+    
+    
+    /**
+     * 
+     * @returns {undefined}
+     */
+    AAM.prototype.fetchPartial = function (view, success) {
+        var _this = this;
+        
+        //referred object ID like post, page or any custom post type
+        var object   = window.location.search.match(/&oid\=([^&]*)/);
+        var type     = window.location.search.match(/&otype\=([^&]*)/);
+
+        $.ajax(aamLocal.url.site, {
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                action: 'aamc',
+                _ajax_nonce: aamLocal.nonce,
+                uiType: view,
+                subject: this.getSubject().type,
+                subjectId: this.getSubject().id,
+                oid: object ? object[1] : null,
+                otype: type ? type[1] : null
+            },
+            success: function (response) {
+                success.call(_this, response);
             }
         });
     };
@@ -2997,7 +3279,7 @@
      * @param {type} object
      * @returns {undefined}
      */
-    AAM.prototype.reset = function(object) {
+    AAM.prototype.reset = function(object, btn) {
         $.ajax(aamLocal.ajaxurl, {
             type: 'POST',
             data: {
@@ -3008,11 +3290,19 @@
                 subjectId: this.getSubject().id,
                 object: object
             },
+            beforeSend: function() {
+                var label = btn.text();
+                btn.attr('data-original-label', label);
+                btn.text(aam.__('Resetting...'));
+            },
             success: function () {
                 aam.fetchContent('main');
             },
             error: function () {
                 aam.notification('danger', aam.__('Application error'));
+            },
+            complete: function() {
+                btn.text(btn.attr('data-original-label'));
             }
         });
     };
