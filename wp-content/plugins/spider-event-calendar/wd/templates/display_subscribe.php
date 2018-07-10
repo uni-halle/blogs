@@ -8,7 +8,10 @@
 			<div class="texts">
 				<p><?php _e( "Hi there", $wd_options->prefix ); ?>,</p>
 				<p>
-					<?php echo sprintf( __( "Allow %s to collect some usage data. This will allow  you to get more out of your plugin experience - get awesome customer support, receive exclusive deals and discounts on premium products and more. You can choose to skip this step, %s will still work just fine.", $wd_options->prefix ), '<strong>Web-Dorado</strong>', $wd_options->plugin_title ); ?>
+                  <?php
+                    $pp_text = "<a target='_blank' href='https://web-dorado.com/web-dorado-privacy-statement.html'>" . __("Privacy Policy", $wd_options->prefix) . "</a>";
+                    echo sprintf(__("Allow %s to collect some usage data, to be able to provide you more out of your plugin experience - awesome customer support and more. Check how we handle your personal data in our %s. You can always customize your preferences from the emails your receive from us. You can choose to skip this step, %s will still work just fine.", $wd_options->prefix), '<strong>Web-Dorado</strong>', $pp_text, $wd_options->plugin_title);
+                  ?>
 				</p>
 			</div>
 			<div class="btns">

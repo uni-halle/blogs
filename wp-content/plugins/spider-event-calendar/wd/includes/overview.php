@@ -66,6 +66,9 @@
                     $start_using_url = menu_page_url($this->config->custom_post, false);
                 }
             }
+            if(!empty($this->config->start_using_url)){
+              $start_using_url = $this->config->start_using_url;
+            }
             require_once( $wd_options->wd_dir_templates . "/display_overview.php" );
         }
         public function wd_overview_welcome(){

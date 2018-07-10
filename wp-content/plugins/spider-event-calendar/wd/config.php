@@ -36,6 +36,7 @@
         public $custom_post = null;
         public $menu_capability = null;
         public $menu_position = null;
+        public $start_using_url = null;
 
         public function set_options( $options ){
 
@@ -108,7 +109,10 @@
             } 
             if(isset( $options["menu_position"] )) {
                 $this->menu_position =  $options["menu_position"];
-            }                           
+            }
+            if(isset( $options["start_using_url"] )) {
+                $this->start_using_url =  $options["start_using_url"];
+            }
 
             // directories
             $this->wd_dir = dirname( $this->plugin_main_file ) . '/wd'; 

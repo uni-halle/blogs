@@ -63,11 +63,19 @@
 	margin: 14px 0px 5px;
 }
 .wd-popup-active1{
-	height: 523px !important;
+	height: 583px !important;
 }
 
 .wd-popup-active2{
 	height: 426px !important
+}
+
+.wd-popup-active3{
+	height: 479px !important
+}
+
+.wd-popup-active4{
+    height: 340px !important
 }
 .wd-deactivate-popup-opacity{
     width: 100%;
@@ -87,4 +95,17 @@
     bottom: 0;
     margin: auto;
     z-index: 63;
+}
+
+.wd-deactivate-popup-close-btn{
+    background-image: url(img/close.svg);
+    background-repeat: no-repeat;
+    background-size: 16px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    cursor: pointer;
 }

@@ -3,12 +3,15 @@
 Plugin Name: Spider Event Calendar
 Plugin URI: https://web-dorado.com/products/wordpress-calendar.html
 Description: Spider Event Calendar is a highly configurable product which allows you to have multiple organized events. Spider Event Calendar is an extraordinary user friendly extension.
-Version: 1.5.61
+Version: 1.5.62
 Author: WebDorado
 Author URI: https://web-dorado.com/wordpress-plugins-bundle.html
 License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
 */
-$wd_spider_calendar_version = "1.5.61";
+if( ! defined( 'SPCALENDAR_VERSION' ) ) {
+	define( 'SPCALENDAR_VERSION', "1.5.62");
+}
+
 // LANGUAGE localization.
 function sp_calendar_language_load () {
   load_plugin_textdomain('sp_calendar', false, basename(dirname(__FILE__)) . '/languages');
@@ -17,12 +20,11 @@ function sp_calendar_language_load () {
 add_action('init', 'sp_calendar_language_load');
 add_action('init', 'sp_cal_registr_some_scripts');
 function sp_cal_registr_some_scripts () {
-  global $wd_spider_calendar_version;
-  wp_register_script("Canlendar_upcoming", plugins_url("elements/calendar.js", __FILE__), array(), $wd_spider_calendar_version);
-  wp_register_script("calendnar-setup_upcoming", plugins_url("elements/calendar-setup.js", __FILE__), array(), $wd_spider_calendar_version);
-  wp_register_script("calenndar_function_upcoming", plugins_url("elements/calendar_function.js", __FILE__), array(), $wd_spider_calendar_version);
+  wp_register_script("Canlendar_upcoming", plugins_url("elements/calendar.js", __FILE__), array(), SPCALENDAR_VERSION);
+  wp_register_script("calendnar-setup_upcoming", plugins_url("elements/calendar-setup.js", __FILE__), array(), SPCALENDAR_VERSION);
+  wp_register_script("calenndar_function_upcoming", plugins_url("elements/calendar_function.js", __FILE__), array(), SPCALENDAR_VERSION);
   if (isset($_GET['page']) && $_GET['page'] == "Uninstall_sp_calendar") {
-    wp_enqueue_script("sp_calendar-deactivate-popup", plugins_url('wd/assets/js/deactivate_popup.js', __FILE__), array(), $wd_spider_calendar_version);
+    wp_enqueue_script("sp_calendar-deactivate-popup", plugins_url('wd/assets/js/deactivate_popup.js', __FILE__), array(), SPCALENDAR_VERSION);
     $admin_data = wp_get_current_user();
     wp_localize_script('sp_calendar-deactivate-popup', 'sp_calendarWDDeactivateVars', array(
       "prefix" => "sp_calendar",
@@ -515,50 +517,46 @@ function spider_widget_styles_scripts () {
 }
 
 function spider_calendar_themes_admin_styles_scripts () {
-  global $wd_spider_calendar_version;
   wp_enqueue_script("jquery");
-  wp_enqueue_script("standart_themes", plugins_url('elements/theme_reset.js', __FILE__), array(), $wd_spider_calendar_version);
+  wp_enqueue_script("standart_themes", plugins_url('elements/theme_reset.js', __FILE__), array(), SPCALENDAR_VERSION);
   wp_enqueue_script('wp-color-picker');
   wp_enqueue_style('wp-color-picker');
   if (isset($_GET['task'])) {
     if ($_GET['task'] == 'edit_theme' || $_GET['task'] == 'add_theme' || $_GET['task'] == 'Apply') {
-      wp_enqueue_style("parsetheme_css", plugins_url('style_for_cal/style_for_tables_cal.css', __FILE__), array(), $wd_spider_calendar_version);
+      wp_enqueue_style("parsetheme_css", plugins_url('style_for_cal/style_for_tables_cal.css', __FILE__), array(), SPCALENDAR_VERSION);
     }
   }
 
 }
 
 function spider_widget_calendar_themes_admin_styles_scripts () {
-  global $wd_spider_calendar_version;
   wp_enqueue_script("jquery");
-  wp_enqueue_script("standart_themes", plugins_url('elements/theme_reset_widget.js', __FILE__), array(), $wd_spider_calendar_version);
+  wp_enqueue_script("standart_themes", plugins_url('elements/theme_reset_widget.js', __FILE__), array(), SPCALENDAR_VERSION);
   wp_enqueue_script('wp-color-picker');
   wp_enqueue_style('wp-color-picker');
   if (isset($_GET['task'])) {
     if ($_GET['task'] == 'edit_theme' || $_GET['task'] == 'add_theme' || $_GET['task'] == 'Apply') {
-      wp_enqueue_style("parsetheme_css", plugins_url('style_for_cal/style_for_tables_cal.css', __FILE__), array(), $wd_spider_calendar_version);
+      wp_enqueue_style("parsetheme_css", plugins_url('style_for_cal/style_for_tables_cal.css', __FILE__), array(), SPCALENDAR_VERSION);
     }
   }
 }
 
 function spider_calendar_admin_styles_scripts () {
-  global $wd_spider_calendar_version;
-  wp_enqueue_script("Calendar", plugins_url("elements/calendar.js", __FILE__), array(), $wd_spider_calendar_version, false);
-  wp_enqueue_script("calendar-setup", plugins_url("elements/calendar-setup.js", __FILE__), array(), $wd_spider_calendar_version, false);
-  wp_enqueue_script("calendar_function", plugins_url("elements/calendar_function.js", __FILE__), array(), $wd_spider_calendar_version, false);
-  wp_enqueue_style("spcalendar-jos", plugins_url("elements/calendar-jos.css", __FILE__), array(), $wd_spider_calendar_version, false);
+  wp_enqueue_script("Calendar", plugins_url("elements/calendar.js", __FILE__), array(), SPCALENDAR_VERSION, false);
+  wp_enqueue_script("calendar-setup", plugins_url("elements/calendar-setup.js", __FILE__), array(), SPCALENDAR_VERSION, false);
+  wp_enqueue_script("calendar_function", plugins_url("elements/calendar_function.js", __FILE__), array(), SPCALENDAR_VERSION, false);
+  wp_enqueue_style("spcalendar-jos", plugins_url("elements/calendar-jos.css", __FILE__), array(), SPCALENDAR_VERSION, false);
   if (isset($_GET['page']) && $_GET['page'] == "Uninstall_sp_calendar") {
-    wp_enqueue_style("sp_calendar_deactivate-css", plugins_url("wd/assets/css/deactivate_popup.css", __FILE__), array(), $wd_spider_calendar_version, false);
+    wp_enqueue_style("sp_calendar_deactivate-css", plugins_url("wd/assets/css/deactivate_popup.css", __FILE__), array(), SPCALENDAR_VERSION, false);
   }
 }
 
 function spider_calendar_event_category_admin_styles_scripts () {
-  global $wd_spider_calendar_version;
-  wp_enqueue_script("Calendar", plugins_url("elements/calendar.js", __FILE__), array(), $wd_spider_calendar_version, false);
-  wp_enqueue_script("calendar-setup", plugins_url("elements/calendar-setup.js", __FILE__), array(), $wd_spider_calendar_version, false);
+  wp_enqueue_script("Calendar", plugins_url("elements/calendar.js", __FILE__), array(), SPCALENDAR_VERSION, false);
+  wp_enqueue_script("calendar-setup", plugins_url("elements/calendar-setup.js", __FILE__), array(), SPCALENDAR_VERSION, false);
   wp_enqueue_script('wp-color-picker');
   wp_enqueue_style('wp-color-picker');
-  wp_enqueue_style("spcalendar-jos", plugins_url("elements/calendar-jos.css", __FILE__), array(), $wd_spider_calendar_version, false);
+  wp_enqueue_style("spcalendar-jos", plugins_url("elements/calendar-jos.css", __FILE__), array(), SPCALENDAR_VERSION, false);
 }
 
 add_filter('admin_head', 'spide_ShowTinyMCE');
@@ -1283,6 +1281,7 @@ function spider_calendar_export () {
       header("Content-length: " . filesize($tmp_file));
       header("Pragma: no-cache");
       header("Expires: 0");
+	  ob_end_clean();
       readfile($tmp_file);
     }
     foreach ($files as $file) {
@@ -1407,6 +1406,7 @@ function spidercal_add_plugin_meta_links ($meta_fields, $file) {
 }
 
 function spidercal_activate ($networkwide) {
+  update_option('sp_calendar_version',SPCALENDAR_VERSION);
   if (function_exists('is_multisite') && is_multisite()) {
     // Check if it is a network activation - if so, run the activation function for each blog id.
     if ($networkwide) {

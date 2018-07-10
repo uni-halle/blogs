@@ -27,8 +27,24 @@
 									echo '&#13;&#10;&#13;&#10;';
 									foreach( $gd_info as $key => $val ){
 										echo $key . ": " . $val . '&#13;&#10;';
-									}				
-							?></textarea>
+									}
+                                    echo '&#13;&#10;';
+                                    _e("Active Plugins", $wd_options->prefix);
+                                    echo '&#13;&#10;';
+                                    $activepl = get_option('active_plugins');
+                                    $plugins = get_plugins();
+                                    $activated_plugins = array();
+                                    foreach ( $activepl as $p ) {
+                                        if ( isset($plugins[$p]) ) {
+                                            array_push($activated_plugins, $plugins[$p]);
+                                            echo '&#13;&#10;' . $plugins[$p]['Name'];
+                                        }
+                                    }
+                                    echo '&#13;&#10;&#13;&#10;';
+                                    _e("Active theme", $wd_options->prefix);
+                                    echo '&#13;&#10;&#13;&#10;';
+                                    echo wp_get_theme();
+                                ?></textarea>
 						</div>	
 					</div>
 				<?php	

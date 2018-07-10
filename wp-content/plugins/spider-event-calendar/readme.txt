@@ -3,7 +3,7 @@ Contributors: webdorado, wdsupport, 10web
 Tags: calendar, event, event calendar, events, events calendar, calendars, event manager, calendar widget,  event management,  free calendar, Calender, upcoming events
 Requires at least: 3.9  
 Tested up to: 4.9   
-Stable tag: 1.5.61
+Stable tag: 1.5.62
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -15,7 +15,7 @@ Event Calendar by WD is a responsive calendar plugin for organizing events. Plug
 [WordPress Calendar](https://web-dorado.com/products/wordpress-calendar.html)  
 [Demo](http://wpdemo.web-dorado.com/spider-calendar/)  
 [Demo Admin](http://wpdemo.web-dorado.com/wp-admin/admin.php?page=SpiderCalendar)  
-[User Manual](https://web-dorado.com/wordpress-spider-calendar/installing.html)  
+[User Manual](https://web-dorado.com/wordpress-spider-calendar/installing.html)
 
 WordPress event calendar is a FREE user-friendly responsive plugin to manage multiple recurring events and various display options. This free plugin makes event registration and events management easy and lets you display beautiful responsive calendars, upcoming events and more. It’s perfect for websites organising seminars, summits, conferences, concerts, meetings, and more.
 
@@ -40,47 +40,54 @@ Its recurring events option makes event scheduling even easier. You just need to
 Spider Calendar comes with a number of event display options, and themes, but if you want to have custom styles, you can add new themes with customized settings and options.
 
 
-Upgrade to [WordPress Calendar Pro](https://web-dorado.com/products/wordpress-calendar.html) to add features:   
+Upgrade to [WordPress Calendar Pro](https://web-dorado.com/products/wordpress-calendar.html) to add features:
 
-*   17 standard themes included in extension package for the plugin and 6 themes for the widget.      
-*   Possibility to alter the width of the widget and main calendar.    
-*   You can change date color, font size and font family in the event popup.   
-*   Possibility to change arrow color and background color in the event popup.   
-*   Possibility to change event popup background color.   
-*   Possibility to define the height and width of the popup.   
-*   Possibility to define the number of displayed events in the popup.   
-*   Possibility to change next, previous and current month font size and color.  
-*   Possibility to change current day cell border color.   
-*   Possibility to define the main border radius, color and width.   
-*   You have also possibility to change popup window parameters.    
-*   Possibility to add new themes based on the default theme.   
-*   Possibility of displaying/hiding the category legend below the calendar widget.  
-*   Possibility of selecting the start day of the week (Monday, Sunday).   
-*   Possibility to select event date style in the popup.    
-*   Possibility to set a number of events to be displayed within a single day   
+*   17 standard themes included in extension package for the plugin and 6 themes for the widget.
+*   Possibility to alter the width of the widget and main calendar.
+*   You can change date color, font size and font family in the event popup.
+*   Possibility to change arrow color and background color in the event popup.
+*   Possibility to change event popup background color.
+*   Possibility to define the height and width of the popup.
+*   Possibility to define the number of displayed events in the popup.
+*   Possibility to change next, previous and current month font size and color.
+*   Possibility to change current day cell border color.
+*   Possibility to define the main border radius, color and width.
+*   You have also possibility to change popup window parameters.
+*   Possibility to add new themes based on the default theme.
+*   Possibility of displaying/hiding the category legend below the calendar widget.
+*   Possibility of selecting the start day of the week (Monday, Sunday).
+*   Possibility to select event date style in the popup.
+*   Possibility to set a number of events to be displayed within a single day
 
-###IMPORTANT:   
+###IMPORTANT:
 If you think you found a bug in the plugin or have any problem/question concerning the plugin, please check out [Support Forum](https://wordpress.org/support/plugin/spider-event-calendar). If you do not find a solution here, do not hesitate to contact us at [info@web-dorado.com](mailto:info@web-dorado.com).
 
-  
-== Screenshots ==
-1.  WordPress Event Calendar - Calendar	
-2.  WordPress Event Calendar - Widget Calendar	
-3.  WordPress Event Calendar - Widget Calendar	
-4.  WordPress Event Calendar - Widget Calendar	
-5.  WordPress Event Calendar - Create Event	
-6.  WordPress Event Calendar - Edit Theme	
 
+== Screenshots ==
+1.  WordPress Event Calendar - Calendar
+2.  WordPress Event Calendar - Widget Calendar
+3.  WordPress Event Calendar - Widget Calendar
+4.  WordPress Event Calendar - Widget Calendar
+5.  WordPress Event Calendar - Create Event
+6.  WordPress Event Calendar - Edit Theme
+
+== Privacy Policy ==
+This plugin does not collect any data from website, neither collects visitors data in the sites it is installed on. No tracking is performed and no embeds/cookies are included along with the plugin. The plugin asks for your consent to collect site administrator’s email address and site URL to offer customer support, deals and discounts on premium products and more.
 
 == Changelog ==
 
+= 1.5.62 =
+New: GDPR compliance help
+New: WD library updated
+Fixed: Bugs when exporting event
+
 = 1.5.61 =
-Fixed: Faster loading of pages. Synchronous requests in calendar frontend are removed   
-Changed: PHP 7.2 compatibility, create_function is not used anymore   
+Fixed: Faster loading of pages. Synchronous requests in calendar frontend are removed
+Changed: PHP 7.2 compatibility, create_function is not used anymore
 
 = 1.5.60 =
-Fixed: Events of the same day of the previous year were visible in popup   
-Updated: Italian translation thanks to Marco Moniga  
+Fixed: Events of the same day of the previous year were visible in popup
+Updated: Italian translation thanks to Marco Moniga
 
 = 1.5.59 =
 Fixed: register_activation_hook not being called because of conflict with some plugins  

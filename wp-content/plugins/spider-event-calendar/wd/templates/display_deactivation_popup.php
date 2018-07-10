@@ -5,7 +5,8 @@
 	</div>
 	<form method="post" id="<?php echo $wd_options->prefix; ?>_deactivate_form">
 		<div class="wd-deactivate-popup-header">
-			<?php _e( "Please let us know why you are deactivating. Your answer will help us to serve you better (Optional)", $wd_options->prefix ); ?>:
+			<?php _e( "Please let us know why you are deactivating. Your answer will help us to provide you support or sometimes offer discounts. (Optional)", $wd_options->prefix ); ?>:
+            <span class="wd-deactivate-popup-close-btn"></span>
 		</div>
 
 		<div class="wd-deactivate-popup-body">
@@ -19,7 +20,7 @@
 		</div>
 		<div class="wd-btns">
 			<a href="<?php echo $deactivate_url; ?>" data-val="1" class="button button-primary button-close wd-<?php echo $wd_options->prefix; ?>-deactivate" id="wd-<?php echo $wd_options->prefix; ?>-deactivate"><?php _e( "Skip and Deactivate" , $wd_options->prefix ); ?></a>
-			<a href="<?php echo $deactivate_url; ?>" data-val="2" class="button button-primary button-close wd-<?php echo $wd_options->prefix; ?>-deactivate" id="wd-<?php echo $wd_options->prefix; ?>-submit-and-deactivate" style="display:none;"><?php _e( "Submit and Deactivate" , $wd_options->prefix ); ?></a>
+			<a href="<?php echo $deactivate_url; ?>" data-val="2" class="button button-primary button-primary-disabled button-close wd-<?php echo $wd_options->prefix; ?>-deactivate" id="wd-<?php echo $wd_options->prefix; ?>-submit-and-deactivate" style="display:none;"><?php _e( "Submit and Deactivate" , $wd_options->prefix ); ?></a>
 		</div>
 		<input type="hidden" name="<?php echo $wd_options->prefix . "_submit_and_deactivate"; ?>" value="" >
 		<?php wp_nonce_field( $wd_options->prefix . '_save_form', $wd_options->prefix . '_save_form_fild'); ?>
