@@ -90,7 +90,7 @@ class CustomSidebars {
 	 */
 	public function wp_enqueue_add_version( $version, $handle ) {
 		if ( preg_match( '/^wpmu\-cs\-/', $handle ) ) {
-			return '3.1.5';
+			return '3.1.6';
 		}
 		return $version;
 	}
