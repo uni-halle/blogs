@@ -1,0 +1,21 @@
+.remove-overflow-hidden .events-content{overflow: visible !important;}
+.cd-timeline-navigation a.prev.inactive, .cd-timeline-navigation a.next.inactive {
+  background: #b1e4f7 none repeat scroll 0 0 !important;
+  border: 2px solid #b1e4f7 !important;
+  color: #fff !important;
+}
+.cd-timeline-navigation a.next, .cd-timeline-navigation a.prev {
+  background: #00a5e5 none repeat scroll 0 0 !important;
+  border: 2px solid #00a5e5 !important;
+}
+
+section.cd-horizontal-timeline.loaded ol, section.cd-horizontal-timeline.loaded ul, section.cd-horizontal-timeline.loaded li {
+	list-style: none !important;
+}
+.events-content h2 {
+    color: #000;
+    margin-bottom: 10px;
+}
+.events-content li {
+    color: #736c6c;
+}
