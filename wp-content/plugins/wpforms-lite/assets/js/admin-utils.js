@@ -3,6 +3,7 @@ var wpf = {
 
 	cachedFields: {},
 	savedState: false,
+	initialSave: true,
 	orders:  {
 		fields: [],
 		choices: {}
@@ -471,7 +472,6 @@ var wpf = {
 	 * @since 1.3.8
 	 */
 	isDebug: function() {
-
 		return ( ( window.location.hash && '#wpformsdebug' === window.location.hash ) || wpforms_builder.debug );
 	},
 
@@ -494,7 +494,7 @@ var wpf = {
 	formObject: function( el ) {
 
 		var form         = jQuery( el ),
-			fields       = form.find( '[name]' ) ,
+			fields       = form.find( '[name]' ),
 			json         = {},
 			arraynames   = {};
 
@@ -550,7 +550,7 @@ var wpf = {
 				}
 		  	}
 			jQuery.extend( true, json, lineconf );
-		};
+		}
 
 		return json;
 	}

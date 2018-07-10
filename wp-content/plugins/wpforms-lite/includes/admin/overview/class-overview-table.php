@@ -137,7 +137,7 @@ class WPForms_Overview_Table extends WP_List_Table {
 				),
 				admin_url( 'admin.php?page=wpforms-builder' )
 			),
-			esc_html__( 'Edit this form', 'wpforms' ),
+			esc_html__( 'Edit This Form', 'wpforms' ),
 			$name
 		);
 
@@ -154,7 +154,7 @@ class WPForms_Overview_Table extends WP_List_Table {
 				),
 				admin_url( 'admin.php?page=wpforms-builder' )
 			),
-			esc_html__( 'Edit this form', 'wpforms' ),
+			esc_html__( 'Edit This Form', 'wpforms' ),
 			esc_html__( 'Edit', 'wpforms' )
 		);
 

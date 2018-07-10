@@ -21,12 +21,14 @@ class WPForms_Lite {
 		add_action( 'wpforms_form_settings_notifications', array( $this, 'form_settings_notifications' ), 8, 1 );
 		add_action( 'wpforms_setup_panel_after', array( $this, 'form_templates' ) );
 		add_filter( 'wpforms_builder_fields_buttons', array( $this, 'form_fields' ), 20 );
-		add_action( 'wpforms_builder_panel_buttons', array( $this, 'form_panels' ), 20 );
 		add_action( 'wpforms_builder_enqueues_before', array( $this, 'builder_enqueues' ) );
 		add_action( 'wpforms_admin_page', array( $this, 'entries_page' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'addon_page_enqueues' ) );
 		add_action( 'wpforms_admin_page', array( $this, 'addons_page' ) );
 		add_action( 'wpforms_providers_panel_sidebar', array( $this, 'builder_provider_sidebar' ), 20 );
+		add_action( 'wpforms_payments_panel_sidebar', array( $this, 'builder_payments_sidebar' ), 20 );
+		add_action( 'wpforms_admin_settings_after', array( $this, 'settings_cta' ), 10, 1 );
+		add_action( 'wp_ajax_wpforms_lite_settings_upgrade', array( $this, 'settings_cta_dismiss' ) );
 	}
 
 	/**
@@ -82,7 +84,7 @@ class WPForms_Lite {
 						'strong' => array(),
 					)
 				),
-				wpforms_admin_upgrade_link()
+				wpforms_admin_upgrade_link( 'builder-notifications' )
 			);
 			?>
 		</p>
@@ -267,7 +269,7 @@ class WPForms_Lite {
 
 		<div class="wpforms-setup-title">
 			<?php esc_html_e( 'Unlock Pre-Made Form Templates', 'wpforms' ); ?>
-			<a href="<?php echo wpforms_admin_upgrade_link(); ?>" target="_blank" rel="noopener noreferrer"
+			<a href="<?php echo wpforms_admin_upgrade_link( 'builder-templates' ); ?>" target="_blank" rel="noopener noreferrer"
 				class="btn-green wpforms-upgrade-link wpforms-upgrade-modal"
 				style="text-transform: uppercase;font-size: 13px;font-weight: 700;padding: 5px 10px;vertical-align: text-bottom;">
 				<?php esc_html_e( 'Upgrade', 'wpforms' ); ?>
@@ -425,20 +427,6 @@ class WPForms_Lite {
 	}
 
 	/**
-	 * Display/register additional panels available in the Pro version.
-	 *
-	 * @since 1.0.0
-	 */
-	public function form_panels() {
-
-		?>
-		<button class="wpforms-panel-payments-button upgrade-modal" data-panel="payments">
-			<i class="fa fa-usd"></i><span><?php esc_html_e( 'Payments', 'wpforms' ); ?></span>
-		</button>
-		<?php
-	}
-
-	/**
 	 * Load assets for lite version with the admin builder.
 	 *
 	 * @since 1.0.0
@@ -453,14 +441,25 @@ class WPForms_Lite {
 			false
 		);
 
+
 		wp_localize_script(
 			'wpforms-builder-lite',
 			'wpforms_builder_lite',
 			array(
 				'upgrade_title'   => esc_html__( 'is a PRO Feature', 'wpforms' ),
-				'upgrade_message' => esc_html__( 'We\'re sorry, %name% is not available on your plan.<br><br>Please upgrade to the PRO plan to unlock all these awesome features.', 'wpforms' ),
+				'upgrade_message' => '<p>' . esc_html__( 'We\'re sorry, the %name% is not available on your plan. Please upgrade to the PRO plan to unlock all these awesome features.', 'wpforms' ) . '</p>',
+				'upgrade_bonus'   => '<p>' .
+										wp_kses(
+											__( '<strong>Bonus:</strong> WPForms Lite users get <span>20% off</span> regular price, automatically applied at checkout.', 'wpforms' ),
+											array(
+												'strong' => array(),
+												'span'   => array(),
+											)
+										) .
+									'</p>',
+				'upgrade_doc'     => '<a href="https://wpforms.com/docs/upgrade-wpforms-lite-paid-license/?utm_source=WordPress&amp;utm_medium=link&amp;utm_campaign=liteplugin" target="_blank" rel="noopener noreferrer" class="already-purchased">' . esc_html__( 'Already purchased?' ) . '</a>',
 				'upgrade_button'  => esc_html__( 'Upgrade to PRO', 'wpforms' ),
-				'upgrade_url'     => wpforms_admin_upgrade_link(),
+				'upgrade_url'     => wpforms_admin_upgrade_link( 'builder-modal' ),
 				'upgrade_modal'   => wpforms_get_upgrade_modal_text(),
 			)
 		);
@@ -502,7 +501,10 @@ class WPForms_Lite {
 		);
 
 		foreach ( $providers as $provider ) {
-			echo '<a href="#" class="wpforms-panel-sidebar-section icon wpforms-panel-sidebar-section-' . esc_attr( $provider['slug'] ) . ' upgrade-modal" data-name="' . esc_attr( $provider['name'] ) . '">';
+
+			/* translators: %s - addon name*/
+			$modal_name = sprintf( esc_html__( '%s addon', 'wpforms'), esc_attr( $provider['name'] ) );
+			echo '<a href="#" class="wpforms-panel-sidebar-section icon wpforms-panel-sidebar-section-' . esc_attr( $provider['slug'] ) . ' upgrade-modal" data-name="' . $modal_name . '">';
 				echo '<img src="' . WPFORMS_PLUGIN_URL . 'lite/assets/images/' . $provider['img'] . '">';
 				echo esc_html( $provider['name'] );
 				echo '<i class="fa fa-angle-right wpforms-toggle-arrow"></i>';
@@ -510,6 +512,137 @@ class WPForms_Lite {
 		}
 	}
 
+	/**
+	 * Display payment addons available with paid license.
+	 *
+	 * @since 1.4.7
+	 */
+	public function builder_payments_sidebar() {
+
+		$payments = array(
+			array(
+				'name' => 'PayPal Standard',
+				'slug' => 'paypal_standard',
+				'img'  => 'addon-icon-paypal.png',
+			),
+			array(
+				'name' => 'Stripe',
+				'slug' => 'stripe',
+				'img'  => 'addon-icon-stripe.png',
+			),
+		);
+
+		foreach ( $payments as $payment ) {
+
+			/* translators: %s - addon name*/
+			$modal_name = sprintf( esc_html__( '%s addon', 'wpforms'), esc_attr( $payment['name'] ) );
+			echo '<a href="#" class="wpforms-panel-sidebar-section icon wpforms-panel-sidebar-section-' . esc_attr( $payment['slug'] ) . ' upgrade-modal" data-name="' . $modal_name . '">';
+				echo '<img src="' . WPFORMS_PLUGIN_URL . 'lite/assets/images/' . $payment['img'] . '">';
+				echo esc_html( $payment['name'] );
+				echo '<i class="fa fa-angle-right wpforms-toggle-arrow"></i>';
+			echo '</a>';
+		}
+	}
+
+	/**
+	 * Display upgrade notice at the bottom on the plugin settings pages.
+	 *
+	 * @since 1.4.7
+	 *
+	 * @param string $view
+	 */
+	public function settings_cta( $view ) {
+
+		if ( get_option( 'wpforms_lite_settings_upgrade', false ) || apply_filters( 'wpforms_lite_settings_upgrade', false ) ) {
+			return;
+		}
+		?>
+		<div class="settings-lite-cta">
+			<a href="#" class="dismiss" title="<?php esc_attr_e( 'Dismiss this message', 'wpforms' ); ?>"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+			<h5><?php esc_html_e( 'Get WPForms Pro and Unlock all the Powerful Features', 'wpforms' ); ?></h5>
+			<p><?php esc_html_e( 'Thanks for being a loyal WPForms Lite user. Upgrade to WPForms Pro to unlock all the awesome features and experience why WPForms is consistently rated the best WordPress form builder.', 'wpforms' ); ?></p>
+			<p>
+				<?php
+				printf(
+					wp_kses(
+						/* translators: %s - star icons. */
+						__( 'We know that you will truly love WPForms. It has over 2000+ five star ratings (%s) and is active on over 1 million websites.', 'wpforms' ),
+						array(
+							'i' => array(
+								'class'       => array(),
+								'aria-hidden' => array(),
+							),
+						)
+					),
+					str_repeat( '<i class="fa fa-star" aria-hidden="true"></i>', 5 )
+				);
+				?>
+			</p>
+			<h6><?php esc_html_e( 'Pro Featrues:', 'wpforms' ); ?></h6>
+			<div class="list">
+				<ul>
+					<li><?php esc_html_e( 'Entry Management - view all leads in one place', 'wpforms' ); ?></li>
+					<li><?php esc_html_e( 'All form features like file upload, pagination, etc', 'wpforms' ); ?></li>
+					<li><?php esc_html_e( 'Create surveys & polls with the surveys addon', 'wpforms' ); ?></li>
+					<li><?php esc_html_e( 'WordPress user registration and login forms', 'wpforms' ); ?></li>
+					<li><?php esc_html_e( 'Create payment forms with Stripe and PayPal', 'wpforms' ); ?></li>
+				</ul>
+				<ul>
+					<li><?php esc_html_e( 'Powerful Conditional Logic so you can create smart forms', 'wpforms' ); ?></li>
+					<li><?php esc_html_e( '500+ integrations with different marketing & payment services', 'wpforms' ); ?></li>
+					<li><?php esc_html_e( 'Collect signatures, geo-location data, and more', 'wpforms' ); ?></li>
+					<li><?php esc_html_e( 'Accept user submitted content wit Post Submissions addon', 'wpforms' ); ?></li>
+					<li><?php esc_html_e( 'Bonus form templates, form abandonment, and more', 'wpforms' ); ?></li>
+				</ul>
+			</div>
+			<p>
+				<a href="<?php echo wpforms_admin_upgrade_link( 'settings-upgrade' ); ?>" target="_blank" rel="noopener noreferrer">
+					<?php esc_html_e( 'Get WPForms Pro Today and Unlock all the Powerful Features »', 'wpforms' ); ?>
+				</a>
+			</p>
+			<p>
+				<?php
+				echo wp_kses(
+					__( '<strong>Bonus:</strong> WPForms Lite users get <span class="green">20% off regular price</span>, automatically applied at checkout.', 'wpforms' ),
+					array(
+						'strong' => array(),
+						'span'   => array(
+							'class' => array(),
+						),
+					)
+				);
+				?>
+			</p>
+		</div>
+		<script type="text/javascript">
+			jQuery( document ).ready( function ( $ ) {
+				$( document ).on( 'click', '.settings-lite-cta .dismiss', function ( event ) {
+					event.preventDefault();
+					$.post( ajaxurl, {
+						action: 'wpforms_lite_settings_upgrade'
+					} );
+					$( '.settings-lite-cta' ).remove();
+				} );
+			} );
+		</script>
+		<?php
+	}
+
+	/**
+	 * Dismiss upgrade notice at the bottom on the plugin settings pages.
+	 *
+	 * @since 1.4.7
+	 */
+	public function settings_cta_dismiss() {
+
+		if ( ! wpforms_current_user_can() ) {
+			wp_send_json_error();
+		}
+
+		update_option( 'wpforms_lite_settings_upgrade', time() );
+
+		wp_send_json_success();
+	}
 
 	/**
 	 * Notify user that entries is a pro feature.
@@ -657,7 +790,7 @@ class WPForms_Lite {
 						</div>
 					</div>
 					<div class="entries-modal-button">
-						<a href="<?php echo wpforms_admin_upgrade_link(); ?>" class="wpforms-btn wpforms-btn-lg wpforms-btn-orange wpforms-upgrade-modal" target="_blank" rel="noopener noreferrer">
+						<a href="<?php echo wpforms_admin_upgrade_link( 'entries' ); ?>" class="wpforms-btn wpforms-btn-lg wpforms-btn-orange wpforms-upgrade-modal" target="_blank" rel="noopener noreferrer">
 							<?php esc_html_e( 'Upgrade to WPForms Pro Now', 'wpforms' ); ?>
 						</a>
 					</div>
@@ -969,7 +1102,7 @@ class WPForms_Lite {
 			return;
 		}
 
-		$upgrade = wpforms_admin_upgrade_link();
+		$upgrade = wpforms_admin_upgrade_link( 'addons' );
 		$addons  = array(
 			array(
 				'name' => 'Aweber',

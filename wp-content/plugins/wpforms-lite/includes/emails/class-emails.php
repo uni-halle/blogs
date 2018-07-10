@@ -139,7 +139,6 @@ class WPForms_WP_Emails {
 	 * @param mixed  $value Object property value.
 	 */
 	public function __set( $key, $value ) {
-
 		$this->$key = $value;
 	}
 
@@ -329,7 +328,7 @@ class WPForms_WP_Emails {
 	public function send( $to, $subject, $message, $attachments = array() ) {
 
 		if ( ! did_action( 'init' ) && ! did_action( 'admin_init' ) ) {
-			_doing_it_wrong( __FUNCTION__, esc_html__( 'You cannot send emails with WPForms_WP_Emails until init/admin_init has been reached.', 'wpforms' ), null );
+			_doing_it_wrong( __FUNCTION__, esc_html__( 'You cannot send emails with WPForms_WP_Emails() until init/admin_init has been reached.', 'wpforms' ), null );
 
 			return false;
 		}
@@ -487,7 +486,7 @@ class WPForms_WP_Emails {
 						$field_name = ! empty( $field['label'] ) ? str_repeat( '&mdash;', 3 ) . ' ' . $field['label'] . ' ' . str_repeat( '&mdash;', 3 ) : null;
 						$field_val  = ! empty( $field['description'] ) ? $field['description'] : '';
 					} elseif ( 'pagebreak' === $field['type'] ) {
-						if (  ! empty( $field['position'] ) && 'bottom' === $field['position'] ) {
+						if ( ! empty( $field['position'] ) && 'bottom' === $field['position'] ) {
 							continue;
 						}
 						$title      = ! empty( $field['title'] ) ? $field['title'] : esc_html__( 'Page Break', 'wpforms' );

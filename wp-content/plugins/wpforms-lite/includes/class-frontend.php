@@ -644,7 +644,7 @@ class WPForms_Frontend {
 
 		$names = array( 'Name', 'Phone', 'Comment', 'Message', 'Email', 'Website' );
 
-		echo '<div class="wpforms-field wpforms-field-hp" id="wpform-field-hp">';
+		echo '<div class="wpforms-field wpforms-field-hp">';
 
 			echo '<label for="wpforms-field_hp" class="wpforms-field-label">' . $names[ array_rand( $names ) ] . '</label>';
 

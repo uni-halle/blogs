@@ -707,6 +707,7 @@
 	background-color: #fff;
 	width: 14px;
 	height: 14px;
+	min-width: 14px;
 	margin: 0px 10px 0 3px;
 	display: inline-block;
 }

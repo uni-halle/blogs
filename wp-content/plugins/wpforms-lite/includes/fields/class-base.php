@@ -977,7 +977,7 @@ abstract class WPForms_Field {
 				// Build output.
 				if ( in_array( $field['type'], array( 'checkbox', 'gdpr-checkbox', 'payment-multiple', 'radio' ), true ) ) {
 
-					if ( in_array( $field['type'], array( 'checkbox', 'gdpr-checkbox', true ) ) ) {
+					if ( in_array( $field['type'], array( 'checkbox', 'gdpr-checkbox' ), true ) ) {
 						$type = 'checkbox';
 					} else {
 						$type = 'radio';

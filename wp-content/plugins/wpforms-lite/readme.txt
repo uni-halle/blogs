@@ -94,6 +94,7 @@ We also knew that our developer friends may want to extend contact forms further
 * <a href="https://wpforms.com/addons/conditional-logic-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Smart Conditional Logic</a> - Show or hide fields and contact form sections based on user behavior.
 * <a href="https://wpforms.com/addons/geolocation-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Geolocation</a> - Display location information about your users.
 * <a href="https://wpforms.com/addons/custom-catpcha-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Custom Captchas</a> - Create custom captchas for your contact form.
+* <a href="https://wpforms.com/addons/offline-forms-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Offline Forms</a> - Let your visitors save their entered data offline and submit when their internet connection is restored.
 * <a href="https://wpforms.com/addons/surveys-and-polls-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Surveys and Polls</a> - Easily create surveys forms and analyze the data with interactive reports.
 * Want us to add something else? Suggest a contact form feature and we'll get it added!
 
@@ -106,13 +107,13 @@ Want to unlock more features? <a href="https://wpforms.com/?utm_source=wprepo&ut
 
 = Credits =
 
-This plugin is created by <a href="http://www.jaredatchison.com/" rel="friend" title="Jared Atchison">Jared Atchison</a> and <a href="https://syedbalkhi.com/" rel="friend" title="Syed Balkhi">Syed Balkhi</a>.
+This plugin is created by <a href="https://www.jaredatchison.com/" rel="friend" title="Jared Atchison">Jared Atchison</a> and <a href="https://syedbalkhi.com/" rel="friend" title="Syed Balkhi">Syed Balkhi</a>.
 
 = What's Next =
 
 If you like this plugin, then consider checking out our other projects:
 
-* <a href="http://optinmonster.com/" rel="friend" title="OptinMonster">OptinMonster</a> - Get More Email Subscribers
+* <a href="https://optinmonster.com/" rel="friend" title="OptinMonster">OptinMonster</a> - Get More Email Subscribers
 * <a href="https://www.monsterinsights.com/" rel="friend" title="MonsterInsights">MonsterInsights</a> - Best Google Analytics Plugin for WordPress
 
 Visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeginner</a> to learn from our <a href="http://www.wpbeginner.com/category/wp-tutorials/" rel="friend" title="WordPress Tutorials">WordPress Tutorials</a> and find out about other <a href="http://www.wpbeginner.com/category/plugins/" rel="friend" title="Best WordPress Plugins">best WordPress plugins</a>.
@@ -211,13 +212,31 @@ Syed Balkhi
 
 == Changelog ==
 
+= 1.4.7.2 =
+- Fixed: Honeypot field using a none unique CSS ID.
+- Fixed: Form builder Bulk Add display issues in certain use cases.
+- Fixed: Checkbox field values not saving if Show Values field option is enabled.
+
+= 1.4.7.1 =
+- Changed: Updated Russian translation.
+- Fixed: Various i18n issues.
+
+= 1.4.7 =
+- Added: New Providers class and functionality.
+- Changed: Old PHP version (5.2 and 5.3) admin warning adjusted to reflect new August 2018 time line.
+- Fixed: Multiple Choice fields showing as Radio fields in the builder preview when first created.
+- Fixed: Duplicating fields in the form builder causing issues with certain field types.
+- Fixed: Escaping issue with provider connection names contained an apostrophe.
+- Fixed: Alignment issues with the Addons page display.
+- Fixed: Incorrect text on the Welcome activation page.
+
 = 1.4.6 =
 - Added: GDPR Enhancements plugin setting [doc](https://wpforms.com/how-to-create-gdpr-compliant-forms/).
 - Added: GDPR Enhancement: User Agreement form field.
 - Changed: PHP warning that alerts users support for PHP 5.4 and below will be dropped this summer.
 - Changed: Spam logging, to improve performance.
 - Fixed: Typo in base form CSS.
-- Fixed: Stripping HTML from the checkbox and mulitple choice labels in the form builder.
+- Fixed: Stripping HTML from the checkbox and multiple choice labels in the form builder.
 - Fixed: Form builder icon visibility when field labels are hidden.
 
 = 1.4.5.3 =
@@ -227,7 +246,7 @@ Syed Balkhi
 - Fixed: Remove jQuery shorthand references in `admin-utils` to prevent conflicts.
 
 = 1.4.5.2 =
-- Fixed: Incorrect documenation link for Input Mask.
+- Fixed: Incorrect documentation link for Input Mask.
 - Fixed: Input Mask value disappearing when form builder is refreshed.
 
 = 1.4.5.1 =
@@ -237,14 +256,14 @@ Syed Balkhi
 - Added: Image choices feature with Checkbox and Multiple Choice fields; Images can now be uploaded and displayed with your choices!
 - Added: Custom input masks for Single Line Text fields (Advanced Options).
 - Added: No-Conflict Mode for Google reCAPTCHA (Settings > reCAPTCHA). Removes other reCAPTCHA occurrences, to prevent conflicts.
-- Added: SSL Connection Test (Tools > System Info). Quicky verify that your web host correct supports SSL connections.
+- Added: SSL Connection Test (Tools > System Info). Quickly verify that your web host correct supports SSL connections.
 - Added: `{user_full_name}` Smart Tag, displays users first and last name.
-- Added: Discalimer / Terms of Service Display formatting option for Checkbox fields (Advanced Options).
+- Added: Disclaimer / Terms of Service Display formatting option for Checkbox fields (Advanced Options).
 - Added: Basic CSS styling for `disabled` fields.
 - Added: Uninstall routine, available from Settings > Misc.
 - Added: Form builder performance improvements. Editing a form with hundreds of fields is now 500%+ faster!
-- Changed: New Settings tab: Misc, moved Hide Annoucements option to new tab.
-- Changed: `{user_display}` Smart Tag diplays user's display name (in most cases, this is the user's name).
+- Changed: New Settings tab: Misc, moved Hide Announcements option to new tab.
+- Changed: `{user_display}` Smart Tag displays user's display name (in most cases, this is the user's name).
 - Changed: All `<form>` attributes can now be changed via `wpforms_frontend_form_atts` filter.
 - Fixed: Form builder tab icon alignment conflicts with third party plugin CSS.
 - Fixed: Smart Tag dropdown display issues in the form builder.
@@ -255,7 +274,7 @@ Syed Balkhi
 - Changed: Allow the `WPForms_Builder` class to be accessible.
 - Changed: Move the confirmation message `wpautop` to an earlier priority to not conflict with content added using filters.
 - Fixed: Form builder templates area not aligning correctly in some browsers.
-- Fixed: Incorrect permissions check for annoucements feed.
+- Fixed: Incorrect permissions check for announcements feed.
 
 = 1.4.4 =
 - Added: Advanced setting for Multiple Choice and Checkbox fields to randomize choices
@@ -336,4 +355,4 @@ Syed Balkhi
 - Fixed: Tools page export description text typo
 - Fixed: Widget state not displayed correctly when adding via Customizer, without forcing user to select a form
 
-[See changelog for all versions](http://plugins.svn.wordpress.org/wpforms-lite/trunk/changelog.txt).
+[See changelog for all versions](https://plugins.svn.wordpress.org/wpforms-lite/trunk/changelog.txt).

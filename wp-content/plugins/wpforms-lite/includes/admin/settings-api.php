@@ -109,18 +109,29 @@ function wpforms_settings_license_callback( $args ) {
 			sprintf(
 				wp_kses(
 					/* translators: %s - WPForms.com upgrade URL. */
-					__( 'To unlock more features consider <a href="%s" target="_blank" rel="noopener noreferrer" class="wpforms-upgrade-modal">upgrading to Pro</a>.', 'wpforms' ),
+					__( 'To unlock more features consider <strong><a href="%s" target="_blank" rel="noopener noreferrer" class="wpforms-upgrade-modal">upgrading to PRO</a></strong>.', 'wpforms' ),
 					array(
-						'a' => array(
+						'a'      => array(
 							'href'   => array(),
 							'class'  => array(),
 							'target' => array(),
 							'rel'    => array(),
 						),
+						'strong' => array(),
 					)
 				),
-				wpforms_admin_upgrade_link()
+				wpforms_admin_upgrade_link( 'settings-license' )
 			) .
+			'</p>';
+		$output .=
+			'<p class="discount-note">' .
+				wp_kses(
+					__( 'As a valued WPForms Lite user you receive <strong>20% off</strong>, automatically applied at checkout!', 'wpforms' ),
+					array(
+						'strong' => array(),
+						'br'     => array(),
+					)
+				) .
 			'</p>';
 
 		return $output;
@@ -347,8 +358,8 @@ function wpforms_settings_color_callback( $args ) {
  */
 function wpforms_settings_providers_callback( $args ) {
 
-	$providers = get_option( 'wpforms_providers', false );
-	$active    = apply_filters( 'wpforms_providers_available', array() );
+	$active    = wpforms_get_providers_available();
+	$providers = wpforms_get_providers_options();
 
 	$output = '<div id="wpforms-settings-providers">';
 

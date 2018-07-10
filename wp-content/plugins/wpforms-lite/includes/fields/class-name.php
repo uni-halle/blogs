@@ -522,14 +522,14 @@ class WPForms_Field_Name extends WPForms_Field {
 
 		// Set final field details.
 		wpforms()->process->fields[ $field_id ] = array(
-			'name'     => sanitize_text_field( $name ),
-			'value'    => sanitize_text_field( $value ),
-			'id'       => absint( $field_id ),
-			'type'     => $this->type,
-			'first'    => sanitize_text_field( $first ),
-			'middle'   => sanitize_text_field( $middle ),
-			'last'     => sanitize_text_field( $last ),
+			'name'   => sanitize_text_field( $name ),
+			'value'  => sanitize_text_field( $value ),
+			'id'     => absint( $field_id ),
+			'type'   => $this->type,
+			'first'  => sanitize_text_field( $first ),
+			'middle' => sanitize_text_field( $middle ),
+			'last'   => sanitize_text_field( $last ),
 		);
 	}
 }
-new WPForms_Field_Name;
+new WPForms_Field_Name();

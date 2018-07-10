@@ -377,7 +377,7 @@ class WPForms_Tools {
 				<p><?php esc_html_e( 'One or more of your forms contain fields that are not available in WPForms Lite. To properly import these fields, we recommend upgrading to WPForms Pro.', 'wpforms' ); ?></p>
 				<p><?php esc_html_e( 'You can continue with the import without upgrading, and we will do our best to match the fields. However, some of them will be omitted due to compatibility issues.', 'wpforms' ); ?></p>
 				<p>
-					<a href="<?php echo wpforms_admin_upgrade_link(); ?>" target="_blank" rel="noopener noreferrer" class="wpforms-btn wpforms-btn-md wpforms-btn-orange wpforms-upgrade-modal"><?php esc_html_e( 'Upgrade to WPForms Pro', 'wpforms' ); ?></a>
+					<a href="<?php echo wpforms_admin_upgrade_link( 'tools-import' ); ?>" target="_blank" rel="noopener noreferrer" class="wpforms-btn wpforms-btn-md wpforms-btn-orange wpforms-upgrade-modal"><?php esc_html_e( 'Upgrade to WPForms Pro', 'wpforms' ); ?></a>
 					<a href="#" class="wpforms-btn wpforms-btn-md wpforms-btn-light-grey" id="wpforms-importer-continue-submit"><?php esc_html_e( 'Continue Import without Upgrading', 'wpforms' ); ?></a>
 				</p>
 				<hr>
@@ -494,7 +494,7 @@ class WPForms_Tools {
 				<# if ( ! _.isEmpty( data.upgrade_plain ) || ! _.isEmpty( data.upgrade_omit ) ) { #>
 				<p>
 					<?php esc_html_e( 'Upgrade to the PRO plan to import these fields.' ); ?><br><br>
-					<a href="<?php echo wpforms_admin_upgrade_link(); ?>" class="wpforms-btn wpforms-btn-orange wpforms-btn-md wpforms-upgrade-modal" target="_blank" rel="noopener noreferrer">
+					<a href="<?php echo wpforms_admin_upgrade_link( 'tools-import' ); ?>" class="wpforms-btn wpforms-btn-orange wpforms-btn-md wpforms-upgrade-modal" target="_blank" rel="noopener noreferrer">
 						<?php esc_html_e( 'Upgrade Now', 'wpforms' ); ?>
 					</a>
 				</p>

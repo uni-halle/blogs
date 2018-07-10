@@ -132,7 +132,7 @@ class WPForms_Admin_Menu {
 	 *
 	 * @since 1.3.9
 	 *
-	 * @param array $links
+	 * @param array $links Plugin row links.
 	 *
 	 * @return array $links
 	 */
@@ -156,5 +156,4 @@ class WPForms_Admin_Menu {
 		return $links;
 	}
 }
-
-new WPForms_Admin_Menu;
+new WPForms_Admin_Menu();

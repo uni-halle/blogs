@@ -1,3 +1,5 @@
+/* global wpforms_builder_providers, wpforms_builder, jQuery */
+
 ;(function($) {
 
 	var s;
@@ -17,7 +19,7 @@
 		init: function() {
 			s = this.settings;
 
-			// Document ready
+			// Document ready.
 			$(document).ready(WPFormsProviders.ready);
 
 			WPFormsProviders.bindUIActions();
@@ -30,7 +32,7 @@
 		 */
 		ready: function() {
 
-			// Setup/cache some vars not available before
+			// Setup/cache some vars not available before.
 			s.formID = $('#wpforms-builder-form').data('id');
 		},
 
@@ -41,27 +43,27 @@
 		 */
 		bindUIActions: function() {
 
-			// Delete connection
+			// Delete connection.
 			$(document).on('click', '.wpforms-provider-connection-delete', function(e) {
 				WPFormsProviders.connectionDelete(this, e);
 			});
 
-			// Add new connection
+			// Add new connection.
 			$(document).on('click', '.wpforms-provider-connections-add', function(e) {
 				WPFormsProviders.connectionAdd(this, e);
 			});
 
-			// Add new provider account
+			// Add new provider account.
 			$(document).on('click', '.wpforms-provider-account-add button', function(e) {
 				WPFormsProviders.accountAdd(this, e);
 			});
 
-			// Select provider account
+			// Select provider account.
 			$(document).on('change', '.wpforms-provider-accounts select', function(e) {
 				WPFormsProviders.accountSelect(this, e);
 			});
 
-			// Select account list
+			// Select account list.
 			$(document).on('change', '.wpforms-provider-lists select', function(e) {
 				WPFormsProviders.accountListSelect(this, e);
 			});
@@ -178,17 +180,17 @@
 						action: function() {
 							var input = this.$content.find('input#provider-connection-name');
 							var error = this.$content.find('.error');
-							if (input.val() == '') {
+							if (input.val() === '') {
 								error.show();
 								return false;
 							} else {
 
 								var name = input.val();
 
-								// Disable button
+								// Disable button.
 								WPFormsProviders.inputToggle($this, 'disable');
 
-								// Fire AJAX
+								// Fire AJAX.
 								var data =  {
 									action  : 'wpforms_provider_ajax_'+provider,
 									provider: provider,
@@ -196,7 +198,7 @@
 									name    : name,
 									id      : s.form.data('id'),
 									nonce   : wpforms_builder.nonce
-								}
+								};
 								WPFormsProviders.fireAJAX($this, data, function(res) {
 									if (res.success) {
 										$connections.find('.wpforms-provider-connections').prepend(res.data.html);
@@ -235,23 +237,23 @@
 				$fields     = $container.find(':input'),
 				errors      = WPFormsProviders.requiredCheck($fields, $container);
 
-			// Disable button
+			// Disable button.
 			WPFormsProviders.inputToggle($this, 'disable');
 
-			// Bail if we have any errors
+			// Bail if we have any errors.
 			if (errors) {
 				$this.prop('disabled', false).find('i').remove();
 				return false;
 			}
 
-			// Fire AJAX
-			data = {
+			// Fire AJAX.
+			var data = {
 				action       : 'wpforms_provider_ajax_'+provider,
 				provider     : provider,
 				connection_id: $connection.data('connection_id'),
 				task         : 'new_account',
-				data         : WPFormsProviders.fakeSerialize($fields),
-			}
+				data         : WPFormsProviders.fakeSerialize($fields)
+			};
 			WPFormsProviders.fireAJAX($this, data, function(res) {
 				if (res.success) {
 					$container.nextAll('.wpforms-connection-block').remove();
@@ -278,16 +280,16 @@
 				$container  = $this.parent(),
 				provider    = $connection.data('provider');
 
-			// Disable select, show loading
+			// Disable select, show loading.
 			WPFormsProviders.inputToggle($this, 'disable');
 
-			// Remove any blocks that might exist as we prep for new account
+			// Remove any blocks that might exist as we prep for new account.
 			$container.nextAll('.wpforms-connection-block').remove();
 			$container.nextAll('.wpforms-conditional-block').remove();
 
 			if (!$this.val()) {
 
-				// User selected to option to add new account
+				// User selected to option to add new account.
 				$connection.find('.wpforms-provider-account-add input').val('');
 				$connection.find('.wpforms-provider-account-add').slideDown();
 				WPFormsProviders.inputToggle($this, 'enable');
@@ -296,18 +298,18 @@
 
 				$connection.find('.wpforms-provider-account-add').slideUp();
 
-				// Fire AJAX
-				data = {
+				// Fire AJAX.
+				var data = {
 					action       : 'wpforms_provider_ajax_'+provider,
 					provider     : provider,
 					connection_id: $connection.data('connection_id'),
 					task         : 'select_account',
-					account_id   : $this.find(':selected').val(),
-				}
+					account_id   : $this.find(':selected').val()
+				};
 				WPFormsProviders.fireAJAX($this, data, function(res) {
 					if (res.success) {
 						$container.after(res.data.html);
-						// Process first list found
+						// Process first list found.
 						$connection.find('.wpforms-provider-lists option:first').prop('selected', true);
 						$connection.find('.wpforms-provider-lists select').trigger('change');
 					} else {
@@ -330,14 +332,14 @@
 				$container  = $this.parent(),
 				provider    = $connection.data('provider');
 
-			// Disable select, show loading
+			// Disable select, show loading.
 			WPFormsProviders.inputToggle($this, 'disable');
 
-			// Remove any blocks that might exist as we prep for new account
+			// Remove any blocks that might exist as we prep for new account.
 			$container.nextAll('.wpforms-connection-block').remove();
 			$container.nextAll('.wpforms-conditional-block').remove();
 
-			data = {
+			var data = {
 				action       : 'wpforms_provider_ajax_'+provider,
 				provider     : provider,
 				connection_id: $connection.data('connection_id'),
@@ -345,7 +347,7 @@
 				account_id   : $connection.find('.wpforms-provider-accounts option:selected').val(),
 				list_id      : $this.find(':selected').val(),
 				form_id      : s.formID
-			}
+			};
 
 			WPFormsProviders.fireAJAX($this, data, function(res) {
 				if (res.success) {
@@ -365,7 +367,7 @@
 		providerPanelConfirm: function(targetPanel) {
 
 			wpforms_panel_switch = true;
-			if (targetPanel =='providers') {
+			if (targetPanel === 'providers') {
 				if ( wpf.savedState != wpf.getFormState('#wpforms-builder-form') ) {
 					wpforms_panel_switch = false;
 					$.confirm({
@@ -397,7 +399,7 @@
 		},
 
 		//--------------------------------------------------------------------//
-		// Helper functions
+		// Helper functions.
 		//--------------------------------------------------------------------//
 
 		/**
@@ -410,7 +412,8 @@
 			var data = {
 				id    : $('#wpforms-builder-form').data('id'),
 				nonce : wpforms_builder.nonce
-			}
+			};
+
 			$.extend(data, d);
 			$.post(wpforms_builder.ajax_url, data, function(res) {
 				success(res);
@@ -427,13 +430,13 @@
 		 */
 		inputToggle: function(el, status) {
 			var $this = $(el);
-			if (status == 'enable') {
+			if (status === 'enable') {
 				if ($this.is('select')) {
 					$this.prop('disabled', false).next('i').remove();
 				} else {
 					$this.prop('disabled', false).find('i').remove();
 				}
-			} else if (status == 'disable'){
+			} else if (status === 'disable'){
 				if ($this.is('select')) {
 					$this.prop('disabled', true).after(s.spinner);
 				} else {
@@ -460,10 +463,10 @@
 		requiredCheck: function(fields, location) {
 			var error = false;
 
-			// Remove any previous errors
+			// Remove any previous errors.
 			location.find('.wpforms-alert-required').remove();
 
-			// Loop through input fields and check for values
+			// Loop through input fields and check for values.
 			fields.each(function(index, el) {
 				if ( $(el).hasClass('wpforms-required') && $(el).val().length === 0 ) {
 					$(el).addClass('wpforms-error');
@@ -479,7 +482,7 @@
 		},
 
 		/**
-		 * Psuedo serializing. Fake it until you make it.
+		 * Pseudo serializing. Fake it until you make it.
 		 *
 		 * @since 1.0.0
 		 */

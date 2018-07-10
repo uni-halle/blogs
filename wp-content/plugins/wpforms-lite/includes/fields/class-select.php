@@ -17,7 +17,7 @@ class WPForms_Field_Select extends WPForms_Field {
 	 */
 	public function init() {
 
-		// Define field type information
+		// Define field type information.
 		$this->name     = esc_html__( 'Dropdown', 'wpforms' );
 		$this->type     = 'select';
 		$this->icon     = 'fa-caret-square-o-down';
@@ -400,4 +400,4 @@ class WPForms_Field_Select extends WPForms_Field {
 	}
 }
 
-new WPForms_Field_Select;
+new WPForms_Field_Select();

@@ -87,9 +87,6 @@ class WPForms_Builder_Panel_Providers extends WPForms_Builder_Panel {
 	 */
 	public function panel_content() {
 
-		// An array of all the active provider addons.
-		$providers_active = apply_filters( 'wpforms_providers_available', array() );
-
 		if ( ! $this->form ) {
 
 			// Check if there is a form created. When no form has been created
@@ -110,6 +107,9 @@ class WPForms_Builder_Panel_Providers extends WPForms_Builder_Panel {
 			return;
 		}
 
+		// An array of all the active provider addons.
+		$providers_active = wpforms_get_providers_available();
+
 		if ( empty( $providers_active ) ) {
 
 			// Check for active provider addons. When no provider addons are
@@ -128,7 +128,7 @@ class WPForms_Builder_Panel_Providers extends WPForms_Builder_Panel {
 							),
 						)
 					),
-					admin_url( 'admin.php?page=wpforms-addons' )
+					esc_url( admin_url( 'admin.php?page=wpforms-addons' ) )
 				) .
 				'</p>';
 			echo '</div>';
@@ -145,4 +145,4 @@ class WPForms_Builder_Panel_Providers extends WPForms_Builder_Panel {
 	}
 }
 
-new WPForms_Builder_Panel_Providers;
+new WPForms_Builder_Panel_Providers();

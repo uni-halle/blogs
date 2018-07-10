@@ -336,7 +336,7 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 	public function api_auth( $data = array(), $form_id = '' ) {
 
 		$id        = uniqid();
-		$providers = get_option( 'wpforms_providers', array() );
+		$providers = wpforms_get_providers_options();
 
 		$providers[ $this->slug ][ $id ] = array(
 			'access_token' => sanitize_text_field( $data['authcode'] ),
@@ -362,7 +362,7 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 		if ( ! empty( $this->api[ $account_id ] ) ) {
 			return $this->api[ $account_id ];
 		} else {
-			$providers = get_option( 'wpforms_providers' );
+			$providers = wpforms_get_providers_options();
 			if ( ! empty( $providers[ $this->slug ][ $account_id ] ) ) {
 				$this->api[ $account_id ] = true;
 				$this->access_token       = $providers[ $this->slug ][ $account_id ]['access_token'];
@@ -482,7 +482,7 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 	 */
 	public function output_auth() {
 
-		$providers = get_option( 'wpforms_providers' );
+		$providers = wpforms_get_providers_options();
 		$class     = ! empty( $providers[ $this->slug ] ) ? 'hidden' : '';
 
 		$output = '<div class="wpforms-provider-account-add ' . $class . ' wpforms-connection-block">';
@@ -538,7 +538,7 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 	public function builder_output_after() {
 
 		// Only display if Constant Contact account has not been setup.
-		$providers = get_option( 'wpforms_providers', array() );
+		$providers = wpforms_get_providers_options();
 
 		if ( ! empty( $providers[ $this->slug ] ) ) {
 			return;
@@ -632,7 +632,7 @@ class WPForms_Constant_Contact extends WPForms_Provider {
 		// Only display the notice is the Constant Contact option is set and
 		// there are previous Constant Contact connections created.
 		$cc_notice = get_option( 'wpforms_constant_contact', false );
-		$providers = get_option( 'wpforms_providers', array() );
+		$providers = wpforms_get_providers_options();
 
 		if ( ! $cc_notice || ! empty( $providers[ $this->slug ] ) ) {
 			return;

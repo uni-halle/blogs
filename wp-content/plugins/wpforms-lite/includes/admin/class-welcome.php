@@ -80,7 +80,7 @@ class WPForms_Welcome {
 		}
 
 		// Only do this for single site installs.
-		if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) {
+		if ( is_network_admin() || isset( $_GET['activate-multi'] ) ) { // WPCS: CSRF ok.
 			return;
 		}
 
@@ -104,7 +104,7 @@ class WPForms_Welcome {
 		$class = wpforms()->pro ? 'pro' : 'lite';
 		?>
 
-		<div id="wpforms-welcome" class="<?php echo $class; ?>">
+		<div id="wpforms-welcome" class="<?php echo sanitize_html_class( $class ); ?>">
 
 			<div class="container">
 
@@ -149,7 +149,7 @@ class WPForms_Welcome {
 
 					<div class="block">
 
-						<h1><?php esc_html_e( 'Welcome Features &amp; Addons', 'wpforms' ); ?></h1>
+						<h1><?php esc_html_e( 'WPForms Features &amp; Addons', 'wpforms' ); ?></h1>
 						<h6><?php esc_html_e( 'WPForms is both easy to use and extremely powerful. We have tons of helpful features that allow us to give you everything you need from a form builder.', 'wpforms' ); ?></h6>
 
 						<div class="feature-list wpforms-clear">
@@ -217,7 +217,7 @@ class WPForms_Welcome {
 						</div>
 
 						<div class="button-wrap">
-							<a href="https://wpforms.com/features/?utm_source=WordPress&amp;utm_medium=link&amp;utm_campaign=liteplugin"
+							<a href="https://wpforms.com/features/?utm_source=WordPress&amp;utm_medium=link&amp;utm_campaign=liteplugin&amp;utm_content=welcome"
 								class="wpforms-btn wpforms-btn-lg wpforms-btn-grey" rel="noopener noreferrer" target="_blank">
 								<?php esc_html_e( 'See All Features', 'wpforms' ); ?>
 							</a>
@@ -241,8 +241,10 @@ class WPForms_Welcome {
 								<li><span class="dashicons dashicons-yes"></span> <?php esc_html_e( 'User Registration', 'wpforms' ); ?></li>
 								<li><span class="dashicons dashicons-yes"></span> <?php esc_html_e( 'Form Abandonment', 'wpforms' ); ?></li>
 								<li><span class="dashicons dashicons-yes"></span> <?php esc_html_e( 'Geolocation', 'wpforms' ); ?></li>
-								<li><span class="dashicons dashicons-yes"></span> <?php esc_html_e( 'Unlimited Sites', 'wpforms' ); ?></li>
+								<li><span class="dashicons dashicons-yes"></span> <?php esc_html_e( 'Polls', 'wpforms' ); ?></li>
 								<li><span class="dashicons dashicons-yes"></span> <?php esc_html_e( 'Zapier', 'wpforms' ); ?></li>
+								<li><span class="dashicons dashicons-yes"></span> <?php esc_html_e( 'Unlimited Sites', 'wpforms' ); ?></li>
+								<li><span class="dashicons dashicons-yes"></span> <?php esc_html_e( 'Surveys', 'wpforms' ); ?></li>
 								<li><span class="dashicons dashicons-yes"></span> <?php esc_html_e( 'Priority Support', 'wpforms' ); ?></li>
 							</ul>
 						</div>
@@ -253,7 +255,7 @@ class WPForms_Welcome {
 								<span class="amount">199</span><br>
 								<span class="term"><?php esc_html_e( 'per year', 'wpforms' ); ?></span>
 							</div>
-							<a href="<?php echo wpforms_admin_upgrade_link(); ?>" rel="noopener noreferrer" target="_blank"
+							<a href="<?php echo wpforms_admin_upgrade_link( 'welcome' ); ?>" rel="noopener noreferrer" target="_blank"
 								class="wpforms-btn wpforms-btn-block wpforms-btn-lg wpforms-btn-orange wpforms-upgrade-modal">
 								<?php esc_html_e( 'Upgrade Now', 'wpforms' ); ?>
 							</a>
@@ -299,7 +301,7 @@ class WPForms_Welcome {
 								</a>
 							</div>
 							<div class="right">
-								<a href="<?php echo wpforms_admin_upgrade_link(); ?>" target="_blank" rel="noopener noreferrer"
+								<a href="<?php echo wpforms_admin_upgrade_link( 'welcome' ); ?>" target="_blank" rel="noopener noreferrer"
 									class="wpforms-btn wpforms-btn-block wpforms-btn-lg wpforms-btn-trans-green wpforms-upgrade-modal">
 									<span class="underline">
 										<?php esc_html_e( 'Upgrade to WPForms Pro', 'wpforms' ); ?> <span class="dashicons dashicons-arrow-right"></span>
@@ -318,5 +320,4 @@ class WPForms_Welcome {
 		<?php
 	}
 }
-
-new WPForms_Welcome;
+new WPForms_Welcome();

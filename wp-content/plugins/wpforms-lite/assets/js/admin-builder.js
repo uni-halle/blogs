@@ -251,6 +251,10 @@
 				$sectionButtons = $panel.find('.wpforms-panel-sidebar-section'),
 				$sectionButton  = $panel.find('.wpforms-panel-sidebar-section-'+section);
 
+			if ( $this.hasClass( 'upgrade-modal' ) ) {
+				return;
+			}
+
 			if ( ! $sectionButton.hasClass('active') ) {
 				$sectionButtons.removeClass('active');
 				$sectionButtons.find('.wpforms-toggle-arrow').removeClass('fa-angle-down').addClass('fa-angle-right');
@@ -693,22 +697,24 @@
 					id    = $this.parent().data('field-id');
 				$('#wpforms-field-'+id).find('.format-selected').removeClass().addClass('format-selected format-selected-'+value);
 				$('#wpforms-field-option-'+id).find('.format-selected').removeClass().addClass('format-selected format-selected-'+value);
-			})
+			});
 
 			// Real-time updates specific for Address "Scheme" option
 			$builder.on('change', '.wpforms-field-option-row-scheme select', function(e) {
 				var $this = $(this),
 					value = $this.val(),
-					id    = $this.parent().data('field-id');
-				$('#wpforms-field-'+id).find('.wpforms-address-scheme').addClass('wpforms-hide');
-				$('#wpforms-field-'+id).find('.wpforms-address-scheme-'+value).removeClass('wpforms-hide');
+					id    = $this.parent().data('field-id'),
+					$field = $('#wpforms-field-'+id);
 
-				if ( $('#wpforms-field-'+id).find('.wpforms-address-scheme-'+value+' .wpforms-country' ).children().length == 0 ) {
+				$field.find('.wpforms-address-scheme').addClass('wpforms-hide');
+				$field.find('.wpforms-address-scheme-'+value).removeClass('wpforms-hide');
+
+				if ( $field.find('.wpforms-address-scheme-'+value+' .wpforms-country' ).children().length == 0 ) {
 					$('#wpforms-field-option-'+id).find('.wpforms-field-option-row-country').addClass('wpforms-hidden');
 				} else {
 					$('#wpforms-field-option-'+id).find('.wpforms-field-option-row-country').removeClass('wpforms-hidden');
 				}
-			})
+			});
 
 			// Real-time updates for Address, Date/Time, and Name "Placeholder" field options
 			$builder.on('input', '.wpforms-field-option .format-selected input.placeholder, .wpforms-field-option-address input.placeholder', function(e) {
@@ -1161,9 +1167,15 @@
 
 								// Copy over values
 								$fieldOptions.find(':input').each(function(index, el) {
-									var $this = $(this);
-										name    = $this.attr('name'),
-										newName = name.replace(regex_fieldID, 'fields['+newFieldID+']'),
+
+									var $this = $(this),
+										name    = $this.attr('name');
+
+									if ( ! name ) {
+										return 'continue';
+									}
+
+									var newName = name.replace(regex_fieldID, 'fields['+newFieldID+']'),
 										type    = $this.attr('type');
 
 									if ( type === 'checkbox' || type === 'radio' ) {
@@ -1178,8 +1190,10 @@
 											$newFieldOptions.find('[name="'+newName+'"]').find('[value="'+optionVal+'"]').prop('selected',true);
 										}
 									} else {
-										if ($this.val() != '') {
+										if ($this.val() !== '') {
 											$newFieldOptions.find('[name="'+newName+'"]').val( $this.val() );
+										} else if ( $this.hasClass( 'wpforms-money-input' ) ) {
+											$newFieldOptions.find('[name="'+newName+'"]').val( '0.00' );
 										}
 									}
 								});
@@ -1214,11 +1228,17 @@
 		 */
 		fieldAdd: function(type, options) {
 
+			var $btn = $( '#wpforms-add-fields-' + type );
+
+			if ( $btn.hasClass( 'upgrade-modal' ) ) {
+				return;
+			}
+
 			var defaults = {
 				position   : 'bottom',
 				placeholder: false,
 				scroll     : true,
-				defaults   : false,
+				defaults   : false
 			};
 			options = $.extend( {}, defaults, options);
 
@@ -1228,7 +1248,8 @@
 				type    : type,
 				defaults: options.defaults,
 				nonce   : wpforms_builder.nonce
-			}
+			};
+
 			return $.post(wpforms_builder.ajax_url, data, function(res) {
 				if (res.success) {
 
@@ -1374,7 +1395,7 @@
 				receive: function(e, ui) {
 					fieldReceived = true;
 
-					var pos  = $(this).data('ui-sortable').currentItem.index();
+					var pos  = $(this).data('ui-sortable').currentItem.index(),
 						$el  = ui.helper,
 						type = $el.attr('data-field-type');
 
@@ -1428,8 +1449,9 @@
 			$choice.find( 'input.default').attr( 'name', 'fields['+fieldID+'][choices]['+id+'][default]' ).prop( 'checked', false );
 			$choice.find( '.preview' ).empty();
 			$choice.find( '.wpforms-image-upload-add' ).show();
+			$choice.find( '.wpforms-money-input' ).trigger( 'focusout' );
 
-			if ( checked == true ) {
+			if ( checked === true ) {
 				$parent.find( 'input.default' ).prop( 'checked', true );
 			}
 			id++;
@@ -1587,7 +1609,7 @@
 
 				var importOptions = '<div class="bulk-add-display">';
 
-				importOptions += '<p class="heading">'+wpforms_builder.bulk_add_heading+' <a href="#" class="toggle-bulk-add-presets">'+wpforms_builder.bulk_add_presets_show+'</a></p>';
+				importOptions += '<p class="heading wpforms-clear">'+wpforms_builder.bulk_add_heading+' <a href="#" class="toggle-bulk-add-presets">'+wpforms_builder.bulk_add_presets_show+'</a></p>';
 				importOptions += '<ul>';
 					for(var key in wpforms_preset_choices) {
 						importOptions += '<li><a href="#" data-preset="'+key+'" class="bulk-add-preset-insert">'+wpforms_preset_choices[key].name+'</a></li>';
@@ -1698,9 +1720,9 @@
 					scroll: false,
 					defaults: {
 						position: 'top',
-						nav_align: 'left',
+						nav_align: 'left'
 					}
-				}
+				};
 				WPFormsBuilder.fieldAdd('pagebreak', options).done(function(res){
 					s.pagebreakTop = res.data.field.id;
 					var $preview = $('#wpforms-field-'+res.data.field.id),
@@ -1719,7 +1741,7 @@
 					defaults: {
 						position: 'bottom'
 					}
-				}
+				};
 				WPFormsBuilder.fieldAdd('pagebreak', options).done(function(res){
 					s.pagebreakBottom = res.data.field.id;
 					var $preview = $('#wpforms-field-'+res.data.field.id),
@@ -2566,7 +2588,7 @@
 					columnClass: 'modal-wide',
 					title: false,
 					content: content,
-					boxWidth: '600px',
+					boxWidth: '650px',
 					buttons: {
 						confirm: {
 							text: wpforms_builder.close,
@@ -2620,6 +2642,7 @@
 					$label.text(text);
 					$icon.toggleClass('fa-check fa-cog fa-spin');
 					wpf.savedState = wpf.getFormState( '#wpforms-builder-form');
+					wpf.initialSave = false;
 					$builder.trigger('wpformsSaved');
 					if (true === redirect ) {
 						window.location.href = wpforms_builder.exit_url;

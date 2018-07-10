@@ -169,6 +169,8 @@
 										} else {
 											element.closest( 'tr' ).find( 'th' ).append( error );
 										}
+									} else if ( element.hasClass( 'wpforms-net-promoter-score-option' ) ) {
+										element.closest( 'table' ).after( error );
 									} else {
 										element.parent().parent().parent().append( error );
 									}

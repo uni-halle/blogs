@@ -1,5 +1,23 @@
 == Changelog ==
 
+= 1.4.7.2 =
+- Fixed: Honeypot field using a none unique CSS ID.
+- Fixed: Form builder Bulk Add display issues in certain use cases.
+- Fixed: Checkbox field values not saving if Show Values field option is enabled.
+
+= 1.4.7.1 =
+- Changed: Updated Russian translation.
+- Fixed: Various i18n issues.
+
+= 1.4.7 =
+- Added: New Providers class and functionality.
+- Changed: Old PHP version (5.2 and 5.3) admin warning adjusted to reflect new August 2018 time line.
+- Fixed: Multiple Choice fields showing as Radio fields in the builder preview when first created.
+- Fixed: Duplicating fields in the form builder causing issues with certain field types.
+- Fixed: Escaping issue with provider connection names contained an apostrophe.
+- Fixed: Alignment issues with the Addons page display.
+- Fixed: Incorrect text on the Welcome activation page.
+
 = 1.4.6 =
 - Added: GDPR Enhancements plugin setting [doc](https://wpforms.com/how-to-create-gdpr-compliant-forms/).
 - Added: GDPR Enhancement: User Agreement form field.

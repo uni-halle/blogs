@@ -406,4 +406,4 @@ class WPForms_Field_Email extends WPForms_Field {
 
 
 }
-new WPForms_Field_Email;
+new WPForms_Field_Email();

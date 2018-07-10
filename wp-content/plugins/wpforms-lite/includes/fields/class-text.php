@@ -196,4 +196,5 @@ class WPForms_Field_Text extends WPForms_Field {
 		); // WPCS: XSS ok.
 	}
 }
+
 new WPForms_Field_Text();

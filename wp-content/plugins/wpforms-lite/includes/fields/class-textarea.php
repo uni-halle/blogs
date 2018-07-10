@@ -137,4 +137,4 @@ class WPForms_Field_Textarea extends WPForms_Field {
 		);
 	}
 }
-new WPForms_Field_Textarea;
+new WPForms_Field_Textarea();

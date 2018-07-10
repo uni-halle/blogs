@@ -159,6 +159,7 @@ class WPForms_Builder {
 			'settings',
 			'providers',
 			'payments',
+			//'analytics',
 		) );
 
 		foreach ( $this->panels as $panel ) {
@@ -386,6 +387,8 @@ class WPForms_Builder {
 			'operator_not_contains'  => esc_html__( 'does not contain', 'wpforms' ),
 			'operator_starts'        => esc_html__( 'starts with', 'wpforms' ),
 			'operator_ends'          => esc_html__( 'ends with', 'wpforms' ),
+			'operator_greater_than'  => esc_html__( 'greater than', 'wpforms' ),
+			'operator_less_than'     => esc_html__( 'less than', 'wpforms' ),
 			'payments_entries_off'   => esc_html__( 'Form entries must be stored to accept payments. Please enable saving form entries in the General settings first.', 'wpforms' ),
 			'previous'               => esc_html__( 'Previous', 'wpforms' ),
 			'provider_required_flds' => esc_html__( 'Your form contains required {provider} settings that have not been configured. Please double-check and configure these settings to complete the connection setup.' ),
@@ -395,8 +398,8 @@ class WPForms_Builder {
 			'smart_tags'             => wpforms()->smart_tags->get(),
 			'smart_tags_show'        => esc_html__( 'Show Smart Tags', 'wpforms' ),
 			'smart_tags_hide'        => esc_html__( 'Hide Smart Tags', 'wpforms' ),
-			'select_field'           => esc_html__( '-- Select Field --', 'wpforms' ),
-			'select_choice'          => esc_html__( '-- Select Choice --', 'wpforms' ),
+			'select_field'           => esc_html__( '--- Select Field ---', 'wpforms' ),
+			'select_choice'          => esc_html__( '--- Select Choice ---', 'wpforms' ),
 			'upload_image_title'     => esc_html__( 'Upload or Choose Your Image', 'wpforms' ),
 			'upload_image_button'    => esc_html__( 'Use Image', 'wpforms' ),
 			'upload_image_remove'    => esc_html__( 'Remove Image', 'wpforms' ),

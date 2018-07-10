@@ -65,7 +65,7 @@
 		ready: function() {
 
 			// To prevent jumping (since WP core moves the notices with js),
-			// they are hidden initally with CSS, then revealed below with JS,
+			// they are hidden initially with CSS, then revealed below with JS,
 			// which runs after they have been moved.
 			$( '.notice' ).show();
 
@@ -75,10 +75,10 @@
 			// Init fancy selects via choices.js.
 			WPFormsAdmin.initChoicesJS();
 
-			// Init checkbox multiselects columns.
+			// Init checkbox multi selects columns.
 			WPFormsAdmin.initCheckboxMultiselectColumns();
 
-			// Init colorpickers via minicolors.js.
+			// Init color pickers via minicolors.js.
 			$( '.wpforms-color-picker' ).minicolors();
 
 			// Init fancy File Uploads.
@@ -421,7 +421,7 @@
 				WPFormsAdmin.entriesListFieldColumn();
 			});
 
-			// Toogle form selector dropdown.
+			// Toggle form selector dropdown.
 			$( document ).on( 'click', '#wpforms-entries-list .form-selector .toggle', function( event ) {
 
 				event.preventDefault();
@@ -659,7 +659,16 @@
 					});
 
 					$( '#wpforms-admin-addons-search' ).on( 'keyup', function() {
-						addonSearch.search( $( this ).val() );
+						var searchTerm = $( this ).val(),
+							$heading   = $( '#addons-heading' );
+
+						if ( searchTerm ) {
+							$heading.text( wpforms_admin.addon_search );
+						} else {
+							$heading.text( $heading.data( 'text' ) );
+						}
+
+						addonSearch.search( searchTerm );
 					});
 				}
 			});
@@ -867,7 +876,9 @@
 
 				event.preventDefault();
 
-				WPFormsAdmin.integrationConnect( $( this ) );
+				var button = $( this );
+
+				WPFormsAdmin.integrationConnect( button );
 			});
 
 			// Integration account disconnect.
@@ -1103,32 +1114,33 @@
 		/**
 		 * Connect integration provider account.
 		 *
+		 * @param $btn Button (.wpforms-settings-provider-connect) that was clicked to establish connection.
+		 *
 		 * @since 1.3.9
 		 */
-		integrationConnect: function( el ) {
+		integrationConnect: function( $btn ) {
 
-			var $this       = $( el ),
-				buttonWidth = $this.outerWidth(),
-				buttonLabel = $this.text(),
-				$provider   = $this.closest( '.wpforms-settings-provider' ),
+			var buttonWidth = $btn.outerWidth(),
+				buttonLabel = $btn.text(),
+				$provider   = $btn.closest( '.wpforms-settings-provider' ),
 				data        = {
 					action  : 'wpforms_settings_provider_add',
-					data    : $this.closest( 'form' ).serialize(),
-					provider: $this.data( 'provider' ),
+					data    : $btn.closest( 'form' ).serialize(),
+					provider: $btn.data( 'provider' ),
 					nonce   : wpforms_admin.nonce
 				};
 
-			$this.html( 'Connecting...' ).css( 'width', buttonWidth ).prop( 'disabled', true );
+			$btn.html( 'Connecting...' ).css( 'width', buttonWidth ).prop( 'disabled', true );
 
 			$.post( wpforms_admin.ajax_url, data, function( res ) {
 
 				if ( res.success ){
 					$provider.find( '.wpforms-settings-provider-accounts-list ul' ).append( res.data.html );
 					$provider.addClass( 'connected' );
-					$this.closest( '.wpforms-settings-provider-accounts-connect' ).slideToggle();
+					$btn.closest( '.wpforms-settings-provider-accounts-connect' ).slideToggle();
 				} else {
 					var msg = wpforms_admin.provider_auth_error;
-					if ( res.data.error_msg ) {
+					if ( res.hasOwnProperty( 'data' ) && res.data.hasOwnProperty( 'error_msg' ) ) {
 						msg += "\n" + res.data.error_msg; // jshint ignore:line
 					}
 					$.alert({
@@ -1144,10 +1156,9 @@
 							}
 						}
 					});
-					console.log(res);
 				}
 
-				$this.html( buttonLabel ).css( 'width', 'auto' ).prop( 'disabled', false );
+				$btn.html( buttonLabel ).css( 'width', 'auto' ).prop( 'disabled', false );
 
 			}).fail( function( xhr ) {
 				console.log( xhr.responseText );
@@ -1162,6 +1173,7 @@
 		integrationDisconnect: function( el ) {
 
 			var $this = $( el ),
+				$provider = $this.parents('.wpforms-settings-provider'),
 				data = {
 					action  : 'wpforms_settings_provider_disconnect',
 					provider: $this.data( 'provider' ),
@@ -1185,6 +1197,12 @@
 							$.post( wpforms_admin.ajax_url, data, function( res ) {
 								if ( res.success ){
 									$this.parent().parent().remove();
+
+									// Hide Connected status label if no more integrations are linked.
+									var numberOfIntegrations = $provider.find( '.wpforms-settings-provider-accounts-list li' ).length;
+									if ( typeof numberOfIntegrations === 'undefined' || numberOfIntegrations === 0 ) {
+										$provider.removeClass( 'connected' );
+									}
 								} else {
 									console.log( res );
 								}

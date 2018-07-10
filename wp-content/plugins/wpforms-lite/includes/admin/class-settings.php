@@ -53,7 +53,6 @@ class WPForms_Settings {
 			$this->view = isset( $_GET['view'] ) ? esc_html( $_GET['view'] ) : 'general';
 
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueues' ) );
-			add_action( 'wpforms_admin_settings_after', array( $this, 'captcha_addon_notice' ) );
 			add_action( 'wpforms_admin_page', array( $this, 'output' ) );
 
 			// Hook for addons.
@@ -578,37 +577,5 @@ class WPForms_Settings {
 
 		<?php
 	}
-
-	/**
-	 * Let Lite users know a Custom Captcha addon is available.
-	 *
-	 * @since 1.3.9
-	 */
-	public function captcha_addon_notice() {
-
-		if ( 'recaptcha' !== $this->view ) {
-			return;
-		}
-
-		// Only display to Lite users.
-		if ( wpforms()->pro ) {
-			return;
-		}
-		?>
-
-		<div class="captcha-addon-notice wpforms-clear">
-			<img src="<?php echo WPFORMS_PLUGIN_URL; ?>assets/images/settings-captcha-addon.png">
-			<h5><?php esc_html_e( 'Want to better protect your contact forms from spam?', 'wpforms' ); ?></h5>
-			<p>
-				<?php esc_html_e( 'WPForms custom captcha addon allows you to add custom questions captcha or math questions captcha to your WordPress forms. Since we know spam is a huge problem for contact forms, WPForms goes above and beyond to help you protect your forms.', 'wpforms' ); ?>
-				<br><br>
-				<a href="<?php echo wpforms_admin_upgrade_link(); ?>" class="wpforms-btn wpforms-btn-md wpforms-btn-orange wpforms-upgrade-modal" target="_blank" rel="noopener noreferrer">
-					<?php esc_html_e( 'Click here to Upgrade', 'wpforms' ); ?>
-				</a>
-			</p>
-		</div>
-		<?php
-	}
 }
-
-new WPForms_Settings;
+new WPForms_Settings();

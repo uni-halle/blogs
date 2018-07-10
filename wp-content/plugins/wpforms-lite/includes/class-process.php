@@ -102,7 +102,7 @@ class WPForms_Process {
 			return;
 		}
 
-		// Formatted form data for hooks
+		// Formatted form data for hooks.
 		$form_data = apply_filters( 'wpforms_process_before_form_data', wpforms_decode( $form->post_content ), $entry );
 
 		// Pre-process/validate hooks and filter. Data is not validated or
@@ -156,84 +156,19 @@ class WPForms_Process {
 			return;
 		}
 
-		// Validate honeypot.
+		// Validate honeypot early - before actual processing.
 		if (
 			! empty( $form_data['settings']['honeypot'] ) &&
 			'1' == $form_data['settings']['honeypot'] &&
 			! empty( $entry['hp'] )
 		) {
-				$honeypot = esc_html__( 'WPForms honeypot field triggered.', 'wpforms' );
+			$honeypot = esc_html__( 'WPForms honeypot field triggered.', 'wpforms' );
 		}
 
 		$honeypot = apply_filters( 'wpforms_process_honeypot', $honeypot, $this->fields, $entry, $form_data );
 
-		// Only trigger the processing (saving/sending entries, etc) if the entry.
-		// is not spam.
-		if ( ! $honeypot ) {
-
-			// Pass the form created date into the form data.
-			$form_data['created'] = $form->post_date;
-
-			// Format fields
-			foreach ( (array) $form_data['fields'] as $field ) {
-
-				$field_id     = $field['id'];
-				$field_type   = $field['type'];
-				$field_submit = isset( $entry['fields'][ $field_id ] ) ? $entry['fields'][ $field_id ] : '';
-
-				do_action( "wpforms_process_format_{$field_type}", $field_id, $field_submit, $form_data );
-			}
-
-			// This hook is for internal purposes and should not be leveraged.
-			do_action( 'wpforms_process_format_after', $form_data );
-
-			// Process hooks/filter - this is where most addons should hook
-			// because at this point we have completed all field validation and
-			// formatted the data.
-			$this->fields = apply_filters( 'wpforms_process_filter', $this->fields, $entry, $form_data );
-
-			do_action( 'wpforms_process', $this->fields, $entry, $form_data );
-			do_action( "wpforms_process_{$form_id}", $this->fields, $entry, $form_data );
-
-			$this->fields = apply_filters( 'wpforms_process_after_filter', $this->fields, $entry, $form_data );
-
-			// One last error check - don't proceed if there are any errors.
-			if ( ! empty( $this->errors[ $form_id ] ) ) {
-				if ( empty( $this->errors[ $form_id ]['header'] ) ) {
-					$this->errors[ $form_id ]['header'] = esc_html__( 'Form has not been submitted, please see the errors below.', 'wpforms' );
-				}
-				return;
-			}
-
-			// Success - add entry to database.
-			$entry_id = $this->entry_save( $this->fields, $entry, $form_data['id'], $form_data );
-
-			// Success - send email notification.
-			$this->entry_email( $this->fields, $entry, $form_data, $entry_id, 'entry' );
-
-			// Pass completed and formatted fields in POST.
-			$_POST['wpforms']['complete'] = $this->fields;
-
-			// Pass entry ID in POST.
-			$_POST['wpforms']['entry_id'] = $entry_id;
-
-			// Logs entry depending on log levels set.
-			wpforms_log(
-				$entry_id ? "Entry {$entry_id}" : 'Entry',
-				$this->fields,
-				array(
-					'type'    => array( 'entry' ),
-					'parent'  => $entry_id,
-					'form_id' => $form_data['id'],
-				)
-			);
-
-			// Post-process hooks.
-			do_action( 'wpforms_process_complete', $this->fields, $entry, $form_data, $entry_id );
-			do_action( "wpforms_process_complete_{$form_id}", $this->fields, $entry, $form_data, $entry_id );
-
-		} else {
-
+		// If spam - return early.
+		if ( $honeypot ) {
 			// Logs spam entry depending on log levels set.
 			wpforms_log(
 				'Spam Entry ' . uniqid(),
@@ -243,7 +178,70 @@ class WPForms_Process {
 					'form_id' => $form_data['id'],
 				)
 			);
-		} // End if().
+
+			return;
+		}
+
+		// Pass the form created date into the form data.
+		$form_data['created'] = $form->post_date;
+
+		// Format fields.
+		foreach ( (array) $form_data['fields'] as $field ) {
+
+			$field_id     = $field['id'];
+			$field_type   = $field['type'];
+			$field_submit = isset( $entry['fields'][ $field_id ] ) ? $entry['fields'][ $field_id ] : '';
+
+			do_action( "wpforms_process_format_{$field_type}", $field_id, $field_submit, $form_data );
+		}
+
+		// This hook is for internal purposes and should not be leveraged.
+		do_action( 'wpforms_process_format_after', $form_data );
+
+		// Process hooks/filter - this is where most addons should hook
+		// because at this point we have completed all field validation and
+		// formatted the data.
+		$this->fields = apply_filters( 'wpforms_process_filter', $this->fields, $entry, $form_data );
+
+		do_action( 'wpforms_process', $this->fields, $entry, $form_data );
+		do_action( "wpforms_process_{$form_id}", $this->fields, $entry, $form_data );
+
+		$this->fields = apply_filters( 'wpforms_process_after_filter', $this->fields, $entry, $form_data );
+
+		// One last error check - don't proceed if there are any errors.
+		if ( ! empty( $this->errors[ $form_id ] ) ) {
+			if ( empty( $this->errors[ $form_id ]['header'] ) ) {
+				$this->errors[ $form_id ]['header'] = esc_html__( 'Form has not been submitted, please see the errors below.', 'wpforms' );
+			}
+			return;
+		}
+
+		// Success - add entry to database.
+		$entry_id = $this->entry_save( $this->fields, $entry, $form_data['id'], $form_data );
+
+		// Success - send email notification.
+		$this->entry_email( $this->fields, $entry, $form_data, $entry_id, 'entry' );
+
+		// Pass completed and formatted fields in POST.
+		$_POST['wpforms']['complete'] = $this->fields;
+
+		// Pass entry ID in POST.
+		$_POST['wpforms']['entry_id'] = $entry_id;
+
+		// Logs entry depending on log levels set.
+		wpforms_log(
+			$entry_id ? "Entry {$entry_id}" : 'Entry',
+			$this->fields,
+			array(
+				'type'    => array( 'entry' ),
+				'parent'  => $entry_id,
+				'form_id' => $form_data['id'],
+			)
+		);
+
+		// Post-process hooks.
+		do_action( 'wpforms_process_complete', $this->fields, $entry, $form_data, $entry_id );
+		do_action( "wpforms_process_complete_{$form_id}", $this->fields, $entry, $form_data, $entry_id );
 
 		$this->entry_confirmation_redirect( $form_data );
 	}
@@ -361,6 +359,11 @@ class WPForms_Process {
 			return;
 		}
 
+		// Make sure we have and entry id.
+		if ( empty( $this->entry_id ) ) {
+			$this->entry_id = (int) $entry_id;
+		}
+
 		$fields = apply_filters( 'wpforms_entry_email_data', $fields, $entry, $form_data );
 
 		// Backwards compatibility for notifications before v1.2.3.
@@ -403,7 +406,7 @@ class WPForms_Process {
 			$email                   = apply_filters( 'wpforms_entry_email_atts', $email, $fields, $entry, $form_data, $notification_id );
 
 			// Create new email.
-			$emails = new WPForms_WP_Emails;
+			$emails = new WPForms_WP_Emails();
 			$emails->__set( 'form_data', $form_data );
 			$emails->__set( 'fields', $fields );
 			$emails->__set( 'entry_id', $this->entry_id );

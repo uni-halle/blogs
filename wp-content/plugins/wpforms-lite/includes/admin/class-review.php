@@ -54,7 +54,7 @@ class WPForms_Review {
 				'time'      => $time,
 				'dismissed' => false,
 			);
-			$load   = true;
+			update_option( 'wpforms_review', $review );
 		} else {
 			// Check if it has been dismissed or not.
 			if ( ( isset( $review['dismissed'] ) && ! $review['dismissed'] ) && ( isset( $review['time'] ) && ( ( $review['time'] + DAY_IN_SECONDS ) <= $time ) ) ) {
@@ -66,9 +66,6 @@ class WPForms_Review {
 		if ( ! $load ) {
 			return;
 		}
-
-		// Update the review option now.
-		update_option( 'wpforms_review', $review );
 
 		// Logic is slightly different depending on what's at our disposal.
 		if ( wpforms()->pro && class_exists( 'WPForms_Entry_Handler' ) ) {

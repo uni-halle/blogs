@@ -26,7 +26,12 @@
 function wpforms_is_admin_page() {
 
 	// Bail if we're not on a WPForms screen or page (also exclude form builder).
-	if ( ! is_admin() || empty( $_REQUEST['page'] ) || strpos( $_REQUEST['page'], 'wpforms' ) === false || 'wpforms-builder' === $_REQUEST['page'] ) {
+	if (
+		! is_admin() ||
+		empty( $_REQUEST['page'] ) ||
+		strpos( $_REQUEST['page'], 'wpforms' ) === false ||
+		'wpforms-builder' === $_REQUEST['page']
+	) {
 		return false;
 	}
 
@@ -67,7 +72,7 @@ function wpforms_admin_styles() {
 		'wpforms-font-awesome',
 		WPFORMS_PLUGIN_URL . 'assets/css/font-awesome.min.css',
 		null,
-		'4.4.0'
+		'4.7.0'
 	);
 
 	// Main admin styles.
@@ -148,6 +153,7 @@ function wpforms_admin_scripts() {
 		'addon_inactive'                  => esc_html__( 'Inactive', 'wpforms' ),
 		'addon_install'                   => esc_html__( 'Install Addon', 'wpforms' ),
 		'addon_error'                     => esc_html__( 'Could not install addon. Please download from wpforms.com and install manually.', 'wpforms' ),
+		'addon_search'                    => esc_html__( 'Searching Addons', 'wpforms' ),
 		'ajax_url'                        => admin_url( 'admin-ajax.php' ),
 		'cancel'                          => esc_html__( 'Cancel', 'wpforms' ),
 		'close'                           => esc_html__( 'Close', 'wpforms' ),
@@ -314,8 +320,12 @@ add_action( 'admin_print_scripts', 'wpforms_admin_hide_unrelated_notices' );
  * available globally in 1.3.9.
  *
  * @since 1.3.9
+ *
+ * @param string $medium utm_medium URL parameter.
+ *
+ * @return string.
  */
-function wpforms_admin_upgrade_link() {
+function wpforms_admin_upgrade_link( $medium = 'link' ) {
 
 	// Check if there's a constant.
 	$shareasale_id = '';
@@ -334,11 +344,13 @@ function wpforms_admin_upgrade_link() {
 	// If at this point we still don't have an ID, we really don't have one!
 	// Just return the standard upgrade URL.
 	if ( empty( $shareasale_id ) ) {
-		return 'https://wpforms.com/lite-upgrade/?discount=LITEUPGRADE&amp;utm_source=WordPress&amp;utm_medium=link&amp;utm_campaign=liteplugin';
+		return 'https://wpforms.com/lite-upgrade/?discount=LITEUPGRADE&amp;utm_source=WordPress&amp;utm_medium= ' . sanitize_key( $medium ) . '&amp;utm_campaign=liteplugin';
 	}
 
+	$url = rawurlencode( 'https://wpforms.com/lite-upgrade/?discount=LITEUPGRADE&utm_source=WordPress&utm_medium=' . sanitize_key( $medium ) . '&utm_campaign=litepluginaff&utm_content=' . sanitize_key( $shareasale_id ) );
+
 	// Whether we have a specific redirect URL to use
-	$shareasale_redirect = apply_filters( 'wpforms_shareasale_redirect', get_option( 'wpforms_shareasale_redirect', '' ) );
+	$shareasale_redirect = apply_filters( 'wpforms_shareasale_redirect', get_option( 'wpforms_shareasale_redirect', $url ) );
 
 	// Build final URL
 	$shareasale_url = sprintf( 'http://www.shareasale.com/r.cfm?B=837827&U=%s&M=64312&urllink=%s', $shareasale_id, $shareasale_redirect );
@@ -388,15 +400,15 @@ function wpforms_check_php_version() {
 			'<strong>WPForms</strong>',
 			'https://wpforms.com/docs/supported-php-version/'
 		) .
-		'<br><br>' .
+		'<br><br><em>' .
 		wp_kses(
-			__( '<em><strong>Please Note:</strong> After June 2018, WPForms will be deactivated if no further action is taken.</em>', 'wpforms' ),
+			__( '<strong>Please Note:</strong> After July 2018, if no further action is taken, WPForms functionality will be disabled.', 'wpforms' ),
 			array(
 				'strong' => array(),
 				'em'     => array(),
 			)
 		) .
-		'</p>'
+		'</em></p>'
 	);
 }
 add_action( 'admin_init', 'wpforms_check_php_version' );

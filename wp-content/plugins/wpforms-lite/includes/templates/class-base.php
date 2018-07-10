@@ -97,7 +97,7 @@ abstract class WPForms_Template {
 
 		add_filter( "wpforms_form_templates{$type}", array( $this, 'template_details' ), $this->priority );
 		add_filter( 'wpforms_create_form_args', array( $this, 'template_data' ), 10, 2 );
-		add_filter( 'wpforms_save_form_args', array( $this, 'template_replace' ), 10, 4 );
+		add_filter( 'wpforms_save_form_args', array( $this, 'template_replace' ), 10, 3 );
 		add_filter( 'wpforms_builder_template_active', array( $this, 'template_active' ), 10, 2 );
 	}
 

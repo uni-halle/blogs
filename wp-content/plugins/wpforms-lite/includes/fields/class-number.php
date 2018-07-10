@@ -181,4 +181,4 @@ class WPForms_Field_Number extends WPForms_Field {
 		);
 	}
 }
-new WPForms_Field_Number;
+new WPForms_Field_Number();

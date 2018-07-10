@@ -7,7 +7,7 @@
  * @since      1.0.0
  * @license    GPL-2.0+
  * @copyright  Copyright (c) 2016, WPForms LLC
-*/
+ */
 class WPForms_Fields {
 
 	/**
@@ -16,7 +16,6 @@ class WPForms_Fields {
 	 * @since 1.0.0
 	 */
 	public function __construct() {
-
 		$this->init();
 	}
 
@@ -27,10 +26,10 @@ class WPForms_Fields {
 	 */
 	public function init() {
 
-		// Parent class template
+		// Parent class template.
 		require_once WPFORMS_PLUGIN_DIR . 'includes/fields/class-base.php';
 
-		// Load default fields on WP init
+		// Load default fields on WP init.
 		add_action( 'init', array( $this, 'load' ) );
 	}
 
@@ -83,4 +82,4 @@ class WPForms_Fields {
 		}
 	}
 }
-new WPForms_Fields;
+new WPForms_Fields();

@@ -5,7 +5,7 @@
  * Description: Beginner friendly WordPress contact form plugin. Use our Drag & Drop form builder to create your WordPress forms.
  * Author:      WPForms
  * Author URI:  https://wpforms.com
- * Version:     1.4.6
+ * Version:     1.4.7.2
  * Text Domain: wpforms
  * Domain Path: languages
  *
@@ -34,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-// Don't allow multiple versions to be active
+// Don't allow multiple versions to be active.
 if ( class_exists( 'WPForms' ) ) {
 
 	/**
@@ -92,7 +92,7 @@ if ( class_exists( 'WPForms' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '1.4.6';
+		public $version = '1.4.7.2';
 
 		/**
 		 * The form data handler instance.
@@ -207,7 +207,7 @@ if ( class_exists( 'WPForms' ) ) {
 
 			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof WPForms ) ) {
 
-				self::$instance = new WPForms;
+				self::$instance = new WPForms();
 				self::$instance->constants();
 				self::$instance->conditional_logic_addon_check();
 				self::$instance->includes();
@@ -303,13 +303,17 @@ if ( class_exists( 'WPForms' ) ) {
 		 */
 		private function includes() {
 
+			$this->includes_magic();
+
 			// Global includes.
 			require_once WPFORMS_PLUGIN_DIR . 'includes/functions.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/class-install.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/class-form.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/class-fields.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/class-frontend.php';
+			// TODO: class-templates.php should be loaded in admin area only.
 			require_once WPFORMS_PLUGIN_DIR . 'includes/class-templates.php';
+			// TODO: class-providers.php should be loaded in admin area only.
 			require_once WPFORMS_PLUGIN_DIR . 'includes/class-providers.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/class-process.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/class-smart-tags.php';
@@ -320,7 +324,7 @@ if ( class_exists( 'WPForms' ) ) {
 			require_once WPFORMS_PLUGIN_DIR . 'includes/emails/class-emails.php';
 			require_once WPFORMS_PLUGIN_DIR . 'includes/integrations.php';
 
-			// Admin/Dashboard only includes.
+			// Admin/Dashboard only includes, also in ajax.
 			if ( is_admin() ) {
 				require_once WPFORMS_PLUGIN_DIR . 'includes/admin/admin.php';
 				require_once WPFORMS_PLUGIN_DIR . 'includes/admin/class-notices.php';
@@ -341,6 +345,27 @@ if ( class_exists( 'WPForms' ) ) {
 		}
 
 		/**
+		 * Including the new files with PHP 5.3 style.
+		 *
+		 * @since 1.4.7
+		 */
+		private function includes_magic() {
+
+			// We require PHP 5.3 for that to work.
+			if ( version_compare( phpversion(), '5.3', '<' ) ) {
+				return;
+			}
+
+			// Autoloader is put into its own file to save space here.
+			require_once WPFORMS_PLUGIN_DIR . 'autoloader.php';
+
+			/*
+			 * Properly init the providers loader, that will handle all the related logic and further loading.
+			 */
+			add_action( 'wpforms_loaded', array( '\WPForms\Providers\Loader', 'get_instance' ) );
+		}
+
+		/**
 		 * Setup objects.
 		 *
 		 * @since 1.0.0
@@ -348,12 +373,12 @@ if ( class_exists( 'WPForms' ) ) {
 		public function objects() {
 
 			// Global objects.
-			$this->form       = new WPForms_Form_Handler;
-			$this->frontend   = new WPForms_Frontend;
-			$this->process    = new WPForms_Process;
-			$this->smart_tags = new WPForms_Smart_Tags;
-			$this->logs       = new WPForms_Logging;
-			$this->preview    = new WPForms_Preview;
+			$this->form       = new WPForms_Form_Handler();
+			$this->frontend   = new WPForms_Frontend();
+			$this->process    = new WPForms_Process();
+			$this->smart_tags = new WPForms_Smart_Tags();
+			$this->logs       = new WPForms_Logging();
+			$this->preview    = new WPForms_Preview();
 
 			if ( is_admin() ) {
 				if ( ! wpforms_setting( 'hide-announcements', false ) ) {
@@ -384,4 +409,4 @@ if ( class_exists( 'WPForms' ) ) {
 
 	wpforms();
 
-} // End if().
+}
