@@ -63,7 +63,7 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
 
             //add retina support for high resolution devices
             add_filter( 'wp_generate_attachment_metadata'        , array( $this , 'czr_fn_add_retina_support') , 10 , 2 );
-            add_filter( 'delete_attachment'                      , array( $this , 'czr_fn_clean_retina_images') );
+            add_action( 'delete_attachment'                      , array( $this , 'czr_fn_clean_retina_images') );
 
             //prevent rendering the comments template more than once
             add_filter( 'tc_render_comments_template'            , array( $this,  'czr_fn_control_coments_template_rendering' ) );
@@ -471,17 +471,86 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
           if ( ! is_array($metadata) )
             return $metadata;
 
+
           //Create the retina image for the main file
-          if ( is_array($metadata) && isset($metadata['width']) && isset($metadata['height']) )
+          /*
+          when the attachment is a pdf:
+          isset($metadata['width']) && isset($metadata['height'])
+          is false as $metadata is like:
+          Array
+          (
+              [sizes] => Array
+                  (
+                      [thumbnail] => Array
+                          (
+                              [file] => 15626866-1-pdf-116x150.jpg
+                              [width] => 116
+                              [height] => 150
+                              [mime-type] => image/jpeg
+                          )
+
+                      [medium] => Array
+                          (
+                              [file] => 15626866-1-pdf-232x300.jpg
+                              [width] => 232
+                              [height] => 300
+                              [mime-type] => image/jpeg
+                          )
+
+                      [large] => Array
+                          (
+                              [file] => 15626866-1-pdf-791x1024.jpg
+                              [width] => 791
+                              [height] => 1024
+                              [mime-type] => image/jpeg
+                          )
+
+                      [full] => Array
+                          (
+                              [file] => 15626866-1-pdf.jpg
+                              [width] => 1088
+                              [height] => 1408
+                              [mime-type] => image/jpeg
+                          )
+
+                  )
+
+          )
+          */
+          if ( apply_filters( 'czr_build_retina_files_for_pdf_thumbnails', 'application/pdf' == get_post_mime_type( $attachment_id ) ) ) {
+              if ( empty( $metadata[ 'sizes' ][ 'full' ][ 'file' ] ) ) {
+                return $metadata;
+              }
+              //build attached file image from url
+              $original_pdf_file = get_attached_file( $attachment_id );
+              $dirname           = dirname( $original_pdf_file );
+              $full_image_file   = trailingslashit( $dirname ) . $metadata[ 'sizes' ][ 'full' ][ 'file' ];
+          }
+
+          //Because of the structure of the metadata array for pdf files, this will be skipped
+          if ( isset($metadata['width']) && isset($metadata['height']) )
             $this -> czr_fn_create_retina_images( get_attached_file( $attachment_id ), $metadata['width'], $metadata['height'] , false, $_is_intermediate = false );
 
+
+          //if the full_image_file var is defined (because we built it for pdf files), use it
+          $full_image_file = isset( $full_image_file ) ? $full_image_file : get_attached_file( $attachment_id );
+
           //Create the retina images for each WP sizes
-          foreach ( $metadata as $key => $data ) {
-              if ( 'sizes' != $key )
-                continue;
-              foreach ( $data as $_size_name => $_attr ) {
-                  if ( is_array( $_attr ) && isset($_attr['width']) && isset($_attr['height']) )
-                      $this -> czr_fn_create_retina_images( get_attached_file( $attachment_id ), $_attr['width'], $_attr['height'], true, $_is_intermediate = true );
+          $sizes = ! empty( $metadata[ 'sizes' ] ) ? $metadata[ 'sizes' ] : null;
+
+          if ( is_array( $sizes ) ) {
+              foreach ( $sizes as $_size_name => $_attr ) {
+                  if ( is_array( $_attr ) && isset($_attr['width']) && isset($_attr['height']) ) {
+                      $this -> czr_fn_create_retina_images(
+                        $full_image_file,
+                        $_attr['width'],
+                        $_attr['height'],
+                        //as for the pdf metadata structure, the full size name refers to the full jpg thumbnail, which we don't want to crop
+                        $crop = 'full' != $_size_name,
+                        //as for the pdf metadata structure, the full size name refers to the full jpg thumbnail, which is not what we intend as intermediate
+                        $_is_intermediate = 'full' != $_size_name
+                      );
+                  }
               }
           }
           return $metadata;
@@ -510,9 +579,10 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
               $resized_file -> resize( $width * 2, $height * 2, $crop );
               $resized_file -> save( $filename );
 
+              /*
               $info = $resized_file -> get_size();
 
-              /*return array(
+              return array(
                   'file' => wp_basename( $filename ),
                   'width' => $info['width'],
                   'height' => $info['height'],
@@ -534,22 +604,42 @@ if ( ! class_exists( 'CZR_BASE' ) ) :
        */
         function czr_fn_clean_retina_images( $attachment_id ) {
           $meta = wp_get_attachment_metadata( $attachment_id );
-          if ( !isset( $meta['file']) )
+
+          if ( ! isset( $meta['file'] ) ) {
+            //pdf case
+            if ( apply_filters( 'czr_build_retina_files_for_pdf_thumbnails', 'application/pdf' == get_post_mime_type( $attachment_id ) ) ) {
+                if ( empty( $meta[ 'sizes' ][ 'full' ][ 'file' ] ) ) {
+                  return;
+                }
+                $original_pdf_file = get_attached_file( $attachment_id );
+                $dirname           = dirname( $original_pdf_file );
+                $full_image_file   = trailingslashit( $dirname ) . $meta[ 'sizes' ][ 'full' ][ 'file' ];
+            } else {
+              return;
+            }
+          }
+
+          //if the full_image_file var is defined (because we built it for pdf files), use it
+          $full_image_file = isset( $full_image_file ) ? $full_image_file : get_attached_file( $attachment_id );
+
+          $sizes           = $meta['sizes'];
+
+          if ( !is_array( $sizes ) )
             return;
 
-          $upload_dir = wp_upload_dir();
-          $path = pathinfo( $meta['file'] );
-          $sizes = $meta['sizes'];
           // append to the sizes the original file
-          $sizes['original'] = array( 'file' => $path['basename'] );
-
-          foreach ( $sizes as $size ) {
-            $original_filename = $upload_dir['basedir'] . '/' . $path['dirname'] . '/' . $size['file'];
-            $retina_filename = substr_replace( $original_filename, '@2x.', strrpos( $original_filename, '.' ), strlen( '.' ) );
-
-            if ( file_exists( $retina_filename ) )
-              unlink( $retina_filename );
+          if ( !isset( $sizes[ 'full' ] ) ) {
+            $sizes['full'] = array( 'file' => basename( $full_image_file ) );
           }
+
+          //Remove the retina images for each WP sizes
+          foreach ( $sizes as $size ) {
+            $original_filename = str_replace( basename( $full_image_file ), $size['file'], $full_image_file );
+            $retina_filename = substr_replace( $original_filename, '@2x.', strrpos( $original_filename, '.' ), strlen( '.' ) );
+            if ( file_exists( $retina_filename ) )
+              @ unlink( $retina_filename );
+          }
+
         }//end of function
 
 
@@ -952,50 +1042,56 @@ czr_fn_setup_constants();
 //setup started using theme option ( before checking czr_fn_is_ms() that uses the user_started_before_Version function to determine it )
 czr_fn_setup_started_using_theme_option_and_constants();
 
-// load the czr-base-fmk
-if ( ! isset( $GLOBALS['czr_base_fmk_namespace'] ) ) {
-    require_once(  dirname( __FILE__ ) . '/czr-base-fmk/czr-base-fmk.php' );
-    \czr_fn\CZR_Fmk_Base( array(
-       'text_domain' => 'customizr',
-       'base_url' => CZR_BASE_URL . 'core/czr-base-fmk',
-       'version' => CUSTOMIZR_VER
-    ) );
-} else {
-    error_log('Warning => the czr_base_fmk should be loaded and instantiated by the theme.');
+
+add_action( 'after_setup_theme', 'czr_fn_load_czr_base_fmk', 15 );
+function czr_fn_load_czr_base_fmk() {
+    // load the czr-base-fmk
+    if ( ! isset( $GLOBALS['czr_base_fmk_namespace'] ) ) {
+        require_once(  dirname( __FILE__ ) . '/czr-base-fmk/czr-base-fmk.php' );
+        \czr_fn\CZR_Fmk_Base( array(
+           'text_domain' => 'customizr',
+           'base_url' => CZR_BASE_URL . 'core/czr-base-fmk',
+           'version' => CUSTOMIZR_VER
+        ) );
+    } else {
+        //error_log('Warning => the czr_base_fmk should be loaded and instantiated by the theme.');
+    }
 }
 
+add_action( 'after_setup_theme', 'czr_fn_load_social_links_module', 20 );
+function czr_fn_load_social_links_module() {
+    // load the social links module
+    require_once( CZR_BASE . CZR_CORE_PATH . 'czr-modules/social-links/social_links_module.php' );
+    czr_fn_register_social_links_module(
+        array(
+            'setting_id' => 'tc_theme_options[tc_social_links]',
 
-// load the social links module
-require_once( CZR_BASE . CZR_CORE_PATH . 'czr-modules/social-links/social_links_module.php' );
-czr_fn_register_social_links_module(
-    array(
-        'setting_id' => 'tc_theme_options[tc_social_links]',
+            'base_url_path' => CZR_BASE_URL . '/core/czr-modules/social-links',
+            'version' => CUSTOMIZR_VER,
 
-        'base_url_path' => CZR_BASE_URL . '/core/czr-modules/social-links',
-        'version' => CUSTOMIZR_VER,
+            'option_value' => czr_fn_opt( 'tc_social_links' ), // for dynamic registration
+            'setting' => array(
+                'type' => 'option',
+                'default'  => array(),
+                'transport' => czr_fn_is_partial_refreshed_on() ? 'postMessage' : 'refresh',
+                'sanitize_callback' => 'czr_fn_sanitize_callback__czr_social_module',
+                'validate_callback' => 'czr_fn_validate_callback__czr_social_module'
+            ),
 
-        'option_value' => czr_fn_opt( 'tc_social_links' ), // for dynamic registration
-        'setting' => array(
-            'type' => 'option',
-            'default'  => array(),
-            'transport' => czr_fn_is_partial_refreshed_on() ? 'postMessage' : 'refresh',
-            'sanitize_callback' => 'czr_fn_sanitize_callback__czr_social_module',
-            'validate_callback' => 'czr_fn_validate_callback__czr_social_module'
-        ),
+            'section' => array(
+                'id' => 'socials_sec',
+                'title' => __( 'Social links', 'customizr' ),
+                'panel' => 'tc-global-panel',
+                'priority' => 20
+            ),
 
-        'section' => array(
-            'id' => 'socials_sec',
-            'title' => __( 'Social links', 'customizr' ),
-            'panel' => 'tc-global-panel',
-            'priority' => 20
-        ),
-
-        'control' => array(
-            'priority' => 10,
-            'label' => __( 'Create and organize your social links', 'customizr' ),
-            'type'  => 'czr_module',
+            'control' => array(
+                'priority' => 10,
+                'label' => __( 'Create and organize your social links', 'customizr' ),
+                'type'  => 'czr_module',
+            )
         )
-    )
-);
+    );
+}
 
 require_once( get_template_directory() . ( czr_fn_is_ms() ? '/core/init.php' : '/inc/czr-init-ccat.php' ) );
