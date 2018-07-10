@@ -1,0 +1,160 @@
+
+PHP CODE SNIFFER VIOLATION SOURCE SUMMARY
+----------------------------------------------------------------------------------------
+    SOURCE                                                                         COUNT
+----------------------------------------------------------------------------------------
+[x] Generic.WhiteSpace.DisallowSpaceIndent.SpacesUsed                              996
+[ ] WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound          936
+[ ] Squiz.Commenting.FunctionComment.MissingParamTag                               854
+[ ] WordPress.XSS.EscapeOutput.OutputNotEscaped                                    535
+[ ] WordPress.PHP.StrictComparisons.LooseComparison                                413
+[x] Squiz.Strings.DoubleQuoteUsage.NotRequired                                     381
+[ ] WordPress.WP.I18n.MissingArgDomain                                             350
+[ ] Squiz.Commenting.FunctionComment.MissingParamComment                           333
+[ ] WordPress.XSS.EscapeOutput.UnsafePrintingFunction                              319
+[ ] WordPress.PHP.StrictInArray.MissingTrueStrict                                  271
+[x] WordPress.Arrays.CommaAfterArrayItem.NoComma                                   260
+[ ] WordPress.WP.I18n.MissingTranslatorsComment                                    253
+[ ] Squiz.Commenting.FunctionComment.MissingParamName                              229
+[ ] Squiz.PHP.DisallowInlineIf.Found                                               227
+[x] Squiz.Commenting.LongConditionClosingComment.Missing                           189
+[x] WordPress.Arrays.ArrayKeySpacingRestrictions.SpacesAroundArrayKeys             142
+[x] WordPress.Arrays.ArrayIndentation.ItemNotAligned                               116
+[ ] Squiz.PHP.DisallowMultipleAssignments.Found                                    102
+[ ] Squiz.PHP.NonExecutableCode.Unreachable                                        101
+[ ] WordPress.CSRF.NonceVerification.NoNonceVerification                           90
+[ ] Squiz.Commenting.VariableComment.MissingVar                                    88
+[x] Generic.WhiteSpace.ScopeIndent.IncorrectExact                                  86
+[ ] Squiz.Commenting.FunctionComment.Missing                                       84
+[ ] Squiz.Commenting.VariableComment.Missing                                       75
+[ ] Squiz.PHP.DisallowComparisonAssignment.AssignedComparison                      60
+[x] WordPress.Arrays.ArrayDeclarationSpacing.AssociativeArrayFound                 58
+[x] WordPress.Arrays.MultipleStatementAlignment.DoubleArrowNotAligned              57
+[ ] WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound             57
+[ ] WordPress.PHP.YodaConditions.NotYoda                                           52
+[ ] Generic.PHP.NoSilencedErrors.Discouraged                                       42
+[ ] WordPress.WP.PreparedSQL.NotPrepared                                           41
+[x] WordPress.Arrays.ArrayIndentation.CloseBraceNotAligned                         40
+[x] Generic.Formatting.MultipleStatementAlignment.NotSameWarning                   39
+[x] PEAR.Functions.FunctionCallSignature.Indent                                    38
+[ ] WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound          38
+[ ] WordPress.WhiteSpace.PrecisionAlignment.Found                                  36
+[x] WordPress.WhiteSpace.OperatorSpacing.NoSpaceAfter                              32
+[x] Generic.ControlStructures.InlineControlStructure.NotAllowed                    29
+[ ] PSR2.Methods.MethodDeclaration.Underscore                                      29
+[x] Squiz.Commenting.FunctionComment.SpacingAfterParamType                         28
+[ ] WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode                28
+[ ] WordPress.WP.AlternativeFunctions.json_encode_json_encode                      26
+[ ] WordPress.NamingConventions.ValidVariableName.NotSnakeCase                     26
+[ ] WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound          25
+[ ] Generic.Commenting.DocComment.Empty                                            25
+[ ] Squiz.PHP.DisallowBooleanStatement.Found                                       21
+[ ] Generic.Strings.UnnecessaryStringConcat.Found                                  20
+[ ] Squiz.Commenting.BlockComment.CloserSameLine                                   20
+[ ] WordPress.NamingConventions.ValidVariableName.NotSnakeCaseMemberVar            19
+[ ] Generic.Commenting.DocComment.ShortNotCapital                                  19
+[x] Squiz.Commenting.PostStatementComment.Found                                    17
+[ ] Squiz.Commenting.BlockComment.NoEmptyLineBefore                                16
+[x] Squiz.ControlStructures.ControlSignature.SpaceAfterCloseBrace                  15
+[ ] Squiz.PHP.DisallowComparisonAssignment.AssignedBool                            15
+[ ] Squiz.PHP.ForbiddenFunctions.Found                                             15
+[ ] Squiz.Commenting.VariableComment.EmptyVar                                      13
+[ ] Squiz.Commenting.BlockComment.NoCapital                                        12
+[x] Squiz.Commenting.InlineComment.SpacingAfter                                    10
+[ ] Squiz.Commenting.FunctionComment.ParamNameNoMatch                              10
+[ ] Squiz.Commenting.FileComment.SpacingAfterComment                               10
+[x] WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceBetweenStructureColon      9
+[ ] WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid                9
+[ ] Squiz.PHP.DiscouragedFunctions.Discouraged                                     9
+[ ] Squiz.PHP.Eval.Discouraged                                                     9
+[x] PEAR.Functions.FunctionCallSignature.SpaceBeforeCloseBracket                   8
+[x] Squiz.ControlStructures.ControlSignature.SpaceAfterCloseParenthesis            8
+[ ] WordPress.PHP.DevelopmentFunctions.error_log_var_export                        8
+[ ] Squiz.Commenting.FunctionComment.MissingReturnType                             8
+[x] Squiz.Commenting.InlineComment.NoSpaceBefore                                   7
+[ ] WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare                         7
+[ ] PHPCompatibility.PHP.NewConstants.json_unescaped_unicodeFound                  7
+[ ] WordPress.Functions.DontExtract.extract_extract                                7
+[x] Generic.Formatting.DisallowMultipleStatements.SameLine                         6
+[ ] WordPress.PHP.DevelopmentFunctions.error_log_print_r                           6
+[ ] WordPress.WP.AlternativeFunctions.parse_url_parse_url                          6
+[ ] Squiz.PHP.EmbeddedPhp.MultipleStatements                                       6
+[ ] WordPress.CodeAnalysis.AssignmentInCondition.Found                             6
+[x] Squiz.ControlStructures.ControlSignature.SpaceAfterKeyword                     5
+[ ] Generic.CodeAnalysis.EmptyStatement.DetectedIf                                 5
+[x] Squiz.WhiteSpace.SuperfluousWhitespace.EndLine                                 4
+[x] PEAR.Functions.FunctionCallSignature.SpaceAfterOpenBracket                     4
+[x] Generic.Commenting.DocComment.SpacingAfter                                     4
+[x] PEAR.Files.IncludingFile.BracketsNotRequired                                   4
+[x] Generic.WhiteSpace.ScopeIndent.Incorrect                                       4
+[ ] Squiz.Commenting.FunctionComment.InvalidNoReturn                               4
+[ ] WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents          4
+[ ] WordPress.Variables.GlobalVariables.OverrideProhibited                         4
+[ ] WordPress.WP.AlternativeFunctions.file_system_read_file_get_contents           4
+[ ] WordPress.NamingConventions.ValidVariableName.StringNotSnakeCase               4
+[ ] Squiz.Scope.MemberVarScope.Missing                                             4
+[ ] WordPress.DB.PreparedSQLPlaceholders.LikeWildcardsInQueryWithPlaceholder       4
+[x] WordPress.WhiteSpace.ControlStructureSpacing.BlankLineAfterEnd                 3
+[ ] Generic.Files.OneClassPerFile.MultipleFound                                    3
+[ ] WordPress.PHP.DiscouragedPHPFunctions.serialize_serialize                      3
+[ ] WordPress.PHP.DevelopmentFunctions.error_log_var_dump                          3
+[ ] Squiz.Commenting.FileComment.MissingPackageTag                                 3
+[ ] Squiz.Commenting.LongConditionClosingComment.SpacingBefore                     3
+[ ] WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound          3
+[ ] WordPress.NamingConventions.ValidVariableName.MemberNotSnakeCase               3
+[x] WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceBeforeOpenParenthesis      2
+[x] WordPress.WhiteSpace.ControlStructureSpacing.NoSpaceAfterStructureOpen         2
+[x] Squiz.PHP.EmbeddedPhp.ContentBeforeOpen                                        2
+[x] Squiz.PHP.EmbeddedPhp.ContentAfterEnd                                          2
+[x] Squiz.Commenting.BlockComment.NoNewLine                                        2
+[x] Squiz.PHP.EmbeddedPhp.ContentBeforeEnd                                         2
+[x] Squiz.Commenting.LongConditionClosingComment.Invalid                           2
+[x] WordPress.WhiteSpace.ControlStructureSpacing.ExtraSpaceBeforeCloseParenthesis  2
+[x] Squiz.PHP.EmbeddedPhp.ContentAfterOpen                                         2
+[ ] WordPress.PHP.DiscouragedPHPFunctions.serialize_unserialize                    2
+[ ] Generic.CodeAnalysis.UselessOverridingMethod.Found                             2
+[ ] Generic.CodeAnalysis.EmptyStatement.DetectedElse                               2
+[ ] Generic.CodeAnalysis.EmptyStatement.DetectedElseif                             2
+[ ] Squiz.Commenting.VariableComment.WrongStyle                                    2
+[ ] WordPress.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition             2
+[ ] Squiz.PHP.DisallowObEndFlush.Found                                             2
+[ ] WordPress.WP.AlternativeFunctions.file_system_read_file_put_contents           2
+[ ] WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber                   2
+[x] Generic.Functions.OpeningFunctionBraceKernighanRitchie.SpaceBeforeBrace        1
+[x] Squiz.Commenting.DocCommentAlignment.NoSpaceAfterStar                          1
+[x] WordPress.Arrays.MultipleStatementAlignment.LongIndexSpaceBeforeDoubleArrow    1
+[x] PSR2.ControlStructures.ElseIfDeclaration.NotAllowed                            1
+[x] WordPress.WhiteSpace.ControlStructureSpacing.OpenBraceNotSameLine              1
+[x] PEAR.Files.IncludingFile.UseRequireOnce                                        1
+[x] Generic.Functions.FunctionCallArgumentSpacing.SpaceBeforeComma                 1
+[x] Generic.Formatting.MultipleStatementAlignment.IncorrectWarning                 1
+[x] Squiz.WhiteSpace.SuperfluousWhitespace.EmptyLines                              1
+[x] Generic.Commenting.DocComment.SpacingBeforeTags                                1
+[x] Generic.Files.EndFileNewline.NotFound                                          1
+[x] WordPress.Arrays.ArrayIndentation.MultiLineArrayItemNotAligned                 1
+[x] WordPress.WhiteSpace.SemicolonSpacing.Incorrect                                1
+[ ] Generic.Classes.DuplicateClassName.Found                                       1
+[ ] WordPress.WP.I18n.NonSingularStringLiteralPlural                               1
+[ ] WordPress.WP.I18n.NonSingularStringLiteralSingle                               1
+[ ] WordPress.PHP.DevelopmentFunctions.error_log_trigger_error                     1
+[ ] WordPress.NamingConventions.ValidHookName.UseUnderscores                       1
+[ ] WordPress.PHP.DevelopmentFunctions.prevent_path_disclosure_error_reporting     1
+[ ] WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet                           1
+[ ] Generic.CodeAnalysis.EmptyStatement.DetectedCatch                              1
+[ ] WordPress.PHP.DiscouragedPHPFunctions.runtime_configuration_error_reporting    1
+[ ] Squiz.Operators.ValidLogicalOperators.NotAllowed                               1
+[ ] Squiz.Commenting.BlockComment.HasEmptyLineBefore                               1
+[ ] PHPCompatibility.PHP.NewClosure.ThisFound                                      1
+[ ] Squiz.Commenting.FileComment.WrongStyle                                        1
+[ ] Squiz.Commenting.ClassComment.Missing                                          1
+[ ] PHPCompatibility.PHP.NewClosure.ThisFoundOutsideClass                          1
+[ ] WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode                1
+[ ] Squiz.Commenting.FunctionCommentThrowTag.Missing                               1
+[ ] Generic.Commenting.DocComment.LongNotCapital                                   1
+----------------------------------------------------------------------------------------
+A TOTAL OF 8743 SNIFF VIOLATIONS WERE FOUND IN 148 SOURCES
+----------------------------------------------------------------------------------------
+PHPCBF CAN FIX THE 52 MARKED SOURCES AUTOMATICALLY (2630 VIOLATIONS IN TOTAL)
+----------------------------------------------------------------------------------------
+
+
