@@ -46,15 +46,21 @@ $Bsb4Design = new \BootstrapBasic4\Bsb4Design();
           ?>
             <i class="fa fa-info-circle" aria-hidden="true" title="Basis-Info"> </i><?php endif ?>
           <?php if ($schulform = get_the_term_list($post->ID, 'schulform', '', ', ')): ?><?= $schulform ?> | <?php endif ?>
-          <?php if( $klasse ): ?> Klasse <?php echo $klasse; ?>	| <?php endif; ?>
+          <?php /*if ($klasse = get_the_term_list($post->ID, 'klasse', 'Klasse ', ', ')): ?><?= $klasse ?> | <?php endif */?>
+          <?php if ($klasse) {
+            echo '<a href="'.get_site_url().'/klassenstufe/?_sfm_klassenstufe_num='.$klasse.'" title="Alle Fälle mit Klassenstufe '.$klasse.'">Klasse '.$klasse.'</a> |';
+          }
+          ?>
           <?php if ($fach = get_the_term_list($post->ID, 'fach', '', ', ')): ?><?= $fach ?><?php endif ?>
           <?php if ($einrichtung = get_the_term_list($post->ID, 'einrichtung', '', ', ')): ?><?= $einrichtung ?> | <?php endif ?>
           <?php if ($handlungsfeldau = get_the_term_list($post->ID, 'handlungsfeld-au', '', ', ')): ?><?= $handlungsfeldau ?> <?php endif ?> 
           <?php if ($handlungsfeldkj = get_the_term_list($post->ID, 'handlungsfeld-kj', '', ', ')): ?><?= $handlungsfeldkj ?> <?php endif ?> 
           <?php if ($handlungsfeldeb = get_the_term_list($post->ID, 'handlungsfeld-eb', '', ', ')): ?><?= $handlungsfeldeb ?> <?php endif ?> 	
           <br />
+<!--
           <i class="fas fa-file" title="Datei-Formate"></i>
           <?php if ($format = get_the_term_list($post->ID, 'format', '', ', ')): ?><?= $format ?> <?php endif ?> 
+-->
         </div>
       </div><!-- .entry-meta -->
 

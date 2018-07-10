@@ -52,7 +52,10 @@ if (!class_exists('\\BootstrapBasic4\\Bsb4SearchAndFilter')) {
             if ($min === '1' && $max === '13') {
               $render_button = false;
             } else {
-              $label = 'Klassenstufe:' . $min . '-' . $max;
+              $label = 'Klassenstufe:' . $min;
+              if (!empty($max)) {
+                $label .= '-' . $max;
+              }
             }
           } else {
             $label = $values['name'] . ':' . $values['active_terms'][0]['name'];

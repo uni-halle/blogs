@@ -18,7 +18,7 @@ $bsb4Sidebars = new \BootstrapBasic4\Bsb4Sidebars();
       <div id="accordion" class="accordion">
         <div class="card">
           <div class="card-header" id="headingTags">
-            <h1 class="mb-0 widget-title"  data-toggle="collapse" data-target="#collapseTags" aria-expanded="true" aria-controls="collapseTags">
+            <h1 class="mb-0 collapsed widget-title"  data-toggle="collapse" data-target="#collapseTags" aria-expanded="false" aria-controls="collapseTags">
               Schlagwörter
             </h1>
           </div>
@@ -46,6 +46,9 @@ $bsb4Sidebars = new \BootstrapBasic4\Bsb4Sidebars();
               $widget->widget($args, $instance);
               ?>
 
+            </div>
+            <div class="card-body">
+				<?php echo do_shortcode('[searchandfilter id="2268"]'); ?>
             </div>
           </div>
         </div>
@@ -157,7 +160,7 @@ $bsb4Sidebars = new \BootstrapBasic4\Bsb4Sidebars();
           </div>
         </div>
         <!-- Interpretationen END -->
-         <!-- Mitmachen START -->
+        <!-- Mitmachen START -->
         <div class="card">
           <div class="card-header" id="headingInterpretationen">
             <h1 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseMitmachen" aria-expanded="false" aria-controls="collapseMitmachen">
@@ -166,11 +169,18 @@ $bsb4Sidebars = new \BootstrapBasic4\Bsb4Sidebars();
           </div>
           <div id="collapseMitmachen" class="collapse" aria-labelledby="headingMitmachen" data-parent="#accordion">
             <div class="card-body">
-	           Fall_einreichen
+              <?php
+              wp_nav_menu(array(
+                  'menu' => 265 // Menu 'einreichen'
+              ));
+              ?>
             </div>
           </div>
         </div>
         <!-- Mitmachen END -->
+        <div class="hidden">
+          <?php echo do_shortcode('[searchandfilter id="2215"]'); ?>
+        </div>
     </aside>
   <?php } ?>
 </div>

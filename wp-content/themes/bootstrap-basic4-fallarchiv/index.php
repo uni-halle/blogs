@@ -40,7 +40,7 @@ get_sidebar();
                         while (have_posts()) {
                             the_post();
 //                             the_meta();
-                            get_template_part('template-parts/content', get_post_format());
+                            get_template_part('template-parts/content', get_post_type());
                         }// endwhile;
 
                         $Bsb4Design = new \BootstrapBasic4\Bsb4Design();

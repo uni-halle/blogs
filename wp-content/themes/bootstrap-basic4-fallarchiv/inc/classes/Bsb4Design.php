@@ -304,6 +304,7 @@ if (!class_exists('\\BootstrapBasic4\\Bsb4Design')) {
       $sfid = \BootstrapBasic4\Bsb4SearchAndFilter::get_sfid();
       $args = $wp_query->query_vars;
       $args['paged'] = 0;
+      $args['posts_per_page'] = 10000;
       $posts_array = get_posts($args);
       $numberOfProtectedPosts = 0;
       foreach ($posts_array as $p) {
@@ -320,9 +321,22 @@ if (!class_exists('\\BootstrapBasic4\\Bsb4Design')) {
             $numberOfProtectedPosts.= ' Fall';
           }
           echo '(davon ' . $numberOfProtectedPosts . ' geschützt)</span>';
+        } else {
+          echo '</span>';
         }
       } else if ($sfid) {
-        echo '<span>Interpretationen (' . $wp_query->found_posts . '/' . wp_count_posts('interpretation')->publish . ')</span>';
+        echo '<span>' . $wp_query->found_posts . ' Interpretationen ';
+        if ($numberOfProtectedPosts) {
+          if ($numberOfProtectedPosts > 1) {
+            $numberOfProtectedPosts.= ' Interpretationen';
+          } else {
+            $numberOfProtectedPosts.= ' Interpretation';
+          }
+          echo '(davon ' . $numberOfProtectedPosts . ' geschützt)</span>';
+        } else {
+          echo '</span>';
+        }
+        //(/' . wp_count_posts('interpretation')->publish . ')</span>';
       } else {
         
       }

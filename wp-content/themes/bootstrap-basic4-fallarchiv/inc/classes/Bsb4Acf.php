@@ -24,8 +24,6 @@ if (!class_exists('\\BootstrapBasic4\\Bsb4Acf')) {
     public function addActionsFilters() {
       add_action('admin_enqueue_scripts', array(&$this, 'acf_admin_style'));
 
-      add_filter('acf/update_value/name=klassenstufe', array(&$this, 'updateValueKlassenstufe'), 10, 3);
-
       /** reziproke Beziehung zu sich selbst */
       add_filter('acf/update_value/key=' . $this->field_keys['rel_diskussion_zusfaelle'], array(&$this, 'reciprocalRelationDiskussionZusfaelle'), 10, 3);
 
@@ -36,13 +34,6 @@ if (!class_exists('\\BootstrapBasic4\\Bsb4Acf')) {
 
     function acf_admin_style() {
       wp_enqueue_style('fallarchiv-admin-acf-styles', get_stylesheet_directory_uri() . '/css/admin_acf.css');
-    }
-
-    public function updateValueKlassenstufe($value, $post_id, $field) {
-      $klasse = get_term(intval($value), 'klasse');
-      $klasse_num = intval($klasse->name);
-      update_field('klassenstufe_num', $klasse_num, $post_id);
-      return $value;
     }
 
     public function reciprocalRelationDiskussionZusfaelle($value, $post_id, $field) {

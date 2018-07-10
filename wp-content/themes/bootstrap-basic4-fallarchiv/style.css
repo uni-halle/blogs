@@ -450,6 +450,8 @@ nav ul ul span {
 */
 td, th {
     border-bottom: none;
+    vertical-align: top;
+    font-size: 0.8em;
     }
 div.table { 
       display: table; 
@@ -538,3 +540,9 @@ button {
 	margin-top: 10px;
 	font-weight: 300;
 	}
+.card-body li {
+	list-style: none;
+}
+.hidden {
+  display:none;
+}

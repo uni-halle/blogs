@@ -74,12 +74,12 @@ get_sidebar('left');
 				<?php the_content($Bsb4Design->continueReading(true)); ?> 
 			<hr />
 				<!-- Download -->				
-					<?php if( have_rows('idownload') ): ?>       
+					<?php if( have_rows('dateien') ): ?>       
 	                  <ul class="interpretation">         
-		                <?php while( have_rows('idownload') ): the_row();                 
+		                <?php while( have_rows('dateien') ): the_row();                 
 			                 // vars                 
 // 			                 $titel_interpretation = get_sub_field('titel_interpretation');                
-			                 $datei_interpretation = get_sub_field('datei_interpretation');                 
+			                 $datei_interpretation = get_sub_field('datei_datei');                 
 // 			                 $autor_interpretation = get_sub_field('autor_interpretation');     			                           
 			                 ?>                 
 							 <li class="datei">                         

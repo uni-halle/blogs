@@ -8,4 +8,5 @@ Copyright(c) 2018 codemacher UG (haftungsbeschränkt) All Rights Reserved.
 
 /** ACF Backend */
 div.acf-field-number[data-name="klassenstufe_num"] {
+	/*visibility: hidden;*/
 }

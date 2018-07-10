@@ -102,6 +102,7 @@ function build_taxonomies() {
       'meta_box_cb' => false
           )
   );
+  /*
   register_taxonomy('klasse', 'post', array(
       'hierarchical' => true,
       'label' => 'Klassenstufe',
@@ -110,6 +111,8 @@ function build_taxonomies() {
       'meta_box_cb' => false
           )
   );
+   * 
+   */
   register_taxonomy('fach', 'post', array(
       'hierarchical' => true,
       'label' => 'Fach',

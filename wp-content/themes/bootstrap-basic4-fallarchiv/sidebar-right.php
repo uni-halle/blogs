@@ -20,6 +20,7 @@ $bsb4Sidebars = new \BootstrapBasic4\Bsb4Sidebars();
         ));
         ?>
       </div>
+<!--
       <hr>
       <div class="widget widget_nav_menu">
         <h5>Themenschwerpunkte</h5>
@@ -29,6 +30,7 @@ $bsb4Sidebars = new \BootstrapBasic4\Bsb4Sidebars();
         ));
         ?>
       </div>
+-->
     </aside>
 <?php } ?>
 </div>

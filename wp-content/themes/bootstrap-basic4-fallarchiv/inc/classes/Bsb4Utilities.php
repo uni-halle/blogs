@@ -13,9 +13,10 @@ namespace BootstrapBasic4;
 if (!class_exists('\\BootstrapBasic4\\Bsb4Utilities')) {
 
   class Bsb4Utilities {
-    protected static $wissen_cats = array(5,7,8,9);
+//    protected static $wissen_cats = array(5,7,8,9);
+    protected static $wissen_cats = array(228,231,230,229);
     
-    protected static $faelle_cats = array(2,6,10,3,4);
+    protected static $faelle_cats = array(1,2,3,4,233);
     public static function faelle_count() {
       $args = array(
           'include' => \BootstrapBasic4\Bsb4Utilities::$faelle_cats
