@@ -157,7 +157,7 @@ class WPSEO_OpenGraph_Image {
 	 * @return void
 	 */
 	public function add_image( $attachment ) {
-		 // In the past `add_image` accepted an image url, so leave this for backwards compatibility.
+		// In the past `add_image` accepted an image url, so leave this for backwards compatibility.
 		if ( is_string( $attachment ) ) {
 			$attachment = array( 'url' => $attachment );
 		}
@@ -244,7 +244,7 @@ class WPSEO_OpenGraph_Image {
 			return;
 		}
 
-		$this->add_content_images( get_post( $post_id ) );
+		$this->add_first_usable_content_image( get_post( $post_id ) );
 	}
 
 	/**
@@ -307,13 +307,13 @@ class WPSEO_OpenGraph_Image {
 	}
 
 	/**
-	 * Retrieve images from the post content.
+	 * Adds the first usable attachment image from the post content.
 	 *
 	 * @param object $post The post object.
 	 *
 	 * @return void
 	 */
-	private function add_content_images( $post ) {
+	private function add_first_usable_content_image( $post ) {
 		$image_finder = new WPSEO_Content_Images();
 		$images       = $image_finder->get_images( $post->ID, $post );
 
@@ -321,13 +321,20 @@ class WPSEO_OpenGraph_Image {
 			return;
 		}
 
-		foreach ( $images as $image_url => $attachment_id ) {
-			if ( $attachment_id !== 0 ) {
-				$this->add_image_by_id( $attachment_id );
+		foreach ( $images as $image_url ) {
+			$attachment_id = WPSEO_Image_Utils::get_attachment_by_url( $image_url );
+
+			// If image is hosted externally, skip it and continue to the next image.
+			if ( $attachment_id === 0 ) {
+				continue;
 			}
 
-			if ( $attachment_id === 0 ) {
-				$this->add_image_by_url( $image_url );
+			// If locally hosted image meets the requirements, add it as OG image.
+			$this->add_image_by_id( $attachment_id );
+
+			// If an image has been added, we're done.
+			if ( $this->has_images() ) {
+				return;
 			}
 		}
 	}
@@ -548,7 +555,7 @@ class WPSEO_OpenGraph_Image {
 	 */
 	protected function get_extension_from_url( $url ) {
 		$extension = '';
-		$path = $this->get_image_url_path( $url );
+		$path      = $this->get_image_url_path( $url );
 
 		if ( $path === '' ) {
 			return $extension;
