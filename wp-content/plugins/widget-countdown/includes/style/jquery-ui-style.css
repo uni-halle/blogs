@@ -754,7 +754,7 @@ button.ui-button::-moz-focus-inner {
 	border-bottom: none;
 	border-right: none;
 }
-/* Vertically center icon */
+/* Vertically center icon style */
 .ui-spinner .ui-icon {
 	position: absolute;
 	margin-top: -8px;

@@ -6,13 +6,13 @@ class wpdevart_countdown extends WP_Widget {
 	private static $id_for_content=0;
 	// Constructor //	
 	function __construct() {		
-		$widget_ops = array( 'classname' => 'wpdevart_countdown', 'description' => 'Countdown timer for widget ' ); // Widget Settings code
+		$widget_ops = array( 'classname' => 'wpdevart_countdown', 'description' => 'Countdown timer for widget ' ); // Widget code
 		$control_ops = array( 'id_base' => 'wpdevart_countdown' ); // Widget Controls
 		parent::__construct( 'wpdevart_countdown', 'Countdown', $widget_ops, $control_ops ); // Create the widget
 
 	}
 
-	/* Displaying countdown in frontend*/
+	/* Displaying countdown in the front end*/
 	
 	function widget($args, $instance) {
 		self::$id_for_content++;
@@ -30,7 +30,7 @@ class wpdevart_countdown extends WP_Widget {
 		echo $after_widget;
 	}
 	
-/*############################### Update Settings Function #######################################*/	
+/*############################### Update settings Function #######################################*/	
 	
     	function update($new_instance, $old_instance) {	
 		extract( $args );
@@ -52,7 +52,7 @@ class wpdevart_countdown extends WP_Widget {
 		
 	}
 
-	/* Function of Admin page standard options */
+	/* Function of the Admin page standard options */
 	function form($instance) {
 		
 		$defaults = array( 
@@ -63,7 +63,7 @@ class wpdevart_countdown extends WP_Widget {
 			'text_for_second' 		=> 'Seconds',
 			'start_time' 			=> mktime (date("H"), date("i"), date("s"),date("n"), date("j"),date("Y")),
 			'end_time_type' 		=> 'time',
-			'end_time' 				=> '0,9,9',
+			'end_time' 				=> '0,7,7',
 			'end_time_date' 		=> date('d-m-Y 23:59'),
 			'action_end_time' 		=> 'hide',
 			'content' 		=> '',

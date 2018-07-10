@@ -3,7 +3,7 @@
 Plugin Name: Countdown Wpdevart 
 Plugin URI: http://wpdevart.com/wordpress-countdown-plugin/
 Description: Countdown plugin is an nice tool to create and insert countdown timers into your posts/pages and widgets .
-Version: 1.9.6
+Version: 1.9.8
 Author: wpdevart
 Author URI: http://wpdevart.com 
 License: GPL3 http://www.gnu.org/licenses/gpl-3.0.html

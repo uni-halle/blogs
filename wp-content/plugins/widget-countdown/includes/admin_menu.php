@@ -9,7 +9,7 @@ class wpdevart_countdown_admin_menu{
 	private $plugin_url;
 	private $text_parametrs;
 
-	/*###################### Constract params function ##################*/		
+	/*###################### Constract parameters function ##################*/		
 	
 	function __construct($param){
 				
@@ -484,18 +484,18 @@ die;
 	
 	public function featured_plugins(){
 		$plugins_array=array(
-			'gallery_album'=>array(
-						'image_url'		=>	$this->plugin_url.'images/featured_plugins/gallery-album-icon.png',
-						'site_url'		=>	'http://wpdevart.com/wordpress-gallery-plugin',
-						'title'			=>	'WordPress Gallery plugin',
-						'description'	=>	'Gallery plugin is an useful tool that will help you to create Galleries and Albums. Try our nice Gallery views and awesome animations.'
-						),
 			'countdown_extended'=>array(
 						'image_url'		=>	$this->plugin_url.'images/featured_plugins/icon-128x128.png',
 						'site_url'		=>	'http://wpdevart.com/wordpress-countdown-extended-version',
 						'title'			=>	'Countdown - Extended version ',
 						'description'	=>	'Countdown extended is an fresh and extended version of countdown timer. You can easily create and add countdown timers to your website.'
-						),										
+						),
+		    'gallery_album'=>array(
+						'image_url'		=>	$this->plugin_url.'images/featured_plugins/gallery-album-icon.png',
+						'site_url'		=>	'http://wpdevart.com/wordpress-gallery-plugin',
+						'title'			=>	'WordPress Gallery plugin',
+						'description'	=>	'Gallery plugin is an useful tool that will help you to create Galleries and Albums. Try our nice Gallery views and awesome animations.'
+						),
 			'coming_soon'=>array(
 						'image_url'		=>	$this->plugin_url.'images/featured_plugins/coming_soon.jpg',
 						'site_url'		=>	'http://wpdevart.com/wordpress-coming-soon-plugin/',

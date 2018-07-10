@@ -1,123 +1,96 @@
-=== Countdown, Countdown Timer, Widget Countdown ===
+=== Countdown Timer - Widget Countdown ===
 Contributors: wpdevart
 Donate link: http://wpdevart.com/wordpress-countdown-plugin
-Tags: countdown, countdown widget, countdown timer,  countdown system, countdown generator, count down, jQuery countdown, animated countdown, timer, countdown clock, wp countdown timer, event countdown, widget countdown, clock, countdown timer plugin, wordpress countdown, html5 countdown, wp countdown, countdown timer widget, website countdown, date countdown, flash countdown, time counter,    
+Tags: countdown, countdown widget, countdown timer,  countdown system, countdown generator
 Requires at least: 3.3.0
-Tested up to: 4.9.1
-Stable tag: 1.9.6
+Tested up to: 4.9.6
+Stable tag: 1.9.8
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Countdown timer plugin is an nice tool to create and insert countdown timers into your posts/pages and widgets. 
+Countdown timer plugin is an nice tool to create and insert timers into your posts/pages and widgets. 
 
 == Description ==
 
 https://www.youtube.com/watch?v=fiTP-j8J1S4
 
-Our WordPress Countdown plugin allow website owners to create nice and functional Countdown timer just in a few minutes. This is the best way to create beautiful Countdown for your users.
-You can use our Countdown timer in your posts/pages and widgets. It's very easy to use and there isn't any need of coding knowledge for creating Countdowns.
+Our WordPress Countdown plugin allow website owners to create nice and functional timer just in a few minutes. This is the best way to create beautiful Timers for your users.
+You can use our plugin in your posts/pages and widgets. It's very easy to use and there isn't any need of coding knowledge.
 
 ### View our plugin Demo page: 
 
-*   [Circle Countdown Demo](http://demo.wpdevart.com/wordpress-countdown-demo)
+*   [Circle Timer Demo](http://demo.wpdevart.com/wordpress-countdown-demo)
 
-### Check our new Extended version on this page: 
-
-*   [Countdown Extended](https://wordpress.org/plugins/countdown-wpdevart-extended)
-
-Our WordPress Countdown plugin have a lot of useful features that you will like. 
+Our plugin have a lot of useful features that you will like. 
 
 ### Features of Free version
 
 *   **Easy install and use**
 *   **Works perfectly with all versions of WordPress**
-*   **Fully Responsive WordPress Countdown timer**
-*   **Ability to create unlimited Countdowns**
-*   **Ability to create Countdown in pages/posts**
-*   **Ability to create Countdown in widgets**
-*   **Ability to type your own text in Countdown day field**
-*   **Ability to type your own text in Countdown hour field**
-*   **Ability to type your own text in Countdown minute field**
-*   **Ability to type your own text in Countdown second field**
-*   **Ability to select the action after Countdown time expired**
-*   **Ability to type message after countdown timer expired**
-*   **Ability to choose the Countdown timer position**
-*   **Ability to type the Countdown timer distance from top**
-*   **Ability to type the Countdown timer distance from bottom**
+*   **Fully Responsive**
+*   **Ability to create unlimited Timers**
+*   **Ability to use on pages/posts and widgets**
+*   **Ability to type your own text in day, hour, minute and second fields**
+*   **Ability to select the action after time expired**
+*   **Ability to type message after time expired**
+*   **Ability to choose the position**
+*   **Ability to type the distance from top/bottom**
 *   **Uses CSS3**
-*   **User friendly back-end for WordPress Countdown plugin**
+*   **User friendly back-end**
 *   **Tested on popular WordPress themes**
 
-You can upgrade WordPress Countdown plugin to [WordPress Countdown Pro](http://wpdevart.com/wordpress-countdown-plugin/) to add some features.
+You can upgrade the free version to [WordPress Countdown Pro](http://wpdevart.com/wordpress-countdown-plugin/) to add some features.
 
 ### The features of Pro version
 
-*   **Ability to use Countdown with "Circle" buttons**
-*   **Ability to use Countdown with "Vertical Slider" buttons**
-*   **Ability to choose the Countdown text color**
-*   **Ability to choose the Countdown background color**
-*   **Ability to type the Countdown size**
-*   **Ability to type the Countdown border width**
-*   **Ability to type the Countdown border radius**
-*   **Ability to type the Countdown text font-size**
-*   **Ability to select the Countdown Font family**
-*   **39 awesome animation effects for Countdown timer**
+*   **Ability to use Timer with "Circle" and "Vertical Slider" buttons**
+*   **Ability to choose the text color**
+*   **Ability to choose the background color**
+*   **Ability to type the size**
+*   **Ability to type the border width and radius**
+*   **Ability to type the text font-size and Font family**
+*   **39 awesome animation effects**
 *   **Premium Support**
 
 ### If you found any bug in our plugin or have a question contact us at support@wpdevart.com.
 
-We recommend you to take a look for this useful plugins - [WordPress Counter plugin](https://wordpress.org/plugins/countdown-wpdevart-extended/), [WordPress Gallery](https://wordpress.org/plugins/gallery-album), [WordPress Contact Form](https://wordpress.org/plugins/contact-forms-builder/), [WordPress booking calendar](https://wordpress.org/plugins/booking-calendar), [WordPress Poll plugin](https://wordpress.org/plugins/polls-widget/), [WordPress Facebook like box](https://wordpress.org/plugins/like-box), [WordPress YouTube](https://wordpress.org/plugins/youtube-video-player), [WordPress Coming soon plugin](https://wordpress.org/plugins/coming-soon-page), [Facebook comments WordPress](https://wordpress.org/plugins/comments-from-facebook), [WordPress lightbox plugin](https://wordpress.org/plugins/lightbox-popup) .
-
-### The Best Offer From WpDevArt
-
-**You can check the best offer page here - [Best Price](http://wpdevart.com/the-best-offer-from-wpdevart)**
-
-Our plugin have a lot of nice features, be sure you checked them all(date countdown, animated countdown, event countdown, jQuery countdown, timer, countdown clock, html5 countdown, flash countdown, time counter, Holiday Countdown, Christmas Countdown, Halloween Countdown).   
+Our plugin have a lot of nice features, be sure you checked them all(date timer, time counter, clock, html5, flash, jQuery, animated, Holiday, Christmas and Halloween timers).   
 
 == Installation ==
 
-### First download the plugin ZIP file.  
-
-Installing the **WordPress Countdown plugin**   
+### First download our plugin ZIP file.  
 
 1. Log in to your administration panel.   
 2. Go to Plugins page, click on Add New, then click "Upload Plugin" .    
-3. Then click "Choose file" then select the WordPress Countdown plugin zip file. 
-4. Install and activate our WordPress Countdown plugin.     
-5. You can add Countdown timer from your pages/posts and widgets.
+3. Then click "Choose file" then select the plugin zip file. 
+4. Install and activate our plugin.     
 	  
-That's all, now you can create and insert Countdown timers into your pages/posts and widgets. If any problem occurs, contact us at [support@wpdevart.com](mailto:support@wpdevart.com).
-
-Also, we recommend you to take a look for this useful plugins - [WordPress Counter plugin](https://wordpress.org/plugins/countdown-wpdevart-extended/), [WordPress Gallery](https://wordpress.org/plugins/gallery-album), [WordPress Contact Form](https://wordpress.org/plugins/contact-forms-builder/), [WordPress booking calendar](https://wordpress.org/plugins/booking-calendar), [WordPress Poll plugin](https://wordpress.org/plugins/polls-widget/), [WordPress Facebook like box](https://wordpress.org/plugins/like-box), [WordPress YouTube](https://wordpress.org/plugins/youtube-video-player), [WordPress Coming soon plugin](https://wordpress.org/plugins/coming-soon-page), [Facebook comments WordPress](https://wordpress.org/plugins/comments-from-facebook), [WordPress lightbox plugin](https://wordpress.org/plugins/lightbox-popup) .
-
-### The Best Offer From WpDevArt
-
-**You can check our best offer page here - [Best Price](http://wpdevart.com/the-best-offer-from-wpdevart)**
+That's all, now you can use it on your website. If any problem occurs, contact us at [support@wpdevart.com](mailto:support@wpdevart.com).
 
 == Frequently Asked Questions ==
 
-Our WordPress Countdown plugin is user friendly, but here you can see some frequently asked questions that can help you.
+Our plugin is user friendly, but here you can see some frequently asked questions that can help you.
 
-= How can I insert timer into my pages/posts =
+= How can I insert it into my pages/posts =
 
-After you installed the Countdown plugin you can go to your pages/posts and just click on Countdown shortcode button and add Countdown timer for your pages/posts.
+After you installed the plugin you can go to your pages/posts and just click on our plugin shortcode button and add it to your pages/posts.
 
-= How can I add timer into my sidebars =
+= How can I add it into my sidebars =
 
-After you installed the plugin you need to check your widgets page(Appearance>Widgets) and then drag and drop "WordPress Countdown plugin" widget into your sidebar.
-After that set the Countdown timer options. Now your Countdown widget is ready.
+After you installed the plugin you need to check your widgets page and then drag and drop our plugin widget into your sidebar.
+After that configure the options.
 
 = Can I select the expire date from calendar =
 
 Yes dear user, you can use our date picker from calendar.
 
-= Can I use timer in popup =
+= Can I use it in popup =
 
-Unfortunately we don't have popup option, but you can use countdown with other popup plugin.
+Unfortunately we don't have popup option, but you can use it with other popup plugin.
 
 = I select date using date picker but it doesn't show the correct time that left =
 
-Countdown plugin use the website server time, that's why you see other time in front end, you can just insert the time you need if your website server time is not correct for you.
+The plugin use the website server time, that's why you see other time in front end, you can just insert the time you need if your website server time is not correct for you.
 
 = I Have troubles with circle view =
 
@@ -139,19 +112,13 @@ Contact us at support@wpdevart.com and we will send you the pro version.
 
 Yes dear users, you need to pay only one time for pro version, it's lifetime plan.
 
-Dear users, we also recommend you to take a look for this useful plugins - [WordPress Counter plugin](https://wordpress.org/plugins/countdown-wpdevart-extended/), [WordPress Gallery](https://wordpress.org/plugins/gallery-album), [WordPress Contact Form](https://wordpress.org/plugins/contact-forms-builder/), [WordPress booking calendar](https://wordpress.org/plugins/booking-calendar), [WordPress Poll plugin](https://wordpress.org/plugins/polls-widget/), [WordPress Facebook like box](https://wordpress.org/plugins/like-box), [WordPress YouTube](https://wordpress.org/plugins/youtube-video-player), [WordPress Coming soon plugin](https://wordpress.org/plugins/coming-soon-page), [Facebook comments WordPress](https://wordpress.org/plugins/comments-from-facebook), [WordPress lightbox plugin](https://wordpress.org/plugins/lightbox-popup) .
-
-### The Best Offer From WpDevArt
-
-**You can check our best offer page here - [Best Price](http://wpdevart.com/the-best-offer-from-wpdevart)**
-
 == Screenshots ==
 
-1.  **WordPress Countdown** Front-end    
-2.  **WordPress Countdown** Front-end       
-3.  **WordPress Countdown** Back-end     
-4.  **WordPress Countdown** Back-end
-5.  **WordPress Countdown** Back-end 
+1.  Front-end    
+2.  Front-end       
+3.  Back-end     
+4.  Back-end
+5.  Back-end 
 
 == Changelog ==
 
@@ -197,7 +164,7 @@ Dear users, we also recommend you to take a look for this useful plugins - [Word
 
 = 1.1.2 =
 
-*  Made some corrections in Countdown plugin code.
+*  Made some corrections in plugin code.
 
 = 1.1.3 =
 
@@ -425,7 +392,7 @@ Dear users, we also recommend you to take a look for this useful plugins - [Word
 
 = 1.6.9 =
 
-*  Edit countdown expire time.
+*  Edit expire time.
 
 = 1.7.0 =
 
@@ -437,7 +404,7 @@ Dear users, we also recommend you to take a look for this useful plugins - [Word
 
 = 1.7.2 =
 
-*  Edit countdown expire time.
+*  Edit expire time.
 
 = 1.7.3 =
 
@@ -453,7 +420,7 @@ Dear users, we also recommend you to take a look for this useful plugins - [Word
 
 = 1.7.6 =
 
-*  Edited countdown standard position styles.
+*  Edited standard position styles.
 
 = 1.7.7 =
 
@@ -483,33 +450,27 @@ Dear users, we also recommend you to take a look for this useful plugins - [Word
 *   Hour field text - Type here text for Hour field.
 *   Minute field text - Type here text for Minute field.
 *   Second field text - Type here text for Second field.
-*   Countdown expire time/date - Type the Countdown expire time or select it from calendar.
-*   After Countdown expired - Select the action after Countdown time expired.
-*   Message after countdown expired - Type the message after countdown expired. 
-*   Countdown timer position - Select the Countdown position.
-*   Distance from top - Type the Countdown distance from top.
-*   Distance from bottom - Type the Countdown distance from bottom.
-*   Countdown timer Buttons type - Select the Countdown buttons type.
-*   Countdown timer text color - Choose the Countdown text color.
-*   Countdown timer background color - Choose the Countdown background color.
-*   Countdown timer Size - Type the Countdown size.
-*   Countdown timer border width - Type the Countdown border width(px).
-*   Countdown timer border radius - Type the Countdown border radius(px).
-*   Countdown timer font-size - Type the Countdown texts font-size(px).
-*   Countdown timer Font family - Choose the Countdown Font family.
-*   Countdown animation type - Choose the Countdown animation type you need.
+*   Expire time/date - Type the expire time or select it from calendar.
+*   After time expired - Select the action after time expired.
+*   Message after time expired - Type the message after time expired. 
+*   Position - Select the position.
+*   Distance from top - Type the distance from top.
+*   Distance from bottom - Type the distance from bottom.
+*   Buttons type - Select the buttons type.
+*   Text color - Choose the text color.
+*   Background color - Choose the background color.
+*   Size - Type the size.
+*   Border width - Type the border width(px).
+*   Border radius - Type the border radius(px).
+*   Font-size - Type the texts font-size(px).
+*   Font family - Choose the Font family.
+*   Animation type - Choose the animation type you need.
 
 ### Adding timer into your website pages, posts
 
-After installation activate the plugin, then go to your pages, posts and just click on Countdown shortcode button and add Countdown timer for your pages/posts.
+After installation activate the plugin, then go to your pages, posts and just click on our plugin shortcode button and add it to your pages/posts.
 
-### Adding timer in your website sidebar
+### Adding in your website sidebar
 
-After installation activate the plugin, then check your widgets page(Appearance>Widgets) and then drag and drop "WordPress Countdown plugin" widget into your sidebar.
-After that set your Countdown timer options. That's all.
-
-### The Best Offer From WpDevArt
-
-**You can check our best offer page here - [Best Price](http://wpdevart.com/the-best-offer-from-wpdevart)**
-
-We recommend you to take a look for this useful plugins - [WordPress Counter plugin](https://wordpress.org/plugins/countdown-wpdevart-extended/), [WordPress Gallery](https://wordpress.org/plugins/gallery-album), [WordPress Contact Form](https://wordpress.org/plugins/contact-forms-builder/), [WordPress booking calendar](https://wordpress.org/plugins/booking-calendar), [WordPress Poll plugin](https://wordpress.org/plugins/polls-widget/), [WordPress Facebook like box](https://wordpress.org/plugins/like-box), [WordPress YouTube](https://wordpress.org/plugins/youtube-video-player), [WordPress Coming soon plugin](https://wordpress.org/plugins/coming-soon-page), [Facebook comments WordPress](https://wordpress.org/plugins/comments-from-facebook), [WordPress lightbox plugin](https://wordpress.org/plugins/lightbox-popup) .
+After installation activate the plugin, then check your widgets page(Appearance>Widgets) and then drag and drop our plugin widget into your sidebar.
+After that configure the options. That's all.

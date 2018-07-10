@@ -13,7 +13,7 @@ class wpdevart_countdown_front_end{
 	
 	public static $id_for_content=0;
 
-	/*###################### Constract params function ##################*/		
+	/*###################### Constract parameters function ##################*/		
 	
 	function __construct($params){
 		
@@ -56,7 +56,7 @@ class wpdevart_countdown_front_end{
 			"start_time"			=> mktime (date("H"), date("i"), date("s"),date("n"), date("j"),date("Y")),
 			"countdown_end_type"	=> "time",
 			"end_date"				=> date('d-m-Y 23:59'),
-			"end_time"				=> "0,9,9",
+			"end_time"				=> "0,7,7",
 			"action_end_time"		=> "hide",
 			"content_position"		=> "center",
 			"top_ditance"			=> "10",
