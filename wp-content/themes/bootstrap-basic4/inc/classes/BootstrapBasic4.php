@@ -31,13 +31,13 @@ if (!class_exists('\\BootstrapBasic4\\BootstrapBasic4')) {
         public function addActionsFilters()
         {
             // Change main content width up to columns available.
-            add_action('template_redirect', array(&$this, 'detectContentWidth'));
+            add_action('template_redirect', array($this, 'detectContentWidth'));
             // Add theme feature.
-            add_action('after_setup_theme', array(&$this, 'themeSetup'));
+            add_action('after_setup_theme', array($this, 'themeSetup'));
             // Register sidebars.
-            add_action('widgets_init', array(&$this, 'registerSidebars'));
+            add_action('widgets_init', array($this, 'registerSidebars'));
             // Enqueue scripts and styles.
-            add_action('wp_enqueue_scripts', array(&$this, 'enqueueScriptsAndStyles'));
+            add_action('wp_enqueue_scripts', array($this, 'enqueueScriptsAndStyles'));
         }// addActionsFilters
 
 
@@ -68,13 +68,14 @@ if (!class_exists('\\BootstrapBasic4\\BootstrapBasic4')) {
             wp_enqueue_style('bootstrap-basic4-wp-main', get_stylesheet_uri());
 
             wp_enqueue_style('bootstrap4', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '4.1.1');
-            wp_enqueue_style('font-awesome5', get_template_directory_uri() . '/assets/css/fontawesome-all.min.css', array(), '5.0.9');
+            wp_enqueue_style('font-awesome5', get_template_directory_uri() . '/assets/fontawesome/css/all.css', array(), '5.1.0');
             wp_enqueue_style('bootstrap-basic4-main', get_template_directory_uri() . '/assets/css/main.css');
 
             if (is_singular() && get_option('thread_comments')) {
                 wp_enqueue_script('comment-reply');
             }
             wp_enqueue_script('bootstrap4-bundle', get_template_directory_uri() . '/assets/js/bootstrap.bundle.min.js', array('jquery'), '4.1.1', true);// bundled with popper. see https://getbootstrap.com/docs/4.0/getting-started/contents/#comparison-of-css-files
+            wp_enqueue_script('bootstrap-basic4-main', get_stylesheet_directory_uri() . '/assets/js/main.js', array('jquery'), false, true);
         }// enqueueScriptsAndStyles
 
 
