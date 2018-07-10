@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Google Maps Easy\n"
 "POT-Creation-Date: 2015-07-30 18:39+0300\n"
-"PO-Revision-Date: 2017-12-15 13:20+0200\n"
+"PO-Revision-Date: 2018-04-28 15:00+0300\n"
 "Last-Translator: irene <ka3d3@hotmail.com>\n"
 "Language-Team: supsystic.com <supsystic.team@gmail.com>\n"
 "Language: en\n"
@@ -203,7 +203,7 @@ msgid "Empty or invalid ID"
 msgstr "ID vuoto o non valido"
 
 #: classes/table.php:277
-msgid "Nothig to update"
+msgid "Nothing to update"
 msgstr "Non c'è niente da aggiornare"
 
 #: classes/table.php:293
@@ -223,7 +223,7 @@ msgid "Description Of Map"
 msgstr "Descrizione della mappa"
 
 #: classes/tables/marker.php:10
-msgid "X coordinate if marker(lng)"
+msgid "X coordinate of marker(lng)"
 msgstr "coordinata X per il segnaposto (longitudine)"
 
 #: classes/tables/marker.php:11
@@ -410,8 +410,8 @@ msgstr "Per favore inserisci il tuo un indirizzo mail "
 
 #: doc/google-maps-easy-pro/license/models/license.php:131
 msgid ""
-"There was a problem with sending request to our autentification server. "
-"Please try latter."
+"There was a problem with sending request to your authentication server. "
+"Please try later."
 msgstr ""
 "C'è un problema nell'invio della richiesta al nostro server di "
 "autentificazione. Per favore riprova più tardi."

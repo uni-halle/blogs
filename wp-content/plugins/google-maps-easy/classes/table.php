@@ -274,7 +274,7 @@ abstract class tableGmp {
         $fields = $this->_getQueryString($data, ',', true);
 
         if(empty($fields)) {
-            $this->_addError(__('Nothig to update', GMP_LANG_CODE));
+            $this->_addError(__('Nothing to update', GMP_LANG_CODE));
             return false;
         }
         

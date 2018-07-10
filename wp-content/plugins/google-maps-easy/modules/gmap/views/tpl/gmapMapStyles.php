@@ -15,7 +15,7 @@ $mapWidth = $this->currentMap['params']['map_display_mode'] == 'popup' ? '100%' 
 $controlsWidth = $percentMode ? '100%' : $width;
 
 $height = $this->currentMap['html_options']['height'];
-$align = @$this->currentMap['html_options']['align'];
+$align = trim(@$this->currentMap['html_options']['align']);
 $border = ((int)@$this->currentMap['html_options']['border_width']). 'px solid '. @$this->currentMap['html_options']['border_color'];
 $margin = @$this->currentMap['html_options']['margin'];
 ?>
@@ -23,7 +23,9 @@ $margin = @$this->currentMap['html_options']['margin'];
 	#<?php echo $mapHtmlId;?> {
         width: <?php echo $mapWidth;?>;
         height: <?php echo $height;?>px;
-        float: <?php echo $align;?>;
+	<?php if(!empty($align)) {?>
+		float: <?php echo $align;?>;
+	<?php }?>
         border: <?php echo $border;?>;
         margin: <?php echo ((int)$margin) . 'px';?>;
     }

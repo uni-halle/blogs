@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Google Maps Easy v1.0.9\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-01-09 12:44+0200\n"
-"PO-Revision-Date: 2018-01-09 13:03+0200\n"
+"PO-Revision-Date: 2018-04-28 15:00+0300\n"
 "Last-Translator: rob <iirc80@gmail.com>\n"
 "Language-Team: \n"
 "Language: pl_PL\n"
@@ -252,7 +252,7 @@ msgstr "Pusty lub uszkodzony identyfikator"
 
 # @ gmp_lng
 #: classes/table.php:277
-msgid "Nothig to update"
+msgid "Nothing to update"
 msgstr "Brak aktualizacji"
 
 # @ gmp_lng
@@ -297,7 +297,7 @@ msgid "Description Of Marker"
 msgstr "Opis znacznika"
 
 #: classes/tables/marker.php:10
-msgid "X coordinate if marker(lng)"
+msgid "X coordinate of marker(lng)"
 msgstr "koordynata X znacznika (lng)"
 
 #: classes/tables/marker.php:11
@@ -684,7 +684,7 @@ msgid "Please enter your Email address"
 msgstr "Proszę wprowadź swój adres e-mail"
 
 #: doc/google-maps-easy-pro/license/models/license.php:138
-msgid "There was a problem with sending request to our autentification server. Please try latter."
+msgid "There was a problem with sending request to your authentication server. Please try later."
 msgstr "Wystąpił problem podczas przesyłania żądania do naszego serwera uwierzytelniania. Proszę spróbuj później."
 
 #: doc/google-maps-easy-pro/license/models/license.php:178
@@ -1682,7 +1682,7 @@ msgid "Hide Countries"
 msgstr "Ukryj kraje"
 
 #: modules/gmap/views/tpl/gmapEditMap.php:788
-msgid "Hide all administrative data about countries: names, borders ets."
+msgid "Hide all administrative data about countries: names, borders etc."
 msgstr "Ukryj wszystkie dane administracyjne o krajach: nazwy, granice itp."
 
 #: modules/gmap/views/tpl/gmapEditMap.php:803
@@ -2011,7 +2011,7 @@ msgstr "Przypisz nieprzezroczystość"
 
 # @ gmp_lng
 #: modules/gmap/views/tpl/gmapEditMap.php:1474
-msgid "Fugure Description"
+msgid "Figure Description"
 msgstr "Opis regionu"
 
 # @ gmp_lng

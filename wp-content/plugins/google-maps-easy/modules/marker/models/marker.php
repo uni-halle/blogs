@@ -12,6 +12,12 @@ class markerModelGmp extends modelGmp {
 		$marker['title'] = isset($marker['title']) ? trim($marker['title']) : '';
 		$marker['coord_x'] = isset($marker['coord_x']) ? (float)$marker['coord_x'] : 0;
 		$marker['coord_y'] = isset($marker['coord_y']) ? (float)$marker['coord_y'] : 0;
+		if(!empty($marker['period_date_from']) && strtotime($marker['period_date_from'])) {
+			$marker['period_from'] = date('Y-m-d', strtotime($marker['period_date_from']));
+		}
+		if(!empty($marker['period_date_to']) && strtotime($marker['period_date_to'])) {
+			$marker['period_to'] = date('Y-m-d', strtotime($marker['period_date_to']));
+		}
 		$update = (bool) $id;
 		if(!empty($marker['title'])) {
 			$marker = apply_filters('gmp_before_marker_save', $marker);

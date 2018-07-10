@@ -58,7 +58,7 @@ class gmapModelGmp extends modelGmp {
 					'street_view_control', 'pan_control', 'overview_control', 'draggable', 'map_stylization',
 					'marker_title_color', 'marker_title_size', 'marker_title_size_units',
 					'marker_desc_size', 'marker_desc_size_units', 'hide_marker_tooltip', 'center_on_cur_marker_infownd',
-					'marker_infownd_type', 'marker_infownd_width', 'marker_infownd_width_units',
+					'marker_infownd_type', 'marker_infownd_hide_close_btn', 'marker_infownd_width', 'marker_infownd_width_units',
 					'marker_infownd_height', 'marker_infownd_height_units', 'marker_infownd_bg_color',
 					'marker_clasterer', 'marker_clasterer_icon', 'marker_clasterer_icon_width', 'marker_clasterer_icon_height', 'marker_clasterer_grid_size',
 					// Maybe PRO params - but let them be here - to avoid dublications

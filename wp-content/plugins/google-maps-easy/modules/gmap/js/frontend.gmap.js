@@ -20,6 +20,7 @@ jQuery(document).ready(function(){
 				gmpInitMapOnPage( gmpAllMapsInfo[i] );
 			}
 		}
+		jQuery(document).trigger('gmpAmiVarInited');
 	}
 });
 function gmpInitMapOnPage(mapData) {

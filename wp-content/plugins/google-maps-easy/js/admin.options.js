@@ -104,13 +104,16 @@ function gmpResetCopyTextCodeFields(selector) {
 		});
 		area.find('input.gmpCopyTextCode:not(.gmpStaticWidth)').each(function(){
 			cloneWidthElement.html( str_replace(jQuery(this).val(), '<', 'P') );
-			if(jQuery(this).hasClass('gmpMapPhpShortCodeShell')) {
-				jQuery(this).width( cloneWidthElement.width() - 20 );	// Make input more compact
-			} else {
-				jQuery(this).width( cloneWidthElement.width() );
-			}
+			jQuery(this).width( cloneWidthElement.width() );
 		});
 		cloneWidthElement.remove();
+	}
+	if(area.find('.gmpMapShortCodeShell').size()) {
+		area.find('.gmpMapShortCodeShell').attr('readonly', 'readonly').click(function(){
+			this.setSelectionRange(0, this.value.length);
+		}).focus(function(){
+			this.setSelectionRange(0, this.value.length);
+		});
 	}
 }
 function tooltipsterize(shell) {
@@ -249,6 +252,7 @@ function gmpInitStickyItem() {
 						wasSticking = true;
 						element.trigger('startSticky');
 					} else if(!isNaN(prevScrollMinPos) && currentScrollTop <= prevScrollMinPos) {	// Stop sticking
+						// because of this action some map tabs (shapes and heatmap) are jump up during scroll.
 						element.removeClass('supsystic-sticky-active').data('scrollMinPos', 0).css({
 							'top': 0
 						});

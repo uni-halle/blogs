@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Google Maps Easy\n"
 "POT-Creation-Date: 2016-07-14 19:57+0300\n"
-"PO-Revision-Date: 2017-12-15 13:20+0200\n"
+"PO-Revision-Date: 2018-04-28 14:59+0300\n"
 "Last-Translator: \n"
 "Language-Team: supsystic.com <supsystic.team@gmail.com>\n"
 "Language: es_ES\n"
@@ -213,7 +213,7 @@ msgid "Empty or invalid ID"
 msgstr "ID inválida o vacía"
 
 #: classes/table.php:277
-msgid "Nothig to update"
+msgid "Nothing to update"
 msgstr "Nada que actualizar"
 
 #: classes/table.php:293
@@ -257,7 +257,7 @@ msgid "Description Of Marker"
 msgstr ""
 
 #: classes/tables/marker.php:10
-msgid "X coordinate if marker(lng)"
+msgid "X coordinate of marker(lng)"
 msgstr "Coordenada X si marcador(lon)"
 
 #: classes/tables/marker.php:11
@@ -530,8 +530,8 @@ msgstr "Por favor, introduzca su dirección de correo electrónico."
 
 #: doc/google-maps-easy-pro/license/models/license.php:138
 msgid ""
-"There was a problem with sending request to our autentification server. "
-"Please try latter."
+"There was a problem with sending request to your authentication server. "
+"Please try later."
 msgstr ""
 "Ha habido un problema durante el envío de la petición a nuestro servidor de "
 "autenticación.Por favor vuelva a intentarlo mas adelante."
@@ -1628,7 +1628,7 @@ msgid "Fill Opacity"
 msgstr ""
 
 #: modules/gmap/views/tpl/gmapEditMap.php:1196
-msgid "Fugure Description"
+msgid "Figure Description"
 msgstr ""
 
 #: modules/gmap/views/tpl/gmapEditMap.php:1198

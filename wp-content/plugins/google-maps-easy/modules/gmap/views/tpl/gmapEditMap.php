@@ -5,11 +5,21 @@
 	$addProElementClass = $this->isPro ? '' : 'supsystic-tooltip gmpProOpt';
 	//$addProElementBottomHtml = $this->isPro ? '' : '<span class="gmpProOptMiniLabel"><a target="_blank" href="'. $this->mainLink. '">'. __('PRO option', GMP_LANG_CODE). '</a></span>';
 	//$addProElementOptBottomHtml = $this->isPro ? '' : '<br /><span class="gmpProOptMiniLabel" style="padding-left: 0;"><a target="_blank" href="'. $this->mainLink. '">'. __('PRO option', GMP_LANG_CODE). '</a></span>';
+	$isCustSearchAndMarkersPeriodAvailable = true;
+	if($this->isPro) {	// It's not available for old PRO
+		$isCustSearchAndMarkersPeriodAvailable = false;
+		if(frameGmp::_()->getModule('custom_controls')
+			&& method_exists(frameGmp::_()->getModule('custom_controls'), 'isCustSearchAndMarkersPeriodAvailable')
+			&& frameGmp::_()->getModule('custom_controls')->isCustSearchAndMarkersPeriodAvailable()
+		) {
+			$isCustSearchAndMarkersPeriodAvailable = true;
+		}
+	}
 ?>
 <section>
 	<div class="supsystic-item supsystic-panel">
 		<div id="containerWrapper">
-			<div class="gmpMapBtns">
+			<div class="gmpMapBtns supsistic-half-side-box">
 				<button id="gmpInsertToContactForm" class="button"><?php _e('Insert to Contact Form', GMP_LANG_CODE)?></button>
 				<?php
 				if(property_exists($this, 'membershipPluginError')) {
@@ -29,6 +39,15 @@
 				}
 				?>
 			</div>
+			<div class="supsistic-half-side-box" style="position: relative;">
+				<select name="shortcode_example" id="gmpCopyTextCodeExamples" style="width: 35%; height: 32px; float: left; margin: 0; font-size: 16px;">
+					<option value="shortcode"><?php _e('Map shortcode', GMP_LANG_CODE)?></option>
+					<option value="php_code"><?php _e('PHP code', GMP_LANG_CODE)?></option>
+				</select>
+				<input type="text" name="gmpCopyTextCode" value="<?php _e('Shortcode will appear after you save map.', GMP_LANG_CODE)?>"
+					class="gmpMapShortCodeShell gmpStaticWidth" style="width: 64%; height: 31px; float: right; margin: 0; text-align: center;" readonly="readonly">
+			</div>
+			<div style="clear: both;"></div>
 			<?php do_action('gmp_lang_tabs'); ?>
 			<div style="clear: both;"></div>
 			<div id="gmpMapPropertiesTabs" style="display: none;">
@@ -655,7 +674,29 @@
 													style="margin: 5px 0px; float: right;">
 													<?php _e('or Upload KML file', GMP_LANG_CODE)?>
 												</a><br />
+												<label class="gmpKmlImportToMarkerLbl">
+												<?php
+													echo '<span class="gmpKitmLblText">' . translate('Import markers from layer') . '</span>';
+												?>
+												</label>
+
 											</div>
+											<?php
+												if(!empty($this->map['params']['kml_import_to_marker'])
+													&& count($this->map['params']['kml_import_to_marker'])
+												) {
+													foreach($this->map['params']['kml_import_to_marker'] as $omKey => $oneMarker) {
+														$isKmlImpToMarkerVal = 0;
+														if($oneMarker == 'on') {
+															$isKmlImpToMarkerVal = 1;
+														}
+														echo htmlGmp::hidden('map_opts[kml_import_to_marker][]', array(
+															'value' => $isKmlImpToMarkerVal,
+															'attrs' => ' class="gmpProOpt gmpKmlImportToMarkerHid" data-order="' . $omKey . '" ',
+														));
+													}
+												}
+											?>
 											<div id="gmpKmlFileRowsShell"></div>
 											<a href="#" class="button gmpProOpt" id="gmpKmlAddFileRowBtn" style="margin: 5px 5px 5px 0px; float: left;">
 												<?php _e('Add more files', GMP_LANG_CODE)?>
@@ -755,6 +796,22 @@
 														'value' => $this->editMap && isset($this->map['params']['custom_controls_search_country']) ? $this->map['params']['custom_controls_search_country'] : 'round',
 														'attrs' => 'class="gmpProOpt" style="width: 100%;" id="map_opts_custom_controls_search_country"'))?>
 												</div>
+												<?php if($isCustSearchAndMarkersPeriodAvailable) { ?>
+												<div style="margin-top: 10px;">
+													<label>
+														<?php
+															$isCustomSearchParamArr = array();
+															if(!empty($this->map['params']['custom_controls_improve_search'])
+																&& $this->map['params']['custom_controls_improve_search'] == 1
+															) {
+																$isCustomSearchParamArr = array('checked' => 'checked');
+															}
+														echo htmlGmp::checkbox('map_opts[custom_controls_improve_search]', $isCustomSearchParamArr)?>
+														<?php _e('Use improved markers search', GMP_LANG_CODE);?>
+													</label>
+													<i style="float: right;" class="fa fa-question supsystic-tooltip" title="<?php _e('This option allows you to search and show multiple markers for selected date, categories and keywords. NOTE: it removes separate markers categories filter button from custom map controls.', GMP_LANG_CODE); ?>"></i>
+												</div>
+												<?php }?>
 											</div>
 										</td>
 									</tr>
@@ -797,7 +854,7 @@
 											<label for="map_opts_hide_countries">
 												<?php _e('Hide Countries', GMP_LANG_CODE)?>:
 											</label>
-											<i style="float: right;" class="fa fa-question supsystic-tooltip" title="<?php _e('Hide all administrative data about countries: names, borders ets.', GMP_LANG_CODE)?>"></i>
+											<i style="float: right;" class="fa fa-question supsystic-tooltip" title="<?php _e('Hide all administrative data about countries: names, borders etc.', GMP_LANG_CODE)?>"></i>
 											<?php if(!$this->isPro) { ?>
 												<?php $proLink = frameGmp::_()->getModule('supsystic_promo')->generateMainLink('utm_source=plugin&utm_medium=hide_countries&utm_campaign=googlemaps'); ?>
 												<br /><span class="gmpProOptMiniLabel"><a target="_blank" href="<?php echo $proLink?>"><?php _e('PRO option', GMP_LANG_CODE)?></a></span>
@@ -1027,6 +1084,15 @@
 												'options' => array('' => __('Default', GMP_LANG_CODE), 'rounded_edges' => __('Rounded Edges', GMP_LANG_CODE),),
 												'value' => $this->editMap && isset($this->map['params']['marker_infownd_type']) ? $this->map['params']['marker_infownd_type'] : 'default',
 												'attrs' => 'style="width: 100%;" id="map_opts_marker_infownd_type"'))?>
+											<div id="gmpMarkerInfoWndTypeSubOpts">
+												<div class="gmpSubOpt" data-type="rounded_edges" style="display: none; margin-top: 10px;">
+													<?php echo htmlGmp::checkboxHiddenVal('map_opts[marker_infownd_hide_close_btn]', array(
+														'value' => $this->editMap && isset($this->map['params']['marker_infownd_hide_close_btn']) ? $this->map['params']['marker_infownd_hide_close_btn'] : true,
+														'attrs' => 'class="gmpProOpt" id="map_opts_marker_infownd_hide_close_btn"'
+													))?>
+													<label for="map_opts_marker_infownd_hide_close_btn"><?php _e('Hide Close Button', GMP_LANG_CODE)?></label>
+												</div>
+											</div>
 										</td>
 									</tr>
 									<tr>
@@ -1053,7 +1119,7 @@
 												<label
 													for="map_opts_marker_infownd_width_units"
 													class="supsystic-tooltip"
-													title="<?php _e('Pixels', GMP_LANG_CODE)?>"
+													title="<?php _e('The value defines maximum width of the description. Window will be drawn according to content size but not wider than the value.', GMP_LANG_CODE)?>"
 													style="margin-right: 15px; position: relative; top: <?php echo $markersInfoWndWidthUnitsLabelStyle?>;"
 												>
 													<?php echo htmlGmp::radiobutton('map_opts[marker_infownd_width_units]', array(
@@ -1480,6 +1546,51 @@
 											'checked' => ''))?>
 									</td>
 								</tr>
+								<?php if($isCustSearchAndMarkersPeriodAvailable) { ?>
+								<tr>
+									<th>
+										<label>
+											<?php _e('Period From', GMP_LANG_CODE);?>
+										</label>
+<!--										<i style="float: right;" class="fa fa-question supsystic-tooltip" title="--><?php //_e('', GMP_LANG_CODE); ?><!--"></i>-->
+										<?php if(!$this->isPro) { ?>
+											<?php $proLink = frameGmp::_()->getModule('supsystic_promo')->generateMainLink('utm_source=plugin&utm_medium=marker_period_from&utm_campaign=googlemaps'); ?>
+											<br /><span class="gmpProOptMiniLabel"><a target="_blank" href="<?php echo $proLink?>"><?php _e('PRO option', GMP_LANG_CODE)?></a></span>
+										<?php }?>
+									</th>
+									<td>
+										<?php
+										if($this->isPro) {
+											echo htmlGmp::text('marker_opts[period_date_from]', array(
+												'value' => '',
+												'attrs' => 'id="markerPeriodDateFrom"',
+											));
+										}
+										?>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										<label>
+											<?php _e('Period To', GMP_LANG_CODE);?>
+										</label>
+<!--										<i style="float: right;" class="fa fa-question supsystic-tooltip" title="--><?php //_e('', GMP_LANG_CODE); ?><!--"></i>-->
+										<?php if(!$this->isPro) { ?>
+											<?php $proLink = frameGmp::_()->getModule('supsystic_promo')->generateMainLink('utm_source=plugin&utm_medium=marker_period_to&utm_campaign=googlemaps'); ?>
+											<br /><span class="gmpProOptMiniLabel"><a target="_blank" href="<?php echo $proLink?>"><?php _e('PRO option', GMP_LANG_CODE)?></a></span>
+										<?php }?>
+									</th>
+									<td>
+										<?php
+										if($this->isPro) {
+											echo htmlGmp::text('marker_opts[period_date_to]', array(
+												'value' => '',
+												'attrs' => 'id="markerPeriodDateTo"',
+											));
+										}?>
+									</td>
+								</tr>
+								<?php }?>
 							</table>
 							<?php echo htmlGmp::hidden('mod', array('value' => 'marker'))?>
 							<?php echo htmlGmp::hidden('action', array('value' => 'save'))?>
@@ -1575,7 +1686,7 @@
 											<div class="gmpPolygonShapeParam gmpPolygonShapeDesc">
 												<div>
 													<label>
-														<?php _e('Fugure Description', GMP_LANG_CODE)?>:
+														<?php _e('Figure Description', GMP_LANG_CODE)?>:
 													</label>
 													<i style="float: right;" class="fa fa-question supsystic-tooltip" title="<?php _e('Write here all text, that you want to appear in shape info-window PopUp', GMP_LANG_CODE)?>"></i>
 												</div>
@@ -1758,30 +1869,12 @@
 				</div>
 				<div class="supsistic-half-side-box" style="position: relative;">
 				<div id="gmpMapRightStickyBar" class="supsystic-sticky">
-					<div id="gmpMapPreview" style="width: 100%; height: 250px;"></div>
+					<div id="gmpMapPreview" style="width: 100%; height: 350px;"></div>
 					<div class="gmpMapProControlsCon" id="gmpMapProControlsCon_<?php echo $this->viewId;?>">
 						<?php dispatcherGmp::doAction('addAdminMapBottomControls', $this->editMap ? $this->map : array()); ?>
 					</div>
 					<?php echo htmlGmp::hidden('rand_view_id', array('value' => $this->viewId, 'attrs' => 'id="gmpViewId"'))?>
-					<div id="gmpShortCodeRowShell" class="row" style="display: none;">
-						<div class="shortcode-wrap">
-							<p id="shortcodeCode" style="display: none;">
-								<strong style="margin-top: 7px; font-size: 1.2em; float: left;"><?php _e('Map shortcode', GMP_LANG_CODE)?>:</strong>
-								<?php echo htmlGmp::text('gmpCopyTextCode', array(
-									'value' => '',	// Will be inserted from JS
-									'attrs' => 'class="gmpCopyTextCode gmpMapShortCodeShell" style="float: right; text-align: center;"'));?>
-								<br style="clear: both;" />
-								<strong style="margin-top: 7px; font-size: 1.2em; float: left;"><?php _e('PHP code', GMP_LANG_CODE)?>:</strong>
-								<?php echo htmlGmp::text('gmpCopyTextCode', array(
-									'value' => '',	// Will be inserted from JS
-									'attrs' => 'class="gmpCopyTextCode gmpMapPhpShortCodeShell" style="float: right; text-align: center;"'));?>
-								<br style="clear: both;" />
-							</p>
-							<p id="shortcodeNotice" style="display: none;"><?php _e('Shortcode will appear after you save map.', GMP_LANG_CODE)?></p>
-						</div>
-						<div style="clear: both;"></div>
-					</div>
-					<div id="gmpMapMainBtns" class="row" style="display: none;">
+					<div id="gmpMapMainBtns" class="gmpControlBtns row" style="display: none;">
 						<div class="sup-col sup-w-50">
 							<button id="gmpMapSaveBtn" class="button button-primary" style="width: 100%;">
 								<i class="fa dashicons-before dashicons-admin-site"></i>
@@ -1796,7 +1889,7 @@
 						</div>
 						<div style="clear: both;"></div>
 					</div>
-					<div id="gmpMarkerMainBtns" class="row" style="display: none;">
+					<div id="gmpMarkerMainBtns" class="gmpControlBtns row" style="display: none;">
 						<div class="sup-col sup-w-50">
 							<button id="gmpSaveMarkerBtn" class="button button-primary" style="width: 100%;">
 								<i class="fa fa-map-marker"></i>
@@ -1811,7 +1904,7 @@
 						</div>
 						<div style="clear: both;"></div>
 					</div>
-					<div id="gmpShapeMainBtns" class="row" style="display: none;">
+					<div id="gmpShapeMainBtns" class="gmpControlBtns row" style="display: none;">
 						<div class="sup-col sup-w-50">
 							<button id="gmpSaveShapeBtn" class="button button-primary" style="width: 100%;">
 								<i class="fa fa-cubes"></i>
@@ -1826,7 +1919,7 @@
 						</div>
 						<div style="clear: both;"></div>
 					</div>
-					<div id="gmpHeatmapMainBtns" class="row" style="display: none;">
+					<div id="gmpHeatmapMainBtns" class="gmpControlBtns row" style="display: none;">
 						<div class="sup-col sup-w-50">
 							<button id="gmpSaveHeatmapBtn" class="button button-primary" style="width: 100%;">
 								<i class="fa fa-map"></i>

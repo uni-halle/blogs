@@ -1,12 +1,28 @@
-.form-table label {
+.supsystic-gmap .form-table label {
 	font-weight: normal;
 }
-.form-table label.label-big {
+.supsystic-gmap .form-table label.label-big {
 	font-weight: bold;
 	font-size: 1.1em;
 }
-.supsystic-plugin table.form-table tr {
+.supsystic-gmap .form-table tr {
 	border-bottom: medium none !important;
+}
+.supsystic-gmap .tbsLangTabs {
+	margin-top: 0 !important;
+}
+.supsystic-gmap .ui-state-default.ui-jqgrid-hdiv {
+	background-color: #ffffff;
+}
+#gmpMapRightStickyBar .ui-widget.ui-widget-content {
+	border: none;
+}
+.gmpControlBtns {
+	background-color: #ffffff;
+}
+.gmpControlBtns button {
+	margin-top: 4px !important;
+	margin-bottom: 4px !important;
 }
 /*Maps List Table*/
 #gmpGmapTbl_markers #jqgh_gmpGmapTbl_markers .s-ico,
@@ -14,14 +30,8 @@
 	display: none !important;
 }
 /* Map shortcode */
-.shortcode-wrap {
-    padding: 10px 10px 0;
-    margin: 0 0 5px 0;
-    background-color: rgba(241, 196, 15, .3);
-    border: 1px solid rgba(241, 196, 15, .3);
-}
-#shortcodeCode {
-    font-family: Consolas, Monaco, "Lucida Console", monospace;
+.supsistic-half-side-box #gmpCopyTextCodeExamples, .supsistic-half-side-box .gmpMapShortCodeShell {
+	margin-bottom: 5px;
 }
 /*Marker icons*/
 .iconsList {
@@ -42,10 +52,6 @@
 }
 /* Markers list on edit page */
 #gmpMarkerList, #gmpShapeList {
-	margin: 5px 0;
-	/*border-top: 1px solid #e9edee;
-	padding-top: 15px;
-	overflow-x: auto;*/
 	background-color: #fff;
 }
 .egm-marker {
@@ -247,3 +253,9 @@
 	box-shadow: none;
 }
 
+#gmpKmlAddFileRowBtn {
+	clear: both;
+}
+.gmpKmlImportToMarkerLbl > div {
+	margin-right: 10px;
+}

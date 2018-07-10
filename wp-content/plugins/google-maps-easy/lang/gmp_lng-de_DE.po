@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Google Maps Easy\n"
 "POT-Creation-Date: 2017-07-10 12:24+0300\n"
-"PO-Revision-Date: 2018-02-15 15:46+0200\n"
+"PO-Revision-Date: 2018-04-28 14:59+0300\n"
 "Last-Translator: Cristina <info@kurzreise-barcelona.de>\n"
 "Language-Team: supsystic.com <supsystic.team@gmail.com>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.5\n"
+"X-Generator: Poedit 1.8.9\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -213,7 +213,7 @@ msgid "Empty or invalid ID"
 msgstr "Leere oder ungültige ID"
 
 #: classes/table.php:277
-msgid "Nothig to update"
+msgid "Nothing to update"
 msgstr "Es gibt nichts zu aktualisieren"
 
 #: classes/table.php:293
@@ -257,7 +257,7 @@ msgid "Description Of Marker"
 msgstr "Beschreibung des Markes"
 
 #: classes/tables/marker.php:10
-msgid "X coordinate if marker(lng)"
+msgid "X coordinate of marker(lng)"
 msgstr "X-Koordinate falls Markerierung vorhanden (lng)"
 
 #: classes/tables/marker.php:11
@@ -596,7 +596,7 @@ msgid "Please enter your Email address"
 msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein"
 
 #: doc/google-maps-easy-pro/license/models/license.php:138
-msgid "There was a problem with sending request to our autentification server. Please try latter."
+msgid "There was a problem with sending request to your authentication server. Please try later."
 msgstr "Es ist ein Problem beim Versenden an unseren Authentifizierungsrserver aufgetreten. Bitte versuchen Sie es später nochmal."
 
 #: doc/google-maps-easy-pro/license/models/license.php:178
@@ -1417,7 +1417,7 @@ msgid "Hide Countries"
 msgstr "deaktiviere Länder"
 
 #: modules/gmap/views/tpl/gmapEditMap.php:699
-msgid "Hide all administrative data about countries: names, borders ets."
+msgid "Hide all administrative data about countries: names, borders etc."
 msgstr "deaktiviere Länderdaten (Namen, Grenzen, usw.)"
 
 #: modules/gmap/views/tpl/gmapEditMap.php:714
@@ -1722,7 +1722,7 @@ msgid "Fill Opacity"
 msgstr "Fülldeckkraft"
 
 #: modules/gmap/views/tpl/gmapEditMap.php:1380
-msgid "Fugure Description"
+msgid "Figure Description"
 msgstr "Form Beschreibung"
 
 #: modules/gmap/views/tpl/gmapEditMap.php:1382

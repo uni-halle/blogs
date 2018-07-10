@@ -4,8 +4,8 @@ Author URI: https://supsystic.com/
 Plugin URI: https://supsystic.com/plugins/google-maps-plugin
 Donate link: https://supsystic.com/plugins/google-maps-plugin
 Tags: google map, map, Google Maps, map markers, location
-Tested up to: 4.9.5
-Stable tag: 1.9.1
+Tested up to: 4.9.6
+Stable tag: 1.9.4
 
 Google Maps with markers, locations and clusterization. Any data on the google map: text, images, videos. Custom google map markers with map builder
 
@@ -211,6 +211,40 @@ Copy and paste the shortcode into your post or page and Google Maps Easy will au
 6. Google Map Stylizations. Make your map unique with our Map Themes!
 
 == Changelog ==
+
+= Google Map Plugin v1.9.4 / 26.06.2018 =
+ * Core code improvements
+ * Fix China Google Maps location
+
+= Google Map Plugin v1.9.3 / 20.06.2018 =
+ * Increased the height of the preview pane and the marker's list block
+ * Fix Line Weight for empty value
+ * Increase the size of the map preview
+ * Fixed the error that appears with incorrect data in marker_groups
+ * Add Hide Close Button for marker infowindow custom types
+ * Add parameters for editing titles for the Marker Form on the frontend
+ * Fix of displaying of KML layers
+ * Minor issues fix
+
+= Google Map Plugin v1.9.2 / 31.05.2018 =
+ * Added Period behavior to Markers
+ * Fixed DB fields update
+ * Resized InfoWindow for mobile devices
+ * Added closing the marker window when you open the shape window and vice versa
+ * Added Import markers from KML layer
+ * Fix Min Zoom Level
+ * Added Czech, Swedish, Vietnamese translations. Updated French and Portuguese (Brazilian) translations
+ * Added description for the width of the marker's Info Window
+ * Fixed initialization "Gallery by Supsystic" plugin into marker tooltip
+ * Fixed plugin activating for multisite
+ * Fixed style for Jssor slider, for much markers count
+ * Fixed bugs for Search by date and Jssor slider result when resizing
+ * Fixed marker search by empty date for "Improved search"
+ * Added "All Time" option on frontend for "custom controls"
+ * Fix of loading KML files for sites, which using HTTPS protocol
+ * Fixed multisite plugin activate
+ * Fixed console error, when custom controls disabled
+ * Small templates fix
 
 = Google Map Plugin v1.9.1 / 11.04.2018 =
   * Core code improvements

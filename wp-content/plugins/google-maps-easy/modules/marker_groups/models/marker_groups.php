@@ -144,7 +144,7 @@ class marker_groupsModelGmp extends modelGmp {
 	public function getMarkerGroupsTree($groups, $parentId = 0) {
 		$res = array();
 		foreach($groups as $i => $g) {
-			if($g['parent'] == $parentId) {
+			if(isset($g['parent']) && $g['parent'] == $parentId) {
 				$res[] = array_merge($g, array('children' => $this->getMarkerGroupsTree($groups, $g['id'])));
 			}
 		}
@@ -152,7 +152,7 @@ class marker_groupsModelGmp extends modelGmp {
 	}
 	public function updateMarkerGroupsListByParents($groups, $groupsIds) {
 		foreach($groups as $i => $g) {
-			if($g['parent'] > 0 && !in_array($g['parent'], $groupsIds)) {
+			if(isset($g['parent']) && $g['parent'] > 0 && !in_array($g['parent'], $groupsIds)) {
 				array_push($groups, $this->getMarkerGroupById($g['parent']));
 				array_push($groupsIds, $g['parent']);
 				return $this->updateMarkerGroupsListByParents($groups, $groupsIds);

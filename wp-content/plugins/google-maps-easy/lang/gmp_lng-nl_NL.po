@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Google Maps Easy\n"
 "POT-Creation-Date: 2015-04-12 19:26+0200\n"
-"PO-Revision-Date: 2017-12-15 13:21+0200\n"
+"PO-Revision-Date: 2018-04-28 15:00+0300\n"
 "Last-Translator: \n"
 "Language-Team: supsystic.com <supsystic.team@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -250,7 +250,7 @@ msgid "Error Activating module"
 msgstr "Fout bij activeren module"
 
 #: ../classes/table.php:277 ../doc/old-version/classes/table.php:277
-msgid "Nothig to update"
+msgid "Nothing to update"
 msgstr "Niets om te updaten"
 
 #: ../classes/table.php:293 ../doc/old-version/classes/table.php:293
@@ -316,7 +316,7 @@ msgstr "Beschrijving van de kaart"
 
 #: ../classes/tables/marker.php:10
 #: ../doc/old-version/classes/tables/marker.php:10
-msgid "X coordinate if marker(lng)"
+msgid "X coordinate of marker(lng)"
 msgstr "X coördinaat van baken(lng)"
 
 #: ../classes/tables/marker.php:11
@@ -506,8 +506,8 @@ msgstr "Geef aub uw e-mailadres in"
 
 #: ../doc/google-maps-easy-pro/license/models/license.php:130
 msgid ""
-"There was a problem with sending request to our autentification server. "
-"Please try latter."
+"There was a problem with sending request to your authentication server. "
+"Please try later."
 msgstr ""
 "Er was een probleem bij het verzenden van uw verzoek naar onze authenticatie "
 "server. Probeer later opnieuw."

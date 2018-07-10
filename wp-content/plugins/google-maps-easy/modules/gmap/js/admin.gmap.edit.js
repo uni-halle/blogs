@@ -162,8 +162,8 @@ jQuery(document).ready(function(){
 		//jQuery(this).find('input[name="map_opts[map_center][coord_x]"]').val(g_gmpMap.getCenter().lat());
 		//jQuery(this).find('input[name="map_opts[map_center][coord_y]"]').val(g_gmpMap.getCenter().lng());
 		//jQuery(this).find('[name="map_opts[zoom]"]').val(g_gmpMap.getZoom());
-		
-		jQuery(this).sendFormGmp({
+		var $currMapForm = jQuery(this);
+		$currMapForm.sendFormGmp({
 			btn: '#gmpMapSaveBtn'
 		,	appendData: {add_marker_ids: g_gmpMapMarkersIdsAdded, add_shape_ids: g_gmpMapShapesIdsAdded}
 		,	onSuccess: function(res) {
@@ -209,10 +209,14 @@ jQuery(document).ready(function(){
 					}
 					// Maybe here should be the saving of shape and heatmap forms
 					_gmpUnchangeMapForm();
+					$currMapForm.trigger('gmpSaved');
 				}
 			}
 		});
 		return false;
+	});
+	$('#gmpCopyTextCodeExamples').change(function(){
+		gmpCheckShortcode();
 	});
 	jQuery('#gmpMapSaveBtn').click(function(){
 		jQuery('#gmpMapForm').submit();
@@ -491,6 +495,10 @@ jQuery(document).ready(function(){
 		}
 	});
 	// Map Marker Info Window width and height units
+	jQuery('#gmpMapForm select[name="map_opts[marker_infownd_type]"]').change(function(){
+		gmpToggleSubOptionsByDataParam(jQuery(this).val());
+	});
+	gmpToggleSubOptionsByDataParam(g_gmpMap.getParam('marker_infownd_type'));
 	jQuery('#gmpMapForm input[name="map_opts[marker_infownd_width_units]"]').change(function(){
 		var infoWndWidthInput = jQuery('#gmpMapForm input[name="map_opts[marker_infownd_width]"]')
 		,	infoWndWidthLabel = jQuery('#gmpMapForm').find('[for="map_opts_marker_infownd_width_units"]');
@@ -567,20 +575,14 @@ function gmpHideCloseDescriptionCheckbox() {
 function gmpCheckShortcode() {
 	var currentId = gmpGetCurrentId();
 	if(currentId) {
-		jQuery('#shortcodeCode .gmpMapShortCodeShell').val('['+ gmpMapShortcode+ ' id="' + currentId+ '"]');
-		jQuery('#shortcodeCode .gmpMapPhpShortCodeShell').val('<?php echo do_shortcode(\'['+ gmpMapShortcode+ ' id="'+ currentId+ '"]\')?>');
+		var codeType = jQuery('#gmpCopyTextCodeExamples').val();
+		jQuery('.gmpMapShortCodeShell').val(codeType == 'shortcode' ? '['+ gmpMapShortcode+ ' id="' + currentId+ '"]' : '<?php echo do_shortcode(\'['+ gmpMapShortcode+ ' id="'+ currentId+ '"]\')?>');
 		if(GMP_DATA.isPro) {
 			jQuery('.gmpMapMarkerFormCodeShell').val('['+ gmpMapShortcode + '_marker_form map_id="'+ currentId+ '"]');
 			jQuery('.gmpPlacesToolbarCodeShell').val('['+ gmpMapShortcode + '_places_toolbar map_id="'+ currentId+ '"]');
 		}
 		gmpResetCopyTextCodeFields('#shortcodeCode');
-		jQuery('#shortcodeCode').slideDown( g_gmpAnimationSpeed );
-		jQuery('#shortcodeNotice').slideUp( g_gmpAnimationSpeed );
-	} else {
-		jQuery('#shortcodeCode').hide();
-		jQuery('#shortcodeNotice').show();
 	}
-	jQuery('#gmpShortCodeRowShell').show();
 }
 function gmpGetCurrentId() {
 	return parseInt( jQuery('#gmpMapForm input[name="map_opts[id]"]').val() );
@@ -638,68 +640,110 @@ function _gmpChangeMapForm() {
 function _gmpUnchangeMapForm() {
 	g_gmpMapFormChanged = false;
 }
-function _gmpResizeRightSidebar() {
-	var listContainerId = jQuery('#gmpMarkerList').is(':visible') ? '#gmpMarkerList' : '#gmpShapeList'
-	,	wndWd = jQuery(window).width()
-	,	wndHt = jQuery(window).height()
-	,	preview = jQuery('#gmpMapPreview')
-	,	markerList = jQuery('#gmpMarkersListGrid')
-	,	shapesList = jQuery('#gmpShapesListGrid')
-	,	rightBar = jQuery('#gmpMapRightStickyBar');
-
-	rightBar.width( jQuery('.supsistic-half-side-box').width());
+function _gmpResizeRightSidebar(container) {
 	jQuery(window).trigger('scroll');
 
-	var rightBarWd = rightBar.outerWidth()
-	,	rightBarHt = rightBar.outerHeight()
-	,	rightBarTop = parseInt(rightBar.css('top'));
+	var listContainers = container && container instanceof jQuery? container : jQuery('#gmpMarkersListGrid, #gmpShapeListGrid')
+	,	rightBar = jQuery('#gmpMapRightStickyBar')
+	,	wnd = jQuery(window)
+	,	wndWd = wnd.width()
+	,	wndHt = wnd.height()
+	,	rightBarWd,	newHeight;
 
-	markerList.jqGrid('setGridWidth', rightBarWd);
-	shapesList.jqGrid('setGridWidth', rightBarWd);
+	rightBar.width( jQuery('.supsistic-half-side-box').width());
+	rightBarWd = rightBar.outerWidth();
+	newHeight = 400;
 
-	if(!rightBarTop) {
-		var rightBarPos = rightBar.offset();
-		wndHt -= rightBarPos.top + 32;
+	if(wndWd > 991) {
+		newHeight = wndHt
+		- jQuery('#wpadminbar').outerHeight()
+		- jQuery('#gmpMapPreview').outerHeight()
+		- jQuery('.gmpControlBtns:first').outerHeight()
+		- jQuery('.ui-jqgrid-htable:first').outerHeight();
+
+
 	}
-	if(rightBarHt > wndHt && wndWd > 991) {
-		//jQuery('#' + listCintainerId).css('overflow', 'scroll');
-		var minMapHt = 250
-		,	minMarkersTblHt = 300
-		,	d = rightBarHt - wndHt
-		,	mListHt = jQuery(listContainerId).outerHeight()
-		,	mapPreviewHt = preview.outerHeight()
-		,	markersListHeaderHeight = jQuery(listContainerId).find('table thead').height()
-		,	mainButtonsDiv = jQuery('#gmpMapMainBtns').height()
-		,	newHeight = '';
-		if(mListHt - d >= minMarkersTblHt) {	// Try to minimazi it using just markers list
-			newHeight = mListHt - d - markersListHeaderHeight * 2.5;
-			markerList.jqGrid('setGridHeight', newHeight + 'px');
-			shapesList.jqGrid('setGridHeight', newHeight + 'px');
-			//markerList.height( mListHt - d );
-			return;
+	listContainers.each(function() {
+		var self = jQuery(this);
+
+		if(self.attr('id') == 'gmpMarkersListGrid') {
+			newHeight = newHeight - jQuery('#gmpMarkersSearchInput').outerHeight();
 		}
-		var canDecreaseMList = mListHt - minMarkersTblHt;
-		if(canDecreaseMList > 0) {
-			newHeight = mListHt - canDecreaseMList - markersListHeaderHeight - mainButtonsDiv;
-			markerList.jqGrid('setGridHeight', newHeight + 'px');
-			shapesList.jqGrid('setGridHeight', newHeight + 'px');
-			//markerList.css('height', mListHt - canDecreaseMList);
-			d -= canDecreaseMList;
-		}
-		if(d <= 0) return;
-		
-		if(mapPreviewHt - d >= minMapHt) {
-			preview.height( mapPreviewHt - d - markersListHeaderHeight);
-			return;
-		}
-		var canDecreaseMapPrev = mapPreviewHt - minMapHt;
-		if(canDecreaseMapPrev > 0) {
-			preview.height( mapPreviewHt - canDecreaseMapPrev - markersListHeaderHeight );
-			d -= canDecreaseMapPrev;
-		}
-		if(d <= 0) return;
-	}
+		newHeight = newHeight > 250 ? newHeight : 250;
+
+		self.jqGrid('setGridWidth', rightBarWd);
+		self.jqGrid('setGridHeight', newHeight);
+	});
 }
+//function _gmpResizeRightSidebar() {
+//	var listContainerId = jQuery('#gmpMarkerList').is(':visible') ? '#gmpMarkerList' : '#gmpShapeList'
+//	,	wndWd = jQuery(window).width()
+//	,	wndHt = jQuery(window).height()
+//	,	preview = jQuery('#gmpMapPreview')
+//	,	markerList = jQuery('#gmpMarkersListGrid')
+//	,	shapesList = jQuery('#gmpShapesListGrid')
+//	,	rightBar = jQuery('#gmpMapRightStickyBar');
+//
+//	rightBar.width( jQuery('.supsistic-half-side-box').width());
+//	jQuery(window).trigger('scroll');
+//
+//	var rightBarWd = rightBar.outerWidth()
+//	,	rightBarHt = rightBar.outerHeight()
+//	,	rightBarTop = parseInt(rightBar.css('top'));
+//
+//	markerList.jqGrid('setGridWidth', rightBarWd);
+//	shapesList.jqGrid('setGridWidth', rightBarWd);
+//
+//	if(!rightBarTop) {
+//		var rightBarPos = rightBar.offset();
+//		wndHt -= rightBarPos.top + 32;
+//	}
+//	if(rightBarHt > wndHt && wndWd > 991) {
+//		//jQuery('#' + listCintainerId).css('overflow', 'scroll');
+//		var minMapHt = 350
+//		,	minMarkersTblHt = 300
+//		,	d = rightBarHt - wndHt
+//		,	mListHt = jQuery(listContainerId).outerHeight()
+//		,	mapPreviewHt = preview.outerHeight()
+//		,	markersListHeaderHeight = jQuery(listContainerId).find('table thead').height()
+//		,	mainButtonsDiv = jQuery('#gmpMapMainBtns').height()
+//		,	newHeight = '';
+//		if(mListHt - d >= minMarkersTblHt) {	// Try to minimazi it using just markers list
+//			newHeight = mListHt - d - markersListHeaderHeight * 2.5;
+//			markerList.jqGrid('setGridHeight', newHeight + 'px');
+//			shapesList.jqGrid('setGridHeight', newHeight + 'px');
+//			//markerList.height( mListHt - d );
+//			return;
+//		}
+//		var canDecreaseMList = mListHt - minMarkersTblHt;
+//		if(canDecreaseMList > 0) {
+//			newHeight = mListHt - canDecreaseMList - markersListHeaderHeight - mainButtonsDiv;
+//			markerList.jqGrid('setGridHeight', newHeight + 'px');
+//			shapesList.jqGrid('setGridHeight', newHeight + 'px');
+//			//markerList.css('height', mListHt - canDecreaseMList);
+//			d -= canDecreaseMList;
+//		}
+//		if(d <= 0) return;
+//
+//		if(mapPreviewHt - d >= minMapHt) {
+//			preview.height( mapPreviewHt - d - markersListHeaderHeight);
+//			return;
+//		}
+//		var canDecreaseMapPrev = mapPreviewHt - minMapHt;
+//		if(canDecreaseMapPrev > 0) {
+//			preview.height( mapPreviewHt - canDecreaseMapPrev - markersListHeaderHeight );
+//			d -= canDecreaseMapPrev;
+//		}
+//		if(d <= 0) return;
+//	} else {
+//		var mListHt = jQuery(listContainerId).outerHeight()
+//		,	newHeight = mListHt + wndHt - rightBarHt - jQuery(listContainerId).find('table thead').height() * 2.5;
+//		if(newHeight > mListHt) {
+//			markerList.jqGrid('setGridHeight', newHeight + 'px');
+//			shapesList.jqGrid('setGridHeight', newHeight + 'px');
+//		}
+//	}
+//}
 function gmpAddCustomControlsOptions() {
 	var customMapControls = jQuery('#map_optsenable_custom_map_controls_check').prop('checked');
 
@@ -720,6 +764,12 @@ function gmpSwitchClustererSubOpts(clusterType) {
 	} else {
 		jQuery('#gmpMarkerClastererSubOpts').show();
 	}
+}
+function gmpToggleSubOptionsByDataParam(value) {
+	var subOpts = jQuery('#gmpMarkerInfoWndTypeSubOpts .gmpSubOpt');
+
+	subOpts.filter('[data-type]').hide();
+	subOpts.filter('[data-type="' + value + '"]').show();
 }
 function gmpWpColorpickerUpdateTitlesColor(color) {
 	g_gmpMarkerTitleColorTimeoutSet = false;

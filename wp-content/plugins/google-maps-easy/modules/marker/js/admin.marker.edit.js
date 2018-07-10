@@ -32,7 +32,7 @@ jQuery(document).ready(function(){
 			if(res.rows.length) {
 				g_gmpMap.applyZoomTypeAdmin();	// Apply zoom type fit_bounds after all markers load in admin area
 			}
-			_gmpResizeRightSidebar();
+			_gmpResizeRightSidebar(jQuery('#gmpMarkersListGrid'));
 			jQuery('#gmpMarkersSearchInput').show();
 		}
 	}).jqGrid('sortableRows', {
@@ -372,6 +372,13 @@ function gmpOpenMarkerEdit(id) {
 
 		jQuery('#gmpMarkerForm select[name="marker_opts[marker_group_id]"]').val(markerParams.marker_group_id);
 		jQuery('#gmpMarkerForm input[name="marker_opts[id]"]').val( markerParams.id );
+
+		if(markerParams.period_from) {
+			jQuery('#gmpMarkerForm input[name="marker_opts[period_date_from]"]').val(markerParams.period_from);
+		}
+		if(markerParams.period_to) {
+			jQuery('#gmpMarkerForm input[name="marker_opts[period_date_to]"]').val(markerParams.period_to);
+		}
 
 		if(parseInt(markerParams.params.show_description)){
 			jQuery('#gmpMarkerForm input[name="marker_opts[params][show_description]"]').prop('checked', true);

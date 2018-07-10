@@ -85,12 +85,12 @@ gmpGoogleMap.prototype._beforeInit = function() {
 	if(typeof(this._mapParams.mouse_wheel_zoom) !== 'undefined') {
 		this._mapParams.scrollwheel = parseInt(this._mapParams.mouse_wheel_zoom) ? true : false;
 	}
-	if(typeof(this._mapParams.map_type) !== 'undefined' 
+	if(typeof(this._mapParams.map_type) !== 'undefined'
 		&& typeof(google.maps.MapTypeId[ this._mapParams.map_type ]) !== 'undefined'
 	) {
 		this._mapParams.mapTypeId = google.maps.MapTypeId[ this._mapParams.map_type ];
 	}
-	if(typeof(this._mapParams.map_stylization_data) !== 'undefined' 
+	if(typeof(this._mapParams.map_stylization_data) !== 'undefined'
 		&& this._mapParams.map_stylization_data
 	) {
 		this._mapParams.styles = this._mapParams.map_stylization_data;
@@ -121,9 +121,10 @@ gmpGoogleMap.prototype._afterInit = function() {
 	jQuery(document).trigger('gmapAfterMapInit', this);
 };
 gmpGoogleMap.prototype._setMinZoomLevel = function() {
+	var curZoom = this.getZoom();
 	var minZoom = parseInt(this._mapParams.zoom_min) ? parseInt(this._mapParams.zoom_min) : null;
-	this.getRawMapInstance().setOptions({maxZoom: minZoom});
-	if(this.getRawMapInstance().zoom < minZoom)
+	this.getRawMapInstance().setOptions({minZoom: minZoom});
+	if(curZoom < minZoom)
 		this.getRawMapInstance().setOptions({zoom: minZoom});
 };
 gmpGoogleMap.prototype._setMaxZoomLevel = function() {
@@ -179,7 +180,7 @@ gmpGoogleMap.prototype.enableClasterization = function(clasterType, needTrigger)
 					clasterer.clearMarkers();
 					clasterer.addMarkers( allVisibleMapMarkers );
 					clasterer.setStyles( markerGroupsStyles );
-					
+
 					self.setClastererGridSize(clasterGridSize);
 
 					clasterer.resetViewport();
@@ -456,7 +457,7 @@ gmpGoogleMap.prototype.setMarkersParams = function(markers) {
 			}
 		}
 	}
-	
+
 };
 gmpGoogleMap.prototype.get = function(key) {
 	return this.getRawMapInstance().get( key );
@@ -689,7 +690,8 @@ function gmpGetGeocoder() {
 function changeInfoWndType(map) {
 	//This is a standart google maps api class
 	var infowndContent = jQuery('#'+ map._elementId.id).find('.gm-style-iw')
-	,	type = map.getParam('marker_infownd_type');
+	,	type = map.getParam('marker_infownd_type')
+	,	hideInfoWndBtn = parseInt(map.getParam('marker_infownd_hide_close_btn'));
 
 	switch(type) {
 		case 'rounded_edges':
@@ -701,7 +703,9 @@ function changeInfoWndType(map) {
 					,	wndTail = $this.prev().children(':nth-child(3)')
 					,	wndTailShadow = $this.prev().children().first();
 
-					$this.next('div').hide();
+					if(hideInfoWndBtn !== 0) {
+						$this.next('div').hide();
+					}
 					$this.find('.gmpInfoWindowtitle').css({
 						'padding': '0'
 					,	'left': '0'

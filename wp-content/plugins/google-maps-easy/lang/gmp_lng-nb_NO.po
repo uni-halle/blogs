@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Google Maps Easy\n"
 "POT-Creation-Date: 2015-12-10 19:04+0300\n"
-"PO-Revision-Date: 2017-12-15 13:21+0200\n"
+"PO-Revision-Date: 2018-04-28 15:00+0300\n"
 "Last-Translator: \n"
 "Language-Team: supsystic.com <supsystic.team@gmail.com>\n"
 "Language: nb_NO\n"
@@ -205,7 +205,7 @@ msgid "Empty or invalid ID"
 msgstr "Tom eller ugyldig ID"
 
 #: classes/table.php:277
-msgid "Nothig to update"
+msgid "Nothing to update"
 msgstr "Ingen å oppdatere"
 
 #: classes/table.php:293
@@ -225,7 +225,7 @@ msgid "Description Of Map"
 msgstr "Beskrivelse av kart"
 
 #: classes/tables/marker.php:10
-msgid "X coordinate if marker(lng)"
+msgid "X coordinate of marker(lng)"
 msgstr "X-koordinater hvis markør(lng)"
 
 #: classes/tables/marker.php:11
@@ -470,8 +470,8 @@ msgstr "Vennligst skriv inn din e-postadresse"
 
 #: doc/google-maps-easy-pro/license/models/license.php:131
 msgid ""
-"There was a problem with sending request to our autentification server. "
-"Please try latter."
+"There was a problem with sending request to your authentication server. "
+"Please try later."
 msgstr ""
 "Det oppsto et problem ved sending av forespørsel til vår autentifiserings-"
 "server. Vennligst prøv igjen senere."

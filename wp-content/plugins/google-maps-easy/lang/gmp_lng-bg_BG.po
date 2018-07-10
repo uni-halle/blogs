@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Google Maps Easy\n"
 "POT-Creation-Date: 2017-12-21 13:03+0200\n"
-"PO-Revision-Date: 2017-12-21 13:03+0200\n"
+"PO-Revision-Date: 2018-04-28 14:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: supsystic.com <supsystic.team@gmail.com>\n"
 "Language: bg_BG\n"
@@ -216,7 +216,7 @@ msgid "Empty or invalid ID"
 msgstr "Празни или невалидни ID"
 
 #: classes/table.php:277
-msgid "Nothig to update"
+msgid "Nothing to update"
 msgstr "Нищо дори и обновяване на"
 
 #: classes/table.php:293
@@ -260,7 +260,7 @@ msgid "Description Of Marker"
 msgstr "Описание Маркер"
 
 #: classes/tables/marker.php:10
-msgid "X coordinate if marker(lng)"
+msgid "X coordinate of marker(lng)"
 msgstr "X координати, ако маркер(lng)"
 
 #: classes/tables/marker.php:11
@@ -652,8 +652,8 @@ msgstr "Моля, въведете вашия имейл"
 
 #: doc/google-maps-easy-pro/license/models/license.php:138
 msgid ""
-"There was a problem with sending request to our autentification server. "
-"Please try latter."
+"There was a problem with sending request to your authentication server. "
+"Please try later."
 msgstr ""
 "Възникнал е проблем с изпращането на запитване към нашия удостоверяване на "
 "сървъра. Моля, опитайте втората."
@@ -1668,7 +1668,7 @@ msgid "Hide Countries"
 msgstr "Скрий Страни"
 
 #: modules/gmap/views/tpl/gmapEditMap.php:788
-msgid "Hide all administrative data about countries: names, borders ets."
+msgid "Hide all administrative data about countries: names, borders etc."
 msgstr ""
 "Скриване на всички административни данни за страните: имена, граници и др."
 
@@ -2023,7 +2023,7 @@ msgid "Fill Opacity"
 msgstr "Плътност На Запълване"
 
 #: modules/gmap/views/tpl/gmapEditMap.php:1474
-msgid "Fugure Description"
+msgid "Figure Description"
 msgstr "Фигура Описание"
 
 #: modules/gmap/views/tpl/gmapEditMap.php:1476

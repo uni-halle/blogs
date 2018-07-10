@@ -103,6 +103,12 @@ gmpGoogleMarker.prototype.init = function() {
 	}
 };
 gmpGoogleMarker.prototype.showInfoWnd = function( forceUpdateInfoWnd, forceShow ) {
+	var allShapes = this._map.getAllShapes();
+	if(allShapes && allShapes.length) {
+		for(var i = 0; i < allShapes.length; i++) {
+			if(allShapes[i]._infoWndOpened) allShapes[i].hideInfoWnd();
+		}
+	}
 	if(!this._infoWndWasInited || forceUpdateInfoWnd) {
 		this._updateInfoWndContent();
 		this._infoWndWasInited = true;
@@ -279,7 +285,8 @@ gmpGoogleMarker.prototype._setInfoWndContent = function(newContentHtmlObj) {
 		,	infoWndType = map.getParam('marker_infownd_type')
 		,	infoWndWidth = map.getParam('marker_infownd_width_units') == 'px' ? map.getParam('marker_infownd_width') : mapWidth - 20
 		,	infoWndHeight = map.getParam('marker_infownd_height_units') == 'px' ? map.getParam('marker_infownd_height')+ 'px' : false
-		,	infoWndParams = { maxWidth: infoWndWidth };
+		,	maxWndWidth = mapWidth * 0.6
+		,	infoWndParams = { maxWidth: infoWndWidth < maxWndWidth ? infoWndWidth : maxWndWidth };
 
 		switch(infoWndType) {
 			case 'rounded_edges':
@@ -298,6 +305,10 @@ gmpGoogleMarker.prototype._setInfoWndContent = function(newContentHtmlObj) {
 		google.maps.event.addListener(this._infoWindow, 'domready', function(){
 			changeInfoWndType(map);
 			changeInfoWndBgColor(map);
+			// check if tooltip text has "Gallery by Supsystic"
+			if(this.content && this.content.innerHTML && this.content.innerHTML.indexOf && this.content.innerHTML.indexOf('id="grid-gallery-') != -1) {
+				jQuery(document).trigger('ggFirInitialize');
+			}
 		});
 		google.maps.event.addListener(this._infoWindow, 'closeclick', function(){
 			self._setInfoWndClosed();

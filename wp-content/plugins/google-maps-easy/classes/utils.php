@@ -1,5 +1,9 @@
 <?php
+importClassGmp('mobileDetectGmp');
+
 class utilsGmp {
+	static public $isMobile = null;
+
     static public function jsonEncode($arr) {
         return (is_array($arr) || is_object($arr)) ? json_encode_utf_normal($arr) : json_encode_utf_normal(array());
     }
@@ -316,16 +320,21 @@ class utilsGmp {
      * Check if device is mobile
      * @return bool true if user are watching this site from mobile device
      */
-    static public function isMobile() {
-        return mobileDetect::_()->isMobile();
-    }
-    /**
-     * Check if device is tablet
-     * @return bool true if user are watching this site from tablet device
-     */
-    static public function isTablet() {
-        return mobileDetect::_()->isTablet();
-    }
+	static public function isMobile() {
+		if(self::$isMobile === null) {
+			$mobileDetect = new mobileDetectGmp();
+			self::$isMobile = $mobileDetect->isMobile();
+		}
+		return self::$isMobile;
+	}
+	/**
+	 * Check if device is tablet
+	 * @return bool true if user are watching this site from tablet device
+	 */
+	static public function isTablet() {
+		$mobileDetect = new mobileDetectGmp();
+		return $mobileDetect->isTablet();
+	}
     static public function getUploadsDir() {
         $uploadDir = wp_upload_dir();
         return $uploadDir['basedir'];
@@ -354,14 +363,16 @@ class utilsGmp {
 			add_action('activated_plugin', array(frameGmp::_(), 'savePluginActivationErrors'));
 		}
         if (function_exists('is_multisite') && is_multisite()) {
-            $orig_id = $wpdb->blogid;
+			// $orig_id = $wpdb->blogid;
             $blog_id = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
             foreach ($blog_id as $id) {
                 if (switch_to_blog($id)) {
                     installerGmp::init();
+					restore_current_blog();
                 } 
             }
-            switch_to_blog($orig_id);
+			// restore_current_blog();
+			// switch_to_blog($orig_id);
             return;
         } else {
             installerGmp::init();
@@ -376,14 +387,16 @@ class utilsGmp {
     static public function deletePlugin() {
         global $wpdb;
         if (function_exists('is_multisite') && is_multisite()) {
-            $orig_id = $wpdb->blogid;
+			// $orig_id = $wpdb->blogid;
             $blog_id = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
             foreach ($blog_id as $id) {
                 if (switch_to_blog($id)) {
                     installerGmp::delete();
+					restore_current_blog();
                 } 
             }
-            switch_to_blog($orig_id);
+			// restore_current_blog();
+			// switch_to_blog($orig_id);
             return;
         } else {
             installerGmp::delete();
@@ -392,14 +405,16 @@ class utilsGmp {
 	static public function deactivatePlugin() {
 		global $wpdb;
         if (function_exists('is_multisite') && is_multisite()) {
-            $orig_id = $wpdb->blogid;
+			// $orig_id = $wpdb->blogid;
             $blog_id = $wpdb->get_col("SELECT blog_id FROM $wpdb->blogs");
             foreach ($blog_id as $id) {
                 if (switch_to_blog($id)) {
                     installerGmp::deactivate();
+					restore_current_blog();
                 } 
             }
-            switch_to_blog($orig_id);
+			// restore_current_blog();
+			// switch_to_blog($orig_id);
             return;
         } else {
             installerGmp::deactivate();
