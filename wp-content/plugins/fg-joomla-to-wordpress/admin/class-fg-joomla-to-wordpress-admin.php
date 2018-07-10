@@ -1804,7 +1804,7 @@ SQL;
 			$alt_matches = array();
 			$title_matches = array();
 			
-			if ( preg_match_all('#<(img|a)(.*?)(src|href)="(.*?)"(.*?)>#s', $content, $matches, PREG_SET_ORDER) > 0 ) {
+			if ( preg_match_all('#<(img|a)(.*?) (src|href)="(.*?)"(.*?)>#s', $content, $matches, PREG_SET_ORDER) > 0 ) {
 				if ( is_array($matches) ) {
 					foreach ($matches as $match ) {
 						$filename = $match[4];
