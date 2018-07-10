@@ -1,0 +1,269 @@
+/*
+	Styles for all stuff concerning The Events Calendar plug-in by Modern Tribe
+	https://theeventscalendar.com/ 
+
+*/
+
+
+
+ul.ecs-event-list
+{
+	margin-left: 0;
+
+}
+
+
+
+ul.ecs-event-list li
+{
+	display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+    margin-left: 0.8em;
+    position: relative;
+
+}
+
+
+body.archive  ul.ecs-event-list li:nth-child(n+4), 
+body.home  ul.ecs-event-list li:nth-child(n+4) 
+ 
+{
+    /*
+    Hide all but the first 3 in archive.
+    */
+    display: none; 
+}
+
+
+ul.ecs-event-list li h4
+{
+    font-family: inherit;
+ 
+    font-weight: 700;
+    font-family: RobotoSlab;
+    width: 100%;
+    font-size: 110%;
+ 
+}
+
+ul.ecs-event-list li h4 a:before
+{
+    content:'❯';
+    display: block;
+    margin-left: -0.8em;
+    position: absolute;
+    
+
+}
+
+ul.ecs-event-list li h4 a:after
+{
+
+
+}
+
+
+ul.ecs-event-list li>span
+{
+
+}
+
+ul.ecs-event-list li .duration
+{
+   
+    
+}
+
+ul.ecs-event-list li .duration.time
+{
+    order:-1;
+    color: #FFFFFF;
+    font-size: 80%; 
+    background-color: #999999;
+    padding: 0.2em;
+    padding-left: 0.6em;
+    padding-right: 0.6em;
+    border-radius: 0.2em;
+    margin-bottom: 0.2em;
+
+
+}
+
+ul.ecs-event-list li:nth-child(-n+2) .duration.time
+{
+    background-color: #dfac20;
+}
+
+
+
+
+
+ul.ecs-event-list li .duration.venue
+{
+    width: 100%;
+  
+}
+
+ul.ecs-event-list li .duration.venue em
+{
+    font-style: inherit;
+}
+
+@-webkit-keyframes blink
+{  
+  50% 
+  { 
+    background-color: red; 
+  }
+  100% 
+  { 
+    background-color: #dfac20;
+  }
+}
+
+
+@keyframes blink 
+{  
+  50% 
+  { 
+    background-color: red; 
+  }
+  100% 
+  { 
+    background-color: #dfac20;
+  }
+}
+
+
+ul.ecs-event-list li:first-child .duration.time
+{
+  -webkit-animation: blink 1.0s linear infinite;
+  -moz-animation: blink 1.0s linear infinite;
+  animation: blink 1.0s linear infinite;
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Veranstaltungskalender */
+.tribe-event-title {
+    /*font-family: arial, helvetica, sans-serif;*/
+/*    font-size: 11px;
+    margin-right: 10px;*/
+}
+.tribe-event-duration {
+    /*font-family: arial, helvetica, sans-serif;*/
+/*    font-size: 10px;
+    color: black;*/
+}
+
+.tribe-events-widget-link>a:nth-child(1) {
+    /*font-family: arial, helvetica, sans-serif;*/
+  /*  font-size: 11px;*/
+}
+li.tribe-events-list-widget-events {
+    margin-bottom: 5px !important;
+}
+.events-archive .entry-content,
+.events-archive .entry-header {
+   /* wdith: 440px;*/
+}
+.tribe-events-widget-link>a:nth-child(1) {
+    margin-left: 29px;
+}
+.tribe-events-list h2.tribe-events-page-title {
+    /*font-family: arial, helvetica, sans-serif;*/
+ /*   font-size: 14px;
+    margin-bottom: 5px;*/
+}
+.tribe-events-list-separator-month span {
+    /*font-family: arial, helvetica, sans-serif;*/
+   /* font-size: 12px;*/
+}
+.tribe-events-list-separator-month {
+    /*margin-bottom: 5px;
+    margin-top: 5px;*/
+}
+#tribe-events-content a,
+.tribe-events-event-meta a {
+    /*font-family: arial, helvetica, sans-serif;*/
+   /* font-size: 12px;*/
+}
+#tribe-events .tribe-events-content p,
+.tribe-events-before-html p,
+.tribe-events-after-html p {
+    /*font-family: arial, helvetica, sans-serif;*/
+    /*font-size: 12px;*/
+}
+.tribe-events-read-more {
+    /*font-family: arial, helvetica, sans-serif;*/
+   /* font-size: 12px;*/
+}
+.single-tribe_events #tribe-events-content .tribe-events-event-meta dt {
+    /*font-family: arial, helvetica, sans-serif;*/
+    /*font-size: 12px;*/
+}
+.single-tribe_events #tribe-events-content .tribe-events-event-meta dd {
+    /*font-family: arial, helvetica, sans-serif;*/
+    /*font-size: 12px;*/
+    hyphens: auto;
+
+    word-break: break-all;
+}
+.tribe-events-meta-group .tribe-events-single-section-title {
+    /*font-family: arial, helvetica, sans-serif;*/
+    /*font-size: 12px;*/
+    overflow: hidden;
+}
+.tribe-events-meta-group-details>dl:nth-child(2)>dt:nth-child(5) {
+    overflow: hidden;
+    overflow-wrap: break-word;
+}
+
+
+
+.tribe-events-event-meta .tribe-events-meta-group,
+.tribe-events-event-meta .column {
+    box-sizing: border-box;
+
+
+    margin: 0 0 20px 0;
+    padding: 0;
+    text-align: left;
+    vertical-align: top;
+    width: 99%;
+    zoom: 1;
+}
+
+
+.single-tribe_events .tribe-events-event-meta {
+
+    margin: 0;
+}
+
+
+.single-tribe_events .tribe-events-venue-map {
+
+
+    float: unset;
+    margin: 0;
+    width: 100%!important;
+}

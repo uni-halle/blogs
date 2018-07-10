@@ -54,8 +54,8 @@ function theme_top_widget_init() {
 	register_sidebar( array(
 		'id' => 'top_widget',
 		'name' => __( 'PageTopWidget' ),
-		'description' => __( 'Widget on top of the page area' ),
-		'before_widget' => '<div id="page-top-widget" class="widget widget-area page-top-widget">',
+		'description' => __( 'Widget on top of the page above branding' ),
+		'before_widget' => '<div id="%1$s" class="widget widget-area page-top-widget">',
 		'after_widget' => '</div>',
 		'before_title' => '<h3>',
 		'after_title' => '</h3>'
@@ -63,276 +63,15 @@ function theme_top_widget_init() {
 	);
 }
 
+/*
+	Remove autoformat in editor
+*/
 
+// remove_filter( 'the_content', 'wpautop' );
+/*
 
+*/
 
-function de_menalib_kit_search() {
-return <<<FORMULAR
-<form action="https://kvk.bibliothek.kit.edu/hylib-bin/kvk/nph-kvk2.cgi" method="GET" name="KVK_Suchmaske"><input name="maske" type="HIDDEN" value="SSG623" /><INPUT TYPE="HIDDEN" NAME="input-charset" VALUE="utf-8"><INPUT TYPE="HIDDEN" NAME="header" VALUE="http://kvk.bibliothek.kit.edu/asset/html/header.html">
-<INPUT TYPE="HIDDEN" NAME="footer" VALUE="http://kvk.bibliothek.kit.edu/asset/html/footer.html">
-<input TYPE="HIDDEN" NAME="lang" VALUE="de">
-<h1>Kataloge auswählen</h1>
-<table>
-<tbody>
-<tr>
-<td><script type="text/javascript"><!--
-        document.write("<font face=\"arial,helvetica\" size=\"2\" color=\"#000000\">")
-		document.write("Auswahl")
-		document.write("</font></td>")
-		document.write("<td nowrap>")
-		document.write("<font face=\"arial,helvetica\" size=\"2\">")
-		document.write("<input class=\"button\" type=\"button\" value=\"  Alle  \" onClick=\"check_all(this.form, true)\" title=\"Alle Kataloge ausw�hlen\">\n")
-		document.write("<input class=\"button\" type=\"button\" value=\"Einzelne\" onClick=\"check_all(this.form, false)\" title=\"Einzelne Kataloge ausw�hlen\">")
-		document.write("</font>")
-		//--></script>
-</tr>
-</tr>
-<tr>
-<td><input checked="checked" name="kataloge" type="checkbox" value="SSG_VO_TUE" /><a href="http://www.ub.uni-tuebingen.de/home.html">Universitätsbibliothek Tübingen</a></td>
-<td><input checked="checked" name="kataloge" type="checkbox" value="SSG_VO_HALLE" /> <a href="http://lhhal.gbv.de/DB=1/LNG=DU/">Universitäts- und Landesbibliothek Sachsen-Anhalt</a></td>
-</tr>
-<tr>
-<td><input checked="checked" name="kataloge" type="checkbox" value="IBLK_OPAC" /> <a href="http://www.ubka.uni-karlsruhe.de/hylib/iblk/">Datenbasis IBLK</a></td>
-<td><input checked="checked" name="kataloge" type="checkbox" value="VKNL_FES" /> <a href="http://library.fes.de/cgi-bin/populo/ssgvor.pl?db=ssgvor&amp;t_maske">Friedrich Ebert Stiftung</a></td>
-</tr>
-<tr>
-<td><input checked="checked" name="kataloge" type="checkbox" value="SSG_ZMO_BERLIN" /> <a href="http://195.37.93.199/biblio/main.htm">Zentrum Moderner Orient, Berlin</a></td>
-<td><input checked="checked" name="kataloge" type="checkbox" value="SSG_VO_BEIRUT" /> <a href="http://vzlbs2.gbv.de/DB=49/">Orient-Institut Beirut</a></td>
-</tr>
-<tr>
-<td><input checked="checked" name="kataloge" type="checkbox" value="SSG_VO_ISTANBUL" /> <a href="http://vzlbs2.gbv.de/DB=47/">Orient-Institut Istanbul</a></td>
-</tr>
-</tbody>
-</table>
-<h2>Suchbegriffe eingeben</h2>
-<table border="0" width="100%" cellspacing="0" cellpadding="8" bgcolor="#F2F2F2"><!-- Tabelle : Suchbegriffe: Beginn -->
-<tr align="left" valign="top">
-<td>Freitext</td>    
-<td><INPUT SIZE=18 TYPE="text" NAME="ALL" id="menainput"></td>
-</tr>
-<tr align="left" valign="top">
-<td>Titel</td>
-<td><INPUT SIZE=18 TYPE="text" NAME="TI" id="menainput"></td>
-<td>Jahr</td>
-<td><INPUT SIZE=18 TYPE="text" NAME="PY" id="menainput"></td>
-</tr>
-<tr align="left" valign="top">
-<td>Autor</td>
-<td><INPUT SIZE=18 TYPE="text" NAME="AU" id="menainput"></td>
-<td>ISBN</td>
-<td><INPUT SIZE=18 TYPE="text" NAME="SB" id="menainput"></td>
-</tr>
-<tr align="left" valign="top">
-<td>K&ouml;rperschaft</td>
-<td><INPUT SIZE=18 TYPE="text" NAME="CI" id="menainput"></td>
-<td>ISSN </td>
-<td><INPUT SIZE=18 TYPE="text" NAME="SS" id="menainput"></td>
-</tr>
-<tr align="left" valign="top">
-<td>Schlagwort</td>
-<td><INPUT SIZE=18 TYPE="text" NAME="ST" id="menainput"></td>
-<td>Verlag</td>
-<td><INPUT SIZE=18 TYPE="text" NAME="PU" id="menainput">
-</td>
-</tr>
-</table>
-
-<!-- Tabelle : Suchbegriffe: Ende -->
-
-<table border="0" width="100%" cellspacing="0" cellpadding="2" bgcolor="#F2F2F2">
-<tbody>
-<tr align="left" valign="middle">
-<td>Suche
-<input class="button" title="Suche starten" type="submit" value=" Starten " /><input class="button" title="Löschen" type="reset" value=" Löschen " /></td>
-</tr>
-</tbody>
-</table></form>
-<!-- Ende : Suchformular -->
-<h2>Tipps zur Suche</h2>
-<ul><li>Rechtstrunkierung mit '?', im Feld Autor geschieht dies automatisch</li>
-<li>Die Felder werden mit UND verknüpft</li></ul>
-<br/>
-<h2>Weitere Informationen</h2>
-Die im <a href="http://wikis.sub.uni-hamburg.de/webis/index.php/Vorderer_Orient_einschl._Nordafrika_%286.23%29" target="_blank">Sondersammelgebiet 6.23 Vorderer Orient/ Nordafrika</a> bis 1997 in Tübingen und 1998-2015 in Halle gesammelten Bestände werden seit 2016 im neu geschaffenen <a href="http://gepris.dfg.de/gepris/projekt/284366805" target="_blank">Fachinformationsdienst Nahost-, Nordafrika- und Islamstudien</a> fortgeführt. Den Suchergebnissen können Sie entnehmen, welche der Bibliotheken über den gewünschten Titel verfügt.
-<h2>Kontakt</h2>
-Bei technischen Fragen: <a href="mailto:Uwe.Dierolf@kit.edu">Uwe Dierolf</a>
-Bei fachlichen Fragen: <a href="mailto:volker.adam@bibliothek.uni-halle.de">Dr. Volker Adam</a>
-
-FORMULAR;
-}
-add_shortcode('de_kit', 'de_menalib_kit_search');
-
-function en_menalib_kit_search() {
-return <<<FORMULAR
-
-<form action="http://kvk.ubka.uni-karlsruhe.de/hylib-bin/kvk/nph-kvk2.cgi" method="GET" name="KVK_Suchmaske"><input name="maske" type="HIDDEN" value="SSG623" />
-<h1>Choose Catalogues</h1>
-<table>
-<tbody>
-<tr>
-<td><input checked="checked" name="kataloge" type="checkbox" value="SSG_VO_TUE" /><a href="http://www.ub.uni-tuebingen.de/home.html">University Library Tübingen</a></td>
-<td><input checked="checked" name="kataloge" type="checkbox" value="SSG_VO_HALLE" /> <a href="http://lhhal.gbv.de/DB=1/LNG=DU/">University and State Library Saxony-Anhalt</a></td>
-</tr>
-<tr>
-<td><input checked="checked" name="kataloge" type="checkbox" value="IBLK_OPAC" /> <a href="http://www.ubka.uni-karlsruhe.de/hylib/iblk/">Database IBLK</a></td>
-<td><input checked="checked" name="kataloge" type="checkbox" value="VKNL_FES" /> <a href="http://library.fes.de/cgi-bin/populo/ssgvor.pl?db=ssgvor&amp;t_maske">Friedrich Ebert Foundation</a></td>
-</tr>
-<tr>
-<td><input checked="checked" name="kataloge" type="checkbox" value="SSG_ZMO_BERLIN" /> <a href="http://195.37.93.199/biblio/main.htm">Zentrum Moderner Orient, Berlin</a></td>
-<td><input checked="checked" name="kataloge" type="checkbox" value="SSG_VO_BEIRUT" /> <a href="http://vzlbs2.gbv.de/DB=49/">Orient-Institute Beirut</a></td>
-</tr>
-<tr>
-<td><input checked="checked" name="kataloge" type="checkbox" value="SSG_VO_ISTANBUL" /> <a href="http://vzlbs2.gbv.de/DB=47/">Orient-Institute Istanbul</a></td>
-</tr>
-</tbody>
-</table>
-<h2>Enter Search Terms</h2>
-<table border="0" width="100%" cellspacing="0" cellpadding="8" bgcolor="#F2F2F2"><!-- Tabelle : Suchbegriffe: Beginn -->
-<tr align="left" valign="top">
-<td>Freetext</td>    
-<td><INPUT SIZE=18 TYPE="text" NAME="ALL" id="menainput"></td>
-</tr>
-<tr align="left" valign="top">
-<td>Title</td>
-<td><INPUT SIZE=18 TYPE="text" NAME="TI" id="menainput"></td>
-<td>Year</td>
-<td><INPUT SIZE=18 TYPE="text" NAME="PY" id="menainput"></td>
-</tr>
-<tr align="left" valign="top">
-<td>Author</td>
-<td><INPUT SIZE=18 TYPE="text" NAME="AU" id="menainput"></td>
-<td>ISBN</td>
-<td><INPUT SIZE=18 TYPE="text" NAME="SB" id="menainput"></td>
-</tr>
-<tr align="left" valign="top">
-<td>Institution</td>
-<td><INPUT SIZE=18 TYPE="text" NAME="CI" id="menainput"></td>
-<td>ISSN </td>
-<td><INPUT SIZE=18 TYPE="text" NAME="SS" id="menainput"></td>
-</tr>
-<tr align="left" valign="top">
-<td>Keyword</td>
-<td><INPUT SIZE=18 TYPE="text" NAME="ST" id="menainput"></td>
-<td>Publisher</td>
-<td><INPUT SIZE=18 TYPE="text" NAME="PU" id="menainput">
-</td>
-</tr>
-</table>
-
-<!-- Tabelle : Suchbegriffe: Ende -->
-
-<table border="0" width="100%" cellspacing="0" cellpadding="2" bgcolor="#F2F2F2">
-<tbody>
-<tr align="left" valign="middle">
-<td>Search
-<input class="button" title="Start" type="submit" value=" Submit " /><input class="button" title="Delete" type="reset" value=" Reset " /></td>
-<td align="right">
-<table border="0" cellspacing="0" cellpadding="0">
-<tbody>
-<tr>
-<td>Results</td>
-<td><select class="css" title="Style of Results" name="css">
-<option selected="selected" value="http://www.ubka.uni-karlsruhe.de/kvk/vk_ssg_vo/vk_ssg_vo_neu.css">New</option>
-<option value="http://www.ubka.uni-karlsruhe.de/kvk/vk_ssg_vo/vk_ssg_vo_klassisch.css">Classic</option>
-</select></td>
-</tr>
-<tr>
-<td><!--<a href="http://www.ubka.uni-karlsruhe.de/hylib/kvk_help.html#sort">-->Results<!--</a>--></td>
-<td><select name="sortiert">
-<option selected="selected" value="nein">Unsorted</option>
-<option value="ja">Sorted</option>
-</select></td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-</tbody>
-</table></form>
-<!-- Ende : Suchformular -->
-<h2>Search Tips</h2>
-<ul><li>Right truncation with '?', automatically done in the author field</li>
-<li>fields are linked with AND</li></ul>
-<br/>
-<h2>Further Information</h2>
-The library holdings of the Special Interest Collection Near East/ North Africa, collected until 1997 in Tübingen and 1998-2015 in Halle are continued since 2016 in the Special Information Service Near East, North Africa and Islamic Studies. You can see which library holds the wanted title in the results.
-
-<h2>Contact</h2>
-For technical questions: <a href="mailto:Uwe.Dierolf@kit.edu">Uwe Dierolf</a>
-For professional questions: <a href="mailto:volker.adam@bibliothek.uni-halle.de">Dr. Volker Adam</a>
-FORMULAR;
-}
-add_shortcode('en_kit', 'en_menalib_kit_search');
-function de_kalenderrechner() {
-return <<<FORMULAR
-
-<script language="JavaScript" type="text/javascript">       <!--
-       var h,g,i;
-       
-       function gregor (h)
-               {
-               i = h - (h/33) + 622;
-               g = Math.round(i);
-               return g;
-               }
-               
-       function islam (g)
-               {
-               i = g - 622 + (g-622)/32;
-               h = Math.round(i);
-               return h;
-               }
-      //-->
-      </script><p>Bitte tragen Sie links das Jahr (Hiǧra oder Gregorianisch) ein und klicken Sie auf den entsprechenden Button.</p><p>&nbsp;</p><p><form name="formular1"><table border="0"><tr><td>Eingabe:<br /><input name="jahrEin" size="4" maxlength="4" />&nbsp;&nbsp;&nbsp;</td><td><p>&nbsp;<input type="button" value=" Greg. Jahr&nbsp; --&gt; &nbsp;Hiǧri Jahr&nbsp;" onclick="formular1.jahrAus.value=islam(Number(formular1.jahrEin.value))" /></p>       &nbsp;<input type="Button" value="&nbsp;Hiǧri Jahr&nbsp; --&gt; &nbsp;Greg. Jahr " onclick="formular1.jahrAus.value=gregor(Number(formular1.jahrEin.value))" /></td><td>&nbsp;&nbsp;&nbsp;Ausgabe:<br />&nbsp;&nbsp;&nbsp;<input name="jahrAus" size="4" maxlength="4" /></td></tr></table><p>&nbsp;</p><p>Das Ergebnis ist ein N&auml;herungswert. Jedes Hiǧra-Jahr entspricht
-einem Gregorianischen Jahr und umgekehrt. Die Konvertierung basiert auf
-dieser Formel:  <b>G=H-(H/33)+622</b> and <b>H=G-622+(G-622)/32</b> (Carl Brockelmann: Arabische
-Grammatik, 12. neubearbeitete Auflage, Leipzig: Harrassowitz, 1948, p. 209).
-Wenn Sie genaue Daten mit Monat und Jahr konvertieren wollen, gehen Sie bitte auf diese Website: <a href="http://mela.us/hegira.html" target="new">Conversion of Islamic
-and Christian dates von J. Thomann</a> oder auf
-<a href="http://www.nabkal.de/kalrech.html" target="new">N.A.B. Rechner</a> von
-Nikolaus A. B&auml;r.</p></form></p>
-FORMULAR;
-}
-add_shortcode('de_kalender', 'de_kalenderrechner');
-function en_kalenderrechner() {
-return <<<FORMULAR
-
-<script language="JavaScript" type="text/javascript">
-	<!--
-	var h,g,i;
-	
-	function gregor (h)
-		{
-		i = h - (h/33) + 622;
-		g = Math.round(i);
-		return g;
-		}
-		
-	function islam (g)
-		{
-		i = g - 622 + (g-622)/32;
-		h = Math.round(i);
-		return h;
-		}
-	//-->
-	</script>
-<p>Enter the year you want to convert (Gregorian or Hijra) into the [i]Input[/i]-field and click the button for the conversion.</p>
-<p>&nbsp;</p>
-<p><form name="formular1">
-<table border="0"><tr>
-<td>Input:<br /><input name="jahrEin" size="4" maxlength="4" />&nbsp;&nbsp;&nbsp;</td>
-<td><p>&nbsp;<input type="button" value=" Greg. year&nbsp; --&gt; &nbsp;Hijri year&nbsp;" onclick="formular1.jahrAus.value=islam(Number(formular1.jahrEin.value))" /></p>
-       &nbsp;<input type="Button" value="&nbsp;Hijri year&nbsp; --&gt; &nbsp;Greg. year " onclick="formular1.jahrAus.value=gregor(Number(formular1.jahrEin.value))" /></td>
-<td>&nbsp;&nbsp;&nbsp;Output:<br />&nbsp;&nbsp;&nbsp;<input name="jahrAus" size="4" maxlength="4" /></td>
-</tr></table>
-<p>&nbsp;</p>
-<p>The result is an approximate date. Every Hijri year corresponds to one Gregorian year and vice versa. The conversion is based on the follwing formulae: G=H-(H/33)+622 and H=G-622+(G-622)/32 (Carl Brockelmann: Arabische Grammatik, 12. neubearbeitete Auflage, Leipzig: Harrassowitz, 1948, p. 209).
-
-If you want to convert exact dates including month and day please go to the converter offered by the website <a href="http://mela.us/hegira.html" target="_blank">Conversion of Islamic and Christian dates</a> by J. Thomann or to the <a href="http://www.nabkal.de/kalrech.html" target="new">N.A.B. Rechner</a> developed by Nikolaus A. B&auml;r.</p>
-</form></p>
-FORMULAR;
-}
-add_shortcode('en_kalender', 'en_kalenderrechner');
 function add_button_tile( $atts, $content = null) {
 return <<<FORMULAR
 
@@ -381,6 +120,24 @@ function add_file_types_to_uploads($file_types){
     return $file_types;
 }
 add_action('upload_mimes', 'add_file_types_to_uploads');
+/*
+	***
+*/
+
+
+/*
+	2018_06_18 HenryG.
+	Excerpt for pages
+
+	https://blog.kulturbanause.de/2013/07/wordpress-auszug-the_excerpt-fur-statische-seiten-aktivieren/
+*/
+
+add_action( 'init', 'enable_page_excerpts' );
+
+function enable_page_excerpts() 
+{
+  add_post_type_support( 'page', 'excerpt' );
+}
 /*
 	***
 */
@@ -441,4 +198,20 @@ add_filter( 'pre_get_posts', 'my_get_posts' );
 
 
 require_once( get_stylesheet_directory() . '/inc/discovery-search.php');
+
+require_once( get_stylesheet_directory() . '/inc/opac-search.php');
+require_once( get_stylesheet_directory() . '/inc/almanhal-search.php');
+require_once( get_stylesheet_directory() . '/inc/menadoc-search.php');
+
+require_once( get_stylesheet_directory() . '/inc/calendar-calculator.php');
+
+require_once( get_stylesheet_directory() . '/inc/get-excerpt-by-id.php');
+require_once( get_stylesheet_directory() . '/inc/get-short-post-preview-by-id.php');
+require_once( get_stylesheet_directory() . '/inc/list-subpages.php');
+
 require_once( get_stylesheet_directory() . '/inc/password-protected-posts.php');
+
+require_once( get_stylesheet_directory() . '/inc/iframe-shortcode.php');
+
+
+

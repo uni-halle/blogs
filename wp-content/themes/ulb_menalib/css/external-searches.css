@@ -1,0 +1,114 @@
+/*
+
+	Default design
+
+*/
+
+
+.external-search
+{
+	display: block;
+	width: 100%;
+
+}
+
+
+.external-search form
+{
+	display: flex;
+	box-sizing: border-box;
+	width: 100%;
+	background-color: #FFFFFF;
+	padding: 0.16em;
+	padding-top: 0.2em;
+	padding-bottom: 0.2em;
+	border-radius: 0.3em;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #AAAAAA;
+	
+}
+
+.external-search form input
+{
+	display: inline-block;
+	
+}
+
+.external-search form input[type='text']
+{
+	flex-grow: 1;
+	padding: 0.2em;
+	padding-left: 0.6em;
+	padding-right: 0.6em;
+	border-width: 0;
+
+}
+.external-search form button
+{
+	
+	width: 7em;
+	background-image: url(../images/magnify-icon.svg);
+	background-repeat: no-repeat;
+
+}
+
+
+.external-search form button:hover
+{
+	
+	background-size: auto 930%;
+	background-position: 24.5% 32.0%;
+
+	padding-right: 1.3em;
+	padding-left: 1.3em;
+	
+	
+
+}
+
+.external-search form button,
+.external-search form button:active
+{
+	background-size: auto 60%;
+	background-position: 0.9em 52%;
+	padding-left: 2.5em;
+	padding-right: 1.3em;
+
+}
+
+
+.external-search form button:focus 
+{
+	outline:none;
+}
+.external-search form button::-moz-focus-inner 
+{
+	border:0;
+}
+
+
+
+/*
+
+
+*/
+
+.external-search.almanhal-search 
+{
+	margin-bottom: 1.4em;
+}
+
+
+.external-search.almanhal-search select 
+{
+	margin-bottom: 1em;
+}
+
+.external-search.almanhal-search button 
+{
+	background-color: #5bc0de;
+
+}
+
+

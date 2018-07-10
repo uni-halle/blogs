@@ -5,18 +5,34 @@
 	
 }
 
-.entry-content>p
+
+.entry-content h2
+{
+	margin-bottom: 0.5em;
+	font-weight: 700;
+	font-size: 115%;
+	color:#53602E;
+	
+}
+
+.entry-content h3
+{
+	font-weight: 700;
+	color: #363636;
+}
+
+.entry-content p
 {
 	margin-bottom: 2em;
 	
 }
 
-.entry-content a[href*='lhhal.gbv.de']:before,
+.entry-content a[href*='lhhal.gbv.de/CHARSET']:before,
 .entry-content a[href*='/opac']:before,
 .entry-content a[href*='opac.']:before,
 .entry-content a[href*='stabikat.']:before,
 .entry-content a[href*='kataloge.thulb.']:before,
-.entry-content a[href*='idm.oclc.org']:before
+.entry-content a[href*='idm.oclc.org_']:before
 
 
 
@@ -40,6 +56,16 @@
 {
 	transform: translate(0.2em,0em)
 }
+
+
+.entry-content img.alignleft.size-full,
+.entry-content img.alignright.size-full,
+.entry-content img.alignleft.size-medium,
+.entry-content img.alignright.size-medium
+{
+	
+}
+
 
 
 .entry-content .article-menu

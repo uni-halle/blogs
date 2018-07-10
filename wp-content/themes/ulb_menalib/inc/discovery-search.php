@@ -26,7 +26,7 @@ function discovery_search($atts = [], $tag = '')
    /*print esc_html__($search_atts['placeholder'], 'search');*/
       
 return <<<FORMULAR
-<div class="discovery-search $style">
+<div class="external-search $style">
       <form accept-charset="UTF-8" action="https://search.ebscohost.com/login.aspx" method="get" target="_blank">
             <input name="direct" value="true" type="hidden">
             <input name="scope" value="site" type="hidden">
@@ -40,8 +40,9 @@ return <<<FORMULAR
             <input name="cli0" value="FT1" type="hidden">
             <input name="clv0" value="N" type="hidden">
       <!-- Suchbox und Button -->         
-            <input name="bquery" size="35" type="text" value="" placeholder="$placeholder">
-            <input value="$submit" type="submit">
+            <input name="bquery" size="5" type="text" value="" placeholder="$placeholder">
+            <!--old: <input value="$submit" type="submit">-->
+            <button>$submit</button>
     </form>
     </div>
 

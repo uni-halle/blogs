@@ -1,19 +1,68 @@
 
-#post-6412
+/*
+	posts with frame and overlay 
+*/
+
+
+
+#post-6412:before,
+#post-5787:before,
+#post-6584:before
 {
 
-	/*
-	#post-6412 = Sticky Discovery-Search for Home-Page
-	*/
-	background-color:#E2E2E2;
-	padding: 1.6em;
-	padding-top: 0.2em;
-	padding-bottom: 1.6em;
+	content: '';
+	display: block;
+	position: absolute;
+	box-sizing: content-box;
+	z-index: -1;
+	left: -1.6em;
+	right: -1.6em;
+	top: -0.4em;
+	bottom: -0.8em;
+
 	border-style: solid;
 	border-width: 1px;
 	border-radius: 0.3em;
+	
 	border-color: #CCCCCC; 
+	background-color: #E2E2E2;
+
 }
+
+
+
+#post-6412,
+#post-5787,
+#post-6584
+{
+	z-index: 1;
+	position: relative;
+	margin-bottom: 3em;
+	border-width: 0;
+	padding-bottom: 1em;
+    padding-top: 0.4em;
+}
+
+
+
+/*
+	#post-6412 = Sticky Discovery-Search for Home-Page and Recherche
+*/
+
+#post-6412:before
+{
+
+	border-color: #CCCCCC; 
+	background-color: #E2E2E2;
+
+}
+
+#post-6412
+{
+
+
+}
+
 
 
 
@@ -26,3 +75,56 @@
 {
 	display: none;
 }
+
+/*
+	#post-5787 = Al Manhal 
+*/
+
+#post-5787:before
+{
+
+	border-color: #00345b; 
+	background-color: #00345b;
+
+}
+
+#post-5787
+{
+	color: #FFFFFF;
+
+}
+
+#post-5787 h2
+{
+	color: currentColor;
+}
+
+#post-5787 p
+{
+	
+
+}
+
+
+
+/*
+	#post-6584 = Sticky Upcoming Events
+*/
+
+#post-6584:before
+{
+
+	border-color: #CCCCCC; 
+	background-color: #FFFFFF;
+	background-image: url(../images/ps_neutral.png);
+
+}
+
+#post-6584
+{
+
+
+}
+
+
+

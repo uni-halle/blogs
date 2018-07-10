@@ -82,9 +82,11 @@ PageTopWidget area
 See functions.php for activation 
 
  -->
-<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('PageTopWidget') ) : ?>
-<?php endif;?>
 
+<div id="page-top-widgets">
+	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('PageTopWidget') ) : ?>
+	<?php endif;?>
+</div>
 
 	<header id="branding" role="banner">
 			<hgroup>
@@ -107,7 +109,10 @@ See functions.php for activation
 						$header_image_width = HEADER_IMAGE_WIDTH;
 					}
 					?>
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+			<a class="linked-image" id="linked-image" href="<?php echo esc_url( home_url( '/' ) ); ?>">
+			
+
+
 				<?php
 					/*
 					 * The header image.
@@ -130,8 +135,16 @@ See functions.php for activation
 						?>
 					<img src="<?php header_image(); ?>" width="<?php echo esc_attr( $header_image_width ); ?>" height="<?php echo esc_attr( $header_image_height ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" />
 				<?php endif; // end check for featured image or standard header ?>
+
+				<div id="header-images" class="header-images"></div>
+	
 			</a>
+
+
 			<?php endif; // end check for removed header image ?>
+
+
+			
 
 			<?php
 				// Has the text been hidden?
@@ -146,16 +159,53 @@ See functions.php for activation
 				<?php get_search_form(); ?>
 			<?php endif; ?>
 
-			<nav id="access" role="navigation">
-				<h3 class="assistive-text"><?php _e( 'Main menu', 'twentyeleven' ); ?></h3>
-				<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
-				<div class="skip-link"><a class="assistive-text" href="#content"><?php _e( 'Skip to primary content', 'twentyeleven' ); ?></a></div>
-				<?php if ( ! is_singular() ) : ?>
-					<div class="skip-link"><a class="assistive-text" href="#secondary"><?php _e( 'Skip to secondary content', 'twentyeleven' ); ?></a></div>
-				<?php endif; ?>
-				<?php /* Our navigation menu. If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assigned to the primary location is the one used. If one isn't assigned, the menu with the lowest ID is used. */ ?>
-				<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
-			</nav><!-- #access -->
+
+
+			<div id="navigation" class="main-menu">
+				<nav id="access" role="navigation">
+					<h3 class="assistive-text"><?php _e( 'Main menu', 'twentyeleven' ); ?></h3>
+					<?php /* Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff. */ ?>
+					<div class="skip-link"><a class="assistive-text" href="#content"><?php _e( 'Skip to primary content', 'twentyeleven' ); ?></a></div>
+					<?php if ( ! is_singular() ) : ?>
+						<div class="skip-link"><a class="assistive-text" href="#secondary"><?php _e( 'Skip to secondary content', 'twentyeleven' ); ?></a></div>
+					<?php endif; ?>
+					<?php /* Our navigation menu. If one isn't filled out, wp_nav_menu falls back to wp_page_menu. The menu assigned to the primary location is the one used. If one isn't assigned, the menu with the lowest ID is used. */ ?>
+					<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+
+
+
+
+
+<?php
+/*    if ($post->post_parent) 
+    {
+        $page = $post->post_parent;
+    
+
+    } else {
+        $page = $post->ID;
+    }
+
+    $children = wp_list_pages(array(
+        'child_of' => $page,
+        'echo' => '0',
+        'title_li' => ''
+    ));
+
+    if ($children) {
+        echo "<ul>\n".$children."</ul>\n";
+    } */
+?>
+
+
+
+
+
+
+
+
+				</nav><!-- #access -->
+			</div><!-- #navigation -->
 	</header><!-- #branding -->
 
 

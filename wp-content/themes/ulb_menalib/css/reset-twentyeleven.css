@@ -1,0 +1,240 @@
+/*
+	All styles that reset rubbish from the parent theme twentyeleven and som general resets
+*/
+
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after 
+{
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+body, input, textarea, select, option
+{
+	font:normal;
+	font:unset;
+	font-weight: normal;
+	font-weight: unset;
+	color: #000000;
+	color: unset;
+
+}
+
+body 
+{
+	background-color: transparent;
+    background: unset; 
+}
+
+
+
+body, input, textarea
+{
+
+}
+
+code, kbd, samp, var 
+{
+	font: unset;
+}
+
+
+
+#page
+{
+
+	  width: 100%;
+	  background-color: transparent;
+	  background-color: unset;
+
+}
+
+.one-column #page 
+{
+	max-width: none;
+    max-width: unset;
+
+}
+
+#branding, #main, #primary, #access, #colophon
+{
+	position: relative;
+	border:0;
+	border:unset;
+
+	background-color:transparent; 
+	background: unset; 
+	float: none;
+	float: unset;
+	margin: 0;
+	padding: 0;
+}
+
+#primary
+{
+	overflow: hidden;
+}
+
+
+#access
+{
+	background: transparent;
+	background: unset;
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+	border: unset; 
+	margin: 0;
+	padding: 0;
+	width: auto;
+	width: unset;
+	float: none;
+	float: unset;
+}
+
+#access div,
+#branding .only-search + #access div
+{
+	margin: 0;
+	padding: 0;
+}
+
+#access ul
+{
+	margin: 0;
+	padding: 0;
+}
+
+#access li
+{
+
+	float: none;
+	float: unset;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#supplementary
+{
+	border:none;
+}
+
+.one-column #nav-below
+{
+	border: none;
+	margin-bottom: 0; 
+}
+
+
+.entry-header hgroup .entry-title 
+{
+    padding: 0;
+}
+
+
+
+.page-title,
+.entry-title
+{
+
+	font:unset;
+	font-weight: normal;
+	font-weight: unset;
+	letter-spacing: normal;
+	letter-spacing: unset;
+	line-height: unset;
+	margin: 0;
+	padding: 0;
+	text-transform: none;
+}
+
+.entry-content h1, 
+.entry-content h2, 
+.comment-content h1, 
+.comment-content h2
+
+{
+	color: currentColor;
+    color: unset;
+    /*font-weight: unset;*/
+    margin: 0; 
+    margin: unset; 
+}
+
+.entry-content h3, .comment-content h3
+{
+	font-size: 100%;
+	font-size: unset;
+	letter-spacing: normal;
+	line-height: 1em;
+	line-height: unset;
+	text-transform: none;
+
+}
+
+.entry-title, .entry-title a 
+{
+    color: currentColor;
+}
+
+
+.hentry, 
+.no-results {
+
+   /* border: none;*/
+    margin: 0;
+    padding: 0;
+
+
+}
+
+
+
+.entry-meta,
+.entry-meta a 
+{
+    font-family: unset;
+    font-size: unset;
+    
+}
+
+.entry-meta 
+{
+	color: unset;
+}
+
+
+img.alignleft, 
+img.alignright, 
+img.aligncenter
+{
+	margin-bottom: unset;
+}
+
+a:focus img[class*="align"],
+a:hover img[class*="align"],
+a:active img[class*="align"],
+a:focus img[class*="wp-image-"],
+a:hover img[class*="wp-image-"],
+a:active img[class*="wp-image-"],
+#content .gallery .gallery-icon a:focus img,
+#content .gallery .gallery-icon a:hover img,
+#content .gallery .gallery-icon a:active img {
+    background: unset;
+}

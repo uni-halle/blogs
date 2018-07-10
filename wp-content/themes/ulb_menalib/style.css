@@ -1,10 +1,10 @@
 /*
- Theme Name:   MenaLib (ULB)
- Description:  Theme für Menalib-Seite
+ Theme Name:   MENALIB (ULB)
+ Description:  Theme für die Website menalib.de 
  Author:       Daniel Brenn, Henry Gerlach
  Author URI:   mailto:henry.gerlach@bibliothek.uni-halle.de
  Template:     twentyeleven
- Version:      1.0.1
+ Version:      1.1.0
 */
 
 /* @see: https://codex.wordpress.org/Child_Themes */
@@ -12,10 +12,28 @@
 /** CUSTOM STYLES FROM HERE **/
 
 
+/*
+FONTS
+*/
+
+
+@import url("css/fonts/roboto-condensed-fontfacekit/stylesheet.css");
+@import url("css/fonts/roboto-fontfacekit/stylesheet.css");
+@import url("css/fonts/roboto-slab-fontfacekit/stylesheet.css");
+
+
+
+/* 
+	reset-twentyeleven.css: 
+	- styles that reset rubbish from the parent theme twentyeleven 
+
+*/
+@import url("css/reset-twentyeleven.css");
+
 
 /* 
 	child-theme.css: 
-	- contains all definitions that redefine the twentyeleven theme 
+	- contains all global definitions that make the child theme unique  
 
 */
 @import url("css/child-theme.css");
@@ -44,8 +62,18 @@
 @import url("css/discovery-search.css");
 
 
+@import url("css/external-searches.css");
+
+
 /*
 	qtranslate language chooser
 	
 */
 @import url("css/qtranslate.css");
+
+/*
+	Styles for all stuff concerning The Events Calendar plug-in by Modern Tribe
+	https://theeventscalendar.com/
+*/
+
+@import url("css/ecs-event.css");
