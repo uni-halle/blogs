@@ -49,7 +49,8 @@ if ( ! class_exists( 'ThemeIsle_SDK_Licenser' ) ) :
 		 * @param ThemeIsle_SDK_Product $product The product object.
 		 */
 		public function __construct( $product ) {
-			$this->product     = $product;
+			$this->product = $product;
+
 			$this->product_key = $this->product->get_key() . '-update-response';
 			if ( ! $this->product->requires_license() ) {
 				$this->license_key = 'free';
@@ -518,6 +519,39 @@ if ( ! class_exists( 'ThemeIsle_SDK_Licenser' ) ) :
 		}
 
 		/**
+		 * Check remote api for latest version.
+		 *
+		 * @return bool|mixed Update api response.
+		 */
+		private function get_version_data() {
+			$api_params = array(
+				'edd_action' => 'get_version',
+				'version'    => $this->product->get_version(),
+				'license'    => $this->license_key,
+				'name'       => $this->product->get_name(),
+				'slug'       => $this->product->get_slug(),
+				'author'     => $this->product->get_store_name(),
+				'url'        => rawurlencode( home_url() ),
+			);
+			$response   = wp_remote_post(
+				$this->product->get_store_url(), array(
+					'timeout'   => 15,
+					'sslverify' => false,
+					'body'      => $api_params,
+				)
+			);
+			if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) ) {
+				return false;
+			}
+			$update_data = json_decode( wp_remote_retrieve_body( $response ) );
+			if ( ! is_object( $update_data ) ) {
+				return false;
+			}
+
+			return $update_data;
+		}
+
+		/**
 		 * Check for updates
 		 *
 		 * @return array|bool Either the update data or false in case of failure
@@ -525,45 +559,22 @@ if ( ! class_exists( 'ThemeIsle_SDK_Licenser' ) ) :
 		function check_for_update() {
 			$theme       = wp_get_theme( $this->product->get_slug() );
 			$update_data = get_transient( $this->product_key );
+
 			if ( false === $update_data ) {
 				$failed = false;
-				if ( empty( $this->license_key ) ) {
-					return false;
-				}
-				$api_params = array(
-					'edd_action' => 'get_version',
-					'version'    => $this->product->get_version(),
-					'license'    => $this->license_key,
-					'name'       => $this->product->get_name(),
-					'slug'       => $this->product->get_slug(),
-					'author'     => $this->product->get_store_name(),
-					'url'        => rawurlencode( home_url() ),
-				);
-				$response   = wp_remote_post(
-					$this->product->get_store_url(), array(
-						'timeout'   => 15,
-						'sslverify' => false,
-						'body'      => $api_params,
-					)
-				);
-				// make sure the response was successful
-				if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) ) {
+
+				$update_data = $this->get_version_data();
+				if ( empty( $update_data ) ) {
 					$failed = true;
 				}
-				$update_data = json_decode( wp_remote_retrieve_body( $response ) );
-				if ( ! is_object( $update_data ) ) {
-					$failed = true;
-				}
-				// if the response failed, try again in 30 minutes
+				// If the response failed, try again in 30 minutes.
 				if ( $failed ) {
 					$data              = new stdClass;
 					$data->new_version = $this->product->get_version();
 					set_transient( $this->product_key, $data, strtotime( '+30 minutes' ) );
 
 					return false;
-				}
-				// if the status is 'ok', return the update arguments
-				if ( ! $failed ) {
+				} else {
 					$update_data->sections = maybe_unserialize( $update_data->sections );
 					set_transient( $this->product_key, $update_data, strtotime( '+12 hours' ) );
 				}
@@ -618,34 +629,14 @@ if ( ! class_exists( 'ThemeIsle_SDK_Licenser' ) ) :
 		 * @return false||object
 		 */
 		private function api_request( $_action = '', $_data = '' ) {
-			if ( empty( $this->license_key ) ) {
-				return;
-			}
-			$api_params = array(
-				'edd_action' => 'get_version',
-				'license'    => $this->license_key,
-				'name'       => rawurlencode( $this->product->get_name() ),
-				'slug'       => rawurlencode( $this->product->get_slug() ),
-				'author'     => $this->product->get_store_name(),
-				'url'        => rawurlencode( home_url() ),
-			);
-			$request    = wp_remote_post(
-				$this->product->get_store_url(), array(
-					'timeout'   => 15,
-					'sslverify' => false,
-					'body'      => $api_params,
-				)
-			);
-			if ( ! is_wp_error( $request ) ) :
-				$request = json_decode( wp_remote_retrieve_body( $request ) );
-				if ( $request && isset( $request->sections ) ) {
-					$request->sections = maybe_unserialize( $request->sections );
-				}
-
-				return $request;
-			else :
+			$update_data = $this->get_version_data();
+			if ( empty( $update_data ) ) {
 				return false;
-			endif;
+			}
+			if ( $update_data && isset( $update_data->sections ) ) {
+				$update_data->sections = maybe_unserialize( $update_data->sections );
+			}
+			return $update_data;
 		}
 
 		/**

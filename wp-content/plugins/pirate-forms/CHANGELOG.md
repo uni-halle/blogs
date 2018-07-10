@@ -1,4 +1,18 @@
 
+ ### v2.4.3 - 2018-06-25 
+ **Changes:** 
+ * New Gutenberg block for the default Pirate Forms form
+* Made the checkbox field to store in the database for GDPR compliance
+* New option to disable tracking of the IP for GDPR compliance
+* Replaced subscription form with Sendinblue form
+ 
+ ### v2.4.2 - 2018-06-07 
+ **Changes:** 
+ * NEW support for submitting Ajax forms with [pirate_forms ajax="yes"]
+* Added compatibility with WordPress 4.9.6 Export and Erase Personal Data options
+* Fixed issue with form caused by the reCaptcha
+* Fixed compatibility issues with the wpDataTables Lite plugin
+ 
  ### v2.4.1 - 2018-05-07 
  **Changes:** 
  * GDPR compliance
