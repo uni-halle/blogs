@@ -15,7 +15,8 @@ function graphene_get_header_image( $post_id = NULL, $size = 'post-thumbnail', $
 		$image_id = get_post_thumbnail_id( $post_id );
 		$image_meta = wp_get_attachment_metadata( $image_id );
 		
-		if ( $image_meta && $image_meta['width'] >= HEADER_IMAGE_WIDTH && ! $graphene_settings['featured_img_header'] ) {
+		$header_image_width = apply_filters( 'graphene_header_image_width', graphene_grid_width( $graphene_settings['gutter_width'] * 2, 12 ) );
+		if ( $image_meta && $image_meta['width'] >= $header_image_width && ! $graphene_settings['featured_img_header'] ) {
 			$image = wp_get_attachment_image_src( $image_id, $size );
 			if ( $return_url ) $header_img = $image[0];
 		}

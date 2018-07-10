@@ -2,7 +2,7 @@
 Theme Name: 	Graphene
 Theme URI: 		https://www.graphene-theme.com/graphene-theme/
 Description: 	We believe that every theme should facilitate creative writing, not hinder it. We also believe that each site should have the opportunity to be unique. Since the beginning, we have listened to countless suggestions and requests for features that really matter. Here's a theme that's user-friendly, feature-packed, and endlessly customisable, for both beginners and advanced creators. Feel at home with more than 40 languages and backed with active community support, where questions, ideas and suggestions are always welcomed.
-Version: 		2.4.2
+Version: 		2.4.3.1
 Author: 		Graphene Themes Solutions
 Author URI: 	https://www.graphene-theme.com/
 Tags: 			one-column, two-columns, three-columns, right-sidebar, left-sidebar, custom-colors, custom-header, custom-background, custom-menu, editor-style, theme-options, threaded-comments, sticky-post, translation-ready, rtl-language-support, post-formats, featured-image-header, featured-images, full-width-template, microformats
@@ -188,6 +188,7 @@ button[type="submit"],
 .top-bar-items .logo {
     margin-right: 30px;
     line-height: 0;
+    float: left;
 }
 .top-bar-items .social-profiles {
     float: left;

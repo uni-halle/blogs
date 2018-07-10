@@ -91,7 +91,7 @@
                     </button>
                     
                     <?php /* The site title and description */ 
-                        $show_title = ( ! in_array( get_theme_mod( 'header_textcolor', HEADER_TEXTCOLOR ), array( 'blank', '' ) ) ) ? true : false;
+                        $show_title = ( ! in_array( get_theme_mod( 'header_textcolor', apply_filters( 'graphene_header_textcolor', 'ffffff' ) ), array( 'blank', '' ) ) ) ? true : false;
                         $title_tag_class = 'header_title';
                         if ( ! $show_title ) $title_tag_class .= ' mobile-only';
 

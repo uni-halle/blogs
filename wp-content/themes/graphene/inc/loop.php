@@ -93,8 +93,8 @@ if ( ! function_exists( 'graphene_continue_reading_link' ) ) :
  * @return string "Continue Reading" link
  */
 function graphene_continue_reading_link() {
-	global $graphene_in_slider, $graphene_in_stack;
-	if ( ( ! is_page() || $graphene_in_stack )  && ! $graphene_in_slider ) {
+	global $graphene_in_slider, $graphene_in_stack, $graphene_in_rich_snippet;
+	if ( ( ! is_page() || $graphene_in_stack )  && ! $graphene_in_slider && ! $graphene_in_rich_snippet ) {
 		$more_link_text = __( 'Continue reading', 'graphene' );
 		return '</p><p><a class="more-link btn" href="' . get_permalink() . '">' . $more_link_text . '</a>';
 	}
@@ -1058,6 +1058,7 @@ if ( ! function_exists( 'graphene_page_navigation' ) ) :
 function graphene_page_navigation(){
 	global $graphene_settings;
 	if ( $graphene_settings['disable_child_pages_nav'] ) return;
+	if ( ! is_singular() ) return;
 	
 	$current = get_the_ID();
 	$ancestors = get_ancestors( $current, 'page' );
@@ -1139,7 +1140,8 @@ function graphene_get_template_part( $slug, $name = null ) {
  */
 function graphene_rich_snippet(){
 	if ( ! is_singular() ) return;
-	global $post;
+	global $post, $graphene_in_rich_snippet;
+	$graphene_in_rich_snippet = true;
 
 	$metadata = array(
 		'@context'         	=> 'http://schema.org',
@@ -1154,7 +1156,7 @@ function graphene_rich_snippet(){
 		'dateModified'     	=> date( 'c', get_post_modified_time( 'U', false, $post ) ),
 	);
 
-	$excerpt = get_the_excerpt( $post->ID );
+	$excerpt = apply_filters( 'the_excerpt', $post->post_excerpt );
 	if ( ! $excerpt ) $excerpt = wp_trim_words( $post->post_content, 55, ' ...' );
 	$metadata['description'] = $excerpt;
 
@@ -1189,6 +1191,7 @@ function graphene_rich_snippet(){
 	if ( $images ) $metadata['image'] = $images;
 
 	$metadata = apply_filters( 'graphene_rich_snippet', $metadata );
+	$graphene_in_rich_snippet = false;
 	if ( ! $metadata ) return;
 	?>
 		<script type="application/ld+json"><?php echo wp_json_encode( $metadata ); ?></script>

@@ -7,7 +7,8 @@ $search_term = trim( preg_replace( $find, $replace, $search_term ) );
 
 // Sanitise the search term
 global $wpdb;
-$search_term_q = esc_js( sanitize_title_for_query( urlencode( strip_tags( $search_term ) ) ) );
+$search_term_q = urlencode( sanitize_text_field( $search_term  ) );
+$search_term_q = str_replace( ' ', '+', $search_term_q );
 
 $redirect_location = get_home_url() . '?s='.$search_term_q.'&search_404=1';
 get_header();

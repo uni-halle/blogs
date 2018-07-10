@@ -26,7 +26,8 @@ function graphene_enqueue_scripts(){
 	wp_enqueue_script( 'html5shiv', 				GRAPHENE_ROOTURI . '/js/html5shiv/html5shiv.min.js',  								array(), $version );
 	wp_enqueue_script( 'respond', 					GRAPHENE_ROOTURI . '/js/respond.js/respond.min.js', 								array(), $version );
 	wp_enqueue_script( 'infinite-scroll', 			GRAPHENE_ROOTURI . '/js/jquery.infinitescroll.min.js', 								array( 'jquery' ), $version );
-	wp_enqueue_script( 'graphene', 					GRAPHENE_ROOTURI . '/js/graphene.js', 												array( 'bootstrap', 'comment-reply', 'infinite-scroll' ), $version );
+	if ( ( get_option( 'thread_comments' ) == 1 ) ) wp_enqueue_script( 'comment-reply' );
+	wp_enqueue_script( 'graphene', 					GRAPHENE_ROOTURI . '/js/graphene.js', 												array( 'bootstrap', 'infinite-scroll' ), $version );
 
 	/* Enqueue styles */
 	$google_fonts_uri = graphene_google_fonts_uri();

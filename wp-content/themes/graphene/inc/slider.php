@@ -158,8 +158,13 @@ function graphene_slider( $args = array() ){
  */
 function graphene_display_slider(){
 	global $graphene_settings;
-	if ( $graphene_settings['slider_disable'] || ! is_front_page() ) return;
+	if ( $graphene_settings['slider_disable'] ) return;
 	if ( graphene_has_custom_layout() && ! $graphene_settings['slider_as_header'] ) return;
+
+	/* Display in pages according to selected setting */
+	if ( 'front-page' 	== $graphene_settings['slider_display_in'] && ! is_front_page() ) return;
+	if ( 'pages' 		== $graphene_settings['slider_display_in'] && ! is_page() ) return;
+	if ( 'posts' 		== $graphene_settings['slider_display_in'] && ! ( is_home() || is_single() || is_archive() ) ) return;
 
 	if ( $graphene_settings['slider_as_header'] ) {
 		add_action( 'graphene_header_slider', 'graphene_slider' );

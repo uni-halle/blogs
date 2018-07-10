@@ -44,6 +44,7 @@ $graphene_defaults = apply_filters( 'graphene_defaults', array(
 	'slider_disable'			=> false,
 	'slider_full_width'			=> false,
 	'slider_as_header'			=> false,
+	'slider_display_in'			=> 'front-page', // front-page | pages | posts | all
 	
 	/* Infinite Scroll options */
 	'inf_scroll_enable'			=> false,

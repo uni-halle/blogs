@@ -4,6 +4,15 @@ https://www.graphene-theme.com/
 
 CHANGELOG
 
+Version 2.4.3.1
+	* Fixed: Load comment-reply.js script only if threaded comments is enabled
+	* Fixed: Section navigation being shown on 404 page
+	* Fixed: Improved automated search query handling in 404 page
+	* Fixed: PHP count() warning with PHP 7.2
+	* Fixed: Read more button being added to rich snippet description when using custom excerpt
+	* Fixed: WP Editor gets zero width when certain plugins is installed, causing text to appear in a column of single-character wide
+	* Removed: Custom header constants
+
 Version 2.4.2
 	* Added: Separate slider colours option when using the card display option
 	* Updated: Removed translation files for the following languages since there are better translations in GlotPress: pt_BR, ru_RU

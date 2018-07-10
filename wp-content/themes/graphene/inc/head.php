@@ -129,8 +129,9 @@ function graphene_get_custom_style(){
 	}
 	
 	/* Header text */
-	$header_textcolour = get_theme_mod( 'header_textcolor', HEADER_TEXTCOLOR );
-	if ( $header_textcolour != apply_filters( 'graphene_header_textcolor', HEADER_TEXTCOLOR ) )
+	$default_header_textcolour = apply_filters( 'graphene_header_textcolor', 'ffffff' );
+	$header_textcolour = get_theme_mod( 'header_textcolor', $default_header_textcolour );
+	if ( $header_textcolour != apply_filters( 'graphene_header_textcolor', $default_header_textcolour ) )
 		$style .= '.header_title, .header_title a, .header_title a:visited, .header_title a:hover, .header_desc {color:#' . $header_textcolour . ';}';
 		
 	/* Header title text style */ 
@@ -167,7 +168,7 @@ function graphene_get_custom_style(){
 	
 	/* Header image height */
 	if ( ! $graphene_settings['slider_as_header'] && $graphene_settings['header_img_height'] && $graphene_settings['header_img_height'] != $graphene_defaults['header_img_height'] ){
-		$style .= '#header{max-height:'. HEADER_IMAGE_HEIGHT .'px;}';
+		$style .= '#header{max-height:'. $graphene_settings['header_img_height'] .'px;}';
 	}
 
 	if ( $graphene_settings['slider_as_header'] ) {

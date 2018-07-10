@@ -96,18 +96,12 @@ function graphene_setup() {
 	if ( $graphene_settings['container_style'] == 'boxed' ) add_theme_support( 'custom-background', $args ); 
 
 	/* Add support for custom header */
-	define( 'HEADER_TEXTCOLOR',    apply_filters( 'graphene_header_textcolor', 'ffffff' ) );
-	define( 'HEADER_IMAGE',        apply_filters( 'graphene_default_header_image', GRAPHENE_ROOTURI . '/images/headers/forest.jpg' ) );
-	define( 'HEADER_IMAGE_WIDTH',  apply_filters( 'graphene_header_image_width', graphene_grid_width( $graphene_settings['gutter_width'] * 2, 12 ) ) );
-	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'graphene_header_image_height', $graphene_settings['header_img_height'] ) );
-	define( 'NO_HEADER_TEXT', ! apply_filters( 'graphene_header_text', true ) );
-
 	$args = array(
-		'width'               => HEADER_IMAGE_WIDTH,
-		'height'              => HEADER_IMAGE_HEIGHT,
-		'default-image'       => HEADER_IMAGE,
-		'header-text'		  => ! NO_HEADER_TEXT,
-		'default-text-color'  => HEADER_TEXTCOLOR,
+		'width'               => apply_filters( 'graphene_header_image_width', graphene_grid_width( $graphene_settings['gutter_width'] * 2, 12 ) ),
+		'height'              => apply_filters( 'graphene_header_image_height', $graphene_settings['header_img_height'] ),
+		'default-image'       => apply_filters( 'graphene_default_header_image', GRAPHENE_ROOTURI . '/images/headers/forest.jpg' ),
+		'header-text'		  => apply_filters( 'graphene_header_text', true ),
+		'default-text-color'  => apply_filters( 'graphene_header_textcolor', 'ffffff' ),
 		'wp-head-callback'    => '',
 		'admin-head-callback' => 'graphene_admin_header_style',
 	);
