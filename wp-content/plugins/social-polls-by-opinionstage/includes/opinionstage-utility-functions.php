@@ -7,6 +7,9 @@ defined( 'ABSPATH' ) or die();
  * Utility function to create a link with the correct host and all the required information.
  */
 function opinionstage_link($caption, $path, $css_class = '', $query_data = array()) {
+	$query_data['utm_source'] = OPINIONSTAGE_UTM_SOURCE;
+	$query_data['utm_campaign'] = OPINIONSTAGE_UTM_CAMPAIGN;
+	$query_data['utm_medium'] = OPINIONSTAGE_UTM_MEDIUM;
 	$query_data['o'] = OPINIONSTAGE_WIDGET_API_KEY;
 
 	$link = OPINIONSTAGE_SERVER_BASE.'/'.$path.'?'.http_build_query($query_data);

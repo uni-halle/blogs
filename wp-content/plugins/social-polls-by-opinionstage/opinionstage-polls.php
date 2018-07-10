@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: Poll, Survey, Quiz, Slideshow, Form, Story & Landing Page
-Plugin URI: http://www.opinionstage.com
+Plugin Name: Poll, Survey, Quiz, Slideshow, Form & Story Article
+Plugin URI: https://www.opinionstage.com
 Description: Add a highly engaging poll, survey, quiz or contact form builder to your site. You can add the poll, survey, quiz or form to any post/page or to the sidebar.
-Version: 19.3.2
+Version: 19.3.5
 Author: OpinionStage.com
-Author URI: http://www.opinionstage.com
+Author URI: https://www.opinionstage.com
 Text Domain: social-polls-by-opinionstage
 */
 
@@ -24,7 +24,7 @@ if ( defined('WP_DEBUG') && true === WP_DEBUG ) {
 	}
 }
 
-define('OPINIONSTAGE_WIDGET_VERSION', '19.3.2');
+define('OPINIONSTAGE_WIDGET_VERSION', '19.3.5');
 
 define('OPINIONSTAGE_TEXT_DOMAIN', 'social-polls-by-opinionstage');
 
@@ -36,6 +36,10 @@ define('OPINIONSTAGE_CONTENT_POPUP_SHARED_WIDGETS_API', OPINIONSTAGE_SERVER_BASE
 define('OPINIONSTAGE_CONTENT_POPUP_CLIENT_WIDGETS_API_RECENT_UPDATE', OPINIONSTAGE_SERVER_BASE.'/api/wp/v1/my/widgets/recent-update');
 
 define('OPINIONSTAGE_WIDGET_API_KEY', 'wp35e8');
+define('OPINIONSTAGE_UTM_SOURCE', 'wordpress');
+define('OPINIONSTAGE_UTM_CAMPAIGN', 'WPMainPI');
+define('OPINIONSTAGE_UTM_MEDIUM', 'link');
+
 define('OPINIONSTAGE_OPTIONS_KEY', 'opinionstage_widget');
 
 define('OPINIONSTAGE_POLL_SHORTCODE', 'socialpoll');

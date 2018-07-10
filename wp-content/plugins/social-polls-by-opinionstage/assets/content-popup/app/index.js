@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import './components/popup-content.js'
 import './components/widget-list.js'
-import './components/new-widget.js'
 import './components/notification.js'
 import '../styles/content-popup.scss'
 

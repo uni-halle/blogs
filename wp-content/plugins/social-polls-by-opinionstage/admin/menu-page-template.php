@@ -18,6 +18,9 @@ opinionstage_enqueue_js_asset('menu-page');
 			<div class='opinionstage-status-title'>Connect WordPress with Opinion Stage to get started</div>
 			<form action="<?php echo OPINIONSTAGE_LOGIN_PATH ?>" method="get" class="opinionstage-connect-form">
 				<i class="os-icon icon-os-poll-client"></i>
+				<input type="hidden" name="utm_source" value="<?php echo OPINIONSTAGE_UTM_SOURCE ?>">
+				<input type="hidden" name="utm_campaign" value="<?php echo OPINIONSTAGE_UTM_CAMPAIGN ?>">
+				<input type="hidden" name="utm_medium" value="<?php echo OPINIONSTAGE_UTM_MEDIUM ?>">
 				<input type="hidden" name="o" value="<?php echo OPINIONSTAGE_WIDGET_API_KEY ?>">
 				<input type="hidden" name="callback" value="<?php echo opinionstage_callback_url()?>">
 				<input id="os-email" type="email" name="email" placeholder="Enter Your Email" data-os-email-input>
@@ -85,7 +88,7 @@ opinionstage_enqueue_js_asset('menu-page');
 							<div class="os-icon icon-os-reports-personality"></div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-description-cell">
-							<div class="title">Outcome Quiz</div>
+							<div class="title">Personality Quiz</div>
 							<div class="example">Create a personality or service selector</div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-btn-cell">
@@ -109,7 +112,7 @@ opinionstage_enqueue_js_asset('menu-page');
 							<div class="os-icon icon-os-widget-form"></div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-description-cell">
-							<div class="title">Contact Form</div>
+							<div class="title">Form</div>
 							<div class="example">Gather information from your users</div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-btn-cell">
@@ -130,10 +133,10 @@ opinionstage_enqueue_js_asset('menu-page');
 					</div>
 					<div class="opinionstage-section-raw">
 						<div class="opinionstage-section-cell opinionstage-icon-cell">
-							<div class="os-icon icon-os-reports-set"></div>
+							<div class="os-icon icon-os-icon-story"></div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-description-cell">
-							<div class="title">Story</div>
+							<div class="title">Story Article</div>
 							<div class="example">Create an article using interactive elements</div>
 						</div>
 						<div class="opinionstage-section-cell opinionstage-btn-cell">

@@ -100,14 +100,6 @@ export default Vue.component('popup-content', {
       }
     },
   },
-
-  computed: {
-    noAnyWidgets () {
-      return !this.dataLoading && this.searchCriteria.type === 'all'
-                               && this.widgets.length == 0
-                               && _.isEmpty(this.searchCriteria.title)
-    }
-  }
 })
 
 function loadData (searchCriteria) {

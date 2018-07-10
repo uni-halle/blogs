@@ -60,9 +60,6 @@
 .icon-os-reports-trivia:before {
   content: "\e90b";
 }
-.icon-os-widget-form:before {
-  content: "\e963";
-}
 .icon-os-common-up:before {
   content: "\e90c";
 }
@@ -323,4 +320,10 @@
 }
 .icon-os-status-published:before {
   content: "\e962";
+}
+.icon-os-widget-form:before {
+  content: "\e963";
+}
+.icon-os-icon-story:before {
+  content: "\e964";
 }

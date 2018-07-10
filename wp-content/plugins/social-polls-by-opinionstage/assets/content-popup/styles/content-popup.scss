@@ -364,42 +364,6 @@
     visibility: hidden;
   }
 
-  .opinionstage-section-content {
-    display: table;
-    border-collapse: collapse;
-    width: 500px;
-    height: 435px;
-    margin: 50px auto;
-  }
-  .opinionstage-section-raw {
-    display: table-row;
-    border: 1px solid #c8c8c9;
-  }
-  .opinionstage-section-cell {
-    display: table-cell;
-    vertical-align: middle;
-  }
-  .opinionstage-description-cell .title {
-    font-size: 21px;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  .opinionstage-description-cell .example {
-    color: #b1b1b1;
-  }
-  .opinionstage-icon-cell {
-    width: 17%;
-    text-align: center;
-    color: #3499c2;
-    font-size: 35px;
-    .os-icon {
-      color: #3499c2;
-    }
-  }
-  .opinionstage-section-cell {
-    display: table-cell;
-    vertical-align: middle;
-  }
   .opinionstage-blue-btn {
     cursor: pointer;
     text-align: center;
