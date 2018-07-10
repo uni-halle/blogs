@@ -553,14 +553,20 @@ class EM_Event extends EM_Object{
 		$this->post_type = ($this->is_recurring() || !empty($_POST['recurring'])) ? 'event-recurring':EM_POST_TYPE_EVENT;
 		//don't forget categories!
 		if( get_option('dbem_categories_enabled') ) $this->get_categories()->get_post();
+		//get the rest and validate (optional)
+		$this->get_post_meta(false);
 		//anonymous submissions and guest basic info
 		if( !is_user_logged_in() && get_option('dbem_events_anonymous_submissions') && empty($this->event_id) ){
 			$this->event_owner_anonymous = 1;
 			$this->event_owner_name = !empty($_POST['event_owner_name']) ? wp_kses_data(wp_unslash($_POST['event_owner_name'])):'';
 			$this->event_owner_email = !empty($_POST['event_owner_email']) ? wp_kses_data($_POST['event_owner_email']):'';
+			if( empty($this->location_id) && !($this->location_id === 0 && !get_option('dbem_require_location',true)) ){
+				$this->get_location()->owner_anonymous = 1;
+				$this->location->owner_email = $this->event_owner_email;
+				$this->location->owner_name = $this->event_owner_name;
+			}
 		}
-		//get the rest and validate (optional)
-		$this->get_post_meta(false);
+		//validate and return results
 		$result = $validate ? $this->validate():true; //validate both post and meta, otherwise return true
 		return apply_filters('em_event_get_post', $result, $this);
 	}
@@ -1120,13 +1126,21 @@ class EM_Event extends EM_Object{
 				}
 			}
 			$result = count($this->errors) == 0;
-			//If we're saving event categories in MS Global mode, we'll add them here, saving by term id (cat ids are gone now)
-			if( EM_MS_GLOBAL && get_option('dbem_categories_enabled') ){ //EM_MS_Globals should look up original blog 
-    			if( !is_main_site() ){
-    				$this->get_categories()->save(); //it'll know what to do
-    			}else{
-    				$this->get_categories()->save_index(); //just save to index, we assume cats are saved in $this->save();
-    			}
+			//deal with categories
+			if( get_option('dbem_categories_enabled') ){
+				if( EM_MS_GLOBAL ){ //EM_MS_Globals should look up original blog
+					//If we're saving event categories in MS Global mode, we'll add them here, saving by term id (cat ids are gone now)
+	                if( !is_main_site() ){
+	                    $this->get_categories()->save(); //it'll know what to do
+	                }else{
+	                    $this->get_categories()->save_index(); //just save to index, we assume cats are saved in $this->save();
+	                }
+				}elseif( get_option('dbem_default_category') > 0 ){
+					//double-check for default category in other instances
+					if( count($this->get_categories()) == 0 ){
+						$this->get_categories()->save(); //let the object deal with this...
+					}
+				}
 			}
 		    $this->compat_keys(); //compatability keys, loaded before saving recurrences
 			//build recurrences if needed

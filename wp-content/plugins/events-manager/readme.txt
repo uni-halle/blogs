@@ -5,7 +5,7 @@ Tags: bookings, calendar, tickets, events, buddypress, event management, google 
 Text Domain: events-manager
 Requires at least: 3.5
 Tested up to: 4.9.6
-Stable tag: 5.9.3
+Stable tag: 5.9.4
 
 Fully featured event registration management including recurring events, locations management, calendar, Google map integration, booking management
 
@@ -56,7 +56,7 @@ We provide the tools to [help you be GDPR compliant](http://wp-events-plugin.com
 * export/erasure of data via the WordPress Privacy Tools, including booking, event and location data
 * consent checkboxes on our booking, event and location forms on the frontend
 * settings to control what can be exported/erased as well as where/when to place consent requests
-* privacy policy sample describing what Events Manager does with personal data
+* sample text for your site privacy policy describing what Events Manager does with personal data
 
 = Go Pro =
 We have a premium "Pro" add-on for Events Manager which not only demonstrates the flexibility of Events Manager, but also adds some important features including but not limited to:
@@ -110,6 +110,22 @@ See our [FAQ](http://wp-events-plugin.com/documentation/faq/) page, which is upd
 6. Manage attendees with various booking reports
 
 == Changelog ==
+= 5.9.4 =
+* added em_rewrite_rules_array filter for final permalink rule manipulation
+* fixed privacy consent blocking certain actions such as single booking button and admin-side submissions
+* fixed fatal errors when showing the consent checkbox in WordPress 5.9.5 and earlier
+* fixed the quick booking button not working in ajax search results
+* fixed privacy policy consent form label not being translatable for multilingual sites
+* fixed inconsistent date headers in certain situations with UTC manual offset dates
+* fixed incorrect link to .eot dashicon file for IE11
+* added anonymous submitter data to locations for new event submissions and integrated this with GDPR export/erase tools
+* fixed location slug blanks when directly published from front-end via submitting an event
+* added default ical and rss feed limits to avoid overloading as number of events grow
+* corrected docs to include 'recurrences' search attribute
+* added timezone pre-formatting to functions that produced incorrect output for timezone date placeholders
+* fixed default categories not being applied for events with no categories
+* fixed locations being selectable for events in other blogs within a multisite global mode when locations don't all reside on main blog
+
 = 5.9.3 =
 * added Data Privacy and GDPR features
 * fixed user deletion not properly deleting events and not deleting locations if content is set to be deleted not reassigned

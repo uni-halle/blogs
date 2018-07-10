@@ -603,18 +603,17 @@ function em_add_options() {
 		'dbem_tag_event_list_order' => 'ASC',
 		'dbem_tag_default_color' => '#a8d145',
 		//RSS Stuff
-		'dbem_rss_limit' => 0,
+		'dbem_rss_limit' => 50,
 		'dbem_rss_scope' => 'future',
 		'dbem_rss_main_title' => get_bloginfo('title')." - ".__('Events', 'events-manager'),
 		'dbem_rss_main_description' => get_bloginfo('description')." - ".__('Events', 'events-manager'),
 		'dbem_rss_description_format' => "#_EVENTDATES - #_EVENTTIMES <br/>#_LOCATIONNAME <br/>#_LOCATIONADDRESS <br/>#_LOCATIONTOWN",
 		'dbem_rss_title_format' => "#_EVENTNAME",
-		'dbem_rss_scope' =>'future',
 		'dbem_rss_order' => get_option('dbem_events_default_order', 'ASC'), //get event order and orderby or use same new installation defaults
 		'dbem_rss_orderby' => get_option('dbem_events_default_orderby', 'event_start_date,event_start_time,event_name'),
 		'em_rss_pubdate' => date('D, d M Y H:i:s +0000'),
 		//iCal Stuff
-		'dbem_ical_limit' => 0,
+		'dbem_ical_limit' => 50,
 		'dbem_ical_scope' => "future",
 		'dbem_ical_description_format' => "#_EVENTNAME",
 		'dbem_ical_real_description_format' => "#_EVENTEXCERPT",
@@ -1081,7 +1080,7 @@ function em_upgrade_current_installation(){
 	}
 	if( get_option('dbem_version') != '' && get_option('dbem_version') < 5.93 ){
 		$message = __('Events Manager has introduced new privacy tools to help you comply with international laws such as the GDPR, <a href="%s">see our documentation</a> for more information.','events-manager');
-		$message = sprintf( $message, 'https://wp-events-plugin.com/documentation/data-privacy-protection/?utm_source=plugin&utm_campaign=gdpr_update');
+		$message = sprintf( $message, 'https://wp-events-plugin.com/documentation/data-privacy-gdpr-compliance/?utm_source=plugin&utm_campaign=gdpr_update');
 		$EM_Admin_Notice = new EM_Admin_Notice(array( 'name' => 'gdpr_update', 'who' => 'admin', 'where' => 'all', 'message' => $message ));
 		EM_Admin_Notices::add($EM_Admin_Notice, is_multisite());
 	}

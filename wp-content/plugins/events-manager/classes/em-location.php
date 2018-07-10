@@ -64,6 +64,10 @@ class EM_Location extends EM_Object {
 	var $post_content = '';
 	var $location_owner = '';
 	var $location_status = 0;
+	/* anonymous submission information */
+	var $owner_anonymous;
+	var $owner_name;
+	var $owner_email;
 	//Other Vars
 	var $fields = array( 
 		'location_id' => array('name'=>'id','type'=>'%d'),
@@ -199,15 +203,15 @@ class EM_Location extends EM_Object {
 				}	
 				//Get custom fields
 				foreach($location_meta as $location_meta_key => $location_meta_val){
-					$found = false;
-					foreach($this->fields as $field_name => $field_info){
-						if( $location_meta_key == '_'.$field_name){
+					$field_name = substr($location_meta_key, 1);
+					if($location_meta_key[0] != '_'){
+						$this->event_attributes[$location_meta_key] = ( is_array($location_meta_val) ) ? $location_meta_val[0]:$location_meta_val;
+					}elseif( is_string($field_name) && !in_array($field_name, $this->post_fields) ){
+						if( array_key_exists($field_name, $this->fields) ){
 							$this->$field_name = $location_meta_val[0];
-							$found = true;
+						}elseif( in_array($field_name, array('owner_name','owner_anonymous','owner_email')) ){
+							$this->$field_name = $location_meta_val[0];
 						}
-					}
-					if(!$found && $location_meta_key[0] != '_'){
-						$this->location_attributes[$location_meta_key] = ( is_array($location_meta_val) ) ? $location_meta_val[0]:$location_meta_val;
 					}
 				}	
 			}
@@ -244,6 +248,12 @@ class EM_Location extends EM_Object {
 		$this->location_name = ( !empty($_POST['location_name']) ) ? sanitize_post_field('post_title', $_POST['location_name'], $this->post_id, 'db'):'';
 		$this->post_content = ( !empty($_POST['content']) ) ? wp_kses( wp_unslash($_POST['content']), $allowedtags):'';
 		$this->get_post_meta(false);
+		//anonymous submissions and guest basic info
+		if( !is_user_logged_in() && get_option('dbem_events_anonymous_submissions') && empty($this->location_id) ){
+			$this->owner_anonymous = 1;
+			$this->owner_name = !empty($_POST['owner_name']) ? wp_kses_data(wp_unslash($_POST['owner_name'])):'';
+			$this->owner_email = !empty($_POST['owner_email']) ? wp_kses_data($_POST['owner_email']):'';
+		}
 		$result = $validate ? $this->validate():true; //validate both post and meta, otherwise return true
 		$this->compat_keys();
 		return apply_filters('em_location_get_post', $result, $this);		
@@ -293,6 +303,15 @@ class EM_Location extends EM_Object {
 		if( empty($this->location_name) ){
 			$validate_post = false;
 			$this->add_error( __('Location name','events-manager').__(" is required.", 'events-manager') );
+		}
+		//anonymous submissions and guest basic info
+		if( !empty($this->owner_anonymous) ){
+			if( !is_email($this->owner_email) ){
+				$this->add_error( sprintf(__("%s is required.", 'events-manager'), __('A valid email','events-manager')) );
+			}
+			if( empty($this->owner_name) ){
+				$this->add_error( sprintf(__("%s is required.", 'events-manager'), __('Your name','events-manager')) );
+			}
 		}
 		$validate_image = $this->image_validate();
 		$validate_meta = $this->validate_meta();
@@ -377,6 +396,12 @@ class EM_Location extends EM_Object {
 			$this->location_owner = $post_data->post_author;
 			$this->post_status = $post_data->post_status;
 			$this->get_status();
+			//anonymous submissions should save this information
+			if( !empty($this->owner_anonymous) ){
+				update_post_meta($this->post_id, '_owner_anonymous', 1);
+				update_post_meta($this->post_id, '_owner_name', $this->owner_name);
+				update_post_meta($this->post_id, '_owner_email', $this->owner_email);
+			}
 			//save the image, errors here will surface during $this->save_meta()
 			$this->image_upload();
 			//now save the meta
@@ -390,18 +415,20 @@ class EM_Location extends EM_Object {
 		$EM_SAVING_LOCATION = false;
 		//reload post data and add this location to the cache, after any other hooks have done their thing
 		//cache refresh when saving via admin area is handled in EM_Event_Post_Admin::save_post/refresh_cache
-		if( $post_save && $meta_save && $this->is_published() ){
-			//we won't depend on hooks, if we saved the event and it's still published in its saved state, refresh the cache regardless
+		if( $post_save && $meta_save ){
 			$this->load_postdata($post_data);
-			wp_cache_set($this->location_id, $this, 'em_locations');
-			wp_cache_set($this->post_id, $this->location_id, 'em_locations_ids');
+			if( $this->is_published() ){
+				//we won't depend on hooks, if we saved the event and it's still published in its saved state, refresh the cache regardless
+				wp_cache_set($this->location_id, $this, 'em_locations');
+				wp_cache_set($this->post_id, $this->location_id, 'em_locations_ids');
+			}
 		}
 		return $return;
 	}
 	
 	function save_meta(){
 		//echo "<pre>"; print_r($this); echo "</pre>"; die();
-		global $wpdb, $current_user;
+		global $wpdb;
 		if( $this->can_manage('edit_locations','edit_others_locations') || ( get_option('dbem_events_anonymous_submissions') && empty($this->location_id)) ){
 			do_action('em_location_save_meta_pre', $this);
 			//Set Blog ID if in multisite mode
@@ -469,6 +496,14 @@ class EM_Location extends EM_Object {
 					$this->feedback_message = sprintf(__('Successfully saved %s','events-manager'),__('Location','events-manager'));
 					//Also set the status here if status != previous status
 					if( $this->previous_status != $this->get_status() ) $this->set_status($this->get_status());
+				}
+				//check anonymous submission information
+				if( !empty($this->owner_anonymous) && get_option('dbem_events_anonymous_user') != $this->location_owner ){
+					//anonymous user owner has been replaced with a valid wp user account, so we remove anonymous status flag but leave email and name for future reference
+					update_post_meta($this->post_id, '_owner_anonymous', 0);
+				}elseif( get_option('dbem_events_anonymous_submissions') && get_option('dbem_events_anonymous_user') == $this->location_owner && is_email($this->owner_email) && !empty($this->owner_name) ){
+					//anonymous user account has been reinstated as the owner, so we can restore anonymous submission status
+					update_post_meta($this->post_id, '_owner_anonymous', 1);
 				}
 			}
 		}else{

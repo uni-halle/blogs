@@ -5,7 +5,8 @@
  */
 function em_data_privacy_consent_checkbox( $EM_Object = false ){
 	if( !empty($EM_Object) && (!empty($EM_Object->booking_id) || !empty($EM_Object->post_id)) ) return; //already saved so consent was given at one point
-	$label = sprintf(get_option('dbem_data_privacy_consent_text'), get_the_privacy_policy_link());
+	$label = get_option('dbem_data_privacy_consent_text');
+	if( function_exists('get_the_privacy_policy_link') ) $label = sprintf($label, get_the_privacy_policy_link());
 	if( is_user_logged_in() ){
 	    //check if consent was previously given and check box if true
         $consent_given_already = get_user_meta( get_current_user_id(), 'em_data_privacy_consent', true );
@@ -65,7 +66,9 @@ function em_data_privacy_consent_hooks(){
 		add_action('em_location_save', 'em_data_privacy_cpt_save', 10, 2);
 	}
 }
-add_action('init', 'em_data_privacy_consent_hooks');
+if( !is_admin() || ( defined('DOING_AJAX') && DOING_AJAX && !empty($_REQUEST['action']) && !in_array($_REQUEST['action'], array('booking_add_one')) ) ){
+	add_action('init', 'em_data_privacy_consent_hooks');
+}
 
 /**
  * Gets consent information for the submitted booking and and add it to the booking object for saving later.

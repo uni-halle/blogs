@@ -112,14 +112,16 @@ class EM_Data_Privacy {
 			$done = true;
 		}else{
 			//get event IDs submitted by user or "anonymously" by email
-			$events = self::get_events($email_address, $page, $post_type);
+			$events = self::get_cpts($email_address, $page, $post_type);
 
 			foreach( $events as $post_id ){
 				$EM_Event = em_get_event($post_id, 'post_id');
 				//erase the location first
 				$EM_Location = $EM_Event->get_location();
 				if( $EM_Location->location_id && get_option('dbem_data_privacy_erase_locations', 2) ){
-					if( ($user !== false && $EM_Location->location_owner == $user->ID) || ($user === false && $EM_Location->location_owner == get_option('dbem_events_anonymous_user')) ){
+					//prior to 5.9.3 locations submitted alongside anonymous events didn't store email info, so for older locations we can only assume if the location is guest submitted and only linked to this one event
+					$user_probably_owns_location = $user === false && empty($EM_Location->owner_email) && $EM_Location->location_owner == get_option('dbem_events_anonymous_user');
+					if( $user_probably_owns_location ){
 						//depending on settings delete location only if it has no other events (eventually if we're deleting the last event of this user with the same location, it'll only have one event)
 						if( get_option('dbem_data_privacy_erase_locations', 2) == 1 ||  EM_Events::count(array('location_id' => $EM_Location->location_id, 'status' => 'all')) <= 1 ){
 							if( $EM_Location->delete(true) ){
@@ -150,30 +152,25 @@ class EM_Data_Privacy {
 	}
 
 	public static function erase_locations( $email_address, $page = 1 ) {
-		$user = get_user_by('email', $email_address); //is user or no-user?
 		$page = (int) $page;
 		$limit = apply_filters('em_data_privacy_erase_limit', 100);
-		$offset = ($page -1) * $limit;
 		$items_removed = $items_retained = false;
 		$messages = array();
-
-		if( get_option('dbem_data_privacy_erase_locations') == 2 ){ //for locations, we currently don't store anon info about locations
-			//we're only deleting anonymous events, and letting WP handle CPT deletion the traditional way for registered accounts
-			$done = true;
-		}elseif( $user !== false ){
-			$locations_count = 0;
-			foreach( EM_Locations::get(array('owner' => $user->ID, 'limit' => $limit, 'offset' => $offset, 'status'=>'everything')) as $EM_Location ){ /* @var EM_Location $EM_Location */
-				if( $EM_Location->delete(true) ){
-					$items_removed = true;
-				}else{
-					$items_retained = true;
-					$messages = array_merge($messages, $EM_Location->get_errors());
-				}
-				$locations_count++;
+		
+		$locations_count = 0;
+		$locations = self::get_cpts($email_address, $page, EM_POST_TYPE_LOCATION);
+		foreach( $locations as $post_id ){
+			$EM_Location = em_get_location( $post_id, 'post_id' ); /* @var EM_Location $EM_Location */
+			if( $EM_Location->delete(true) ){
+				$items_removed = true;
+			}else{
+				$items_retained = true;
+				$messages = array_merge($messages, $EM_Location->get_errors());
 			}
-			// Tell core if we have more comments to work on still
-			$done = $locations_count < $limit;
+			$locations_count++;
 		}
+		// Tell core if we have more comments to work on still
+		$done = $locations_count < $limit;
 		return array(
 			'items_removed' => $items_removed,
 			'items_retained' => $items_retained, // always false in this example
@@ -360,7 +357,7 @@ class EM_Data_Privacy {
 		$event_export_default['group_label'] = $post_type == 'event-recurring' ? __('Recurring Events', 'events-manager'):__('Events', 'events-manager');
 
 		//get event IDs submitted by user or "anonymously" by email
-		$events = self::get_events($email_address, $page, $post_type);
+		$events = self::get_cpts($email_address, $page, $post_type);
 
 		foreach( $events as $post_id ){
 			$EM_Event = em_get_event($post_id, 'post_id');
@@ -383,8 +380,10 @@ class EM_Data_Privacy {
 				$export_item['data'][] = array('name' => __('Location','events-manager'), 'value' => $EM_Location->location_name . ', '. $EM_Location->get_full_address() .', '. $EM_Location->location_country);
 				//put this location as a new export item
 				$already_exported = in_array($EM_Location->location_id, $locations_exported);
-				$user_owns_location = ($user !== false && $EM_Location->location_owner == $user->ID) || ($user === false && $EM_Location->location_owner == get_option('dbem_events_anonymous_user'));
-				if( !$already_exported && $user_owns_location ){
+				$user_probably_owns_location = $user === false && empty($EM_Location->owner_email) && $EM_Location->location_owner == get_option('dbem_events_anonymous_user');
+				$user_submitted_location = $user === false && $EM_Location->owner_email == $email_address;
+				$user_owns_location = $user !== false && $EM_Location->location_owner == $user->ID;
+				if( !$already_exported && ($user_owns_location || $user_submitted_location || $user_probably_owns_location) ){
 					$location_export_item = $locations_export_default;
 					$location_export_item['item_id'] = 'location-post-'.$EM_Location->post_id;
 					$location_export_item['data'][] = array('name' => __('Name','events-manager'), 'value' => $EM_Location->location_name );
@@ -439,9 +438,6 @@ class EM_Data_Privacy {
 		$export_items = array();
 		$items_count = 0;
 
-		//check if we're only exporting locations to those who submitted anonymously - eventual since currently it's not possible to submit anonymously
-		if( $user !== false && get_option('dbem_data_privacy_export_locations') == 2 ) return array( 'data' => $export_items, 'done' => true ); //return if user is registered and we're only exporting anon events
-
 		$locations_export_default = array(
 			'group_id' => 'events-manager-'.EM_POST_TYPE_LOCATION,
 			'group_label' => __('Locations', 'events-manager'),
@@ -449,9 +445,14 @@ class EM_Data_Privacy {
 			'data' => array() // replace this with assoc array of name/value key arrays
 		);
 
-		//Locations - here we only get event-less events submitted by registered users. Anonymous submissions would have been handled above as event/locations come in pairs.
-		if( $user !== false ){
-			foreach( EM_Locations::get(array('eventless' => get_option('dbem_data_privacy_export_events') != 0, 'owner' => $user->ID, 'limit' => $limit, 'offset' => $offset, 'status'=>'everything')) as $EM_Location ){ /* @var EM_Location $EM_Location */
+		//Locations - previous to 5.9.4 locations submitted anonymously did nint include
+		$locations_exported = get_post_meta( $_REQUEST['id'], '_em_locations_exported', true);
+		if( empty($locations_exported) ) $locations_exported = array();
+		
+		$locations = self::get_cpts($email_address, $page, EM_POST_TYPE_LOCATION);
+		foreach( $locations as $post_id ){
+			$EM_Location = em_get_location( $post_id, 'post_id' ); /* @var EM_Location $EM_Location */
+			if( !in_array($EM_Location->location_id, $locations_exported) ){
 				$location_export_item = $locations_export_default;
 				$location_export_item['item_id'] = 'event-post-'.$EM_Location->post_id;
 				$location_export_item['data'][] = array('name' => __('Name','events-manager'), 'value' => $EM_Location->location_name );
@@ -467,11 +468,12 @@ class EM_Data_Privacy {
 				$location_export_item = apply_filters('em_data_privacy_export_locations_item', $location_export_item, $EM_Location);
 				$export_items[] = $location_export_item;
 				$export_items = apply_filters('em_data_privacy_export_locations_items_after_item', $export_items, $location_export_item, $EM_Location); //could be used for cross-referencing and add-ing other groups e.g. Multiple Bookings in Pro
+				$locations_exported[] = $EM_Location->location_id;
 				$items_count++;
 				if( $items_count == $limit ) break;
 			}
 		}
-
+		update_post_meta( $_REQUEST['id'], '_em_locations_exported', $locations_exported);
 		$done = $items_count < $limit; //if we didn't reach limit of bookings then we must be done
 		return array(
 			'data' => $export_items,
@@ -479,12 +481,13 @@ class EM_Data_Privacy {
 		);
 	}
 
-	public static function get_events( $email_address, $page, $post_type ){
+	public static function get_cpts($email_address, $page, $post_type ){
 		global $wpdb;
 		$page = (int) $page;
 		$limit = apply_filters('em_data_privacy_export_limit', 100);
 		$offset = ($page -1) * $limit;
 		$user = get_user_by('email', $email_address); //is user or no-user?
+		$anon_email_key = $post_type == EM_POST_TYPE_LOCATION ? '_owner_email':'_event_owner_email';
 		//get event IDs submitted by user or "anonymously" by email
 		$events = array();
 		if( $user !== false ){
@@ -492,7 +495,7 @@ class EM_Data_Privacy {
 			$events = $wpdb->get_col($sql);
 		}
 		//if user ever submitted anonymous events with same email, we also process these
-		$sql = $wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE ID IN (SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key='_event_owner_email' AND meta_value=%s) AND post_type = %s LIMIT %d OFFSET %d", $email_address, $post_type, $limit, $offset);
+		$sql = $wpdb->prepare("SELECT ID FROM {$wpdb->posts} WHERE ID IN (SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key=%s AND meta_value=%s) AND post_type = %s LIMIT %d OFFSET %d", $anon_email_key, $email_address, $post_type, $limit, $offset);
 		$events = array_merge($events, $wpdb->get_col($sql));
 		return $events;
 	}
