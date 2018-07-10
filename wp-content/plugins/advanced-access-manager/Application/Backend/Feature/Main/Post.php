@@ -51,11 +51,12 @@ class AAM_Backend_Feature_Main_Post extends AAM_Backend_Feature_Abstract {
         
         foreach ($list->records as $type) {
             $response['data'][] = array(
-                $type->name,
-                null,
-                'type',
-                $type->labels->name,
-                apply_filters('aam-type-row-actions-filter', 'drilldown,manage', $type)
+                $type->name, 
+                null, 
+                'type', 
+                $type->labels->name, 
+                'drilldown,manage',
+                null
             );
         }
         
@@ -74,7 +75,7 @@ class AAM_Backend_Feature_Main_Post extends AAM_Backend_Feature_Abstract {
         $s      = AAM_Core_Request::post('search.value');
         $length = AAM_Core_Request::post('length');
         $start  = AAM_Core_Request::post('start');
-        $all    = AAM_Core_Config::get('manage-hidden-post-types', false);
+        $all    = AAM_Core_Config::get('core.settings.manageHiddenPostTypes', false);
         
         foreach (get_post_types(array(), 'objects') as $type) {
             if (($all || $type->public) 
@@ -112,16 +113,31 @@ class AAM_Backend_Feature_Main_Post extends AAM_Backend_Feature_Abstract {
         foreach($list->records as $record) {
             if (isset($record->ID)) { //this is post
                 $link = get_edit_post_link($record->ID, 'link');
+                
+                $parent = '';
+                
+                if (!empty($record->post_parent)) {
+                    $p = get_post($record->post_parent);
+                    $parent = (is_a($p, 'WP_Post') ? $p->post_title : '');
+                }
+                
+                if (empty($parent)) {
+                    $taxonomies = array_filter(
+                        get_object_taxonomies($record), 'is_taxonomy_hierarchical'
+                    );
+                    if (!empty($taxonomies)) {
+                        $terms = wp_get_object_terms($record->ID, $taxonomies, array('fields' => 'names'));
+                        $parent = implode(', ', $terms);
+                    }
+                }
+                
                 $response['data'][] = array(
                     $record->ID,
                     $link,
                     'post',
                     get_the_title($record),
-                    apply_filters(
-                        'aam-post-row-actions-filter', 
-                        'manage' . ($link ? ',edit' : ''), 
-                        $record
-                    ),
+                    'manage' . ($link ? ',edit' : ''),
+                    $parent
                     //get_post_permalink($record)
                 );
             } else { //term
@@ -130,11 +146,20 @@ class AAM_Backend_Feature_Main_Post extends AAM_Backend_Feature_Abstract {
                     get_edit_term_link($record->term_id, $record->taxonomy),
                     'term',
                     $record->name,
-                    apply_filters('aam-term-row-actions-filter', 'manage,edit', $record)
+                    'manage,edit',
+                    rtrim(get_term_parents_list(
+                        $record->term_id, 
+                        $record->taxonomy, 
+                        array(
+                            'link' => false, 
+                            'format' => 'name', 
+                            'separator' => ' &raquo; ', 
+                            'inclusive' => false
+                        )
+                    ), ' &raquo; ')
                 );
             }
-        } 
-
+        }
 
         return $response;
     }
@@ -403,8 +428,25 @@ class AAM_Backend_Feature_Main_Post extends AAM_Backend_Feature_Abstract {
     protected function getPreviewValue($option, $val) {
         switch($option) {
             case 'frontend.teaser':
-                $str     = strip_tags($val);
-                $preview = (strlen($str) > 25 ? substr($str, 0, 22) . '...' : $str);
+                $str = strip_tags($val);
+                if (function_exists('mb_strlen')) {
+                    $preview = (mb_strlen($str) > 25 ? mb_substr($str, 0, 22) . '...' : $str);
+                } else {
+                    $preview = (strlen($str) > 25 ? substr($str, 0, 22) . '...' : $str);
+                }
+                break;
+                
+            case 'frontend.location':
+                if (!empty($val)) {
+                    $chunks = explode('|', $val);
+                    if ($chunks[0] == 'page') {
+                        $preview = __('Existing Page', AAM_KEY);
+                    } elseif ($chunks[0] == 'url') {
+                        $preview = __('Valid URL', AAM_KEY);
+                    } elseif ($chunks[0] == 'callback') {
+                        $preview = __('Custom Callback', AAM_KEY);
+                    }
+                }
                 break;
             
             default:
@@ -571,7 +613,7 @@ class AAM_Backend_Feature_Main_Post extends AAM_Backend_Feature_Abstract {
                 AAM_Core_Subject_Visitor::UID,
                 AAM_Core_Subject_Default::UID
             ),
-            'option'     => 'backend-access-control,frontend-access-control',
+            'option'     => 'core.settings.backendAccessControl,core.settings.frontendAccessControl',
             'view'       => __CLASS__
         ));
     }

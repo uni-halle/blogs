@@ -40,13 +40,19 @@ class AAM_Core_Config {
      * @access public
      */
     public static function bootstrap() {
+        // TODO: Remove in July 2019
+        add_filter(
+            'aam-configpress-compatibility-filter', 
+            'AAM_Core_Compatibility::checkConfigPressCompatibility'
+        );
+        
         if (is_multisite()) {
-            self::$config = AAM_Core_API::getOption(self::OPTION, array(), 'site');
+            self::$config = AAM_Core_Compatibility::normalizeConfigOptions(
+                    AAM_Core_API::getOption(self::OPTION, array(), 'site')
+            );
         } else {
             self::$config = AAM_Core_Compatibility::getConfig();
         }
-        
-        add_filter('aam-get-config-filter', 'AAM_Core_Config::get', 10, 2);
     }
     
     /**
@@ -81,11 +87,7 @@ class AAM_Core_Config {
      * @static
      */
     protected static function normalize($setting) {
-        return str_replace(
-                array('{ABSPATH}'),
-                array(ABSPATH),
-                $setting
-        );
+        return str_replace(array('{ABSPATH}'), array(ABSPATH), $setting);
     }
     
     /**

@@ -13,7 +13,7 @@
  * @package AAM
  * @author Vasyl Martyniuk <vasyl@vasyltech.com>
  */
-abstract class AAM_Core_Subject {
+abstract class AAM_Core_Subject implements AAM_Core_Contract_Subject {
 
     /**
      * Subject ID
@@ -196,11 +196,11 @@ abstract class AAM_Core_Subject {
      *
      * @access public
      */
-    public function getObject($type, $id = 'none', $param = null) {
+    public function getObject($type, $id = 0, $param = null) {
         $object = null;
         
         //performance optimization
-        $id = (is_scalar($id) ? $id : 'none'); //prevent from any surprises
+        $id = (is_scalar($id) ? $id : 0); //prevent from any surprises
         
         //check if there is an object with specified ID
         if (!isset($this->_objects[$type][$id])) {

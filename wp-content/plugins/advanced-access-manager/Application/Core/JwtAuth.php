@@ -38,26 +38,6 @@ class AAM_Core_JwtAuth {
 
         //register authentication hook
         add_filter('determine_current_user', array($this, 'determineCurrentUser'), 999);
-
-        //load firebase vendor
-        require AAM_BASEDIR . '/vendor/autoload.php';
-        
-        if (is_admin()) {
-            $this->checkRequirements();
-        }
-    }
-    
-    /**
-     * Check JWT requirements
-     */
-    protected function checkRequirements() {
-        $secret = AAM_Core_Config::get('authentication.jwt.secret');
-        
-        if (empty($secret)) {
-            AAM_Core_Console::add(
-                __('JWT Authentication is enabled but authentication.jwt.secret is not defined', AAM_KEY)
-            );
-        }
     }
     
     /**
@@ -106,7 +86,7 @@ class AAM_Core_JwtAuth {
         $response = new WP_REST_Response();
         
         if ($result['status'] == 'success') { // generate token
-            $key    = AAM_Core_Config::get('authentication.jwt.secret');
+            $key    = AAM_Core_Config::get('authentication.jwt.secret', SECURE_AUTH_KEY);
             $expire = AAM_Core_Config::get('authentication.jwt.expires', 86400);
             
             if ($key) {
@@ -127,7 +107,7 @@ class AAM_Core_JwtAuth {
             } else {
                 $response->status = 400;
                 $response->data = new WP_Error(
-                    'jwt_empty_secret_key',
+                    'rest_jwt_empty_secret_key',
                     __('JWT Authentication is enabled but secret key is not defined', AAM_KEY)
                 );
             }
@@ -151,8 +131,8 @@ class AAM_Core_JwtAuth {
             $token = preg_replace('/^Bearer /', '', $_SERVER['HTTP_AUTHENTICATION']);
         }
         
-        $token = apply_filters('aam-authentication-header-filter', $token);
-        $key   = AAM_Core_Config::get('authentication.jwt.secret');
+        $token = apply_filters('aam-jwt-authentication-header-filter', $token);
+        $key   = AAM_Core_Config::get('authentication.jwt.secret', SECURE_AUTH_KEY);
         
         if ($token) {
             try {

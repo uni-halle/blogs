@@ -29,16 +29,18 @@
             </p>
         </div>
 
-        <p id="<?php echo $this->args['id'] . '-nav'; ?>">
-            <?php 
-            if (get_option('users_can_register')) { 
-		$registration_url = sprintf('<a href="%s">%s</a>', esc_url(wp_registration_url()), __('Register'));
-		echo apply_filters( 'register', $registration_url );
-		echo esc_html(apply_filters('login_link_separator', ' | '));
-            }
-            ?>
-            <a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php echo __('Lost your password?', AAM_KEY); ?></a>
-        </p>
+        <?php if (AAM::api()->getConfig('feature.secureLogin.ui.showNav', true)) { ?>
+            <p id="<?php echo $this->args['id'] . '-nav'; ?>">
+                <?php 
+                if (get_option('users_can_register')) { 
+                    $registration_url = sprintf('<a href="%s">%s</a>', esc_url(wp_registration_url()), __('Register'));
+                    echo apply_filters( 'register', $registration_url );
+                    echo esc_html(apply_filters('login_link_separator', ' | '));
+                }
+                ?>
+                <a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php echo __('Lost your password?', AAM_KEY); ?></a>
+            </p>
+        <?php } ?>
     <?php } else { ?>
         <div style="text-align: center;">
             <div style="padding: 30px;">
@@ -48,10 +50,10 @@
             <div>
                 <?php $allowAdmin = !AAM_Core_API::capabilityExists('access_dashboard') || AAM::getUser()->hasCapability('access_dashboard'); ?>
                 <?php if ($allowAdmin) { ?>
-                    <a href="<?php echo esc_url(get_admin_url()); ?>"><?php echo __('Dashboard'); ?></a>&nbsp;|&nbsp;
+                    <a href="<?php echo esc_url(get_admin_url()); ?>"><?php echo __('Dashboard', AAM_KEY); ?></a>&nbsp;|&nbsp;
                     <a href="<?php echo esc_url(get_admin_url(null, 'profile.php')); ?>"><?php echo __('Edit My Profile', AAM_KEY); ?></a>&nbsp;|&nbsp;
                 <?php } ?>
-                <a href="<?php echo esc_url(wp_logout_url()); ?>"><?php echo __('Log Out'); ?></a>
+                <a href="<?php echo esc_url(wp_logout_url()); ?>"><?php echo __('Log Out', AAM_KEY); ?></a>
             </div>
         </div>
     <?php }

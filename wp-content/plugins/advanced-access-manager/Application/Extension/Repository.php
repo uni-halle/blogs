@@ -92,6 +92,7 @@ class AAM_Extension_Repository {
                     $this->bootstrapExtension($basedir . '/' . $extension);
                 }
             }
+            // TODO: Rethink this hook
             //Very important hook for cases when there is extensions dependancy.
             //For example AAM Plus Package depends on AAM Utitlities properties
             do_action('aam-post-extensions-load');
@@ -122,7 +123,7 @@ class AAM_Extension_Repository {
         if (file_exists($config)) {
             $conf = require $config;
             $load = empty($cache[$conf['id']]['status']) || ($cache[$conf['id']]['status'] != self::STATUS_INACTIVE);
-        } else { // TODO - Remove May 2018
+        } else { // TODO - Remove May 2019
             AAM_Core_Console::add(AAM_Backend_View_Helper::preparePhrase(
                 sprintf(
                     __('The [%s] file is missing. Update extension to the latest version. %sRead more.%s', AAM_KEY),
@@ -163,6 +164,34 @@ class AAM_Extension_Repository {
         AAM_Core_API::updateOption('aam-extensions', $list);
     }
     
+    /**
+     * 
+     * @return type
+     */
+    public function getCommercialLicenses($details = true) {
+        $response   = array();
+        $licenses   = AAM_Core_API::getOption('aam-extensions', array());
+        $extensions = AAM_Extension_List::get();
+        
+        foreach((array) $licenses as $key => $data) {
+            if (isset($extensions[$key]) 
+                    && !empty($data['license']) 
+                    && $extensions[$key]['type'] == 'commercial') {
+                
+                if ($details) {
+                    $response[] = array(
+                        'license'   => $data['license'],
+                        'extension' => $extensions[$key]['title'],
+                        'expires'   => (isset($data['expires']) ? $data['expires'] : null)
+                    );
+                } else {
+                    $response[] = $data['license'];
+                }
+            }
+        }
+        
+        return $response;
+    }
     
     /**
      * Add new extension
@@ -303,9 +332,19 @@ class AAM_Extension_Repository {
         } else {
             $valid = true;
         }
+        
+        $outdated = false;
+        
+        if ($valid) {
+            // first check the retrieved version from the server
+            if (isset($retrieved->$id)) {
+                $outdated = version_compare($version, $retrieved->$id->version) == -1;
+            } else {
+                $outdated = version_compare($version, $item['latest']) == -1;
+            }
+        }
 
-        return $valid && isset($retrieved->$id) 
-                && version_compare($version, $retrieved->$id->version) == -1;
+        return $outdated;
     }
     
     /**
@@ -342,7 +381,7 @@ class AAM_Extension_Repository {
      * @access public
      */
     public function getBasedir() {
-        $dirname = AAM_Core_Config::get('extention.directory', AAM_EXTENSION_BASE);
+        $dirname = AAM_Core_Config::get('core.extention.directory', AAM_EXTENSION_BASE);
         
         if (file_exists($dirname) === false) {
             @mkdir($dirname, fileperms( ABSPATH ) & 0777 | 0755);

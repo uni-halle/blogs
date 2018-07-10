@@ -3,7 +3,7 @@ Contributors: vasyltech
 Tags: access, role, user, capability, page access, post access, content access, comments, security, login redirect, membership, backend lockdown, wp-admin, 404, rest api, xml rpc
 Requires at least: 4.0
 Tested up to: 4.9.6
-Stable tag: 5.3
+Stable tag: 5.3.4
 
 The most powerful access management plugin for WordPress websites.
 
@@ -40,7 +40,7 @@ https://www.youtube.com/watch?v=yiOhjaacNJc
 * [free] 404 Redirect. Redefine where user should be redirected when page does not exist. Find out more from [How to redirect on WordPress 404 error](https://aamplugin.com/help/how-to-redirect-on-wordpress-404-error);
 * [free] Access Denied Redirect. Define custom redirect for any role, user or visitors when access is denied for restricted area on your website;
 * [free] Manage Metaboxes and Widgets. Filter out restricted or unnecessary metaboxes and widgets on both frontend and backend for any user, role or visitors. Find out more from [How to hide WordPress metaboxes & widgets](https://aamplugin.com/help/how-to-hide-wordpress-metaboxes-and-widgets) article;
-* [paid] Manage Access Based On Geo Location or IP. Manage access to your website for all visitors based on referred host, IP address or geographical location. Find out more from [How to manage access to WordPress website based on location](https://aamplugin.com/help/how-to-manage-access-to-wordpress-website-based-on-location) article;
+* [paid] Manage Access Based On IP Address or Referred Domain. Manage access to your website for all visitors based on referred host, IP address or geographical location. Find out more from [How to manage access to WordPress website by IP address](https://aamplugin.com/help/how-to-manage-access-to-wordpress-website-by-ip-address) article;
 * [paid] Monetize Access To You Content. Start selling access to your website content with premium [E-Commerce](https://aamplugin.com/extension/ecommerce) extension. Find out more from [How to monetize access to the WordPress content](https://aamplugin.com/help/how-to-monetize-access-to-the-wordpress-content) article;
 * [free] Multisite Support. Sync access settings across your network or even restrict none-members from accessing one of your sites. Find out more from [AAM and WordPress Multisite support](https://aamplugin.com/help/aam-and-wordpress-multisite-support);
 * [and even more...] Check our [help page](https://aamplugin.com/help) to learn more about AAM
@@ -65,6 +65,41 @@ https://www.youtube.com/watch?v=yiOhjaacNJc
 11. Improve your website security
 
 == Changelog ==
+
+= 5.3.4 =
+* Fixed incompatibility issue with plugins that use "plugins_loaded" hook for post manipulations
+* Fixed the bug with AAM_Api_Rest_Resource_User
+* Fixed issues with ConfigPress settings compatibility between versions
+* Fixed the issues with infinite loop when access denied redirect is not configured correctly
+* Fixed issue with post filtering that disregards Backend/Frotent/API Access Control settings
+* Fixed bug with login widget labels
+* Added more information about parent terms & posts to the Post & Terms list
+* Added additional widget that lists of AAM licenses on the Extensions tab
+* Added fallback secret key for jwt token generator
+* Added ability to filter out widgets from the Appearance->Widgets screen
+
+= 5.3.3 =
+* Fixed couple bugs with secure login widget rendering
+* Fixed the bug with AAM UI refresh triggered by aam extensions
+* Fixed the bug with send remote request and array of cookies
+* Added ability to hide login navigations links in the secure login widget with feature.secureLogin.ui.showNav configPress option
+* Added new custom capability "manage_same_user_level"
+
+= 5.3.2 =
+* Fixed the bug that triggers PHP warnings when blocked user is trying to login
+* Fixed the bug with get current post method in the core API
+* WARNING Experimental approach! to the post access that enormously improve AAM performance 
+* Added custom capability "edit_permalink" that control ability to edit post permalink
+
+= 5.3.1 =
+* Fixed bug with deprecated cache object to keep it backward compatible
+* Fixed bug with teaser message on none latin alphabet 
+* Improved REDIRECT functionality for Posts & Terms feature
+* Added finally singe point API (AAM::api method)
+* Added "Single Session" option to the Secure Login widget
+* Added more localization string to the AAM *.po file
+* Standardized AAM core settings names
+* Standardized REST API error codes
 
 = 5.3 =
 * Fixed the bug with ConfigPress settings when array is defined

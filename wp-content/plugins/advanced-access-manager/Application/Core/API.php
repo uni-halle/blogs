@@ -10,6 +10,8 @@
 /**
  * AAM core API
  * 
+ * NOTE! THIS IS LEGACY CLASS THAT SLOWLY WILL DIE! DO NOT RELY ON ITS METHODS
+ * 
  * @package AAM
  * @author Vasyl Martyniuk <vasyl@vasyltech.com>
  */
@@ -139,7 +141,7 @@ final class AAM_Core_API {
         if (is_array($cookies) && $send_cookies) {
             foreach ($cookies as $key => $value) {
                 //SKIP PHPSESSID - some servers don't like it for security reason
-                if ($key !== session_name()) {
+                if ($key !== session_name() && is_scalar($value)) {
                     $requestCookies[] = new WP_Http_Cookie(array(
                         'name' => $key, 'value' => $value
                     ));
@@ -289,13 +291,23 @@ final class AAM_Core_API {
                 $redirect = $object->get("{$area}.redirect.{$type}");
             } else { //ConfigPress setup
                 $redirect = AAM_Core_Config::get(
-                    "{$area}.access.deny.redirect", __('Access Denied', AAM_KEY)
+                    "{$area}.access.deny.redirectRule", __('Access Denied', AAM_KEY)
                 );
             }
-
-            do_action('aam-rejected-action', $area, $args);
-
-            self::redirect($redirect, $args);
+            
+            $doRedirect = true;
+            
+            if ($type == 'page') {
+                $page = self::getCurrentPost();
+                $doRedirect = (empty($page) || ($page->ID != $redirect));
+            } elseif ($type == 'url') {
+                $doRedirect = strpos($redirect, $_SERVER['REQUEST_URI']) === false;
+            }
+            
+            if ($doRedirect) {
+                do_action('aam-access-rejected-action', $area, $args);
+                self::redirect($redirect, $args);
+            }
         } else {
             wp_die(-1);
         }
@@ -369,49 +381,6 @@ final class AAM_Core_API {
     }
     
     /**
-     * Get filtered post list
-     * 
-     * Return only posts that are restricted to LIST or LIST TO OTHERS for the
-     * current user. This function is shared by both frontend and backend
-     * 
-     * @param WP_Query $query
-     * @param string   $area
-     * 
-     * @return array
-     * 
-     * @access public
-     */
-    public static function getFilteredPostList($query) {
-        $filtered = array();
-        
-        $type = self::getQueryPostType($query);
-        $area = AAM_Core_Api_Area::get();
-        
-        if ($type) {
-            $cache = AAM::getUser()->getObject('cache')->getMergedOption();
-            $posts = (isset($cache['post']) ? $cache['post'] : array());
-            
-            foreach($posts as $id => $option) {
-                if (!empty($option["{$area}.list"]) 
-                                    || !empty($option["{$area}.hidden"])) {
-                    $filtered[] = $id;
-                }
-            }
-        }
-        
-        if (is_single()) {
-            $post = self::getCurrentPost();
-            $in   = ($post ? array_search($post->ID, $filtered) : false);
-            
-            if ($in !== false) {
-                $filtered = array_splice($filtered, $in, 1);
-            }
-        }
-        
-        return (is_array($filtered) ? $filtered : array());
-    }
-    
-    /**
      * Get Query post type
      * 
      * @param WP_Query $query
@@ -451,13 +420,23 @@ final class AAM_Core_API {
             $res = $wp_query->queried_object;
         } elseif (!empty($wp_query->post)) {
             $res = $wp_query->post;
-        } elseif (!empty($wp_query->query['name']) && !empty($wp_query->posts)) {
+        } elseif (!empty($wp_query->query_vars['p'])) {
+            $res = get_post($wp_query->query_vars['p']);
+        } elseif (!empty($wp_query->query_vars['page_id'])) {
+            $res = get_post($wp_query->query_vars['page_id']);
+        } elseif (!empty($wp_query->query['name'])) {
             //Important! Cover the scenario of NOT LIST but ALLOW READ
-            foreach($wp_query->posts as $post) {
-                if ($post->post_name == $wp_query->query['name']) {
-                    $res = $post;
-                    break;
+            if (!empty($wp_query->posts)) {
+                foreach($wp_query->posts as $post) {
+                    if ($post->post_name == $wp_query->query['name']) {
+                        $res = $post;
+                        break;
+                    }
                 }
+            } elseif (!empty($wp_query->query['post_type'])) {
+                $res = get_page_by_path(
+                    $wp_query->query['name'], OBJECT, $wp_query->query['post_type']
+                );
             }
         }
         

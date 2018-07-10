@@ -25,11 +25,6 @@ class AAM_Backend_Filter {
     private static $_instance = null;
     
     /**
-     * pre_get_posts flag
-     */
-    protected $skip = false;
-
-    /**
      * Initialize backend filters
      * 
      * @return void
@@ -42,6 +37,7 @@ class AAM_Backend_Filter {
         
         //manager WordPress metaboxes
         add_action("in_admin_header", array($this, 'metaboxes'), 999);
+        add_action("widgets_admin_page", array($this, 'metaboxes'), 999);
         
         //control admin area
         add_action('admin_notices', array($this, 'adminNotices'), -1);
@@ -56,12 +52,8 @@ class AAM_Backend_Filter {
         add_filter('post_row_actions', array($this, 'postRowActions'), 10, 2);
 
         //default category filder
+        // TODO - THIS HAS TO GO TO THE PLUS PACKAGE EXTENSION
         add_filter('pre_option_default_category', array($this, 'filterDefaultCategory'));
-        
-        //add post filter for LIST restriction
-        if (!AAM::isAAM() && AAM_Core_Config::get('check-post-visibility', true)) {
-            add_filter('found_posts', array($this, 'filterPostCount'), 999, 2);
-        }
         
         add_action('pre_post_update', array($this, 'prePostUpdate'), 10, 2);
         
@@ -74,14 +66,12 @@ class AAM_Backend_Filter {
         
         // Check if user has ability to perform certain task based on provided
         // capability and meta data
-        if (AAM_Core_Config::get('backend-access-control', true)) {
-            add_filter(
-                'user_has_cap', 
-                array(AAM_Shared_Manager::getInstance(), 'userHasCap'), 
-                999, 
-                3
-            );
-        }
+        add_filter(
+            'user_has_cap', 
+            array(AAM_Shared_Manager::getInstance(), 'userHasCap'), 
+            999, 
+            3
+        );
         
         AAM_Backend_Authorization::bootstrap(); //bootstrap backend authorization
     }
@@ -120,9 +110,13 @@ class AAM_Backend_Filter {
         } else {
             $screen = '';
         }
-
+        
         if (AAM_Core_Request::get('init') != 'metabox') {
-            AAM::getUser()->getObject('metabox')->filterBackend($screen);
+            if ($screen != 'widgets') {
+                AAM::getUser()->getObject('metabox')->filterBackend($screen);
+            } else {
+                AAM::getUser()->getObject('metabox')->filterAppearanceWidgets();
+            }
         }
     }
     
@@ -272,58 +266,17 @@ class AAM_Backend_Filter {
         if (is_null($default)) {
             //check if user category is defined
             $id      = get_current_user_id();
-            $default = AAM_Core_Config::get('default.category.user.' . $id , null);
+            $default = AAM_Core_Config::get('feature.post.defaultTerm.user.' . $id , null);
             $roles   = AAM::getUser()->roles;
             
             if (is_null($default) && count($roles)) {
                 $default = AAM_Core_Config::get(
-                    'default.category.role.' . array_shift($roles), false
+                    'feature.post.defaultTerm.role.' . array_shift($roles), false
                 );
             }
         }
         
         return ($default ? $default : $category);
-    }
-    
-    /**
-     * Filter post count for pagination
-     *  
-     * @param int      $counter
-     * @param WP_Query $query
-     * 
-     * @return array
-     * 
-     * @access public
-     */
-    public function filterPostCount($counter, $query) {
-        $filtered = array();
-        $subject  = AAM::getUser();
-        
-        foreach ($query->posts as $post) {
-            if (isset($post->post_type)) {
-                $type = $post->post_type;
-            } else {
-                $type = AAM_Core_API::getQueryPostType($query);
-            }
-            
-            $object = $subject->getObject(
-                    'post', (is_a($post, 'WP_Post') ? $post->ID : $post)
-            );
-            
-            $hidden = $object->get('backend.hidden');
-            $list   = $object->get('backend.list');
-            
-            if (empty($hidden) && empty($list)) {
-                $filtered[] = $post;
-            } else {
-                $counter--;
-                $query->post_count--;
-            }
-        }
-        
-        $query->posts = $filtered;
-
-        return $counter;
     }
     
     /**
@@ -362,11 +315,27 @@ class AAM_Backend_Filter {
                 $roleLevel = AAM_Core_API::maxLevel($role['capabilities']);
                 if ($userLevel < $roleLevel) {
                     unset($roles[$id]);
+                } elseif ($userLevel == $roleLevel && $this->filterSameLevel()) {
+                    unset($roles[$id]);
                 }
             }
         }
         
         return $roles;
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    protected function filterSameLevel() {
+        $response = false;
+        
+        if (AAM_Core_API::capabilityExists('manage_same_user_level')) {
+            $response = !AAM::getUser()->hasCapability('manage_same_user_level');
+        }
+        
+        return $response;
     }
     
     /**
@@ -387,7 +356,10 @@ class AAM_Backend_Filter {
         $roles   = AAM_Core_API::getRoles();
         
         foreach($roles->role_objects as $id => $role) {
-            if (AAM_Core_API::maxLevel($role->capabilities) > $max) {
+            $roleMax = AAM_Core_API::maxLevel($role->capabilities);
+            if ($roleMax > $max ) {
+                $exclude[] = $id;
+            } elseif ($roleMax == $max && $this->filterSameLevel()) {
                 $exclude[] = $id;
             }
         }
@@ -409,9 +381,13 @@ class AAM_Backend_Filter {
         $roles = AAM_Core_API::getRoles();
         
         foreach($roles->role_objects as $id => $role) {
-            if (isset($views[$id]) 
-                    && AAM_Core_API::maxLevel($role->capabilities) > $max) {
-                unset($views[$id]);
+            $roleMax = AAM_Core_API::maxLevel($role->capabilities);
+            if (isset($views[$id])) {
+                if ($roleMax > $max) {
+                    unset($views[$id]);
+                } elseif ($roleMax == $max && $this->filterSameLevel()) {
+                    unset($views[$id]);
+                }
             }
         }
         

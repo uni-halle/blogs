@@ -21,15 +21,6 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
     const UID = 'user';
     
     /**
-     * Skip initialization
-     * 
-     * Avoid recurring loop when user is locked
-     * 
-     * @var type 
-     */
-    protected static $skipInit = false;
-
-    /**
      * AAM Capability Key
      *
      * It is very important to have all user capability changes be stored in
@@ -51,7 +42,7 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
     public function __construct($id) {
         parent::__construct($id);
         
-        if (get_current_user_id() == $id && !self::$skipInit) {
+        if (get_current_user_id() == $id) {
             //check if user is expired
             $expired = get_user_option('aam_user_expiration');
             if (!empty($expired)) {
@@ -59,13 +50,6 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
                 if ($parts[0] <= date('Y-m-d H:i:s')) {
                     $this->triggerExpiredUserAction($parts);
                 }
-            }
-            
-            //check if user is locked
-            if ($this->user_status == 1) {
-                self::$skipInit = true;
-                wp_logout();
-                self::$skipInit = false;
             }
             
             //check if user's role expired
@@ -101,13 +85,12 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
             case 'delete':
                 require_once(ABSPATH . 'wp-admin/includes/user.php' );
                 wp_delete_user(
-                    $this->getId(), AAM_Core_Config::get('core.reasign.user')
+                    $this->getId(), AAM_Core_Config::get('core.reasign.ownership.user')
                 );
                 wp_logout();
                 break;
 
             default:
-                do_action('aam-expired-user-action', $this);
                 break;
         }
     }
