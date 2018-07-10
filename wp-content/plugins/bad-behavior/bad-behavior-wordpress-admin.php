@@ -9,7 +9,6 @@ function bb2_admin_pages() {
 		add_options_page(__("Bad Behavior"), __("Bad Behavior"), 'manage_options', 'bb2_options', 'bb2_options');
 		add_options_page(__("Bad Behavior Whitelist"), __("Bad Behavior Whitelist"), 'manage_options', 'bb2_whitelist', 'bb2_whitelist');
 		add_management_page(__("Bad Behavior Log"), __("Bad Behavior Log"), 'manage_options', 'bb2_manage', 'bb2_manage');
-		@session_start();
 	}
 }
 
@@ -21,6 +20,8 @@ function bb2_clean_log_link($uri) {
 }
 
 function bb2_httpbl_lookup($ip) {
+	@session_start();
+
 	// NB: Many of these are defunct
 	$engines = array(
 		1 => "AltaVista",
@@ -363,11 +364,7 @@ function bb2_options()
 		} else {
 			$settings['offsite_forms'] = false;
 		}
-		if ($_POST['eu_cookie']) {
-			$settings['eu_cookie'] = true;
-		} else {
-			$settings['eu_cookie'] = false;
-		}
+		unset($settings['eu_cookie']);
 		if ($_POST['reverse_proxy']) {
 			$settings['reverse_proxy'] = true;
 		} else {
@@ -424,12 +421,6 @@ function bb2_options()
 	<tr><td><label><input type="text" size="12" maxlength="12" name="httpbl_key" value="<?php echo sanitize_text_field($settings['httpbl_key']); ?>" /> http:BL Access Key</label></td></tr>
 	<tr><td><label><input type="text" size="3" maxlength="3" name="httpbl_threat" value="<?php echo intval($settings['httpbl_threat']); ?>" /> Minimum Threat Level (25 is recommended)</label></td></tr>
 	<tr><td><label><input type="text" size="3" maxlength="3" name="httpbl_maxage" value="<?php echo intval($settings['httpbl_maxage']); ?>" /> Maximum Age of Data (30 is recommended)</label></td></tr>
-	</table>
-
-	<h3><?php _e('European Union Cookie'); ?></h3>
-	<p>Select this option if you believe Bad Behavior's site security cookie is not exempt from the 2012 EU cookie regulation. <a href="http://bad-behavior.ioerror.us/2012/05/04/eu-cookie-requirement-disclosure/">More info</a></p>
-	<table class="form-table">
-	<tr><td><label><input type="checkbox" name="eu_cookie" value="true" <?php if ($settings['eu_cookie']) { ?>checked="checked" <?php } ?>/> <?php _e('EU cookie handling'); ?></label></td></tr>
 	</table>
 
 	<h3><?php _e('Reverse Proxy/Load Balancer'); ?></h3>
