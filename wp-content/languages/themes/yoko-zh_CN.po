@@ -1,0 +1,486 @@
+# Translation of Themes - Yoko in Chinese (China)
+# This file is distributed under the same license as the Themes - Yoko package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2018-06-09 11:45:54+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: zh_CN\n"
+"Project-Id-Version: Themes - Yoko\n"
+
+#. Description of the plugin/theme
+msgid "Yoko is a modern three-column blog theme. A responsive layout optimizes the theme for mobile devices like tablet pcs and modern smartphones (the layout switches to a two- or one-column layout depending on the screen size the theme is viewed on). To make your blog post more flexible you can use different kinds of post formats such as gallery, image, video, aside, link or quotes. To customize the theme you can choose your own background, link color, logo and header image. Yoko also comes with a custom social links widget and shortcodes for text columns, info boxes and highlighted text."
+msgstr "Yoko是一个流行的三列式博客主题。它的响应式布局可以根据根据访问者的智能手机、平板或者电脑自动进行主题显示优化（主题根据屏幕大小自动切换为两列或一列布局）。您可以使用图像、相册、视频、日志、链接或引语的不同的发表格式来让博客更加丰富多彩。您也可以自定义主题的背景图片、链接颜色、logo图像以及顶部图像等。Yoko同样具有自定义的社交媒体挂件、文本列简码、信箱以及高亮文本等功能。"
+
+#. Theme Name of the plugin/theme
+msgid "Yoko"
+msgstr "Yoko"
+
+#. Template Name of the plugin/theme
+msgid "Full-width, no sidebar"
+msgstr "全页宽，无侧边栏"
+
+#: tag.php:18
+msgid "Tag Archives: %s"
+msgstr "标签归档：%s"
+
+#: single.php:24
+msgid "Next Post  &rarr;"
+msgstr "下一篇文章&rarr;"
+
+#: single.php:23
+msgid "&larr; Previous Post"
+msgstr "&larr;上一篇文章"
+
+#: search.php:42
+msgid "Sorry, but nothing matched your search criteria. Please try again with some different keywords."
+msgstr "抱歉，没有符合您搜索条件的结果。请换其它关键词再试。"
+
+#: search.php:38
+msgid "Nothing Found"
+msgstr "什么也没找到 :("
+
+#: search.php:16
+msgid "Search Results for: %s"
+msgstr "%s的搜索结果"
+
+#: inc/theme-options.php:73
+msgid "Save Options"
+msgstr "保存选项"
+
+#: inc/theme-options.php:68
+msgid " using the WordPress Media Library and insert the URL here"
+msgstr "在 WordPress 媒体库里面并且将URL复制到这里"
+
+#: inc/theme-options.php:68
+msgid "Upload your own logo image"
+msgstr "上传你自己的logo图像"
+
+#: inc/theme-options.php:65
+msgid "Custom Logo Image URL"
+msgstr "自定义logo图像URL"
+
+#: inc/theme-options.php:51
+msgid "Options saved"
+msgstr "保存成功"
+
+#: inc/theme-options.php:48
+msgid "%s Theme Options"
+msgstr "%s主题选项"
+
+#: inc/theme-options.php:34
+msgid "Theme Options"
+msgstr "主题选项"
+
+#: inc/customizer.php:32
+msgid "Link Color"
+msgstr "链接颜色"
+
+#: inc/customizer.php:20
+msgid "Theme"
+msgstr "主题"
+
+#: image.php:81
+msgid "Both comments and trackbacks are currently closed."
+msgstr "评论和引用通告都已关闭。"
+
+#: image.php:79
+msgid "Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">post a comment</a>."
+msgstr "引用通告已关闭，不过您可以 <a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">发表评论</a>."
+
+#: image.php:77
+msgid "Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr "评论已关闭，不过您可以留下: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">引用通告</a>."
+
+#: image.php:75
+msgid "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">发表评论</a> 或留下<a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">引用通告URL</a>。"
+
+#: image.php:23
+msgid "Next Image &rarr;"
+msgstr "下一张图片&rarr;"
+
+#: image.php:22
+msgid "&larr; Previous Image"
+msgstr "&larr;上一张图片"
+
+#: functions.php:615
+msgid "RSS  URL:"
+msgstr "RSS  URL地址："
+
+#: functions.php:613
+msgid "RSS Text:"
+msgstr "RSS显示标题："
+
+#: functions.php:611
+msgid "Delicious URL:"
+msgstr "Delicious URL地址："
+
+#: functions.php:610
+msgid "Delicious Text:"
+msgstr "Delicious显示标题："
+
+#: functions.php:609
+msgid "LinkedIn URL:"
+msgstr "LinkedIn URL地址："
+
+#: functions.php:608
+msgid "LinkedIn Text:"
+msgstr "LinkedIn显示标题："
+
+#: functions.php:606
+msgid "Xing URL:"
+msgstr "Xing URL地址："
+
+#: functions.php:605
+msgid "Xing Text:"
+msgstr "Xing显示标题："
+
+#: functions.php:604
+msgid "WordPress URL:"
+msgstr "WordPress URL地址："
+
+#: functions.php:603
+msgid "WordPress Text:"
+msgstr "WordPress显示标题："
+
+#: functions.php:602
+msgid "Foursquare URL:"
+msgstr "Foursquare URL地址："
+
+#: functions.php:601
+msgid "Foursquare Text:"
+msgstr "Foursquare显示标题："
+
+#: functions.php:599
+msgid "GitHub URL:"
+msgstr "GitHub URL地址："
+
+#: functions.php:598
+msgid "GitHub Text:"
+msgstr "GitHub显示标题："
+
+#: functions.php:597
+msgid "Dribbble URL:"
+msgstr "Dribbble URL地址："
+
+#: functions.php:596
+msgid "Dribbble Text:"
+msgstr "Dribbble显示标题："
+
+#: functions.php:595
+msgid "Flickr URL:"
+msgstr "Flickr URL地址："
+
+#: functions.php:594
+msgid "Flickr Text:"
+msgstr "Flickr显示标题："
+
+#: functions.php:593
+msgid "Instagram URL:"
+msgstr "Instagram URL地址："
+
+#: functions.php:592
+msgid "Instagram Text:"
+msgstr "Instagram显示标题："
+
+#: functions.php:590
+msgid "YouTube URL:"
+msgstr "YouTube URL地址："
+
+#: functions.php:589
+msgid "YouTube Text:"
+msgstr "YouTube显示标题："
+
+#: functions.php:587
+msgid "Vimeo URL:"
+msgstr "Vimeo URL地址："
+
+#: functions.php:586
+msgid "Vimeo Text:"
+msgstr "Vimeo 显示标题："
+
+#: functions.php:585
+msgid "Pinterest URL:"
+msgstr "Pinterest URL地址："
+
+#: functions.php:584
+msgid "Pinterest Text:"
+msgstr "Pinterest显示标题："
+
+#: functions.php:583
+msgid "Google+ URL:"
+msgstr "Google+ URL地址："
+
+#: functions.php:582
+msgid "Google+ Text:"
+msgstr "Google+显示标题："
+
+#: functions.php:581
+msgid "Facebook URL:"
+msgstr "Facebook URL地址："
+
+#: functions.php:580
+msgid "Facebook Text:"
+msgstr "Facebook显示标题："
+
+#: functions.php:579
+msgid "Twitter  URL:"
+msgstr "Twitter URL地址："
+
+#: functions.php:578
+msgid "Twitter Text:"
+msgstr "Twitter显示标题："
+
+#: functions.php:577
+msgid "Title:"
+msgstr "标题："
+
+#: functions.php:405
+msgid "Link to your social profiles like twitter, facebook or flickr."
+msgstr "链接到您的社交资料诸如twitter、facebook或者flickr等。"
+
+#: functions.php:356
+msgid "Search"
+msgstr "搜索"
+
+#: functions.php:329
+msgid "An second sidebar area"
+msgstr "第二侧边栏区域"
+
+#: functions.php:327
+msgid "Sidebar 2"
+msgstr "侧边栏2"
+
+#: functions.php:318
+msgid "Sidebar 1"
+msgstr "侧边栏1"
+
+#: functions.php:306
+msgid "(Edit)"
+msgstr "(编辑)"
+
+#: functions.php:306
+msgid "Pingback:"
+msgstr "Pingback引用通告："
+
+#: functions.php:288
+msgid "Your comment is awaiting moderation."
+msgstr "您的评论正等待审核。"
+
+#. translators: 1: date, 2: time
+#: functions.php:281
+msgid "%1$s at %2$s"
+msgstr "%1$s %2$s"
+
+#: functions.php:277
+msgid "%s"
+msgstr "%s"
+
+#. translators: header image description
+#: functions.php:175
+msgid "Seagull"
+msgstr "海鸥"
+
+#. translators: header image description
+#: functions.php:169
+msgid "Cape"
+msgstr "海角"
+
+#. translators: header image description
+#: functions.php:163
+msgid "Sailing"
+msgstr "帆船"
+
+#. translators: header image description
+#: functions.php:157
+msgid "Plant"
+msgstr "植物"
+
+#. translators: header image description
+#: functions.php:151
+msgid "Flowers"
+msgstr "鲜花"
+
+#. translators: header image description
+#: functions.php:145
+msgid "Ginko"
+msgstr "银杏叶"
+
+#: functions.php:103
+msgid "Primary Navigation"
+msgstr "主导航栏"
+
+#: functions.php:39
+msgctxt "Droid Serif font: on or off"
+msgid "on"
+msgstr "off"
+
+#. Translators: If there are characters in your language that are not supported
+#. by PT Sans or Raleway translate this to 'off'. Do not translate into your
+#. own language.
+#: functions.php:37
+msgctxt "Droid Sans font: on or off"
+msgid "on"
+msgstr "off"
+
+#: footer.php:12
+msgid "Top"
+msgstr "顶部"
+
+#: footer.php:11
+msgid "Theme: %1$s by %2$s"
+msgstr "主题: %1$s 制作: %2$s"
+
+#: content-single.php:47
+msgid "Author: %s"
+msgstr "作者：%s"
+
+#: content-image.php:16 content-link.php:11 content-quote.php:17
+#: content-single.php:25 content-video.php:16 content.php:27
+msgid "Continue Reading &rarr;"
+msgstr "继续阅读 &rarr;"
+
+#: content-gallery.php:45
+msgid "This gallery contains <a %1$s>%2$s photo</a>."
+msgid_plural "This gallery contains <a %1$s>%2$s photos</a>"
+msgstr[0] "这个相册包含<a %1$s>%2$s 张图片</a>"
+
+#: content-gallery.php:19 content-gallery.php:24 content-gallery.php:42
+msgid "View the pictures &rarr;"
+msgstr "观看图片&rarr;"
+
+#: content-gallery.php:12 content-gallery.php:46 content-image.php:12
+#: content-video.php:12 content.php:20
+msgid "Permalink to %s"
+msgstr "链向%s的固定链接"
+
+#: content-aside.php:29 content-gallery.php:64 content-image.php:28
+#: content-link.php:22 content-page.php:18 content-quote.php:29
+#: content-single.php:40 content-video.php:28 content.php:40 functions.php:281
+#: image.php:83
+msgid "Edit &rarr;"
+msgstr "编辑 &rarr;"
+
+#: content-aside.php:28 content-gallery.php:63 content-image.php:27
+#: content-link.php:21 content-quote.php:28 content-single.php:39
+#: content-video.php:27 content.php:39
+msgid "Permalink "
+msgstr "固定链接"
+
+#: content-aside.php:26 content-gallery.php:61 content-image.php:25
+#: content-link.php:19 content-quote.php:26 content-single.php:37
+#: content-video.php:25 content.php:37
+msgid "Tags: %2$s"
+msgstr "标签：%2$s"
+
+#: content-aside.php:22 content-gallery.php:57 content-image.php:21
+#: content-link.php:15 content-quote.php:22 content-single.php:33
+#: content-video.php:21 content.php:33
+msgid "Categories: %2$s"
+msgstr "分类目录：%2$s"
+
+#: content-aside.php:18 content-gallery.php:53 content-image.php:17
+#: content-page.php:17 content-quote.php:18 content-single.php:28
+#: content-video.php:17 content.php:28 image.php:68
+msgid "Pages:"
+msgstr "页面："
+
+#: content-aside.php:17 functions.php:225
+msgid "Continue reading <span class=\"meta-nav\">&rarr;</span>"
+msgstr "继续阅读 <span class=\"meta-nav\">&rarr;</span>"
+
+#: content-aside.php:13 content-gallery.php:14 content-image.php:13
+#: content-quote.php:13 content-single.php:18 content-video.php:13
+#: content.php:16 image.php:18
+msgid "% Comments"
+msgstr "%条评论"
+
+#: content-aside.php:13 content-gallery.php:14 content-image.php:13
+#: content-quote.php:13 content-single.php:18 content-video.php:13
+#: content.php:16 image.php:18
+msgid "1 Comment"
+msgstr "一条评论"
+
+#: content-aside.php:13 content-gallery.php:14 content-image.php:13
+#: content-quote.php:13 content-single.php:18 content-video.php:13
+#: content.php:16 image.php:18
+msgid "0 comments"
+msgstr "暂无评论"
+
+#: content-aside.php:12 content-gallery.php:13 content-image.php:13
+#: content-quote.php:12 content-single.php:18 content-video.php:13
+#: content.php:15 image.php:18
+msgid "by"
+msgstr "发表者"
+
+#: comments.php:62
+msgctxt "noun"
+msgid "Message <span class=\"required\">*</span>"
+msgstr "说点什么 <span class=\"required\">*</span>"
+
+#: comments.php:60
+msgid "<p class=\"comment-notes\">Required fields are marked <span class=\"required\">*</span>.</p>"
+msgstr "<p class=\"comment-notes\"><span class=\"required\">*</span>为必填字段！</p>"
+
+#: comments.php:53
+msgid "Comments are closed."
+msgstr "评论已关闭。"
+
+#: comments.php:37
+msgid "Newer Comments &rarr;"
+msgstr "最新评论 &rarr;"
+
+#: comments.php:36
+msgid "&larr; Older Comments"
+msgstr "&larr; 早期评论"
+
+#: comments.php:29
+msgid "Leave a reply &rarr;"
+msgstr "发表评论&rarr;"
+
+#: comments.php:26
+msgid "One Comment"
+msgid_plural "%1$s Comments"
+msgstr[0] "%1$s 评论"
+
+#: comments.php:10
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr "这篇文章受密码保护。输入密码以查看评论。"
+
+#: category.php:14
+msgid "Category Archives: %s"
+msgstr "按分类目录归档：%s"
+
+#: author.php:16
+msgid "Author Archives: <span class=\"vcard\">%s</span>"
+msgstr "按作者归档： <span class=\"vcard\">%s</span>"
+
+#: archive.php:35 author.php:32 category.php:29 index.php:23 search.php:30
+#: tag.php:35
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr "较新文章 <span class=\"meta-nav\">&rarr;</span>"
+
+#: archive.php:34 author.php:31 category.php:28 index.php:22 search.php:29
+#: tag.php:34
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr "<span class=\"meta-nav\">&larr;</span> 早期文章"
+
+#: 404.php:19
+msgid "Apologies, but the page you requested could not be found. Perhaps searching will help."
+msgstr "抱歉，您浏览的页面未找到。也许可以试试搜索功能！"
+
+#: 404.php:15
+msgid "Not Found"
+msgstr "未找到"
+
+#. Theme URI of the plugin/theme
+msgid "https://www.elmastudio.de/en/themes/yoko/"
+msgstr "https://www.elmastudio.de/en/themes/yoko/"
+
+#. Author of the plugin/theme
+msgid "Elmastudio"
+msgstr "Elmastudio"

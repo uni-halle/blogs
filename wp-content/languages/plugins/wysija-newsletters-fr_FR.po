@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - MailPoet Newsletters (Previous) - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-23 09:27:27+0000\n"
+"PO-Revision-Date: 2018-06-20 20:14:48+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4265,7 +4265,7 @@ msgstr "En cours de traitement&hellip;"
 
 #: controllers/back/campaigns.php:2645
 msgid "Dismiss"
-msgstr "Rejeter"
+msgstr "Ignorer"
 
 #: controllers/back/campaigns.php:2644
 msgid "Upload stopped."

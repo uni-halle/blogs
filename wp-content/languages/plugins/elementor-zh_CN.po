@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Elementor Page Builder - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-22 09:10:01+0000\n"
+"PO-Revision-Date: 2018-06-09 11:49:52+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: zh_CN\n"
 "Project-Id-Version: Plugins - Elementor Page Builder - Stable (latest release)\n"
+
+#: includes/admin.php:137
+msgid "Back to WordPress Editor"
+msgstr "返回 WordPress 编辑器"
 
 #. translators: %s: Document title
 #: core/documents-manager.php:300
@@ -25,12 +29,7 @@ msgstr "添加 %s"
 #: includes/settings/tools.php:104
 msgid "%d row affected."
 msgid_plural "%d rows affected."
-msgstr[0] "%d行受到影响。"
-
-#: modules/page-templates/module.php:139
-msgctxt "Page Template"
-msgid "Elementor Canvas"
-msgstr "Elementor帆布"
+msgstr[0] "%d 行受到影响。"
 
 #: includes/elements/column.php:309 includes/elements/column.php:349
 #: includes/elements/section.php:595 includes/elements/section.php:635
@@ -43,10 +42,15 @@ msgstr "不透明度"
 msgid "Something went wrong."
 msgstr "出了些问题。"
 
+#: modules/page-templates/module.php:139
+msgctxt "Page Template"
+msgid "Elementor Canvas"
+msgstr "Elementor 画布"
+
 #: modules/page-templates/module.php:140
 msgctxt "Page Template"
 msgid "Elementor Full Width"
-msgstr "Elementor全宽"
+msgstr "Elementor 全宽"
 
 #: includes/managers/elements.php:343
 msgid "WooCommerce Elements"
@@ -75,27 +79,15 @@ msgid "Delete %s"
 msgstr "删除%s"
 
 #. translators: 1: Elementor, 2: Link to plugin review
-#: includes/admin.php:418
+#: includes/admin.php:421
 msgid "Enjoyed %1$s? Please leave us a %2$s rating. We really appreciate your support!"
-msgstr "享受%1$s？请留下我们一个%2$s评分。我们非常感谢您的支持！"
+msgstr "喜欢 %1$s 吗？请留下我们一个%2$s评分。非常感谢您的支持！"
 
 #: includes/settings/settings.php:122
 msgid "Knowledge Base"
 msgstr "知识库"
 
-#: modules/page-templates/module.php:303
-msgid "This template includes the header, full-width content and footer"
-msgstr "该模板包含标题，全角内容和页脚"
-
-#: modules/page-templates/module.php:290
-msgid "No header, no footer, just Elementor"
-msgstr "没有页眉，没有页脚，只是Elementor"
-
-#: modules/page-templates/module.php:277
-msgid "Default Page Template from your theme"
-msgstr "默认页从模板的 主题"
-
-#: modules/page-templates/module.php:266
+#: modules/page-templates/module.php:269
 msgid "Page Layout"
 msgstr "页面布局"
 
@@ -103,13 +95,21 @@ msgstr "页面布局"
 msgid "Current"
 msgstr "当前"
 
+#: modules/page-templates/module.php:306
+msgid "This template includes the header, full-width content and footer"
+msgstr "该模板包含标题，全宽内容和页脚"
+
+#: modules/page-templates/module.php:280
+msgid "Default Page Template from your theme"
+msgstr "主题的默认页面模版"
+
+#: modules/page-templates/module.php:293
+msgid "No header, no footer, just Elementor"
+msgstr "没有页眉、页脚，只有使用 Elementor 添加的内容"
+
 #: includes/widgets/video.php:688
 msgid "Play Video"
 msgstr "播放视频"
-
-#: includes/widgets/icon-list.php:87
-msgid "Inline"
-msgstr "一致"
 
 #: includes/widgets/counter.php:152
 msgid "Separator"
@@ -159,10 +159,6 @@ msgstr "自定义字体"
 msgid "Theme Elements"
 msgstr "主题元素"
 
-#: includes/managers/elements.php:335
-msgid "Pro Elements"
-msgstr "临元素"
-
 #: includes/editor-templates/templates.php:190
 msgid "More actions"
 msgstr "更多操作"
@@ -174,10 +170,6 @@ msgstr "搜索模板："
 #: includes/editor-templates/templates.php:44 modules/library/module.php:73
 msgid "Pages"
 msgstr "网页"
-
-#: includes/editor-templates/templates.php:43 modules/library/module.php:71
-msgid "Blocks"
-msgstr "块"
 
 #: includes/editor-templates/panel.php:244
 msgid "Dynamic"
@@ -192,31 +184,11 @@ msgctxt "Border Control"
 msgid "Groove"
 msgstr "沟槽"
 
-#: core/role-manager/role-manager.php:166
-msgid "Want to give access only to content?"
-msgstr "只想给内容提供访问权限？"
-
-#: core/role-manager/role-manager.php:131
-msgid "No access to editor"
-msgstr "无法访问编辑器"
-
-#: core/role-manager/role-manager.php:124
-msgid "Role Excluded"
-msgstr "角色排除"
-
-#: core/role-manager/role-manager.php:88
-msgid "Manage What Your Users Can Edit In Elementor"
-msgstr "管理您的用户可以在Elementor中编辑的内容"
-
 #: core/role-manager/role-manager.php:30
 msgid "Role Manager"
 msgstr "角色管理器"
 
-#: core/dynamic-tags/tag.php:103
-msgid "Fallback"
-msgstr "倒退"
-
-#: core/document-types/post.php:112
+#: core/document-types/post.php:117
 msgid "Body Style"
 msgstr "页面风格"
 
@@ -237,14 +209,6 @@ msgstr "令牌已过期。"
 msgid "Create Your First %s"
 msgstr "创建您的第一个%s"
 
-#: includes/template-library/sources/local.php:251
-msgid "Use templates to create the different pieces of your site, and reuse them with one click whenever needed."
-msgstr "使用模板来创建不同的块您的站点，并与点击重用他们需要的时候。"
-
-#: includes/settings/settings.php:169
-msgid "Custom Fonts allows you to add your self-hosted fonts and use them on your Elementor projects to create a unique brand language."
-msgstr "自定义字体允许您添加自己托管的字体并将它们用于您的Elementor项目以创建独特的品牌语言。"
-
 #: includes/editor.php:580
 msgid "Category"
 msgstr "分类"
@@ -255,7 +219,7 @@ msgstr "分类"
 msgid "%s Settings"
 msgstr "%s设置"
 
-#: core/document-types/post.php:168
+#: core/document-types/post.php:184
 msgid "Featured Image"
 msgstr "特色图像"
 
@@ -275,15 +239,55 @@ msgstr "使用`elementor/ajax /register_actions`挂钩来注册ajax动作。"
 msgid "Add templates and reuse them across your website. Easily export and import them to any other project, for an optimized workflow."
 msgstr "添加模板并在您的站点上重复使用它们。轻松导出并导入到任何其他项目，以实现优化的工作流程。"
 
+#: includes/managers/elements.php:335
+msgid "Pro Elements"
+msgstr "专业版元素"
+
+#: includes/editor-templates/templates.php:43 modules/library/module.php:71
+msgid "Blocks"
+msgstr "模块"
+
+#: core/role-manager/role-manager.php:124
+msgid "Role Excluded"
+msgstr "排除角色"
+
+#: core/role-manager/role-manager.php:131
+msgid "No access to editor"
+msgstr "没有访问编辑器的权限"
+
+#: core/role-manager/role-manager.php:166
+msgid "Want to give access only to content?"
+msgstr "只想给某些内容提供访问权限？"
+
+#: core/dynamic-tags/tag.php:103
+msgid "Fallback"
+msgstr "回滚"
+
+#: includes/widgets/icon-list.php:87
+msgid "Inline"
+msgstr "行内"
+
+#: includes/template-library/sources/local.php:251
+msgid "Use templates to create the different pieces of your site, and reuse them with one click whenever needed."
+msgstr "使用模板来创建站点的不同模块，并在需要的时候点一下鼠标重用。"
+
+#: includes/settings/settings.php:169
+msgid "Custom Fonts allows you to add your self-hosted fonts and use them on your Elementor projects to create a unique brand language."
+msgstr "自定义字体允许您添加自己托管的字体，并在你的 Elementor 项目中使用他们来创建独特的品牌语言。"
+
+#: core/role-manager/role-manager.php:88
+msgid "Manage What Your Users Can Edit In Elementor"
+msgstr "管理用户可以在 Elementor 中编辑的内容"
+
 #: includes/widgets/image-carousel.php:131
 msgid "Set how many slides are scrolled per swipe."
 msgstr "设置每次滑动滚动的幻灯片数量。"
 
-#: includes/controls/groups/background.php:301
+#: includes/controls/groups/background.php:304
 msgid "Note: Attachment Fixed works only on desktop."
 msgstr "注意：附件固定只能在桌面上使用。"
 
-#: includes/admin.php:580
+#: includes/admin.php:583
 msgid "Create New Post"
 msgstr "创建新帖子"
 
@@ -319,11 +323,11 @@ msgstr "当前版本"
 msgid "Enter your code"
 msgstr "输入您的代码"
 
-#: core/document-types/post.php:156
+#: core/document-types/post.php:172
 msgid "Excerpt"
 msgstr "摘要"
 
-#: includes/admin.php:577
+#: includes/admin.php:580
 msgid "Create New Page"
 msgstr "创建新页面"
 
@@ -351,23 +355,19 @@ msgstr "这是一个警报"
 msgid "Dismiss"
 msgstr "停用"
 
-#: includes/admin.php:695
+#: includes/admin.php:698
 msgid "Blog"
 msgstr "博客"
 
-#: includes/admin.php:644
+#: includes/admin.php:647
 msgid "(opens in a new window)"
 msgstr "（在新窗口中打开）"
 
-#: includes/admin.php:625
+#: includes/admin.php:628
 msgid "News & Updates"
 msgstr "新闻与更新"
 
-#: includes/admin.php:539
-msgid "Elementor Overview"
-msgstr "Elementor概述"
-
-#: includes/admin.php:608
+#: includes/admin.php:611
 msgid "Recently Edited"
 msgstr "最近编辑"
 
@@ -585,7 +585,7 @@ msgstr "通过线"
 msgid "Unlinked values"
 msgstr "取消关联的值"
 
-#: includes/admin.php:614
+#: includes/admin.php:617
 msgctxt "Dashboard Overview Widget Recently Date"
 msgid "M jS"
 msgstr "M jS"
@@ -594,10 +594,6 @@ msgstr "M jS"
 msgctxt "revision date format"
 msgid "M j, H:i"
 msgstr "M j，H：i"
-
-#: includes/admin.php:381
-msgid "Update Elementor Now"
-msgstr "现在更新Elementor"
 
 #: includes/editor-templates/templates.php:250
 msgid "Drag & drop your .JSON or .zip template file"
@@ -642,6 +638,14 @@ msgstr "当您打开隐私模式时，除非播放视频，否则YouTube不会�
 #: includes/editor-templates/templates.php:130
 msgid "Created By"
 msgstr "制作著："
+
+#: includes/admin.php:542
+msgid "Elementor Overview"
+msgstr "Elementor 概述"
+
+#: includes/admin.php:384
+msgid "Update Elementor Now"
+msgstr "现在更新 Elementor"
 
 #: includes/template-library/sources/local.php:482
 #: includes/template-library/sources/local.php:546
@@ -691,7 +695,7 @@ msgstr "我们很抱歉，但是出现了一些问题。点击“了解更多”
 msgid "The preview could not be loaded"
 msgstr "预览无法加载"
 
-#: includes/admin.php:367
+#: includes/admin.php:370
 msgid "Update Notification"
 msgstr "更新通知"
 
@@ -916,11 +920,6 @@ msgstr "概述"
 msgid "Add nofollow"
 msgstr "添加链接属性"
 
-#. translators: %s: WordPress version
-#: elementor.php:96
-msgid "Elementor requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT ACTIVE."
-msgstr "Elementor需要WordPress版本%s+。由于您使用的是较早版本，因此该插件目前无效。"
-
 #: includes/editor.php:584
 msgid "Do you want to also import the document settings of the template?"
 msgstr "您是否也想导入模板的文档设置？"
@@ -964,6 +963,11 @@ msgstr "成为Beta测试者"
 #: includes/settings/tools.php:265
 msgid "Turn-on Beta Tester, to get notified when a new beta version of Elementor or E-Pro is available. The Beta version will not install automatically. You always have the option to ignore it."
 msgstr "开启Beta测试器，以便在Elementor或E-Pro的新测试版可用时得到通知。Beta版本不会自动安装。您总是有选择忽略它。"
+
+#. translators: %s: WordPress version
+#: elementor.php:96
+msgid "Elementor requires WordPress version %s+. Because you are using an earlier version, the plugin is currently NOT RUNNING."
+msgstr "Elementor需要WordPress版本%s+。由于您使用的是较早版本，因此该插件目前无效。"
 
 #: includes/settings/settings.php:386
 msgid "Internal Embedding"
@@ -1042,7 +1046,7 @@ msgstr "模板"
 msgid "Roles"
 msgstr "角色"
 
-#: core/document-types/post.php:84
+#: core/document-types/post.php:89
 msgid "Hide Title"
 msgstr "隐藏标题"
 
@@ -1096,7 +1100,7 @@ msgid "Page Title Selector"
 msgstr "页面标题选择器"
 
 #. translators: %s: Setting page link
-#: core/document-types/post.php:90
+#: core/document-types/post.php:95
 msgid "Not working? You can set a different selector for the title in the <a href=\"%s\" target=\"_blank\">Settings page</a>."
 msgstr "不运作？您可以在 <a href=\"%s\" target=\"_blank\">设置页面</a> 中为标题设置不同的选择器."
 
@@ -1292,19 +1296,19 @@ msgstr "位置"
 msgid "Checking this box will disable Elementor's Default Fonts, and make Elementor inherit the fonts from your theme."
 msgstr "选中该复选框，将禁用Elementor的默认字体，使Elementor继承主题的字体。"
 
-#: includes/admin.php:308
+#: includes/admin.php:311
 msgid "Video Tutorials"
 msgstr "视频教程"
 
-#: includes/admin.php:308
+#: includes/admin.php:311
 msgid "View Elementor Video Tutorials"
 msgstr "查看 Elementor 视频教程"
 
-#: includes/admin.php:307
+#: includes/admin.php:310
 msgid "Docs & FAQs"
 msgstr "文档 & 常见问题解答"
 
-#: includes/admin.php:307
+#: includes/admin.php:310
 msgid "View Elementor Documentation"
 msgstr "查阅 Elementor 参考资料"
 
@@ -1333,51 +1337,17 @@ msgstr "通过"
 msgid "No Revisions Saved Yet"
 msgstr "没有修改保存"
 
-#. translators: %s: Codex URL
-#: modules/history/revisions-manager.php:378
-msgid "Learn more about <a targe=\"_blank\" href=\"%s\">WordPress revisions</a>"
-msgstr "学习更多关于 <a targe=\"_blank\" href=\"%s\">WordPress的修订</a>"
-
 #: modules/history/revisions-manager.php:373
 msgid "Revision"
 msgstr "修改"
-
-#: includes/settings/tools.php:86
-msgid "The `from` and `to` URL's must be different"
-msgstr "`from` 和 `to` 的URL必须是不同的"
-
-#: includes/settings/tools.php:82
-msgid "The `from` and `to` URL's must be a valid URL"
-msgstr "`from` 和 `to` 的URL必须是一个有效的网址"
-
-#: includes/settings/tools.php:221
-msgid "Enter your old and new URLs for your WordPress installation, to update all Elementor data (Relevant for domain transfers or move to 'HTTPS')."
-msgstr "输入您的WordPress安装的旧URL和新URL, 更新所有 Elementor 数据 (相关的域名转让或移到 'HTTPS')."
 
 #: includes/settings/tools.php:217
 msgid "Update Site Address (URL)"
 msgstr "更新站点网址 (URL)"
 
-#: includes/settings/tools.php:202 includes/settings/tools.php:220
-msgid "Replace URL"
-msgstr "更换网址"
-
 #: modules/history/revisions-manager.php:375
 msgid "It looks like the post revision feature is unavailable in your website."
 msgstr "它看起来像后修订功能不可用在您的站点。"
-
-#: modules/history/revisions-manager.php:368
-msgid "Start designing your page and you'll be able to see the entire revision history here."
-msgstr "开始设计您的 页面，您就可以在这里看到整个修订历史。"
-
-#. translators: 1: Human readable time difference, 2: Date
-#: modules/history/revisions-manager.php:167
-msgid "%1$s ago (%2$s)"
-msgstr "%1$s之前的（%2$s）"
-
-#: modules/history/revisions-manager.php:281
-msgid "Cannot delete this revision."
-msgstr "无法删除此修改"
 
 #. translators: 1: Minimum recommended_memory, 2: Codex URL
 #: includes/settings/system-info/classes/wordpress.php:91
@@ -1390,14 +1360,48 @@ msgstr "我们建议设置内存至少%1$s。欲了解更多信息，请阅读<a
 msgid "<strong>Important:</strong> It is strongly recommended that you <a target=\"_blank\" href=\"%s\">backup your database</a> before using Replace URL."
 msgstr "<strong>重要：</strong>强烈建议您在使用替换URL之前 <a target=\"_blank\" href=\"%s\">备份您的数据库</a> 。"
 
+#: modules/history/revisions-manager.php:368
+msgid "Start designing your page and you'll be able to see the entire revision history here."
+msgstr "开始设计您的页面，并且您可以在这里看到完整的修订历史。"
+
+#: includes/settings/tools.php:86
+msgid "The `from` and `to` URL's must be different"
+msgstr "`from` 和 `to` 的 URL 必须是不同的"
+
+#: includes/settings/tools.php:82
+msgid "The `from` and `to` URL's must be a valid URL"
+msgstr "`from` 和 `to` 的 URL 必须是一个有效的网址"
+
+#: includes/settings/tools.php:221
+msgid "Enter your old and new URLs for your WordPress installation, to update all Elementor data (Relevant for domain transfers or move to 'HTTPS')."
+msgstr "输入您的 WordPress 安装的旧 URL 和新 URL, 更新所有 Elementor 数据 (相关的域名转让或移到 'HTTPS')."
+
+#. translators: 1: Human readable time difference, 2: Date
+#: modules/history/revisions-manager.php:167
+msgid "%1$s ago (%2$s)"
+msgstr "%1$s之前（%2$s）"
+
+#: modules/history/revisions-manager.php:281
+msgid "Cannot delete this revision."
+msgstr "无法删除此版本"
+
+#: includes/settings/tools.php:202 includes/settings/tools.php:220
+msgid "Replace URL"
+msgstr "替换网址"
+
+#. translators: %s: Codex URL
+#: modules/history/revisions-manager.php:378
+msgid "Learn more about <a target=\"_blank\" href=\"%s\">WordPress revisions</a>"
+msgstr "学习更多关于 <a target=\"_blank\" href=\"%s\">WordPress的修订</a>"
+
 #: includes/widgets/counter.php:141
 msgid "Thousand Separator"
 msgstr "千位数分隔"
 
-#: includes/controls/groups/background.php:260
-#: includes/controls/groups/background.php:285
-#: includes/controls/groups/background.php:315
-#: includes/controls/groups/background.php:335
+#: includes/controls/groups/background.php:263
+#: includes/controls/groups/background.php:288
+#: includes/controls/groups/background.php:318
+#: includes/controls/groups/background.php:338
 msgctxt "Background Control"
 msgid "Default"
 msgstr "默认"
@@ -1416,20 +1420,12 @@ msgstr "关"
 msgid "On"
 msgstr "开"
 
-#: includes/managers/controls.php:898
-msgid "Custom CSS lets you add CSS code to any widget, and see it render live right in the editor."
-msgstr "自定义CSS允许您将CSS代码添加到任何窗口小部件，并在编辑器中直接查看它。"
-
-#: includes/managers/controls.php:895
-msgid "Meet Our Custom CSS"
-msgstr "认识我们的自定义CSS"
-
 #: includes/managers/controls.php:883
 msgid "Custom CSS"
 msgstr "自定义CSS"
 
-#: core/role-manager/role-manager.php:167 includes/admin.php:282
-#: includes/admin.php:706 includes/editor-templates/panel-elements.php:23
+#: core/role-manager/role-manager.php:167 includes/admin.php:285
+#: includes/admin.php:709 includes/editor-templates/panel-elements.php:23
 #: includes/editor-templates/panel-elements.php:55
 #: includes/editor-templates/templates.php:217
 #: includes/managers/controls.php:904 includes/settings/settings.php:101
@@ -1445,22 +1441,26 @@ msgstr "认识我们的全局小部件"
 msgid "With this feature, you can save a widget as global, then add it to multiple areas. All areas will be editable from one single place."
 msgstr "有了这个功能，您可以把一个小工具保存为全局的，然后把它添加到多个区域。所有区域都可以从一个地方编辑。"
 
+#: includes/managers/controls.php:895
+msgid "Meet Our Custom CSS"
+msgstr "了解我们的自定义 CSS"
+
+#: includes/managers/controls.php:898
+msgid "Custom CSS lets you add CSS code to any widget, and see it render live right in the editor."
+msgstr "自定义 CSS 允许您将 CSS 代码添加到任意小工具中，并可以在编辑器中实时查看效果。"
+
 #: includes/editor-templates/panel-elements.php:54
 #: includes/managers/controls.php:901
 msgid "This feature is only available on Elementor Pro."
-msgstr "此功能仅适用于Elementor专业版。"
+msgstr "此功能仅适用于 Elementor 专业版。"
 
 #: includes/editor-templates/panel-elements.php:22
 msgid "Get more with Elementor Pro"
-msgstr "得到更多有关Elementor专业版本的说明"
+msgstr "得到更多有关 Elementor 专业版本的说明"
 
 #: includes/settings/tools.php:185
 msgid "Regenerate Files"
 msgstr "重新生成文件"
-
-#: includes/frontend.php:928
-msgid "Invalid Data: The Template ID cannot be the same as the currently edited template. Please choose a different one."
-msgstr "无效数据：模板ID不能​​与当前编辑的模板相同。请选择一个不同的。"
 
 #: includes/base/widget-base.php:286 includes/base/widget-base.php:295
 msgid "Skin"
@@ -1488,11 +1488,11 @@ msgstr "常规元素"
 
 #: includes/settings/settings.php:288
 msgid "Improve Elementor"
-msgstr "改进Elementor"
+msgstr "完善 Elementor"
 
-#: includes/editor.php:569
-msgid "Attention: We are going to DELETE ALL CONTENT from this page. Are you sure you want to do that?"
-msgstr "注意！我们接下来将清除此页面所有内容。您确定要这么做吗？"
+#: includes/frontend.php:928
+msgid "Invalid Data: The Template ID cannot be the same as the currently edited template. Please choose a different one."
+msgstr "无效数据：模板 ID 不能​​与当前编辑的模板相同，换一个其他的试试。"
 
 #: core/base/document.php:374 includes/editor.php:568
 msgid "Delete All Content"
@@ -1510,10 +1510,6 @@ msgstr "降序"
 msgid "Ascending order"
 msgstr "升序"
 
-#: includes/editor-templates/panel.php:158
-msgid "Update changes to page"
-msgstr "套用更新到页面"
-
 #: includes/schemes/color-picker.php:66
 msgid "Choose which colors appear in the editor's color picker. This makes accessing the colors you chose for the site much easier."
 msgstr "选择在编辑器的颜色选择器中显示哪些颜色。这使访问您为站点选择的颜色更容易。"
@@ -1521,6 +1517,14 @@ msgstr "选择在编辑器的颜色选择器中显示哪些颜色。这使访问
 #: includes/editor-templates/panel.php:169
 msgid "%s are disabled"
 msgstr "%s被禁用"
+
+#: includes/editor-templates/panel.php:158
+msgid "Update changes to page"
+msgstr "更新变更到所有页面"
+
+#: includes/editor.php:569
+msgid "Attention: We are going to DELETE ALL CONTENT from this page. Are you sure you want to do that?"
+msgstr "注意！我们将要 “清空” 此页面的所有内容，确定要这么做吗？"
 
 #: includes/tracker.php:265
 msgid "No thanks"
@@ -1546,7 +1550,7 @@ msgstr "使用js将该段拉伸到页面的整个宽度."
 msgid "Stretch Section"
 msgstr "拉伸段"
 
-#: includes/controls/groups/background.php:364
+#: includes/controls/groups/background.php:367
 msgid "This cover image will replace the background video on mobile and tablet devices."
 msgstr "此封面图像将取代手机和平板电脑设备上的背景视频。"
 
@@ -1679,18 +1683,9 @@ msgstr "敬请关注！更棒的模板即将推出。"
 msgid "Back to Library"
 msgstr "返回到模版库"
 
-#: includes/settings/tools.php:194
-msgid "Elementor Library automatically updates on a daily basis. You can also manually update it by clicking on the sync button."
-msgstr "Elementor模版库每天自动更新。您也可以通过点击同步按钮来手动更新它。"
-
 #: includes/template-library/sources/local.php:894
 msgid "Import Now"
 msgstr "现在输入"
-
-#: includes/template-library/sources/local.php:331
-msgctxt "Template Library"
-msgid "No Templates found in Trash"
-msgstr "没有在垃圾桶中找到模板"
 
 #: includes/template-library/sources/local.php:330
 msgctxt "Template Library"
@@ -1712,11 +1707,6 @@ msgctxt "Template Library"
 msgid "New Template"
 msgstr "新的模板"
 
-#: includes/template-library/sources/local.php:323
-msgctxt "Template Library"
-msgid "Add New"
-msgstr "添加新的"
-
 #: includes/template-library/sources/local.php:173
 msgid "Local"
 msgstr "局部"
@@ -1731,10 +1721,6 @@ msgstr "同步模版库"
 msgid "An error occurred"
 msgstr "发生了一个错误"
 
-#: includes/editor.php:586
-msgid "Library"
-msgstr "版型库"
-
 #: includes/editor-templates/global.php:26
 msgid "Add Template"
 msgstr "添加模板"
@@ -1742,10 +1728,6 @@ msgstr "添加模板"
 #: includes/editor-templates/global.php:30
 msgid "Select your Structure"
 msgstr "选择您的结构"
-
-#: includes/editor.php:593
-msgid "This is where your templates should be. Design it. Save it. Reuse it."
-msgstr "这是您的模板。可以设计。保存它。便于再利用。"
 
 #: includes/editor.php:599
 msgid "The following error(s) occurred while processing the request:"
@@ -1755,24 +1737,46 @@ msgstr "处理请求时发生了以下错误："
 msgid "Haven’t Saved Templates Yet?"
 msgstr "还没有保存模板吗？"
 
-#: includes/editor.php:591
-msgid "Your designs will be available for export and reuse on any page or website"
-msgstr "您的设计将可用于任何页面或站点上的导出和重用"
+#: includes/editor.php:593
+msgid "This is where your templates should be. Design it. Save it. Reuse it."
+msgstr "这是您的模板，您可以设计、保存、重用。"
+
+#: includes/editor.php:586
+msgid "Library"
+msgstr "模版库"
+
+#: includes/settings/tools.php:194
+msgid "Elementor Library automatically updates on a daily basis. You can also manually update it by clicking on the sync button."
+msgstr "Elementor 模版库每天会自动更新，您也可以点击同步按钮手动更新。"
 
 #: includes/editor.php:582
 msgid "Are you sure you want to delete this template?"
-msgstr "您确定要删除此模板吗？"
+msgstr "确定要删除此模板吗？"
+
+#: includes/template-library/sources/local.php:323
+msgctxt "Template Library"
+msgid "Add New"
+msgstr "添加新模版"
 
 #. translators: %s: Template type.
 #: includes/editor.php:590
 msgid "Save Your %s to Library"
-msgstr "将您的%s保存到版型库"
+msgstr "将您的%s保存到模版库"
+
+#: includes/template-library/sources/local.php:331
+msgctxt "Template Library"
+msgid "No Templates found in Trash"
+msgstr "没有在回收站中找到模板"
+
+#: includes/editor.php:591
+msgid "Your designs will be available for export and reuse on any page or website"
+msgstr "您的设计可以导出并在任何页面或站点上重用。"
 
 #. translators: %s: Codex URL
 #: includes/settings/system-info/classes/theme.php:192
 msgctxt "System Info"
 msgid "If you want to modify the source code of your theme, we recommend using a <a href=\"%s\">child theme</a>."
-msgstr "如果您想改变您的主题的源代码，我们建议使用<a href=\"%s\">儿童主题</a>。"
+msgstr "如果您想改变主题的源代码，我们建议使用<a href=\"%s\">子主题</a>。"
 
 #: includes/editor.php:608
 msgid "Learn More"
@@ -1784,7 +1788,7 @@ msgstr "了解更多"
 msgid "Hover Animation"
 msgstr "悬停动画"
 
-#: includes/controls/groups/background.php:338
+#: includes/controls/groups/background.php:341
 msgctxt "Background Control"
 msgid "Contain"
 msgstr "包含"
@@ -1803,7 +1807,7 @@ msgstr "快"
 msgid "Prevent Scroll"
 msgstr "防止滚动"
 
-#: includes/admin.php:458
+#: includes/admin.php:461
 msgid "Submit & Deactivate"
 msgstr "提交与禁用"
 
@@ -1847,19 +1851,19 @@ msgstr "默认字体"
 msgid "Color Palettes"
 msgstr "颜色面板组"
 
+#: includes/admin.php:462
+msgid "Skip & Deactivate"
+msgstr "跳过与禁用"
+
+#: includes/editor-templates/panel.php:170
+msgid "You can enable it from the <a href=\"%s\" target=\"_blank\">Elementor settings page</a>."
+msgstr "您可以在<a href=\"%s\" target=\"_blank\"> Elementor 设置页面</a> 中启用。"
+
 #: includes/controls/groups/box-shadow.php:61
 #: includes/controls/groups/box-shadow.php:102
 msgctxt "Box Shadow Control"
 msgid "Box Shadow"
-msgstr "盒子的影子"
-
-#: includes/editor-templates/panel.php:170
-msgid "You can enable it from the <a href=\"%s\" target=\"_blank\">Elementor settings page</a>."
-msgstr "您可以从中启用它<a href=\"%s\" target=\"_blank\">Elementor设置页面</a>。"
-
-#: includes/admin.php:459
-msgid "Skip & Deactivate"
-msgstr "跳过与禁用"
+msgstr "盒子影子"
 
 #: includes/widgets/testimonial.php:124 includes/widgets/testimonial.php:323
 msgid "Job"
@@ -1894,7 +1898,7 @@ msgstr "证明"
 msgid "Buy Button"
 msgstr "购买按钮"
 
-#: includes/admin.php:389
+#: includes/admin.php:392
 msgid "Update Now"
 msgstr "立即更新"
 
@@ -1906,15 +1910,11 @@ msgstr "用户名"
 msgid "Share Button"
 msgstr "分享按钮"
 
-#: includes/admin.php:490
-msgid "It's a temporary deactivation"
-msgstr "这是暂时的停用"
-
-#: includes/admin.php:486
+#: includes/admin.php:489
 msgid "I couldn't get the plugin to work"
 msgstr "我无法让插件工作"
 
-#: includes/admin.php:483
+#: includes/admin.php:486
 msgid "Please share which plugin"
 msgstr "请分享哪个插件"
 
@@ -1938,11 +1938,11 @@ msgstr "SoundCloud"
 msgid "Extended"
 msgstr "扩展"
 
-#: includes/admin.php:503
+#: includes/admin.php:506
 msgid "Quick Feedback"
 msgstr "快速反馈"
 
-#: includes/admin.php:495
+#: includes/admin.php:498
 msgid "Please share the reason"
 msgstr "请分享原因"
 
@@ -1958,32 +1958,36 @@ msgstr "播放次数"
 msgid "Visual Player"
 msgstr "视频播放器"
 
-#: includes/admin.php:494
+#: includes/admin.php:497
 msgid "Other"
 msgstr "其他"
 
-#: includes/admin.php:482
+#: includes/admin.php:485
 msgid "I found a better plugin"
 msgstr "我找到一个更好的插件"
 
-#: includes/admin.php:478
+#: includes/admin.php:481
 msgid "I no longer need the plugin"
 msgstr "我不再需要插件了"
 
-#: includes/admin.php:511
-msgid "If you have a moment, please share why you are deactivating Elementor:"
-msgstr "如果您有时间，请分享您为什么停用Elementor："
-
-#. translators: %s: Elementor version
-#: includes/admin.php:376
-msgid "View Elementor version %s details"
-msgstr "查看Elementor版本%s细节"
-
 #. translators: 1: Details URL, 2: Accessibility text, 3: Version number, 4:
 #. Update URL, 5: Accessibility text
-#: includes/admin.php:372
+#: includes/admin.php:375
 msgid "There is a new version of Elementor Page Builder available. <a href=\"%1$s\" class=\"thickbox open-plugin-details-modal\" aria-label=\"%2$s\">View version %3$s details</a> or <a href=\"%4$s\" class=\"update-link\" aria-label=\"%5$s\">update now</a>."
 msgstr "有一个新版本的Elementor Page Builder可用。<a href=\"%1$s\" class=\"thickbox open-plugin-details-modal\" aria-label=\"%2$s\">查看版本%3$s细节</a>要么<a href=\"%4$s\" class=\"update-link\" aria-label=\"%5$s\">现在更新</a>。"
+
+#. translators: %s: Elementor version
+#: includes/admin.php:379
+msgid "View Elementor version %s details"
+msgstr "查看 Elementor 版本 %s 细节"
+
+#: includes/admin.php:514
+msgid "If you have a moment, please share why you are deactivating Elementor:"
+msgstr "如果您有时间，可以告诉我们为什么停用 Elementor 吗？"
+
+#: includes/admin.php:493
+msgid "It's a temporary deactivation"
+msgstr "临时停用"
 
 #: includes/elements/column.php:214 includes/elements/section.php:492
 #: includes/widgets/accordion.php:220 includes/widgets/accordion.php:381
@@ -1997,13 +2001,13 @@ msgstr "背景"
 msgid "General"
 msgstr "一般"
 
-#: includes/widgets/image-carousel.php:179 includes/widgets/image.php:158
-msgid "Custom URL"
-msgstr "自定义URL"
-
 #: includes/elements/section.php:329
 msgid "Wider"
 msgstr "宽阔"
+
+#: includes/widgets/image-carousel.php:179 includes/widgets/image.php:158
+msgid "Custom URL"
+msgstr "自定义 URL"
 
 #: includes/widgets/image-carousel.php:43
 #: includes/widgets/image-carousel.php:86
@@ -2046,9 +2050,9 @@ msgid "Image Stretch"
 msgstr "图像拉伸"
 
 #: includes/widgets/accordion.php:347 includes/widgets/icon-box.php:260
-#: includes/widgets/icon-box.php:477 includes/widgets/image-box.php:351
-#: includes/widgets/image-carousel.php:490
-#: includes/widgets/image-gallery.php:191 includes/widgets/image.php:403
+#: includes/widgets/icon-box.php:477 includes/widgets/image-box.php:208
+#: includes/widgets/image-box.php:351 includes/widgets/image-carousel.php:490
+#: includes/widgets/image-gallery.php:191 includes/widgets/image.php:406
 #: includes/widgets/social-icons.php:313 includes/widgets/toggle.php:367
 msgid "Spacing"
 msgstr "间距"
@@ -2071,7 +2075,7 @@ msgstr "抱歉, 在页面中找不到内容区域."
 
 #: includes/editor.php:610
 msgid "You must call 'the_content' function in the current template, in order for Elementor to work on this page."
-msgstr "您必须在当前模板中调用'the_content'函数，使Elementor在这个页操作。"
+msgstr "必须在当前模板中调用 'the_content' 函数，才能使 Elementor 在这个页正常工作。"
 
 #: includes/widgets/video.php:101
 msgid "Vimeo"
@@ -2080,10 +2084,6 @@ msgstr "Vimeo"
 #: includes/widgets/image-gallery.php:159
 msgid "Ordering"
 msgstr "订购"
-
-#: includes/controls/image-dimensions.php:81
-msgid "The server does not have ImageMagick or GD installed and/or enabled! Any of these libraries are required for WordPress to be able to resize images. Please contact your server administrator to enable this before continuing."
-msgstr "服务器没有安装和/或启用ImageMagick或GD！任何这些库都需要WordPress才能够调整图像大小。在继续之前请联系您的服务器管理员启用此功能。"
 
 #: includes/editor.php:620
 msgid "Insert Media"
@@ -2167,7 +2167,11 @@ msgstr "输入您的视频链接"
 #. translators: %s: The number of images.
 #: includes/editor.php:618
 msgid "%s Images Selected"
-msgstr "%s图像已选择"
+msgstr "%s 个图像已选择"
+
+#: includes/controls/image-dimensions.php:81
+msgid "The server does not have ImageMagick or GD installed and/or enabled! Any of these libraries are required for WordPress to be able to resize images. Please contact your server administrator to enable this before continuing."
+msgstr "服务器没有安装和/或启用 ImageMagick 或 GD！WordPress 需要这些库才能调整图像大小。在继续之前，请联系您的服务器管理员启用此功能。"
 
 #: includes/widgets/image-carousel.php:302
 msgid "Effect"
@@ -2233,7 +2237,7 @@ msgstr "添加您的自定义类而不添加点。列如：my-class"
 #: includes/widgets/accordion.php:126 includes/widgets/icon-box.php:194
 #: includes/widgets/image-box.php:169 includes/widgets/toggle.php:123
 msgid "Title HTML Tag"
-msgstr "标题HTML标签"
+msgstr "标题 HTML 标签"
 
 #: includes/elements/section.php:1209 includes/widgets/common.php:357
 msgid "Attention: The display settings (show/hide for mobile, tablet or desktop) will only take effect once you are on the preview or live page, and not while you're in editing mode in Elementor."
@@ -2255,10 +2259,6 @@ msgstr "一般默认字体"
 msgid "Elements"
 msgstr "元素"
 
-#: includes/controls/groups/background.php:353
-msgid "YouTube link or video file (mp4 is recommended)."
-msgstr "YouTube链接或视频文件（建议使用mp4）。"
-
 #: includes/widgets/wordpress.php:207
 msgid "Form"
 msgstr "表单"
@@ -2266,13 +2266,17 @@ msgstr "表单"
 #: includes/settings/system-info/classes/server.php:121
 msgctxt "System Info"
 msgid "We recommend to use php 5.4 or higher"
-msgstr "我们建议使用PHP 5.4或更高版本"
+msgstr "我们建议使用 PHP 5.4 或更高版本"
+
+#: includes/controls/groups/background.php:356
+msgid "YouTube link or video file (mp4 is recommended)."
+msgstr "YouTube 链接或视频文件（建议使用 mp4）。"
 
 #: includes/settings/settings.php:296
 msgid "Opt-in to our anonymous plugin data collection and to updates. We guarantee no sensitive data is collected."
 msgstr "选择加入我们的匿名插件数据收集和更新。我们保证不收集敏感数据。"
 
-#: core/dynamic-tags/base-tag.php:166 includes/admin.php:278
+#: core/dynamic-tags/base-tag.php:166 includes/admin.php:281
 #: includes/editor-templates/panel.php:59 includes/editor.php:558
 #: includes/managers/controls.php:296 includes/settings/settings.php:208
 msgid "Settings"
@@ -2313,18 +2317,9 @@ msgctxt "Typography Control"
 msgid "Normal"
 msgstr "标准"
 
-#. translators: %s: PHP version
-#: elementor.php:80
-msgid "Elementor requires PHP version %s+, plugin is currently NOT ACTIVE."
-msgstr "Elementor要求PHP版本为5.4以上，插件目前没有激活。"
-
 #: includes/widgets/progress.php:131
 msgid "Web Designer"
 msgstr "网页设计师"
-
-#: includes/widgets/html.php:71
-msgid "HTML Code"
-msgstr "HTML代码"
 
 #: includes/widgets/html.php:42
 msgid "HTML"
@@ -2508,18 +2503,18 @@ msgctxt "Typography Control"
 msgid "Size"
 msgstr "尺寸"
 
-#: includes/controls/groups/background.php:331
+#: includes/controls/groups/background.php:334
 msgctxt "Background Control"
 msgid "Size"
 msgstr "尺寸"
 
-#: includes/controls/groups/background.php:281
+#: includes/controls/groups/background.php:284
 msgctxt "Background Control"
 msgid "Attachment"
 msgstr "附件"
 
 #: includes/controls/groups/background.php:219
-#: includes/controls/groups/background.php:256
+#: includes/controls/groups/background.php:259
 msgctxt "Background Control"
 msgid "Position"
 msgstr "位置"
@@ -2570,15 +2565,6 @@ msgstr "菜单锚点"
 msgid "Clear"
 msgstr "确定"
 
-#: includes/admin.php:138 includes/admin.php:146 includes/admin.php:206
-#: includes/frontend.php:885
-msgid "Edit with Elementor"
-msgstr "使用Elementor编辑"
-
-#: includes/admin.php:135
-msgid "&#8592; Back to WordPress Editor"
-msgstr "&#8592; 返回到 WordPress 编辑器"
-
 #: includes/fonts.php:78
 msgid "System"
 msgstr "系统"
@@ -2608,49 +2594,49 @@ msgctxt "Background Control"
 msgid "Background Color"
 msgstr "背景颜色"
 
-#: includes/controls/groups/background.php:246
+#: includes/controls/groups/background.php:249
 msgctxt "Background Control"
 msgid "Background Image"
 msgstr "背景图像"
 
 #: includes/controls/groups/background.php:222
-#: includes/controls/groups/background.php:265
+#: includes/controls/groups/background.php:268
 msgctxt "Background Control"
 msgid "Center Center"
 msgstr "居中"
 
-#: includes/controls/groups/background.php:311
-#: includes/controls/groups/background.php:317
+#: includes/controls/groups/background.php:314
+#: includes/controls/groups/background.php:320
 msgctxt "Background Control"
 msgid "Repeat"
 msgstr "重复"
 
-#: includes/controls/groups/background.php:316
+#: includes/controls/groups/background.php:319
 msgctxt "Background Control"
 msgid "No-repeat"
 msgstr "不重复"
 
-#: includes/controls/groups/background.php:318
+#: includes/controls/groups/background.php:321
 msgctxt "Background Control"
 msgid "Repeat-x"
 msgstr "水平重复"
 
-#: includes/controls/groups/background.php:319
+#: includes/controls/groups/background.php:322
 msgctxt "Background Control"
 msgid "Repeat-y"
 msgstr "纵向重复"
 
-#: includes/controls/groups/background.php:336
+#: includes/controls/groups/background.php:339
 msgctxt "Background Control"
 msgid "Auto"
 msgstr "自动"
 
-#: includes/controls/groups/background.php:350
+#: includes/controls/groups/background.php:353
 msgctxt "Background Control"
 msgid "Video Link"
 msgstr "视频链接"
 
-#: includes/controls/groups/background.php:337
+#: includes/controls/groups/background.php:340
 msgctxt "Background Control"
 msgid "Cover"
 msgstr "覆盖"
@@ -2718,10 +2704,6 @@ msgstr "选择图标"
 msgid "Add Item"
 msgstr "新增项目"
 
-#: includes/controls/structure.php:60
-msgid "More Structures"
-msgstr "更多的结构"
-
 #: includes/controls/groups/typography.php:188
 msgctxt "Typography Control"
 msgid "Letter Spacing"
@@ -2762,18 +2744,13 @@ msgstr "保存"
 msgid "Tablet"
 msgstr "平板电脑"
 
-#: includes/admin.php:699
+#: includes/admin.php:702
 msgid "Help"
 msgstr "帮助"
 
 #: includes/schemes/base.php:162
 msgid "Reset"
 msgstr "重置"
-
-#: includes/schemes/base.php:168
-#: modules/history/views/revisions-panel-template.php:13
-msgid "Discard"
-msgstr "停用"
 
 #: includes/elements/column.php:43 includes/elements/column.php:89
 #: includes/elements/column.php:806 includes/elements/column.php:808
@@ -2802,10 +2779,6 @@ msgstr "高级设置"
 msgid "Style"
 msgstr "样式"
 
-#: includes/editor.php:552
-msgid "About Elementor"
-msgstr "关于Elementor"
-
 #: includes/editor.php:660
 msgid "Soon"
 msgstr "马上"
@@ -2824,7 +2797,7 @@ msgstr "栏"
 
 #: includes/controls/image-dimensions.php:96 includes/elements/section.php:861
 #: includes/widgets/divider.php:149 includes/widgets/icon-list.php:262
-#: includes/widgets/image.php:218
+#: includes/widgets/image-box.php:231 includes/widgets/image.php:218
 msgid "Width"
 msgstr "宽度"
 
@@ -2832,11 +2805,6 @@ msgstr "宽度"
 #: includes/managers/controls.php:295 includes/widgets/icon-list.php:78
 msgid "Layout"
 msgstr "布局"
-
-#: includes/elements/column.php:721 includes/elements/section.php:1165
-#: includes/widgets/common.php:161
-msgid "CSS Classes"
-msgstr "CSS类别"
 
 #: includes/elements/column.php:589 includes/elements/section.php:1027
 msgid "Text Align"
@@ -2860,7 +2828,7 @@ msgstr "标题颜色"
 #: includes/widgets/counter.php:198 includes/widgets/counter.php:232
 #: includes/widgets/heading.php:209 includes/widgets/icon-list.php:397
 #: includes/widgets/image-carousel.php:595
-#: includes/widgets/image-gallery.php:312 includes/widgets/image.php:378
+#: includes/widgets/image-gallery.php:312 includes/widgets/image.php:381
 #: includes/widgets/progress.php:205 includes/widgets/testimonial.php:206
 #: includes/widgets/testimonial.php:295 includes/widgets/testimonial.php:331
 #: includes/widgets/text-editor.php:157
@@ -2905,18 +2873,6 @@ msgstr "栏间距"
 msgid "Content Width"
 msgstr "内容宽度"
 
-#: includes/elements/column.php:597 includes/elements/section.php:1035
-#: includes/widgets/button.php:169 includes/widgets/divider.php:184
-#: includes/widgets/heading.php:168 includes/widgets/icon-box.php:432
-#: includes/widgets/icon-list.php:186 includes/widgets/icon.php:156
-#: includes/widgets/image-box.php:306 includes/widgets/image-carousel.php:573
-#: includes/widgets/image-gallery.php:287 includes/widgets/image.php:125
-#: includes/widgets/image.php:356 includes/widgets/social-icons.php:190
-#: includes/widgets/testimonial.php:171 includes/widgets/text-editor.php:136
-#: includes/widgets/video.php:582
-msgid "Center"
-msgstr "中心"
-
 #: includes/schemes/typography.php:94
 msgid "Secondary Headline"
 msgstr "次要标题"
@@ -2938,18 +2894,6 @@ msgstr "文章类型"
 #: includes/widgets/testimonial.php:112 includes/widgets/testimonial.php:287
 msgid "Name"
 msgstr "名称"
-
-#: core/document-types/post.php:86 includes/controls/switcher.php:74
-#: includes/editor.php:587 includes/widgets/audio.php:104
-#: includes/widgets/image-carousel.php:148
-#: includes/widgets/image-carousel.php:206
-#: includes/widgets/image-carousel.php:255
-#: includes/widgets/image-carousel.php:269
-#: includes/widgets/image-carousel.php:293
-#: includes/widgets/image-gallery.php:148 includes/widgets/image.php:188
-#: includes/widgets/video.php:388
-msgid "No"
-msgstr "没有"
 
 #: includes/settings/system-info/main.php:151
 #: includes/settings/system-info/main.php:312
@@ -3127,24 +3071,11 @@ msgstr "图标"
 #: includes/widgets/icon.php:148 includes/widgets/image-box.php:298
 #: includes/widgets/image-carousel.php:565
 #: includes/widgets/image-gallery.php:279 includes/widgets/image.php:117
-#: includes/widgets/image.php:348 includes/widgets/social-icons.php:182
+#: includes/widgets/image.php:351 includes/widgets/social-icons.php:182
 #: includes/widgets/testimonial.php:162 includes/widgets/text-editor.php:128
 #: includes/widgets/toggle.php:315
 msgid "Alignment"
 msgstr "对齐"
-
-#: includes/widgets/divider.php:113 includes/widgets/icon-list.php:238
-msgid "Weight"
-msgstr "重量"
-
-#: includes/widgets/spacer.php:42 includes/widgets/spacer.php:87
-msgid "Spacer"
-msgstr "间隔"
-
-#: includes/widgets/divider.php:43 includes/widgets/divider.php:88
-#: includes/widgets/icon-list.php:201
-msgid "Divider"
-msgstr "分隔线"
 
 #: includes/controls/box-shadow.php:110 includes/controls/text-shadow.php:103
 #: includes/elements/section.php:847 includes/widgets/accordion.php:231
@@ -3160,6 +3091,19 @@ msgstr "分隔线"
 #: includes/widgets/video.php:455
 msgid "Color"
 msgstr "颜色"
+
+#: includes/widgets/divider.php:113 includes/widgets/icon-list.php:238
+msgid "Weight"
+msgstr "重量"
+
+#: includes/widgets/spacer.php:42 includes/widgets/spacer.php:87
+msgid "Spacer"
+msgstr "间隔"
+
+#: includes/widgets/divider.php:43 includes/widgets/divider.php:88
+#: includes/widgets/icon-list.php:201
+msgid "Divider"
+msgstr "分隔线"
 
 #: includes/widgets/counter.php:190
 msgid "Number"
@@ -3268,7 +3212,7 @@ msgstr "文本缩进"
 msgid "Icon List"
 msgstr "图标列表"
 
-#: includes/widgets/image-box.php:208 includes/widgets/image-carousel.php:506
+#: includes/widgets/image-carousel.php:506
 #: includes/widgets/image-gallery.php:208
 msgid "Image Spacing"
 msgstr "图像间距"
@@ -3327,10 +3271,6 @@ msgstr "显示百分比"
 #: includes/widgets/menu-anchor.php:90
 msgid "For Example: About"
 msgstr "例如：关于"
-
-#: includes/widgets/menu-anchor.php:88
-msgid "The ID of Menu Anchor."
-msgstr "菜单锚点的ID。"
 
 #: includes/widgets/text-editor.php:100
 msgid "I am text block. Click edit button to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
@@ -3439,7 +3379,7 @@ msgstr "内部文本"
 msgid "Image Position"
 msgstr "图像的位置"
 
-#: includes/widgets/image-box.php:231 includes/widgets/testimonial.php:245
+#: includes/widgets/testimonial.php:245
 msgid "Image Size"
 msgstr "图像尺寸"
 
@@ -3463,11 +3403,6 @@ msgstr "列表项 #2"
 #: includes/widgets/icon-list.php:104
 msgid "List Item #1"
 msgstr "列表项 #1"
-
-#: includes/elements/column.php:203 includes/elements/section.php:470
-#: includes/widgets/heading.php:140
-msgid "HTML Tag"
-msgstr "HTML标签"
 
 #: includes/widgets/image-carousel.php:217
 #: includes/widgets/image-carousel.php:223
@@ -3496,7 +3431,7 @@ msgstr "图像"
 #: includes/widgets/button.php:177 includes/widgets/heading.php:176
 #: includes/widgets/icon-box.php:440 includes/widgets/image-box.php:314
 #: includes/widgets/image-carousel.php:581
-#: includes/widgets/image-gallery.php:295 includes/widgets/image.php:364
+#: includes/widgets/image-gallery.php:295 includes/widgets/image.php:367
 #: includes/widgets/text-editor.php:144
 msgid "Justified"
 msgstr "两端对齐"
@@ -3544,10 +3479,6 @@ msgstr "手风琴 #1"
 msgid "Accordion"
 msgstr "手风琴"
 
-#: includes/tracker.php:265
-msgid "Sure! I'd love to help"
-msgstr "当然!我很乐意帮忙"
-
 #: includes/tracker.php:250
 msgid "Love using Elementor? Become a super contributor by opting in to our anonymous plugin data collection and to our updates. We guarantee no sensitive data is collected."
 msgstr "喜欢使用 Elementor? 通过选择匿名插件数据收集和更新来成为超级贡献者。我们保证没有敏感数据被收集."
@@ -3563,18 +3494,6 @@ msgstr "您可以将下面的信息复制为简单文本 Ctrl+C / Ctrl+V:"
 #: includes/settings/system-info/main.php:153
 msgid "Copy & Paste Info"
 msgstr "复制 & 粘贴信息"
-
-#: core/document-types/post.php:87 includes/admin.php:59
-#: includes/controls/switcher.php:75 includes/editor.php:600
-#: includes/widgets/audio.php:103 includes/widgets/image-carousel.php:149
-#: includes/widgets/image-carousel.php:205
-#: includes/widgets/image-carousel.php:254
-#: includes/widgets/image-carousel.php:268
-#: includes/widgets/image-carousel.php:292
-#: includes/widgets/image-gallery.php:147 includes/widgets/image.php:187
-#: includes/widgets/video.php:389
-msgid "Yes"
-msgstr "Yes"
 
 #: includes/schemes/typography.php:95
 msgid "Body Text"
@@ -3599,7 +3518,7 @@ msgstr "全宽度"
 msgid "Column Width"
 msgstr "栏宽度"
 
-#: core/document-types/post.php:127 includes/elements/column.php:638
+#: core/document-types/post.php:140 includes/elements/column.php:638
 #: includes/elements/section.php:1082 includes/widgets/accordion.php:270
 #: includes/widgets/accordion.php:416 includes/widgets/button.php:397
 #: includes/widgets/common.php:78 includes/widgets/icon-box.php:300
@@ -3631,21 +3550,10 @@ msgstr "返回"
 msgid "Add New Section"
 msgstr "添加新的段"
 
-#: includes/admin.php:155 includes/editor-templates/editor-wrapper.php:46
+#: includes/admin.php:158 includes/editor-templates/editor-wrapper.php:46
 #: includes/editor-templates/templates.php:67
 msgid "Loading"
 msgstr "加载"
-
-#. #-#-#-#-#  elementor-code.pot (Elementor 2.0.12)  #-#-#-#-#
-#. Plugin Name of the plugin/theme
-#: core/documents-manager.php:296 includes/admin.php:230 includes/admin.php:419
-#: includes/admin.php:588 includes/editor-templates/editor-wrapper.php:29
-#: includes/editor.php:545 includes/settings/settings.php:68
-#: includes/settings/settings.php:69 includes/settings/settings.php:425
-#: includes/template-library/sources/local.php:408
-#: includes/template-library/sources/local.php:409
-msgid "Elementor"
-msgstr "Elementor（页面生成器）"
 
 #: core/base/document.php:375 includes/controls/media.php:136
 #: includes/editor-templates/templates.php:195 includes/editor.php:546
@@ -3672,65 +3580,65 @@ msgctxt "Typography Control"
 msgid "Family"
 msgstr "字形系列"
 
-#: includes/controls/groups/background.php:363
+#: includes/controls/groups/background.php:366
 msgctxt "Background Control"
 msgid "Background Fallback"
 msgstr "背景背后"
 
-#: includes/controls/groups/background.php:287
+#: includes/controls/groups/background.php:290
 msgctxt "Background Control"
 msgid "Fixed"
 msgstr "固定的"
 
-#: includes/controls/groups/background.php:286
+#: includes/controls/groups/background.php:289
 msgctxt "Background Control"
 msgid "Scroll"
 msgstr "卷动"
 
 #: includes/controls/groups/background.php:230
-#: includes/controls/groups/background.php:269
+#: includes/controls/groups/background.php:272
 msgctxt "Background Control"
 msgid "Bottom Right"
 msgstr "底部右侧"
 
 #: includes/controls/groups/background.php:228
-#: includes/controls/groups/background.php:268
+#: includes/controls/groups/background.php:271
 msgctxt "Background Control"
 msgid "Bottom Center"
 msgstr "底部中心"
 
 #: includes/controls/groups/background.php:229
-#: includes/controls/groups/background.php:267
+#: includes/controls/groups/background.php:270
 msgctxt "Background Control"
 msgid "Bottom Left"
 msgstr "底部左侧"
 
 #: includes/controls/groups/background.php:224
-#: includes/controls/groups/background.php:266
+#: includes/controls/groups/background.php:269
 msgctxt "Background Control"
 msgid "Center Right"
 msgstr "中心右侧"
 
 #: includes/controls/groups/background.php:223
-#: includes/controls/groups/background.php:264
+#: includes/controls/groups/background.php:267
 msgctxt "Background Control"
 msgid "Center Left"
 msgstr "中心左侧"
 
 #: includes/controls/groups/background.php:227
-#: includes/controls/groups/background.php:263
+#: includes/controls/groups/background.php:266
 msgctxt "Background Control"
 msgid "Top Right"
 msgstr "顶部右侧"
 
 #: includes/controls/groups/background.php:225
-#: includes/controls/groups/background.php:262
+#: includes/controls/groups/background.php:265
 msgctxt "Background Control"
 msgid "Top Center"
 msgstr "顶部中心"
 
 #: includes/controls/groups/background.php:226
-#: includes/controls/groups/background.php:261
+#: includes/controls/groups/background.php:264
 msgctxt "Background Control"
 msgid "Top Left"
 msgstr "顶部左侧"
@@ -3744,6 +3652,22 @@ msgstr "图像"
 msgid "Google"
 msgstr "谷歌"
 
+#: includes/controls/dimensions.php:90 includes/elements/column.php:162
+#: includes/elements/section.php:428 includes/elements/section.php:447
+#: includes/elements/section.php:822 includes/widgets/icon-box.php:458
+#: includes/widgets/image-box.php:332
+msgid "Bottom"
+msgstr "底部"
+
+#: includes/controls/dimensions.php:88 includes/elements/column.php:160
+#: includes/elements/section.php:426 includes/elements/section.php:445
+#: includes/elements/section.php:821 includes/widgets/icon-box.php:175
+#: includes/widgets/icon-box.php:456 includes/widgets/image-box.php:153
+#: includes/widgets/image-box.php:330 includes/widgets/testimonial.php:150
+#: includes/widgets/video.php:583
+msgid "Top"
+msgstr "顶部"
+
 #: includes/controls/dimensions.php:91 includes/elements/column.php:593
 #: includes/elements/section.php:1031 includes/widgets/button.php:165
 #: includes/widgets/divider.php:180 includes/widgets/heading.php:164
@@ -3753,17 +3677,10 @@ msgstr "谷歌"
 #: includes/widgets/image-carousel.php:333
 #: includes/widgets/image-carousel.php:569
 #: includes/widgets/image-gallery.php:283 includes/widgets/image.php:121
-#: includes/widgets/image.php:352 includes/widgets/social-icons.php:186
+#: includes/widgets/image.php:355 includes/widgets/social-icons.php:186
 #: includes/widgets/testimonial.php:167 includes/widgets/text-editor.php:132
 msgid "Left"
 msgstr "左边"
-
-#: includes/controls/dimensions.php:90 includes/elements/column.php:162
-#: includes/elements/section.php:428 includes/elements/section.php:447
-#: includes/elements/section.php:822 includes/widgets/icon-box.php:458
-#: includes/widgets/image-box.php:332
-msgid "Bottom"
-msgstr "底部"
 
 #: includes/controls/dimensions.php:89 includes/elements/column.php:601
 #: includes/elements/section.php:1039 includes/widgets/button.php:173
@@ -3774,19 +3691,10 @@ msgstr "底部"
 #: includes/widgets/image-carousel.php:334
 #: includes/widgets/image-carousel.php:577
 #: includes/widgets/image-gallery.php:291 includes/widgets/image.php:129
-#: includes/widgets/image.php:360 includes/widgets/social-icons.php:194
+#: includes/widgets/image.php:363 includes/widgets/social-icons.php:194
 #: includes/widgets/testimonial.php:175 includes/widgets/text-editor.php:140
 msgid "Right"
 msgstr "右边"
-
-#: includes/controls/dimensions.php:88 includes/elements/column.php:160
-#: includes/elements/section.php:426 includes/elements/section.php:445
-#: includes/elements/section.php:821 includes/widgets/icon-box.php:175
-#: includes/widgets/icon-box.php:456 includes/widgets/image-box.php:153
-#: includes/widgets/image-box.php:330 includes/widgets/testimonial.php:150
-#: includes/widgets/video.php:583
-msgid "Top"
-msgstr "顶部"
 
 #: includes/base/widget-base.php:271 includes/controls/font.php:67
 #: includes/controls/groups/typography.php:119
@@ -3816,14 +3724,6 @@ msgstr "默认"
 #: includes/widgets/progress.php:80
 msgid "Enter your title"
 msgstr "输入您的标题"
-
-#: includes/widgets/menu-anchor.php:79
-msgid "This ID will be the CSS ID you will have to use in your own page, Without #."
-msgstr "这个ID将是CSS ID您将不得不使用自己的页面，除了#之外."
-
-#: includes/widgets/video.php:117
-msgid "Enter your YouTube link"
-msgstr "输入您的YouTube链接"
 
 #. translators: %s: User name.
 #: includes/editor.php:624
@@ -3877,6 +3777,106 @@ msgstr "https://your-link.com"
 msgid "General Settings"
 msgstr "常规设置"
 
+#: core/document-types/post.php:92 includes/admin.php:59
+#: includes/controls/switcher.php:75 includes/editor.php:600
+#: includes/widgets/audio.php:103 includes/widgets/image-carousel.php:149
+#: includes/widgets/image-carousel.php:205
+#: includes/widgets/image-carousel.php:254
+#: includes/widgets/image-carousel.php:268
+#: includes/widgets/image-carousel.php:292
+#: includes/widgets/image-gallery.php:147 includes/widgets/image.php:187
+#: includes/widgets/video.php:389
+msgid "Yes"
+msgstr "是"
+
+#: core/document-types/post.php:91 includes/controls/switcher.php:74
+#: includes/editor.php:587 includes/widgets/audio.php:104
+#: includes/widgets/image-carousel.php:148
+#: includes/widgets/image-carousel.php:206
+#: includes/widgets/image-carousel.php:255
+#: includes/widgets/image-carousel.php:269
+#: includes/widgets/image-carousel.php:293
+#: includes/widgets/image-gallery.php:148 includes/widgets/image.php:188
+#: includes/widgets/video.php:388
+msgid "No"
+msgstr "否"
+
+#. #-#-#-#-#  elementor-code.pot (Elementor 2.0.16)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: core/documents-manager.php:296 includes/admin.php:233 includes/admin.php:422
+#: includes/admin.php:591 includes/editor-templates/editor-wrapper.php:29
+#: includes/editor.php:545 includes/settings/settings.php:68
+#: includes/settings/settings.php:69 includes/settings/settings.php:425
+#: includes/template-library/sources/local.php:408
+#: includes/template-library/sources/local.php:409
+msgid "Elementor"
+msgstr "Elementor"
+
+#: includes/admin.php:141 includes/admin.php:149 includes/admin.php:209
+#: includes/frontend.php:885
+msgid "Edit with Elementor"
+msgstr "使用 Elementor 编辑"
+
+#: includes/editor.php:552
+msgid "About Elementor"
+msgstr "关于 Elementor"
+
+#: includes/elements/column.php:721 includes/elements/section.php:1165
+#: includes/widgets/common.php:161
+msgid "CSS Classes"
+msgstr "CSS 类"
+
+#: includes/elements/column.php:597 includes/elements/section.php:1035
+#: includes/widgets/button.php:169 includes/widgets/divider.php:184
+#: includes/widgets/heading.php:168 includes/widgets/icon-box.php:432
+#: includes/widgets/icon-list.php:186 includes/widgets/icon.php:156
+#: includes/widgets/image-box.php:306 includes/widgets/image-carousel.php:573
+#: includes/widgets/image-gallery.php:287 includes/widgets/image.php:125
+#: includes/widgets/image.php:359 includes/widgets/social-icons.php:190
+#: includes/widgets/testimonial.php:171 includes/widgets/text-editor.php:136
+#: includes/widgets/video.php:582
+msgid "Center"
+msgstr "居中"
+
+#: includes/tracker.php:265
+msgid "Sure! I'd love to help"
+msgstr "当然！我很乐意帮忙"
+
+#: includes/widgets/html.php:71
+msgid "HTML Code"
+msgstr "HTML 代码"
+
+#: includes/elements/column.php:203 includes/elements/section.php:470
+#: includes/widgets/heading.php:140
+msgid "HTML Tag"
+msgstr "HTML 标签"
+
 #: includes/widgets/progress.php:130
 msgid "e.g. Web Designer"
-msgstr "列入：站点设计师"
+msgstr "例如：站点设计师"
+
+#: includes/widgets/menu-anchor.php:88
+msgid "The ID of Menu Anchor."
+msgstr "菜单锚点的 ID。"
+
+#: includes/widgets/menu-anchor.php:79
+msgid "This ID will be the CSS ID you will have to use in your own page, Without #."
+msgstr "这个 ID 是你在页面中使用的 CSS ID，不加 #"
+
+#: includes/widgets/video.php:117
+msgid "Enter your YouTube link"
+msgstr "输入您的 YouTube 链接"
+
+#. translators: %s: PHP version
+#: elementor.php:80
+msgid "Elementor requires PHP version %s+, plugin is currently NOT RUNNING."
+msgstr "Elementor 需要 PHP 版本为 %s 以上才能工作，插件目前没有激活。"
+
+#: includes/controls/structure.php:60
+msgid "More Structures"
+msgstr "更多结构"
+
+#: includes/schemes/base.php:168
+#: modules/history/views/revisions-panel-template.php:13
+msgid "Discard"
+msgstr "舍弃"

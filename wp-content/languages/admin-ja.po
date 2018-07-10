@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development - Administration package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-23 11:35:57+0000\n"
+"PO-Revision-Date: 2018-06-21 16:18:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -339,7 +339,7 @@ msgstr "収集する個人データの一覧だけでなく、収集の理由も
 
 #: wp-admin/includes/misc.php:1669
 msgid "You should also note any collection and retention of sensitive personal data, such as data concerning health."
-msgstr "また、健康に関するデータなど、機密性の高い個人データの収集と保持についても言及すべきです。"
+msgstr "また、健康に関するデータなど、機密性の高い個人データの収集と保持についても言及する必要があります。"
 
 #: wp-admin/includes/misc.php:1666
 msgid "What personal data we collect and why we collect it"
@@ -1407,7 +1407,7 @@ msgstr "ウィジェットを編集: %s"
 
 #: wp-admin/includes/dashboard.php:1256 wp-admin/includes/dashboard.php:1263
 msgid "https://make.wordpress.org/community/handbook/meetup-organizer/welcome/"
-msgstr "https://ja.wordpress.org/wordpress-community-event-guidelines/"
+msgstr "https://ja.wordpress.org/get-involved/meetup/"
 
 #. translators: 1: the city the user searched for, 2: meetup organization
 #. documentation URL
@@ -1467,7 +1467,7 @@ msgstr "無効な API レスポンスコード (%d)"
 
 #: wp-admin/edit-tag-form.php:169 wp-admin/edit-tags.php:444
 msgid "Assign a parent term to create a hierarchy. The term Jazz, for example, would be the parent of Bebop and Big Band."
-msgstr "階層化するには親のタームを指定します。例えば「ジャズ」というタームを「ビバップ」や「ビッグバンド」の親として指定します。"
+msgstr "階層化するには親のタームを指定します。たとえば「ジャズ」というタームを「ビバップ」や「ビッグバンド」の親として指定します。"
 
 #: wp-admin/users.php:167 wp-admin/users.php:207
 msgid "Sorry, you are not allowed to delete users."
@@ -4151,7 +4151,7 @@ msgstr "範囲を選択したら、ピクセル単位でサイズを入力して
 
 #: wp-admin/includes/image-edit.php:108
 msgid "The aspect ratio is the relationship between the width and height. You can preserve the aspect ratio by holding down the shift key while resizing your selection. Use the input box to specify the aspect ratio, e.g. 1:1 (square), 4:3, 16:9, etc."
-msgstr "縦横比とは画像の縦幅、横幅の比率のことです。選択範囲の大きさを変更する際、shift キーを押すことで縦横比を維持できます。縦横比を指定するには入力欄を使ってください。例えば、1:1 (正方形) 、4:3、16:9 などです。"
+msgstr "縦横比とは画像の縦幅、横幅の比率のことです。選択範囲の大きさを変更する際、shift キーを押すことで縦横比を維持できます。縦横比を指定するには入力欄を使ってください。たとえば、1:1 (正方形) 、4:3、16:9 などです。"
 
 #: wp-admin/edit-form-advanced.php:381
 msgid "Keyboard users: When you&#8217;re working in the visual editor, you can use <kbd>Alt + F10</kbd> to access the toolbar."
@@ -6075,7 +6075,7 @@ msgstr "MB (サイトネットワークの初期値を使うには空にする)"
 
 #: wp-admin/includes/ms.php:514 wp-admin/includes/ms.php:516
 msgid "You attempted to access the \"%1$s\" dashboard, but you do not currently have privileges on this site. If you believe you should be able to access the \"%1$s\" dashboard, please contact your network administrator."
-msgstr "\"%1$s\" ダッシュボードへのアクセスを試みましたが、現在このサイトでの権限がありません。もし \"%1$s\" ダッシュボードにアクセスできるべきだとお考えの場合は、サイトネットワーク管理者に連絡してください。"
+msgstr "\"%1$s\" ダッシュボードへのアクセスを試みましたが、現在このサイトでの権限がありません。もし \"%1$s\" ダッシュボードにアクセスする必要があるとお考えの場合は、サイトネットワーク管理者に連絡してください。"
 
 #: wp-admin/includes/ms.php:517
 msgid "If you reached this screen by accident and meant to visit one of your own sites, here are some shortcuts to help you find your way."

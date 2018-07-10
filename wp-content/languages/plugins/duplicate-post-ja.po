@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Duplicate Post - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-07-11 10:49:32+0000\n"
+"PO-Revision-Date: 2018-06-04 01:33:21+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,22 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ja_JP\n"
 "Project-Id-Version: Plugins - Duplicate Post - Stable (latest release)\n"
+
+#: duplicate-post-admin.php:280
+msgid "Current user is not allowed to copy posts."
+msgstr "現在のユーザーは投稿をコピーする権限がありません。"
+
+#: duplicate-post-admin.php:195
+msgid "Check out the new documentation"
+msgstr "新しいドキュキュメンテーションを確認してください"
+
+#: duplicate-post-admin.php:194
+msgid "Serving the WordPress community since November 2007."
+msgstr "2007年11月から WordPress コミュニティに参加しています。"
+
+#: duplicate-post-admin.php:194
+msgid "Duplicate Post turns 10!"
+msgstr "Duplicate Post は10周年！"
 
 #. Plugin URI of the plugin/theme
 msgid "https://duplicate-post.lopo.it/"
@@ -19,21 +35,13 @@ msgstr "https://duplicate-post.lopo.it/"
 msgid "you probably want this unchecked, unless you have very special requirements"
 msgstr "特別な要件でない限り、チェックしないことをお勧めします"
 
-#: duplicate-post-admin.php:653 duplicate-post-options.php:91
+#: duplicate-post-admin.php:652 duplicate-post-options.php:91
 msgid "Documentation"
-msgstr "ドキュメンテーション"
+msgstr "ドキュメント"
 
 #: duplicate-post-admin.php:196
 msgid "Help me develop the plugin and provide support by <a href=\"%s\">donating even a small sum</a>."
 msgstr "プラグイン開発をサポートしてください。<a href=\"%s\">少しの寄付</a>でも助かります。"
-
-#: duplicate-post-admin.php:195
-msgid "Duplicate Post is now also compatible with WPML!"
-msgstr "Duplicate Post は現在 WPML とも互換性があります。"
-
-#: duplicate-post-admin.php:194
-msgid "Check out the new documentation for Duplicate Post!"
-msgstr "Duplicate Post の新しいドキュメントをチェックしてください！"
 
 #: duplicate-post-options.php:378
 msgid "Show update notice"
@@ -80,7 +88,11 @@ msgstr "あなたが選んだ総額を寄付してください、たとえ10セ�
 msgid "Help me develop the plugin, add new features and improve support!"
 msgstr "プラグインの開発、新しい機能の追加、サポートの向上にご協力ください !"
 
-#: duplicate-post-admin.php:664
+#: duplicate-post-admin.php:195
+msgid "Please <a href=\"%s\">review the settings</a> to make sure it works as you expect."
+msgstr "期待どおり動作するように<a href=\"%s\">設定を確認</a>してください。"
+
+#: duplicate-post-admin.php:663
 msgid "%s item copied."
 msgid_plural "%s items copied."
 msgstr[0] "%s アイテムがコピーされます。"
@@ -177,11 +189,11 @@ msgstr "権限"
 msgid "What to copy"
 msgstr "複製元"
 
-#: duplicate-post-admin.php:555
+#: duplicate-post-admin.php:559
 msgid "Untitled"
 msgstr "無題"
 
-#: duplicate-post-admin.php:536
+#: duplicate-post-admin.php:540
 msgid "Copy features for this post type are not enabled in options page"
 msgstr "この投稿タイプに対する複製機能が設定ページで有効化されていません"
 
@@ -265,7 +277,7 @@ msgstr "複製しないカスタムフィールドをコンマ区切りで入力
 msgid "Do not copy these fields"
 msgstr "複製しないカスタムフィールド"
 
-#. #-#-#-#-#  tmp-duplicate-post.pot (Duplicate Post 3.2)  #-#-#-#-#
+#. #-#-#-#-#  duplicate-post-code.pot (Duplicate Post 3.2.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: duplicate-post-options.php:46
 msgid "Duplicate Post"
@@ -279,15 +291,15 @@ msgstr "Duplicate Post 設定"
 msgid "Translate"
 msgstr "翻訳する"
 
-#: duplicate-post-admin.php:654
+#: duplicate-post-admin.php:653
 msgid "Donate"
 msgstr "寄付"
 
-#: duplicate-post-admin.php:319
+#: duplicate-post-admin.php:323
 msgid "Copy creation failed, could not find original:"
 msgstr "複製の作成に失敗しました。複製元が見つかりません:"
 
-#: duplicate-post-admin.php:280
+#: duplicate-post-admin.php:284
 msgid "No post to duplicate has been supplied!"
 msgstr "複製元の投稿が指定されていません !"
 
@@ -301,7 +313,7 @@ msgstr "新規下書き"
 msgid "Copy to a new draft"
 msgstr "新規下書きとして複製"
 
-#: duplicate-post-admin.php:234 duplicate-post-admin.php:688
+#: duplicate-post-admin.php:234 duplicate-post-admin.php:687
 msgid "Clone"
 msgstr "複製"
 

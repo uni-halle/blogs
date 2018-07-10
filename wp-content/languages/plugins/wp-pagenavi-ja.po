@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP-PageNavi - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-01-08 07:34:37+0000\n"
+"PO-Revision-Date: 2018-06-03 13:44:48+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ja_JP\n"
 "Project-Id-Version: Plugins - WP-PageNavi - Stable (latest release)\n"
+
+#: core.php:128 core.php:147 core.php:159
+msgid "Page %d"
+msgstr "%dページ目"
 
 #. Author URI of the plugin/theme
 msgid "http://lesterchan.net"
