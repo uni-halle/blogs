@@ -34,7 +34,7 @@ class Admin {
 			[
 				'jquery-ui-position',
 			],
-			'4.2.1',
+			'4.4.1',
 			true
 		);
 
@@ -90,7 +90,7 @@ class Admin {
 			'elementor-icons',
 			ELEMENTOR_ASSETS_URL . 'lib/eicons/css/elementor-icons' . $suffix . '.css',
 			[],
-			'3.3.0'
+			'3.6.0'
 		);
 
 		wp_register_style(
@@ -132,7 +132,10 @@ class Admin {
 		<div id="elementor-switch-mode">
 			<input id="elementor-switch-mode-input" type="hidden" name="_elementor_post_mode" value="<?php echo Plugin::$instance->db->is_built_with_elementor( $post->ID ); ?>" />
 			<button id="elementor-switch-mode-button" type="button" class="button button-primary button-hero">
-				<span class="elementor-switch-mode-on"><?php echo __( '&#8592; Back to WordPress Editor', 'elementor' ); ?></span>
+				<span class="elementor-switch-mode-on">
+					<i class="eicon-arrow-<?php echo ( is_rtl() ) ? 'right' : 'left'; ?>" aria-hidden="true"></i>
+					<?php echo __( 'Back to WordPress Editor', 'elementor' ); ?>
+				</span>
 				<span class="elementor-switch-mode-off">
 					<i class="eicon-elementor" aria-hidden="true"></i>
 					<?php echo __( 'Edit with Elementor', 'elementor' ); ?>
@@ -490,6 +493,11 @@ class Admin {
 				'title' => __( 'It\'s a temporary deactivation', 'elementor' ),
 				'input_placeholder' => '',
 			],
+			'elementor_pro' => [
+				'title' => __( 'I have Elementor Pro', 'elementor' ),
+				'input_placeholder' => '',
+				'alert' => __( 'Wait! Don\'t deactivate Elementor. You have to activate both Elementor and Elementor Pro in order for the plugin to work.', 'elementor' ),
+			],
 			'other' => [
 				'title' => __( 'Other', 'elementor' ),
 				'input_placeholder' => __( 'Please share the reason', 'elementor' ),
@@ -516,6 +524,9 @@ class Admin {
 							<label for="elementor-deactivate-feedback-<?php echo esc_attr( $reason_key ); ?>" class="elementor-deactivate-feedback-dialog-label"><?php echo esc_html( $reason['title'] ); ?></label>
 							<?php if ( ! empty( $reason['input_placeholder'] ) ) : ?>
 								<input class="elementor-feedback-text" type="text" name="reason_<?php echo esc_attr( $reason_key ); ?>" placeholder="<?php echo esc_attr( $reason['input_placeholder'] ); ?>" />
+							<?php endif; ?>
+							<?php if ( ! empty( $reason['alert'] ) ) : ?>
+								<div class="elementor-feedback-text"><?php echo esc_html( $reason['alert'] ); ?></div>
 							<?php endif; ?>
 						</div>
 					<?php endforeach; ?>

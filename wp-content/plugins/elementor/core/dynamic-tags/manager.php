@@ -1,6 +1,8 @@
 <?php
 namespace Elementor\Core\DynamicTags;
 
+use Elementor\Core\Files\CSS\Post;
+use Elementor\Core\Files\CSS\Post_Preview;
 use Elementor\Plugin;
 use Elementor\User;
 
@@ -401,10 +403,28 @@ class Manager {
 	}
 
 	/**
+	 * @param Post $css_file
+	 */
+	public function after_enqueue_post_css( $css_file ) {
+		$post_id = $css_file->get_post_id();
+
+		if ( $css_file instanceof Post_Preview ) {
+			$post_id_for_data = $css_file->get_preview_id();
+		} else {
+			$post_id_for_data = $post_id;
+		}
+
+		$css_file = new Dynamic_CSS( $post_id, $post_id_for_data );
+
+		$css_file->enqueue();
+	}
+
+	/**
 	 * @since 2.0.0
 	 * @access private
 	 */
 	private function add_actions() {
 		add_action( 'wp_ajax_elementor_render_tags', [ $this, 'ajax_render_tags' ] );
+		add_action( 'elementor/css-file/post/enqueue', [ $this, 'after_enqueue_post_css' ] );
 	}
 }
