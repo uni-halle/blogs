@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: https://gtranslate.io/?xyz=998
 Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="https://wordpress.org/support/plugin/gtranslate">GTranslate Support</a>.
-Version: 2.8.40
+Version: 2.8.41
 Author: Translate AI Multilingual Solutions
 Author URI: https://gtranslate.io
 Text Domain: gtranslate
@@ -321,12 +321,12 @@ function RefreshDoWidgetCode() {
         jQuery('#new_window_option').show();
         jQuery('#url_translation_option').show();
         jQuery('#hreflang_tags_option').show();
-        jQuery('#auto_switch_option').hide();
+        //jQuery('#auto_switch_option').hide();
     } else {
         jQuery('#new_window_option').hide();
         jQuery('#url_translation_option').hide();
         jQuery('#hreflang_tags_option').hide();
-        jQuery('#auto_switch_option').show();
+        //jQuery('#auto_switch_option').show();
     }
 
     if(widget_look == 'dropdown' || widget_look == 'flags_dropdown' || widget_look == 'globe' || widget_look == 'lang_names' || widget_look == 'lang_codes') {
@@ -797,7 +797,7 @@ if(jQuery('#pro_version:checked').length || jQuery('#enterprise_version:checked'
     jQuery('#new_window_option').show();
     jQuery('#url_translation_option').show();
     jQuery('#hreflang_tags_option').show();
-    jQuery('#auto_switch_option').hide();
+    //jQuery('#auto_switch_option').hide();
 }
 
 if('$widget_look' == 'dropdown' || '$widget_look' == 'flags_dropdown' || '$widget_look' == 'globe' || '$widget_look' == 'lang_names' || '$widget_look' == 'lang_codes') {
@@ -1290,20 +1290,7 @@ EOT;
         </style>
 
         <script>window.intercomSettings = {app_id: "r70azrgx", 'platform': 'wordpress', 'translate_from': '<?php echo $default_language; ?>', 'is_sub_directory': <?php echo (empty($pro_version) ? '0' : '1'); ?>, 'is_sub_domain': <?php echo (empty($enterprise_version) ? '0' : '1'); ?>};(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/r70azrgx';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
-        <script>
-        var intercom_timeout = setInterval(function() {
-        var intercom_box = jQuery('#intercom-container .intercom-launcher-frame');
-        jQuery({bottom: 500}).animate({bottom: 20}, {duration: 1000, easing: 'easeOutBounce', step: function() {intercom_box.css('cssText', 'bottom: ' + this.bottom + 'px !important;') }});
-        }, 15000);
-        Intercom('onShow', function() {clearInterval(intercom_timeout);});
-        </script>
 
-        <?php
-        /*
-        <!-- Live Chat for GTranslate -->
-        <script>var _glc =_glc || [];_glc.push('all_ag9zfmNsaWNrZGVza2NoYXRyDgsSBXVzZXJzGM3hxwQM');var glcpath = (('https:' == document.location.protocol) ? 'https://my.clickdesk.com/clickdesk-ui/browser/' : 'http://my.clickdesk.com/clickdesk-ui/browser/');var glcp = (('https:' == document.location.protocol) ? 'https://' : 'http://');var glcspt = document.createElement('script'); glcspt.type = 'text/javascript'; glcspt.async = true; glcspt.src = glcpath + 'livechat-new.js';var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(glcspt, s);</script>
-        */
-        ?>
         <?php
     }
 
@@ -1977,4 +1964,221 @@ if($data['add_hreflang_tags'] and ($data['pro_version'] or $data['enterprise_ver
             }
         }
     }
+}
+
+// translate WP REST API posts and categories data in JSON response
+if($data['pro_version'] or $data['enterprise_version']) {
+    function gtranslate_rest_post($response, $post, $request) {
+        if(isset($response->data['content']) and is_array($response->data['content']))
+            $response->data['content']['gt_translate_keys'] = array(array('key' => 'rendered', 'format' => 'html'));
+
+        if(isset($response->data['excerpt']) and is_array($response->data['excerpt']))
+            $response->data['excerpt']['gt_translate_keys'] = array(array('key' => 'rendered', 'format' => 'html'));
+
+        if(isset($response->data['title']) and is_array($response->data['title']))
+            $response->data['title']['gt_translate_keys'] = array(array('key' => 'rendered', 'format' => 'text'));
+
+        if(isset($response->data['link']))
+            $response->data['gt_translate_keys'] = array(array('key' => 'link', 'format' => 'url'));
+
+        // more fields can be added here
+
+        return $response;
+    }
+
+    function gtranslate_rest_category($response, $category, $request) {
+        if(isset($response->data['description']))
+            $response->data['gt_translate_keys'][] = array('key' => 'description', 'format' => 'html');
+
+        if(isset($response->data['name']))
+            $response->data['gt_translate_keys'][] = array('key' => 'name', 'format' => 'text');
+
+        if(isset($response->data['link']))
+            $response->data['gt_translate_keys'][] = array('key' => 'link', 'format' => 'url');
+
+        // more fields can be added here
+
+        return $response;
+    }
+
+    add_filter('rest_prepare_post', 'gtranslate_rest_post', 10, 3);
+    add_filter('rest_prepare_category', 'gtranslate_rest_category', 10, 3);
+}
+
+// auto redirect to browser language
+if(($data['pro_version'] or $data['enterprise_version']) and $data['detect_browser_language'] and parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) == parse_url(site_url(), PHP_URL_PATH) . '/' and isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) and isset($_SERVER['HTTP_USER_AGENT']) and !isset($_SERVER['HTTP_X_GT_LANG']) and preg_match('/bot|spider|slurp|facebook/i', $_SERVER['HTTP_USER_AGENT']) == 0) {
+    if($data['widget_look'] == 'flags' or $data['widget_look'] == 'dropdown_with_flags' or $data['widget_look'] == 'flags_name' or $data['widget_look'] == 'flags_code' or $data['widget_look'] == 'popup')
+        $allowed_languages = $data['fincl_langs'];
+    elseif($data['widget_look'] == 'flags_dropdown')
+        $allowed_languages = array_values(array_unique(array_merge($data['fincl_langs'], $data['incl_langs'])));
+    else
+        $allowed_languages = $data['incl_langs'];
+
+    $accept_language = strtolower(substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2));
+
+    // for debug purposes only
+    if(isset($_GET['gt_auto_switch_to']))
+        $accept_language = $_GET['gt_auto_switch_to'];
+
+    if($accept_language == 'zh')
+        $accept_language == 'zh-CN';
+
+    if($accept_language != $data['default_language'] and in_array($accept_language, $allowed_languages) and !isset($_COOKIE['gt_auto_switch'])) {
+        // set cookie for 30 days and redirect
+        setcookie('gt_auto_switch', 1, time() + 2592000);
+
+        if($data['pro_version'])
+            header('Location: ' . home_url() . '/' . $accept_language . '/');
+        if($data['enterprise_version'] and isset($_SERVER['HTTP_HOST']))
+            header('Location: ' . str_replace('://'.$_SERVER['HTTP_HOST'], '://'.$accept_language.'.'.$_SERVER['HTTP_HOST'], site_url()));
+
+        // todo: special redirect for language hosting
+
+        exit;
+    }
+
+}
+
+// convert wp_localize_script format into JSON + JS parser
+if($data['pro_version'] or $data['enterprise_version']) {
+    function gtranslate_filter_l10n_scripts() {
+        global $wp_scripts;
+
+        $translate_handles = array(
+            'agile-store-locator-script',
+            'wmc-wizard',
+            'wc-address-i18n',
+            'wc-checkout',
+            'wc-country-select',
+            'wc-add-to-cart',
+            'wc-password-strength-meter',
+
+        );
+
+        //echo '<!--' . print_r($wp_scripts, true). '-->';
+        //return;
+
+        foreach($wp_scripts->registered as $handle => $script) {
+            if(isset($script->extra['data']) and in_array($handle, $translate_handles)) {
+                $l10n = $script->extra['data'];
+                preg_match_all('/var (.+) = ({(.*)});/', $l10n, $matches);
+                //echo '<!--' . print_r($matches, true). '-->';
+
+                if(isset($matches[1]) and isset($matches[2])) {
+                    $vars = $matches[1];
+                    $scripts = $matches[2];
+                } else
+                    continue;
+
+                foreach($vars as $i => $var_name) {
+                    $attribute_ids = $wp_scripts->get_data($handle, 'attribute-ids');
+                    $attribute_ids[] = $var_name . '-gt-l10n-'.$i;
+                    $jsons = $wp_scripts->get_data($handle, 'jsons');
+                    $jsons[] = $scripts[$i];
+                    $jss = $wp_scripts->get_data($handle, 'jss');
+                    $jss[] = "var $var_name = JSON.parse(document.getElementById('$var_name-gt-l10n-$i').innerHTML);";
+
+                    $wp_scripts->add_data($handle, 'attribute-ids', $attribute_ids);
+                    $wp_scripts->add_data($handle, 'jsons', $jsons);
+                    $wp_scripts->add_data($handle, 'jss', $jss);
+                }
+
+                unset($wp_scripts->registered[$handle]->extra['data']);
+            }
+        }
+
+        //echo '<!--' . print_r($wp_scripts, true). '-->';
+
+    }
+
+    function gtranslate_add_script_attributes($tag, $handle) {
+        global $wp_scripts;
+
+        gtranslate_filter_l10n_scripts();
+
+        if(isset($wp_scripts->registered[$handle]->extra['attribute-ids'])) {
+            $attribute_ids = $wp_scripts->get_data($handle, 'attribute-ids');
+            $jsons = $wp_scripts->get_data($handle, 'jsons');
+            $jss = $wp_scripts->get_data($handle, 'jss');
+
+            $return = '';
+            foreach($attribute_ids as $i => $attribute_id) {
+                $json = $jsons[$i];
+                $js = $jss[$i];
+
+                $return .= "<script id='$attribute_id' type='application/json'>$json</script>\n<script type='text/javascript'>$js</script>\n";
+            }
+
+            return $return . $tag;
+        }
+
+        return $tag;
+    }
+
+    // filter for woocommerce script params
+    function gt_filter_woocommerce_scripts_data($data, $handle) {
+        switch($handle) {
+            case 'wc-address-i18n': {
+                $data['gt_translate_keys'] = array(
+                    array('key' => 'locale', 'format' => 'json'),
+                    'i18n_required_text',
+                    'i18n_optional_text',
+                );
+
+                $locale = json_decode($data['locale']);
+
+                if(isset($locale->default->shipping->address_1))
+                    $locale->default->shipping->address_1->gt_translate_keys = array('label', 'placeholder');
+                if(isset($locale->default->shipping->address_2))
+                    $locale->default->shipping->address_2->gt_translate_keys = array('label', 'placeholder');
+                if(isset($locale->default->shipping->city))
+                    $locale->default->shipping->city->gt_translate_keys = array('label', 'placeholder');
+                if(isset($locale->default->shipping->postcode))
+                    $locale->default->shipping->postcode->gt_translate_keys = array('label', 'placeholder');
+                if(isset($locale->default->shipping->state))
+                    $locale->default->shipping->state->gt_translate_keys = array('label', 'placeholder');
+
+                if(isset($locale->default->billing->address_1))
+                    $locale->default->billing->address_1->gt_translate_keys = array('label', 'placeholder');
+                if(isset($locale->default->billing->address_2))
+                    $locale->default->billing->address_2->gt_translate_keys = array('label', 'placeholder');
+                if(isset($locale->default->billing->city))
+                    $locale->default->billing->city->gt_translate_keys = array('label', 'placeholder');
+                if(isset($locale->default->billing->postcode))
+                    $locale->default->billing->postcode->gt_translate_keys = array('label', 'placeholder');
+                if(isset($locale->default->billing->state))
+                    $locale->default->billing->state->gt_translate_keys = array('label', 'placeholder');
+
+                $data['locale'] = json_encode($locale);
+            } break;
+
+            case 'wc-checkout': {
+                $data['gt_translate_keys'] = array('i18n_checkout_error');
+            } break;
+
+            case 'wc-country-select': {
+                $data['gt_translate_keys'] = array('i18n_ajax_error', 'i18n_input_too_long_1', 'i18n_input_too_long_n', 'i18n_input_too_short_1', 'i18n_input_too_short_n', 'i18n_load_more', 'i18n_no_matches', 'i18n_searching', 'i18n_select_state_text', 'i18n_selection_too_long_1', 'i18n_selection_too_long_n');
+            } break;
+
+            case 'wc-add-to-cart': {
+                $data['gt_translate_keys'] = array('i18n_view_cart', array('key' => 'cart_url', 'format' => 'url'));
+            } break;
+
+            case 'wc-password-strength-meter': {
+                $data['gt_translate_keys'] = array('i18n_password_error', 'i18n_password_hint', '');
+            } break;
+
+            default: break;
+        }
+
+        return $data;
+    }
+
+    //add_action('wp_print_scripts', 'gtranslate_filter_l10n_scripts', 1);
+    //add_action('wp_print_header_scripts', 'gtranslate_filter_l10n_scripts', 1);
+    //add_action('wp_print_footer_scripts', 'gtranslate_filter_l10n_scripts', 1);
+
+    add_filter('script_loader_tag', 'gtranslate_add_script_attributes', 100, 2);
+
+    add_filter('woocommerce_get_script_data', 'gt_filter_woocommerce_scripts_data', 10, 2 );
 }

@@ -4,7 +4,7 @@ Author: Translate AI Multilingual Solutions
 Tags: translate wordpress, multilingual, translate, translation, language, bilingual, localization, translation proxy, i18n, l10n, localisation, multilanguage, google translate
 Requires at least: 2.8.1
 Tested up to: 4.9
-Stable tag: 2.8.40
+Stable tag: 2.8.41
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
@@ -219,6 +219,13 @@ You need to go to the language you want to edit, for instance, French: http://do
 7. Settings page
 
 == Changelog ==
+
+= 2.8.41 =
+* Added support for WP REST API JSON translation for posts and categories
+* Deeper integration with WooCommerce
+* Integration with WooCommerce Multi-Step Checkout plugin
+* Integration with Agile Store Locator plugin
+* Auto switch language based on browser language settigns for paid version added
 
 = 2.8.40 =
 * Updated Hebrew language code for hreflang (he instead of iw)
