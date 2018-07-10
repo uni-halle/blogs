@@ -471,7 +471,7 @@ module.exports = panels.view.dialog.extend( {
 		c.html( $( '#siteorigin-panels-dialog-prebuilt-importexport' ).html() );
 
 		var thisView = this;
-		var uploadUi = thisView.$( '.import-upload-ui' ).hide();
+		var uploadUi = thisView.$( '.import-upload-ui' );
 
 		// Create the uploader
 		var uploader = new plupload.Uploader( {
@@ -500,7 +500,7 @@ module.exports = panels.view.dialog.extend( {
 					if ( uploader.features.dragdrop ) {
 						uploadUi.addClass( 'has-drag-drop' );
 					}
-					uploadUi.show().find( '.progress-precent' ).css( 'width', '0%' );
+					uploadUi.find( '.progress-precent' ).css( 'width', '0%' );
 				},
 				FilesAdded: function ( uploader ) {
 					uploadUi.find( '.file-browse-button' ).blur();
@@ -532,6 +532,14 @@ module.exports = panels.view.dialog.extend( {
 			}
 		} );
 		uploader.init();
+
+		if ( /Edge\/\d./i.test(navigator.userAgent) ){
+			// A very dirty fix for a Microsoft Edge issue.
+			// TODO find a more elegant fix if Edge gains market share
+			setTimeout( function(){
+				uploader.refresh();
+			}, 250 );
+		}
 
 		// This is
 		uploadUi.find( '.drag-upload-area' )
@@ -805,6 +813,7 @@ module.exports = panels.view.dialog.extend({
 		'click .row-set-form button.set-row': 'setCellsFromForm',
 	},
 
+	rowView: null,
 	dialogIcon: 'add-row',
 	dialogClass: 'so-panels-dialog-row-edit',
 	styleType: 'row',
@@ -1227,10 +1236,7 @@ module.exports = panels.view.dialog.extend({
 
 								// So the draggable handle is not hidden.
 								rowPreview.find('.preview-cell').css('overflow', 'visible');
-
-								setTimeout(function () {
-									thisDialog.regenerateRowPreview();
-								}, 260);
+								setTimeout(thisDialog.regenerateRowPreview.bind(thisDialog), 260);
 
 							}, 100);
 						})
@@ -1414,9 +1420,7 @@ module.exports = panels.view.dialog.extend({
 				// So the draggable handle is not hidden.
 				this.$('.preview-cell').css('overflow', 'visible');
 
-				setTimeout(function () {
-					thisDialog.regenerateRowPreview();
-				}, 260);
+				setTimeout(thisDialog.regenerateRowPreview.bind(thisDialog), 260);
 			}
 		}
 		catch (err) {
@@ -1534,7 +1538,7 @@ module.exports = panels.view.dialog.extend({
 	 */
 	deleteHandler: function () {
 		// Trigger a destroy on the model that will happen with a visual indication to the user
-		this.model.trigger('visual_destroy');
+		this.rowView.visualDestroyModel();
 		this.closeDialog({silent: true});
 
 		return false;
@@ -1594,8 +1598,8 @@ module.exports = panels.view.dialog.extend( {
 
 	initializeDialog: function () {
 		var thisView = this;
-		this.model.on( 'change:values', this.handleChangeValues, this );
-		this.model.on( 'destroy', this.remove, this );
+		this.listenTo( this.model, 'change:values', this.handleChangeValues );
+		this.listenTo( this.model, 'destroy', this.remove );
 
 		// Refresh panels data after both dialog form components are loaded
 		this.dialogFormsLoaded = 0;
@@ -1676,6 +1680,7 @@ module.exports = panels.view.dialog.extend( {
 		if ( currentIndex === 0 ) {
 			return false;
 		} else {
+			var widgetView;
 			do {
 				widgetView = widgets.eq( --currentIndex ).data( 'view' );
 				if ( ! _.isUndefined( widgetView ) && ! widgetView.model.get( 'read_only' ) ) {
@@ -1697,11 +1702,12 @@ module.exports = panels.view.dialog.extend( {
 			return false;
 		}
 
-		var currentIndex = widgets.index( this.widgetView.$el ), widgetView;
+		var currentIndex = widgets.index( this.widgetView.$el );
 
 		if ( currentIndex === widgets.length - 1 ) {
 			return false;
 		} else {
+			var widgetView;
 			do {
 				widgetView = widgets.eq( ++currentIndex ).data( 'view' );
 				if ( ! _.isUndefined( widgetView ) && ! widgetView.model.get( 'read_only' ) ) {
@@ -1843,8 +1849,7 @@ module.exports = panels.view.dialog.extend( {
 	 * @returns {boolean}
 	 */
 	deleteHandler: function () {
-
-		this.model.trigger( 'visual_destroy' );
+		this.widgetView.visualDestroyModel();
 		this.closeDialog( {silent: true} );
 		this.builder.model.refreshPanelsData();
 
@@ -1852,7 +1857,8 @@ module.exports = panels.view.dialog.extend( {
 	},
 
 	duplicateHandler: function () {
-		this.model.trigger( 'user_duplicate' );
+		// Call the widget duplicate handler directly
+		this.widgetView.duplicateHandler();
 
 		this.closeDialog( {silent: true} );
 		this.builder.model.refreshPanelsData();
@@ -2036,6 +2042,7 @@ module.exports = panels.view.dialog.extend( {
 	 */
 	widgetClickHandler: function ( e ) {
 		// Add the history entry
+		this.builder.trigger('before_user_adds_widget');
 		this.builder.addHistoryEntry( 'widget_added' );
 
 		var $w = $( e.currentTarget );
@@ -2050,6 +2057,8 @@ module.exports = panels.view.dialog.extend( {
 
 		this.closeDialog();
 		this.builder.model.refreshPanelsData();
+
+		this.builder.trigger('after_user_adds_widget', widget);
 	},
 
 	/**
@@ -3404,20 +3413,6 @@ module.exports = Backbone.Model.extend( {
 	},
 
 	/**
-	 * Trigger an event on the model that indicates a user wants to edit it
-	 */
-	triggerEdit: function () {
-		this.trigger( 'user_edit', this );
-	},
-
-	/**
-	 * Trigger an event on the widget that indicates a user wants to duplicate it
-	 */
-	triggerDuplicate: function () {
-		this.trigger( 'user_duplicate', this );
-	},
-
-	/**
 	 * This is basically a wrapper for set that checks if we need to trigger a change
 	 */
 	setValues: function ( values ) {
@@ -3936,7 +3931,7 @@ module.exports = Backbone.View.extend( {
 		this.dialogs.row.setRowDialogType( 'create' );
 		
 		// This handles a new row being added to the collection - we'll display it in the interface
-		this.model.get( 'rows' ).on( 'add', this.onAddRow, this );
+		this.listenTo( this.model.get( 'rows' ), 'add', this.onAddRow );
 		
 		// Reflow the entire builder when ever the
 		$( window ).resize( function ( e ) {
@@ -3946,21 +3941,21 @@ module.exports = Backbone.View.extend( {
 		} );
 		
 		// When the data changes in the model, store it in the field
-		this.model.on( 'change:data load_panels_data', this.storeModelData, this );
+		this.listenTo( this.model, 'change:data load_panels_data', this.storeModelData );
+		this.listenTo( this.model, 'change:data load_panels_data', this.toggleWelcomeDisplay );
 		
 		// Handle a content change
 		this.on( 'content_change', this.handleContentChange, this );
 		this.on( 'display_builder', this.handleDisplayBuilder, this );
 		this.on( 'hide_builder', this.handleHideBuilder, this );
 		this.on( 'builder_rendered builder_resize', this.handleBuilderSizing, this );
-		this.model.on( 'change:data load_panels_data', this.toggleWelcomeDisplay, this );
-		
+
 		this.on( 'display_builder', this.wrapEditorExpandAdjust, this );
 		
 		// Create the context menu for this builder
 		this.menu = new panels.utils.menu( {} );
-		this.menu.on( 'activate_context', this.activateContextMenu, this );
-		
+		this.listenTo( this.menu, 'activate_context', this.activateContextMenu )
+
 		if ( this.config.loadOnAttach ) {
 			this.on( 'builder_attached_to_editor', function () {
 				this.displayAttachedBuilder( { confirm: false } );
@@ -4829,7 +4824,7 @@ module.exports = Backbone.View.extend( {
 	widgetSortable: null,
 
 	initialize: function () {
-		this.model.get('widgets').on( 'add', this.onAddWidget, this );
+		this.listenTo(this.model.get('widgets'), 'add', this.onAddWidget );
 	},
 
 	/**
@@ -5130,6 +5125,7 @@ module.exports = Backbone.View.extend( {
 				},
 				panelsOptions.widgets,
 				function ( c ) {
+					thisView.row.builder.trigger('before_user_adds_widget')
 					thisView.row.builder.addHistoryEntry( 'widget_added' );
 
 					var widget = new panels.model.widget( {
@@ -5141,6 +5137,7 @@ module.exports = Backbone.View.extend( {
 					widget.cell.get('widgets').add( widget );
 
 					thisView.row.builder.model.refreshPanelsData();
+					thisView.row.builder.trigger('after_user_adds_widget', widget);
 				}
 			);
 		}
@@ -5754,8 +5751,8 @@ module.exports = Backbone.View.extend( {
 		this.builder = options.builder;
 		this.previewUrl = options.previewUrl;
 
-		this.builder.model.on( 'refresh_panels_data', this.handleRefreshData, this );
-		this.builder.model.on( 'load_panels_data', this.handleLoadData, this );
+		this.listenTo( this.builder.model, 'refresh_panels_data', this.handleRefreshData );
+		this.listenTo( this.builder.model, 'load_panels_data', this.handleLoadData );
 	},
 
 	/**
@@ -5764,10 +5761,8 @@ module.exports = Backbone.View.extend( {
 	render: function () {
 		this.setElement( this.template() );
 		this.$el.hide();
-		var thisView = this;
 
 		var isMouseDown = false;
-
 		$( document )
 			.mousedown( function () {
 				isMouseDown = true;
@@ -5777,22 +5772,23 @@ module.exports = Backbone.View.extend( {
 			} );
 
 		// Handle highlighting the relevant widget in the live editor preview
+		var liveEditorView = this;
 		this.$el.on( 'mouseenter', '.so-widget-wrapper', function () {
 			var $$ = $( this ),
 				previewWidget = $$.data( 'live-editor-preview-widget' );
 
-			if ( ! isMouseDown && previewWidget !== undefined && previewWidget.length && ! thisView.$( '.so-preview-overlay' ).is( ':visible' ) ) {
-				thisView.highlightElement( previewWidget );
-				thisView.scrollToElement( previewWidget );
+			if ( ! isMouseDown && previewWidget !== undefined && previewWidget.length && ! liveEditorView.$( '.so-preview-overlay' ).is( ':visible' ) ) {
+				liveEditorView.highlightElement( previewWidget );
+				liveEditorView.scrollToElement( previewWidget );
 			}
 		} );
 
-		thisView.$el.on( 'mouseleave', '.so-widget-wrapper', function () {
-			thisView.resetHighlights();
-		} );
+		this.$el.on( 'mouseleave', '.so-widget-wrapper', function () {
+			this.resetHighlights();
+		}.bind(this) );
 
-		thisView.builder.on( 'open_dialog', function () {
-			thisView.resetHighlights();
+		this.listenTo( this.builder, 'open_dialog', function () {
+			this.resetHighlights();
 		} );
 
 		return this;
@@ -6157,12 +6153,11 @@ module.exports = Backbone.View.extend( {
 	initialize: function () {
 
 		var rowCells = this.model.get('cells');
-		rowCells.on( 'add', this.handleCellAdd, this );
-		rowCells.on( 'remove', this.handleCellRemove, this );
-		this.model.on( 'reweight_cells', this.resize, this );
+		this.listenTo(rowCells, 'add', this.handleCellAdd );
+		this.listenTo(rowCells, 'remove', this.handleCellRemove );
 
-		this.model.on( 'destroy', this.onModelDestroy, this );
-		this.model.on( 'visual_destroy', this.visualDestroyModel, this );
+		this.listenTo( this.model, 'reweight_cells', this.resize );
+		this.listenTo( this.model, 'destroy', this.onModelDestroy );
 
 		var thisView = this;
 		rowCells.each( function ( cell ) {
@@ -6174,7 +6169,7 @@ module.exports = Backbone.View.extend( {
 			thisView.listenTo( cell.get('widgets'), 'add', thisView.resize );
 		}, this );
 
-		this.model.on( 'change:label', this.onLabelChange, this );
+		this.listenTo( this.model, 'change:label', this.onLabelChange );
 	},
 
 	/**
@@ -6227,8 +6222,8 @@ module.exports = Backbone.View.extend( {
 		}
 
 		// Resize the rows when ever the widget sortable moves
-		this.builder.on( 'widget_sortable_move', this.resize, this );
-		this.builder.on( 'builder_resize', this.resize, this );
+		this.listenTo( this.builder, 'widget_sortable_move', this.resize );
+		this.listenTo( this.builder, 'builder_resize', this.resize );
 
 		this.resize();
 
@@ -6381,6 +6376,7 @@ module.exports = Backbone.View.extend( {
 			// Create the dialog
 			this.dialog = new panels.dialog.row();
 			this.dialog.setBuilder( this.builder ).setRowModel( this.model );
+			this.dialog.rowView = this;
 		}
 
 		this.dialog.openDialog();
@@ -6857,7 +6853,7 @@ module.exports = Backbone.View.extend( {
 
 	events: {
 		'click .widget-edit': 'editHandler',
-		'click .title h4': 'titleClickHandler',
+		'click .title h4': 'editHandler',
 		'click .actions .widget-duplicate': 'duplicateHandler',
 		'click .actions .widget-delete': 'deleteHandler'
 	},
@@ -6866,13 +6862,9 @@ module.exports = Backbone.View.extend( {
 	 * Initialize the widget
 	 */
 	initialize: function () {
-		this.model.on( 'user_edit', this.editHandler, this );				 // When a user wants to edit the widget model
-		this.model.on( 'user_duplicate', this.duplicateHandler, this );	   // When a user wants to duplicate the widget model
-		this.model.on( 'destroy', this.onModelDestroy, this );
-		this.model.on( 'visual_destroy', this.visualDestroyModel, this );
-
-		this.model.on( 'change:values', this.onModelChange, this );
-		this.model.on( 'change:label', this.onLabelChange, this );
+		this.listenTo(this.model, 'destroy', this.onModelDestroy);
+		this.listenTo(this.model, 'change:values', this.onModelChange);
+		this.listenTo(this.model, 'change:label', this.onLabelChange);
 	},
 
 	/**
@@ -6923,6 +6915,9 @@ module.exports = Backbone.View.extend( {
 			dialog.setupDialog();
 		}
 
+		// Add the global builder listeners
+		this.listenTo(this.cell.row.builder, 'after_user_adds_widget', this.afterUserAddsWidgetHandler);
+
 		return this;
 	},
 
@@ -6953,19 +6948,14 @@ module.exports = Backbone.View.extend( {
 
 	/**
 	 * Handle clicking on edit widget.
-	 *
-	 * @returns {boolean}
 	 */
 	editHandler: function () {
 		// Create a new dialog for editing this
-		this.getEditDialog().openDialog();
-	},
-
-	titleClickHandler: function( event ){
 		if ( ! this.cell.row.builder.supports( 'editWidget' ) || this.model.get( 'read_only' ) ) {
 			return this;
 		}
-		this.editHandler();
+
+		this.getEditDialog().openDialog();
 		return this;
 	},
 
@@ -7003,7 +6993,7 @@ module.exports = Backbone.View.extend( {
 	 * @returns {boolean}
 	 */
 	deleteHandler: function () {
-		this.model.trigger( 'visual_destroy' );
+		this.visualDestroyModel();
 		return this;
 	},
 
@@ -7030,13 +7020,12 @@ module.exports = Backbone.View.extend( {
 		// Add the history entry
 		this.cell.row.builder.addHistoryEntry( 'widget_deleted' );
 
-		var thisView = this;
 		this.$el.fadeOut( 'fast', function () {
-			thisView.cell.row.resize();
-			thisView.model.destroy();
-			thisView.cell.row.builder.model.refreshPanelsData();
-			thisView.remove();
-		} );
+			this.cell.row.resize();
+			this.model.destroy();
+			this.cell.row.builder.model.refreshPanelsData();
+			this.remove();
+		}.bind(this) );
 
 		return this;
 	},
@@ -7058,6 +7047,7 @@ module.exports = Backbone.View.extend( {
 				},
 				panelsOptions.widgets,
 				function ( c ) {
+					this.cell.row.builder.trigger('before_user_adds_widget');
 					this.cell.row.builder.addHistoryEntry( 'widget_added' );
 
 					var widget = new panels.model.widget( {
@@ -7072,6 +7062,8 @@ module.exports = Backbone.View.extend( {
 					} );
 
 					this.cell.row.builder.model.refreshPanelsData();
+
+					this.cell.row.builder.trigger('after_user_adds_widget', widget);
 				}.bind( this )
 			);
 		}
@@ -7124,6 +7116,16 @@ module.exports = Backbone.View.extend( {
 
 		// Lets also add the contextual menu for the entire row
 		this.cell.buildContextualMenu( e, menu );
+	},
+
+	/**
+	 * Handler for any action after the user adds a new widget.
+	 * @param widget
+	 */
+	afterUserAddsWidgetHandler: function( widget ) {
+		if( this.model === widget && panelsOptions.instant_open ) {
+			setTimeout(this.editHandler.bind(this), 350);
+		}
 	}
 
 } );

@@ -111,17 +111,6 @@
 .siteorigin-panels-builder .so-builder-toolbar .so-tool-button:hover .so-panels-icon {
   color: #444444;
 }
-.siteorigin-panels-builder .so-builder-toolbar .so-tool-button.so-learn {
-  background: #e5e5e5;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #e5e5e5), color-stop(1, #f6f6f6));
-  background: -ms-linear-gradient(bottom, #e5e5e5, #f6f6f6);
-  background: -moz-linear-gradient(center bottom, #e5e5e5 0%, #f6f6f6 100%);
-  background: -o-linear-gradient(#f6f6f6, #e5e5e5);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#e5e5e5', GradientType=0);
-}
-.siteorigin-panels-builder .so-builder-toolbar .so-tool-button.so-learn:hover {
-  background: #FFFFFF;
-}
 .siteorigin-panels-builder .so-builder-toolbar .so-switch-to-standard {
   cursor: pointer;
   float: right;
@@ -1241,6 +1230,7 @@
 .so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form span {
   display: inline;
   margin: 1px 5px;
+  width: auto;
   outline: none;
   box-shadow: none;
 }
@@ -1598,7 +1588,7 @@
 }
 .so-panels-dialog .so-visual-styles {
   margin: -15px;
-  height: 100%;
+  height: auto;
   /* All the field types */
 }
 .so-panels-dialog .so-visual-styles h3 {

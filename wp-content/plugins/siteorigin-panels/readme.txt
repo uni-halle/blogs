@@ -2,8 +2,8 @@
 Tags: page builder, responsive, widget, widgets, builder, page, admin, gallery, content, cms, pages, post, css, layout, grid
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 2.6.7
-Build time: 2018-05-07T09:52:52+02:00
+Stable tag: 2.7.2
+Build time: 2018-06-29T09:54:52+02:00
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://siteorigin.com/downloads/contribution/
@@ -95,6 +95,33 @@ Page Builder is actively developed and updated, so generally I'd recommend that 
 We've tried to ensure that Page Builder is compatible with most plugin widgets. It's best to just download Page Builder and test for yourself.
 
 == Changelog ==
+
+= 2.7.2 - 29 June 2018 =
+* Skip Yoast compat for non PB content.
+
+= 2.7.1 - 28 June 2018 =
+* Check for yoast metabox before enqueuing compat JS.
+
+= 2.7.0 - 27 June 2018 =
+* New setting to automatically open widget forms when they're added.
+* New row layout option to make provision for row style padding in full width stretched rows.
+* Make sure prebuilt layouts path is a real path.
+* Better compatibility with Yoast SEO.
+* Row Cell options: Prevent Yoast from resizing fields.
+* Added `panels_data` filter to `generate_css`.
+* Don’t hide the upload UI before initializing it.
+* Fix collapse order in legacy layout.
+* Clear SO widgets' id and timestamp metadata when cloning a PB Page.
+* Fix layout imports in Edge.
+* Apply bottom margin custom styles to main wrapper where PB adds it's bottom margin, to allow users to override.
+* Use https for layouts directory.
+
+= 2.6.9 - 7 June 2018 =
+* Changed dashboard feed URL to use cloudfront for caching.
+
+= 2.6.8 - 5 June 2018 =
+* Remove learn dialogs.
+* Added SiteOrigin news dashboard widget
 
 = 2.6.7 - 7 May 2018 =
 * Prevent debug notice when background fallback image hasn't been set.
