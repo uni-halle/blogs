@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2018-03-22 12:08+0545\n"
-"PO-Revision-Date: 2018-03-22 12:08+0545\n"
+"POT-Creation-Date: 2018-06-19 00:05+0545\n"
+"PO-Revision-Date: 2018-06-19 00:05+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: Catch Themes Team <info@catchthemes.com>\n"
 "Language: bs\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;esc_attr_e;esc_attr__\n"
 "X-Poedit-Basepath: .\n"
 "X-Textdomain-Support: yes\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../404.php:14
@@ -633,7 +633,9 @@ msgid "Copyright"
 msgstr "Copyright"
 
 #: ../inc/default-options.php:236
-msgid "All Rights Reserved"
+#, fuzzy
+#| msgid "All Rights Reserved"
+msgid "All Rights Reserved."
 msgstr "All Rights Reserved"
 
 #: ../inc/widgets.php:23

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box 4.7.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-22 12:09+0545\n"
-"PO-Revision-Date: 2018-03-22 12:09+0545\n"
+"POT-Creation-Date: 2018-06-19 00:06+0545\n"
+"PO-Revision-Date: 2018-06-19 00:06+0545\n"
 "Last-Translator: Sakin Shrestha <info@catchthemes.com>\n"
 "Language-Team: D'CLIC, L Capronnier <contact@dclic.info, lcapronnier@yahoo."
 "Com>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../404.php:14
@@ -989,7 +989,9 @@ msgid "Copyright"
 msgstr "Copyright"
 
 #: ../inc/default-options.php:236
-msgid "All Rights Reserved"
+#, fuzzy
+#| msgid "All Rights Reserved"
+msgid "All Rights Reserved."
 msgstr "Tous Droits Réservés"
 
 #: ../inc/widgets.php:23

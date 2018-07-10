@@ -77,6 +77,9 @@ dark, light, blue, white, black, gray, one-column, two-columns, left-sidebar, ri
 
 == Change Log ==
 
+= 4.7.7 (Released: June 18, 2018) =
+* Added: Core Privacy Policy link support in footer
+
 = 4.7.6 (Released: March 22, 2018) =
 * Bug Fixed: Design issue with Catch Infinite Scroll plugin
 * Bug Fixed: Button design issue in iOS mobile devices

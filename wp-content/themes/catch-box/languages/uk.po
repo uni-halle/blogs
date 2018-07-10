@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Catch Box\n"
 "Report-Msgid-Bugs-To: https://catchthemes.com/contact-us/\n"
-"POT-Creation-Date: 2018-03-22 12:13+0545\n"
-"PO-Revision-Date: 2018-03-22 12:13+0545\n"
+"POT-Creation-Date: 2018-06-19 00:07+0545\n"
+"PO-Revision-Date: 2018-06-19 00:07+0545\n"
 "Last-Translator: Alexandr Baryshnyev <abb@eksi.net>\n"
 "Language-Team: Eksi.Net <info@eksi.net>\n"
 "Language: uk\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../404.php:14
@@ -633,7 +633,9 @@ msgid "Copyright"
 msgstr "Авторські права"
 
 #: ../inc/default-options.php:236
-msgid "All Rights Reserved"
+#, fuzzy
+#| msgid "All Rights Reserved"
+msgid "All Rights Reserved."
 msgstr "Усі права застережено"
 
 #: ../inc/widgets.php:23

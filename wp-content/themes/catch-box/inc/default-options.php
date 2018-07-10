@@ -233,7 +233,7 @@ function catchbox_theme_author() {
  * @return string
  */
 function catchbox_assets(){
-    $catchbox_content = '<div class="copyright">'. esc_attr__( 'Copyright', 'catch-box' ) . ' &copy; '. catchbox_the_year() . ' ' . catchbox_site_link() . '. ' . esc_attr__( 'All Rights Reserved', 'catch-box' ) . '.</div><div class="powered">'. catchbox_theme_name() . catchbox_theme_author() . '</div>';
+    $catchbox_content = '<div class="copyright">'. esc_attr__( 'Copyright', 'catch-box' ) . ' &copy; '. catchbox_the_year() . ' ' . catchbox_site_link() . '. ' . esc_attr__( 'All Rights Reserved.', 'catch-box' ) . ' '. get_the_privacy_policy_link() . '</div><div class="powered">'. catchbox_theme_name() . catchbox_theme_author() . '</div>';
     return $catchbox_content;
 }
 
