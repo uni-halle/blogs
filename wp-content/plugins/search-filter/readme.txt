@@ -3,8 +3,8 @@ Contributors: DesignsAndCode
 Donate link:
 Tags: category, filter, taxonomy, search, wordpress, post type, post date
 Requires at least: 3.5
-Tested up to: 4.8
-Stable tag: 1.2.9
+Tested up to: 4.9
+Stable tag: 1.2.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,6 +33,10 @@ The documentation has been updated to include examples almost all configurable o
 4. Example of Search & Filter using a post type filter
 
 == Changelog ==
+
+= 1.2.10 =
+* Fixed - an issue with our syntax highlighting script modifying our shortcodes
+
 
 = 1.2.9 =
 * Fixed - bugs with WP 4.4 compatibility
@@ -136,7 +140,7 @@ You can search by Category, Tag, Custom Taxonomy, Post Type, Post Date or any co
 = New: Search & Filter Pro =
  
 
-* View live demo >> [demo 1](http://demo.designsandcode.com/sfpro-movie-reviews/) |  [demo 2](http://demo.designsandcode.com/sfpro-woo-mystile/product-search/)  |  [video](http://www.designsandcode.com/wordpress-plugins/search-filter-pro/) 
+* View live demo >> [demo 1](http://demo.designsandcode.com/sfpro-movie-reviews/) |  [demo 2](http://demo.designsandcode.com/sfpro-woo-mystile/product-search/)  |  [video](https://searchandfilter.com/)
 * Search **Custom Fields**, **Post Meta**, **Authors**, Post Types, Post Dates, Taxonomies, Tags, Categories
 * Use **AJAX** to display results  - no more page reloading!
 * Search **Post Meta/Custom Fields** with checkboxes, radio buttons, dropdowns, multiselects or comboboxes
@@ -152,7 +156,7 @@ You can search by Category, Tag, Custom Taxonomy, Post Type, Post Date or any co
 * Works with **Advanced Custom Fields**
 * Extremely easy to use admin UI, fully integrated with WP 3.8+
 * **Dedicated Support**
-* [More info >>](http://www.designsandcode.com/wordpress-plugins/search-filter-pro/)
+* [More info >>](https://searchandfilter.com/)
 
 
 

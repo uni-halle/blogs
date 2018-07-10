@@ -36,9 +36,9 @@
 		}
 		echo '
 			<script type="text/javascript">
-			jQuery(function() {
+			/*jQuery(function() {
 			  jQuery(\'pre code\').each(function(i, e) {hljs.highlightBlock(e)});
-			});
+			});*/
 			</script>
 		';
 		echo '<div class="wrap"><div id="icon-plugins" class="icon32"></div>';

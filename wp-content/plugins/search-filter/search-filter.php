@@ -5,7 +5,7 @@ Plugin URI: http://www.designsandcode.com/447/wordpress-search-filter-plugin-for
 Description: Search and Filtering system for Pages, Posts, Categories, Tags and Taxonomies
 Author: Designs & Code
 Author URI: http://www.designsandcode.com/
-Version: 1.2.9
+Version: 1.2.10
 Text Domain: searchandfilter
 License: GPLv2
 */
@@ -16,7 +16,7 @@ License: GPLv2
 * Set up Plugin Globals
 */
 if (!defined('SEARCHANDFILTER_VERSION_NUM'))
-    define('SEARCHANDFILTER_VERSION_NUM', '1.2.9');
+    define('SEARCHANDFILTER_VERSION_NUM', '1.2.10');
 
 if (!defined('SEARCHANDFILTER_THEME_DIR'))
     define('SEARCHANDFILTER_THEME_DIR', ABSPATH . 'wp-content/themes/' . get_template());
@@ -101,7 +101,7 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 			{
 				wp_enqueue_style( 'of_syntax_style', SEARCHANDFILTER_PLUGIN_URL.'/admin/github.css', false, 1.0, 'all' ); //more highlight styles http://softwaremaniacs.org/media/soft/highlight/test.html
 				wp_enqueue_style( 'of_style', SEARCHANDFILTER_PLUGIN_URL.'/admin/style.css', false, 1.0, 'all' );
-				wp_enqueue_script( 'of_syntax_script', SEARCHANDFILTER_PLUGIN_URL.'/admin/syntax.highlight.min.js' );
+				//wp_enqueue_script( 'of_syntax_script', SEARCHANDFILTER_PLUGIN_URL.'/admin/syntax.highlight.min.js' );
 			}
 		}
 		
