@@ -1,0 +1,204 @@
+@charset 'UTF-8';
+/* Slider */
+.agile_slick-loading .agile_slick-list
+{
+    background: #fff url('./ajax-loader.gif') center center no-repeat;
+}
+
+/* Icons */
+@font-face
+{
+    font-family: 'agile_slick';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('./fonts/agile_slick.eot');
+    src: url('./fonts/agile_slick.eot?#iefix') format('embedded-opentype'), url('./fonts/agile_slick.woff') format('woff'), url('./fonts/agile_slick.ttf') format('truetype'), url('./fonts/agile_slick.svg#agile_slick') format('svg');
+}
+/* Arrows */
+.agile_slick-prev,
+.agile_slick-next
+{
+    font-size: 0;
+    line-height: 0;
+
+    position: absolute;
+    top: 50%;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+
+    cursor: pointer;
+
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.agile_slick-prev:hover,
+.agile_slick-prev:focus,
+.agile_slick-next:hover,
+.agile_slick-next:focus
+{
+    color: transparent;
+    outline: none;
+    background: transparent;
+}
+.agile_slick-prev:hover:before,
+.agile_slick-prev:focus:before,
+.agile_slick-next:hover:before,
+.agile_slick-next:focus:before
+{
+    opacity: 1;
+}
+.agile_slick-prev.agile_slick-disabled:before,
+.agile_slick-next.agile_slick-disabled:before
+{
+    opacity: .25;
+}
+
+.agile_slick-prev:before,
+.agile_slick-next:before
+{
+    font-family: 'agile_slick';
+    font-size: 20px;
+    line-height: 1;
+
+    opacity: .75;
+    color: white;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.agile_slick-prev
+{
+    left: -25px;
+}
+[dir='rtl'] .agile_slick-prev
+{
+    right: -25px;
+    left: auto;
+}
+.agile_slick-prev:before
+{
+    content: '←';
+}
+[dir='rtl'] .agile_slick-prev:before
+{
+    content: '→';
+}
+
+.agile_slick-next
+{
+    right: -25px;
+}
+[dir='rtl'] .agile_slick-next
+{
+    right: auto;
+    left: -25px;
+}
+.agile_slick-next:before
+{
+    content: '→';
+}
+[dir='rtl'] .agile_slick-next:before
+{
+    content: '←';
+}
+
+/* Dots */
+.agile_slick-dotted.agile_slick-slider
+{
+    margin-bottom: 30px;
+}
+
+.agile_slick-dots
+{
+    position: absolute;
+    bottom: -25px;
+
+    display: block;
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+
+    text-align: center;
+}
+.agile_slick-dots li
+{
+    position: relative;
+
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+    padding: 0;
+
+    cursor: pointer;
+}
+.agile_slick-dots li button
+{
+    font-size: 0;
+    line-height: 0;
+
+    display: block;
+
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+.agile_slick-dots li button:hover,
+.agile_slick-dots li button:focus
+{
+    outline: none;
+}
+.agile_slick-dots li button:hover:before,
+.agile_slick-dots li button:focus:before
+{
+    opacity: 1;
+}
+.agile_slick-dots li button:before
+{
+    font-family: 'agile_slick';
+    font-size: 6px;
+    line-height: 20px;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 20px;
+    height: 20px;
+
+    content: '•';
+    text-align: center;
+
+    opacity: .25;
+    color: black;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.agile_slick-dots li.agile_slick-active button:before
+{
+    opacity: .75;
+    color: black;
+}

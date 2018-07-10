@@ -1,0 +1,19 @@
+.p-tl-cont.timeline_section .container {
+  max-width: 750px;
+  margin: auto;
+}
+.p-tl-cont.timeline_section .p-timeline-content {
+  font-size: 18px;
+  line-height: 31px;
+  color: #555555;
+  margin-top: 20px;
+  letter-spacing: 0.2px;
+}
+.p-tl-cont.timeline_section label {
+  display: block;
+  font-size: 14px;
+}
+.p-tl-cont.timeline_section .comment-form .comment-notes {
+  display: block;
+  font-size: 14px;
+}

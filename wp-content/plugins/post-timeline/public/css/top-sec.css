@@ -1,0 +1,38 @@
+span.user_img {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+  overflow: hidden;
+  border: 10px solid #959595;
+}
+.t-img {
+  display: block;
+  width: 100%;
+}
+.t-img img {
+  width: auto;
+  max-height: 450px;
+  display: block;
+  margin: auto;
+}
+.user_info {
+  margin-bottom: 90px;
+}
+.user_info h1 {
+  font-size: 50px;
+  font-weight: 700;
+  color: #169cb4;
+  margin-top: 40px;
+  margin-bottom: 22px;
+}
+.user_info p {
+  font-size: 18px;
+  color: #959595;
+  margin-bottom: 33px;
+}
+.user_info p.tags {
+  font-size: 50px;
+  font-weight: 700;
+}
