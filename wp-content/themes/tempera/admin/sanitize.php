@@ -78,14 +78,14 @@ $tempera_fonts = array(
 /* Social media links */
 
 $tempera_socialNetworks = array (
-		"AboutMe", "AIM", "Amazon", "Contact", "Delicious", "DeviantArt",
-		"Digg", "Dribbble", "Etsy", "Facebook", "Flickr",
+		"AboutMe", "AIM", "Amazon", "Contact", "Delicious", "DeviantArt", 
+		"Digg", "Discord", "Dribbble", "Etsy", "Facebook", "Flickr",
 		"FriendFeed", "Github", "GoodReads", "GooglePlus", "IMDb", "Instagram",
-		"LastFM", "LinkedIn", "Mail", "MindVox", "MySpace", "Newsvine", "Phone",
-		"Picasa", "Pinterest", "Reddit", "RSS", "ShareThis",
-		"Skype", "Steam", "SoundCloud", "StumbleUpon", "Technorati", "TripAdvisor",
-		"Tumblr",  "Twitch", "Twitter", "Vimeo", "VK",
-		"WordPress", "Yahoo", "Yelp", "YouTube", "Xing" 
+		"LastFM", "LinkedIn", "Mail", "MindVox", "MySpace", "Newsvine", "Patreon", 
+		"PayPal", "Phone", "Picasa", "Pinterest", "Reddit", "RSS", "ShareThis",  
+		"Skype", "Steam", "Steam-old", "SoundCloud", "StumbleUpon", "Technorati", 
+		"TripAdvisor", "Tumblr",  "Twitch", "Twitter", "Twitter-old", "Vimeo", "VK",
+		"WordPress", "Yahoo", "Yelp", "YouTube", "YouTube-old", "Xing",
 );
 
 /*

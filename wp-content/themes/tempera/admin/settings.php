@@ -260,7 +260,7 @@ function cryout_setting_frontslider_fn() {
 	echo "<input id='tempera_fpsliderheight' name='tempera_settings[tempera_fpsliderheight]' size='4' type='text' value='".esc_attr( $temperas['tempera_fpsliderheight'] )."' /> px (".__("height","tempera").")";
 	echo "<small>".__("The dimensions of your slider. Make sure your images are of the same size.","tempera")."</small></div>";
 
-	echo "<div class='slmini'><b>".__("Animation:","tempera")."</b> ";
+	echo "<div id='sliderParameters'><div class='slmini'><b>".__("Animation:","tempera")."</b> ";
 	$items = array ("random" , "fold", "fade", "slideInRight", "slideInLeft", "sliceDown", "sliceDownLeft", "sliceUp", "sliceUpLeft", "sliceUpDown" , "sliceUpDownLeft", "boxRandom", "boxRain", "boxRainReverse", "boxRainGrow" , "boxRainGrowReverse");
 	$itemsare = array( __("Random","tempera"), __("Fold","tempera"), __("Fade","tempera"), __("SlideInRight","tempera"), __("SlideInLeft","tempera"), __("SliceDown","tempera"), __("SliceDownLeft","tempera"), __("SliceUp","tempera"), __("SliceUpLeft","tempera"), __("SliceUpDown","tempera"), __("SliceUpDownLeft","tempera"), __("BoxRandom","tempera"), __("BoxRain","tempera"), __("BoxRainReverse","tempera"), __("BoxRainGrow","tempera"), __("BoxRainGrowReverse","tempera"));
 	echo "<select id='tempera_fpslideranim' name='tempera_settings[tempera_fpslideranim]'>";
@@ -303,7 +303,7 @@ function cryout_setting_frontslider_fn() {
 		echo ">$itemsare[$id]</option>";
 	}
 	echo "</select>";
-	echo "<small>".__("The Left and Right arrows on your slider","tempera")."</small></div>";
+	echo "<small>".__("The Left and Right arrows on your slider","tempera")."</small></div></div><!--#sliderParameters-->";
 
 	echo "<div class='slmini'><b>".__("Slider Border Width:","tempera")."</b> ";
 	echo "<input id='tempera_fpslider_bordersize' name='tempera_settings[tempera_fpslider_bordersize]' size='4' type='text' value='".esc_attr( $temperas['tempera_fpslider_bordersize'] )."' /> ".__("px","tempera");
@@ -313,71 +313,13 @@ function cryout_setting_frontslider_fn() {
 	echo "<input id='tempera_fpslider_topmargin' name='tempera_settings[tempera_fpslider_topmargin]' size='4' type='text' value='".esc_attr( $temperas['tempera_fpslider_topmargin'] )."' /> ".__("px","tempera");
 	echo "<small>".__("Add a top margin for the slider. By default this margin is 0 and you will want to increase this value when the width of the slider is smaller than the total width of the site.","tempera")."</small></div>";
 
-?>
-
-<?php /*
-// reserved for future use
-<script type="text/javascript">
-var $categoryName;
-
-jQuery(document).ready(function(){
-	jQuery('#categ-dropdown').change(function(){
-			$categoryName=this.options[this.selectedIndex].value.replace(/\/category\/archives\//i,"");
-			doAjaxRequest();
-	});
-
-});
-function doAjaxRequest(){
-// here is where the request will happen
-	jQuery.ajax({
-          url: ajaxurl,
-          data:{
-               'action':'do_ajax',
-               'fn':'get_latest_posts',
-               'count':10,
-				'categName':$categoryName
-               },
-          dataType: 'JSON',
-          success:function(data){
-		 jQuery('#post-dropdown').html(data);
-
-
-                             },
-          error: function(errorThrown){
-               alert('error');
-               console.log(errorThrown);
-          }
-
-     });
-
-}
-</script>
-<!--
-<select name="categ-dropdown" id="categ-dropdown" multiple='multiple' >
- <option value=""><?php echo esc_attr(__('Select Category','tempera')); ?></option>
- <?php
-  $categories=  get_categories();
-  foreach ($categories as $category) {
-  	$option = '<option value="/category/archives/'.$category->category_nicename.'">';
-	$option .= $category->cat_name;
-	$option .= ' ('.$category->category_count.')';
-	$option .= '</option>';
-	echo $option;
-  }
- ?>
-</select>
-<select name="post-dropdown" id="post-dropdown">
-</select>
---> */ ?>
-
-<?php
 } // cryout_setting_frontslider_fn()
 
 //CHECKBOX - Name: tempera_settings[frontslider2]
 function cryout_setting_frontslider2_fn() {
 	global $temperas;
 
-     $items = array("Slider Shortcode", "Custom Slides", "Latest Posts", "Random Posts", "Sticky Posts", "Latest Posts from Category" , "Random Posts from Category", "Specific Posts","Disabled");
+    $items = array("Slider Shortcode", "Custom Slides", "Latest Posts", "Random Posts", "Sticky Posts", "Latest Posts from Category" , "Random Posts from Category", "Specific Posts","Disabled");
 	$itemsare = array( __("Slider Shortcode","tempera"), __("Custom Slides","tempera"), __("Latest Posts","tempera"), __("Random Posts","tempera"),__("Sticky Posts","tempera"), __("Latest Posts from Category","tempera"), __("Random Posts from Category","tempera"), __("Specific Posts","tempera"), __("Disabled","tempera"));
 	echo __("<strong>Slides content:</strong>","tempera");
 	echo "<select id='tempera_slideType' name='tempera_settings[tempera_slideType]'>";

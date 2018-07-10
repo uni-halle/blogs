@@ -44,13 +44,11 @@ function tempera_comment( $comment, $args, $depth ) {
 			</div> <!-- .comment-details -->
 		</div><!-- .comment-author .vcard -->
 
-		<?php if ( $comment->comment_approved == '0' ) : ?>
-			<span class="comment-await"><em><?php _e( 'Your comment is awaiting moderation.', 'tempera' ); ?></em></span>
-			<br />
-		<?php endif; ?>
-
-
-		<div class="comment-body"><?php comment_text(); ?>
+		<div class="comment-body">
+			<?php if ( $comment->comment_approved == '0' ) : ?>
+				<span class="comment-await"><em><?php _e( 'Your comment is awaiting moderation.', 'tempera' ); ?></em></span>
+			<?php endif; ?>		
+			<?php comment_text(); ?>
 			<div class="reply">
 				<?php comment_reply_link( array_merge( $args, array( 'reply_text' => '<i class="crycon-reply"></i>'.__('Reply','tempera'), 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
 			</div><!-- .reply -->
@@ -141,21 +139,18 @@ add_action('cryout_after_comments_hook','tempera_comments_navigation');
 * See tempera_comment() in tempera/functions.php for more.
  */
 function tempera_list_comments() {
-					wp_list_comments( array( 'callback' => 'tempera_comment' ) );
-			}
-
+	wp_list_comments( array( 'callback' => 'tempera_comment' ) );
+}
 add_action('cryout_comments_hook','tempera_list_comments');
 
 /*
  * If there are no comments and comments are closed
  */
 function tempera_comments_off() {
-if ( ! comments_open() ) : ?>
+	if ( ! comments_open() ) : ?>
 	<p class="nocomments"><?php _e( 'Comments are closed.', 'tempera' ); ?></p>
-<?php endif; // end ! comments_open()
+	<?php endif; // end ! comments_open()
 }
-
-
 add_action('cryout_nocomments_hook','tempera_comments_off');
 
 /*
@@ -169,37 +164,37 @@ $req = get_option( 'require_name_email' );
 $aria_req = ( $req ? " aria-required='true'" : '' );
 
 $arg =  array(
+	'author' => 
+		'<p class="comment-form-author"><label for="author">' . __( 'Name', 'tempera' ) .  ( $req ? '<span class="required">*</span>' : '' ) . '</label> ' .
+		'<input id="author" placeholder="'. esc_attr__( 'Name', 'tempera' ) .'" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
+		'" size="30" maxlength="245"' . $aria_req . ' /></p>',
 
-  'author' =>
-    '<p class="comment-form-author"><label for="author">' . __( 'Name', 'tempera' ) .  ( $req ? '<span class="required">*</span>' : '' ) . '</label> ' .
-    '<input id="author" placeholder="'. __( 'Name', 'tempera' ) .'" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
-    '" size="30"' . $aria_req . ' /></p>',
+	'email' =>
+		'<p class="comment-form-email"><label for="email">' . __( 'Email', 'tempera' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label> ' .
+		'<input id="email" placeholder="'. esc_attr__( 'Email', 'tempera' ) . '" name="email" type="email" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+		'" size="30"  maxlength="100" aria-describedby="email-notes"' . $aria_req . ' /></p>',
 
-  'email' =>
-    '<p class="comment-form-email"><label for="email">' . __( 'Email', 'tempera' ) . ( $req ? '<span class="required">*</span>' : '' ) . '</label> ' .
-    '<input id="email" placeholder="'. __( 'Email', 'tempera' ) . '" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
-    '" size="30"' . $aria_req . ' /></p>',
-
-  'url' =>
-    '<p class="comment-form-url"><label for="url">' . __( 'Website', 'tempera' ) . '</label>' .
-    '<input id="url" placeholder="'. __( 'Website', 'tempera' ) .'" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
-    '" size="30" /></p>',
-
-);
+	'url' =>
+		'<p class="comment-form-url"><label for="url">' . __( 'Website', 'tempera' ) . '</label>' .
+		'<input id="url" placeholder="'. esc_attr__( 'Website', 'tempera' ) .'" name="url" type="url" value="' . esc_attr( $commenter['comment_author_url'] ) .
+		'" size="30" maxlength="200" /></p>',
+		
+	'cookies' => 
+		'<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" />' .
+		'<label for="wp-comment-cookies-consent">' . __( 'Save my name, email, and site URL in my browser for next time I post a comment.', 'tempera' ) .
+		'</label></p>',
+	);
 	return $arg;
 }
-
 add_filter('comment_form_default_fields', 'tempera_comments_form');
 
 
 function tempera_comments_form_textarea($arg) {
- $arg =
-    '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun', 'tempera' ) .
-    '</label><textarea placeholder="'. _x( 'Comment', 'noun', 'tempera' ) .'" id="comment" name="comment" cols="45" rows="8" aria-required="true">' .
-    '</textarea></p>';
-return $arg;
+	$arg = '<p class="comment-form-comment"><label for="comment">' . esc_attr_x( 'Comment', 'noun', 'tempera' ) . '</label>' .
+		'<textarea placeholder="'. esc_attr_x( 'Comment', 'noun', 'tempera' ) .'" id="comment" name="comment" cols="45" rows="8" aria-required="true">' .
+		'</textarea></p>';
+	return $arg;
 }
-
 add_filter('comment_form_field_comment', 'tempera_comments_form_textarea');
 
-?>
+// FIN

@@ -43,7 +43,7 @@ function tempera_title_and_description() {
 	if ( is_singular() && has_post_thumbnail( $post->ID ) && 
 		($temperas['tempera_fheader'] == "Enable") &&
 		( $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'header' ) ) && 
-		$image[1] >= HEADER_IMAGE_WIDTH ) {
+		$image[1] >= $temperas['tempera_totalSize']) {
 			$himgsrc = esc_url( $image[0] );
 	};
 
@@ -179,13 +179,31 @@ function tempera_breadcrumbs() {
 	global $post;
 	$homeLink = esc_url( home_url() );
 	if ( is_front_page() && ($temperas['tempera_frontpage']=="Enable") ) { return; }
+	
+	// integrate layout class and microdata in wrapper_pre
+	$wrapper_pre = '<div class="breadcrumbs">' . $home . $separator . ' ';
+	$wrapper_post = '</div><!--breadcrumbs-->';
+	// woocommerce sections display their own breadcrumbs   
+	if ( function_exists('woocommerce_breadcrumb') && is_woocommerce() ){
+		$args = array(
+			'delimiter' => $separator,
+			'wrap_before' => $wrapper_pre . ' ',
+			'wrap_after' => $wrapper_post,
+			'before' => '',
+			'after' => '',
+			'home' => false,
+		);
+		woocommerce_breadcrumb( $args );
+		return;
+	};	
+
 	if ( is_home() && ($temperas['tempera_frontpage']!="Enable") ) {
 
 		if ($showOnHome == 1) echo '<div class="breadcrumbs"><a href="' . $homeLink . '"><i class="crycon-homebread"></i>' .  __('Home Page','tempera') . '</a></div>';
 
 	} else {
 
-		echo '<div class="breadcrumbs">' . $home . $separator . ' ';
+		echo $wrapper_pre;
 
 		if ( is_category() ) {
 			// category
@@ -275,7 +293,7 @@ function tempera_breadcrumbs() {
 			if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ')';
 		}
 
-		echo '</div>';
+		echo $wrapper_post;
 
 	}
 

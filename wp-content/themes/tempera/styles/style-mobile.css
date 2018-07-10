@@ -113,6 +113,7 @@
 	#branding {
 		height: auto;
 		overflow: hidden;
+		padding: 10px 20px;
 	}
 
 	#header-widget-area {
@@ -322,6 +323,7 @@
 
 	#branding {
 		height: auto;
+		padding: 10px;
 	}
 
 	a#logo img {

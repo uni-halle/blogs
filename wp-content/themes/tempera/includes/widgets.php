@@ -74,7 +74,10 @@ class ColumnsWidget extends WP_Widget
   
 } // ColumnsWidget class
 
-add_action( 'widgets_init', create_function('', 'return register_widget("ColumnsWidget");') );
+function tempera_widgets_register() {
+	return register_widget("ColumnsWidget");
+} // tempera_widgets_register()
+add_action( 'widgets_init', 'tempera_widgets_register' );
 
 function tempera_widget_scripts() {
 	// For the WP uploader

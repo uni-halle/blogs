@@ -1,11 +1,11 @@
 =============
 Tempera WordPress Theme
-Copyright 2013-17 Cryout Creations
+Copyright 2013-18 Cryout Creations
 
 Author: Cryout Creations
-Requires at least: 4.0
-Tested up to: 4.9
-Stable tag: 1.6.2
+Requires at least: 4.2
+Tested up to: 4.9.6
+Stable tag: 1.7.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: https://www.cryoutcreations.eu/donate/
@@ -107,13 +107,29 @@ Spanish - Carlol, HacKan
 
 == Changelog ==
 
+= 1.7.0 =
+* Added new social icons for Discord, Patreon, PayPal and updated Steam, Twitter, YouTube
+* Added WooCommerce breadcrumbs support
+* Improved 'comments moderated' text positioning
+* Improved support for center-aligned images inside bbPress elements
+* Improved slider captions by making the slides clickable through the captions
+* Improved header area responsiveness by adding padding
+* Improved slider administration interface by hiding unused fields when slider shortcode is used
+* Changed default excerpt ellipsis value to avoid settings page issues on some servers
+* Cleaned up use of obsolete constants
+* Fixed quantity input being too short for double digits with WooCommerce 3.3+
+* Fixed moderated comments not being displayed
+* Fixed create_function() deprecation usage notification in widgets.php with PHP 7.2+
+* Fixed theme's column widgets cannot be saved after selecting a different image
+* Fixed GDPR-related checkbox missing on comment form
+
 = 1.6.2 =
 * Fixed search icon in menus vertical alignment on IE 10-11
 * Fixed footer menu search separators vertical alignment on IE 9+
-* Added HTML markup correction on presentation page extra text areas
+* Added HTML markup auto-correction on presentation page extra text areas
 * Switched to using the_archive_title() and the_archive_description() for section titles and descriptions in archive.php, author.php, category.php, tag.php
 * Fixed header image forced aspect ratio option adding unnecessary margin between header and menu
-* Fixed editor styling option not controlling style.css enqueue
+* Fixed editor styling option not controlling editor-style.css enqueue
 * Fixed notice of undefined variable in content-index.php
 * Fixed 'Category page with intro' page template pagination not working when set on static home page
 * Improved admin styling to correct overlapping dashboard elements outside of theme's page

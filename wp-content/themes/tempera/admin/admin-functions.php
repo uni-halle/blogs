@@ -86,7 +86,7 @@ function tempera_import_form(){
     else :
     ?>
 
-    <div class="wrap">
+    <div class="wrap cryout-admin">
 		<div style="width:400px;display:block;margin-left:30px;">
         <div id="crycon-tools" class="icon32"><br></div>
         <h2><?php echo __( 'Import Tempera Theme Options', 'tempera' );?></h2>
@@ -165,7 +165,7 @@ function tempera_import_file() {
 					$settings = json_decode($data, true);
 					// try to read the settings array
 					if (isset($settings['tempera_db'])){ ?>
-        <div class="wrap">
+        <div class="wrap cryout-admin">
         <div id="crycon-tools" class="icon32"><br></div>
         <h2><?php echo __( 'Import Tempera Theme Options ', 'tempera' );?></h2> <?php
 						$settings = array_merge($temperas, $settings);
@@ -213,7 +213,7 @@ function tempera_presets(){
 <script type="text/javascript">
 var scheme_confirmation = '<?php echo esc_html__('Are you sure you want to load a new color scheme? \nAll current saved settings under Text and Color Settings will be lost.','tempera'); ?>';
 </script>
-    <div class="wrap">
+    <div class="wrap cryout-admin">
 		<div id="admin_header"><img src="<?php echo get_template_directory_uri() . '/admin/images/colorschemes-logo.png' ?>" /> </div>
 		<div style="display:block;margin-left:30px;clear:both;float:none;">
 			<p><em><?php echo _e("Select one of the preset color schemes and press the Load button.<br> <b> CAUTION! </b> When loading a color scheme, the Tempera theme settings under Text and Color Settings will be overriden. All other settings will remain intact.<br> <u>SUGGESTION:</u> It's always better to export your current theme settings before loading a color scheme." , "tempera"); ?></em></p>

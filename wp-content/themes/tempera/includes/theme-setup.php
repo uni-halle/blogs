@@ -90,19 +90,23 @@ function tempera_setup() {
 
 	// This theme allows users to set a custom background
 	add_theme_support( 'custom-background' );
-
-	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'tempera_header_image_width', $temperas['tempera_totalSize'] ) );
-	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'tempera_header_image_height', (int)$temperas['tempera_hheight']) );
 	
-	add_image_size( 'header', HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );	
+	add_image_size( 'header', apply_filters( 'tempera_header_image_width', $temperas['tempera_totalSize'] ), apply_filters( 'tempera_header_image_height', (int)$temperas['tempera_hheight']), true );	
 
 	add_image_size( 'slider', $temperas['tempera_fpsliderwidth'], $temperas['tempera_fpsliderheight'], true );
 	add_image_size( 'columns', $temperas['tempera_colimagewidth'], $temperas['tempera_colimageheight'], true );
 	
 	// Add a way for the custom header to be styled in the admin panel that controls
 	// custom headers. See tempera_admin_header_style(), below.
-	define( 'NO_HEADER_TEXT', true );
-	add_theme_support( 'custom-header' );
+	$header_args = array(
+		'flex-height' => true,
+		'height' => $temperas['tempera_hheight'],
+		'flex-width' => true,
+		'width' => $temperas['tempera_totalSize'],
+		'max-width' => 1920,
+		'default-image' => '',
+	);
+	add_theme_support( 'custom-header', $header_args );
 
 	// Default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 	register_default_headers( array(
@@ -151,31 +155,6 @@ function tempera_filter_wp_title( $title ) {
 function tempera_filter_wp_title_rss($title) {
 	return ' ';
 }
-
-if ( ! function_exists( 'tempera_admin_header_style' ) ) :
-/**
- * Styles the header image displayed on the Appearance > Header admin panel.
- *
- * Referenced via add_custom_image_header() in tempera_setup().
- *
- * @since tempera 0.5
- */
-function tempera_admin_header_style() {
-?>
-<style type="text/css">
-/* Shows the same border as on front end */
-#headimg {
-	border-bottom: 1px solid #000;
-	border-top: 4px solid #000;
-}
-/* If NO_HEADER_TEXT is false, you would style the text with these selectors:
-	#headimg #name { }
-	#headimg #desc { }
-*/
-</style>
-<?php
-}
-endif;
 
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.

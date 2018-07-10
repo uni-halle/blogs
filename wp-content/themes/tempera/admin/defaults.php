@@ -236,7 +236,7 @@ $tempera_defaults = array(
 "tempera_excerptarchive"	=> "Excerpt",
 "tempera_excerptwords"		=> "50",
 "tempera_magazinelayout"	=> "Disable",
-"tempera_excerptdots"		=> " &hellip;",
+"tempera_excerptdots"		=> " ...",
 "tempera_excerptcont"		=> "Continue reading",
 "tempera_excerpttags"		=> "Disable",
 

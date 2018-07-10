@@ -4,10 +4,10 @@ Theme URI: https://www.cryoutcreations.eu/wordpress-themes/tempera
 Description: We had to follow a very strict recipe to get Tempera just right. We started with a very solid framework of over 200 settings, added a very light user interface, threw in a couple of mobiles and tablets to give it that responsive elasticity, added over 50 fonts, weren't satisfied so we poured all the Google fonts into the mix, then scattered 12 widget areas for consistency, dissolved a slider and unlimited columns into a customizable Presentation Page then mixed it in as well. We then sprinkled all post formats, 8 layouts including magazine and blog, powdered 40+ social icons and even blended in a customizable top bar for extra density. We also made it translation ready and gave it RTL language support for some cultural diversity. The secret ingredient was love and we might've spilled too much of that. But now Tempera has just the right feel and the right texture and is exactly what your empty WordPress canvas needs. NEW! Tempera now comes in 16 different flavors with preset color schemes!
 Author: Cryout Creations
 Author URI: https://www.cryoutcreations.eu
-Version: 1.6.2
+Version: 1.7.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
-Tags: one-column, two-columns, three-columns, right-sidebar, left-sidebar, footer-widgets, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, front-page-post-form, full-width-template,  microformats, post-formats, rtl-language-support,  sticky-post, theme-options, threaded-comments, translation-ready, blog, e-commerce, education, entertainment, food-and-drink, news
+Tags: one-column, two-columns, three-columns, right-sidebar, left-sidebar, footer-widgets, custom-background, custom-colors, custom-header, custom-menu, featured-image-header, featured-images, front-page-post-form, full-width-template,  microformats, post-formats, rtl-language-support,  sticky-post, theme-options, threaded-comments, translation-ready, blog, education, entertainment
 Text Domain: tempera
 
 Tempera WordPress Theme
@@ -1373,6 +1373,11 @@ span.edit-link {
 	margin-right: auto;
 }
 
+#content .bbp-forums .aligncenter,
+#content .bbp-forums img.aligncenter {
+	clear: none;
+}
+
 #content img.alignleft,
 #content img.alignright,
 #content img.aligncenter {
@@ -1637,8 +1642,9 @@ h3#comments-title {
 .commentlist .bypostauthor {
 }
 
-.comment-await {
-	margin-left: 25px;
+.commentlist .comment-await {
+	padding: 10px 0;
+	display: block;
 }
 
 .commentlist .reply a {
@@ -1776,9 +1782,7 @@ h3#reply-title {
 	display: block;
 }
 
-#respond label {
-	display: none;
-}
+#respond label { }
 
 .comment-form-comment textarea {
 	display: block;
@@ -1793,7 +1797,7 @@ h3#reply-title {
 .comment-form-email label,
 .comment-form-url label,
 .comment-form-comment label {
-	display: block;
+	display: none;
 	float: none;
 }
 
@@ -1805,6 +1809,11 @@ h3#reply-title {
 	display: block;
 	float: none;
 	width: 100%;
+}
+
+#respond input + label {
+	margin-left: .5em;
+	margin-right: .5em;
 }
 
 #respond input:hover,
@@ -2140,6 +2149,10 @@ li.menu-footer-search .searchform:hover .searchsubmit {
 }
 
 #footer-widget-area a{
+}
+
+.sidey select {
+    max-width: 100%;
 }
 
 
@@ -2620,6 +2633,7 @@ a.continue-reading-link i.crycon-right-dir {
 	filter: alpha(opacity=8);
 	opacity: 0.8;
 	border-radius: 0;
+	pointer-events: none;
 }
 
 .nivo-caption h2 {
@@ -3136,6 +3150,12 @@ header
 	text-indent: -9999px;
 }
 
+/* jetpack portfolio in widget fix */
+.textwidget .jetpack-portfolio-shortcode .portfolio-entry a,
+.textwidget .jetpack-portfolio-shortcode .portfolio-entry a img {
+    max-width: 100%;
+    height: auto;
+}
 
 /* shareaddy fix */ .sharedaddy ul > li { background: none !important; text-indent: 0 !important; }
 
@@ -3144,6 +3164,7 @@ header
 /* video fix */ #content embed, #content iframe { max-width: 100%; }
 
 /* WooCommerce compatibility styling */
+.woocommerce .quantity .qty { padding: 7px 3px; }
 body.woocommerce #forbottom { padding-top: 20px; }
 body.woocommerce .page-title { display: inherit; margin-bottom: 20px; padding: 10px; }
 body.woocommerce-page .entry-content .checkout ul > li { list-style: none outside none; }

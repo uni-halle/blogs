@@ -323,7 +323,7 @@ endfor; ?>
 <?php
 ////////// HEADER IMAGE //////////
 ?>
-#branding { height:<?php echo HEADER_IMAGE_HEIGHT; ?>px; }
+#branding { height:<?php echo $tempera_hheight; ?>px; }
 <?php if ($tempera_hratio) { ?> @media (max-width: 1920px) {#branding, #bg_image { height:auto; max-width:100%; min-height:inherit !important; display: block; } } <?php } ?>
 </style>
 <?php
