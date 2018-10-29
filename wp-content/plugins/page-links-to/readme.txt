@@ -5,7 +5,7 @@ Donate link: http://txfx.net/wordpress-plugins/donate
 Tags: page, redirect, link, external link, repoint  
 Requires at least: 4.8  
 Tested up to: 4.9.6  
-Stable tag: 2.11.1  
+Stable tag: 3.0.1  
 
 Lets you make a WordPress page (or port or other content type) link to a URL of your choosing (on your site, or on another site), instead of its normal WordPress URL.
 
@@ -26,19 +26,32 @@ This plugin allows you to make a WordPress page (or post or custom post type) li
 
 2. Activate the "Page Links To" plugin.
 
-3. Create (or edit) a page (or post or custom post type) to have a title of your choosing (you can leave the content blank).
+**Existing Content Usage:**
 
-4. Below, find the Page Links To widget, select "A custom URL", and add a URL of your choosing.
+1. Edit a page (or post or custom post type).
 
-5. Optionally check the box to enable link opening in a new browser tab.
+2. Below, find the Page Links To widget, select "A custom URL", and add a URL of your choosing.
 
-6. Save the page (or post or custom post type).
+3. Optionally check the box to enable link opening in a new browser tab.
 
-7. Done! Now that content will point to the URL that you chose. Also, if anyone had the old WordPress URL for that content, they will be redirected to the custom URL if they visit.
+4. Save the page (or post or custom post type).
+
+5. Done! Now that content will point to the URL that you chose. Also, if anyone had the old WordPress URL for that content, they will be redirected to the custom URL if they visit.
+
+**Creating New Page Links:**
+
+1. Click Pages > Add New Page Link.
+
+2. Provide a title and a destination URL.
+
+3. Optionally provide a custom slug, which will be used in creating a local redirect URL.
+
+4. Click Publish.
 
 == Screenshots ==
 
 1. The Page Links To meta box in action
+2. The quick Add Page Link dialog.
 
 == Frequently Asked Questions ==
 
@@ -63,6 +76,18 @@ Yes. Linking to `/my-photos.php` is a good idea, as it'll still work if you move
 You can contribute (or report bugs) on [Github](https://github.com/markjaquith/page-links-to/).
 
 == Changelog ==
+
+= 3.0.1 =
+* Fixed a PHP warning caused by some themes
+
+= 3.0.0 =
+* Quick page link adding UI
+* External link indicator
+* Short URL copying
+* Short URL display on edit screen
+
+= 2.11.2 =
+* Newsletter
 
 = 2.11.1 =
 * Restore PHP 5.3 compatibility, broken in 2.11.0
