@@ -96,12 +96,36 @@ class Element_Column extends Element_Base {
 	 * @return array Default edit tools.
 	 */
 	protected static function get_default_edit_tools() {
-		return [
+		$column_label = __( 'Column', 'elementor' );
+
+		$edit_tools = [
 			'edit' => [
 				'title' => __( 'Edit', 'elementor' ),
 				'icon' => 'column',
 			],
 		];
+
+		if ( self::is_edit_buttons_enabled() ) {
+			$edit_tools += [
+				'duplicate' => [
+					/* translators: %s: Column label */
+					'title' => sprintf( __( 'Duplicate %s', 'elementor' ), $column_label ),
+					'icon' => 'clone',
+				],
+				'add' => [
+					/* translators: %s: Column label */
+					'title' => sprintf( __( 'Add %s', 'elementor' ), $column_label ),
+					'icon' => 'plus',
+				],
+				'remove' => [
+					/* translators: %s: Column label */
+					'title' => sprintf( __( 'Remove %s', 'elementor' ), $column_label ),
+					'icon' => 'close',
+				],
+			];
+		}
+
+		return $edit_tools;
 	}
 
 	/**
@@ -119,6 +143,15 @@ class Element_Column extends Element_Base {
 			[
 				'label' => __( 'Layout', 'elementor' ),
 				'tab' => Controls_Manager::TAB_LAYOUT,
+			]
+		);
+
+		$this->add_control(
+			'_title',
+			[
+				'label' => __( 'Title', 'elementor' ),
+				'type' => Controls_Manager::HIDDEN,
+				'render_type' => 'none',
 			]
 		);
 
@@ -329,6 +362,37 @@ class Element_Column extends Element_Base {
 			]
 		);
 
+		$this->add_group_control(
+			Group_Control_Css_Filter::get_type(),
+			[
+				'name' => 'css_filters',
+				'selector' => '{{WRAPPER}} > .elementor-element-populated >  .elementor-background-overlay',
+			]
+		);
+
+		$this->add_control(
+			'overlay_blend_mode',
+			[
+				'label' => __( 'Blend Mode', 'elementor' ),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'' => __( 'Normal', 'elementor' ),
+					'multiply' => 'Multiply',
+					'screen' => 'Screen',
+					'overlay' => 'Overlay',
+					'darken' => 'Darken',
+					'lighten' => 'Lighten',
+					'color-dodge' => 'Color Dodge',
+					'saturation' => 'Saturation',
+					'color' => 'Color',
+					'luminosity' => 'Luminosity',
+				],
+				'selectors' => [
+					'{{WRAPPER}} > .elementor-element-populated > .elementor-background-overlay' => 'mix-blend-mode: {{VALUE}}',
+				],
+			]
+		);
+
 		$this->end_controls_tab();
 
 		$this->start_controls_tab(
@@ -366,6 +430,14 @@ class Element_Column extends Element_Base {
 				'condition' => [
 					'background_overlay_hover_background' => [ 'classic', 'gradient' ],
 				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Css_Filter::get_type(),
+			[
+				'name' => 'css_filters_hover',
+				'selector' => '{{WRAPPER}}:hover > .elementor-element-populated >  .elementor-background-overlay',
 			]
 		);
 
@@ -498,7 +570,8 @@ class Element_Column extends Element_Base {
 							'name' => 'background_background',
 							'operator' => '!==',
 							'value' => '',
-						], [
+						],
+						[
 							'name' => 'border_border',
 							'operator' => '!==',
 							'value' => '',
@@ -716,6 +789,7 @@ class Element_Column extends Element_Base {
 				'default' => '',
 				'title' => __( 'Add your custom id WITHOUT the Pound key. e.g: my-id', 'elementor' ),
 				'label_block' => false,
+				'style_transfer' => false,
 			]
 		);
 
@@ -730,6 +804,26 @@ class Element_Column extends Element_Base {
 				'label_block' => false,
 			]
 		);
+
+		// TODO: Backward comparability for deprecated controls
+		$this->add_control(
+			'screen_sm',
+			[
+				'type' => Controls_Manager::HIDDEN,
+			]
+		);
+
+		$this->add_control(
+			'screen_sm_width',
+			[
+				'type' => Controls_Manager::HIDDEN,
+				'condition' => [
+					'screen_sm' => [ 'custom' ],
+				],
+				'prefix_class' => 'elementor-sm-',
+			]
+		);
+		// END Backward comparability
 
 		$this->end_controls_section();
 
