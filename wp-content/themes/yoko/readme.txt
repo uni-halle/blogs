@@ -6,6 +6,12 @@ For a detailed documentation and support please visit: http://www.elmastudio.de/
 Changelog:
 ------------------------------------------------------------------------------------------------------------
 
+Version 1.2.3 - 02th October 2018
+-----------------------------------
+- Enhancement: Update code to delete default image gallery styles
+- Enhancement: Update function.php to be PHP 7.2 compatible
+- Enhancement: Update custom header function in functions.php
+
 Version 1.2.2 - 03th October 2017
 -----------------------------------
 - Enhancement: Updated theme tags

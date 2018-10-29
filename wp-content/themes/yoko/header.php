@@ -36,20 +36,14 @@
 		<?php endif; ?>
 		</hgroup><!-- end site-title -->
 
-        <?php
+				<?php
 		// The header image
 		// Check if this is a post or page, if it has a thumbnail, and if it's a big one
-			if ( is_singular() &&
-				current_theme_supports( 'post-thumbnails' ) &&
-				has_post_thumbnail( $post->ID ) &&
-				( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail' ) ) &&
-				$image[1] >= HEADER_IMAGE_WIDTH ) :
-				// Houston, we have a new header image!
-						echo get_the_post_thumbnail( $post->ID , array(1102,350), array('class' => 'headerimage'));
-						elseif ( get_header_image() ) : ?>
-						<img src="<?php header_image(); ?>" class="headerimage" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="" /><!-- end headerimage -->
-					<?php endif; ?>
-					<div class="clear"></div>
+			if ( is_singular() && has_post_thumbnail( $post->ID ) ) : ?>
+				<?php echo get_the_post_thumbnail( $post->ID , array(1102,350), array('class' => 'headerimage')); ?>
+			<?php elseif ( get_header_image() ) : ?>
+				<img alt="" src="<?php header_image(); ?>" class="headerimage" width="<?php echo absint( get_custom_header()->width ); ?>" height="<?php echo absint( get_custom_header()->height ); ?>">
+			<?php endif; ?>
 
 		<nav id="subnav">
 			<?php

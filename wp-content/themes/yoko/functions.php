@@ -112,27 +112,19 @@ function yoko() {
 		'default-image'	=> '',
 	) ) );
 
-	// Your changeable header business starts here
-	define( 'HEADER_TEXTCOLOR', '' );
-	// No CSS, just IMG call. The %s is a placeholder for the theme template directory URI.
-	define( 'HEADER_IMAGE', '%s/images/headers/ginko.jpg' );
-
-	// The height and width of your custom header. You can hook into the theme's own filters to change these values.
-	// Add a filter to yoko_header_image_width and yoko_header_image_height to change these values.
-	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'yoko_header_image_width', 1102 ) );
-	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'yoko_header_image_height', 350 ) );
-
-	// We'll be using post thumbnails for custom header images on posts and pages.
-	// We want them to be 940 pixels wide by 350 pixels tall.
-	// Larger images will be auto-cropped to fit, smaller ones will be ignored. See header.php.
-	set_post_thumbnail_size( HEADER_IMAGE_WIDTH, HEADER_IMAGE_HEIGHT, true );
-
-	// Don't support text inside the header image.
-	define( 'NO_HEADER_TEXT', true );
-
 	// Add a way for the custom header to be styled in the admin panel that controls
 	// custom headers. See yoko_admin_header_style(), below.
-	add_theme_support('custom-header');
+	$args = array(
+		'default-image'	 => get_template_directory_uri() . '/images/headers/ginko.jpg',
+		'width'          => 1102,
+		'height'         => 350,
+		'flex-height'    => true,
+		'flex-width'     => true,
+		'header-text'    => false,
+		'uploads'        => true,
+		'video'          => false,
+	);
+	add_theme_support( 'custom-header', $args );
 
 	// ... and thus ends the changeable header business.
 
@@ -192,10 +184,7 @@ function yoko_admin_header_style() {
 	border-bottom: 1px solid #000;
 	border-top: 4px solid #000;
 }
-/* If NO_HEADER_TEXT is false, you would style the text with these selectors:
-	#headimg #name { }
-	#headimg #desc { }
-*/
+
 </style>
 <?php
 }
@@ -350,29 +339,28 @@ add_action( 'widgets_init', 'yoko_remove_recent_comments_style' );
  */
 function yoko_search_form( $form ) {
 
-    $form = '<form role="search" method="get" class="searchform" action="'.home_url('/').'" >
-    <div>
-    <input type="text" class="search-input" value="' . get_search_query() . '" name="s" id="s" />
-    <input type="submit" class="searchsubmit" value="'. esc_attr__('Search', 'yoko') .'" />
-    </div>
-    </form>';
+		$form = '<form role="search" method="get" class="searchform" action="'.home_url('/').'" >
+		<div>
+		<input type="text" class="search-input" value="' . get_search_query() . '" name="s" id="s" />
+		<input type="submit" class="searchsubmit" value="'. esc_attr__('Search', 'yoko') .'" />
+		</div>
+		</form>';
 
-    return $form;
+		return $form;
 }
 add_filter( 'get_search_form', 'yoko_search_form' );
 
 /**
  * Remove the default CSS style from the WP image gallery
  */
-add_filter('gallery_style', create_function('$a', 'return "
-<div class=\'gallery\'>";'));
+add_filter( 'use_default_gallery_style', '__return_false' );
 
 
 /**
  * Add Theme Customizer CSS
  */
 function yoko_customize_css() {
-    ?>
+		?>
 	<style type="text/css" id="yoko-themeoptions-css">
 		a {color: <?php echo get_theme_mod( 'link_color', '#009BC2' ); ?>;}
 		#content .single-entry-header h1.entry-title {color: <?php echo get_theme_mod( 'link_color', '#009BC2' ); ?>!important;}
@@ -380,7 +368,7 @@ function yoko_customize_css() {
 		#content .page-entry-header h1.entry-title {color: <?php echo get_theme_mod( 'link_color', '#009BC2' ); ?>!important;}
 		.searchsubmit:hover {background-color: <?php echo get_theme_mod( 'link_color', '#009BC2' ); ?>!important;}
 	</style>
-    <?php
+		<?php
 }
 add_action( 'wp_head', 'yoko_customize_css');
 
@@ -399,11 +387,11 @@ require get_template_directory() . '/inc/theme-options.php';
  * Custom Social Links Widget
  */
 class Yoko_SocialLinks_Widget extends WP_Widget {
-	function Yoko_SocialLinks_Widget() {
-		$widget_ops = array(
-		'classname' => 'widget_social_links',
-		'description' => __('Link to your social profiles like twitter, facebook or flickr.', 'yoko'));
-		$this->WP_Widget('social_links', 'Yoko Social Links', $widget_ops);
+	public function __construct() {
+		parent::__construct( 'Yoko_SocialLinks_Widget', esc_html__( 'Yoko Social Links', 'yoko' ), array(
+			'classname'   => 'widget_social_links',
+			'description' => esc_html__( 'Link to your social profiles like twitter, facebook or flickr.', 'yoko' ),
+		) );
 	}
 
 	function widget($args, $instance) {
