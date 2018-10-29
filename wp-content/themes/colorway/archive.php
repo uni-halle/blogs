@@ -8,57 +8,90 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  */
+get_header();
+$sidebar = '';
+$center = '';
+$a = get_option('blog-layout');
+switch ($a) {
+    case 'content-sidebar':
+        $sidebar = 'right';
+        break;
+    case 'sidebar-content':
+        $sidebar = 'left';
+        break;
+    case 'content':
+        $center = 'col-md-12 col-sm-12';
+        break;
+    default:
+        $sidebar = 'right';
+}
 ?>
-<?php get_header(); ?>
-<!--Start Content Grid-->
-<div class="grid_24 content">
-    <div class="grid_16 alpha">
-        <div class="content-wrap">
-            <div class="content-info">
-                <?php if (function_exists('inkthemes_breadcrumbs')) inkthemes_breadcrumbs(); ?>
+    <div class="row content">
+        <?php if ($sidebar == 'left') { ?>
+            <div class="col-md-4 col-sm-4">
+                <div class="sidebar <?php echo esc_html($sidebar); ?>">
+                    <?php get_sidebar(); ?>
+                </div>
             </div>
-            <div class="blog" id="blogmain">
-                <?php
-                /* Queue the first post, that way we know
-                 * what date we're dealing with (if that is the case).
-                 *
-                 * We reset this later so we can run the loop
-                 * properly with a call to rewind_posts().
-                 */
-                if (have_posts())
-                    the_post();
-                ?>
-                <h1>
-                    <?php if (is_day()) : ?>
-                        <?php printf(__('Daily Archives: %s', 'colorway'), get_the_date()); ?>
-                    <?php elseif (is_month()) : ?>
-                        <?php printf(__('Monthly Archives: %s', 'colorway'), get_the_date('F Y')); ?>
-                    <?php elseif (is_year()) : ?>
-                        <?php printf(__('Yearly Archives: %s', 'colorway'), get_the_date('Y')); ?>
-                    <?php else : ?>
-                        <?php echo __('Blog Archives', 'colorway'); ?>
-                    <?php endif; ?>
-                </h1>
-                <?php
-                /* Since we called the_post() above, we need to
-                 * rewind the loop back to the beginning that way
-                 * we can run the loop properly, in full.
-                 */
-                rewind_posts();
-                /* Run the loop for the archives page to output the posts.
-                 * If you want to overload this in a child theme then include a file
-                 * called loop-archives.php and that will be used instead.
-                 */
-                get_template_part('loop', 'archive');
+        <?php } ?>
+
+        <div class="<?php
+        if ($center != '') {
+            echo esc_attr($center);
+        } else {
+            echo 'col-md-8';
+        }
+        ?>">
+            <!--Start Content Grid-->
+            <div class="content-wrap">
+                
+                <div class="blog" id="blogmain">
+                    <?php
+                    /* Queue the first post, that way we know
+                     * what date we're dealing with (if that is the case).
+                     *
+                     * We reset this later so we can run the loop
+                     * properly with a call to rewind_posts().
+                     */
+                    if (have_posts()) :
+                        while (have_posts()) :
+                            the_post();
+                            the_archive_title('<h1 class="page-title">', '</h1>');
+                            the_archive_description('<div class="taxonomy-description">', '</div>');
+
+
+                            /* Run the loop for the archives page to output the posts.
+                             * If you want to overload this in a child theme then include a file
+                             * called loop-archives.php and that will be used instead.
+                             */
+                            get_template_part('templates/content/content', 'loop');
+                        endwhile;
+                        ?>
+                    </div>
+                    <?php
+                    inkthemes_pagination();
+                else :
+               
+                    ?>    <div>
+                        <p> <?php get_template_part('templates/content/content', 'none'); ?> </p>
+                    </div>
+                <?php endif;
                 ?>
             </div>
-            <?php inkthemes_content_nav('nav-below'); ?>
         </div>
+        <?php if ($sidebar == 'right') { ?>
+            <div class="col-md-4 col-sm-4">
+                <div class="sidebar <?php echo esc_attr($sidebar); ?>">
+                    <?php get_sidebar(); ?>
+                </div>
+            </div>
+        <?php } ?>
+
+        <div class="clear"></div>
+        <!--End Content Grid-->
     </div>
-    <?php get_sidebar(); ?>
 </div>
-<div class="clear"></div>
-<!--End Content Grid-->
 </div>
+
 <!--End Container Div-->
 <?php get_footer(); ?>

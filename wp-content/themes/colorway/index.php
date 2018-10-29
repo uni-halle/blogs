@@ -9,25 +9,69 @@
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
  */
+get_header();
+$sidebar = '';
+$center = '';
+$a = get_option('blog-layout');
+switch ($a) {
+    case 'content-sidebar':
+        $sidebar = 'right';
+        break;
+    case 'sidebar-content':
+        $sidebar = 'left';
+        break;
+    case 'content':
+        $center = 'col-md-12 col-sm-12';
+        break;
+    default:
+        $sidebar = 'right';
+}
 ?>
-<?php get_header(); ?>
-<!--Start Content Grid--> 
-<div class="grid_24 content">
-    <div class="grid_16 alpha">
-        <div class="content-wrap">
-            <div class="content-info">
-                <?php if (function_exists('inkthemes_breadcrumbs')) inkthemes_breadcrumbs(); ?>
+    <!--Start Content Grid--> 
+    <div class="row content">
+        <?php if ($sidebar == 'left') { ?>
+            <div class="col-md-4 col-sm-4">
+                <div class="sidebar <?php echo esc_attr($sidebar); ?>">
+                    <?php get_sidebar(); ?>
+                </div>
             </div>
-            <div class="blog" id="blogmain">
-                <?php get_template_part('loop', 'index'); ?>
+        <?php } ?>
+        <div class="<?php
+        if ($center != '') {
+            echo esc_attr($center);
+        } else {
+            echo 'col-md-8';
+        }
+        ?>">
+            <div class="content-wrap">
+               
+                <div class="blog" id="blogmain">
+                    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+
+                            <?php get_template_part('templates/content/content', 'loop'); ?>
+                            <?php
+                        endwhile;
+                    else:
+                        ?>
+                        <div>
+                            <p> <?php get_template_part('templates/content/content', 'none'); ?> </p>
+                        </div>
+                    <?php endif; ?>
+                </div> 
             </div>
-            <?php inkthemes_content_nav('nav-below'); ?>
         </div>
+        <?php if ($sidebar == 'right') { ?>
+            <div class="col-md-4 col-sm-4">
+                <div class="sidebar <?php echo esc_attr($sidebar); ?>">
+                    <?php get_sidebar(); ?>
+                </div>
+            </div>
+        <?php } ?>
+        <div class="clear"></div>
+        <!--End Content Grid-->
     </div>
-    <?php get_sidebar(); ?>
 </div>
-<div class="clear"></div>
-<!--End Content Grid-->
 </div>
+
 <!--End Container Div-->
 <?php get_footer(); ?>

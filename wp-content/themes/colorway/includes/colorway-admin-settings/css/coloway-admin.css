@@ -1,0 +1,57 @@
+@font-face {
+	font-family: 'cwy-logo';
+	src:    url('fonts/cwy-logo.eot?476cfz');
+	src:    url('fonts/cwy-logo.eot?476cfz#iefix') format('embedded-opentype'),
+		url('fonts/cwy-logo.ttf?476cfz') format('truetype'),
+		url('fonts/cwy-logo.woff?476cfz') format('woff'),
+		url('fonts/cwy-logo.svg?476cfz#cwy-logo') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+#wp-admin-bar-colorway .ab-icon:before,
+#toplevel_page_colorway .wp-menu-image:before,
+[class^="cwy-icon-"],
+[class*=" cwy-icon-"] {
+	/* use !important to prevent issues with browser extensions that change fonts */
+	font-family: 'cwy-logo' !important;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#wp-admin-bar-colorway .ab-icon:before,
+#toplevel_page_colorway .wp-menu-image:before,
+.cwy-icon-logo:before {
+	content: "\e900" !important;
+}
+
+#side-sortables #colorway_settings_meta_box select {
+	min-width: 100%;
+}
+
+#normal-sortables #colorway_settings_meta_box select {
+	min-width: 200px;
+}
+
+.customize-control {
+	position: relative;
+}
+
+.customize-control .cwy-control-tooltip {
+    position: absolute;
+    top: 6px;
+    right: 0;
+}
+.customize-control.customize-control-cwy-divider .cwy-control-tooltip {
+    position: absolute;
+    top: auto;
+    bottom: 3px;
+    right: 0;
+}

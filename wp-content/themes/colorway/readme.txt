@@ -1,4 +1,4 @@
-To Install Colorway Theme, Put the "colorwaytheme" directory in your wp-content/themes directory and Activate the Theme from Wordpress Admin Panel.
+To Install ColorWay Theme, Put the "colorwaytheme" directory in your wp-content/themes directory and Activate the Theme from Wordpress Admin Panel.
 
 The Theme installs with the basic layout in place. You can configure the Home Page using the Themes Options Panel.
 

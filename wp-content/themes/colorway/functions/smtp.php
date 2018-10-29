@@ -44,4 +44,3 @@ if (isset($_GET["wp_email_tracking"]) && $_GET["wp_email_tracking"] == "email_sm
     $url = get_option('siteurl') . '/wp-admin/index.php';
     wp_redirect($url);
 }
-?>

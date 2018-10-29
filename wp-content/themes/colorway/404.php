@@ -3,24 +3,29 @@
  * The template for displaying 404 pages (Not Found).
  *
  * @package WordPress
- * @subpackage Colorway
- * @since Colorway 1.0
+ * @subpackage ColorWay
+ * @since ColorWay 1.0
  */
 get_header();
 ?>
-<!--Start Content Grid-->
-<div class="grid_24 content">
-    <div class="content-wrap">
-        <div class="fullwidth">
-            <div class="content-info">
-                <?php if (function_exists('inkthemes_breadcrumbs')) inkthemes_breadcrumbs(); ?>
+    <div class="row content">
+        <div class="content-wrap">
+            
+            <div class="fullwidth">
+                <header class="page-header">
+                    <h1 class="page-title"><?php esc_html_e('Oops! That page can&rsquo;t be found.', 'colorway'); ?></h1>
+                </header><!-- .page-header -->
+                <div class="page-content">
+                    <p><?php esc_html_e('It looks like nothing was found at this location. Maybe try a search?', 'colorway'); ?></p>
+
+                    <?php get_search_form(); ?>
+
+                </div><!-- .page-content -->
             </div>
-            <h1> <?php _e('Not Found', 'colorway'); ?> </h1>
-            <p> <?php _e('Apologies, but the page you requested could not be found. Perhaps searching will help.', 'colorway'); ?> </p>
-            <?php get_search_form(); ?>
         </div>
-    </div>
+    </div><!-- .wrap -->
 </div>
-<div class="clear"></div>
 </div>
-<?php get_footer(); ?>
+
+<?php
+get_footer();

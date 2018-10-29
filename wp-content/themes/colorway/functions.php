@@ -1,8 +1,14 @@
 <?php
+/**
+ * Define Constants
+ */
+//define( 'COLORWAY_THEME_SETTINGS', 'colorway-settings' );
+
 ob_start();
 include_once get_template_directory() . '/functions/inkthemes-functions.php';
-include_once get_template_directory() . '/functions/themes-page.php';
-include_once get_template_directory() . '/functions/customizer.php';
+include_once get_template_directory() . '/includes/customizer.php';
+include_once get_template_directory() . '/includes/colorway-admin-settings/class-colorway-admin-settings.php';
+//include_once get_template_directory() . '/includes/plugin-notification/features/feature-about-page.php';
 
 //get the theme option from options array
 function inkthemes_get_option($name, $default = '') {
@@ -10,10 +16,10 @@ function inkthemes_get_option($name, $default = '') {
     $options = get_option('inkthemes_options');
     if (isset($options[$name]) && $options[$name] != '') {
         return $options[$name];
-    } elseif ($default) {
-        if (inkthemes_get_option('colorway_dummy_data') == 'on') {
+    } elseif ($default!='') {
+        //if (inkthemes_get_option('colorway_dummy_data') == 'on') {
             return $default;
-        }
+       // }
     } else {
         return false;
     }
@@ -67,32 +73,46 @@ if (!$inkthemes_backup_data) {
 
 function inkthemes_add_stylesheet() {
     if (!is_admin()) {
-        wp_enqueue_style('inkthemes_reset_stylesheet', get_template_directory_uri() . "/css/reset.css", '', '', 'all');
-        wp_enqueue_style('inkthemes_responsive_stylesheet', get_template_directory_uri() . "/css/960_24_col_responsive.css", '', '', 'all');
+
+        wp_enqueue_style('inkthemes-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css');
+        wp_enqueue_style('inkthemes_reset_stylesheet', get_template_directory_uri() . "/assets/css/reset.css", '', '', 'all');
         wp_enqueue_style('inkthemes_stylesheet', get_template_directory_uri() . "/style.css", '', '', 'all');
-        wp_enqueue_style('inkthemes_superfish', get_template_directory_uri() . "/css/superfish.css", '', '', 'all');
-        wp_enqueue_style('inkthemes-media', get_template_directory_uri() . "/css/media.css", '', '', 'all');
-        wp_enqueue_style('inkthemes-animate', get_template_directory_uri() . "/css/animate.css", '', '', 'all');
+        wp_enqueue_style('inkthemes_superfish', get_template_directory_uri() . "/assets/css/superfish.css", '', '', 'all');
+        wp_enqueue_style('inkthemes-media', get_template_directory_uri() . "/assets/css/media.css", '', '', 'all');
+        wp_enqueue_style('inkthemes-animate', get_template_directory_uri() . "/assets/css/animate.css", '', '', 'all');
     }
 }
 
 add_action('init', 'inkthemes_add_stylesheet');
+
+/**
+ * Enqueue script for custom customize control.
+ */
+function colorway_custom_customize_enqueue() {
+    wp_enqueue_style('customizer-css', get_template_directory_uri() . '/assets/css/customizer.css');
+}
+
+add_action('customize_controls_enqueue_scripts', 'colorway_custom_customize_enqueue');
+
 /* ----------------------------------------------------------------------------------- */
 /* jQuery Enqueue */
 /* ---------------------------------------------------------------------------------- */
 
 function inkthemes_wp_enqueue_scripts() {
     if (!is_admin()) {
-        wp_enqueue_script('inkthemes_sfish', get_template_directory_uri() . "/js/superfish.js", array('jquery'));
-        wp_enqueue_script('slides', get_template_directory_uri() . '/js/jquery.flexslider.js', array('jquery'));
-        wp_enqueue_script('inkthemes_tipsy', get_template_directory_uri() . '/js/jquery.tipsy.js', array('jquery'));
-        wp_enqueue_script('inkthemes-responsive-menu-2', get_template_directory_uri() . '/js/menu/jquery.meanmenu.2.0.min.js', array('jquery'));
-        wp_enqueue_script('inkthemes-responsive-menu-2-options', get_template_directory_uri() . '/js/menu/jquery.meanmenu.options.js', array('jquery'));
-        wp_enqueue_script('inkthemes-modernizr', get_template_directory_uri() . '/js/modernizr.custom.79639.js', array('jquery'));
-        wp_enqueue_script('inkthemes-ba-cond', get_template_directory_uri() . '/js/jquery.ba-cond.js', array('jquery'), false, true);
-        wp_enqueue_script('inkthemes-slitslider', get_template_directory_uri() . '/js/jquery.slitslider.js', array('jquery'), false, true);
-        wp_enqueue_script('inkthemes-sliderinit', get_template_directory_uri() . '/js/slider-init.js', array('jquery'), false, true);
-        wp_enqueue_script('inkthemes_custom', get_template_directory_uri() . '/js/custom.js', array('jquery'));
+        wp_enqueue_script('inkthemes_sfish', get_template_directory_uri() . "/assets/js/superfish.js", array('jquery'));
+        wp_enqueue_script('slides', get_template_directory_uri() . '/assets/js/jquery.flexslider.js', array('jquery'));
+        wp_enqueue_script('inkthemes_tipsy', get_template_directory_uri() . '/assets/js/jquery.tipsy.js', array('jquery'));
+        wp_enqueue_script('inkthemes-responsive-menu-2', get_template_directory_uri() . '/assets/js/menu/jquery.meanmenu.2.0.min.js', array('jquery'));
+        //wp_enqueue_script('inkthemes-responsive-menu-2', get_template_directory_uri() . '/assets/js/menu/jquery.meanmenu.2.0.js', array('jquery'));
+        wp_enqueue_script('inkthemes-responsive-menu-2-options', get_template_directory_uri() . '/assets/js/menu/jquery.meanmenu.options.js', array('jquery'));
+        //wp_enqueue_script('inkthemes-modernizr', get_template_directory_uri() . '/assets/js/modernizr.custom.79639.js', array('jquery'));
+        wp_enqueue_script('inkthemes-min-modernizr', get_template_directory_uri() . '/assets/js/modernizr.custom.79639.min.js', array('jquery'));
+        wp_enqueue_script('inkthemes-ba-cond', get_template_directory_uri() . '/assets/js/jquery.ba-cond.js', array('jquery'), false, true);
+        wp_enqueue_script('inkthemes-slitslider', get_template_directory_uri() . '/assets/js/jquery.slitslider.js', array('jquery'), false, true);
+        wp_enqueue_script('inkthemes-sliderinit', get_template_directory_uri() . '/assets/js/slider-init.js', array('jquery'), false, true);
+        wp_enqueue_script('inkthemes_custom', get_template_directory_uri() . '/assets/js/custom.js', array('jquery'));
+//        wp_enqueue_script('inkthemes_customer-preview', get_template_directory_uri() . '/assets/js/customizer-preview.js', array('jquery'));
         if (is_singular() and get_site_option('thread_comments')) {
             wp_enqueue_script('comment-reply');
         }
@@ -100,6 +120,18 @@ function inkthemes_wp_enqueue_scripts() {
 }
 
 add_action('wp_enqueue_scripts', 'inkthemes_wp_enqueue_scripts');
+
+function colorway_customizer_preview() {
+    wp_enqueue_script(
+        'inkthemes_customizer',
+        get_template_directory_uri().'/assets/js/customizer.js',
+        array( 'jquery','customize-preview' ), false, true
+    );
+}
+add_action(
+    'customize_preview_init',
+    'colorway_customizer_preview'
+);
 
 /**
  * Enqueues the javascript for comment replys 
@@ -138,7 +170,7 @@ function colorway_migrate_option() {
     if (get_option('inkthemes_options') && !get_option('colorway_migrate_option')) {
         $theme_option = array('colorway_logo', 'colorway_favicon', 'colorway_slideimage1', 'colorway_slideimage2', 'inkthemes_fimg1', 'inkthemes_fimg2', 'inkthemes_fimg3', 'inkthemes_fimg4', 'inkthemes_testimonial_img', 'inkthemes_testimonial_img_2', 'inkthemes_testimonial_img_3');
         $wp_upload_dir = wp_upload_dir();
-        require ( ABSPATH . 'wp-admin/includes/image.php' );
+        require_once( ABSPATH . 'wp-admin/includes/image.php' );
         foreach ($theme_option as $option) {
             $option_value = inkthemes_get_option($option);
             if ($option_value && $option_value != '') {
@@ -159,7 +191,7 @@ function colorway_import_file($file, $post_id = 0, $import_date = 'file') {
     $time = current_time('mysql', 1);
 //     Next, If it's post to base the upload off:
 
-    $time = gmdate('Y-m-d H:i:s', @filemtime($file));
+    $time = gmdate('Y-m-d H:i:s',filemtime($file));
 
 
 //     A writable uploads dir will pass this test. Again, there's no point overriding this one.
@@ -188,7 +220,7 @@ function colorway_import_file($file, $post_id = 0, $import_date = 'file') {
 
         //Ok, Its in the uploads folder, But NOT in WordPress's media library.
         if ('file' == $import_date) {
-            $time = @filemtime($file);
+            $time = filemtime($file);
             if (preg_match("|(\d+)/(\d+)|", $mat[1], $datemat)) { //So lets set the date of the import to the date folder its in, IF its in a date folder.
                 $hour = $min = $sec = 0;
                 $day = 1;
@@ -213,18 +245,18 @@ function colorway_import_file($file, $post_id = 0, $import_date = 'file') {
         $filename = wp_unique_filename($uploads['path'], basename($file));
         // copy the file to the uploads dir
         $new_file = $uploads['path'] . '/' . $filename;
-        if (false === @copy($file, $new_file))
-            return new WP_Error('upload_error', sprintf(__('The selected file could not be copied to %s.', 'colorway'), $uploads['path']));
+        if (false === copy($file, $new_file))
+            return new WP_Error('upload_error', sprintf(/* translators: %s - uploads path. */__('The selected file could not be copied to %s.', 'colorway'), $uploads['path']));
 
         // Set correct file permissions
         $stat = stat(dirname($new_file));
         $perms = $stat['mode'] & 0000666;
-        @ chmod($new_file, $perms);
+         chmod($new_file, $perms);
         // Compute the URL
         $url = $uploads['url'] . '/' . $filename;
 
         if ('file' == $import_date)
-            $time = gmdate('Y-m-d H:i:s', @filemtime($file));
+            $time = gmdate('Y-m-d H:i:s', filemtime($file));
     }
 
     //Apply upload filters
@@ -273,18 +305,45 @@ function colorway_import_file($file, $post_id = 0, $import_date = 'file') {
     return $id;
 }
 
-function colorway_tracking_admin_notice() {
-    global $current_user;
-    $user_id = $current_user->ID;
-    /* Check that the user hasn't already clicked to ignore the message */
-    if (!get_user_meta($user_id, 'wp_email_tracking_ignore_notice')) {
-        ?>
-        <div class="updated um-admin-notice"><p><?php _e('Allow Colorway theme to send you setup guide? Opt-in to our newsletter and we will immediately e-mail you a setup guide along with 20% discount which you can use to purchase any theme.', 'colorway'); ?></p><p><a href="<?php echo get_template_directory_uri() . '/functions/smtp.php?wp_email_tracking=email_smtp_allow_tracking'; ?>" class="button button-primary"><?php _e('Allow Sending', 'colorway'); ?></a>&nbsp;<a href="<?php echo get_template_directory_uri() . '/functions/smtp.php?wp_email_tracking=email_smtp_hide_tracking'; ?>" class="button-secondary"><?php _e('Do not allow', 'colorway'); ?></a></p></div>
-        <?php
-    }
+if (is_admin() && isset($_GET['activated']) && $pagenow == "themes.php")
+  wp_redirect('themes.php?page=colorway');
+
+
+
+
+        ob_clean();
+        
+
+
+function colorway_custom_excerpt_length( $length ) {
+    return 25;
+}
+add_filter( 'excerpt_length', 'colorway_custom_excerpt_length', 999 );
+
+
+/**
+ * Filter the excerpt "read more" string.
+ *
+ * @param string $more "Read more" excerpt string.
+ * @return string (Maybe) modified "read more" excerpt string.
+ */
+function colorway_excerpt_more( $more ) {
+    return sprintf( '<div class="read-button"><a class="read_more" href="%1$s">%2$s<img src="'.get_template_directory_uri() . '/assets/images/arrow.png"/></a></div>',
+        get_permalink( get_the_ID() ),
+        __( 'Read Now', 'colorway' )
+    );
+}
+add_filter( 'excerpt_more', 'colorway_excerpt_more' );
+
+/**
+* Google fonts Poppins
+*/
+function colorway_google_fonts_poppins() {
+   $query_args = array(
+       'family' => 'Poppins:400,600,700',
+       'subset' => 'latin,latin-ext'
+   );
+   wp_enqueue_style('colorway_google_fonts_poppins', add_query_arg($query_args, "//fonts.googleapis.com/css"));
 }
 
-add_action('admin_notices', 'colorway_tracking_admin_notice');
-
-ob_clean();
-?>
+add_action('wp_enqueue_scripts', 'colorway_google_fonts_poppins');

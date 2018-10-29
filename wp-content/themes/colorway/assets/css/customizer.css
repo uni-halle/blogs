@@ -1,0 +1,178 @@
+#customize-controls .description{
+    margin-top:5px;
+}
+#customize-theme-controls .customize-pane-child.accordion-section-content {
+    padding: 12px;
+    /*    margin-top: 120px;*/
+}
+#customize-theme-controls .customize-pane-child.accordion-section-content, #customize-theme-controls .customize-pane-child.accordion-sub-container {
+    display: block;
+    overflow-x: hidden;
+    /*    margin-top: 120px;*/
+}
+
+.wp-core-ui .pro-btn, .wp-core-ui .button-secondary {
+    background: #18c73f;
+    border-color: #18c73f #18c73f #0a7d24;
+    box-shadow: 0 1px 0 #0a7d24;
+    color: #fff;
+    text-decoration: none;
+    /*    text-shadow: 0 -1px 1px #006799, 1px 0 1px #006799, 0 1px 1px #006799, -1px 0 1px #006799;*/
+}
+
+.wp-core-ui .button-secondary:focus, .wp-core-ui .button-secondary:hover, .wp-core-ui .pro-btn.focus, .wp-core-ui .pro-btn.hover, .wp-core-ui .pro-btn:focus, .wp-core-ui .pro-btn:hover {
+    background: #21b141;
+    border-color: #999;
+    color: #fdfdfd;
+}
+/*
+*  Customizer Range Input control CSS
+*/
+input[type=range] {
+    /*removes default webkit styles*/
+    -webkit-appearance: none;
+
+    /*fix for FF unable to apply focus style bug */
+    border: none;
+
+    /*required for proper track sizing in FF*/
+    width: 90%;
+    padding: 0;
+    margin-top: 20px;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: goldenrod;
+    margin-top: -7px;
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    background: #ddd;
+    border: none;
+    border-radius: 3px;
+}
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: goldenrod;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 5px;
+
+    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+    background: transparent;
+
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: transparent;
+    border-width: 6px 0;
+
+    /*remove default tick marks*/
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    background: #777;
+    border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+    background: #ddd;
+    border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+    border: none;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background: goldenrod;
+}
+input[type=range]:focus::-ms-fill-lower {
+    background: #888;
+}
+input[type=range]:focus::-ms-fill-upper {
+    background: #ccc;
+}
+
+li.customize-control.customize-control-radio-image{
+    background: #fff;
+    padding: 10px 0px;
+    padding-left: 8%;
+    width: 90%;
+    box-shadow: 0px 0px 7px 2px #ccc;
+}
+li#customize-control-inkthemes_options-colorway_sticky_header,
+li#customize-control-inkthemes_options-sticky_logo_setting,
+li#customize-control-stky_logo_width_option,
+li#customize-control-content_v_option{
+    background: #fff;
+    padding: 10px 0px;
+    padding-left: 8%;
+    width: 90%;
+    margin-bottom: 0;
+    /*box-shadow: 0px 0px 7px 2px #ccc;*/
+}
+li#customize-control-inkthemes_options-colorway_sticky_header {
+    box-shadow: 0 0px 20px 0 #ccc;
+}
+li#customize-control-content_v_option{
+    box-shadow: 0px 8px 13px 0px #ccc;
+    margin-bottom: 15px;
+}
+li#customize-control-inkthemes_options-colorway_sticky_header .description {  
+    width: 95%;
+    margin-top:8px;
+}
+li#customize-control-inkthemes_options-colorway_sticky_header label{
+    font-size:14px;
+    font-weight:600;    
+}
+li.customize-control.customize-control-radio-image input[type=radio] {
+    display: none;
+}
+
+#customize-controls img {
+    margin-right: 5%;
+    opacity: 0.5;
+}
+/*#customize-controls img:hover{   
+    opacity: 1;
+}*/
+
+.customize-control-radio-image .buttonset input:checked+span.screen-reader-text+img,
+#customize-controls img:hover{
+    /*border: 0.5px solid #3fc8ff;*/
+    box-shadow: 0 0 4px 3px rgba(63, 200, 255, 0.34);
+    opacity: 1!important;
+/*border-color: #00b6ff;*/
+} 
+                                                                       
+.customize-control .attachment-media-view .placeholder{
+    margin-left:-11px;
+}

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Colorway\n"
+"Project-Id-Version: ColorWay\n"
 "POT-Creation-Date: 2015-08-24 17:56+0530\n"
 "PO-Revision-Date: 2015-08-24 17:59+0530\n"
 "Last-Translator: InkThemes <inkthemes@gmail.com>\n"
@@ -207,7 +207,7 @@ msgid "Digg This!"
 msgstr ""
 
 #: footer.php:55
-msgid "Colorway Wordpress Theme</a> by InkThemes.com"
+msgid "ColorWay Wordpress Theme</a> by InkThemes.com"
 msgstr ""
 
 #: home.php:35
@@ -221,7 +221,7 @@ msgstr ""
 
 #: home.php:61
 msgid ""
-"This Colorway Wordpress Theme gives you the easiness of building your site "
+"This ColorWay Wordpress Theme gives you the easiness of building your site "
 "without any coding skills required."
 msgstr ""
 
@@ -231,7 +231,7 @@ msgstr ""
 
 #: home.php:83
 msgid ""
-"The Colorway Wordpress Theme is highly optimized for Speed. So that your "
+"The ColorWay Wordpress Theme is highly optimized for Speed. So that your "
 "website opens faster than any similar themes."
 msgstr ""
 
@@ -391,7 +391,7 @@ msgid "Theme Options"
 msgstr ""
 
 #: functions/admin-interface.php:49
-msgid "Colorway Pro Version Features"
+msgid "ColorWay Pro Version Features"
 msgstr ""
 
 #: functions/admin-interface.php:53
@@ -473,7 +473,7 @@ msgid "Your Name"
 msgstr ""
 
 #: functions/admin-interface.php:155
-msgid "Get the Colorway Pro Theme"
+msgid "Get the ColorWay Pro Theme"
 msgstr ""
 
 #: functions/admin-interface.php:156
@@ -485,7 +485,7 @@ msgid ""
 msgstr ""
 
 #: functions/admin-interface.php:157
-msgid "Get the Colorway Pro"
+msgid "Get the ColorWay Pro"
 msgstr ""
 
 #: functions/admin-interface.php:161
@@ -503,7 +503,7 @@ msgid "Get Free Support"
 msgstr ""
 
 #: functions/admin-interface.php:167
-msgid "Extra Benefits With Colorway Pro"
+msgid "Extra Benefits With ColorWay Pro"
 msgstr ""
 
 #: functions/admin-interface.php:168

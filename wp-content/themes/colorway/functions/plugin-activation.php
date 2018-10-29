@@ -332,49 +332,49 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 			$this->strings = array(
 				'page_title'                      => __( 'Install Required Plugins', 'colorway' ),
 				'menu_title'                      => __( 'Install Plugins', 'colorway' ),
-				'installing'                      => __( 'Installing Plugin: %s', 'colorway' ),
+				'installing'                      => /* translators: %s - plugin name. */ __( 'Installing Plugin: %s', 'colorway' ),
 				'oops'                            => __( 'Something went wrong with the plugin API.', 'colorway' ),
-				'notice_can_install_required'     => _n_noop(
+				'notice_can_install_required'     => /* translators: %s - plugin name. */ _n_noop(
 					'This theme requires the following plugin: %1$s.',
 					'This theme requires the following plugins: %1$s.',
 					'colorway'
 				),
-				'notice_can_install_recommended'  => _n_noop(
+				'notice_can_install_recommended'  => /* translators: %s - plugin name. */ _n_noop(
 					'This theme recommends the following plugin: %1$s.',
 					'This theme recommends the following plugins: %1$s.',
 					'colorway'
 				),
-				'notice_cannot_install'           => _n_noop(
+				'notice_cannot_install'           => /* translators: %s - plugin name. */ _n_noop(
 					'Sorry, but you do not have the correct permissions to install the %1$s plugin.',
 					'Sorry, but you do not have the correct permissions to install the %1$s plugins.',
 					'colorway'
 				),
-				'notice_ask_to_update'            => _n_noop(
+				'notice_ask_to_update'            => /* translators: %s - plugin name. */ _n_noop(
 					'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.',
 					'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.',
 					'colorway'
 				),
-				'notice_ask_to_update_maybe'      => _n_noop(
+				'notice_ask_to_update_maybe'      => /* translators: %s - plugin name. */ _n_noop(
 					'There is an update available for: %1$s.',
 					'There are updates available for the following plugins: %1$s.',
 					'colorway'
 				),
-				'notice_cannot_update'            => _n_noop(
+				'notice_cannot_update'            => /* translators: %s - plugin name. */ _n_noop(
 					'Sorry, but you do not have the correct permissions to update the %1$s plugin.',
 					'Sorry, but you do not have the correct permissions to update the %1$s plugins.',
 					'colorway'
 				),
-				'notice_can_activate_required'    => _n_noop(
+				'notice_can_activate_required'    => /* translators: %s - plugin name. */ _n_noop(
 					'The following required plugin is currently inactive: %1$s.',
 					'The following required plugins are currently inactive: %1$s.',
 					'colorway'
 				),
-				'notice_can_activate_recommended' => _n_noop(
+				'notice_can_activate_recommended' => /* translators: %s - plugin name. */ _n_noop(
 					'The following recommended plugin is currently inactive: %1$s.',
 					'The following recommended plugins are currently inactive: %1$s.',
 					'colorway'
 				),
-				'notice_cannot_activate'          => _n_noop(
+				'notice_cannot_activate'          => /* translators: %s - plugin name. */ _n_noop(
 					'Sorry, but you do not have the correct permissions to activate the %1$s plugin.',
 					'Sorry, but you do not have the correct permissions to activate the %1$s plugins.',
 					'colorway'
@@ -398,9 +398,9 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 				'dashboard'                       => __( 'Return to the dashboard', 'colorway' ),
 				'plugin_activated'                => __( 'Plugin activated successfully.', 'colorway' ),
 				'activated_successfully'          => __( 'The following plugin was activated successfully:', 'colorway' ),
-				'plugin_already_active'           => __( 'No action taken. Plugin %1$s was already active.', 'colorway' ),
+				'plugin_already_active'           => /* translators: %s - plugin name. */ __( 'No action taken. Plugin %1$s was already active.', 'colorway' ),
 				'plugin_needs_higher_version'     => __( 'Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin.', 'colorway' ),
-				'complete'                        => __( 'All plugins installed and activated successfully. %1$s', 'colorway' ),
+				'complete'                        => /* translators: %s - plugin name. */ __( 'All plugins installed and activated successfully. %1$s', 'colorway' ),
 				'dismiss'                         => __( 'Dismiss this notice', 'colorway' ),
 				'contact_admin'                   => __( 'Please contact the administrator of this site for help.', 'colorway' ),
 			);
@@ -710,9 +710,8 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 			if ( empty( $_GET['plugin'] ) ) {
 				return false;
 			}
-
 			// All plugin information will be stored in an array for processing.
-			$slug = $this->sanitize_key( urldecode( $_GET['plugin'] ) );
+			$slug = $this->sanitize_key( urldecode( $_GET['plugin']));
 
 			if ( ! isset( $this->plugins[ $slug ] ) ) {
 				return false;
@@ -1878,7 +1877,7 @@ if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
 		 */
 		public function show_tgmpa_version() {
 			echo '<p style="float: right; padding: 0em 1.5em 0.5em 0;"><strong><small>',
-				esc_html( sprintf( _x( 'TGMPA v%s', '%s = version number', 'colorway' ), self::TGMPA_VERSION ) ),
+				esc_html( sprintf( /* translators: %s - version number. */ _x( 'TGMPA v%s', '%s = version number', 'colorway' ), self::TGMPA_VERSION ) ),
 				'</small></strong></p>';
 		}
 
@@ -2030,10 +2029,11 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 				)
 			);
 
-			if ( isset( $_REQUEST['plugin_status'] ) && in_array( $_REQUEST['plugin_status'], array( 'install', 'update', 'activate' ), true ) ) {
+			if ( isset( $_REQUEST['plugin_status'] ) && in_array( wp_unslash($_REQUEST['plugin_status']), array( 'install', 'update', 'activate' ), true ) ) {
 				$this->view_context = sanitize_key( $_REQUEST['plugin_status'] );
 			}
 
+                        
 			add_filter( 'tgmpa_table_data_items', array( $this, 'sort_table_items' ) );
 		}
 
@@ -2232,7 +2232,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 			}
 
 			return sprintf(
-				_x( '%1$s, %2$s', '%1$s = install status, %2$s = update status', 'colorway' ),
+				/* translators: %s - install status, %s - update status. */_x( '%1$s, %2$s', '%1$s = install status, %2$s = update status', 'colorway' ),
 				$install_status,
 				$update_status
 			);
@@ -2277,16 +2277,16 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 
 				switch ( $type ) {
 					case 'all':
-						$text = _nx( 'All <span class="count">(%s)</span>', 'All <span class="count">(%s)</span>', $count, 'plugins', 'colorway' );
+						$text = /* translators: %s - plugin name. */_nx( 'All <span class="count">(%s)</span>', 'All <span class="count">(%s)</span>', $count, 'plugins', 'colorway' );
 						break;
 					case 'install':
-						$text = _n( 'To Install <span class="count">(%s)</span>', 'To Install <span class="count">(%s)</span>', $count, 'colorway' );
+						$text = /* translators: %s - plugin name. */_n( 'To Install <span class="count">(%s)</span>', 'To Install <span class="count">(%s)</span>', $count, 'colorway' );
 						break;
 					case 'update':
-						$text = _n( 'Update Available <span class="count">(%s)</span>', 'Update Available <span class="count">(%s)</span>', $count, 'colorway' );
+						$text = /* translators: %s - plugin name. */_n( 'Update Available <span class="count">(%s)</span>', 'Update Available <span class="count">(%s)</span>', $count, 'colorway' );
 						break;
 					case 'activate':
-						$text = _n( 'To Activate <span class="count">(%s)</span>', 'To Activate <span class="count">(%s)</span>', $count, 'colorway' );
+						$text = /* translators: %s - plugin name. */_n( 'To Activate <span class="count">(%s)</span>', 'To Activate <span class="count">(%s)</span>', $count, 'colorway' );
 						break;
 					default:
 						$text = '';
@@ -2419,7 +2419,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 		 * @since 2.2.0
 		 */
 		public function no_items() {
-			printf( wp_kses_post( __( 'No plugins to install, update or activate. <a href="%1$s">Return to the Dashboard</a>', 'colorway' ) ), esc_url( self_admin_url() ) );
+			printf( wp_kses_post( /* translators: %s - plugin name. */__( 'No plugins to install, update or activate. <a href="%1$s">Return to the Dashboard</a>', 'colorway' ) ), esc_url( self_admin_url() ) );
 			echo '<style type="text/css">#adminmenu .wp-submenu li.current { display: none !important; }</style>';
 		}
 
@@ -2488,16 +2488,16 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 
 			// Display the 'Install' action link if the plugin is not yet available.
 			if ( ! $this->tgmpa->is_plugin_installed( $item['slug'] ) ) {
-				$actions['install'] = _x( 'Install %2$s', '%2$s = plugin name in screen reader markup', 'colorway' );
+				$actions['install'] = /* translators: %s - plugin name. */ _x( 'Install %2$s', '%2$s = plugin name in screen reader markup', 'colorway' );
 			} else {
 				// Display the 'Update' action link if an update is available and WP complies with plugin minimum.
 				if ( false !== $this->tgmpa->does_plugin_have_update( $item['slug'] ) && $this->tgmpa->can_plugin_update( $item['slug'] ) ) {
-					$actions['update'] = _x( 'Update %2$s', '%2$s = plugin name in screen reader markup', 'colorway' );
+					$actions['update'] = /* translators: %s - plugin name. */ _x( 'Update %2$s', '%2$s = plugin name in screen reader markup', 'colorway' );
 				}
 
 				// Display the 'Activate' action link, but only if the plugin meets the minimum version.
 				if ( $this->tgmpa->can_plugin_activate( $item['slug'] ) ) {
-					$actions['activate'] = _x( 'Activate %2$s', '%2$s = plugin name in screen reader markup', 'colorway' );
+					$actions['activate'] = /* translators: %s - plugin name. */ _x( 'Activate %2$s', '%2$s = plugin name in screen reader markup', 'colorway' );
 				}
 			}
 
@@ -2651,10 +2651,10 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 				}
 
 				if ( is_array( $_POST['plugin'] ) ) {
-					$plugins_to_install = (array) $_POST['plugin'];
-				} elseif ( is_string( $_POST['plugin'] ) ) {
+					$plugins_to_install = (array) sanitize_key(wp_unslash($_POST['plugin']));
+				} elseif ( is_string( sanitize_key(wp_unslash($_POST['plugin'] ) ))) {
 					// Received via Filesystem page - un-flatten array (WP bug #19643).
-					$plugins_to_install = explode( ',', $_POST['plugin'] );
+					$plugins_to_install = explode( ',', sanitize_key(wp_unslash($_POST['plugin'] )));
 				}
 
 				// Sanitize the received input.
@@ -2793,7 +2793,7 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
 				// Grab plugin data from $_POST.
 				$plugins = array();
 				if ( isset( $_POST['plugin'] ) ) {
-					$plugins = array_map( 'urldecode', (array) $_POST['plugin'] );
+					$plugins = array_map( 'urldecode', (array) sanitize_key(wp_unslash($_POST['plugin'])) );
 					$plugins = array_map( array( $this->tgmpa, 'sanitize_key' ), $plugins );
 				}
 
@@ -3359,23 +3359,23 @@ if ( ! function_exists( 'tgmpa_load_bulk_installer' ) ) {
 					public function add_strings() {
 						if ( 'update' === $this->options['install_type'] ) {
 							parent::add_strings();
-							$this->upgrader->strings['skin_before_update_header'] = __( 'Updating Plugin %1$s (%2$d/%3$d)', 'colorway' );
+							$this->upgrader->strings['skin_before_update_header'] = /* translators: %s - plugin name. */ __( 'Updating Plugin %1$s (%2$d/%3$d)', 'colorway' );
 						} else {
-							$this->upgrader->strings['skin_update_failed_error'] = __( 'An error occurred while installing %1$s: <strong>%2$s</strong>.', 'colorway' );
-							$this->upgrader->strings['skin_update_failed']       = __( 'The installation of %1$s failed.', 'colorway' );
+							$this->upgrader->strings['skin_update_failed_error'] = /* translators: %s - plugin name. */ __( 'An error occurred while installing %1$s: <strong>%2$s</strong>.', 'colorway' );
+							$this->upgrader->strings['skin_update_failed']       = /* translators: %s - plugin name. */ __( 'The installation of %1$s failed.', 'colorway' );
 
 							if ( $this->tgmpa->is_automatic ) {
 								// Automatic activation strings.
 								$this->upgrader->strings['skin_upgrade_start']        = __( 'The installation and activation process is starting. This process may take a while on some hosts, so please be patient.', 'colorway' );
-								$this->upgrader->strings['skin_update_successful']    = __( '%1$s installed and activated successfully.', 'colorway' ) . ' <a href="#" class="hide-if-no-js" onclick="%2$s"><span>' . esc_html__( 'Show Details', 'colorway' ) . '</span><span class="hidden">' . esc_html__( 'Hide Details', 'colorway' ) . '</span>.</a>';
+								$this->upgrader->strings['skin_update_successful']    = /* translators: %s - plugin name. */ __( '%1$s installed and activated successfully.', 'colorway' ) . ' <a href="#" class="hide-if-no-js" onclick="%2$s"><span>' . esc_html__( 'Show Details', 'colorway' ) . '</span><span class="hidden">' . esc_html__( 'Hide Details', 'colorway' ) . '</span>.</a>';
 								$this->upgrader->strings['skin_upgrade_end']          = __( 'All installations and activations have been completed.', 'colorway' );
-								$this->upgrader->strings['skin_before_update_header'] = __( 'Installing and Activating Plugin %1$s (%2$d/%3$d)', 'colorway' );
+								$this->upgrader->strings['skin_before_update_header'] = /* translators: %s - plugin name. */ __( 'Installing and Activating Plugin %1$s (%2$d/%3$d)', 'colorway' );
 							} else {
 								// Default installation strings.
 								$this->upgrader->strings['skin_upgrade_start']        = __( 'The installation process is starting. This process may take a while on some hosts, so please be patient.', 'colorway' );
-								$this->upgrader->strings['skin_update_successful']    = esc_html__( '%1$s installed successfully.', 'colorway' ) . ' <a href="#" class="hide-if-no-js" onclick="%2$s"><span>' . esc_html__( 'Show Details', 'colorway' ) . '</span><span class="hidden">' . esc_html__( 'Hide Details', 'colorway' ) . '</span>.</a>';
+								$this->upgrader->strings['skin_update_successful']    = /* translators: %s - plugin name. */ esc_html__( '%1$s installed successfully.', 'colorway' ) . ' <a href="#" class="hide-if-no-js" onclick="%2$s"><span>' . esc_html__( 'Show Details', 'colorway' ) . '</span><span class="hidden">' . esc_html__( 'Hide Details', 'colorway' ) . '</span>.</a>';
 								$this->upgrader->strings['skin_upgrade_end']          = __( 'All installations have been completed.', 'colorway' );
-								$this->upgrader->strings['skin_before_update_header'] = __( 'Installing Plugin %1$s (%2$d/%3$d)', 'colorway' );
+								$this->upgrader->strings['skin_before_update_header'] = /* translators: %s - plugin name. */ __( 'Installing Plugin %1$s (%2$d/%3$d)', 'colorway' );
 							}
 						}
 					}

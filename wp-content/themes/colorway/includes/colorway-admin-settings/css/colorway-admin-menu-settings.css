@@ -1,0 +1,476 @@
+/**
+ * CSS code for all ColorWay Extensions admin screens
+ *
+ * @package ColorWay
+ * @since 1.0.0
+ */
+
+.cwy-clear:before, .cwy-clear:after {
+    content: " ";
+    display: table;
+}
+.cwy-clear:after {
+    clear: both;
+}
+
+/**
+ * Error Message
+ */
+#message {
+    display: block;
+    margin-left: 0;
+}
+
+/**
+ * CSS code for all ColorWay Extensions admin screens
+ *
+ * @package ColorWay
+ * @since 1.2.4
+ */
+/**
+ * ColorWay Welcome Page
+ */
+.appearance_page_colorway #wpcontent{
+    padding: 0;
+}
+.cwy-menu-page-wrapper.wrap{
+    margin: 0;
+}
+.cwy-menu-page-wrapper a{
+    text-decoration: none;
+}
+.cwy-theme-page-header {
+    background-color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 0 #efefef, 0 2px 2px #ececec;
+}
+.cwy-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.cwy-container .cwy-normal-cusror.hndle{
+    cursor: initial;
+}
+.cwy-container .postbox .hndle{
+    background: #f7f7f7;
+    border-bottom: 2px solid #e6e6e6;
+}
+
+.cwy-container .colorway-sites-box h2 {
+    padding: 12px 12px;
+/*    color: #fff;*/
+    color: #000;
+/*   background-color: #893fee;
+    border-bottom: 2px solid #e6e6e6; */
+}
+.colorway-sites-box a.cwy-sites-notinstalled{
+    margin: 10px 0;
+}
+
+.colorway-sites-box span.head-color{
+        font-size: 20px;
+    font-weight: 400;
+}
+.colorway-sites-box .cwy-normal-cusror .dashicons{
+    color: #893fee;
+    margin-left: 20px;
+    font-size: 22px;
+    padding: 5px;
+}
+/* Top Right Links. */
+.cwy-top-links {
+    flex: auto;
+    text-align: right;
+}
+
+.cwy-top-links ul{
+    margin: 0;
+}
+.cwy-top-links ul li {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+.cwy-container.cwy-welcome,
+.general .cwy-container {
+    max-width: 930px;
+}
+.cwy-quick-setting-section span.dashicons {
+    margin: 1px 3px 0 10px;
+}
+.cwy-container div.notice,
+.cwy-container div.updated,
+.cwy-container div.error{
+    margin-top: 0;
+    display: none;
+}
+.cwy-container #poststuff h2{
+    padding: 20px 12px;
+}
+.cwy-flex{
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+}
+.cwy-theme-title {
+    flex: auto;
+    align-content: flex-start;
+    text-align: left;
+}
+.cwy-theme-title a,
+.cwy-theme-title span{
+    font-size: 1.5rem;
+    color: #333333;
+    font-weight: 500;
+}
+
+.cwy-theme-icon{
+    width: 125px;
+    vertical-align: bottom;
+}
+
+/**
+ * ColorWay Quick Settings
+ */
+.cwy-quick-setting-section ul,
+.cwy-addon-list-section ul{
+    margin: 0;
+}
+.cwy-quick-setting-section li{
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0;
+}
+.cwy-addon-list-section li{
+    -moz-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1) inset;
+    -webkit-box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1) inset;
+    margin-bottom: 0;
+}
+.cwy-quick-setting-section li{
+    padding: 10px 0;
+}
+.cwy-quick-setting-section li:nth-child(odd){
+    width: 50%;
+}
+.cwy-quick-setting-section li:nth-child(even){
+    width: 50%;
+}
+.cwy-quick-setting-section li a{
+    margin: 5px;
+    display: inline-block;
+}
+.cwy-addon-list-section li{
+    padding: 10px 15px;
+}
+.cwy-quick-setting-section a.cwy-quick-setting-title{
+    flex: auto;
+}
+
+.cwy-addon-list-section .cwy-addon-list li {
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    padding: 10px 15px; 
+}
+
+.cwy-addon-list-section .cwy-addon-list li:nth-child(even){
+    background-color: #fbfbfb;
+}
+
+.cwy-addon-link-wrapper{
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    display: -webkit-flex;
+    -webkit-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    flex: auto;
+}
+.cwy-addon-link-wrapper a{
+    line-height: 1.6;
+}
+.cwy-addon-link-wrapper a:nth-child(even){
+    margin: 0 10px;
+}
+
+/**
+ * ColorWay Welcome screen sidebar
+ */
+.cwy-sidebar .hndle .dashicons{
+    margin: 0 5px 0 0;
+}
+
+@media (max-width: 544px){
+    .cwy-quick-setting-section li{
+        width: 100%;
+    }
+}
+
+/**
+ * ColorWay Custom Notice for static position
+ */
+.cwy-notice{
+    margin-bottom: 20px;
+}
+.cwy-notice.cwy-notice-error{
+    border-left-color: #dc3232;
+}
+
+.cwy-notice{
+    background: #fff;
+    border-left: 4px solid #fff;
+    box-shadow: 0 1px 1px 0 rgba( 0, 0, 0, 0.1 );
+    padding: 1px 12px;
+}
+
+.cwy-notice p{
+    margin: 0.5em 0;
+    padding: 2px;
+}
+
+#poststuff #post-body.columns-2 #side-sortables {
+    width: 100%;
+}
+#poststuff #post-body.columns-2 {
+    margin-right: auto;
+}
+#post-body.columns-2 #side-sortables {
+    min-height: 25px;
+}
+a.button.cwy-sites-inactive {
+    color: #fff;
+    border-color: #37ab42;
+    background: #46b450;
+    box-shadow: 2px 2px 0 #d4d4d46e;
+    vertical-align: top;
+    padding: 3px 14px;
+    height: 34px;
+    font-weight: 500;
+}
+a.button.cwy-sites-inactive:hover{
+    background: #35843c;
+    border-color: #37ab42;
+    color: #fff;
+}
+
+a.button.cwy-sites-notinstalled {
+    color: #fff;
+    border-color: #37ab42;
+    background: #46b450;
+    box-shadow: 2px 2px 0 #d4d4d46e;
+    vertical-align: top;
+    padding: 3px 14px;
+    height: 34px;
+    font-weight: 500;
+}
+a.button.cwy-sites-notinstalled:hover{
+    background: #35843c;
+    border-color: #37ab42;
+    color: #fff;
+}
+.postbox.colorway-sites-box {
+    box-shadow: 0px 0px 21px 6px #ccc;
+/*    border: none;*/
+    border-bottom: 5px solid #893fee;
+/*    min-height: 210px;*/
+}
+p.inside-desc a {
+    line-height: 24px;
+}
+.postbox.colorway-sites-box p {
+    font-size: 16px;
+    line-height: 12px;
+        margin-bottom: 30px;
+}
+
+.postbox.colorway-sites-box .inside {
+    padding-left: 36px;
+margin-bottom: 15px !important;
+}
+
+.postbox.colorway-sites-box .inside a{
+    font-size: 15px;
+}
+.box-content {
+    width: 70%;
+}
+.colorway-box-image {
+    float: right;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.postbox1 {
+    /* min-width: 255px; */
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    width: 100%;
+        margin-right: 30px;
+}
+.cwy-container #poststuff .postbox1 h2 {
+    padding: 20px 12px;
+        background: #f7f7f7;
+    border-bottom: 2px solid #e6e6e6;
+}
+.cwy-container-iframe{   
+    margin-bottom: 20px;
+}
+.cwy-video-section iframe{
+       width: -webkit-fill-available;
+       height: 240px;
+}
+
+
+/*media queries
+=======================*/
+
+@media only screen and (max-width: 960px) and (min-width: 768px){
+    .box-content {
+    width: 65%;
+}
+.colorway-box-image img{
+    width: 80%;
+    position: relative;
+    left: 40px;
+    top: 20px;
+}
+}
+
+@media only screen and (max-width: 767px){
+        .box-content {
+    width: 100%;
+}
+.colorway-box-image img{
+/*    width: 75%;
+    position: relative;
+    left: 70px;
+    top: 33px;*/
+display: none;
+}
+.postbox1{
+    width: 100%;
+        display: inline-block;
+}
+}
+@media (min-width: 992px){
+    .colorway-box-image img{
+    width: 80%;
+    position: relative;
+    left: 30px;
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .colorway-box-image img{
+        display: none;
+    }
+    .box-content {
+    width: 100%;
+}
+.postbox.colorway-sites-box .inside a {
+    font-size: 14px;
+}
+.colorway-sites-box span.head-color {
+    font-size: 18px;
+}
+.cwy-container #poststuff h2 {
+    padding: 20px 0px;
+}
+.postbox.colorway-sites-box p {
+    font-size: 14px;
+    line-height: 20px;
+}
+.cwy-quick-setting-section li:nth-child(odd){
+    width: 100%;
+}
+.cwy-quick-setting-section li:nth-child(even){
+    width: 100%;
+}
+.postbox1{
+    width: 100%;
+}
+}
+
+.embed-container {
+   position: relative;
+   padding-bottom: 39.25%;
+   height: 0;
+   overflow: visible;
+   max-width: 100%;
+   width: 100%;
+   margin: 0 auto;
+} 
+.embed-container iframe, 
+.embed-container object, 
+.embed-container embed { 
+   position: absolute; 
+   top: 0; 
+   left: 0; 
+   width: 100%; 
+   height: 100%; 
+}
+
+.box-content .inside a.active:hover {
+    background: #35843c;
+    border-color: #37ab42;
+    color: #fff;
+}
+
+.box-content .inside a.active {
+    color: #fff;
+    border-color: #37ab42;
+    background: #46b450;
+    box-shadow: 2px 2px 0 #d4d4d46e;
+    vertical-align: top;
+    padding: 5px 15px;
+    height: 34px;
+    font-weight: 500;
+    margin-bottom: 15px;
+    border-radius: 3px;
+}

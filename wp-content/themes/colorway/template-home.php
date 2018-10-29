@@ -3,207 +3,248 @@
  * Template Name: Home Page
  */
 ?>
-<?php get_header(); ?>
+<?php
+get_header();
+?>
+
 <!--Start Slider-->
 <?php
 if (inkthemes_get_option('colorway_home_page_slider') != 'off') {
-    get_template_part('slit_slider');
+    get_template_part('templates/slit_slider');
 } else {
     ?>
     <div class="heading_section"></div>
 <?php }
 ?>
-<div class="clear"></div>
+<div class="clearfix"></div>
 <!--End Slider-->
 <!--Start Content Grid-->
-<div class="grid_24 content">
+<div class="row content">
     <div class="content-wrapper">
-        <div class="content-info home">
+        <div class="home inkthemes_mainheading">
             <center>
                 <h2>
-                    <?php // if (inkthemes_get_option('inkthemes_mainheading') != '') { ?>
-                    <?php echo inkthemes_get_option('inkthemes_mainheading', __('Design is not just what it looks like and feels like. Design is how it works.', 'colorway')); ?>
-                    <?php // } ?>
+                    <?php //if (inkthemes_get_option('inkthemes_mainheading') != '') { ?>
+                    <?php echo esc_html(inkthemes_get_option('inkthemes_mainheading', __('Design is not just what it looks like and feels like. Design is how it works.', 'colorway'))); ?>
+                    <?php //}  ?>
                 </h2>
             </center>
         </div>
-        <div class="clear"></div>
-        <div  id="content">
-            <?php
-            if ((inkthemes_get_option('inkthemes_fimg1') || inkthemes_get_option('inkthemes_fimg2') || inkthemes_get_option('inkthemes_fimg3') || inkthemes_get_option('inkthemes_fimg4')) || inkthemes_get_option('colorway_dummy_data') == 'on') {
-                ?>
-                <div class="columns">
-                    <div class="one_fourth animated" style="-webkit-animation-delay: .4s; -moz-animation-delay: .4s; -o-animation-delay: .4s; -ms-animation-delay: .4s;">
-                        <a href="<?php echo inkthemes_get_option('inkthemes_link1', '#'); ?>" class="bigthumbs">
-                            <div class='img_thumb_feature'><span></span>
-                                <img src="<?php echo inkthemes_get_option('inkthemes_fimg1', get_template_directory_uri() . '/images/1.jpg'); ?>"/>
-                            </div>
-                        </a>
-                        <h2><a href="<?php echo inkthemes_get_option('inkthemes_link1', '#'); ?>"><?php echo inkthemes_get_option('inkthemes_headline1', __('Power of Easiness', 'colorway')); ?></a></h2>
-                        <p><?php echo inkthemes_get_option('inkthemes_feature1', __('This Colorway Wordpress Theme gives you the easiness of building your site without any coding skills required.', 'colorway')); ?></p>
-                    </div>
-                    <div class="one_fourth middle animated" style="-webkit-animation-delay: .8s; -moz-animation-delay: .8s; -o-animation-delay: .8s; -ms-animation-delay: .8s;">
-                        <a href="<?php echo inkthemes_get_option('inkthemes_link2', '#'); ?>" class="bigthumbs">
-                            <div class='img_thumb_feature'><span></span>
-                                <img src="<?php echo inkthemes_get_option('inkthemes_fimg2', get_template_directory_uri() . '/images/2.jpg'); ?>"/>
-                            </div>
-                        </a>
-                        <h2><a href="<?php echo inkthemes_get_option('inkthemes_link2', '#'); ?>"><?php echo inkthemes_get_option('inkthemes_headline2', __('Power of Speed', 'colorway')); ?></a></h2>
-                        <p><?php echo inkthemes_get_option('inkthemes_feature2', __('The Colorway Wordpress Theme is highly optimized for Speed. So that your website opens faster than any similar themes.', 'colorway')); ?></p>
-                    </div>
-                    <div class="one_fourth animated" style="-webkit-animation-delay: 1.2s; -moz-animation-delay: 1.2s; -o-animation-delay: 1.2s; -ms-animation-delay: 1.2s;">
-                        <a href="<?php echo inkthemes_get_option('inkthemes_link3', '#'); ?>" class="bigthumbs">
-                            <div class='img_thumb_feature'><span></span>			
-                                <img src="<?php echo inkthemes_get_option('inkthemes_fimg3', get_template_directory_uri() . '/images/3.jpg'); ?>"/>
-                            </div>
-                        </a>
-                        <h2><a href="<?php echo inkthemes_get_option('inkthemes_link3', '#'); ?>"><?php echo inkthemes_get_option('inkthemes_headline3', __('Power of SEO', 'colorway')); ?></a></h2>
-                        <p><?php echo inkthemes_get_option('inkthemes_feature3', __('Visitors to the Website are very highly desirable. With the SEO Optimized Themes, You get more traffic from Google.', 'colorway')); ?></p>
-                    </div>
-                    <div class="one_fourth last animated" style="-webkit-animation-delay: 1.6s; -moz-animation-delay: 1.6s; -o-animation-delay: 1.6s; -ms-animation-delay: 1.6s;">
-                        <a href="<?php echo inkthemes_get_option('inkthemes_link4', '#'); ?>" class="bigthumbs">
-                            <div class='img_thumb_feature'><span></span>			
-                                <img src="<?php echo inkthemes_get_option('inkthemes_fimg4', get_template_directory_uri() . '/images/4.jpg'); ?>"/>
-                            </div>
-                        </a>
-                        <h2><a href="<?php echo inkthemes_get_option('inkthemes_link4', '#'); ?>"><?php echo inkthemes_get_option('inkthemes_headline4', __('Ready Contact Form', 'colorway')); ?></a></h2>
-                        <p><?php echo inkthemes_get_option('inkthemes_feature4', __('Let your visitors easily contact you. The builtin readymade contact form makes it easier for clients to contact.', 'colorway')); ?></p>
-                    </div>
-                </div>   
-            <?php } else {
-                ?>
-                <div><?php _e('Please go to Appearance-> Customize-> Feature Area Settings and add atleast one image in any feature box to the "ColorWay Homepage". You can enable dummy data option from the Appearance-> Customize-> General Settings to set up the theme like the demo website.', 'colorway'); ?></div>
-            <?php } ?>
-        </div>
-        <div class="clear"></div>
-        <?php if (inkthemes_get_option('colorway_home_page_blog_post') != 'off') { ?>
-            <div class="feature_blog_content">
-                <div class=" grid_12 testimonial_div alpha animated fade_left">
-                    <?php if (is_active_sidebar('home-page-right-feature-widget-area')) : ?>
-                        <div class="sidebar home">
-                            <?php dynamic_sidebar('home-page-right-feature-widget-area'); ?>
-                        </div>
-                    <?php else : ?>			
-                        <div class="feature_widget">
-                            <h2><?php echo stripslashes(inkthemes_get_option('inkthemes_widget_head', __('Widgetized Area', 'colorway'))); ?></h2>
-                            <?php if (inkthemes_get_option('inkthemes_widget_desc') != '') { ?>
-                                <div class="feature_widget_desc"><?php echo stripslashes(inkthemes_get_option('inkthemes_widget_desc')); ?></div>
-                                <?php
-                            } else {
-                                if (inkthemes_get_option('colorway_dummy_data') == 'on') {
-                                    ?>
-                                    <div class="feature_widget_desc">
-                                        <img class="widget_img" src="<?php echo get_template_directory_uri(); ?>/images/widget_img.png" />
+        <!--        <div class="clearfix"></div>-->
+        <?php if (inkthemes_get_option('feature_on_off', 'on') != 'off') { ?>
+            <div id="content">
+
+                <?php
+                $left = '';
+                $right = '';
+                $feature2 = '';
+
+                $n = inkthemes_get_option('colorway_feature_select', 4);
+
+                $class = '';
+                switch ($n) {
+                    case '1':
+                        $class = 'col-md-12';
+                        $left = 'col-md-4';
+                        $right = 'col-md-8';
+                        $feature = 'feature-area1';
+                        break;
+                    case '2':
+                        $class = 'col-md-6 col-sm-6';
+                        $feature = 'feature-area2';
+                        break;
+                    case '3':
+                        $class = 'col-md-4 col-sm-6';
+                        $feature = 'feature-area3';
+                        break;
+                    case '4':
+                        $class = 'col-md-3 col-sm-3';
+                        break;
+                    default:
+                        $class = 'col-md-3 col-sm-3';
+                        break;
+                }
+
+                if ((inkthemes_get_option('inkthemes_fimg1') || inkthemes_get_option('inkthemes_fimg2') || inkthemes_get_option('inkthemes_fimg3') || inkthemes_get_option('inkthemes_fimg4')) || inkthemes_get_option('colorway_dummy_data', 'off') != 'off') {
+                    ?>
+                    <div class="row columns">
+
+                        <?php for ($i = 1; $i <= $n; $i++) { ?>
+                            <div class="<?php echo esc_attr($class); ?>">
+                                <div class="one_fourth<?php echo esc_attr($i) ?> animated inkthemes_fimg<?php echo esc_attr($i); ?> <?php
+                                if (!isset($feature) || $feature != '') {
+                                    echo esc_attr($feature);
+                                }
+                                ?>" style="-webkit-animation-delay: .4s; -moz-animation-delay: .4s; -o-animation-delay: .4s; -ms-animation-delay: .4s;">
+                                    <a href="<?php echo esc_url(inkthemes_get_option('inkthemes_link' . $i, '#')); ?>" class="bigthumbs">
+                                        <div class='img_thumb_feature <?php
+                                        if (!isset($left) || $left != '') {
+                                            echo esc_attr($left);
+                                        }
+                                        ?>'><span></span>
+                                            <img src="<?php echo esc_url(inkthemes_get_option('inkthemes_fimg' . $i, 'https://inkthemes.com/wpthemes/wp-content/uploads/sites/5/2014/08/Small-2.jpg')); ?>"/>
+                                        </div>
+                                    </a>
+                                    <div class="content <?php
+                                    if (!isset($right) || $right != '') {
+                                        echo esc_attr($right);
+                                    }
+                                    ?>">
+                                        <h6 class="feat_head inkthemes_headline<?php echo esc_attr($i); ?>"><a href="<?php echo esc_url(inkthemes_get_option('inkthemes_link' . $i, '#')); ?>"><?php echo esc_html(inkthemes_get_option('inkthemes_headline' . $i, __('Power of Easiness', 'colorway'))); ?></a></h6>
+                                        <div class="inkthemes_feature<?php echo esc_attr($i) ?>"><p><?php echo esc_html(inkthemes_get_option('inkthemes_feature' . $i, __('This ColorWay Wordpress Theme gives you the easiness of building your site without any coding skills required.', 'colorway'))); ?></p></div>
                                     </div>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>  
+                    <div class="border-feature"></div>
+                <?php } else {
+                    ?>
+                    <div><?php esc_html_e('Please go to Appearance-> Customize-> Feature Area Settings and add atleast one image in any feature box to the "ColorWay Homepage". You can enable dummy data option from the Appearance-> Customize-> General Settings to set up the theme like the demo website.', 'colorway'); ?></div>
+                     <div class="border-feature"></div>
+                <?php } ?> 
+                <div class="clearfix"></div>
+            <?php } ?>
+            <?php if (inkthemes_get_option('colorway_home_page_blog_post') != 'off') { ?>
+                <div class="row feature_blog_content">
+                    <div class="col-md-6 testimonial_div animated fade_left">
+                        <?php if (is_active_sidebar('home-page-right-feature-widget-area')) : ?>
+                            <div class="sidebar home">
+                                <?php dynamic_sidebar('home-page-right-feature-widget-area'); ?>
+                            </div>
+                        <?php else : ?>			
+                            <div class="feature_widget">
+                                <h4 class="inkthemes_col_head"><?php echo esc_html(stripslashes(inkthemes_get_option('inkthemes_col_head', __('Widgetized Area', 'colorway')))); ?></h4>
+                                <?php if (inkthemes_get_option('inkthemes_widget_desc') != '') { ?>
+                                    <div class="feature_widget_desc"><?php echo esc_html(stripslashes(inkthemes_get_option('inkthemes_col_desc'))); ?></div>
                                     <?php
                                 } else {
-                                    ?>
-                                    <div><?php _e('Please go to Appearance-> Widgets and add atleast one widget to the Home Page Left Feature Widget Area to the "ColorWay Homepage". You can enable dummy data option from the Appearance-> Customize-> General Settings to set up the theme like the demo website.', 'colorway'); ?></div>
-                                    <?php
+                                    if (inkthemes_get_option('colorway_dummy_data') == 'on') {
+                                        ?>
+                                        <div class="feature_widget_desc">
+                                            <img class="widget_img" src="https://inkthemes.com/wpthemes/wp-content/uploads/sites/5/2014/08/Slider-4.jpg" />
+                                        </div>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <div><?php esc_html_e('Please go to Appearance-> Widgets and add atleast one widget to the Home Page Left Feature Widget Area to the "ColorWay Homepage". You can enable dummy data option from the Appearance-> Customize-> General Settings to set up the theme like the demo website.', 'colorway'); ?></div>
+                                        <?php
+                                    }
                                 }
-                            }
-                            ?>
-                        </div>
-                    <?php endif; ?>	
-                </div>
-                <div class=" grid_12 blog_slider omega">  
-                    <div class="blog_slider_wrapper animated fade_right">
-                        <div class="flexslider_blog">
-                            <h2><?php echo stripslashes(inkthemes_get_option('inkthemes_blog_head', __('Latest From The Blog', 'colorway'))); ?></h2>
-                            <ul class="slides">			
-                                <?php
-                                $post_limit = stripslashes(inkthemes_get_option('inkthemes_blog_posts', get_option('posts_per_page')));
-                                $args = array(
-                                    'post_status' => 'publish',
-                                    'posts_per_page' => $post_limit,
-                                    'order' => 'DESC'
-                                );
-                                $query = new WP_Query($args);
                                 ?>
-                                <?php while ($query->have_posts()) : $query->the_post(); ?>
-                                    <li class="blog_item">                
-                                        <div class="flex_thumbnail"> <?php if ((function_exists('has_post_thumbnail')) && (has_post_thumbnail())) { ?>
-                                                <a href="<?php the_permalink(); ?>">
-                                                    <div class='img_thumb'><span></span>
-                                                        <?php the_post_thumbnail('colorway_custom_size', array('class' => 'postimg')); ?>
-                                                    </div>
-                                                </a>
-                                                <?php
-                                            } else {
-                                                echo inkthemes_main_image();
-                                            }
-                                            ?>
-                                        </div>
-                                        <div class="flex_content"> 
-                                            <h3><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e('Permanent Link to ', 'colorway') . the_title_attribute(); ?>"><?php the_title(); ?></a></h3>
-                                            <?php echo inkthemes_custom_trim_excerpt(40); ?>
-                                            <div class="clear"></div>
-                                            <a class="read_more" href="<?php the_permalink() ?>"><?php _e('Continue Reading &rarr;', 'colorway') ?></a>		
-                                        </div>
-                                    </li>
+                            </div>
+                        <?php endif; ?>	
+                    </div>
+                    <div class="col-md-6 blog_slider">  
+                        <div class="blog_slider_wrapper animated fade_right">
+                            <div class="flexslider_blog">
+                                <h4 class="inkthemes_blog_head"><?php echo esc_html(stripslashes(inkthemes_get_option('inkthemes_blog_head', __('Latest From The Blog', 'colorway')))); ?></h4>
+                                <ul class="slides">			
                                     <?php
-                                endwhile;
-                                // Reset Query
-                                wp_reset_query();
-                                ?>  		  
-                            </ul>
+                                    $post_limit = stripslashes(inkthemes_get_option('inkthemes_blog_posts', get_option('posts_per_page')));
+                                    $args = array(
+                                        'post_status' => 'publish',
+                                        'posts_per_page' => $post_limit,
+                                        'order' => 'DESC'
+                                    );
+                                    $query = new WP_Query($args);
+                                    ?>
+                                    <?php while ($query->have_posts()) : $query->the_post(); ?>
+                                        <li class="blog_item">                
+                                            <div class="flex_thumbnail"> <?php if ((function_exists('has_post_thumbnail')) && (has_post_thumbnail())) { ?>
+                                                    <a href="<?php the_permalink(); ?>">
+                                                        <div class='img_thumb'><span></span>
+                                                            <?php the_post_thumbnail('colorway_custom_size', array('class' => 'postimg')); ?>
+                                                        </div>
+                                                    </a>
+                                                    <?php
+                                                } else {
+                                                    
+                                                }
+                                                ?>
+                                            </div>
+                                            <div class="flex_content"> 
+                                                <h6><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php esc_attr_e('Permanent Link to ', 'colorway') . the_title_attribute(); ?>"><?php the_title(); ?></a></h6>
+                                                <p><?php the_excerpt(); ?></p>
+
+                                            </div>
+                                        </li>
+                                        <?php
+                                    endwhile;
+                                    // Reset Query
+                                    wp_reset_query();
+                                    ?>  		  
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        <?php } ?>
-        <?php if (inkthemes_get_option('colorway_testimonial_status', 'on') == 'on') { ?>
-            <div class="clear"></div>
-            <div class="testimonial_item_container"> 
-                <div class="testimonial_heading_container animated fading"> 
-                    <h2><?php echo stripslashes(inkthemes_get_option('inkthemes_testimonial_main_head', __('Our Customer Love Us', 'colorway'))); ?></h2>
-                    <p><?php echo stripslashes(inkthemes_get_option('inkthemes_testimonial_main_desc', __('Read the reviews of some of our  Customers.', 'colorway'))); ?></p>
-                </div>
-                <?php
-                if ((inkthemes_get_option('inkthemes_testimonial_img') || inkthemes_get_option('inkthemes_testimonial_img_2') || inkthemes_get_option('inkthemes_testimonial_img_3')) || inkthemes_get_option('colorway_dummy_data') == 'on') {
-                    ?>
-                    <div class="testimonial_item_content"> 
-                        <div class="testimonial_item animated fading" style="-webkit-animation-delay: .4s; -moz-animation-delay: .4s; -o-animation-delay: .4s; -ms-animation-delay: .4s;">  
-                            <p><?php echo stripslashes(inkthemes_get_option('inkthemes_testimonial', __('Create and Manage multiple contact forms using single dashboard. You can show Form on any single/every page of your website. You can also collect payments, leads and much more...', 'colorway'))); ?></p>
-                            <div class="testimonial_item_inner">  
-                                <img src="<?php echo stripslashes(inkthemes_get_option('inkthemes_testimonial_img', get_template_directory_uri() . "/images/testimonial.jpg")); ?>"  />
-                                <div class="testimonial_name_wrapper">  
-                                    <span><?php echo stripslashes(inkthemes_get_option('inkthemes_testimonial_name', __('Robin Chang', 'colorway'))); ?></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial_item animated fading" style="-webkit-animation-delay: .8s; -moz-animation-delay: .8s; -o-animation-delay: .8s; -ms-animation-delay: .8s;">    
-                            <p><?php echo stripslashes(inkthemes_get_option('inkthemes_testimonial_2', __('Create and Manage multiple contact forms using single dashboard. You can show Form on any single/every page of your website. You can also collect payments, leads and much more...', 'colorway'))); ?></p>
-                            <div class="testimonial_item_inner">  
-                                <img src="<?php echo stripslashes(inkthemes_get_option('inkthemes_testimonial_img_2', get_template_directory_uri() . "/images/testimonial.jpg")); ?>"  />
-                                <div class="testimonial_name_wrapper">  
-                                    <span><?php echo stripslashes(inkthemes_get_option('inkthemes_testimonial_name_2', __('Rown Wisely', 'colorway'))); ?></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial_item animated fading" style="-webkit-animation-delay: 1.2s; -moz-animation-delay: 1.2s; -o-animation-delay: 1.2s; -ms-animation-delay: 1.2s;">    
-                            <p><?php echo stripslashes(inkthemes_get_option('inkthemes_testimonial_3', __('Create and Manage multiple contact forms using single dashboard. You can show Form on any single/every page of your website. You can also collect payments, leads and much more...', 'colorway'))); ?></p>
-                            <div class="testimonial_item_inner">  
-                                <img src="<?php echo stripslashes(inkthemes_get_option('inkthemes_testimonial_img_3', get_template_directory_uri() . "/images/testimonial.jpg")); ?>"  />
-                                <div class="testimonial_name_wrapper">  
-                                    <span><?php echo stripslashes(inkthemes_get_option('inkthemes_testimonial_name_3', __('Jex Polack', 'colorway'))); ?></span>
-                                </div>
-                            </div>
-                        </div>
+                 <div class="border-feature"></div>
+                <div class="clearfix"></div>
+            <?php } ?>
+            <?php if (inkthemes_get_option('colorway_testimonial_status', 'on') == 'on') { ?>
+
+
+                <div class="testimonial_item_container"> 
+                    <div class="testimonial_heading_container animated fading"> 
+                        <h2 class="inkthemes_testimonial_main_head"><?php echo esc_html(stripslashes(inkthemes_get_option('inkthemes_testimonial_main_head', __('Our Customer Love Us', 'colorway')))); ?></h2>
+                        <h4 class="inkthemes_testimonial_main_desc"><?php echo esc_html(stripslashes(inkthemes_get_option('inkthemes_testimonial_main_desc', __('Read the reviews of some of our  Customers.', 'colorway')))); ?></h4>
                     </div>
                     <?php
-                } else {
-                    ?>
-                    <p><?php _e('Please go to Appearance-> Customize-> Testimonial Area Settings and add atleast one image in any Testimonial box to the "ColorWay Homepage". You can enable dummy data option from the Appearance-> Customize-> General Settings to set up the theme like the demo website.', 'colorway'); ?></p>
-                <?php }
-                ?>        
-            </div>
-        <?php } ?>
+                    if ((inkthemes_get_option('inkthemes_testimonial_img') || inkthemes_get_option('inkthemes_testimonial_img_2') || inkthemes_get_option('inkthemes_testimonial_img_3')) || inkthemes_get_option('colorway_dummy_data') == 'on') {
+                        ?>
+                        <div class="testimonial_item_content"> 
+                            <div class="col-md-4 col-sm-4 testimonial_col_wrap">
+                                <div class="testimonial_item animated fading inkthemes_testimonial center" style="-webkit-animation-delay: .4s; -moz-animation-delay: .4s; -o-animation-delay: .4s; -ms-animation-delay: .4s;">  
+                                    <p class="testm_descbox"><?php echo esc_html(stripslashes(inkthemes_get_option('inkthemes_testimonial', __('Create and Manage multiple contact forms using single dashboard. You can show Form on any single/every page of your website. You can also collect payments, leads and much more...', 'colorway')))); ?></p>
+                                    <div class="testimonial_item_inner inkthemes_testimonial_img">  
+                                        <img src="<?php echo esc_url(stripslashes(inkthemes_get_option('inkthemes_testimonial_img', get_template_directory_uri() . "/assets/images/testimonial.jpg"))); ?>"  />
+                                        <div class="testimonial_name_wrapper">  
+                                            <p><?php echo esc_html(stripslashes(inkthemes_get_option('inkthemes_testimonial_name', __('Robin Chang', 'colorway')))); ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 testimonial_col_wrap">
+                                <div class="testimonial_item animated fading inkthemes_testimonial_2 center" style="-webkit-animation-delay: .8s; -moz-animation-delay: .8s; -o-animation-delay: .8s; -ms-animation-delay: .8s;">    
+                                    <p class="testm_descbox"><?php echo esc_html(stripslashes(inkthemes_get_option('inkthemes_testimonial_2', __('Create and Manage multiple contact forms using single dashboard. You can show Form on any single/every page of your website. You can also collect payments, leads and much more...', 'colorway')))); ?></p>
+                                    <div class="testimonial_item_inner inkthemes_testimonial_img_2">  
+                                        <img src="<?php echo esc_url(stripslashes(inkthemes_get_option('inkthemes_testimonial_img_2', get_template_directory_uri() . "/assets/images/testimonial.jpg"))); ?>"  />
+                                        <div class="testimonial_name_wrapper">  
+                                            <p><?php echo esc_html(stripslashes(inkthemes_get_option('inkthemes_testimonial_name_2', __('Rown Wisely', 'colorway')))); ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-4 testimonial_col_wrap">
+                                <div class="testimonial_item animated fading inkthemes_testimonial_3 center" style="-webkit-animation-delay: 1.2s; -moz-animation-delay: 1.2s; -o-animation-delay: 1.2s; -ms-animation-delay: 1.2s;">    
+                                    <p class="testm_descbox"><?php echo esc_html(stripslashes(inkthemes_get_option('inkthemes_testimonial_3', __('Create and Manage multiple contact forms using single dashboard. You can show Form on any single/every page of your website. You can also collect payments, leads and much more...', 'colorway')))); ?></p>
+                                    <div class="testimonial_item_inner inkthemes_testimonial_img_3">  
+                                        <img src="<?php echo esc_url(stripslashes(inkthemes_get_option('inkthemes_testimonial_img_3', get_template_directory_uri() . "/assets/images/testimonial.jpg"))); ?>"  />
+                                        <div class="testimonial_name_wrapper">  
+                                            <p><?php echo esc_html(stripslashes(inkthemes_get_option('inkthemes_testimonial_name_3', __('Jex Polack', 'colorway')))); ?></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php
+                    } else {
+                        ?>
+                        <p><?php esc_html_e('Please go to Appearance-> Customize-> Testimonial Area Settings and add atleast one image in any Testimonial box to the "ColorWay Homepage". You can enable dummy data option from the Appearance-> Customize-> General Settings to set up the theme like the demo website.', 'colorway'); ?></p>
+                    <?php }
+                    ?>        
+                </div>
+                <div class="clearfix"></div>
+            <?php } ?>
+        </div>
+
     </div>
-    <div class="clear"></div>
+    <div class="clearfix"></div>
+    <!--End Content Grid-->
 </div>
-<div class="clear"></div>
-<!--End Content Grid-->
 </div>
+</div>
+
 <!--End Container Div-->
 <?php get_footer(); ?>

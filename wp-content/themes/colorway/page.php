@@ -9,48 +9,93 @@
  *
  */
 get_header();
+$sidebar = '';
+$center = '';
+$a = get_option('page-layout');
+switch ($a) {
+    case 'content-sidebar':
+        $sidebar = 'right';
+        $content = 'left_d_none';
+        break;
+    case 'sidebar-content':
+        $sidebar = 'left';
+        $content = 'right_d_none';
+        break;
+    case 'content':
+        $center = 'col-md-12 col-sm-12';
+        break;
+    default:
+        $sidebar = 'right';
+}
+
 ?>
-<!--Start Content Grid-->
-<div class="grid_24 content">
-    <div class="grid_16 alpha">
-        <div class="content-wrap">
-            <div class="content-info">
-                <?php if (function_exists('inkthemes_breadcrumbs')) inkthemes_breadcrumbs(); ?>
+        <!--Start Content Grid-->
+        <div class="row content ">
+            <?php if ($sidebar == 'left') { ?> 
+                <div id="left-sidebar" class="col-md-4 col-sm-4 <?php
+                if ($content != '') {
+                    echo esc_attr($content);
+                } else {
+                    
+                }
+                ?>">
+                    <div class="sidebar <?php echo esc_attr($sidebar); ?>">
+                        <?php get_sidebar(); ?>
+                    </div>
+                </div>
+            <?php } ?>
+
+            <div id="content-case" class="<?php
+            if ($center != '') {
+                echo esc_attr($center);
+            } else {
+                echo 'col-md-8';
+            }
+            ?>">
+                     <?php
+                     if (have_posts()) :
+                         while (have_posts()) :
+                             the_post();
+
+                             get_template_part('templates/content/content', 'page');
+
+                         endwhile;
+                         inkthemes_pagination();
+
+                     else:
+                         // If no content, include the "No posts found" template.
+//                                          get_template_part( 'content', 'none' );
+                         ?>    
+                <div>
+                                <p> <?php get_template_part( 'templates/content/content', 'none' ); ?> </p>
+                    </div>
+                <?php
+                endif;
+                ?>
+                <div class="comment_section">
+                    <!--Start Comment list-->
+                    <?php comments_template('', true); ?>
+                    <!--End Comment Form-->
+                </div>
             </div>
-            <div class="sl">
-                <?php if (have_posts()) while (have_posts()) : the_post(); ?>
-                        <?php if (is_front_page()) { ?>
-                            <h2>
-                                <?php the_title(); ?>
-                            </h2>
-                        <?php } else { ?>
-                            <h1>
-                                <?php the_title(); ?>
-                            </h1>
-                        <?php } ?>
-                        <?php the_content(); ?>
-                        <div class="clear"></div>
-                        <?php wp_link_pages(array('before' => '<div class="page-link"><span>' . __('Pages:','colorway') . '</span>', 'after' => '</div>')); ?>
-                        <?php edit_post_link('Edit', '', ''); ?>
-                        <div class="clear"></div>
-                        <!--Start Comment Section-->
-                        <div class="comment_section">
-                            <!--Start Comment list-->
-                            <?php comments_template('', true); ?>
-                            <!--End Comment Form-->
-                        </div>
-                        <!--End comment Section-->
-                    <?php endwhile; ?>
-            </div>
-            <div class="folio-page-info">
-                <?php inkthemes_pagination(); ?>
-            </div>
+
+            <?php if ($sidebar == 'right') { ?>
+                <div id="right-sidebar" class="col-md-4 col-sm-4 switch <?php
+                if ($content != '') {
+                    echo esc_attr($content);
+                } else {
+                    
+                }
+                ?>">
+                    <div class="sidebar <?php echo esc_attr($sidebar); ?>">
+                        <?php get_sidebar(); ?>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
+        <div class="clear"></div>
+        <!--End Content Grid-->
     </div>
-    <?php get_sidebar(); ?>
-</div>
-<div class="clear"></div>
-<!--End Content Grid-->
-</div>
+    </div>
 <!--End Container Div-->
 <?php get_footer(); ?>
