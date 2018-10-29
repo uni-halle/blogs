@@ -1337,7 +1337,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
       }//end of nested function
       //Helper
       function czr_fn_wc_is_checkout_cart() {
-        return is_checkout() || is_cart() || defined('WOOCOMMERCE_CHECKOUT') || defined('WOOCOMMERCE_CART');
+        return ( function_exists( 'is_checkout' ) && function_exists( 'is_cart' ) ) && ( is_checkout() || is_cart() || defined('WOOCOMMERCE_CHECKOUT') || defined('WOOCOMMERCE_CART') );
       }
       //Helper
       function czr_fn_woocommerce_shop_page_id( $id = null ){
@@ -1407,7 +1407,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
       function czr_fn_woocommerce_disable_link_scroll( $excl ){
         if ( false == esc_attr( czr_fn_opt('tc_link_scroll') ) ) return $excl;
 
-        if ( function_exists('is_woocommerce') && is_woocommerce() ) {
+        if ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) {
           if ( ! is_array( $excl ) )
             $excl = array();
 
@@ -1427,7 +1427,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
       //changes customizr meta boxes priority (slider and layout not on top) if displaying woocommerce products in admin
       add_filter( 'tc_post_meta_boxes_priority', 'czr_fn_woocommerce_change_meta_boxes_priority' , 2 , 10 );
       function czr_fn_woocommerce_change_meta_boxes_priority($priority , $screen) {
-         return ( 'product' == $screen ) ? 'default' : $priority ;
+        return ( 'product' == $screen ) ? 'default' : $priority ;
       }
 
 
@@ -1435,7 +1435,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
       // Returns a callback function needed by 'active_callback' to enable the options in the customizer
       add_filter( 'tc_woocommerce_options_enabled', 'czr_fn_woocommerce_options_enabled_cb' );
       function czr_fn_woocommerce_options_enabled_cb() {
-        return '__return_true';
+        return function_exists( 'WC' ) ? '__return_true' : '__return_false';
       }
 
       /* rendering the cart icon in the header */
@@ -1459,6 +1459,9 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
       add_action( '__navbar', 'czr_fn_woocommerce_header_cart', is_rtl() ? 9 : 19 );
       function czr_fn_woocommerce_header_cart() {
         if ( 1 != esc_attr( czr_fn_opt( 'tc_woocommerce_header_cart' ) ) )
+          return;
+
+        if ( ! function_exists( 'WC' ) )
           return;
 
         $_main_item_class = '';
@@ -1753,7 +1756,10 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
           return get_template_part( 'index' );
         }
       endif;
-      add_filter( 'template_include', 'tc_lp_maybe_fall_back_on_index' );
+      //See: plugins\learnpress\inc\class-lp-request-handler.php::process_request
+      //where lp processes the course Enroll request at template_include|50
+      //https://github.com/presscustomizr/customizr/issues/1589
+      add_filter( 'template_include', 'tc_lp_maybe_fall_back_on_index', 100 );
 
 
       // Disable post lists and single views in lp contexts
@@ -1768,15 +1774,8 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
       //do not display metas in lp archives
       add_filter( 'tc_opt_tc_show_post_metas', 'tc_lp_is_learnpress_archive_disable' );
 
-      //do not display post navigation in lp profile and lp checkout
-      add_filter( 'tc_opt_tc_show_post_navigation', 'tc_lp_maybe_disable_post_navigation' );
-      if ( ! function_exists( 'tc_lp_maybe_disable_post_navigation' ) ) {
-        function tc_lp_maybe_disable_post_navigation( $bool ) {
-          if ( function_exists( 'learn_press_is_profile' ) && function_exists( 'learn_press_is_checkout' ) ) {
-            return learn_press_is_profile() || learn_press_is_checkout() ? false : $bool;
-          }
-        }
-      }
+      //do not display post navigation, lp uses its own, when relevant
+      add_filter( 'tc_opt_tc_show_post_navigation', 'tc_lp_is_learnpress_disable' );
 
       //disable lp breadcrumb, we'll use our own
       remove_action( 'learn_press_before_main_content', 'learn_press_breadcrumb' );
@@ -1784,7 +1783,7 @@ if ( ! class_exists( 'CZR_plugins_compat' ) ) :
 
 
 
-    /* same in czr classic */
+    /* same in czr modern */
     /*
     * Coauthors-Plus plugin compat hooks
     */
@@ -2159,6 +2158,15 @@ class CZR_utils_settings_map {
                   return $_map;
             }
 
+            //to unset
+            $_to_unset = array(
+                  'tc_title_next_logo',
+            );
+
+            foreach ( $_to_unset as $key ) {
+                  unset( $_map[ $key ] );
+            }
+
             global $wp_version;
 
             $_to_add = array(
@@ -2507,6 +2515,8 @@ class CZR_utils_settings_map {
                   'tc_header_skin',
                   'tc_header_custom_bg_color',
                   'tc_header_custom_fg_color',
+                  'tc_header_transparent_home',
+                  'tc_home_header_skin',
                   'tc_header_title_underline',
                   'tc_header_show_topbar',
                   'tc_header_show_socials',
@@ -3821,7 +3831,7 @@ if ( ! class_exists( 'CZR_utils' ) ) :
           $img_extensions_pattern = sprintf( "(?:%s)", implode( '|', $allowed_image_extentions ) );
           $pattern                = '#<a([^>]+?)href=[\'"]?([^\'"\s>]+\.'.$img_extensions_pattern.'[^\'"\s>]*)[\'"]?([^>]*)>#i';
 
-          $replacement = '<a$1href="$2"class="grouped_elements" rel="tc-fancybox-group'.$post -> ID.'"$3>';
+          $replacement = '<a$1href="$2" class="grouped_elements" rel="tc-fancybox-group'.$post -> ID.'"$3>';
 
           $r_content = preg_replace( $pattern, $replacement, $content);
           $content = $r_content ? $r_content : $content;

@@ -23,6 +23,42 @@ See headers of each files for further details.
 
 
 ####################### Changelog ######################
+= 4.1.17 October 8th 2018 =
+* fixed : compatibility with the Nimble builder plugin, drop in __after_header location impossible when the header is transparent
+
+= 4.1.16 October 7th 2018 =
+* imp : added a Nimble dropzone location "__before_main_wrapper"
+* imp : added a priority param when registering a Nimble location
+
+= 4.1.15 October 6th 2018 =
+* fixed : missing space between fancybox link attributes. fixes #1593
+* fixed : WooCommerce variation form inputs appearance on Mozilla browsers. fixes #1598
+* improved : support custom post types in related posts
+* added : new option to make the header absolute positionned with a transparent background, on home.
+
+= 4.1.13 August 28th 2018 =
+* fixed : Comment RTL alignment. fixes #1582
+* fixed : Mobile menu doesn't open when using tab plugin (WPBakery Page Builder). fixes #1586
+* fixed : learnpress - avoid infinite loop when user tries to enroll a course.fixes #1589
+* fixed : improve learndash ordered list items style. fixes #1591
+* fixed : theme screenshot update following the new rule from the theme review team. https://make.wordpress.org/themes/2018/08/13/updated-screenshot-requirements/
+
+= 4.1.12 August 9th 2018 =
+* improved : theme screenshot compatibility with the latest requirements of the theme repository on WordPress.org, second pass following discussion : https://themes.trac.wordpress.org/ticket/58335
+
+= 4.1.11 August 9th 2018 =
+* improved : theme screenshot compatibility with the latest requirements of the theme repository on WordPress.org. (see https://make.wordpress.org/themes/2018/08/08/new-additions-to-the-screenshots-and-featured-images-requirements/)
+
+= 4.1.10 August 1st 2018 =
+* added : new option to display the site title next to the logo. Enabled by default. fixes #1573
+* imp : always make sure WC functions exist before calling them. fixes #1529
+* imp : replace slider iphone checks with checkboxes consistent with the Gutenberg editor style. also fixes #1540
+* imp : better compatibility with the Gutenberg editor for post-formats metaboxes. fixes #1576
+
+= 4.1.9 July 17th 2018 =
+* Imp: make sure the_author_description filter hook is fired. fixes #1561
+* Fix: make sure to respect the threaded comments wp setting. fixes #1563
+
 = 4.1.8 June 22nd 2018 =
 * Impr : compliancy with the latests WordPress.org rules for the themes : the demo content in previewer should be disabled. Featured pages and slider should be opted-in by users and not enabled by default.
 
