@@ -2281,7 +2281,14 @@ module.exports = {
 			case 'row-model' :
 				retObj = new panels.model.row();
 				retObj.builder = parent;
-				retObj.set( 'style', thing.style );
+				var atts = { style: thing.style };
+				if ( thing.hasOwnProperty( 'label' ) ) {
+					atts.label = thing.label;
+				}
+				if ( thing.hasOwnProperty( 'color_label' ) ) {
+					atts.color_label = thing.color_label;
+				}
+				retObj.set( atts );
 				retObj.setCells( this.unserialize( thing.cells, 'cell-collection', retObj ) );
 				break;
 
@@ -4242,33 +4249,56 @@ module.exports = Backbone.View.extend( {
 			return this;
 		}
 		
-		// Create the sortable for the rows
 		var builderView = this;
+		var builderID = builderView.$el.attr( 'id' );
 		
+		// Create the sortable for the rows
 		this.rowsSortable = this.$( '.so-rows-container' ).sortable( {
 			appendTo: '#wpwrap',
 			items: '.so-row-container',
 			handle: '.so-row-move',
+			// For Gutenberg, where it's possible to have multiple Page Builder blocks on a page.
+			// Also specify builderID when not in gutenberg to prevent being able to drop rows from builder in a dialog
+			// into builder on the page under the dialog.
+			connectWith: '#' + builderID + '.so-rows-container,.gutenberg .so-rows-container',
 			axis: 'y',
 			tolerance: 'pointer',
 			scroll: false,
-			stop: function ( e, ui ) {
-				builderView.addHistoryEntry( 'row_moved' );
-				
-				var $$ = $( ui.item ),
-					row = $$.data( 'view' );
-				
-				builderView.model.get( 'rows' ).remove( row.model, {
-					'silent': true
-				} );
-				builderView.model.get( 'rows' ).add( row.model, {
-					'silent': true,
-					'at': $$.index()
-				} );
-				
-				row.trigger( 'move', $$.index() );
-				
+			remove: function ( e, ui ) {
+				builderView.model.get( 'rows' ).remove(
+					$( ui.item ).data( 'view' ).model,
+					{ silent: true }
+				);
 				builderView.model.refreshPanelsData();
+			},
+			receive: function ( e, ui ) {
+				builderView.model.get( 'rows' ).add(
+					$( ui.item ).data( 'view' ).model,
+					{ silent: true, at: $( ui.item ).index() }
+				);
+				builderView.model.refreshPanelsData();
+			},
+			stop: function ( e, ui ) {
+				var $$ = $( ui.item ),
+					row = $$.data( 'view' ),
+					rows = builderView.model.get( 'rows' );
+				
+				// If this hasn't already been removed and added to a different builder.
+				if ( rows.get( row.model ) ) {
+					builderView.addHistoryEntry( 'row_moved' );
+					
+					rows.remove( row.model, {
+						'silent': true
+					} );
+					rows.add( row.model, {
+						'silent': true,
+						'at': $$.index()
+					} );
+					
+					row.trigger( 'move', $$.index() );
+					
+					builderView.model.refreshPanelsData();
+				}
 			}
 		} );
 		
@@ -4288,6 +4318,7 @@ module.exports = Backbone.View.extend( {
 	/**
 	 * Set the field that's used to store the data
 	 * @param field
+	 * @param options
 	 */
 	setDataField: function ( field, options ) {
 		options = _.extend( {
@@ -4306,12 +4337,29 @@ module.exports = Backbone.View.extend( {
 				data = {};
 			}
 			
-			this.model.loadPanelsData( data );
-			this.currentData = data;
-			this.toggleWelcomeDisplay();
+			this.setData( data );
 		}
 		
 		return this;
+	},
+	
+	/**
+	 * Set the current panels data to be used.
+	 *
+	 * @param data
+	 */
+	setData: function( data ) {
+		this.model.loadPanelsData( data );
+		this.currentData = data;
+		this.toggleWelcomeDisplay();
+	},
+	
+	/**
+	 * Get the current panels data.
+	 *
+	 */
+	getData: function() {
+		return this.model.get( 'data' );
 	},
 	
 	/**
@@ -4359,6 +4407,7 @@ module.exports = Backbone.View.extend( {
 		
 		this.refreshSortable();
 		rowView.resize();
+		this.trigger( 'row_added' );
 	},
 	
 	/**
@@ -4742,7 +4791,11 @@ module.exports = Backbone.View.extend( {
 		
 		// Only run this if its element is the topmost builder, in the topmost dialog
 		if (
-			builder.$el.is( topmostBuilder ) &&
+			(
+				builder.$el.is( topmostBuilder ) ||
+				builder.$el.parent().is( '.siteorigin-panels-layout-block-container' ) // Gutenberg builder
+			)
+				&&
 			(
 				topmostDialog.length === 0 ||
 				topmostDialog.is( closestDialog )
@@ -4864,32 +4917,55 @@ module.exports = Backbone.View.extend( {
 		}
 
 		var cellView = this;
-
+		var builder = cellView.row.builder;
+		
 		// Go up the view hierarchy until we find the ID attribute
-		var builderID = cellView.row.builder.$el.attr( 'id' );
+		var builderID = builder.$el.attr( 'id' );
+		var builderModel = builder.model;
 
 		// Create a widget sortable that's connected with all other cells
 		this.widgetSortable = this.$( '.widgets-container' ).sortable( {
 			placeholder: "so-widget-sortable-highlight",
-			connectWith: '#' + builderID + ' .so-cells .cell .widgets-container',
+			connectWith: '#' + builderID + ' .so-cells .cell .widgets-container,.gutenberg .so-cells .cell .widgets-container',
 			tolerance: 'pointer',
 			scroll: false,
 			over: function ( e, ui ) {
 				// This will make all the rows in the current builder resize
 				cellView.row.builder.trigger( 'widget_sortable_move' );
 			},
+			remove: function ( e, ui ) {
+				cellView.model.get( 'widgets' ).remove(
+					$( ui.item ).data( 'view' ).model,
+					{ silent: true }
+				);
+				builderModel.refreshPanelsData();
+			},
+			receive: function ( e, ui ) {
+				var widgetModel = $( ui.item ).data( 'view' ).model;
+				widgetModel.cell = cellView.model;
+				cellView.model.get( 'widgets' ).add(
+					widgetModel,
+					{ silent: true, at: $( ui.item ).index() }
+				);
+				builderModel.refreshPanelsData();
+			},
 			stop: function ( e, ui ) {
-				cellView.row.builder.addHistoryEntry( 'widget_moved' );
-
 				var $$ =  $( ui.item ),
 					widget = $$.data( 'view' ),
 					targetCell = $$.closest( '.cell' ).data( 'view' );
-
-				// Move the model and the view to the new cell
-				widget.model.moveToCell( targetCell.model, {}, $$.index() );
-				widget.cell = targetCell;
-
-				widget.cell.row.builder.model.refreshPanelsData();
+				
+				
+				// If this hasn't already been removed and added to a different builder.
+				if ( cellView.model.get( 'widgets' ).get( widget.model ) ) {
+					
+					cellView.row.builder.addHistoryEntry( 'widget_moved' );
+					
+					// Move the model and the view to the new cell
+					widget.model.moveToCell( targetCell.model, {}, $$.index() );
+					widget.cell = targetCell;
+					
+					builderModel.refreshPanelsData();
+				}
 			},
 			helper: function ( e, el ) {
 				var helper = el.clone()
@@ -5071,6 +5147,7 @@ module.exports = Backbone.View.extend( {
 
 		this.refreshSortable();
 		this.row.resize();
+		this.row.builder.trigger( 'widget_added' );
 	},
 
 	/**

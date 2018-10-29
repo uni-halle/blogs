@@ -3,7 +3,7 @@
 Plugin Name: Page Builder by SiteOrigin
 Plugin URI: https://siteorigin.com/page-builder/
 Description: A drag and drop, responsive page builder that simplifies building your website.
-Version: 2.7.2
+Version: 2.9.0
 Author: SiteOrigin
 Author URI: https://siteorigin.com
 License: GPL3
@@ -11,12 +11,12 @@ License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: http://siteorigin.com/page-builder/#donate
 */
 
-define( 'SITEORIGIN_PANELS_VERSION', '2.7.2' );
+define( 'SITEORIGIN_PANELS_VERSION', '2.9.0' );
 if ( ! defined( 'SITEORIGIN_PANELS_JS_SUFFIX' ) ) {
 	define( 'SITEORIGIN_PANELS_JS_SUFFIX', '.min' );
 }
 define( 'SITEORIGIN_PANELS_CSS_SUFFIX', '.min' );
-define( 'SITEORIGIN_PANELS_VERSION_SUFFIX', '-272' );
+define( 'SITEORIGIN_PANELS_VERSION_SUFFIX', '-290' );
 
 require_once plugin_dir_path( __FILE__ ) . 'inc/functions.php';
 
@@ -64,8 +64,15 @@ class SiteOrigin_Panels {
 		add_filter( 'woocommerce_format_content', array( $this, 'generate_woocommerce_content' ) );
 		add_filter( 'wp_enqueue_scripts', array( $this, 'generate_post_css' ) );
 		
+		// Remove the default excerpt function
+		add_filter( 'get_the_excerpt', array( $this, 'generate_post_excerpt' ), 9 );
+		
 		// Content cache has been removed. SiteOrigin_Panels_Cache_Renderer just deletes any existing caches.
 		SiteOrigin_Panels_Cache_Renderer::single();
+		
+		if ( function_exists( 'register_block_type' ) ) {
+			SiteOrigin_Panels_Compat_Gutenberg_Block::single();
+		}
 		
 		
 		define( 'SITEORIGIN_PANELS_BASE_FILE', __FILE__ );
@@ -132,6 +139,10 @@ class SiteOrigin_Panels {
 			$filename = str_replace( '_', '-', $filename );
 			$filename = strtolower( preg_replace( '/([a-z])([A-Z])/', '$1-$2', $filename ) );
 			$filename = plugin_dir_path( __FILE__ ) . 'inc/widgets/' . $filename . '.php';
+		}
+		else if ( strpos( $class, 'SiteOrigin_Panels_Compat_' ) === 0 ) {
+			$filename = str_replace( array( 'SiteOrigin_Panels_Compat_', '_' ), array( '', '-' ), $class );
+			$filename = plugin_dir_path( __FILE__ ) . 'compat/' . strtolower( $filename ) . '.php';
 		}
 		else if ( strpos( $class, 'SiteOrigin_Panels_' ) === 0 ) {
 			$filename = str_replace( array( 'SiteOrigin_Panels_', '_' ), array( '', '-' ), $class );
@@ -288,19 +299,8 @@ class SiteOrigin_Panels {
 			return $content;
 		}
 		
-		$post_id = get_the_ID();
+		$post_id = $this->get_post_id();
 		
-		if ( class_exists( 'WooCommerce' ) && is_shop() ) {
-			$post_id = wc_get_page_id( 'shop' );
-		}
-		
-		// If we're viewing a preview make sure we load and render the autosave post's meta.
-		if ( $preview ) {
-			$preview_post = wp_get_post_autosave( $post_id, get_current_user_id() );
-			if ( ! empty( $preview_post ) ) {
-				$post_id = $preview_post->ID;
-			}
-		}
 		// Check if this post has panels_data
 		if ( get_post_meta( $post_id, 'panels_data', true ) ) {
 			$panel_content = SiteOrigin_Panels::renderer()->render(
@@ -336,19 +336,98 @@ class SiteOrigin_Panels {
 	}
 	
 	/**
+	 * Generate an excerpt for the current post, if possible.
+	 *
+	 * @param $text
+	 *
+	 * @return mixed|string
+	 */
+	public function generate_post_excerpt( $text ) {
+		global $post;
+		if ( ( empty( $post ) && ! in_the_loop() ) || $text !== '' ) {
+			return $text;
+		}
+		
+		$post_id = $this->get_post_id();
+		
+		// Check if this post has panels_data
+		$panels_data = get_post_meta( $post_id, 'panels_data', true );
+		if ( $panels_data && ! empty( $panels_data['widgets'] ) ) {
+			$raw_excerpt = '';
+			$excerpt_length = apply_filters( 'excerpt_length', 55 );
+			foreach ( $panels_data['widgets'] as $widget ) {
+				$panels_info = $widget['panels_info'];
+				if ( $panels_info['grid'] > 1 ) {
+					// Limiting search for a text type widget to the first two PB rows to avoid having excerpt content
+					// that's very far down in a post.
+					break;
+				}
+				if ( $panels_info['class'] == 'SiteOrigin_Widget_Editor_Widget' || $panels_info['class'] == 'WP_Widget_Text' ) {
+					$raw_excerpt .= ' ' . $widget['text'];
+					// This is all effectively default behavior for excerpts, copied from the `wp_trim_excerpt` function.
+					// We're just applying it to text type widgets content in the first two rows.
+					$text = strip_shortcodes( $raw_excerpt );
+					$text = str_replace( ']]>', ']]&gt;', $text );
+					if ( $this->get_localized_word_count( $text ) >= $excerpt_length ) {
+						break;
+					}
+				}
+			}
+			
+			$excerpt_more = apply_filters( 'excerpt_more', ' ' . '[&hellip;]' );
+			$text = wp_trim_words( $raw_excerpt, $excerpt_length, $excerpt_more );
+		}
+		
+		return $text;
+	}
+	
+	private function get_localized_word_count( $text ) {
+		
+		// From the core `wp_trim_words` function to get localized word count.
+		$text = wp_strip_all_tags( $text );
+		if ( strpos( _x( 'words', 'Word count type. Do not translate!' ), 'characters' ) === 0 && preg_match( '/^utf\-?8$/i', get_option( 'blog_charset' ) ) ) {
+			$text = trim( preg_replace( "/[\n\r\t ]+/", ' ', $text ), ' ' );
+			preg_match_all( '/./u', $text, $words_array );
+			$words_array = $words_array[0];
+		} else {
+			$words_array = preg_split( "/[\n\r\t ]+/", $text, -1, PREG_SPLIT_NO_EMPTY );
+		}
+		
+		return count( $words_array );
+	}
+	
+	/**
 	 * Generate CSS for the current post
 	 */
 	public function generate_post_css() {
-		$post_id = get_the_ID();
-		
-		if ( class_exists( 'WooCommerce' ) && is_shop() ) {
-			$post_id = wc_get_page_id( 'shop' );
-		}
+		$post_id = $this->get_post_id();
 		
 		if( is_singular() && get_post_meta( $post_id, 'panels_data', true ) ) {
 			$renderer = SiteOrigin_Panels::renderer();
 			$renderer->add_inline_css( $post_id, $renderer->generate_css( $post_id ) );
 		}
+	}
+	
+	/**
+	 * Get the post id for the current post.
+	 */
+	function get_post_id() {
+		
+		$post_id = get_the_ID();
+		
+		if ( class_exists( 'WooCommerce' ) && is_shop() ) {
+			$post_id = wc_get_page_id( 'shop' );
+		}
+		global $preview;
+		// If we're viewing a preview make sure we load and render the autosave post's meta.
+		if ( $preview ) {
+			$preview_post = wp_get_post_autosave( $post_id, get_current_user_id() );
+			if ( ! empty( $preview_post ) ) {
+				$post_id = $preview_post->ID;
+			}
+		}
+		
+		return $post_id;
 	}
 
 	/**

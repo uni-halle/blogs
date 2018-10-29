@@ -335,6 +335,7 @@
   zoom: 1;
   margin: 0 -5px;
   position: relative;
+  display: flex;
 }
 .siteorigin-panels-builder .so-rows-container .so-row-container .so-cells:before {
   content: '';
@@ -363,7 +364,6 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  float: left;
   position: relative;
   padding: 0 5px;
 }
@@ -740,18 +740,27 @@
   padding-right: 15px;
   margin: 0 -15px;
 }
-.so-panels-dialog {
+.so-panels-dialog,
+.gutenberg {
   /* The add widget dialog */
   /* The row edit dialog */
   /* For prebuilt layouts */
-  /* Special case of the builder interface being inside a dialog */
+  /* Special case of the builder interface being inside a dialog, or gutenberg editor. */
+  /* Styles for PB in Gutenberg editor. */
+  /* PB Icon in Gutenberg */
 }
 .so-panels-dialog .so-overlay,
+.gutenberg .so-overlay,
 .so-panels-dialog .so-content,
+.gutenberg .so-content,
 .so-panels-dialog .so-title-bar,
+.gutenberg .so-title-bar,
 .so-panels-dialog .so-toolbar,
+.gutenberg .so-toolbar,
 .so-panels-dialog .so-left-sidebar,
-.so-panels-dialog .so-right-sidebar {
+.gutenberg .so-left-sidebar,
+.so-panels-dialog .so-right-sidebar,
+.gutenberg .so-right-sidebar {
   z-index: 100001;
   position: fixed;
   -ms-box-sizing: border-box;
@@ -761,18 +770,23 @@
   padding: 15px;
 }
 .so-panels-dialog .so-content,
+.gutenberg .so-content,
 .so-panels-dialog .so-left-sidebar,
-.so-panels-dialog .so-right-sidebar {
+.gutenberg .so-left-sidebar,
+.so-panels-dialog .so-right-sidebar,
+.gutenberg .so-right-sidebar {
   overflow-y: auto;
 }
-.so-panels-dialog .so-overlay {
+.so-panels-dialog .so-overlay,
+.gutenberg .so-overlay {
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.5);
 }
-.so-panels-dialog .so-content {
+.so-panels-dialog .so-content,
+.gutenberg .so-content {
   top: 80px;
   left: 30px;
   right: 30px;
@@ -783,16 +797,20 @@
   -moz-box-shadow: inset 0 2px 2px rgba(0,0,0,0.03);
   box-shadow: inset 0 2px 2px rgba(0,0,0,0.03);
 }
-.so-panels-dialog .so-content > *:first-child {
+.so-panels-dialog .so-content > *:first-child,
+.gutenberg .so-content > *:first-child {
   margin-top: 0;
 }
-.so-panels-dialog .so-content > *:last-child {
+.so-panels-dialog .so-content > *:last-child,
+.gutenberg .so-content > *:last-child {
   margin-bottom: 0;
 }
-.so-panels-dialog .so-content .so-content-tabs > * {
+.so-panels-dialog .so-content .so-content-tabs > *,
+.gutenberg .so-content .so-content-tabs > * {
   display: none;
 }
-.so-panels-dialog .so-title-bar {
+.so-panels-dialog .so-title-bar,
+.gutenberg .so-title-bar {
   left: 30px;
   right: 30px;
   top: 30px;
@@ -801,7 +819,8 @@
   border-bottom: 1px solid #D8D8D8;
   /* These are the action buttons in the title bar */
 }
-.so-panels-dialog .so-title-bar h3.so-title {
+.so-panels-dialog .so-title-bar h3.so-title,
+.gutenberg .so-title-bar h3.so-title {
   -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -811,16 +830,20 @@
   display: block;
 }
 .so-panels-dialog .so-title-bar h3.so-title.so-title-editable:hover,
-.so-panels-dialog .so-title-bar h3.so-title.so-title-editable:focus {
+.gutenberg .so-title-bar h3.so-title.so-title-editable:hover,
+.so-panels-dialog .so-title-bar h3.so-title.so-title-editable:focus,
+.gutenberg .so-title-bar h3.so-title.so-title-editable:focus {
   outline: none;
   background-color: #F0F0F0;
 }
-.so-panels-dialog .so-title-bar h3.so-title.so-title-editable:focus {
+.so-panels-dialog .so-title-bar h3.so-title.so-title-editable:focus,
+.gutenberg .so-title-bar h3.so-title.so-title-editable:focus {
   margin-top: -4px;
   margin-left: -4px;
   border: 1px solid #E4E4E4;
 }
-.so-panels-dialog .so-title-bar input[type=text].so-edit-title {
+.so-panels-dialog .so-title-bar input[type=text].so-edit-title,
+.gutenberg .so-title-bar input[type=text].so-edit-title {
   margin-top: -3px;
   margin-left: -3px;
   display: none;
@@ -832,14 +855,16 @@
   background-color: #F0F0F0;
   padding: 4px 5px;
 }
-.so-panels-dialog .so-title-bar h3.so-parent-link {
+.so-panels-dialog .so-title-bar h3.so-parent-link,
+.gutenberg .so-title-bar h3.so-parent-link {
   cursor: pointer;
   position: relative;
   float: left;
   margin: 0 15px 0 0 !important;
   padding: 0 27px 0 0 !important;
 }
-.so-panels-dialog .so-title-bar h3.so-parent-link .so-separator {
+.so-panels-dialog .so-title-bar h3.so-parent-link .so-separator,
+.gutenberg .so-title-bar h3.so-parent-link .so-separator {
   position: absolute;
   top: -15px;
   right: 0;
@@ -849,12 +874,14 @@
   background: url(images/dialog-separator.png) no-repeat;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .so-panels-dialog .so-title-bar h3.so-parent-link .so-separator {
+  .so-panels-dialog .so-title-bar h3.so-parent-link .so-separator,
+  .gutenberg .so-title-bar h3.so-parent-link .so-separator {
     background: url(images/dialog-separator@2x.png) no-repeat;
     background-size: cover;
   }
 }
-.so-panels-dialog .so-title-bar a {
+.so-panels-dialog .so-title-bar a,
+.gutenberg .so-title-bar a {
   cursor: pointer;
   position: absolute;
   box-sizing: border-box;
@@ -872,13 +899,16 @@
   border-bottom: 1px solid #d8d8d8;
   /* Disabled nav */
 }
-.so-panels-dialog .so-title-bar a:hover {
+.so-panels-dialog .so-title-bar a:hover,
+.gutenberg .so-title-bar a:hover {
   background: #e9e9e9;
 }
-.so-panels-dialog .so-title-bar a:hover .so-dialog-icon {
+.so-panels-dialog .so-title-bar a:hover .so-dialog-icon,
+.gutenberg .so-title-bar a:hover .so-dialog-icon {
   color: #333333;
 }
-.so-panels-dialog .so-title-bar a .so-dialog-icon {
+.so-panels-dialog .so-title-bar a .so-dialog-icon,
+.gutenberg .so-title-bar a .so-dialog-icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -890,40 +920,51 @@
   color: #666666;
   text-align: center;
 }
-.so-panels-dialog .so-title-bar a .so-dialog-icon:before {
+.so-panels-dialog .so-title-bar a .so-dialog-icon:before,
+.gutenberg .so-title-bar a .so-dialog-icon:before {
   font: 400 20px/1em dashicons;
   top: 7px;
   left: 13px;
 }
-.so-panels-dialog .so-title-bar a.so-close {
+.so-panels-dialog .so-title-bar a.so-close,
+.gutenberg .so-title-bar a.so-close {
   right: 0;
 }
-.so-panels-dialog .so-title-bar a.so-close .so-dialog-icon:before {
+.so-panels-dialog .so-title-bar a.so-close .so-dialog-icon:before,
+.gutenberg .so-title-bar a.so-close .so-dialog-icon:before {
   content: "\f335";
 }
-.so-panels-dialog .so-title-bar a.so-next {
+.so-panels-dialog .so-title-bar a.so-next,
+.gutenberg .so-title-bar a.so-next {
   right: 50px;
 }
-.so-panels-dialog .so-title-bar a.so-next .so-dialog-icon:before {
+.so-panels-dialog .so-title-bar a.so-next .so-dialog-icon:before,
+.gutenberg .so-title-bar a.so-next .so-dialog-icon:before {
   content: '\f345';
 }
-.so-panels-dialog .so-title-bar a.so-previous {
+.so-panels-dialog .so-title-bar a.so-previous,
+.gutenberg .so-title-bar a.so-previous {
   right: 100px;
 }
-.so-panels-dialog .so-title-bar a.so-previous .so-dialog-icon:before {
+.so-panels-dialog .so-title-bar a.so-previous .so-dialog-icon:before,
+.gutenberg .so-title-bar a.so-previous .so-dialog-icon:before {
   content: '\f341';
 }
-.so-panels-dialog .so-title-bar a.so-nav.so-disabled {
+.so-panels-dialog .so-title-bar a.so-nav.so-disabled,
+.gutenberg .so-title-bar a.so-nav.so-disabled {
   cursor: default;
   pointer-events: none;
 }
-.so-panels-dialog .so-title-bar a.so-nav.so-disabled .so-dialog-icon {
+.so-panels-dialog .so-title-bar a.so-nav.so-disabled .so-dialog-icon,
+.gutenberg .so-title-bar a.so-nav.so-disabled .so-dialog-icon {
   color: #dddddd;
 }
-.so-panels-dialog .so-title-bar.so-has-icon {
+.so-panels-dialog .so-title-bar.so-has-icon,
+.gutenberg .so-title-bar.so-has-icon {
   padding-left: 45px;
 }
-.so-panels-dialog .so-title-bar.so-has-icon .so-panels-icon {
+.so-panels-dialog .so-title-bar.so-has-icon .so-panels-icon,
+.gutenberg .so-title-bar.so-has-icon .so-panels-icon {
   position: absolute;
   top: 14.5px;
   left: 14px;
@@ -935,7 +976,8 @@
   text-align: center;
   color: #666;
 }
-.so-panels-dialog .so-toolbar {
+.so-panels-dialog .so-toolbar,
+.gutenberg .so-toolbar {
   left: 30px;
   right: 30px;
   bottom: 30px;
@@ -944,7 +986,8 @@
   border-top: 1px solid #D8D8D8;
   z-index: 100002;
 }
-.so-panels-dialog .so-toolbar .so-status {
+.so-panels-dialog .so-toolbar .so-status,
+.gutenberg .so-toolbar .so-status {
   float: left;
   padding-top: 6px;
   padding-bottom: 6px;
@@ -952,26 +995,31 @@
   color: #999999;
   line-height: 1em;
 }
-.so-panels-dialog .so-toolbar .so-status.so-panels-loading {
+.so-panels-dialog .so-toolbar .so-status.so-panels-loading,
+.gutenberg .so-toolbar .so-status.so-panels-loading {
   padding-left: 26px;
   background-position: left center;
 }
-.so-panels-dialog .so-toolbar .so-status .dashicons-warning {
+.so-panels-dialog .so-toolbar .so-status .dashicons-warning,
+.gutenberg .so-toolbar .so-status .dashicons-warning {
   color: #aa0000;
   vertical-align: middle;
   margin-right: 7px;
   margin-top: -1px;
 }
-.so-panels-dialog .so-toolbar .so-buttons {
+.so-panels-dialog .so-toolbar .so-buttons,
+.gutenberg .so-toolbar .so-buttons {
   float: right;
 }
-.so-panels-dialog .so-toolbar .so-buttons .action-buttons {
+.so-panels-dialog .so-toolbar .so-buttons .action-buttons,
+.gutenberg .so-toolbar .so-buttons .action-buttons {
   position: absolute;
   left: 15px;
   top: 50%;
   margin-top: -0.65em;
 }
-.so-panels-dialog .so-toolbar .so-buttons .action-buttons a {
+.so-panels-dialog .so-toolbar .so-buttons .action-buttons a,
+.gutenberg .so-toolbar .so-buttons .action-buttons a {
   cursor: pointer;
   display: inline;
   padding: 0.2em 0.5em;
@@ -979,21 +1027,27 @@
   margin-right: 0.5em;
   text-decoration: none;
 }
-.so-panels-dialog .so-toolbar .so-buttons .action-buttons .so-delete {
+.so-panels-dialog .so-toolbar .so-buttons .action-buttons .so-delete,
+.gutenberg .so-toolbar .so-buttons .action-buttons .so-delete {
   color: #a00;
 }
-.so-panels-dialog .so-toolbar .so-buttons .action-buttons .so-delete:hover {
+.so-panels-dialog .so-toolbar .so-buttons .action-buttons .so-delete:hover,
+.gutenberg .so-toolbar .so-buttons .action-buttons .so-delete:hover {
   background: #a00;
   color: #FFFFFF;
 }
-.so-panels-dialog .so-toolbar .so-buttons .action-buttons .so-duplicate:hover {
+.so-panels-dialog .so-toolbar .so-buttons .action-buttons .so-duplicate:hover,
+.gutenberg .so-toolbar .so-buttons .action-buttons .so-duplicate:hover {
   text-decoration: underline;
 }
 .so-panels-dialog .so-left-sidebar,
-.so-panels-dialog .so-right-sidebar {
+.gutenberg .so-left-sidebar,
+.so-panels-dialog .so-right-sidebar,
+.gutenberg .so-right-sidebar {
   background-color: #f3f3f3;
 }
-.so-panels-dialog .so-left-sidebar {
+.so-panels-dialog .so-left-sidebar,
+.gutenberg .so-left-sidebar {
   display: none;
   top: 30px;
   left: 30px;
@@ -1001,41 +1055,50 @@
   width: 290px;
   border-right: 1px solid #D8D8D8;
 }
-.so-panels-dialog .so-left-sidebar h4 {
+.so-panels-dialog .so-left-sidebar h4,
+.gutenberg .so-left-sidebar h4 {
   margin: 0 0 20px 0;
   font-size: 18px;
 }
-.so-panels-dialog .so-left-sidebar .so-sidebar-search {
+.so-panels-dialog .so-left-sidebar .so-sidebar-search,
+.gutenberg .so-left-sidebar .so-sidebar-search {
   width: 100%;
   padding: 6px;
   margin-bottom: 20px;
 }
-.so-panels-dialog .so-left-sidebar .so-sidebar-tabs {
+.so-panels-dialog .so-left-sidebar .so-sidebar-tabs,
+.gutenberg .so-left-sidebar .so-sidebar-tabs {
   list-style: none;
   margin: 0 -15px;
 }
-.so-panels-dialog .so-left-sidebar .so-sidebar-tabs li {
+.so-panels-dialog .so-left-sidebar .so-sidebar-tabs li,
+.gutenberg .so-left-sidebar .so-sidebar-tabs li {
   margin-bottom: 0;
 }
-.so-panels-dialog .so-left-sidebar .so-sidebar-tabs li a {
+.so-panels-dialog .so-left-sidebar .so-sidebar-tabs li a,
+.gutenberg .so-left-sidebar .so-sidebar-tabs li a {
   padding: 7px 16px;
   display: block;
   font-size: 14px;
   text-decoration: none;
   box-shadow: none !important;
 }
-.so-panels-dialog .so-left-sidebar .so-sidebar-tabs li a:hover {
+.so-panels-dialog .so-left-sidebar .so-sidebar-tabs li a:hover,
+.gutenberg .so-left-sidebar .so-sidebar-tabs li a:hover {
   background: #FFFFFF;
 }
-.so-panels-dialog .so-left-sidebar .so-sidebar-tabs li.tab-active a {
+.so-panels-dialog .so-left-sidebar .so-sidebar-tabs li.tab-active a,
+.gutenberg .so-left-sidebar .so-sidebar-tabs li.tab-active a {
   color: #555;
   font-weight: bold;
   background: #FFFFFF;
 }
-.so-panels-dialog .so-left-sidebar .so-sidebar-tabs li.tab-active a:hover {
+.so-panels-dialog .so-left-sidebar .so-sidebar-tabs li.tab-active a:hover,
+.gutenberg .so-left-sidebar .so-sidebar-tabs li.tab-active a:hover {
   background: #FFFFFF;
 }
-.so-panels-dialog .so-right-sidebar {
+.so-panels-dialog .so-right-sidebar,
+.gutenberg .so-right-sidebar {
   display: none;
   top: 80px;
   right: 30px;
@@ -1043,41 +1106,53 @@
   width: 290px;
   border-left: 1px solid #D8D8D8;
 }
-.so-panels-dialog .so-right-sidebar h3 {
+.so-panels-dialog .so-right-sidebar h3,
+.gutenberg .so-right-sidebar h3 {
   color: #333;
 }
-.so-panels-dialog .so-right-sidebar h3:first-child {
+.so-panels-dialog .so-right-sidebar h3:first-child,
+.gutenberg .so-right-sidebar h3:first-child {
   margin-top: 0;
 }
-.so-panels-dialog .so-sidebar .form-field {
+.so-panels-dialog .so-sidebar .form-field,
+.gutenberg .so-sidebar .form-field {
   margin-bottom: 20px;
 }
-.so-panels-dialog .so-sidebar .form-field label {
+.so-panels-dialog .so-sidebar .form-field label,
+.gutenberg .so-sidebar .form-field label {
   font-weight: 500;
   font-size: 15px;
   display: block;
   margin-bottom: 10px;
 }
 .so-panels-dialog.so-panels-dialog-has-left-sidebar .so-content,
+.gutenberg.so-panels-dialog-has-left-sidebar .so-content,
 .so-panels-dialog.so-panels-dialog-has-left-sidebar .so-toolbar,
-.so-panels-dialog.so-panels-dialog-has-left-sidebar .so-title-bar {
+.gutenberg.so-panels-dialog-has-left-sidebar .so-toolbar,
+.so-panels-dialog.so-panels-dialog-has-left-sidebar .so-title-bar,
+.gutenberg.so-panels-dialog-has-left-sidebar .so-title-bar {
   left: 320px;
 }
-.so-panels-dialog.so-panels-dialog-has-left-sidebar .so-content {
+.so-panels-dialog.so-panels-dialog-has-left-sidebar .so-content,
+.gutenberg.so-panels-dialog-has-left-sidebar .so-content {
   -webkit-box-shadow: inset 2px 2px 2px rgba(0,0,0,0.03);
   -moz-box-shadow: inset 2px 2px 2px rgba(0,0,0,0.03);
   box-shadow: inset 2px 2px 2px rgba(0,0,0,0.03);
 }
-.so-panels-dialog.so-panels-dialog-has-left-sidebar .so-left-sidebar {
+.so-panels-dialog.so-panels-dialog-has-left-sidebar .so-left-sidebar,
+.gutenberg.so-panels-dialog-has-left-sidebar .so-left-sidebar {
   display: block;
 }
-.so-panels-dialog.so-panels-dialog-has-right-sidebar .so-content {
+.so-panels-dialog.so-panels-dialog-has-right-sidebar .so-content,
+.gutenberg.so-panels-dialog-has-right-sidebar .so-content {
   right: 320px;
 }
-.so-panels-dialog.so-panels-dialog-has-right-sidebar .so-right-sidebar {
+.so-panels-dialog.so-panels-dialog-has-right-sidebar .so-right-sidebar,
+.gutenberg.so-panels-dialog-has-right-sidebar .so-right-sidebar {
   display: block;
 }
-.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget {
+.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget,
+.gutenberg.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
@@ -1090,11 +1165,13 @@
   box-shadow: 0 1px 2px rgba(0,0,0,0.075), inset 0 1px 0 #FFFFFF;
   margin-bottom: 15px;
 }
-.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget:hover {
+.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget:hover,
+.gutenberg.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget:hover {
   border: 1px solid #BBBBBB;
   background: #FFFFFF;
 }
-.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget.so-current {
+.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget.so-current,
+.gutenberg.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget.so-current {
   border-color: #0074a2;
   background: #2ea2cc;
   cursor: auto;
@@ -1102,48 +1179,58 @@
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.2);
   box-shadow: 0 1px 2px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.2);
 }
-.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget.so-current h3 {
+.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget.so-current h3,
+.gutenberg.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget.so-current h3 {
   color: #FFFFFF;
 }
-.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget.so-current small {
+.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget.so-current small,
+.gutenberg.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget.so-current small {
   color: #eeeeee;
 }
-.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget.so-current:hover {
+.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget.so-current:hover,
+.gutenberg.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget.so-current:hover {
   border-color: #0074a2;
   background: #2ea2cc;
 }
-.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget:last-child {
+.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget:last-child,
+.gutenberg.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget:last-child {
   margin-bottom: 0;
 }
-.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget h3 {
+.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget h3,
+.gutenberg.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget h3 {
   margin: 0 0 7px 0;
   padding: 0;
   height: 1.2em;
   color: #222222;
   font-size: 14px;
 }
-.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget small {
+.so-panels-dialog.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget small,
+.gutenberg.so-panels-dialog-edit-widget .so-left-sidebar .so-widgets .so-widget small {
   font-size: 11px;
   line-height: 1.25em;
   display: block;
   overflow: hidden;
   color: #888888;
 }
-.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list {
+.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list,
+.gutenberg.so-panels-dialog-add-widget .widget-type-list {
   zoom: 1;
   margin: 0 -5px -10px -5px;
   min-height: 10px;
 }
-.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list:before {
+.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list:before,
+.gutenberg.so-panels-dialog-add-widget .widget-type-list:before {
   content: '';
   display: block;
 }
-.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list:after {
+.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list:after,
+.gutenberg.so-panels-dialog-add-widget .widget-type-list:after {
   content: '';
   display: table;
   clear: both;
 }
-.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type {
+.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type,
+.gutenberg.so-panels-dialog-add-widget .widget-type-list .widget-type {
   -ms-user-select: none;
   /* IE 10+ */
   -moz-user-select: -moz-none;
@@ -1160,22 +1247,26 @@
   float: left;
 }
 @media (max-width: 1280px) {
-  .so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type {
+  .so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type,
+  .gutenberg.so-panels-dialog-add-widget .widget-type-list .widget-type {
     width: 33.333%;
   }
 }
 @media (max-width: 960px) {
-  .so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type {
+  .so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type,
+  .gutenberg.so-panels-dialog-add-widget .widget-type-list .widget-type {
     width: 50%;
   }
 }
-.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type h3 {
+.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type h3,
+.gutenberg.so-panels-dialog-add-widget .widget-type-list .widget-type h3 {
   margin: 0 0 7px 0;
   padding: 0;
   color: #222222;
   font-size: 14px;
 }
-.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type small {
+.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type small,
+.gutenberg.so-panels-dialog-add-widget .widget-type-list .widget-type small {
   font-size: 11px;
   min-height: 2.5em;
   line-height: 1.25em;
@@ -1183,7 +1274,8 @@
   overflow: hidden;
   color: #888888;
 }
-.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type .widget-icon {
+.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type .widget-icon,
+.gutenberg.so-panels-dialog-add-widget .widget-type-list .widget-type .widget-icon {
   font-size: 20px;
   width: 20px;
   height: 20px;
@@ -1191,7 +1283,8 @@
   float: left;
   margin: -1px 0.5em 0 0;
 }
-.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type-wrapper {
+.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type-wrapper,
+.gutenberg.so-panels-dialog-add-widget .widget-type-list .widget-type-wrapper {
   border: 1px solid #cccccc;
   cursor: pointer;
   padding: 10px;
@@ -1200,79 +1293,99 @@
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.075);
   box-shadow: 0 1px 2px rgba(0,0,0,0.075);
 }
-.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type-wrapper:hover {
+.so-panels-dialog.so-panels-dialog-add-widget .widget-type-list .widget-type-wrapper:hover,
+.gutenberg.so-panels-dialog-add-widget .widget-type-list .widget-type-wrapper:hover {
   border: 1px solid #BBBBBB;
   background: #FFFFFF;
   -webkit-box-shadow: 0 2px 2px rgba(0,0,0,0.075);
   -moz-box-shadow: 0 2px 2px rgba(0,0,0,0.075);
   box-shadow: 0 2px 2px rgba(0,0,0,0.075);
 }
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form {
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-set-form {
   zoom: 1;
   padding: 8px;
   border: 1px solid #ccc;
   margin-bottom: 20px;
   background: #F3F3F3;
 }
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form:before {
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form:before,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-set-form:before {
   content: '';
   display: block;
 }
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form:after {
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form:after,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-set-form:after {
   content: '';
   display: table;
   clear: both;
 }
 .so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form input,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-set-form input,
 .so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form select,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-set-form select,
 .so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form button,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-set-form button,
 .so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form strong,
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form span {
+.gutenberg.so-panels-dialog-row-edit .so-content .row-set-form strong,
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form span,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-set-form span {
   display: inline;
   margin: 1px 5px;
   width: auto;
   outline: none;
   box-shadow: none;
 }
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form button {
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form button,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-set-form button {
   margin-top: 2px;
 }
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form label {
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-set-form label,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-set-form label {
   display: inline;
 }
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview {
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview {
   margin: 0 -6px;
   height: 360px;
   position: relative;
   white-space: nowrap;
 }
 .so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell,
 .so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell-in,
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell-weight {
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell-in,
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell-weight,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell-weight {
   -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell {
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell {
   display: inline-block;
   position: relative;
   padding: 0 6px;
   cursor: pointer;
 }
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in {
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in {
   border: 1px solid #bcccd2;
   min-height: 360px;
   background: #e4eff4;
   position: relative;
 }
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in.cell-selected {
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in.cell-selected,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in.cell-selected {
   background: #cae7f4 url("images/cell-selected.png") repeat;
   border-color: #9abcc7;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 .so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight,
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight-input {
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight,
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight-input,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight-input {
   position: absolute;
   font-size: 17px;
   font-weight: bold;
@@ -1289,22 +1402,28 @@
   cursor: pointer;
 }
 .so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight:after,
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight-input:after {
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight:after,
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight-input:after,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight-input:after {
   content: '%';
 }
 .so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight:hover,
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight-input:hover {
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight:hover,
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight-input:hover,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight-input:hover {
   background: #F6F6F6;
   border: 1px solid #D0D0D0;
 }
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight-input {
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight-input,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .preview-cell-in .preview-cell-weight-input {
   background: #F6F6F6;
   border: 1px solid #D0D0D0;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
 }
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .resize-handle {
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .resize-handle,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .resize-handle {
   z-index: 100;
   position: absolute;
   top: 0;
@@ -1319,78 +1438,98 @@
   transition: background 0.15s ease-in-out 0s;
 }
 .so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .resize-handle:hover,
-.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .resize-handle.ui-draggable-dragging {
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .resize-handle:hover,
+.so-panels-dialog.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .resize-handle.ui-draggable-dragging,
+.gutenberg.so-panels-dialog-row-edit .so-content .row-preview .preview-cell .resize-handle.ui-draggable-dragging {
   background: #b7e0f1;
 }
-.so-panels-dialog.so-panels-dialog-history .so-left-sidebar {
+.so-panels-dialog.so-panels-dialog-history .so-left-sidebar,
+.gutenberg.so-panels-dialog-history .so-left-sidebar {
   padding: 0;
 }
-.so-panels-dialog.so-panels-dialog-history .history-entries .history-entry {
+.so-panels-dialog.so-panels-dialog-history .history-entries .history-entry,
+.gutenberg.so-panels-dialog-history .history-entries .history-entry {
   padding: 10px;
   background: #F8F8F8;
   cursor: pointer;
   border-bottom: 1px solid #ccc;
 }
-.so-panels-dialog.so-panels-dialog-history .history-entries .history-entry h3 {
+.so-panels-dialog.so-panels-dialog-history .history-entries .history-entry h3,
+.gutenberg.so-panels-dialog-history .history-entries .history-entry h3 {
   margin: 0 0 0.6em 0;
   font-size: 12px;
   font-weight: bold;
   color: #444444;
   line-height: 1em;
 }
-.so-panels-dialog.so-panels-dialog-history .history-entries .history-entry .timesince {
+.so-panels-dialog.so-panels-dialog-history .history-entries .history-entry .timesince,
+.gutenberg.so-panels-dialog-history .history-entries .history-entry .timesince {
   color: #999999;
   font-size: 11px;
   line-height: 1em;
 }
-.so-panels-dialog.so-panels-dialog-history .history-entries .history-entry:hover {
+.so-panels-dialog.so-panels-dialog-history .history-entries .history-entry:hover,
+.gutenberg.so-panels-dialog-history .history-entries .history-entry:hover {
   background: #F0F0F0;
 }
-.so-panels-dialog.so-panels-dialog-history .history-entries .history-entry.so-selected {
+.so-panels-dialog.so-panels-dialog-history .history-entries .history-entry.so-selected,
+.gutenberg.so-panels-dialog-history .history-entries .history-entry.so-selected {
   background: #EEEEEE;
 }
-.so-panels-dialog.so-panels-dialog-history .history-entries .history-entry .count {
+.so-panels-dialog.so-panels-dialog-history .history-entries .history-entry .count,
+.gutenberg.so-panels-dialog-history .history-entries .history-entry .count {
   color: #999999;
 }
-.so-panels-dialog.so-panels-dialog-history .so-content {
+.so-panels-dialog.so-panels-dialog-history .so-content,
+.gutenberg.so-panels-dialog-history .so-content {
   padding: 0;
   overflow-y: hidden;
 }
-.so-panels-dialog.so-panels-dialog-history .so-content form.history-form {
+.so-panels-dialog.so-panels-dialog-history .so-content form.history-form,
+.gutenberg.so-panels-dialog-history .so-content form.history-form {
   display: none;
 }
-.so-panels-dialog.so-panels-dialog-history .so-content iframe.siteorigin-panels-history-iframe {
+.so-panels-dialog.so-panels-dialog-history .so-content iframe.siteorigin-panels-history-iframe,
+.gutenberg.so-panels-dialog-history .so-content iframe.siteorigin-panels-history-iframe {
   width: 100%;
   height: 100%;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content {
   padding-left: 10px;
   padding-right: 10px;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-error-message {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-error-message,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-error-message {
   font-size: 14px;
   border: 1px solid #cccccc;
   background: #F8F8F8;
   padding: 15px 20px;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .export-file-ui {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .export-file-ui,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .export-file-ui {
   padding: 5px 15px;
   text-align: right;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui {
   padding: 15px;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .drag-drop-message {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .drag-drop-message,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .drag-drop-message {
   display: none;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui.has-drag-drop .drag-drop-message {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui.has-drag-drop .drag-drop-message,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui.has-drag-drop .drag-drop-message {
   display: block;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui p.drag-drop-message {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui p.drag-drop-message,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui p.drag-drop-message {
   font-size: 1em;
   margin-bottom: 0;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .drag-upload-area {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .drag-upload-area,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .drag-upload-area {
   display: block;
   -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1404,11 +1543,13 @@
   -o-transition: all 0.25s ease 0s;
   transition: all 0.25s ease 0s;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .drag-upload-area.file-dragover {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .drag-upload-area.file-dragover,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .drag-upload-area.file-dragover {
   background-color: #f2f9fc;
   border-color: #0074a2;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .progress-bar {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .progress-bar,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .progress-bar {
   display: none;
   padding: 2px;
   border: 2px solid #2181b1;
@@ -1417,40 +1558,47 @@
   border-radius: 2px;
   margin-top: 20px;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .progress-bar .progress-percent {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .progress-bar .progress-percent,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .progress-bar .progress-percent {
   height: 14px;
   background-color: #358ebe;
   -webkit-border-radius: 1px;
   -moz-border-radius: 1px;
   border-radius: 1px;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .file-browse-button {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .file-browse-button,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .import-upload-ui .file-browse-button {
   padding: 12px 30px;
   height: auto;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-browse {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-browse,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-browse {
   background: #f3f3f3;
   border-bottom: 1px solid #d0d0d0;
   margin: -15px -10px 15px -10px;
   padding: 15px;
   font-weight: bold;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items-wrapper {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items-wrapper,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items-wrapper {
   display: flex;
   flex-flow: row wrap;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-no-results {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-no-results,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-no-results {
   margin: 20px 0;
   padding: 0 5px;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item {
   -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 6px;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-directory-item-wrapper {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-directory-item-wrapper,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-directory-item-wrapper {
   display: flex;
   flex-flow: column nowrap;
   height: 100%;
@@ -1462,38 +1610,45 @@
   -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
   box-shadow: 0 1px 1px rgba(0,0,0,0.1);
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-title {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-title,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-title {
   font-size: 15px;
   margin: 0 0 13px 0;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot {
   flex: 3 auto;
   margin-bottom: 10px;
   cursor: pointer;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot.so-loading {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot.so-loading,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot.so-loading {
   background-image: url("images/wpspin_light.gif");
   background-position: center center;
   background-repeat: no-repeat;
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot.so-loading {
+  .so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot.so-loading,
+  .gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot.so-loading {
     background-image: url(images/wpspin_light-2x.gif);
     background-size: 16px 16px;
   }
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot img {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot img,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot img {
   display: block;
   width: 100%;
   height: auto;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot .so-screenshot-wrapper {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot .so-screenshot-wrapper,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-screenshot .so-screenshot-wrapper {
   display: block;
   min-height: 40px;
   background: #808080;
   border: 1px solid #d0d0d0;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-description {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-description,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-description {
   flex: 1 auto;
   font-size: 0.9em;
   color: #666;
@@ -1501,7 +1656,8 @@
   max-height: 60px;
   overflow: hidden;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-bottom {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-bottom,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-bottom {
   flex: 1 auto;
   position: relative;
   max-height: 50px;
@@ -1509,14 +1665,16 @@
   background: #fcfcfc;
   border-top: 1px solid #d0d0d0;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-bottom .so-title {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-bottom .so-title,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-bottom .so-title {
   margin: 0;
   padding: 16px 10px;
   cursor: pointer;
   overflow: hidden;
   white-space: nowrap;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-bottom .so-buttons {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-bottom .so-buttons,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item .so-bottom .so-buttons {
   position: absolute;
   z-index: 2;
   top: 0;
@@ -1535,69 +1693,85 @@
   -moz-box-shadow: -1px 0 1px rgba(0, 0, 0, 0.05);
   box-shadow: -1px 0 1px rgba(0, 0, 0, 0.05);
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item:hover .so-buttons {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item:hover .so-buttons,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item:hover .so-buttons {
   visibility: visible;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected {
   background-color: #e5f4fa;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected .so-directory-item-wrapper {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected .so-directory-item-wrapper,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected .so-directory-item-wrapper {
   background: #deeef4;
   border-color: #9abcc7;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected .so-bottom {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected .so-bottom,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected .so-bottom {
   background: #f8fdff;
   border-color: #bcccd2;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected .so-bottom .so-title {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected .so-bottom .so-title,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected .so-bottom .so-title {
   color: #3e484c;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected .so-bottom .so-buttons {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected .so-bottom .so-buttons,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item.selected .so-bottom .so-buttons {
   background: #eaf2f6;
   border-color: #bcccd2;
 }
 @media only screen and (min-width: 1680px) {
-  .so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item {
+  .so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item,
+  .gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item {
     width: 20%;
   }
 }
 @media only screen and (max-width: 1679px) and (min-width: 1280px) {
-  .so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item {
+  .so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item,
+  .gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item {
     width: 25%;
   }
 }
 @media only screen and (max-width: 1279px) and (min-width: 1140px) {
-  .so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item {
+  .so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item,
+  .gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item {
     width: 33.333%;
   }
 }
 @media only screen and (max-width: 1139px) {
-  .so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item {
+  .so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item,
+  .gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-items .so-directory-item {
     width: 50%;
   }
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-pages {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-pages,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-pages {
   margin-top: 15px;
   padding: 0 5px;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-pages .button-disabled {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-content .so-directory-pages .button-disabled,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-content .so-directory-pages .button-disabled {
   pointer-events: none;
 }
-.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-toolbar .so-buttons select.so-layout-position {
+.so-panels-dialog.so-panels-dialog-prebuilt-layouts .so-toolbar .so-buttons select.so-layout-position,
+.gutenberg.so-panels-dialog-prebuilt-layouts .so-toolbar .so-buttons select.so-layout-position {
   vertical-align: baseline;
 }
-.so-panels-dialog .so-visual-styles {
+.so-panels-dialog .so-visual-styles,
+.gutenberg .so-visual-styles {
   margin: -15px;
   height: auto;
   /* All the field types */
 }
-.so-panels-dialog .so-visual-styles h3 {
+.so-panels-dialog .so-visual-styles h3,
+.gutenberg .so-visual-styles h3 {
   line-height: 1em;
   margin: 0;
   padding: 20px 15px;
   border-bottom: 1px solid #ddd;
 }
-.so-panels-dialog .so-visual-styles .style-section-head {
+.so-panels-dialog .so-visual-styles .style-section-head,
+.gutenberg .so-visual-styles .style-section-head {
   background: #ffffff;
   padding: 15px 10px;
   border-bottom: 1px solid #ddd;
@@ -1607,95 +1781,119 @@
   -ms-user-select: none;
   user-select: none;
 }
-.so-panels-dialog .so-visual-styles .style-section-head h4 {
+.so-panels-dialog .so-visual-styles .style-section-head h4,
+.gutenberg .so-visual-styles .style-section-head h4 {
   margin: 0;
 }
-.so-panels-dialog .so-visual-styles .style-section-fields {
+.so-panels-dialog .so-visual-styles .style-section-fields,
+.gutenberg .so-visual-styles .style-section-fields {
   padding: 15px;
   border-bottom: 1px solid #ddd;
   background: #F7F7F7;
 }
-.so-panels-dialog .so-visual-styles .style-section-fields .style-field-wrapper {
+.so-panels-dialog .so-visual-styles .style-section-fields .style-field-wrapper,
+.gutenberg .so-visual-styles .style-section-fields .style-field-wrapper {
   margin-bottom: 20px;
 }
-.so-panels-dialog .so-visual-styles .style-section-fields .style-field-wrapper:last-child {
+.so-panels-dialog .so-visual-styles .style-section-fields .style-field-wrapper:last-child,
+.gutenberg .so-visual-styles .style-section-fields .style-field-wrapper:last-child {
   margin-bottom: 0;
 }
-.so-panels-dialog .so-visual-styles .style-section-fields .style-field-wrapper > label {
+.so-panels-dialog .so-visual-styles .style-section-fields .style-field-wrapper > label,
+.gutenberg .so-visual-styles .style-section-fields .style-field-wrapper > label {
   font-weight: bold;
   display: block;
   margin-bottom: 3px;
 }
-.so-panels-dialog .so-visual-styles .style-section-fields .style-field-wrapper .style-field {
+.so-panels-dialog .so-visual-styles .style-section-fields .style-field-wrapper .style-field,
+.gutenberg .so-visual-styles .style-section-fields .style-field-wrapper .style-field {
   zoom: 1;
 }
-.so-panels-dialog .so-visual-styles .style-section-fields .style-field-wrapper .style-field:before {
+.so-panels-dialog .so-visual-styles .style-section-fields .style-field-wrapper .style-field:before,
+.gutenberg .so-visual-styles .style-section-fields .style-field-wrapper .style-field:before {
   content: '';
   display: block;
 }
-.so-panels-dialog .so-visual-styles .style-section-fields .style-field-wrapper .style-field:after {
+.so-panels-dialog .so-visual-styles .style-section-fields .style-field-wrapper .style-field:after,
+.gutenberg .so-visual-styles .style-section-fields .style-field-wrapper .style-field:after {
   content: '';
   display: table;
   clear: both;
 }
-.so-panels-dialog .so-visual-styles .style-section-fields .style-field-wrapper .style-field input {
+.so-panels-dialog .so-visual-styles .style-section-fields .style-field-wrapper .style-field input,
+.gutenberg .so-visual-styles .style-section-fields .style-field-wrapper .style-field input {
   font-size: 12px;
 }
-.so-panels-dialog .so-visual-styles .style-input-wrapper {
+.so-panels-dialog .so-visual-styles .style-input-wrapper,
+.gutenberg .so-visual-styles .style-input-wrapper {
   zoom: 1;
 }
-.so-panels-dialog .so-visual-styles .style-input-wrapper:before {
+.so-panels-dialog .so-visual-styles .style-input-wrapper:before,
+.gutenberg .so-visual-styles .style-input-wrapper:before {
   content: '';
   display: block;
 }
-.so-panels-dialog .so-visual-styles .style-input-wrapper:after {
+.so-panels-dialog .so-visual-styles .style-input-wrapper:after,
+.gutenberg .so-visual-styles .style-input-wrapper:after {
   content: '';
   display: table;
   clear: both;
 }
-.so-panels-dialog .so-visual-styles .style-input-wrapper input {
+.so-panels-dialog .so-visual-styles .style-input-wrapper input,
+.gutenberg .so-visual-styles .style-input-wrapper input {
   max-width: 100%;
 }
-.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-inputs {
+.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-inputs,
+.gutenberg .so-visual-styles .style-field-measurement .measurement-inputs {
   overflow: auto;
   margin: 0 -3px 4px -3px;
 }
-.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-wrapper {
+.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-wrapper,
+.gutenberg .so-visual-styles .style-field-measurement .measurement-wrapper {
   box-sizing: border-box;
   float: left;
   width: 25%;
   padding: 0 3px;
 }
-.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value {
+.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value,
+.gutenberg .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value {
   border-width: 1px;
   display: block;
   max-width: 100%;
 }
-.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value.measurement-top {
+.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value.measurement-top,
+.gutenberg .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value.measurement-top {
   box-shadow: inset 0 2px 1px rgba(0, 115, 170, 0.35);
 }
-.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value.measurement-right {
+.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value.measurement-right,
+.gutenberg .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value.measurement-right {
   box-shadow: inset -3px 0 2px rgba(0, 115, 170, 0.35);
 }
-.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value.measurement-bottom {
+.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value.measurement-bottom,
+.gutenberg .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value.measurement-bottom {
   box-shadow: inset 0 -2px 1px rgba(0, 115, 170, 0.35);
 }
-.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value.measurement-left {
+.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value.measurement-left,
+.gutenberg .so-visual-styles .style-field-measurement .measurement-wrapper .measurement-value.measurement-left {
   box-shadow: inset 3px 0 2px rgba(0, 115, 170, 0.35);
 }
-.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-unit-multiple {
+.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-unit-multiple,
+.gutenberg .so-visual-styles .style-field-measurement .measurement-unit-multiple {
   width: 100%;
   display: block;
 }
-.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-unit-single {
+.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-unit-single,
+.gutenberg .so-visual-styles .style-field-measurement .measurement-unit-single {
   float: right;
   width: 25%;
 }
-.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-value-single {
+.so-panels-dialog .so-visual-styles .style-field-measurement .measurement-value-single,
+.gutenberg .so-visual-styles .style-field-measurement .measurement-value-single {
   float: left;
   width: 72%;
 }
-.so-panels-dialog .so-visual-styles .style-field-image .so-image-selector {
+.so-panels-dialog .so-visual-styles .style-field-image .so-image-selector,
+.gutenberg .so-visual-styles .style-field-image .so-image-selector {
   display: inline-block;
   background-color: #f7f7f7;
   border: 1px solid #ccc;
@@ -1709,7 +1907,8 @@
   -moz-box-shadow: inset 0 1px #FFFFFF;
   box-shadow: inset 0 1px #FFFFFF;
 }
-.so-panels-dialog .so-visual-styles .style-field-image .so-image-selector .current-image {
+.so-panels-dialog .so-visual-styles .style-field-image .so-image-selector .current-image,
+.gutenberg .so-visual-styles .style-field-image .so-image-selector .current-image {
   height: 28px;
   width: 28px;
   float: left;
@@ -1732,14 +1931,16 @@
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
-.so-panels-dialog .so-visual-styles .style-field-image .so-image-selector .select-image {
+.so-panels-dialog .so-visual-styles .style-field-image .so-image-selector .select-image,
+.gutenberg .so-visual-styles .style-field-image .so-image-selector .select-image {
   font-size: 12px;
   line-height: 28px;
   float: left;
   padding: 0 8px;
   color: #555;
 }
-.so-panels-dialog .so-visual-styles .style-field-image .remove-image {
+.so-panels-dialog .so-visual-styles .style-field-image .remove-image,
+.gutenberg .so-visual-styles .style-field-image .remove-image {
   font-size: 12px;
   margin-top: 4px;
   margin-left: 15px;
@@ -1748,13 +1949,16 @@
   color: #666;
   text-decoration: none;
 }
-.so-panels-dialog .so-visual-styles .style-field-image .remove-image.hidden {
+.so-panels-dialog .so-visual-styles .style-field-image .remove-image.hidden,
+.gutenberg .so-visual-styles .style-field-image .remove-image.hidden {
   display: none;
 }
-.so-panels-dialog .so-visual-styles .style-field-image .image-fallback {
+.so-panels-dialog .so-visual-styles .style-field-image .image-fallback,
+.gutenberg .so-visual-styles .style-field-image .image-fallback {
   margin-top: 4px;
 }
-.so-panels-dialog .so-visual-styles .style-field-checkbox label {
+.so-panels-dialog .so-visual-styles .style-field-checkbox label,
+.gutenberg .so-visual-styles .style-field-checkbox label {
   -webkit-user-select: none;
   /* Chrome all / Safari all */
   -moz-user-select: none;
@@ -1763,11 +1967,13 @@
   /* IE 10+ */
   user-select: none;
 }
-.so-panels-dialog .so-visual-styles .so-field-code {
+.so-panels-dialog .so-visual-styles .so-field-code,
+.gutenberg .so-visual-styles .so-field-code {
   font-size: 12px;
   font-family: "Courier 10 Pitch", Courier, monospace;
 }
-.so-panels-dialog .so-visual-styles .so-description {
+.so-panels-dialog .so-visual-styles .so-description,
+.gutenberg .so-visual-styles .so-description {
   color: #999;
   font-size: 12px;
   margin-top: 5px;
@@ -1775,30 +1981,79 @@
   font-style: italic;
   clear: both;
 }
-.so-panels-dialog .so-visual-styles.so-cell-styles {
+.so-panels-dialog .so-visual-styles.so-cell-styles,
+.gutenberg .so-visual-styles.so-cell-styles {
   margin-top: 15px;
 }
-.so-panels-dialog .so-content .siteorigin-panels-builder .so-builder-toolbar {
+.so-panels-dialog .so-content .siteorigin-panels-builder .so-builder-toolbar,
+.gutenberg .so-content .siteorigin-panels-builder .so-builder-toolbar,
+.so-panels-dialog .siteorigin-panels-layout-block-container .siteorigin-panels-builder .so-builder-toolbar,
+.gutenberg .siteorigin-panels-layout-block-container .siteorigin-panels-builder .so-builder-toolbar {
   border: 1px solid #dedede;
+  z-index: 1;
 }
-.so-panels-dialog .so-content .siteorigin-panels-builder .so-rows-container {
+.so-panels-dialog .so-content .siteorigin-panels-builder .so-rows-container,
+.gutenberg .so-content .siteorigin-panels-builder .so-rows-container,
+.so-panels-dialog .siteorigin-panels-layout-block-container .siteorigin-panels-builder .so-rows-container,
+.gutenberg .siteorigin-panels-layout-block-container .siteorigin-panels-builder .so-rows-container {
   padding: 20px 0 0 0;
 }
-.so-panels-dialog .so-content .siteorigin-panels-builder .so-panels-welcome-message {
+.so-panels-dialog .so-content .siteorigin-panels-builder .so-panels-welcome-message,
+.gutenberg .so-content .siteorigin-panels-builder .so-panels-welcome-message,
+.so-panels-dialog .siteorigin-panels-layout-block-container .siteorigin-panels-builder .so-panels-welcome-message,
+.gutenberg .siteorigin-panels-layout-block-container .siteorigin-panels-builder .so-panels-welcome-message {
   padding-left: 0;
   padding-right: 0;
+  line-height: 2.5em;
 }
-.so-panels-dialog .so-dropdown-wrapper input[type="button"].button-primary {
+.so-panels-dialog .siteorigin-panels-layout-block-container,
+.gutenberg .siteorigin-panels-layout-block-container {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans, Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+  font-size: 13px;
+  line-height: 1.4em;
+}
+.so-panels-dialog .siteorigin-panels-layout-block-container ul,
+.gutenberg .siteorigin-panels-layout-block-container ul {
+  list-style: none;
+}
+.so-panels-dialog .siteorigin-panels-layout-block-container .so-builder-container,
+.gutenberg .siteorigin-panels-layout-block-container .so-builder-container {
+  margin: 0 -28px;
+}
+.so-panels-dialog .siteorigin-panels-layout-block-container .so-builder-container.so-display-narrow,
+.gutenberg .siteorigin-panels-layout-block-container .so-builder-container.so-display-narrow {
+  margin: 0 -15px;
+}
+.so-panels-dialog .siteorigin-panels-gutenberg-icon,
+.gutenberg .siteorigin-panels-gutenberg-icon {
+  display: inline-block;
+  background-size: cover;
+  background-image: url('../compat/pb-icon.svg');
+  width: 20px;
+  height: 20px;
+}
+.so-panels-dialog .so-panels-gutenberg-layout-preview-container .so-panels-spinner-container,
+.gutenberg .so-panels-gutenberg-layout-preview-container .so-panels-spinner-container {
+  text-align: center;
+}
+.so-panels-dialog .so-panels-gutenberg-layout-preview-container .so-panels-spinner-container > span,
+.gutenberg .so-panels-gutenberg-layout-preview-container .so-panels-spinner-container > span {
+  display: inline-block;
+}
+.so-panels-dialog .so-dropdown-wrapper input[type="button"].button-primary,
+.gutenberg .so-dropdown-wrapper input[type="button"].button-primary {
   width: 125px;
   height: 28px;
 }
-.so-panels-dialog .so-dropdown-wrapper .so-dropdown-links-wrapper {
+.so-panels-dialog .so-dropdown-wrapper .so-dropdown-links-wrapper,
+.gutenberg .so-dropdown-wrapper .so-dropdown-links-wrapper {
   display: block;
   z-index: 11;
   bottom: 28px;
   width: 125px;
 }
-.so-panels-dialog .so-dropdown-wrapper .so-dropdown-links-wrapper.hidden {
+.so-panels-dialog .so-dropdown-wrapper .so-dropdown-links-wrapper.hidden,
+.gutenberg .so-dropdown-wrapper .so-dropdown-links-wrapper.hidden {
   display: none;
 }
 /* Display the dialog with a proper z-index in the customizer */
