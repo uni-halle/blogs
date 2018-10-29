@@ -22,7 +22,7 @@ if ($sfid) {
 get_header();
 get_sidebar();
 ?> 
-<main id="main" class="col-md-6 site-main" role="main">
+<main id="main" class="<?php echo $Bsb4Design->mainContainerClasses();?> mr-md-auto" role="main">
   <?php
   if (have_posts()) {
     ?> 

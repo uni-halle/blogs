@@ -21,29 +21,39 @@ $Bsb4Design = new \BootstrapBasic4\Bsb4Design();
     <header class="entry-header"> 
     <h1 class="entry-title">
 	       <a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a> 
-	    </h1>
-        <?php if ('post' == get_post_type()) { ?> 
-        <?php if( !post_password_required( $post )): ?>
-        	<div class="entry-meta">
-<!--             <?php $Bsb4Design->postOn(); ?>  -->
-<?php
-                /* translators: used between list items, there is a space after the comma */
-                $categories_list = get_the_category_list(__(', ', 'bootstrap-basic4'));
-                if (!empty($categories_list)) {
-            ?> 
-            <span class="cat-links">
-            <?php if( !post_password_required( $post )): ?>
-                <?php $Bsb4Design->categoriesList($categories_list); ?>
-			<?php endif ?>
-            </span>
-            <?php } // End if categories ?> 
-			<div class="klein">
-								
-			</div>
-        </div><!-- .entry-meta -->
-        <?php endif ?>
-        <hr />
-        <?php } //endif; ?> 
+	</h1>
+	<hr />
+	<!-- Autor -->
+	 	<div class="entry-meta">
+				<div id="autor">  
+	                <?php if( have_rows('autor') ): ?> 	
+	                 	<div class="row klein">        	                     
+		                <?php while( have_rows('autor') ): the_row();                 
+			                 // vars                 
+			                 $titel = get_sub_field('titel');                 
+			                 $vorname = get_sub_field('vorname');      
+			                 $nachname = get_sub_field('nachname');   
+			                 $status = get_sub_field('status');  
+			                 $mail = get_sub_field('mail');
+			                 ?>                 
+							 <div class="col-4">Autor*in</div>
+							 <div class="col-8">                         
+ 								<?php if( $titel ){echo $titel; }?> <?php if( $vorname ){echo $vorname; }?>  
+ 								<?php if( $nachname ){echo $nachname; }?> | <?php if($status = get_the_term_list( $post->ID, 'status', '' )):?><?=$status?><?php endif ?>
+ 								<?php if( $mail ){echo '| <a href="mailto:' . $mail . '">' . $mail . '</a>';}?>
+
+							 </div>         
+						<?php endwhile; ?>         
+						</div> <!-- row klein -->
+					<?php endif; ?>
+	            	
+		        	<div class="row klein">
+	            			<div class="col-4">Auswertungsmethode/n</div>
+							<div class="col-8"><?php if($auswertungsmethode = get_the_term_list( $post->ID, 'auswertungsmethode', '', ', ' )):?><?=$auswertungsmethode?><?php endif ?></div>         
+	            	</div> <!-- row klein -->
+				</div> <!-- autor -->	 
+	 	</div>		
+		<hr />	
     </header><!-- .entry-header -->
 
     <?php if (is_search()) { // Only display Excerpts for Search ?> 
@@ -69,22 +79,7 @@ $Bsb4Design = new \BootstrapBasic4\Bsb4Design();
     <?php } //endif; ?> 
 
     <footer>
-        <?php if ('post' == get_post_type()) { // Hide category and tag text for pages on Search ?> 
-        <div class="entry-meta">        
-			<span style="float:right">  
-                <?php $hat_interpretation = get_field( 'hat_interpretation' );?>
-                <span>
-					<?php if( $hat_interpretation == true ) {?><i class="fa fa-flag" aria-hidden="true" title="Interpretation vorhanden"></i> <?php }?> 
-                </span>
-<!--
-				<?php if (! post_password_required() && (comments_open() || '0' != get_comments_number())) { ?> 
-                    <span><?php $Bsb4Design->commentsLink(); ?></span>
-				<?php } //endif; ?>
--->
-			</span>
-        </div><!--.entry-meta-category-tag-->
-        <?php } // End if 'post' == get_post_type() ?> 
-        <?php $Bsb4Design->editPostLink(); ?>
+       
 
     </footer><!-- .entry-meta -->
 </article><!-- #post-## -->

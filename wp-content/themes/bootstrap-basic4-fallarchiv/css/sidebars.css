@@ -5,13 +5,22 @@ Copyright(c) 2018 codemacher UG (haftungsbeschränkt) All Rights Reserved.
     Created on : 11.04.2018, 11:10:55
     Author     : post
 */
+#suchmaske {
+	margin-top: 15px;
+}
+#accordion {
+	margin-top: 20px;
+}
+#sidebar-left {
+	margin-left: 10px;
+}
 .accordion h1 {
   font-size: 18px;
   margin-top: 0;
   cursor: pointer;
 }
 .accordion h2 {
-  font-size:1rem;
+  font-size:0.9rem;
   text-transform: none;
   cursor: pointer;
 }
@@ -40,7 +49,7 @@ Copyright(c) 2018 codemacher UG (haftungsbeschränkt) All Rights Reserved.
 .accordion form label, .accordion form label > * {
   width:100%;
 }
-#headingTags, #headingFilter, #headingInterpretationen {
+#headingTags, #headingFilter,#headingMitmachen {
   margin-top: 20px;
   margin-bottom: 0;
   padding-bottom: 5px;
@@ -50,6 +59,11 @@ Copyright(c) 2018 codemacher UG (haftungsbeschränkt) All Rights Reserved.
     padding: 6px;
   */
 }
+#headingInterpretationen {
+  margin-top: 60px;
+  margin-bottom: 0;
+  padding-bottom: 5px;
+  }
 #collapseTags .card-body{
   padding: 0;	
   margin-bottom: 20px;
@@ -62,7 +76,7 @@ Copyright(c) 2018 codemacher UG (haftungsbeschränkt) All Rights Reserved.
 
 #collapseFilter
 
-#headingArbeitsfelder, #headingWeitereFilter, #headingInterpretationen {
+#headingArbeitsfelder, #headingThemen, #headingWeitereFilter, #headingInterpretationen {
   border-bottom: 1px #ddd solid;
   padding-bottom: 5px;
   /*	background-color: #fff;
@@ -114,8 +128,19 @@ Copyright(c) 2018 codemacher UG (haftungsbeschränkt) All Rights Reserved.
 	padding-left: 5px;
 	}
 
+#headingUnterrichtsstoerung h3[aria-expanded=true] {
+   	background-color: #aaa;
+	color: #fff;
+	padding-left: 5px;
+	}
+#headingUnterrichtseinstieg h3[aria-expanded=true] {
+   	background-color: #aaa;
+	color: #fff;
+	padding-left: 5px;
+	}
 
-#collapseSchuleUnterricht, #collapseSchuleAusserUnterricht, #collapseAusserschulisch, #collapseErwachsenenbildung {
+
+#collapseSchuleUnterricht, #collapseSchuleAusserUnterricht, #collapseAusserschulisch, #collapseErwachsenenbildung, #collapseUnterrichtsstoerung, #collapseUnterrichtseinstieg {
   border: 1px #ddd solid;
 /*   background-color: #e1e5da; */
   background-color: #eee;
@@ -163,7 +188,7 @@ input[type="number"] {
   font-size:14px;
 }
 
-#search-filter-form-2096, #search-filter-form-2097 {
+#search-filter-form-2096, #search-filter-form-2097, #search-filter-form-2300, #collapseUnterrichtsstoerung, #collapseUnterrichtseinstieg, #collapseFeedback, #collapseNaehedistanz, #collapseInteraktion {
   display:none;
 }
 #suchmaske ul {

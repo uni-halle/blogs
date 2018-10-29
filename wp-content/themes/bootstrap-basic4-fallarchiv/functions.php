@@ -66,7 +66,7 @@ function cpt_interpretation() {
       'supports' => array('title', 'editor', 'comments'),
       'public' => true,
       'show_ui' => true,
-      'can_export' => false,
+      'can_export' => true,
       'has_archive' => true,
       'rewrite' => $rewrite,
   );
@@ -131,7 +131,7 @@ function build_taxonomies() {
   );
   register_taxonomy('werhandelt-sch', 'post', array(
       'hierarchical' => true,
-      'label' => 'wer handelt sch',
+      'label' => 'wer handelt',
       'query_var' => true,
       'rewrite' => true,
       'meta_box_cb' => false
@@ -139,7 +139,7 @@ function build_taxonomies() {
   );
   register_taxonomy('werhandelt-kj', 'post', array(
       'hierarchical' => true,
-      'label' => 'wer handelt KJ',
+      'label' => 'wer handelt',
       'query_var' => true,
       'rewrite' => true,
       'meta_box_cb' => false
@@ -147,7 +147,7 @@ function build_taxonomies() {
   );
   register_taxonomy('werhandelt-eb', 'post', array(
       'hierarchical' => true,
-      'label' => 'wer handelt EB',
+      'label' => 'wer handelt',
       'query_var' => true,
       'rewrite' => true,
       'meta_box_cb' => false
@@ -155,7 +155,7 @@ function build_taxonomies() {
   );
   register_taxonomy('handlungsfeld-au', 'post', array(
       'hierarchical' => true,
-      'label' => 'Handlungsfeld AU',
+      'label' => 'Handlungsfeld',
       'query_var' => true,
       'rewrite' => true,
       'meta_box_cb' => false
@@ -163,7 +163,7 @@ function build_taxonomies() {
   );
   register_taxonomy('handlungsfeld-kj', 'post', array(
       'hierarchical' => true,
-      'label' => 'Handlungsfeld KJ',
+      'label' => 'Handlungsfeld',
       'query_var' => true,
       'rewrite' => true,
       'meta_box_cb' => false
@@ -171,7 +171,7 @@ function build_taxonomies() {
   );
   register_taxonomy('handlungsfeld-eb', 'post', array(
       'hierarchical' => true,
-      'label' => 'Handlungsfeld EB',
+      'label' => 'Handlungsfeld',
       'query_var' => true,
       'rewrite' => true,
       'meta_box_cb' => false

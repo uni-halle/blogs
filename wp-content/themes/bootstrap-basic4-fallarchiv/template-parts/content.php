@@ -40,7 +40,7 @@ $Bsb4Design = new \BootstrapBasic4\Bsb4Design();
         $einrichtung = get_field('einrichtung');
         $handlungsfeldau = get_field('handlungsfeld-au');
         $handlungsfeldkj = get_field('handlungsfeld-kj');
-        $handlungsfeldeb = get_field('handlungsfeld-eb');
+        $handlungsfeldeb = get_field('handlungsfeld');
         $format = get_field('format');
         if ($schulform or $klasse or $fach or $einrichtung or $handlungsfeldau or $handlungsfeldkj or $handlungsfeldeb):
           ?>

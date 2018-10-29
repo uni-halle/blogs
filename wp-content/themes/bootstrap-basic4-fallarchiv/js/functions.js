@@ -80,19 +80,25 @@ jQuery.collapseAlleArbeitsfelder = function () {
   jQuery('#collapseErwachsenenbildung').collapse('hide');
 };
 
-jQuery.resetFormField = function( form_id, field_id) {
-  var $form = jQuery('#'+form_id);
-  var $li_field = jQuery('li[data-sf-field-name='+field_id+']','#'+form_id);
+jQuery.collapseAlleFilter = function () {
+  jQuery('#collapseArbeitsfelder').collapse('hide');
+  jQuery('#collapseThemen').collapse('hide');
+  jQuery('#collapseWeitereFilter').collapse('hide');
+
+}
+jQuery.resetFormField = function (form_id, field_id) {
+  var $form = jQuery('#' + form_id);
+  var $li_field = jQuery('li[data-sf-field-name=' + field_id + ']', '#' + form_id);
   var field_input_type = $li_field.data('sf-field-input-type');
-  var $field_input = jQuery(field_input_type, $li_field );
-  
+  var $field_input = jQuery(field_input_type, $li_field);
+
   switch (field_input_type) {
     case 'select':
-      $field_input.prop('selectedIndex',0);
+      $field_input.prop('selectedIndex', 0);
       break;
     case 'range-slider':
-      jQuery('input.sf-range-min', $li_field).prop('value',1);
-      jQuery('input.sf-range-max', $li_field).prop('value',13);
+      jQuery('input.sf-range-min', $li_field).prop('value', 1);
+      jQuery('input.sf-range-max', $li_field).prop('value', 13);
       break;
   }
   $form.submit();
@@ -103,32 +109,48 @@ jQuery(document).ready(function ($) {
 
   $('#headingSchuleUnterricht, #headingSchuleAusserUnterricht, #headingAusserschulisch, #headingErwachsenenbildung, #headingWeitereFilter, #headingInterpretationen').on('click', function (ev) {
     var $form = $('form', $(this).parent());
-    $form[0].reset();
-    $form.submit();
+    if (!$.isEmptyObject($form) && $form.length > 0) {
+      $form[0].reset();
+      $form.submit();
+    }
   });
 
-  $('#collapseArbeitsfelder').on('hidden.bs.collapse', function () {
+  $('#collapseArbeitsfelder').on('show.bs.collapse', function () {
     $.collapseAlleArbeitsfelder();
   });
 
-  $('#collapseFilter').on('hidden.bs.collapse', function () {
-    $.collapseAlleArbeitsfelder();
-    $('#collapseArbeitsfelder').collapse('show');
+  $('#collapseTags, #collapseInterpretationen, #collapseMitmachen').on('show.bs.collapse', function () {
+    $.collapseAlleFilter();
   });
+
 
   $('#headingFilter').on('click', function () {
     if (!$('#collapseFilter').hasClass('show')) {
       $('#search-filter-form-2096').submit();
     }
   });
-  $('#headingTags').on('click', function () {
-    if (!$('#collapseTags').hasClass('show')) {
-      $('#search-filter-form-2096').submit();
-    }
-  });
+  /*
+   $('#headingTags').on('click', function () {
+   if (!$('#collapseTags').hasClass('show')) {
+   $('#search-filter-form-2096').submit();
+   }
+   });
+   */
+
   $('#headingArbeitsfelder').on('click', function () {
     if (!$('#collapseArbeitsfelder').hasClass('show')) {
       $('#search-filter-form-2097').submit();
+    }
+  });
+  $('#headingThemen').on('click', function () {
+    if (!$('#collapseThemen').hasClass('show')) {
+      $('#search-filter-form-2300').submit();
+    }
+  });
+
+  $('#headingUnterrichtsstoerung, #headingUnterrichtseinstieg, #headingFeedbackUndBewertung, #headingNaehedistanz, #headingInteraktion').on('click', function () {
+    if (!$(this).next().hasClass('show')) {
+      $('form', $(this).parent()).submit();
     }
   });
 });

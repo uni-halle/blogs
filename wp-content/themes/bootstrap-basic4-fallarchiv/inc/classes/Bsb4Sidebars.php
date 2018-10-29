@@ -25,7 +25,7 @@ if (!class_exists('\\BootstrapBasic4\\Bsb4Sidebars')) {
      *
      * @var array Feld mit allen page_ids auf denen das Wissensmenü angezeigt werden soll 
      */
-    private $page_ids_wissen = array(1620, 1635, 1637, 1639);
+    private $page_ids_wissen = array(1620, 1635, 1637, 1639, 2557);
 
     public function addActionsFilters() {
       add_action('widgets_init', array(&$this, 'registerSidebars'), 100);
@@ -37,7 +37,8 @@ if (!class_exists('\\BootstrapBasic4\\Bsb4Sidebars')) {
      */
     public function shouldShowFaelle($post_id) {
       global $wp_query;
-      if (is_search() || isset($wp_query->query['sfid']) || is_post_type_archive('interpretation') || ((is_category() || is_single() || is_archive()) && $this->_isFaelle($post_id))) {
+      if (is_search()) return true;
+      if (isset($wp_query->query['sfid']) || is_post_type_archive('interpretation') || ((is_category() || is_single() || is_archive()) && $this->_isFaelle($post_id))) {
         return !$this->shouldShowWissen($post_id);
       }
       return false;
@@ -48,7 +49,7 @@ if (!class_exists('\\BootstrapBasic4\\Bsb4Sidebars')) {
      * @return boolean
      */
     public function shouldShowWissen($post_id) {
-      if (((is_category || is_single || is_archive()) && $this->_isWissen($post_id))
+      if (((is_category() || is_single() || is_archive()) && $this->_isWissen($post_id))
               || (is_page && in_array($post_id, $this->page_ids_wissen))) {
         return true;
       }
@@ -56,6 +57,9 @@ if (!class_exists('\\BootstrapBasic4\\Bsb4Sidebars')) {
     }
 
     protected function _isFaelle($post_id) {
+      if (get_post_type($post_id)==='interpretation') {
+        return true;
+      }
       $cats = get_the_category($post_id);
       foreach ($cats as $cat) {
         /* @var $cat WP_Term */

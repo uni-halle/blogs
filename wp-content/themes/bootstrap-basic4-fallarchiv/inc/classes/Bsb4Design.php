@@ -302,17 +302,41 @@ if (!class_exists('\\BootstrapBasic4\\Bsb4Design')) {
     public function numberOfPosts() {
       global $searchandfilter, $wp_query, $query_vars;
       $sfid = \BootstrapBasic4\Bsb4SearchAndFilter::get_sfid();
-      $args = $wp_query->query_vars;
+      $args = array();
+      //$args = $wp_query->query_vars;
       $args['paged'] = 0;
-      $args['posts_per_page'] = 10000;
-      $posts_array = get_posts($args);
+      $args['posts_per_page'] = -1;
+      $args['post_type'] = $wp_query->get('post_type');
+      $args['post_status'] = 'publish';
+      $args['meta_query'] = $wp_query->get('meta_query');
+      $args['tax_query'] = $wp_query->get('tax_query');
+      $args['category_name'] = $wp_query->get('category_name');
+      $args['cat'] = $wp_query->get('cat');
+      $args['tag'] = $wp_query->get('tag');
+      $args['tag_id'] = $wp_query->get('tag_id');
+      $args['category__in'] = $wp_query->get('category__in');
+      $args['post__in'] = $wp_query->get('post__in');
+      $args['term'] = $wp_query->get('term');
+      $args['taxonomy'] = $wp_query->get('taxonomy');
+      if (!empty($wp_query->get('s'))) {
+        $args['s'] = $wp_query->get('s');
+      }
+      $new_query = new \WP_Query($args);
+      //var_dump(($wp_query->query_vars));
       $numberOfProtectedPosts = 0;
-      foreach ($posts_array as $p) {
+      foreach ($new_query->posts as $p) {
         if (!empty($p->post_password)) {
           $numberOfProtectedPosts++;
         }
       }
-      if ($sfid != 2048) {
+      if (!empty($wp_query->get('s'))) {
+        echo '<span>' . $wp_query->found_posts . ' Ergebnisse ';
+        if ($numberOfProtectedPosts) {
+          echo '(davon ' . $numberOfProtectedPosts . ' geschützt)</span>';
+        } else {
+          echo '</span>';
+        }
+      } else if ($sfid != 2048) {
         echo '<span>' . $wp_query->found_posts . ' Fälle ';
         if ($numberOfProtectedPosts) {
           if ($numberOfProtectedPosts > 1) {
@@ -392,6 +416,11 @@ if (!class_exists('\\BootstrapBasic4\\Bsb4Design')) {
     }
 
 // tagsList
+    
+    public function mainContainerClasses() {
+      return 'col-md-8 col-lg-6 col-xl-6 site-main';
+      
+    }
   }
 
 }

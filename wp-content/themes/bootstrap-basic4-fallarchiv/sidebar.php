@@ -4,17 +4,19 @@
  * 
  * @package bootstrap-basic4
  */
-global $bootstrapbasic4_sidebar_left_size;
-$bootstrapbasic4_sidebar_left_size = 3;
 $bsb4Sidebars = new \BootstrapBasic4\Bsb4Sidebars();
+// @Anke: hier die Klassen eintragen
+$sidebarContainerClasses = 'col-md-4 col-xl-3';
+
 ?>
-<div id="sidebar-left" class="col-md-<?php echo $bootstrapbasic4_sidebar_left_size; ?>">
-  <?php if ($bsb4Sidebars->shouldShowFaelle($post->ID)) { ?>
+<?php if ($bsb4Sidebars->shouldShowFaelle($post->ID)) { ?>
+  <div id="sidebar-left" class="<?php echo $sidebarContainerClasses; ?>">
     <aside id="sidebar-faelle">
       <div id="suchmaske">
-        <?php echo do_shortcode('[searchandfilter id="2103"]'); ?>
+        <?php //echo do_shortcode('[searchandfilter id="2103"]'); ?>
+        <?php echo get_search_form(false); ?>
       </div>
-      <hr/>
+    
       <div id="accordion" class="accordion">
         <div class="card">
           <div class="card-header" id="headingTags">
@@ -23,7 +25,7 @@ $bsb4Sidebars = new \BootstrapBasic4\Bsb4Sidebars();
             </h1>
           </div>
 
-          <div id="collapseTags" class="collapse show" aria-labelledby="headingTags" data-parent="#accordion">
+          <div id="collapseTags" class="collapse" aria-labelledby="headingTags" data-parent="#accordion">
             <div class="card-body">
               <?php
               $widget = new WPCTC_Widget;
@@ -43,12 +45,13 @@ $bsb4Sidebars = new \BootstrapBasic4\Bsb4Sidebars();
               $instance['radiusz'] = 1;
               $instance['smallest'] = 60;
               $instance['largest'] = 130;
+              $instance['number'] = 30;
               $widget->widget($args, $instance);
               ?>
 
             </div>
             <div class="card-body">
-				<?php echo do_shortcode('[searchandfilter id="2268"]'); ?>
+              <?php echo do_shortcode('[searchandfilter id="2268"]'); ?>
             </div>
           </div>
         </div>
@@ -62,9 +65,9 @@ $bsb4Sidebars = new \BootstrapBasic4\Bsb4Sidebars();
               <div id="accordionFilter" class="accordion">   
                 <div class="card">
                   <div class="card-header" id="headingArbeitsfelder">
-                    <h2 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseArbeitsfelder" aria-expanded="true" aria-controls="collapseArbeitsfelder">filtern nach Arbeitsfeldern</h2>
+                    <h2 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseArbeitsfelder" aria-expanded="false" aria-controls="collapseArbeitsfelder">filtern nach Arbeitsfeldern</h2>
                   </div>
-                  <div id="collapseArbeitsfelder" class="collapse show" aria-labelledby="headingArbeitsfelder" data-parent="#accordionFilter">
+                  <div id="collapseArbeitsfelder" class="collapse" aria-labelledby="headingArbeitsfelder" data-parent="#accordionFilter">
                     <div class="card-body">
                       <?php echo do_shortcode('[searchandfilter id="2097"]'); ?>
                       <div id="accordionArbeitsfelder" class="accordion">
@@ -114,7 +117,7 @@ $bsb4Sidebars = new \BootstrapBasic4\Bsb4Sidebars();
                         <div class="card">
                           <div class="card-header" id="headingErwachsenenbildung">
                             <h3 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseErwachsenenbildung" aria-expanded="false" aria-controls="collapseErwachsenenbildung">
-                              Erwachsenenbildung
+                              Lehrer*innenbildung
                             </h3>
                           </div>
                           <div id="collapseErwachsenenbildung" class="collapse" aria-labelledby="headingErwachsenenbildung" data-parent="#accordionArbeitsfelder">
@@ -128,60 +131,163 @@ $bsb4Sidebars = new \BootstrapBasic4\Bsb4Sidebars();
                       </div>
                     </div>
                   </div>
-                  <div class="card">
-                    <div class="card-header" id="headingWeitereFilter">
-                      <h2 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseWeitereFilter" aria-expanded="false" aria-controls="collapseWeitereFilter">
-                        weitere Filter
-                      </h2>
-                    </div>
-                    <div id="collapseWeitereFilter" class="collapse" aria-labelledby="headingWeitereFilter" data-parent="#accordionFilter">
-                      <?php echo do_shortcode('[searchandfilter id="2047"]'); ?>
+                </div>
+                <!-- + -->
+                <div class="card">
+                  <div class="card-header" id="headingThemen">
+                    <h2 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseThemen" aria-expanded="false" aria-controls="collapseThemen">filtern nach Themenschwerpunkten</h2>
+                  </div>
+                  <div id="collapseThemen" class="collapse" aria-labelledby="headingThemen" data-parent="#accordionFilter">
+                    <div class="card-body">
+                      <?php echo do_shortcode('[searchandfilter id="2300"]'); ?>
+                      <div id="accordionThemen" class="accordion">
+                        <!-- Unterrichtseinstieg START -->
+                        <div class="card">
+                          <div class="card-header" id="headingUnterrichtseinstieg">
+                            <h3 class="mb-0 collapsed">
+                              Unterrichtseinstieg
+                            </h3>
+                          </div>
+                          <div id="collapseUnterrichtseinstieg" class="collapse" aria-labelledby="headingUnterrichtseinstieg" data-parent="#accordionThemen">
+                            <div class="card-body">
+                              <?php echo do_shortcode('[searchandfilter id="2309"]'); ?>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Unterrichtseinstieg END -->
+						<!-- Interaktion START -->
+                        <div class="card">
+                          <div class="card-header" id="headingInteraktion">
+                            <h3 class="mb-0 collapsed">
+                              Schüler*in-Schüler*in-Interaktion
+                            </h3>
+                          </div>
+                          <div id="collapseInteraktion" class="collapse" aria-labelledby="headingInteraktion" data-parent="#accordionThemen">
+                            <div class="card-body">
+                              <?php echo do_shortcode('[searchandfilter id="2313"]'); ?>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Interaktion END -->
+                        <!-- Nähe-Distanz START -->
+                        <div class="card">
+                          <div class="card-header" id="headingNaehedistanz">
+                            <h3 class="mb-0 collapsed">
+                              Nähe-Distanz
+                            </h3>
+                          </div>
+                          <div id="collapseNaehedistanz" class="collapse" aria-labelledby="headingNaehedistanz" data-parent="#accordionThemen">
+                            <div class="card-body">
+                              <?php echo do_shortcode('[searchandfilter id="2312"]'); ?>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Nähe-Distanz END -->
+                        <!-- Unterrichtsstörung START -->
+                        <div class="card">
+                          <div class="card-header" id="headingUnterrichtsstoerung">
+                            <h3 class="mb-0 collapsed">
+                              Unterrichtsstörung
+                            </h3>
+                          </div>
+                          <div id="collapseUnterrichtsstoerung" aria-labelledby="headingUnterrichtsstoerung" data-parent="#accordionThemen">
+                            <div class="card-body">
+                              <?php echo do_shortcode('[searchandfilter id="2304"]'); ?>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Unterrichtsstoerung END -->
+                        <!-- Feedback START -->
+                        <div class="card">
+                          <div class="card-header" id="headingFeedbackUndBewertung">
+                            <h3 class="mb-0 collapsed">
+                              Feedback und Bewertung
+                            </h3>
+                          </div>
+                          <div id="collapseFeedback" class="collapse" aria-labelledby="headingFeedbackUndBewertung" data-parent="#accordionThemen">
+                            <div class="card-body">
+                              <?php echo do_shortcode('[searchandfilter id="2311"]'); ?>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Feedback END -->
+                        <!-- Methoden START -->
+                        <div class="card">
+                          <div class="card-header" id="headingMethoden">
+                            <h3 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseMethoden" aria-expanded="false" aria-controls="collapseMethoden">
+                              spezifische Unterrichtsmethoden
+                            </h3>
+                          </div>
+                          <div id="collapseMethoden" class="collapse" aria-labelledby="headingMethoden" data-parent="#accordionThemen">
+                            <div class="card-body">
+                              <?php echo do_shortcode('[searchandfilter id="2274"]'); ?>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Methoden END -->
 
+                      </div>
                     </div>
                   </div>
                 </div>
+
+                <!-- + -->
+
+
+                <div class="card">
+                  <div class="card-header" id="headingWeitereFilter">
+                    <h2 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseWeitereFilter" aria-expanded="false" aria-controls="collapseWeitereFilter">
+                      weitere Filter
+                    </h2>
+                  </div>
+                  <div id="collapseWeitereFilter" class="collapse" aria-labelledby="headingWeitereFilter" data-parent="#accordionFilter">
+                    <?php echo do_shortcode('[searchandfilter id="2047"]'); ?>
+
+                  </div>
+                </div>
+
+
               </div>
             </div>
           </div>
-        </div>
-        <!-- Interpretationen START -->
-        <div class="card">
-          <div class="card-header" id="headingInterpretationen">
-            <h1 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseInterpretationen" aria-expanded="false" aria-controls="collapseInterpretationen">
-              Interpretationen
-            </h1>
-          </div>
-          <div id="collapseInterpretationen" class="collapse" aria-labelledby="headingInterpretationen" data-parent="#accordion">
-            <div class="card-body">
-              <?php
-              echo do_shortcode('[searchandfilter id="2048"]');
-              ?>
+          <!-- Interpretationen START -->
+          <div class="card">
+            <div class="card-header" id="headingInterpretationen">
+              <h1 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseInterpretationen" aria-expanded="false" aria-controls="collapseInterpretationen">
+                Interpretationen
+              </h1>
+            </div>
+            <div id="collapseInterpretationen" class="collapse" aria-labelledby="headingInterpretationen" data-parent="#accordion">
+              <div class="card-body">
+                <?php
+                echo do_shortcode('[searchandfilter id="2048"]');
+                ?>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- Interpretationen END -->
-        <!-- Mitmachen START -->
-        <div class="card">
-          <div class="card-header" id="headingInterpretationen">
-            <h1 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseMitmachen" aria-expanded="false" aria-controls="collapseMitmachen">
-              Mitmachen
-            </h1>
-          </div>
-          <div id="collapseMitmachen" class="collapse" aria-labelledby="headingMitmachen" data-parent="#accordion">
-            <div class="card-body">
-              <?php
-              wp_nav_menu(array(
-                  'menu' => 265 // Menu 'einreichen'
-              ));
-              ?>
+          <!-- Interpretationen END -->
+          <!-- Mitmachen START -->
+          <div class="card">
+            <div class="card-header" id="headingInterpretationen">
+              <h1 class="mb-0 collapsed" data-toggle="collapse" data-target="#collapseMitmachen" aria-expanded="false" aria-controls="collapseMitmachen">
+                Mitmachen
+              </h1>
+            </div>
+            <div id="collapseMitmachen" class="collapse" aria-labelledby="headingMitmachen" data-parent="#accordion">
+              <div class="card-body">
+                <?php
+                wp_nav_menu(array(
+                    'menu' => 265 // Menu 'einreichen'
+                ));
+                ?>
+              </div>
             </div>
           </div>
+          <!-- Mitmachen END -->
+          <div class="hidden">
+            <?php echo do_shortcode('[searchandfilter id="2215"]'); ?>
+          </div>
+          </aside>
         </div>
-        <!-- Mitmachen END -->
-        <div class="hidden">
-          <?php echo do_shortcode('[searchandfilter id="2215"]'); ?>
-        </div>
-    </aside>
-  <?php } ?>
-</div>
+      <?php } ?>
 

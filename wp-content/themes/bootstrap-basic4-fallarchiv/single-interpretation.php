@@ -1,6 +1,3 @@
-<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-
-
 <?php
 /** 
  * The single post.<br>
@@ -9,12 +6,12 @@
  * @package bootstrap-basic4
  */
 
-
+$Bsb4Design = new \BootstrapBasic4\Bsb4Design();
 // begins template. -------------------------------------------------------------------------
 get_header();
 get_sidebar('left');
 ?> 
-          <main id="main" class="col-md-6 site-main" role="main">
+          <main id="main" class="<?php echo $Bsb4Design->mainContainerClasses();?> mr-md-auto " role="main">
 	        <div id="fall"> 
 					<div class="klein" >
 						<i class="fa fa-flag" aria-hidden="true"></i> Interpretation zu <?php $zumfall = get_field('zumfall');
@@ -28,7 +25,6 @@ get_sidebar('left');
 	            </div><br />   
              <?php
                if (have_posts()) {
-                  $Bsb4Design = new \BootstrapBasic4\Bsb4Design();
                      while (have_posts()) { the_post();?> 
                    <header class="entry-header">
 					<?php if ( is_single() ) : ?>

@@ -33,7 +33,7 @@ p {
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4 {
     font-family: inherit;
 	letter-spacing: 0.1em;
-	text-transform: uppercase;
+	text-transform: normal;
 	font-weight: 300;
 }
 
@@ -206,7 +206,7 @@ ul {
 #main .post, #main .page{
 		background-color: #fff;
 		border: 1px solid #ccc;
-		padding: 20px;
+		padding: 20px 20px 10px 20px;
 		margin-top: 10px;
 		margin-bottom: 10px;
 }
@@ -484,6 +484,7 @@ div.td50 {
 	font-size: 2em;
 	color: rgba(86,137,35,1);
 	letter-spacing:0.1em;
+  display:block;
 }
 #menu-top-right {
 	font-size: 2em;
@@ -497,7 +498,14 @@ div.td50 {
 }
 .widget li {
 	list-style: none;
+	padding-bottom: 10px;
 }
+.widget li li {
+	padding-bottom: 0;
+}
+#sidebar-right .widget ul {
+    padding-top: 10px;
+    }
 .lesen_klasse{
 	
 }
@@ -537,7 +545,7 @@ div.td50 {
 button {
 	background-color: #fff;
 	border: 1px solid #999;
-	margin-top: 10px;
+	margin-top: 0;
 	font-weight: 300;
 	}
 .card-body li {
@@ -545,4 +553,10 @@ button {
 }
 .hidden {
   display:none;
+}
+.more-link {
+	font-size: 0.8em;
+	}
+p.more-link {
+	margin-bottom: 0;
 }

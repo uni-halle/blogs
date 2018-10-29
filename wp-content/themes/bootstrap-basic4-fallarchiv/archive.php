@@ -15,7 +15,7 @@ $Bsb4Design = new \BootstrapBasic4\Bsb4Design();
 get_header();
 get_sidebar();
 ?> 
-<main id="main" class="col-md-6 site-main" role="main">
+<main id="main" class="<?php echo $Bsb4Design->mainContainerClasses();?> ml-md-0 mr-md-auto" role="main">
   <?php if (have_posts()) { ?> 
     <header class="page-header">
       <?php

@@ -15,7 +15,7 @@
 get_header();
 get_sidebar();
 ?> 
-                <main id="main" class="col-md-6 site-main" role="main">
+                <main id="main" class="<?php echo $Bsb4Design->mainContainerClasses();?> mx-md-auto" role="main">
 <!--
 	                <div id="finden">
 	                    <div class="faq unit">

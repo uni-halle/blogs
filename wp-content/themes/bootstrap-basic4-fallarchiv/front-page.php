@@ -1,5 +1,6 @@
 <?php
 /** 
+ * Template Name: Startseite
  * The page template file.<br>
  * This file works as display page content (post type "page") and its comments.
  * 
@@ -12,7 +13,7 @@ get_header();
 get_sidebar();  
  
  ?> 
-                <main id="main" class="<?php echo $Bsb4Design->mainContainerClasses();?> ml-md-auto" role="main">
+                <main id="main" class="<?php echo $Bsb4Design->mainContainerClasses();?> mx-md-auto" role="main">
                     <?php
                     if (have_posts()) {
                         

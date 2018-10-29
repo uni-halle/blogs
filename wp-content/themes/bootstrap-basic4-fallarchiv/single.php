@@ -1,5 +1,3 @@
-<script src="http://code.jquery.com/jquery-latest.min.js"; type="text/javascript"></script>
-
 <?php
 /**
  * The single post.<br>
@@ -7,16 +5,22 @@
  * 
  * @package bootstrap-basic4
  */
+$Bsb4Design = new \BootstrapBasic4\Bsb4Design();
+$BspSidebar = new \BootstrapBasic4\Bsb4Sidebars();
 // begins template. -------------------------------------------------------------------------
 get_header();
 get_sidebar('left');
+$additional_class=' mr-md-auto';
+if ($BspSidebar->shouldShowWissen(get_the_ID())) {
+  $additional_class=' ml-md-auto';
+}
 ?> 
-<main id="main" class="col-md-6 site-main" role="main">
+<main id="main" class="<?php echo $Bsb4Design->mainContainerClasses().$additional_class;?>" role="main">
   <div id="fall">
 
 <?php
 if (have_posts()) {
-  $Bsb4Design = new \BootstrapBasic4\Bsb4Design();
+  
   while (have_posts()) {
     the_post();
     ?> 
@@ -44,9 +48,9 @@ if (have_posts()) {
             $klasse = get_field('klassenstufe_num');
             $fach = get_field('fach');
             $einrichtung = get_field('einrichtung');
-            $handlungsfeldau = get_field('handlungsfeld-au');
-            $handlungsfeldkj = get_field('handlungsfeld-kj');
-            $handlungsfeldeb = get_field('handlungsfeld-eb');
+            $handlungsfeldau = get_field('handlungsfeld_au');
+            $handlungsfeldkj = get_field('handlungsfeld_kj');
+            $handlungsfeldeb = get_field('handlungsfeld');
             if ($schulform or $klasse or $fach or $einrichtung or $handlungsfeldau or $handlungsfeldkj or $handlungsfeldeb):
               ?>
               <i class="fa fa-info-circle" aria-hidden="true" title="Basis-Info"> </i><?php endif ?> 
@@ -92,11 +96,10 @@ if (have_posts()) {
             <?php } // End if 'post' == get_post_type() ?> 
           <div class="klein">	
             <?php if (!post_password_required($post)): ?>
-              <?php if ($sozialform = get_the_term_list($post->ID, 'sozialform', '<i class="fa fa-arrows" aria-hidden="true" title="Sozialform"></i> ', ', ')): ?><?= $sozialform ?><br /><?php endif ?>
+              <?php if ($sozialform = get_the_term_list($post->ID, 'sozialform', '<i class="fas fa-arrows-alt" title="Sozialform"></i> ', ', ')): ?><?= $sozialform ?><br /><?php endif ?>
               <?php if ($werhandeltsch = get_the_term_list($post->ID, 'werhandelt-sch', '<i class="fa fa-user-circle" aria-hidden="true" title="handelnde Personen"></i> ', ', ')): ?><?= $werhandeltsch ?><?php endif ?>
       <?php if ($werhandeltkj = get_the_term_list($post->ID, 'werhandelt-kj', '<i class="fa fa-user-circle" aria-hidden="true" title="handelnde Personen"></i> ', ', ')): ?><?= $werhandeltkj ?><?php endif ?>
-      <?php if ($werhandelteb = get_the_term_list($post->ID, 'werhandelt-eb', '<i class="fa fa-user-circle" aria-hidden="true" title="handelnde Personen"></i> ', ', ')): ?><?= $werhandelteb ?><?php endif ?>
-      <?php if ($sozialform or $werhandeltsch or $werhandeltkj or $werhandelteb): ?><hr /><?php endif ?>
+      <?php if ($sozialform or $werhandeltsch or $werhandeltkj): ?><hr /><?php endif ?>
     <?php endif ?>	
           </div>	
           <!--
@@ -171,7 +174,8 @@ if (have_posts()) {
                         </div>
           <?php endwhile; ?> 
         <?php endif; ?>
-
+		<!-- Text -->							
+        <?php if ($textblock2 = get_field('textblock2')): ?><?= $textblock2 ?> <?php endif ?> 
                   </div>       
                 </div>
               </div>
@@ -476,7 +480,7 @@ if (have_posts()) {
   <?php
   }// endwhile;
 
-  unset($Bsb4Design);
+  
 } else {
   get_template_part('template-parts/section', 'no-results');
 }// endif;
@@ -484,5 +488,6 @@ if (have_posts()) {
   </div>
 </main>
 <?php
+unset($Bsb4Design);
 get_sidebar('right');
 get_footer();
