@@ -205,30 +205,17 @@ class ContactForm7ConditionalFields {
     }
 
     function hide_hidden_mail_fields( $components ) {
-        $regex = '@\[[\t ]*([a-zA-Z_][0-9a-zA-Z:._-]*)[\t ]*\](.*?)\[[\t ]*/[\t ]*\1[\t ]*\]@s';
-        // [1] = name [2] = contents
 
-        $components['body'] = preg_replace_callback($regex, array($this, 'hide_hidden_mail_fields_regex_callback'), $components['body'] );
-        $components['subject'] = preg_replace_callback($regex, array($this, 'hide_hidden_mail_fields_regex_callback'), $components['subject'] );
-        $components['sender'] = preg_replace_callback($regex, array($this, 'hide_hidden_mail_fields_regex_callback'), $components['sender'] );
-        $components['recipient'] = preg_replace_callback($regex, array($this, 'hide_hidden_mail_fields_regex_callback'), $components['recipient'] );
-        $components['additional_headers'] = preg_replace_callback($regex, array($this, 'hide_hidden_mail_fields_regex_callback'), $components['additional_headers'] );
+        foreach ($components as $key => $val) {
+	        $components[$key] = preg_replace_callback(WPCF7CF_REGEX_MAIL_GROUP, array($this, 'hide_hidden_mail_fields_regex_callback'), $val );
+        }
 
         return $components;
     }
 
     function hide_hidden_mail_fields_additional_mail($additional_mail, $contact_form) {
-
         if (!is_array($additional_mail) || !array_key_exists('mail_2', $additional_mail)) return $additional_mail;
-
-        $regex = '@\[[\t ]*([a-zA-Z_][0-9a-zA-Z:._-]*)[\t ]*\](.*?)\[[\t ]*/[\t ]*\1[\t ]*\]@s';
-
-        $additional_mail['mail_2']['body'] = preg_replace_callback($regex, array($this, 'hide_hidden_mail_fields_regex_callback'), $additional_mail['mail_2']['body'] );
-        $additional_mail['mail_2']['subject'] = preg_replace_callback($regex, array($this, 'hide_hidden_mail_fields_regex_callback'), $additional_mail['mail_2']['subject'] );
-        $additional_mail['mail_2']['sender'] = preg_replace_callback($regex, array($this, 'hide_hidden_mail_fields_regex_callback'), $additional_mail['mail_2']['sender'] );
-        $additional_mail['mail_2']['recipient'] = preg_replace_callback($regex, array($this, 'hide_hidden_mail_fields_regex_callback'), $additional_mail['mail_2']['recipient'] );
-        $additional_mail['mail_2']['additional_headers'] = preg_replace_callback($regex, array($this, 'hide_hidden_mail_fields_regex_callback'), $additional_mail['mail_2']['additional_headers'] );
-
+	    $additional_mail['mail_2'] = $this->hide_hidden_mail_fields($additional_mail['mail_2']);
         return $additional_mail;
     }
 
@@ -240,11 +227,8 @@ class ContactForm7ConditionalFields {
             return '';
         } elseif ( in_array( $name, $this->visible_groups ) ) {
             // The tag name represents a visible group, so remove the tags themselves, but return everything else
-            //return $content;
-            $regex = '@\[[\t ]*([a-zA-Z_][0-9a-zA-Z:._-]*)[\t ]*\](.*?)\[[\t ]*/[\t ]*\1[\t ]*\]@s';
-
             // instead of just returning the $content, return the preg_replaced content :)
-            return preg_replace_callback($regex, array($this, 'hide_hidden_mail_fields_regex_callback'), $content );
+            return preg_replace_callback(WPCF7CF_REGEX_MAIL_GROUP, array($this, 'hide_hidden_mail_fields_regex_callback'), $content );
         } else {
             // The tag name doesn't represent a group that was used in the form. Leave it alone (return the entire match).
             return $matches[0];
@@ -257,25 +241,44 @@ new ContactForm7ConditionalFields;
 add_filter( 'wpcf7_contact_form_properties', 'wpcf7cf_properties', 10, 2 );
 
 function wpcf7cf_properties($properties, $wpcf7form) {
-    if (!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) { // TODO: kind of hacky. maybe find a better solution. Needed because otherwise the group tags will be replaced in the editor as well.
+	// TODO: This function is called serveral times. The problem is that the filter is called each time we call get_properties() on a contact form.
+	// TODO: I haven't found a better way to solve this problem yet, any suggestions or push requests are welcome. (same problem in PRO/repeater.php)
+	if (!is_admin() || (defined('DOING_AJAX') && DOING_AJAX)) { // TODO: kind of hacky. maybe find a better solution. Needed because otherwise the group tags will be replaced in the editor as well.
         $form = $properties['form'];
 
-        $find = array(
-            '/\[group\s*\]/s', // matches [group    ] or [group]
-            '/\[group\s+([^\s\]]*)\s*([^\]]*)\]/s', // matches [group something some:thing] or [group   something  som   ]
-            // doesn't match [group-special something]
-            '/\[\/group\]/s'
-        );
+	    $form_parts = preg_split('/(\[\/?group(?:\]|\s.*?\]))/',$form, -1,PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
 
-        $replace = array(
-            '<div data-class="wpcf7cf_group">',
-            '<div id="$1" data-class="wpcf7cf_group">',
-            '</div>'
-        );
+	    ob_start();
 
-        $form = preg_replace( $find, $replace, $form );
+	    $stack = array();
 
-        $properties['form'] = $form;
+	    foreach ($form_parts as $form_part) {
+	    	if (substr($form_part,0,7) == '[group ') {
+	    		$tag_parts = explode(' ',rtrim($form_part,']'));
+
+	    		array_shift($tag_parts);
+
+	    		$tag_id = $tag_parts[0];
+	    		$tag_html_type = 'div';
+	    		$tag_html_data = array();
+
+	    		foreach ($tag_parts as $i => $tag_part) {
+	    			if ($i==0) continue;
+					else if ($tag_part == 'inline') $tag_html_type = 'span';
+					else if ($tag_part == 'clear_on_hide') $tag_html_data[] = 'data-clear_on_hide';
+			    }
+
+			    array_push($stack,$tag_html_type);
+
+			    echo '<'.$tag_html_type.' id="'.$tag_id.'" '.implode(' ',$tag_html_data).' data-class="wpcf7cf_group">';
+		    } else if ($form_part == '[/group]') {
+	    		echo '</'.array_pop($stack).'>';
+		    } else {
+	    		echo $form_part;
+		    }
+	    }
+
+        $properties['form'] = ob_get_clean();
     }
     return $properties;
 }
@@ -299,12 +302,12 @@ function wpcf7cf_form_hidden_fields($hidden_fields) {
         'settings' => get_option(WPCF7CF_OPTIONS)
     );
 
-    return array(
+	return array_merge($hidden_fields, array(
         '_wpcf7cf_hidden_group_fields' => '',
         '_wpcf7cf_hidden_groups' => '',
         '_wpcf7cf_visible_groups' => '',
         '_wpcf7cf_options' => ''.json_encode($options),
-    );
+    ));
 }
 
 function wpcf7cf_endswith($string, $test) {
