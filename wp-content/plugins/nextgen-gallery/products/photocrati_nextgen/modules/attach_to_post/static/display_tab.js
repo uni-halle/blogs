@@ -298,7 +298,7 @@ jQuery(function($){
      * Ngg.DisplayTab.Models.Displayed_Gallery
      * Represents the displayed gallery being edited or created by the Display Tab
      **/
-    Ngg.DisplayTab.Models.Displayed_Gallery        = Backbone.Model.extend({
+    Ngg.DisplayTab.Models.Displayed_Gallery = Backbone.Model.extend({
         defaults: {
             source: null,
             container_ids: [],
@@ -310,17 +310,30 @@ jQuery(function($){
             slug: null
         },
 
-        to_shortcode: function(){
+        to_shortcode: function() {
             retval = null;
 
-            var get_shortcode_attr= function(object, key){
+            var get_shortcode_attr = function(object, key) {
                 var val = object[key];
+
+                // Prevent default shortcode attributes from being included
+                if (typeof igw_data.shortcode_defaults[key] !== 'undefined'
+                &&  igw_data.shortcode_defaults[key] == val) {
+                    val = null;
+                }
+
                 if (_.isArray(val)) {
                     val = val.length > 0 ? val.join(',') : null;
                 }
                 if (val) {
                     val = val.toString().replace('[', '&#91;');
                     val = val.toString().replace(']', '&#93;');
+
+                    // Some keys have aliases to be used when writing shortcodes
+                    if (typeof igw_data.shortcode_attr_replacements[key] !== 'undefined') {
+                        key = igw_data.shortcode_attr_replacements[key];
+                    }
+
                     return key + '="' + val +'"';
                 }
             };
@@ -331,8 +344,9 @@ jQuery(function($){
             obj.display_type = display_type.get_shortcode_value();
 
             // Convert the displayed gallery to a shortcode
-            var snippet = '[ngg_images';
+            var snippet = '[ngg';
             var val = null;
+
             if ((val = get_shortcode_attr(obj, 'source'))) 			snippet += ' ' + val;
             if ((val = get_shortcode_attr(obj, 'container_ids')))	snippet += ' ' + val;
             if ((val = get_shortcode_attr(obj, 'entity_ids')))		snippet += ' ' + val;
@@ -352,15 +366,21 @@ jQuery(function($){
                     'ID'
                 ];
 
-                if (skipped.indexOf(key) > -1) continue;
+                if (skipped.indexOf(key) > -1) {
+                    continue;
+                }
                 else if (key == 'display_settings') {
                     for (var display_key in obj[key]) {
-                        if ((val = get_shortcode_attr(obj[key], display_key))) snippet += ' ' + val;
+                        if ((val = get_shortcode_attr(obj[key], display_key))) {
+                            snippet += ' ' + val;
+                        }
                     }
                 }
                 else {
                     val = get_shortcode_attr(obj, key);
-                    if (val) snippet += ' ' + val;
+                    if (val) {
+                        snippet += ' ' + val;
+                    }
                 }
             }
 
@@ -498,15 +518,14 @@ jQuery(function($){
             return success;
         },
 
-
-        get_shortcode_value: function(){
+        get_shortcode_value: function() {
             var retval = this.id;
 
-            // TODO: Uncomment for a later version
-            // var aliases = this.get('aliases');
-            // if (_.isArray(aliases) && aliases.length > 0) {
-            //     retval = aliases[0];
-            // }
+            var aliases = this.get('aliases');
+            if (_.isArray(aliases) && aliases.length > 0) {
+                retval = aliases[0];
+            }
+
             return retval;
         }
     });
@@ -1472,23 +1491,31 @@ jQuery(function($){
             close_attach_to_post_window();
         },
 
-        set_display_settings: function(){
+        set_display_settings: function() {
             var display_type = this.displayed_gallery.get('display_type');
             if (display_type) {
                 // Collect display settings
-                var form = $("form[rel='"+display_type+"']");
-                var display_settings	= (function(item){
+                var form = $("form[rel='" + display_type + "']");
+                var defaults = form.data('defaults')
+                var display_settings = (function(item) {
                     var obj = {};
                     $.each(item.serializeArray(), function(key, item) {
                         var parts = item.name.split('[');
                         var current_obj = obj;
-                        for (var i=0; i<parts.length; i++) {
+                        for (var i = 0; i < parts.length; i++) {
                             var part = parts[i].replace(/\]$/, '');
+
+                            // Skip settings that haven't been changed from the default
+                            if (defaults[part] == item.value) {
+                                return true;
+                            }
+
                             if (!current_obj[part]) {
-                                if (i == parts.length-1)
+                                if (i == (parts.length - 1)) {
                                     current_obj[part] = item.value;
-                                else
+                                } else {
                                     current_obj[part] = {};
+                                }
                             }
                             current_obj = current_obj[part];
                         }

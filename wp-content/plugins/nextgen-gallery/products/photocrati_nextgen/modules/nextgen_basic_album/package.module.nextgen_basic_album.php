@@ -713,20 +713,27 @@ class A_NextGen_Basic_Album_Mapper extends Mixin
         if (isset($entity->name) && in_array($entity->name, array(NGG_BASIC_COMPACT_ALBUM, NGG_BASIC_EXTENDED_ALBUM))) {
             // Set defaults for both display (album) types
             $settings = C_NextGen_Settings::get_instance();
+            $default_template = isset($entity->settings["template"]) ? 'default' : 'default-view.php';
+            $this->object->_set_default_value($entity, 'settings', 'display_view', $default_template);
             $this->object->_set_default_value($entity, 'settings', 'galleries_per_page', $settings->galPagedGalleries);
             $this->object->_set_default_value($entity, 'settings', 'enable_breadcrumbs', 1);
             $this->object->_set_default_value($entity, 'settings', 'disable_pagination', 0);
             $this->object->_set_default_value($entity, 'settings', 'enable_descriptions', 0);
             $this->object->_set_default_value($entity, 'settings', 'template', '');
             $this->object->_set_default_value($entity, 'settings', 'open_gallery_in_lightbox', 0);
+            $this->_set_default_value($entity, 'settings', 'override_thumbnail_settings', 1);
+            $this->_set_default_value($entity, 'settings', 'thumbnail_quality', $settings->thumbquality);
+            $this->_set_default_value($entity, 'settings', 'thumbnail_crop', 1);
+            $this->_set_default_value($entity, 'settings', 'thumbnail_watermark', 0);
+            // Thumbnail dimensions -- only used by extended albums
+            if ($entity->name == NGG_BASIC_COMPACT_ALBUM) {
+                $this->_set_default_value($entity, 'settings', 'thumbnail_width', 240);
+                $this->_set_default_value($entity, 'settings', 'thumbnail_height', 160);
+            }
             // Thumbnail dimensions -- only used by extended albums
             if ($entity->name == NGG_BASIC_EXTENDED_ALBUM) {
-                $this->_set_default_value($entity, 'settings', 'override_thumbnail_settings', 0);
-                $this->_set_default_value($entity, 'settings', 'thumbnail_width', $settings->thumbwidth);
-                $this->_set_default_value($entity, 'settings', 'thumbnail_height', $settings->thumbheight);
-                $this->_set_default_value($entity, 'settings', 'thumbnail_quality', $settings->thumbquality);
-                $this->_set_default_value($entity, 'settings', 'thumbnail_crop', $settings->thumbfix);
-                $this->_set_default_value($entity, 'settings', 'thumbnail_watermark', 0);
+                $this->_set_default_value($entity, 'settings', 'thumbnail_width', 300);
+                $this->_set_default_value($entity, 'settings', 'thumbnail_height', 200);
             }
             if (defined('NGG_BASIC_THUMBNAILS')) {
                 $this->object->_set_default_value($entity, 'settings', 'gallery_display_type', NGG_BASIC_THUMBNAILS);
@@ -824,7 +831,7 @@ class Mixin_NextGen_Basic_Album_Form extends Mixin_Display_Type_Form
 {
     function _get_field_names()
     {
-        return array('nextgen_basic_album_gallery_display_type', 'nextgen_basic_album_galleries_per_page', 'nextgen_basic_album_enable_breadcrumbs', 'nextgen_basic_templates_template', 'nextgen_basic_album_enable_descriptions');
+        return array('nextgen_basic_album_gallery_display_type', 'nextgen_basic_album_galleries_per_page', 'nextgen_basic_album_enable_breadcrumbs', 'display_view', 'nextgen_basic_templates_template', 'nextgen_basic_album_enable_descriptions');
     }
     /**
      * Renders the Gallery Display Type field

@@ -186,7 +186,15 @@ function nggallery_admin_overview()
         <div class='ngg_page_content_menu'>
             <a href="javascript:void(0)" data-id="welcome-link"><?php _e( 'Welcome', 'nggallery' ); ?></a>
             <a href="javascript:void(0)" data-id="videos-link" style="display:none;"><?php _e( 'More Videos' ); ?></a>
-            <a href="javascript:void(0)" data-id="pro-link"><?php _e( 'Upgrade to Pro' ); ?></a>
+            <?php
+            $found = FALSE;
+            if (defined('NEXTGEN_GALLERY_PRO_PLUGIN_BASENAME')
+            ||  defined('NGG_PRO_PLUGIN_BASENAME')
+            ||  defined('NGG_PLUS_PLUGIN_BASENAME'))
+                $found = TRUE;
+            if (!$found) { ?>
+                <a href="javascript:void(0)" data-id="pro-link"><?php _e( 'Upgrade to Pro' ); ?></a>
+            <?php } ?>
             <a href="javascript:void(0)" data-id="genesis-link"><?php _e( 'Genesis Themes' ); ?></a>
             <?php if (!is_multisite() || is_super_admin()) { ?>
                  <a href="javascript:void(0)" data-id="details-link"><?php _e( 'Site Details' ); ?></a>

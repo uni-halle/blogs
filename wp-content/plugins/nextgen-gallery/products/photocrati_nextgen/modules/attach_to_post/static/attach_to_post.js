@@ -97,7 +97,16 @@ jQuery(function($) {
     }
 
 	// Activate tabs
-	$('#attach_to_post_tabs').ngg_tabs();
+	$('#attach_to_post_tabs').ngg_tabs({
+        onShowTab: function(tab)  {
+            // Fix z-index problem with frames and non-frames on Chrome 69/70
+            if (navigator.appVersion.match(/Chrome\/(69|7)/)) {
+                tab.attr('id') != 'displayed_tab' ?
+                    $('#attach_to_post_tabs').addClass('chrome_70_hack_frames').removeClass('chrome_70_hack_noframes') :
+                    $('#attach_to_post_tabs').removeClass('chrome_70_hack_frames').addClass('chrome_70_hack_noframes')
+            }
+        }
+    });
 
 	// If the preview area is being displayed, emit an event for that
 	$('.ngg_page_content_menu a').bind('click', function(){

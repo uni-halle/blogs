@@ -343,8 +343,6 @@ jQuery(document).ready( function($) {
 	<div class="ngg_page_content_header"><img src="<?php  echo(C_Router::get_instance()->get_static_url('photocrati-nextgen_admin#imagely_icon.png')); ?>"><h3><?php echo _n( 'Gallery: ', 'Galleries: ', 1, 'nggallery' ); ?> <?php echo esc_html ( M_I18N::translate($gallery->title) ); ?></h3>
 	</div>
 
-	<br style="clear: both;" />
-
 	<div class='ngg_page_content_main'>
 
 		<form id="updategallery" class="nggform" method="POST" action="<?php echo $ngg->manage_page->base_page . '&amp;mode=edit&amp;gid=' . $act_gid . '&amp;paged=' . esc_attr($_GET['paged']); ?>" accept-charset="utf-8">
@@ -549,11 +547,11 @@ jQuery(document).ready( function($) {
 		    		<select name="dest_gid" style="width:90%" >
 		    			<?php
 		    				foreach ($gallerylist as $gallery) {
-		    					if ($gallery->gid != $act_gid) {
-		    			?>
-						<option value="<?php echo $gallery->gid; ?>" ><?php echo $gallery->gid; ?> - <?php echo esc_attr( stripslashes($gallery->title) ); ?></option>
-						<?php
-		    					}
+		    					if ($gallery->gid != $act_gid) { ?>
+						            <option value="<?php echo esc_attr($gallery->gid); ?>">
+                                        <?php print esc_attr(apply_filters('ngg_gallery_title_select_field', $gallery->title, $gallery, FALSE)); ?>
+                                    </option>
+						        <?php }
 		    				}
 		    			?>
 		    		</select>

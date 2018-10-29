@@ -281,8 +281,11 @@ class M_I18N extends C_Base_Module
         if (function_exists('qtrans_useCurrentLanguageIfNotFoundUseDefaultLanguage'))
             $in = qtrans_useCurrentLanguageIfNotFoundUseDefaultLanguage($in);
 
-        if (is_string($name) && !empty($name) && function_exists('icl_translate'))
-            $in = icl_translate('plugin_ngg', $name, $in, true);
+        if (is_string($name)
+        &&  !empty($name)
+        &&  function_exists('icl_translate')
+        &&  apply_filters('wpml_default_language', NULL) != apply_filters('wpml_current_language', NULL))
+            $in = icl_translate('plugin_ngg', $name, $in, TRUE);
 
         $in = apply_filters('localization', $in);
 

@@ -471,7 +471,7 @@ function showDialog() {
 				<div class="alignleft actions">
 					<span class="ngg_select_album"><?php esc_html_e('Select album', 'nggallery') ?></span>
 					<select id="act_album" name="act_album" onchange="this.form.submit();">
-						<option value="0" ><?php esc_html_e('No album selected', 'nggallery') ?></option>
+						<option value="0" ><?php esc_html_e('Create New Album', 'nggallery') ?></option>
 						<?php
 							if( is_array($this->albums) ) {
 								foreach($this->albums as $a) {
@@ -491,7 +491,7 @@ function showDialog() {
 						<?php } ?>
 					<?php } else { ?>
 						<?php if(nggGallery::current_user_can( 'NextGEN Add/Delete album' )) { ?>
-						<span><?php esc_html_e('Add new album', 'nggallery'); ?>&nbsp;</span>
+						<span><?php esc_html_e('New Album Name', 'nggallery'); ?>&nbsp;</span>
 						<input class="search-input" id="newalbum" name="newalbum" type="text" value="" />
 						<input class="button-primary action" type="submit" name="add" value="<?php esc_attr_e('Add', 'nggallery'); ?>"/>
 						<?php } ?>

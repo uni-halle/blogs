@@ -49,6 +49,13 @@ class C_Lightbox_Library_Manager
         $none = new C_NGG_Lightbox('none');
         $none->title = __('None', 'nggallery');
         $this->register('none', $none);
+        // Add Simplelightbox
+        $simplelightbox = new C_NGG_Lightbox('simplelightbox');
+        $simplelightbox->title = __('Simplelightbox', 'nggallery');
+        $simplelightbox->code = 'class="ngg-simplelightbox" rel="%GALLERY_NAME%"';
+        $simplelightbox->styles = array('photocrati-lightbox#simplelightbox/simplelightbox.css');
+        $simplelightbox->scripts = array('photocrati-lightbox#simplelightbox/simple-lightbox.js', 'photocrati-lightbox#simplelightbox/nextgen_simple_lightbox_init.js');
+        $this->register('simplelightbox', $simplelightbox);
         // Add Fancybox
         $fancybox = new C_NGG_Lightbox('fancybox');
         $fancybox->title = __('Fancybox', 'nggallery');

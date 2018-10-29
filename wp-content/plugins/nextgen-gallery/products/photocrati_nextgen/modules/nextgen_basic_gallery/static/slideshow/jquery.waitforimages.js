@@ -1,3 +1,5 @@
+/* Please enqueue ngg_waitforimages instead of enqueuing this file directly */
+
 /*! waitForImages jQuery Plugin - v1.4.1 - 2012-10-12
 * https://github.com/alexanderdickson/waitForImages
 * Copyright (c) 2012 Alex Dickson; Licensed MIT */
@@ -6,7 +8,7 @@
     // Namespace all events.
     var eventNamespace = 'waitForImages';
 
-    // CSS properties which contain references to images. 
+    // CSS properties which contain references to images.
     $.waitForImages = {
         hasImageProperties: ['backgroundImage', 'listStyleImage', 'borderImage', 'borderCornerImage']
     };
@@ -95,11 +97,11 @@
                 // For images only, the task is simpler.
                 obj.find('img:uncached')
                     .each(function () {
-                    allImgs.push({
-                        src: this.src,
-                        element: this
+                        allImgs.push({
+                            src: this.src,
+                            element: this
+                        });
                     });
-                });
             }
 
             allImgsLength = allImgs.length;

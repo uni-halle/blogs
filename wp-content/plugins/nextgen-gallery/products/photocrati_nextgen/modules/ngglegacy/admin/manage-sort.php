@@ -17,8 +17,10 @@ function nggallery_sortorder($galleryID = 0){
 	if (isset ($_POST['updateSortorder']))  {
 		check_admin_referer('ngg_updatesortorder');
 		// get variable new sortorder
-		parse_str($_POST['sortorder']);
-		if (is_array($sortArray)){
+        if (!empty($_POST['sortorder']))
+            $sortArray = explode(',', $_POST['sortorder']);
+		if (is_array($sortArray))
+		{
 			$neworder = array();
 			foreach($sortArray as $pid) {
 				$neworder[] = (int) $pid;
@@ -70,8 +72,8 @@ function nggallery_sortorder($galleryID = 0){
 				var $images = $('div.imageBox');
 				for (var i=0; i<$images.length; i++) {
 					var image_id = $images[i].id.split('-').pop();
-					if (serial.length > 0) serial = serial + '&';
-					serial = serial + "sortArray[]=" + image_id;
+					if (serial.length > 0) serial = serial + ',';
+					serial = serial + image_id;
 				}
 				$('input[name=sortorder]').val(serial);
 			});

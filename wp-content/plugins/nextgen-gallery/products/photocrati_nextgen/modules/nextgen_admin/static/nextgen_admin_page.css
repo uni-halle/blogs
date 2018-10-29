@@ -110,7 +110,6 @@ table.nextgen_settings_position {
     width: 98%;
     font-family: lato,sans-serif;
     height: auto;
-    /*background: rgb(247, 248, 243);*/
     margin-top: 25px;
     float:left;
     box-shadow: 0 0 100px 10px rgba(0,0,0,.05);
@@ -126,7 +125,7 @@ table.nextgen_settings_position {
 }
 
 #ngg_page_content.ngg_settings_page {
-    background: rgb(247, 248, 243);
+    background: #fff;
 }
 
 .ngg_manage_albums, 
@@ -145,7 +144,7 @@ table.nextgen_settings_position {
     max-width: 100%;
     background: #fff;
     float: left;
-    background: rgb(247, 248, 243);
+    background: #fcfcfc;
 }
 
 #ngg_page_content a {
@@ -155,7 +154,6 @@ table.nextgen_settings_position {
 #ngg_page_content button,
 #ngg_page_content .button-primary,
 #ngg_page_content .button-secondary {
-    /*background-color: #9FBB1A !important;*/
     background-color: #9FBB1A;
     color: #fff !important;
     border: none !important;
@@ -166,6 +164,11 @@ table.nextgen_settings_position {
     line-height: 35px;
     width: auto !important;
     border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 11px;
+    font-weight: bold;
+    font-family: Lato, sans-serif;
 }
 
 #ngg_page_content button:hover,
@@ -208,21 +211,13 @@ table.nextgen_settings_position {
     background-color: transparent; 
 }
 
-#ngg_page_content .button span.wp-color-result-text {
-    /*background: transparent;
-    color: inherit;
-    padding: inherit;
-    border: none;*/
-    /*border: 1px solid #dbdbdb;*/
-}
-
 #ngg_page_content input[type="checkbox"] {
     height: 16px !important;
     width: 16px !important;
 }
 
 #ngg_page_content.ngg_settings_page form > p {
-    width: 83%;
+    width: 81%;
     background: #fff;
     margin: 0;
     float: right;
@@ -316,34 +311,29 @@ table.nextgen_settings_position {
 
 #ngg_page_content .ngg_page_content_menu {
     padding: 20px;
-    width: 17%;
+    width: 20%;
     float: left;
     padding: 0;
     height: 100%;
-    background: rgb(247, 248, 243);
-    margin-top: 5px;
+    background: transparent;
 }
 
 #ngg_page_content .ngg_page_content_menu a {   
-    border-top: 1px solid #f7f8f3;
-    border-bottom: 1px solid #f7f8f3; 
-    border-right: 1px solid #f7f8f3;
-    border-left: 5px solid rgba(247,248,243,.76);
-    box-shadow: none!important;
-    color: #9fbb1a;
+    box-shadow: none !important;
     cursor: pointer;
     display: block;
-    font-weight: 400;
-    font-size: 14px;
-    padding: 15px 10px 15px 15px;
+    padding: 20px 10px 20px 15px;
     line-height: 22px;
     margin: 0;
     text-decoration: none;
-    border-top: 1px solid #f7f8f3;
-    border-bottom: 1px solid #f7f8f3;
+    color: #2b5d89;;
+    text-transform: uppercase;
+    font-size: 11px;
+    border-bottom: 1px solid #eee;
+    font-weight: 600;
+    letter-spacing: 1.2px;
 }
 
-/* Responsive Navigation */
 .responsive-menu-icon {
    cursor: pointer;
    display: none;
@@ -365,12 +355,13 @@ table.nextgen_settings_position {
     outline: 0;
     outline-width: 0;
     outline-color: transparent;
-    border-left: 5px solid #b7d243;
     border-right: 1px solid #fff;
-    background-color: #fff;
-    color: #2e4453;
-    border-top: 1px solid rgba(159, 187, 26, 0.2);
-    border-bottom: 1px solid rgba(159, 187, 26, 0.2); 
+    background: #9ebc1b;
+    position: relative;
+    color: #fff;
+    margin-right: -1px;
+    font-weight: 800;
+    border-bottom: 1px solid #9dbd1b;
 }
 
 #ngg_page_content .ngg_page_content_menu a:before {
@@ -386,6 +377,19 @@ table.nextgen_settings_position {
     content: "\f1de";
 }
 
+#ngg_page_content .ngg_page_content_menu .ngg_page_content_menu_active:after, 
+#ngg_page_content .ngg_page_content_menu a:active:after {
+    right: 0;
+    border: 8px solid transparent;
+    content: "";
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-right-color: #fff;
+    top: 50%;
+    margin-top: -8px;
+}
+
 /***** 4) NGG Admin CSS: Main Content *****/
 
 #ngg_page_content .ngg_page_content_main {
@@ -395,11 +399,12 @@ table.nextgen_settings_position {
     background: #fff;
     box-sizing: border-box;
     width: 100%;
+    box-shadow: 0 -5px 4px 2px rgba(0,0,0,.05);
 }
 
 #ngg_page_content .ngg_overview .ngg_page_content_main, 
 #ngg_page_content.ngg_settings_page .ngg_page_content_main {
-    width: 83%;
+    width: 80%;
 }
 
 .gallery_page_ngg_display_settings #ngg_page_content.ngg_settings_page .ngg_page_content_main {
@@ -429,7 +434,7 @@ table.nextgen_settings_position {
 #ngg_page_content.ngg_settings_page .ngg_page_content_main h3 {
     color: rgba(29, 36, 42, 0.85);
     font-size: 18px;
-    margin: 20px 0;
+    margin: 20px 0 30px;
     text-transform: uppercase;
 }
 
@@ -437,10 +442,15 @@ table.nextgen_settings_position {
 #ngg_page_content .ngg_page_content_main select {
     color: #888;
     height: 35px;
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
     padding-left: 10px;
     box-shadow: none;
     width: 200px;
+    box-shadow: inset 0 0 2px 1px rgba(100,100,100,.05);
+}
+
+#ngg_page_content .ngg_page_content_main select {
+    font-size: 13px;
 }
 
 #ngg_page_content .ngg_page_content_main .select2-container {
@@ -652,6 +662,11 @@ table.nextgen_settings_position {
 
 .gallery_page_ngg_other_options #ngg_page_content .ngg_page_content_main tbody tr td.ngg_options_promo {
     width: 100% !important;
+}
+
+#tr_photocrati-nextgen_basic_imagebrowser_ngg_triggers_display,
+#tr_photocrati-nextgen_basic_slideshow_ngg_triggers_display {
+    display:none;
 }
 
 /***** 6) NGG Admin CSS: NextGEN Pro Custom Post Types *****/
@@ -1018,7 +1033,7 @@ table.nextgen_settings_position {
     #ngg_page_content .responsive-menu-icon {
         display: block;
         background: #9fbb1a;
-        padding: 10px 0 20px;
+        padding: 10px 0 15px;
     }
     #ngg_page_content .responsive-menu {
         display: none;
@@ -1027,5 +1042,9 @@ table.nextgen_settings_position {
     }
     #ngg_page_content .responsive-menu a {
         display: block;
+    }
+    #ngg_page_content .ngg_page_content_menu .ngg_page_content_menu_active:after, 
+    #ngg_page_content .ngg_page_content_menu a:active:after {
+        display:none;
     }
 }

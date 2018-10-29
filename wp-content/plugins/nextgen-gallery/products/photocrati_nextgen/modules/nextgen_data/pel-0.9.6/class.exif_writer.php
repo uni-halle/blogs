@@ -4,6 +4,11 @@
 // build process as the NGG package files cannot contain PHP 5.3+ code yet. See the
 // C_Exif_Writer_Wrapper class which loads this file outside of the POPE module system.
 
+/*
+ * TAKE NOTE: when upgrading PEL check that the changes made to PelIfd.php in commit 7317 / 825b17c599b6
+ * have been applied or adopted from upstream.
+ */
+
 require_once('autoload.php');
 
 use lsolesen\pel\PelDataWindow;

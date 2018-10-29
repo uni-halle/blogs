@@ -7,5 +7,5 @@
 			</option>
 		<?php endforeach ?>
 	</select>
-	<input type="submit" id="group" value="<?php _e('Add page', 'nggallery'); ?>" name="addnewpage" class="button-primary action">
+	<input type="submit" id="group" value="<?php _e('Add page', 'nggallery'); ?>" name="addnewpage" class="button-secondary action">
 </span>

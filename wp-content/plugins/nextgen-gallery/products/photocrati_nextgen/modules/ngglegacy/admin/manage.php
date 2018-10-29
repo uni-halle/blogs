@@ -1008,7 +1008,9 @@ class nggManageGallery {
             if (!empty($results))
             {
                 foreach ($results as $term_id) {
-                    wp_delete_term($term_id, 'ngg_tag');
+                    $term_id = apply_filters('ngg_pre_delete_unused_term_id', $term_id);
+                    if (!empty($term_id))
+                        wp_delete_term($term_id, 'ngg_tag');
                 }
             }
 		}

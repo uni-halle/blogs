@@ -85,7 +85,7 @@ h3#choose_display {
 #attach_to_post_tabs .main_menu_tab {
     padding: 0;
 	position: absolute;
-	left: 200px;
+	left: 220px;
 	right: 0;
 	top: 0;
 	bottom: 0;
@@ -110,6 +110,15 @@ iframe {
 	margin: 0px;
 	background: transparent;
 }
+
+.chrome_70_hack_frames {
+    z-index: 100000000 !important;
+}
+
+.chrome_70_hack_noframes {
+    z-index: 0 !important;
+}
+
 
 .clear {
 	clear: both;
@@ -146,9 +155,8 @@ table {
 /* 2. IGW Sidebar */
 
 #attach_to_post_tabs .ui-tabs-icon {
-	/*background: #2a343d;*/
 	background: #133148;
-	border-right: 3px solid #9fbb1a;
+	border-right: 1px solid #9cbe1b;;
 	box-sizing: border-box;
     color: #fff;
     font-family: Lato, sans-serif;
@@ -162,13 +170,15 @@ table {
     position: fixed;
     padding: 10px 25px 30px 10px;
     text-transform: uppercase;
-    width: 200px;
+    width: 220px;
+    padding: 0;
 }
 
 #attach_to_post_tabs img.attach_to_post_logo {
     height: 45px;
     padding: 20px 0 10px;
     float: right;
+    margin-right: 26px;
 }
 
 #attach_to_post_tabs .ui-tabs-nav {
@@ -176,7 +186,7 @@ table {
     background: transparent;
     padding: 0;
     margin-top: 90px;
-    list-style: ordered;
+    list-style: none;
 }
 
 #attach_to_post_tabs .ui-tabs-nav li {
@@ -187,15 +197,32 @@ table {
 	margin: 0;
 	padding: 0;
 	width: 100%;
+	border-radius: 0;
+    box-sizing: border-box;
+    border-bottom: 1px solid #344a59;
+    padding: 24px 30px 24px 20px;
+}
+
+#attach_to_post_tabs .ui-tabs-nav li.ui-tabs-active {
+    background: #2b4d65;
+    background: #9dbd1b;
+}
+
+#attach_to_post_tabs .ui-tabs-nav li.ui-state-focus, 
+#attach_to_post_tabs .ui-tabs-nav li.ui-state-active, 
+#attach_to_post_tabs .ui-tabs-nav li:focus, 
+#attach_to_post_tabs .ui-tabs-nav li.active {
+    outline: none;
 }
 
 /* The next couple of rules are all a workaround to disable the "Insert Into Page" tab just for iOS */
 /* TODO: consolidate when plupload is upgraded */
 #attach_to_post_tabs ul.ui-tabs-nav li:nth-of-type(1) {
-    list-style: ordered;
+    list-style: none;
+    border-top: 1px solid #344a59;
 }
 #attach_to_post_tabs:not(.ngg_atp_ios_detected) ul.ui-tabs-nav li:nth-of-type(2) {
-    list-style: ordered;
+    list-style: none;
 }
 
 #attach_to_post_tabs:not(.ngg_atp_ios_detected) ul.ui-tabs-nav li:nth-of-type(1) a {
@@ -206,7 +233,7 @@ table {
 }
 
 /* Because the upload-images tab is removed on iOS we must position this divider bar differently */
-#attach_to_post_tabs.ngg_atp_ios_detected .ui-tabs-nav li:nth-of-type(1)::after {
+/*#attach_to_post_tabs.ngg_atp_ios_detected .ui-tabs-nav li:nth-of-type(1)::after {
 	border-bottom: 1px solid rgba(255,255,255,.2);
 	content: "";
 	display: block;
@@ -214,10 +241,10 @@ table {
 	margin: 24px 4px 20px 0;
 	position: static;
 	width: 90%;
-}
+}*/
 
 /* This rule applies for all non-iOS browsers */
-#attach_to_post_tabs:not(.ngg_atp_ios_detected) .ui-tabs-nav li:nth-of-type(2)::after {
+/*#attach_to_post_tabs:not(.ngg_atp_ios_detected) .ui-tabs-nav li:nth-of-type(2)::after {
     border-bottom: 1px solid rgba(255,255,255,.2);
     content: "";
     display: block;
@@ -225,7 +252,7 @@ table {
     margin: 24px 4px 20px 0;
     position: static;
     width: 90%;
-}
+}*/
 
 #attach_to_post_tabs .ui-tabs-nav li a {
     color: #fff;
@@ -236,6 +263,13 @@ table {
     padding: 10px 5px 5px 0 !important;
     text-transform: none;   
     font-family: lato, sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding: 0 !important;
+    font-size: 12px;
+    letter-spacing: 1.2px;
 }
 
 #attach_to_post_tabs .ui-tabs-nav li.ui-tabs-active a, 
@@ -245,19 +279,18 @@ table {
 }
 
 #attach_to_post_tabs .ui-tabs-nav li a.active_tab::before {
-	border-right: solid .75em #9fbb1a;
-    border-top: solid .75em transparent;
-    border-bottom: solid .75em transparent;
-	content: '';
-	/*left: 3.1em;*/
-	right: -25px;
-	position: absolute;
-	top: 8px;
+	border-right: solid .75em #fff;
+    border-top: solid 1.2em transparent;
+    border-bottom: solid 1.2em transparent;
+    content: '';
+    position: absolute;
+    top: 16px;
+    right: -3px;
 }
 
 #attach_to_post_tabs .ui-tabs-nav li a.active_tab {
-	color: #9fbb1a;
-	font-weight: 600;
+	color: #fff;
+	font-weight: 800;
 }
 
 /* 3. Display Tab: General CSS */
@@ -284,26 +317,50 @@ table {
     height: 25px;
     margin-top: 0;
     width: auto;
+    border-bottom: 1px solid #ddd;
+    background: #fafafa;
 }
 
-#displayed_tab #ngg_page_content .ngg_page_content_menu a {
+#displayed_tab #ngg_page_content .ngg_page_content_menu a,
+#displayed_tab #ngg_page_content .ngg_page_content_menu a:active {
     border: none;
-    color: #bbb;
+    color: #888;
     display: inline;
     font-size: 14px;
     font-weight: 400;
     text-decoration: none;
     line-height: 25px;
     padding: 15px 20px;
-    /*border-left: 1px solid #f7f8f3;
-    border-right: 1px solid #f7f8f3;*/
+    font-size: 12px;
+    background: transparent;
+    /*border: none !important;*/
 }
 
 #displayed_tab #ngg_page_content .ngg_page_content_menu .ngg_page_content_menu_active {
-	color: #9fbb1a;
-	border-right: 1px solid #edeeeb;
-	border-left: 1px solid #edeeeb;
+	background: transparent;
+	font-weight: bold;
+	color: #123248;
+	border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 2px solid #fff;
+    background: #fff;
 }
+
+#displayed_tab #ngg_page_content .ngg_page_content_menu a:active:after {
+	display:none;
+}
+
+/*#displayed_tab #ngg_page_content .ngg_page_content_menu .ngg_page_content_menu_active:after {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 6px solid #cad1d6;
+    border-top: 6px solid #123248;
+    content: " ";
+    position: absolute;
+    left: 45%;
+    display: inline;
+    top: 42px;
+}*/
 
 #displayed_tab #ngg_page_content .ngg_page_content_menu a:before {
 	display: none;
@@ -312,7 +369,7 @@ table {
 #displayed_tab #ngg_page_content .ngg_page_content_main {
     padding: 30px;
     width: 100%;
-    border-top: 1px solid #edeeeb;
+    box-shadow: none;
 }
 
 #displayed_tab #ngg_page_content.ngg_settings_page {
@@ -478,7 +535,6 @@ table {
 	margin-bottom: 10px;
     box-sizing: border-box;
     max-width: 100px;
-    /*border: 1px solid #eee;*/
 }
 
 #displayed_tab .display_type_preview .image_container p {
@@ -494,11 +550,11 @@ table {
 }
 
 #ngg_page_content #save_displayed_gallery.button {
-	font-weight: bold;
-	height: 60px !important;
-	line-height: 60px !important;
-	text-transform: uppercase;
-	padding: 0 40px !important;
+	font-weight: 700;
+    height: 50px!important;
+    line-height: 50px!important;
+    padding: 0 30px!important;
+    font-size: 13px;
 }
 
 /* 3b. Display Tab: "Customize Display Settings" Subtab */
@@ -717,17 +773,20 @@ h3#preview_tab {
 		padding: 20px;
 	}
 	#attach_to_post_tabs img.attach_to_post_logo {
-	    /*float: none;*/
     	display: none;
 	}
 
 	#attach_to_post_tabs .ui-tabs-nav {
-	    /*margin-top: -15px;*/
 	    margin-top: 0;
 	}
 	#attach_to_post_tabs .ui-tabs-nav li {
 	    padding: 5px;
 	    list-style: none !important;
+	    border-bottom: none;
+    	border-top: none !important;
+	}
+	#attach_to_post_tabs .ui-tabs-nav li.ui-tabs-active {
+		background: transparent;
 	}
 	#attach_to_post_tabs:not(.ngg_atp_ios_detected) .ui-tabs-nav li:nth-of-type(2)::after {
 		display: none;
@@ -735,12 +794,18 @@ h3#preview_tab {
 	#attach_to_post_tabs .ui-tabs-nav li a {
 	    float: none;
 	    padding: 0 !important;
+	    font-weight: normal;
+	}
+	#attach_to_post_tabs .ui-tabs-nav li a.active_tab {
+		color: #9ebc1b;
+	}
+	#attach_to_post_tabs .ui-tabs-nav li a.active_tab::before {
+		display:none;
 	}
 	#attach_to_post_tabs .main_menu_tab {
 	    margin-left: 0;
 	    min-height: auto;
 		position: absolute;
-		/*top: 280px;*/
 		top: 150px;
 		right: 0;
 		left: 0;
@@ -749,6 +814,8 @@ h3#preview_tab {
 	}
 	#displayed_tab #ngg_page_content .ngg_page_content_menu {
 		padding: 5px 0 0;
+		background: none;
+    	border: none;
 	}
 	#displayed_tab #ngg_page_content .ngg_page_content_menu a {
 	    display: block;
@@ -761,6 +828,9 @@ h3#preview_tab {
 	#displayed_tab #ngg_page_content .ngg_page_content_menu .ngg_page_content_menu_active, 
 	#displayed_tab #ngg_page_content .ngg_page_content_menu a:active {
 		background: transparent;
+	}
+	#displayed_tab #ngg_page_content .ngg_page_content_menu .ngg_page_content_menu_active:after {
+		display:none;
 	}
 	#displayed_tab #ngg_page_content .ngg_page_content_menu a:last-of-type {
 	    padding-bottom: 5px;
@@ -788,6 +858,9 @@ h3#preview_tab {
 	}
 	#attach_to_post_tabs #displayed_tab #ngg_page_content .ngg_page_content_main #source_configuration tbody {
 		display: table-row-group !important;
+	}
+	#displayed_tab #ngg_page_content .responsive-menu-icon {
+		padding: 10px 0 15px !important;
 	}
 }
 

@@ -1,5 +1,5 @@
 <?php $this->start_element('nextgen_gallery.gallery_container', 'container', $displayed_gallery); ?>
-	<div class='ngg-imagebrowser ngg-imagebrowser-simple' id='<?php echo $anchor; ?>' data-nextgen-gallery-id="<?php echo $displayed_gallery->id(); ?>">
+	<div class='ngg-imagebrowser default-view' id='<?php echo $anchor; ?>' data-nextgen-gallery-id="<?php echo $displayed_gallery->id(); ?>">
 
     <h3><?php echo esc_attr($image->alttext); ?></h3>
 

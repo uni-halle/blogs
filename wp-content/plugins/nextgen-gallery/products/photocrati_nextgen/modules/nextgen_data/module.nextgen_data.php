@@ -172,11 +172,8 @@ class M_NextGen_Data extends C_Base_Module
 							$data->removeAttribute($name);
 
 						// DO NOT EVER allow href="javascript:...."
-						if ($name === 'href')
-						{
-							if (strpos($item->nodeValue, 'javascript:') === 0)
-								$item->nodeValue = '#';
-						}
+						if (strpos($item->nodeValue, 'javascript:') === 0)
+							$item->nodeValue = '#';
 					}
 				}
 			}

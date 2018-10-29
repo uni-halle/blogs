@@ -9,6 +9,7 @@
 
 define('NGG_BASIC_COMPACT_ALBUM', 'photocrati-nextgen_basic_compact_album');
 define('NGG_BASIC_EXTENDED_ALBUM', 'photocrati-nextgen_basic_extended_album');
+define('NGG_BASIC_ALBUM', 'photocrati-nextgen_basic_album');
 
 class M_NextGen_Basic_Album extends C_Base_Module
 {
@@ -22,10 +23,10 @@ class M_NextGen_Basic_Album extends C_Base_Module
                     $context = FALSE)
     {
         parent::define(
-            'photocrati-nextgen_basic_album',
+            NGG_BASIC_ALBUM,
             'NextGEN Basic Album',
             "Provides support for NextGEN's Basic Album",
-            '3.0.0',
+            '3.0.0.5',
             'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
             'Imagely',
             'https://www.imagely.com'
@@ -123,6 +124,10 @@ class M_NextGen_Basic_Album extends C_Base_Module
         }
 
         add_filter('ngg_atp_show_display_type', array($this, 'atp_show_basic_albums'), 10, 2);
+
+        add_filter('ngg_' . NGG_BASIC_COMPACT_ALBUM . '_template_dirs', array($this, 'filter_compact_view_dir'));
+
+        add_filter('ngg_' . NGG_BASIC_EXTENDED_ALBUM . '_template_dirs', array($this, 'filter_extended_view_dir'));
     }
 
     /**
@@ -187,6 +192,19 @@ class M_NextGen_Basic_Album extends C_Base_Module
             'Mixin_Nextgen_Basic_Album_Form' => 'mixin.nextgen_basic_album_form.php'
         );
     }
+
+    function filter_compact_view_dir($dirs) 
+    {
+        $dirs['default'] = C_Component_Registry::get_instance()->get_module_dir(NGG_BASIC_ALBUM) . DIRECTORY_SEPARATOR . 'templates/compact';
+        return $dirs;
+    }
+
+    function filter_extended_view_dir($dirs) 
+    {
+        $dirs['default'] = C_Component_Registry::get_instance()->get_module_dir(NGG_BASIC_ALBUM) . DIRECTORY_SEPARATOR . 'templates/extended';
+        return $dirs;
+    }
+
 }
 
 class C_NextGen_Basic_Album_Installer extends C_Gallery_Display_Installer
@@ -196,6 +214,7 @@ class C_NextGen_Basic_Album_Installer extends C_Gallery_Display_Installer
 		$this->install_display_type(
 			NGG_BASIC_COMPACT_ALBUM, array(
 				'title'					=>	__('NextGEN Basic Compact Album', 'nggallery'),
+                'module_id'             =>  NGG_BASIC_ALBUM, 
 				'entity_types'			=>	array('album', 'gallery'),
 				'preview_image_relpath'	=>	'photocrati-nextgen_basic_album#compact_preview.jpg',
 				'default_source'		=>	'albums',
@@ -211,6 +230,7 @@ class C_NextGen_Basic_Album_Installer extends C_Gallery_Display_Installer
 		$this->install_display_type(
 			NGG_BASIC_EXTENDED_ALBUM, array(
 				'title'					=>	__('NextGEN Basic Extended Album', 'nggallery'),
+                'module_id'             =>  NGG_BASIC_ALBUM, 
 				'entity_types'			=>	array('album', 'gallery'),
 				'preview_image_relpath'	=>	'photocrati-nextgen_basic_album#extended_preview.jpg',
 				'default_source'		=>	'albums',

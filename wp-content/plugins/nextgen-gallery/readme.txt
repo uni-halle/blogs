@@ -2,11 +2,11 @@
 Contributors: photocrati, imagely
 Tags: wordpress gallery plugin, gallery, nextgen, nextgen gallery, photo gallery, image gallery, photography, slideshow, images, photo, photo album, watermark
 Requires at least: 4.0.0
-Stable tag: 3.0.1
-Tested up to: 4.9.5
+Stable tag: 3.0.9
+Tested up to: 4.9.8
 License: GPLv2
 
-The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 21 million downloads.
+The most popular WordPress gallery plugin and one of the most popular plugins of all time with over 22 million downloads.
 
 == Description ==
 
@@ -182,6 +182,35 @@ For more information, feel free to visit the official website for the NextGEN Ga
 
 
 == Changelog ==
+
+= V3.0.9 - 10.02.2018 =
+* NEW:     Added 2.0 template mechanism for basic galleries
+* NEW:     Simple Lightbox is the new default Lightbox
+* Changed: Changed Javascript library and styling for basic slideshow
+* Changed: New default template and styling for thumbnail galleries
+* Changed: New default template and styling for imagebrowser galleries
+* Changed: New default template and styling for compact albums
+* Changed: New default template and styling for extended albums
+* Changed: Changed implementation of "Number of Columns" setting
+* Changed: Significantly simplified NextGEN default shortcodes
+
+= V3.0.8 - 09.05.2018 =
+* Fixed:   IGW broken with Chrome 69+
+
+= V3.0.6 - 07.24.2018 =
+* NEW:     Added 'ngg_gallery_title_select_field' filter
+* NEW:     Danish translations
+* NEW:     Slovakian translations
+* Changed: Removed unused swfUpload setting key from ngg_options array
+* Secured: Image attribute storage
+* Fixed:   Styling of upload notifications
+* Fixed:   Do not purge WPML tag/translation mapping when removing unused NGG tags
+* Fixed:   Don't invoke icl_translate() when the admin language matches the default language
+* Fixed:   Importing Media Library images inside the IGW window
+* Fixed:   NGG > Overview's "Upgrade to Pro" links were still present when NGG Plus/Pro were active
+* Fixed:   Patched PEL to catch a possible exception caused by malformed IFD
+* Fixed:   Removed unneeded wp_localize_script('wp-color-picker'...)
+* Fixed:   Sorting galleries with over 1k images did not work past image 999
 
 = V3.0.1 - 05.17.2018 =
 * Fixed:   Prevent caching of display_tab.js which can break the IGW

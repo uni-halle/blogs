@@ -146,13 +146,6 @@ div[data-id="genesis-link"] .feature-section .col {
     max-width: 100%;
 }
 
-/* FLASH UPLOAD BUTTON */
-.swfupload {
-	position:absolute;
-	z-index:1;
-	vertical-align:top;
-}
-
 /* OPTIONS TABLE */
 .ngg-options th {
 	width:22%;
@@ -351,11 +344,15 @@ a.switch-expert {
 }
 
 .ngg_manage_galleries th#id {
-	min-width: 40px;
+	width: 33px;
 }
 
 .ngg_manage_galleries th#title {
-	min-width: 80px;
+	min-width: 140px;
+}
+
+.ngg_manage_galleries td.title {
+    font-weight: bold;
 }
 
 .ngg_manage_galleries th#author {

@@ -197,8 +197,9 @@ if ($chromeless)
 			$gallerylist = $nggdb->find_all_galleries();
 			if(is_array($gallerylist)) {
 				foreach($gallerylist as $gallery) {
-					$selected = ($gallery->gid == $galleryID )?	' selected="selected"' : "";
-					echo '<option value="'.$gallery->gid.'"'.$selected.' >'.$gallery->title.'</option>'."\n";
+					$selected = ($gallery->gid == $galleryID )?	' selected="selected"' : '';
+                    $gallery_title = apply_filters('ngg_gallery_title_select_field', $gallery->title, $gallery, $gallery->gid == $galleryID);
+                    echo "<option value='{$gallery->gid}'{$selected}>{$gallery_title}</option>\n";
 				}
 			}
 			?>

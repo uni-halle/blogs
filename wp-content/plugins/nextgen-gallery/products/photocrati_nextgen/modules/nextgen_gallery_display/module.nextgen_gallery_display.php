@@ -23,7 +23,7 @@ class M_Gallery_Display extends C_Base_Module
 			'photocrati-nextgen_gallery_display',
 			'Gallery Display',
 			'Provides the ability to display gallery of images',
-			'3.0.0',
+			'3.0.0.4',
 			'https://www.imagely.com/wordpress-gallery-plugin/nextgen-gallery/',
       'Imagely',
       'https://www.imagely.com'
@@ -31,7 +31,6 @@ class M_Gallery_Display extends C_Base_Module
 
 		C_Photocrati_Installer::add_handler($this->module_id, 'C_Display_Type_Installer');
 	}
-
 
 	/**
 	 * Register utilities required for this module
@@ -110,6 +109,7 @@ class M_Gallery_Display extends C_Base_Module
 	{
         if (!is_admin() && apply_filters('ngg_load_frontend_logic', TRUE, $this->module_id))
         {
+            C_NextGen_Shortcode_Manager::add('ngg', array(&$this, 'display_images'));
             C_NextGen_Shortcode_Manager::add('ngg_images', array(&$this, 'display_images'));
             add_action('wp_enqueue_scripts', array(&$this, 'no_resources_mode'), PHP_INT_MAX-1);
             add_filter('the_content', array($this, '_render_related_images'));
@@ -432,6 +432,13 @@ class M_Gallery_Display extends C_Base_Module
 	            FALSE,
 	            NGG_SCRIPT_VERSION
             );
+
+            wp_register_script(
+                'ngg_waitforimages',
+                $router->get_static_url('photocrati-nextgen_gallery_display#jquery.waitforimages.js'),
+                array('jquery'),
+                NGG_SCRIPT_VERSION
+            );
         }
     }
 
@@ -512,10 +519,11 @@ class M_Gallery_Display extends C_Base_Module
 
         /* Create array of directories to scan */
         $dirs = array(
+            //'default' => C_Component_Registry::get_instance()->get_module_dir($display_type->module_id ? $display_type->module_id : $display_type->name) . DIRECTORY_SEPARATOR . 'templates',
             'default' => C_Component_Registry::get_instance()->get_module_dir($display_type->name) . DIRECTORY_SEPARATOR . 'templates',
             'custom' => WP_CONTENT_DIR . DIRECTORY_SEPARATOR . 'ngg' . DIRECTORY_SEPARATOR . 'modules' . DIRECTORY_SEPARATOR . $display_type->name . DIRECTORY_SEPARATOR . 'templates',
         );
-
+    
         /* Apply filters so third party devs can add directories for their templates */
         $dirs = apply_filters('ngg_display_type_template_dirs', $dirs, $display_type);
         $dirs = apply_filters('ngg_' . $display_type->name . '_template_dirs', $dirs, $display_type);

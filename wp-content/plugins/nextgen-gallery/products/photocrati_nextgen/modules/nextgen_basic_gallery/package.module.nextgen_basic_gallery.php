@@ -84,12 +84,15 @@ class A_NextGen_Basic_Gallery_Mapper extends Mixin
         $this->object->_set_default_value($entity, 'settings', 'show_thumbnail_link', $settings->galShowSlide ? 1 : 0);
         $this->object->_set_default_value($entity, 'settings', 'thumbnail_link_text', $settings->galTextGallery);
         $this->object->_set_default_value($entity, 'settings', 'template', '');
+        $this->object->_set_default_value($entity, 'settings', 'display_view', 'default');
         // Part of the pro-modules
         $this->object->_set_default_value($entity, 'settings', 'ngg_triggers_display', 'never');
     }
     function set_thumbnail_defaults($entity)
     {
         $settings = C_NextGen_Settings::get_instance();
+        $default_template = isset($entity->settings["template"]) ? 'default' : 'default-view.php';
+        $this->object->_set_default_value($entity, 'settings', 'display_view', $default_template);
         $this->object->_set_default_value($entity, 'settings', 'images_per_page', $settings->galImages);
         $this->object->_set_default_value($entity, 'settings', 'number_of_columns', $settings->galColumns);
         $this->object->_set_default_value($entity, 'settings', 'thumbnail_width', $settings->thumbwidth);
@@ -227,6 +230,9 @@ class A_NextGen_Basic_Slideshow_Controller extends Mixin
      */
     function index_action($displayed_gallery, $return = FALSE)
     {
+        // We now hide option for triggers on this display type.
+        // This ensures they do not show based on past settings.
+        $displayed_gallery->display_settings['ngg_triggers_display'] = 'never';
         // Get the images to be displayed
         $current_page = (int) $this->param('nggpage', 1);
         if ($images = $displayed_gallery->get_included_entities()) {
@@ -265,10 +271,11 @@ class A_NextGen_Basic_Slideshow_Controller extends Mixin
      */
     function enqueue_frontend_resources($displayed_gallery)
     {
-        wp_register_script('jquery-cycle', $this->get_static_url("photocrati-nextgen_basic_gallery#slideshow/jquery.cycle.all.js"), array('jquery'), NGG_SCRIPT_VERSION);
-        wp_enqueue_script('jquery-cycle');
-        wp_enqueue_style('nextgen_basic_slideshow_style', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/nextgen_basic_slideshow.css'), FALSE, NGG_SCRIPT_VERSION);
-        wp_enqueue_script('waitforimages', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/jquery.waitforimages.js'), array('jquery'), NGG_SCRIPT_VERSION);
+        wp_enqueue_style('ngg_basic_slideshow_style', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/ngg_basic_slideshow.css'), FALSE, NGG_SCRIPT_VERSION);
+        // Add new scripts for slick based slideshow
+        wp_enqueue_script('ngg_slick', $this->get_static_url("photocrati-nextgen_basic_gallery#slideshow/slick/slick.min.js"), array('jquery'), NGG_SCRIPT_VERSION);
+        wp_enqueue_style('ngg_slick_slideshow_style', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/slick/slick.css'), FALSE, NGG_SCRIPT_VERSION);
+        wp_enqueue_style('ngg_slick_slideshow_theme', $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/slick/slick-theme.css'), FALSE, NGG_SCRIPT_VERSION);
         $this->call_parent('enqueue_frontend_resources', $displayed_gallery);
         $this->enqueue_ngg_styles();
     }
@@ -279,7 +286,7 @@ class A_NextGen_Basic_Slideshow_Controller extends Mixin
      */
     function _get_js_lib_url()
     {
-        return $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/nextgen_basic_slideshow.js');
+        return $this->get_static_url('photocrati-nextgen_basic_gallery#slideshow/ngg_basic_slideshow.js');
     }
 }
 /**
@@ -302,7 +309,7 @@ class A_NextGen_Basic_Slideshow_Form extends Mixin_Display_Type_Form
      */
     function _get_field_names()
     {
-        return array('nextgen_basic_slideshow_gallery_dimensions', 'nextgen_basic_slideshow_cycle_effect', 'nextgen_basic_slideshow_cycle_interval', 'nextgen_basic_slideshow_show_thumbnail_link', 'nextgen_basic_slideshow_thumbnail_link_text');
+        return array('nextgen_basic_slideshow_gallery_dimensions', 'nextgen_basic_slideshow_show_thumbnail_link', 'nextgen_basic_slideshow_thumbnail_link_text', 'display_view');
     }
     function _render_nextgen_basic_slideshow_cycle_interval_field($display_type)
     {
@@ -361,7 +368,7 @@ class A_NextGen_Basic_Thumbnail_Form extends Mixin_Display_Type_Form
      */
     function _get_field_names()
     {
-        return array('thumbnail_override_settings', 'nextgen_basic_thumbnails_images_per_page', 'nextgen_basic_thumbnails_number_of_columns', 'ajax_pagination', 'nextgen_basic_thumbnails_hidden', 'nextgen_basic_thumbnails_imagebrowser_effect', 'nextgen_basic_thumbnails_show_slideshow_link', 'nextgen_basic_thumbnails_slideshow_link_text', 'nextgen_basic_templates_template');
+        return array('thumbnail_override_settings', 'nextgen_basic_thumbnails_images_per_page', 'nextgen_basic_thumbnails_number_of_columns', 'ajax_pagination', 'nextgen_basic_thumbnails_hidden', 'nextgen_basic_thumbnails_imagebrowser_effect', 'nextgen_basic_thumbnails_show_slideshow_link', 'nextgen_basic_thumbnails_slideshow_link_text', 'display_view', 'nextgen_basic_templates_template');
     }
     /**
      * Renders the images_per_page settings field

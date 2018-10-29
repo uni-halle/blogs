@@ -218,7 +218,7 @@ class C_Taxonomy_Controller extends C_MVC_Controller
         // Respect the global display type setting
         $display_type = $mapper->find_by_name(NGG_BASIC_TAGCLOUD, TRUE);
         $display_type = !empty($display_type->settings['gallery_display_type']) ? $display_type->settings['gallery_display_type'] : NGG_BASIC_THUMBNAILS;
-        return "[ngg_images source='tags' container_ids='{$tag}' slug='{$tag}' display_type='{$display_type}']";
+        return "[ngg source='tags' container_ids='{$tag}' slug='{$tag}' display_type='{$display_type}']";
     }
     /**
      * Determines if the current page is /ngg_tag/{*}

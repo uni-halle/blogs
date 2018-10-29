@@ -31,7 +31,7 @@ class A_Import_Media_Library_Form extends Mixin
 {
     function get_title()
     {
-        return __('Import from WordPress Media Library', 'nggallery');
+        return __('Import from Media Library', 'nggallery');
     }
     function enqueue_static_resources()
     {
@@ -95,65 +95,69 @@ class A_NextGen_AddGallery_Ajax extends Mixin
         $gallery_mapper = C_Gallery_Mapper::get_instance();
         $error = FALSE;
         if ($this->validate_ajax_request('nextgen_upload_image', TRUE)) {
-            // We need to create a gallery
-            if ($gallery_id == 0) {
-                if (strlen($gallery_name) > 0) {
-                    $gallery = $gallery_mapper->create(array('title' => $gallery_name));
-                    if (!$gallery->save()) {
-                        $retval['error'] = $gallery->get_errors();
-                        $error = TRUE;
-                    } else {
-                        $created_gallery = TRUE;
-                        $gallery_id = $gallery->id();
-                    }
-                } else {
-                    $error = TRUE;
-                    $retval['error'] = __("No gallery name specified", 'nggallery');
-                }
-            }
-            // Upload the image to the gallery
-            if (!$error) {
-                $retval['gallery_id'] = $gallery_id;
-                $settings = C_NextGen_Settings::get_instance();
-                $storage = C_Gallery_Storage::get_instance();
-                try {
-                    if ($storage->is_zip()) {
-                        if ($results = $storage->upload_zip($gallery_id)) {
-                            $retval = $results;
+            if (!class_exists('DOMDocument')) {
+                $retval['error'] = __("Please ask your hosting provider or system administrator to enable the PHP XML module, which is required for NextGEN Gallery", 'nggallery');
+            } else {
+                // We need to create a gallery
+                if ($gallery_id == 0) {
+                    if (strlen($gallery_name) > 0) {
+                        $gallery = $gallery_mapper->create(array('title' => $gallery_name));
+                        if (!$gallery->save()) {
+                            $retval['error'] = $gallery->get_errors();
+                            $error = TRUE;
                         } else {
-                            $retval['error'] = __('Failed to extract images from ZIP', 'nggallery');
-                        }
-                    } elseif ($image = $storage->upload_image($gallery_id)) {
-                        $retval['image_ids'] = array($image->id());
-                        $retval['image_errors'] = array();
-                        // check if image was resized correctly
-                        if ($settings->imgAutoResize) {
-                            $image_path = $storage->get_full_abspath($image);
-                            $image_thumb = new C_NggLegacy_Thumbnail($image_path, true);
-                            if ($image_thumb->error) {
-                                $retval['image_errors'][] = array('id' => $image->id(), 'error' => sprintf(__('Automatic image resizing failed [%1$s].', 'nggallery'), $image_thumb->errmsg));
-                                $image_thumb = null;
-                            }
-                        }
-                        // check if thumb was generated correctly
-                        $thumb_path = $storage->get_thumb_abspath($image);
-                        if (!file_exists($thumb_path)) {
-                            $retval['image_errors'][] = array('id' => $image->id(), 'error' => __('Thumbnail generation failed.', 'nggallery'));
+                            $created_gallery = TRUE;
+                            $gallery_id = $gallery->id();
                         }
                     } else {
-                        $retval['error'] = __('Image generation failed', 'nggallery');
+                        $error = TRUE;
+                        $retval['error'] = __("No gallery name specified", 'nggallery');
+                    }
+                }
+                // Upload the image to the gallery
+                if (!$error) {
+                    $retval['gallery_id'] = $gallery_id;
+                    $settings = C_NextGen_Settings::get_instance();
+                    $storage = C_Gallery_Storage::get_instance();
+                    try {
+                        if ($storage->is_zip()) {
+                            if ($results = $storage->upload_zip($gallery_id)) {
+                                $retval = $results;
+                            } else {
+                                $retval['error'] = __('Failed to extract images from ZIP', 'nggallery');
+                            }
+                        } elseif ($image = $storage->upload_image($gallery_id)) {
+                            $retval['image_ids'] = array($image->id());
+                            $retval['image_errors'] = array();
+                            // check if image was resized correctly
+                            if ($settings->imgAutoResize) {
+                                $image_path = $storage->get_full_abspath($image);
+                                $image_thumb = new C_NggLegacy_Thumbnail($image_path, true);
+                                if ($image_thumb->error) {
+                                    $retval['image_errors'][] = array('id' => $image->id(), 'error' => sprintf(__('Automatic image resizing failed [%1$s].', 'nggallery'), $image_thumb->errmsg));
+                                    $image_thumb = null;
+                                }
+                            }
+                            // check if thumb was generated correctly
+                            $thumb_path = $storage->get_thumb_abspath($image);
+                            if (!file_exists($thumb_path)) {
+                                $retval['image_errors'][] = array('id' => $image->id(), 'error' => __('Thumbnail generation failed.', 'nggallery'));
+                            }
+                        } else {
+                            $retval['error'] = __('Image generation failed', 'nggallery');
+                            $error = TRUE;
+                        }
+                    } catch (E_NggErrorException $ex) {
+                        $retval['error'] = $ex->getMessage();
+                        $error = TRUE;
+                        if ($created_gallery) {
+                            $gallery_mapper->destroy($gallery_id);
+                        }
+                    } catch (Exception $ex) {
+                        $retval['error'] = __("An unexpected error occured.", 'nggallery');
+                        $retval['error_details'] = $ex->getMessage();
                         $error = TRUE;
                     }
-                } catch (E_NggErrorException $ex) {
-                    $retval['error'] = $ex->getMessage();
-                    $error = TRUE;
-                    if ($created_gallery) {
-                        $gallery_mapper->destroy($gallery_id);
-                    }
-                } catch (Exception $ex) {
-                    $retval['error'] = __("An unexpected error occured.", 'nggallery');
-                    $retval['error_details'] = $ex->getMessage();
-                    $error = TRUE;
                 }
             }
         } else {

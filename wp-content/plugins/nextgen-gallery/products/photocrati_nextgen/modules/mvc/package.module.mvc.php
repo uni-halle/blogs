@@ -488,7 +488,7 @@ class Mixin_Mvc_View_Instance_Methods extends Mixin
     {
         $retval = array();
         foreach ($this->object->_params as $key => $value) {
-            if (strpos($key, '_template') !== FALSE) {
+            if (strpos($key, '_template') === 0) {
                 $value = $this->object->get_template_abspath($value);
             }
             $retval[$key] = $value;
@@ -505,7 +505,7 @@ class Mixin_Mvc_View_Instance_Methods extends Mixin
         if (!$value) {
             $value = $this->object->_template;
         }
-        if ($value[0] == '/' && @file_exists($value)) {
+        if (strpos($value, DIRECTORY_SEPARATOR) !== FALSE && @file_exists($value)) {
             // key is already abspath
         } else {
             $value = $this->object->find_template_abspath($value);

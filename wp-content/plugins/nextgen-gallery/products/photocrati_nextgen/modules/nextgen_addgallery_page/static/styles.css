@@ -11,8 +11,8 @@
 
 #gallery_selection .plupload_buttons a {
     margin-right: 6px;
-    width: 130px !important;
     text-align: center;
+    font-size: 11px;
 }
 
 #gallery_name {
