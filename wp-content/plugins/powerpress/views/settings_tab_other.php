@@ -105,7 +105,7 @@
 				$actual_premium_value = $FeedSettings['premium'];
 			
 			echo '<option value="">'.  __('None', 'powerpress') .'</option>';
-			while( list($value,$desc) = each($caps) )
+			foreach( $caps as $value => $desc ) 
 				echo "\t<option value=\"$value\"". ($actual_premium_value==$value?' selected':''). ">".htmlspecialchars($desc)."</option>\n";
 ?>
 </select></div>
@@ -204,7 +204,7 @@ function powerpress_default_premium_label(event)
 				$custom_post_type = $FeedSettings['custom_post_type'];
 			
 			echo '<option value="">'. __('All Post Types (default)', 'powerpress') .'</option>';
-			while( list($index,$value) = each($post_types) )
+			foreach( $post_types as $index => $value )
 			{
 				$desc = $value;
 				// TODO: See if we can get a post type label somehow
@@ -219,7 +219,7 @@ function powerpress_default_premium_label(event)
 				$post_types = powerpress_admin_get_post_types( POWERPRESS_CUSTOM_CAPABILITY_TYPE );
 				if( !empty($post_types) )
 				{
-					while( list($index,$value) = each($post_types) )
+					foreach( $post_types as $index => $value )
 					{
 						$desc = $value;
 						// TODO: See if we can get a post type label somehow

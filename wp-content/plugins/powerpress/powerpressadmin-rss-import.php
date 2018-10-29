@@ -58,7 +58,6 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 
 	function header() {
 		echo '<div class="wrap" style="padding-left: 5%">';
-		screen_icon();
 		
 		if( !empty($_GET['import']) )
 		{
@@ -68,6 +67,7 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 				case 'powerpress-libsyn-rss-podcast': echo '<h2>'.__('Import Podcast from LibSyn', 'powerpress').'</h2>'; break;
 				case 'powerpress-podbean-rss-podcast': echo '<h2>'.__('Import Podcast from PodBean', 'powerpress').'</h2>'; break;
 				case 'powerpress-squarespace-rss-podcast': echo '<h2>'.__('Import Podcast from Squarespace', 'powerpress').'</h2>'; break;
+				case 'powerpress-anchor-rss-podcast':  echo '<h2>'.__('Import Podcast from Anchor.fm', 'powerpress').'</h2>'; break;
 				case 'powerpress-rss-podcast': 
 				default: echo '<h2>'.__('Import Podcast RSS Feed', 'powerpress').'</h2>'; break;
 			}
@@ -105,6 +105,7 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 		case 'powerpress-libsyn-rss-podcast': $placeholder = 'http://yourshow.libsyn.com/rss'; break;
 		case 'powerpress-podbean-rss-podcast': $placeholder = 'http://yourshow.podbean.com/feed/'; break;
 		case 'powerpress-squarespace-rss-podcast': $placeholder = 'http://example.com/podcast/?format=rss'; break;
+		case 'powerpress-anchor-rss-podcast': $placeholder = 'https://anchor.fm/s/xxxxxx/podcast/rss'; break;
 	}
 ?>
 <input type="text" name="podcast_feed_url" id="podcast_feed_url" size="50" class="code" style="width: 90%;" placeholder="<?php echo esc_attr($placeholder); ?>" />
@@ -186,7 +187,7 @@ class PowerPress_RSS_Podcast_Import extends WP_Importer {
 <?php
 
 	asort($Feeds, SORT_STRING); // Sort feeds 
-	while( list($feed_slug, $feed_title) = each($Feeds) ) {
+	foreach( $Feeds as $feed_slug => $feed_title ) {
 	
 	echo "\t<option value=\"$feed_slug\">$feed_title ($feed_slug)</option>\n";
 }
@@ -249,7 +250,7 @@ if( !empty($PowerPressTaxonomies) ) { // If taxonomy podcasting feeds exist..
 	$tt_ids = '';
 	
 	$SelectOptions = array();
-	while( list($tt_id, $null) = each($PowerPressTaxonomies) ) {
+	foreach( $PowerPressTaxonomies as $tt_id => $null ) {
 		if( !empty($tt_ids) )
 			$tt_ids .= ',';
 		$tt_ids .= $tt_id;
@@ -265,7 +266,7 @@ if( !empty($PowerPressTaxonomies) ) { // If taxonomy podcasting feeds exist..
 <option value=""><?php echo __('Select Taxonomy Podcast', ''); ?></option>
 <?php
 
-	while( list($tt_id, $label) = each($SelectOptions) )
+	foreach( $SelectOptions as $tt_id => $label )
 	{
 		echo "\t<option value=\"$tt_id\">". htmlspecialchars($label). "</option>\n";
 	}
@@ -356,7 +357,7 @@ jQuery(document).ready( function() {
 		<select id="import_post_status" name="import_post_status" class="medium-text">
 <?php
 	$post_statuses = get_post_statuses();
-	while( list($post_status_slug, $post_status_label) = each($post_statuses) ) {
+	foreach( $post_statuses as $post_status_slug => $post_status_label ) {
 	
 	echo "\t<option value=\"$post_status_slug\"". ($post_status_slug=='publish'?' selected':'') .">".  htmlspecialchars("$post_status_label ($post_status_slug)") . "</option>\n";
 }
@@ -587,7 +588,7 @@ jQuery(document).ready( function() {
 			$cats_by_title = array_flip( $Categories );
 			
 			$FoundCategories = array();
-			while( list($index,$category) = each($itunes_categories) )
+			foreach( $itunes_categories as $index => $category )
 			{
 				$category = str_replace('&amp;', '&', $category);
 				$category = strtolower($category);
@@ -599,7 +600,7 @@ jQuery(document).ready( function() {
 			// this logic rebuilds the categorires in the correct order no matter what method the service stacked them
 			$FinalCats = array(1=>'', 2=>'', 3=>'');
 			$last_category_index = 1;
-			while( list($index,$cat_id) = each($FoundCategories) )
+			foreach( $FoundCategories as $index => $cat_id )
 			{
 				if( !empty($FinalCats[$last_category_index]) ) // Do we need to increment to the next category position
 				{
@@ -620,7 +621,7 @@ jQuery(document).ready( function() {
 				$FinalCats[ $last_category_index ] = $cat_id;
 			}
 			
-			while( list($field_no, $cat_id) = each($FinalCats) ) {
+			foreach( $FinalCats as $field_no => $cat_id ) {
 				if( empty( $cat_id) )
 					continue;
 				$field = sprintf('itunes_cat_%d', $field_no);
@@ -674,7 +675,7 @@ jQuery(document).ready( function() {
 			echo '<hr />';
 			echo '<p><strong>'. __('Program information imported', 'powerpress') .'</strong></p>';
 			echo '<ul class="ul-disc">';
-			while( list($field,$value) = each($NewSettings) )
+			foreach( $NewSettings as $field => $value )
 			{
 				if( $field == 'rss2_image' )
 					continue;
@@ -1137,7 +1138,7 @@ jQuery(document).ready( function() {
 			}
 			
 			$add_urls = '';
-			while( list($meta_id, $url) = each($GLOBALS['pp_migrate_media_urls']) )
+			foreach( $GLOBALS['pp_migrate_media_urls'] as $meta_id => $url )
 			{
 				if( empty($QueuedFiles[ $meta_id ]) ) { // Add to the array if not already added
 					$QueuedFiles[ $meta_id ] = $url;
@@ -1321,8 +1322,7 @@ jQuery(document).ready( function() {
 		$results = $wpdb->get_results($query, ARRAY_A);
 		if( !empty($results) )
 		{
-			if( list($null,$row) = each($results) )
-			{
+			foreach( $results as $null => $row ) {
 				return $row['ID'];
 			}
 		}
@@ -1564,6 +1564,7 @@ jQuery(document).ready( function() {
 	register_importer('powerpress-libsyn-rss-podcast', __('Podcast from LibSyn', 'powerpress'), __('Import episodes from a LibSyn podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
 	register_importer('powerpress-podbean-rss-podcast', __('Podcast from PodBean ', 'powerpress'), __('Import episodes from a PodBean podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
 	register_importer('powerpress-squarespace-rss-podcast', __('Podcast from Squarespace', 'powerpress'), __('Import episodes from a Squarespace podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
+	register_importer('powerpress-anchor-rss-podcast', __('Podcast from Anchor.fm', 'powerpress'), __('Import episodes from an Anchor.fm podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
 	register_importer('powerpress-rss-podcast', __('Podcast RSS Feed', 'powerpress'), __('Import episodes from a RSS podcast feed.', 'powerpress'), array ($powerpress_rss_podcast_import, 'dispatch'));
 	
 }; // end if WP_Importer exists

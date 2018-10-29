@@ -85,8 +85,11 @@ function powerpresssubscribe_get_settings($ExtraData, $detect_category=true)
 		if( !$category_id && is_single() )
 		{
 			$categories = wp_get_post_categories( get_the_ID() );
-			if( count($categories) == 1 )
-				list($null,$category_id) = each($categories);
+			if( count($categories) == 1 ) {
+				foreach( $categories as $null=> $category_id ) {
+					break;
+				}
+			}
 			if( !empty($category_id) )
 			{
 				$Settings = get_option('powerpress_cat_feed_'.$category_id );
@@ -129,6 +132,7 @@ function powerpresssubscribe_get_settings($ExtraData, $detect_category=true)
 			$Settings['subscribe_feature_gp'] = (!empty($GeneralSettings['subscribe_feature_gp']) );
 			$Settings['subscribe_feature_stitcher'] = (!empty($GeneralSettings['subscribe_feature_stitcher']) );
 			$Settings['subscribe_feature_tunein'] = (!empty($GeneralSettings['subscribe_feature_tunein']) );
+			$Settings['subscribe_feature_spotify'] = (!empty($GeneralSettings['subscribe_feature_spotify']) );
 			return $Settings;
 		}
 		
@@ -189,6 +193,7 @@ function powerpresssubscribe_get_settings($ExtraData, $detect_category=true)
 						$Settings['subscribe_feature_gp'] = (!empty($GeneralSettings['subscribe_feature_gp']) );
 						$Settings['subscribe_feature_stitcher'] = (!empty($GeneralSettings['subscribe_feature_stitcher']) );
 						$Settings['subscribe_feature_tunein'] = (!empty($GeneralSettings['subscribe_feature_tunein']) );
+						$Settings['subscribe_feature_spotify'] = (!empty($GeneralSettings['subscribe_feature_spotify']) );
 						return $Settings;
 					}
 				}; break;
@@ -222,11 +227,13 @@ function powerpresssubscribe_get_settings($ExtraData, $detect_category=true)
 		$Settings['subscribe_feature_gp'] = (!empty($GeneralSettings['subscribe_feature_gp']) );
 		$Settings['subscribe_feature_stitcher'] = (!empty($GeneralSettings['subscribe_feature_stitcher']) );
 		$Settings['subscribe_feature_tunein'] = (!empty($GeneralSettings['subscribe_feature_tunein']) );
+		$Settings['subscribe_feature_spotify'] = (!empty($GeneralSettings['subscribe_feature_spotify']) );
 		if( !empty($FeedSettings['premium']) ) {
 			$Settings['subscribe_feature_email'] = false;
 			$Settings['subscribe_feature_gp'] = false;
 			$Settings['subscribe_feature_stitcher'] = false;
 			$Settings['subscribe_feature_tunein'] = false;
+			$Settings['subscribe_feature_spotify'] = false;
 		}
 		
 		return $Settings;
@@ -279,10 +286,13 @@ function powerpressplayer_link_subscribe_pre($content, $media_url, $ExtraData = 
 		}
 	}
 	
-	if( !empty($SubscribeSettings['subscribe_feature_gp']) && !empty($SubscribeSettings['googleplay_url']) )
+	if( !empty($SubscribeSettings['subscribe_feature_gp']) )
 	{
-		$SubscribeSettings['googleplay_url'] = trim($SubscribeSettings['googleplay_url']);
-		$links_array[] = "<a href=\"".  esc_attr($SubscribeSettings['googleplay_url'] ) ."\" class=\"powerpress_link_subscribe powerpress_link_subscribe_googleplay\" title=\"". __('Subscribe on Google Play', 'powerpress') ."\" rel=\"nofollow\">". __('Google Play','powerpress') ."</a>".PHP_EOL_WEB;
+		if( !empty($SubscribeSettings['google_url']) )
+			$SubscribeSettings['googleplay_url'] =$SubscribeSettings['google_url'];
+		else
+			$SubscribeSettings['googleplay_url'] = 'https://www.google.com/podcasts?feed='. powerpress_base64_encode($feed_url);
+		$links_array[] = "<a href=\"".  esc_attr($SubscribeSettings['googleplay_url'] ) ."\" class=\"powerpress_link_subscribe powerpress_link_subscribe_googleplay\" title=\"". __('Subscribe on Google Podcasts', 'powerpress') ."\" rel=\"nofollow\">". __('Google Podcasts','powerpress') ."</a>".PHP_EOL_WEB;
 	}
 	
 	if( !empty($SubscribeSettings['subscribe_feature_stitcher']) && !empty($SubscribeSettings['stitcher_url']) )
@@ -296,7 +306,13 @@ function powerpressplayer_link_subscribe_pre($content, $media_url, $ExtraData = 
 		$SubscribeSettings['tunein_url'] = trim($SubscribeSettings['tunein_url']);
 		$links_array[] = "<a href=\"".  esc_attr($SubscribeSettings['tunein_url'] ) ."\" class=\"powerpress_link_subscribe powerpress_link_subscribe_tunein\" title=\"". __('Subscribe on TuneIn', 'powerpress') ."\" rel=\"nofollow\">". __('TuneIn','powerpress') ."</a>".PHP_EOL_WEB;
 	}
-
+	
+	if( !empty($SubscribeSettings['subscribe_feature_spotify']) && !empty($SubscribeSettings['spotify_url']) )
+	{
+		$SubscribeSettings['spotify_url'] = trim($SubscribeSettings['spotify_url']);
+		$links_array[] = "<a href=\"".  esc_attr($SubscribeSettings['spotify_url'] ) ."\" class=\"powerpress_link_subscribe powerpress_link_subscribe_spotify\" title=\"". __('Subscribe on Spotify', 'powerpress') ."\" rel=\"nofollow\">". __('Spotify','powerpress') ."</a>".PHP_EOL_WEB;
+	}
+	
 	if( !empty($SubscribeSettings['subscribe_feature_rss']) ) {
 		$links_array[] = "<a href=\"". htmlspecialchars($feed_url) ."\" class=\"powerpress_link_subscribe powerpress_link_subscribe_rss\" title=\"". __('Subscribe via RSS', 'powerpress') ."\" rel=\"nofollow\">". __('RSS','powerpress') ."</a>".PHP_EOL_WEB;
 	}
@@ -574,10 +590,14 @@ function powerpress_do_subscribe_widget($settings)
 					}
 				}
 				
-				if( !empty($settings['googleplay_url']) )
-				{
-					$html .= '<a href="'.  esc_url( $settings['googleplay_url'] ) .'" class="pp-sub-btn pp-sub-gp" title="'.  esc_attr( __('Subscribe on Google Play', 'powerpress') ) .'"><span class="pp-sub-ic"></span>'.  esc_html( __('on Google Play', 'powerpress') ) .'</a>';
-				}
+				// Google Podcasts
+				$googleUrl = '';
+				if( !empty($settings['google_url']) )
+					$googleUrl = $settings['google_url'];
+				else
+					$googleUrl = 'https://www.google.com/podcasts?feed='. powerpress_base64_encode($settings['feed_url']);
+				$html .= '<a href="'.  esc_url( $googleUrl ) .'" class="pp-sub-btn pp-sub-gp" title="'.  esc_attr( __('Subscribe on Google Podcasts', 'powerpress') ) .'"><span class="pp-sub-ic"></span>'.  esc_html( __('on Google Podcasts', 'powerpress') ) .'</a>';
+				
 				
 				if( !empty($settings['stitcher_url']) )
 				{
@@ -587,6 +607,11 @@ function powerpress_do_subscribe_widget($settings)
 				if( !empty($settings['tunein_url']) )
 				{
 					$html .= '<a href="'.  esc_url( $settings['tunein_url'] ) .'" class="pp-sub-btn pp-sub-tunein" title="'.  esc_attr( __('Subscribe on TuneIn', 'powerpress') ) .'"><span class="pp-sub-ic"></span>'.  esc_html( __('on TuneIn', 'powerpress') ) .'</a>';
+				}
+				
+				if( !empty($settings['spotify_url']) )
+				{
+					$html .= '<a href="'.  esc_url( $settings['spotify_url'] ) .'" class="pp-sub-btn pp-sub-spotify" title="'.  esc_attr( __('Subscribe on Spotify', 'powerpress') ) .'"><span class="pp-sub-ic"></span>'.  esc_html( __('on Spotify', 'powerpress') ) .'</a>';
 				}
 				
 				//$html .= var_dump($settings, true);
@@ -639,11 +664,16 @@ function powerpress_do_subscribe_sidebar_widget($settings)
 			}
 		}
 		
-		if(  !empty($settings['subscribe_feature_gp']) && !empty($settings['googleplay_url']) ) {
-			$settings['googleplay_url'] = trim($settings['googleplay_url']);
-			$html .= '<a href="'.  esc_url( $settings['googleplay_url'] ) .'" class="pp-ssb-btn pp-ssb-gp" title="'.  esc_attr( __('Subscribe on Google Play', 'powerpress') ) .'"><span class="pp-ssb-ic"></span>'.  esc_html( __('on Google Play', 'powerpress') ) .'</a>';
+		if(  !empty($settings['subscribe_feature_gp']) ) {
+			$googleUrl = '';
+			if( !empty($settings['google_url']) )
+				$gp_url = $settings['google_url'];
+			else
+				$gp_url = 'https://www.google.com/podcasts?feed='.powerpress_base64_encode($settings['feed_url']);
+			
+			$html .= '<a href="'.  esc_url( $gp_url ) .'" class="pp-ssb-btn pp-ssb-gp" title="'.  esc_attr( __('Subscribe on Google Podcasts', 'powerpress') ) .'"><span class="pp-ssb-ic"></span>'.  esc_html( __('on Google Podcasts', 'powerpress') ) .'</a>';
 		}
-		
+	
 		if( !empty($settings['subscribe_feature_stitcher']) && !empty($settings['stitcher_url']) ) {
 			$settings['stitcher_url'] = trim($settings['stitcher_url']);
 			$html .= '<a href="'.  esc_url( $settings['stitcher_url'] ) .'" class="pp-ssb-btn pp-ssb-stitcher" title="'.  esc_attr( __('Subscribe on Stitcher', 'powerpress') ) .'"><span class="pp-ssb-ic"></span>'.  esc_html( __('on Stitcher', 'powerpress') ) .'</a>';
@@ -652,6 +682,11 @@ function powerpress_do_subscribe_sidebar_widget($settings)
 		if( !empty($settings['subscribe_feature_tunein']) && !empty($settings['tunein_url']) ) {
 			$settings['tunein_url'] = trim($settings['tunein_url']);
 			$html .= '<a href="'.  esc_url( $settings['tunein_url'] ) .'" class="pp-ssb-btn pp-ssb-tunein" title="'.  esc_attr( __('Subscribe on TuneIn', 'powerpress') ) .'"><span class="pp-ssb-ic"></span>'.  esc_html( __('on TuneIn', 'powerpress') ) .'</a>';
+		}
+		
+		if(  !empty($settings['subscribe_feature_spotify']) && !empty($settings['spotify_url']) ) {
+			$settings['spotify_url'] = trim($settings['spotify_url']);
+			$html .= '<a href="'.  esc_url( $settings['spotify_url'] ) .'" class="pp-ssb-btn pp-ssb-spotify" title="'.  esc_attr( __('Subscribe on Spotify', 'powerpress') ) .'"><span class="pp-ssb-ic"></span>'.  esc_html( __('on Spotify', 'powerpress') ) .'</a>';
 		}
 		
 		if( !empty($settings['subscribe_feature_rss']) ) {

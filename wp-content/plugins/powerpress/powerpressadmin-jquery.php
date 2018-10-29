@@ -186,7 +186,7 @@ function powerpress_admin_jquery_init()
 			{
 				$json_data = false;
 				$api_url_array = powerpress_get_api_array();
-				while( list($index,$api_url) = each($api_url_array) )
+				foreach( $api_url_array as $index => $api_url )
 				{
 					$req_url = sprintf('%s/media/%s/%s?format=json', rtrim($api_url, '/'), $Settings['blubrry_program_keyword'], $DeleteFile );
 					$req_url .= (defined('POWERPRESS_BLUBRRY_API_QSA')?'&'. POWERPRESS_BLUBRRY_API_QSA:'');
@@ -209,7 +209,7 @@ function powerpress_admin_jquery_init()
 			
 			$json_data = false;
 			$api_url_array = powerpress_get_api_array();
-			while( list($index,$api_url) = each($api_url_array) )
+			foreach( $api_url_array as $index => $api_url )
 			{
 				$req_url = sprintf('%s/media/%s/index.json?quota=true&published=true', rtrim($api_url, '/'), $Settings['blubrry_program_keyword'] );
 				$req_url .= (defined('POWERPRESS_BLUBRRY_API_QSA')?'&'. POWERPRESS_BLUBRRY_API_QSA:'');
@@ -318,7 +318,7 @@ function DeleteMedia(File)
 		else if( is_array($results) )
 		{
 			$PublishedList = false;
-			while( list($index,$data) = each($results) )
+			foreach( $results as $index => $data )
 			{
 				if( $index === 'quota' )
 				{
@@ -486,7 +486,7 @@ function DeleteMedia(File)
 				$auth = base64_encode( $SaveSettings['blubrry_username'] . ':' . $Password );
 				$json_data = false;
 				$api_url_array = powerpress_get_api_array();
-				while( list($index,$api_url) = each($api_url_array) )
+				foreach( $api_url_array as $index => $api_url )
 				{
 					$req_url = sprintf('%s/service/index.json', rtrim($api_url, '/') );
 					$req_url .= (defined('POWERPRESS_BLUBRRY_API_QSA')?'?'. POWERPRESS_BLUBRRY_API_QSA:'');
@@ -524,7 +524,7 @@ function DeleteMedia(File)
 					else
 					{
 						// Get all the programs for this user...
-						while( list($null,$row) = each($results) )
+						foreach( $results as $null => $row )
 						{
 							$Programs[ $row['program_keyword'] ] = $row['program_title'];
 							if( $row['hosting'] === true || $row['hosting'] == 'true' )
@@ -556,7 +556,10 @@ function DeleteMedia(File)
 							}
 							else if( count($Programs) == 1 )
 							{
-								list($keyword, $title) = each($Programs);
+								foreach( $Programs as $keyword => $title ) {
+									break;
+								}
+								
 								$SaveSettings['blubrry_program_keyword'] = $keyword;
 								$SaveSettings['blubrry_hosting'] = $ProgramHosting[ $keyword ];
 								if( !is_bool($SaveSettings['blubrry_hosting']) )
@@ -698,7 +701,7 @@ jQuery(document).ready(function($) {
 <select id="blubrry_program_keyword" name="Settings[blubrry_program_keyword]">
 <option value=""><?php echo __('Select Program', 'powerpress'); ?></option>
 <?php
-while( list($value,$desc) = each($Programs) )
+foreach( $Programs as $value => $desc )
 	echo "\t<option value=\"$value\"". ($Settings['blubrry_program_keyword']==$value?' selected':''). ">$desc</option>\n";
 ?>
 </select>
@@ -750,7 +753,7 @@ while( list($value,$desc) = each($Programs) )
 			{
 				$json_data = false;
 				$api_url_array = powerpress_get_api_array();
-				while( list($index,$api_url) = each($api_url_array) )
+				foreach( $api_url_array as $index => $api_url )
 				{
 					$req_url = sprintf('%s/media/%s/upload_session.json', rtrim($api_url, '/'), $Settings['blubrry_program_keyword'] );
 					$req_url .= (defined('POWERPRESS_BLUBRRY_API_QSA')?'?'. POWERPRESS_BLUBRRY_API_QSA:'');

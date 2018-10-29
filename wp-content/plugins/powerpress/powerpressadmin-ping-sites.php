@@ -11,7 +11,7 @@
 		{
 			$ping_site_data = get_option('ping_sites');
 			
-			while( list($null,$url) = each($PingSites) )
+			foreach( $PingSites as $null => $url )
 				$ping_site_data = trim($ping_site_data)."\r\n$url";
 				
 			update_option('ping_sites', $ping_site_data);
@@ -45,7 +45,7 @@
 <td>
 	<p><?php echo __('Select the blog service you would like to notify.', 'powerpress'); ?></p>
 <?php
-	while( list($url,$name) = each($BlogSites) )
+	foreach( $BlogSites as $url => $name )
 	{
 		if( stripos($ping_sites, $url) !== false )
 		{
@@ -69,7 +69,7 @@
 <td>
 	<p><?php echo __('Select the podcasting service you would like to notify.', 'powerpress'); ?></p>
 <?php
-	while( list($url,$name) = each($PodcastSites) )
+	foreach( $PodcastSites as $url => $name )
 	{
 		if( stripos($ping_sites, $url) !== false )
 		{

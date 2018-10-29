@@ -15,6 +15,7 @@ function powerpress_admin_import_feed()
 		<li><strong><a href="<?php echo admin_url("admin.php?import=powerpress-libsyn-rss-podcast"); ?>"><?php echo __('Podcast from LibSyn', 'powerpress'); ?></a></strong></li>
 		<li><strong><a href="<?php echo admin_url("admin.php?import=powerpress-podbean-rss-podcast"); ?>"><?php echo __('Podcast from PodBean', 'powerpress'); ?></a></strong></li>
 		<li><strong><a href="<?php echo admin_url("admin.php?import=powerpress-squarespace-rss-podcast"); ?>"><?php echo __('Podcast from Squarespace', 'powerpress'); ?></a></strong></li>
+		<li><strong><a href="<?php echo admin_url("admin.php?import=powerpress-anchor-rss-podcast"); ?>"><?php echo __('Podcast from Anchor.fm', 'powerpress'); ?></a></strong></li>
 	</ul>
 	<h4><?php echo __('Import from anywhere else', 'powerpress'); ?></h4>
 	<ul>

@@ -213,6 +213,22 @@ padding-bottom: 15px;
 /*	float: left; */
 	display: inline-block;
 }
+#powerpress_admin_header h2,
+#powerpress_admin_header h3,
+#powerpress_admin_header h4 {
+	line-height: 1.1;
+	margin: 10px 0 0 0;
+	padding: 0;
+	font-weight: bold;
+}
+#powerpress_admin_header p {
+	line-height: 1.1;
+	margin: 5px 0 10px 0;
+	padding: 0;
+}
+#powerpress_admin_header  .powerpress-admin-heading {
+	font-weight: bold;
+}
 #powerpress_admin_header .powerpress-mode {
 	margin-left: 14px;
 	display: inline-block;

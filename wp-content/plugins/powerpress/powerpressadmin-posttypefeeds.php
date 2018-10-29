@@ -70,13 +70,13 @@ function powerpress_admin_posttypefeeds()
 <?php
 
 	$count = 0;
-	while( list($null, $post_type) = each($post_types) )
+	foreach( $post_types as $null => $post_type )
 	{
 		$PostTypeSettingsArray = get_option('powerpress_posttype_'. $post_type );
 		if( !$PostTypeSettingsArray )
 			continue;
 		
-		while( list($feed_slug, $PostTypeSettings) = each($PostTypeSettingsArray) )
+		foreach( $PostTypeSettingsArray as $feed_slug => $PostTypeSettings )
 		{
 			$feed_title = ( !empty($PostTypeSettings['title']) ? $PostTypeSettings['title'] : '(blank)');
 			// $post_type
@@ -191,7 +191,7 @@ function powerpress_admin_posttypefeeds()
 
 
 reset($post_types);
-while( list($null,$post_type) = each($post_types) ) {
+foreach( $post_types as $null => $post_type ) {
 	if( $post_type == 'post' )
 		continue;
 	

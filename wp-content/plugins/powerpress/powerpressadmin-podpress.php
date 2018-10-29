@@ -75,7 +75,7 @@ if( !function_exists('add_action') )
 		$results_data = $wpdb->get_results($query, ARRAY_A);
 		if( $results_data )
 		{
-			while( list($null,$row) = each($results_data) )
+			foreach( $results_data as $null => $row )
 			{
 				//$return = $row;
 				$podpress_data = @unserialize($row['meta_value']);
@@ -120,7 +120,7 @@ if( !function_exists('add_action') )
 					}
 					
 					$clean_data = array();
-					while( list($episode_index,$episode_data) = each($podpress_data) )
+					foreach( $podpress_data as $episode_index => $episode_data )
 					{
 						if( trim($episode_data['URI']) != '' )
 						{
@@ -165,7 +165,7 @@ if( !function_exists('add_action') )
 						list($EnclosureURL,$null) = explode("\n", $enclosure_data);
 						$return[ $row['ID'] ]['enclosure'] = $enclosure_data;
 						
-						while( list($episode_index_temp,$episode_data_temp) = each($clean_data) )
+						foreach( $clean_data as $episode_index_temp => $episode_data_temp )
 						{
 							if( trim($EnclosureURL) == trim($episode_data_temp['url']) )
 							{
@@ -233,9 +233,9 @@ if( !function_exists('add_action') )
 		$Import = ( !empty( $_POST['Import']) ? $_POST['Import'] : array() );
 		$PodPressData = powerpress_get_podpress_episodes(true);
 		
-		while( list($post_id, $podpress_episode_feeds) = each($Import) )
+		foreach( $Import as $post_id => $podpress_episode_feeds )
 		{
-			while( list($podpress_index, $feed_slug) = each($podpress_episode_feeds) )
+			foreach( $podpress_episode_feeds as $podpress_index => $feed_slug )
 			{
 				if( $feed_slug )
 				{
@@ -315,7 +315,7 @@ if( !function_exists('add_action') )
 		
 		if( is_array($Settings['custom_feeds']) )
 		{
-			while( list($feed_slug,$value) = each($Settings['custom_feeds']) )
+			foreach( $Settings['custom_feeds'] as $feed_slug => $value )
 			{
 				if( $feed_slug != 'podcast' )
 					$data['feed-'.$feed_slug] = __('Feed', 'powerpress') .': ('.$feed_slug.')';
@@ -492,7 +492,7 @@ function select_all(index,value)
 	$ImportableEpisodes = 0;
 	
 	$count = 0;
-	while( list($post_id, $import_data) = each($results	) )
+	foreach( $results as $post_id => $import_data )
 	{
 		$edit_link = get_edit_post_link( $post_id );
 		if( $post_id == 'feeds_required' )
@@ -504,7 +504,7 @@ function select_all(index,value)
 		
 		if( is_array($Settings['custom_feeds']) )
 		{
-			while( list($feed_slug,$value) = each($Settings['custom_feeds']) )
+			foreach( $Settings['custom_feeds'] as $feed_slug => $value )
 			{
 				if( $feed_slug == 'podcast' )
 					$enclosure_data = get_post_meta($post_id, 'enclosure', true);
@@ -522,7 +522,7 @@ function select_all(index,value)
 				}
 				
 				$found = false;
-				while( list($episode_index,$episode_data) = each($import_data['podpress_data']) )
+				foreach( $import_data['podpress_data'] as $episode_index => $episode_data )
 				{
 					if( $episode_data['url'] == $CurrentEnclosures[ $feed_slug ]['url'] )
 					{
@@ -578,7 +578,7 @@ function select_all(index,value)
 					echo '</strong><br />';
 					echo '<div style="margin-left: 10px;">';
 					$index = 1;
-					while( list($episode_index,$episode_data) = each($import_data['podpress_data']) )
+					foreach( $import_data['podpress_data'] as $episode_index => $episode_data )
 					{
 						$Parts = parse_url($episode_data['url']);
 						$filename = substr($Parts['path'], strrpos($Parts['path'], '/')+1 );
@@ -634,7 +634,7 @@ function select_all(index,value)
 					if( isset($CurrentEnclosures[$feed_slug]) && $CurrentEnclosures[$feed_slug]['imported'] )
 					{
 						$index = 1;
-						while( list($episode_index,$episode_data) = each($import_data['podpress_data']) )
+						foreach( $import_data['podpress_data'] as $episode_index => $episode_data )
 						{
 							echo "File $index: ";
 							if( $CurrentEnclosures[$feed_slug]['url'] == $episode_data['url'] )
@@ -654,7 +654,7 @@ function select_all(index,value)
 					else
 					{
 						$index = 1;
-						while( list($episode_index,$episode_data) = each($import_data['podpress_data']) )
+						foreach( $import_data['podpress_data'] as $episode_index => $episode_data )
 						{
 							echo __('File', 'powerpress') ."&nbsp;$index:&nbsp;";
 							if( !empty($episode_data['imported']) )
@@ -712,7 +712,7 @@ function select_all(index,value)
 <p style="margin: 0 0 0 40px; padding: 0;">
  File <?php echo ($number+1); ?>:
 <?php
-				while( list($feed_slug,$feed_title) = each($Settings['custom_feeds']) )
+				foreach( $Settings['custom_feeds'] as $feed_slug => $feed_title )
 				{
 					echo '<a href="javascript:void()" onclick="select_all('. $number .',\''. $feed_slug .'\');return false;">'. htmlspecialchars($feed_title) .'</a> | ';
 				}

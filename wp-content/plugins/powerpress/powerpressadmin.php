@@ -7,8 +7,9 @@ function powerpress_esc_html($escape)
 {
 	if( is_array($escape) )
 	{
-		while( list($index,$value)  = each($escape) )
+		foreach( $escape as $index => $value ) {
 			$escape[ $index ] = powerpress_esc_html($value);
+		}
 	}
 	return esc_html($escape);
 }
@@ -71,11 +72,12 @@ function powerpress_admin_init()
 	add_thickbox(); // we use the thckbox for some settings
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('jquery-ui-core'); // Now including the library at Google
-	wp_enqueue_script('jquery-ui-tabs');
 	
 	// Powerpress page
 	if( isset($_GET['page']) && strstr($_GET['page'], 'powerpress' ) !== false )
 	{
+		wp_enqueue_script('jquery-ui-tabs');
+			
 		//wp_enqueue_script('jquery-ui', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.7/jquery-ui.min.js');
 		if( preg_match('/powerpressadmin_(mobile|audio|video)player/', $_GET['page']) )
 		{
@@ -674,7 +676,7 @@ function powerpress_admin_init()
 						update_option('powerpress_track_number',  $_POST['PowerPressTrackNumber']);
 					}
 					// Set all the tag values...
-					while( list($key,$value) = each($GeneralPosted) )
+					foreach( $GeneralPosted as $key => $value )
 					{
 						if( substr($key, 0, 4) == 'tag_' )
 						{
@@ -700,7 +702,7 @@ function powerpress_admin_init()
 						{
 							$json_data = false;
 							$api_url_array = powerpress_get_api_array();
-							while( list($index,$api_url) = each($api_url_array) )
+							foreach( $api_url_array as $index => $api_url )
 							{
 								$req_url = sprintf('%s/media/%s/coverart.json?url=%s', rtrim($api_url, '/'), $GeneralSettingsTemp['blubrry_program_keyword'], urlencode($TagValues['tag_coverart']) );
 								$req_url .= (defined('POWERPRESS_BLUBRRY_API_QSA')?'&'. POWERPRESS_BLUBRRY_API_QSA:'');
@@ -803,7 +805,9 @@ function powerpress_admin_init()
 				if( isset($GeneralSettingsTemp['episode_box_background_color']) )
 					$SaveEpisdoeBoxBGColor['episode_box_background_color'] = $GeneralSettingsTemp['episode_box_background_color']; //  copy previous settings
 				
-				list($feed_slug_temp, $background_color) = each($_POST['EpisodeBoxBGColor']);
+				foreach( $_POST['EpisodeBoxBGColor'] as $feed_slug_temp => $background_color ) {
+					break;
+				}
 				$SaveEpisdoeBoxBGColor['episode_box_background_color'][ $feed_slug_temp ] = $background_color;
 				powerpress_save_settings($SaveEpisdoeBoxBGColor);
 			}
@@ -1230,7 +1234,7 @@ function powerpress_admin_init()
 					check_admin_referer('powerpress-add-caps');
 					
 					$users = array('administrator','editor', 'author'); // , 'contributor', 'subscriber');
-					while( list($null,$user) = each($users) )
+					foreach( $users as $null => $user )
 					{
 						$role = get_role($user);
 						if( !empty($role) )
@@ -1251,7 +1255,7 @@ function powerpress_admin_init()
 					check_admin_referer('powerpress-remove-caps');
 					
 					$users = array('administrator','editor', 'author', 'contributor', 'subscriber');
-					while( list($null,$user) = each($users) )
+					foreach( $users as $null => $user )
 					{
 						$role = get_role($user);
 						if( !empty($role) )
@@ -1280,7 +1284,7 @@ function powerpress_admin_init()
 					}
 					
 					$users = array('administrator','editor', 'author'); // , 'contributor', 'subscriber');
-					while( list($null,$user) = each($users) )
+					foreach( $users as $null => $user )
 					{
 						$role = get_role($user);
 						if( !empty($role) )
@@ -1299,7 +1303,7 @@ function powerpress_admin_init()
 					check_admin_referer('powerpress-remove-feed-caps');
 					
 					$users = array('administrator','editor', 'author', 'contributor', 'subscriber', 'premium_subscriber', 'powerpress');
-					while( list($null,$user) = each($users) )
+					foreach( $users as $null => $user )
 					{
 						$role = get_role($user);
 						if( !empty($role) )
@@ -1387,7 +1391,7 @@ function powerpress_admin_notices()
 		// Clear the SG cachepress plugin:
 		if (function_exists('sg_cachepress_purge_cache')) { sg_cachepress_purge_cache(); }
 		
-		while( list($null, $error) = each($errors) )
+		foreach( $errors as $null => $error )
 		{
 ?>
 <div class="updated"><p style="line-height: 125%;"><strong><?php echo $error; ?></strong></p></div>
@@ -1412,8 +1416,9 @@ function powerpress_save_settings($SettingsNew=false, $field = 'powerpress_gener
 		$Settings = get_option($field);
 		if( !is_array($Settings) )
 			$Settings = array();
-		while( list($key,$value) = each($SettingsNew) )
+		foreach( $SettingsNew as $key => $value ) {
 			$Settings[$key] = $value;
+		}
 		if( $field == 'powerpress_general' && !isset($Settings['timestamp']) )
 			$Settings['timestamp'] = time();
 			
@@ -1544,7 +1549,7 @@ function powerpress_htmlspecialchars($data)
 		return $data;
 	if( is_array($data) )
 	{
-		while( list($key,$value) = each($data) )
+		foreach( $data as $key => $value )
 		{
 			if( $key == 'itunes_summary' )
 				continue; // Skip this one as we escape it in the form.
@@ -1566,7 +1571,7 @@ function powerpress_stripslashes($data)
 	if( !is_array($data) )
 		return stripslashes($data);
 	
-	while( list($key,$value) = each($data) )
+	foreach( $data as $key => $value )
 	{
 		if( is_array($value) )
 			$data[$key] = powerpress_stripslashes($value);
@@ -1584,7 +1589,7 @@ function powerpress_admin_get_post_types($capability_type = 'post')
 		
 	$return = array();
 	$post_types = get_post_types();
-	while( list($index,$post_type) = each($post_types) )
+	foreach( $post_types as $index => $post_type )
 	{
 		if( $post_type == 'redirect_rule' || $post_type == 'attachment' || $post_type == 'nav_menu_item' || $post_type == 'revision' || $post_type == 'action' )
 			continue;
@@ -1609,13 +1614,13 @@ function powerpress_rebuild_posttype_podcasting()
 	// array( feed-slugs => array('posttype1'=>'post type 1 title', 'posttype2'=>post type 2 title', ...) );
 	$post_types = get_post_types();
 	$FeedSlugPostTypeArray = array();
-	while( list($index, $post_type) = each($post_types) )
+	foreach( $post_types as $index => $post_type )
 	{
 		$PostTypeSettingsArray = get_option('powerpress_posttype_'. $post_type );
 		if( !$PostTypeSettingsArray )
 			continue;
 		
-		while( list($feed_slug, $PostTypeSettings) = each($PostTypeSettingsArray) )
+		foreach( $PostTypeSettingsArray as $feed_slug => $PostTypeSettings )
 		{
 			$FeedSlugPostTypeArray[ $feed_slug ][ $post_type ] = ( empty($PostTypeSettings['title'])? $feed_slug : $PostTypeSettings['title'] );
 		}
@@ -1649,7 +1654,7 @@ function powerpress_admin_menu()
 			if( empty($Powerpress['posttype_podcasting']) )
 				$page_types = powerpress_admin_get_post_types('page'); // Get pages by capability type
 			
-			while( list($null,$page_type) = each($page_types) )
+			foreach( $page_types as $null => $page_type )
 			{
 				if( empty($FeedSlugPostTypesArray[ 'podcast' ][ $page_type ]) )
 					add_meta_box('powerpress-podcast', __('Podcast Episode', 'powerpress'), 'powerpress_meta_box', $page_type, 'normal');
@@ -1673,9 +1678,9 @@ function powerpress_admin_menu()
 			if( empty($FeedSlugPostTypesArray) )
 				$FeedSlugPostTypesArray = array();
 
-			while( list($feed_slug, $FeedSlugPostTypes) = each($FeedSlugPostTypesArray) )
+			foreach( $FeedSlugPostTypesArray as $feed_slug => $FeedSlugPostTypes )
 			{
-				while( list($post_type, $type_title) = each($FeedSlugPostTypes) )
+				foreach( $FeedSlugPostTypes as $post_type => $type_title )
 				{
 					if ( $feed_slug != 'podcast' || $post_type != 'post' ) // No the default podcast feed
 					{
@@ -1693,7 +1698,7 @@ function powerpress_admin_menu()
 		{
 			$FeedDefaultPodcast = get_option('powerpress_feed_podcast');
 			
-			while( list($null,$post_type) = each($post_types) )
+			foreach( $post_types as $null => $post_type )
 			{
 				// Make sure this post type can edit the default podcast channel...
 				if( !empty($FeedDefaultPodcast['custom_post_type']) && $FeedDefaultPodcast['custom_post_type'] != $post_type )
@@ -1703,7 +1708,7 @@ function powerpress_admin_menu()
 					add_meta_box('powerpress-podcast', __('Podcast Episode (default)', 'powerpress'), 'powerpress_meta_box', $post_type, 'normal');
 			}
 			
-			while( list($feed_slug, $feed_title) = each($Powerpress['custom_feeds']) )
+			foreach( $Powerpress['custom_feeds'] as $feed_slug => $feed_title )
 			{
 				if( $feed_slug == 'podcast' )
 					continue;
@@ -1713,7 +1718,7 @@ function powerpress_admin_menu()
 				
 						
 				reset($post_types);
-				while( list($null,$post_type) = each($post_types) )
+				foreach( $post_types as $null => $post_type )
 				{
 					// Make sure this post type can edit the default podcast channel...
 					if( !empty($FeedCustom['custom_post_type']) && $FeedCustom['custom_post_type'] != $post_type )
@@ -1728,7 +1733,7 @@ function powerpress_admin_menu()
 		else // This handles all podcast post types and default  'post'. if post type podcasting enabled. 
 		{
 			reset($post_types);
-			while( list($null,$post_type) = each($post_types) )
+			foreach( $post_types as $null => $post_type )
 			{
 				if( empty($FeedSlugPostTypesArray[ 'podcast' ][ $post_type ]) )
 					add_meta_box('powerpress-podcast', __('Podcast Episode', 'powerpress'), 'powerpress_meta_box', $post_type, 'normal');
@@ -1741,7 +1746,7 @@ function powerpress_admin_menu()
 			$post_types = powerpress_admin_get_post_types( POWERPRESS_CUSTOM_CAPABILITY_TYPE );
 			if( !empty($post_types) )
 			{
-				while( list($feed_slug, $feed_title) = each($Powerpress['custom_feeds']) )
+				foreach( $Powerpress['custom_feeds'] as $feed_slug => $feed_title )
 				{
 					if( $feed_slug == 'podcast' )
 						continue;
@@ -1749,7 +1754,7 @@ function powerpress_admin_menu()
 					$FeedCustom = get_option('powerpress_feed_'.$feed_slug);
 							
 					reset($post_types);
-					while( list($null,$post_type) = each($post_types) )
+					foreach( $post_types as $null => $post_type )
 					{
 						if( !empty($FeedCustom['custom_post_type']) && $FeedCustom['custom_post_type'] != $post_type )
 							continue;
@@ -1794,7 +1799,7 @@ function powerpress_admin_menu()
 			
 			add_submenu_page($parent_slug, __('Import podcast feed from SoundCloud, LibSyn, PodBean or other podcast service.', 'powerpress'), __('Import Podcast', 'powerpress'), POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_import_feed.php', 'powerpress_admin_page_import_feed');
 			add_submenu_page($parent_slug, __('Migrate media files to Blubrry Podcast Media Hosting with only a few clicks.', 'powerpress'), __('Migrate Media', 'powerpress'), POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_migrate.php', 'powerpress_admin_page_migrate');
-			add_submenu_page($parent_slug, __('PowerPress Podcasting SEO', 'powerpress'), '<span style="color:#f18500">'. __('Podcasting SEO', 'powerpress') .'</span> '.powerpressadmin_new('font-weight: bold; color: #ffffff;') .'', POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_search.php', 'powerpress_admin_page_search');
+			add_submenu_page($parent_slug, __('PowerPress Podcasting SEO', 'powerpress'), '<span style="color:#f18500">'. __('Podcasting SEO', 'powerpress') .'</span> ', POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_search.php', 'powerpress_admin_page_search');
 			
 			add_submenu_page($parent_slug, __('PowerPress Audio Player Options', 'powerpress'), __('Audio Player', 'powerpress'), POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_player.php', 'powerpress_admin_page_players');
 			add_submenu_page($parent_slug, __('PowerPress Video Player Options', 'powerpress'), __('Video Player', 'powerpress'), POWERPRESS_CAPABILITY_EDIT_PAGES, 'powerpress/powerpressadmin_videoplayer.php', 'powerpress_admin_page_videoplayers');
@@ -1838,7 +1843,7 @@ function powerpress_edit_post($post_ID, $post)
 	
 	if( $Episodes )
 	{
-		while( list($feed_slug,$Powerpress) = each($Episodes) )
+		foreach( $Episodes as $feed_slug => $Powerpress )
 		{
 			$field = 'enclosure';
 			if( $feed_slug != 'podcast' )
@@ -2101,7 +2106,7 @@ function powerpress_edit_post($post_ID, $post)
 				$FeatureEpisodes = array();
 			
 			$PowerpressFeature = $_POST['PowerpressFeature'];
-			while( list($feed_slug,$set_featured) = each($PowerpressFeature) )
+			foreach( $PowerpressFeature as $feed_slug => $set_featured )
 			{
 				if( !empty($set_featured) )
 					$FeatureEpisodes[ $feed_slug ] = $post_ID;
@@ -2483,7 +2488,7 @@ function powerpress_check_url(url)
 	{
 		if( validChars.indexOf( url.charAt(x) ) == -1 )
 		{
-			jQuery( '#'+DestDiv ).text('<?php echo __('Media URL contains characters that may cause problems for some clients. For maximum compatibility, only use letters, numbers, dash - and underscore _ characters only.', 'powerpress'); ?>');
+			jQuery( '#'+DestDiv ).text('<?php echo esc_js( __('Media URL contains characters that may cause problems for some clients. For maximum compatibility, only use letters, numbers, dash - and underscore _ characters only.', 'powerpress')); ?>');
 			jQuery( '#'+DestDiv ).css('display', 'block');
 			return false;
 		}
@@ -2911,7 +2916,7 @@ function powerpress_create_subscribe_page()
 	$languages[] = 'en_US'; // fallback to the en_US version
 	
 	$template_content = false;
-	while( list($index,$lang) = each($languages) )
+	foreach( $languages as $index => $lang )
 	{
 		$template_content = powerpress_remote_fopen( $template_url . $lang . '.txt' );
 		if( empty($template_content) ) { // Lets force cURL and see if that helps...
@@ -3438,7 +3443,7 @@ function powerpress_remote_fopen($url, $basic_auth = false, $post_args = array()
 		if( count($post_args) > 0 )
 		{
 			$post_query = '';
-			while( list($name,$value) = each($post_args) )
+			foreach( $post_args as $name => $value )
 			{
 				if( $post_query != '' )
 					$post_query .= '&';
@@ -3553,14 +3558,14 @@ function powerpress_process_hosting($post_ID, $post_title)
 	if( !empty($Settings['posttype_podcasting']) )
 	{
 		$FeedSlugPostTypesArray = get_option('powerpress_posttype-podcasting');
-		while( list($feed_slug, $null) = each($FeedSlugPostTypesArray) )
+		foreach( $FeedSlugPostTypesArray as $feed_slug => $null )
 		{
 			if( empty($CustomFeeds[$feed_slug]) )
 				$CustomFeeds[$feed_slug] = $feed_slug;
 		}
 	}
 	
-	while( list($feed_slug,$null) = each($CustomFeeds) )
+	foreach( $CustomFeeds as $feed_slug => $null )
 	{
 		$field = 'enclosure';
 		if( $feed_slug != 'podcast' )
@@ -3644,7 +3649,7 @@ function powerpress_process_hosting($post_ID, $post_title)
 					set_time_limit(60*20); // give it 20 minutes just in case
 					$json_data = false;
 					$api_url_array = powerpress_get_api_array();
-					while( list($index,$api_url) = each($api_url_array) )
+					foreach( $api_url_array as $index => $api_url )
 					{
 						$req_url = sprintf('%s/media/%s/%s?format=json&publish=true', rtrim($api_url, '/'), urlencode($Settings['blubrry_program_keyword']), urlencode($EnclosureURL)  );
 						$req_url .= (defined('POWERPRESS_BLUBRRY_API_QSA')?'&'. POWERPRESS_BLUBRRY_API_QSA:'');
@@ -3953,7 +3958,9 @@ function powerpress_admin_episodes_per_feed($feed_slug, $post_type='post')
 	if ( $results = $wpdb->get_results("SELECT COUNT(post_id) AS episodes_total FROM $wpdb->postmeta WHERE meta_key = '$field'", ARRAY_A) ) {
 		if( count($results) )
 		{
-			list($key,$row) = each($results);
+			foreach( $results as $key => $row ) {
+				break;
+			}
 			if( $row['episodes_total'] )
 				return $row['episodes_total'];
 		}
@@ -4032,7 +4039,7 @@ function powerpress_write_tags($file, $post_title)
 	
 	$PostArgs = array();
 	$Fields = array('title','artist','album','genre','year','track','composer','copyright','url');
-	while( list($null,$field) = each($Fields) )
+	foreach( $Fields as $null => $field )
 	{
 		if( !empty($Settings[ 'tag_'.$field ]) )
 		{
@@ -4083,7 +4090,7 @@ function powerpress_write_tags($file, $post_title)
 							
 	// Get meta info via API
 	$api_url_array = powerpress_get_api_array();
-	while( list($index,$api_url) = each($api_url_array) )
+	foreach( $api_url_array as $index => $api_url )
 	{
 		$req_url = sprintf('%s/media/%s/%s?format=json&id3=true', rtrim($api_url, '/'), urlencode($Settings['blubrry_program_keyword']), urlencode($file) );
 		$req_url .= (defined('POWERPRESS_BLUBRRY_API_QSA')?'&'. POWERPRESS_BLUBRRY_API_QSA:'');
@@ -4110,7 +4117,7 @@ function powerpress_get_media_info($file)
 	$Settings = get_option('powerpress_general');
 	$content = false;
 	$api_url_array = powerpress_get_api_array();
-	while( list($index,$api_url) = each($api_url_array) )
+	foreach( $api_url_array as $index => $api_url )
 	{
 		$req_url = sprintf('%s/media/%s/%s?format=json&info=true', rtrim($api_url, '/'), urlencode($Settings['blubrry_program_keyword']), urlencode($file) );
 		$req_url .= (defined('POWERPRESS_BLUBRRY_API_QSA')?'&'. POWERPRESS_BLUBRRY_API_QSA:'');
@@ -4248,7 +4255,7 @@ function powerpress_get_media_info_local($media_file, $content_type='', $file_si
 		if( empty($GeneralSettings['hide_warnings']) && count( $Mp3Info->GetWarnings() ) > 0 )
 		{
 			$Warnings = $Mp3Info->GetWarnings();
-			while( list($null, $warning) = each($Warnings) )
+			foreach( $Warnings as $null => $warning )
 			{
 				$warning = sprintf( __('Warning, Media URL %s', 'powerpress'), $media_file) .': '. $warning  .' [<a href="http://create.blubrry.com/resources/powerpress/using-powerpress/warning-messages-explained/" target="_blank">'. __('PowerPress Warnings Explained', 'powerpress') .'</a>]';
 				if( $return_warnings )
@@ -4301,7 +4308,7 @@ function powerpress_get_media_info_local($media_file, $content_type='', $file_si
 			if( count( $Mp3Info->GetWarnings() ) > 0 )
 			{
 				$Warnings = $Mp3Info->GetWarnings();
-				while( list($null, $warning) = each($Warnings) )
+				foreach( $Warnings as $null => $warning )
 					powerpress_add_error(  sprintf( __('Warning, Media URL %s', 'powerpress'), $media_file) .': '. $warning  .' [<a href="http://create.blubrry.com/resources/powerpress/using-powerpress/warning-messages-explained/" target="_blank">'. __('PowerPress Warnings Explained', 'powerpress') .'</a>]' );
 			}
 		}
@@ -4385,7 +4392,7 @@ function powerpress_print_options($options,$selected=null, $return=false)
 	if( $return )
 	{
 		$html = '';
-		while( list($key,$value) = each($options) )
+		foreach( $options as $key=> $value )
 		{
 			$html .= '<option value="'. esc_attr($key) .'"'. ( ($selected !== null && strcmp($selected, $key) == 0 )?' selected':'') .'>';
 			$html .= htmlspecialchars($value);
@@ -4394,7 +4401,7 @@ function powerpress_print_options($options,$selected=null, $return=false)
 		
 		return $html;
 	}
-	while( list($key,$value) = each($options) )
+	foreach( $options as $key=> $value )
 	{
 		echo '<option value="'. esc_attr($key) .'"'. ( ($selected !== null && strcmp($selected, $key) == 0 )?' selected':'') .'>';
 		echo htmlspecialchars($value);
@@ -4466,7 +4473,7 @@ function powerpressadmin_community_news($items=3)
 	else
 	{
 		$first_item = true;
-		while( list($null,$item) = each($rss_items) )
+		foreach( $rss_items as $null=> $item)
 		{
 			$enclosure = $item->get_enclosure();
 			echo '<li>';
@@ -4563,8 +4570,7 @@ function powerpressadmin_community_highlighted($items=8)
 	}
 	else
 	{
-	
-		while( list($null,$item) = each($rss_items) )
+		foreach( $rss_items as $null=> $item)
 		{
 			echo '<li>';
 			echo '<a class="rsswidget" href="'.esc_url( $item->get_permalink(), $protocolls=null, 'display' ).'" target="_blank">'. esc_html( $item->get_title() ) .'</a>';

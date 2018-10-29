@@ -57,7 +57,7 @@ function powerpress_get_program_title_by_taxonomy($term_id, $taxonomy = 'categor
 		{
 			$Feeds = $General['custom_cat_feeds'];
 			// Walk through the categories...
-			while( list($null, $cat_id) = each($Feeds) )
+			foreach( $Feeds as $null=> $cat_id )
 			{
 				$FeedSettings = get_option('powerpress_cat_feed_'.$cat_id);
 				if( !empty($FeedSettings['title']) )
@@ -70,7 +70,7 @@ function powerpress_get_program_title_by_taxonomy($term_id, $taxonomy = 'categor
 			if( !empty($PowerPressTaxonomies) )
 			{
 				$query_in = '';
-				while( list($tt_id, $null) = each($PowerPressTaxonomies) )
+				foreach( $PowerPressTaxonomies as $tt_id=> $null )
 				{
 					if( !empty($query_in) )
 							$query_in .= ',';
@@ -81,7 +81,7 @@ function powerpress_get_program_title_by_taxonomy($term_id, $taxonomy = 'categor
 				{
 					$terms = $wpdb->get_results("SELECT term_taxonomy_id, term_id, taxonomy FROM {$wpdb->term_taxonomy} WHERE term_taxonomy_id IN ($query_in)",  ARRAY_A);
 				
-					while( list($index,$term_info) = each($terms) )
+					foreach( $terms as $index=> $term_info )
 					{
 						// TODO: We need to get term by the term_id and taxonomy
 						$FeedSettings = powerpress_get_settings('powerpress_taxonomy_'.$term_info['term_taxonomy_id']);
@@ -165,7 +165,7 @@ function powerpress_playlist_episodes($args)
 		// First santity check make sure we are only working with numbers....
 		if( preg_match('/^[0-9,\s]*$/', $args['ids']) ) {
 			$ids	= explode(',', preg_replace('/(\s)/', '', $args['ids']) );
-			while( list($index,$id) = each($ids) ) {
+			foreach( $ids as $index=> $id ) {
 				if( empty($id) )	
 					continue;
 				if( !empty($for_query) )
@@ -191,7 +191,7 @@ function powerpress_playlist_episodes($args)
 	$results_data = $wpdb->get_results($query, ARRAY_A);
 	if( $results_data )
 	{
-		while( list($null,$row) = each($results_data) )
+		foreach( $results_data as $null=> $row )
 		{
 			if( empty($row['meta_value']) )
 				continue;
@@ -223,7 +223,7 @@ function powerpress_underscore_playlist_templates() {
 		<# } #>
 		<# if ( data.meta.link ) { #>
 		<span class="wp-playlist-item-meta wp-playlist-item-title"><a href="{{ data.meta.link }}" rel="nofollow">{{ data.title }}</a></span>
-		<# } else { #>
+		<# } else if ( data.title ) { #>
 		<span class="wp-playlist-item-meta wp-playlist-item-title">{{ data.title }}</span>
 		<# } #>
 		<# if ( data.meta.date ) { #><span class="wp-playlist-item-meta wp-playlist-item-artist">{{ data.meta.date }}</span><# } #>
@@ -234,7 +234,9 @@ function powerpress_underscore_playlist_templates() {
 	<div class="wp-playlist-item">
 		<a class="wp-playlist-caption" href="{{ data.src }}">
 				<!-- <span class="wp-playlist-item-title">&#8220;{{{ data.title }}}&#8221;</span> -->
+				<# if ( data.title ) { #>
 				<span class="wp-playlist-item-title">{{ data.title }}</span>
+				<# } #>
 				<# if ( data.meta.date ) { #>
 				<span class="wp-playlist-item-artist"> &mdash; {{ data.meta.date }}</span>
 				<# } #>
@@ -312,7 +314,7 @@ function powerpress_playlist_shortcode( $attr ) {
 		'term_taxonomy_id'=>'', // Used for PowerPress Playlist (specify term_taxonomy_id)
 		'program_titles_by_taxonomy'=>'', // e.g. category
 		'date'	=> true,  // Display the date
-		'title'	=> true, // Dislay the title of program
+		'title'	=> true, // Dislay the title of episode
 		'links'=>true, // Link to episode page
 		'slug' => '', // Used for PowerPress Playlist
 		'feed' => '', // Used for PowerPress Playlist
@@ -335,6 +337,7 @@ function powerpress_playlist_shortcode( $attr ) {
 	$images = filter_var( $images, FILTER_VALIDATE_BOOLEAN );
 	$links = filter_var( $links, FILTER_VALIDATE_BOOLEAN );
 	$itunes_subtitle = filter_var( $itunes_subtitle, FILTER_VALIDATE_BOOLEAN );
+	$episode_title = filter_var( $title, FILTER_VALIDATE_BOOLEAN );
 	$date = filter_var( $date, FILTER_VALIDATE_BOOLEAN );
 	
 	if( empty($slug) && !empty($feed) ) 
@@ -420,6 +423,10 @@ function powerpress_playlist_shortcode( $attr ) {
 			'description' => $episode['post_title']
 		);
 		
+		if( empty($episode_title) ) {
+			$track['title'] = ''; 
+		}
+		
 		//$image = false;
 		$episode_image = $image;
 		if( $images && !empty($episode['enclosure']['image']) )
@@ -444,7 +451,8 @@ function powerpress_playlist_shortcode( $attr ) {
 				$track['meta']['program_title'] = powerpress_get_program_title_by_taxonomy($ObjectTerms[0]->term_id, $program_titles_by_taxonomy);
 			}
 		}
-		$track['meta']['title'] = $episode['post_title'];
+		if( !empty($episode_title) )
+			$track['meta']['title'] = $episode['post_title'];
 		if( !empty($itunes_subtitle) && !empty($episode['enclosure']['subtitle']) )
 			$track['meta']['itunes_subtitle'] = $episode['enclosure']['subtitle'];
 		$track['meta']['genre'] = 'Podcast';

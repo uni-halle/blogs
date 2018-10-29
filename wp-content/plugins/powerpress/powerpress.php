@@ -2,12 +2,12 @@
 /*
 Plugin Name: Blubrry PowerPress
 Plugin URI: http://create.blubrry.com/resources/powerpress/
-Description: <a href="http://create.blubrry.com/resources/powerpress/" target="_blank">Blubrry PowerPress</a> is the No. 1 Podcasting plugin for WordPress. Developed by podcasters for podcasters; features include Simple and Advanced modes, multiple audio/video player options, subscribe to podcast tools, podcast SEO features, and more! Fully supports iTunes, Google Play, Stitcher, and Blubrry Podcasting directories, as well as all podcast applications and clients.
-Version: 7.2
+Description: <a href="http://create.blubrry.com/resources/powerpress/" target="_blank">Blubrry PowerPress</a> is the No. 1 Podcasting plugin for WordPress. Developed by podcasters for podcasters; features include Simple and Advanced modes, multiple audio/video player options, subscribe to podcast tools, podcast SEO features, and more! Fully supports Apple Podcasts (previously iTunes), Google Podcasts, Spotify, Stitcher, and Blubrry Podcasting directories, as well as all podcast applications and clients.
+Version: 7.4
 Author: Blubrry
 Author URI: http://www.blubrry.com/
 Requires at least: 3.6
-Tested up to: 4.8.1
+Tested up to: 4.9.9
 Text Domain: powerpress
 Change Log:
 	Please see readme.txt for detailed change log.
@@ -32,7 +32,7 @@ if( !function_exists('add_action') )
 	die("access denied.");
 	
 // WP_PLUGIN_DIR (REMEMBER TO USE THIS DEFINE IF NEEDED)
-define('POWERPRESS_VERSION', '7.2' );
+define('POWERPRESS_VERSION', '7.4' );
 
 // Translation support:
 if ( !defined('POWERPRESS_ABSPATH') )
@@ -189,7 +189,7 @@ function powerpress_content($content)
 	$Temp = $GeneralSettings['custom_feeds'];
 	$GeneralSettings['custom_feeds'] = array();
 	$GeneralSettings['custom_feeds']['podcast'] = 'Default Podcast Feed';
-	while( list($feed_slug, $feed_title) = each($Temp) )
+	foreach( $Temp as $feed_slug=> $feed_title )
 	{
 		if( $feed_slug == 'podcast' )
 			continue;
@@ -219,7 +219,7 @@ function powerpress_content($content)
 				}; break;
 			}
 			
-			while( list($feed_slug, $postTypeSettings) = each($PostTypeSettingsArray) )
+			foreach( $PostTypeSettingsArray as $feed_slug=> $postTypeSettings )
 			{
 				if( !empty( $postTypeSettings['title']) )
 					$GeneralSettings['custom_feeds'][ $feed_slug ] = $postTypeSettings['title'];
@@ -258,7 +258,7 @@ function powerpress_content($content)
 	{
 		if( isset($matches[3]) )
 		{
-			while( list($key,$row) = each($matches[3]) )
+			foreach( $matches[3] as $key=> $row )
 			{
 				$attributes = shortcode_parse_atts($row);
 				if( isset($attributes['url']) )
@@ -281,7 +281,7 @@ function powerpress_content($content)
 	
 	// LOOP HERE TO DISPLAY EACH MEDIA TYPE
 	$new_content = '';
-	while( list($feed_slug,$feed_title) = each($GeneralSettings['custom_feeds']) )
+	foreach( $GeneralSettings['custom_feeds'] as $feed_slug=> $feed_title )
 	{
 		// Get the enclosure data
 		$EpisodeData = powerpress_get_enclosure_data($post->ID, $feed_slug);
@@ -306,13 +306,9 @@ function powerpress_content($content)
 			}
 			else
 			{
-				if( !isset($EpisodeData['no_links']) || ($GeneralSettings['player_function'] != 3 && $GeneralSettings['player_function'] != 0) )
-				{
-					do_action('wp_powerpress_player_scripts');
-				}
-				
 				if( $GeneralSettings['player_function'] != 3 && $GeneralSettings['player_function'] != 0 ) // Play in new window only or disabled
 				{
+					do_action('wp_powerpress_player_scripts');
 					$AddDefaultPlayer = empty($EpisodeData['no_player']);
 					
 					if( $EpisodeData && !empty($EpisodeData['embed']) )
@@ -333,6 +329,7 @@ function powerpress_content($content)
 				}
 				
 				if( !isset($EpisodeData['no_links']) ) {
+					do_action('wp_powerpress_player_scripts');
 					$new_content .= apply_filters('powerpress_player_links', '',  powerpress_add_flag_to_redirect_url($EpisodeData['url'], 'p'), $EpisodeData );
 					$new_content .= apply_filters('powerpress_player_subscribe_links', '',  powerpress_add_flag_to_redirect_url($EpisodeData['url'], 'p'), $EpisodeData );
 				}
@@ -418,7 +415,7 @@ function powerpress_pinw(pinw_url){window.open(pinw_url, 'PowerPressPlayer','too
 	if( !empty($Powerpress['feed_links']) )
 	{
 		// Loop through podcast feeds and display them here 
-		while( list($feed_slug, $title) = each($Powerpress['custom_feeds']) )
+		foreach( $Powerpress['custom_feeds'] as $feed_slug=> $title )
 		{
 			$href = get_feed_link($feed_slug);
 			if ( isset($title) && isset($href) )
@@ -746,7 +743,7 @@ function powerpress_rss2_head()
 		if( !empty($Feed['donate_link']) && !empty($Feed['donate_url']) )
 			echo "\t<rawvoice:donate href=\"". htmlspecialchars( $Feed['donate_url'] ) ."\">". htmlspecialchars( (empty($Feed['donate_label'])?'':$Feed['donate_label']) ) ."</rawvoice:donate>".PHP_EOL;	
 		
-		if( !empty($Feed['itunes_url']) || !empty($Feed['googleplay_url']) || !empty($Feed['blubrry_url']) || !empty($Feed['stitcher_url']) || !empty($Feed['tunein_url']) ) {
+		if( !empty($Feed['itunes_url']) || !empty($Feed['blubrry_url']) || !empty($Feed['stitcher_url']) || !empty($Feed['tunein_url']) || !empty($Feed['spotify_url']) ) {
 			echo "\t<rawvoice:subscribe feed=\"";
 			self_link();
 			echo '"';
@@ -763,14 +760,14 @@ function powerpress_rss2_head()
 			
 			if( !empty($Feed['itunes_url']) )
 				echo " itunes=\"". htmlspecialchars( $Feed['itunes_url'] ) .'"';
-			if( !empty($Feed['googleplay_url']) )
-				echo " googleplay=\"". htmlspecialchars( $Feed['googleplay_url'] ) .'"';
 			if( !empty($Feed['blubrry_url']) )
 				echo " blubrry=\"". htmlspecialchars( $Feed['blubrry_url'] ) .'"';
 			if( !empty($Feed['stitcher_url']) )
 				echo " stitcher=\"". htmlspecialchars( $Feed['stitcher_url'] ) .'"';
 			if( !empty($Feed['tunein_url']) )
 				echo " tunein=\"". htmlspecialchars( $Feed['tunein_url'] ) .'"';
+			if( !empty($Feed['spotify_url']) )
+				echo " spotify=\"". htmlspecialchars( $Feed['spotify_url'] ) .'"';
 			echo "></rawvoice:subscribe>".PHP_EOL;	
 		}
 	}
@@ -1250,18 +1247,6 @@ function powerpress_the_title_rss($title)
 			}
 		}
 	}
-	
-	if( !empty($GeneralSettings['seo_append_show_title']) )
-	{
-		$title_of_program = get_wp_title_rss();
-		
-		if( defined('POWERPRESS_APPEND_SHOW_TITLE_SEPARATOR') && POWERPRESS_APPEND_SHOW_TITLE_SEPARATOR )
-			$new_title .= ' '. POWERPRESS_APPEND_SHOW_TITLE_SEPARATOR .' '.$title_of_program;
-		else if( defined('POWERPRESS_APPEND_SHOW_TITLE_SEPARATOR') )
-			$new_title .= ' '.$title_of_program;
-		else
-			$new_title .= ' - '.$title_of_program;
-	}
 
 	return $new_title;
 }
@@ -1365,9 +1350,9 @@ function powerpress_template_redirect()
 		if( is_array($powerpress_feed) && trim($powerpress_feed['feed_redirect_url']) != '' && !preg_match("/feedburner|feedsqueezer|feedvalidator/i", $_SERVER['HTTP_USER_AGENT'] ) && $redirect_value != 'no' )
 		{
 			if (function_exists('status_header'))
-				status_header( 302 );
+				status_header( 301 );
 			header("Location: " . trim($powerpress_feed['feed_redirect_url']));
-			header("HTTP/1.1 302 Temporary Redirect");
+			header("HTTP/1.1 301 Moved Permanently");
 			exit();
 		}
 	}
@@ -1386,7 +1371,7 @@ function powerpress_rewrite_rules_array($array)
 		$podcast_feeds = array_merge($settings['custom_feeds'], $podcast_feeds );
 	
 	$merged_slugs = '';
-	while( list($feed_slug, $feed_title) = each($podcast_feeds) )
+	foreach( $podcast_feeds as $feed_slug=> $feed_title )
 	{
 		if( $merged_slugs != '' )
 			$merged_slugs .= '|';
@@ -1402,7 +1387,7 @@ function powerpress_rewrite_rules_array($array)
 	
 	global $wpdb;
 	reset($podcast_feeds);
-	while( list($feed_slug, $feed_title) = each($podcast_feeds) )
+	foreach( $podcast_feeds as $feed_slug=> $feed_title )
 	{
 		$page_name_id = $wpdb->get_var("SELECT ID FROM {$wpdb->posts} WHERE post_name = '".$feed_slug."'");
 		if( $page_name_id )
@@ -1424,7 +1409,7 @@ function powerpress_rewrite_rules_array($array)
 	{
 		reset($podcast_feeds);
 		$remaining_slugs = '';
-		while( list($feed_slug, $feed_title) = each($podcast_feeds) )
+		foreach( $podcast_feeds as $feed_slug=> $feed_title )
 		{
 			if( $remaining_slugs != '' )
 				$remaining_slugs .= '|';
@@ -1449,7 +1434,7 @@ function powerpress_pre_transient_rewrite_rules($return_rules)
 	
 	if( $GeneralSettings && isset($GeneralSettings['custom_feeds']) && is_array($GeneralSettings['custom_feeds']) )
 	{
-		while( list($feed_slug,$null) = each($GeneralSettings['custom_feeds']) )
+		foreach( $GeneralSettings['custom_feeds'] as $feed_slug=> $null )
 		{
 			if( !in_array($feed_slug, $wp_rewrite->feeds) )
 				$wp_rewrite->feeds[] = $feed_slug;
@@ -1499,7 +1484,7 @@ function powerpress_init()
 	
 	if( $GeneralSettings && isset($GeneralSettings['custom_feeds']) && is_array($GeneralSettings['custom_feeds']) )
 	{
-		while( list($feed_slug,$feed_title) = each($GeneralSettings['custom_feeds']) )
+		foreach( $GeneralSettings['custom_feeds'] as $feed_slug=> $feed_title )
 		{
 			if( $feed_slug != 'podcast' )
 				add_feed($feed_slug, 'powerpress_do_podcast_feed');
@@ -1528,12 +1513,12 @@ function powerpress_init()
 		{
 			$FeedSlugPostTypesArray = array();
 		}
-		while( list($feed_slug, $FeedSlugPostTypes) = each($FeedSlugPostTypesArray) )
+		foreach( $FeedSlugPostTypesArray as $feed_slug=> $FeedSlugPostTypes )
 		{
 			if ( !in_array($feed_slug, $wp_rewrite->feeds) ) // we need to add this feed name
 			{
 				add_feed($feed_slug, 'powerpress_do_podcast_feed');
-				while( list($post_type_slug, $title) = each($FeedSlugPostTypes) )
+				foreach( $FeedSlugPostTypes as $post_type_slug=> $title )
 				{
 					add_rewrite_rule( '/'. $post_type_slug .'/feed/'. $feed_slug .'/?$', 'index.php?post_type='. $post_type_slug .'&feed='.$feed_slug, 'top' ); // capture the post type feeds
 					add_rewrite_rule( '/'. $post_type_slug .'/feed/'. $feed_slug .'/?$', 'index.php?post_type='. $post_type_slug .'&feed='.$feed_slug, 'bottom' ); // capture the post type feeds
@@ -1560,6 +1545,15 @@ function powerpress_init()
 			array(), 
 			'20141021', 
 			'all' );
+	
+	if( !empty($GeneralSettings['rss_emoji']) ) {
+		if( has_filter('the_content_feed',   'wp_staticize_emoji') ) {
+			remove_filter( 'the_content_feed', 'wp_staticize_emoji' ); // Remove the emoji images
+			remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+			//add_filter( 'the_content_feed', 'wp_encode_emoji' ); // Convert an emoji to &#x1Fxxx;
+			//add_filter( 'get_wp_title_rss', 'wp_encode_emoji' );
+		}
+	}
 }
 
 add_action('init', 'powerpress_init', -100); // We need to add the feeds before other plugins start screwing with them
@@ -1601,9 +1595,9 @@ function powerpress_request($qv)
 		
 		if( $podcast_feed_slug )
 		{
-			if( $qv['feed'] == 'podcast' )
+			if( !defined('POWERPRESS_POSTTYPE_MIXING') && $qv['feed'] == 'podcast' ) {
 				$qv['post_type'] = 'post';
-			else {
+			} else {
 				$qv['post_type'] = get_post_types( array('public'=> true, 'capability_type'=>'post') );
 				if( !empty($qv['post_type']['attachment']) )
 					unset($qv['post_type']['attachment']);
@@ -2166,7 +2160,7 @@ function get_the_powerpress_content()
 	$GeneralSettings['custom_feeds'] = array();
 	$GeneralSettings['custom_feeds']['podcast'] = 'Default Podcast Feed';
 	
-	while( list($feed_slug, $feed_title) = each($Temp) )
+	foreach( $Temp as $feed_slug=> $feed_title )
 	{
 		if( $feed_slug == 'podcast' )
 			continue;
@@ -2196,7 +2190,7 @@ function get_the_powerpress_content()
 				}; break;
 			}
 			
-			while( list($feed_slug, $postTypeSettings) = each($PostTypeSettingsArray) )
+			foreach( $PostTypeSettingsArray as $feed_slug=> $postTypeSettings )
 			{
 				if( !empty( $postTypeSettings['title']) )
 					$GeneralSettings['custom_feeds'][ $feed_slug ] = $postTypeSettings['title'];
@@ -2220,7 +2214,7 @@ function get_the_powerpress_content()
 	
 	// LOOP HERE TO DISPLAY EACH MEDIA TYPE
 	$new_content = '';
-	while( list($feed_slug,$feed_title) = each($GeneralSettings['custom_feeds']) )
+	foreach( $GeneralSettings['custom_feeds'] as $feed_slug=> $feed_title )
 	{
 		// Get the enclosure data
 		$EpisodeData = powerpress_get_enclosure_data($post->ID, $feed_slug);
@@ -2245,13 +2239,9 @@ function get_the_powerpress_content()
 			}
 			else
 			{
-				if( !isset($EpisodeData['no_links']) || ($GeneralSettings['player_function'] != 3 && $GeneralSettings['player_function'] != 0) )
-				{
-					do_action('wp_powerpress_player_scripts');
-				}
-				
 				if( $GeneralSettings['player_function'] != 3 && $GeneralSettings['player_function'] != 0 ) // Play in new window only or disabled
 				{
+					do_action('wp_powerpress_player_scripts');
 					$AddDefaultPlayer = empty($EpisodeData['no_player']);
 					
 					if( $EpisodeData && !empty($EpisodeData['embed']) )
@@ -2279,6 +2269,7 @@ function get_the_powerpress_content()
 				
 				if( !isset($EpisodeData['no_links']) )
 				{
+					do_action('wp_powerpress_player_scripts');
 					$new_content .= apply_filters('powerpress_player_links', '',  powerpress_add_flag_to_redirect_url($EpisodeData['url'], 'p'), $EpisodeData );
 					$new_content .= apply_filters('powerpress_player_subscribe_links', '',  powerpress_add_flag_to_redirect_url($EpisodeData['url'], 'p'), $EpisodeData );
 				}
@@ -2492,7 +2483,7 @@ function powerpress_itunes_categories($PrefixSubCategories = false)
 
 	if( $PrefixSubCategories )
 	{
-		while( list($key,$val) = each($temp) )
+		foreach( $temp as $key=> $val )
 		{
 			$parts = explode('-', $key);
 			$cat = $parts[0];
@@ -2782,7 +2773,9 @@ function powerpress_add_redirect_url($MediaURL, $EpisodeData = false) // $channe
 			} else if( is_single() ) {
 				$categories = wp_get_post_categories( get_the_ID() );
 				if( count($categories) == 1 ) { // See if only one category is associated with this post
-					list($null,$cat_id) = each($categories);
+					foreach( $categories as $null=> $cat_id ) {
+						break;
+					}
 					$FeedCatSettings = get_option('powerpress_cat_feed_'.$cat_id );
 					if( $FeedCatSettings && !empty($FeedCatSettings['redirect']) ) {
 						$Redirects['redirect0'] = $FeedCatSettings['redirect'];
@@ -2852,7 +2845,7 @@ function powerpress_add_redirect_url($MediaURL, $EpisodeData = false) // $channe
 				$ttid_found = 0;
 				$TaxonomySettings = false;
 				
-				while( list($index,$termObj) = each($terms) )
+				foreach( $terms as $index=> $termObj )
 				{
 					// Skip the default taxonomies
 					if( $termObj->taxonomy == 'category' || $termObj->taxonomy == 'link_category' || $termObj->taxonomy == 'post_tag' || $termObj->taxonomy == 'nav_menu' )
@@ -2904,7 +2897,7 @@ function powerpress_add_redirect_url($MediaURL, $EpisodeData = false) // $channe
 				$ValidRedirectDomainsPattern = '/^(media\.blubrry\.com|media\.rawvoice\.com|media\.techpodcasts\.com|.*\.podtrac\.com|traffic\.cast\.plus)$/';
 				if( $URLScheme == 'https://' ) {
 					$ValidRedirectDomains = array('media.blubrry.com', 'media.rawvoice.com', 'www.podtrac.com', 'podtrac.com'); // Only URLs that support https:// to an https:// media file
-					$ValidRedirectDomainsPattern = '/^(media\.blubrry\.com|media\.rawvoice\.com|.*\.podtrac\.com)$/';
+					$ValidRedirectDomainsPattern = '/^(media\.blubrry\.com|media\.rawvoice\.com|.*\.podtrac\.com|traffic\.cast\.plus)$/';
 				}
 				
 				$RedirectDomain = strtolower(substr($RedirectClean, 0, strpos($RedirectClean, '/') ));
@@ -2992,7 +2985,7 @@ function powerpress_merge_empty_feed_settings($CustomFeedSettings, $FeedSettings
 	if( !$CustomFeedSettings )
 		return $FeedSettings; // If the $CustomFeedSettings is false
  
-	while( list($key,$value) = each($CustomFeedSettings) )
+	foreach( $CustomFeedSettings as $key=> $value )
 	{
 		if( $value !== '' || !isset($FeedSettings[$key]) )
 			$FeedSettings[$key] = $value;
@@ -3075,6 +3068,11 @@ function powerpress_repair_serialize($string)
 	return $string;
 }
 
+
+function powerpress_base64_encode($value)
+{
+	return rtrim(strtr(base64_encode($value), '+/', '-_'), '='); 
+}
 /*
 	powerpress_get_post_meta()
 	Safe function to retrieve corrupted PodPress data from the database
@@ -3158,7 +3156,7 @@ function powerpress_get_enclosure_data($post_id, $feed_slug = 'podcast', $raw_da
 		$ExtraData = @unserialize($Serialized);
 		if( $ExtraData && is_array($ExtraData) )
 		{
-			while( list($key,$value) = each($ExtraData) ) {
+			foreach( $ExtraData as $key=> $value ) {
 				
 				// Make sure specific fields are not overwritten...
 				switch( $key ) {
@@ -3341,7 +3339,7 @@ function get_the_powerpress_all_players($slug = false, $no_link=false)
 	{
 		if( isset($GeneralSettings['custom_feeds']['podcast']) )
 			$ChannelSlugs = array(); // Reset the array so it is added from the list in specified order
-		while( list($feed_slug,$null) = each($GeneralSettings['custom_feeds']) )
+		foreach( $GeneralSettings['custom_feeds'] as $feed_slug=> $null )
 			$ChannelSlugs[] = $feed_slug;
 	}
 	else if( is_array($slug) )
@@ -3358,7 +3356,7 @@ function get_the_powerpress_all_players($slug = false, $no_link=false)
 	{
 		the_post();
 		
-		while( list($null,$feed_slug) = each($ChannelSlugs) )
+		foreach( $ChannelSlugs as $null=> $feed_slug )
 		{
 			// Do we follow the global settings to disable a player?
 			if( isset($GeneralSettings['disable_player']) && isset($GeneralSettings['disable_player'][$feed_slug]) && $slug == false )
@@ -3385,17 +3383,14 @@ function get_the_powerpress_all_players($slug = false, $no_link=false)
 				continue;
 			}
 			
-			if( !isset($EpisodeData['no_links']) || (!isset($EpisodeData['no_player']) && $AddDefaultPlayer) )
-			{
-				do_action('wp_powerpress_player_scripts');
-			}
-				
 			if( !isset($EpisodeData['no_player']) && $AddDefaultPlayer )
 			{
+				do_action('wp_powerpress_player_scripts');
 				$return .= apply_filters('powerpress_player', '', powerpress_add_flag_to_redirect_url($EpisodeData['url'], 'p'), $EpisodeData );
 			}
 			if( !isset($EpisodeData['no_links']) && $no_link == false )
 			{
+				do_action('wp_powerpress_player_scripts');
 				$return .= apply_filters('powerpress_player_links', '',  powerpress_add_flag_to_redirect_url($EpisodeData['url'], 'p'), $EpisodeData );
 				$return .= apply_filters('powerpress_player_subscribe_links', '',  powerpress_add_flag_to_redirect_url($EpisodeData['url'], 'p'), $EpisodeData );
 			}
@@ -3501,7 +3496,7 @@ function powerpress_in_wp_head()
 	$trace = $e->getTrace();
 	
 	if( !empty($trace) ) {
-		while( list($index,$call) = each($trace) ) {
+		foreach( $trace as $index=> $call ) {
 			if( isset($call['function']) ) {
 				// Which calls should we not add the player and links...
 				switch( $call['function'] ) {
@@ -3522,8 +3517,8 @@ function powerpress_in_custom_post_widget()
 	$trace = $e->getTrace();
 	
 	if( !empty($trace) ) {
-		//var_dump($trace);
-		while( list($index,$call) = each($trace) ) {
+		
+		foreach( $trace as $index=> $call ) {
 			if( isset($call['function']) ) {
 				// Which calls should we not add the player and links...
 				switch( $call['function'] ) {

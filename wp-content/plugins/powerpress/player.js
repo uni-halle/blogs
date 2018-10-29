@@ -1,13 +1,14 @@
 /** 
- * jsMediaPlayer 1.6.0 for Blubrry PowerPress
+ * jsMediaPlayer 1.7.0 for Blubrry PowerPress
  * 
  * http://www.blubrry.com/powepress/
  *
- * Copyright (c) 2008-2017 Angelo Mandato (angelo [at] mandato {period} com)
+ * Copyright (c) 2008-2018 Angelo Mandato (angelo [at] mandato {period} com)
  *
  * Released under Aoache 2 license:
  * http://www.apache.org/licenses/LICENSE-2.0
  *
+ * version 1.1.0 - 09/29/2018 - Added skip to position in player code
  * version 1.6.0 - 06/14/2017 - Added code to deal with IE/Edge preloading media for the mediaelement.js player. Removed windows media player support.
  * version 1.5.0 - 04/23/2016 - Removed pp_embed_quicktime function (Preventive measure due to security issues with Quicktime) and removed pp_embed_swf, and show embed function enhanced to toggle.
  * version 1.4.0 - 09/08/2015 - Removed the pp_flashembed function (we are no longer using flash for fallback).
@@ -177,4 +178,22 @@ function powerpress_onload() {
 
 if ( window.navigator.userAgent.match( /(MSIE|Edge|Trident)\//i )	!== null && window.addEventListener) {
 	window.addEventListener('load', powerpress_onload, false);
+}
+
+function powerpress_stp(e) {
+	e.preventDefault();
+	var ct = e.currentTarget;
+	var p= ( ct.hasAttribute("data-pp-stp") ? ct.getAttribute("data-pp-stp") : 0 ),
+	play =( ct.hasAttribute("data-pp-player") ? ct.getAttribute("data-pp-player") : '' );
+	if( play == '' ) return;
+	var d = document.getElementById(play);
+	if( d === null ) return;
+	if( d.tagName == 'AUDIO' || d.tagName == 'MEDIAELEMENTWRAPPER' ) {
+		d.currentTime=p;
+		d.play();
+	} else if( d.tagName == 'IFRAME' ) {
+		d.contentWindow.postMessage(p,'*');
+	}
+	
+	return false;
 }

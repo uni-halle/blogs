@@ -160,7 +160,7 @@ function powerpress_dashboard_stats_content()
 	{
 		$success = false;
 		$api_url_array = powerpress_get_api_array();
-		while( list($index,$api_url) = each($api_url_array) )
+		foreach( $api_url_array as $index=> $api_url )
 		{
 			$req_url = sprintf('%s/stats/%s/summary.html?nobody=1', rtrim($api_url, '/'), $Keyword);
 			$req_url .= (defined('POWERPRESS_BLUBRRY_API_QSA')?'&'. POWERPRESS_BLUBRRY_API_QSA:'');

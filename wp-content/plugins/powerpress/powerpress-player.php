@@ -32,6 +32,8 @@ Initialize powerpress player handling
 */
 function powerpressplayer_init($GeneralSettings)
 {
+	add_shortcode('skipto', 'powerpress_shortcode_skipto'); // skipto shortcode
+	
 	if( !empty($GeneralSettings['seo_video_objects']) )
 		add_filter('powerpress_player', 'powerpressplayer_mediaobjects_video', 1, 3); // Before everythign is added
 	if( !empty($GeneralSettings['seo_audio_objects']) )
@@ -53,7 +55,6 @@ function powerpressplayer_init($GeneralSettings)
 	{
 		add_shortcode('display_podcast', 'powerpress_shortcode_handler');
 	}
-	
 	/*
 	// include what's needed for each plaer
 	if( defined('POWERPRESS_JS_DEBUG') )
@@ -153,11 +154,13 @@ function powerpress_shortcode_handler( $attributes, $content = null )
 		}
 		else
 		{
-			do_action('wp_powerpress_player_scripts');
 			// If the shortcode specifies a channel, than we definitely want to include the player even if $EpisodeData['no_player'] is true...
-			if( !isset($EpisodeData['no_player']) )
+			if( !isset($EpisodeData['no_player']) ) {
+				do_action('wp_powerpress_player_scripts');
 				$return = apply_filters('powerpress_player', '', powerpress_add_flag_to_redirect_url($EpisodeData['url'], 'p'), array('id'=>$post->ID,'feed'=>$channel, 'channel'=>$channel, 'image'=>$image, 'type'=>$EpisodeData['type'],'width'=>$width, 'height'=>$height) );
+			}
 			if( empty($EpisodeData['no_links']) ) {
+				do_action('wp_powerpress_player_scripts');
 				$return .= apply_filters('powerpress_player_links', '',  powerpress_add_flag_to_redirect_url($EpisodeData['url'], 'p'), $EpisodeData );
 				$return .= apply_filters('powerpress_player_subscribe_links', '',  powerpress_add_flag_to_redirect_url($EpisodeData['url'], 'p'), $EpisodeData );
 			}
@@ -189,7 +192,7 @@ function powerpress_shortcode_handler( $attributes, $content = null )
 					};
 				}
 				
-				while( list($feed_slug, $postTypeSettings) = each($PostTypeSettingsArray) )
+				foreach( $PostTypeSettingsArray as $feed_slug => $postTypeSettings )
 				{
 					if( !empty( $postTypeSettings['title']) )
 						$GeneralSettings['custom_feeds'][ $feed_slug ] = $postTypeSettings['title'];
@@ -199,7 +202,7 @@ function powerpress_shortcode_handler( $attributes, $content = null )
 			}
 		}
 	
-		while( list($feed_slug,$feed_title)  = each($GeneralSettings['custom_feeds']) )
+		foreach( $GeneralSettings['custom_feeds'] as $feed_slug => $feed_title )
 		{
 			if( isset($GeneralSettings['disable_player']) && isset($GeneralSettings['disable_player'][$feed_slug]) )
 				continue;
@@ -735,6 +738,7 @@ function powerpressplayer_mediaobjects($type, $content, $media_url, $EpisodeData
 		$addhtml .= '<meta itemprop="name" content="'.  htmlspecialchars($post_title) .'" />'.PHP_EOL_WEB;
 	}
 	
+	$addhtml .= '<meta itemprop="uploadDate" content="'. get_the_date('c') .'" />'.PHP_EOL_WEB;
 	$addhtml .= '<meta itemprop="encodingFormat" content="'. powerpress_get_contenttype($media_url) .'" />'.PHP_EOL_WEB;
 	if( !empty($EpisodeData['duration']) ) {
 		$addhtml .= '<meta itemprop="duration" content="'. powerpress_iso8601_duration($EpisodeData['duration']) .'" />'.PHP_EOL_WEB; // http://en.wikipedia.org/wiki/ISO_8601#Durations
@@ -1029,9 +1033,7 @@ function powerpress_do_pinw($pinw, $process_podpress)
 	<title><?php echo __('Blubrry PowerPress Player', 'powerpress'); ?></title>
 	<meta name="robots" content="noindex" />
 <?php 
-	
 	do_action('wp_powerpress_player_scripts');
-
 ?>
 <style type="text/css">
 body { font-size: 13px; font-family: Arial, Helvetica, sans-serif; /* width: 100%; min-height: 100%; } html { height: 100%; */ }
@@ -1251,7 +1253,7 @@ function powerpressplayer_build_mediaelementvideo($media_url, $EpisodeData=array
 		$shortcode = wp_video_shortcode( $attr );
 	} else {
 		$shortcode_value = '[video ';
-		while( list($tag_name,$tag_value) = each($attr) ) {
+		foreach( $attr as $tag_name => $tag_value ) {
 			$shortcode_value .= ' '.$tag_name.'="'. esc_attr($tag_value) .'"';
 		}
 		$shortcode_value .= ']';
@@ -1334,6 +1336,9 @@ function powerpressplayer_build_html5audio($media_url, $EpisodeData=array(), $em
 */
 function powerpressplayer_build_blubrryaudio($media_url, $EpisodeData=array(), $embed = false )
 {
+	static $instance = 0;
+	$instance++;
+	
 	// media URL is all we need., as long as it's hosted at blubrry.com...
 	if( preg_match('/content\.blubrry\.com/', $media_url) )
 	{
@@ -1347,9 +1352,9 @@ function powerpressplayer_build_blubrryaudio($media_url, $EpisodeData=array(), $
             $hash = '#'.$hash;
         }
 		if( !empty($EpisodeData['episode_id']) ) {
-			$url = '//player.blubrry.com/?podcast_id='. intval($EpisodeData['episode_id']);
+			$url = 'https://player.blubrry.com/?podcast_id='. intval($EpisodeData['episode_id']);
 		} else {
-			$url = '//player.blubrry.com/?media_url='. urlencode($media_url);
+			$url = 'https://player.blubrry.com/?media_url='. urlencode($media_url);
 			if( !empty($EpisodeData['id']) ) {
 				// Get permalink URL
 				$permalink = get_permalink( $EpisodeData['id'] );
@@ -1364,7 +1369,16 @@ function powerpressplayer_build_blubrryaudio($media_url, $EpisodeData=array(), $
 
 		}
 		$url = $url.$hash;
-		return '<iframe src="'. $url .'" scrolling="no" width="100%" height="138px" frameborder="0"></iframe>';
+		$playerID = sprintf('blubrryplayer-%d', $instance);
+		
+		$feedSlug = 'podcast';
+		if( !empty($EpisodeData['feed']) )
+			$feedSlug = $EpisodeData['feed'];
+		
+		if( empty($GLOBALS['powerpress_skipto_player'][ get_the_ID() ][ $feedSlug ] ) )
+			$GLOBALS['powerpress_skipto_player'][ get_the_ID() ][ $feedSlug ] = $playerID;
+		
+		return '<iframe src="'. $url .'" scrolling="no" width="100%" height="138px" frameborder="0" id="'. $playerID .'"></iframe>';
 	}
 	
 	return powerpressplayer_build_mediaelementaudio($media_url, $EpisodeData, $embed);
@@ -1405,13 +1419,23 @@ function powerpressplayer_build_mediaelementaudio($media_url, $EpisodeData=array
 	
 	// Double check that WordPress is providing the shortcode...
 	global $shortcode_tags;
+	$player = '';
 	if( !defined('POWERPRESS_DO_SHORTCODE') ) { // && !empty($shortcode_tags['audio']) && is_string($shortcode_tags['audio']) && $shortcode_tags['audio'] == 'wp_audio_shortcode' ) {
-		$content .= wp_audio_shortcode( $attr );
+		$player .= wp_audio_shortcode( $attr );
 	} else {
-		$content .= do_shortcode( '[audio src="'.  esc_attr($media_url) .'" autoplay="'. ( $autoplay ?'on':'') .'" loop="" preload="none"]');
+		$player .= do_shortcode( '[audio src="'.  esc_attr($media_url) .'" autoplay="'. ( $autoplay ?'on':'') .'" loop="" preload="none"]');
 	}
 	
-	$content .= '</div>'.PHP_EOL_WEB;
+	// Get the DIV id for this element
+	$feedSlug = 'podcast';
+	if( !empty($EpisodeData['feed']) )
+		$feedSlug = $EpisodeData['feed'];
+		
+	if( empty($GLOBALS['powerpress_skipto_player'][ get_the_ID() ][ $feedSlug ]) && preg_match('/\<audio.*id="([^"]*)"/i', $player, $matches) ) {
+		$GLOBALS['powerpress_skipto_player'][ get_the_ID() ][ $feedSlug ] = $matches[1];
+	}
+	
+	$content .= $player .'</div>'.PHP_EOL_WEB;
 	return $content;
 }
 
@@ -1578,7 +1602,7 @@ function powerpressplayer_build_1pxoutplayer($media_url, $EpisodeData = array())
 	}
 	
 	$flashvars ='';
-	while( list($key,$value) = each($PlayerSettings) )
+	foreach( $PlayerSettings as $key => $value )
 	{
 		$flashvars .= '&amp;'. $key .'='. preg_replace('/\#/','',$value);
 	}
@@ -1682,6 +1706,46 @@ function powerpressplayer_build_videojs($media_url, $EpisodeData = array())
 	}
 
 	return $content;
+}
+
+function powerpress_shortcode_skipto($attributes, $content = null)
+{
+	$pos = '';
+	if( isset($attributes['time']) ) {
+		$pos = $attributes['time'];
+	} else if (isset($attributes['timestamp'])) {
+		$pos = $attributes['timestamp'];
+	} else if (isset($attributes['ts'])) {
+		$pos = $attributes['ts'];
+	}
+	
+	if( empty($pos) )
+		return $content;
+		
+	// Prepare data
+	$timeInSeconds = powerpress_raw_duration($pos);
+	$readableTime = powerpress_readable_duration($timeInSeconds);
+	if( empty($content) )
+		$content = $readableTime;
+	
+	// We can't add players to feeds
+	if( is_feed() )
+		return $content;
+	
+	$feedSlug = 'podcast';
+	if( !empty($attributes['channel']) )
+		$feedSlug = $attributes['channel'];
+	
+	if( empty($GLOBALS['powerpress_skipto_player'][ get_the_ID() ][ $feedSlug ]) ) {
+		if( function_exists('qed_stt_shortcode') ) { // If using the skip to timestamp plugin, we will fall back to it since we are not handling the player...
+			return qed_stt_shortcode($attributes, $content);
+		}
+		
+		return $content;
+	}
+
+	$playerID = $GLOBALS['powerpress_skipto_player'][ get_the_ID() ][ $feedSlug ];
+	return '<a title="'. esc_attr(sprintf(__('Skip to %s', 'powerpress'), $readableTime)) .'" href="'. get_permalink() .'#" onclick="return powerpress_stp(event);" class="powerpress-skip-a" data-pp-stp="'. $timeInSeconds .'" data-pp-player="'. $playerID .'">'. $content .'</a>';
 }
 
 

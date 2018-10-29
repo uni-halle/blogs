@@ -133,7 +133,7 @@ function powerpress_admin_capabilities()
 	$capnames = apply_filters( 'powerpress_admin_capabilities', array_unique($capnames) );
 	
 	$remove_keys = array('level_0', 'level_1', 'level_2', 'level_3', 'level_4', 'level_5', 'level_6', 'level_7', 'level_8', 'level_9', 'level_10');
-	while( list($null,$key) = each($remove_keys) )
+	foreach( $remove_keys as $null=> $key )
 		unset($capnames[ $key ]);
 	asort($capnames);
 	return $capnames;
@@ -252,8 +252,8 @@ function powerpress_admin_editfeed($type='', $type_value = '', $feed_slug = fals
 <div id="powerpress_settings_page" class="powerpress_tabbed_content"> 
   <ul class="powerpress_settings_tabs">
 		<li><a href="#feed_tab_feed"><span><?php echo htmlspecialchars(__('Feed', 'powerpress')); ?></span></a></li>
-		<li><a href="#feed_tab_itunes"><span><?php echo htmlspecialchars(__('iTunes', 'powerpress')); ?></span></a></li>
-		<li><a href="#feed_tab_googleplay"><span><?php echo htmlspecialchars(__('Google Play', 'powerpress')); ?></span></a></li>
+		<li><a href="#feed_tab_itunes"><span><?php echo htmlspecialchars(__('Apple', 'powerpress')); ?></span></a></li>
+		<li><a href="#feed_tab_googleplay"><span><?php echo htmlspecialchars(__('Google', 'powerpress')); ?></span></a></li>
 		<li><a href="#feed_tab_artwork"><span><?php echo htmlspecialchars(__('Artwork', 'powerpress')); ?></span></a></li>
 	<?php if( in_array($FeedAttribs['type'], array('category', 'ttid', 'post_type', 'channel') ) ) { ?>
 		<li><a href="#feed_tab_appearance"><span><?php echo htmlspecialchars(__('Website', 'powerpress')); ?></span></a></li>
@@ -354,6 +354,9 @@ function powerpressadmin_edit_feed_general($FeedSettings, $General)
 	{
 		$warning = __('WARNING: You must create at least one podcast episode for your podcast feed to be valid.', 'powerpress');
 	}
+	
+	if( !isset($FeedSettings['apply_to']) )
+		$FeedSettings['apply_to'] = 1;
 ?>
 <h3><?php echo __('Podcast Feeds', 'powerpress'); ?></h3>
 <table class="form-table">
@@ -391,7 +394,7 @@ function powerpressadmin_edit_feed_general($FeedSettings, $General)
 	else if( isset($General['custom_feeds'])&& is_array($General['custom_feeds']) )
 		$Feeds += $General['custom_feeds'];
 		
-	while( list($feed_slug, $feed_title) = each($Feeds) )
+	foreach( $Feeds as $feed_slug=> $feed_title )
 	{
 		if( empty($feed_title) )
 			$feed_title = $feed_slug;
@@ -421,7 +424,7 @@ function powerpressadmin_edit_feed_general($FeedSettings, $General)
 <th scope="row">
 <?php echo __('Feed Discovery', 'powerpress'); ?></th>
 <td>
-<p style="margin-top: 10px;"><label><input type="checkbox" name="General[feed_links]" value="1" <?php if( !empty($General['feed_links']) && $General['feed_links'] == 1 ) echo 'checked '; ?>/> <?php echo __('Exclude podcast feed links in HTML headers.', 'powerpress'); ?></label></p>
+<p style="margin-top: 10px;"><label><input type="checkbox" name="General[feed_links]" value="1" <?php if( !empty($General['feed_links']) && $General['feed_links'] == 1 ) echo 'checked '; ?>/> <?php echo __('Include podcast feed links in HTML headers.', 'powerpress'); ?></label></p>
 <p><?php echo __('Adds "feed discovery" links to your web site\'s headers allowing web browsers and feed readers to auto-detect your podcast feeds.', 'powerpress'); ?></p>
 </td>
 </tr>
@@ -435,6 +438,26 @@ function powerpressadmin_edit_feed_general($FeedSettings, $General)
 </td>
 </tr>
 
+<tr valign="top">
+<th scope="row">
+<?php echo __('Emoji', 'powerpress'); ?> <?php echo powerpressadmin_new(); ?></th>
+<td>
+<?php
+if( 'utf8mb4' !=  $GLOBALS['wpdb']->charset )
+{
+?>
+<p style="font-weight: bold; color: #CC0000;">
+	<?php 
+		echo __('Emoji may not be supported with your WordPress installation. Please upgrade your database to support utf8mb4 available in WordPress 4.2 and newer.', 'powerpress');
+		?>
+	</p>
+<?php }  ?>
+<input type="hidden" name="General[rss_emoji]" value="0" />
+<p><label><input type="checkbox" name="General[rss_emoji]" value="1" <?php if( !empty($General['rss_emoji']) ) echo 'checked '; ?>/> <?php echo __('Include Emoji in feeds.', 'powerpress'); ?></label>
+<a href="https://create.blubrry.com/resources/powerpress/powerpress-settings/feeds/#emoji" target="_blank"><?php echo __('Learn more', 'powerpress'); ?></p>
+</p>
+</td>
+</tr>
 
 </table>
 <?php
@@ -570,22 +593,16 @@ if( $FeedAttribs['type'] != 'general' ) // All types exept general settings
 <?php } ?>
 </td>
 </tr>
+<?php } // End not general settings ?>
 
 <tr valign="top">
 <th scope="row">
-<?php echo __('FeedBurner Feed URL', 'powerpress'); ?><br />
-<span style="font-size: 85%; margin-left: 5px;"><?php echo __('Recommendation: leave blank', 'powerpress'); ?></span>
+<?php echo __('PodcastMirror Feed URL', 'powerpress'); ?> <?php echo powerpressadmin_new(); ?><br />
+<span style="font-size: 85%; margin-left: 5px;"><a href="https://podcastmirror.com" target="_blank"><?php echo __('learn more', 'powerpress'); ?></a></span>
 </th>
 <td>
 <input type="text" name="Feed[feed_redirect_url]" style="width: 60%;"  value="<?php echo esc_attr(!empty($FeedSettings['feed_redirect_url'])? $FeedSettings['feed_redirect_url']:''); ?>" maxlength="100" />  (<?php echo __('leave blank to use built-in feed', 'powerpress'); ?>)
-
-<p style="margin-top: 0px; margin-bottomd: 0;" class="description"><?php echo powerpressadmin_notice( __('NOTE: FeedBurner is not required for podcasting.', 'powerpress') ); ?> <br /> 
-<?php echo powerpressadmin_notice( __('No support is available from blubrry if you are using Feedburner or other feed hosted services.', 'powerpress') ); ?><br /> 
-<a href="http://create.blubrry.com/manual/syndicating-your-podcast-rss-feeds/feedburner-for-podcasting/" target="_blank"><?php echo __('Learn more about FeedBurner and Podcasitng', 'powerpress'); ?></a>
-</p>
-<p><?php echo __('Use this option to redirect this feed to a hosted feed service such as FeedBurner.', 'powerpress'); ?></p>
-
-<p><?php echo __('We recommend that you disable FeedBurner SmartCast when using FeedBurner with PowerPress.', 'powerpress'); ?></p>
+<p><?php echo __('Use this option to mirror your podcast feed to provide fast, scalable subscriptions to your show. Service is FeedBurner compatible.', 'powerpress'); ?></p>
 <?php
 $link = $feed_link;
 if( strstr($link, '?') )
@@ -596,8 +613,6 @@ else
 <p class="description"><?php echo __('Bypass Redirect URL', 'powerpress'); ?>: <a href="<?php echo $link; ?>" target="_blank"><?php echo $link; ?></a></p>
 </td>
 </tr>
-
-<?php } // End not general settings ?>
 
 <tr valign="top">
 <th scope="row">
@@ -615,11 +630,11 @@ else
 ?>
 <tr valign="top">
 <th scope="row">
-<?php echo __('Feed Episode Maximizer', 'powerpress'); ?>  <?php echo powerpressadmin_new(); ?>
+<?php echo __('Feed Episode Maximizer', 'powerpress'); ?>  
 </th>
 <td>
 <p><input type="checkbox" name="Feed[maximize_feed]" value="1" <?php if( !empty($FeedSettings['maximize_feed']) ) echo 'checked'; ?> />
-		<?php echo __('Maximize the number of episodes while maintaining an optimal feed size.', 'powerpress'); ?> <a href="http://create.blubrry.com/resources/powerpress/powerpress-settings/feeds/#maximizer" target="_blank"><?php echo __('Learn more', 'powerpress'); ?></p>
+		<?php echo __('Maximize the number of episodes while maintaining an optimal feed size.', 'powerpress'); ?> <a href="https://create.blubrry.com/resources/powerpress/powerpress-settings/feeds/#maximizer" target="_blank"><?php echo __('Learn more', 'powerpress'); ?></p>
 		<p></a></p>
 </td>
 </tr>
@@ -637,7 +652,7 @@ else
 $Languages = powerpress_languages();
 
 echo '<option value="">'. __('Blog Default Language', 'powerpress') .'</option>';
-while( list($value,$desc) = each($Languages) )
+foreach( $Languages as $value=> $desc )
 	echo "\t<option value=\"$value\"". ($FeedSettings['rss_language']==$value?' selected':''). ">". esc_attr($desc)."</option>\n";
 ?>
 </select>
@@ -778,7 +793,7 @@ function powerpressadmin_edit_itunes_feed($FeedSettings, $General, $FeedAttribs 
 
 ?>
 
-<h3><?php echo __('iTunes Settings', 'powerpress'); ?></h3>
+<h3><?php echo __('Apple Settings', 'powerpress'); ?></h3>
 <table class="form-table">
 <tr valign="top">
 <th scope="row">
@@ -861,7 +876,7 @@ $Categories = powerpress_itunes_categories(true);
 
 echo '<option value="">'. __('Select Category', 'powerpress') .'</option>';
 
-while( list($value,$desc) = each($Categories) )
+foreach( $Categories as $value=> $desc )
 	echo "\t<option value=\"$value\"". ($FeedSettings['itunes_cat_1']==$value?' selected':''). ">".htmlspecialchars($desc)."</option>\n";
 
 reset($Categories);
@@ -892,7 +907,7 @@ reset($Categories);
 
 
 echo '<option value="">'. __('Select Category', 'powerpress')  .'</option>';
-while( list($value,$desc) = each($Categories) )
+foreach( $Categories as $value=> $desc )
 	echo "\t<option value=\"$value\"". ($FeedSettings['itunes_cat_2']==$value?' selected':''). ">".htmlspecialchars($desc)."</option>\n";
 
 reset($Categories);
@@ -917,7 +932,7 @@ reset($Categories);
 <?php
 
 echo '<option value="">'. __('Select Category', 'powerpress')  .'</option>';
-while( list($value,$desc) = each($Categories) )
+foreach( $Categories as $value=> $desc )
 	echo "\t<option value=\"$value\"". ($FeedSettings['itunes_cat_3']==$value?' selected':''). ">".htmlspecialchars($desc)."</option>\n";
 
 reset($Categories);
@@ -946,7 +961,7 @@ reset($Categories);
 <?php
 $explicit = array(0=> __('No option selected', 'powerpress'), 1=>__('Yes - explicit content', 'powerpress'), 2=>__('Clean - no explicit content', 'powerpress'));
 
-while( list($value,$desc) = each($explicit) )
+foreach( $explicit as $value=> $desc )
 	echo "\t<option value=\"$value\"". ($FeedSettings['itunes_explicit']==$value?' selected':''). (($FeedSettings['itunes_explicit']!=0&&$value==0)?'disabled':''). ">$desc</option>\n";
 
 ?>
@@ -991,14 +1006,13 @@ while( list($value,$desc) = each($explicit) )
 <tr valign="top">
 <th scope="row">
 <?php echo __('iTunes Type', 'powerpress'); ?> 
-<?php echo powerpressadmin_new(); ?>
 </th>
 <td>
 <select name="Feed[itunes_type]" class="bpp_input_med">
 <?php
 $types = array(''=> __('No option selected', 'powerpress'), 'episodic'=>__('Episodic (default)', 'powerpress'), 'serial'=>__('Serial', 'powerpress'));
 
-while( list($value,$desc) = each($types) )
+foreach( $types as $value=> $desc )
 	echo "\t<option value=\"$value\"". ($FeedSettings['itunes_type']==$value?' selected':''). ">$desc</option>\n";
 
 ?>
@@ -1030,7 +1044,7 @@ while( list($value,$desc) = each($types) )
 			 </strong> 
 			 </p>
 			 <p>
-			 <?php echo __('Learn more:', 'powerpress'); ?> <a href="http://create.blubrry.com/manual/syndicating-your-podcast-rss-feeds/changing-your-podcast-rss-feed-address-url/" target="_blank"><?php echo __('Changing Your Podcast RSS Feed Address (URL)', 'powerpress'); ?></a>
+			 <?php echo __('Learn more:', 'powerpress'); ?> <a href="https://create.blubrry.com/manual/syndicating-your-podcast-rss-feeds/changing-your-podcast-rss-feed-address-url/" target="_blank"><?php echo __('Changing Your Podcast RSS Feed Address (URL)', 'powerpress'); ?></a>
 			</p>
 		</div>
 		<div id="new_feed_url_step_2" style="display: <?php echo ( !empty($FeedSettings['itunes_new_feed_url']) || !empty($FeedSettings['itunes_new_feed_url_podcast'])  ?'block':'none'); ?>;">
@@ -1077,7 +1091,7 @@ while( list($value,$desc) = each($types) )
 			</p>
 			<p style="margin-left: 25%;margin-top: 0;font-size: 90%;">(<?php echo __('Leave blank for no New Feed URL', 'powerpress'); ?>)</p>
 			
-			<p><a href="http://www.apple.com/itunes/whatson/podcasts/specs.html#changing" target="_blank"><?php echo __('More information regarding the iTunes New Feed URL is available here.', 'powerpress'); ?></a></p>
+			<p><a href="https://create.blubrry.com/manual/syndicating-your-podcast-rss-feeds/changing-your-podcast-rss-feed-address-url/" target="_blank"><?php echo __('More information regarding the iTunes New Feed URL is available here.', 'powerpress'); ?></a></p>
 			<p>
 <?php
 			if( !$cat_ID && !$feed_slug )

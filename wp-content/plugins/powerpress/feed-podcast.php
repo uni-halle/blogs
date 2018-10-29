@@ -26,10 +26,13 @@
 		$content = strip_shortcodes( $content );
 		$content = str_replace(']]>', ']]&gt;', $content);
 		
-		if( function_exists('_oembed_filter_feed_content') )
-			return wp_staticize_emoji( _oembed_filter_feed_content( $content ) );
-		if( function_exists('wp_staticize_emoji') )
-			return wp_staticize_emoji( $content );
+		if( function_exists('_oembed_filter_feed_content') ) // WP 4.4+
+			return ( _oembed_filter_feed_content( $content ) );
+			
+		//if( function_exists('wp_encode_emoji') ) { // WP 4.2+
+		//	return wp_encode_emoji( $content );
+		//}
+
 		return $content;
 	}
  

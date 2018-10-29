@@ -291,7 +291,7 @@
 			$current_plugins = get_option('active_plugins');
 			$message .= "<br />\n";
 			$message .= '<strong>'.__('Active Plugins', 'powerpress') ."</strong><br />\n";
-			while( list($null,$plugin_path) = each($current_plugins) )
+			foreach( $current_plugins as $null=> $plugin_path )
 			{
 				$plugin_data = get_plugin_data( rtrim(WP_PLUGIN_DIR, '/\\'). '/'. rtrim($plugin_path, '\\/'), false, false ); //Do not apply markup/translate as it'll be cached.
 				

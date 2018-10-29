@@ -117,7 +117,7 @@ jQuery(document).ready(function($) {
 	if( $Step > 1 ) { // Only display if we have episdoes in the feed!
 		// TODO: Need to include the settings_tab_destinations.php but only the iTunes option to keep things simple
 	}
-	// iTunes settings (in simple mode of course)
+	// Apple settings (in simple mode of course)
 	powerpressadmin_edit_itunes_feed($FeedSettings, $General, $FeedAttribs);
 	
 	powerpressadmin_edit_artwork($FeedSettings, $General);

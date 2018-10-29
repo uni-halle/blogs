@@ -52,7 +52,7 @@ function powerpress_admin_migrate_get_files($clean=false, $exclude_blubrry=true)
 		$results_data = $wpdb->get_results($query, ARRAY_A);
 		if( $results_data )
 		{
-			while( list($null,$row) = each($results_data) )
+			foreach( $results_data as $null => $row )
 			{
 				$meta_id = $row['meta_id'];
 				$EpisodeData = powerpress_get_enclosure_data($row['post_id'], 'podcast', $row['meta_value'], false); // Get the enclosure data with no redirect added
@@ -84,7 +84,7 @@ function powepress_admin_migrate_add_urls($urls)
 	
 	$json_data = false;
 	$api_url_array = powerpress_get_api_array();
-	while( list($index,$api_url) = each($api_url_array) )
+	foreach( $api_url_array as $index => $api_url )
 	{
 		$req_url = sprintf('%s/media/%s/migrate_add.json', rtrim($api_url, '/'), urlencode($Settings['blubrry_program_keyword']) );
 		$req_url .= (defined('POWERPRESS_BLUBRRY_API_QSA')?'&'. POWERPRESS_BLUBRRY_API_QSA:'');
@@ -139,7 +139,7 @@ function powerpress_admin_migrate_get_status()
 	
 	$json_data = false;
 	$api_url_array = powerpress_get_api_array();
-	while( list($index,$api_url) = each($api_url_array) )
+	foreach( $api_url_array as $index => $api_url )
 	{
 		$req_url = sprintf('%s/media/%s/migrate_status.json?status=summary&simple=true', rtrim($api_url, '/'), $Settings['blubrry_program_keyword'] );
 		$req_url .= (defined('POWERPRESS_BLUBRRY_API_QSA')?'&'. POWERPRESS_BLUBRRY_API_QSA:'');
@@ -191,7 +191,7 @@ function powerpress_admin_migrate_get_migrated_by_status($status='migrated')
 	
 	$json_data = false;
 	$api_url_array = powerpress_get_api_array();
-	while( list($index,$api_url) = each($api_url_array) )
+	foreach( $api_url_array as $index => $api_url )
 	{
 		$req_url = sprintf('%s/media/%s/migrate_status.json?status=%s&limit=10000&simple=true', rtrim($api_url, '/'), $Settings['blubrry_program_keyword'], urlencode($status) );
 		$req_url .= (defined('POWERPRESS_BLUBRRY_API_QSA')?'&'. POWERPRESS_BLUBRRY_API_QSA:'');
@@ -302,7 +302,7 @@ function powerpress_admin_migrate_request()
 						$FoundCount = 0;
 						if( !empty($QueuedEpisodes) )
 						{
-							while( list($index,$row) = each($URLs['results']) )
+							foreach( $URLs['results'] as $index => $row )
 							{
 								if( $row['status'] != 'completed' ) // Not migrated
 									continue;
@@ -319,7 +319,7 @@ function powerpress_admin_migrate_request()
 								$FoundCount++;
 								$GLOBALS['g_powerpress_total_files_found']++;
 								
-								while( list($null,$meta_id) = each($found) )
+								foreach( $found as $null => $meta_id )
 								{
 									// Get the post meta
 									$meta_object = get_metadata_by_mid('post', $meta_id);
@@ -419,7 +419,7 @@ function powerpress_admin_extension_counts()
 {
 	$files = powerpress_admin_migrate_get_files(true, false);
 	$extensions = array(); // 'blubrry'=>0, 'mp3'=>0, 'm4a'=>0, 'mp4'=>0, 'm4v'=>0, '*'=>0 );
-	while( list($meta_id,$row) = each($files) )
+	foreach( $files as $meta_id => $row )
 	{
 		$extension = '*';
 			
@@ -442,7 +442,7 @@ function powerpress_admin_queue_files($extensions=array() )
 {
 	$add_urls = '';
 	$extensions_preg_match = '';
-	while( list($extension,$null) = each($extensions) )
+	foreach( $extensions as $extension => $null )
 	{
 		if( $extension == '*' )
 		{
@@ -473,7 +473,7 @@ function powerpress_admin_queue_files($extensions=array() )
 	$AddedCount = 0;;
 	$AlreadyAddedCount = 0;
 	
-	while( list($meta_id,$row) = each($files) )
+	foreach( $files as $meta_id => $row )
 	{
 		$parts = pathinfo($row['src_url']);
 		if( preg_match('/('.$extensions_preg_match.')/i', $parts['extension']) )
@@ -544,7 +544,7 @@ function powerpress_admin_migrate_step1()
 	<?php
 	}
 	$types = array('mp3', 'm4a', 'mp4', 'm4v', 'mov', '*', 'blubrry');
-	while (list($null, $extension) = each($types) )
+	foreach( $types as $null => $extension )
 	{
 		if( empty($GLOBALS['powerpress_migrate_stats'][$extension]) )
 			continue;
@@ -586,7 +586,7 @@ function powerpress_admin_migrate_step1()
 function powerpress_admin_migrate_find_in_results(&$results, $src_url)
 {
 	$found = false;
-	while( list($index,$row) = each($results) )
+	foreach( $results as $index => $row )
 	{
 		if( $row['source_url'] == $src_url )
 		{
@@ -658,7 +658,7 @@ table.powerpress-migration-table tr:hover {
 	<th class="powerpress-migrate-e"><?php echo __('Episode Updated', 'powerpress'); ?></th>
  </tr>
 <?php
-	while( list($meta_id, $url) = each($QueuedResults) )
+	foreach( $QueuedResults as $meta_id => $url )
 	{
 		$status = __('Requested', 'powerpress');
 		$updated = '-';

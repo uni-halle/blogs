@@ -102,7 +102,11 @@ body .pp-ssb-widget a.pp-ssb-btn:hover {
 	background-color: #2CB6A8;
 }
 .pp-ssb-widget-modern a.pp-ssb-gp {
-	background-color: #F15832;
+	background-color: #db3236;
+}
+.pp-ssb-widget-modern a.pp-ssb-spotify {
+	background-color: #84bd00;
+	background-color: #1db954;
 }
 .pp-ssb-widget-modern a.pp-ssb-android {
 	background-color: #6AB344;
@@ -117,7 +121,7 @@ body .pp-ssb-widget a.pp-ssb-btn:hover {
 	display: inline-block;
 	vertical-align: middle;
 	margin-right: 2px;
-	background-image: url(<?php echo powerpress_get_root_url(); ?>images/spriteStandard.png);
+	background-image: url(<?php echo powerpress_get_root_url(); ?>images/spriteStandard2.png);
 	background-repeat: no-repeat;
 	background-size: 294px;
 }
@@ -139,10 +143,12 @@ body .pp-ssb-widget a.pp-ssb-btn:hover {
 .pp-ssb-tunein .pp-ssb-ic {
 	background-position: -245px -98px;
 }
-.pp-ssb-gp .pp-ssb-ic {
-	background-position: -196px -98px;
+.pp-ssb-spotify .pp-ssb-ic {
+	background-position: -147px 0;
 }
-
+.pp-ssb-gp .pp-ssb-ic {
+	background-position: -196px 0;
+}
 .pp-ssb-more .pp-ssb-ic {
   background-position: -49px -49px;
 }
@@ -152,7 +158,7 @@ body .pp-ssb-widget a.pp-ssb-btn:hover {
        only screen and (-o-min-device-pixel-ratio: 200/100),
        only screen and (min-device-pixel-ratio: 2.0) {
 	.pp-sub-ic {
-		background-image: url(<?php echo powerpress_get_root_url(); ?>images/spriteRetina.png);
+		background-image: url(<?php echo powerpress_get_root_url(); ?>images/spriteRetina2.png);
 	}
 }
 </style>
@@ -194,7 +200,7 @@ body .pp-ssb-widget a.pp-ssb-btn:hover {
 		if( !empty($GeneralSettings['posttype_podcasting']) || $instance['subscribe_type'] == 'post_type'  ) // If post type podcasting enabled
 			$types['post_type'] = __('Post Type Podcasting','powerpress');
 		
-		while( list($type, $label) = each($types) ) {
+		foreach( $types as $type => $label )	{
 			echo '<option value="' . $type . '"'
 				. selected( $instance['subscribe_type'], $type, false )
 				. '>' . $label . "</option>\n";
@@ -213,7 +219,7 @@ body .pp-ssb-widget a.pp-ssb-btn:hover {
 		<option value=""><?php echo __('Select Post Type', 'powerpress'); ?></option>
 <?php
 		$post_types = powerpress_admin_get_post_types(false);
-		while( list($index, $label) = each($post_types) ) {
+		foreach( $post_types as $index => $label ) {
 			echo '<option value="' . $label . '"'
 				. selected( $instance['subscribe_post_type'], $label, false )
 				. '>' . $label . "</option>\n";

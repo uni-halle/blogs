@@ -7,7 +7,7 @@
 		$Episodes = ( !empty($_POST['Powerpress']) ? $_POST['Powerpress'] : false);
 		if( $Episodes )
 		{
-			while( list($feed_slug,$Powerpress) = each($Episodes) )
+			foreach( $Episodes as $feed_slug => $Powerpress )
 			{
 				$field = '_'.$feed_slug.':metamarks';
 				
@@ -25,14 +25,14 @@
 					{
 						$MetaMarkData = $MetaMarks[ $feed_slug ];
 						// Loop through, and convert position and duration to seconds, if specified with 00:00:00
-						while( list($index,$row) = each($MetaMarkData) )
+						foreach( $MetaMarkData as $index => $row )
 						{
 							$MetaMarkData[ $index ]['position'] = powerpress_raw_duration( $row['position'] );
 							$MetaMarkData[ $index ]['duration'] = powerpress_raw_duration( $row['duration'] );
 						}
 						reset($MetaMarkData);
 						
-						while( list($index,$row) = each($MetaMarkData) )
+						foreach( $MetaMarkData as $index => $row )
 						{
 							if( empty($MetaMarkData[ $index ]['type']) && empty($MetaMarkData[ $index ]['position']) && empty($MetaMarkData[ $index ]['duration']) && empty($MetaMarkData[ $index ]['link']) && empty($MetaMarkData[ $index ]['value']) )
 							{
@@ -87,7 +87,7 @@
 		
 		$html .= '<div class="powerpress_metamarks_block" id="powerpress_metamarks_block_' . $feed_slug .'">';
 			$index = 0;
-			while( list($key,$row) = each($MetaRecords) )
+			foreach( $MetaRecords as $key => $row )
 			{
 				$html .= powerpress_metamarks_editrow_html($feed_slug, $index, $row);
 				$index++;
@@ -266,7 +266,7 @@ function powerpress_metamarks_deleterow(div)
 	function powerpress_metamarks_print_rss2($episode_data)
 	{
 		$MetaRecords = powerpress_metamarks_get($episode_data['id'], $episode_data['feed'] );
-		while( list($index,$MetaMark) = each($MetaRecords) )
+		foreach( $MetaRecords as $index => $MetaMark )
 		{
 			echo "\t\t";
 			echo '<rawvoice:metamark type="'. esc_attr($MetaMark['type']) .'"';

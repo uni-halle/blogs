@@ -151,8 +151,8 @@ jQuery(document).ready(function($) {
 		<li><a href="#tab2"><span><?php echo htmlspecialchars(__('Services & Stats', 'powerpress')); ?></span></a></li>
 		<li><a href="#tab3"><span><?php echo htmlspecialchars(__('Website', 'powerpress')); ?></span></a></li>
 		<li><a href="#tab4"><span><?php echo htmlspecialchars(__('Feeds', 'powerpress')); ?></span></a></li>
-		<li><a href="#tab5"><span><?php echo htmlspecialchars(__('iTunes', 'powerpress')); ?></span></a></li>
-		<li><a href="#tab6"><span><?php echo htmlspecialchars(__('Google Play', 'powerpress')); ?></span></a></li>
+		<li><a href="#tab5"><span><?php echo htmlspecialchars(__('Apple', 'powerpress')); ?></span></a></li>
+		<li><a href="#tab6"><span><?php echo htmlspecialchars(__('Google', 'powerpress')); ?></span></a></li>
 		<li><a href="#tab7"><span><?php echo htmlspecialchars(__('Artwork', 'powerpress')); ?></span></a></li>
 		<li><a href="#tab-dest"><span><?php echo htmlspecialchars(__('Destinations', 'powerpress')); ?></span></a></li>
   </ul>
@@ -262,17 +262,17 @@ jQuery(document).ready( function() {
 	<div style="margin-left: 50px;" >
 		<div>
 			<input type="checkbox" name="NULL[import_podcast]" value="1" checked disabled /> 
-			<strong><a href="<?php echo admin_url('admin.php?page=powerpress/powerpressadmin_import_feed.php'); ?>"><?php echo __('Import Podcast', 'powerpress'); ?></a></strong> <?php echo powerpressadmin_new(); ?> - 
+			<strong><a href="<?php echo admin_url('admin.php?page=powerpress/powerpressadmin_import_feed.php'); ?>"><?php echo __('Import Podcast', 'powerpress'); ?></a></strong> - 
 			<?php echo __('Import podcast feed from SoundCloud, LibSyn, PodBean or other podcast service.', 'powerpress'); ?> 
 		</div>
 		<div>
 			<input type="checkbox" name="NULL[migrate_media]" value="1" checked disabled /> 
-			<strong><a href="<?php echo admin_url('admin.php?page=powerpress/powerpressadmin_migrate.php'); ?>"><?php echo __('Migrate Media', 'powerpress'); ?></a></strong> <?php echo powerpressadmin_new(); ?> - 
+			<strong><a href="<?php echo admin_url('admin.php?page=powerpress/powerpressadmin_migrate.php'); ?>"><?php echo __('Migrate Media', 'powerpress'); ?></a></strong>  - 
 			<?php echo __('Migrate media files to Blubrry Podcast Media Hosting with only a few clicks.', 'powerpress'); ?> 
 		</div>
 		<div>
 			<input type="checkbox" name="NULL[podcasting_seo]" value="1" checked disabled /> 
-			<strong><a href="<?php echo admin_url('admin.php?page=powerpress/powerpressadmin_search.php'); ?>"><?php echo __('Podcasting SEO', 'powerpress'); ?></a></strong> <?php echo powerpressadmin_new(); ?> - 
+			<strong><a href="<?php echo admin_url('admin.php?page=powerpress/powerpressadmin_search.php'); ?>"><?php echo __('Podcasting SEO', 'powerpress'); ?></a></strong>  - 
 			<?php echo __('Select from 3 different web based audio players.', 'powerpress'); ?> 
 		</div>
 		
@@ -396,9 +396,9 @@ jQuery(document).ready( function() {
 		?>
 		</li>
 		<li><?php echo __('Tell the world about PowerPress by writing about it on your blog', 'powerpress'); ?>, 
-		<a href="http://twitter.com/home/?status=<?php echo urlencode( __('I\'m podcasting with Blubrry PowerPress (http://blubrry.com/powerpress/) #powerpress #wordpress', 'powerpress') ); ?>" target="_blank"><?php echo __('Twitter', 'powerpress'); ?></a>, 
-		<a href="http://www.facebook.com/share.php?u=<?php echo urlencode('http://www.blubrry.com/powerpress'); ?>&amp;t=<?php echo urlencode( __('I podcast with Blubrry PowerPress', 'powerpress')); ?>" target="_blank"><?php echo __('Facebook', 'powerpress'); ?></a>,
-		<a href="https://plus.google.com/share?url==<?php echo urlencode('http://www.blubrry.com/powerpress'); ?>" target="_blank"><?php echo __('Google+', 'powerpress'); ?></a>,
+		<a href="https://twitter.com/home/?status=<?php echo urlencode( __('I\'m podcasting with Blubrry PowerPress (https://blubrry.com/powerpress/) #powerpress #wordpress', 'powerpress') ); ?>" target="_blank"><?php echo __('Twitter', 'powerpress'); ?></a>, 
+		<a href="https://www.facebook.com/share.php?u=<?php echo urlencode('https://www.blubrry.com/powerpress'); ?>&amp;t=<?php echo urlencode( __('I podcast with Blubrry PowerPress', 'powerpress')); ?>" target="_blank"><?php echo __('Facebook', 'powerpress'); ?></a>,
+		<a href="https://plus.google.com/share?url==<?php echo urlencode('https://www.blubrry.com/powerpress'); ?>" target="_blank"><?php echo __('Google+', 'powerpress'); ?></a>,
 		etc...</li>
 		<li><a href="http://www.blubrry.com/contact.php" target="_blank"><?php echo __('Send us feedback', 'powerpress'); ?></a> (<?php echo __('we love getting suggestions for new features!', 'powerpress'); ?>)</li>
 	</ul>
@@ -509,7 +509,7 @@ function powerpressadmin_edit_entry_options($General)
 						(<?php echo __('Leave unchecked if you do not distribute closed captioned media', 'powerpress'); ?>)</p>
 						
 					<p style="margin-top: 15px;"><label><input id="episode_box_order" class="episode_box_option" name="General[episode_box_order]" type="checkbox" value="1"<?php if( !empty($General['episode_box_order']) ) echo ' checked'; ?> <?php if( !empty($General['episode_box_feature_in_itunes']) ) echo ' disabled'; ?> /> <?php echo __('iTunes Order', 'powerpress'); ?></label> 
-						(<?php echo __('Override the default ordering of episodes on the iTunes and Google Play Music podcast directories', 'powerpress'); ?>)</p>
+						(<?php echo __('Override the default ordering of episodes on the Apple and Google Podcast directories', 'powerpress'); ?>)</p>
 						<em><strong><?php echo __('If conflicting values are present the directories will use the default ordering.', 'powerpress'); ?></strong></em><br />
 						<em><strong><?php echo __('This feature only applies to the default podcast feed and Custom Podcast Channel feeds added by PowerPress.', 'powerpress'); ?></strong></em>
 					
@@ -519,11 +519,11 @@ function powerpressadmin_edit_entry_options($General)
 $linkoptions = array('false'=>__('Hide Field', 'powerpress'),
 		1=>__('Show Field', 'powerpress') );
 	
-while( list($value,$desc) = each($linkoptions) )
+foreach( $linkoptions as $value => $desc )
 	echo "\t<option value=\"$value\"". ( !empty($General['episode_box_itunes_title']) && $General['episode_box_itunes_title'] == $value ?' selected':''). ">$desc</option>\n";
 	
 ?>
-</select> <?php echo __('iTunes Episode Title Field', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
+</select> <?php echo __('iTunes Episode Title Field', 'powerpress'); ?></label> </p>
 						<em><strong><?php echo __('Specify iTunes episode title separate from podcast feed title.', 'powerpress'); ?></strong></em>
 					<?php } // end episode_box_itunes_title ?>
 					
@@ -533,16 +533,16 @@ while( list($value,$desc) = each($linkoptions) )
 $linkoptions = array('false'=>__('Hide Field', 'powerpress'),
 		1=>__('Show Field', 'powerpress') );
 	
-while( list($value,$desc) = each($linkoptions) )
+foreach( $linkoptions as $value => $desc )
 	echo "\t<option value=\"$value\"". ( !empty($General['episode_box_itunes_nst']) && $General['episode_box_itunes_nst'] == $value ?' selected':''). ">$desc</option>\n";
 	
 ?>
-</select> <?php echo __('iTunes Episode Number, Season and Type Fields', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
+</select> <?php echo __('iTunes Episode Number, Season and Type Fields', 'powerpress'); ?></label> </p>
 						<em><strong><?php echo __('Enter specifics about episode including episode number, season number and type (full, trailer, or bonus).', 'powerpress'); ?></strong></em>	
 				<?php } // end episode_box_itunes_title ?>
 				
-					<p style="margin-top: 15px;"><label><input id="episode_box_feature_in_itunes" class="episode_box_option" name="General[episode_box_feature_in_itunes]" type="checkbox" value="1"<?php if( !empty($General['episode_box_feature_in_itunes']) ) echo ' checked'; ?> /> <?php echo __('Feature Episode in iTunes and Google Play Music', 'powerpress'); ?></label>
-						(<?php echo __('Display selected episode at top of your iTunes and Google Play Music directory listings', 'powerpress'); ?>)</p>
+					<p style="margin-top: 15px;"><label><input id="episode_box_feature_in_itunes" class="episode_box_option" name="General[episode_box_feature_in_itunes]" type="checkbox" value="1"<?php if( !empty($General['episode_box_feature_in_itunes']) ) echo ' checked'; ?> /> <?php echo __('Feature Episode in Apple and Google Podcasts', 'powerpress'); ?></label>
+						(<?php echo __('Display selected episode at top of your Apple and Google Podcasts listings', 'powerpress'); ?>)</p>
 						<em><strong><?php echo __('All other episodes will be listed following the featured episode.', 'powerpress'); ?></strong></em><br />
 						<em><strong><?php echo __('This feature only applies to the default podcast feed and Custom Podcast Channel feeds added by PowerPress.', 'powerpress'); ?></strong></em>
 						
@@ -623,7 +623,7 @@ SelectEmbedField(<?php echo $General['episode_box_embed']; ?>);
 <?php
 $options = array(0=>__('Auto detect file size', 'powerpress'), 1=>__('User specify', 'powerpress') );
 	
-while( list($value,$desc) = each($options) )
+foreach( $options as $value => $desc )
 	echo "\t<option value=\"$value\"". ($General['set_size']==$value?' selected':''). ">$desc</option>\n";
 	
 ?>
@@ -639,7 +639,7 @@ while( list($value,$desc) = each($options) )
 <?php
 $options = array(0=>__('Auto detect duration', 'powerpress'), 1=>__('User specify', 'powerpress'), -1=>__('Not specified (not recommended)', 'powerpress') );
 	
-while( list($value,$desc) = each($options) )
+foreach( $options as $value => $desc )
 	echo "\t<option value=\"$value\"". ($General['set_duration']==$value?' selected':''). ">$desc</option>\n";
 	
 ?>
@@ -658,7 +658,7 @@ while( list($value,$desc) = each($options) )
 <?php
 $options = array(0=>__('Disabled (default)', 'powerpress'), 1=>__('First media link found in post content', 'powerpress'), 2=>__('Last media link found in post content', 'powerpress') );
 	
-while( list($value,$desc) = each($options) )
+foreach( $options as $value => $desc )
 	echo "\t<option value=\"$value\"". ($General['auto_enclose']==$value?' selected':''). ">$desc</option>\n";
 	
 ?>
@@ -676,7 +676,7 @@ while( list($value,$desc) = each($options) )
 <?php
 $options = array(0=>__('No (default)', 'powerpress'), 1=>__('Yes', 'powerpress') );
 $current_value = (!empty($General['hide_warnings'])?$General['hide_warnings']:0);
-while( list($value,$desc) = each($options) )
+foreach( $options as $value => $desc )
 	echo "\t<option value=\"$value\"". ($current_value==$value?' selected':''). ">$desc</option>\n";
 	
 ?>
@@ -705,7 +705,7 @@ while( list($value,$desc) = each($options) )
 $options = array(0=>__('Default WordPress Behavior', 'powerpress'), 1=>__('Match Feed Name to Page/Category', 'powerpress') );
 $current_value = (!empty($General['permalink_feeds_only'])?$General['permalink_feeds_only']:0);
 
-while( list($value,$desc) = each($options) )
+foreach( $options as $value => $desc )
 	echo "\t<option value=\"$value\"". ($current_value==$value?' selected':''). ">$desc</option>\n";
 	
 ?>
@@ -743,7 +743,7 @@ function powerpressadmin_edit_podpress_options($General)
 <?php
 $options = array(0=>__('Ignore', 'powerpress'), 1=>__('Include in Posts and Feeds', 'powerpress') );
 
-while( list($value,$desc) = each($options) )
+foreach( $options as $value => $desc )
 	echo "\t<option value=\"$value\"". ($General['process_podpress']==$value?' selected':''). ">$desc</option>\n";
 	
 ?>
@@ -760,7 +760,7 @@ while( list($value,$desc) = each($options) )
 	<?php
 	$options = array(0=>__('Hide', 'powerpress'), 1=>__('Display', 'powerpress') );
 
-	while( list($value,$desc) = each($options) )
+	foreach( $options as $value => $desc )
 		echo "\t<option value=\"$value\"". ($General['podpress_stats']==$value?' selected':''). ">$desc</option>\n";
 		
 	?>
@@ -818,7 +818,7 @@ function powerpressadmin_edit_googleplay($FeedSettings, $General, $FeedAttribs =
 	}
 
 	?>
-	<h3><?php echo __('Google Play Settings', 'powerpress'); ?> <?php echo powerpressadmin_new(); ?></h3>
+	<h3><?php echo __('Google Play Settings', 'powerpress'); ?> </h3>
 <table class="form-table">
 <tr valign="top">
 <th scope="row">
@@ -864,7 +864,7 @@ function powerpressadmin_edit_googleplay($FeedSettings, $General, $FeedAttribs =
 <?php
 $explicit = array(0=> __('No - display nothing', 'powerpress'), 1=>__('Yes - explicit content', 'powerpress') );
 
-while( list($value,$desc) = each($explicit) )
+foreach( $explicit as $value => $desc )
 	echo "\t<option value=\"$value\"". ($FeedSettings['googleplay_explicit']==$value?' selected':''). ">$desc</option>\n";
 
 ?>
@@ -886,7 +886,7 @@ $MoreCategories = false;
 $Categories = powerpress_googleplay_categories();
 
 echo '<option value="">'. __('Select Category', 'powerpress') .'</option>';
-while( list($value,$desc) = each($Categories) )
+foreach( $Categories as $value => $desc )
 	echo "\t<option value=\"$value\"". ($FeedSettings['googleplay_cat']==$value?' selected':''). ">".htmlspecialchars($desc)."</option>\n";
 
 ?>
@@ -1161,7 +1161,7 @@ function powerpressadmin_appearance($General=false, $Feed = false)
 	$Players = array('podcast'=>__('Default Podcast (podcast)', 'powerpress') );
 	if( isset($General['custom_feeds']) )
 	{
-		while( list($podcast_slug, $podcast_title) = each($General['custom_feeds']) )
+		foreach( $General['custom_feeds'] as $podcast_slug => $podcast_title )
 		{
 			if( $podcast_slug == 'podcast' )
 				continue;
@@ -1281,7 +1281,7 @@ function powerpressadmin_appearance($General=false, $Feed = false)
 
 <tr valign="top">
 <th scope="row">
-<?php echo __('Subscribe Links', 'powerpress'); ?> <?php echo powerpressadmin_new(); ?></th> 
+<?php echo __('Subscribe Links', 'powerpress'); ?> </th> 
 <td>
 	<p style="padding-top: 8px;"><label><input type="checkbox" name="General[subscribe_links]" value="1" <?php if( $General['subscribe_links'] == 1 ) echo 'checked '; ?>/> 
 	<?php echo __('Display subscribe links below player and media links.', 'powerpress'); ?></label></p>
@@ -1298,7 +1298,7 @@ function powerpressadmin_appearance($General=false, $Feed = false)
 	<p><a href="<?php echo 'https://linkmaker.itunes.apple.com/?q='.urlencode( get_bloginfo('name') ); ?>&amp;media=podcasts" target="_blank"><?php echo __('Find your iTunes Subscription URL', 'powerpress'); ?></a></p>
 </div>
 
-<p><input type="checkbox" name="NULL[subscribe_feature_android]" value="1" checked disabled /> <label><?php echo __('Subscribe on Android', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
+<p><input type="checkbox" name="NULL[subscribe_feature_android]" value="1" checked disabled /> <label><?php echo __('Subscribe on Android', 'powerpress'); ?></label></p>
 <div style="margin-left: 24px;">
 	<p><?php echo __('Link to your one click Subscribe on Android URL.', 'powerpress'); ?></p>
 	<p><a href="http://subscribeonandroid.com/podcasters/" target="_blank"><?php echo __('Learn more about Subscribe on Android', 'powerpress'); ?></a></p>
@@ -1309,7 +1309,7 @@ function powerpressadmin_appearance($General=false, $Feed = false)
 	<p><?php echo __('Link to your podcast RSS feed.', 'powerpress'); ?></p>
 </div>
 
-<p><input type="checkbox" id="subscribe_feature_email" name="General[subscribe_feature_email]" value="1" <?php if( !empty($General['subscribe_feature_email']) ) echo 'checked '; ?>/> <label for="subscribe_feature_email"><?php echo __('Subscribe By Email', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
+<p><input type="checkbox" id="subscribe_feature_email" name="General[subscribe_feature_email]" value="1" <?php if( !empty($General['subscribe_feature_email']) ) echo 'checked '; ?>/> <label for="subscribe_feature_email"><?php echo __('Subscribe By Email', 'powerpress'); ?></label> </p>
 <div style="margin-left: 24px;">
 	<p><?php echo __('Link to your one click Subscribe by Email URL.', 'powerpress'); ?></p>
 	<p>
@@ -1320,11 +1320,14 @@ function powerpressadmin_appearance($General=false, $Feed = false)
 	</p>
 </div>
 
-<p><input type="hidden" name="General[subscribe_feature_gp]" value="0" /><input type="checkbox" id="subscribe_feature_gp" name="General[subscribe_feature_gp]" value="1" <?php if( !empty($General['subscribe_feature_gp']) ) echo 'checked '; ?>/> <label for="subscribe_feature_gp"><?php echo __('Subscribe on Google Play', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
+<p><input type="hidden" name="General[subscribe_feature_gp]" value="0" /><input type="checkbox" id="subscribe_feature_gp" name="General[subscribe_feature_gp]" value="1" <?php if( !empty($General['subscribe_feature_gp']) ) echo 'checked '; ?>/> <label for="subscribe_feature_gp"><?php echo __('Subscribe on Google Podcasts', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
+<p><?php echo __('Note: Subscribe on Android includes Google Podcasts.', 'powerpress'); ?>
 
-<p><input type="hidden" name="General[subscribe_feature_stitcher]" value="0" /><input type="checkbox" id="subscribe_feature_stitcher" name="General[subscribe_feature_stitcher]" value="1" <?php if( !empty($General['subscribe_feature_stitcher']) ) echo 'checked '; ?>/> <label for="subscribe_feature_stitcher"><?php echo __('Subscribe on Stitcher', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
+<p><input type="hidden" name="General[subscribe_feature_stitcher]" value="0" /><input type="checkbox" id="subscribe_feature_stitcher" name="General[subscribe_feature_stitcher]" value="1" <?php if( !empty($General['subscribe_feature_stitcher']) ) echo 'checked '; ?>/> <label for="subscribe_feature_stitcher"><?php echo __('Subscribe on Stitcher', 'powerpress'); ?></label></p>
 
-<p><input type="hidden" name="General[subscribe_feature_tunein]" value="0" /><input type="checkbox" id="subscribe_feature_tunein" name="General[subscribe_feature_tunein]" value="1" <?php if( !empty($General['subscribe_feature_tunein']) ) echo 'checked '; ?>/> <label for="subscribe_feature_tunein"><?php echo __('Subscribe on TuneIn', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
+<p><input type="hidden" name="General[subscribe_feature_tunein]" value="0" /><input type="checkbox" id="subscribe_feature_tunein" name="General[subscribe_feature_tunein]" value="1" <?php if( !empty($General['subscribe_feature_tunein']) ) echo 'checked '; ?>/> <label for="subscribe_feature_tunein"><?php echo __('Subscribe on TuneIn', 'powerpress'); ?></label></p>
+
+<p><input type="hidden" name="General[subscribe_feature_spotify]" value="0" /><input type="checkbox" id="subscribe_feature_spotify" name="General[subscribe_feature_spotify]" value="1" <?php if( !empty($General['subscribe_feature_spotify']) ) echo 'checked '; ?>/> <label for="subscribe_feature_spotify"><?php echo __('Subscribe on Spotify', 'powerpress'); ?></label> <?php echo powerpressadmin_new(); ?></p>
 
 </td>
 </tr>
@@ -1349,7 +1352,7 @@ $linkoptions = array(0=>__('No, everything is working', 'powerpress'),
 		3=>__('Yes, excluding excerpts', 'powerpress'),
 		4=>__('Yes, wp_head check', 'powerpress') );
 	
-while( list($value,$desc) = each($linkoptions) )
+foreach( $linkoptions as $value => $desc )
 	echo "\t<option value=\"$value\"". ($General['player_aggressive']==$value?' selected':''). ">$desc</option>\n";
 	
 ?>
@@ -1450,7 +1453,7 @@ function powerpressadmin_edit_funding($FeedSettings = false, $feed_slug='podcast
 <table class="form-table">
 <tr valign="top">
 <th scope="row">
-<?php echo __('Donate Link', 'powerpress'); ?> <?php echo powerpressadmin_new(); ?></th> 
+<?php echo __('Donate Link', 'powerpress'); ?> </th> 
 <td>
 	<p style="padding-top: 8px;"><label for="donate_link"><input type="checkbox" id="donate_link" name="Feed[donate_link]" value="1" <?php if( $FeedSettings['donate_link'] == 1 ) echo 'checked '; ?>/> 
 	<?php echo __('Syndicate a donate link with your podcast. Create your own croudfunding page with PayPal donate buttons, or link to a service such as Patreon.', 'powerpress'); ?></label></p>
@@ -1502,7 +1505,7 @@ function powerpressadmin_edit_tv($FeedSettings = false, $feed_slug='podcast', $c
 		);
 			
 	
-	while( list($rating,$title) = each($Ratings) )
+	foreach( $Ratings as $rating => $title )
 	{
 		$tip = $RatingsTips[ $rating ];
 ?>
@@ -1542,11 +1545,11 @@ function powerpressadmin_edit_artwork($FeedSettings, $General)
 <p><strong><?php echo __('A square 3000 x 3000 pixel image in .jpg format is recommended.', 'powerpress'); ?></strong></p>
 
 <p>
-<?php echo __('This image is for your listing on the iTunes podcast directory and may also be used by other directories like Blubrry. It is not the artwork that is displayed during episode playback. That artwork needs to be saved into the media file in the form of tags (ID3 tags for mp3) following the production of the media file.', 'powerpress'); ?>
+<?php echo __('This image is for your listing on the Apple podcasts directory and may also be used by other directories like Blubrry. It is not the artwork that is displayed during episode playback. That artwork needs to be saved into the media file in the form of tags (ID3 tags for mp3) following the production of the media file.', 'powerpress'); ?>
 </p>
 
 <p class="description"><?php echo __('Note: If you change the iTunes image without changing the file name it may take some time (days or even months) for iTunes to update the image in the iTunes Podcast Directory.', 'powerpress'); ?> 
-<?php echo sprintf( __('Please contact %s if you are having issues with your image changes not appearing in iTunes.', 'powerpress'), '<a href="http://www.apple.com/support/itunes/contact/">'. __('iTunes Support', 'powerpress') .'</a>'); ?></p>
+<?php echo sprintf( __('Please contact %s if you are having issues with your image changes not appearing in iTunes.', 'powerpress'), '<a href="https://create.blubrry.com/manual/podcast-promotion/submit-podcast-to-itunes/itunes-support/">'. __('Apple Podcasts Support', 'powerpress') .'</a>'); ?></p>
 <?php if( $SupportUploads ) { ?>
 
 <p><label class="powerpress-normal-font"><input name="itunes_image_checkbox" type="checkbox" onchange="powerpress_show_field('itunes_image_upload', this.checked)" value="1" /> <?php echo __('Upload new image', 'powerpress'); ?></label> &nbsp; 
@@ -1582,7 +1585,7 @@ function powerpressadmin_edit_artwork($FeedSettings, $General)
 <table class="form-table">
 <tr valign="top">
 <th scope="row">
-<?php echo __('Google Play Image', 'powerpress'); ?>  <?php echo powerpressadmin_new(); ?>
+<?php echo __('Google Play Image', 'powerpress'); ?>  
 </th>
 <td>
 <input type="text" id="googleplay_image" name="Feed[googleplay_image]" style="width: 60%; margin-top: 10px;" value="<?php echo esc_attr( !empty($FeedSettings['googleplay_image'])? $FeedSettings['googleplay_image']:''); ?>" maxlength="255" />

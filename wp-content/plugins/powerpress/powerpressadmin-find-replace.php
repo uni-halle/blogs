@@ -11,7 +11,7 @@
 		$query = "SELECT meta_id, post_id, meta_key, meta_value FROM {$wpdb->postmeta} WHERE meta_key LIKE \"%enclosure\"";
 		$results_data = $wpdb->get_results($query, ARRAY_A);
 		
-		while( list( $index, $row) = each($results_data) )
+		foreach( $results_data as $index=> $row )
 		{
 			list($url) = @explode("\n", $row['meta_value'], 2 );
 			$url = trim($url);
@@ -45,7 +45,7 @@
 				
 				$FoundArray = powerpressadmin_find_replace_get_enclosures($FindReplace['find_string']);
 				
-				while( list($meta_id, $row) = each($FoundArray) )
+				foreach( $FoundArray as $meta_id=> $row )
 				{
 					// powerpress_get_post_meta
 					$meta_value = get_post_meta($row['post_id'], $row['meta_key'], true);
@@ -257,7 +257,7 @@ dt {
 
 <ol>
 <?php
-				while( list($meta_id, $row) = each($FindReplaceResults) )
+				foreach( $FindReplaceResults as $meta_id=> $row )
 				{
 					$post_view_link = '<a href="' . get_permalink($row['post_id']) . '" target="_blank">' . get_the_title($row['post_id']) . '</a>';
 					$post_edit_link = '<a href="' . get_edit_post_link($row['post_id']) . '" target="_blank">' . __('Edit Post', 'powerpress') . '</a>';

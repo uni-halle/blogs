@@ -657,7 +657,7 @@
 					}
 					
 					$errors = '';
-					while( list($null,$error) = each($FileInfo['error']) )
+					foreach( $FileInfo['error'] as $null => $error )
 					{
 						if( strstr($error, 'error parsing') )
 							continue;
@@ -673,7 +673,7 @@
 				if( false && isset($FileInfo['warning']) )
 				{
 					$errors = '';
-					while( list($null,$warning) = each($FileInfo['warning']) )
+					foreach( $FileInfo['warning'] as $null => $warning )
 						$this->AddWarning($warning );
 				}
 				
@@ -749,7 +749,7 @@
 					{
 						$plugin_folder = $matches[1];
 						$current_plugins = get_option('active_plugins');
-						while( list($null,$plugin_local_path) = each($current_plugins) )
+						foreach( $current_plugins as $null => $plugin_local_path )
 						{
 							if( substr($plugin_local_path, 0, strpos($plugin_local_path, '/') ) != $plugin_folder )
 								continue;

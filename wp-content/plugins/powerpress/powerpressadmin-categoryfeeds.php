@@ -67,7 +67,7 @@ function powerpress_admin_categoryfeeds()
 		$Feeds = $General['custom_cat_feeds'];
 		
 	$count = 0;
-	while( list($null, $cat_ID) = each($Feeds) )
+	foreach( $Feeds as $null => $cat_ID )
 	{
 		if( empty($cat_ID) )
 			continue;

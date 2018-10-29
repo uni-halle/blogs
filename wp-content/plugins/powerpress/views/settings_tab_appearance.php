@@ -73,7 +73,7 @@
 <?php
 		}
 ?>
-	<p><a href="http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/subscribe-page/" target="_blank"><?php echo __('Learn more about the PowerPress Subscribe Page', 'powerpress'); ?></a></p>
+	<p><a href="https://create.blubrry.com/resources/powerpress/advanced-tools-and-options/subscribe-page/" target="_blank"><?php echo __('Learn more about the PowerPress Subscribe Page', 'powerpress'); ?></a></p>
 	<?php
 	// TODO: use the $FeedAttribs to create a recommended shortcode for this particular channel, may be simple [powerpress_subscribe] or it may specify the category, taxonomy, and/or feed_slug/post tpe podcasting
 	?>
@@ -127,12 +127,12 @@
 <?php echo __('The Player shortcode is used to position your media presentation (player and download links) exactly where you want within your post or page content.', 'powerpress'); ?> 
 </p>
 <p>
-<?php echo sprintf(__('Please visit the %s page for additional options.', 'powerpress'), '<a href="http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/shortcode/" target="_blank">'. __('PowerPress Player Shortcode', 'powerpress') .'</a>' ); ?>
+<?php echo sprintf(__('Please visit the %s page for additional options.', 'powerpress'), '<a href="https://create.blubrry.com/resources/powerpress/advanced-tools-and-options/shortcode/" target="_blank">'. __('PowerPress Player Shortcode', 'powerpress') .'</a>' ); ?>
 </p>
 <p class="description">
 <?php echo __('Note: When specifying a URL to media in the powerpress shortcode, only the player is included. The Media Links will <u>NOT</u> be included since there is not enough meta information to display them.', 'powerpress'); ?>
 </p>
-<h3><?php echo __('PowerPress Playlist Shortcode', 'powerpress'); ?> <?php echo powerpressadmin_new(); ?></h3>
+<h3><?php echo __('PowerPress Playlist Shortcode', 'powerpress'); ?></h3>
 <?php if( empty($GeneralSettings['playlist_player']) ) { // Either not set or set on  
 ?>
 <p style="margin-bottom: 20px; margin-left: 40px;">
@@ -147,10 +147,10 @@
 <?php echo __('The Playlist shortcode is used to display a player with a playlist of your podcast episodes. It utilizes the default playlist built into WordPress.', 'powerpress'); ?> 
 </p>
 <p>
-<?php echo sprintf(__('Please visit the %s page for additional options.', 'powerpress'), '<a href="http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/powerpress-playlist-shortcode/" target="_blank">'. __('PowerPress Playlist Shortcode', 'powerpress') .'</a>' ); ?>
+<?php echo sprintf(__('Please visit the %s page for additional options.', 'powerpress'), '<a href="https://create.blubrry.com/resources/powerpress/advanced-tools-and-options/powerpress-playlist-shortcode/" target="_blank">'. __('PowerPress Playlist Shortcode', 'powerpress') .'</a>' ); ?>
 </p>
 
-<h3><?php echo __('PowerPress Subscribe Shortcode', 'powerpress'); ?> <?php echo powerpressadmin_new(); ?></h3>
+<h3><?php echo __('PowerPress Subscribe Shortcode', 'powerpress'); ?> </h3>
 <p>
 <?php echo '<code>'.$shortcode['powerpress_subscribe'].'</code>'; ?> 
 </p>
@@ -158,7 +158,26 @@
 <?php echo __('The Subscribe shortcode is used to display a subscribe to podcast widget for your podcast. It is intended for use on a custom subscribe page. See the Subscribe Page section below for more details.', 'powerpress'); ?> 
 </p>
 <p>
-<?php echo sprintf(__('Please visit the %s page for additional options.', 'powerpress'), '<a href="http://create.blubrry.com/resources/powerpress/advanced-tools-and-options/powerpress-subscribe-shortcode/" target="_blank">'. __('PowerPress Subscribe Shortcode', 'powerpress') .'</a>' ); ?>
+<?php echo sprintf(__('Please visit the %s page for additional options.', 'powerpress'), '<a href="https://create.blubrry.com/resources/powerpress/advanced-tools-and-options/powerpress-subscribe-shortcode/" target="_blank">'. __('PowerPress Subscribe Shortcode', 'powerpress') .'</a>' ); ?>
+</p>
+
+
+
+<h3><?php echo __('PowerPress Skip-to-Position in Player Shortcode', 'powerpress'); ?> <?php echo powerpressadmin_new(); ?></h3>
+<p>
+<?php echo '<code>[skipto time="TIME"]</code>'; ?> 
+</p>
+<p>
+<?php echo __('The Skip-to-Position in Player shortcode creates a link in your page to skip to the specified position in the player. Time may be entered in seconds, minutes:seconds, or hours:minutes:seconds. A label may be specified by providing text followed by a closing shortcode tag. See examples below.', 'powerpress'); ?> 
+</p>
+<ul style="margin-left: 40px;">
+<li>[skipto time="45"] &#8212;  <a href="#" onclick="return false;">0:45</a></li>
+<li>[skipto time="45"]Skip intro[/skipto] &#8212; <a href="#" onclick="return false;">Skip intro</a></li>
+<li>[skipto time="3:05"] <?php echo __('or', 'powerpress'); ?> [skipto time="185"] &#8212; <a href="#" onclick="return false;">3:05</a></li>
+<li>[skipto time="1:23:45"] <?php echo __('or', 'powerpress'); ?> [skipto time="83:45"] <?php echo __('or', 'powerpress'); ?> [skipto time="5025"] &#8212; <a href="#" onclick="return false;">1:23:45</a></li>
+</ul>
+<p>
+<?php echo sprintf(__('Please visit the %s page for additional options.', 'powerpress'), '<a href="https://create.blubrry.com/resources/powerpress/advanced-tools-and-options/skip-to-position-in-player/" target="_blank">'. __('PowerPress Skip-to-Position in Player Shortcode', 'powerpress') .'</a>' ); ?>
 </p>
 
 </td>

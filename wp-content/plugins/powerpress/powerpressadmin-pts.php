@@ -151,7 +151,7 @@ function callUpdateListing( $post_id, $program_keyword, $guid ) {
 	foreach ( $api_url_array as $api_url ) {
 		$response = powerpress_remote_fopen( "{$api_url}social/{$program_keyword}/update-listing.json", $Settings['blubrry_auth'], json_encode( $post_params ) );
 		
-		mail('cio@rawvoice.com', 'update listing response', $response);
+		//mail('cio@rawvoice.com', 'update listing response', $response);
 		if ( $response ) {
 			break;
 		}

@@ -141,7 +141,13 @@ body .pp-sub-widget a:hover {
 	background-color: #2CB6A8;
 }
 .pp-sub-widget-modern a.pp-sub-gp {
-	background-color: #F15832;
+	background-color: #F15832; /* google yellow */
+	background-color: #3cba54; /* google green */
+	background-color: #4885ed; /* google blue */
+	background-color: #db3236; /* google red */
+}
+.pp-sub-widget-modern a.pp-sub-spotify {
+	background-color: #1db954;
 }
 .pp-sub-widget-modern a.pp-sub-android {
 	background-color: #6AB344;
@@ -161,7 +167,7 @@ body .pp-sub-widget a:hover {
 	margin-right: 2px;
 }
 .pp-sub-ic {
-	background-image: url(../images/spriteStandard.png);
+	background-image: url(../images/spriteStandard2.png);
 	background-repeat: no-repeat;
 	background-size: 294px;
 }
@@ -190,7 +196,10 @@ body .pp-sub-widget a:hover {
 	background-position: -245px -98px;
 }
 .pp-sub-gp .pp-sub-ic {
-	background-position: -196px -98px;
+	background-position: -196px 0;
+}
+.pp-sub-spotify .pp-sub-ic {
+	background-position: -147px 0;
 }
 
 /* Retina-specific stuff here */
@@ -199,6 +208,6 @@ body .pp-sub-widget a:hover {
        only screen and (-o-min-device-pixel-ratio: 200/100),
        only screen and (min-device-pixel-ratio: 2.0) {
 	.pp-sub-ic {
-		background-image: url(../images/spriteRetina.png);
+		background-image: url(../images/spriteRetina2.png);
 	}
 }

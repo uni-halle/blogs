@@ -404,7 +404,7 @@ function powerpress_meta_box($object, $box)
 <?php
 $type_array = array(''=>__('Full (default)', 'powerpress'), 'full'=>__('Full', 'powerpress'),'trailer'=>__('Trailer', 'powerpress'), 'bonus'=>__('Bonus', 'powerpress') );
 
-while( list($value,$desc) = each($type_array) )
+foreach( $type_array as $value => $desc )
 	echo "\t<option value=\"$value\"". ($ExtraData['episode_type']==$value?' selected':''). ">$desc</option>\n";
 unset($cc_array);
 ?>
@@ -525,7 +525,7 @@ unset($cc_array);
 <?php
 $explicit_array = array(''=>__('Use feed\'s explicit setting', 'powerpress'), 0=>__('no - display nothing', 'powerpress'), 1=>__('yes - explicit content', 'powerpress'), 2=>__('clean - no explicit content', 'powerpress') );
 
-while( list($value,$desc) = each($explicit_array) )
+foreach( $explicit_array as $value => $desc )
 	echo "\t<option value=\"$value\"". ($iTunesExplicit==$value?' selected':''). ">$desc</option>\n";
 
 ?>
@@ -545,7 +545,7 @@ while( list($value,$desc) = each($explicit_array) )
 <?php
 $explicit_array = array(''=>__('Use feed\'s explicit setting', 'powerpress'), 0=>__('no - display nothing', 'powerpress'), 1=>__('yes - explicit content', 'powerpress') );
 
-while( list($value,$desc) = each($explicit_array) )
+foreach( $explicit_array as $value => $desc )
 	echo "\t<option value=\"$value\"". ($GooglePlayExplicit==$value?' selected':''). ">$desc</option>\n";
 
 ?>
@@ -566,7 +566,7 @@ while( list($value,$desc) = each($explicit_array) )
 <?php
 $cc_array = array(''=>__('No Closed Captioning', 'powerpress'), 1=>__('Yes, Closed Captioned media', 'powerpress') );
 
-while( list($value,$desc) = each($cc_array) )
+foreach( $cc_array as $value => $desc )
 	echo "\t<option value=\"$value\"". ($iTunesCC==$value?' selected':''). ">$desc</option>\n";
 unset($cc_array);
 ?>
@@ -617,7 +617,7 @@ unset($cc_array);
 <?php
 $block_array = array(''=>__('No', 'powerpress'), 1=>__('Yes, Block episode from iTunes', 'powerpress') );
 
-while( list($value,$desc) = each($block_array) )
+foreach( $block_array as $value => $desc )
 	echo "\t<option value=\"$value\"". ($iTunesBlock==$value?' selected':''). ">$desc</option>\n";
 unset($block_array);
 ?>
@@ -635,9 +635,9 @@ unset($block_array);
 			<div class="powerpress_row_content">
 				<select id="powerpress_block_<?php echo $FeedSlug; ?>" name="Powerpress[<?php echo $FeedSlug; ?>][gp_block]" style="width: 220px;">
 <?php
-$block_array = array(''=>__('No', 'powerpress'), 1=>__('Yes, Block episode from Google Play Music', 'powerpress') );
+$block_array = array(''=>__('No', 'powerpress'), 1=>__('Yes, Block episode from Google Podcasts', 'powerpress') );
 
-while( list($value,$desc) = each($block_array) )
+foreach( $block_array as $value => $desc )
 	echo "\t<option value=\"$value\"". ($GooglePlayBlock==$value?' selected':''). ">$desc</option>\n";
 unset($block_array);
 ?>
@@ -670,8 +670,9 @@ unset($block_array);
 			$cur_cat_id = intval(!empty($ExtraData['category'])?$ExtraData['category']:0);
 			if( count($GeneralSettings['custom_cat_feeds']) == 1 ) // Lets auto select the category
 			{
-				
-				list($null, $cur_cat_id) = each($GeneralSettings['custom_cat_feeds']);
+				foreach( $GeneralSettings['custom_cat_feeds'] as $null => $cur_cat_id ) {
+					break;
+				}
 				reset($GeneralSettings['custom_cat_feeds']);
 			}
 			
@@ -683,7 +684,7 @@ unset($block_array);
 				echo '<option value="0"';
 				echo '>' . esc_html( __('Select category', 'powerpress') ) . '</option>' . "\n";
 				
-				while( list($null, $cat_id) = each($GeneralSettings['custom_cat_feeds']) ) {
+				foreach( $GeneralSettings['custom_cat_feeds'] as $null => $cat_id ) {
 					$catObj = get_category( $cat_id );
 					if( empty($catObj->name ) )
 						continue; // Do not allow empty categories forward

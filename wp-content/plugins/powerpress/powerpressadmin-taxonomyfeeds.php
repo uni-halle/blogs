@@ -77,7 +77,7 @@ function powerpress_admin_taxonomyfeeds()
 	
 
 	$count = 0;
-	while( list($tt_id, $null) = each($PowerPressTaxonomies) )
+	foreach( $PowerPressTaxonomies as $tt_id => $null )
 	{
 		$taxonomy_type = '';
 		$term_ID = '';
@@ -201,7 +201,7 @@ function powerpress_admin_taxonomyfeeds()
 $taxonomies=get_taxonomies('','names');
 
 
-while( list($null,$taxonomy) = each($taxonomies) ) {
+foreach( $taxonomies as $null => $taxonomy ) {
 	if( $taxonomy == 'category' )
 		continue;
 	$taxonomy = htmlspecialchars($taxonomy);

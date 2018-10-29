@@ -14,9 +14,7 @@ jQuery(document).ready(function() {
 	
 <?php  
 	
-	if( empty($General['seo_append_show_title']) )
-		echo "	jQuery('#powerpress_example_show_title').hide();\n";
-	if( !empty($General['seo_feed_title'])  && $General['seo_feed_title'] == 1 )
+		if( !empty($General['seo_feed_title'])  && $General['seo_feed_title'] == 1 )
 		echo "	jQuery('#powerpress_example_post_title').hide();\n";
 ?>
 	jQuery('#seo_feed_title').change( function() {
@@ -24,12 +22,6 @@ jQuery(document).ready(function() {
 			jQuery('#powerpress_seo_feed_title_1').prop('checked', true);
 		else
 			jQuery('.powerpress_seo_feed_title').prop('checked', false);
-	});
-	jQuery('#seo_append_show_title').change( function() {
-		if( jQuery(this).prop('checked') )
-			jQuery('#powerpress_example_show_title').show();
-		else
-			jQuery('#powerpress_example_show_title').hide();
 	});
 	jQuery('.powerpress_seo_feed_title').change( function() {
 		
@@ -91,19 +83,12 @@ jQuery(document).ready(function() {
 		<p><label style="display: block;"><input type="radio" class="powerpress_seo_feed_title" id="powerpress_seo_feed_title_3" name="General[seo_feed_title]" value="3" <?php if( $General['seo_feed_title'] == 3 ) echo 'checked'; ?> /> 
 			<?php echo __('Feed episode title appended to post title', 'powerpress'); ?></label></p>
 	</div>
-	<p>
-		<label for="seo_append_show_title">
-		<input name="General[seo_append_show_title]" type="hidden" value="0" />
-		<input id="seo_append_show_title" name="General[seo_append_show_title]" type="checkbox" value="1" <?php if( !empty($General['seo_append_show_title']) ) echo 'checked '; ?> /> 
-		<?php echo __('Append show title to episode titles.', 'powerpress'); ?></label>
-	</p>
 	<p style="margin: 10px 0 0 40px;">
 		<strong><?php echo __('Example based on options selected above:', 'powerpress'); ?></strong><br /><i>
 		<span id="powerpress_example_post_episode_title">
 			<span id="powerpress_example_post_title" style="margin: 0 5px;"> <?php echo __('Blog Post Title', 'powerpress'); ?> </span>
 			<span id="powerpress_example_episode_title" style="margin: 0 5px;"> <?php echo __('Custom Episode Title', 'powerpress'); ?> </span>
 		</span>
-		<span id="powerpress_example_show_title"> - <span style="margin: 0 5px;"><?php echo __('Show Title', 'powerpress'); ?></span></span>
 		</i>
 	</p>
 </td>

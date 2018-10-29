@@ -370,7 +370,7 @@ table.html5formats tr > td:first-child {
 <th scope="row">&nbsp;</th>  
 <td>
 	<ul>
-		<li><label><input type="radio" name="Player[player]" id="player_blubrryaudio" value="blubrryaudio" <?php if( $General['player'] == 'blubrryaudio' ) echo 'checked'; ?> /> <?php echo __('Blubrry Audio Player', 'powerpress'); ?>  <?php echo powerpressadmin_new(); ?></label>
+		<li><label><input type="radio" name="Player[player]" id="player_blubrryaudio" value="blubrryaudio" <?php if( $General['player'] == 'blubrryaudio' ) echo 'checked'; ?> /> <?php echo __('Blubrry Audio Player', 'powerpress'); ?>  </label>
 			<strong style="padding-top: 8px; margin-left: 20px;"><a href="<?php echo admin_url('admin.php?page=powerpress/powerpressadmin_player.php&ep=1'); ?>" id="activate_blubrryaudio" class="activate-player"><?php echo __('Activate and Configure Now', 'powerpress'); ?></a></strong>
 		</li>
 		<li style="margin-left: 30px; margin-bottom:16px;">

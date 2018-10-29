@@ -72,7 +72,7 @@ function powerpress_admin_customfeeds()
 	asort($Feeds, SORT_STRING); // Sort feeds 
 	
 	$count = 0;
-	while( list($feed_slug, $feed_title) = each($Feeds	) )
+	foreach( $Feeds as $feed_slug => $feed_title )
 	{
 		$feed_slug = esc_attr($feed_slug); // Precaution
 		$episode_total = powerpress_admin_episodes_per_feed($feed_slug);
