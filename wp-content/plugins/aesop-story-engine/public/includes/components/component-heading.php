@@ -142,7 +142,7 @@ if ( ! function_exists( 'aesop_chapter_heading_loader' ) ) {
 		$default_location  = is_single() || is_page();
 		$location    = apply_filters( 'aesop_chapter_component_appears', $default_location );
 
-		if ( isset( $post->post_content ) && ( $location ) && has_shortcode( $post->post_content, 'aesop_chapter' ) ) {
+		if ( function_exists( 'aesop_component_exists' ) && aesop_component_exists( 'chapter' ) && ( $location ) ) {
 
 			new AesopChapterHeadingComponent;
 
@@ -251,7 +251,7 @@ class AesopChapterHeadingComponent {
 		$out = '';
 		$exclass="";
 		if (empty($ui_style) || (wp_is_mobile() && !get_option( 'ase_chapter_enable_dots_mobile' ))) {
-			$out .= '<a id="aesop-toggle-chapter-menu" class="aesop-toggle-chapter-menu" href="#aesop-chapter-menu"><i class="dashicons dashicons-tag aesop-close-chapter-menu"></i></a>';
+			$out .= '<a id="aesop-toggle-chapter-menu" aria-label="'.__('Chapter Toggle Button','aesop-core').'" class="aesop-toggle-chapter-menu" href="#aesop-chapter-menu"><i class="dashicons dashicons-tag aesop-close-chapter-menu"></i></a>';
 		} else {
 			if ($ui_style == 'left_dots') {
 				$exclass = 'aesop-chapter-menu-left';

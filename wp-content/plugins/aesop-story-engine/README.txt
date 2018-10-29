@@ -5,8 +5,8 @@ Plugin URI: http://aesopstoryengine.com
 Donate link: http://aesopstoryengine.com/donate
 Tags: aesop, story, business, education, parallax, interactive, shortcode, gallery, grid gallery, thumbnail gallery,
 Requires at least: 3.8
-Tested up to: 4.9.5
-Stable tag: 1.9.10.2
+Tested up to: 4.9.8
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,9 @@ Utilizing these components, writers and developers can build feature-rich, visua
 ** Check the latest new features of Aesop Story Engine **
 
 [http://aesopstoryengine.com/blog/](http://aesopstoryengine.com/blog/)
+
+Gutenberg Support: New Feature for v 1.10.0 
+Aesop blocks are found under the category "Aesop Story Engine"
 
 Panorama Mode: New features  v 1.9.10   
 [http://aesopstoryengine.com/releases/new-aesop-feature-panorama-image/](http://aesopstoryengine.com/releases/new-aesop-feature-panorama-image/)
@@ -182,6 +185,23 @@ Full documentation can be found here: [http://aesopstoryengine.com/developers](h
 * Initial Release
 
 == Changelog ==
+= 2.0.1 =
+*FIX Gutenberg 3.9.0 fix
+
+= 2.0.0 =
+*FIX Gutenberg fixes
+
+= 1.10.0 =
+*NEW Gutenberg support
+
+= 1.9.10.5 =
+* Some CSS changes for better contrasts
+* aria-label added to the chapter menu toggle icon
+
+= 1.9.10.3 =
+* NEW Option to hide post excerpts on Collection Components
+
+
 = 1.9.10.2 =
 * FIX Add PDF download link for Document Component on mobile
 
