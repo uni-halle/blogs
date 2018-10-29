@@ -1,184 +1,95 @@
-<div class="metabox-holder">
-
-	<div class="postbox">
-		<h3 class="hndle"><span><?php _e('Facebook Integration', 'another-wordpress-classifieds-plugin') ?></span></h3>
-		<div class="inside">
-			<div>
-				<p><?php echo str_replace( '<a>',
-					'<a href="https://developers.facebook.com/docs/web/tutorials/scrumptious/register-facebook-application/" target="_blank">',
-					__( 'This configuration allows you to post ads to Facebook. You must have a Facebook Application created to use this feature. Read <a>How to Register and Configure a Facebook Application.</a>', 'another-wordpress-classifieds-plugin' ) );
-				?></p>
-                <p><?php esc_html_e( 'Add the following URL to the list of Valid OAuth Redirect URIs for the configuration of the Facebook Application:', 'another-wordpress-classifieds-plugin' ); ?></p>
-                <pre><code><?php echo esc_html( $redirect_uri ); ?></code></pre>
-			</div>
-	     </div>
-	</div>
-
-	<?php if ( $current_step > 1 && $this->get_current_action() != 'diagnostics' ): ?>
-	<div class="postbox">
-		<h3 class="hndle"><span><?php _e( 'Diagnostics', 'another-wordpress-classifieds-plugin' ) ?></span></h3>
-		<div class="inside">
-			<form  method="post">
-				<?php wp_nonce_field( 'awpcp-facebook-settings' ); ?>
-				<?php echo __( 'If you are having trouble with Facebook integration, click "Diagnostics" to check your settings.', 'another-wordpress-classifieds-plugin' ); ?>
-				<input type="submit" class="button-secondary" name="diagnostics" value="<?php _e( 'Diagnostics', 'another-wordpress-classifieds-plugin' ); ?>" />
-			</form>
-		</div>
-	</div>
-	<?php endif; ?>
-</div>
-
-<h3><?php _e( 'Facebook Integration', 'another-wordpress-classifieds-plugin' ); ?></h3>
-
 <?php if ( isset( $errors ) && $errors ): ?>
 <?php foreach ( $errors as $err ): ?>
 	<?php echo awpcp_print_error( $err ); ?>
 <?php endforeach; ?>
 <?php endif; ?>
 
-<form  method="post" class="facebook-integration-settings">
-	<?php wp_nonce_field( 'awpcp-facebook-settings' ); ?>
+<div class="awpcp-facebook-inline-documentation">
 
-	<div class="section app-config">
-		<h4><?php _e( '1. Application Information', 'another-wordpress-classifieds-plugin'); ?></h4>
+<?php echo awpcp_html_admin_second_level_heading( array( 'content' => __( 'Facebook Integration', 'another-wordpress-classifieds-plugin' ) ) ); // XSS Ok. ?>
 
-		<p><?php
-			echo str_replace( '<a>',
-					 		  '<a href="https://developers.facebook.com/apps/" target="_blank">',
-						 	  __( 'You can find your application information in the <a>Facebook Developer Apps</a> page.', 'another-wordpress-classifieds-plugin' ) );
-		?></p>
+<p><?php esc_html_e( 'We currently support two methods for posting new ads to Facebook: Facebook API and Zapier/IFTTT Webhooks.', 'another-wordpress-classifieds-plugin' ); ?></p>
 
-		<table class="form-table">
-			<tr>
-				<th scope="row">
-					<label><?php _e( 'App Id', 'another-wordpress-classifieds-plugin' ); ?></label>
-				</th>
-				<td>
-					<input type="text" name="app_id" value="<?php echo esc_attr( $config['app_id'] ); ?>" /> <br />
-					<span class="description">
-						<?php _e( 'An application identifier associates your site, its pages, and visitor actions with a registered Facebook application.', 'another-wordpress-classifieds-plugin' ); ?>
-					</span>
-				</td>
-			</tr>
-			<tr>
-				<th scope="row">
-					<label><?php _e( 'App Secret', 'another-wordpress-classifieds-plugin' ); ?></label>
-				</th>
-				<td>
-					<input type="text" name="app_secret" value="<?php echo esc_attr( $config['app_secret'] ); ?>" /> <br />
-					<span class="description">
-						<?php _e( 'An application secret is a secret shared between Facebook and your application, similar to a password.', 'another-wordpress-classifieds-plugin' ); ?>
-					</span>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<input type="submit" value="<?php _e( 'Save App Settings', 'another-wordpress-classifieds-plugin' ); ?>" class="button-primary" name="save_config" />
-				</td>
-			</tr>
-		</table>
-	</div>
+<p><?php esc_html_e( 'Support for Facebook API will be removed in the future. Facebook significantly reduced access to their APIs across all apps on Apr, 2018. Now it takes longer and is more difficult to configure Facebook Apps that can post content to pages or groups. As a result, it is unlikely that this integration is going to work for new users. We introduced support for Zapier/IFTTT Webhooks as an alternative and expect customers to migrate to that integration method.', 'another-wordpress-classifieds-plugin' ); ?></p>
 
-	<div class="section user-token <?php echo $current_step < 2 ? 'disabled' : ''; ?>">
-		<h4><?php _e( '2. User Authorization', 'another-wordpress-classifieds-plugin'); ?></h4>
-		<?php if ( $current_step < 2 ): ?>
-		<p><?php _e( 'This settings section is not available yet. Please fill out required fields above and save your settings.', 'another-wordpress-classifieds-plugin' ); ?></p>
-		<?php else: ?>
-			<p><?php _e( 'AWPCP needs to get an authorization token from Facebook to work correctly. You\'ll be redirected to Facebook to login. AWPCP does not store or obtain any personal information from your profile.', 'another-wordpress-classifieds-plugin' ); ?></p>
+<p><?php
+    $content = esc_html__( 'You can read more about Facebook changes here: {facebook_post_link}', 'another-wordpress-classifieds-plugin' );
+    $content = str_replace( '{facebook_post_link}', '<a href="https://developers.facebook.com/blog/post/2018/04/04/facebook-api-platform-product-changes/">https://developers.facebook.com/blog/post/2018/04/04/facebook-api-platform-product-changes/</a>', $content );
 
-			<?php
-			/*
-				Choosing Public is important because:
+    echo $content; // XSS Ok. ?></p>
 
-				- http://stackoverflow.com/a/19653226/201354
-				- https://github.com/drodenbaugh/awpcp/issues/1288#issuecomment-134198377
-			*/ ?>
-			<p><?php _e( "Please choose Public as the audience for posts made by the application, even if you are just testing the integration. Facebook won't allow us to post content in some cases if you choose something else.", 'another-wordpress-classifieds-plugin' ); ?></p>
+<p><?php echo esc_html_e( "If you are currently using the Facebook API integration method and not having any issues, you don't have to do anything right now. If you are having issues, please read the Diagnostics section below to try to fix them.", 'another-wordpress-classifieds-plugin' ); ?></p>
 
-			<table class="form-table">
-				<tr>
-					<th scope="row">
-						<label><?php _e( 'User Access Token', 'another-wordpress-classifieds-plugin' ); ?></label>
-					</th>
-					<td>
-						<input type="text" name="user_token" value="<?php echo esc_attr( $config['user_token'] ); ?>" /> <?php echo str_replace( '<a>', '<a href="' . $login_url . '">', __(' or <a>obtain an access token from Facebook</a>.', 'another-wordpress-classifieds-plugin' ) ); ?><br />
-						<span class="description">
-							<?php _e( 'You can manually enter your user access token (if you know it) or log in to Facebook to get one.', 'another-wordpress-classifieds-plugin' ); ?>
-						</span>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<input type="submit" value="<?php _e( 'Save Token Value', 'another-wordpress-classifieds-plugin' ); ?>" class="button-primary" name="save_config" />
-					</td>
-				</tr>
-			</table>
-		<?php endif; ?>
-	</div>
+<h3><?php _e( 'Facebook API', 'another-wordpress-classifieds-plugin' ); ?></h3>
 
-	<div class="section page-token <?php echo $current_step < 3 ? 'disabled' : ''; ?>">
-		<h4><?php _e( '3. Page and Group Selection', 'another-wordpress-classifieds-plugin'); ?></h4>
-		<?php if ( $current_step < 3 ): ?>
-		<p><?php _e( 'This settings section is not available yet. Please fill out required fields above and save your settings.', 'another-wordpress-classifieds-plugin' ); ?></p>
-		<?php else: ?>
-			<table class="form-table">
-				<tr>
-					<th scope="row">
-						<label><?php _e( 'Facebook Page', 'another-wordpress-classifieds-plugin' ); ?></label>
-					</th>
-					<td>
-						<?php if ( $pages ): ?>
-								<label>
-									<input type="radio" name="page" value="none" <?php echo empty( $config['page_id'] ) ? 'checked="checked"' : ''; ?> /> <?php echo __( 'None (Do not sent Ads to a Facebook Page)', 'another-wordpress-classifieds-plugin' ); ?>
-								</label><br />
-							<?php foreach( $pages as $page ): ?>
-								<label>
-									<input type="radio" name="page" value="<?php echo esc_attr( $page['id'] . '|' . $page['access_token'] ); ?>" <?php echo $page['id'] == $config['page_id'] ? 'checked="checked"' : ''; ?> /> <?php echo esc_html( $page['name'] ); ?> <?php echo isset( $page['profile'] ) && $page['profile'] ? __( '(Your own profile page)', 'another-wordpress-classifieds-plugin' ) : ''; ?>
-								</label><br />
-							<?php endforeach; ?>
-						<?php else: ?>
-							<p><?php _e( 'There are no Facebook pages available for you to select. Please make sure you are connected to the internet and have granted the Facebook application the correct permissions. Click "Diagnostics" if you are in doubt.', 'another-wordpress-classifieds-plugin' ); ?></p>
-						<?php endif; ?>
-					</td>
-				</tr>
-				<tr>
-					<th scope="row">
-						<label><?php _e( 'Facebook Group', 'another-wordpress-classifieds-plugin' ); ?></label>
-					</th>
-					<td>
-						<?php if ( $groups ): ?>
-								<?php $group_id = isset( $config['group_id'] ) ? $config['group_id'] : ''; ?>
-								<label>
-									<input type="radio" name="group" value="none" <?php echo empty( $group_id ) ? 'checked="checked"' : ''; ?> /> <?php echo __( 'None (Do not sent Ads to a Facebook Group)', 'another-wordpress-classifieds-plugin' ); ?>
-								</label><br />
-							<?php foreach( $groups as $group ): ?>
-								<label>
-									<input type="radio" name="group" value="<?php echo esc_attr( $group['id'] ); ?>" <?php echo $group['id'] == $group_id ? 'checked="checked"' : ''; ?> /> <?php echo esc_html( $group['name'] ); ?>
-								</label><br />
-							<?php endforeach; ?>
-						<?php else: ?>
-							<p><?php _e( 'There are no Facebook groups available for you to select. Please make sure you are connected to the internet and have granted the Facebook application the correct permissions. Click "Diagnostics" if you are in doubt.', 'another-wordpress-classifieds-plugin' ); ?></p>
-                            <p><?php _e( 'As of April 4, 2018, all applications (new and existing) need to go through <a href="https://developers.facebook.com/docs/apps/review" rel="nofollow">App Review</a> in order to get access to the <a href="https://developers.facebook.com/docs/graph-api/reference/user/groups/" rel="nofollow">Groups API</a>. That means that unless you <a href="https://developers.facebook.com/docs/facebook-login/review" rel="nofollow">submit your app for review</a> (ask for the <code>user_managed_groups</code> permission), AWPCP won\'t be able to display the list of groups you manage and won\'t be able to post classifieds to those groups.', 'another-wordpress-classifieds-plugin' ); ?></p>
-						<?php endif; ?>
-					</td>
-				</tr>
-				<?php if ( $config['page_token'] ): ?>
-				<tr>
-					<th scope="row">
-						<label><?php _e( 'Page Token (not editable)', 'another-wordpress-classifieds-plugin' ); ?></label>
-					</th>
-					<td>
-						<input type="text" disabled="disabled" editable="false" value="<?php echo $config['page_token']; ?>" size="60" />
-					</td>
-				</tr>
-				<?php endif; ?>
-				<tr>
-					<td colspan="2">
-						<input type="submit" value="<?php _e( 'Save Page and Group Selection', 'another-wordpress-classifieds-plugin' ); ?>" class="button-primary" name="save_config" />
-					</td>
-				</tr>
-			</table>
-		<?php endif; ?>
-	</div>
+<p><?php
+    $content = esc_html__( 'This integration method allows you to post ads to Facebook using a Facebook Application. Please read {link_to_how_to_register_facebook_apps}How to Register and Configure a Facebook Application{/link_to_how_to_register_facebook_apps} and follow {link_to_facebook_integration_documentation}these instructions{/link_to_facebook_integration_documentation}.', 'another-wordpress-classifieds-plugin' );
+    $content = str_replace( '{link_to_how_to_register_facebook_apps}', '<a href="https://developers.facebook.com/docs/web/tutorials/scrumptious/register-facebook-application/">', $content );
+    $content = str_replace( '{/link_to_how_to_register_facebook_apps}', '</a>', $content );
+    $content = str_replace( '{link_to_facebook_integration_documentation}', '<a href="https://awpcp.com/documentation/#facebook-integration">', $content );
+    $content = str_replace( '{/link_to_facebook_integration_documentation}', '</a>', $content );
 
+    echo $content; // XSS Ok.?></p>
+
+<p><?php esc_html_e( 'Add the following URL to the list of Valid OAuth Redirect URIs for the configuration of the Facebook Application:', 'another-wordpress-classifieds-plugin' ); ?></p>
+
+<pre><code><?php echo esc_html( $redirect_uri ); ?></code></pre>
+
+<h3><?php _e( 'Zapier/IFTTT Webhooks', 'another-wordpress-classifieds-plugin' ); ?></h3>
+
+<p><?php esc_html_e( 'Webhooks allow the plugin to send a request to one of the configured webhook URLs the first time an ad becomes publicly available on the website. That is, as soon as any visitor is able to see the ad on the frontend. You can then add a task on Zapier or IFTTT to process the submitted information (url, title and description) and create a post on a Facebook Page you control.', 'another-wordpress-classifieds-plugin' ); ?></p>
+
+<p><?php
+    $content = esc_html__( 'Follow the instructiones to create the tasks on {webhook_instructions_for_zapier}Zapier{/webhook_instructions_for_zapier} or {webhook_instructions_for_ifttt}IFTTT{/webhook_instructions_for_ifttt}. Then update the settings at the bottom of this page to enter the webhook URLs associated with those tasks.', 'another-wordpress-classifieds-plugin' );
+    $content = str_replace( '{webhook_instructions_for_zapier}', '<a href="https://awpcp.com/documentation/#facebook-integration">', $content );
+    $content = str_replace( '{/webhook_instructions_for_zapier}', '</a>', $content );
+    $content = str_replace( '{webhook_instructions_for_ifttt}', '<a href="https://awpcp.com/documentation/#facebook-integration">', $content );
+    $content = str_replace( '{/webhook_instructions_for_ifttt}', '</a>', $content );
+
+    echo $content; // XSS Ok.?></p>
+
+<h3><?php _e( 'Facebook Cache', 'another-wordpress-classifieds-plugin' ); ?></h3>
+
+<p><?php
+    $content = esc_html__( 'If you are using Webhooks to send ads to Facebook, a Facebook Application can still be used to ask Facebook to clear the cache it has stored for ads pages. This is useful to ensure users always see the latest version when the ad is shared on Facebook Pages, Groups and user feeds. If you decide to use this feature, please read {link_to_how_to_register_facebook_apps}How to Register and Configure a Facebook Application{/link_to_how_to_register_facebook_apps} and follow {link_to_facebook_integration_documentation}these instructions{/link_to_facebook_integration_documentation}.', 'another-wordpress-classifieds-plugin' );
+    $content = str_replace( '{link_to_how_to_register_facebook_apps}', '<a href="https://developers.facebook.com/docs/web/tutorials/scrumptious/register-facebook-application/">', $content );
+    $content = str_replace( '{/link_to_how_to_register_facebook_apps}', '</a>', $content );
+    $content = str_replace( '{link_to_facebook_integration_documentation}', '<a href="https://awpcp.com/documentation/#facebook-integration">', $content );
+    $content = str_replace( '{/link_to_facebook_integration_documentation}', '</a>', $content );
+
+    echo $content; // XSS Ok.?></p>
+
+<p><?php esc_html_e( 'Add the following URL to the list of Valid OAuth Redirect URIs for the configuration of the Facebook Application:', 'another-wordpress-classifieds-plugin' ); ?></p>
+
+<pre><code><?php echo esc_html( $redirect_uri ); ?></code></pre>
+
+<h3><?php _e( 'Diagnostics', 'another-wordpress-classifieds-plugin' ) ?></h3>
+
+<p><?php esc_html_e( 'If you see the following error after trying to get a valid User Access Token:', 'another-wordpress-classifieds-plugin' ); ?></p>
+
+<p><strong>Invalid Scopes: manage_pages, publish_pages, publish_to_groups. This message is only shown to developers. Users of your app will ignore these permissions if present. Please read the documentation for valid permissions at: https://developers.facebook.com/docs/facebook-login/permissions</strong></p>
+
+<p><?php esc_html_e( 'You have to submit your Facebook Application for Review and ask for those permissions or use the Webhooks integration method to send ads to Facebook using Zapier or IFTTT Webhooks.', 'another-wordpress-classifieds-plugin' ); ?></p>
+
+<p><?php esc_html_e( 'If you see the following error trying to send ads to a Facebook Group:', 'another-wordpress-classifieds-plugin' ); ?></p>
+
+<p><strong>(#200) Requires either publish_to_groups permission and app being installed in the group, or manage_pages and publish_pages as an admin with sufficient administrative permission.</strong></p>
+
+<p><?php
+    $content = esc_html__( 'Please make sure the Facebook Application {link_to_how_to_add_apps_to_a_group}was added to the group{/link_to_how_to_add_apps_to_a_group}.', 'another-wordpress-classifieds-plugin' );
+    $content = str_replace( '{link_to_how_to_add_apps_to_a_group}', '<a href="https://www.facebook.com/help/261149227954100">', $content );
+    $content = str_replace( '{/link_to_how_to_add_apps_to_a_group}', '</a>', $content );
+
+    echo $content; // XSS Ok. ?></p>
+
+<form  method="post">
+    <p>
+        <?php wp_nonce_field( 'awpcp-facebook-settings' ); ?>
+        <?php echo __( 'If you are having additional problems with Facebook API, click "Diagnostics" to check your settings.', 'another-wordpress-classifieds-plugin' ); ?>
+        <input type="submit" class="button-secondary" name="diagnostics" value="<?php _e( 'Diagnostics', 'another-wordpress-classifieds-plugin' ); ?>" />
+    </p>
 </form>
+
+<hr />
+
+</div>

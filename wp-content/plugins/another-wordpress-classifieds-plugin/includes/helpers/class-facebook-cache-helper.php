@@ -1,55 +1,52 @@
 <?php
 
 function awpcp_facebook_cache_helper() {
-    return new AWPCP_FacebookCacheHelper( AWPCP_Facebook::instance() );
+    return new AWPCP_FacebookCacheHelper(
+        awpcp_facebook_integration(),
+        awpcp_listings_collection(),
+        awpcp()->settings
+    );
 }
 
 class AWPCP_FacebookCacheHelper {
 
-    private $facebook;
+    /**
+     * @var FacebookIntegration
+     */
+    private $facebook_integration;
 
-    public function __construct( $facebook ) {
-        $this->facebook = $facebook;
-    }
+    /**
+     * @var ListingsCollection
+     */
+    private $ads;
 
-    public function on_place_ad( $ad ) {
-        $user_token = $this->facebook->get( 'user_token' );
+    /**
+     * @var Settings
+     */
+    private $settings;
 
-        if ( ! $user_token ) {
-            return;
-        }
-
-        $this->schedule_clear_cache_action( $ad );
-    }
-
-    private function schedule_clear_cache_action( $listing ) {
-        $this->schedule_clear_cache_action_seconds_from_now( $listing, 10 );
-    }
-
-    private function schedule_clear_cache_action_seconds_from_now( $ad, $wait_time ) {
-        if ( ! wp_next_scheduled( 'awpcp-clear-ad-facebook-cache', array( $ad->ad_id ) ) ) {
-            wp_schedule_single_event( time() + $wait_time, 'awpcp-clear-ad-facebook-cache', array( $ad->ad_id ) );
-        }
-    }
-
-    public function on_edit_ad( $ad ) {
-        $this->schedule_clear_cache_action( $ad );
-    }
-
-    public function on_approve_ad( $ad ) {
-        $this->schedule_clear_cache_action( $ad );
+    public function __construct( $facebook_integration, $ads, $settings ) {
+        $this->facebook_integration = $facebook_integration;
+        $this->ads                  = $ads;
+        $this->settings             = $settings;
     }
 
     public function handle_clear_cache_event_hook( $ad_id ) {
-        $this->clear_ad_cache( AWPCP_Ad::find_by_id( $ad_id ) );
-    }
-
-    private function clear_ad_cache( $ad ) {
-        if (is_null( $ad ) || $ad->disabled ) {
+        try {
+            $ad = $this->ads->get( $ad_id );
+        } catch ( AWPCP_Exception $e ) {
             return;
         }
 
-        $user_token = $this->facebook->get( 'user_token' );
+        $this->clear_ad_cache( $ad );
+    }
+
+    private function clear_ad_cache( $ad ) {
+        if ( $ad->disabled ) {
+            return;
+        }
+
+        $user_token = $this->settings->get_option( 'facebook-user-access-token' );
 
         if ( ! $user_token ) {
             return;
@@ -69,7 +66,7 @@ class AWPCP_FacebookCacheHelper {
         if ( $this->is_successful_response( $response ) ) {
             do_action( 'awpcp-listing-facebook-cache-cleared', $ad );
         } else {
-            $this->reschedule_clear_cache_action( $ad );
+            $this->facebook_integration->schedule_clear_cache_action( $ad, 5 * MINUTE_IN_SECONDS );
         }
     }
 
@@ -93,9 +90,5 @@ class AWPCP_FacebookCacheHelper {
         }
 
         return true;
-    }
-
-    private function reschedule_clear_cache_action( $listing ) {
-        $this->schedule_clear_cache_action_seconds_from_now( $listing, 5 * MINUTE_IN_SECONDS );
     }
 }

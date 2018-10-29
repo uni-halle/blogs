@@ -261,8 +261,10 @@ class AWPCP_EditAdPage extends AWPCP_Place_Ad_Page {
         $ad->ad_last_updated = current_time('mysql');
 
         if ( awpcp_current_user_is_moderator() ) {
-            $ad->ad_startdate = awpcp_set_datetime_date( $ad->ad_startdate, $data['start_date'] );
-            $ad->ad_enddate = awpcp_set_datetime_date( $ad->ad_enddate, $data['end_date'] );
+            $now = current_time( 'mysql' );
+
+            $ad->set_start_date( awpcp_set_datetime_date( $now, $data['start_date'] ) );
+            $ad->set_end_date( awpcp_set_datetime_date( $now, $data['end_date'] ) );
         } elseif ( $this->user_can_modify_start_date( $ad, true, false ) ) {
             $start_date_timestamp = awpcp_datetime( 'timestamp', $data['start_date'] );
 

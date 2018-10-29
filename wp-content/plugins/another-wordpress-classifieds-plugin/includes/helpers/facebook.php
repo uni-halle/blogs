@@ -6,24 +6,29 @@
  */
 class AWPCP_Facebook {
 
-    const GRAPH_API_VERSION = 'v2.7';
+    const GRAPH_API_VERSION = 'v2.12';
 
 	private static $instance = null;
     private $access_token = '';
     private $last_error = null;
 
-	public function __construct() { }
+    /**
+     * @var Settings
+     */
+    private $settings;
+
+    public function __construct( $settings ) {
+        $this->settings = $settings;
+    }
 
     public function validate_config( &$errors ) {
         $errors = !$errors ? array() : $errors;
 
-        $config = $this->get_config();
-        $app_id = isset( $config['app_id'] ) ? $config['app_id'] : '';
-        $app_secret = isset( $config['app_secret'] ) ? $config['app_secret'] : '';
-        $user_id = isset( $config['user_id'] ) ? $config['user_id'] : '';
-        $user_token = isset( $config['user_token'] ) ? $config['user_token'] : '';
-        $page_id = isset( $config['page_id'] ) ? $config['page_id'] : '';
-        $page_token = isset( $config['page_token'] ) ? $config['page_token'] : '';
+        $app_id     = $this->settings->get_option( 'facebook-app-id' );
+        $app_secret = $this->settings->get_option( 'facebook-app-secret' );
+        $user_token = $this->settings->get_option( 'facebook-user-access-token' );
+        $page_id    = $this->settings->get_option( 'facebook-page' );
+        $page_token = $this->settings->get_option( 'facebook-page-access-token' );
 
         $app_access_token = '';
 
@@ -37,17 +42,61 @@ class AWPCP_Facebook {
             return;
         }
 
-        $this->set_access_token( 'user_token' );
-        $response = $this->api_request( '/me/permissions', 'GET', array() );
+        $required_permissions = $this->get_required_permissions();
 
-        if ( ! $response && is_object( $response->last_error ) ) {
-            $errors[] = $this->last_error->message;
+        try {
+            $required_permissions_included = $this->user_token_has_required_permissions( $required_permissions );
+        } catch ( AWPCP_Exception $e ) {
+            $errors[] = $e->getMessage();
+
             return;
         }
 
-        if ( ! $response || ! isset( $response->data ) ) {
-            $errors[] = __( 'Could not validate User Access Token. Are you connected to the internet?', 'another-wordpress-classifieds-plugin' );
+        if ( ! $required_permissions_included ) {
+            $message = __( 'User Access Token is valid but doesn\'t have the permissions required for AWPCP integration ({permissions}).', 'another-wordpress-classifieds-plugin' );
+            $message = str_replace( '{permissions}', implode( ', ', $required_permissions ), $message );
+
+            $errors[] = $message;
+
             return;
+        }
+
+        if ( !$page_token || !$page_id ) {
+            $errors[] = __( 'No Facebook page is selected (missing page id or token).', 'another-wordpress-classifieds-plugin' );
+        }
+    }
+
+    /**
+     * @since 3.8.6
+     */
+    public function get_required_permissions() {
+        if ( 'facebook-api' === $this->settings->get_option( 'facebook-integration-method' ) ) {
+            // From Access Token Debugger: manage_pages, pages_show_list, publish_pages, publish_to_groups, public_profile
+            // Required for API 3.1?
+            return array(
+                'manage_pages',
+                'publish_pages',
+                'publish_to_groups',
+            );
+        }
+
+        return array();
+    }
+
+    /**
+     * @since 3.8.6
+     */
+    private function user_token_has_required_permissions( $required_permissions ) {
+        $this->set_access_token( 'user_token' );
+
+        $response = $this->api_request( '/me/permissions', 'GET', array() );
+
+        if ( ! $response && is_object( $response->last_error ) ) {
+            throw new AWPCP_Exception( $this->last_error->message );
+        }
+
+        if ( ! $response || ! isset( $response->data ) ) {
+            throw new AWPCP_Exception( __( 'Could not validate User Access Token.', 'another-wordpress-classifieds-plugin' ) );
         }
 
         $permissions = array();
@@ -58,129 +107,54 @@ class AWPCP_Facebook {
             }
         }
 
-        if ( ! in_array( 'manage_pages', $permissions ) || ( ! in_array( 'publish_pages', $permissions ) && ! in_array( 'publish_actions', $permissions ) ) ) {
-            $errors[] = __( 'User Access Token is valid but doesn\'t have the permissions required for AWPCP integration (publish_pages, publis_actions and manage_pages).', 'another-wordpress-classifieds-plugin' );
-            return;
+        foreach ( $required_permissions as $permission ) {
+            if ( ! in_array( $permission, $permissions, true ) ) {
+                return false;
+            }
         }
 
-        if ( !$page_token || !$page_id ) {
-            $errors[] = __( 'No Facebook page is selected (missing page id or token).', 'another-wordpress-classifieds-plugin' );
-        }
-    }
-
-    public function get_config( $key=null ) {
-        $defaults = array(
-            'app_id' => '',
-            'app_secret' => '',
-            'user_token' => '',
-            'page_token' => ''
-        );
-
-        $config = get_option( 'awpcp-facebook-config', $defaults );
-
-        if ( $key ) {
-            if ( isset( $config[ $key ] ) )
-                return $config[ $key ];
-            else
-                return null;
-        } else {
-            return $config;
-        }
-    }
-
-    public function get( $key, $default=null ) {
-        $config = $this->get_config();
-
-        if ( isset( $config[ $key ] ) )
-            return $config[ $key ];
-
-        return $default;
-    }
-
-    public function set( $key, $value ) {
-        $config = $this->get_config();
-
-        if ( array_key_exists( $key, $config ) ){
-            $config[ $key ] = $value;
-
-            $this->set_config( $config );
-
-            return true;
-        }
-
-        return false;
+        return true;
     }
 
     public function set_access_token( $key_or_token = '' ) {
-        if ( $key_or_token == 'user_token' || $key_or_token == 'page_token' )
-            $token = $this->get( $key_or_token );
-        else
-            $token = $key_or_token;
-        $this->access_token = $token;
-    }
+        $token = $key_or_token;
 
-    public function set_config( $config=array() ) {
-        $defaults = array(
-            'app_id' => '',
-            'app_secret' => '',
-            'user_token' => '',
-            'page_token' => '',
-            'user_id' => '',
-            'page_id' => ''
-        );
-
-        $config = array_merge( $defaults, $config );
-        array_walk( $config, create_function( '&$x', '$x = str_replace( " ", "", $x );' ) );
-
-        $previous_config = $this->get_config();
-
-        if ( ( $previous_config['app_id'] != $config['app_id'] ) || ( $previous_config['app_secret'] != $config['app_secret'] ) ) {
-            $config['user_token'] = '';
-            $config['user_id'] = '';
-            $config['page_id'] = '';
-            $config['page_token'] = '';
-        } elseif ( $previous_config['user_token'] != $config['user_token'] ) {
-            if ( !$config['user_token'] ) {
-                $config['user_id'] = 0;
-            } elseif( !$config['user_id'] ) {
-                $this->set_access_token( $config['user_token'] );
-                $response = $this->api_request( '/me', 'GET', array( 'fields' => 'id' ) );
-
-                if ( !$response || !isset( $response->id ) )
-                    $config['user_id'] = 0;
-                else
-                    $config['user_id'] = $response->id;
-            }
-
-            $config['page_id'] = '';
-            $config['page_token'] = '';
+        if ( $key_or_token == 'page_token' ) {
+            $token = $this->settings->get_option( 'facebook-page-access-token' );
         }
 
-        update_option( 'awpcp-facebook-config', $config );
-        return true;
+        if ( $key_or_token == 'user_token' ) {
+            $token = $this->settings->get_option( 'facebook-user-access-token' );
+        }
+
+        $this->access_token = $token;
     }
 
     public static function instance() {
         if ( is_null( self::$instance ) ) {
-            self::$instance = new self;
+            self::$instance = new self( awpcp()->settings );
         }
         return self::$instance;
     }
 
     public function get_user_pages() {
-        if ( !$this->get( 'user_id' ) || !$this->get( 'user_token' ) )
+        $user_access_token = $this->settings->get_option( 'facebook-user-access-token' );
+
+        if ( empty( $user_access_token ) ) {
             return array();
+        }
+
+        $this->set_access_token( $user_access_token );
 
         $pages = array();
 
-        $this->set_access_token( 'user_token' );
-
         // Add own user page.
         $response = $this->api_request( '/me', 'GET', array( 'fields' => 'id,name' ) );
+
         if ( $response ) {
             $pages[] = array( 'id' => $response->id,
                               'name' => $response->name,
-                              'access_token' => $this->get( 'user_token' ),
+                'access_token' => $user_access_token,
                               'profile' => true );
         }
 
@@ -195,10 +169,13 @@ class AWPCP_Facebook {
 
             if ( $response && isset( $response->data ) ) {
                 foreach ( $response->data as &$p ) {
-                    if ( in_array( 'CREATE_CONTENT', $p->perms ) )
-                        $pages[] = array( 'id' => $p->id,
-                                          'name' => $p->name,
-                                          'access_token' => $p->access_token );
+                    if ( in_array( 'CREATE_CONTENT', $p->perms, true ) ) {
+                        $pages[] = array(
+                            'id'           => $p->id,
+                            'name'         => $p->name,
+                            'access_token' => $p->access_token
+                        );
+                    }
                 }
             }
 
@@ -213,11 +190,13 @@ class AWPCP_Facebook {
     }
 
     public function get_user_groups() {
-        if ( ! $this->get( 'user_id' ) || ! $this->get( 'user_token' ) ) {
+        $user_access_token = $this->settings->get_option( 'facebook-user-access-token' );
+
+        if ( empty( $user_access_token ) ) {
             return array();
         }
 
-        $this->set_access_token( 'user_token' );
+        $this->set_access_token( $user_access_token );
 
         $groups = array();
         $after  = null;
@@ -247,8 +226,10 @@ class AWPCP_Facebook {
     }
 
     public function get_login_url( $redirect_uri = '', $scope = '' ) {
+        $app_id = $this->settings->get_option( 'facebook-app-id' );
+
         return sprintf( 'https://www.facebook.com/' . self::GRAPH_API_VERSION . '/dialog/oauth?client_id=%s&redirect_uri=%s&scope=%s',
-                        $this->get( 'app_id' ),
+            $app_id,
                         urlencode( $redirect_uri ),
                         urlencode( $scope )
                       );
@@ -280,13 +261,15 @@ class AWPCP_Facebook {
     public function api_request( $path, $method = 'GET', $args = array(), $notoken=false, $json_decode=true ) {
         $this->last_error = '';
 
+        $app_secret = $this->settings->get_option( 'facebook-app-secret' );
+
         $url = 'https://graph.facebook.com/' . self::GRAPH_API_VERSION . '/' . ltrim( $path, '/' );
-        $url .= '?client_id=' . $this->get( 'app_id' );
-        $url .= '&client_secret=' . $this->get( 'app_secret' );
+        $url .= '?client_id=' . $this->settings->get_option( 'facebook-app-id' );
+        $url .= '&client_secret=' . $app_secret;
 
         if ( !$notoken && $this->access_token ) {
             $url .= '&access_token=' . $this->access_token;
-            $url .= '&appsecret_proof=' . hash_hmac( 'sha256', $this->access_token, $this->get( 'app_secret' ) );
+            $url .= '&appsecret_proof=' . hash_hmac( 'sha256', $this->access_token, $app_secret );
         }
 
         if ( $method == 'GET' && $args ) {
@@ -339,14 +322,22 @@ class AWPCP_Facebook {
     }
 
     public function is_page_set() {
-        $page_id = $this->get( 'page_id' );
-        $page_token = $this->get( 'page_token' );
+        $page_id = $this->settings->get_option( 'facebook-page' );
 
-        return ( empty( $page_id ) || empty( $page_token ) ) ? false : true;
+        if ( empty( $page_id ) )  {
+            return false;
+        }
+
+        $page_token = $this->settings->get_option( 'facebook-page-access-token' );
+
+        if ( empty( $page_id ) ) {
+            return false;
+        }
+
+        return true;
     }
 
     public function is_group_set() {
-        $group_id = $this->get( 'group_id' );
-        return empty( $group_id ) ? false : true;
+        return (bool) $this->settings->get_option( 'facebook-group' );
     }
 }

@@ -482,7 +482,8 @@ function _create_pager( $item_count, $offset, $results, $tpname ) {
         $form.="\t\t<input type=\"hidden\" name=\"offset\" value=\"$offset\" />\n";
 
         $flat_params = awpcp_flatten_array( $params );
-        while ( list( $k, $v ) = each( $flat_params ) ) {
+
+        foreach ( $flat_params as $k => $v ) {
             if ( is_array( $v ) ) {
                 $v = count( $v ) > 0 ? reset( $v ) : '';
             }
@@ -503,7 +504,7 @@ function _create_pager( $item_count, $offset, $results, $tpname ) {
 
 function vector2options($show_vector,$selected_map_val,$exclusion_vector=array()) {
    $myreturn='';
-   while (list($k,$v)=each($show_vector)) {
+   foreach ( $show_vector as $k => $v ) {
        if (!in_array($k,$exclusion_vector)) {
            $myreturn.="<option value=\"".$k."\"";
            if ($k==$selected_map_val) {

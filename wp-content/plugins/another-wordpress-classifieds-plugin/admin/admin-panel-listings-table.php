@@ -9,9 +9,21 @@ class AWPCP_Listings_Table extends WP_List_Table {
 
     private $page;
 
+    /**
+     * @var Facebook Integration.
+     */
+    private $facebook_integration;
+
     public function __construct( $page, $params = array() ) {
         parent::__construct( array_merge( array( 'plural' => 'awpcp-listings' ), $params ) );
         $this->page = $page;
+    }
+
+    /**
+     * @since 3.9.0
+     */
+    public function set_facebook_integration( $facebook_integration ) {
+        $this->facebook_integration = $facebook_integration;
     }
 
     public function prepare_items() {
@@ -34,6 +46,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
 
         $items_per_page = (int) get_user_meta($user->ID, 'listings-items-per-page', true);
         $this->items_per_page = awpcp_request_param('items-per-page', $items_per_page === 0 ? 10 : $items_per_page);
+        $this->items_per_page = apply_filters( 'awpcp_listings_table_items_per_page', $this->items_per_page, $user );
         update_user_meta($user->ID, 'listings-items-per-page', $this->items_per_page);
 
         $default_category = absint( get_user_meta( $user->ID, 'listings-category', true ) );
@@ -224,9 +237,9 @@ class AWPCP_Listings_Table extends WP_List_Table {
                 $actions['bulk-remove-featured'] = __( 'Make Non Featured', 'another-wordpress-classifieds-plugin' );
             }
 
-            $fb = AWPCP_Facebook::instance();
-            if ( $fb->get( 'page_token' ) )
+            if ( $this->facebook_integration->is_facebook_page_integration_configured() || $this->facebook_integration->is_facebook_group_integration_configured() ) {
                 $actions['bulk-send-to-facebook'] = __( 'Send to Facebook', 'another-wordpress-classifieds-plugin' );
+            }
         }
 
         $actions['bulk-delete'] = __( 'Delete', 'another-wordpress-classifieds-plugin' );
@@ -349,7 +362,7 @@ class AWPCP_Listings_Table extends WP_List_Table {
         $template = '<option %3$s value="%1$s">%2$s</option>';
         $selected = 'selected="selected"';
 
-        foreach ( awpcp_default_pagination_options( $this->items_per_page ) as $value ) {
+        foreach ( awpcp_pagination_options( $this->items_per_page ) as $value ) {
             $attributes = $value == $this->items_per_page ? $selected : '';
             $options[] = sprintf( $template, esc_attr( $value ), esc_html( $value ), $attributes );
         }

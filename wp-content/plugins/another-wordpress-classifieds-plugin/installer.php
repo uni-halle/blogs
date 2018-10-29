@@ -346,6 +346,9 @@ class AWPCP_Installer {
                 'convert_tables_to_innodb',
                 'create_listings_table_if_missing',
             ),
+            '3.8.6' => array(
+                'migrate_facebook_integration_settings',
+            ),
         );
 
         foreach ( $upgrade_routines as $version => $routines ) {
@@ -734,7 +737,7 @@ class AWPCP_Installer {
                 `page` VARCHAR(100) CHARACTER SET <charset> COLLATE <collate> NOT NULL,
                 `id` INT(10) NOT NULL,
                 PRIMARY KEY  (`page`)
-            ) ENGINE=InnoDB DEFAULT CHARSET=<charset> COLLATE=<collate>;";
+            ) DEFAULT CHARSET=<charset> COLLATE=<collate>;";
             dbDelta( $this->database_helper->replace_charset_and_collate( $table_definition ) );
         }
 
@@ -1202,6 +1205,46 @@ class AWPCP_Installer {
     private function create_listings_table_if_missing() {
         if ( ! awpcp_table_exists( AWPCP_TABLE_ADS ) ) {
             dbDelta( $this->plugin_tables->get_listings_table_definition() );
+        }
+    }
+
+    /**
+     * @since 3.8.6
+     */
+    private function migrate_facebook_integration_settings() {
+        $settings = awpcp()->settings;
+        $config   = get_option( 'awpcp-facebook-config', array() );
+
+        if ( ! empty( $config['app_id'] ) ) {
+            $settings->set_or_update_option( 'facebook-app-id', $config['app_id'] );
+        }
+
+        if ( ! empty( $config['app_secret'] ) ) {
+            $settings->set_or_update_option( 'facebook-app-secret', $config['app_secret'] );
+        }
+
+        if ( ! empty( $config['user_token'] ) ) {
+            $settings->set_or_update_option( 'facebook-user-access-token', $config['user_token'] );
+        }
+
+        if ( ! empty( $config['page_id'] ) ) {
+            $settings->set_or_update_option( 'facebook-page', $config['page_id'] . '|' . $config['page_token'] );
+        }
+
+        if ( ! empty( $config['page_token'] ) ) {
+            $settings->set_or_update_option( 'facebook-page-access-token', $config['page_token'] );
+        }
+
+        if ( ! empty( $config['group_id'] ) ) {
+            $settings->set_or_update_option( 'facebook-group', $config['group_id'] );
+        }
+
+        if ( ! empty( $config['app_id'] ) && ! empty( $config['app_secret'] ) && ! empty( $config['user_token'] ) ) {
+            $settings->set_or_update_option( 'clear-facebook-cache-for-ads-pages', true );
+        }
+
+        if ( ! empty( $config['app_id'] ) && ! empty( $config['app_secret'] ) ) {
+            $settings->set_or_update_option( 'facebook-integration-method', 'facebook-api' );
         }
     }
 }

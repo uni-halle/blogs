@@ -15,6 +15,11 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
 
     protected $listing_upload_limits;
 
+    /**
+     * @var FacebookIntegration
+     */
+    private $facebook_integration;
+
     public function __construct($page=false, $title=false) {
         $page = $page ? $page : 'awpcp-admin-listings';
         $title = $title ? $title : awpcp_admin_page_title( __( 'Manage Listings', 'another-wordpress-classifieds-plugin' ) );
@@ -24,6 +29,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
         $this->table = null;
 
         $this->listing_upload_limits = awpcp_listing_upload_limits();
+        $this->facebook_integration  = awpcp_facebook_integration();
 
         add_action('wp_ajax_awpcp-listings-delete-ad', array($this, 'ajax'));
     }
@@ -78,6 +84,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
     public function get_table() {
         if ( is_null( $this->table ) ) {
             $this->table = new AWPCP_Listings_Table( $this, array( 'screen' => 'classifieds_page_awpcp-admin-listings' ) );
+            $this->table->set_facebook_integration( $this->facebook_integration );
         }
         return $this->table;
     }
@@ -128,8 +135,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
         }
 
         if ( $is_moderator && ! $ad->disabled ) {
-            $fb = AWPCP_Facebook::instance();
-            if ( ! awpcp_get_ad_meta( $ad->ad_id, 'sent-to-facebook' ) && $fb->get( 'page_id' ) ) {
+            if ( ! awpcp_get_ad_meta( $ad->ad_id, 'sent-to-facebook' ) && $this->facebook_integration->is_facebook_page_integration_configured() ) {
                 $actions['send-to-facebook'] = array(
                     __( 'Send to Facebook', 'another-wordpress-classifieds-plugin' ),
                     $this->url( array(
@@ -137,7 +143,7 @@ class AWPCP_Admin_Listings extends AWPCP_AdminPageWithTable {
                         'id' => $ad->ad_id
                     ) )
                 );
-            } else if ( ! awpcp_get_ad_meta( $ad->ad_id, 'sent-to-facebook-group' ) && $fb->get( 'group_id' ) ) {
+            } else if ( ! awpcp_get_ad_meta( $ad->ad_id, 'sent-to-facebook-group' ) && $this->facebook_integration->is_facebook_group_integration_configured() ) {
                 $actions['send-to-facebook'] = array(
                     __( 'Send to Facebook Group', 'another-wordpress-classifieds-plugin' ),
                     $this->url( array(

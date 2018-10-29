@@ -72,7 +72,14 @@ class AWPCP_Classified_Pages_Settings {
 
 class AWPCP_Facebook_Page_Settings {
 
+    /**
+     * @var Settings
+     */
+    private $settings;
+
 	public function __construct() {
+        $this->settings = awpcp()->settings;
+
 		add_action( 'current_screen', array( $this, 'maybe_redirect' ) );
 		add_action( 'awpcp-admin-settings-page--facebook-settings', array($this, 'dispatch'));
 	}
@@ -94,7 +101,7 @@ class AWPCP_Facebook_Page_Settings {
 			return $this->redirect_with_error( 1, 'Unkown error trying to exchange code for access token.' );
 		}
 
-		$fb->set( 'user_token', $access_token );
+        $this->settings->update_option( 'facebook-user-access-token', $access_token );
 
 		wp_redirect( admin_url( 'admin.php?page=awpcp-admin-settings&g=facebook-settings' ) );
 		die();
@@ -103,9 +110,6 @@ class AWPCP_Facebook_Page_Settings {
 	public function get_current_action() {
 		if ( isset( $_POST['diagnostics'] ) )
 			return 'diagnostics';
-
-		if ( isset( $_POST['save_config'] ) )
-			return 'save_config';
 
 		if ( isset( $_REQUEST['obtain_user_token'] ) && $_REQUEST['obtain_user_token'] == 1 )
 			return 'obtain_user_token';
@@ -120,28 +124,10 @@ class AWPCP_Facebook_Page_Settings {
 		die();
 	}
 
-	private function get_current_settings_step() {
-		$fb = AWPCP_Facebook::instance();
-		$config = $fb->get_config();
-
-		if ( !empty( $config['app_id'] ) && !empty( $config['app_secret'] ) ) {
-			if ( !empty( $config['user_token'] )  && !empty( $config['user_id'] ) )
-				return 3;
-			else
-				return 2;
-		}
-
-		return 1;
-	}
-
 	public function dispatch() {
 		$action = $this->get_current_action();
 
 		switch ( $action ) {
-			case 'save_config':
-				return $this->save_config();
-				break;
-
 			case 'diagnostics':
 			case 'display_settings':
 			default:
@@ -153,23 +139,13 @@ class AWPCP_Facebook_Page_Settings {
 	private function display_settings( $errors=array() ) {
         $fb = AWPCP_Facebook::instance();
 
-        $config       = $fb->get_config();
-        $current_step = $this->get_current_settings_step();
         $redirect_uri = add_query_arg( 'obtain_user_token', 1, admin_url( '/admin.php?page=awpcp-admin-settings&g=facebook-settings' ) );
 
-		if ( $current_step == 3 ) {
-			// User Pages.
-			$pages = $fb->get_user_pages();
-			$groups = $fb->get_user_groups();
-		}
-
-		if ( $current_step >= 2 ) {
-			// Login URL.
-            $login_url = $fb->get_login_url( $redirect_uri, 'publish_pages,publish_actions,manage_pages,user_managed_groups' );
-		}
-
 		if ( isset( $_GET['code_error'] ) && isset( $_GET['error_message'] )  ) {
-			$errors[] = esc_html( sprintf( __( 'We could not obtain a valid access token from Facebook. The API returned the following error: %s', 'another-wordpress-classifieds-plugin' ), $_GET['error_message'] ) );
+            $error_message = __( 'We could not obtain a valid access token from Facebook. The API returned the following error: %s', 'another-wordpress-classifieds-plugin' );
+            $error_message = sprintf( $error_message, wp_unslash( urldecode_deep( $_GET['error_message'] ) ) );
+
+            $errors[] = esc_html( $error_message );
 		} else if ( isset( $_GET['code_error'] ) ) {
 			$errors[] = esc_html( __( 'We could not obtain a valid access token from Facebook. Please try again.', 'another-wordpress-classifieds-plugin' ) );
 		}
@@ -199,50 +175,4 @@ class AWPCP_Facebook_Page_Settings {
 
 		echo $content;
 	}
-
-	private function save_config() {
-		$awpcp_fb = AWPCP_Facebook::instance();
-		$config = $awpcp_fb->get_config();
-
-		$app_id = isset( $_POST['app_id'] ) ? trim( $_POST['app_id'] ) : '';
-		$app_secret = isset( $_POST['app_secret'] ) ? trim( $_POST['app_secret'] ) : '';
-		$user_token = isset( $_POST['user_token'] ) ? trim( $_POST['user_token'] ) : '';
-
-		$page = isset( $_POST['page'] ) ? trim( $_POST['page'] ) : '';
-		$group = isset( $_POST['group'] ) ? trim( $_POST['group'] ) : '';
-
-		$config['app_id'] = $app_id;
-		$config['app_secret'] = $app_secret;
-		$config['user_token'] = $user_token;
-
-		if ( $page == 'none' ) {
-			$config['page_id'] = '';
-			$config['page_token'] = '';
-		} else if ( ! empty( $page ) ) {
-			$parts = explode( '|', $page );
-			$page_id = $parts[0];
-			$page_token = $parts[1];
-
-			$config['page_id'] = $page_id;
-			$config['page_token'] = $page_token;
-		}
-
-		if ( $group == 'none' ) {
-			$config['group_id'] = '';
-		} else if ( ! empty( $group ) ) {
-			$config['group_id'] = $group;
-		}
-
-		$awpcp_fb->set_config( $config );
-
-		if ( $last_error = $awpcp_fb->get_last_error() ) {
-			$message = __( 'There was an error trying to contact Facebook servers: "%s".', 'another-wordpress-classifieds-plugin' );
-			$errors[] = sprintf( $message, $last_error->message );
-		} else {
-			$errors = array();
-		}
-
-		return $this->display_settings( $errors );
-	}
-
 }

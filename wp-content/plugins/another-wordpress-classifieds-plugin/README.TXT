@@ -2,11 +2,11 @@
 Contributors: awpcp
 Donate link: https://awpcp.com/donate
 Tags: classifieds,ads,classified ads,classified,awpcp,classifieds script,classified theme,wp classified
-Requires at least: 4.3
+Requires at least: 4.5
 Requires PHP: 5.6
 Tested up to: 4.9
-Last Updated: 2018-May-22
-Stable tag: 3.8.5
+Last Updated: 2018-Oct-2
+Stable tag: 3.9
 License: GPLv2 or later
 
 AWPCP Classifieds:  Great for increasing retention to your site, adding revenue for your business, and creating customer interaction.
@@ -240,6 +240,32 @@ Yes it can. AWPCP comes with many user-provided translations under the /language
 Yes it is. However, you cannot "network-activate" the plugin (as this will share the database). Activate it on only the subsites on which you need a directory.  This can be done under Plugins->Add New as the Administrator user.  Do not "network activate" AWPCP as the "super admin".
 
 == Changelog ==
+= Version 3.9 =
+* Add support for Facebook Integration through Zapier or IFTTT.
+* Add Plugin Integration for Complete Open Graph.
+* Add support for GDPR privacy hooks.
+* Prevent Fatal error on Comments module.
+* Let MySQL choose the engine for our tables.
+* Use home_url() as deafult referer on Set Location handler.
+* Generate better validation errors on Extra Fields.
+* Change email verification notice for newly created listing.
+* Remove usage of create_function in Facebook class.
+* Featured Listings: add support for pagination query parameters.
+* Featured Listings: support items_per_page=default attr.
+* Fix name of AWPCP's main script on Featured Ads module.
+* Disable autocomplete for DatePicker fields.
+* Don't render current date if DatePicker field has no value.
+* Use HTTP API to verify PayPal IPN payload.
+* Update code to calculate new start date and end date.
+* Prevent Place Ad page content from showing on Gutenberg.
+* Datepickers on Campaign form now work on any language.
+* Remove use of deprecated funcion each().
+* Fix PHP warning on awpcp_print_message().
+* Clear Categories List and Regions cache together.
+* Make pagination options on admin screesn configurable.
+* Fix Attachments to show proper file icons.
+* Fix 'Turn on translation' setting name and description.
+
 = Version 3.8.5 =
 * Remove the FULLTEXT index that prevented the listings table from being created on servers running MySQL 5.5 or earlier.
 

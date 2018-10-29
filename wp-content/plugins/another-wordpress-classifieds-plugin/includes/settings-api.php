@@ -442,8 +442,161 @@ class AWPCP_Settings_API {
 
 		$key = $this->add_section( $group, __( 'General Settings', 'another-wordpress-classifieds-plugin' ), 'general', 10, array( $this, 'section' ) );
 
-		$this->add_setting( $key, 'sends-listings-to-facebook-automatically', __( 'Send Ads to Facebook Automatically', 'another-wordpress-classifieds-plugin' ), 'checkbox', 1, __( 'If checked, Ads will be posted to Facebook shortly after they are posted, enabled or edited, whichever occurs first. Ads will be posted only once. Please note that disabled Ads cannot be posted to Facebook.', 'another-wordpress-classifieds-plugin' ) );
+        $this->add_setting(
+            $key,
+            'facebook-integration-method',
+            __( 'Facebook Integration Method', 'another-wordpress-classifieds-plugin' ),
+            'radio',
+            'webhooks',
+            __( 'Please note that sending ads to Facebook Groups is currently not available using Webhooks, after Facebook significantly reduced access to their APIs across all apps. You can read more about these changes here: <a href="https://developers.facebook.com/blog/post/2018/04/04/facebook-api-platform-product-changes/">https://developers.facebook.com/blog/post/2018/04/04/facebook-api-platform-product-changes/</a>', 'another-wordpress-classifieds-plugin' ),
+            array(
+                'options'  => array(
+                    'facebook-api' => __( 'Facebook API', 'another-wordpress-classifieds-plugin' ),
+                    'webhooks'     => __( 'Zapier/IFTTT Webhooks', 'another-wordpress-classifieds-plugin' ),
+                ),
+            )
+        );
 
+		$this->add_setting( $key, 'sends-listings-to-facebook-automatically', __( 'Send Ads to Facebook Automatically', 'another-wordpress-classifieds-plugin' ), 'checkbox', 1, __( 'If checked, Ads will be sent to Facebook shortly after they are posted, enabled or edited, whichever occurs first. Please note that ads will be sent only once and disabled ads cannot be sent to Facebook.', 'another-wordpress-classifieds-plugin' ) );
+
+        $this->add_setting(
+            $key,
+            'clear-facebook-cache-for-ads-pages',
+            __( 'Ask Facebook to clear cache for ads pages', 'another-wordpress-classifieds-plugin' ),
+            'checkbox',
+            false,
+            __( 'Clearing Facebook cache is useful to ensure users always see the latest version when the ad is shared on Facebook Pages, Groups and user feeds.' )
+        );
+
+        $key = $this->add_section(
+            $group,
+            __( 'Facebook Application', 'another-wordpress-classifieds-plugin' ),
+            'facebook-application',
+            10,
+            array( $this, 'facebook_application_settings_section' )
+        );
+
+        $this->add_setting(
+            $key,
+            'facebook-app-id',
+            __( 'App Id', 'another-wordpress-classifieds-plugin' ),
+            'textfield',
+            '',
+            __( 'An application identifier associates your site, its pages, and visitor actions with a registered Facebook application.', 'another-wordpress-classifieds-plugin' )
+        );
+
+        $this->add_setting(
+            $key,
+            'facebook-app-secret',
+            __( 'App Secret', 'another-wordpress-classifieds-plugin' ),
+            'textfield',
+            '',
+            __( 'An application secret is a secret shared between Facebook and your application, similar to a password.', 'another-wordpress-classifieds-plugin' )
+        );
+
+        $key = $this->add_section(
+            $group,
+            __( 'Facebook User Authorization', 'another-wordpress-classifieds-plugin' ),
+            'facebook-user-authorization',
+            10,
+            array( $this, 'facebook_user_authorization_section' )
+        );
+
+        $this->add_setting(
+            $key,
+            'facebook-user-access-token',
+            __( 'User Access Token', 'another-wordpress-classifieds-plugin' ),
+            'textfield',
+            '',
+            __( 'You can manually enter your user access token (if you know it) or log in to Facebook to get one using the link above.', 'another-wordpress-classifieds-plugin' )
+        );
+
+        $key = $this->add_section(
+            $group,
+            __( 'Facebook Page and Group Selection', 'another-wordpress-classifieds-plugin' ),
+            'facebook-page-and-group-selection',
+            10,
+            array( $this, 'facebook_page_and_group_selection_section' )
+        );
+
+        $this->add_setting(
+            $key,
+            'facebook-page',
+            __( 'Facebook Page', 'another-wordpress-classifieds-plugin' ),
+            'radio',
+            '',
+            '',
+            array(
+                'options' => array( $this, 'facebook_page_options' ),
+            )
+        );
+
+        $this->add_setting(
+            $key,
+            'facebook-group',
+            __( 'Facebook Group', 'another-wordpress-classifieds-plugin' ),
+            'radio',
+            '',
+            '',
+            array(
+                'options' => array( $this, 'facebook_group_options' ),
+            )
+        );
+
+        $this->add_setting(
+            $key,
+            'facebook-page-access-token',
+            __( 'Facebook Page Access Token', 'another-wordpress-classifieds-plugin' ),
+            'textfield',
+            '',
+            '',
+            array(
+                'readonly' => true,
+            )
+        );
+
+        $key = $this->add_section(
+            $group,
+            __( 'Zapier Integration', 'another-wordpress-classifieds-plugin' ),
+            'zapier',
+            10,
+            array( $this, 'section' )
+        );
+
+        $this->add_setting(
+            $key,
+            'zapier-webhook-for-facebook-page-integration',
+            __( 'Zapier webhook used to send ads to a Facebook page', 'another-wordpress-classifieds-plugin' ),
+            'textfield',
+            '',
+            __( 'The plugin will post information to this URL the first time an ad becomes publicly available (after they are posted, enabled or edited) on the website or using the Send to Facebook Page action from the list of classified ads. Disabled ads are excluded.', 'another-wordpress-classifieds-plugin' )
+        );
+
+        $key = $this->add_section(
+            $group,
+            __( 'IFTTT Integration', 'another-wordpress-classifieds-plugin' ),
+            'ifttt',
+            10,
+            array( $this, 'section' )
+        );
+
+        $this->add_setting(
+            $key,
+            'ifttt-webhook-base-url-for-facebook-page-integration',
+            __( 'URL used to send requests to IFTTT Webhooks service', 'another-wordpress-classifieds-plugin' ),
+            'textfield',
+            '',
+            __( 'The plugin will post information to the Webhooks service the first time an ad becomes publicly available (after they are posted, enabled or edited) on the website or when someone uses the Send to Facebook Page action from the list of classified ads. Disabled ads are excluded.', 'another-wordpress-classifieds-plugin' )
+        );
+
+        $this->add_setting(
+            $key,
+            'ifttt-webhook-event-name-for-facebook-page-integration',
+            __( 'The name of the event that will be posted to the Webhooks service', 'another-wordpress-classifieds-plugin' ),
+            'textfield',
+            '',
+            __( 'The plugin will post information about new ads to a unique URL built using the Webhooks URL and Event Name you define.', 'another-wordpress-classifieds-plugin' )
+        );
 
 		// save settings to database
 		$this->skip = true;
@@ -474,6 +627,7 @@ class AWPCP_Settings_API {
 				   array($this, 'validate_registration_settings'), 10, 2);
 		add_filter('awpcp_validate_settings_smtp-settings',
 				   array($this, 'validate_smtp_settings'), 10, 2);
+        add_filter( 'awpcp_validate_settings_facebook-settings', array( $this, 'validate_facebook_settings' ), 10, 2 );
 
         add_filter(
             'awpcp_validate_settings_email-settings',
@@ -1016,6 +1170,40 @@ class AWPCP_Settings_API {
 		return $options;
 	}
 
+    /**
+     * @since 3.8.6
+     */
+    public function validate_facebook_settings( $options, $group ) {
+        $options['facebook-app-id']             = trim( $options['facebook-app-id'] );
+        $options['facebook-app-secret']         = trim( $options['facebook-app-secret'] );
+        $options['facebook-user-access-token']  = trim( $options['facebook-user-access-token'] );
+
+        if ( $options['facebook-app-id'] !== $this->get_option( 'facebook-app-id' ) || $options['facebook-app-secret'] !== $this->get_option( 'facebook-app-secret' ) ) {
+            $options['facebook-user-access-token'] = '';
+            $options['facebook-page']              = '';
+            $options['facebook-group']             = '';
+            $options['facebook-page-access-token'] = '';
+        }
+
+        if ( $options['facebook-user-access-token'] !== $this->get_option( 'facebook-user-access-token' ) ) {
+            $options['facebook-page']              = '';
+            $options['facebook-group']             = '';
+            $options['facebook-page-access-token'] = '';
+        }
+
+        if ( ! empty( $options['facebook-page'] ) && 'none' === $options['facebook-page'] ) {
+            $options['facebook-page-access-token'] = '';
+        }
+
+        if ( ! empty( $options['facebook-page'] ) && strpos( $options['facebook-page'], '|' ) !== false ) {
+            $parts = explode( '|', $options['facebook-page'] );
+
+            $options['facebook-page']              = $parts[0];
+            $options['facebook-page-access-token'] = $parts[1];
+        }
+
+        return $options;
+    }
 
 	/* Auxiliar methods to render settings forms */
 
@@ -1027,6 +1215,10 @@ class AWPCP_Settings_API {
 		$html = '<input id="'. $setting->name . '" class="regular-text" ';
 		$html.= 'value="' . $value . '" type="' . $type . '" ';
 		$html.= 'name="awpcp-options[' . $setting->name . ']" ';
+
+        if ( ! empty( $args['readonly'] ) ) {
+            $html .= 'disabled="disabled" ';
+        }
 
 		if ( ! empty( $setting->args['behavior'] ) ) {
 			$html.= 'awpcp-setting="' . esc_attr( json_encode( $setting->args['behavior'] ) ) . '" />';
@@ -1113,24 +1305,39 @@ class AWPCP_Settings_API {
 
 	public function radio($args) {
 		$setting = $args['setting'];
-		$options = $args['options'];
+        $options = array();
+
+        if ( is_array( $args['options'] ) ) {
+            $options = $args['options'];
+        }
+
+        if ( is_callable( $args['options'] ) ) {
+            $options = call_user_func( $args['options'] );
+        }
 
 		$current = esc_html(stripslashes($this->get_option($setting->name)));
 
 		$html = '';
-		foreach ($options as $value => $label) {
-			$id = "{$setting->name}-$value";
+        foreach ( $options as $key => $label ) {
+            $value = $key;
+
+            if ( is_array( $label ) ) {
+                $value = $label['value'];
+                $label = $label['label'];
+            }
+
+			$id = "{$setting->name}-$key";
 			$label = ' <label for="' . $id . '">' . $label . '</label>';
 
 			$html.= '<input id="' . $id . '"type="radio" value="' . $value . '" ';
 			$html.= 'name="awpcp-options['. $setting->name .']" ';
-			if ($value == $current) {
+            if ( $key == $current ) {
 				$html.= 'checked="checked" />' . $label;
 			} else {
 				$html.= '>' . $label;
 			}
 			$html.= '<br/>';
-		}
+        }
 		$html.= '<span class="description">' . $setting->helptext . '</span>';
 
 		echo $html;
@@ -1255,6 +1462,104 @@ class AWPCP_Settings_API {
 		$link = '<a href="http://codex.wordpress.org/Formatting_Date_and_Time">%s</a>.';
 		echo sprintf( $link, __( 'Documentation on date and time formatting', 'another-wordpress-classifieds-plugin' ) );
 	}
+
+    /**
+     * @since 3.8.6
+     */
+    public function facebook_application_settings_section( $args ) {
+        $content = __( 'You can find your application information in the <a>Facebook Developer Apps</a> page.', 'another-wordpress-classifieds-plugin' );
+        $content = str_replace( '<a>', '<a href="https://developers.facebook.com/apps/" target="_blank">', $content );
+
+        echo $content; // XSS Ok.
+    }
+
+    /**
+     * @since 3.8.6
+     */
+    public function facebook_user_authorization_section( $args ) {
+        // Choosing Public is important because:
+        // - http://stackoverflow.com/a/19653226/201354
+        // - https://github.com/drodenbaugh/awpcp/issues/1288#issuecomment-134198377
+        $content  = '<p>' . esc_html__( 'AWPCP needs to get an authorization token from Facebook to work correctly. You\'ll be redirected to Facebook to login. AWPCP does not store or obtain any personal information from your profile.', 'another-wordpress-classifieds-plugin' ) . '</p>';
+        $content .= '<p>' . esc_html__( "Please choose Public as the audience for posts made by the application, even if you are just testing the integration. Facebook won't allow us to post content in some cases if you choose something else.", 'another-wordpress-classifieds-plugin' ) . '</p>';
+
+        if ( $this->get_option( 'facebook-app-id' ) && $this->get_option( 'facebook-app-secret' ) ) {
+            $facebook = AWPCP_Facebook::instance();
+
+            $redirect_uri         = add_query_arg( 'obtain_user_token', 1, admin_url( '/admin.php?page=awpcp-admin-settings&g=facebook-settings' ) );
+            $required_permissions = $facebook->get_required_permissions();
+            $login_url            = $facebook->get_login_url( $redirect_uri, implode( ',', $required_permissions ) );
+
+            $content .= '<p><a href="' . $login_url . '">' . __( 'Click here to obtain an access token from Facebook', 'another-wordpress-classifieds-plugin' ) . '</a></p>';
+        } else {
+            $content .= '<p><strong>' . esc_html__( 'Please provide a value for the App Id and App Secret settings before trying to get an access token from Facebook.', 'another-wordpress-classifieds-plugin' ) . '</strong></p>';
+        }
+
+        echo $content; // XSS Ok.
+    }
+
+    /**
+     * @sicne 3.8.6
+     */
+    public function facebook_page_and_group_selection_section( $args ) {
+        $content  = '<p><strong>' . esc_html__( 'Available Facebook Pages and Groups will be displayed after you enter a valid User Access Token.', 'another-wordpress-classifieds-plugin' ) . '</strong></p>';
+        $content .= '<p>' . __( 'As of April 4, 2018, all applications need to go through <a href="https://developers.facebook.com/docs/apps/review" rel="nofollow">App Review</a> in order to get access to the <a href="https://developers.facebook.com/docs/graph-api/reference/page/" rel="nofollow">Page API</a> and <a href="https://developers.facebook.com/docs/graph-api/reference/user/groups/" rel="nofollow">Groups API</a>. That means that you may need to <a href="https://developers.facebook.com/docs/facebook-login/review" rel="nofollow">submit your app for review</a> (ask for the <code>manage_pages</code>, <code>publish_pages</code>, <code>publish_to_groups</code> permissions), before AWPCP can display the list of pages and groups you manage and be able to post classifieds ads to those groups and pages.', 'another-wordpress-classifieds-plugin' ) . '</p>';
+
+        echo $content;
+    }
+
+    /**
+     * @since 3.8.6
+     */
+    public function facebook_page_options() {
+        $facebook       = AWPCP_Facebook::instance();
+        $facebook_pages = $facebook->get_user_pages();
+
+        if ( empty( $facebook_pages ) ) {
+            return array();
+        }
+
+        $pages         = array(
+            'none' => __( 'None (Do not sent ads to a Facebook Page)', 'another-wordpress-classifieds-plugin' ),
+        );
+
+        foreach ( $facebook_pages as $page ) {
+            $page_name = $page['name'];
+
+            if ( ! empty( $page['profile'] ) ) {
+                $page_name = $page_name . ' ' . __( '(Your own profile page)', 'another-wordpress-classifieds-plugin' );
+            }
+
+            $pages[ $page['id'] ]         = array(
+                'value' => "{$page['id']}|{$page['access_token']}",
+                'label' => $page_name,
+            );
+        }
+
+        return $pages;
+    }
+
+    /**
+     * @since 3.8.6
+     */
+    public function facebook_group_options() {
+        $facebook        = AWPCP_Facebook::instance();
+        $facebook_groups = $facebook->get_user_groups();
+
+        if ( empty( $facebook_groups ) ) {
+            return array();
+        }
+
+        $groups   = array(
+            'none' => __( 'None (Do not sent ads to a Facebook Group)', 'another-wordpress-classifieds-plugin' ),
+        );
+
+        foreach ( $facebook_groups as $group ) {
+            $groups[ $group['id'] ] = $group['name'];
+        }
+
+        return $groups;
+    }
 
 	/**
 	 * @since 3.6

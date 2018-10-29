@@ -54,6 +54,8 @@ class AWPCP_Admin {
 		// hook filter to output Admin panel sidebar. To remove the sidebar
 		// just remove this action
 		add_filter('awpcp-admin-sidebar', 'awpcp_admin_sidebar_output', 10, 2);
+
+        add_action( 'admin_init', array( awpcp_privacy_policy_content(), 'add_privacy_policy_content' ) );
 	}
 
 

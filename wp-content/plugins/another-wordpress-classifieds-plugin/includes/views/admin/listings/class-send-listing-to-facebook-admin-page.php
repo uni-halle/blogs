@@ -1,33 +1,38 @@
 <?php
 
 function awpcp_send_listing_to_facebook_admin_page() {
-    return new AWPCP_SendListingToFacebookAdminPage( awpcp_listings_collection(), AWPCP_Facebook::instance(), awpcp_send_to_facebook_helper(), awpcp_request() );
+    return new AWPCP_SendListingToFacebookAdminPage(
+        awpcp_listings_collection(),
+        awpcp_facebook_integration(),
+        awpcp_send_to_facebook_helper(),
+        awpcp_request()
+    );
 }
 
 class AWPCP_SendListingToFacebookAdminPage extends AWPCP_ListingActionAdminPage {
 
-    private $facebook_config;
+    private $facebook_integration;
     private $facebook_helper;
 
     public $successful = array( 'page' => 0, 'group' => 0 );
     public $failed = array( 'page' => 0, 'group' => 0 );
     public $errors = array();
 
-    public function __construct( $listings, $facebook_config, $facebook_helper, $request ) {
+    public function __construct( $listings, $facebook_integration, $facebook_helper, $request ) {
         parent::__construct( $listings, $request );
 
-        $this->facebook_config = $facebook_config;
-        $this->facebook_helper = $facebook_helper;
+        $this->facebook_integration = $facebook_integration;
+        $this->facebook_helper      = $facebook_helper;
     }
 
     public function dispatch() {
         $destinations = array();
 
-        if ( $this->facebook_config->is_page_set() ) {
+        if ( $this->facebook_integration->is_facebook_page_integration_configured() ) {
             $destinations['page'] = __( 'Facebook Page', 'another-wordpress-classifieds-plugin' );
         }
 
-        if ( $this->facebook_config->is_group_set() ) {
+        if ( $this->facebook_integration->is_facebook_group_integration_configured() ) {
             $destinations['group'] = __( 'Facebook Group', 'another-wordpress-classifieds-plugin' );
         }
 
@@ -63,13 +68,15 @@ class AWPCP_SendListingToFacebookAdminPage extends AWPCP_ListingActionAdminPage 
     }
 
     public function send_listing_to_facebook_page( $listing ) {
-        $this->facebook_helper->send_listing_to_facebook_page( $listing );
-        $this->successful['page'] = $this->successful['page'] + 1;
+        if ( $this->facebook_helper->send_listing_to_facebook_page( $listing ) ) {
+            $this->successful['page'] = $this->successful['page'] + 1;
+        }
     }
 
     public function send_listing_to_facebook_group( $listing ) {
-        $this->facebook_helper->send_listing_to_facebook_group( $listing );
-        $this->successful['group'] = $this->successful['group'] + 1;
+        if ( $this->facebook_helper->send_listing_to_facebook_group( $listing ) ) {
+            $this->successful['group'] = $this->successful['group'] + 1;
+        }
     }
 
     private function show_results() {

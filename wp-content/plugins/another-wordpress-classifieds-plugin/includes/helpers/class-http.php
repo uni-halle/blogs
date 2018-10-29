@@ -43,6 +43,9 @@ class AWPCP_HTTP {
         return $response;
     }
 
+    /**
+     * TODO: Do not assume cURL functions are always available.
+     */
     private function handle_wp_error( $response, $url, $args ) {
         $url_parts = wp_parse_url( $url );
         $host = $url_parts['host'];

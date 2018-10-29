@@ -1482,6 +1482,14 @@ function awpcp_print_form_errors( $errors ) {
 }
 
 function awpcp_print_message( $message, $class = array( 'awpcp-updated', 'notice', 'notice-info' ) ) {
+    if ( is_string( $class ) ) {
+        $class = array( $class );
+    }
+
+    if ( ! is_array( $class ) ) {
+        $class = array();
+    }
+
 	$class = array_merge(array('awpcp-message'), $class);
 	return '<div class="' . join(' ', $class) . '"><p>' . $message . '</p></div>';
 }

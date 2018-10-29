@@ -50,6 +50,38 @@ function awpcp_paypal_verify_received_data_with_curl($postfields='', $cainfo=tru
 
 
 /**
+ * @since 3.8.6
+ */
+function awpcp_paypal_verify_received_data_wp_remote( $postfields='', &$errors = array() ) {
+    if ( get_awpcp_option( 'paylivetestmode' ) == 1 ) {
+        $paypal_url = "https://ipnpb.sandbox.paypal.com/cgi-bin/webscr";
+    } else {
+        $paypal_url = "https://ipnpb.paypal.com/cgi-bin/webscr";
+    }
+
+    $params = array(
+        'httpversion' => '1.1',
+        'body'        => $postfields,
+    );
+
+    $response = wp_remote_post( $paypal_url, $params );
+
+    if ( is_wp_error( $response ) ) {
+        $errors = array_merge( $errors, $response->get_error_messages() );
+
+        return 'ERROR';
+    }
+
+    $response_body = wp_remote_retrieve_body( $response );
+
+    if ( ! in_array( $response_body, array( 'VERIFIED', 'INVALID' ), true ) ) {
+        return 'ERROR';
+    }
+
+    return $response_body;
+}
+
+/**
  * Verify data received from PayPal IPN notifications using fsockopen and
  * returns PayPal's response.
  *
@@ -111,8 +143,9 @@ function awpcp_paypal_verify_received_data($data=array(), &$errors=array()) {
         $content .= "&$key=$value";
     }
 
-    $response = 'ERROR';
-    if (in_array('curl', get_loaded_extensions())) {
+    $response = awpcp_paypal_verify_received_data_wp_remote( $content, $errors );
+
+    if ( strcmp( $response, 'ERROR' ) && in_array( 'curl', get_loaded_extensions(), true ) ) {
         // try using custom CA information -- included with the plugin
         $response = awpcp_paypal_verify_received_data_with_curl( $content, true, $errors );
 

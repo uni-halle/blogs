@@ -225,7 +225,9 @@ class AWPCP_MediaAPI {
             $conditions[] = $wpdb->prepare( 'id = %d', intval( $id ) );
         }
 
-        if ( false !== $ad_id ) {
+        if ( is_array( $ad_id ) ) {
+            $conditions[] = sprintf( 'ad_id IN (%s)', esc_sql( implode( ', ', array_map( 'absint', $ad_id ) ) ) );
+        } elseif ( false !== $ad_id ) {
             $conditions[] = $wpdb->prepare( 'ad_id = %d', intval( $ad_id ) );
         }
 
