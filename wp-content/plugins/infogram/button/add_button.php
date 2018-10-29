@@ -114,7 +114,7 @@ function infogr_message_popup() {
       </div>
       <div class="infogr-set-settings">
         <span><?php _e('Already have an Infogram.com account?', 'infogram'); ?></h5>
-        <a class="setting_inf" target="_blank" title="setting" href="<?php bloginfo('url'); ?>/wp-admin/options-general.php?page=infogram"><?php _e('Authenticate here', 'infogram'); ?></a>
+        <a class="setting_inf" target="_blank" title="setting" href="/wp-admin/options-general.php?page=infogram"><?php _e('Authenticate here', 'infogram'); ?></a>
       </div>
     </div>
   </div>
