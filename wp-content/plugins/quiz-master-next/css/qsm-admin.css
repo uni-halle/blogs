@@ -32,19 +32,6 @@ Quizzes/Surveys Page
   background-color: #fff;
 }
 
-.qsm-news-ads-widget {
-  text-align: center;
-  border: 5px solid #1DD969;
-  margin: 10px 5px;
-  background: #fff;
-  padding: 10px 5px;
-  transition-duration: 0.5s;
-}
-
-.qsm-news-ads-widget:hover {
-	transform: scale(1.1);
-}
-
 .qsm-edit-name {
   font-size: 12px !important;
 }
@@ -98,6 +85,22 @@ Options Page
 }
 .template_name {
   font-weight: bold;
+}
+
+/********************
+Quiz Styles Tab
+*********************/
+
+.qsm-styles {
+	display: flex;
+	flex-direction: column;
+}
+
+@media screen and (min-width:700px) {
+	.qsm-styles {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
 }
 
 
@@ -209,6 +212,22 @@ ul.changelog li.update div.two:before {
   margin-right: 5px;
 }
 
+/********************
+Addons Page
+*********************/
+
+.qsm-addons {
+	display: flex;
+	flex-direction: column;
+}
+
+@media screen and (min-width:700px) {
+	.qsm-addons {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+}
+
 
 /********************
 Help Page
@@ -236,6 +255,8 @@ Help Page
 Misc.
 *********************/
 
+
+/* Info Bar */
 .qsm-info-box {
 	display: block;
 	text-align:center;
@@ -253,6 +274,23 @@ Misc.
 .qsm-info-box a {
 	color: yellow;
 }
+
+/* Info Widget */
+.qsm-info-widget {
+	text-align: center;
+	border: 5px solid #1DD969;
+	margin: 10px 5px;
+	background: #fff;
+	padding: 10px 5px;
+	transition-duration: 0.5s;
+	max-width: 400px;
+}
+
+.qsm-info-widget:hover {
+	transform: scale(1.1);
+}
+
+/* Popup */
 
 .qsm-popup {
 	font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;

@@ -193,14 +193,19 @@ function qsm_generate_quizzes_surveys_page() {
 				?>
 				<div class="qsm-news-ads">
 					<h3 class="qsm-news-ads-title"><?php _e( 'QSM News', 'quiz-master-next' ); ?></h3>
-					<div class="qsm-news-ads-widget">
+					<div class="qsm-info-widget">
+						<h3>Keep your WordPress site healthy and secure!</h3>
+						<p>Easily monitor your WordPress sites to ensure they stay up, healthy, and secure with our new WordPress plugin, WP Health!</p>
+						<a target="_blank" href="http://bit.ly/2Mr2SqC" class="button-primary"><?php esc_html_e( 'Learn More', 'quiz-master-next' ); ?></a>
+					</div>
+					<div class="qsm-info-widget">
 						<h3><?php _e( 'Subscribe to our newsletter!', 'quiz-master-next' ); ?></h3>
-						<p><?php _e( 'Join our mailing list and receive a discount on your next purchase! Learn about our newest features, receive email-only promotions, receive tips and guides, and more!', 'quiz-master-next' ); ?></p>
+						<p><?php _e( 'Join our mailing list to learn about our newest features, receive email-only promotions, receive tips and guides, and more!', 'quiz-master-next' ); ?></p>
 						<a target="_blank" href="http://quizandsurveymaster.com/subscribe-to-our-newsletter/?utm_source=qsm-quizzes-page&utm_medium=plugin&utm_campaign=qsm_plugin&utm_content=subscribe-to-newsletter" class="button-primary"><?php _e( 'Subscribe Now', 'quiz-master-next' ); ?></a>
 					</div>
 					<?php
 					$qmn_rss = array();
-					$qmn_feed = fetch_feed( 'http://quizandsurveymaster.com/feed' );
+					$qmn_feed = fetch_feed( 'https://quizandsurveymaster.com/feed' );
 					if ( ! is_wp_error( $qmn_feed ) ) {
 						$qmn_feed_items = $qmn_feed->get_items( 0, 5 );
 						foreach ( $qmn_feed_items as $feed_item ) {
@@ -215,7 +220,7 @@ function qsm_generate_quizzes_surveys_page() {
 					}
 					foreach ( $qmn_rss as $item ) {
 						?>
-						<div class="qsm-news-ads-widget">
+						<div class="qsm-info-widget">
 							<h3><?php echo esc_html( $item['title'] ); ?></h3>
 							<p>By <?php echo esc_html( $item['author'] ); ?></p>
 							<div>
@@ -354,7 +359,7 @@ function qsm_generate_quizzes_surveys_page() {
 		<!-- Templates -->
 		<script type="text/template" id="tmpl-no-quiz">
 			<h2><?php _e( 'You do not have any quizzes or surveys. Click "Add New" to get started.', 'quiz-master-next' ); ?></h2>
-			<h2>Is this your first time using this plugin? Check out our <a href="https://quizandsurveymaster.com/documentation/?utm_source=qsm-quizzes-page&utm_medium=plugin&utm_campaign=qsm_plugin&utm_content=documentation" target="_blank">Documentation</a> or watch our Getting Started Video below</h2>
+			<h2>Is this your first time using this plugin? Check out our <a href="https://docs.quizandsurveymaster.com" target="_blank">Documentation</a> or watch our Getting Started Video below</h2>
 			<iframe width="560" height="315" src="https://www.youtube.com/embed/n8xfNk490Wg" frameborder="0" allowfullscreen></iframe>
 		</script>
 
