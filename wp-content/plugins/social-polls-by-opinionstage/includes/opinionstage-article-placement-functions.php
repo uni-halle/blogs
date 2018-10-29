@@ -10,6 +10,9 @@ defined( 'ABSPATH' ) or die();
 		// Adds the article placement shortcode to each post
 		static function the_content($content) {
 			global $post;
+			if( !(isset($post) && is_object($post)) ){
+				return $content;
+			}
 			$type = $post->post_type;
 			if (is_front_page() && is_home()) {
 				return $content;

@@ -4,7 +4,7 @@ Donate link: https://www.opinionstage.com
 Tags: poll, quiz, survey, form, slideshow, story, article
 Requires at least: 2.8
 Tested up to: 4.9
-Stable tag: 19.3.5
+Stable tag: 19.4.2
 
 Easily add polls, surveys, quizzes, slideshows, forms & story article to your website. 
 
@@ -169,6 +169,13 @@ Yes, all content created with Opinion Stage is fully responsive, and designed to
 N/A
 
 == Changelog ==
+  = 19.4.2 =
+  * better AJAX handling
+  = 19.4.1 =
+  * fix deactivation issue
+  = 19.4.0 =
+  * stability fixes
+  * added deactivate screen
   = 19.3.5 =
   * more updates to readme.txt file
   = 19.3.4 =

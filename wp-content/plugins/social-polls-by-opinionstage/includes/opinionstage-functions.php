@@ -9,21 +9,14 @@ defined( 'ABSPATH' ) or die();
  * Initialize the plugin 
  */
 function opinionstage_init() {
-	opinionstage_initialize_data();
-}
-
-/**
- * Initialiaze the data options
- */
-function opinionstage_initialize_data() {
 	$os_options = (array) get_option(OPINIONSTAGE_OPTIONS_KEY);
 	$os_options['version'] = OPINIONSTAGE_WIDGET_VERSION;
-	
+
 	// For backward compatibility
-	if (!isset($os_options['sidebar_placement_active'])) {
+	if ( !isset($os_options['sidebar_placement_active']) ) {
 		$os_options['sidebar_placement_active'] = 'false';
 	}
-	
+
 	update_option(OPINIONSTAGE_OPTIONS_KEY, $os_options);
 }
 
