@@ -3,6 +3,7 @@ wp-content/aam
 wp-content/Cimy_Header_Images
 wp-content/wptouch-data
 wp-config.php
+wp-content/**/*.zip
 cache
 debug_log.txt
 ~logins
