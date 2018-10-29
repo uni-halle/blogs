@@ -3,8 +3,8 @@ Contributors: realtm
 Donate link: https://www.paypal.com/donate/?token=BWzoCeVKupkWFJQ7nIA-0il0ndBxJOConYsL8hEYVgQHTMPaKM6bjYu0GqHO7aE2j0px_m
 Tags: soundcloud, simple, shortcode, music, sound, podcasts, widget
 Requires at least: 3.2
-Tested up to: 4.9.4
-Stable tag: 2.5
+Tested up to: 4.9.7
+Stable tag: 2.5.1
 
 Browse and insert Soundcloud tracks, playlists and favourites to your posts. Live preview and customise your player to fit your website's design.
 
@@ -155,6 +155,11 @@ Sometimes, I generally keep a eye on my plugin's forums and website's comments. 
 
 
 == Changelog ==
+
+= 2.5.1 =
+* 🔧 Fixing the insert shortcode button not inserting the shortcode anymore.
+* ✍🏻 Renamed the media upload tab to "insert from Soundcloud" for consistency with Wordpress and better UX.
+* ✍🏻 Minor styling update to fix the image placeholder in the editor.
 
 = 2.5 =
 * 🤟 You can now change playlists' height!

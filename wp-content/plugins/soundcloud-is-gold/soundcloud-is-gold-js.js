@@ -238,15 +238,17 @@ jQuery(document).ready(function($){
     });
 
     function insertShortcode(sh){
-	      //Insert Content at the end of the editor content
-	      //parent.tinyMCE.activeEditor.setContent(parent.tinyMCE.activeEditor.getContent() + sh);
+	      //Insert Content where the cursor is in the editor (no refresh)
+      	var myActiveEditor = parent.tinyMCE.get('content');
+        if(myActiveEditor!==null){
+          //myActiveEditor.execCommand('mycustomcommand', false, sh);//run command, used for custom commands
+          myActiveEditor.insertContent(sh); // insert Shortcode into tinyMCE's content
+        }
 
-      	//Insert Content where the cursor is in the editor (plus refresh)
-      	parent.tinyMCE.activeEditor.execCommand('mceInsertRawHTML', false, sh);
-      	//Insert Content where the cursor is in the editor (no refresh)
-      	//parent.tinyMCE.activeEditor.execCommand('mceInsertContent', false, sh);
-      	//Close window
+        //Close window
       	parent.jQuery(".media-modal-close").click();
+        //Close window when using reduced modal (happens when clicking on an existing placeholder in editor)
+        parent.jQuery("#TB_closeWindowButton").click();
     }
 
     /********************************************/

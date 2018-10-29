@@ -93,9 +93,10 @@
 			return co.replace(/\[soundcloud([^\]]*)\]/g, function(a,b){
 				//console.log(obj);
 				//console.log('----');
+
 				//data-mce-resize="false": stop been able to rezise the placeholder
 				//data-mce-placeholder="1": Set the image as a placehoder, no more UI poping up.
-				placeholder = '<img class="soundcloudIsGold_placeholder" src="../wp-content/plugins/soundcloud-is-gold/tinymce-plugin/img/t.gif" class="soundcloudIsGold mceItem" data-mce-resize="false" data-mce-placeholder="1" title="soundcloud'+tinymce.DOM.encode(b)+'" width="566px" height="166px" />';
+				placeholder = '<img class="soundcloudIsGold_placeholder" src="../wp-content/plugins/soundcloud-is-gold/tinymce-plugin/img/player-placeholder.jpg" class="soundcloudIsGold mceItem" data-mce-resize="false" data-mce-placeholder="1" title="soundcloud'+tinymce.DOM.encode(b)+'" width="566px" height="166px" />';
 				return placeholder;
 			});
 		},
@@ -165,11 +166,12 @@
 				author : 'TM',
 				authorurl : 'http://www.mightymess.com',
 				infourl : '',
-				version : "1.1"
+				version : "1.2"
 			};
 		}
 
 	});
 
 	tinymce.PluginManager.add('soundcloudIsGold', tinymce.plugins.soundcloudIsGold);
+
 })();

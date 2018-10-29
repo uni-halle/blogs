@@ -1,10 +1,9 @@
 img.soundcloudIsGold_placeholder{
-    background: url("img/player-placeholder.jpg") no-repeat scroll top left #DAE8F6;
-    background-size: 100% auto;
     border: 1px solid #7B9DA2;
     margin-bottom: 10px;
+    width: 100%;
     max-width: 566px;
-    height: 166px;
+    height: auto;
 }
 img.soundcloudIsGold_placeholder:hover{
   background-color: #0085ba;

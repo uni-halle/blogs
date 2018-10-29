@@ -390,7 +390,7 @@ if(!function_exists('printl')){
 /*********************************************************************/
 /* Add a new Tab */
 function soundcloud_is_gold_media_upload_tab($tabs) {
-	$newtab = array('soundcloud_is_gold' => __('Soundcloud is Gold', 'soundcloud_is_gold'));
+	$newtab = array('soundcloud_is_gold' => __('Insert from Soundcloud', 'soundcloud_is_gold_tabname'));
 	return array_merge($tabs, $newtab);
 }
 add_filter('media_upload_tabs', 'soundcloud_is_gold_media_upload_tab');
