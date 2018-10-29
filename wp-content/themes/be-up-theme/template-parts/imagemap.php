@@ -14,8 +14,8 @@
 	<area shape="circle" alt="Bochum" title="Bochum" coords="310,373,39" href="#Bochum" target="" />
 	<area shape="circle" alt="Dortmund" title="Dortmund" coords="106,472,38" href="#Dortmund" target="" />
 	<area shape="circle" alt="Dortmund2" title="Dortmund" coords="187,516,37" href="#Dortmund2" target="" />
-	<area shape="circle" alt="Paderborn" title="Paderborn" coords="639,436,40" href="#Paderborn" target="" />
-	<area shape="circle" alt="Dessau" title="Dessau" coords="1739,420,41" href="#Dessau" target="" />
+	<area shape="circle" alt="Bielefeld" title="Bielefeld" coords="570,340,40" href="#Bielefeld" target="" />
+	<area shape="circle" alt="Wolfsburg" title="Wolfsburg" coords="1195,190,41" href="#Wolfsburg" target="" />
 	<area shape="circle" alt="Brandenburg" title="Brandenburg" coords="1786,190,38" href="#Brandenburg" target="" />
 	<area shape="circle" alt="Berlin" title="Berlin" coords="1945,129,38" href="#Berlin" target="" />
 	<area shape="circle" alt="Halle" title="Halle" coords="1561,528,37" href="#Halle" target="" />
@@ -30,10 +30,10 @@
     <area alt="Bochum" title="Bochum" href="#Bochum" shape="circle" coords="303,393,35" />
     <area alt="Stolberg" title="Stolberg" href="#Stolberg" shape="circle" coords="90,844,35" />
     <area alt="Siegen" title="Siegen" href="#Siegen" shape="circle" coords="394,721,35" />
-    <area alt="Paderborn" title="Paderborn" href="#Paderborn" shape="circle" coords="638,440,35" />
+    <area alt="Bielefeld" title="Bielefeld" href="#Bielefeld" shape="circle" coords="638,440,35" />
     <area alt="Jena" title="Jena" href="#Jena" shape="circle" coords="1556,845,35" />
     <area alt="Halle" title="Halle(Saale)" href="#Hhalle" shape="circle" coords="1567,529,35" />
-    <area alt="Dessau" title="Dessau" href="#Dessau" shape="circle" coords="1743,420,35" />
+    <area alt="Wolfsburg" title="Wolfsburg" href="#Wolfsburg" shape="circle" coords="1743,420,35" />
     <area alt="Berlin1" title="Berlin" href="#Berlin" shape="circle" coords="1918,140,35" />
     <area alt="Berlin2" title="Berlin" href="#Berlin" shape="circle" coords="2015,145,35" />
     <area alt="Berlin3" title="Berlin" href="#Berlin" shape="circle" coords="1967,58,35" />

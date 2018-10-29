@@ -74,7 +74,7 @@
 						</div>
 						<div class="small-12 medium-2 cell" style="margin-top:0;">
 							<a href="https://www.hs-gesundheit.de/" target="_blank" Title="Hochschule für Gesundheit">
-								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logos/logo_hsg.png" alt="Logo Hochschule für Gesundheit">
+								<img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/logos/logo_hsg-neu.png" alt="Logo Hochschule für Gesundheit">
 							</a>
 						</div>
 					</div>
