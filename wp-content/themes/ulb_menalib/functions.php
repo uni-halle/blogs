@@ -213,5 +213,9 @@ require_once( get_stylesheet_directory() . '/inc/password-protected-posts.php');
 
 require_once( get_stylesheet_directory() . '/inc/iframe-shortcode.php');
 
+require_once( get_stylesheet_directory() . '/inc/tag-cloud-shortcode.php');
+
+
+
 
 

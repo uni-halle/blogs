@@ -4,6 +4,26 @@
 
 */
 
+#tribe-events .tribe-events-content p, 
+.tribe-events-before-html p, 
+.tribe-events-after-html p 
+{
+
+    line-height: inherit;
+
+
+}
+
+
+#tribe-events .tribe-events-content p.wp-caption-text
+{
+
+
+    margin: 0;
+
+
+}
+
 
 
 ul.ecs-event-list

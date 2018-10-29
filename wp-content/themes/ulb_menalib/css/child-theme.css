@@ -429,7 +429,7 @@ html:lang(en) #branding a.linked-image #header-images
 }
 
 .widget a {
-    color: #666;
+   /* color: #666;*/
 }
 
 .widget a:hover {
@@ -448,17 +448,19 @@ html:lang(en) #branding a.linked-image #header-images
 }
 .widget-title {
 
-    font-size: 11px;
+   /* font-size: 11px;
     font-weight: bold;
     line-height: 1.75;
     text-align: right;
+    */
 }
+
 .widget ul li {
     color: white;
     text-align: right;
 }
 .widget a {
-    font-weight: normal;
+    /*font-weight: normal;*/
 }
 
 
@@ -477,10 +479,11 @@ html:lang(en) #branding a.linked-image #header-images
     display: flex;
     position: relative;
     justify-content: space-between;
-    z-index: 999999;
+    /*z-index: 999999;*/
 }
 
-#page-top-widgets .widget {
+#page-top-widgets .widget 
+{
     margin: 0;
 }
 
@@ -520,6 +523,7 @@ html:lang(en) #branding a.linked-image #header-images
     -webkit-box-shadow: 0px 0px 22px 10px rgba(0, 0, 0, 0.33);
     -moz-box-shadow: 0px 0px 22px 10px rgba(0, 0, 0, 0.33);
     box-shadow: 0px 0px 22px 10px rgba(0, 0, 0, 0.33);
+    display: none;
 }
 
 
@@ -570,7 +574,10 @@ p {
 h1.entry-title,
 h1.page-title,
 h2.entry-title,
-h2.page-title
+h2.page-title,
+
+.single-tribe_events h1.tribe-events-single-event-title
+
 {
    
     font-size: 1.6em;
@@ -582,10 +589,11 @@ h2.page-title
 
 
 
-.entry-title
+.entry-title,
+.single-tribe_events h1.tribe-events-single-event-title
 {
 
-    font-family: RobotoSlab;
+    font-family: RobotoSlab, Georgia, serif;
 
 
 }
@@ -739,6 +747,45 @@ option
     
 }
 
+/*
+
+Links 
+
+*/
+
+a
+{
+    transition: color 0.1s;
+    color: #6aa101;
+}
+
+
+a:hover,
+.entry-title a:hover
+{
+    color: #EC1717;
+
+}
+
+
+a:active,
+.entry-title a:active
+{
+    color: #000000;
+    color:currentColor;
+}
+
+
+a:visited
+{
+    /*color: #72843F;*/
+
+}
+
+.entry-title a:visited
+{
+    color: currentColor;
+}
 
 
 
@@ -911,6 +958,12 @@ a:active img[class*="wp-image-"],
 
 
 
+/*
+
+IMAGES and CAPTIONS
+*/
+
+
 .img[class*="align"],
 img[class*="wp-image-"],
 #content .gallery .gallery-icon img 
@@ -922,22 +975,168 @@ img[class*="wp-image-"],
 }
 
 
-img.alignleft, img.alignright 
+img.size-full
+{
+	width:100%;
+	max-width: 100%;
+	margin: 0;
+	margin-bottom: 1.6em;
+}
+
+img.size-medium 
 {
 	max-width:45%;
+}
+
+img.size-thumbnail 
+{
+	max-width:28%;
 
 }
 
-@media screen and (max-width: 650px) 
+.wp-caption
 {
-	img.alignleft, 
-	img.alignright 
+	background-color: #E2E2E2;
+    padding: 0.7em;
+    margin-right: 1.6em;
+	border-color: #CCCCCC;
+	border-style: solid;
+	border-width: 1px;
+    border-radius: 0.15em;
+}
+
+.wp-caption img
+{
+	margin-bottom: 0.2em;
+
+}
+
+.wp-caption .wp-caption-text,
+.gallery-item .wp-caption-text
+{
+	font-size: 0.8em;
+	font-family: RobotoSlab, Georgia, serif;
+	line-height: 1.2!important;
+	color: rgba(0,0,0,0.6);
+	
+}
+
+.gallery-item .wp-caption-text
+{
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.wp-caption .wp-caption-text:before
+{
+	content: '';
+	color: unset;
+	font-size: initial;
+	font-style: normal;
+	font-weight: unset;
+	margin:0;
+	position: unset;
+	left: 0;
+	top: 0;
+
+}
+
+.wp-caption img.size-medium,
+.wp-caption img.size-thumbnail  
+{
+
+	max-width: 100%;
+}
+
+.wp-caption.alignleft,
+.wp-caption.alignright
+{
+	max-width:45%;
+	width: unset!important;
+}
+
+.wp-caption.alignleft
+{
+	margin-right: 1.6em;
+}
+
+
+
+.wp-caption.alignright
+{
+	margin-left: 1.6em;
+}
+
+
+
+img.alignleft[src$=".svg"],
+img.alignright[src$=".svg"]
+{
+	max-width:45%;
+	margin-bottom: 0;
+
+}
+
+img.alignleft[src$=".svg"]
+{
+	margin-right: 1.6em;
+
+}
+
+
+img.alignright[src$=".svg"]
+{
+	margin-left: 1.6em;
+
+}
+
+
+
+
+
+
+@media screen and (max-width: 650px) 
+{ 
+	img.size-medium 
 	{
 		width:100%;
 		max-width:100%;
 		margin-bottom: 1em;
 
 	}
+
+	img.size-thumbnail
+	{
+		width:65%;
+		max-width:65%;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 1em;
+
+	}
+
+	img.alignleft[src$=".svg"],
+	img.alignright[src$=".svg"]
+	{
+		width:100%;
+		max-width:100%;
+		margin-bottom: 1em;
+		margin-left: auto;
+		margin-right: auto;
+
+	}
+
+
+	.wp-caption.alignleft,
+	.wp-caption.alignright
+	{
+		width:100%;
+		max-width:100%;
+		margin: 0;
+		margin-bottom: 1em;
+	}
+
+
 }
 
 
@@ -977,10 +1176,8 @@ img.alignleft, img.alignright
 }
 
 
-/* Sprachumschalter */
-.qtranxs_widget ul {
-    text-align: right;
-}
+
+
 
 
 /* Virtueller Katalog */

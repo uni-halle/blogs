@@ -46,6 +46,13 @@ code, kbd, samp, var
 	font: unset;
 }
 
+.widget a
+{
+	font-weight: normal;
+	font-weight: unset;
+	/*color: unset;*/
+}
+
 
 
 #page
@@ -167,7 +174,8 @@ code, kbd, samp, var
 .entry-content h1, 
 .entry-content h2, 
 .comment-content h1, 
-.comment-content h2
+.comment-content h2,
+
 
 {
 	color: currentColor;
@@ -177,7 +185,21 @@ code, kbd, samp, var
     margin: unset; 
 }
 
-.entry-content h3, .comment-content h3
+
+.error404 .widgettitle 
+{
+	font-size: 100%;
+	font-size: unset;
+	letter-spacing: normal;
+	line-height: 1em;
+	line-height: unset;
+	text-transform: none;
+}
+
+
+
+.entry-content h3, 
+.comment-content h3
 {
 	font-size: 100%;
 	font-size: unset;
@@ -227,14 +249,44 @@ img.aligncenter
 	margin-bottom: unset;
 }
 
-a:focus img[class*="align"],
-a:hover img[class*="align"],
-a:active img[class*="align"],
-a:focus img[class*="wp-image-"],
-a:hover img[class*="wp-image-"],
-a:active img[class*="wp-image-"],
-#content .gallery .gallery-icon a:focus img,
-#content .gallery .gallery-icon a:hover img,
-#content .gallery .gallery-icon a:active img {
-    background: unset;
+
+
+.wp-caption
+{
+    margin:0;
+    max-width: 100%;
+    max-width: unset;
+    padding: 0;
+}
+
+.wp-caption 
+.wp-caption-text, 
+.gallery-caption 
+{
+	font-size: unset;
+	font-family: unset;
+	font-style: unset;
+	color: unset;
+}
+
+.wp-caption .wp-caption-text
+{
+	margin:0;
+	padding:0;
+	position: unset;
+
+}
+
+.wp-caption .wp-caption-text:before
+{
+	content: '';
+	color: unset;
+	font-size: initial;
+	font-style: normal;
+	font-weight: unset;
+	margin:0;
+	position: unset;
+	left: 0;
+	top: 0;
+
 }

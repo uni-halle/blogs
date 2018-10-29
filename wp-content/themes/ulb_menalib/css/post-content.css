@@ -2,6 +2,7 @@
 .entry-content h2,
 .entry-content h3
 {
+
 	
 }
 
@@ -11,7 +12,7 @@
 	margin-bottom: 0.5em;
 	font-weight: 700;
 	font-size: 115%;
-	color:#53602E;
+	color:#e9520c;
 	
 }
 
@@ -19,6 +20,7 @@
 {
 	font-weight: 700;
 	color: #363636;
+	margin-bottom: 0.8em;
 }
 
 .entry-content p
@@ -27,16 +29,12 @@
 	
 }
 
-.entry-content a[href*='lhhal.gbv.de/CHARSET']:before,
-.entry-content a[href*='/opac']:before,
-.entry-content a[href*='opac.']:before,
-.entry-content a[href*='stabikat.']:before,
-.entry-content a[href*='kataloge.thulb.']:before,
-.entry-content a[href*='idm.oclc.org_']:before
-
-
-
-
+.entry-content a[target=_blank][href*='lhhal.gbv.de/']:before,
+.entry-content a[target=_blank][href*='/opac']:before,
+.entry-content a[target=_blank][href*='opac.']:before,
+.entry-content a[target=_blank][href*='stabikat.']:before,
+.entry-content a[target=_blank][href*='kataloge.thulb.']:before,
+.entry-content a[target=_blank][href*='idm.oclc.org']:before
 {
 	content:'→';
 	padding-right: 0.2em;
@@ -46,6 +44,8 @@
 	
 }
 
+
+
 .entry-content a:before
 {
 	transition: all 0.1s ease;
@@ -54,7 +54,29 @@
 
 .entry-content a:hover:before
 {
-	transform: translate(0.2em,0em)
+	transform: translate(0.2em,0em);
+}
+
+.entry-content_ a[target=_blank]:after
+{
+	display: inline-block;
+	content: "⇱";
+	position: relative;
+	top: -5px;
+	margin-left: 2px;
+	transform: rotate(90deg);
+
+}
+
+.entry-content a[alt=rss]
+{
+	display: none;
+
+}
+
+span.rss_neuerwerb
+{
+
 }
 
 
@@ -82,6 +104,27 @@
 .entry-content .article-menu ol
 {
 	margin-bottom: 0;
+}
+
+
+
+.entry-content ul li
+{
+
+	list-style: initial;
+	padding-left: 0.2em;
+
+}
+
+.entry-content ul li:before
+{
+	/*content: '❯';*/
+
+	
+	display: inline-block;
+	padding-right: 0.7em;
+	opacity: 0.8;
+
 }
 
 .entry-content .article-menu div h3
@@ -122,11 +165,11 @@
 
 
 
-    .blink 
-    {
-      animation: blink-text 1.2s linear infinite;
-      font-weight: 700;
-    }
+.blink 
+{
+  animation: blink-text 1.2s linear infinite;
+  font-weight: 700;
+}
 
 
 

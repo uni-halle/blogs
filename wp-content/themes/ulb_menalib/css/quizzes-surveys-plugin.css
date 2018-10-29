@@ -1,0 +1,89 @@
+/* This css redefines forms and layouts created with the Quiz And Survey Master plug-in (https://quizandsurveymaster.com) */
+
+
+
+.mlw_qmn_quiz div.quiz_section
+{
+
+	margin-bottom: 3.3em;
+}
+
+
+
+.mlw_qmn_quiz div.quiz_section .mlw_qmn_question small 
+{
+	font-weight: normal;
+	margin-top: -0.2em;
+	display: block;
+}
+
+.mlw_qmn_quiz div.quiz_section .mlw_qmn_question,
+.mlw_qmn_quiz div.quiz_section .mlw_qmn_question_number 
+{
+	
+}
+
+
+
+.mlw_qmn_quiz div.quiz_section .mlw_qmn_question_number
+{
+
+color: white;
+display: block;
+
+margin-right: 1em;
+font-family: RobotoSlab;
+
+width: 2.2em;
+height: 2.2em;
+text-align: center;
+vertical-align: middle;
+line-height: 2.2em;
+	border-radius:50%;
+	background: #38a9e4;
+	padding-left: 0.1em;
+	margin-bottom: 0.4em;
+
+}
+
+.mlw_qmn_quiz div.quiz_section .mlw_qmn_question_number_:before
+{
+	content: '';
+	line-height:0;
+	display: block;
+	position: absolute;
+	top: 50%;
+	left:50%;
+	transform: translate(-55%, -50%);
+	width:2.2em;
+	height:2.2em;
+	border-radius:50%;
+	background: #38a9e4;
+	z-index: -1;
+
+}
+.mlw_qmn_quiz div.quiz_section .qmn_check_answers 
+{
+	width:100%;
+}
+
+
+.mlw_qmn_quiz div.quiz_section .qmn_check_answers 
+{
+	margin-top: 1em;
+}
+
+.mlw_qmn_quiz div.quiz_section .qmn_check_answers .qsm_check_answer
+{
+	margin-bottom: 0.4em;
+}
+
+
+.mlw_qmn_quiz input[type=checkbox] {
+   
+  transform: scale(1.5);
+}
+}
+
+
+

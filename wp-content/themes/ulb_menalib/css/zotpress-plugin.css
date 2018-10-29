@@ -1,0 +1,20 @@
+/* This css redefines forms and layouts created with the Zotpress plug-in (https://de.wordpress.org/plugins/zotpress/) */
+
+
+.zp-List
+{
+	margin-bottom: 2em;
+}
+
+
+.zp-List .zp-Entry
+{
+	margin-bottom: 1em;
+}
+
+.zp-List .zp-Entry a:before 
+{
+    content: '\A';
+    white-space: pre;
+}
+

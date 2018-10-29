@@ -1,21 +1,56 @@
-ul.qtranxs_language_chooser {
-    margin: 0;
+.qtranxs_widget ul 
+{
     text-align: right;
 }
 
-ul.qtranxs_language_chooser li {
+ul.qtranxs_language_chooser 
+{
+    margin: 0;
+    text-align: right;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    margin-right: 0.05em;
+}
+
+ul.qtranxs_language_chooser li 
+{
+    font-family: RobotoSlab;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 100%;
     display: inline-block; 
-    /* horizontal list, use "list-item" or other appropriate value for vertical list */
+
+
     list-style-type: none;
-    /* use "initial" or other to enable bullets */
-    margin: 0 5px 0 0;
-    margin-right: 12px;
-    /* adjust spacing between items */
-    opacity: 0.5;
-    -o-transition: 1s ease opacity;
-    -moz-transition: 1s ease opacity;
-    -webkit-transition: 1s ease opacity;
-    transition: 1s ease opacity;
+
+ 
+    -o-transition: 0.4s ease opacity;
+    -moz-transition: 0.4s ease opacity;
+    -webkit-transition: 0.4s ease opacity;
+    transition: 0.4s ease opacity;
+}
+
+@media screen and (max-width: 650px) 
+{ 
+    ul.qtranxs_language_chooser li 
+    {
+        font-size: 130%;
+    }
+
+}
+
+ul.qtranxs_language_chooser li:after
+{
+    content:'|';
+    padding-right: 0.3em;
+    padding-left: 0.6em;
+
+}
+
+ul.qtranxs_language_chooser li:last-child:after
+{
+    content:none;
+
 }
 
 
@@ -27,7 +62,7 @@ ul.qtranxs_language_chooser li {
 /* other way to control spacing */
 
 ul.qtranxs_language_chooser li.active {
-    opacity: 0.8;
+    opacity: 0.5;
 }
 
 ul.qtranxs_language_chooser li:hover {

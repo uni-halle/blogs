@@ -77,3 +77,21 @@ FONTS
 */
 
 @import url("css/ecs-event.css");
+
+/*
+	Styles redefining forms and layouts created with the Quiz And Survey Master plug-in 
+	https://quizandsurveymaster.com
+*/
+
+@import url("css/quizzes-surveys-plugin.css");
+
+
+/*
+	Styles redefining forms and layouts created with the Zotpress plug-in 
+	https://de.wordpress.org/plugins/zotpress/
+*/
+
+@import url("css/zotpress-plugin.css");
+
+
+
