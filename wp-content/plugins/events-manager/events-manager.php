@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Events Manager
-Version: 5.9.4
+Version: 5.9.5
 Plugin URI: http://wp-events-plugin.com
 Description: Event registration and booking management for WordPress. Recurring events, locations, google maps, rss, ical, booking registration and more!
 Author: Marcus Sykes
@@ -28,8 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 // Setting constants
-define('EM_VERSION', 5.94); //self expanatory
-define('EM_PRO_MIN_VERSION', 2.392); //self expanatory
+define('EM_VERSION', 5.95); //self expanatory
+define('EM_PRO_MIN_VERSION', 2.64); //self expanatory
 define('EM_PRO_MIN_VERSION_CRITICAL', 2.377); //self expanatory
 define('EM_DIR', dirname( __FILE__ )); //an absolute path to this directory
 define('EM_DIR_URI', trailingslashit(plugins_url('',__FILE__))); //an absolute path to this directory
@@ -639,7 +639,8 @@ function em_locate_template( $template_name, $load=false, $the_args = array() ) 
 	//First we check if there are overriding tempates in the child or parent theme
 	$located = locate_template(array('plugins/events-manager/'.$template_name));
 	if( !$located ){
-		if ( file_exists(EM_DIR.'/templates/'.$template_name) ) {
+		$located = apply_filters('em_locate_template_default', $located, $template_name, $load, $the_args);
+		if ( !$located && file_exists(EM_DIR.'/templates/'.$template_name) ) {
 			$located = EM_DIR.'/templates/'.$template_name;
 		}
 	}

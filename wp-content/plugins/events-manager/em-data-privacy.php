@@ -28,8 +28,7 @@ function em_data_privacy_consent_checkbox( $EM_Object = false ){
 function em_data_privacy_consent_hooks(){
 	//BOOKINGS
 	if( get_option('dbem_data_privacy_consent_bookings') == 1 || ( get_option('dbem_data_privacy_consent_bookings') == 2 && !is_user_logged_in() ) ){
-	    add_action('em_booking_form_footer', 'em_data_privacy_bookings_consent_checkbox', 9, 1);
-	    function em_data_privacy_bookings_consent_checkbox(){ em_data_privacy_consent_checkbox(); } //remove passed argument since it's an EM_Event and we'll confuse with submission form
+	    add_action('em_booking_form_footer', 'em_data_privacy_consent_checkbox', 9, 0); //supply 0 args since arg is $EM_Event and callback will think it's an event submission form
 		add_filter('em_booking_get_post', 'em_data_privacy_consent_booking_get_post', 10, 2);
 		add_filter('em_booking_validate', 'em_data_privacy_consent_booking_validate', 10, 2);
 		add_filter('em_booking_save', 'em_data_privacy_consent_booking_save', 10, 2);
@@ -90,9 +89,9 @@ function em_data_privacy_consent_booking_get_post( $result, $EM_Booking ){
  * @return bool
  */
 function em_data_privacy_consent_booking_validate( $result, $EM_Booking ){
-	if( is_user_logged_in() ){
+	if( is_user_logged_in() && $EM_Booking->person_id == get_current_user_id() ){
 		//check if consent was previously given and ignore if settings dictate so
-		$consent_given_already = get_user_meta( get_current_user_id(), 'em_data_privacy_consent', true );
+		$consent_given_already = get_user_meta( $EM_Booking->person_id, 'em_data_privacy_consent', true );
 		if( !empty($consent_given_already) && get_option('dbem_data_privacy_consent_remember') == 1 ) return $result; //ignore if consent given as per settings
 	}
     if( empty($EM_Booking->booking_meta['consent']) ){

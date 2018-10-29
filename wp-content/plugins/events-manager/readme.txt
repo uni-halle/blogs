@@ -5,7 +5,7 @@ Tags: bookings, calendar, tickets, events, buddypress, event management, google 
 Text Domain: events-manager
 Requires at least: 3.5
 Tested up to: 4.9.6
-Stable tag: 5.9.4
+Stable tag: 5.9.5
 
 Fully featured event registration management including recurring events, locations management, calendar, Google map integration, booking management
 
@@ -36,7 +36,7 @@ Version 5 now makes events and locations WordPress Custom Post Types, allowing f
 * Assign event locations and view events by location
 * Event categories
 * Easily create custom event attributes (e.g. dress code)
-* Google Maps
+* Google Maps [(see our API usage recommendations)](https://wp-events-plugin.com/documentation/google-maps/api-usage/?utm_source=repo&utm_medium=readme&utm_campaign=gmaps-api)
 * Advanced permissions - restrict user management of events and locations.
 * Widgets for Events, Locations and Calendars
 * Fine grained control of how every aspect of your events are shown on your site, easily modify templates from the settings pages and template files
@@ -103,13 +103,23 @@ See our [FAQ](http://wp-events-plugin.com/documentation/faq/) page, which is upd
 == Screenshots ==
 
 1. Event registration and user submitted events pending approval
-2. Event ticketing and bookings forms, easily styleable.
+2. Event ticketing and bookings forms, can be easily styled.
 3. Multiple tickets with constraints and prices
 4. Locations with google map integration
 5. Event registration page
 6. Manage attendees with various booking reports
 
 == Changelog ==
+= 5.9.5 =
+* added new Google Maps display options to help prevent cost increases
+* fixed booking status emails getting resent when attempting to change status to same status
+* fixed potential consent issues with editing/validating bookings made by other registered users
+* fixed broken #_LATT custom field attributes for locations
+* fixed #_ATT placeholders with dropdown options not selecting default option if not defined
+* added em_locate_template_default filter to allow for further template overriding
+* fixed certain unsanitized permalink output on admin settings page
+* fixed weekly and daily recurrence creation inconsistencies when traversing DST change dates
+
 = 5.9.4 =
 * added em_rewrite_rules_array filter for final permalink rule manipulation
 * fixed privacy consent blocking certain actions such as single booking button and admin-side submissions

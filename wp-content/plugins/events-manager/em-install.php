@@ -1084,6 +1084,13 @@ function em_upgrade_current_installation(){
 		$EM_Admin_Notice = new EM_Admin_Notice(array( 'name' => 'gdpr_update', 'who' => 'admin', 'where' => 'all', 'message' => $message ));
 		EM_Admin_Notices::add($EM_Admin_Notice, is_multisite());
 	}
+	if( get_option('dbem_version') != '' && get_option('dbem_version') < 5.95 ){
+		$message = esc_html__('Google has introduced new pricing for displaying maps on your site. If you have moderate traffic levels, this may likely affect you with surprise and unexpected costs!', 'events-manager');
+		$message2 = esc_html__('Events Manager has implemented multiple ways to help prevent or reduce these costs drastically, please check our %s page for more information.', 'events-manager');
+		$message2 = sprintf($message2, '<a href="https://wp-events-plugin.com/documentation/google-maps/api-usage/?utm_source=plugin&utm_source=medium=settings&utm_campaign=gmaps-update">'.esc_html__('documentation', 'events-manager') .'</a>');
+		$EM_Admin_Notice = new EM_Admin_Notice(array( 'name' => 'gdpr_update', 'who' => 'admin', 'where' => 'all', 'message' => "<p>$message</p><p>$message2</p>" ));
+		EM_Admin_Notices::add($EM_Admin_Notice, is_multisite());
+	}
 }
 
 function em_set_mass_caps( $roles, $caps ){

@@ -130,8 +130,8 @@ class EM_Location extends EM_Object {
 	
 	/**
 	 * Gets data from POST (default), supplied array, or from the database if an ID is supplied
-	 * @param $location_data
-	 * @param $search_by can be set to post_id or a number for a blog id if in ms mode with global tables, default is location_id
+	 * @param WP_Post|int|false $id
+	 * @param $search_by - Can be post_id or a number for a blog id if in ms mode with global tables, default is location_id
 	 * @return null
 	 */
 	function __construct($id = false,  $search_by = 'location_id' ) {
@@ -205,7 +205,7 @@ class EM_Location extends EM_Object {
 				foreach($location_meta as $location_meta_key => $location_meta_val){
 					$field_name = substr($location_meta_key, 1);
 					if($location_meta_key[0] != '_'){
-						$this->event_attributes[$location_meta_key] = ( is_array($location_meta_val) ) ? $location_meta_val[0]:$location_meta_val;
+						$this->location_attributes[$location_meta_key] = ( is_array($location_meta_val) ) ? $location_meta_val[0]:$location_meta_val;
 					}elseif( is_string($field_name) && !in_array($field_name, $this->post_fields) ){
 						if( array_key_exists($field_name, $this->fields) ){
 							$this->$field_name = $location_meta_val[0];
@@ -459,6 +459,7 @@ class EM_Location extends EM_Object {
 					}
 				}
 			}
+			//refresh status
 			$this->get_status();
 			$this->location_status = (count($this->errors) == 0) ? $this->location_status:null; //set status at this point, it's either the current status, or if validation fails, null
 			//Save to em_locations table
@@ -820,14 +821,22 @@ class EM_Location extends EM_Object {
 		//This is for the custom attributes
 		preg_match_all('/#_LATT\{([^}]+)\}(\{([^}]+)\})?/', $location_string, $results);
 		foreach($results[0] as $resultKey => $result) {
+			//check that we haven't mistakenly captured a closing bracket in second bracket set
+			if( !empty($results[3][$resultKey]) && $results[3][$resultKey][0] == '/' ){
+				$result = $results[0][$resultKey] = str_replace($results[2][$resultKey], '', $result);
+				$results[3][$resultKey] = $results[2][$resultKey] = '';
+			}
 			//Strip string of placeholder and just leave the reference
 			$attRef = substr( substr($result, 0, strpos($result, '}')), 7 );
 			$attString = '';
-			if( is_array($this->location_attributes) && array_key_exists($attRef, $this->location_attributes) && !empty($this->location_attributes[$attRef]) ){
+			if( is_array($this->location_attributes) && array_key_exists($attRef, $this->location_attributes) ){
 				$attString = $this->location_attributes[$attRef];
 			}elseif( !empty($results[3][$resultKey]) ){
 				//Check to see if we have a second set of braces;
-				$attString = $results[3][$resultKey];
+				$attStringArray = explode('|', $results[3][$resultKey]);
+				$attString = $attStringArray[0];
+			}elseif( !empty($attributes['values'][$attRef][0]) ){
+				$attString = $attributes['values'][$attRef][0];
 			}
 			$attString = apply_filters('em_location_output_placeholder', $attString, $this, $result, $target);
 			$location_string = str_replace($result, $attString ,$location_string );
@@ -1071,5 +1080,24 @@ class EM_Location extends EM_Object {
 		if( !empty($this->location_postcode) ) $location_array[] = $this->location_postcode;
 		if( !empty($this->location_region) ) $location_array[] = $this->location_region;
 		return implode($glue, $location_array);
+	}
+	
+	function get_google_maps_embed_url(){
+		//generate the map url
+		$latlng = $this->location_latitude.','.$this->location_longitude;
+		$args = apply_filters('em_location_google_maps_embed_args', array(
+			'maptype' => 'roadmap',
+			'zoom' => 15,
+			'key' => get_option('dbem_google_maps_browser_key')
+		), $this);
+		if( get_option('dbem_gmap_embed_type') == 'place' ){
+			$args['q'] = $this->location_name.', '. $this->get_full_address();
+		}elseif( get_option('dbem_gmap_embed_type') == 'address' ){
+			$args['q'] = $this->get_full_address();
+		}else{
+			$args['q'] = $latlng;
+		}
+		$url = add_query_arg( $args, "https://www.google.com/maps/embed/v1/place");
+		return apply_filters('em_location_get_google_maps_embed_url', $url, $this);
 	}
 }

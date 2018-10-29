@@ -1762,7 +1762,8 @@ class EM_Event extends EM_Object{
 				$attString = $this->event_attributes[$attRef];
 			}elseif( !empty($results[3][$resultKey]) ){
 				//Check to see if we have a second set of braces;
-				$attString = $results[3][$resultKey];
+				$attStringArray = explode('|', $results[3][$resultKey]);
+				$attString = $attStringArray[0];
 			}elseif( !empty($attributes['values'][$attRef][0]) ){
 			    $attString = $attributes['values'][$attRef][0];
 			}
@@ -2851,10 +2852,10 @@ class EM_Event extends EM_Object{
 		switch ( $this->recurrence_freq ){ /* @var EM_DateTime $current_date */
 			case 'daily':
 				//If daily, it's simple. Get start date, add interval timestamps to that and create matching day for each interval until end date.
-				$current_date = $start_date;
-				while( $current_date <= $end_date ){
-					$matching_days[] = $current_date;
-					$current_date = $current_date + (DAY_IN_SECONDS * $this->recurrence_interval);
+				$current_date = $this->start()->copy()->setTime(0,0,0);
+				while( $current_date->getTimestamp() <= $end_date ){
+					$matching_days[] = $current_date->getTimestamp();
+					$current_date->add('P'. $this->recurrence_interval .'D');
 				}
 				break;
 			case 'weekly':
@@ -2872,11 +2873,12 @@ class EM_Event extends EM_Object{
 				//for each day of eventful days in week 1, add 7 days * weekly intervals
 				foreach ($start_weekday_dates as $weekday_date){
 					//Loop weeks by interval until we reach or surpass end date
-					while($weekday_date <= $end_date){
-						if( $weekday_date >= $start_date && $weekday_date <= $end_date ){
-							$matching_days[] = $weekday_date;
+					$current_date->setTimestamp($weekday_date);
+					while($current_date->getTimestamp() <= $end_date){
+						if( $current_date->getTimestamp() >= $start_date && $current_date->getTimestamp() <= $end_date ){
+							$matching_days[] = $current_date->getTimestamp();
 						}
-						$weekday_date = $weekday_date + (WEEK_IN_SECONDS *  $this->recurrence_interval);
+						$current_date->add('P'. ($this->recurrence_interval * 7 ) .'D');
 					}
 				}//done!
 				break;  
