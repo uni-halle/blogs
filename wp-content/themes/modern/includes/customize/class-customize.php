@@ -6,7 +6,7 @@
  * @copyright  WebMan Design, Oliver Juhas
  *
  * @since    2.0.0
- * @version  2.1.0
+ * @version  2.2.2
  *
  * Contents:
  *
@@ -106,7 +106,7 @@ class Modern_Customize {
 		 * Modify native WordPress options and setup partial refresh
 		 *
 		 * @since    2.0.0
-		 * @version  2.0.0
+		 * @version  2.2.0
 		 *
 		 * @param  object $wp_customize  WP customizer object.
 		 */
@@ -147,12 +147,6 @@ class Modern_Customize {
 						) );
 
 					// Option pointers only
-
-						// Archive page title prefix
-
-							$wp_customize->selective_refresh->add_partial( 'archive_title_prefix', array(
-								'selector' => '.archive .page-title',
-							) );
 
 						// Posts columns
 
@@ -258,7 +252,7 @@ class Modern_Customize {
 		 * Set theme options array
 		 *
 		 * @since    2.0.0
-		 * @version  2.1.0
+		 * @version  2.2.2
 		 *
 		 * @param  array $options
 		 */
@@ -299,18 +293,18 @@ class Modern_Customize {
 						),
 
 							'0' . 10 . 'logo' . 20 => array(
-								'section'     => 'title_tagline',
-								'priority'    => 102,
-								'type'        => 'text',
-								'id'          => 'custom_logo_height',
-								'label'       => esc_html__( 'Max logo image height (px)', 'modern' ),
-								'default'     => 100,
-								'validate'    => 'absint',
-								'input_attrs' => array(
+								'section'           => 'title_tagline',
+								'priority'          => 102,
+								'type'              => 'text',
+								'id'                => 'custom_logo_height',
+								'label'             => esc_html__( 'Max logo image height (px)', 'modern' ),
+								'default'           => 100,
+								'sanitize_callback' => 'absint',
+								'input_attrs'       => array(
 									'size'     => 5,
 									'maxwidth' => 3,
 								),
-								'preview_js'  => array(
+								'preview_js'        => array(
 									'custom' => "jQuery( '.custom-logo' ).css( 'max-height', to + 'px' );",
 								),
 							),
@@ -721,6 +715,18 @@ class Modern_Customize {
 						),
 
 							300 . 'layout' . 100 => array(
+								'type'        => 'radio',
+								'id'          => 'layout_posts',
+								'label'       => esc_html__( 'Posts list style', 'modern' ),
+								'description' => esc_html__( 'Sets how posts, portfolio projects and testimonials are listed.', 'modern' ),
+								'default'     => 'equal-height',
+								'choices'     => array(
+									'equal-height' => esc_html__( 'Equal row height list', 'modern' ),
+									'masonry'      => esc_html__( 'Masonry list', 'modern' ),
+								),
+							),
+
+							300 . 'layout' . 110 => array(
 								'type'        => 'range',
 								'id'          => 'layout_posts_columns',
 								'label'       => esc_html__( 'Posts list columns', 'modern' ),
@@ -785,26 +791,26 @@ class Modern_Customize {
 						),
 
 							800 . 'texts' . 100 => array(
-								'type'        => 'textarea',
-								'id'          => 'texts_intro',
-								'label'       => esc_html__( 'Default blog intro text', 'modern' ),
-								'description' => esc_html__( 'This text will be displayed in intro section of your website front page only if latest posts are displayed there.', 'modern' ),
-								'default'     => esc_html__( 'Welcome to our site!', 'modern' ),
-								'validate'    => 'wp_kses_post',
-								'preview_js'  => array(
+								'type'              => 'textarea',
+								'id'                => 'texts_intro',
+								'label'             => esc_html__( 'Default blog intro text', 'modern' ),
+								'description'       => esc_html__( 'This text will be displayed in intro section of your website front page only if latest posts are displayed there.', 'modern' ),
+								'default'           => esc_html__( 'Welcome to our site!', 'modern' ),
+								'sanitize_callback' => 'wp_kses_post',
+								'preview_js'        => array(
 									'custom' => "jQuery( '.home.blog .intro-title' ).html( '<small class=\"option-pointer\"></small>' + to ); if ( '' === to ) { jQuery( '.home.blog .intro-title' ).hide(); } else { jQuery( '.home.blog .intro-title:hidden' ).show(); }",
 								),
-								'active_callback' => __CLASS__ . '::is_blog_front_page',
+								'active_callback'   => __CLASS__ . '::is_blog_front_page',
 							),
 
 							800 . 'texts' . 500 => array(
-								'type'        => 'textarea',
-								'id'          => 'texts_site_info',
-								'label'       => esc_html__( 'Footer credits (copyright)', 'modern' ),
-								'description' => sprintf( esc_html__( 'Set %s to disable this area.', 'modern' ), '<code>-</code>' ) . ' ' . esc_html__( 'Leaving the field empty will fall back to default theme setting.', 'modern' ) . ' ' . sprintf( esc_html__( 'You can use %s to display dynamic, always current year.', 'modern' ), '<code>[year]</code>' ),
-								'default'     => '',
-								'validate'    => 'wp_kses_post',
-								'preview_js'  => array(
+								'type'              => 'textarea',
+								'id'                => 'texts_site_info',
+								'label'             => esc_html__( 'Footer credits (copyright)', 'modern' ),
+								'description'       => sprintf( esc_html__( 'Set %s to disable this area.', 'modern' ), '<code>-</code>' ) . ' ' . esc_html__( 'Leaving the field empty will fall back to default theme setting.', 'modern' ) . ' ' . sprintf( esc_html__( 'You can use %s to display dynamic, always current year.', 'modern' ), '<code>[year]</code>' ),
+								'default'           => '',
+								'sanitize_callback' => 'wp_kses_post',
+								'preview_js'        => array(
 									'custom' => "jQuery( '.site-info' ).html( to ); if ( '-' === to ) { jQuery( '.footer-area-site-info' ).hide(); } else { jQuery( '.footer-area-site-info:hidden' ).show(); }",
 								),
 							),
@@ -822,17 +828,17 @@ class Modern_Customize {
 						),
 
 							900 . 'typography' . 100 => array(
-								'type'        => 'range',
-								'id'          => 'typography_size_html',
-								'label'       => esc_html__( 'Basic font size in px', 'modern' ),
-								'description' => esc_html__( 'All other font sizes are calculated automatically from this basic font size.', 'modern' ),
-								'default'     => 16,
-								'min'         => 12,
-								'max'         => 24,
-								'step'        => 1,
-								'suffix'      => 'px',
-								'validate'    => 'absint',
-								'preview_js'  => array(
+								'type'              => 'range',
+								'id'                => 'typography_size_html',
+								'label'             => esc_html__( 'Basic font size in px', 'modern' ),
+								'description'       => esc_html__( 'All other font sizes are calculated automatically from this basic font size.', 'modern' ),
+								'default'           => 16,
+								'min'               => 12,
+								'max'               => 24,
+								'step'              => 1,
+								'suffix'            => 'px',
+								'sanitize_callback' => 'absint',
+								'preview_js'        => array(
 									'css' => array(
 
 										'html' => array(
@@ -869,39 +875,39 @@ class Modern_Customize {
 								),
 
 								900 . 'typography' . 220 => array(
-									'type'            => 'text',
-									'id'              => 'typography_fonts_text',
-									'label'           => esc_html__( 'General text font', 'modern' ),
-									'default'         => "'Fira Sans', sans-serif",
-									'input_attrs'     => array(
+									'type'              => 'text',
+									'id'                => 'typography_fonts_text',
+									'label'             => esc_html__( 'General text font', 'modern' ),
+									'default'           => "'Fira Sans', sans-serif",
+									'input_attrs'       => array(
 										'placeholder' => "'Fira Sans', sans-serif",
 									),
-									'active_callback' => __CLASS__ . '::is_typography_custom_fonts',
-									'validate'        => 'Modern_Library_Sanitize::fonts',
+									'active_callback'   => __CLASS__ . '::is_typography_custom_fonts',
+									'sanitize_callback' => 'Modern_Library_Sanitize::fonts',
 								),
 
 								900 . 'typography' . 230 => array(
-									'type'            => 'text',
-									'id'              => 'typography_fonts_headings',
-									'label'           => esc_html__( 'Headings font', 'modern' ),
-									'default'         => "'Fira Sans', sans-serif",
-									'input_attrs'     => array(
+									'type'              => 'text',
+									'id'                => 'typography_fonts_headings',
+									'label'             => esc_html__( 'Headings font', 'modern' ),
+									'default'           => "'Fira Sans', sans-serif",
+									'input_attrs'       => array(
 										'placeholder' => "'Fira Sans', sans-serif",
 									),
-									'active_callback' => __CLASS__ . '::is_typography_custom_fonts',
-									'validate'        => 'Modern_Library_Sanitize::fonts',
+									'active_callback'   => __CLASS__ . '::is_typography_custom_fonts',
+									'sanitize_callback' => 'Modern_Library_Sanitize::fonts',
 								),
 
 								900 . 'typography' . 240 => array(
-									'type'            => 'text',
-									'id'              => 'typography_fonts_logo',
-									'label'           => esc_html__( 'Logo font', 'modern' ),
-									'default'         => "'Fira Sans', sans-serif",
-									'input_attrs'     => array(
+									'type'              => 'text',
+									'id'                => 'typography_fonts_logo',
+									'label'             => esc_html__( 'Logo font', 'modern' ),
+									'default'           => "'Fira Sans', sans-serif",
+									'input_attrs'       => array(
 										'placeholder' => "'Fira Sans', sans-serif",
 									),
-									'active_callback' => __CLASS__ . '::is_typography_custom_fonts',
-									'validate'        => 'Modern_Library_Sanitize::fonts',
+									'active_callback'   => __CLASS__ . '::is_typography_custom_fonts',
+									'sanitize_callback' => 'Modern_Library_Sanitize::fonts',
 								),
 
 								900 . 'typography' . 290 => array(
@@ -1008,21 +1014,6 @@ class Modern_Customize {
 								'label'       => esc_html__( 'Enable mobile navigation', 'modern' ),
 								'description' => esc_html__( 'If your website navigation is very simple and you do not want to use the mobile navigation functionality, you can disable it here.', 'modern' ),
 								'default'     => true,
-							),
-
-							950 . 'others' . 120 => array(
-								'type'    => 'multicheckbox',
-								'id'      => 'archive_title_prefix',
-								'label'   => esc_html__( 'Archive page title prefix', 'modern' ),
-								'default' => array( 'category', 'tag', 'author' ),
-								'choices' => array(
-									'category'  => esc_html__( 'Display "Category:" prefix', 'modern' ),
-									'tag'       => esc_html__( 'Display "Tag:" prefix', 'modern' ),
-									'author'    => esc_html__( 'Display "Author:" prefix', 'modern' ),
-									'post-type' => esc_html__( 'Display "Archives:" prefix', 'modern' ),
-									'taxonomy'  => esc_html__( 'Display "Taxonomy:" prefix', 'modern' ),
-								),
-								// No need for `preview_js` as we really need to refresh the page to apply changes.
 							),
 
 
@@ -1168,13 +1159,13 @@ class Modern_Customize {
 		 * Render the site info in the footer for the selective refresh partial
 		 *
 		 * @since    2.0.0
-		 * @version  2.0.0
+		 * @version  2.2.0
 		 */
 		public static function partial_texts_site_info() {
 
 			// Helper variables
 
-				$site_info_text = trim( get_theme_mod( 'texts_site_info' ) );
+				$site_info_text = trim( Modern_Library_Customize::get_theme_mod( 'texts_site_info' ) );
 
 
 			// Output
