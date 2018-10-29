@@ -17,7 +17,7 @@ class Visual_Form_Builder_Admin_Scripts_Loader {
 	 * @return void
 	 */
 	public function add_css() {
-		wp_enqueue_style( 'visual-form-builder-style', VFB_WP_PLUGIN_URL . "admin/assets/css/visual-form-builder-admin.min.css", array(), '2018.01.23' );
+		wp_enqueue_style( 'visual-form-builder-style', VFB_WP_PLUGIN_URL . "admin/assets/css/visual-form-builder-admin.min.css", array(), '2018.08.09' );
 	}
 
 	/**

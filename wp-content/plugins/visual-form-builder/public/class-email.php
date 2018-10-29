@@ -329,8 +329,13 @@ class Visual_Form_Builder_Email {
 			'ip_address' 		=> esc_html( $_SERVER['REMOTE_ADDR'] )
 		);
 
-		// Insert this data into the entries table
-		$wpdb->insert( VFB_WP_ENTRIES_TABLE_NAME, $entry );
+		// Settings - Disable Saving Entries
+		$settings_disable_saving = isset( $vfb_settings['disable-saving-entries'] ) ? $vfb_settings['disable-saving-entries'] : '';
+
+		// Insert this data into the entries table if setting is not set
+		if ( empty( $settings_disable_saving ) ) {
+			$wpdb->insert( VFB_WP_ENTRIES_TABLE_NAME, $entry );
+		}
 
 		// Close out the content
 		$footer .= '<tr>
@@ -374,7 +379,7 @@ class Visual_Form_Builder_Email {
 		$from_name = ( $header_from_name == '' ) ? 'WordPress' : $header_from_name;
 
 		// Use the admin_email as the From email
-		$from_email = get_site_option( 'admin_email' );
+		$from_email = get_option( 'admin_email' );
 
 		// Get the site domain and get rid of www.
 		$sitename = strtolower( $_SERVER['SERVER_NAME'] );

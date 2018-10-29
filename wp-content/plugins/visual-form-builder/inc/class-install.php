@@ -14,7 +14,7 @@ class Visual_Form_Builder_Install {
 	public function upgrade_db_check() {
 		$current_db_version = VFB_WP_DB_VERSION;
 
-		if ( get_site_option( 'vfb_db_version' ) != $current_db_version )
+		if ( get_option( 'vfb_db_version' ) != $current_db_version )
 			$this->install_db();
 	}
 

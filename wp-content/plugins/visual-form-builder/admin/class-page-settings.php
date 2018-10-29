@@ -66,6 +66,28 @@ class Visual_Form_Builder_Page_Settings {
 				</tr>
 
 				<tr valign="top">
+					<th scope="row"><?php _e( 'Disable Saving Entries', 'visual-form-builder' ); ?></th>
+					<td>
+						<fieldset>
+						<?php
+							$disable = array(
+								'disable-saving-entries' => __( 'Disables saving entry data for each submission after all emails have been sent.', 'visual-form-builder' ),	// vfb_address_labels_placement
+							);
+
+							foreach ( $disable as $key => $title ) :
+
+								$vfb_settings[ $key ] = isset( $vfb_settings[ $key ] ) ? $vfb_settings[ $key ] : '';
+						?>
+							<label for="vfb-settings-<?php echo $key; ?>">
+								<input type="checkbox" name="vfb-settings[<?php echo $key; ?>]" id="vfb-settings-<?php echo $key; ?>" value="1" <?php checked( $vfb_settings[ $key ], 1 ); ?> /> <?php echo $title; ?>
+							</label>
+							<br>
+						<?php endforeach; ?>
+						</fieldset>
+					</td>
+				</tr>
+
+				<tr valign="top">
 					<th scope="row"><label for="vfb-settings-spam-points"><?php _e( 'Spam word sensitivity', 'visual-form-builder' ); ?></label></th>
 					<td>
 						<?php $vfb_settings['spam-points'] = isset( $vfb_settings['spam-points'] ) ? $vfb_settings['spam-points'] : '4'; ?>
@@ -86,7 +108,7 @@ class Visual_Form_Builder_Page_Settings {
 					<td>
 						<?php
 						// Use the admin_email as the From email
-						$from_email = get_site_option( 'admin_email' );
+						$from_email = get_option( 'admin_email' );
 
 						// Get the site domain and get rid of www.
 						$sitename = strtolower( $_SERVER['SERVER_NAME'] );
@@ -106,6 +128,19 @@ class Visual_Form_Builder_Page_Settings {
 					</td>
 				</tr>
 			</table>
+
+			<div class="vfb-notices vfb-notice-danger" style="width: 50%;">
+				<h3><?php _e( 'Uninstall Visual Form Builder', 'visual-form-builder' ); ?></h3>
+				<p><?php _e( "Running this uninstall process will delete all Visual Form Builder data for this site. This process cannot be reversed.", 'visual-form-builder' ); ?></p>
+				<?php
+					submit_button(
+						__( 'Uninstall', 'visual-form-builder' ),
+						'delete',
+						'visual-form-builder-uninstall',
+						false
+					);
+				?>
+			</div> <!-- .vfb-notices -->
 
 			<?php submit_button( __( 'Save', 'visual-form-builder' ), 'primary', 'submit', false ); ?>
 		</form>

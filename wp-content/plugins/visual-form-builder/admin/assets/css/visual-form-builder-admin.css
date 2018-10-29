@@ -1415,6 +1415,42 @@ ul.vfb-fields-col-2{
 		border-top-right-radius: 3px;
 	}
 
+.vfb-notices {
+	padding: 15px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+.vfb-notices.vfb-notice-success {
+	background-color: #dff0d8;
+	border-color: #d6e9c6;
+	color: #3c763d;
+}
+
+.vfb-notices.vfb-notice-info {
+	background-color: #d9edf7;
+	border-color: #bce8f1;
+	color: #31708f;
+}
+
+.vfb-notices.vfb-notice-warning {
+	background-color: #fcf8e3;
+	border-color: #faebcc;
+	color: #8a6d3b;
+}
+
+.vfb-notices.vfb-notice-danger {
+	background-color: #f2dede;
+	border-color: #ebccd1;
+	color: #a94442;
+}
+
+.vfb-notices h3 {
+	margin-top: 0;
+	color: inherit;
+}
+
 /* !Help tooltip popups */
 .vfb-tooltip{
 	position: relative;

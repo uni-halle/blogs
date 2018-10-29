@@ -397,6 +397,12 @@ class Visual_Form_Builder_Admin_Save {
 
 		check_admin_referer( 'vfb-update-settings' );
 
+		if ( isset( $_POST['visual-form-builder-uninstall'] ) ) {
+			$this->uninstall_plugin();
+
+			return;
+		}
+
 		$data = array();
 
 		foreach ( $_POST['vfb-settings'] as $key => $val ) {
@@ -404,5 +410,21 @@ class Visual_Form_Builder_Admin_Save {
 		}
 
 		update_option( 'vfb-settings', $data );
+	}
+
+	/**
+	 * Uninstall plugin.
+	 *
+	 * Run uninstall on Settings page instead of Plugins page so we can
+	 * keep VFB files on the server.
+	 *
+	 * @access private
+	 * @param mixed $license_key
+	 * @param mixed $license_email
+	 * @return void
+	 */
+	private function uninstall_plugin() {
+		$uninstall = new Visual_Form_Builder_Admin_Uninstall();
+		$uninstall->uninstall();
 	}
 }

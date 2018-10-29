@@ -3,8 +3,8 @@ Contributors: mmuro
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=G87A9UN9CLPH4&lc=US&item_name=Visual%20Form%20Builder&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 Tags: form, forms, contact form, contact forms, form, forms, form to email, email form, email, input, validation, jquery, shortcode, form builder, contact form builder, form manager, form creator
 Requires at least: 4.3
-Tested up to: 4.9.4
-Stable tag: 2.9.7
+Tested up to: 4.9.8
+Stable tag: 2.9.9
 License: GPLv2 or later
 
 Build beautiful, fully functional contact forms in only a few minutes without writing PHP, CSS, or HTML.
@@ -67,6 +67,7 @@ If you are a fan of Visual Form Builder and want extra features and functionalit
 * Advanced Filtering
 * Search across all entries
 * Collect submitted data as well as date submitted and IP Address
+* Disable saving of all entries (GDPR)
 
 = Customized Confirmation Messages =
 
@@ -229,6 +230,15 @@ function my_scripts_method() {
 4. Rendered form on a page
 
 == Changelog ==
+
+**Version 2.9.9 - Aug 09, 2018**
+
+* Update DB check to prevent extra queries when using Multisite install
+* Update uninstall procedure to happen through the VFB > Settings menu instead of the Plugins admin menu
+
+**Version 2.9.8 - Jul 12, 2018**
+
+* Add new Disable Saving Entry feature to Settings to better assist EU users and the General Data Protection Regulation (GDPR)
 
 **Version 2.9.7 - Mar 08, 2018**
 
