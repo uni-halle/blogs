@@ -1,48 +1,58 @@
 === Advanced Access Manager ===
-Contributors: vasyltech
-Tags: access, role, user, capability, page access, post access, content access, comments, security, login redirect, membership, backend lockdown, wp-admin, 404, rest api, xml rpc
+Contributors: vasyltech,noelalvarez
+Tags: access control, membership, backend menu, user role, restricted content
 Requires at least: 4.0
-Tested up to: 4.9.6
-Stable tag: 5.3.4
+Tested up to: 4.9.7
+Stable tag: 5.4.3.2
 
-The most powerful access management plugin for WordPress websites.
+All you need to manage access to you WordPress websites on frontend, backend and API levels for any role, user or visitors.
 
 == Description ==
 
 > Advanced Access Manager (aka AAM) is all you need to manage access to your website frontend and backend for any user, role or visitors.
 
-https://www.youtube.com/watch?v=yiOhjaacNJc
+https://www.youtube.com/watch?v=mj5Xa_Wc16Y
 
 = Few Quick Facts =
 
-* Bullet-proven plugin with over a 1 million downloads where all features are well-tested and [documented](https://aamplugin.com/help). Very low amount of support tickets in comparison to similar plugins;
-* AAM contains the most powerful and flexible set of features to manage access to your WordPress website and most of them are absolutely free;
-* It is the only plugin in the world that gives you the ability to manage access to your website content for any role, individual user and visitors or even define the default access to all posts, pages, custom post types, categories and custom taxonomies;
-* AAM is developer oriented plugin. It has countless number of hooks, integrated with WordPress RESTful API and has numerous abstract layers to simplify programmatic access management;
+* Bullet-proven plugin that is used on over 90,000 websites where all features are well-tested and [documented](https://aamplugin.com/help). Very low amount of support tickets speaks for quality;
+* AAM contains the most powerful and flexible set of features to manage access to your WordPress website and were majority of them are absolutely free;
+* It is the only plugin that gives you the ability to manage access to your website content for any role, individual user and visitors or even define the default access to all posts, pages, custom post types, categories and custom hierarchical taxonomies;
+* AAM is [developer oriented plugin](https://aamplugin.com/developers). It has dozens of hooks and configurations. It is integrated with WordPress RESTful and XML-RPC APIs and has numerous abstract layers to simplify coding;
 * No ads or other promotional crap. The UI is clean and well crafted so you can focus only on what matters;
 * No need to be a "paid" customer to get help. Request support via email or start chat with Google Hangout;
-* Some features are limited or available only with [premium extensions](https://aamplugin.com/store). AAM functionality is transparent and you will absolute know when you need to purchase our premium features;
+* Some features are limited or available only with [premium extensions](https://aamplugin.com/store). AAM functionality is transparent and you will absolute know when you need to get a premium extension;
 * There are some bad reviews however most of them where posted years ago and are unrelated to current AAM version; or were posted by users that did not bother reading the bullet-point above.
 
-= The most popular features =
+= Main Areas Of Focus =
+
+* Content access control on frontend, backend and API sides to posts, pages, custom post types, categories, custom hierarchical taxonomies and CPTs for any role, user and visitors;
+* Roles & capabilities management with ability to create new roles and capabilities, edit, clone or delete existing;
+* Access control to backend area including backend menu, toolbar, metaboxes & widgets;
+* Access control to RESTful & XML-RPC APIs;
+* Developer friendly API so it can be used by other developers to work with AAM core;
+* And all necessary features to setup smooth user flow during login, logout, access denied even, 404 etc.
+
+= The Most Popular Features =
 
 * [free] Manage Backend Menu. Manage access to the backend menu for any user or role. Find out more from [How to manage WordPress backend menu](https://aamplugin.com/help/how-to-manage-wordpress-backend-menu) article;
 * [free] Manage Roles & Capabilities. Manage all your WordPress role and capabilities.
-* [free] Manage temporary user accounts. Create and manage temporary user accounts. Find out more from [How to create temporary WordPress user account](https://aamplugin.com/help/how-to-create-temporary-wordpress-user-account);
+* [free] Create temporary user accounts. Create and manage temporary user accounts. Find out more from [How to create temporary WordPress user account](https://aamplugin.com/help/how-to-create-temporary-wordpress-user-account);
+* [limited] Content access. Very granular access to unlimited number of post, page or custom post type ([19 different options](https://aamplugin.com/help#posts-and-terms)). With premium [Plus Package](https://aamplugin.com/extension/plus-package) extension also manage access to hierarchical taxonomies or setup the default access to all post types and taxonomies. Find out more from [How to manage access to the WordPress content](https://aamplugin.com/help/how-to-manage-access-to-the-wordpress-content) article;
+* [free] Manage Admin Toolbar. Filter out unnecessary items from the top admin toolbar for any role or user. 
 * [free] Backend Lockdown. Restrict access to your website backend side for any user or role. Find out more from [How to lockdown WordPress backend](https://aamplugin.com/help/how-to-lockdown-wordpress-backend) article;
 * [free] Secure Login Widget & Shortcode. Drop AJAX login widget or shortcode anywhere on your website. Find out more from [How does AAM Secure Login works](https://aamplugin.com/help/how-does-aam-secure-login-works) article;
-* [free] Ability to enable/disable REST API and XML-RPC.
-* [free] Manage access to REST API individual endpoints for any role, user or visitor.
-* [free] JWT Authentication. Authenticate user through WordPress API and use received JWT token for further requests. Fid out more from [Hot to authenticate WordPress user with JWT token](https://aamplugin.com/help/how-to-authenticate-wordpress-user-with-jwt-token)
-* [limited] Content Access. Very granular access to unlimited number of post, page or custom post type ([19 different options](https://aamplugin.com/help#posts-and-pages)). With premium [Plus Package](https://aamplugin.com/extension/plus-package) extension also manage access to hierarchical taxonomies or setup the default access to all post types and taxonomies. Find out more from [How to manage access to the WordPress content](https://aamplugin.com/help/how-to-manage-access-to-the-wordpress-content) article;
+* [free] Ability to enable/disable RESTful and XML-RPC APIs.
+* [free] Manage access to RESTful or XML-RPC individual endpoints for any role, user or visitors.
+* [free] JWT authentication. Authenticate user with WordPress RESTful API and use received JWT token for further requests. Fid out more from [Hot to authenticate WordPress user with JWT token](https://aamplugin.com/help/how-to-authenticate-wordpress-user-with-jwt-token)
 * [free] Content Filter. Filter or replace parts of your content with AAM shortcodes. Find out more from [How to filter WordPress post content](https://aamplugin.com/help/how-to-filter-wordpress-post-content) article;
 * [free] Login/Logout Redirects. Define custom login and logout redirect for any user or role;
 * [free] 404 Redirect. Redefine where user should be redirected when page does not exist. Find out more from [How to redirect on WordPress 404 error](https://aamplugin.com/help/how-to-redirect-on-wordpress-404-error);
 * [free] Access Denied Redirect. Define custom redirect for any role, user or visitors when access is denied for restricted area on your website;
-* [free] Manage Metaboxes and Widgets. Filter out restricted or unnecessary metaboxes and widgets on both frontend and backend for any user, role or visitors. Find out more from [How to hide WordPress metaboxes & widgets](https://aamplugin.com/help/how-to-hide-wordpress-metaboxes-and-widgets) article;
-* [paid] Manage Access Based On IP Address or Referred Domain. Manage access to your website for all visitors based on referred host, IP address or geographical location. Find out more from [How to manage access to WordPress website by IP address](https://aamplugin.com/help/how-to-manage-access-to-wordpress-website-by-ip-address) article;
-* [paid] Monetize Access To You Content. Start selling access to your website content with premium [E-Commerce](https://aamplugin.com/extension/ecommerce) extension. Find out more from [How to monetize access to the WordPress content](https://aamplugin.com/help/how-to-monetize-access-to-the-wordpress-content) article;
-* [free] Multisite Support. Sync access settings across your network or even restrict none-members from accessing one of your sites. Find out more from [AAM and WordPress Multisite support](https://aamplugin.com/help/aam-and-wordpress-multisite-support);
+* [free] Manage Metaboxes & Widgets. Filter out restricted or unnecessary metaboxes and widgets on both frontend and backend for any user, role or visitors. Find out more from [How to hide WordPress metaboxes & widgets](https://aamplugin.com/help/how-to-hide-wordpress-metaboxes-and-widgets) article;
+* [paid] Manage access based on IP address or referred domain. Manage access to your website for all visitors based on referred host or IP address. Find out more from [How to manage access to WordPress website by IP address](https://aamplugin.com/help/how-to-manage-access-to-wordpress-website-by-ip-address) article;
+* [paid] Monetize access to you content. Start selling access to your website content with premium [E-Commerce](https://aamplugin.com/extension/ecommerce) extension. Find out more from [How to monetize access to the WordPress content](https://aamplugin.com/help/how-to-monetize-access-to-the-wordpress-content) article;
+* [free] Multisite support. Sync access settings across your network or even restrict none-members from accessing one of your sites. Find out more from [AAM and WordPress Multisite support](https://aamplugin.com/help/aam-and-wordpress-multisite-support);
 * [and even more...] Check our [help page](https://aamplugin.com/help) to learn more about AAM
 
 == Installation ==
@@ -65,6 +75,67 @@ https://www.youtube.com/watch?v=yiOhjaacNJc
 11. Improve your website security
 
 == Changelog ==
+
+= 5.4.3.2 =
+* Fixed bug that incorrectly checks post author property
+* Fixed bug that does not allow to assign roles that contain apostrophe
+* Fixed bug with incorrectly handled AAM Console messages that contain HTML
+* Added ability to order roles by name
+* Added ability to order users by display name
+* Improved Users/Roles Manager UI
+
+= 5.4.3.1 =
+* Quick fix for the bug that is related to Posts & Terms
+
+= 5.4.3 =
+* Fixed the bug with Posts & Terms feature that hides it when Manage Frontend & Backend Access are disabled however API is enabled
+* Fixed the bug that cached objects while managing them on AAM page. That was causing inconsistency sometimes
+* Fixed the bug with content shortcode that was defining incorrectly if wrapped content should be hidden or not for specific user
+* Fixed the bug with AAM not being able to apply translations for other languages
+* Added new option "Support AAM Extensions" that allows to enables/disables Extensions feature
+* Added new option "Get Started Feature" that toggle the Get Started tab
+* Added new option "AAM Cron Job" that enables/disables the internal AAM cron job
+* Added Get Started tab with some basic introduction to AAM plugin
+* Added ability to set "hard" user login time
+* Added ability to sort posts and terms list by title
+* Enhanced JWT authentication with ability to set also cookie that contains JWT token or define signing algorithm
+* Refactored Metaboxes & Widget feature so initialization process is handled with client side
+* Refactored Admin Toolbar feature so initialization process is handled with client side
+* Improved the Post & Terms feature by enabling to manage more post types out-of-box
+* Improved the Import/Export feature that eliminates issues with incompatible AAM versions
+* Refactored internal implementation to make it compatible with strict and secure environments like WordPress VIP
+
+= 5.4.2 =
+* Fixed the bug that was causing an error with legacy "teaser" data
+* Fixed the bug with aam_manage_admin_toolbar capability been named incorrectly
+* Clearing all AAM settings when plugin is uninstalled
+* Highlighted post, term or type that has explicit access settings defined on Posts & Terms tab
+* Improved JWT authentication feature to allow use it for stand-alone embedded to WP apps
+
+= 5.4.1 =
+* Fixed the bug reported by Doug Davis where newly created posts get locked if default access settings are defined
+* Fixed the bug with post visibility when /%category%/%postname%/ permalink is defined
+* Fixed the but with default category not been selected when redefined with ConfigPress
+* Improved AAM performance by caching post visibility results
+
+= 5.4 =
+* Fixed bug with Api Access Control option that when disabled, still denies API Routes
+* Fixed bug when RESTful or XML-RPC disabled but endpoints still listed on API Routes
+* Fixed bug with Secure Login for themes that are not build with jQuery support
+* Fixed bug with posts not been filtered during search in few post types
+* Added ability to manage Admin Toolbar items
+* Added ability to manage premium licenses so now user can transfer license anytime
+* Moved security options (brute force lockout, login timeout etc) to stand-alone Security tab
+* Improved UI for the ACCESS EXPIRATION option on Posts & Terms tab
+* Improved UI for defining temporary user account timespan
+* Removed deprecated "Check Post Visibility" option
+
+= 5.3.5 =
+* Fixed bug with post LIST & LIST TO OTHERS when access is set to term in odd order
+* Fixed bug that potentially did not filter posts during search
+* Added notification to the UI that extension folder does not exist or is not writable
+* Added XML-RPC endpoint control
+* Added ability to filter list of users by roles on the Users/Roles Manager panel
 
 = 5.3.4 =
 * Fixed incompatibility issue with plugins that use "plugins_loaded" hook for post manipulations

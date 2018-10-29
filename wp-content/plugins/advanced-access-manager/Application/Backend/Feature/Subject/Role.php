@@ -64,7 +64,7 @@ class AAM_Backend_Feature_Subject_Role {
             );
         }
         
-        return json_encode(apply_filters('aam-get-role-list-filter', $response));
+        return wp_json_encode(apply_filters('aam-get-role-list-filter', $response));
     }
     
     /**
@@ -77,12 +77,18 @@ class AAM_Backend_Feature_Subject_Role {
         
         if (current_user_can('aam_edit_roles')) {
             $actions[] = 'edit';
+        } else {
+            $actions[] = 'no-edit';
         }
         if (current_user_can('aam_create_roles')) {
             $actions[] = 'clone';
+        } else {
+            $actions[] = 'no-clone';
         }
         if (current_user_can('aam_delete_roles') && !$count) {
             $actions[] = 'delete';
+        } else {
+            $actions[] = 'no-delete';
         }
         
         return $actions;
@@ -94,7 +100,7 @@ class AAM_Backend_Feature_Subject_Role {
      * @return string
      */
     public function getList(){
-        return json_encode(
+        return wp_json_encode(
                 apply_filters('aam-get-role-list-filter', $this->fetchRoleList())
         );
     }
@@ -116,7 +122,7 @@ class AAM_Backend_Feature_Subject_Role {
         
         foreach ($roles as $id => $role) {
             $match = preg_match('/^' . $search . '/i', $role['name']);
-            if (($exclude != $id) && (!$search || $match)) {
+            if (($exclude !== $id) && (!$search || $match)) {
                 $response[$id] = $role;
             }
         }
@@ -138,7 +144,7 @@ class AAM_Backend_Feature_Subject_Role {
             $name    = sanitize_text_field(filter_input(INPUT_POST, 'name'));
             $expire  = filter_input(INPUT_POST, 'expire');
             $roles   = AAM_Core_API::getRoles();
-            $role_id = strtolower($name);
+            $role_id = sanitize_key(strtolower($name));
 
             //if inherited role is set get capabilities from it
             $parent = $roles->get_role(trim(filter_input(INPUT_POST, 'inherit')));
@@ -169,7 +175,7 @@ class AAM_Backend_Feature_Subject_Role {
             }
         }
 
-        return json_encode($response);
+        return wp_json_encode($response);
     }
     
     /**
@@ -234,7 +240,7 @@ class AAM_Backend_Feature_Subject_Role {
             $response = array('status' => 'failure');
         }
         
-        return json_encode($response);
+        return wp_json_encode($response);
     }
 
     /**
@@ -253,7 +259,7 @@ class AAM_Backend_Feature_Subject_Role {
             }
         }
 
-        return json_encode(array('status' => $status));
+        return wp_json_encode(array('status' => $status));
     }
 
 }

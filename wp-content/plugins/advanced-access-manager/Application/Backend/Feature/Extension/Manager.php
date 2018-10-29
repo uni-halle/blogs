@@ -24,8 +24,19 @@ class AAM_Backend_Feature_Extension_Manager extends AAM_Backend_Feature_Abstract
     /**
      * 
      */
+    public function __construct() {
+        parent::__construct();
+        
+        if (AAM_Core_Config::get('core.settings.extensionSupport', true) === false) {
+            AAM_Core_API::reject('backend');
+        }
+    }
+    
+    /**
+     * 
+     */
     public function render() {
-        require_once(dirname(__FILE__) . '/../../phtml/extensions.phtml');
+        require_once dirname(__FILE__) . '/../../phtml/extensions.phtml';
     }
     
     /**
@@ -36,7 +47,7 @@ class AAM_Backend_Feature_Extension_Manager extends AAM_Backend_Feature_Abstract
     public function check() {
         AAM::cron();
 
-        return json_encode(array('status' => 'success'));
+        return wp_json_encode(array('status' => 'success'));
     }
     
     /**
@@ -59,7 +70,7 @@ class AAM_Backend_Feature_Extension_Manager extends AAM_Backend_Feature_Abstract
             $manually = __('You may try to install extension manually.', AAM_KEY);
             $response = array(
                 'status' => 'failure', 
-                'error'  => strip_tags($package->get_error_message()) . ' ' . $manually
+                'error'  => wp_strip_all_tags($package->get_error_message()) . ' ' . $manually
             );
         }elseif ($error = $repo->checkDirectory()) {
             $response = $this->installFailureResponse($error, $package);
@@ -67,7 +78,7 @@ class AAM_Backend_Feature_Extension_Manager extends AAM_Backend_Feature_Abstract
         } elseif (empty($package->content)) { //any unpredictable scenario
             $response = array(
                 'status' => 'failure', 
-                'error'  => 'Download failure. Please try again or contact us.'
+                'error'  => __('Download failure. Please try again or contact us.', AAM_KEY)
             );
         } else { //otherwise install the extension
             $result = $repo->add(base64_decode($package->content));
@@ -103,9 +114,9 @@ class AAM_Backend_Feature_Extension_Manager extends AAM_Backend_Feature_Abstract
             if (!empty($list[$id]['license'])) {
                 $response = $this->install($list[$id]['license']);
             } else {
-                $response = json_encode(array(
+                $response = wp_json_encode(array(
                     'status' => 'failure', 
-                    'error'  => __('Enter license key to update extension.', AAM_KEY)
+                    'error'  => __('No valid license key was found.', AAM_KEY)
                 ));
             }
         }
@@ -123,7 +134,7 @@ class AAM_Backend_Feature_Extension_Manager extends AAM_Backend_Feature_Abstract
                 AAM_Extension_Repository::STATUS_INACTIVE
         );
         
-        return json_encode(array('status' => 'success'));
+        return wp_json_encode(array('status' => 'success'));
     }
     
     /**
@@ -136,7 +147,22 @@ class AAM_Backend_Feature_Extension_Manager extends AAM_Backend_Feature_Abstract
                 AAM_Extension_Repository::STATUS_INSTALLED
         );
         
-        return json_encode(array('status' => 'success'));
+        return wp_json_encode(array('status' => 'success'));
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    public function fixDirectoryIssue() {
+        $dirname = AAM_Extension_Repository::getInstance()->getBasedir();
+        if (file_exists($dirname) === false) {
+            @mkdir($dirname, fileperms( ABSPATH ) & 0777 | 0755, true);
+        }
+        
+        return wp_json_encode(array(
+            'status' => (AAM_Extension_Repository::getInstance()->isWriteableDirectory() ? 'success' : 'failed')
+        ));
     }
     
     /**
@@ -148,7 +174,7 @@ class AAM_Backend_Feature_Extension_Manager extends AAM_Backend_Feature_Abstract
         $response = array();
         
         foreach(AAM_Extension_Repository::getInstance()->getList() as $item) {
-            if ($item['type'] == $type) {
+            if ($item['type'] === $type) {
                 $response[] = $item;
             }
         }

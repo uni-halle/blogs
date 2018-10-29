@@ -157,7 +157,7 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
         if (is_array($submenu)) {
             foreach($submenu as $parent => $subs) {
                 foreach($subs as $sub) {
-                    if ($sub[2] == $search) {
+                    if ($sub[2] === $search) {
                         $result = $parent;
                         break;
                     }
@@ -199,6 +199,32 @@ class AAM_Core_Object_Menu extends AAM_Core_Object {
         $indirect = ($parent && !empty($options['menu-' . $parent]));
         
         return $direct || $branch || $indirect;
+    }
+    
+    /**
+     * Allow access to a specific menu
+     * 
+     * @param string $menu
+     * 
+     * @return boolean
+     * 
+     * @access public
+     */
+    public function allow($menu) {
+        return $this->save($menu, 0);
+    }
+    
+    /**
+     * Deny access to a specific menu
+     * 
+     * @param string $menu
+     * 
+     * @return boolean
+     * 
+     * @access public
+     */
+    public function deny($menu) {
+        return $this->save($menu, 1);
     }
 
     /**

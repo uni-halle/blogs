@@ -59,19 +59,20 @@ class AAM_Core_Compatibility {
             $changes += self::normalizeOption('jwt-authentication', 'core.settings.jwtAuthentication', $config);
             $changes += self::normalizeOption('ms-member-access', 'core.settings.multisiteMemberAccessControl', $config);
             $changes += self::normalizeOption('media-access-control', 'core.settings.mediaAccessControl', $config);
-            $changes += self::normalizeOption('check-post-visibility', 'core.settings.checkPostVisibility', $config);
             $changes += self::normalizeOption('manage-hidden-post-types', 'core.settings.manageHiddenPostTypes', $config);
             $changes += self::normalizeOption('page-category', 'core.settings.pageCategory', $config);
             $changes += self::normalizeOption('media-category', 'core.settings.mediaCategory', $config);
             $changes += self::normalizeOption('multi-category', 'core.settings.multiCategory', $config);
+            $changes += self::normalizeOption('login-timeout', 'core.settings.loginTimeout', $config);
+            $changes += self::normalizeOption('single-session', 'core.settings.singleSession', $config);
+            $changes += self::normalizeOption('brute-force-lockout', 'core.settings.bruteForceLockout', $config);
             $changes += self::normalizeOption('inherit-parent-post', 'core.settings.inheritParentPost', $config);
-            //$changes += self::normalizeOption('', '', $config);
             
             if ($changes > 0) {
                 if (is_multisite()) {
-                    $result = AAM_Core_API::updateOption('aam-utilities', $config, 'site');
+                    AAM_Core_API::updateOption('aam-utilities', $config, 'site');
                 } else {
-                    $result = AAM_Core_API::updateOption('aam-utilities', $config);
+                    AAM_Core_API::updateOption('aam-utilities', $config);
                 }
             }
         }
@@ -180,9 +181,13 @@ class AAM_Core_Compatibility {
             $subject = new AAM_Core_Subject_Default;
         }
         
-        $subject->getObject($oid)->save($option, $config[$option]);
-        unset($config[$option]);
-        AAM_Core_API::updateOption('aam-utilities', $config);
+        $object = $subject->getObject($oid);
+        
+        if (is_a($object, 'AAM_Core_Subject')) {
+            $object->save($option, $config[$option]);
+            unset($config[$option]);
+            AAM_Core_API::updateOption('aam-utilities', $config);
+        }
     }
 
 }

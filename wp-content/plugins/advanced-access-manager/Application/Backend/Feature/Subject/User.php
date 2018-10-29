@@ -47,7 +47,7 @@ class AAM_Backend_Feature_Subject_User {
             }
         }
 
-        return json_encode($response);
+        return wp_json_encode($response);
     }
     
     /**
@@ -79,7 +79,7 @@ class AAM_Backend_Feature_Subject_User {
             }
         }
         
-        return json_encode($response);
+        return wp_json_encode($response);
     }
     
     /**
@@ -93,6 +93,7 @@ class AAM_Backend_Feature_Subject_User {
      */
     public function query() {
         $search = trim(AAM_Core_Request::request('search.value'));
+        $role   = trim(AAM_Core_Request::request('role'));
         
         $args = array(
             'blog_id' => get_current_blog_id(),
@@ -103,11 +104,30 @@ class AAM_Backend_Feature_Subject_User {
             'search_columns' => array(
                 'user_login', 'user_email', 'display_name'
             ),
-            'orderby' => 'user_nicename',
-            'order'   => 'ASC'
+            'orderby' => 'display_name',
+            'order'   => $this->getOrderDirection()
         );
+        
+        if (!empty($role)) {
+            $args['role__in'] = $role;
+        }
 
         return new WP_User_Query($args);
+    }
+    
+    /**
+     * 
+     * @return type
+     */
+    protected function getOrderDirection() {
+        $dir   = 'asc';
+        $order = AAM_Core_Request::post('order.0');
+        
+        if (!empty($order['column']) && ($order['column'] === '2')) {
+            $dir = !empty($order['dir']) ? $order['dir'] : 'asc';
+        }
+        
+        return strtoupper($dir);
     }
 
     /**
@@ -131,7 +151,7 @@ class AAM_Backend_Feature_Subject_User {
             }
         }
 
-        return json_encode(array('status' => ($result ? 'success' : 'failure')));
+        return wp_json_encode(array('status' => ($result ? 'success' : 'failure')));
     }
     
     /**
@@ -200,10 +220,15 @@ class AAM_Backend_Feature_Subject_User {
             if (current_user_can('edit_users')) {
                 $actions[] = 'edit';
                 $actions[] = 'ttl';
+            } else {
+                $actions[] = 'no-edit';
+                $actions[] = 'no-ttl';
             }
             
             if (current_user_can('aam_switch_users')) {
                 $actions[] = 'switch';
+            } else {
+                $actions[] = 'no-switch';
             }
         } else {
             $actions = array();
@@ -229,7 +254,7 @@ class AAM_Backend_Feature_Subject_User {
             update_user_meta(
                 $user, 
                 'aam_user_expiration',
-                date('Y-m-d H:i:s', strtotime($expires)) . "|" . ($action ? $action : 'delete') . '|' . $role
+                $expires . "|" . ($action ? $action : 'delete') . '|' . $role
             );
         } else {
             delete_user_meta($user, 'aam_user_expiration');

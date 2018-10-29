@@ -60,7 +60,7 @@
                                 <div class="row">
                                     <?php foreach ($metaboxes as $metabox) { ?>
                                         <div class="col-xs-12 col-md-6 aam-submenu-item">
-                                            <label for="metabox-<?php echo $screen; ?>-<?php echo $metabox['id']; ?>"><?php echo $metabox['title']; ?></label>
+                                            <label for="metabox-<?php echo $screen; ?>-<?php echo $metabox['id']; ?>"><u><?php echo $metabox['title']; ?></u><small class="aam-metabox-details"><?php echo __('Screen:', AAM_KEY) . ' <b>' . $screen; ?></b></small><small class="aam-metabox-details"><?php echo __('ID:', AAM_KEY) . ' <b>' . $metabox['id']; ?></b></small></label>
                                             <input type="checkbox" class="aam-checkbox-danger" id="metabox-<?php echo $screen; ?>-<?php echo $metabox['id']; ?>" data-metabox="<?php echo $screen; ?>|<?php echo $metabox['id']; ?>"<?php echo ($object->has($screen, $metabox['id']) ? ' checked="checked"' : ''); ?> />
                                             <label for="metabox-<?php echo $screen; ?>-<?php echo $metabox['id']; ?>" data-toggle="tooltip" title="<?php echo ($object->has($screen, $metabox['id']) ?  __('Uncheck to show', AAM_KEY) : __('Check to hide', AAM_KEY)); ?>"></label>
                                         </div>
@@ -75,8 +75,7 @@
             <div class="row">
                 <div class="col-xs-12 text-center">
                     <p class="alert alert-info text-larger">
-                        <?php echo __('The list is not initialized. Click Refresh button above.'); ?><br/>
-                        <small><?php echo sprintf(AAM_Backend_View_Helper::preparePhrase('If your website requires HTTP authentication, please refer to [%sthis article%s] for additional information.', 'b'), '<a href="https://aamplugin.com/help/how-to-hide-wordpress-metaboxes-and-widgets" target="_blank">', '</a>'); ?></small>
+                        <?php echo __('The list is not initialized. Click Refresh button above.', AAM_KEY); ?>
                     </p>
                 </div>
             </div>
