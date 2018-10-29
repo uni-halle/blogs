@@ -10,7 +10,7 @@ $ms1="";
 $ms2="";
 $ms3="";
 $redirecturl=admin_url('admin.php?page=social-media-auto-publish-settings&auth=1');
-
+$domain_name=$xyzscripts_hash_val=$xyz_smap_smapsoln_userid=$xyzscripts_user_id=$xyz_smap_licence_key='';
 
 require( dirname( __FILE__ ) . '/authorization.php' );
 
@@ -47,7 +47,7 @@ if(isset($_POST['fb']))
 		exit();
 	}
 	
-	$ss=array();
+	$ss=array();$appid='';$appsecret='';
 	if(isset($_POST['smap_pages_list']))
 	$ss=$_POST['smap_pages_list'];
 	
@@ -78,8 +78,12 @@ if(isset($_POST['fb']))
 	$posting_method=intval($_POST['xyz_smap_po_method']);
 	$posting_permission=intval($_POST['xyz_smap_post_permission']);
 	$app_name=sanitize_text_field($_POST['xyz_smap_application_name']);
+	$xyz_smap_app_sel_mode=intval($_POST['xyz_smap_app_sel_mode']);
+	$xyz_smap_app_sel_mode_old=get_option('xyz_smap_app_sel_mode');
+	if ($xyz_smap_app_sel_mode==0){
 	$appid=sanitize_text_field($_POST['xyz_smap_application_id']);
 	$appsecret=sanitize_text_field($_POST['xyz_smap_application_secret']);
+	}
 	$messagetopost=$_POST['xyz_smap_message'];
 	//$fbid=$_POST['xyz_smap_fb_id'];
 	if($app_name=="" && $posting_permission==1)
@@ -87,12 +91,12 @@ if(isset($_POST['fb']))
 		$ms0="Please fill facebook application name.";
 		$erf=1;
 	}
-	else if($appid=="" && $posting_permission==1)
+	else if($appid=="" && $posting_permission==1 && $xyz_smap_app_sel_mode==0)
 	{
 		$ms1="Please fill facebook application id.";
 		$erf=1;
 	}
-	elseif($appsecret=="" && $posting_permission==1)
+	elseif($appsecret=="" && $posting_permission==1 && $xyz_smap_app_sel_mode==0)
 	{
 		$ms2="Please fill facebook application secret.";
 		$erf=1;
@@ -100,20 +104,28 @@ if(isset($_POST['fb']))
 	else
 	{
 		$erf=0;
-		if($appid!=$applidold || $appsecret!=$applsecretold)
+		if(($appid!=$applidold || $appsecret!=$applsecretold) && $xyz_smap_app_sel_mode==0)
 		{
 			update_option('xyz_smap_af',1);
 			update_option('xyz_smap_fb_token','');
+		}	
+		else if ($xyz_smap_app_sel_mode_old != $xyz_smap_app_sel_mode)
+		{
+			update_option('xyz_smap_af',1);
+			update_option('xyz_smap_fb_token','');
+			update_option('xyz_smap_page_names','');
 		}
 	/* 	if($messagetopost=="")
 		{
 			$messagetopost="New post added at {BLOG_TITLE} - {POST_TITLE}";
 		} */
 		update_option('xyz_smap_application_name',$app_name);
+		if ($xyz_smap_app_sel_mode==0){
 		update_option('xyz_smap_application_id',$appid);
-		update_option('xyz_smap_post_permission',$posting_permission);
 		update_option('xyz_smap_application_secret',$appsecret);
-		//update_option('xyz_smap_fb_id',$fbid);
+		}
+		update_option('xyz_smap_post_permission',$posting_permission);
+		update_option('xyz_smap_app_sel_mode',$xyz_smap_app_sel_mode);
 		
 		update_option('xyz_smap_po_method',$posting_method);
 		update_option('xyz_smap_message',$messagetopost);
@@ -231,6 +243,22 @@ if(isset($_POST['linkdn']))
 	$lnposting_permission=intval($_POST['xyz_smap_lnpost_permission']);
 	$xyz_smap_ln_shareprivate=intval($_POST['xyz_smap_ln_shareprivate']);
 	$xyz_smap_ln_sharingmethod=intval($_POST['xyz_smap_ln_sharingmethod']);
+	$xyz_smap_ln_share_post_company=array();
+	if(isset($_POST['xyz_smap_ln_share_post_company']))
+		$xyz_smap_ln_share_post_company=$_POST['xyz_smap_ln_share_post_company'];
+		$xyz_smap_ln_company_ids='';
+		if(count($xyz_smap_ln_share_post_company)>0)
+		{
+			for($i=0;$i<count($xyz_smap_ln_share_post_company);$i++)
+			{
+				if($xyz_smap_ln_share_post_company[$i] !=-1){
+					$xyz_smap_ln_share_post_company_ids_and_names=explode('-',$xyz_smap_ln_share_post_company[$i] );
+					$xyz_smap_ln_company_ids.=$xyz_smap_ln_share_post_company_ids_and_names[0].',';}
+					elseif($xyz_smap_ln_share_post_company[$i] ==-1)
+					$xyz_smap_ln_company_ids.='-1,';
+			}
+			$xyz_smap_ln_company_ids=rtrim($xyz_smap_ln_company_ids,',');
+		}
 	if($lnappikey=="" && $lnposting_permission==1)
 	{
 		$lms1="Please fill linkedin api key";
@@ -257,6 +285,9 @@ if(isset($_POST['linkdn']))
 		update_option('xyz_smap_ln_shareprivate',$xyz_smap_ln_shareprivate);
 		update_option('xyz_smap_ln_sharingmethod',$xyz_smap_ln_sharingmethod);
 		update_option('xyz_smap_lnmessage',$lmessagetopost);
+		if ($xyz_smap_ln_company_ids=='')
+			$xyz_smap_ln_company_ids=-1;
+			update_option('xyz_smap_ln_company_ids', $xyz_smap_ln_company_ids);
 		
 }	
 }
@@ -302,6 +333,24 @@ Unable to authorize the facebook application. Please check your curl/fopen and f
 ?>
 <div class="system_notice_area_style1" id="system_notice_area">
 Account has been authenticated successfully.&nbsp;&nbsp;&nbsp;<span
+id="system_notice_area_dismiss">Dismiss</span>
+</div>
+<?php 	
+}
+if(isset($_GET['msg']) && $_GET['msg']==5)
+{
+	?>
+<div class="system_notice_area_style1" id="system_notice_area">
+	Successfully connected to xyzscripts member area. &nbsp;&nbsp;&nbsp;<span
+		id="system_notice_area_dismiss">Dismiss</span>
+</div>
+	<?php 
+}
+if(isset($_GET['msg']) && $_GET['msg']==6)
+{
+	?>
+<div class="system_notice_area_style1" id="system_notice_area">
+Selected pages saved successfully. &nbsp;&nbsp;&nbsp;<span
 id="system_notice_area_dismiss">Dismiss</span>
 </div>
 <?php 	
@@ -363,10 +412,13 @@ function drpdisplay()
 	//$fbid=get_option('xyz_smap_fb_id');
 	$posting_method=get_option('xyz_smap_po_method');
 	$posting_message=get_option('xyz_smap_message');
+	$xyz_smap_app_sel_mode=get_option('xyz_smap_app_sel_mode');
+	if($xyz_smap_app_sel_mode==0)
+	{
 	if($af==1 && $appid!="" && $appsecret!="")
 	{
 		?>
-	<span style="color: red;">Application needs authorisation</span> <br>
+			<span style="color: red;" id="auth_message" >Application needs authorisation</span> <br>
 	<form method="post">
 	<?php wp_nonce_field( 'xyz_smap_fb_auth_form_nonce' );?>
 
@@ -375,7 +427,7 @@ function drpdisplay()
 
 	</form>
 	<?php }
-	if($af==0 && $appid!="" && $appsecret!="")
+			else if($af==0 && $appid!="" && $appsecret!="")
 	{
 		?>
 	<form method="post">
@@ -385,6 +437,40 @@ function drpdisplay()
 	
 	</form>
 	<?php }
+		}
+		elseif ($xyz_smap_app_sel_mode==1){
+	 		$domain_name=trim(get_option('siteurl'));
+	 		$xyz_smap_smapsoln_userid=intval(trim(get_option('xyz_smap_smapsoln_userid')));
+	 		$xyzscripts_hash_val=trim(get_option('xyz_smap_xyzscripts_hash_val'));
+	 		$xyzscripts_user_id=trim(get_option('xyz_smap_xyzscripts_user_id'));
+	 		$xyz_smap_accountId=0;
+	 		$xyz_smap_licence_key='';
+	 		$auth_secret_key=md5('smapsolutions'.$domain_name.$xyz_smap_accountId.$xyz_smap_smapsoln_userid.$xyzscripts_user_id.$xyzscripts_hash_val.$xyz_smap_licence_key);
+			if($af==1 )
+			{
+				?>
+	 			<span id='ajax-save' style="display:none;"><img	class="img"  title="Saving details"	src="<?php echo plugins_url('../images/ajax-loader.gif',__FILE__);?>" style="width:65px;height:70px; "></span>
+		 			<span id="auth_message">
+		 				<span style="color: red;" >Application needs authorisation</span> <br>
+		 				<form method="post">
+		 			     <?php wp_nonce_field( 'xyz_smap_fb_auth_form_nonce' );?>
+		 			     <input type="hidden" value="<?php echo  (is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST']; ?>" id="parent_domain">
+		 					<input type="submit" class="submit_smap_new" name="fb_auth"
+	 						value="Authorize" onclick="javascript:return smap_popup_fb_auth('<?php echo urlencode($domain_name);?>','<?php echo $xyz_smap_smapsoln_userid;?>','<?php echo $xyzscripts_user_id;?>','<?php echo $xyzscripts_hash_val;?>','<?php echo $auth_secret_key;?>');"/><br><br>
+	 				</form></span>
+		 				<?php }
+		 				else if($af==0 )
+		 				{
+		 					?>
+	 					<span id='ajax-save' style="display:none;"><img	class="img"  title="Saving details"	src="<?php echo plugins_url('../images/ajax-loader.gif',__FILE__);?>" style="width:65px;height:70px; "></span>
+		 				<form method="post" id="re_auth_message">
+		 				<?php wp_nonce_field( 'xyz_smap_fb_auth_form_nonce' );?>
+		 				<input type="hidden" value="<?php echo  (is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST']; ?>" id="parent_domain">
+		 				<input type="submit" class="submit_smap_new" name="fb_auth"
+	 				value="Reauthorize" title="Reauthorize the account" onclick="javascript:return smap_popup_fb_auth('<?php echo urlencode($domain_name);?>','<?php echo $xyz_smap_smapsoln_userid;?>','<?php echo $xyzscripts_user_id;?>','<?php echo $xyzscripts_hash_val;?>','<?php echo $auth_secret_key;?>');"/><br><br>
+		 				</form>
+		 				<?php }
+		 	}
 
 
 	if(isset($_GET['auth']) && $_GET['auth']==1 && get_option("xyz_smap_fb_token")!="")
@@ -399,7 +485,7 @@ function drpdisplay()
 	?>
 
 	
-	<table class="widefat" style="width: 99%;background-color: #FFFBCC">
+	<table class="widefat" style="width: 99%;background-color: #FFFBCC" id= "xyz_smap_app_creation_note">
 	<tr>
 	<td id="bottomBorderNone" style="border: 1px solid #FCC328;">
 	
@@ -411,7 +497,8 @@ function drpdisplay()
 	<br>In the application page in facebook, navigate to <b>Apps >Add Product > Facebook Login >Quickstart >Web > Site URL</b>. Set the site url as : 
 		<span style="color: red;"><?php echo  (is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST']; ?></span>
 		<br>And then navigate to <b>Apps > Facebook Login > Settings</b>. Set the Valid OAuth redirect URIs as :<br>
-		<span style="color: red;"> <?php echo admin_url('admin.php?page=social-media-auto-publish-settings&auth=1'); ?> </span><br>For detailed step by step instructions <b><a href="http://help.xyzscripts.com/docs/social-media-auto-publish/faq/how-can-i-create-facebook-application/" target="_blank">Click here</a></b>.
+		<span style="color: red;"> <?php echo admin_url('admin.php?page=social-media-auto-publish-settings&auth=1'); ?> </span>
+	   	 <br/>For detailed step by step instructions <b><a href="http://help.xyzscripts.com/docs/social-media-auto-publish/faq/how-can-i-create-facebook-application/" target="_blank">Click here</a></b>.
 	</div>
 
 	</td>
@@ -434,10 +521,35 @@ function drpdisplay()
 					<td><input id="xyz_smap_application_name"
 						name="xyz_smap_application_name" type="text"
 						value="<?php if($ms0=="") {echo esc_html(get_option('xyz_smap_application_name'));}?>" />
-						<a href="http://help.xyzscripts.com/docs/social-media-auto-publish/faq/how-can-i-create-facebook-application/" target="_blank">How can I create a Facebook Application?</a>
 					</td>
 				</tr>
 				<tr valign="top">
+			<td width="50%">Application Selection
+			</td>
+				<td>
+				<input type="radio" name="xyz_smap_app_sel_mode" id="xyz_smap_app_sel_mode_reviewd" value="0" <?php if($xyz_smap_app_sel_mode==0) echo 'checked';?>>
+				Use your own Facebook reviewed application<br>
+				<a href="http://help.xyzscripts.com/docs/social-media-auto-publish/faq/how-can-i-create-facebook-application/" target="_blank" style="padding-left: 30px;">How can I create a Facebook Application?</a><br/>
+				<input type="radio" name="xyz_smap_app_sel_mode" id="xyz_smap_app_sel_mode_xyzapp" value="1" <?php if($xyz_smap_app_sel_mode==1) echo 'checked';?>>
+				Use smapsolution.com's Facebook application(Starts from 10 USD per year)<br>
+				<a target="_blank" href="https://help.xyzscripts.com/docs/social-media-auto-publish/faq/how-can-i-use-the-alternate-solution-for-publishing-posts-to-facebook/" style="padding-left: 30px;">How to use smapsolution.com's application?</a>
+				</td>
+			</tr>
+						<?php 
+			if( ($xyzscripts_user_id =='' || $xyzscripts_hash_val=='') && $xyz_smap_app_sel_mode==1)
+			{  ?>
+			<tr valign="top" id="xyz_smap_conn_to_xyzscripts">
+			<td width="50%">	</td>
+			<td width="50%">
+			<span id='ajax-save-xyzscript_acc' style="display:none;"><img	class="img"  title="Saving details"	src="<?php echo plugins_url('../images/ajax-loader.gif',__FILE__);?>" style="width:65px;height:70px; "></span>
+			<span id="connect_to_xyzscripts"style="background-color: #1A87B9;color: white; padding: 4px 5px;
+    text-align: center; text-decoration: none;   display: inline-block;border-radius: 4px;">
+			<a href="javascript:smap_popup_connect_to_xyzscripts();" style="color:white !important;">Connect your xyzscripts account</a>
+			</span>
+			</td>
+			</tr>
+			<?php }?>
+				<tr valign="top" class="xyz_smap_facebook_settings">
 					<td width="50%">Application id
 					</td>
 					<td><input id="xyz_smap_application_id"
@@ -446,7 +558,7 @@ function drpdisplay()
 						</td>
 				</tr>
 
-				<tr valign="top">
+				<tr valign="top" class="xyz_smap_facebook_settings">
 					<td>Application secret<?php   $apsecret=get_option('xyz_smap_application_secret');?>
 						
 					</td>
@@ -522,7 +634,7 @@ function drpdisplay()
 				<?php 
 
 				$xyz_acces_token=get_option('xyz_smap_fb_token');
-				if($xyz_acces_token!=""){
+				if($xyz_acces_token!="" && $xyz_smap_app_sel_mode==0 ){
 				
 					$offset=0;$limit=100;$data=array();
 					//$fbid=get_option('xyz_smap_fb_id');
@@ -567,13 +679,13 @@ function drpdisplay()
 						?>
 				
 			<tr valign="top"><td>
-					Select facebook pages for auto publish
+					Select facebook pages for auto publish 
 				</td>
 				<td>
 				
 				<div class="scroll_checkbox">
 				<input type="checkbox" id="select_all_pages" >Select All
-				<br><input type="checkbox" class="selpages" name="smap_pages_list[]" value="-1" <?php if(in_array(-1, $smap_pages_ids)) echo "checked" ?>>Profile Page
+				<br>
 			
 				<?php 
 				for($i=0;$i<$count;$i++)
@@ -581,14 +693,36 @@ function drpdisplay()
 			          $pgid=$data[$i]->id;
 					$page_name[$pgid]=$data[$i]->name;
 				?>
-				<br><input type="checkbox" class="selpages" name="smap_pages_list[]"  value="<?php  echo $data[$i]->id."-".$data[$i]->access_token;?>" <?php if(in_array($data[$i]->id, $smap_pages_ids)) echo "checked" ?>><?php echo $data[$i]->name; ?>
-				<?php }
+				<input type="checkbox" class="selpages" name="smap_pages_list[]"  value="<?php  echo $data[$i]->id."-".$data[$i]->access_token;?>" <?php if(in_array($data[$i]->id, $smap_pages_ids)) echo "checked" ?>><?php echo $data[$i]->name; ?>
+				<br><?php }
 				//	$page_name=base64_encode(serialize($page_name));?>
 				<input type="hidden" value="<?php echo $page_name;?>" name="hidden_page_name" >
 				</div>
 				</td></tr>
 			<?php 
-			}?>
+			}
+			elseif ($xyz_smap_app_sel_mode==1)// &&pagelist frm smap solutions is not empty )
+			{
+				$xyz_smap_page_names=stripslashes(get_option('xyz_smap_page_names'));
+				$xyz_smap_secret_key=get_option('xyz_smap_secret_key');
+				?>
+							<tr id="xyz_smap_selected_pages_tr" style="<?php if($xyz_smap_page_names=='')echo "display:none;";?>">
+							<td>Selected facebook pages for auto publish</td>
+							<td><div class="scroll_checkbox" id="xyz_smap_selected_pages" >
+							<?php
+							if($xyz_smap_page_names!=''){
+								$xyz_smap_page_names_array=json_decode($xyz_smap_page_names);
+								foreach ($xyz_smap_page_names_array as $sel_pageid=>$sel_pagename)
+								{
+								?>
+							 <input type="checkbox" class="selpages" name="smap_pages_list[]"  value="<?php echo $sel_pageid;?>" disabled checked="checked"><?php echo $sel_pagename; ?><br>
+								<?php }}
+							?>
+							</div>
+							</td>
+							</tr>
+					<?php }
+			?>
 				<tr><td   id="bottomBorderNone"></td>
 					<td  id="bottomBorderNone"><div style="height: 50px;">
 							<input type="submit" class="submit_smap_new"
@@ -768,7 +902,9 @@ function drpdisplay()
 $lnappikey=get_option('xyz_smap_lnapikey');
 $lnapisecret=get_option('xyz_smap_lnapisecret');
 $lmessagetopost=get_option('xyz_smap_lnmessage');
-
+$xyz_smap_ln_company_ids=get_option('xyz_smap_ln_company_ids');
+if ($xyz_smap_ln_company_ids=='')
+	$xyz_smap_ln_company_ids=-1;
 
 $lnaf=get_option('xyz_smap_lnaf');
 
@@ -888,6 +1024,37 @@ $lnaf=get_option('xyz_smap_lnaf');
 		</td>
 	</tr>
 	
+		<tr valign="top" id="share_post_company"><td>Select pages for auto publish </td>
+		<td>
+			<?php 
+			$ln_acc_tok_arr='';
+			$xyz_smap_application_lnarray=get_option('xyz_smap_application_lnarray');
+			if ($xyz_smap_application_lnarray!='')
+			$ln_acc_tok_arr=json_decode($xyz_smap_application_lnarray);
+			if ($ln_acc_tok_arr)
+			$xyz_smap_application_lnarray=$ln_acc_tok_arr->access_token;
+			$ln_publish_status=array();
+			$xyz_smap_ln_company_idArray=explode(',',$xyz_smap_ln_company_ids);
+			?><div class="scroll_checkbox" style="width:220px !important;" ><input type="checkbox" class="selpages" name="xyz_smap_ln_share_post_company[]" value="-1" <?php if(in_array(-1, $xyz_smap_ln_company_idArray)) echo "checked" ?>>Profile<br>
+				<?php if(isset($ln_acc_tok_arr->access_token))
+				{
+					$ObjLinkedin = new SMAPLinkedInOAuth2($ln_acc_tok_arr->access_token);
+					$ar = $ObjLinkedin->getAdminCompanies();//print_r($ar);die;
+					if (isset($ar['_total'])&&$ar['_total']>0)
+					{
+						foreach ($ar['values'] as $ark => $arv)
+						{ ?>
+		<input type="checkbox" name="xyz_smap_ln_share_post_company[]"  value="<?php echo $arv['id']."-".$arv['name']; ?>" <?php if(in_array($arv['id'], $xyz_smap_ln_company_idArray)) echo "checked" ?>><?php echo $arv['id']."-".$arv['name']; ?><br/>
+   				  <?php } ?>
+	                 </div>
+						<?php 
+					}
+					else{echo "No companies found.";}
+				}
+				else {echo "No companies found.";}
+				?>
+		</td>
+	</tr>
 		<tr>
 			<td   id="bottomBorderNone"></td>
 					<td   id="bottomBorderNone"><div style="height: 50px;">
@@ -1251,6 +1418,33 @@ jQuery(document).ready(function() {
 		   checkedval= jQuery("input[name='"+value+"']:checked").val();
 		   XyzSmapToggleRadio(checkedval,value); 
    	});
+   var xyz_smap_app_sel_mode=jQuery("input[name='xyz_smap_app_sel_mode']:checked").val();
+   if(xyz_smap_app_sel_mode !=0){
+		jQuery('.xyz_smap_facebook_settings').hide();
+		jQuery('#xyz_smap_app_creation_note').hide();
+		jQuery('#xyz_smap_conn_to_xyzscripts').show();
+   }
+   else{
+	   	jQuery('.xyz_smap_facebook_settings').show();
+	   	jQuery('#xyz_smap_app_creation_note').show();
+	   	jQuery('#xyz_smap_conn_to_xyzscripts').hide();
+	   		}
+   jQuery("input[name='xyz_smap_app_sel_mode']").click(function(){
+	   var xyz_smap_app_sel_mode=jQuery("input[name='xyz_smap_app_sel_mode']:checked").val();
+	   if(xyz_smap_app_sel_mode !=0){
+		    jQuery('#xyz_smap_app_creation_note').hide();
+			jQuery('.xyz_smap_facebook_settings').hide();
+			jQuery('#xyz_smap_conn_to_xyzscripts').show();
+			}
+		   else{
+			jQuery('#xyz_smap_app_creation_note').show(); 
+		   	jQuery('.xyz_smap_facebook_settings').show();
+		   	jQuery('#xyz_smap_conn_to_xyzscripts').hide();
+		   	}
+	   });
+   window.addEventListener('message', function(e) {
+	   xyz_smap_ProcessChildMessage(e.data);
+	} , false);
 	}); 
 	
 function setcat(obj)
@@ -1273,11 +1467,6 @@ document.getElementById('xyz_smap_sel_cat').value=sel_str;
 
 }
 
-//var d1='<?php // echo esc_html($xyz_smap_include_categories);?>';
-//splitText = d1.split(",");
-//jQuery.each(splitText, function(k,v) {
-//jQuery("#xyz_smap_catlist").children("option[value="+v+"]").attr("selected","selected");
-//});
 
 function rd_cat_chn(val,act)
 {
@@ -1350,6 +1539,111 @@ jQuery.each(smap_toggle_element_ids, function( index, value ) {
 			xyz_smap_show_postCategory(1);
 	});
 	});
+function smap_popup_fb_auth(domain_name,xyz_smap_smapsoln_userid,xyzscripts_user_id,xyzscripts_hash_val,auth_secret_key)
+{
+	if(xyzscripts_user_id==''|| xyzscripts_hash_val==''){
+		if(jQuery('#system_notice_area').length==0)
+			jQuery('body').append('<div class="system_notice_area_style0" id="system_notice_area"></div>');
+			jQuery("#system_notice_area").html('Please connect your xyzscripts member account  <span id="system_notice_area_dismiss">Dismiss</span>');
+			jQuery("#system_notice_area").show();
+			jQuery('#system_notice_area_dismiss').click(function() {
+				jQuery('#system_notice_area').animate({
+					opacity : 'hide',
+					height : 'hide'
+				}, 500);
+			});
+			return false;
+	}
+	else{
+	var childWindow = null;
+	var smap_licence_key='';
+	var account_id=0;
+	var smap_solution_url='<?php echo XYZ_SMAP_SOLUTION_AUTH_URL;?>';
+	childWindow = window.open(smap_solution_url+"authorize/facebook.php?smap_id="+xyz_smap_smapsoln_userid+"&account_id="+account_id+
+			"&domain_name="+domain_name+"&xyzscripts_user_id="+xyzscripts_user_id+"&xyzscripts_hash_val="+xyzscripts_hash_val
+			+"&smap_licence_key="+smap_licence_key+"&auth_secret_key="+auth_secret_key+"&free_plugin_source=smap", "SmapSolutions Authorization", "toolbar=yes,scrollbars=yes,resizable=yes,left=500,width=600,height=600");
+	return false;	}
+}
+function smap_popup_connect_to_xyzscripts()
+{
+	var childWindow = null;
+	var smap_xyzscripts_url='<?php echo "https://smap.xyzscripts.com/index.php?page=index/register";?>';
+	childWindow = window.open(smap_xyzscripts_url, "Connect to xyzscripts", "toolbar=yes,scrollbars=yes,resizable=yes,left=500,width=600,height=600");
+	return false;	
+}
+function xyz_smap_ProcessChildMessage(message) {
+	var messageType = message.slice(0,5);
+	if(messageType==="error")
+	{
+		message=message.substring(6);
+		if(jQuery('#system_notice_area').length==0)
+		jQuery('body').append('<div class="system_notice_area_style0" id="system_notice_area"></div>');
+		jQuery("#system_notice_area").html(message+' <span id="system_notice_area_dismiss">Dismiss</span>');
+		jQuery("#system_notice_area").show();
+		jQuery('#system_notice_area_dismiss').click(function() {
+			jQuery('#system_notice_area').animate({
+				opacity : 'hide',
+				height : 'hide'
+			}, 500);
+		});
+	}
+	var obj1=jQuery.parseJSON(message);
+	if(obj1.content &&  obj1.userid && obj1.xyzscripts_user)
+	{
+		var xyz_userid=obj1.userid;var xyz_user_hash=obj1.content;
+		var xyz_smap_xyzscripts_accinfo_nonce= '<?php echo wp_create_nonce('xyz_smap_xyzscripts_accinfo_nonce');?>';
+		var dataString = { 
+				action: 'xyz_smap_xyzscripts_accinfo_auto_update', 
+				xyz_userid: xyz_userid ,
+				xyz_user_hash: xyz_user_hash,
+				dataType: 'json',
+				_wpnonce: xyz_smap_xyzscripts_accinfo_nonce
+			};
+		jQuery("#connect_to_xyzscripts").hide();
+		jQuery("#ajax-save-xyzscript_acc").show();
+		jQuery.post(ajaxurl, dataString ,function(response) {
+ 		  var base_url = '<?php echo admin_url('admin.php?page=social-media-auto-publish-settings');?>';
+  		 window.location.href = base_url+'&msg=5';
+		});
+	}
+	else if(obj1.pages && obj1.smapsoln_userid)
+	{
+// 	var obj1=jQuery.parseJSON(message);
+	var obj=obj1.pages;
+	var secretkey=obj1.secretkey;
+	var xyz_smap_fb_numericid=obj1.xyz_fb_numericid;
+	var smapsoln_userid=obj1.smapsoln_userid;
+	var list='';
+	for (var key in obj) {
+	  if (obj.hasOwnProperty(key)) {
+	    var val = obj[key];
+	    list=list+"<input type='checkbox' value='"+key+"' checked='checked' disabled>"+val+"<br>";
+	  }
+	}
+	jQuery("#xyz_smap_selected_pages").html(list);
+	jQuery("#xyz_smap_selected_pages_tr").show();
+	jQuery("#auth_message").hide();
+	jQuery("#re_auth_message").show();
+	var xyz_smap_selected_pages_nonce= '<?php echo wp_create_nonce('xyz_smap_selected_pages_nonce');?>';
+	var pages_obj = JSON.stringify(obj);
+	var dataString = { 
+			action: 'xyz_smap_selected_pages_auto_update', 
+			pages: pages_obj ,
+			smap_secretkey: secretkey,
+			xyz_fb_numericid: xyz_smap_fb_numericid,
+			smapsoln_userid:smapsoln_userid,
+			dataType: 'json',
+			_wpnonce: xyz_smap_selected_pages_nonce
+		};			
+		jQuery("#re_auth_message").hide();
+		jQuery("#auth_message").hide();
+		jQuery("#ajax-save").show();
+	jQuery.post(ajaxurl, dataString ,function(response) {
+		  var base_url = '<?php echo admin_url('admin.php?page=social-media-auto-publish-settings');?>';//msg - 
+		 window.location.href = base_url+'&msg=6';
+		});
+	}
+}
 </script>
 	<?php 
 ?>

@@ -54,8 +54,9 @@ if(isset($_GET['action']) && $_GET['action']=="edit" && !empty($_GET['post']))  
 			return;
 
 	}
-	
-	if((get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="" && get_option('xyz_smap_post_permission')==1) || (get_option('xyz_smap_twconsumer_id')!="" && get_option('xyz_smap_twconsumer_secret')!="" && get_option('xyz_smap_tw_id')!="" && get_option('xyz_smap_current_twappln_token')!="" && get_option('xyz_smap_twaccestok_secret')!="" && get_option('xyz_smap_twpost_permission')==1) || (get_option('xyz_smap_lnaf')==0 && get_option('xyz_smap_lnpost_permission')==1) )
+	if((get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="" && get_option('xyz_smap_post_permission')==1 && (get_option('xyz_smap_app_sel_mode')==0)) ||
+			(get_option('xyz_smap_twconsumer_id')!="" && get_option('xyz_smap_twconsumer_secret')!="" && get_option('xyz_smap_tw_id')!="" && get_option('xyz_smap_current_twappln_token')!="" && get_option('xyz_smap_twaccestok_secret')!="" && get_option('xyz_smap_twpost_permission')==1) 
+			|| (get_option('xyz_smap_lnaf')==0 && get_option('xyz_smap_lnpost_permission')==1 &&  get_option('xyz_smap_ln_company_ids')!='') || (get_option('xyz_smap_app_sel_mode')==1 && get_option('xyz_smap_page_names')!="" && get_option('xyz_smap_post_permission')==1))
 	add_meta_box( "xyz_smap", '<strong>Social Media Auto Publish </strong>', 'xyz_smap_addpostmetatags') ;
 	
 }
@@ -255,7 +256,7 @@ function inArray(needle, haystack) {
 <input type="hidden" name="xyz_smap_post" id="xyz_smap_post" value="0" >
 <?php 
 
-if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
+if((get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="" && get_option('xyz_smap_app_sel_mode')==0)|| (get_option('xyz_smap_app_sel_mode')==1 && get_option('xyz_smap_page_names')!="")&& get_option('xyz_smap_af')==0)
 {
 
 ?>
@@ -423,7 +424,7 @@ if(get_option('xyz_smap_af')==0 && get_option('xyz_smap_fb_token')!="")
 	<?php if(get_option('xyz_smap_lnaf')==0){?>
 	
 	<tr id="xyz_smap_lnMetabox"><td colspan="2" >
-<?php  if(get_option('xyz_smap_lnpost_permission')==1) {?>
+<?php  if(get_option('xyz_smap_lnpost_permission')==1 && get_option('xyz_smap_ln_company_ids')!='') {?>
 <table class="xyz_smap_meta_acclist_table"><!-- LI META -->
 
 

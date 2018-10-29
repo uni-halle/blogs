@@ -75,7 +75,7 @@ Social Media Auto Publish automatically publishes posts from your blog to your  
 		<!-- Posting Options  -->
 	<tr>
 		<td rowspan="16"><h4>Posting Options</h4></td>
-		<td>Publish to facebook profile/pages</td>
+		<td>Publish to facebook pages</td>
 		<td><img src="<?php echo plugins_url("images/tick.png",XYZ_SMAP_PLUGIN_FILE);?>">
 		</td>
 		<td><img src="<?php echo plugins_url("images/tick.png",XYZ_SMAP_PLUGIN_FILE);?>">
@@ -108,7 +108,7 @@ Social Media Auto Publish automatically publishes posts from your blog to your  
 	
 	<tr>
 		<td>Publish to linkedin company pages</td>
-		<td><img src="<?php echo plugins_url("images/cross.png",XYZ_SMAP_PLUGIN_FILE);?>">
+		<td><img src="<?php echo plugins_url("images/tick.png",XYZ_SMAP_PLUGIN_FILE);?>">
 		</td>
 		<td><img src="<?php echo plugins_url("images/tick.png",XYZ_SMAP_PLUGIN_FILE);?>">
 		</td>

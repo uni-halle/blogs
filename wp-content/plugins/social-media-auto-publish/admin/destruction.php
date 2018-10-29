@@ -79,6 +79,13 @@ function smap_free_destroy()
 	delete_option('xyz_smap_dnt_shw_notice');
 	delete_option('smap_installed_date');
 	delete_option('xyz_smap_credit_dismiss');
+	delete_option('xyz_smap_ln_company_ids');
+	delete_option('xyz_smap_page_names');
+	delete_option('xyz_smap_app_sel_mode');
+	delete_option('xyz_smap_xyzscripts_hash_val');
+	delete_option('xyz_smap_xyzscripts_user_id');
+	delete_option('xyz_smap_secret_key');
+	delete_option('xyz_smap_smapsoln_userid');
 }
 
 register_uninstall_hook(XYZ_SMAP_PLUGIN_FILE,'smap_free_network_destroy');

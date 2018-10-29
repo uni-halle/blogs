@@ -101,7 +101,7 @@ function xyz_link_publish($post_ID) {
 
 	global $current_user;
 	wp_get_current_user();
-	$af=get_option('xyz_smap_af');
+	
 	
 	
 /////////////twitter//////////
@@ -159,7 +159,7 @@ function xyz_link_publish($post_ID) {
 	
 	$postpp= get_post($post_ID);global $wpdb;
 	$reg_exUrl = "/(http|https)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
-	$entries0 = $wpdb->get_results($wpdb->prepare( 'SELECT user_nicename,display_name FROM '.$wpdb->prefix.'users WHERE ID =%d',$postpp->post_author));
+	$entries0 = $wpdb->get_results($wpdb->prepare( 'SELECT user_nicename,display_name FROM '.$wpdb->base_prefix.'users WHERE ID =%d',$postpp->post_author));
 	foreach( $entries0 as $entry ) {			
 		$user_nicename=$entry->user_nicename;
 		$display_name=$entry->display_name;
@@ -301,36 +301,44 @@ function xyz_link_publish($post_ID) {
 	 	$description=str_replace("&nbsp;","",$description);
 		
 		$excerpt=str_replace("&nbsp;","",$excerpt);
-		if($useracces_token!="" && $appsecret!="" && $appid!="" && $post_permissin==1)
+		$xyz_smap_app_sel_mode=get_option('xyz_smap_app_sel_mode');
+		$af=get_option('xyz_smap_af');
+		if((($useracces_token!="" && $appsecret!="" && $appid!=""&& $xyz_smap_app_sel_mode==0) || $xyz_smap_app_sel_mode==1) && $post_permissin==1 && $af ==0)
 		{
 			$descriptionfb_li=xyz_smap_string_limit($description, 10000);
 			
 			$user_page_id=get_option('xyz_smap_fb_numericid');
-
+			if ($xyz_smap_app_sel_mode==1){
+				$xyz_smap_page_names=json_decode(stripslashes(get_option('xyz_smap_page_names')));
+				foreach ($xyz_smap_page_names as $xyz_smap_page_id => $xyz_smap_page_name)
+				{
+					$xyz_smap_pages_ids1[]=$xyz_smap_page_id;
+				}
+			}
+			else{
 			$xyz_smap_pages_ids=get_option('xyz_smap_pages_ids');
-			if($xyz_smap_pages_ids=="")
-				$xyz_smap_pages_ids=-1;
 
 			$xyz_smap_pages_ids1=explode(",",$xyz_smap_pages_ids);
 
-
+			}
 			foreach ($xyz_smap_pages_ids1 as $key=>$value)
 			{
-				if($value!=-1)
-				{
+				
+
+				if ($xyz_smap_app_sel_mode==0){
 					$value1=explode("-",$value);
 					$acces_token=$value1[1];$page_id=$value1[0];
 				}
 				else
-				{
-					$acces_token=$useracces_token;$page_id=$user_page_id;
-				}
+					$page_id=$value;
 
+					if ($xyz_smap_app_sel_mode==0){
 				$fb=new Facebook\Facebook(array(
 						'app_id'  => $appid,
 						'app_secret' => $appsecret,
 						'cookie' => true
 				));
+					}
 				$message1=str_replace('{POST_TITLE}', $name, $message);
 				$message2=str_replace('{BLOG_TITLE}', $caption,$message1);
 				$message3=str_replace('{PERMALINK}', $link, $message2);
@@ -346,7 +354,6 @@ function xyz_link_publish($post_ID) {
 				if($posting_method==1) //attach
 				{
 					$attachment = array('message' => $message5,
-							'access_token' => $acces_token,
 							'link' => $link,
 							'actions' => json_encode(array('name' => $name,
 							'link' => $link))
@@ -356,7 +363,6 @@ function xyz_link_publish($post_ID) {
 				else if($posting_method==2)  //share link
 				{
 					$attachment = array('message' => $message5,
-							'access_token' => $acces_token,
 							'link' => $link,
 
 					);
@@ -365,7 +371,6 @@ function xyz_link_publish($post_ID) {
 				{
 						
 					$attachment = array('message' => $message5,
-							'access_token' => $acces_token				
 					
 					);
 					
@@ -375,7 +380,8 @@ function xyz_link_publish($post_ID) {
 					if($attachmenturl!="")
 					{
 						
-
+						if($xyz_smap_app_sel_mode==0)
+						{
 						if($posting_method==5)
 						{
 							try{
@@ -461,11 +467,10 @@ function xyz_link_publish($post_ID) {
 									
 							}
 						}
-						
+					}
 						
 						$disp_type="photos";
 						$attachment = array('message' => $message5,
-								'access_token' => $acces_token,
 								'url' => $attachmenturl	
 						
 						);
@@ -473,7 +478,6 @@ function xyz_link_publish($post_ID) {
 					else
 					{
 						$attachment = array('message' => $message5,
-								'access_token' => $acces_token
 						
 						);
 					}
@@ -487,10 +491,42 @@ function xyz_link_publish($post_ID) {
 					update_post_meta($post_ID, "xyz_smap_insert_og", "1");
 				}
 				try{
-				$result = $fb->post('/'.$page_id.'/'.$disp_type.'/', $attachment);}
+					if($xyz_smap_app_sel_mode==1)
+					{
+						$smap_smapsoln_userid=get_option('xyz_smap_smapsoln_userid');
+						$xyz_smap_secret_key=get_option('xyz_smap_secret_key');
+						$xyz_smap_fb_numericid=get_option('xyz_smap_fb_numericid');
+						$xyz_smap_xyzscripts_userid=get_option('xyz_smap_xyzscripts_user_id');
+						$post_details=array('xyz_smap_userid'=>$smap_smapsoln_userid,//smap_id
+								'xyz_smap_attachment'=>$attachment,
+								'xyz_smap_disp_type'=>$disp_type,
+								'xyz_smap_posting_method'=>$posting_method,
+								'xyz_smap_page_id'=>$page_id,
+								'xyz_smap_app_name'=>$app_name,
+								'xyz_smap_secret_key' =>$xyz_smap_secret_key,
+								'xyz_fb_numericid' => $xyz_smap_fb_numericid,
+								'xyz_smap_xyzscripts_userid'=>$xyz_smap_xyzscripts_userid
+						);
+						$result_smap_solns=xyz_smap_post_to_facebook($post_details);
+						$result_smap_solns=json_decode($result_smap_solns);
+						if(!empty($result_smap_solns))
+						{
+							$fb_api_count_returned=$result_smap_solns->fb_api_count;
+							if($result_smap_solns->status==0)
+								$fb_publish_status[].="<span style=\"color:red\">  ".$page_id."/".$disp_type."/".$result_smap_solns->msg."</span><br/><span style=\"color:#21759B\">No. of api calls used: ".$fb_api_count_returned."</span><br/>";
+								elseif ($result_smap_solns->status==1)
+								$fb_publish_status[].="<span style=\"color:green\"> ".$page_id."/".$disp_type."/".$result_smap_solns->msg."</span><br/><span style=\"color:#21759B\">No. of api calls used: ".$fb_api_count_returned."</span><br/>";
+						}
+					}
+					else
+					{
+						$attachment['access_token']=$acces_token;
+						$result = $fb->post('/'.$page_id.'/'.$disp_type.'/', $attachment);
+					}
+				}
 							catch(Exception $e)
 							{
-								$fb_publish_status[$page_id."/".$disp_type]=$e->getMessage();
+					$fb_publish_status[]="<span style=\"color:red\">  ".$page_id."/".$disp_type."/".$e->getMessage()."</span><br/>";
 							}
 
 			}
@@ -517,7 +553,11 @@ function xyz_link_publish($post_ID) {
 			$smap_fb_update_opt_array[2]=isset($smap_fb_arr_retrive[2]) ? $smap_fb_arr_retrive[2] : '';
 			$smap_fb_update_opt_array[3]=isset($smap_fb_arr_retrive[3]) ? $smap_fb_arr_retrive[3] : '';
 			$smap_fb_update_opt_array[4]=isset($smap_fb_arr_retrive[4]) ? $smap_fb_arr_retrive[4] : '';
-			
+			$smap_fb_update_opt_array[5]=isset($smap_fb_arr_retrive[5]) ? $smap_fb_arr_retrive[5] : '';
+			$smap_fb_update_opt_array[6]=isset($smap_fb_arr_retrive[6]) ? $smap_fb_arr_retrive[6] : '';
+			$smap_fb_update_opt_array[7]=isset($smap_fb_arr_retrive[7]) ? $smap_fb_arr_retrive[7] : '';
+			$smap_fb_update_opt_array[8]=isset($smap_fb_arr_retrive[8]) ? $smap_fb_arr_retrive[8] : '';
+			$smap_fb_update_opt_array[9]=isset($smap_fb_arr_retrive[9]) ? $smap_fb_arr_retrive[9] : '';
 			array_shift($smap_fb_update_opt_array);
 			array_push($smap_fb_update_opt_array,$post_fb_options);
 			update_option('xyz_smap_fbap_post_logs', $smap_fb_update_opt_array);
@@ -762,14 +802,18 @@ function xyz_link_publish($post_ID) {
 			$smap_tw_update_opt_array[2]=isset($smap_tw_arr_retrive[2]) ? $smap_tw_arr_retrive[2] : '';
 			$smap_tw_update_opt_array[3]=isset($smap_tw_arr_retrive[3]) ? $smap_tw_arr_retrive[3] : '';
 			$smap_tw_update_opt_array[4]=isset($smap_tw_arr_retrive[4]) ? $smap_tw_arr_retrive[4] : '';
-			
+			$smap_tw_update_opt_array[5]=isset($smap_tw_arr_retrive[5]) ? $smap_tw_arr_retrive[5] : '';
+			$smap_tw_update_opt_array[6]=isset($smap_tw_arr_retrive[6]) ? $smap_tw_arr_retrive[6] : '';
+			$smap_tw_update_opt_array[7]=isset($smap_tw_arr_retrive[7]) ? $smap_tw_arr_retrive[7] : '';
+			$smap_tw_update_opt_array[8]=isset($smap_tw_arr_retrive[8]) ? $smap_tw_arr_retrive[8] : '';
+			$smap_tw_update_opt_array[9]=isset($smap_tw_arr_retrive[9]) ? $smap_tw_arr_retrive[9] : '';
 			array_shift($smap_tw_update_opt_array);
 			array_push($smap_tw_update_opt_array,$post_tw_options);
 			update_option('xyz_smap_twap_post_logs', $smap_tw_update_opt_array);
 			
 		}
 	   
-		if($lnappikey!="" && $lnapisecret!=""  && $lnpost_permission==1 && $lnaf==0)
+		if($lnappikey!="" && $lnapisecret!=""  && $lnpost_permission==1 && $lnaf==0 && get_option('xyz_smap_ln_company_ids')!='')
 		{	
 			$contentln=array();
 			
@@ -820,22 +864,51 @@ function xyz_link_publish($post_ID) {
 		//$contentln=xyz_wp_smap_linkedin_attachment_metas($contentln,$link);
 		if($xyz_smap_ln_sharingmethod==0)
 		{
+			if(get_option('xyz_smap_ln_company_ids')!='')//company
+				$xyz_smap_ln_company_id1=explode(",",get_option('xyz_smap_ln_company_ids'));
+			if (in_array('-1', $xyz_smap_ln_company_id1))
+			{
 				try{
 				$arrResponse = $ObjLinkedin->shareStatus($contentln);
 						if ( isset($arrResponse['errorCode']) && isset($arrResponse['message']) && ($arrResponse['message']!='') ) {//as per old api ; need to confirm which is correct
-							$ln_publish_status["new"]=$arrResponse['message'];
+								$ln_publish_status["new"].="<span style=\"color:red\"> profile:".$arrResponse['message'].".</span><br/>";//$arrResponse['message'];
 						}
-						if(isset($response2['error']) && $response2['error']!="")//as per new api ; need to confirm which is correct
-							$ln_publish_status["new"]=$response2['error'];
+							/*if(isset($response2['error']) && $response2['error']!="")//as per new api ; need to confirm which is correct
+								$ln_publish_status["new"].=$response2['error'];*/
+							if ( isset($arrResponse['updateKey']) && isset($arrResponse['updateUrl']) && ($arrResponse['updateUrl']!='') )
+								$ln_publish_status["new"].="<span style=\"color:green\"> profile:Success.</span><br/>";
 
 				}
 			catch(Exception $e)
 			{
 				$ln_publish_status["new"]=$e->getMessage();
+				}
 			}
-			
+			if (!empty($xyz_smap_ln_company_id1)){
+				foreach ($xyz_smap_ln_company_id1 as $xyz_smap_ln_company_id)
+				{
+					if($xyz_smap_ln_company_id!=-1)
+						try
+						{
+							$ln_api_count++;
+							$response2 = $ObjLinkedin->postToCompany($xyz_smap_ln_company_id,$contentln);
+							if ( isset($response2['errorCode']) && isset($response2['message']) && ($response2['message']!='') )
+							{
+								$ln_publish_status_comp["new"].="<span style=\"color:red\"> company/".$xyz_smap_ln_company_id.":".$response2['message'].".</span><br/>";
 		}
 		else
+							{
+								$ln_publish_status_comp["new"].="<span style=\"color:green\"> company/".$xyz_smap_ln_company_id.":Success.</span><br/>";
+							}
+					}
+					catch(Exception $e)
+					{
+						$ln_publish_status_comp["new"].="<span style=\"color:red\">company/".$xyz_smap_ln_company_id.":".$e->getMessage().".</span><br/>";
+					}
+				}
+			}
+		}
+		/*else
 		{ 
 		$description_liu=xyz_smap_string_limit($description, 950);
 		try{
@@ -848,12 +921,18 @@ function xyz_link_publish($post_ID) {
 			
 			if(isset($response2['error']) && $response2['error']!="")
 				$ln_publish_status["updateNetwork"]=$response2['error'];
-		}
+		}*/
+			$ln_publish_status_insert='';
+			if(count($ln_publish_status['new'])>0)
+				$ln_publish_status_insert.=$ln_publish_status['new'];
+				if(isset($ln_publish_status_comp["new"]))
+					$ln_publish_status_insert.=$ln_publish_status_comp["new"];
+		$ln_publish_status_insert=serialize($ln_publish_status_insert);
 		
-		if(count($ln_publish_status)>0)
+		/*if(count($ln_publish_status)>0)
 			$ln_publish_status_insert=serialize($ln_publish_status);
 		else
-			$ln_publish_status_insert=1;
+			$ln_publish_status_insert=1;*/
 		
 		$time=time();
 		$post_ln_options=array(
@@ -872,6 +951,11 @@ function xyz_link_publish($post_ID) {
 		$smap_ln_update_opt_array[2]=isset($smap_ln_arr_retrive[2]) ? $smap_ln_arr_retrive[2] : '';
 		$smap_ln_update_opt_array[3]=isset($smap_ln_arr_retrive[3]) ? $smap_ln_arr_retrive[3] : '';
 		$smap_ln_update_opt_array[4]=isset($smap_ln_arr_retrive[4]) ? $smap_ln_arr_retrive[4] : '';
+		$smap_ln_update_opt_array[5]=isset($smap_ln_arr_retrive[5]) ? $smap_ln_arr_retrive[5] : '';
+		$smap_ln_update_opt_array[6]=isset($smap_ln_arr_retrive[6]) ? $smap_ln_arr_retrive[6] : '';
+		$smap_ln_update_opt_array[7]=isset($smap_ln_arr_retrive[7]) ? $smap_ln_arr_retrive[7] : '';
+		$smap_ln_update_opt_array[8]=isset($smap_ln_arr_retrive[8]) ? $smap_ln_arr_retrive[8] : '';
+		$smap_ln_update_opt_array[9]=isset($smap_ln_arr_retrive[9]) ? $smap_ln_arr_retrive[9] : '';
 		
 		array_shift($smap_ln_update_opt_array);
 		array_push($smap_ln_update_opt_array,$post_ln_options);

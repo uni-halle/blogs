@@ -21,6 +21,7 @@ function xyz_smap_menu()
 	$page=add_submenu_page('social-media-auto-publish-settings', 'Social Media Auto Publish - Manage settings', ' Settings', 'manage_options', 'social-media-auto-publish-settings' ,'xyz_smap_settings');
 	add_submenu_page('social-media-auto-publish-settings', 'Social Media Auto Publish - Logs', 'Logs', 'manage_options', 'social-media-auto-publish-log' ,'xyz_smap_logs'); 
 	add_submenu_page('social-media-auto-publish-settings', 'Social Media Auto Publish - About', 'About', 'manage_options', 'social-media-auto-publish-about' ,'xyz_smap_about');
+	add_submenu_page('social-media-auto-publish-settings', 'Social Media Auto Publish - Suggest Feature', 'Suggest a Feature', 'manage_options', 'social-media-auto-publish-suggest-features' ,'xyz_smap_suggest_feature');
 }
 
 
@@ -54,6 +55,12 @@ function xyz_smap_logs()
 	
 	require( dirname( __FILE__ ) . '/header.php' );
 	require( dirname( __FILE__ ) . '/logs.php' );
+	require( dirname( __FILE__ ) . '/footer.php' );
+}
+function xyz_smap_suggest_feature()
+{
+	require( dirname( __FILE__ ) . '/header.php' );
+	require( dirname( __FILE__ ) . '/suggest_feature.php' );
 	require( dirname( __FILE__ ) . '/footer.php' );
 }
 

@@ -28,7 +28,7 @@ if(isset($_POST['fb_auth']))
 		
 		$dialog_url = "https://www.facebook.com/".XYZ_SMAP_FB_API_VERSION."/dialog/oauth?client_id="
 		. $app_id . "&redirect_uri=" . $my_url . "&state="
-		. $xyz_smap_session_state . "&scope=email,public_profile,publish_pages,user_posts,manage_pages";
+		. $xyz_smap_session_state . "&scope=email,public_profile,publish_pages,user_photos,manage_pages";
 		
 		header("Location: " . $dialog_url);
 }

@@ -111,3 +111,4 @@ jQuery(document).ready(function() {
 </table>
 </div>
 <div style="clear: both"></div>
+<div style="border: 1px solid #CCC; border-radius:2px;padding:10px;width:97%;overflow-x: auto;" id="xyz_smap_content_border">

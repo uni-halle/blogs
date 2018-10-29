@@ -98,6 +98,13 @@ function smap_install_free()
 	if(get_option('xyz_smap_credit_dismiss') == ""){
 		add_option("xyz_smap_credit_dismiss",0);
 	}
+	add_option('xyz_smap_page_names','');
+	add_option('xyz_smap_app_sel_mode','0');
+	add_option('xyz_smap_ln_company_ids','-1');
+	add_option('xyz_smap_xyzscripts_user_id','');
+	add_option('xyz_smap_xyzscripts_hash_val','');
+	add_option('xyz_smap_secret_key','');
+	add_option('xyz_smap_smapsoln_userid','0');
 }
 
 register_activation_hook(XYZ_SMAP_PLUGIN_FILE,'smap_free_network_install');

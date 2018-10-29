@@ -11,7 +11,7 @@ if( !defined('ABSPATH') ){ exit();}
 
 
 <div style="text-align: left;padding-left: 7px;"><h3>Auto Publish Logs</h3></div>
-	<span>Last five logs of each social media account</span>
+	<span>Last ten logs of each social media account</span>
 		   <table class="widefat" style="width: 99%; margin: 0 auto; border-bottom:none;">
 				<thead>
 					<tr class="xyz_smap_log_tr">
@@ -46,8 +46,9 @@ if( !defined('ABSPATH') ){ exit();}
 				
 				if(is_array($post_fb_logsmain_array))
 				{
-					for($i=4;$i>=0;$i--)
+					for($i=9;$i>=0;$i--)
 					{
+						if(array_key_exists($i,$post_fb_logsmain_array)){
 						if($post_fb_logsmain_array[$i]!='')
 							{
 								$post_fb_logs=$post_fb_logsmain_array[$i];
@@ -79,32 +80,29 @@ if( !defined('ABSPATH') ){ exit();}
 								
 								<td style="vertical-align: middle !important;">
 								<?php
-			
-								
-							  if($status=="1")
-									echo "<span style=\"color:green\">Success</span>";
-								else if($status=="0")
-									echo '';
-								else
-								{
-									$arrval=unserialize($status);
-									foreach ($arrval as $a=>$b)
-										echo "<span style=\"color:red\">".$b."</span><br>";
-								
-								}
-								
+									if($status=="1"){
+										echo "<span style=\"color:green\">Success</span>";
+									}
+									else if($status=="0")
+										echo '';
+										else
+										{
+											$arrval=unserialize($status);
+											foreach ($arrval as $a=>$b)
+												echo $b;
+										}
 								 ?>
 								</td>
 							</tr>
 							<?php  
-							}
+							}}
 						}
 					}
 					
 			           }
 
-                                     if(is_array($post_tw_logsmain))
-                                     {	
+                    if(is_array($post_tw_logsmain))
+                     {	
 					$post_tw_logsmain_array = array();
 					foreach ($post_tw_logsmain as $logkey2 => $logval2)
 					{
@@ -113,8 +111,9 @@ if( !defined('ABSPATH') ){ exit();}
 					
 					if(is_array($post_tw_logsmain_array))
 					{
-						for($i=4;$i>=0;$i--)
+						for($i=9;$i>=0;$i--)
 						{
+							if(array_key_exists($i,$post_tw_logsmain_array)){
 							if($post_tw_logsmain_array[$i]!='')
 							{
 								$post_tw_logs=$post_tw_logsmain_array[$i];
@@ -154,7 +153,7 @@ if( !defined('ABSPATH') ){ exit();}
 									{
 									$arrval=unserialize($status);
 									foreach ($arrval as $a=>$b)
-									echo "<span style=\"color:red\">".$a." : ".$b."</span><br>";
+									echo $b;
 									
 									}
 									
@@ -162,7 +161,7 @@ if( !defined('ABSPATH') ){ exit();}
 									</td>
 								</tr>
 								<?php  
-							}
+							}}
 						}
 					}
                                      }
@@ -178,8 +177,9 @@ if( !defined('ABSPATH') ){ exit();}
 					}
 					if(is_array($post_ln_logsmain_array))
 					{
-						for($i=4;$i>=0;$i--)
+						for($i=9;$i>=0;$i--)
 						{
+							if(array_key_exists($i,$post_ln_logsmain_array)){
 							if($post_ln_logsmain_array[$i]!='')
 							{
 								$post_ln_logs=$post_ln_logsmain_array[$i];		
@@ -219,8 +219,9 @@ if( !defined('ABSPATH') ){ exit();}
 									else
 									{
 									$arrval=unserialize($status);
-									foreach ($arrval as $a=>$b)
-									echo "<span style=\"color:red\">".$a." : ".$b."</span><br>";
+									print_r($arrval);
+									/*foreach ($arrval as $a=>$b)
+									echo "<span style=\"color:red\">".$a." : ".$b."</span><br>";*/
 									
 									}
 									
@@ -228,7 +229,7 @@ if( !defined('ABSPATH') ){ exit();}
 									</td>
 								</tr>
 								<?php  
-							}
+							}}
 						}
 					}
                                      }
