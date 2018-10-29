@@ -56,11 +56,11 @@ class wpdevart_countdown_front_end{
 			"start_time"			=> mktime (date("H"), date("i"), date("s"),date("n"), date("j"),date("Y")),
 			"countdown_end_type"	=> "time",
 			"end_date"				=> date('d-m-Y 23:59'),
-			"end_time"				=> "0,7,7",
+			"end_time"				=> "0,8,8",
 			"action_end_time"		=> "hide",
 			"content_position"		=> "center",
-			"top_ditance"			=> "10",
-			"bottom_distance"		=> "10",
+			"top_ditance"			=> "9",
+			"bottom_distance"		=> "9",
 			"content"				=>$content
 		), $atts);
 			

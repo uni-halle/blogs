@@ -128,7 +128,7 @@ class wpdevart_countdown_setting{
 
 	}
 	
-    /*############################### THEME FUNCTION #######################################*/
+    /*############################### COUNTDOWN THEME FUNCTION #######################################*/
 
 	public static function darkest_brigths($color,$pracent){
 		$new_color=$color;

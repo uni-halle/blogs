@@ -63,13 +63,13 @@ class wpdevart_countdown extends WP_Widget {
 			'text_for_second' 		=> 'Seconds',
 			'start_time' 			=> mktime (date("H"), date("i"), date("s"),date("n"), date("j"),date("Y")),
 			'end_time_type' 		=> 'time',
-			'end_time' 				=> '0,7,7',
+			'end_time' 				=> '0,8,8',
 			'end_time_date' 		=> date('d-m-Y 23:59'),
 			'action_end_time' 		=> 'hide',
 			'content' 		=> '',
 			'content_position' 		=> 'center',
-			'top_ditance' 			=> '10',
-			'bottom_distance' 		=> '10',
+			'top_ditance' 			=> '9',
+			'bottom_distance' 		=> '9',
 		);
 		$instance = wp_parse_args( (array) $instance, $defaults );
 		?>

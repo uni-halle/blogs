@@ -29,7 +29,7 @@ class wpdevart_countdown_admin_menu{
 		add_action( 'wp_ajax_wpdevart_countdown_send_mail', array($this,'sending_mail') );
 	}
 	
-	/*############################### Countdown Insert button code ########################################*/
+	/*############################### Insert button function ########################################*/
 	
 	public function wpdevart_countdown_button($context) {
 	  
