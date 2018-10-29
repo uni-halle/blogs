@@ -45,7 +45,8 @@ class WPForms_Logging {
 			'capability_type'     => 'post',
 			'supports'            => array( 'title', 'editor' ),
 			'can_export'          => false,
-			'show_in_menu'        => 'wpforms-overview'
+			'show_in_menu'        => 'wpforms-overview',
+			'show_in_admin_bar'   => false,
 		);
 
 		if ( wpforms_debug() ) {

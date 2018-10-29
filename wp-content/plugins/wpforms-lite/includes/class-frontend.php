@@ -32,6 +32,24 @@ class WPForms_Frontend {
 	public $pages = false;
 
 	/**
+	 * Contains a form confirmation message.
+	 *
+	 * @since 1.4.8
+	 *
+	 * @var string
+	 */
+	public $confirmation_message = '';
+
+	/**
+	 * If the active form confirmation should auto scroll.
+	 *
+	 * @since 1.4.9
+	 *
+	 * @var bool
+	 */
+	public $confirmation_message_scroll = false;
+
+	/**
 	 * Primary class constructor.
 	 *
 	 * @since 1.0.0
@@ -121,6 +139,7 @@ class WPForms_Frontend {
 
 		// Allow filter to return early if some condition is not met.
 		if ( ! apply_filters( 'wpforms_frontend_load', true, $form_data, null ) ) {
+			do_action( 'wpforms_frontend_not_loaded', $form_data, $form );
 			return;
 		}
 
@@ -130,11 +149,6 @@ class WPForms_Frontend {
 			$this->pages = $pages;
 		} else {
 			$this->pages = false;
-		}
-
-		// Add the hash for confirmation scrolling if enabled.
-		if ( ! empty( $settings['confirmation_type'] ) && 'message' === $settings['confirmation_type'] && ! empty( $settings['confirmation_message_scroll'] ) ) {
-			$action .= '#wpforms-' . $form_id;
 		}
 
 		// Allow final action to be customized - 3rd param ($form) has been deprecated.
@@ -195,10 +209,8 @@ class WPForms_Frontend {
 	 */
 	public function confirmation( $form_data, $fields = array(), $entry_id = 0 ) {
 
-		$settings = $form_data['settings'];
-
 		// Only display if a confirmation message has been configured.
-		if ( empty( $settings['confirmation_type'] ) || 'message' !== $settings['confirmation_type'] ) {
+		if ( empty( $this->confirmation_message ) ) {
 			return;
 		}
 
@@ -213,9 +225,10 @@ class WPForms_Frontend {
 			$entry_id = ! empty( $_POST['wpforms']['entry_id'] ) ? $_POST['wpforms']['entry_id'] : 0;
 		}
 
-		$message  = apply_filters( 'wpforms_process_smart_tags', $settings['confirmation_message'], $form_data, $fields, $entry_id );
+		$message  = apply_filters( 'wpforms_process_smart_tags', $this->confirmation_message, $form_data, $fields, $entry_id );
 		$message  = apply_filters( 'wpforms_frontend_confirmation_message', wpautop( $message ), $form_data, $fields, $entry_id );
 		$class    = wpforms_setting( 'disable-css', '1' ) == '1' ? 'wpforms-confirmation-container-full' : 'wpforms-confirmation-container';
+		$class   .= $this->confirmation_message_scroll ? ' wpforms-confirmation-scroll' : '';
 
 		printf(
 			'<div class="%s" id="wpforms-confirmation-%d">%s</div>',
@@ -539,7 +552,7 @@ class WPForms_Frontend {
 			return;
 		}
 
-		$required = $label['required'] ? apply_filters( 'wpforms_field_required_label', ' <span class="wpforms-required-label">*</span>' ) : '';
+		$required = $label['required'] ? wpforms_get_field_required_label() : '';
 
 		printf( '<label %s>%s%s</label>',
 			wpforms_html_attributes( $label['id'], $label['class'], $label['data'], $label['attr'] ),
@@ -1106,11 +1119,13 @@ class WPForms_Frontend {
 	 */
 	public function shortcode( $atts ) {
 
-		$atts = shortcode_atts( array(
+		$defaults = array(
 			'id'          => false,
 			'title'       => false,
 			'description' => false,
-		), $atts, 'output' );
+		);
+
+		$atts = shortcode_atts( $defaults, shortcode_atts( $defaults, $atts, 'output' ), 'wpforms' );
 
 		// We need to stop shortcode processing in case we are on AMP page.
 		if ( wpforms_is_amp() ) {

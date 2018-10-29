@@ -79,6 +79,17 @@
 					$( this ).attr( 'name', 'wpf-temp-' + random );
 				});
 
+				// Prepend URL field contents with http:// if user input doesn't contain a schema.
+				$( '.wpforms-validate input[type=url]' ).change( function () {
+					var url = $( this ).val();
+					if ( ! url ) {
+						return false;
+					}
+					if ( url.substr( 0, 7 ) !== 'http://' && url.substr( 0, 8 ) !== 'https://' ) {
+						$( this ).val( 'http://' + url );
+					}
+				});
+
 				$.validator.messages.required = wpforms_settings.val_required;
 				$.validator.messages.url = wpforms_settings.val_url;
 				$.validator.messages.email = wpforms_settings.val_email;
@@ -225,7 +236,37 @@
 									// Form contains invisible reCAPTCHA.
 									grecaptcha.execute( $submit.get(0).recaptchaID );
 								}
-							}
+							},
+							onkeyup: function( element, event ) {
+								// This code is copied from JQuery Validate 'onkeyup' method with only one change: 'wpforms-novalidate-onkeyup' class check.
+								var excludedKeys = [ 16, 17, 18, 20, 35, 36, 37, 38, 39, 40, 45, 144, 225 ];
+
+								if ( $( element ).hasClass('wpforms-novalidate-onkeyup') ) {
+									return; // Disable onkeyup validation for some elements (e.g. remote calls).
+								}
+
+								if ( event.which === 9 && this.elementValue( element ) === "" || $.inArray( event.keyCode, excludedKeys ) !== -1 ) {
+									return;
+								} else if ( element.name in this.submitted || element.name in this.invalid ) {
+									this.element( element );
+								}
+							},
+							onfocusout: function( element ) {
+								// This code is copied from JQuery Validate 'onfocusout' method with only one change: 'wpforms-novalidate-onkeyup' class check.
+								var validate = false;
+
+								if ( $( element ).hasClass('wpforms-novalidate-onkeyup') && !element.value ) {
+									validate = true; // Empty value error handling for elements with onkeyup validation disabled.
+								}
+
+								if ( !this.checkable( element ) && ( element.name in this.submitted || !this.optional( element ) ) ) {
+									validate = true;
+								}
+
+								if ( validate ) {
+									this.element( element );
+								}
+							},
 						}
 					}
 					form.validate( properties );
@@ -754,7 +795,7 @@
 		 */
 		setUserIndentifier: function() {
 
-			if ( wpforms_settings.uuid_cookie && ! WPForms.getCookie('_wpfuuid') ) {
+			if ( typeof wpforms_settings !== 'undefined' && wpforms_settings.uuid_cookie && ! WPForms.getCookie('_wpfuuid') ) {
 
 				// Generate UUID - http://stackoverflow.com/a/873856/1489528
 				var s         = new Array(36),

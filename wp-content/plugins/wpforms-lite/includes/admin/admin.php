@@ -10,35 +10,6 @@
  */
 
 /**
- * Helper function to determine if viewing an WPForms related admin page.
- *
- * Here we determine if the current administration page is owned/created by
- * WPForms. This is done in compliance with WordPress best practices for
- * development, so that we only load required WPForms CSS and JS files on pages
- * we create. As a result we do not load our assets admin wide, where they might
- * conflict with other plugins needlessly, also leading to a better, faster user
- * experience for our users.
- *
- * @since 1.3.9
- *
- * @return boolean
- */
-function wpforms_is_admin_page() {
-
-	// Bail if we're not on a WPForms screen or page (also exclude form builder).
-	if (
-		! is_admin() ||
-		empty( $_REQUEST['page'] ) ||
-		strpos( $_REQUEST['page'], 'wpforms' ) === false ||
-		'wpforms-builder' === $_REQUEST['page']
-	) {
-		return false;
-	}
-
-	return true;
-}
-
-/**
  * Load styles for all WPForms-related admin screens.
  *
  * @since 1.3.9
@@ -327,37 +298,7 @@ add_action( 'admin_print_scripts', 'wpforms_admin_hide_unrelated_notices' );
  */
 function wpforms_admin_upgrade_link( $medium = 'link' ) {
 
-	// Check if there's a constant.
-	$shareasale_id = '';
-	if ( defined( 'WPFORMS_SHAREASALE_ID' ) ) {
-		$shareasale_id = WPFORMS_SHAREASALE_ID;
-	}
-
-	// If there's no constant, check if there's an option.
-	if ( empty( $shareasale_id ) ) {
-		$shareasale_id = get_option( 'wpforms_shareasale_id', '' );
-	}
-
-	// Whether we have an ID or not, filter the ID.
-	$shareasale_id = apply_filters( 'wpforms_shareasale_id', $shareasale_id );
-
-	// If at this point we still don't have an ID, we really don't have one!
-	// Just return the standard upgrade URL.
-	if ( empty( $shareasale_id ) ) {
-		return 'https://wpforms.com/lite-upgrade/?discount=LITEUPGRADE&amp;utm_source=WordPress&amp;utm_medium= ' . sanitize_key( $medium ) . '&amp;utm_campaign=liteplugin';
-	}
-
-	$url = rawurlencode( 'https://wpforms.com/lite-upgrade/?discount=LITEUPGRADE&utm_source=WordPress&utm_medium=' . sanitize_key( $medium ) . '&utm_campaign=litepluginaff&utm_content=' . sanitize_key( $shareasale_id ) );
-
-	// Whether we have a specific redirect URL to use
-	$shareasale_redirect = apply_filters( 'wpforms_shareasale_redirect', get_option( 'wpforms_shareasale_redirect', $url ) );
-
-	// Build final URL
-	$shareasale_url = sprintf( 'http://www.shareasale.com/r.cfm?B=837827&U=%s&M=64312&urllink=%s', $shareasale_id, $shareasale_redirect );
-
-	// If here, we have a ShareASale ID
-	// Return ShareASale URL with redirect.
-	return esc_url( $shareasale_url );
+	return apply_filters( 'wpforms_upgrade_link', 'https://wpforms.com/lite-upgrade/?discount=LITEUPGRADE&amp;utm_source=WordPress&amp;utm_medium=' . sanitize_key( apply_filters( 'wpforms_upgrade_link_medium', $medium ) ) . '&amp;utm_campaign=liteplugin' );
 }
 
 /**
@@ -402,7 +343,7 @@ function wpforms_check_php_version() {
 		) .
 		'<br><br><em>' .
 		wp_kses(
-			__( '<strong>Please Note:</strong> After July 2018, if no further action is taken, WPForms functionality will be disabled.', 'wpforms' ),
+			__( '<strong>Please Note:</strong> After September 2018, if no further action is taken, WPForms functionality will be disabled.', 'wpforms' ),
 			array(
 				'strong' => array(),
 				'em'     => array(),

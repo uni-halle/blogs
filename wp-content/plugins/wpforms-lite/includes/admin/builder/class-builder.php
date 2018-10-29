@@ -314,6 +314,15 @@ class WPForms_Builder {
 			WPFORMS_VERSION
 		);
 
+		// TODO: When switched to PHP 5.3+ - remove this.
+		wp_enqueue_script(
+			'wpforms-admin-builder-templates',
+			WPFORMS_PLUGIN_URL . "assets/js/components/admin/builder/templates{$min}.js",
+			array( 'wp-util' ),
+			WPFORMS_VERSION,
+			true
+		);
+
 		$strings = array(
 			'and'                    => esc_html__( 'AND', 'wpforms' ),
 			'ajax_url'               => admin_url( 'admin-ajax.php' ),
@@ -348,6 +357,12 @@ class WPForms_Builder {
 			'notification_error'     => esc_html__( 'You must provide a notification name', 'wpforms' ),
 			'notification_error2'    => esc_html__( 'Form must contain one notification. To disable all notifications use the Notifications dropdown setting.', 'wpforms' ),
 			'notification_def_name'  => esc_html__( 'Default Notification', 'wpforms' ),
+			'confirmation_delete'    => esc_html__( 'Are you sure you want to delete this confirmation?', 'wpforms' ),
+			'confirmation_prompt'    => esc_html__( 'Enter a confirmation name', 'wpforms' ),
+			'confirmation_ph'        => esc_html__( 'Eg: Alternative Confirmation', 'wpforms' ),
+			'confirmation_error'     => esc_html__( 'You must provide a confirmation name', 'wpforms' ),
+			'confirmation_error2'    => esc_html__( 'Form must contain at least one confirmation.', 'wpforms' ),
+			'confirmation_def_name'  => esc_html__( 'Default Confirmation', 'wpforms' ),
 			'save'                   => esc_html__( 'Save', 'wpforms' ),
 			'saving'                 => esc_html__( 'Saving ...', 'wpforms' ),
 			'saved'                  => esc_html__( 'Saved!', 'wpforms' ),
@@ -403,6 +418,8 @@ class WPForms_Builder {
 			'upload_image_title'     => esc_html__( 'Upload or Choose Your Image', 'wpforms' ),
 			'upload_image_button'    => esc_html__( 'Use Image', 'wpforms' ),
 			'upload_image_remove'    => esc_html__( 'Remove Image', 'wpforms' ),
+			'provider_add_new_acc_btn' => esc_html__( 'Add', 'wpforms' ),
+			'pro'                      => wpforms()->pro,
 		);
 		$strings = apply_filters( 'wpforms_builder_strings', $strings, $this->form );
 

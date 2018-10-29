@@ -315,9 +315,9 @@ class WPForms_Builder_Panel_Fields extends WPForms_Builder_Panel {
 					<label>
 						<span class="wpforms-image-choices-image">
 							<# if ( ! _.isEmpty( data.settings.choices[choiceID].image ) ) { #>
-							<img src="{{ data.settings.choices[choiceID].image }}">
+							<img src="{{ data.settings.choices[choiceID].image }}" alt="{{ data.settings.choices[choiceID].label }}"<# if ( data.settings.choices[choiceID].label ) { print( ' title="{{ data.settings.choices[choiceID].label }}"' ); } #>>
 							<# } else { #>
-							<img src="{{ wpforms_builder.image_placeholder }}">
+							<img src="{{ wpforms_builder.image_placeholder }}" alt="{{ data.settings.choices[choiceID].label }}"<# if ( data.settings.choices[choiceID].label ) { print( ' title="{{ data.settings.choices[choiceID].label }}"' ); } #>>
 							<# } #>
 						</span>
 						<# if ( 'none' === data.settings.choices_images_style ) { #>

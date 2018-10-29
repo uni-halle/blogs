@@ -3,6 +3,7 @@
 namespace WPForms\Providers\Provider\Settings;
 
 use WPForms\Providers\Provider\Core;
+use WPForms\Providers\Provider\Status;
 
 /**
  * Class FormBuilder handles functionality inside the form builder.
@@ -84,9 +85,9 @@ abstract class FormBuilder implements FormBuilderInterface {
 		 * Enqueue assets.
 		 */
 		if (
-			\is_admin() &&
 			( ! empty( $_GET['page'] ) && $_GET['page'] === 'wpforms-builder' ) && // phpcs:ignore
-			! empty( $_GET['form_id'] ) // phpcs:ignore
+			! empty( $_GET['form_id'] ) && // phpcs:ignore
+			\is_admin()
 		) {
 			\add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		}
@@ -194,7 +195,7 @@ abstract class FormBuilder implements FormBuilderInterface {
 		<!-- Single connection block sub-template: CONDITIONAL LOGIC -->
 		<script type="text/html" id="tmpl-wpforms-providers-builder-content-connection-conditionals">
 			<?php
-			echo wpforms_conditional_logic()->builder_block(
+			echo wpforms_conditional_logic()->builder_block( // phpcs:ignore
 				array(
 					'form'       => $this->form_data,
 					'type'       => 'panel',
@@ -220,10 +221,21 @@ abstract class FormBuilder implements FormBuilderInterface {
 
 		$min = \wpforms_get_min_suffix();
 
+		// TODO: When switched to PHP 5.3+ - enable this.
+		/*
+		\wp_enqueue_script(
+			'wpforms-admin-builder-templates',
+			WPFORMS_PLUGIN_URL . "assets/js/components/admin/builder/templates{$min}.js",
+			array( 'wp-util' ),
+			WPFORMS_VERSION,
+			true
+		);
+		*/
+
 		\wp_enqueue_script(
 			'wpforms-admin-builder-providers',
 			WPFORMS_PLUGIN_URL . "assets/js/components/admin/builder/providers{$min}.js",
-			array( 'wpforms-utils', 'wpforms-builder', 'wp-util' ),
+			array( 'wpforms-utils', 'wpforms-builder', 'wpforms-admin-builder-templates' ),
 			WPFORMS_VERSION,
 			true
 		);
@@ -258,7 +270,7 @@ abstract class FormBuilder implements FormBuilderInterface {
 			\wp_send_json_error( $error );
 		}
 
-		$form_id = \intval( $_POST['id'] );
+		$form_id = (int) $_POST['id'];
 		$task    = \sanitize_key( $_POST['task'] );
 		$data    = null;
 
@@ -280,7 +292,7 @@ abstract class FormBuilder implements FormBuilderInterface {
 			null
 		);
 
-		if ( ! \is_null( $data ) ) {
+		if ( null !== $data ) {
 			\wp_send_json_success( $data );
 		}
 
@@ -294,12 +306,13 @@ abstract class FormBuilder implements FormBuilderInterface {
 	 */
 	public function display_sidebar() {
 
-		$options    = \wpforms_get_providers_options();
-		$configured = \apply_filters(
-			'wpforms_providers_' . $this->core->slug . '_configured',
-			! empty( $options[ $this->core->slug ] ) ? 'configured' : ''
-		);
-		$classes    = array(
+		$configured = '';
+
+		if ( ! empty( $this->form_data['id'] ) && Status::init( $this->core->slug )->is_ready( $this->form_data['id'] ) ) {
+			$configured = 'configured';
+		}
+
+		$classes = array(
 			'wpforms-panel-sidebar-section',
 			'icon',
 			$configured,
@@ -356,6 +369,8 @@ abstract class FormBuilder implements FormBuilderInterface {
 	 * @since 1.4.7
 	 */
 	protected function display_content_header() {
+
+		$is_configured = Status::init( $this->core->slug )->is_configured();
 		?>
 
 		<div class="wpforms-builder-provider-title">
@@ -366,10 +381,16 @@ abstract class FormBuilder implements FormBuilderInterface {
 				<i class="fa fa-refresh fa-spin"></i>
 			</span>
 
-			<button class="wpforms-builder-provider-title-connection-add js-wpforms-builder-provider-connection-add"
+			<button class="wpforms-builder-provider-title-add js-wpforms-builder-provider-connection-add <?php echo $is_configured ? '' : 'hidden'; ?>"
 			        data-form_id="<?php echo \absint( $_GET['form_id'] ); ?>"
 			        data-provider="<?php echo \esc_attr( $this->core->slug ); ?>">
 				<?php \esc_html_e( 'Add New Connection', 'wpforms' ); ?>
+			</button>
+
+			<button class="wpforms-builder-provider-title-add js-wpforms-builder-provider-account-add <?php echo ! $is_configured ? '' : 'hidden'; ?>"
+			        data-form_id="<?php echo \absint( $_GET['form_id'] ); ?>"
+			        data-provider="<?php echo \esc_attr( $this->core->slug ); ?>">
+				<?php \esc_html_e( 'Add New Account', 'wpforms' ); ?>
 			</button>
 
 		</div>

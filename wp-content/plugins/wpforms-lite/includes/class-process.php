@@ -289,8 +289,6 @@ class WPForms_Process {
 	 */
 	public function entry_confirmation_redirect( $form_data = array(), $hash = '' ) {
 
-		$url = false;
-
 		// Maybe process return hash.
 		if ( ! empty( $hash ) ) {
 
@@ -312,24 +310,65 @@ class WPForms_Process {
 			$this->form_data = $form_data;
 		}
 
-		// Redirect if needed, to either a page or URL, after form processing.
-		if ( ! empty( $this->form_data['settings']['confirmation_type'] ) && 'message' !== $this->form_data['settings']['confirmation_type'] ) {
+		// Backward compatibility.
+		if ( empty( $this->form_data['settings']['confirmations'] ) ) {
+			$this->form_data['settings']['confirmations'][1]['type']           = ! empty( $this->form_data['settings']['confirmation_type'] ) ? $this->form_data['settings']['confirmation_type'] : 'message';
+			$this->form_data['settings']['confirmations'][1]['message']        = ! empty( $this->form_data['settings']['confirmation_message'] ) ? $this->form_data['settings']['confirmation_message'] : esc_html__( 'Thanks for contacting us! We will be in touch with you shortly.', 'wpforms' );
+			$this->form_data['settings']['confirmations'][1]['message_scroll'] = ! empty( $this->form_data['settings']['confirmation_message_scroll'] ) ? $this->form_data['settings']['confirmation_message_scroll'] : 1;
+			$this->form_data['settings']['confirmations'][1]['page']           = ! empty( $this->form_data['settings']['confirmation_page'] ) ? $this->form_data['settings']['confirmation_page'] : '';
+			$this->form_data['settings']['confirmations'][1]['redirect']       = ! empty( $this->form_data['settings']['confirmation_redirect'] ) ? $this->form_data['settings']['confirmation_redirect'] : '';
+		}
 
-			if ( 'redirect' === $this->form_data['settings']['confirmation_type'] ) {
-				$url = apply_filters( 'wpforms_process_smart_tags', $this->form_data['settings']['confirmation_redirect'], $this->form_data, $this->fields, $this->entry_id );
+		if ( empty( $this->form_data['settings']['confirmations'] ) || ! is_array( $this->form_data['settings']['confirmations'] ) ) {
+			return;
+		}
+
+		$confirmations = $this->form_data['settings']['confirmations'];
+
+		// Reverse sort confirmations by id to process newer ones first.
+		krsort( $confirmations );
+
+		$default_confirmation_key = min( array_keys( $confirmations ) );
+
+		foreach ( $confirmations as $confirmation_id => $confirmation ) {
+			// Last confirmation should execute in any case.
+			if ( $default_confirmation_key === $confirmation_id ) {
+				break;
+			}
+			$process_confirmation = apply_filters( 'wpforms_entry_confirmation_process', true, $this->fields, $form_data, $confirmation_id );
+			if ( $process_confirmation ) {
+				break;
+			}
+		}
+
+		$url = '';
+		// Redirect if needed, to either a page or URL, after form processing.
+		if ( ! empty( $confirmations[ $confirmation_id ]['type'] ) && 'message' !== $confirmations[ $confirmation_id ]['type'] ) {
+
+			if ( 'redirect' === $confirmations[ $confirmation_id ]['type'] ) {
+				$url = apply_filters( 'wpforms_process_smart_tags', $confirmations[ $confirmation_id ]['redirect'], $this->form_data, $this->fields, $this->entry_id );
 			}
 
-			if ( 'page' === $this->form_data['settings']['confirmation_type'] ) {
-				$url = get_permalink( (int) $this->form_data['settings']['confirmation_page'] );
+			if ( 'page' === $confirmations[ $confirmation_id ]['type'] ) {
+				$url = get_permalink( (int) $confirmations[ $confirmation_id ]['page'] );
 			}
 		}
 
 		if ( ! empty( $url ) ) {
-			$url = apply_filters( 'wpforms_process_redirect_url', $url, $this->form_data['id'], $this->fields );
+			$url = apply_filters( 'wpforms_process_redirect_url', $url, $this->form_data['id'], $this->fields, $this->form_data, $this->entry_id );
 			wp_redirect( esc_url_raw( $url ) );
 			do_action( 'wpforms_process_redirect', $this->form_data['id'] );
 			do_action( "wpforms_process_redirect_{$this->form_data['id']}", $this->form_data['id'] );
 			exit;
+		}
+
+		// Pass a message to a frontend if no redirection happened.
+		if ( ! empty( $confirmations[ $confirmation_id ]['type'] ) && 'message' === $confirmations[ $confirmation_id ]['type'] ) {
+			wpforms()->frontend->confirmation_message = $confirmations[ $confirmation_id ]['message'];
+
+			if ( ! empty( $confirmations[ $confirmation_id ]['message_scroll'] ) ) {
+				wpforms()->frontend->confirmation_message_scroll = true;
+			}
 		}
 	}
 

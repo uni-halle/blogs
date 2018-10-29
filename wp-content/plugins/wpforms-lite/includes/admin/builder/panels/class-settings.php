@@ -168,71 +168,10 @@ class WPForms_Builder_Panel_Settings extends WPForms_Builder_Panel {
 		echo '</div>';
 
 		// --------------------------------------------------------------------//
-		// Confirmation.
+		// Confirmations.
 		// --------------------------------------------------------------------//
 		echo '<div class="wpforms-panel-content-section wpforms-panel-content-section-confirmation">';
-		echo '<div class="wpforms-panel-content-section-title">';
-		esc_html_e( 'Confirmation', 'wpforms' );
-		echo '</div>';
-		wpforms_panel_field(
-			'select',
-			'settings',
-			'confirmation_type',
-			$this->form_data,
-			esc_html__( 'Confirmation Type', 'wpforms' ),
-			array(
-				'default' => 'message',
-				'options' => array(
-					'message'  => esc_html__( 'Message', 'wpforms' ),
-					'page'     => esc_html__( 'Show Page', 'wpforms' ),
-					'redirect' => esc_html__( 'Go to URL (Redirect)', 'wpforms' ),
-				),
-			)
-		);
-		wpforms_panel_field(
-			'tinymce',
-			'settings',
-			'confirmation_message',
-			$this->form_data,
-			esc_html__( 'Confirmation Message', 'wpforms' ),
-			array(
-				'default' => esc_html__( 'Thanks for contacting us! We will be in touch with you shortly.', 'wpforms' ),
-				'tinymce' => array(
-					'editor_height' => '200',
-				),
-			)
-		);
-		wpforms_panel_field(
-			'checkbox',
-			'settings',
-			'confirmation_message_scroll',
-			$this->form_data,
-			esc_html__( 'Automatically scroll to the confirmation message', 'wpforms' )
-		);
-		$p     = array();
-		$pages = get_pages();
-		foreach ( $pages as $page ) {
-			$depth          = count( $page->ancestors );
-			$p[ $page->ID ] = str_repeat( '-', $depth ) . ' ' . $page->post_title;
-		}
-		wpforms_panel_field(
-			'select',
-			'settings',
-			'confirmation_page',
-			$this->form_data,
-			esc_html__( 'Confirmation Page', 'wpforms' ),
-			array(
-				'options' => $p,
-			)
-		);
-		wpforms_panel_field(
-			'text',
-			'settings',
-			'confirmation_redirect',
-			$this->form_data,
-			esc_html__( 'Confirmation Redirect URL', 'wpforms' )
-		);
-		do_action( 'wpforms_form_settings_confirmation', $this );
+		do_action( 'wpforms_form_settings_confirmations', $this );
 		echo '</div>';
 
 		do_action( 'wpforms_form_settings_panel_content', $this );

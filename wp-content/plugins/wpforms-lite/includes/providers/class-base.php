@@ -191,7 +191,7 @@ abstract class WPForms_Provider {
 
 		if ( 'new_account' === $_POST['task'] ) {
 
-			$auth = $this->api_auth( wp_parse_args( $_POST['data'], array() ), $_POST['id'] );
+			$auth = $this->api_auth( stripslashes_deep( wp_parse_args( $_POST['data'], array() ) ), $_POST['id'] );
 
 			if ( is_wp_error( $auth ) ) {
 

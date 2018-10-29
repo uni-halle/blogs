@@ -244,7 +244,7 @@ class WPForms_Preview {
 		// This isn't a privilege check, rather this is intended to prevent
 		// the check from running on the site frontend and areas where
 		// we don't want it to load.
-		if ( ! is_admin() || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) {
+		if ( ! is_admin() ) {
 			return;
 		}
 

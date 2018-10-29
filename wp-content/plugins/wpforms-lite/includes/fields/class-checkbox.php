@@ -378,7 +378,7 @@ class WPForms_Field_Checkbox extends WPForms_Field {
 				// label.
 				$required = '';
 				if ( ! empty( $field['disclaimer_format'] ) && ! empty( $choice['required'] ) && ! empty( $field['label_hide'] ) ) {
-					$required = apply_filters( 'wpforms_field_required_label', ' <span class="wpforms-required-label">*</span>' );
+					$required = wpforms_get_field_required_label();
 				}
 
 				printf( '<li %s>',
@@ -393,7 +393,11 @@ class WPForms_Field_Checkbox extends WPForms_Field {
 						);
 
 							if ( ! empty( $choice['image'] ) ) {
-								echo '<span class="wpforms-image-choices-image"><img src="' . esc_url( $choice['image'] ) . '"></span>';
+								printf( '<span class="wpforms-image-choices-image"><img src="%s" alt="%s"%s></span>',
+									esc_url( $choice['image'] ),
+									esc_attr( $choice['label']['text'] ),
+									! empty( $choice['label']['text'] ) ? ' title="' . esc_attr( $choice['label']['text'] ) . '"' : ''
+								);
 							}
 
 							if ( 'none' === $field['choices_images_style'] ) {

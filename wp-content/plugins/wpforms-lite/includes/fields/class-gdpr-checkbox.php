@@ -231,7 +231,7 @@ class WPForms_Field_GDPR_Checkbox extends WPForms_Field {
 
 				$required = '';
 				if ( ! empty( $choice['required'] ) && ! empty( $field['label_hide'] ) ) {
-					$required = apply_filters( 'wpforms_field_required_label', ' <span class="wpforms-required-label">*</span>' );
+					$required = wpforms_get_field_required_label();
 				}
 
 				printf( '<li %s>',

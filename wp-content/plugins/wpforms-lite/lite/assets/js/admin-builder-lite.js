@@ -58,6 +58,15 @@
 					WPFormsBuilderLite.upgradeModal($(this).data('name'));
 				}
 			});
+
+			// WPForms upgrade notifications/confirmation modeal
+			$(document).on('click', '.wpforms-builder-settings-block-add', function(e) {
+				if ($(this).hasClass('upgrade-modal')){
+					e.preventDefault();
+					e.stopImmediatePropagation();
+					WPFormsBuilderLite.upgradeModal($(this).data('name'));
+				}
+			});
 		},
 
 		/**

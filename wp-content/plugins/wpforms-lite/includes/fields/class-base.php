@@ -349,7 +349,7 @@ abstract class WPForms_Field {
 			// Code Block. ----------------------------------------------------//
 
 			case 'code':
-				$value   = ! empty( $field['code'] ) ? esc_attr( $field['code'] ) : '';
+				$value   = ! empty( $field['code'] ) ? esc_textarea( $field['code'] ) : '';
 				$tooltip = esc_html__( 'Enter code for the form field.', 'wpforms' );
 				$output  = $this->field_element( 'label',    $field, array( 'slug' => 'code', 'value' => esc_html__( 'Code', 'wpforms' ), 'tooltip' => $tooltip ), false );
 				$output .= $this->field_element( 'textarea', $field, array( 'slug' => 'code', 'value' => $value ), false );
@@ -1022,8 +1022,10 @@ abstract class WPForms_Field {
 
 								$output .= '<label>';
 
-									$output .= sprintf( '<span class="wpforms-image-choices-image"><img src="%s"></span>',
-										! empty( $value['image'] ) ? esc_url( $value['image'] ) : WPFORMS_PLUGIN_URL . 'assets/images/placeholder-200x125.png'
+									$output .= sprintf( '<span class="wpforms-image-choices-image"><img src="%s" alt="%s"%s></span>',
+										! empty( $value['image'] ) ? esc_url( $value['image'] ) : WPFORMS_PLUGIN_URL . 'assets/images/placeholder-200x125.png',
+										esc_attr( $value['label'] ),
+										! empty( $value['label'] ) ? ' title="' . esc_attr( $value['label'] ) . '"' : ''
 									);
 
 									if ( 'none' === $field['choices_images_style'] ) {

@@ -5,7 +5,7 @@
  * Description: Beginner friendly WordPress contact form plugin. Use our Drag & Drop form builder to create your WordPress forms.
  * Author:      WPForms
  * Author URI:  https://wpforms.com
- * Version:     1.4.7.2
+ * Version:     1.4.9
  * Text Domain: wpforms
  * Domain Path: languages
  *
@@ -46,7 +46,6 @@ if ( class_exists( 'WPForms' ) ) {
 
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 	}
-
 	add_action( 'admin_init', 'wpforms_deactivate' );
 
 	/**
@@ -62,7 +61,6 @@ if ( class_exists( 'WPForms' ) ) {
 			unset( $_GET['activate'] );
 		}
 	}
-
 	add_action( 'admin_notices', 'wpforms_lite_notice' );
 
 } else {
@@ -92,7 +90,7 @@ if ( class_exists( 'WPForms' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '1.4.7.2';
+		public $version = '1.4.9';
 
 		/**
 		 * The form data handler instance.
@@ -254,7 +252,7 @@ if ( class_exists( 'WPForms' ) ) {
 			}
 
 			// Plugin Slug - Determine plugin type and set slug accordingly.
-			if ( file_exists( WPFORMS_PLUGIN_DIR . 'pro/wpforms-pro.php' ) ) {
+			if ( apply_filters( 'wpforms_allow_pro_version', file_exists( WPFORMS_PLUGIN_DIR . 'pro/wpforms-pro.php' ) ) ) {
 				$this->pro = true;
 				define( 'WPFORMS_PLUGIN_SLUG', 'wpforms' );
 			} else {
@@ -341,6 +339,7 @@ if ( class_exists( 'WPForms' ) ) {
 				require_once WPFORMS_PLUGIN_DIR . 'includes/admin/ajax-actions.php';
 				require_once WPFORMS_PLUGIN_DIR . 'includes/admin/class-am-notification.php';
 				require_once WPFORMS_PLUGIN_DIR . 'includes/admin/class-am-deactivation-survey.php';
+				require_once WPFORMS_PLUGIN_DIR . 'includes/admin/class-am-dashboard-widget-extend-feed.php';
 			}
 		}
 
@@ -363,6 +362,11 @@ if ( class_exists( 'WPForms' ) ) {
 			 * Properly init the providers loader, that will handle all the related logic and further loading.
 			 */
 			add_action( 'wpforms_loaded', array( '\WPForms\Providers\Loader', 'get_instance' ) );
+
+			/*
+			 * Properly init the integrations loader, that will handle all the related logic and further loading.
+			 */
+			add_action( 'wpforms_loaded', array( '\WPForms\Integrations\Loader', 'get_instance' ) );
 		}
 
 		/**
@@ -406,7 +410,5 @@ if ( class_exists( 'WPForms' ) ) {
 
 		return WPForms::instance();
 	}
-
 	wpforms();
-
 }

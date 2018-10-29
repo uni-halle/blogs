@@ -1,7 +1,7 @@
 === Contact Form by WPForms - Drag & Drop Form Builder for WordPress ===
 Contributors: wpforms, jaredatch, smub, slaFFik
 Tags: contact form, contact form plugin, forms, form builder, custom form, contact button, contact me, custom contact form, form manager, form, forms builder, forms creator, captcha, recaptcha, Akismet, email form, web form, feedback form, payment form, survey form, donation form, email submit form, message form, mailchimp, mailchimp form, aweber, aweber form, paypal, paypal form, stripe, stripe form, getresponse, getresponse form, email subscription, contact form widget, user registration form, wordpress registration, wordpress login form
-Requires at least: 4.6
+Requires at least: 4.8
 Tested up to: 4.9.1
 Stable tag: trunk
 Requires PHP: 5.2.4
@@ -96,6 +96,7 @@ We also knew that our developer friends may want to extend contact forms further
 * <a href="https://wpforms.com/addons/custom-catpcha-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Custom Captchas</a> - Create custom captchas for your contact form.
 * <a href="https://wpforms.com/addons/offline-forms-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Offline Forms</a> - Let your visitors save their entered data offline and submit when their internet connection is restored.
 * <a href="https://wpforms.com/addons/surveys-and-polls-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Surveys and Polls</a> - Easily create surveys forms and analyze the data with interactive reports.
+* <a href="https://wpforms.com/addons/drip-addon/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">Drip Forms</a> - Create Drip newsletter signup forms in WordPress and connect with your contact form to grow your email list.
 * Want us to add something else? Suggest a contact form feature and we'll get it added!
 
 After reading this feature list, you can probably imagine why WPForms is the best WordPress contact form plugin in the market.
@@ -211,6 +212,29 @@ Thank you
 Syed Balkhi
 
 == Changelog ==
+
+= 1.4.9 =
+- Added: Pirate Forms importer.
+- Changed: Some form builder tooltips to contain documentation links.
+- Fixed: Form builder javascript conflict with jQuery non-conflict mode.
+- Fixed: PHP Notice from WPForms widget.
+- Fixed: Incorrect markup around Addons submenu item.
+
+= 1.4.8.1 =
+- Fixed: Certain confirmation settings, before 1.4.8, not displaying correctly in the form builder.
+
+= 1.4.8 =
+- Added: Gutenberg block.
+- Added: WP Mail SMTP detection and hints in the form builder notification settings.
+- Added: Alt and title tags to image choices images on frontend display.
+- Changed: i18n improvements.
+- Fixed: Incorrect param used with `shortcode_atts`.
+- Fixed: Accessing `wpforms_setting` in frontend javascript before checking if it exists.
+- Fixed: PHP error toggling form builder notifications in some use cases.
+- Fixed: GDPR field Agreement text not updating in real time.
+- Fixed: Marketing provider connections containing an escaped apostrophe.
+- Fixed: Pressing "Enter" in the form builder resulting in unexpected behavior.
+- Fixed: Security enhancements and other misc. bug fixes.
 
 = 1.4.7.2 =
 - Fixed: Honeypot field using a none unique CSS ID.

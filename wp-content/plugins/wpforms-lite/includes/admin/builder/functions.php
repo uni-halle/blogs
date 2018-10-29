@@ -55,6 +55,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 		if ( ! empty( $subsection ) ) {
 			$field_name = sprintf( '%s[%s][%s][%s]', $parent, $panel, $subsection, $field );
 			$value      = isset( $form_data[ $parent ][ $panel ][ $subsection ][ $field ] ) ? $form_data[ $parent ][ $panel ][ $subsection ][ $field ] : $default;
+			$input_id   = sprintf( 'wpforms-panel-field-%s-%s-%s', sanitize_html_class( $panel_id ), sanitize_html_class( $subsection ), sanitize_html_class( $field ) );
 			$panel_id   = sanitize_html_class( $panel . '-' . $subsection );
 		} else {
 			$field_name = sprintf( '%s[%s][%s]', $parent, $panel, $field );
@@ -73,6 +74,11 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 			}
 			$data_attr .= ' data-' . $key . '=\'' . $val . '\'';
 		}
+	}
+
+	// Check for readonly inputs.
+	if ( ! empty( $args['readonly' ] ) ) {
+		$data_attr .= 'readonly';
 	}
 
 	// Determine what field type to output.
@@ -108,15 +114,15 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
 
 		// TinyMCE.
 		case 'tinymce':
-			$args                  = wp_parse_args( $args['tinymce'], array(
+			$id                               = str_replace( '-', '_', $input_id );
+			$args['tinymce']['textarea_name'] = $field_name;
+			$args['tinymce']['teeny']         = true;
+			$args['tinymce']                  = wp_parse_args( $args['tinymce'], array(
 				'media_buttons' => false,
 				'teeny'         => true,
 			) );
-			$args['textarea_name'] = $field_name;
-			$args['teeny']         = true;
-			$id                    = str_replace( '-', '_', $input_id );
 			ob_start();
-			wp_editor( $value, $id, $args );
+			wp_editor( $value, $id, $args['tinymce'] );
 			$output = ob_get_clean();
 			break;
 
@@ -267,6 +273,7 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
  * Get notification state, whether it's opened or closed.
  *
  * @since 1.4.1
+ * @deprecated 1.4.8
  *
  * @param int $form_id
  * @param int $notification_id
@@ -274,19 +281,52 @@ function wpforms_panel_field( $option, $panel, $field, $form_data, $label, $args
  * @return string
  */
 function wpforms_builder_notification_get_state( $form_id, $notification_id ) {
+	_deprecated_function( __FUNCTION__, '1.4.8 of WPForms plugin', 'wpforms_builder_settings_block_get_state()' );
+	return wpforms_builder_settings_block_get_state( $form_id, $notification_id, 'notification' );
+}
 
-	$form_id         = absint( $form_id );
-	$notification_id = absint( $notification_id );
-	$state           = 'opened';
+/**
+ * Get settings block state, whether it's opened or closed.
+ *
+ * @since 1.4.8
+ *
+ * @param int $form_id
+ * @param int $block_id
+ * @param string $block_type
+ *
+ * @return string
+ */
+function wpforms_builder_settings_block_get_state( $form_id, $block_id, $block_type ) {
 
-	$all_states = get_user_meta( get_current_user_id(), 'wpforms_builder_notification_states', true );
+	$form_id    = absint( $form_id );
+	$block_id   = absint( $block_id );
+	$block_type = sanitize_key( $block_type );
+	$state      = 'opened';
+
+	$all_states = get_user_meta( get_current_user_id(), 'wpforms_builder_settings_collapsable_block_states', true );
 
 	if (
-		! empty( $all_states[ $form_id ][ $notification_id ] ) &&
-		'closed' === $all_states[ $form_id ][ $notification_id ]
+		! empty( $all_states[ $form_id ][ $block_type ][ $block_id ] ) &&
+		'closed' === $all_states[ $form_id ][ $block_type ][ $block_id ]
 	) {
 		$state = 'closed';
 	}
 
-	return apply_filters( 'wpforms_builder_notification_get_state', $state, $form_id, $notification_id );
+	// Backward compatibility for notifications.
+	if ( 'notification' === $block_type && 'closed' !== $state ) {
+		$notification_states = get_user_meta( get_current_user_id(), 'wpforms_builder_notification_states', true );
+	}
+	if (
+		! empty( $notification_states[ $form_id ][ $block_id ] ) &&
+		'closed' === $notification_states[ $form_id ][ $block_id ]
+	) {
+		$state = 'closed';
+	}
+
+	if ( 'notification' === $block_type ) {
+		// Backward compatibility for notifications.
+		return apply_filters( 'wpforms_builder_notification_get_state', $state, $form_id, $block_id );
+	}
+
+	return apply_filters( 'wpforms_builder_settings_block_get_state', $state, $form_id, $block_id, $block_type );
 }

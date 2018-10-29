@@ -1709,6 +1709,25 @@ function wpforms_get_required_label() {
 }
 
 /**
+ * Get the required field label HTML, with a filter.
+ *
+ * @since 1.4.8
+ *
+ * @return string
+ */
+function wpforms_get_field_required_label() {
+
+	$label_html = apply_filters_deprecated(
+		'wpforms_field_required_label',
+		array( ' <span class="wpforms-required-label">*</span>' ),
+		'1.4.8 of WPForms plugin',
+		'wpforms_get_field_required_label'
+	);
+
+	return apply_filters( 'wpforms_get_field_required_label', $label_html );
+}
+
+/**
  * Get the default capability to manage everything for WPForms.
  *
  * @since 1.4.4
@@ -1788,8 +1807,9 @@ function wpforms_get_providers_available() {
  */
 function wpforms_get_providers_options( $provider = '' ) {
 
-	$options = get_option( 'wpforms_providers', array() );
-	$data    = $options;
+	$options  = get_option( 'wpforms_providers', array() );
+	$provider = sanitize_key( $provider );
+	$data     = $options;
 
 	if ( ! empty( $provider ) && isset( $options[ $provider ] ) ) {
 		$data = $options[ $provider ];
@@ -1811,6 +1831,7 @@ function wpforms_update_providers_options( $provider, $options, $key = '' ) {
 
 	$providers = wpforms_get_providers_options();
 	$id        = ! empty( $key ) ? $key : uniqid();
+	$provider  = sanitize_key( $provider );
 
 	if ( $options ) {
 		$providers[ $provider ][ $id ] = (array) $options;
@@ -1819,4 +1840,50 @@ function wpforms_update_providers_options( $provider, $options, $key = '' ) {
 	}
 
 	update_option( 'wpforms_providers', $providers );
+}
+
+/**
+ * Helper function to determine if loading an WPForms related admin page.
+ *
+ * Here we determine if the current administration page is owned/created by
+ * WPForms. This is done in compliance with WordPress best practices for
+ * development, so that we only load required WPForms CSS and JS files on pages
+ * we create. As a result we do not load our assets admin wide, where they might
+ * conflict with other plugins needlessly, also leading to a better, faster user
+ * experience for our users.
+ *
+ * @since 1.3.9
+ *
+ * @param string $slug Slug identifier for a specifc WPForms admin page.
+ *
+ * @return boolean
+ */
+function wpforms_is_admin_page( $slug = '', $view = '' ) {
+
+	// Check against basic requirements.
+	if (
+		! is_admin() ||
+		empty( $_REQUEST['page'] ) ||
+		strpos( $_REQUEST['page'], 'wpforms' ) === false
+	) {
+		return false;
+	}
+
+	// Check against page slug identifier.
+	if (
+		( ! empty( $slug ) && 'wpforms-' . $slug !== $_REQUEST['page'] )
+		|| ( empty( $slug ) && 'wpforms-builder' === $_REQUEST['page'] )
+	) {
+		return false;
+	}
+
+	// Check against sub-level page view.
+	if (
+		! empty( $view )
+		&& ( empty( $_REQUEST['view'] ) || $view !== $_REQUEST['view'] )
+	) {
+		return false;
+	}
+
+	return true;
 }

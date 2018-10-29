@@ -111,7 +111,7 @@ class WPForms_Admin_Menu {
 		add_submenu_page(
 			'wpforms-overview',
 			esc_html__( 'WPForms Addons', 'wpforms' ),
-			'<span style="color:#f18500">' . esc_html__( 'Addons', 'wpforms' ) . '<span>',
+			'<span style="color:#f18500">' . esc_html__( 'Addons', 'wpforms' ) . '</span>',
 			$menu_cap,
 			'wpforms-addons',
 			array( $this, 'admin_page' )

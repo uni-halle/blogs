@@ -1,5 +1,28 @@
 == Changelog ==
 
+= 1.4.9 =
+- Added: Pirate Forms importer.
+- Changed: Some form builder tooltips to contain documentation links.
+- Fixed: Form builder javascript conflict with jQuery non-conflict mode.
+- Fixed: PHP Notice from WPForms widget.
+- Fixed: Incorrect markup around Addons submenu item.
+
+= 1.4.8.1 =
+- Fixed: Certain confirmation settings, before 1.4.8, not displaying correctly in the form builder.
+
+= 1.4.8 =
+- Added: Gutenberg block.
+- Added: WP Mail SMTP detection and hints in the form builder notification settings.
+- Added: Alt and title tags to image choices images on frontend display.
+- Changed: i18n improvements.
+- Fixed: Incorrect param used with `shortcode_atts`.
+- Fixed: Accessing `wpforms_setting` in frontend javascript before checking if it exists.
+- Fixed: PHP error toggling form builder notifications in some use cases.
+- Fixed: GDPR field Agreement text not updating in real time.
+- Fixed: Marketing provider connections containing an escaped apostrophe.
+- Fixed: Pressing "Enter" in the form builder resulting in unexpected behavior.
+- Fixed: Security enhancements and other misc. bug fixes.
+
 = 1.4.7.2 =
 - Fixed: Honeypot field using a none unique CSS ID.
 - Fixed: Form builder Bulk Add display issues in certain use cases.

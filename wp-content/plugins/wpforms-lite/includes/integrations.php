@@ -91,7 +91,6 @@ function wpforms_visual_composer_shortcode() {
 		)
 	);
 }
-
 add_action( 'vc_before_init', 'wpforms_visual_composer_shortcode' );
 
 /**
@@ -101,7 +100,7 @@ add_action( 'vc_before_init', 'wpforms_visual_composer_shortcode' );
  */
 function wpforms_visual_composer_shortcode_css() {
 
-	// Load CSS per global setting
+	// Load CSS per global setting.
 	if ( wpforms_setting( 'disable-css', '1' ) === '1' ) {
 		wp_enqueue_style(
 			'wpforms-full',
@@ -120,5 +119,4 @@ function wpforms_visual_composer_shortcode_css() {
 		);
 	}
 }
-
 add_action( 'vc_load_iframe_jscss', 'wpforms_visual_composer_shortcode_css' );

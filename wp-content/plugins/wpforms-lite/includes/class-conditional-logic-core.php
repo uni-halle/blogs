@@ -88,7 +88,8 @@ class WPForms_Conditional_Logic_Core {
 
 		?>
 		<script type="text/html" id="tmpl-wpforms-conditional-block">
-			<div class="wpforms-conditional-groups">
+			<# var containerID = data.fieldName.replace(/]/g, '').replace(/\[/g, '-'); #>
+			<div class="wpforms-conditional-groups" id="wpforms-conditional-groups-{{ containerID }}">
 				<h4>
 					<select name="{{ data.fieldName }}[conditional_type]">
 						<# _.each(data.actions, function(key, val) { #>
@@ -183,6 +184,7 @@ class WPForms_Conditional_Logic_Core {
 					$fields_instance = $args['instance'];
 					$field_id        = absint( $field['id'] );
 					$field_name      = "fields[{$field_id}]";
+					$groups_id       = "wpforms-conditional-groups-fields-{$field_id}";
 					$action_selected = ! empty( $field['conditional_type'] ) ? $field['conditional_type'] : '';
 					$conditionals    = ! empty( $field['conditionals'] ) ? $field['conditionals'] : array( array( array() ) );
 					$data_attrs      = 'data-field-id="' . $field_id . '" ';
@@ -207,7 +209,7 @@ class WPForms_Conditional_Logic_Core {
 							'slug'    => 'conditional_logic',
 							'value'   => $enabled,
 							'desc'    => esc_html__( 'Enable conditional logic', 'wpforms' ),
-							'tooltip' => esc_html__( 'Check this option to enable conditional logic on this field.', 'wpforms' ),
+							'tooltip' => '<a href="https://wpforms.com/docs/how-to-use-conditional-logic-with-wpforms/" target="_blank" rel="noopener noreferrer">' . esc_html__( 'How to use Conditional Logic', 'wpforms' ) . '</a>',
 							'data'    => array(
 								'name'        => $field_name,
 								'actions'     => $actions,
@@ -256,17 +258,20 @@ class WPForms_Conditional_Logic_Core {
 					if ( ! empty( $parent ) ) {
 						if ( ! empty( $subsection ) ) {
 							$field_name      = sprintf( '%s[%s][%s]', $parent, $panel, $subsection );
+							$groups_id       = sprintf( 'wpforms-conditional-groups-%s-%s-%s', $parent, $panel, $subsection );
 							$enabled         = ! empty( $form_data[ $parent ][ $panel ][ $subsection ]['conditional_logic'] ) ? true : false;
 							$action_selected = ! empty( $form_data[ $parent ][ $panel ][ $subsection ]['conditional_type'] ) ? $form_data[ $parent ][ $panel ][ $subsection ]['conditional_type'] : '';
 							$conditionals    = ! empty( $form_data[ $parent ][ $panel ][ $subsection ]['conditionals'] ) ? $form_data[ $parent ][ $panel ][ $subsection ]['conditionals'] : array( array( array() ) );
 						} else {
 							$field_name      = sprintf( '%s[%s]', $parent, $panel );
+							$groups_id       = sprintf( 'wpforms-conditional-groups-%s-%s', $parent, $panel );
 							$enabled         = ! empty( $form_data[ $parent ][ $panel ]['conditional_logic'] ) ? true : false;
 							$action_selected = ! empty( $form_data[ $parent ][ $panel ]['conditional_type'] ) ? $form_data[ $parent ][ $panel ]['conditional_type'] : '';
 							$conditionals    = ! empty( $form_data[ $parent ][ $panel ]['conditionals'] ) ? $form_data[ $parent ][ $panel ]['conditionals'] : array( array( array() ) );
 						}
 					} else {
 						$field_name      = sprintf( '%s', $panel );
+						$groups_id       = sprintf( 'wpforms-conditional-groups-%s', $panel );
 						$enabled         = ! empty( $form_data[ $panel ]['conditional_logic'] ) ? true : false;
 						$action_selected = ! empty( $form_data[ $panel ]['conditional_type'] ) ? $form_data[ $panel ]['conditional_type'] : '';
 						$conditionals    = ! empty( $form_data[ $panel ]['conditionals'] ) ? $form_data[ $panel ]['conditionals'] : array( array( array() ) );
@@ -280,11 +285,13 @@ class WPForms_Conditional_Logic_Core {
 						$args['form'],
 						esc_html__( 'Enable conditional logic', 'wpforms' ),
 						array(
-							'tooltip'    => esc_html__( 'Check this option to enable conditional logic.', 'wpforms' ),
-							'parent'     => $parent,
-							'subsection' => $subsection,
-							'class'      => 'wpforms-conditionals-enable-toggle',
-							'data'       => array(
+							'tooltip'     => '<a href="https://wpforms.com/docs/how-to-use-conditional-logic-with-wpforms/" target="_blank" rel="noopener noreferrer">' . esc_html__( 'How to use Conditional Logic', 'wpforms' ) . '</a>',
+							'parent'      => $parent,
+							'subsection'  => $subsection,
+							'input_id'    => 'wpforms-panel-field-' . implode( '-', array_filter( array( $parent, $panel, $subsection, 'conditional_logic', 'checkbox' ) ) ),
+							'input_class' => 'wpforms-panel-field-conditional_logic-checkbox',
+							'class'       => 'wpforms-conditionals-enable-toggle',
+							'data'        => array(
 								'name'        => $field_name,
 								'actions'     => $actions,
 								'action-desc' => esc_attr( $action_desc ),
@@ -299,6 +306,7 @@ class WPForms_Conditional_Logic_Core {
 					$reference       = '';
 					$action_selected = '';
 					$action_desc     = '';
+					$groups_id       = '';
 					$actions         = array();
 					$conditionals    = array();
 			}
@@ -310,7 +318,11 @@ class WPForms_Conditional_Logic_Core {
 				$style       = $enabled ? '' : 'display:none;';
 
 				// Groups wrap open markup.
-				echo '<div class="wpforms-conditional-groups" style="' . esc_attr( $style ) . '">';
+				printf(
+					'<div class="wpforms-conditional-groups" id="%s" style="%s">',
+					sanitize_html_class( $groups_id ),
+					esc_attr( $style )
+				);
 
 					// This is the "[Show] this field if" type text and setting.
 					echo '<h4>';
@@ -404,7 +416,11 @@ class WPForms_Conditional_Logic_Core {
 
 												// Only text based fields support
 												// these additional operators.
-												$disabled = in_array( $form_fields[ $rule['field'] ]['type'], array( 'text', 'textarea', 'email', 'url', 'number', 'hidden' ), true ) ? '' : ' disabled';
+												$disabled = '';
+												if ( ! empty( $form_fields[ $rule['field'] ]['type'] ) ) {
+													$disabled = in_array( $form_fields[ $rule['field'] ]['type'], array( 'text', 'textarea', 'email', 'url', 'number', 'hidden', 'rating', 'net_promoter_score' ), true ) ? '' : ' disabled';
+												}
+
 												printf( '<option value="c" %s%s>%s</option>', selected( $operator, 'c', false ), $disabled, esc_html__( 'contains', 'wpforms' ) );
 												printf( '<option value="!c" %s%s>%s</option>', selected( $operator, '!c', false ), $disabled, esc_html__( 'does not contain', 'wpforms' ) );
 												printf( '<option value="^" %s%s>%s</option>', selected( $operator, '^', false ), $disabled, esc_html__( 'starts with', 'wpforms' ) );
