@@ -218,4 +218,86 @@ class TheLib_Core extends TheLib {
 		return $retval;
 	}
 
+
+	/**
+	 * Return URL link for wp.org, wpmudev, support, live chat, docs, installing plugin.
+	 *
+	 * @param string $plugin_name .
+	 * @param string $link_for Accepts: 'chat', 'plugin', 'support', 'smush', 'docs', 'install_plugin'.
+	 * @param string $campaign  Utm campaign tag to be used in link.
+	 *
+	 * @return string
+	 */
+	public function get_link( $plugin_name, $link_for, $campaign ) {
+		$domain   = 'https://premium.wpmudev.org';
+		$wp_org   = 'https://wordpress.org';
+		$utm_tags = "?utm_source={$plugin_name}&utm_medium=plugin&utm_campaign={$campaign}";
+
+		$data = array(
+			'hummingbird' => array(
+				'wporg' => 'hummingbird-performance',
+				'wpmudev' => 'wp-hummingbird',
+				'pid' => '1081721',
+			),
+			'smush' => array(
+				'wporg' => 'wp-smushit',
+				'wpmudev' => 'wp-smush-pro',
+				'pid' => '912164',
+			),
+			'hustle' => array(
+				'wporg' => 'wordpress-popup',
+				'wpmudev' => 'hustle',
+				'pid' => '1107020',
+			),
+		);
+
+		switch ( $link_for ) {
+			case 'chat':
+				$link = "{$domain}/live-support/{$utm_tags}";
+				break;
+			case 'plugin':
+				$link = "{$domain}/project/{$data[ $plugin_name ]['wpmudev']}/{$utm_tags}";
+				break;
+			case 'support':
+				if ( $this->is_member() ) {
+					$link = "{$domain}/forum/support#question{$utm_tags}";
+				} else {
+					$link = "{$wp_org}/support/plugin/{$data[ $plugin_name ]['wporg']}";
+				}
+				break;
+			case 'docs':
+				$link = "{$domain}/docs/wpmu-dev-plugins/{$plugin_name}/{$utm_tags}";
+				break;
+			case 'install_plugin':
+				if ( $this->is_member() ) {
+					// Return the pro plugin URL.
+					$url = WPMUDEV_Dashboard::$ui->page_urls->plugins_url;
+					$link = $url . '#pid=' . $data[ $plugin_name ]['pid'];
+				} else {
+					// Return the free URL.
+					$link = wp_nonce_url( self_admin_url( 'update.php?action=install-plugin&plugin=' . $data[ $plugin_name ]['wporg'] ), 'install-plugin_' . $data[ $plugin_name ]['wporg']  );
+				}
+				break;
+			default:
+				$link = '';
+				break;
+		}
+
+		return $link;
+	}
+
+
+	/**
+	 * Check if user is a paid one in WPMU DEV
+	 *
+	 * @return bool
+	 */
+	public function is_member() {
+		if ( function_exists( 'is_wpmudev_member' ) ) {
+			return is_wpmudev_member();
+		}
+
+		return false;
+	}
+
 }

@@ -1,13 +1,18 @@
 Plugin Name: WPMU Dev code library
-Author:      Philipp Stracker, Marcin Pietrzak, Joel James
+Author:      Philipp Stracker, Marcin Pietrzak, Joel James, Ivan Svyrsky
 
 Change Log:
 ----------------------------------------------------------------------
 
+3.0.8 - 2018-07-14
+PHP
+- Added get_link() method to core function to return URL link for wp.org, wpmudev, support, live chat, docs, installing plugin.
+JS
+- Fix bug with inability to scroll in some instances of select2.
+
 3.0.7 - 2018-03-29
 PHP
 - Added "disabled" attribute.
-
 
 3.0.6
 PHP
