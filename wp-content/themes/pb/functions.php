@@ -1,5 +1,10 @@
 <?php
 
+// Debug- und Speichereinstellungen
+ini_set('display_errors','Off');
+ini_set('error_reporting', E_ALL );
+ini_set("memory_limit", -1);
+
 // Standardrouten entfernen und individuelle Routen erstellen
 remove_action('rest_api_init', 'create_initial_rest_routes', 99);
 remove_action('rest_api_init', 'wp_oembed_register_route');
