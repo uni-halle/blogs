@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Duplicate Post - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-12-11 21:34:51+0000\n"
+"PO-Revision-Date: 2018-08-07 10:08:33+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,7 +13,7 @@ msgstr ""
 
 #: duplicate-post-admin.php:280
 msgid "Current user is not allowed to copy posts."
-msgstr "L’utilisateur actuel n’a pas les droits pour copier les contenus."
+msgstr "L’utilisateur actuel n’a pas les droits pour copier les publications."
 
 #: duplicate-post-admin.php:195
 msgid "Check out the new documentation"
@@ -45,7 +45,7 @@ msgstr "Aidez-moi à développer l’extension et fournir du support en <a href=
 
 #: duplicate-post-options.php:378
 msgid "Show update notice"
-msgstr "Afficher l’avis de mise à jour"
+msgstr "Afficher la notification de mise à jour"
 
 #: duplicate-post-options.php:367
 msgid "Bulk Actions"
@@ -104,19 +104,19 @@ msgstr "Vous pouvez aussi utiliser le marqueur de modèle duplicate_post_clone_p
 
 #: duplicate-post-options.php:346 duplicate-post-options.php:372
 msgid "Whether the links are displayed for custom post types registered by themes or plugins depends on their use of standard WordPress UI elements"
-msgstr "L’affichage des liens pour les types de contenu personnalisés déclarés par des thèmes ou des extensions dépend de leur respect des standards WordPress dans leur utilisation des éléments d’interface utilisateur (UI)."
+msgstr "L’affichage des liens pour les types de publications personnalisés déclarés par des thèmes ou des extensions dépend de leur respect des standards WordPress dans leur utilisation des éléments d’interface utilisateur (UI)."
 
 #: duplicate-post-options.php:345
 msgid "Select the post types you want the plugin to be enabled"
-msgstr "Sélectionnez les types de contenus que vous autorisez l’extension à dupliquer."
+msgstr "Sélectionnez les types de publications que vous autorisez l’extension à dupliquer."
 
 #: duplicate-post-options.php:336
 msgid "Enable for these post types"
-msgstr "Activer pour ces types de contenus"
+msgstr "Activer pour ces types de publications"
 
 #: duplicate-post-options.php:330
 msgid "Passwords and contents of password-protected posts may become visible to undesired users and visitors"
-msgstr "Les mots de passe et le contenu des articles/pages protégés par mot de passe peuvent devenir visibles aux yeux de tous les utilisateurs et des visiteurs."
+msgstr "Les mots de passe et les publications protégées par mot de passe peuvent devenir visibles aux yeux de tous les utilisateurs et des visiteurs."
 
 #: duplicate-post-options.php:292
 msgid "Show/hide private taxonomies"
@@ -196,7 +196,7 @@ msgstr "Sans titre"
 
 #: duplicate-post-admin.php:540
 msgid "Copy features for this post type are not enabled in options page"
-msgstr "Les fonctionnalités de copie pour ce type de contenu ne sont pas activées dans la page d’options."
+msgstr "Les fonctionnalités de copie pour ce type de publication ne sont pas activées dans la page d’options."
 
 #: duplicate-post-admin.php:199
 msgid "Dismiss this notice."
@@ -232,7 +232,7 @@ msgstr "Ecran d'édition"
 
 #: duplicate-post-options.php:359
 msgid "Post list"
-msgstr "Liste des articles"
+msgstr "Liste des publications"
 
 #: duplicate-post-options.php:355
 msgid "Show links in"
@@ -240,7 +240,7 @@ msgstr "Montrer les liens dans "
 
 #: duplicate-post-options.php:329
 msgid "Warning: users will be able to copy all posts, even those of other users"
-msgstr "Avertissement : ces utilisateurs pourront copier tous les contenus, même ceux des autres auteurs."
+msgstr "Avertissement : ces utilisateurs pourront copier toutes les publications, même celles des autres auteurs."
 
 #: duplicate-post-options.php:319
 msgid "Roles allowed to copy"
@@ -302,7 +302,7 @@ msgstr "Échec de la copie, impossible de trouver l’original :"
 
 #: duplicate-post-admin.php:284
 msgid "No post to duplicate has been supplied!"
-msgstr "Aucun article à copier !"
+msgstr "Vous n’avez sélectionné aucune publication à dupliquer !"
 
 #: duplicate-post-admin.php:237
 msgid "New Draft"

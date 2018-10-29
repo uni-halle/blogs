@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WordPress - 4.9.x - Development package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-07-06 05:35:48+0000\n"
+"PO-Revision-Date: 2018-10-08 11:53:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -36,25 +36,73 @@ msgstr "."
 msgid "number_format_decimal_point"
 msgstr ","
 
-#: wp-includes/user.php:3128
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:272
+msgid "The offset number requested is larger than or equal to the number of available revisions."
+msgstr "Il numero dell'elemento richiesto (offset) è più grande o uguale al numero delle revisioni disponibili."
+
+#: wp-includes/user.php:3395
+msgid "Unable to send personal data export confirmation email."
+msgstr "Impossibile inviare l'email di conferma di esportazione dei dati personali."
+
+#: wp-includes/user.php:3289
+msgid "Invalid user request."
+msgstr "Richiesta dell'utente non valida."
+
+#. translators: 1: Site name. 2: Name of the confirmed action.
+#: wp-includes/user.php:2978
+msgid "[%1$s] Action Confirmed: %2$s"
+msgstr "[%1$s] Azione confermata: %2$s"
+
+#. translators: %s: taxonomy name
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2222
+msgid "The current user can create terms in the %s taxonomy."
+msgstr "L'utente corrente può creare termini nella tassonomia %s."
+
+#. translators: %s: taxonomy name
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2220
+msgid "The current user can assign terms in the %s taxonomy."
+msgstr "L'utente corrente può assegnare termini nella tassonomia %s."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2201
+msgid "The current user can change the author on this post."
+msgstr "L'utente corrente può modificare l'autore di questo post."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2185
+msgid "The current user can sticky this post."
+msgstr "L'utente corrente può mettere in evidenza questo post."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2168
+msgid "The current user can publish this post."
+msgstr "L'utente corrente può pubblicare questo articolo."
+
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:809
+msgid "You have used your space quota. Please delete files before uploading."
+msgstr "Hai superato la tua quota di spazio. Elimina dei file prima di effettuare un caricamento."
+
+#. translators: %s: required disk space in kilobytes
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:800
+msgid "Not enough space to upload. %s KB needed."
+msgstr "Non c'è abbastanza spazio per effettuare il caricamento. Sono necessari %s KB."
+
+#: wp-includes/user.php:3169
 msgid "The site administrator has been notified. You will receive an email confirmation when they erase your data."
 msgstr "L'amministratore del sito è stato notificato. Riceverai una email di conferma quando i tuoi dati saranno cancellati."
 
-#: wp-includes/user.php:3127
+#: wp-includes/user.php:3168
 msgid "Thanks for confirming your erasure request."
 msgstr "Grazie per aver confermato la tua richiesta di cancellazione."
 
-#: wp-includes/user.php:3125
+#: wp-includes/user.php:3166
 msgid "The site administrator has been notified. You will receive a link to download your export via email when they fulfill your request."
 msgstr "L'amministratore del sito è stato notificato. Riceverai un link via email per scaricare i dati quando la tua richiesta verrà soddisfatta."
 
-#: wp-includes/user.php:3124
+#: wp-includes/user.php:3165
 msgid "Thanks for confirming your export request."
 msgstr "Grazie per aver confermato la tua richiesta di esportazione."
 
 #. translators: Do not translate SITENAME, SITEURL, PRIVACY_POLICY_URL; those
 #. are placeholders.
-#: wp-includes/user.php:3052
+#: wp-includes/user.php:3093
 msgid ""
 "Howdy,\n"
 "\n"
@@ -81,7 +129,7 @@ msgstr ""
 "###SITEURL###"
 
 #. translators: Do not translate SITENAME, SITEURL; those are placeholders.
-#: wp-includes/user.php:3039
+#: wp-includes/user.php:3080
 msgid ""
 "Howdy,\n"
 "\n"
@@ -103,14 +151,14 @@ msgstr ""
 "a tutti da ###SITENAME###\n"
 "###SITEURL### "
 
-#. translators: %s Site name.
-#: wp-includes/user.php:3015
+#. translators: %s: Site name.
+#: wp-includes/user.php:3053
 msgid "[%s] Erasure Request Fulfilled"
 msgstr "[%s] La richiesta di cancellazione è stata completata"
 
 #. translators: Do not translate SITENAME, USER_EMAIL, DESCRIPTION, MANAGE_URL,
 #. SITEURL; those are placeholders.
-#: wp-includes/user.php:2933
+#: wp-includes/user.php:2924
 msgid ""
 "Howdy,\n"
 "\n"
@@ -142,80 +190,71 @@ msgstr ""
 "a tutti da ###SITENAME###\n"
 "###SITEURL###"
 
-#. translators: %s Site name.
-#: wp-includes/user.php:2900
-msgid "[%s] Action Confirmed"
-msgstr "[%s] Azione confermata"
-
 #. translators: Privacy data request subject. 1: Site name, 2: Name of the
 #. action
-#: wp-includes/user.php:3317
+#: wp-includes/user.php:3366
 msgid "[%1$s] Confirm Action: %2$s"
 msgstr "[%1$s] Conferma l'azione: %2$s"
 
-#: wp-includes/user.php:3214
+#: wp-includes/user.php:3255
 msgid "Erase Personal Data"
-msgstr "Cancella dati personali"
+msgstr "Elimina dati personali"
 
-#: wp-includes/comment-template.php:2208
+#: wp-includes/comment-template.php:2211
 msgid "Save my name, email, and website in this browser for the next time I comment."
 msgstr "Do il mio consenso affinché un cookie salvi i miei dati  (nome, email, sito web) per il prossimo commento."
 
-#: wp-includes/user.php:2802
+#: wp-includes/user.php:2798
 msgid "User Description"
 msgstr "Descrizione utente"
 
-#: wp-includes/user.php:2801
+#: wp-includes/user.php:2797
 msgid "User Last Name"
 msgstr "Cognome dell'utente"
 
-#: wp-includes/user.php:2800
+#: wp-includes/user.php:2796
 msgid "User First Name"
 msgstr "Nome dell'utente"
 
-#: wp-includes/user.php:2799
+#: wp-includes/user.php:2795
 msgid "User Nickname"
 msgstr "Soprannome dell'utente"
 
-#: wp-includes/user.php:2798
+#: wp-includes/user.php:2794
 msgid "User Display Name"
 msgstr "Nome utente da visualizzare"
 
-#: wp-includes/user.php:2797
+#: wp-includes/user.php:2793
 msgid "User Registration Date"
 msgstr "Data registrazione utente"
 
-#: wp-includes/user.php:2796
+#: wp-includes/user.php:2792
 msgid "User URL"
 msgstr "URL utente"
 
-#: wp-includes/user.php:2795
+#: wp-includes/user.php:2791
 msgid "User Email"
 msgstr "Email utente"
 
-#: wp-includes/user.php:2794
+#: wp-includes/user.php:2790
 msgid "User Nice Name"
 msgstr "Nome utente"
 
-#: wp-includes/user.php:2793
+#: wp-includes/user.php:2789
 msgid "User Login Name"
 msgstr "Login utente"
 
-#: wp-includes/user.php:2792
+#: wp-includes/user.php:2788
 msgid "User ID"
 msgstr "ID utente"
 
-#: wp-includes/user.php:2760
+#: wp-includes/user.php:2756
 msgid "WordPress User"
 msgstr "Utente WordPress"
 
 #: wp-includes/media.php:3969
 msgid "WordPress Media"
 msgstr "Media WordPress"
-
-#: wp-includes/link-template.php:4166
-msgid "Privacy Policy"
-msgstr "Privacy Policy"
 
 #: wp-includes/script-loader.php:670
 msgid "An error occurred while attempting to export personal data."
@@ -225,36 +264,36 @@ msgstr "Si è verificato un errore durante il tentativo di esportazione dei dati
 msgid "No personal data export file was generated."
 msgstr "Nessun file di esportazione dei dati personali è stato generato."
 
-#: wp-login.php:875
+#: wp-login.php:876
 msgid "User action confirmed."
 msgstr "Azione dell'utente confermata."
 
-#: wp-includes/user.php:3393
+#: wp-includes/user.php:3452
 msgid "This link has expired."
 msgstr "Questo link è scaduto."
 
-#: wp-includes/user.php:3248 wp-includes/user.php:3389 wp-login.php:844
+#: wp-includes/user.php:3448 wp-login.php:845
 msgid "Invalid request."
 msgstr "Richiesta non valida."
 
 #. translators: %s: action name
-#: wp-includes/user.php:3218
+#: wp-includes/user.php:3259
 msgid "Confirm the \"%s\" action"
 msgstr "Conferma l'azione \"%s\""
 
-#: wp-includes/user.php:3211
+#: wp-includes/user.php:3252
 msgid "Export Personal Data"
 msgstr "Esporta dati personali"
 
-#: wp-includes/user.php:3183
+#: wp-includes/user.php:3224
 msgid "A request for this email address already exists."
 msgstr "Esiste già una richiesta per questo indirizzo email."
 
-#: wp-includes/user.php:3167
+#: wp-includes/user.php:3208
 msgid "Invalid action name."
 msgstr "Nome dell'azione non valido."
 
-#: wp-includes/user.php:3120
+#: wp-includes/user.php:3161
 msgid "The site administrator has been notified and will fulfill your request as soon as possible."
 msgstr "L'amministratore del sito è stato notificato, e soddisferà la tua richiesta il più presto possibile."
 
@@ -267,35 +306,35 @@ msgid "User Requests"
 msgstr "Richieste utente"
 
 #. translators: deleted long text
-#: wp-includes/functions.php:5956
+#: wp-includes/functions.php:5962
 msgid "This content was deleted by the author."
 msgstr "Questo contenuto è stato eliminato dall'autore."
 
 #. translators: deleted text
-#: wp-includes/functions.php:5952
+#: wp-includes/functions.php:5958
 msgid "[deleted]"
 msgstr "[eliminato]"
 
 #. translators: %d: Comment ID
-#: wp-includes/comment.php:3358
+#: wp-includes/comment.php:3363
 msgid "Comment %d contains personal data but could not be anonymized."
 msgstr "Il commento %d contiene dati personali che potrebbero non essere anonimizzabili."
 
-#: wp-includes/user.php:3119
+#: wp-includes/user.php:3160
 msgid "Action has been confirmed."
 msgstr "L'azione è stata confermata."
 
-#: wp-includes/user.php:3431
+#: wp-includes/user.php:3490
 msgid "The confirmation email has expired."
 msgstr "L'email di conferma è scaduta."
 
-#: wp-includes/user.php:3413
+#: wp-includes/user.php:3472
 msgid "Invalid action"
 msgstr "Azione non valida"
 
 #. translators: Do not translate DESCRIPTION, CONFIRM_URL, SITENAME, SITEURL:
 #. those are placeholders.
-#: wp-includes/user.php:3264
+#: wp-includes/user.php:3315
 msgid ""
 "Howdy,\n"
 "\n"
@@ -383,39 +422,39 @@ msgctxt "request status"
 msgid "Pending"
 msgstr "In attesa"
 
-#: wp-includes/comment.php:3215
+#: wp-includes/comment.php:3219
 msgid "Comment URL"
 msgstr "URL commento"
 
-#: wp-includes/comment.php:3214
+#: wp-includes/comment.php:3218
 msgid "Comment Content"
 msgstr "Contenuto commento"
 
-#: wp-includes/comment.php:3213
+#: wp-includes/comment.php:3217
 msgid "Comment Date"
 msgstr "Data commento"
 
-#: wp-includes/comment.php:3212
+#: wp-includes/comment.php:3216
 msgid "Comment Author User Agent"
 msgstr "User agent autore commento"
 
-#: wp-includes/comment.php:3211
+#: wp-includes/comment.php:3215
 msgid "Comment Author IP"
 msgstr "IP autore commento"
 
-#: wp-includes/comment.php:3210
+#: wp-includes/comment.php:3214
 msgid "Comment Author URL"
 msgstr "URL autore commento"
 
-#: wp-includes/comment.php:3209
+#: wp-includes/comment.php:3213
 msgid "Comment Author Email"
 msgstr "Email autore commento"
 
-#: wp-includes/comment.php:3208
+#: wp-includes/comment.php:3212
 msgid "Comment Author"
 msgstr "Autore commento"
 
-#: wp-includes/comment.php:3173 wp-includes/comment.php:3282
+#: wp-includes/comment.php:3177 wp-includes/comment.php:3286
 msgid "WordPress Comments"
 msgstr "Commenti WordPress"
 
@@ -432,7 +471,7 @@ msgctxt "media items"
 msgid "Mine"
 msgstr "I miei elementi"
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:228
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:259
 msgid "Whether or not the post type can be viewed."
 msgstr "Se il tipo di contenuto può essere visualizzato oppure no."
 
@@ -453,16 +492,16 @@ msgid "Something went wrong."
 msgstr "Qualcosa è andato storto."
 
 #. translators: %s: User who is customizing the changeset in customizer.
-#: wp-includes/class-wp-customize-manager.php:3970
+#: wp-includes/class-wp-customize-manager.php:3973
 msgid "%s is already customizing this changeset. Do you want to take over?"
 msgstr "%s sta personalizzando questo changeset. Vuoi prenderne il controllo?"
 
 #. translators: %s: User who is customizing the changeset in customizer.
-#: wp-includes/class-wp-customize-manager.php:3968
+#: wp-includes/class-wp-customize-manager.php:3971
 msgid "%s is already customizing this changeset. Please wait until they are done to try customizing. Your latest changes have been autosaved."
 msgstr "%s sta personalizzando questo changeset. Aspetta fino a che non ha finito per fare le tue personalizzazioni. Le tue ultime modifiche sono state salvate in automatico."
 
-#: wp-includes/class-wp-customize-manager.php:4172
+#: wp-includes/class-wp-customize-manager.php:4175
 msgid "Update anyway, even though it might break your site?"
 msgstr "Aggiornare comunque, anche se potrebbe bloccare il tuo sito?"
 
@@ -515,7 +554,7 @@ msgctxt "post action/button label"
 msgid "Schedule"
 msgstr "Pianifica"
 
-#: wp-includes/class-wp-customize-manager.php:4627
+#: wp-includes/class-wp-customize-manager.php:4630
 #: wp-includes/script-loader.php:554
 msgctxt "customizer changeset action/button label"
 msgid "Schedule"
@@ -549,33 +588,33 @@ msgstr "%s ha preso il controllo e sta attualmente personalizzando."
 msgid "Looks like something&#8217;s gone wrong. Wait a couple seconds, and then try again."
 msgstr "Sembra che qualcosa sia andato storto. Attendi un paio di secondi, quindi riprova. "
 
-#: wp-includes/class-wp-customize-manager.php:4158
+#: wp-includes/class-wp-customize-manager.php:4161
 msgid "Take over"
 msgstr "Prendi il controllo"
 
-#: wp-includes/class-wp-customize-manager.php:4154
+#: wp-includes/class-wp-customize-manager.php:4157
 msgid "Go back"
-msgstr "Vai indietro"
+msgstr "Torna indietro"
 
 #. translators: %s: User who is customizing the changeset in customizer.
-#: wp-includes/class-wp-customize-manager.php:3975
+#: wp-includes/class-wp-customize-manager.php:3978
 msgid "%s is already customizing this site. Please wait until they are done to try customizing. Your latest changes have been autosaved."
 msgstr "%s sta attualmente modificando questo sito. Attendi fino a che ha terminato, prima di riprovare a modificare. Le tue ultime modifiche sono state salvate in automatico."
 
 #. translators: %s: User who is customizing the changeset in customizer.
-#: wp-includes/class-wp-customize-manager.php:3977
+#: wp-includes/class-wp-customize-manager.php:3980
 msgid "%s is already customizing this site. Do you want to take over?"
 msgstr "%s sta attualmente modificando questo sito. Vuoi prenderne il controllo?"
 
-#: wp-includes/class-wp-customize-manager.php:3228
+#: wp-includes/class-wp-customize-manager.php:3231
 msgid "Sorry, you are not allowed to take over."
 msgstr "Non hai il permesso di prenderne il controllo."
 
-#: wp-includes/class-wp-customize-manager.php:3221
+#: wp-includes/class-wp-customize-manager.php:3224
 msgid "No changeset found to take over"
 msgstr "Nessun changeset trovato da controllare"
 
-#: wp-includes/class-wp-customize-manager.php:3212
+#: wp-includes/class-wp-customize-manager.php:3215
 msgid "Security check failed."
 msgstr "Controllo di sicurezza fallito."
 
@@ -617,11 +656,11 @@ msgctxt "menu locations"
 msgid "View All Locations"
 msgstr "Vedi tutte le posizioni"
 
-#: wp-includes/class-wp-customize-manager.php:4828
+#: wp-includes/class-wp-customize-manager.php:4831
 msgid "While previewing a new theme, you can continue to tailor things like widgets and menus, and explore theme-specific options."
 msgstr "Durante l'anteprima di un nuovo tema, è possibile continuare a personalizzare oggetti come i widget e i menu e esplorare le opzioni specifiche del tema."
 
-#: wp-includes/class-wp-customize-manager.php:4827
+#: wp-includes/class-wp-customize-manager.php:4830
 msgid "Looking for a theme? You can search or browse the WordPress.org theme directory, install and preview themes, then activate them right here."
 msgstr "Stai cercando un tema? Da qui puoi consultare la directory dei temi di WordPress.org, visualizzare le anteprime e attivare direttamente il tema che preferisci."
 
@@ -629,7 +668,7 @@ msgstr "Stai cercando un tema? Da qui puoi consultare la directory dei temi di W
 msgid "Something went wrong. Your change may not have been saved. Please try again. There is also a chance that you may need to manually fix and upload the file over FTP."
 msgstr "C'e stato un errore. I tuoi cambiamenti potrebbero non essere stati salvati. Riprova. C'e la possibilità che tu debba risolvere manualmente il problema e caricare il file tramite FTP."
 
-#: wp-includes/class-wp-customize-manager.php:5282
+#: wp-includes/class-wp-customize-manager.php:5285
 msgid "Screen reader users: when in forms mode, you may need to press the escape key twice."
 msgstr "Utenti screen reader: in modalità modulo, potrebbe essere necessario utilizzare il tasto escape due volte."
 
@@ -651,13 +690,13 @@ msgid "Your theme can display menus in one location. Select which menu you would
 msgstr "Il tuo tema può visualizzare i menu in una sola posizione. Seleziona quale menu vuoi utilizzare."
 
 #. translators: %s: site name
-#: wp-login.php:363
+#: wp-login.php:364
 msgid "Site Name: %s"
 msgstr "Nome del sito: %s"
 
 #. translators: Login screen title. 1: Login screen name, 2: Network or site
 #. name
-#: wp-login.php:61
+#: wp-login.php:62
 msgid "%1$s &lsaquo; %2$s &#8212; WordPress"
 msgstr "%1$s &lsaquo; %2$s &#8212; WordPress"
 
@@ -700,17 +739,17 @@ msgid "Use the Custom HTML widget to add arbitrary HTML code to your widget area
 msgstr "Utilizza il widget dell'HTML personalizzato per aggiungere del codice HTML nella tua area dei widget."
 
 #. translators: %s: New email address
-#: wp-includes/user.php:2731
+#: wp-includes/user.php:2727
 msgid "Your email address has not been updated yet. Please check your inbox at %s for a confirmation email."
 msgstr "Il tuo indirizzo email non è stato ancora aggiornato. Per favore controlla la tua casella %s per la mail di conferma."
 
-#: wp-includes/user.php:2712
+#: wp-includes/user.php:2708
 msgid "[%s] New Email Address"
 msgstr "[%s] Nuovo indirizzo email"
 
 #. translators: Do not translate USERNAME, ADMIN_URL, EMAIL, SITENAME, SITEURL:
 #. those are placeholders.
-#: wp-includes/user.php:2667
+#: wp-includes/user.php:2663
 msgid ""
 "Howdy ###USERNAME###,\n"
 "\n"
@@ -800,7 +839,7 @@ msgstr "Sei sicuro di voler scartare le tue modifiche non pubblicate?"
 
 #: wp-includes/script-loader.php:576
 msgid "Reverting unpublished changes&hellip;"
-msgstr "Ripristino modifiche non pubblicate&hellip;"
+msgstr "Ripristino delle modifiche non pubblicate in corso&hellip;"
 
 #: wp-includes/script-loader.php:575
 msgid "Setting up your live preview. This may take a bit."
@@ -1135,7 +1174,7 @@ msgstr "Sito web: %1$s (Indirizzo IP: %2$s, %3$s)"
 #. Network title
 #: wp-includes/ms-functions.php:2704
 msgid "[%s] Notice of Network Admin Email Change"
-msgstr "[%s] Avviso del cambio mail dell'Amministratore della rete"
+msgstr "[%s] Avviso del cambio di email dell'amministratore del network"
 
 #. translators: Do not translate OLD_EMAIL, NEW_EMAIL, SITENAME, SITEURL: those
 #. are placeholders.
@@ -1167,7 +1206,7 @@ msgstr ""
 
 #: wp-includes/ms-functions.php:2647
 msgid "[%s] New Network Admin Email Address"
-msgstr "[%s] Nuovo indirizzo email amministratore di rete"
+msgstr "[%s] Nuovo indirizzo email dell'amministratore del network"
 
 #. translators: Do not translate USERNAME, ADMIN_URL, EMAIL, SITENAME, SITEURL:
 #. those are placeholders.
@@ -1217,13 +1256,13 @@ msgstr "Controllo del nonce fallito. Prova ancora"
 
 #. translators: Site admin email change notification email subject. %s: Site
 #. title
-#: wp-includes/functions.php:5815
+#: wp-includes/functions.php:5821
 msgid "[%s] Notice of Admin Email Change"
-msgstr "[%s] Avviso del cambio della mail dell'aministratore"
+msgstr "[%s] Avviso del cambio di email dell'amministratore"
 
 #. translators: Do not translate OLD_EMAIL, NEW_EMAIL, SITENAME, SITEURL: those
 #. are placeholders.
-#: wp-includes/functions.php:5800
+#: wp-includes/functions.php:5806
 msgid ""
 "Hi,\n"
 "\n"
@@ -1249,7 +1288,7 @@ msgstr ""
 "A tutti ###SITENAME###\n"
 "###SITEURL###"
 
-#: wp-includes/functions.php:5736
+#: wp-includes/functions.php:5742
 msgid "Only UUID V4 is supported at this time."
 msgstr "Al momento è supportato solo UUID V4"
 
@@ -1380,7 +1419,7 @@ msgstr "L'uso dei livelli utente è deprecato. Utilizza invece le capacità."
 msgid "The theme defines itself as its parent theme. Please check the %s header."
 msgstr "Questo tema definisce se stesso come tema genitore. Controlla l'intestazione di %s ."
 
-#: wp-includes/class-wp-editor.php:182 wp-includes/class-wp-editor.php:1263
+#: wp-includes/class-wp-editor.php:182 wp-includes/class-wp-editor.php:1261
 msgctxt "Name for the Visual editor tab"
 msgid "Visual"
 msgstr "Visuale"
@@ -1413,13 +1452,13 @@ msgstr[1] "Il tuo tema può visualizzare i menu in %s posizioni."
 msgid "Your theme can display menus in one location."
 msgstr "Il tuo tema può visualizzare i menu in una posizione."
 
-#: wp-includes/class-wp-customize-manager.php:5318
+#: wp-includes/class-wp-customize-manager.php:5321
 msgid "CSS code"
 msgstr "Codice CSS"
 
 #. translators: 1: link to user profile, 2: additional link attributes, 3:
 #. accessibility text
-#: wp-includes/class-wp-customize-manager.php:5289
+#: wp-includes/class-wp-customize-manager.php:5292
 #: wp-includes/widgets/class-wp-widget-custom-html.php:299
 msgid "The edit field automatically highlights code syntax. You can disable this in your <a href=\"%1$s\" %2$s>user profile%3$s</a> to work in plain text mode."
 msgstr "Il campo di modifica evidenzia automaticamente la sintassi del codice. Puoi disabilitare questa funzione nel tuo <a href=\"%1$s\" %2$s>profilo utente%3$s</a> per lavorare in modalità solo testo."
@@ -1428,51 +1467,51 @@ msgstr "Il campo di modifica evidenzia automaticamente la sintassi del codice. P
 msgid "Screen reader users: when in forms mode, you may need to press the Esc key twice."
 msgstr "Per gli utenti con screen reader: quando in modalità modulo, potrebbe essere necessario usare il tasto Esc due volte."
 
-#: wp-includes/class-wp-customize-manager.php:5281
+#: wp-includes/class-wp-customize-manager.php:5284
 #: wp-includes/widgets/class-wp-widget-custom-html.php:312
 msgid "To move away from this area, press the Esc key followed by the Tab key."
 msgstr "Per uscire da questa area, premere il tasto Esc seguito dal tasto Tab."
 
-#: wp-includes/class-wp-customize-manager.php:5280
+#: wp-includes/class-wp-customize-manager.php:5283
 #: wp-includes/widgets/class-wp-widget-custom-html.php:311
 msgid "In the editing area, the Tab key enters a tab character."
 msgstr "Nell'area di modifica il tasto Tab inserisce un carattere di tabulazione."
 
-#: wp-includes/class-wp-customize-manager.php:5278
+#: wp-includes/class-wp-customize-manager.php:5281
 #: wp-includes/widgets/class-wp-widget-custom-html.php:309
 msgid "When using a keyboard to navigate:"
 msgstr "Quando si utilizza la tastiera per navigare:"
 
-#: wp-includes/class-wp-customize-manager.php:5268
+#: wp-includes/class-wp-customize-manager.php:5271
 msgid "Add your own CSS code here to customize the appearance and layout of your site."
 msgstr "Aggiungi qui il tuo codice CSS per personalizzare l'aspetto ed il layout del tuo sito."
 
-#: wp-includes/class-wp-customize-manager.php:5233
+#: wp-includes/class-wp-customize-manager.php:5236
 msgid "Your homepage displays"
 msgstr "La tua homepage mostra"
 
-#: wp-includes/class-wp-customize-manager.php:5222
+#: wp-includes/class-wp-customize-manager.php:5225
 msgid "You can choose what&#8217;s displayed on the homepage of your site. It can be posts in reverse chronological order (classic blog), or a fixed/static page. To set a static homepage, you first need to create two Pages. One will become the homepage, and the other will be where your posts are displayed."
 msgstr "Puoi scegliere cosa visualizzare nella homepage del tuo sito. Possono essere articoli in ordine cronologico inverso (il classico blog) oppure una pagina fissa/statica. Per impostare una homepage statica, devi prima creare due Pagine. Una diverrà la homepage e l'altra sarà quella dove appariranno i tuoi articoli."
 
-#: wp-includes/class-wp-customize-manager.php:5220
+#: wp-includes/class-wp-customize-manager.php:5223
 msgid "Homepage Settings"
 msgstr "Impostazioni Homepage"
 
 #. translators: %s: site icon size in pixels
-#: wp-includes/class-wp-customize-manager.php:4914
+#: wp-includes/class-wp-customize-manager.php:4917
 msgid "Site Icons should be square and at least %s pixels."
 msgstr "L'icona del sito dovrebbe essere quadrata e con una dimensione di almeno %s pixel per lato."
 
-#: wp-includes/class-wp-customize-manager.php:4912
+#: wp-includes/class-wp-customize-manager.php:4915
 msgid "Site Icons are what you see in browser tabs, bookmark bars, and within the WordPress mobile apps. Upload one here!"
 msgstr "Le icone del sito sono quelle che vedete nelle schede del browser, nella barra dei preferiti, e all'interno delle app mobile di WordPress, Caricane una qui!"
 
-#: wp-includes/class-wp-customize-manager.php:4844
+#: wp-includes/class-wp-customize-manager.php:4847
 msgid "WordPress.org themes"
 msgstr "Temi WordPress.org"
 
-#: wp-includes/class-wp-customize-manager.php:4835
+#: wp-includes/class-wp-customize-manager.php:4838
 msgid "Installed themes"
 msgstr "Temi installati"
 
@@ -1480,40 +1519,40 @@ msgstr "Temi installati"
 msgid "Publish Settings"
 msgstr "Impostazioni di pubblicazione"
 
-#: wp-includes/class-wp-customize-manager.php:4202
+#: wp-includes/class-wp-customize-manager.php:4205
 msgid "Copied"
 msgstr "Copiato"
 
-#: wp-includes/class-wp-customize-manager.php:4196
+#: wp-includes/class-wp-customize-manager.php:4199
 msgid "Preview Link"
 msgstr "Link anteprima "
 
-#: wp-includes/class-wp-customize-manager.php:4193
+#: wp-includes/class-wp-customize-manager.php:4196
 msgid "See how changes would look live on your website, and share the preview with people who can't access the Customizer."
 msgstr "Guarda dal vivo come appariranno le modifiche sul tuo tuo sito web e condividi l'anteprima con persone che non hanno accesso allo strumento Personalizza."
 
-#: wp-includes/class-wp-customize-manager.php:4191
+#: wp-includes/class-wp-customize-manager.php:4194
 msgid "Share Preview Link"
 msgstr "Condividi link anteprima "
 
-#: wp-includes/class-wp-customize-manager.php:3042
+#: wp-includes/class-wp-customize-manager.php:3045
 msgid "Changes trashed successfully."
 msgstr "Le modifiche sono state cancellate"
 
-#: wp-includes/class-wp-customize-manager.php:3027
+#: wp-includes/class-wp-customize-manager.php:3030
 msgid "Changes have already been trashed."
 msgstr "Le modifiche sono già state cancellate."
 
-#: wp-includes/class-wp-customize-manager.php:3021
-#: wp-includes/class-wp-customize-manager.php:3037
+#: wp-includes/class-wp-customize-manager.php:3024
+#: wp-includes/class-wp-customize-manager.php:3040
 msgid "Unable to trash changes."
 msgstr "Non è possibile cancellare le modifiche."
 
-#: wp-includes/class-wp-customize-manager.php:3012
+#: wp-includes/class-wp-customize-manager.php:3015
 msgid "No changes saved yet, so there is nothing to trash."
 msgstr "Ancora nessuna modifica salvata, non c'è niente da cancellare."
 
-#: wp-includes/class-wp-customize-manager.php:3004
+#: wp-includes/class-wp-customize-manager.php:3007
 msgid "There was an authentication problem. Please reload and try again."
 msgstr "C'e un problema di autenticazione. Ricarica e prova ancora."
 
@@ -1862,62 +1901,62 @@ msgstr "Visualizza un player audio."
 #: wp-includes/script-loader.php:839
 msgctxt "theme"
 msgid "Deleted!"
-msgstr "Cancellato!"
+msgstr "Tema eliminato!"
 
 #: wp-includes/script-loader.php:838
 msgctxt "plugin"
 msgid "Deleted!"
-msgstr "Cancellato!"
+msgstr "Plugin eliminato!"
 
 #: wp-includes/script-loader.php:809
 msgctxt "theme"
 msgid "Installed!"
-msgstr "Installato!"
+msgstr "Tema installato!"
 
 #: wp-includes/script-loader.php:808
 msgctxt "plugin"
 msgid "Installed!"
-msgstr "Installato!"
+msgstr "Plugin installato!"
 
 #. translators: %s: Plugin name
 #: wp-includes/script-loader.php:806
 msgctxt "plugin"
 msgid "Install %s now"
-msgstr "Installa ora %s"
+msgstr "Installa il plugin %s ora"
 
 #. translators: %s: Plugin name and version
 #: wp-includes/script-loader.php:796
 msgctxt "plugin"
 msgid "%s update failed"
-msgstr "Aggiornamento di %s non riuscito"
+msgstr "Aggiornamento del plugin %s non riuscito"
 
 #. translators: %s: Plugin name and version
 #: wp-includes/script-loader.php:794
 msgctxt "plugin"
 msgid "%s updated!"
-msgstr "%s aggiornato!"
+msgstr "Plugin %s aggiornato!"
 
 #. translators: %s: Plugin name and version
 #: wp-includes/script-loader.php:792
 msgctxt "plugin"
 msgid "Updating %s..."
-msgstr "Aggiornamento in corso di %s..."
+msgstr "Aggiornamento del plugin %s in corso..."
 
 #. translators: %s: Plugin name and version
 #: wp-includes/script-loader.php:787
 msgctxt "plugin"
 msgid "Update %s now"
-msgstr "Aggiorna ora %s"
+msgstr "Aggiorna il plugin %s ora"
 
 #: wp-includes/script-loader.php:783
 msgctxt "theme"
 msgid "Updated!"
-msgstr "Aggiornato!"
+msgstr "Tema aggiornato!"
 
 #: wp-includes/script-loader.php:782
 msgctxt "plugin"
 msgid "Updated!"
-msgstr "Aggiornato!"
+msgstr "Plugin aggiornato!"
 
 #. translators: 1: parameter, 2: maximum number
 #: wp-includes/rest-api.php:1184
@@ -1943,19 +1982,21 @@ msgstr "%1$s deve essere maggiore di %2$d"
 msgid "Limit result set to users with one or more specific slugs."
 msgstr "Limita l'insieme dei risultati agli utenti con uno o più specifici slug."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:972
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:975
 msgid "Limit result set to terms with one or more specific slugs."
 msgstr "Limita l'insieme dei risultati ai termini con uno o più specifici slug."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:329
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:274
 msgid "The page number requested is larger than the number of pages available."
 msgstr "Il numero di pagina chiesto è più grande del numero di pagine disponibili."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:157
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:207
 msgid "You need to define an include parameter to order by include."
 msgstr "Devi definire un parametro include per ordinare per include."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:252
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:283
 msgid "All features, supported by the post type."
 msgstr "Tutte le funzionalità, supportate dal tipo di contenuto (post type)."
 
@@ -2035,7 +2076,7 @@ msgstr "Dimensioni suggerite per l'immagine: %1$s per %2$s pixel."
 msgid "Sorry, this file type is not permitted for security reasons."
 msgstr "Questo tipo di file non è permesso per ragioni di sicurezza."
 
-#: wp-includes/comment.php:3066
+#: wp-includes/comment.php:3070
 msgid "Sorry, comments are not allowed for this item."
 msgstr "I commenti non sono permessi per questo elemento."
 
@@ -2063,43 +2104,43 @@ msgstr "Il formato oEmbed da utilizzare."
 msgid "The URL of the resource for which to fetch oEmbed data."
 msgstr "La URL della risorsa da cui recuperare i dati oEmbed."
 
-#: wp-includes/class-wp-editor.php:1148
+#: wp-includes/class-wp-editor.php:1146
 msgctxt "Short for blue in RGB"
 msgid "B"
 msgstr "B"
 
-#: wp-includes/class-wp-editor.php:1147
+#: wp-includes/class-wp-editor.php:1145
 msgctxt "Short for green in RGB"
 msgid "G"
 msgstr "G"
 
-#: wp-includes/class-wp-editor.php:1146
+#: wp-includes/class-wp-editor.php:1144
 msgctxt "Short for red in RGB"
 msgid "R"
 msgstr "R"
 
-#: wp-includes/class-wp-editor.php:1104
+#: wp-includes/class-wp-editor.php:1102
 msgid "Insert/edit media"
 msgstr "Aggiungi/modifica media"
 
-#: wp-includes/class-wp-editor.php:1101
+#: wp-includes/class-wp-editor.php:1099
 msgid "Insert/edit code sample"
 msgstr "Inserisci/modifica il codice d'esempio"
 
-#: wp-includes/class-wp-editor.php:1100
+#: wp-includes/class-wp-editor.php:1098
 msgid "Table of Contents"
 msgstr "Indice dei contenuti"
 
-#: wp-includes/class-wp-editor.php:1098
+#: wp-includes/class-wp-editor.php:1096
 msgid "Date/time"
 msgstr "Data/ora"
 
-#: wp-includes/class-wp-editor.php:1074
+#: wp-includes/class-wp-editor.php:1072
 msgctxt "Id for link anchor (TinyMCE)"
 msgid "Id"
 msgstr "Id"
 
-#: wp-includes/class-wp-editor.php:1073
+#: wp-includes/class-wp-editor.php:1071
 msgid "Id should start with a letter, followed only by letters, numbers, dashes, dots, colons or underscores."
 msgstr "L'ID deve iniziare con una lettera, seguita solo da lettere, numeri, trattini, punti, virgole o sottolineatura."
 
@@ -2135,7 +2176,7 @@ msgid "This address is used for admin purposes, like new user notification."
 msgstr "Questo indirizzo è utilizzato per scopi amministrativi, come ad esempio la notifica dell'iscrizione di nuovi utenti."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:95
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:823
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:826
 msgid "Unique identifier for the term."
 msgstr "Identificativo unico per il termine. "
 
@@ -2144,7 +2185,7 @@ msgid "Required to be true, as terms do not support trashing."
 msgstr "Deve essere true, poiché i termini non si possono eliminare."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:51
-#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:266
+#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:305
 msgid "An alphanumeric identifier for the taxonomy."
 msgstr "Un identificativo alfanumerico per la tassonomia."
 
@@ -2152,41 +2193,41 @@ msgstr "Un identificativo alfanumerico per la tassonomia."
 msgid "Required to be true, as revisions do not support trashing."
 msgstr "Deve essere true, poiché le revisioni non si possono eliminare."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:267
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:298
 msgid "REST base route for the post type."
 msgstr "Rotta base REST per il tipo di contenuto (post type)."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:51
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:246
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:277
 msgid "An alphanumeric identifier for the post type."
 msgstr "Un identificativo alfanumerico per il tipo di contenuto (post type)."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:234
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:265
 msgid "Human-readable labels for the post type for various contexts."
 msgstr "Etichette del tipo di contenuto (post type) per vari contesti, in formato leggibile."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:222
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:253
 msgid "Whether or not the post type should have children."
 msgstr "Se il tipo di contenuto (post type) deve avere figli o meno. "
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:216
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:247
 msgid "A human-readable description of the post type."
 msgstr "Una descrizione del tipo di contenuto (post type) in formato leggibile."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:210
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:241
 msgid "All capabilities used by the post type."
 msgstr "Tutte le capacità utilizzate dal tipo di contenuto (post type)."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:51
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:284
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:305
 msgid "An alphanumeric identifier for the status."
 msgstr "Un identificativo alfanumerico per lo stato. "
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1337
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1381
 msgid "Limit response to comments published before a given ISO8601 compliant date."
 msgstr "Limita la risposta ai commenti pubblicati prima di una specifica data conforme al formato ISO8601."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1308
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1352
 msgid "Limit response to comments published after a given ISO8601 compliant date."
 msgstr "Limita la risposta ai commenti pubblicati dopo una specifica data conforme al formato ISO8601."
 
@@ -2243,25 +2284,25 @@ msgstr "L'utente non può essere eliminato. "
 msgid "Error creating new user."
 msgstr "Si è verificato un errore durante la creazione del nuovo utente. "
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:877
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:880
 msgid "The parent term ID."
 msgstr "L'ID del termine genitore. "
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:847
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:850
 msgid "HTML title for the term."
 msgstr "Il titolo HTML del termine. "
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:840
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:843
 msgid "URL of the term."
 msgstr "L'URL del termine. "
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:600
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:603
 msgid "The term cannot be deleted."
 msgstr "Il termine non può essere eliminato. "
 
 #: wp-includes/class-wp-xmlrpc-server.php:2068
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:397
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:502
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:400
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:505
 msgid "Cannot set parent term, taxonomy is not hierarchical."
 msgstr "Non puoi impostare il termine genitore, la tassonomia non è gerarchica. "
 
@@ -2269,15 +2310,15 @@ msgstr "Non puoi impostare il termine genitore, la tassonomia non è gerarchica.
 msgid "Term does not exist."
 msgstr "Il termine non esiste. "
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:260
+#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:299
 msgid "The title for the taxonomy."
 msgstr "Il titolo della tassonomia. "
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:278
+#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:317
 msgid "Types associated with the taxonomy."
 msgstr "I tipi associati con la tassonomia. "
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:240
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:271
 msgid "The title for the post type."
 msgstr "Il titolo del tipo di contenuto (post type)."
 
@@ -2285,7 +2326,7 @@ msgstr "Il titolo del tipo di contenuto (post type)."
 msgid "Cannot view post type."
 msgstr "Non puoi visualizzare il tipo di contenuto (post type)."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:248
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:269
 msgid "The title for the status."
 msgstr "Il titolo dello stato. "
 
@@ -2298,23 +2339,23 @@ msgstr "Non puoi vedere lo stato. "
 msgid "Invalid status."
 msgstr "Lo stato non è valido."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:463
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:486
 msgid "URL to the original attachment file."
 msgstr "URL del file allegato originario. "
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:443
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:466
 msgid "The attachment MIME type."
 msgstr "Il tipo MIME per l'allegato."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:435
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:458
 msgid "Attachment type."
 msgstr "Tipo dell'allegato."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:412
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:435
 msgid "The attachment description."
 msgstr "La descrizione dell'allegato. "
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:389
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:412
 msgid "The attachment caption."
 msgstr "La didascalia dell'allegato. "
 
@@ -2359,7 +2400,7 @@ msgid "Invalid slug."
 msgstr "Slug non valido. "
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:623
-#: wp-includes/rest-api.php:1157 wp-includes/user.php:3163
+#: wp-includes/rest-api.php:1157 wp-includes/user.php:3204
 msgid "Invalid email address."
 msgstr "Indirizzo email non valido. "
 
@@ -2372,11 +2413,11 @@ msgstr "Contenuto del commento non valido. "
 msgid "Invalid JSONP callback function."
 msgstr "Funzione callback JSONP non valida. "
 
-#: wp-includes/post.php:3546
+#: wp-includes/post.php:3579
 msgid "Invalid page template."
 msgstr "Template di pagina non valido. "
 
-#: wp-includes/post.php:3266 wp-includes/rest-api.php:1151
+#: wp-includes/post.php:3299 wp-includes/rest-api.php:1151
 #: wp-includes/script-loader.php:606
 msgid "Invalid date."
 msgstr "Data non valida. "
@@ -2461,7 +2502,7 @@ msgstr "Non hai i permessi per filtrare gli utenti in base al ruolo"
 msgid "Sorry, you are not allowed to delete this comment."
 msgstr "Non hai i permessi per eliminare la risorsa. "
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:380
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:383
 msgid "Sorry, you are not allowed to create new terms."
 msgstr "Non hai i permessi per creare un nuovo termine. "
 
@@ -2536,9 +2577,9 @@ msgid "About This Site"
 msgstr "Informazioni su questo sito"
 
 #. translators: %s: custom field key
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:176
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:211
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:282
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:187
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:222
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:293
 msgid "Sorry, you are not allowed to edit the %s custom field."
 msgstr "Non hai i permessi per modificare il campo personalizzato %s."
 
@@ -2706,11 +2747,11 @@ msgstr "Nascondi i controlli"
 msgid "Document Preview"
 msgstr "Anteprima documento"
 
-#: wp-includes/class-wp-customize-manager.php:5003
+#: wp-includes/class-wp-customize-manager.php:5006
 msgid "Header Media"
 msgstr "Media dell'header"
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:287
+#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:326
 msgid "REST base route for the taxonomy."
 msgstr "Rotta base REST per la tassonomia."
 
@@ -2724,23 +2765,23 @@ msgctxt "default site language"
 msgid "Site Default"
 msgstr "Lingua predefinita del sito"
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:426
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:449
 msgid "HTML description for the object, transformed for display."
 msgstr "Descrizione HTML per l'oggetto, trasformata per la visualizzazione."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:421
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:444
 msgid "Description for the object, as it exists in the database."
 msgstr "Descrizione dell'oggetto, così come presente nel database."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:403
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:426
 msgid "HTML caption for the attachment, transformed for display."
 msgstr "Didascalia HTML per l'allegato, trasformata per la visualizzazione."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:398
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:421
 msgid "Caption for the attachment, as it exists in the database."
 msgstr "Didascalia per l'allegato, così come presente nel database."
 
-#: wp-includes/class-wp-customize-manager.php:5665
+#: wp-includes/class-wp-customize-manager.php:5668
 msgid "Please enter a valid YouTube URL."
 msgstr "Inserisci un URL valido di YouTube"
 
@@ -2758,12 +2799,12 @@ msgid "Users do not support trashing. Set '%s' to delete."
 msgstr "Impossibile spostare nel cestino gli utenti. Imposta %s per eliminarli."
 
 #. translators: %s: force=true
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:590
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:593
 msgid "Terms do not support trashing. Set '%s' to delete."
 msgstr "Impossibile spostare nel cestino i termini. Imposta %s per eliminarli."
 
 #. translators: %s: force=true
-#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:292
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:400
 msgid "Revisions do not support trashing. Set '%s' to delete."
 msgstr "Impossibile spostare nel cestino le revisioni. Imposta %s per eliminarle."
 
@@ -2777,7 +2818,7 @@ msgstr "Impossibile spostare nel cestino l'articolo. Imposta %s per eliminarlo."
 msgid "The comment does not support trashing. Set '%s' to delete."
 msgstr "Impossibile spostare nel cestino il commento. Imposta %s per eliminarlo."
 
-#: wp-includes/class-wp-customize-manager.php:5088
+#: wp-includes/class-wp-customize-manager.php:5091
 msgid "Or, enter a YouTube URL:"
 msgstr "Oppure inserisci un URL di YouTube:"
 
@@ -2786,11 +2827,11 @@ msgid "Invalid JSON body passed."
 msgstr "&Egrave; stato passato un JSON con il body non valido."
 
 #. translators: %s: taxonomy name
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2227
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2422
 msgid "Limit result set to all items except those that have the specified term assigned in the %s taxonomy."
 msgstr "Limita l'insieme dei risultati a tutti gli elementi eccetto quelli che hanno il termine specificato assegnato nella tassonomia %s."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2201
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2396
 msgid "Limit result set to posts assigned one or more statuses."
 msgstr "Limita l'insieme dei risultati agli articoli con uno o più stati assegnati."
 
@@ -2799,11 +2840,11 @@ msgstr "Limita l'insieme dei risultati agli articoli con uno o più stati assegn
 msgid "Comment field exceeds maximum length allowed."
 msgstr "Il campo del commento supera la lunghezza massima consentita."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:258
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-types-controller.php:289
 msgid "Taxonomies associated with post type."
 msgstr "Tassonomie associate con questo tipo di contenuto (post type)."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2191
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2386
 msgid "Limit result set to posts with one or more specific slugs."
 msgstr "Limita l'insieme dei risultati agli articoli con uno o più slug specifici."
 
@@ -2831,7 +2872,7 @@ msgstr "I trackback per questo elemento sono disabilitati"
 msgid "I really need an ID for this to work."
 msgstr "Ho davvero bisogno di un ID per farlo funzionare"
 
-#: wp-includes/class-wp-customize-manager.php:5248
+#: wp-includes/class-wp-customize-manager.php:5251
 msgid "Homepage"
 msgstr "Home page"
 
@@ -2893,17 +2934,17 @@ msgstr "%1$s non è del tipo %2$s."
 msgid "%1$s is not one of %2$s."
 msgstr "%1$s non è uno dei %2$s."
 
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:379
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:398
 msgid "Meta fields."
 msgstr "Campi dei meta."
 
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:246
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:256
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:302
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:257
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:267
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:313
 msgid "Could not update meta value in database."
 msgstr "Impossibile aggiornare il valore del meta nel database."
 
-#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:184
+#: wp-includes/rest-api/fields/class-wp-rest-meta-fields.php:195
 msgid "Could not delete meta value from database."
 msgstr "Impossibile eliminare il valore del meta dal database."
 
@@ -2960,35 +3001,35 @@ msgstr "Impossibile creare un utente già esistente."
 msgid "You are not currently logged in."
 msgstr "Al momento non sei connesso."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:966
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:969
 msgid "Limit result set to terms assigned to a specific post."
 msgstr "Limita la serie di risultati ai termini assegnati ad uno specifico articolo."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:960
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:963
 msgid "Limit result set to terms assigned to a specific parent."
 msgstr "Limita la serie di risultati ai termini assegnati ad uno specifico genitore."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:953
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:956
 msgid "Whether to hide terms not assigned to any posts."
 msgstr "Se vuoi nascondere i termini non assegnati agli articoli. "
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:937
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:940
 msgid "Sort collection by term attribute."
 msgstr "Ordina la raccolta per l'per attributo del termine"
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:864
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:867
 msgid "Type attribution for the term."
 msgstr "Attribuzione del tipo per il termine."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:856
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:859
 msgid "An alphanumeric identifier for the term unique to its type."
 msgstr "Un identificatore alfanumerico per il termine, unico nella sua tipologia."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:835
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:838
 msgid "HTML description of the term."
 msgstr "Descrizione HTML del termine."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:829
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:832
 msgid "Number of published posts for the term."
 msgstr "Numero di articoli pubblicati per il termine."
 
@@ -3002,11 +3043,11 @@ msgstr "Identificatore univoco per l'utente."
 msgid "Required to be true, as users do not support trashing."
 msgstr "È necessario che sia impostato su vero, se la risorsa non supporta l'eliminazione."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:308
+#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:347
 msgid "Limit results to taxonomies associated with a specific post type."
 msgstr "Limita i risultati alle tassonomie associate ad uno specifico tipo di contenuto (post type)."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:272
+#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:311
 msgid "Whether or not the term cloud should be displayed."
 msgstr "Se dovrà essere visualizzata o meno la nuvola di termini."
 
@@ -3018,165 +3059,166 @@ msgstr "La proprietà %s è stata salvata con un valore non valido, e non può e
 msgid "Invalid revision ID."
 msgstr "L'ID della revisione non è valido."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2292
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2487
 msgid "Status is forbidden."
 msgstr "Stato non consentito."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2238
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2433
 msgid "Limit result set to items that are sticky."
 msgstr "Limita la serie di risultati agli elementi in evidenza."
 
 #. translators: %s: taxonomy name
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2217
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2412
 msgid "Limit result set to all items that have the specified term assigned in the %s taxonomy."
 msgstr "Limita il set di risultati a tutti gli elementi che hanno il termine specifico assegnato nella tassonomia %s."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2181
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2376
 msgid "Limit result set to all items except those of a particular parent ID."
 msgstr "Limita il risultato a tutti gli elementi eccetto quelli di un particolare ID genitore."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2173
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2368
 msgid "Limit result set to items with particular parent IDs."
 msgstr "Limita la serie di risultati dei particolari parent ID."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1361
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2136
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:921
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1405
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2331
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:708
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:924
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1338
 msgid "Offset the result set by a specific number of items."
 msgstr "Sposta di uno specifico numero di elementi l'inizio dell'insieme dei risultati."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2130
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2325
 msgid "Limit result set to posts with a specific menu_order value."
 msgstr "Limita la serie di risultati agli articoli con uno specifico valore menu_order."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2095
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2290
 msgid "Ensure result set excludes posts assigned to specific authors."
 msgstr "Garantisce che la serie di risultati escluda gli articoli assegnati ad autori specifici."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2087
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2282
 msgid "Limit result set to posts assigned to specific authors."
 msgstr "Limita la serie di risultati agli articoli assegnati ad autori specifici."
 
 #. translators: %s: taxonomy name
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2055
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2134
 msgid "The terms assigned to the object in the %s taxonomy."
 msgstr "I termini assegnati all'oggetto nella tassonomia %s."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2042
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2121
 msgid "The theme file to use to display the object."
 msgstr "Il file del tema da utilizzare per visualizzare l'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1819
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1898
 msgid "A password to protect access to the content and excerpt."
 msgstr "Una password per proteggere l'accesso al contenuto e al riassunto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2035
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2114
 msgid "Whether or not the object should be treated as sticky."
 msgstr "Se l'oggetto sia da trattare come in evidenza o meno."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2019
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2098
 msgid "The format for the object."
 msgstr "Il formato per l’oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2008
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2087
 msgid "The order of the object in relation to other object of its type."
 msgstr "L'ordine dell'oggetto in relazione agli altri oggetti dello stesso tipo"
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1999
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2078
 msgid "Whether or not the object can be pinged."
 msgstr "Se l'oggetto sia pingabile o meno"
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1993
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2072
 msgid "Whether or not comments are open on the object."
 msgstr "Se i commenti siano aperti o meno per l'oggetto"
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1985
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2064
 msgid "The ID of the featured media for the object."
 msgstr "L'id del media in evidenza per l'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1974
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2053
 msgid "Whether the excerpt is protected with a password."
 msgstr "Indica se il riassunto sia protetto da password."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1968
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2047
 msgid "HTML excerpt for the object, transformed for display."
 msgstr "Riassunto HTML per l'oggetto, trasformato per essere visualizzato."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1963
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2042
 msgid "Excerpt for the object, as it exists in the database."
 msgstr "Il riassunto dell'oggetto, come riportato nel database."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1954
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2033
 msgid "The excerpt for the object."
 msgstr "Il riassunto dell'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1946
-#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:461
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2025
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:603
 msgid "The ID for the author of the object."
 msgstr "L'ID dell'autore dell'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1935
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2014
 msgid "Whether the content is protected with a password."
 msgstr "Se il contenuto è protetto da password oppure no."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1904
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1983
 msgid "HTML title for the object, transformed for display."
 msgstr "Titolo HTML per l'oggetto, trasformato per la visualizzazione."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1899
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1978
 msgid "Title for the object, as it exists in the database."
 msgstr "Il titolo dell'oggetto, come riportato nel database."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1890
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1969
 msgid "The title for the object."
 msgstr "Il titolo dell'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1813
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1892
 msgid "Type of Post for the object."
 msgstr "Tipo di post per l'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1807
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1886
 msgid "A named status for the object."
 msgstr "Un stato noto per l'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1799
-#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:505
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1878
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:647
 msgid "An alphanumeric identifier for the object unique to its type."
 msgstr "Un identificatore alfanumerico per l'oggetto unico di questo tipo."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1792
-#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:494
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1871
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:636
 msgid "The date the object was last modified, as GMT."
 msgstr "La data in cui l'oggetto è stato modificato per l'ultima volta, in GMT."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1785
-#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:488
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1864
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:630
 msgid "The date the object was last modified, in the site's timezone."
 msgstr "La data di ultima modifica dell'oggetto, nel fuso orario del sito."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1764
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1843
 msgid "GUID for the object, transformed for display."
 msgstr "GUID dell'oggetto, adatto alla visualizzazione."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1758
-#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:478
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1837
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:620
 msgid "GUID for the object, as it exists in the database."
 msgstr "GUID dell'oggetto, come presente nel database."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1752
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1831
 msgid "The globally unique identifier for the object."
 msgstr "L'identificatore univoco globale (GUID) dell'oggetto"
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1226
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1746
-#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:472
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1270
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1825
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:614
 msgid "The date the object was published, as GMT."
 msgstr "La data di pubblicazione dell'oggetto, nel fuso orario GMT"
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1220
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1740
-#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:466
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1264
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1819
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:608
 msgid "The date the object was published, in the site's timezone."
 msgstr "La data di pubblicazione dell'oggetto, nel fuso orario del sito"
 
@@ -3224,27 +3266,28 @@ msgid "Incorrect post password."
 msgstr "Password dell'articolo non corretta."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:152
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:202
 msgid "You need to define a search term to order by relevance."
 msgstr "Devi definire un terminre di ricerca per ordinare per rilevanza."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1434
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1478
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:82
 msgid "The password for the post if it is password protected."
 msgstr "La password per l’articolo se fosse protetto da password."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:254
+#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:293
 msgid "Human-readable labels for the taxonomy for various contexts."
 msgstr "Etichette leggibili per la tassonomia in vari contesti."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:248
+#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:287
 msgid "Whether or not the taxonomy should have children."
 msgstr "Se questa tassonomia debba avere figli oppure no."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:242
+#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:281
 msgid "A human-readable description of the taxonomy."
 msgstr "Una descrizione leggibile per la descrizione della tassonomia."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:236
+#: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:275
 msgid "All capabilities used by the taxonomy."
 msgstr "Tutte le capacità utilizzate dalla tassonomia."
 
@@ -3252,23 +3295,23 @@ msgstr "Tutte le capacità utilizzate dalla tassonomia."
 msgid "An alphanumeric identifier for the user."
 msgstr "Un identificatore alfanumerico per l'utente."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:278
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:299
 msgid "Whether to include posts in the edit listing for their post type."
 msgstr "Se includere gli articoli nell'elenco dei modificabili del corrispondente tipo di contenuto (post type)."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:272
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:293
 msgid "Whether posts with this status should be publicly-queryable."
 msgstr "Se gli articoli con questo status debbano essere richiedibili pubblicamente oppure no."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:266
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:287
 msgid "Whether posts of this status should be shown in the front end of the site."
 msgstr "Se gli articoli con questo status debbano essere mostrati nel front end del sito oppure no."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:260
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:281
 msgid "Whether posts with this status should be protected."
 msgstr "Se gli articoli con questo status debbano essere protetti oppure no."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:254
+#: wp-includes/rest-api/endpoints/class-wp-rest-post-statuses-controller.php:275
 msgid "Whether posts with this status should be private."
 msgstr "Se gli articoli con questo status debbano essere privati oppure no."
 
@@ -3304,157 +3347,161 @@ msgstr "Pagina corrente dell'elenco."
 msgid "Method '%s' not implemented. Must be overridden in subclass."
 msgstr "Il metodo '%s' non è implementato. Deve essere sovrascritto in una sottoclasse."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1427
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1471
 msgid "Limit result set to comments assigned a specific type. Requires authorization."
 msgstr "Limita l'insieme dei risultati a commenti assegnati ad un tipo specifico. Richiede autorizzazione."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1419
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1463
 msgid "Limit result set to comments assigned a specific status. Requires authorization."
 msgstr "Limita l'insieme dei risultati ai commenti con uno specifico stato assegnato. Richiede una autorizzazione."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1410
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1454
 msgid "Limit result set to comments assigned to specific post IDs."
 msgstr "Limita l'insieme dei risultati ai commenti assegnati a specifici ID di articoli."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1401
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1445
 msgid "Ensure result set excludes specific parent IDs."
 msgstr "Esclude dall'insieme dei risultati gli elementi con l'ID genitore specificato."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1392
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1436
 msgid "Limit result set to comments of specific parent IDs."
 msgstr "Limita l'insieme dei risultati alle risorse appartenenti a specifici ID genitore."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1376
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2148
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1420
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2343
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:720
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1351
 msgid "Sort collection by object attribute."
 msgstr "Ordina la collezione in base ad un attributo dell'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1366
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2141
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:927
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1410
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2336
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:713
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:930
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1344
 msgid "Order sort attribute ascending or descending."
 msgstr "Attributo per l'ordinamento ascendente o discendente."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1352
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2120
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:911
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1396
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2315
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:699
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:914
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1329
 msgid "Limit result set to specific IDs."
 msgstr "Limita l'insieme dei risultati a specifici ID."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1343
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2111
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:902
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1387
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2306
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:690
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:905
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1320
 msgid "Ensure result set excludes specific IDs."
 msgstr "Esclude specifici ID dall'insieme dei risultati."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2105
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2300
 msgid "Limit response to posts published before a given ISO8601 compliant date."
 msgstr "Limita l'insieme dei risultati a risorse pubblicate prima di una data fornita nello standard ISO8601."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1331
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1375
 msgid "Limit result set to that from a specific author email. Requires authorization."
 msgstr "Limita l'insieme dei risultati a quelli provenienti da uno specifico indirizzo email di un autore. Richiede una autorizzazione."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1322
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1366
 msgid "Ensure result set excludes comments assigned to specific user IDs. Requires authorization."
 msgstr "Esclude dall'insieme dei risultati i commenti provenienti da specifici id di autori. Richiede una autorizzazione."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1314
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1358
 msgid "Limit result set to comments assigned to specific user IDs. Requires authorization."
 msgstr "Limita l'insieme dei risultati ai commenti assegnati a specifici id utenti. Richiede una autorizzazione."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2080
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2275
 msgid "Limit response to posts published after a given ISO8601 compliant date."
 msgstr "Limita l'insieme dei risultati a risorse pubblicate dopo una data fornita nello standard ISO8601. "
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1282
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1326
 msgid "Avatar URLs for the object author."
 msgstr "URL dell'avatar dell'autore dell'oggetto."
 
 #. translators: %d: avatar image size in pixels
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1274
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1318
 #: wp-includes/rest-api/endpoints/class-wp-rest-users-controller.php:1286
 msgid "Avatar URL with image size of %d pixels."
 msgstr "URL dell'avatar con immagine di grandezza %d pixel."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1259
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1303
 msgid "Type of Comment for the object."
 msgstr "Tipo di commento per l'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1251
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1295
 msgid "State of the object."
 msgstr "Stato dell'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1245
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1289
 msgid "The ID of the associated post object."
 msgstr "L'id dell'oggetto articolo associato."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1239
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1830
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1283
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1909
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:71
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:87
-#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:500
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:642
 msgid "The ID for the parent of the object."
 msgstr "L'id del genitore dell'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1232
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1778
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1276
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1857
 msgid "URL to the object."
 msgstr "L'URL dell'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1212
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1929
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1256
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2008
 msgid "HTML content for the object, transformed for display."
 msgstr "Contenuto HTML dell'oggetto, adattato alla visualizzazione."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1207
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1924
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1251
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:2003
 msgid "Content for the object, as it exists in the database."
 msgstr "Il contenuto dell'oggetto, come riportato nel database."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1198
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1915
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1242
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1994
 msgid "The content for the object."
 msgstr "Il contenuto dell'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1190
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1234
 msgid "User agent for the object author."
 msgstr "User agent dell'autore dell'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1184
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1228
 msgid "URL for the object author."
 msgstr "L’URL per l’autore dell'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1176
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1220
 msgid "Display name for the object author."
 msgstr "Nome pubblico visualizzato per l'autore dell'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1170
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1214
 msgid "IP address for the object author."
 msgstr "Indirizzo IP dell'autore dell'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1160
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1204
 msgid "Email address for the object author."
 msgstr "Indirizzo email dell'autore dell'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1155
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1199
 msgid "The ID of the user object, if author was a user."
 msgstr "L'id dell'oggetto user, se l'autore è stato un utente."
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:65
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1149
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1193
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:89
-#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1772
+#: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:1851
 #: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:91
-#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:483
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:625
 msgid "Unique identifier for the object."
 msgstr "Identificatore univoco per l'oggetto."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1078
+#: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:1122
 msgid "Invalid comment author ID."
 msgstr "L'ID dell'autore del commento non è valido."
 
@@ -3486,7 +3533,7 @@ msgstr "Creare un commento richiede valori corretti per il nome e l'email dell'a
 msgid "Cannot create existing comment."
 msgstr "Impossibile creare un commento esistente."
 
-#: wp-includes/comment.php:3117
+#: wp-includes/comment.php:3121
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:395
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:412
 msgid "Sorry, you must be logged in to comment."
@@ -3501,49 +3548,49 @@ msgstr "Parametro della query non permesso: %s"
 msgid "Whether to bypass trash and force deletion."
 msgstr "Se evitare il cestino e cancellare definitivamente."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:646
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:674
 msgid "Limit result set to attachments of a particular MIME type."
 msgstr "Limita l'insieme dei risultati agli allegati con uno specifico tipo MIME."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:639
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:667
 msgid "Limit result set to attachments of a particular media type."
 msgstr "Limita l'insieme dei risultati agli allegati di un tipo media specifico."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:525
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:548
 msgid "Could not open file handle."
 msgstr "Non riesco ad aprire l'handle del file."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:509
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:692
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:532
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:720
 msgid "Content hash did not match expected."
 msgstr "L'hash del contenuto non corrisponde a quanto atteso."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:500
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:523
 msgid "Invalid Content-Disposition supplied. Content-Disposition needs to be formatted as `attachment; filename=\"image.png\"` or similar."
 msgstr "Content-Disposition non valido. Content-Disposition deve essere formattato come `attachment;filename=\"image.png\"` o simile."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:494
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:517
 msgid "No Content-Disposition supplied."
 msgstr "Non è stata fornita alcuna Content-Disposition."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:490
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:513
 msgid "No Content-Type supplied."
 msgstr "Nessun Content-Type fornito."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:486
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:682
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:509
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:710
 msgid "No data supplied."
 msgstr "Non è stato fornito alcun dato."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:457
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:480
 msgid "The ID for the associated post of the attachment."
 msgstr "L'ID dell'articolo associato all'allegato."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:450
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:473
 msgid "Details about the media file, specific to its type."
 msgstr "Dettagli circa il file media, specifici a seconda della sua tipologia."
 
-#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:380
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:403
 msgid "Alternative text to display when attachment is not displayed."
 msgstr "Testo alternativo da mostrare quando la risorsa non è visualizzata."
 
@@ -3718,7 +3765,7 @@ msgctxt "previous set of posts"
 msgid "Previous"
 msgstr "Precedenti"
 
-#: wp-includes/general-template.php:396 wp-login.php:589 wp-login.php:1026
+#: wp-includes/general-template.php:396 wp-login.php:590 wp-login.php:1027
 msgid "Username or Email Address"
 msgstr "Nome utente o indirizzo email"
 
@@ -3738,11 +3785,11 @@ msgstr "Filtro temi"
 
 #: wp-includes/customize/class-wp-customize-themes-panel.php:49
 msgid "Change theme"
-msgstr "Cambia tema"
+msgstr "Cambia il tema"
 
 #: wp-includes/customize/class-wp-customize-theme-control.php:95
 msgid "Update now"
-msgstr "Aggiorna ora"
+msgstr "Aggiorna il tema ora"
 
 #. translators: %s: "Update now" button
 #: wp-includes/customize/class-wp-customize-theme-control.php:95
@@ -3806,13 +3853,13 @@ msgid "Sorry, you are not allowed to assign this term."
 msgstr "Non hai i permessi per assegnare questo termine."
 
 #: wp-includes/class-wp-xmlrpc-server.php:2152
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:565
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:568
 msgid "Sorry, you are not allowed to delete this term."
 msgstr "Non hai i permessi per eliminare questo termine."
 
 #: wp-includes/class-wp-xmlrpc-server.php:2056
 #: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:340
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:480
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:483
 msgid "Sorry, you are not allowed to edit this term."
 msgstr "Non hai i permessi per modificare questo termine."
 
@@ -3846,122 +3893,122 @@ msgid "Post"
 msgstr "Articolo"
 
 #. translators: 1: .mp4, 2: .mov
-#: wp-includes/class-wp-customize-manager.php:5641
+#: wp-includes/class-wp-customize-manager.php:5644
 msgid "Only %1$s or %2$s files may be used for header video. Please convert your video file and try again, or, upload your video to YouTube and link it with the option below."
 msgstr "Per il video dell'Header puoi usare solo file %1$s or %2$s files. Converti il tuo file video e riprova oppure carica il tuo video su YouTube ed inserisci il link nell'opzione sottostante."
 
-#: wp-includes/class-wp-customize-manager.php:5635
+#: wp-includes/class-wp-customize-manager.php:5638
 msgid "This video file is too large to use as a header video. Try a shorter video or optimize the compression settings and re-upload a file that is less than 8MB. Or, upload your video to YouTube and link it with the option below."
 msgstr "Questo file video è troppo grande per essere usato come video dell'Header. Provane uno più corto oppure ottimizza le impostazioni di compressione per renderlo inferiore a 8MB e prova a ricaricarlo. In alternativa puoi caricare il tuo video su YouTube ed inserire il link di YouTube nell'opzione sottostante."
 
-#: wp-includes/class-wp-customize-manager.php:5595
+#: wp-includes/class-wp-customize-manager.php:5598
 msgid "Unrecognized background setting."
 msgstr "Impostazione di sfondo non riconosciuta."
 
-#: wp-includes/class-wp-customize-manager.php:5586
-#: wp-includes/class-wp-customize-manager.php:5590
+#: wp-includes/class-wp-customize-manager.php:5589
+#: wp-includes/class-wp-customize-manager.php:5593
 msgid "Invalid value for background size."
 msgstr "Valore non valido per la dimensione dello sfondo."
 
-#: wp-includes/class-wp-customize-manager.php:5582
+#: wp-includes/class-wp-customize-manager.php:5585
 msgid "Invalid value for background position Y."
 msgstr "Valore non valido per la posizione Y dello sfondo."
 
-#: wp-includes/class-wp-customize-manager.php:5578
+#: wp-includes/class-wp-customize-manager.php:5581
 msgid "Invalid value for background position X."
 msgstr "Valore non valido per la posizione X dello sfondo."
 
-#: wp-includes/class-wp-customize-manager.php:5574
+#: wp-includes/class-wp-customize-manager.php:5577
 msgid "Invalid value for background attachment."
 msgstr "Valore non valido per l'allegato per lo sfondo."
 
-#: wp-includes/class-wp-customize-manager.php:5570
+#: wp-includes/class-wp-customize-manager.php:5573
 msgid "Invalid value for background repeat."
 msgstr "Valore non valido per la ripetizione dello sfondo."
 
 #. translators: accessibility text
-#: wp-includes/class-wp-customize-manager.php:4199
-#: wp-includes/class-wp-customize-manager.php:5274
-#: wp-includes/class-wp-customize-manager.php:5294
+#: wp-includes/class-wp-customize-manager.php:4202
+#: wp-includes/class-wp-customize-manager.php:5277
+#: wp-includes/class-wp-customize-manager.php:5297
 #: wp-includes/customize/class-wp-customize-nav-menu-locations-control.php:56
 #: wp-includes/widgets/class-wp-widget-custom-html.php:304
 msgid "(opens in a new window)"
 msgstr "(si apre in una nuova finestra)"
 
-#: wp-includes/class-wp-customize-manager.php:5272
+#: wp-includes/class-wp-customize-manager.php:5275
 msgid "Learn more about CSS"
 msgstr "Per saperne di più sul CSS"
 
-#: wp-includes/class-wp-customize-manager.php:5305
+#: wp-includes/class-wp-customize-manager.php:5308
 msgid "Additional CSS"
 msgstr "CSS aggiuntivo"
 
-#: wp-includes/class-wp-customize-manager.php:5199
+#: wp-includes/class-wp-customize-manager.php:5202
 msgid "Scroll with Page"
 msgstr "Scorri con la pagina"
 
-#: wp-includes/class-wp-customize-manager.php:5187
+#: wp-includes/class-wp-customize-manager.php:5190
 msgid "Repeat Background Image"
 msgstr "Ripeti l'immagine di sfondo"
 
-#: wp-includes/class-wp-customize-manager.php:5174
+#: wp-includes/class-wp-customize-manager.php:5177
 msgid "Original"
 msgstr "Originale"
 
-#: wp-includes/class-wp-customize-manager.php:5170
+#: wp-includes/class-wp-customize-manager.php:5173
 msgid "Image Size"
 msgstr "Dimensione dell'immagine"
 
-#: wp-includes/class-wp-customize-manager.php:5155
+#: wp-includes/class-wp-customize-manager.php:5158
 #: wp-includes/customize/class-wp-customize-background-position-control.php:66
 msgid "Image Position"
 msgstr "Posizione dell'immagine"
 
-#: wp-includes/class-wp-customize-manager.php:5138
+#: wp-includes/class-wp-customize-manager.php:5141
 msgctxt "Custom Preset"
 msgid "Custom"
 msgstr "Personalizzato"
 
-#: wp-includes/class-wp-customize-manager.php:5137
+#: wp-includes/class-wp-customize-manager.php:5140
 msgctxt "Repeat Image"
 msgid "Repeat"
 msgstr "Ripeti"
 
-#: wp-includes/class-wp-customize-manager.php:5136
-#: wp-includes/class-wp-customize-manager.php:5175
+#: wp-includes/class-wp-customize-manager.php:5139
+#: wp-includes/class-wp-customize-manager.php:5178
 msgid "Fit to Screen"
 msgstr "Adatta allo schermo"
 
-#: wp-includes/class-wp-customize-manager.php:5134
+#: wp-includes/class-wp-customize-manager.php:5137
 msgctxt "Default Preset"
 msgid "Default"
 msgstr "Predefinito"
 
-#: wp-includes/class-wp-customize-manager.php:5130
+#: wp-includes/class-wp-customize-manager.php:5133
 msgctxt "Background Preset"
 msgid "Preset"
 msgstr "Impostazioni predefinite"
 
-#: wp-includes/class-wp-customize-manager.php:5078
+#: wp-includes/class-wp-customize-manager.php:5081
 msgid "Header Video"
 msgstr "Video dell'header"
 
 #. translators: 1: .mp4, 2: header height in pixels
-#: wp-includes/class-wp-customize-manager.php:5025
+#: wp-includes/class-wp-customize-manager.php:5028
 msgid "Upload your video in %1$s format and minimize its file size for best results. Your theme recommends a height of %2$s pixels."
 msgstr "Carica il tuo video in formato %1$s e minimizza la dimensione del file per ottenere un risultato migliore. Il tuo tema consiglia di usare un'altezza di %2$s pixel."
 
 #. translators: 1: .mp4, 2: header width in pixels
-#: wp-includes/class-wp-customize-manager.php:5018
+#: wp-includes/class-wp-customize-manager.php:5021
 msgid "Upload your video in %1$s format and minimize its file size for best results. Your theme recommends a width of %2$s pixels."
 msgstr "Carica il tuo video in formato %1$s e minimizza la dimensione del file per ottenere un risultato migliore. Il tuo tema consiglia di usare un larghezza di %2$s pixel."
 
 #. translators: 1: .mp4, 2: header size in pixels
-#: wp-includes/class-wp-customize-manager.php:5011
+#: wp-includes/class-wp-customize-manager.php:5014
 msgid "Upload your video in %1$s format and minimize its file size for best results. Your theme recommends dimensions of %2$s pixels."
 msgstr "Carica il video nel formato %1$s  e minimizza la dimensione del file per ottenere il miglior risultato. Il tema consiglia una dimensione di %2$s pixel."
 
-#: wp-includes/class-wp-customize-manager.php:5004
+#: wp-includes/class-wp-customize-manager.php:5007
 msgid "If you add a video, the image will be used as a fallback while the video loads."
 msgstr "Se aggiungi un video, l'immagine sarà usata come alternativa mentre il video è in fase di caricamento."
 
@@ -3973,23 +4020,23 @@ msgid "Search themes&hellip;"
 msgstr "Cerca temi&hellip;"
 
 #. translators: %s: theme name
-#: wp-includes/class-wp-customize-manager.php:4710
+#: wp-includes/class-wp-customize-manager.php:4713
 msgid "Showing details for theme: %s"
 msgstr "Visualizza i dettagli per il tema: %s"
 
 #. translators: %d: number of themes being displayed, which cannot currently
 #. consider singular vs. plural forms
-#: wp-includes/class-wp-customize-manager.php:4708
+#: wp-includes/class-wp-customize-manager.php:4711
 msgid "Displaying %d themes"
 msgstr "Visualizza %d temi"
 
 #. translators: %d: number of theme search results, which cannot currently
 #. consider singular vs. plural forms
-#: wp-includes/class-wp-customize-manager.php:4706
+#: wp-includes/class-wp-customize-manager.php:4709
 msgid "%d themes found"
 msgstr "%d temi trovati"
 
-#: wp-includes/class-wp-customize-manager.php:4704
+#: wp-includes/class-wp-customize-manager.php:4707
 msgid "Are you sure you want to delete this theme?"
 msgstr "Desideri eliminare questo tema?"
 
@@ -4043,7 +4090,7 @@ msgstr "Ciao, %s"
 msgid "Edit selected menu"
 msgstr "Modifica il menu selezionato"
 
-#: wp-includes/class-wp-editor.php:1281
+#: wp-includes/class-wp-editor.php:1279
 msgid "Warning: the link has been inserted but may have errors. Please test it."
 msgstr "Attenzione:  hai inserito il link ma ci potrebbero essere degli errori. Provalo. "
 
@@ -4051,7 +4098,7 @@ msgstr "Attenzione:  hai inserito il link ma ci potrebbero essere degli errori. 
 msgid "Search Results"
 msgstr "Risultati della ricerca"
 
-#: wp-includes/class-wp-editor.php:1236
+#: wp-includes/class-wp-editor.php:1234
 msgid "Rich Text Area. Press Control-Option-H for help."
 msgstr "Area testo elaborato. Premi Control-Option-H per aiuto."
 
@@ -4095,7 +4142,7 @@ msgstr "Pausa"
 msgid "Play"
 msgstr "Play"
 
-#: wp-includes/taxonomy.php:2022 wp-includes/taxonomy.php:2648
+#: wp-includes/taxonomy.php:2076 wp-includes/taxonomy.php:2702
 msgid "A name is required for this term."
 msgstr "È richiesto un nome per questo termine."
 
@@ -4120,18 +4167,18 @@ msgstr "L'importatore è stato installato. <a href=\"%s\">Avvia l'importazione</
 #: wp-includes/script-loader.php:846
 msgctxt "theme"
 msgid "Activate %s"
-msgstr "Attiva %s"
+msgstr "Attiva il tema %s"
 
 #. translators: %s: Theme name
 #: wp-includes/script-loader.php:846
 msgctxt "theme"
 msgid "Network Activate %s"
-msgstr "Attiva %s sul network"
+msgstr "Attiva %s nel network"
 
 #: wp-includes/script-loader.php:844
 msgctxt "plugin"
 msgid "Activate %s"
-msgstr "Attiva %s"
+msgstr "Attiva il plugin %s"
 
 #. translators: %s: Plugin name
 #: wp-includes/script-loader.php:844
@@ -4155,13 +4202,13 @@ msgstr "Installazione di %s non riuscita"
 #: wp-includes/script-loader.php:820
 msgctxt "theme"
 msgid "%s installed!"
-msgstr "%s installato! "
+msgstr "Tema %s installato! "
 
 #. translators: %s: Plugin name and version
 #: wp-includes/script-loader.php:818
 msgctxt "plugin"
 msgid "%s installed!"
-msgstr "%s installato!"
+msgstr "Plugin %s installato!"
 
 #. translators: %s: Theme name and version
 #: wp-includes/script-loader.php:816
@@ -4255,7 +4302,7 @@ msgid "Sorry, you are not allowed to delete this post."
 msgstr "Non hai i permessi per eliminare questo articolo."
 
 #. translators: %s: site title
-#: wp-login.php:253
+#: wp-login.php:254
 msgctxt "site"
 msgid "&larr; Back to %s"
 msgstr "&larr; Torna a %s"
@@ -4275,7 +4322,7 @@ msgstr "Oggi"
 
 #: wp-includes/script-loader.php:841
 msgid "Network Activate"
-msgstr "Attiva sul network"
+msgstr "Attiva nel network"
 
 #. translators: %s: Error string for a failed deletion
 #: wp-includes/script-loader.php:837
@@ -4284,7 +4331,7 @@ msgstr "Eliminazione fallita: %s"
 
 #: wp-includes/script-loader.php:835
 msgid "Deleting..."
-msgstr "Eliminazione in corso..."
+msgstr "Eliminazione..."
 
 #: wp-includes/script-loader.php:834
 msgid "Caution: These themes may be active on other sites in the network. Are you sure you want to proceed?"
@@ -4329,7 +4376,7 @@ msgstr ""
 "Desideri farlo?\n"
 "Perderai le modifiche fatte al commento."
 
-#: wp-includes/script-loader.php:507 wp-login.php:705
+#: wp-includes/script-loader.php:507 wp-login.php:706
 msgid "Confirm use of weak password"
 msgstr "Conferma l'uso della password debole."
 
@@ -4405,7 +4452,7 @@ msgstr "Non hai i permessi per personalizzare questo sito."
 msgid "Do not pass %1$s tags to %2$s."
 msgstr "Non passare i %1$s tag a %2$s."
 
-#: wp-includes/class-wp-editor.php:1262
+#: wp-includes/class-wp-editor.php:1260
 msgid "Link options"
 msgstr "Opzioni link"
 
@@ -4447,13 +4494,13 @@ msgid "1 result found. Use up and down arrow keys to navigate."
 msgstr "Trovato 1 risultato. Usa i tasti freccia su e giù per esplorarlo."
 
 #. translators: %s: user name
-#: wp-includes/comment-template.php:2236
+#: wp-includes/comment-template.php:2244
 msgid "Logged in as %s. Edit your profile."
 msgstr "Autenticato come %s. Modifica il tuo profilo."
 
 #. translators: 1: edit user link, 2: accessibility text, 3: user name, 4:
 #. logout URL
-#: wp-includes/comment-template.php:2233
+#: wp-includes/comment-template.php:2241
 msgid "<a href=\"%1$s\" aria-label=\"%2$s\">Logged in as %3$s</a>. <a href=\"%4$s\">Log out?</a>"
 msgstr "<a href=\"%1$s\" aria-label=\"%2$s\">Autenticato come %3$s</a>. <a href=\"%4$s\">Uscire?</a>"
 
@@ -4465,15 +4512,15 @@ msgstr "La costante %1$s <strong>è deprecata</strong>. Utilizza la costante boo
 
 #. translators: 1: panel id, 2: link to 'customize_loaded_components' filter
 #. reference
-#: wp-includes/class-wp-customize-manager.php:3760
+#: wp-includes/class-wp-customize-manager.php:3763
 msgid "Removing %1$s manually will cause PHP warnings. Use the %2$s filter instead."
 msgstr "Rimuovere manualmente %1$s causerà dei warning PHP . Utilizza in alternativa il filtro %2$s."
 
-#: wp-includes/class-wp-editor.php:1289
+#: wp-includes/class-wp-editor.php:1287
 msgid "The next group of formatting shortcuts are applied as you type or when you insert them around plain text in the same paragraph. Press Escape or the Undo button to undo."
 msgstr "Il prossimo gruppo di scorciatoie di formattazione vengono applicate quando digiti o inserisci attorno ad un testo normale nel medesimo paragrafo. Per annullare premere Esc o il pulsante Annulla."
 
-#: wp-login.php:980
+#: wp-login.php:981
 msgid "Your session has expired. Please log in to continue where you left off."
 msgstr "La sessione è scaduta. Accedi di nuovo per continuare da dove eri rimasto."
 
@@ -4565,7 +4612,7 @@ msgstr "<strong>ERRORE</strong>: Nome utente non valido, indirizzo email o passw
 msgid "%1$s %2$s %3$s %4$s Feed"
 msgstr "Feed %1$s %2$s %3$s %4$s"
 
-#: wp-includes/functions.php:5327
+#: wp-includes/functions.php:5333
 msgid "Close dialog"
 msgstr "Chiudi la finestra di dialogo"
 
@@ -4575,20 +4622,20 @@ msgstr "Chiudi la finestra di dialogo"
 msgid "The called constructor method for %1$s in %2$s is <strong>deprecated</strong> since version %3$s! Use %4$s instead."
 msgstr "Il metodo del costruttore richiamato per %1$s in %2$s è <strong>deprecato</strong> dalla versione %3$s! Utilizzare invece %4$s."
 
-#: wp-includes/class-wp-customize-manager.php:4944
+#: wp-includes/class-wp-customize-manager.php:4947
 msgid "Choose logo"
 msgstr "Scegli il logo"
 
-#: wp-includes/class-wp-customize-manager.php:4942
+#: wp-includes/class-wp-customize-manager.php:4945
 msgid "No logo selected"
 msgstr "Nessun logo selezionato"
 
-#: wp-includes/class-wp-customize-manager.php:4939
+#: wp-includes/class-wp-customize-manager.php:4942
 msgid "Change logo"
 msgstr "Cambia il logo"
 
-#: wp-includes/class-wp-customize-manager.php:4938
-#: wp-includes/class-wp-customize-manager.php:4943
+#: wp-includes/class-wp-customize-manager.php:4941
+#: wp-includes/class-wp-customize-manager.php:4946
 msgid "Select logo"
 msgstr "Seleziona il logo"
 
@@ -4646,28 +4693,28 @@ msgstr "Modello mancante. I temi devono avere un file di modello %1$s . <a href=
 msgid "Invalid object type"
 msgstr "Tipo oggetto non valido"
 
-#: wp-includes/class-wp-editor.php:1260
+#: wp-includes/class-wp-editor.php:1258
 msgid "Paste URL or type to search"
 msgstr "Incolla l'URL oppure digita per cercare"
 
-#: wp-includes/class-wp-customize-manager.php:4930
+#: wp-includes/class-wp-customize-manager.php:4933
 msgid "Logo"
 msgstr "Logo"
 
-#: wp-includes/class-wp-customize-manager.php:4896
-#: wp-includes/class-wp-customize-manager.php:4974
+#: wp-includes/class-wp-customize-manager.php:4899
+#: wp-includes/class-wp-customize-manager.php:4977
 msgid "Display Site Title and Tagline"
 msgstr "Mostra il titolo del sito e il motto"
 
-#: wp-includes/class-wp-customize-manager.php:4797
+#: wp-includes/class-wp-customize-manager.php:4800
 msgid "Enter mobile preview mode"
 msgstr "Abilita l'anteprima in modalità mobile"
 
-#: wp-includes/class-wp-customize-manager.php:4794
+#: wp-includes/class-wp-customize-manager.php:4797
 msgid "Enter tablet preview mode"
 msgstr "Abilita l'anteprima in modalità tablet"
 
-#: wp-includes/class-wp-customize-manager.php:4790
+#: wp-includes/class-wp-customize-manager.php:4793
 msgid "Enter desktop preview mode"
 msgstr "Abilita l'anteprima in modalità desktop"
 
@@ -4757,7 +4804,7 @@ msgstr "Utilizza invece %s se non vuoi che il valore venga visualizzato."
 msgid "Term ID is shared between multiple taxonomies"
 msgstr "L'ID del termine è condiviso tra diverse tassonomie"
 
-#: wp-includes/taxonomy.php:1144 wp-includes/taxonomy.php:1226
+#: wp-includes/taxonomy.php:1165 wp-includes/taxonomy.php:1247
 msgid "Term meta cannot be added to terms that are shared between taxonomies."
 msgstr "I meta non possono essere aggiunti a termini che sono condivisi tra tassonomie."
 
@@ -5331,7 +5378,7 @@ msgid "Press return or enter to open this section"
 msgstr "Premi return o invio per aprire questa sezione"
 
 #. translators: %s: document title from the preview
-#: wp-includes/class-wp-customize-manager.php:4372
+#: wp-includes/class-wp-customize-manager.php:4375
 msgid "Live Preview: %s"
 msgstr "Anteprima in tempo reale: %s"
 
@@ -5361,7 +5408,7 @@ msgstr "%1$s è deprecato. Utilizza invece %2$s ."
 msgid "Clear Results"
 msgstr "Cancella risultati"
 
-#: wp-includes/class-wp-editor.php:1287
+#: wp-includes/class-wp-editor.php:1285
 msgid "The following formatting shortcuts are replaced when pressing Enter. Press Escape or the Undo button to undo."
 msgstr "Le seguenti scorciatoie per la formattazione sono sostituite quando si preme Invio. Premi «Esc» o il pulsante «Annulla» per annullare."
 
@@ -5431,7 +5478,7 @@ msgstr "Come icona del browser"
 msgid "No items"
 msgstr "Nessun elemento presente"
 
-#: wp-login.php:821
+#: wp-login.php:822
 msgid "Registration confirmation will be emailed to you."
 msgstr "La conferma della registrazione ti arriverà per email."
 
@@ -5479,11 +5526,11 @@ msgstr "Nascondi immagine"
 msgid "Hide header image"
 msgstr "Nascondi l'immagine dell'intestazione"
 
-#: wp-includes/class-wp-customize-manager.php:4910
+#: wp-includes/class-wp-customize-manager.php:4913
 msgid "Site Icon"
 msgstr "Icona del sito"
 
-#: wp-includes/class-wp-customize-manager.php:4861
+#: wp-includes/class-wp-customize-manager.php:4864
 msgid "Site Identity"
 msgstr "Denominazione del sito"
 
@@ -5492,15 +5539,15 @@ msgstr "Denominazione del sito"
 msgid "Add to menu: %1$s (%2$s)"
 msgstr "Aggiungi al menu: %1$s (%2$s)"
 
-#: wp-includes/class-wp-editor.php:1285
+#: wp-includes/class-wp-editor.php:1283
 msgid "When starting a new paragraph with one of these formatting shortcuts followed by a space, the formatting will be applied automatically. Press Backspace or Escape to undo."
 msgstr "Quando inizi un nuovo paragrafo con uno di questi modelli seguiti da uno spazio, verrà applicata automaticamente la formattazione indicata. Premi Backspace oppure Esc per annullare."
 
-#: wp-login.php:556
+#: wp-login.php:557
 msgid "Your password reset link has expired. Please request a new link below."
 msgstr "Il link per il reset della password è scaduto. Richiedi un nuovo link qua sotto."
 
-#: wp-login.php:554
+#: wp-login.php:555
 msgid "Your password reset link appears to be invalid. Please request a new link below."
 msgstr "Il link per il reset della password non appare valido. Richiedi un nuovo link qua sotto."
 
@@ -5526,7 +5573,7 @@ msgstr "La directory %s del repository di sviluppo deve essere utilizzata per l'
 msgid "The called constructor method for %1$s is <strong>deprecated</strong> since version %2$s! Use %3$s instead."
 msgstr "Il metodo di costruzione richiamato per %1$s è <strong>deprecato</strong> dalla versione %2$s! Utilizzare invece %3$s."
 
-#: wp-includes/class-wp-editor.php:1021
+#: wp-includes/class-wp-editor.php:1019
 msgctxt "HTML tag"
 msgid "Preformatted"
 msgstr "Preformattato"
@@ -5767,31 +5814,31 @@ msgstr "Messaggio:"
 msgid "Allow link notifications from other blogs (pingbacks and trackbacks) on new articles"
 msgstr "Permetti le notifiche dei link da altri blog (pingback e trackback) sui nuovi articoli"
 
-#: wp-includes/class-wp-editor.php:1278
+#: wp-includes/class-wp-editor.php:1276
 msgid "Ctrl + letter:"
 msgstr "Ctrl + lettera:"
 
-#: wp-includes/class-wp-editor.php:1277
+#: wp-includes/class-wp-editor.php:1275
 msgid "Cmd + letter:"
 msgstr "Cmd + lettera:"
 
-#: wp-includes/class-wp-editor.php:1276
+#: wp-includes/class-wp-editor.php:1274
 msgid "Shift + Alt + letter:"
 msgstr "Shift + Alt + lettera:"
 
-#: wp-includes/class-wp-editor.php:1275
+#: wp-includes/class-wp-editor.php:1273
 msgid "Ctrl + Alt + letter:"
 msgstr "Ctrl + Alt + lettera:"
 
-#: wp-includes/class-wp-editor.php:1271
+#: wp-includes/class-wp-editor.php:1269
 msgid "Inline toolbar (when an image, link or preview is selected)"
 msgstr "Barra degli strumenti in linea (quando una immagine, un link o una anteprima è selezionata)"
 
-#: wp-includes/class-wp-editor.php:1269
+#: wp-includes/class-wp-editor.php:1267
 msgid "Additional shortcuts,"
 msgstr "Scorciatoie aggiuntive,"
 
-#: wp-includes/class-wp-editor.php:1268
+#: wp-includes/class-wp-editor.php:1266
 msgid "Default shortcuts,"
 msgstr "Scorciatoie predefinite,"
 
@@ -5990,7 +6037,7 @@ msgstr "Classi CSS"
 msgid "Title Attribute"
 msgstr "Attributo titolo"
 
-#: wp-includes/class-wp-editor.php:1717
+#: wp-includes/class-wp-editor.php:1715
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:100
 #: wp-includes/media-template.php:1008
 #: wp-includes/widgets/class-wp-widget-media-image.php:136
@@ -6027,7 +6074,7 @@ msgstr "Errore XML: %1$s alla riga %2$s"
 msgid "User Dashboard: %s"
 msgstr "Bacheca utente: %s"
 
-#: wp-login.php:920 wp-login.php:925
+#: wp-login.php:921 wp-login.php:926
 msgid "https://codex.wordpress.org/Cookies"
 msgstr "https://codex.wordpress.org/Cookies"
 
@@ -6096,31 +6143,31 @@ msgstr "Installa ora"
 
 #: wp-includes/script-loader.php:807
 msgid "Installing..."
-msgstr "Installazione in corso"
+msgstr "Installazione..."
 
 #: wp-includes/script-loader.php:825
 msgid "Installing... please wait."
-msgstr "Installazione in corso, attendere."
+msgstr "Installazione in corso, attendi..."
 
 #. translators: Accessibility text
 #: wp-includes/script-loader.php:798
 msgid "Updating... please wait."
-msgstr "Aggiornamento in corso... attendi."
+msgstr "Aggiornamento in corso, attendi..."
 
 #. translators: Accessibility text
 #: wp-includes/script-loader.php:800
 msgid "Update completed successfully."
-msgstr "Aggiornamento completato con successo."
+msgstr "Aggiornamento completato con successo!"
 
 #: wp-includes/script-loader.php:826
 msgid "Installation completed successfully."
-msgstr "Installazione completata con successo."
+msgstr "Installazione completata con successo!"
 
 #: wp-includes/taxonomy.php:381 wp-includes/taxonomy.php:382
 msgid "Taxonomy names must be between 1 and 32 characters in length."
 msgstr "I nomi di tassonomia devono essere con lunghezza tra 1 e 32 caratteri."
 
-#: wp-includes/taxonomy.php:3562
+#: wp-includes/taxonomy.php:3616
 msgid "Could not split shared term."
 msgstr "Impossibile dividere termini condivisi."
 
@@ -6224,7 +6271,7 @@ msgid "F j, Y @ H:i:s"
 msgstr "j F Y, G:i:s"
 
 #: wp-includes/class-wp-customize-nav-menus.php:1115
-#: wp-includes/class-wp-editor.php:1712 wp-includes/media-template.php:820
+#: wp-includes/class-wp-editor.php:1710 wp-includes/media-template.php:820
 msgid "Link Text"
 msgstr "Testo del link"
 
@@ -6292,7 +6339,7 @@ msgstr "Anteprima in tempo reale"
 msgid "No categories found."
 msgstr "Nessuna categoria trovata"
 
-#: wp-includes/class-wp-editor.php:1256 wp-includes/script-loader.php:99
+#: wp-includes/class-wp-editor.php:1254 wp-includes/script-loader.php:99
 msgid "Distraction-free writing mode"
 msgstr "Modalità di scrittura senza distrazioni"
 
@@ -6309,27 +6356,27 @@ msgstr "Widget spostato in su"
 msgid "Widget moved down"
 msgstr "Widget spostato giù"
 
-#: wp-includes/class-wp-editor.php:1235
+#: wp-includes/class-wp-editor.php:1233
 msgid "Rich Text Area. Press Alt-Shift-H for help."
 msgstr "Area testo elaborato. Premi Alt-Shift-H per aiuto."
 
-#: wp-includes/class-wp-editor.php:1270
+#: wp-includes/class-wp-editor.php:1268
 msgid "Focus shortcuts:"
 msgstr "Scorciatoie focus:"
 
-#: wp-includes/class-wp-editor.php:1272
+#: wp-includes/class-wp-editor.php:1270
 msgid "Editor menu (when enabled)"
 msgstr "Menu dell'editor (se abilitato)"
 
-#: wp-includes/class-wp-editor.php:1273
+#: wp-includes/class-wp-editor.php:1271
 msgid "Editor toolbar"
 msgstr "Barra degli strumenti dell'editor"
 
-#: wp-includes/class-wp-editor.php:1283
+#: wp-includes/class-wp-editor.php:1281
 msgid "To move focus to other buttons use Tab or the arrow keys. To return focus to the editor press Escape or use one of the buttons."
 msgstr "Per spostare il focus su altri pulsanti usare Tab o i tasti cursore. Per ripristinare il focus sull'editor premere Esc oppure premere uno dei pulsanti."
 
-#: wp-includes/class-wp-editor.php:1274
+#: wp-includes/class-wp-editor.php:1272
 msgid "Elements path"
 msgstr "Percorso elementi"
 
@@ -6338,7 +6385,7 @@ msgstr "Percorso elementi"
 msgid "The following values do not describe a valid date: month %1$s, day %2$s."
 msgstr "I seguenti valori non descrivono una data valida: giorno %2$s, mese %1$s."
 
-#: wp-includes/taxonomy.php:2111
+#: wp-includes/taxonomy.php:2165
 msgid "A term with the name provided already exists in this taxonomy."
 msgstr "In questa tassonomia esiste già un termine con questo nome."
 
@@ -6418,20 +6465,20 @@ msgctxt "verb"
 msgid "Trash"
 msgstr "Cestina"
 
-#: wp-includes/class-wp-editor.php:1166
+#: wp-includes/class-wp-editor.php:1164
 msgid "Add to Dictionary"
 msgstr "Aggiungi al dizionario"
 
-#: wp-includes/class-wp-editor.php:1174
+#: wp-includes/class-wp-editor.php:1172
 msgid "Border color"
 msgstr "Colore bordo"
 
-#: wp-includes/class-wp-editor.php:1203
+#: wp-includes/class-wp-editor.php:1201
 msgctxt "horizontal table cell alignment"
 msgid "H Align"
 msgstr "H Align"
 
-#: wp-includes/class-wp-editor.php:1208
+#: wp-includes/class-wp-editor.php:1206
 msgctxt "vertical table cell alignment"
 msgid "V Align"
 msgstr "V Align"
@@ -6543,7 +6590,7 @@ msgstr "%1$s: %2$s"
 msgid "Archives: %s"
 msgstr "Archivi: %s"
 
-#: wp-includes/class-wp-editor.php:1257
+#: wp-includes/class-wp-editor.php:1255
 msgid "No alignment"
 msgstr "Nessun allineamento"
 
@@ -6569,24 +6616,24 @@ msgstr "Seleziona una immagine"
 msgid "No image selected"
 msgstr "Nessuna immagine selezionata"
 
-#: wp-includes/class-wp-editor.php:1143
+#: wp-includes/class-wp-editor.php:1141
 msgid "Custom color"
 msgstr "Colore personalizzato"
 
-#: wp-includes/class-wp-editor.php:1142
+#: wp-includes/class-wp-editor.php:1140
 msgid "Color"
 msgstr "Colore"
 
-#: wp-includes/class-wp-editor.php:1144
+#: wp-includes/class-wp-editor.php:1142
 msgctxt "label for custom color"
 msgid "Custom..."
 msgstr "Personalizza..."
 
-#: wp-includes/class-wp-editor.php:1145
+#: wp-includes/class-wp-editor.php:1143
 msgid "No color"
 msgstr "Nessun colore"
 
-#: wp-includes/class-wp-editor.php:1059
+#: wp-includes/class-wp-editor.php:1057
 msgctxt "list style"
 msgid "Default"
 msgstr "Predefinito"
@@ -6606,7 +6653,7 @@ msgctxt "add new from admin bar"
 msgid "Post"
 msgstr "Articolo"
 
-#: wp-includes/class-wp-editor.php:1249
+#: wp-includes/class-wp-editor.php:1247
 msgctxt "TinyMCE menu"
 msgid "Format"
 msgstr "Formato"
@@ -6619,9 +6666,9 @@ msgstr "Media"
 #: wp-includes/post.php:66
 msgctxt "add new media"
 msgid "Add New"
-msgstr "Aggiungi nuovo"
+msgstr "Aggiungi media"
 
-#: wp-login.php:994
+#: wp-login.php:995
 msgid "<strong>You have successfully updated WordPress!</strong> Please log back in to see what&#8217;s new."
 msgstr "<strong>Hai aggiornato WordPress!</strong> Effettua nuovamente il login per vedere cosa c'è di nuovo.."
 
@@ -6663,7 +6710,7 @@ msgstr "Selezione multipla"
 
 #. translators: %s: taxonomy label, %l: list of terms formatted as per
 #. $term_template
-#: wp-includes/taxonomy.php:4066
+#: wp-includes/taxonomy.php:4120
 msgid "%s: %l."
 msgstr "%s: %l."
 
@@ -6773,15 +6820,15 @@ msgstr "Chiudi l'uploader"
 msgid "Close media panel"
 msgstr "Chiudi il pannello media"
 
-#: wp-includes/class-wp-editor.php:1738
+#: wp-includes/class-wp-editor.php:1736
 msgid "Search or use up and down arrow keys to select an item."
 msgstr "Cerca o usa i tasti freccia su e freccia giù per selezionare un elemento."
 
-#: wp-includes/class-wp-editor.php:1255
+#: wp-includes/class-wp-editor.php:1253
 msgid "Read more..."
 msgstr "Leggi tutto..."
 
-#: wp-includes/class-wp-editor.php:1240
+#: wp-includes/class-wp-editor.php:1238
 msgid "Your browser does not support direct access to the clipboard. Please use keyboard shortcuts or your browser&#8217;s edit menu instead."
 msgstr "Il tuo browser non supporta l'accesso diretto agli appunti. Utilizza allora le scorciatoie di tastiera o il menu modifica del tuo browser."
 
@@ -6799,7 +6846,7 @@ msgstr "I widget sono sezioni di contenuto indipendente che possono venir inseri
 msgid "You are customizing %s"
 msgstr "Stai personalizzando %s"
 
-#: wp-includes/comment.php:3157
+#: wp-includes/comment.php:3161
 msgid "<strong>ERROR</strong>: The comment could not be saved. Please try again later."
 msgstr "<strong>ERRORE</strong>: Il commento non può essere salvato. Riprovare più tardi."
 
@@ -6812,26 +6859,26 @@ msgstr "(WordPress non può stabilire una connessione sicura a WordPress.org. Co
 msgid "Shift-click to edit this widget."
 msgstr "Fai clic tenendo premuto il tasto maiuscole per modificare questo widget"
 
-#: wp-includes/class-wp-editor.php:1022
+#: wp-includes/class-wp-editor.php:1020
 msgctxt "HTML tag"
 msgid "Address"
 msgstr "Indirizzo"
 
-#: wp-includes/class-wp-editor.php:1233
+#: wp-includes/class-wp-editor.php:1231
 msgid "If you&#8217;re looking to paste rich content from Microsoft Word, try turning this option off. The editor will clean up text pasted from Word automatically."
 msgstr "Se stai incollando un contenuto da Microsoft Word, prova ad attivare questa opzione. L'editor pulirà automaticamente il testo incollato da Word."
 
-#: wp-includes/class-wp-editor.php:1267
+#: wp-includes/class-wp-editor.php:1265
 msgid "Keyboard Shortcuts"
 msgstr "Scorciatoie da tastiera"
 
 #. translators: 1: Browser cookie documentation URL
-#: wp-login.php:924
+#: wp-login.php:925
 msgid "<strong>ERROR</strong>: Cookies are blocked or not supported by your browser. You must <a href=\"%s\">enable cookies</a> to use WordPress."
 msgstr "<strong>ERRORE</strong>: i cookies sono bloccati o non supportati dal tuo browser. Per utilizzare WordPress devi <a href=\"%s\">abilitare i cookie</a>."
 
 #. translators: 1: Browser cookie documentation URL, 2: Support forums URL
-#: wp-login.php:919
+#: wp-login.php:920
 msgid "<strong>ERROR</strong>: Cookies are blocked due to unexpected output. For help, please see <a href=\"%1$s\">this documentation</a> or try the <a href=\"%2$s\">support forums</a>."
 msgstr "<strong>ERRORE</strong>: i cookie sono bloccati a causa di un output inaspettato. Per un aiuto, vedi  <a href=\"%1$s\">questa documentazione</a> oppure prova nei <a href=\"%2$s\">forum di supporto</a>."
 
@@ -6905,19 +6952,19 @@ msgstr "Opzioni avanzate"
 msgid "Custom Size"
 msgstr "Dimensioni personalizzate"
 
-#: wp-includes/class-wp-editor.php:1197
+#: wp-includes/class-wp-editor.php:1195
 msgid "Split table cell"
 msgstr "Dividi cella"
 
-#: wp-includes/class-wp-editor.php:1035
+#: wp-includes/class-wp-editor.php:1033
 msgid "Font Sizes"
 msgstr "Dimensione carattere"
 
-#: wp-includes/class-wp-editor.php:1034
+#: wp-includes/class-wp-editor.php:1032
 msgid "Font Family"
 msgstr "Tipo carattere"
 
-#: wp-includes/class-wp-editor.php:1207
+#: wp-includes/class-wp-editor.php:1205
 msgctxt "table cell alignment attribute"
 msgid "None"
 msgstr "Nessuno"
@@ -6939,7 +6986,7 @@ msgstr "Mostra elenco video"
 msgid "Link CSS Class"
 msgstr "Classe CSS del link"
 
-#: wp-includes/class-wp-editor.php:1007
+#: wp-includes/class-wp-editor.php:1005
 msgctxt "TinyMCE"
 msgid "Headings"
 msgstr "Titoli"
@@ -6987,233 +7034,233 @@ msgstr "Ritaglio&hellip;"
 msgid "Move to another area&hellip;"
 msgstr "Sposta in un'altra area&hellip;"
 
-#: wp-includes/class-wp-editor.php:1248
+#: wp-includes/class-wp-editor.php:1246
 msgctxt "TinyMCE menu"
 msgid "Table"
 msgstr "Tabella"
 
-#: wp-includes/class-wp-editor.php:1247
+#: wp-includes/class-wp-editor.php:1245
 msgctxt "TinyMCE menu"
 msgid "View"
 msgstr "Visualizza"
 
-#: wp-includes/class-wp-editor.php:1246
+#: wp-includes/class-wp-editor.php:1244
 msgctxt "TinyMCE menu"
 msgid "Tools"
 msgstr "Strumenti"
 
-#: wp-includes/class-wp-editor.php:1245
+#: wp-includes/class-wp-editor.php:1243
 msgctxt "TinyMCE menu"
 msgid "Edit"
 msgstr "Modifica"
 
-#: wp-includes/class-wp-editor.php:1244
+#: wp-includes/class-wp-editor.php:1242
 msgctxt "TinyMCE menu"
 msgid "File"
 msgstr "File"
 
-#: wp-includes/class-wp-editor.php:1243
+#: wp-includes/class-wp-editor.php:1241
 msgctxt "TinyMCE menu"
 msgid "Insert"
 msgstr "Inserisci"
 
 #. translators: word count
-#: wp-includes/class-wp-editor.php:1230
+#: wp-includes/class-wp-editor.php:1228
 msgid "Words: %s"
 msgstr "Parole: %s"
 
-#: wp-includes/class-wp-editor.php:1226
+#: wp-includes/class-wp-editor.php:1224
 msgctxt "editor button"
 msgid "Show blocks"
 msgstr "Mostra blocchi"
 
-#: wp-includes/class-wp-editor.php:1222
+#: wp-includes/class-wp-editor.php:1220
 msgctxt "TinyMCE"
 msgid "Templates"
 msgstr "Modelli"
 
-#: wp-includes/class-wp-editor.php:1221
+#: wp-includes/class-wp-editor.php:1219
 msgctxt "TinyMCE"
 msgid "Insert template"
 msgstr "Inserisci modello"
 
-#: wp-includes/class-wp-editor.php:1184
+#: wp-includes/class-wp-editor.php:1182
 msgctxt "table footer"
 msgid "Footer"
 msgstr "Piè di pagina"
 
-#: wp-includes/class-wp-editor.php:1183
+#: wp-includes/class-wp-editor.php:1181
 msgctxt "table body"
 msgid "Body"
 msgstr "Corpo"
 
-#: wp-includes/class-wp-editor.php:1182
+#: wp-includes/class-wp-editor.php:1180
 msgctxt "table header"
 msgid "Header"
 msgstr "Header"
 
-#: wp-includes/class-wp-editor.php:1180
+#: wp-includes/class-wp-editor.php:1178
 msgctxt "table cell"
 msgid "Cell"
 msgstr "Cella"
 
-#: wp-includes/class-wp-editor.php:1179
+#: wp-includes/class-wp-editor.php:1177
 msgctxt "table columns"
 msgid "Cols"
 msgstr "Colonne"
 
-#: wp-includes/class-wp-editor.php:1165
+#: wp-includes/class-wp-editor.php:1163
 msgctxt "spellcheck"
 msgid "Ignore"
 msgstr "Ignora"
 
-#: wp-includes/class-wp-editor.php:1164
+#: wp-includes/class-wp-editor.php:1162
 msgctxt "spellcheck"
 msgid "Ignore all"
 msgstr "Ignora tutto"
 
-#: wp-includes/class-wp-editor.php:1163
+#: wp-includes/class-wp-editor.php:1161
 msgctxt "spellcheck"
 msgid "Finish"
 msgstr "Finito"
 
-#: wp-includes/class-wp-editor.php:1160
+#: wp-includes/class-wp-editor.php:1158
 msgctxt "find/replace"
 msgid "Replace all"
 msgstr "Sostituire tutto"
 
-#: wp-includes/class-wp-editor.php:1159
+#: wp-includes/class-wp-editor.php:1157
 msgctxt "find/replace"
 msgid "Find"
 msgstr "Cerca"
 
-#: wp-includes/class-wp-editor.php:1158
+#: wp-includes/class-wp-editor.php:1156
 msgctxt "find/replace"
 msgid "Replace with"
 msgstr "Sostituire con"
 
-#: wp-includes/class-wp-editor.php:1156
+#: wp-includes/class-wp-editor.php:1154
 msgctxt "find/replace"
 msgid "Whole words"
 msgstr "Parole intere"
 
 #. translators: previous
-#: wp-includes/class-wp-editor.php:1155
+#: wp-includes/class-wp-editor.php:1153
 msgctxt "find/replace"
 msgid "Prev"
 msgstr "Precedente"
 
-#: wp-includes/class-wp-editor.php:1153
+#: wp-includes/class-wp-editor.php:1151
 msgctxt "find/replace"
 msgid "Next"
 msgstr "Prossimo"
 
-#: wp-includes/class-wp-editor.php:1152
+#: wp-includes/class-wp-editor.php:1150
 msgctxt "find/replace"
 msgid "Replace"
 msgstr "Sostituire"
 
-#: wp-includes/class-wp-editor.php:1114
+#: wp-includes/class-wp-editor.php:1112
 msgctxt "editor button"
 msgid "Left to right"
 msgstr "Da sinistra a destra"
 
-#: wp-includes/class-wp-editor.php:1113
+#: wp-includes/class-wp-editor.php:1111
 msgctxt "editor button"
 msgid "Right to left"
 msgstr "Da destra a sinistra"
 
-#: wp-includes/class-wp-editor.php:1071
+#: wp-includes/class-wp-editor.php:1069
 msgctxt "Link anchors (TinyMCE)"
 msgid "Anchors"
 msgstr "Ancore"
 
-#: wp-includes/class-wp-editor.php:1070
+#: wp-includes/class-wp-editor.php:1068
 msgctxt "Link anchor (TinyMCE)"
 msgid "Anchor"
 msgstr "Ancora"
 
-#: wp-includes/class-wp-editor.php:1069
+#: wp-includes/class-wp-editor.php:1067
 msgctxt "Name of link anchor (TinyMCE)"
 msgid "Name"
 msgstr "Nome"
 
-#: wp-includes/class-wp-editor.php:1066
+#: wp-includes/class-wp-editor.php:1064
 msgctxt "list style"
 msgid "Lower Roman"
 msgstr "Numero romano minuscolo"
 
-#: wp-includes/class-wp-editor.php:1065
+#: wp-includes/class-wp-editor.php:1063
 msgctxt "list style"
 msgid "Upper Roman"
 msgstr "Numero romano maiuscolo"
 
-#: wp-includes/class-wp-editor.php:1064
+#: wp-includes/class-wp-editor.php:1062
 msgctxt "list style"
 msgid "Upper Alpha"
 msgstr "Lettera maiuscola"
 
-#: wp-includes/class-wp-editor.php:1063
+#: wp-includes/class-wp-editor.php:1061
 msgctxt "list style"
 msgid "Lower Alpha"
 msgstr "Lettera minuscola"
 
-#: wp-includes/class-wp-editor.php:1062
+#: wp-includes/class-wp-editor.php:1060
 msgctxt "list style"
 msgid "Lower Greek"
 msgstr "Lettera greca minuscola"
 
-#: wp-includes/class-wp-editor.php:1061
+#: wp-includes/class-wp-editor.php:1059
 msgctxt "list style"
 msgid "Disc"
 msgstr "Cerchio pieno"
 
-#: wp-includes/class-wp-editor.php:1060
+#: wp-includes/class-wp-editor.php:1058
 msgctxt "list style"
 msgid "Circle"
 msgstr "Cerchio vuoto"
 
-#: wp-includes/class-wp-editor.php:1058
+#: wp-includes/class-wp-editor.php:1056
 msgctxt "list style"
 msgid "Square"
 msgstr "Quadrato"
 
-#: wp-includes/class-wp-editor.php:1056 wp-includes/script-loader.php:112
+#: wp-includes/class-wp-editor.php:1054 wp-includes/script-loader.php:112
 msgid "Bulleted list"
 msgstr "Elenco puntato"
 
-#: wp-includes/class-wp-editor.php:1024
+#: wp-includes/class-wp-editor.php:1022
 msgctxt "HTML elements"
 msgid "Inline"
 msgstr "Inline"
 
-#: wp-includes/class-wp-editor.php:1020
+#: wp-includes/class-wp-editor.php:1018
 msgctxt "HTML tag"
 msgid "Pre"
 msgstr "Pre"
 
-#: wp-includes/class-wp-editor.php:1019
+#: wp-includes/class-wp-editor.php:1017
 msgctxt "HTML tag"
 msgid "Div"
 msgstr "Div"
 
 #. translators: block tags
-#: wp-includes/class-wp-editor.php:1016
+#: wp-includes/class-wp-editor.php:1014
 msgctxt "TinyMCE"
 msgid "Blocks"
 msgstr "Blocchi"
 
-#: wp-includes/class-wp-editor.php:1178
+#: wp-includes/class-wp-editor.php:1176
 msgctxt "table column"
 msgid "Column"
 msgstr "Colonna"
 
-#: wp-includes/class-wp-editor.php:1219
+#: wp-includes/class-wp-editor.php:1217
 msgctxt "table cell scope attribute"
 msgid "Scope"
 msgstr "Ambito"
 
-#: wp-includes/class-wp-editor.php:1005
+#: wp-includes/class-wp-editor.php:1003
 msgctxt "TinyMCE"
 msgid "Formats"
 msgstr "Formati"
@@ -7413,55 +7460,55 @@ msgstr "Si è verificato un errore inaspettato. Deve esserci un errore con WordP
 msgid "Image Details"
 msgstr "Dettagli Immagine"
 
-#: wp-includes/class-wp-editor.php:1253 wp-includes/script-loader.php:120
+#: wp-includes/class-wp-editor.php:1251 wp-includes/script-loader.php:120
 msgid "Insert Read More tag"
 msgstr "Inserisci il tag Leggi tutto"
 
-#: wp-includes/class-wp-editor.php:1227
+#: wp-includes/class-wp-editor.php:1225
 msgid "Show invisible characters"
 msgstr "Mostra caratteri invisibili"
 
-#: wp-includes/class-wp-editor.php:1225
+#: wp-includes/class-wp-editor.php:1223
 msgid "Text color"
 msgstr "Colore del testo"
 
-#: wp-includes/class-wp-editor.php:1224
+#: wp-includes/class-wp-editor.php:1222
 msgid "Background color"
 msgstr "Colore di sfondo"
 
-#: wp-includes/class-wp-editor.php:1193
+#: wp-includes/class-wp-editor.php:1191
 msgid "Delete column"
 msgstr "Elimina colonna"
 
-#: wp-includes/class-wp-editor.php:1213
+#: wp-includes/class-wp-editor.php:1211
 msgid "Row group"
 msgstr "Gruppo riga"
 
-#: wp-includes/class-wp-editor.php:1216
+#: wp-includes/class-wp-editor.php:1214
 msgid "Cell type"
 msgstr "Tipo cella"
 
-#: wp-includes/class-wp-editor.php:1181
+#: wp-includes/class-wp-editor.php:1179
 msgid "Header cell"
 msgstr "Cella dell'header "
 
-#: wp-includes/class-wp-editor.php:1169
+#: wp-includes/class-wp-editor.php:1167
 msgid "Insert table"
 msgstr "Inserisci tabella"
 
-#: wp-includes/class-wp-editor.php:1215
+#: wp-includes/class-wp-editor.php:1213
 msgid "Row type"
 msgstr "Tipo riga"
 
-#: wp-includes/class-wp-editor.php:1218
+#: wp-includes/class-wp-editor.php:1216
 msgid "Cell spacing"
 msgstr "Spaziatura cella"
 
-#: wp-includes/class-wp-editor.php:1217
+#: wp-includes/class-wp-editor.php:1215
 msgid "Cell padding"
 msgstr "Padding cella"
 
-#: wp-includes/class-wp-editor.php:1177
+#: wp-includes/class-wp-editor.php:1175
 msgid "Rows"
 msgstr "Righe"
 
@@ -7469,11 +7516,11 @@ msgstr "Righe"
 msgid "Finnish"
 msgstr "Finlandese"
 
-#: wp-includes/class-wp-editor.php:1161
+#: wp-includes/class-wp-editor.php:1159
 msgid "Match case"
 msgstr "Argomento per confronto"
 
-#: wp-includes/class-wp-editor.php:1157
+#: wp-includes/class-wp-editor.php:1155
 msgid "Find and replace"
 msgstr "Trova e sostituisci"
 
@@ -7481,107 +7528,107 @@ msgstr "Trova e sostituisci"
 msgid "Replace"
 msgstr "Sostituisci"
 
-#: wp-includes/class-wp-editor.php:1118
+#: wp-includes/class-wp-editor.php:1116
 msgid "Paste as text"
 msgstr "Incolla come testo"
 
-#: wp-includes/class-wp-editor.php:1117
+#: wp-includes/class-wp-editor.php:1115
 msgid "Page break"
 msgstr "Interruzione di pagina"
 
-#: wp-includes/class-wp-editor.php:1116
+#: wp-includes/class-wp-editor.php:1114
 msgid "Nonbreaking space"
 msgstr "Spazio senza interruzioni"
 
-#: wp-includes/class-wp-editor.php:1109
+#: wp-includes/class-wp-editor.php:1107
 msgid "Embed"
 msgstr "Embed"
 
-#: wp-includes/class-wp-editor.php:1108
+#: wp-includes/class-wp-editor.php:1106
 msgid "Insert video"
 msgstr "Inserisci video"
 
-#: wp-includes/class-wp-editor.php:1107
+#: wp-includes/class-wp-editor.php:1105
 msgid "Paste your embed code below:"
 msgstr "Inserisci il codice di embed qui di seguito:"
 
-#: wp-includes/class-wp-editor.php:1134
+#: wp-includes/class-wp-editor.php:1132
 msgid "New window"
 msgstr "Nuova finestra"
 
-#: wp-includes/class-wp-editor.php:1135
+#: wp-includes/class-wp-editor.php:1133
 msgid "Text to display"
 msgstr "Testo da visualizzare"
 
-#: wp-includes/class-wp-editor.php:1099
+#: wp-includes/class-wp-editor.php:1097
 msgid "Insert date/time"
 msgstr "Inserisci data/ora"
 
-#: wp-includes/class-wp-editor.php:1123
+#: wp-includes/class-wp-editor.php:1121
 msgid "Horizontal line"
 msgstr "Linea orizzontale"
 
-#: wp-includes/class-wp-editor.php:1081
+#: wp-includes/class-wp-editor.php:1079
 msgid "Encoding"
 msgstr "Codifica"
 
-#: wp-includes/class-wp-editor.php:1078
+#: wp-includes/class-wp-editor.php:1076
 msgid "Robots"
 msgstr "Robots"
 
-#: wp-includes/class-wp-editor.php:1115
+#: wp-includes/class-wp-editor.php:1113
 msgid "Emoticons"
 msgstr "Emoticons"
 
-#: wp-includes/class-wp-editor.php:1033
+#: wp-includes/class-wp-editor.php:1031
 msgid "Source code"
 msgstr "Codice sorgente"
 
-#: wp-includes/class-wp-editor.php:1112
+#: wp-includes/class-wp-editor.php:1110
 msgid "Special character"
 msgstr "Caratteri speciali"
 
-#: wp-includes/class-wp-editor.php:1125
+#: wp-includes/class-wp-editor.php:1123
 msgid "Restore last draft"
 msgstr "Ripristina l'ultima bozza"
 
-#: wp-includes/class-wp-editor.php:1054
+#: wp-includes/class-wp-editor.php:1052
 msgid "Visual aids"
 msgstr "Aiuti visuali"
 
-#: wp-includes/class-wp-editor.php:1039
+#: wp-includes/class-wp-editor.php:1037
 msgid "Align left"
 msgstr "Allinea a sinistra"
 
-#: wp-includes/class-wp-editor.php:1040
+#: wp-includes/class-wp-editor.php:1038
 msgid "Justify"
 msgstr "Giustificato"
 
-#: wp-includes/class-wp-editor.php:1232
+#: wp-includes/class-wp-editor.php:1230
 msgid "Paste is now in plain text mode. Contents will now be pasted as plain text until you toggle this option off."
 msgstr "Incolla come testo semplice. Il contenuto verr&aacute; incollato come semplice testo finch&eacute; mantieni attiva questa opzione."
 
-#: wp-includes/class-wp-editor.php:1042
+#: wp-includes/class-wp-editor.php:1040
 msgid "Decrease indent"
 msgstr "Decrementa rientro"
 
-#: wp-includes/class-wp-editor.php:1037
+#: wp-includes/class-wp-editor.php:1035
 msgid "Align center"
 msgstr "Allinea al centro"
 
-#: wp-includes/class-wp-editor.php:1029
+#: wp-includes/class-wp-editor.php:1027
 msgid "Clear formatting"
 msgstr "Cancella formattazione"
 
-#: wp-includes/class-wp-editor.php:1041
+#: wp-includes/class-wp-editor.php:1039
 msgid "Increase indent"
 msgstr "Aumenta rientro"
 
-#: wp-includes/class-wp-editor.php:1057 wp-includes/script-loader.php:114
+#: wp-includes/class-wp-editor.php:1055 wp-includes/script-loader.php:114
 msgid "Numbered list"
 msgstr "Elenco numerato"
 
-#: wp-includes/class-wp-editor.php:1038
+#: wp-includes/class-wp-editor.php:1036
 msgid "Align right"
 msgstr "Allinea a destra"
 
@@ -7655,40 +7702,40 @@ msgstr "https://it.wordpress.org/support/forums/"
 #: wp-includes/admin-bar.php:164 wp-includes/update.php:153
 #: wp-includes/update.php:345 wp-includes/update.php:527
 #: wp-includes/wp-db.php:1062 wp-includes/wp-db.php:1595
-#: wp-includes/wp-db.php:1753 wp-login.php:920
+#: wp-includes/wp-db.php:1753 wp-login.php:921
 msgid "https://wordpress.org/support/"
 msgstr "https://it.wordpress.org/support/"
 
 #: wp-includes/admin-bar.php:148
-#: wp-includes/widgets/class-wp-widget-meta.php:72 wp-login.php:116
+#: wp-includes/widgets/class-wp-widget-meta.php:72 wp-login.php:117
 msgid "https://wordpress.org/"
 msgstr "https://it.wordpress.org/"
 
-#: wp-includes/class-wp-editor.php:1080
+#: wp-includes/class-wp-editor.php:1078
 msgid "Keywords"
 msgstr "Parole chiave"
 
-#: wp-includes/class-wp-editor.php:1106
+#: wp-includes/class-wp-editor.php:1104
 msgid "Alternative source"
 msgstr "Sorgente alternativa"
 
-#: wp-includes/class-wp-editor.php:1095
+#: wp-includes/class-wp-editor.php:1093
 msgid "Style"
 msgstr "Stile"
 
-#: wp-includes/class-wp-editor.php:1097 wp-includes/script-loader.php:111
+#: wp-includes/class-wp-editor.php:1095 wp-includes/script-loader.php:111
 msgid "Insert image"
 msgstr "Inserisci immagine"
 
-#: wp-includes/class-wp-editor.php:1252
+#: wp-includes/class-wp-editor.php:1250
 msgid "Toolbar Toggle"
 msgstr "Mostra/nascondi la barra degli strumenti"
 
-#: wp-includes/class-wp-editor.php:1214
+#: wp-includes/class-wp-editor.php:1212
 msgid "Column group"
 msgstr "Colonna gruppo"
 
-#: wp-includes/class-wp-editor.php:1151
+#: wp-includes/class-wp-editor.php:1149
 msgid "Could not find the specified string."
 msgstr "Non riesco a trovare la stringa specifica."
 
@@ -7956,7 +8003,7 @@ msgstr "Il browser web del tuo dispositivo non può essere utilizzato per carica
 msgid "<strong>ERROR</strong>: Couldn&#8217;t register you&hellip; please contact the <a href=\"mailto:%s\">webmaster</a> !"
 msgstr "<strong>ERRORE</strong>: Impossibile registrarti&hellip; contatta il <a href=\"mailto:%s\">webmaster</a> !"
 
-#: wp-login.php:401
+#: wp-login.php:402
 msgid "Possible reason: your host may have disabled the mail() function."
 msgstr "Possibili motivi: il tuo host può aver disabilitato la funzione mail()."
 
@@ -7983,7 +8030,7 @@ msgstr "%2$s %1$s %3$s alle %4$s : %5$s"
 msgid "Your session has expired. You can log in again from this page or go to the login page."
 msgstr "La tua sessione &egrave; scaduta. Puoi loggarti nuovamente da questa pagina o attraverso la pagina di login."
 
-#: wp-includes/functions.php:5344
+#: wp-includes/functions.php:5350
 msgid "The login page will open in a new window. After logging in you can close it and return to this page."
 msgstr "La pagina di login sar&agrave; aperta in una nuova finestra. Dopo esserti loggato potrai chiuderla e ritornare a questa pagina."
 
@@ -8008,7 +8055,7 @@ msgctxt "placeholder"
 msgid "Search &hellip;"
 msgstr "Cerca &hellip;"
 
-#: wp-includes/functions.php:5342 wp-includes/script-loader.php:569
+#: wp-includes/functions.php:5348 wp-includes/script-loader.php:569
 msgid "Session expired"
 msgstr "Sessione scaduta"
 
@@ -8109,38 +8156,38 @@ msgstr "Caricamento"
 msgid "No editor could be selected."
 msgstr "Impossibile selezionare un editor"
 
-#: wp-includes/post.php:2379
+#: wp-includes/post.php:2412
 msgid "Video <span class=\"count\">(%s)</span>"
 msgid_plural "Video <span class=\"count\">(%s)</span>"
 msgstr[0] "Video <span class=\"count\">(%s)</span>"
 msgstr[1] "Video <span class=\"count\">(%s)</span>"
 
-#: wp-includes/post.php:2379
+#: wp-includes/post.php:2412
 msgid "Manage Video"
 msgstr "Gestione video"
 
-#: wp-includes/post.php:2379
+#: wp-includes/post.php:2412
 #: wp-includes/widgets/class-wp-widget-media-video.php:25
 msgid "Video"
 msgstr "Video"
 
-#: wp-includes/post.php:2378
+#: wp-includes/post.php:2411
 msgid "Audio <span class=\"count\">(%s)</span>"
 msgid_plural "Audio <span class=\"count\">(%s)</span>"
 msgstr[0] "Audio <span class=\"count\">(%s)</span>"
 msgstr[1] "Audio <span class=\"count\">(%s)</span>"
 
-#: wp-includes/post.php:2378
+#: wp-includes/post.php:2411
 msgid "Manage Audio"
 msgstr "Gestione audio"
 
-#: wp-includes/post.php:2377
+#: wp-includes/post.php:2410
 msgid "Image <span class=\"count\">(%s)</span>"
 msgid_plural "Images <span class=\"count\">(%s)</span>"
 msgstr[0] "Immagine <span class=\"count\">(%s)</span>"
 msgstr[1] "Immagini <span class=\"count\">(%s)</span>"
 
-#: wp-includes/post.php:2377
+#: wp-includes/post.php:2410
 msgid "Manage Images"
 msgstr "Gestione immagini"
 
@@ -8152,7 +8199,7 @@ msgstr "Caricato in questa pagina"
 msgid "Insert into page"
 msgstr "Inserisci nella pagina"
 
-#: wp-includes/post.php:2378
+#: wp-includes/post.php:2411
 #: wp-includes/widgets/class-wp-widget-media-audio.php:25
 msgid "Audio"
 msgstr "Audio"
@@ -8256,7 +8303,7 @@ msgstr ""
 "\n"
 "%s\n"
 "\n"
-"Dopo l'attivazione, riceverai un altra email con i dettagli per il login."
+"Dopo l'attivazione, riceverai un'altra email con i dettagli per il login."
 
 #. translators: New user notification email. 1: User login, 2: User IP address,
 #. 3: Settings screen URL
@@ -8377,7 +8424,7 @@ msgctxt "Display name based on first name and last name"
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
 
-#: wp-includes/taxonomy.php:2356
+#: wp-includes/taxonomy.php:2410
 msgid "Could not insert term relationship into the database."
 msgstr "Impossibile inserire la relazione per il termine nel database."
 
@@ -8460,7 +8507,7 @@ msgstr "Il servizio XML-RPC è disattivato su questo sito."
 msgid "Incorrect username or password."
 msgstr "Nome utente o password non corrette."
 
-#: wp-includes/class-wp-editor.php:184 wp-includes/class-wp-editor.php:1264
+#: wp-includes/class-wp-editor.php:184 wp-includes/class-wp-editor.php:1262
 msgctxt "Name for the Text editor tab (formerly HTML)"
 msgid "Text"
 msgstr "Testo"
@@ -8469,11 +8516,11 @@ msgstr "Testo"
 msgid "Skip to toolbar"
 msgstr "Vai alla barra degli strumenti"
 
-#: wp-includes/class-wp-customize-manager.php:4981
+#: wp-includes/class-wp-customize-manager.php:4984
 msgid "Header Text Color"
 msgstr "Colore del testo dell'header"
 
-#: wp-includes/class-wp-customize-manager.php:4958
+#: wp-includes/class-wp-customize-manager.php:4961
 msgid "Colors"
 msgstr "Colori"
 
@@ -8507,7 +8554,7 @@ msgstr "Impossibile mettere in evidenza un articolo privato."
 msgid "Sorry, you are not allowed to publish this page."
 msgstr "Non hai i permessi per pubblicare questa pagina."
 
-#: wp-includes/class-wp-customize-manager.php:5031
+#: wp-includes/class-wp-customize-manager.php:5034
 #: wp-includes/customize/class-wp-customize-header-image-control.php:31
 msgid "Header Image"
 msgstr "Immagine dell'header"
@@ -8551,16 +8598,16 @@ msgid_plural "Site name must be at least %s characters."
 msgstr[0] "Il nome del sito deve essere di almeno %s carattere."
 msgstr[1] "Il nome del sito deve essere di almeno %s caratteri."
 
-#: wp-includes/class-wp-customize-manager.php:5238
+#: wp-includes/class-wp-customize-manager.php:5241
 msgid "A static page"
 msgstr "Una pagina statica"
 
-#: wp-includes/class-wp-customize-manager.php:5105
+#: wp-includes/class-wp-customize-manager.php:5108
 #: wp-includes/customize/class-wp-customize-background-image-control.php:30
 msgid "Background Image"
 msgstr "Immagine di sfondo"
 
-#: wp-includes/class-wp-customize-manager.php:4996
+#: wp-includes/class-wp-customize-manager.php:4999
 msgid "Background Color"
 msgstr "Colore di sfondo"
 
@@ -8576,7 +8623,7 @@ msgstr "Rimuovi immagine"
 msgid "Sorry, you are not allowed to edit this comment."
 msgstr "Non hai i permessi per modificare questo tipo di articoli."
 
-#: wp-includes/class-wp-customize-manager.php:5260
+#: wp-includes/class-wp-customize-manager.php:5263
 msgid "Posts page"
 msgstr "Pagina articoli"
 
@@ -8584,9 +8631,9 @@ msgstr "Pagina articoli"
 msgid "Allowed Files"
 msgstr "File permessi"
 
-#: wp-includes/class-wp-customize-manager.php:4940
+#: wp-includes/class-wp-customize-manager.php:4943
 #: wp-includes/class-wp-customize-widgets.php:753
-#: wp-includes/class-wp-editor.php:1258
+#: wp-includes/class-wp-editor.php:1256
 #: wp-includes/customize/class-wp-customize-media-control.php:226
 #: wp-includes/customize/class-wp-customize-media-control.php:236
 #: wp-includes/customize/class-wp-customize-media-control.php:246
@@ -8617,7 +8664,7 @@ msgstr "La modifica del termine è fallita."
 #: wp-includes/class-wp-xmlrpc-server.php:1501
 #: wp-includes/class-wp-xmlrpc-server.php:2053
 #: wp-includes/class-wp-xmlrpc-server.php:2149
-#: wp-includes/class-wp-xmlrpc-server.php:2221 wp-includes/taxonomy.php:2019
+#: wp-includes/class-wp-xmlrpc-server.php:2221 wp-includes/taxonomy.php:2073
 msgid "Invalid term ID."
 msgstr "ID del termine non valido."
 
@@ -8627,9 +8674,9 @@ msgstr "Non hai i permessi per modificare i termini di questa tassonomia."
 
 #: wp-includes/class-wp-xmlrpc-server.php:1973
 #: wp-includes/class-wp-xmlrpc-server.php:2077
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:403
-#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:508
-#: wp-includes/taxonomy.php:2028 wp-includes/taxonomy.php:2652
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:406
+#: wp-includes/rest-api/endpoints/class-wp-rest-terms-controller.php:511
+#: wp-includes/taxonomy.php:2082 wp-includes/taxonomy.php:2706
 msgid "Parent term does not exist."
 msgstr "Il termine genitore non esiste."
 
@@ -8650,11 +8697,11 @@ msgstr "Non hai i permessi per creare termini in questa tassonomia."
 #: wp-includes/class-wp-xmlrpc-server.php:2270
 #: wp-includes/class-wp-xmlrpc-server.php:2365
 #: wp-includes/rest-api/endpoints/class-wp-rest-taxonomies-controller.php:163
-#: wp-includes/taxonomy.php:420 wp-includes/taxonomy.php:652
-#: wp-includes/taxonomy.php:752 wp-includes/taxonomy.php:931
-#: wp-includes/taxonomy.php:1090 wp-includes/taxonomy.php:1868
-#: wp-includes/taxonomy.php:2004 wp-includes/taxonomy.php:2267
-#: wp-includes/taxonomy.php:2410 wp-includes/taxonomy.php:2611
+#: wp-includes/taxonomy.php:420 wp-includes/taxonomy.php:673
+#: wp-includes/taxonomy.php:773 wp-includes/taxonomy.php:952
+#: wp-includes/taxonomy.php:1111 wp-includes/taxonomy.php:1922
+#: wp-includes/taxonomy.php:2058 wp-includes/taxonomy.php:2321
+#: wp-includes/taxonomy.php:2464 wp-includes/taxonomy.php:2665
 msgid "Invalid taxonomy."
 msgstr "Tassonomia non valida."
 
@@ -8704,7 +8751,7 @@ msgid "ERROR: The themes directory is either empty or doesn&#8217;t exist. Pleas
 msgstr "ERRORE: La directory dei temi è vuota o non esiste. Verifica la tua installazione."
 
 #. translators: %s: document title from the preview
-#: wp-includes/class-wp-customize-manager.php:4369
+#: wp-includes/class-wp-customize-manager.php:4372
 msgid "Customize: %s"
 msgstr "Personalizza %s"
 
@@ -8714,11 +8761,11 @@ msgstr "Personalizza %s"
 msgid "&mdash; Select &mdash;"
 msgstr "&mdash; Seleziona &mdash;"
 
-#: wp-includes/class-wp-customize-manager.php:4883
+#: wp-includes/class-wp-customize-manager.php:4886
 msgid "Tagline"
 msgstr "Motto"
 
-#: wp-includes/class-wp-customize-manager.php:5237
+#: wp-includes/class-wp-customize-manager.php:5240
 msgid "Your latest posts"
 msgstr "Gli ultimi articoli"
 
@@ -8758,7 +8805,7 @@ msgstr "Non hai i permessi per modificare questo articolo."
 msgid "Edit Site"
 msgstr "Modifica sito"
 
-#: wp-includes/post.php:4011 wp-includes/script-loader.php:683
+#: wp-includes/post.php:4061 wp-includes/script-loader.php:683
 #: wp-includes/script-loader.php:755
 msgctxt "tag delimiter"
 msgid ","
@@ -8793,7 +8840,7 @@ msgstr "Non hai i permessi per creare articoli protetti da password per questo t
 #: wp-includes/class-wp-xmlrpc-server.php:1715
 #: wp-includes/class-wp-xmlrpc-server.php:4863
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:825
-#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:312
+#: wp-includes/rest-api/endpoints/class-wp-rest-revisions-controller.php:420
 msgid "The post cannot be deleted."
 msgstr "L'articolo non può essere eliminato."
 
@@ -8889,7 +8936,7 @@ msgstr "Crea un file di configurazione"
 msgid "You can create a %s file through a web interface, but this doesn't work for all server setups. The safest way is to manually create the file."
 msgstr "Puoi creare un file %s tramite una interfaccia web ma non funziona con tutte le configurazioni di server. Il metodo più sicuro è creare il file manualmente."
 
-#: wp-includes/class-wp-customize-manager.php:5271
+#: wp-includes/class-wp-customize-manager.php:5274
 msgid "https://codex.wordpress.org/CSS"
 msgstr "https://codex.wordpress.org/CSS"
 
@@ -8975,15 +9022,15 @@ msgstr "%s supera la dimensione massima di caricamento per questo sito."
 msgid "Feedback"
 msgstr "Riscontro"
 
-#: wp-includes/comment.php:3125
+#: wp-includes/comment.php:3129
 msgid "<strong>ERROR</strong>: please fill the required fields (name, email)."
 msgstr "<strong>ERRORE</strong>: inserisci i campi obbligatori (nome, email)."
 
-#: wp-includes/comment.php:3127
+#: wp-includes/comment.php:3131
 msgid "<strong>ERROR</strong>: please enter a valid email address."
 msgstr "<strong>ERRORE</strong>: inserisci un indirizzo email valido."
 
-#: wp-includes/comment.php:3132
+#: wp-includes/comment.php:3136
 msgid "<strong>ERROR</strong>: please type a comment."
 msgstr "<strong>ERRORE</strong>: inserisci un commento."
 
@@ -9034,7 +9081,7 @@ msgstr "WordPress.org"
 #. translators: %s: site name
 #: wp-includes/admin-bar.php:316
 msgid "Network Admin: %s"
-msgstr "Amministratore del network: %s"
+msgstr "Amministratore del network %s"
 
 #: wp-includes/taxonomy.php:506
 msgctxt "taxonomy singular name"
@@ -9117,7 +9164,7 @@ msgstr "Tutte le pagine"
 msgid "All Posts"
 msgstr "Tutti gli articoli"
 
-#: wp-includes/class-wp-editor.php:1130
+#: wp-includes/class-wp-editor.php:1128
 msgid "Link"
 msgstr "Link"
 
@@ -9147,7 +9194,7 @@ msgstr "Barra degli strumenti"
 msgid "Preload"
 msgstr "Precaricamento"
 
-#: wp-includes/class-wp-editor.php:1105
+#: wp-includes/class-wp-editor.php:1103
 msgid "Poster"
 msgstr "Poster"
 
@@ -9164,11 +9211,11 @@ msgctxt "post format"
 msgid "Format"
 msgstr "Formato"
 
-#: wp-includes/class-wp-editor.php:1720
+#: wp-includes/class-wp-editor.php:1718
 msgid "Or link to existing content"
 msgstr "Oppure inserisci un link a un contenuto esistente "
 
-#: wp-includes/class-wp-editor.php:1706
+#: wp-includes/class-wp-editor.php:1704
 msgid "Enter the destination URL"
 msgstr "Inserisci la URL di destinazione"
 
@@ -9231,7 +9278,7 @@ msgstr "Audio"
 msgid "Invalid post format."
 msgstr "Formato articolo non valido"
 
-#: wp-includes/class-wp-editor.php:1737
+#: wp-includes/class-wp-editor.php:1735
 msgid "No search term specified. Showing recent items."
 msgstr "Nessun termine di ricerca inserito. Vengono mostrati i contenuti più recenti."
 
@@ -9239,7 +9286,7 @@ msgstr "Nessun termine di ricerca inserito. Vengono mostrati i contenuti più re
 msgid "Only a static class method or function can be used in an uninstall hook."
 msgstr "Per disinstallare un hook occorre usare solo un metodo di classe statico o una funzione."
 
-#: wp-includes/post.php:3013
+#: wp-includes/post.php:3046
 msgid "Passing an integer number of posts is deprecated. Pass an array of arguments instead."
 msgstr "Passare un numero intero di articoli è deprecato. Passare invece un array di argomenti."
 
@@ -9297,7 +9344,7 @@ msgstr "Nessuna pagina presente nel cestino."
 
 #: wp-includes/script-loader.php:842
 msgid "Network Enable"
-msgstr "Abilita network"
+msgstr "Abilita il network"
 
 #: wp-includes/admin-bar.php:593
 msgid "Shortlink"
@@ -9314,7 +9361,7 @@ msgstr "ID allegato non valido."
 msgid "This file no longer needs to be included."
 msgstr "Il file non ha più la necessità di venire incluso"
 
-#: wp-login.php:577
+#: wp-login.php:578
 msgid "Please enter your username or email address. You will receive a link to create a new password via email."
 msgstr "Inserisci il tuo nome utente o il tuo indirizzo email. Riceverai tramite email un link per creare una nuova password."
 
@@ -9351,43 +9398,43 @@ msgstr "Larghezza dell'immagine di dimensione media"
 msgid "Large size image height"
 msgstr "Altezza dell'immagine di dimensione grande"
 
-#: wp-login.php:682
+#: wp-login.php:683
 msgid "Enter your new password below."
 msgstr "Digitare nuovamente la password."
 
-#: wp-login.php:366
+#: wp-login.php:367
 msgid "If this was a mistake, just ignore this email and nothing will happen."
 msgstr "Se si è trattato di un errore, ignorare questa email e non accadrà nulla."
 
-#: wp-login.php:361
+#: wp-login.php:362
 msgid "Someone has requested a password reset for the following account:"
 msgstr "Qualcuno ha richiesto la reimpostazione della password per il seguente account."
 
-#: wp-login.php:674
+#: wp-login.php:675
 msgid "Your password has been reset."
 msgstr "La password è stata reimpostata."
 
-#: wp-login.php:674
+#: wp-login.php:675
 msgid "Password Reset"
 msgstr "Reimpostazione password"
 
-#: wp-login.php:659
+#: wp-login.php:660
 msgid "The passwords do not match."
 msgstr "Le password non corrispondono."
 
-#: wp-login.php:682 wp-login.php:729
+#: wp-login.php:683 wp-login.php:730
 msgid "Reset Password"
 msgstr "Reimposta password"
 
-#: wp-login.php:367
+#: wp-login.php:368
 msgid "To reset your password, visit the following address:"
 msgstr "Per reimpostare la tua password visita il seguente indirizzo:"
 
-#: wp-login.php:711
+#: wp-login.php:712
 msgid "Confirm new password"
 msgstr "Conferma la nuova password"
 
-#: wp-login.php:690
+#: wp-login.php:691
 msgid "New password"
 msgstr "Nuova password"
 
@@ -9408,7 +9455,7 @@ msgid "Blavatar"
 msgstr "Blavatar"
 
 #. translators: %s: taxonomy name
-#: wp-includes/post.php:3479
+#: wp-includes/post.php:3512
 msgid "Invalid taxonomy: %s."
 msgstr "Tassonomia non valida: %s."
 
@@ -9436,7 +9483,7 @@ msgstr "Aggiungere una nuova categoria di link"
 msgid "New Link Category Name"
 msgstr "Nuovo nome di categoria link"
 
-#: wp-includes/user.php:2838
+#: wp-includes/user.php:2834
 msgid "User"
 msgstr "Utente"
 
@@ -9599,7 +9646,7 @@ msgstr "<strong>Conflitto fra i valori per le costanti VHOST e SUBDOMAIN_INSTALL
 msgid "<strong>ERROR</strong>: This username is invalid because it uses illegal characters. Please enter a valid username."
 msgstr "<strong>ERRORE</strong>: questo nome utente non è valido perché utilizza dei caratteri non ammessi. Inserisci un nome utente valido."
 
-#: wp-includes/comment-template.php:2211
+#: wp-includes/comment-template.php:2219
 msgid "Required fields are marked %s"
 msgstr "I campi obbligatori sono contrassegnati %s"
 
@@ -9747,7 +9794,7 @@ msgstr "L'indirizzo di WordPress inserito non sembra essere una URL valida. Inse
 msgid "The email address entered did not appear to be a valid email address. Please enter a valid email address."
 msgstr "L'indirizzo email inserito non sembra essere un indirizzo email valido. Inserisci un indirizzo email valido."
 
-#: wp-includes/taxonomy.php:2108
+#: wp-includes/taxonomy.php:2162
 msgid "A term with the name provided already exists with this parent."
 msgstr "Un termine con il nome indicato esiste già per questo genitore."
 
@@ -9759,7 +9806,7 @@ msgstr "Si è verificato un errore nell'aggiunta del proprio sito. Tornare alla 
 msgid "This file is too big. Files must be less than %d KB in size."
 msgstr "Il file è troppo grande. I file devono avere una dimensione inferiore a %d KB."
 
-#: wp-includes/comment-template.php:2240
+#: wp-includes/comment-template.php:2248
 msgid "Your email address will not be published."
 msgstr "Il tuo indirizzo email non sarà pubblicato."
 
@@ -10138,8 +10185,8 @@ msgstr "Il nome e l'email dell'autore del commento sono obbligatori."
 #: wp-includes/class-wp-xmlrpc-server.php:5585
 #: wp-includes/class-wp-xmlrpc-server.php:6098
 #: wp-includes/class-wp-xmlrpc-server.php:6152
-#: wp-includes/class-wp-xmlrpc-server.php:6271 wp-includes/post.php:3147
-#: wp-includes/post.php:3681
+#: wp-includes/class-wp-xmlrpc-server.php:6271 wp-includes/post.php:3180
+#: wp-includes/post.php:3728
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:326
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:688
 #: wp-includes/rest-api/endpoints/class-wp-rest-posts-controller.php:369
@@ -10271,40 +10318,40 @@ msgstr "Sembra non ci siano nuove email."
 msgid "Slow down cowboy, no need to check for new mails so often!"
 msgstr "Rallenta cowboy, non serve controllare così spesso le nuove email!"
 
-#: wp-login.php:992
+#: wp-login.php:993
 msgid "Registration complete. Please check your email."
 msgstr "Registrazione completata. Verifica la tua email."
 
-#: wp-login.php:990
+#: wp-login.php:991
 msgid "Check your email for your new password."
 msgstr "Controllare la tua email per la tua nuova password."
 
-#: wp-login.php:988
+#: wp-login.php:989
 msgid "Check your email for the confirmation link."
 msgstr "Controllare la propria casella email per il link di conferma."
 
-#: wp-login.php:986
+#: wp-login.php:987
 msgid "User registration is currently not allowed."
 msgstr "La registrazione degli utenti non è al momento permessa."
 
-#: wp-login.php:984
+#: wp-login.php:985
 msgid "You are now logged out."
 msgstr "Disconnessione effettuata."
 
-#: wp-login.php:943
+#: wp-login.php:944
 msgid "You have logged in successfully."
 msgstr "Ti sei autenticato correttamente."
 
 #: wp-includes/user.php:149 wp-includes/user.php:175 wp-includes/user.php:227
-#: wp-includes/user.php:247 wp-login.php:830 wp-login.php:1068
+#: wp-includes/user.php:247 wp-login.php:831 wp-login.php:1069
 msgid "Lost your password?"
 msgstr "Password dimenticata?"
 
-#: wp-login.php:802
+#: wp-login.php:803
 msgid "Register For This Site"
 msgstr "Registrazione per questo sito"
 
-#: wp-login.php:802
+#: wp-login.php:803
 msgid "Registration Form"
 msgstr "Modulo di registrazione"
 
@@ -10312,11 +10359,11 @@ msgstr "Modulo di registrazione"
 msgid "&larr; Back to Tags"
 msgstr "&larr; Torna ai tag"
 
-#: wp-login.php:600
+#: wp-login.php:601
 msgid "Get New Password"
 msgstr "Ottieni una nuova password"
 
-#: wp-login.php:577
+#: wp-login.php:578
 msgid "Lost Password"
 msgstr "Password persa"
 
@@ -10331,17 +10378,17 @@ msgstr "<strong>ERRORE</strong>: Inserisci il tuo indirizzo email."
 #: wp-includes/user.php:2227 wp-includes/user.php:2230
 #: wp-includes/user.php:2234 wp-includes/user.php:2259
 #: wp-includes/user.php:2268 wp-includes/user.php:2272
-#: wp-includes/user.php:2289 wp-includes/user.php:3397
-#: wp-includes/user.php:3409 wp-includes/user.php:3427 wp-login.php:853
+#: wp-includes/user.php:2289 wp-includes/user.php:3456
+#: wp-includes/user.php:3468 wp-includes/user.php:3486 wp-login.php:854
 msgid "Invalid key"
 msgstr "Chiave non valida"
 
-#: wp-login.php:401
+#: wp-login.php:402
 msgid "The email could not be sent."
 msgstr "Impossibile inviare l’email."
 
 #. translators: Password reset email subject. %s: Site name
-#: wp-login.php:371
+#: wp-login.php:372
 msgid "[%s] Password Reset"
 msgstr "Reimpostazione password per [%s] "
 
@@ -10349,19 +10396,19 @@ msgstr "Reimpostazione password per [%s] "
 msgid "Password reset is not allowed for this user"
 msgstr "La reimpostazione della password non è consentita per questo utente."
 
-#: wp-login.php:338
+#: wp-login.php:339
 msgid "<strong>ERROR</strong>: Invalid username or email."
 msgstr "<strong>ERRORE</strong>: nome utente o email non validi."
 
-#: wp-login.php:317
+#: wp-login.php:318
 msgid "<strong>ERROR</strong>: There is no user registered with that email address."
 msgstr "<strong>ERRORE</strong>: L'utente registrato con questo indirizzo email non esiste."
 
-#: wp-login.php:313
+#: wp-login.php:314
 msgid "<strong>ERROR</strong>: Enter a username or email address."
 msgstr "<strong>ERRORE</strong>: Inserisci un nome utente o un indirizzo email."
 
-#: wp-login.php:117
+#: wp-login.php:118
 msgid "Powered by WordPress"
 msgstr "Powered by WordPress"
 
@@ -10375,7 +10422,7 @@ msgstr "<strong>ERRORE</strong>: WordPress %1$s richiede MySQL %2$s o superiore"
 msgid "Sidebar %d"
 msgstr "Barra laterale %d"
 
-#: wp-includes/functions.php:5343 wp-includes/user.php:285
+#: wp-includes/functions.php:5349 wp-includes/user.php:285
 msgid "Please log in again."
 msgstr "Accedi nuovamente"
 
@@ -10399,21 +10446,21 @@ msgstr "Foglio di stile mancante."
 msgid "The parent theme is missing. Please install the \"%s\" parent theme."
 msgstr "Il tema padre è mancante. Installare il tema padre \"%s\"."
 
-#: wp-includes/taxonomy.php:4137
+#: wp-includes/taxonomy.php:4191
 msgid "Invalid object ID."
 msgstr "ID oggetto non valido."
 
 #. translators: 1: Taxonomy term slug
-#: wp-includes/taxonomy.php:2710
+#: wp-includes/taxonomy.php:2764
 msgid "The slug &#8220;%s&#8221; is already in use by another term."
 msgstr "L'abbreviazione &#8220;%s&#8221; è già utilizzata da un altro termine"
 
-#: wp-includes/taxonomy.php:2132
+#: wp-includes/taxonomy.php:2186
 msgid "Could not insert term into the database."
 msgstr "Non è possibile inserire il termine nel database"
 
-#: wp-includes/taxonomy.php:748 wp-includes/taxonomy.php:2624
-#: wp-includes/taxonomy.php:3925
+#: wp-includes/taxonomy.php:769 wp-includes/taxonomy.php:2678
+#: wp-includes/taxonomy.php:3979
 msgid "Empty Term."
 msgstr "Termine vuoto"
 
@@ -10526,7 +10573,7 @@ msgstr "Questa funzionalità richiede il frame in linea. Hai gli iframe disabili
 msgid "of"
 msgstr "di"
 
-#: wp-includes/class-wp-editor.php:1086 wp-includes/script-loader.php:275
+#: wp-includes/class-wp-editor.php:1084 wp-includes/script-loader.php:275
 #: wp-includes/widgets/class-wp-widget-media-image.php:25
 msgid "Image"
 msgstr "Immagine"
@@ -10583,15 +10630,15 @@ msgstr "Impossibile creare un utente senza un nome di login."
 msgid "Cannot create a revision of a revision"
 msgstr "Impossibile creare una revisione di una revisione"
 
-#: wp-includes/post.php:3448
+#: wp-includes/post.php:3481
 msgid "Could not insert post into the database"
 msgstr "È impossibile inserire l'articolo nel database"
 
-#: wp-includes/post.php:3433
+#: wp-includes/post.php:3466
 msgid "Could not update post in the database"
 msgstr "Impossibile aggiornare l'articolo nel database"
 
-#: wp-includes/post.php:3194
+#: wp-includes/post.php:3227
 msgid "Content, title, and excerpt are empty."
 msgstr "Contenuto, titolo e riassunto sono vuoti."
 
@@ -10683,7 +10730,7 @@ msgstr "[%s] Registrazione di un nuovo utente"
 
 #. translators: %s: user login
 #: wp-includes/pluggable.php:1833 wp-includes/pluggable.php:1897
-#: wp-login.php:365
+#: wp-login.php:366
 msgid "Username: %s"
 msgstr "Nome utente: %s"
 
@@ -10746,6 +10793,11 @@ msgstr "[%1$s] Commento: \"%2$s\""
 #: wp-includes/ms-load.php:476
 msgid "What do I do now?"
 msgstr "Cosa devo fare ora?"
+
+#. translators: %s: maximum allowed file size in kilobytes
+#: wp-includes/rest-api/endpoints/class-wp-rest-attachments-controller.php:805
+msgid "This file is too big. Files must be less than %s KB in size."
+msgstr "Questo file è troppo grande. I file devono essere meno di  %s KB come dimensione."
 
 #. translators: New user notification email subject. 1: Network name, 2: New
 #. user login
@@ -10843,36 +10895,36 @@ msgstr "Articolo precedente"
 msgid "Comments Feed"
 msgstr "Feed dei commenti"
 
-#: wp-includes/class-wp-editor.php:1254
+#: wp-includes/class-wp-editor.php:1252
 msgid "Insert Page Break tag"
 msgstr "Inserisci tag di interruzione pagina"
 
-#: wp-includes/class-wp-customize-manager.php:5135
-#: wp-includes/class-wp-customize-manager.php:5176
+#: wp-includes/class-wp-customize-manager.php:5138
+#: wp-includes/class-wp-customize-manager.php:5179
 msgid "Fill Screen"
 msgstr "Riempi lo schermo"
 
-#: wp-includes/class-wp-editor.php:1127
+#: wp-includes/class-wp-editor.php:1125
 msgid "Remove link"
 msgstr "Rimuovi link"
 
-#: wp-includes/class-wp-editor.php:1131 wp-includes/script-loader.php:104
+#: wp-includes/class-wp-editor.php:1129 wp-includes/script-loader.php:104
 msgid "Insert link"
 msgstr "Inserisci link"
 
-#: wp-includes/class-wp-editor.php:1162
+#: wp-includes/class-wp-editor.php:1160
 msgid "Check Spelling"
 msgstr "Verifica ortografia"
 
-#: wp-includes/class-wp-editor.php:1047
+#: wp-includes/class-wp-editor.php:1045
 msgid "Select all"
 msgstr "Seleziona tutto"
 
-#: wp-includes/class-wp-editor.php:1280 wp-includes/script-loader.php:563
+#: wp-includes/class-wp-editor.php:1278 wp-includes/script-loader.php:563
 msgid "Action"
 msgstr "Azione"
 
-#: wp-includes/class-wp-editor.php:1279
+#: wp-includes/class-wp-editor.php:1277
 msgid "Letter"
 msgstr "Lettera"
 
@@ -10881,7 +10933,7 @@ msgstr "Lettera"
 msgid "Link Rel"
 msgstr "Link Rel"
 
-#: wp-includes/class-wp-editor.php:1090
+#: wp-includes/class-wp-editor.php:1088
 msgid "Source"
 msgstr "Sorgente"
 
@@ -10909,7 +10961,7 @@ msgstr "In alto a sinistra"
 msgid "Mute"
 msgstr "Muto"
 
-#: wp-includes/class-wp-editor.php:1122 wp-includes/script-loader.php:366
+#: wp-includes/class-wp-editor.php:1120 wp-includes/script-loader.php:366
 msgid "Fullscreen"
 msgstr "Schermo intero"
 
@@ -10927,218 +10979,218 @@ msgstr "Allinea"
 msgid "Loop"
 msgstr "Ciclo"
 
-#: wp-includes/class-wp-editor.php:1092
+#: wp-includes/class-wp-editor.php:1090
 msgid "Constrain proportions"
 msgstr "Mantieni le proporzioni"
 
-#: wp-includes/class-wp-editor.php:1088
+#: wp-includes/class-wp-editor.php:1086
 msgid "General"
 msgstr "Generale"
 
-#: wp-includes/class-wp-editor.php:1140
+#: wp-includes/class-wp-editor.php:1138
 msgid "The URL you entered seems to be an external link. Do you want to add the required http:// prefix?"
 msgstr "L'URL che hai inserito sembra un link esterno, vuoi aggiungere il necessario prefisso http://?"
 
-#: wp-includes/class-wp-editor.php:1138
+#: wp-includes/class-wp-editor.php:1136
 msgid "The URL you entered seems to be an email address. Do you want to add the required mailto: prefix?"
 msgstr "L'URL che hai inserito sembra un indirizzo email, vuoi aggiungere il necessario prefisso mailto:?"
 
-#: wp-includes/class-wp-editor.php:1211
+#: wp-includes/class-wp-editor.php:1209
 #: wp-includes/customize/class-wp-customize-background-position-control.php:53
 msgid "Bottom"
 msgstr "Basso"
 
-#: wp-includes/class-wp-editor.php:1210
+#: wp-includes/class-wp-editor.php:1208
 msgid "Middle"
 msgstr "Mediano"
 
-#: wp-includes/class-wp-editor.php:1209
+#: wp-includes/class-wp-editor.php:1207
 #: wp-includes/customize/class-wp-customize-background-position-control.php:43
 msgid "Top"
 msgstr "Alto"
 
-#: wp-includes/class-wp-editor.php:1124
+#: wp-includes/class-wp-editor.php:1122
 msgid "Horizontal space"
 msgstr "Spaziatura orizzontale"
 
-#: wp-includes/class-wp-editor.php:1093
+#: wp-includes/class-wp-editor.php:1091
 msgid "Vertical space"
 msgstr "Spaziatura verticale"
 
-#: wp-includes/class-wp-editor.php:1096
+#: wp-includes/class-wp-editor.php:1094
 msgid "Dimensions"
 msgstr "Dimensioni"
 
-#: wp-includes/class-wp-editor.php:1091
+#: wp-includes/class-wp-editor.php:1089
 msgid "Border"
 msgstr "Bordo"
 
-#: wp-includes/class-wp-editor.php:1094
+#: wp-includes/class-wp-editor.php:1092
 msgid "Image description"
 msgstr "Descrizione immagine"
 
-#: wp-includes/class-wp-editor.php:1004
+#: wp-includes/class-wp-editor.php:1002
 msgid "New document"
 msgstr "Nuovo documento"
 
-#: wp-includes/class-wp-editor.php:1046
+#: wp-includes/class-wp-editor.php:1044
 msgid "Paste"
 msgstr "Incolla"
 
-#: wp-includes/class-wp-customize-manager.php:4202
-#: wp-includes/class-wp-editor.php:1045
+#: wp-includes/class-wp-customize-manager.php:4205
+#: wp-includes/class-wp-editor.php:1043
 msgid "Copy"
 msgstr "Copia"
 
-#: wp-includes/class-wp-editor.php:1044
+#: wp-includes/class-wp-editor.php:1042
 msgid "Cut"
 msgstr "Taglia"
 
-#: wp-includes/class-wp-editor.php:1028
+#: wp-includes/class-wp-editor.php:1026
 msgid "Superscript"
 msgstr "Apice"
 
-#: wp-includes/class-wp-editor.php:1027
+#: wp-includes/class-wp-editor.php:1025
 msgid "Subscript"
 msgstr "Pedice"
 
-#: wp-includes/class-wp-editor.php:1026
+#: wp-includes/class-wp-editor.php:1024
 msgid "Strikethrough"
 msgstr "Barrato"
 
-#: wp-includes/class-wp-editor.php:1025
+#: wp-includes/class-wp-editor.php:1023
 msgid "Underline"
 msgstr "Sottolineato"
 
-#: wp-includes/class-wp-editor.php:1031 wp-includes/script-loader.php:102
+#: wp-includes/class-wp-editor.php:1029 wp-includes/script-loader.php:102
 msgid "Italic"
 msgstr "Corsivo"
 
-#: wp-includes/class-wp-editor.php:1030 wp-includes/script-loader.php:100
+#: wp-includes/class-wp-editor.php:1028 wp-includes/script-loader.php:100
 msgid "Bold"
 msgstr "Grassetto"
 
-#: wp-includes/class-wp-editor.php:1032 wp-includes/script-loader.php:118
+#: wp-includes/class-wp-editor.php:1030 wp-includes/script-loader.php:118
 msgid "Code"
 msgstr "Codice"
 
-#: wp-includes/class-wp-editor.php:1018 wp-includes/script-loader.php:105
+#: wp-includes/class-wp-editor.php:1016 wp-includes/script-loader.php:105
 msgid "Blockquote"
 msgstr "Citazione"
 
-#: wp-includes/class-wp-editor.php:1013
+#: wp-includes/class-wp-editor.php:1011
 msgid "Heading 6"
 msgstr "Titolo 6"
 
-#: wp-includes/class-wp-editor.php:1012
+#: wp-includes/class-wp-editor.php:1010
 msgid "Heading 5"
 msgstr "Titolo 5"
 
-#: wp-includes/class-wp-editor.php:1011
+#: wp-includes/class-wp-editor.php:1009
 msgid "Heading 4"
 msgstr "Titolo 4"
 
-#: wp-includes/class-wp-editor.php:1010
+#: wp-includes/class-wp-editor.php:1008
 msgid "Heading 3"
 msgstr "Titolo 3"
 
-#: wp-includes/class-wp-editor.php:1009
+#: wp-includes/class-wp-editor.php:1007
 msgid "Heading 2"
 msgstr "Titolo 2"
 
-#: wp-includes/class-wp-editor.php:1008
+#: wp-includes/class-wp-editor.php:1006
 msgid "Heading 1"
 msgstr "Titolo 1"
 
-#: wp-includes/class-wp-editor.php:1017
+#: wp-includes/class-wp-editor.php:1015
 msgid "Paragraph"
 msgstr "Paragrafo"
 
-#: wp-includes/class-wp-editor.php:1102
+#: wp-includes/class-wp-editor.php:1100
 msgid "Language"
 msgstr "Lingua"
 
-#: wp-includes/class-wp-editor.php:1077
+#: wp-includes/class-wp-editor.php:1075
 msgid "Document properties"
 msgstr "Proprietà documento"
 
-#: wp-includes/class-wp-editor.php:1238 wp-includes/script-loader.php:477
+#: wp-includes/class-wp-editor.php:1236 wp-includes/script-loader.php:477
 #: wp-includes/script-loader.php:559 wp-includes/script-loader.php:712
 #: wp-includes/script-loader.php:735 wp-includes/script-loader.php:899
 #: wp-includes/theme.php:2962
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr "Se si abbandona questa pagina i cambiamenti effettuati verranno persi."
 
-#: wp-includes/class-wp-editor.php:1176
+#: wp-includes/class-wp-editor.php:1174
 msgid "Row"
 msgstr "Riga"
 
-#: wp-includes/class-wp-editor.php:1170
+#: wp-includes/class-wp-editor.php:1168
 msgid "Delete table"
 msgstr "Elimina tabella"
 
-#: wp-includes/class-wp-editor.php:1195
+#: wp-includes/class-wp-editor.php:1193
 msgid "Copy table row"
 msgstr "Copia la riga della tabella"
 
-#: wp-includes/class-wp-editor.php:1194
+#: wp-includes/class-wp-editor.php:1192
 msgid "Cut table row"
 msgstr "Taglia riga tabella"
 
-#: wp-includes/class-wp-editor.php:1191
+#: wp-includes/class-wp-editor.php:1189
 msgid "Paste table row after"
 msgstr "Incolla riga tabella dopo"
 
-#: wp-includes/class-wp-editor.php:1190
+#: wp-includes/class-wp-editor.php:1188
 msgid "Paste table row before"
 msgstr "Incolla riga tabella prima"
 
-#: wp-includes/class-wp-editor.php:1171
+#: wp-includes/class-wp-editor.php:1169
 msgid "Table properties"
 msgstr "Proprietà tabella"
 
-#: wp-includes/class-wp-editor.php:1173
+#: wp-includes/class-wp-editor.php:1171
 msgid "Table cell properties"
 msgstr "Proprietà della cella della tabella"
 
-#: wp-includes/class-wp-editor.php:1172
+#: wp-includes/class-wp-editor.php:1170
 msgid "Table row properties"
 msgstr "Proprietà della riga della tabella"
 
-#: wp-includes/class-wp-editor.php:1196
+#: wp-includes/class-wp-editor.php:1194
 msgid "Merge table cells"
 msgstr "Unisci celle tabella"
 
-#: wp-includes/class-wp-editor.php:1189
+#: wp-includes/class-wp-editor.php:1187
 msgid "Insert column after"
 msgstr "Inserisci una colonna dopo"
 
-#: wp-includes/class-wp-editor.php:1188
+#: wp-includes/class-wp-editor.php:1186
 msgid "Insert column before"
 msgstr "Inserisci una colonna prima"
 
-#: wp-includes/class-wp-editor.php:1192
+#: wp-includes/class-wp-editor.php:1190
 msgid "Delete row"
 msgstr "Elimina riga"
 
-#: wp-includes/class-wp-editor.php:1187
+#: wp-includes/class-wp-editor.php:1185
 msgid "Insert row after"
 msgstr "Inserisci una riga dopo"
 
-#: wp-includes/class-wp-editor.php:1186
+#: wp-includes/class-wp-editor.php:1184
 msgid "Insert row before"
 msgstr "Inserisci una riga prima"
 
-#: wp-includes/class-wp-editor.php:1126 wp-includes/class-wp-editor.php:1132
-#: wp-includes/class-wp-editor.php:1702 wp-includes/script-loader.php:523
+#: wp-includes/class-wp-editor.php:1124 wp-includes/class-wp-editor.php:1130
+#: wp-includes/class-wp-editor.php:1700 wp-includes/script-loader.php:523
 msgid "Insert/edit link"
 msgstr "Inserisci/Modifica link"
 
-#: wp-includes/class-wp-editor.php:1087
+#: wp-includes/class-wp-editor.php:1085
 msgid "Insert/edit image"
 msgstr "Inserisci/Modifica immagine"
 
-#: wp-includes/class-wp-editor.php:1120
+#: wp-includes/class-wp-editor.php:1118
 msgid "Print"
 msgstr "Stampa"
 
@@ -11365,12 +11417,12 @@ msgstr "Risultati della ricerca %1$s %2$s"
 msgid "Site Admin"
 msgstr "Amministra sito"
 
-#: wp-includes/general-template.php:527 wp-login.php:607 wp-login.php:736
-#: wp-login.php:824 wp-login.php:1060
+#: wp-includes/general-template.php:527 wp-login.php:608 wp-login.php:737
+#: wp-login.php:825 wp-login.php:1061
 msgid "Register"
 msgstr "Registrati"
 
-#: wp-includes/general-template.php:398 wp-login.php:1041
+#: wp-includes/general-template.php:398 wp-login.php:1042
 msgid "Remember Me"
 msgstr "Ricordami"
 
@@ -11378,8 +11430,8 @@ msgstr "Ricordami"
 msgid "Log out"
 msgstr "Esci"
 
-#: wp-includes/general-template.php:260 wp-login.php:604 wp-login.php:674
-#: wp-login.php:733 wp-login.php:828
+#: wp-includes/general-template.php:260 wp-login.php:605 wp-login.php:675
+#: wp-login.php:734 wp-login.php:829
 msgid "Log in"
 msgstr "Accedi"
 
@@ -11685,19 +11737,19 @@ msgstr "Identificato un commento duplicato; sembra che tu abbia già scritto que
 msgid "Unapproved"
 msgstr "Non approvato"
 
-#: wp-includes/comment-template.php:2255
+#: wp-includes/comment-template.php:2263
 msgid "Post Comment"
 msgstr "Pubblica il commento"
 
-#: wp-includes/comment-template.php:2254
+#: wp-includes/comment-template.php:2262
 msgid "Cancel reply"
 msgstr "Annulla risposta"
 
-#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2249
+#: wp-includes/comment-template.php:1874 wp-includes/comment-template.php:2257
 msgid "Leave a Reply to %s"
 msgstr "Rispondi a %s"
 
-#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2248
+#: wp-includes/comment-template.php:1873 wp-includes/comment-template.php:2256
 msgid "Leave a Reply"
 msgstr "Lascia un commento"
 
@@ -11790,7 +11842,7 @@ msgid "Tags: "
 msgstr "Tag:"
 
 #. translators: %s: login URL
-#: wp-includes/comment-template.php:2227
+#: wp-includes/comment-template.php:2235
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr "Devi essere <a href=\"%s\">connesso</a> per inviare un commento."
 
@@ -11834,7 +11886,7 @@ msgstr "Pagina successiva &raquo;"
 msgid "&laquo; Previous Page"
 msgstr "&laquo; Pagina precedente"
 
-#: wp-includes/class-wp-xmlrpc-server.php:3634 wp-includes/comment.php:3039
+#: wp-includes/class-wp-xmlrpc-server.php:3634 wp-includes/comment.php:3043
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:465
 msgid "Sorry, comments are closed for this item."
 msgstr "I commenti sono chiusi per questo articolo."
@@ -11848,7 +11900,7 @@ msgstr "Per qualche strano motivo, non è possibile modificare questo articolo."
 msgid "Widgets"
 msgstr "Widget"
 
-#: wp-includes/comment-template.php:2205
+#: wp-includes/comment-template.php:2204
 msgid "Website"
 msgstr "Sito web"
 
@@ -11877,7 +11929,7 @@ msgstr "Titolo:"
 msgid "Plugin:"
 msgstr "Plugin:"
 
-#: wp-includes/class-wp-customize-manager.php:4941
+#: wp-includes/class-wp-customize-manager.php:4944
 #: wp-includes/customize/class-wp-customize-color-control.php:51
 #: wp-includes/customize/class-wp-customize-media-control.php:225
 #: wp-includes/customize/class-wp-customize-media-control.php:235
@@ -11887,7 +11939,7 @@ msgstr "Plugin:"
 msgid "Default"
 msgstr "Predefinito"
 
-#: wp-includes/class-wp-editor.php:1199 wp-includes/media-template.php:965
+#: wp-includes/class-wp-editor.php:1197 wp-includes/media-template.php:965
 #: wp-includes/widgets/class-wp-widget-media-image.php:76
 msgid "Height"
 msgstr "Altezza"
@@ -11904,11 +11956,11 @@ msgstr "Formato data"
 msgid "Allow people to post comments on new articles"
 msgstr "Consenti la scrittura di commenti per i nuovi articoli"
 
-#: wp-includes/comment-template.php:2203 wp-login.php:810
+#: wp-includes/comment-template.php:2202 wp-login.php:811
 msgid "Email"
 msgstr "Email"
 
-#: wp-includes/class-wp-customize-manager.php:4872
+#: wp-includes/class-wp-customize-manager.php:4875
 #: wp-includes/class-wp-xmlrpc-server.php:540
 msgid "Site Title"
 msgstr "Titolo sito"
@@ -11924,7 +11976,7 @@ msgstr "Impostazioni"
 #: wp-includes/post.php:1446
 msgctxt "page"
 msgid "Add New"
-msgstr "Aggiungi nuova"
+msgstr "Aggiungi pagina"
 
 #: wp-includes/admin-bar.php:431
 msgid "My Sites"
@@ -11947,11 +11999,11 @@ msgstr "Sì"
 msgid "Edit Category"
 msgstr "Modifica categoria"
 
-#: wp-includes/general-template.php:399 wp-login.php:1011 wp-login.php:1043
+#: wp-includes/general-template.php:399 wp-login.php:1012 wp-login.php:1044
 msgid "Log In"
 msgstr "Login"
 
-#: wp-login.php:700
+#: wp-login.php:701
 msgid "Strength indicator"
 msgstr "Livello di sicurezza"
 
@@ -11973,7 +12025,7 @@ msgstr "<strong>ERRORE</strong>: questa email è già registrata, scegli un indi
 msgid "<strong>ERROR</strong>: Please enter a username."
 msgstr "<strong>ERRORE</strong>: inserisci un nome utente."
 
-#: wp-includes/class-wp-editor.php:1200 wp-includes/media-template.php:965
+#: wp-includes/class-wp-editor.php:1198 wp-includes/media-template.php:965
 #: wp-includes/widgets/class-wp-widget-media-image.php:70
 msgid "Width"
 msgstr "Larghezza"
@@ -12055,8 +12107,8 @@ msgstr "Nuova pagina"
 msgid "Select"
 msgstr "Seleziona"
 
-#: wp-includes/class-wp-customize-manager.php:5301
-#: wp-includes/class-wp-editor.php:1053 wp-includes/class-wp-editor.php:1703
+#: wp-includes/class-wp-customize-manager.php:5304
+#: wp-includes/class-wp-editor.php:1051 wp-includes/class-wp-editor.php:1701
 #: wp-includes/script-loader.php:277 wp-includes/script-loader.php:371
 #: wp-includes/script-loader.php:562 wp-includes/script-loader.php:1137
 msgid "Close"
@@ -12087,16 +12139,16 @@ msgstr "Link"
 msgid "View Page"
 msgstr "Visualizza pagina"
 
-#: wp-includes/post.php:2377
+#: wp-includes/post.php:2410
 msgid "Images"
 msgstr "Immagini"
 
 #: wp-includes/admin-bar.php:904 wp-includes/admin-bar.php:905
-#: wp-includes/class-wp-editor.php:1724 wp-includes/media.php:3496
+#: wp-includes/class-wp-editor.php:1722 wp-includes/media.php:3496
 msgid "Search"
 msgstr "Cerca"
 
-#: wp-includes/class-wp-customize-manager.php:4129
+#: wp-includes/class-wp-customize-manager.php:4132
 #: wp-includes/script-loader.php:146 wp-includes/script-loader.php:307
 #: wp-includes/widgets/class-wp-widget-text.php:521
 #: wp-includes/widgets/class-wp-widget-text.php:536
@@ -12134,7 +12186,7 @@ msgstr "Pubblico, in evidenza"
 msgid "Private"
 msgstr "Privato"
 
-#: wp-includes/class-wp-editor.php:1051 wp-includes/script-loader.php:692
+#: wp-includes/class-wp-editor.php:1049 wp-includes/script-loader.php:692
 msgid "OK"
 msgstr "OK"
 
@@ -12150,7 +12202,7 @@ msgstr "Salva come in sospeso"
 msgid "Image URL"
 msgstr "URL immagine"
 
-#: wp-includes/class-wp-editor.php:1103 wp-includes/media.php:4022
+#: wp-includes/class-wp-editor.php:1101 wp-includes/media.php:4022
 msgid "Media"
 msgstr "Media"
 
@@ -12159,14 +12211,14 @@ msgstr "Media"
 msgid "Edit Image"
 msgstr "Modifica immagine"
 
-#: wp-includes/class-wp-editor.php:1201 wp-includes/media-template.php:398
+#: wp-includes/class-wp-editor.php:1199 wp-includes/media-template.php:398
 #: wp-includes/media-template.php:579 wp-includes/media-template.php:837
 #: wp-includes/media-template.php:902
 #: wp-includes/widgets/class-wp-widget-media-image.php:83
 msgid "Caption"
 msgstr "Didascalia"
 
-#: wp-includes/class-wp-editor.php:1202 wp-includes/media-template.php:612
+#: wp-includes/class-wp-editor.php:1200 wp-includes/media-template.php:612
 msgid "Alignment"
 msgstr "Allineamento"
 
@@ -12186,21 +12238,21 @@ msgstr "Dimensione reale"
 msgid "Medium"
 msgstr "Media"
 
-#: wp-includes/class-wp-editor.php:1206
+#: wp-includes/class-wp-editor.php:1204
 #: wp-includes/customize/class-wp-customize-background-position-control.php:49
 #: wp-includes/media-template.php:626 wp-includes/media-template.php:857
 #: wp-includes/media-template.php:923
 msgid "Right"
 msgstr "Destra"
 
-#: wp-includes/class-wp-editor.php:1205
+#: wp-includes/class-wp-editor.php:1203
 #: wp-includes/customize/class-wp-customize-background-position-control.php:48
 #: wp-includes/media-template.php:623 wp-includes/media-template.php:854
 #: wp-includes/media-template.php:920
 msgid "Center"
 msgstr "Centro"
 
-#: wp-includes/class-wp-editor.php:1204
+#: wp-includes/class-wp-editor.php:1202
 #: wp-includes/customize/class-wp-customize-background-position-control.php:47
 #: wp-includes/media-template.php:620 wp-includes/media-template.php:851
 #: wp-includes/media-template.php:917
@@ -12234,15 +12286,15 @@ msgstr "Il file &#8220;%s&#8221; non esiste?"
 msgid "Thumbnail"
 msgstr "Miniatura"
 
-#: wp-includes/class-wp-editor.php:1049
+#: wp-includes/class-wp-editor.php:1047
 msgid "Redo"
 msgstr "Ripeti"
 
-#: wp-includes/general-template.php:397 wp-login.php:1030
+#: wp-includes/general-template.php:397 wp-login.php:1031
 msgid "Password"
 msgstr "Password"
 
-#: wp-login.php:806
+#: wp-login.php:807
 msgid "Username"
 msgstr "Nome utente"
 
@@ -12281,7 +12333,7 @@ msgstr "Pingback"
 msgid "Reply"
 msgstr "Rispondi"
 
-#: wp-includes/class-wp-customize-manager.php:4622
+#: wp-includes/class-wp-customize-manager.php:4625
 #: wp-includes/script-loader.php:551 wp-includes/script-loader.php:705
 msgid "Save Draft"
 msgstr "Salva bozza"
@@ -12294,7 +12346,7 @@ msgstr "Tag"
 msgid "Content"
 msgstr "Contenuto"
 
-#: wp-includes/class-wp-editor.php:1052 wp-includes/class-wp-editor.php:1749
+#: wp-includes/class-wp-editor.php:1050 wp-includes/class-wp-editor.php:1747
 #: wp-includes/media.php:3498 wp-includes/script-loader.php:510
 #: wp-includes/script-loader.php:561 wp-includes/script-loader.php:693
 msgid "Cancel"
@@ -12309,8 +12361,8 @@ msgstr "Plugin"
 msgid "Recent Comments"
 msgstr "Commenti recenti"
 
-#: wp-includes/class-wp-customize-manager.php:4156
-#: wp-includes/class-wp-editor.php:1119 wp-includes/media-template.php:1247
+#: wp-includes/class-wp-customize-manager.php:4159
+#: wp-includes/class-wp-editor.php:1117 wp-includes/media-template.php:1247
 msgid "Preview"
 msgstr "Anteprima"
 
@@ -12318,8 +12370,9 @@ msgstr "Anteprima"
 msgid "RSS"
 msgstr "RSS"
 
+#. translators: Name of a comment's author after being anonymized.
 #: wp-includes/class-wp-theme.php:732 wp-includes/comment-template.php:31
-#: wp-includes/comment.php:3327
+#: wp-includes/comment.php:3332
 msgid "Anonymous"
 msgstr "Anonimo"
 
@@ -12344,7 +12397,7 @@ msgstr "Visualizza articolo"
 #: wp-includes/post.php:1446
 msgctxt "post"
 msgid "Add New"
-msgstr "Aggiungi nuovo"
+msgstr "Aggiungi articolo"
 
 #: wp-includes/taxonomy.php:512
 msgid "Edit Tag"
@@ -12359,21 +12412,21 @@ msgstr "Modifica tag"
 msgid "None"
 msgstr "Nessuna"
 
-#: wp-includes/class-wp-editor.php:1082
+#: wp-includes/class-wp-editor.php:1080
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:123
 #: wp-includes/media-template.php:408 wp-includes/media-template.php:589
 msgid "Description"
 msgstr "Descrizione"
 
-#: wp-includes/comment-template.php:2201
+#: wp-includes/comment-template.php:2200
 msgid "Name"
 msgstr "Nome"
 
-#: wp-includes/class-wp-editor.php:1089
+#: wp-includes/class-wp-editor.php:1087
 msgid "Advanced"
 msgstr "Avanzate"
 
-#: wp-includes/class-wp-editor.php:1133
+#: wp-includes/class-wp-editor.php:1131
 msgid "Target"
 msgstr "Destinazione"
 
@@ -12384,11 +12437,11 @@ msgstr "Destinazione"
 msgid "Categories"
 msgstr "Categorie"
 
-#: wp-includes/class-wp-editor.php:1121 wp-includes/script-loader.php:733
+#: wp-includes/class-wp-editor.php:1119 wp-includes/script-loader.php:733
 msgid "Save"
 msgstr "Salva"
 
-#: wp-includes/class-wp-editor.php:1752 wp-includes/script-loader.php:525
+#: wp-includes/class-wp-editor.php:1750 wp-includes/script-loader.php:525
 msgid "Add Link"
 msgstr "Aggiungi link"
 
@@ -12416,21 +12469,21 @@ msgstr "Revisioni"
 msgid "Excerpt"
 msgstr "Riassunto"
 
-#: wp-includes/class-wp-customize-manager.php:4617
+#: wp-includes/class-wp-customize-manager.php:4620
 #: wp-includes/script-loader.php:549 wp-includes/script-loader.php:701
 msgid "Publish"
 msgstr "Pubblica"
 
-#: wp-includes/comment.php:3258 wp-includes/script-loader.php:656
+#: wp-includes/comment.php:3262 wp-includes/script-loader.php:656
 msgid "Comments"
 msgstr "Commenti"
 
 #: wp-includes/class-wp-customize-widgets.php:751
-#: wp-includes/class-wp-editor.php:1261 wp-includes/media.php:3538
+#: wp-includes/class-wp-editor.php:1259 wp-includes/media.php:3538
 msgid "Apply"
 msgstr "Applica"
 
-#: wp-includes/class-wp-editor.php:1048
+#: wp-includes/class-wp-editor.php:1046
 msgid "Undo"
 msgstr "Annulla"
 
@@ -12441,7 +12494,7 @@ msgstr "Risultati della ricerca per &#8220;%s&#8221;"
 
 #: wp-includes/class-walker-comment.php:236
 #: wp-includes/class-walker-comment.php:340
-#: wp-includes/class-wp-editor.php:1259
+#: wp-includes/class-wp-editor.php:1257
 msgid "Edit"
 msgstr "Modifica"
 
@@ -12453,13 +12506,13 @@ msgstr "No"
 msgid "Are you sure you want to do this?"
 msgstr "Sei sicuro di voler fare questo?"
 
-#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2223
+#: wp-includes/comment-template.php:1082 wp-includes/comment-template.php:2231
 msgctxt "noun"
 msgid "Comment"
 msgstr "Commento"
 
 #: wp-includes/class-wp-customize-nav-menus.php:1111
-#: wp-includes/class-wp-editor.php:1136 wp-includes/class-wp-editor.php:1708
+#: wp-includes/class-wp-editor.php:1134 wp-includes/class-wp-editor.php:1706
 #: wp-includes/customize/class-wp-customize-nav-menu-item-control.php:86
 #: wp-includes/media-template.php:376 wp-includes/media-template.php:557
 #: wp-includes/media.php:3494 wp-includes/media.php:4017
@@ -12467,7 +12520,7 @@ msgstr "Commento"
 msgid "URL"
 msgstr "URL"
 
-#: wp-includes/class-wp-editor.php:1083 wp-includes/theme-compat/sidebar.php:27
+#: wp-includes/class-wp-editor.php:1081 wp-includes/theme-compat/sidebar.php:27
 msgid "Author"
 msgstr "Autore"
 
@@ -12480,7 +12533,7 @@ msgstr "Esci"
 msgid "Visit Site"
 msgstr "Visita il sito"
 
-#: wp-includes/class-wp-editor.php:1642
+#: wp-includes/class-wp-editor.php:1640
 msgid "Y/m/d"
 msgstr "d/m/Y"
 
@@ -12497,7 +12550,7 @@ msgstr "In attesa di revisione"
 msgid "Published"
 msgstr "Pubblicato"
 
-#: wp-includes/class-wp-editor.php:1079 wp-includes/media-template.php:382
+#: wp-includes/class-wp-editor.php:1077 wp-includes/media-template.php:382
 #: wp-includes/media-template.php:563 wp-includes/revision.php:34
 msgid "Title"
 msgstr "Titolo"

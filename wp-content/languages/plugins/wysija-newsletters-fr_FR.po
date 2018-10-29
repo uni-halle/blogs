@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - MailPoet Newsletters (Previous) - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-06-20 20:14:48+0000\n"
+"PO-Revision-Date: 2018-08-06 12:27:53+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1591,7 +1591,7 @@ msgstr "Nombre d’articles à afficher"
 
 #: views/back/campaigns.php:2222
 msgid "Post type"
-msgstr "Type d’article"
+msgstr "Type de publication"
 
 #: views/back/campaigns.php:2197 views/back/campaigns.php:2279
 #: views/back/campaigns.php:2317 views/back/campaigns.php:2352
@@ -3501,7 +3501,7 @@ msgstr "Modifier l’affichage"
 #: views/back/subscribers.php:473 views/back.php:794
 #: views/front/confirm.php:157
 msgid "Save"
-msgstr "Sauvegarder"
+msgstr "Enregistrer"
 
 #: helpers/form_engine.php:36
 msgid "Saving form..."

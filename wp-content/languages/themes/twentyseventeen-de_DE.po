@@ -246,7 +246,7 @@ msgstr "Untermenü anzeigen"
 msgid "Comments are closed."
 msgstr "Kommentare sind geschlossen."
 
-#. #-#-#-#-#  twentyseventeen.pot (Twenty Seventeen 1.6)  #-#-#-#-#
+#. #-#-#-#-#  twentyseventeen.pot (Twenty Seventeen 1.7)  #-#-#-#-#
 #. Author URI of the plugin/theme
 #: template-parts/footer/site-info.php:18
 msgid "https://wordpress.org/"

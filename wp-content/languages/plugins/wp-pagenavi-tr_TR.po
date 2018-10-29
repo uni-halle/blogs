@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WP-PageNavi - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-10-10 09:55:45+0000\n"
+"PO-Revision-Date: 2018-09-20 10:16:31+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,12 +12,12 @@ msgstr ""
 "Project-Id-Version: Plugins - WP-PageNavi - Stable (latest release)\n"
 
 #: core.php:128 core.php:147 core.php:159
-msgid "Page %d"
-msgstr "Sayfa %d"
+msgid "Page %s"
+msgstr "Sayfa %s"
 
 #. Author URI of the plugin/theme
-msgid "http://lesterchan.net"
-msgstr "http://lesterchan.net"
+msgid "https://lesterchan.net"
+msgstr "https://lesterchan.net"
 
 #. Author of the plugin/theme
 msgid "Lester 'GaMerZ' Chan"
@@ -28,8 +28,8 @@ msgid "Adds a more advanced paging navigation to your WordPress blog"
 msgstr "WordPress blogunuza gelişmiş sayfalama dolaşımı ekler"
 
 #. Plugin URI of the plugin/theme
-msgid "http://lesterchan.net/portfolio/programming/php/"
-msgstr "http://lesterchan.net/portfolio/programming/php/"
+msgid "https://lesterchan.net/portfolio/programming/php/"
+msgstr "https://lesterchan.net/portfolio/programming/php/"
 
 #. Plugin Name of the plugin/theme
 msgid "WP-PageNavi"
@@ -59,11 +59,11 @@ msgstr "&laquo; İlk"
 msgid "Page %CURRENT_PAGE% of %TOTAL_PAGES%"
 msgstr "Toplam %TOTAL_PAGES% sayfa, %CURRENT_PAGE%. sayfa gösteriliyor."
 
-#: scb/AdminPage.php:519
+#: scb/AdminPage.php:516
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: scb/AdminPage.php:261
+#: scb/AdminPage.php:259
 msgid "Settings <strong>saved</strong>."
 msgstr "Ayarlar <strong>kaydedildi</strong>."
 

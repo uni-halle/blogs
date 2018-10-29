@@ -1,15 +1,23 @@
-# Translation of Plugins - Events Manager - Development (trunk) in Japanese
-# This file is distributed under the same license as the Plugins - Events Manager - Development (trunk) package.
+# Translation of Plugins - Events Manager - Stable (latest release) in Japanese
+# This file is distributed under the same license as the Plugins - Events Manager - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-06-11 07:33:35+0000\n"
+"PO-Revision-Date: 2018-08-07 19:29:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: ja_JP\n"
-"Project-Id-Version: Plugins - Events Manager - Development (trunk)\n"
+"Project-Id-Version: Plugins - Events Manager - Stable (latest release)\n"
+
+#: multilingual/em-ml-bookings.php:144
+msgid "Language Booked"
+msgstr "予約が存在する言語"
+
+#: multilingual/em-ml-bookings.php:128
+msgid "The language used to make this booking was %s"
+msgstr "このイベントが作成された言語: %s"
 
 #: em-install.php:1082
 msgid "Events Manager has introduced new privacy tools to help you comply with international laws such as the GDPR, <a href=\"%s\">see our documentation</a> for more information."
@@ -19,11 +27,11 @@ msgstr "Events Manager は、GDPR などの国際法に対応するためのプ�
 msgid "I consent to my submitted data being collected and stored as outlined by the site %s."
 msgstr "私は、上に入力したデータが %s ウェブサイトによって収集・保存されることに同意します。"
 
-#: em-data-privacy.php:153
+#: em-data-privacy.php:152
 msgid "Please check the consent box so we can collect and store your submitted information."
 msgstr "入力された情報の収集・保存に同意する場合は、ボックスにチェックをしてください。"
 
-#: em-data-privacy.php:99
+#: em-data-privacy.php:98
 msgid "You must allow us to collect and store your data in order for us to process your booking."
 msgstr "予約手続きを進めるには、当サイトが個人情報を収集・保存することに同意する必要があります。末尾の同意チェックボックスをチェックして送信ボタンを押してください。"
 
@@ -103,6 +111,10 @@ msgstr "個人情報のエクスポート"
 msgid "For more information see our <a href=\"%s\">data privacy documentation</a>."
 msgstr "詳しくは、<a href=\"%s\">データのプライバシーに関するドキュメント</a>をご覧ください。"
 
+#: admin/em-options.php:942
+msgid "Depending on the nature of your site, you will be subject to one or more national and international privacy/data protection laws such as the %s. Below are some options that you can use to tailor how Events Manager interacts with WordPress privacy tools."
+msgstr "サイトの設定によっては、%s に代表されるプライバシーおよびデータに関する国内法や国際法が一つ以上、このサイトに適用されます。こうした法に適合するため、Events Manager のどんな場面でプライバシー・ツール (チェックボックスと承諾の文言) を表示／非表示するかを、以下で設定します。"
+
 #: admin/em-options.php:940
 msgid "Privacy"
 msgstr "プライバシー"
@@ -118,6 +130,22 @@ msgstr "すべての利用者へ表示"
 #: admin/em-options.php:934
 msgid "Do not include"
 msgstr "表示しない"
+
+#: admin/em-options.php:872 em-install.php:1071
+msgid "All Blogs"
+msgstr "サイト全体"
+
+#: admin/em-options.php:862
+msgid "Blog Default Timezone"
+msgstr "サイトの標準タイムゾーン"
+
+#: admin/em-options.php:305
+msgid "Event timezones on all blogs have been reset to %s."
+msgstr "サイト上のすべてのイベントのタイムゾーンを以下に設定しました: %s"
+
+#: admin/em-options.php:285
+msgid "The following blog timezones could not be successfully reset:"
+msgstr "以下のタイムゾーンはリセットできませんでした: "
 
 #: admin/em-data-privacy.php:369 admin/em-data-privacy.php:394
 #: admin/em-data-privacy.php:461
@@ -137,33 +165,19 @@ msgstr "ユーザー"
 msgid "Further Information"
 msgstr "詳細情報"
 
-#: multilingual/em-ml-bookings.php:144
-msgid "Language Booked"
-msgstr "予約が存在する言語"
+#: admin/em-data-privacy.php:27
+msgid "We may use cookies to temporarily store information about a booking in progress as well as any error/confirmation messages whilst submitting or managing your events and locations."
+msgstr "Events Manager は、イベントや開催場所のデータを送信したり管理している間と同様に、進行中の予約についても、情報を一時的に格納する cookie を使うことがあります。"
 
-#: multilingual/em-ml-bookings.php:128
-msgid "The language used to make this booking was %s"
-msgstr "このイベントが作成された言語: %s"
+#: admin/em-data-privacy.php:376 templates/forms/event/recurring-when.php:18
+#: templates/forms/event/when-with-recurring.php:31
+#: templates/forms/event/when.php:24
+msgid "Timezone"
+msgstr "タイムゾーン"
 
-#: admin/em-options.php:872 em-install.php:1071
-msgid "All Blogs"
-msgstr "サイト全体"
-
-#: admin/em-options.php:862
-msgid "Blog Default Timezone"
-msgstr "サイトの標準タイムゾーン"
-
-#: admin/em-options.php:305
-msgid "Event timezones on all blogs have been reset to %s."
-msgstr "サイト上のすべてのイベントのタイムゾーンを以下に設定しました: %s"
-
-#: admin/em-options.php:285
-msgid "The following blog timezones could not be successfully reset:"
-msgstr "以下のタイムゾーンはリセットできませんでした: "
-
-#: classes/em-bookings-table.php:95
-msgid "Ticket Total"
-msgstr "チケットの合計"
+#: em-install.php:1603
+msgid "There was an error whilst migrating your times to our new timezone-aware formats. Below is a list of errors:"
+msgstr "タイムゾーン切替機能つきのフォーマットへ更新する際にエラーが生じました。以下にエラーの一覧を示します。:"
 
 #: em-install.php:1055
 msgid "You can reset your events to a new timezone and also complete the final migration step by deleting unecessary data in %s"
@@ -184,6 +198,10 @@ msgstr "サイト管理者"
 #: em-install.php:1045
 msgid "Events Manager now supports multiple timezones for your events! Your events will initially match your blog timezone."
 msgstr "Events Manager に複数のタイムゾーンを適用できるようになりました! 初期設定では、サイトのタイムゾーン設定が適用されます。"
+
+#: classes/em-bookings-table.php:95
+msgid "Ticket Total"
+msgstr "チケットの合計"
 
 #: admin/settings/updates/timezone-backcompat.php:108
 msgid "An error has occurred, not all sites were upgraded successfully."
@@ -228,36 +246,6 @@ msgstr "更新中にエラーが発生しました。再度やり直すか、管
 #: admin/settings/updates/timezone-backcompat.php:20
 msgid "You have successfully finalized upgrading your site."
 msgstr "サイトは正常に更新されました。"
-
-#: admin/em-ms-options.php:30
-#: admin/settings/updates/timezone-backcompat.php:106
-msgid "Update process has finished."
-msgstr "更新処理が完了しました。"
-
-#: admin/em-ms-options.php:26 admin/settings/updates/timezone-backcompat.php:99
-msgctxt "Multisite Blog Update"
-msgid "%s does not have Events Manager activated."
-msgstr "%s は、Events Manager を有効化していません。"
-
-#: admin/em-ms-options.php:23
-msgctxt "Multisite Blog Update"
-msgid "%s is up to date."
-msgstr "%s は最新です。"
-
-#: admin/em-ms-options.php:20 admin/settings/updates/timezone-backcompat.php:93
-msgctxt "Multisite Blog Update"
-msgid "Updated %s."
-msgstr "%s を更新しました。"
-
-#: admin/em-data-privacy.php:376 templates/forms/event/recurring-when.php:18
-#: templates/forms/event/when-with-recurring.php:31
-#: templates/forms/event/when.php:24
-msgid "Timezone"
-msgstr "タイムゾーン"
-
-#: em-install.php:1596
-msgid "There was an error whilst migrating your times to our new timezone-aware formats. Below is a list of errors:"
-msgstr "タイムゾーン切替機能つきのフォーマットへ更新する際にエラーが生じました。以下にエラーの一覧を示します。:"
 
 #: admin/settings/tabs/general.php:25
 msgid "When creating a new event, this timezone will be applied by default."
@@ -307,6 +295,26 @@ msgstr "ウェブサイト %s 内のイベントのタイムゾーンを %s に�
 msgid "A valid blog ID must be provided, you can only reset one blog at a time."
 msgstr "有効なブログ ID (ウェブサイト ID) を入力してください。なお、1度にリセットできるのは 1 ブログ ( ウェブサイト) だけです。"
 
+#: admin/em-ms-options.php:30
+#: admin/settings/updates/timezone-backcompat.php:106
+msgid "Update process has finished."
+msgstr "更新処理が完了しました。"
+
+#: admin/em-ms-options.php:26 admin/settings/updates/timezone-backcompat.php:99
+msgctxt "Multisite Blog Update"
+msgid "%s does not have Events Manager activated."
+msgstr "%s は、Events Manager を有効化していません。"
+
+#: admin/em-ms-options.php:23
+msgctxt "Multisite Blog Update"
+msgid "%s is up to date."
+msgstr "%s は最新です。"
+
+#: admin/em-ms-options.php:20 admin/settings/updates/timezone-backcompat.php:93
+msgctxt "Multisite Blog Update"
+msgid "Updated %s."
+msgstr "%s を更新しました。"
+
 #: admin/settings/tabs/pages.php:412 admin/settings/tabs/pages.php:546
 msgid "When listing event archives for a %s, this order is applied."
 msgstr "イベントを%sで並び替える場合、この順番が適用されます。"
@@ -337,7 +345,7 @@ msgstr "第 5"
 msgid "Modifications to event dates will cause all recurrences of this event to be deleted and recreated, previous bookings will be deleted."
 msgstr "開催日を変更すると、このイベントのすべての繰り返しが削除されたのちに再構築されます。これによって、すでに入っている予約の情報も滅失してしまいます。"
 
-#: classes/em-event.php:2975
+#: classes/em-event.php:2977
 msgid "the fifth %s of the month"
 msgstr "第 5 %s"
 
@@ -345,37 +353,25 @@ msgstr "第 5 %s"
 msgid "Add Note"
 msgstr "メモを追加"
 
-#: admin/em-options.php:839
-msgid "Are you sure you want to proceed? We recommend you back up your database first, just in case!"
-msgstr "実行前にデータベースのバックアップを取ることをお勧めします。本当に実行してよろしいですか?"
-
-#: admin/em-options.php:833
-msgid "Orphaned events may show on your event lists but not point to real event pages, and can be deleted. %d potentially orphaned events have been found."
-msgstr "現在 %d 件の迷子イベントが存在します。迷子イベントとは「イベント一覧には表示されているものの、対応するイベント詳細ページが削除された等の原因で、どのイベント詳細ページにも紐付いていないイベント」をさします。「迷子イベントを削除」ボタンを押すと、これらの迷子イベントをクリーンアップします。"
-
-#: admin/em-options.php:820
-msgid "Remove Orphaned Events"
-msgstr "迷子イベントを削除"
+#: admin/em-options.php:172
+msgid "Found %d orphaned events, deleted %d successfully"
+msgstr "%d 件の迷子イベントを検出し、うち %d 件を削除しました。"
 
 #: admin/em-options.php:817
 msgid "Database Cleanup"
 msgstr "データベースのクリーンアップ"
 
-#: admin/em-options.php:172
-msgid "Found %d orphaned events, deleted %d successfully"
-msgstr "%d 件の迷子イベントを検出し、うち %d 件を削除しました。"
+#: admin/em-options.php:820
+msgid "Remove Orphaned Events"
+msgstr "迷子イベントを削除"
 
-#: admin/settings/tabs/formats.php:451
-msgid "Google Maps Styling Wizard"
-msgstr "Google マップのスタイルウィザード"
+#: admin/em-options.php:833
+msgid "Orphaned events may show on your event lists but not point to real event pages, and can be deleted. %d potentially orphaned events have been found."
+msgstr "現在 %d 件の迷子イベントが存在します。迷子イベントとは「イベント一覧には表示されているものの、対応するイベント詳細ページが削除された等の原因で、どのイベント詳細ページにも紐付いていないイベント」をさします。「迷子イベントを削除」ボタンを押すと、これらの迷子イベントをクリーンアップします。"
 
-#: admin/settings/tabs/formats.php:451
-msgid "You can add styles to your maps to give them a unique look. Build one using the %s or choose from the many free templates on %s paste the generated JSON code here."
-msgstr "個性的なマップにするために、スタイルを設定できます。%sを使うか、 %s にある多彩な無料テンプレートをここにコピペすることで JSON コードを生成できます。"
-
-#: admin/settings/tabs/formats.php:451
-msgid "Google Maps Style"
-msgstr "Google マップのスタイル"
+#: admin/em-options.php:839
+msgid "Are you sure you want to proceed? We recommend you back up your database first, just in case!"
+msgstr "実行前にデータベースのバックアップを取ることをお勧めします。本当に実行してよろしいですか?"
 
 #: templates/forms/event/recurring-when.php:94
 msgid "Reschedule Recurring Event"
@@ -441,6 +437,18 @@ msgstr "開催時間およびチケットの設定を変更しない場合は、
 msgid "Modifications to recurring events will be applied to all recurrences and will overwrite any changes made to those individual event recurrences."
 msgstr "繰り返しイベントを編集すると、変更した箇所の情報がすべての繰り返しに適用され、以下の既存の各繰り返しイベントにも新しい情報が上書きされます。"
 
+#: admin/settings/tabs/general.php:134
+msgid "Google Maps Styling Wizard"
+msgstr "Google マップのスタイルウィザード"
+
+#: admin/settings/tabs/general.php:134
+msgid "You can add styles to your maps to give them a unique look. Build one using the %s or choose from the many free templates on %s paste the generated JSON code here."
+msgstr "個性的なマップにするために、スタイルを設定できます。%sを使うか、 %s にある多彩な無料テンプレートをここにコピペすることで JSON コードを生成できます。"
+
+#: admin/settings/tabs/general.php:134
+msgid "Google Maps Style"
+msgstr "Google マップのスタイル"
+
 #: admin/settings/tabs/formats.php:107
 msgid "Search form will be pre-selected with this country."
 msgstr "検索フォームで基準とする国を設定します。前項で「国で検索」が有効でない場合は、ここで選択した国に関する結果のみが表示されます。"
@@ -489,15 +497,16 @@ msgstr "設定をインポートしました。"
 msgid "distance units"
 msgstr "距離の単位"
 
-#: admin/settings/tabs/formats.php:448
+#: admin/settings/tabs/general.php:114 admin/settings/tabs/general.php:124
+#: admin/settings/tabs/general.php:130 em-install.php:1090
 msgid "documentation"
 msgstr "ドキュメンテーション"
 
-#: admin/settings/tabs/formats.php:448
+#: admin/settings/tabs/general.php:124
 msgid "Google Maps require an API key, please see our %s page for instructions on obtaining one."
 msgstr "Google Maps の利用には API キーが必要です。入手方法については%s(英語)を参考にしてください。"
 
-#: admin/settings/tabs/formats.php:448
+#: admin/settings/tabs/general.php:124
 msgid "Google Maps API Browser Key"
 msgstr "Google Maps API キー"
 
@@ -509,9 +518,9 @@ msgstr "Marcus Sykes"
 msgid "Event registration and booking management for WordPress. Recurring events, locations, google maps, rss, ical, booking registration and more!"
 msgstr "WordPress でイベントの作成と予約管理ができるプラグインです。繰り返しイベント、開催場所の管理、Google Maps 連携、RSS 、iCal 、予約の手動入力ほか、イベント運営をサポートする機能が満載!"
 
-#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.9.4)  #-#-#-#-#
+#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.9.5)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.9.4)  #-#-#-#-#
+#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.9.5)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "http://wp-events-plugin.com"
 msgstr "http://wp-events-plugin.com"
@@ -682,11 +691,11 @@ msgstr "今後のイベント"
 msgid "Add New"
 msgstr "新規作成"
 
-#: templates/placeholders/locationmap.php:35
+#: templates/placeholders/locationmap.php:45
 msgid "Map Unavailable"
 msgstr "地図が利用できません"
 
-#: templates/placeholders/locationmap.php:21
+#: templates/placeholders/locationmap.php:30
 #: templates/templates/map-global.php:13
 msgid "Loading Map...."
 msgstr "地図を読み込んでいます..."
@@ -2080,7 +2089,7 @@ msgstr "画像のアップロード中にエラーが発生しました。"
 msgid "Please supply a valid email format."
 msgstr "メールアドレスは正しい書式で記入してください。"
 
-#: classes/em-location.php:510
+#: classes/em-location.php:511
 msgid "You do not have permission to create/edit %s."
 msgstr "%sを作成／編集する権限がありません。"
 
@@ -2116,83 +2125,83 @@ msgstr "都道府県"
 msgid "Address"
 msgstr "住所"
 
-#: classes/em-event.php:3009
+#: classes/em-event.php:3011
 msgid "every %s years"
 msgstr "毎%s年"
 
-#: classes/em-event.php:3007
+#: classes/em-event.php:3009
 msgid "every year"
 msgstr "毎年"
 
-#: classes/em-event.php:3004
+#: classes/em-event.php:3006
 msgid "every %s months"
 msgstr "毎%s月"
 
-#: classes/em-event.php:2991
+#: classes/em-event.php:2993
 msgid "every %s weeks"
 msgstr "毎%s週"
 
-#: classes/em-event.php:2989
+#: classes/em-event.php:2991
 msgid "every week"
 msgstr "毎週"
 
-#: classes/em-event.php:2980
+#: classes/em-event.php:2982
 msgid "every %s days"
 msgstr "毎%s日"
 
-#: classes/em-event.php:2978
+#: classes/em-event.php:2980
 msgid "everyday"
 msgstr "毎日"
 
-#: classes/em-event.php:2976
+#: classes/em-event.php:2978
 msgid "From %1$s to %2$s"
 msgstr "%1$sから　%2$s まで"
 
-#: classes/em-event.php:2975
+#: classes/em-event.php:2977
 msgid "the last %s of the month"
 msgstr "月最後の%s"
 
-#: classes/em-event.php:2975
+#: classes/em-event.php:2977
 msgid "the fourth %s of the month"
 msgstr "４半期の%s"
 
-#: classes/em-event.php:2975
+#: classes/em-event.php:2977
 msgid "the third %s of the month"
 msgstr "３半期の%s"
 
-#: classes/em-event.php:2975
+#: classes/em-event.php:2977
 msgid "the second %s of the month"
 msgstr "２半期の%s"
 
-#: classes/em-event.php:2975
+#: classes/em-event.php:2977
 msgid "the first %s of the month"
 msgstr "月初めの%s"
 
-#: classes/em-event.php:2497
+#: classes/em-event.php:2498
 msgid "Event could not be attached."
 msgstr "このイベントは、関連付けできません。"
 
-#: classes/em-event.php:2494
+#: classes/em-event.php:2495
 msgid "Event re-attached to recurrence."
 msgstr "切り離したイベントを、繰り返しイベントへ再度関連付けました。"
 
-#: classes/em-event.php:2480
+#: classes/em-event.php:2481
 msgid "Event could not be detached."
 msgstr "このイベントは、切り離せません。"
 
-#: classes/em-event.php:2476
+#: classes/em-event.php:2477
 msgid "Undo"
 msgstr "元に戻す"
 
-#: classes/em-event.php:2476
+#: classes/em-event.php:2477
 msgid "Event detached."
 msgstr "イベントは切り離されました。"
 
-#: classes/em-event.php:2208
+#: classes/em-event.php:2209
 msgid "Profile"
 msgstr "プロフィール"
 
-#: classes/em-event.php:2198 templates/forms/bookingform/ticket-single.php:37
+#: classes/em-event.php:2199 templates/forms/bookingform/ticket-single.php:37
 #: templates/forms/bookingform/tickets-list.php:45
 msgid "N/A"
 msgstr "該当なし"
@@ -2201,16 +2210,16 @@ msgstr "該当なし"
 msgid "%s successfully duplicated."
 msgstr "%sが正しくコピーされました。"
 
-#: classes/em-event.php:1102 classes/em-location.php:494
+#: classes/em-event.php:1102 classes/em-location.php:495
 msgid "Something went wrong updating your %s to the index table. Please inform a site administrator about this."
 msgstr "インデックステーブルに%sをアップデートする際にトラブルがありました。サイト管理者に知らせてください。"
 
 #: classes/em-event.php:1092 classes/em-event.php:1106
-#: classes/em-location.php:489 classes/em-location.php:496
+#: classes/em-location.php:490 classes/em-location.php:497
 msgid "Successfully saved %s"
 msgstr "%sが正しく保存されました"
 
-#: classes/em-event.php:1087 classes/em-location.php:484
+#: classes/em-event.php:1087 classes/em-location.php:485
 msgid "Something went wrong saving your %s to the index table. Please inform a site administrator about this."
 msgstr "インデックスのテーブルに%sを記録する際にトラブルがありました。サイト管理者に連絡してください。"
 
@@ -2690,7 +2699,7 @@ msgstr "承認済み"
 msgid "You are currently viewing your public page, this is what other users will see."
 msgstr "現在、公開ページを表示しています。他のユーザーには、このように見えています。"
 
-#: buddypress/screens/my-locations.php:48 classes/em-location.php:973
+#: buddypress/screens/my-locations.php:48 classes/em-location.php:982
 #: em-events.php:198 em-posts.php:247
 msgid "Edit Location"
 msgstr "開催場所の編集"
@@ -2704,7 +2713,7 @@ msgstr "開催場所の新規作成"
 msgid "Add Event"
 msgstr "イベントの新規作成"
 
-#: buddypress/screens/my-events.php:49 classes/em-event.php:2042
+#: buddypress/screens/my-events.php:49 classes/em-event.php:2043
 #: em-events.php:187 em-posts.php:152
 msgid "Edit Event"
 msgstr "イベントの編集"
@@ -2902,8 +2911,8 @@ msgstr "登録メンバーが、自分の過去の予約情報を閲覧できる
 #: admin/settings/tabs/pages.php:640 buddypress/bp-em-notifications.php:24
 #: buddypress/bp-em-notifications.php:26 buddypress/bp-em-notifications.php:33
 #: buddypress/bp-em-notifications.php:35 buddypress/bp-em-notifications.php:41
-#: buddypress/bp-em-notifications.php:43 em-install.php:758 em-install.php:1214
-#: em-install.php:1267
+#: buddypress/bp-em-notifications.php:43 em-install.php:758 em-install.php:1221
+#: em-install.php:1274
 msgid "My Bookings"
 msgstr "My 予約"
 
@@ -3232,223 +3241,223 @@ msgstr "「固定ページ」を選択した場合は、%sをお使いのテー�
 msgid "Many themes display extra meta information on post pages such as 'posted by' or 'post date' information, which may not be desired. Usually, page templates contain less clutter."
 msgstr "多くのテーマは、「投稿」のテンプレートにメタ情報(投稿者、投稿日時、カテゴリー、タグ等)を表示しますが、それらの情報を表示したくない場合もあります。その場合は「固定ページ」を選択することをお勧めします。"
 
-#: admin/settings/tabs/general.php:259
+#: admin/settings/tabs/general.php:300
 msgid "Tags list page"
 msgstr "タグ一覧のページ"
 
-#: admin/settings/tabs/general.php:258
+#: admin/settings/tabs/general.php:299
 msgid "Categories list page"
 msgstr "カテゴリー一覧のページ"
 
-#: admin/settings/tabs/general.php:257
+#: admin/settings/tabs/general.php:298
 msgid "Event booking forms"
 msgstr "﻿イベント予約フォーム"
 
-#: admin/settings/tabs/general.php:256
+#: admin/settings/tabs/general.php:297
 msgid "Locations list page"
 msgstr "開催場所の一覧ページ"
 
-#: admin/settings/tabs/general.php:255
+#: admin/settings/tabs/general.php:296
 msgid "Events list page"
 msgstr "イベント一覧ページ"
 
-#: admin/settings/tabs/general.php:254
+#: admin/settings/tabs/general.php:295
 msgid "Booking admin pages"
 msgstr "予約管理ページ"
 
-#: admin/settings/tabs/general.php:253
+#: admin/settings/tabs/general.php:294
 msgid "Event/Location admin pages"
 msgstr "イベント／開催場所の管理ページ"
 
-#: admin/settings/tabs/general.php:249
+#: admin/settings/tabs/general.php:290
 msgid "Search forms"
 msgstr "検索フォーム"
 
-#: admin/settings/tabs/general.php:245
+#: admin/settings/tabs/general.php:286
 msgid "Below are some additional options for individual pages and sections, which you can turn on to enforce custom styling provided by the plugin or off if you want to do your own custom styling."
 msgstr "以下は、個別のページやセクションに適用するスタイルのオプションです。「はい」＝ Events Manager 標準のスタイル／「いいえ」＝自分で設定したスタイル"
 
-#: admin/settings/tabs/general.php:244
+#: admin/settings/tabs/general.php:285
 msgid "Events Manager imposes a minimal amount of styling on websites so that your themes can take over."
 msgstr "Events Manager 用のスタイルは、お使いのテーマに影響を与えないよう最小限にとどめています。"
 
-#: admin/settings/tabs/general.php:241
+#: admin/settings/tabs/general.php:282
 msgid "Styling Options"
 msgstr "スタイリングのオプション"
 
-#: admin/settings/tabs/general.php:214
+#: admin/settings/tabs/general.php:255
 msgid "Setting this to yes will also make your images crop efficiently with the %s feature in the %s plugin."
 msgstr "「はい」の場合、 画像は%s(%sプラグインに同梱)によって最適にトリミングされます。"
 
-#: admin/settings/tabs/general.php:214
+#: admin/settings/tabs/general.php:255
 msgid "If set to yes, full sized images will be used and HTML width and height attributes will be used to determine the size."
 msgstr "「はい」の場合、原寸の画像が使われ、 HTML の width (幅)と height (高さ)の属性によってサイズが決定されます。"
 
-#: admin/settings/tabs/general.php:214
+#: admin/settings/tabs/general.php:255
 msgid "Disable  WordPress Thumbnails?"
 msgstr "WordPress のサムネイルを無効にしますか？"
 
-#: admin/settings/tabs/general.php:211
+#: admin/settings/tabs/general.php:252
 msgid "Thumbnails"
 msgstr "サムネイル"
 
-#: admin/settings/tabs/general.php:205
+#: admin/settings/tabs/general.php:246
 msgid "Our CSS file will be EXCLUDED on all of these pages. Takes precedence over inclusion rules."
 msgstr "Events Manager の CSS はこれらのページには適用しません。このルールは「適用する」ルールより優先されます。"
 
-#: admin/settings/tabs/general.php:205
+#: admin/settings/tabs/general.php:246
 msgid "Exclude on"
 msgstr "適用しないページ"
 
-#: admin/settings/tabs/general.php:204
+#: admin/settings/tabs/general.php:245
 msgid "Our CSS file will only be INCLUDED on all of these pages."
 msgstr "Events Manager の CSS はこれらのページにのみ適用されます。"
 
-#: admin/settings/tabs/general.php:204
+#: admin/settings/tabs/general.php:245
 msgid "Include on"
 msgstr "適用するページ"
 
-#: admin/settings/tabs/general.php:197
+#: admin/settings/tabs/general.php:238
 msgid "Enabling this will prevent us from loading our CSS file on every page, and will only load on specific pages generated by Events Manager."
 msgstr "Events Manager 用の CSS を、 Events Manager が生成したページだけで読み込むようにします。「はい」で詳細オプションを表示します。"
 
-#: admin/settings/tabs/general.php:197
+#: admin/settings/tabs/general.php:238
 msgid "Limit loading of our CSS files?"
 msgstr "Events Manager の CSS の読込を制限しますか?"
 
-#: admin/settings/tabs/general.php:194
+#: admin/settings/tabs/general.php:235
 msgid "CSS File"
 msgstr "CSSファイル"
 
-#: admin/settings/tabs/general.php:190
+#: admin/settings/tabs/general.php:231
 msgid "Booking Management Pages"
 msgstr "予約管理ページ"
 
-#: admin/settings/tabs/general.php:189 admin/settings/tabs/general.php:190
+#: admin/settings/tabs/general.php:230 admin/settings/tabs/general.php:231
 msgid "Include pages where you use shortcode or PHP to display event submission forms."
 msgstr "ショートコードや PHP によって申込みフォームを表示しているページを含みます。"
 
-#: admin/settings/tabs/general.php:189
+#: admin/settings/tabs/general.php:230
 msgid "Event Edit and Submission Forms"
 msgstr "イベント申請フォーム"
 
-#: admin/settings/tabs/general.php:188
+#: admin/settings/tabs/general.php:229
 msgid "Include pages where you use shortcodes or widgets to display event search forms."
 msgstr "ショートコードやウィジェットによってイベント検索フォームを表示しているページを含みます。"
 
-#: admin/settings/tabs/general.php:188
+#: admin/settings/tabs/general.php:229
 msgid "Search Forms"
 msgstr "検索フォーム"
 
-#: admin/settings/tabs/general.php:187
+#: admin/settings/tabs/general.php:228
 msgid "Loads our own JS file if no other dependencies are already loaded, which is still needed for many items generated by EM using JavaScript such as Calendars, Maps and Booking Forms/Buttons"
 msgstr "すでに他に依存するものが読み込まれていなければ、 Events Manager が JavaScript を使って機能(カレンダー、マップ、予約フォーム、予約ボタンなど)を生成するのに必要な独自の JS ファイルを読み込みます。"
 
-#: admin/settings/tabs/general.php:187
+#: admin/settings/tabs/general.php:228
 msgid "General JS"
 msgstr "一般的な JS"
 
-#: admin/settings/tabs/general.php:182
+#: admin/settings/tabs/general.php:223
 msgid "Aside from pages we automatically generate and include certain jQuery files, if you are using Widgets, Shortcode or PHP to display specific items you may need to tell us where you are using them for them to work properly. Below are options for you to include specific jQuery dependencies only on certain pages."
 msgstr "Events Manager が自動生成し、特定の jQuery ファイルを含んでいるページとは別に、特定の項目を表示するためにウィジェットやショートコードおよび PHP を使用している場合は、それらが正常に動作するために、その在処を Events Manager に知らせる必要があります。以下は、特定のページだけに依存する特殊な jQuery 用オプションです。"
 
-#: admin/settings/tabs/general.php:177
+#: admin/settings/tabs/general.php:218
 msgid "Prevent unnecessary loading of JavaScript files on pages where they are not needed."
 msgstr "JavaScript ファイルの必要以上の読込を防ぐ設定です。「はい」で詳細オプションを表示します。"
 
-#: admin/settings/tabs/general.php:177
+#: admin/settings/tabs/general.php:218
 msgid "Limit JS file loading?"
 msgstr "JS ファイルの読込を制限しますか?"
 
-#: admin/settings/tabs/general.php:174
+#: admin/settings/tabs/general.php:215
 msgid "If you are not using it already, we recommend you try the <a href=\"%s\" target=\"_blank\">Use Google Libraries</a> plugin, because without further optimization options below it already significantly reduces the number of files needed to display your Event pages and will most likely speed up your overall website loading time."
 msgstr "まだ使っていなければ、 <a href=\"%s\" target=\"_blank\">Use Google Libraries</a> プラグインを使ってみることをおすすめします。このプラグインは、以下の最適化オプションを設定しなくても、イベントページを描画するためのファイルの数を顕著に低減させ、ウェブサイトの読込時間を大幅に短縮してくれます。"
 
-#: admin/settings/tabs/general.php:173
+#: admin/settings/tabs/general.php:214
 msgid "JavaScript Files"
 msgstr "JavaScriptファイル"
 
-#: admin/settings/tabs/general.php:169
+#: admin/settings/tabs/general.php:210
 msgid "This is for advanced users, you should know what you're doing here or things will not work properly. For more information on how these options work see our <a href=\"%s\" target=\"_blank\">optimization recommendations</a>"
 msgstr "この項目は、高度な設定です。自分でどんな作業をしているか／正しく動作しない時、その理由がわからない場合は、むやみに設定を変えないことをおすすめします。これらのオプションの動作についての詳しい情報は、<a href=\"%s\" target=\"_blank\">最適化のすすめ(英語)</a>をごらんください。"
 
-#: admin/settings/tabs/general.php:169
+#: admin/settings/tabs/general.php:210
 msgid "Warning!"
 msgstr "警告！"
 
-#: admin/settings/tabs/general.php:168
+#: admin/settings/tabs/general.php:209
 msgid "This section allows you to configure parts of this plugin that will improve performance on your site and increase page speeds by reducing extra files from being unnecessarily included on pages as well as reducing server loads where possible. This only applies to pages outside the admin area."
 msgstr "このセクションは、サイトのパフォーマンスを向上させるための設定です。これによって、不要なファイル読込を減らしてページの表示速度を上げたり、可能な場合はサーバーの負荷を低減することができます。この設定は、管理画面以外のエリアに適用されます。"
 
-#: admin/settings/tabs/general.php:165
+#: admin/settings/tabs/general.php:206
 msgid "In the boxes below, you are expected to write the page IDs. For multiple pages, use comma-separated values e.g. 1,2,3. Entering 0 means EVERY page, -1 means the home page."
 msgstr "下のボックスにはページ ID を記入してください。カンマ区切りで複数のページを指定できます。(例／1,2,3 など)　「0」はすべてのページ、「-1」はトップページを意味します。"
 
-#: admin/settings/tabs/general.php:162
+#: admin/settings/tabs/general.php:203
 msgid "Performance Optimization"
 msgstr "パフォーマンスの最適化"
 
-#: admin/settings/tabs/general.php:129
+#: admin/settings/tabs/general.php:170
 msgid "Anonymous submitters cannot see or modify their event once submitted. You can customize the success message they see here."
 msgstr "匿名主催者がイベント申請を送信した際に表示します。匿名主催者は、イベント申請を送信した後は、管理者によって承認されるまで自分の作成したイベントであっても見たり編集することはできません。(修正には修正申請(＝再申請)が必要です)　それを踏まえた文案にすることをお勧めします。"
 
-#: admin/settings/tabs/general.php:125 admin/settings/tabs/general.php:127
+#: admin/settings/tabs/general.php:166 admin/settings/tabs/general.php:168
 msgid "Events require a user to own them. In order to allow events to be submitted anonymously you need to assign that event a specific user. We recommend you create a \"Anonymous\" subscriber with a very good password and use that. Guests will have the same event permissions as this user when submitting."
 msgstr "イベント作成には作成者名(アカウント)が必須です。匿名でのイベント申請を許可している場合でも、そのイベントにも作成者名が必要なため、匿名イベントの作成だけに用いる “Anonymous” などの架空のアカウントを作成してください。なお、この架空のアカウントを使えばゲストにもイベント投稿ができてしまうため、悪用されないよう厳重なパスワードで作成することを推奨します。<br />上のドロップダウンリストには管理者アカウントも表示されていますが、匿名イベントと分けるために、管理者アカウントとは別のアカウントを設けることをお勧めします。"
 
-#: admin/settings/tabs/general.php:125 admin/settings/tabs/general.php:127
+#: admin/settings/tabs/general.php:166 admin/settings/tabs/general.php:168
 msgid "Guest Default User"
 msgstr "匿名申請用アカウント"
 
-#: admin/settings/tabs/general.php:123
+#: admin/settings/tabs/general.php:164
 msgid "Would you like to allow users to submit bookings anonymously? If so, you can use the new [event_form] shortcode or <code>em_event_form()</code> template tag with this enabled."
 msgstr "匿名主催者がイベント申請できるようにする場合は、ショートコード [event_form] か、テンプレートタグ <code>em_event_form()</code> を使用して匿名申請専用のページを作成してください。"
 
-#: admin/settings/tabs/general.php:123
+#: admin/settings/tabs/general.php:164
 msgid "Allow anonymous event submissions?"
 msgstr "匿名でのイベント申請を許可しますか?"
 
-#: admin/settings/tabs/general.php:120
+#: admin/settings/tabs/general.php:161
 msgid "Anonymous event submissions"
 msgstr "匿名でのイベント申請"
 
-#: admin/settings/tabs/general.php:117
+#: admin/settings/tabs/general.php:158
 msgid "Customize the message your user sees when they resubmit/update their event."
 msgstr "イベント申請者がイベント内容を修正して再申請した際に表示します。"
 
-#: admin/settings/tabs/general.php:117
+#: admin/settings/tabs/general.php:158
 msgid "Successfully Updated Message"
 msgstr "イベント再申請成功メッセージ"
 
-#: admin/settings/tabs/general.php:116
+#: admin/settings/tabs/general.php:157
 msgid "Customize the message your user sees when they submitted their event."
 msgstr "イベント申請者がイベント申請フォームを送信した際に表示します。"
 
-#: admin/settings/tabs/general.php:116 admin/settings/tabs/general.php:129
+#: admin/settings/tabs/general.php:157 admin/settings/tabs/general.php:170
 msgid "Success Message"
 msgstr "イベント申請成功メッセージ"
 
-#: admin/settings/tabs/general.php:115
+#: admin/settings/tabs/general.php:156
 msgid "When a user submits their event, you can display a new event form again."
 msgstr "「はい」の場合、イベント申請フォームが送信された後、新しいイベント申請フォームを再表示します。これによって申請者は続けてイベントを申請することができます。"
 
-#: admin/settings/tabs/general.php:115
+#: admin/settings/tabs/general.php:156
 msgid "Show form again?"
 msgstr "申請後、新規フォームを再表示しますか?"
 
-#: admin/settings/tabs/general.php:114
+#: admin/settings/tabs/general.php:155
 msgid "Users can now use the WordPress editor for easy HTML entry in the submission form."
 msgstr "イベント申請フォームで、WordPress 標準のビジュアルエディターを使用可能にします。"
 
-#: admin/settings/tabs/general.php:114
+#: admin/settings/tabs/general.php:155
 msgid "Use Visual Editor?"
 msgstr "ビジュアルエディターを使いますか?"
 
-#: admin/settings/tabs/general.php:111
+#: admin/settings/tabs/general.php:152
 msgid "You can allow users to publicly submit events on your blog by using the %s shortcode, and enabling anonymous submissions below."
 msgstr "固定ページ等にショートコード%sを挿入することで、フロントエンド側にイベント作成フォームを表示することができます。<br />イベントを公募したり、管理者以外の特定の人に対し管理画面にアクセスすることなしにイベント作成を許可できます。これを「イベント申請フォーム」と呼びます。"
 
-#: admin/em-options.php:987 admin/settings/tabs/general.php:107
+#: admin/em-options.php:987 admin/settings/tabs/general.php:148
 msgid "Event Submission Forms"
 msgstr "イベント申請フォーム"
 
@@ -3609,59 +3618,59 @@ msgstr "アイキャッチ画像を無効にしますか?"
 msgid "General Options"
 msgstr "全般的な設定"
 
-#: admin/settings/tabs/formats.php:462
+#: admin/settings/tabs/formats.php:453
 msgid "If you use the <code>#_LOCATIONMAP</code> <a href=\"%s\">placeholder</a> when displaying individual event and location information, the settings below will be used."
 msgstr "イベント詳細や開催場所の情報の表示に<code>#_LOCATIONMAP</code><a href=\"%s\">プレースホルダー</a>を使用する場合、以下の設定が適用されます。"
 
-#: admin/settings/tabs/formats.php:461
+#: admin/settings/tabs/formats.php:452
 msgid "Single Location/Event Map Format"
 msgstr "開催場所の詳細およびマップの書式"
 
-#: admin/settings/tabs/formats.php:458
+#: admin/settings/tabs/formats.php:449
 msgid "Event."
 msgstr "イベント"
 
-#: admin/settings/tabs/formats.php:458 admin/settings/tabs/formats.php:465
+#: admin/settings/tabs/formats.php:449 admin/settings/tabs/formats.php:456
 msgid "The format of the text appearing in the balloon describing the location."
 msgstr "マップ上では、住所などの開催場所の情報をバルーン(吹き出し)表示します。このバルーン内のテキストの書式です。"
 
-#: admin/settings/tabs/formats.php:458 admin/settings/tabs/formats.php:465
+#: admin/settings/tabs/formats.php:449 admin/settings/tabs/formats.php:456
 msgid "Location balloon format"
 msgstr "開催場所情報のバルーン表示の書式"
 
-#: admin/settings/tabs/formats.php:455
+#: admin/settings/tabs/formats.php:446
 msgid "If you use the %s <a href=\"%s\">shortcode</a>, you can display a map of all your locations and events, the settings below will be used."
 msgstr "グローバルマップとは、公開設定にしているすべての開催場所をイベント情報付きでまとめ表示したマップです。<br />これを使用するには、%s<a href=\"%s\">ショートコード</a>を、イベントページや固定ページ、投稿などでグローバルマップを表示したい箇所へ挿入します。グルーバルマップに表示される情報には、以下の設定が適用されます。"
 
-#: admin/settings/tabs/formats.php:454
+#: admin/settings/tabs/formats.php:445
 msgid "Global Map Format"
 msgstr "グローバルマップの書式"
 
-#: admin/settings/tabs/formats.php:450
+#: admin/settings/tabs/formats.php:442
 msgid "Default map height"
 msgstr "マップの高さの初期値"
 
-#: admin/settings/tabs/formats.php:449 admin/settings/tabs/formats.php:450
+#: admin/settings/tabs/formats.php:441 admin/settings/tabs/formats.php:442
 msgid "Can be in form of pixels or a percentage such as %s or %s."
 msgstr "ピクセル、または％で設定。半角英数字で記入します。(例／%s %s 等)"
 
-#: admin/settings/tabs/formats.php:449
+#: admin/settings/tabs/formats.php:441
 msgid "Default map width"
 msgstr "マップの幅の初期値"
 
-#: admin/settings/tabs/formats.php:446
-msgid "Check this option to enable Goggle Map integration."
-msgstr "「はい」の場合、開催場所のマップとして Google Maps を使用します。"
+#: admin/settings/tabs/general.php:120
+msgid "Check this option to enable Google Map integration."
+msgstr "「はい」の場合、開催場所の地図表示に Google Maps を使用します。"
 
-#: admin/settings/tabs/formats.php:445 em-functions.php:760
+#: em-functions.php:760
 msgid "No"
 msgstr "いいえ"
 
-#: admin/settings/tabs/formats.php:444 em-functions.php:760
+#: em-functions.php:760
 msgid "Yes"
 msgstr "はい"
 
-#: admin/settings/tabs/formats.php:442
+#: admin/settings/tabs/general.php:120
 msgid "Enable Google Maps integration?"
 msgstr "Google Maps 連携を有効にしますか？"
 
@@ -3766,7 +3775,7 @@ msgstr "タグ"
 #: admin/settings/tabs/formats.php:340 admin/settings/tabs/formats.php:342
 #: admin/settings/tabs/formats.php:343 admin/settings/tabs/formats.php:344
 #: admin/settings/tabs/formats.php:345 admin/settings/tabs/pages.php:513
-#: admin/settings/tabs/pages.php:515 em-install.php:591 em-install.php:1202
+#: admin/settings/tabs/pages.php:515 em-install.php:591 em-install.php:1209
 msgid "Tags"
 msgstr "タグ"
 
@@ -3797,7 +3806,7 @@ msgstr "カテゴリー"
 #: admin/settings/tabs/formats.php:302 admin/settings/tabs/formats.php:303
 #: admin/settings/tabs/formats.php:304 admin/settings/tabs/pages.php:379
 #: admin/settings/tabs/pages.php:381 em-install.php:509 em-install.php:569
-#: em-install.php:1190 em-install.php:1252
+#: em-install.php:1197 em-install.php:1259
 msgid "Categories"
 msgstr "カテゴリー"
 
@@ -4783,7 +4792,7 @@ msgstr "件名を空白にすると、このメールは送信されません。
 msgid "Booking Email Templates"
 msgstr "予約メールのテンプレート"
 
-#: admin/settings/tabs/general.php:125
+#: admin/settings/tabs/general.php:166
 msgid "Please add a User ID."
 msgstr "ユーザー ID を記入してください。"
 
@@ -4950,6 +4959,10 @@ msgstr "予約処理進行中"
 #: admin/settings/tabs/bookings.php:75
 msgid "User can book"
 msgstr "予約申込み可能"
+
+#: admin/settings/tabs/bookings.php:73
+msgid "With the %s placeholder, the below texts will be used."
+msgstr "%s プレースホルダーで予約ボタンを表示する場合に、以下のテキストが使われます。"
 
 #: admin/settings/tabs/bookings.php:72
 msgid "Booking button feedback messages"
@@ -5264,8 +5277,8 @@ msgstr "Events Manager は、常に新機能の追加やバグ修正などを行
 msgid "Development Versions &amp; Updates"
 msgstr "開発者版とアップデートの設定"
 
-#: admin/em-options.php:752 admin/settings/tabs/general.php:162
-#: admin/settings/tabs/general.php:241
+#: admin/em-options.php:752 admin/settings/tabs/general.php:203
+#: admin/settings/tabs/general.php:282
 msgid "Advanced"
 msgstr "高度な設定"
 
@@ -5609,8 +5622,8 @@ msgstr "色は %s 形式で指定します。(例／#FF00EE 等)"
 #: admin/settings/tabs/general.php:82 admin/settings/tabs/pages.php:201
 #: admin/settings/tabs/pages.php:204 admin/settings/tabs/pages.php:260
 #: admin/settings/tabs/pages.php:316 classes/em-location-post-admin.php:95
-#: classes/em-location-post-admin.php:207 classes/em-location.php:484
-#: classes/em-location.php:494 templates/forms/location-editor.php:11
+#: classes/em-location-post-admin.php:207 classes/em-location.php:485
+#: classes/em-location.php:495 templates/forms/location-editor.php:11
 msgid "location"
 msgstr "開催場所"
 
@@ -5633,7 +5646,7 @@ msgstr "すべての開催場所を親サイトで管理する場合、子サイ
 #: admin/settings/tabs/pages.php:259 admin/settings/tabs/pages.php:260
 #: admin/settings/tabs/pages.php:310 admin/settings/tabs/pages.php:311
 #: admin/settings/tabs/pages.php:312 admin/settings/tabs/pages.php:355
-#: admin/settings/tabs/pages.php:706 classes/em-location.php:510
+#: admin/settings/tabs/pages.php:706 classes/em-location.php:511
 #: events-manager.php:434 events-manager.php:435 events-manager.php:436
 #: events-manager.php:437 events-manager.php:438 events-manager.php:439
 #: events-manager.php:440
@@ -5738,15 +5751,15 @@ msgstr "マルチサイトオプション"
 #: admin/settings/tabs/formats.php:239 admin/settings/tabs/formats.php:293
 #: admin/settings/tabs/formats.php:334 admin/settings/tabs/formats.php:374
 #: admin/settings/tabs/formats.php:436 admin/settings/tabs/general.php:5
-#: admin/settings/tabs/general.php:107 admin/settings/tabs/general.php:162
-#: admin/settings/tabs/general.php:241 admin/settings/tabs/general.php:271
-#: admin/settings/tabs/pages.php:14 admin/settings/tabs/pages.php:36
-#: admin/settings/tabs/pages.php:53 admin/settings/tabs/pages.php:195
-#: admin/settings/tabs/pages.php:242 admin/settings/tabs/pages.php:365
-#: admin/settings/tabs/pages.php:499 admin/settings/tabs/pages.php:631
-#: admin/settings/wpfc-admin.php:22
+#: admin/settings/tabs/general.php:107 admin/settings/tabs/general.php:148
+#: admin/settings/tabs/general.php:203 admin/settings/tabs/general.php:282
+#: admin/settings/tabs/general.php:312 admin/settings/tabs/pages.php:14
+#: admin/settings/tabs/pages.php:36 admin/settings/tabs/pages.php:53
+#: admin/settings/tabs/pages.php:195 admin/settings/tabs/pages.php:242
+#: admin/settings/tabs/pages.php:365 admin/settings/tabs/pages.php:499
+#: admin/settings/tabs/pages.php:631 admin/settings/wpfc-admin.php:22
 msgid "Click to toggle"
-msgstr "切り替え"
+msgstr "クリックで切り替え"
 
 #: admin/em-ms-options.php:137 admin/em-options.php:455
 msgid "Event Manager Options"
@@ -6011,8 +6024,8 @@ msgstr "このチケットを管理する権限がありません。"
 #: admin/settings/tabs/pages.php:242 admin/settings/tabs/pages.php:258
 #: admin/settings/tabs/pages.php:259 classes/em-event-posts-admin.php:192
 #: classes/em-event-posts-admin.php:354 classes/em-location-posts-admin.php:47
-#: classes/em-location-posts-admin.php:49 classes/em-location.php:489
-#: classes/em-location.php:496 em-actions.php:205 em-install.php:504
+#: classes/em-location-posts-admin.php:49 classes/em-location.php:490
+#: classes/em-location.php:497 em-actions.php:205 em-install.php:504
 #: em-posts.php:242 templates/buddypress/group-events.php:43
 #: templates/buddypress/my-group-events.php:44
 #: templates/forms/location-editor.php:32
@@ -6097,7 +6110,7 @@ msgstr "アンインストール"
 #: buddypress/bp-em-core.php:192 buddypress/bp-em-core.php:243
 #: buddypress/bp-em-core.php:265 buddypress/screens/profile.php:27
 #: em-actions.php:127 em-install.php:471 em-install.php:522 em-install.php:608
-#: em-install.php:609 em-install.php:626 em-install.php:644 em-install.php:1165
+#: em-install.php:609 em-install.php:626 em-install.php:644 em-install.php:1172
 #: em-posts.php:143 em-posts.php:146 em-posts.php:148 em-template-tags.php:141
 #: widgets/em-events.php:17
 msgid "Events"
@@ -6139,7 +6152,7 @@ msgstr "<p>Events Manager のインストールが完了しました。<a href='
 msgid "Update Blogs"
 msgstr "サイトを更新"
 
-#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.9.4)  #-#-#-#-#
+#. #-#-#-#-#  events-manager-code.pot (Events Manager 5.9.5)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: admin/em-admin.php:113 admin/em-data-privacy.php:30
 #: admin/em-data-privacy.php:38 admin/em-data-privacy.php:44
@@ -6147,7 +6160,7 @@ msgstr "サイトを更新"
 #: admin/em-data-privacy.php:184 admin/em-data-privacy.php:189
 #: admin/em-data-privacy.php:195 admin/em-data-privacy.php:199
 #: admin/em-data-privacy.php:205 classes/em-people.php:41 em-install.php:1048
-#: em-install.php:1070 events-manager.php:730
+#: em-install.php:1070 events-manager.php:731
 msgid "Events Manager"
 msgstr "Events Manager"
 
@@ -6161,7 +6174,7 @@ msgstr "Events Manager"
 #: admin/settings/tabs/formats.php:247 admin/settings/tabs/pages.php:21
 #: admin/settings/tabs/pages.php:246 admin/settings/tabs/pages.php:248
 #: classes/em-location-posts-admin.php:38 em-actions.php:205 em-install.php:527
-#: em-install.php:529 em-install.php:1178 em-install.php:1237 em-posts.php:238
+#: em-install.php:529 em-install.php:1185 em-install.php:1244 em-posts.php:238
 #: em-posts.php:241 em-posts.php:243 templates/tables/locations.php:11
 #: templates/tables/locations.php:14
 msgid "Locations"

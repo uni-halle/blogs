@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Page Links To - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-09-15 21:55:10+0000\n"
+"PO-Revision-Date: 2018-07-24 08:20:55+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,9 +11,77 @@ msgstr ""
 "Language: fr\n"
 "Project-Id-Version: Plugins - Page Links To - Stable (latest release)\n"
 
+#: templates/quick-add.php:31
+msgid "You should customize this short URL to make it shorter and more memorable!"
+msgstr "Vous devriez personnaliser cette URL courte pour la rendre encore plus courte et plus mémorisable !"
+
+#: templates/quick-add.php:30
+msgid "page-title"
+msgstr "titre-page"
+
+#: templates/quick-add.php:30
+msgid "Short URL"
+msgstr "URL courte"
+
+#: templates/quick-add.php:26
+msgid "URL"
+msgstr "URL"
+
+#: templates/quick-add.php:22
+msgid "Page Title"
+msgstr "Titre de la page"
+
+#: templates/quick-add.php:22
+msgid "Title"
+msgstr "Titre"
+
+#: templates/quick-add.php:14
+msgid "Sorry, your browser does not support copying."
+msgstr "Désolé, votre navigateur ne prend pas en charge la copie."
+
+#: templates/quick-add.php:13
+msgid "Copied to Clipboard!"
+msgstr "Copié dans le presse-papier !"
+
+#: classes/plugin.php:888
+msgid "Linked URL"
+msgstr "URL liée"
+
+#: classes/plugin.php:854
+msgid "Links to:"
+msgstr "Liens vers :"
+
+#: classes/plugin.php:743
+msgid "Page link draft saved!"
+msgstr "Brouillon du lien de page enregistré !"
+
+#: classes/plugin.php:743
+msgid "New page link published!"
+msgstr "Nouveau lien de page publié !"
+
+#: classes/plugin.php:292
+msgid "Add Page Link"
+msgstr "Ajouter un lien de page"
+
+#: classes/plugin.php:264
+msgid "Copy Short URL"
+msgstr "Copier l’URL courte"
+
+#: classes/plugin.php:246
+msgid "Page Link"
+msgstr "Lien de la page"
+
+#: classes/plugin.php:810
+msgid "No thanks"
+msgstr "Non merci"
+
+#: classes/plugin.php:810
+msgid "Give Me Updates"
+msgstr "Informez-moi des mises à jour"
+
 #. Author URI of the plugin/theme
-msgid "http://coveredwebservices.com/"
-msgstr "http://coveredwebservices.com/"
+msgid "https://coveredweb.com/"
+msgstr "https://coveredweb.com/"
 
 #. Author of the plugin/theme
 msgid "Mark Jaquith"
@@ -21,37 +89,39 @@ msgstr "Mark Jaquith"
 
 #. Description of the plugin/theme
 msgid "Allows you to point WordPress pages or posts to a URL of your choosing.  Good for setting up navigational links to non-WP sections of your site or to off-site resources."
-msgstr "Vous permet de faire pointer des pages ou des articles WordPress vers une URL de votre choix. Utile pour mettre en place des liens de navigation vers des sections non-WP de votre site ou vers des ressources d'un site tiers."
+msgstr "Vous permet de faire pointer des pages ou des articles WordPress vers une URL de votre choix. Utile pour mettre en place des liens de navigation vers des sections non-WP de votre site ou vers des ressources d’un site tiers."
 
 #. Plugin URI of the plugin/theme
 msgid "http://txfx.net/wordpress-plugins/page-links-to/"
 msgstr "http://txfx.net/wordpress-plugins/page-links-to/"
 
+#. #-#-#-#-#  page-links-to-code.pot (Page Links To 3.0.1)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
+#: classes/plugin.php:809
 msgid "Page Links To"
 msgstr "Page Links To"
 
-#: page-links-to.php:596
+#: classes/plugin.php:841
 msgid "<strong>Note</strong>: This content is pointing to a custom URL. Use the &#8220;Page Links To&#8221; box to change this behavior."
-msgstr "<strong>Note</strong>: Ce contenu pointe vers une URL personnalisée. Utilisez le bloc &#8220;Lier la page vers&#8221; pour changer ce comportement."
+msgstr "<strong>Note</strong> : Ce contenu pointe vers une URL personnalisée. Utilisez le bloc « Lier la page vers »pour changer ce comportement."
 
-#: page-links-to.php:304
+#: classes/plugin.php:406
 msgid "Open this link in a new tab"
 msgstr "Ouvrir ce lien dans un nouvel onglet"
 
-#: page-links-to.php:301
+#: classes/plugin.php:403
 msgid "A custom URL"
 msgstr "Une URL personnalisée"
 
-#: page-links-to.php:300
+#: classes/plugin.php:402
 msgid "Its normal WordPress URL"
 msgstr "Son URL WordPress normale"
 
-#: page-links-to.php:299
+#: classes/plugin.php:401
 msgid "Point this content to:"
-msgstr "Faire pointer ce contenu vers:"
+msgstr "Faire pointer ce contenu vers :"
 
-#: page-links-to.php:278
+#: classes/plugin.php:358
 msgctxt "Meta box title"
 msgid "Page Links To"
 msgstr "Lier la page vers"

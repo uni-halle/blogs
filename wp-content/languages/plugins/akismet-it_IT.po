@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Akismet Anti-Spam - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-31 07:56:21+0000\n"
+"PO-Revision-Date: 2018-07-27 07:08:51+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,14 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: it\n"
 "Project-Id-Version: Plugins - Akismet Anti-Spam - Stable (latest release)\n"
+
+#: views/notice.php:138
+msgid "To help your site with transparency under privacy laws like the GDPR, Akismet can display a notice to your users under your comment forms. This feature is disabled by default, however, you can turn it on below."
+msgstr "Per aiutarti a rendere il tuo sito trasparente per quanto riguarda le regolamentazioni sulla privacy come la GDPR, Akismet può mostrare un avviso ai tuoi utenti sotto il form dei commenti. Questa opzione è disabilitata per default, ma la puoi attivare qui sotto. "
+
+#: views/config.php:162
+msgid "To help your site with transparency under privacy laws like the GDPR, Akismet can display a notice to your users under your comment forms. This feature is disabled by default, however, you can turn it on above."
+msgstr "Per aiutarti a rendere il tuo sito trasparente per quanto riguarda le regolamentazioni sulla privacy come la GDPR, Akismet può mostrare un avviso ai tuoi utenti sotto il form dei commenti. Questa opzione è disabilitata per default, ma la puoi attivare qui sotto. "
 
 #: views/notice.php:139
 msgid " Please <a href=\"%s\">enable</a> or <a href=\"%s\">disable</a> this feature. <a href=\"%s\" id=\"akismet-privacy-notice-control-notice-info-link\" target=\"_blank\">More information</a>."
@@ -34,6 +42,10 @@ msgstr "Informativa sulla privacy di Akismet"
 #: views/config.php:155
 msgid "Privacy"
 msgstr "Privacy"
+
+#: class.akismet.php:1419
+msgid "This site uses Akismet to reduce spam. <a href=\"%s\" target=\"_blank\" rel=\"nofollow noopener\">Learn how your comment data is processed</a>."
+msgstr "Questo sito usa Akismet per ridurre lo spam. <a href=\"%s\" target=\"_blank\" rel=\"nofollow noopener\">Scopri come i tuoi dati vengono elaborati</a>."
 
 #: class.akismet-admin.php:86
 msgid "We collect information about visitors who comment on Sites that use our Akismet anti-spam service. The information we collect depends on how the User sets up Akismet for the Site, but typically includes the commenter's IP address, user agent, referrer, and Site URL (along with other information directly provided by the commenter such as their name, username, email address, and the comment itself)."

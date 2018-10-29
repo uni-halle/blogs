@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Contact Form 7 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-22 02:03:12+0000\n"
+"PO-Revision-Date: 2018-09-04 19:40:26+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11,11 +11,19 @@ msgstr ""
 "Language: ja_JP\n"
 "Project-Id-Version: Plugins - Contact Form 7 - Stable (latest release)\n"
 
-#: admin/edit-contact-form.php:193
+#: includes/config-validator.php:581
+msgid "It is not allowed to use files outside the wp-content directory."
+msgstr "wp-content ディレクトリの外部にあるファイルは指定できません。"
+
+#: modules/acceptance.php:251
+msgid "Make this checkbox optional"
+msgstr "チェックボックスを任意選択にする"
+
+#: admin/edit-contact-form.php:192
 msgid "Professional Services"
 msgstr "プロによるサービス"
 
-#: admin/edit-contact-form.php:192
+#: admin/edit-contact-form.php:191
 msgid "https://contactform7.com/custom-development/"
 msgstr "https://contactform7.com/custom-development/"
 
@@ -40,25 +48,25 @@ msgstr "問題解決の助けとなるいくつかの選択肢を紹介します
 msgid "Do you need help?"
 msgstr "お困りですか?"
 
-#: modules/acceptance.php:243
+#: modules/acceptance.php:242
 msgid "Condition"
 msgstr "同意条件"
 
 #. translators: 1: 'Consented' or 'Not consented', 2: conditions
-#: modules/acceptance.php:202
+#: modules/acceptance.php:201
 msgctxt "mail output for acceptance checkboxes"
 msgid "%1$s: %2$s"
 msgstr "%1$s: %2$s"
 
-#: modules/acceptance.php:186
+#: modules/acceptance.php:185
 msgid "Not consented"
 msgstr "同意しない"
 
-#: modules/acceptance.php:184
+#: modules/acceptance.php:183
 msgid "Consented"
 msgstr "同意する"
 
-#: includes/submission.php:196
+#: includes/submission.php:205
 msgid "Sending mail has been aborted."
 msgstr "メールの送信が中断されました。"
 
@@ -91,12 +99,12 @@ msgid "https://contactform7.com/editing-form-template/"
 msgstr "https://contactform7.com/ja/editing-form-template/"
 
 #. translators: screen reader text
-#: admin/edit-contact-form.php:212
+#: admin/edit-contact-form.php:210
 msgid "(left and right arrow)"
 msgstr "(左右の矢印)"
 
 #. translators: 1: ◀ ▶ dashicon, 2: screen reader text for the dashicon
-#: admin/edit-contact-form.php:207
+#: admin/edit-contact-form.php:205
 msgid "%1$s %2$s keys switch panels"
 msgstr "%1$s %2$s キーでパネルを切り替え"
 
@@ -126,11 +134,11 @@ msgstr "もし Contact Form 7 を使って便利だと思われたなら、ぜ�
 msgid "It is hard to continue development and support for this plugin without contributions from users like you."
 msgstr "このプラグインの開発とサポートには多大な労力が費やされており、ユーザーのみなさんからの支援なしには継続不可能です。"
 
-#: includes/contact-form.php:294 includes/contact-form.php:707
+#: includes/contact-form.php:296 includes/contact-form.php:709
 msgid "This contact form is available only for logged in users."
 msgstr "このコンタクトフォームはログインしたユーザーにのみ利用可能です。"
 
-#: includes/config-validator.php:145
+#: includes/config-validator.php:146
 msgid "Deprecated settings are used."
 msgstr "廃止予定の設定が使われている。"
 
@@ -166,36 +174,36 @@ msgstr "既存のコンタクトフォームは作成できません。"
 msgid "You are not allowed to access contact forms."
 msgstr "コンタクトフォームにアクセスする権限がありません。"
 
-#: includes/config-validator.php:552
+#: includes/config-validator.php:563
 msgid "Attachment file does not exist at %path%."
 msgstr "添付するファイルが %path% に存在しません。"
 
-#: includes/config-validator.php:481
+#: includes/config-validator.php:482
 msgid "Invalid mailbox syntax is used in the %name% field."
 msgstr "%name% 項目に不正なメールボックス構文が見られます。"
 
 #. translators: %names%: a list of form control names
-#: includes/config-validator.php:392
+#: includes/config-validator.php:393
 msgid "Unavailable names (%names%) are used for form controls."
 msgstr "フォームコントロールに使用できない名前 (%names%) が使われています。"
 
-#: includes/config-validator.php:143
+#: includes/config-validator.php:144
 msgid "There are invalid mail header fields."
 msgstr "不正なメールヘッダー項目があります。"
 
-#: includes/config-validator.php:139
+#: includes/config-validator.php:140
 msgid "HTML tags are used in a message."
 msgstr "メッセージに HTML タグが使われています。"
 
-#: includes/config-validator.php:137
+#: includes/config-validator.php:138
 msgid "Sender email address does not belong to the site domain."
 msgstr "サイトのドメインに属していないメールアドレスが送信元に設定されています。"
 
-#: includes/config-validator.php:135
+#: includes/config-validator.php:136
 msgid "Invalid mailbox syntax is used."
 msgstr "不正なメールボックス構文が使用されています。"
 
-#: includes/config-validator.php:133
+#: includes/config-validator.php:134
 msgid "There is a possible empty field."
 msgstr "項目が空になる可能性があります。"
 
@@ -268,7 +276,7 @@ msgstr "スパマーはあらゆるものを標的にします。あなたのコ
 msgid "Getting spammed? You have protection."
 msgstr "スパムが来ました? 対策ならありますよ。"
 
-#: includes/config-validator.php:141
+#: includes/config-validator.php:142
 msgid "Multiple form controls are in a single label element."
 msgstr "複数のフォームコントロールが単一の label 要素内に置かれています。"
 
@@ -371,15 +379,15 @@ msgctxt "mail subject"
 msgid "%1$s \"%2$s\""
 msgstr "%1$s \"%2$s\""
 
-#: admin/admin.php:629
+#: admin/admin.php:634
 msgid "Misconfiguration leads to mail delivery failure or other troubles. Validate your contact forms now."
 msgstr "間違った設定があるとメール配送の失敗やその他のトラブルにつながります。コンタクトフォームの設定を検証しましょう。"
 
-#: admin/admin.php:627
+#: admin/admin.php:631
 msgid "Validate Contact Form 7 Configuration"
 msgstr "Contact Form 7 の設定を検証する"
 
-#: includes/config-validator.php:17
+#: includes/config-validator.php:18
 msgid "https://contactform7.com/configuration-errors/"
 msgstr "https://contactform7.com/configuration-errors/"
 
@@ -616,19 +624,19 @@ msgstr "送信ボタンのためのフォームタグを生成します。詳し
 msgid "submit"
 msgstr "送信ボタン"
 
-#: modules/select.php:219
+#: modules/select.php:193
 msgid "Insert a blank item as the first option"
 msgstr "空の項目を先頭に挿入する"
 
-#: modules/select.php:218
+#: modules/select.php:192
 msgid "Allow multiple selections"
 msgstr "複数選択を可能にする"
 
-#: modules/select.php:185
+#: modules/select.php:159
 msgid "Generate a form-tag for a drop-down menu. For more details, see %s."
 msgstr "ドロップダウンメニューのためのフォームタグを生成します。詳しくは%sを参照。"
 
-#: modules/select.php:178
+#: modules/select.php:152
 msgid "drop-down menu"
 msgstr "ドロップダウンメニュー"
 
@@ -795,62 +803,62 @@ msgstr "日付が最小制約日より小さい"
 msgid "Date format that the sender entered is invalid"
 msgstr "入力された日付の形式が正しくない"
 
-#: modules/checkbox.php:362 modules/date.php:221 modules/number.php:229
-#: modules/select.php:248 modules/text.php:316 modules/textarea.php:190
+#: modules/checkbox.php:341 modules/date.php:221 modules/number.php:229
+#: modules/select.php:222 modules/text.php:316 modules/textarea.php:190
 msgid "To use the value input through this field in a mail field, you need to insert the corresponding mail-tag (%s) into the field on the Mail tab."
 msgstr "この項目に入力された値をメールの項目で使用するには、対応するメールタグ (%s) をメールタブ上の項目に挿入する必要があります。"
 
-#: modules/checkbox.php:332
+#: modules/checkbox.php:311
 msgid "Make checkboxes exclusive"
 msgstr "チェックボックスを排他化する"
 
-#: modules/checkbox.php:330
+#: modules/checkbox.php:309
 msgid "Wrap each item with label element"
 msgstr "個々の項目を label 要素で囲む"
 
-#: modules/checkbox.php:329
+#: modules/checkbox.php:308
 msgid "Put a label first, a checkbox last"
 msgstr "ラベルを前に、チェックボックスを後に配置する"
 
-#: modules/checkbox.php:328 modules/select.php:217
+#: modules/checkbox.php:307 modules/select.php:191
 msgid "One option per line."
 msgstr "一行に一オプションを入力。"
 
-#: modules/checkbox.php:311 modules/date.php:164 modules/file.php:231
-#: modules/number.php:172 modules/select.php:201 modules/text.php:247
+#: modules/checkbox.php:290 modules/date.php:164 modules/file.php:231
+#: modules/number.php:172 modules/select.php:175 modules/text.php:247
 #: modules/textarea.php:150
 msgid "Required field"
 msgstr "必須項目"
 
-#: modules/checkbox.php:307 modules/checkbox.php:310 modules/date.php:160
+#: modules/checkbox.php:286 modules/checkbox.php:289 modules/date.php:160
 #: modules/date.php:163 modules/file.php:227 modules/file.php:230
-#: modules/number.php:163 modules/number.php:166 modules/select.php:197
-#: modules/select.php:200 modules/text.php:243 modules/text.php:246
+#: modules/number.php:163 modules/number.php:166 modules/select.php:171
+#: modules/select.php:174 modules/text.php:243 modules/text.php:246
 #: modules/textarea.php:146 modules/textarea.php:149
 msgid "Field type"
 msgstr "項目タイプ"
 
-#: modules/checkbox.php:296 modules/select.php:187
+#: modules/checkbox.php:275 modules/select.php:161
 msgid "Checkboxes, Radio Buttons and Menus"
 msgstr "チェックボックス、ラジオボタン、メニュー"
 
-#: modules/checkbox.php:296 modules/select.php:187
+#: modules/checkbox.php:275 modules/select.php:161
 msgid "https://contactform7.com/checkboxes-radio-buttons-and-menus/"
 msgstr "https://contactform7.com/checkboxes-radio-buttons-and-menus/"
 
-#: modules/checkbox.php:293
+#: modules/checkbox.php:272
 msgid "Generate a form-tag for a group of radio buttons. For more details, see %s."
 msgstr "一連のラジオボタンのためのフォームタグを生成します。詳しくは%sを参照。"
 
-#: modules/checkbox.php:291
+#: modules/checkbox.php:270
 msgid "Generate a form-tag for a group of checkboxes. For more details, see %s."
 msgstr "一連のチェックボックスのためのフォームタグを生成します。詳しくは%sを参照。"
 
-#: modules/checkbox.php:278
+#: modules/checkbox.php:257
 msgid "radio buttons"
 msgstr "ラジオボタン"
 
-#: modules/checkbox.php:276
+#: modules/checkbox.php:255
 msgid "checkboxes"
 msgstr "チェックボックス"
 
@@ -895,72 +903,64 @@ msgstr "入力されたコードが正しくありません。"
 msgid "The code that sender entered does not match the CAPTCHA"
 msgstr "入力されたコードが CAPTCHA に適合していない"
 
-#: modules/acceptance.php:277 modules/checkbox.php:357 modules/date.php:216
+#: modules/acceptance.php:275 modules/checkbox.php:336 modules/date.php:216
 #: modules/file.php:270 modules/number.php:224 modules/quiz.php:231
 #: modules/really-simple-captcha.php:322 modules/recaptcha.php:503
-#: modules/select.php:243 modules/submit.php:88 modules/text.php:311
+#: modules/select.php:217 modules/submit.php:88 modules/text.php:311
 #: modules/textarea.php:185
 msgid "Insert Tag"
 msgstr "タグを挿入"
 
-#: modules/acceptance.php:264 modules/checkbox.php:344 modules/date.php:204
+#: modules/acceptance.php:262 modules/checkbox.php:323 modules/date.php:204
 #: modules/file.php:257 modules/number.php:212 modules/quiz.php:218
 #: modules/really-simple-captcha.php:295 modules/really-simple-captcha.php:310
-#: modules/recaptcha.php:490 modules/select.php:230 modules/submit.php:75
+#: modules/recaptcha.php:490 modules/select.php:204 modules/submit.php:75
 #: modules/text.php:298 modules/textarea.php:172
 msgid "Class attribute"
 msgstr "クラス属性"
 
-#: modules/acceptance.php:259 modules/checkbox.php:339 modules/date.php:199
+#: modules/acceptance.php:257 modules/checkbox.php:318 modules/date.php:199
 #: modules/file.php:252 modules/number.php:207 modules/quiz.php:213
 #: modules/really-simple-captcha.php:290 modules/really-simple-captcha.php:305
-#: modules/recaptcha.php:485 modules/select.php:225 modules/submit.php:70
+#: modules/recaptcha.php:485 modules/select.php:199 modules/submit.php:70
 #: modules/text.php:293 modules/textarea.php:167
 msgid "Id attribute"
 msgstr "ID 属性"
 
-#: modules/acceptance.php:253
-msgid "Make this work inversely"
-msgstr "これの挙動を反対にする"
-
-#: modules/acceptance.php:252
-msgid "Make this checkbox checked by default"
-msgstr "このチェックボックスをデフォルトでチェックされた状態にする"
-
-#: modules/acceptance.php:248 modules/acceptance.php:251
-#: modules/checkbox.php:323 modules/checkbox.php:326 modules/select.php:212
-#: modules/select.php:215
+#: modules/acceptance.php:247 modules/acceptance.php:250
+#: modules/checkbox.php:302 modules/checkbox.php:305 modules/select.php:186
+#: modules/select.php:189
 msgid "Options"
 msgstr "オプション"
 
-#: modules/acceptance.php:238 modules/checkbox.php:318 modules/date.php:170
+#: modules/acceptance.php:237 modules/checkbox.php:297 modules/date.php:170
 #: modules/file.php:237 modules/number.php:178 modules/quiz.php:197
-#: modules/really-simple-captcha.php:280 modules/select.php:207
+#: modules/really-simple-captcha.php:280 modules/select.php:181
 #: modules/text.php:253 modules/textarea.php:156
 msgid "Name"
 msgstr "名前"
 
-#: modules/acceptance.php:228
+#: modules/acceptance.php:227
 msgid "Acceptance Checkbox"
 msgstr "承諾確認チェックボックス"
 
-#: modules/acceptance.php:228
+#: modules/acceptance.php:227
 msgid "https://contactform7.com/acceptance-checkbox/"
 msgstr "https://contactform7.com/acceptance-checkbox/"
 
-#: modules/acceptance.php:226
+#: modules/acceptance.php:225
 msgid "Generate a form-tag for an acceptance checkbox. For more details, see %s."
 msgstr "承諾確認チェックボックスのフォームタグを生成します。詳しくは%sを参照。"
 
-#: modules/acceptance.php:218
+#: modules/acceptance.php:217
 msgid "acceptance"
 msgstr "承諾確認"
 
-#: includes/contact-form.php:156
+#: includes/contact-form.php:158
 msgid "<code>%1$s</code> property of a <code>WPCF7_ContactForm</code> object is <strong>no longer accessible</strong>. Use <code>%2$s</code> method instead."
 msgstr "<code>WPCF7_ContactForm</code> オブジェクトの <code>%1$s</code> プロパティは<strong>もうアクセスできません</strong>。代わりに <code>%2$s</code> メソッドを使ってください。"
 
-#: includes/contact-form.php:82 includes/contact-form.php:232
+#: includes/contact-form.php:84 includes/contact-form.php:234
 msgid "Untitled"
 msgstr "無題"
 
@@ -1231,25 +1231,25 @@ msgstr "ショートコード"
 msgid "Title"
 msgstr "タイトル"
 
-#: admin/edit-contact-form.php:249 admin/includes/editor.php:247
+#: admin/edit-contact-form.php:247 admin/includes/editor.php:247
 #: admin/includes/editor.php:252
 msgid "Additional Settings"
 msgstr "その他の設定"
 
 #. translators: %d: number of additional settings
-#: admin/edit-contact-form.php:247
+#: admin/edit-contact-form.php:245
 msgid "Additional Settings (%d)"
 msgstr "その他の設定 (%d)"
 
-#: admin/edit-contact-form.php:233 admin/includes/editor.php:222
+#: admin/edit-contact-form.php:231 admin/includes/editor.php:222
 msgid "Messages"
 msgstr "メッセージ"
 
-#: admin/edit-contact-form.php:229 admin/includes/editor.php:93
+#: admin/edit-contact-form.php:227 admin/includes/editor.php:93
 msgid "Mail"
 msgstr "メール"
 
-#: admin/edit-contact-form.php:225 admin/includes/editor.php:61
+#: admin/edit-contact-form.php:223 admin/includes/editor.php:61
 msgid "Form"
 msgstr "フォーム"
 
@@ -1422,8 +1422,8 @@ msgstr "コンタクトフォームの編集"
 msgid "Contact"
 msgstr "お問い合わせ"
 
-#. #-#-#-#-#  contact-form-7-code.pot (Contact Form 7 5.0.2)  #-#-#-#-#
+#. #-#-#-#-#  contact-form-7-code.pot (Contact Form 7 5.0.4)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/admin.php:21 modules/flamingo.php:167
+#: admin/admin.php:21 modules/flamingo.php:170
 msgid "Contact Form 7"
 msgstr "Contact Form 7"

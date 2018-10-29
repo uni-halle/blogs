@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Akismet Anti-Spam - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-06-20 06:39:46+0000\n"
+"PO-Revision-Date: 2018-10-03 18:11:49+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -49,7 +49,7 @@ msgstr "Ce site utilise Akismet pour réduire les indésirables. <a href=\"%s\" 
 
 #: class.akismet-admin.php:86
 msgid "We collect information about visitors who comment on Sites that use our Akismet anti-spam service. The information we collect depends on how the User sets up Akismet for the Site, but typically includes the commenter's IP address, user agent, referrer, and Site URL (along with other information directly provided by the commenter such as their name, username, email address, and the comment itself)."
-msgstr "Nous récoltons des informations sur les visiteurs qui commentent sur les sites utilisant Akismet, notre service contre les indésirables. Ces informations récoltées dépendent des réglages Akismet effectués par l’utilisateur sur le site, et incluent généralement l’adresse IP des commentateurs, l’agent utilisateur, le référent et l’URL du site (ainsi que d’autres informations fournies directement par le commentateur comme leur nom, nom d’utilisateur, adresse e-mail et leur commentaire)."
+msgstr "Nous récoltons des informations sur les visiteurs qui commentent sur les sites utilisant Akismet, notre service contre les indésirables. Ces informations récoltées dépendent des réglages Akismet effectués par l’utilisateur sur le site, et incluent généralement l’adresse IP des commentateurs, l’agent utilisateur, le référent et l’URL du site (ainsi que d’autres informations fournies directement par le commentateur comme leur nom, identifiant, adresse e-mail et leur commentaire)."
 
 #: class.akismet.php:226
 msgid "Comment discarded."

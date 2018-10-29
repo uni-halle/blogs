@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Leaflet Maps Marker (Google Maps, OpenStreetMap, Bing Maps) - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-07-06 15:22:22+0000\n"
+"PO-Revision-Date: 2018-07-18 13:25:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -86,11 +86,11 @@ msgstr "Cet outil teste l'authentification/signature"
 
 #: leaflet-tools.php:1019
 msgid "Generate URL"
-msgstr "Générer l'URL"
+msgstr "Générer l’URL"
 
 #: leaflet-tools.php:1017 leaflet-tools.php:1101
 msgid "Error: you have to set a public and private API key first!"
-msgstr "Erreur : vous devez d'abord paramétrer une clé d'API privée et une clé d'API publique !"
+msgstr "Erreur : vous devez d’abord paramétrer une clé d’API privée et une clé d’API publique !"
 
 #: leaflet-tools.php:1008 leaflet-tools.php:1009 leaflet-tools.php:1010
 msgid "Years"
@@ -387,7 +387,7 @@ msgstr "Changer l’ID du marqueur"
 
 #: leaflet-tools.php:216 leaflet-tools.php:758
 msgid "Bulk updates for all %1$s existing layer maps"
-msgstr "Mises à jour en masse pour toutes les cartes de couches existantes de %1$s"
+msgstr "Mises à jour en masse pour toutes les %1$s cartes de couches existantes"
 
 #: leaflet-tools.php:215 leaflet-tools.php:334
 msgid "Bulk updates for marker maps"
@@ -690,7 +690,7 @@ msgstr "option pour ajouter automatiquement des noms de marker aux fenêtres sur
 
 #: leaflet-pro-upgrade.php:313
 msgid "support for bulk updates of marker maps on the tools page for selected layers only"
-msgstr "support des mises à jour groupées des marqueurs de cartes sur la page des outils pour les calques sélectionnés uniquement"
+msgstr "support des mises à jour groupées des marqueurs de cartes sur la page des outils pour les couches sélectionnées uniquement"
 
 #: leaflet-pro-upgrade.php:312
 msgid "support for changing marker IDs and layer IDs from the tools page"
@@ -726,7 +726,7 @@ msgstr "Améliorations et optimisations additionnelles"
 
 #: leaflet-pro-upgrade.php:294
 msgid "Maps Marker Pro allows you to set the user level needed for editing and deleting marker and layer maps from other users."
-msgstr "Maps Marker Pro vous permet de définir le niveau d’utilisateur requis pour la modification et la suppression de cartes de marqueurs et de calques d’autres utilisateurs."
+msgstr "Maps Marker Pro vous permet de définir le niveau d’utilisateur requis pour la modification et la suppression de cartes de marqueurs et de couches d’autres utilisateurs."
 
 #: leaflet-pro-upgrade.php:291
 msgid "advanced permission settings"
@@ -766,7 +766,7 @@ msgstr "API MapsMarker"
 
 #: leaflet-pro-upgrade.php:244
 msgid "Furthermore can also remove the attribution link from the recent marker widget:"
-msgstr "De plus on peut également supprimer le lien d'attribution à partir du widget des marqueurs récents :"
+msgstr "De plus on peut également retirer le lien d'attribution à partir du widget des marqueurs récents :"
 
 #: leaflet-pro-upgrade.php:240
 msgid "Maps Marker Pro allows you to customize which markers and layers to include or exclude in the recent marker widget:"
@@ -830,7 +830,7 @@ msgstr "style personnalisé de Google Maps"
 
 #: leaflet-pro-upgrade.php:165
 msgid "Furthermore the viewport of the device used is considered, which results in optimized display of fullscreen maps especially on mobile devices:"
-msgstr "De plus la fenêtre de l'appareil utilisé est reconnue, ce qui entraîne l'affichage optimisé des cartes en plein écran particulièrement sur les appareils mobiles :"
+msgstr "De plus la fenêtre de l’appareil utilisé est reconnue, ce qui entraîne l’affichage optimisé des cartes en plein écran particulièrement sur les appareils mobiles :"
 
 #: leaflet-pro-upgrade.php:161
 msgid "Maps Marker Pro enables you to save the link to the fullscreen map to the homescreen on iOS devices and reopen the map with an optional launch image as web app – meaning the display of the map in fullscreen mode with no address bar:"
@@ -858,7 +858,7 @@ msgstr "Cartes plein écran en HTML5"
 
 #: leaflet-pro-upgrade.php:126
 msgid "Maps Marker Pro allows you to easily perform bulk updates on markers and layers by using the integrated import feature:"
-msgstr "Maps Marker Pro vous permet d’effectuer facilement des mises à jour groupées sur des marqueurs et des calques à l’aide de la fonction d’importation intégrée :"
+msgstr "Maps Marker Pro vous permet d’effectuer facilement des mises à jour groupées sur des marqueurs et des couches à l’aide de la fonction d’importation intégrée :"
 
 #: leaflet-pro-upgrade.php:123
 msgid "support for CSV/XLS/XLSX/ODS import and export for bulk additions and bulk updates"
@@ -906,7 +906,7 @@ msgstr "Cliquez ici pour obtenir plus d'informations sur cette fonctionnalité p
 
 #: leaflet-pro-upgrade.php:69
 msgid "Maps Marker Pro allows you to create beautifully animated marker clusters for layer maps:"
-msgstr "Maps Marker Pro vous permet de créer des groupes de marqueurs magnifiquement animées pour les cartes de calque :"
+msgstr "Maps Marker Pro vous permet de créer des groupes de marqueurs magnifiquement animées pour les cartes de couche :"
 
 #: leaflet-pro-upgrade.php:64 leaflet-pro-upgrade.php:76
 #: leaflet-pro-upgrade.php:87 leaflet-pro-upgrade.php:99
@@ -1048,7 +1048,7 @@ msgstr "Minute"
 
 #: leaflet-marker.php:721 leaflet-tools.php:1003
 msgid "Hour"
-msgstr "Heureou"
+msgstr "Heure"
 
 #: leaflet-marker.php:720
 msgid "Time"
@@ -1060,7 +1060,7 @@ msgstr "peut-être modifié dans \"Valeurs par défaut des pop-ups des marqueurs
 
 #: leaflet-marker.php:646
 msgid "Note: if you add an image, the following CSS definition will be applied: %1$s"
-msgstr "Note : si vous ajoutez une image, la définition CSS suivante sera appliquée : %1$s"
+msgstr "Note : si vous ajoutez une image, la définition CSS suivante sera appliquée : %1$s"
 
 #: leaflet-marker.php:558
 msgid "Please visit Settings to change this globally"
@@ -1153,7 +1153,7 @@ msgstr "Marqueur correctement effacé"
 
 #: leaflet-marker.php:38
 msgid "edit assigned layer"
-msgstr "modifier le calque affecté"
+msgstr "modifier la couche affectée"
 
 #: leaflet-maps-marker.php:582
 msgid "No matches found"
@@ -1181,7 +1181,7 @@ msgstr "ajouter/modifier le marqueur"
 
 #: leaflet-maps-marker.php:328
 msgid "Hide blog posts and link section:"
-msgstr "Cacher la section articles du blog et liens:"
+msgstr "Masquer la section articles du blog et liens :"
 
 #: leaflet-maps-marker.php:326
 msgid "Number of markers to show:"
@@ -1229,7 +1229,7 @@ msgstr "merci de noter cette extension sur WordPress.org"
 
 #: leaflet-list-markers.php:348
 msgid "assign to the following layer:"
-msgstr "attribuer à la couche suivante:"
+msgstr "attribuer à la couche suivante :"
 
 #: leaflet-list-markers.php:333
 msgid "same layer(s) as original marker"
@@ -1237,7 +1237,7 @@ msgstr "même couche(s) que le marqueur original"
 
 #: leaflet-list-markers.php:331
 msgid "duplicate and assign to the following layer:"
-msgstr "dupliquer et affecter à la couche suivante :"
+msgstr "dupliquer et affecter à la couche suivante :"
 
 #: leaflet-list-markers.php:326
 msgid "Bulk actions for selected markers"
@@ -1301,19 +1301,19 @@ msgstr "non assigné"
 
 #: leaflet-list-layers.php:259
 msgid "delete layer(s) and assign markers to the following layer:"
-msgstr "supprimez le(s) calque(s) et attribuez des marqueurs au calque suivant :"
+msgstr "supprimez le(s) couche(s) et attribuez des marqueurs à la couche suivante :"
 
 #: leaflet-list-layers.php:255
 msgid "delete layer(s) and assigned markers"
-msgstr "supprimer le(s) calque(s) et les marqueurs assignés"
+msgstr "supprimer le(s) couche(s) et les marqueurs assignés"
 
 #: leaflet-list-layers.php:254
 msgid "duplicate layer(s) and assigned markers"
-msgstr "calque(s) en double et marqueurs assignés"
+msgstr "couche(s) en double et marqueurs assignés"
 
 #: leaflet-list-layers.php:253
 msgid "duplicate layer(s) only"
-msgstr "calque(s) en double uniquement"
+msgstr "couche(s) en double uniquement"
 
 #: leaflet-list-layers.php:252
 msgid "Bulk actions for selected layers"
@@ -1413,7 +1413,7 @@ msgstr "Format incorrecte ! Merci d'utiliser uniquement des chiffres !"
 
 #: leaflet-layer.php:1252
 msgid "use this pin to center the layer (will only be shown in the admin area)"
-msgstr "utilisez cette épingle pour centrer le calque (sera affichée uniquement dans la zone d’administration)"
+msgstr "utilisez cette épingle pour centrer la couche (sera affichée uniquement dans la zone d’administration)"
 
 #: leaflet-layer.php:989 leaflet-list-markers.php:294
 msgid "standard icon"
@@ -1491,7 +1491,7 @@ msgstr "Merci de vous rendre dans Réglages / Cartes / Réglages des minicartes"
 
 #: leaflet-layer.php:770 leaflet-marker.php:735
 msgid "Hide MapsMarker.com backlinks"
-msgstr "Cacher le lien vers MapsMarker.com"
+msgstr "Masquer le lien vers MapsMarker.com"
 
 #: leaflet-layer.php:714 leaflet-marker.php:657
 msgid "WMS layers"
@@ -1531,7 +1531,7 @@ msgstr "Veuillez sélectionner les couches dont vous souhaitez afficher les marq
 
 #: leaflet-layer.php:671
 msgid "Show markers from other layers on this map"
-msgstr "Afficher les marqueurs des autres couches sur cette carte"
+msgstr "Afficher les marqueurs des autres couches sur cette carte."
 
 #: leaflet-layer.php:669
 msgid "Multi Layer Map"
@@ -1552,7 +1552,7 @@ msgstr "Si activé, le nom de la couche sera affiché ici"
 
 #: leaflet-layer.php:491 leaflet-marker.php:383
 msgid "If checked, panel on top of map is displayed"
-msgstr "Si coché, le panneau en haut de la carte est affiché"
+msgstr "Si coché, le panneau en haut de la carte est affiché."
 
 #: leaflet-layer.php:490 leaflet-marker.php:382
 msgid "Display panel"
@@ -1748,7 +1748,7 @@ msgstr "Retourner au formulaire"
 #: leaflet-layer.php:87 leaflet-layer.php:130 leaflet-marker.php:81
 #: leaflet-marker.php:117
 msgid "Error: coordinates cannot be empty!"
-msgstr "Erreur : les coordonnées ne peuvent pas être vides !"
+msgstr "Erreur : les coordonnées ne peuvent pas être vides !"
 
 #: leaflet-kml.php:96
 msgid "Warning: no markers are assigned to the layer with the ID %1$s or the layer does not exist!"
@@ -1915,7 +1915,7 @@ msgstr "Marqueur correctement publié"
 #: leaflet-api.php:657 leaflet-api.php:666 leaflet-api.php:885
 #: leaflet-api.php:894
 msgid "Geocoding error: %1s"
-msgstr "Erreur de géocodage : %1s"
+msgstr "Erreur de géocodage : %1s"
 
 #: leaflet-api.php:586 leaflet-api.php:595 leaflet-api.php:1099
 #: leaflet-api.php:1108
@@ -2134,7 +2134,7 @@ msgstr "Ouvrir la carte toute seule en mode plein écran"
 #: leaflet-fullscreen.php:159 leaflet-fullscreen.php:655 leaflet-layer.php:502
 #: leaflet-layer.php:588 leaflet-marker.php:427
 msgid "Export as KML for Google Earth/Google Maps"
-msgstr "Exportation en KML pour Google Earth/Google Maps"
+msgstr "Exportation en KML pour Google Earth / Google Maps"
 
 #: inc/showmap.php:211 inc/showmap.php:214 inc/showmap.php:216
 #: inc/showmap.php:219 inc/showmap.php:222 inc/showmap.php:406
@@ -2165,11 +2165,11 @@ msgstr "Se rendre sur le site web de l'extension"
 #: inc/showmap.php:161 leaflet-fullscreen.php:542 leaflet-kml.php:257
 #: leaflet-marker.php:243
 msgid "Error: a marker with the ID %1$s does not exist!"
-msgstr "Erreur: un repère avec l'ID %1$s n'existe pas !"
+msgstr "Erreur : un repère avec l’ID %1$s n’existe pas !"
 
 #: inc/showmap.php:160 leaflet-fullscreen.php:79 leaflet-layer.php:351
 msgid "Error: a layer with the ID %1$s does not exist!"
-msgstr "Erreur : une couche avec l'ID %1$s n'existe pas !"
+msgstr "Erreur : une couche avec l’ID %1$s n’existe pas !"
 
 #: inc/showmap.php:149 inc/showmap.php:152
 msgid "Show embedded map in full-screen mode"
@@ -2559,9 +2559,25 @@ msgstr "Vous utilisez l'éditeur simplifié"
 msgid "Security check failed - please call this function from the according admin page!"
 msgstr "Le contrôle de sécurité a échoué - veuillez appeler cette fonction de la page d’admin correspondante !"
 
+#: inc/compatibility-checks.php:145
+msgid "Warning: you are using the plugin \"Autoptimize\" which is currently causing maps to break!<br/>To fix this, please navigate to <a href=\"%1$s\">Autoptimize settings</a>, tick the checkbox \"Force JavaScript in <head>?\" and add the following to the end the option \"Exclude scripts from Autoptimize:\": %2$s"
+msgstr "Avertissement : vous utilisez l’extension « Autoptimize » qui provoque actuellement la rupture des cartes !<br/> Pour corriger ce problème, veuillez naviguer vers les <a href=\"%1$s\"> réglages d’Autoptimize</a>, cochez la case à cocher « Force JavaScript dans <head> ? » et ajoutez ce qui suit à la fin de l’option « Exclure les scripts de Autoptimize : » : %2$s"
+
+#: inc/compatibility-checks.php:140
+msgid "Warning: as Mapbox now requires to use a custom API access token, custom Mapbox basemaps will not work anymore if you registered your Mapbox account after January 2015.<br/>In case your Mapbox maps are broken, please switch to another basemap like OpenStreetMap or <a href=\"%1$s\">upgrade to Maps Marker Pro</a>, which enables you to continue using custom Mapbox basemaps - even with accounts created after January 2015 (please also note that Mapbox might discontinue the usage of their old API for existing users in the long run too!)."
+msgstr "Avertissement : comme Mapbox nécessite désormais d’utiliser un jeton d’accès API personnalisé, les fonds de carte personnalisés ne fonctionneront plus si vous avez enregistré votre compte Mapbox après janvier 2015. <br/> Si vos maps Mapbox sont cassées, passez à un autre fond de carte comme OpenStreetMap ou <a href=\"%1$s\"> mettez à niveau vers Maps Marker Pro </a>, ce qui vous permet de continuer à utiliser des fonds de carte Mapbox personnalisés, même avec des comptes créés après janvier 2015 (veuillez également noter que Mapbox peut interrompre l’utilisation de leur ancienne API pour les utilisateurs existants à long terme aussi !)."
+
 #: inc/compatibility-checks.php:135
 msgid "Warning: you are using the plugin %1$s which is causing maps to break! To fix this, please navigate to <a href=\"%2$s\">Sucuri Security / Hardening</a> and click on the button \"Revert hardening\" in the section \"Restrict wp-content access\"."
 msgstr "Attention: vous utilisez l'extension %1$s qui empêche les cartes de fonctionner! Pour résoudre le problème, veuillez naviguer vers <a href=\"%2$s\">Sucuri Security / Hardening</a> et cliquer sur le bouton \"Revert hardening\" dans la section \"Restrict wp-content access\"."
+
+#: inc/compatibility-checks.php:113
+msgid "Warning: you are using the plugin \"WP External Links\" which is currently causing maps to break! Please navigate to \"External Links\" and add the following links to the option \"Ignore links (URL) containing...\": %1$s"
+msgstr "Avertissement : vous utilisez l’extension « WP External Links » qui provoque actuellement la rupture des cartes ! Veuillez naviguer vers « Liens externes » et ajouter les liens suivants à l’option « Ignorer les liens (URL) contenant... » : %1$s"
+
+#: inc/compatibility-checks.php:94
+msgid "Warning: you are using the Plugin %1$s which is causing maps to break! To fix this, please navigate to <a href=\"%2$s\">Settings / Misc / General Settings</a> and set the Option \"Where to insert Javascript files on frontend?\" to \"header (+ inline javascript)\"."
+msgstr "Avertissement : vous utilisez l’extension %1$s qui provoque la rupture des cartes ! Pour corriger ce problème, veuillez accéder à <a href=\"%2$s\"> Réglages / Autres / Réglages généraux</a> et définissez l’option « Où insérer les fichiers Javascript sur le frontal ? » à « en-tête (+ javascript en ligne) »."
 
 #: inc/compatibility-checks.php:83 inc/compatibility-checks.php:87
 msgid "Warning: the plugin %1$s is active and causing maps to break - please deactivate that plugin!"
@@ -2578,6 +2594,10 @@ msgstr "Avertissement : vous utilisez l'extension \"W3 Total Cache\" avec la fon
 #: inc/compatibility-checks.php:54
 msgid "Warning: you are using the plugin \"WP Minify\" which is causing Leaflet Maps Marker layer maps to break as the option \"Enable HTML Minification\" is active. Please disable this option under Settings / WP Minify."
 msgstr "Avertissement : vous utilisez l'extension \"WP Minify\" qui peut empêcher le bon fonctionnement de Leaflet Maps Marker si l'option \"Enable HTML Minification\" est activée. Merci de désactiver cette option dans Settings / BWP Minify."
+
+#: inc/compatibility-checks.php:46
+msgid "Warning: you are using the plugin \"Better WordPress Minify\" which can cause Leaflet Maps Marker to break if the option \"Minify JS files automatically?\" is active. Please disable this option (BWP Minify / General Options) or navigate to BWP Minify / \"Manage Enqueued Files\", click on \"Scripts to be ignored (not minified)\" and add %1$s (one line for each)"
+msgstr "Avertissement : vous utilisez l’extension « Better WordPress Minify » qui peut provoquer la rupture de Leaflet Maps Marker si l’option « Réduire automatiquement les fichiers JS ? » c’est actif. Veuillez désactiver cette option (BWP Minify / Options générales) ou naviguez jusqu’à BWP Minify / « Gérer les fichiers en attente », cliquez sur « Scripts à ignorer (non réduit) » et ajoutez %1$s (une ligne pour chaque)"
 
 #: inc/compatibility-checks.php:39
 msgid "Warning: you are using the outdated plugin WP Google Analytics which is incompatible with Leaflet Maps Marker. Please update to a more current Google analytics plugin like http://wordpress.org/extend/plugins/google-analytics-for-wordpress/"
@@ -2690,7 +2710,7 @@ msgstr "Afficher les icônes"
 
 #: inc/class-leaflet-recent-marker-widget.php:44
 msgid "Please enter layer ID. Use commas to separate multiple layers. Use 0 for markers not assigned to a layer."
-msgstr "Merci d'entrer l'ID de la couche. Utilisez des virgules pour séparer plusieurs couches. Utilisez 0 pour les marqueurs non affectés à un calque."
+msgstr "Veuillez saisir l’ID de la couche. Utilisez des virgules pour séparer plusieurs couches. Utilisez 0 pour les marqueurs non affectés à une couche."
 
 #: inc/class-leaflet-recent-marker-widget.php:44
 msgid "Exclude layers"
@@ -2715,7 +2735,7 @@ msgstr "Fonctionnalité disponible uniquement avec la version pro"
 
 #: inc/class-leaflet-recent-marker-widget.php:40
 msgid "To select only markers from a layer, please enter the layer ID. Use commas to separate multiple layers. Use 0 for markers not assigned to a layer."
-msgstr "Pour sélectionner uniquement les marqueurs d'une couche, s'il vous plaît entrez l'ID de la couche. Utilisez des virgules pour séparer plusieurs couches. Utilisez 0 pour les marqueurs non affectés à un calque."
+msgstr "Pour sélectionner uniquement les marqueurs d’une couche, veuillez saisir l’ID de la couche. Utilisez des virgules pour séparer plusieurs couches. Utilisez 0 pour les marqueurs non affectés à une couche."
 
 #: inc/class-leaflet-recent-marker-widget.php:40
 msgid "If empty, markers from all layers are selected."
@@ -2757,7 +2777,7 @@ msgstr "Cocher cette case et cliquer sur \"Enregistrer les modifications\" ci-de
 
 #: inc/class-leaflet-options.php:9594
 msgid "Warning - cannot be undone!"
-msgstr "Avertissement - cette action ne pas peut être annulée !"
+msgstr "Avertissement - cette action ne pas peut être annulée !"
 
 #: inc/class-leaflet-options.php:9587
 msgid "You can backup your current settings on the <a href=\"%1$s\">tools page</a> before resetting all options to their default values."
@@ -2808,6 +2828,10 @@ msgstr "Editeur (Droit moderate_comments)"
 #: inc/class-leaflet-options.php:9566
 msgid "Administrator (Capability activate_plugins)"
 msgstr "Administrateur (Droit activate_plugins)"
+
+#: inc/class-leaflet-options.php:9497
+msgid "User role needed for viewing markers/layers from other users"
+msgstr "Rôle de l’utilisateur nécessaire pour afficher les marqueurs / couches d’autres utilisateurs"
 
 #: inc/class-leaflet-options.php:9476
 msgid "Allowed API request methods"
@@ -2869,6 +2893,10 @@ msgstr "Les deux clés publique et privé sont nécessaires pour les appels de l
 msgid "Public API key"
 msgstr "Clé d'API publique"
 
+#: inc/class-leaflet-options.php:9379
+msgid "You will find a <a href=\"%1$s\">API URL generator</a> and <a href=\"%2$s\">API URL tester</a> in the tools section. Please see the API docs for more information on authentication."
+msgstr "Vous trouverez une <a href=\"%1$s\">API génératrice d’URL</a> et une <a href=\"%2$s\">API testeur d’URL</a> dans la section des outils. Veuillez consulter les documents de l’API pour plus d’informations sur l’authentification."
+
 #: inc/class-leaflet-options.php:9378
 msgid "Authentication"
 msgstr "Authentification"
@@ -2902,12 +2930,20 @@ msgid "Web API options"
 msgstr "Options de l’API Web"
 
 #: inc/class-leaflet-options.php:9335
+msgid "No options available, for full docs and examples <a href=\"%1$s\" target=\"_blank\">please click here</a>"
+msgstr "Aucune option disponible, pour des documents complets et des exemples <a href=\"%1$s\" target=\"_blank\">veuillez cliquer ici</a>"
+
+#: inc/class-leaflet-options.php:9335
 msgid "MMPAPI class options"
 msgstr "Options de classe MMPAPI"
 
 #: inc/class-leaflet-options.php:9335
 msgid "For more information on how to use the MapsMarker API, <a href=\"%1s\" target=\"_blank\">please visit the API docs on mapsmarker.com</a>"
 msgstr "Pour plus d'informations sur la façon d'utiliser l'API de MapsMarker, <a href=\"%1s\" target=\"_blank\">veuillez consulter la documentation de l'API sur mapsmarker.com</a>"
+
+#: inc/class-leaflet-options.php:9335
+msgid "Use the Web API to access a Maps Marker Pro install either from JavaScript in a plugin or theme, or from an external client such as a desktop, mobile or web app."
+msgstr "Utilisez l’API Web pour accéder à une installation de Maps Marker Pro à partir de JavaScript dans une extension ou un thème, ou à partir d’un client externe tel qu’une application de bureau, mobile ou Web."
 
 #: inc/class-leaflet-options.php:9335
 msgid "Via HTTP using the Web API"
@@ -2924,6 +2960,10 @@ msgstr "Fonctions API dans la classe MMPAPI"
 #: inc/class-leaflet-options.php:9335
 msgid "There are two ways to access the API:"
 msgstr "Il existe deux façons d’accéder à l’API :"
+
+#: inc/class-leaflet-options.php:9335
+msgid "The MapsMarker API provides developers with a future-proof way to access some of the common core functionality in Maps Marker Pro."
+msgstr "L’API MapsMarker offre aux développeurs un moyen pérenne d’accéder à certaines fonctionnalités communes dans Maps Marker Pro."
 
 #: inc/class-leaflet-options.php:9322
 msgid "Width and height in pixel of QR code image for marker/layer standalone fullscreen map links"
@@ -2992,6 +3032,10 @@ msgstr "La largeur/hauteur du visuel du QR code (minimum : 124 pixels)"
 #: inc/class-leaflet-options.php:9223
 msgid "QR size"
 msgstr "Taille du QR"
+
+#: inc/class-leaflet-options.php:9215
+msgid "If a visualead project_id is given, the generate_from_project method will be used instead of the generate method for creating QR codes with custom images (please note that the image url from above will also be ignored if a project_id is set - the image from the project_id is used instead). To create a new project, please log into the <a href=\"%s\" target=\"_blank\">visualead admin dashboard</a>."
+msgstr "Si un project_id est donné, la méthode generate_from_project sera utilisée à la place de la méthode generate pour créer des codes QR avec des images personnalisées (veuillez noter que l’URL d’image ci-dessus sera également ignorée si un id_projet est défini - l’image du project_id est utilisé à la place). Pour créer un nouveau projet, connectez-vous au <a href=\"%s\" target=\"_blank\">tableau de bord d’administration Visualead</a>."
 
 #: inc/class-leaflet-options.php:9206
 msgid "A custom image can only be used if you sign up for a custom visualead API key! Please visit %s for more information."
@@ -3241,7 +3285,7 @@ msgstr "Interface d’administration en marque blanche"
 
 #: inc/class-leaflet-options.php:8456
 msgid "Warning: not recommended on production sites - use on your own risk!"
-msgstr "Attention: non recommandé sur les sites de production - utilisation risquée!"
+msgstr "Avertissement : non recommandé sur les sites de production - utilisation risquée !"
 
 #: inc/class-leaflet-options.php:8456
 msgid "Set to enabled if you want to easily upgrade to beta releases."
@@ -3250,6 +3294,10 @@ msgstr "Activer cette option si vous souhaitez mettre à niveau facilement vers 
 #: inc/class-leaflet-options.php:8455
 msgid "Beta testing"
 msgstr "Beta test"
+
+#: inc/class-leaflet-options.php:8443
+msgid "Disabling async GeoJSON loading will increase page loadtime and is only needed if multiple instances of a layer map should be displayed on one page."
+msgstr "La désactivation du chargement GeoJSON asynchrone augmente le chargement de la page. Elle est uniquement nécessaire si plusieurs instances d’une carte de couches doivent être affichées sur une page."
 
 #: inc/class-leaflet-options.php:8442
 msgid "Async GeoJSON loading for layer maps"
@@ -3286,6 +3334,10 @@ msgstr "pied de page"
 #: inc/class-leaflet-options.php:8395
 msgid "header (+ inline javascript)"
 msgstr "en-tête (+ inline javascript)"
+
+#: inc/class-leaflet-options.php:8391
+msgid "Setting this option to header+inline-javascript is required, if maps should be displayed withing a jQuery mobile framework."
+msgstr "La définition de cette option sur header + inline-javascript est obligatoire si les cartes doivent être affichées avec un framework mobile jQuery."
 
 #: inc/class-leaflet-options.php:8391
 msgid "If you choose footer, javascripts will also only be loaded when a shortcode is used and not on all pages."
@@ -3351,16 +3403,24 @@ msgstr "si activé, un feed GeoRSS pour tous les marqueurs sera ajouté à la se
 msgid "Add GeoRSS feed to &lt;head&gt;"
 msgstr "Ajouter le feed GeoRSS à &lt;head&gt;"
 
+#: inc/class-leaflet-options.php:8312
+msgid "if enabled, an \"Insert map\" button gets added to the TinyMCE toolbar and the media bar on post and page edit screens for easily searching and inserting maps"
+msgstr "si activé, un bouton « Insérer une carte » est ajouté à la barre d’outils TinyMCE et la barre des médias sur les écrans de modification d’article et de page pour faciliter la recherche et l’insertion de cartes"
+
 #: inc/class-leaflet-options.php:8311
 msgid "TinyMCE button"
 msgstr "Bouton TinyMCE"
+
+#: inc/class-leaflet-options.php:8303
+msgid "Shortcode to add markers or layers into articles or pages  - Example: [mapsmarker marker=\"1\"].<br/> Attention: if you change the shortcode after having embedded shortcodes into posts/Pages, the shortcode on these specific articles/pages has to be changed also manually - otherwise these markers/layers will not be show on frontend!"
+msgstr "Code court pour ajouter des marqueurs ou des couches dans des articles ou des pages - exemple : [mapsmarker marker = \"1\"]. <br/>Attention : si vous changez le code court après avoir incorporé des codes courts dans les articles / pages, le code court sur ces articles / pages spécifiques doit être changé aussi manuellement - sinon ces marqueurs / couches ne seront pas affichés sur l’interface publique !"
 
 #: inc/class-leaflet-options.php:8302 inc/class-leaflet-options.php:8774
 #: inc/class-leaflet-options.php:9036 leaflet-layer.php:881
 #: leaflet-layer.php:929 leaflet-list-layers.php:96 leaflet-list-layers.php:141
 #: leaflet-list-markers.php:169 leaflet-list-markers.php:219
 msgid "Shortcode"
-msgstr "Shortcode"
+msgstr "Code court"
 
 #: inc/class-leaflet-options.php:8294
 msgid "How many markers should be listed on one page at the page \"list all markers\"?"
@@ -3428,7 +3488,7 @@ msgstr "Optionnel : affiché sur chaque marqueur; utilisé pour envoyer un email
 
 #: inc/class-leaflet-options.php:8209 leaflet-maps-marker.php:299
 msgid "E-Mail"
-msgstr "Email"
+msgstr "E-mail"
 
 #: inc/class-leaflet-options.php:8201
 msgid "Comma separated list of keywords that characterize the content provider. When users search for content in Wikitude the tags will be searched as well. A match in the tags is higher ranked than in the description."
@@ -3529,7 +3589,7 @@ msgstr "Nom du fournisseur"
 
 #: inc/class-leaflet-options.php:8090
 msgid "Please visit <a href=\"http://www.mapsmarker.com/wikitude\" target=\"_blank\">http://www.mapsmarker.com/wikitude</a> for instructions how to submit your marker or layer maps to Wikitude."
-msgstr "Merci de consulter <a href=\"http://www.mapsmarker.com/wikitude\" target=\"_blank\">http://www.mapsmarker.com/wikitude</a> pour les explications pour soumettre votre marqueur ou vos couches à Wikitude."
+msgstr "Veuillez visiter <a href=\"http://www.mapsmarker.com/wikitude\" target=\"_blank\">http://www.mapsmarker.com/wikitude</a> pour les explications pour soumettre votre marqueur ou vos couches à Wikitude."
 
 #: inc/class-leaflet-options.php:8078
 msgid "Markers created with Leaflet Maps Marker can also be displayed via <a href=\"http://en.wikipedia.org/wiki/Augmented_reality\" target=\"_blank\">Augmented-Reality technology</a> on mobile devices. As a first steps, an API to <a href=\"http://www.wikitude.com\" target=\"_blank\">Wikitude</a> has been implemented. APIs to other Augmented-Reality-Providers (like <a href=\"http://www.layar.com\" target=\"_blank\">Layar</a> or <a href=\"http://www.junaio.de\" target=\"_blank\">Junaio</a>) will probably follow in one of the next versions. Sample screenshots:"
@@ -3701,7 +3761,7 @@ msgstr "Utiliser le fournisseur suivant pour les itinéraires"
 
 #: inc/class-leaflet-options.php:7751
 msgid "Please select your prefered directions provider. This setting will be used for the directions link in the panel on top of marker maps and for the action panel which gets attached to the popup text on each marker if enabled."
-msgstr "Merci de choisir votre fournisseur favori pour les itinéraires. Ce réglage sera utilisé pour le lien d'itinéraire dans le panneau en haut des cartes de marqueurs qui apparait dans la pop-up de chaque marqueur si activé."
+msgstr "Veuillez sélectionner votre fournisseur favori pour les itinéraires. Ce réglage sera utilisé pour le lien d’itinéraire dans le panneau en haut des cartes de marqueurs qui apparaît dans la fenêtre surgissante de chaque marqueur si activé."
 
 #: inc/class-leaflet-options.php:7732
 msgid "isiZulu"
@@ -4093,7 +4153,7 @@ msgstr "Une clé API est nécessaire pour utiliser la carte Bing comme fond de c
 
 #: inc/class-leaflet-options.php:7564
 msgid "Please enter the custom JSON array to style your Google maps (you can use the <a href=\"%1s\" target=\"_blank\">Google Styled Maps Wizard</a> to create custom styles easily). Example for hiding roads:"
-msgstr "Merci d'entrer l'array personnalisé JSON pour styliser vos Google maps (vous pouvez utiliser le <a href=\"%1s\" target=\"_blank\">Google Styled Maps Wizard</a> pour créer des styles personnalisés facilement). Exemple pour cacher les routes :"
+msgstr "Veuillez saisir le tableau personnalisé JSON pour styliser vos cartes Google (vous pouvez utiliser le <a href=\"%1s\" target=\"_blank\">Google Styled Maps Wizard</a> pour créer des styles personnalisés facilement). Exemple pour cacher les routes :"
 
 #: inc/class-leaflet-options.php:7556
 msgid "show examples"
@@ -4148,7 +4208,7 @@ msgstr "Pour afficher des pubs sur votre carte, vous devez avoir un compte AdSen
 
 #: inc/class-leaflet-options.php:7423
 msgid "Please set to disabled if you do not want to display ads on Google basemaps"
-msgstr "S'il vous plaît désactivé le si vous ne voulez pas afficher des annonces sur vos cartes de bases Google"
+msgstr "Veuillez désactiver cette option si vous ne souhaitez pas diffuser d’annonces sur les fonds de carte Google."
 
 #: inc/class-leaflet-options.php:7415
 msgid "Attention: please be aware that although the plugin has been designed to meet the <a href=\"%1s\" target=\"_blank\">Google AdSense programme policies</a>, finally it is your responsibility to verify that your maps meet the Adsense requirements (as this is heavily depended on how you have configured your maps). For example it is advised to double check the position of the ads in order that they are not being overlayed by map controls (which is not allowed by Google and could result in sanctions like the cancellation of your Adsense publisher account)!"
@@ -4490,11 +4550,15 @@ msgstr "Langue utilisée lors de l'affichage des informations textuelles telles 
 
 #: inc/class-leaflet-options.php:7156
 msgid "Please enter your Google Maps API key here"
-msgstr "Entrez votre clé d'API Google Maps ici"
+msgstr "Veuillez saisir votre clé d’API Google Maps ici"
 
 #: inc/class-leaflet-options.php:7155
 msgid "Google Maps API key"
 msgstr "Clé d'API Google"
+
+#: inc/class-leaflet-options.php:7143
+msgid "Disabling the Google Maps API will prevent loading scripts from google.com on frontend and will result in higher performance if alternative basemaps are going to be used only. Existing maps using Google basemaps will switch to OpenStreetMap automatically if this setting is disabled!"
+msgstr "La désactivation de l’API Google Maps empêchera le chargement des scripts de google.com sur l’interface publique et entraînera des performances plus élevées si uniquement les fonds de carte de remplacement sont utilisés. Les cartes existantes utilisant Google basemaps basculeront automatiquement vers OpenStreetMap si ce paramètre est désactivé !"
 
 #: inc/class-leaflet-options.php:7142
 msgid "Google Maps API status"
@@ -4590,7 +4654,7 @@ msgstr "adresse http du webservice KML de la couche WMS"
 #: inc/class-leaflet-options.php:6421 inc/class-leaflet-options.php:6631
 #: inc/class-leaflet-options.php:6842 inc/class-leaflet-options.php:7053
 msgid "Does the WMS server support KML output?"
-msgstr "Est-ce que le serveur WMS gère le format KML ?"
+msgstr "Est-ce que le serveur WMS supporte le format KML ?"
 
 #: inc/class-leaflet-options.php:5150 inc/class-leaflet-options.php:5361
 #: inc/class-leaflet-options.php:5571 inc/class-leaflet-options.php:5781
@@ -4749,7 +4813,7 @@ msgstr "Couches WMS disponibles"
 
 #: inc/class-leaflet-options.php:4919
 msgid "Please select the WMS layers which should be available when creating new markers/layers"
-msgstr "Merci de choisir les couches WMS qui doivent être disponibles lors de la création de nouveaux marqueurs/couches"
+msgstr "Veuillez sélectionner les couches WMS qui doivent être disponibles lors de la création de nouveaux marqueurs / couches"
 
 #: inc/class-leaflet-options.php:4902
 msgid "WMS stands for <a href=\"http://www.opengeospatial.org/standards/wms\" target=\"_blank\">Web Map Service</a> and is a standard protocol for serving georeferenced map images over the Internet that are generated by a map server using data from a GIS database.<br/>With Leaflet Maps Marker you can configure up to 10 WMS layers which can be enabled for each map. As default, 10 WMS layers from <a href=\"http://data.wien.gv.at\" target=\"_blank\">OGD Vienna</a> and from the <a href=\"http://www.eea.europa.eu/code/gis\" target=\"_blank\">European Environment Agency</a> have been predefined for you.<br/>A selection of further possible WMS layers can be found at <a href=\"http://www.mapsmarker.com/wms\" target=\"_blank\">http://www.mapsmarker.com/wms</a>"
@@ -4788,7 +4852,7 @@ msgstr "Nom"
 #: inc/class-leaflet-options.php:4435 inc/class-leaflet-options.php:4550
 #: inc/class-leaflet-options.php:4665 inc/class-leaflet-options.php:4779
 msgid "Please enter settings for custom overlay"
-msgstr "Merci de configurer la surcouche personnalisée"
+msgstr "Veuillez saisir les réglages de la surcouche personnalisée"
 
 #: inc/class-leaflet-options.php:4392
 msgid "Available overlays in control box"
@@ -4796,7 +4860,7 @@ msgstr "Surcouches disponibles dans la controlbox"
 
 #: inc/class-leaflet-options.php:4385
 msgid "Please select the overlays which should be available in the control box."
-msgstr "Merci de choisir les surcouches qui doivent être disponibles dans la controlbox."
+msgstr "Veuillez sélectionner les surcouches qui doivent être disponibles dans la boîte de contrôle."
 
 #: inc/class-leaflet-options.php:4116 inc/class-leaflet-options.php:4238
 #: inc/class-leaflet-options.php:4360
@@ -4818,7 +4882,7 @@ msgstr "Si réglé sur vrai, les tuiles ne se chargeront pas en dehors de la lar
 #: inc/class-leaflet-options.php:4102 inc/class-leaflet-options.php:4224
 #: inc/class-leaflet-options.php:4346
 msgid "Enable nowrap?"
-msgstr "Activer le nowrap ?"
+msgstr "Activer le nowrap ?"
 
 #: inc/class-leaflet-options.php:4090 inc/class-leaflet-options.php:4212
 #: inc/class-leaflet-options.php:4334
@@ -4828,7 +4892,7 @@ msgstr "Si réglé sur vrai, les coordonnées de la tuile ne seront pas envelopp
 #: inc/class-leaflet-options.php:4089 inc/class-leaflet-options.php:4211
 #: inc/class-leaflet-options.php:4333
 msgid "Enable continuousWorld?"
-msgstr "Activer le continuousWorld ?"
+msgstr "Activer le continuousWorld ?"
 
 #: inc/class-leaflet-options.php:4080 inc/class-leaflet-options.php:4202
 #: inc/class-leaflet-options.php:4324 inc/class-leaflet-options.php:4523
@@ -4922,7 +4986,7 @@ msgstr "Après avoir terminé la configuration de base de la carte, s'il vous pl
 #: inc/class-leaflet-options.php:4011 inc/class-leaflet-options.php:4133
 #: inc/class-leaflet-options.php:4255
 msgid "Please enter settings for custom basemap"
-msgstr "Merci de faire la configuration de la carte de base personnalisée"
+msgstr "Veuillez saisir les réglages pour le fond de carte personnalisé"
 
 #: inc/class-leaflet-options.php:3866 inc/class-leaflet-options.php:3932
 #: inc/class-leaflet-options.php:3998 inc/class-leaflet-options.php:4019
@@ -4971,6 +5035,11 @@ msgstr "Niveau maximum de zoom"
 msgid "Minimum zoom level"
 msgstr "Niveau minimum de zoom"
 
+#: inc/class-leaflet-options.php:3839 inc/class-leaflet-options.php:3905
+#: inc/class-leaflet-options.php:3971
+msgid "Access to Mapbox web services requires an access token. The access token is used to associate requests to API resources with your account."
+msgstr "L’accès aux services Web Mapbox nécessite un jeton d’accès. Le jeton d’accès est utilisé pour associer des demandes aux ressources API avec votre compte."
+
 #: inc/class-leaflet-options.php:3838 inc/class-leaflet-options.php:3904
 #: inc/class-leaflet-options.php:3970
 msgid "API access token"
@@ -4981,6 +5050,12 @@ msgstr "Jeton d’accès à l’API"
 msgid "Style"
 msgstr "Style"
 
+#: inc/class-leaflet-options.php:3821 inc/class-leaflet-options.php:3830
+#: inc/class-leaflet-options.php:3887 inc/class-leaflet-options.php:3896
+#: inc/class-leaflet-options.php:3953 inc/class-leaflet-options.php:3962
+msgid "extracted from Map ID within mapbox editor, e.g."
+msgstr "extrait de Map ID dans l’éditeur de Mapbox, par ex."
+
 #: inc/class-leaflet-options.php:3820 inc/class-leaflet-options.php:3886
 #: inc/class-leaflet-options.php:3952
 msgid "User"
@@ -4988,8 +5063,55 @@ msgstr "Utilisateur"
 
 #: inc/class-leaflet-options.php:3813 inc/class-leaflet-options.php:3879
 #: inc/class-leaflet-options.php:3945
+msgid "If you want the custom Mapbox basemap not to be available in the layer controlbox for selection, please change the according settings at \"Map Defaults\" / \"Available basemaps in control box\""
+msgstr "Si vous souhaitez que le fond de carte Mapbox personnalisé ne soit pas disponible dans la zone de contrôle de couche pour la sélection, veuillez modifier les réglages correspondants dans « Mappages par défaut » / « Mappages de base disponibles dans la boîte de contrôle »"
+
+#: inc/class-leaflet-options.php:3813 inc/class-leaflet-options.php:3879
+#: inc/class-leaflet-options.php:3945
+msgid "If you want to change the name of the custom Mapbox basemap shown in the layer controlbox, please change the according settings at \"Map Defaults\" / \"Names for default basemaps\""
+msgstr "Si vous souhaitez modifier le nom du fond de carte Mapbox personnalisé affiché dans la zone de contrôle de la couche, veuillez modifier les réglages correspondants dans « Mappages par défaut » / « Noms des fonds de carte par défaut »."
+
+#: inc/class-leaflet-options.php:3813 inc/class-leaflet-options.php:3879
+#: inc/class-leaflet-options.php:3945
 msgid "A tutorial on how to configure Mapbox basemaps can be found at %1$s"
 msgstr "Un tutoriel sur comment configurer les fonds de cartes MapBox se trouve à %1$s"
+
+#: inc/class-leaflet-options.php:3813 inc/class-leaflet-options.php:3879
+#: inc/class-leaflet-options.php:3945
+msgid "Warning: as Mapbox now requires to use a custom API access token, custom Mapbox basemaps will not work anymore if you registered your Mapbox account before January 2015.<br/>In case your Mapbox maps are broken, please switch to another basemap like OpenStreetMap or <a href=\"%1$s\">upgrade to Maps Marker Pro</a>, which enables you to continue using custom Mapbox basemaps - even with accounts created after January 2015 (please also note that Mapbox might discontinue the usage of their old API for existing users in the long run too!)."
+msgstr "Avertissement : comme Mapbox nécessite désormais d’utiliser un jeton d’accès API personnalisé, les fonds de carte personnalisés ne fonctionneront plus si vous avez enregistré votre compte Mapbox avant janvier 2015. <br/>Si vos cartes Mapbox sont cassées, passez à un autre fond de carte comme OpenStreetMap ou <a href=\"%1$s\">mettez à niveau vers Maps Marker Pro </a>, ce qui vous permet de continuer à utiliser des fonds de carte Mapbox personnalisés, même avec des comptes créés après janvier 2015 (veuillez également noter que Mapbox peut interrompre l’utilisation de leur ancienne API pour les utilisateurs existants à long terme aussi !)."
+
+#: inc/class-leaflet-options.php:3792
+msgid "define additional location options e.g enableHighAccuracy: true, maxZoom: 10<br/>reference: %1$s"
+msgstr "définissez des options d’emplacement supplémentaires, par exemple enableHighAccuracy: true, maxZoom: 10<br/>Référence : %1$s"
+
+#: inc/class-leaflet-options.php:3783
+msgid "change the style of the marker of the location of the user while following, example: %1$s"
+msgstr "change le style du marqueur de l’emplacement de l’utilisateur en suivant, exemple : %1$s"
+
+#: inc/class-leaflet-options.php:3774
+msgid "change the style of the circle around the location of the user while following, example: %1$s"
+msgstr "change le style du cercle autour de l’emplacement de l’utilisateur en suivant, exemple : %1$s"
+
+#: inc/class-leaflet-options.php:3765
+msgid "change the style of the marker of the location of the user, example: %1$s"
+msgstr "change le style du marqueur de l’emplacement de l’utilisateur, exemple : %1$s"
+
+#: inc/class-leaflet-options.php:3756
+msgid "change the style of the circle around the location of the user, example: %1$s"
+msgstr "change le style du cercle autour de l’emplacement de l’utilisateur, par exemple : %1$s"
+
+#: inc/class-leaflet-options.php:3747
+msgid "padding around accuracy circle, value is passed to setBounds"
+msgstr "rembourrage autour du cercle de précision, la valeur est passée à setBounds"
+
+#: inc/class-leaflet-options.php:3721
+msgid "display a popup when the user click on the inner marker"
+msgstr "afficher une fenêtre surgissante lorsque l’utilisateur clique sur le marqueur interne"
+
+#: inc/class-leaflet-options.php:3708
+msgid "if true locate control remains active on click even if the location of the user is in view"
+msgstr "si vrai, le contrôle de localisation reste actif même si la localisation de l’utilisateur est visible"
 
 #: inc/class-leaflet-options.php:3700
 msgid "false (use maximum zoom level)"
@@ -5006,6 +5128,10 @@ msgstr "positionne automatiquement l'affichage de la carte à l'emplacement de l
 #: inc/class-leaflet-options.php:3669
 msgid "follow the location of the user"
 msgstr "suivre l'emplacement de l'utilisateur"
+
+#: inc/class-leaflet-options.php:3656
+msgid "controls whether a circle is drawn that shows the uncertainty about the location"
+msgstr "contrôle si un cercle est dessiné qui affiche l’incertitude sur l’emplacement"
 
 #: inc/class-leaflet-options.php:3641
 msgid "The position of the geolocate button (one of the map corners)."
@@ -5156,12 +5282,20 @@ msgid "GPX metadata settings"
 msgstr "Paramètres de métadonnées GPX"
 
 #: inc/class-leaflet-options.php:3333
+msgid "How much to simplify the polyline on each zoom level. More means better performance and smoother look, and less means more accurate representation."
+msgstr "De combien simplifier la polyligne à chaque niveau de zoom. Plus signifie une meilleure performance et un aspect plus lisse, et moins signifie une représentation plus précise."
+
+#: inc/class-leaflet-options.php:3333
 msgid "Track smoothFactor"
 msgstr "Suivre smoothFactor"
 
 #: inc/class-leaflet-options.php:3320
 msgid "polyline clipping"
 msgstr "coupure polyligne"
+
+#: inc/class-leaflet-options.php:3307
+msgid "If true, the vector will emit mouse events and will act as a part of the underlying map."
+msgstr "Si vrai, le vecteur émettra des évènements de souris et agira comme une partie de la carte sous-jacente."
 
 #: inc/class-leaflet-options.php:3307
 msgid "Clickable"
@@ -5178,6 +5312,10 @@ msgstr "Epaisseur du trait en pixels"
 #: inc/class-leaflet-options.php:3289
 msgid "Track weight"
 msgstr "Importance de la trace"
+
+#: inc/class-leaflet-options.php:3280
+msgid "Please enter the hex value of the color you would like to use. For help please visit <a href=\"%1s\" target=\"_blank\">%2s</a>."
+msgstr "Veuillez saisir la valeur hexadécimale de la couleur que vous souhaitez utiliser. Pour obtenir de l’aide, consultez <a href=\"%1s\" target=\"_blank\">%2s</a>."
 
 #: inc/class-leaflet-options.php:3280
 msgid "Track color"
@@ -5238,6 +5376,10 @@ msgstr "Petit groupe (extérieur)"
 #: inc/class-leaflet-options.php:3151
 msgid "Cluster small (text color)"
 msgstr "Petit groupe (couleur du texte)"
+
+#: inc/class-leaflet-options.php:3143
+msgid "Options to set the colors of the cluster circles"
+msgstr "Options pour définir les couleurs des cercles de cluster"
 
 #: inc/class-leaflet-options.php:3142
 msgid "Cluster colors"
@@ -5313,7 +5455,7 @@ msgstr "Lorsque vous cliquez sur un groupe cela zoome à ses limites"
 
 #: inc/class-leaflet-options.php:2984
 msgid "Clustering can be enabled/disabled for each layer separately on the layer edit page. Below you will find the global settings which are valid for all layer maps with clustering enabled."
-msgstr "Le regroupement peut être activé/désactivé pour chaque couche séparément sur la page d'édition de la couche. Ci-dessous vous trouverez les paramètres globaux qui sont valables pour toutes les couches de calques avec le groupement permis."
+msgstr "Le regroupement peut être activé/désactivé pour chaque couche séparément sur la page de modification de la couche. Ci-dessous vous trouverez les réglages globaux qui sont valides pour toutes les cartes de couches avec le groupement activé."
 
 #: inc/class-leaflet-options.php:2967
 msgid "Sets whether the minimap should hide automatically if the parent map bounds does not fit within the minimap bounds. Especially useful when zoomLevelFixed is set."
@@ -5334,6 +5476,14 @@ msgstr "Remplace le décalage à appliquer un niveau de zoom fixe à la minimap 
 #: inc/class-leaflet-options.php:2923
 msgid "The offset applied to the zoom in the minimap compared to the zoom of the main map. Can be positive or negative."
 msgstr "Le décalage appliqué au zoom dans la minicarte par rapport au zoom de la carte principale. Peut être positif ou négatif."
+
+#: inc/class-leaflet-options.php:2914
+msgid "The height of the toggle marker and the minimap when collapsed, in pixels."
+msgstr "La hauteur du marqueur à permuter et la mini-carte lorsqu’elle est réduite, en pixels."
+
+#: inc/class-leaflet-options.php:2905
+msgid "The width of the toggle marker and the minimap when collapsed, in pixels."
+msgstr "La largeur du marqueur à permuter et la mini-carte lorsqu’elle est réduite, en pixels."
 
 #: inc/class-leaflet-options.php:2896
 msgid " The height of the minimap in pixels."
@@ -5363,7 +5513,7 @@ msgstr "automatique (utiliser la carte de base dans la carte principale et OpenS
 
 #: inc/class-leaflet-options.php:2850
 msgid "Please select basemap which should be used for minimaps"
-msgstr "Choisisez la carte de base qui sera utilisée pour minicartes"
+msgstr "Veuillez sélectionner la carte de base qui sera utilisée pour les mini-cartes."
 
 #: inc/class-leaflet-options.php:2849 inc/class-leaflet-options.php:8666
 #: inc/class-leaflet-options.php:8946 leaflet-layer.php:869
@@ -5753,7 +5903,7 @@ msgstr "Sera utilisé lors de la création d'une nouvelle couche. Toutes les val
 
 #: inc/class-leaflet-options.php:1545
 msgid "Defaults values for markers added directly:"
-msgstr "Valeurs par défaut pour les marqueurs directement ajoutés:"
+msgstr "Valeurs par défaut pour les marqueurs directement ajoutés :"
 
 #: inc/class-leaflet-options.php:1545
 msgid "You can also add markers directly to posts or pages without having to save them to your database previously. You just have to use the shortcode with the attributes mlat and mlon (e.g. <strong>[mapsmarker mlat=\"48.216038\" mlon=\"16.378984\"]</strong>)."
@@ -5766,6 +5916,10 @@ msgstr "Les coordonnées en y de la marge entre les pop-ups et les bords de la c
 #: inc/class-leaflet-options.php:1523
 msgid "The x-coordinates of the margin between popups and the edges of the map view after autopanning was performed."
 msgstr "Les coordonnées en x de la marge entre les pop-ups et les bords de la carte après que l'autopanning ai été effectuée."
+
+#: inc/class-leaflet-options.php:1510
+msgid "If set to true, the marker name gets added to the top of the popup automatically"
+msgstr "Si la valeur est vrai, le nom du marqueur est automatiquement ajouté en haut de la fenêtre surgissante"
 
 #: inc/class-leaflet-options.php:1509
 msgid "add markername to popup"
@@ -5859,6 +6013,10 @@ msgstr "vrai"
 msgid "Set it to false if you do not want the map to do panning animation to fit the opened popup."
 msgstr "Régler sur faux si vous ne voulez pas que la carte fasse une animation panoramique pour s'adapter à la pop-up."
 
+#: inc/class-leaflet-options.php:1475
+msgid "Gets added to .leaflet-popup-content img {...} - use max-width to reduce the image width in popups automatically to the given value in pixel (only if it is wider). The height of the images gets reduced by the according ratio automatically."
+msgstr "Ajoutés à .leaflet-popup-content img {...} - utilisez max-width pour réduire automatiquement la largeur de l’image dans les fenêtres surgissantes à la valeur donnée en pixel (uniquement si elle est plus large). La hauteur des images est réduite automatiquement par le rapport correspondant."
+
 #: inc/class-leaflet-options.php:1474
 msgid "CSS for images in popups"
 msgstr "CSS pour les images dans les fenêtres surgissantes"
@@ -5940,6 +6098,10 @@ msgstr "Largeur des icônes en pixel"
 msgid "Icon size"
 msgstr "Taille des icônes"
 
+#: inc/class-leaflet-options.php:1338
+msgid "Only change the values below if you are not using marker or shadow icons from the <a href=\"%1$s\" target=\"_blank\">Map Icons Collection</a>!"
+msgstr "Ne modifiez les valeurs ci-dessous que si vous n’utilisez pas d’icônes de repères ou d’ombres de la <a href=\"%1$s\" target=\"_blank\">Collection d’icônes de cartes</a> !"
+
 #: inc/class-leaflet-options.php:1328
 msgid "The opacity of the markers."
 msgstr "Opacité des marqueurs"
@@ -5949,6 +6111,10 @@ msgstr "Opacité des marqueurs"
 #: inc/class-leaflet-options.php:4832
 msgid "Opacity"
 msgstr "Opacité"
+
+#: inc/class-leaflet-options.php:1315
+msgid "Show marker name for the browser tooltip that appear on marker hover (tooltip is always hidden if marker name is empty). Please be aware that this settings has to be changed when you move your WordPress installation to another server for example!"
+msgstr "Afficher le nom du marqueur pour l’infobulle du navigateur qui apparaît sur le marqueur survol (l’infobulle est toujours masquée si le nom du marqueur est vide). Veuillez être conscient que ces réglages doivent être modifiés lorsque vous déplacez votre installation WordPress vers un autre serveur par exemple !"
 
 #: inc/class-leaflet-options.php:1314
 msgid "Marker tooltip"
@@ -5993,6 +6159,10 @@ msgstr "Si l’option ci-dessus est réglé sur « Oui », le répertoire sur 
 #: inc/class-leaflet-options.php:1274
 msgid "Custom icons directory"
 msgstr "Répertoire personnalisé des icônes"
+
+#: inc/class-leaflet-options.php:1267 inc/class-leaflet-options.php:1276
+msgid "Custom directories can be set in the pro version only!"
+msgstr "Les répertoires personnalisés peuvent être définis dans la version pro uniquement !"
 
 #: inc/class-leaflet-options.php:1266
 msgid "If the option above is set to yes, icons will automatically be loaded from this URL. If the option above is set to no, the following marker icons url will be used:"
@@ -6093,7 +6263,7 @@ msgstr "CSS du texte du panneau"
 
 #: inc/class-leaflet-options.php:1132 inc/class-leaflet-options.php:1966
 msgid "Please use hexadecimal color values"
-msgstr "S'il vous plaît utiliser des valeurs hexadécimales de couleur"
+msgstr "Veuillez utiliser les valeurs hexadécimales de couleur."
 
 #: inc/class-leaflet-options.php:1131 inc/class-leaflet-options.php:1965
 msgid "Panel background color"
@@ -6275,7 +6445,7 @@ msgstr "Longitude"
 #: inc/class-leaflet-options.php:7341 inc/class-leaflet-options.php:7350
 #: inc/class-leaflet-options.php:7359 inc/class-leaflet-options.php:7368
 msgid "Please use a dot instead of a coma as decimal delimiter!"
-msgstr "Merci d'utiliser un point au lieu d'une virgule comme séparateur des décimales !"
+msgstr "Veuillez utiliser un point au lieu d’une virgule comme séparateur des décimales !"
 
 #: inc/class-leaflet-options.php:922 inc/class-leaflet-options.php:1774
 #: inc/class-leaflet-options.php:7340 inc/class-leaflet-options.php:7358
@@ -6316,7 +6486,7 @@ msgstr "Cartes de base disponibles dans la controlbox"
 
 #: inc/class-leaflet-options.php:732
 msgid "Please select the basemaps which should be available in the control box."
-msgstr "Merci de choisir les cartes de base qui doivent être disponibles dans la controlbox."
+msgstr "Veuillez sélectionner les cartes de base qui doivent être disponibles dans la boîte de contrôle."
 
 #: inc/class-leaflet-options.php:709
 msgid "Custom Basemap 3"
@@ -6451,7 +6621,54 @@ msgstr "Carte de base par défaut"
 
 #: inc/class-leaflet-options.php:498
 msgid "Please select the basemap which should be pre-selected as default for new markers and layers. Can be changed afterwards on each marker/layer."
-msgstr "Merci de choisir la carte qui doit être pré-sélectionnée par défaut pour les nouveaux marqueurs et couches. Peut être changé au cas par cas pour chaque marqueur/couche."
+msgstr "Veuillez sélectionner la carte qui doit être pré-sélectionnée par défaut pour les nouveaux marqueurs et couches. Peut être changé au cas par cas pour chaque marqueur / couche."
+
+#: inc/class-leaflet-options.php:481 inc/class-leaflet-options.php:1253
+#: inc/class-leaflet-options.php:2531 inc/class-leaflet-options.php:2703
+#: inc/class-leaflet-options.php:2828 inc/class-leaflet-options.php:2922
+#: inc/class-leaflet-options.php:2931 inc/class-leaflet-options.php:2940
+#: inc/class-leaflet-options.php:2953 inc/class-leaflet-options.php:2966
+#: inc/class-leaflet-options.php:2984 inc/class-leaflet-options.php:2991
+#: inc/class-leaflet-options.php:3004 inc/class-leaflet-options.php:3017
+#: inc/class-leaflet-options.php:3030 inc/class-leaflet-options.php:3039
+#: inc/class-leaflet-options.php:3049 inc/class-leaflet-options.php:3142
+#: inc/class-leaflet-options.php:3231 inc/class-leaflet-options.php:3244
+#: inc/class-leaflet-options.php:3253 inc/class-leaflet-options.php:3272
+#: inc/class-leaflet-options.php:3593 inc/class-leaflet-options.php:7415
+#: inc/class-leaflet-options.php:7422 inc/class-leaflet-options.php:7435
+#: inc/class-leaflet-options.php:7496 inc/class-leaflet-options.php:7505
+#: inc/class-leaflet-options.php:7514 inc/class-leaflet-options.php:7524
+#: inc/class-leaflet-options.php:7533 inc/class-leaflet-options.php:7542
+#: inc/class-leaflet-options.php:7556 inc/class-leaflet-options.php:7563
+#: inc/class-leaflet-options.php:8116 inc/class-leaflet-options.php:8281
+#: inc/class-leaflet-options.php:9176 inc/class-leaflet-options.php:9241
+#: inc/class-leaflet-options.php:9250 inc/class-leaflet-options.php:9335
+#: inc/class-leaflet-options.php:9432 inc/class-leaflet-options.php:9441
+#: inc/class-leaflet-options.php:9450 inc/class-leaflet-options.php:9587
+#: inc/class-leaflet-recent-marker-widget.php:40
+#: inc/class-leaflet-recent-marker-widget.php:42
+#: inc/class-leaflet-recent-marker-widget.php:44
+#: inc/class-leaflet-recent-marker-widget.php:96
+#: inc/import-export/start.php:152 inc/import-export/start.php:299
+#: leaflet-api.php:1122 leaflet-api.php:1131 leaflet-api.php:1144
+#: leaflet-api.php:1153 leaflet-api.php:1166 leaflet-api.php:1175
+#: leaflet-layer.php:470 leaflet-layer.php:771 leaflet-list-layers.php:252
+#: leaflet-list-markers.php:341 leaflet-marker.php:491 leaflet-marker.php:528
+#: leaflet-marker.php:529 leaflet-marker.php:540 leaflet-marker.php:541
+#: leaflet-marker.php:555 leaflet-marker.php:736 leaflet-tools.php:236
+#: leaflet-tools.php:251 leaflet-tools.php:279 leaflet-tools.php:379
+#: leaflet-tools.php:413 leaflet-tools.php:453 leaflet-tools.php:489
+#: leaflet-tools.php:520 leaflet-tools.php:553 leaflet-tools.php:586
+#: leaflet-tools.php:637 leaflet-tools.php:670 leaflet-tools.php:745
+#: leaflet-tools.php:923 leaflet-tools.php:958 leaflet-tools.php:985
+#: leaflet-tools.php:1169 leaflet-tools.php:1174
+msgid "This feature is available in the pro version only! Click here to find out how you can start a free 30-day-trial easily"
+msgstr "Cette fonctionnalité est disponible uniquement dans la version pro ! Cliquez ici pour découvrir comment vous pouvez facilement commencer un essai gratuit de 30 jours"
+
+#: inc/class-leaflet-options.php:295 leaflet-layer.php:1480
+#: leaflet-marker.php:1292
+msgid "You have unsaved changes on this page. Do you want to leave this page and discard your changes or stay on this page?"
+msgstr "Vous avez des modifications non enregistrées sur cette page. Voulez-vous quitter cette page et annuler vos modifications ou rester sur cette page ?"
 
 #: inc/class-leaflet-options.php:241
 msgid "Save Changes"
@@ -6833,6 +7050,14 @@ msgstr "Leaflet Maps Marker a été correctement mis à jour de la version %1s e
 msgid "Leaflet Maps Marker has been successfully updated to version %1s!"
 msgstr "Leaflet Maps Marker a été correctement mis à jour à la version %1s !"
 
+#: inc/admin-header.php:212
+msgid "Warning: your server uses the outdated PHP version %1$s, which is not updated anymore and potentially insecure!<br/>PHP version %2$s is now the recommended version for WordPress (but it does not hurt to get updated to PHP %3$s or higher already).<br/>Read more information about how you can update at %4$s"
+msgstr "Avertissement : votre serveur utilise PHP version %1$s qui est obsolète, plus mise à jour et potentiellement non sécurisée !<br/>PHP version %2$s est maintenant la version recommandée pour WordPress (mais cela ne fait pas de mal de se mettre déjà à PHP %3$s ou plus).<br/>Lisez plus d’informations sur comment vous pouvez mettre à jour avec %4$s"
+
+#: inc/admin-header.php:196
+msgid "Upgrade to pro version for more features, higher performance and more! Click here to find out how you can start a free 30-day-trial easily"
+msgstr "Passez à la version pro pour plus de fonctionnalités, de meilleures performances et plus encore ! Cliquez ici pour découvrir comment vous pouvez commencer facilement un essai gratuit de 30 jours"
+
 #: inc/admin-header.php:195 leaflet-maps-marker.php:422
 #: leaflet-maps-marker.php:545
 msgid "Support"
@@ -6887,6 +7112,10 @@ msgstr "Vous utilisez actuellement v%1s et l'auteur de l'extension recommande fo
 msgid "Leaflet Maps Marker - plugin update available!"
 msgstr "Leaflet Maps Marker - mise à jour de l’extension disponible !"
 
+#: inc/admin-header.php:164
+msgid "You downloaded <a href=\"%1s\" target=\"_blank\">Maps Marker Pro</a> but did not register a free 30-day-trial license key. Please note that <a href=\"%2s\" target=\"_blank\">according to our privacy policy</a> we will not disclose, rent or sell your personal information!<br/>If you install Maps Marker Pro on a localhost installation (<a href=\"%3s\" target=\"_blank\">see available packages on Wikipedia</a>) you can also test the pro plugin without registering a free 30-day-trial license key and without time limitation."
+msgstr "Vous avez téléchargé <a href=\"%1s\" target=\"_blank\">Maps Marker Pro</a>, mais n’avez pas enregistré de clé de licence d’essai gratuite de 30 jours. Veuillez noter que <a href=\"%2s\" target=\"_blank\">conformément à notre politique de confidentialité</a>, nous ne divulguerons, ne louerons ni ne vendrons vos informations personnelles !<br/>Si vous installez Maps Marker Pro en local (<a href=\"%3s\" target=\"_blank\">voir les paquets disponibles sur Wikipedia</a>) vous permet également de tester l’extension pro sans avoir à enregistrer une clé de licence gratuite de 30 jours et sans limite de temps."
+
 #: inc/admin-header.php:162 inc/admin-header.php:164
 msgid "This message will disappear once the pro version has been activated or deleted from your server (via the WordPress Plugins page!)"
 msgstr "Ce message disparaîtra lorsque la version Pro aura été activée ou supprimée de votre serveur (via la page Extensions de WordPress !)"
@@ -6898,6 +7127,10 @@ msgstr "Dommage que vous utilisiez la version gratuite à nouveau :-( <a href=\"
 #: inc/admin-header.php:160
 msgid "This message will disappear once the database downgrade has been completed."
 msgstr "Ce message disparaîtra une fois le rétrogradage de la base de données terminée."
+
+#: inc/admin-header.php:160
+msgid "Warning: \"Maps Marker Pro\" enabled you to assign markers to multiple layers. If you plan to use \"Leaflet Maps Marker\" again, a database downgrade is needed!<br/>Please be aware that the information about markers being assigned to multiple layers will get lost during that downgrade - only the first layer each marker was assigned to will be preserved!<br/><a href=\"%1s\">Please click here to start the database downgrade</a>"
+msgstr "Avertissement : « Maps Marker Pro » vous permet d’attribuer des marqueurs à plusieurs couches. Si vous prévoyez d’utiliser à nouveau « Leaflet Maps Marker », une rétrogradation de base de données est nécessaire !<br/>Veuillez noter que les informations sur les marqueurs affectés à plusieurs couches seront perdues lors de cette rétrogradation - uniquement la première couche attribuée à chaque marqueur sera préservée ! <br/><a href=\"%1s\">Veuillez cliquer ici pour démarrer la rétrogradation de la base de données</a>"
 
 #: inc/admin-header.php:149
 msgid "Leaflet Maps Marker Warning: the setting for the marker shadow url (%1s) seems to be invalid. This can happen when you moved your WordPress installation from one server to another one.<br/>Please navigate to <a href=\"%2s\">Settings / Map Defaults / \"Default values for marker icons\"</a> and update the option \"Shadow URL\". If you do not know which values to enter, please <a href=\"%3s\">reset all plugins options to their defaults</a>"

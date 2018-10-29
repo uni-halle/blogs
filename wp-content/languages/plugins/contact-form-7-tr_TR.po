@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Contact Form 7 - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-12-16 11:01:06+0000\n"
+"PO-Revision-Date: 2018-07-16 12:42:22+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,108 @@ msgstr ""
 "X-Generator: GlotPress/2.4.0-alpha\n"
 "Language: tr\n"
 "Project-Id-Version: Plugins - Contact Form 7 - Stable (latest release)\n"
+
+#: modules/acceptance.php:252
+msgid "Make this checkbox optional"
+msgstr "Bu onay kutusunu isteğe bağlı yap"
+
+#: admin/edit-contact-form.php:202
+msgid "Professional Services"
+msgstr "Profesyonel hizmetler"
+
+#: admin/edit-contact-form.php:201
+msgid "https://contactform7.com/custom-development/"
+msgstr "https://contactform7.com/custom-development/"
+
+#: admin/edit-contact-form.php:188
+msgid "Support Forums"
+msgstr "Destek forumları"
+
+#: admin/edit-contact-form.php:187
+msgid "https://wordpress.org/support/plugin/contact-form-7/"
+msgstr "https://wordpress.org/support/plugin/contact-form-7/"
+
+#. translators: 1: FAQ, 2: Docs ("FAQ & Docs")
+#: admin/edit-contact-form.php:176
+msgid "%1$s &#38; %2$s"
+msgstr "%1$s ve %2$s"
+
+#: admin/edit-contact-form.php:172
+msgid "Here are some available options to help solve your problems."
+msgstr "Burada sorunlarınızı çözmeye yardımcı olabilecek bazı seçenekler mevcut."
+
+#: admin/edit-contact-form.php:170
+msgid "Do you need help?"
+msgstr "Yardıma ihtiyacın var mı?"
+
+#: modules/acceptance.php:243
+msgid "Condition"
+msgstr "Koşul"
+
+#. translators: 1: 'Consented' or 'Not consented', 2: conditions
+#: modules/acceptance.php:202
+msgctxt "mail output for acceptance checkboxes"
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
+
+#: modules/acceptance.php:186
+msgid "Not consented"
+msgstr "Kabul edilmedi"
+
+#: modules/acceptance.php:184
+msgid "Consented"
+msgstr "Kabul edildi"
+
+#: includes/submission.php:205
+msgid "Sending mail has been aborted."
+msgstr "E-posta gönderimi iptal edildi."
+
+#: admin/includes/editor.php:211
+msgid "You can edit messages used in various situations here. For details, see %s."
+msgstr "Burada çeşitli durumlarda kullanılan mesajları düzenleyebilirsiniz. Ayrıntılar için %s bölümüne bakın."
+
+#: admin/includes/editor.php:210
+msgid "Editing Messages"
+msgstr "Mesajları düzenleme"
+
+#: admin/includes/editor.php:209
+msgid "https://contactform7.com/editing-messages/"
+msgstr "https://contactform7.com/editing-messages/"
+
+#: admin/includes/editor.php:130
+msgid "You can edit the mail template here. For details, see %s."
+msgstr "Posta şablonunu buradan düzenleyebilirsiniz. Ayrıntılar için %s bölümüne bakın."
+
+#: admin/includes/editor.php:57
+msgid "You can edit the form template here. For details, see %s."
+msgstr "Form şablonunu buradan düzenleyebilirsiniz. Ayrıntılar için %s bölümüne bakın."
+
+#: admin/includes/editor.php:56
+msgid "Editing Form Template"
+msgstr "Form şablonunu düzenleme"
+
+#: admin/includes/editor.php:55
+msgid "https://contactform7.com/editing-form-template/"
+msgstr "https://contactform7.com/editing-form-template/"
+
+#. translators: screen reader text
+#: admin/edit-contact-form.php:223
+msgid "(left and right arrow)"
+msgstr "(sol ve sağ ok)"
+
+#. translators: 1: ◀ ▶ dashicon, 2: screen reader text for the dashicon
+#: admin/edit-contact-form.php:218
+msgid "%1$s %2$s keys switch panels"
+msgstr "%1$s %2$s anahtarları panelleri değiştirir"
+
+#. translators: screen reader text
+#: admin/admin.php:327
+msgid "(configuration error)"
+msgstr "(yapılandırma hatası)"
+
+#: admin/admin.php:320
+msgid "How to resolve?"
+msgstr "Nasıl çözülür?"
 
 #: admin/includes/welcome-panel.php:37
 msgid "Your donation will help encourage and support the plugin&#8217;s continued development and better user support."
@@ -28,15 +130,16 @@ msgstr "Contact Form 7'yi kullanmaktan zevk alıyor ve onu yararlı buluyorsanı
 msgid "It is hard to continue development and support for this plugin without contributions from users like you."
 msgstr "Sizin gibi kullanıcıların katkıları olmadan bu eklentinin geliştirilmesine ve desteğine devam etmek zor."
 
-#: includes/contact-form.php:294 includes/contact-form.php:673
+#: includes/contact-form.php:294 includes/contact-form.php:707
 msgid "This contact form is available only for logged in users."
 msgstr "Bu iletişim formu yalnızca oturum açmış kullanıcılar tarafından kullanılabilir."
 
-#: includes/config-validator.php:144
+#: includes/config-validator.php:145
 msgid "Deprecated settings are used."
 msgstr "Kullanım dışı olan ayarlar kullanıldı."
 
-#: modules/really-simple-captcha.php:30
+#. translators: %s: link labeled 'Really Simple CAPTCHA'
+#: modules/really-simple-captcha.php:36
 msgid "To use CAPTCHA, you need %s plugin installed."
 msgstr "CAPTCHA kullanabilmeniz için %s eklentisi yüklü olmalıdır."
 
@@ -51,7 +154,7 @@ msgstr "Talep edilen iletişim formuna erişmenize izin verilmiyor."
 
 #: includes/rest-api.php:171 includes/rest-api.php:198
 #: includes/rest-api.php:247 includes/rest-api.php:276
-#: includes/rest-api.php:324
+#: includes/rest-api.php:316
 msgid "The requested contact form was not found."
 msgstr "Talep edilen iletişim formu bulunamadı."
 
@@ -67,35 +170,36 @@ msgstr "Mevcut iletişim formu tekrar oluşturulamaz."
 msgid "You are not allowed to access contact forms."
 msgstr "İletişim formlarına erişmenize izin verilmiyor."
 
-#: includes/config-validator.php:541
+#: includes/config-validator.php:552
 msgid "Attachment file does not exist at %path%."
 msgstr "Ek dosya %path% konumunda mevcut değil."
 
-#: includes/config-validator.php:472
+#: includes/config-validator.php:481
 msgid "Invalid mailbox syntax is used in the %name% field."
 msgstr "%name% alanında geçersiz e-posta kutusu söz dizimi kullanıldı."
 
-#: includes/config-validator.php:383
+#. translators: %names%: a list of form control names
+#: includes/config-validator.php:392
 msgid "Unavailable names (%names%) are used for form controls."
 msgstr "Kullanılamayan isimler (%names%) form denetimleri için kullanıldı."
 
-#: includes/config-validator.php:142
+#: includes/config-validator.php:143
 msgid "There are invalid mail header fields."
 msgstr "Geçersiz posta başlığı alanları var."
 
-#: includes/config-validator.php:138
+#: includes/config-validator.php:139
 msgid "HTML tags are used in a message."
 msgstr "Mesaj içerisinde HTML etiketleri kullanıldı."
 
-#: includes/config-validator.php:136
+#: includes/config-validator.php:137
 msgid "Sender email address does not belong to the site domain."
 msgstr "Gönderen e-posta adresi site alan adına ait değil."
 
-#: includes/config-validator.php:134
+#: includes/config-validator.php:135
 msgid "Invalid mailbox syntax is used."
 msgstr "Geçersiz posta kutusu kullanıldı."
 
-#: includes/config-validator.php:132
+#: includes/config-validator.php:133
 msgid "There is a possible empty field."
 msgstr "Olası bir boş alan var."
 
@@ -106,33 +210,46 @@ msgid_plural "%s configuration errors detected"
 msgstr[0] "%s yapılandırma hatası tespit edildi"
 msgstr[1] "%s yapılandırma hatası tespit edildi"
 
-#: admin/admin.php:321
+#: admin/admin.php:324
 msgid "%d configuration errors detected in this tab panel"
 msgstr "Bu sekmede %d yapılandırma hatası tespit edildi"
 
-#: admin/admin.php:320
+#: admin/admin.php:323
 msgid "1 configuration error detected in this tab panel"
 msgstr "Bu sekmede 1 yapılandırma hatası tespit edildi"
 
-#: admin/admin.php:319
+#: admin/admin.php:322
 msgid "%d configuration errors detected"
 msgstr "%d yapılandırma hatası tespit edildi"
 
-#: admin/admin.php:318
+#: admin/admin.php:321
 msgid "1 configuration error detected"
 msgstr "1 yapılandırma hatası tespit edildi"
 
-#: admin/admin.php:505 includes/rest-api.php:138 includes/rest-api.php:214
+#: admin/admin.php:510 includes/rest-api.php:138 includes/rest-api.php:214
 msgid "There was an error saving the contact form."
 msgstr "İletişim formu kaydedilirken hata oluştu."
 
-#: includes/functions.php:355
+#: includes/functions.php:365
 msgid "%1$s is <strong>deprecated</strong> since Contact Form 7 version %2$s! Use %3$s instead."
 msgstr "Contact Form 7 %2$s sürümünden beri %1$s <strong>kullanım dışıdır</strong>. Yerine %3$s kullanın."
 
 #: admin/includes/welcome-panel.php:45
 msgid "Flamingo"
 msgstr "Flamingo"
+
+#. translators: %s: link labeled 'Flamingo'
+#: admin/includes/welcome-panel.php:45
+msgid "Install a message storage plugin before this happens to you. %s saves all messages through contact forms into the database. Flamingo is a free WordPress plugin created by the same author as Contact Form 7."
+msgstr "Bu size gerçekleşmeden önce bir mesaj depolama eklentisi yükleyin. %s tüm mesajları iletişim formları üzerinden veritabanına kaydeder. Flamingo, Contact Form 7 ile aynı yazar tarafından oluşturulan ücretsiz bir WordPress eklentisidir."
+
+#: admin/includes/welcome-panel.php:43
+msgid "Contact Form 7 doesn&#8217;t store submitted messages anywhere. Therefore, you may lose important messages forever if your mail server has issues or you make a mistake in mail configuration."
+msgstr "Contact Form 7, gönderilen iletileri hiçbir yerde saklamaz. Bu nedenle, posta sunucunuzun sorunları varsa veya posta yapılandırmasında bir hata yaparsanız önemli iletileri sonsuza kadar kaybedebilirsiniz."
+
+#: admin/includes/welcome-panel.php:41
+msgid "Before you cry over spilt mail&#8230;"
+msgstr "E-postalar için boş yere ağlamadan önce"
 
 #: admin/includes/welcome-panel.php:26
 msgid "comment blacklist"
@@ -142,23 +259,29 @@ msgstr "yorum kara listesi"
 msgid "https://contactform7.com/comment-blacklist/"
 msgstr "https://contactform7.com/comment-blacklist/"
 
+#. translators: links labeled 1: 'Akismet', 2: 'reCAPTCHA', 3: 'comment
+#. blacklist'
+#: admin/includes/welcome-panel.php:26
+msgid "Contact Form 7 supports spam-filtering with %1$s. Intelligent %2$s blocks annoying spambots. Plus, using %3$s, you can block messages containing specified keywords or those sent from specified IP addresses."
+msgstr "Contact Form 7, %1$s ile istenmeyen posta filtrelemeyi destekler. Akıllı %2$s, rahatsız edici spam botları engeller. Ayrıca, %3$s kullanarak belirli anahtar kelimeleri veya belirli IP adreslerinden gönderilen iletileri engelleyebilirsiniz."
+
+#: admin/includes/welcome-panel.php:24
+msgid "Spammers target everything; your contact forms aren&#8217;t an exception. Before you get spammed, protect your contact forms with the powerful anti-spam features Contact Form 7 provides."
+msgstr "Spam gönderenler her şeyi hedefler; iletişim formlarınız bir istisna değildir. İstenmeyen postalar almadan önce iletişim formlarınızı güçlü anti-spam özellikleri sunan Contact Form 7 ile koruyun."
+
 #: admin/includes/welcome-panel.php:22
 msgid "Getting spammed? You have protection."
 msgstr "İstenmeyen e-posta mı alıyorsunuz? Korumanız var."
 
-#: includes/config-validator.php:140
+#: includes/config-validator.php:141
 msgid "Multiple form controls are in a single label element."
 msgstr "Birden fazla form kontrolü tek bir etiket elemanının içine yerleştirildi."
 
-#: admin/admin.php:317
-msgid "How to correct this?"
-msgstr "Bu nasıl düzeltilir?"
-
-#: admin/admin.php:424
+#: admin/admin.php:429
 msgid "FAQ about Configuration Validator"
-msgstr "Yapılandırma doğrulayıcı hakkında SSS (Sık Sorulan Sorular)"
+msgstr "Yapılandırma doğrulayıcı hakkında SSS"
 
-#: admin/admin.php:424
+#: admin/admin.php:429
 msgid "https://contactform7.com/configuration-validator-faq/"
 msgstr "https://contactform7.com/configuration-validator-faq/"
 
@@ -174,7 +297,7 @@ msgstr "Geçersiz adres."
 msgid "The e-mail address entered is invalid."
 msgstr "Girilen e-posta adresi geçersiz."
 
-#: modules/quiz.php:162
+#: modules/quiz.php:163
 msgid "The answer to the quiz is incorrect."
 msgstr "Soruya verilen cevap doğru değil."
 
@@ -190,19 +313,19 @@ msgstr "Bu sayı minimum değerden daha küçük."
 msgid "The number format is invalid."
 msgstr "Geçersiz numara biçimi."
 
-#: modules/file.php:210
+#: modules/file.php:195
 msgid "There was an error uploading the file."
 msgstr "Dosya yüklenirken hata meydana geldi."
 
-#: modules/file.php:205
+#: modules/file.php:190
 msgid "The file is too big."
 msgstr "Dosya çok büyük."
 
-#: modules/file.php:200
+#: modules/file.php:185
 msgid "You are not allowed to upload files of this type."
 msgstr "Bu dosya türünü yükleme iznine sahip değilsiniz."
 
-#: modules/file.php:195
+#: modules/file.php:180
 msgid "There was an unknown error uploading the file."
 msgstr "Dosya yüklenirken bilinmeyen bir hata oluştu."
 
@@ -253,11 +376,11 @@ msgctxt "mail subject"
 msgid "%1$s \"%2$s\""
 msgstr "%1$s \"%2$s\""
 
-#: admin/admin.php:619
+#: admin/admin.php:629
 msgid "Misconfiguration leads to mail delivery failure or other troubles. Validate your contact forms now."
 msgstr "Yapılandırma hataları e-posta teslimatı ve diğer problemlere sebebiyet verebilir. İletişim formlarınızı şimdi doğrulayın."
 
-#: admin/admin.php:617
+#: admin/admin.php:627
 msgid "Validate Contact Form 7 Configuration"
 msgstr "Contact Form 7 yapılandırmasını doğrulayın"
 
@@ -265,27 +388,27 @@ msgstr "Contact Form 7 yapılandırmasını doğrulayın"
 msgid "https://contactform7.com/configuration-errors/"
 msgstr "https://contactform7.com/configuration-errors/"
 
-#: admin/admin.php:528
+#: admin/admin.php:533
 msgid "Configuration validation completed. No invalid contact form was found."
 msgstr "Yapılandırma doğrulanması tamamlandı. Geçersiz hiçbir contact form bulunamadı."
 
 #. translators: %s: number of contact forms
-#: admin/admin.php:520
-msgid "Configuration validation completed. An invalid contact form was found."
+#: admin/admin.php:525
+msgid "Configuration validation completed. %s invalid contact form was found."
 msgid_plural "Configuration validation completed. %s invalid contact forms were found."
-msgstr[0] "Yapılandırma doğrulaması tamamlandı. Bir geçersiz iletişim formu bulundu."
+msgstr[0] "Yapılandırma doğrulaması tamamlandı. %s geçersiz iletişim formu bulundu."
 msgstr[1] "Yapılandırma doğrulaması tamamlandı. %s geçersiz iletişim formu bulundu."
 
-#: admin/admin.php:416
+#: admin/admin.php:421
 msgid "Validate Configuration"
 msgstr "Yapılandırmayı doğrula"
 
 #. translators: %s: number of contact forms
-#: admin/admin.php:407
+#: admin/admin.php:412
 msgid "Validate %s Contact Form Now"
 msgid_plural "Validate %s Contact Forms Now"
-msgstr[0] "%s Contact Formu şimdi doğrulayın"
-msgstr[1] "%s Contact Formu şimdi doğrulayın"
+msgstr[0] "%s iletişim formunu şimdi doğrulayın"
+msgstr[1] "%s iletişim formunu şimdi doğrulayın"
 
 #: admin/admin.php:212
 msgid "You are not allowed to validate configuration."
@@ -378,7 +501,7 @@ msgstr "HATA"
 msgid "reCAPTCHA"
 msgstr "reCAPTCHA"
 
-#: modules/really-simple-captcha.php:236
+#: modules/really-simple-captcha.php:243
 msgid "CAPTCHA (Really Simple CAPTCHA)"
 msgstr "CAPTCHA (Gerçekten Basit CAPTCHA)"
 
@@ -399,7 +522,7 @@ msgid "https://contactform7.com/"
 msgstr "https://contactform7.com/"
 
 #. translators: title of your first contact form. %d: number fixed to '1'
-#: settings.php:142
+#: settings.php:143
 msgid "Contact form %d"
 msgstr "İletişim formu %d"
 
@@ -486,7 +609,7 @@ msgstr "Etiket"
 
 #: modules/submit.php:55
 msgid "Submit Button"
-msgstr "Gönder Düğmesi"
+msgstr "Gönder düğmesi"
 
 #: modules/submit.php:55
 msgid "https://contactform7.com/submit-button/"
@@ -500,49 +623,49 @@ msgstr "Gönder düğmesi için bir form-etiketi üretir. Daha fazla ayrıntı i
 msgid "submit"
 msgstr "gönder"
 
-#: modules/select.php:219
+#: modules/select.php:193
 msgid "Insert a blank item as the first option"
 msgstr "İlk seçenek olarak boş bir öğe ekle"
 
-#: modules/select.php:218
+#: modules/select.php:192
 msgid "Allow multiple selections"
 msgstr "Çoklu seçimlere izin ver"
 
-#: modules/select.php:185
+#: modules/select.php:159
 msgid "Generate a form-tag for a drop-down menu. For more details, see %s."
 msgstr "Aşağı açılır menü için bir form-etiketi üretir. Daha fazla ayrıntı için bkz: %s."
 
-#: modules/select.php:178
+#: modules/select.php:152
 msgid "drop-down menu"
 msgstr "aşağı açılır menü"
 
-#: modules/quiz.php:206
+#: modules/quiz.php:207
 msgid "One pipe-separated question-answer pair (e.g. The capital of Brazil?|Rio) per line."
 msgstr "Satır başına bir boru karakteriyle ayrılmış soru-yanıt çifti (örn. Türkiye'nin başkenti?|Ankara)."
 
-#: modules/quiz.php:201 modules/quiz.php:204
+#: modules/quiz.php:202 modules/quiz.php:205
 msgid "Questions and answers"
 msgstr "Sorular ve yanıtlar"
 
-#: modules/quiz.php:186
+#: modules/quiz.php:187
 msgid "Quiz"
-msgstr "Küçük Soru"
+msgstr "Soru"
 
-#: modules/quiz.php:186
+#: modules/quiz.php:187
 msgid "https://contactform7.com/quiz/"
 msgstr "https://contactform7.com/quiz/"
 
-#: modules/quiz.php:184
+#: modules/quiz.php:185
 msgid "Generate a form-tag for a question-answer pair. For more details, see %s."
-msgstr "Soru-yanıt çifti için bir form-etiketi üretir. Daha fazla ayrıntı için bkz: %s."
+msgstr "Soru-yanıt çifti için bir form etiketi üretir. Daha fazla ayrıntı için bkz: %s."
 
-#: modules/quiz.php:176
+#: modules/quiz.php:177
 msgid "quiz"
 msgstr "küçük soru"
 
-#: modules/quiz.php:160
+#: modules/quiz.php:161
 msgid "Sender doesn't enter the correct answer to the quiz"
-msgstr "Gönderen küçük soruya doğru yanıtı girmedi"
+msgstr "Gönderen soruya doğru yanıtı girmedi"
 
 #: modules/number.php:169
 msgid "Slider"
@@ -554,7 +677,7 @@ msgstr "Döndürme kutusu"
 
 #: modules/number.php:153
 msgid "Number Fields"
-msgstr "Sayı Alanları"
+msgstr "Sayı alanları"
 
 #: modules/number.php:153
 msgid "https://contactform7.com/number-fields/"
@@ -580,51 +703,51 @@ msgstr "Sayı, en az sınırdan daha küçük"
 msgid "Number format that the sender entered is invalid"
 msgstr "Gönderenin girdiği sayı biçimi geçersiz"
 
-#: modules/file.php:316
+#: modules/file.php:301
 msgid "This contact form contains file uploading fields, but the temporary folder for the files (%s) does not exist or is not writable. You can create the folder or change its permission manually."
 msgstr "Bu iletişim formu dosya gönderme alanları içeriyor ama dosyalar (%s) için geçici klasör mevcut değil ya da yazılabilir değil. Klasörü oluşturabilir veya iznini el ile değiştirebilirsiniz."
 
-#: modules/file.php:290
+#: modules/file.php:275
 msgid "To attach the file uploaded through this field to mail, you need to insert the corresponding mail-tag (%s) into the File Attachments field on the Mail tab."
 msgstr "Bu alan aracılığıyla gönderilen dosyayı postaya eklemek için, Posta sekmesindeki Dosya Ekleri alanı içine karşılık gelen posta-etiketini (%s) eklemeniz gerekir."
 
-#: modules/file.php:262
+#: modules/file.php:247
 msgid "Acceptable file types"
 msgstr "Kabul edilebilir dosya türleri"
 
-#: modules/file.php:257
+#: modules/file.php:242
 msgid "File size limit (bytes)"
 msgstr "Dosya boyutu sınırı (bayt)"
 
-#: modules/file.php:232
+#: modules/file.php:217
 msgid "File Uploading and Attachment"
-msgstr "Dosya Gönderim ve Eki"
+msgstr "Dosya gönderim ve eki"
 
-#: modules/file.php:232
+#: modules/file.php:217
 msgid "https://contactform7.com/file-uploading-and-attachment/"
 msgstr "https://contactform7.com/file-uploading-and-attachment/"
 
-#: modules/file.php:230
+#: modules/file.php:215
 msgid "Generate a form-tag for a file uploading field. For more details, see %s."
 msgstr "Dosya gönderim alanı için bir form-etiketi üretir. Daha fazla ayrıntı için bkz: %s."
 
-#: modules/file.php:222
+#: modules/file.php:207
 msgid "file"
 msgstr "dosya"
 
-#: modules/file.php:209
+#: modules/file.php:194
 msgid "Uploading a file fails for PHP error"
 msgstr "Dosyayı gönderme PHP hatasından dolayı başarısız"
 
-#: modules/file.php:204
+#: modules/file.php:189
 msgid "Uploaded file is too large"
 msgstr "Gönderilen dosya çok büyük"
 
-#: modules/file.php:199
+#: modules/file.php:184
 msgid "Uploaded file is not allowed for file type"
 msgstr "Yüklenen dosya izin verilmeyen dosya biçimi içeriyor"
 
-#: modules/file.php:194
+#: modules/file.php:179
 msgid "Uploading a file fails for any reason"
 msgstr "Dosyayı gönderme herhangi bir nedenden başarısız"
 
@@ -653,7 +776,7 @@ msgstr "Varsayılan değer"
 
 #: modules/date.php:150
 msgid "Date Field"
-msgstr "Tarih Alanı"
+msgstr "Tarih alanı"
 
 #: modules/date.php:150
 msgid "https://contactform7.com/date-field/"
@@ -679,163 +802,156 @@ msgstr "Tarih, en az sınırdan daha erken"
 msgid "Date format that the sender entered is invalid"
 msgstr "Gönderenin girdiği tarih biçimi geçersiz"
 
-#: modules/checkbox.php:362 modules/date.php:221 modules/number.php:229
-#: modules/select.php:248 modules/text.php:316 modules/textarea.php:190
+#: modules/checkbox.php:341 modules/date.php:221 modules/number.php:229
+#: modules/select.php:222 modules/text.php:316 modules/textarea.php:190
 msgid "To use the value input through this field in a mail field, you need to insert the corresponding mail-tag (%s) into the field on the Mail tab."
 msgstr "Posta alanındaki bu alan aracılığıyla değer girdisini kullanmak için, Posta sekmesindeki alan içine karşılık gelen posta-etiketini (%s) eklemeniz gerekir."
 
-#: modules/checkbox.php:332
+#: modules/checkbox.php:311
 msgid "Make checkboxes exclusive"
 msgstr "Onay kutularını özel yap"
 
-#: modules/checkbox.php:330
+#: modules/checkbox.php:309
 msgid "Wrap each item with label element"
 msgstr "Her öğeyi etiket öğesiyle kaydır"
 
-#: modules/checkbox.php:329
+#: modules/checkbox.php:308
 msgid "Put a label first, a checkbox last"
 msgstr "Önce bir etiket koyun, sonra onay kutusunu"
 
-#: modules/checkbox.php:328 modules/select.php:217
+#: modules/checkbox.php:307 modules/select.php:191
 msgid "One option per line."
 msgstr "Satır başına bir seçenek."
 
-#: modules/checkbox.php:311 modules/date.php:164 modules/file.php:246
-#: modules/number.php:172 modules/select.php:201 modules/text.php:247
+#: modules/checkbox.php:290 modules/date.php:164 modules/file.php:231
+#: modules/number.php:172 modules/select.php:175 modules/text.php:247
 #: modules/textarea.php:150
 msgid "Required field"
 msgstr "Zorunlu alan"
 
-#: modules/checkbox.php:307 modules/checkbox.php:310 modules/date.php:160
-#: modules/date.php:163 modules/file.php:242 modules/file.php:245
-#: modules/number.php:163 modules/number.php:166 modules/select.php:197
-#: modules/select.php:200 modules/text.php:243 modules/text.php:246
+#: modules/checkbox.php:286 modules/checkbox.php:289 modules/date.php:160
+#: modules/date.php:163 modules/file.php:227 modules/file.php:230
+#: modules/number.php:163 modules/number.php:166 modules/select.php:171
+#: modules/select.php:174 modules/text.php:243 modules/text.php:246
 #: modules/textarea.php:146 modules/textarea.php:149
 msgid "Field type"
 msgstr "Alan türü"
 
-#: modules/checkbox.php:296 modules/select.php:187
+#: modules/checkbox.php:275 modules/select.php:161
 msgid "Checkboxes, Radio Buttons and Menus"
 msgstr "Onay Kutuları, Radyo Düğmeleri ve Menüler"
 
-#: modules/checkbox.php:296 modules/select.php:187
+#: modules/checkbox.php:275 modules/select.php:161
 msgid "https://contactform7.com/checkboxes-radio-buttons-and-menus/"
 msgstr "https://contactform7.com/checkboxes-radio-buttons-and-menus/"
 
-#: modules/checkbox.php:293
+#: modules/checkbox.php:272
 msgid "Generate a form-tag for a group of radio buttons. For more details, see %s."
 msgstr "Radyo düğmeleri grubu için bir form-etiketi üretir. Daha fazla ayrıntı için bkz: %s."
 
-#: modules/checkbox.php:291
+#: modules/checkbox.php:270
 msgid "Generate a form-tag for a group of checkboxes. For more details, see %s."
 msgstr "Onay kutuları grubu için bir form-etiketi üretir. Daha fazla ayrıntı için bkz: %s."
 
-#: modules/checkbox.php:278
+#: modules/checkbox.php:257
 msgid "radio buttons"
 msgstr "radyo düğmeleri"
 
-#: modules/checkbox.php:276
+#: modules/checkbox.php:255
 msgid "checkboxes"
 msgstr "onay kutuları"
 
-#: modules/really-simple-captcha.php:346
+#: modules/really-simple-captcha.php:360
 msgid "This contact form contains CAPTCHA fields, but the necessary libraries (GD and FreeType) are not available on your server."
 msgstr "Bu iletişim formu CAPTCHA alanları içeriyor ama gerekli kütüphaneler (GD ve FreeType) sunucunuzda mevcut değil."
 
-#: modules/really-simple-captcha.php:340
+#: modules/really-simple-captcha.php:353
 msgid "This contact form contains CAPTCHA fields, but the temporary folder for the files (%s) does not exist or is not writable. You can create the folder or change its permission manually."
 msgstr "Bu iletişim formu CAPTCHA alanları içeriyor ama dosyalar (%s) için geçici klasör mevcut değil ya da yazılabilir değil. Klasörü oluşturabilir veya iznini el ile değiştirebilirsiniz."
 
-#: modules/really-simple-captcha.php:289
+#: modules/really-simple-captcha.php:302
 msgid "Input field settings"
 msgstr "Girdi alanı ayarları"
 
-#: modules/really-simple-captcha.php:274
+#: modules/really-simple-captcha.php:287
 msgid "Image settings"
 msgstr "Resim ayarları"
 
-#: modules/really-simple-captcha.php:257
+#: modules/really-simple-captcha.php:270
 msgid "https://contactform7.com/captcha/"
 msgstr "https://contactform7.com/captcha/"
 
-#: modules/really-simple-captcha.php:255
+#: modules/really-simple-captcha.php:268
 msgid "Generate form-tags for a CAPTCHA image and corresponding response input field. For more details, see %s."
 msgstr "Form-etiketlerini bir CAPTCHA resmi ve karşılık gelen yanıt girdi alanı için üretir. Daha fazla ayrıntı için bkz: %s."
 
-#: modules/really-simple-captcha.php:247
+#. translators: %s: link labeled 'Really Simple CAPTCHA'
+#: modules/really-simple-captcha.php:257
 msgid "To use CAPTCHA, you first need to install and activate %s plugin."
 msgstr "CAPTCHA kullanmak için, önce %s eklentisini yüklemeniz ve etkinleştirmeniz gerekir."
 
-#: modules/really-simple-captcha.php:257 modules/recaptcha.php:223
+#: modules/really-simple-captcha.php:270 modules/recaptcha.php:223
 msgid "CAPTCHA"
 msgstr "CAPTCHA"
 
-#: modules/really-simple-captcha.php:217
+#: modules/really-simple-captcha.php:224
 msgid "Your entered code is incorrect."
 msgstr "Girdiğiniz kod doğru değil."
 
-#: modules/really-simple-captcha.php:215
+#: modules/really-simple-captcha.php:222
 msgid "The code that sender entered does not match the CAPTCHA"
 msgstr "Gönderenin girdiği kod CAPTCHA (Şahıs Denetim Kodu) ile eşleşmiyor"
 
-#: modules/acceptance.php:195 modules/checkbox.php:357 modules/date.php:216
-#: modules/file.php:285 modules/number.php:224 modules/quiz.php:230
-#: modules/really-simple-captcha.php:309 modules/recaptcha.php:503
-#: modules/select.php:243 modules/submit.php:88 modules/text.php:311
+#: modules/acceptance.php:276 modules/checkbox.php:336 modules/date.php:216
+#: modules/file.php:270 modules/number.php:224 modules/quiz.php:231
+#: modules/really-simple-captcha.php:322 modules/recaptcha.php:503
+#: modules/select.php:217 modules/submit.php:88 modules/text.php:311
 #: modules/textarea.php:185
 msgid "Insert Tag"
-msgstr "Etiket Ekle"
+msgstr "Etiket ekle"
 
-#: modules/acceptance.php:182 modules/checkbox.php:344 modules/date.php:204
-#: modules/file.php:272 modules/number.php:212 modules/quiz.php:217
-#: modules/really-simple-captcha.php:282 modules/really-simple-captcha.php:297
-#: modules/recaptcha.php:490 modules/select.php:230 modules/submit.php:75
+#: modules/acceptance.php:263 modules/checkbox.php:323 modules/date.php:204
+#: modules/file.php:257 modules/number.php:212 modules/quiz.php:218
+#: modules/really-simple-captcha.php:295 modules/really-simple-captcha.php:310
+#: modules/recaptcha.php:490 modules/select.php:204 modules/submit.php:75
 #: modules/text.php:298 modules/textarea.php:172
 msgid "Class attribute"
 msgstr "Sınıf özniteliği"
 
-#: modules/acceptance.php:177 modules/checkbox.php:339 modules/date.php:199
-#: modules/file.php:267 modules/number.php:207 modules/quiz.php:212
-#: modules/really-simple-captcha.php:277 modules/really-simple-captcha.php:292
-#: modules/recaptcha.php:485 modules/select.php:225 modules/submit.php:70
+#: modules/acceptance.php:258 modules/checkbox.php:318 modules/date.php:199
+#: modules/file.php:252 modules/number.php:207 modules/quiz.php:213
+#: modules/really-simple-captcha.php:290 modules/really-simple-captcha.php:305
+#: modules/recaptcha.php:485 modules/select.php:199 modules/submit.php:70
 #: modules/text.php:293 modules/textarea.php:167
 msgid "Id attribute"
 msgstr "Kimlik özniteliği"
 
-#: modules/acceptance.php:171
-msgid "Make this work inversely"
-msgstr "Bu işin tersini yap"
-
-#: modules/acceptance.php:170
-msgid "Make this checkbox checked by default"
-msgstr "Bu onay kutusunu varsayılan olarak işaretlenmiş yap"
-
-#: modules/acceptance.php:166 modules/acceptance.php:169
-#: modules/checkbox.php:323 modules/checkbox.php:326 modules/select.php:212
-#: modules/select.php:215
+#: modules/acceptance.php:248 modules/acceptance.php:251
+#: modules/checkbox.php:302 modules/checkbox.php:305 modules/select.php:186
+#: modules/select.php:189
 msgid "Options"
 msgstr "Seçenekler"
 
-#: modules/acceptance.php:161 modules/checkbox.php:318 modules/date.php:170
-#: modules/file.php:252 modules/number.php:178 modules/quiz.php:196
-#: modules/really-simple-captcha.php:267 modules/select.php:207
+#: modules/acceptance.php:238 modules/checkbox.php:297 modules/date.php:170
+#: modules/file.php:237 modules/number.php:178 modules/quiz.php:197
+#: modules/really-simple-captcha.php:280 modules/select.php:181
 #: modules/text.php:253 modules/textarea.php:156
 msgid "Name"
 msgstr "Adı"
 
-#: modules/acceptance.php:151
+#: modules/acceptance.php:228
 msgid "Acceptance Checkbox"
-msgstr "Kabul Onay Kutusu"
+msgstr "Kabul onay kutusu"
 
-#: modules/acceptance.php:151
+#: modules/acceptance.php:228
 msgid "https://contactform7.com/acceptance-checkbox/"
 msgstr "https://contactform7.com/acceptance-checkbox/"
 
-#: modules/acceptance.php:149
+#: modules/acceptance.php:226
 msgid "Generate a form-tag for an acceptance checkbox. For more details, see %s."
 msgstr "Kabul onay kutusu için bir form-etiketi üretir. Daha fazla ayrıntı için bkz: %s."
 
-#: modules/acceptance.php:141
+#: modules/acceptance.php:218
 msgid "acceptance"
 msgstr "kabul"
 
@@ -849,7 +965,7 @@ msgstr "Başlıksız"
 
 #: includes/contact-form.php:32
 msgid "Contact Form"
-msgstr "İletişim Formu"
+msgstr "İletişim formu"
 
 #: includes/contact-form-template.php:193
 msgid "There is a field with input that is shorter than the minimum allowed length"
@@ -890,7 +1006,7 @@ msgstr "Bu e-posta, %1$s (%2$s) adresindeki iletişim formundan gönderildi."
 
 #: includes/contact-form-template.php:62 includes/contact-form-template.php:91
 msgid "Message Body:"
-msgstr "İleti Gövdesi:"
+msgstr "İleti gövdesi:"
 
 #. translators: %s: [your-subject]
 #: includes/contact-form-template.php:60
@@ -925,7 +1041,7 @@ msgstr "Adınız"
 #. translators: %s: title of form-tag like 'email' or 'checkboxes'
 #: admin/includes/tag-generator.php:45
 msgid "Form-tag Generator: %s"
-msgstr "Form-etiketi Üretici: %s"
+msgstr "Form etiket üretici: %s"
 
 #: admin/includes/help-tabs.php:91
 msgid "For more information:"
@@ -1009,74 +1125,70 @@ msgstr "Posta etiketleri"
 
 #: admin/includes/help-tabs.php:35
 msgid "Form-tags"
-msgstr "Form-etiketleri"
+msgstr "Form etiketleri"
 
 #: admin/includes/help-tabs.php:21
 msgid "Available Actions"
-msgstr "Kullanılabilir Eylemler"
+msgstr "Kullanılabilir eylemler"
 
 #: admin/includes/help-tabs.php:16 admin/includes/help-tabs.php:30
 #: admin/includes/help-tabs.php:49
 msgid "Overview"
-msgstr "Genel Bakış"
+msgstr "Genel bakış"
 
-#: admin/includes/editor.php:218
+#: admin/includes/editor.php:248
 msgid "You can add customization code snippets here. For details, see %s."
 msgstr "Özelleştirme kod parçacıklarını burada ekleyebilirsiniz. Ayrıntılar için bkz: %s."
 
-#: admin/includes/editor.php:216
+#: admin/includes/editor.php:246
 msgid "https://contactform7.com/additional-settings/"
 msgstr "https://contactform7.com/additional-settings/"
 
 #: admin/includes/editor.php:194
-msgid "Edit messages used in the following situations."
-msgstr "Aşağıdaki durumlarda kullanılan iletileri düzenleyin."
-
-#: admin/includes/editor.php:170
 msgid "File Attachments"
-msgstr "Dosya Ekleri"
+msgstr "Dosya ekleri"
 
-#: admin/includes/editor.php:164
+#: admin/includes/editor.php:188
 msgid "Use HTML content type"
 msgstr "HTML içerik türünü kullan"
 
-#: admin/includes/editor.php:162
+#: admin/includes/editor.php:186
 msgid "Exclude lines with blank mail-tags from output"
 msgstr "Çıktıda boş posta etiketleri olan satırları hariç tut"
 
-#: admin/includes/editor.php:157
+#: admin/includes/editor.php:181
 msgid "Message Body"
-msgstr "İleti Gövdesi"
+msgstr "İleti gövdesi"
 
-#: admin/includes/editor.php:148
+#: admin/includes/editor.php:172
 msgid "Additional Headers"
-msgstr "Ek Başlıklar"
+msgstr "Ek başlıklar"
 
-#: admin/includes/editor.php:139 includes/contact-form-template.php:40
+#: admin/includes/editor.php:163 includes/contact-form-template.php:40
 msgid "Subject"
 msgstr "Konu"
 
-#: admin/includes/editor.php:130
+#: admin/includes/editor.php:154
 msgid "From"
 msgstr "Kimden"
 
-#: admin/includes/editor.php:121
+#: admin/includes/editor.php:145
 msgid "To"
 msgstr "Kime"
 
-#: admin/includes/editor.php:115
+#: admin/includes/editor.php:135
 msgid "In the following fields, you can use these mail-tags:"
 msgstr "Aşağıdaki alanlarda, bu posta etiketlerini kullanabilirsiniz:"
 
-#: admin/includes/editor.php:109
+#: admin/includes/editor.php:119
 msgid "Mail (2) is an additional mail template often used as an autoresponder."
 msgstr "Posta (2) bir otomatik yanıtlayıcı olarak kullanılan bir ek posta şablonudur."
 
-#: admin/includes/editor.php:75
+#: admin/includes/editor.php:85
 msgid "Use Mail (2)"
-msgstr "Posta (2) Kullan"
+msgstr "Posta (2) kullan"
 
-#: admin/includes/editor.php:74
+#: admin/includes/editor.php:84
 msgid "Mail (2)"
 msgstr "Posta (2)"
 
@@ -1118,62 +1230,53 @@ msgstr "Kısa kod"
 msgid "Title"
 msgstr "Başlık"
 
-#: admin/edit-contact-form.php:216 admin/includes/editor.php:217
-#: admin/includes/editor.php:222
+#: admin/edit-contact-form.php:260 admin/includes/editor.php:247
+#: admin/includes/editor.php:252
 msgid "Additional Settings"
-msgstr "Ek Ayarlar"
+msgstr "Ek ayarlar"
 
 #. translators: %d: number of additional settings
-#: admin/edit-contact-form.php:214
+#: admin/edit-contact-form.php:258
 msgid "Additional Settings (%d)"
-msgstr "Ek Ayarlar (%d)"
+msgstr "Ek ayarlar (%d)"
 
-#: admin/edit-contact-form.php:202 admin/includes/editor.php:192
+#: admin/edit-contact-form.php:244 admin/includes/editor.php:222
 msgid "Messages"
 msgstr "İletiler"
 
-#: admin/edit-contact-form.php:199 admin/includes/editor.php:83
+#: admin/edit-contact-form.php:240 admin/includes/editor.php:93
 msgid "Mail"
 msgstr "Posta"
 
-#: admin/edit-contact-form.php:196 admin/includes/editor.php:55
+#: admin/edit-contact-form.php:236 admin/includes/editor.php:61
 msgid "Form"
 msgstr "Form"
 
-#. translators: %s: ◀ ▶ dashicon
-#: admin/edit-contact-form.php:185
-msgid "%s keys switch panels"
-msgstr "%s tuşları geçiş paneli"
-
-#: admin/edit-contact-form.php:174 admin/includes/help-tabs.php:94
+#: admin/includes/help-tabs.php:94
 msgid "Support"
 msgstr "Destek"
 
-#: admin/edit-contact-form.php:174 admin/includes/help-tabs.php:94
+#: admin/includes/help-tabs.php:94
 msgid "https://contactform7.com/support/"
 msgstr "https://contactform7.com/support/"
 
-#: admin/edit-contact-form.php:173 admin/includes/help-tabs.php:93
+#: admin/edit-contact-form.php:179 admin/includes/help-tabs.php:93
 msgid "FAQ"
 msgstr "SSS"
 
-#: admin/edit-contact-form.php:173 admin/includes/help-tabs.php:93
+#: admin/edit-contact-form.php:178 admin/includes/help-tabs.php:93
 msgid "https://contactform7.com/faq/"
 msgstr "https://contactform7.com/faq/"
 
-#: admin/edit-contact-form.php:172 admin/includes/help-tabs.php:92
+#: admin/edit-contact-form.php:183 admin/includes/help-tabs.php:92
 msgid "Docs"
 msgstr "Belgeler"
 
-#: admin/edit-contact-form.php:172 admin/includes/help-tabs.php:92
+#: admin/edit-contact-form.php:182 admin/includes/help-tabs.php:92
 msgid "https://contactform7.com/docs/"
 msgstr "https://contactform7.com/docs/"
 
-#: admin/edit-contact-form.php:169
-msgid "Information"
-msgstr "Bilgi"
-
-#: admin/edit-contact-form.php:153
+#: admin/edit-contact-form.php:154
 msgid ""
 "You are about to delete this contact form.\n"
 "  'Cancel' to stop, 'OK' to delete."
@@ -1181,25 +1284,25 @@ msgstr ""
 "Bu iletişim formunu silmek üzeresiniz.\n"
 "  Durdurmak için 'İptal',  silmek için 'TAMAM'."
 
-#: admin/edit-contact-form.php:153
+#: admin/edit-contact-form.php:154
 #: admin/includes/class-contact-forms-list-table.php:92
 msgid "Delete"
 msgstr "Sil"
 
-#: admin/edit-contact-form.php:138
+#: admin/edit-contact-form.php:139
 #: admin/includes/class-contact-forms-list-table.php:156
 msgid "Duplicate"
 msgstr "Çoğalt"
 
-#: admin/edit-contact-form.php:124
+#: admin/edit-contact-form.php:125
 msgid "Status"
 msgstr "Durum"
 
-#: admin/edit-contact-form.php:110
+#: admin/edit-contact-form.php:111
 msgid "You can also use this old-style shortcode:"
 msgstr "Ayrıca bu eski stil kısa kodu kullanabilirsiniz:"
 
-#: admin/edit-contact-form.php:103
+#: admin/edit-contact-form.php:104
 msgid "Copy this shortcode and paste it into your post, page, or text widget content:"
 msgstr "Bu kısa kodu kopyalayın ve yazınızın, sayfanızın ya da metin parçacığı içeriğinizin içine yapıştırın:"
 
@@ -1207,12 +1310,12 @@ msgstr "Bu kısa kodu kopyalayın ve yazınızın, sayfanızın ya da metin par�
 msgid "Enter title here"
 msgstr "Başlığı buraya girin"
 
-#: admin/edit-contact-form.php:26 admin/edit-contact-form.php:131
+#: admin/edit-contact-form.php:26 admin/edit-contact-form.php:132
 #: modules/recaptcha.php:211
 msgid "Save"
 msgstr "Kaydet"
 
-#: admin/admin.php:584
+#: admin/admin.php:594
 msgid "You are not allowed to edit this contact form."
 msgstr "Bu iletişim formunu düzenlemenize izin verilmiyor."
 
@@ -1223,6 +1326,14 @@ msgstr "https://contactform7.com/save-submitted-messages-with-flamingo/"
 #: admin/includes/welcome-panel.php:26
 msgid "https://contactform7.com/spam-filtering-with-akismet/"
 msgstr "https://contactform7.com/spam-filtering-with-akismet/"
+
+#: admin/includes/editor.php:129
+msgid "Setting Up Mail"
+msgstr "Postayı Ayarlamak"
+
+#: admin/includes/editor.php:128
+msgid "https://contactform7.com/setting-up-mail/"
+msgstr "https://contactform7.com/setting-up-mail/"
 
 #: admin/includes/welcome-panel.php:35
 msgid "https://contactform7.com/donate/"
@@ -1237,36 +1348,36 @@ msgid "Dismiss"
 msgstr "Kapat"
 
 #. translators: 1: version of Contact Form 7, 2: version of WordPress, 3: URL
-#: admin/admin.php:565
+#: admin/admin.php:575
 msgid "<strong>Contact Form 7 %1$s requires WordPress %2$s or higher.</strong> Please <a href=\"%3$s\">update WordPress</a> first."
 msgstr "<strong>Contact Form 7 %1$s, WordPress %2$s veya daha yükseğini gerektirir.</strong> Lütfen önce <a href=\"%3$s\">WordPress'i güncelleyin</a>."
 
-#: admin/admin.php:545
+#: admin/admin.php:555
 msgid "Settings"
 msgstr "Ayarlar"
 
-#: admin/admin.php:496
+#: admin/admin.php:501
 msgid "Contact form deleted."
 msgstr "İletişim formu silindi."
 
-#: admin/admin.php:494
+#: admin/admin.php:499
 msgid "Contact form saved."
 msgstr "İletişim formu kaydedildi."
 
-#: admin/admin.php:492
+#: admin/admin.php:497
 msgid "Contact form created."
 msgstr "İletişim formu oluşturuldu."
 
-#: admin/admin.php:393
+#: admin/admin.php:398
 msgid "Search Contact Forms"
-msgstr "İletişim Formlarını Ara"
+msgstr "İletişim formlarını ara"
 
 #. translators: %s: search keywords
-#: admin/admin.php:380
+#: admin/admin.php:385
 msgid "Search results for &#8220;%s&#8221;"
 msgstr "&#8220;%s&#8221; için arama sonuçları"
 
-#: admin/admin.php:310
+#: admin/admin.php:313
 msgid "The changes you made will be lost if you navigate away from this page."
 msgstr "Eğer bu sayfadan uzakta gezinirseniz yaptığınız değişiklikler kaybolacaktır."
 
@@ -1286,32 +1397,32 @@ msgstr "Bu öğeyi düzenlemenize izin verilmiyor."
 msgid "Integration"
 msgstr "Bütünleştirme"
 
-#: admin/admin.php:47 admin/admin.php:462
+#: admin/admin.php:47 admin/admin.php:467
 msgid "Integration with Other Services"
-msgstr "Diğer Hizmetler ile Bütünleştirme"
+msgstr "Diğer hizmetler ile bütünleştirme"
 
-#: admin/admin.php:37 admin/admin.php:374 admin/edit-contact-form.php:46
+#: admin/admin.php:37 admin/admin.php:379 admin/edit-contact-form.php:46
 msgid "Add New"
-msgstr "Yeni Ekle"
+msgstr "Yeni ekle"
 
 #: admin/admin.php:36 admin/edit-contact-form.php:36
 msgid "Add New Contact Form"
-msgstr "Yeni İletişim Formu Ekle"
+msgstr "Yeni iletişim formu ekle"
 
-#: admin/admin.php:29 admin/admin.php:367 includes/contact-form.php:31
+#: admin/admin.php:29 admin/admin.php:372 includes/contact-form.php:31
 msgid "Contact Forms"
-msgstr "İletişim Formları"
+msgstr "İletişim formları"
 
 #: admin/admin.php:28 admin/edit-contact-form.php:38
 msgid "Edit Contact Form"
-msgstr "İletişim Formunu Düzenle"
+msgstr "İletişim formunu düzenle"
 
 #: admin/admin.php:22
 msgid "Contact"
 msgstr "İletişim"
 
-#. #-#-#-#-#  contact-form-7-code.pot (Contact Form 7 4.9.2)  #-#-#-#-#
+#. #-#-#-#-#  contact-form-7-code.pot (Contact Form 7 5.0.3)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
-#: admin/admin.php:21 modules/flamingo.php:150
+#: admin/admin.php:21 modules/flamingo.php:170
 msgid "Contact Form 7"
 msgstr "Contact Form 7"

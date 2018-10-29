@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Themes - GeneratePress package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2018-05-30 13:09:56+0000\n"
+"PO-Revision-Date: 2018-09-14 13:05:10+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -15,17 +15,22 @@ msgstr ""
 msgid "GeneratePress is a fast, lightweight (less than 1MB zipped), mobile responsive WordPress theme built with speed, SEO and usability in mind. GP can serve as a solid base for any website, and works great with any of your favorite page builders. With an emphasis on WordPress coding standards, we ensure GeneratePress is compatible with all well-coded plugins, including major ones like WooCommerce, WPML, BuddyPress and bbPress. GeneratePress is device friendly (mobile and tablet), uses 100% valid HTML, is fully schema microdata integrated, is translated into over 20 languages by our amazing community and is cross browser compatible (IE9+). Some of our features include 9 widget areas, 5 navigation positions, 5 sidebar layouts, dropdown menus (click or hover) and a back to top button. All our options use the native WordPress Customizer, meaning you can see every change you make instantly before pressing the publish button. Learn more and check out our powerful premium version at https://generatepress.com"
 msgstr "GeneratePress est un thème WordPress responsive, rapide et léger (moins de 1 Mo compressé), conçu pour répondre aux besoins de rapidité, de SEO et d’ergonomie. GP peut servir de base solide pour n’importe quel site Web, et fonctionne très bien avec n’importe lequel de vos constructeurs de pages préférés. En mettant l’accent sur les normes de codage WordPress, nous nous assurons que GeneratePress est compatible avec toutes les extensions bien codés, y compris les plus importantes comme WooCommerce, WPML, BuddyPress et bbPress. GeneratePress est compatible avec les appareils (mobile et tablette), utilise du HTML 100% valide, intègre entièrement les micro-données de schémas, est traduit dans plus de 20 langues par notre incroyable communauté et est compatible avec tous les navigateurs (IE9 +). Certaines de nos fonctionnalités incluent 9 zones de widget, 5 mises en page de navigation, 5 mises en page de colonne latérale, menus déroulants (clic ou survol) et un bouton de retour au début. Toutes nos options utilisent l’outil natif de personnalisation de WordPress, ce qui signifie que vous pouvez voir toutes les modifications que vous effectuez instantanément avant d’appuyer sur le bouton « Publier ». En savoir plus et consultez notre puissante version premium sur https://generatepress.com"
 
-#. #-#-#-#-#  generatepress.pot (GeneratePress 2.1.2)  #-#-#-#-#
+#. #-#-#-#-#  generatepress.pot (GeneratePress 2.1.4)  #-#-#-#-#
 #. Theme Name of the plugin/theme
-#: inc/structure/footer.php:81
+#: inc/structure/footer.php:83
 msgid "GeneratePress"
 msgstr "GeneratePress"
+
+#: inc/structure/footer.php:82
+msgctxt "GeneratePress"
+msgid "Powered by"
+msgstr "Propulsé par"
 
 #: inc/structure/navigation.php:350
 msgid "Mobile Menu"
 msgstr "Menu mobile"
 
-#: inc/structure/footer.php:104
+#: inc/structure/footer.php:106
 msgid "Footer Widget"
 msgstr "Widget de pied de page"
 
@@ -221,7 +226,7 @@ msgstr "Navigation principale"
 msgid "Container"
 msgstr "Conteneur"
 
-#: inc/structure/footer.php:226 inc/structure/footer.php:230
+#: inc/structure/footer.php:228 inc/structure/footer.php:232
 msgid "Scroll back to top"
 msgstr "Retour en Haut"
 
@@ -264,7 +269,7 @@ msgid "Header Width"
 msgstr "Largeur d&rsquo;en-tête"
 
 #. translators: %s: Heart icon
-#: inc/dashboard.php:247
+#: inc/dashboard.php:251
 msgctxt "made with love"
 msgid "Made with %s by Tom Usborne"
 msgstr "Créé avec %s par Tom Usborne"
@@ -286,12 +291,12 @@ msgid "It looks like nothing was found at this location. Maybe try searching?"
 msgstr "Contenu introuvable. L’outil de recherche vous remettra peut-être sur la voie ?"
 
 #. translators: 1: admin URL
-#: inc/structure/footer.php:119
+#: inc/structure/footer.php:121
 msgid "To remove or choose the number of footer widgets, go to <a href=\"%1$s\"><strong>Appearance / Customize / Layout / Footer Widgets</strong></a>."
 msgstr "Pour enlever ou choisir le nombre de widgets dans le pied de page, allez dans <a href=\"%1$s\"><strong>Apparence / Personnaliser / Style / Widgets en pied de page</strong></a>."
 
 #. translators: 1: admin URL
-#: inc/structure/footer.php:110
+#: inc/structure/footer.php:112
 msgid "Replace this widget content by going to <a href=\"%1$s\"><strong>Appearance / Widgets</strong></a> and dragging widgets into this widget area."
 msgstr "Remplacer le contenu de ce widget en allant dans <a href=\"%1$s\"><strong>Apparence / Widgets</strong></a> et en glissant un widget dans cette zone."
 
@@ -372,12 +377,12 @@ msgstr "Afficher tous les articles de %s"
 msgid "by"
 msgstr "de"
 
-#: inc/structure/comments.php:64
+#: inc/structure/comments.php:68
 msgid "Your comment is awaiting moderation."
 msgstr "Votre commentaire est en attente de validation."
 
 #. translators: 1: date, 2: time
-#: inc/structure/comments.php:44
+#: inc/structure/comments.php:48
 msgctxt "1: date, 2: time"
 msgid "%1$s at %2$s"
 msgstr "%1$s à %2$s"
@@ -414,15 +419,15 @@ msgstr "Suivant &rarr;"
 msgid "&larr; Previous"
 msgstr "&larr; Précédent"
 
-#: inc/dashboard.php:316
+#: inc/dashboard.php:320
 msgid "Settings removed."
 msgstr "Réglages supprimés."
 
-#: inc/dashboard.php:312
+#: inc/dashboard.php:316
 msgid "Import successful."
 msgstr "Importation réussie."
 
-#: inc/dashboard.php:308
+#: inc/dashboard.php:312
 msgid "Settings saved."
 msgstr "Réglages enregistrés."
 
@@ -738,7 +743,7 @@ msgstr "Bas de page - Widget 2"
 msgid "Footer Widget 1"
 msgstr "Bas de page - Widget 1"
 
-#: inc/structure/comments.php:25 inc/structure/comments.php:50
+#: inc/structure/comments.php:25 inc/structure/comments.php:54
 msgid "Edit"
 msgstr "Modifier"
 
@@ -754,15 +759,15 @@ msgstr "Publier le commentaire"
 msgid "Leave a Comment"
 msgstr "Laisser un commentaire"
 
-#: inc/structure/comments.php:90
+#: inc/structure/comments.php:94
 msgid "Website"
 msgstr "Site Web"
 
-#: inc/structure/comments.php:89
+#: inc/structure/comments.php:93
 msgid "Email"
 msgstr "E-mail"
 
-#: inc/structure/comments.php:88
+#: inc/structure/comments.php:92
 msgid "Name"
 msgstr "Nom"
 
