@@ -75,17 +75,6 @@ sowb.SiteOriginGoogleMap = function($) {
 			this.showMarkers(options.markerPositions, map, options);
 			this.showDirections(options.directions, map, options);
 
-			// If the Google Maps element is hidden it won't display properly. This is an attempt to make it display by
-			// calling resize when a custom 'show' event is fired. The 'show' event is something we fire in a few widgets
-			// like Accordion and Tabs and in future any widgets which might show and hide content using `display:none;`.
-			if ( $( element ).is( ':hidden' ) ) {
-				var $visParent = $( element ).closest( ':visible' );
-				$visParent.find( '> :hidden' ).on( 'show', function () {
-					google.maps.event.trigger(map, 'resize');
-					map.setCenter(location);
-				} );
-			}
-
 		},
 
 		linkAutocompleteField: function (autocomplete, autocompleteElement, map, options) {
@@ -337,7 +326,7 @@ sowb.SiteOriginGoogleMap = function($) {
 					this.getLocation( address ).done(
 						function ( location ) {
 							this.showMap( $$.get( 0 ), location, options );
-							$$.data( 'initialized' );
+							$$.data( 'initialized', true );
 						}.bind( this )
 					).fail( function () {
 						$$.append( '<div><p><strong>' + soWidgetsGoogleMap.geocode.noResults + '</strong></p></div>' );
@@ -414,8 +403,15 @@ jQuery(function ($) {
 	sowb.setupGoogleMaps = function() {
 		var libraries = [];
 		var apiKey;
-		$('.sow-google-map-canvas').each(function(index, element) {
+		var $mapCanvas = $('.sow-google-map-canvas');
+		if ( ! $mapCanvas.length ) {
+			return;
+		}
+		$mapCanvas.each(function(index, element) {
 			var $this = $(element);
+			if ( ! $this.is( ':visible' ) || $this.data( 'apiInitialized' ) ) {
+				return $this;
+			}
 			var mapOptions = $this.data( 'options' );
 			if ( mapOptions) {
 				if( typeof mapOptions.libraries !== 'undefined' && mapOptions.libraries !== null ) {
@@ -425,11 +421,17 @@ jQuery(function ($) {
 					apiKey = mapOptions.apiKey;
 				}
 			}
+			$this.data( 'apiInitialized', true );
 		});
-
+		
 		var mapsApiLoaded = typeof window.google !== 'undefined' && typeof window.google.maps !== 'undefined';
-		if ( mapsApiLoaded ) {
-			soGoogleMapInitialize();
+		if ( sowb.mapsApiInitialized ) {
+			var timeoutId = setTimeout( function () {
+				if ( mapsApiLoaded ) {
+					clearTimeout( timeoutId );
+					soGoogleMapInitialize();
+				}
+			}, 100 );
 		} else {
 			var apiUrl = 'https://maps.googleapis.com/maps/api/js?callback=soGoogleMapInitialize';
 
@@ -466,6 +468,7 @@ jQuery(function ($) {
 			}
 
 			$( 'body' ).append( '<script async type="text/javascript" src="' + apiUrl + '">' );
+			sowb.mapsApiInitialized = true;
 		}
 	};
 	sowb.setupGoogleMaps();

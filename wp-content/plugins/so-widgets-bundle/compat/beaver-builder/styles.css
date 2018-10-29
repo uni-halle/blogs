@@ -90,27 +90,27 @@
 }
 .fl-lightbox .siteorigin-widget-form .sow-icon-elegantline,
 .siteorigin-widgets-query-builder.media-modal .sow-icon-elegantline {
-  font-family: 'sow-elegantline';
+  font-family: 'sow-elegantline' !important;
 }
 .fl-lightbox .siteorigin-widget-form .sow-icon-fontawesome,
 .siteorigin-widgets-query-builder.media-modal .sow-icon-fontawesome {
-  font-family: 'sow-fontawesome';
+  font-family: 'sow-fontawesome' !important;
 }
 .fl-lightbox .siteorigin-widget-form .sow-icon-genericons,
 .siteorigin-widgets-query-builder.media-modal .sow-icon-genericons {
-  font-family: 'sow-genericons';
+  font-family: 'sow-genericons' !important;
 }
 .fl-lightbox .siteorigin-widget-form .sow-icon-icomoon,
 .siteorigin-widgets-query-builder.media-modal .sow-icon-icomoon {
-  font-family: 'sow-icomoon';
+  font-family: 'sow-icomoon' !important;
 }
 .fl-lightbox .siteorigin-widget-form .sow-icon-ionicons,
 .siteorigin-widgets-query-builder.media-modal .sow-icon-ionicons {
-  font-family: 'sow-ionicons';
+  font-family: 'sow-ionicons' !important;
 }
 .fl-lightbox .siteorigin-widget-form .sow-icon-typicons,
 .siteorigin-widgets-query-builder.media-modal .sow-icon-typicons {
-  font-family: 'sow-typicons';
+  font-family: 'sow-typicons' !important;
 }
 .fl-lightbox .siteorigin-widget-form .button,
 .siteorigin-widgets-query-builder.media-modal .button,

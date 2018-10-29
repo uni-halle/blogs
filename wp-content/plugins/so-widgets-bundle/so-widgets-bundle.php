@@ -2,7 +2,7 @@
 /*
 Plugin Name: SiteOrigin Widgets Bundle
 Description: A collection of all widgets, neatly bundled into a single plugin. It's also a framework to code your own widgets on top of.
-Version: 1.11.8
+Version: 1.13.0
 Text Domain: so-widgets-bundle
 Domain Path: /lang
 Author: SiteOrigin
@@ -12,7 +12,7 @@ License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 */
 
-define('SOW_BUNDLE_VERSION', '1.11.8');
+define('SOW_BUNDLE_VERSION', '1.13.0');
 define('SOW_BUNDLE_BASE_FILE', __FILE__);
 
 // Allow JS suffix to be pre-set
@@ -742,7 +742,9 @@ class SiteOrigin_Widgets_Bundle {
 	 * Add action links.
 	 */
 	function plugin_action_links($links){
-		unset( $links['edit'] );
+		if ( isset( $links['edit'] ) ) {
+			unset( $links['edit'] );
+		}
 		$links['manage'] = '<a href="' . admin_url('plugins.php?page=so-widgets-plugins') . '">'.__('Manage Widgets', 'so-widgets-bundle').'</a>';
 		$links['support'] = '<a href="https://siteorigin.com/thread/" target="_blank" rel="noopener noreferrer">'.__('Support', 'so-widgets-bundle').'</a>';
 		return $links;
@@ -772,7 +774,7 @@ class SiteOrigin_Widgets_Bundle {
 		);
 		wp_register_script(
 			'sow-google-map',
-			plugin_dir_url( SOW_BUNDLE_BASE_FILE ) . 'js/sow.google.map' . SOW_BUNDLE_JS_SUFFIX . '.js',
+			plugin_dir_url( SOW_BUNDLE_BASE_FILE ) . 'js/sow.google-map' . SOW_BUNDLE_JS_SUFFIX . '.js',
 			array( 'jquery' ),
 			SOW_BUNDLE_VERSION
 		);

@@ -45,14 +45,14 @@
 .siteorigin-widget-form .siteorigin-widget-field {
   margin: 1em 0;
 }
-.siteorigin-widget-form .siteorigin-widget-field label {
+.siteorigin-widget-form .siteorigin-widget-field > label {
   display: block;
   margin-bottom: 3px;
 }
-.siteorigin-widget-form .siteorigin-widget-field label.siteorigin-widget-field-label {
+.siteorigin-widget-form .siteorigin-widget-field > label.siteorigin-widget-field-label {
   font-weight: bold;
 }
-.siteorigin-widget-form .siteorigin-widget-field label.so-checkbox-label {
+.siteorigin-widget-form .siteorigin-widget-field > label.so-checkbox-label {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -590,4 +590,47 @@
 .widget-icon.so-widget-icon {
   background-size: cover;
   background-image: url("img/bundle-icon.png");
+}
+.widget-icon.so-widget-icon.so-gutenberg-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+}
+.gutenberg__editor .so-widget-placeholder > .components-placeholder__label {
+  background: url("img/bundle-icon.png") no-repeat left;
+  background-size: 20px;
+  padding-left: 25px;
+}
+.gutenberg__editor .so-widget-placeholder > .components-placeholder__fieldset {
+  max-width: unset;
+}
+.gutenberg__editor .so-widget-placeholder > .components-placeholder__fieldset .so-widget-gutenberg-container {
+  width: 100%;
+}
+.gutenberg__editor .so-widget-placeholder > .components-placeholder__fieldset .so-widget-gutenberg-container .siteorigin-widget-form.siteorigin-widget-form-main {
+  min-width: unset;
+}
+.gutenberg__editor .siteorigin-widget-form .siteorigin-widget-field {
+  text-align: left;
+}
+.gutenberg__editor .siteorigin-widget-form .siteorigin-widget-field input {
+  padding: 3px 5px;
+}
+.gutenberg__editor .siteorigin-widget-form .siteorigin-widget-field.siteorigin-widget-field-type-autocomplete .select-content-button,
+.gutenberg__editor .siteorigin-widget-form .siteorigin-widget-field.siteorigin-widget-field-type-link .select-content-button {
+  box-shadow: unset;
+  font-size: 13px;
+  height: 28px;
+}
+.gutenberg__editor .siteorigin-widget-form .siteorigin-widget-field.siteorigin-widget-field-type-icon .siteorigin-widget-icon-selector-current {
+  height: 37px;
+}
+.gutenberg__editor .siteorigin-widget-form .siteorigin-widget-field.siteorigin-widget-field-type-tinymce .wp-switch-editor {
+  box-sizing: content-box;
+}
+.gutenberg__editor .so-widget-gutenberg-preview-container .so-widgets-spinner-container {
+  text-align: center;
+}
+.gutenberg__editor .so-widget-gutenberg-preview-container .so-widgets-spinner-container > span {
+  display: inline-block;
 }
