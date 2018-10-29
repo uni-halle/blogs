@@ -29,6 +29,7 @@ class WYSIJA_view_back_mp3 extends WYSIJA_view_back{
 <li><?php echo $this->replace_link_shortcode(__("[link]Read the FAQ[/link] on what's going to happen to this current version of MailPoet (version 2)", WYSIJA), 'http://www.mailpoet.com/faq-mailpoet-version-2/') ?></li>
 <li><?php echo __('MailPoet version 3 is completely rewritten', WYSIJA); ?></li>
 <li><?php echo __('New email designer', WYSIJA); ?></li>
+<li><strong><?php echo __('Align images left or right of post excerpts, like in version 2 (new)', WYSIJA); ?></strong></li>
 <li><?php echo __('Responsive templates', WYSIJA); ?></li>
 <li><?php echo __('Fast user interface', WYSIJA); ?></li>
 <li><?php echo __('Same easy configuration', WYSIJA); ?></li>
@@ -48,7 +49,7 @@ class WYSIJA_view_back_mp3 extends WYSIJA_view_back{
 </ul>
 
 <br>
-<h3 style="font-size: 25px; color: #626262; font-weight: 600;"><strong>Comes with a 1-click migration tool:</strong></h3>
+<h3 style="font-size: 25px; color: #626262; font-weight: 600;"><strong><?php echo __('Comes with a 1-click migration tool:', WYSIJA); ?></strong></h3>
 <ul style="list-style: disc inside none">
   <li><?php echo __('Your subscribers, lists, forms and settings will be migrated', WYSIJA); ?></li>
   <li><?php echo __('Automatic emails will not be migrated', WYSIJA); ?></li>

@@ -423,10 +423,10 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 											$scheduled_on = date_i18n(get_option('date_format') . ' ' . get_option('time_format'), $scheduletimenoffset);
 											if ($timeleft <= (60 * 60 * 24)) { // 1 day
 												$timeleft = $helper_toolbox->duration_string($timeleft, true, 4);
-												$durationsent = '<span title="' . $scheduled_on . '">' . sprintf(__('Scheduled to be sent in %1$s'), $timeleft) . '</span>';
+												$durationsent = '<span title="' . $scheduled_on . '">' . sprintf(__('Scheduled to be sent in %1$s', WYSIJA), $timeleft) . '</span>';
 											} else {
 
-												$durationsent = sprintf(__('Scheduled to be sent on %1$s'), $scheduled_on);
+												$durationsent = sprintf(__('Scheduled to be sent on %1$s', WYSIJA), $scheduled_on);
 											}
 
 										}
@@ -2655,13 +2655,6 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 
 						<h1><?php echo __('Try the new (and much better) MailPoet now', WYSIJA); ?></h1>
 
-            <div class="updated" style="display: block !important;"><p><?php
-            echo $this->replace_link_shortcode(
-                  __('Save up to $100 on the <b>new MailPoet</b> before the end of the year. [link]See pricing[/link].', WYSIJA),
-                  'https://account.mailpoet.com'
-                );
-            ?></p></div>
-
 						<div class="about-text" style="visibility:hidden"><?php echo $data['abouttext'] ?></div>
 						<?php
 						foreach ($data['sections'] as $section) {
@@ -2873,13 +2866,6 @@ class WYSIJA_view_back_campaigns extends WYSIJA_view_back {
 				<div id="update-page" class="about-wrap mpoet-page">
 
 					<h1><?php echo sprintf(__('You\'ve updated to %1$s', WYSIJA), '<span class="version">MailPoet '.WYSIJA::get_version())."</span>"; ?></h1>
-
-          <div class="updated"><p><?php
-            echo $this->replace_link_shortcode(
-                  __('Save up to $100 on the <b>new MailPoet</b> before the end of the year. [link]See pricing[/link].', WYSIJA),
-                  'https://account.mailpoet.com'
-                );
-            ?></p></div>
 
 					<div class="about-text"><?php echo $data['abouttext'] ?></div>
 					<?php
