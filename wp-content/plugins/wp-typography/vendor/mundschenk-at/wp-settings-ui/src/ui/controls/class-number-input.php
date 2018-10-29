@@ -1,8 +1,8 @@
 <?php
 /**
- *  This file is part of wp-Typography.
+ *  This file is part of WordPress Settings UI.
  *
- *  Copyright 2017 Peter Putzer.
+ *  Copyright 2017-2018 Peter Putzer.
  *
  *  This program is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public License
@@ -20,13 +20,15 @@
  *
  *  ***
  *
- *  @package mundschenk-at/wp-typography
+ *  @package mundschenk-at/wp-settings-ui
  *  @license http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace WP_Typography\UI;
+namespace Mundschenk\UI\Controls;
 
-use WP_Typography\Data_Storage\Options;
+use Mundschenk\UI\Control;
+
+use Mundschenk\Data_Storage\Options;
 
 /**
  * HTML <input> element.
@@ -37,26 +39,28 @@ class Number_Input extends Input {
 	 * Create a new input control object.
 	 *
 	 * @param Options $options      Options API handler.
+	 * @param string  $options_key  Database key for the options array.
 	 * @param string  $id           Control ID (equivalent to option name). Required.
 	 * @param array   $args {
 	 *    Optional and required arguments.
 	 *
-	 *    @type string      $tab_id       Tab ID. Required.
-	 *    @type string      $section      Section ID. Required.
-	 *    @type string|int  $default      The default value. Required, but may be an empty string.
-	 *    @type string|null $short        Optional. Short label. Default null.
-	 *    @type string|null $label        Optional. Label content with the position of the control marked as %1$s. Default null.
-	 *    @type string|null $help_text    Optional. Help text. Default null.
-	 *    @type bool        $inline_help  Optional. Display help inline. Default false.
-	 *    @type array       $attributes   Optional. Default [],
+	 *    @type string      $tab_id           Tab ID. Required.
+	 *    @type string      $section          Optional. Section ID. Default Tab ID.
+	 *    @type string|int  $default          The default value. Required, but may be an empty string.
+	 *    @type string|null $short            Optional. Short label. Default null.
+	 *    @type string|null $label            Optional. Label content with the position of the control marked as %1$s. Default null.
+	 *    @type string|null $help_text        Optional. Help text. Default null.
+	 *    @type bool        $inline_help      Optional. Display help inline. Default false.
+	 *    @type array       $attributes       Optional. Default [],
+	 *    @type array       $outer_attributes Optional. Default [],
 	 * }
 	 *
 	 * @throws \InvalidArgumentException Missing argument.
 	 */
-	public function __construct( Options $options, $id, array $args ) {
-		$args = $this->prepare_args( $args, [ 'tab_id', 'default' ] );
+	public function __construct( Options $options, $options_key, $id, array $args ) {
+		$args['input_type'] = 'number';
 
-		parent::__construct( $options, 'number', $id, $args['tab_id'], $args['section'], $args['default'], $args['short'], $args['label'], $args['help_text'], $args['inline_help'], $args['attributes'] );
+		parent::__construct( $options, $options_key, $id, $args );
 	}
 
 	/**

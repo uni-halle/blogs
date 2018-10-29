@@ -87,12 +87,12 @@ class Transients extends Abstract_Cache {
 		$results = $wpdb->get_results(
 			$wpdb->prepare(
 				"SELECT option_name FROM {$wpdb->options} WHERE option_name like %s",
-				self::TRANSIENT_SQL_PREFIX . "{$this->get_prefix()}%"
+				static::TRANSIENT_SQL_PREFIX . "{$this->get_prefix()}%"
 			),
 			ARRAY_A
 		); // WPCS: db call ok, cache ok.
 
-		return \str_replace( self::TRANSIENT_SQL_PREFIX, '', \wp_list_pluck( $results, 'option_name' ) );
+		return \str_replace( static::TRANSIENT_SQL_PREFIX, '', \wp_list_pluck( $results, 'option_name' ) );
 	}
 
 	/**

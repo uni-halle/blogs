@@ -2,7 +2,7 @@
 /**
  *  This file is part of PHP-Typography.
  *
- *  Copyright 2014-2017 Peter Putzer.
+ *  Copyright 2014-2018 Peter Putzer.
  *  Copyright 2009-2011 KINGdesk, LLC.
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -42,19 +42,6 @@ use PHP_Typography\U;
  */
 class Smart_Quotes_Fix extends Abstract_Node_Fix {
 
-	const APOSTROPHE_EXCEPTIONS = [
-		"'tain" . U::APOSTROPHE . 't' => U::APOSTROPHE . 'tain' . U::APOSTROPHE . 't',
-		"'twere"                      => U::APOSTROPHE . 'twere',
-		"'twas"                       => U::APOSTROPHE . 'twas',
-		"'tis"                        => U::APOSTROPHE . 'tis',
-		"'til"                        => U::APOSTROPHE . 'til',
-		"'bout"                       => U::APOSTROPHE . 'bout',
-		"'nuff"                       => U::APOSTROPHE . 'nuff',
-		"'round"                      => U::APOSTROPHE . 'round',
-		"'cause"                      => U::APOSTROPHE . 'cause',
-		"'splainin"                   => U::APOSTROPHE . 'splainin',
-	];
-
 	const NUMBERS_BEFORE_PRIME = '\b(?:\d+\/)?\d{1,3}';
 
 	const DOUBLE_PRIME        = '/(' . self::NUMBERS_BEFORE_PRIME . ")(?:''|\")(?=\W|\Z|-\w)/S";
@@ -70,21 +57,6 @@ class Smart_Quotes_Fix extends Abstract_Node_Fix {
 	const SINGLE_QUOTE_CLOSE    = "/(?: (?<=\w)' ) | (?: (?<=\S)'(?=\s|\Z) )/Sx";
 	const DOUBLE_QUOTE_OPEN     = '/(?: "(?=\w) )  | (?: (?<=\s|\A)"(?=\S) )/Sx';
 	const DOUBLE_QUOTE_CLOSE    = '/(?: (?<=\w)" ) | (?: (?<=\S)"(?=\s|\Z) )/Sx';
-
-
-	/**
-	 * Apostrophe exceptions matching array.
-	 *
-	 * @var array
-	 */
-	protected $apostrophe_exception_matches;
-
-	/**
-	 * Apostrophe exceptions replacement array.
-	 *
-	 * @var array
-	 */
-	protected $apostrophe_exception_replacements;
 
 	/**
 	 * Cached primary quote style.
@@ -113,18 +85,6 @@ class Smart_Quotes_Fix extends Abstract_Node_Fix {
 	 * @var array
 	 */
 	protected $brackets_replacements;
-
-	/**
-	 * Creates a new fix instance.
-	 *
-	 * @param bool $feed_compatible Optional. Default false.
-	 */
-	public function __construct( $feed_compatible = false ) {
-		parent::__construct( $feed_compatible );
-
-		$this->apostrophe_exception_matches      = \array_keys( self::APOSTROPHE_EXCEPTIONS );
-		$this->apostrophe_exception_replacements = \array_values( self::APOSTROPHE_EXCEPTIONS );
-	}
 
 	/**
 	 * Apply the fix to a given textnode.
@@ -161,6 +121,9 @@ class Smart_Quotes_Fix extends Abstract_Node_Fix {
 			$this->cached_secondary_quotes = $single;
 		}
 
+		// Handle excpetions first.
+		$node_data = \str_replace( $settings['smartQuotesExceptions']['patterns'], $settings['smartQuotesExceptions']['replacements'], $node_data );
+
 		// Before primes, handle quoted numbers (and quotes ending in numbers).
 		$node_data = \preg_replace(
 			[
@@ -184,9 +147,9 @@ class Smart_Quotes_Fix extends Abstract_Node_Fix {
 				self::SINGLE_PRIME . $f['u'],
 			],
 			[
-				'$1' . U::SINGLE_PRIME . '$2$3' . U::DOUBLE_PRIME,
+				'$1' . U::SINGLE_PRIME . '$2$3' . U::DOUBLE_PRIME, // @codeCoverageIgnoreStart
 				'$1' . U::DOUBLE_PRIME,
-				'$1' . U::SINGLE_PRIME,
+				'$1' . U::SINGLE_PRIME, // @codeCoverageIgnoreEnd
 			], $node_data
 		);
 
@@ -204,7 +167,6 @@ class Smart_Quotes_Fix extends Abstract_Node_Fix {
 			[ U::APOSTROPHE, U::APOSTROPHE . '$1' ],
 			$node_data
 		);
-		$node_data = \str_replace( $this->apostrophe_exception_matches, $this->apostrophe_exception_replacements, $node_data );
 
 		// Quotes.
 		$node_data = \str_replace( $this->brackets_matches, $this->brackets_replacements, $node_data );
@@ -225,8 +187,28 @@ class Smart_Quotes_Fix extends Abstract_Node_Fix {
 		// Quote catch-alls - assume left over quotes are closing - as this is often the most complicated position, thus most likely to be missed.
 		$node_data = \str_replace( [ "'", '"' ], [ $single_close, $double_close ], $node_data );
 
+		// Add a thin non-breaking space between secondary and primary quotes.
+		$no_break  = $settings->no_break_narrow_space();
+		$node_data = \str_replace(
+			[ "{$double_open}{$single_open}", "{$single_close}{$double_close}" ],
+			[ "{$double_open}{$no_break}{$single_open}", "{$single_close}{$no_break}{$double_close}" ],
+			$node_data
+		);
+
 		// Check if adjacent characters where replaced with multi-byte replacements.
-		$quotes          = [ $double_open, $double_close, $single_open, $single_close ];
+		$quotes          = [
+			$double_open,
+			$double_close,
+			$single_open,
+			$single_close,
+			U::GUILLEMET_OPEN, // @codeCoverageIgnoreStart
+			U::GUILLEMET_CLOSE,
+			U::DOUBLE_PRIME,
+			U::SINGLE_PRIME,
+			U::APOSTROPHE,
+			U::DOUBLE_LOW_9_QUOTE,
+			U::SINGLE_LOW_9_QUOTE, // @codeCoverageIgnoreEnd
+		];
 		$previous_length = self::calc_adjacent_length( $f['strlen']( $previous_character ), $previous_character, $node_data, $quotes, $f['substr'], $f['strlen'], false );
 		$next_length     = self::calc_adjacent_length( $f['strlen']( $next_character ), $next_character, $node_data, $quotes, $f['substr'], $f['strlen'], true );
 
@@ -251,7 +233,7 @@ class Smart_Quotes_Fix extends Abstract_Node_Fix {
 	 * @return int
 	 */
 	private static function calc_adjacent_length( $current_length, $adjacent_character, $haystack, array $needles, callable $substr, callable $strlen, $reverse = false ) {
-		if ( $current_length > 0 && $adjacent_character !== $substr( $haystack, $reverse ? -$current_length : $current_length ) ) {
+		if ( $current_length > 0 && $adjacent_character !== $substr( $haystack, $reverse ? -$current_length : 0, $current_length ) ) {
 			foreach ( $needles as $needle ) {
 				$len = $strlen( $needle );
 

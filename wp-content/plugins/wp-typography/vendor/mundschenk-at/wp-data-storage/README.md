@@ -1,5 +1,3 @@
-# wp-data-storage
-
 # WordPress Data Storage
 
 [![Build Status](https://travis-ci.org/mundschenk-at/wp-data-storage.svg?branch=master)](https://travis-ci.org/mundschenk-at/wp-data-storage)

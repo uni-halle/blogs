@@ -32,6 +32,9 @@ use WP_Typography\Data_Storage\Options;
 use WP_Typography\UI;
 use WP_Typography\Settings\Plugin_Configuration as Config;
 
+use Mundschenk\UI\Control_Factory;
+use Mundschenk\UI\Controls\Checkbox_Input;
+
 use PHP_Typography\PHP_Typography;
 use PHP_Typography\Settings\Dash_Style;
 use PHP_Typography\Settings\Quote_Style;
@@ -197,11 +200,12 @@ class Admin_Interface implements Plugin_Component {
 			$this->admin_help_pages     = $this->initialize_help_pages();
 			$this->admin_form_tabs      = UI\Tabs::get_tabs();
 			$this->admin_form_sections  = UI\Sections::get_sections();
-			$this->admin_form_controls  = $this->initialize_controls();
+			$this->admin_form_controls  = Control_Factory::initialize( $this->defaults, $this->options, Options::CONFIGURATION );
 
 			// Add action hooks.
 			\add_action( 'admin_menu', [ $this, 'add_options_page' ] );
 			\add_action( 'admin_init', [ $this, 'register_the_settings' ] );
+			\add_action( 'admin_init', [ $this, 'maybe_add_privacy_notice_content' ] );
 
 			// Add filter hooks.
 			\add_filter( 'plugin_action_links_' . $this->plugin_basename, [ $this, 'plugin_action_links' ] );
@@ -246,36 +250,6 @@ class Admin_Interface implements Plugin_Component {
 					'</p>',
 			],
 		];
-	}
-
-	/**
-	 * Initialize displayable strings for the plugin settings page.
-	 *
-	 * @return array {
-	 *         @type Control $id A control object.
-	 * }
-	 */
-	protected function initialize_controls() {
-
-		// Create controls from default configuration.
-		$controls = [];
-		$groups   = [];
-		foreach ( $this->defaults as $control_id => $control_info ) {
-			$controls[ $control_id ] = new $control_info['ui']( $this->options, $control_id, $control_info );
-
-			if ( ! empty( $control_info['grouped_with'] ) ) {
-				$groups[ $control_info['grouped_with'] ][] = $control_id;
-			}
-		}
-
-		// Group controls.
-		foreach ( $groups as $group => $control_ids ) {
-			foreach ( $control_ids as $control_id ) {
-				$controls[ $group ]->add_grouped_control( $controls[ $control_id ] );
-			}
-		}
-
-		return $controls;
 	}
 
 	/**
@@ -376,7 +350,7 @@ class Admin_Interface implements Plugin_Component {
 		$active_tab = $this->get_active_settings_tab();
 
 		foreach ( $this->defaults as $key => $info ) {
-			if ( $active_tab === $info['tab_id'] && UI\Checkbox_Input::class === $info['ui'] ) {
+			if ( $active_tab === $info['tab_id'] && Checkbox_Input::class === $info['ui'] ) {
 				$input[ $key ] = ! empty( $input[ $key ] );
 			}
 		}
@@ -444,11 +418,13 @@ class Admin_Interface implements Plugin_Component {
 		$screen = \get_current_screen();
 
 		foreach ( $this->admin_help_pages as $help_id => $help ) {
-			$screen->add_help_tab( [
+			$tab = [
 				'id'      => $help_id,
 				'title'   => $help['heading'],
 				'content' => $help['content'],
-			] );
+			];
+
+			$screen->add_help_tab( $tab );
 		}
 
 		// Create sidebar.
@@ -511,5 +487,22 @@ class Admin_Interface implements Plugin_Component {
 
 		// Load the settings page HTML.
 		require \dirname( $this->plugin_file ) . '/admin/partials/settings/settings-page.php';
+	}
+
+
+	/**
+	 * Adds a privacy notice snippet if used with WordPress 4.9.6 or greater.
+	 *
+	 * @since 5.4.0
+	 */
+	public function maybe_add_privacy_notice_content() {
+		// Don't crash on older versions of WordPress.
+		if ( ! \function_exists( 'wp_add_privacy_policy_content' ) ) {
+			return;
+		}
+
+		$content = '<p class="privacy-policy-tutorial">' . \__( "wp-Typography does not store, transmit or otherwise process personal data as such. It does cache the content of the site's posts. If necessary, you can clear this cache from the plugin's settings page.", 'wp-typography' ) . '</p>';
+
+		\wp_add_privacy_policy_content( \__( 'wp-Typography', 'wp-typography' ), $content );
 	}
 }

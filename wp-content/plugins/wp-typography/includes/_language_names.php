@@ -10,7 +10,7 @@
 <?php _x( 'Welsh', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Danish', 'language name', 'wp-typography' ); ?>
 <?php _x( 'German (Traditional)', 'language name', 'wp-typography' ); ?>
-<?php _x( 'Swiss German (Traditional)', 'language name', 'wp-typography' ); ?>
+<?php _x( 'German (Swiss Traditional)', 'language name', 'wp-typography' ); ?>
 <?php _x( 'German', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Greek (Modern Monotonic)', 'language name', 'wp-typography' ); ?>
 <?php _x( 'Greek (Modern Polytonic)', 'language name', 'wp-typography' ); ?>

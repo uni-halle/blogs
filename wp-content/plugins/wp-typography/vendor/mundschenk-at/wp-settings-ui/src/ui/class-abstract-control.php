@@ -1,8 +1,8 @@
 <?php
 /**
- *  This file is part of wp-Typography.
+ *  This file is part of WordPress Settings UI.
  *
- *  Copyright 2014-2017 Peter Putzer.
+ *  Copyright 2014-2018 Peter Putzer.
  *
  *  This program is free software; you can redistribute it and/or
  *  modify it under the terms of the GNU General Public License
@@ -20,18 +20,18 @@
  *
  *  ***
  *
- *  @package mundschenk-at/wp-typography
+ *  @package mundschenk-at/wp-settings-ui
  *  @license http://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace WP_Typography\UI;
+namespace Mundschenk\UI;
 
-use WP_Typography\Data_Storage\Options;
+use Mundschenk\Data_Storage\Options;
 
 /**
  * Abstract base class for HTML controls.
  */
-abstract class Control {
+abstract class Abstract_Control implements Control {
 
 	/**
 	 * Control ID (= option name).
@@ -90,7 +90,7 @@ abstract class Control {
 	protected $default;
 
 	/**
-	 * Additional HTML attributes to add.
+	 * Additional HTML attributes to add to the main element (`<input>` etc.).
 	 *
 	 * @var array {
 	 *      Attribute/value pairs.
@@ -99,6 +99,17 @@ abstract class Control {
 	 * }
 	 */
 	protected $attributes;
+
+	/**
+	 * Additional HTML attributes to add to the outer element (either `<fieldset>` or `<div>`).
+	 *
+	 * @var array {
+	 *      Attribute/value pairs.
+	 *
+	 *      string $attr Attribute value.
+	 * }
+	 */
+	protected $outer_attributes;
 
 	/**
 	 * Grouped controls.
@@ -121,20 +132,34 @@ abstract class Control {
 	/**
 	 * An abstraction of the WordPress Options API.
 	 *
-	 * @since 5.1.0
-	 *
 	 * @var Options
 	 */
 	protected $options;
 
 	/**
-	 * The root path of the plugin.
-	 *
-	 * @since 5.1.0
+	 * The base path for includes.
 	 *
 	 * @var string
 	 */
-	protected $plugin_path;
+	protected $base_path;
+
+	/**
+	 * The options key.
+	 *
+	 * @var string
+	 */
+	protected $options_key;
+
+	/**
+	 * Additional arguments passed to the `add_settings_field` function.
+	 *
+	 * @var array {
+	 *      Attribute/value pairs.
+	 *
+	 *      string $attr Attribute value.
+	 * }
+	 */
+	protected $settings_args;
 
 	const ALLOWED_INPUT_ATTRIBUTES = [
 		'id'      => [],
@@ -142,6 +167,7 @@ abstract class Control {
 		'value'   => [],
 		'checked' => [],
 		'type'    => [],
+		'class'   => [],
 	];
 
 	const ALLOWED_HTML = [
@@ -162,29 +188,35 @@ abstract class Control {
 	/**
 	 * Create a new UI control object.
 	 *
-	 * @param Options     $options      Options API handler.
-	 * @param string      $id           Control ID (equivalent to option name). Required.
-	 * @param string      $tab_id       Tab ID. Required.
-	 * @param string      $section      Section ID. Required.
-	 * @param string|int  $default      The default value. Required, but may be an empty string.
-	 * @param string|null $short        Optional. Short label. Default null.
-	 * @param string|null $label        Optional. Label content with the position of the control marked as %1$s. Default null.
-	 * @param string|null $help_text    Optional. Help text. Default null.
-	 * @param bool        $inline_help  Optional. Display help inline. Default false.
-	 * @param array       $attributes   Optional. Default [].
+	 * @param Options     $options          Options API handler.
+	 * @param string      $options_key      Database key for the options array.
+	 * @param string      $id               Control ID (equivalent to option name). Required.
+	 * @param string      $tab_id           Tab ID. Required.
+	 * @param string      $section          Section ID. Required.
+	 * @param string|int  $default          The default value. Required, but may be an empty string.
+	 * @param string|null $short            Optional. Short label. Default null.
+	 * @param string|null $label            Optional. Label content with the position of the control marked as %1$s. Default null.
+	 * @param string|null $help_text        Optional. Help text. Default null.
+	 * @param bool        $inline_help      Optional. Display help inline. Default false.
+	 * @param array       $attributes       Optional. Attributes for the main element of the control. Default [].
+	 * @param array       $outer_attributes Optional. Attributes for the outer element (´<fieldset>` or `<div>`) of the control. Default [].
+	 * @param array       $settings_args    Optional. Arguments passed to `add_settings_Field`. Default [].
 	 */
-	protected function __construct( Options $options, $id, $tab_id, $section, $default, $short = null, $label = null, $help_text = null, $inline_help = false, $attributes = [] ) {
-		$this->options     = $options;
-		$this->id          = $id;
-		$this->tab_id      = $tab_id;
-		$this->section     = $section;
-		$this->short       = $short ?: '';
-		$this->label       = $label;
-		$this->help_text   = $help_text;
-		$this->inline_help = $inline_help;
-		$this->default     = $default;
-		$this->attributes  = $attributes;
-		$this->plugin_path = dirname( dirname( dirname( __DIR__ ) ) );
+	protected function __construct( Options $options, $options_key, $id, $tab_id, $section, $default, $short = null, $label = null, $help_text = null, $inline_help = false, array $attributes = [], array $outer_attributes = [], $settings_args = [] ) {
+		$this->options          = $options;
+		$this->options_key      = $options_key;
+		$this->id               = $id;
+		$this->tab_id           = $tab_id;
+		$this->section          = $section;
+		$this->short            = $short ?: '';
+		$this->label            = $label;
+		$this->help_text        = $help_text;
+		$this->inline_help      = $inline_help;
+		$this->default          = $default;
+		$this->attributes       = $attributes;
+		$this->outer_attributes = $outer_attributes;
+		$this->settings_args    = $settings_args;
+		$this->base_path        = dirname( dirname( __DIR__ ) );
 	}
 
 	/**
@@ -210,12 +242,14 @@ abstract class Control {
 
 		// Add default arguments.
 		$args = \wp_parse_args( $args, [
-			'section'     => $args['tab_id'],
-			'short'       => null,
-			'label'       => null,
-			'help_text'   => null,
-			'inline_help' => false,
-			'attributes'  => [],
+			'section'          => $args['tab_id'],
+			'short'            => null,
+			'label'            => null,
+			'help_text'        => null,
+			'inline_help'      => false,
+			'attributes'       => [],
+			'outer_attributes' => [],
+			'settings_args'    => [],
 		] );
 
 		return $args;
@@ -227,16 +261,18 @@ abstract class Control {
 	 *
 	 * @return mixed
 	 */
-	protected function get_value() {
-		$options = $this->options->get( Options::CONFIGURATION );
+	public function get_value() {
+		$options = $this->options->get( $this->options_key );
 
-		return $options[ $this->id ];
+		if ( isset( $options[ $this->id ] ) ) {
+			return $options[ $this->id ];
+		} else {
+			return null;
+		}
 	}
 
 	/**
 	 * Renders control-specific HTML.
-	 *
-	 * @since 5.1.0
 	 *
 	 * @return void
 	 */
@@ -255,23 +291,45 @@ abstract class Control {
 	 * Render the HTML representation of the control.
 	 */
 	public function render() {
-		require $this->plugin_path . '/admin/partials/ui/control.php';
+		require $this->base_path . '/partials/control.php';
 	}
 
 	/**
 	 * Retrieves additional HTML attributes as a string ready for inclusion in markup.
 	 *
+	 * @param array $attributes Required.
+	 *
 	 * @return string
 	 */
-	protected function get_html_attributes() {
+	protected function get_html_attributes( array $attributes ) {
 		$html_attributes = '';
-		if ( ! empty( $this->attributes ) ) {
-			foreach ( $this->attributes as $attr => $val ) {
+		if ( ! empty( $attributes ) ) {
+			foreach ( $attributes as $attr => $val ) {
 				$html_attributes .= \esc_attr( $attr ) . '="' . \esc_attr( $val ) . '" ';
 			}
 		}
 
 		return $html_attributes;
+	}
+
+	/**
+	 * Retrieves additional HTML attributes for the inner element as a string
+	 * ready for inclusion in markup.
+	 *
+	 * @return string
+	 */
+	protected function get_inner_html_attributes() {
+		return $this->get_html_attributes( $this->attributes );
+	}
+
+	/**
+	 * Retrieves additional HTML attributes for the outer element as a string
+	 * ready for inclusion in markup.
+	 *
+	 * @return string
+	 */
+	protected function get_outer_html_attributes() {
+		return $this->get_html_attributes( $this->outer_attributes );
 	}
 
 	/**
@@ -289,7 +347,7 @@ abstract class Control {
 	 * @return string
 	 */
 	public function get_id() {
-		return "{$this->options->get_name( Options::CONFIGURATION )}[{$this->id}]";
+		return "{$this->options->get_name( $this->options_key )}[{$this->id}]";
 	}
 
 
@@ -297,21 +355,17 @@ abstract class Control {
 	 * Retrieves the markup for ID, name and class(es).
 	 * Also adds additional attributes if they are set.
 	 *
-	 * @since 5.1.0
-	 *
 	 * @return string
 	 */
 	protected function get_id_and_class_markup() {
 		$id = \esc_attr( $this->get_id() );
 
 		// Set default ID & name, no class (except for submit buttons).
-		return "id=\"{$id}\" name=\"{$id}\" {$this->get_html_attributes()}";
+		return "id=\"{$id}\" name=\"{$id}\" {$this->get_inner_html_attributes()}";
 	}
 
 	/**
 	 * Determines if the label contains a placeholder for the actual control element(s).
-	 *
-	 * @since 5.1.0
 	 *
 	 * @return bool
 	 */
@@ -322,8 +376,6 @@ abstract class Control {
 	/**
 	 * Determines if this control has an inline help text to display.
 	 *
-	 * @since 5.1.0
-	 *
 	 * @return bool
 	 */
 	protected function has_inline_help() {
@@ -333,8 +385,6 @@ abstract class Control {
 	/**
 	 * Retrieves the label. If the label text contains a string placeholder, it
 	 * is replaced by the control element markup.
-	 *
-	 * @since 5.1.0
 	 *
 	 * @var string
 	 */
@@ -355,7 +405,7 @@ abstract class Control {
 
 		// Register rendering callbacks only for non-grouped controls.
 		if ( empty( $this->grouped_with ) ) {
-			\add_settings_field( $this->get_id(), $this->short, [ $this, 'render' ], $option_group . $this->tab_id, $this->section );
+			\add_settings_field( $this->get_id(), $this->short, [ $this, 'render' ], $option_group . $this->tab_id, $this->section, $this->settings_args );
 		}
 	}
 
@@ -368,7 +418,19 @@ abstract class Control {
 		// Prevent self-references.
 		if ( $this !== $control ) {
 			$this->grouped_controls[] = $control;
-			$control->grouped_with    = $this;
+			$control->group_with( $this );
+		}
+	}
+
+	/**
+	 * Registers this control as grouped with another one.
+	 *
+	 * @param Control $control Any control.
+	 */
+	public function group_with( Control $control ) {
+		// Prevent self-references.
+		if ( $this !== $control ) {
+			$this->grouped_with = $control;
 		}
 	}
 }

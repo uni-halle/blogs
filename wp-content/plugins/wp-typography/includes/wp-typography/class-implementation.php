@@ -217,12 +217,15 @@ class Implementation extends \WP_Typography {
 	 * @return string[] The same array with the language name translated.
 	 */
 	private static function translate_languages( array $languages ) {
-		array_walk( $languages, function( &$lang, $code ) {
-			$lang = _x( $lang, 'language name', 'wp-typography' );  // @codingStandardsIgnoreLine.
-		} );
+		\array_walk(
+			$languages,
+			function( &$lang, $code ) {
+				$lang = _x( $lang, 'language name', 'wp-typography' );  // @codingStandardsIgnoreLine.
+			}
+		);
 
 		// Re-sort after translation.
-		asort( $languages );
+		\asort( $languages );
 
 		return $languages;
 	}
@@ -346,7 +349,7 @@ class Implementation extends \WP_Typography {
 	public function process_title_parts( $title_parts, Settings $settings = null ) {
 		foreach ( $title_parts as $index => $part ) {
 			// Remove "&shy;" and "&#8203;" after processing title part.
-			$title_parts[ $index ] = strip_tags(
+			$title_parts[ $index ] = \wp_strip_all_tags(
 				str_replace( [ \PHP_Typography\U::SOFT_HYPHEN, \PHP_Typography\U::ZERO_WIDTH_SPACE ], '', $this->process( $part, true, true, $settings ) )
 			);
 		}
@@ -397,7 +400,7 @@ class Implementation extends \WP_Typography {
 		$found          = false;
 		$processed_text = $this->cache->get( $key, $found );
 
-		if ( empty( $found ) ) {
+		if ( empty( $found ) || ! \is_string( $processed_text ) ) {
 			$typo = $this->get_typography_instance();
 
 			if ( $feed ) { // Feed readers are strange sometimes.
@@ -450,10 +453,7 @@ class Implementation extends \WP_Typography {
 
 			if ( ! $typo instanceof PHP_Typography ) {
 				// OK, we have to initialize the PHP_Typography instance manually.
-				$typo = new PHP_Typography();
-
-				// Ensure that all fixes are pre-initialized.
-				$typo->get_registry();
+				$typo = new PHP_Typography( new Typography\Custom_Registry() );
 
 				// Try again next time.
 				$this->transients->cache_object( $transient, $typo, 'typography' );

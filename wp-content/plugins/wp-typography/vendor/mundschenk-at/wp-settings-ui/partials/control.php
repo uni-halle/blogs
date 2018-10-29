@@ -1,6 +1,6 @@
 <?php
 /**
- *  This file is part of wp-Typography.
+ *  This file is part of WordPress Settings UI.
  *
  *  Copyright 2017-2018 Peter Putzer.
  *
@@ -20,23 +20,29 @@
  *
  *  ***
  *
- *  @package mundschenk-at/wp-typography
+ *  @package mundschenk-at/wp-settings-ui
  *  @license http://www.gnu.org/licenses/gpl-2.0.html
  */
 
+$outer_attributes = $this->get_outer_html_attributes(); // These are already escaped.
+$outer_attributes = empty( $outer_attributes ) ? '' : " {$outer_attributes}";
+
 if ( ! empty( $this->grouped_controls ) ) : ?>
-	<fieldset><legend class="screen-reader-text"><?php echo \esc_html( $this->short ); ?></legend>
+	<fieldset<?php echo $outer_attributes; // WPCS: XSS ok. ?>><legend class="screen-reader-text"><?php echo \esc_html( $this->short ); ?></legend>
+<?php else : ?>
+	<div<?php echo $outer_attributes; // WPCS: XSS ok. ?>>
 <?php endif; // grouped_controls. ?>
 <?php if ( ! empty( $this->label ) ) : ?>
 	<label for="<?php echo \esc_attr( $this->get_id() ); ?>"><?php echo \wp_kses( $this->get_label(), self::ALLOWED_HTML ); ?></label>
 <?php elseif ( $this->has_inline_help() ) : ?>
 	<label for="<?php echo \esc_attr( $this->get_id() ); ?>">
-<?php endif; ?>
 <?php
+	endif;
+
 	// Control-specific markup.
-if ( ! $this->label_has_placeholder() ) :
-	$this->render_element();
-endif;
+	if ( ! $this->label_has_placeholder() ) :
+		$this->render_element();
+	endif;
 ?>
 <?php if ( $this->has_inline_help() ) : ?>
 	<span class="description"><?php echo \wp_kses( $this->help_text, [ 'code' => [] ] ); ?></span></label>
@@ -45,12 +51,12 @@ endif;
 <?php endif; ?>
 
 <?php if ( ! empty( $this->grouped_controls ) ) : ?>
-
 	<?php foreach ( $this->grouped_controls as $control ) : ?>
 		<br />
 		<?php $control->render(); ?>
 	<?php endforeach; ?>
 	</fieldset>
-
-<?php endif; // grouped_controls. ?>
+<?php else : ?>
+	</div>
 <?php
+endif; // grouped_controls.
