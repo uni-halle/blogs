@@ -1,0 +1,79 @@
+#pf-migration {
+	margin: 50px auto;
+	width: 700px;
+	box-sizing: content-box;
+}
+
+.notice,
+.error,
+#message {
+	display: none;
+}
+
+.pf-migration-header {
+	text-align: center;
+}
+.pf-migration-header h1 {
+	margin-top: 20px;
+}
+.pf-migration-header p {
+	font-size: 120%;
+	margin-bottom: 36px;
+}
+
+.pf-migration-steps {}
+.pf-migration-step {
+	border: 1px solid #EEEEEE;
+	margin-bottom: 30px;
+	display: table;
+	width: 100%;
+}
+
+.pf-migration-step-number {
+	background: #FAFAFA;
+	border-right: 1px solid #EEEEEE;
+	display: table-cell;
+	font-family: monospace;
+	text-align: center;
+	vertical-align: middle;
+	width: 80px;
+}
+.pf-migration-step-number span {
+	border-radius: 50%;
+	background: #CBCBCB;
+	display: inline-block;
+	color: #FFF;
+	font-size: 20px;
+	width: 40px;
+	height: 40px;
+	line-height: 2;
+}
+.pf-migration-step-description {
+	background: #FFF;
+	display: table-cell;
+	padding: 30px;
+	width: 557px;
+}
+.pf-migration-step-description h2 {
+	padding-top: 0;
+	margin-top: 0;
+}
+.pf-migration-step-description p {
+	font-size: 120%;
+}
+.pf-migration-step-message {
+	line-height: 44px;
+	margin-left: 20px;
+	display: none;
+	position: relative;
+}
+.pf-migration-step-message img {
+	position: absolute;
+	top: 0;
+}
+.pf-migration-step-message.success {
+	color: green;
+}
+.pf-migration-step-message.error {
+	color: red;
+}

@@ -579,6 +579,9 @@ if ( ! class_exists( 'ThemeIsle_SDK_Licenser' ) ) :
 					set_transient( $this->product_key, $update_data, strtotime( '+12 hours' ) );
 				}
 			}
+			if ( ! isset( $update_data->new_version ) ) {
+				return false;
+			}
 			if ( version_compare( $this->product->get_version(), $update_data->new_version, '>=' ) ) {
 				return false;
 			}

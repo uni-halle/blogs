@@ -193,16 +193,6 @@
 	text-align: center;
 }
 
-.rate_plugin_invite {
-	text-align: center;
-}
-
-.rate_plugin_invite .dashicons {
-	width: auto;
-	color: #0073aa;
-	font-size: 12px;
-}
-
 .pirate_forms_preview {
 	display: inherit;
 	margin: 0 auto 10px;
@@ -231,13 +221,6 @@
 
 #pirate-forms-main {
 	width: 99%;
-}
-
-#pirate-forms-sidebar {
-	float: right;
-	width: 22%;
-	margin-top: 50px;
-	margin-left: 1%;
 }
 
 .pirate-custom-emails a:hover {

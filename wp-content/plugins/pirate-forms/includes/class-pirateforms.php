@@ -6,7 +6,6 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       http://example.com
  * @since      1.0.0
  *
  * @package    PirateForms
@@ -25,7 +24,6 @@
  * @since      1.0.0
  * @package    PirateForms
  * @subpackage PirateForms/includes
- * @author     Your Name <email@example.com>
  */
 class PirateForms {
 
@@ -69,7 +67,7 @@ class PirateForms {
 	public function __construct() {
 
 		$this->plugin_name = 'pirateforms';
-		$this->version = '2.4.3';
+		$this->version = '2.4.4';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -162,6 +160,7 @@ class PirateForms {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new PirateForms_Admin( $this->get_plugin_name(), $this->get_version() );
+		new PirateForms_Farewell();
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles_and_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_to_admin', 9 );
@@ -170,9 +169,6 @@ class PirateForms {
 		$this->loader->add_action( 'wp_ajax_pirate_forms_save', $plugin_admin, 'save_callback' );
 		$this->loader->add_action( 'wp_ajax_pirate_forms_test', $plugin_admin, 'test_email' );
 		$this->loader->add_action( 'wp_ajax_' . PIRATEFORMS_SLUG, $plugin_admin, 'ajax' );
-		$this->loader->add_action( 'pirate_forms_load_sidebar', $plugin_admin, 'load_sidebar' );
-		$this->loader->add_action( 'pirate_forms_load_sidebar_theme', $plugin_admin, 'load_sidebar_theme' );
-		$this->loader->add_action( 'pirate_forms_load_sidebar_subscribe', $plugin_admin, 'load_sidebar_subscribe' );
 		$this->loader->add_action( 'admin_notices', $plugin_admin, 'admin_notices' );
 
 		// this informs the pro whether the lite will implement the custom spam checkbox or not.
@@ -182,9 +178,7 @@ class PirateForms {
 		$this->loader->add_filter( 'manage_pf_contact_posts_custom_column', $plugin_admin, 'manage_contact_posts_custom_column', 10, 2 );
 		$this->loader->add_filter( 'wp_privacy_personal_data_exporters', $plugin_admin, 'register_private_data_exporter', 10 );
 		$this->loader->add_filter( 'wp_privacy_personal_data_erasers', $plugin_admin, 'register_private_data_eraser', 10 );
-
 	}
-
 
 	/**
 	 * Register all of the hooks related to the public-facing functionality

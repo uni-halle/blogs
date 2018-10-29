@@ -1,9 +1,10 @@
 === Contact Form & SMTP Plugin for WordPress by PirateForms ===
-Contributors: themeisle, codeinwp, rodicaelena, hardeepasrani, pirateforms, rozroz
+Contributors: wpforms, jaredatch, smub, slaFFik
 Tags:  contact form, contact form plugin, forms, smtp, custom form, subscribe form, feedback form, wordpress contact form
 Requires at least: 3.0
-Tested up to: 4.9
+Tested up to: 4.9.8
 Stable tag: trunk
+Requires PHP: 5.2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,19 +12,23 @@ A simple and effective WordPress contact form & SMTP plugin. Compatible with bes
 
 == Description ==
 
-Stay in touch with your visitors very easily. <a href="https://themeisle.com/plugins/pirate-forms/" rel="nofollow">Pirate Contact Forms</a> offers you a great and friendly contact form for your website.
+**Pirate Forms is no longer under active development. We recommend using <a href="https://wordpress.org/plugins/wpforms-lite/" rel="friend">WPForms</a> because it is the most beginner-friendly WordPress contact form plugin in the market.**
+
+In Sep 2018, <a href="https://wpforms.com/wpforms-has-acquired-pirate-forms/" rel="friend">Pirate Forms was acquired by WPForms</a>. We're retiring Pirate Forms in favor of the modern form builder by WPForms, so users can have access to best user experience and more powerful WordPress form features.
+
+Stay in touch with your visitors very easily. Pirate Contact Forms offers you a great and friendly contact form for your website.
 This is an easy-to-use WordPress contact form with captcha plugin. To create a contact form you just need to use the [pirate_forms] shortcode or use the WordPress contact form widget.
 
-> **Time-saving features available in the FULL version:**
+> **Time-saving features available in the FULL WPForms version:**
 >
-> * Create multiple forms
-> * Mailchimp, GetResponse, Aweber, Sendinblue Integration
-> * Custom fields
-> * Developer friendly
-> * 12 months Support & Updates
-> * 30 days Money Back Guaranteed
+> * Unlimited Forms
+> * Email Marketing Integrations (MailChimp, AWeber, Constant Contact, and more)
+> * Payment Integrations (PayPal and Stripe)
+> * Surveys & Polls Addon
+> * Conditional Logic
+> * User Registration, Geo-location, File Uploads, Multi-Page Forms, and a whole lot more.
 >
-> **[Learn more about Pirate Forms Extended version]( https://themeisle.com/plugins/pirate-forms-extended/ )**
+> **<a href="https://wpforms.com/?utm_source=wprepo&utm_medium=link&utm_campaign=pirateformslite" rel="friend" title="WPForms">Learn more about WPForms Pro</a>**
 
 **Why use our responsive WordPress Contact Form:**
 
@@ -41,8 +46,9 @@ Avoid spam messages and make sure the e-mails you receive are entirely addressed
 
 - Comes with SMTP
 
-With the SMTP option, you can be sure you won’t miss any e-mail from your visitors. The messages will be safely delivered from the source to your personal e-mail address.
-If you were using Mandrill's SMTP for transactional emails and contact forms, you should take a look at these <a href="http://www.codeinwp.com/blog/mandrill-alternatives/" rel="nofollow" target="_blank">Mandrill Alternatives</a>.
+Pirate Form comes with basic SMTP options, so you won't miss any email from your visitors. The messages will be safely delivered from the source to your personal e-mail address.
+
+However for a more reliable SMTP solution, we recommend using <a href="https://wordpress.org/plugins/wp-mail-smtp/">WP Mail SMTP by WPForms</a> which is the most popular WordPress SMTP solution being used by over 1 million websites.
 
 - Stores contacts in special databases
 
@@ -58,219 +64,46 @@ Pirate Forms allows you to take advantage of this great feature using the [pirat
 
 - What PirateForms isn't for now
 
+This is not a form maker or drag & drop builder plugin nor "the best contact form plugin". You cannot add new fields or create multiple forms (subscription forms, payment, order, feedback or quote) with Pirate Forms.
 
-This is not a form maker or drag & drop builder plugin nor "the best contact form plugin", you cannot add new fields or create multiple forms (subscription forms, payment, order, feedback or quote), there are some great alternatives out there for those like : Caldera Forms or Ninja Forms.
+This is why we recommend using <a href="https://wpforms.com/?utm_source=wprepo&utm_medium=link&utm_campaign=pirateformslite" rel="friend" title="WPForms">WPForms</a> which is the most beginner friendly drag & drop WordPress form builder in the market.
 
-- Privacy Notices
+**Pirate Forms is no longer under active development**
 
-If you activate the "Store submissions in the database" feature in the Pirate Forms, the contact form submitter’s personal data, including their IP address, will be stored in the database.
+Pirate Forms is no longer under active development. We recommend using <a href="https://wordpress.org/plugins/wpforms-lite/" rel="friend">WPForms</a> because it is the most beginner-friendly WordPress contact form plugin in the market.
 
-Thus, confirming the provider’s privacy policy is recommended.
-
- = See how Pirate Forms can integrate with your website  =
-
-* [Default form](https://demo.themeisle.com/pirate-forms/default-form-shortcode/)
-* [Use multiple forms on same page](https://demo.themeisle.com/pirate-forms/multiple-forms-page/)
-* [Minimalistic form](https://demo.themeisle.com/pirate-forms/minimalistic-form/)
-* [Form with attachment](https://demo.themeisle.com/pirate-forms/form-with-attachment/)
-* [Subscription form](https://demo.themeisle.com/pirate-forms/subscription-form/)
-* [Complex support form](https://demo.themeisle.com/pirate-forms/support-form/)
-* [Telephone field form](https://demo.themeisle.com/pirate-forms/phone-number-form/)
+In Sep 2018, <a href="https://wpforms.com/wpforms-has-acquired-pirate-forms/" rel="friend">Pirate Forms was acquired by WPForms</a>. We're retiring Pirate Forms in favor of the moden form builder by WPForms, so users can have access to best user experience and more powerful WordPress form features.
 
 
+= What's Next =
 
+You may also want to consider checking out our other projects:
 
-We've also built some fantastic <a href="http://themeisle.com/wordpress-themes/free/" rel="nofollow" target="_blank">free themes</a> that work well with Pirate Contact Form, check them out.
+* <a href="https://wpforms.com/" rel="friend" title="WPForms">WPForms</a> - Best WordPress Contact Form Plugin
+* <a href="https://optinmonster.com/" rel="friend" title="OptinMonster">OptinMonster</a> - Get More Email Subscribers
+* <a href="https://www.monsterinsights.com/" rel="friend" title="MonsterInsights">MonsterInsights</a> - Best Google Analytics Plugin for WordPress
 
-**Features:**
+Visit <a href="http://www.wpbeginner.com/" rel="friend" title="WPBeginner">WPBeginner</a> to learn from our <a href="http://www.wpbeginner.com/category/wp-tutorials/" rel="friend" title="WordPress Tutorials">WordPress Tutorials</a> and find out about other <a href="http://www.wpbeginner.com/category/plugins/" rel="friend" title="Best WordPress Plugins">best WordPress plugins</a>, <a href="http://www.wpbeginner.com/wordpress-hosting/" rel="friend">best WordPress hosting solutions</a>, and see our step by step guide on <a href="https://www.wpbeginner.com/start-a-wordpress-blog/" rel="friend">how to start a blog</a>.
 
-- Choosing the fields(required or not)
-- Choosing the labels
-- Choosing error messages
-- reCAPTCHA
-- Store the contacts in the database
-
-If are you looking for other alternatives check-out our article on <a href="http://www.codeinwp.com/blog/best-contact-form-plugins-wordpress/" rel="nofollow" target="_blank">best contact form plugins</a>.
-
-
-
-This plugin started as a fork of https://wordpress.org/plugins/proper-contact-form/.
 
 == Frequently Asked Questions ==
 
 
+= How I can get support for this contact form plugin? =
 
+We have retired Pirate Forms. We recommend switching to the <a href="https://wordpress.org/plugins/wpforms-lite/" rel="friend">free WPForms plugin</a> for a more user friendly and powerful WordPress form plugin.
 
+= How long will Pirate Forms be maintained after the acquisition by WPForms? =
 
+In Sep 2018, <a href="https://wpforms.com/wpforms-has-acquired-pirate-forms/" rel="friend">Pirate Forms was acquired by WPForms</a>. We're retiring Pirate Forms in favor of the modern form builder by WPForms, so users can have access to best user experience and more powerful WordPress form features.
 
+This means that there will be no new feature updates. We will continue to maintain the Pirate Forms plugin for any major security issues for the next 6 months.
 
-= How I can get support for this contact form plugin ? =
+= Can I easily migrate my forms from Pirate Forms to WPForms? =
 
-You can learn more about PirateForms and ask for help by <a href="https://themeisle.com/contact/"  >visiting ThemeIsle website</a>.
+Yes, we created a 2-step migration wizard to make it easy for all Pirate Form users to switch to WPForms.
 
-= What can i do with this plugin =
-
-You can follow the full documentation [here](http://docs.themeisle.com/article/436-pirate-forms-documentation)
-
-= How to Change Pirate Forms Submit Button Color =
-
-[http://docs.themeisle.com/article/423-how-to-change-pirate-forms-submit-button-color](http://docs.themeisle.com/article/423-how-to-change-pirate-forms-submit-button-color)
-
-= How to Center the Send Message button for Pirate Forms =
-[http://docs.themeisle.com/article/427-how-to-center-the-send-message-button-for-pirate-forms](http://docs.themeisle.com/article/427-how-to-center-the-send-message-button-for-pirate-forms)
-
-= How to change font in Pirate Forms =
-[http://docs.themeisle.com/article/431-how-to-change-font-in-pirate-forms](http://docs.themeisle.com/article/431-how-to-change-font-in-pirate-forms)
-
-
-= How you can overwrite the default form template in Pirate Forms =
-[http://docs.themeisle.com/article/664-how-you-can-overwrite-the-default-form-template-in-pirate-forms](http://docs.themeisle.com/article/664-how-you-can-overwrite-the-default-form-template-in-pirate-forms)
-
-
-= What actions and filters are available in Pirate Forms =
-[http://docs.themeisle.com/article/663-what-actions-and-filters-are-available-in-pirate-forms](http://docs.themeisle.com/article/663-what-actions-and-filters-are-available-in-pirate-forms)
-
-
-= Emails are not being sent, what can i do ? = 
- [http://docs.themeisle.com/article/690-emails-are-not-being-sent-what-can-i-do](http://docs.themeisle.com/article/690-emails-are-not-being-sent-what-can-i-do) 
-
- = Why do I not receive any emails? - Pirate Forms = 
- [http://docs.themeisle.com/article/729-why-do-i-not-receive-any-emails-pirate-forms](http://docs.themeisle.com/article/729-why-do-i-not-receive-any-emails-pirate-forms) 
-
- = How to add reCaptcha  to a form in Pirate Forms = 
- [http://docs.themeisle.com/article/731-how-to-add-recaptcha-to-a-form-in-pirate-forms](http://docs.themeisle.com/article/731-how-to-add-recaptcha-to-a-form-in-pirate-forms) 
-
- = How to add Dropdown menu in Subject Field in Pirate Forms = 
- [http://docs.themeisle.com/article/725-how-to-add-dropdown-menu-in-subject-field-in-pirate-forms](http://docs.themeisle.com/article/725-how-to-add-dropdown-menu-in-subject-field-in-pirate-forms) 
-
- = How to save contacts in Mailchimp list in Pirate Forms = 
- [http://docs.themeisle.com/article/722-pirate-forms-how-to-save-contacts-in-mailchimp-list](http://docs.themeisle.com/article/722-pirate-forms-how-to-save-contacts-in-mailchimp-list) 
-
- = How to create a Form Widget in Pirate Forms = 
- [http://docs.themeisle.com/article/723-pirate-forms-how-to-create-a-form-widget](http://docs.themeisle.com/article/723-pirate-forms-how-to-create-a-form-widget) 
-
- = How to create a subscription form in Pirate Forms = 
- [http://docs.themeisle.com/article/721-pirate-forms-how-to-create-a-subscription-form](http://docs.themeisle.com/article/721-pirate-forms-how-to-create-a-subscription-form) 
-
- = How to create multiple forms in Pirate Forms = 
- [http://docs.themeisle.com/article/730-how-to-create-multiple-forms-in-pirate-forms](http://docs.themeisle.com/article/730-how-to-create-multiple-forms-in-pirate-forms) 
-
- = How to add multiple upload fields in Pirate Forms = 
- [http://docs.themeisle.com/article/734-how-to-add-multiple-upload-fields-in-pirate-forms](http://docs.themeisle.com/article/734-how-to-add-multiple-upload-fields-in-pirate-forms) 
-
- = How to add a spam trap in a form in Pirate Forms = 
- [http://docs.themeisle.com/article/732-how-to-add-a-spam-trap-in-a-form-in-pirate-forms](http://docs.themeisle.com/article/732-how-to-add-a-spam-trap-in-a-form-in-pirate-forms) 
-
- = How to change default confirmation email content in Pirate Forms = 
- [http://docs.themeisle.com/article/724-how-to-change-default-email-content-in-pirate-forms](http://docs.themeisle.com/article/724-how-to-change-default-email-content-in-pirate-forms) 
-
- = How to add checkbox field in Pirate Forms = 
- [http://docs.themeisle.com/article/733-how-to-add-checkbox-field-in-pirate-forms](http://docs.themeisle.com/article/733-how-to-add-checkbox-field-in-pirate-forms) 
-
- = How can I change HTML of default form in Pirate Forms = 
- [http://docs.themeisle.com/article/745-how-can-i-change-html-of-default-form-in-pirate-forms](http://docs.themeisle.com/article/745-how-can-i-change-html-of-default-form-in-pirate-forms) 
-
- = How to add attributes to form in Pirate Forms = 
- [http://docs.themeisle.com/article/752-how-to-add-attributes-to-form-in-pirate-forms](http://docs.themeisle.com/article/752-how-to-add-attributes-to-form-in-pirate-forms) 
-
- = How to change default email content in Pirate forms = 
- [http://docs.themeisle.com/article/779-how-to-change-default-email-content-in-pirate-forms](http://docs.themeisle.com/article/779-how-to-change-default-email-content-in-pirate-forms) 
-
- = How to change default email content per form in Pirate forms = 
- [http://docs.themeisle.com/article/780-how-to-change-default-email-content-per-form-in-pirate-forms](http://docs.themeisle.com/article/780-how-to-change-default-email-content-per-form-in-pirate-forms) 
-
- = How to install and use extended version of Pirate Forms = 
- [http://docs.themeisle.com/article/787-how-to-install-and-use-extended-version-of-pirate-forms](http://docs.themeisle.com/article/787-how-to-install-and-use-extended-version-of-pirate-forms) 
-
- = Pirate Forms Documentation = 
- [https://docs.themeisle.com/article/436-pirate-forms-documentation](https://docs.themeisle.com/article/436-pirate-forms-documentation) 
-
- = How to Change Pirate Forms Submit Button Color = 
- [https://docs.themeisle.com/article/423-how-to-change-pirate-forms-submit-button-color](https://docs.themeisle.com/article/423-how-to-change-pirate-forms-submit-button-color) 
-
- = How to Center the Send Message button for Pirate Forms = 
- [https://docs.themeisle.com/article/427-how-to-center-the-send-message-button-for-pirate-forms](https://docs.themeisle.com/article/427-how-to-center-the-send-message-button-for-pirate-forms) 
-
- = How you can overwrite the default form template in Pirate Forms = 
- [https://docs.themeisle.com/article/664-how-you-can-overwrite-the-default-form-template-in-pirate-forms](https://docs.themeisle.com/article/664-how-you-can-overwrite-the-default-form-template-in-pirate-forms) 
-
- = How to change font in Pirate Forms = 
- [https://docs.themeisle.com/article/431-how-to-change-font-in-pirate-forms](https://docs.themeisle.com/article/431-how-to-change-font-in-pirate-forms) 
-
- = Why do I not receive any emails? - Pirate Forms = 
- [https://docs.themeisle.com/article/729-why-do-i-not-receive-any-emails---pirate-forms](https://docs.themeisle.com/article/729-why-do-i-not-receive-any-emails---pirate-forms) 
-
- = Emails are not being sent, what can i do ? = 
- [https://docs.themeisle.com/article/690-emails-are-not-being-sent-what-can-i-do](https://docs.themeisle.com/article/690-emails-are-not-being-sent-what-can-i-do) 
-
- = How to add reCaptcha  to a form in Pirate Forms = 
- [https://docs.themeisle.com/article/731-how-to-add-recaptcha-to-a-form-in-pirate-forms](https://docs.themeisle.com/article/731-how-to-add-recaptcha-to-a-form-in-pirate-forms) 
-
- = What actions and filters are available in Pirate Forms = 
- [https://docs.themeisle.com/article/663-what-actions-and-filters-are-available-in-pirate-forms](https://docs.themeisle.com/article/663-what-actions-and-filters-are-available-in-pirate-forms) 
-
- = How can I change HTML of default form in Pirate Forms = 
- [https://docs.themeisle.com/article/745-how-can-i-change-html-of-default-form-in-pirate-forms](https://docs.themeisle.com/article/745-how-can-i-change-html-of-default-form-in-pirate-forms) 
-
- = How to add Dropdown menu in Subject Field in Pirate Forms = 
- [https://docs.themeisle.com/article/725-how-to-add-dropdown-menu-in-subject-field-in-pirate-forms](https://docs.themeisle.com/article/725-how-to-add-dropdown-menu-in-subject-field-in-pirate-forms) 
-
- = How to save contacts in Mailchimp list in Pirate Forms = 
- [https://docs.themeisle.com/article/722-how-to-save-contacts-in-mailchimp-list-in-pirate-forms](https://docs.themeisle.com/article/722-how-to-save-contacts-in-mailchimp-list-in-pirate-forms) 
-
- = How to add checkbox field in Pirate Forms = 
- [https://docs.themeisle.com/article/733-how-to-add-checkbox-field-in-pirate-forms](https://docs.themeisle.com/article/733-how-to-add-checkbox-field-in-pirate-forms) 
-
- = How to add a spam trap in a form in Pirate Forms = 
- [https://docs.themeisle.com/article/732-how-to-add-a-spam-trap-in-a-form-in-pirate-forms](https://docs.themeisle.com/article/732-how-to-add-a-spam-trap-in-a-form-in-pirate-forms) 
-
- = How to create multiple forms in Pirate Forms = 
- [https://docs.themeisle.com/article/730-how-to-create-multiple-forms-in-pirate-forms](https://docs.themeisle.com/article/730-how-to-create-multiple-forms-in-pirate-forms) 
-
- = How to create a Form Widget in Pirate Forms = 
- [https://docs.themeisle.com/article/723-how-to-create-a-form-widget-in-pirate-forms](https://docs.themeisle.com/article/723-how-to-create-a-form-widget-in-pirate-forms) 
-
- = How to change default confirmation email content in Pirate Forms = 
- [https://docs.themeisle.com/article/724-how-to-change-default-confirmation-email-content-in-pirate-forms](https://docs.themeisle.com/article/724-how-to-change-default-confirmation-email-content-in-pirate-forms) 
-
- = How to add attributes to form in Pirate Forms = 
- [https://docs.themeisle.com/article/752-how-to-add-attributes-to-form-in-pirate-forms](https://docs.themeisle.com/article/752-how-to-add-attributes-to-form-in-pirate-forms) 
-
- = How to change default email content in Pirate forms = 
- [https://docs.themeisle.com/article/779-how-to-change-default-email-content-in-pirate-forms](https://docs.themeisle.com/article/779-how-to-change-default-email-content-in-pirate-forms) 
-
- = How to add multiple upload fields in Pirate Forms = 
- [https://docs.themeisle.com/article/734-how-to-add-multiple-upload-fields-in-pirate-forms](https://docs.themeisle.com/article/734-how-to-add-multiple-upload-fields-in-pirate-forms) 
-
- = How to create a subscription form in Pirate Forms = 
- [https://docs.themeisle.com/article/721-how-to-create-a-subscription-form-in-pirate-forms](https://docs.themeisle.com/article/721-how-to-create-a-subscription-form-in-pirate-forms) 
-
- = How to change default email content per form in Pirate forms = 
- [https://docs.themeisle.com/article/780-how-to-change-default-email-content-per-form-in-pirate-forms](https://docs.themeisle.com/article/780-how-to-change-default-email-content-per-form-in-pirate-forms) 
-
- = How to install and use extended version of Pirate Forms = 
- [https://docs.themeisle.com/article/787-how-to-install-and-use-extended-version-of-pirate-forms](https://docs.themeisle.com/article/787-how-to-install-and-use-extended-version-of-pirate-forms) 
-
- = How to set a success page on successful form submission = 
- [https://docs.themeisle.com/article/836-how-to-set-a-success-page-on-successful-form-submission](https://docs.themeisle.com/article/836-how-to-set-a-success-page-on-successful-form-submission) 
-
- = Pirate Forms: How to change the default subject of email admin receives = 
- [https://docs.themeisle.com/article/838-pirate-forms-how-to-change-the-default-subject-of-email-admin-receives](https://docs.themeisle.com/article/838-pirate-forms-how-to-change-the-default-subject-of-email-admin-receives) 
-
- = How to send a copy of the sent email to the sender. = 
- [https://docs.themeisle.com/article/837-how-to-send-a-copy-of-the-sent-email-to-the-sender](https://docs.themeisle.com/article/837-how-to-send-a-copy-of-the-sent-email-to-the-sender) 
-
- = How to add a multiple choice field in a form = 
- [https://docs.themeisle.com/article/866-how-to-add-a-multiple-choice-field-in-a-form](https://docs.themeisle.com/article/866-how-to-add-a-multiple-choice-field-in-a-form) 
-
- = How to add a select field in a form = 
- [https://docs.themeisle.com/article/867-how-to-add-a-select-field-in-a-form](https://docs.themeisle.com/article/867-how-to-add-a-select-field-in-a-form) 
-
- = GDPR and Pirate Forms = 
- [https://docs.themeisle.com/article/886-gdpr-and-pirate-forms](https://docs.themeisle.com/article/886-gdpr-and-pirate-forms) 
-
- = How to enable form submission without reloading the page using AJAX = 
- [https://docs.themeisle.com/article/909-how-to-enable-form-submission-without-reloading-the-page-using-ajax](https://docs.themeisle.com/article/909-how-to-enable-form-submission-without-reloading-the-page-using-ajax) 
+You can see the step by step instructions in <a href="https://wpforms.com/docs/how-to-move-from-pirate-forms-to-wpforms/" rel="friend">this guide</a>.
 
  == Installation ==
 
@@ -284,6 +117,23 @@ Activating the Pirate Contact Form plugin is just like any other plugin. If you'
 6. Make the changes desired, then click the **Save changes** button at the bottom
 7. To add this form to any page or post, just copy/paste or type "[pirate_forms]" into the page or post content and save. The form should appear on that page
 
+== Notes ==
+
+**Pirate Forms was acquired by WPForms and is no longer being actively maintained.**
+
+WPForms is absolutely, positively the most <a href="https://wpforms.com/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend" title="Best WordPress contact form plugin">beginner friendly WordPress contact form plugin</a> on the market. It is both easy and powerful.
+
+We took the pain out of creating online forms and made it easy. Check out all <a href="https://wpforms.com/features/?utm_source=wprepo&utm_medium=link&utm_campaign=liteversion" rel="friend">WPForms features</a>.
+
+Also, I'm the founder of <a href="http://www.wpbeginner.com/" rel="friend">WPBeginner</a>, the largest WordPress resource site for beginners. It was a huge priority for me to make a WordPress contact form plugin that beginners can use without any training.
+
+I feel that we have done that here. I hope you enjoy using WPForms.
+
+Thank you
+
+Syed Balkhi
+
+
 
 == Screenshots ==
 
@@ -293,7 +143,20 @@ Activating the Pirate Contact Form plugin is just like any other plugin. If you'
 4. Screenshot 4. Enabling SMTP
 
 == Changelog ==
-= 2.4.3 - 2018-06-25  = 
+= 2.5.0 - 2018-09-18  =
+* <a href="https://wpforms.com/wpforms-has-acquired-pirate-forms/" rel="friend">Pirate Forms was acquired by WPForms</a>.
+* We're retiring Pirate Forms in favor of the modern form builder by WPForms, so users can have access to best user experience and more powerful WordPress form features.
+* Added migration wizard to move forms WPForms.
+
+= 2.4.4 - 2018-07-13  =
+
+* Fixed compatibility with All in One SEO Pack plugin
+* Fixed problem with form not working with the ajax option
+* Option to save the attachments files
+* Improved recaptcha button layout on mobile devices
+
+
+= 2.4.3 - 2018-06-25  =
 
 * New Gutenberg block for the default Pirate Forms form
 * Made the checkbox field to store in the database for GDPR compliance
@@ -301,7 +164,7 @@ Activating the Pirate Contact Form plugin is just like any other plugin. If you'
 * Replaced subscription form with Sendinblue form
 
 
-= 2.4.2 - 2018-06-07  = 
+= 2.4.2 - 2018-06-07  =
 
 * NEW support for submitting Ajax forms with [pirate_forms ajax="yes"]
 * Added compatibility with WordPress 4.9.6 Export and Erase Personal Data options
@@ -309,12 +172,12 @@ Activating the Pirate Contact Form plugin is just like any other plugin. If you'
 * Fixed compatibility issues with the wpDataTables Lite plugin
 
 
-= 2.4.1 - 2018-05-07  = 
+= 2.4.1 - 2018-05-07  =
 
 * GDPR compliance
 
 
-= 2.4.0 - 2018-04-02  = 
+= 2.4.0 - 2018-04-02  =
 
 * Improves compatibility with various themes.
 * Adds support for two new custom fields.
@@ -322,7 +185,7 @@ Activating the Pirate Contact Form plugin is just like any other plugin. If you'
 * Adds visual/text switch to form wyiwyg editor.
 
 
-= 2.3.5 - 2018-03-05  = 
+= 2.3.5 - 2018-03-05  =
 
 * Fix characters encoding issue in the subject field.
 * Fix issue with spam label with two forms on the page.
@@ -331,74 +194,74 @@ Activating the Pirate Contact Form plugin is just like any other plugin. If you'
 * Adds options to send a copy of the email to the sender.
 
 
-= 2.3.4 - 2018-02-15  = 
+= 2.3.4 - 2018-02-15  =
 
 * Added missing Loader.gif file
 * Fixed undefined notice
 * Fix submit button leaving form when ReCaptcha is enabled
 
 
-= 2.3.3 - 2018-01-06  = 
+= 2.3.3 - 2018-01-06  =
 
 * Fix double reCAPTCHA box bug.
 * Fix custom spam trap alignement error.
 
 
-= 2.3.2 - 2017-12-28  = 
+= 2.3.2 - 2017-12-28  =
 
 * Fix for tooltip admin behavior.
 
 
-= 2.3.1 - 2017-12-28  = 
+= 2.3.1 - 2017-12-28  =
 
 * Improves layout and compatibility with various themes.
 * Improves form default email format.
 * Fix issues with various special characters in the magic tag fields.
 
 
-= 2.3.0 - 2017-11-27  = 
+= 2.3.0 - 2017-11-27  =
 
-* Adds email content wysiwyg editor. 
+* Adds email content wysiwyg editor.
 * Improves layout for custom spam trap.
 
 
-= 2.2.5 - 2017-11-16  = 
+= 2.2.5 - 2017-11-16  =
 
 * Adds compatibility with WordPress 4.9
 * Minor improvement for toggle the password in the admin form fields.
 
 
-= 2.2.4 - 2017-11-13  = 
+= 2.2.4 - 2017-11-13  =
 
-* Improved assets loading, loading them only they are necessary. 
+* Improved assets loading, loading them only they are necessary.
 * Remove hide/show effect for reCaptcha.
 * Add toggle for password field.
-* Add new docs, keeping them in sync with HelpScout . 
+* Add new docs, keeping them in sync with HelpScout .
 * Adds more integration with the pro version.
 
 
-= 2.2.3 - 2017-10-24  = 
+= 2.2.3 - 2017-10-24  =
 
 * Improves compatibility with Hestia theme.
 * Adds option to set form label classes.
 
 
-= 2.2.2 - 2017-10-20  = 
+= 2.2.2 - 2017-10-20  =
 
 * Hide email entries in frontend queries.
 * Adds filter for form attributes.
-* Fix issue with attachment fields not working when spam trap is active. 
+* Fix issue with attachment fields not working when spam trap is active.
 * Adds support for more integrations in the pro version.
 
 
-= 2.2.1 - 2017-10-10  = 
+= 2.2.1 - 2017-10-10  =
 
 * Fix issue for multiple forms on the same page.
 * Fix issue with reCAPTCHA keys.
 * Capture failure reasons and corrected email status.
 
 
-= 2.2.0 - 2017-09-27  = 
+= 2.2.0 - 2017-09-27  =
 
 * Adds integration with Akismet for spam block.
 * Adds another spam tramp mechanism, independent from Google reCAPTCHA.
@@ -406,7 +269,7 @@ Activating the Pirate Contact Form plugin is just like any other plugin. If you'
 * Improvements for compatibility with the pro version.
 
 
-= 2.1.0 - 2017-08-26  = 
+= 2.1.0 - 2017-08-26  =
 
 * Improved compatibility with the pro version.
 * Fixed broken form layout on certain themes.
@@ -414,42 +277,42 @@ Activating the Pirate Contact Form plugin is just like any other plugin. If you'
 * Added test email functionality.
 
 
-= 2.0.5 - 2017-08-16  = 
+= 2.0.5 - 2017-08-16  =
 
-* Fixed compatibility with the pro version for multiple fields. 
+* Fixed compatibility with the pro version for multiple fields.
 * Fixed default consistency between forms.
 
 
-= 2.0.4 - 2017-08-14  = 
+= 2.0.4 - 2017-08-14  =
 
 * All fields are now optional.
 * Fixed redirect after form submission.
 * Added more flexibility for changing the layout via dynamic CSS classes.
 
 
-= 2.0.3 - 2017-08-10  = 
+= 2.0.3 - 2017-08-10  =
 
 * Fixed fatal errors on some environments because of anonymous functions usage.
 * Fixed thank you message when nonces are disabled.
 * Added compatibility with pro version.
 
 
-= 2.0.2 - 2017-08-07  = 
+= 2.0.2 - 2017-08-07  =
 
 * Fixed none option for thank you page.
 * Fixed various issues with form layout.
 * Added support for future pro version.
 
 
-= 2.0.1 - 2017-08-01  = 
+= 2.0.1 - 2017-08-01  =
 
 * Fixed backwards compatibility with Zerif themes
 
 
-= 2.0.0 - 2017-08-01  = 
+= 2.0.0 - 2017-08-01  =
 
 * Major code refactor ( Please TEST BEFORE updating).
-* Added multiple filters and hooks to be easily extended by developers. 
+* Added multiple filters and hooks to be easily extended by developers.
 * Fixed some issues with attachment fields.
 * Added support for TLS.
 * Added support to change browser required messages.

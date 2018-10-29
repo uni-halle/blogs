@@ -5,9 +5,7 @@
  *
  * @see WP_Widget::widget()
  */
-// @codingStandardsIgnoreStart
 class pirate_forms_contact_widget extends WP_Widget {
-	// @codingStandardsIgnoreEnd
 
 	/**
 	 *  Widget constructor
@@ -33,7 +31,7 @@ class pirate_forms_contact_widget extends WP_Widget {
 	/**
 	 * Widget logic and display
 	 */
-	function widget( $args, $instance ) {
+	public function widget( $args, $instance ) {
 		// Pulling out all settings
 		$args     = wp_parse_args(
 			$args, array(
@@ -79,9 +77,12 @@ class pirate_forms_contact_widget extends WP_Widget {
 	/**
 	 * Used to update widget settings
 	 *
+	 * @param $new_instance
+	 * @param $old_instance
+	 *
 	 * @return array
 	 */
-	function update( $new_instance, $old_instance ) {
+	public function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
 		// Storing widget title as inputted option or category name
 		$instance['pirate_forms_widget_title']   = apply_filters( 'widget_title', sanitize_text_field( $new_instance['pirate_forms_widget_title'] ) );
@@ -96,12 +97,14 @@ class pirate_forms_contact_widget extends WP_Widget {
 	/**
 	 * Used to generate the widget admin view
 	 *
+	 * @param $instance
+	 *
 	 * @return string|void
 	 */
-	function form( $instance ) {
+	public function form( $instance ) {
 		$pirate_forms_widget_title   = ! empty( $instance['pirate_forms_widget_title'] ) ? $instance['pirate_forms_widget_title'] : __( 'Title', 'pirate-forms' );
 		$pirate_forms_widget_subtext = ! empty( $instance['pirate_forms_widget_subtext'] ) ? $instance['pirate_forms_widget_subtext'] : __( 'Text above form', 'pirate-forms' );
-		$pirate_forms_widget_ajax   = ! empty( $instance['pirate_forms_widget_ajax'] ) && intval( $instance['pirate_forms_widget_ajax'] ) === 1 ? 'checked' : '';
+		$pirate_forms_widget_ajax    = ! empty( $instance['pirate_forms_widget_ajax'] ) && (int) $instance['pirate_forms_widget_ajax'] === 1 ? 'checked' : '';
 		?>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'pirate_forms_widget_title' ); ?>"><?php _e( 'Title:', 'pirate-forms' ); ?></label>
@@ -119,6 +122,5 @@ class pirate_forms_contact_widget extends WP_Widget {
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'pirate_forms_widget_ajax' ); ?>" name="<?php echo $this->get_field_name( 'pirate_forms_widget_ajax' ); ?>" value="1" <?php echo $pirate_forms_widget_ajax; ?>>
 		</p>
 		<?php
-		echo apply_filters( 'pirate_forms_widget_form', sprintf( '<p>%s</p>', sprintf( __( 'Need more forms ? Check our <a href="%s" target="_blank">extended</a> version for more features', 'pirate-forms' ), PIRATEFORMS_USELL_LINK ) ), $instance, $this );
 	}
 }

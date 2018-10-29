@@ -6,17 +6,17 @@
         "source": {
             "type": "git",
             "url": "https://github.com/Codeinwp/themeisle-sdk.git",
-            "reference": "33d470402379047bc430c39ecab9a8a4a850d0d2"
+            "reference": "caa9bf2b2c48c12a0ac745b6e2880c94339a777d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/33d470402379047bc430c39ecab9a8a4a850d0d2",
-            "reference": "33d470402379047bc430c39ecab9a8a4a850d0d2",
+            "url": "https://api.github.com/repos/Codeinwp/themeisle-sdk/zipball/caa9bf2b2c48c12a0ac745b6e2880c94339a777d",
+            "reference": "caa9bf2b2c48c12a0ac745b6e2880c94339a777d",
             "shasum": ""
         },
-        "time": "2018-06-06 14:49:32",
+        "time": "2018-07-19 07:48:21",
         "type": "library",
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "files": [
                 "load.php"
@@ -79,26 +79,26 @@
         "source": {
             "type": "git",
             "url": "https://github.com/mailin-api/mailin-api-php.git",
-            "reference": "b437808566f46979309f01b796c31b7b6bacfb42"
+            "reference": "a0a521a88ea41cee821f5d30215a1c19efe540df"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/mailin-api/mailin-api-php/zipball/b437808566f46979309f01b796c31b7b6bacfb42",
-            "reference": "b437808566f46979309f01b796c31b7b6bacfb42",
+            "url": "https://api.github.com/repos/mailin-api/mailin-api-php/zipball/a0a521a88ea41cee821f5d30215a1c19efe540df",
+            "reference": "a0a521a88ea41cee821f5d30215a1c19efe540df",
             "shasum": ""
         },
         "require": {
             "ext-curl": "*",
             "php": ">=5.3"
         },
-        "time": "2017-04-19 13:00:21",
+        "time": "2018-07-26 11:51:20",
         "type": "library",
         "extra": {
             "branch-alias": {
                 "dev-master": "1.0.x-dev"
             }
         },
-        "installation-source": "dist",
+        "installation-source": "source",
         "autoload": {
             "psr-0": {
                 "Sendinblue": "src/"

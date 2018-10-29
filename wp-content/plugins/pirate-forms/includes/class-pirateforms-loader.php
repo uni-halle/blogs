@@ -1,9 +1,8 @@
 <?php
 
 /**
- * Register all actions and filters for the plugin
+ * Register all actions and filters for the plugin.
  *
- * @link       http://example.com
  * @since      1.0.0
  *
  * @package    PirateForms
@@ -19,7 +18,6 @@
  *
  * @package    PirateForms
  * @subpackage PirateForms/includes
- * @author     Your Name <email@example.com>
  */
 class PirateForms_Loader {
 

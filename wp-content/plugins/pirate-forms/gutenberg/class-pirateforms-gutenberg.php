@@ -18,7 +18,6 @@
  *
  * @package    PirateForms
  * @subpackage PirateForms/gutenberg
- * @author     Your Name <email@example.com>
  */
 class PirateForms_Gutenberg {
 

@@ -3,7 +3,6 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       http://example.com
  * @since      1.0.0
  *
  * @package    PirateForms
@@ -18,7 +17,6 @@
  *
  * @package    PirateForms
  * @subpackage PirateForms/admin
- * @author     Your Name <email@example.com>
  */
 class PirateForms_Admin {
 
@@ -52,7 +50,6 @@ class PirateForms_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
-
 	}
 
 	/**
@@ -63,11 +60,11 @@ class PirateForms_Admin {
 	public function enqueue_styles_and_scripts() {
 		$current_screen = get_current_screen();
 
-		if ( ! isset( $current_screen->id ) ) {
+		if ( empty( $current_screen->id ) ) {
 			return;
 		}
 
-		if ( in_array( $current_screen->id, array( 'edit-pf_contact', 'edit-pf_form', 'pf_form', 'toplevel_page_pirateforms-admin' ) ) ) {
+		if ( in_array( $current_screen->id, array( 'edit-pf_contact', 'edit-pf_form', 'pf_form', 'toplevel_page_pirateforms-admin' ), true ) ) {
 			wp_enqueue_style( 'pirateforms_admin_styles', PIRATEFORMS_URL . 'admin/css/wp-admin.css', array(), $this->version );
 			wp_enqueue_script( 'pirateforms_scripts_admin', PIRATEFORMS_URL . 'admin/js/scripts-admin.js', array( 'jquery', 'jquery-ui-tooltip' ), $this->version );
 			wp_localize_script(
@@ -82,45 +79,20 @@ class PirateForms_Admin {
 			);
 		}
 
-		if ( isset( $_GET['page'] ) && $_GET['page'] == 'pf_more_features' ) {
-			wp_enqueue_style( 'pirateforms_upsell_styles', PIRATEFORMS_URL . 'admin/css/upsell.css', array(), $this->version );
+		if ( $current_screen->id === 'dashboard' ) {
+			wp_enqueue_style( 'pirateforms_farewell_styles', PIRATEFORMS_URL . 'admin/css/farewell.css', array(), $this->version );
 		}
-	}
 
-	/**
-	 * Loads the sidebar
-	 *
-	 * @since    1.0.0
-	 */
-	public function load_sidebar() {
-		ob_start();
-		do_action( 'pirate_forms_load_sidebar_theme' );
-		do_action( 'pirate_forms_load_sidebar_subscribe' );
-		echo ob_get_clean();
-	}
-
-	/**
-	 * Loads the theme-specific sidebar box
-	 *
-	 * @since    1.0.0
-	 */
-	public function load_sidebar_theme() {
-		include_once PIRATEFORMS_DIR . 'admin/partials/pirateforms-settings-sidebar-theme.php';
-	}
-
-	/**
-	 * Loads the sidebar subscription box
-	 *
-	 * @since    1.0.0
-	 */
-	public function load_sidebar_subscribe() {
-		include_once PIRATEFORMS_DIR . 'admin/partials/pirateforms-settings-sidebar-subscribe.php';
+		if ( $current_screen->id === 'pirate-forms_page_pirateforms-admin-migration' ) {
+			wp_enqueue_style( 'pirateforms_farewell_migration', PIRATEFORMS_URL . 'admin/css/migration.css', array(), $this->version );
+			wp_enqueue_script( 'pirateforms_farewell_migration', PIRATEFORMS_URL . 'admin/js/migration.js',array( 'jquery' ), $this->version );
+		}
 	}
 
 	/**
 	 * Add the settings link in the plugin page
 	 *
-	 * @since    1.0.0
+	 * @since 1.0.0
 	 */
 	public function add_settings_link( $links ) {
 		$settings_link = '<a href="options-general.php?page=pirateforms-admin">' . __( 'Settings', 'pirate-forms' ) . '</a>';
@@ -134,42 +106,45 @@ class PirateForms_Admin {
 	}
 
 	/**
-	 *
-	 *  Add page to the dashbord menu
+	 * Add page to the dashbord menu.
 	 *
 	 * @since 1.0.0
 	 */
 	public function add_to_admin() {
 		add_menu_page(
-			PIRATEFORMS_NAME, PIRATEFORMS_NAME, 'manage_options', 'pirateforms-admin', array(
+			PIRATEFORMS_NAME,
+			PIRATEFORMS_NAME,
+			'manage_options',
+			'pirateforms-admin',
+			array(
 				$this,
 				'settings',
 			), 'dashicons-feedback'
 		);
+
 		add_submenu_page(
-			'pirateforms-admin', PIRATEFORMS_NAME, __( 'Settings', 'pirate-forms' ), 'manage_options', 'pirateforms-admin', array(
+			'pirateforms-admin',
+			PIRATEFORMS_NAME,
+			esc_html__( 'Settings', 'pirate-forms' ),
+			'manage_options',
+			'pirateforms-admin',
+			array(
 				$this,
 				'settings',
 			)
 		);
-		if ( ! defined( 'PIRATEFORMSPRO_URL' ) ) {
-			add_submenu_page(
-				'pirateforms-admin', __( 'More Features', 'pirate-forms' ), __( 'More Features', 'pirate-forms' ) . '<span class="dashicons 
-		dashicons-star-filled more-features-icon" style="width: 17px;height: 17px; margin-left: 4px; color: #ffca54;font-size: 17px;vertical-align: -3px;"></span>', 'manage_options', 'pf_more_features',
-				array(
-					$this,
-					'render_upsell',
-				)
-			);
-		}
-	}
 
-	/**
-	 * Render the upsell page.
-	 */
-	public function render_upsell() {
-
-		include_once PIRATEFORMS_DIR . 'admin/partials/upsell.php';
+		add_submenu_page(
+			'pirateforms-admin',
+			PIRATEFORMS_NAME,
+			'<span style="color:#f18500">' . esc_html__( 'Migration', 'pirate-forms' ) . '</span>',
+			'manage_options',
+			'pirateforms-admin-migration',
+			array(
+				$this,
+				'migration',
+			)
+		);
 	}
 
 	/**
@@ -177,17 +152,59 @@ class PirateForms_Admin {
 	 *
 	 * @since 1.0.0
 	 */
-	function settings() {
+	public function settings() {
 		global $current_user;
 		$pirate_forms_options = PirateForms_Util::get_option();
 		$plugin_options       = $this->get_plugin_options();
-		include_once PIRATEFORMS_DIR . 'admin/partials/pirateforms-settings-display.php';
+		include_once PIRATEFORMS_DIR . 'admin/partials/settings.php';
+	}
+
+	/**
+	 * Display a migration page content.
+	 *
+	 * @since 2.4.5
+	 */
+	public function migration() {
+
+		$lite = 'wpforms-lite/wpforms.php';
+		$pro  = 'wpforms/wpforms.php';
+
+		$class_import = 'disabled';
+
+		if ( ! function_exists( 'get_plugins' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
+		}
+
+		$all_plugins = get_plugins();
+
+		// If exists and active.
+		if (
+			is_plugin_active( $lite ) ||
+			is_plugin_active( $pro )
+		) {
+			$class = 'disabled';
+			$label = esc_html__( 'WPForms is Ready', 'pirate-forms' );
+			$class_import = '';
+		} elseif (
+			array_key_exists( $lite, $all_plugins ) ||
+			array_key_exists( $pro, $all_plugins )
+		) {
+			// Plugin exists but not active.
+			$class = 'js-pf-migration-activate';
+			$label = esc_html__( 'Activate WPForms', 'pirate-forms' );
+		} else {
+			// Plugin doesn't even exist.
+			$class = 'js-pf-migration-install';
+			$label = esc_html__( 'Install WPForms', 'pirate-forms' );
+		}
+
+		include_once PIRATEFORMS_DIR . 'admin/partials/migration.php';
 	}
 
 	/**
 	 *  Get any options that might be configured through the theme.
 	 */
-	function get_theme_options() {
+	public function get_theme_options() {
 		$recaptcha_show = '';
 		$button_label   = __( 'Send Message', 'pirate-forms' );
 		$email          = get_bloginfo( 'admin_email' );
@@ -224,7 +241,6 @@ class PirateForms_Admin {
 		);
 	}
 
-
 	/**
 	 *
 	 * OPTIONS
@@ -232,7 +248,7 @@ class PirateForms_Admin {
 	 * @since 1.0.0
 	 * name; id; desc; type; default; options
 	 */
-	function get_plugin_options() {
+	public function get_plugin_options() {
 		list(
 			$pirate_forms_contactus_recaptcha_show,
 			$pirate_forms_contactus_button_label,
@@ -390,6 +406,25 @@ class PirateForms_Admin {
 								),
 								'default' => '',
 								'value'   => PirateForms_Util::get_option( 'pirateformsopt_copy_email' ),
+								'wrap'    => array(
+									'type'  => 'div',
+									'class' => 'pirate-forms-grouped',
+								),
+								'options' => array( 'yes' => __( 'Yes', 'pirate-forms' ) ),
+							),
+							array(
+								'id'      => 'pirateformsopt_save_attachment',
+								'type'    => 'checkbox',
+								'label'   => array(
+									'value' => __( 'Save Attachment?', 'pirate-forms' ),
+									'html'  => '<span class="dashicons dashicons-editor-help"></span>',
+									'desc'  => array(
+										'value' => __( 'Enabling this option will save the attachment(s) otherwise attachments can only be found in the email that is received.', 'pirate-forms' ),
+										'class' => 'pirate_forms_option_description',
+									),
+								),
+								'default' => '',
+								'value'   => PirateForms_Util::get_option( 'pirateformsopt_save_attachment' ),
 								'wrap'    => array(
 									'type'  => 'div',
 									'class' => 'pirate-forms-grouped',
@@ -1016,11 +1051,13 @@ class PirateForms_Admin {
 	}
 
 	/**
-	 * Add the columns for contacts listing
+	 * Add the columns for contacts listing.
+	 *
+	 * @since    1.0.0
 	 *
 	 * @param array $columns array of columns.
 	 *
-	 * @since    1.0.0
+	 * @return array
 	 */
 	public function manage_contact_posts_columns( $columns ) {
 		$tmp     = $columns;
@@ -1035,7 +1072,7 @@ class PirateForms_Admin {
 				// ensure our columns are added before the date.
 				$columns['pf_mailstatus'] = __( 'Mail Status', 'pirate-forms' );
 			}
-			if ( in_array( $key, $allowed_keys ) ) {
+			if ( in_array( $key, $allowed_keys, true ) ) {
 				$columns[ $key ] = $val;
 			}
 		}
@@ -1046,8 +1083,8 @@ class PirateForms_Admin {
 	/**
 	 * Show the additional columns for contacts listing
 	 *
-	 * @param string  $column the column name.
-	 * @param numeric $id the post id.
+	 * @param string $column the column name.
+	 * @param int $id the post id.
 	 *
 	 * @since    1.0.0
 	 */
@@ -1190,16 +1227,19 @@ class PirateForms_Admin {
 			)
 		);
 
+		$pirate_forms_options = PirateForms_Util::get_option();
+
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
 				$query->the_post();
 
-				$data       = array(
-					array(
-						'name'  => __( 'Email content', 'pirate-forms' ),
-						'value' => nl2br( strip_tags( $query->post->post_content ) ),
-					),
+				$data       = array();
+				$data[]     = array(
+					'name'  => __( 'Email content', 'pirate-forms' ),
+					'value' => nl2br( strip_tags( $query->post->post_content ) ),
 				);
+
+				$data       = apply_filters( 'pirate_forms_private_data_exporter', $data, $query->post->ID, $email_address, $page, $pirate_forms_options );
 
 				$export_items[] = array(
 					'group_id' => 'pf_contact',
@@ -1248,10 +1288,15 @@ class PirateForms_Admin {
 
 		$retained   = array();
 		$removed    = 0;
+		$pirate_forms_options = PirateForms_Util::get_option();
 
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
 				$query->the_post();
+
+				list( $retained, $removed ) = apply_filters( 'pirate_forms_private_data_eraser', array( $retained, $removed ), $query->post, $email_address, $page, $pirate_forms_options );
+
+				// delete the post last so that all dependent operations are complete.
 				if ( false !== ( $post_id = wp_delete_post( $query->post, true ) ) ) {
 					$removed++;
 				} else {
@@ -1263,7 +1308,7 @@ class PirateForms_Admin {
 		return array(
 			'items_removed' => $removed,
 			'items_retained' => ! empty( $retained ) ? count( $retained ) : false,
-			'messages'  => ! empty( $retained ) ? array(sprintf( __( 'Unable to delete post(s) %s', 'pirate-forms' ), print_r( $retained, true ) )) : array(),
+			'messages'  => ! empty( $retained ) ? array(sprintf( __( 'Unable to delete %d entries', 'pirate-forms' ), count( $retained ) )) : array(),
 			'done'  => true,
 		);
 	}

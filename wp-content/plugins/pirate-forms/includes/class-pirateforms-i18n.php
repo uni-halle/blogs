@@ -6,7 +6,6 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       http://example.com
  * @since      1.0.0
  *
  * @package    PirateForms
@@ -22,10 +21,8 @@
  * @since      1.0.0
  * @package    PirateForms
  * @subpackage PirateForms/includes
- * @author     Your Name <email@example.com>
  */
 class PirateForms_I18n {
-
 
 	/**
 	 * Load the plugin text domain for translation.
@@ -39,9 +36,5 @@ class PirateForms_I18n {
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
-
 	}
-
-
-
 }
