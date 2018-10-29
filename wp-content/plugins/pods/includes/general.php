@@ -777,7 +777,8 @@ function pods_shortcode( $tags, $content = null ) {
 
 			if ( ! empty( $pod ) ) {
 				$tags['name'] = get_post_type();
-				$id           = $tags['id'] = get_the_ID();
+				$id           = get_the_ID();
+				$tags['id']   = get_the_ID();
 			}
 		}
 
@@ -998,6 +999,17 @@ function pods_shortcode( $tags, $content = null ) {
 	if ( $tags['shortcodes'] && defined( 'PODS_SHORTCODE_ALLOW_SUB_SHORTCODES' ) && PODS_SHORTCODE_ALLOW_SUB_SHORTCODES ) {
 		$return = do_shortcode( $return );
 	}
+
+	/**
+	 * Allow customization of shortcode output based on shortcode attributes.
+	 *
+	 * @since 2.7.9
+	 *
+	 * @param string $return Shortcode output to return.
+	 * @param array  $tags   Shortcode attributes.
+	 * @param Pods   $pod    Pods object.
+	 */
+	$return = apply_filters( 'pods_shortcode_output', $return, $tags, $pod );
 
 	return $return;
 }
