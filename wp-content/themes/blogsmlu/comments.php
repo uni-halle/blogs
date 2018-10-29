@@ -81,10 +81,9 @@
 				<label for="comment" class="visuallyhidden"><?php _e('Kommentar', 'blogsmlu'); ?></label>
 				<textarea name="comment" id="comment" placeholder="<?php _e('Kommentar', 'blogsmlu'); ?>" tabindex="4"></textarea>
 			</p>
+			<?php comment_id_fields(); ?>
 			<p><input name="submit" class="button submit" type="submit" id="submit" tabindex="5" value="<?php _e('Kommentar Senden', 'blogsmlu'); ?>"></p>
 		
-		
-		<?php comment_id_fields(); ?>
 		
 		<?php do_action('comment_form', $post->ID); ?>
 	
