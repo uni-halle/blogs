@@ -4,7 +4,7 @@ Author: Translate AI Multilingual Solutions
 Tags: translate wordpress, multilingual, translate, translation, language, bilingual, localization, translation proxy, i18n, l10n, localisation, multilanguage, google translate
 Requires at least: 2.8.1
 Tested up to: 4.9
-Stable tag: 2.8.41
+Stable tag: 2.8.42
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate link: https://gtranslate.io/?xyz=998#pricing
@@ -68,6 +68,7 @@ Please check our [FAQ](https://gtranslate.io/?xyz=998#faq) to get quick answers.
 * Translation Proxy (aka Translation Delivery Network)
 * Centralized Translation Cache - We revise and improve translations over time
 * Language Hosting (**example.fr**)
+* User Dashboard with Analytics
 * Live Chat Support
 
 [Download GTranslate](https://gtranslate.io/?xyz=998#pricing)
@@ -219,6 +220,9 @@ You need to go to the language you want to edit, for instance, French: http://do
 7. Settings page
 
 == Changelog ==
+= 2.8.42 =
+* New dashboard for paid customers https://my.gtranslate.io/
+* Minor changes
 
 = 2.8.41 =
 * Added support for WP REST API JSON translation for posts and categories

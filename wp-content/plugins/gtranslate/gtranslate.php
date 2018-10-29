@@ -3,7 +3,7 @@
 Plugin Name: GTranslate
 Plugin URI: https://gtranslate.io/?xyz=998
 Description: Makes your website <strong>multilingual</strong> and available to the world using Google Translate. For support visit <a href="https://wordpress.org/support/plugin/gtranslate">GTranslate Support</a>.
-Version: 2.8.41
+Version: 2.8.42
 Author: Translate AI Multilingual Solutions
 Author URI: https://gtranslate.io
 Text Domain: gtranslate
@@ -1240,6 +1240,7 @@ EOT;
                             <li style="margin:0;"><a style="text-decoration:none;" href="https://gtranslate.io/videos" target="_blank"><?php _e('Videos', 'gtranslate'); ?></a></li>
                             <li style="margin:0;"><a style="text-decoration:none;" href="https://gtranslate.io/?xyz=998#faq" target="_blank"><?php _e('FAQ', 'gtranslate'); ?></a></li>
                             <li style="margin:0;"><a style="text-decoration:none;" href="https://gtranslate.io/forum/" target="_blank"><?php _e('Support forum', 'gtranslate'); ?></a></li>
+                            <li style="margin:0;"><a style="text-decoration:none;" href="https://my.gtranslate.io/" target="_blank"><?php _e('User dashboard', 'gtranslate'); ?></a></li>
                             <li style="margin:0;"><a style="text-decoration:none;" href="https://gtranslate.io/?xyz=998#pricing" target="_blank"><?php _e('Compare plans', 'gtranslate'); ?></a></li>
                             <li style="margin:0;"><a style="text-decoration:none;" href="https://gtranslate.io/about-us" target="_blank"><?php _e('About GTranslate team', 'gtranslate'); ?></a></li>
                             <li style="margin:0;"><a style="text-decoration:none;" href="https://wordpress.org/support/plugin/gtranslate/reviews/" target="_blank"><?php _e('Reviews', 'gtranslate'); ?></a></li>
@@ -1682,7 +1683,7 @@ class GTranslate_Notices {
 
     public function gt_admin_notices() {
 
-        $deactivate_plugins= array('WP Translator' => 'wptranslator/WPTranslator.php', 'TranslatePress' => 'translatepress-multilingual/index.php', 'Google Language Translator' => 'google-language-translator/google-language-translator.php', 'Google Website Translator' => 'google-website-translator/google-website-translator.php', 'Weglot' => 'weglot/weglot.php');
+        $deactivate_plugins= array('WP Translator' => 'wptranslator/WPTranslator.php', 'TranslatePress' => 'translatepress-multilingual/index.php', 'Google Language Translator' => 'google-language-translator/google-language-translator.php', 'Google Website Translator' => 'google-website-translator/google-website-translator.php', 'Weglot' => 'weglot/weglot.php', 'TransPosh' => 'transposh-translation-filter-for-wordpress/transposh.php');
         foreach($deactivate_plugins as $name => $plugin_file) {
             if(is_plugin_active($plugin_file)) {
                 $deactivate_link = wp_nonce_url('plugins.php?action=deactivate&amp;plugin='.urlencode($plugin_file ).'&amp;plugin_status=all&amp;paged=1&amp;s=', 'deactivate-plugin_' . $plugin_file);
@@ -2126,6 +2127,17 @@ if($data['pro_version'] or $data['enterprise_version']) {
                 );
 
                 $locale = json_decode($data['locale']);
+
+                if(isset($locale->default->address_1))
+                    $locale->default->address_1->gt_translate_keys = array('label', 'placeholder');
+                if(isset($locale->default->address_2))
+                    $locale->default->address_2->gt_translate_keys = array('label', 'placeholder');
+                if(isset($locale->default->city))
+                    $locale->default->city->gt_translate_keys = array('label', 'placeholder');
+                if(isset($locale->default->postcode))
+                    $locale->default->postcode->gt_translate_keys = array('label', 'placeholder');
+                if(isset($locale->default->state))
+                    $locale->default->state->gt_translate_keys = array('label', 'placeholder');
 
                 if(isset($locale->default->shipping->address_1))
                     $locale->default->shipping->address_1->gt_translate_keys = array('label', 'placeholder');
