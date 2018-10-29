@@ -89,11 +89,11 @@
 	
 	<div class="section">
 	<div class="w-container">
-	<h1 class="heading">Verbindliche Anmeldung
-	<br/>zum
-	<br/>2. Sportkongress des LSB Sachsen-Anhalt e.V.
+	<h1 class="heading">Online-Anmeldung geschlossen.
+	<br/>Für mehr Informationen wenden Sie sich bitte direkt an den Veranstalter.
 	</h1>
 	</div>
+<!--
 	<div class="text-block">
 	Zum 2. Sportkongress des LSB Sachsen-Anhalt e.V. am Samstag, den 22. September 2018 in Halle (Saale), melde ich mich verbindlich an.
 	</div>
@@ -664,11 +664,12 @@
 	<div id="errorsuccess" class="text-block-2">
 	error or success
 	</div>
-	<input type="submit" value="Verbindlich anmelden (Teilnahmegebühr: 50€)" data-wait="Bitte warten..." id="submitbutton" class="submit-button w-button"onclick="SubmitForm(); return false;"/>
+	<input type="submit" value="Verbindlich anmelden (Teilnahmegebühr: 50€)" data-wait="Bitte warten..." id="submitbutton" class="submit-button w-button"onclick="return false;"/>
 	</form>
 	
 	</div>
 	</div>
+-->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" type="text/javascript" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous">
 	</script>
 	
@@ -843,12 +844,30 @@
 				if(http.readyState == 4 && http.status == 200) {
 					//alert(http.responseText);
 				}
+
+				if(http.readyState == 4)
+				{
+					if(http.status == 200)
+					{
+						document.getElementById("errorsuccess").style.color = "#009922";
+						document.getElementById("errorsuccess").style.fontWeight = "bold";
+						document.getElementById("errorsuccess").innerHTML = "Die Anmeldung war erfolgreich! Sie erhalten in Kürze eine E-Mail!";
+					}
+					else
+					{
+						document.getElementById("errorsuccess").style.color = "#e82c2c";
+						document.getElementById("errorsuccess").style.fontWeight = "bold";
+						document.getElementById("errorsuccess").innerHTML = "Es ist ein Fehler aufgetreten! Bitte versuchen Sie es erneut!";
+
+						document.getElementById("submitbutton").style.display = "block";
+					}
+				}
 			}
 			http.send(params);
 			
-			document.getElementById("errorsuccess").style.color = "#009922";
+			document.getElementById("errorsuccess").style.color = "#f2e30f";
 			document.getElementById("errorsuccess").style.fontWeight = "bold";
-			document.getElementById("errorsuccess").innerHTML = "Die Anmeldung war erfolgreich! Sie erhalten in Kürze eine E-Mail!";
+			document.getElementById("errorsuccess").innerHTML = "Ihre Anmeldung wird bearbeitet...";
 			
 			document.getElementById("submitbutton").style.display = "none";
 			
@@ -876,7 +895,7 @@
 		function DateBaseInvoiceValue()
 		{
 			var today = new Date();
-			var firstDeadline = new Date("2018-08-16"); // < 16.8.
+			var firstDeadline = new Date("2018-09-08"); // < 8.9.
 			var secondDeadline = new Date("2018-09-22"); // < 22.9.
 			
 			if(today < firstDeadline)
