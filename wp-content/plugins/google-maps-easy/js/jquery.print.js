@@ -8,12 +8,12 @@
     // A nice closure for our definitions
     function getjQueryObject(string) {
         // Make string a vaild jQuery thing
-        var jqObj = $("");
+        var jqObj = jQuery("");
         try {
-            jqObj = $(string)
+            jqObj = jQuery(string)
                 .clone();
         } catch (e) {
-            jqObj = $("<span />")
+            jqObj = jQuery("<span />")
                 .html(string);
         }
         return jqObj;
@@ -52,11 +52,11 @@
     }
 
     function printContentInIFrame(content, options) {
-        var $iframe = $(options.iframe + "");
+        var $iframe = jQuery(options.iframe + "");
         var iframeCount = $iframe.length;
         if (iframeCount === 0) {
             // Create a new iFrame if none is given
-            $iframe = $('<iframe height="0" width="0" border="0" wmode="Opaque"/>')
+            $iframe = jQuery('<iframe height="0" width="0" border="0" wmode="Opaque"/>')
                 .prependTo('body')
                 .css({
                     "position": "absolute",
@@ -117,15 +117,15 @@
         }
         if (isNode(self)) {
             // If `this` is a HTML element, i.e. for
-            // $(selector).print()
-            $this = $(self);
+            // jQuery(selector).print()
+            $this = jQuery(self);
             if (arguments.length > 0) {
                 options = arguments[0];
             }
         } else {
             if (arguments.length > 0) {
                 // $.print(selector,options)
-                $this = $(arguments[0]);
+                $this = jQuery(arguments[0]);
                 if (isNode($this[0])) {
                     if (arguments.length > 1) {
                         options = arguments[1];
@@ -133,11 +133,11 @@
                 } else {
                     // $.print(options)
                     options = arguments[0];
-                    $this = $("html");
+                    $this = jQuery("html");
                 }
             } else {
                 // $.print()
-                $this = $("html");
+                $this = jQuery("html");
             }
         }
         // Default options
@@ -157,22 +157,22 @@
         };
         // Merge with user-options
         options = $.extend({}, defaults, (options || {}));
-        var $styles = $("");
+        var $styles = jQuery("");
         if (options.globalStyles) {
             // Apply the stlyes from the current sheet to the printed page
-            $styles = $("style, link, meta, title");
+            $styles = jQuery("style, link, meta, title");
         } else if (options.mediaPrint) {
             // Apply the media-print stylesheet
-            $styles = $("link[media=print]");
+            $styles = jQuery("link[media=print]");
         }
         if (options.stylesheet) {
             // Add a custom stylesheet if given
-            $styles = $.merge($styles, $('<link rel="stylesheet" href="' + options.stylesheet + '">'));
+            $styles = $.merge($styles, jQuery('<link rel="stylesheet" href="' + options.stylesheet + '">'));
         }
         // Create a copy of the element to print
         var copy = $this.clone();
         // Wrap it in a span to get the HTML markup string
-        copy = $("<span/>")
+        copy = jQuery("<span/>")
             .append(copy);
         // Remove unwanted elements
         copy.find(options.noPrintSelector)
@@ -181,9 +181,9 @@
         copy.append($styles.clone());
         // Update title
         if (options.title) {
-            var title = $("title", copy);
+            var title = jQuery("title", copy);
             if (title.length === 0) {
-                title = $("<title />");
+                title = jQuery("<title />");
                 copy.append(title);                
             }
             title.text(options.title);            
@@ -197,7 +197,7 @@
             // http://stackoverflow.com/a/26707753
             copy.find("input")
                 .each(function () {
-                    var $field = $(this);
+                    var $field = jQuery(this);
                     if ($field.is("[type='radio']") || $field.is("[type='checkbox']")) {
                         if ($field.prop("checked")) {
                             $field.attr("checked", "checked");
@@ -207,12 +207,12 @@
                     }
                 });
             copy.find("select").each(function () {
-                var $field = $(this);
+                var $field = jQuery(this);
                 $field.find(":selected").attr("selected", "selected");
             });
             copy.find("textarea").each(function () {
                 // Fix for https://github.com/DoersGuild/jQuery.print/issues/18#issuecomment-96451589
-                var $field = $(this);
+                var $field = jQuery(this);
                 $field.text($field.val());
             });
         }

@@ -812,6 +812,20 @@
 													<i style="float: right;" class="fa fa-question supsystic-tooltip" title="<?php _e('This option allows you to search and show multiple markers for selected date, categories and keywords. NOTE: it removes separate markers categories filter button from custom map controls.', GMP_LANG_CODE); ?>"></i>
 												</div>
 												<?php }?>
+												<div style="margin-top: 10px;">
+													<label>
+														<?php
+														$isFilterEnable = array();
+														if(!empty($this->map['params']['button_filter_enable'])
+															&& $this->map['params']['button_filter_enable'] == 1
+														) {
+															$isFilterEnable = array('checked' => 'checked');
+														}
+														echo htmlGmp::checkbox('map_opts[button_filter_enable]', $isFilterEnable)?>
+														<?php _e('Disable filter button', GMP_LANG_CODE);?>
+													</label>
+													<i style="float: right;" class="fa fa-question supsystic-tooltip" title="<?php _e('Check this option if you want to disable filters button on frontend', GMP_LANG_CODE); ?>"></i>
+												</div>
 											</div>
 										</td>
 									</tr>
@@ -1061,6 +1075,30 @@
 														'attrs' => 'class="gmpProOpt" style="width: 100%;" id="map_opts_places_slider_step"'))?>
 												</div>
 											</div>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">
+											<label for="map_opts_marker_title_color">
+												<?php _e('Filter background', GMP_LANG_CODE)?>:
+											</label>
+											<i style="float: right;" class="fa fa-question supsystic-tooltip" title="<?php _e('Background color for markers filter. (for 7 markers list type)', GMP_LANG_CODE)?>"></i>
+										</th>
+										<td>
+											<?php echo htmlGmp::colorpicker('map_opts[marker_filter_color]', array(
+												'value' => $this->editMap && isset($this->map['params']['marker_filter_color']) ? $this->map['params']['marker_filter_color'] : '#f1f1f1;'))?>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">
+											<label for="map_opts_marker_title_color">
+												<?php _e('Filters select all button title', GMP_LANG_CODE)?>:
+											</label>
+											<i style="float: right;" class="fa fa-question supsystic-tooltip" title="<?php _e('Filters select all button title. (for 7 markers list type)', GMP_LANG_CODE)?>"></i>
+										</th>
+										<td>
+											<?php echo htmlGmp::text('map_opts[marker_filter_button_title]', array(
+												'value' => $this->editMap && isset($this->map['params']['marker_filter_button_title']) ? $this->map['params']['marker_filter_button_title'] : 'Select all'))?>
 										</td>
 									</tr>
 									<tr>
@@ -1432,10 +1470,10 @@
 									</th>
 									<td>
 										<div style="width: 100%;">
-											<?php echo htmlGmp::selectbox('marker_opts[marker_group_id]', array(
+											<?php echo htmlGmp::selectlist('marker_opts[marker_group_id]', array(
 												'options' => $this->markerGroupsForSelect,
 												'value' => '',
-												'attrs' => 'style="width: 100%;" id="marker_opts_marker_group_id"'))?>
+												'attrs' => 'style="width: 100%;" id="marker_opts_marker_group_id" class="chosen-select"'))?>
 										</div>
 									</td>
 								</tr>

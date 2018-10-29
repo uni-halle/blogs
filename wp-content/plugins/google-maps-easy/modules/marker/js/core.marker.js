@@ -226,7 +226,7 @@ gmpGoogleMarker.prototype._setDescSize = function(descDiv) {
 };
 gmpGoogleMarker.prototype._updateInfoWndContent = function() {
 	var contentStr = jQuery('<div/>', {})
-	,	description = this._markerParams.description ? this._markerParams.description.replace(/([^>])\n/g, '$1<br/>') : false
+	,	description = this._markerParams.description ? this._markerParams.description.replace(/\n/g, '<br/>') : false
 	,	title = this._markerParams.title ? this._markerParams.title : false;
 
 	if(parseInt(this._map._mapParams.hide_marker_tooltip) && !GMP_DATA.isAdmin) {

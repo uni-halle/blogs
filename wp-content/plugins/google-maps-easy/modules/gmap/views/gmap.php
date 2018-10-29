@@ -27,7 +27,7 @@ class gmapViewGmp extends viewGmp {
 		return $apiDomain;
 	}
 	public function getApiKey() {
-		$apiKey = 'AIzaSyCh33wsMPd4zTjqSkqEm0_giCOi-78XZN8';
+		$apiKey = '';
 
 		if($userApiKey = dispatcherGmp::applyFilters('gRewriteApiKey', frameGmp::_()->getModule('options')->get('user_api_key'))) {
 			$apiKey = trim($userApiKey);
@@ -102,7 +102,6 @@ class gmapViewGmp extends viewGmp {
 				}
 			}
 		}
-
 		if(!empty($mapObj['markers'])) {
 			if(!empty($params['marker_show_description'])) {
 				foreach($mapObj['markers'] as $key => $marker) {
@@ -114,11 +113,15 @@ class gmapViewGmp extends viewGmp {
 					}
 				}
 			}
+
 			if(!empty($params['marker_category'])) {
 				$category = explode(',', $params['marker_category']);
 				foreach($mapObj['markers'] as $key => $marker) {
-					if(in_array($marker['marker_group_id'], $category)) continue;
+					if( count( array_intersect($marker['marker_group_ids'], $category) ) > 0){
+						continue;
+					}
 					unset($mapObj['markers'][$key]);
+
 				}
 				$mapObj['markers'] = array_values($mapObj['markers']);	// 'reindex' array
 			}
@@ -274,15 +277,10 @@ class gmapViewGmp extends viewGmp {
 		$isContactFormsInstalled = utilsGmp::classExists('frameCfs');
 
 		$allStylizationsList = $this->getModule()->getStylizationsList();
-		$allMarkerGroupsList = frameGmp::_()->getModule('marker_groups')->getModel()->getAllMarkerGroups();
 		$stylizationsForSelect = array('none' => __('None', GMP_LANG_CODE),);
-		$markerGroupsForSelect = array('0' => __('None', GMP_LANG_CODE),);
 
 		foreach($allStylizationsList as $styleName => $json) {
 			$stylizationsForSelect[ $styleName ] = $styleName;	// JSON data will be attached on js side
-		}
-		foreach($allMarkerGroupsList as $key => $value) {
-			$markerGroupsForSelect[ $value['id'] ] = $value['title'];
 		}
 		frameGmp::_()->getModule('templates')->loadJqGrid();
 		frameGmp::_()->addScript('jquery-ui-sortable');
@@ -317,12 +315,13 @@ class gmapViewGmp extends viewGmp {
 				foreach($map['markers'] as $marker) {
 					if($marker['marker_group_id']) {
 						if(in_array($marker['marker_group_id'], $mapMarkersGroupsList)) continue;
-
 						array_push($mapMarkersGroupsList, $marker['marker_group_id']);
 					}
 				}
 			}
 			if($mapMarkersGroupsList) {
+				$allMarkerGroupsList = frameGmp::_()->getModule('marker_groups')->getModel()->getAllMarkerGroups();
+
 				foreach($allMarkerGroupsList as $group) {
 					if(in_array($group['id'], $mapMarkersGroupsList)) array_push($mapMarkersGroups, $group);
 				}
@@ -344,7 +343,7 @@ class gmapViewGmp extends viewGmp {
 		$this->assign('positionsList', $positionsList);
 		$this->assign('mainLink', frameGmp::_()->getModule('supsystic_promo')->getMainLink());
 		$this->assign('markerLists', $markerLists);
-		$this->assign('markerGroupsForSelect', $markerGroupsForSelect);
+		$this->assign('markerGroupsForSelect', frameGmp::_()->getModule('marker_groups')->getModel()->getMarkerGroupsForSelect(array('0' => __('None', GMP_LANG_CODE),)));
 		$this->assign('viewId', $editMap ? $map['view_id'] : 'preview_id_'. mt_rand(1, 9999));
 		$this->assign('promoModPath', frameGmp::_()->getModule('supsystic_promo')->getModPath());
 

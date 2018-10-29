@@ -366,14 +366,19 @@ function paramGmp(param) {
 }
 /* TinyMCE Editor */
 function gmpGetTxtEditorVal(id) {
-	if(typeof(tinyMCE) !== 'undefined' && tinyMCE.get( id ) && !jQuery('#'+ id).is(':visible'))
-		return tinyMCE.get( id ).getContent();
-	else
-		return jQuery('#'+ id).val();
+	var elem = jQuery('#'+ id)
+	,	content = typeof(tinyMCE) !== 'undefined' && tinyMCE.get( id ) && !elem.is(':visible')
+			? tinyMCE.get( id ).getContent()
+			: elem.val();
+	return content;
 }
 function gmpSetTxtEditorVal(id, content) {
-	if(typeof(tinyMCE) !== 'undefined' && tinyMCE && tinyMCE.get( id ) && !jQuery('#'+ id).is(':visible'))
+	var elem = jQuery('#'+ id);
+
+	if(typeof(tinyMCE) !== 'undefined' && tinyMCE && tinyMCE.get( id ) && !elem.is(':visible')) {
 		tinyMCE.get( id ).setContent(content);
-	else
-		jQuery('#'+ id).val( content );
+	} else {
+		elem.val( content );
+	}
+
 }

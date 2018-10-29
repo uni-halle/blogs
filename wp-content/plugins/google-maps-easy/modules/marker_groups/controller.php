@@ -66,8 +66,7 @@ class marker_groupsControllerGmp extends controllerGmp {
 			$res->addData('marker_group', $this->getModel()->getMarkerGroupById( $markerGroupId ));
 			if(!$edit) {	// For new marker category
 				$fullEditUrl = $this->getModule()->getEditMarkerGroupLink( $markerGroupId );
-				$editUrlParts = explode('/', $fullEditUrl);
-				$res->addData('edit_url', $editUrlParts[ count($editUrlParts) - 1 ]);
+				$res->addData('edit_url', $fullEditUrl);
 			}
 		} else {
 			$res->pushError( $this->getModel()->getErrors() );
@@ -82,10 +81,13 @@ class marker_groupsControllerGmp extends controllerGmp {
 			$res->pushError($this->getModel()->getErrors());
 		$res->ajaxExec();
 	}
-	public function resortMarkerGroups() {
+	public function updateMarkerGroups() {
 		$res = new responseGmp();
 		$postData = reqGmp::get('post');
 		if(!$this->getModel()->resortMarkerGroups($postData['ids'])) {
+			$res->pushError( $this->getModel()->getErrors() );
+		}
+		if(!$this->getModel()->updateMarkerGroupParent($postData['current'], $postData['parent'])) {
 			$res->pushError( $this->getModel()->getErrors() );
 		}
 		return $res->ajaxExec();

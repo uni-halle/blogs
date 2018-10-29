@@ -45,6 +45,7 @@ class templatesGmp extends moduleGmp {
 		frameGmp::_()->addScript('icheck', GMP_JS_PATH. 'icheck.min.js');
 		frameGmp::_()->addScript('jquery-ui-autocomplete', '', array('jquery'));
 		$this->loadTooltipstered();
+		$this->loadChosenSelects();	// Init Chosen library
 	}
 	public function loadCoreJs() {
 		static $loaded = false;
@@ -127,6 +128,10 @@ class templatesGmp extends moduleGmp {
 		frameGmp::_()->addScript('codemirror-mode-javascript', $this->_cdnUrl. 'lib/codemirror/mode/javascript/javascript.js');
 		frameGmp::_()->addScript('codemirror-mode-css', $this->_cdnUrl. 'lib/codemirror/mode/css/css.js');
 		frameGmp::_()->addScript('codemirror-mode-htmlmixed', $this->_cdnUrl. 'lib/codemirror/mode/htmlmixed/htmlmixed.js');
+	}
+	public function loadJqTreeView() {
+		frameGmp::_()->addStyle('jqtree', GMP_CSS_PATH. 'jqtree.css');
+		frameGmp::_()->addScript('tree.jquery', GMP_JS_PATH. 'tree.jquery.js');
 	}
 	public function loadJqGrid() {
 		static $loaded = false;

@@ -215,7 +215,7 @@ jQuery(document).ready(function(){
 		});
 		return false;
 	});
-	$('#gmpCopyTextCodeExamples').change(function(){
+	jQuery('#gmpCopyTextCodeExamples').change(function(){
 		gmpCheckShortcode();
 	});
 	jQuery('#gmpMapSaveBtn').click(function(){
@@ -562,6 +562,7 @@ jQuery(document).ready(function(){
 		else
 			gmpHideCloseDescriptionCheckbox();
 	});
+	jQuery(".supsystic-panel .tooltipstered").removeAttr("title");
 });
 function gmpShowCloseDescriptionCheckbox() {
 	jQuery('#marker_opts_description_mouse_leave').show();

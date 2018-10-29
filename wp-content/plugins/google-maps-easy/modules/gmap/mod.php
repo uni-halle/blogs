@@ -158,6 +158,7 @@ class  gmapGmp extends moduleGmp {
 				'slider_simple_vertical_title_desc' => array('label' => __('Slider Vertical - Title and Description', GMP_LANG_CODE), 'or' => 'v', 'd' => array('title', 'desc'), 'eng' => 'jssor'),
 				'slider_simple_vertical_img_2cols' => array('label' => __('Slider Vertical - Title and Img', GMP_LANG_CODE), 'or' => 'v', 'd' => array('img'), 'eng' => 'jssor', 'two_cols' => true),
 				'slider_simple_table' => array('label' => __('Slider Table', GMP_LANG_CODE), 'or' => 'h', 'd' => array('title', 'img', 'desc'), 'eng' => 'table'),
+				'slider_checkbox_table' => array('label' => __('Slider Checkbox Table', GMP_LANG_CODE), 'or' => 'h', 'd' => array('title', 'img', 'desc'), 'eng' => 'table_checkbox'),
 			);
 			foreach($this->_markersLists as $i => $v) {
 				$this->_markersLists[$i]['prev_img'] = isset($this->_markersLists[$i]['prev_img']) ? $this->_markersLists[$i]['prev_img'] : $i. '.jpg';

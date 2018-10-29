@@ -87,14 +87,27 @@ class marker_groupsModelGmp extends modelGmp {
 		}
 		return false;
 	}
+	public function updateMarkerGroupParent($id, $parentId){
+		return frameGmp::_()->getTable('marker_groups')->update(array('parent' => $parentId), array('id' => $id));
+	}
 	public function saveNewMarkerGroup($params){
 		if(!empty($params)) {
 			$insertData = $this->_dataSave($params);
-			$maxSortOrder = (int) dbGmp::get('SELECT MAX(sort_order) FROM @__marker_groups', 'one');
-			$insertData['sort_order'] = ++$maxSortOrder;
 			if($this->_validateSaveMarkerGroup($insertData)) {
 				$newMarkerGroupId = frameGmp::_()->getTable('marker_groups')->insert($insertData);
 				if($newMarkerGroupId){
+					$allMarkerGroups = $this->getAllMarkerGroups();
+					$allMarkerGroupsIds = array();
+
+					foreach($allMarkerGroups as $g) {
+						if($g['id'] != $newMarkerGroupId) {
+							array_push($allMarkerGroupsIds, $g['id']);
+						}
+					}
+					$elem = $this->getNewMarkerGroupSortOrder($allMarkerGroups, $newMarkerGroupId, $insertData['parent']);
+					$offset = array_search($elem, $allMarkerGroupsIds);
+					array_splice($allMarkerGroupsIds, ($offset + 1), 0, array((string)$newMarkerGroupId));
+					$this->resortMarkerGroups($allMarkerGroupsIds);
 					return $newMarkerGroupId;
 				} else {
 					$this->pushError(frameGmp::_()->getTable('marker_groups')->getErrors());
@@ -104,15 +117,26 @@ class marker_groupsModelGmp extends modelGmp {
 			$this->pushError(__('Empty Params', GMP_LANG_CODE));
 		return false;
 	}
+	public function getNewMarkerGroupSortOrder($allMarkerGroups, $newMarkerGroupId, $parent) {
+		$allChildren = $this->getChildrenList($allMarkerGroups, $parent);
+		unset($allChildren[array_search($newMarkerGroupId, $allChildren)]);
+		$allChildren = array_values($allChildren);
+		return !empty($allChildren) ? $allChildren[count($allChildren) - 1] : $parent;
+	}
+	public function getChildrenList($groups, $parent, $children = array()) {
+		foreach($groups as $g) {
+			if($g['parent'] == $parent) {
+				array_push($children, $g['id']);
+				$children = $this->getChildrenList($groups, $g['id'], $children);
+			}
+		}
+		return $children;
+	}
 	public function resortMarkerGroups($markerGroupsIds = array()) {
 		if($markerGroupsIds) {
 			$i = 1;
 			foreach($markerGroupsIds as $mgrId) {
-				frameGmp::_()->getTable('marker_groups')->update(array(
-					'sort_order' => $i++
-				), array(
-					'id' => $mgrId,
-				));
+				frameGmp::_()->getTable('marker_groups')->update(array('sort_order' => $i++), array('id' => $mgrId));
 			}
 		}
 		return true;
@@ -125,8 +149,10 @@ class marker_groupsModelGmp extends modelGmp {
 			$groupsForCurMap = array();
 
 			foreach($map['markers'] as $marker) {
-				if($marker['marker_group_id'] > 0) {
-					array_push($groupsForCurMap, $marker['marker_group_id']);
+				if(is_array($marker['marker_group_ids'])){
+					foreach ($marker['marker_group_ids'] as $marker_group_id) {
+						array_push($groupsForCurMap, $marker_group_id);
+					}
 				}
 			}
 			$markerGroups = $this->getMarkerGroupsByIds($groupsForCurMap);
@@ -168,5 +194,28 @@ class marker_groupsModelGmp extends modelGmp {
 			'params' => '',
 			'markers' => array(),
 		));
+	}
+	public function getMarkerGroupsForSelect($markerGroupsForSelect = array()) {
+		$allMarkerGroupsList = $this->getAllMarkerGroups();
+
+		foreach($allMarkerGroupsList as $key => $value) {
+			$markerGroupsForSelect[ $value['id'] ] = $this->_updateTitleForTreeView($value['title'], $value, $allMarkerGroupsList);
+		}
+		return $markerGroupsForSelect;
+	}
+	public function _updateTitleForTreeView($title, $group, $allMarkerGroups) {
+		$level = $this->_itemGetLevel($group, $allMarkerGroups);
+		$title = str_repeat('-', $level) . ' ' . $title;
+		return $title;
+	}
+	public function _itemGetLevel($group, $allMarkerGroups, $level = 0) {
+		if($group['parent'] != 0) {
+			foreach($allMarkerGroups as $g) {
+				if($g['id'] == $group['parent']) {
+					$level = $this->_itemGetLevel($g, $allMarkerGroups, ++$level);
+				}
+			}
+		}
+		return $level;
 	}
 }

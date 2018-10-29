@@ -5,7 +5,18 @@ $viewId = $this->currentMap['view_id'];
 $mapHtmlId = $this->currentMap['view_html_id'];
 $mapPreviewClassname = @$this->currentMap['html_options']['classname'];
 $mapOptsClassname = $popup ? 'display_as_popup' : '';
-?>
+
+if($this->markersDisplayType === 'slider_checkbox_table') {
+	$mapsWrapperStart = "<div class='gmpLeft'>";
+	$mapsWrapperEnd = "</div>";
+	$filtersWrapperStart = "<div class='filterRight'>";
+	$filtersWrapperEnd = "</div>";
+}else{
+	$mapsWrapperStart = "";
+	$mapsWrapperEnd = "";
+	$filtersWrapperStart = "";
+	$filtersWrapperEnd = "";
+}?>
 <?php if($popup){ ?>
 	<div class="map-preview-img-container">
 		<img src="<?php echo GMP_IMG_PATH . 'gmap_preview.png'?>" class="show_map_icon map_num_<?php echo $this->currentMap['id']; ?>"
@@ -22,10 +33,20 @@ $mapOptsClassname = $popup ? 'display_as_popup' : '';
 			}
 			?>
 			>
+
+			<?php echo $mapsWrapperStart; ?>
 			<div class="gmpMapDetailsContainer" id="gmpMapDetailsContainer_<?php echo $viewId ;?>">
 				<i class="gmpKMLLayersPreloader fa fa-spinner fa-spin" aria-hidden="true" style="display: none;"></i>
 				<div class="gmp_MapPreview <?php echo $mapPreviewClassname;?>" id="<?php echo $mapHtmlId ;?>"></div>
 			</div>
+			<?php echo $mapsWrapperEnd; ?>
+
+			<?php echo $filtersWrapperStart; ?>
+			<div class="gmpMapMarkerFilters" id="gmpMapMarkerFilters_<?php echo $viewId;?>">
+				<?php dispatcherGmp::doAction('addMapFilters', $this->currentMap); ?>
+			</div>
+			<?php echo $filtersWrapperEnd; ?>
+
 			<div class="gmpMapProControlsCon" id="gmpMapProControlsCon_<?php echo $viewId;?>">
 				<?php dispatcherGmp::doAction('addMapBottomControls', $this->currentMap); ?>
 			</div>

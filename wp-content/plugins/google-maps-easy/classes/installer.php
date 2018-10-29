@@ -216,6 +216,28 @@ class installerGmp {
 			dbGmp::query("INSERT INTO `@__modules` (id, code, active, type_id, params, has_tab, label, description) VALUES
 				(NULL, 'membership', 1, 1, '', 1, 'membership', 'membership');");
 		}
+		/**
+		 * Create table for marker groups
+		 */
+		if(!dbGmp::exist($wpPrefix.GMP_DB_PREF."marker_groups_relation")){
+			dbDelta("CREATE TABLE IF NOT EXISTS `".$wpPrefix.GMP_DB_PREF."marker_groups_relation"."` (
+					`id` int(11) NOT NULL AUTO_INCREMENT,
+					`marker_id` int(11) NOT NULL,
+					`groups_id` int(11) NOT NULL,
+				 PRIMARY KEY (`id`)
+				  ) DEFAULT CHARSET=utf8");
+		}
+
+		if( !get_option($wpPrefix. GMP_DB_PREF. 'markers_groups_multiple_updated') ){
+			$markersData = dbGmp::get("SELECT `id`,`marker_group_id` FROM @__markers", 'all', ARRAY_A);
+			if($markersData){
+				foreach ($markersData as $marker) {
+					dbGmp::query("INSERT INTO `".$wpPrefix.GMP_DB_PREF."marker_groups_relation` (marker_id, groups_id) VALUES
+					(".$marker['id'].", ".$marker['marker_group_id'].");");
+				}
+				update_option($wpPrefix. GMP_DB_PREF. 'markers_groups_multiple_updated', 1);
+			}
+		}
         update_option($wpPrefix. GMP_DB_PREF. 'db_version', GMP_VERSION_PLUGIN);
 		add_option($wpPrefix. GMP_DB_PREF. 'db_installed', 1);
 		

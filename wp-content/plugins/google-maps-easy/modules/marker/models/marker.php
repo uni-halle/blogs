@@ -39,14 +39,30 @@ class markerModelGmp extends modelGmp {
 					$marker['sort_order'] = ++$maxSortOrder;
 				}
 			}
+
+			//save first groups value in markers table to better compatibility
+			$markerGroupIds = $marker['marker_group_id'];
+			$marker['marker_group_id'] = $first_value = reset($markerGroupIds);;
+
 			$marker['params'] = isset($marker['params']) ? utilsGmp::serialize($marker['params']) : '';
 			if($update) {
 				dispatcherGmp::doAction('beforeMarkerUpdate', $id, $marker);
 				$dbRes = frameGmp::_()->getTable('marker')->update($marker, array('id' => $id));
+
+				frameGmp::_()->getTable('marker_groups_relation')->delete('marker_id = ' . $marker['id']);
+				foreach ($markerGroupIds as $markerId) {
+					frameGmp::_()->getTable('marker_groups_relation')->insert(array('marker_id'=>$marker['id'], 'groups_id'=>$markerId));
+				}
 				dispatcherGmp::doAction('afterMarkerUpdate', $id, $marker);
 			} else {
 				dispatcherGmp::doAction('beforeMarkerInsert', $marker);
 				$dbRes = frameGmp::_()->getTable('marker')->insert($marker);
+				if($dbRes){
+					frameGmp::_()->getTable('marker_groups_relation')->delete('marker_id = ' . $dbRes);
+					foreach ($markerGroupIds as $markerId) {
+						frameGmp::_()->getTable('marker_groups_relation')->insert(array('marker_id' => $dbRes, 'groups_id' => $markerId));
+					}
+				}
 				dispatcherGmp::doAction('afterMarkerInsert', $dbRes, $marker);
 			}
 			if($dbRes) {
@@ -112,6 +128,13 @@ class markerModelGmp extends modelGmp {
 			//}
 			if($widthMapData && !empty($marker['map_id']))
 				$marker['map'] = frameGmp::_()->getModule('gmap')->getModel()->getMapById($marker['map_id'], false);
+
+			if($widthMapData && !empty($marker['map_id']))
+				$marker['map'] = frameGmp::_()->getModule('gmap')->getModel()->getMapById($marker['map_id'], false);
+
+			if(!empty($marker['id'])){
+				$marker['marker_group_ids'] = frameGmp::_()->getModule('marker')->getModel('marker_groups_relation')->getRelationsByMarkerId($marker['id']);
+			}
 		}
 		return $marker;
 	}
@@ -189,6 +212,7 @@ class markerModelGmp extends modelGmp {
 		if(!empty($markers)) {
 			$iconIds = array();
 			foreach($markers as $i => $m) {
+
 				$markers[$i] = $this->_afterGet($markers[$i], false, true);
 				// We need to do shortcode only on frontend
 				if(isset($markers[$i]["description"])){

@@ -165,6 +165,7 @@ jQuery(document).ready(function(){
 							}
 						}
 					}
+
 					if(!currentMarkerMapId) {
 						g_gmpMapMarkersIdsAdded.push( res.data.marker.id );
 					}
@@ -370,8 +371,13 @@ function gmpOpenMarkerEdit(id) {
 		jQuery('#gmpMarkerForm input[name="marker_opts[coord_x]"]').val( markerParams.coord_x );
 		jQuery('#gmpMarkerForm input[name="marker_opts[coord_y]"]').val( markerParams.coord_y );
 
-		jQuery('#gmpMarkerForm select[name="marker_opts[marker_group_id]"]').val(markerParams.marker_group_id);
 		jQuery('#gmpMarkerForm input[name="marker_opts[id]"]').val( markerParams.id );
+		var markerGroupsIds = markerParams.marker_group_ids;
+		jQuery('#gmpMarkerForm select[name="marker_opts[marker_group_id][]"] option:selected').prop("selected", false);
+		for(var i = 0; i < markerGroupsIds.length; i++ ){
+			jQuery('#gmpMarkerForm select[name="marker_opts[marker_group_id][]"] option[value="'+markerGroupsIds[i]+'"]').prop("selected", true);
+		}
+		jQuery('#marker_opts_marker_group_id').trigger("chosen:updated");
 
 		if(markerParams.period_from) {
 			jQuery('#gmpMarkerForm input[name="marker_opts[period_date_from]"]').val(markerParams.period_from);
@@ -539,7 +545,7 @@ function gmpInitIconsWnd() {
 	
 	jQuery('#gmpIconsWnd').on('click', '.previewIcon i', function(e){
 		e.preventDefault();
-		var icon = $(this)
+		var icon = jQuery(this)
 		,   iconWrapper = icon.closest('.previewIcon')
 		,   iconId = iconWrapper.attr('data-id');
 		

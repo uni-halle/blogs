@@ -2,7 +2,7 @@
 	var methods = {
 		init : function( options ) {
 			return this.each(function(){
-				var $this = $(this);
+				var $this = jQuery(this);
 				this._options = options || {};
 				if (!$this.hasClass('gmpWpTabs')) {
 					$this.addClass('gmpWpTabs');
@@ -37,7 +37,7 @@
 		}
 	,	activate: function(selector) {
 			return this.each(function(){
-				var $this = $(this);
+				var $this = jQuery(this);
 				if($this.find(selector).size()) {
 					var navigations = $this.find('.nav-tab-wrapper:first').find('a.nav-tab:not(.notTab)');
 					if(!this._firstInit) {

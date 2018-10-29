@@ -1,132 +1,71 @@
 jQuery(document).ready(function(){
-	var tblId = 'gmpMgrTbl';
-	jQuery('#'+ tblId).jqGrid({
-		url: mgrTblDataUrl
-	,	datatype: 'json'
-	,	autowidth: true
-	,	shrinkToFit: true
-	,	colNames:[toeLangGmp('ID'), toeLangGmp('Title'), toeLangGmp('Parent'), toeLangGmp('Actions')]
-	,	colModel:[
-			{name: 'id', index: 'id', searchoptions: {sopt: ['eq']}, width: '50', align: 'center', key: true}
-		,	{name: 'title', index: 'title', searchoptions: {sopt: ['eq']}, align: 'center'}
-		,	{name: 'parent', index: 'parent', searchoptions: {sopt: ['eq']}, align: 'center', sortable: false}
-		,	{name: 'actions', index: 'actions', searchoptions: {sopt: ['eq']}, align: 'center', sortable: false}
-		]
-	,	postData: {
-			search: {
-				text_like: jQuery('#'+ tblId+ 'SearchTxt').val()
-			}
-		}
-	,	rowNum: 10
-	,	rowList: [10, 20, 30, 1000]
-	,	pager: '#'+ tblId+ 'Nav'
-	,	sortname: 'sort_order'
-	,	viewrecords: true
-	,	sortorder: 'asc'
-	,	jsonReader: { repeatitems : false, id: '0' }
-	,	caption: toeLangGmp('Current Marker Category')
-	,	height: '100%'
-	,	emptyrecords: toeLangGmp('You have no Marker Categories for now.')
-	,	multiselect: true
-	,	sortable: true
-	,	onSelectRow: function(rowid, e) {
-			var tblId = jQuery(this).attr('id')
-			,	selectedRowIds = jQuery('#'+ tblId).jqGrid ('getGridParam', 'selarrrow')
-			,	totalRows = jQuery('#'+ tblId).getGridParam('reccount')
-			,	totalRowsSelected = selectedRowIds.length;
-			if(totalRowsSelected) {
-				jQuery('#gmpMgrRemoveGroupBtn').removeAttr('disabled');
-				if(totalRowsSelected == totalRows) {
-					jQuery('#cb_'+ tblId).prop('indeterminate', false);
-					jQuery('#cb_'+ tblId).attr('checked', 'checked');
-				} else {
-					jQuery('#cb_'+ tblId).prop('indeterminate', true);
+	var tblId = 'gmpMgrTbl'
+	,	tbl = jQuery('#'+ tblId);
+
+	tbl.tree({
+		data: gmpGetMarkerGroupsTree(),
+		autoOpen: true,
+		dragAndDrop: true,
+		onCreateLi: function(node, $li, is_selected) {
+			for(var i = 0; i < mgrTblData.length; i++) {
+				if(mgrTblData[i].id == node.id) {
+					$li.find('.jqtree-element').append(mgrTblData[i]['actions']);
 				}
-			} else {
-				jQuery('#gmpMgrRemoveGroupBtn').attr('disabled', 'disabled');
-				jQuery('#cb_'+ tblId).prop('indeterminate', false);
-				jQuery('#cb_'+ tblId).removeAttr('checked');
 			}
-			gmpCheckUpdate(jQuery(this).find('tr:eq('+rowid+')').find('input[type=checkbox].cbox'));
-			gmpCheckUpdate('#cb_'+ tblId);
-		}
-	,	gridComplete: function(a, b, c) {
-			var tblId = jQuery(this).attr('id');
-			jQuery('#gmpMgrRemoveGroupBtn').attr('disabled', 'disabled');
-			jQuery('#cb_'+ tblId).prop('indeterminate', false);
-			jQuery('#cb_'+ tblId).removeAttr('checked');
-			if(jQuery('#'+ tblId).jqGrid('getGridParam', 'records'))	// If we have at least one row - allow to clear whole list
-				jQuery('#gmpMgrClearBtn').removeAttr('disabled');
-			else
-				jQuery('#gmpMgrClearBtn').attr('disabled', 'disabled');
-			// Custom checkbox manipulation
-			gmpInitCustomCheckRadio('#'+ jQuery(this).attr('id') );
-			gmpCheckUpdate('#cb_'+ jQuery(this).attr('id'));
-			tooltipsterize( jQuery('#'+ tblId) );
-		}
-	,	loadComplete: function() {
-			var tblId = jQuery(this).attr('id');
-			if (this.p.reccount === 0) {
-				jQuery(this).hide();
-				jQuery('#'+ tblId+ 'EmptyMsg').show();
-			} else {
-				jQuery(this).show();
-				jQuery('#'+ tblId+ 'EmptyMsg').hide();
-			}
-		}
-	}).jqGrid('sortableRows', {
-		update: function (e, ui) {
-			var ids = jQuery('#'+ tblId).jqGrid('getDataIDs');
+		},
+		onDragStop: function(node, e) {
+			var tree = tbl.tree('getTree');
+
 			jQuery.sendFormGmp({
-				data: { mod: 'marker_groups', action: 'resortMarkerGroups', ids: ids }
-			,	onSuccess: function(res) {
-					if(!res.error) {
-						jQuery('#gmpMarkersListGrid').trigger('reloadGrid');
-					}
+				data: {
+					mod: 'marker_groups'
+				,	action: 'updateMarkerGroups'
+				,	current: node.id
+				,	parent: node.parent.id
+				,	ids: gmpGetNodesIdsList(tree.children)
 				}
 			});
 		}
 	});
-	jQuery('#'+ tblId+ 'NavShell').append( jQuery('#'+ tblId+ 'Nav') );
-	jQuery('#'+ tblId+ 'Nav').find('.ui-pg-selbox').insertAfter( jQuery('#'+ tblId+ 'Nav').find('.ui-paging-info') );
-	jQuery('#'+ tblId+ 'Nav').find('.ui-pg-table td:first').remove();
-	jQuery('#'+ tblId+ 'SearchTxt').keyup(function(){
-		var searchVal = jQuery.trim( jQuery(this).val() );
-		if(searchVal && searchVal != '') {
-			gmpGridDoListSearch({
-				text_like: searchVal
-			}, tblId);
-		}
+	tbl.on('tree.click',function(e) {
+		// Disable single selection
+		// The multiple selection functions require that nodes have an id
+		e.preventDefault();
+
+		var btns = jQuery('#gmpMgrRemoveGroupBtn'),
+			action = tbl.tree('isNodeSelected', e.node) ? 'removeFromSelection' : 'addToSelection',
+			selected;
+
+		tbl.tree(action, e.node);
+		selected = tbl.tree('getSelectedNodes');
+		selected.length ? btns.removeAttr('disabled') : btns.attr('disabled', 'disabled');
 	});
-	jQuery('#'+ tblId+ 'EmptyMsg').insertAfter(jQuery('#'+ tblId+ '').parent());
-	jQuery('#'+ tblId+ '').jqGrid('navGrid', '#'+ tblId+ 'Nav', {edit: false, add: false, del: false});
-	jQuery('#cb_'+ tblId+ '').change(function(){
-		jQuery(this).attr('checked')
-			? jQuery('#gmpMgrRemoveGroupBtn').removeAttr('disabled')
-			: jQuery('#gmpMgrRemoveGroupBtn').attr('disabled', 'disabled');
+	jQuery(document).on('mouseover', '#gmpMgrTbl .jqtree-element.jqtree_common', function() {
+		jQuery(this).find('.supsystic-actions-wrap').show();
+	}).on('mouseout', '#gmpMgrTbl .jqtree-element.jqtree_common', function() {
+		jQuery(this).find('.supsystic-actions-wrap').hide();
 	});
 	jQuery('#gmpMgrRemoveGroupBtn').click(function(){
-		var selectedRowIds = jQuery('#gmpMgrTbl').jqGrid ('getGridParam', 'selarrrow')
-		,	listIds = [];
-		for(var i in selectedRowIds) {
-			var rowData = jQuery('#gmpMgrTbl').jqGrid('getRowData', selectedRowIds[ i ]);
-			listIds.push( rowData.id );
+		var selected = tbl.tree('getSelectedNodes')
+		,	listIds = []
+		,	mapLabel = ''
+		,	confirmMsg;
+
+		for(var i = 0; i < selected.length; i++) {
+			mapLabel = !mapLabel ? selected[i].name : mapLabel;
+			listIds.push( selected[i].id );
 		}
-		var mapLabel = '';
-		if(listIds.length == 1) {	// In table label cell there can be some additional links
-			var labelCellData = gmpGetGridColDataById(listIds[0], 'title', 'gmpMgrTbl');
-			mapLabel = labelCellData;
-		}
-		var confirmMsg = listIds.length > 1
+		confirmMsg = listIds.length > 1
 			? toeLangGmp('Are you sur want to remove '+ listIds.length+ ' marker categories?')
-			: toeLangGmp('Are you sure want to remove "'+ mapLabel+ '" marker category?')
+			: toeLangGmp('Are you sure want to remove "'+ mapLabel+ '" marker category?');
+
 		if(confirm(confirmMsg)) {
 			jQuery.sendFormGmp({
 				btn: this
 			,	data: {mod: 'marker_groups', action: 'removeGroup', listIds: listIds}
 			,	onSuccess: function(res) {
 					if(!res.error) {
-						jQuery('#gmpMgrTbl').trigger( 'reloadGrid' );
+						location.reload();
 					}
 				}
 			});
@@ -140,16 +79,57 @@ jQuery(document).ready(function(){
 			,	data: {mod: 'marker_groups', action: 'clear'}
 			,	onSuccess: function(res) {
 					if(!res.error) {
-						jQuery('#gmpMgrTbl').trigger( 'reloadGrid' );
+						location.reload();
 					}
 				}
 			});
 		}
 		return false;
 	});
+	jQuery('#gmpMgrTblSearchTxt').on('keyup', function() {
+		var search = jQuery(this).val();
 
-	gmpInitCustomCheckRadio('#'+ tblId+ '_cb');
+		tbl.tree('getNodeByCallback', function(node) {
+			if(node.name.indexOf(search) != -1) {
+				jQuery(node.element).find('.jqtree-element').show();
+			} else {
+				jQuery(node.element).find('.jqtree-element').hide()
+			}
+			return false;
+		});
+	});
 });
+function gmpGetMarkerGroupsTree(parent) {
+	parent = typeof parent != 'undefined' ? parent : 0;
+
+	var tree = [];
+
+	if(typeof mgrTblData != 'undefined') {
+		for(var i = 0; i < mgrTblData.length; i++) {
+			if(mgrTblData[i].parent == parent) {
+				var nodes = gmpGetMarkerGroupsTree(mgrTblData[i].id);
+
+				tree.push({
+					id: mgrTblData[i].id,
+					name: mgrTblData[i].title,
+					children: nodes.length ? nodes : null
+				});
+			}
+		}
+	}
+	return tree;
+}
+function gmpGetNodesIdsList(tree, ids) {
+	ids = ids ? ids : [];
+
+	for(var i = 0; i < tree.length; i++) {
+		ids.push(tree[i].id);
+		if(tree[i].children.length) {
+			ids = gmpGetNodesIdsList(tree[i].children, ids);
+		}
+	}
+	return ids;
+}
 function gmpRemoveMarkerGroupFromTblClick(markerGroupId){
 	if(!confirm(toeLangGmp('Remove Marker Category?'))) {
 		return false;
@@ -164,12 +144,7 @@ function gmpRemoveMarkerGroupFromTblClick(markerGroupId){
 	,	data: {action: 'remove', mod: 'marker_groups', id: markerGroupId}
 	,	onSuccess: function(res) {
 			if(!res.error){
-				jQuery('#gmpMgrTbl').trigger( 'reloadGrid' );
-				setTimeout(function(){
-					msgEl.hide('500', function(){
-						jQuery(this).parents('tr:first').remove();
-					});
-				}, 500);
+				location.reload();
 			}
 		}
 	});
