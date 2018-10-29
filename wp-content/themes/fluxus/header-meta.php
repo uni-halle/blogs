@@ -25,7 +25,7 @@
 	<body <?php if(!empty($_GET['dir'])){ $dir = $_GET['dir']; } else { $dir = ''; } body_class("body " . $dir); ?>>
 		<div class="body__background">
 			<div class="body__backgroundupper body__backgroundupper--typo">
-				<div class="body__backgroundupperinner" style="background-image: url(http://behnelux.de/vorschau/winckelmann/wp-content/uploads/2017/12/bannerundtafeln.jpg); background-size: cover; background-position: center center;">
+				<div class="body__backgroundupperinner" style="background-image: url(https://winckelmann-moderne-antike.uni-halle.de/files/2017/12/bannerundtafeln.jpg); background-size: cover; background-position: center center;">
 					<h1><?php echo $post->post_title; ?></h1>
 				</div>
 			</div>
