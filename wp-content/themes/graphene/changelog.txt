@@ -4,6 +4,26 @@ https://www.graphene-theme.com/
 
 CHANGELOG
 
+Version 2.5.1
+	* Added: Compatibility with Gutenberg
+	* Added: Open Graph microdata format, with detection of SEO plugins
+	* Added: Auto-purge Autoptimize cache whenever the customizer is published
+	* Added: Option to disable captions in slider
+	* Added: Remove slider navigation features if only one slide present in the slider
+	* Added: Sticky menu feature
+	* Added: Option to disable custom YARPP template
+	* Added: Upload button for custom user profile image
+	* Added: Option to exclude posts and categories from slider
+	* Added: Serve slider image from Jetpack if Photon is enabled
+	* Added: Conditional loading of respond and html5shiv scripts for older IE browsers
+	* Added: If set, consistently display custom user image as user's avatar everywhere
+	* Fixed: Header image width changed to 1903 when using full-width layout
+	* Fixed: No Bootstrap script loaded at all if there are other plugins queueing their own Bootstrap script
+	* Fixed: Jetpack lazy-loaded images not center-aligned
+	* Fixed: Missing image error if using slider as header and no image selected as header image
+	* Fixed: PHP warning related to "Read more" link for manual excerpt
+	* Updated: Menu Item Custom Fields 1.0.0
+
 Version 2.4.3.1
 	* Fixed: Load comment-reply.js script only if threaded comments is enabled
 	* Fixed: Section navigation being shown on 404 page

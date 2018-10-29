@@ -27,6 +27,7 @@ if ( file_exists( $mobile_path ) ) { include( $mobile_path ); }
 */
 global $graphene_settings;
 require( GRAPHENE_ROOTDIR . '/admin/options-init.php'	);
+require( GRAPHENE_ROOTDIR . '/admin/editor.php'	);
 require( GRAPHENE_ROOTDIR . '/inc/scripts.php' 			);
 require( GRAPHENE_ROOTDIR . '/inc/utils.php' 			);
 require( GRAPHENE_ROOTDIR . '/inc/head.php' 			);
@@ -34,6 +35,7 @@ require( GRAPHENE_ROOTDIR . '/inc/footer.php' 			);
 require( GRAPHENE_ROOTDIR . '/inc/menus.php' 			);
 require( GRAPHENE_ROOTDIR . '/inc/widgets.php' 			);
 require( GRAPHENE_ROOTDIR . '/inc/loop.php' 			);
+require( GRAPHENE_ROOTDIR . '/inc/social.php' 			);
 require( GRAPHENE_ROOTDIR . '/inc/stacks.php' 			);
 require( GRAPHENE_ROOTDIR . '/inc/infinite-scroll.php' 	);
 require( GRAPHENE_ROOTDIR . '/inc/comments.php' 		);

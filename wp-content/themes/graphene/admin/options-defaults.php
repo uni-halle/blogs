@@ -25,6 +25,7 @@ $graphene_defaults = apply_filters( 'graphene_defaults', array(
 	'header_text_align'			=> 'center',
 	'header_img_height'		 	=> 250,	
 	'search_box_location' 		=> 'top_bar', // top_bar | nav_bar | disabled
+	'enable_sticky_menu'		=> false,
 	
 	/* Slider options */
 	'slider_type' 				=> 'latest_posts', 	// latest_posts | random | posts_pages | categories
@@ -32,10 +33,13 @@ $graphene_defaults = apply_filters( 'graphene_defaults', array(
     'slider_specific_categories'=> '',
 	'slider_exclude_categories'	=> false,
 	'slider_random_category_posts' => false,
+	'slider_exclude_posts'		=> '',
+	'slider_exclude_posts_cats'	=> '',
 	'slider_postcount' 			=> 5,
 	'slider_with_image_only'	=> false,
 	'slider_img' 				=> 'post_image', // disabled | featured_image | post_image | custom_url
 	'slider_display_style' 		=> 'bgimage-excerpt', // bgimage-excerpt | card | banner | full-post
+	'slider_disable_caption'	=> false,
 	'slider_imgurl' 			=> '',
 	'slider_height' 			=> 400,
 	'slider_height_mobile'		=> 250,
@@ -160,6 +164,7 @@ $graphene_defaults = apply_filters( 'graphene_defaults', array(
 	'hide_author_bio'			=> false,
 	'hide_post_nav'				=> false,
 	'post_nav_in_term'			=> false,
+	'disable_yarpp_template'	=> false,
 	
 	/* Excerpt options */
 	'posts_show_excerpt' 		=> false,

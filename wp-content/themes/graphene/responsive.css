@@ -99,6 +99,10 @@
 	.navbar-nav ul {
 		padding-bottom: 5px;
 	}
+	.navbar-fixed-top {
+		margin-left: 0;
+		margin-right: 0;
+	}
 	.post {
 		padding: 15px 0;
 	}
@@ -399,6 +403,15 @@
 	}
 	.footer-widget-col-5 .sidebar-wrap {
 	    width: 20% !important;
+	}
+	.admin-bar .navbar-fixed-top {
+		top: 32px;
+	}
+	.navbar,
+	.navbar a {
+		-webkit-transition: 0.4s;
+		-o-transition: 0.4s;
+		transition: 0.4s;
 	}
 }
 

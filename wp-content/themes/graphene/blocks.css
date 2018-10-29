@@ -1,0 +1,212 @@
+[class^="wp-block-"] {
+    margin-bottom: 1.5em;
+}
+.wp-block-separator {
+	margin: 40px 45%;
+}
+.wp-block-separator.is-style-wide {
+	margin: 40px 25%;
+}
+.wp-block-separator.is-style-dots {
+	margin: 40px auto;
+}
+blockquote,
+.wp-block-quote,
+.wp-block-quote.is-style-default {
+    border: none;
+    margin: 0 0 20px;
+    padding: 0 20px;
+    line-height: normal;
+}
+blockquote p,
+.wp-block-quote p,
+.editor-block-list__block .wp-block-quote p,
+.lead {
+    font-style: italic;
+    font-size: 1.3em;
+    line-height: 1.3em;
+    color: #4a474b;
+}
+.wp-block-quote.is-large p, 
+.wp-block-quote.is-style-large p {
+	font-size: 1.6em;
+	line-height: 1.3em;
+}
+blockquote cite,
+.wp-block-quote cite,
+.wp-block-quote__citation,
+.wp-block-quote.is-large cite,
+wp-block-quote.is-large footer, 
+.wp-block-quote.is-style-large cite, 
+.wp-block-quote.is-style-large footer {
+	display: block;
+	font-style: italic;
+	margin-top: 10px;
+	text-align: right;
+    font-size: 16px;
+    color: inherit;
+}
+blockquote p:first-child {
+    margin-bottom: 20px
+}
+p cite {
+	display: block;
+	text-align: right;
+}
+.entry-content .wp-caption-text,
+.wp-block-image figcaption,
+.wp-block-audio figcaption {
+    font-size: 13px;
+    font-style: italic;
+    padding: 5px;
+    color: #818081;
+    text-align: center;
+    margin-top: 5px;
+}
+.wp-caption-text strong,
+.wp-block-image figcaption strong,
+.wp-block-audio figcaption strong {
+    color: #262626;
+}
+.wp-block-audio figcaption {
+	margin-top: 0;
+}
+.entry-content .wp-block-gallery {
+	padding: 0;
+	margin-left: -8px;
+	margin-right: -8px;
+}
+.wp-block-gallery .blocks-gallery-image img, 
+.wp-block-gallery .blocks-gallery-item img {
+	box-shadow: 0 0 3px #ccc;
+	box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    border-radius: 3px;
+}
+.pullquote,
+.wp-block-pullquote {
+    margin-top: 30px;
+    border-top: 3px solid #eee;
+    border-bottom: 1px solid #eee;
+	font-size: 20px;
+    line-height: normal;
+	padding-bottom: 20px;
+	width: 30%;
+	color: #000;
+}
+.wp-block-pullquote {
+	width: auto;
+	padding: 0.5em 0;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 40px;
+    margin-inline-end: 40px;
+}
+.wp-block-pullquote p {
+	line-height: 1.5em;
+}
+.pullquote cite,
+.wp-block-pullquote blockquote cite,
+.wp-block-pullquote__citation, 
+.wp-block-pullquote cite, 
+.wp-block-pullquote footer {
+	text-align: center;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    opacity: 0.3;
+}
+.pullquote blockquote,
+.wp-block-pullquote blockquote,
+.wp-block-pullquote__citation,
+.entry-content .wp-block-button__link,
+.editor-writing-flow .wp-block-button,
+.wp-block-table [class^="wp-block-"] {
+	margin-bottom: 0;
+}
+.wp-block-button .wp-block-button__link,
+.editor-writing-flow .wp-block-button .wp-block-button__link {
+    border: none;
+	border-radius: 3px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 34px;
+    padding: 5px 25px;
+}
+.wp-block-button .wp-block-button__link:not(.has-background) {
+	background: #4F2D69;
+	color: #ffffff;
+}
+.wp-block-verse {
+    color: #191e23;
+    white-space: nowrap;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 1em;
+    overflow: auto;
+    background: none;
+    border: none;
+    line-height: 1.5em;
+}
+table,
+.wp-block-table {
+    width: 100%;
+    max-width: 100%;
+    border: 0 none;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+table td,
+table th,
+table tr,
+.wp-block-table td,
+.wp-block-table th,
+.wp-block-table tr {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+.wp-block-audio audio {
+	width: 300px;
+}
+.wp-block-audio.aligncenter {
+	text-align: center;
+}
+.wp-block-columns {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+.wp-block-column {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.wp-block-cover-image .wp-block-cover-image-text, 
+.wp-block-cover-image h2 {
+	margin: auto !important;
+}
+.wp-block-cover-image {
+	display: flex !important;
+}
+
+@media only screen and (min-width: 768px) {
+	.alignfull {
+		margin-left: calc(50% - 50vw);
+		margin-right: calc(50% - 50vw + 9px);
+		width: auto;
+		max-width: 1000%;
+	}
+	.alignwide {
+		margin-left: calc(25% - 25vw);
+		margin-right: calc(25% - 25vw);
+		width: auto;
+		max-width: 1000%;
+	}
+	.alignwide img,
+	.alignfull img {
+		display: block;
+		margin: 0 auto;
+	}
+}

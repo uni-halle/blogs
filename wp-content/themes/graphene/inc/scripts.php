@@ -44,8 +44,35 @@ function graphene_enqueue_scripts(){
 	if ( is_singular() && $graphene_settings['print_css'] ) 
 		wp_enqueue_style( 'graphene-print', 		GRAPHENE_ROOTURI . '/style-print.css', 								array( 'graphene' ), $version, 'print' );
 
+	wp_enqueue_style( 'graphene-blocks',			GRAPHENE_ROOTURI . '/blocks.css', 									array( 'graphene-responsive' ), $version );
+
+	/* Mark certain scripts as conditional for older browsers */
+	wp_script_add_data( 'html5shiv', 'conditional', 'lte IE 9' );
+	wp_script_add_data( 'respond', 'conditional', 'lt IE 9' );
+
 }
 add_action( 'wp_enqueue_scripts', 'graphene_enqueue_scripts' );
+
+
+/**
+ * Enqueue block editor scripts
+ */
+function graphene_enqueue_block_editor_assets(){
+	global $graphene_settings;
+	$version = $graphene_settings['scripts_ver'];
+
+	wp_enqueue_style( 'graphene-blocks',			GRAPHENE_ROOTURI . '/blocks.css', 					array(), $version );
+	wp_enqueue_style( 'graphene-editor-blocks',		GRAPHENE_ROOTURI . '/admin/editor-blocks.css',		array( 'graphene-blocks' ), $version );
+
+	wp_enqueue_script( 'graphene-editor-blocks',		GRAPHENE_ROOTURI . '/admin/editor-blocks.js',	array( 'jquery' ), $version );
+	wp_localize_script( 'graphene-editor-blocks', 'grapheneEditorJs', array( 
+		'contentWidth'	=> graphene_get_content_width() + 45,
+		'widthOneCol'	=> graphene_grid_width( 45, 12 ),
+		'widthTwoCol'	=> graphene_grid_width( 45, $graphene_settings['column_width']['two_col']['content'] ),
+		'widthThreeCol' => graphene_grid_width( 45, $graphene_settings['column_width']['three_col']['content'] ),
+	) );
+}
+add_action( 'enqueue_block_editor_assets', 'graphene_enqueue_block_editor_assets' );
 
 
 /**
@@ -63,6 +90,9 @@ function graphene_localize_scripts(){
 		/* General */
 		'templateUrl'			=> GRAPHENE_ROOTURI,
 		'isSingular'			=> is_singular(),
+
+		/* Header */
+		'enableStickyMenu'		=> $graphene_settings['enable_sticky_menu'],
 		
 		/* Comments */
 		'shouldShowComments'	=> graphene_should_show_comments(),

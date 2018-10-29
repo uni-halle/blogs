@@ -13,6 +13,33 @@ jQuery(document).ready(function($) {
 			$(this).parent().toggleClass('open');
 		}
 	});
+
+
+	/* Sticky navbar */
+	if ( grapheneJS.enableStickyMenu ) {
+		window.heightBreakpoint = $('.navbar').position().top;
+		if ( $('#wpadminbar').length > 0 && $(window).width() >= 768 ) window.heightBreakpoint -= 32;
+		
+		$(window).scroll(function() {
+			var height = $(window).scrollTop();
+			// if ( franzJS.hasTopBar ) {
+			// 	var topBarHeight = $('.top-bar').outerHeight();
+			// 	if ( height > topBarHeight ) { $('.navbar').addClass('navbar-fixed-top'); $('body').addClass('navbar-fixed'); }
+			// 	else { $('.navbar').removeClass('navbar-fixed-top'); $('body').removeClass('navbar-fixed'); }
+			// 	heightBreakpoint += topBarHeight;
+			// }
+			
+			if ( height > window.heightBreakpoint ) { 
+				$('body').addClass('navbar-pinned');
+				$('.navbar').addClass('navbar-fixed-top');
+			} else { 
+				if ( ! $('body').hasClass('navbar-persistent-pinned') ) {
+					$('body').removeClass('navbar-pinned'); 
+					$('.navbar').removeClass('navbar-fixed-top');
+				}
+			}
+		});
+	}
 	
 
 	/* Graphene Slider */

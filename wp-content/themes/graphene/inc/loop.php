@@ -137,6 +137,8 @@ function graphene_manual_excerpt_more( $text ){
 	if ( $has_more ) {
 		if ( $text != graphene_truncate_words( $text, $graphene_settings['excerpt_length'], '' ) ) return $text;
 	}
+
+	if ( stripos( $text, '</p>' ) === false ) return $text;
 		
 	$text = explode( '</p>', $text );
 	$text[count( $text )-2] .= graphene_continue_reading_link();
@@ -1030,10 +1032,7 @@ function graphene_single_author_bio(){
         <div class="row">
             <div class="author-avatar col-sm-3">
             	<a href="<?php echo esc_url( get_author_posts_url( $author_id ) ); ?>" rel="author">
-					<?php 
-						if ( get_the_author_meta( 'graphene_author_imgurl' ) ) echo '<img class="avatar" src="' . get_the_author_meta( 'graphene_author_imgurl' ) . '" alt="" />';
-        				else echo get_avatar( $author_id, 200 ); 
-					?>
+					<?php echo get_avatar( $author_id, 200 ); ?>
                 </a>
             </div>
 
@@ -1136,71 +1135,6 @@ function graphene_get_template_part( $slug, $name = null ) {
 
 
 /**
- * Generate the Google Rich Snippet LD+JSON script
- */
-function graphene_rich_snippet(){
-	if ( ! is_singular() ) return;
-	global $post, $graphene_in_rich_snippet;
-	$graphene_in_rich_snippet = true;
-
-	$metadata = array(
-		'@context'         	=> 'http://schema.org',
-		'@type'            	=> is_page() ? 'WebPage' : 'Article',
-		'mainEntityOfPage' 	=> get_permalink( $post->ID ),
-		'publisher'        	=> array(
-			'@type' => 'Organization',
-			'name'  => get_bloginfo( 'blog_name' ),
-		),
-		'headline'         	=> get_the_title( $post->ID ),
-		'datePublished'    	=> date( 'c', get_the_time( 'U', $post->ID ) ),
-		'dateModified'     	=> date( 'c', get_post_modified_time( 'U', false, $post ) ),
-	);
-
-	$excerpt = apply_filters( 'the_excerpt', $post->post_excerpt );
-	if ( ! $excerpt ) $excerpt = wp_trim_words( $post->post_content, 55, ' ...' );
-	$metadata['description'] = $excerpt;
-
-	$post_author = get_userdata( $post->post_author );
-	if ( $post_author ) {
-		$metadata['author'] = array(
-			'@type' => 'Person',
-			'name'  => html_entity_decode( $post_author->display_name, ENT_QUOTES, get_bloginfo( 'charset' ) ),
-		);
-	}
-
-	if ( has_site_icon() ) {
-		$site_icon_url = get_site_icon_url( 32 );
-		$metadata['publisher']['logo'] = array(
-			'@type'  => 'ImageObject',
-			'url'    => $site_icon_url,
-			'height' => 32,
-			'width'  => 32,
-		);
-	}
-
-	$post_images = array(
-		'1x1'	=> graphene_get_best_post_image( $post->ID, array( 696, 696 ) ),
-		'4x3'	=> graphene_get_best_post_image( $post->ID, array( 696, 522 ) ),
-		'16x9'	=> graphene_get_best_post_image( $post->ID, array( 696, 392 ) )
-	);
-
-	$images = array();
-	foreach ( $post_images as $aspect_ratio => $image )	if ( $image ) $images[] = $image['url'];
-	$images = array_unique( $images );
-
-	if ( $images ) $metadata['image'] = $images;
-
-	$metadata = apply_filters( 'graphene_rich_snippet', $metadata );
-	$graphene_in_rich_snippet = false;
-	if ( ! $metadata ) return;
-	?>
-		<script type="application/ld+json"><?php echo wp_json_encode( $metadata ); ?></script>
-	<?php
-}
-add_action( 'wp_head', 'graphene_rich_snippet' );
-
-
-/**
  * Get the header image
  */
 function graphene_header_image(){
@@ -1213,6 +1147,8 @@ function graphene_header_image(){
 		$header_img = graphene_get_header_image( $post_id );
 	} else {
 		$header_img = get_header_image();
+		if ( ! $header_img ) return;
+
 		$alt = get_bloginfo( 'name' );
 	}
 

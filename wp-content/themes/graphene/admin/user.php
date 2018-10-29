@@ -5,6 +5,8 @@
 function graphene_show_custom_user_fields( $user ){ 
     if ( ! is_admin() ) return;
     global $current_user; 
+
+    wp_enqueue_media();
 ?>
     <h3><?php _e( 'Graphene-specific User Profile Information', 'graphene' ); ?></h3>
     <p><?php _e( 'The settings defined here are used only with the Graphene theme.', 'graphene' ); ?></p>
@@ -13,16 +15,56 @@ function graphene_show_custom_user_fields( $user ){
             <th>
                 <label for="author_imgurl"><?php _e( 'Author profile image URL', 'graphene' ); ?></label><br />
                 <?php /* translators: %s will be replaced by a link to the Gravatar website (http://www.gravatar.com) */ ?>
-                <small><?php printf( __( 'You can specify the image to be displayed as the author\'s profile image in the Author\'s page. If no URL is defined here, the author\'s %s will be used.', 'graphene' ), '<a href="http://www.gravatar.com">Gravatar</a>' ); ?></small>
             </th>
             <td>
-                <input type="text" name="author_imgurl" id="author_imgurl" value="<?php echo esc_attr( get_user_meta( $user->ID, 'graphene_author_imgurl', true ) ); ?>" size="50" /><br />
-                <?php /* translators: %s will be replaced by 'http://' wrapped in <code> tags */ ?>
-                <span class="description"><?php printf( __( 'Please enter the full URL (including %s) to your profile image.', 'graphene' ), '<code>http://</code>' ); ?><br /> <?php _e( '<strong>Important: </strong>Image width must be less than or equal to <strong>150px</strong>.', 'graphene' ); ?></span>
+            	<?php $author_imgurl = get_user_meta( $user->ID, 'graphene_author_imgurl', true ); ?>
+            	<img src="<?php echo $author_imgurl; ?>" class="author-image-preview" style="max-height:150px;max-width:150px" alt="" /><br />
+
+                <input type="text" name="author_imgurl" id="author_imgurl" value="<?php echo esc_attr( $author_imgurl ); ?>" size="80" />
+                <input type="button" class="button-primary" value="<?php _e( 'Upload Image', 'graphene' ); ?>" id="graphene_author_imgurl_upload" data-uploader_title="<?php _e( 'Author profile image', 'graphene' ); ?>" data-uploader_button_text="<?php _e( 'Select image', 'graphene' ); ?>" /><br />
+                <span class="description">
+                	<?php printf( __( 'You can specify the image to be displayed as the author\'s profile image in the Author\'s page. If no URL is defined here, the author\'s %s will be used.', 'graphene' ), '<a href="http://www.gravatar.com">Gravatar</a>' ); ?><br />
+                	<?php _e( '<strong>Important: </strong>Image width must be less than or equal to <strong>150px</strong>.', 'graphene' ); ?>
+                </span>
                 
                 <br /><br />
                 <input type="checkbox" name="graphene_author_imgurl_as_avatar" id="graphene_author_imgurl_as_avatar" value="1" <?php checked( get_user_meta( $user->ID, 'graphene_author_imgurl_as_avatar', true ), true ); ?> /> 
                 <label for="graphene_author_imgurl_as_avatar"><?php _e( 'Use this image as your comments avatar', 'graphene' ); ?></label>
+
+
+                <script type="text/javascript">
+                	jQuery(document).ready(function($){
+						var file_frame;
+						$('#graphene_author_imgurl_upload').on('click', function( event ){
+							event.preventDefault();
+
+							if ( file_frame ) {
+								file_frame.open();
+								return;
+							}
+
+							file_frame = wp.media.frames.file_frame = wp.media({
+								title 	: $(this).data('uploader_title'),
+								button 	: {
+									text: $(this).data('uploader_button_text'),
+								},
+								multiple: false
+							});
+
+							file_frame.on( 'select', function() {
+								attachment = file_frame.state().get('selection').first().toJSON();
+								$('#author_imgurl').val(attachment.sizes.thumbnail.url);
+								$('#author_imgurl').trigger('change');
+							});
+
+							file_frame.open();
+						});
+
+						$('#author_imgurl').on('change',function(){
+							$('.author-image-preview').attr('src', $(this).val());
+						});
+					});
+                </script>
             </td>
         </tr>
         <tr>

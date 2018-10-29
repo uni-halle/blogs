@@ -22,7 +22,7 @@ function graphene_customizer_general_options( $wp_customize ){
 	) );
 
 
-	/* =Top Bar
+	/* =Header
 	--------------------------------------------------------------------------------------*/
 	$wp_customize->add_section( 'graphene-general-header', array(
 	  'title' 		=> __( 'Header', 'graphene' ),
@@ -73,6 +73,13 @@ function graphene_customizer_general_options( $wp_customize ){
 		),
 	) );
 
+	$wp_customize->add_control( 'graphene_settings[enable_sticky_menu]', array(
+	  'type' 		=> 'checkbox',
+	  'section' 	=> 'graphene-general-header',
+	  'label' 		=> __( 'Enable sticky menu', 'graphene' ),
+	  'description'	=> __( 'As visitors scroll down, the navigation menu will be fixed to top of window.', 'graphene' )
+	) );
+
 
 	/* =Slider
 	--------------------------------------------------------------------------------------*/
@@ -103,6 +110,12 @@ function graphene_customizer_general_options( $wp_customize ){
 	  'type' 		=> 'checkbox',
 	  'section' 	=> 'graphene-general-slider',
 	  'label' 		=> __( 'Extend slider to full width of theme', 'graphene' ),
+	) );
+
+	$wp_customize->add_control( 'graphene_settings[slider_disable_caption]', array(
+	  'type' 		=> 'checkbox',
+	  'section' 	=> 'graphene-general-slider',
+	  'label' 		=> __( 'Disable slider caption', 'graphene' ),
 	) );
 
 	$wp_customize->add_control( 'graphene_settings[slider_type]', array(
@@ -157,6 +170,25 @@ function graphene_customizer_general_options( $wp_customize ){
 	  'section' 	=> 'graphene-general-slider',
 	  'label' 		=> __( 'Show posts from categories in random order', 'graphene' ),
 	) );
+
+	$wp_customize->add_control( 'graphene_settings[slider_exclude_posts]', array(
+	  'type' 		=> 'text',
+	  'section' 	=> 'graphene-general-slider',
+	  'label' 		=> __( 'Posts and pages to exclude', 'graphene' ),
+	  'description'	=> __( 'Enter ID of posts and pages to be excluded from the slider. Separate the IDs by comma, e.g. <code>1,13,45,33</code>', 'graphene' )
+	) );
+
+	$wp_customize->add_control( new Graphene_Multiple_Select_Control( $wp_customize, 'graphene_settings[slider_exclude_posts_cats]', array(
+		'type' 		=> 'select',
+		'section' 	=> 'graphene-general-slider',
+		'label' 	=> __( 'Categories to exclude', 'graphene' ),
+		'multiple'	=> true,
+		'choices'	=> $cat_choices,
+		'description'	=> __( 'Posts in categories selected here will not be displayed in the slider.', 'graphene' ),
+		'input_attrs'	=> array(
+			'data-placeholder'	=> __( 'Select categories', 'graphene' ),
+		)
+	) ) );
 
 	$wp_customize->add_control( new Graphene_Enhanced_Text_Control( $wp_customize, 'graphene_settings[slider_postcount]', array(
 		'type' 		=> 'number',

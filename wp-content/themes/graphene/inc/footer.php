@@ -20,7 +20,7 @@ add_action( 'wp_footer', 'graphene_return_to_top' );
 function graphene_mentions_bar(){
 	global $graphene_settings;
 
-	if ( graphene_has_custom_layout() && ! $graphene_settings['stacks_keep_mentions_bar'] ) return;
+	if ( graphene_has_custom_layout() ) return;
 	if ( $graphene_settings['mentions_bar_display'] == 'disable' ) return;
 	if ( $graphene_settings['mentions_bar_display'] == 'front-page' && ! is_front_page() ) return;
 	if ( ( $graphene_settings['mentions_bar_display'] == 'pages' && ! ( is_front_page() || is_page() ) ) ) return;

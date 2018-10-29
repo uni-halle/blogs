@@ -5,10 +5,7 @@
         <div class="author-heading col-md-12 clearfix">
     	
             <div class="col-sm-3">
-                <?php 
-        			if ( get_the_author_meta( 'graphene_author_imgurl' ) ) echo '<img class="avatar" src="' . get_the_author_meta( 'graphene_author_imgurl' ) . '" alt="" />';
-        			else echo get_avatar( get_the_author_meta( 'user_email' ), 150 ); 
-        		?>
+                <?php echo get_avatar( get_the_author_meta( 'user_email' ), 150 ); ?>
             </div>
 
             <div class="col-sm-9">

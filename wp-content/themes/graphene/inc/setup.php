@@ -76,6 +76,9 @@ function graphene_setup() {
 
 	// Make theme available for translation
 	load_theme_textdomain( 'graphene', get_template_directory() . '/languages' );
+
+	// Wide images in editor
+	add_theme_support( 'align-wide' );
 	
 	// Register the custom menu locations
 	register_nav_menus( array( 
@@ -96,8 +99,9 @@ function graphene_setup() {
 	if ( $graphene_settings['container_style'] == 'boxed' ) add_theme_support( 'custom-background', $args ); 
 
 	/* Add support for custom header */
+	$header_image_width = ( $graphene_settings['container_style'] != 'boxed' ) ? 1903 : graphene_grid_width( $graphene_settings['gutter_width'] * 2, 12 );
 	$args = array(
-		'width'               => apply_filters( 'graphene_header_image_width', graphene_grid_width( $graphene_settings['gutter_width'] * 2, 12 ) ),
+		'width'               => apply_filters( 'graphene_header_image_width', $header_image_width ),
 		'height'              => apply_filters( 'graphene_header_image_height', $graphene_settings['header_img_height'] ),
 		'default-image'       => apply_filters( 'graphene_default_header_image', GRAPHENE_ROOTURI . '/images/headers/forest.jpg' ),
 		'header-text'		  => apply_filters( 'graphene_header_text', true ),
@@ -113,6 +117,9 @@ function graphene_setup() {
 
 	// Register default custom headers packaged with the theme. %s is a placeholder for the theme template directory URI.
 	register_default_headers( graphene_get_default_headers() );
+
+	/* Add responsive embeds */
+	add_filter( 'embed_oembed_html', 'graphene_responsive_embed', 10, 3 );
         
     do_action( 'graphene_setup' );
 }
@@ -328,4 +335,12 @@ function graphene_display_dynamic_widget_hooks(){
         <?php dynamic_sidebar( $actionhook_id ); ?>
     </div>
     <?php endif;
+}
+
+
+/**
+ * Adds a responsive embed wrapper around oEmbed content
+ */
+function graphene_responsive_embed( $html, $url, $attr ) {
+    return $html !== '' ? '<div class="embed-container">' . $html . '</div>' : '';
 }

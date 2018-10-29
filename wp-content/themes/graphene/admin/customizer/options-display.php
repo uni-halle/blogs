@@ -124,6 +124,12 @@ function graphene_customizer_display_options( $wp_customize ){
 		'label' 	=> __( 'Restrict previous/next post navigation to within the same category', 'graphene' ),
 	) );
 
+	$wp_customize->add_control( 'graphene_settings[disable_yarpp_template]', array(
+		'type' 		=> 'checkbox',
+		'section' 	=> 'graphene-display-posts',
+		'label' 	=> __( 'Disable custom Yet Another Related Posts Plugin (YARPP) template', 'graphene' ),
+	) );
+
 
 	/* =Excerpts
 	--------------------------------------------------------------------------------------*/

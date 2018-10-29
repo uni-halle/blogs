@@ -57,7 +57,12 @@ endif;
  * Dequeue YARPP's CSS
  */
 function graphene_dequeue_yarpp_css(){
-	if ( function_exists( 'yarpp_related' ) ) wp_dequeue_style( 'yarppRelatedCss' );
+	if ( function_exists( 'yarpp_related' ) ) {
+		global $graphene_settings;
+		if ( $graphene_settings['disable_yarpp_template'] ) return;
+
+		wp_dequeue_style( 'yarppRelatedCss' );
+	}
 }
 add_action( 'wp_footer', 'graphene_dequeue_yarpp_css', 5 );
 
@@ -66,7 +71,12 @@ add_action( 'wp_footer', 'graphene_dequeue_yarpp_css', 5 );
  * Remove YARPP's auto-display related content from post content
  */
 function graphene_remove_yarpp_auto_content(){
-	if ( function_exists( 'yarpp_related' ) ) graphene_remove_anonymous_object_filter( 'the_content', 'YARPP', 'the_content' ); 
+	if ( function_exists( 'yarpp_related' ) ) {
+		global $graphene_settings;
+		if ( $graphene_settings['disable_yarpp_template'] ) return;
+
+		graphene_remove_anonymous_object_filter( 'the_content', 'YARPP', 'the_content' ); 
+	}
 }
 add_action( 'template_redirect', 'graphene_remove_yarpp_auto_content' );
 
@@ -85,6 +95,8 @@ function graphene_related_posts( $in_custom_layout = false ){
 		<?php } 
 		return;
 	}
+
+	if ( $graphene_settings['disable_yarpp_template'] ) return;
 	
 	$yarpp_options = get_option( 'yarpp', array() );
 	if ( $yarpp_options ) {

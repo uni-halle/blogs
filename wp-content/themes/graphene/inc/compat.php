@@ -17,12 +17,11 @@ endif;
  */ 
 function graphene_compat_scripts(){
 
-	/* Don't enqueue Bootstrap if other plugins have already added it */
+	/* Dequeue Bootstrap from other plugins */
 	global $wp_scripts;
 	foreach ( $wp_scripts->queue as $script_handle ) {
 		if ( ! in_array( $script_handle, array( 'bootstrap', 'bootstrap-hover-dropdown', 'bootstrap-submenu' ) ) ) {
 			if ( stripos( $script_handle, 'bootstrap' ) !== false ) {
-				wp_dequeue_script( 'bootstrap' );
 
 				$bootstrap_handles = array( 'bootstrap' );
 
@@ -42,7 +41,7 @@ function graphene_compat_scripts(){
 					if ( array_intersect( $bootstrap_handles, $script->deps ) ) {
 						foreach ( $bootstrap_handles as $bootstrap_handle ) {
 							$key = array_search( $bootstrap_handle, $script->deps );
-							if ( $key !== false ) $wp_scripts->registered[$registered_handle]->deps[$key] = $script_handle;
+							if ( $key !== false ) $wp_scripts->registered[$registered_handle]->deps[$key] = 'bootstrap';
 						}
 					}
 				}
