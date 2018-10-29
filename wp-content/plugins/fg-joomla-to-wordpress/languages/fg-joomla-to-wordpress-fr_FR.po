@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FG Joomla to WordPress\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-16 11:09+0100\n"
-"PO-Revision-Date: 2018-03-16 11:10+0100\n"
+"POT-Creation-Date: 2018-08-20 10:51+0200\n"
+"PO-Revision-Date: 2018-08-20 10:51+0200\n"
 "Last-Translator: F. GILLES\n"
 "Language-Team: F. GILLES\n"
 "Language: fr_FR\n"
@@ -289,23 +289,23 @@ msgstr "Le champ URL est requis pour importer les médias."
 msgid "Importing categories..."
 msgstr "Import des catégories..."
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1312
+#: admin/class-fg-joomla-to-wordpress-admin.php:1313
 msgid "Importing posts..."
 msgstr "Import des articles..."
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1357
+#: admin/class-fg-joomla-to-wordpress-admin.php:1358
 msgid ""
 "The import process is still running. Please wait before running it again."
 msgstr ""
 "Le process d’import est toujours en cours. Merci d’attendre avant de le "
 "relancer."
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1456
+#: admin/class-fg-joomla-to-wordpress-admin.php:1457
 #, php-format
 msgid "Article #%d:"
 msgstr "Article #%d :"
 
-#: admin/class-fg-joomla-to-wordpress-admin.php:1886
+#: admin/class-fg-joomla-to-wordpress-admin.php:1893
 #, php-format
 msgid "Unable to create directory %s"
 msgstr "Impossible de créer le répertoire %s"
@@ -589,42 +589,44 @@ msgid "User Groups add-on"
 msgstr "du module User Groups"
 
 #: admin/class-fg-joomla-to-wordpress-modules-check.php:281
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:288
 msgid "Community Builder data"
 msgstr "des données Community Builder"
 
 #: admin/class-fg-joomla-to-wordpress-modules-check.php:281
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:288
 msgid "Community Builder add-on"
 msgstr "du module Community Builder"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:288
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:295
 msgid "some RSBlog posts"
 msgstr "des articles RSBlog"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:288
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:295
 msgid "RSBlog add-on"
 msgstr "du module RSBlog"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:295
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:302
 msgid "several languages"
 msgstr "plusieurs langues"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:295
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:302
 msgid "WPML add-on"
 msgstr "du module WPML"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:302
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:309
 msgid "some AllVideos videos"
 msgstr "des vidéos AllVideos"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:302
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:309
 msgid "AllVideos add-on"
 msgstr "du module AllVideos"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:309
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:316
 msgid "an HikaShop e-commerce solution"
 msgstr "une boutique en ligne HikaShop"
 
-#: admin/class-fg-joomla-to-wordpress-modules-check.php:309
+#: admin/class-fg-joomla-to-wordpress-modules-check.php:316
 msgid "HikaShop add-on"
 msgstr "du module HikaShop"
 
@@ -878,8 +880,8 @@ msgstr ""
 "contenu de WordPress avec le bouton ci-contre."
 
 #: admin/partials/empty-content.php:7
-msgid "Remove only new imported data"
-msgstr "Supprimer seulement les nouvelles données importées"
+msgid "Remove only previously imported data"
+msgstr "Supprimer uniquement les données précédemment importées"
 
 #: admin/partials/empty-content.php:8
 msgid "Remove all WordPress content"
@@ -1163,6 +1165,9 @@ msgstr "Tester la connexion à la base de données"
 #: includes/class-fg-joomla-to-wordpress.php:216
 msgid "Import"
 msgstr "Importer"
+
+#~ msgid "Remove only new imported data"
+#~ msgstr "Supprimer seulement les nouvelles données importées"
 
 #~ msgid "Use FTPS"
 #~ msgstr "Utiliser FTPS"

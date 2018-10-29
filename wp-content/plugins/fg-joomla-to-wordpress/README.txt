@@ -3,8 +3,8 @@ Contributors: Kerfred
 Plugin Uri: https://wordpress.org/plugins/fg-joomla-to-wordpress/
 Tags: joomla, mambo, elxis, wordpress, import, importer, migration, migrator, k2, virtuemart, easyblog, sh404sef, jcomments, kunena, zoo, community builder, hikashop
 Requires at least: 4.5
-Tested up to: 4.9.6
-Stable tag: 3.43.1
+Tested up to: 4.9.8
+Stable tag: 3.44.0
 Requires PHP: 5.3
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -228,6 +228,9 @@ Don't hesitate to let a comment on the [forum](https://wordpress.org/support/plu
 * other can be translated
 
 == Changelog ==
+
+= 3.44.0 =
+* Tested with WordPress 4.9.8
 
 = 3.43.1 =
 * Fixed: Images not imported when the "data-src" attribute is used
@@ -988,6 +991,9 @@ Don't hesitate to let a comment on the [forum](https://wordpress.org/support/plu
 * Initial version: Import Joomla 1.5 sections, categories, posts and images
 
 == Upgrade Notice ==
+
+= 3.44.0 =
+Tested with WordPress 4.9.8
 
 = 3.43.1 =
 Fixed: Images not imported when the "data-src" attribute is used
